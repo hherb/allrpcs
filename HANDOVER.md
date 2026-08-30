@@ -11,9 +11,9 @@ complete host-shell quality sequence passed and the user confirmed the native ma
 move-to-destination behavior, the broader Phase 1 acceptance, and automated physics-boundary
 coverage remain unticked.
 
-The branch is intended to track the private remote and have an open draft pull request. It is not
-authorized to merge. Public visibility, merging, releases, artifact distribution, credentials,
-signing, and notarization remain unauthorized.
+The private remote has open draft PR #6 for this branch. The reviewed Phase 1d implementation is
+commit `ce79507`. The pull request is not authorized to merge. Public visibility, merging,
+releases, artifact distribution, credentials, signing, and notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -26,8 +26,8 @@ gh pr view feat/deterministic-healer-follow --repo hherb/allrpcs \
 gh pr checks feat/deterministic-healer-follow --repo hherb/allrpcs
 ```
 
-The expected state after publication is a clean branch tracking its remote with an open draft
-pull request and current checks. Do not merge it without separate user authorization.
+The expected state is a clean branch tracking its remote with open draft PR #6 and current checks.
+Do not merge it without separate user authorization.
 
 ## Phase 1d implementation
 
