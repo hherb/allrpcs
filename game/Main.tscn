@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="3_camera"]
 [ext_resource type="Script" path="res://GreyboxNavigation.cs" id="4_navigation"]
 [ext_resource type="Script" path="res://NavigationSmokeCheck.cs" id="5_navigation_check"]
+[ext_resource type="Script" path="res://Healer.cs" id="6_healer"]
+[ext_resource type="Script" path="res://HealerFollowSmokeCheck.cs" id="7_healer_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -13,6 +15,9 @@ size = Vector2(1632, 32)
 size = Vector2(32, 900)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seeker"]
+radius = 18.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_healer"]
 radius = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_village"]
@@ -148,6 +153,32 @@ script = ExtResource("4_navigation")
 
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")
+
+[node name="HealerFollowSmokeCheck" type="Node" parent="."]
+script = ExtResource("7_healer_check")
+
+[node name="HealerStart" type="Marker2D" parent="."]
+position = Vector2(680, 450)
+
+[node name="Healer" type="CharacterBody2D" parent="."]
+position = Vector2(680, 450)
+script = ExtResource("6_healer")
+
+[node name="Body" type="Polygon2D" parent="Healer"]
+polygon = PackedVector2Array(0, -18, 12.728, -12.728, 18, 0, 12.728, 12.728, 0, 18, -12.728, 12.728, -18, 0, -12.728, -12.728)
+color = Color(0.302, 0.788, 0.737, 1)
+
+[node name="Satchel" type="Polygon2D" parent="Healer"]
+polygon = PackedVector2Array(5, -2, 15, 2, 13, 13, 3, 10)
+color = Color(0.353, 0.231, 0.137, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Healer"]
+shape = SubResource("CircleShape2D_healer")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Healer"]
+path_desired_distance = 4.0
+target_desired_distance = 72.0
+radius = 18.0
 
 [node name="Seeker" type="CharacterBody2D" parent="."]
 position = Vector2(800, 450)

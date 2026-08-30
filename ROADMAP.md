@@ -132,11 +132,12 @@ Acceptance:
 ## Phase 1 — Greybox exploration
 
 Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior, Phase 1b bounded
-camera framing plus representative greybox terrain collision, and Phase 1c deterministic
-navigation topology with a temporary stream crossing were implemented and verified on Apple
-Silicon macOS on 2026-08-31. Phase 1b defines zoom tuning without adding zoom or camera-pan input;
-Phase 1c adds no navigation agent or companion behavior. See `HANDOVER.md` for the current
-automated and manual evidence and its platform limitations.
+camera framing plus representative greybox terrain collision, Phase 1c deterministic navigation
+topology with a temporary stream crossing, and Phase 1d deterministic healer follow behavior
+were implemented and verified on Apple Silicon macOS on 2026-08-31. Phase 1b defines zoom tuning
+without adding zoom or camera-pan input; Phase 1d adds no healer wait or move-to-destination
+command. See `HANDOVER.md` for the current automated and manual evidence and its platform
+limitations.
 
 - [x] Create a placeholder top-down test region using simple shapes and temporary tiles.
 - [x] Implement keyboard movement for the Seeker.
@@ -147,7 +148,7 @@ automated and manual evidence and its platform limitations.
 - [x] Add collision for water, buildings, trees, and impassable terrain.
 - [x] Add a baked or deterministically authored `NavigationRegion2D` suitable for companion
   pathfinding.
-- [ ] Implement deterministic healer follow behaviour without an LLM call.
+- [x] Implement deterministic healer follow behaviour without an LLM call.
 - [ ] Implement healer wait and move-to-destination behaviour.
 - [ ] Add interaction highlighting and a focused target indicator.
 - [ ] Pause disease time and world decisions during dialogue, reading, and inventory use.

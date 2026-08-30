@@ -2,17 +2,18 @@
 
 ## Current state
 
-PR #4 merged Phase 1b into `origin/main` at merge commit `927556e`. The current branch,
-`feat/navigation-region-foundation`, is based directly on that merge.
+PR #5 merged Phase 1c into `origin/main` at merge commit `0784df3`. The current branch,
+`feat/deterministic-healer-follow`, is based directly on that merge.
 
-Phase 1c, the greybox navigation-region foundation, is complete on the current branch. The
+Phase 1d, the deterministic healer-follow foundation, is complete on the current branch. The
 complete host-shell quality sequence passed and the user confirmed the native macOS behavior on
-2026-08-31. The navigation-region and navigation-request-validation roadmap items are ticked;
-the broader Phase 1 acceptance and automated physics-boundary item remain unticked.
+2026-08-31. The deterministic healer-follow roadmap item is ticked; healer wait and
+move-to-destination behavior, the broader Phase 1 acceptance, and automated physics-boundary
+coverage remain unticked.
 
-The branch is intended to track the private remote and have an open draft pull request. It is
-not authorized to merge. Public visibility, merging, releases, artifact distribution,
-credentials, signing, and notarization remain unauthorized.
+The branch is intended to track the private remote and have an open draft pull request. It is not
+authorized to merge. Public visibility, merging, releases, artifact distribution, credentials,
+signing, and notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -20,38 +21,39 @@ At the start of the next session, verify current state rather than relying only 
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
-gh pr view feat/navigation-region-foundation --repo hherb/allrpcs \
+gh pr view feat/deterministic-healer-follow --repo hherb/allrpcs \
   --json number,state,isDraft,headRefName,headRefOid,url
-gh pr checks feat/navigation-region-foundation --repo hherb/allrpcs
+gh pr checks feat/deterministic-healer-follow --repo hherb/allrpcs
 ```
 
-The expected state is a clean branch tracking its remote with an open draft pull request and
-current checks. Do not merge it without separate user authorization.
+The expected state after publication is a clean branch tracking its remote with an open draft
+pull request and current checks. Do not merge it without separate user authorization.
 
-## Phase 1c implementation
+## Phase 1d implementation
 
 The slice remains within its original boundary:
 
-- `src/Application/Navigation/NavigationRequestValidator.cs` validates finite ordered world
-  bounds plus finite origin and destination coordinates contained by those bounds. It returns an
-  immutable request and has no Godot dependency.
-- `tests/Application.Tests/NavigationRequestValidatorTests.cs` adds 23 focused cases for valid
-  requests, inclusive world edges, invalid bounds, non-finite coordinates, and out-of-bounds
-  origins and destinations. The Application suite now has 49 passing cases in total.
-- `game/Main.tscn` adds an obvious temporary brown bridge and divides the stream collision into
-  west and east polygons, leaving a 112-pixel crossing for the 36-pixel-diameter Seeker.
-- `game/GreyboxNavigation.cs` deterministically authors one `NavigationRegion2D` from 98 shared
-  vertices and 66 convex polygons. The surface is inset from the outer walls, follows the stream
-  banks, connects through only the temporary bridge, and leaves conservative clearance around
-  the village and three-tree cluster.
-- `game/NavigationSmokeCheck.cs` waits for the asynchronous navigation map to synchronize, then
-  uses the pure request validator and `NavigationServer2D` paths to prove a representative route
-  across the bridge. It also proves that representative stream, tree, and village targets do not
-  resolve to their requested endpoints.
-- `scripts/smoke-godot.sh` enables that credential-free behavioral check and exits non-zero on a
-  failed map, route, or obstacle assertion. Ordinary game launches do not run the assertions.
-- `README.md` documents the crossing, navigation surface, automated check, project boundary, and
-  explicit exclusions. `ROADMAP.md` records only the completed Phase 1c work.
+- `src/Application/Movement/FollowTargetSelector.cs` validates finite follower and followed
+  coordinates, positive finite speed, and non-negative finite stop distance. It returns an
+  immutable target selection only while the follower is outside the inclusive stop distance and
+  has no Godot dependency.
+- `tests/Application.Tests/FollowTargetSelectorTests.cs` adds 17 focused cases for target
+  selection, the inclusive stop boundary, invalid coordinates, invalid speed, and invalid stop
+  distance. The Application suite now has 66 passing cases in total.
+- `game/Main.tscn` adds an obvious cyan placeholder healer at the named `HealerStart` position on
+  the Seeker's side of the stream. Its 18-pixel collision radius matches its visible circular
+  footprint, and its `NavigationAgent2D` uses the existing authored navigation region.
+- `game/Healer.cs` adapts the pure selection into deterministic 180-pixel-per-second navigation
+  movement. It follows only while outside the validated 72-pixel stop distance, moves with
+  physics collision, and makes no LLM or network call.
+- `game/HealerFollowSmokeCheck.cs` creates a representative lower-field separation, proves follow
+  and stable stop behavior without overlap, then separates the characters across the stream and
+  proves that the healer regroups through the bridge. The check fails closed and is enabled only
+  by the credential-free smoke script.
+- `scripts/smoke-godot.sh` retains the navigation-topology smoke and runs the new follow smoke in
+  a separate bounded headless launch. Ordinary game launches do not run either assertion set.
+- `README.md` documents the healer, pure boundary, automated behavior, temporary values, and
+  explicit exclusions. `ROADMAP.md` records only the completed Phase 1d work.
 
 ## Review and validation
 
@@ -60,85 +62,84 @@ The slice remains within its original boundary:
 On 2026-08-31, the complete host-shell `./scripts/quality.sh` passed on Apple Silicon macOS with
 .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
 
-- `actionlint` accepted the hosted workflow and every shell script passed syntax validation;
+- `actionlint` accepted the hosted workflow;
 - restore and `dotnet format --verify-no-changes` passed;
 - all seven projects built with zero warnings and zero errors;
 - the domain test passed;
-- all 49 Application movement, camera-framing, and navigation-request cases passed;
+- all 66 Application movement, camera-framing, navigation-request, and follow-target cases passed;
 - all six architecture reference cases passed;
-- the headless navigation smoke synchronized a 98-vertex, 66-polygon region at navigation map
+- the headless navigation smoke synchronized the 98-vertex, 66-polygon region at navigation map
   iteration 2, found the representative bridge route, rejected stream/tree/village endpoints,
-  and exited 0; and
+  and exited 0;
+- the headless healer smoke moved from a representative separation, held a 72-pixel lower-field
+  stop distance, preserved body separation, regrouped through the bridge at a final 71.08256-pixel
+  center distance, and exited 0; and
 - the bounded 60-frame native graphical launch exited 0 using the Compatibility renderer on the
   Apple M3 Max.
 
-The restricted sandbox's headless launch could not open Godot's normal user log and crashed
-inside log rotation before loading the project. The identical smoke passed in the host
-environment, so this is recorded as a sandbox limitation rather than a product failure. The
-visible native run produced no Godot error or warning entries in the application log.
+The visible native run produced no Godot error or warning entries in the application log.
 
-### Native visual evidence
+### Native visual and interaction evidence
 
-The game was launched in a visible native 960-by-540 macOS window. On 2026-08-31, the user
-confirmed that:
+The game was launched in a visible native 960-by-540 macOS window. On 2026-08-31, the user used
+WASD to exercise the requested behavior and confirmed that:
 
-1. WASD movement crosses the brown bridge in both directions;
-2. the stream elsewhere, village, three-tree cluster, and outer border still block the Seeker;
-   and
-3. movement and camera following remain smooth.
+1. the cyan healer follows the Seeker smoothly and remains outside the Seeker's body;
+2. ordinary Seeker movement can create separation and the healer regroups through the brown
+   bridge; and
+3. existing Seeker terrain collision and camera following continue to work.
 
-The prior Phase 1b confirmation that ordinary movement never reveals space outside the outlined
-1600-by-900 region remains applicable.
+The prior Phase 1c confirmation that the stream outside the bridge, village, three-tree cluster,
+and outer border block the Seeker remains applicable.
 
 ## Limitations and exclusions
 
-- Phase 1c has not behaviorally exercised Windows, Linux, alternate keyboard layouts, window
+- Phase 1d has not behaviorally exercised Windows, Linux, alternate keyboard layouts, window
   resizing, other resolutions, arrow keys, gamepads, accessibility, performance, packaging,
   installation, signing, or distribution.
-- The pure tests validate request bounds and coordinates but do not simulate Godot input,
-  physics collision, or navigation-server topology. The credential-free Godot smoke validates
-  representative topology; the current macOS manual run validates player collision.
-- The navigation surface is deliberately conservative greybox geometry for future companion
-  pathfinding. It is not a final world mesh, dynamic obstacle system, movement controller, or
-  proof that every possible point pair has an authored route.
-- The bridge, stream collision, village rectangle, tree circles, and navigation clearance are
-  temporary primitives. There is no navigation-agent radius negotiation, rebaking, runtime
-  obstacle update, debug overlay, bridge art, or path-connectivity claim beyond the representative
-  checks above.
-- No point-and-click movement, zoom/pan input, controller mappings, healer behavior, companion
-  controller, LLM call, interaction highlighting, inventory, dialogue, disease, provider,
-  persistence, final art, audio, networking, packaging, credential, release, or distribution path
-  was added.
+- The pure tests validate follow selection and configuration but do not load Godot, simulate
+  physics collision, or prove navigation topology. The credential-free Godot smoke validates
+  representative movement and topology; the current macOS manual run validates ordinary-player
+  interaction.
+- The follow smoke deliberately places characters at deterministic representative positions
+  before exercising actual navigation and physics movement. It is not an exhaustive proof for
+  every possible character position, moving-target trajectory, or navigation-map mutation.
+- The healer body, speed, stop distance, navigation-agent tuning, bridge, terrain, and clearance
+  are temporary greybox values. There is no crowd avoidance, dynamic obstacle rebaking, animation,
+  debug overlay, or final companion presentation.
+- No healer wait or player-selected move-to-destination command, point-and-click Seeker movement,
+  zoom/pan input, controller mapping, LLM call, provider adapter, dialogue, interaction
+  highlighting, inventory, disease, persistence, final art, audio, networking, packaging,
+  credential, release, or distribution path was added.
 
 ## Exact next bounded slice
 
-First review the Phase 1c draft pull request and its current checks. Do not merge it without
-explicit user authorization. After the user reports that pull request merged, take **Phase 1d:
-deterministic healer follow foundation**.
+First review the Phase 1d draft pull request and its current checks. Do not merge it without
+explicit user authorization. After the user reports that pull request merged, take **Phase 1e:
+deterministic healer wait and move-to-destination foundation**.
 
-Acceptance boundary for Phase 1d:
+Acceptance boundary for Phase 1e:
 
-1. Add one obvious placeholder healer body to the greybox, with collision matching its visible
-   footprint and a named starting position on the Seeker's side of the stream.
-2. Keep follow-target selection, stop distance, and finite-coordinate/speed validation in pure
-   Application code with focused independent tests.
-3. Add deterministic Godot movement that follows the Seeker only while outside the validated
-   stop distance, uses the existing navigation region for routes, and makes no LLM or network
-   call.
-4. Add a credential-free Godot check proving representative follow, stop-distance, separation,
-   and cross-bridge regroup behavior without relying only on a rendered debug overlay.
-5. Manually confirm on the current native platform that the healer follows smoothly, does not
-   overlap the Seeker, can become separated by ordinary movement, and regroups through the bridge
-   without breaking existing Seeker collision or camera behavior.
+1. Add pure Application command selection and validation for follow, wait, and a finite in-bounds
+   move destination, with focused independent tests and no Godot dependency.
+2. Add only the minimum obvious temporary greybox command trigger needed to exercise wait and
+   move-to-destination behavior; do not present it as final dialogue or player-facing command UX.
+3. Adapt the healer controller so wait remains stationary, move-to-destination uses the existing
+   navigation region and stops at a validated distance, and follow can resume deterministically.
+4. Add a credential-free Godot check proving representative follow-to-wait, wait stability,
+   valid move completion, invalid or excluded target rejection, and return-to-follow behavior.
+5. Manually confirm on the current native platform that the modes are understandable, wait does
+   not drift, a valid destination is reached without overlap or obstacle regression, and follow
+   resumes without breaking existing Seeker collision or camera behavior.
 6. Update `README.md`, `ROADMAP.md`, and this file, then commit only reviewed slice paths.
 
-Explicit exclusions for Phase 1d:
+Explicit exclusions for Phase 1e:
 
-- Do not add healer wait or player-selected move-to-destination commands; those remain the next
-  roadmap item after the follow foundation.
-- Do not add point-and-click Seeker movement, zoom/pan input, controller mappings, LLM calls,
-  provider adapters, dialogue, interaction highlighting, inventory, disease, persistence, final
-  art, audio, networking, or packaging.
+- Do not add natural-language command interpretation, dialogue, an LLM call, provider adapters,
+  autonomous planning, healer inventory actions, or final command UI.
+- Do not add point-and-click Seeker movement, zoom/pan input, controller mappings beyond any
+  minimum temporary greybox command trigger, interaction highlighting, inventory, disease,
+  persistence, final art, audio, networking, or packaging.
 - Do not change repository visibility, merge pull requests, create releases, distribute
   artifacts, or add credentials without explicit user authorization.
 
