@@ -1,6 +1,97 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
+[ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
+[ext_resource type="Script" path="res://FollowCamera.cs" id="3_camera"]
 
-[node name="Main" type="Node"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
+size = Vector2(1632, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical"]
+size = Vector2(32, 900)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_seeker"]
+radius = 18.0
+
+[node name="Main" type="Node2D"]
 script = ExtResource("1_main")
+
+[node name="Ground" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900)
+color = Color(0.188, 0.278, 0.251, 1)
+
+[node name="Path" type="Line2D" parent="."]
+points = PackedVector2Array(112, 672, 424, 552, 768, 576, 1096, 400, 1488, 288)
+width = 96.0
+default_color = Color(0.447, 0.392, 0.302, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Stream" type="Line2D" parent="."]
+points = PackedVector2Array(0, 184, 320, 216, 624, 136, 920, 176, 1248, 112, 1600, 144)
+width = 72.0
+default_color = Color(0.196, 0.459, 0.561, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="VillageGreybox" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(1040, 504, 1456, 504, 1456, 776, 1040, 776)
+color = Color(0.333, 0.345, 0.337, 1)
+
+[node name="VillageCourt" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(1112, 560, 1384, 560, 1384, 720, 1112, 720)
+color = Color(0.506, 0.471, 0.384, 1)
+
+[node name="RegionOutline" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900, 0, 0)
+width = 8.0
+default_color = Color(0.682, 0.714, 0.588, 1)
+antialiased = true
+
+[node name="Boundaries" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(800, -16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Top"]
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Bottom" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(800, 916)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Bottom"]
+shape = SubResource("RectangleShape2D_horizontal")
+
+[node name="Left" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(-16, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Left"]
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="Right" type="StaticBody2D" parent="Boundaries"]
+position = Vector2(1616, 450)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Right"]
+shape = SubResource("RectangleShape2D_vertical")
+
+[node name="Seeker" type="CharacterBody2D" parent="."]
+position = Vector2(800, 450)
+script = ExtResource("2_seeker")
+
+[node name="Body" type="Polygon2D" parent="Seeker"]
+polygon = PackedVector2Array(0, -24, 20, 0, 0, 24, -20, 0)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="Facing" type="Polygon2D" parent="Seeker"]
+polygon = PackedVector2Array(-6, -12, 6, -12, 0, -22)
+color = Color(0.161, 0.184, 0.169, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Seeker"]
+shape = SubResource("CircleShape2D_seeker")
+
+[node name="FollowCamera" type="Camera2D" parent="Seeker"]
+script = ExtResource("3_camera")

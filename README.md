@@ -1,7 +1,8 @@
 # Allrpcs
 
-Allrpcs is a Godot 4.6 .NET game under development. This foundation keeps authoritative rules
-in engine-independent C# projects and uses Godot only at the presentation boundary.
+Allrpcs is a Godot 4.6 .NET game under development. Its keyboard-movement greybox keeps
+testable movement calculation and future authoritative rules in engine-independent C# projects
+while Godot owns input mapping, physics presentation, camera behavior, and scene authoring.
 
 ## Prerequisites
 
@@ -32,11 +33,11 @@ From the repository root:
 ```
 
 The sequence restores packages serially, rejects C# formatting drift, builds with current
-recommended .NET analysis and compiler warnings treated as errors, runs the domain and
-architecture tests, then exercises both headless and 60-frame graphical Godot launches. It
-first runs `actionlint` against every hosted workflow. It does not require provider credentials
-or network access after restore. The project selects the Compatibility renderer for graphical
-launches.
+recommended .NET analysis and compiler warnings treated as errors, runs the domain,
+application, and architecture tests, then exercises both headless and 60-frame graphical Godot
+launches. It first runs `actionlint` against every hosted workflow. It does not require provider
+credentials or network access after restore. The project selects the Compatibility renderer
+for graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -52,8 +53,8 @@ project-reference directions listed below.
 `.github/workflows/ci.yml` configures pull-request and `main` checks on explicit stable runner
 images:
 
-- Pure formatting, zero-warning compilation, domain tests, and architecture tests run on
-  `ubuntu-24.04` without installing or launching Godot.
+- Pure formatting, zero-warning compilation, domain tests, Application movement tests, and
+  architecture tests run on `ubuntu-24.04` without installing or launching Godot.
 - The headless main-scene smoke runs separately on `ubuntu-24.04` with Godot 4.6.3 .NET.
 - Unsigned debug exports run natively on `ubuntu-24.04`, Apple Silicon `macos-15`, and
   `windows-2025`. Their targets are Linux x64, macOS Universal 2, and Windows x64.
@@ -100,26 +101,36 @@ committed `game/export_presets.cfg` explicitly disables macOS signing and notari
 Windows code signing. Linux has no signing step. These commands create development-build
 evidence only; they do not package, sign, notarize, publish, or distribute the game.
 
-## Launch the empty application
+## Launch the keyboard greybox
 
 ```sh
 godot --path game
 ```
 
-Close the titled **Allrpcs** window to stop the process. To open the project in the editor
-instead, run `godot --editor --path game`.
+Use W, A, S, and D to move the gold placeholder Seeker around the 1600-by-900 test region. The
+Seeker's named default speed is 240 pixels per second. Diagonal input is normalized so it does
+not move faster than a cardinal direction. The camera follows with a named smoothing speed of
+6, and four thin collision walls keep the Seeker inside the temporary outer border.
+
+The stream, path, village block, colors, and Seeker shape are authored primitives for scale and
+camera testing only; they are not a selected art direction or final assets. Close the titled
+**Allrpcs** window to stop the process. To open the project in the editor instead, run
+`godot --editor --path game`.
 
 ## Project boundaries
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
-- `src/Application` coordinates domain use cases and depends only on `Domain`.
+- `src/Application` contains pure movement calculation and coordinates future domain use cases;
+  it depends only on `Domain`.
 - `src/Infrastructure` is the future adapter boundary and depends on `Application`.
 - `game` is the Godot presentation project and depends on `Application`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
+- `tests/Application.Tests` tests pure movement calculation without loading Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
-Provider adapters, persistence, gameplay, credentials, signing, installers, and distribution
-configuration are not part of this foundation slice.
+Point-and-click movement, controller mappings, authored terrain collision, companions,
+pathfinding, providers, persistence, credentials, signing, installers, and distribution
+configuration are not part of this greybox slice.
 
 ## Licence
 

@@ -131,11 +131,15 @@ Acceptance:
 
 ## Phase 1 — Greybox exploration
 
-- [ ] Create a placeholder top-down test region using simple shapes and temporary tiles.
-- [ ] Implement keyboard movement for the Seeker.
+Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior was implemented and
+verified on Apple Silicon macOS on 2026-08-31. See `HANDOVER.md` for the current automated and
+manual evidence and its platform limitations.
+
+- [x] Create a placeholder top-down test region using simple shapes and temporary tiles.
+- [x] Implement keyboard movement for the Seeker.
 - [ ] Implement point-and-click movement if retained after prototype testing.
-- [ ] Establish controller input actions without hard-coding physical keys.
-- [ ] Implement smooth `Camera2D` following.
+- [x] Establish controller input actions without hard-coding physical keys.
+- [x] Implement smooth `Camera2D` following.
 - [ ] Implement bounded camera pan and useful zoom limits.
 - [ ] Add collision for water, buildings, trees, and impassable terrain.
 - [ ] Add a baked `NavigationRegion2D` suitable for companion pathfinding.
