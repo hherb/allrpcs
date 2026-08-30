@@ -115,10 +115,10 @@ actually run on the named GitHub-hosted runners. See `HANDOVER.md` for the exact
 activation boundary.
 
 - [x] Add formatting and compiler-warning checks.
-- [ ] Add pure C# unit tests to CI.
+- [x] Add pure C# unit tests to CI.
 - [ ] Add scenario-validator tests to CI once the validator exists.
-- [ ] Add headless Godot smoke tests.
-- [ ] Add unsigned development builds for macOS, Linux, and Windows on native runners.
+- [x] Add headless Godot smoke tests.
+- [x] Add unsigned development builds for macOS, Linux, and Windows on native runners.
 - [x] Pin tool versions and document the update procedure.
 - [x] Add architecture tests or project-reference checks enforcing the intended dependency
   direction.
