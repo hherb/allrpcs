@@ -2,15 +2,14 @@
 
 ## Current state
 
-Allrpcs remains at the documentation baseline on `main`. Phase 0.1 was started on 2026-08-30,
-but its mandatory environment gate failed: neither Godot nor the .NET SDK was available on
-`PATH` or in the checked standard install locations. The slice instructions explicitly require
-stopping in that situation, so no project skeleton, generated files, gameplay code, tests,
-assets, provider integration, or CI configuration was added.
+Roadmap Phase 0.1, the local solution skeleton, is complete on `main`. The repository now has a
+pure C# solution, explicit project-reference direction, a Godot 4.6.3 .NET Compatibility
+project, a minimal titled `Main` scene, a domain smoke test, a Godot launch smoke script, and
+verified setup commands in `README.md`.
 
-The prerequisite inspection and this handover update are committed as the current `HEAD` with
-subject `docs: record missing phase 0.1 prerequisites`. The prior documentation-baseline commit
-is `5506f9a`.
+This slice is committed as the current `HEAD` with subject `build: add local Godot solution
+skeleton`. The prior prerequisite-handover commit is `052c0cd`. No gameplay, provider,
+persistence, CI, art, audio, packaging, or distribution work was added.
 
 At the start of the next session, verify the live checkout rather than relying only on this
 summary:
@@ -91,111 +90,123 @@ the deeper forest.
 
 ## Exact next bounded slice
 
-Resume **Roadmap Phase 0.1: Local solution skeleton**, beginning with its prerequisite gate.
-
-### Required environment action before implementation
-
-On the Apple Silicon host, install both of the following without substituting a different
-engine branch or the standard non-.NET editor:
-
-1. The macOS **Godot 4.6 .NET** editor build (the .NET build with C# support).
-2. A native 64-bit **.NET SDK 8 or later**. Godot's 4.6 documentation states that Godot uses
-   .NET 8; install an SDK, not only a runtime.
-
-Use the official [Godot 4.6 download archive][godot-download] and [Godot 4.6 C#
-documentation][godot-csharp] to identify the correct editor build and prerequisites.
-
-[godot-download]: https://godotengine.org/download/archive/4.6-stable/
-[godot-csharp]: https://docs.godotengine.org/en/4.6/tutorials/scripting/c_sharp/index.html
-
-After installation, make both commands available to a normal shell, or record their exact
-absolute executable paths. Verify them with:
-
-```sh
-godot --version
-dotnet --info
-```
-
-If the Godot executable uses another command or an application-bundle path, use that exact path
-consistently in the README and smoke checks. Confirm that the editor reports the 4.6 branch and
-is the .NET build before generating files.
+Implement **Roadmap Phase 0.2a: local compiler and architecture guardrails**. This is the first
+bounded part of Phase 0.2; do not add hosted CI or greybox gameplay in the same slice.
 
 ### In scope
 
-1. Inspect installed `godot` and `dotnet` versions; do not guess paths or SDK compatibility.
-2. Add an appropriate `.gitignore` and `.editorconfig`.
-3. Create the C# solution and these initial projects:
-   - `src/Domain`
-   - `src/Application`
-   - `src/Infrastructure`
-   - `tests/Domain.Tests`
-4. Establish project references matching the settled dependency direction.
-5. Create `game/` as a Godot 4.6 .NET project using the Compatibility renderer.
-6. Add a minimal `Main` scene that launches an empty titled window.
-7. Add one pure C# smoke test.
-8. Add the smallest practical Godot launch smoke check available in the installed environment.
-9. Add `README.md` with exact prerequisites and verified build, test, and launch commands.
-10. Run the documented commands, update `ROADMAP.md`, and update this handover with evidence and
-    the next exact slice.
+1. Add `global.json` that pins the verified .NET 8 feature band with an explicit safe roll-forward
+   policy.
+2. Add shared build properties enabling deterministic builds, current recommended analysis, and
+   warning failure for authored C# without breaking Godot-generated files.
+3. Add pure C# architecture tests that enforce the current allowed project-reference graph:
+   - `Domain` has no project references.
+   - `Application` references only `Domain`.
+   - `Infrastructure` references only `Application`.
+   - `game` references only `Application`.
+   - `Domain.Tests` references only `Domain`.
+4. Add a reproducible formatting verification command and document the local quality sequence.
+5. Prove at least one architecture test fails when a forbidden reference is introduced, then
+   revert that deliberate test mutation before committing.
+6. Run restore, formatting, build, unit tests, architecture tests, and both Godot smoke checks.
+7. Update `ROADMAP.md` only for guardrails actually verified, and write the next handover.
 
 ### Acceptance boundary
 
-A developer can follow the new `README.md`, run the pure C# tests, and launch the empty Godot
-application locally without provider credentials. The dependency direction is visible in the
-project references, and `Domain` remains engine-independent.
+A developer can run one documented local quality sequence that rejects formatting drift,
+compiler warnings, and forbidden project references before launching Godot. All checks remain
+credential-free and engine-independent tests do not load Godot.
 
 ### Explicitly out of scope
 
+- Hosted CI workflow files and claims about live GitHub runners; take those in Phase 0.2b.
+- Unsigned macOS, Linux, or Windows development-build jobs.
+- Selecting the source licence; keep this before any publication or distribution.
 - Gameplay movement, camera, landscapes, characters, discovery, or inventory.
 - LLM provider adapters or API credentials.
 - SQLite or save-game persistence.
 - Final art, generated art, audio, ASR, or TTS.
-- Cross-platform CI, installers, signing, notarization, or distribution.
-- Choosing default provider models.
-- Final disease lore or art direction.
+- Installers, signing, notarization, publishing, or distribution.
 - Multiplayer or networking.
 
-If Godot 4.6 .NET or a compatible .NET SDK is unavailable, stop after recording the exact
-observed versions and the narrow installation requirement. Do not silently substitute a
-different engine, Godot branch, language, or renderer.
-
-## Phase 0.1 prerequisite evidence (2026-08-30)
+## Phase 0.1 completion evidence (2026-08-30)
 
 Environment:
 
 - Branch: `main`.
 - Machine architecture: `arm64`.
 - OS: macOS 26.6.2 (build 25G83).
-- Working tree before this documentation update: clean.
+- Godot: `4.6.3.stable.mono.official.7d41c59c4`.
+- .NET SDK: `8.0.130`; host runtime: `8.0.30`; RID: `osx-arm64`.
 
-Checks run from `/Users/hherb/src/allrpcs`:
+Toolchain installation:
+
+- Homebrew installed versioned formula `dotnet@8` at `/opt/homebrew/opt/dotnet@8`.
+- `/Users/hherb/.local/bin/dotnet` links to the formula's command and is already on `PATH`.
+- The official [Godot 4.6.3 archive][godot-download] supplied the .NET universal app installed
+  as `/Applications/Godot_mono.app`; the [Godot C# documentation][godot-csharp] defines the
+  required .NET editor/SDK pairing.
+- `/Users/hherb/.local/bin/godot` is an executable wrapper around the app's real binary. A plain
+  executable symlink must not replace it: this macOS build then loses its bundle resource path
+  and reports `.NET: Assemblies not found`.
+- The downloaded editor archive matched the official SHA-512 manifest:
+
+  ```text
+  8c4c1c83a7a3e1cfc845e0fd4b4cdefd6f1cc662f63378c22a551b50f31965f2
+  a633b7bf7c84ab530847e0fddb5dadc1128e04e87918618dd76c75d66eb67bb9
+  ```
+
+Implemented repository structure:
+
+- `Allrpcs.sln` contains `Domain`, `Application`, `Infrastructure`, `Domain.Tests`, and the
+  Godot game project.
+- `Domain` has no project reference; `Application -> Domain`; `Infrastructure -> Application`;
+  `game -> Application`; `Domain.Tests -> Domain`.
+- All projects target `net8.0` with nullable references enabled.
+- `game/project.godot` selects `GL Compatibility`, names the app `Allrpcs`, and launches
+  `Main.tscn` with its minimal C# `Node`.
+- `.gitignore` excludes generated Godot/.NET state, local credentials, test/package output,
+  editors, and OS metadata without hiding scenes or authored game content.
+- `.editorconfig`, `README.md`, and `scripts/smoke-godot.sh` establish the local baseline.
+
+Commands run from `/Users/hherb/src/allrpcs`:
 
 ```sh
-command -v godot
-command -v godot4
-command -v dotnet
+dotnet restore Allrpcs.sln
+dotnet build Allrpcs.sln --no-restore
+dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
+./scripts/smoke-godot.sh
 ```
 
-All three commands reported no executable on `PATH`. The following common installation paths
-were also checked and did not exist as executables:
+- Restore: all projects current.
+- Build: succeeded for all five projects with zero warnings and zero errors.
+- Pure C# tests: one passed, zero failed, zero skipped.
+- Headless Godot main-scene smoke: exit 0.
+- Bounded graphical smoke (`godot --path game --quit-after 60`): exit 0 using OpenGL 4.1 over
+  Metal with the Compatibility renderer on Apple M3 Max.
+- Review: `dotnet format Allrpcs.sln --no-restore --verify-no-changes` passed, and `dotnet list
+  reference` confirmed the intended graph above.
 
-```text
-/Applications/Godot.app/Contents/MacOS/Godot
-/Applications/Godot_mono.app/Contents/MacOS/Godot
-/usr/local/share/dotnet/dotnet
-/opt/homebrew/bin/dotnet
-/usr/local/bin/dotnet
-```
+Limitations:
 
-`/Applications` contained no Godot application. No build, test, Godot launch, or visual window
-check was possible, and none is claimed. The Phase 0.1 roadmap checkboxes remain unticked. Once
-the prerequisites are installed, repeat the inspection and then implement the existing in-scope
-list above without combining Phase 0.2 or greybox gameplay.
+- Only the current macOS host was exercised; Linux and Windows are unverified.
+- The 60-frame native process established renderer and launch success, but no screenshot or
+  user-driven visual inspection was performed.
+- The checksum-matching official Godot app contains a stapled notarization ticket, but
+  `codesign --verify --deep --strict` reports an invalid arm64 signature on both the untouched
+  extracted bundle and installed copy; `spctl` reports an internal Code Signing subsystem error.
+  Do not claim Gatekeeper validation from this installation.
+- No provider, credential, persistence, gameplay, CI runner, packaging, or distribution path
+  was exercised.
 
-## Expected next slice after Phase 0.1
+[godot-download]: https://godotengine.org/download/archive/4.6.3-stable/
+[godot-csharp]: https://docs.godotengine.org/en/4.6/tutorials/scripting/c_sharp/index.html
 
-After Phase 0.1 is verified and committed, take Phase 0.2: continuous integration and
-architecture guardrails. Do not combine it with greybox gameplay unless explicitly requested.
+## Expected next slice after Phase 0.2a
+
+Take Phase 0.2b: credential-free hosted CI for formatting, compiler, architecture, pure C# test,
+headless Godot, and unsigned native development-build evidence. Keep licence selection explicit,
+and do not combine CI with Phase 1 greybox gameplay.
 
 ## Working conventions
 
@@ -212,7 +223,7 @@ architecture guardrails. Do not combine it with greybox gameplay unless explicit
 - Do not publish, push, open a pull request, distribute builds, or use credentials without the
   user's explicit authorization for that action.
 
-## Current open decisions that do not block Phase 0.1
+## Current open decisions
 
 - Final game title and visual identity.
 - Exact low-fantasy disease cause and cure recipe.
@@ -223,7 +234,7 @@ architecture guardrails. Do not combine it with greybox gameplay unless explicit
 - Distribution channels and project licence.
 - Exact voice providers and voice identities.
 
-## Documentation in this baseline
+## Foundation documentation
 
 - `ROADMAP.md`: complete phase checklist and acceptance criteria.
 - `HANDOVER.md`: current decisions, status, and the exact next implementation slice.

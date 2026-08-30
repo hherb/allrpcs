@@ -77,37 +77,33 @@ The first complete milestone lets a player:
 - [x] Record the current decisions and next bounded slice in `HANDOVER.md`.
 - [x] Commit the documentation baseline.
 
-### 0.1 Local solution skeleton — exact next slice
+### 0.1 Local solution skeleton
 
-Prerequisite check on 2026-08-30 (Apple Silicon macOS 26.6.2): neither a Godot executable nor
-a .NET SDK was available on `PATH` or in the checked standard install locations. Phase 0.1
-therefore remains unstarted beyond environment inspection.
-Install the macOS Godot 4.6 .NET editor and a 64-bit .NET 8-or-later SDK, then repeat the
-version checks before generating any project files. See `HANDOVER.md` for the checked locations
-and commands.
+Completed on 2026-08-30 on Apple Silicon macOS 26.6.2 with Godot 4.6.3 .NET and .NET SDK
+8.0.130. See `HANDOVER.md` for installation, validation, and limitation evidence.
 
-- [ ] Verify the locally available Godot 4.6 .NET editor and compatible .NET SDK before
+- [x] Verify the locally available Godot 4.6 .NET editor and compatible .NET SDK before
   generating project files.
-- [ ] Add a root `.gitignore` covering Godot, .NET, editor, OS, local credentials, generated
+- [x] Add a root `.gitignore` covering Godot, .NET, editor, OS, local credentials, generated
   packages, and test artifacts without hiding authored game content.
-- [ ] Add a root `.editorconfig` with nullable-reference checking, consistent formatting, and
+- [x] Add a root `.editorconfig` with nullable-reference checking, consistent formatting, and
   warnings suitable for a new C# codebase.
-- [ ] Add a solution containing `Domain`, `Application`, `Infrastructure`, and unit-test
+- [x] Add a solution containing `Domain`, `Application`, `Infrastructure`, and unit-test
   projects.
-- [ ] Ensure `Domain` has no dependency on Godot, providers, persistence, or UI code.
-- [ ] Ensure `Application` depends on `Domain` but not on Godot.
-- [ ] Ensure `Infrastructure` supplies adapters without leaking provider response types into
-  `Application` or `Domain`.
-- [ ] Create the Godot .NET project under `game/` using the Compatibility renderer.
-- [ ] Create a minimal `Main` scene that opens a titled empty window.
-- [ ] Add one pure C# smoke test and one minimal Godot launch smoke check.
-- [ ] Add a concise `README.md` with prerequisites and exact local build, test, and launch
+- [x] Ensure `Domain` has no dependency on Godot, providers, persistence, or UI code.
+- [x] Ensure `Application` depends on `Domain` but not on Godot.
+- [x] Ensure `Infrastructure` is the adapter boundary without leaking provider response types
+  into `Application` or `Domain`.
+- [x] Create the Godot .NET project under `game/` using the Compatibility renderer.
+- [x] Create a minimal `Main` scene that opens a titled empty window.
+- [x] Add one pure C# smoke test and one minimal Godot launch smoke check.
+- [x] Add a concise `README.md` with prerequisites and exact local build, test, and launch
   commands.
-- [ ] Verify all documented commands from a clean local shell.
+- [x] Verify all documented commands from a clean local shell.
 
 Acceptance:
 
-- [ ] A developer can clone the project, follow `README.md`, run the pure C# tests, and launch
+- [x] A developer can clone the project, follow `README.md`, run the pure C# tests, and launch
   the empty Godot application without provider credentials.
 
 ### 0.2 Continuous integration and architecture guardrails

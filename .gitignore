@@ -1,0 +1,31 @@
+# Godot-generated state
+.godot/
+.mono/
+
+# .NET build and test output
+bin/
+obj/
+TestResults/
+coverage/
+coverage.*
+artifacts/
+packages/
+*.nupkg
+*.snupkg
+
+# IDE and editor state
+.idea/
+.vscode/
+*.suo
+*.user
+*.userprefs
+
+# Local credentials and environment overrides
+.env
+.env.*
+!.env.example
+*.secrets.local.*
+
+# OS metadata
+.DS_Store
+Thumbs.db

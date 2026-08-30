@@ -1,0 +1,27 @@
+; Engine configuration file.
+; Edit through the Godot editor when practical.
+
+config_version=5
+
+[application]
+
+config/name="Allrpcs"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/window_width_override=960
+window/size/window_height_override=540
+
+[dotnet]
+
+project/assembly_name="Allrpcs.Game"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.055, 0.067, 0.082, 1)
