@@ -66,7 +66,7 @@ Authenticode signature before upload. These debug outputs are neither signed rel
 installers and are not approved for distribution.
 
 Every external action is pinned to a full commit SHA with its verified release tag in a comment:
-`actions/checkout` v6.0.2, `actions/setup-dotnet` v6.0.0,
+`actions/checkout` v7.0.1, `actions/setup-dotnet` v6.0.0,
 `chickensoft-games/setup-godot` v2.4.2, and `actions/upload-artifact` v7.0.1. Before updating
 them, recheck the [supported runner labels][github-runners], action release notes, and Godot
 compatibility, update the SHA and tag comment together, then run the complete local quality
@@ -114,3 +114,8 @@ instead, run `godot --editor --path game`.
 
 Provider adapters, persistence, gameplay, credentials, signing, installers, and distribution
 configuration are not part of this foundation slice.
+
+## Licence
+
+Allrpcs is licensed under the GNU Affero General Public License version 3 only
+(`AGPL-3.0-only`). See `LICENSE` for the complete terms.

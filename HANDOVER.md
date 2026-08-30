@@ -3,14 +3,15 @@
 ## Current state
 
 Roadmap Phase 0.2b, credential-free hosted CI configuration and explicitly unsigned native
-development-build configuration, is complete locally on `main`. The slice is committed as the
-current `HEAD` with subject `ci: add unsigned development build workflow`. Phase 0.2a is commit
-`31daaf8`; the Phase 0.1 skeleton is `a9dd406`.
+development-build configuration, is complete on `main`. Phase 0.2c hosted activation is
+explicitly authorized and prepared locally. The user selected a private GitHub repository and
+the `AGPL-3.0-only` licence. The empty private repository is
+`https://github.com/hherb/allrpcs`.
 
-The workflow has been statically validated and every existing local quality check passes. It has
-not run on GitHub-hosted runners: this repository has no configured Git remote, and the user did
-not authorize a push, pull request, remote creation, source publication, or licence selection.
-The runner-dependent roadmap items therefore remain unticked.
+The workflow now pins the current `actions/checkout` v7.0.1 release. Static workflow validation
+and every existing local quality check pass. Hosted evidence is still pending until `main` is
+pushed and the evidence pull request is opened, so runner-dependent roadmap items remain
+unticked.
 
 At the start of the next session, verify the live checkout rather than relying only on this
 summary:
@@ -22,24 +23,22 @@ git remote -v
 find . -maxdepth 3 -type f -not -path './.git/*' -print | sort
 ```
 
-The expected state is a clean `main`, this handover commit at `HEAD`, and no remote.
+The expected state after the activation commit is pushed is a clean `main` tracking
+`origin/main`, with `origin` set to the private `hherb/allrpcs` repository.
 
 ## Exact next bounded slice
 
 Complete **Roadmap Phase 0.2c: explicitly authorized hosted-runner activation and evidence**.
 Do not begin Phase 1 gameplay while Phase 0.2 runner evidence remains outstanding.
 
-### Preconditions and authorization boundary
+### Satisfied authorization boundary
 
-1. Revalidate the current GA GitHub-hosted runner labels and every pinned action release before
-   causing a run; these are time-sensitive dependencies.
-2. Tell the user that the repository currently has no remote and that putting the source on a
-   remote may constitute publication. Ask the user to choose or provide the remote, its
-   visibility, and the source-licence boundary.
-3. Obtain explicit action-time authorization before creating a remote repository, adding a
-   remote, pushing any ref, or opening a pull request. A general request to continue does not
-   authorize any of those actions.
-4. Do not select a licence, publish source, or make the repository public on the user's behalf.
+1. Current GA runner labels and every pinned action release were revalidated on 2026-08-30.
+2. The user selected private visibility and `AGPL-3.0-only`.
+3. The user explicitly authorized repository creation, adding `origin`, pushing the required
+   refs, opening a pull request, and inspecting both hosted workflow events.
+4. Public visibility, merge, release, artifact distribution, signing, and notarization remain
+   unauthorized.
 
 ### If and only if the preconditions are satisfied
 
@@ -58,7 +57,7 @@ Do not begin Phase 1 gameplay while Phase 0.2 runner evidence remains outstandin
    signing inputs, unpinned actions, or release automation to make the workflow pass.
 6. Only after current successful evidence, tick the pure-test, headless-smoke, unsigned-build,
    and Phase 0.2 acceptance boxes in `ROADMAP.md`. The scenario-validator item remains unticked
-   until that validator exists. The licence item remains a user decision.
+   until that validator exists.
 7. Update `README.md`, `ROADMAP.md`, and this file with run URLs or IDs, exact runner images,
    artifact names, results, limitations, branch, commit, and pull-request state. Commit only the
    intended paths. Do not merge without separate user authorization.
@@ -91,8 +90,8 @@ live runner evidence is still unavailable.
 
 Verified from the maintainers' releases on 2026-08-30 and pinned to full commit SHA:
 
-- `actions/checkout` v6.0.2:
-  `de0fac2e4500dabe0009e67214ff5f5447ce83dd`.
+- `actions/checkout` v7.0.1:
+  `3d3c42e5aac5ba805825da76410c181273ba90b1`.
 - `actions/setup-dotnet` v6.0.0:
   `a98b56852c35b8e3190ac28c8c2271da59106c68`.
 - `chickensoft-games/setup-godot` v2.4.2:
@@ -136,7 +135,7 @@ Environment:
 - Godot: `4.6.3.stable.mono.official.7d41c59c4`.
 - .NET SDK: `8.0.130`; host runtime: `8.0.30`; RID: `osx-arm64`.
 - `actionlint`: 1.7.12, Homebrew build for `darwin/arm64`.
-- Git remote: none.
+- Git remote during Phase 0.2b validation: none.
 
 Static and script validation:
 
@@ -193,7 +192,8 @@ The final host-shell run passed:
   assertions were not exercised locally.
 - The installed macOS Godot export templates are absent, so no local macOS exported bundle was
   built or inspected.
-- No licence was selected. No source or artifact was published or distributed.
+- `AGPL-3.0-only` was selected before the authorized private-source push. No artifact was
+  published or distributed.
 - No provider, credential, cache, persistence, gameplay, installer, signing, notarization,
   Gatekeeper, SmartScreen, Store, or release path was exercised.
 - The complete test and graphical sequence used the host shell because the workspace sandbox
@@ -223,8 +223,8 @@ The final host-shell run passed:
 - Do not add LLM adapters, provider credentials, SQLite, save persistence, art, audio, ASR, TTS,
   multiplayer, or networking.
 - Do not add installers, signing, notarization, release tags, publication, or distribution.
-- Do not choose the project title, source licence, disease fiction, models, art direction,
-  persistence library, provider SDKs, distribution channels, or voice identities for the user.
+- Do not choose the project title, disease fiction, models, art direction, persistence library,
+  provider SDKs, distribution channels, or voice identities for the user.
 
 ## Working conventions
 
