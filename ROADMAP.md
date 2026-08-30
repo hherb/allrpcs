@@ -108,6 +108,11 @@ Acceptance:
 
 ### 0.2 Continuous integration and architecture guardrails
 
+Phase 0.2b workflow configuration was added and locally linted on 2026-08-30. The hosted-test,
+headless-smoke, native-build, and phase acceptance items remain unticked until the workflow has
+actually run on the named GitHub-hosted runners. No remote is currently configured, and no push
+or pull request was authorized. See `HANDOVER.md` for the exact evidence and activation boundary.
+
 - [x] Add formatting and compiler-warning checks.
 - [ ] Add pure C# unit tests to CI.
 - [ ] Add scenario-validator tests to CI once the validator exists.

@@ -7,6 +7,7 @@ repository_root=$(dirname -- "$script_dir")
 
 cd "$repository_root"
 
+./scripts/validate-workflows.sh
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes
 dotnet build Allrpcs.sln --no-restore -m:1 /nr:false

@@ -2,248 +2,240 @@
 
 ## Current state
 
-Roadmap Phase 0.2a, local compiler and architecture guardrails, is complete on `main`. The
-repository now pins the .NET 8.0.1xx SDK feature band, applies deterministic builds and current
-recommended analysis with compiler warnings treated as errors, rejects C# formatting drift,
-and enforces the exact five-project reference graph through pure C# tests. One documented local
-quality script runs those checks before headless and bounded graphical Godot smoke launches.
+Roadmap Phase 0.2b, credential-free hosted CI configuration and explicitly unsigned native
+development-build configuration, is complete locally on `main`. The slice is committed as the
+current `HEAD` with subject `ci: add unsigned development build workflow`. Phase 0.2a is commit
+`31daaf8`; the Phase 0.1 skeleton is `a9dd406`.
 
-This slice is committed as the current `HEAD` with subject `build: add local quality
-guardrails`. The prior Phase 0.1 commit is `a9dd406`. No hosted CI, gameplay, provider,
-persistence, licence, art, audio, packaging, publication, or distribution work was added.
+The workflow has been statically validated and every existing local quality check passes. It has
+not run on GitHub-hosted runners: this repository has no configured Git remote, and the user did
+not authorize a push, pull request, remote creation, source publication, or licence selection.
+The runner-dependent roadmap items therefore remain unticked.
 
 At the start of the next session, verify the live checkout rather than relying only on this
 summary:
 
 ```sh
 git status --short --branch
-git log -1 --oneline
+git log -2 --oneline
+git remote -v
 find . -maxdepth 3 -type f -not -path './.git/*' -print | sort
 ```
 
-## Product summary
-
-The game is a slow-paced, top-down 2D investigation and healing quest. A contagious disease
-causes infected people to enter a deep sleep and waste away. The player explores continuous
-landscapes, gathers herbs, recovers lost knowledge, tests remedies, and deals with an enemy
-agent attempting to spread or prolong the outbreak.
-
-There are no conventional NPCs. Every character is a role controlled by a human, LLM, or
-dormant controller. The first version is single-player: the human controls a customizable
-Seeker, while LLMs control a healer, two hermits, a sage, an enemy agent, and eventually healed
-infected characters.
-
-## Settled architecture
-
-- Godot 4.6 .NET and C# are the chosen implementation stack.
-- Godot owns rendering, input, navigation, audio, scenes, and authoring.
-- Pure C# domain and application projects own authoritative game rules.
-- The intended dependency direction is:
-
-  ```text
-  Godot presentation -> Application -> Domain
-  Infrastructure ----> Application -> Domain
-  ```
-
-- `Domain` must not depend on Godot, persistence, UI, or provider SDKs.
-- Provider-specific request and response types remain inside infrastructure adapters.
-- OpenAI, Anthropic, and Ollama implement one provider-neutral character-model interface.
-- Durable world and character memory is local and does not rely on provider conversation state.
-- User dialogue is normal human language. The internal intention protocol is invisible.
-- The engine, not an LLM, controls truth, perception, inventory, movement, discovery, disease,
-  and action outcomes.
-- The quest is an evidence network with redundant routes rather than a linear objective chain.
-- The first renderer should be Godot Compatibility unless prototype evidence changes that
-  decision.
-- Voice is deferred, but ASR and TTS will later enter through provider-neutral interfaces and
-  reuse the text dialogue pipeline.
-
-## Gameplay decisions already made
-
-- Continuous top-down movement with smooth scrolling in any direction.
-- Real-time movement and animation, with dialogue and close examination pausing the world.
-- Disease progression occurs only at meaningful journey or investigation events.
-- The human speaks naturally to LLM roles; companions interpret requests, retain agency, and
-  may agree, refuse, clarify, negotiate, remain silent, or act independently.
-- LLMs receive filtered per-character perceptions and knowledge.
-- A character may propose one immediate intention at a time; the engine validates it and
-  returns the observation before the character plans from information it did not previously
-  possess.
-- Character memory distinguishes facts, attributed claims, beliefs, episodic memories,
-  relationships, and commitments.
-- Hidden objects use authored discovery conditions and progressive visibility states rather
-  than pixel hunting.
-- Critical quest conclusions require redundant evidence and must have recovery paths.
-- Treatments have comfort, stabilization, and cure outcomes.
-- The enemy agent uses the same physical, perception, and action rules as every other role.
-- Deeply sleeping roles are dormant and make no model calls until healed.
-
-## First vertical slice
-
-The target milestone is a playable opening scenario in which the player creates a Seeker,
-meets and converses with the healer, explores the village and nearby woodland, finds evidence
-and ingredients through multiple routes, prepares a stabilizing remedy, stabilizes the first
-sleeping patient, and saves and resumes with character memory intact.
-
-Planned opening landmarks are the sickhouse, healer's garden, village square, stream, abandoned
-laundry, woodland clearing, old shrine, southern road, abandoned wagon, and a closed route into
-the deeper forest.
+The expected state is a clean `main`, this handover commit at `HEAD`, and no remote.
 
 ## Exact next bounded slice
 
-Implement **Roadmap Phase 0.2b: credential-free hosted CI and unsigned native development-build
-evidence**. Keep this separate from Phase 1 greybox gameplay and do not treat runner artifacts
-as signed or distributable releases.
+Complete **Roadmap Phase 0.2c: explicitly authorized hosted-runner activation and evidence**.
+Do not begin Phase 1 gameplay while Phase 0.2 runner evidence remains outstanding.
 
-### In scope
+### Preconditions and authorization boundary
 
-1. Revalidate the current supported GitHub-hosted runner images and official or well-maintained
-   setup actions before pinning workflow dependencies.
-2. Add hosted checks for formatting, zero-warning compilation, pure domain tests, architecture
-   tests, and headless Godot launch without provider credentials.
-3. Add native macOS, Linux, and Windows jobs that produce only unsigned development builds and
-   clearly label their evidence and limitations.
-4. Keep engine-independent test jobs free of Godot loading and keep provider keys absent from
-   workflow permissions, inputs, logs, caches, and artifacts.
-5. Add local/static workflow validation where practical, and run every current local quality
-   check before committing.
-6. Obtain explicit authorization before any push or pull request needed to exercise live GitHub
-   runners. If that authorization is absent, do not claim runner validation and leave affected
-   roadmap items unticked.
-7. Update `README.md`, `ROADMAP.md`, and this handover with exact runner, artifact, command, and
-   limitation evidence.
+1. Revalidate the current GA GitHub-hosted runner labels and every pinned action release before
+   causing a run; these are time-sensitive dependencies.
+2. Tell the user that the repository currently has no remote and that putting the source on a
+   remote may constitute publication. Ask the user to choose or provide the remote, its
+   visibility, and the source-licence boundary.
+3. Obtain explicit action-time authorization before creating a remote repository, adding a
+   remote, pushing any ref, or opening a pull request. A general request to continue does not
+   authorize any of those actions.
+4. Do not select a licence, publish source, or make the repository public on the user's behalf.
 
-### Acceptance boundary
+### If and only if the preconditions are satisfied
 
-Every pull request receives credential-free formatting, compiler, domain-test, architecture,
-headless Godot, and unsigned native development-build results on the intended runner operating
-systems. Evidence must distinguish successful workflow configuration from live runner results.
+1. Use the exact user-approved remote and visibility. Push only the intended branch or commit.
+2. Observe one `push` run and one pull-request run of `.github/workflows/ci.yml`.
+3. Require successful results for:
+   - pure C# format, zero-warning compilation, domain tests, and architecture tests;
+   - the Ubuntu headless Godot main-scene smoke;
+   - unsigned Linux x64, macOS Universal 2, and Windows x64 debug exports on their native runner
+     operating systems;
+   - macOS bundle-signature rejection and Windows Authenticode-signature rejection.
+4. Inspect the three `UNSIGNED-DEVELOPMENT-*` artifacts only as build evidence. Confirm each
+   contains `UNSIGNED-DEVELOPMENT-EVIDENCE.txt` and the expected target files. Do not publish,
+   redistribute, sign, notarize, install, or represent them as releases.
+5. Diagnose failures narrowly. Do not add secrets, provider keys, broad permissions, caches,
+   signing inputs, unpinned actions, or release automation to make the workflow pass.
+6. Only after current successful evidence, tick the pure-test, headless-smoke, unsigned-build,
+   and Phase 0.2 acceptance boxes in `ROADMAP.md`. The scenario-validator item remains unticked
+   until that validator exists. The licence item remains a user decision.
+7. Update `README.md`, `ROADMAP.md`, and this file with run URLs or IDs, exact runner images,
+   artifact names, results, limitations, branch, commit, and pull-request state. Commit only the
+   intended paths. Do not merge without separate user authorization.
 
-### Explicitly out of scope
+If authorization is absent, leave the workflow and roadmap claims unchanged and report that
+live runner evidence is still unavailable.
 
-- Selecting the source licence; keep this before any publication or distribution.
-- Gameplay movement, camera, landscapes, characters, discovery, or inventory.
-- LLM provider adapters or API credentials.
-- SQLite or save-game persistence.
-- Final art, generated art, audio, ASR, or TTS.
-- Installers, signing, notarization, release tags, publishing, or distribution.
-- Multiplayer or networking.
+## Implemented in Phase 0.2b
 
-## Phase 0.2a completion evidence (2026-08-30)
+### Hosted workflow
+
+`.github/workflows/ci.yml` runs on pull requests and pushes to `main` with only
+`contents: read` permission:
+
+- `quality` uses `ubuntu-24.04`, installs only the pinned .NET SDK, and runs formatting, the
+  zero-warning solution build, one pure domain test, and five pure architecture tests. It does
+  not install or invoke Godot.
+- `godot-smoke` uses `ubuntu-24.04`, Godot 4.6.3 .NET, and the existing headless main-scene
+  smoke.
+- `development-build` uses native `ubuntu-24.04`, Apple Silicon `macos-15`, and
+  `windows-2025` jobs for Linux x64, macOS Universal 2, and Windows x64 debug exports.
+- Checkout credential persistence is disabled. No provider credential, secret expression,
+  dependency cache, signing input, installer, release, deployment, or publication step exists.
+- Artifact names begin `UNSIGNED-DEVELOPMENT-`, retention is seven days, and every artifact
+  includes a generated evidence-and-limitations manifest.
+- The macOS job requires bundle signature verification to fail. The Windows job requires
+  Authenticode status `NotSigned` before artifact upload.
+
+### Immutable workflow dependencies
+
+Verified from the maintainers' releases on 2026-08-30 and pinned to full commit SHA:
+
+- `actions/checkout` v6.0.2:
+  `de0fac2e4500dabe0009e67214ff5f5447ce83dd`.
+- `actions/setup-dotnet` v6.0.0:
+  `a98b56852c35b8e3190ac28c8c2271da59106c68`.
+- `chickensoft-games/setup-godot` v2.4.2:
+  `c233594225991af5aec714e52457cc76d6df8fa2`.
+- `actions/upload-artifact` v7.0.1:
+  `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a`.
+
+Primary references:
+
+- GitHub's [hosted-runner reference][github-runners] listed `ubuntu-24.04`, `macos-15`, and
+  `windows-2025` as GA labels. The specific labels avoid silent `-latest` migrations.
+- Chickensoft's [setup-godot documentation][setup-godot] supports Godot 4.x .NET and export
+  templates directly on Ubuntu, macOS, and Windows runners. Its v2.3.4 release added arm64
+  support; v2.4.2 was current when pinned.
+- Godot's [export documentation][godot-export] permits `export_presets.cfg` in version control
+  and defines `--export-debug` plus the required platform output extensions.
+
+[github-runners]: https://docs.github.com/en/actions/reference/runners/github-hosted-runners
+[setup-godot]: https://github.com/chickensoft-games/setup-godot
+[godot-export]: https://docs.godotengine.org/en/4.6/tutorials/export/exporting_projects.html
+
+### Export contract and local scripts
+
+- `game/export_presets.cfg` defines Linux x64, macOS Universal 2, and Windows x64 development
+  presets. macOS code signing and notarization and Windows code signing are explicitly disabled.
+- `game/project.godot` imports ETC2/ASTC textures because Godot 4.6.3 rejects Universal 2 or
+  arm64 macOS export when that import format is disabled.
+- `scripts/export-development.sh` accepts only `linux-x64`, `macos-universal`, or `windows-x64`,
+  exports with the debug template, and writes only to ignored
+  `artifacts/unsigned-development/`.
+- `scripts/validate-workflows.sh` requires `actionlint` and validates all hosted workflows.
+- `scripts/quality.sh` now runs workflow validation before restore, formatting, compilation,
+  tests, and both Godot smokes.
+
+## Phase 0.2b completion evidence (2026-08-30)
 
 Environment:
 
 - Branch: `main`.
-- Machine architecture: `arm64`.
-- OS: macOS 26.6.2 (build 25G83).
+- Machine: Apple M3 Max, `arm64`, macOS 26.6.2 (build 25G83).
 - Godot: `4.6.3.stable.mono.official.7d41c59c4`.
 - .NET SDK: `8.0.130`; host runtime: `8.0.30`; RID: `osx-arm64`.
+- `actionlint`: 1.7.12, Homebrew build for `darwin/arm64`.
+- Git remote: none.
 
-Toolchain installation:
+Static and script validation:
 
-- Homebrew installed versioned formula `dotnet@8` at `/opt/homebrew/opt/dotnet@8`.
-- `/Users/hherb/.local/bin/dotnet` links to the formula's command and is already on `PATH`.
-- The official [Godot 4.6.3 archive][godot-download] supplied the .NET universal app installed
-  as `/Applications/Godot_mono.app`; the [Godot C# documentation][godot-csharp] defines the
-  required .NET editor/SDK pairing.
-- `/Users/hherb/.local/bin/godot` is an executable wrapper around the app's real binary. A plain
-  executable symlink must not replace it: this macOS build then loses its bundle resource path
-  and reports `.NET: Assemblies not found`.
-- The downloaded editor archive matched the official SHA-512 manifest:
+```sh
+./scripts/validate-workflows.sh
+sh -n scripts/*.sh
+./scripts/export-development.sh invalid-target
+git diff --check
+```
 
-  ```text
-  8c4c1c83a7a3e1cfc845e0fd4b4cdefd6f1cc662f63378c22a551b50f31965f2
-  a633b7bf7c84ab530847e0fddb5dadc1128e04e87918618dd76c75d66eb67bb9
-  ```
+- `actionlint` returned exit 0 with no findings.
+- Every shell script parsed successfully.
+- The development-export script rejected an unsupported target with the documented exit 64.
+- Diff whitespace validation passed.
 
-Implemented repository structure:
+Export-preset parsing used the installed Godot editor without export templates:
 
-- `global.json` selects the .NET 8.0.1xx feature band with `latestPatch` roll-forward and
-  excludes prerelease SDKs; it resolves the verified installed SDK 8.0.130.
-- `Directory.Build.props` enables deterministic compilation, `latest-recommended` analysis,
-  build-time code-style enforcement, and compiler warnings as errors for all solution projects.
-- `Allrpcs.Architecture.Tests` reads authored project XML without referencing or loading Godot.
-  Its five cases require `Domain -> []`, `Application -> Domain`, `Infrastructure ->
-  Application`, `game -> Application`, and `Domain.Tests -> Domain` exactly.
-- `scripts/quality.sh` serializes solution restore for reproducibility, verifies formatting,
-  builds, runs both test projects, and performs the headless and graphical Godot smokes.
-- `README.md` documents the single-command quality sequence, standalone format verification,
-  pinned tool locations, update procedure, and enforced project boundaries.
+```sh
+godot --headless --path game --export-debug "Linux Development" /tmp/allrpcs-ci-preset-check.x86_64
+godot --headless --path game --export-debug "macOS Development" /tmp/allrpcs-ci-preset-check.zip
+godot --headless --path game --export-debug "Windows Development" /tmp/allrpcs-ci-preset-check.exe
+```
 
-Commands run from `/Users/hherb/src/allrpcs`:
+- Godot recognized all three preset names and target configurations.
+- Linux and Windows stopped only because their 4.6.3 .NET debug/release export templates are
+  not installed locally.
+- The first macOS parse identified the missing ETC2/ASTC import setting. After adding it, macOS
+  stopped only because `macos.zip` is not installed locally.
+- No native export or artifact was produced by these parse checks.
+
+Complete local quality command:
 
 ```sh
 ./scripts/quality.sh
 ```
 
+The final host-shell run passed:
+
+- Workflow static validation: no findings.
 - Serial restore: all six projects current.
-- Format verification: passed with no changes required.
-- Build: all six projects succeeded with zero warnings and zero errors, including generated
-  Godot build inputs.
+- Formatting: no changes required.
+- Build: six projects, zero warnings, zero errors.
 - Pure domain tests: one passed, zero failed, zero skipped.
 - Pure architecture tests: five passed, zero failed, zero skipped.
 - Headless Godot main-scene smoke: exit 0.
-- Bounded graphical smoke: exit 0 using OpenGL 4.1 over Metal with the Compatibility renderer
-  on Apple M3 Max.
+- Bounded 60-frame graphical smoke: exit 0 using OpenGL 4.1 over Metal with the Compatibility
+  renderer on Apple M3 Max.
 
-Required negative proof:
+## Limitations and unverified claims
 
-- A temporary `Domain -> Application` `ProjectReference` was inserted after building the test
-  assembly.
-- Running the architecture test produced four passes and one failure; the `Domain` case reported
-  the unexpected `src/Application/Allrpcs.Application.csproj` reference.
-- The temporary reference was then removed. The complete quality sequence above subsequently
-  passed, proving the committed project graph is restored.
-
-Limitations:
-
-- Only the current macOS host was exercised; no hosted GitHub, Linux, or Windows runner was
-  exercised.
-- `dotnet test` needs a local test-host socket that the workspace sandbox denies; the negative
-  proof and final complete quality run used the host shell. The tests themselves remained
-  credential-free and engine-independent.
-- The final quality run used the intentionally serial restore command. Earlier unconstrained
-  solution restores stalled in the execution environment; direct-project and serial solution
-  restores succeeded.
-- The 60-frame native process established renderer and launch success, but no screenshot or
-  user-driven visual inspection was performed.
-- The checksum-matching official Godot app contains a stapled notarization ticket, but
-  `codesign --verify --deep --strict` reports an invalid arm64 signature on both the untouched
-  extracted bundle and installed copy; `spctl` reports an internal Code Signing subsystem error.
-  Do not claim Gatekeeper validation from this installation.
-- No provider, credential, persistence, gameplay, CI runner, packaging, or distribution path
+- No GitHub-hosted runner, workflow event, remote repository, branch protection, or pull request
   was exercised.
+- Linux, Windows, export templates, uploaded artifacts, and native unsigned-build signature
+  assertions were not exercised locally.
+- The installed macOS Godot export templates are absent, so no local macOS exported bundle was
+  built or inspected.
+- No licence was selected. No source or artifact was published or distributed.
+- No provider, credential, cache, persistence, gameplay, installer, signing, notarization,
+  Gatekeeper, SmartScreen, Store, or release path was exercised.
+- The complete test and graphical sequence used the host shell because the workspace sandbox
+  denies .NET test-host sockets and other native process facilities.
+- Earlier toolchain and architecture negative-proof details remain recorded in the Phase 0.2a
+  handover at commit `31daaf8` (`git show 31daaf8:HANDOVER.md`).
 
-[godot-download]: https://godotengine.org/download/archive/4.6.3-stable/
-[godot-csharp]: https://docs.godotengine.org/en/4.6/tutorials/scripting/c_sharp/index.html
+## Settled product and architecture
+
+- The game is a slow-paced, top-down 2D investigation and healing quest with human-, LLM-, and
+  dormant-controlled roles rather than conventional NPCs.
+- Godot 4.6 .NET and C# are the stack. Godot owns rendering, input, navigation, audio, scenes,
+  and authoring.
+- Pure C# Domain and Application projects own authoritative rules. Infrastructure contains
+  provider and persistence adapters.
+- Dependency direction is Godot presentation to Application to Domain, and Infrastructure to
+  Application to Domain. Domain must not depend on Godot, persistence, UI, or provider SDKs.
+- Provider-specific types remain in adapters. Durable memory is local and provider-neutral.
+- LLM roles receive filtered perceptions and propose one immediate intention; the engine owns
+  truth, perception, inventory, movement, discovery, disease, and action outcomes.
+- The first renderer is Compatibility unless prototype evidence changes that decision.
+
+## Explicit exclusions still in force
+
+- Do not begin gameplay, camera, landscape, character, discovery, or inventory work in the next
+  hosted-activation slice.
+- Do not add LLM adapters, provider credentials, SQLite, save persistence, art, audio, ASR, TTS,
+  multiplayer, or networking.
+- Do not add installers, signing, notarization, release tags, publication, or distribution.
+- Do not choose the project title, source licence, disease fiction, models, art direction,
+  persistence library, provider SDKs, distribution channels, or voice identities for the user.
 
 ## Working conventions
 
 - Start every continuation by reading `ROADMAP.md` and this file.
-- Take the exact next bounded slice rather than reopening overall planning.
-- Preserve explicit exclusions.
-- Tick roadmap items only after current verification.
-- Keep worktree changes narrowly scoped and review `git diff` before staging.
-- Stage only intended paths.
-- Update both documents at the end of every implemented slice.
-- Record commands run, results, manual evidence, limitations, branch, and commit in this file.
-- Do not claim unavailable platforms, providers, credentials, visual behaviour, or packaged
-  builds were verified.
-- Do not publish, push, open a pull request, distribute builds, or use credentials without the
-  user's explicit authorization for that action.
-
-## Current open decisions
-
-- Final game title and visual identity.
-- Exact low-fantasy disease cause and cure recipe.
-- Default cloud and local models.
-- Art perspective, base resolution, palette, and animation style.
-- Final SQLite library and schema design.
-- Provider SDK versus direct HTTP choices per adapter.
-- Distribution channels and project licence.
-- Exact voice providers and voice identities.
-
-## Foundation documentation
-
-- `ROADMAP.md`: complete phase checklist and acceptance criteria.
-- `HANDOVER.md`: current decisions, status, and the exact next implementation slice.
+- Take the exact bounded slice and preserve its explicit exclusions.
+- Tick roadmap items only after current evidence exists.
+- Keep worktree changes narrow, inspect the complete diff including untracked files, and stage
+  only intended paths.
+- Update `README.md`, `ROADMAP.md`, and `HANDOVER.md` at each slice end.
+- Record commands, results, manual evidence, limitations, branch, commit, and remote/PR state.
+- Do not claim unavailable platforms, credentials, artifact behavior, signing, distribution, or
+  visual behavior was verified.
+- Do not publish, push, open or merge a pull request, create a remote, distribute builds, or use
+  credentials without the user's explicit authorization for that exact action.

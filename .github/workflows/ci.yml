@@ -1,0 +1,151 @@
+name: Credential-free CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_NOLOGO: "1"
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "1"
+
+jobs:
+  quality:
+    name: Pure C# quality and tests
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET from global.json
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
+
+      - name: Verify formatting
+        run: dotnet format Allrpcs.sln --no-restore --verify-no-changes
+
+      - name: Build with zero warnings
+        run: dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
+
+      - name: Run pure domain tests
+        run: dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
+
+      - name: Run architecture tests
+        run: dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
+
+  godot-smoke:
+    name: Headless Godot smoke
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET from global.json
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+
+      - name: Set up Godot 4.6.3 .NET
+        uses: chickensoft-games/setup-godot@c233594225991af5aec714e52457cc76d6df8fa2 # v2.4.2
+        with:
+          version: 4.6.3
+          use-dotnet: true
+          include-templates: false
+
+      - name: Restore
+        run: dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
+
+      - name: Build with zero warnings
+        run: dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
+
+      - name: Launch main scene headlessly
+        run: ./scripts/smoke-godot.sh
+
+  development-build:
+    name: Unsigned development build (${{ matrix.target }})
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: Linux x64
+            runner: ubuntu-24.04
+            artifact_id: linux-x64
+          - target: macOS Universal 2
+            runner: macos-15
+            artifact_id: macos-universal
+          - target: Windows x64
+            runner: windows-2025
+            artifact_id: windows-x64
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up .NET from global.json
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+
+      - name: Set up Godot 4.6.3 .NET and export templates
+        uses: chickensoft-games/setup-godot@c233594225991af5aec714e52457cc76d6df8fa2 # v2.4.2
+        with:
+          version: 4.6.3
+          use-dotnet: true
+          include-templates: true
+
+      - name: Restore
+        run: dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
+
+      - name: Export unsigned debug build
+        run: ./scripts/export-development.sh "${{ matrix.artifact_id }}"
+
+      - name: Verify macOS bundle has no bundle signature
+        if: matrix.artifact_id == 'macos-universal'
+        run: |
+          mkdir -p "${RUNNER_TEMP}/allrpcs-macos-verification"
+          unzip -q artifacts/unsigned-development/macos-universal/Allrpcs-macOS.zip \
+            -d "${RUNNER_TEMP}/allrpcs-macos-verification"
+          if codesign --verify --deep --strict \
+            "${RUNNER_TEMP}/allrpcs-macos-verification/Allrpcs.app"; then
+            echo "Expected an unsigned macOS development bundle." >&2
+            exit 1
+          fi
+
+      - name: Verify Windows executable has no Authenticode signature
+        if: matrix.artifact_id == 'windows-x64'
+        shell: pwsh
+        run: |
+          $signature = Get-AuthenticodeSignature "artifacts/unsigned-development/windows-x64/Allrpcs.exe"
+          if ($signature.Status -ne "NotSigned") {
+            throw "Expected an unsigned Windows development executable; status was $($signature.Status)."
+          }
+
+      - name: Upload explicitly unsigned development evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: UNSIGNED-DEVELOPMENT-${{ matrix.artifact_id }}
+          path: artifacts/unsigned-development/${{ matrix.artifact_id }}/
+          if-no-files-found: error
+          include-hidden-files: false
+          retention-days: 7
