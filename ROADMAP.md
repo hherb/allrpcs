@@ -79,6 +79,13 @@ The first complete milestone lets a player:
 
 ### 0.1 Local solution skeleton — exact next slice
 
+Prerequisite check on 2026-08-30 (Apple Silicon macOS 26.6.2): neither a Godot executable nor
+a .NET SDK was available on `PATH` or in the checked standard install locations. Phase 0.1
+therefore remains unstarted beyond environment inspection.
+Install the macOS Godot 4.6 .NET editor and a 64-bit .NET 8-or-later SDK, then repeat the
+version checks before generating any project files. See `HANDOVER.md` for the checked locations
+and commands.
+
 - [ ] Verify the locally available Godot 4.6 .NET editor and compatible .NET SDK before
   generating project files.
 - [ ] Add a root `.gitignore` covering Godot, .NET, editor, OS, local credentials, generated

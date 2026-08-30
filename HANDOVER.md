@@ -2,10 +2,15 @@
 
 ## Current state
 
-Allrpcs is at the documentation baseline. The workspace began empty. It has now been
-initialized as a Git repository on `main`, and the agreed product and implementation plan are
-captured in `ROADMAP.md`. No Godot project, C# solution, gameplay code, tests, assets, provider
-integration, or CI configuration exists yet.
+Allrpcs remains at the documentation baseline on `main`. Phase 0.1 was started on 2026-08-30,
+but its mandatory environment gate failed: neither Godot nor the .NET SDK was available on
+`PATH` or in the checked standard install locations. The slice instructions explicitly require
+stopping in that situation, so no project skeleton, generated files, gameplay code, tests,
+assets, provider integration, or CI configuration was added.
+
+The prerequisite inspection and this handover update are committed as the current `HEAD` with
+subject `docs: record missing phase 0.1 prerequisites`. The prior documentation-baseline commit
+is `5506f9a`.
 
 At the start of the next session, verify the live checkout rather than relying only on this
 summary:
@@ -86,7 +91,34 @@ the deeper forest.
 
 ## Exact next bounded slice
 
-Implement **Roadmap Phase 0.1: Local solution skeleton**.
+Resume **Roadmap Phase 0.1: Local solution skeleton**, beginning with its prerequisite gate.
+
+### Required environment action before implementation
+
+On the Apple Silicon host, install both of the following without substituting a different
+engine branch or the standard non-.NET editor:
+
+1. The macOS **Godot 4.6 .NET** editor build (the .NET build with C# support).
+2. A native 64-bit **.NET SDK 8 or later**. Godot's 4.6 documentation states that Godot uses
+   .NET 8; install an SDK, not only a runtime.
+
+Use the official [Godot 4.6 download archive][godot-download] and [Godot 4.6 C#
+documentation][godot-csharp] to identify the correct editor build and prerequisites.
+
+[godot-download]: https://godotengine.org/download/archive/4.6-stable/
+[godot-csharp]: https://docs.godotengine.org/en/4.6/tutorials/scripting/c_sharp/index.html
+
+After installation, make both commands available to a normal shell, or record their exact
+absolute executable paths. Verify them with:
+
+```sh
+godot --version
+dotnet --info
+```
+
+If the Godot executable uses another command or an application-bundle path, use that exact path
+consistently in the README and smoke checks. Confirm that the editor reports the 4.6 branch and
+is the .NET build before generating files.
 
 ### In scope
 
@@ -126,6 +158,39 @@ project references, and `Domain` remains engine-independent.
 If Godot 4.6 .NET or a compatible .NET SDK is unavailable, stop after recording the exact
 observed versions and the narrow installation requirement. Do not silently substitute a
 different engine, Godot branch, language, or renderer.
+
+## Phase 0.1 prerequisite evidence (2026-08-30)
+
+Environment:
+
+- Branch: `main`.
+- Machine architecture: `arm64`.
+- OS: macOS 26.6.2 (build 25G83).
+- Working tree before this documentation update: clean.
+
+Checks run from `/Users/hherb/src/allrpcs`:
+
+```sh
+command -v godot
+command -v godot4
+command -v dotnet
+```
+
+All three commands reported no executable on `PATH`. The following common installation paths
+were also checked and did not exist as executables:
+
+```text
+/Applications/Godot.app/Contents/MacOS/Godot
+/Applications/Godot_mono.app/Contents/MacOS/Godot
+/usr/local/share/dotnet/dotnet
+/opt/homebrew/bin/dotnet
+/usr/local/bin/dotnet
+```
+
+`/Applications` contained no Godot application. No build, test, Godot launch, or visual window
+check was possible, and none is claimed. The Phase 0.1 roadmap checkboxes remain unticked. Once
+the prerequisites are installed, repeat the inspection and then implement the existing in-scope
+list above without combining Phase 0.2 or greybox gameplay.
 
 ## Expected next slice after Phase 0.1
 
