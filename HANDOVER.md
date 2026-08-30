@@ -2,148 +2,130 @@
 
 ## Current state
 
-Roadmap Phase 0.2c, private hosted-runner activation and evidence, is complete on `origin/main`.
-Phase 0.2b was completed at `5d0de93`; the authorized activation commit is `cba1ba8`
-(`ci: activate private hosted checks`). PR #1 merged its first evidence commit as `7f5cecf`. The
-current follow-up documentation branch is `docs/final-hosted-runner-evidence`, based on that
-remote merge commit.
+Roadmap Phase 0.2 is complete on `origin/main` at merge commit `cefe68f`; PR #2 merged the
+final hosted-runner evidence follow-up and all five of its credential-free checks passed. The
+current branch is `feat/keyboard-greybox-camera`, based directly on that merge.
 
-The private remote is `https://github.com/hherb/allrpcs`. The source licence is
-`AGPL-3.0-only`; the canonical GNU text is committed as `LICENSE`. Public visibility, merging,
-release creation, artifact distribution, signing, and notarization remain unauthorized.
+Phase 1a, keyboard greybox movement and camera foundation, is complete on
+`feat/keyboard-greybox-camera`. The complete host-shell quality sequence passed and the user
+confirmed the native macOS visual behavior on 2026-08-31. The four completed Phase 1 roadmap
+items are ticked; the broader Phase 1 acceptance remains unticked.
 
-At the start of the next session, verify live state rather than relying only on this summary:
+This session is authorized to commit and push the slice and open its draft pull request. It is
+not authorized to merge it. The private remote is `https://github.com/hherb/allrpcs`. Public
+visibility, merging, releases, artifact distribution, credentials, signing, and notarization
+remain unauthorized.
+
+At the start of the next session, verify current state rather than relying only on this summary:
 
 ```sh
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
-gh pr view --repo hherb/allrpcs --json number,state,isDraft,headRefName,headRefOid,url
-gh pr checks --repo hherb/allrpcs
+gh pr view feat/keyboard-greybox-camera --repo hherb/allrpcs \
+  --json number,state,isDraft,headRefName,headRefOid,url
+gh pr checks feat/keyboard-greybox-camera --repo hherb/allrpcs
 ```
 
-The expected state is a clean follow-up documentation branch tracking its remote, an open
-unmerged pull request, and successful current checks. Do not merge it without separate user
-authorization.
+The expected state is a clean branch tracking its remote with an open draft pull request and
+current checks. Do not merge it without separate user authorization.
 
-## Phase 0.2c evidence
+## Phase 1a implementation
 
-### Local validation
+The slice remains within its original boundary:
 
-The activation commit updated all three checkout steps to the immutable
-`actions/checkout` v7.0.1 SHA `3d3c42e5aac5ba805825da76410c181273ba90b1`. On 2026-08-30,
-the maintainers' current releases and the supported runner labels were revalidated:
+- `game/Main.tscn` authors a 1600-by-900 placeholder region from Godot polygons and lines. It
+  includes a temporary stream, path, village block, outer border, gold Seeker, and only four
+  invisible static walls needed to keep the Seeker inside the region. None is final art.
+- `game/project.godot` defines `move_left`, `move_right`, `move_up`, and `move_down`, mapped only
+  to physical A, D, W, and S keyboard keys. Gameplay code consumes the named actions and has no
+  hard-coded physical key checks. No controller or point-and-click mapping was added.
+- `game/Seeker.cs` moves a `CharacterBody2D` continuously at the named default speed of 240
+  pixels per second and delegates direction-to-velocity calculation to the Application layer.
+- `src/Application/Movement/MovementCalculator.cs` is pure C# using `System.Numerics.Vector2`.
+  It preserves proportional input, normalizes over-length diagonal input, and rejects negative
+  or non-finite speed and non-finite input.
+- `game/FollowCamera.cs` owns the named follow-smoothing value of 6, establishes unit zoom and
+  zero local offset, makes itself current, and resets smoothing for stable initial framing.
+- `tests/Application.Tests` adds nine focused movement-calculation cases. The solution,
+  architecture guard, local quality script, and hosted workflow all include the new test
+  project.
+- `README.md` documents the WASD controls, named speed and camera values, temporary greybox
+  status, project boundary, tests, and explicit exclusions.
 
-- `actions/checkout` v7.0.1;
-- `actions/setup-dotnet` v6.0.0;
-- `chickensoft-games/setup-godot` v2.4.2;
-- `actions/upload-artifact` v7.0.1;
-- `ubuntu-24.04`, `macos-15`, and `windows-2025` hosted labels.
+## Review and validation
 
-Static validation passed with `actionlint` 1.7.12 and `sh -n scripts/*.sh`. The complete
-host-shell `./scripts/quality.sh` passed with .NET SDK 8.0.130 and Godot
-4.6.3.stable.mono.official: six projects built with zero warnings or errors, one domain test and
-five architecture tests passed, and both headless and bounded graphical Godot smokes exited 0.
-The restricted sandbox build also reached zero warnings but its test host could not bind a local
-socket; that sandbox failure is not a product or test failure.
+### Automated evidence
 
-The local `LICENSE` SHA-256 is
-`0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0`, matching the canonical
-GNU AGPL v3 text downloaded from `https://www.gnu.org/licenses/agpl-3.0.txt`.
+On 2026-08-31, the complete host-shell `./scripts/quality.sh` passed on Apple Silicon macOS with
+.NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
 
-### Successful push run
+- `actionlint` accepted the hosted workflow and every shell script passed syntax validation;
+- restore and `dotnet format --verify-no-changes` passed;
+- all seven projects built with zero warnings and zero errors;
+- the domain test passed;
+- all nine Application movement tests passed;
+- all six architecture reference cases passed;
+- the headless main-scene smoke exited 0; and
+- the bounded 60-frame native graphical launch exited 0 using the Compatibility renderer on
+  the Apple M3 Max.
 
-Private GitHub Actions [push run 33310947250][push-run] passed for full commit
-`cba1ba8b9db199873d34beda3b1019f0a76efbe9`.
+The restricted sandbox test host separately failed to bind its local communication socket.
+The same tests passed outside that restriction, so this is recorded as a sandbox limitation,
+not a product failure.
 
-- Pure C# quality and tests, job `99255767758`, passed on `ubuntu-24.04` image
-  `20260823.283.1`: restore, formatting, zero-warning build, one domain test, and five
-  architecture tests.
-- Headless Godot smoke, job `99255767626`, passed on the same Ubuntu image with Godot 4.6.3
-  .NET.
-- Linux x64 unsigned development export, job `99255767765`, passed on the same Ubuntu image.
-- macOS Universal 2 unsigned development export, job `99255767744`, passed on
-  `macos-15-arm64` image `20260727.0256.1`; the required bundle-signature verification failed,
-  proving the bundle was not signed at that boundary.
-- Windows x64 unsigned development export, job `99255767820`, passed on
-  `windows-2025-vs2026` image `20260824.214.3`; Authenticode status was `NotSigned`.
+### Native visual evidence
 
-The three uploaded artifacts expire on 2026-09-06 and were downloaded only to a temporary
-inspection directory:
+The first direct binary launch initialized the Compatibility renderer but did not present a
+window in the user's desktop session, so it was not counted as visual evidence. The project was
+then relaunched through macOS with an explicit windowed 960-by-540 configuration and visible
+screen position. In that visible native window, the user confirmed that:
 
-- `UNSIGNED-DEVELOPMENT-linux-x64`, artifact `9731965537`, contained `Allrpcs.x86_64`,
-  `Allrpcs.pck`, `Allrpcs.sh`, and `UNSIGNED-DEVELOPMENT-EVIDENCE.txt`.
-- `UNSIGNED-DEVELOPMENT-macos-universal`, artifact `9731967952`, contained
-  `Allrpcs-macOS.zip` and `UNSIGNED-DEVELOPMENT-EVIDENCE.txt`.
-- `UNSIGNED-DEVELOPMENT-windows-x64`, artifact `9731976871`, contained `Allrpcs.exe`,
-  `Allrpcs.console.exe`, `Allrpcs.pck`, and `UNSIGNED-DEVELOPMENT-EVIDENCE.txt`.
+1. W, A, S, and D move the gold placeholder Seeker continuously;
+2. the camera follows smoothly; and
+3. the outer border stops the Seeker from leaving the temporary region.
 
-Each manifest recorded the expected target and preset, exact activation commit, native runner
-OS and architecture, Godot 4.6.3, .NET SDK 8.0.130, and the unsigned-development limitations.
-No artifact was installed, executed, published as a release, or redistributed.
+The pure movement tests establish that simultaneous diagonal input is normalized to the same
+configured maximum speed as cardinal input; diagonal speed was not separately measured in the
+native window.
 
-### Pull-request run
+## Limitations and exclusions
 
-Pull request [#1][pull-request] was merged by `hherb` at `2026-08-30T12:23:56Z` as merge commit
-`7f5cecf5d19970e53c536225ed55db7f0d9ecc13`. This session did not perform that merge. Private
-GitHub Actions [pull-request run 33311261187][pull-request-run] passed for full head commit
-`5d7a3ea4e8952a7e5e9ee1311b87150f1d51c2fa` before the merge:
-
-- pure C# quality and tests, job `99256622320`;
-- Linux x64 unsigned development export, job `99256622383`;
-- macOS Universal 2 export and bundle-signature rejection, job `99256622387`;
-- Windows x64 export and Authenticode rejection, job `99256622427`;
-- headless Godot smoke, job `99256622435`.
-
-The resolved runner images matched the successful push run exactly. This run uploaded the same
-three artifact names as artifacts `9732051413`, `9732058254`, and `9732060450`, expiring on
-2026-09-06. They were not downloaded again because the corresponding push-run artifacts had
-already been inspected and the source/export workflow was unchanged.
-
-[push-run]: https://github.com/hherb/allrpcs/actions/runs/33310947250
-[pull-request]: https://github.com/hherb/allrpcs/pull/1
-[pull-request-run]: https://github.com/hherb/allrpcs/actions/runs/33311261187
-
-## Limitations
-
-- Hosted evidence establishes credential-free compilation, tests, headless launch, debug
-  export, bounded unsigned-signature checks, and artifact contents on the recorded runner
-  images. It does not establish installation, gameplay, accessibility, performance, Gatekeeper,
-  SmartScreen, Store, distribution, signing, notarization, or release readiness.
-- The repository is private. Public-source behavior, public-fork pull requests, branch
-  protection, required-check rules, and external contributor permissions were not exercised.
-- The scenario-validator CI item remains unticked because the validator does not exist.
-- No provider, credential, cache, persistence, gameplay, installer, signing, notarization,
-  release, or distribution path was added or exercised.
+- Phase 1a has not exercised Windows, Linux, alternate keyboard layouts, arrow keys, gamepads,
+  accessibility behavior, performance, packaging, installation, signing, or distribution.
+- The pure tests establish velocity calculation. They do not simulate Godot input delivery,
+  camera rendering, or physics collision.
+- The stream, village block, and path are visual primitives only. Only the region perimeter has
+  collision; water, buildings, trees, and other terrain remain traversable.
+- No point-and-click movement, controller mappings, healer behavior, companion AI, pathfinding,
+  navigation region, highlighting, inventory, dialogue, disease, provider, persistence, art,
+  audio, networking, packaging, credential, release, or distribution path was added.
 
 ## Exact next bounded slice
 
-First finish review of the final Phase 0.2c documentation follow-up. Do not merge that follow-up
-without explicit user authorization. After it is merged, complete **Phase 1a: keyboard greybox
-movement and camera foundation**.
+First review the Phase 1a draft pull request and its current checks. Do not merge it without
+explicit user authorization. After the user reports that pull request merged, take **Phase 1b:
+bounded camera framing and greybox terrain collision**.
 
-Acceptance boundary:
+Acceptance boundary for Phase 1b:
 
-1. Create a small placeholder top-down test region using authored Godot primitives or temporary
-   shapes; do not select a final art direction or add final assets.
-2. Define named Godot input actions for four-direction movement. Gameplay code must consume
-   actions rather than hard-coded physical keys.
-3. Add a placeholder Seeker that moves continuously by keyboard at a named, documented speed.
-   Keep input-to-motion calculation pure and independently testable where practical.
-4. Add a smooth `Camera2D` follow with named tuning values and a stable initial framing.
-5. Add focused automated tests for testable movement calculation and retain every architecture,
-   domain, workflow, and Godot smoke check.
-6. Run `./scripts/quality.sh`, manually launch the native scene, and record what movement and
-   camera behavior was actually observed. Do not claim unobserved platforms or input devices.
-7. Update `README.md`, `ROADMAP.md`, and this file; commit only reviewed slice paths.
+1. Give the existing follow camera named world limits so the viewport does not reveal space
+   beyond the 1600-by-900 test region during ordinary Seeker movement.
+2. Define named minimum and maximum zoom tuning values and a stable default. Do not add zoom or
+   camera-pan input until its keyboard/controller interaction is separately decided.
+3. Add simple temporary collision primitives for the visible stream, village block, and a small
+   representative tree cluster. Keep them obviously greybox and do not select final assets.
+4. Keep bounds and validation calculations pure and independently tested where practical;
+   retain all domain, Application, architecture, workflow, headless, and graphical checks.
+5. Manually confirm on the current native platform that camera framing stays inside the region,
+   the Seeker cannot cross the new obstacles, and ordinary movement remains smooth.
+6. Update `README.md`, `ROADMAP.md`, and this file, then commit only reviewed slice paths.
 
-Explicit exclusions for Phase 1a:
+Explicit exclusions for Phase 1b:
 
-- Do not add point-and-click movement, controller mappings, healer behavior, companion AI,
-  pathfinding, navigation regions, interaction highlighting, inventory, dialogue, disease,
-  providers, persistence, art, audio, networking, or packaging.
-- Do not add landscape collision beyond the minimum needed to keep the placeholder Seeker in
-  the bounded test region; broader authored terrain and collision remain later Phase 1 work.
+- Do not add point-and-click movement, zoom/pan input, controller mappings, healer behavior,
+  companion AI, pathfinding, navigation regions, interaction highlighting, inventory, dialogue,
+  disease, providers, persistence, final art, audio, networking, or packaging.
 - Do not change repository visibility, merge pull requests, create releases, distribute
   artifacts, or add credentials without explicit user authorization.
 

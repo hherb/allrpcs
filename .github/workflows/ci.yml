@@ -42,6 +42,9 @@ jobs:
       - name: Run pure domain tests
         run: dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
 
+      - name: Run pure application tests
+        run: dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build
+
       - name: Run architecture tests
         run: dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
 
