@@ -72,11 +72,15 @@ them, recheck the [supported runner labels][github-runners], action release note
 compatibility, update the SHA and tag comment together, then run the complete local quality
 sequence.
 
-At this commit the workflow is locally validated but has not run on GitHub-hosted runners. A
-successful local lint or export-preset parse must not be reported as live runner or native-build
-evidence.
+The workflow was first verified on GitHub-hosted runners in private-repository push run
+[`33310947250`][push-run]. The exact resolved images were Ubuntu 24.04
+`20260823.283.1`, macOS 15 arm64 `20260727.0256.1`, and Windows 2025 with Visual Studio 2026
+`20260824.214.3`. All quality, headless smoke, native export, unsigned-signature rejection, and
+artifact-upload steps passed. See `HANDOVER.md` for job, artifact, pull-request, and limitation
+evidence. Hosted debug exports remain build evidence only, not releases.
 
 [github-runners]: https://docs.github.com/en/actions/reference/runners/github-hosted-runners
+[push-run]: https://github.com/hherb/allrpcs/actions/runs/33310947250
 
 ## Unsigned development exports
 
