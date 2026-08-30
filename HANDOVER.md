@@ -2,10 +2,11 @@
 
 ## Current state
 
-Roadmap Phase 0.2c, private hosted-runner activation and evidence, is in its final evidence pull
-request. Phase 0.2b was completed at `5d0de93`; the authorized activation commit is `cba1ba8`
-(`ci: activate private hosted checks`). The current evidence branch is
-`ci/hosted-runner-evidence`, based on `main` at `cba1ba8`.
+Roadmap Phase 0.2c, private hosted-runner activation and evidence, is complete on `origin/main`.
+Phase 0.2b was completed at `5d0de93`; the authorized activation commit is `cba1ba8`
+(`ci: activate private hosted checks`). PR #1 merged its first evidence commit as `7f5cecf`. The
+current follow-up documentation branch is `docs/final-hosted-runner-evidence`, based on that
+remote merge commit.
 
 The private remote is `https://github.com/hherb/allrpcs`. The source licence is
 `AGPL-3.0-only`; the canonical GNU text is committed as `LICENSE`. Public visibility, merging,
@@ -21,8 +22,9 @@ gh pr view --repo hherb/allrpcs --json number,state,isDraft,headRefName,headRefO
 gh pr checks --repo hherb/allrpcs
 ```
 
-The expected state is a clean evidence branch tracking its remote, an open unmerged pull
-request, and successful current checks. Do not merge without separate user authorization.
+The expected state is a clean follow-up documentation branch tracking its remote, an open
+unmerged pull request, and successful current checks. Do not merge it without separate user
+authorization.
 
 ## Phase 0.2c evidence
 
@@ -82,11 +84,25 @@ No artifact was installed, executed, published as a release, or redistributed.
 
 ### Pull-request run
 
-The first pull-request run and pull-request metadata must be added here after the evidence
-branch is pushed and the authorized pull request is opened. Require the same five successful
-jobs before ticking the Phase 0.2 acceptance item.
+Pull request [#1][pull-request] was merged by `hherb` at `2026-08-30T12:23:56Z` as merge commit
+`7f5cecf5d19970e53c536225ed55db7f0d9ecc13`. This session did not perform that merge. Private
+GitHub Actions [pull-request run 33311261187][pull-request-run] passed for full head commit
+`5d7a3ea4e8952a7e5e9ee1311b87150f1d51c2fa` before the merge:
+
+- pure C# quality and tests, job `99256622320`;
+- Linux x64 unsigned development export, job `99256622383`;
+- macOS Universal 2 export and bundle-signature rejection, job `99256622387`;
+- Windows x64 export and Authenticode rejection, job `99256622427`;
+- headless Godot smoke, job `99256622435`.
+
+The resolved runner images matched the successful push run exactly. This run uploaded the same
+three artifact names as artifacts `9732051413`, `9732058254`, and `9732060450`, expiring on
+2026-09-06. They were not downloaded again because the corresponding push-run artifacts had
+already been inspected and the source/export workflow was unchanged.
 
 [push-run]: https://github.com/hherb/allrpcs/actions/runs/33310947250
+[pull-request]: https://github.com/hherb/allrpcs/pull/1
+[pull-request-run]: https://github.com/hherb/allrpcs/actions/runs/33311261187
 
 ## Limitations
 
@@ -102,9 +118,9 @@ jobs before ticking the Phase 0.2 acceptance item.
 
 ## Exact next bounded slice
 
-First finish review of the Phase 0.2c evidence pull request. Do not merge it without explicit
-user authorization. After it is merged, complete **Phase 1a: keyboard greybox movement and
-camera foundation**.
+First finish review of the final Phase 0.2c documentation follow-up. Do not merge that follow-up
+without explicit user authorization. After it is merged, complete **Phase 1a: keyboard greybox
+movement and camera foundation**.
 
 Acceptance boundary:
 

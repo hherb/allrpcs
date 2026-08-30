@@ -108,11 +108,10 @@ Acceptance:
 
 ### 0.2 Continuous integration and architecture guardrails
 
-Phase 0.2b workflow configuration was added and locally linted on 2026-08-30. Phase 0.2c hosted
-activation was then authorized for the private `hherb/allrpcs` repository. The hosted-test,
-headless-smoke, native-build, and phase acceptance items remain unticked until the workflow has
-actually run on the named GitHub-hosted runners. See `HANDOVER.md` for the exact evidence and
-activation boundary.
+Phase 0.2b workflow configuration was added and locally linted on 2026-08-30. Phase 0.2c then
+verified the private `hherb/allrpcs` repository with successful `push` and `pull_request` runs
+on the named GitHub-hosted runners. See `HANDOVER.md` for exact job, image, artifact, signature,
+licence, pull-request, and limitation evidence.
 
 - [x] Add formatting and compiler-warning checks.
 - [x] Add pure C# unit tests to CI.
@@ -127,7 +126,7 @@ activation boundary.
 
 Acceptance:
 
-- [ ] Every pull request receives current formatting, test, architecture, and desktop build
+- [x] Every pull request receives current formatting, test, architecture, and desktop build
   results without requiring an LLM key.
 
 ## Phase 1 — Greybox exploration
