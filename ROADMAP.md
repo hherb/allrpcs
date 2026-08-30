@@ -108,13 +108,13 @@ Acceptance:
 
 ### 0.2 Continuous integration and architecture guardrails
 
-- [ ] Add formatting and compiler-warning checks.
+- [x] Add formatting and compiler-warning checks.
 - [ ] Add pure C# unit tests to CI.
 - [ ] Add scenario-validator tests to CI once the validator exists.
 - [ ] Add headless Godot smoke tests.
 - [ ] Add unsigned development builds for macOS, Linux, and Windows on native runners.
-- [ ] Pin tool versions and document the update procedure.
-- [ ] Add architecture tests or project-reference checks enforcing the intended dependency
+- [x] Pin tool versions and document the update procedure.
+- [x] Add architecture tests or project-reference checks enforcing the intended dependency
   direction.
 - [ ] Decide and record the project licence before publishing or distributing source.
 

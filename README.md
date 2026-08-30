@@ -17,22 +17,33 @@ godot --version
 ```
 
 The verified local versions for this foundation are .NET SDK 8.0.130 and Godot
-4.6.3.stable.mono.official.
+4.6.3.stable.mono.official. Root `global.json` keeps `dotnet` in the .NET 8.0.1xx feature band
+and permits only the latest installed patch in that band. The Godot SDK version is pinned in
+`game/Allrpcs.Game.csproj`. To update the toolchain, change these pins and the prerequisite
+versions together, then rerun the complete local quality sequence before committing.
 
-## Build and test
+## Local quality checks
 
 From the repository root:
 
 ```sh
-dotnet restore Allrpcs.sln
-dotnet build Allrpcs.sln --no-restore
-dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
-./scripts/smoke-godot.sh
+./scripts/quality.sh
 ```
 
-The smoke script starts the main scene headlessly, runs one frame, and exits. It does not
-require provider credentials or network access after restore. The project selects the
+The sequence restores packages serially, rejects C# formatting drift, builds with current
+recommended .NET analysis and compiler warnings treated as errors, runs the domain and
+architecture tests, then exercises both headless and 60-frame graphical Godot launches. It
+does not require provider credentials or network access after restore. The project selects the
 Compatibility renderer for graphical launches.
+
+To verify formatting alone without changing files, run:
+
+```sh
+dotnet format Allrpcs.sln --no-restore --verify-no-changes
+```
+
+The architecture tests inspect authored project files without loading Godot. They enforce the
+project-reference directions listed below.
 
 ## Launch the empty application
 
@@ -50,6 +61,7 @@ instead, run `godot --editor --path game`.
 - `src/Infrastructure` is the future adapter boundary and depends on `Application`.
 - `game` is the Godot presentation project and depends on `Application`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
+- `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
 Provider adapters, persistence, gameplay, credentials, and distribution configuration are not
 part of this foundation slice.

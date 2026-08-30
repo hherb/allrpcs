@@ -2,14 +2,15 @@
 
 ## Current state
 
-Roadmap Phase 0.1, the local solution skeleton, is complete on `main`. The repository now has a
-pure C# solution, explicit project-reference direction, a Godot 4.6.3 .NET Compatibility
-project, a minimal titled `Main` scene, a domain smoke test, a Godot launch smoke script, and
-verified setup commands in `README.md`.
+Roadmap Phase 0.2a, local compiler and architecture guardrails, is complete on `main`. The
+repository now pins the .NET 8.0.1xx SDK feature band, applies deterministic builds and current
+recommended analysis with compiler warnings treated as errors, rejects C# formatting drift,
+and enforces the exact five-project reference graph through pure C# tests. One documented local
+quality script runs those checks before headless and bounded graphical Godot smoke launches.
 
-This slice is committed as the current `HEAD` with subject `build: add local Godot solution
-skeleton`. The prior prerequisite-handover commit is `052c0cd`. No gameplay, provider,
-persistence, CI, art, audio, packaging, or distribution work was added.
+This slice is committed as the current `HEAD` with subject `build: add local quality
+guardrails`. The prior Phase 0.1 commit is `a9dd406`. No hosted CI, gameplay, provider,
+persistence, licence, art, audio, packaging, publication, or distribution work was added.
 
 At the start of the next session, verify the live checkout rather than relying only on this
 summary:
@@ -90,46 +91,45 @@ the deeper forest.
 
 ## Exact next bounded slice
 
-Implement **Roadmap Phase 0.2a: local compiler and architecture guardrails**. This is the first
-bounded part of Phase 0.2; do not add hosted CI or greybox gameplay in the same slice.
+Implement **Roadmap Phase 0.2b: credential-free hosted CI and unsigned native development-build
+evidence**. Keep this separate from Phase 1 greybox gameplay and do not treat runner artifacts
+as signed or distributable releases.
 
 ### In scope
 
-1. Add `global.json` that pins the verified .NET 8 feature band with an explicit safe roll-forward
-   policy.
-2. Add shared build properties enabling deterministic builds, current recommended analysis, and
-   warning failure for authored C# without breaking Godot-generated files.
-3. Add pure C# architecture tests that enforce the current allowed project-reference graph:
-   - `Domain` has no project references.
-   - `Application` references only `Domain`.
-   - `Infrastructure` references only `Application`.
-   - `game` references only `Application`.
-   - `Domain.Tests` references only `Domain`.
-4. Add a reproducible formatting verification command and document the local quality sequence.
-5. Prove at least one architecture test fails when a forbidden reference is introduced, then
-   revert that deliberate test mutation before committing.
-6. Run restore, formatting, build, unit tests, architecture tests, and both Godot smoke checks.
-7. Update `ROADMAP.md` only for guardrails actually verified, and write the next handover.
+1. Revalidate the current supported GitHub-hosted runner images and official or well-maintained
+   setup actions before pinning workflow dependencies.
+2. Add hosted checks for formatting, zero-warning compilation, pure domain tests, architecture
+   tests, and headless Godot launch without provider credentials.
+3. Add native macOS, Linux, and Windows jobs that produce only unsigned development builds and
+   clearly label their evidence and limitations.
+4. Keep engine-independent test jobs free of Godot loading and keep provider keys absent from
+   workflow permissions, inputs, logs, caches, and artifacts.
+5. Add local/static workflow validation where practical, and run every current local quality
+   check before committing.
+6. Obtain explicit authorization before any push or pull request needed to exercise live GitHub
+   runners. If that authorization is absent, do not claim runner validation and leave affected
+   roadmap items unticked.
+7. Update `README.md`, `ROADMAP.md`, and this handover with exact runner, artifact, command, and
+   limitation evidence.
 
 ### Acceptance boundary
 
-A developer can run one documented local quality sequence that rejects formatting drift,
-compiler warnings, and forbidden project references before launching Godot. All checks remain
-credential-free and engine-independent tests do not load Godot.
+Every pull request receives credential-free formatting, compiler, domain-test, architecture,
+headless Godot, and unsigned native development-build results on the intended runner operating
+systems. Evidence must distinguish successful workflow configuration from live runner results.
 
 ### Explicitly out of scope
 
-- Hosted CI workflow files and claims about live GitHub runners; take those in Phase 0.2b.
-- Unsigned macOS, Linux, or Windows development-build jobs.
 - Selecting the source licence; keep this before any publication or distribution.
 - Gameplay movement, camera, landscapes, characters, discovery, or inventory.
 - LLM provider adapters or API credentials.
 - SQLite or save-game persistence.
 - Final art, generated art, audio, ASR, or TTS.
-- Installers, signing, notarization, publishing, or distribution.
+- Installers, signing, notarization, release tags, publishing, or distribution.
 - Multiplayer or networking.
 
-## Phase 0.1 completion evidence (2026-08-30)
+## Phase 0.2a completion evidence (2026-08-30)
 
 Environment:
 
@@ -158,38 +158,53 @@ Toolchain installation:
 
 Implemented repository structure:
 
-- `Allrpcs.sln` contains `Domain`, `Application`, `Infrastructure`, `Domain.Tests`, and the
-  Godot game project.
-- `Domain` has no project reference; `Application -> Domain`; `Infrastructure -> Application`;
-  `game -> Application`; `Domain.Tests -> Domain`.
-- All projects target `net8.0` with nullable references enabled.
-- `game/project.godot` selects `GL Compatibility`, names the app `Allrpcs`, and launches
-  `Main.tscn` with its minimal C# `Node`.
-- `.gitignore` excludes generated Godot/.NET state, local credentials, test/package output,
-  editors, and OS metadata without hiding scenes or authored game content.
-- `.editorconfig`, `README.md`, and `scripts/smoke-godot.sh` establish the local baseline.
+- `global.json` selects the .NET 8.0.1xx feature band with `latestPatch` roll-forward and
+  excludes prerelease SDKs; it resolves the verified installed SDK 8.0.130.
+- `Directory.Build.props` enables deterministic compilation, `latest-recommended` analysis,
+  build-time code-style enforcement, and compiler warnings as errors for all solution projects.
+- `Allrpcs.Architecture.Tests` reads authored project XML without referencing or loading Godot.
+  Its five cases require `Domain -> []`, `Application -> Domain`, `Infrastructure ->
+  Application`, `game -> Application`, and `Domain.Tests -> Domain` exactly.
+- `scripts/quality.sh` serializes solution restore for reproducibility, verifies formatting,
+  builds, runs both test projects, and performs the headless and graphical Godot smokes.
+- `README.md` documents the single-command quality sequence, standalone format verification,
+  pinned tool locations, update procedure, and enforced project boundaries.
 
 Commands run from `/Users/hherb/src/allrpcs`:
 
 ```sh
-dotnet restore Allrpcs.sln
-dotnet build Allrpcs.sln --no-restore
-dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
-./scripts/smoke-godot.sh
+./scripts/quality.sh
 ```
 
-- Restore: all projects current.
-- Build: succeeded for all five projects with zero warnings and zero errors.
-- Pure C# tests: one passed, zero failed, zero skipped.
+- Serial restore: all six projects current.
+- Format verification: passed with no changes required.
+- Build: all six projects succeeded with zero warnings and zero errors, including generated
+  Godot build inputs.
+- Pure domain tests: one passed, zero failed, zero skipped.
+- Pure architecture tests: five passed, zero failed, zero skipped.
 - Headless Godot main-scene smoke: exit 0.
-- Bounded graphical smoke (`godot --path game --quit-after 60`): exit 0 using OpenGL 4.1 over
-  Metal with the Compatibility renderer on Apple M3 Max.
-- Review: `dotnet format Allrpcs.sln --no-restore --verify-no-changes` passed, and `dotnet list
-  reference` confirmed the intended graph above.
+- Bounded graphical smoke: exit 0 using OpenGL 4.1 over Metal with the Compatibility renderer
+  on Apple M3 Max.
+
+Required negative proof:
+
+- A temporary `Domain -> Application` `ProjectReference` was inserted after building the test
+  assembly.
+- Running the architecture test produced four passes and one failure; the `Domain` case reported
+  the unexpected `src/Application/Allrpcs.Application.csproj` reference.
+- The temporary reference was then removed. The complete quality sequence above subsequently
+  passed, proving the committed project graph is restored.
 
 Limitations:
 
-- Only the current macOS host was exercised; Linux and Windows are unverified.
+- Only the current macOS host was exercised; no hosted GitHub, Linux, or Windows runner was
+  exercised.
+- `dotnet test` needs a local test-host socket that the workspace sandbox denies; the negative
+  proof and final complete quality run used the host shell. The tests themselves remained
+  credential-free and engine-independent.
+- The final quality run used the intentionally serial restore command. Earlier unconstrained
+  solution restores stalled in the execution environment; direct-project and serial solution
+  restores succeeded.
 - The 60-frame native process established renderer and launch success, but no screenshot or
   user-driven visual inspection was performed.
 - The checksum-matching official Godot app contains a stapled notarization ticket, but
@@ -201,12 +216,6 @@ Limitations:
 
 [godot-download]: https://godotengine.org/download/archive/4.6.3-stable/
 [godot-csharp]: https://docs.godotengine.org/en/4.6/tutorials/scripting/c_sharp/index.html
-
-## Expected next slice after Phase 0.2a
-
-Take Phase 0.2b: credential-free hosted CI for formatting, compiler, architecture, pure C# test,
-headless Godot, and unsigned native development-build evidence. Keep licence selection explicit,
-and do not combine CI with Phase 1 greybox gameplay.
 
 ## Working conventions
 
