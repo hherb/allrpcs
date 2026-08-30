@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://GreyboxNavigation.cs" id="4_navigation"]
 [ext_resource type="Script" path="res://NavigationSmokeCheck.cs" id="5_navigation_check"]
 [ext_resource type="Script" path="res://Healer.cs" id="6_healer"]
-[ext_resource type="Script" path="res://HealerFollowSmokeCheck.cs" id="7_healer_check"]
+[ext_resource type="Script" path="res://HealerCommandSmokeCheck.cs" id="7_healer_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -154,11 +154,28 @@ script = ExtResource("4_navigation")
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")
 
-[node name="HealerFollowSmokeCheck" type="Node" parent="."]
+[node name="HealerCommandSmokeCheck" type="Node" parent="."]
 script = ExtResource("7_healer_check")
 
 [node name="HealerStart" type="Marker2D" parent="."]
 position = Vector2(680, 450)
+
+[node name="HealerCommandDestination" type="Marker2D" parent="."]
+position = Vector2(960, 360)
+
+[node name="Ring" type="Line2D" parent="HealerCommandDestination"]
+points = PackedVector2Array(24, 0, 16.971, 16.971, 0, 24, -16.971, 16.971, -24, 0, -16.971, -16.971, 0, -24, 16.971, -16.971, 24, 0)
+width = 5.0
+default_color = Color(0.925, 0.318, 0.682, 1)
+antialiased = true
+
+[node name="Label" type="Label" parent="HealerCommandDestination"]
+offset_left = -52.0
+offset_top = 28.0
+offset_right = 52.0
+offset_bottom = 51.0
+text = "MOVE TARGET"
+horizontal_alignment = 1
 
 [node name="Healer" type="CharacterBody2D" parent="."]
 position = Vector2(680, 450)
@@ -197,3 +214,27 @@ shape = SubResource("CircleShape2D_seeker")
 
 [node name="FollowCamera" type="Camera2D" parent="Seeker"]
 script = ExtResource("3_camera")
+
+[node name="CommandOverlay" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="ColorRect" parent="CommandOverlay"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 468.0
+offset_bottom = 80.0
+color = Color(0.055, 0.067, 0.082, 0.88)
+mouse_filter = 2
+
+[node name="Instructions" type="Label" parent="CommandOverlay/Panel"]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 444.0
+offset_bottom = 30.0
+text = "TEMP GREYBOX · X TOGGLE FOLLOW/WAIT · M MOVE"
+
+[node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
+offset_left = 12.0
+offset_top = 36.0
+offset_right = 444.0
+offset_bottom = 59.0
+text = "Current healer mode: FOLLOW"

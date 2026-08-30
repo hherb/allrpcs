@@ -1,4 +1,5 @@
 using Allrpcs.Application.Movement;
+using Allrpcs.Application.Navigation;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -11,9 +12,15 @@ public partial class Healer : CharacterBody2D
 {
     private const float DefaultMovementSpeedPixelsPerSecond = 180.0f;
     private const float DefaultStopDistancePixels = 72.0f;
+    private const float DefaultDestinationStopDistancePixels = 12.0f;
     private const float PathPointTolerancePixels = 1.0f;
+    private const float NavigationSurfaceTolerancePixels = 1.0f;
+    private static readonly NavigationWorldBounds WorldBounds =
+        new(0.0f, 0.0f, 1600.0f, 900.0f);
 
+    private HealerCommandSelection activeCommand = HealerCommandSelector.SelectFollow();
     private NavigationAgent2D navigationAgent = null!;
+    private NavigationRegion2D navigationRegion = null!;
     private Node2D followedTarget = null!;
 
     /// <summary>
@@ -29,12 +36,66 @@ public partial class Healer : CharacterBody2D
     [Export(PropertyHint.Range, "0.0,300.0,1.0,or_greater")]
     public float StopDistancePixels { get; set; } = DefaultStopDistancePixels;
 
+    /// <summary>
+    /// Gets or sets the inclusive distance at which a move-to-destination command completes.
+    /// </summary>
+    [Export(PropertyHint.Range, "0.0,100.0,1.0,or_greater")]
+    public float DestinationStopDistancePixels { get; set; } =
+        DefaultDestinationStopDistancePixels;
+
+    /// <summary>Gets the currently selected deterministic healer mode.</summary>
+    public HealerCommandMode CommandMode => activeCommand.Mode;
+
     /// <inheritdoc />
     public override void _Ready()
     {
         navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
+        navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         followedTarget = GetNode<Node2D>("../Seeker");
         navigationAgent.TargetDesiredDistance = StopDistancePixels;
+    }
+
+    /// <summary>Selects deterministic follow mode.</summary>
+    public void CommandFollow()
+    {
+        activeCommand = HealerCommandSelector.SelectFollow();
+    }
+
+    /// <summary>Selects deterministic wait mode.</summary>
+    public void CommandWait()
+    {
+        activeCommand = HealerCommandSelector.SelectWait();
+    }
+
+    /// <summary>
+    /// Selects a move command only when its finite in-bounds destination is on the navigation map.
+    /// </summary>
+    /// <param name="destination">The requested world destination.</param>
+    /// <returns><see langword="true"/> when the command was accepted.</returns>
+    public bool TryCommandMoveToDestination(Vector2 destination)
+    {
+        HealerCommandSelection selection;
+        try
+        {
+            selection = HealerCommandSelector.SelectMoveToDestination(
+                WorldBounds,
+                ToNumerics(destination));
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return false;
+        }
+
+        Rid navigationMap = NavigationServer2D.RegionGetMap(navigationRegion.GetRid());
+        Vector2 closestPoint = NavigationServer2D.MapGetClosestPoint(navigationMap, destination);
+        if (NavigationServer2D.MapGetIterationId(navigationMap) == 0
+            || closestPoint.DistanceTo(destination) > NavigationSurfaceTolerancePixels)
+        {
+            return false;
+        }
+
+        activeCommand = selection;
+        return true;
     }
 
     /// <inheritdoc />
@@ -42,19 +103,48 @@ public partial class Healer : CharacterBody2D
     {
         _ = delta;
 
-        FollowTargetSelection selection = FollowTargetSelector.Select(
-            ToNumerics(GlobalPosition),
-            ToNumerics(followedTarget.GlobalPosition),
-            MovementSpeedPixelsPerSecond,
-            StopDistancePixels);
-        if (!selection.ShouldMove)
+        if (activeCommand.Mode == HealerCommandMode.Wait)
         {
             StopMoving();
             return;
         }
 
-        navigationAgent.TargetPosition = selection.NavigationDestination is { } destination
-            ? ToGodot(destination)
+        NumericsVector2 destination;
+        float stopDistancePixels;
+        bool waitOnArrival;
+        if (activeCommand.Mode == HealerCommandMode.MoveToDestination
+            && activeCommand.NavigationDestination is { } commandedDestination)
+        {
+            destination = commandedDestination;
+            stopDistancePixels = DestinationStopDistancePixels;
+            waitOnArrival = true;
+        }
+        else
+        {
+            destination = ToNumerics(followedTarget.GlobalPosition);
+            stopDistancePixels = StopDistancePixels;
+            waitOnArrival = false;
+        }
+
+        FollowTargetSelection selection = FollowTargetSelector.Select(
+            ToNumerics(GlobalPosition),
+            destination,
+            MovementSpeedPixelsPerSecond,
+            stopDistancePixels);
+        if (!selection.ShouldMove)
+        {
+            if (waitOnArrival)
+            {
+                activeCommand = HealerCommandSelector.SelectWait();
+            }
+
+            StopMoving();
+            return;
+        }
+
+        navigationAgent.TargetDesiredDistance = stopDistancePixels;
+        navigationAgent.TargetPosition = selection.NavigationDestination is { } targetDestination
+            ? ToGodot(targetDestination)
             : GlobalPosition;
         Vector2 nextPathPosition = navigationAgent.GetNextPathPosition();
         Vector2 pathOffset = nextPathPosition - GlobalPosition;

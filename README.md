@@ -1,10 +1,10 @@
 # Allrpcs
 
 Allrpcs is a Godot 4.6 .NET game under development. Its bounded-camera movement, navigation,
-and deterministic healer-follow greybox keeps testable movement, framing, navigation-request,
-and follow-target rules plus future authoritative rules in engine-independent C# projects while
-Godot owns input mapping, physics presentation, camera behavior, collision, navigation topology,
-and scene authoring.
+and deterministic healer-command greybox keeps testable movement, framing, navigation-request,
+follow-target, and command-selection rules plus future authoritative rules in engine-independent
+C# projects while Godot owns input mapping, physics presentation, camera behavior, collision,
+navigation topology, and scene authoring.
 
 ## Prerequisites
 
@@ -38,10 +38,11 @@ The sequence restores packages serially, rejects C# formatting drift, builds wit
 recommended .NET analysis and compiler warnings treated as errors, runs the domain, application,
 and architecture tests, then exercises both headless and 60-frame graphical Godot launches. The
 headless launches wait for the navigation map to synchronize, prove a route through the bridge,
-reject representative stream, tree, and village targets, and exercise healer follow, stop,
-separation, and cross-bridge regroup behavior. The sequence first runs `actionlint` against every
-hosted workflow. It does not require provider credentials or network access after restore. The
-project selects the Compatibility renderer for graphical launches.
+reject representative stream, tree, and village targets, and exercise healer follow, wait,
+move completion, invalid and excluded command rejection, separation, and cross-bridge return to
+follow. The sequence first runs `actionlint` against every hosted workflow. It does not require
+provider credentials or network access after restore. The project selects the Compatibility
+renderer for graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -131,27 +132,36 @@ at the named `HealerStart` position on the Seeker's side of the stream. It follo
 that navigation surface at a named 180-pixel-per-second speed only while outside a validated
 72-pixel stop distance. Its circular collision matches its 36-pixel visible footprint, so the
 healer stops without overlapping the Seeker and can route through the bridge after separation.
-Every shape, color, obstacle, collision outline, and navigation polygon is an authored primitive
-for scale and behavior testing only; none selects final art or terrain. Close the titled
-**Allrpcs** window to stop the process. To open the project in the editor instead, run
-`godot --editor --path game`.
+
+The small **TEMP GREYBOX** panel shows the current healer mode. Press X to toggle between follow
+and wait. Press M to move the healer to the obvious pink ring; the healer uses the existing
+navigation surface, stops within a validated 12-pixel distance, then changes to wait. Press X
+again to resume follow. Off-world and obstacle-excluded destinations are rejected without
+changing the active command. These two keys, the ring, and the status panel are temporary
+behavior-test controls, not final command or dialogue UX.
+
+Every shape, color, obstacle, collision outline, navigation polygon, target marker, and status
+element is an authored primitive for scale and behavior testing only; none selects final art or
+terrain. Close the titled **Allrpcs** window to stop the process. To open the project in the editor
+instead, run `godot --editor --path game`.
 
 ## Project boundaries
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
-- `src/Application` contains pure movement, camera-framing, navigation-request validation, and
-  healer follow-target selection and coordinates future domain use cases; it depends only on
-  `Domain`.
+- `src/Application` contains pure movement, camera-framing, navigation-request validation,
+  healer follow-target selection, and healer command selection and coordinates future domain use
+  cases; it depends only on `Domain`.
 - `src/Infrastructure` is the future adapter boundary and depends on `Application`.
 - `game` is the Godot presentation project and depends on `Application`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
-- `tests/Application.Tests` tests pure movement, camera-framing, navigation-request, and healer
-  follow-target behavior without loading Godot.
+- `tests/Application.Tests` tests pure movement, camera-framing, navigation-request, healer
+  follow-target, and healer command behavior without loading Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
-Point-and-click movement, zoom or camera-pan input, controller mappings, healer wait or
-move-to-destination commands, LLM-controlled companions, providers, persistence, credentials,
-signing, installers, and distribution configuration are not part of this greybox slice.
+Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
+healer-command keys, natural-language commands, final command UI, LLM-controlled companions,
+providers, persistence, credentials, signing, installers, and distribution configuration are not
+part of this greybox slice.
 
 ## Licence
 
