@@ -11,10 +11,12 @@ behavior on 2026-08-31. The healer wait and move-to-destination roadmap item and
 1 acceptance are ticked. Interaction highlighting, world-decision pausing, the debug overlay, and
 automated movement-boundary coverage remain unticked.
 
-The reviewed implementation is ready to commit and publish in the explicitly requested draft pull
-request. This file must be updated with the resulting commit, pull request, and checks before the
-slice is handed off. The pull request is not authorized to merge. Public visibility, merging,
-releases, artifact distribution, credentials, signing, and notarization remain unauthorized.
+The private remote has open draft PR #7 for this branch. The reviewed Phase 1e implementation is
+commit `efc5c3c`; this documentation update follows it. At first publication, all five
+credential-free CI jobs in run `33342845364` were in progress. Re-query the final branch head and
+checks rather than treating that initial snapshot as a result. The pull request is not authorized
+to merge. Public visibility, merging, releases, artifact distribution, credentials, signing, and
+notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -26,6 +28,9 @@ gh pr view feat/healer-command-modes --repo hherb/allrpcs \
   --json number,state,isDraft,headRefName,headRefOid,url
 gh pr checks feat/healer-command-modes --repo hherb/allrpcs
 ```
+
+The expected state is a clean branch tracking its remote with open draft PR #7 and current checks.
+Do not merge it without separate user authorization.
 
 ## Phase 1e implementation
 
