@@ -1,9 +1,9 @@
 # Allrpcs
 
-Allrpcs is a Godot 4.6 .NET game under development. Its bounded-camera movement greybox keeps
-testable movement and framing calculations plus future authoritative rules in engine-independent
-C# projects while Godot owns input mapping, physics presentation, camera behavior, collision,
-and scene authoring.
+Allrpcs is a Godot 4.6 .NET game under development. Its bounded-camera movement and navigation
+greybox keeps testable movement, framing, and navigation-request validation plus future
+authoritative rules in engine-independent C# projects while Godot owns input mapping, physics
+presentation, camera behavior, collision, navigation topology, and scene authoring.
 
 ## Prerequisites
 
@@ -34,11 +34,12 @@ From the repository root:
 ```
 
 The sequence restores packages serially, rejects C# formatting drift, builds with current
-recommended .NET analysis and compiler warnings treated as errors, runs the domain,
-application, and architecture tests, then exercises both headless and 60-frame graphical Godot
-launches. It first runs `actionlint` against every hosted workflow. It does not require provider
-credentials or network access after restore. The project selects the Compatibility renderer
-for graphical launches.
+recommended .NET analysis and compiler warnings treated as errors, runs the domain, application,
+and architecture tests, then exercises both headless and 60-frame graphical Godot launches. The
+headless launch waits for the navigation map to synchronize, proves a route through the bridge,
+and rejects representative stream, tree, and village targets. The sequence first runs
+`actionlint` against every hosted workflow. It does not require provider credentials or network
+access after restore. The project selects the Compatibility renderer for graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -117,27 +118,33 @@ Its named minimum, default, and maximum zoom tuning values are 0.75, 1.0, and 2.
 camera-pan input are intentionally not mapped yet.
 
 Four thin collision walls keep the Seeker inside the temporary outer border. Simple collision
-geometry also blocks the blue stream, the complete grey village block, and a representative
-three-tree cluster. The path remains traversable. Every shape, color, obstacle, and collision
-outline is an authored primitive for scale and camera testing only; none selects final art or
-terrain. Close the titled **Allrpcs** window to stop the process. To open the project in the
-editor instead, run `godot --editor --path game`.
+geometry also blocks the blue stream outside the obvious brown temporary bridge, the complete
+grey village block, and a representative three-tree cluster. The bridge is traversable in both
+directions and the rest of the path remains open.
+
+A deterministically authored `NavigationRegion2D` describes future companion-pathfinding space
+inside the same 1600-by-900 region. Its conservative clearance excludes the outer walls, stream
+outside the bridge, village block, and tree cluster. It does not move the Seeker or add a
+companion. Every shape, color, obstacle, collision outline, and navigation polygon is an authored
+primitive for scale and behavior testing only; none selects final art or terrain. Close the
+titled **Allrpcs** window to stop the process. To open the project in the editor instead, run
+`godot --editor --path game`.
 
 ## Project boundaries
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
-- `src/Application` contains pure movement and camera-framing calculations and coordinates
-  future domain use cases; it depends only on `Domain`.
+- `src/Application` contains pure movement, camera-framing, and navigation-request validation and
+  coordinates future domain use cases; it depends only on `Domain`.
 - `src/Infrastructure` is the future adapter boundary and depends on `Application`.
 - `game` is the Godot presentation project and depends on `Application`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
-- `tests/Application.Tests` tests pure movement and camera-framing calculation without loading
-  Godot.
+- `tests/Application.Tests` tests pure movement, camera-framing, and navigation-request behavior
+  without loading Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
-Point-and-click movement, zoom or camera-pan input, controller mappings, companions, pathfinding,
-navigation regions, providers, persistence, credentials, signing, installers, and distribution
-configuration are not part of this greybox slice.
+Point-and-click movement, zoom or camera-pan input, controller mappings, companions, navigation
+agents, player or companion path-following, providers, persistence, credentials, signing,
+installers, and distribution configuration are not part of this greybox slice.
 
 ## Licence
 

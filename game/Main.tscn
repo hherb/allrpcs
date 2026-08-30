@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
 [ext_resource type="Script" path="res://FollowCamera.cs" id="3_camera"]
+[ext_resource type="Script" path="res://GreyboxNavigation.cs" id="4_navigation"]
+[ext_resource type="Script" path="res://NavigationSmokeCheck.cs" id="5_navigation_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -44,10 +46,24 @@ begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
+[node name="TemporaryBridge" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(752, 80, 864, 80, 864, 228, 752, 228)
+color = Color(0.62, 0.49, 0.31, 1)
+
+[node name="BridgeOutline" type="Line2D" parent="TemporaryBridge"]
+position = Vector2(752, 80)
+points = PackedVector2Array(0, 0, 112, 0, 112, 148, 0, 148, 0, 0)
+width = 6.0
+default_color = Color(0.294, 0.235, 0.165, 1)
+antialiased = true
+
 [node name="StreamCollision" type="StaticBody2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StreamCollision"]
-polygon = PackedVector2Array(0, 148, 320, 180, 624, 100, 920, 140, 1248, 76, 1600, 108, 1600, 180, 1248, 148, 920, 212, 624, 172, 320, 252, 0, 220)
+[node name="WestCollision" type="CollisionPolygon2D" parent="StreamCollision"]
+polygon = PackedVector2Array(0, 148, 320, 180, 624, 100, 752, 117.3, 752, 189.3, 624, 172, 320, 252, 0, 220)
+
+[node name="EastCollision" type="CollisionPolygon2D" parent="StreamCollision"]
+polygon = PackedVector2Array(864, 132.4, 920, 140, 1248, 76, 1600, 108, 1600, 180, 1248, 148, 920, 212, 864, 204.4)
 
 [node name="VillageGreybox" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(1040, 504, 1456, 504, 1456, 776, 1040, 776)
@@ -126,6 +142,12 @@ position = Vector2(1616, 450)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Right"]
 shape = SubResource("RectangleShape2D_vertical")
+
+[node name="GreyboxNavigation" type="NavigationRegion2D" parent="."]
+script = ExtResource("4_navigation")
+
+[node name="NavigationSmokeCheck" type="Node" parent="."]
+script = ExtResource("5_navigation_check")
 
 [node name="Seeker" type="CharacterBody2D" parent="."]
 position = Vector2(800, 450)
