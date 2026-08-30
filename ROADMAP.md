@@ -131,11 +131,12 @@ Acceptance:
 
 ## Phase 1 — Greybox exploration
 
-Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior and Phase 1b bounded
-camera framing plus representative greybox terrain collision were implemented and verified on
-Apple Silicon macOS on 2026-08-31. Phase 1b defines zoom tuning without adding zoom or camera-pan
-input. See `HANDOVER.md` for the current automated and manual evidence and its platform
-limitations.
+Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior, Phase 1b bounded
+camera framing plus representative greybox terrain collision, and Phase 1c deterministic
+navigation topology with a temporary stream crossing were implemented and verified on Apple
+Silicon macOS on 2026-08-31. Phase 1b defines zoom tuning without adding zoom or camera-pan input;
+Phase 1c adds no navigation agent or companion behavior. See `HANDOVER.md` for the current
+automated and manual evidence and its platform limitations.
 
 - [x] Create a placeholder top-down test region using simple shapes and temporary tiles.
 - [x] Implement keyboard movement for the Seeker.
@@ -144,13 +145,15 @@ limitations.
 - [x] Implement smooth `Camera2D` following.
 - [x] Implement bounded camera framing and useful zoom limits.
 - [x] Add collision for water, buildings, trees, and impassable terrain.
-- [ ] Add a baked `NavigationRegion2D` suitable for companion pathfinding.
+- [x] Add a baked or deterministically authored `NavigationRegion2D` suitable for companion
+  pathfinding.
 - [ ] Implement deterministic healer follow behaviour without an LLM call.
 - [ ] Implement healer wait and move-to-destination behaviour.
 - [ ] Add interaction highlighting and a focused target indicator.
 - [ ] Pause disease time and world decisions during dialogue, reading, and inventory use.
 - [ ] Add a debug overlay for position, region, navigation target, and current world-time event.
-- [ ] Add automated tests for movement boundaries and navigation request validation.
+- [ ] Add automated tests for movement boundaries.
+- [x] Add automated tests for navigation request validation.
 
 Acceptance:
 
