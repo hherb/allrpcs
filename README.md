@@ -1,8 +1,9 @@
 # Allrpcs
 
-Allrpcs is a Godot 4.6 .NET game under development. Its keyboard-movement greybox keeps
-testable movement calculation and future authoritative rules in engine-independent C# projects
-while Godot owns input mapping, physics presentation, camera behavior, and scene authoring.
+Allrpcs is a Godot 4.6 .NET game under development. Its bounded-camera movement greybox keeps
+testable movement and framing calculations plus future authoritative rules in engine-independent
+C# projects while Godot owns input mapping, physics presentation, camera behavior, collision,
+and scene authoring.
 
 ## Prerequisites
 
@@ -53,8 +54,9 @@ project-reference directions listed below.
 `.github/workflows/ci.yml` configures pull-request and `main` checks on explicit stable runner
 images:
 
-- Pure formatting, zero-warning compilation, domain tests, Application movement tests, and
-  architecture tests run on `ubuntu-24.04` without installing or launching Godot.
+- Pure formatting, zero-warning compilation, domain tests, Application movement and camera
+  framing tests, and architecture tests run on `ubuntu-24.04` without installing or launching
+  Godot.
 - The headless main-scene smoke runs separately on `ubuntu-24.04` with Godot 4.6.3 .NET.
 - Unsigned debug exports run natively on `ubuntu-24.04`, Apple Silicon `macos-15`, and
   `windows-2025`. Their targets are Linux x64, macOS Universal 2, and Windows x64.
@@ -110,26 +112,31 @@ godot --path game
 Use W, A, S, and D to move the gold placeholder Seeker around the 1600-by-900 test region. The
 Seeker's named default speed is 240 pixels per second. Diagonal input is normalized so it does
 not move faster than a cardinal direction. The camera follows with a named smoothing speed of
-6, and four thin collision walls keep the Seeker inside the temporary outer border.
+6 and world limits matching the region, so ordinary movement cannot reveal space beyond it.
+Its named minimum, default, and maximum zoom tuning values are 0.75, 1.0, and 2.0. Zoom and
+camera-pan input are intentionally not mapped yet.
 
-The stream, path, village block, colors, and Seeker shape are authored primitives for scale and
-camera testing only; they are not a selected art direction or final assets. Close the titled
-**Allrpcs** window to stop the process. To open the project in the editor instead, run
-`godot --editor --path game`.
+Four thin collision walls keep the Seeker inside the temporary outer border. Simple collision
+geometry also blocks the blue stream, the complete grey village block, and a representative
+three-tree cluster. The path remains traversable. Every shape, color, obstacle, and collision
+outline is an authored primitive for scale and camera testing only; none selects final art or
+terrain. Close the titled **Allrpcs** window to stop the process. To open the project in the
+editor instead, run `godot --editor --path game`.
 
 ## Project boundaries
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
-- `src/Application` contains pure movement calculation and coordinates future domain use cases;
-  it depends only on `Domain`.
+- `src/Application` contains pure movement and camera-framing calculations and coordinates
+  future domain use cases; it depends only on `Domain`.
 - `src/Infrastructure` is the future adapter boundary and depends on `Application`.
 - `game` is the Godot presentation project and depends on `Application`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
-- `tests/Application.Tests` tests pure movement calculation without loading Godot.
+- `tests/Application.Tests` tests pure movement and camera-framing calculation without loading
+  Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
-Point-and-click movement, controller mappings, authored terrain collision, companions,
-pathfinding, providers, persistence, credentials, signing, installers, and distribution
+Point-and-click movement, zoom or camera-pan input, controller mappings, companions, pathfinding,
+navigation regions, providers, persistence, credentials, signing, installers, and distribution
 configuration are not part of this greybox slice.
 
 ## Licence

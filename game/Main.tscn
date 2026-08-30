@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -12,6 +12,12 @@ size = Vector2(32, 900)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seeker"]
 radius = 18.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_village"]
+size = Vector2(416, 272)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tree"]
+radius = 34.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -38,6 +44,11 @@ begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
 
+[node name="StreamCollision" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StreamCollision"]
+polygon = PackedVector2Array(0, 148, 320, 180, 624, 100, 920, 140, 1248, 76, 1600, 108, 1600, 180, 1248, 148, 920, 212, 624, 172, 320, 252, 0, 220)
+
 [node name="VillageGreybox" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(1040, 504, 1456, 504, 1456, 776, 1040, 776)
 color = Color(0.333, 0.345, 0.337, 1)
@@ -45,6 +56,44 @@ color = Color(0.333, 0.345, 0.337, 1)
 [node name="VillageCourt" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(1112, 560, 1384, 560, 1384, 720, 1112, 720)
 color = Color(0.506, 0.471, 0.384, 1)
+
+[node name="VillageCollision" type="StaticBody2D" parent="."]
+position = Vector2(1248, 640)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VillageCollision"]
+shape = SubResource("RectangleShape2D_village")
+
+[node name="TreeCluster" type="Node2D" parent="."]
+
+[node name="TreeWest" type="StaticBody2D" parent="TreeCluster"]
+position = Vector2(248, 400)
+
+[node name="Canopy" type="Polygon2D" parent="TreeCluster/TreeWest"]
+polygon = PackedVector2Array(0, -40, 28, -28, 40, 0, 28, 28, 0, 40, -28, 28, -40, 0, -28, -28)
+color = Color(0.251, 0.376, 0.29, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCluster/TreeWest"]
+shape = SubResource("CircleShape2D_tree")
+
+[node name="TreeNorth" type="StaticBody2D" parent="TreeCluster"]
+position = Vector2(312, 344)
+
+[node name="Canopy" type="Polygon2D" parent="TreeCluster/TreeNorth"]
+polygon = PackedVector2Array(0, -40, 28, -28, 40, 0, 28, 28, 0, 40, -28, 28, -40, 0, -28, -28)
+color = Color(0.29, 0.416, 0.314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCluster/TreeNorth"]
+shape = SubResource("CircleShape2D_tree")
+
+[node name="TreeEast" type="StaticBody2D" parent="TreeCluster"]
+position = Vector2(376, 408)
+
+[node name="Canopy" type="Polygon2D" parent="TreeCluster/TreeEast"]
+polygon = PackedVector2Array(0, -40, 28, -28, 40, 0, 28, 28, 0, 40, -28, 28, -40, 0, -28, -28)
+color = Color(0.224, 0.353, 0.267, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCluster/TreeEast"]
+shape = SubResource("CircleShape2D_tree")
 
 [node name="RegionOutline" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900, 0, 0)
