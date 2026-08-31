@@ -199,6 +199,18 @@ character and an object with the same text remain different identifiers. These t
 keys only: they do not contain mutable entity state, scenario content, Godot types, provider or
 persistence details, or serialization-framework behavior.
 
+## Controller types
+
+`Allrpcs.Domain.Controllers.ControllerType` defines exactly four controller types: `human`,
+`llm`, `deterministic-test`, and `dormant`. `All` exposes the complete set in that stable order,
+while `Value` and `ToString()` expose each type's canonical text. `Parse` accepts only those exact
+values and returns the corresponding defined instance; case changes, whitespace, provider names,
+and other unknown text are rejected rather than normalized or registered.
+
+These values describe controller categories only. They do not create controller instances,
+select providers or models, define prompts or behavior, attach a controller to a character, or
+introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
