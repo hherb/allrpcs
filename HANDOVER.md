@@ -12,8 +12,13 @@ movement rule, input mapping, collider, or scene geometry. On 2026-08-31, the us
 current native WASD collision and bridge traversal plus camera, healer-command, and
 interaction-focus paths all behaved normally. The movement-boundary roadmap item is ticked.
 
-No commit, push, or pull request exists for Phase 1g yet. Public visibility, merging, releases,
-artifact distribution, credentials, signing, and notarization remain unauthorized.
+The private remote has open draft PR #9 for this branch. The reviewed Phase 1g implementation and
+local evidence are commit `cd29cbf`; this documentation update follows it. All five
+credential-free jobs in its first pull-request run `33384667065` passed, including the Linux
+headless Godot smoke with the new boundary check. Re-query the final branch head and checks after
+this documentation commit rather than assuming the earlier commit's result applies to it. The
+pull request is not authorized to merge. Public visibility, merging, releases, artifact
+distribution, credentials, signing, and notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -21,6 +26,9 @@ At the start of the next session, verify current state rather than relying only 
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
+gh pr view feat/seeker-movement-boundary-coverage --repo hherb/allrpcs \
+  --json number,state,isDraft,headRefName,headRefOid,url
+gh pr checks feat/seeker-movement-boundary-coverage --repo hherb/allrpcs
 ```
 
 ## Phase 1g implementation
@@ -71,6 +79,12 @@ with .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
   at a final 72.02504-pixel separation; and
 - the interaction-focus smoke again proved nearest selection, authored-order ties, focus change,
   out-of-range clearing, and hidden and disabled exclusions.
+
+The first hosted pull-request run `33384667065` passed pure C# quality and tests, the Linux
+headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2, and
+Windows x64. Those hosted outputs remain unsigned development evidence, not releases or
+distribution artifacts. The final documentation commit will create a new branch head, so its
+checks must be queried separately.
 
 The focused format/build initially ran in the restricted environment and completed serially in
 2 minutes 8.50 seconds. Godot verification and the complete quality sequence ran from the host
