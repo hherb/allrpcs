@@ -12,11 +12,12 @@ smokes pass. On 2026-08-31, the user confirmed the visible native macOS focus be
 unchanged movement, collision, camera, and healer-command paths. The interaction-highlight
 roadmap item is ticked.
 
-No pull request has been opened yet. The implementation is uncommitted at this handover-writing
-point; re-query the final branch head, commit, draft pull request, and hosted checks after
-publication rather than treating this sentence as final publication evidence. The pull request
-is not authorized to merge. Public visibility, merging, releases, artifact distribution,
-credentials, signing, and notarization remain unauthorized.
+The private remote has open draft PR #8 for this branch. The reviewed Phase 1f implementation is
+commit `d4308c8`; this documentation update follows it. At first publication, all five
+credential-free CI jobs in run `33383088982` were in progress. Re-query the final branch head and
+checks rather than treating that initial snapshot as a result. The pull request is not authorized
+to merge. Public visibility, merging, releases, artifact distribution, credentials, signing, and
+notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
