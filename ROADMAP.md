@@ -167,12 +167,14 @@ Acceptance:
 ## Phase 2 — Authoritative world and discovery
 
 Phase 2a introduced engine-independent, opaque typed identifiers with a shared canonical-text
-contract on 2026-08-31. No entity state, scenario content, serialization framework, persistence,
-or engine integration was added. See `HANDOVER.md` for exact validation and test evidence.
+contract on 2026-08-31. Phase 2b added the closed set of human, LLM, deterministic-test, and
+dormant controller-type primitives with stable canonical text on the same date. No controller
+instances or behavior, entity state, scenario content, serialization framework, persistence, or
+engine integration was added. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
-- [ ] Define controller types: human, LLM, deterministic test, and dormant.
+- [x] Define controller types: human, LLM, deterministic test, and dormant.
 - [ ] Define the character model: identity, public/private background, capabilities,
   limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller.
 - [ ] Define location, object, item, and environmental-state models.
