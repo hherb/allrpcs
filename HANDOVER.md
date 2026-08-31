@@ -13,9 +13,14 @@ for authored capabilities and limitations plus ordered, duplicate-free collectio
 The broader character-model roadmap item remains unticked because condition, inventory,
 knowledge, beliefs, relationships, goals, and controller assignment do not yet exist.
 
-No pull request exists for the current branch yet. The current authorization is to commit the
-reviewed slice, push this branch, and open a draft pull request. It does not authorize merge,
-public visibility, releases, artifact distribution, credentials, signing, or notarization.
+The private remote has open draft PR #13 for this branch. The reviewed Phase 2c2 implementation,
+local evidence, and initial handover are commit `797a9cb`; this hosted-evidence update follows it.
+All five credential-free jobs in pull-request run `33440062401` passed, including pure C# quality,
+the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2,
+and Windows x64. Re-query the final branch head and checks after this documentation commit rather
+than assuming the earlier commit's result applies to it. The pull request is not authorized to
+merge. Public visibility, merging, releases, artifact distribution, credentials, signing, and
+notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -74,6 +79,17 @@ The navigation smoke synchronized the 98-vertex, 66-polygon region at navigation
 and found the bridge route while rejecting representative obstacle targets. The healer-command,
 interaction-focus, and movement-boundary smokes repeated their complete established acceptance
 paths without a regression.
+
+Pull-request run `33440062401` passed pure C# quality and tests, the Linux headless Godot smoke,
+and unsigned development builds on Linux x64, macOS Universal 2, and Windows x64 at implementation
+commit `797a9cb`. The three unexpired hosted artifacts are named
+`UNSIGNED-DEVELOPMENT-linux-x64`, `UNSIGNED-DEVELOPMENT-macos-universal`, and
+`UNSIGNED-DEVELOPMENT-windows-x64`. The workflow explicitly rejected a bundle-level signature
+from the macOS output and an Authenticode signature from the Windows output before upload. These
+artifacts remain unsigned development evidence, not releases or distribution artifacts. The
+macOS job's pinned Godot and export-template setup was unusually slow but completed successfully;
+the job passed in 11 minutes 26 seconds without a rerun. The final documentation commit creates a
+new branch head, so its checks must be queried separately.
 
 The focused test host first compiled inside the restricted environment, then could not bind its
 loopback socket. The identical focused test and complete quality sequence passed from the host
