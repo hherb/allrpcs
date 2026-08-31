@@ -135,11 +135,12 @@ Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior, Phas
 camera framing plus representative greybox terrain collision, Phase 1c deterministic navigation
 topology with a temporary stream crossing, Phase 1d deterministic healer follow behavior, Phase
 1e deterministic healer wait and move-to-destination behavior, and Phase 1f deterministic
-interaction-focus selection were implemented on Apple Silicon macOS on 2026-08-31. Phase 1b
-defines zoom tuning without adding zoom or camera-pan input; Phases 1e and 1f use only temporary
-greybox controls and markers and add no dialogue, natural-language interpretation, authoritative
-objects, perception model, or interaction outcome. Phase 1f automated and ordinary-input native
-evidence is current. See `HANDOVER.md` for the exact evidence and platform limitations.
+interaction-focus selection were implemented on Apple Silicon macOS on 2026-08-31. Phase 1g's
+credential-free Seeker movement-boundary check and ordinary-input regression evidence are also
+current. Phase 1b defines zoom tuning without adding zoom or camera-pan input; Phases 1e and 1f
+use only temporary greybox controls and markers and add no dialogue, natural-language
+interpretation, authoritative objects, perception model, or interaction outcome. See
+`HANDOVER.md` for the exact evidence and platform limitations.
 
 - [x] Create a placeholder top-down test region using simple shapes and temporary tiles.
 - [x] Implement keyboard movement for the Seeker.
@@ -155,7 +156,7 @@ evidence is current. See `HANDOVER.md` for the exact evidence and platform limit
 - [x] Add interaction highlighting and a focused target indicator.
 - [ ] Pause disease time and world decisions during dialogue, reading, and inventory use.
 - [ ] Add a debug overlay for position, region, navigation target, and current world-time event.
-- [ ] Add automated tests for movement boundaries.
+- [x] Add automated tests for movement boundaries.
 - [x] Add automated tests for navigation request validation.
 
 Acceptance:

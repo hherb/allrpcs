@@ -2,22 +2,23 @@
 
 ## Current state
 
-PR #7 merged Phase 1e into `origin/main` at merge commit `6724c3f`. All five credential-free
-jobs in its final pull-request run `33342873481` passed. The current branch,
-`feat/interaction-focus-foundation`, is based directly on that merge.
+PR #8 merged Phase 1f into `origin/main` at merge commit `e516398`. All five credential-free
+jobs in its final pull-request run `33383155284` passed. The current branch,
+`feat/seeker-movement-boundary-coverage`, is based directly on that merge.
 
-Phase 1f, interaction highlighting and focused-target indicator foundation, is implemented on
-the current branch. Pure tests, the full zero-warning build, and all three independent Godot
-smokes pass. On 2026-08-31, the user confirmed the visible native macOS focus behavior and the
-unchanged movement, collision, camera, and healer-command paths. The interaction-highlight
-roadmap item is ticked.
+Phase 1g, automated Seeker movement-boundary coverage, is implemented on the current branch.
+The new engine-side check and the complete local quality sequence pass. It changes no production
+movement rule, input mapping, collider, or scene geometry. On 2026-08-31, the user confirmed the
+current native WASD collision and bridge traversal plus camera, healer-command, and
+interaction-focus paths all behaved normally. The movement-boundary roadmap item is ticked.
 
-The private remote has open draft PR #8 for this branch. The reviewed Phase 1f implementation is
-commit `d4308c8`; this documentation update follows it. At first publication, all five
-credential-free CI jobs in run `33383088982` were in progress. Re-query the final branch head and
-checks rather than treating that initial snapshot as a result. The pull request is not authorized
-to merge. Public visibility, merging, releases, artifact distribution, credentials, signing, and
-notarization remain unauthorized.
+The private remote has open draft PR #9 for this branch. The reviewed Phase 1g implementation and
+local evidence are commit `cd29cbf`; this documentation update follows it. All five
+credential-free jobs in its first pull-request run `33384667065` passed, including the Linux
+headless Godot smoke with the new boundary check. Re-query the final branch head and checks after
+this documentation commit rather than assuming the earlier commit's result applies to it. The
+pull request is not authorized to merge. Public visibility, merging, releases, artifact
+distribution, credentials, signing, and notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -25,44 +26,34 @@ At the start of the next session, verify current state rather than relying only 
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
-gh pr view feat/interaction-focus-foundation --repo hherb/allrpcs \
+gh pr view feat/seeker-movement-boundary-coverage --repo hherb/allrpcs \
   --json number,state,isDraft,headRefName,headRefOid,url
-gh pr checks feat/interaction-focus-foundation --repo hherb/allrpcs
+gh pr checks feat/seeker-movement-boundary-coverage --repo hherb/allrpcs
 ```
 
-## Phase 1f implementation
+## Phase 1g implementation
 
 The slice remains within its original boundary:
 
-- `src/Application/Interaction/InteractionFocusSelector.cs` accepts at most 32 temporary
-  candidates, validates finite Seeker and candidate positions plus a finite positive inclusive
-  range, and selects only visible, enabled candidates in range. Nearest wins and exact distance
-  ties preserve authored input order. It returns only the caller's list index and distance; it
-  introduces no Godot dependency, object identity, stable identifier, perception state, or
-  interaction outcome.
-- `tests/Application.Tests/InteractionFocusSelectorTests.cs` adds 19 focused cases covering the
-  inclusive boundary, nearest selection, deterministic ties, hidden and disabled candidates,
-  empty and fully ineligible lists, the candidate cap, and invalid positions and ranges. The
-  Application suite now has 100 passing cases.
-- `game/GreyboxInteractionTarget.cs` adapts one temporary authored marker to the pure candidate
-  record and owns only its visible yellow focus indicator. The hidden marker is also absent from
-  scene presentation.
-- `game/InteractionFocusController.cs` evaluates four authored markers against the named
-  112-pixel range every frame, presents exactly one selected indicator and matching temporary
-  status, or clears both when no marker is eligible. Authored child order is the presentation-only
-  tie-break order.
-- `game/Main.tscn` adds only two obvious eligible markers, one hidden check marker, one visible
-  disabled check marker, focus rings, and one overlay status row. These are temporary primitives
-  for behavior evidence, not authoritative world objects or final interaction UI.
-- `game/InteractionFocusSmokeCheck.cs` proves representative nearest selection, authored-order
-  tie-breaking, focus change, out-of-range clearing, hidden target absence, disabled target
-  exclusion, and exact one-indicator presentation.
-- `scripts/smoke-godot.sh` runs the focus smoke in its own bounded, credential-free headless
-  launch so its requested tree exit does not interfere with the existing navigation and healer
-  checks.
-- `README.md` documents the pure/presentation boundary, temporary focus behavior, automated
-  coverage, and exclusions. `ROADMAP.md` records the completed implementation and current
-  ordinary-input evidence.
+- `game/SeekerMovementBoundarySmokeCheck.cs` uses deterministic, test-only Godot physics motions
+  from the existing Seeker `CharacterBody2D`. It verifies all four authored outer walls, a stream
+  crossing outside the bridge, the village block, and the west tree in the representative tree
+  cluster report the exact expected authored collider.
+- The same check proves direct traversal over the bridge in both directions and across
+  representative open lower terrain without a collision. It disables the Seeker and healer
+  physics callbacks only while the explicit smoke environment variable is active, so ordinary
+  launches retain their existing behavior.
+- `game/Main.tscn` registers only the inert-by-default smoke node and script. No production
+  collider, collision layer, body shape, position, input action, camera value, navigation
+  polygon, healer behavior, or interaction-focus behavior changed.
+- `scripts/smoke-godot.sh` adds the bounded
+  `ALLRPCS_SEEKER_BOUNDARY_CHECK=1 godot --headless --path game --quit-after 30` launch to local
+  and hosted Godot coverage.
+- Existing pure `MovementCalculatorTests` already cover no input, cardinal and proportional
+  velocity, normalized diagonal speed, invalid speed, and non-finite input. No engine-independent
+  boundary policy was identified, so this slice does not duplicate Godot physics in Application.
+- `README.md` documents the coverage, direct command, test-only scope, and Application/Godot
+  ownership boundary. `ROADMAP.md` records the completed automated and ordinary-input evidence.
 
 ## Review and validation
 
@@ -71,94 +62,105 @@ The slice remains within its original boundary:
 On 2026-08-31, the current implementation produced this local evidence on Apple Silicon macOS
 with .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
 
-- `dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-restore -m:1
-  /nr:false` passed all 100 Application cases after the test-first selector implementation;
-- `dotnet build Allrpcs.sln --no-restore -m:1 /nr:false` built all seven projects with zero
-  warnings and zero errors;
+- `dotnet format Allrpcs.sln --no-restore --verify-no-changes` and
+  `dotnet build Allrpcs.sln --no-restore -m:1 /nr:false` passed; all seven projects built with
+  zero warnings and zero errors;
+- `ALLRPCS_SEEKER_BOUNDARY_CHECK=1 godot --headless --path game --quit-after 30` passed all four
+  outer walls, the representative stream, village, and tree collisions, both bridge directions,
+  and open lower terrain;
 - the final complete `./scripts/quality.sh` passed action linting, restore, formatting
   verification, the zero-warning build, the one Domain test, all 100 Application tests, all six
-  architecture reference tests, all three Godot smokes, and the bounded 60-frame native
-  graphical launch;
-- rerunning `ALLRPCS_NAVIGATION_CHECK=1 godot --headless --path game --quit-after 120`
-  independently synchronized the 98-vertex, 66-polygon region at navigation map iteration 2,
-  found the bridge route, rejected representative obstacles, and exited 0;
-- rerunning `ALLRPCS_HEALER_COMMAND_CHECK=1 godot --headless --path game --quit-after 1500`
-  independently proved follow, stable wait, invalid and excluded move rejection, valid move
-  completion, automatic wait, body separation, and return to follow through the bridge at a final
-  72.02504-pixel separation, then exited 0;
-- `ALLRPCS_INTERACTION_FOCUS_CHECK=1 godot --headless --path game --quit-after 30` proved nearest
-  selection, authored-order ties, focus change, out-of-range clearing, and hidden and disabled
-  exclusions, then exited 0; and
-- the final bounded graphical launch selected the Compatibility renderer on the Apple M3 Max and
-  exited 0.
+  architecture reference tests, all four Godot smokes, and the bounded 60-frame native graphical
+  launch;
+- the navigation smoke again synchronized the 98-vertex, 66-polygon region at navigation map
+  iteration 2, found the bridge route, and rejected representative obstacle targets;
+- the healer-command smoke again proved follow, stable wait, invalid and excluded move rejection,
+  valid move completion, automatic wait, body separation, and return to follow through the bridge
+  at a final 72.02504-pixel separation; and
+- the interaction-focus smoke again proved nearest selection, authored-order ties, focus change,
+  out-of-range clearing, and hidden and disabled exclusions.
 
-The initial sandboxed `dotnet test` attempt failed because the sandbox denied MSBuild's local
-named-pipe binding; the host-shell rerun passed and this is not a product failure. A sandboxed
-Godot launch similarly could not open its normal `user://` log and crashed in log rotation; every
-reported Godot result above is from the required host-shell rerun. The intermittent full-script
-stall showed only a shell stuck before a Godot process started; the same three Godot commands
-passed independently, and the subsequent complete quality rerun passed end to end.
+The first hosted pull-request run `33384667065` passed pure C# quality and tests, the Linux
+headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2, and
+Windows x64. Those hosted outputs remain unsigned development evidence, not releases or
+distribution artifacts. The final documentation commit will create a new branch head, so its
+checks must be queried separately.
+
+The focused format/build initially ran in the restricted environment and completed serially in
+2 minutes 8.50 seconds. Godot verification and the complete quality sequence ran from the host
+shell because Godot requires access to its normal `user://` log and native runtime. No sandbox
+failure is being reported as a product result.
 
 ### Native visual and interaction evidence
 
-The current branch launched in a visible native 960-by-540 macOS window with the Compatibility
-renderer on the Apple M3 Max. The initial midpoint presentation was legible: only the herb patch
-had the bright yellow **FOCUS** ring, the overlay said `Interaction focus: HERB PATCH`, the hidden
-marker was absent, and the disabled marker had no focus indicator. There were no visible Godot
-errors or warnings.
+The complete quality sequence launched the current native scene with Godot's Compatibility
+renderer on the Apple M3 Max and exited cleanly after 60 frames. A longer native run then used
+ordinary input in the current branch. The user confirmed understandable WASD movement and
+collision at the authored boundaries and obstacles, bridge traversal, camera following, X/M
+healer-command behavior, and interaction-focus changing and clearing all behaved normally.
 
-After the app was relaunched, the user confirmed on 2026-08-31 that ordinary WASD movement changed
-focus between the eligible herb and stone markers and cleared it out of range, the hidden marker
-stayed absent, and the disabled marker never received the indicator. The user also confirmed that
-movement, collision, camera behavior, and the X/M healer command modes continued to work
-correctly.
+## Review findings
+
+The reviewed diff is narrow and follows the intended trust boundary: the new file is a
+credential-free test adapter under `game`, the scene adds one disabled-by-default check node, and
+the smoke script is the only execution-path change. The check uses the authored Seeker body and
+exact collider nodes rather than copying scene coordinates into Application collision policy.
+
+The test-only sweeps start clear of every obstacle, request a motion through the expected shape,
+and assert the reported collider identity. Clear-path cases use the same body and fail on any
+collider. The bridge is exercised in both directions. The check exits on its first failure,
+remains bounded by the shell timeout, and cannot affect ordinary launches without its explicit
+environment variable.
+
+No correctness, security, architecture, or scope issue remained after review. The authored test
+coordinates are intentionally coupled to the greybox scene: a later deliberate geometry change
+must update this regression evidence with review.
 
 ## Limitations and exclusions
 
-- Phase 1f has not behaviorally exercised Windows, Linux, alternate keyboard layouts, window
+- Phase 1g has not behaviorally exercised Windows, Linux, alternate keyboard layouts, window
   resizing, other resolutions, arrow keys, gamepads, accessibility, performance, packaging,
   installation, signing, or distribution.
-- The pure tests validate finite input, eligibility, inclusive range, list bounds, proximity, and
-  tie policy. They do not load Godot, simulate input or physics, or prove scene presentation.
-  The credential-free focus smoke proves representative presentation transitions by placing the
-  Seeker at deterministic positions; the current macOS manual run separately validates ordinary
-  player input and presentation.
-- The focus smoke is representative rather than exhaustive for every position, trajectory,
-  dynamic visibility change, scene mutation, or overlapping candidate set.
-- Candidate indices and authored child order are deliberately local presentation details, not
-  durable identity. The four markers, labels, colors, 112-pixel range, focus ring, and status row
-  are temporary greybox values.
-- No interaction action or outcome, authoritative object, stable typed identifier, perception or
-  visibility model, discovery state, inventory, disease, world-time pause, debug overlay,
-  natural-language interpretation, dialogue, LLM call, provider adapter, autonomous planning,
-  persistence, point-and-click movement, zoom/pan input, broader controller mapping, final UI,
-  final art, audio, networking, packaging, credential, release, or distribution path was added.
+- Test-only `MoveAndCollide` sweeps prove the existing body and authored shapes block or permit
+  representative motions. They do not synthesize keyboard events, time a player's multi-frame
+  trajectory, exercise sliding at every contact angle, or exhaust every pixel of every collider.
+- The stream, village, and tree checks each use one representative approach. All four outer walls
+  and both directions through the bridge are covered. This is greybox regression evidence, not a
+  general geometry validator or a final input-UX test.
+- The bounded graphical launch proves native startup and renderer selection. The separate current
+  macOS run supplies ordinary-input regression evidence, but it is one qualitative manual pass,
+  not exhaustive automation or cross-platform evidence.
+- No point-and-click movement, interaction action or outcome, authoritative object, stable typed
+  identifier, perception or visibility model, discovery state, inventory, disease, world-time
+  pause, debug overlay, natural-language interpretation, dialogue, LLM call, provider adapter,
+  autonomous planning, persistence, zoom/pan input, broader controller mapping, final UI, final
+  art, audio, networking, packaging, credential, release, or distribution path was added.
 
 ## Exact next bounded slice
 
-After the user reports that pull request merged, take **Phase 1g: automated Seeker
-movement-boundary coverage**.
+After the user reports that the Phase 1g pull request merged, take **Phase 2a: stable typed
+identifier primitives**.
 
-Acceptance boundary for Phase 1g:
+Acceptance boundary for Phase 2a:
 
-1. Add a credential-free Godot physics check for representative outer-border, stream-bank,
-   village, and tree-cluster collisions using the existing authored scene and Seeker body.
-2. Prove the bridge and representative open terrain remain traversable; keep the check
-   deterministic and bounded without simulating final input UX.
-3. Reuse existing pure movement normalization coverage and add pure code only if a genuine
-   engine-independent boundary policy is identified; do not duplicate Godot physics in
-   Application.
-4. Manually confirm the current native platform still has understandable WASD movement,
-   collision, camera, healer-command, and interaction-focus behavior.
-5. Update `README.md`, `ROADMAP.md`, and this file, then commit only reviewed slice paths.
+1. Add small engine-independent Domain value types for character, object, location, evidence,
+   knowledge, and world-event identifiers, with one explicit canonical text and validation
+   contract shared across the types.
+2. Add focused pure tests for valid construction, invalid values, type-safe equality, and
+   canonical text round trips. Keep identifiers opaque; do not attach mutable entity state.
+3. Preserve `Domain -> []` and avoid Godot, provider, persistence, UI, serialization-framework,
+   or platform dependencies.
+4. Update `README.md`, `ROADMAP.md`, and this file, then commit only reviewed slice paths.
 
-Explicit exclusions for Phase 1g:
+Explicit exclusions for Phase 2a:
 
-- Do not add point-and-click movement, interaction actions, authoritative Phase 2 objects or
-  perception, dialogue, natural-language interpretation, LLM calls, providers, inventory,
-  disease, persistence, final UI/art/audio, networking, or packaging.
-- Keep world-decision pausing and the world-time debug overlay deferred until the authoritative
-  systems they would display or pause exist; do not create fake Phase 2 or disease state early.
+- Do not add character or world-object models, controller types, perception, discovery,
+  inventory, event-log storage, save schemas, database adapters, dialogue, LLM calls, providers,
+  credentials, or UI.
+- Do not invent scenario content or migrate temporary Phase 1 marker indices and authored order
+  into durable identity before their authoritative models exist.
+- Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
+  until their own retained prototype or authoritative-system prerequisites exist.
 - Do not change repository visibility, merge pull requests, create releases, distribute
   artifacts, or add credentials without explicit user authorization.
 
