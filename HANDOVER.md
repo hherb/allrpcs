@@ -11,9 +11,13 @@ pure tests and documentation. It adds no entity state, scenario content, Godot i
 provider, persistence, UI, or serialization-framework behavior. The corresponding Phase 2
 roadmap item is ticked.
 
-The branch has not yet been pushed and has no pull request at this handover checkpoint. The user
-has authorized committing, pushing, and opening a draft pull request once review and validation
-are satisfactory. Public visibility, merging, releases, artifact distribution, credentials,
+The private remote has open draft PR #10 for this branch. The reviewed Phase 2a implementation
+and local evidence are commit `0750b4c`; this documentation update follows it. All five
+credential-free jobs in its first pull-request run `33388975608` passed, including pure C#
+quality, the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS
+Universal 2, and Windows x64. Re-query the final branch head and checks after this documentation
+commit rather than assuming the earlier commit's result applies to it. The pull request is not
+authorized to merge. Public visibility, merging, releases, artifact distribution, credentials,
 signing, and notarization remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
@@ -68,6 +72,12 @@ The navigation smoke synchronized the 98-vertex, 66-polygon region at navigation
 and found the bridge route while rejecting representative obstacle targets. The healer-command,
 interaction-focus, and movement-boundary smokes all repeated their complete established Phase 1
 acceptance paths without a regression.
+
+The first hosted pull-request run `33388975608` passed pure C# quality and tests, the Linux
+headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2, and
+Windows x64. Those hosted outputs remain unsigned development evidence, not releases or
+distribution artifacts. The final documentation commit will create a new branch head, so its
+checks must be queried separately.
 
 The focused .NET test execution ran from the host shell because the restricted environment
 denied the test runner's loopback socket. The focused format and build ran in the restricted
