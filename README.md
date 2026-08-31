@@ -183,6 +183,22 @@ The Godot scene also owns credential-free engine checks for navigation topology,
 movement, interaction-focus presentation, and Seeker collision boundaries. These checks load the
 authored scene; they do not move Godot physics or presentation policy into `Application`.
 
+## Stable domain identifiers
+
+`Allrpcs.Domain.Identifiers` defines distinct immutable identifiers for characters, world
+objects, locations, evidence, knowledge, and authoritative world events. They share one
+canonical-text contract: 1 to 64 characters, beginning with a lowercase ASCII letter and then
+containing only lowercase ASCII letters, digits, and single internal hyphens. For example,
+`healer`, `village-square-2`, and `patient-stabilized` are canonical. Inputs are validated rather
+than normalized, so case, whitespace, underscores, repeated hyphens, leading or trailing hyphens,
+and non-ASCII text are rejected.
+
+Each identifier's `Value` and `ToString()` return the same canonical text, and its `Parse` method
+round-trips that text. Equality requires both the identifier type and its canonical value, so a
+character and an object with the same text remain different identifiers. These types are opaque
+keys only: they do not contain mutable entity state, scenario content, Godot types, provider or
+persistence details, or serialization-framework behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
