@@ -211,6 +211,25 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
+## Character identity and authored backgrounds
+
+`Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
+display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
+code units as measured by .NET `string.Length`, and are retained exactly rather than trimmed,
+case-folded, or otherwise normalized. The immutable value compares by both identifier and display
+name.
+
+`PublicCharacterBackground` and `PrivateCharacterBackground` are separate immutable value types.
+Their structural separation lets future filtered views carry a public background without also
+carrying private text. Both retain authored text exactly, explicitly permit an empty string when
+no background is authored, reject null, and are bounded to 4,000 UTF-16 code units. Private
+background is ordinary authored character state: it is not hidden chain-of-thought, a credential
+container, arbitrary metadata, or a provider instruction channel.
+
+This boundary does not yet define a complete character aggregate, capabilities, limitations,
+condition, inventory, knowledge, beliefs, relationships, goals, controller assignment, mutable
+state, perception filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,

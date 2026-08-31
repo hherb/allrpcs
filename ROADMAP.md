@@ -168,9 +168,12 @@ Acceptance:
 
 Phase 2a introduced engine-independent, opaque typed identifiers with a shared canonical-text
 contract on 2026-08-31. Phase 2b added the closed set of human, LLM, deterministic-test, and
-dormant controller-type primitives with stable canonical text on the same date. No controller
-instances or behavior, entity state, scenario content, serialization framework, persistence, or
-engine integration was added. See `HANDOVER.md` for exact validation and test evidence.
+dormant controller-type primitives with stable canonical text on the same date. Phase 2c1 then
+introduced immutable character identity plus structurally distinct public and private authored
+background values. The broader character-model item remains incomplete and unticked. No
+controller instances or behavior, complete character aggregate, mutable entity state, scenario
+content, serialization framework, persistence, or engine integration was added. See
+`HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
