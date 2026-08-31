@@ -133,11 +133,12 @@ Acceptance:
 
 Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior, Phase 1b bounded
 camera framing plus representative greybox terrain collision, Phase 1c deterministic navigation
-topology with a temporary stream crossing, and Phase 1d deterministic healer follow behavior
-were implemented and verified on Apple Silicon macOS on 2026-08-31. Phase 1b defines zoom tuning
-without adding zoom or camera-pan input; Phase 1d adds no healer wait or move-to-destination
-command. See `HANDOVER.md` for the current automated and manual evidence and its platform
-limitations.
+topology with a temporary stream crossing, Phase 1d deterministic healer follow behavior, and
+Phase 1e deterministic healer wait and move-to-destination behavior were implemented and verified
+on Apple Silicon macOS on 2026-08-31. Phase 1b defines zoom tuning without adding zoom or
+camera-pan input; Phase 1e uses only temporary greybox command controls and adds no dialogue or
+natural-language interpretation. See `HANDOVER.md` for the current automated and manual evidence
+and its platform limitations.
 
 - [x] Create a placeholder top-down test region using simple shapes and temporary tiles.
 - [x] Implement keyboard movement for the Seeker.
@@ -149,7 +150,7 @@ limitations.
 - [x] Add a baked or deterministically authored `NavigationRegion2D` suitable for companion
   pathfinding.
 - [x] Implement deterministic healer follow behaviour without an LLM call.
-- [ ] Implement healer wait and move-to-destination behaviour.
+- [x] Implement healer wait and move-to-destination behaviour.
 - [ ] Add interaction highlighting and a focused target indicator.
 - [ ] Pause disease time and world decisions during dialogue, reading, and inventory use.
 - [ ] Add a debug overlay for position, region, navigation target, and current world-time event.
@@ -158,7 +159,7 @@ limitations.
 
 Acceptance:
 
-- [ ] The Seeker and placeholder healer can traverse the greybox region, separate, regroup,
+- [x] The Seeker and placeholder healer can traverse the greybox region, separate, regroup,
   collide correctly, and move without any LLM or network access.
 
 ## Phase 2 — Authoritative world and discovery

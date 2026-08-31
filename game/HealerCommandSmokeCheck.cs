@@ -1,34 +1,41 @@
+using Allrpcs.Application.Movement;
 using Godot;
 
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Runs credential-free healer-follow assertions when explicitly enabled by the smoke script.
+/// Runs credential-free healer-command assertions when explicitly enabled by the smoke script.
 /// </summary>
-public partial class HealerFollowSmokeCheck : Node
+public partial class HealerCommandSmokeCheck : Node
 {
-    private const string CheckEnvironmentVariable = "ALLRPCS_HEALER_FOLLOW_CHECK";
+    private const string CheckEnvironmentVariable = "ALLRPCS_HEALER_COMMAND_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const int MaximumSynchronizationPhysicsFrames = 60;
     private const int MaximumFollowPhysicsFrames = 300;
-    private const int StableStopPhysicsFrames = 30;
-    private const int MaximumBridgePhysicsFrames = 600;
+    private const int StableWaitPhysicsFrames = 30;
+    private const int MaximumMovePhysicsFrames = 600;
+    private const int MaximumReturnPhysicsFrames = 600;
     private const float NavigationSynchronizationTolerancePixels = 1.0f;
-    private const float FollowArrivalTolerancePixels = 2.0f;
+    private const float ArrivalTolerancePixels = 2.0f;
     private const float StablePositionTolerancePixels = 1.0f;
     private const float MinimumBodySeparationPixels = 35.0f;
     private const float RequiredInitialSeparationPixels = 200.0f;
     private const float RequiredFollowDisplacementPixels = 100.0f;
+    private const float RequiredMoveDisplacementPixels = 300.0f;
     private const float LowerBankThresholdY = 286.0f;
 
     private static readonly Vector2 FollowStart = new(560.0f, 450.0f);
     private static readonly Vector2 LowerFieldTarget = new(800.0f, 450.0f);
-    private static readonly Vector2 UpperFieldStart = new(808.0f, 64.0f);
+    private static readonly Vector2 SeparatedWaitTarget = new(960.0f, 450.0f);
+    private static readonly Vector2 ValidMoveDestination = new(808.0f, 64.0f);
+    private static readonly Vector2 InvalidDestination = new(-1.0f, 450.0f);
+    private static readonly Vector2 ExcludedVillageDestination = new(1248.0f, 640.0f);
 
     private SmokeStage stage;
     private int stagePhysicsFrames;
     private Healer healer = null!;
     private CharacterBody2D seeker = null!;
+    private Vector2 moveStart;
     private Vector2 stationaryPosition;
     private float minimumObservedSeparation = float.PositiveInfinity;
 
@@ -58,16 +65,19 @@ public partial class HealerFollowSmokeCheck : Node
                 CheckSynchronization();
                 break;
             case SmokeStage.Following:
-                CheckFollowAndArrival();
+                CheckFollowAndBeginWait();
                 break;
-            case SmokeStage.HoldingStopDistance:
-                CheckStableStop();
+            case SmokeStage.Waiting:
+                CheckStableWaitAndBeginMove();
                 break;
-            case SmokeStage.CrossingBridge:
-                CheckBridgeRegroup();
+            case SmokeStage.MovingToDestination:
+                CheckMoveCompletionAndResumeFollow();
+                break;
+            case SmokeStage.ReturningToFollow:
+                CheckReturnToFollow();
                 break;
             default:
-                Fail("Healer follow smoke entered an unknown stage.");
+                Fail("Healer command smoke entered an unknown stage.");
                 break;
         }
     }
@@ -87,17 +97,18 @@ public partial class HealerFollowSmokeCheck : Node
 
         if (stagePhysicsFrames >= MaximumSynchronizationPhysicsFrames)
         {
-            Fail("Healer follow smoke could not synchronize the navigation map.");
+            Fail("Healer command smoke could not synchronize the navigation map.");
         }
     }
 
     private void BeginFollowCheck()
     {
         PlaceCharacters(FollowStart, LowerFieldTarget);
+        healer.CommandFollow();
         float initialSeparation = healer.GlobalPosition.DistanceTo(seeker.GlobalPosition);
         if (initialSeparation < RequiredInitialSeparationPixels)
         {
-            Fail("Healer follow smoke did not create the required representative separation.");
+            Fail("Healer command smoke did not create the required representative separation.");
             return;
         }
 
@@ -105,7 +116,7 @@ public partial class HealerFollowSmokeCheck : Node
         SetStage(SmokeStage.Following);
     }
 
-    private void CheckFollowAndArrival()
+    private void CheckFollowAndBeginWait()
     {
         if (!TryObserveSeparation(out float separation))
         {
@@ -113,50 +124,97 @@ public partial class HealerFollowSmokeCheck : Node
         }
 
         float displacement = healer.GlobalPosition.DistanceTo(FollowStart);
-        if (separation <= healer.StopDistancePixels + FollowArrivalTolerancePixels
+        if (separation <= healer.StopDistancePixels + ArrivalTolerancePixels
             && displacement >= RequiredFollowDisplacementPixels)
         {
+            healer.CommandWait();
             stationaryPosition = healer.GlobalPosition;
-            SetStage(SmokeStage.HoldingStopDistance);
+            seeker.GlobalPosition = SeparatedWaitTarget;
+            SetStage(SmokeStage.Waiting);
             return;
         }
 
         if (stagePhysicsFrames >= MaximumFollowPhysicsFrames)
         {
             Fail(
-                "Healer did not follow the separated Seeker into the configured stop distance. "
+                "Healer did not follow before the wait command. "
                 + $"Separation: {separation}; displacement: {displacement}.");
         }
     }
 
-    private void CheckStableStop()
+    private void CheckStableWaitAndBeginMove()
     {
-        if (!TryObserveSeparation(out float separation))
+        float drift = healer.GlobalPosition.DistanceTo(stationaryPosition);
+        if (healer.CommandMode != HealerCommandMode.Wait)
         {
+            Fail($"Healer left wait mode unexpectedly for {healer.CommandMode}.");
             return;
         }
 
-        float drift = healer.GlobalPosition.DistanceTo(stationaryPosition);
         if (drift > StablePositionTolerancePixels)
         {
-            Fail($"Healer drifted {drift} pixels after reaching the stop distance.");
+            Fail($"Healer drifted {drift} pixels during the wait command.");
             return;
         }
 
-        if (stagePhysicsFrames < StableStopPhysicsFrames)
+        if (stagePhysicsFrames < StableWaitPhysicsFrames)
         {
             return;
         }
 
-        GD.Print(
-            $"Healer follow diagnostics: lower-field stop separation={separation}, "
-            + $"minimum separation={minimumObservedSeparation}.");
-        PlaceCharacters(UpperFieldStart, LowerFieldTarget);
-        minimumObservedSeparation = healer.GlobalPosition.DistanceTo(seeker.GlobalPosition);
-        SetStage(SmokeStage.CrossingBridge);
+        if (healer.TryCommandMoveToDestination(InvalidDestination))
+        {
+            Fail("Healer accepted an out-of-bounds move destination.");
+            return;
+        }
+
+        if (healer.TryCommandMoveToDestination(ExcludedVillageDestination))
+        {
+            Fail("Healer accepted a destination excluded from the navigation surface.");
+            return;
+        }
+
+        if (healer.CommandMode != HealerCommandMode.Wait)
+        {
+            Fail("A rejected move destination changed the healer command.");
+            return;
+        }
+
+        moveStart = healer.GlobalPosition;
+        if (!healer.TryCommandMoveToDestination(ValidMoveDestination))
+        {
+            Fail("Healer rejected the representative valid move destination.");
+            return;
+        }
+
+        SetStage(SmokeStage.MovingToDestination);
     }
 
-    private void CheckBridgeRegroup()
+    private void CheckMoveCompletionAndResumeFollow()
+    {
+        float destinationDistance = healer.GlobalPosition.DistanceTo(ValidMoveDestination);
+        float displacement = healer.GlobalPosition.DistanceTo(moveStart);
+        if (healer.CommandMode == HealerCommandMode.Wait
+            && destinationDistance <= healer.DestinationStopDistancePixels + ArrivalTolerancePixels
+            && displacement >= RequiredMoveDisplacementPixels)
+        {
+            PlaceCharacters(healer.GlobalPosition, LowerFieldTarget);
+            healer.CommandFollow();
+            minimumObservedSeparation = healer.GlobalPosition.DistanceTo(seeker.GlobalPosition);
+            SetStage(SmokeStage.ReturningToFollow);
+            return;
+        }
+
+        if (stagePhysicsFrames >= MaximumMovePhysicsFrames)
+        {
+            Fail(
+                "Healer did not complete the valid move command and transition to wait. "
+                + $"Mode: {healer.CommandMode}; destination distance: {destinationDistance}; "
+                + $"displacement: {displacement}.");
+        }
+    }
+
+    private void CheckReturnToFollow()
     {
         if (!TryObserveSeparation(out float separation))
         {
@@ -165,21 +223,22 @@ public partial class HealerFollowSmokeCheck : Node
 
         bool reachedLowerBank = healer.GlobalPosition.Y >= LowerBankThresholdY;
         if (reachedLowerBank
-            && separation <= healer.StopDistancePixels + FollowArrivalTolerancePixels)
+            && separation <= healer.StopDistancePixels + ArrivalTolerancePixels)
         {
             GD.Print(
-                "Healer follow smoke passed: separated follower moved, held stop distance, "
-                + "preserved body separation, and regrouped across the bridge. "
-                + $"Final separation={separation}; minimum separation={minimumObservedSeparation}.");
+                "Healer command smoke passed: follow transitioned to stable wait, invalid and "
+                + "excluded destinations were rejected, a valid move completed, and follow "
+                + $"resumed through the bridge. Final separation={separation}; "
+                + $"minimum separation={minimumObservedSeparation}.");
             SetPhysicsProcess(false);
             GetTree().Quit();
             return;
         }
 
-        if (stagePhysicsFrames >= MaximumBridgePhysicsFrames)
+        if (stagePhysicsFrames >= MaximumReturnPhysicsFrames)
         {
             Fail(
-                "Healer did not regroup with the Seeker through the bridge. "
+                "Healer did not return to follow through the bridge. "
                 + $"Position: {healer.GlobalPosition}; separation: {separation}.");
         }
     }
@@ -190,8 +249,7 @@ public partial class HealerFollowSmokeCheck : Node
         minimumObservedSeparation = MathF.Min(minimumObservedSeparation, separation);
         if (separation < MinimumBodySeparationPixels)
         {
-            Fail(
-                $"Healer overlapped the Seeker: observed separation was {separation} pixels.");
+            Fail($"Healer overlapped the Seeker at {separation} pixels of separation.");
             return false;
         }
 
@@ -223,7 +281,8 @@ public partial class HealerFollowSmokeCheck : Node
     {
         Synchronizing,
         Following,
-        HoldingStopDistance,
-        CrossingBridge,
+        Waiting,
+        MovingToDestination,
+        ReturningToFollow,
     }
 }
