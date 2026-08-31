@@ -2,20 +2,20 @@
 
 ## Current state
 
-PR #11 merged Phase 2b into `origin/main` at merge commit `8da279e` on 2026-08-31.
-The current branch, `codex/phase-2c1-character-identity`, is based directly on that verified
-merge.
+PR #12 merged Phase 2c1 into `origin/main` at merge commit `e810427` on 2026-08-31.
+All five credential-free checks passed at the merged branch head in pull-request run
+`33392650343`. The current branch, `codex/phase-2c2-capability-limitations`, is based directly on
+that verified merge.
 
-Phase 2c1, character identity and background boundary, is implemented, reviewed, and locally
-validated on the current branch. It adds immutable engine-independent Domain values for a
-character's stable typed identity and explicitly separate public and private authored background
-text. The broader character-model roadmap item remains unticked because capabilities,
-limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller
-assignment do not yet exist.
+Phase 2c2, the character capability and limitation boundary, is implemented, reviewed, and
+locally validated on the current branch. It adds structurally distinct immutable Domain values
+for authored capabilities and limitations plus ordered, duplicate-free collection boundaries.
+The broader character-model roadmap item remains unticked because condition, inventory,
+knowledge, beliefs, relationships, goals, and controller assignment do not yet exist.
 
-The private remote has open draft PR #12 for this branch. The reviewed Phase 2c1 implementation,
-local evidence, and initial handover are commit `c3f547f`; this hosted-evidence update follows it.
-All five credential-free jobs in pull-request run `33392322808` passed, including pure C# quality,
+The private remote has open draft PR #13 for this branch. The reviewed Phase 2c2 implementation,
+local evidence, and initial handover are commit `797a9cb`; this hosted-evidence update follows it.
+All five credential-free jobs in pull-request run `33440062401` passed, including pure C# quality,
 the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2,
 and Windows x64. Re-query the final branch head and checks after this documentation commit rather
 than assuming the earlier commit's result applies to it. The pull request is not authorized to
@@ -28,49 +28,50 @@ At the start of the next session, verify current state rather than relying only 
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
-gh pr view codex/phase-2c1-character-identity --repo hherb/allrpcs \
+gh pr view codex/phase-2c2-capability-limitations --repo hherb/allrpcs \
   --json number,state,isDraft,headRefName,headRefOid,url
-gh pr checks codex/phase-2c1-character-identity --repo hherb/allrpcs
+gh pr checks codex/phase-2c2-capability-limitations --repo hherb/allrpcs
 ```
 
-## Phase 2c1 implementation
+## Phase 2c2 implementation
 
 The slice remains within its original boundary:
 
-- `src/Domain/Characters/CharacterIdentity.cs` pairs an existing stable `CharacterId` with an
-  authored display name. It retains both values and compares by value.
-- A display name must contain at least one non-whitespace character and is bounded to 80 UTF-16
-  code units. Valid names are retained exactly: no trimming, case folding, Unicode normalization,
-  or other rewriting occurs.
-- `PublicCharacterBackground` and `PrivateCharacterBackground` are distinct immutable types, so a
-  future filtered view can carry the public value without implicitly carrying private text.
-- Both background types explicitly accept the empty string to mean no authored background,
-  reject null and values over 4,000 UTF-16 code units, retain all valid content exactly, and
-  compare by value within their own boundary.
-- `AuthoredCharacterText` centralizes bounded validation without exposing a general-purpose
-  metadata or registration surface.
-- `tests/Domain.Tests/Characters/CharacterIdentityTests.cs` proves identity retention, value
-  equality, exact-name preservation, the nonblank rule, both length edges, and null rejection.
-- `tests/Domain.Tests/Characters/CharacterBackgroundTests.cs` proves exact authored-text
-  preservation, the explicit empty policy, structural type distinction, value equality, the
-  shared length edge, oversize rejection, and null rejection.
-- `README.md` documents the public contract and exclusions. `ROADMAP.md` records Phase 2c1
+- `CharacterCapability` and `CharacterLimitation` are unrelated sealed record types. Each
+  retains a canonical key and authored description and compares by both values within its own
+  type boundary.
+- Keys reuse `CanonicalIdentifierText`: 1 to 64 characters, beginning with a lowercase ASCII
+  letter and then containing only lowercase ASCII letters, digits, and single internal hyphens.
+  Invalid input is rejected rather than normalized.
+- Descriptions must contain at least one non-whitespace character, are bounded to 500 UTF-16 code
+  units, and retain valid content exactly without trimming, case folding, Unicode normalization,
+  or line-ending rewriting.
+- `CharacterCapabilitySet` and `CharacterLimitationSet` explicitly accept an empty sequence to
+  mean that no entries are authored. They preserve authored entry order, copy caller input, and
+  reject null entries and duplicate canonical keys using ordinal comparison.
+- `AuthoredCharacterEntrySet` centralizes only the private ordered-copy and unique-key invariant;
+  it does not expose a registration, metadata, or extensibility surface.
+- Four focused test files prove value equality, structural distinction, both key and description
+  length edges, exact description preservation, invalid and null rejection, empty-set behavior,
+  stable ordering, input copying, duplicate-key rejection, and the absence of visibility or
+  executable-policy properties.
+- `README.md` documents the public contract and exclusions. `ROADMAP.md` records Phase 2c2
   progress while deliberately leaving the broader character-model item unticked.
 
 ## Review and validation
 
 ### Automated evidence
 
-On 2026-08-31, the current implementation produced this local evidence on Apple Silicon macOS
+On 2026-09-01, the current implementation produced this local evidence on Apple Silicon macOS
 with .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
 
-- the test-first focused Domain run initially failed because the character namespace did not
-  exist, then passed all 44 Domain tests after implementation;
+- the test-first focused Domain run failed to compile because the four new public types did not
+  exist, then passed all 81 Domain test cases after implementation;
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes` passed;
 - `dotnet build Allrpcs.sln --no-restore --disable-build-servers -m:1 /nr:false` built all seven
   projects with zero warnings and zero errors; and
 - the final complete `./scripts/quality.sh` passed action linting, restore, formatting
-  verification, the zero-warning build, all 44 Domain tests, all 100 Application tests, all six
+  verification, the zero-warning build, all 81 Domain tests, all 100 Application tests, all six
   architecture reference tests, all four Godot smokes, and the bounded 60-frame native graphical
   launch.
 
@@ -79,14 +80,16 @@ and found the bridge route while rejecting representative obstacle targets. The 
 interaction-focus, and movement-boundary smokes repeated their complete established acceptance
 paths without a regression.
 
-Pull-request run `33392322808` passed pure C# quality and tests, the Linux headless Godot smoke,
+Pull-request run `33440062401` passed pure C# quality and tests, the Linux headless Godot smoke,
 and unsigned development builds on Linux x64, macOS Universal 2, and Windows x64 at implementation
-commit `c3f547f`. The three unexpired hosted artifacts are named
+commit `797a9cb`. The three unexpired hosted artifacts are named
 `UNSIGNED-DEVELOPMENT-linux-x64`, `UNSIGNED-DEVELOPMENT-macos-universal`, and
 `UNSIGNED-DEVELOPMENT-windows-x64`. The workflow explicitly rejected a bundle-level signature
 from the macOS output and an Authenticode signature from the Windows output before upload. These
 artifacts remain unsigned development evidence, not releases or distribution artifacts. The
-final documentation commit creates a new branch head, so its checks must be queried separately.
+macOS job's pinned Godot and export-template setup was unusually slow but completed successfully;
+the job passed in 11 minutes 26 seconds without a rerun. The final documentation commit creates a
+new branch head, so its checks must be queried separately.
 
 The focused test host first compiled inside the restricted environment, then could not bind its
 loopback socket. The identical focused test and complete quality sequence passed from the host
@@ -98,69 +101,72 @@ sandbox failure is being reported as a product result.
 No manual play acceptance is required for this engine-independent Domain slice. The complete
 quality sequence launched the current native scene with Godot's Compatibility renderer on the
 Apple M3 Max and exited cleanly after 60 frames. The existing Godot smokes passed as regression
-checks only. This slice makes no visual, input, physics, scene, renderer, controller-behavior, or
-interaction claim.
+checks only. This slice makes no visual, input, physics, scene, renderer, controller-behavior,
+capability-execution, or limitation-enforcement claim.
 
 ## Review findings
 
-The reviewed boundary keeps public and private authored backgrounds in unrelated sealed record
-types rather than a combined transport object. That makes accidental carriage of private text
-less likely when a future filtered view needs only public background. Their same-sized bounds are
-intentional, but their equality domains remain separate.
+The reviewed value boundary reuses the established canonical-text validator instead of creating
+a second key grammar or normalizing authored input. Capability and limitation equality cannot
+cross their unrelated record types even when key and description text match.
 
-The identity composes the already-reviewed `CharacterId` rather than introducing a second key
-format. Validation returns the original strings, so identity and background values preserve
-authored whitespace, casing, line endings, and Unicode content. Blank display names fail closed,
-while an empty background has a documented meaning. Domain retains no project references. No
-correctness, security, architecture, or scope issue remained after review.
+The collection boundaries enumerate caller input once into private read-only copies, retain the
+authored ordering needed for deterministic later composition, and compare duplicate keys with
+the same ordinal semantics implied by canonical ASCII text. Null and duplicate entries fail
+closed. The public entry surface contains only `Key` and `Description`; capability state cannot
+grant permission or execute an action, and limitation state cannot become a visibility,
+authorization, or provider-prompt rule. Domain retains no project references. No correctness,
+security, architecture, or scope issue remained after review.
 
 ## Limitations and exclusions
 
-- Phase 2c1 does not define a complete character aggregate or mutable character state.
-- It does not add capabilities, limitations, condition, inventory, knowledge, beliefs,
-  relationships, goals, controller instances, controller assignment, or controller behavior.
-- Public/private background separation is a Domain type boundary only. No filtered perception,
-  authorization policy, dialogue/model context, scenario character, or provider prompt exists.
-- Private background is not hidden chain-of-thought, credentials, arbitrary metadata, or a
-  provider instruction channel.
+- Phase 2c2 does not define a complete character aggregate or mutable character state.
+- It does not add condition, inventory, knowledge, beliefs, relationships, goals, controller
+  instances, controller assignment, or controller behavior.
+- A capability is authored descriptive state only, not permission, an executable action, a Godot
+  input, an affordance, action validation, or proof that an attempted action will succeed.
+- A limitation is authored descriptive state only, not public/private classification,
+  authorization policy, enforcement logic, a provider prompt instruction, or proof of inability.
+- Collection order is authored order, not priority, visibility, execution order, or evaluation
+  precedence. Duplicate rejection applies only within each capability or limitation set.
 - Length is measured by .NET `string.Length` in UTF-16 code units. No grapheme-counting,
   localization policy, content moderation, markup, or rich-text interpretation was added.
-- No framework-specific converters, JSON behavior, save schema, database mapping, migration,
-  Godot resource, node, UI, provider, orchestration, registration, or plugin surface was added.
+- No scenario character, filtered perception, dialogue/model context, framework-specific
+  converter, JSON behavior, save schema, database mapping, migration, Godot resource, node, UI,
+  provider, orchestration, action registry, or plugin surface was added.
 - Existing native behavior and hosted cross-platform builds are regression surfaces, not new
-  Phase 2c1 behavior claims. No manual or cross-platform character-specific acceptance was
+  Phase 2c2 behavior claims. No manual or cross-platform capability-specific acceptance was
   required or performed.
 
 ## Exact next bounded slice
 
-After the user reports that the Phase 2c1 pull request merged, take **Phase 2c2: character
-capability and limitation boundary**. This continues, but does not complete or tick, the broader
+After the user reports that the Phase 2c2 pull request merged, take **Phase 2c3: character
+controller-assignment boundary**. This continues, but does not complete or tick, the broader
 authoritative character-model roadmap item.
 
-Acceptance boundary for Phase 2c2:
+Acceptance boundary for Phase 2c3:
 
-1. Add small immutable, engine-independent Domain values that keep authored character
-   capabilities structurally distinct from authored limitations.
-2. Give each entry a stable canonical key and bounded authored description, reuse the existing
-   identifier-text rules rather than inventing normalization, and define an explicit empty-set
-   policy.
-3. Add focused pure tests for value equality, key and description bounds, exact authored-text
-   preservation, stable collection ordering, duplicate-key rejection, and public/private or
-   executable-policy non-assumptions.
+1. Add a small immutable, engine-independent Domain value that pairs an existing stable
+   `CharacterId` with one existing closed `ControllerType`.
+2. Define the assignment as current authored/authoritative association only; retain both values
+   exactly and add no controller instance, lifecycle, configuration, or behavior.
+3. Add focused pure tests for value equality, all four controller types, null rejection,
+   character distinction, and provider/model/behavior non-assumptions.
 4. Preserve `Domain -> []`; update `README.md` and this file, but leave the broader character-model
    roadmap item unticked until all of its listed state is represented and reviewed.
 5. Commit only reviewed slice paths after the current validation sequence passes.
 
-Explicit exclusions for Phase 2c2:
+Explicit exclusions for Phase 2c3:
 
-- Do not yet add condition, inventory, knowledge, beliefs, relationships, goals, controller
-  assignment, mutable character state, or a complete character aggregate.
-- Do not treat a capability as permission, an executable action, a Godot input, an affordance, or
-  proof that an attempted action will succeed. Do not make limitations provider prompt rules.
-- Do not define action validation, perception filtering, dialogue/model context, scenario
-  characters, authorization policy, or persistence/serialization behavior.
+- Do not yet add condition, inventory, knowledge, beliefs, relationships, goals, mutable
+  character state, or a complete character aggregate.
+- Do not create controller instances, provider/model configuration, prompts, tools, scheduling,
+  switching policy, dormant transitions, player input routing, deterministic behavior, or runtime
+  orchestration.
+- Do not define scenario characters, action validation, perception filtering, dialogue/model
+  context, authorization policy, or persistence/serialization behavior.
 - Do not add Godot nodes/resources, UI, database/save schemas, migrations, providers, runtime
-  orchestration, controller behavior, or extensible registration.
+  registration, or extensible plugin surfaces.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
   until their own retained prototype or authoritative-system prerequisites exist.
 - Do not change repository visibility, merge pull requests, create releases, distribute
