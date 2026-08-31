@@ -2,19 +2,20 @@
 
 ## Current state
 
-PR #10 merged Phase 2a into `origin/main` at merge commit `1a29cb6` on 2026-08-31. The
-current branch, `codex/phase-2b-controller-types`, is based directly on that verified merge.
+PR #11 merged Phase 2b into `origin/main` at merge commit `8da279e` on 2026-08-31.
+The current branch, `codex/phase-2c1-character-identity`, is based directly on that verified
+merge.
 
-Phase 2b, controller type primitives, is implemented and locally validated on the current
-branch. It defines the four settled controller categories as a closed Domain set with stable
-canonical text and adds focused pure tests and documentation. The corresponding Phase 2 roadmap
-item is ticked. It adds no controller instances or runtime behavior, character model or
-assignment, provider/model selection, Godot integration, serialization framework, persistence,
-or UI.
+Phase 2c1, character identity and background boundary, is implemented, reviewed, and locally
+validated on the current branch. It adds immutable engine-independent Domain values for a
+character's stable typed identity and explicitly separate public and private authored background
+text. The broader character-model roadmap item remains unticked because capabilities,
+limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller
+assignment do not yet exist.
 
-The private remote has open draft PR #11 for this branch. The reviewed Phase 2b implementation,
-local evidence, and initial handover are commit `3b8712d`; this hosted-evidence update follows it.
-All five credential-free jobs in pull-request run `33390596356` passed, including pure C# quality,
+The private remote has open draft PR #12 for this branch. The reviewed Phase 2c1 implementation,
+local evidence, and initial handover are commit `c3f547f`; this hosted-evidence update follows it.
+All five credential-free jobs in pull-request run `33392322808` passed, including pure C# quality,
 the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2,
 and Windows x64. Re-query the final branch head and checks after this documentation commit rather
 than assuming the earlier commit's result applies to it. The pull request is not authorized to
@@ -27,28 +28,34 @@ At the start of the next session, verify current state rather than relying only 
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
-gh pr view codex/phase-2b-controller-types --repo hherb/allrpcs \
+gh pr view codex/phase-2c1-character-identity --repo hherb/allrpcs \
   --json number,state,isDraft,headRefName,headRefOid,url
-gh pr checks codex/phase-2b-controller-types --repo hherb/allrpcs
+gh pr checks codex/phase-2c1-character-identity --repo hherb/allrpcs
 ```
 
-## Phase 2b implementation
+## Phase 2c1 implementation
 
 The slice remains within its original boundary:
 
-- `src/Domain/Controllers/ControllerType.cs` defines exactly four singleton values: `Human`,
-  `Llm`, `DeterministicTest`, and `Dormant`.
-- Their stable canonical text is `human`, `llm`, `deterministic-test`, and `dormant`.
-  `ControllerType.All` exposes the complete set in that stable order.
-- `Value` and `ToString()` expose canonical text. `Parse` accepts only the four exact values and
-  returns the corresponding defined instance; null and unknown text fail closed.
-- Equality means the same defined controller type. Construction is private, so ordinary callers
-  cannot register provider-specific or other ad hoc controller categories.
-- `tests/Domain.Tests/Controllers/ControllerTypeTests.cs` proves the complete ordered set,
-  canonical round trips to the defined instances, equality, and rejection of null, case changes,
-  whitespace, aliases, provider-shaped values, and other unknown text.
-- `README.md` documents the public contract and exclusions. `ROADMAP.md` records Phase 2b
-  completion.
+- `src/Domain/Characters/CharacterIdentity.cs` pairs an existing stable `CharacterId` with an
+  authored display name. It retains both values and compares by value.
+- A display name must contain at least one non-whitespace character and is bounded to 80 UTF-16
+  code units. Valid names are retained exactly: no trimming, case folding, Unicode normalization,
+  or other rewriting occurs.
+- `PublicCharacterBackground` and `PrivateCharacterBackground` are distinct immutable types, so a
+  future filtered view can carry the public value without implicitly carrying private text.
+- Both background types explicitly accept the empty string to mean no authored background,
+  reject null and values over 4,000 UTF-16 code units, retain all valid content exactly, and
+  compare by value within their own boundary.
+- `AuthoredCharacterText` centralizes bounded validation without exposing a general-purpose
+  metadata or registration surface.
+- `tests/Domain.Tests/Characters/CharacterIdentityTests.cs` proves identity retention, value
+  equality, exact-name preservation, the nonblank rule, both length edges, and null rejection.
+- `tests/Domain.Tests/Characters/CharacterBackgroundTests.cs` proves exact authored-text
+  preservation, the explicit empty policy, structural type distinction, value equality, the
+  shared length edge, oversize rejection, and null rejection.
+- `README.md` documents the public contract and exclusions. `ROADMAP.md` records Phase 2c1
+  progress while deliberately leaving the broader character-model item unticked.
 
 ## Review and validation
 
@@ -57,13 +64,13 @@ The slice remains within its original boundary:
 On 2026-08-31, the current implementation produced this local evidence on Apple Silicon macOS
 with .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
 
-- the test-first focused Domain run initially failed because the controller namespace did not
-  exist, then passed all 28 Domain tests after the implementation;
+- the test-first focused Domain run initially failed because the character namespace did not
+  exist, then passed all 44 Domain tests after implementation;
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes` passed;
 - `dotnet build Allrpcs.sln --no-restore --disable-build-servers -m:1 /nr:false` built all seven
   projects with zero warnings and zero errors; and
 - the final complete `./scripts/quality.sh` passed action linting, restore, formatting
-  verification, the zero-warning build, all 28 Domain tests, all 100 Application tests, all six
+  verification, the zero-warning build, all 44 Domain tests, all 100 Application tests, all six
   architecture reference tests, all four Godot smokes, and the bounded 60-frame native graphical
   launch.
 
@@ -72,15 +79,19 @@ and found the bridge route while rejecting representative obstacle targets. The 
 interaction-focus, and movement-boundary smokes repeated their complete established acceptance
 paths without a regression.
 
-Pull-request run `33390596356` passed pure C# quality and tests, the Linux headless Godot smoke,
-and unsigned development builds on Linux x64, macOS Universal 2, and Windows x64. Those hosted
-outputs remain unsigned development evidence, not releases or distribution artifacts. The final
-documentation commit creates a new branch head, so its checks must be queried separately.
+Pull-request run `33392322808` passed pure C# quality and tests, the Linux headless Godot smoke,
+and unsigned development builds on Linux x64, macOS Universal 2, and Windows x64 at implementation
+commit `c3f547f`. The three unexpired hosted artifacts are named
+`UNSIGNED-DEVELOPMENT-linux-x64`, `UNSIGNED-DEVELOPMENT-macos-universal`, and
+`UNSIGNED-DEVELOPMENT-windows-x64`. The workflow explicitly rejected a bundle-level signature
+from the macOS output and an Authenticode signature from the Windows output before upload. These
+artifacts remain unsigned development evidence, not releases or distribution artifacts. The
+final documentation commit creates a new branch head, so its checks must be queried separately.
 
-The focused and complete test executions ran from the host shell because the restricted
-environment denied the test runner's loopback socket. Formatting and the focused zero-warning
-build passed in the restricted environment. No sandbox failure is being reported as a product
-result.
+The focused test host first compiled inside the restricted environment, then could not bind its
+loopback socket. The identical focused test and complete quality sequence passed from the host
+shell. Formatting and the focused zero-warning build passed in the restricted environment. No
+sandbox failure is being reported as a product result.
 
 ### Native evidence
 
@@ -92,61 +103,62 @@ interaction claim.
 
 ## Review findings
 
-The reviewed representation is deliberately a closed class rather than an enum or open string
-wrapper. That keeps canonical persistence-facing text explicit while preventing ordinary callers
-from constructing provider-specific or misspelled types. Parsing returns the defined instances,
-so equality and round trips do not depend on culture, normalization, reflection, or registration.
+The reviewed boundary keeps public and private authored backgrounds in unrelated sealed record
+types rather than a combined transport object. That makes accidental carriage of private text
+less likely when a future filtered view needs only public background. Their same-sized bounds are
+intentional, but their equality domains remain separate.
 
-The public `All` list is backed by a read-only collection and is declared once beside the four
-instances. The type lives in `Domain`, whose project reference list remains empty. No correctness,
-security, architecture, or scope issue remained after review.
+The identity composes the already-reviewed `CharacterId` rather than introducing a second key
+format. Validation returns the original strings, so identity and background values preserve
+authored whitespace, casing, line endings, and Unicode content. Blank display names fail closed,
+while an empty background has a documented meaning. Domain retains no project references. No
+correctness, security, architecture, or scope issue remained after review.
 
 ## Limitations and exclusions
 
-- A controller type is only a category. It does not represent a controller instance, runtime
-  lifecycle, provider, model, prompt, credentials, availability, or behavior.
-- Phase 2b does not attach a controller type to a character or define character identity,
-  background, capabilities, limitations, condition, inventory, knowledge, beliefs,
-  relationships, or goals.
-- `deterministic-test` does not yet define deterministic character behavior, and `dormant` does
-  not define disease progression, sleeping-character behavior, or restoration of another
-  controller.
-- `Parse` is an explicit Domain parser. No framework-specific converters, `TryParse`, JSON
-  behavior, save schema, database mapping, or migration policy was added.
-- No controller registration or plugin system, provider/model selection, orchestration, LLM call,
-  scenario content, perception, discovery, inventory, event storage, UI, Godot, credential,
-  packaging, signing, release, or distribution path was added.
+- Phase 2c1 does not define a complete character aggregate or mutable character state.
+- It does not add capabilities, limitations, condition, inventory, knowledge, beliefs,
+  relationships, goals, controller instances, controller assignment, or controller behavior.
+- Public/private background separation is a Domain type boundary only. No filtered perception,
+  authorization policy, dialogue/model context, scenario character, or provider prompt exists.
+- Private background is not hidden chain-of-thought, credentials, arbitrary metadata, or a
+  provider instruction channel.
+- Length is measured by .NET `string.Length` in UTF-16 code units. No grapheme-counting,
+  localization policy, content moderation, markup, or rich-text interpretation was added.
+- No framework-specific converters, JSON behavior, save schema, database mapping, migration,
+  Godot resource, node, UI, provider, orchestration, registration, or plugin surface was added.
 - Existing native behavior and hosted cross-platform builds are regression surfaces, not new
-  Phase 2b behavior claims. No manual or cross-platform controller-specific acceptance was
+  Phase 2c1 behavior claims. No manual or cross-platform character-specific acceptance was
   required or performed.
 
 ## Exact next bounded slice
 
-After the user reports that the Phase 2b pull request merged, take **Phase 2c1: character identity
-and background boundary**. This begins, but does not complete or tick, the broader authoritative
-character-model roadmap item.
+After the user reports that the Phase 2c1 pull request merged, take **Phase 2c2: character
+capability and limitation boundary**. This continues, but does not complete or tick, the broader
+authoritative character-model roadmap item.
 
-Acceptance boundary for Phase 2c1:
+Acceptance boundary for Phase 2c2:
 
-1. Add small immutable, engine-independent Domain primitives for a character's stable identity
-   and explicitly separated public and private authored background text.
-2. Make the public/private boundary structurally visible in the types so a future filtered view
-   can expose public background without implicitly carrying private background.
-3. Add focused pure tests for identity retention, value equality, explicit empty-text policy,
-   bounded text validation, and preservation of authored text without normalization.
+1. Add small immutable, engine-independent Domain values that keep authored character
+   capabilities structurally distinct from authored limitations.
+2. Give each entry a stable canonical key and bounded authored description, reuse the existing
+   identifier-text rules rather than inventing normalization, and define an explicit empty-set
+   policy.
+3. Add focused pure tests for value equality, key and description bounds, exact authored-text
+   preservation, stable collection ordering, duplicate-key rejection, and public/private or
+   executable-policy non-assumptions.
 4. Preserve `Domain -> []`; update `README.md` and this file, but leave the broader character-model
    roadmap item unticked until all of its listed state is represented and reviewed.
 5. Commit only reviewed slice paths after the current validation sequence passes.
 
-Explicit exclusions for Phase 2c1:
+Explicit exclusions for Phase 2c2:
 
-- Do not yet add capabilities, limitations, condition, inventory, knowledge, beliefs,
-  relationships, goals, controller assignment, mutable character state, or a complete character
-  aggregate.
-- Do not define perception filtering, dialogue/model context, scenario characters, provider
-  prompts, authorization policy, or persistence/serialization behavior.
-- Do not use private background as hidden chain-of-thought, credentials, arbitrary metadata, or
-  a provider instruction channel.
+- Do not yet add condition, inventory, knowledge, beliefs, relationships, goals, controller
+  assignment, mutable character state, or a complete character aggregate.
+- Do not treat a capability as permission, an executable action, a Godot input, an affordance, or
+  proof that an attempted action will succeed. Do not make limitations provider prompt rules.
+- Do not define action validation, perception filtering, dialogue/model context, scenario
+  characters, authorization policy, or persistence/serialization behavior.
 - Do not add Godot nodes/resources, UI, database/save schemas, migrations, providers, runtime
   orchestration, controller behavior, or extensible registration.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
