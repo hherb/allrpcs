@@ -42,9 +42,11 @@ reject representative stream, tree, and village targets, and exercise healer fol
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, and hidden and disabled exclusions. The
-sequence first runs `actionlint` against every hosted workflow. It does not require provider
-credentials or network access after restore. The project selects the Compatibility renderer for
-graphical launches.
+movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
+four outer borders plus representative stream, village, and tree collisions, then proves the
+bridge in both directions and open lower terrain remain clear. The sequence first runs
+`actionlint` against every hosted workflow. It does not require provider credentials or network
+access after restore. The project selects the Compatibility renderer for graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -127,6 +129,14 @@ geometry also blocks the blue stream outside the obvious brown temporary bridge,
 grey village block, and a representative three-tree cluster. The bridge is traversable in both
 directions and the rest of the path remains open.
 
+The credential-free movement-boundary smoke exercises those authored shapes with deterministic,
+test-only Godot physics motions from the existing Seeker body. It verifies collision sweeps and
+clear paths without synthesizing keyboard input or claiming final input UX coverage:
+
+```sh
+ALLRPCS_SEEKER_BOUNDARY_CHECK=1 godot --headless --path game --quit-after 30
+```
+
 A deterministically authored `NavigationRegion2D` describes future companion-pathfinding space
 inside the same 1600-by-900 region. Its conservative clearance excludes the outer walls, stream
 outside the bridge, village block, and tree cluster. The obvious cyan placeholder healer starts
@@ -168,6 +178,10 @@ instead, run `godot --editor --path game`.
 - `tests/Application.Tests` tests pure movement, camera-framing, navigation-request, healer
   follow-target, healer command, and interaction-focus behavior without loading Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
+
+The Godot scene also owns credential-free engine checks for navigation topology, healer-command
+movement, interaction-focus presentation, and Seeker collision boundaries. These checks load the
+authored scene; they do not move Godot physics or presentation policy into `Application`.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=18 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://GreyboxInteractionTarget.cs" id="8_interaction_target"]
 [ext_resource type="Script" path="res://InteractionFocusController.cs" id="9_interaction_controller"]
 [ext_resource type="Script" path="res://InteractionFocusSmokeCheck.cs" id="10_interaction_check"]
+[ext_resource type="Script" path="res://SeekerMovementBoundarySmokeCheck.cs" id="11_boundary_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -292,6 +293,9 @@ script = ExtResource("9_interaction_controller")
 
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
+
+[node name="SeekerMovementBoundarySmokeCheck" type="Node" parent="."]
+script = ExtResource("11_boundary_check")
 
 [node name="Healer" type="CharacterBody2D" parent="."]
 position = Vector2(680, 450)
