@@ -211,7 +211,7 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
-## Character identity, backgrounds, capabilities, and limitations
+## Character identity, backgrounds, capabilities, limitations, and controller assignment
 
 `Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
 display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
@@ -237,9 +237,15 @@ A capability describes authored character state only. It is not permission, an e
 action, an input, an affordance, or proof that an attempt will succeed. A limitation is not a
 public/private classification, authorization rule, action validator, or provider prompt rule.
 
+`CharacterControllerAssignment` associates one stable `CharacterId` with exactly one existing
+closed `ControllerType`. The immutable value retains both objects exactly and compares by their
+values. It records only the character's current authored controller-type association: it does not
+create a controller instance, configure a provider or model, define prompts or behavior, route
+input, or introduce runtime orchestration or switching policy.
+
 This boundary does not yet define a complete character aggregate, condition, inventory,
-knowledge, beliefs, relationships, goals, controller assignment, mutable state, perception
-filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
+knowledge, beliefs, relationships, goals, mutable state, perception filtering, dialogue context,
+persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
