@@ -1,10 +1,10 @@
 # Allrpcs
 
 Allrpcs is a Godot 4.6 .NET game under development. Its bounded-camera movement, navigation,
-and deterministic healer-command greybox keeps testable movement, framing, navigation-request,
-follow-target, and command-selection rules plus future authoritative rules in engine-independent
-C# projects while Godot owns input mapping, physics presentation, camera behavior, collision,
-navigation topology, and scene authoring.
+deterministic healer-command, and interaction-focus greybox keeps testable movement, framing,
+navigation-request, follow-target, command-selection, and focus-selection rules plus future
+authoritative rules in engine-independent C# projects while Godot owns input mapping, physics
+presentation, camera behavior, collision, navigation topology, and scene authoring.
 
 ## Prerequisites
 
@@ -40,9 +40,11 @@ and architecture tests, then exercises both headless and 60-frame graphical Godo
 headless launches wait for the navigation map to synchronize, prove a route through the bridge,
 reject representative stream, tree, and village targets, and exercise healer follow, wait,
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
-follow. The sequence first runs `actionlint` against every hosted workflow. It does not require
-provider credentials or network access after restore. The project selects the Compatibility
-renderer for graphical launches.
+follow. A separate interaction-focus launch proves nearest selection, authored-order
+tie-breaking, focus changes, out-of-range clearing, and hidden and disabled exclusions. The
+sequence first runs `actionlint` against every hosted workflow. It does not require provider
+credentials or network access after restore. The project selects the Compatibility renderer for
+graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -140,6 +142,15 @@ again to resume follow. Off-world and obstacle-excluded destinations are rejecte
 changing the active command. These two keys, the ring, and the status panel are temporary
 behavior-test controls, not final command or dialogue UX.
 
+Two nearby temporary markers exercise interaction focus without performing an interaction. A
+bright yellow **FOCUS** ring and the top-left status identify only the nearest visible, enabled
+marker inside the inclusive 112-pixel range. Exact distance ties resolve by authored scene order,
+so focus is stable at the Seeker's initial midpoint. Moving nearer the other marker changes focus;
+moving outside both ranges clears it. A hidden marker and an obvious excluded marker exercise the
+fail-closed presentation paths and can never receive the indicator. These markers, labels, range,
+ordering, and indicator are temporary greybox behavior evidence, not Phase 2 objects, stable
+identifiers, perception state, or interaction UX.
+
 Every shape, color, obstacle, collision outline, navigation polygon, target marker, and status
 element is an authored primitive for scale and behavior testing only; none selects final art or
 terrain. Close the titled **Allrpcs** window to stop the process. To open the project in the editor
@@ -149,19 +160,20 @@ instead, run `godot --editor --path game`.
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
 - `src/Application` contains pure movement, camera-framing, navigation-request validation,
-  healer follow-target selection, and healer command selection and coordinates future domain use
-  cases; it depends only on `Domain`.
+  healer follow-target selection, healer command selection, and bounded interaction-focus
+  selection and coordinates future domain use cases; it depends only on `Domain`.
 - `src/Infrastructure` is the future adapter boundary and depends on `Application`.
 - `game` is the Godot presentation project and depends on `Application`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
 - `tests/Application.Tests` tests pure movement, camera-framing, navigation-request, healer
-  follow-target, and healer command behavior without loading Godot.
+  follow-target, healer command, and interaction-focus behavior without loading Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
-healer-command keys, natural-language commands, final command UI, LLM-controlled companions,
-providers, persistence, credentials, signing, installers, and distribution configuration are not
-part of this greybox slice.
+healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
+natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
+persistence, credentials, signing, installers, and distribution configuration are not part of
+this greybox slice.
 
 ## Licence
 
