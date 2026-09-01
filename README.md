@@ -337,10 +337,20 @@ and retains exactly one existing `WorldObjectIdentity` and one existing
 `WorldObjectDescription`, exposing only those supplied components through get-only properties.
 The aggregate adds no cross-field policy, methods, or events.
 
-The complete world-object boundary still does not define item classification, properties, tags,
-portability, quantities, stacks, containers, inventory mechanics, ownership, use, location
-assignment, containment, mutable state, lifecycle or event handling, filtered views, visibility,
-perception, discovery, persistence, serialization, Godot, or UI behavior.
+The complete world-object boundary still does not define item properties, tags, portability,
+quantities, stacks, containers, inventory mechanics, ownership, use, location assignment,
+containment, mutable state, lifecycle or event handling, filtered views, visibility, perception,
+discovery, persistence, serialization, Godot, or UI behavior.
+
+## Item model boundaries
+
+`Allrpcs.Domain.Items.Item` classifies exactly one existing immutable `WorldObject` as an item.
+It retains and exposes that supplied instance through one get-only property without duplicating
+the world object's identifier, name, or description.
+
+This classification boundary does not define item properties, tags, portability, quantities,
+stacks, containers, inventory mechanics, ownership, use, mutation, lifecycle, events,
+interactions, location assignment, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
