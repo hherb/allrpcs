@@ -194,8 +194,9 @@ duplicate-free collection and completed the structural location, object, item, a
 environmental-state model item on 2026-09-02. No relationship or goal mechanics, spatial
 mechanics, truth classification, evidence, confidence, provenance, item properties or mechanics,
 environmental-state assignment or simulation, mutable entity state, scenario content,
-serialization framework, persistence, or engine integration was added. See `HANDOVER.md` for
-exact validation and test evidence.
+serialization framework, persistence, or engine integration was added. Phase 2h1 then added the
+closed canonical visibility states in stable roadmap order on 2026-09-02, without assigning them
+or adding perception mechanics. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
@@ -203,7 +204,7 @@ exact validation and test evidence.
 - [x] Define the character model: identity, public/private background, capabilities,
   limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller.
 - [x] Define location, object, item, and environmental-state models.
-- [ ] Define visibility states: unnoticed, noticed, identified, understood, and altered or
+- [x] Define visibility states: unnoticed, noticed, identified, understood, and altered or
   collected.
 - [ ] Implement per-character perception snapshots.
 - [ ] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
