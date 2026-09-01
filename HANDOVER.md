@@ -8,6 +8,9 @@ PR #22 merged Phase 2d1 into `origin/main` at `6a86445` on 2026-09-01. The curre
 Phase 2d2 is implemented, reviewed, and locally validated. It adds only the immutable `Location`
 aggregate. The broader location/object/item/environmental-state roadmap item remains incomplete.
 
+The private remote has open draft PR #23 for reviewed slice commit `e10e5e6`. Re-query its final
+checks after this handover-only head update. Pull-request merge remains separately authorized.
+
 Before continuing after this branch merges, verify the live branch, pull request, and checks.
 
 ## Phase 2d2 result
