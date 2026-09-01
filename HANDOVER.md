@@ -8,8 +8,14 @@ merge.
 
 Phase 2c8 is implemented, reviewed, and locally validated. It adds only an immutable relationship
 value and an ordered relationship collection. The broader character-model roadmap item remains
-unticked because goals and a complete aggregate do not yet exist. A draft pull request still
-needs to be opened for this branch. Pull-request merge remains unauthorized.
+unticked because goals and a complete aggregate do not yet exist.
+
+The private remote has open draft PR #19 for this branch. The reviewed implementation, local
+evidence, and initial handover are commit `aab4bc6`. Initial pull-request run `33463210044` passed
+all five credential-free jobs at that commit. This hosted-evidence update creates a new branch
+head, so re-query its final checks rather than assuming the initial commit's result applies to it.
+The unsigned desktop outputs are development evidence only. Pull-request merge remains
+unauthorized.
 
 At the start of the next session, verify current state:
 
