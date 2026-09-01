@@ -9,6 +9,13 @@ Phase 2c7 is implemented, reviewed, and locally validated. It adds only an immut
 belief value and an ordered belief collection. The broader character-model roadmap item remains
 unticked because relationships and goals do not yet exist.
 
+The private remote has open draft PR #18 for this branch. The reviewed implementation, local
+evidence, and initial handover are commit `b93dda7`. Initial pull-request run `33462297108` passed
+all five credential-free jobs at that commit. This hosted-evidence update creates a new branch
+head, so re-query its final checks rather than assuming the initial commit's result applies to it.
+The unsigned desktop outputs are development evidence only. Pull-request merge remains
+unauthorized.
+
 At the start of the next session, verify current state:
 
 ```sh
