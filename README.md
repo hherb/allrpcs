@@ -285,8 +285,17 @@ mutable collection, and rejects null entries or duplicate keys using ordinal equ
 types do not define priority, status, progress, deadlines, dependencies, plans, completion,
 rewards, visibility, mutation, behavior selection, authorization, or executable policy.
 
-This boundary does not yet define a complete character aggregate, mutable state, perception
-filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
+`Character` is the immutable composition root for the complete authored character model. It
+retains exactly one existing identity, public background, private background, capability set,
+limitation set, controller assignment, condition set, inventory, knowledge, belief set,
+relationship set, and goal set. Every component is required, and the controller assignment's
+character identifier must equal the identity identifier. The aggregate adds no other cross-field
+policy and exposes only its supplied components through get-only properties.
+
+The complete character-model boundary still does not define mutable state, lifecycle or event
+handling, runtime registration, relationship or goal mechanics, capability authorization,
+behavior selection, perception filtering, dialogue context, persistence, serialization, Godot,
+or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
