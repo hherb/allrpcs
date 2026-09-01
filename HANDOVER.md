@@ -10,6 +10,11 @@ Phase 2c10 is implemented, reviewed, and locally validated. It completes the str
 character-model roadmap item by composing all existing character components into one immutable
 Domain aggregate. No mutable state or runtime mechanics were added.
 
+The private remote has open draft PR #21 for this branch. Reviewed slice commit `63b5fab` passed
+all five jobs in hosted run `33499876492`. This handover-only evidence update creates a new branch
+head, so re-query its final checks rather than assuming the earlier run applies. Hosted desktop
+outputs are unsigned development evidence only; pull-request merge remains separately authorized.
+
 At the start of the next session, verify the live branch, pull request, and checks before acting:
 
 ```sh
