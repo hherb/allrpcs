@@ -185,11 +185,12 @@ duplicate-free collection on the same date. Phase 2c10 composed every listed val
 immutable character aggregate and completed the structural character-model item on the same
 date. Phase 2d1 then added structurally separate immutable location identity and description
 values, and Phase 2d2 composed them into an immutable location aggregate while leaving the broader
-location, object, item, and environmental-state item incomplete. No relationship or goal
-mechanics, spatial mechanics, truth classification, evidence, confidence, provenance, object or
-item model, inventory mechanics, mutable entity state, scenario content, serialization framework,
-persistence, or engine integration was added. See `HANDOVER.md` for exact validation and test
-evidence.
+location, object, item, and environmental-state item incomplete. Phase 2e1 then added structurally
+separate immutable world-object identity and description values while deliberately deferring the
+world-object aggregate. No relationship or goal mechanics, spatial mechanics, truth
+classification, evidence, confidence, provenance, item model, inventory mechanics, mutable entity
+state, scenario content, serialization framework, persistence, or engine integration was added.
+See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

@@ -319,6 +319,24 @@ coordinates, regions, navigation topology, terrain, access rules, environmental 
 occupancy, lifecycle or event handling, filtered views, visibility, perception, discovery,
 persistence, serialization, Godot, or UI behavior.
 
+## World-object model boundaries
+
+`Allrpcs.Domain.WorldObjects.WorldObjectIdentity` pairs a stable `ObjectId` with an authored
+display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16 code
+units as measured by .NET `string.Length`, and are retained exactly rather than trimmed,
+case-folded, or otherwise normalized. The immutable value compares by both identifier and display
+name and remains structurally separate from character and location identities.
+
+`WorldObjectDescription` is a structurally separate immutable authored value. It retains text
+exactly, explicitly permits an empty string when no description is authored, rejects null, and is
+bounded to 4,000 UTF-16 code units. It records authoritative authored world-object state; it is not
+proof that any character can perceive, identify, understand, or otherwise access that text.
+
+This slice does not compose a world-object aggregate or define item classification, properties,
+tags, portability, quantities, stacks, containers, inventory mechanics, ownership, use, location
+assignment, containment, mutable state, lifecycle or event handling, filtered views, visibility,
+perception, discovery, persistence, serialization, Godot, or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
