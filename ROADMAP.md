@@ -181,16 +181,17 @@ ordered, copied, duplicate-free boundary for existing knowledge identifiers. Pha
 authored beliefs plus an ordered, copied, duplicate-free collection on 2026-09-01. Phase 2c8
 added authored relationship summaries plus an ordered, copied collection with distinct related
 character identifiers on the same date. Phase 2c9 added authored goals plus an ordered, copied,
-duplicate-free collection on the same date. The broader character-model item remains incomplete
-and unticked because a complete aggregate remains absent. No relationship or goal mechanics,
-truth classification, evidence, confidence, provenance, object or item model, inventory
-mechanics, mutable entity state, scenario content, serialization framework, persistence, or
-engine integration was added. See `HANDOVER.md` for exact validation and test evidence.
+duplicate-free collection on the same date. Phase 2c10 composed every listed value into one
+immutable character aggregate and completed the structural character-model item on the same
+date. No relationship or goal mechanics, truth classification, evidence, confidence,
+provenance, object or item model, inventory mechanics, mutable entity state, scenario content,
+serialization framework, persistence, or engine integration was added. See `HANDOVER.md` for
+exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
 - [x] Define controller types: human, LLM, deterministic test, and dormant.
-- [ ] Define the character model: identity, public/private background, capabilities,
+- [x] Define the character model: identity, public/private background, capabilities,
   limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller.
 - [ ] Define location, object, item, and environmental-state models.
 - [ ] Define visibility states: unnoticed, noticed, identified, understood, and altered or
