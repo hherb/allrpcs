@@ -10,6 +10,11 @@ goal value and an ordered goal collection. The broader character-model roadmap i
 unticked because the existing character values have not yet been composed and reviewed as one
 complete aggregate.
 
+The private remote has open draft PR #20 for this branch. Reviewed slice commit `73a5c05` passed
+all five jobs in hosted run `33464116859`. This handover-only evidence update creates a new branch
+head, so re-query its final checks rather than assuming the earlier run applies. Hosted desktop
+outputs are unsigned development evidence only; pull-request merge remains separately authorized.
+
 At the start of the next session, verify the live branch, pull request, and checks before acting:
 
 ```sh
