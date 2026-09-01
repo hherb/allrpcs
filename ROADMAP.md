@@ -176,11 +176,12 @@ added the immutable association between a stable character identifier and one ex
 closed controller type on 2026-09-01. Phase 2c4 added qualitative authored conditions and an
 ordered, duplicate-free collection with explicit empty-set behavior on the same date. Phase 2c5
 added an ordered, copied, duplicate-free collection of existing object identifiers representing
-the character's current inventory references on the same date. The broader character-model item
-remains incomplete and unticked because knowledge, beliefs, relationships, and goals remain
-absent. No object or item model, inventory mechanics, complete character aggregate, mutable entity
-state, scenario content, serialization framework, persistence, or engine integration was added.
-See `HANDOVER.md` for exact validation and test evidence.
+the character's current inventory references on the same date. Phase 2c6 added the equivalent
+ordered, copied, duplicate-free boundary for existing knowledge identifiers. The broader
+character-model item remains incomplete and unticked because beliefs, relationships, and goals
+remain absent. No knowledge content, object or item model, inventory mechanics, complete character
+aggregate, mutable entity state, scenario content, serialization framework, persistence, or engine
+integration was added. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
