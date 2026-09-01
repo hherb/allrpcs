@@ -211,7 +211,7 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
-## Character identity, backgrounds, capabilities, limitations, condition, inventory, knowledge, and controller
+## Character identity, backgrounds, capabilities, limitations, condition, inventory, knowledge, beliefs, and controller
 
 `Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
 display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
@@ -262,9 +262,16 @@ a read-only collection, and rejects null or duplicate identifiers. It does not d
 content, world truth, evidence, claims, beliefs, confidence, provenance, discovery,
 reinterpretation, visibility, perception, or executable policy.
 
-This boundary does not yet define a complete character aggregate, beliefs, relationships, goals,
-mutable state, perception filtering, dialogue context, persistence, serialization, Godot, or UI
-behavior.
+`CharacterBelief` is an authored value with a canonical key and a nonblank statement bounded to
+500 UTF-16 code units. Valid statements preserve whitespace, casing, line endings, and Unicode
+exactly. `CharacterBeliefSet` explicitly permits an empty sequence, preserves authored order,
+copies caller input, exposes no mutable collection, and rejects null entries or duplicate keys.
+These types record only what is authored as a character belief. They do not classify a belief as
+world truth or knowledge, or define evidence, confidence, provenance, attributed claims,
+discovery, reinterpretation, visibility, perception, authorization, or executable policy.
+
+This boundary does not yet define a complete character aggregate, relationships, goals, mutable
+state, perception filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
