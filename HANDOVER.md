@@ -4,8 +4,8 @@
 
 Phase 2h1 is implemented, reviewed, and locally validated on
 `codex/phase-2h1-visibility-state`, based directly on the PR #28 merge at `6666de4`.
-The draft pull request has not yet been opened. Pull-request merge remains separately
-authorized.
+Draft PR #29 (`https://github.com/hherb/allrpcs/pull/29`) is open. Pull-request merge remains
+separately authorized.
 
 ## Phase 2h1 result
 
