@@ -9,6 +9,9 @@ Phase 2e2 is implemented, reviewed, and locally validated. It adds only the immu
 world-object aggregate. The combined location, object, item, and environmental-state roadmap
 item remains incomplete.
 
+The private remote has draft PR #25 for reviewed slice commit `bc611c0`. Re-query its final
+checks after this handover-only head update. Pull-request merge remains separately authorized.
+
 ## Phase 2e2 result
 
 - `WorldObject` requires and retains exactly one existing `WorldObjectIdentity` and one existing
