@@ -178,12 +178,13 @@ ordered, duplicate-free collection with explicit empty-set behavior on the same 
 added an ordered, copied, duplicate-free collection of existing object identifiers representing
 the character's current inventory references on the same date. Phase 2c6 added the equivalent
 ordered, copied, duplicate-free boundary for existing knowledge identifiers. Phase 2c7 added
-authored beliefs plus an ordered, copied, duplicate-free collection on 2026-09-01. The broader
-character-model item remains incomplete and unticked because relationships and goals remain
-absent. No truth classification, evidence, confidence, provenance, object or item model,
-inventory mechanics, complete character aggregate, mutable entity state, scenario content,
-serialization framework, persistence, or engine integration was added. See `HANDOVER.md` for
-exact validation and test evidence.
+authored beliefs plus an ordered, copied, duplicate-free collection on 2026-09-01. Phase 2c8
+added authored relationship summaries plus an ordered, copied collection with distinct related
+character identifiers on the same date. The broader character-model item remains incomplete and
+unticked because goals and a complete aggregate remain absent. No relationship mechanics, truth
+classification, evidence, confidence, provenance, object or item model, inventory mechanics,
+mutable entity state, scenario content, serialization framework, persistence, or engine
+integration was added. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
