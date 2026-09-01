@@ -211,7 +211,7 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
-## Character identity, backgrounds, capabilities, limitations, condition, inventory, and controller assignment
+## Character identity, backgrounds, capabilities, limitations, condition, inventory, knowledge, and controller
 
 `Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
 display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
@@ -256,9 +256,15 @@ only a read-only collection, and rejects null or duplicate identifiers. It does 
 or item state, quantities, stacks, slots, weight, capacity, containers, equipment, ownership,
 transfer, visibility, use, crafting, consumption, or executable policy.
 
-This boundary does not yet define a complete character aggregate, knowledge, beliefs,
-relationships, goals, mutable state, perception filtering, dialogue context, persistence,
-serialization, Godot, or UI behavior.
+`CharacterKnowledge` contains only a character's current ordered references to existing
+`KnowledgeId` values. It explicitly permits an empty sequence, copies caller input, exposes only
+a read-only collection, and rejects null or duplicate identifiers. It does not define knowledge
+content, world truth, evidence, claims, beliefs, confidence, provenance, discovery,
+reinterpretation, visibility, perception, or executable policy.
+
+This boundary does not yet define a complete character aggregate, beliefs, relationships, goals,
+mutable state, perception filtering, dialogue context, persistence, serialization, Godot, or UI
+behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
