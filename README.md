@@ -309,10 +309,15 @@ exactly, explicitly permits an empty string when no description is authored, rej
 is bounded to 4,000 UTF-16 code units. It records authoritative authored location state; it is
 not proof that any character can perceive, identify, understand, or otherwise access that text.
 
-These boundaries do not yet define a location aggregate, hierarchy, containment, connections,
+`Location` is the immutable composition root for the authored location model. It requires and
+retains exactly one existing `LocationIdentity` and one existing `LocationDescription`, exposing
+only those supplied components through get-only properties. The aggregate adds no cross-field
+policy, methods, or events.
+
+The complete location boundary still does not define hierarchy, containment, connections,
 coordinates, regions, navigation topology, terrain, access rules, environmental state, mutable
-occupancy, filtered views, visibility, perception, discovery, persistence, serialization, Godot,
-or UI behavior.
+occupancy, lifecycle or event handling, filtered views, visibility, perception, discovery,
+persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
