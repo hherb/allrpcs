@@ -10,6 +10,9 @@ and description values while leaving the broader location/object/item/environmen
 roadmap item open. No spatial, discovery, runtime, persistence, engine, or UI mechanics were
 added.
 
+The private remote has open draft PR #22 for reviewed slice commit `ff1617e`. Re-query its final
+checks after this handover-only head update. Pull-request merge remains separately authorized.
+
 At the start of the next session, verify the live branch, pull request, and checks before acting:
 
 ```sh
