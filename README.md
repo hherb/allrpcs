@@ -211,7 +211,7 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
-## Character identity, backgrounds, capabilities, limitations, condition, and controller assignment
+## Character identity, backgrounds, capabilities, limitations, condition, inventory, and controller assignment
 
 `Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
 display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
@@ -250,7 +250,13 @@ preserves authored order, copies caller input, and rejects duplicate keys using 
 comparison. These types do not define disease stages, symptoms, severity, progression, treatment,
 timers, death, or other runtime health mechanics.
 
-This boundary does not yet define a complete character aggregate, inventory, knowledge, beliefs,
+`CharacterInventory` contains only the character inventory's current ordered references to
+existing `ObjectId` values. It explicitly permits an empty sequence, copies caller input, exposes
+only a read-only collection, and rejects null or duplicate identifiers. It does not define object
+or item state, quantities, stacks, slots, weight, capacity, containers, equipment, ownership,
+transfer, visibility, use, crafting, consumption, or executable policy.
+
+This boundary does not yet define a complete character aggregate, knowledge, beliefs,
 relationships, goals, mutable state, perception filtering, dialogue context, persistence,
 serialization, Godot, or UI behavior.
 
