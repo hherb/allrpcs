@@ -11,8 +11,11 @@ collection of existing `ObjectId` references for a character inventory. The broa
 character-model roadmap item remains unticked because knowledge, beliefs, relationships, and
 goals do not yet exist.
 
-The reviewed slice is ready for its authorized commit, push, and draft pull request. Re-query the
-live branch, pull request, and checks after publication rather than relying on this sentence.
+The private remote has open draft PR #16 for this branch. The reviewed implementation, local
+evidence, and initial handover are commit `3e0e36c`. Initial pull-request run `33460446182`
+started all five credential-free jobs at that commit. This hosted-evidence update creates a new
+branch head, so re-query its final checks rather than assuming the initial commit's result applies
+to it. Pull-request merge remains unauthorized.
 
 At the start of the next session, verify current state:
 
