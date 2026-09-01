@@ -9,6 +9,9 @@ Phase 2e1 is implemented, reviewed, and locally validated. It adds only immutabl
 identity and description values. The world-object aggregate and the broader combined roadmap item
 remain incomplete.
 
+The private remote has open draft PR #24 for reviewed slice commit `961d3ae`. Re-query its final
+checks after this handover-only head update. Pull-request merge remains separately authorized.
+
 Before continuing after this branch merges, verify the live branch, pull request, and checks.
 
 ## Phase 2e1 result
