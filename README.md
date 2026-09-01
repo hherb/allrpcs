@@ -278,8 +278,15 @@ entries or duplicate related-character identifiers. These types do not define sc
 dimensions, reasons, history, reciprocity, symmetry, self-relationship policy, graph traversal,
 visibility, perception, authorization, or executable policy.
 
-This boundary does not yet define a complete character aggregate, goals, mutable state,
-perception filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
+`CharacterGoal` is an authored value with a canonical key and a nonblank description bounded to
+500 UTF-16 code units. Valid keys and descriptions are preserved exactly. `CharacterGoalSet`
+explicitly permits an empty sequence, preserves authored order, copies caller input, exposes no
+mutable collection, and rejects null entries or duplicate keys using ordinal equality. These
+types do not define priority, status, progress, deadlines, dependencies, plans, completion,
+rewards, visibility, mutation, behavior selection, authorization, or executable policy.
+
+This boundary does not yet define a complete character aggregate, mutable state, perception
+filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
