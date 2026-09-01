@@ -10,6 +10,9 @@ Phase 2g1 is implemented, reviewed, and locally validated. It adds only the immu
 qualitative environmental-state entry. The combined location, object, item, and
 environmental-state roadmap item remains incomplete.
 
+The private remote has draft PR #27 for reviewed slice commit `0af2fad`. Re-query its final
+checks after this handover-only head update. Pull-request merge remains separately authorized.
+
 ## Phase 2g1 result
 
 - `EnvironmentalState` has a canonical `Key` and a nonblank `Description` bounded to 500
