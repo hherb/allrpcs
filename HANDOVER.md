@@ -2,41 +2,44 @@
 
 ## Current state
 
-PR #22 merged Phase 2d1 into `origin/main` at `6a86445` on 2026-09-01. The current branch,
-`codex/phase-2d2-location-aggregate`, starts directly from that merge.
+PR #23 merged Phase 2d2 into `origin/main` at `1113c4e` on 2026-09-01. The current branch,
+`codex/phase-2e1-world-object-identity-description`, starts directly from that merge.
 
-Phase 2d2 is implemented, reviewed, and locally validated. It adds only the immutable `Location`
-aggregate. The broader location/object/item/environmental-state roadmap item remains incomplete.
+Phase 2e1 is implemented, reviewed, and locally validated. It adds only immutable world-object
+identity and description values. The world-object aggregate and the broader combined roadmap item
+remain incomplete.
 
-The private remote has open draft PR #23 for reviewed slice commit `e10e5e6`. Re-query its final
+The private remote has open draft PR #24 for reviewed slice commit `961d3ae`. Re-query its final
 checks after this handover-only head update. Pull-request merge remains separately authorized.
 
 Before continuing after this branch merges, verify the live branch, pull request, and checks.
 
-## Phase 2d2 result
+## Phase 2e1 result
 
-- `Location` requires and retains exactly one existing `LocationIdentity` and one existing
-  `LocationDescription` instance.
-- Its complete public surface is two get-only properties. It adds no cross-field policy, methods,
-  events, or runtime behavior.
-- Four focused tests cover exact composition, an empty description, both null inputs, and the
-  complete read-only public surface. `Domain` retains no project references.
-- `README.md` documents the completed aggregate boundary. `ROADMAP.md` records Phase 2d2 without
-  ticking the incomplete combined model item.
+- `WorldObjectIdentity` requires and retains exactly one existing `ObjectId` and an authored
+  display name. Names must be nonblank and at most 80 UTF-16 code units; valid text is preserved
+  exactly.
+- `WorldObjectDescription` is structurally separate, permits empty text, rejects null or more than
+  4,000 UTF-16 code units, and preserves valid authored text exactly.
+- Seventeen focused tests cover retention, boundaries, invalid values, value equality, deliberately
+  limited read-only public surfaces, and separation from location and character values.
+- `README.md` documents the new boundary. `ROADMAP.md` records Phase 2e1 without ticking the
+  incomplete combined model item. `Domain` retains no project references.
 
-Review found no remaining correctness, architecture, or scope issue.
+Review found no remaining correctness, architecture, documentation, or scope issue.
 
 ## Validation and limits
 
-The test-first run failed on the missing `Location` type. After implementation, all four focused
-tests passed on the host shell. The restricted full sequence produced a zero-warning build, then
-VSTest could not bind its required loopback transport (`SocketException (13): Permission denied`).
+The test-first run failed because the new world-object namespace did not exist. After
+implementation, all 17 focused tests passed on the host shell. The restricted full sequence
+produced a zero-warning build, then VSTest could not bind its required loopback transport
+(`SocketException (13): Permission denied`).
 
 The identical host-shell `./scripts/quality.sh` passed on Apple Silicon macOS with .NET SDK
 8.0.130 and Godot 4.6.3.stable.mono.official:
 
 - workflow lint, serial restore, formatting verification, and a zero-warning build;
-- all 199 Domain tests, 100 Application tests, and six architecture tests;
+- all 216 Domain tests, 100 Application tests, and six architecture tests;
 - navigation, healer-command, interaction-focus, and movement-boundary Godot smokes; and
 - the bounded 60-frame graphical regression launch with the Compatibility renderer.
 
@@ -47,27 +50,25 @@ changes remain separately unauthorized.
 
 ## Exact next bounded slice
 
-After the user reports this pull request merged, take **Phase 2e1: immutable world-object identity
-and description boundary**.
+After the user reports this pull request merged, take **Phase 2e2: immutable world-object
+aggregate**.
 
 Acceptance boundary:
 
-1. Add a sealed immutable `WorldObjectIdentity` Domain value that retains exactly one existing
-   `ObjectId` and one authored display name. Require nonblank names of at most 80 UTF-16 code units
-   and preserve valid text exactly.
-2. Add a structurally separate sealed immutable `WorldObjectDescription` value. Permit empty text,
-   reject null or more than 4,000 UTF-16 code units, and preserve valid authored text exactly.
-3. Add focused pure tests for exact retention, boundary values, invalid values, value equality,
-   deliberately limited read-only public surfaces, and separation from location and character
-   values.
-4. Preserve `Domain -> []`; update `README.md`, `ROADMAP.md`, and this file. Do not add the
-   world-object aggregate yet, and keep the combined roadmap item unticked.
+1. Add a sealed immutable `WorldObject` Domain aggregate that requires and retains exactly one
+   existing `WorldObjectIdentity` and one existing `WorldObjectDescription` instance.
+2. Expose only those two components through get-only properties. Add no other cross-field policy,
+   public methods, events, or runtime behavior.
+3. Add focused pure tests for exact component retention, composition with an empty description,
+   both null inputs, and the complete deliberately limited read-only public surface.
+4. Preserve `Domain -> []`; update `README.md`, `ROADMAP.md`, and this file. Keep the combined
+   location/object/item/environmental-state roadmap item unticked.
 5. Run `./scripts/quality.sh`, review every intended path, and commit only the reviewed slice.
 
 Explicit exclusions:
 
-- Do not add an object aggregate, item type or model, object-item classification, properties,
-  tags, portability, quantities, stacks, containers, inventory mechanics, ownership, or use.
+- Do not add an item type or model, object-item classification, properties, tags, portability,
+  quantities, stacks, containers, inventory mechanics, ownership, or use.
 - Do not add location assignment, hierarchy, containment, connections, coordinates, regions,
   navigation topology, terrain, access rules, environmental state, mutable occupancy, lifecycle,
   events, or interactions.
