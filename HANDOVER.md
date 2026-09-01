@@ -12,9 +12,14 @@ pairs an existing stable character identifier with one existing closed controlle
 broader character-model roadmap item remains unticked because condition, inventory, knowledge,
 beliefs, relationships, and goals do not yet exist.
 
-The implementation has not yet been published. Push and draft pull-request creation are
-authorized for this slice. The pull request is not authorized to merge. Public visibility,
-releases, artifact distribution, credentials, signing, and notarization remain unauthorized.
+The private remote has open draft PR #14 for this branch. The reviewed Phase 2c3 implementation,
+local evidence, and initial handover are commit `ceb297f`; this hosted-evidence update follows it.
+All five credential-free jobs in pull-request run `33451475065` passed, including pure C# quality,
+the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2,
+and Windows x64. Re-query the final branch head and checks after this documentation commit rather
+than assuming the earlier commit's result applies to it. The pull request is not authorized to
+merge. Public visibility, releases, artifact distribution, credentials, signing, and notarization
+remain unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -67,6 +72,15 @@ The navigation smoke synchronized the 98-vertex, 66-polygon region at navigation
 and found the bridge route while rejecting representative obstacle targets. The healer-command,
 interaction-focus, and movement-boundary smokes repeated their complete established acceptance
 paths without a regression.
+
+Pull-request run `33451475065` passed pure C# quality and tests, the Linux headless Godot smoke,
+and unsigned development builds on Linux x64, macOS Universal 2, and Windows x64 at implementation
+commit `ceb297f`. The three unexpired hosted artifacts are named
+`UNSIGNED-DEVELOPMENT-linux-x64`, `UNSIGNED-DEVELOPMENT-macos-universal`, and
+`UNSIGNED-DEVELOPMENT-windows-x64`. The workflow explicitly rejected a bundle-level signature
+from the macOS output and an Authenticode signature from the Windows output before upload. These
+artifacts remain unsigned development evidence, not releases or distribution artifacts. The
+final documentation commit creates a new branch head, so its checks must be queried separately.
 
 The focused test host first compiled inside the restricted environment, then could not bind its
 loopback socket. The identical focused test passed from the host shell. Aggregate quality
