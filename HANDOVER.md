@@ -10,8 +10,11 @@ Phase 2c6 is implemented, reviewed, and locally validated. It adds only an immut
 collection of existing `KnowledgeId` references for a character. The broader character-model
 roadmap item remains unticked because beliefs, relationships, and goals do not yet exist.
 
-The reviewed branch has not yet been published as a draft pull request. Pull-request merge remains
-unauthorized.
+The private remote has open draft PR #17 for this branch. The reviewed implementation, local
+evidence, and initial handover are commit `39d3a0d`. Initial pull-request run `33461366432`
+started all five credential-free jobs at that commit. This hosted-evidence update creates a new
+branch head, so re-query its final checks rather than assuming the initial commit's result applies
+to it. Pull-request merge remains unauthorized.
 
 At the start of the next session, verify current state:
 
