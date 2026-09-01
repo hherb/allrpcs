@@ -188,11 +188,12 @@ values, and Phase 2d2 composed them into an immutable location aggregate while l
 location, object, item, and environmental-state item incomplete. Phase 2e1 then added structurally
 separate immutable world-object identity and description values, and Phase 2e2 composed them into
 an immutable world-object aggregate. Phase 2f1 then classified an existing immutable world object
-as an item while leaving the broader combined model item incomplete. No relationship or goal
-mechanics, spatial mechanics, truth classification, evidence, confidence, provenance, item
-properties or mechanics, environmental-state model, mutable entity state, scenario content,
-serialization framework, persistence, or engine integration was added. See `HANDOVER.md` for
-exact validation and test evidence.
+as an item. Phase 2g1 then added an immutable qualitative environmental-state value while leaving
+the broader combined model item incomplete. No relationship or goal mechanics, spatial mechanics,
+truth classification, evidence, confidence, provenance, item properties or mechanics,
+environmental-state collections, assignment or simulation, mutable entity state, scenario
+content, serialization framework, persistence, or engine integration was added. See `HANDOVER.md`
+for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

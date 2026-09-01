@@ -352,6 +352,17 @@ This classification boundary does not define item properties, tags, portability,
 stacks, containers, inventory mechanics, ownership, use, mutation, lifecycle, events,
 interactions, location assignment, persistence, serialization, Godot, or UI behavior.
 
+## Environmental-state model boundaries
+
+`Allrpcs.Domain.EnvironmentalStates.EnvironmentalState` is a qualitative authored value with a
+canonical key and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions
+preserve authored whitespace, casing, line endings, and Unicode exactly. It remains structurally
+separate from `CharacterCondition`.
+
+This value does not define environmental-state collections, assignment to locations or objects,
+weather, lighting, terrain, hazards, transitions, mutation, lifecycle, events, time, simulation,
+visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
