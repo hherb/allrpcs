@@ -7,8 +7,10 @@ PR #25 merged Phase 2e2 into `origin/main` at `7bcb9ae` on 2026-09-01. The curre
 
 Phase 2f1 is implemented, reviewed, and locally validated. It adds only the immutable item
 classification boundary. The combined location, object, item, and environmental-state roadmap
-item remains incomplete. A draft pull request will be opened after the reviewed commit is pushed;
-pull-request merge remains separately authorized.
+item remains incomplete.
+
+The private remote has draft PR #26 for reviewed slice commit `6693613`. Re-query its final
+checks after this handover-only head update. Pull-request merge remains separately authorized.
 
 ## Phase 2f1 result
 
