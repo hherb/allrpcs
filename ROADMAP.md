@@ -189,18 +189,20 @@ location, object, item, and environmental-state item incomplete. Phase 2e1 then 
 separate immutable world-object identity and description values, and Phase 2e2 composed them into
 an immutable world-object aggregate. Phase 2f1 then classified an existing immutable world object
 as an item. Phase 2g1 then added an immutable qualitative environmental-state value while leaving
-the broader combined model item incomplete. No relationship or goal mechanics, spatial mechanics,
-truth classification, evidence, confidence, provenance, item properties or mechanics,
-environmental-state collections, assignment or simulation, mutable entity state, scenario
-content, serialization framework, persistence, or engine integration was added. See `HANDOVER.md`
-for exact validation and test evidence.
+the broader combined model item incomplete. Phase 2g2 then added its immutable ordered,
+duplicate-free collection and completed the structural location, object, item, and
+environmental-state model item on 2026-09-02. No relationship or goal mechanics, spatial
+mechanics, truth classification, evidence, confidence, provenance, item properties or mechanics,
+environmental-state assignment or simulation, mutable entity state, scenario content,
+serialization framework, persistence, or engine integration was added. See `HANDOVER.md` for
+exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
 - [x] Define controller types: human, LLM, deterministic test, and dormant.
 - [x] Define the character model: identity, public/private background, capabilities,
   limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller.
-- [ ] Define location, object, item, and environmental-state models.
+- [x] Define location, object, item, and environmental-state models.
 - [ ] Define visibility states: unnoticed, noticed, identified, understood, and altered or
   collected.
 - [ ] Implement per-character perception snapshots.
