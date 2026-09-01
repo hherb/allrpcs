@@ -332,8 +332,13 @@ exactly, explicitly permits an empty string when no description is authored, rej
 bounded to 4,000 UTF-16 code units. It records authoritative authored world-object state; it is not
 proof that any character can perceive, identify, understand, or otherwise access that text.
 
-This slice does not compose a world-object aggregate or define item classification, properties,
-tags, portability, quantities, stacks, containers, inventory mechanics, ownership, use, location
+`WorldObject` is the immutable composition root for the authored world-object model. It requires
+and retains exactly one existing `WorldObjectIdentity` and one existing
+`WorldObjectDescription`, exposing only those supplied components through get-only properties.
+The aggregate adds no cross-field policy, methods, or events.
+
+The complete world-object boundary still does not define item classification, properties, tags,
+portability, quantities, stacks, containers, inventory mechanics, ownership, use, location
 assignment, containment, mutable state, lifecycle or event handling, filtered views, visibility,
 perception, discovery, persistence, serialization, Godot, or UI behavior.
 
