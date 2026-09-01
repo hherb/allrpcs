@@ -4,7 +4,8 @@
 
 Phase 2h2 is implemented, reviewed, and locally validated on
 `codex/phase-2h2-world-object-visibility`, based directly on the PR #29 merge at `046b46f`.
-The branch is ready for its draft pull request. Pull-request merge remains separately authorized.
+Draft PR #30 (`https://github.com/hherb/allrpcs/pull/30`) is open. Pull-request merge remains
+separately authorized.
 
 `WorldObjectVisibility` is a sealed immutable value association between exactly one existing
 `ObjectId` and one existing `VisibilityState`. It rejects null inputs, retains both supplied
