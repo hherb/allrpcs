@@ -359,8 +359,12 @@ canonical key and a nonblank description bounded to 500 UTF-16 code units. Valid
 preserve authored whitespace, casing, line endings, and Unicode exactly. It remains structurally
 separate from `CharacterCondition`.
 
-This value does not define environmental-state collections, assignment to locations or objects,
-weather, lighting, terrain, hazards, transitions, mutation, lifecycle, events, time, simulation,
+`EnvironmentalStateSet` contains existing environmental states in stable authored order. It
+explicitly permits an empty sequence, copies caller input, exposes a read-only collection, and
+rejects null input, null entries, and duplicate canonical keys using ordinal equality.
+
+These boundaries do not assign environmental states to locations or objects or define weather,
+lighting, terrain, hazards, transitions, mutation, lifecycle, events, time, simulation,
 visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
