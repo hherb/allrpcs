@@ -173,11 +173,13 @@ introduced immutable character identity plus structurally distinct public and pr
 background values. Phase 2c2 added structurally distinct capability and limitation values plus
 ordered, duplicate-free collections with explicit empty-set behavior on 2026-09-01. Phase 2c3
 added the immutable association between a stable character identifier and one existing
-closed controller type on 2026-09-01. The broader character-model item remains incomplete and
-unticked because condition, inventory, knowledge, beliefs, relationships, and goals remain
-absent. No controller instances or behavior, complete character aggregate, mutable entity state,
-scenario content, serialization framework, persistence, or engine integration was added. See
-`HANDOVER.md` for exact validation and test evidence.
+closed controller type on 2026-09-01. Phase 2c4 added qualitative authored conditions and an
+ordered, duplicate-free collection with explicit empty-set behavior on the same date. The broader
+character-model item remains incomplete and unticked because inventory, knowledge, beliefs,
+relationships, and goals remain absent. No disease or health mechanics, controller instances or
+behavior, complete character aggregate, mutable entity state, scenario content, serialization
+framework, persistence, or engine integration was added. See `HANDOVER.md` for exact validation
+and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

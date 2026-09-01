@@ -2,24 +2,25 @@
 
 ## Current state
 
-PR #13 merged Phase 2c2 into `origin/main` at merge commit `384d023` on 2026-09-01.
-The current branch, `codex/phase-2c3-controller-assignment`, is based directly on that verified
-merge.
+PR #14 merged Phase 2c3 into `origin/main` at merge commit `2eff73e` on 2026-09-01. The
+current branch, `codex/phase-2c4-character-condition`, is based directly on that verified merge.
 
-Phase 2c3, the character controller-assignment boundary, is implemented, reviewed, and locally
-validated on the current branch. It adds one immutable, engine-independent Domain value that
-pairs an existing stable character identifier with one existing closed controller type. The
-broader character-model roadmap item remains unticked because condition, inventory, knowledge,
-beliefs, relationships, and goals do not yet exist.
+Phase 2c4, the character-condition vocabulary boundary, is implemented, reviewed, and locally
+validated on the current branch. It adds an immutable qualitative authored condition and an
+ordered, copied, duplicate-free collection without adding disease or runtime health mechanics.
+The broader character-model roadmap item remains unticked because inventory, knowledge, beliefs,
+relationships, and goals do not yet exist.
 
-The private remote has open draft PR #14 for this branch. The reviewed Phase 2c3 implementation,
-local evidence, and initial handover are commit `ceb297f`; this hosted-evidence update follows it.
-All five credential-free jobs in pull-request run `33451475065` passed, including pure C# quality,
+The private remote has open draft PR #15 for this branch. The reviewed implementation, local
+evidence, and initial handover are commit `b671810`; this hosted-evidence update follows it. All
+five credential-free jobs in pull-request run `33455001527` passed at that commit: pure C# quality,
 the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2,
-and Windows x64. Re-query the final branch head and checks after this documentation commit rather
-than assuming the earlier commit's result applies to it. The pull request is not authorized to
-merge. Public visibility, releases, artifact distribution, credentials, signing, and notarization
-remain unauthorized.
+and Windows x64. The unexpired hosted artifacts are named `UNSIGNED-DEVELOPMENT-linux-x64`,
+`UNSIGNED-DEVELOPMENT-macos-universal`, and `UNSIGNED-DEVELOPMENT-windows-x64`. The macOS and
+Windows jobs rejected a bundle signature and Authenticode signature respectively before upload.
+These artifacts are development evidence, not releases or approved distribution artifacts. This
+documentation commit creates a new branch head, so re-query its final checks rather than assuming
+the implementation commit's result applies to it. Pull-request merge remains unauthorized.
 
 At the start of the next session, verify current state rather than relying only on this summary:
 
@@ -27,145 +28,94 @@ At the start of the next session, verify current state rather than relying only 
 git status --short --branch
 git log -4 --oneline --decorate
 git remote -v
-gh pr view codex/phase-2c3-controller-assignment --repo hherb/allrpcs \
+gh pr view codex/phase-2c4-character-condition --repo hherb/allrpcs \
   --json number,state,isDraft,headRefName,headRefOid,url
-gh pr checks codex/phase-2c3-controller-assignment --repo hherb/allrpcs
+gh pr checks codex/phase-2c4-character-condition --repo hherb/allrpcs
 ```
 
-## Phase 2c3 implementation
+## Phase 2c4 implementation and review
 
-The slice remains within its original boundary:
+- `CharacterCondition` is a sealed immutable Domain record with only `Key` and `Description`.
+- Keys use the existing 1-to-64-character canonical identifier-text grammar.
+- Descriptions require a non-whitespace character, are limited to 500 UTF-16 code units, and
+  preserve valid authored text exactly without trimming or normalization.
+- `CharacterConditionSet` explicitly permits an empty sequence, preserves authored order, copies
+  caller input, and rejects null entries and duplicate keys using ordinal comparison.
+- Twenty focused tests cover equality, structural separation, key and description boundaries,
+  empty-set behavior, ordering, copying, null and duplicate rejection, and the deliberately
+  limited public surface.
+- `Domain` retains no project references. `README.md` documents the contract and exclusions;
+  `ROADMAP.md` records Phase 2c4 progress without ticking the broader character-model item.
 
-- `CharacterControllerAssignment` is a sealed immutable record in `Domain`.
-- Its constructor accepts one existing `CharacterId` and one existing `ControllerType`, rejects
-  null values, and retains both supplied objects exactly.
-- Record equality compares the typed character identifier and closed controller type. Different
-  character identifiers or controller types therefore produce different assignments.
-- The value represents only the current authored, authoritative association. Its public surface
-  contains only `CharacterId` and `ControllerType`.
-- Five focused tests prove exact retention, value equality, character distinction, all four
-  controller types, null rejection, and the absence of provider, model, configuration, or
-  behavior properties.
-- `README.md` documents the contract and exclusions. `ROADMAP.md` records Phase 2c3 progress
-  while deliberately leaving the broader character-model item unticked.
+Review confirmed that the implementation reuses the existing canonical-text, authored-text, and
+ordered-entry helpers without coupling condition to capability or limitation types. The public
+surface cannot express disease stages, symptoms, severity, progression, treatment, timers, death,
+or runtime behavior. No correctness, architecture, or scope issue remained after review.
 
-## Review and validation
+## Validation and limitations
 
-### Automated evidence
+On 2026-09-01, the test-first focused run failed to compile because the condition types did not
+exist, then all 20 focused tests passed after implementation. The complete local quality sequence
+passed on Apple Silicon macOS with .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
 
-On 2026-09-01, the current implementation produced this local evidence on Apple Silicon macOS
-with .NET SDK 8.0.130 and Godot 4.6.3.stable.mono.official:
+- workflow lint, serial restore, formatting verification, and a zero-warning, zero-error build;
+- all 106 Domain tests, 100 Application tests, and six architecture reference tests;
+- navigation, healer-command, interaction-focus, and movement-boundary Godot smokes; and
+- a bounded 60-frame native graphical regression launch with the Compatibility renderer on the
+  Apple M3 Max.
 
-- the test-first focused Domain run failed to compile because
-  `CharacterControllerAssignment` did not exist, then passed all five focused tests after
-  implementation;
-- `dotnet format Allrpcs.sln --no-restore --verify-no-changes` passed;
-- `dotnet build Allrpcs.sln --no-restore --disable-build-servers -m:1 /nr:false` built all seven
-  projects with zero warnings and zero errors;
-- the quality sequence passed workflow linting, serial restore, formatting verification, the
-  zero-warning build, all 86 Domain tests, all 100 Application tests, and all six architecture
-  reference tests; and
-- the four constituent Godot smokes passed, followed by a bounded 60-frame native graphical
-  launch using the Compatibility renderer on the Apple M3 Max.
+The restricted environment compiled the focused tests but prevented the .NET test host from
+binding its loopback socket. The identical focused test and the complete quality sequence passed
+from the host shell. No sandbox failure, process launch, or screenshot is reported as product
+evidence.
 
-The navigation smoke synchronized the 98-vertex, 66-polygon region at navigation map iteration 2
-and found the bridge route while rejecting representative obstacle targets. The healer-command,
-interaction-focus, and movement-boundary smokes repeated their complete established acceptance
-paths without a regression.
+No manual play acceptance is required for this engine-independent Domain slice. The native launch
+and existing Godot smokes are regression evidence only. This slice makes no visual, input,
+physics, scene, renderer, disease, health-mechanic, or runtime-behavior claim.
 
-Pull-request run `33451475065` passed pure C# quality and tests, the Linux headless Godot smoke,
-and unsigned development builds on Linux x64, macOS Universal 2, and Windows x64 at implementation
-commit `ceb297f`. The three unexpired hosted artifacts are named
-`UNSIGNED-DEVELOPMENT-linux-x64`, `UNSIGNED-DEVELOPMENT-macos-universal`, and
-`UNSIGNED-DEVELOPMENT-windows-x64`. The workflow explicitly rejected a bundle-level signature
-from the macOS output and an Authenticode signature from the Windows output before upload. These
-artifacts remain unsigned development evidence, not releases or distribution artifacts. The
-final documentation commit creates a new branch head, so its checks must be queried separately.
+Explicitly excluded and still absent:
 
-The focused test host first compiled inside the restricted environment, then could not bind its
-loopback socket. The identical focused test passed from the host shell. Aggregate quality
-invocations later stalled after their pure tests while the untraced smoke wrapper had no live
-Godot child; only those validation processes were interrupted. The same smoke wrapper passed
-with shell tracing, and each of its four Godot commands plus the bounded native launch also passed
-individually from the host shell. No sandbox failure, stalled shell, process launch, or screenshot
-is being reported as a product result.
-
-### Native evidence
-
-No manual play acceptance is required for this engine-independent Domain slice. The bounded
-native regression launch opened the current scene with Godot's Compatibility renderer on the
-Apple M3 Max and exited cleanly after 60 frames. The existing Godot smokes passed as regression
-checks only. This slice makes no visual, input, physics, scene, renderer, controller-behavior, or
-controller-switching claim.
-
-## Review findings
-
-The assignment composes the already-reviewed typed identifier and closed controller primitive
-rather than introducing another identifier grammar, controller registry, or stringly typed
-controller value. Null inputs fail closed, while valid objects are neither copied nor normalized.
-The record's structural equality matches the value boundary: the same character and controller
-type compare equal, while character identity and controller category remain independently
-significant.
-
-The public surface is intentionally only the two associated values. It cannot create a
-controller, choose a provider or model, hold configuration, define prompts or tools, route player
-input, schedule decisions, switch controller types, or execute behavior. Domain retains no
-project references. No correctness, security, architecture, or scope issue remained after
-review.
-
-## Limitations and exclusions
-
-- Phase 2c3 does not define a complete character aggregate or mutable character state.
-- It does not add condition, inventory, knowledge, beliefs, relationships, or goals.
-- It does not create controller instances, lifecycle, configuration, prompts, tools, scheduling,
-  switching policy, dormant transitions, player input routing, deterministic behavior, runtime
-  orchestration, providers, or models.
-- The assignment is current authored state only. It does not record assignment history, fallback
-  types, eligibility, authorization, capability, or proof that any controller is available.
-- It does not define scenario characters, action validation, perception filtering,
-  dialogue/model context, authorization policy, persistence, or serialization behavior.
-- No Godot resource, node, UI, save schema, database mapping, migration, provider adapter,
-  runtime registration, or extensible plugin surface was added.
-- Existing native behavior and future hosted cross-platform builds are regression surfaces, not
-  new Phase 2c3 behavior claims. No manual or cross-platform assignment-specific acceptance was
-  required or performed.
+- disease stages, infection, transmission, progression, treatment, stabilization, cure, death,
+  symptoms, severity math, timers, meaningful-time events, and health mechanics;
+- inventory, knowledge, beliefs, relationships, goals, mutable character state, and a complete
+  character aggregate;
+- visibility or public/private classification, perception filtering, authorization, capability
+  checks, controller switching, action validation, and provider instructions;
+- scenario characters, dialogue/model context, persistence, serialization, Godot resources or
+  nodes, UI, save/database schemas, migrations, providers, and runtime registration; and
+- releases, artifact distribution, credentials, signing, notarization, and repository visibility
+  changes. Pull-request merge remains separately authorized.
 
 ## Exact next bounded slice
 
-After the user reports that the Phase 2c3 pull request merged, take **Phase 2c4: character
-condition vocabulary boundary**. This continues, but does not complete or tick, the broader
+After the user reports that the Phase 2c4 pull request merged, take **Phase 2c5: character
+inventory-reference boundary**. This continues, but does not complete or tick, the broader
 authoritative character-model roadmap item.
 
-Acceptance boundary for Phase 2c4:
+Acceptance boundary for Phase 2c5:
 
-1. Add structurally separate immutable Domain values for an authored qualitative character
-   condition and an ordered collection of those values.
-2. Give each condition a canonical key using the existing identifier-text grammar and a
-   nonblank authored description bounded to 500 UTF-16 code units; preserve valid description
-   text exactly without normalization.
-3. Explicitly allow an empty condition collection, preserve authored order, copy caller input,
-   and reject null entries and duplicate canonical keys using ordinal comparison.
-4. Add focused pure tests for equality, key and description boundaries, exact preservation,
-   empty-set behavior, stable ordering, input copying, duplicate rejection, and disease/runtime
-   non-assumptions.
-5. Preserve `Domain -> []`; update `README.md` and this file, but leave the broader
+1. Add one immutable Domain value representing the character inventory's current ordered
+   references to existing stable `ObjectId` values.
+2. Explicitly allow an empty inventory, preserve authored order, copy caller input, expose no
+   mutable collection, and reject null entries and duplicate identifiers.
+3. Add focused pure tests for empty behavior, stable ordering, input copying, typed identifier
+   retention, null and duplicate rejection, and the absence of quantities, capacity, ownership,
+   transfer, visibility, or executable-policy surfaces.
+4. Preserve `Domain -> []`; update `README.md` and this file, but leave the broader
    character-model roadmap item unticked until all of its listed state is represented and
    reviewed.
-6. Commit only reviewed slice paths after the current validation sequence passes.
+5. Commit only reviewed slice paths after the current validation sequence passes.
 
-Explicit exclusions for Phase 2c4:
+Explicit exclusions for Phase 2c5:
 
-- Do not define disease stages, infection, transmission, progression, treatment, stabilization,
-  cure, death, timers, meaningful-time events, symptoms, severity math, or health mechanics.
-- Do not yet add inventory, knowledge, beliefs, relationships, goals, mutable character state,
-  or a complete character aggregate.
+- Do not define object or item models, quantities, stacks, slots, weight, capacity, containers,
+  equipment, ownership policy, give, take, drop, use, crafting, consumption, or action validation.
+- Do not yet add knowledge, beliefs, relationships, goals, mutable character state, or a complete
+  character aggregate.
 - Do not attach visibility, public/private classification, perception filtering, authorization,
-  capability checks, controller switching, action validation, or provider instructions to a
-  condition.
-- Do not define scenario characters, dialogue/model context, persistence, or serialization
-  behavior.
-- Do not add Godot nodes/resources, UI, database/save schemas, migrations, providers, runtime
-  registration, or extensible plugin surfaces.
+  capability checks, controller behavior, or provider instructions to inventory references.
+- Do not define scenario contents, persistence, serialization, database/save schemas, migrations,
+  Godot resources or nodes, UI, providers, runtime registration, or plugin surfaces.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
   until their own retained prototype or authoritative-system prerequisites exist.
 - Do not change repository visibility, merge pull requests, create releases, distribute
@@ -175,9 +125,8 @@ Explicit exclusions for Phase 2c4:
 
 - Start every continuation by reading `ROADMAP.md` and this file.
 - Take the exact bounded slice and preserve its exclusions.
-- Tick roadmap items only after current automated and manual evidence exists.
 - Keep dependency direction: Godot presentation to Application to Domain, and Infrastructure to
   Application to Domain.
-- Keep changes narrow, inspect tracked and untracked files, and stage only intended paths.
+- Run `./scripts/quality.sh`, inspect all intended paths, and stage only the reviewed slice.
 - Record branch, commit, pull request, checks, native evidence, and limitations without
-  overstating unavailable platform, manual, or release validation.
+  overstating unavailable platform, manual, signing, release, or distribution validation.
