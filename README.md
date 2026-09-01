@@ -211,7 +211,7 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
-## Character identity, backgrounds, capabilities, limitations, and controller assignment
+## Character identity, backgrounds, capabilities, limitations, condition, and controller assignment
 
 `Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
 display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
@@ -243,9 +243,16 @@ values. It records only the character's current authored controller-type associa
 create a controller instance, configure a provider or model, define prompts or behavior, route
 input, or introduce runtime orchestration or switching policy.
 
-This boundary does not yet define a complete character aggregate, condition, inventory,
-knowledge, beliefs, relationships, goals, mutable state, perception filtering, dialogue context,
-persistence, serialization, Godot, or UI behavior.
+`CharacterCondition` is a qualitative authored value with a canonical key and a nonblank
+description bounded to 500 UTF-16 code units. Valid descriptions preserve whitespace, casing,
+line endings, and Unicode exactly. `CharacterConditionSet` explicitly permits an empty sequence,
+preserves authored order, copies caller input, and rejects duplicate keys using ordinal
+comparison. These types do not define disease stages, symptoms, severity, progression, treatment,
+timers, death, or other runtime health mechanics.
+
+This boundary does not yet define a complete character aggregate, inventory, knowledge, beliefs,
+relationships, goals, mutable state, perception filtering, dialogue context, persistence,
+serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
