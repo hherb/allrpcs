@@ -297,6 +297,23 @@ handling, runtime registration, relationship or goal mechanics, capability autho
 behavior selection, perception filtering, dialogue context, persistence, serialization, Godot,
 or UI behavior.
 
+## Location model boundaries
+
+`Allrpcs.Domain.Locations.LocationIdentity` pairs a stable `LocationId` with an authored display
+name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16 code units
+as measured by .NET `string.Length`, and are retained exactly rather than trimmed, case-folded,
+or otherwise normalized. The immutable value compares by both identifier and display name.
+
+`LocationDescription` is a structurally separate immutable authored value. It retains text
+exactly, explicitly permits an empty string when no description is authored, rejects null, and
+is bounded to 4,000 UTF-16 code units. It records authoritative authored location state; it is
+not proof that any character can perceive, identify, understand, or otherwise access that text.
+
+These boundaries do not yet define a location aggregate, hierarchy, containment, connections,
+coordinates, regions, navigation topology, terrain, access rules, environmental state, mutable
+occupancy, filtered views, visibility, perception, discovery, persistence, serialization, Godot,
+or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,

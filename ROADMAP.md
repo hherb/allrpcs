@@ -183,10 +183,12 @@ added authored relationship summaries plus an ordered, copied collection with di
 character identifiers on the same date. Phase 2c9 added authored goals plus an ordered, copied,
 duplicate-free collection on the same date. Phase 2c10 composed every listed value into one
 immutable character aggregate and completed the structural character-model item on the same
-date. No relationship or goal mechanics, truth classification, evidence, confidence,
-provenance, object or item model, inventory mechanics, mutable entity state, scenario content,
-serialization framework, persistence, or engine integration was added. See `HANDOVER.md` for
-exact validation and test evidence.
+date. Phase 2d1 then added structurally separate immutable location identity and description
+values while leaving the broader location, object, item, and environmental-state item incomplete.
+No relationship or goal mechanics, location aggregate or spatial mechanics, truth classification,
+evidence, confidence, provenance, object or item model, inventory mechanics, mutable entity state,
+scenario content, serialization framework, persistence, or engine integration was added. See
+`HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
