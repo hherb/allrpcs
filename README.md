@@ -211,7 +211,7 @@ These values describe controller categories only. They do not create controller 
 select providers or models, define prompts or behavior, attach a controller to a character, or
 introduce runtime orchestration, serialization-framework, persistence, Godot, or UI behavior.
 
-## Character identity, backgrounds, capabilities, limitations, condition, inventory, knowledge, beliefs, and controller
+## Character model boundaries
 
 `Allrpcs.Domain.Characters.CharacterIdentity` pairs a stable `CharacterId` with an authored
 display name. Display names must contain a non-whitespace character, are bounded to 80 UTF-16
@@ -270,8 +270,16 @@ These types record only what is authored as a character belief. They do not clas
 world truth or knowledge, or define evidence, confidence, provenance, attributed claims,
 discovery, reinterpretation, visibility, perception, authorization, or executable policy.
 
-This boundary does not yet define a complete character aggregate, relationships, goals, mutable
-state, perception filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
+`CharacterRelationship` associates an existing related `CharacterId` with a nonblank authored
+summary bounded to 500 UTF-16 code units. Valid summaries preserve whitespace, casing, line
+endings, and Unicode exactly. `CharacterRelationshipSet` explicitly permits an empty sequence,
+preserves authored order, copies caller input, exposes no mutable collection, and rejects null
+entries or duplicate related-character identifiers. These types do not define scores,
+dimensions, reasons, history, reciprocity, symmetry, self-relationship policy, graph traversal,
+visibility, perception, authorization, or executable policy.
+
+This boundary does not yet define a complete character aggregate, goals, mutable state,
+perception filtering, dialogue context, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
