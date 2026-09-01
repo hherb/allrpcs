@@ -11,8 +11,18 @@ ordered, copied, duplicate-free collection without adding disease or runtime hea
 The broader character-model roadmap item remains unticked because inventory, knowledge, beliefs,
 relationships, and goals do not yet exist.
 
-No pull request exists yet for this branch. At the start of the next session, verify current state
-rather than relying only on this summary:
+The private remote has open draft PR #15 for this branch. The reviewed implementation, local
+evidence, and initial handover are commit `b671810`; this hosted-evidence update follows it. All
+five credential-free jobs in pull-request run `33455001527` passed at that commit: pure C# quality,
+the Linux headless Godot smoke, and unsigned development builds on Linux x64, macOS Universal 2,
+and Windows x64. The unexpired hosted artifacts are named `UNSIGNED-DEVELOPMENT-linux-x64`,
+`UNSIGNED-DEVELOPMENT-macos-universal`, and `UNSIGNED-DEVELOPMENT-windows-x64`. The macOS and
+Windows jobs rejected a bundle signature and Authenticode signature respectively before upload.
+These artifacts are development evidence, not releases or approved distribution artifacts. This
+documentation commit creates a new branch head, so re-query its final checks rather than assuming
+the implementation commit's result applies to it. Pull-request merge remains unauthorized.
+
+At the start of the next session, verify current state rather than relying only on this summary:
 
 ```sh
 git status --short --branch
