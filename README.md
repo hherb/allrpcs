@@ -367,6 +367,18 @@ These boundaries do not assign environmental states to locations or objects or d
 lighting, terrain, hazards, transitions, mutation, lifecycle, events, time, simulation,
 visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
 
+## Visibility-state boundaries
+
+`Allrpcs.Domain.Perception.VisibilityState` defines exactly `unnoticed`, `noticed`,
+`identified`, `understood`, `altered`, and `collected`. `All` exposes those singleton values in
+that stable roadmap order. `Value` and `ToString()` expose canonical text, and `Parse` accepts
+only that exact text and returns the corresponding defined instance.
+
+These closed values do not assign visibility to characters or objects or define perception
+snapshots, filtered views, progression, transitions, discovery, reinterpretation, permissions,
+actions, events, inventory ownership, mutation, persistence, serialization, Godot, or UI
+behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
