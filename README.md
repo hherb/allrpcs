@@ -367,7 +367,7 @@ These boundaries do not assign environmental states to locations or objects or d
 lighting, terrain, hazards, transitions, mutation, lifecycle, events, time, simulation,
 visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
 
-## Visibility-state boundaries
+## Perception-snapshot boundaries
 
 `Allrpcs.Domain.Perception.VisibilityState` defines exactly `unnoticed`, `noticed`,
 `identified`, `understood`, `altered`, and `collected`. `All` exposes those singleton values in
@@ -378,9 +378,15 @@ only that exact text and returns the corresponding defined instance.
 `VisibilityState`. It requires and retains both supplied instances and compares associations by
 their values. It adds no default state or cross-field policy.
 
-This association is not assigned to a character and does not define perception snapshots,
-filtered views, progression, transitions, discovery, reinterpretation, permissions, actions,
-events, inventory ownership, mutation, persistence, serialization, Godot, or UI behavior.
+`CharacterPerceptionSnapshot` associates exactly one existing `CharacterId` with world-object
+visibility entries in stable supplied order. It retains the supplied character identifier and
+entry instances, explicitly permits an empty sequence, copies caller input, exposes a read-only
+collection, and rejects null input, null entries, and duplicate object identifiers. It adds no
+implicit `unnoticed` entries, default state, or cross-entry policy.
+
+These boundaries do not define filtered character views, character-aggregate integration,
+progression, transitions, discovery, reinterpretation, permissions, actions, events, inventory
+ownership, mutation, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

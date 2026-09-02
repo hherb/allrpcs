@@ -198,7 +198,9 @@ serialization framework, persistence, or engine integration was added. Phase 2h1
 closed canonical visibility states in stable roadmap order on 2026-09-02, without assigning them
 or adding perception mechanics. Phase 2h2 then associated one existing world-object identifier
 with one existing visibility state, without assigning that association to a character or adding a
-snapshot collection. See `HANDOVER.md` for exact validation and test evidence.
+snapshot collection. Phase 2h3 then added an immutable ordered per-character perception snapshot,
+without filtered views, character-aggregate integration, or perception mechanics. See
+`HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
@@ -208,7 +210,7 @@ snapshot collection. See `HANDOVER.md` for exact validation and test evidence.
 - [x] Define location, object, item, and environmental-state models.
 - [x] Define visibility states: unnoticed, noticed, identified, understood, and altered or
   collected.
-- [ ] Implement per-character perception snapshots.
+- [x] Implement per-character perception snapshots.
 - [ ] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
 - [ ] Implement capability- and tool-dependent discovery conditions.
 - [ ] Implement bounded focused searches with visible character activity.
