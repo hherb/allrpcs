@@ -388,7 +388,7 @@ These boundaries do not define filtered character views, character-aggregate int
 progression, transitions, discovery, reinterpretation, permissions, actions, events, inventory
 ownership, mutation, persistence, serialization, Godot, or UI behavior.
 
-## Inventory-ownership boundaries
+## Inventory boundaries
 
 `Allrpcs.Domain.Inventory.InventoryOwnership` associates exactly one existing `ObjectId` with
 exactly one existing owner `CharacterId`. It requires and retains both supplied instances and
@@ -399,10 +399,15 @@ It explicitly permits an empty sequence, copies caller input, exposes a read-onl
 retains each supplied entry instance, and rejects null input, null entries, and duplicate object
 identifiers. It adds no implicit ownership or default owner.
 
-These boundaries do not define unowned objects, character-inventory integration, capacity,
-quantities, stacks, slots, weight, containers, equipment, give, take, drop, use, crafting,
-consumption, transfer, location, possession history, visibility, discovery, permissions, actions,
-events, mutation, persistence, serialization, Godot, or UI behavior.
+`InventoryCapacity` associates exactly one existing `CharacterId` with a non-negative maximum
+count of distinct owned world objects. It retains the supplied character identifier, explicitly
+permits zero capacity, and compares capacities by both values. It does not enforce that capacity
+against any ownership snapshot or define a default or unlimited policy.
+
+These boundaries do not define unowned objects, character-inventory integration, capacity
+enforcement, quantities, stacks, slots, weight, containers, equipment, give, take, drop, use,
+crafting, consumption, transfer, location, possession history, visibility, discovery,
+permissions, actions, events, mutation, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

@@ -202,7 +202,8 @@ snapshot collection. Phase 2h3 then added an immutable ordered per-character per
 without filtered views, character-aggregate integration, or perception mechanics. Phase 2i1 then
 added one immutable object-to-owner association while leaving ownership collections, capacity,
 and inventory actions incomplete. Phase 2i2 then added the ordered, copied,
-duplicate-object-free ownership snapshot while leaving capacity and inventory actions incomplete.
+duplicate-object-free ownership snapshot. Phase 2i3 then added an immutable non-negative
+per-character inventory capacity while leaving capacity policy and inventory actions incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
