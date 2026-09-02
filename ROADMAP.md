@@ -212,7 +212,9 @@ completed the inventory ownership, capacity, and action-validation checklist ite
 action and transfer execution out of scope. Phase 2j1 then added one immutable target-object to
 required-character-capability-key discovery requirement while leaving requirement evaluation,
 tool requirements, collections, and the broader discovery-conditions checklist item incomplete.
-See `HANDOVER.md` for exact validation and test evidence.
+Phase 2j2 then added one immutable target-object to required-tool-object discovery requirement
+while leaving requirement evaluation, collections, and the broader discovery-conditions
+checklist item incomplete. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
