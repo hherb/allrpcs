@@ -4,8 +4,8 @@
 
 Phase 2j3 is implemented, reviewed, and locally validated on
 `codex/phase-2j3-discovery-capability-policy`, based directly on the PR #42 merge at `07d2878`.
-A draft pull request will be opened after this reviewed slice is committed and pushed.
-Pull-request merge remains separately authorized.
+Draft PR #43 (`https://github.com/hherb/allrpcs/pull/43`) is open. Pull-request merge remains
+separately authorized.
 
 `DiscoveryCapabilityPolicy.IsSatisfied` is one pure, fail-closed evaluation of an existing
 `DiscoveryCapabilityRequirement` against an existing `CharacterCapabilitySet`. It returns true
