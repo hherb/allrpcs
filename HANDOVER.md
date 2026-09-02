@@ -4,6 +4,8 @@
 
 Phase 2i2 is implemented, reviewed, and locally validated on
 `codex/phase-2i2-inventory-ownership-snapshot`, based directly on the PR #32 merge at `9d80ce0`.
+Draft PR #33 (`https://github.com/hherb/allrpcs/pull/33`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryOwnershipSnapshot` is a sealed immutable collection of existing
 `InventoryOwnership` entries. It permits an empty sequence, copies caller input, preserves stable
