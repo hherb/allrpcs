@@ -4,8 +4,8 @@
 
 Phase 2j1 is implemented, reviewed, and locally validated on
 `codex/phase-2j1-discovery-capability-requirement`, based directly on the PR #40 merge at
-`dbca6ba`. A draft pull request has not yet been opened. Pull-request merge remains separately
-authorized.
+`dbca6ba`. Draft PR #41 (`https://github.com/hherb/allrpcs/pull/41`) is open. Pull-request merge
+remains separately authorized.
 
 `DiscoveryCapabilityRequirement` is an immutable value associating one existing target
 `ObjectId` with one required canonical character-capability key. It retains the supplied object
