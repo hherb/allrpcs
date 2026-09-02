@@ -209,8 +209,10 @@ for whether one character may own one additional distinct object. Phase 2i6 then
 one-object take eligibility. Phase 2i7 then added pure one-object drop eligibility. Phase 2i8 then
 added pure one-object give eligibility. Phase 2i9 then added pure one-object use eligibility and
 completed the inventory ownership, capacity, and action-validation checklist item while leaving
-action and transfer execution out of scope. See `HANDOVER.md` for exact validation and test
-evidence.
+action and transfer execution out of scope. Phase 2j1 then added one immutable target-object to
+required-character-capability-key discovery requirement while leaving requirement evaluation,
+tool requirements, collections, and the broader discovery-conditions checklist item incomplete.
+See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

@@ -441,6 +441,19 @@ stacks, slots, weight, containers, equipment, use execution, crafting, consumpti
 execution, location, possession history, visibility, discovery, permissions, actions, events,
 mutation, persistence, serialization, Godot, or UI behavior.
 
+## Discovery-requirement boundaries
+
+`Allrpcs.Domain.Discovery.DiscoveryCapabilityRequirement` associates exactly one existing target
+`ObjectId` with one required canonical character-capability key. It retains the supplied object
+identifier instance, validates the capability key with the shared canonical-identifier contract,
+preserves that key exactly, and compares requirements by their values.
+
+This boundary does not evaluate the requirement against a character, capability set, inventory,
+perception, or world state, and does not grant discovery or change visibility. It does not define
+requirement collections, multi-requirement logic, tool requirements, searches, passive noticing,
+reinterpretation, actions, results, errors, events, effects, mutable state, persistence,
+serialization, Godot, or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
