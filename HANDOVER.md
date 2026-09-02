@@ -4,6 +4,8 @@
 
 Phase 2i3 is implemented, reviewed, and locally validated on
 `codex/phase-2i3-inventory-capacity`, based directly on the PR #33 merge at `7c91325`.
+Draft PR #34 (`https://github.com/hherb/allrpcs/pull/34`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryCapacity` is a sealed immutable value containing one existing `CharacterId` and a
 non-negative `MaximumObjectCount` for distinct owned objects. It retains the supplied identifier,
