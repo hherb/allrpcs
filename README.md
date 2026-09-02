@@ -463,6 +463,11 @@ It preserves stable authored order, copies caller input, retains the exact suppl
 instances, permits an empty sequence, exposes only a read-only collection, and rejects null input,
 null entries, and value-equal duplicate target-object identifiers.
 
+`DiscoveryConditionSet` composes one existing `DiscoveryCapabilityRequirementSet` and one existing
+`DiscoveryToolRequirementSet`. It retains the exact supplied set instances through get-only
+properties, accepts their existing empty-set behavior, and permits the same target-object
+identifier to occur once in each set without assigning evaluation semantics to that overlap.
+
 `Allrpcs.Domain.Discovery.DiscoveryCapabilityPolicy.IsSatisfied` is a pure, fail-closed evaluation
 of one capability requirement against one existing `CharacterCapabilitySet`. It returns true
 exactly when a capability key equals the required key by ordinal value, independent of authored
@@ -473,11 +478,11 @@ evaluation of one tool requirement against one existing `CharacterInventory`. It
 exactly when the inventory contains the required tool-object identifier by value, independent of
 the target object, authored order, and unrelated entries, and it does not mutate either input.
 
-These boundaries do not combine multiple requirements, inspect a complete character, ownership
-or capacity snapshots, perception or world state, grant discovery, or change visibility. They do
-not define tool classifications or properties, searches, passive noticing, reinterpretation,
-actions, results, errors, events, effects, mutable state, persistence, serialization, Godot, or UI
-behavior.
+These boundaries do not evaluate requirement collections, define whether capability and tool
+requirements use AND, OR, or another combination, inspect a complete character, ownership or
+capacity snapshots, perception or world state, grant discovery, or change visibility. They do not
+define tool classifications or properties, searches, passive noticing, reinterpretation, actions,
+results, errors, events, effects, mutable state, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

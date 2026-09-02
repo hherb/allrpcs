@@ -222,7 +222,10 @@ the ordered, copied, duplicate-target-free capability-requirement set while leav
 tool-requirement collection and the broader discovery-conditions checklist item incomplete.
 Phase 2j6 then added the equivalent ordered, copied, duplicate-target-free tool-requirement set
 while leaving combined discovery conditions and the broader discovery-conditions checklist item
-incomplete. See `HANDOVER.md` for exact validation and test evidence.
+incomplete. Phase 2j7 then composed both existing requirement sets into one immutable aggregate,
+while deliberately leaving Boolean combination and evaluation semantics and the broader
+discovery-conditions checklist item incomplete. See `HANDOVER.md` for exact validation and test
+evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
