@@ -404,6 +404,11 @@ count of distinct owned world objects. It retains the supplied character identif
 permits zero capacity, and compares capacities by both values. It does not enforce that capacity
 against any ownership snapshot or define a default or unlimited policy.
 
+`InventoryCapacitySnapshot` contains existing capacities in stable supplied order. It explicitly
+permits an empty sequence, copies caller input, exposes a read-only collection, retains each
+supplied entry instance, and rejects null input, null entries, and duplicate character
+identifiers. It adds no implicit capacity, lookup behavior, or cross-snapshot policy.
+
 These boundaries do not define unowned objects, character-inventory integration, capacity
 enforcement, quantities, stacks, slots, weight, containers, equipment, give, take, drop, use,
 crafting, consumption, transfer, location, possession history, visibility, discovery,
