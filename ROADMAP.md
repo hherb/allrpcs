@@ -206,9 +206,9 @@ duplicate-object-free ownership snapshot. Phase 2i3 then added an immutable non-
 per-character inventory capacity. Phase 2i4 then added the ordered, copied,
 duplicate-character-free capacity snapshot. Phase 2i5 then added the pure fail-closed decision
 for whether one character may own one additional distinct object. Phase 2i6 then added pure
-one-object take eligibility. Phase 2i7 then added pure one-object drop eligibility while leaving
-give, use, and transfer execution incomplete. See `HANDOVER.md` for exact validation and test
-evidence.
+one-object take eligibility. Phase 2i7 then added pure one-object drop eligibility. Phase 2i8 then
+added pure one-object give eligibility while leaving use validation and transfer execution
+incomplete. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
