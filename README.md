@@ -453,6 +453,11 @@ preserves that key exactly, and compares requirements by their values.
 instances and compares requirements by their values. The value deliberately adds no policy that
 the target and required tool must be different objects.
 
+`DiscoveryCapabilityRequirementSet` contains existing capability requirements in stable authored
+order. It copies caller input, retains the exact supplied requirement instances, permits an empty
+sequence, exposes only a read-only collection, and rejects null input, null entries, and
+value-equal duplicate target-object identifiers.
+
 `Allrpcs.Domain.Discovery.DiscoveryCapabilityPolicy.IsSatisfied` is a pure, fail-closed evaluation
 of one capability requirement against one existing `CharacterCapabilitySet`. It returns true
 exactly when a capability key equals the required key by ordinal value, independent of authored
@@ -465,9 +470,9 @@ the target object, authored order, and unrelated entries, and it does not mutate
 
 These boundaries do not combine multiple requirements, inspect a complete character, ownership
 or capacity snapshots, perception or world state, grant discovery, or change visibility. They do
-not define tool classifications or properties, requirement collections, searches, passive
-noticing, reinterpretation, actions, results, errors, events, effects, mutable state, persistence,
-serialization, Godot, or UI behavior.
+not define tool classifications or properties, a tool-requirement collection, searches, passive
+noticing, reinterpretation, actions, results, errors, events, effects, mutable state,
+persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
