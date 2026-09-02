@@ -409,10 +409,15 @@ permits an empty sequence, copies caller input, exposes a read-only collection, 
 supplied entry instance, and rejects null input, null entries, and duplicate character
 identifiers. It adds no implicit capacity, lookup behavior, or cross-snapshot policy.
 
+`InventoryCapacityPolicy.CanOwnAdditionalObject` is a pure, fail-closed decision for one new
+distinct ownership entry. It finds capacity by value-equal character identifier, counts only
+ownership entries for that character, and permits the addition exactly while that count is below
+the recorded maximum. It does not accept an object identifier or mutate either snapshot.
+
 These boundaries do not define unowned objects, character-inventory integration, capacity
-enforcement, quantities, stacks, slots, weight, containers, equipment, give, take, drop, use,
-crafting, consumption, transfer, location, possession history, visibility, discovery,
-permissions, actions, events, mutation, persistence, serialization, Godot, or UI behavior.
+reservation, quantities, stacks, slots, weight, containers, equipment, give, take, drop, use,
+crafting, consumption, transfer, location, possession history, visibility, discovery, permissions,
+actions, events, mutation, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
