@@ -215,9 +215,10 @@ tool requirements, collections, and the broader discovery-conditions checklist i
 Phase 2j2 then added one immutable target-object to required-tool-object discovery requirement
 while leaving requirement evaluation, collections, and the broader discovery-conditions
 checklist item incomplete. Phase 2j3 then added pure fail-closed capability-requirement evaluation
-against an existing character capability set while leaving tool-requirement evaluation,
-collections, and the broader discovery-conditions checklist item incomplete. See `HANDOVER.md`
-for exact validation and test evidence.
+against an existing character capability set. Phase 2j4 then added pure fail-closed
+tool-requirement evaluation against an existing character inventory while leaving requirement
+collections and the broader discovery-conditions checklist item incomplete. See `HANDOVER.md` for
+exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
