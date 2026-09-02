@@ -203,8 +203,9 @@ without filtered views, character-aggregate integration, or perception mechanics
 added one immutable object-to-owner association while leaving ownership collections, capacity,
 and inventory actions incomplete. Phase 2i2 then added the ordered, copied,
 duplicate-object-free ownership snapshot. Phase 2i3 then added an immutable non-negative
-per-character inventory capacity while leaving capacity policy and inventory actions incomplete.
-See `HANDOVER.md` for exact validation and test evidence.
+per-character inventory capacity. Phase 2i4 then added the ordered, copied,
+duplicate-character-free capacity snapshot while leaving capacity policy and inventory actions
+incomplete. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
