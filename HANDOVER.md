@@ -4,6 +4,8 @@
 
 Phase 2i6 is implemented, reviewed, and locally validated on
 `codex/phase-2i6-inventory-take-policy`, based directly on the PR #36 merge at `11dd46f`.
+Draft PR #37 (`https://github.com/hherb/allrpcs/pull/37`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryTakePolicy.CanTakeObject` is the single public, stateless decision for whether an
 existing `CharacterId` may take an existing `ObjectId`. It rejects null inputs and an object
