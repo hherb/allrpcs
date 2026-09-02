@@ -458,8 +458,13 @@ of one capability requirement against one existing `CharacterCapabilitySet`. It 
 exactly when a capability key equals the required key by ordinal value, independent of authored
 descriptions, order, and unrelated capabilities, and it does not mutate either input.
 
-These boundaries do not evaluate tool requirements, combine multiple requirements, inspect a
-character, inventory, perception, or world state, grant discovery, or change visibility. They do
+`Allrpcs.Domain.Discovery.DiscoveryToolPolicy.IsSatisfied` is the equivalent pure, fail-closed
+evaluation of one tool requirement against one existing `CharacterInventory`. It returns true
+exactly when the inventory contains the required tool-object identifier by value, independent of
+the target object, authored order, and unrelated entries, and it does not mutate either input.
+
+These boundaries do not combine multiple requirements, inspect a complete character, ownership
+or capacity snapshots, perception or world state, grant discovery, or change visibility. They do
 not define tool classifications or properties, requirement collections, searches, passive
 noticing, reinterpretation, actions, results, errors, events, effects, mutable state, persistence,
 serialization, Godot, or UI behavior.
