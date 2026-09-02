@@ -4,7 +4,8 @@
 
 Phase 2i1 is implemented, reviewed, and locally validated on
 `codex/phase-2i1-inventory-ownership`, based directly on the PR #31 merge at `4038e7e`. Draft PR
-creation is pending.
+#32 (`https://github.com/hherb/allrpcs/pull/32`) is open. Pull-request merge remains separately
+authorized.
 
 `InventoryOwnership` is a sealed immutable association between exactly one existing `ObjectId`
 and one existing owner `CharacterId`. It requires and retains both supplied identifiers, exposes
