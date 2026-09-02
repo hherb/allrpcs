@@ -4,6 +4,8 @@
 
 Phase 2i8 is implemented, reviewed, and locally validated on
 `codex/phase-2i8-inventory-give-policy`, based directly on the PR #38 merge at `34f4bd4`.
+Draft PR #39 (`https://github.com/hherb/allrpcs/pull/39`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryGivePolicy.CanGiveObject` is the single public, stateless decision for whether one
 existing giver `CharacterId` may give an existing `ObjectId` to one distinct existing recipient
