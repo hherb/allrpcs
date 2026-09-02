@@ -4,6 +4,8 @@
 
 Phase 2i7 is implemented, reviewed, and locally validated on
 `codex/phase-2i7-inventory-drop-policy`, based directly on the PR #37 merge at `1777f60`.
+Draft PR #38 (`https://github.com/hherb/allrpcs/pull/38`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryDropPolicy.CanDropObject` is the single public, stateless decision for whether an
 existing `CharacterId` may drop an existing `ObjectId`. It rejects null inputs and permits the
