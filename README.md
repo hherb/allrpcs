@@ -419,8 +419,13 @@ one existing world object. It rejects an object already owned by any character a
 delegates to `InventoryCapacityPolicy.CanOwnAdditionalObject` for the intended owner. It returns
 only eligibility and does not mutate either snapshot or execute a transfer.
 
+`InventoryDropPolicy.CanDropObject` is a pure eligibility decision for one existing character and
+one existing world object. It permits the drop exactly when the ownership snapshot records the
+value-equal object identifier as owned by the value-equal intended character. It returns only
+eligibility and does not mutate the ownership snapshot or execute the drop.
+
 These boundaries do not define character-inventory integration, capacity reservation, quantities,
-stacks, slots, weight, containers, equipment, give, drop, use, crafting, consumption, transfer
+stacks, slots, weight, containers, equipment, give, use, crafting, consumption, transfer
 execution, location, possession history, visibility, discovery, permissions, actions, events,
 mutation, persistence, serialization, Godot, or UI behavior.
 
