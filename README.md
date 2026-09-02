@@ -394,11 +394,15 @@ ownership, mutation, persistence, serialization, Godot, or UI behavior.
 exactly one existing owner `CharacterId`. It requires and retains both supplied instances and
 compares associations by their values.
 
-This boundary does not define an ownership collection, unowned objects, a default owner, global
-object uniqueness, character-inventory integration, capacity, quantities, stacks, slots, weight,
-containers, equipment, give, take, drop, use, crafting, consumption, transfer, location,
-possession history, visibility, discovery, permissions, actions, events, mutation, persistence,
-serialization, Godot, or UI behavior.
+`InventoryOwnershipSnapshot` contains existing ownership associations in stable supplied order.
+It explicitly permits an empty sequence, copies caller input, exposes a read-only collection,
+retains each supplied entry instance, and rejects null input, null entries, and duplicate object
+identifiers. It adds no implicit ownership or default owner.
+
+These boundaries do not define unowned objects, character-inventory integration, capacity,
+quantities, stacks, slots, weight, containers, equipment, give, take, drop, use, crafting,
+consumption, transfer, location, possession history, visibility, discovery, permissions, actions,
+events, mutation, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
