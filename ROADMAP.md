@@ -201,7 +201,9 @@ with one existing visibility state, without assigning that association to a char
 snapshot collection. Phase 2h3 then added an immutable ordered per-character perception snapshot,
 without filtered views, character-aggregate integration, or perception mechanics. Phase 2i1 then
 added one immutable object-to-owner association while leaving ownership collections, capacity,
-and inventory actions incomplete. See `HANDOVER.md` for exact validation and test evidence.
+and inventory actions incomplete. Phase 2i2 then added the ordered, copied,
+duplicate-object-free ownership snapshot while leaving capacity and inventory actions incomplete.
+See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
