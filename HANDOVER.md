@@ -4,7 +4,8 @@
 
 Phase 2j2 is implemented, reviewed, and locally validated on
 `codex/phase-2j2-discovery-tool-requirement`, based directly on the PR #41 merge at `ac0e031`.
-Draft pull-request publication is pending. Pull-request merge remains separately authorized.
+Draft PR #42 (`https://github.com/hherb/allrpcs/pull/42`) is open. Pull-request merge remains
+separately authorized.
 
 `DiscoveryToolRequirement` is an immutable value associating one existing target `ObjectId` with
 one existing required-tool `ObjectId`. It requires and retains both supplied identifier instances,
