@@ -2,39 +2,39 @@
 
 ## Current state
 
-Phase 2j2 is implemented, reviewed, and locally validated on
-`codex/phase-2j2-discovery-tool-requirement`, based directly on the PR #41 merge at `ac0e031`.
-Draft PR #42 (`https://github.com/hherb/allrpcs/pull/42`) is open. Pull-request merge remains
-separately authorized.
+Phase 2j3 is implemented, reviewed, and locally validated on
+`codex/phase-2j3-discovery-capability-policy`, based directly on the PR #42 merge at `07d2878`.
+A draft pull request will be opened after this reviewed slice is committed and pushed.
+Pull-request merge remains separately authorized.
 
-`DiscoveryToolRequirement` is an immutable value associating one existing target `ObjectId` with
-one existing required-tool `ObjectId`. It requires and retains both supplied identifier instances,
-compares by value, exposes only two get-only properties, and deliberately adds no same-object
-validity policy. It does not evaluate eligibility, grant discovery, or change visibility.
+`DiscoveryCapabilityPolicy.IsSatisfied` is one pure, fail-closed evaluation of an existing
+`DiscoveryCapabilityRequirement` against an existing `CharacterCapabilitySet`. It returns true
+exactly when a capability's canonical key equals the requirement key by ordinal value. It ignores
+authored descriptions, order, and unrelated capabilities and does not mutate either input. It
+does not evaluate tools, combine requirements, grant discovery, or change visibility.
 
-The test-first build failed because the tool-requirement type did not exist. All five focused
-tests then passed on the host. The restricted full-quality run completed a zero-warning build
-before reaching the known VSTest loopback denial. The identical host-shell
-`./scripts/quality.sh` passed with a zero-warning build, 355 Domain tests, 100 Application tests,
-six architecture tests, four Godot smokes, and the bounded graphical launch. No manual play
+The test-first build failed because the policy type did not exist. All eight focused tests then
+passed on the host. The restricted full-quality invocation reached restore/build but could not
+provide completion evidence for the full VSTest-capable workflow. The identical host-shell
+`./scripts/quality.sh` passed cleanly with a zero-warning build, 363 Domain tests, 100 Application
+tests, six architecture tests, four Godot smokes, and the bounded graphical launch. No manual play
 acceptance is required for this engine-independent Domain slice. `Domain -> []` remains intact,
 and hosted desktop outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-After this pull request is reported merged, take **Phase 2j3: pure capability-requirement
-evaluation**.
+After this pull request is reported merged, take **Phase 2j4: pure tool-requirement evaluation**.
 
 Acceptance boundary:
 
-1. Add a static `DiscoveryCapabilityPolicy` in `Allrpcs.Domain.Discovery` with one pure
-   `IsSatisfied` operation accepting an existing `DiscoveryCapabilityRequirement` and
-   `CharacterCapabilitySet`.
-2. Return true exactly when the supplied capability set contains a capability whose canonical
-   key equals the requirement key; otherwise fail closed. Match by ordinal value, ignore authored
-   descriptions, order, and unrelated capabilities, and do not mutate either input.
-3. Add focused pure tests for matching, empty and nonmatching sets, unrelated entries, value-based
-   key matching, null rejection, input retention, and the deliberately limited public surface.
+1. Add a static `DiscoveryToolPolicy` in `Allrpcs.Domain.Discovery` with one pure `IsSatisfied`
+   operation accepting an existing `DiscoveryToolRequirement` and `CharacterInventory`.
+2. Return true exactly when the inventory contains an object identifier equal by value to the
+   requirement's required-tool identifier; otherwise fail closed. Ignore the target object,
+   authored order, and unrelated inventory entries, and do not mutate either input.
+3. Add focused pure tests for matching, empty and nonmatching inventories, unrelated entries,
+   value-based identifier matching, null rejection, input retention, and the deliberately limited
+   public surface.
 4. Preserve `Domain -> []`; document the boundary in `README.md`, leave the broader capability-
    and tool-dependent discovery roadmap item incomplete, and replace this file with current
    evidence, limits, and one next bounded slice.
@@ -43,9 +43,9 @@ Acceptance boundary:
 
 Explicit exclusions:
 
-- Do not evaluate tool requirements, combine multiple requirements, grant discovery, change
-  visibility, or inspect character identity, inventory, perception, world state, or object
-  existence.
+- Do not combine capability and tool requirements, evaluate multiple requirements, grant
+  discovery, change visibility, or inspect a complete character, ownership/capacity snapshots,
+  perception, world state, or object existence.
 - Do not add requirement collections, tool classifications or properties, searches, passive
   noticing, reinterpretation, action requests, results, errors, events, or effects.
 - Do not add scenario content, mutable state, serialization, persistence, Godot, UI, providers, or
