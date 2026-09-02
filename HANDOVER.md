@@ -4,8 +4,8 @@
 
 Phase 2j4 is implemented, reviewed, and locally validated on
 `codex/phase-2j4-discovery-tool-policy`, based directly on the PR #43 merge at `d98b651`.
-A draft pull request will be opened after this reviewed slice is committed and pushed.
-Pull-request merge remains separately authorized.
+Draft PR #44 (`https://github.com/hherb/allrpcs/pull/44`) is open. Pull-request merge remains
+separately authorized.
 
 `DiscoveryToolPolicy.IsSatisfied` is one pure, fail-closed evaluation of an existing
 `DiscoveryToolRequirement` against an existing `CharacterInventory`. It returns true exactly
