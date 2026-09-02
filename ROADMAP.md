@@ -219,8 +219,10 @@ against an existing character capability set. Phase 2j4 then added pure fail-clo
 tool-requirement evaluation against an existing character inventory while leaving requirement
 collections and the broader discovery-conditions checklist item incomplete. Phase 2j5 then added
 the ordered, copied, duplicate-target-free capability-requirement set while leaving the
-tool-requirement collection and the broader discovery-conditions checklist item incomplete. See
-`HANDOVER.md` for exact validation and test evidence.
+tool-requirement collection and the broader discovery-conditions checklist item incomplete.
+Phase 2j6 then added the equivalent ordered, copied, duplicate-target-free tool-requirement set
+while leaving combined discovery conditions and the broader discovery-conditions checklist item
+incomplete. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
