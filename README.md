@@ -430,10 +430,16 @@ object and delegates recipient capacity eligibility to
 `InventoryCapacityPolicy.CanOwnAdditionalObject`. It returns only eligibility and does not mutate
 either snapshot or execute the transfer.
 
+`InventoryUsePolicy.CanUseObject` is a pure eligibility decision for one existing character and
+one existing world object. It permits use exactly when the ownership snapshot records the
+value-equal object identifier as owned by the value-equal intended character. It returns only
+eligibility and does not mutate the ownership snapshot or execute, consume, equip, or alter the
+object.
+
 These boundaries do not define character-inventory integration, capacity reservation, quantities,
-stacks, slots, weight, containers, equipment, use, crafting, consumption, transfer execution,
-location, possession history, visibility, discovery, permissions, actions, events, mutation,
-persistence, serialization, Godot, or UI behavior.
+stacks, slots, weight, containers, equipment, use execution, crafting, consumption, transfer
+execution, location, possession history, visibility, discovery, permissions, actions, events,
+mutation, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

@@ -207,8 +207,10 @@ per-character inventory capacity. Phase 2i4 then added the ordered, copied,
 duplicate-character-free capacity snapshot. Phase 2i5 then added the pure fail-closed decision
 for whether one character may own one additional distinct object. Phase 2i6 then added pure
 one-object take eligibility. Phase 2i7 then added pure one-object drop eligibility. Phase 2i8 then
-added pure one-object give eligibility while leaving use validation and transfer execution
-incomplete. See `HANDOVER.md` for exact validation and test evidence.
+added pure one-object give eligibility. Phase 2i9 then added pure one-object use eligibility and
+completed the inventory ownership, capacity, and action-validation checklist item while leaving
+action and transfer execution out of scope. See `HANDOVER.md` for exact validation and test
+evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
@@ -219,7 +221,7 @@ incomplete. See `HANDOVER.md` for exact validation and test evidence.
 - [x] Define visibility states: unnoticed, noticed, identified, understood, and altered or
   collected.
 - [x] Implement per-character perception snapshots.
-- [ ] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
+- [x] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
 - [ ] Implement capability- and tool-dependent discovery conditions.
 - [ ] Implement bounded focused searches with visible character activity.
 - [ ] Implement passive noticing without relying on arbitrary pixel clicking.
