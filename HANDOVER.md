@@ -4,6 +4,8 @@
 
 Phase 2i4 is implemented, reviewed, and locally validated on
 `codex/phase-2i4-inventory-capacity-snapshot`, based directly on the PR #34 merge at `16e49b6`.
+Draft PR #35 (`https://github.com/hherb/allrpcs/pull/35`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryCapacitySnapshot` is a sealed immutable collection of existing `InventoryCapacity`
 entries. It permits an empty sequence, copies caller input, preserves stable supplied order and
