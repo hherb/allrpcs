@@ -424,10 +424,16 @@ one existing world object. It permits the drop exactly when the ownership snapsh
 value-equal object identifier as owned by the value-equal intended character. It returns only
 eligibility and does not mutate the ownership snapshot or execute the drop.
 
+`InventoryGivePolicy.CanGiveObject` is a pure eligibility decision for one existing giver, one
+distinct existing recipient, and one existing world object. It requires the giver to own the
+object and delegates recipient capacity eligibility to
+`InventoryCapacityPolicy.CanOwnAdditionalObject`. It returns only eligibility and does not mutate
+either snapshot or execute the transfer.
+
 These boundaries do not define character-inventory integration, capacity reservation, quantities,
-stacks, slots, weight, containers, equipment, give, use, crafting, consumption, transfer
-execution, location, possession history, visibility, discovery, permissions, actions, events,
-mutation, persistence, serialization, Godot, or UI behavior.
+stacks, slots, weight, containers, equipment, use, crafting, consumption, transfer execution,
+location, possession history, visibility, discovery, permissions, actions, events, mutation,
+persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
