@@ -4,7 +4,7 @@
 
 Phase 2i9 is implemented, reviewed, and locally validated on
 `codex/phase-2i9-inventory-use-policy`, based directly on the PR #39 merge at `f0c63e2`.
-A draft pull request has not yet been opened from this branch. Pull-request merge remains
+Draft PR #40 (`https://github.com/hherb/allrpcs/pull/40`) is open. Pull-request merge remains
 separately authorized.
 
 `InventoryUsePolicy.CanUseObject` is the single public, stateless decision for whether an existing
