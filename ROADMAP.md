@@ -196,7 +196,9 @@ mechanics, truth classification, evidence, confidence, provenance, item properti
 environmental-state assignment or simulation, mutable entity state, scenario content,
 serialization framework, persistence, or engine integration was added. Phase 2h1 then added the
 closed canonical visibility states in stable roadmap order on 2026-09-02, without assigning them
-or adding perception mechanics. See `HANDOVER.md` for exact validation and test evidence.
+or adding perception mechanics. Phase 2h2 then associated one existing world-object identifier
+with one existing visibility state, without assigning that association to a character or adding a
+snapshot collection. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

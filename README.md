@@ -374,10 +374,13 @@ visibility, perception, discovery, persistence, serialization, Godot, or UI beha
 that stable roadmap order. `Value` and `ToString()` expose canonical text, and `Parse` accepts
 only that exact text and returns the corresponding defined instance.
 
-These closed values do not assign visibility to characters or objects or define perception
-snapshots, filtered views, progression, transitions, discovery, reinterpretation, permissions,
-actions, events, inventory ownership, mutation, persistence, serialization, Godot, or UI
-behavior.
+`WorldObjectVisibility` associates exactly one existing `ObjectId` with one existing
+`VisibilityState`. It requires and retains both supplied instances and compares associations by
+their values. It adds no default state or cross-field policy.
+
+This association is not assigned to a character and does not define perception snapshots,
+filtered views, progression, transitions, discovery, reinterpretation, permissions, actions,
+events, inventory ownership, mutation, persistence, serialization, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
