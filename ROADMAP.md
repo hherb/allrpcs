@@ -199,8 +199,9 @@ closed canonical visibility states in stable roadmap order on 2026-09-02, withou
 or adding perception mechanics. Phase 2h2 then associated one existing world-object identifier
 with one existing visibility state, without assigning that association to a character or adding a
 snapshot collection. Phase 2h3 then added an immutable ordered per-character perception snapshot,
-without filtered views, character-aggregate integration, or perception mechanics. See
-`HANDOVER.md` for exact validation and test evidence.
+without filtered views, character-aggregate integration, or perception mechanics. Phase 2i1 then
+added one immutable object-to-owner association while leaving ownership collections, capacity,
+and inventory actions incomplete. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

@@ -388,6 +388,18 @@ These boundaries do not define filtered character views, character-aggregate int
 progression, transitions, discovery, reinterpretation, permissions, actions, events, inventory
 ownership, mutation, persistence, serialization, Godot, or UI behavior.
 
+## Inventory-ownership boundaries
+
+`Allrpcs.Domain.Inventory.InventoryOwnership` associates exactly one existing `ObjectId` with
+exactly one existing owner `CharacterId`. It requires and retains both supplied instances and
+compares associations by their values.
+
+This boundary does not define an ownership collection, unowned objects, a default owner, global
+object uniqueness, character-inventory integration, capacity, quantities, stacks, slots, weight,
+containers, equipment, give, take, drop, use, crafting, consumption, transfer, location,
+possession history, visibility, discovery, permissions, actions, events, mutation, persistence,
+serialization, Godot, or UI behavior.
+
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
