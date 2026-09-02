@@ -4,8 +4,8 @@
 
 Phase 2h3 is implemented, reviewed, and locally validated on
 `codex/phase-2h3-character-perception-snapshot`, based directly on the PR #30 merge at
-`542fbae`. The draft pull request has not been opened yet. Pull-request merge remains separately
-authorized.
+`542fbae`. Draft PR #31 (`https://github.com/hherb/allrpcs/pull/31`) is open. Pull-request merge
+remains separately authorized.
 
 `CharacterPerceptionSnapshot` is a sealed immutable association between exactly one existing
 `CharacterId` and an ordered collection of existing `WorldObjectVisibility` entries. It retains
