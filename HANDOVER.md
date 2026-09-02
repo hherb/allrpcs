@@ -4,6 +4,8 @@
 
 Phase 2i5 is implemented, reviewed, and locally validated on
 `codex/phase-2i5-inventory-capacity-policy`, based directly on the PR #35 merge at `9192c43`.
+Draft PR #36 (`https://github.com/hherb/allrpcs/pull/36`) is open. Pull-request merge remains
+separately authorized.
 
 `InventoryCapacityPolicy.CanOwnAdditionalObject` is the single public, stateless decision for
 whether an existing `CharacterId` may own one additional distinct object. It rejects null inputs,
