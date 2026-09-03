@@ -2,57 +2,54 @@
 
 ## Current state
 
-Phase 2k6 is implemented, reviewed without findings, and locally validated on
-`codex/phase-2k6-focused-search-cancellation-policy`, based directly on the PR #53 merge at
-`8ae2263`. Feature commit `8cf0459` is pushed, and draft PR #54
-(`https://github.com/hherb/allrpcs/pull/54`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k7 is implemented, reviewed without findings, and locally validated on
+`codex/phase-2k7-focused-search-cancellation-transition`, based directly on the PR #54 merge at
+`a35f941`.
 
-`FocusedSearchCancellationPolicy.CanCancelSearch` returns true exactly when the activity snapshot
-contains an activity whose complete request is value-equal to the supplied request. It returns
-false for empty snapshots, either same-searcher/different-target or
-different-searcher/same-target near misses, and unrelated activities. It rejects null inputs and
-never mutates the request, existing activity instances, or snapshot.
+`FocusedSearchCancellationTransition.CancelSearch` delegates eligibility to
+`FocusedSearchCancellationPolicy`. It rejects an ineligible request and otherwise returns a new
+snapshot with the complete value-equal request removed while retaining every nonmatching existing
+activity instance in stable order. It rejects null inputs through the policy and never mutates the
+request, existing activities, or input snapshot.
 
-The test-first build failed only because `FocusedSearchCancellationPolicy` did not exist. All nine
-focused tests then passed on the host. Host-shell `./scripts/quality.sh` passed cleanly with 441
+The test-first build failed only because `FocusedSearchCancellationTransition` did not exist. All
+11 focused tests then passed on the host. Host-shell `./scripts/quality.sh` passed cleanly with 452
 Domain tests, 100 Application tests, six architecture tests, four Godot smokes, and the bounded
-graphical launch. The sandboxed focused test run reached the known VSTest loopback denial; the
-identical host run passed. No manual play acceptance is required for this engine-independent Domain
-slice. `Domain -> []` remains intact, and hosted desktop outputs remain unsigned development
-evidence, not releases.
+graphical launch. The sandboxed focused and full test runs reached the known VSTest loopback
+denial; the identical host runs passed. No manual play acceptance is required for this
+engine-independent Domain slice. `Domain -> []` remains intact, and hosted desktop outputs remain
+unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-After this pull request is reported merged, take **Phase 2k7: pure focused-search cancellation
-transition**.
+After this pull request is reported merged, take **Phase 2k8: pure focused-search completion
+eligibility**.
 
 Acceptance boundary:
 
-1. Add a static `FocusedSearchCancellationTransition` in `Allrpcs.Domain.Discovery` with one pure
-   `CancelSearch(FocusedSearchRequest, FocusedSearchActivitySnapshot)` operation returning a
-   `FocusedSearchActivitySnapshot`.
-2. Delegate eligibility to `FocusedSearchCancellationPolicy`. For an eligible request, return a
-   new snapshot containing every nonmatching existing activity in stable order and retaining the
-   exact existing activity instances. Reject an ineligible request with `InvalidOperationException`.
-3. Reject null inputs through the policy and never mutate the request, existing activity
-   instances, or input snapshot.
-4. Add focused tests for rejecting empty and near-match snapshots, removing a value-equal complete
-   request from each representative position, stable order and instance retention, null rejection,
-   non-mutation on both success and rejection, policy delegation behavior, and the deliberately
-   limited static public surface.
-5. Preserve `Domain -> []`; document the pure cancellation transition in `README.md`, leave the
-   broader bounded-focused-search roadmap item incomplete, and replace this file with current
+1. Add a static `FocusedSearchCompletionPolicy` in `Allrpcs.Domain.Discovery` with one pure
+   `CanCompleteSearch(FocusedSearchRequest, FocusedSearchActivitySnapshot)` operation returning a
+   Boolean.
+2. Return true exactly when the snapshot contains an activity whose complete request is
+   value-equal to the supplied request. Return false for an empty snapshot, either complete-request
+   near miss, and unrelated activities.
+3. Reject null inputs and never mutate the request, existing activity instances, or snapshot.
+4. Add focused tests for empty, exact, value-equal, near-match, and unrelated snapshots; null
+   rejection; non-mutation; and the deliberately limited static public surface.
+5. Preserve `Domain -> []`; document the pure completion-eligibility decision in `README.md`, leave
+   the broader bounded-focused-search roadmap item incomplete, and replace this file with current
    evidence, limits, and one next bounded slice.
 6. Use test-first development, run `./scripts/quality.sh`, review every intended path, and commit
    only the reviewed slice.
 
 Explicit exclusions:
 
-- Do not add a cancellation command, event, effect, reason, permission, presentation behavior, or
-  in-place collection mutation.
-- Do not treat cancellation as completion or add progress, completion, replacement, scheduling,
-  duration, timing, status values, outcomes, or any other lifecycle transition.
+- Do not add a completion transition, result, outcome, event, effect, reason, permission,
+  presentation behavior, or in-place collection mutation.
+- Do not expose or reuse cancellation as completion, even though the two eligibility decisions
+  currently share the same complete-request matching shape.
+- Do not add progress, replacement, scheduling, duration, timing, status values, or any other
+  lifecycle transition.
 - Do not define target exclusivity, range, radius, location, coordinates, movement, animation,
   search-condition evaluation, discovery grants, visibility changes, or presentation policy.
 - Do not inspect a complete character, perception snapshot, ownership/capacity snapshot, world
