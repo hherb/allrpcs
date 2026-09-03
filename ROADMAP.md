@@ -224,8 +224,11 @@ Phase 2j6 then added the equivalent ordered, copied, duplicate-target-free tool-
 while leaving combined discovery conditions and the broader discovery-conditions checklist item
 incomplete. Phase 2j7 then composed both existing requirement sets into one immutable aggregate,
 while deliberately leaving Boolean combination and evaluation semantics and the broader
-discovery-conditions checklist item incomplete. See `HANDOVER.md` for exact validation and test
-evidence.
+discovery-conditions checklist item incomplete. Phase 2j8 then added a pure, fail-closed one-target
+combined decision: a sole authored requirement delegates to its existing policy, while capability
+and tool requirements authored together must both pass. This completed the capability- and
+tool-dependent discovery-conditions checklist item without granting discovery or changing world
+state. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
@@ -237,7 +240,7 @@ evidence.
   collected.
 - [x] Implement per-character perception snapshots.
 - [x] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
-- [ ] Implement capability- and tool-dependent discovery conditions.
+- [x] Implement capability- and tool-dependent discovery conditions.
 - [ ] Implement bounded focused searches with visible character activity.
 - [ ] Implement passive noticing without relying on arbitrary pixel clicking.
 - [ ] Implement knowledge-triggered reinterpretation of earlier observations.
