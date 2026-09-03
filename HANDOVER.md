@@ -4,8 +4,9 @@
 
 Phase 2k12 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k12-focused-search-activity-presentation`, based directly on the PR #59 merge at
-`16d7cde`. Commit and draft-pull-request details are recorded below once created. Pull-request
-merge remains separately unauthorized.
+`16d7cde`. Feature commit `1077a80` is pushed, and draft PR #60
+(`https://github.com/hherb/allrpcs/pull/60`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchActivityIndicator.Present` is the one Godot presentation operation under the
 existing Seeker. It accepts an existing `CharacterId` and `FocusedSearchActivitySnapshot`,
