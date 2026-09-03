@@ -4,8 +4,9 @@
 
 Phase 2k9 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k9-focused-search-completion-transition`, based directly on the PR #56 merge at
-`3170987`. The feature commit and draft pull request are pending. Pull-request merge remains
-separately unauthorized.
+`3170987`. Feature commit `dda0bf2` is pushed, and draft PR #57
+(`https://github.com/hherb/allrpcs/pull/57`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchCompletionTransition.CompleteSearch` delegates eligibility to
 `FocusedSearchCompletionPolicy`, rejects an ineligible request, and otherwise returns a new
