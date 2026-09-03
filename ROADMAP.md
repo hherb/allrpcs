@@ -231,7 +231,9 @@ tool-dependent discovery-conditions checklist item without granting discovery or
 state. Phase 2k1 then added the immutable identifier-only request for one character to focus a
 search on one existing object, while deliberately leaving search execution and visible character
 activity incomplete. Phase 2k2 then added the immutable value denoting one active focused-search
-request, without lifecycle transitions, search execution, or visible presentation. See
+request, without lifecycle transitions, search execution, or visible presentation. Phase 2k3 then
+added an immutable ordered activity snapshot that rejects duplicate requests while deliberately
+leaving the one-active-search-per-character rule and all search lifecycle policy unresolved. See
 `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
