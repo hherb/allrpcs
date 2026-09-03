@@ -539,6 +539,12 @@ request has a value-equal searcher character identifier, retaining the existing 
 in stable order. It permits no matches and multiple distinct requests, ignores unrelated
 activities, rejects null inputs, and does not mutate either input.
 
+`Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
+per-character activity-indicator decision. It delegates selection to the existing activity
+projection and returns true exactly when the new projected snapshot contains at least one entry,
+including multiple distinct matching requests. It returns false for empty or unrelated snapshots,
+rejects null inputs, and does not mutate either input.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
@@ -546,8 +552,8 @@ classifications or properties, passive noticing, reinterpretation, actions, resu
 events, effects, mutable state, persistence, serialization, Godot, or UI behavior. The
 focused-search boundaries add no condition evaluation, discovery grant, visibility change,
 complete-character or world inspection, replacement, range, duration, location, progress,
-outcome, further lifecycle policy, in-place mutation, scheduling, persistence, Godot, or UI
-behavior.
+outcome, display text, status value, further lifecycle policy, in-place mutation, scheduling,
+persistence, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

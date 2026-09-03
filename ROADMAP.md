@@ -247,9 +247,11 @@ request by value without mutation. Phase 2k9 then added the pure completion tran
 delegates eligibility, removes the complete value-equal request, and retains all nonmatching
 activity instances in stable order without mutation. Phase 2k10 then added the pure per-character
 activity projection, retaining all matching existing activity instances in stable order while
-tolerating no matches and multiple distinct requests for one character. Search progress, outcomes,
-and visible presentation remain unresolved. See `HANDOVER.md` for exact validation and test
-evidence.
+tolerating no matches and multiple distinct requests for one character. Phase 2k11 then added the
+pure Application-layer activity-indicator decision, delegating character selection to the existing
+projection and reporting only whether the projected snapshot contains any activity. Search
+progress, outcomes, and visible presentation remain unresolved. See `HANDOVER.md` for exact
+validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
