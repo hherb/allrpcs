@@ -4,7 +4,9 @@
 
 Phase 2k8 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k8-focused-search-completion-policy`, based directly on the PR #55 merge at
-`38e96e1`. Pull-request merge remains separately unauthorized.
+`38e96e1`. Feature commit `716991a` is pushed, and draft PR #56
+(`https://github.com/hherb/allrpcs/pull/56`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchCompletionPolicy.CanCompleteSearch` returns true exactly when the activity snapshot
 contains an activity whose complete request is value-equal to the supplied request. It is separate
