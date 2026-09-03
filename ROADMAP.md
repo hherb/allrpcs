@@ -258,7 +258,10 @@ for the existing Seeker. It initializes empty from one authored Seeker identifie
 for other characters, delegates eligible start, cancellation, and completion changes to the
 existing Domain transitions, and presents only successful state changes through the existing
 adapter. Ordinary play still does not construct a request or invoke a lifecycle operation, so the
-broader item remains incomplete. See `HANDOVER.md` for exact validation and test evidence.
+broader item remains incomplete. Phase 2k14 then added the pure combined eligibility decision,
+delegating both the existing one-active-search-per-character rule and the existing target discovery
+conditions without changing lifecycle state or world state. The broader item remains incomplete.
+See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

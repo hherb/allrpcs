@@ -2,58 +2,56 @@
 
 ## Current state
 
-Phase 2k13 is implemented and reviewed without findings on
-`codex/phase-2k13-focused-search-activity-controller`, based directly on the PR #60 merge at
-`73b0eb5`. Feature commit `6c2fa76` is pushed, and draft PR #61
-(`https://github.com/hherb/allrpcs/pull/61`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k14 is implemented and reviewed without findings on
+`codex/phase-2k14-focused-search-eligibility-policy`, based directly on the PR #61 merge at
+`c49511c`.
 
-`FocusedSearchActivityController` is the sole live owner of the existing Seeker's immutable
-`FocusedSearchActivitySnapshot`. It initializes empty from the one authored `seeker` character
-identifier, rejects requests for any other character, delegates eligibility and state changes to
-the existing Domain policies and transitions, replaces its snapshot only after a successful
-start, cancellation, or completion, and then presents through the existing indicator adapter.
-Ordinary play constructs no request and invokes no lifecycle operation.
+`FocusedSearchEligibilityPolicy.CanStartSearch` is one pure Domain decision over an existing
+request, activity snapshot, discovery-condition set, capability set, and inventory. It rejects
+null inputs and returns true only when the existing `FocusedSearchStartPolicy` permits the request
+and the existing `DiscoveryConditionPolicy` is satisfied for the request's target object. It
+inherits both delegates' fail-closed and unrelated-entry behavior and changes no supplied object.
+The existing controller, scene, lifecycle transitions, indicator, smokes, and ordinary play are
+unchanged.
 
-Host-shell `./scripts/quality.sh` passed with a zero-warning build, 480 Domain tests, 107
+Host-shell `./scripts/quality.sh` passed with a zero-warning build, 491 Domain tests, 107
 Application tests, six architecture tests, six credential-free Godot smokes, and the bounded
-graphical launch. The new smoke proved empty initialization and hidden presentation; successful
-start, cancellation, and completion; fail-closed unrelated or ineligible operations with the
-same snapshot and activity instances; and unchanged request/identifier inputs. The sandboxed run
-restored, formatted, and built successfully before VSTest was denied its local loopback bind. No
-manual visual acceptance was performed; the cyan ring remains temporary greybox evidence. Hosted
-desktop outputs remain unsigned development evidence, not releases.
+graphical launch. Eleven focused tests cover capability-only, tool-only, combined, absent, and
+unsatisfied conditions; empty, unrelated, and same-searcher activity; null inputs; request-target
+delegation by value; the single static API; and exact instance/order retention without mutation.
+The sandboxed run restored, formatted, and built successfully before VSTest was denied its local
+loopback bind. No manual visual acceptance was needed because this slice changes no presentation.
+Hosted desktop outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k14: focused-search combined eligibility policy**.
+Take **Phase 2k15: condition-aware focused-search controller start**.
 
 Acceptance boundary:
 
-1. Add one small pure Domain `FocusedSearchEligibilityPolicy` operation that accepts an existing
-   `FocusedSearchRequest`, `FocusedSearchActivitySnapshot`, `DiscoveryConditionSet`,
-   `CharacterCapabilitySet`, and `CharacterInventory`.
-2. Return true only when the existing `FocusedSearchStartPolicy` permits the request and the
-   existing `DiscoveryConditionPolicy` is satisfied for the request's target object. Delegate both
-   decisions; do not duplicate their matching rules or change either existing policy.
-3. Reject null inputs, fail closed for absent or unsatisfied target conditions and an already-active
-   searcher, ignore unrelated activities and requirements according to the existing delegates, and
-   leave every supplied object unchanged.
-4. Add focused tests for capability-only, tool-only, combined, absent, and unsatisfied conditions;
-   empty, unrelated, and same-searcher activity; null inputs; request target delegation; and exact
-   input instance/order retention.
-5. Do not change the Godot controller, scene, indicator, smokes, or ordinary play in this slice.
-   Document the pure policy in `README.md`, record Phase 2k14 in `ROADMAP.md`, leave the broader
-   bounded-focused-search item incomplete, and replace this file with current evidence, limits,
-   and one next bounded slice.
+1. Update only the existing Godot `FocusedSearchActivityController` start path to accept an
+   existing `DiscoveryConditionSet`, `CharacterCapabilitySet`, and `CharacterInventory` with the
+   existing request and owned activity snapshot.
+2. Keep the existing owned-character rejection, then delegate the complete start decision to
+   `FocusedSearchEligibilityPolicy`; only an eligible request may reach the existing
+   `FocusedSearchStartTransition`, replace the owned snapshot, and trigger presentation.
+3. Fail closed for absent or unsatisfied request-target conditions and an already-active Seeker;
+   ignore unrelated activities and requirements according to the existing delegates; preserve
+   every supplied object and the controller's prior snapshot when rejected.
+4. Extend the credential-free controller smoke for capability-only, tool-only, combined, absent,
+   unsatisfied, unrelated, already-active, and wrong-character starts; successful lifecycle
+   continuation; presentation calls; and exact input/snapshot instance retention.
+5. Do not change the scene, indicator adapter, Domain policies or transitions, cancellation or
+   completion signatures, or ordinary-play behavior in this slice. Document the controller gate
+   in `README.md`, record Phase 2k15 in `ROADMAP.md`, leave the broader bounded-focused-search item
+   incomplete, and replace this file with current evidence, limits, and one next bounded slice.
 6. Use test-first development, run `./scripts/quality.sh`, review every intended path, and commit
    only the reviewed slice.
 
 Explicit exclusions:
 
-- Do not add or change lifecycle transitions, owned snapshots, search targets, player input,
-  duration, progress, timing, outcomes, discovery grants, visibility, events, effects, reasons,
-  presentation, or final UI/art.
+- Do not add player input, search-target selection, duration, progress, timing, outcomes,
+  discovery grants, visibility changes, events, effects, reason values, or final UI/art.
 - Do not inspect a complete character, perception snapshot, ownership/capacity snapshot, world
   state, object existence, location, coordinates, range, radius, interaction focus, or other UI
   state.
