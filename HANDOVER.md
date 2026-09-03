@@ -2,45 +2,45 @@
 
 ## Current state
 
-Phase 2k3 is implemented, reviewed without findings, and locally validated on
-`codex/phase-2k3-focused-search-activity-snapshot`, based directly on the PR #50 merge at
-`6ae2a2e`. Feature commit `dfcf11d` is pushed, and draft PR #51
-(`https://github.com/hherb/allrpcs/pull/51`) is open. Pull-request merge remains separately
+Phase 2k4 is implemented, reviewed without findings, and locally validated on
+`codex/phase-2k4-focused-search-start-policy`, based directly on the PR #51 merge at `0b51647`.
+Feature commit `27662f9` is pushed, and draft PR #52
+(`https://github.com/hherb/allrpcs/pull/52`) is open. Pull-request merge remains separately
 unauthorized.
 
-`FocusedSearchActivitySnapshot` accepts existing `FocusedSearchActivity` values, explicitly
-permits an empty sequence, copies caller input, preserves stable supplied order, retains exact
-activity instances, and exposes them only through a get-only
-`IReadOnlyList<FocusedSearchActivity>` named `Entries`. It rejects a null sequence, null entries,
-and value-equal duplicate requests. It permits one character to have activities for distinct
-targets; the snapshot records state but does not decide whether that state may be started.
+`FocusedSearchStartPolicy.CanStartSearch` accepts an existing `FocusedSearchRequest` and
+`FocusedSearchActivitySnapshot`. It permits the request exactly when no existing activity has a
+value-equal `SearcherCharacterId`, so one character cannot start a second active search while
+different characters may search the same target. It rejects null inputs, ignores unrelated
+activities, and does not mutate or start anything.
 
-The test-first build failed only because `FocusedSearchActivitySnapshot` did not exist. All seven
-focused tests then passed on the host. Host-shell `./scripts/quality.sh` passed cleanly with 414
-Domain tests, 100 Application tests, six architecture tests, four Godot smokes, and the bounded
-graphical launch. The sandbox run reached the known VSTest loopback denial; the identical host
+The test-first build failed only because `FocusedSearchStartPolicy` did not exist. All nine focused
+tests then passed on the host. Host-shell `./scripts/quality.sh` passed cleanly with 423 Domain
+tests, 100 Application tests, six architecture tests, four Godot smokes, and the bounded graphical
+launch. The sandboxed focused test run reached the known VSTest loopback denial; the identical host
 run passed. No manual play acceptance is required for this engine-independent Domain slice.
 `Domain -> []` remains intact, and hosted desktop outputs remain unsigned development evidence,
 not releases.
 
 ## Exact next bounded slice
 
-After this pull request is reported merged, take **Phase 2k4: pure focused-search start
-eligibility**.
+After this pull request is reported merged, take **Phase 2k5: pure focused-search start
+transition**.
 
 Acceptance boundary:
 
-1. Add a static `FocusedSearchStartPolicy` in `Allrpcs.Domain.Discovery` with one pure
-   `CanStartSearch(FocusedSearchRequest, FocusedSearchActivitySnapshot)` operation.
-2. Permit the request exactly when no existing activity has a value-equal
-   `SearcherCharacterId`. This enforces at most one active focused search per character while
-   permitting different characters to search the same target object.
-3. Reject null inputs, compare character identifiers by value, ignore unrelated activities, and
-   never mutate the request, activity instances, or snapshot.
-4. Add focused pure tests for eligible empty/unrelated snapshots, same-searcher rejection across
-   the same and different targets, value equality, different-searcher/same-target permission,
-   null rejection, non-mutation, and the deliberately limited static public surface.
-5. Preserve `Domain -> []`; document the eligibility boundary in `README.md`, leave the broader
+1. Add a static `FocusedSearchStartTransition` in `Allrpcs.Domain.Discovery` with one pure
+   `StartSearch(FocusedSearchRequest, FocusedSearchActivitySnapshot)` operation returning a new
+   `FocusedSearchActivitySnapshot`.
+2. Delegate eligibility to `FocusedSearchStartPolicy`. When eligible, retain existing activity
+   instances in stable order and append exactly one new `FocusedSearchActivity` retaining the exact
+   supplied request instance. Reject an ineligible request with `InvalidOperationException`.
+3. Reject null inputs and never mutate the request, existing activity instances, or input snapshot.
+4. Add focused pure tests for empty and populated eligible snapshots, stable append order, exact
+   instance retention, same-searcher rejection across the same and different targets, value
+   equality, different-searcher/same-target permission, null rejection, non-mutation, and the
+   deliberately limited static public surface.
+5. Preserve `Domain -> []`; document the pure transition in `README.md`, leave the broader
    bounded-focused-search roadmap item incomplete, and replace this file with current evidence,
    limits, and one next bounded slice.
 6. Use test-first development, run `./scripts/quality.sh`, review every intended path, and commit
@@ -48,18 +48,16 @@ Acceptance boundary:
 
 Explicit exclusions:
 
-- Do not add a start command or result, create or append an activity, or start, progress,
-  complete, cancel, replace, or schedule a search.
-- Do not define search capacity beyond one active search per character; do not define target
-  exclusivity, range, radius, duration, location, coordinates, movement, animation, progress,
-  timing, status values, outcomes, errors, events, effects, completion, lookup, or scheduling
-  policy.
-- Do not evaluate discovery conditions, grant discovery, change visibility, reveal a target to a
-  character or UI, or inspect a complete character, perception snapshot, ownership/capacity
-  snapshot, world state, or object existence.
+- Do not add commands, mutable collections, in-place updates, progress, completion, cancellation,
+  replacement, scheduling, duration, timing, status values, outcomes, errors beyond the named
+  ineligible-start rejection, events, or effects.
+- Do not define target exclusivity, range, radius, location, coordinates, movement, animation,
+  search-condition evaluation, discovery grants, visibility changes, or presentation policy.
+- Do not inspect a complete character, perception snapshot, ownership/capacity snapshot, world
+  state, object existence, Godot scene, or UI state.
 - Do not add passive noticing, reinterpretation, configurable Boolean expressions, new discovery
-  requirement types, scenario content, mutable state, serialization, persistence, Godot, UI,
-  providers, or plugins.
+  requirement types, scenario content, serialization, persistence, Godot, UI, providers, or
+  plugins.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
   until their own retained prototype or authoritative-system prerequisites exist.
 - Do not merge, release, distribute, sign, notarize, change repository visibility, or add

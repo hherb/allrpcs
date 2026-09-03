@@ -498,7 +498,13 @@ progress, complete, cancel, schedule, or evaluate a search.
 activities in stable supplied order. It permits an empty sequence, copies caller input, retains
 the exact supplied activity instances, exposes a read-only list, and rejects nulls plus duplicate
 requests by value. It permits one character to have activities for distinct targets because the
-one-active-search-per-character rule remains a separate policy decision.
+snapshot records state rather than enforcing start eligibility.
+
+`Allrpcs.Domain.Discovery.FocusedSearchStartPolicy.CanStartSearch` is the pure start-eligibility
+decision. It permits a request exactly when the activity snapshot contains no existing activity
+for a value-equal searcher character identifier. Different characters may search the same target.
+It rejects null inputs, ignores unrelated activities, and neither starts a search nor mutates its
+inputs.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
