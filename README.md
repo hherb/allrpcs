@@ -484,11 +484,19 @@ ignores unrelated targets, fails closed when neither kind is authored, delegates
 requirement to its existing policy, and requires both existing policies to pass when both kinds
 are authored for the target. It rejects null inputs and does not mutate them.
 
-These boundaries do not inspect a complete character, ownership or capacity snapshots,
-perception or world state, grant discovery, or change visibility. They do not define configurable
-Boolean expressions, alternative requirement groups, further requirement types, tool
-classifications or properties, searches, passive noticing, reinterpretation, actions, results,
-errors, events, effects, mutable state, persistence, serialization, Godot, or UI behavior.
+`Allrpcs.Domain.Discovery.FocusedSearchRequest` identifies exactly one existing searcher
+`CharacterId` and one existing target `ObjectId`. It retains both supplied identifier instances
+through get-only properties and compares requests by their identifier values. The request does
+not start or evaluate a search.
+
+The discovery-condition boundaries do not inspect a complete character, ownership or capacity
+snapshots, perception or world state, grant discovery, or change visibility. They do not define
+configurable Boolean expressions, alternative requirement groups, further requirement types, tool
+classifications or properties, passive noticing, reinterpretation, actions, results, errors,
+events, effects, mutable state, persistence, serialization, Godot, or UI behavior. The
+focused-search request adds no condition evaluation, discovery grant, visibility change,
+complete-character or world inspection, search lifecycle, range, duration, location, activity,
+outcome, collection, mutation, scheduling, persistence, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
