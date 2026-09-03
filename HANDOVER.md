@@ -4,7 +4,9 @@
 
 Phase 2k7 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k7-focused-search-cancellation-transition`, based directly on the PR #54 merge at
-`a35f941`.
+`a35f941`. Feature commit `385f89e` is pushed, and draft PR #55
+(`https://github.com/hherb/allrpcs/pull/55`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchCancellationTransition.CancelSearch` delegates eligibility to
 `FocusedSearchCancellationPolicy`. It rejects an ineligible request and otherwise returns a new
