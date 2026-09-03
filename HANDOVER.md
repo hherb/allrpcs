@@ -4,7 +4,9 @@
 
 Phase 2k15 is implemented and reviewed without findings on
 `codex/phase-2k15-condition-aware-focused-search-controller-start`, based directly on the PR #62
-merge at `6dae883`.
+merge at `6dae883`. Feature commit `70e3b06` is pushed, and draft PR #63
+(`https://github.com/hherb/allrpcs/pull/63`) is open. Pull-request merge remains separately
+unauthorized.
 
 The existing Godot `FocusedSearchActivityController.TryStartSearch` now accepts an existing
 `DiscoveryConditionSet`, `CharacterCapabilitySet`, and `CharacterInventory` with the request. It
