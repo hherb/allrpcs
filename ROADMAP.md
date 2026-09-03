@@ -238,9 +238,10 @@ Phase 2k4 then added the pure one-active-search-per-character start-eligibility 
 permitting different characters to search the same target and leaving search start and all
 lifecycle transitions unresolved. Phase 2k5 then added the pure start transition that delegates
 eligibility, retains the existing snapshot order and instances, and appends one activity retaining
-the exact eligible request without mutation. Search progress, completion, cancellation, outcomes,
-and visible presentation remain unresolved. See `HANDOVER.md` for exact validation and test
-evidence.
+the exact eligible request without mutation. Phase 2k6 then added the pure cancellation-eligibility
+decision that matches the complete active request by value without mutation. Search progress,
+completion, cancellation transitions, outcomes, and visible presentation remain unresolved. See
+`HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
