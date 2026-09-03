@@ -4,8 +4,9 @@
 
 Phase 2k6 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k6-focused-search-cancellation-policy`, based directly on the PR #53 merge at
-`8ae2263`. Feature commit `8cf0459` contains the reviewed implementation, tests, README, and
-roadmap update. Pull-request merge remains separately unauthorized.
+`8ae2263`. Feature commit `8cf0459` is pushed, and draft PR #54
+(`https://github.com/hherb/allrpcs/pull/54`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchCancellationPolicy.CanCancelSearch` returns true exactly when the activity snapshot
 contains an activity whose complete request is value-equal to the supplied request. It returns
