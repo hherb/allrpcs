@@ -527,15 +527,21 @@ completion-eligibility decision. It permits completion exactly when the activity
 contains an activity whose complete request is value-equal to the supplied request. It rejects
 null inputs, ignores unrelated activities, and neither completes a search nor mutates its inputs.
 
+`Allrpcs.Domain.Discovery.FocusedSearchCompletionTransition.CompleteSearch` is the pure
+completion transition. It delegates eligibility to the completion policy, rejects an ineligible
+request, and otherwise returns a new activity snapshot that removes the activity for the complete
+value-equal request while retaining every other activity instance in stable order. It does not
+mutate either input.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
 classifications or properties, passive noticing, reinterpretation, actions, results, errors,
 events, effects, mutable state, persistence, serialization, Godot, or UI behavior. The
 focused-search boundaries add no condition evaluation, discovery grant, visibility change,
-complete-character or world inspection, completion transition, replacement, range, duration,
-location, progress, outcome, further lifecycle policy, in-place mutation, scheduling,
-persistence, Godot, or UI behavior.
+complete-character or world inspection, replacement, range, duration, location, progress,
+outcome, further lifecycle policy, in-place mutation, scheduling, persistence, Godot, or UI
+behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

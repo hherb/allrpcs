@@ -2,19 +2,20 @@
 
 ## Current state
 
-Phase 2k8 is implemented, reviewed without findings, and locally validated on
-`codex/phase-2k8-focused-search-completion-policy`, based directly on the PR #55 merge at
-`38e96e1`. Feature commit `716991a` is pushed, and draft PR #56
-(`https://github.com/hherb/allrpcs/pull/56`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k9 is implemented, reviewed without findings, and locally validated on
+`codex/phase-2k9-focused-search-completion-transition`, based directly on the PR #56 merge at
+`3170987`. The feature commit and draft pull request are pending. Pull-request merge remains
+separately unauthorized.
 
-`FocusedSearchCompletionPolicy.CanCompleteSearch` returns true exactly when the activity snapshot
-contains an activity whose complete request is value-equal to the supplied request. It is separate
-from cancellation, rejects null inputs, and never mutates the request, existing activity instances,
-or snapshot.
+`FocusedSearchCompletionTransition.CompleteSearch` delegates eligibility to
+`FocusedSearchCompletionPolicy`, rejects an ineligible request, and otherwise returns a new
+snapshot without the activity for the complete value-equal request. It retains every nonmatching
+activity instance in stable order and never mutates the request, activities, or input snapshot.
+Completion remains separate from cancellation even though both transitions currently have the
+same request-removal shape.
 
-The test-first build failed only because `FocusedSearchCompletionPolicy` did not exist. All nine
-focused tests then passed on the host. Host-shell `./scripts/quality.sh` passed cleanly with 461
+The test-first build failed only because `FocusedSearchCompletionTransition` did not exist. All 12
+focused tests then passed on the host. Host-shell `./scripts/quality.sh` passed cleanly with 473
 Domain tests, 100 Application tests, six architecture tests, four Godot smokes, and the bounded
 graphical launch. No manual play acceptance is required for this engine-independent Domain slice.
 `Domain -> []` remains intact, and hosted desktop outputs remain unsigned development evidence,
@@ -22,35 +23,35 @@ not releases.
 
 ## Exact next bounded slice
 
-After this pull request is reported merged, take **Phase 2k9: pure focused-search completion
-transition**.
+After this pull request is reported merged, take **Phase 2k10: pure per-character focused-search
+activity projection**.
 
 Acceptance boundary:
 
-1. Add a static `FocusedSearchCompletionTransition` in `Allrpcs.Domain.Discovery` with one pure
-   `CompleteSearch(FocusedSearchRequest, FocusedSearchActivitySnapshot)` operation returning a new
+1. Add a static `FocusedSearchActivityProjection` in `Allrpcs.Domain.Discovery` with one pure
+   `ForCharacter(CharacterId, FocusedSearchActivitySnapshot)` operation returning a new
    `FocusedSearchActivitySnapshot`.
-2. Delegate eligibility to `FocusedSearchCompletionPolicy`; reject an ineligible request and
-   otherwise remove the activity for the complete value-equal request.
-3. Retain every nonmatching existing activity instance in stable order, reject null inputs through
-   the policy, and never mutate the request, existing activities, or input snapshot.
-4. Add focused tests for exact-instance and value-equal completion; stable retention; empty,
-   near-match, and unrelated rejection; null rejection; non-mutation; and the deliberately limited
-   static public surface.
-5. Preserve `Domain -> []`; document the pure completion transition in `README.md`, leave the
-   broader bounded-focused-search roadmap item incomplete, and replace this file with current
-   evidence, limits, and one next bounded slice.
+2. Include exactly the activities whose request has a value-equal searcher character identifier;
+   permit no matches and all valid matching requests rather than assuming snapshots were created
+   only through the start transition.
+3. Retain matching existing activity instances in stable order, ignore nonmatching activities,
+   reject null inputs, and never mutate the identifier, existing activities, or input snapshot.
+4. Add focused tests for no, one, and multiple matches; value equality; stable order and exact
+   instance retention; unrelated entries; null rejection; non-mutation; and the deliberately
+   limited static public surface.
+5. Preserve `Domain -> []`; document the pure projection in `README.md`, leave the broader
+   bounded-focused-search roadmap item incomplete, and replace this file with current evidence,
+   limits, and one next bounded slice.
 6. Use test-first development, run `./scripts/quality.sh`, review every intended path, and commit
    only the reviewed slice.
 
 Explicit exclusions:
 
-- Do not add a completion result, outcome, event, effect, reason, discovery grant, visibility
-  change, presentation behavior, or in-place collection mutation.
-- Do not expose or reuse cancellation as completion, even though the two transitions currently
-  share the same complete-request removal shape.
-- Do not add progress, replacement, scheduling, duration, timing, status values, or any other
-  lifecycle transition.
+- Do not add presentation text, status values, progress, duration, timing, outcomes, events,
+  effects, reasons, discovery grants, visibility changes, or in-place collection mutation.
+- Do not change snapshot construction, start eligibility, or the existing start, cancellation,
+  and completion transitions; the projection must tolerate multiple distinct requests for one
+  character because the snapshot itself does.
 - Do not define target exclusivity, range, radius, location, coordinates, movement, animation,
   search-condition evaluation, discovery grants, visibility changes, or presentation policy.
 - Do not inspect a complete character, perception snapshot, ownership/capacity snapshot, world
