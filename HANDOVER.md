@@ -4,8 +4,9 @@
 
 Phase 2k11 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k11-focused-search-activity-indicator`, based directly on the PR #58 merge at
-`bc86b47`. Feature commit `8426c65` is ready for a draft pull request. Pull-request merge remains
-separately unauthorized.
+`bc86b47`. Feature commit `8426c65` is pushed, and draft PR #59
+(`https://github.com/hherb/allrpcs/pull/59`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchActivityIndicatorPolicy.ShouldShow` is the single pure Application-layer operation.
 It delegates per-character selection to `FocusedSearchActivityProjection` and returns true exactly
