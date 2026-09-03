@@ -241,9 +241,10 @@ eligibility, retains the existing snapshot order and instances, and appends one 
 the exact eligible request without mutation. Phase 2k6 then added the pure cancellation-eligibility
 decision that matches the complete active request by value without mutation. Phase 2k7 then added
 the pure cancellation transition that delegates eligibility, removes the complete value-equal
-request, and retains all nonmatching activity instances in stable order without mutation. Search
-progress, completion, outcomes, and visible presentation remain unresolved. See `HANDOVER.md` for
-exact validation and test evidence.
+request, and retains all nonmatching activity instances in stable order without mutation. Phase
+2k8 then added the separate pure completion-eligibility decision that matches the complete active
+request by value without mutation. Search progress, completion transitions, outcomes, and visible
+presentation remain unresolved. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
