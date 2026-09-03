@@ -4,8 +4,9 @@
 
 Phase 2k13 is implemented and reviewed without findings on
 `codex/phase-2k13-focused-search-activity-controller`, based directly on the PR #60 merge at
-`73b0eb5`. The branch has not yet been published; record its commit and draft pull request here
-after creation. Pull-request merge remains separately unauthorized.
+`73b0eb5`. Feature commit `6c2fa76` is pushed, and draft PR #61
+(`https://github.com/hherb/allrpcs/pull/61`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchActivityController` is the sole live owner of the existing Seeker's immutable
 `FocusedSearchActivitySnapshot`. It initializes empty from the one authored `seeker` character
