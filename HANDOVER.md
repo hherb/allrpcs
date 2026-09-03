@@ -2,55 +2,61 @@
 
 ## Current state
 
-Phase 2k10 is implemented, reviewed without findings, and locally validated on
-`codex/phase-2k10-focused-search-activity-projection`, based directly on the PR #57 merge at
-`3c9b6d9`. Feature commit `1c002c2` is pushed, and draft PR #58
-(`https://github.com/hherb/allrpcs/pull/58`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k11 is implemented, reviewed without findings, and locally validated on
+`codex/phase-2k11-focused-search-activity-indicator`, based directly on the PR #58 merge at
+`bc86b47`. Feature commit `8426c65` is ready for a draft pull request. Pull-request merge remains
+separately unauthorized.
 
-`FocusedSearchActivityProjection.ForCharacter` returns a new snapshot containing every activity
-whose request has a value-equal searcher character identifier. It permits no matches and multiple
-distinct matching requests, retains the matching activity instances in stable order, ignores
-unrelated activities, rejects null inputs, and never mutates the identifier, activities, or input
-snapshot.
+`FocusedSearchActivityIndicatorPolicy.ShouldShow` is the single pure Application-layer operation.
+It delegates per-character selection to `FocusedSearchActivityProjection` and returns true exactly
+when the new projected snapshot contains at least one activity, including multiple distinct
+matching requests. It returns false for empty and unrelated snapshots, matches character
+identifiers by value through the projection, rejects null inputs, and never mutates its inputs.
 
-The test-first build failed only because `FocusedSearchActivityProjection` did not exist. All seven
-focused tests then passed on the host. The sandboxed runner built successfully but could not start
-VSTest because local loopback binding was denied. Host-shell `./scripts/quality.sh` passed cleanly
-with 480 Domain tests, 100 Application tests, six architecture tests, four Godot smokes, and the
-bounded graphical launch. No manual play acceptance is required for this engine-independent Domain
-slice. `Domain -> []` remains intact, and hosted desktop outputs remain unsigned development
-evidence, not releases.
+The test-first build failed only because the Application discovery namespace and policy did not
+exist. All seven focused tests then passed on the host. The sandboxed runner built successfully but
+could not start VSTest because local loopback binding was denied. Host-shell
+`./scripts/quality.sh` passed with 480 Domain tests, 107 Application tests, six architecture tests,
+four Godot smokes, and the bounded graphical launch. No manual play acceptance is required for
+this engine-independent policy slice. `Application -> Domain` and `Domain -> []` remain intact;
+hosted desktop outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-After this pull request is reported merged, take **Phase 2k11: pure focused-search activity
-indicator policy**.
+After this pull request is reported merged, take **Phase 2k12: focused-search activity indicator
+presentation adapter**.
 
 Acceptance boundary:
 
-1. Add a static `FocusedSearchActivityIndicatorPolicy` in `Allrpcs.Application.Discovery` with one
-   pure `ShouldShow(CharacterId, FocusedSearchActivitySnapshot)` operation returning `bool`.
-2. Delegate per-character selection to `FocusedSearchActivityProjection`; return true exactly when
-   its new snapshot has at least one entry, including when it contains multiple distinct requests.
-3. Return false for empty and unrelated snapshots, reject null inputs, and never mutate the
-   identifier, existing activities, or input snapshot.
-4. Add focused tests for empty, unrelated, one, and multiple matches; value equality; null
-   rejection; non-mutation; delegation behavior; and the deliberately limited static surface.
-5. Preserve `Application -> Domain` and `Domain -> []`; document the pure policy in `README.md`,
-   leave the broader bounded-focused-search roadmap item incomplete, and replace this file with
-   current evidence, limits, and one next bounded slice.
+1. Add one small Godot-side `FocusedSearchActivityIndicator` adapter and one obvious temporary
+   in-world indicator authored under the existing Seeker.
+2. Give the adapter one presentation operation accepting an existing `CharacterId` and
+   `FocusedSearchActivitySnapshot`; delegate the decision to
+   `FocusedSearchActivityIndicatorPolicy.ShouldShow` and change only the indicator's visibility.
+3. Keep the indicator hidden until explicitly presented. Do not construct or inject a fake active
+   search during ordinary play, and do not add a production source of focused-search activity in
+   this adapter slice.
+4. Add a credential-free Godot smoke proving hidden-by-default behavior; empty and unrelated
+   snapshots remain hidden; one and multiple matching requests show exactly the one indicator;
+   subsequent empty presentation hides it again; and supplied identifiers, activities, and
+   snapshots are not mutated.
+5. Preserve `Godot -> Application -> Domain` and `Domain -> []`; document the temporary adapter in
+   `README.md`, record Phase 2k12 in `ROADMAP.md`, leave the broader bounded-focused-search item
+   incomplete, and replace this file with current evidence, limits, and one next bounded slice.
 6. Use test-first development, run `./scripts/quality.sh`, review every intended path, and commit
-   only the reviewed slice.
+   only the reviewed slice. Treat headless scene-state checks separately from native visual
+   acceptance; claim the latter only if it is actually performed.
 
 Explicit exclusions:
 
-- Do not add display text, status values, Godot nodes, UI state, input controls, animation,
-  progress, duration, timing, outcomes, events, effects, or reasons.
-- Do not change Domain snapshot construction or any focused-search policy or transition; do not
-  collapse or reject multiple matching requests in the indicator policy.
+- Do not add display text, status values, player input, animation, progress, duration, timing,
+  outcomes, events, effects, reasons, or final UI/art.
+- Do not create, start, cancel, complete, schedule, or otherwise transition focused searches; do
+  not change existing Domain snapshots, policies, transitions, or the Application indicator
+  policy.
 - Do not inspect a complete character, perception snapshot, ownership/capacity snapshot, world
-  state, object existence, location, coordinates, range, radius, Godot scene, or UI state.
+  state, object existence, location, coordinates, range, radius, interaction focus, or other UI
+  state.
 - Do not add search-condition evaluation, discovery grants, visibility changes, passive noticing,
   reinterpretation, configurable Boolean expressions, scenario content, serialization,
   persistence, providers, or plugins.
