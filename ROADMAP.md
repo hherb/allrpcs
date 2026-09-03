@@ -230,7 +230,9 @@ and tool requirements authored together must both pass. This completed the capab
 tool-dependent discovery-conditions checklist item without granting discovery or changing world
 state. Phase 2k1 then added the immutable identifier-only request for one character to focus a
 search on one existing object, while deliberately leaving search execution and visible character
-activity incomplete. See `HANDOVER.md` for exact validation and test evidence.
+activity incomplete. Phase 2k2 then added the immutable value denoting one active focused-search
+request, without lifecycle transitions, search execution, or visible presentation. See
+`HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
