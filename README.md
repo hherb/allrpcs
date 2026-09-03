@@ -494,6 +494,12 @@ not start or evaluate a search.
 get-only property and compares activities by request value. The activity does not start,
 progress, complete, cancel, schedule, or evaluate a search.
 
+`Allrpcs.Domain.Discovery.FocusedSearchActivitySnapshot` contains existing focused-search
+activities in stable supplied order. It permits an empty sequence, copies caller input, retains
+the exact supplied activity instances, exposes a read-only list, and rejects nulls plus duplicate
+requests by value. It permits one character to have activities for distinct targets because the
+one-active-search-per-character rule remains a separate policy decision.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
@@ -501,7 +507,7 @@ classifications or properties, passive noticing, reinterpretation, actions, resu
 events, effects, mutable state, persistence, serialization, Godot, or UI behavior. The
 focused-search boundaries add no condition evaluation, discovery grant, visibility change,
 complete-character or world inspection, lifecycle transition, range, duration, location,
-progress, outcome, collection, mutation, scheduling, persistence, Godot, or UI behavior.
+progress, outcome, lifecycle policy, mutation, scheduling, persistence, Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
