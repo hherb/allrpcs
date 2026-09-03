@@ -250,8 +250,11 @@ activity projection, retaining all matching existing activity instances in stabl
 tolerating no matches and multiple distinct requests for one character. Phase 2k11 then added the
 pure Application-layer activity-indicator decision, delegating character selection to the existing
 projection and reporting only whether the projected snapshot contains any activity. Search
-progress, outcomes, and visible presentation remain unresolved. See `HANDOVER.md` for exact
-validation and test evidence.
+progress and outcomes remain unresolved. Phase 2k12 then added the temporary Godot presentation
+adapter and one hidden-by-default in-world indicator under the existing Seeker. The adapter changes
+only that indicator's visibility by delegating to the existing Application policy; ordinary play
+does not yet supply focused-search activity, so the broader item remains incomplete. See
+`HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

@@ -45,8 +45,11 @@ tie-breaking, focus changes, out-of-range clearing, and hidden and disabled excl
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
-`actionlint` against every hosted workflow. It does not require provider credentials or network
-access after restore. The project selects the Compatibility renderer for graphical launches.
+`actionlint` against every hosted workflow. A focused-search presentation launch proves the one
+temporary Seeker indicator is hidden by default, follows empty, unrelated, one-match, multi-match,
+and hide-again decisions, and leaves supplied inputs intact. The checks do not require provider
+credentials or network access after restore. The project selects the Compatibility renderer for
+graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -545,6 +548,12 @@ projection and returns true exactly when the new projected snapshot contains at 
 including multiple distinct matching requests. It returns false for empty or unrelated snapshots,
 rejects null inputs, and does not mutate either input.
 
+`Allrpcs.Game.FocusedSearchActivityIndicator.Present` is the temporary Godot presentation adapter
+under the existing Seeker. It accepts an existing character identifier and activity snapshot,
+delegates the complete decision to the Application policy, and changes only the visibility of one
+authored cyan in-world ring. The ring is hidden by default, and ordinary play does not construct or
+inject focused-search activity.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
@@ -553,7 +562,8 @@ events, effects, mutable state, persistence, serialization, Godot, or UI behavio
 focused-search boundaries add no condition evaluation, discovery grant, visibility change,
 complete-character or world inspection, replacement, range, duration, location, progress,
 outcome, display text, status value, further lifecycle policy, in-place mutation, scheduling,
-persistence, Godot, or UI behavior.
+persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
+only its one authored indicator's visibility.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
