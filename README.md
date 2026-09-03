@@ -509,6 +509,12 @@ for a value-equal searcher character identifier. Different characters may search
 It rejects null inputs, ignores unrelated activities, and neither starts a search nor mutates its
 inputs.
 
+`Allrpcs.Domain.Discovery.FocusedSearchEligibilityPolicy.CanStartSearch` is the pure combined
+eligibility decision. It permits a request only when the existing start policy permits it and the
+existing discovery-condition policy is satisfied for the request's target object. It rejects null
+inputs, fails closed for missing or unsatisfied target conditions and an already-active searcher,
+inherits the delegates' unrelated-entry behavior, and does not mutate any input.
+
 `Allrpcs.Domain.Discovery.FocusedSearchStartTransition.StartSearch` is the pure start transition.
 It delegates eligibility to the start policy, rejects an ineligible request, and otherwise returns
 a new activity snapshot that retains existing activity instances in stable order before one new
@@ -566,9 +572,9 @@ The discovery-condition boundaries do not inspect a complete character, ownershi
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
 classifications or properties, passive noticing, reinterpretation, actions, results, errors,
-events, effects, mutable state, persistence, serialization, Godot, or UI behavior. The
-focused-search boundaries add no condition evaluation, discovery grant, visibility change,
-complete-character or world inspection, replacement, range, duration, location, progress,
+events, effects, mutable state, persistence, serialization, Godot, or UI behavior. Beyond the pure
+combined eligibility decision, the focused-search boundaries add no discovery grant, visibility
+change, complete-character or world inspection, replacement, range, duration, location, progress,
 outcome, display text, status value, further lifecycle policy, in-place mutation, scheduling,
 persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
 only its one authored indicator's visibility, and the temporary controller owns only its immutable
