@@ -261,6 +261,10 @@ adapter. Ordinary play still does not construct a request or invoke a lifecycle 
 broader item remains incomplete. Phase 2k14 then added the pure combined eligibility decision,
 delegating both the existing one-active-search-per-character rule and the existing target discovery
 conditions without changing lifecycle state or world state. The broader item remains incomplete.
+Phase 2k15 then made the existing Godot controller's start path condition-aware: after rejecting a
+request for another character, it delegates the complete start decision to the combined eligibility
+policy and only eligible requests reach the existing transition and presentation. Cancellation,
+completion, the scene, and ordinary play remain unchanged, so the broader item remains incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

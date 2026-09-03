@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -31,13 +32,24 @@ public partial class FocusedSearchActivityController : Node
         indicator.Present(SearcherCharacterId, Activities);
     }
 
-    /// <summary>Starts an eligible focused search for this controller's Seeker.</summary>
-    public bool TryStartSearch(FocusedSearchRequest request)
+    /// <summary>
+    /// Starts an owned focused search when its authored discovery conditions are satisfied.
+    /// </summary>
+    public bool TryStartSearch(
+        FocusedSearchRequest request,
+        DiscoveryConditionSet conditions,
+        CharacterCapabilitySet capabilities,
+        CharacterInventory inventory)
     {
         ArgumentNullException.ThrowIfNull(request);
 
         if (!IsRequestForSearcher(request)
-            || !FocusedSearchStartPolicy.CanStartSearch(request, Activities))
+            || !FocusedSearchEligibilityPolicy.CanStartSearch(
+                request,
+                Activities,
+                conditions,
+                capabilities,
+                inventory))
         {
             return false;
         }
