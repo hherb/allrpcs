@@ -506,14 +506,20 @@ for a value-equal searcher character identifier. Different characters may search
 It rejects null inputs, ignores unrelated activities, and neither starts a search nor mutates its
 inputs.
 
+`Allrpcs.Domain.Discovery.FocusedSearchStartTransition.StartSearch` is the pure start transition.
+It delegates eligibility to the start policy, rejects an ineligible request, and otherwise returns
+a new activity snapshot that retains existing activity instances in stable order before one new
+activity retaining the exact supplied request instance. It does not mutate either input.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
 classifications or properties, passive noticing, reinterpretation, actions, results, errors,
 events, effects, mutable state, persistence, serialization, Godot, or UI behavior. The
 focused-search boundaries add no condition evaluation, discovery grant, visibility change,
-complete-character or world inspection, lifecycle transition, range, duration, location,
-progress, outcome, lifecycle policy, mutation, scheduling, persistence, Godot, or UI behavior.
+complete-character or world inspection, completion, cancellation, replacement, range, duration,
+location, progress, outcome, further lifecycle policy, in-place mutation, scheduling, persistence,
+Godot, or UI behavior.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

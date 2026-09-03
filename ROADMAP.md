@@ -236,7 +236,11 @@ added an immutable ordered activity snapshot that rejects duplicate requests whi
 leaving the one-active-search-per-character rule and all search lifecycle policy unresolved.
 Phase 2k4 then added the pure one-active-search-per-character start-eligibility decision while
 permitting different characters to search the same target and leaving search start and all
-lifecycle transitions unresolved. See `HANDOVER.md` for exact validation and test evidence.
+lifecycle transitions unresolved. Phase 2k5 then added the pure start transition that delegates
+eligibility, retains the existing snapshot order and instances, and appends one activity retaining
+the exact eligible request without mutation. Search progress, completion, cancellation, outcomes,
+and visible presentation remain unresolved. See `HANDOVER.md` for exact validation and test
+evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
