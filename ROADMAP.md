@@ -233,8 +233,10 @@ search on one existing object, while deliberately leaving search execution and v
 activity incomplete. Phase 2k2 then added the immutable value denoting one active focused-search
 request, without lifecycle transitions, search execution, or visible presentation. Phase 2k3 then
 added an immutable ordered activity snapshot that rejects duplicate requests while deliberately
-leaving the one-active-search-per-character rule and all search lifecycle policy unresolved. See
-`HANDOVER.md` for exact validation and test evidence.
+leaving the one-active-search-per-character rule and all search lifecycle policy unresolved.
+Phase 2k4 then added the pure one-active-search-per-character start-eligibility decision while
+permitting different characters to search the same target and leaving search start and all
+lifecycle transitions unresolved. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
