@@ -533,6 +533,12 @@ request, and otherwise returns a new activity snapshot that removes the activity
 value-equal request while retaining every other activity instance in stable order. It does not
 mutate either input.
 
+`Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
+per-character activity projection. It returns a new snapshot containing every activity whose
+request has a value-equal searcher character identifier, retaining the existing activity instances
+in stable order. It permits no matches and multiple distinct requests, ignores unrelated
+activities, rejects null inputs, and does not mutate either input.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool

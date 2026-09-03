@@ -245,8 +245,11 @@ request, and retains all nonmatching activity instances in stable order without 
 2k8 then added the separate pure completion-eligibility decision that matches the complete active
 request by value without mutation. Phase 2k9 then added the pure completion transition that
 delegates eligibility, removes the complete value-equal request, and retains all nonmatching
-activity instances in stable order without mutation. Search progress, outcomes, and visible
-presentation remain unresolved. See `HANDOVER.md` for exact validation and test evidence.
+activity instances in stable order without mutation. Phase 2k10 then added the pure per-character
+activity projection, retaining all matching existing activity instances in stable order while
+tolerating no matches and multiple distinct requests for one character. Search progress, outcomes,
+and visible presentation remain unresolved. See `HANDOVER.md` for exact validation and test
+evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
