@@ -252,9 +252,13 @@ pure Application-layer activity-indicator decision, delegating character selecti
 projection and reporting only whether the projected snapshot contains any activity. Search
 progress and outcomes remain unresolved. Phase 2k12 then added the temporary Godot presentation
 adapter and one hidden-by-default in-world indicator under the existing Seeker. The adapter changes
-only that indicator's visibility by delegating to the existing Application policy; ordinary play
-does not yet supply focused-search activity, so the broader item remains incomplete. See
-`HANDOVER.md` for exact validation and test evidence.
+only that indicator's visibility by delegating to the existing Application policy. Phase 2k13 then
+added the temporary Godot state controller as the sole live owner of an immutable activity snapshot
+for the existing Seeker. It initializes empty from one authored Seeker identifier, rejects requests
+for other characters, delegates eligible start, cancellation, and completion changes to the
+existing Domain transitions, and presents only successful state changes through the existing
+adapter. Ordinary play still does not construct a request or invoke a lifecycle operation, so the
+broader item remains incomplete. See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

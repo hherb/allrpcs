@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=22 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://SeekerMovementBoundarySmokeCheck.cs" id="11_boundary_check"]
 [ext_resource type="Script" path="res://FocusedSearchActivityIndicator.cs" id="12_search_indicator"]
 [ext_resource type="Script" path="res://FocusedSearchActivityIndicatorSmokeCheck.cs" id="13_search_indicator_check"]
+[ext_resource type="Script" path="res://FocusedSearchActivityController.cs" id="14_search_controller"]
+[ext_resource type="Script" path="res://FocusedSearchActivityControllerSmokeCheck.cs" id="15_search_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -302,6 +304,9 @@ script = ExtResource("11_boundary_check")
 [node name="FocusedSearchActivityIndicatorSmokeCheck" type="Node" parent="."]
 script = ExtResource("13_search_indicator_check")
 
+[node name="FocusedSearchActivityControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("15_search_controller_check")
+
 [node name="Healer" type="CharacterBody2D" parent="."]
 position = Vector2(680, 450)
 script = ExtResource("6_healer")
@@ -349,6 +354,10 @@ points = PackedVector2Array(30, 0, 21, 21, 0, 30, -21, 21, -30, 0, -21, -21, 0, 
 width = 6.0
 default_color = Color(0.38, 0.878, 1, 1)
 antialiased = true
+
+[node name="FocusedSearchActivityController" type="Node" parent="Seeker"]
+script = ExtResource("14_search_controller")
+SearcherCharacterIdText = "seeker"
 
 [node name="CommandOverlay" type="CanvasLayer" parent="."]
 

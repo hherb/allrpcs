@@ -554,6 +554,14 @@ delegates the complete decision to the Application policy, and changes only the 
 authored cyan in-world ring. The ring is hidden by default, and ordinary play does not construct or
 inject focused-search activity.
 
+`Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
+immutable focused-search activity snapshot. It initializes an empty snapshot from the Seeker's one
+authored stable character identifier, rejects requests for other characters, delegates lifecycle
+eligibility and state changes to the existing Domain policies and transitions, and replaces and
+presents its snapshot only after a successful start, cancellation, or completion. Ordinary play
+does not construct a request or invoke those operations; the credential-free controller smoke is
+the only current caller.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
@@ -563,7 +571,8 @@ focused-search boundaries add no condition evaluation, discovery grant, visibili
 complete-character or world inspection, replacement, range, duration, location, progress,
 outcome, display text, status value, further lifecycle policy, in-place mutation, scheduling,
 persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
-only its one authored indicator's visibility.
+only its one authored indicator's visibility, and the temporary controller owns only its immutable
+snapshot and existing lifecycle delegation.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
