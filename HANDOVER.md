@@ -4,8 +4,9 @@
 
 Phase 2k10 is implemented, reviewed without findings, and locally validated on
 `codex/phase-2k10-focused-search-activity-projection`, based directly on the PR #57 merge at
-`3c9b6d9`. Feature commit `1c002c2` is ready for a draft pull request. Pull-request merge remains
-separately unauthorized.
+`3c9b6d9`. Feature commit `1c002c2` is pushed, and draft PR #58
+(`https://github.com/hherb/allrpcs/pull/58`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchActivityProjection.ForCharacter` returns a new snapshot containing every activity
 whose request has a value-equal searcher character identifier. It permits no matches and multiple
