@@ -4,7 +4,9 @@
 
 Phase 2k14 is implemented and reviewed without findings on
 `codex/phase-2k14-focused-search-eligibility-policy`, based directly on the PR #61 merge at
-`c49511c`.
+`c49511c`. Feature commit `093328a` is pushed, and draft PR #62
+(`https://github.com/hherb/allrpcs/pull/62`) is open. Pull-request merge remains separately
+unauthorized.
 
 `FocusedSearchEligibilityPolicy.CanStartSearch` is one pure Domain decision over an existing
 request, activity snapshot, discovery-condition set, capability set, and inventory. It rejects
