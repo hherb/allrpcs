@@ -4,8 +4,9 @@
 
 Phase 2k23 is implemented and reviewed without findings on
 `codex/phase-2k23-focused-search-result-presentation`, based directly on PR #70's merge commit
-`e69ba0c`. Push and draft-PR evidence are not yet recorded here. Pull-request merge remains
-separately unauthorized.
+`e69ba0c`. Feature commit `2f52e64` is pushed, and draft PR #71
+(`https://github.com/hherb/allrpcs/pull/71`) is open. Pull-request merge remains separately
+unauthorized.
 
 The temporary panel now includes one focused-search result label, initialized deterministically
 to `Focused search: NO ATTEMPT`. A pressed physical F, C, or E updates it with START, CANCEL, or
