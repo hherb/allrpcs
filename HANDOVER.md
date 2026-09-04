@@ -4,7 +4,9 @@
 
 Phase 2k26 is implemented and reviewed without findings on
 `codex/phase-2k26-focused-search-outcome-projection`, based directly on PR #73's merge commit
-`a9d2439`.
+`a9d2439`. Feature commit `5c18a80` is pushed, and draft PR #74
+(`https://github.com/hherb/allrpcs/pull/74`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeProjection.ForCharacter` is one pure static
 operation that accepts an existing `CharacterId` and `FocusedSearchOutcomeSnapshot` and returns a
