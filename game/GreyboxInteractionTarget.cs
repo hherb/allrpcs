@@ -1,4 +1,5 @@
 using Allrpcs.Application.Interaction;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -10,6 +11,13 @@ namespace Allrpcs.Game;
 public partial class GreyboxInteractionTarget : Node2D
 {
     private CanvasItem focusIndicator = null!;
+
+    /// <summary>Gets or sets the authored canonical object-identifier text.</summary>
+    [Export]
+    public string ObjectIdText { get; set; } = string.Empty;
+
+    /// <summary>Gets the stable object identifier parsed for this ready marker.</summary>
+    public ObjectId ObjectId { get; private set; } = null!;
 
     /// <summary>Gets or sets the temporary player-facing label for this greybox marker.</summary>
     [Export]
@@ -29,6 +37,7 @@ public partial class GreyboxInteractionTarget : Node2D
     /// <inheritdoc />
     public override void _Ready()
     {
+        ObjectId = Allrpcs.Domain.Identifiers.ObjectId.Parse(ObjectIdText);
         _ = GetFocusIndicator();
         Visible = IsInteractionVisible;
         SetFocused(false);
