@@ -4,7 +4,9 @@
 
 Phase 2k16 is implemented and reviewed without findings on
 `codex/phase-2k16-stable-focused-search-target-bridge`, based directly on the PR #63 merge at
-`47413eb`. The reviewed commit and draft pull request are pending creation.
+`47413eb`. Feature commit `4690c14` is pushed, and draft PR #64
+(`https://github.com/hherb/allrpcs/pull/64`) is open. Pull-request merge remains separately
+unauthorized.
 
 Each of the four existing `GreyboxInteractionTarget` nodes now authors distinct canonical object-ID
 text. The node parses that text once through the Domain `ObjectId` boundary while ready and retains
