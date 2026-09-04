@@ -47,9 +47,12 @@ four outer borders plus representative stream, village, and tree collisions, the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
 `actionlint` against every hosted workflow. A focused-search presentation launch proves the one
 temporary Seeker indicator is hidden by default, follows empty, unrelated, one-match, multi-match,
-and hide-again decisions, and leaves supplied inputs intact. The checks do not require provider
-credentials or network access after restore. The project selects the Compatibility renderer for
-graphical launches.
+and hide-again decisions, and leaves supplied inputs intact. A separate controller launch proves
+condition-aware capability-only, tool-only, and combined starts; fail-closed absent, unsatisfied,
+already-active, and wrong-character starts; unrelated-entry handling; successful cancellation and
+completion; presentation changes; and exact input and activity-instance retention. The checks do
+not require provider credentials or network access after restore. The project selects the
+Compatibility renderer for graphical launches.
 
 To verify formatting alone without changing files, run:
 
@@ -562,11 +565,13 @@ inject focused-search activity.
 
 `Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
 immutable focused-search activity snapshot. It initializes an empty snapshot from the Seeker's one
-authored stable character identifier, rejects requests for other characters, delegates lifecycle
-eligibility and state changes to the existing Domain policies and transitions, and replaces and
-presents its snapshot only after a successful start, cancellation, or completion. Ordinary play
-does not construct a request or invoke those operations; the credential-free controller smoke is
-the only current caller.
+authored stable character identifier and rejects requests for other characters. Its start path
+accepts existing discovery conditions, capabilities, and inventory, delegates the complete start
+decision to the combined Domain eligibility policy, and only then delegates state creation to the
+existing start transition. Cancellation and completion retain their existing policy and transition
+delegation. The controller replaces and presents its snapshot only after a successful operation;
+ordinary play does not construct a request or invoke those operations, so the credential-free
+controller smoke is the only current caller.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
@@ -578,7 +583,7 @@ change, complete-character or world inspection, replacement, range, duration, lo
 outcome, display text, status value, further lifecycle policy, in-place mutation, scheduling,
 persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
 only its one authored indicator's visibility, and the temporary controller owns only its immutable
-snapshot and existing lifecycle delegation.
+snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

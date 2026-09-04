@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -45,56 +46,123 @@ public partial class FocusedSearchActivityControllerSmokeCheck : Node
         }
 
         CharacterId unrelatedCharacterId = new("healer");
-        ObjectId firstTargetId = new("concealed-herb");
-        ObjectId secondTargetId = new("partial-inscription");
-        ObjectId unrelatedTargetId = new("residue");
-        FocusedSearchRequest firstRequest = new(
-            controller.SearcherCharacterId,
-            firstTargetId);
-        FocusedSearchRequest secondRequest = new(
-            controller.SearcherCharacterId,
-            secondTargetId);
-        FocusedSearchRequest unrelatedRequest = new(
+        ObjectId unrelatedActivityTargetId = new("weathered-inscription");
+        FocusedSearchRequest unrelatedActivityRequest = new(
             unrelatedCharacterId,
-            unrelatedTargetId);
+            unrelatedActivityTargetId);
+        FocusedSearchActivity unrelatedActivity = new(unrelatedActivityRequest);
+        FocusedSearchActivitySnapshot unrelatedSnapshot = new([unrelatedActivity]);
+        SetActivitiesForSmokeCheck(unrelatedSnapshot);
 
-        if (controller.TryStartSearch(unrelatedRequest)
-            || !AssertUnchanged(initialSnapshot, [], expectedVisible: false, "unrelated start"))
-        {
-            return;
-        }
+        ObjectId capabilityTargetId = new("concealed-herb");
+        ObjectId toolTargetId = new("partial-inscription");
+        ObjectId combinedTargetId = new("wagon-residue");
+        ObjectId absentTargetId = new("unmarked-cache");
+        ObjectId unsatisfiedTargetId = new("faded-marking");
+        FocusedSearchRequest capabilityRequest = new(
+            controller.SearcherCharacterId,
+            capabilityTargetId);
+        FocusedSearchRequest toolRequest = new(controller.SearcherCharacterId, toolTargetId);
+        FocusedSearchRequest combinedRequest = new(
+            controller.SearcherCharacterId,
+            combinedTargetId);
+        FocusedSearchRequest absentRequest = new(controller.SearcherCharacterId, absentTargetId);
+        FocusedSearchRequest unsatisfiedRequest = new(
+            controller.SearcherCharacterId,
+            unsatisfiedTargetId);
+        FocusedSearchRequest wrongCharacterRequest = new(
+            unrelatedCharacterId,
+            capabilityTargetId);
 
-        if (!controller.TryStartSearch(firstRequest))
-        {
-            Fail("Focused-search controller smoke failed eligible start.");
-            return;
-        }
+        DiscoveryCapabilityRequirement unrelatedCapabilityRequirement = new(
+            unrelatedActivityTargetId,
+            "read-ancient-script");
+        DiscoveryCapabilityRequirement capabilityRequirement = new(
+            capabilityTargetId,
+            "identify-healing-plants");
+        DiscoveryCapabilityRequirement combinedCapabilityRequirement = new(
+            combinedTargetId,
+            "analyze-residue");
+        DiscoveryToolRequirement unrelatedToolRequirement = new(
+            unrelatedActivityTargetId,
+            new ObjectId("charcoal-stick"));
+        ObjectId fieldLensId = new("field-lens");
+        ObjectId sampleVialId = new("sample-vial");
+        DiscoveryToolRequirement toolRequirement = new(toolTargetId, fieldLensId);
+        DiscoveryToolRequirement combinedToolRequirement = new(combinedTargetId, sampleVialId);
+        DiscoveryCapabilityRequirementSet capabilityRequirements = new(
+            [
+                unrelatedCapabilityRequirement,
+                capabilityRequirement,
+                combinedCapabilityRequirement,
+            ]);
+        DiscoveryToolRequirementSet toolRequirements = new(
+            [unrelatedToolRequirement, toolRequirement, combinedToolRequirement]);
+        DiscoveryConditionSet conditions = new(capabilityRequirements, toolRequirements);
 
-        FocusedSearchActivitySnapshot startedSnapshot = controller.Activities;
-        FocusedSearchActivity firstActivity = startedSnapshot.Entries.Single();
-        if (!ReferenceEquals(firstActivity.Request, firstRequest)
-            || !AssertState(startedSnapshot, expectedVisible: true, "successful start"))
-        {
-            return;
-        }
+        CharacterCapability identifyCapability = new(
+            "identify-healing-plants",
+            "Identifies healing plants.");
+        CharacterCapability analysisCapability = new(
+            "analyze-residue",
+            "Analyzes residue.");
+        CharacterCapabilitySet capabilities = new([identifyCapability, analysisCapability]);
+        CharacterInventory inventory = new([fieldLensId, sampleVialId]);
+        DiscoveryConditionSet unsatisfiedConditions = new(
+            new DiscoveryCapabilityRequirementSet(
+                [new DiscoveryCapabilityRequirement(unsatisfiedTargetId, "read-ancient-script")]),
+            new DiscoveryToolRequirementSet([]));
 
-        if (controller.TryStartSearch(secondRequest)
+        if (!AssertState(unrelatedSnapshot, expectedVisible: false, "unrelated activity setup")
+            || controller.TryStartSearch(
+                wrongCharacterRequest,
+                conditions,
+                capabilities,
+                inventory)
             || !AssertUnchanged(
-                startedSnapshot,
-                [firstActivity],
-                expectedVisible: true,
-                "ineligible second start")
-            || controller.TryCancelSearch(secondRequest)
+                unrelatedSnapshot,
+                [unrelatedActivity],
+                expectedVisible: false,
+                "wrong-character start")
+            || controller.TryStartSearch(absentRequest, conditions, capabilities, inventory)
             || !AssertUnchanged(
-                startedSnapshot,
-                [firstActivity],
-                expectedVisible: true,
-                "failed cancellation"))
+                unrelatedSnapshot,
+                [unrelatedActivity],
+                expectedVisible: false,
+                "absent-condition start")
+            || controller.TryStartSearch(
+                unsatisfiedRequest,
+                unsatisfiedConditions,
+                capabilities,
+                inventory)
+            || !AssertUnchanged(
+                unrelatedSnapshot,
+                [unrelatedActivity],
+                expectedVisible: false,
+                "unsatisfied-condition start"))
         {
             return;
         }
 
-        if (!controller.TryCancelSearch(firstRequest)
+        if (!controller.TryStartSearch(capabilityRequest, conditions, capabilities, inventory))
+        {
+            Fail("Focused-search controller smoke failed capability-only start.");
+            return;
+        }
+
+        FocusedSearchActivitySnapshot capabilitySnapshot = controller.Activities;
+        FocusedSearchActivity capabilityActivity = capabilitySnapshot.Entries[1];
+        if (!ReferenceEquals(capabilityActivity.Request, capabilityRequest)
+            || !AssertEntries(capabilitySnapshot, unrelatedActivity, capabilityActivity)
+            || !AssertState(capabilitySnapshot, expectedVisible: true, "capability-only start")
+            || controller.TryStartSearch(toolRequest, conditions, capabilities, inventory)
+            || !AssertUnchanged(
+                capabilitySnapshot,
+                [unrelatedActivity, capabilityActivity],
+                expectedVisible: true,
+                "already-active start")
+            || !controller.TryCancelSearch(capabilityRequest)
+            || !AssertEntries(controller.Activities, unrelatedActivity)
             || !AssertState(
                 controller.Activities,
                 expectedVisible: false,
@@ -103,43 +171,90 @@ public partial class FocusedSearchActivityControllerSmokeCheck : Node
             return;
         }
 
-        if (!controller.TryStartSearch(secondRequest))
+        if (!controller.TryStartSearch(toolRequest, conditions, capabilities, inventory))
         {
-            Fail("Focused-search controller smoke failed completion-path start.");
+            Fail("Focused-search controller smoke failed tool-only start.");
+            return;
+        }
+
+        FocusedSearchActivitySnapshot toolSnapshot = controller.Activities;
+        FocusedSearchActivity toolActivity = toolSnapshot.Entries[1];
+        if (!ReferenceEquals(toolActivity.Request, toolRequest)
+            || !AssertEntries(toolSnapshot, unrelatedActivity, toolActivity)
+            || !AssertState(toolSnapshot, expectedVisible: true, "tool-only start")
+            || !controller.TryCancelSearch(toolRequest)
+            || !AssertEntries(controller.Activities, unrelatedActivity)
+            || !AssertState(
+                controller.Activities,
+                expectedVisible: false,
+                "tool-only cancellation"))
+        {
+            return;
+        }
+
+        if (!controller.TryStartSearch(combinedRequest, conditions, capabilities, inventory))
+        {
+            Fail("Focused-search controller smoke failed combined-condition start.");
             return;
         }
 
         FocusedSearchActivitySnapshot completionSnapshot = controller.Activities;
-        FocusedSearchActivity secondActivity = completionSnapshot.Entries.Single();
-        if (!ReferenceEquals(secondActivity.Request, secondRequest)
-            || controller.TryCompleteSearch(firstRequest)
+        FocusedSearchActivity combinedActivity = completionSnapshot.Entries[1];
+        if (!ReferenceEquals(combinedActivity.Request, combinedRequest)
+            || !AssertEntries(completionSnapshot, unrelatedActivity, combinedActivity)
+            || !AssertState(completionSnapshot, expectedVisible: true, "combined-condition start")
+            || controller.TryCompleteSearch(toolRequest)
             || !AssertUnchanged(
                 completionSnapshot,
-                [secondActivity],
+                [unrelatedActivity, combinedActivity],
                 expectedVisible: true,
                 "failed completion")
-            || !controller.TryCompleteSearch(secondRequest)
+            || !controller.TryCompleteSearch(combinedRequest)
+            || !AssertEntries(controller.Activities, unrelatedActivity)
             || !AssertState(
                 controller.Activities,
                 expectedVisible: false,
                 "successful completion")
             || !AssertInputsUnchanged(
-                unrelatedCharacterId,
-                firstTargetId,
-                secondTargetId,
-                unrelatedTargetId,
-                firstRequest,
-                secondRequest,
-                unrelatedRequest))
+                unrelatedActivityRequest,
+                capabilityRequest,
+                toolRequest,
+                combinedRequest,
+                wrongCharacterRequest,
+                capabilityRequirements,
+                toolRequirements,
+                conditions,
+                capabilities,
+                inventory,
+                unrelatedCapabilityRequirement,
+                capabilityRequirement,
+                combinedCapabilityRequirement,
+                unrelatedToolRequirement,
+                toolRequirement,
+                combinedToolRequirement,
+                identifyCapability,
+                analysisCapability,
+                fieldLensId,
+                sampleVialId))
         {
             return;
         }
 
         GD.Print(
-            "Focused-search activity controller smoke passed: empty initialization, start, "
-            + "fail-closed unrelated and ineligible operations, cancellation, completion, "
-            + "presentation, exact instance retention, and unchanged inputs were correct.");
+            "Focused-search activity controller smoke passed: condition-aware capability-only, "
+            + "tool-only, and combined starts; fail-closed absent, unsatisfied, already-active, "
+            + "and wrong-character starts; unrelated entries; lifecycle presentation; exact "
+            + "instance retention; and unchanged inputs were correct.");
         GetTree().Quit();
+    }
+
+    private void SetActivitiesForSmokeCheck(FocusedSearchActivitySnapshot activities)
+    {
+        System.Reflection.PropertyInfo property =
+            typeof(FocusedSearchActivityController).GetProperty(
+                nameof(FocusedSearchActivityController.Activities))
+            ?? throw new InvalidOperationException("Controller activities property was not found.");
+        property.SetValue(controller, activities);
     }
 
     private bool AssertUnchanged(
@@ -149,16 +264,29 @@ public partial class FocusedSearchActivityControllerSmokeCheck : Node
         string scenario)
     {
         if (!ReferenceEquals(controller.Activities, expectedSnapshot)
-            || controller.Activities.Entries.Count != expectedActivities.Length
-            || !controller.Activities.Entries
-                .Zip(expectedActivities)
-                .All(pair => ReferenceEquals(pair.First, pair.Second)))
+            || !AssertEntries(controller.Activities, expectedActivities))
         {
             Fail($"Focused-search controller smoke failed {scenario}: state changed.");
             return false;
         }
 
         return AssertState(expectedSnapshot, expectedVisible, scenario);
+    }
+
+    private bool AssertEntries(
+        FocusedSearchActivitySnapshot snapshot,
+        params FocusedSearchActivity[] expectedActivities)
+    {
+        if (snapshot.Entries.Count == expectedActivities.Length
+            && snapshot.Entries
+                .Zip(expectedActivities)
+                .All(pair => ReferenceEquals(pair.First, pair.Second)))
+        {
+            return true;
+        }
+
+        Fail("Focused-search controller smoke failed exact activity retention.");
+        return false;
     }
 
     private bool AssertState(
@@ -184,28 +312,64 @@ public partial class FocusedSearchActivityControllerSmokeCheck : Node
     }
 
     private bool AssertInputsUnchanged(
-        CharacterId unrelatedCharacterId,
-        ObjectId firstTargetId,
-        ObjectId secondTargetId,
-        ObjectId unrelatedTargetId,
-        FocusedSearchRequest firstRequest,
-        FocusedSearchRequest secondRequest,
-        FocusedSearchRequest unrelatedRequest)
+        FocusedSearchRequest unrelatedActivityRequest,
+        FocusedSearchRequest capabilityRequest,
+        FocusedSearchRequest toolRequest,
+        FocusedSearchRequest combinedRequest,
+        FocusedSearchRequest wrongCharacterRequest,
+        DiscoveryCapabilityRequirementSet capabilityRequirements,
+        DiscoveryToolRequirementSet toolRequirements,
+        DiscoveryConditionSet conditions,
+        CharacterCapabilitySet capabilities,
+        CharacterInventory inventory,
+        DiscoveryCapabilityRequirement unrelatedCapabilityRequirement,
+        DiscoveryCapabilityRequirement capabilityRequirement,
+        DiscoveryCapabilityRequirement combinedCapabilityRequirement,
+        DiscoveryToolRequirement unrelatedToolRequirement,
+        DiscoveryToolRequirement toolRequirement,
+        DiscoveryToolRequirement combinedToolRequirement,
+        CharacterCapability identifyCapability,
+        CharacterCapability analysisCapability,
+        ObjectId fieldLensId,
+        ObjectId sampleVialId)
     {
         bool unchanged = ReferenceEquals(
-                firstRequest.SearcherCharacterId,
-                controller.SearcherCharacterId)
-            && ReferenceEquals(firstRequest.TargetObjectId, firstTargetId)
-            && ReferenceEquals(secondRequest.SearcherCharacterId, controller.SearcherCharacterId)
-            && ReferenceEquals(secondRequest.TargetObjectId, secondTargetId)
-            && ReferenceEquals(unrelatedRequest.SearcherCharacterId, unrelatedCharacterId)
-            && ReferenceEquals(unrelatedRequest.TargetObjectId, unrelatedTargetId);
+                unrelatedActivityRequest.SearcherCharacterId,
+                wrongCharacterRequest.SearcherCharacterId)
+            && ReferenceEquals(capabilityRequest.SearcherCharacterId, controller.SearcherCharacterId)
+            && ReferenceEquals(toolRequest.SearcherCharacterId, controller.SearcherCharacterId)
+            && ReferenceEquals(combinedRequest.SearcherCharacterId, controller.SearcherCharacterId)
+            && ReferenceEquals(capabilityRequest.TargetObjectId, capabilityRequirement.ObjectId)
+            && ReferenceEquals(toolRequest.TargetObjectId, toolRequirement.ObjectId)
+            && ReferenceEquals(combinedRequest.TargetObjectId, combinedCapabilityRequirement.ObjectId)
+            && ReferenceEquals(combinedRequest.TargetObjectId, combinedToolRequirement.ObjectId)
+            && ReferenceEquals(conditions.CapabilityRequirements, capabilityRequirements)
+            && ReferenceEquals(conditions.ToolRequirements, toolRequirements)
+            && SameEntries(
+                capabilityRequirements.Entries,
+                unrelatedCapabilityRequirement,
+                capabilityRequirement,
+                combinedCapabilityRequirement)
+            && SameEntries(
+                toolRequirements.Entries,
+                unrelatedToolRequirement,
+                toolRequirement,
+                combinedToolRequirement)
+            && SameEntries(capabilities.Entries, identifyCapability, analysisCapability)
+            && SameEntries(inventory.ObjectReferences, fieldLensId, sampleVialId);
         if (!unchanged)
         {
-            Fail("Focused-search activity controller changed a supplied request or identifier.");
+            Fail("Focused-search activity controller changed a supplied input or its order.");
         }
 
         return unchanged;
+    }
+
+    private static bool SameEntries<T>(IReadOnlyList<T> actual, params T[] expected)
+        where T : class
+    {
+        return actual.Count == expected.Length
+            && actual.Zip(expected).All(pair => ReferenceEquals(pair.First, pair.Second));
     }
 
     private void Fail(string message)
