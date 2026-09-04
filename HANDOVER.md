@@ -4,8 +4,9 @@
 
 Phase 2k17 is implemented and reviewed without findings on
 `codex/phase-2k17-focused-search-request-bridge`, based directly on the PR #64 merge at
-`27a72aa`. Publication details are recorded below after the draft PR is opened. Pull-request merge
-remains separately unauthorized.
+`27a72aa`. Feature commit `09fa075` is pushed, and draft PR #65
+(`https://github.com/hherb/allrpcs/pull/65`) is open. Pull-request merge remains separately
+unauthorized.
 
 `InteractionFocusController.CreateFocusedSearchRequest` accepts an existing `CharacterId` and
 returns a new `FocusedSearchRequest` only while an existing visible, enabled, in-range target has
