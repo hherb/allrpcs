@@ -1,4 +1,5 @@
 using System.Globalization;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -10,6 +11,13 @@ public partial class InteractionFocusSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_INTERACTION_FOCUS_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private static readonly string[] ExpectedObjectIdValues =
+    [
+        "herb-patch",
+        "stone-marker",
+        "hidden-marker",
+        "excluded-marker",
+    ];
     private static readonly Vector2 FirstTargetPosition = new(720.0f, 520.0f);
     private static readonly Vector2 EqualDistancePosition = new(800.0f, 520.0f);
     private static readonly Vector2 SecondTargetPosition = new(880.0f, 520.0f);
@@ -19,6 +27,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private InteractionFocusController controller = null!;
     private CharacterBody2D seeker = null!;
+    private ObjectId[] authoredObjectIds = [];
     private SmokeStage stage;
 
     /// <inheritdoc />
@@ -33,6 +42,11 @@ public partial class InteractionFocusSmokeCheck : Node
 
         controller = GetNode<InteractionFocusController>("../InteractionFocusController");
         seeker = GetNode<CharacterBody2D>("../Seeker");
+
+        if (!AssertAuthoredObjectIdentifiers())
+        {
+            SetProcess(false);
+        }
     }
 
     /// <inheritdoc />
@@ -144,8 +158,8 @@ public partial class InteractionFocusSmokeCheck : Node
 
         GD.Print(
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
-            + "focus change, out-of-range clearing, and hidden and disabled exclusions were "
-            + "presented correctly.");
+            + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
+            + "stable object-identifier retention were presented correctly.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -160,6 +174,15 @@ public partial class InteractionFocusSmokeCheck : Node
             Fail(
                 $"Interaction-focus smoke failed {scenario}: expected {expectedIndex}, "
                 + $"received {actualIndex}.");
+            return false;
+        }
+
+        if (!ReferenceEquals(controller.GetTarget(expectedIndex).ObjectId, authoredObjectIds[expectedIndex])
+            || !ReferenceEquals(controller.FocusedTargetObjectId, authoredObjectIds[expectedIndex]))
+        {
+            Fail(
+                $"Interaction-focus smoke failed {scenario}: the focused object identifier "
+                + "was not the exact authored target instance.");
             return false;
         }
 
@@ -188,13 +211,68 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
+        if (controller.FocusedTargetObjectId is not null)
+        {
+            Fail(
+                $"Interaction-focus smoke failed {scenario}: unexpected object identifier "
+                + $"{controller.FocusedTargetObjectId}.");
+            return false;
+        }
+
         for (int index = 0; index < controller.TargetCount; index++)
         {
+            if (!ReferenceEquals(controller.GetTarget(index).ObjectId, authoredObjectIds[index]))
+            {
+                Fail(
+                    $"Interaction-focus smoke failed {scenario}: target {index} replaced its "
+                    + "authored object identifier.");
+                return false;
+            }
+
             if (controller.GetTarget(index).IsFocused)
             {
                 Fail(
                     $"Interaction-focus smoke failed {scenario}: target {index} still showed "
                     + "its focus indicator.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private bool AssertAuthoredObjectIdentifiers()
+    {
+        if (controller.TargetCount != ExpectedObjectIdValues.Length)
+        {
+            Fail(
+                "Interaction-focus smoke failed stable identifier authoring: expected "
+                + $"{ExpectedObjectIdValues.Length} targets, received {controller.TargetCount}.");
+            return false;
+        }
+
+        authoredObjectIds = new ObjectId[controller.TargetCount];
+        HashSet<string> distinctValues = new(StringComparer.Ordinal);
+        for (int index = 0; index < controller.TargetCount; index++)
+        {
+            GreyboxInteractionTarget target = controller.GetTarget(index);
+            authoredObjectIds[index] = target.ObjectId;
+            if (!string.Equals(
+                    target.ObjectId.Value,
+                    ExpectedObjectIdValues[index],
+                    StringComparison.Ordinal))
+            {
+                Fail(
+                    $"Interaction-focus smoke failed stable identifier authoring: target {index} "
+                    + $"exposed {target.ObjectId}.");
+                return false;
+            }
+
+            if (!distinctValues.Add(target.ObjectId.Value))
+            {
+                Fail(
+                    $"Interaction-focus smoke failed stable identifier authoring: target {index} "
+                    + "duplicated an existing identifier.");
                 return false;
             }
         }

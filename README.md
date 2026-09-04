@@ -41,7 +41,8 @@ headless launches wait for the navigation map to synchronize, prove a route thro
 reject representative stream, tree, and village targets, and exercise healer follow, wait,
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
-tie-breaking, focus changes, out-of-range clearing, and hidden and disabled exclusions. The
+tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
+authored object identifiers, and exact focused identifier-instance retention. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -164,8 +165,11 @@ marker inside the inclusive 112-pixel range. Exact distance ties resolve by auth
 so focus is stable at the Seeker's initial midpoint. Moving nearer the other marker changes focus;
 moving outside both ranges clears it. A hidden marker and an obvious excluded marker exercise the
 fail-closed presentation paths and can never receive the indicator. These markers, labels, range,
-ordering, and indicator are temporary greybox behavior evidence, not Phase 2 objects, stable
-identifiers, perception state, or interaction UX.
+ordering, and indicator are temporary greybox behavior evidence. Each marker also authors one
+canonical object-identifier text value, which its Godot adapter parses once while ready. The focus
+controller exposes the exact identifier instance for only the currently selected visible, enabled,
+in-range marker and clears it with focus. This bridge does not make the markers authoritative Phase
+2 objects or add perception state, search input, search execution, or interaction UX.
 
 Every shape, color, obstacle, collision outline, navigation polygon, target marker, and status
 element is an authored primitive for scale and behavior testing only; none selects final art or
@@ -572,6 +576,12 @@ existing start transition. Cancellation and completion retain their existing pol
 delegation. The controller replaces and presents its snapshot only after a successful operation;
 ordinary play does not construct a request or invoke those operations, so the credential-free
 controller smoke is the only current caller.
+
+Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
+text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
+identifier instance. The existing `InteractionFocusController` exposes the retained instance for
+only the currently selected visible, enabled, in-range target and exposes no identifier when focus
+is clear. It does not construct a focused-search request or invoke the activity controller.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define

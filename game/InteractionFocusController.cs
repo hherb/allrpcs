@@ -1,4 +1,5 @@
 using Allrpcs.Application.Interaction;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -19,6 +20,9 @@ public partial class InteractionFocusController : Node
 
     /// <summary>Gets the currently focused authored-list index, or null when focus is clear.</summary>
     public int? FocusedTargetIndex { get; private set; }
+
+    /// <summary>Gets the exact identifier of the currently focused target, or null.</summary>
+    public ObjectId? FocusedTargetObjectId { get; private set; }
 
     /// <summary>Gets the number of temporary authored focus targets.</summary>
     public int TargetCount => targets.Length;
@@ -53,6 +57,9 @@ public partial class InteractionFocusController : Node
             InteractionRangePixels,
             candidates);
         int? nextFocusedIndex = selection?.CandidateIndex;
+        FocusedTargetObjectId = nextFocusedIndex is int identifierIndex
+            ? targets[identifierIndex].ObjectId
+            : null;
 
         for (int index = 0; index < targets.Length; index++)
         {

@@ -265,6 +265,10 @@ Phase 2k15 then made the existing Godot controller's start path condition-aware:
 request for another character, it delegates the complete start decision to the combined eligibility
 policy and only eligible requests reach the existing transition and presentation. Cancellation,
 completion, the scene, and ordinary play remain unchanged, so the broader item remains incomplete.
+Phase 2k16 then gave each existing greybox interaction target one authored canonical object
+identifier and exposed the exact retained identifier instance only for the current valid focus.
+It does not construct a focused-search request, invoke a lifecycle operation, or change focus
+selection or presentation behavior, so the broader item remains incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
