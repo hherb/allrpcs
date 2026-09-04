@@ -4,7 +4,9 @@
 
 Phase 2k18 is implemented and reviewed without findings on
 `codex/phase-2k18-focused-search-start-bridge`, based directly on the PR #65 merge at
-`986c265`.
+`986c265`. Feature commit `df629c5` is pushed, and draft PR #66
+(`https://github.com/hherb/allrpcs/pull/66`) is open. Pull-request merge remains separately
+unauthorized.
 
 `InteractionFocusController.TryStartFocusedSearch` supplies the exact Seeker `CharacterId` owned
 by `FocusedSearchActivityController` to the existing focused-request factory. When focus is valid,
