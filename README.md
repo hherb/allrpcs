@@ -562,6 +562,11 @@ request, and otherwise returns a new activity snapshot that removes the activity
 value-equal request while retaining every other activity instance in stable order. It does not
 mutate either input.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcome` records one existing focused-search request and
+one existing resulting `VisibilityState`. It retains both supplied instances through get-only
+properties and compares outcomes by their values. It does not produce an outcome, apply it to
+perception, validate or advance visibility, or connect outcome data to completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
@@ -646,14 +651,14 @@ classifications or properties, passive noticing, reinterpretation, actions, resu
 events, effects, mutable state, persistence, serialization, Godot, or UI behavior. Beyond the pure
 combined eligibility decision, the focused-search boundaries add no discovery grant, visibility
 change, complete-character or world inspection, replacement, range, duration, location, progress,
-outcome, reason value, further lifecycle policy, in-place mutation, scheduling, persistence,
-production activity source, or final UI behavior. The temporary Godot adapters change only the
-authored indicator visibility and the Boolean-derived result text, and the temporary controller
-owns only its immutable snapshot, condition-aware start delegation, and existing cancellation and
-completion delegation. The interaction-focus controller adds only valid-focus request/start
-composition, while the temporary context source only supplies retained greybox inputs. Ordinary
-greybox play invokes the start bridge only through physical F, cancellation only through physical
-C, and completion only through physical E.
+outcome production or application, reason value, further lifecycle policy, in-place mutation,
+scheduling, persistence, production activity source, or final UI behavior. The temporary Godot
+adapters change only the authored indicator visibility and the Boolean-derived result text, and the
+temporary controller owns only its immutable snapshot, condition-aware start delegation, and
+existing cancellation and completion delegation. The interaction-focus controller adds only
+valid-focus request/start composition, while the temporary context source only supplies retained
+greybox inputs. Ordinary greybox play invokes the start bridge only through physical F,
+cancellation only through physical C, and completion only through physical E.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the documented
 temporary keys, interaction actions or outcomes, Phase 2 objects and perception models,

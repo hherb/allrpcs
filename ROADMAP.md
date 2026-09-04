@@ -180,12 +180,14 @@ paths. Cancellation and completion forward the exact active request independentl
 successful operations replace the immutable snapshot and update the indicator, while rejected
 or repeated operations preserve state. Phase 2k23 adds one deterministic temporary text readout
 for whether each explicit lifecycle call changed state, using only its existing Boolean result.
+Phase 2k24 defines one immutable outcome value from an exact request and existing resulting
+visibility state without producing or applying it.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
-outcome, discovery effect, reason presentation, or final interaction UI. Phase 2k24 is the next
-bounded slice: define one immutable focused-search outcome value from an exact completed request
-and an existing resulting visibility state, without applying that outcome or changing perception.
-See `HANDOVER.md` for its exact acceptance boundary and current validation evidence.
+outcome production or application, discovery effect, reason presentation, or final interaction
+UI. Phase 2k25 is the next bounded slice: define an immutable focused-search outcome snapshot
+without applying any outcome or changing perception. See `HANDOVER.md` for its exact acceptance
+boundary and current validation evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
