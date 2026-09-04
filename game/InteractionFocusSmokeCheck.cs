@@ -20,6 +20,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private const string HealerMoveAction = "healer_move";
     private const string HealerToggleAction = "healer_toggle_follow_wait";
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
+    private const int MaximumSynchronizationFrames = 60;
     private const string StartChangedText = "Focused search START: CHANGED";
     private const string StartUnchangedText = "Focused search START: UNCHANGED";
     private const string CancelChangedText = "Focused search CANCEL: CHANGED";
@@ -53,12 +54,14 @@ public partial class InteractionFocusSmokeCheck : Node
     private DiscoveryConditionSet authoredConditions = null!;
     private CharacterCapabilitySet authoredCapabilities = null!;
     private CharacterInventory authoredInventory = null!;
+    private NavigationRegion2D navigationRegion = null!;
     private DiscoveryCapabilityRequirementSet authoredCapabilityRequirements = null!;
     private DiscoveryToolRequirementSet authoredToolRequirements = null!;
     private DiscoveryCapabilityRequirement authoredCapabilityRequirement = null!;
     private DiscoveryToolRequirement authoredToolRequirement = null!;
     private CharacterCapability authoredCapability = null!;
     private ObjectId authoredToolObjectId = null!;
+    private int synchronizationFrames;
     private SmokeStage stage;
 
     /// <inheritdoc />
@@ -81,6 +84,7 @@ public partial class InteractionFocusSmokeCheck : Node
         focusedSearchResultStatus = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
         healer = GetNode<Healer>("../Healer");
         main = GetNode<Main>("..");
+        navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         seeker = GetNode<CharacterBody2D>("../Seeker");
 
         if (!AssertFocusedSearchResult(InitialFocusedSearchResultText, "initial presentation")
@@ -99,6 +103,9 @@ public partial class InteractionFocusSmokeCheck : Node
 
         switch (stage)
         {
+            case SmokeStage.Synchronizing:
+                CheckNavigationSynchronization();
+                break;
             case SmokeStage.RepresentativeSelection:
                 CheckRepresentativeSelection();
                 break;
@@ -120,6 +127,24 @@ public partial class InteractionFocusSmokeCheck : Node
             default:
                 Fail("Interaction-focus smoke entered an unknown stage.");
                 break;
+        }
+    }
+
+    private void CheckNavigationSynchronization()
+    {
+        synchronizationFrames++;
+        Rid navigationMap = NavigationServer2D.RegionGetMap(navigationRegion.GetRid());
+        bool isSynchronized = NavigationServer2D.RegionGetIterationId(navigationRegion.GetRid()) > 0
+            && NavigationServer2D.MapGetIterationId(navigationMap) > 0;
+        if (isSynchronized)
+        {
+            stage = SmokeStage.RepresentativeSelection;
+            return;
+        }
+
+        if (synchronizationFrames >= MaximumSynchronizationFrames)
+        {
+            Fail("Interaction-focus smoke could not synchronize the navigation map.");
         }
     }
 
@@ -774,6 +799,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private enum SmokeStage
     {
+        Synchronizing,
         RepresentativeSelection,
         EqualDistanceTie,
         FocusChange,
