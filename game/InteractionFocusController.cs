@@ -1,4 +1,5 @@
 using Allrpcs.Application.Interaction;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
@@ -26,6 +27,18 @@ public partial class InteractionFocusController : Node
 
     /// <summary>Gets the number of temporary authored focus targets.</summary>
     public int TargetCount => targets.Length;
+
+    /// <summary>Creates a focused-search request for the current valid focus, or null.</summary>
+    /// <param name="searcherCharacterId">The existing identifier of the searcher.</param>
+    /// <returns>A new request retaining the supplied and focused identifiers, or null.</returns>
+    public FocusedSearchRequest? CreateFocusedSearchRequest(CharacterId searcherCharacterId)
+    {
+        ArgumentNullException.ThrowIfNull(searcherCharacterId);
+
+        return FocusedTargetObjectId is ObjectId targetObjectId
+            ? new FocusedSearchRequest(searcherCharacterId, targetObjectId)
+            : null;
+    }
 
     /// <inheritdoc />
     public override void _Ready()

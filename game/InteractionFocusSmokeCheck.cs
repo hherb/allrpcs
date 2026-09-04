@@ -1,4 +1,5 @@
 using System.Globalization;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Godot;
 
@@ -26,6 +27,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private static readonly Vector2 DisabledTargetPosition = new(1040.0f, 440.0f);
 
     private InteractionFocusController controller = null!;
+    private FocusedSearchActivityController focusedSearchController = null!;
     private CharacterBody2D seeker = null!;
     private ObjectId[] authoredObjectIds = [];
     private SmokeStage stage;
@@ -41,6 +43,8 @@ public partial class InteractionFocusSmokeCheck : Node
         }
 
         controller = GetNode<InteractionFocusController>("../InteractionFocusController");
+        focusedSearchController = GetNode<FocusedSearchActivityController>(
+            "../Seeker/FocusedSearchActivityController");
         seeker = GetNode<CharacterBody2D>("../Seeker");
 
         if (!AssertAuthoredObjectIdentifiers())
@@ -159,7 +163,7 @@ public partial class InteractionFocusSmokeCheck : Node
         GD.Print(
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
-            + "stable object-identifier retention were presented correctly.");
+            + "stable request-identifier retention were presented correctly.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -183,6 +187,20 @@ public partial class InteractionFocusSmokeCheck : Node
             Fail(
                 $"Interaction-focus smoke failed {scenario}: the focused object identifier "
                 + "was not the exact authored target instance.");
+            return false;
+        }
+
+        FocusedSearchRequest? request = controller.CreateFocusedSearchRequest(
+            focusedSearchController.SearcherCharacterId);
+        if (request is null
+            || !ReferenceEquals(
+                request.SearcherCharacterId,
+                focusedSearchController.SearcherCharacterId)
+            || !ReferenceEquals(request.TargetObjectId, authoredObjectIds[expectedIndex]))
+        {
+            Fail(
+                $"Interaction-focus smoke failed {scenario}: the request did not retain the "
+                + "exact searcher and focused target identifier instances.");
             return false;
         }
 
@@ -216,6 +234,15 @@ public partial class InteractionFocusSmokeCheck : Node
             Fail(
                 $"Interaction-focus smoke failed {scenario}: unexpected object identifier "
                 + $"{controller.FocusedTargetObjectId}.");
+            return false;
+        }
+
+        if (controller.CreateFocusedSearchRequest(focusedSearchController.SearcherCharacterId)
+            is not null)
+        {
+            Fail(
+                $"Interaction-focus smoke failed {scenario}: a request was created without "
+                + "a focused target.");
             return false;
         }
 
