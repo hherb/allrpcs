@@ -273,6 +273,11 @@ Phase 2k17 then added a request-construction boundary to the existing focus cont
 a new focused-search request retaining the exact supplied Seeker identifier and currently focused
 object identifier only while focus is valid. It does not invoke a lifecycle operation or change
 focus selection or presentation behavior, so the broader item remains incomplete.
+Phase 2k18 then added a start-attempt boundary to the same controller. It supplies the existing
+activity controller's exact Seeker identifier to that request factory and, only for valid focus,
+forwards the request plus existing discovery conditions, capabilities, and inventory to the
+condition-aware start path. It adds no ordinary input or discovery-context authoring, so the
+broader item remains incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

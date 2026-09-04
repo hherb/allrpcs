@@ -42,7 +42,9 @@ reject representative stream, tree, and village targets, and exercise healer fol
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
-authored object identifiers, and exact focused identifier-instance retention. The
+authored object identifiers, exact focused identifier-instance retention, eligible and ineligible
+focused-search start composition, unchanged inputs, failure-state identity, and activity-indicator
+presentation. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -168,8 +170,12 @@ fail-closed presentation paths and can never receive the indicator. These marker
 ordering, and indicator are temporary greybox behavior evidence. Each marker also authors one
 canonical object-identifier text value, which its Godot adapter parses once while ready. The focus
 controller exposes the exact identifier instance for only the currently selected visible, enabled,
-in-range marker and clears it with focus. This bridge does not make the markers authoritative Phase
-2 objects or add perception state, search input, search execution, or interaction UX.
+in-range marker and clears it with focus. Its start-attempt boundary supplies the activity
+controller's exact Seeker identifier to the existing request factory, then passes an existing
+discovery-condition set, capability set, and inventory unchanged to the condition-aware start path.
+It returns false without invoking that path when focus is clear. This bridge does not make the
+markers authoritative Phase 2 objects or add perception state, search input, search execution, or
+interaction UX.
 
 Every shape, color, obstacle, collision outline, navigation polygon, target marker, and status
 element is an authored primitive for scale and behavior testing only; none selects final art or
@@ -575,7 +581,7 @@ decision to the combined Domain eligibility policy, and only then delegates stat
 existing start transition. Cancellation and completion retain their existing policy and transition
 delegation. The controller replaces and presents its snapshot only after a successful operation;
 ordinary play does not construct a request or invoke those operations, so the credential-free
-controller smoke is the only current caller.
+focused-search and interaction-focus smokes are the only current callers.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -583,8 +589,11 @@ identifier instance. The existing `InteractionFocusController` exposes the retai
 only the currently selected visible, enabled, in-range target and exposes no identifier when focus
 is clear. Its request-construction boundary accepts an existing `CharacterId` and returns a new
 `FocusedSearchRequest` retaining that exact identifier and the exact currently focused `ObjectId`,
-or no request when focus is clear. It does not invoke the focused-search activity controller or
-change lifecycle state.
+or no request when focus is clear. Its separate start-attempt boundary supplies the activity
+controller's exact Seeker identifier to that factory and, for a valid request only, forwards the
+request plus existing `DiscoveryConditionSet`, `CharacterCapabilitySet`, and `CharacterInventory`
+instances to the controller's condition-aware start path. It returns the existing start result and
+adds no eligibility, transition, input, or discovery-context authoring behavior.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
@@ -597,6 +606,8 @@ outcome, display text, status value, further lifecycle policy, in-place mutation
 persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
 only its one authored indicator's visibility, and the temporary controller owns only its immutable
 snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
+The interaction-focus controller adds only valid-focus request/start composition; ordinary play
+still does not invoke it or provide discovery conditions, capabilities, or inventory.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
