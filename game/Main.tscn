@@ -373,7 +373,7 @@ SearcherCharacterIdText = "seeker"
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 468.0
-offset_bottom = 106.0
+offset_bottom = 132.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 mouse_filter = 2
 
@@ -397,3 +397,10 @@ offset_top = 62.0
 offset_right = 444.0
 offset_bottom = 85.0
 text = "Interaction focus: NONE"
+
+[node name="FocusedSearchResult" type="Label" parent="CommandOverlay/Panel"]
+offset_left = 12.0
+offset_top = 88.0
+offset_right = 444.0
+offset_bottom = 111.0
+text = "Focused search: NO ATTEMPT"

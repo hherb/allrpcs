@@ -45,8 +45,9 @@ tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusio
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
 starts through the mapped temporary input for both visible targets, focus-independent cancellation
 and completion through the exact retained active requests, unchanged inputs, failure-state
-identity, and activity-indicator presentation. It also proves that the temporary focused-search
-source stably authors one
+identity, activity-indicator presentation, and deterministic changed/unchanged result text for
+every lifecycle action. It also proves that released, unrelated, movement, and healer input
+preserve the exact prior text and that the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
 nested instances, and forwards its exact aggregate instances through the input path. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
@@ -158,14 +159,14 @@ that navigation surface at a named 180-pixel-per-second speed only while outside
 72-pixel stop distance. Its circular collision matches its 36-pixel visible footprint, so the
 healer stops without overlapping the Seeker and can route through the bridge after separation.
 
-The small **TEMP** panel shows the current controls and healer mode. Press F to start a focused
-search for the current valid interaction focus, C to cancel the Seeker's active search, or E to
-complete it; these temporary search controls are detailed below. Press X to toggle between follow
-and wait. Press M to move the healer to the obvious pink ring; the healer uses the existing
-navigation surface, stops within a validated 12-pixel distance, then changes to wait. Press X again
-to resume follow. Off-world and obstacle-excluded destinations are rejected without changing the
-active command. These keys, the ring, and the status panel are temporary behavior-test controls,
-not final command or dialogue UX.
+The small **TEMP** panel shows the current controls, healer mode, interaction focus, and last
+explicit focused-search attempt. Press F to start a focused search for the current valid
+interaction focus, C to cancel the Seeker's active search, or E to complete it; these temporary
+search controls are detailed below. Press X to toggle between follow and wait. Press M to move the
+healer to the obvious pink ring; the healer uses the existing navigation surface, stops within a
+validated 12-pixel distance, then changes to wait. Press X again to resume follow. Off-world and
+obstacle-excluded destinations are rejected without changing the active command. These keys, the
+ring, and the status panel are temporary behavior-test controls, not final command or dialogue UX.
 
 Two nearby temporary markers exercise interaction focus without performing an interaction. A
 bright yellow **FOCUS** ring and the top-left status identify only the nearest visible, enabled
@@ -630,7 +631,13 @@ The separate temporary `focused_search_complete` action maps physical E to the e
 focus. A successful completion reaches the existing policy and transition, replaces the snapshot
 with its empty successor, and hides the indicator; no active search and repeated completion
 preserve the existing snapshot instance and presentation. These inputs add no automatic polling or
-lifecycle behavior, result or reason text, discovery grant, or final interaction UI.
+lifecycle behavior, discovery grant, or final interaction UI.
+
+One separate temporary label initializes to `Focused search: NO ATTEMPT`. A pressed F, C, or E
+updates it with the attempted action and `CHANGED` or `UNCHANGED`, using only the existing Boolean
+return from that lifecycle call path. It does not infer or present a failure reason. Released
+focused-search actions, unrelated input, and healer actions preserve the exact prior text, while
+the existing handled-input behavior remains unchanged.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
@@ -639,14 +646,14 @@ classifications or properties, passive noticing, reinterpretation, actions, resu
 events, effects, mutable state, persistence, serialization, Godot, or UI behavior. Beyond the pure
 combined eligibility decision, the focused-search boundaries add no discovery grant, visibility
 change, complete-character or world inspection, replacement, range, duration, location, progress,
-outcome, display text, status value, further lifecycle policy, in-place mutation, scheduling,
-persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
-only its one authored indicator's visibility, and the temporary controller owns only its immutable
-snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
-The interaction-focus controller adds only valid-focus request/start composition, while the
-temporary context source only supplies retained greybox inputs. Ordinary greybox play invokes the
-start bridge only through physical F, cancellation only through physical C, and completion only
-through physical E.
+outcome, reason value, further lifecycle policy, in-place mutation, scheduling, persistence,
+production activity source, or final UI behavior. The temporary Godot adapters change only the
+authored indicator visibility and the Boolean-derived result text, and the temporary controller
+owns only its immutable snapshot, condition-aware start delegation, and existing cancellation and
+completion delegation. The interaction-focus controller adds only valid-focus request/start
+composition, while the temporary context source only supplies retained greybox inputs. Ordinary
+greybox play invokes the start bridge only through physical F, cancellation only through physical
+C, and completion only through physical E.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the documented
 temporary keys, interaction actions or outcomes, Phase 2 objects and perception models,
