@@ -581,7 +581,10 @@ Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported ca
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
 identifier instance. The existing `InteractionFocusController` exposes the retained instance for
 only the currently selected visible, enabled, in-range target and exposes no identifier when focus
-is clear. It does not construct a focused-search request or invoke the activity controller.
+is clear. Its request-construction boundary accepts an existing `CharacterId` and returns a new
+`FocusedSearchRequest` retaining that exact identifier and the exact currently focused `ObjectId`,
+or no request when focus is clear. It does not invoke the focused-search activity controller or
+change lifecycle state.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
