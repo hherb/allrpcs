@@ -157,12 +157,14 @@ that navigation surface at a named 180-pixel-per-second speed only while outside
 72-pixel stop distance. Its circular collision matches its 36-pixel visible footprint, so the
 healer stops without overlapping the Seeker and can route through the bridge after separation.
 
-The small **TEMP GREYBOX** panel shows the current healer mode. Press X to toggle between follow
-and wait. Press M to move the healer to the obvious pink ring; the healer uses the existing
-navigation surface, stops within a validated 12-pixel distance, then changes to wait. Press X
-again to resume follow. Off-world and obstacle-excluded destinations are rejected without
-changing the active command. These two keys, the ring, and the status panel are temporary
-behavior-test controls, not final command or dialogue UX.
+The small **TEMP** panel shows the current controls and healer mode. Press F to start a focused
+search for the current valid interaction focus and C to cancel the Seeker's active focused search;
+these temporary search controls are detailed below. Press X to toggle between follow and wait.
+Press M to move the healer to the obvious pink ring; the healer uses the existing navigation
+surface, stops within a validated 12-pixel distance, then changes to wait. Press X again to resume
+follow. Off-world and obstacle-excluded destinations are rejected without changing the active
+command. These keys, the ring, and the status panel are temporary behavior-test controls, not
+final command or dialogue UX.
 
 Two nearby temporary markers exercise interaction focus without performing an interaction. A
 bright yellow **FOCUS** ring and the top-left status identify only the nearest visible, enabled
@@ -611,7 +613,17 @@ On that pressed action only, `Main` passes the context source's exact retained c
 capability, and inventory aggregates to the existing interaction-focus start boundary. A valid
 herb-patch or stone-marker focus may therefore start the existing immutable activity and show its
 indicator. Clear, hidden, disabled, out-of-range, or already-active attempts preserve the existing
-snapshot. This input adds no automatic polling, start behavior, result text, or lifecycle action.
+snapshot.
+
+The separate temporary `focused_search_cancel` action maps physical C to one narrow
+`Main._UnhandledInput` branch. On that pressed action only, `Main` finds the Seeker's active
+activity in the controller's current immutable snapshot and passes that activity's exact retained
+request to `FocusedSearchActivityController.TryCancelSearch`. Cancellation does not read or depend
+on the current interaction focus. A successful cancellation reaches the existing policy and
+transition, replaces the snapshot with its empty successor, and hides the activity indicator; no
+active search and repeated cancellation preserve the existing snapshot instance and presentation.
+These inputs add no automatic polling or lifecycle behavior, result or reason text, completion,
+discovery grant, or final interaction UI.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
@@ -626,7 +638,8 @@ only its one authored indicator's visibility, and the temporary controller owns 
 snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
 The interaction-focus controller adds only valid-focus request/start composition, while the
 temporary context source only supplies retained greybox inputs. Ordinary greybox play invokes the
-start bridge only through the explicit physical-F action.
+start bridge only through the explicit physical-F action and invokes cancellation only through the
+explicit physical-C action.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
