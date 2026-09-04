@@ -382,7 +382,7 @@ offset_left = 12.0
 offset_top = 7.0
 offset_right = 444.0
 offset_bottom = 30.0
-text = "TEMP GREYBOX · X TOGGLE FOLLOW/WAIT · M MOVE"
+text = "TEMP GREYBOX · F SEARCH · X FOLLOW/WAIT · M MOVE"
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
