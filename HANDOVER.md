@@ -4,7 +4,9 @@
 
 Phase 2k22 is implemented and reviewed without findings on
 `codex/phase-2k22-focused-search-completion-input`, based directly on PR #69's merge commit
-`df8934c`.
+`df8934c`. Feature commit `4b2cab4` is pushed, and draft PR #70
+(`https://github.com/hherb/allrpcs/pull/70`) is open. Pull-request merge remains separately
+unauthorized.
 
 Physical E now maps to the sole temporary `focused_search_complete` action. On that pressed
 action only, `Main._UnhandledInput` selects the Seeker's active activity from
