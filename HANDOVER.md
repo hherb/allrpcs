@@ -2,62 +2,59 @@
 
 ## Current state
 
-Phase 2k22 is implemented and reviewed without findings on
-`codex/phase-2k22-focused-search-completion-input`, based directly on PR #69's merge commit
-`df8934c`. Feature commit `4b2cab4` is pushed, and draft PR #70
-(`https://github.com/hherb/allrpcs/pull/70`) is open. Pull-request merge remains separately
+Phase 2k23 is implemented and reviewed without findings on
+`codex/phase-2k23-focused-search-result-presentation`, based directly on PR #70's merge commit
+`e69ba0c`. Feature commit `2f52e64` is pushed, and draft PR #71
+(`https://github.com/hherb/allrpcs/pull/71`) is open. Pull-request merge remains separately
 unauthorized.
 
-Physical E now maps to the sole temporary `focused_search_complete` action. On that pressed
-action only, `Main._UnhandledInput` selects the Seeker's active activity from
-`FocusedSearchActivityController.Activities` and passes its exact retained
-`FocusedSearchRequest` to the existing `TryCompleteSearch` boundary. Completion is independent
-of interaction focus. Active herb-patch and stone-marker searches reach the existing completion
-policy and transition, replace the immutable snapshot with its empty successor, and hide the
-cyan indicator. No active search and repeated completion preserve snapshot identity and
-presentation. Existing F start, C cancellation, other input, focus, movement, and healer
-behavior remain unchanged.
+The temporary panel now includes one focused-search result label, initialized deterministically
+to `Focused search: NO ATTEMPT`. A pressed physical F, C, or E updates it with START, CANCEL, or
+COMPLETE plus CHANGED or UNCHANGED, using only the existing Boolean lifecycle result. It never
+adds or infers a reason. Released focused-search actions and unrelated, movement, or healer input
+preserve the exact prior text. Existing handled-input behavior, lifecycle transitions, snapshot
+identity, exact retained-request forwarding, focus independence, context instances, and activity
+indicator presentation remain unchanged.
 
 Host-shell `./scripts/quality.sh` passed with a zero-warning build, 491 Domain tests, 107
 Application tests, six architecture tests, six Godot smokes, and the bounded graphical launch.
-The focused smoke failed test-first only because the E mapping was absent, then passed with exact
-active-request retention, focus-independent cancellation and completion after both eligible
-target starts, failure-state identity, context/input stability, and existing presentation
-coverage. The instruction panel changed only to expose E. The graphical launch passed, but no
-separate manual visual acceptance was performed. Hosted desktop outputs remain unsigned
-development evidence, not releases.
+The focused smoke failed test-first on the deliberately absent result node, then passed for the
+initial text and successful/unchanged results from all three actions across both eligible targets.
+It also passed exact prior-text preservation for released, unrelated, movement, and healer inputs
+while retaining all earlier lifecycle, focus, context, request-instance, state-identity, and
+indicator assertions. The graphical launch passed, but no separate manual visual acceptance was
+performed. The first sandboxed engine attempt reproduced the known unavailable `user://logs`
+failure; the host smoke and complete host quality spine passed. Hosted desktop outputs remain
+unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k23: temporary focused-search lifecycle result presentation**.
+Take **Phase 2k24: immutable focused-search outcome value**.
 
 Acceptance boundary:
 
-1. Add one temporary Godot-layer text presentation for the last explicit F, C, or E
-   focused-search attempt; keep it separate from the existing activity ring and healer mode.
-2. Use only the existing Boolean return from the start, cancellation, or completion call path to
-   present the attempted action as changed or unchanged. Do not add reason values or infer why an
-   attempt failed.
-3. Initialize the text deterministically and update it only for a pressed focused-search action.
-   Released or unrelated inputs must preserve the exact text; existing input-handled behavior
-   must remain unchanged.
-4. Preserve the current lifecycle behavior, snapshot identity rules, exact retained-request
-   forwarding, focus independence, and indicator presentation.
-5. Extend only the credential-free input/focus smoke needed to prove initial text, successful and
-   unchanged results for all three actions, both eligible targets, and unchanged movement, healer,
-   focus, context, and lifecycle behavior.
-6. Document Phase 2k23 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+1. Add one sealed immutable `Allrpcs.Domain.Discovery.FocusedSearchOutcome` record that retains
+   exactly one supplied `FocusedSearchRequest` and one supplied existing
+   `Allrpcs.Domain.Perception.VisibilityState` as `Request` and `ResultingVisibilityState`.
+2. Reject either null input. Preserve exact supplied instances and record value equality; do not
+   validate, rank, advance, or otherwise interpret the visibility state.
+3. Add focused Domain tests for exact instance retention, equal and distinct values, null inputs,
+   and the intended get-only sealed API surface.
+4. Do not create an outcome collection, apply the outcome to perception, connect it to completion,
+   or alter the existing focused-search controller, temporary inputs, activity ring, or result
+   label.
+5. Document Phase 2k24 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
 Explicit exclusions:
 
-- Do not add progress, duration, automatic lifecycle behavior, outcomes, discovery grants,
-  visibility changes, events, effects, reason/error taxonomies, final interaction UI, or new
-  Domain/Application lifecycle contracts.
-- Do not add authoritative world objects, complete-character inspection, perception mutation,
-  ownership/capacity, world state, location, coordinates, range policy, passive noticing,
-  reinterpretation, serialization, persistence, providers, plugins, or credentials.
+- Do not add outcome production or application, discovery grants, visibility mutation or
+  advancement policy, events, effects, reason/error taxonomies, progress, duration, automatic
+  lifecycle behavior, authoritative world objects, or new Godot/Application behavior.
+- Do not add complete-character inspection, ownership/capacity, world state, location,
+  coordinates, range policy, passive noticing, reinterpretation, serialization, persistence,
+  providers, plugins, credentials, or final interaction UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
   until their retained prototype or authoritative-system prerequisites exist.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without

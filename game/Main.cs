@@ -9,6 +9,7 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class Main : Node
 {
+    private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
     private static readonly StringName FocusedSearchStartAction = new("focused_search_start");
@@ -19,6 +20,7 @@ public partial class Main : Node
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
+    private Label focusedSearchResultStatus = null!;
     private InteractionFocusController interactionFocusController = null!;
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private HealerCommandMode displayedMode;
@@ -31,10 +33,12 @@ public partial class Main : Node
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "Seeker/FocusedSearchActivityController");
+        focusedSearchResultStatus = GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult");
         interactionFocusController = GetNode<InteractionFocusController>(
             "InteractionFocusController");
         focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
             "TemporaryFocusedSearchContextSource");
+        focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
     }
 
@@ -51,25 +55,24 @@ public partial class Main : Node
         if (@event.IsActionPressed(FocusedSearchCancelAction))
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
-            if (activeRequest is not null)
-            {
-                _ = focusedSearchController.TryCancelSearch(activeRequest);
-            }
+            bool changed = activeRequest is not null
+                && focusedSearchController.TryCancelSearch(activeRequest);
+            PresentFocusedSearchResult("CANCEL", changed);
         }
         else if (@event.IsActionPressed(FocusedSearchCompleteAction))
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
-            if (activeRequest is not null)
-            {
-                _ = focusedSearchController.TryCompleteSearch(activeRequest);
-            }
+            bool changed = activeRequest is not null
+                && focusedSearchController.TryCompleteSearch(activeRequest);
+            PresentFocusedSearchResult("COMPLETE", changed);
         }
         else if (@event.IsActionPressed(FocusedSearchStartAction))
         {
-            _ = interactionFocusController.TryStartFocusedSearch(
+            bool changed = interactionFocusController.TryStartFocusedSearch(
                 focusedSearchContextSource.Conditions,
                 focusedSearchContextSource.Capabilities,
                 focusedSearchContextSource.Inventory);
+            PresentFocusedSearchResult("START", changed);
         }
         else if (@event.IsActionPressed(HealerToggleAction))
         {
@@ -102,6 +105,12 @@ public partial class Main : Node
                 activity => activity.Request.SearcherCharacterId
                     == focusedSearchController.SearcherCharacterId)
             ?.Request;
+    }
+
+    private void PresentFocusedSearchResult(string action, bool changed)
+    {
+        focusedSearchResultStatus.Text =
+            $"Focused search {action}: {(changed ? "CHANGED" : "UNCHANGED")}";
     }
 
     private void UpdateModeStatus(bool force)
