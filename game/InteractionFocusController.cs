@@ -1,4 +1,5 @@
 using Allrpcs.Application.Interaction;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -16,6 +17,7 @@ public partial class InteractionFocusController : Node
 
     private CharacterBody2D seeker = null!;
     private Label focusStatus = null!;
+    private FocusedSearchActivityController focusedSearchController = null!;
     private GreyboxInteractionTarget[] targets = [];
     private InteractionFocusCandidate[] candidates = [];
 
@@ -40,11 +42,32 @@ public partial class InteractionFocusController : Node
             : null;
     }
 
+    /// <summary>
+    /// Attempts to start a focused search for the current valid interaction focus.
+    /// </summary>
+    public bool TryStartFocusedSearch(
+        DiscoveryConditionSet conditions,
+        CharacterCapabilitySet capabilities,
+        CharacterInventory inventory)
+    {
+        FocusedSearchRequest? request = CreateFocusedSearchRequest(
+            focusedSearchController.SearcherCharacterId);
+
+        return request is not null
+            && focusedSearchController.TryStartSearch(
+                request,
+                conditions,
+                capabilities,
+                inventory);
+    }
+
     /// <inheritdoc />
     public override void _Ready()
     {
         seeker = GetNode<CharacterBody2D>("../Seeker");
         focusStatus = GetNode<Label>("../CommandOverlay/Panel/FocusStatus");
+        focusedSearchController = GetNode<FocusedSearchActivityController>(
+            "../Seeker/FocusedSearchActivityController");
         targets = LoadTargets(GetNode("../InteractionCandidates"));
         candidates = new InteractionFocusCandidate[targets.Length];
         RefreshFocus();
