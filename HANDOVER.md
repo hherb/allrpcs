@@ -18,9 +18,13 @@ The focused tests failed first with `CS0246` while the type was absent, then all
 the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning build, 495 Domain
 tests, 107 Application tests, six architecture tests, all six Godot smokes, and the bounded
 graphical launch. The sandboxed quality run reached its expected VSTest loopback restriction; the
-identical host-shell quality spine passed. No Godot behavior changed, so no separate manual visual
-acceptance was performed. Hosted desktop outputs remain unsigned development evidence, not
-releases.
+identical host-shell quality spine passed. The initial hosted headless job and its rerun exposed an
+existing interaction-focus smoke race by reaching the unchanged healer move assertion before the
+navigation map's first synchronization. The smoke harness now waits, with a bounded 60-frame
+failure limit, for both the authored region and map to report completed iterations before starting
+its assertions; its targeted smoke and the complete local quality spine pass. No runtime Godot
+behavior changed, so no separate manual visual acceptance was performed. Hosted desktop outputs
+remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
