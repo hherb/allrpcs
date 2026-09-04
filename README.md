@@ -43,9 +43,10 @@ move completion, invalid and excluded command rejection, separation, and cross-b
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
-starts through the mapped temporary input for both visible targets, unchanged inputs,
-failure-state identity, and activity-indicator presentation. It also proves that the temporary
-focused-search source stably authors one
+starts through the mapped temporary input for both visible targets, focus-independent cancellation
+and completion through the exact retained active requests, unchanged inputs, failure-state
+identity, and activity-indicator presentation. It also proves that the temporary focused-search
+source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
 nested instances, and forwards its exact aggregate instances through the input path. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
@@ -158,13 +159,13 @@ that navigation surface at a named 180-pixel-per-second speed only while outside
 healer stops without overlapping the Seeker and can route through the bridge after separation.
 
 The small **TEMP** panel shows the current controls and healer mode. Press F to start a focused
-search for the current valid interaction focus and C to cancel the Seeker's active focused search;
-these temporary search controls are detailed below. Press X to toggle between follow and wait.
-Press M to move the healer to the obvious pink ring; the healer uses the existing navigation
-surface, stops within a validated 12-pixel distance, then changes to wait. Press X again to resume
-follow. Off-world and obstacle-excluded destinations are rejected without changing the active
-command. These keys, the ring, and the status panel are temporary behavior-test controls, not
-final command or dialogue UX.
+search for the current valid interaction focus, C to cancel the Seeker's active search, or E to
+complete it; these temporary search controls are detailed below. Press X to toggle between follow
+and wait. Press M to move the healer to the obvious pink ring; the healer uses the existing
+navigation surface, stops within a validated 12-pixel distance, then changes to wait. Press X again
+to resume follow. Off-world and obstacle-excluded destinations are rejected without changing the
+active command. These keys, the ring, and the status panel are temporary behavior-test controls,
+not final command or dialogue UX.
 
 Two nearby temporary markers exercise interaction focus without performing an interaction. A
 bright yellow **FOCUS** ring and the top-left status identify only the nearest visible, enabled
@@ -576,7 +577,7 @@ rejects null inputs, and does not mutate either input.
 under the existing Seeker. It accepts an existing character identifier and activity snapshot,
 delegates the complete decision to the Application policy, and changes only the visibility of one
 authored cyan in-world ring. The ring is hidden by default, and ordinary play does not construct or
-inject focused-search activity.
+inject activity outside the explicit temporary lifecycle inputs described below.
 
 `Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
 immutable focused-search activity snapshot. It initializes an empty snapshot from the Seeker's one
@@ -585,8 +586,8 @@ accepts existing discovery conditions, capabilities, and inventory, delegates th
 decision to the combined Domain eligibility policy, and only then delegates state creation to the
 existing start transition. Cancellation and completion retain their existing policy and transition
 delegation. The controller replaces and presents its snapshot only after a successful operation;
-ordinary play does not construct a request or invoke those operations, so the credential-free
-focused-search and interaction-focus smokes are the only current callers.
+ordinary play reaches those operations only through the explicit temporary lifecycle inputs, and
+the credential-free focused-search and interaction-focus smokes cover the same boundaries.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -622,8 +623,14 @@ request to `FocusedSearchActivityController.TryCancelSearch`. Cancellation does 
 on the current interaction focus. A successful cancellation reaches the existing policy and
 transition, replaces the snapshot with its empty successor, and hides the activity indicator; no
 active search and repeated cancellation preserve the existing snapshot instance and presentation.
-These inputs add no automatic polling or lifecycle behavior, result or reason text, completion,
-discovery grant, or final interaction UI.
+
+The separate temporary `focused_search_complete` action maps physical E to the equivalent narrow
+`Main._UnhandledInput` path. It selects and forwards the same exact retained active request to
+`FocusedSearchActivityController.TryCompleteSearch`, without reading or depending on interaction
+focus. A successful completion reaches the existing policy and transition, replaces the snapshot
+with its empty successor, and hides the indicator; no active search and repeated completion
+preserve the existing snapshot instance and presentation. These inputs add no automatic polling or
+lifecycle behavior, result or reason text, discovery grant, or final interaction UI.
 
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
@@ -638,11 +645,11 @@ only its one authored indicator's visibility, and the temporary controller owns 
 snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
 The interaction-focus controller adds only valid-focus request/start composition, while the
 temporary context source only supplies retained greybox inputs. Ordinary greybox play invokes the
-start bridge only through the explicit physical-F action and invokes cancellation only through the
-explicit physical-C action.
+start bridge only through physical F, cancellation only through physical C, and completion only
+through physical E.
 
-Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
-healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,
+Point-and-click movement, zoom or camera-pan input, controller mappings beyond the documented
+temporary keys, interaction actions or outcomes, Phase 2 objects and perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
 persistence, credentials, signing, installers, and distribution configuration are not part of
 this greybox slice.

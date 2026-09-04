@@ -10,6 +10,7 @@ namespace Allrpcs.Game;
 public partial class Main : Node
 {
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
+    private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
     private static readonly StringName FocusedSearchStartAction = new("focused_search_start");
     private static readonly StringName HealerToggleAction = new("healer_toggle_follow_wait");
     private static readonly StringName HealerMoveAction = new("healer_move");
@@ -49,14 +50,18 @@ public partial class Main : Node
     {
         if (@event.IsActionPressed(FocusedSearchCancelAction))
         {
-            FocusedSearchRequest? activeRequest = focusedSearchController.Activities.Entries
-                .FirstOrDefault(
-                    activity => activity.Request.SearcherCharacterId
-                        == focusedSearchController.SearcherCharacterId)
-                ?.Request;
+            FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
             if (activeRequest is not null)
             {
                 _ = focusedSearchController.TryCancelSearch(activeRequest);
+            }
+        }
+        else if (@event.IsActionPressed(FocusedSearchCompleteAction))
+        {
+            FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
+            if (activeRequest is not null)
+            {
+                _ = focusedSearchController.TryCompleteSearch(activeRequest);
             }
         }
         else if (@event.IsActionPressed(FocusedSearchStartAction))
@@ -88,6 +93,15 @@ public partial class Main : Node
 
         UpdateModeStatus(force: true);
         GetViewport().SetInputAsHandled();
+    }
+
+    private FocusedSearchRequest? GetActiveFocusedSearchRequest()
+    {
+        return focusedSearchController.Activities.Entries
+            .FirstOrDefault(
+                activity => activity.Request.SearcherCharacterId
+                    == focusedSearchController.SearcherCharacterId)
+            ?.Request;
     }
 
     private void UpdateModeStatus(bool force)
