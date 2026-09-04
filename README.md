@@ -567,6 +567,12 @@ one existing resulting `VisibilityState`. It retains both supplied instances thr
 properties and compares outcomes by their values. It does not produce an outcome, apply it to
 perception, validate or advance visibility, or connect outcome data to completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeSnapshot` copies one supplied sequence of outcomes
+exactly once and exposes the exact outcome instances in stable order through a read-only list.
+Empty snapshots are valid; null values and outcomes with value-equal duplicate requests are
+rejected. The snapshot does not compare or advance resulting visibility states, produce outcomes,
+apply them to perception, or connect them to focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
