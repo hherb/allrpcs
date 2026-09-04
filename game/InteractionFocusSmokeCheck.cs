@@ -13,6 +13,8 @@ public partial class InteractionFocusSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_INTERACTION_FOCUS_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const string FocusedSearchStartAction = "focused_search_start";
+    private const string UnrelatedAction = "interaction_focus_smoke_unrelated";
     private static readonly string[] ExpectedObjectIdValues =
     [
         "herb-patch",
@@ -31,6 +33,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private FocusedSearchActivityController focusedSearchController = null!;
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private Line2D focusedSearchIndicator = null!;
+    private Main main = null!;
     private CharacterBody2D seeker = null!;
     private ObjectId[] authoredObjectIds = [];
     private DiscoveryConditionSet authoredConditions = null!;
@@ -61,9 +64,12 @@ public partial class InteractionFocusSmokeCheck : Node
             "../TemporaryFocusedSearchContextSource");
         focusedSearchIndicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
+        main = GetNode<Main>("..");
         seeker = GetNode<CharacterBody2D>("../Seeker");
 
-        if (!AssertAuthoredObjectIdentifiers() || !AssertAuthoredFocusedSearchContext())
+        if (!AssertFocusedSearchInputAction()
+            || !AssertAuthoredObjectIdentifiers()
+            || !AssertAuthoredFocusedSearchContext())
         {
             SetProcess(false);
         }
@@ -190,8 +196,9 @@ public partial class InteractionFocusSmokeCheck : Node
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
             + "stable request-identifier retention; stable capability-only and tool-only "
-            + "focused-search context authoring; both eligible starts; unchanged inputs; "
-            + "failure-state identity; and activity presentation were correct.");
+            + "focused-search context authoring; mapped input-only context forwarding; both "
+            + "eligible starts; unchanged inputs; failure-state identity; and activity "
+            + "presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -275,9 +282,10 @@ public partial class InteractionFocusSmokeCheck : Node
         }
 
         FocusedSearchActivitySnapshot expectedSnapshot = focusedSearchController.Activities;
-        if (controller.TryStartFocusedSearch(null!, null!, null!)
-            || !ReferenceEquals(focusedSearchController.Activities, expectedSnapshot)
-            || focusedSearchIndicator.Visible)
+        PressFocusedSearchStart();
+        if (!ReferenceEquals(focusedSearchController.Activities, expectedSnapshot)
+            || focusedSearchIndicator.Visible
+            || !AssertFocusedSearchContextUnchanged())
         {
             Fail(
                 $"Interaction-focus smoke failed {scenario}: the absent-focus start attempt "
@@ -310,9 +318,6 @@ public partial class InteractionFocusSmokeCheck : Node
     private bool AssertEligibleFocusedSearchStart(int expectedTargetIndex)
     {
         ObjectId targetObjectId = authoredObjectIds[expectedTargetIndex];
-        DiscoveryConditionSet conditions = focusedSearchContextSource.Conditions;
-        CharacterCapabilitySet capabilities = focusedSearchContextSource.Capabilities;
-        CharacterInventory inventory = focusedSearchContextSource.Inventory;
 
         FocusedSearchActivitySnapshot initialSnapshot = focusedSearchController.Activities;
         if (initialSnapshot.Entries.Count != 0 || focusedSearchIndicator.Visible)
@@ -321,15 +326,34 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        if (!controller.TryStartFocusedSearch(conditions, capabilities, inventory))
+        main._UnhandledInput(
+            new InputEventAction
+            {
+                Action = new StringName(FocusedSearchStartAction),
+                Pressed = false,
+            });
+        main._UnhandledInput(
+            new InputEventAction
+            {
+                Action = new StringName(UnrelatedAction),
+                Pressed = true,
+            });
+        if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
+            || focusedSearchIndicator.Visible)
         {
-            Fail("Interaction-focus smoke failed eligible focused-search start composition.");
+            Fail("Interaction-focus smoke failed input-only start gating.");
+            return false;
+        }
+
+        PressFocusedSearchStart();
+        if (ReferenceEquals(focusedSearchController.Activities, initialSnapshot))
+        {
+            Fail("Interaction-focus smoke failed eligible focused-search input start.");
             return false;
         }
 
         FocusedSearchActivitySnapshot startedSnapshot = focusedSearchController.Activities;
-        if (ReferenceEquals(startedSnapshot, initialSnapshot)
-            || startedSnapshot.Entries.Count != 1
+        if (startedSnapshot.Entries.Count != 1
             || !focusedSearchIndicator.Visible)
         {
             Fail("Interaction-focus smoke failed eligible start state and presentation.");
@@ -344,8 +368,8 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        if (controller.TryStartFocusedSearch(conditions, capabilities, inventory)
-            || !ReferenceEquals(focusedSearchController.Activities, startedSnapshot)
+        PressFocusedSearchStart();
+        if (!ReferenceEquals(focusedSearchController.Activities, startedSnapshot)
             || !focusedSearchIndicator.Visible)
         {
             Fail("Interaction-focus smoke failed already-active start state identity.");
@@ -361,6 +385,34 @@ public partial class InteractionFocusSmokeCheck : Node
         }
 
         return true;
+    }
+
+    private bool AssertFocusedSearchInputAction()
+    {
+        StringName action = new(FocusedSearchStartAction);
+        Godot.Collections.Array<InputEvent> events = InputMap.ActionGetEvents(action);
+        if (!InputMap.HasAction(action)
+            || events.Count != 1
+            || events[0] is not InputEventKey keyEvent
+            || keyEvent.PhysicalKeycode != Key.F)
+        {
+            Fail(
+                "Interaction-focus smoke failed focused-search input mapping: expected only "
+                + "physical F.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void PressFocusedSearchStart()
+    {
+        main._UnhandledInput(
+            new InputEventAction
+            {
+                Action = new StringName(FocusedSearchStartAction),
+                Pressed = true,
+            });
     }
 
     private bool AssertAuthoredFocusedSearchContext()

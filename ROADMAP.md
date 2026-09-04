@@ -284,6 +284,12 @@ stone-marker requirement, and the exact capability, tool identifier, requirement
 aggregate instances reachable through the three existing start inputs. It does not invoke the
 start bridge, poll focus, own lifecycle state, or make the greybox markers authoritative objects,
 so the broader item remains incomplete.
+Phase 2k20 then mapped physical F to one temporary ordinary-play start action. That action alone
+passes the context source's exact retained discovery conditions, capabilities, and inventory to
+the existing interaction-focus start boundary. Valid herb-patch and stone-marker focus may reach
+the existing immutable activity and indicator, while invalid focus and repeated starts preserve
+the existing snapshot. It adds no automatic start, result/status output, or further lifecycle
+input, so the broader item remains incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

@@ -43,11 +43,11 @@ move completion, invalid and excluded command rejection, separation, and cross-b
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
-start composition for both visible targets, unchanged inputs, failure-state identity, and activity-indicator
-presentation. It also proves that the temporary focused-search source stably authors one
+starts through the mapped temporary input for both visible targets, unchanged inputs,
+failure-state identity, and activity-indicator presentation. It also proves that the temporary
+focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
-nested instances, and makes both visible target contexts eligible without changing scene behavior.
-The
+nested instances, and forwards its exact aggregate instances through the input path. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -606,6 +606,13 @@ existing discovery-condition set, capability set, and inventory needed by the st
 source does not start a search, poll focus, own lifecycle state, grant discovery, or make the
 temporary markers authoritative world objects.
 
+The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
+On that pressed action only, `Main` passes the context source's exact retained condition,
+capability, and inventory aggregates to the existing interaction-focus start boundary. A valid
+herb-patch or stone-marker focus may therefore start the existing immutable activity and show its
+indicator. Clear, hidden, disabled, out-of-range, or already-active attempts preserve the existing
+snapshot. This input adds no automatic polling, start behavior, result text, or lifecycle action.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
@@ -618,8 +625,8 @@ persistence, production activity source, or final UI behavior. The temporary God
 only its one authored indicator's visibility, and the temporary controller owns only its immutable
 snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
 The interaction-focus controller adds only valid-focus request/start composition, while the
-temporary context source only supplies retained greybox inputs. Ordinary play still does not
-invoke the start bridge.
+temporary context source only supplies retained greybox inputs. Ordinary greybox play invokes the
+start bridge only through the explicit physical-F action.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

@@ -8,12 +8,15 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class Main : Node
 {
+    private static readonly StringName FocusedSearchStartAction = new("focused_search_start");
     private static readonly StringName HealerToggleAction = new("healer_toggle_follow_wait");
     private static readonly StringName HealerMoveAction = new("healer_move");
 
     private Healer healer = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
+    private InteractionFocusController interactionFocusController = null!;
+    private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -22,6 +25,10 @@ public partial class Main : Node
         healer = GetNode<Healer>("Healer");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
+        interactionFocusController = GetNode<InteractionFocusController>(
+            "InteractionFocusController");
+        focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
+            "TemporaryFocusedSearchContextSource");
         UpdateModeStatus(force: true);
     }
 
@@ -35,7 +42,14 @@ public partial class Main : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event.IsActionPressed(HealerToggleAction))
+        if (@event.IsActionPressed(FocusedSearchStartAction))
+        {
+            _ = interactionFocusController.TryStartFocusedSearch(
+                focusedSearchContextSource.Conditions,
+                focusedSearchContextSource.Capabilities,
+                focusedSearchContextSource.Inventory);
+        }
+        else if (@event.IsActionPressed(HealerToggleAction))
         {
             if (healer.CommandMode == HealerCommandMode.Follow)
             {
