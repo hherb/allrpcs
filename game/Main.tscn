@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3]
+[gd_scene load_steps=23 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://FocusedSearchActivityIndicatorSmokeCheck.cs" id="13_search_indicator_check"]
 [ext_resource type="Script" path="res://FocusedSearchActivityController.cs" id="14_search_controller"]
 [ext_resource type="Script" path="res://FocusedSearchActivityControllerSmokeCheck.cs" id="15_search_controller_check"]
+[ext_resource type="Script" path="res://TemporaryFocusedSearchContextSource.cs" id="16_search_context_source"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -298,6 +299,9 @@ default_color = Color(1, 0.827, 0.227, 1)
 
 [node name="InteractionFocusController" type="Node" parent="."]
 script = ExtResource("9_interaction_controller")
+
+[node name="TemporaryFocusedSearchContextSource" type="Node" parent="."]
+script = ExtResource("16_search_context_source")
 
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")

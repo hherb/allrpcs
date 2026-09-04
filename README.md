@@ -42,9 +42,12 @@ reject representative stream, tree, and village targets, and exercise healer fol
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
-authored object identifiers, exact focused identifier-instance retention, eligible and ineligible
-focused-search start composition, unchanged inputs, failure-state identity, and activity-indicator
-presentation. The
+authored object identifiers, exact focused identifier-instance retention, eligible focused-search
+start composition for both visible targets, unchanged inputs, failure-state identity, and activity-indicator
+presentation. It also proves that the temporary focused-search source stably authors one
+capability-only herb-patch context and one tool-only stone-marker context, retains their exact
+nested instances, and makes both visible target contexts eligible without changing scene behavior.
+The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -595,6 +598,14 @@ request plus existing `DiscoveryConditionSet`, `CharacterCapabilitySet`, and `Ch
 instances to the controller's condition-aware start path. It returns the existing start result and
 adds no eligibility, transition, input, or discovery-context authoring behavior.
 
+`Allrpcs.Game.TemporaryFocusedSearchContextSource` is the narrow scene source for those three
+aggregate start inputs. It reuses the two visible markers' exact parsed identifiers to author one
+capability-only herb-patch requirement and one tool-only stone-marker requirement, then retains the
+exact created capability, tool identifier, requirements, sets, and aggregates. It exposes only the
+existing discovery-condition set, capability set, and inventory needed by the start bridge. The
+source does not start a search, poll focus, own lifecycle state, grant discovery, or make the
+temporary markers authoritative world objects.
+
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
@@ -606,8 +617,9 @@ outcome, display text, status value, further lifecycle policy, in-place mutation
 persistence, production activity source, or final UI behavior. The temporary Godot adapter changes
 only its one authored indicator's visibility, and the temporary controller owns only its immutable
 snapshot, condition-aware start delegation, and existing cancellation and completion delegation.
-The interaction-focus controller adds only valid-focus request/start composition; ordinary play
-still does not invoke it or provide discovery conditions, capabilities, or inventory.
+The interaction-focus controller adds only valid-focus request/start composition, while the
+temporary context source only supplies retained greybox inputs. Ordinary play still does not
+invoke the start bridge.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the temporary
 healer-command keys, interaction actions or outcomes, Phase 2 objects and perception models,

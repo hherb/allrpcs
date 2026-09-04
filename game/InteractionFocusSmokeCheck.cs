@@ -29,9 +29,19 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private InteractionFocusController controller = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
+    private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private Line2D focusedSearchIndicator = null!;
     private CharacterBody2D seeker = null!;
     private ObjectId[] authoredObjectIds = [];
+    private DiscoveryConditionSet authoredConditions = null!;
+    private CharacterCapabilitySet authoredCapabilities = null!;
+    private CharacterInventory authoredInventory = null!;
+    private DiscoveryCapabilityRequirementSet authoredCapabilityRequirements = null!;
+    private DiscoveryToolRequirementSet authoredToolRequirements = null!;
+    private DiscoveryCapabilityRequirement authoredCapabilityRequirement = null!;
+    private DiscoveryToolRequirement authoredToolRequirement = null!;
+    private CharacterCapability authoredCapability = null!;
+    private ObjectId authoredToolObjectId = null!;
     private SmokeStage stage;
 
     /// <inheritdoc />
@@ -47,11 +57,13 @@ public partial class InteractionFocusSmokeCheck : Node
         controller = GetNode<InteractionFocusController>("../InteractionFocusController");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
+            "../TemporaryFocusedSearchContextSource");
         focusedSearchIndicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
         seeker = GetNode<CharacterBody2D>("../Seeker");
 
-        if (!AssertAuthoredObjectIdentifiers())
+        if (!AssertAuthoredObjectIdentifiers() || !AssertAuthoredFocusedSearchContext())
         {
             SetProcess(false);
         }
@@ -126,7 +138,7 @@ public partial class InteractionFocusSmokeCheck : Node
             return;
         }
 
-        if (!AssertIneligibleFocusedSearchStart(expectedTargetIndex: 1))
+        if (!AssertEligibleFocusedSearchStart(expectedTargetIndex: 1))
         {
             return;
         }
@@ -177,9 +189,9 @@ public partial class InteractionFocusSmokeCheck : Node
         GD.Print(
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
-            + "stable request-identifier retention; eligible and ineligible focused-search "
-            + "start composition; unchanged inputs; failure-state identity; and activity "
-            + "presentation were correct.");
+            + "stable request-identifier retention; stable capability-only and tool-only "
+            + "focused-search context authoring; both eligible starts; unchanged inputs; "
+            + "failure-state identity; and activity presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -298,19 +310,9 @@ public partial class InteractionFocusSmokeCheck : Node
     private bool AssertEligibleFocusedSearchStart(int expectedTargetIndex)
     {
         ObjectId targetObjectId = authoredObjectIds[expectedTargetIndex];
-        DiscoveryCapabilityRequirement capabilityRequirement = new(
-            targetObjectId,
-            "identify-healing-plants");
-        ObjectId toolObjectId = new("field-lens");
-        DiscoveryToolRequirement toolRequirement = new(targetObjectId, toolObjectId);
-        DiscoveryCapabilityRequirementSet capabilityRequirements = new([capabilityRequirement]);
-        DiscoveryToolRequirementSet toolRequirements = new([toolRequirement]);
-        DiscoveryConditionSet conditions = new(capabilityRequirements, toolRequirements);
-        CharacterCapability capability = new(
-            "identify-healing-plants",
-            "Identifies healing plants.");
-        CharacterCapabilitySet capabilities = new([capability]);
-        CharacterInventory inventory = new([toolObjectId]);
+        DiscoveryConditionSet conditions = focusedSearchContextSource.Conditions;
+        CharacterCapabilitySet capabilities = focusedSearchContextSource.Capabilities;
+        CharacterInventory inventory = focusedSearchContextSource.Inventory;
 
         FocusedSearchActivitySnapshot initialSnapshot = focusedSearchController.Activities;
         if (initialSnapshot.Entries.Count != 0 || focusedSearchIndicator.Visible)
@@ -337,17 +339,7 @@ public partial class InteractionFocusSmokeCheck : Node
         FocusedSearchRequest request = startedSnapshot.Entries[0].Request;
         if (!ReferenceEquals(request.SearcherCharacterId, focusedSearchController.SearcherCharacterId)
             || !ReferenceEquals(request.TargetObjectId, targetObjectId)
-            || !AssertInputsUnchanged(
-                conditions,
-                capabilityRequirements,
-                toolRequirements,
-                capabilities,
-                inventory,
-                capabilityRequirement,
-                toolRequirement,
-                capability,
-                toolObjectId,
-                "eligible start"))
+            || !AssertFocusedSearchContextUnchanged())
         {
             return false;
         }
@@ -371,72 +363,96 @@ public partial class InteractionFocusSmokeCheck : Node
         return true;
     }
 
-    private bool AssertIneligibleFocusedSearchStart(int expectedTargetIndex)
+    private bool AssertAuthoredFocusedSearchContext()
     {
-        ObjectId targetObjectId = authoredObjectIds[expectedTargetIndex];
-        DiscoveryCapabilityRequirement capabilityRequirement = new(
-            targetObjectId,
-            "read-ancient-script");
-        DiscoveryCapabilityRequirementSet capabilityRequirements = new([capabilityRequirement]);
-        DiscoveryToolRequirementSet toolRequirements = new([]);
-        DiscoveryConditionSet conditions = new(capabilityRequirements, toolRequirements);
-        CharacterCapabilitySet capabilities = new([]);
-        CharacterInventory inventory = new([]);
-        FocusedSearchActivitySnapshot expectedSnapshot = focusedSearchController.Activities;
-
-        if (controller.TryStartFocusedSearch(conditions, capabilities, inventory)
-            || !ReferenceEquals(focusedSearchController.Activities, expectedSnapshot)
-            || focusedSearchIndicator.Visible
-            || !AssertInputsUnchanged(
-                conditions,
-                capabilityRequirements,
-                toolRequirements,
-                capabilities,
-                inventory,
-                capabilityRequirement,
-                toolRequirement: null,
-                capability: null,
-                toolObjectId: null,
-                "ineligible start"))
+        authoredConditions = focusedSearchContextSource.Conditions;
+        authoredCapabilities = focusedSearchContextSource.Capabilities;
+        authoredInventory = focusedSearchContextSource.Inventory;
+        authoredCapabilityRequirements = authoredConditions.CapabilityRequirements;
+        authoredToolRequirements = authoredConditions.ToolRequirements;
+        if (authoredCapabilityRequirements.Entries.Count != 1
+            || authoredToolRequirements.Entries.Count != 1
+            || authoredCapabilities.Entries.Count != 1
+            || authoredInventory.ObjectReferences.Count != 1)
         {
+            Fail(
+                "Interaction-focus smoke failed focused-search context authoring: expected one "
+                + "capability requirement, tool requirement, capability, and inventory tool.");
+            return false;
+        }
+
+        authoredCapabilityRequirement = authoredCapabilityRequirements.Entries[0];
+        authoredToolRequirement = authoredToolRequirements.Entries[0];
+        authoredCapability = authoredCapabilities.Entries[0];
+        authoredToolObjectId = authoredInventory.ObjectReferences[0];
+
+        bool isStable = ReferenceEquals(
+                authoredCapabilityRequirement.ObjectId,
+                authoredObjectIds[0])
+            && string.Equals(
+                authoredCapabilityRequirement.RequiredCapabilityKey,
+                authoredCapability.Key,
+                StringComparison.Ordinal)
+            && string.Equals(
+                authoredCapability.Key,
+                "identify-healing-plants",
+                StringComparison.Ordinal)
+            && string.Equals(
+                authoredCapability.Description,
+                "Identifies healing plants.",
+                StringComparison.Ordinal)
+            && ReferenceEquals(authoredToolRequirement.ObjectId, authoredObjectIds[1])
+            && ReferenceEquals(
+                authoredToolRequirement.RequiredToolObjectId,
+                authoredToolObjectId)
+            && string.Equals(authoredToolObjectId.Value, "field-lens", StringComparison.Ordinal);
+        if (!isStable)
+        {
+            Fail(
+                "Interaction-focus smoke failed focused-search context authoring: target, "
+                + "capability, or tool instances were not retained exactly.");
             return false;
         }
 
         return true;
     }
 
-    private bool AssertInputsUnchanged(
-        DiscoveryConditionSet conditions,
-        DiscoveryCapabilityRequirementSet capabilityRequirements,
-        DiscoveryToolRequirementSet toolRequirements,
-        CharacterCapabilitySet capabilities,
-        CharacterInventory inventory,
-        DiscoveryCapabilityRequirement capabilityRequirement,
-        DiscoveryToolRequirement? toolRequirement,
-        CharacterCapability? capability,
-        ObjectId? toolObjectId,
-        string scenario)
+    private bool AssertFocusedSearchContextUnchanged()
     {
-        bool unchanged = ReferenceEquals(conditions.CapabilityRequirements, capabilityRequirements)
-            && ReferenceEquals(conditions.ToolRequirements, toolRequirements)
-            && SameEntries(capabilityRequirements.Entries, capabilityRequirement)
-            && SameEntries(toolRequirements.Entries, toolRequirement)
-            && SameEntries(capabilities.Entries, capability)
-            && SameEntries(inventory.ObjectReferences, toolObjectId);
-        if (!unchanged)
+        DiscoveryConditionSet conditions = focusedSearchContextSource.Conditions;
+        CharacterCapabilitySet capabilities = focusedSearchContextSource.Capabilities;
+        CharacterInventory inventory = focusedSearchContextSource.Inventory;
+
+        bool isUnchanged = ReferenceEquals(conditions, authoredConditions)
+            && ReferenceEquals(capabilities, authoredCapabilities)
+            && ReferenceEquals(inventory, authoredInventory)
+            && ReferenceEquals(
+                conditions.CapabilityRequirements,
+                authoredCapabilityRequirements)
+            && ReferenceEquals(conditions.ToolRequirements, authoredToolRequirements)
+            && conditions.CapabilityRequirements.Entries.Count == 1
+            && ReferenceEquals(
+                conditions.CapabilityRequirements.Entries[0],
+                authoredCapabilityRequirement)
+            && conditions.ToolRequirements.Entries.Count == 1
+            && ReferenceEquals(
+                conditions.ToolRequirements.Entries[0],
+                authoredToolRequirement)
+            && capabilities.Entries.Count == 1
+            && ReferenceEquals(capabilities.Entries[0], authoredCapability)
+            && inventory.ObjectReferences.Count == 1
+            && ReferenceEquals(inventory.ObjectReferences[0], authoredToolObjectId)
+            && ReferenceEquals(authoredCapabilityRequirement.ObjectId, authoredObjectIds[0])
+            && ReferenceEquals(authoredToolRequirement.ObjectId, authoredObjectIds[1])
+            && ReferenceEquals(
+                authoredToolRequirement.RequiredToolObjectId,
+                authoredToolObjectId);
+        if (!isUnchanged)
         {
-            Fail($"Interaction-focus smoke failed {scenario}: a supplied input changed.");
+            Fail("Interaction-focus smoke failed eligible start: a supplied context input changed.");
         }
 
-        return unchanged;
-    }
-
-    private static bool SameEntries<T>(IReadOnlyList<T> actual, T? expected)
-        where T : class
-    {
-        return expected is null
-            ? actual.Count == 0
-            : actual.Count == 1 && ReferenceEquals(actual[0], expected);
+        return isUnchanged;
     }
 
     private bool AssertAuthoredObjectIdentifiers()
