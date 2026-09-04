@@ -2,49 +2,49 @@
 
 ## Current state
 
-Phase 2k24 is implemented and reviewed without findings on
-`codex/phase-2k24-focused-search-outcome`, based directly on PR #71's merge commit `522e8f2`.
-Feature commit `ada32bd` is pushed, and draft PR #72
-(`https://github.com/hherb/allrpcs/pull/72`) is open. Pull-request merge remains separately
+Phase 2k25 is implemented and reviewed without findings on
+`codex/phase-2k25-focused-search-outcome-snapshot`, based directly on PR #72's merge commit
+`f401900`. Feature commit `cbe76c7` is pushed, and draft PR #73
+(`https://github.com/hherb/allrpcs/pull/73`) is open. Pull-request merge remains separately
 unauthorized.
 
-`Allrpcs.Domain.Discovery.FocusedSearchOutcome` is one sealed immutable record retaining exactly
-one supplied `FocusedSearchRequest` and one supplied existing `VisibilityState` through `Request`
-and `ResultingVisibilityState`. It rejects either null input, preserves the exact supplied
-instances, and uses record value equality. It does not validate or advance visibility, produce an
-outcome, apply one to perception, or connect one to focused-search completion.
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeSnapshot` is one sealed immutable container for a
+stable supplied sequence of existing `FocusedSearchOutcome` values. It materializes caller input
+exactly once, copies it, preserves supplied order and exact outcome instances, permits an empty
+sequence, and exposes only a get-only `IReadOnlyList<FocusedSearchOutcome>`. It rejects a null
+sequence, null entries, and entries whose requests are value-equal duplicates. It does not compare
+or advance resulting visibility states, produce outcomes, apply them to perception, or connect
+them to focused-search completion.
 
-The focused tests failed first with `CS0246` while the type was absent, then all four passed after
-the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning build, 495 Domain
-tests, 107 Application tests, six architecture tests, all six Godot smokes, and the bounded
-graphical launch. The sandboxed quality run reached its expected VSTest loopback restriction; the
-identical host-shell quality spine passed. The initial hosted headless job and its rerun exposed an
-existing interaction-focus smoke race by reaching the unchanged healer move assertion before the
-navigation map's first synchronization. The smoke harness now waits, with a bounded 60-frame
-failure limit, for both the authored region and map to report completed iterations before starting
-its assertions; its targeted smoke and the complete local quality spine pass. No runtime Godot
-behavior changed, so no separate manual visual acceptance was performed. Hosted desktop outputs
-remain unsigned development evidence, not releases.
+The focused tests failed first with `CS0246` while the snapshot type was absent, then all eight
+passed after the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning
+build, 503 Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and
+the bounded graphical launch. The sandboxed focused test run reached the known VSTest loopback
+restriction after compilation; the identical host-shell focused test and complete quality spine
+passed. No runtime Godot behavior changed, so no separate manual visual acceptance was performed.
+Hosted desktop outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k25: immutable focused-search outcome snapshot**.
+Take **Phase 2k26: focused-search outcome projection by character**.
 
 Acceptance boundary:
 
-1. Add one sealed immutable `Allrpcs.Domain.Discovery.FocusedSearchOutcomeSnapshot` containing a
-   stable supplied sequence of existing `FocusedSearchOutcome` values as an `Entries`
-   `IReadOnlyList<FocusedSearchOutcome>`.
-2. Materialize caller input exactly once, copy it, preserve supplied order and exact outcome
-   instances, permit an empty sequence, and expose no mutable collection surface.
-3. Reject a null sequence, null entries, and entries whose requests are value-equal duplicates;
-   do not compare, validate, rank, merge, or advance their resulting visibility states.
-4. Add focused Domain tests for empty and populated snapshots, exact instance/order retention,
-   one-shot enumeration, caller-mutation isolation, read-only exposure, invalid inputs, duplicate
-   requests, and the intended get-only sealed API surface.
-5. Do not produce outcomes, apply them to perception, connect them to completion, or alter the
-   existing focused-search controller, temporary inputs, activity ring, or result label.
-6. Document Phase 2k25 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+1. Add one pure static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeProjection.ForCharacter`
+   operation accepting an existing `CharacterId` and `FocusedSearchOutcomeSnapshot` and returning
+   a new `FocusedSearchOutcomeSnapshot`.
+2. Include exactly the outcomes whose request has a value-equal `SearcherCharacterId`; preserve
+   their existing instances and stable relative order, permit no matches and multiple matches,
+   and ignore unrelated outcomes.
+3. Reject either null input and leave the supplied identifier, snapshot, requests, outcomes, and
+   visibility-state instances unchanged.
+4. Add focused Domain tests for empty and unrelated inputs, value-equal identifier matching,
+   multiple stable matches around unrelated entries, exact instance retention, unchanged inputs,
+   null rejection, and the intended single-operation pure static API surface.
+5. Do not produce outcomes, apply them to perception, connect them to completion, compare or
+   advance visibility states, or alter the existing focused-search controller, temporary inputs,
+   activity ring, or result label.
+6. Document Phase 2k26 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
