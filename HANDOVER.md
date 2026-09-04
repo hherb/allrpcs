@@ -4,6 +4,9 @@
 
 Phase 2k24 is implemented and reviewed without findings on
 `codex/phase-2k24-focused-search-outcome`, based directly on PR #71's merge commit `522e8f2`.
+Feature commit `ada32bd` is pushed, and draft PR #72
+(`https://github.com/hherb/allrpcs/pull/72`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcome` is one sealed immutable record retaining exactly
 one supplied `FocusedSearchRequest` and one supplied existing `VisibilityState` through `Request`
