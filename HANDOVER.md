@@ -4,7 +4,9 @@
 
 Phase 2k25 is implemented and reviewed without findings on
 `codex/phase-2k25-focused-search-outcome-snapshot`, based directly on PR #72's merge commit
-`f401900`.
+`f401900`. Feature commit `cbe76c7` is pushed, and draft PR #73
+(`https://github.com/hherb/allrpcs/pull/73`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeSnapshot` is one sealed immutable container for a
 stable supplied sequence of existing `FocusedSearchOutcome` values. It materializes caller input
