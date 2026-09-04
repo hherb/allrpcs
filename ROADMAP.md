@@ -166,138 +166,25 @@ Acceptance:
 
 ## Phase 2 — Authoritative world and discovery
 
-Phase 2a introduced engine-independent, opaque typed identifiers with a shared canonical-text
-contract on 2026-08-31. Phase 2b added the closed set of human, LLM, deterministic-test, and
-dormant controller-type primitives with stable canonical text on the same date. Phase 2c1 then
-introduced immutable character identity plus structurally distinct public and private authored
-background values. Phase 2c2 added structurally distinct capability and limitation values plus
-ordered, duplicate-free collections with explicit empty-set behavior on 2026-09-01. Phase 2c3
-added the immutable association between a stable character identifier and one existing
-closed controller type on 2026-09-01. Phase 2c4 added qualitative authored conditions and an
-ordered, duplicate-free collection with explicit empty-set behavior on the same date. Phase 2c5
-added an ordered, copied, duplicate-free collection of existing object identifiers representing
-the character's current inventory references on the same date. Phase 2c6 added the equivalent
-ordered, copied, duplicate-free boundary for existing knowledge identifiers. Phase 2c7 added
-authored beliefs plus an ordered, copied, duplicate-free collection on 2026-09-01. Phase 2c8
-added authored relationship summaries plus an ordered, copied collection with distinct related
-character identifiers on the same date. Phase 2c9 added authored goals plus an ordered, copied,
-duplicate-free collection on the same date. Phase 2c10 composed every listed value into one
-immutable character aggregate and completed the structural character-model item on the same
-date. Phase 2d1 then added structurally separate immutable location identity and description
-values, and Phase 2d2 composed them into an immutable location aggregate while leaving the broader
-location, object, item, and environmental-state item incomplete. Phase 2e1 then added structurally
-separate immutable world-object identity and description values, and Phase 2e2 composed them into
-an immutable world-object aggregate. Phase 2f1 then classified an existing immutable world object
-as an item. Phase 2g1 then added an immutable qualitative environmental-state value while leaving
-the broader combined model item incomplete. Phase 2g2 then added its immutable ordered,
-duplicate-free collection and completed the structural location, object, item, and
-environmental-state model item on 2026-09-02. No relationship or goal mechanics, spatial
-mechanics, truth classification, evidence, confidence, provenance, item properties or mechanics,
-environmental-state assignment or simulation, mutable entity state, scenario content,
-serialization framework, persistence, or engine integration was added. Phase 2h1 then added the
-closed canonical visibility states in stable roadmap order on 2026-09-02, without assigning them
-or adding perception mechanics. Phase 2h2 then associated one existing world-object identifier
-with one existing visibility state, without assigning that association to a character or adding a
-snapshot collection. Phase 2h3 then added an immutable ordered per-character perception snapshot,
-without filtered views, character-aggregate integration, or perception mechanics. Phase 2i1 then
-added one immutable object-to-owner association while leaving ownership collections, capacity,
-and inventory actions incomplete. Phase 2i2 then added the ordered, copied,
-duplicate-object-free ownership snapshot. Phase 2i3 then added an immutable non-negative
-per-character inventory capacity. Phase 2i4 then added the ordered, copied,
-duplicate-character-free capacity snapshot. Phase 2i5 then added the pure fail-closed decision
-for whether one character may own one additional distinct object. Phase 2i6 then added pure
-one-object take eligibility. Phase 2i7 then added pure one-object drop eligibility. Phase 2i8 then
-added pure one-object give eligibility. Phase 2i9 then added pure one-object use eligibility and
-completed the inventory ownership, capacity, and action-validation checklist item while leaving
-action and transfer execution out of scope. Phase 2j1 then added one immutable target-object to
-required-character-capability-key discovery requirement while leaving requirement evaluation,
-tool requirements, collections, and the broader discovery-conditions checklist item incomplete.
-Phase 2j2 then added one immutable target-object to required-tool-object discovery requirement
-while leaving requirement evaluation, collections, and the broader discovery-conditions
-checklist item incomplete. Phase 2j3 then added pure fail-closed capability-requirement evaluation
-against an existing character capability set. Phase 2j4 then added pure fail-closed
-tool-requirement evaluation against an existing character inventory while leaving requirement
-collections and the broader discovery-conditions checklist item incomplete. Phase 2j5 then added
-the ordered, copied, duplicate-target-free capability-requirement set while leaving the
-tool-requirement collection and the broader discovery-conditions checklist item incomplete.
-Phase 2j6 then added the equivalent ordered, copied, duplicate-target-free tool-requirement set
-while leaving combined discovery conditions and the broader discovery-conditions checklist item
-incomplete. Phase 2j7 then composed both existing requirement sets into one immutable aggregate,
-while deliberately leaving Boolean combination and evaluation semantics and the broader
-discovery-conditions checklist item incomplete. Phase 2j8 then added a pure, fail-closed one-target
-combined decision: a sole authored requirement delegates to its existing policy, while capability
-and tool requirements authored together must both pass. This completed the capability- and
-tool-dependent discovery-conditions checklist item without granting discovery or changing world
-state. Phase 2k1 then added the immutable identifier-only request for one character to focus a
-search on one existing object, while deliberately leaving search execution and visible character
-activity incomplete. Phase 2k2 then added the immutable value denoting one active focused-search
-request, without lifecycle transitions, search execution, or visible presentation. Phase 2k3 then
-added an immutable ordered activity snapshot that rejects duplicate requests while deliberately
-leaving the one-active-search-per-character rule and all search lifecycle policy unresolved.
-Phase 2k4 then added the pure one-active-search-per-character start-eligibility decision while
-permitting different characters to search the same target and leaving search start and all
-lifecycle transitions unresolved. Phase 2k5 then added the pure start transition that delegates
-eligibility, retains the existing snapshot order and instances, and appends one activity retaining
-the exact eligible request without mutation. Phase 2k6 then added the pure cancellation-eligibility
-decision that matches the complete active request by value without mutation. Phase 2k7 then added
-the pure cancellation transition that delegates eligibility, removes the complete value-equal
-request, and retains all nonmatching activity instances in stable order without mutation. Phase
-2k8 then added the separate pure completion-eligibility decision that matches the complete active
-request by value without mutation. Phase 2k9 then added the pure completion transition that
-delegates eligibility, removes the complete value-equal request, and retains all nonmatching
-activity instances in stable order without mutation. Phase 2k10 then added the pure per-character
-activity projection, retaining all matching existing activity instances in stable order while
-tolerating no matches and multiple distinct requests for one character. Phase 2k11 then added the
-pure Application-layer activity-indicator decision, delegating character selection to the existing
-projection and reporting only whether the projected snapshot contains any activity. Search
-progress and outcomes remain unresolved. Phase 2k12 then added the temporary Godot presentation
-adapter and one hidden-by-default in-world indicator under the existing Seeker. The adapter changes
-only that indicator's visibility by delegating to the existing Application policy. Phase 2k13 then
-added the temporary Godot state controller as the sole live owner of an immutable activity snapshot
-for the existing Seeker. It initializes empty from one authored Seeker identifier, rejects requests
-for other characters, delegates eligible start, cancellation, and completion changes to the
-existing Domain transitions, and presents only successful state changes through the existing
-adapter. Ordinary play still does not construct a request or invoke a lifecycle operation, so the
-broader item remains incomplete. Phase 2k14 then added the pure combined eligibility decision,
-delegating both the existing one-active-search-per-character rule and the existing target discovery
-conditions without changing lifecycle state or world state. The broader item remains incomplete.
-Phase 2k15 then made the existing Godot controller's start path condition-aware: after rejecting a
-request for another character, it delegates the complete start decision to the combined eligibility
-policy and only eligible requests reach the existing transition and presentation. Cancellation,
-completion, the scene, and ordinary play remain unchanged, so the broader item remains incomplete.
-Phase 2k16 then gave each existing greybox interaction target one authored canonical object
-identifier and exposed the exact retained identifier instance only for the current valid focus.
-It does not construct a focused-search request, invoke a lifecycle operation, or change focus
-selection or presentation behavior, so the broader item remains incomplete.
-Phase 2k17 then added a request-construction boundary to the existing focus controller. It returns
-a new focused-search request retaining the exact supplied Seeker identifier and currently focused
-object identifier only while focus is valid. It does not invoke a lifecycle operation or change
-focus selection or presentation behavior, so the broader item remains incomplete.
-Phase 2k18 then added a start-attempt boundary to the same controller. It supplies the existing
-activity controller's exact Seeker identifier to that request factory and, only for valid focus,
-forwards the request plus existing discovery conditions, capabilities, and inventory to the
-condition-aware start path. It adds no ordinary input or discovery-context authoring, so the
-broader item remains incomplete.
-Phase 2k19 then added one temporary Godot-layer source for the existing greybox Seeker and two
-visible interaction targets. It retains one capability-only herb-patch requirement, one tool-only
-stone-marker requirement, and the exact capability, tool identifier, requirement, set, and
-aggregate instances reachable through the three existing start inputs. It does not invoke the
-start bridge, poll focus, own lifecycle state, or make the greybox markers authoritative objects,
-so the broader item remains incomplete.
-Phase 2k20 then mapped physical F to one temporary ordinary-play start action. That action alone
-passes the context source's exact retained discovery conditions, capabilities, and inventory to
-the existing interaction-focus start boundary. Valid herb-patch and stone-marker focus may reach
-the existing immutable activity and indicator, while invalid focus and repeated starts preserve
-the existing snapshot. It adds no automatic start, result/status output, or further lifecycle
-input, so the broader item remains incomplete.
-Phase 2k21 then mapped physical C to one separate temporary ordinary-play cancellation action. That
-action alone selects the Seeker's active activity from the controller's current immutable snapshot
-and forwards its exact retained request to the existing cancellation path, independent of current
-interaction focus. Successful cancellation replaces the snapshot with its empty successor and
-hides the indicator; no active search and repeated cancellation preserve the existing snapshot.
-It adds no automatic lifecycle behavior, completion input, result/status output, or final
-interaction UI, so the broader item remains incomplete.
-See `HANDOVER.md` for exact validation and test evidence.
+Phases 2a–2j established the checked engine-independent identifiers, structural world and
+character models, perception snapshots, inventory policies, and capability/tool discovery
+conditions below. These contracts are immutable, ordered where authored order matters, and
+fail closed; they do not grant discovery, mutate world state, persist data, or integrate
+providers.
+
+Phases 2k1–2k19 established focused-search requests, immutable activity snapshots, pure
+start/cancel/complete policies and transitions, the condition-aware Seeker controller, visible
+activity indicator, stable focus/request bridge, and exact retained greybox condition inputs.
+Phases 2k20–2k22 map only physical F, C, and E to temporary start, cancellation, and completion
+paths. Cancellation and completion forward the exact active request independently of focus;
+successful operations replace the immutable snapshot and update the indicator, while rejected
+or repeated operations preserve state.
+
+The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
+outcome, discovery effect, result/reason presentation, or final interaction UI. Phase 2k23 is the
+next bounded slice: present whether each existing explicit lifecycle input changed state using
+only its existing Boolean result, without adding reason values or discovery behavior. See
+`HANDOVER.md` for its exact acceptance boundary and current validation evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
