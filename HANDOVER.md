@@ -2,49 +2,49 @@
 
 ## Current state
 
-Phase 2k25 is implemented and reviewed without findings on
-`codex/phase-2k25-focused-search-outcome-snapshot`, based directly on PR #72's merge commit
-`f401900`. Feature commit `cbe76c7` is pushed, and draft PR #73
-(`https://github.com/hherb/allrpcs/pull/73`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k26 is implemented and reviewed without findings on
+`codex/phase-2k26-focused-search-outcome-projection`, based directly on PR #73's merge commit
+`a9d2439`.
 
-`Allrpcs.Domain.Discovery.FocusedSearchOutcomeSnapshot` is one sealed immutable container for a
-stable supplied sequence of existing `FocusedSearchOutcome` values. It materializes caller input
-exactly once, copies it, preserves supplied order and exact outcome instances, permits an empty
-sequence, and exposes only a get-only `IReadOnlyList<FocusedSearchOutcome>`. It rejects a null
-sequence, null entries, and entries whose requests are value-equal duplicates. It does not compare
-or advance resulting visibility states, produce outcomes, apply them to perception, or connect
-them to focused-search completion.
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeProjection.ForCharacter` is one pure static
+operation that accepts an existing `CharacterId` and `FocusedSearchOutcomeSnapshot` and returns a
+new snapshot containing exactly the outcomes whose requests have a value-equal searcher character
+identifier. It preserves exact outcome, request, and resulting-visibility-state instances in
+stable relative order, permits empty and multiple-match results, ignores unrelated outcomes,
+rejects null inputs, and leaves every input unchanged. It does not produce or apply outcomes,
+compare or advance visibility states, change perception, or connect outcomes to completion.
 
-The focused tests failed first with `CS0246` while the snapshot type was absent, then all eight
-passed after the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning
-build, 503 Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and
-the bounded graphical launch. The sandboxed focused test run reached the known VSTest loopback
-restriction after compilation; the identical host-shell focused test and complete quality spine
+The focused tests failed first with `CS0103`/`CS0246` while the projection type was absent, then
+all seven passed after the implementation. Host-shell `./scripts/quality.sh` passed with a
+zero-warning build, 510 Domain tests, 107 Application tests, six architecture tests, all six Godot
+smokes, and the bounded graphical launch. The sandboxed focused rerun compiled but stalled at the
+known VSTest loopback restriction; the identical host-shell focused test and complete quality spine
 passed. No runtime Godot behavior changed, so no separate manual visual acceptance was performed.
 Hosted desktop outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k26: focused-search outcome projection by character**.
+Take **Phase 2k27: exact-request focused-search outcome lookup**.
 
 Acceptance boundary:
 
-1. Add one pure static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeProjection.ForCharacter`
-   operation accepting an existing `CharacterId` and `FocusedSearchOutcomeSnapshot` and returning
-   a new `FocusedSearchOutcomeSnapshot`.
-2. Include exactly the outcomes whose request has a value-equal `SearcherCharacterId`; preserve
-   their existing instances and stable relative order, permit no matches and multiple matches,
-   and ignore unrelated outcomes.
-3. Reject either null input and leave the supplied identifier, snapshot, requests, outcomes, and
-   visibility-state instances unchanged.
-4. Add focused Domain tests for empty and unrelated inputs, value-equal identifier matching,
-   multiple stable matches around unrelated entries, exact instance retention, unchanged inputs,
-   null rejection, and the intended single-operation pure static API surface.
+1. Add one pure static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeLookup.FindByRequest`
+   operation accepting an existing `FocusedSearchRequest` and `FocusedSearchOutcomeSnapshot` and
+   returning the exact matching `FocusedSearchOutcome`, or `null` when none exists.
+2. Match the complete request by value, including both searcher character and target object;
+   reject same-searcher/different-target and different-searcher/same-target outcomes, and ignore
+   unrelated outcomes.
+3. Preserve the exact retained outcome, request, identifier, target, and visibility-state
+   instances; reject either null input and leave every input unchanged. Rely on the snapshot's
+   duplicate-request invariant rather than adding ambiguity handling or a new collection.
+4. Add focused Domain tests for empty and unrelated snapshots, a value-equal distinct request,
+   both partial mismatch cases, an exact match among surrounding unrelated entries, exact instance
+   retention, unchanged inputs, null rejection, and the intended single-operation pure static API
+   surface.
 5. Do not produce outcomes, apply them to perception, connect them to completion, compare or
    advance visibility states, or alter the existing focused-search controller, temporary inputs,
    activity ring, or result label.
-6. Document Phase 2k26 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+6. Document Phase 2k27 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
