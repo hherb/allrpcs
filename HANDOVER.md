@@ -4,7 +4,9 @@
 
 Phase 2k21 is implemented and reviewed without findings on
 `codex/phase-2k21-focused-search-cancellation-input`, based directly on the PR #68 merge at
-`8db417d`. Feature commit `40ba111` adds only the bounded cancellation input slice.
+`8db417d`. Feature commit `40ba111` is pushed, and draft PR #69
+(`https://github.com/hherb/allrpcs/pull/69`) is open. Pull-request merge remains separately
+unauthorized.
 
 Physical C now maps to the sole temporary `focused_search_cancel` action. On that pressed action
 only, `Main._UnhandledInput` selects the Seeker's active activity from
