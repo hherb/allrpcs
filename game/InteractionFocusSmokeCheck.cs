@@ -13,6 +13,7 @@ public partial class InteractionFocusSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_INTERACTION_FOCUS_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const string FocusedSearchCancelAction = "focused_search_cancel";
     private const string FocusedSearchStartAction = "focused_search_start";
     private const string UnrelatedAction = "interaction_focus_smoke_unrelated";
     private static readonly string[] ExpectedObjectIdValues =
@@ -67,7 +68,7 @@ public partial class InteractionFocusSmokeCheck : Node
         main = GetNode<Main>("..");
         seeker = GetNode<CharacterBody2D>("../Seeker");
 
-        if (!AssertFocusedSearchInputAction()
+        if (!AssertFocusedSearchInputActions()
             || !AssertAuthoredObjectIdentifiers()
             || !AssertAuthoredFocusedSearchContext())
         {
@@ -196,8 +197,9 @@ public partial class InteractionFocusSmokeCheck : Node
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
             + "stable request-identifier retention; stable capability-only and tool-only "
-            + "focused-search context authoring; mapped input-only context forwarding; both "
-            + "eligible starts; unchanged inputs; failure-state identity; and activity "
+            + "focused-search context authoring; mapped start and cancellation inputs; exact "
+            + "retained active requests; both eligible starts and focus-independent "
+            + "cancellations; unchanged inputs; failure-state identity; and activity "
             + "presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
@@ -329,6 +331,12 @@ public partial class InteractionFocusSmokeCheck : Node
         main._UnhandledInput(
             new InputEventAction
             {
+                Action = new StringName(FocusedSearchCancelAction),
+                Pressed = false,
+            });
+        main._UnhandledInput(
+            new InputEventAction
+            {
                 Action = new StringName(FocusedSearchStartAction),
                 Pressed = false,
             });
@@ -342,6 +350,14 @@ public partial class InteractionFocusSmokeCheck : Node
             || focusedSearchIndicator.Visible)
         {
             Fail("Interaction-focus smoke failed input-only start gating.");
+            return false;
+        }
+
+        PressFocusedSearchCancel();
+        if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
+            || focusedSearchIndicator.Visible)
+        {
+            Fail("Interaction-focus smoke failed no-active-search cancellation identity.");
             return false;
         }
 
@@ -376,33 +392,71 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        if (!focusedSearchController.TryCancelSearch(request)
-            || focusedSearchController.Activities.Entries.Count != 0
+        Vector2 focusedPosition = seeker.GlobalPosition;
+        seeker.GlobalPosition = OutOfRangePosition;
+        controller.RefreshFocus();
+        if (controller.FocusedTargetIndex is not null)
+        {
+            Fail("Interaction-focus smoke failed cancellation focus-independence setup.");
+            return false;
+        }
+
+        PressFocusedSearchCancel();
+        FocusedSearchActivitySnapshot cancelledSnapshot = focusedSearchController.Activities;
+        if (ReferenceEquals(cancelledSnapshot, startedSnapshot)
+            || cancelledSnapshot.Entries.Count != 0
             || focusedSearchIndicator.Visible)
         {
-            Fail("Interaction-focus smoke failed eligible start cleanup.");
+            Fail("Interaction-focus smoke failed focused-search input cancellation.");
+            return false;
+        }
+
+        PressFocusedSearchCancel();
+        if (!ReferenceEquals(focusedSearchController.Activities, cancelledSnapshot)
+            || focusedSearchIndicator.Visible)
+        {
+            Fail("Interaction-focus smoke failed repeated cancellation identity.");
+            return false;
+        }
+
+        seeker.GlobalPosition = focusedPosition;
+        controller.RefreshFocus();
+
+        return true;
+    }
+
+    private bool AssertFocusedSearchInputActions()
+    {
+        if (!HasOnlyPhysicalKey(FocusedSearchStartAction, Key.F)
+            || !HasOnlyPhysicalKey(FocusedSearchCancelAction, Key.C))
+        {
+            Fail(
+                "Interaction-focus smoke failed focused-search input mappings: expected only "
+                + "physical F for start and physical C for cancellation.");
             return false;
         }
 
         return true;
     }
 
-    private bool AssertFocusedSearchInputAction()
+    private static bool HasOnlyPhysicalKey(string actionName, Key expectedKey)
     {
-        StringName action = new(FocusedSearchStartAction);
+        StringName action = new(actionName);
         Godot.Collections.Array<InputEvent> events = InputMap.ActionGetEvents(action);
-        if (!InputMap.HasAction(action)
-            || events.Count != 1
-            || events[0] is not InputEventKey keyEvent
-            || keyEvent.PhysicalKeycode != Key.F)
-        {
-            Fail(
-                "Interaction-focus smoke failed focused-search input mapping: expected only "
-                + "physical F.");
-            return false;
-        }
+        return InputMap.HasAction(action)
+            && events.Count == 1
+            && events[0] is InputEventKey keyEvent
+            && keyEvent.PhysicalKeycode == expectedKey;
+    }
 
-        return true;
+    private void PressFocusedSearchCancel()
+    {
+        main._UnhandledInput(
+            new InputEventAction
+            {
+                Action = new StringName(FocusedSearchCancelAction),
+                Pressed = true,
+            });
     }
 
     private void PressFocusedSearchStart()

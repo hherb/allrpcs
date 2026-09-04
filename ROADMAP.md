@@ -290,6 +290,13 @@ the existing interaction-focus start boundary. Valid herb-patch and stone-marker
 the existing immutable activity and indicator, while invalid focus and repeated starts preserve
 the existing snapshot. It adds no automatic start, result/status output, or further lifecycle
 input, so the broader item remains incomplete.
+Phase 2k21 then mapped physical C to one separate temporary ordinary-play cancellation action. That
+action alone selects the Seeker's active activity from the controller's current immutable snapshot
+and forwards its exact retained request to the existing cancellation path, independent of current
+interaction focus. Successful cancellation replaces the snapshot with its empty successor and
+hides the indicator; no active search and repeated cancellation preserve the existing snapshot.
+It adds no automatic lifecycle behavior, completion input, result/status output, or final
+interaction UI, so the broader item remains incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

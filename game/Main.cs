@@ -1,4 +1,5 @@
 using Allrpcs.Application.Movement;
+using Allrpcs.Domain.Discovery;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -8,6 +9,7 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class Main : Node
 {
+    private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchStartAction = new("focused_search_start");
     private static readonly StringName HealerToggleAction = new("healer_toggle_follow_wait");
     private static readonly StringName HealerMoveAction = new("healer_move");
@@ -15,6 +17,7 @@ public partial class Main : Node
     private Healer healer = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
+    private FocusedSearchActivityController focusedSearchController = null!;
     private InteractionFocusController interactionFocusController = null!;
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private HealerCommandMode displayedMode;
@@ -25,6 +28,8 @@ public partial class Main : Node
         healer = GetNode<Healer>("Healer");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
+        focusedSearchController = GetNode<FocusedSearchActivityController>(
+            "Seeker/FocusedSearchActivityController");
         interactionFocusController = GetNode<InteractionFocusController>(
             "InteractionFocusController");
         focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
@@ -42,7 +47,19 @@ public partial class Main : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event.IsActionPressed(FocusedSearchStartAction))
+        if (@event.IsActionPressed(FocusedSearchCancelAction))
+        {
+            FocusedSearchRequest? activeRequest = focusedSearchController.Activities.Entries
+                .FirstOrDefault(
+                    activity => activity.Request.SearcherCharacterId
+                        == focusedSearchController.SearcherCharacterId)
+                ?.Request;
+            if (activeRequest is not null)
+            {
+                _ = focusedSearchController.TryCancelSearch(activeRequest);
+            }
+        }
+        else if (@event.IsActionPressed(FocusedSearchStartAction))
         {
             _ = interactionFocusController.TryStartFocusedSearch(
                 focusedSearchContextSource.Conditions,
