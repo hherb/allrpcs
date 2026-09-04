@@ -278,6 +278,12 @@ activity controller's exact Seeker identifier to that request factory and, only 
 forwards the request plus existing discovery conditions, capabilities, and inventory to the
 condition-aware start path. It adds no ordinary input or discovery-context authoring, so the
 broader item remains incomplete.
+Phase 2k19 then added one temporary Godot-layer source for the existing greybox Seeker and two
+visible interaction targets. It retains one capability-only herb-patch requirement, one tool-only
+stone-marker requirement, and the exact capability, tool identifier, requirement, set, and
+aggregate instances reachable through the three existing start inputs. It does not invoke the
+start bridge, poll focus, own lifecycle state, or make the greybox markers authoritative objects,
+so the broader item remains incomplete.
 See `HANDOVER.md` for exact validation and test evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
