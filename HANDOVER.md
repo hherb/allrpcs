@@ -4,7 +4,9 @@
 
 Phase 2k41 is implemented and reviewed without findings on
 `codex/phase-2k41-completion-with-outcome-transition`, based directly on PR #88's verified merge
-commit `cb38cd8`.
+commit `cb38cd8`. Slice commit `f6f5984` is pushed, and draft PR #89
+(`https://github.com/hherb/allrpcs/pull/89`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionTransition.CompleteWithOutcome` is one
 pure static operation accepting an existing `FocusedSearchOutcome`,
