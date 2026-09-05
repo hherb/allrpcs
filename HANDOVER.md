@@ -4,7 +4,9 @@
 
 Phase 2k36 is implemented and reviewed without findings on
 `codex/phase-2k36-outcome-resolution-transition`, based directly on PR #83's verified merge
-commit `2ba022b1`. Pull-request merge remains separately unauthorized.
+commit `2ba022b1`. Slice commit `4a11e20` is pushed, and draft PR #84
+(`https://github.com/hherb/allrpcs/pull/84`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionTransition.Resolve` is one pure static
 operation accepting an existing `FocusedSearchOutcome`, `CharacterPerceptionSnapshot`, and
