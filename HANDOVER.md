@@ -4,7 +4,9 @@
 
 Phase 2k39 is implemented and reviewed without findings on
 `codex/phase-2k39-completion-outcome-eligibility`, based directly on PR #86's verified merge
-commit `8047478`.
+commit `8047478`. Slice commit `296e764` is pushed, and draft PR #87
+(`https://github.com/hherb/allrpcs/pull/87`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionPolicy.CanCompleteWithOutcome` is one
 pure static operation accepting an existing outcome, activity snapshot, and outcome snapshot. It
