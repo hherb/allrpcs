@@ -52,6 +52,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private FocusedSearchActivityController focusedSearchController = null!;
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private Line2D focusedSearchIndicator = null!;
+    private TemporaryResolvedPerceptionIndicator[] resolvedPerceptionIndicators = [];
     private Label focusedSearchResultStatus = null!;
     private Label instructions = null!;
     private Healer healer = null!;
@@ -88,6 +89,13 @@ public partial class InteractionFocusSmokeCheck : Node
             "../TemporaryFocusedSearchContextSource");
         focusedSearchIndicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
+        resolvedPerceptionIndicators =
+        [
+            GetNode<TemporaryResolvedPerceptionIndicator>(
+                "../InteractionCandidates/HerbPatch/TemporaryResolvedPerceptionIndicator"),
+            GetNode<TemporaryResolvedPerceptionIndicator>(
+                "../InteractionCandidates/StoneMarker/TemporaryResolvedPerceptionIndicator"),
+        ];
         focusedSearchResultStatus = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
         instructions = GetNode<Label>("../CommandOverlay/Panel/Instructions");
         healer = GetNode<Healer>("../Healer");
@@ -159,6 +167,11 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private void CheckRepresentativeSelection()
     {
+        if (!AssertResolvedPerceptionPresentationContract())
+        {
+            return;
+        }
+
         seeker.GlobalPosition = FirstTargetPosition;
         controller.RefreshFocus();
         if (!AssertOnlyTargetFocused(expectedIndex: 0, "representative nearest selection"))
@@ -251,9 +264,10 @@ public partial class InteractionFocusSmokeCheck : Node
             + "resolution inputs; exact temporary control text; exact retained active requests; "
             + "both eligible starts and focus-independent cancellations and outcome-aware "
             + "completions; exact outcome "
-            + "recording and resolution; target-only perception replacement; exact unrelated "
-            + "entry retention; unchanged inputs; failure-state identity; activity presentation; "
-            + "and initial, changed, and unchanged lifecycle-result presentation were correct.");
+            + "recording and resolution; target-only perception replacement and identified-target "
+            + "presentation; exact unrelated entry retention; unchanged inputs; failure-state "
+            + "identity; activity presentation; and initial, changed, and unchanged lifecycle-result "
+            + "presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -387,6 +401,13 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
+        if (!AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "eligible start setup"))
+        {
+            return false;
+        }
+
         string expectedUnchangedResultText = focusedSearchResultStatus.Text;
         main._UnhandledInput(
             new InputEventAction
@@ -422,6 +443,9 @@ public partial class InteractionFocusSmokeCheck : Node
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !ReferenceEquals(focusedSearchController.Perception, initialPerception)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "released and unrelated input preservation")
             || !AssertFocusedSearchResult(
                 expectedUnchangedResultText,
                 "released and unrelated input preservation")
@@ -439,6 +463,9 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "no-active cancellation")
             || !AssertFocusedSearchResult(CancelUnchangedText, "no-active cancellation"))
         {
             Fail("Interaction-focus smoke failed no-active-search cancellation identity.");
@@ -449,6 +476,9 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "no-active completion")
             || !AssertFocusedSearchResult(CompleteUnchangedText, "no-active completion"))
         {
             Fail("Interaction-focus smoke failed no-active-search completion identity.");
@@ -460,6 +490,9 @@ public partial class InteractionFocusSmokeCheck : Node
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !ReferenceEquals(focusedSearchController.Perception, initialPerception)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "no-outcome resolution")
             || !AssertFocusedSearchResult(ResolveUnchangedText, "no-outcome resolution"))
         {
             Fail("Interaction-focus smoke failed no-outcome resolution identity.");
@@ -477,6 +510,9 @@ public partial class InteractionFocusSmokeCheck : Node
         if (startedSnapshot.Entries.Count != 1
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "eligible start")
             || !AssertFocusedSearchResult(StartChangedText, "eligible start"))
         {
             Fail("Interaction-focus smoke failed eligible start state and presentation.");
@@ -495,6 +531,9 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!ReferenceEquals(focusedSearchController.Activities, startedSnapshot)
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "already-active start")
             || !AssertFocusedSearchResult(StartUnchangedText, "already-active start"))
         {
             Fail("Interaction-focus smoke failed already-active start state identity.");
@@ -516,6 +555,9 @@ public partial class InteractionFocusSmokeCheck : Node
             || cancelledSnapshot.Entries.Count != 0
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "successful cancellation")
             || !AssertFocusedSearchResult(CancelChangedText, "successful cancellation"))
         {
             Fail("Interaction-focus smoke failed focused-search input cancellation.");
@@ -526,6 +568,9 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!ReferenceEquals(focusedSearchController.Activities, cancelledSnapshot)
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "repeated cancellation")
             || !AssertFocusedSearchResult(CancelUnchangedText, "repeated cancellation"))
         {
             Fail("Interaction-focus smoke failed repeated cancellation identity.");
@@ -542,6 +587,9 @@ public partial class InteractionFocusSmokeCheck : Node
             || completionStartedSnapshot.Entries.Count != 1
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "completion setup start")
             || !AssertFocusedSearchResult(StartChangedText, "completion setup start"))
         {
             Fail("Interaction-focus smoke failed completion setup start.");
@@ -578,6 +626,9 @@ public partial class InteractionFocusSmokeCheck : Node
             || completedSnapshot.Entries.Count != 0
             || !AssertCompletedOutcome(initialOutcomes, completedOutcomes, completionRequest)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "successful completion")
             || !AssertFocusedSearchResult(CompleteChangedText, "successful completion"))
         {
             Fail("Interaction-focus smoke failed focused-search input completion.");
@@ -588,6 +639,9 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!ReferenceEquals(focusedSearchController.Activities, completedSnapshot)
             || !ReferenceEquals(focusedSearchController.Outcomes, completedOutcomes)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex,
+                "repeated completion")
             || !AssertFocusedSearchResult(CompleteUnchangedText, "repeated completion"))
         {
             Fail("Interaction-focus smoke failed repeated completion identity.");
@@ -610,6 +664,9 @@ public partial class InteractionFocusSmokeCheck : Node
                 resolvedPerception,
                 targetObjectId)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex + 1,
+                "successful resolution")
             || !AssertFocusedSearchResult(ResolveChangedText, "successful resolution"))
         {
             Fail("Interaction-focus smoke failed focused-search input resolution.");
@@ -631,6 +688,9 @@ public partial class InteractionFocusSmokeCheck : Node
             || !ReferenceEquals(focusedSearchController.Outcomes, resolvedOutcomes)
             || !ReferenceEquals(focusedSearchController.Perception, resolvedPerception)
             || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount: expectedTargetIndex + 1,
+                "repeated resolution")
             || !AssertFocusedSearchResult(ResolveUnchangedText, "repeated resolution"))
         {
             Fail("Interaction-focus smoke failed repeated resolution identity.");
@@ -639,6 +699,89 @@ public partial class InteractionFocusSmokeCheck : Node
 
         seeker.GlobalPosition = focusedPosition;
         controller.RefreshFocus();
+
+        return true;
+    }
+
+    private bool AssertResolvedPerceptionPresentationContract()
+    {
+        CharacterPerceptionSnapshot initialPerception =
+            focusedSearchController.Perception
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires initialized Seeker perception.");
+        TemporaryResolvedPerceptionIndicator indicator = resolvedPerceptionIndicators[0];
+        ObjectId targetObjectId = authoredObjectIds[0];
+        ObjectId unrelatedObjectId = authoredObjectIds[1];
+
+        if (!AssertResolvedPerceptionIndicators(0, "initial noticed presentation"))
+        {
+            return false;
+        }
+
+        indicator.Present(null, initialPerception);
+        if (indicator.IsIndicatorVisible)
+        {
+            Fail("Interaction-focus smoke showed identified presentation for a null target.");
+            return false;
+        }
+
+        indicator.Present(targetObjectId, null);
+        if (indicator.IsIndicatorVisible)
+        {
+            Fail("Interaction-focus smoke showed identified presentation for null perception.");
+            return false;
+        }
+
+        CharacterPerceptionSnapshot unrelatedPerception = new(
+            initialPerception.CharacterId,
+            [new WorldObjectVisibility(unrelatedObjectId, VisibilityState.Identified)]);
+        indicator.Present(targetObjectId, unrelatedPerception);
+        if (indicator.IsIndicatorVisible)
+        {
+            Fail("Interaction-focus smoke showed identified presentation for an unrelated entry.");
+            return false;
+        }
+
+        CharacterPerceptionSnapshot nonIdentifiedPerception = new(
+            initialPerception.CharacterId,
+            [new WorldObjectVisibility(targetObjectId, VisibilityState.Understood)]);
+        indicator.Present(targetObjectId, nonIdentifiedPerception);
+        if (indicator.IsIndicatorVisible)
+        {
+            Fail("Interaction-focus smoke ranked a non-identified visibility state.");
+            return false;
+        }
+
+        CharacterPerceptionSnapshot identifiedPerception = new(
+            initialPerception.CharacterId,
+            [new WorldObjectVisibility(targetObjectId, VisibilityState.Identified)]);
+        indicator.Present(targetObjectId, identifiedPerception);
+        if (!indicator.IsIndicatorVisible)
+        {
+            Fail("Interaction-focus smoke hid an exact identified target entry.");
+            return false;
+        }
+
+        indicator.Present(targetObjectId, initialPerception);
+        return AssertResolvedPerceptionIndicators(0, "presentation-contract restoration");
+    }
+
+    private bool AssertResolvedPerceptionIndicators(
+        int expectedIdentifiedCount,
+        string scenario)
+    {
+        for (int index = 0; index < resolvedPerceptionIndicators.Length; index++)
+        {
+            bool expectedVisible = index < expectedIdentifiedCount;
+            if (resolvedPerceptionIndicators[index].IsIndicatorVisible != expectedVisible)
+            {
+                Fail(
+                    $"Interaction-focus smoke failed {scenario}: target {index} identified "
+                    + $"presentation was "
+                    + $"{resolvedPerceptionIndicators[index].IsIndicatorVisible}.");
+                return false;
+            }
+        }
 
         return true;
     }
@@ -766,7 +909,11 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
             || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
-            || focusedSearchIndicator.Visible)
+            || focusedSearchIndicator.Visible
+            || !AssertResolvedPerceptionIndicators(
+                expectedPerception.Entries.Count(
+                    entry => entry.VisibilityState == VisibilityState.Identified),
+                "non-search input preservation"))
         {
             Fail("Interaction-focus smoke failed non-search input state preservation.");
             return false;

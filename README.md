@@ -193,6 +193,10 @@ It returns false without invoking that path when focus is clear. This bridge doe
 markers authoritative Phase 2 objects or add perception state, search input, search execution, or
 interaction UX.
 
+After a successful temporary R resolution, a small cyan **IDENTIFIED** label appears beneath only
+the matching herb patch or stone marker. It reflects the controller's retained Seeker perception,
+not current interaction focus, and is temporary behavior evidence rather than final discovery UI.
+
 Every shape, color, obstacle, collision outline, navigation polygon, target marker, and status
 element is an authored primitive for scale and behavior testing only; none selects final art or
 terrain. Close the titled **Allrpcs** window to stop the process. To open the project in the editor
@@ -803,6 +807,15 @@ successful resolution replaces only the matching perception entry with its `Iden
 consumes the exact outcome, and preserves completed activity absence plus every unrelated entry
 instance and order. With no matching outcome, including a repeated R after consumption, all three
 controller snapshots retain their exact instances.
+
+Each visible greybox target owns one instance of
+`Allrpcs.Game.TemporaryResolvedPerceptionIndicator`. Its presentation boundary receives only that
+target's exact retained `ObjectId` and the controller's current Seeker perception, delegates exact
+selection to `CharacterPerceptionLookup`, and shows its authored `IDENTIFIED` label only for the
+exact `VisibilityState.Identified` singleton. Null, absent, unrelated, `Noticed`, and every other
+state remain hidden without ranking or exposing entries. `Main` initializes both indicators after
+the existing one-time perception initialization and refreshes them only after a successful R
+resolution; all other input paths preserve their presentation.
 
 These inputs add no automatic polling or outcome processing, discovery grant, failure-reason
 presentation, or final interaction UI.
