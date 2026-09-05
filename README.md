@@ -599,6 +599,13 @@ finds that request's target object. It rejects null inputs, ignores current and 
 visibility states, leaves every input unchanged, and does not decide a visibility transition or
 apply an outcome.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeChangePolicy.WouldChange` is the pure
+visibility-state change decision for one focused-search outcome and perception snapshot. It first
+delegates applicability to the existing policy, then delegates exact target selection to the
+existing perception lookup and returns true only when the retained target entry's current state
+differs from the outcome's resulting state. It rejects null inputs, treats every distinct state
+pair alike without ranking it, leaves every input unchanged, and does not apply an outcome.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
