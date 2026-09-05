@@ -70,99 +70,20 @@ The first complete milestone lets a player:
 
 ## Phase 0 — Project foundation
 
-### 0.0 Documentation baseline
-
-- [x] Initialize the directory as a Git repository on `main`.
-- [x] Record the complete phased implementation plan in `ROADMAP.md`.
-- [x] Record the current decisions and next bounded slice in `HANDOVER.md`.
-- [x] Commit the documentation baseline.
-
-### 0.1 Local solution skeleton
-
-Completed on 2026-08-30 on Apple Silicon macOS 26.6.2 with Godot 4.6.3 .NET and .NET SDK
-8.0.130. See `HANDOVER.md` for installation, validation, and limitation evidence.
-
-- [x] Verify the locally available Godot 4.6 .NET editor and compatible .NET SDK before
-  generating project files.
-- [x] Add a root `.gitignore` covering Godot, .NET, editor, OS, local credentials, generated
-  packages, and test artifacts without hiding authored game content.
-- [x] Add a root `.editorconfig` with nullable-reference checking, consistent formatting, and
-  warnings suitable for a new C# codebase.
-- [x] Add a solution containing `Domain`, `Application`, `Infrastructure`, and unit-test
-  projects.
-- [x] Ensure `Domain` has no dependency on Godot, providers, persistence, or UI code.
-- [x] Ensure `Application` depends on `Domain` but not on Godot.
-- [x] Ensure `Infrastructure` is the adapter boundary without leaking provider response types
-  into `Application` or `Domain`.
-- [x] Create the Godot .NET project under `game/` using the Compatibility renderer.
-- [x] Create a minimal `Main` scene that opens a titled empty window.
-- [x] Add one pure C# smoke test and one minimal Godot launch smoke check.
-- [x] Add a concise `README.md` with prerequisites and exact local build, test, and launch
-  commands.
-- [x] Verify all documented commands from a clean local shell.
-
-Acceptance:
-
-- [x] A developer can clone the project, follow `README.md`, run the pure C# tests, and launch
-  the empty Godot application without provider credentials.
-
-### 0.2 Continuous integration and architecture guardrails
-
-Phase 0.2b workflow configuration was added and locally linted on 2026-08-30. Phase 0.2c then
-verified the private `hherb/allrpcs` repository with successful `push` and `pull_request` runs
-on the named GitHub-hosted runners. See `HANDOVER.md` for exact job, image, artifact, signature,
-licence, pull-request, and limitation evidence.
-
-- [x] Add formatting and compiler-warning checks.
-- [x] Add pure C# unit tests to CI.
-- [ ] Add scenario-validator tests to CI once the validator exists.
-- [x] Add headless Godot smoke tests.
-- [x] Add unsigned development builds for macOS, Linux, and Windows on native runners.
-- [x] Pin tool versions and document the update procedure.
-- [x] Add architecture tests or project-reference checks enforcing the intended dependency
-  direction.
-- [x] Decide and record the project licence before publishing or distributing source:
-  `AGPL-3.0-only`.
-
-Acceptance:
-
-- [x] Every pull request receives current formatting, test, architecture, and desktop build
-  results without requiring an LLM key.
+Complete. The repository, Godot/.NET solution, dependency boundaries, local quality spine,
+credential-free hosted checks, unsigned development exports, tool pins, and `AGPL-3.0-only`
+licence are established. Scenario-validator CI remains attached to the validator work in Phase 2.
+Exact commands and current limitations live in `README.md` and `HANDOVER.md`.
 
 ## Phase 1 — Greybox exploration
 
-Phase 1a keyboard movement, placeholder-region, and smooth-camera behavior, Phase 1b bounded
-camera framing plus representative greybox terrain collision, Phase 1c deterministic navigation
-topology with a temporary stream crossing, Phase 1d deterministic healer follow behavior, Phase
-1e deterministic healer wait and move-to-destination behavior, and Phase 1f deterministic
-interaction-focus selection were implemented on Apple Silicon macOS on 2026-08-31. Phase 1g's
-credential-free Seeker movement-boundary check and ordinary-input regression evidence are also
-current. Phase 1b defines zoom tuning without adding zoom or camera-pan input; Phases 1e and 1f
-use only temporary greybox controls and markers and add no dialogue, natural-language
-interpretation, authoritative objects, perception model, or interaction outcome. See
-`HANDOVER.md` for the exact evidence and platform limitations.
+The credential-free greybox establishes keyboard movement, smooth bounded camera framing,
+representative collision, deterministic navigation, healer follow/wait/move behavior, interaction
+focus, and movement-boundary regression coverage. Its controls and markers remain temporary.
 
-- [x] Create a placeholder top-down test region using simple shapes and temporary tiles.
-- [x] Implement keyboard movement for the Seeker.
 - [ ] Implement point-and-click movement if retained after prototype testing.
-- [x] Establish controller input actions without hard-coding physical keys.
-- [x] Implement smooth `Camera2D` following.
-- [x] Implement bounded camera framing and useful zoom limits.
-- [x] Add collision for water, buildings, trees, and impassable terrain.
-- [x] Add a baked or deterministically authored `NavigationRegion2D` suitable for companion
-  pathfinding.
-- [x] Implement deterministic healer follow behaviour without an LLM call.
-- [x] Implement healer wait and move-to-destination behaviour.
-- [x] Add interaction highlighting and a focused target indicator.
 - [ ] Pause disease time and world decisions during dialogue, reading, and inventory use.
 - [ ] Add a debug overlay for position, region, navigation target, and current world-time event.
-- [x] Add automated tests for movement boundaries.
-- [x] Add automated tests for navigation request validation.
-
-Acceptance:
-
-- [x] The Seeker and placeholder healer can traverse the greybox region, separate, regroup,
-  collide correctly, and move without any LLM or network access.
 
 ## Phase 2 — Authoritative world and discovery
 
@@ -184,16 +105,17 @@ lookup, applicability, change, application, consumption, resolution, and recordi
 These contracts preserve stable order and required exact instances, never change their inputs, and
 do not produce outcomes, grant discovery, or change authoritative world state.
 
-Phases 2k39–2k43 connect an existing outcome to completion through combined eligibility, result,
+Phases 2k39–2k44 connect an existing outcome to completion through combined eligibility, result,
 and transition contracts; controller-owned immutable outcome state and outcome-aware Seeker
-completion; and a separate temporary Godot outcome source. The source produces a distinct outcome
-retaining an existing request and the exact `Identified` singleton without inspecting or changing
-controller, perception, or world state. Ordinary play remains on the request-only temporary
-completion path.
+completion; a separate temporary Godot outcome source; and the existing E input path. Pressed E
+now creates one distinct outcome retaining the active request and exact `Identified` singleton,
+then records that exact outcome while removing the completed activity. Rejected or unrelated
+input preserves both controller snapshots and existing presentation.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
-outcome production or consumption, lifecycle application, discovery effect, reason presentation,
-or final interaction UI. The next bounded slice is defined in `HANDOVER.md`.
+authoritative outcome production, outcome resolution or consumption, perception change, discovery
+effect, reason presentation, or final interaction UI. The next bounded slice is defined in
+`HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

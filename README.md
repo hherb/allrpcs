@@ -44,10 +44,11 @@ follow. A separate interaction-focus launch proves nearest selection, authored-o
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
 starts through the mapped temporary input for both visible targets, focus-independent cancellation
-and completion through the exact retained active requests, unchanged inputs, failure-state
-identity, activity-indicator presentation, and deterministic changed/unchanged result text for
-every lifecycle action. It also proves that released, unrelated, movement, and healer input
-preserve the exact prior text and that the temporary focused-search source stably authors one
+and outcome-aware completion through the exact retained active requests, exact outcome recording,
+unchanged inputs, failure-state identity, activity-indicator presentation, and deterministic
+changed/unchanged result text for every lifecycle action. It also proves that released, unrelated,
+movement, and healer input preserve both controller snapshots and the exact prior text, and that
+the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
 nested instances, and forwards its exact aggregate instances through the input path. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
@@ -715,9 +716,10 @@ delegates state creation to the existing start transition. Cancellation and requ
 completion retain their existing policy and transition delegation. Its separate outcome-aware
 completion path accepts an existing outcome, delegates the combined completion decision and
 transition, installs both exact result snapshots, and only then presents the resulting activity
-snapshot. Rejected operations preserve both owned snapshots and presentation. Ordinary play still
-reaches only the explicit temporary request-only lifecycle inputs; the credential-free focused-
-search, outcome-controller, and interaction-focus smokes cover these boundaries.
+snapshot. Rejected operations preserve both owned snapshots and presentation. Ordinary play
+reaches the outcome-aware path only through the explicit temporary completion input; the
+credential-free focused-search, outcome-controller, and interaction-focus smokes cover these
+boundaries.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -744,7 +746,8 @@ explicitly temporary deterministic focused-search result. Each call accepts an e
 returns a distinct `FocusedSearchOutcome` retaining that exact request and the exact existing
 `VisibilityState.Identified` singleton. It rejects a null request and does not inspect focus,
 activity, outcomes, perception, or world state; decide eligibility; call a controller; own lifecycle
-state; apply or consume an outcome; or change visibility. Ordinary play does not invoke this source.
+state; apply or consume an outcome; or change visibility. Ordinary play invokes it only from the
+pressed temporary E completion path when an active Seeker request exists.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` passes the context source's exact retained condition,
@@ -762,12 +765,14 @@ transition, replaces the snapshot with its empty successor, and hides the activi
 active search and repeated cancellation preserve the existing snapshot instance and presentation.
 
 The separate temporary `focused_search_complete` action maps physical E to the equivalent narrow
-`Main._UnhandledInput` path. It selects and forwards the same exact retained active request to
-`FocusedSearchActivityController.TryCompleteSearch`, without reading or depending on interaction
-focus. A successful completion reaches the existing policy and transition, replaces the snapshot
-with its empty successor, and hides the indicator; no active search and repeated completion
-preserve the existing snapshot instance and presentation. These inputs add no automatic polling or
-lifecycle behavior, discovery grant, or final interaction UI.
+`Main._UnhandledInput` path. It selects the same exact retained active request, asks the temporary
+outcome source to create one `Identified` outcome retaining that request, and forwards that exact
+outcome to `FocusedSearchActivityController.TryCompleteSearchWithOutcome`, without reading or
+depending on interaction focus. A successful completion replaces the activity snapshot with its
+empty successor, appends the exact outcome to a new outcome snapshot, and hides the indicator; no
+active search and repeated completion preserve both existing snapshot instances and presentation.
+These inputs add no automatic polling, outcome resolution or consumption, discovery grant,
+perception change, or final interaction UI.
 
 One separate temporary label initializes to `Focused search: NO ATTEMPT`. A pressed F, C, or E
 updates it with the attempted action and `CHANGED` or `UNCHANGED`, using only the existing Boolean
@@ -792,7 +797,8 @@ greybox inputs. Ordinary greybox play invokes the start bridge only through phys
 cancellation only through physical C, and completion only through physical E.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the documented
-temporary keys, interaction actions or outcomes, Phase 2 objects and perception models,
+temporary keys, final interaction actions or authoritative outcomes, Phase 2 objects and
+controller-owned perception models,
 natural-language commands, final command or interaction UI, LLM-controlled companions, providers,
 persistence, credentials, signing, installers, and distribution configuration are not part of
 this greybox slice.
