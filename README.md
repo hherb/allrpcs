@@ -650,6 +650,14 @@ returns one resolution result retaining those exact returned snapshots, leaves e
 retained unrelated instance unchanged, and does not produce outcomes, grant discovery, or connect
 resolution to focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeRecordingPolicy.CanRecord` is the pure
+recording-eligibility decision for one existing focused-search outcome. It delegates exact-request
+selection to the existing outcome lookup and returns true only when no outcome for that request is
+already retained. It allows both partial request matches, rejects exact-instance and value-equal
+duplicate requests, rejects null inputs through the delegated lookup, leaves every input and
+retained instance unchanged, and does not record or produce an outcome or connect recording to
+focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
