@@ -658,6 +658,13 @@ duplicate requests, rejects null inputs through the delegated lookup, leaves eve
 retained instance unchanged, and does not record or produce an outcome or connect recording to
 focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeRecordingTransition.Record` is the pure recording
+transition for one eligible focused-search outcome. It delegates complete eligibility to the
+existing recording policy, rejects outcomes whose request is already retained, and otherwise
+returns a new snapshot preserving every retained outcome instance in stable order before the exact
+supplied outcome instance. It leaves both inputs unchanged and does not produce an outcome, connect
+recording to focused-search completion, or apply a visibility change.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
