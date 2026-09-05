@@ -25,17 +25,18 @@ retains keyboard movement, bounded camera and collision, deterministic navigatio
 interaction focus, and regression smokes.
 
 Phases 2a–2j established typed identifiers and immutable world, character, environmental,
-perception, inventory, capability, tool, and discovery-condition boundaries. Phases 2k1–2k49 add the
-focused-search lifecycle, deterministic outcome recording/resolution, controller-owned immutable
-Seeker perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. These
-temporary paths do not yet make the greybox targets authoritative world objects.
+perception, inventory, capability, tool, and discovery-condition boundaries. Phases 2k1–2k49 add
+the focused-search lifecycle, deterministic outcome recording/resolution, controller-owned
+immutable Seeker perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED`
+presentation. Phase 2l1 adds the immutable authoritative world-object snapshot; it is not wired to
+the temporary greybox targets.
 
 ## Active milestone: authoritative world and discovery
 
 - [ ] Finish bounded focused searches with authoritative perception change and discovery
-  presentation. The exact next prerequisite is Phase 2l1 in `HANDOVER.md`: an immutable
-  world-object snapshot. Automatic lifecycle, progress, duration, failure reasons, discovery grants,
-  and final interaction UI remain absent.
+  presentation. The exact next prerequisite is Phase 2l2 in `HANDOVER.md`: pure exact world-object
+  lookup. Automatic lifecycle, progress, duration, failure reasons, discovery grants, and final
+  interaction UI remain absent.
 - [ ] Add passive noticing without arbitrary pixel clicking.
 - [ ] Add knowledge-triggered reinterpretation of earlier observations.
 - [ ] Add an append-only authoritative world-event log and qualitative meaningful-event time.
