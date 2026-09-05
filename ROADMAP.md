@@ -203,7 +203,10 @@ lookup and requires the retained complete outcome, including its resulting visib
 be value-equal to the supplied outcome without removing it or changing any input. Phase 2k33 adds
 a pure consumption transition that delegates that complete decision, rejects outcomes that are
 not exactly retained, and otherwise returns a new snapshot removing only the exact-request
-outcome while preserving stable order and every unrelated outcome instance.
+outcome while preserving stable order and every unrelated outcome instance. Phase 2k34 adds pure
+resolution eligibility that delegates perception applicability and change detection to the
+existing change policy, delegates exact recorded-outcome eligibility to the existing consumption
+policy, and returns true only when both decisions succeed without changing either snapshot.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
