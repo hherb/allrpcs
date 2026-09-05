@@ -4,8 +4,9 @@
 
 Phase 2k37 is implemented and reviewed without findings on
 `codex/phase-2k37-outcome-recording-eligibility`, based directly on PR #84's verified merge
-commit `d82e1742`. The reviewed slice is ready for commit and a draft pull request; pull-request
-merge remains separately unauthorized.
+commit `d82e1742`. Slice commit `a2bcc80` is pushed, and draft PR #85
+(`https://github.com/hherb/allrpcs/pull/85`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeRecordingPolicy.CanRecord` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `FocusedSearchOutcomeSnapshot`. It
