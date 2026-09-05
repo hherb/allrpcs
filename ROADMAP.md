@@ -217,7 +217,10 @@ lookup and permits recording only when no outcome for that request is already re
 changing any input or recording an outcome. Phase 2k38 adds the pure recording transition that
 delegates complete eligibility to that policy and returns a new snapshot retaining stable order
 and exact existing instances before the exact supplied outcome, without producing an outcome or
-connecting recording to focused-search completion.
+connecting recording to focused-search completion. Phase 2k39 adds pure completion-with-outcome
+eligibility that delegates active-request and recording decisions to the existing policies and
+returns true only when the request is active and no outcome for it is already retained, without
+completing an activity, recording an outcome, or changing any input.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
