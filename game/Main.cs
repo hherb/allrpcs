@@ -12,6 +12,7 @@ public partial class Main : Node
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
+    private static readonly StringName FocusedSearchResolveAction = new("focused_search_resolve");
     private static readonly StringName FocusedSearchStartAction = new("focused_search_start");
     private static readonly StringName HealerToggleAction = new("healer_toggle_follow_wait");
     private static readonly StringName HealerMoveAction = new("healer_move");
@@ -79,6 +80,13 @@ public partial class Main : Node
                     focusedSearchOutcomeSource.CreateOutcome(activeRequest));
             PresentFocusedSearchResult("COMPLETE", changed);
         }
+        else if (@event.IsActionPressed(FocusedSearchResolveAction))
+        {
+            FocusedSearchOutcome? outcome = GetFirstRetainedFocusedSearchOutcome();
+            bool changed = outcome is not null
+                && focusedSearchController.TryResolveOutcome(outcome);
+            PresentFocusedSearchResult("RESOLVE", changed);
+        }
         else if (@event.IsActionPressed(FocusedSearchStartAction))
         {
             bool changed = interactionFocusController.TryStartFocusedSearch(
@@ -118,6 +126,13 @@ public partial class Main : Node
                 activity => activity.Request.SearcherCharacterId
                     == focusedSearchController.SearcherCharacterId)
             ?.Request;
+    }
+
+    private FocusedSearchOutcome? GetFirstRetainedFocusedSearchOutcome()
+    {
+        return focusedSearchController.Outcomes.Entries.FirstOrDefault(
+            outcome => outcome.Request.SearcherCharacterId
+                == focusedSearchController.SearcherCharacterId);
     }
 
     private void PresentFocusedSearchResult(string action, bool changed)

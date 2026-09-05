@@ -17,6 +17,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
     private const string FocusedSearchCancelAction = "focused_search_cancel";
     private const string FocusedSearchCompleteAction = "focused_search_complete";
+    private const string FocusedSearchResolveAction = "focused_search_resolve";
     private const string FocusedSearchStartAction = "focused_search_start";
     private const string HealerMoveAction = "healer_move";
     private const string HealerToggleAction = "healer_toggle_follow_wait";
@@ -28,6 +29,10 @@ public partial class InteractionFocusSmokeCheck : Node
     private const string CancelUnchangedText = "Focused search CANCEL: UNCHANGED";
     private const string CompleteChangedText = "Focused search COMPLETE: CHANGED";
     private const string CompleteUnchangedText = "Focused search COMPLETE: UNCHANGED";
+    private const string ResolveChangedText = "Focused search RESOLVE: CHANGED";
+    private const string ResolveUnchangedText = "Focused search RESOLVE: UNCHANGED";
+    private const string TemporaryInstructionsText =
+        "TEMP · F START · C CANCEL · E COMPLETE · R RESOLVE · X WAIT · M MOVE";
     private const string UnrelatedAction = "interaction_focus_smoke_unrelated";
     private static readonly string[] ExpectedObjectIdValues =
     [
@@ -48,6 +53,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private Line2D focusedSearchIndicator = null!;
     private Label focusedSearchResultStatus = null!;
+    private Label instructions = null!;
     private Healer healer = null!;
     private Main main = null!;
     private CharacterBody2D seeker = null!;
@@ -83,6 +89,7 @@ public partial class InteractionFocusSmokeCheck : Node
         focusedSearchIndicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
         focusedSearchResultStatus = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
+        instructions = GetNode<Label>("../CommandOverlay/Panel/Instructions");
         healer = GetNode<Healer>("../Healer");
         main = GetNode<Main>("..");
         navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
@@ -90,6 +97,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         if (!AssertFocusedSearchResult(InitialFocusedSearchResultText, "initial presentation")
             || !AssertFocusedSearchInputActions()
+            || !AssertTemporaryInstructions()
             || !AssertAuthoredObjectIdentifiers()
             || !AssertAuthoredFocusedSearchContext())
         {
@@ -239,10 +247,12 @@ public partial class InteractionFocusSmokeCheck : Node
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
             + "stable request-identifier retention; stable capability-only and tool-only "
-            + "focused-search context authoring; mapped start, cancellation, and completion "
-            + "inputs; exact retained active requests; both eligible starts and "
-            + "focus-independent cancellations and outcome-aware completions; exact outcome "
-            + "recording; unchanged inputs; failure-state identity; activity presentation; "
+            + "focused-search context authoring; mapped start, cancellation, completion, and "
+            + "resolution inputs; exact temporary control text; exact retained active requests; "
+            + "both eligible starts and focus-independent cancellations and outcome-aware "
+            + "completions; exact outcome "
+            + "recording and resolution; target-only perception replacement; exact unrelated "
+            + "entry retention; unchanged inputs; failure-state identity; activity presentation; "
             + "and initial, changed, and unchanged lifecycle-result presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
@@ -367,6 +377,10 @@ public partial class InteractionFocusSmokeCheck : Node
 
         FocusedSearchActivitySnapshot initialSnapshot = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot initialOutcomes = focusedSearchController.Outcomes;
+        CharacterPerceptionSnapshot initialPerception =
+            focusedSearchController.Perception
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires initialized Seeker perception.");
         if (initialSnapshot.Entries.Count != 0 || focusedSearchIndicator.Visible)
         {
             Fail("Interaction-focus smoke failed eligible start setup: state was not empty.");
@@ -389,6 +403,12 @@ public partial class InteractionFocusSmokeCheck : Node
         main._UnhandledInput(
             new InputEventAction
             {
+                Action = new StringName(FocusedSearchResolveAction),
+                Pressed = false,
+            });
+        main._UnhandledInput(
+            new InputEventAction
+            {
                 Action = new StringName(FocusedSearchStartAction),
                 Pressed = false,
             });
@@ -400,6 +420,7 @@ public partial class InteractionFocusSmokeCheck : Node
             });
         if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
             || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, initialPerception)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(
                 expectedUnchangedResultText,
@@ -407,7 +428,8 @@ public partial class InteractionFocusSmokeCheck : Node
             || !AssertNonSearchInputsPreserveResult(
                 expectedUnchangedResultText,
                 initialSnapshot,
-                initialOutcomes))
+                initialOutcomes,
+                initialPerception))
         {
             Fail("Interaction-focus smoke failed input-only start gating.");
             return false;
@@ -430,6 +452,17 @@ public partial class InteractionFocusSmokeCheck : Node
             || !AssertFocusedSearchResult(CompleteUnchangedText, "no-active completion"))
         {
             Fail("Interaction-focus smoke failed no-active-search completion identity.");
+            return false;
+        }
+
+        PressFocusedSearchResolve();
+        if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, initialPerception)
+            || focusedSearchIndicator.Visible
+            || !AssertFocusedSearchResult(ResolveUnchangedText, "no-outcome resolution"))
+        {
+            Fail("Interaction-focus smoke failed no-outcome resolution identity.");
             return false;
         }
 
@@ -537,6 +570,10 @@ public partial class InteractionFocusSmokeCheck : Node
         PressFocusedSearchComplete();
         FocusedSearchActivitySnapshot completedSnapshot = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot completedOutcomes = focusedSearchController.Outcomes;
+        CharacterPerceptionSnapshot completedPerception =
+            focusedSearchController.Perception
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke lost initialized Seeker perception.");
         if (ReferenceEquals(completedSnapshot, completionStartedSnapshot)
             || completedSnapshot.Entries.Count != 0
             || !AssertCompletedOutcome(initialOutcomes, completedOutcomes, completionRequest)
@@ -554,6 +591,49 @@ public partial class InteractionFocusSmokeCheck : Node
             || !AssertFocusedSearchResult(CompleteUnchangedText, "repeated completion"))
         {
             Fail("Interaction-focus smoke failed repeated completion identity.");
+            return false;
+        }
+
+        FocusedSearchOutcome recordedOutcome = completedOutcomes.Entries[^1];
+        PressFocusedSearchResolve();
+        FocusedSearchOutcomeSnapshot resolvedOutcomes = focusedSearchController.Outcomes;
+        CharacterPerceptionSnapshot resolvedPerception =
+            focusedSearchController.Perception
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke lost resolved Seeker perception.");
+        if (!ReferenceEquals(focusedSearchController.Activities, completedSnapshot)
+            || ReferenceEquals(resolvedOutcomes, completedOutcomes)
+            || resolvedOutcomes.Entries.Count != initialOutcomes.Entries.Count
+            || ReferenceEquals(resolvedPerception, completedPerception)
+            || !AssertResolvedPerception(
+                completedPerception,
+                resolvedPerception,
+                targetObjectId)
+            || focusedSearchIndicator.Visible
+            || !AssertFocusedSearchResult(ResolveChangedText, "successful resolution"))
+        {
+            Fail("Interaction-focus smoke failed focused-search input resolution.");
+            return false;
+        }
+
+        if (!ReferenceEquals(completedOutcomes.Entries[^1], recordedOutcome)
+            || !ReferenceEquals(
+                completedPerception.Entries.Single(
+                    entry => entry.ObjectId == targetObjectId).VisibilityState,
+                VisibilityState.Noticed))
+        {
+            Fail("Interaction-focus smoke changed completed resolution inputs.");
+            return false;
+        }
+
+        PressFocusedSearchResolve();
+        if (!ReferenceEquals(focusedSearchController.Activities, completedSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, resolvedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, resolvedPerception)
+            || focusedSearchIndicator.Visible
+            || !AssertFocusedSearchResult(ResolveUnchangedText, "repeated resolution"))
+        {
+            Fail("Interaction-focus smoke failed repeated resolution identity.");
             return false;
         }
 
@@ -599,10 +679,46 @@ public partial class InteractionFocusSmokeCheck : Node
         return true;
     }
 
+    private static bool AssertResolvedPerception(
+        CharacterPerceptionSnapshot previousPerception,
+        CharacterPerceptionSnapshot resolvedPerception,
+        ObjectId targetObjectId)
+    {
+        if (!ReferenceEquals(resolvedPerception.CharacterId, previousPerception.CharacterId)
+            || resolvedPerception.Entries.Count != previousPerception.Entries.Count)
+        {
+            return false;
+        }
+
+        for (int index = 0; index < previousPerception.Entries.Count; index++)
+        {
+            WorldObjectVisibility previousEntry = previousPerception.Entries[index];
+            WorldObjectVisibility resolvedEntry = resolvedPerception.Entries[index];
+            if (previousEntry.ObjectId == targetObjectId)
+            {
+                if (ReferenceEquals(resolvedEntry, previousEntry)
+                    || !ReferenceEquals(resolvedEntry.ObjectId, previousEntry.ObjectId)
+                    || !ReferenceEquals(
+                        resolvedEntry.VisibilityState,
+                        VisibilityState.Identified))
+                {
+                    return false;
+                }
+            }
+            else if (!ReferenceEquals(resolvedEntry, previousEntry))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private bool AssertNonSearchInputsPreserveResult(
         string expectedText,
         FocusedSearchActivitySnapshot expectedActivities,
-        FocusedSearchOutcomeSnapshot expectedOutcomes)
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception)
     {
         main._UnhandledInput(
             new InputEventAction
@@ -649,6 +765,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         if (!ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
             || focusedSearchIndicator.Visible)
         {
             Fail("Interaction-focus smoke failed non-search input state preservation.");
@@ -675,12 +792,13 @@ public partial class InteractionFocusSmokeCheck : Node
     {
         if (!HasOnlyPhysicalKey(FocusedSearchStartAction, Key.F)
             || !HasOnlyPhysicalKey(FocusedSearchCancelAction, Key.C)
-            || !HasOnlyPhysicalKey(FocusedSearchCompleteAction, Key.E))
+            || !HasOnlyPhysicalKey(FocusedSearchCompleteAction, Key.E)
+            || !HasOnlyPhysicalKey(FocusedSearchResolveAction, Key.R))
         {
             Fail(
                 "Interaction-focus smoke failed focused-search input mappings: expected only "
                 + "physical F for start, physical C for cancellation, and physical E for "
-                + "completion.");
+                + "completion, and physical R for resolution.");
             return false;
         }
 
@@ -697,6 +815,19 @@ public partial class InteractionFocusSmokeCheck : Node
             && keyEvent.PhysicalKeycode == expectedKey;
     }
 
+    private bool AssertTemporaryInstructions()
+    {
+        if (string.Equals(instructions.Text, TemporaryInstructionsText, StringComparison.Ordinal))
+        {
+            return true;
+        }
+
+        Fail(
+            "Interaction-focus smoke failed temporary instructions: expected "
+            + $"'{TemporaryInstructionsText}', received '{instructions.Text}'.");
+        return false;
+    }
+
     private void PressFocusedSearchCancel()
     {
         PressAction(FocusedSearchCancelAction);
@@ -710,6 +841,11 @@ public partial class InteractionFocusSmokeCheck : Node
     private void PressFocusedSearchStart()
     {
         PressAction(FocusedSearchStartAction);
+    }
+
+    private void PressFocusedSearchResolve()
+    {
+        PressAction(FocusedSearchResolveAction);
     }
 
     private void PressAction(string action)

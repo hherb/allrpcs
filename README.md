@@ -45,10 +45,11 @@ tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusio
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
 starts through the mapped temporary input for both visible targets, focus-independent cancellation
 and outcome-aware completion through the exact retained active requests, exact outcome recording,
-unchanged inputs, failure-state identity, activity-indicator presentation, and deterministic
-changed/unchanged result text for every lifecycle action. It also proves that released, unrelated,
-movement, and healer input preserve both controller snapshots and the exact prior text, and that
-the temporary focused-search source stably authors one
+explicit first-recorded Seeker outcome resolution, target-only perception replacement, outcome
+consumption, unchanged inputs, failure-state identity, activity-indicator presentation, and
+deterministic changed/unchanged result text for every lifecycle action. It also proves that
+released, unrelated, movement, and healer input preserve all controller snapshots and the exact
+prior text, and that the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
 nested instances, and forwards its exact aggregate instances through the input path. The
 perception-controller launch proves the scene initializes the controller once with the temporary
@@ -168,8 +169,9 @@ healer stops without overlapping the Seeker and can route through the bridge aft
 
 The small **TEMP** panel shows the current controls, healer mode, interaction focus, and last
 explicit focused-search attempt. Press F to start a focused search for the current valid
-interaction focus, C to cancel the Seeker's active search, or E to complete it; these temporary
-search controls are detailed below. Press X to toggle between follow and wait. Press M to move the
+interaction focus, C to cancel the Seeker's active search, E to complete it, or R to resolve the
+first retained Seeker outcome; these temporary search controls are detailed below. Press X to
+toggle between follow and wait. Press M to move the
 healer to the obvious pink ring; the healer uses the existing navigation surface, stops within a
 validated 12-pixel distance, then changes to wait. Press X again to resume follow. Off-world and
 obstacle-excluded destinations are rejected without changing the active command. These keys, the
@@ -728,7 +730,10 @@ transition, installs both exact result snapshots, and only then presents the res
 snapshot. Rejected lifecycle operations preserve every owned snapshot and presentation. Ordinary play
 reaches the outcome-aware path only through the explicit temporary completion input; the
 credential-free focused-search, outcome-controller, and interaction-focus smokes cover these
-boundaries.
+boundaries. Its separate outcome-resolution path delegates to the existing combined policy and
+transition, then installs the exact returned perception and outcome snapshots without changing
+activity or presentation. Ordinary play reaches that boundary only through the explicit temporary
+resolution input described below.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -765,8 +770,7 @@ order, each paired with the exact `VisibilityState.Noticed` singleton. Repeated 
 same snapshot instance. The source does not inspect focus or lifecycle state, create an outcome,
 call a controller, change perception or visibility, or make the temporary markers authoritative
 world objects. During `Main._Ready`, the scene passes this exact snapshot to the controller's
-one-time initialization boundary. No lifecycle input reads it, and no outcome is resolved, applied,
-or consumed yet.
+one-time initialization boundary. Lifecycle inputs do not read the source again.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` passes the context source's exact retained condition,
@@ -790,10 +794,20 @@ outcome to `FocusedSearchActivityController.TryCompleteSearchWithOutcome`, witho
 depending on interaction focus. A successful completion replaces the activity snapshot with its
 empty successor, appends the exact outcome to a new outcome snapshot, and hides the indicator; no
 active search and repeated completion preserve both existing snapshot instances and presentation.
-These inputs add no automatic polling, outcome resolution or consumption, discovery grant,
-perception change, or final interaction UI.
 
-One separate temporary label initializes to `Focused search: NO ATTEMPT`. A pressed F, C, or E
+The separate temporary `focused_search_resolve` action maps physical R to one narrow
+`Main._UnhandledInput` path. It selects the first retained outcome in stable recorded order whose
+request belongs to the controller's value-equal Seeker identifier, passes that exact outcome to
+`FocusedSearchActivityController.TryResolveOutcome`, and does not inspect interaction focus. A
+successful resolution replaces only the matching perception entry with its `Identified` successor,
+consumes the exact outcome, and preserves completed activity absence plus every unrelated entry
+instance and order. With no matching outcome, including a repeated R after consumption, all three
+controller snapshots retain their exact instances.
+
+These inputs add no automatic polling or outcome processing, discovery grant, failure-reason
+presentation, or final interaction UI.
+
+One separate temporary label initializes to `Focused search: NO ATTEMPT`. A pressed F, C, E, or R
 updates it with the attempted action and `CHANGED` or `UNCHANGED`, using only the existing Boolean
 return from that lifecycle call path. It does not infer or present a failure reason. Released
 focused-search actions, unrelated input, and healer actions preserve the exact prior text, while
