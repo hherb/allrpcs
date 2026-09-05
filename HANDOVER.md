@@ -5,6 +5,10 @@
 Phase 2k48 is implemented on `codex/phase-2k48-recorded-outcome-resolution-input`, based directly
 on PR #95's verified merge commit `cd0af38`.
 
+Slice commit `f1753ac` is pushed, and draft PR #96
+(`https://github.com/hherb/allrpcs/pull/96`) is open. Pull-request merge remains separately
+unauthorized.
+
 The temporary physical R action now selects the first retained outcome in stable recorded order
 whose request belongs to the controller's value-equal Seeker identifier. `Main` passes that exact
 outcome to `FocusedSearchActivityController.TryResolveOutcome` and presents `RESOLVE: CHANGED` or
