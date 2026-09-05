@@ -2,52 +2,50 @@
 
 ## Current state
 
-Phase 2k34 is implemented and reviewed without findings on
-`codex/phase-2k34-outcome-resolution-eligibility`, based directly on PR #81's merge commit
-`d66f68d2`.
-Slice commit `b098287` is pushed, and draft PR #82
-(`https://github.com/hherb/allrpcs/pull/82`) is open.
-Pull-request merge remains separately unauthorized.
+Phase 2k35 is implemented and reviewed without findings on
+`codex/phase-2k35-outcome-resolution-result`, based directly on PR #82's verified merge commit
+`2896ad6`.
 
-`Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionPolicy.CanResolve` is one pure static
-operation accepting an existing `FocusedSearchOutcome`, `CharacterPerceptionSnapshot`, and
-`FocusedSearchOutcomeSnapshot`. It delegates perception applicability and visibility-state change
-detection completely to `FocusedSearchOutcomeChangePolicy`, delegates exact recorded-outcome
-eligibility completely to `FocusedSearchOutcomeConsumptionPolicy`, and returns true only when both
-decisions succeed. It leaves every input and retained instance unchanged and does not apply a
-visibility change, remove an outcome, or connect resolution to focused-search completion.
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionResult` is one sealed immutable record
+retaining exact existing `CharacterPerceptionSnapshot` and `FocusedSearchOutcomeSnapshot`
+instances through get-only `Perception` and `Outcomes` properties. It rejects either null input;
+record equality uses the retained snapshot instances. It performs no resolution, transition,
+lookup, validation, or mutation behavior.
 
-The 11 focused tests failed first with `CS0103`/`CS0246` while the policy type was absent, then
-passed after the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning
-build, 584 Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and
-the bounded graphical launch. One earlier host-shell run reported a transient interaction-focus
-smoke failure in unchanged runtime code; its isolated rerun and the complete final rerun passed.
-The sandbox-only test attempts were inconclusive because VSTest could not bind its required local
-socket. No runtime Godot behavior changed, so no separate manual visual acceptance was performed.
-Hosted desktop outputs remain unsigned development evidence, not releases.
+The four focused tests failed first with `CS0246` while the result type was absent, then passed
+after the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning build, 588
+Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and the bounded
+graphical launch. The sandbox-only focused test attempt was inconclusive because VSTest could not
+bind its required local socket. No runtime Godot behavior changed, so no separate manual visual
+acceptance was performed. Hosted desktop outputs remain unsigned development evidence, not
+releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k35: immutable focused-search outcome resolution result**.
+Take **Phase 2k36: pure focused-search outcome resolution transition**.
 
 Acceptance boundary:
 
-1. Add one sealed immutable record
-   `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionResult` accepting an existing
-   `CharacterPerceptionSnapshot` and `FocusedSearchOutcomeSnapshot`.
-2. Retain both supplied snapshot instances through get-only properties; reject either null input
-   and add no resolution, transition, lookup, validation, or mutation behavior.
-3. Add focused Domain tests for exact instance retention, record equality using the retained
-   snapshot instances, null rejection, and the intended constructor/get-only property surface.
-4. Do not apply a visibility change, remove an outcome, produce outcomes, or connect resolution to
-   focused-search completion.
-5. Document Phase 2k35 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+1. Add one static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionTransition` with one
+   `Resolve` operation accepting an existing `FocusedSearchOutcome`,
+   `CharacterPerceptionSnapshot`, and `FocusedSearchOutcomeSnapshot`, and returning a
+   `FocusedSearchOutcomeResolutionResult`.
+2. Delegate complete eligibility to `FocusedSearchOutcomeResolutionPolicy.CanResolve`; reject an
+   ineligible resolution with `InvalidOperationException` and leave every input unchanged.
+3. For an eligible resolution, delegate the perception change to
+   `FocusedSearchOutcomeApplicationTransition.Apply`, delegate outcome removal to
+   `FocusedSearchOutcomeConsumptionTransition.Consume`, and return one result retaining those
+   exact returned snapshot instances. Do not duplicate their selection or transition rules.
+4. Add focused Domain tests for successful combined resolution, stable order and exact retained
+   unrelated instances, every delegated rejection category, unchanged inputs, exact result
+   snapshot retention, and the intended single-operation static surface.
+5. Document Phase 2k36 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
 Explicit exclusions:
 
-- Do not add the combined resolution transition, lifecycle wiring, outcome production, discovery
+- Do not connect resolution to focused-search completion or add outcome production, discovery
   grants, advancement policy, events, effects, reason/error taxonomies, progress, duration,
   automatic lifecycle behavior, authoritative world objects, or new Godot/Application behavior.
 - Do not add complete-character inspection, ownership/capacity, world state, location,

@@ -636,6 +636,12 @@ returns true only when both decisions succeed, rejects null inputs through those
 policies, leaves every input and retained instance unchanged, and does not apply a visibility
 change, remove an outcome, or connect resolution to focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionResult` is one immutable resolution-result
+value retaining exact existing character-perception and focused-search-outcome snapshot instances
+through get-only properties. Its record equality therefore uses those retained snapshot instances.
+It rejects null inputs and does not perform resolution, apply a visibility change, remove an
+outcome, validate either snapshot, or connect resolution to focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
