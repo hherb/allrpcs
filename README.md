@@ -628,6 +628,14 @@ returns a new snapshot without the outcome for that exact request. It preserves 
 every unrelated outcome instance, leaves both inputs unchanged, and does not change perception or
 connect consumption to focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionPolicy.CanResolve` is the pure combined
+resolution-eligibility decision for one existing focused-search outcome. It delegates perception
+applicability and visibility-state change detection completely to the existing change policy, then
+delegates exact recorded-outcome eligibility completely to the existing consumption policy. It
+returns true only when both decisions succeed, rejects null inputs through those delegated
+policies, leaves every input and retained instance unchanged, and does not apply a visibility
+change, remove an outcome, or connect resolution to focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
