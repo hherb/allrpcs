@@ -5,6 +5,10 @@
 Phase 2l1 is implemented on `codex/phase-2l1-immutable-world-object-snapshot`, based directly on
 PR #97's verified merge commit `d666ec9`.
 
+Slice commit `ee29063` is pushed, and draft PR #98
+(`https://github.com/hherb/allrpcs/pull/98`) is open. Pull-request merge remains separately
+unauthorized.
+
 `Allrpcs.Domain.WorldObjects.WorldObjectSnapshot` copies one supplied sequence exactly once and
 exposes the exact `WorldObject` instances in stable order through `IReadOnlyList<WorldObject>`.
 Empty input is valid. Null sequences, null entries, and value-equal duplicate
