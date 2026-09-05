@@ -51,6 +51,9 @@ movement, and healer input preserve both controller snapshots and the exact prio
 the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
 nested instances, and forwards its exact aggregate instances through the input path. The
+perception-controller launch proves the scene initializes the controller once with the temporary
+source's exact Seeker snapshot, rejects wrong-character, repeated, and null initialization, and
+preserves activity, outcome, and presentation state. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -708,15 +711,18 @@ authored cyan in-world ring. The ring is hidden by default, and ordinary play do
 inject activity outside the explicit temporary lifecycle inputs described below.
 
 `Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
-immutable focused-search activity and outcome snapshots. It initializes both snapshots empty from
-the Seeker's one authored stable character identifier and rejects requests or outcomes for other
-characters. Its start path accepts existing discovery conditions, capabilities, and inventory,
+immutable focused-search activity, outcome, and optional perception snapshots. It initializes the
+activity and outcome snapshots empty from the Seeker's one authored stable character identifier.
+Its separate one-time perception initialization accepts only an existing snapshot for that
+value-equal Seeker identifier and retains the exact supplied snapshot instance. Null,
+wrong-character, and repeated initialization are rejected without changing any owned snapshot or
+presentation. Its start path accepts existing discovery conditions, capabilities, and inventory,
 delegates the complete start decision to the combined Domain eligibility policy, and only then
 delegates state creation to the existing start transition. Cancellation and request-only
 completion retain their existing policy and transition delegation. Its separate outcome-aware
 completion path accepts an existing outcome, delegates the combined completion decision and
 transition, installs both exact result snapshots, and only then presents the resulting activity
-snapshot. Rejected operations preserve both owned snapshots and presentation. Ordinary play
+snapshot. Rejected lifecycle operations preserve every owned snapshot and presentation. Ordinary play
 reaches the outcome-aware path only through the explicit temporary completion input; the
 credential-free focused-search, outcome-controller, and interaction-focus smokes cover these
 boundaries.
@@ -755,7 +761,9 @@ identifier and the visible herb patch and stone marker's exact parsed object ide
 order, each paired with the exact `VisibilityState.Noticed` singleton. Repeated access returns the
 same snapshot instance. The source does not inspect focus or lifecycle state, create an outcome,
 call a controller, change perception or visibility, or make the temporary markers authoritative
-world objects. Ordinary play does not consume the snapshot yet.
+world objects. During `Main._Ready`, the scene passes this exact snapshot to the controller's
+one-time initialization boundary. No lifecycle input reads it, and no outcome is resolved, applied,
+or consumed yet.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` passes the context source's exact retained condition,

@@ -44,17 +44,16 @@ stable focus, request, and condition bridges; and temporary F/C/E inputs with Bo
 Phases 2k24–2k38 established immutable outcomes and ordered snapshots plus pure projection,
 lookup, applicability, change, application, consumption, resolution, and recording boundaries.
 
-Phases 2k39–2k45 connect an existing outcome to completion through combined contracts,
+Phases 2k39–2k46 connect an existing outcome to completion through combined contracts,
 controller-owned activity/outcome state, a temporary deterministic outcome source, the E input,
-and a separate temporary Seeker perception source. Completion records an exact `Identified`
-outcome and removes the activity. The perception source separately retains the controller's exact
-Seeker identifier and the visible herb/stone identifiers as ordered `Noticed` entries; ordinary
-play does not consume it.
+and temporary Seeker perception initialization. Completion records an exact `Identified` outcome
+and removes the activity. The controller also retains the temporary source's exact ordered
+`Noticed` perception snapshot once, but no outcome is resolved or applied yet.
 
 - [ ] Finish bounded focused searches with authoritative perception change and discovery effect.
-  There is still no perception ownership, outcome resolution/consumption wiring, automatic
-  lifecycle, progress, duration, failure reason, or final interaction UI. The exact next slice is
-  in `HANDOVER.md`.
+  There is still no controller outcome-resolution boundary, resolution/consumption wiring,
+  automatic lifecycle, progress, duration, failure reason, or final interaction UI. The exact next
+  slice is in `HANDOVER.md`.
 - [ ] Add passive noticing without arbitrary pixel clicking.
 - [ ] Add knowledge-triggered reinterpretation of earlier observations.
 - [ ] Add an append-only authoritative world-event log and qualitative meaningful-event time.
