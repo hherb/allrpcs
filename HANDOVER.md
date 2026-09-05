@@ -4,6 +4,9 @@
 
 Phase 2k32 is implemented and reviewed without findings on
 `codex/phase-2k32-outcome-consumption`, based directly on PR #79's merge commit `17c8a8d7`.
+Slice commit `885afa9` is pushed, and draft PR #80
+(`https://github.com/hherb/allrpcs/pull/80`) is open.
+Pull-request merge remains separately unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionPolicy.CanConsume` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `FocusedSearchOutcomeSnapshot`. It
