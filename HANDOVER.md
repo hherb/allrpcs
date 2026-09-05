@@ -4,7 +4,9 @@
 
 Phase 2k42 is implemented and reviewed without findings on
 `codex/phase-2k42-outcome-controller-completion`, based directly on PR #89's verified merge commit
-`8400113`.
+`8400113`. Slice commit `d6d1492` is pushed, and draft PR #90
+(`https://github.com/hherb/allrpcs/pull/90`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Game.FocusedSearchActivityController` now owns immutable activity and outcome snapshots,
 initializes both empty, and exposes their current values. Its new
