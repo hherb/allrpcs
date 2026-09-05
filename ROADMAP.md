@@ -172,60 +172,23 @@ conditions below. These contracts are immutable, ordered where authored order ma
 fail closed; they do not grant discovery, mutate world state, persist data, or integrate
 providers.
 
-Phases 2k1–2k19 established focused-search requests, immutable activity snapshots, pure
-start/cancel/complete policies and transitions, the condition-aware Seeker controller, visible
-activity indicator, stable focus/request bridge, and exact retained greybox condition inputs.
-Phases 2k20–2k22 map only physical F, C, and E to temporary start, cancellation, and completion
-paths. Cancellation and completion forward the exact active request independently of focus;
-successful operations replace the immutable snapshot and update the indicator, while rejected
-or repeated operations preserve state. Phase 2k23 adds one deterministic temporary text readout
-for whether each explicit lifecycle call changed state, using only its existing Boolean result.
-Phase 2k24 defines one immutable outcome value from an exact request and existing resulting
-visibility state without producing or applying it. Phase 2k25 adds one stable ordered snapshot of
-those exact outcomes, rejecting null entries and value-equal duplicate requests without comparing
-or advancing their resulting visibility states. Phase 2k26 adds a pure per-character projection
-that returns a new outcome snapshot containing exact matching outcome instances in stable order
-without changing any input or applying an outcome. Phase 2k27 adds pure exact-request lookup that
-returns the one exact retained outcome, or null, without changing any input or applying an outcome.
-Phase 2k28 adds pure exact-object lookup from one character's perception snapshot, returning the
-exact retained visibility entry or null without changing any input or applying an outcome.
-Phase 2k29 adds a pure outcome-applicability decision that requires the perception snapshot's
-character to match the outcome request's searcher and delegates target presence to the existing
-exact-object lookup, without comparing visibility states, changing perception, or applying an
-outcome. Phase 2k30 adds a pure change-detection decision that first requires applicability, then
-compares only the exact retained target's current visibility state with the outcome's resulting
-state, treating every distinct pair alike without ranking, changing perception, or applying the
-outcome. Phase 2k31 adds a pure perception transition that delegates that complete decision,
-rejects inapplicable or unchanged outcomes, and otherwise returns a new snapshot replacing only
-the target entry while retaining stable order and every required exact instance. Phase 2k32 adds
-pure consumption eligibility that delegates exact-request selection to the existing outcome
-lookup and requires the retained complete outcome, including its resulting visibility state, to
-be value-equal to the supplied outcome without removing it or changing any input. Phase 2k33 adds
-a pure consumption transition that delegates that complete decision, rejects outcomes that are
-not exactly retained, and otherwise returns a new snapshot removing only the exact-request
-outcome while preserving stable order and every unrelated outcome instance. Phase 2k34 adds pure
-resolution eligibility that delegates perception applicability and change detection to the
-existing change policy, delegates exact recorded-outcome eligibility to the existing consumption
-policy, and returns true only when both decisions succeed without changing either snapshot. Phase
-2k35 adds one immutable resolution-result value retaining exact existing perception and outcome
-snapshot instances through get-only properties without performing resolution or changing either
-snapshot. Phase 2k36 adds one pure combined resolution transition that delegates complete
-eligibility, perception replacement, and exact-outcome removal to the existing policies and
-transitions, returning their exact resulting snapshots without changing any input. Phase 2k37
-adds pure recording eligibility that delegates exact-request selection to the existing outcome
-lookup and permits recording only when no outcome for that request is already retained, without
-changing any input or recording an outcome. Phase 2k38 adds the pure recording transition that
-delegates complete eligibility to that policy and returns a new snapshot retaining stable order
-and exact existing instances before the exact supplied outcome, without producing an outcome or
-connecting recording to focused-search completion. Phase 2k39 adds pure completion-with-outcome
-eligibility that delegates active-request and recording decisions to the existing policies and
-returns true only when the request is active and no outcome for it is already retained, without
-completing an activity, recording an outcome, or changing any input. Phase 2k40 adds one immutable
-completion-with-outcome result retaining exact existing activity and outcome snapshot instances
-through get-only properties without performing completion, recording an outcome, or changing
-either snapshot. Phase 2k41 adds one pure combined completion transition that delegates complete
-eligibility, exact-request activity removal, and exact-outcome recording to the existing policies
-and transitions, returning their exact resulting snapshots without changing any input.
+Phases 2k1–2k23 established focused-search requests and immutable activity state; pure
+start/cancel/complete policies and transitions; the condition-aware Seeker controller and visible
+indicator; stable focus, request, and retained greybox-condition bridges; and explicit temporary F,
+C, and E lifecycle inputs with a Boolean-derived result readout. Successful operations replace the
+immutable activity snapshot and update presentation; rejected or repeated operations preserve
+state.
+
+Phases 2k24–2k38 established immutable outcomes and ordered snapshots plus pure projection,
+lookup, applicability, change, application, consumption, resolution, and recording boundaries.
+These contracts preserve stable order and required exact instances, never change their inputs, and
+do not produce outcomes, grant discovery, or change authoritative world state.
+
+Phases 2k39–2k42 connect an existing outcome to completion through combined eligibility, result,
+and transition contracts, followed by controller-owned immutable outcome state and an
+outcome-aware Seeker completion operation. A successful controller call installs both exact result
+snapshots before updating the existing activity indicator; rejected calls preserve both snapshots
+and presentation. Ordinary play remains on the request-only temporary completion path.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,

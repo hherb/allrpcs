@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://FocusedSearchActivityController.cs" id="14_search_controller"]
 [ext_resource type="Script" path="res://FocusedSearchActivityControllerSmokeCheck.cs" id="15_search_controller_check"]
 [ext_resource type="Script" path="res://TemporaryFocusedSearchContextSource.cs" id="16_search_context_source"]
+[ext_resource type="Script" path="res://FocusedSearchOutcomeControllerSmokeCheck.cs" id="17_search_outcome_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -314,6 +315,9 @@ script = ExtResource("13_search_indicator_check")
 
 [node name="FocusedSearchActivityControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("15_search_controller_check")
+
+[node name="FocusedSearchOutcomeControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("17_search_outcome_controller_check")
 
 [node name="Healer" type="CharacterBody2D" parent="."]
 position = Vector2(680, 450)

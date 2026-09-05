@@ -2,60 +2,51 @@
 
 ## Current state
 
-Phase 2k41 is implemented and reviewed without findings on
-`codex/phase-2k41-completion-with-outcome-transition`, based directly on PR #88's verified merge
-commit `cb38cd8`. Slice commit `f6f5984` is pushed, and draft PR #89
-(`https://github.com/hherb/allrpcs/pull/89`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k42 is implemented and reviewed without findings on
+`codex/phase-2k42-outcome-controller-completion`, based directly on PR #89's verified merge commit
+`8400113`.
 
-`Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionTransition.CompleteWithOutcome` is one
-pure static operation accepting an existing `FocusedSearchOutcome`,
-`FocusedSearchActivitySnapshot`, and `FocusedSearchOutcomeSnapshot`. It delegates complete
-eligibility to `FocusedSearchOutcomeCompletionPolicy`, rejects inactive or already-recorded
-requests, then delegates exact-request activity removal to
-`FocusedSearchCompletionTransition.CompleteSearch` and exact-outcome append to
-`FocusedSearchOutcomeRecordingTransition.Record`. Its result retains the exact two snapshots
-returned by those transitions. Inputs and unrelated retained instances remain unchanged.
+`Allrpcs.Game.FocusedSearchActivityController` now owns immutable activity and outcome snapshots,
+initializes both empty, and exposes their current values. Its new
+`TryCompleteSearchWithOutcome` operation accepts an existing outcome only for the controller's
+Seeker, delegates eligibility and transition to the existing Domain boundaries, replaces both
+snapshots with the transition result's exact instances, and then presents the resulting activity
+snapshot. Rejected calls preserve both snapshots and presentation. Existing start, cancellation,
+and request-only completion paths preserve outcome state.
 
-The seven focused tests failed first with nine missing-transition compile errors, then passed after
-the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning build, 631 Domain
-tests, 107 Application tests, six architecture tests, all six Godot smokes, and the bounded
-graphical launch. The sandbox-only focused test attempt was inconclusive after the build because
-VSTest could not use its required local socket facilities. No runtime Godot behavior changed, so
-no separate manual visual acceptance was performed. Hosted desktop outputs remain unsigned
-development evidence, not releases.
+The test-first Game build failed with ten missing-member errors before implementation. Host-shell
+`./scripts/quality.sh` passed with a zero-warning build, 631 Domain tests, 107 Application tests,
+six architecture tests, all seven Godot smokes, and the bounded graphical launch. The sandboxed
+quality attempt reached the clean build but remained inconclusive when VSTest could not open its
+required loopback socket. No ordinary-play or visible behavior changed, so no separate manual
+visual acceptance was needed. Hosted desktop outputs remain unsigned development evidence, not
+releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k42: focused-search outcome state and controller completion bridge**.
+Take **Phase 2k43: temporary focused-search outcome source**.
 
 Acceptance boundary:
 
-1. Extend the existing `Allrpcs.Game.FocusedSearchActivityController` to own one immutable
-   `FocusedSearchOutcomeSnapshot`, initialize it empty in `_Ready`, and expose its current value
-   without adding another owner or mutable collection.
-2. Add one outcome-aware completion operation accepting an existing `FocusedSearchOutcome`. For
-   this controller's Seeker only, delegate the complete decision to
-   `FocusedSearchOutcomeCompletionPolicy` and the successful state change to
-   `FocusedSearchOutcomeCompletionTransition.CompleteWithOutcome`. Replace both owned snapshots
-   with the result's exact instances and present the resulting activity snapshot only after
-   success. Rejected calls must preserve both snapshots and presentation.
-3. Add focused Godot smoke coverage for empty initial outcome state; successful exact-request
-   removal and exact-outcome append; stable order and exact unrelated-instance retention; unchanged
-   inputs; wrong-character, inactive-request, duplicate-request, and null rejection; and unchanged
-   existing start, cancellation, and request-only completion behavior.
-4. Document Phase 2k42 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+1. Add one narrow Godot-layer source that accepts an existing `FocusedSearchRequest` and constructs
+   a `FocusedSearchOutcome` retaining that exact request plus the exact existing
+   `VisibilityState.Identified` singleton as one explicitly temporary deterministic result.
+2. Reject a null request. Do not inspect focus, activity, outcomes, perception, or world state;
+   decide eligibility; call a controller; or own lifecycle state in the source.
+3. Add the source to the greybox scene and focused credential-free smoke coverage for exact input
+   retention, the exact visibility-state instance, distinct result instances across repeated calls,
+   null rejection, and unchanged controller snapshots and presentation.
+4. Document Phase 2k43 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
 Explicit exclusions:
 
-- Do not construct or inject an outcome from ordinary play, wire the new operation through
-  `Main`, interaction focus, or final UI, or remove the existing request-only temporary completion
-  path.
-- Do not produce or resolve an outcome, apply a visibility change, grant discovery, consume an
-  outcome, or add new perception, world-state, location, inventory, or persistence behavior.
-- Do not add outcome replacement, visibility ranking, coordinates, range policy, passive
+- Do not invoke the outcome source or outcome-aware completion from `Main` or ordinary play, add an
+  input action, or remove or alter the existing request-only temporary completion path.
+- Do not resolve or apply an outcome, change perception or visibility, grant discovery, consume an
+  outcome, or add authoritative object, character, location, inventory, or persistence behavior.
+- Do not add target-specific outcome rules, visibility ranking, coordinates, range policy, passive
   noticing, reinterpretation, serialization, providers, plugins, credentials, or final interaction
   UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
