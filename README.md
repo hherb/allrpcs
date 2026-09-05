@@ -614,6 +614,13 @@ entry instance. Only the target entry is replaced, retaining its exact object id
 outcome's exact resulting visibility-state instance. It leaves both inputs unchanged and does not
 rank states, produce or consume outcomes, or connect application to focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionPolicy.CanConsume` is the pure
+consumption-eligibility decision for one existing focused-search outcome. It delegates exact
+request selection to the existing outcome lookup and returns true only when the retained complete
+outcome is value-equal to the supplied outcome, including its resulting visibility state. It
+rejects null inputs, leaves every input and retained instance unchanged, and does not remove or
+otherwise consume an outcome, change perception, or connect consumption to completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
