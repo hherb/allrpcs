@@ -4,8 +4,9 @@
 
 Phase 2k38 is implemented and reviewed without findings on
 `codex/phase-2k38-outcome-recording-transition`, based directly on PR #85's verified merge commit
-`c751e62c`. The reviewed slice is ready for commit and a draft pull request; pull-request merge
-remains separately unauthorized.
+`c751e62c`. Slice commit `7cb4404` is pushed, and draft PR #86
+(`https://github.com/hherb/allrpcs/pull/86`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeRecordingTransition.Record` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `FocusedSearchOutcomeSnapshot`. It
