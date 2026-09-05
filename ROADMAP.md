@@ -211,7 +211,10 @@ policy, and returns true only when both decisions succeed without changing eithe
 snapshot instances through get-only properties without performing resolution or changing either
 snapshot. Phase 2k36 adds one pure combined resolution transition that delegates complete
 eligibility, perception replacement, and exact-outcome removal to the existing policies and
-transitions, returning their exact resulting snapshots without changing any input.
+transitions, returning their exact resulting snapshots without changing any input. Phase 2k37
+adds pure recording eligibility that delegates exact-request selection to the existing outcome
+lookup and permits recording only when no outcome for that request is already retained, without
+changing any input or recording an outcome.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
