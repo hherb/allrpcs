@@ -4,8 +4,9 @@
 
 Phase 2k43 is implemented and reviewed without findings on
 `codex/phase-2k43-temporary-outcome-source`, based directly on PR #90's verified merge commit
-`faabe0c`. The reviewed slice commit and draft pull request remain to be recorded below; merging
-remains separately unauthorized.
+`faabe0c`. Slice commit `ea38464` is pushed, and draft PR #91
+(`https://github.com/hherb/allrpcs/pull/91`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a narrow scene-owned source whose
 `CreateOutcome` method accepts an existing request and returns a distinct outcome retaining that
