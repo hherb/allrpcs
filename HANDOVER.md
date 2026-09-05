@@ -4,7 +4,9 @@
 
 Phase 2k28 is implemented and reviewed without findings on
 `codex/phase-2k28-character-perception-lookup`, based directly on PR #75's merge commit
-`3a7495a`. Commit, push, and draft-PR creation are authorized and pending.
+`3a7495a`. Feature commit `dc0d3b4` is pushed, and draft PR #76
+(`https://github.com/hherb/allrpcs/pull/76`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Perception.CharacterPerceptionLookup.FindByObject` is one pure static operation
 that accepts an existing `ObjectId` and `CharacterPerceptionSnapshot`. It matches the object
