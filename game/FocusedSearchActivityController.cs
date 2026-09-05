@@ -1,13 +1,14 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Perception;
 using Godot;
 
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Owns the Seeker's live focused-search activity and outcome snapshots and presents successful
-/// activity transitions.
+/// Owns the Seeker's live focused-search activity, outcome, and perception snapshots and presents
+/// successful activity transitions.
 /// </summary>
 public partial class FocusedSearchActivityController : Node
 {
@@ -26,6 +27,9 @@ public partial class FocusedSearchActivityController : Node
     /// <summary>Gets the current immutable focused-search outcome snapshot.</summary>
     public FocusedSearchOutcomeSnapshot Outcomes { get; private set; } = new([]);
 
+    /// <summary>Gets the Seeker's initialized immutable perception snapshot, if any.</summary>
+    public CharacterPerceptionSnapshot? Perception { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -34,7 +38,24 @@ public partial class FocusedSearchActivityController : Node
             "../FocusedSearchActivityIndicator");
         Activities = new FocusedSearchActivitySnapshot([]);
         Outcomes = new FocusedSearchOutcomeSnapshot([]);
+        Perception = null;
         indicator.Present(SearcherCharacterId, Activities);
+    }
+
+    /// <summary>
+    /// Initializes this controller's perception once from an existing Seeker snapshot.
+    /// </summary>
+    public bool TryInitializePerception(CharacterPerceptionSnapshot perception)
+    {
+        ArgumentNullException.ThrowIfNull(perception);
+
+        if (perception.CharacterId != SearcherCharacterId || Perception is not null)
+        {
+            return false;
+        }
+
+        Perception = perception;
+        return true;
     }
 
     /// <summary>

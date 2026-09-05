@@ -24,6 +24,7 @@ public partial class Main : Node
     private InteractionFocusController interactionFocusController = null!;
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
+    private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -41,6 +42,14 @@ public partial class Main : Node
             "TemporaryFocusedSearchContextSource");
         focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
             "TemporaryFocusedSearchOutcomeSource");
+        seekerPerceptionSource = GetNode<TemporarySeekerPerceptionSource>(
+            "TemporarySeekerPerceptionSource");
+        if (!focusedSearchController.TryInitializePerception(seekerPerceptionSource.Perception))
+        {
+            throw new InvalidOperationException(
+                "The focused-search controller could not initialize Seeker perception.");
+        }
+
         focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
     }
