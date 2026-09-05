@@ -5,6 +5,9 @@
 Phase 2k34 is implemented and reviewed without findings on
 `codex/phase-2k34-outcome-resolution-eligibility`, based directly on PR #81's merge commit
 `d66f68d2`.
+Slice commit `b098287` is pushed, and draft PR #82
+(`https://github.com/hherb/allrpcs/pull/82`) is open.
+Pull-request merge remains separately unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionPolicy.CanResolve` is one pure static
 operation accepting an existing `FocusedSearchOutcome`, `CharacterPerceptionSnapshot`, and
