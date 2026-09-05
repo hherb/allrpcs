@@ -3,6 +3,7 @@ using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Perception;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -240,9 +241,9 @@ public partial class InteractionFocusSmokeCheck : Node
             + "stable request-identifier retention; stable capability-only and tool-only "
             + "focused-search context authoring; mapped start, cancellation, and completion "
             + "inputs; exact retained active requests; both eligible starts and "
-            + "focus-independent cancellations and completions; unchanged inputs; "
-            + "failure-state identity; activity presentation; and initial, changed, and "
-            + "unchanged lifecycle-result presentation were correct.");
+            + "focus-independent cancellations and outcome-aware completions; exact outcome "
+            + "recording; unchanged inputs; failure-state identity; activity presentation; "
+            + "and initial, changed, and unchanged lifecycle-result presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -365,6 +366,7 @@ public partial class InteractionFocusSmokeCheck : Node
         ObjectId targetObjectId = authoredObjectIds[expectedTargetIndex];
 
         FocusedSearchActivitySnapshot initialSnapshot = focusedSearchController.Activities;
+        FocusedSearchOutcomeSnapshot initialOutcomes = focusedSearchController.Outcomes;
         if (initialSnapshot.Entries.Count != 0 || focusedSearchIndicator.Visible)
         {
             Fail("Interaction-focus smoke failed eligible start setup: state was not empty.");
@@ -397,11 +399,15 @@ public partial class InteractionFocusSmokeCheck : Node
                 Pressed = true,
             });
         if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(
                 expectedUnchangedResultText,
                 "released and unrelated input preservation")
-            || !AssertNonSearchInputsPreserveResult(expectedUnchangedResultText))
+            || !AssertNonSearchInputsPreserveResult(
+                expectedUnchangedResultText,
+                initialSnapshot,
+                initialOutcomes))
         {
             Fail("Interaction-focus smoke failed input-only start gating.");
             return false;
@@ -409,6 +415,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         PressFocusedSearchCancel();
         if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(CancelUnchangedText, "no-active cancellation"))
         {
@@ -418,6 +425,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         PressFocusedSearchComplete();
         if (!ReferenceEquals(focusedSearchController.Activities, initialSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(CompleteUnchangedText, "no-active completion"))
         {
@@ -434,6 +442,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         FocusedSearchActivitySnapshot startedSnapshot = focusedSearchController.Activities;
         if (startedSnapshot.Entries.Count != 1
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(StartChangedText, "eligible start"))
         {
@@ -451,6 +460,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         PressFocusedSearchStart();
         if (!ReferenceEquals(focusedSearchController.Activities, startedSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(StartUnchangedText, "already-active start"))
         {
@@ -471,6 +481,7 @@ public partial class InteractionFocusSmokeCheck : Node
         FocusedSearchActivitySnapshot cancelledSnapshot = focusedSearchController.Activities;
         if (ReferenceEquals(cancelledSnapshot, startedSnapshot)
             || cancelledSnapshot.Entries.Count != 0
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(CancelChangedText, "successful cancellation"))
         {
@@ -480,6 +491,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         PressFocusedSearchCancel();
         if (!ReferenceEquals(focusedSearchController.Activities, cancelledSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(CancelUnchangedText, "repeated cancellation"))
         {
@@ -495,6 +507,7 @@ public partial class InteractionFocusSmokeCheck : Node
             focusedSearchController.Activities;
         if (ReferenceEquals(completionStartedSnapshot, cancelledSnapshot)
             || completionStartedSnapshot.Entries.Count != 1
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
             || !focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(StartChangedText, "completion setup start"))
         {
@@ -523,8 +536,10 @@ public partial class InteractionFocusSmokeCheck : Node
 
         PressFocusedSearchComplete();
         FocusedSearchActivitySnapshot completedSnapshot = focusedSearchController.Activities;
+        FocusedSearchOutcomeSnapshot completedOutcomes = focusedSearchController.Outcomes;
         if (ReferenceEquals(completedSnapshot, completionStartedSnapshot)
             || completedSnapshot.Entries.Count != 0
+            || !AssertCompletedOutcome(initialOutcomes, completedOutcomes, completionRequest)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(CompleteChangedText, "successful completion"))
         {
@@ -534,6 +549,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         PressFocusedSearchComplete();
         if (!ReferenceEquals(focusedSearchController.Activities, completedSnapshot)
+            || !ReferenceEquals(focusedSearchController.Outcomes, completedOutcomes)
             || focusedSearchIndicator.Visible
             || !AssertFocusedSearchResult(CompleteUnchangedText, "repeated completion"))
         {
@@ -547,7 +563,46 @@ public partial class InteractionFocusSmokeCheck : Node
         return true;
     }
 
-    private bool AssertNonSearchInputsPreserveResult(string expectedText)
+    private bool AssertCompletedOutcome(
+        FocusedSearchOutcomeSnapshot previousOutcomes,
+        FocusedSearchOutcomeSnapshot completedOutcomes,
+        FocusedSearchRequest completedRequest)
+    {
+        if (ReferenceEquals(completedOutcomes, previousOutcomes)
+            || completedOutcomes.Entries.Count != previousOutcomes.Entries.Count + 1)
+        {
+            Fail("Interaction-focus smoke failed focused-search outcome recording.");
+            return false;
+        }
+
+        for (int index = 0; index < previousOutcomes.Entries.Count; index++)
+        {
+            if (!ReferenceEquals(
+                    completedOutcomes.Entries[index],
+                    previousOutcomes.Entries[index]))
+            {
+                Fail("Interaction-focus smoke replaced a previously recorded outcome.");
+                return false;
+            }
+        }
+
+        FocusedSearchOutcome outcome = completedOutcomes.Entries[^1];
+        if (!ReferenceEquals(outcome.Request, completedRequest)
+            || !ReferenceEquals(outcome.ResultingVisibilityState, VisibilityState.Identified))
+        {
+            Fail(
+                "Interaction-focus smoke failed exact request and identified-state outcome "
+                + "retention.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool AssertNonSearchInputsPreserveResult(
+        string expectedText,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes)
     {
         main._UnhandledInput(
             new InputEventAction
@@ -589,6 +644,14 @@ public partial class InteractionFocusSmokeCheck : Node
             || !AssertFocusedSearchResult(expectedText, "healer move reset preservation"))
         {
             Fail("Interaction-focus smoke failed unchanged healer move reset behavior.");
+            return false;
+        }
+
+        if (!ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            || focusedSearchIndicator.Visible)
+        {
+            Fail("Interaction-focus smoke failed non-search input state preservation.");
             return false;
         }
 

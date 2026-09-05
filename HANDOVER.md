@@ -2,51 +2,51 @@
 
 ## Current state
 
-Phase 2k43 is implemented and reviewed without findings on
-`codex/phase-2k43-temporary-outcome-source`, based directly on PR #90's verified merge commit
-`faabe0c`. Slice commit `ea38464` is pushed, and draft PR #91
-(`https://github.com/hherb/allrpcs/pull/91`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k44 is implemented on `codex/phase-2k44-outcome-aware-completion-input`, based directly on
+PR #91's verified merge commit `07cdc183`. `Main` now resolves the existing scene outcome source
+once and, only for a pressed E action with an active Seeker request, creates one temporary outcome
+from that exact request and passes it to
+`FocusedSearchActivityController.TryCompleteSearchWithOutcome`.
 
-`Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a narrow scene-owned source whose
-`CreateOutcome` method accepts an existing request and returns a distinct outcome retaining that
-exact request and the exact `VisibilityState.Identified` singleton. It rejects null and has no
-focus, controller, snapshot, perception, world-state, or lifecycle dependency. The source is not
-invoked from `Main`, and ordinary play retains the request-only temporary completion path.
+Successful E completion removes the activity, records the exact new outcome with the exact
+`VisibilityState.Identified` singleton, hides the indicator, and retains the existing Boolean-derived
+result text. No-active and repeated completion preserve both immutable controller snapshots.
+Existing F start, C cancellation, healer, movement, released, unrelated, and handled-input paths are
+unchanged. No outcome is resolved, applied, or consumed, and perception does not change.
 
-The test-first Game build failed with the expected missing-source type before implementation.
-Host-shell `./scripts/quality.sh` passed with a zero-warning build, 631 Domain tests, 107 Application
-tests, six architecture tests, all eight Godot smokes, and the bounded graphical launch. The
-sandboxed quality attempt reached the zero-warning build but remained inconclusive when VSTest
-could not open its required loopback socket. The focused smoke proves exact input and singleton
-retention, distinct repeated results, null rejection, and unchanged controller snapshots and
-indicator presentation. No ordinary-play or visible behavior changed, so no separate manual visual
-acceptance was needed. Hosted desktop outputs remain unsigned development evidence, not releases.
+The test-first interaction-focus smoke failed at exact outcome recording before the `Main` change.
+After implementation and review, host-shell `./scripts/quality.sh` passed with a zero-warning build,
+631 Domain tests, 107 Application tests, six architecture tests, all eight Godot smokes, and the
+bounded graphical launch. The focused smoke covers exact outcome append, prior-outcome retention,
+activity removal, indicator hiding, result text, rejection identity, and unchanged existing inputs.
+No separate manual visual acceptance was needed because visible behavior did not change. Hosted
+desktop outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k44: temporary outcome-aware completion input**.
+Take **Phase 2k45: temporary Seeker perception source**.
 
 Acceptance boundary:
 
-1. Give `Main` the existing scene outcome source and, on the existing pressed E action with an
-   active Seeker request, create one temporary outcome from that exact request and pass that exact
-   outcome to `FocusedSearchActivityController.TryCompleteSearchWithOutcome`.
-2. Preserve no-active-search and repeated-completion behavior, handled-input behavior, the existing
-   Boolean-derived result text, F start, C cancellation, healer inputs, and released or unrelated
-   input behavior. Do not add or remap an input action.
-3. Extend focused credential-free smoke coverage to prove exact outcome recording, completed
-   activity removal, indicator hiding, result-text changes, rejection preservation, and unchanged
-   existing input paths.
-4. Document Phase 2k44 compactly, leave the broader focused-search item incomplete, run
-   `./scripts/quality.sh`, review every intended path, and prune this file to current evidence,
-   limits, and one exact next slice.
+1. Add one narrow scene-owned source exposing a single immutable `CharacterPerceptionSnapshot` for
+   the existing Seeker. Retain the controller's exact authored `CharacterId` and the visible herb
+   patch and stone marker's exact parsed `ObjectId` instances in authored order, each initially
+   paired with the exact `VisibilityState.Noticed` singleton.
+2. Construct the snapshot once during scene readiness and return that same snapshot instance on
+   repeated access. Do not read focus or lifecycle state, create an outcome, call a controller, or
+   make the temporary markers authoritative world objects.
+3. Add the source to the greybox scene and focused credential-free smoke coverage for exact nested
+   instance and order retention, stable repeated access, the intended two-entry boundary, and
+   unchanged activity/outcome snapshots and presentation.
+4. Document Phase 2k45 compactly, leave the broader focused-search item incomplete, run
+   `./scripts/quality.sh`, review every intended path, and prune both planning documents to current
+   evidence and one exact next slice.
 
 Explicit exclusions:
 
-- Do not resolve, apply, or consume the recorded outcome; change perception or visibility; grant
-  discovery; or add automatic progress, duration, completion, polling, or lifecycle behavior.
-- Do not add target-specific result rules, visibility ranking, coordinates, range policy, passive
+- Do not resolve, apply, or consume a recorded outcome; change controller-owned perception or
+  visibility; grant discovery; or connect this source to `Main` or any lifecycle input.
+- Do not add target-specific outcome rules, visibility ranking, coordinates, range policy, passive
   noticing, reinterpretation, authoritative objects or characters, persistence, serialization,
   providers, plugins, credentials, failure-reason presentation, or final interaction UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred

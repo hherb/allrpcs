@@ -23,6 +23,7 @@ public partial class Main : Node
     private Label focusedSearchResultStatus = null!;
     private InteractionFocusController interactionFocusController = null!;
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
+    private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -38,6 +39,8 @@ public partial class Main : Node
             "InteractionFocusController");
         focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
             "TemporaryFocusedSearchContextSource");
+        focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
+            "TemporaryFocusedSearchOutcomeSource");
         focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
     }
@@ -63,7 +66,8 @@ public partial class Main : Node
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
             bool changed = activeRequest is not null
-                && focusedSearchController.TryCompleteSearch(activeRequest);
+                && focusedSearchController.TryCompleteSearchWithOutcome(
+                    focusedSearchOutcomeSource.CreateOutcome(activeRequest));
             PresentFocusedSearchResult("COMPLETE", changed);
         }
         else if (@event.IsActionPressed(FocusedSearchStartAction))
