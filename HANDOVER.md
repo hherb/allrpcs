@@ -5,6 +5,9 @@
 Phase 2k35 is implemented and reviewed without findings on
 `codex/phase-2k35-outcome-resolution-result`, based directly on PR #82's verified merge commit
 `2896ad6`.
+Slice commit `f402450` is pushed, and draft PR #83
+(`https://github.com/hherb/allrpcs/pull/83`) is open.
+Pull-request merge remains separately unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionResult` is one sealed immutable record
 retaining exact existing `CharacterPerceptionSnapshot` and `FocusedSearchOutcomeSnapshot`
