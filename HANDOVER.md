@@ -5,6 +5,10 @@
 Phase 2k45 is implemented on `codex/phase-2k45-temporary-perception-source`, based directly on
 PR #92's verified merge commit `7b3795f`.
 
+Slice commit `d9cfb57` is pushed, and draft PR #93
+(`https://github.com/hherb/allrpcs/pull/93`) is open. Pull-request merge remains separately
+unauthorized.
+
 The greybox scene now owns one `TemporarySeekerPerceptionSource`. During scene readiness it creates
 one immutable `CharacterPerceptionSnapshot` retaining the focused-search controller's exact parsed
 Seeker `CharacterId`. Its only entries retain the herb patch and stone marker's exact parsed
