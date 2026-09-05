@@ -5,6 +5,9 @@
 Phase 2k33 is implemented and reviewed without findings on
 `codex/phase-2k33-outcome-consumption-transition`, based directly on PR #80's merge commit
 `e1c7c87b`.
+Slice commit `5cb554b` is pushed, and draft PR #81
+(`https://github.com/hherb/allrpcs/pull/81`) is open.
+Pull-request merge remains separately unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionTransition.Consume` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `FocusedSearchOutcomeSnapshot`. It
