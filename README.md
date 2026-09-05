@@ -739,6 +739,13 @@ existing discovery-condition set, capability set, and inventory needed by the st
 source does not start a search, poll focus, own lifecycle state, grant discovery, or make the
 temporary markers authoritative world objects.
 
+`Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
+explicitly temporary deterministic focused-search result. Each call accepts an existing request and
+returns a distinct `FocusedSearchOutcome` retaining that exact request and the exact existing
+`VisibilityState.Identified` singleton. It rejects a null request and does not inspect focus,
+activity, outcomes, perception, or world state; decide eligibility; call a controller; own lifecycle
+state; apply or consume an outcome; or change visibility. Ordinary play does not invoke this source.
+
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` passes the context source's exact retained condition,
 capability, and inventory aggregates to the existing interaction-focus start boundary. A valid

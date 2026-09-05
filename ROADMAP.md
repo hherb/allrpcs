@@ -184,11 +184,12 @@ lookup, applicability, change, application, consumption, resolution, and recordi
 These contracts preserve stable order and required exact instances, never change their inputs, and
 do not produce outcomes, grant discovery, or change authoritative world state.
 
-Phases 2k39–2k42 connect an existing outcome to completion through combined eligibility, result,
-and transition contracts, followed by controller-owned immutable outcome state and an
-outcome-aware Seeker completion operation. A successful controller call installs both exact result
-snapshots before updating the existing activity indicator; rejected calls preserve both snapshots
-and presentation. Ordinary play remains on the request-only temporary completion path.
+Phases 2k39–2k43 connect an existing outcome to completion through combined eligibility, result,
+and transition contracts; controller-owned immutable outcome state and outcome-aware Seeker
+completion; and a separate temporary Godot outcome source. The source produces a distinct outcome
+retaining an existing request and the exact `Identified` singleton without inspecting or changing
+controller, perception, or world state. Ordinary play remains on the request-only temporary
+completion path.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
