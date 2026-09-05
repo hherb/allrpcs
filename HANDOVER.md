@@ -2,47 +2,49 @@
 
 ## Current state
 
-Phase 2k28 is implemented and reviewed without findings on
-`codex/phase-2k28-character-perception-lookup`, based directly on PR #75's merge commit
-`3a7495a`. Feature commit `dc0d3b4` is pushed, and draft PR #76
-(`https://github.com/hherb/allrpcs/pull/76`) is open. Pull-request merge remains separately
+Phase 2k29 is implemented and reviewed without findings on
+`codex/phase-2k29-outcome-applicability`, based directly on PR #76's merge commit
+`29d480b`. Slice commit `3cec688` is pushed, and draft PR #77
+(`https://github.com/hherb/allrpcs/pull/77`) is open. Pull-request merge remains separately
 unauthorized.
 
-`Allrpcs.Domain.Perception.CharacterPerceptionLookup.FindByObject` is one pure static operation
-that accepts an existing `ObjectId` and `CharacterPerceptionSnapshot`. It matches the object
-identifier by value and returns the exact retained `WorldObjectVisibility`, or `null`. It rejects
-null inputs, relies on the snapshot's duplicate-object invariant, preserves the entry and all
-nested instances, and leaves every input unchanged. It does not inspect a complete character,
-compare or advance visibility, mutate perception, or produce or apply a focused-search outcome.
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeApplicabilityPolicy.CanApply` is one pure static
+operation accepting an existing `FocusedSearchOutcome` and `CharacterPerceptionSnapshot`. It
+returns true only when the snapshot's character identifier is value-equal to the outcome
+request's searcher identifier and `CharacterPerceptionLookup.FindByObject` finds the request's
+target object. It rejects null inputs, leaves every retained instance unchanged, and deliberately
+does not inspect current or resulting visibility states, rank transitions, mutate perception,
+consume the outcome, or connect it to focused-search completion.
 
-The seven focused tests failed first with `CS0103`/`CS0246` while the lookup type was absent, then
-passed after the implementation. The sandboxed green rerun compiled but stalled at the known
-VSTest loopback restriction; the identical host-shell focused test passed. Host-shell
-`./scripts/quality.sh` passed with a zero-warning build, 524 Domain tests, 107 Application tests,
-six architecture tests, all six Godot smokes, and the bounded graphical launch. No runtime Godot
-behavior changed, so no separate manual visual acceptance was performed. Hosted desktop outputs
-remain unsigned development evidence, not releases.
+The nine focused tests failed first with `CS0103`/`CS0246` while the policy type was absent. The
+sandboxed green rerun compiled but stopped at the known VSTest loopback restriction; the identical
+host-shell focused test passed. Host-shell `./scripts/quality.sh` passed with a zero-warning build,
+533 Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and the
+bounded graphical launch. No runtime Godot behavior changed, so no separate manual visual
+acceptance was performed. Hosted desktop outputs remain unsigned development evidence, not
+releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k29: focused-search outcome applicability policy**.
+Take **Phase 2k30: focused-search outcome change detection**.
 
 Acceptance boundary:
 
-1. Add one pure static
-   `Allrpcs.Domain.Discovery.FocusedSearchOutcomeApplicabilityPolicy.CanApply` operation accepting
-   an existing `FocusedSearchOutcome` and `CharacterPerceptionSnapshot` and returning a Boolean.
-2. Return true only when the snapshot's character identifier is value-equal to the outcome
-   request's searcher identifier and the existing `CharacterPerceptionLookup` finds the outcome
-   request's target object in that snapshot; otherwise return false.
-3. Delegate exact-object selection to `CharacterPerceptionLookup`, reject either null input,
-   preserve all exact retained instances, and leave every input unchanged.
-4. Add focused Domain tests for matching eligibility, wrong character, absent target, unrelated
-   entries, value-equal distinct identifiers, unchanged inputs, null rejection, delegation-backed
-   duplicate-invariant behavior, and the intended single-operation pure static API surface.
-5. Do not compare current and resulting visibility states, decide a visibility transition, apply
-   or mutate perception, consume an outcome, or connect the decision to focused-search completion.
-6. Document Phase 2k29 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+1. Add one pure static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeChangePolicy.WouldChange`
+   operation accepting an existing `FocusedSearchOutcome` and `CharacterPerceptionSnapshot` and
+   returning a Boolean.
+2. Delegate applicability to `FocusedSearchOutcomeApplicabilityPolicy`; return false when the
+   outcome is not applicable.
+3. For an applicable outcome, delegate exact target selection to `CharacterPerceptionLookup` and
+   return true only when the retained target entry's existing visibility state differs from the
+   outcome's resulting visibility state; otherwise return false.
+4. Add focused Domain tests for equal-state rejection, every distinct current/resulting state
+   pair, wrong character, absent target, unrelated entries, value-equal distinct identifiers,
+   unchanged inputs, null rejection, delegate behavior, and the intended single-operation pure
+   static API surface.
+5. Do not rank visibility states, decide whether a change is advancement or regression, apply or
+   mutate perception, consume an outcome, or connect the decision to focused-search completion.
+6. Document Phase 2k30 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 

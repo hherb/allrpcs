@@ -592,6 +592,13 @@ returning the exact retained visibility entry or `null` when no entry matches. I
 inputs, relies on the snapshot's duplicate-object invariant, leaves every input unchanged, and
 does not inspect the complete character, compare or advance visibility, or apply an outcome.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeApplicabilityPolicy.CanApply` is the pure
+perception-applicability decision for one focused-search outcome. It returns true only when the
+perception snapshot represents the outcome request's searcher and the existing perception lookup
+finds that request's target object. It rejects null inputs, ignores current and resulting
+visibility states, leaves every input unchanged, and does not decide a visibility transition or
+apply an outcome.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances

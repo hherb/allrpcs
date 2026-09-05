@@ -189,13 +189,17 @@ without changing any input or applying an outcome. Phase 2k27 adds pure exact-re
 returns the one exact retained outcome, or null, without changing any input or applying an outcome.
 Phase 2k28 adds pure exact-object lookup from one character's perception snapshot, returning the
 exact retained visibility entry or null without changing any input or applying an outcome.
+Phase 2k29 adds a pure outcome-applicability decision that requires the perception snapshot's
+character to match the outcome request's searcher and delegates target presence to the existing
+exact-object lookup, without comparing visibility states, changing perception, or applying an
+outcome.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or application, discovery effect, reason presentation, or final interaction
-UI. Phase 2k29 is the next bounded slice: define the pure eligibility decision for applying one
-focused-search outcome to one character's perception snapshot, without applying the outcome or
-changing perception. See `HANDOVER.md` for its exact acceptance boundary and current validation
-evidence.
+UI. Phase 2k30 is the next bounded slice: define the pure visibility-state change-detection
+decision needed before an applicable outcome can change perception, without ranking transitions,
+changing perception, or applying an outcome. See `HANDOVER.md` for its exact acceptance boundary
+and current validation evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
