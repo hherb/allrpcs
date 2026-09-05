@@ -642,6 +642,14 @@ through get-only properties. Its record equality therefore uses those retained s
 It rejects null inputs and does not perform resolution, apply a visibility change, remove an
 outcome, validate either snapshot, or connect resolution to focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionTransition.Resolve` is the pure combined
+resolution transition for one eligible focused-search outcome. It delegates complete eligibility
+to the existing resolution policy, rejects ineligible resolution, then delegates perception
+replacement and outcome removal to the existing application and consumption transitions. It
+returns one resolution result retaining those exact returned snapshots, leaves every input and
+retained unrelated instance unchanged, and does not produce outcomes, grant discovery, or connect
+resolution to focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances

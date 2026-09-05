@@ -209,7 +209,9 @@ existing change policy, delegates exact recorded-outcome eligibility to the exis
 policy, and returns true only when both decisions succeed without changing either snapshot. Phase
 2k35 adds one immutable resolution-result value retaining exact existing perception and outcome
 snapshot instances through get-only properties without performing resolution or changing either
-snapshot.
+snapshot. Phase 2k36 adds one pure combined resolution transition that delegates complete
+eligibility, perception replacement, and exact-outcome removal to the existing policies and
+transitions, returning their exact resulting snapshots without changing any input.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
