@@ -12,91 +12,64 @@ macOS, Linux, and Windows.
 - The engine owns truth, perception, inventory, movement, discovery, disease progression, and
   action outcomes. LLMs decide only what their characters attempt through validated affordances.
 - World truths, evidence, claims, beliefs, and private knowledge remain distinct. Critical
-  conclusions use redundant evidence routes rather than linear quest flags.
-- OpenAI, Anthropic, and Ollama remain interchangeable adapters. Provider objects and credentials
+  conclusions require redundant evidence routes rather than linear quest flags.
+- OpenAI, Anthropic, and Ollama remain interchangeable adapters. Credentials and provider objects
   never enter domain state, saves, scenes, logs, source, or model context.
-- Durable state is local and provider-neutral. Hidden chain-of-thought is never requested or
-  stored.
+- Durable state is local and provider-neutral. Hidden chain-of-thought is never requested or stored.
 - Greybox controls, markers, status text, and geometry are behavior evidence, not final UX or art.
 
-## Completed foundation and greybox
+## Delivered foundation
 
-- [x] Phase 0 established the repository, Godot/.NET solution and dependency boundaries, local
-  quality spine, credential-free hosted checks, unsigned development exports, pinned workflows,
-  and `AGPL-3.0-only` licence.
-- [x] The retained Phase 1 greybox establishes keyboard movement, bounded camera framing,
-  representative collision, deterministic navigation, healer follow/wait/move behavior,
-  interaction focus, and regression smokes.
-- [ ] Point-and-click movement remains deferred pending prototype retention.
-- [ ] Disease-time pausing and a world-time debug overlay remain deferred pending authoritative
-  time and interaction systems.
+Phase 0 established the Godot/.NET solution, dependency boundaries, quality spine, credential-free
+hosted checks, unsigned development exports, pinned workflows, and `AGPL-3.0-only` licence. The
+retained Phase 1 greybox covers keyboard movement, bounded camera and collision, deterministic
+navigation, healer commands, interaction focus, and regression smokes.
+
+Phases 2a–2j established typed identifiers and immutable world, character, environmental,
+perception, inventory, and capability/tool discovery-condition boundaries. Phases 2k1–2k38 added
+focused-search lifecycle, outcome, perception-application, consumption, resolution, and recording
+contracts. Phases 2k39–2k48 now connect temporary F/C/E/R controls to controller-owned activity,
+outcome, and initialized Seeker perception snapshots: E records an exact `Identified` outcome and R
+applies and consumes the first retained Seeker outcome without changing completed activity.
 
 ## Active milestone: authoritative world and discovery
 
-Phases 2a–2j established typed identifiers; immutable world, character, environmental,
-perception, and inventory models; inventory policies; and capability/tool discovery conditions.
-They preserve authored order and fail closed without granting discovery or mutating world state.
-
-Phases 2k1–2k23 established immutable focused-search requests and activities; pure lifecycle
-policies and transitions; condition-aware Seeker start/cancel/complete control; visible activity;
-stable focus, request, and condition bridges; and temporary F/C/E inputs with Boolean result text.
-
-Phases 2k24–2k38 established immutable outcomes and ordered snapshots plus pure projection,
-lookup, applicability, change, application, consumption, resolution, and recording boundaries.
-
-Phases 2k39–2k47 connect an existing outcome to completion and explicit resolution through
-combined contracts, controller-owned activity/outcome state, a temporary deterministic outcome
-source, the E input, and temporary Seeker perception initialization. Completion records an exact
-`Identified` outcome and removes the activity. The controller retains the temporary source's exact
-ordered `Noticed` perception snapshot once, and its controller-only boundary can apply and consume
-an eligible recorded outcome without changing activity or presentation. Ordinary input does not
-resolve it yet.
-
-- [ ] Finish bounded focused searches with authoritative perception change and discovery effect.
-  There is still no resolution input, automatic lifecycle, progress, duration, failure reason,
-  discovery effect, or final interaction UI. The exact next slice is in `HANDOVER.md`.
+- [ ] Finish bounded focused searches with authoritative perception change and discovery
+  presentation. The exact next slice is Phase 2k49 in `HANDOVER.md`; automatic lifecycle, progress,
+  duration, failure reasons, discovery grants, and final interaction UI remain absent.
 - [ ] Add passive noticing without arbitrary pixel clicking.
 - [ ] Add knowledge-triggered reinterpretation of earlier observations.
 - [ ] Add an append-only authoritative world-event log and qualitative meaningful-event time.
 - [ ] Add deterministic, schema-versioned save/load.
 - [ ] Add representative visible, concealed, partial, residue, and tool-gated discoveries.
-- [ ] Add scenario validation and tests proving filtered views cannot leak hidden/private state.
+- [ ] Add scenario validation proving filtered views cannot leak hidden or private state.
 
 Phase 2 acceptance remains: save/load preserves world state exactly, and no UI or character context
 reveals hidden information before its authored discovery conditions are met.
 
 ## Later milestones
 
-- [ ] Phase 3: unrestricted natural-language dialogue with a deterministic healer and validated,
-  interruptible, one-action-at-a-time commitments.
-- [ ] Phase 4: provider-neutral live LLM turns with filtered context, validated output, streaming,
-  cancellation, timeouts, credential safety, and explicit offline behavior.
-- [ ] Phase 5: local character memory, sourced beliefs, bounded relationships, commitments,
-  deterministic retrieval, summaries, migrations, and restart/provider-switch continuity.
-- [ ] Phase 6: authoritative disease stages, meaningful-time progression, evidence-driven remedies,
-  experiments, recoverable failures, and the first patient stabilization.
-- [ ] Phase 7: multiple autonomous roles, bounded off-screen action, and consequential but fair,
-  physically and informationally constrained sabotage.
-- [ ] Phase 8: the authored opening region, Seeker customization, journal/map, multiple
-  investigation routes, stabilization, and dead-end-resistant playtesting.
-- [ ] Phase 9: validated art direction followed by accessible production art, effects, ambience,
-  sound, and music with recorded asset provenance.
-- [ ] Phase 10: provider-neutral, optional ASR/TTS with push-to-talk, correction, subtitles,
-  interruption, cancellation, and full typed-input parity.
-- [ ] Phase 11: cross-platform, accessibility, long-session, migration, provider-failure,
-  diagnostics, packaging, signing, and opening-scenario release-candidate validation.
-- [ ] Phase 12: explicitly deferred expansions including multiplayer, role reassignment, new
-  campaigns, authoring tools, mods, procedural dressing, extra accessibility modes, and ports.
+- [ ] Phase 3: deterministic-healer natural-language dialogue and validated, interruptible actions.
+- [ ] Phase 4: provider-neutral live LLM turns with filtered context and explicit offline behavior.
+- [ ] Phase 5: local memory, sourced beliefs, relationships, commitments, and migration continuity.
+- [ ] Phase 6: disease progression, evidence-driven remedies, experiments, and stabilization.
+- [ ] Phase 7: constrained autonomous roles and consequential but fair sabotage.
+- [ ] Phase 8: opening region, Seeker customization, journal/map, and dead-end-resistant playtests.
+- [ ] Phase 9: validated art direction, production art, effects, ambience, sound, and music.
+- [ ] Phase 10: optional provider-neutral ASR/TTS with complete typed-input parity.
+- [ ] Phase 11: cross-platform, accessibility, migration, packaging, signing, and release-candidate
+  validation.
+- [ ] Phase 12: deferred multiplayer, campaigns, authoring tools, mods, procedural dressing, and
+  ports.
 
-## Cross-cutting completion rules
+## Delivery boundaries
 
-- Keep domain rules deterministic and independently testable; keep Godot and provider types at
-  their boundaries; validate every world-changing intention in the engine.
-- Give each model only its character's filtered context. Treat player text as untrusted in-world
-  content and retain natural-language transcripts locally.
-- Preserve recoverable critical knowledge and valid silence, refusal, uncertainty, and
-  disagreement. The game must remain saveable when providers are unavailable.
-- Add automated tests with behavior, use representative manual evidence for visual/interaction
-  claims, and update this roadmap and `HANDOVER.md` at each completed slice.
+- Keep domain rules deterministic and engine-independent; validate every world-changing intention
+  in the engine and give each model only its character's filtered context.
+- Preserve valid silence, refusal, uncertainty, disagreement, recoverable critical knowledge, and
+  saveability when providers are unavailable.
+- Use automated behavioral tests and representative evidence for visual or interaction claims.
+- Point-and-click movement remains deferred pending prototype retention. Disease-time pausing and a
+  world-time debug overlay remain deferred pending authoritative time and interaction systems.
 - Unsigned hosted artifacts are development evidence only. Merge, release, signing, notarization,
   distribution, and repository-visibility changes require separate explicit authorization.

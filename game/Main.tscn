@@ -400,7 +400,7 @@ script = ExtResource("23_search_outcome_resolution_controller_check")
 [node name="Panel" type="ColorRect" parent="CommandOverlay"]
 offset_left = 12.0
 offset_top = 12.0
-offset_right = 468.0
+offset_right = 628.0
 offset_bottom = 132.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 mouse_filter = 2
@@ -408,27 +408,27 @@ mouse_filter = 2
 [node name="Instructions" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
 offset_top = 7.0
-offset_right = 444.0
+offset_right = 604.0
 offset_bottom = 30.0
-text = "TEMP · F START · C CANCEL · E COMPLETE · X WAIT · M MOVE"
+text = "TEMP · F START · C CANCEL · E COMPLETE · R RESOLVE · X WAIT · M MOVE"
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
 offset_top = 36.0
-offset_right = 444.0
+offset_right = 604.0
 offset_bottom = 59.0
 text = "Current healer mode: FOLLOW"
 
 [node name="FocusStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
 offset_top = 62.0
-offset_right = 444.0
+offset_right = 604.0
 offset_bottom = 85.0
 text = "Interaction focus: NONE"
 
 [node name="FocusedSearchResult" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
 offset_top = 88.0
-offset_right = 444.0
+offset_right = 604.0
 offset_bottom = 111.0
 text = "Focused search: NO ATTEMPT"
