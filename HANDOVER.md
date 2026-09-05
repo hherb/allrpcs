@@ -4,6 +4,8 @@
 
 Phase 2k31 is implemented and reviewed without findings on
 `codex/phase-2k31-outcome-application`, based directly on PR #78's merge commit `6f58353c`.
+Slice commit `244385c` is pushed, and draft PR #79
+(`https://github.com/hherb/allrpcs/pull/79`) is open.
 Pull-request merge remains separately unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeApplicationTransition.Apply` is one pure static
