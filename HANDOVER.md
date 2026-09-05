@@ -4,7 +4,8 @@
 
 Phase 2k40 is implemented and reviewed without findings on
 `codex/phase-2k40-completion-outcome-result`, based directly on PR #87's verified merge commit
-`deec39c`. Publication of this slice is pending. Pull-request merge remains separately
+`deec39c`. Slice commit `dff384a` is pushed, and draft PR #88
+(`https://github.com/hherb/allrpcs/pull/88`) is open. Pull-request merge remains separately
 unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionResult` is one sealed immutable record
