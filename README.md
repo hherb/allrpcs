@@ -586,6 +586,12 @@ exact retained outcome or `null` when no outcome matches. It rejects null inputs
 snapshot's duplicate-request invariant, leaves every input unchanged, and does not produce or
 apply an outcome.
 
+`Allrpcs.Domain.Perception.CharacterPerceptionLookup.FindByObject` is the pure exact-object
+lookup for one character's perception snapshot. It matches the object identifier by value,
+returning the exact retained visibility entry or `null` when no entry matches. It rejects null
+inputs, relies on the snapshot's duplicate-object invariant, leaves every input unchanged, and
+does not inspect the complete character, compare or advance visibility, or apply an outcome.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
