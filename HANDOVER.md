@@ -5,6 +5,10 @@
 Phase 2k49 is implemented on `codex/phase-2k49-temporary-resolved-perception-presentation`, based
 directly on PR #96's verified merge commit `9799296`.
 
+Slice commit `b0c6e02` is pushed, and draft PR #97
+(`https://github.com/hherb/allrpcs/pull/97`) is open. Pull-request merge remains separately
+unauthorized.
+
 Each visible herb-patch and stone-marker target now owns the same narrow temporary presentation
 adapter. `Main` passes only the target's exact retained `ObjectId` and the controller's current
 Seeker perception. The adapter delegates exact target selection to `CharacterPerceptionLookup` and
