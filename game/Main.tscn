@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3]
+[gd_scene load_steps=27 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://FocusedSearchOutcomeControllerSmokeCheck.cs" id="17_search_outcome_controller_check"]
 [ext_resource type="Script" path="res://TemporaryFocusedSearchOutcomeSource.cs" id="18_search_outcome_source"]
 [ext_resource type="Script" path="res://TemporaryFocusedSearchOutcomeSourceSmokeCheck.cs" id="19_search_outcome_source_check"]
+[ext_resource type="Script" path="res://TemporarySeekerPerceptionSource.cs" id="20_seeker_perception_source"]
+[ext_resource type="Script" path="res://TemporarySeekerPerceptionSourceSmokeCheck.cs" id="21_seeker_perception_source_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -378,6 +380,12 @@ antialiased = true
 [node name="FocusedSearchActivityController" type="Node" parent="Seeker"]
 script = ExtResource("14_search_controller")
 SearcherCharacterIdText = "seeker"
+
+[node name="TemporarySeekerPerceptionSource" type="Node" parent="."]
+script = ExtResource("20_seeker_perception_source")
+
+[node name="TemporarySeekerPerceptionSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("21_seeker_perception_source_check")
 
 [node name="CommandOverlay" type="CanvasLayer" parent="."]
 

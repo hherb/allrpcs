@@ -749,6 +749,14 @@ activity, outcomes, perception, or world state; decide eligibility; call a contr
 state; apply or consume an outcome; or change visibility. Ordinary play invokes it only from the
 pressed temporary E completion path when an active Seeker request exists.
 
+`Allrpcs.Game.TemporarySeekerPerceptionSource` authors one temporary immutable perception snapshot
+when the scene becomes ready. It retains the focused-search controller's exact parsed Seeker
+identifier and the visible herb patch and stone marker's exact parsed object identifiers in authored
+order, each paired with the exact `VisibilityState.Noticed` singleton. Repeated access returns the
+same snapshot instance. The source does not inspect focus or lifecycle state, create an outcome,
+call a controller, change perception or visibility, or make the temporary markers authoritative
+world objects. Ordinary play does not consume the snapshot yet.
+
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` passes the context source's exact retained condition,
 capability, and inventory aggregates to the existing interaction-focus start boundary. A valid
