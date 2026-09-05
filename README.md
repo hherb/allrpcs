@@ -580,6 +580,12 @@ and their request and resulting-visibility-state instances in stable order. It p
 and multiple distinct requests, ignores unrelated outcomes, rejects null inputs, and does not
 mutate either input or apply any outcome.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeLookup.FindByRequest` is the pure exact-request
+lookup. It matches both the searcher character and target object by request value, returning the
+exact retained outcome or `null` when no outcome matches. It rejects null inputs, relies on the
+snapshot's duplicate-request invariant, leaves every input unchanged, and does not produce or
+apply an outcome.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
