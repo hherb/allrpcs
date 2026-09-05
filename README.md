@@ -373,10 +373,16 @@ and retains exactly one existing `WorldObjectIdentity` and one existing
 `WorldObjectDescription`, exposing only those supplied components through get-only properties.
 The aggregate adds no cross-field policy, methods, or events.
 
+`WorldObjectSnapshot` contains existing world objects in stable supplied order. It explicitly
+permits an empty sequence, copies caller input exactly once, exposes a read-only list, retains
+each supplied world-object instance, and rejects null input, null entries, and value-equal
+duplicate `WorldObject.Identity.Id` values. It does not compare display names or descriptions for
+identity.
+
 The complete world-object boundary still does not define item properties, tags, portability,
 quantities, stacks, containers, inventory mechanics, ownership, use, location assignment,
-containment, mutable state, lifecycle or event handling, filtered views, visibility, perception,
-discovery, persistence, serialization, Godot, or UI behavior.
+containment, lookup, selection, replacement, mutable state, lifecycle or event handling, filtered
+views, visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
 
 ## Item model boundaries
 
