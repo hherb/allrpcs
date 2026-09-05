@@ -8,6 +8,10 @@ once and, only for a pressed E action with an active Seeker request, creates one
 from that exact request and passes it to
 `FocusedSearchActivityController.TryCompleteSearchWithOutcome`.
 
+Slice commit `658b569` is pushed, and draft PR #92
+(`https://github.com/hherb/allrpcs/pull/92`) is open. Pull-request merge remains separately
+unauthorized.
+
 Successful E completion removes the activity, records the exact new outcome with the exact
 `VisibilityState.Identified` singleton, hides the indicator, and retains the existing Boolean-derived
 result text. No-active and repeated completion preserve both immutable controller snapshots.
