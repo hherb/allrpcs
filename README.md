@@ -665,6 +665,14 @@ returns a new snapshot preserving every retained outcome instance in stable orde
 supplied outcome instance. It leaves both inputs unchanged and does not produce an outcome, connect
 recording to focused-search completion, or apply a visibility change.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionPolicy.CanCompleteWithOutcome` is the pure
+combined completion-eligibility decision for one existing focused-search outcome. It delegates
+active-request eligibility completely to the existing completion policy and recording eligibility
+completely to the existing recording policy, returning true only when the request is active and no
+outcome for that request is already retained. It rejects null inputs before delegation, leaves every
+input and retained instance unchanged, and does not complete an activity, record or produce an
+outcome, change perception, or connect the decision to Godot.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
