@@ -621,6 +621,13 @@ outcome is value-equal to the supplied outcome, including its resulting visibili
 rejects null inputs, leaves every input and retained instance unchanged, and does not remove or
 otherwise consume an outcome, change perception, or connect consumption to completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionTransition.Consume` is the pure
+consumption transition for one eligible focused-search outcome. It delegates the complete
+decision to the consumption policy, rejects outcomes that are not exactly retained, and otherwise
+returns a new snapshot without the outcome for that exact request. It preserves stable order and
+every unrelated outcome instance, leaves both inputs unchanged, and does not change perception or
+connect consumption to focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances

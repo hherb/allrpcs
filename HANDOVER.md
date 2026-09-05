@@ -2,23 +2,24 @@
 
 ## Current state
 
-Phase 2k32 is implemented and reviewed without findings on
-`codex/phase-2k32-outcome-consumption`, based directly on PR #79's merge commit `17c8a8d7`.
-Slice commit `885afa9` is pushed, and draft PR #80
-(`https://github.com/hherb/allrpcs/pull/80`) is open.
+Phase 2k33 is implemented and reviewed without findings on
+`codex/phase-2k33-outcome-consumption-transition`, based directly on PR #80's merge commit
+`e1c7c87b`.
+Slice commit `5cb554b` is pushed, and draft PR #81
+(`https://github.com/hherb/allrpcs/pull/81`) is open.
 Pull-request merge remains separately unauthorized.
 
-`Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionPolicy.CanConsume` is one pure static
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionTransition.Consume` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `FocusedSearchOutcomeSnapshot`. It
-delegates request selection to `FocusedSearchOutcomeLookup.FindByRequest` and returns true only
-when the exact retained outcome is value-equal to the supplied outcome, including its resulting
-visibility state. It leaves both inputs and every retained instance unchanged. It does not remove
-or otherwise consume an outcome, change perception, or connect consumption to focused-search
-completion.
+delegates the complete decision to `FocusedSearchOutcomeConsumptionPolicy`, throws
+`InvalidOperationException` when the supplied complete outcome is not exactly retained, and
+otherwise returns a new snapshot removing only the outcome for that exact request. Stable order
+and every unrelated outcome instance are preserved, and both inputs remain unchanged. It does not
+change perception or connect consumption to focused-search completion.
 
-The 9 focused tests failed first with `CS0103`/`CS0246` while the policy type was absent, then
-passed after the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning
-build, 562 Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and
+The 11 focused tests failed first with `CS0103`/`CS0246` while the transition type was absent,
+then passed after the implementation. Host-shell `./scripts/quality.sh` passed with a zero-warning
+build, 573 Domain tests, 107 Application tests, six architecture tests, all six Godot smokes, and
 the bounded graphical launch. The sandbox-only focused-test attempt was inconclusive because
 VSTest could not bind its required local socket. No runtime Godot behavior changed, so no separate
 manual visual acceptance was performed. Hosted desktop outputs remain unsigned development
@@ -26,33 +27,32 @@ evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k33: focused-search outcome consumption transition**.
+Take **Phase 2k34: focused-search outcome resolution eligibility**.
 
 Acceptance boundary:
 
-1. Add one pure static
-   `Allrpcs.Domain.Discovery.FocusedSearchOutcomeConsumptionTransition.Consume` operation accepting
-   an existing `FocusedSearchOutcome` and `FocusedSearchOutcomeSnapshot` and returning a new
-   `FocusedSearchOutcomeSnapshot`.
-2. Delegate the complete decision to `FocusedSearchOutcomeConsumptionPolicy`; throw
-   `InvalidOperationException` when the supplied complete outcome is not eligible for consumption.
-3. For an eligible outcome, remove only the retained outcome for its exact request while preserving
-   stable order and every unrelated outcome instance. Leave both inputs unchanged.
-4. Add focused Domain tests for empty, absent, same-request/different-state, and near-match
-   rejection; exact-instance and value-equal acceptance; stable unrelated-entry retention;
-   unchanged inputs and exact retained instances; null rejection through the policy; and the
-   intended single-operation pure static API surface.
-5. Do not apply an outcome to perception, produce outcomes, or connect consumption to
+1. Add one pure static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionPolicy.CanResolve`
+   operation accepting an existing `FocusedSearchOutcome`, `CharacterPerceptionSnapshot`, and
+   `FocusedSearchOutcomeSnapshot` and returning only a Boolean eligibility decision.
+2. Delegate perception applicability and change detection completely to
+   `FocusedSearchOutcomeChangePolicy`, and delegate exact recorded-outcome eligibility completely
+   to `FocusedSearchOutcomeConsumptionPolicy`; return true only when both decisions succeed.
+3. Add focused Domain tests for wrong-character, absent-target, unchanged-state, absent-outcome,
+   same-request/different-state, and near-match rejection; exact-instance and value-equal eligible
+   outcomes; unchanged inputs and retained instances; null rejection through the delegated
+   policies; and the intended single-operation pure static API surface.
+4. Do not apply a visibility change, remove an outcome, produce outcomes, or connect resolution to
    focused-search completion.
-6. Document Phase 2k33 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+5. Document Phase 2k34 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
 Explicit exclusions:
 
-- Do not add lifecycle application, outcome production, discovery grants, advancement policy,
-  events, effects, reason/error taxonomies, progress, duration, automatic lifecycle behavior,
-  authoritative world objects, or new Godot/Application behavior.
+- Do not add a combined resolution transition or result aggregate, lifecycle wiring, outcome
+  production, discovery grants, advancement policy, events, effects, reason/error taxonomies,
+  progress, duration, automatic lifecycle behavior, authoritative world objects, or new
+  Godot/Application behavior.
 - Do not add complete-character inspection, ownership/capacity, world state, location,
   coordinates, range policy, passive noticing, reinterpretation, serialization, persistence,
   providers, plugins, credentials, or final interaction UI.

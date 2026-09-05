@@ -200,14 +200,14 @@ rejects inapplicable or unchanged outcomes, and otherwise returns a new snapshot
 the target entry while retaining stable order and every required exact instance. Phase 2k32 adds
 pure consumption eligibility that delegates exact-request selection to the existing outcome
 lookup and requires the retained complete outcome, including its resulting visibility state, to
-be value-equal to the supplied outcome without removing it or changing any input.
+be value-equal to the supplied outcome without removing it or changing any input. Phase 2k33 adds
+a pure consumption transition that delegates that complete decision, rejects outcomes that are
+not exactly retained, and otherwise returns a new snapshot removing only the exact-request
+outcome while preserving stable order and every unrelated outcome instance.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
-or final interaction UI. Phase 2k33 is the next bounded slice: define the pure transition for
-removing one exactly eligible focused-search outcome without changing perception or connecting
-consumption to focused-search completion. See `HANDOVER.md` for its exact acceptance boundary and
-current validation evidence.
+or final interaction UI. The next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
