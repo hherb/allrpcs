@@ -4,7 +4,9 @@
 
 Phase 2k29 is implemented and reviewed without findings on
 `codex/phase-2k29-outcome-applicability`, based directly on PR #76's merge commit
-`29d480b`.
+`29d480b`. Slice commit `3cec688` is pushed, and draft PR #77
+(`https://github.com/hherb/allrpcs/pull/77`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeApplicabilityPolicy.CanApply` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `CharacterPerceptionSnapshot`. It
