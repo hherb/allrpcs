@@ -206,7 +206,10 @@ not exactly retained, and otherwise returns a new snapshot removing only the exa
 outcome while preserving stable order and every unrelated outcome instance. Phase 2k34 adds pure
 resolution eligibility that delegates perception applicability and change detection to the
 existing change policy, delegates exact recorded-outcome eligibility to the existing consumption
-policy, and returns true only when both decisions succeed without changing either snapshot.
+policy, and returns true only when both decisions succeed without changing either snapshot. Phase
+2k35 adds one immutable resolution-result value retaining exact existing perception and outcome
+snapshot instances through get-only properties without performing resolution or changing either
+snapshot.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
