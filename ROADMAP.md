@@ -195,13 +195,15 @@ exact-object lookup, without comparing visibility states, changing perception, o
 outcome. Phase 2k30 adds a pure change-detection decision that first requires applicability, then
 compares only the exact retained target's current visibility state with the outcome's resulting
 state, treating every distinct pair alike without ranking, changing perception, or applying the
-outcome.
+outcome. Phase 2k31 adds a pure perception transition that delegates that complete decision,
+rejects inapplicable or unchanged outcomes, and otherwise returns a new snapshot replacing only
+the target entry while retaining stable order and every required exact instance.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
-outcome production or application, discovery effect, reason presentation, or final interaction
-UI. Phase 2k31 is the next bounded slice: define the pure perception transition for one applicable,
-state-changing outcome without producing or consuming outcomes, ranking visibility states, or
-connecting the transition to focused-search completion. See `HANDOVER.md` for its exact acceptance
+outcome production or consumption, lifecycle application, discovery effect, reason presentation,
+or final interaction UI. Phase 2k32 is the next bounded slice: define pure eligibility for
+consuming one exact retained focused-search outcome without removing it, changing perception, or
+connecting consumption to focused-search completion. See `HANDOVER.md` for its exact acceptance
 boundary and current validation evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

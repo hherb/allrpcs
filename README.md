@@ -606,6 +606,14 @@ existing perception lookup and returns true only when the retained target entry'
 differs from the outcome's resulting state. It rejects null inputs, treats every distinct state
 pair alike without ranking it, leaves every input unchanged, and does not apply an outcome.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeApplicationTransition.Apply` is the pure
+perception transition for one existing focused-search outcome. It delegates the complete decision
+to the change policy, rejects inapplicable and unchanged outcomes, and otherwise returns a new
+snapshot that retains the exact character identifier, stable entry order, and every unrelated
+entry instance. Only the target entry is replaced, retaining its exact object identifier and the
+outcome's exact resulting visibility-state instance. It leaves both inputs unchanged and does not
+rank states, produce or consume outcomes, or connect application to focused-search completion.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
