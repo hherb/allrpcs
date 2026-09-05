@@ -573,6 +573,13 @@ Empty snapshots are valid; null values and outcomes with value-equal duplicate r
 rejected. The snapshot does not compare or advance resulting visibility states, produce outcomes,
 apply them to perception, or connect them to focused-search completion.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeProjection.ForCharacter` is the pure
+per-character outcome projection. It returns a new snapshot containing every outcome whose
+request has a value-equal searcher character identifier, retaining the existing outcome instances
+and their request and resulting-visibility-state instances in stable order. It permits no matches
+and multiple distinct requests, ignores unrelated outcomes, rejects null inputs, and does not
+mutate either input or apply any outcome.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
