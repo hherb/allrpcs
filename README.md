@@ -53,7 +53,10 @@ capability-only herb-patch context and one tool-only stone-marker context, retai
 nested instances, and forwards its exact aggregate instances through the input path. The
 perception-controller launch proves the scene initializes the controller once with the temporary
 source's exact Seeker snapshot, rejects wrong-character, repeated, and null initialization, and
-preserves activity, outcome, and presentation state. The
+preserves activity, outcome, and presentation state. The outcome-resolution-controller launch
+proves value-equal recorded-outcome resolution, target-only perception replacement, consumption,
+stable unrelated-entry order and instances, unchanged inputs, and fail-closed rejection without
+changing activity or presentation. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
