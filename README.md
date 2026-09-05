@@ -673,6 +673,12 @@ outcome for that request is already retained. It rejects null inputs before dele
 input and retained instance unchanged, and does not complete an activity, record or produce an
 outcome, change perception, or connect the decision to Godot.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionResult` is one immutable
+completion-with-outcome result retaining exact existing focused-search activity and outcome
+snapshot instances through get-only properties. Its record equality therefore uses those retained
+snapshot instances. It rejects null inputs and does not complete an activity, record or produce an
+outcome, inspect or validate either snapshot, change perception, or connect completion to Godot.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
