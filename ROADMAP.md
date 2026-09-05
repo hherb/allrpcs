@@ -220,7 +220,10 @@ and exact existing instances before the exact supplied outcome, without producin
 connecting recording to focused-search completion. Phase 2k39 adds pure completion-with-outcome
 eligibility that delegates active-request and recording decisions to the existing policies and
 returns true only when the request is active and no outcome for it is already retained, without
-completing an activity, recording an outcome, or changing any input.
+completing an activity, recording an outcome, or changing any input. Phase 2k40 adds one immutable
+completion-with-outcome result retaining exact existing activity and outcome snapshot instances
+through get-only properties without performing completion, recording an outcome, or changing
+either snapshot.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
