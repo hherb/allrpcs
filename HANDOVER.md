@@ -4,7 +4,9 @@
 
 Phase 2k27 is implemented and reviewed without findings on
 `codex/phase-2k27-focused-search-outcome-lookup`, based directly on PR #74's merge commit
-`27fe3c0`. Pull-request merge remains separately unauthorized.
+`27fe3c0`. Feature commit `16e4f34` is pushed, and draft PR #75
+(`https://github.com/hherb/allrpcs/pull/75`) is open. Pull-request merge remains separately
+unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeLookup.FindByRequest` is one pure static operation
 that accepts an existing `FocusedSearchRequest` and `FocusedSearchOutcomeSnapshot`. It matches the
