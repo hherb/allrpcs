@@ -5,6 +5,10 @@
 Phase 2k47 is implemented on `codex/phase-2k47-controller-outcome-resolution`, based directly on
 PR #94's verified merge commit `3105cc4`.
 
+Slice commit `91883e9` is pushed, and draft PR #95
+(`https://github.com/hherb/allrpcs/pull/95`) is open. Pull-request merge remains separately
+unauthorized.
+
 `FocusedSearchActivityController.TryResolveOutcome` now accepts one existing
 `FocusedSearchOutcome` only when controller-owned Seeker perception is initialized, the outcome
 belongs to the controller's value-equal Seeker identifier, and the existing pure resolution policy
