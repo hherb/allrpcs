@@ -23,6 +23,8 @@ public partial class Main : Node
     private FocusedSearchActivityController focusedSearchController = null!;
     private Label focusedSearchResultStatus = null!;
     private InteractionFocusController interactionFocusController = null!;
+    private TemporaryResolvedPerceptionIndicator[] resolvedPerceptionIndicators = [];
+    private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
     private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
@@ -39,6 +41,18 @@ public partial class Main : Node
         focusedSearchResultStatus = GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult");
         interactionFocusController = GetNode<InteractionFocusController>(
             "InteractionFocusController");
+        resolvedPerceptionIndicators =
+        [
+            GetNode<TemporaryResolvedPerceptionIndicator>(
+                "InteractionCandidates/HerbPatch/TemporaryResolvedPerceptionIndicator"),
+            GetNode<TemporaryResolvedPerceptionIndicator>(
+                "InteractionCandidates/StoneMarker/TemporaryResolvedPerceptionIndicator"),
+        ];
+        resolvedPerceptionTargets =
+        [
+            GetNode<GreyboxInteractionTarget>("InteractionCandidates/HerbPatch"),
+            GetNode<GreyboxInteractionTarget>("InteractionCandidates/StoneMarker"),
+        ];
         focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
             "TemporaryFocusedSearchContextSource");
         focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
@@ -50,6 +64,8 @@ public partial class Main : Node
             throw new InvalidOperationException(
                 "The focused-search controller could not initialize Seeker perception.");
         }
+
+        RefreshResolvedPerceptionPresentation();
 
         focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
@@ -85,6 +101,11 @@ public partial class Main : Node
             FocusedSearchOutcome? outcome = GetFirstRetainedFocusedSearchOutcome();
             bool changed = outcome is not null
                 && focusedSearchController.TryResolveOutcome(outcome);
+            if (changed)
+            {
+                RefreshResolvedPerceptionPresentation();
+            }
+
             PresentFocusedSearchResult("RESOLVE", changed);
         }
         else if (@event.IsActionPressed(FocusedSearchStartAction))
@@ -139,6 +160,16 @@ public partial class Main : Node
     {
         focusedSearchResultStatus.Text =
             $"Focused search {action}: {(changed ? "CHANGED" : "UNCHANGED")}";
+    }
+
+    private void RefreshResolvedPerceptionPresentation()
+    {
+        for (int index = 0; index < resolvedPerceptionIndicators.Length; index++)
+        {
+            resolvedPerceptionIndicators[index].Present(
+                resolvedPerceptionTargets[index].ObjectId,
+                focusedSearchController.Perception);
+        }
     }
 
     private void UpdateModeStatus(bool force)

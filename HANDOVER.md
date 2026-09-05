@@ -2,61 +2,57 @@
 
 ## Current state
 
-Phase 2k48 is implemented on `codex/phase-2k48-recorded-outcome-resolution-input`, based directly
-on PR #95's verified merge commit `cd0af38`.
+Phase 2k49 is implemented on `codex/phase-2k49-temporary-resolved-perception-presentation`, based
+directly on PR #96's verified merge commit `9799296`.
 
-Slice commit `f1753ac` is pushed, and draft PR #96
-(`https://github.com/hherb/allrpcs/pull/96`) is open. Pull-request merge remains separately
-unauthorized.
+Each visible herb-patch and stone-marker target now owns the same narrow temporary presentation
+adapter. `Main` passes only the target's exact retained `ObjectId` and the controller's current
+Seeker perception. The adapter delegates exact target selection to `CharacterPerceptionLookup` and
+shows its small authored `IDENTIFIED` label only for the exact `VisibilityState.Identified`
+singleton. It fails closed for null, absent, unrelated, `Noticed`, and every other state without
+ranking or exposing perception entries.
 
-The temporary physical R action now selects the first retained outcome in stable recorded order
-whose request belongs to the controller's value-equal Seeker identifier. `Main` passes that exact
-outcome to `FocusedSearchActivityController.TryResolveOutcome` and presents `RESOLVE: CHANGED` or
-`RESOLVE: UNCHANGED` through the existing result label. No matching outcome changes the label only;
-all controller snapshots retain their exact instances.
+Presentation initializes immediately after the existing one-time controller-perception
+initialization and refreshes only after successful R resolution. Failed and repeated resolution,
+F/C/E lifecycle input, movement, healer input, and interaction-focus changes do not refresh or alter
+the markers. Resolution selection and controller snapshot ownership remain unchanged and
+focus-independent.
 
-The interaction smoke proves the exact R mapping and TEMP control text; F then E outcome recording;
-target-only `Noticed` to `Identified` perception replacement; outcome consumption; exact unrelated
-perception-entry instances and order; completed activity absence; repeated-R identity; unchanged
-resolution inputs; and perception preservation for released, unrelated, movement, and healer input.
-
-The test-first smoke failed at the missing R mapping. After implementation and code review,
-host-shell `./scripts/quality.sh` passed with a zero-warning build, 631 Domain tests, 107 Application
-tests, six architecture tests, all eleven Godot smokes, and the bounded graphical launch. The
-sandbox-only Godot attempt hit the known `user://logs` crash; the identical host-shell smoke passed.
-The graphical launch and exact-text smoke cover the widened temporary panel, but no separate manual
-visual inspection was performed. Hosted desktop outputs remain unsigned development evidence, not
-releases.
+The test-first build failed because the presentation adapter did not exist. After implementation
+and code review, host-shell `./scripts/quality.sh` passed with a zero-warning build, 631 Domain
+tests, 107 Application tests, six architecture tests, all eleven Godot smokes, and the bounded
+graphical launch. The interaction smoke covers both complete F/E/R target sequences, exact unrelated
+state retention, null and non-identified hiding, successful target-only reveal, and failed/repeated
+R preservation. The sandbox-only quality attempt reached the known VSTest loopback denial; the
+identical host-shell gate passed. No separate manual visual inspection was performed. Hosted desktop
+outputs remain unsigned development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k49: temporary resolved-perception presentation**.
+Take **Phase 2l1: immutable world-object snapshot**.
 
 Acceptance boundary:
 
-1. Add one narrow temporary Godot presentation adapter for the existing herb-patch and stone-marker
-   greybox targets. It may receive only each target's exact `ObjectId` plus the controller's current
-   Seeker perception and must delegate target selection to `CharacterPerceptionLookup`.
-2. Present a small temporary `IDENTIFIED` marker only when that exact target's retained visibility
-   is `VisibilityState.Identified`; `Noticed`, absent, null, and unrelated entries remain hidden.
-   Do not rank states or expose any other perception entries.
-3. Initialize the presentation from controller perception after the existing one-time initialization
-   and refresh it only after successful R resolution. Resolution selection and controller ownership
-   must remain unchanged and independent of current interaction focus.
-4. Extend credential-free smoke coverage to prove both indicators start hidden, each F/E/R sequence
-   reveals only its matching target, the unrelated target and exact inputs remain unchanged, and
-   failed or repeated R preserves presentation.
-5. Document Phase 2k49 compactly, leave the broader focused-search item incomplete, run
-   `./scripts/quality.sh`, review every intended path, and keep both planning documents pruned to
-   current evidence and one exact next slice.
+1. Add one sealed `Allrpcs.Domain.WorldObjects.WorldObjectSnapshot` that accepts an existing
+   sequence of `WorldObject` instances, copies it exactly once, and exposes the exact retained
+   instances in stable supplied order through a read-only list.
+2. Permit an empty snapshot. Reject a null sequence, null entries, and entries whose
+   `WorldObject.Identity.Id` values are duplicates, including distinct value-equal identifier
+   instances. Do not compare display names or descriptions for identity.
+3. Add focused tests first for stable order and exact-instance retention, caller-list mutation,
+   empty input, every null boundary, value-equal duplicate rejection, and the minimal sealed public
+   API.
+4. Document Phase 2l1 compactly, leave the broader authoritative-world and focused-search roadmap
+   items incomplete, run `./scripts/quality.sh`, review every intended path, and keep both planning
+   documents pruned to current evidence and one exact next slice.
 
 Explicit exclusions:
 
-- Do not add final interaction UI, automatically complete or resolve searches, select outcomes by
-  focus, reveal hidden/private state, grant knowledge or evidence, or add failure reasons.
-- Do not add target-specific discovery rules, visibility ranking, coordinates, range policy,
-  passive noticing, reinterpretation, authoritative objects or characters, persistence,
-  serialization, providers, plugins, or credentials.
+- Do not add lookup, selection, mutation, replacement, events, location or item association,
+  perception filtering, discovery rules, visibility ranking, Godot adapters, runtime sources,
+  persistence, serialization, providers, plugins, credentials, or UI.
+- Do not replace the temporary focused-search targets or presentation, grant knowledge or evidence,
+  or wire the new snapshot into ordinary play.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
   until their retained prototype or authoritative-system prerequisites exist.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
