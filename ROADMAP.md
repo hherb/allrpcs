@@ -223,7 +223,9 @@ returns true only when the request is active and no outcome for it is already re
 completing an activity, recording an outcome, or changing any input. Phase 2k40 adds one immutable
 completion-with-outcome result retaining exact existing activity and outcome snapshot instances
 through get-only properties without performing completion, recording an outcome, or changing
-either snapshot.
+either snapshot. Phase 2k41 adds one pure combined completion transition that delegates complete
+eligibility, exact-request activity removal, and exact-outcome recording to the existing policies
+and transitions, returning their exact resulting snapshots without changing any input.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or consumption, lifecycle application, discovery effect, reason presentation,
