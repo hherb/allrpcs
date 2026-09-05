@@ -5,6 +5,10 @@
 Phase 2k46 is implemented on `codex/phase-2k46-controller-perception-initialization`, based
 directly on PR #93's verified merge commit `f08f44c`.
 
+Slice commit `0ebe2cb` is pushed, and draft PR #94
+(`https://github.com/hherb/allrpcs/pull/94`) is open. Pull-request merge remains separately
+unauthorized.
+
 `FocusedSearchActivityController` now owns one optional immutable Seeker perception snapshot. Its
 new one-time initialization boundary accepts only a snapshot for the controller's value-equal
 Seeker identifier, retains the exact supplied snapshot instance, and rejects null,
