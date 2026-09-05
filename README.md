@@ -679,6 +679,15 @@ snapshot instances through get-only properties. Its record equality therefore us
 snapshot instances. It rejects null inputs and does not complete an activity, record or produce an
 outcome, inspect or validate either snapshot, change perception, or connect completion to Godot.
 
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeCompletionTransition.CompleteWithOutcome` is the
+pure combined completion transition for one eligible existing focused-search outcome. It delegates
+complete eligibility to the existing combined policy, rejects inactive or already-recorded
+requests, then delegates exact-request activity removal and exact-outcome append to the existing
+completion and recording transitions. It returns one completion result retaining those exact
+returned snapshots, preserves stable order and every unrelated retained instance, leaves every
+input unchanged, and does not produce or resolve outcomes, change perception, or connect
+completion to Godot.
+
 `Allrpcs.Domain.Discovery.FocusedSearchActivityProjection.ForCharacter` is the pure
 per-character activity projection. It returns a new snapshot containing every activity whose
 request has a value-equal searcher character identifier, retaining the existing activity instances
