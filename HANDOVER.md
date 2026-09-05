@@ -3,7 +3,9 @@
 ## Current state
 
 Phase 2k30 is implemented and reviewed without findings on
-`codex/phase-2k30-outcome-change`, based directly on PR #77's merge commit `5a7b16b`.
+`codex/phase-2k30-outcome-change`, based directly on PR #77's merge commit `5a7b16b`. Slice commit
+`536cdce` is pushed, and draft PR #78 (`https://github.com/hherb/allrpcs/pull/78`) is open.
+Pull-request merge remains separately unauthorized.
 
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeChangePolicy.WouldChange` is one pure static
 operation accepting an existing `FocusedSearchOutcome` and `CharacterPerceptionSnapshot`. It
