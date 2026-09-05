@@ -44,16 +44,17 @@ stable focus, request, and condition bridges; and temporary F/C/E inputs with Bo
 Phases 2k24–2k38 established immutable outcomes and ordered snapshots plus pure projection,
 lookup, applicability, change, application, consumption, resolution, and recording boundaries.
 
-Phases 2k39–2k46 connect an existing outcome to completion through combined contracts,
-controller-owned activity/outcome state, a temporary deterministic outcome source, the E input,
-and temporary Seeker perception initialization. Completion records an exact `Identified` outcome
-and removes the activity. The controller also retains the temporary source's exact ordered
-`Noticed` perception snapshot once, but no outcome is resolved or applied yet.
+Phases 2k39–2k47 connect an existing outcome to completion and explicit resolution through
+combined contracts, controller-owned activity/outcome state, a temporary deterministic outcome
+source, the E input, and temporary Seeker perception initialization. Completion records an exact
+`Identified` outcome and removes the activity. The controller retains the temporary source's exact
+ordered `Noticed` perception snapshot once, and its controller-only boundary can apply and consume
+an eligible recorded outcome without changing activity or presentation. Ordinary input does not
+resolve it yet.
 
 - [ ] Finish bounded focused searches with authoritative perception change and discovery effect.
-  There is still no controller outcome-resolution boundary, resolution/consumption wiring,
-  automatic lifecycle, progress, duration, failure reason, or final interaction UI. The exact next
-  slice is in `HANDOVER.md`.
+  There is still no resolution input, automatic lifecycle, progress, duration, failure reason,
+  discovery effect, or final interaction UI. The exact next slice is in `HANDOVER.md`.
 - [ ] Add passive noticing without arbitrary pixel clicking.
 - [ ] Add knowledge-triggered reinterpretation of earlier observations.
 - [ ] Add an append-only authoritative world-event log and qualitative meaningful-event time.

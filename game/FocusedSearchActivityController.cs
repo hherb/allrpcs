@@ -141,6 +141,33 @@ public partial class FocusedSearchActivityController : Node
         return true;
     }
 
+    /// <summary>
+    /// Resolves one recorded outcome against this controller's initialized Seeker perception.
+    /// </summary>
+    public bool TryResolveOutcome(FocusedSearchOutcome outcome)
+    {
+        ArgumentNullException.ThrowIfNull(outcome);
+
+        if (Perception is null
+            || !IsRequestForSearcher(outcome.Request)
+            || !FocusedSearchOutcomeResolutionPolicy.CanResolve(
+                outcome,
+                Perception,
+                Outcomes))
+        {
+            return false;
+        }
+
+        FocusedSearchOutcomeResolutionResult result =
+            FocusedSearchOutcomeResolutionTransition.Resolve(
+                outcome,
+                Perception,
+                Outcomes);
+        Perception = result.Perception;
+        Outcomes = result.Outcomes;
+        return true;
+    }
+
     private bool IsRequestForSearcher(FocusedSearchRequest request)
     {
         return request.SearcherCharacterId == SearcherCharacterId;
