@@ -707,14 +707,17 @@ authored cyan in-world ring. The ring is hidden by default, and ordinary play do
 inject activity outside the explicit temporary lifecycle inputs described below.
 
 `Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
-immutable focused-search activity snapshot. It initializes an empty snapshot from the Seeker's one
-authored stable character identifier and rejects requests for other characters. Its start path
-accepts existing discovery conditions, capabilities, and inventory, delegates the complete start
-decision to the combined Domain eligibility policy, and only then delegates state creation to the
-existing start transition. Cancellation and completion retain their existing policy and transition
-delegation. The controller replaces and presents its snapshot only after a successful operation;
-ordinary play reaches those operations only through the explicit temporary lifecycle inputs, and
-the credential-free focused-search and interaction-focus smokes cover the same boundaries.
+immutable focused-search activity and outcome snapshots. It initializes both snapshots empty from
+the Seeker's one authored stable character identifier and rejects requests or outcomes for other
+characters. Its start path accepts existing discovery conditions, capabilities, and inventory,
+delegates the complete start decision to the combined Domain eligibility policy, and only then
+delegates state creation to the existing start transition. Cancellation and request-only
+completion retain their existing policy and transition delegation. Its separate outcome-aware
+completion path accepts an existing outcome, delegates the combined completion decision and
+transition, installs both exact result snapshots, and only then presents the resulting activity
+snapshot. Rejected operations preserve both owned snapshots and presentation. Ordinary play still
+reaches only the explicit temporary request-only lifecycle inputs; the credential-free focused-
+search, outcome-controller, and interaction-focus smokes cover these boundaries.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -775,9 +778,9 @@ change, complete-character or world inspection, replacement, range, duration, lo
 outcome production or application, reason value, further lifecycle policy, in-place mutation,
 scheduling, persistence, production activity source, or final UI behavior. The temporary Godot
 adapters change only the authored indicator visibility and the Boolean-derived result text, and the
-temporary controller owns only its immutable snapshot, condition-aware start delegation, and
-existing cancellation and completion delegation. The interaction-focus controller adds only
-valid-focus request/start composition, while the temporary context source only supplies retained
+temporary controller owns only its immutable activity and outcome snapshots plus the bounded
+lifecycle delegations described above. The interaction-focus controller adds only valid-focus
+request/start composition, while the temporary context source only supplies retained
 greybox inputs. Ordinary greybox play invokes the start bridge only through physical F,
 cancellation only through physical C, and completion only through physical E.
 

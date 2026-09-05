@@ -6,7 +6,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Owns the Seeker's live focused-search activity snapshot and presents successful transitions.
+/// Owns the Seeker's live focused-search activity and outcome snapshots and presents successful
+/// activity transitions.
 /// </summary>
 public partial class FocusedSearchActivityController : Node
 {
@@ -22,6 +23,9 @@ public partial class FocusedSearchActivityController : Node
     /// <summary>Gets the current immutable focused-search activity snapshot.</summary>
     public FocusedSearchActivitySnapshot Activities { get; private set; } = new([]);
 
+    /// <summary>Gets the current immutable focused-search outcome snapshot.</summary>
+    public FocusedSearchOutcomeSnapshot Outcomes { get; private set; } = new([]);
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -29,6 +33,7 @@ public partial class FocusedSearchActivityController : Node
         indicator = GetNode<FocusedSearchActivityIndicator>(
             "../FocusedSearchActivityIndicator");
         Activities = new FocusedSearchActivitySnapshot([]);
+        Outcomes = new FocusedSearchOutcomeSnapshot([]);
         indicator.Present(SearcherCharacterId, Activities);
     }
 
@@ -85,6 +90,33 @@ public partial class FocusedSearchActivityController : Node
         }
 
         ReplaceAndPresent(FocusedSearchCompletionTransition.CompleteSearch(request, Activities));
+        return true;
+    }
+
+    /// <summary>
+    /// Completes an active focused search with an outcome for this controller's Seeker.
+    /// </summary>
+    public bool TryCompleteSearchWithOutcome(FocusedSearchOutcome outcome)
+    {
+        ArgumentNullException.ThrowIfNull(outcome);
+
+        if (!IsRequestForSearcher(outcome.Request)
+            || !FocusedSearchOutcomeCompletionPolicy.CanCompleteWithOutcome(
+                outcome,
+                Activities,
+                Outcomes))
+        {
+            return false;
+        }
+
+        FocusedSearchOutcomeCompletionResult result =
+            FocusedSearchOutcomeCompletionTransition.CompleteWithOutcome(
+                outcome,
+                Activities,
+                Outcomes);
+        Activities = result.Activities;
+        Outcomes = result.Outcomes;
+        indicator.Present(SearcherCharacterId, Activities);
         return true;
     }
 
