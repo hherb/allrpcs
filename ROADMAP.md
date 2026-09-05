@@ -185,13 +185,15 @@ visibility state without producing or applying it. Phase 2k25 adds one stable or
 those exact outcomes, rejecting null entries and value-equal duplicate requests without comparing
 or advancing their resulting visibility states. Phase 2k26 adds a pure per-character projection
 that returns a new outcome snapshot containing exact matching outcome instances in stable order
-without changing any input or applying an outcome.
+without changing any input or applying an outcome. Phase 2k27 adds pure exact-request lookup that
+returns the one exact retained outcome, or null, without changing any input or applying an outcome.
 
 The focused-search item remains incomplete: there is no automatic lifecycle, progress, duration,
 outcome production or application, discovery effect, reason presentation, or final interaction
-UI. Phase 2k27 is the next bounded slice: define pure exact-request selection from a focused-search
-outcome snapshot without applying any outcome or changing perception. See `HANDOVER.md` for its
-exact acceptance boundary and current validation evidence.
+UI. Phase 2k28 is the next bounded slice: define pure exact-object selection from one character's
+perception snapshot as a prerequisite for later outcome applicability, without applying an outcome
+or changing perception. See `HANDOVER.md` for its exact acceptance boundary and current validation
+evidence.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

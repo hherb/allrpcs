@@ -2,51 +2,48 @@
 
 ## Current state
 
-Phase 2k26 is implemented and reviewed without findings on
-`codex/phase-2k26-focused-search-outcome-projection`, based directly on PR #73's merge commit
-`a9d2439`. Feature commit `5c18a80` is pushed, and draft PR #74
-(`https://github.com/hherb/allrpcs/pull/74`) is open. Pull-request merge remains separately
-unauthorized.
+Phase 2k27 is implemented and reviewed without findings on
+`codex/phase-2k27-focused-search-outcome-lookup`, based directly on PR #74's merge commit
+`27fe3c0`. Pull-request merge remains separately unauthorized.
 
-`Allrpcs.Domain.Discovery.FocusedSearchOutcomeProjection.ForCharacter` is one pure static
-operation that accepts an existing `CharacterId` and `FocusedSearchOutcomeSnapshot` and returns a
-new snapshot containing exactly the outcomes whose requests have a value-equal searcher character
-identifier. It preserves exact outcome, request, and resulting-visibility-state instances in
-stable relative order, permits empty and multiple-match results, ignores unrelated outcomes,
-rejects null inputs, and leaves every input unchanged. It does not produce or apply outcomes,
-compare or advance visibility states, change perception, or connect outcomes to completion.
+`Allrpcs.Domain.Discovery.FocusedSearchOutcomeLookup.FindByRequest` is one pure static operation
+that accepts an existing `FocusedSearchRequest` and `FocusedSearchOutcomeSnapshot`. It matches the
+complete request by value, including searcher character and target object, and returns the exact
+retained `FocusedSearchOutcome` or `null`. It rejects null inputs, relies on the snapshot's
+duplicate-request invariant, preserves exact nested instances, and leaves every input unchanged.
+It does not produce or apply outcomes, compare or advance visibility states, change perception,
+or connect outcomes to completion.
 
-The focused tests failed first with `CS0103`/`CS0246` while the projection type was absent, then
-all seven passed after the implementation. Host-shell `./scripts/quality.sh` passed with a
-zero-warning build, 510 Domain tests, 107 Application tests, six architecture tests, all six Godot
-smokes, and the bounded graphical launch. The sandboxed focused rerun compiled but stalled at the
-known VSTest loopback restriction; the identical host-shell focused test and complete quality spine
-passed. No runtime Godot behavior changed, so no separate manual visual acceptance was performed.
-Hosted desktop outputs remain unsigned development evidence, not releases.
+The focused tests failed first with `CS0103`/`CS0246` while the lookup type was absent, then all
+seven passed after the implementation and one nullable-test assertion correction. Host-shell
+`./scripts/quality.sh` passed with a zero-warning build, 517 Domain tests, 107 Application tests,
+six architecture tests, all six Godot smokes, and the bounded graphical launch. The sandboxed
+focused rerun compiled but stalled at the known VSTest loopback restriction; the identical
+host-shell focused test and complete quality spine passed. No runtime Godot behavior changed, so
+no separate manual visual acceptance was performed. Hosted desktop outputs remain unsigned
+development evidence, not releases.
 
 ## Exact next bounded slice
 
-Take **Phase 2k27: exact-request focused-search outcome lookup**.
+Take **Phase 2k28: exact-object character-perception lookup**.
 
 Acceptance boundary:
 
-1. Add one pure static `Allrpcs.Domain.Discovery.FocusedSearchOutcomeLookup.FindByRequest`
-   operation accepting an existing `FocusedSearchRequest` and `FocusedSearchOutcomeSnapshot` and
-   returning the exact matching `FocusedSearchOutcome`, or `null` when none exists.
-2. Match the complete request by value, including both searcher character and target object;
-   reject same-searcher/different-target and different-searcher/same-target outcomes, and ignore
-   unrelated outcomes.
-3. Preserve the exact retained outcome, request, identifier, target, and visibility-state
-   instances; reject either null input and leave every input unchanged. Rely on the snapshot's
-   duplicate-request invariant rather than adding ambiguity handling or a new collection.
-4. Add focused Domain tests for empty and unrelated snapshots, a value-equal distinct request,
-   both partial mismatch cases, an exact match among surrounding unrelated entries, exact instance
-   retention, unchanged inputs, null rejection, and the intended single-operation pure static API
-   surface.
-5. Do not produce outcomes, apply them to perception, connect them to completion, compare or
-   advance visibility states, or alter the existing focused-search controller, temporary inputs,
-   activity ring, or result label.
-6. Document Phase 2k27 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
+1. Add one pure static `Allrpcs.Domain.Perception.CharacterPerceptionLookup.FindByObject`
+   operation accepting an existing `ObjectId` and `CharacterPerceptionSnapshot` and returning the
+   exact matching `WorldObjectVisibility`, or `null` when none exists.
+2. Match the object identifier by value, ignore unrelated entries, preserve the exact retained
+   visibility entry, object-identifier, visibility-state, and snapshot-character instances, and
+   leave every input unchanged.
+3. Reject either null input and rely on the snapshot's duplicate-object invariant rather than
+   adding ambiguity handling, a new collection, or complete-character inspection.
+4. Add focused Domain tests for empty and unrelated snapshots, a value-equal distinct identifier,
+   an exact match among surrounding unrelated entries, exact instance retention, unchanged inputs,
+   null rejection, and the intended single-operation pure static API surface.
+5. Do not consume a focused-search outcome, apply or mutate perception, compare or advance
+   visibility states, connect outcomes to completion, or alter the existing focused-search
+   controller, temporary inputs, activity ring, or result label.
+6. Document Phase 2k28 in `README.md` and compact `ROADMAP.md`, leave the broader focused-search
    item incomplete, run `./scripts/quality.sh`, review every intended path, and replace this file
    with current evidence, limits, and one next bounded slice.
 
