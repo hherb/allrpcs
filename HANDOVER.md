@@ -23,6 +23,10 @@ launch. The sandbox-only run reached the known VSTest loopback denial after buil
 identical host-shell gate passed. No manual visual inspection was needed for this Domain-only slice.
 Unsigned hosted artifacts remain development evidence, not releases.
 
+`ROADMAP.md` retains the detailed future Phase 3–12 checklists, acceptance criteria, deferred
+expansions, and cross-cutting requirements from `658b569`. Only completed Phase 2 history is
+compacted; future items stay intact unless a current development decision changes them.
+
 ## Exact next bounded slice
 
 Take **Phase 2l2: exact world-object lookup**.
@@ -38,8 +42,9 @@ Acceptance boundary:
    a match among surrounding entries, exact nested-instance retention, unchanged inputs, both null
    boundaries, and the minimal static public API.
 4. Document Phase 2l2 compactly, keep the broader authoritative-world and focused-search roadmap
-   items incomplete, run `./scripts/quality.sh`, review every intended path, and keep both planning
-   documents pruned to current evidence and one exact next slice.
+   items incomplete, run `./scripts/quality.sh`, and review every intended path. Keep `HANDOVER.md`
+   focused on current evidence and one exact next slice; in `ROADMAP.md`, prune only completed Phase
+   2 prose and preserve future checklist detail unless current development decisions affect it.
 
 Explicit exclusions:
 
