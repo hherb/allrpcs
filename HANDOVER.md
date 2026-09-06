@@ -5,6 +5,10 @@
 Phase 2l3 is implemented on `codex/phase-2l3-temporary-world-object-source`, based directly on PR
 #99's verified merge commit `f35b6a1`.
 
+Slice commit `2c2a5b1` is pushed, and draft PR #100
+(`https://github.com/hherb/allrpcs/pull/100`) is open. Pull-request merge remains separately
+unauthorized.
+
 The scene now owns one `TemporaryWorldObjectSource`. During `_Ready`, it reads only the existing
 visible herb-patch and stone-marker targets and creates one retained `WorldObjectSnapshot` in that
 order. Its two distinct `WorldObject` instances retain each target's exact parsed `ObjectId` and
