@@ -45,9 +45,10 @@ tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusio
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
 starts through the mapped temporary input for both visible targets, focus-independent cancellation
 and outcome-aware completion through the exact retained active requests, exact outcome recording,
-explicit first-recorded Seeker outcome resolution, target-only perception replacement, outcome
-consumption, unchanged inputs, failure-state identity, activity-indicator presentation, and
-deterministic changed/unchanged result text for every lifecycle action. It also proves that
+explicit world-object-gated first-recorded Seeker outcome resolution, target-only perception
+replacement, outcome consumption, unchanged inputs, failure-state identity, activity-indicator
+presentation, and deterministic changed/unchanged result text for every lifecycle action. It also
+proves that
 released, unrelated, movement, and healer input preserve all controller snapshots and the exact
 prior text, and that the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
@@ -787,9 +788,9 @@ snapshot. Its lookup boundary rejects a null identifier, returns no object while
 when the identifier is absent, and otherwise delegates to the pure Domain lookup to return the
 exact retained object for a value-equal identifier. During `Main._Ready`, the scene passes the
 temporary source's exact retained snapshot once and fails explicitly if initialization cannot be
-established. No ordinary-play path calls the lookup. The controller does not filter, rank, or
-mutate world objects; inspect focused-search or perception state; grant discovery; or change
-presentation or ordinary-play behavior.
+established. The temporary R path calls the lookup only for the selected recorded outcome target;
+no other ordinary-play path calls it. The controller does not filter, rank, or mutate world objects;
+inspect focused-search or perception state; grant discovery; or change presentation itself.
 
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
 explicitly temporary deterministic focused-search result. Each call accepts an existing request and
@@ -833,12 +834,15 @@ active search and repeated completion preserve both existing snapshot instances 
 
 The separate temporary `focused_search_resolve` action maps physical R to one narrow
 `Main._UnhandledInput` path. It selects the first retained outcome in stable recorded order whose
-request belongs to the controller's value-equal Seeker identifier, passes that exact outcome to
-`FocusedSearchActivityController.TryResolveOutcome`, and does not inspect interaction focus. A
-successful resolution replaces only the matching perception entry with its `Identified` successor,
-consumes the exact outcome, and preserves completed activity absence plus every unrelated entry
-instance and order. With no matching outcome, including a repeated R after consumption, all three
-controller snapshots retain their exact instances.
+request belongs to the controller's value-equal Seeker identifier, asks `WorldObjectController` for
+that outcome's target identifier, and passes the exact outcome to
+`FocusedSearchActivityController.TryResolveOutcome` only when the object exists. It does not inspect
+interaction focus or pass the object into the existing resolution boundary. A successful resolution
+for either scene-authored target replaces only the matching perception entry with its `Identified`
+successor, consumes the exact outcome, and preserves completed activity absence plus every unrelated
+entry instance and order. With no matching outcome, a target absent from the current world-object
+snapshot, or a repeated R after consumption, all three controller snapshots retain their exact
+instances and R reports `UNCHANGED`.
 
 Each visible greybox target owns one instance of
 `Allrpcs.Game.TemporaryResolvedPerceptionIndicator`. Its presentation boundary receives only that

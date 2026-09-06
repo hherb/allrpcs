@@ -4,6 +4,7 @@ using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -58,6 +59,8 @@ public partial class InteractionFocusSmokeCheck : Node
     private Healer healer = null!;
     private Main main = null!;
     private CharacterBody2D seeker = null!;
+    private TemporaryWorldObjectSource worldObjectSource = null!;
+    private WorldObjectController worldObjectController = null!;
     private ObjectId[] authoredObjectIds = [];
     private DiscoveryConditionSet authoredConditions = null!;
     private CharacterCapabilitySet authoredCapabilities = null!;
@@ -102,6 +105,9 @@ public partial class InteractionFocusSmokeCheck : Node
         main = GetNode<Main>("..");
         navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         seeker = GetNode<CharacterBody2D>("../Seeker");
+        worldObjectSource = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource");
+        worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
 
         if (!AssertFocusedSearchResult(InitialFocusedSearchResultText, "initial presentation")
             || !AssertFocusedSearchInputActions()
@@ -264,10 +270,10 @@ public partial class InteractionFocusSmokeCheck : Node
             + "resolution inputs; exact temporary control text; exact retained active requests; "
             + "both eligible starts and focus-independent cancellations and outcome-aware "
             + "completions; exact outcome "
-            + "recording and resolution; target-only perception replacement and identified-target "
-            + "presentation; exact unrelated entry retention; unchanged inputs; failure-state "
-            + "identity; activity presentation; and initial, changed, and unchanged lifecycle-result "
-            + "presentation were correct.");
+            + "recording and world-object-gated resolution; target-only perception replacement "
+            + "and identified-target presentation; exact unrelated entry retention; unchanged "
+            + "inputs; failure-state identity; activity presentation; and initial, changed, and "
+            + "unchanged lifecycle-result presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -649,6 +655,16 @@ public partial class InteractionFocusSmokeCheck : Node
         }
 
         FocusedSearchOutcome recordedOutcome = completedOutcomes.Entries[^1];
+        if (!AssertAbsentWorldObjectResolutionIsGated(
+                targetObjectId,
+                completedSnapshot,
+                completedOutcomes,
+                completedPerception,
+                expectedTargetIndex))
+        {
+            return false;
+        }
+
         PressFocusedSearchResolve();
         FocusedSearchOutcomeSnapshot resolvedOutcomes = focusedSearchController.Outcomes;
         CharacterPerceptionSnapshot resolvedPerception =
@@ -701,6 +717,90 @@ public partial class InteractionFocusSmokeCheck : Node
         controller.RefreshFocus();
 
         return true;
+    }
+
+    private bool AssertAbsentWorldObjectResolutionIsGated(
+        ObjectId targetObjectId,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception,
+        int expectedIdentifiedCount)
+    {
+        WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
+        if (!ReferenceEquals(worldObjectController.WorldObjects, sourceWorldObjects))
+        {
+            Fail("Interaction-focus smoke lost the scene world-object snapshot.");
+            return false;
+        }
+
+        WorldObject[] retainedWorldObjects = sourceWorldObjects.Entries
+            .Where(worldObject => worldObject.Identity.Id != targetObjectId)
+            .ToArray();
+        WorldObjectSnapshot controlledWorldObjects = new(retainedWorldObjects);
+        GreyboxInteractionTarget[] retainedTargets = Enumerable.Range(0, controller.TargetCount)
+            .Select(controller.GetTarget)
+            .ToArray();
+        ObjectId[] retainedTargetObjectIds = retainedTargets
+            .Select(target => target.ObjectId)
+            .ToArray();
+        string[] retainedTargetDisplayNames = retainedTargets
+            .Select(target => target.DisplayName)
+            .ToArray();
+        bool[] retainedTargetFocusStates = retainedTargets
+            .Select(target => target.IsFocused)
+            .ToArray();
+
+        SetControlledWorldObjects(controlledWorldObjects);
+        PressFocusedSearchResolve();
+
+        bool unchanged =
+            retainedWorldObjects.Length == sourceWorldObjects.Entries.Count - 1
+            && !controlledWorldObjects.Entries.Any(
+                worldObject => worldObject.Identity.Id == targetObjectId)
+            && retainedWorldObjects.All(
+                worldObject => sourceWorldObjects.Entries.Contains(worldObject))
+            && ReferenceEquals(worldObjectController.WorldObjects, controlledWorldObjects)
+            && ReferenceEquals(worldObjectSource.WorldObjects, sourceWorldObjects)
+            && ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            && ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            && ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            && !focusedSearchIndicator.Visible
+            && retainedTargets.Select(
+                    (target, index) =>
+                        ReferenceEquals(controller.GetTarget(index), target)
+                        && ReferenceEquals(target.ObjectId, retainedTargetObjectIds[index])
+                        && ReferenceEquals(target.DisplayName, retainedTargetDisplayNames[index])
+                        && target.IsFocused == retainedTargetFocusStates[index])
+                .All(isRetained => isRetained)
+            && AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount,
+                "absent-world-object resolution")
+            && AssertFocusedSearchResult(
+                ResolveUnchangedText,
+                "absent-world-object resolution");
+
+        SetControlledWorldObjects(sourceWorldObjects);
+        if (!unchanged
+            || !ReferenceEquals(worldObjectController.WorldObjects, sourceWorldObjects))
+        {
+            Fail(
+                "Interaction-focus smoke changed state while the recorded outcome target was "
+                + "absent from the controlled world-object snapshot.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void SetControlledWorldObjects(WorldObjectSnapshot worldObjects)
+    {
+        System.Reflection.MethodInfo setter = typeof(WorldObjectController)
+            .GetProperty(nameof(WorldObjectController.WorldObjects))?
+            .GetSetMethod(nonPublic: true)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the private world-object snapshot setter.");
+
+        setter.Invoke(worldObjectController, [worldObjects]);
     }
 
     private bool AssertResolvedPerceptionPresentationContract()
