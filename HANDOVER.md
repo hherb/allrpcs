@@ -5,6 +5,10 @@
 Phase 2l5 is implemented on `codex/phase-2l5-world-object-controller-lookup`, based directly on
 PR #101's verified merge commit `548687a`.
 
+Slice commit `edbc9c9` is pushed, and draft PR #102
+(`https://github.com/hherb/allrpcs/pull/102`) is open. Pull-request merge remains separately
+unauthorized.
+
 `WorldObjectController.FindWorldObject` rejects a null identifier and returns no object while the
 controller is uninitialized or the identifier is absent. Otherwise it delegates to
 `WorldObjectLookup.FindById` against the initialized snapshot and returns the exact retained
