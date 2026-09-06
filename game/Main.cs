@@ -179,7 +179,8 @@ public partial class Main : Node
         for (int index = 0; index < resolvedPerceptionIndicators.Length; index++)
         {
             resolvedPerceptionIndicators[index].Present(
-                resolvedPerceptionTargets[index].ObjectId,
+                worldObjectController.FindWorldObject(
+                    resolvedPerceptionTargets[index].ObjectId),
                 focusedSearchController.Perception);
         }
     }

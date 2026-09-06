@@ -271,10 +271,10 @@ public partial class InteractionFocusSmokeCheck : Node
             + "both eligible starts and focus-independent cancellations and outcome-aware "
             + "completions; exact outcome "
             + "recording and exact world-object-bound resolution; mismatched-object rejection; "
-            + "target-only perception replacement and identified-target presentation; exact "
-            + "unrelated entry retention; unchanged inputs; failure-state identity; activity "
-            + "presentation; and initial, changed, and unchanged lifecycle-result presentation "
-            + "were correct.");
+            + "target-only perception replacement and world-object-bound identified-target "
+            + "presentation; missing-object hiding; exact unrelated entry retention; unchanged "
+            + "inputs; failure-state identity; activity presentation; and initial, changed, and "
+            + "unchanged lifecycle-result presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -749,6 +749,16 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
+        if (!AssertMissingWorldObjectRefreshHidesOnlyTarget(
+                targetObjectId,
+                completedSnapshot,
+                resolvedOutcomes,
+                resolvedPerception,
+                expectedTargetIndex))
+        {
+            return false;
+        }
+
         seeker.GlobalPosition = focusedPosition;
         controller.RefreshFocus();
 
@@ -917,6 +927,93 @@ public partial class InteractionFocusSmokeCheck : Node
         setter.Invoke(worldObjectController, [worldObjects]);
     }
 
+    private bool AssertMissingWorldObjectRefreshHidesOnlyTarget(
+        ObjectId targetObjectId,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception,
+        int expectedTargetIndex)
+    {
+        WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
+        WorldObject[] retainedWorldObjects = sourceWorldObjects.Entries
+            .Where(worldObject => worldObject.Identity.Id != targetObjectId)
+            .ToArray();
+        WorldObjectSnapshot controlledWorldObjects = new(retainedWorldObjects);
+        GreyboxInteractionTarget[] expectedTargets = Enumerable.Range(0, controller.TargetCount)
+            .Select(controller.GetTarget)
+            .ToArray();
+        ObjectId[] expectedTargetObjectIds = expectedTargets
+            .Select(target => target.ObjectId)
+            .ToArray();
+        string[] expectedTargetDisplayNames = expectedTargets
+            .Select(target => target.DisplayName)
+            .ToArray();
+        bool[] expectedTargetFocusStates = expectedTargets
+            .Select(target => target.IsFocused)
+            .ToArray();
+        string expectedResultText = focusedSearchResultStatus.Text;
+
+        SetControlledWorldObjects(controlledWorldObjects);
+        RefreshResolvedPerceptionPresentation();
+        bool hiddenWithoutStateChange =
+            controlledWorldObjects.Entries.Count == retainedWorldObjects.Length
+            && retainedWorldObjects.Select(
+                    (worldObject, index) => ReferenceEquals(
+                        controlledWorldObjects.Entries[index],
+                        worldObject))
+                .All(isRetained => isRetained)
+            && !controlledWorldObjects.Entries.Any(
+                worldObject => worldObject.Identity.Id == targetObjectId)
+            && ReferenceEquals(worldObjectController.WorldObjects, controlledWorldObjects)
+            && ReferenceEquals(worldObjectSource.WorldObjects, sourceWorldObjects)
+            && ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            && ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            && ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            && expectedTargets.Select(
+                    (target, index) =>
+                        ReferenceEquals(controller.GetTarget(index), target)
+                        && ReferenceEquals(target.ObjectId, expectedTargetObjectIds[index])
+                        && ReferenceEquals(target.DisplayName, expectedTargetDisplayNames[index])
+                        && target.IsFocused == expectedTargetFocusStates[index])
+                .All(isRetained => isRetained)
+            && AssertResolvedPerceptionIndicators(
+                expectedTargetIndex,
+                "missing-world-object presentation refresh")
+            && AssertFocusedSearchResult(
+                expectedResultText,
+                "missing-world-object presentation refresh");
+
+        SetControlledWorldObjects(sourceWorldObjects);
+        RefreshResolvedPerceptionPresentation();
+        if (!hiddenWithoutStateChange
+            || !ReferenceEquals(worldObjectController.WorldObjects, sourceWorldObjects)
+            || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            || !AssertResolvedPerceptionIndicators(
+                expectedTargetIndex + 1,
+                "restored-world-object presentation refresh"))
+        {
+            Fail(
+                "Interaction-focus smoke changed state or failed target-only presentation while "
+                + "refreshing a missing world object.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void RefreshResolvedPerceptionPresentation()
+    {
+        System.Reflection.MethodInfo method = typeof(Main).GetMethod(
+            "RefreshResolvedPerceptionPresentation",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the private perception refresh method.");
+
+        method.Invoke(main, null);
+    }
+
     private bool AssertResolvedPerceptionPresentationContract()
     {
         CharacterPerceptionSnapshot initialPerception =
@@ -926,6 +1023,19 @@ public partial class InteractionFocusSmokeCheck : Node
         TemporaryResolvedPerceptionIndicator indicator = resolvedPerceptionIndicators[0];
         ObjectId targetObjectId = authoredObjectIds[0];
         ObjectId unrelatedObjectId = authoredObjectIds[1];
+        WorldObject targetWorldObject =
+            worldObjectController.FindWorldObject(targetObjectId)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the target world object.");
+        WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
+        WorldObjectDescription targetDescription = targetWorldObject.Description;
+        WorldObject absentWorldObject = new(
+            new WorldObjectIdentity(new ObjectId("absent-object"), "Absent object"),
+            new WorldObjectDescription(string.Empty));
+        ObjectId valueEqualTargetObjectId = new(targetObjectId.Value);
+        WorldObject valueEqualTargetWorldObject = new(
+            new WorldObjectIdentity(valueEqualTargetObjectId, "Value-equal target"),
+            new WorldObjectDescription(string.Empty));
 
         if (!AssertResolvedPerceptionIndicators(0, "initial noticed presentation"))
         {
@@ -939,7 +1049,7 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        indicator.Present(targetObjectId, null);
+        indicator.Present(targetWorldObject, null);
         if (indicator.IsIndicatorVisible)
         {
             Fail("Interaction-focus smoke showed identified presentation for null perception.");
@@ -949,17 +1059,24 @@ public partial class InteractionFocusSmokeCheck : Node
         CharacterPerceptionSnapshot unrelatedPerception = new(
             initialPerception.CharacterId,
             [new WorldObjectVisibility(unrelatedObjectId, VisibilityState.Identified)]);
-        indicator.Present(targetObjectId, unrelatedPerception);
+        indicator.Present(targetWorldObject, unrelatedPerception);
         if (indicator.IsIndicatorVisible)
         {
             Fail("Interaction-focus smoke showed identified presentation for an unrelated entry.");
             return false;
         }
 
+        indicator.Present(absentWorldObject, initialPerception);
+        if (indicator.IsIndicatorVisible)
+        {
+            Fail("Interaction-focus smoke showed identified presentation for an absent object.");
+            return false;
+        }
+
         CharacterPerceptionSnapshot nonIdentifiedPerception = new(
             initialPerception.CharacterId,
             [new WorldObjectVisibility(targetObjectId, VisibilityState.Understood)]);
-        indicator.Present(targetObjectId, nonIdentifiedPerception);
+        indicator.Present(targetWorldObject, nonIdentifiedPerception);
         if (indicator.IsIndicatorVisible)
         {
             Fail("Interaction-focus smoke ranked a non-identified visibility state.");
@@ -969,14 +1086,42 @@ public partial class InteractionFocusSmokeCheck : Node
         CharacterPerceptionSnapshot identifiedPerception = new(
             initialPerception.CharacterId,
             [new WorldObjectVisibility(targetObjectId, VisibilityState.Identified)]);
-        indicator.Present(targetObjectId, identifiedPerception);
+        indicator.Present(targetWorldObject, identifiedPerception);
         if (!indicator.IsIndicatorVisible)
         {
             Fail("Interaction-focus smoke hid an exact identified target entry.");
             return false;
         }
 
-        indicator.Present(targetObjectId, initialPerception);
+        WorldObjectIdentity valueEqualIdentity = valueEqualTargetWorldObject.Identity;
+        WorldObjectDescription valueEqualDescription = valueEqualTargetWorldObject.Description;
+        indicator.Present(valueEqualTargetWorldObject, identifiedPerception);
+        if (!indicator.IsIndicatorVisible
+            || ReferenceEquals(valueEqualTargetObjectId, targetObjectId)
+            || valueEqualTargetObjectId != targetObjectId
+            || !ReferenceEquals(valueEqualTargetWorldObject.Identity, valueEqualIdentity)
+            || !ReferenceEquals(valueEqualTargetWorldObject.Description, valueEqualDescription)
+            || !ReferenceEquals(valueEqualIdentity.Id, valueEqualTargetObjectId))
+        {
+            Fail(
+                "Interaction-focus smoke hid a world object with a distinct value-equal "
+                + "identifier.");
+            return false;
+        }
+
+        if (!ReferenceEquals(targetWorldObject.Identity, targetIdentity)
+            || !ReferenceEquals(targetWorldObject.Description, targetDescription)
+            || !ReferenceEquals(targetWorldObject.Identity.Id, targetObjectId)
+            || !ReferenceEquals(identifiedPerception.Entries[0].ObjectId, targetObjectId)
+            || !ReferenceEquals(
+                identifiedPerception.Entries[0].VisibilityState,
+                VisibilityState.Identified))
+        {
+            Fail("Interaction-focus smoke changed presentation world-object or perception input.");
+            return false;
+        }
+
+        indicator.Present(targetWorldObject, initialPerception);
         return AssertResolvedPerceptionIndicators(0, "presentation-contract restoration");
     }
 

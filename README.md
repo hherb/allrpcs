@@ -868,12 +868,15 @@ exact instances; R reports `UNCHANGED` where input was attempted.
 
 Each visible greybox target owns one instance of
 `Allrpcs.Game.TemporaryResolvedPerceptionIndicator`. Its presentation boundary receives only that
-target's exact retained `ObjectId` and the controller's current Seeker perception, delegates exact
-selection to `CharacterPerceptionLookup`, and shows its authored `IDENTIFIED` label only for the
-exact `VisibilityState.Identified` singleton. Null, absent, unrelated, `Noticed`, and every other
-state remain hidden without ranking or exposing entries. `Main` initializes both indicators after
-the existing one-time perception initialization and refreshes them only after a successful R
-resolution; all other input paths preserve their presentation.
+target's existing nullable `WorldObject` and the controller's current Seeker perception, uses only
+the object's exact stable identifier with `CharacterPerceptionLookup`, and shows its authored
+`IDENTIFIED` label only for the exact `VisibilityState.Identified` singleton. Null objects or
+perception, absent or unrelated entries, `Noticed`, and every other state remain hidden without
+ranking or exposing object identity or description. `Main` initializes both indicators after the
+existing one-time perception initialization and refreshes them only after a successful R
+resolution. Each refresh resolves the visible target through `WorldObjectController` and passes
+only the exact returned object; a missing object hides that target's marker without changing state.
+Failed and repeated resolution paths preserve the existing presentation.
 
 These inputs add no automatic polling or outcome processing, discovery grant, failure-reason
 presentation, or final interaction UI.
