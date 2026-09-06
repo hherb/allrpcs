@@ -5,6 +5,10 @@
 Phase 2l2 is implemented on `codex/phase-2l2-exact-world-object-lookup`, based directly on PR
 #98's verified merge commit `27d797c`.
 
+Slice commit `3f2f7b7` is pushed, and draft PR #99
+(`https://github.com/hherb/allrpcs/pull/99`) is open. Pull-request merge remains separately
+unauthorized.
+
 `Allrpcs.Domain.WorldObjects.WorldObjectLookup.FindById` rejects either null input and otherwise
 matches only a value-equal `WorldObject.Identity.Id`. It returns the exact retained `WorldObject`
 instance, including its exact identity, identifier, and description instances, or `null` for an
