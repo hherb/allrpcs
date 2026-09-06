@@ -24,7 +24,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
     private const string StoneMarkerDisplayName = "STONE MARKER";
     private const string StoneMarkerDescription =
         "Weathered carvings mark one face of the standing stone.";
-    private const string ResolvedIndicatorText = "IDENTIFIED";
+    private const string InitialResolvedDescriptionText = "";
 
     private TemporaryWorldObjectSource source = null!;
     private InteractionFocusController focusController = null!;
@@ -166,11 +166,11 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         if (!HasExpectedMarkerLabelTexts(expectedMarkerLabelTexts)
             || !string.Equals(
                 expectedHerbPatchIndicatorText,
-                ResolvedIndicatorText,
+                InitialResolvedDescriptionText,
                 StringComparison.Ordinal)
             || !string.Equals(
                 expectedStoneMarkerIndicatorText,
-                ResolvedIndicatorText,
+                InitialResolvedDescriptionText,
                 StringComparison.Ordinal)
             || !string.Equals(expectedFocusStatusText, FocusStatusText, StringComparison.Ordinal)
             || !string.Equals(
@@ -188,7 +188,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         {
             Fail(
                 "Temporary world-object source smoke copied a description into focused-search "
-                + "inputs or presentation.");
+                + "inputs or non-identified presentation.");
             return;
         }
 
@@ -245,8 +245,9 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             "Temporary world-object source smoke passed: bounded surface, stable ordered snapshot, "
             + "distinct objects, independently authored value-equal identifiers, exact names, "
             + "distinct exact descriptions, stable nested source values, description-free "
-            + "focused-search inputs, and unchanged marker order, geometry, visibility, focus, "
-            + "controller snapshots, and presentation were correct.");
+            + "focused-search inputs, empty non-identified resolved-description presentation, and "
+            + "unchanged marker order, geometry, visibility, focus, controller snapshots, and "
+            + "presentation were correct.");
         GetTree().Quit();
     }
 

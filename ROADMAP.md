@@ -91,7 +91,7 @@ Phases 2a–2j established the checked engine-independent world, character, perc
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
 perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l19 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
+2l1–2l20 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
 that independently authors the two visible world-object identities and distinct non-empty
 descriptions into one stable snapshot, and separate one-time controller ownership with exact
 value-equal lookup.
@@ -125,8 +125,13 @@ display name, including for a matching disabled marker; absent objects clear the
 unlabelled markers remain unlabelled, and focus behavior remains unchanged. Marker labels are now
 presentation-only: markers retain independently parsed value-equal object-reference IDs but no
 longer author a separate display-name input. The source-owned descriptions retain exact stable
-instances but are not focused-search inputs and do not appear in marker labels, focus status, the
-temporary `IDENTIFIED` indicators, or focused-search result presentation.
+instances and are not focused-search inputs or part of marker labels, focus status, or focused-search
+result presentation. Each resolved-perception indicator now reuses its existing label to present the
+exact looked-up object's authored description only while the controller's retained perception has
+that object at exactly `Identified`. Null or absent objects, null or unrelated perception, and every
+other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
+replacement description without changing any supplied object, snapshot, lifecycle state, marker
+presentation, or world-object ordering.
 The exact next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
@@ -141,7 +146,7 @@ The exact next bounded slice is defined in `HANDOVER.md`.
 - [x] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
 - [x] Implement capability- and tool-dependent discovery conditions.
 - [x] Implement bounded focused searches with visible character activity.
-- [ ] Connect focused-search outcome resolution to authoritative world objects, perception
+- [x] Connect focused-search outcome resolution to authoritative world objects, perception
   change, and discovery presentation.
 - [ ] Implement passive noticing without relying on arbitrary pixel clicking.
 - [ ] Implement knowledge-triggered reinterpretation of earlier observations.
