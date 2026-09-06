@@ -5,6 +5,10 @@
 Phase 2l4 is implemented on `codex/phase-2l4-world-object-controller`, based directly on PR #100's
 verified merge commit `f1fa5a2`.
 
+Slice commit `05f78bc` is pushed, and draft PR #101
+(`https://github.com/hherb/allrpcs/pull/101`) is open. Pull-request merge remains separately
+unauthorized.
+
 The scene now owns one separate `WorldObjectController`. `Main._Ready` passes the temporary
 world-object source's exact retained snapshot to its one-time initialization boundary and fails
 explicitly if initialization cannot be established. The controller retains the exact first
