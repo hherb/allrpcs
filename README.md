@@ -797,8 +797,9 @@ without changing the selected authored index, returns to `Interaction focus: NON
 clears, and never inspects or exposes the object description. Each existing labelled marker is
 likewise refreshed from its exact matching object's display name, including for a matching disabled
 marker, while a missing object clears that marker label and an unlabelled hidden marker remains
-unlabelled. This presentation does not overwrite the marker's exported authored `DisplayName`, alter
-focus eligibility, or retain a world object beyond the refresh. Its request-construction boundary
+unlabelled. Markers no longer author a separate display-name input: their `Label` nodes are
+presentation-only and receive text through this lookup. The refresh does not alter focus eligibility
+or retain a world object beyond the refresh. Its request-construction boundary
 accepts an existing `CharacterId` and nullable `WorldObject`, returns no request when focus is clear
 or the object is absent or target-mismatched, and otherwise returns a new `FocusedSearchRequest`
 retaining the exact character identifier and the matching object's exact identifier. Exact and
@@ -822,13 +823,15 @@ authored identity text or changing the supplied snapshot and objects. The source
 search, poll focus, own lifecycle state, grant discovery, or make temporary scene state
 authoritative.
 
-`Allrpcs.Game.TemporaryWorldObjectSource` mirrors only the visible herb-patch and stone-marker
-greybox targets into one retained `WorldObjectSnapshot` when the scene becomes ready. It creates one
-distinct world object per target in that authored order, retaining each target's exact parsed
-identifier and exact display-name string. Each object has an empty `WorldObjectDescription` because
-the greybox has no authoritative description yet. The source does not mutate or replace targets,
-become authoritative, inspect visibility or focus, filter or rank objects, call controllers, grant
-discovery, or change presentation or ordinary-play behavior.
+`Allrpcs.Game.TemporaryWorldObjectSource` independently authors only the visible herb-patch and
+stone-marker identities into one retained `WorldObjectSnapshot` when the scene becomes ready. It
+creates one distinct world object per identity in that authored order, retaining the existing exact
+identifier values and display names. Each source identifier is a distinct instance that is
+value-equal to its marker's independently parsed `ObjectIdText` reference. Each object has an empty
+`WorldObjectDescription` because the temporary world has no authored description yet. The source
+does not read, mutate, or replace greybox targets; become authoritative; inspect visibility or
+focus; filter or rank objects; call controllers; grant discovery; or change presentation or
+ordinary-play behavior.
 
 `Allrpcs.Game.WorldObjectController` is the separate scene owner of one optional immutable
 world-object snapshot. Its one-time initialization boundary rejects null, retains the exact first

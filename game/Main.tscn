@@ -205,7 +205,6 @@ horizontal_alignment = 1
 position = Vector2(720, 520)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "herb-patch"
-DisplayName = "HERB PATCH"
 
 [node name="Marker" type="Polygon2D" parent="InteractionCandidates/HerbPatch"]
 polygon = PackedVector2Array(0, -18, 16, -8, 12, 16, -12, 16, -16, -8)
@@ -251,7 +250,6 @@ horizontal_alignment = 1
 position = Vector2(880, 520)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "stone-marker"
-DisplayName = "STONE MARKER"
 
 [node name="Marker" type="Polygon2D" parent="InteractionCandidates/StoneMarker"]
 polygon = PackedVector2Array(-14, -22, 14, -22, 20, 18, -20, 18)
@@ -298,7 +296,6 @@ visible = false
 position = Vector2(800, 280)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "hidden-marker"
-DisplayName = "HIDDEN MARKER"
 IsInteractionVisible = false
 
 [node name="Marker" type="Polygon2D" parent="InteractionCandidates/HiddenMarker"]
@@ -315,7 +312,6 @@ default_color = Color(1, 0.827, 0.227, 1)
 position = Vector2(1040, 440)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "excluded-marker"
-DisplayName = "EXCLUDED MARKER"
 IsInteractionEnabled = false
 
 [node name="Marker" type="Polygon2D" parent="InteractionCandidates/ExcludedMarker"]

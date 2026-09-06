@@ -71,9 +71,6 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             .Select(focusController.GetTarget)
             .ToArray();
         ObjectId[] expectedTargetObjectIds = expectedTargets.Select(target => target.ObjectId).ToArray();
-        string[] expectedTargetDisplayNames = expectedTargets
-            .Select(target => target.DisplayName)
-            .ToArray();
         Label?[] expectedTargetLabels = expectedTargets
             .Select(target => target.GetNodeOrNull<Label>("Label"))
             .ToArray();
@@ -232,7 +229,6 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             || !AssertRetainedInputs(
                 expectedTargets,
                 expectedTargetObjectIds,
-                expectedTargetDisplayNames,
                 expectedTargetLabels,
                 sourceWorldObjects,
                 expectedSourceObjects,
@@ -325,7 +321,6 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
     private bool AssertRetainedInputs(
         IReadOnlyList<GreyboxInteractionTarget> expectedTargets,
         IReadOnlyList<ObjectId> expectedTargetObjectIds,
-        IReadOnlyList<string> expectedTargetDisplayNames,
         IReadOnlyList<Label?> expectedTargetLabels,
         WorldObjectSnapshot sourceWorldObjects,
         IReadOnlyList<WorldObject> expectedSourceObjects,
@@ -336,9 +331,6 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         {
             if (!ReferenceEquals(focusController.GetTarget(index), expectedTargets[index])
                 || !ReferenceEquals(expectedTargets[index].ObjectId, expectedTargetObjectIds[index])
-                || !ReferenceEquals(
-                    expectedTargets[index].DisplayName,
-                    expectedTargetDisplayNames[index])
                 || !ReferenceEquals(
                     expectedTargets[index].GetNodeOrNull<Label>("Label"),
                     expectedTargetLabels[index])

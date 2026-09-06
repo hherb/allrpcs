@@ -1,4 +1,6 @@
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -17,6 +19,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
     private const string StoneMarkerDisplayName = "STONE MARKER";
 
     private TemporaryWorldObjectSource source = null!;
+    private InteractionFocusController focusController = null!;
     private FocusedSearchActivityController controller = null!;
     private GreyboxInteractionTarget herbPatch = null!;
     private GreyboxInteractionTarget stoneMarker = null!;
@@ -35,6 +38,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         }
 
         source = GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource");
+        focusController = GetNode<InteractionFocusController>("../InteractionFocusController");
         controller = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         herbPatch = GetNode<GreyboxInteractionTarget>("../InteractionCandidates/HerbPatch");
@@ -55,13 +59,48 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
         FocusedSearchActivitySnapshot expectedActivities = controller.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = controller.Outcomes;
+        CharacterPerceptionSnapshot? expectedPerception = controller.Perception;
+        int? expectedFocusedTargetIndex = focusController.FocusedTargetIndex;
+        ObjectId? expectedFocusedTargetObjectId = focusController.FocusedTargetObjectId;
+        GreyboxInteractionTarget[] expectedTargets = Enumerable.Range(
+                0,
+                focusController.TargetCount)
+            .Select(focusController.GetTarget)
+            .ToArray();
+        string[] expectedObjectIdTexts = expectedTargets
+            .Select(target => target.ObjectIdText)
+            .ToArray();
+        ObjectId[] expectedTargetObjectIds = expectedTargets
+            .Select(target => target.ObjectId)
+            .ToArray();
+        Vector2[] expectedTargetPositions = expectedTargets
+            .Select(target => target.Position)
+            .ToArray();
+        bool[] expectedTargetVisibility = expectedTargets
+            .Select(target => target.Visible)
+            .ToArray();
+        bool[] expectedInteractionVisibility = expectedTargets
+            .Select(target => target.IsInteractionVisible)
+            .ToArray();
+        bool[] expectedInteractionEligibility = expectedTargets
+            .Select(target => target.IsInteractionEnabled)
+            .ToArray();
+        bool[] expectedFocusPresentation = expectedTargets
+            .Select(target => target.IsFocused)
+            .ToArray();
+        Label?[] expectedMarkerLabels = expectedTargets
+            .Select(target => target.GetNodeOrNull<Label>("Label"))
+            .ToArray();
+        string?[] expectedMarkerLabelTexts = expectedMarkerLabels
+            .Select(label => label?.Text)
+            .ToArray();
         bool expectedSearchIndicatorVisibility = searchIndicator.Visible;
         bool expectedHerbPatchIndicatorVisibility = herbPatchResolvedIndicator.Visible;
         bool expectedStoneMarkerIndicatorVisibility = stoneMarkerResolvedIndicator.Visible;
         WorldObjectSnapshot first = source.WorldObjects;
         WorldObjectSnapshot second = source.WorldObjects;
 
-        if (!HasExpectedPropertySurface())
+        if (!HasExpectedPropertySurface() || !HasExpectedMarkerPropertySurface())
         {
             Fail("Temporary world-object source smoke failed its bounded snapshot surface.");
             return;
@@ -75,7 +114,12 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
         WorldObject herbPatchObject = first.Entries[0];
         WorldObject stoneMarkerObject = first.Entries[1];
+        WorldObjectIdentity herbPatchIdentity = herbPatchObject.Identity;
+        WorldObjectIdentity stoneMarkerIdentity = stoneMarkerObject.Identity;
+        string herbPatchName = herbPatchIdentity.DisplayName;
+        string stoneMarkerName = stoneMarkerIdentity.DisplayName;
         if (ReferenceEquals(herbPatchObject, stoneMarkerObject)
+            || ReferenceEquals(herbPatchIdentity, stoneMarkerIdentity)
             || !HasExpectedWorldObject(
                 herbPatchObject,
                 herbPatch,
@@ -93,6 +137,26 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
         if (!ReferenceEquals(controller.Activities, expectedActivities)
             || !ReferenceEquals(controller.Outcomes, expectedOutcomes)
+            || !ReferenceEquals(controller.Perception, expectedPerception)
+            || focusController.FocusedTargetIndex != expectedFocusedTargetIndex
+            || !ReferenceEquals(
+                focusController.FocusedTargetObjectId,
+                expectedFocusedTargetObjectId)
+            || !ReferenceEquals(first.Entries[0].Identity, herbPatchIdentity)
+            || !ReferenceEquals(first.Entries[1].Identity, stoneMarkerIdentity)
+            || !ReferenceEquals(first.Entries[0].Identity.DisplayName, herbPatchName)
+            || !ReferenceEquals(first.Entries[1].Identity.DisplayName, stoneMarkerName)
+            || !HasUnchangedTargets(
+                expectedTargets,
+                expectedObjectIdTexts,
+                expectedTargetObjectIds,
+                expectedTargetPositions,
+                expectedTargetVisibility,
+                expectedInteractionVisibility,
+                expectedInteractionEligibility,
+                expectedFocusPresentation,
+                expectedMarkerLabels,
+                expectedMarkerLabelTexts)
             || searchIndicator.Visible != expectedSearchIndicatorVisibility
             || herbPatchResolvedIndicator.Visible != expectedHerbPatchIndicatorVisibility
             || stoneMarkerResolvedIndicator.Visible != expectedStoneMarkerIndicatorVisibility)
@@ -104,8 +168,9 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
         GD.Print(
             "Temporary world-object source smoke passed: bounded surface, stable ordered snapshot, "
-            + "distinct objects, exact authored identifiers and names, empty descriptions, "
-            + "unchanged targets, controller snapshots, and presentation were correct.");
+            + "distinct objects, independently authored value-equal identifiers, exact names, "
+            + "empty descriptions, stable nested source values, and unchanged marker order, "
+            + "geometry, visibility, focus, controller snapshots, and presentation were correct.");
         GetTree().Quit();
     }
 
@@ -116,10 +181,54 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         string expectedDisplayName)
     {
         return string.Equals(target.ObjectId.Value, expectedObjectId, StringComparison.Ordinal)
-            && string.Equals(target.DisplayName, expectedDisplayName, StringComparison.Ordinal)
-            && ReferenceEquals(worldObject.Identity.Id, target.ObjectId)
-            && ReferenceEquals(worldObject.Identity.DisplayName, target.DisplayName)
+            && !ReferenceEquals(worldObject.Identity.Id, target.ObjectId)
+            && worldObject.Identity.Id == target.ObjectId
+            && string.Equals(
+                worldObject.Identity.DisplayName,
+                expectedDisplayName,
+                StringComparison.Ordinal)
             && string.Equals(worldObject.Description.Text, string.Empty, StringComparison.Ordinal);
+    }
+
+    private static bool HasExpectedMarkerPropertySurface()
+    {
+        return typeof(GreyboxInteractionTarget).GetProperty("DisplayName") is null
+            && typeof(GreyboxInteractionTarget).GetProperty("ObjectIdText") is not null;
+    }
+
+    private bool HasUnchangedTargets(
+        IReadOnlyList<GreyboxInteractionTarget> expectedTargets,
+        IReadOnlyList<string> expectedObjectIdTexts,
+        IReadOnlyList<ObjectId> expectedTargetObjectIds,
+        IReadOnlyList<Vector2> expectedTargetPositions,
+        IReadOnlyList<bool> expectedTargetVisibility,
+        IReadOnlyList<bool> expectedInteractionVisibility,
+        IReadOnlyList<bool> expectedInteractionEligibility,
+        IReadOnlyList<bool> expectedFocusPresentation,
+        IReadOnlyList<Label?> expectedMarkerLabels,
+        IReadOnlyList<string?> expectedMarkerLabelTexts)
+    {
+        return expectedTargets.Select(
+                (target, index) =>
+                    ReferenceEquals(focusController.GetTarget(index), target)
+                    && string.Equals(
+                        target.ObjectIdText,
+                        expectedObjectIdTexts[index],
+                        StringComparison.Ordinal)
+                    && ReferenceEquals(target.ObjectId, expectedTargetObjectIds[index])
+                    && target.Position == expectedTargetPositions[index]
+                    && target.Visible == expectedTargetVisibility[index]
+                    && target.IsInteractionVisible == expectedInteractionVisibility[index]
+                    && target.IsInteractionEnabled == expectedInteractionEligibility[index]
+                    && target.IsFocused == expectedFocusPresentation[index]
+                    && ReferenceEquals(
+                        target.GetNodeOrNull<Label>("Label"),
+                        expectedMarkerLabels[index])
+                    && string.Equals(
+                        expectedMarkerLabels[index]?.Text,
+                        expectedMarkerLabelTexts[index],
+                        StringComparison.Ordinal))
+            .All(isUnchanged => isUnchanged);
     }
 
     private static bool HasExpectedPropertySurface()

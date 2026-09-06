@@ -73,9 +73,7 @@ public partial class WorldObjectControllerSmokeCheck : Node
         bool expectedHerbPatchIndicatorVisibility = herbPatchResolvedIndicator.Visible;
         bool expectedStoneMarkerIndicatorVisibility = stoneMarkerResolvedIndicator.Visible;
         object herbPatchObjectId = herbPatch.ObjectId;
-        string herbPatchDisplayName = herbPatch.DisplayName;
         object stoneMarkerObjectId = stoneMarker.ObjectId;
-        string stoneMarkerDisplayName = stoneMarker.DisplayName;
 
         WorldObject expectedHerbPatch = sourceSnapshot.Entries[0];
         WorldObject expectedStoneMarker = sourceSnapshot.Entries[1];
@@ -124,9 +122,7 @@ public partial class WorldObjectControllerSmokeCheck : Node
             || !ReferenceEquals(sourceSnapshot.Entries[0], expectedHerbPatch)
             || !ReferenceEquals(sourceSnapshot.Entries[1], expectedStoneMarker)
             || !ReferenceEquals(herbPatch.ObjectId, herbPatchObjectId)
-            || !ReferenceEquals(herbPatch.DisplayName, herbPatchDisplayName)
             || !ReferenceEquals(stoneMarker.ObjectId, stoneMarkerObjectId)
-            || !ReferenceEquals(stoneMarker.DisplayName, stoneMarkerDisplayName)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
             || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
