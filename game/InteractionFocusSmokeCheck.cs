@@ -270,10 +270,11 @@ public partial class InteractionFocusSmokeCheck : Node
             + "resolution inputs; exact temporary control text; exact retained active requests; "
             + "both eligible starts and focus-independent cancellations and outcome-aware "
             + "completions; exact outcome "
-            + "recording and world-object-gated resolution; target-only perception replacement "
-            + "and identified-target presentation; exact unrelated entry retention; unchanged "
-            + "inputs; failure-state identity; activity presentation; and initial, changed, and "
-            + "unchanged lifecycle-result presentation were correct.");
+            + "recording and exact world-object-bound resolution; mismatched-object rejection; "
+            + "target-only perception replacement and identified-target presentation; exact "
+            + "unrelated entry retention; unchanged inputs; failure-state identity; activity "
+            + "presentation; and initial, changed, and unchanged lifecycle-result presentation "
+            + "were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -665,6 +666,29 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
+        if (!AssertMismatchedWorldObjectResolutionIsRejected(
+                recordedOutcome,
+                targetObjectId,
+                completedSnapshot,
+                completedOutcomes,
+                completedPerception,
+                expectedTargetIndex))
+        {
+            return false;
+        }
+
+        WorldObjectSnapshot resolvedWorldObjects = worldObjectSource.WorldObjects;
+        WorldObject resolvedWorldObject =
+            worldObjectController.FindWorldObject(targetObjectId)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the target world object.");
+        WorldObjectIdentity resolvedWorldObjectIdentity = resolvedWorldObject.Identity;
+        WorldObjectDescription resolvedWorldObjectDescription = resolvedWorldObject.Description;
+        GreyboxInteractionTarget resolvedTarget = controller.GetTarget(expectedTargetIndex);
+        ObjectId resolvedTargetObjectId = resolvedTarget.ObjectId;
+        string resolvedTargetDisplayName = resolvedTarget.DisplayName;
+        bool resolvedTargetFocusState = resolvedTarget.IsFocused;
+
         PressFocusedSearchResolve();
         FocusedSearchOutcomeSnapshot resolvedOutcomes = focusedSearchController.Outcomes;
         CharacterPerceptionSnapshot resolvedPerception =
@@ -679,6 +703,18 @@ public partial class InteractionFocusSmokeCheck : Node
                 completedPerception,
                 resolvedPerception,
                 targetObjectId)
+            || !ReferenceEquals(worldObjectController.WorldObjects, resolvedWorldObjects)
+            || !ReferenceEquals(worldObjectSource.WorldObjects, resolvedWorldObjects)
+            || !ReferenceEquals(
+                worldObjectController.FindWorldObject(targetObjectId),
+                resolvedWorldObject)
+            || !ReferenceEquals(resolvedWorldObject.Identity, resolvedWorldObjectIdentity)
+            || !ReferenceEquals(resolvedWorldObject.Description, resolvedWorldObjectDescription)
+            || !ReferenceEquals(resolvedWorldObject.Identity.Id, targetObjectId)
+            || !ReferenceEquals(controller.GetTarget(expectedTargetIndex), resolvedTarget)
+            || !ReferenceEquals(resolvedTarget.ObjectId, resolvedTargetObjectId)
+            || !ReferenceEquals(resolvedTarget.DisplayName, resolvedTargetDisplayName)
+            || resolvedTarget.IsFocused != resolvedTargetFocusState
             || focusedSearchIndicator.Visible
             || !AssertResolvedPerceptionIndicators(
                 expectedIdentifiedCount: expectedTargetIndex + 1,
@@ -715,6 +751,84 @@ public partial class InteractionFocusSmokeCheck : Node
 
         seeker.GlobalPosition = focusedPosition;
         controller.RefreshFocus();
+
+        return true;
+    }
+
+    private bool AssertMismatchedWorldObjectResolutionIsRejected(
+        FocusedSearchOutcome outcome,
+        ObjectId targetObjectId,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception,
+        int expectedIdentifiedCount)
+    {
+        WorldObjectSnapshot expectedWorldObjects = worldObjectSource.WorldObjects;
+        WorldObject targetWorldObject =
+            worldObjectController.FindWorldObject(targetObjectId)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the target world object.");
+        WorldObject mismatchedWorldObject = expectedWorldObjects.Entries.Single(
+            worldObject => worldObject.Identity.Id != targetObjectId);
+        WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
+        WorldObjectDescription targetDescription = targetWorldObject.Description;
+        WorldObjectIdentity mismatchedIdentity = mismatchedWorldObject.Identity;
+        WorldObjectDescription mismatchedDescription = mismatchedWorldObject.Description;
+        GreyboxInteractionTarget[] expectedTargets = Enumerable.Range(0, controller.TargetCount)
+            .Select(controller.GetTarget)
+            .ToArray();
+        ObjectId[] expectedTargetObjectIds = expectedTargets
+            .Select(target => target.ObjectId)
+            .ToArray();
+        string[] expectedTargetDisplayNames = expectedTargets
+            .Select(target => target.DisplayName)
+            .ToArray();
+        bool[] expectedTargetFocusStates = expectedTargets
+            .Select(target => target.IsFocused)
+            .ToArray();
+        string expectedResultText = focusedSearchResultStatus.Text;
+
+        bool changed = focusedSearchController.TryResolveOutcome(
+            outcome,
+            mismatchedWorldObject);
+
+        bool unchanged = !changed
+            && ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
+            && ReferenceEquals(worldObjectSource.WorldObjects, expectedWorldObjects)
+            && ReferenceEquals(
+                worldObjectController.FindWorldObject(targetObjectId),
+                targetWorldObject)
+            && ReferenceEquals(
+                worldObjectController.FindWorldObject(mismatchedIdentity.Id),
+                mismatchedWorldObject)
+            && ReferenceEquals(targetWorldObject.Identity, targetIdentity)
+            && ReferenceEquals(targetWorldObject.Description, targetDescription)
+            && ReferenceEquals(mismatchedWorldObject.Identity, mismatchedIdentity)
+            && ReferenceEquals(mismatchedWorldObject.Description, mismatchedDescription)
+            && ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            && ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            && ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            && expectedTargets.Select(
+                    (target, index) =>
+                        ReferenceEquals(controller.GetTarget(index), target)
+                        && ReferenceEquals(target.ObjectId, expectedTargetObjectIds[index])
+                        && ReferenceEquals(target.DisplayName, expectedTargetDisplayNames[index])
+                        && target.IsFocused == expectedTargetFocusStates[index])
+                .All(isRetained => isRetained)
+            && !focusedSearchIndicator.Visible
+            && AssertResolvedPerceptionIndicators(
+                expectedIdentifiedCount,
+                "target-mismatched world-object resolution")
+            && AssertFocusedSearchResult(
+                expectedResultText,
+                "target-mismatched world-object resolution");
+        if (!unchanged)
+        {
+            Fail(
+                "Interaction-focus smoke changed world-object, focused-search, target, or "
+                + "presentation state for a target-mismatched world object.");
+            return false;
+        }
 
         return true;
     }

@@ -45,10 +45,10 @@ tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusio
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
 starts through the mapped temporary input for both visible targets, focus-independent cancellation
 and outcome-aware completion through the exact retained active requests, exact outcome recording,
-explicit world-object-gated first-recorded Seeker outcome resolution, target-only perception
-replacement, outcome consumption, unchanged inputs, failure-state identity, activity-indicator
-presentation, and deterministic changed/unchanged result text for every lifecycle action. It also
-proves that
+explicit world-object-bound first-recorded Seeker outcome resolution, mismatched-object rejection,
+target-only perception replacement, outcome consumption, unchanged inputs and world-object state,
+failure-state identity, activity-indicator presentation, and deterministic changed/unchanged result
+text for every lifecycle action. It also proves that
 released, unrelated, movement, and healer input preserve all controller snapshots and the exact
 prior text, and that the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
@@ -56,12 +56,12 @@ nested instances, and forwards its exact aggregate instances through the input p
 perception-controller launch proves the scene initializes the controller once with the temporary
 source's exact Seeker snapshot, rejects wrong-character, repeated, and null initialization, and
 preserves activity, outcome, and presentation state. The outcome-resolution-controller launch
-proves value-equal recorded-outcome resolution, target-only perception replacement, consumption,
-stable unrelated-entry order and instances, unchanged inputs, and fail-closed rejection without
-changing activity or presentation. The world-object-controller launch proves exact lookup of both
-scene-authored objects, including through a value-equal distinct identifier, absent and
-uninitialized results, null rejection, stable exact snapshot retention, and unchanged source,
-targets, focused-search state, and presentation. The
+proves value-equal recorded-outcome and matching exact-world-object resolution, target-only
+perception replacement, consumption, stable unrelated-entry order and instances, unchanged inputs,
+and fail-closed mismatched and null rejection without changing activity or presentation. The
+world-object-controller launch proves exact lookup of both scene-authored objects, including through
+a value-equal distinct identifier, absent and uninitialized results, null rejection, stable exact
+snapshot retention, and unchanged source, targets, focused-search state, and presentation. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -748,10 +748,12 @@ transition, installs both exact result snapshots, and only then presents the res
 snapshot. Rejected lifecycle operations preserve every owned snapshot and presentation. Ordinary play
 reaches the outcome-aware path only through the explicit temporary completion input; the
 credential-free focused-search, outcome-controller, and interaction-focus smokes cover these
-boundaries. Its separate outcome-resolution path delegates to the existing combined policy and
-transition, then installs the exact returned perception and outcome snapshots without changing
-activity or presentation. Ordinary play reaches that boundary only through the explicit temporary
-resolution input described below.
+boundaries. Its separate outcome-resolution path accepts an existing outcome and world object,
+rejects null inputs and target-mismatched objects before applying or consuming anything, delegates
+unchanged resolution eligibility and state changes to the existing combined policy and transition,
+then installs the exact returned perception and outcome snapshots without changing activity, the
+supplied world object, or presentation. Ordinary play reaches that boundary only through the
+explicit temporary resolution input described below.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -835,14 +837,16 @@ active search and repeated completion preserve both existing snapshot instances 
 The separate temporary `focused_search_resolve` action maps physical R to one narrow
 `Main._UnhandledInput` path. It selects the first retained outcome in stable recorded order whose
 request belongs to the controller's value-equal Seeker identifier, asks `WorldObjectController` for
-that outcome's target identifier, and passes the exact outcome to
-`FocusedSearchActivityController.TryResolveOutcome` only when the object exists. It does not inspect
-interaction focus or pass the object into the existing resolution boundary. A successful resolution
-for either scene-authored target replaces only the matching perception entry with its `Identified`
-successor, consumes the exact outcome, and preserves completed activity absence plus every unrelated
-entry instance and order. With no matching outcome, a target absent from the current world-object
-snapshot, or a repeated R after consumption, all three controller snapshots retain their exact
-instances and R reports `UNCHANGED`.
+that outcome's target identifier, and passes both the exact outcome and exact looked-up world-object
+instance to `FocusedSearchActivityController.TryResolveOutcome` only when the object exists. The
+controller rejects a target mismatch before applying or consuming anything. The path does not
+inspect interaction focus, mutate the world-object snapshot or object, or make either world-object
+component authoritative. A successful resolution for either scene-authored target replaces only the
+matching perception entry with its `Identified` successor, consumes the exact outcome, and preserves
+completed activity absence plus every unrelated entry instance and order. With no matching outcome,
+a target absent from the current world-object snapshot, a target-mismatched controller input, or a
+repeated R after consumption, all three focused-search snapshots plus world-object, source, target,
+and presentation state retain their exact instances; R reports `UNCHANGED` where input was attempted.
 
 Each visible greybox target owns one instance of
 `Allrpcs.Game.TemporaryResolvedPerceptionIndicator`. Its presentation boundary receives only that

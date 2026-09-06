@@ -2,6 +2,7 @@ using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -142,14 +143,17 @@ public partial class FocusedSearchActivityController : Node
     }
 
     /// <summary>
-    /// Resolves one recorded outcome against this controller's initialized Seeker perception.
+    /// Resolves one recorded outcome for its exact existing world object against this controller's
+    /// initialized Seeker perception.
     /// </summary>
-    public bool TryResolveOutcome(FocusedSearchOutcome outcome)
+    public bool TryResolveOutcome(FocusedSearchOutcome outcome, WorldObject worldObject)
     {
         ArgumentNullException.ThrowIfNull(outcome);
+        ArgumentNullException.ThrowIfNull(worldObject);
 
         if (Perception is null
             || !IsRequestForSearcher(outcome.Request)
+            || worldObject.Identity.Id != outcome.Request.TargetObjectId
             || !FocusedSearchOutcomeResolutionPolicy.CanResolve(
                 outcome,
                 Perception,
