@@ -162,8 +162,9 @@ public partial class FocusedSearchActivityController : Node
         }
 
         FocusedSearchOutcomeResolutionResult result =
-            FocusedSearchOutcomeResolutionTransition.Resolve(
+            WorldObjectBoundFocusedSearchOutcomeResolutionTransition.Resolve(
                 outcome,
+                worldObject,
                 Perception,
                 Outcomes);
         Perception = result.Perception;
