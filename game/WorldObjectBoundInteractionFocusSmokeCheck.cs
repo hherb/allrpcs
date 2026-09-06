@@ -90,9 +90,15 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             new WorldObjectDescription("Independent value-equal focus object."));
         WorldObjectIdentity valueEqualFirstIdentity = valueEqualFirstWorldObject.Identity;
         WorldObjectDescription valueEqualFirstDescription = valueEqualFirstWorldObject.Description;
+        ObjectId valueEqualSecondObjectId = new(secondWorldObject.Identity.Id.Value);
+        WorldObject valueEqualSecondWorldObject = new(
+            new WorldObjectIdentity(valueEqualSecondObjectId, "Value-equal fallback object"),
+            new WorldObjectDescription("Independent value-equal fallback object."));
+        WorldObjectIdentity valueEqualSecondIdentity = valueEqualSecondWorldObject.Identity;
+        WorldObjectDescription valueEqualSecondDescription = valueEqualSecondWorldObject.Description;
         WorldObjectSnapshot valueEqualWorldObjects = new(
-            [valueEqualFirstWorldObject, secondWorldObject]);
-        WorldObjectSnapshot missingNearestWorldObjects = new([secondWorldObject]);
+            [valueEqualFirstWorldObject, valueEqualSecondWorldObject]);
+        WorldObjectSnapshot missingNearestWorldObjects = new([valueEqualSecondWorldObject]);
         WorldObjectSnapshot emptyWorldObjects = new([]);
 
         seeker.GlobalPosition = FirstTargetPosition;
@@ -100,6 +106,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         if (!AssertFocus(
                 expectedIndex: 0,
                 firstWorldObject.Identity.Id,
+                firstWorldObject.Identity.DisplayName,
                 "exact world-object focus"))
         {
             return;
@@ -110,6 +117,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         if (!AssertFocus(
                 expectedIndex: 0,
                 valueEqualFirstObjectId,
+                valueEqualFirstIdentity.DisplayName,
                 "distinct value-equal world-object focus"))
         {
             return;
@@ -120,7 +128,8 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         focusController.RefreshFocus();
         if (!AssertFocus(
                 expectedIndex: 1,
-                secondWorldObject.Identity.Id,
+                valueEqualSecondObjectId,
+                valueEqualSecondIdentity.DisplayName,
                 "missing-nearest fallback"))
         {
             return;
@@ -138,6 +147,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         if (!AssertFocus(
                 expectedIndex: 0,
                 firstWorldObject.Identity.Id,
+                firstWorldObject.Identity.DisplayName,
                 "restored authored-order focus")
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
@@ -150,8 +160,13 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             || !ReferenceEquals(valueEqualFirstWorldObject.Identity, valueEqualFirstIdentity)
             || !ReferenceEquals(valueEqualFirstWorldObject.Description, valueEqualFirstDescription)
             || !ReferenceEquals(valueEqualFirstIdentity.Id, valueEqualFirstObjectId)
+            || !ReferenceEquals(valueEqualSecondWorldObject.Identity, valueEqualSecondIdentity)
+            || !ReferenceEquals(valueEqualSecondWorldObject.Description, valueEqualSecondDescription)
+            || !ReferenceEquals(valueEqualSecondIdentity.Id, valueEqualSecondObjectId)
             || ReferenceEquals(valueEqualFirstObjectId, expectedTargetObjectIds[0])
             || valueEqualFirstObjectId != expectedTargetObjectIds[0]
+            || ReferenceEquals(valueEqualSecondObjectId, expectedTargetObjectIds[1])
+            || valueEqualSecondObjectId != expectedTargetObjectIds[1]
             || !AssertRetainedInputs(
                 expectedTargets,
                 expectedTargetObjectIds,
@@ -169,18 +184,23 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
 
         GD.Print(
             "World-object-bound interaction-focus smoke passed: exact and distinct value-equal "
-            + "object lookup, exact controller identifier retention, missing-nearest fallback, "
-            + "all-missing clearing, restoration, and unchanged surrounding state were correct.");
+            + "object lookup, exact controller identifier retention, world-object status names, "
+            + "missing-nearest fallback, all-missing clearing, restoration, and unchanged "
+            + "surrounding state were correct.");
         GetTree().Quit();
     }
 
-    private bool AssertFocus(int expectedIndex, ObjectId expectedObjectId, string scenario)
+    private bool AssertFocus(
+        int expectedIndex,
+        ObjectId expectedObjectId,
+        string expectedDisplayName,
+        string scenario)
     {
         if (focusController.FocusedTargetIndex != expectedIndex
             || !ReferenceEquals(focusController.FocusedTargetObjectId, expectedObjectId)
             || !string.Equals(
                 focusStatus.Text,
-                $"Interaction focus: {focusController.GetTarget(expectedIndex).DisplayName}",
+                $"Interaction focus: {expectedDisplayName}",
                 StringComparison.Ordinal))
         {
             Fail($"World-object-bound interaction-focus smoke failed {scenario} selection.");
