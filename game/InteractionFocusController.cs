@@ -21,6 +21,7 @@ public partial class InteractionFocusController : Node
     private FocusedSearchActivityController focusedSearchController = null!;
     private WorldObjectController worldObjectController = null!;
     private GreyboxInteractionTarget[] targets = [];
+    private Label?[] targetLabels = [];
     private InteractionFocusCandidate[] candidates = [];
     private ObjectId?[] candidateWorldObjectIds = [];
     private string?[] candidateWorldObjectDisplayNames = [];
@@ -81,6 +82,7 @@ public partial class InteractionFocusController : Node
             "../Seeker/FocusedSearchActivityController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         targets = LoadTargets(GetNode("../InteractionCandidates"));
+        targetLabels = targets.Select(target => target.GetNodeOrNull<Label>("Label")).ToArray();
         candidates = new InteractionFocusCandidate[targets.Length];
         candidateWorldObjectIds = new ObjectId?[targets.Length];
         candidateWorldObjectDisplayNames = new string?[targets.Length];
@@ -114,6 +116,11 @@ public partial class InteractionFocusController : Node
             candidateWorldObjectDisplayNames[index] = hasMatchingWorldObject
                 ? worldObject!.Identity.DisplayName
                 : null;
+            Label? markerLabel = targetLabels[index];
+            if (markerLabel is not null)
+            {
+                markerLabel.Text = candidateWorldObjectDisplayNames[index] ?? string.Empty;
+            }
         }
 
         InteractionFocusSelection? selection = InteractionFocusSelector.Select(
