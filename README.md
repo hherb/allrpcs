@@ -777,6 +777,14 @@ the greybox has no authoritative description yet. The source does not mutate or 
 become authoritative, inspect visibility or focus, filter or rank objects, call controllers, grant
 discovery, or change presentation or ordinary-play behavior.
 
+`Allrpcs.Game.WorldObjectController` is the separate scene owner of one optional immutable
+world-object snapshot. Its one-time initialization boundary rejects null, retains the exact first
+supplied snapshot instance, and fails closed on repeated initialization without replacing that
+snapshot. During `Main._Ready`, the scene passes the temporary source's exact retained snapshot once
+and fails explicitly if initialization cannot be established. The controller does not query,
+filter, rank, or mutate world objects; inspect focused-search or perception state; grant discovery;
+or change presentation or ordinary-play behavior.
+
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
 explicitly temporary deterministic focused-search result. Each call accepts an existing request and
 returns a distinct `FocusedSearchOutcome` retaining that exact request and the exact existing
