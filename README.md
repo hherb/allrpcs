@@ -756,6 +756,12 @@ request has a value-equal searcher character identifier, retaining the existing 
 in stable order. It permits no matches and multiple distinct requests, ignores unrelated
 activities, rejects null inputs, and does not mutate either input.
 
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
+`CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
+rejects null inputs, retains both supplied identifier instances through get-only properties, and
+uses only their existing value semantics. It does not inspect world or character state, grant
+discovery, or change perception.
+
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
 projection and returns true exactly when the new projected snapshot contains at least one entry,
@@ -948,15 +954,16 @@ the existing handled-input behavior remains unchanged.
 The discovery-condition boundaries do not inspect a complete character, ownership or capacity
 snapshots, perception or world state, grant discovery, or change visibility. They do not define
 configurable Boolean expressions, alternative requirement groups, further requirement types, tool
-classifications or properties, passive noticing, reinterpretation, actions, results, errors,
-events, effects, mutable state, persistence, serialization, Godot, or UI behavior. Beyond the pure
-combined eligibility decision, the focused-search boundaries add no discovery grant, visibility
-change, complete-character or world inspection, replacement, range, duration, location, progress,
-outcome production or application, reason value, further lifecycle policy, in-place mutation,
-scheduling, persistence, production activity source, or final UI behavior. The temporary Godot
-adapters change only the authored indicator visibility and the Boolean-derived result text, and the
-temporary controller owns only its immutable activity and outcome snapshots plus the bounded
-lifecycle delegations described above. The interaction-focus controller adds only
+classifications or properties, passive-noticing collection, selection, ordering, eligibility,
+outcomes, or transitions, reinterpretation, actions, results, errors, events, effects, mutable
+state, persistence, serialization, Godot, or UI behavior. Beyond the pure combined eligibility
+decision, the focused-search boundaries add no discovery grant, visibility change,
+complete-character or world inspection, replacement, range, duration, location, progress, outcome
+production or application, reason value, further lifecycle policy, in-place mutation, scheduling,
+persistence, production activity source, or final UI behavior. The temporary Godot adapters change
+only the authored indicator visibility and the Boolean-derived result text, and the temporary
+controller owns only its immutable activity and outcome snapshots plus the bounded lifecycle
+delegations described above. The interaction-focus controller adds only
 world-object-gated focus availability plus valid-focus and matching-world-object request/start
 composition, while the temporary context source only supplies retained greybox inputs. Ordinary
 greybox play invokes the start bridge only through physical F,
