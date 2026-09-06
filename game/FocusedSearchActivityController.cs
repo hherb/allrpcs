@@ -152,10 +152,9 @@ public partial class FocusedSearchActivityController : Node
         ArgumentNullException.ThrowIfNull(worldObject);
 
         if (Perception is null
-            || !IsRequestForSearcher(outcome.Request)
-            || worldObject.Identity.Id != outcome.Request.TargetObjectId
-            || !FocusedSearchOutcomeResolutionPolicy.CanResolve(
+            || !WorldObjectBoundFocusedSearchOutcomeResolutionPolicy.CanResolve(
                 outcome,
+                worldObject,
                 Perception,
                 Outcomes))
         {
