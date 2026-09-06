@@ -67,13 +67,16 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
         FocusedSearchOutcome suppliedOutcome =
             Outcome("seeker", "weathered-inscription", VisibilityState.Understood);
         WorldObject targetWorldObject = CreateWorldObject(targetObjectId, "Weathered inscription");
+        ObjectId suppliedOutcomeTargetObjectId = suppliedOutcome.Request.TargetObjectId;
         WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
         WorldObjectDescription targetDescription = targetWorldObject.Description;
         SetControllerState(activities, outcomes, perception);
         bool expectedIndicatorVisibility = indicatorLine.Visible;
         string expectedResultText = resultStatus.Text;
 
-        if (ReferenceEquals(suppliedOutcome, retainedOutcome)
+        if (ReferenceEquals(suppliedOutcomeTargetObjectId, targetWorldObject.Identity.Id)
+            || suppliedOutcomeTargetObjectId != targetWorldObject.Identity.Id
+            || ReferenceEquals(suppliedOutcome, retainedOutcome)
             || suppliedOutcome != retainedOutcome
             || !controller.TryResolveOutcome(suppliedOutcome, targetWorldObject))
         {
@@ -145,7 +148,10 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
                 "successful resolution")
             || !ReferenceEquals(targetWorldObject.Identity, targetIdentity)
             || !ReferenceEquals(targetWorldObject.Description, targetDescription)
-            || !ReferenceEquals(targetWorldObject.Identity.Id, targetObjectId))
+            || !ReferenceEquals(targetWorldObject.Identity.Id, targetObjectId)
+            || !ReferenceEquals(
+                suppliedOutcome.Request.TargetObjectId,
+                suppliedOutcomeTargetObjectId))
         {
             return;
         }
@@ -264,7 +270,8 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
 
         GD.Print(
             "Focused-search outcome resolution controller smoke passed: value-equal recorded "
-            + "outcome and matching exact world-object resolution; exact stable-order retention; "
+            + "outcome and matching value-equal world-object resolution; exact stable-order "
+            + "retention; "
             + "unchanged inputs, activity, "
             + "and presentation; and wrong-character, unretained, unequal-result, "
             + "unchanged-visibility, mismatched-object, uninitialized, and null rejection were "

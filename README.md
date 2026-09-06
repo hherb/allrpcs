@@ -56,7 +56,7 @@ nested instances, and forwards its exact aggregate instances through the input p
 perception-controller launch proves the scene initializes the controller once with the temporary
 source's exact Seeker snapshot, rejects wrong-character, repeated, and null initialization, and
 preserves activity, outcome, and presentation state. The outcome-resolution-controller launch
-proves value-equal recorded-outcome and matching exact-world-object resolution, target-only
+proves value-equal recorded-outcome and matching value-equal world-object resolution, target-only
 perception replacement, consumption, stable unrelated-entry order and instances, unchanged inputs,
 and fail-closed mismatched and null rejection without changing activity or presentation. The
 world-object-controller launch proves exact lookup of both scene-authored objects, including through
@@ -663,6 +663,14 @@ returns true only when both decisions succeed, rejects null inputs through those
 policies, leaves every input and retained instance unchanged, and does not apply a visibility
 change, remove an outcome, or connect resolution to focused-search completion.
 
+`Allrpcs.Domain.Discovery.WorldObjectBoundFocusedSearchOutcomeResolutionPolicy.CanResolve` is the
+pure world-object-bound resolution-eligibility decision for one existing focused-search outcome.
+It rejects null inputs, requires the supplied world object's stable identifier to be value-equal to
+the outcome request's target, then delegates the unchanged complete perception-and-outcome decision
+to the existing resolution policy. It leaves the outcome, world object, perception, outcome
+snapshot, and every retained nested instance unchanged; it does not inspect authored object text,
+apply or consume an outcome, mutate a world object, or make any source or controller authoritative.
+
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeResolutionResult` is one immutable resolution-result
 value retaining exact existing character-perception and focused-search-outcome snapshot instances
 through get-only properties. Its record equality therefore uses those retained snapshot instances.
@@ -839,14 +847,16 @@ The separate temporary `focused_search_resolve` action maps physical R to one na
 request belongs to the controller's value-equal Seeker identifier, asks `WorldObjectController` for
 that outcome's target identifier, and passes both the exact outcome and exact looked-up world-object
 instance to `FocusedSearchActivityController.TryResolveOutcome` only when the object exists. The
-controller rejects a target mismatch before applying or consuming anything. The path does not
-inspect interaction focus, mutate the world-object snapshot or object, or make either world-object
-component authoritative. A successful resolution for either scene-authored target replaces only the
-matching perception entry with its `Identified` successor, consumes the exact outcome, and preserves
-completed activity absence plus every unrelated entry instance and order. With no matching outcome,
-a target absent from the current world-object snapshot, a target-mismatched controller input, or a
-repeated R after consumption, all three focused-search snapshots plus world-object, source, target,
-and presentation state retain their exact instances; R reports `UNCHANGED` where input was attempted.
+controller delegates complete bound eligibility to the pure Domain policy before applying or
+consuming anything. That decision accepts distinct value-equal target identifiers and rejects a
+mismatch. The path does not inspect interaction focus, mutate the world-object snapshot or object,
+or make either world-object component authoritative. A successful resolution for either
+scene-authored target replaces only the matching perception entry with its `Identified` successor,
+consumes the exact outcome, and preserves completed activity absence plus every unrelated entry
+instance and order. With no matching outcome, a target absent from the current world-object
+snapshot, a target-mismatched controller input, or a repeated R after consumption, all three
+focused-search snapshots plus world-object, source, target, and presentation state retain their
+exact instances; R reports `UNCHANGED` where input was attempted.
 
 Each visible greybox target owns one instance of
 `Allrpcs.Game.TemporaryResolvedPerceptionIndicator`. Its presentation boundary receives only that
