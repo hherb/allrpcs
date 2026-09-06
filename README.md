@@ -54,9 +54,12 @@ released, unrelated, movement, and healer input preserve all controller snapshot
 prior text, and that the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
 nested instances, and forwards its exact aggregate instances through the input path. The
-perception-controller launch proves the scene initializes the controller once with the temporary
-source's exact Seeker snapshot, rejects wrong-character, repeated, and null initialization, and
-preserves activity, outcome, and presentation state. The outcome-resolution-controller launch
+temporary Seeker perception-source launch proves exact Seeker and world-object identifier
+retention, empty and populated world-object snapshot derivation, stable order and noticed state,
+unchanged nested inputs and surrounding state, and one stable scene snapshot. The separate
+perception-controller launch proves the scene initializes the controller once with that exact
+Seeker snapshot, rejects wrong-character, repeated, and null initialization, and preserves
+activity, outcome, and presentation state. The outcome-resolution-controller launch
 proves value-equal recorded-outcome and matching value-equal world-object resolution, target-only
 perception replacement, consumption, stable unrelated-entry order and instances, unchanged inputs,
 and fail-closed mismatched and null rejection without changing activity or presentation. The
@@ -826,12 +829,15 @@ the world-object controller.
 
 `Allrpcs.Game.TemporarySeekerPerceptionSource` authors one temporary immutable perception snapshot
 when the scene becomes ready. It retains the focused-search controller's exact parsed Seeker
-identifier and the visible herb patch and stone marker's exact parsed object identifiers in authored
-order, each paired with the exact `VisibilityState.Noticed` singleton. Repeated access returns the
-same snapshot instance. The source does not inspect focus or lifecycle state, create an outcome,
-call a controller, change perception or visibility, or make the temporary markers authoritative
-world objects. During `Main._Ready`, the scene passes this exact snapshot to the controller's
-one-time initialization boundary. Lifecycle inputs do not read the source again.
+identifier and derives its ordered visibility entries only from the existing temporary world-object
+snapshot. Each entry retains its world object's exact stable identifier and pairs it with the exact
+`VisibilityState.Noticed` singleton; an empty world-object snapshot produces an empty perception
+snapshot. Repeated scene access returns the same snapshot instance. Derivation leaves the supplied
+snapshot, objects, identities, descriptions, and Seeker identifier unchanged. The source does not
+read greybox targets; inspect authored object text, focus, or lifecycle state; create an outcome;
+call a controller; change perception or visibility; or make either source authoritative. During
+`Main._Ready`, the scene passes this exact snapshot to the controller's one-time initialization
+boundary. Lifecycle inputs do not read the source again.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` passes the context source's exact retained condition,

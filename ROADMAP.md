@@ -91,7 +91,7 @@ Phases 2a–2j established the checked engine-independent world, character, perc
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
 perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l11 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
+2l1–2l12 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
 that mirrors the two visible greybox targets into one stable snapshot with empty authored
 descriptions, separate one-time controller ownership with exact value-equal lookup, and temporary
 R-resolution gating on the selected outcome target's existence. The R path now passes the exact
@@ -105,7 +105,9 @@ target marker when its object is missing. These paths preserve immutable state b
 source or controller authoritative or grant discovery. Temporary outcome creation now also requires
 the active request target to resolve to a matching existing world object, including through a
 distinct value-equal identifier; a missing object leaves the active search and all surrounding state
-unchanged. The exact next bounded slice is defined in `HANDOVER.md`.
+unchanged. Initial temporary Seeker perception is now derived only from that world-object snapshot,
+retaining its exact identifier instances and order without reading greybox targets. The exact next
+bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
