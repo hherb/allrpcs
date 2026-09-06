@@ -769,6 +769,14 @@ existing discovery-condition set, capability set, and inventory needed by the st
 source does not start a search, poll focus, own lifecycle state, grant discovery, or make the
 temporary markers authoritative world objects.
 
+`Allrpcs.Game.TemporaryWorldObjectSource` mirrors only the visible herb-patch and stone-marker
+greybox targets into one retained `WorldObjectSnapshot` when the scene becomes ready. It creates one
+distinct world object per target in that authored order, retaining each target's exact parsed
+identifier and exact display-name string. Each object has an empty `WorldObjectDescription` because
+the greybox has no authoritative description yet. The source does not mutate or replace targets,
+become authoritative, inspect visibility or focus, filter or rank objects, call controllers, grant
+discovery, or change presentation or ordinary-play behavior.
+
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
 explicitly temporary deterministic focused-search result. Each call accepts an existing request and
 returns a distinct `FocusedSearchOutcome` retaining that exact request and the exact existing
