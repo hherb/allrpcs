@@ -2,55 +2,53 @@
 
 ## Current state
 
-Phase 2l15 is implemented on
-`codex/phase-2l15-world-object-gated-interaction-focus`, based directly on PR #111's
-merge commit `39ab377`.
+Phase 2l16 is implemented on `codex/phase-2l16-world-object-focus-status`, based directly on
+PR #112's merge commit `7675189`.
 
-`InteractionFocusController.RefreshFocus` now resolves each authored marker identifier through
-`WorldObjectController` and makes only a matching existing object eligible for the otherwise
-unchanged visible, enabled, in-range selector. The selected focus retains the looked-up object's
-exact identifier instance. A missing nearest object falls back under the existing distance and
-authored-order rules; no eligible object clears the focus index, identifier, indicators, and status.
+`InteractionFocusController.RefreshFocus` now presents a selected focus's status from the exact
+looked-up `WorldObject.Identity.DisplayName`, including when a distinct value-equal replacement
+changes the name without changing the selected authored index. Clear focus still presents
+`Interaction focus: NONE`. Selection, exact identifier retention, indicators, range, authored-order
+tie-breaking, missing-nearest fallback, and all-missing clearing are unchanged; no object description
+is inspected or exposed, and no `WorldObject` is retained beyond refresh.
 
-A dedicated credential-free smoke covers exact and distinct value-equal objects, exact identifier
-retention, missing-nearest fallback, all-missing clearing, restoration, and unchanged focused-search,
-perception, context, source, object, and target instances. The existing interaction lifecycle smoke
-also remains green.
+The credential-free world-object interaction-focus smoke proves exact and independently named
+value-equal objects, the independently named fallback object, same-index status refresh,
+all-missing clearing, restoration, and unchanged surrounding state and input instances.
 
 After code review, host-shell `./scripts/quality.sh` passed with workflow validation, formatting, a
 zero-warning build, 661 Domain tests, 107 Application tests, six architecture tests, all fourteen
-Godot smokes, and the bounded graphical launch. The sandbox run reached the tests but VSTest could
-not bind its local socket. Authored appearance did not change, so no manual visual inspection was
-needed.
+Godot smokes, and the bounded graphical launch. The sandbox build passed, but VSTest could not bind
+its local socket. Ordinary authored names are unchanged, so no manual visual inspection was needed.
 
-Temporary sources, controllers, lifecycle controls, greybox focus, and identified-marker
-presentation remain non-authoritative.
+Temporary sources, controllers, lifecycle controls, greybox focus, and discovery presentation
+remain non-authoritative.
 
 ## Exact next bounded slice
 
-Take **Phase 2l16: world-object-derived temporary interaction-focus status presentation**.
+Take **Phase 2l17: world-object-derived temporary interaction-marker label presentation**.
 
 Acceptance boundary:
 
-1. Present a selected focus's status name from the exact looked-up
-   `WorldObject.Identity.DisplayName`, not `GreyboxInteractionTarget.DisplayName`; continue to show
-   `Interaction focus: NONE` when focus is clear. Do not expose or inspect the object description.
-2. Preserve the selected world object's exact identifier instance and the existing pure selector,
-   range, authored-order tie-breaking, missing-nearest fallback, and all-missing clearing behavior.
-3. Extend credential-free evidence for an independently named distinct value-equal object, the
-   fallback object's name, all-missing clearing, restoration, and unchanged state outside focus
-   status and indicators.
+1. Present each existing labelled interaction marker from the exact matching
+   `WorldObject.Identity.DisplayName`, not `GreyboxInteractionTarget.DisplayName`; do not inspect or
+   expose descriptions. A marker without a matching object must not present an authored object name.
+2. Keep marker geometry, visibility eligibility, focus indicators, status, exact selected identifier,
+   pure selection, range, authored-order tie-breaking, missing-nearest fallback, and all-missing
+   clearing unchanged. Do not overwrite the marker's authored `DisplayName` input.
+3. Extend credential-free evidence for independently named distinct value-equal objects, missing and
+   restored objects, hidden or disabled markers, and unchanged state outside marker-label
+   presentation. Manually inspect any changed ordinary-play appearance.
 4. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and
    prune this file again to current evidence plus one next slice.
 
 Explicit exclusions:
 
-- Do not change Domain request, discovery-condition, perception, outcome, completion, or resolution
-  contracts; Application focus selection; focus range or ordering; requirement semantics;
-  world-object snapshots or lookup; target marker labels; or resolved-perception presentation rules.
-- Do not retain or expose a world object beyond the refresh, make temporary sources or controllers
-  authoritative, or add discovery grants, knowledge, evidence, events, persistence, serialization,
-  providers, plugins, credentials, or new UI.
+- Do not change Domain or Application contracts; focus eligibility, range, or ordering; world-object
+  snapshots or lookup; focus-status or resolved-perception rules; or object descriptions.
+- Do not retain or expose a world object beyond refresh, make temporary scene state authoritative,
+  or add discovery grants, knowledge, evidence, events, persistence, serialization, providers,
+  plugins, credentials, or new UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
   explicit user authorization.

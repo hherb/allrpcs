@@ -23,6 +23,7 @@ public partial class InteractionFocusController : Node
     private GreyboxInteractionTarget[] targets = [];
     private InteractionFocusCandidate[] candidates = [];
     private ObjectId?[] candidateWorldObjectIds = [];
+    private string?[] candidateWorldObjectDisplayNames = [];
 
     /// <summary>Gets the currently focused authored-list index, or null when focus is clear.</summary>
     public int? FocusedTargetIndex { get; private set; }
@@ -82,6 +83,7 @@ public partial class InteractionFocusController : Node
         targets = LoadTargets(GetNode("../InteractionCandidates"));
         candidates = new InteractionFocusCandidate[targets.Length];
         candidateWorldObjectIds = new ObjectId?[targets.Length];
+        candidateWorldObjectDisplayNames = new string?[targets.Length];
         RefreshFocus();
     }
 
@@ -109,6 +111,9 @@ public partial class InteractionFocusController : Node
             candidateWorldObjectIds[index] = hasMatchingWorldObject
                 ? worldObject!.Identity.Id
                 : null;
+            candidateWorldObjectDisplayNames[index] = hasMatchingWorldObject
+                ? worldObject!.Identity.DisplayName
+                : null;
         }
 
         InteractionFocusSelection? selection = InteractionFocusSelector.Select(
@@ -125,12 +130,14 @@ public partial class InteractionFocusController : Node
             targets[index].SetFocused(index == nextFocusedIndex);
         }
 
-        if (FocusedTargetIndex != nextFocusedIndex)
+        string nextFocusStatusText = nextFocusedIndex is int focusedIndex
+            ? $"Interaction focus: {candidateWorldObjectDisplayNames[focusedIndex]}"
+            : "Interaction focus: NONE";
+        if (FocusedTargetIndex != nextFocusedIndex
+            || !string.Equals(focusStatus.Text, nextFocusStatusText, StringComparison.Ordinal))
         {
             FocusedTargetIndex = nextFocusedIndex;
-            focusStatus.Text = nextFocusedIndex is int focusedIndex
-                ? $"Interaction focus: {targets[focusedIndex].DisplayName}"
-                : "Interaction focus: NONE";
+            focusStatus.Text = nextFocusStatusText;
         }
     }
 
