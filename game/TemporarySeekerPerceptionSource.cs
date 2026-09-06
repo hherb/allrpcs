@@ -1,12 +1,12 @@
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Authors one temporary immutable perception snapshot for the existing Seeker and greybox
-/// targets.
+/// Authors one temporary immutable perception snapshot for the existing Seeker and world objects.
 /// </summary>
 public partial class TemporarySeekerPerceptionSource : Node
 {
@@ -20,19 +20,26 @@ public partial class TemporarySeekerPerceptionSource : Node
     {
         CharacterId seekerCharacterId = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController").SearcherCharacterId;
-        ObjectId herbPatchObjectId = GetNode<GreyboxInteractionTarget>(
-            "../InteractionCandidates/HerbPatch").ObjectId;
-        ObjectId stoneMarkerObjectId = GetNode<GreyboxInteractionTarget>(
-            "../InteractionCandidates/StoneMarker").ObjectId;
-        WorldObjectVisibility herbPatchVisibility = new(
-            herbPatchObjectId,
-            initialVisibilityState);
-        WorldObjectVisibility stoneMarkerVisibility = new(
-            stoneMarkerObjectId,
-            initialVisibilityState);
+        WorldObjectSnapshot worldObjects = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").WorldObjects;
 
-        Perception = new CharacterPerceptionSnapshot(
-            seekerCharacterId,
-            [herbPatchVisibility, stoneMarkerVisibility]);
+        Perception = CreatePerception(seekerCharacterId, worldObjects);
+    }
+
+    private CharacterPerceptionSnapshot CreatePerception(
+        CharacterId characterId,
+        WorldObjectSnapshot worldObjects)
+    {
+        ArgumentNullException.ThrowIfNull(characterId);
+        ArgumentNullException.ThrowIfNull(worldObjects);
+
+        WorldObjectVisibility[] entries = worldObjects.Entries
+            .Select(
+                worldObject => new WorldObjectVisibility(
+                    worldObject.Identity.Id,
+                    initialVisibilityState))
+            .ToArray();
+
+        return new CharacterPerceptionSnapshot(characterId, entries);
     }
 }
