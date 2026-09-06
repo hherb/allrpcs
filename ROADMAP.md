@@ -91,7 +91,7 @@ Phases 2a–2j established the checked engine-independent world, character, perc
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
 perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l14 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
+2l1–2l15 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
 that mirrors the two visible greybox targets into one stable snapshot with empty authored
 descriptions, separate one-time controller ownership with exact value-equal lookup, and temporary
 R-resolution gating on the selected outcome target's existence. The R path now passes the exact
@@ -112,8 +112,11 @@ snapshot order, retain those exact identifiers, and fail explicitly when both ar
 without changing existing requirement or inventory semantics. Focused-search request creation and
 the F start path now also require the focused target to resolve to a matching existing world object,
 accept distinct value-equal identifiers while retaining the supplied object's exact identifier, and
-leave all surrounding state unchanged when the object is missing. The exact next bounded slice is
-defined in `HANDOVER.md`.
+leave all surrounding state unchanged when the object is missing. Temporary interaction-focus
+refresh now also resolves each otherwise eligible greybox marker through the world-object
+controller, retains the selected object's exact identifier instance, falls back under the unchanged
+distance and authored-order rules when the nearest object is missing, and clears focus presentation
+when no object-backed marker remains. The exact next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

@@ -785,17 +785,23 @@ through the explicit temporary resolution input described below.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
-identifier instance. The existing `InteractionFocusController` exposes the retained instance for
-only the currently selected visible, enabled, in-range target and exposes no identifier when focus
-is clear. Its request-construction boundary accepts an existing `CharacterId` and nullable
-`WorldObject`, returns no request when focus is clear or the object is absent or target-mismatched,
-and otherwise returns a new `FocusedSearchRequest` retaining the exact character identifier and the
-matching object's exact identifier. Exact and distinct value-equal object identifiers are accepted.
-Its separate start-attempt boundary supplies the activity controller's exact Seeker identifier to
-that factory and, for a valid request only, forwards the request plus existing
+identifier instance. On each refresh, the existing `InteractionFocusController` resolves every
+marker identifier through `WorldObjectController` and makes only matching existing objects eligible
+for the otherwise unchanged pure visible, enabled, in-range selection. A missing nearest object
+therefore falls back to the next eligible marker under the existing distance and authored-order
+rules; no eligible object clears the focus indicator, status, index, and identifier. A selection
+exposes the exact looked-up object's identifier instance, including a distinct value-equal instance,
+without inspecting its identity text or description. Its request-construction boundary accepts an
+existing `CharacterId` and nullable `WorldObject`, returns no request when focus is clear or the
+object is absent or target-mismatched, and otherwise returns a new `FocusedSearchRequest` retaining
+the exact character identifier and the matching object's exact identifier. Exact and distinct
+value-equal object identifiers are accepted. Its separate start-attempt boundary supplies the
+activity controller's exact Seeker identifier to that factory and, for a valid request only,
+forwards the request plus existing
 `DiscoveryConditionSet`, `CharacterCapabilitySet`, and `CharacterInventory` instances to the
 controller's condition-aware start path. It returns the existing start result and adds no Domain
-eligibility, transition, input, or discovery-context authoring behavior.
+eligibility, transition, input, discovery-context authoring, world-object filtering, or ranking
+behavior.
 
 `Allrpcs.Game.TemporaryFocusedSearchContextSource` is the narrow scene source for those three
 aggregate start inputs. It derives its target identifiers only from the existing temporary
@@ -930,9 +936,10 @@ outcome production or application, reason value, further lifecycle policy, in-pl
 scheduling, persistence, production activity source, or final UI behavior. The temporary Godot
 adapters change only the authored indicator visibility and the Boolean-derived result text, and the
 temporary controller owns only its immutable activity and outcome snapshots plus the bounded
-lifecycle delegations described above. The interaction-focus controller adds only valid-focus and
-matching-world-object request/start composition, while the temporary context source only supplies retained
-greybox inputs. Ordinary greybox play invokes the start bridge only through physical F,
+lifecycle delegations described above. The interaction-focus controller adds only
+world-object-gated focus availability plus valid-focus and matching-world-object request/start
+composition, while the temporary context source only supplies retained greybox inputs. Ordinary
+greybox play invokes the start bridge only through physical F,
 cancellation only through physical C, and completion only through physical E.
 
 Point-and-click movement, zoom or camera-pan input, controller mappings beyond the documented
