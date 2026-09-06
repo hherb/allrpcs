@@ -338,14 +338,14 @@ default_color = Color(1, 0.827, 0.227, 1)
 [node name="InteractionFocusController" type="Node" parent="."]
 script = ExtResource("9_interaction_controller")
 
+[node name="TemporaryWorldObjectSource" type="Node" parent="."]
+script = ExtResource("25_world_object_source")
+
 [node name="TemporaryFocusedSearchContextSource" type="Node" parent="."]
 script = ExtResource("16_search_context_source")
 
 [node name="TemporaryFocusedSearchOutcomeSource" type="Node" parent="."]
 script = ExtResource("18_search_outcome_source")
-
-[node name="TemporaryWorldObjectSource" type="Node" parent="."]
-script = ExtResource("25_world_object_source")
 
 [node name="WorldObjectController" type="Node" parent="."]
 script = ExtResource("27_world_object_controller")
