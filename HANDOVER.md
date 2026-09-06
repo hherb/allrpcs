@@ -2,50 +2,53 @@
 
 ## Current state
 
-Phase 2l2 is implemented on `codex/phase-2l2-exact-world-object-lookup`, based directly on PR
-#98's verified merge commit `27d797c`.
+Phase 2l3 is implemented on `codex/phase-2l3-temporary-world-object-source`, based directly on PR
+#99's verified merge commit `f35b6a1`.
 
-Slice commit `3f2f7b7` is pushed, and draft PR #99
-(`https://github.com/hherb/allrpcs/pull/99`) is open. Pull-request merge remains separately
+Slice commit `2c2a5b1` is pushed, and draft PR #100
+(`https://github.com/hherb/allrpcs/pull/100`) is open. Pull-request merge remains separately
 unauthorized.
 
-`Allrpcs.Domain.WorldObjects.WorldObjectLookup.FindById` rejects either null input and otherwise
-matches only a value-equal `WorldObject.Identity.Id`. It returns the exact retained `WorldObject`
-instance, including its exact identity, identifier, and description instances, or `null` for an
-empty or unrelated snapshot. It does not change either input or compare authored text.
+The scene now owns one `TemporaryWorldObjectSource`. During `_Ready`, it reads only the existing
+visible herb-patch and stone-marker targets and creates one retained `WorldObjectSnapshot` in that
+order. Its two distinct `WorldObject` instances retain each target's exact parsed `ObjectId` and
+exact authored `DisplayName`; both have an empty `WorldObjectDescription` because no authoritative
+description is authored yet. The source does not mutate targets, call a controller, change
+presentation, or participate in ordinary play.
 
-Tests were written first and failed on the missing type. After implementation and code review, the
-host-shell `./scripts/quality.sh` gate passed with a zero-warning build, 644 Domain tests, 107
-Application tests, six architecture tests, all eleven Godot smokes, and the bounded graphical
-launch. The sandbox-only run reached the known VSTest loopback denial after building cleanly; the
-identical host-shell gate passed. No manual visual inspection was needed for this Domain-only slice.
+The test-first game build failed with `CS0246` before the source existed. After implementation and
+code review, host-shell `./scripts/quality.sh` passed with a zero-warning build, 644 Domain tests,
+107 Application tests, six architecture tests, all twelve Godot smokes, and the bounded graphical
+launch. The sandbox-only gate reached the known VSTest loopback denial after building cleanly. No
+manual visual inspection was needed because visible behavior did not change.
 
 ## Exact next bounded slice
 
-Take **Phase 2l3: temporary world-object source**.
+Take **Phase 2l4: controller-owned world-object initialization**.
 
 Acceptance boundary:
 
-1. Add one narrow Godot `TemporaryWorldObjectSource` node that, on `_Ready`, reads only the existing
-   herb-patch and stone-marker `GreyboxInteractionTarget` nodes and exposes one retained
-   `WorldObjectSnapshot` through a get/private-set property.
-2. Construct exactly one `WorldObject` per target in herb-patch then stone-marker order. Retain each
-   target's exact existing `ObjectId` and exact authored `DisplayName`; use an empty
-   `WorldObjectDescription` to state explicitly that no authoritative description is authored yet.
-3. Register the source and one opt-in smoke check in `Main.tscn` and `scripts/smoke-godot.sh`. Cover
-   stable order, exact identifier retention, exact names, empty descriptions, distinct object
-   instances, one stable snapshot, unchanged target inputs, and no controller or presentation
-   changes.
-4. Document Phase 2l3 compactly, leave the broader authoritative-world and focused-search roadmap
-   items incomplete, run `./scripts/quality.sh`, review every intended path, and prune this file to
+1. Add one separate `WorldObjectController` Godot node owning an optional immutable
+   `WorldObjectSnapshot` through a get/private-set property and one narrow Boolean one-time
+   initialization method accepting an existing snapshot.
+2. Retain the exact supplied snapshot instance. Null initialization must throw, while repeated
+   initialization must fail closed and preserve the first snapshot and all existing presentation
+   and focused-search controller state.
+3. Register the controller in `Main.tscn`; during `Main._Ready`, pass the temporary source's exact
+   retained snapshot once and fail explicitly if the scene cannot establish that invariant.
+4. Add one opt-in credential-free smoke covering the initial boundary, exact scene-wired instance,
+   repeated and null rejection, and unchanged source, targets, focused-search state, and
+   presentation.
+5. Document Phase 2l4 compactly, leave the broader authoritative-world and focused-search roadmap
+   item incomplete, run `./scripts/quality.sh`, review every intended path, and prune this file to
    current evidence plus one next slice.
 
 Explicit exclusions:
 
-- Do not make the temporary source authoritative, add object location/item associations, mutate or
-  replace targets, add lookup policy beyond Phase 2l2, or wire the snapshot into `Main`, controllers,
-  focus selection, perception resolution, discovery presentation, or ordinary-play behavior.
-- Do not add non-empty authored descriptions, visibility filtering or ranking, knowledge, evidence,
+- Do not query or expose world objects through the controller yet; inspect focus, perception, or
+  outcomes; resolve discovery; add input; change presentation; or alter ordinary-play behavior.
+- Do not make the temporary source or controller authoritative, add non-empty descriptions,
+  locations, item associations, filtering, visibility ranking, knowledge, evidence, events,
   persistence, serialization, providers, plugins, credentials, or new UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred
   until their retained prototype or authoritative-system prerequisites exist.
