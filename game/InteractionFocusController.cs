@@ -19,8 +19,10 @@ public partial class InteractionFocusController : Node
     private CharacterBody2D seeker = null!;
     private Label focusStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
+    private WorldObjectController worldObjectController = null!;
     private GreyboxInteractionTarget[] targets = [];
     private InteractionFocusCandidate[] candidates = [];
+    private ObjectId?[] candidateWorldObjectIds = [];
 
     /// <summary>Gets the currently focused authored-list index, or null when focus is clear.</summary>
     public int? FocusedTargetIndex { get; private set; }
@@ -76,8 +78,10 @@ public partial class InteractionFocusController : Node
         focusStatus = GetNode<Label>("../CommandOverlay/Panel/FocusStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         targets = LoadTargets(GetNode("../InteractionCandidates"));
         candidates = new InteractionFocusCandidate[targets.Length];
+        candidateWorldObjectIds = new ObjectId?[targets.Length];
         RefreshFocus();
     }
 
@@ -93,7 +97,18 @@ public partial class InteractionFocusController : Node
     {
         for (int index = 0; index < targets.Length; index++)
         {
-            candidates[index] = targets[index].ToFocusCandidate();
+            GreyboxInteractionTarget target = targets[index];
+            WorldObject? worldObject = worldObjectController.FindWorldObject(target.ObjectId);
+            bool hasMatchingWorldObject = worldObject is not null
+                && worldObject.Identity.Id == target.ObjectId;
+            InteractionFocusCandidate candidate = target.ToFocusCandidate();
+            candidates[index] = candidate with
+            {
+                IsInteractionEnabled = candidate.IsInteractionEnabled && hasMatchingWorldObject,
+            };
+            candidateWorldObjectIds[index] = hasMatchingWorldObject
+                ? worldObject!.Identity.Id
+                : null;
         }
 
         InteractionFocusSelection? selection = InteractionFocusSelector.Select(
@@ -102,7 +117,7 @@ public partial class InteractionFocusController : Node
             candidates);
         int? nextFocusedIndex = selection?.CandidateIndex;
         FocusedTargetObjectId = nextFocusedIndex is int identifierIndex
-            ? targets[identifierIndex].ObjectId
+            ? candidateWorldObjectIds[identifierIndex]
             : null;
 
         for (int index = 0; index < targets.Length; index++)
