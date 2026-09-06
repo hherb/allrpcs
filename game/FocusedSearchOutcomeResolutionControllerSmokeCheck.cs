@@ -173,6 +173,24 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             return;
         }
 
+        FocusedSearchOutcome missingPerceptionTarget =
+            Outcome("seeker", "concealed-herb", VisibilityState.Understood);
+        WorldObject missingPerceptionTargetWorldObject = CreateWorldObject(
+            missingPerceptionTarget.Request.TargetObjectId,
+            "Concealed herb");
+        if (!AssertRejected(
+                missingPerceptionTarget,
+                missingPerceptionTargetWorldObject,
+                activities,
+                new FocusedSearchOutcomeSnapshot([missingPerceptionTarget]),
+                Perception(
+                    "seeker",
+                    Visibility("weathered-inscription", VisibilityState.Noticed)),
+                "missing perception target"))
+        {
+            return;
+        }
+
         FocusedSearchOutcome unretained =
             Outcome("seeker", "concealed-herb", VisibilityState.Understood);
         WorldObject unretainedWorldObject =
@@ -274,8 +292,8 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             + "retention; "
             + "unchanged inputs, activity, "
             + "and presentation; and wrong-character, unretained, unequal-result, "
-            + "unchanged-visibility, mismatched-object, uninitialized, and null rejection were "
-            + "correct.");
+            + "missing-perception-target, unchanged-visibility, mismatched-object, "
+            + "uninitialized, and null rejection were correct.");
         GetTree().Quit();
     }
 

@@ -685,6 +685,14 @@ returns one resolution result retaining those exact returned snapshots, leaves e
 retained unrelated instance unchanged, and does not produce outcomes, grant discovery, or connect
 resolution to focused-search completion.
 
+`Allrpcs.Domain.Discovery.WorldObjectBoundFocusedSearchOutcomeResolutionTransition.Resolve` is the
+pure world-object-bound resolution transition for one eligible focused-search outcome. It delegates
+complete eligibility to the world-object-bound resolution policy, rejects an ineligible resolution,
+then delegates unchanged state creation to the existing resolution transition and returns its exact
+result. It accepts value-equal target identifiers, leaves the supplied world object and every other
+input unchanged, and does not inspect authored object text, mutate a world object, make any source
+or controller authoritative, or grant discovery.
+
 `Allrpcs.Domain.Discovery.FocusedSearchOutcomeRecordingPolicy.CanRecord` is the pure
 recording-eligibility decision for one existing focused-search outcome. It delegates exact-request
 selection to the existing outcome lookup and returns true only when no outcome for that request is
@@ -758,10 +766,10 @@ reaches the outcome-aware path only through the explicit temporary completion in
 credential-free focused-search, outcome-controller, and interaction-focus smokes cover these
 boundaries. Its separate outcome-resolution path accepts an existing outcome and world object,
 rejects null inputs and target-mismatched objects before applying or consuming anything, delegates
-unchanged resolution eligibility and state changes to the existing combined policy and transition,
-then installs the exact returned perception and outcome snapshots without changing activity, the
-supplied world object, or presentation. Ordinary play reaches that boundary only through the
-explicit temporary resolution input described below.
+complete eligibility to the world-object-bound policy and state creation to the world-object-bound
+transition, then installs the exact returned perception and outcome snapshots without changing
+activity, the supplied world object, or presentation. Ordinary play reaches that boundary only
+through the explicit temporary resolution input described below.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact

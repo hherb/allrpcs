@@ -91,16 +91,17 @@ Phases 2a–2j established the checked engine-independent world, character, perc
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
 perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l8 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
+2l1–2l9 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
 that mirrors the two visible greybox targets into one stable snapshot with empty authored
 descriptions, separate one-time controller ownership with exact value-equal lookup, and temporary
 R-resolution gating on the selected outcome target's existence. The R path now passes the exact
 looked-up object into the focused-search controller, which delegates complete world-object-bound
-eligibility to a pure Domain policy before the existing outcome resolution. The policy accepts
-value-equal target identifiers, rejects null and mismatched inputs, and preserves every input and
-retained instance. These paths preserve immutable state but do not make the source or controller
-authoritative, bind the resolution transition itself to the world object, or grant discovery. The
-exact next bounded slice is defined in `HANDOVER.md`.
+eligibility and state creation to a pure Domain policy and transition. The transition accepts
+value-equal target identifiers, rejects every bound or existing resolution ineligibility, delegates
+unchanged state creation to the existing resolution transition, and returns its exact result while
+preserving every input and retained unrelated instance. These paths preserve immutable state but do
+not make the source or controller authoritative or grant discovery. The exact next bounded slice is
+defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

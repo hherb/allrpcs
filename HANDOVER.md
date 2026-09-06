@@ -2,55 +2,55 @@
 
 ## Current state
 
-Phase 2l8 is implemented on `codex/phase-2l8-world-object-resolution-policy`, based directly on
-PR #104's verified merge commit `cbdfbf8`.
+Phase 2l9 is implemented on `codex/phase-2l9-world-object-resolution-transition`, based directly
+on PR #105's verified merge commit `9825bbe2`.
 
-`WorldObjectBoundFocusedSearchOutcomeResolutionPolicy.CanResolve` is the pure Domain boundary for
-world-object-bound resolution eligibility. It rejects null inputs and a target-mismatched object,
-accepts distinct value-equal target identifiers, and otherwise delegates unchanged to
-`FocusedSearchOutcomeResolutionPolicy`. It retains the exact outcome, world object, perception,
-outcome snapshot, and nested instances.
+`WorldObjectBoundFocusedSearchOutcomeResolutionTransition.Resolve` is the pure Domain boundary for
+world-object-bound resolution. It delegates complete eligibility to the existing bound policy,
+rejects every mismatched or otherwise ineligible resolution, delegates unchanged state creation to
+`FocusedSearchOutcomeResolutionTransition`, and returns its exact result. Distinct value-equal
+target identifiers are accepted; the world object, all other inputs, stable order, and unrelated
+retained instances remain unchanged.
 
-`FocusedSearchActivityController.TryResolveOutcome` now delegates its complete bound eligibility
-decision to that policy before invoking the unchanged resolution transition. Focused controller
-evidence covers value-equal recorded outcomes and world-object identifiers, mismatch and null
-rejection, exact input retention, and fail-closed unchanged activity, outcome, perception, and
-presentation state.
+`FocusedSearchActivityController.TryResolveOutcome` retains its Boolean fail-closed eligibility
+gate, then delegates successful state creation to the new bound transition and installs the exact
+returned perception and outcome snapshots. Its credential-free smoke now also covers a retained
+outcome whose target is absent from perception. Activity, world-object, input, and presentation
+state remain unchanged on success or rejection as applicable.
 
-Host-shell `./scripts/quality.sh` passed with a zero-warning build, 653 Domain tests, 107 Application
-tests, six architecture tests, all thirteen Godot smokes, and the bounded graphical launch. No
-manual visual inspection was needed because visible behavior did not change.
+The eight focused tests failed first because the transition type was absent. After implementation
+and code review, host-shell `./scripts/quality.sh` passed with a zero-warning build, 661 Domain
+tests, 107 Application tests, six architecture tests, all thirteen Godot smokes, and the bounded
+graphical launch. No manual visual inspection was needed because visible behavior did not change.
 
-The temporary source and controllers remain non-authoritative. The existing resolution transition
-still does not receive or validate a world object.
+The temporary source, controllers, and identified-marker presentation remain non-authoritative.
 
 ## Exact next bounded slice
 
-Take **Phase 2l9: world-object-bound focused-search resolution transition**.
+Take **Phase 2l10: world-object-bound resolved-perception presentation**.
 
 Acceptance boundary:
 
-1. Add one pure Domain transition that receives an existing `FocusedSearchOutcome`, `WorldObject`,
-   `CharacterPerceptionSnapshot`, and `FocusedSearchOutcomeSnapshot`; delegate complete eligibility
-   to `WorldObjectBoundFocusedSearchOutcomeResolutionPolicy`, reject ineligible resolution, then
-   delegate unchanged resolution to `FocusedSearchOutcomeResolutionTransition` and return its exact
-   result.
-2. Make `FocusedSearchActivityController.TryResolveOutcome` invoke that transition after its
-   uninitialized-perception check, then retain the transition result's exact perception and outcome
-   snapshots.
-3. Add focused Domain tests and extend controller evidence for value-equal identifiers, all
-   delegated rejection paths, exact result/input retention, and fail-closed unchanged state; update
-   README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and prune
-   this file again to current evidence plus one next slice.
+1. Make `TemporaryResolvedPerceptionIndicator.Present` receive an existing nullable `WorldObject`
+   instead of a raw `ObjectId`, then use only that object's exact stable identifier with the
+   existing perception lookup and exact-`Identified` presentation rule.
+2. In `Main.RefreshResolvedPerceptionPresentation`, resolve each existing visible target through
+   `WorldObjectController.FindWorldObject` and pass only the exact returned object plus the
+   controller's current perception. A missing object must hide the marker and change no state.
+3. Extend focused credential-free evidence for null, absent, unrelated, non-identified, exact, and
+   distinct value-equal identifiers; exact world-object/input retention; successful target-only
+   refresh; and failed or repeated-resolution presentation preservation.
+4. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and
+   prune this file again to current evidence plus one next slice.
 
 Explicit exclusions:
 
-- Do not change the existing resolution policy, transition, or result signatures; perception or
-  outcome transition semantics; world-object snapshots or lookup; outcome ordering; or presentation
-  rules.
+- Do not display or expose world-object identity text or descriptions; change visibility ranking,
+  perception or outcome transition semantics, world-object snapshots or lookup, outcome ordering,
+  or focused-search selection and presentation rules.
 - Do not make the temporary source or controllers authoritative; add descriptions, locations, item
-  associations, filtering, visibility ranking, knowledge, evidence, events, persistence,
-  serialization, providers, plugins, credentials, or new UI.
+  associations, filtering, knowledge, evidence, events, persistence, serialization, providers,
+  plugins, credentials, or new UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
   explicit user authorization.
