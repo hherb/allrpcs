@@ -110,8 +110,9 @@ public partial class Main : Node
         {
             FocusedSearchOutcome? outcome = GetFirstRetainedFocusedSearchOutcome();
             bool changed = outcome is not null
-                && worldObjectController.FindWorldObject(outcome.Request.TargetObjectId) is not null
-                && focusedSearchController.TryResolveOutcome(outcome);
+                && worldObjectController.FindWorldObject(outcome.Request.TargetObjectId)
+                    is { } worldObject
+                && focusedSearchController.TryResolveOutcome(outcome, worldObject);
             if (changed)
             {
                 RefreshResolvedPerceptionPresentation();

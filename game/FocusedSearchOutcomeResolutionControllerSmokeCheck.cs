@@ -1,6 +1,7 @@
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -65,13 +66,16 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             new([firstOutcome, retainedOutcome, lastOutcome]);
         FocusedSearchOutcome suppliedOutcome =
             Outcome("seeker", "weathered-inscription", VisibilityState.Understood);
+        WorldObject targetWorldObject = CreateWorldObject(targetObjectId, "Weathered inscription");
+        WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
+        WorldObjectDescription targetDescription = targetWorldObject.Description;
         SetControllerState(activities, outcomes, perception);
         bool expectedIndicatorVisibility = indicatorLine.Visible;
         string expectedResultText = resultStatus.Text;
 
         if (ReferenceEquals(suppliedOutcome, retainedOutcome)
             || suppliedOutcome != retainedOutcome
-            || !controller.TryResolveOutcome(suppliedOutcome))
+            || !controller.TryResolveOutcome(suppliedOutcome, targetWorldObject))
         {
             Fail("Focused-search outcome resolution controller smoke failed eligible resolution.");
             return;
@@ -138,15 +142,21 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             || !AssertPresentation(
                 expectedIndicatorVisibility,
                 expectedResultText,
-                "successful resolution"))
+                "successful resolution")
+            || !ReferenceEquals(targetWorldObject.Identity, targetIdentity)
+            || !ReferenceEquals(targetWorldObject.Description, targetDescription)
+            || !ReferenceEquals(targetWorldObject.Identity.Id, targetObjectId))
         {
             return;
         }
 
         FocusedSearchOutcome wrongCharacter =
             Outcome("healer", "concealed-herb", VisibilityState.Understood);
+        WorldObject wrongCharacterWorldObject =
+            CreateWorldObject(wrongCharacter.Request.TargetObjectId, "Concealed herb");
         if (!AssertRejected(
                 wrongCharacter,
+                wrongCharacterWorldObject,
                 activities,
                 new FocusedSearchOutcomeSnapshot([wrongCharacter]),
                 Perception(
@@ -159,8 +169,11 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
 
         FocusedSearchOutcome unretained =
             Outcome("seeker", "concealed-herb", VisibilityState.Understood);
+        WorldObject unretainedWorldObject =
+            CreateWorldObject(unretained.Request.TargetObjectId, "Concealed herb");
         if (!AssertRejected(
                 unretained,
+                unretainedWorldObject,
                 activities,
                 new FocusedSearchOutcomeSnapshot([]),
                 Perception(
@@ -175,8 +188,11 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             Request("seeker", "concealed-herb");
         FocusedSearchOutcome unequalResult =
             new(unequalRequest, VisibilityState.Understood);
+        WorldObject unequalResultWorldObject =
+            CreateWorldObject(unequalResult.Request.TargetObjectId, "Concealed herb");
         if (!AssertRejected(
                 unequalResult,
+                unequalResultWorldObject,
                 activities,
                 new FocusedSearchOutcomeSnapshot(
                     [new FocusedSearchOutcome(unequalRequest, VisibilityState.Identified)]),
@@ -190,8 +206,11 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
 
         FocusedSearchOutcome unchanged =
             Outcome("seeker", "concealed-herb", VisibilityState.Identified);
+        WorldObject unchangedWorldObject =
+            CreateWorldObject(unchanged.Request.TargetObjectId, "Concealed herb");
         if (!AssertRejected(
                 unchanged,
+                unchangedWorldObject,
                 activities,
                 new FocusedSearchOutcomeSnapshot([unchanged]),
                 Perception(
@@ -202,9 +221,24 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             return;
         }
 
+        WorldObject mismatchedWorldObject =
+            CreateWorldObject(new ObjectId("weathered-inscription"), "Weathered inscription");
+        if (!AssertRejected(
+                unchanged,
+                mismatchedWorldObject,
+                activities,
+                new FocusedSearchOutcomeSnapshot([unchanged]),
+                Perception(
+                    "seeker",
+                    Visibility("concealed-herb", VisibilityState.Noticed)),
+                "target-mismatched world object"))
+        {
+            return;
+        }
+
         SetControllerState(activities, new FocusedSearchOutcomeSnapshot([unchanged]), null);
         if (!AssertCurrentStateRejected(
-                () => controller.TryResolveOutcome(unchanged),
+                () => controller.TryResolveOutcome(unchanged, unchangedWorldObject),
                 activities,
                 controller.Outcomes,
                 null,
@@ -218,36 +252,45 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             Visibility("concealed-herb", VisibilityState.Noticed));
         FocusedSearchOutcomeSnapshot nullAttemptOutcomes = new([unchanged]);
         SetControllerState(activities, nullAttemptOutcomes, nullAttemptPerception);
-        if (!RejectsNullWithoutChangingState(
+        if (!RejectsNullInputsWithoutChangingState(
                 activities,
                 nullAttemptOutcomes,
-                nullAttemptPerception))
+                nullAttemptPerception,
+                unchanged,
+                unchangedWorldObject))
         {
             return;
         }
 
         GD.Print(
             "Focused-search outcome resolution controller smoke passed: value-equal recorded "
-            + "outcome resolution; exact stable-order retention; unchanged inputs, activity, "
+            + "outcome and matching exact world-object resolution; exact stable-order retention; "
+            + "unchanged inputs, activity, "
             + "and presentation; and wrong-character, unretained, unequal-result, "
-            + "unchanged-visibility, uninitialized, and null rejection were correct.");
+            + "unchanged-visibility, mismatched-object, uninitialized, and null rejection were "
+            + "correct.");
         GetTree().Quit();
     }
 
     private bool AssertRejected(
         FocusedSearchOutcome outcome,
+        WorldObject worldObject,
         FocusedSearchActivitySnapshot activities,
         FocusedSearchOutcomeSnapshot outcomes,
         CharacterPerceptionSnapshot perception,
         string scenario)
     {
         SetControllerState(activities, outcomes, perception);
+        WorldObjectIdentity expectedIdentity = worldObject.Identity;
+        WorldObjectDescription expectedDescription = worldObject.Description;
         return AssertCurrentStateRejected(
-            () => controller.TryResolveOutcome(outcome),
+            () => controller.TryResolveOutcome(outcome, worldObject),
             activities,
             outcomes,
             perception,
-            scenario);
+            scenario)
+            && ReferenceEquals(worldObject.Identity, expectedIdentity)
+            && ReferenceEquals(worldObject.Description, expectedDescription);
     }
 
     private bool AssertCurrentStateRejected(
@@ -280,16 +323,45 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
             $"{scenario} rejection");
     }
 
-    private bool RejectsNullWithoutChangingState(
+    private bool RejectsNullInputsWithoutChangingState(
         FocusedSearchActivitySnapshot expectedActivities,
         FocusedSearchOutcomeSnapshot expectedOutcomes,
-        CharacterPerceptionSnapshot expectedPerception)
+        CharacterPerceptionSnapshot expectedPerception,
+        FocusedSearchOutcome outcome,
+        WorldObject worldObject)
     {
         bool expectedIndicatorVisibility = indicatorLine.Visible;
         string expectedResultText = resultStatus.Text;
+        return RejectsNullInput(
+                () => controller.TryResolveOutcome(null!, worldObject),
+                expectedActivities,
+                expectedOutcomes,
+                expectedPerception,
+                expectedIndicatorVisibility,
+                expectedResultText,
+                "outcome")
+            && RejectsNullInput(
+                () => controller.TryResolveOutcome(outcome, null!),
+                expectedActivities,
+                expectedOutcomes,
+                expectedPerception,
+                expectedIndicatorVisibility,
+                expectedResultText,
+                "world object");
+    }
+
+    private bool RejectsNullInput(
+        Func<bool> attempt,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception,
+        bool expectedIndicatorVisibility,
+        string expectedResultText,
+        string inputName)
+    {
         try
         {
-            controller.TryResolveOutcome(null!);
+            attempt();
         }
         catch (ArgumentNullException)
         {
@@ -298,18 +370,20 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
                 || !ReferenceEquals(controller.Perception, expectedPerception))
             {
                 Fail(
-                    "Focused-search outcome resolution controller smoke changed null rejection "
-                    + "state.");
+                    $"Focused-search outcome resolution controller smoke changed null "
+                    + $"{inputName} rejection state.");
                 return false;
             }
 
             return AssertPresentation(
                 expectedIndicatorVisibility,
                 expectedResultText,
-                "null rejection");
+                $"null {inputName} rejection");
         }
 
-        Fail("Focused-search outcome resolution controller smoke failed null rejection.");
+        Fail(
+            $"Focused-search outcome resolution controller smoke failed null {inputName} "
+            + "rejection.");
         return false;
     }
 
@@ -387,6 +461,11 @@ public partial class FocusedSearchOutcomeResolutionControllerSmokeCheck : Node
         string objectId,
         VisibilityState visibilityState) =>
         new(new ObjectId(objectId), visibilityState);
+
+    private static WorldObject CreateWorldObject(ObjectId objectId, string displayName) =>
+        new(
+            new WorldObjectIdentity(objectId, displayName),
+            new WorldObjectDescription(string.Empty));
 
     private void Fail(string message)
     {
