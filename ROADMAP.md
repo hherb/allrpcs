@@ -90,10 +90,11 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 Phases 2a–2j established the checked engine-independent world, character, perception, inventory,
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
-perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phase 2l1
-added an immutable world-object snapshot. These paths preserve immutable state and exact retained
-instances but do not yet make the temporary greybox targets authoritative world objects or grant
-discovery. The exact next bounded slice is defined in `HANDOVER.md`.
+perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
+2l1–2l2 added an immutable world-object snapshot and exact identifier lookup. These paths preserve
+immutable state and exact retained instances but do not yet make the temporary greybox targets
+authoritative world objects or grant discovery. The exact next bounded slice is defined in
+`HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

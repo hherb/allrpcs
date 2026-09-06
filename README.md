@@ -379,10 +379,14 @@ each supplied world-object instance, and rejects null input, null entries, and v
 duplicate `WorldObject.Identity.Id` values. It does not compare display names or descriptions for
 identity.
 
+`WorldObjectLookup.FindById` selects only by value-equal `WorldObject.Identity.Id`. It returns the
+exact retained world-object instance or `null` without changing either input; display names and
+descriptions do not participate in selection.
+
 The complete world-object boundary still does not define item properties, tags, portability,
 quantities, stacks, containers, inventory mechanics, ownership, use, location assignment,
-containment, lookup, selection, replacement, mutable state, lifecycle or event handling, filtered
-views, visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
+containment, projection, filtering, replacement, mutable state, lifecycle or event handling,
+visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
 
 ## Item model boundaries
 
