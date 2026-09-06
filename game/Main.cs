@@ -101,9 +101,13 @@ public partial class Main : Node
         else if (@event.IsActionPressed(FocusedSearchCompleteAction))
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
-            bool changed = activeRequest is not null
-                && focusedSearchController.TryCompleteSearchWithOutcome(
-                    focusedSearchOutcomeSource.CreateOutcome(activeRequest));
+            FocusedSearchOutcome? outcome = activeRequest is null
+                ? null
+                : focusedSearchOutcomeSource.CreateOutcome(
+                    activeRequest,
+                    worldObjectController.FindWorldObject(activeRequest.TargetObjectId));
+            bool changed = outcome is not null
+                && focusedSearchController.TryCompleteSearchWithOutcome(outcome);
             PresentFocusedSearchResult("COMPLETE", changed);
         }
         else if (@event.IsActionPressed(FocusedSearchResolveAction))
