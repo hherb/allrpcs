@@ -52,8 +52,9 @@ activity-indicator presentation, and deterministic changed/unchanged result text
 lifecycle action. It also proves that
 released, unrelated, movement, and healer input preserve all controller snapshots and the exact
 prior text, and that the temporary focused-search source stably authors one
-capability-only herb-patch context and one tool-only stone-marker context, retains their exact
-nested instances, and forwards its exact aggregate instances through the input path. The
+capability-only first-world-object context and one tool-only second-world-object context from the
+existing world-object snapshot, retains their exact nested instances, fails explicitly for an
+undersized snapshot, and forwards its exact aggregate instances through the input path. The
 temporary Seeker perception-source launch proves exact Seeker and world-object identifier
 retention, empty and populated world-object snapshot derivation, stable order and noticed state,
 unchanged nested inputs and surrounding state, and one stable scene snapshot. The separate
@@ -788,12 +789,16 @@ instances to the controller's condition-aware start path. It returns the existin
 adds no eligibility, transition, input, or discovery-context authoring behavior.
 
 `Allrpcs.Game.TemporaryFocusedSearchContextSource` is the narrow scene source for those three
-aggregate start inputs. It reuses the two visible markers' exact parsed identifiers to author one
-capability-only herb-patch requirement and one tool-only stone-marker requirement, then retains the
-exact created capability, tool identifier, requirements, sets, and aggregates. It exposes only the
-existing discovery-condition set, capability set, and inventory needed by the start bridge. The
-source does not start a search, poll focus, own lifecycle state, grant discovery, or make the
-temporary markers authoritative world objects.
+aggregate start inputs. It derives its target identifiers only from the existing temporary
+world-object snapshot: the first object's exact identifier authors the capability-only requirement,
+and the second object's exact identifier authors the tool-only requirement. It fails explicitly
+when fewer than two objects are supplied and never falls back to greybox interaction targets. The
+source retains the exact created capability, tool identifier, requirements, sets, and aggregates and
+exposes only the existing discovery-condition set, capability set, and inventory needed by the start
+bridge. Independent-snapshot smoke evidence proves exact nested retention without selecting by
+authored identity text or changing the supplied snapshot and objects. The source does not start a
+search, poll focus, own lifecycle state, grant discovery, or make temporary scene state
+authoritative.
 
 `Allrpcs.Game.TemporaryWorldObjectSource` mirrors only the visible herb-patch and stone-marker
 greybox targets into one retained `WorldObjectSnapshot` when the scene becomes ready. It creates one

@@ -1,6 +1,7 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -10,11 +11,14 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class TemporaryFocusedSearchContextSource : Node
 {
+    private const int CapabilityRequirementObjectIndex = 0;
     private const string CapabilityKey = "identify-healing-plants";
     private const string CapabilityDescription = "Identifies healing plants.";
+    private const int RequiredWorldObjectCount = 2;
+    private const int ToolRequirementObjectIndex = 1;
     private const string ToolObjectIdText = "field-lens";
 
-    /// <summary>Gets the retained discovery conditions for the visible greybox targets.</summary>
+    /// <summary>Gets the retained discovery conditions for the first two world objects.</summary>
     public DiscoveryConditionSet Conditions { get; private set; } = null!;
 
     /// <summary>Gets the retained temporary Seeker capability set.</summary>
@@ -26,21 +30,50 @@ public partial class TemporaryFocusedSearchContextSource : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        ObjectId herbPatchObjectId = GetNode<GreyboxInteractionTarget>(
-            "../InteractionCandidates/HerbPatch").ObjectId;
-        ObjectId stoneMarkerObjectId = GetNode<GreyboxInteractionTarget>(
-            "../InteractionCandidates/StoneMarker").ObjectId;
+        WorldObjectSnapshot worldObjects = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").WorldObjects;
+        (
+            DiscoveryConditionSet conditions,
+            CharacterCapabilitySet capabilities,
+            CharacterInventory inventory) = CreateContext(worldObjects);
+
+        Conditions = conditions;
+        Capabilities = capabilities;
+        Inventory = inventory;
+    }
+
+    /// <summary>
+    /// Creates the fixed temporary context from the first two world objects in authored order.
+    /// </summary>
+    private static (
+        DiscoveryConditionSet Conditions,
+        CharacterCapabilitySet Capabilities,
+        CharacterInventory Inventory) CreateContext(WorldObjectSnapshot worldObjects)
+    {
+        ArgumentNullException.ThrowIfNull(worldObjects);
+        if (worldObjects.Entries.Count < RequiredWorldObjectCount)
+        {
+            throw new InvalidOperationException(
+                $"Temporary focused-search context requires at least "
+                + $"{RequiredWorldObjectCount} world objects.");
+        }
+
+        ObjectId capabilityTargetObjectId =
+            worldObjects.Entries[CapabilityRequirementObjectIndex].Identity.Id;
+        ObjectId toolTargetObjectId =
+            worldObjects.Entries[ToolRequirementObjectIndex].Identity.Id;
         CharacterCapability capability = new(CapabilityKey, CapabilityDescription);
         ObjectId toolObjectId = new(ToolObjectIdText);
         DiscoveryCapabilityRequirement capabilityRequirement = new(
-            herbPatchObjectId,
+            capabilityTargetObjectId,
             capability.Key);
-        DiscoveryToolRequirement toolRequirement = new(stoneMarkerObjectId, toolObjectId);
+        DiscoveryToolRequirement toolRequirement = new(toolTargetObjectId, toolObjectId);
         DiscoveryCapabilityRequirementSet capabilityRequirements = new([capabilityRequirement]);
         DiscoveryToolRequirementSet toolRequirements = new([toolRequirement]);
 
-        Conditions = new DiscoveryConditionSet(capabilityRequirements, toolRequirements);
-        Capabilities = new CharacterCapabilitySet([capability]);
-        Inventory = new CharacterInventory([toolObjectId]);
+        return (
+            new DiscoveryConditionSet(capabilityRequirements, toolRequirements),
+            new CharacterCapabilitySet([capability]),
+            new CharacterInventory([toolObjectId]));
     }
 }

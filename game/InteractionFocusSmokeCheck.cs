@@ -265,9 +265,10 @@ public partial class InteractionFocusSmokeCheck : Node
         GD.Print(
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
-            + "stable request-identifier retention; stable capability-only and tool-only "
-            + "focused-search context authoring; mapped start, cancellation, completion, and "
-            + "resolution inputs; exact temporary control text; exact retained active requests; "
+            + "stable request-identifier retention; world-object-derived capability-only and "
+            + "tool-only focused-search context authoring with independent inputs and explicit "
+            + "undersized-snapshot failure; mapped start, cancellation, completion, and resolution "
+            + "inputs; exact temporary control text; exact retained active requests; "
             + "both eligible starts, focus-independent cancellations, and world-object-gated "
             + "outcome-aware completions; exact outcome recording and exact world-object-bound "
             + "resolution; missing- and mismatched-object rejection; "
@@ -1436,6 +1437,9 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private bool AssertAuthoredFocusedSearchContext()
     {
+        WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
+        WorldObject sourceHerbPatch = sourceWorldObjects.Entries[0];
+        WorldObject sourceStoneMarker = sourceWorldObjects.Entries[1];
         authoredConditions = focusedSearchContextSource.Conditions;
         authoredCapabilities = focusedSearchContextSource.Capabilities;
         authoredInventory = focusedSearchContextSource.Inventory;
@@ -1459,7 +1463,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
         bool isStable = ReferenceEquals(
                 authoredCapabilityRequirement.ObjectId,
-                authoredObjectIds[0])
+                sourceHerbPatch.Identity.Id)
             && string.Equals(
                 authoredCapabilityRequirement.RequiredCapabilityKey,
                 authoredCapability.Key,
@@ -1472,7 +1476,7 @@ public partial class InteractionFocusSmokeCheck : Node
                 authoredCapability.Description,
                 "Identifies healing plants.",
                 StringComparison.Ordinal)
-            && ReferenceEquals(authoredToolRequirement.ObjectId, authoredObjectIds[1])
+            && ReferenceEquals(authoredToolRequirement.ObjectId, sourceStoneMarker.Identity.Id)
             && ReferenceEquals(
                 authoredToolRequirement.RequiredToolObjectId,
                 authoredToolObjectId)
@@ -1485,7 +1489,148 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
+        ObjectId independentFirstObjectId = new("independent-first-object");
+        ObjectId independentSecondObjectId = new("independent-second-object");
+        ObjectId independentUnrelatedObjectId = new("independent-unrelated-object");
+        WorldObject independentFirstObject = CreateWorldObject(
+            independentFirstObjectId,
+            "Independent first object");
+        WorldObject independentSecondObject = CreateWorldObject(
+            independentSecondObjectId,
+            "Independent second object");
+        WorldObject independentUnrelatedObject = CreateWorldObject(
+            independentUnrelatedObjectId,
+            "Independent unrelated object");
+        WorldObjectIdentity independentFirstIdentity = independentFirstObject.Identity;
+        WorldObjectDescription independentFirstDescription = independentFirstObject.Description;
+        WorldObjectIdentity independentSecondIdentity = independentSecondObject.Identity;
+        WorldObjectDescription independentSecondDescription = independentSecondObject.Description;
+        WorldObjectIdentity independentUnrelatedIdentity = independentUnrelatedObject.Identity;
+        WorldObjectDescription independentUnrelatedDescription =
+            independentUnrelatedObject.Description;
+        WorldObjectSnapshot independentWorldObjects = new(
+            [independentFirstObject, independentSecondObject, independentUnrelatedObject]);
+        (
+            DiscoveryConditionSet independentConditions,
+            CharacterCapabilitySet independentCapabilities,
+            CharacterInventory independentInventory) = CreateFocusedSearchContext(
+                independentWorldObjects);
+
+        DiscoveryCapabilityRequirement independentCapabilityRequirement =
+            independentConditions.CapabilityRequirements.Entries.Single();
+        DiscoveryToolRequirement independentToolRequirement =
+            independentConditions.ToolRequirements.Entries.Single();
+        CharacterCapability independentCapability = independentCapabilities.Entries.Single();
+        ObjectId independentToolObjectId = independentInventory.ObjectReferences.Single();
+        bool isWorldObjectDerived = ReferenceEquals(
+                independentCapabilityRequirement.ObjectId,
+                independentFirstObjectId)
+            && ReferenceEquals(independentToolRequirement.ObjectId, independentSecondObjectId)
+            && string.Equals(
+                independentCapabilityRequirement.RequiredCapabilityKey,
+                independentCapability.Key,
+                StringComparison.Ordinal)
+            && string.Equals(
+                independentCapability.Key,
+                "identify-healing-plants",
+                StringComparison.Ordinal)
+            && string.Equals(
+                independentCapability.Description,
+                "Identifies healing plants.",
+                StringComparison.Ordinal)
+            && ReferenceEquals(
+                independentToolRequirement.RequiredToolObjectId,
+                independentToolObjectId)
+            && string.Equals(
+                independentToolObjectId.Value,
+                "field-lens",
+                StringComparison.Ordinal)
+            && ReferenceEquals(
+                independentConditions.CapabilityRequirements.Entries[0],
+                independentCapabilityRequirement)
+            && ReferenceEquals(
+                independentConditions.ToolRequirements.Entries[0],
+                independentToolRequirement)
+            && ReferenceEquals(
+                independentCapabilities.Entries[0],
+                independentCapability)
+            && ReferenceEquals(
+                independentInventory.ObjectReferences[0],
+                independentToolObjectId)
+            && ReferenceEquals(independentWorldObjects.Entries[0], independentFirstObject)
+            && ReferenceEquals(independentWorldObjects.Entries[1], independentSecondObject)
+            && ReferenceEquals(independentWorldObjects.Entries[2], independentUnrelatedObject)
+            && ReferenceEquals(independentFirstObject.Identity, independentFirstIdentity)
+            && ReferenceEquals(independentFirstObject.Description, independentFirstDescription)
+            && ReferenceEquals(independentSecondObject.Identity, independentSecondIdentity)
+            && ReferenceEquals(independentSecondObject.Description, independentSecondDescription)
+            && ReferenceEquals(independentUnrelatedObject.Identity, independentUnrelatedIdentity)
+            && ReferenceEquals(
+                independentUnrelatedObject.Description,
+                independentUnrelatedDescription)
+            && ReferenceEquals(independentFirstObject.Identity.Id, independentFirstObjectId)
+            && ReferenceEquals(independentSecondObject.Identity.Id, independentSecondObjectId)
+            && ReferenceEquals(
+                independentUnrelatedObject.Identity.Id,
+                independentUnrelatedObjectId)
+            && ThrowsForInsufficientWorldObjects(
+                new WorldObjectSnapshot([independentFirstObject]));
+        if (!isWorldObjectDerived)
+        {
+            Fail(
+                "Interaction-focus smoke failed focused-search context authoring from an "
+                + "independent world-object snapshot.");
+            return false;
+        }
+
         return true;
+    }
+
+    private (
+        DiscoveryConditionSet Conditions,
+        CharacterCapabilitySet Capabilities,
+        CharacterInventory Inventory) CreateFocusedSearchContext(
+            WorldObjectSnapshot worldObjects)
+    {
+        System.Reflection.MethodInfo? method = typeof(TemporaryFocusedSearchContextSource)
+            .GetMethod(
+                "CreateContext",
+                System.Reflection.BindingFlags.Static
+                    | System.Reflection.BindingFlags.NonPublic);
+        if (method is null)
+        {
+            Fail("Interaction-focus smoke found no world-object context derivation method.");
+            return default;
+        }
+
+        return ((
+            DiscoveryConditionSet Conditions,
+            CharacterCapabilitySet Capabilities,
+            CharacterInventory Inventory))(method.Invoke(null, [worldObjects])
+                ?? throw new InvalidOperationException(
+                    "The temporary focused-search source returned no derived context."));
+    }
+
+    private bool ThrowsForInsufficientWorldObjects(WorldObjectSnapshot worldObjects)
+    {
+        try
+        {
+            _ = CreateFocusedSearchContext(worldObjects);
+        }
+        catch (System.Reflection.TargetInvocationException exception)
+            when (exception.InnerException is InvalidOperationException)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static WorldObject CreateWorldObject(ObjectId objectId, string displayName)
+    {
+        return new WorldObject(
+            new WorldObjectIdentity(objectId, displayName),
+            new WorldObjectDescription($"Description for {displayName}."));
     }
 
     private bool AssertFocusedSearchContextUnchanged()
