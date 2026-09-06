@@ -91,11 +91,12 @@ Phases 2a–2j established the checked engine-independent world, character, perc
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
 perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l4 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
+2l1–2l5 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
 that mirrors the two visible greybox targets into one stable snapshot with empty authored
-descriptions, and separate one-time controller ownership of that exact snapshot. These paths
+descriptions, and separate one-time controller ownership with exact value-equal lookup. These paths
 preserve immutable state and exact retained instances but do not make the source or controller
-authoritative or grant discovery. The exact next bounded slice is defined in `HANDOVER.md`.
+authoritative, call the lookup from ordinary play, or grant discovery. The exact next bounded slice
+is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

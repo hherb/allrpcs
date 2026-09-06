@@ -57,7 +57,10 @@ source's exact Seeker snapshot, rejects wrong-character, repeated, and null init
 preserves activity, outcome, and presentation state. The outcome-resolution-controller launch
 proves value-equal recorded-outcome resolution, target-only perception replacement, consumption,
 stable unrelated-entry order and instances, unchanged inputs, and fail-closed rejection without
-changing activity or presentation. The
+changing activity or presentation. The world-object-controller launch proves exact lookup of both
+scene-authored objects, including through a value-equal distinct identifier, absent and
+uninitialized results, null rejection, stable exact snapshot retention, and unchanged source,
+targets, focused-search state, and presentation. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -780,10 +783,13 @@ discovery, or change presentation or ordinary-play behavior.
 `Allrpcs.Game.WorldObjectController` is the separate scene owner of one optional immutable
 world-object snapshot. Its one-time initialization boundary rejects null, retains the exact first
 supplied snapshot instance, and fails closed on repeated initialization without replacing that
-snapshot. During `Main._Ready`, the scene passes the temporary source's exact retained snapshot once
-and fails explicitly if initialization cannot be established. The controller does not query,
-filter, rank, or mutate world objects; inspect focused-search or perception state; grant discovery;
-or change presentation or ordinary-play behavior.
+snapshot. Its lookup boundary rejects a null identifier, returns no object while uninitialized or
+when the identifier is absent, and otherwise delegates to the pure Domain lookup to return the
+exact retained object for a value-equal identifier. During `Main._Ready`, the scene passes the
+temporary source's exact retained snapshot once and fails explicitly if initialization cannot be
+established. No ordinary-play path calls the lookup. The controller does not filter, rank, or
+mutate world objects; inspect focused-search or perception state; grant discovery; or change
+presentation or ordinary-play behavior.
 
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
 explicitly temporary deterministic focused-search result. Each call accepts an existing request and
