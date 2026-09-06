@@ -794,7 +794,11 @@ exposes the exact looked-up object's identifier instance, including a distinct v
 and presents the focus status from that lookup's authored `WorldObject.Identity.DisplayName` rather
 than the greybox marker label. The status refreshes when a value-equal replacement changes that name
 without changing the selected authored index, returns to `Interaction focus: NONE` when focus
-clears, and never inspects or exposes the object description. Its request-construction boundary
+clears, and never inspects or exposes the object description. Each existing labelled marker is
+likewise refreshed from its exact matching object's display name, including for a matching disabled
+marker, while a missing object clears that marker label and an unlabelled hidden marker remains
+unlabelled. This presentation does not overwrite the marker's exported authored `DisplayName`, alter
+focus eligibility, or retain a world object beyond the refresh. Its request-construction boundary
 accepts an existing `CharacterId` and nullable `WorldObject`, returns no request when focus is clear
 or the object is absent or target-mismatched, and otherwise returns a new `FocusedSearchRequest`
 retaining the exact character identifier and the matching object's exact identifier. Exact and

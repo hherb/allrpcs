@@ -119,7 +119,10 @@ distance and authored-order rules when the nearest object is missing, and clears
 when no object-backed marker remains. Its status now presents the exact looked-up object's authored
 display name, including when a value-equal replacement changes the name without changing the
 selected marker, and returns to `Interaction focus: NONE` when focus clears without inspecting the
-object description. The exact next bounded slice is defined in `HANDOVER.md`.
+object description. Every existing labelled marker now also presents the matching world-object
+display name, including for a matching disabled marker; absent objects clear their labels, hidden
+unlabelled markers remain unlabelled, and authored marker inputs and focus behavior remain unchanged.
+The exact next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

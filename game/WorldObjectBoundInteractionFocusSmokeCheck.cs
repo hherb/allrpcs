@@ -74,6 +74,9 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         string[] expectedTargetDisplayNames = expectedTargets
             .Select(target => target.DisplayName)
             .ToArray();
+        Label?[] expectedTargetLabels = expectedTargets
+            .Select(target => target.GetNodeOrNull<Label>("Label"))
+            .ToArray();
         WorldObject[] expectedSourceObjects = sourceWorldObjects.Entries.ToArray();
         WorldObjectIdentity[] expectedSourceIdentities = expectedSourceObjects
             .Select(worldObject => worldObject.Identity)
@@ -96,8 +99,21 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             new WorldObjectDescription("Independent value-equal fallback object."));
         WorldObjectIdentity valueEqualSecondIdentity = valueEqualSecondWorldObject.Identity;
         WorldObjectDescription valueEqualSecondDescription = valueEqualSecondWorldObject.Description;
+        ObjectId valueEqualHiddenObjectId = new(expectedTargetObjectIds[2].Value);
+        WorldObject valueEqualHiddenWorldObject = new(
+            new WorldObjectIdentity(valueEqualHiddenObjectId, "Value-equal hidden object"),
+            new WorldObjectDescription("Independent value-equal hidden object."));
+        ObjectId valueEqualDisabledObjectId = new(expectedTargetObjectIds[3].Value);
+        WorldObject valueEqualDisabledWorldObject = new(
+            new WorldObjectIdentity(valueEqualDisabledObjectId, "Value-equal disabled object"),
+            new WorldObjectDescription("Independent value-equal disabled object."));
         WorldObjectSnapshot valueEqualWorldObjects = new(
-            [valueEqualFirstWorldObject, valueEqualSecondWorldObject]);
+            [
+                valueEqualFirstWorldObject,
+                valueEqualSecondWorldObject,
+                valueEqualHiddenWorldObject,
+                valueEqualDisabledWorldObject,
+            ]);
         WorldObjectSnapshot missingNearestWorldObjects = new([valueEqualSecondWorldObject]);
         WorldObjectSnapshot emptyWorldObjects = new([]);
 
@@ -112,6 +128,18 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             return;
         }
 
+        if (!AssertMarkerLabels(
+                [
+                    firstWorldObject.Identity.DisplayName,
+                    secondWorldObject.Identity.DisplayName,
+                    null,
+                    string.Empty,
+                ],
+                "exact world-object labels"))
+        {
+            return;
+        }
+
         SetControlledWorldObjects(valueEqualWorldObjects);
         focusController.RefreshFocus();
         if (!AssertFocus(
@@ -119,6 +147,18 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                 valueEqualFirstObjectId,
                 valueEqualFirstIdentity.DisplayName,
                 "distinct value-equal world-object focus"))
+        {
+            return;
+        }
+
+        if (!AssertMarkerLabels(
+                [
+                    valueEqualFirstWorldObject.Identity.DisplayName,
+                    valueEqualSecondWorldObject.Identity.DisplayName,
+                    null,
+                    valueEqualDisabledWorldObject.Identity.DisplayName,
+                ],
+                "distinct value-equal world-object labels"))
         {
             return;
         }
@@ -135,9 +175,23 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             return;
         }
 
+        if (!AssertMarkerLabels(
+                [string.Empty, valueEqualSecondWorldObject.Identity.DisplayName, null, string.Empty],
+                "missing-object label clearing"))
+        {
+            return;
+        }
+
         SetControlledWorldObjects(emptyWorldObjects);
         focusController.RefreshFocus();
         if (!AssertNoFocus("all-missing clearing"))
+        {
+            return;
+        }
+
+        if (!AssertMarkerLabels(
+                [string.Empty, string.Empty, null, string.Empty],
+                "all-missing label clearing"))
         {
             return;
         }
@@ -167,10 +221,19 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
             || valueEqualFirstObjectId != expectedTargetObjectIds[0]
             || ReferenceEquals(valueEqualSecondObjectId, expectedTargetObjectIds[1])
             || valueEqualSecondObjectId != expectedTargetObjectIds[1]
+            || !AssertMarkerLabels(
+                [
+                    firstWorldObject.Identity.DisplayName,
+                    secondWorldObject.Identity.DisplayName,
+                    null,
+                    string.Empty,
+                ],
+                "restored world-object labels")
             || !AssertRetainedInputs(
                 expectedTargets,
                 expectedTargetObjectIds,
                 expectedTargetDisplayNames,
+                expectedTargetLabels,
                 sourceWorldObjects,
                 expectedSourceObjects,
                 expectedSourceIdentities,
@@ -184,7 +247,8 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
 
         GD.Print(
             "World-object-bound interaction-focus smoke passed: exact and distinct value-equal "
-            + "object lookup, exact controller identifier retention, world-object status names, "
+            + "object lookup, exact controller identifier retention, world-object status and "
+            + "marker-label names, missing-object label clearing, hidden and disabled markers, "
             + "missing-nearest fallback, all-missing clearing, restoration, and unchanged "
             + "surrounding state were correct.");
         GetTree().Quit();
@@ -241,10 +305,28 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         return true;
     }
 
+    private bool AssertMarkerLabels(IReadOnlyList<string?> expectedTexts, string scenario)
+    {
+        for (int index = 0; index < focusController.TargetCount; index++)
+        {
+            Label? label = focusController.GetTarget(index).GetNodeOrNull<Label>("Label");
+            if ((label is null) != (expectedTexts[index] is null)
+                || label is not null
+                    && !string.Equals(label.Text, expectedTexts[index], StringComparison.Ordinal))
+            {
+                Fail($"World-object-bound interaction-focus smoke failed {scenario} at {index}.");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private bool AssertRetainedInputs(
         IReadOnlyList<GreyboxInteractionTarget> expectedTargets,
         IReadOnlyList<ObjectId> expectedTargetObjectIds,
         IReadOnlyList<string> expectedTargetDisplayNames,
+        IReadOnlyList<Label?> expectedTargetLabels,
         WorldObjectSnapshot sourceWorldObjects,
         IReadOnlyList<WorldObject> expectedSourceObjects,
         IReadOnlyList<WorldObjectIdentity> expectedSourceIdentities,
@@ -256,7 +338,17 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                 || !ReferenceEquals(expectedTargets[index].ObjectId, expectedTargetObjectIds[index])
                 || !ReferenceEquals(
                     expectedTargets[index].DisplayName,
-                    expectedTargetDisplayNames[index]))
+                    expectedTargetDisplayNames[index])
+                || !ReferenceEquals(
+                    expectedTargets[index].GetNodeOrNull<Label>("Label"),
+                    expectedTargetLabels[index])
+                || expectedTargetLabels[index] is { } label
+                    && !string.Equals(
+                        label.Text,
+                        index < expectedSourceObjects.Count
+                            ? expectedSourceObjects[index].Identity.DisplayName
+                            : string.Empty,
+                        StringComparison.Ordinal))
             {
                 return false;
             }
