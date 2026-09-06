@@ -267,18 +267,20 @@ public partial class InteractionFocusSmokeCheck : Node
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
             + "stable request-identifier retention; world-object-gated request creation and "
-            + "starts with exact value-equal identifier retention; world-object-derived capability-only and "
-            + "tool-only focused-search context authoring with independent inputs and explicit "
-            + "undersized-snapshot failure; mapped start, cancellation, completion, and resolution "
-            + "inputs; exact temporary control text; exact retained active requests; "
+            + "starts with exact value-equal identifier retention; world-object-derived "
+            + "capability-only and tool-only focused-search context authoring with independent "
+            + "inputs and explicit undersized-snapshot failure; mapped start, cancellation, "
+            + "completion, and resolution inputs; exact temporary control text; exact retained "
+            + "active requests; "
             + "both eligible starts, missing-object start rejection, focus-independent "
             + "cancellations, and world-object-gated "
             + "outcome-aware completions; exact outcome recording and exact world-object-bound "
             + "resolution; missing- and mismatched-object rejection; "
-            + "target-only perception replacement and world-object-bound identified-target "
-            + "presentation; missing-object hiding; exact unrelated entry retention; unchanged "
-            + "inputs; failure-state identity; activity presentation; and initial, changed, and "
-            + "unchanged lifecycle-result presentation were correct.");
+            + "target-only perception replacement and exact world-object description presentation "
+            + "only for identified targets, including value-equal replacement and hide-again "
+            + "behavior; missing-object hiding; exact unrelated entry retention; unchanged inputs; "
+            + "failure-state identity; activity presentation; and initial, changed, and unchanged "
+            + "lifecycle-result presentation were correct.");
         SetProcess(false);
         GetTree().Quit();
     }
@@ -1307,61 +1309,89 @@ public partial class InteractionFocusSmokeCheck : Node
         ObjectId valueEqualTargetObjectId = new(targetObjectId.Value);
         WorldObject valueEqualTargetWorldObject = new(
             new WorldObjectIdentity(valueEqualTargetObjectId, "Value-equal target"),
-            new WorldObjectDescription(string.Empty));
+            new WorldObjectDescription("Replacement target description."));
+        CharacterPerceptionSnapshot identifiedPerception = new(
+            initialPerception.CharacterId,
+            [new WorldObjectVisibility(targetObjectId, VisibilityState.Identified)]);
 
         if (!AssertResolvedPerceptionIndicators(0, "initial noticed presentation"))
         {
             return false;
         }
 
-        indicator.Present(null, initialPerception);
-        if (indicator.IsIndicatorVisible)
+        if (!AssertResolvedDescriptionClears(
+                indicator,
+                targetWorldObject,
+                identifiedPerception,
+                null,
+                initialPerception,
+                "null target"))
         {
-            Fail("Interaction-focus smoke showed identified presentation for a null target.");
             return false;
         }
 
-        indicator.Present(targetWorldObject, null);
-        if (indicator.IsIndicatorVisible)
+        if (!AssertResolvedDescriptionClears(
+                indicator,
+                targetWorldObject,
+                identifiedPerception,
+                targetWorldObject,
+                null,
+                "null perception"))
         {
-            Fail("Interaction-focus smoke showed identified presentation for null perception.");
             return false;
         }
 
         CharacterPerceptionSnapshot unrelatedPerception = new(
             initialPerception.CharacterId,
             [new WorldObjectVisibility(unrelatedObjectId, VisibilityState.Identified)]);
-        indicator.Present(targetWorldObject, unrelatedPerception);
-        if (indicator.IsIndicatorVisible)
+        if (!AssertResolvedDescriptionClears(
+                indicator,
+                targetWorldObject,
+                identifiedPerception,
+                targetWorldObject,
+                unrelatedPerception,
+                "unrelated perception entry"))
         {
-            Fail("Interaction-focus smoke showed identified presentation for an unrelated entry.");
             return false;
         }
 
-        indicator.Present(absentWorldObject, initialPerception);
-        if (indicator.IsIndicatorVisible)
+        if (!AssertResolvedDescriptionClears(
+                indicator,
+                targetWorldObject,
+                identifiedPerception,
+                absentWorldObject,
+                initialPerception,
+                "absent object"))
         {
-            Fail("Interaction-focus smoke showed identified presentation for an absent object.");
             return false;
         }
 
-        CharacterPerceptionSnapshot nonIdentifiedPerception = new(
-            initialPerception.CharacterId,
-            [new WorldObjectVisibility(targetObjectId, VisibilityState.Understood)]);
-        indicator.Present(targetWorldObject, nonIdentifiedPerception);
-        if (indicator.IsIndicatorVisible)
+        foreach (VisibilityState nonIdentifiedState in VisibilityState.All.Where(
+                     state => !ReferenceEquals(state, VisibilityState.Identified)))
         {
-            Fail("Interaction-focus smoke ranked a non-identified visibility state.");
-            return false;
+            CharacterPerceptionSnapshot nonIdentifiedPerception = new(
+                initialPerception.CharacterId,
+                [new WorldObjectVisibility(targetObjectId, nonIdentifiedState)]);
+            if (!AssertResolvedDescriptionClears(
+                    indicator,
+                    targetWorldObject,
+                    identifiedPerception,
+                    targetWorldObject,
+                    nonIdentifiedPerception,
+                    $"{nonIdentifiedState.Value} visibility"))
+            {
+                return false;
+            }
         }
 
-        CharacterPerceptionSnapshot identifiedPerception = new(
-            initialPerception.CharacterId,
-            [new WorldObjectVisibility(targetObjectId, VisibilityState.Identified)]);
         indicator.Present(targetWorldObject, identifiedPerception);
-        if (!indicator.IsIndicatorVisible)
+        if (!indicator.IsIndicatorVisible
+            || !string.Equals(
+                GetResolvedPerceptionIndicatorText(0),
+                targetDescription.Text,
+                StringComparison.Ordinal))
         {
-            Fail("Interaction-focus smoke hid an exact identified target entry.");
+            Fail("Interaction-focus smoke failed an exact identified target description.");
             return false;
         }
 
@@ -1369,6 +1399,10 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObjectDescription valueEqualDescription = valueEqualTargetWorldObject.Description;
         indicator.Present(valueEqualTargetWorldObject, identifiedPerception);
         if (!indicator.IsIndicatorVisible
+            || !string.Equals(
+                GetResolvedPerceptionIndicatorText(0),
+                valueEqualDescription.Text,
+                StringComparison.Ordinal)
             || ReferenceEquals(valueEqualTargetObjectId, targetObjectId)
             || valueEqualTargetObjectId != targetObjectId
             || !ReferenceEquals(valueEqualTargetWorldObject.Identity, valueEqualIdentity)
@@ -1376,8 +1410,8 @@ public partial class InteractionFocusSmokeCheck : Node
             || !ReferenceEquals(valueEqualIdentity.Id, valueEqualTargetObjectId))
         {
             Fail(
-                "Interaction-focus smoke hid a world object with a distinct value-equal "
-                + "identifier.");
+                "Interaction-focus smoke failed replacement description presentation for a "
+                + "world object with a distinct value-equal identifier.");
             return false;
         }
 
@@ -1404,14 +1438,58 @@ public partial class InteractionFocusSmokeCheck : Node
         for (int index = 0; index < resolvedPerceptionIndicators.Length; index++)
         {
             bool expectedVisible = index < expectedIdentifiedCount;
-            if (resolvedPerceptionIndicators[index].IsIndicatorVisible != expectedVisible)
+            string expectedDescription = expectedVisible
+                ? worldObjectController.FindWorldObject(sourceObjectIds[index])?.Description.Text
+                    ?? throw new InvalidOperationException(
+                        "Identified presentation requires an existing world object.")
+                : string.Empty;
+            string actualDescription = GetResolvedPerceptionIndicatorText(index);
+            if (resolvedPerceptionIndicators[index].IsIndicatorVisible != expectedVisible
+                || !string.Equals(
+                    actualDescription,
+                    expectedDescription,
+                    StringComparison.Ordinal))
             {
                 Fail(
                     $"Interaction-focus smoke failed {scenario}: target {index} identified "
                     + $"presentation was "
-                    + $"{resolvedPerceptionIndicators[index].IsIndicatorVisible}.");
+                    + $"{resolvedPerceptionIndicators[index].IsIndicatorVisible} with text "
+                    + $"'{actualDescription}'.");
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    private string GetResolvedPerceptionIndicatorText(int index) =>
+        resolvedPerceptionIndicators[index].GetNode<Label>("Indicator").Text;
+
+    private bool AssertResolvedDescriptionClears(
+        TemporaryResolvedPerceptionIndicator indicator,
+        WorldObject identifiedTarget,
+        CharacterPerceptionSnapshot identifiedPerception,
+        WorldObject? nextTarget,
+        CharacterPerceptionSnapshot? nextPerception,
+        string scenario)
+    {
+        indicator.Present(identifiedTarget, identifiedPerception);
+        if (!indicator.IsIndicatorVisible
+            || !string.Equals(
+                GetResolvedPerceptionIndicatorText(0),
+                identifiedTarget.Description.Text,
+                StringComparison.Ordinal))
+        {
+            Fail($"Interaction-focus smoke failed {scenario} clearing setup.");
+            return false;
+        }
+
+        indicator.Present(nextTarget, nextPerception);
+        if (indicator.IsIndicatorVisible
+            || !string.IsNullOrEmpty(GetResolvedPerceptionIndicatorText(0)))
+        {
+            Fail($"Interaction-focus smoke retained description presentation for {scenario}.");
+            return false;
         }
 
         return true;

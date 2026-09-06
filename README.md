@@ -52,7 +52,12 @@ outcome recording, explicit world-object-bound first-recorded Seeker outcome res
 mismatched-object rejection, target-only perception replacement, outcome consumption, unchanged
 inputs and world-object state, missing-object completion and resolution failure-state identity,
 activity-indicator presentation, and deterministic changed/unchanged result text for every
-lifecycle action. It also proves that
+lifecycle action. Resolved-perception checks prove that each exact looked-up object's authored
+description appears only for the exact identified visibility singleton, including through a
+distinct value-equal object with replacement text. Null, absent, unrelated, and non-identified
+inputs clear and hide the reused label without changing source objects, controller snapshots,
+marker presentation, or lifecycle result text. The same lifecycle evidence reaches both authored
+temporary descriptions and hides a missing object again. It also proves that
 released, unrelated, movement, and healer input preserve all controller snapshots and the exact
 prior text, and that the temporary focused-search source stably authors one
 capability-only first-world-object context and one tool-only second-world-object context from the
@@ -209,9 +214,11 @@ object is absent or mismatched. This bridge does not make the
 markers authoritative Phase 2 objects or add perception state, search input, search execution, or
 interaction UX.
 
-After a successful temporary R resolution, a small cyan **IDENTIFIED** label appears beneath only
-the matching herb patch or stone marker. It reflects the controller's retained Seeker perception,
-not current interaction focus, and is temporary behavior evidence rather than final discovery UI.
+After a successful temporary R resolution, the existing small cyan label beneath only the matching
+herb patch or stone marker presents that exact looked-up world object's authored description. The
+label is cleared and hidden for every state other than exactly identified. It reflects the
+controller's retained Seeker perception, not current interaction focus, and is temporary behavior
+evidence rather than final discovery UI.
 
 Every shape, color, obstacle, collision outline, navigation polygon, target marker, and status
 element is an authored primitive for scale and behavior testing only; none selects final art or
