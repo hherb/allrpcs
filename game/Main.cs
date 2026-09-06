@@ -28,6 +28,8 @@ public partial class Main : Node
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
     private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
+    private TemporaryWorldObjectSource worldObjectSource = null!;
+    private WorldObjectController worldObjectController = null!;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -59,6 +61,14 @@ public partial class Main : Node
             "TemporaryFocusedSearchOutcomeSource");
         seekerPerceptionSource = GetNode<TemporarySeekerPerceptionSource>(
             "TemporarySeekerPerceptionSource");
+        worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
+        worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
+        if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
+        {
+            throw new InvalidOperationException(
+                "The world-object controller could not initialize the scene snapshot.");
+        }
+
         if (!focusedSearchController.TryInitializePerception(seekerPerceptionSource.Perception))
         {
             throw new InvalidOperationException(

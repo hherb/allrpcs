@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3]
+[gd_scene load_steps=34 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" path="res://TemporaryResolvedPerceptionIndicator.cs" id="24_resolved_perception_indicator"]
 [ext_resource type="Script" path="res://TemporaryWorldObjectSource.cs" id="25_world_object_source"]
 [ext_resource type="Script" path="res://TemporaryWorldObjectSourceSmokeCheck.cs" id="26_world_object_source_check"]
+[ext_resource type="Script" path="res://WorldObjectController.cs" id="27_world_object_controller"]
+[ext_resource type="Script" path="res://WorldObjectControllerSmokeCheck.cs" id="28_world_object_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -345,6 +347,9 @@ script = ExtResource("18_search_outcome_source")
 [node name="TemporaryWorldObjectSource" type="Node" parent="."]
 script = ExtResource("25_world_object_source")
 
+[node name="WorldObjectController" type="Node" parent="."]
+script = ExtResource("27_world_object_controller")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -365,6 +370,9 @@ script = ExtResource("19_search_outcome_source_check")
 
 [node name="TemporaryWorldObjectSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("26_world_object_source_check")
+
+[node name="WorldObjectControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("28_world_object_controller_check")
 
 [node name="Healer" type="CharacterBody2D" parent="."]
 position = Vector2(680, 450)
