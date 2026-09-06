@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -23,5 +24,16 @@ public partial class WorldObjectController : Node
 
         WorldObjects = worldObjects;
         return true;
+    }
+
+    /// <summary>Finds the exact initialized world object with the supplied identifier.</summary>
+    public WorldObject? FindWorldObject(ObjectId objectId)
+    {
+        ArgumentNullException.ThrowIfNull(objectId);
+
+        WorldObjectSnapshot? worldObjects = WorldObjects;
+        return worldObjects is null
+            ? null
+            : WorldObjectLookup.FindById(objectId, worldObjects);
     }
 }
