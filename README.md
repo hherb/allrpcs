@@ -44,11 +44,12 @@ follow. A separate interaction-focus launch proves nearest selection, authored-o
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
 authored object identifiers, exact focused identifier-instance retention, eligible focused-search
 starts through the mapped temporary input for both visible targets, focus-independent cancellation
-and outcome-aware completion through the exact retained active requests, exact outcome recording,
-explicit world-object-bound first-recorded Seeker outcome resolution, mismatched-object rejection,
-target-only perception replacement, outcome consumption, unchanged inputs and world-object state,
-failure-state identity, activity-indicator presentation, and deterministic changed/unchanged result
-text for every lifecycle action. It also proves that
+and world-object-gated outcome-aware completion through the exact retained active requests, exact
+outcome recording, explicit world-object-bound first-recorded Seeker outcome resolution,
+mismatched-object rejection, target-only perception replacement, outcome consumption, unchanged
+inputs and world-object state, missing-object completion and resolution failure-state identity,
+activity-indicator presentation, and deterministic changed/unchanged result text for every
+lifecycle action. It also proves that
 released, unrelated, movement, and healer input preserve all controller snapshots and the exact
 prior text, and that the temporary focused-search source stably authors one
 capability-only herb-patch context and one tool-only stone-marker context, retains their exact
@@ -806,17 +807,22 @@ snapshot. Its lookup boundary rejects a null identifier, returns no object while
 when the identifier is absent, and otherwise delegates to the pure Domain lookup to return the
 exact retained object for a value-equal identifier. During `Main._Ready`, the scene passes the
 temporary source's exact retained snapshot once and fails explicitly if initialization cannot be
-established. The temporary R path calls the lookup only for the selected recorded outcome target;
-no other ordinary-play path calls it. The controller does not filter, rank, or mutate world objects;
-inspect focused-search or perception state; grant discovery; or change presentation itself.
+established. The temporary E path calls the lookup only for the active request target, and the
+temporary R path calls it only for the selected recorded outcome target. No other ordinary-play
+lifecycle path calls it. The controller does not filter, rank, or mutate world objects; inspect
+focused-search or perception state; grant discovery; or change presentation itself.
 
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
-explicitly temporary deterministic focused-search result. Each call accepts an existing request and
-returns a distinct `FocusedSearchOutcome` retaining that exact request and the exact existing
-`VisibilityState.Identified` singleton. It rejects a null request and does not inspect focus,
-activity, outcomes, perception, or world state; decide eligibility; call a controller; own lifecycle
-state; apply or consume an outcome; or change visibility. Ordinary play invokes it only from the
-pressed temporary E completion path when an active Seeker request exists.
+explicitly temporary deterministic focused-search result. Each call accepts an existing request
+plus an existing nullable world object. It rejects a null request and returns no outcome for a null
+or target-mismatched object. A matching object, including one with a distinct value-equal stable
+identifier, produces a distinct `FocusedSearchOutcome` retaining the exact request and the exact
+existing `VisibilityState.Identified` singleton. The source leaves the world object, its identity,
+and its description unchanged and does not inspect authored object text, focus, activity, outcomes,
+perception, or broader world state; decide lifecycle eligibility; call a controller; own state;
+apply or consume an outcome; or change visibility. Ordinary play invokes it only from the pressed
+temporary E completion path when an active Seeker request exists and its target resolves through
+the world-object controller.
 
 `Allrpcs.Game.TemporarySeekerPerceptionSource` authors one temporary immutable perception snapshot
 when the scene becomes ready. It retains the focused-search controller's exact parsed Seeker
@@ -843,12 +849,15 @@ transition, replaces the snapshot with its empty successor, and hides the activi
 active search and repeated cancellation preserve the existing snapshot instance and presentation.
 
 The separate temporary `focused_search_complete` action maps physical E to the equivalent narrow
-`Main._UnhandledInput` path. It selects the same exact retained active request, asks the temporary
-outcome source to create one `Identified` outcome retaining that request, and forwards that exact
-outcome to `FocusedSearchActivityController.TryCompleteSearchWithOutcome`, without reading or
-depending on interaction focus. A successful completion replaces the activity snapshot with its
-empty successor, appends the exact outcome to a new outcome snapshot, and hides the indicator; no
-active search and repeated completion preserve both existing snapshot instances and presentation.
+`Main._UnhandledInput` path. It selects the same exact retained active request, resolves only that
+request's target through `WorldObjectController`, and passes the exact returned object to the
+temporary outcome source. Only a created `Identified` outcome is forwarded to
+`FocusedSearchActivityController.TryCompleteSearchWithOutcome`, without reading or depending on
+interaction focus. A successful completion replaces the activity snapshot with its empty
+successor, appends the exact outcome to a new outcome snapshot, and hides the indicator. No active
+search, an absent target object, and repeated completion preserve the focused-search snapshots,
+world-object source and controller state, targets, perception, and presentation; the attempted E
+path reports `UNCHANGED`.
 
 The separate temporary `focused_search_resolve` action maps physical R to one narrow
 `Main._UnhandledInput` path. It selects the first retained outcome in stable recorded order whose

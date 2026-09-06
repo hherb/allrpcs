@@ -268,9 +268,9 @@ public partial class InteractionFocusSmokeCheck : Node
             + "stable request-identifier retention; stable capability-only and tool-only "
             + "focused-search context authoring; mapped start, cancellation, completion, and "
             + "resolution inputs; exact temporary control text; exact retained active requests; "
-            + "both eligible starts and focus-independent cancellations and outcome-aware "
-            + "completions; exact outcome "
-            + "recording and exact world-object-bound resolution; mismatched-object rejection; "
+            + "both eligible starts, focus-independent cancellations, and world-object-gated "
+            + "outcome-aware completions; exact outcome recording and exact world-object-bound "
+            + "resolution; missing- and mismatched-object rejection; "
             + "target-only perception replacement and world-object-bound identified-target "
             + "presentation; missing-object hiding; exact unrelated entry retention; unchanged "
             + "inputs; failure-state identity; activity presentation; and initial, changed, and "
@@ -622,6 +622,16 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
+        if (!AssertAbsentWorldObjectCompletionIsGated(
+                targetObjectId,
+                completionStartedSnapshot,
+                initialOutcomes,
+                initialPerception,
+                expectedTargetIndex))
+        {
+            return false;
+        }
+
         PressFocusedSearchComplete();
         FocusedSearchActivitySnapshot completedSnapshot = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot completedOutcomes = focusedSearchController.Outcomes;
@@ -761,6 +771,66 @@ public partial class InteractionFocusSmokeCheck : Node
 
         seeker.GlobalPosition = focusedPosition;
         controller.RefreshFocus();
+
+        return true;
+    }
+
+    private bool AssertAbsentWorldObjectCompletionIsGated(
+        ObjectId targetObjectId,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception,
+        int expectedTargetIndex)
+    {
+        WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
+        WorldObject targetWorldObject = worldObjectController.FindWorldObject(targetObjectId)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the target world object.");
+        WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
+        WorldObjectDescription targetDescription = targetWorldObject.Description;
+        WorldObject[] retainedWorldObjects = sourceWorldObjects.Entries
+            .Where(worldObject => worldObject.Identity.Id != targetObjectId)
+            .ToArray();
+        WorldObjectSnapshot controlledWorldObjects = new(retainedWorldObjects);
+        GreyboxInteractionTarget target = controller.GetTarget(expectedTargetIndex);
+        ObjectId expectedTargetObjectId = target.ObjectId;
+        string expectedTargetDisplayName = target.DisplayName;
+        bool expectedTargetFocusState = target.IsFocused;
+
+        SetControlledWorldObjects(controlledWorldObjects);
+        PressFocusedSearchComplete();
+
+        bool unchanged = retainedWorldObjects.Length == sourceWorldObjects.Entries.Count - 1
+            && !controlledWorldObjects.Entries.Any(
+                worldObject => worldObject.Identity.Id == targetObjectId)
+            && ReferenceEquals(worldObjectController.WorldObjects, controlledWorldObjects)
+            && ReferenceEquals(worldObjectSource.WorldObjects, sourceWorldObjects)
+            && ReferenceEquals(targetWorldObject.Identity, targetIdentity)
+            && ReferenceEquals(targetWorldObject.Description, targetDescription)
+            && ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            && ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            && ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            && focusedSearchIndicator.Visible
+            && ReferenceEquals(controller.GetTarget(expectedTargetIndex), target)
+            && ReferenceEquals(target.ObjectId, expectedTargetObjectId)
+            && ReferenceEquals(target.DisplayName, expectedTargetDisplayName)
+            && target.IsFocused == expectedTargetFocusState
+            && AssertResolvedPerceptionIndicators(
+                expectedTargetIndex,
+                "absent-world-object completion")
+            && AssertFocusedSearchResult(
+                CompleteUnchangedText,
+                "absent-world-object completion");
+
+        SetControlledWorldObjects(sourceWorldObjects);
+        if (!unchanged
+            || !ReferenceEquals(worldObjectController.WorldObjects, sourceWorldObjects))
+        {
+            Fail(
+                "Interaction-focus smoke changed focused-search, world-object, target, or "
+                + "presentation state while the active target object was absent.");
+            return false;
+        }
 
         return true;
     }
