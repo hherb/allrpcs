@@ -5,6 +5,10 @@
 Phase 2l6 is implemented on `codex/phase-2l6-world-object-gated-resolution`, based directly on
 PR #102's verified merge commit `00c6ce2`.
 
+Slice commit `e6601f2` is pushed, and draft PR #103
+(`https://github.com/hherb/allrpcs/pull/103`) is open. Pull-request merge remains separately
+unauthorized.
+
 The temporary R path still selects the first retained Seeker outcome in recorded order. It now
 asks `WorldObjectController.FindWorldObject` for that outcome's target and invokes the existing
 focused-search resolution boundary only when the object exists. Both scene-authored targets still
