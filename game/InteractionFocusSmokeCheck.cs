@@ -265,11 +265,13 @@ public partial class InteractionFocusSmokeCheck : Node
         GD.Print(
             "Interaction-focus smoke passed: nearest selection, authored-order tie-breaking, "
             + "focus change, out-of-range clearing, hidden and disabled exclusions, and exact "
-            + "stable request-identifier retention; world-object-derived capability-only and "
+            + "stable request-identifier retention; world-object-gated request creation and "
+            + "starts with exact value-equal identifier retention; world-object-derived capability-only and "
             + "tool-only focused-search context authoring with independent inputs and explicit "
             + "undersized-snapshot failure; mapped start, cancellation, completion, and resolution "
             + "inputs; exact temporary control text; exact retained active requests; "
-            + "both eligible starts, focus-independent cancellations, and world-object-gated "
+            + "both eligible starts, missing-object start rejection, focus-independent "
+            + "cancellations, and world-object-gated "
             + "outcome-aware completions; exact outcome recording and exact world-object-bound "
             + "resolution; missing- and mismatched-object rejection; "
             + "target-only perception replacement and world-object-bound identified-target "
@@ -302,17 +304,8 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        FocusedSearchRequest? request = controller.CreateFocusedSearchRequest(
-            focusedSearchController.SearcherCharacterId);
-        if (request is null
-            || !ReferenceEquals(
-                request.SearcherCharacterId,
-                focusedSearchController.SearcherCharacterId)
-            || !ReferenceEquals(request.TargetObjectId, authoredObjectIds[expectedIndex]))
+        if (!AssertWorldObjectGatedRequestCreation(expectedIndex))
         {
-            Fail(
-                $"Interaction-focus smoke failed {scenario}: the request did not retain the "
-                + "exact searcher and focused target identifier instances.");
             return false;
         }
 
@@ -326,6 +319,69 @@ public partial class InteractionFocusSmokeCheck : Node
                     + $"state was {controller.GetTarget(index).IsFocused}.");
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    private bool AssertWorldObjectGatedRequestCreation(int expectedTargetIndex)
+    {
+        ObjectId focusedTargetObjectId = authoredObjectIds[expectedTargetIndex];
+        WorldObject exactWorldObject = worldObjectController.FindWorldObject(focusedTargetObjectId)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the focused world object.");
+        WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries.Single(
+            worldObject => worldObject.Identity.Id != focusedTargetObjectId);
+        ObjectId valueEqualObjectId = new(focusedTargetObjectId.Value);
+        WorldObject valueEqualWorldObject = CreateWorldObject(
+            valueEqualObjectId,
+            "Value-equal focused object");
+        WorldObjectIdentity exactIdentity = exactWorldObject.Identity;
+        WorldObjectDescription exactDescription = exactWorldObject.Description;
+        WorldObjectIdentity mismatchedIdentity = mismatchedWorldObject.Identity;
+        WorldObjectDescription mismatchedDescription = mismatchedWorldObject.Description;
+        WorldObjectIdentity valueEqualIdentity = valueEqualWorldObject.Identity;
+        WorldObjectDescription valueEqualDescription = valueEqualWorldObject.Description;
+
+        FocusedSearchRequest? exactRequest = controller.CreateFocusedSearchRequest(
+            focusedSearchController.SearcherCharacterId,
+            exactWorldObject);
+        FocusedSearchRequest? valueEqualRequest = controller.CreateFocusedSearchRequest(
+            focusedSearchController.SearcherCharacterId,
+            valueEqualWorldObject);
+        FocusedSearchRequest? absentRequest = controller.CreateFocusedSearchRequest(
+            focusedSearchController.SearcherCharacterId,
+            null);
+        FocusedSearchRequest? mismatchedRequest = controller.CreateFocusedSearchRequest(
+            focusedSearchController.SearcherCharacterId,
+            mismatchedWorldObject);
+
+        if (exactRequest is null
+            || valueEqualRequest is null
+            || absentRequest is not null
+            || mismatchedRequest is not null
+            || !ReferenceEquals(
+                exactRequest.SearcherCharacterId,
+                focusedSearchController.SearcherCharacterId)
+            || !ReferenceEquals(exactRequest.TargetObjectId, exactIdentity.Id)
+            || !ReferenceEquals(
+                valueEqualRequest.SearcherCharacterId,
+                focusedSearchController.SearcherCharacterId)
+            || !ReferenceEquals(valueEqualRequest.TargetObjectId, valueEqualObjectId)
+            || ReferenceEquals(valueEqualObjectId, focusedTargetObjectId)
+            || valueEqualObjectId != focusedTargetObjectId
+            || !ReferenceEquals(exactWorldObject.Identity, exactIdentity)
+            || !ReferenceEquals(exactWorldObject.Description, exactDescription)
+            || !ReferenceEquals(mismatchedWorldObject.Identity, mismatchedIdentity)
+            || !ReferenceEquals(mismatchedWorldObject.Description, mismatchedDescription)
+            || !ReferenceEquals(valueEqualWorldObject.Identity, valueEqualIdentity)
+            || !ReferenceEquals(valueEqualWorldObject.Description, valueEqualDescription)
+            || !ReferenceEquals(valueEqualIdentity.Id, valueEqualObjectId))
+        {
+            Fail(
+                "Interaction-focus smoke failed null, mismatched, exact, or value-equal "
+                + "world-object-gated request creation and input retention.");
+            return false;
         }
 
         return true;
@@ -349,8 +405,9 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        if (controller.CreateFocusedSearchRequest(focusedSearchController.SearcherCharacterId)
-            is not null)
+        if (controller.CreateFocusedSearchRequest(
+                focusedSearchController.SearcherCharacterId,
+                worldObjectSource.WorldObjects.Entries[0]) is not null)
         {
             Fail(
                 $"Interaction-focus smoke failed {scenario}: a request was created without "
@@ -393,9 +450,99 @@ public partial class InteractionFocusSmokeCheck : Node
         return true;
     }
 
+    private bool AssertWorldObjectGatedStartDelegation(int expectedTargetIndex)
+    {
+        ObjectId focusedTargetObjectId = authoredObjectIds[expectedTargetIndex];
+        WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries.Single(
+            worldObject => worldObject.Identity.Id != focusedTargetObjectId);
+        ObjectId valueEqualObjectId = new(focusedTargetObjectId.Value);
+        WorldObject valueEqualWorldObject = CreateWorldObject(
+            valueEqualObjectId,
+            "Value-equal start object");
+        WorldObjectIdentity mismatchedIdentity = mismatchedWorldObject.Identity;
+        WorldObjectDescription mismatchedDescription = mismatchedWorldObject.Description;
+        WorldObjectIdentity valueEqualIdentity = valueEqualWorldObject.Identity;
+        WorldObjectDescription valueEqualDescription = valueEqualWorldObject.Description;
+        WorldObjectSnapshot expectedWorldObjects = worldObjectSource.WorldObjects;
+        FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
+        FocusedSearchOutcomeSnapshot expectedOutcomes = focusedSearchController.Outcomes;
+        CharacterPerceptionSnapshot? expectedPerception = focusedSearchController.Perception;
+        int? expectedFocusedIndex = controller.FocusedTargetIndex;
+        ObjectId? expectedFocusedObjectId = controller.FocusedTargetObjectId;
+
+        bool nullChanged = controller.TryStartFocusedSearch(
+            null,
+            authoredConditions,
+            authoredCapabilities,
+            authoredInventory);
+        bool mismatchChanged = controller.TryStartFocusedSearch(
+            mismatchedWorldObject,
+            authoredConditions,
+            authoredCapabilities,
+            authoredInventory);
+        if (nullChanged
+            || mismatchChanged
+            || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            || focusedSearchIndicator.Visible)
+        {
+            Fail(
+                "Interaction-focus smoke changed focused-search state for a null or "
+                + "mismatched start object.");
+            return false;
+        }
+
+        bool changed = controller.TryStartFocusedSearch(
+            valueEqualWorldObject,
+            authoredConditions,
+            authoredCapabilities,
+            authoredInventory);
+        FocusedSearchActivitySnapshot startedActivities = focusedSearchController.Activities;
+        FocusedSearchRequest? startedRequest = startedActivities.Entries.SingleOrDefault()?.Request;
+        bool cancelled = startedRequest is not null
+            && focusedSearchController.TryCancelSearch(startedRequest);
+
+        if (!changed
+            || startedRequest is null
+            || !cancelled
+            || ReferenceEquals(startedActivities, expectedActivities)
+            || !ReferenceEquals(
+                startedRequest.SearcherCharacterId,
+                focusedSearchController.SearcherCharacterId)
+            || !ReferenceEquals(startedRequest.TargetObjectId, valueEqualObjectId)
+            || focusedSearchController.Activities.Entries.Count != 0
+            || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            || focusedSearchIndicator.Visible
+            || !ReferenceEquals(worldObjectSource.WorldObjects, expectedWorldObjects)
+            || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
+            || controller.FocusedTargetIndex != expectedFocusedIndex
+            || !ReferenceEquals(controller.FocusedTargetObjectId, expectedFocusedObjectId)
+            || !ReferenceEquals(mismatchedWorldObject.Identity, mismatchedIdentity)
+            || !ReferenceEquals(mismatchedWorldObject.Description, mismatchedDescription)
+            || !ReferenceEquals(valueEqualWorldObject.Identity, valueEqualIdentity)
+            || !ReferenceEquals(valueEqualWorldObject.Description, valueEqualDescription)
+            || !ReferenceEquals(valueEqualIdentity.Id, valueEqualObjectId)
+            || !AssertFocusedSearchContextUnchanged())
+        {
+            Fail(
+                "Interaction-focus smoke failed value-equal world-object start delegation or "
+                + "input and surrounding-state retention.");
+            return false;
+        }
+
+        return true;
+    }
+
     private bool AssertEligibleFocusedSearchStart(int expectedTargetIndex)
     {
         ObjectId targetObjectId = authoredObjectIds[expectedTargetIndex];
+
+        if (!AssertWorldObjectGatedStartDelegation(expectedTargetIndex))
+        {
+            return false;
+        }
 
         FocusedSearchActivitySnapshot initialSnapshot = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot initialOutcomes = focusedSearchController.Outcomes;
@@ -412,6 +559,16 @@ public partial class InteractionFocusSmokeCheck : Node
         if (!AssertResolvedPerceptionIndicators(
                 expectedIdentifiedCount: expectedTargetIndex,
                 "eligible start setup"))
+        {
+            return false;
+        }
+
+        if (!AssertAbsentWorldObjectStartIsGated(
+                targetObjectId,
+                initialSnapshot,
+                initialOutcomes,
+                initialPerception,
+                expectedTargetIndex))
         {
             return false;
         }
@@ -772,6 +929,65 @@ public partial class InteractionFocusSmokeCheck : Node
 
         seeker.GlobalPosition = focusedPosition;
         controller.RefreshFocus();
+
+        return true;
+    }
+
+    private bool AssertAbsentWorldObjectStartIsGated(
+        ObjectId targetObjectId,
+        FocusedSearchActivitySnapshot expectedActivities,
+        FocusedSearchOutcomeSnapshot expectedOutcomes,
+        CharacterPerceptionSnapshot expectedPerception,
+        int expectedTargetIndex)
+    {
+        WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
+        WorldObject targetWorldObject = worldObjectController.FindWorldObject(targetObjectId)
+            ?? throw new InvalidOperationException(
+                "The interaction-focus smoke requires the target world object.");
+        WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
+        WorldObjectDescription targetDescription = targetWorldObject.Description;
+        WorldObject[] retainedWorldObjects = sourceWorldObjects.Entries
+            .Where(worldObject => worldObject.Identity.Id != targetObjectId)
+            .ToArray();
+        WorldObjectSnapshot controlledWorldObjects = new(retainedWorldObjects);
+        GreyboxInteractionTarget target = controller.GetTarget(expectedTargetIndex);
+        ObjectId expectedTargetObjectId = target.ObjectId;
+        string expectedTargetDisplayName = target.DisplayName;
+        bool expectedTargetFocusState = target.IsFocused;
+
+        SetControlledWorldObjects(controlledWorldObjects);
+        PressFocusedSearchStart();
+
+        bool unchanged = retainedWorldObjects.Length == sourceWorldObjects.Entries.Count - 1
+            && !controlledWorldObjects.Entries.Any(
+                worldObject => worldObject.Identity.Id == targetObjectId)
+            && ReferenceEquals(worldObjectController.WorldObjects, controlledWorldObjects)
+            && ReferenceEquals(worldObjectSource.WorldObjects, sourceWorldObjects)
+            && ReferenceEquals(targetWorldObject.Identity, targetIdentity)
+            && ReferenceEquals(targetWorldObject.Description, targetDescription)
+            && ReferenceEquals(focusedSearchController.Activities, expectedActivities)
+            && ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
+            && ReferenceEquals(focusedSearchController.Perception, expectedPerception)
+            && !focusedSearchIndicator.Visible
+            && ReferenceEquals(controller.GetTarget(expectedTargetIndex), target)
+            && ReferenceEquals(target.ObjectId, expectedTargetObjectId)
+            && ReferenceEquals(target.DisplayName, expectedTargetDisplayName)
+            && target.IsFocused == expectedTargetFocusState
+            && AssertResolvedPerceptionIndicators(
+                expectedTargetIndex,
+                "absent-world-object start")
+            && AssertFocusedSearchResult(StartUnchangedText, "absent-world-object start")
+            && AssertFocusedSearchContextUnchanged();
+
+        SetControlledWorldObjects(sourceWorldObjects);
+        if (!unchanged
+            || !ReferenceEquals(worldObjectController.WorldObjects, sourceWorldObjects))
+        {
+            Fail(
+                "Interaction-focus smoke changed focused-search, world-object, target, context, "
+                + "or presentation state while the focused object was absent.");
+            return false;
+        }
 
         return true;
     }

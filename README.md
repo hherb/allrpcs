@@ -42,9 +42,12 @@ reject representative stream, tree, and village targets, and exercise healer fol
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
-authored object identifiers, exact focused identifier-instance retention, eligible focused-search
-starts through the mapped temporary input for both visible targets, focus-independent cancellation
-and world-object-gated outcome-aware completion through the exact retained active requests, exact
+authored object identifiers, exact focused identifier-instance retention, null and mismatched
+world-object request rejection, and eligible focused-search starts through exact or distinct
+value-equal world objects for both visible targets. The mapped F path resolves the focused identifier
+through the world-object controller and rejects a missing object without invoking the start path or
+changing surrounding state. The same launch proves focus-independent cancellation and
+world-object-gated outcome-aware completion through the exact retained active requests, exact
 outcome recording, explicit world-object-bound first-recorded Seeker outcome resolution,
 mismatched-object rejection, target-only perception replacement, outcome consumption, unchanged
 inputs and world-object state, missing-object completion and resolution failure-state identity,
@@ -177,9 +180,10 @@ that navigation surface at a named 180-pixel-per-second speed only while outside
 healer stops without overlapping the Seeker and can route through the bridge after separation.
 
 The small **TEMP** panel shows the current controls, healer mode, interaction focus, and last
-explicit focused-search attempt. Press F to start a focused search for the current valid
-interaction focus, C to cancel the Seeker's active search, E to complete it, or R to resolve the
-first retained Seeker outcome; these temporary search controls are detailed below. Press X to
+explicit focused-search attempt. Press F to start a focused search only when the current valid
+interaction focus resolves to an existing world object, C to cancel the Seeker's active search, E
+to complete it, or R to resolve the first retained Seeker outcome; these temporary search controls
+are detailed below. Press X to
 toggle between follow and wait. Press M to move the
 healer to the obvious pink ring; the healer uses the existing navigation surface, stops within a
 validated 12-pixel distance, then changes to wait. Press X again to resume follow. Off-world and
@@ -195,10 +199,13 @@ fail-closed presentation paths and can never receive the indicator. These marker
 ordering, and indicator are temporary greybox behavior evidence. Each marker also authors one
 canonical object-identifier text value, which its Godot adapter parses once while ready. The focus
 controller exposes the exact identifier instance for only the currently selected visible, enabled,
-in-range marker and clears it with focus. Its start-attempt boundary supplies the activity
-controller's exact Seeker identifier to the existing request factory, then passes an existing
-discovery-condition set, capability set, and inventory unchanged to the condition-aware start path.
-It returns false without invoking that path when focus is clear. This bridge does not make the
+in-range marker and clears it with focus. Its request factory also receives an existing nullable
+world object, rejects null or a target mismatch, accepts a distinct value-equal identifier, and
+retains the matching object's exact identifier instance. Its start-attempt boundary supplies the
+activity controller's exact Seeker identifier to that factory, then passes an existing
+discovery-condition set, capability set, and inventory unchanged to the condition-aware start path
+only for a created request. It returns false without invoking that path when focus is clear or the
+object is absent or mismatched. This bridge does not make the
 markers authoritative Phase 2 objects or add perception state, search input, search execution, or
 interaction UX.
 
@@ -780,13 +787,15 @@ Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported ca
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
 identifier instance. The existing `InteractionFocusController` exposes the retained instance for
 only the currently selected visible, enabled, in-range target and exposes no identifier when focus
-is clear. Its request-construction boundary accepts an existing `CharacterId` and returns a new
-`FocusedSearchRequest` retaining that exact identifier and the exact currently focused `ObjectId`,
-or no request when focus is clear. Its separate start-attempt boundary supplies the activity
-controller's exact Seeker identifier to that factory and, for a valid request only, forwards the
-request plus existing `DiscoveryConditionSet`, `CharacterCapabilitySet`, and `CharacterInventory`
-instances to the controller's condition-aware start path. It returns the existing start result and
-adds no eligibility, transition, input, or discovery-context authoring behavior.
+is clear. Its request-construction boundary accepts an existing `CharacterId` and nullable
+`WorldObject`, returns no request when focus is clear or the object is absent or target-mismatched,
+and otherwise returns a new `FocusedSearchRequest` retaining the exact character identifier and the
+matching object's exact identifier. Exact and distinct value-equal object identifiers are accepted.
+Its separate start-attempt boundary supplies the activity controller's exact Seeker identifier to
+that factory and, for a valid request only, forwards the request plus existing
+`DiscoveryConditionSet`, `CharacterCapabilitySet`, and `CharacterInventory` instances to the
+controller's condition-aware start path. It returns the existing start result and adds no Domain
+eligibility, transition, input, or discovery-context authoring behavior.
 
 `Allrpcs.Game.TemporaryFocusedSearchContextSource` is the narrow scene source for those three
 aggregate start inputs. It derives its target identifiers only from the existing temporary
@@ -815,10 +824,10 @@ snapshot. Its lookup boundary rejects a null identifier, returns no object while
 when the identifier is absent, and otherwise delegates to the pure Domain lookup to return the
 exact retained object for a value-equal identifier. During `Main._Ready`, the scene passes the
 temporary source's exact retained snapshot once and fails explicitly if initialization cannot be
-established. The temporary E path calls the lookup only for the active request target, and the
-temporary R path calls it only for the selected recorded outcome target. No other ordinary-play
-lifecycle path calls it. The controller does not filter, rank, or mutate world objects; inspect
-focused-search or perception state; grant discovery; or change presentation itself.
+established. The temporary F, E, and R paths call lookup only for the focused identifier, active
+request target, and selected recorded-outcome target respectively. The controller does not filter,
+rank, or mutate world objects; inspect focused-search or perception state; grant discovery; or
+change presentation itself.
 
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
 explicitly temporary deterministic focused-search result. Each call accepts an existing request
@@ -845,11 +854,14 @@ call a controller; change perception or visibility; or make either source author
 boundary. Lifecycle inputs do not read the source again.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
-On that pressed action only, `Main` passes the context source's exact retained condition,
-capability, and inventory aggregates to the existing interaction-focus start boundary. A valid
-herb-patch or stone-marker focus may therefore start the existing immutable activity and show its
-indicator. Clear, hidden, disabled, out-of-range, or already-active attempts preserve the existing
-snapshot.
+On that pressed action only, `Main` resolves the current focused identifier through
+`WorldObjectController` and passes only the exact returned object plus the context source's exact
+retained condition, capability, and inventory aggregates to the interaction-focus start boundary.
+A matching herb-patch or stone-marker object may therefore start the existing immutable activity
+and show its indicator. Clear, hidden, disabled, out-of-range, missing-object, or already-active
+attempts preserve the existing focused-search snapshots and surrounding world-object, target,
+perception, context, and presentation state; the missing-object path reports `UNCHANGED` without
+invoking the start boundary.
 
 The separate temporary `focused_search_cancel` action maps physical C to one narrow
 `Main._UnhandledInput` branch. On that pressed action only, `Main` finds the Seeker's active
@@ -918,8 +930,8 @@ outcome production or application, reason value, further lifecycle policy, in-pl
 scheduling, persistence, production activity source, or final UI behavior. The temporary Godot
 adapters change only the authored indicator visibility and the Boolean-derived result text, and the
 temporary controller owns only its immutable activity and outcome snapshots plus the bounded
-lifecycle delegations described above. The interaction-focus controller adds only valid-focus
-request/start composition, while the temporary context source only supplies retained
+lifecycle delegations described above. The interaction-focus controller adds only valid-focus and
+matching-world-object request/start composition, while the temporary context source only supplies retained
 greybox inputs. Ordinary greybox play invokes the start bridge only through physical F,
 cancellation only through physical C, and completion only through physical E.
 
