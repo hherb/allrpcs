@@ -82,8 +82,10 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             || !ReferenceEquals(first.Entries[0].VisibilityState, VisibilityState.Noticed)
             || !ReferenceEquals(first.Entries[1].ObjectId, sourceStoneMarker.Identity.Id)
             || !ReferenceEquals(first.Entries[1].VisibilityState, VisibilityState.Noticed)
-            || !ReferenceEquals(sourceHerbPatch.Identity.Id, herbPatch.ObjectId)
-            || !ReferenceEquals(sourceStoneMarker.Identity.Id, stoneMarker.ObjectId))
+            || ReferenceEquals(sourceHerbPatch.Identity.Id, herbPatch.ObjectId)
+            || sourceHerbPatch.Identity.Id != herbPatch.ObjectId
+            || ReferenceEquals(sourceStoneMarker.Identity.Id, stoneMarker.ObjectId)
+            || sourceStoneMarker.Identity.Id != stoneMarker.ObjectId)
         {
             Fail(
                 "Temporary Seeker perception source smoke failed exact ordered perception "

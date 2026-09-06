@@ -62,6 +62,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldObjectController worldObjectController = null!;
     private ObjectId[] authoredObjectIds = [];
+    private ObjectId[] sourceObjectIds = [];
     private DiscoveryConditionSet authoredConditions = null!;
     private CharacterCapabilitySet authoredCapabilities = null!;
     private CharacterInventory authoredInventory = null!;
@@ -296,11 +297,13 @@ public partial class InteractionFocusSmokeCheck : Node
         }
 
         if (!ReferenceEquals(controller.GetTarget(expectedIndex).ObjectId, authoredObjectIds[expectedIndex])
-            || !ReferenceEquals(controller.FocusedTargetObjectId, authoredObjectIds[expectedIndex]))
+            || !ReferenceEquals(controller.FocusedTargetObjectId, sourceObjectIds[expectedIndex])
+            || ReferenceEquals(sourceObjectIds[expectedIndex], authoredObjectIds[expectedIndex])
+            || sourceObjectIds[expectedIndex] != authoredObjectIds[expectedIndex])
         {
             Fail(
                 $"Interaction-focus smoke failed {scenario}: the focused object identifier "
-                + "was not the exact authored target instance.");
+                + "did not retain the exact independently authored world-object instance.");
             return false;
         }
 
@@ -326,7 +329,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private bool AssertWorldObjectGatedRequestCreation(int expectedTargetIndex)
     {
-        ObjectId focusedTargetObjectId = authoredObjectIds[expectedTargetIndex];
+        ObjectId focusedTargetObjectId = sourceObjectIds[expectedTargetIndex];
         WorldObject exactWorldObject = worldObjectController.FindWorldObject(focusedTargetObjectId)
             ?? throw new InvalidOperationException(
                 "The interaction-focus smoke requires the focused world object.");
@@ -452,7 +455,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private bool AssertWorldObjectGatedStartDelegation(int expectedTargetIndex)
     {
-        ObjectId focusedTargetObjectId = authoredObjectIds[expectedTargetIndex];
+        ObjectId focusedTargetObjectId = sourceObjectIds[expectedTargetIndex];
         WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries.Single(
             worldObject => worldObject.Identity.Id != focusedTargetObjectId);
         ObjectId valueEqualObjectId = new(focusedTargetObjectId.Value);
@@ -537,7 +540,7 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private bool AssertEligibleFocusedSearchStart(int expectedTargetIndex)
     {
-        ObjectId targetObjectId = authoredObjectIds[expectedTargetIndex];
+        ObjectId targetObjectId = sourceObjectIds[expectedTargetIndex];
 
         if (!AssertWorldObjectGatedStartDelegation(expectedTargetIndex))
         {
@@ -854,7 +857,6 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObjectDescription resolvedWorldObjectDescription = resolvedWorldObject.Description;
         GreyboxInteractionTarget resolvedTarget = controller.GetTarget(expectedTargetIndex);
         ObjectId resolvedTargetObjectId = resolvedTarget.ObjectId;
-        string resolvedTargetDisplayName = resolvedTarget.DisplayName;
         bool resolvedTargetFocusState = resolvedTarget.IsFocused;
 
         PressFocusedSearchResolve();
@@ -881,7 +883,6 @@ public partial class InteractionFocusSmokeCheck : Node
             || !ReferenceEquals(resolvedWorldObject.Identity.Id, targetObjectId)
             || !ReferenceEquals(controller.GetTarget(expectedTargetIndex), resolvedTarget)
             || !ReferenceEquals(resolvedTarget.ObjectId, resolvedTargetObjectId)
-            || !ReferenceEquals(resolvedTarget.DisplayName, resolvedTargetDisplayName)
             || resolvedTarget.IsFocused != resolvedTargetFocusState
             || focusedSearchIndicator.Visible
             || !AssertResolvedPerceptionIndicators(
@@ -952,7 +953,6 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObjectSnapshot controlledWorldObjects = new(retainedWorldObjects);
         GreyboxInteractionTarget target = controller.GetTarget(expectedTargetIndex);
         ObjectId expectedTargetObjectId = target.ObjectId;
-        string expectedTargetDisplayName = target.DisplayName;
         bool expectedTargetFocusState = target.IsFocused;
 
         SetControlledWorldObjects(controlledWorldObjects);
@@ -971,7 +971,6 @@ public partial class InteractionFocusSmokeCheck : Node
             && !focusedSearchIndicator.Visible
             && ReferenceEquals(controller.GetTarget(expectedTargetIndex), target)
             && ReferenceEquals(target.ObjectId, expectedTargetObjectId)
-            && ReferenceEquals(target.DisplayName, expectedTargetDisplayName)
             && target.IsFocused == expectedTargetFocusState
             && AssertResolvedPerceptionIndicators(
                 expectedTargetIndex,
@@ -1011,7 +1010,6 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObjectSnapshot controlledWorldObjects = new(retainedWorldObjects);
         GreyboxInteractionTarget target = controller.GetTarget(expectedTargetIndex);
         ObjectId expectedTargetObjectId = target.ObjectId;
-        string expectedTargetDisplayName = target.DisplayName;
         bool expectedTargetFocusState = target.IsFocused;
 
         SetControlledWorldObjects(controlledWorldObjects);
@@ -1030,7 +1028,6 @@ public partial class InteractionFocusSmokeCheck : Node
             && focusedSearchIndicator.Visible
             && ReferenceEquals(controller.GetTarget(expectedTargetIndex), target)
             && ReferenceEquals(target.ObjectId, expectedTargetObjectId)
-            && ReferenceEquals(target.DisplayName, expectedTargetDisplayName)
             && target.IsFocused == expectedTargetFocusState
             && AssertResolvedPerceptionIndicators(
                 expectedTargetIndex,
@@ -1077,9 +1074,6 @@ public partial class InteractionFocusSmokeCheck : Node
         ObjectId[] expectedTargetObjectIds = expectedTargets
             .Select(target => target.ObjectId)
             .ToArray();
-        string[] expectedTargetDisplayNames = expectedTargets
-            .Select(target => target.DisplayName)
-            .ToArray();
         bool[] expectedTargetFocusStates = expectedTargets
             .Select(target => target.IsFocused)
             .ToArray();
@@ -1109,7 +1103,6 @@ public partial class InteractionFocusSmokeCheck : Node
                     (target, index) =>
                         ReferenceEquals(controller.GetTarget(index), target)
                         && ReferenceEquals(target.ObjectId, expectedTargetObjectIds[index])
-                        && ReferenceEquals(target.DisplayName, expectedTargetDisplayNames[index])
                         && target.IsFocused == expectedTargetFocusStates[index])
                 .All(isRetained => isRetained)
             && !focusedSearchIndicator.Visible
@@ -1154,9 +1147,6 @@ public partial class InteractionFocusSmokeCheck : Node
         ObjectId[] retainedTargetObjectIds = retainedTargets
             .Select(target => target.ObjectId)
             .ToArray();
-        string[] retainedTargetDisplayNames = retainedTargets
-            .Select(target => target.DisplayName)
-            .ToArray();
         bool[] retainedTargetFocusStates = retainedTargets
             .Select(target => target.IsFocused)
             .ToArray();
@@ -1180,7 +1170,6 @@ public partial class InteractionFocusSmokeCheck : Node
                     (target, index) =>
                         ReferenceEquals(controller.GetTarget(index), target)
                         && ReferenceEquals(target.ObjectId, retainedTargetObjectIds[index])
-                        && ReferenceEquals(target.DisplayName, retainedTargetDisplayNames[index])
                         && target.IsFocused == retainedTargetFocusStates[index])
                 .All(isRetained => isRetained)
             && AssertResolvedPerceptionIndicators(
@@ -1232,9 +1221,6 @@ public partial class InteractionFocusSmokeCheck : Node
         ObjectId[] expectedTargetObjectIds = expectedTargets
             .Select(target => target.ObjectId)
             .ToArray();
-        string[] expectedTargetDisplayNames = expectedTargets
-            .Select(target => target.DisplayName)
-            .ToArray();
         bool[] expectedTargetFocusStates = expectedTargets
             .Select(target => target.IsFocused)
             .ToArray();
@@ -1260,7 +1246,6 @@ public partial class InteractionFocusSmokeCheck : Node
                     (target, index) =>
                         ReferenceEquals(controller.GetTarget(index), target)
                         && ReferenceEquals(target.ObjectId, expectedTargetObjectIds[index])
-                        && ReferenceEquals(target.DisplayName, expectedTargetDisplayNames[index])
                         && target.IsFocused == expectedTargetFocusStates[index])
                 .All(isRetained => isRetained)
             && AssertResolvedPerceptionIndicators(
@@ -1308,8 +1293,8 @@ public partial class InteractionFocusSmokeCheck : Node
             ?? throw new InvalidOperationException(
                 "The interaction-focus smoke requires initialized Seeker perception.");
         TemporaryResolvedPerceptionIndicator indicator = resolvedPerceptionIndicators[0];
-        ObjectId targetObjectId = authoredObjectIds[0];
-        ObjectId unrelatedObjectId = authoredObjectIds[1];
+        ObjectId targetObjectId = sourceObjectIds[0];
+        ObjectId unrelatedObjectId = sourceObjectIds[1];
         WorldObject targetWorldObject =
             worldObjectController.FindWorldObject(targetObjectId)
             ?? throw new InvalidOperationException(
@@ -1874,8 +1859,8 @@ public partial class InteractionFocusSmokeCheck : Node
             && ReferenceEquals(capabilities.Entries[0], authoredCapability)
             && inventory.ObjectReferences.Count == 1
             && ReferenceEquals(inventory.ObjectReferences[0], authoredToolObjectId)
-            && ReferenceEquals(authoredCapabilityRequirement.ObjectId, authoredObjectIds[0])
-            && ReferenceEquals(authoredToolRequirement.ObjectId, authoredObjectIds[1])
+            && ReferenceEquals(authoredCapabilityRequirement.ObjectId, sourceObjectIds[0])
+            && ReferenceEquals(authoredToolRequirement.ObjectId, sourceObjectIds[1])
             && ReferenceEquals(
                 authoredToolRequirement.RequiredToolObjectId,
                 authoredToolObjectId);
@@ -1919,6 +1904,26 @@ public partial class InteractionFocusSmokeCheck : Node
                 Fail(
                     $"Interaction-focus smoke failed stable identifier authoring: target {index} "
                     + "duplicated an existing identifier.");
+                return false;
+            }
+        }
+
+        sourceObjectIds = worldObjectSource.WorldObjects.Entries
+            .Select(worldObject => worldObject.Identity.Id)
+            .ToArray();
+        if (sourceObjectIds.Length != 2)
+        {
+            Fail("Interaction-focus smoke found an unexpected temporary world-object count.");
+            return false;
+        }
+
+        for (int index = 0; index < sourceObjectIds.Length; index++)
+        {
+            if (ReferenceEquals(sourceObjectIds[index], authoredObjectIds[index])
+                || sourceObjectIds[index] != authoredObjectIds[index])
+            {
+                Fail(
+                    $"Interaction-focus smoke failed independent identifier authoring at {index}.");
                 return false;
             }
         }

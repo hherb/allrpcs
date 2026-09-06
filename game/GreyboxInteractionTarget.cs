@@ -19,10 +19,6 @@ public partial class GreyboxInteractionTarget : Node2D
     /// <summary>Gets the stable object identifier parsed for this ready marker.</summary>
     public ObjectId ObjectId { get; private set; } = null!;
 
-    /// <summary>Gets or sets the temporary player-facing label for this greybox marker.</summary>
-    [Export]
-    public string DisplayName { get; set; } = "GREYBOX TARGET";
-
     /// <summary>Gets or sets whether this marker is visible to interaction focus.</summary>
     [Export]
     public bool IsInteractionVisible { get; set; } = true;

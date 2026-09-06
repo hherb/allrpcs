@@ -2,52 +2,47 @@
 
 ## Current state
 
-Phase 2l17 is implemented on `codex/phase-2l17-world-object-marker-label`, based directly on
-PR #113's merge commit `d1a969e`.
+Phase 2l18 is implemented on `codex/phase-2l18-independent-world-object-identities`, based directly
+on PR #114's merge commit `7f74a30`.
 
-`InteractionFocusController.RefreshFocus` now presents every existing labelled interaction marker
-from the exact matching `WorldObject.Identity.DisplayName`. Missing objects clear their marker
-labels, an unlabelled hidden marker remains unlabelled, and a matching disabled marker receives its
-world-object name without becoming focus eligible. The marker's exported `DisplayName`, geometry,
-visibility, selection, exact selected identifier, focus indicators, status, range, and ordering are
-unchanged. No description is inspected or exposed, and no world object is retained beyond refresh.
+`TemporaryWorldObjectSource` now authors the existing `herb-patch` / `HERB PATCH` and
+`stone-marker` / `STONE MARKER` identities itself in the same two-object order and retained
+snapshot. Each source ID is value-equal to, but a distinct instance from, the corresponding
+`GreyboxInteractionTarget.ObjectIdText` reference. Both descriptions remain empty. Markers no
+longer expose or receive `DisplayName`; their `Label` nodes remain presentation-only and still
+receive world-object names through `InteractionFocusController` lookup.
 
-The credential-free world-object interaction-focus smoke proves exact and independently named
-distinct value-equal objects, missing and restored objects, hidden and disabled markers, cleared
-missing-object labels, stable label-node and authored-input instances, and unchanged surrounding
-state. After code review, host-shell `./scripts/quality.sh` passed with workflow and formatting
-validation, a zero-warning build, 661 Domain tests, 107 Application tests, six architecture tests,
-all fourteen Godot smokes, and the bounded graphical launch. The sandbox build passed but VSTest
-could not bind its local socket. A separately rendered gameplay frame confirmed the two backed
-marker names and the expected blank disabled marker without layout regressions.
+Credential-free smoke evidence covers the marker/source ownership split, exact stable source
+identities and names, marker property surface, and unchanged marker order, geometry, visibility,
+focus, focused-search activity/outcomes/perception, and presentation. After code review,
+host-shell `./scripts/quality.sh` passed with workflow and formatting validation, a zero-warning
+build, 661 Domain tests, 107 Application tests, six architecture tests, all fourteen Godot smokes,
+and the bounded graphical launch.
 
 Temporary sources, controllers, lifecycle controls, greybox focus, and discovery presentation
 remain non-authoritative.
 
 ## Exact next bounded slice
 
-Take **Phase 2l18: independently authored temporary world-object identities**.
+Take **Phase 2l19: independently authored temporary world-object descriptions**.
 
 Acceptance boundary:
 
-1. Make `TemporaryWorldObjectSource` author the existing herb-patch and stone-marker object
-   identifiers and display names itself rather than reading them from `GreyboxInteractionTarget`.
-   Preserve the exact values, two-object order, distinct objects, empty descriptions, and one stable
-   retained snapshot.
-2. Remove the now-unused `GreyboxInteractionTarget.DisplayName` input and its scene assignments;
-   marker `Label` nodes remain presentation-only and continue to derive visible text through the
-   Phase 2l17 world-object lookup. Keep `ObjectIdText` as the marker's referential input and require
-   its parsed identifiers to remain value-equal to, but independently owned from, source objects.
-3. Extend credential-free evidence for independent source and marker identifier instances, stable
-   source identities and names, unchanged ordinary presentation, and unchanged focus, search,
-   perception, outcome, geometry, visibility, and ordering state.
+1. Give the existing herb-patch and stone-marker objects distinct non-empty descriptions authored
+   only by `TemporaryWorldObjectSource`. Preserve their exact identifiers, display names, order,
+   object and identity instances, and one retained snapshot.
+2. Extend credential-free source evidence for exact description text and stable description
+   instances. Prove that the descriptions are not copied into marker labels, focus status, the
+   temporary `IDENTIFIED` indicator, or any focused-search input or result presentation.
+3. Preserve independently owned value-equal marker references and all existing focus, search,
+   perception, outcome, geometry, visibility, and ordering behavior.
 4. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and
    prune this file again to current evidence plus one next slice.
 
 Explicit exclusions:
 
 - Do not change Domain or Application contracts; marker object-reference text; world-object lookup,
-  snapshots, descriptions, or ordering; focus eligibility, range, selection, or status;
+  snapshots, identities, or ordering; focus eligibility, range, selection, labels, or status;
   focused-search lifecycle, perception, outcome, or resolved-presentation rules; or marker geometry.
 - Do not make temporary scene state authoritative or add discovery grants, knowledge, evidence,
   events, persistence, serialization, providers, plugins, credentials, or new UI.
