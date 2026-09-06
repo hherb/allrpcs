@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
@@ -13,19 +14,29 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_WORLD_OBJECT_SOURCE_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const string FocusedSearchResultText = "Focused search: NO ATTEMPT";
+    private const string FocusStatusText = "Interaction focus: HERB PATCH";
     private const string HerbPatchObjectId = "herb-patch";
     private const string HerbPatchDisplayName = "HERB PATCH";
+    private const string HerbPatchDescription =
+        "A cluster of narrow leaves gives off a sharp scent.";
     private const string StoneMarkerObjectId = "stone-marker";
     private const string StoneMarkerDisplayName = "STONE MARKER";
+    private const string StoneMarkerDescription =
+        "Weathered carvings mark one face of the standing stone.";
+    private const string ResolvedIndicatorText = "IDENTIFIED";
 
     private TemporaryWorldObjectSource source = null!;
     private InteractionFocusController focusController = null!;
+    private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private FocusedSearchActivityController controller = null!;
     private GreyboxInteractionTarget herbPatch = null!;
     private GreyboxInteractionTarget stoneMarker = null!;
     private Line2D searchIndicator = null!;
     private Label herbPatchResolvedIndicator = null!;
     private Label stoneMarkerResolvedIndicator = null!;
+    private Label focusStatus = null!;
+    private Label focusedSearchResultStatus = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -39,6 +50,8 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
         source = GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource");
         focusController = GetNode<InteractionFocusController>("../InteractionFocusController");
+        focusedSearchContextSource = GetNode<TemporaryFocusedSearchContextSource>(
+            "../TemporaryFocusedSearchContextSource");
         controller = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         herbPatch = GetNode<GreyboxInteractionTarget>("../InteractionCandidates/HerbPatch");
@@ -49,6 +62,9 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             "../InteractionCandidates/HerbPatch/TemporaryResolvedPerceptionIndicator/Indicator");
         stoneMarkerResolvedIndicator = GetNode<Label>(
             "../InteractionCandidates/StoneMarker/TemporaryResolvedPerceptionIndicator/Indicator");
+        focusStatus = GetNode<Label>("../CommandOverlay/Panel/FocusStatus");
+        focusedSearchResultStatus = GetNode<Label>(
+            "../CommandOverlay/Panel/FocusedSearchResult");
     }
 
     /// <inheritdoc />
@@ -60,6 +76,9 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         FocusedSearchActivitySnapshot expectedActivities = controller.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = controller.Outcomes;
         CharacterPerceptionSnapshot? expectedPerception = controller.Perception;
+        DiscoveryConditionSet expectedConditions = focusedSearchContextSource.Conditions;
+        CharacterCapabilitySet expectedCapabilities = focusedSearchContextSource.Capabilities;
+        CharacterInventory expectedInventory = focusedSearchContextSource.Inventory;
         int? expectedFocusedTargetIndex = focusController.FocusedTargetIndex;
         ObjectId? expectedFocusedTargetObjectId = focusController.FocusedTargetObjectId;
         GreyboxInteractionTarget[] expectedTargets = Enumerable.Range(
@@ -97,6 +116,10 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         bool expectedSearchIndicatorVisibility = searchIndicator.Visible;
         bool expectedHerbPatchIndicatorVisibility = herbPatchResolvedIndicator.Visible;
         bool expectedStoneMarkerIndicatorVisibility = stoneMarkerResolvedIndicator.Visible;
+        string expectedHerbPatchIndicatorText = herbPatchResolvedIndicator.Text;
+        string expectedStoneMarkerIndicatorText = stoneMarkerResolvedIndicator.Text;
+        string expectedFocusStatusText = focusStatus.Text;
+        string expectedFocusedSearchResultText = focusedSearchResultStatus.Text;
         WorldObjectSnapshot first = source.WorldObjects;
         WorldObjectSnapshot second = source.WorldObjects;
 
@@ -116,28 +139,65 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         WorldObject stoneMarkerObject = first.Entries[1];
         WorldObjectIdentity herbPatchIdentity = herbPatchObject.Identity;
         WorldObjectIdentity stoneMarkerIdentity = stoneMarkerObject.Identity;
+        WorldObjectDescription herbPatchDescription = herbPatchObject.Description;
+        WorldObjectDescription stoneMarkerDescription = stoneMarkerObject.Description;
         string herbPatchName = herbPatchIdentity.DisplayName;
         string stoneMarkerName = stoneMarkerIdentity.DisplayName;
         if (ReferenceEquals(herbPatchObject, stoneMarkerObject)
             || ReferenceEquals(herbPatchIdentity, stoneMarkerIdentity)
+            || ReferenceEquals(herbPatchDescription, stoneMarkerDescription)
             || !HasExpectedWorldObject(
                 herbPatchObject,
                 herbPatch,
                 HerbPatchObjectId,
-                HerbPatchDisplayName)
+                HerbPatchDisplayName,
+                HerbPatchDescription)
             || !HasExpectedWorldObject(
                 stoneMarkerObject,
                 stoneMarker,
                 StoneMarkerObjectId,
-                StoneMarkerDisplayName))
+                StoneMarkerDisplayName,
+                StoneMarkerDescription))
         {
             Fail("Temporary world-object source smoke failed exact authored target retention.");
+            return;
+        }
+
+        if (!HasExpectedMarkerLabelTexts(expectedMarkerLabelTexts)
+            || !string.Equals(
+                expectedHerbPatchIndicatorText,
+                ResolvedIndicatorText,
+                StringComparison.Ordinal)
+            || !string.Equals(
+                expectedStoneMarkerIndicatorText,
+                ResolvedIndicatorText,
+                StringComparison.Ordinal)
+            || !string.Equals(expectedFocusStatusText, FocusStatusText, StringComparison.Ordinal)
+            || !string.Equals(
+                expectedFocusedSearchResultText,
+                FocusedSearchResultText,
+                StringComparison.Ordinal)
+            || !HasExpectedDescriptionFreeFocusedSearchInputs(
+                expectedConditions,
+                expectedCapabilities,
+                expectedInventory,
+                herbPatchIdentity.Id,
+                stoneMarkerIdentity.Id,
+                HerbPatchDescription,
+                StoneMarkerDescription))
+        {
+            Fail(
+                "Temporary world-object source smoke copied a description into focused-search "
+                + "inputs or presentation.");
             return;
         }
 
         if (!ReferenceEquals(controller.Activities, expectedActivities)
             || !ReferenceEquals(controller.Outcomes, expectedOutcomes)
             || !ReferenceEquals(controller.Perception, expectedPerception)
+            || !ReferenceEquals(focusedSearchContextSource.Conditions, expectedConditions)
+            || !ReferenceEquals(focusedSearchContextSource.Capabilities, expectedCapabilities)
+            || !ReferenceEquals(focusedSearchContextSource.Inventory, expectedInventory)
             || focusController.FocusedTargetIndex != expectedFocusedTargetIndex
             || !ReferenceEquals(
                 focusController.FocusedTargetObjectId,
@@ -146,6 +206,8 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             || !ReferenceEquals(first.Entries[1].Identity, stoneMarkerIdentity)
             || !ReferenceEquals(first.Entries[0].Identity.DisplayName, herbPatchName)
             || !ReferenceEquals(first.Entries[1].Identity.DisplayName, stoneMarkerName)
+            || !ReferenceEquals(first.Entries[0].Description, herbPatchDescription)
+            || !ReferenceEquals(first.Entries[1].Description, stoneMarkerDescription)
             || !HasUnchangedTargets(
                 expectedTargets,
                 expectedObjectIdTexts,
@@ -159,7 +221,20 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 expectedMarkerLabelTexts)
             || searchIndicator.Visible != expectedSearchIndicatorVisibility
             || herbPatchResolvedIndicator.Visible != expectedHerbPatchIndicatorVisibility
-            || stoneMarkerResolvedIndicator.Visible != expectedStoneMarkerIndicatorVisibility)
+            || stoneMarkerResolvedIndicator.Visible != expectedStoneMarkerIndicatorVisibility
+            || !string.Equals(
+                herbPatchResolvedIndicator.Text,
+                expectedHerbPatchIndicatorText,
+                StringComparison.Ordinal)
+            || !string.Equals(
+                stoneMarkerResolvedIndicator.Text,
+                expectedStoneMarkerIndicatorText,
+                StringComparison.Ordinal)
+            || !string.Equals(focusStatus.Text, expectedFocusStatusText, StringComparison.Ordinal)
+            || !string.Equals(
+                focusedSearchResultStatus.Text,
+                expectedFocusedSearchResultText,
+                StringComparison.Ordinal))
         {
             Fail(
                 "Temporary world-object source smoke changed controller state or presentation.");
@@ -169,8 +244,9 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         GD.Print(
             "Temporary world-object source smoke passed: bounded surface, stable ordered snapshot, "
             + "distinct objects, independently authored value-equal identifiers, exact names, "
-            + "empty descriptions, stable nested source values, and unchanged marker order, "
-            + "geometry, visibility, focus, controller snapshots, and presentation were correct.");
+            + "distinct exact descriptions, stable nested source values, description-free "
+            + "focused-search inputs, and unchanged marker order, geometry, visibility, focus, "
+            + "controller snapshots, and presentation were correct.");
         GetTree().Quit();
     }
 
@@ -178,7 +254,8 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         WorldObject worldObject,
         GreyboxInteractionTarget target,
         string expectedObjectId,
-        string expectedDisplayName)
+        string expectedDisplayName,
+        string expectedDescription)
     {
         return string.Equals(target.ObjectId.Value, expectedObjectId, StringComparison.Ordinal)
             && !ReferenceEquals(worldObject.Identity.Id, target.ObjectId)
@@ -187,7 +264,66 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 worldObject.Identity.DisplayName,
                 expectedDisplayName,
                 StringComparison.Ordinal)
-            && string.Equals(worldObject.Description.Text, string.Empty, StringComparison.Ordinal);
+            && string.Equals(
+                worldObject.Description.Text,
+                expectedDescription,
+                StringComparison.Ordinal);
+    }
+
+    private static bool HasExpectedDescriptionFreeFocusedSearchInputs(
+        DiscoveryConditionSet conditions,
+        CharacterCapabilitySet capabilities,
+        CharacterInventory inventory,
+        ObjectId herbPatchObjectId,
+        ObjectId stoneMarkerObjectId,
+        params string[] descriptions)
+    {
+        if (conditions.CapabilityRequirements.Entries.Count != 1
+            || conditions.ToolRequirements.Entries.Count != 1
+            || capabilities.Entries.Count != 1
+            || inventory.ObjectReferences.Count != 1
+            || !ReferenceEquals(
+                conditions.CapabilityRequirements.Entries[0].ObjectId,
+                herbPatchObjectId)
+            || !ReferenceEquals(
+                conditions.ToolRequirements.Entries[0].ObjectId,
+                stoneMarkerObjectId))
+        {
+            return false;
+        }
+
+        IEnumerable<string> inputTexts = conditions.CapabilityRequirements.Entries
+            .SelectMany(
+                requirement => new[]
+                {
+                    requirement.ObjectId.Value,
+                    requirement.RequiredCapabilityKey,
+                })
+            .Concat(
+                conditions.ToolRequirements.Entries.SelectMany(
+                    requirement => new[]
+                    {
+                        requirement.ObjectId.Value,
+                        requirement.RequiredToolObjectId.Value,
+                    }))
+            .Concat(capabilities.Entries.SelectMany(entry => new[] { entry.Key, entry.Description }))
+            .Concat(inventory.ObjectReferences.Select(reference => reference.Value));
+
+        return inputTexts.All(
+            input => !descriptions.Contains(input, StringComparer.Ordinal));
+    }
+
+    private static bool HasExpectedMarkerLabelTexts(IReadOnlyList<string?> markerLabelTexts)
+    {
+        string?[] expectedTexts = [HerbPatchDisplayName, StoneMarkerDisplayName, null, string.Empty];
+
+        return markerLabelTexts.Count == expectedTexts.Length
+            && markerLabelTexts.Select(
+                    (text, index) => string.Equals(
+                        text,
+                        expectedTexts[index],
+                        StringComparison.Ordinal))
+                .All(isExpected => isExpected);
     }
 
     private static bool HasExpectedMarkerPropertySurface()

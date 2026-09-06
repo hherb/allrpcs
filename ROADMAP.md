@@ -91,9 +91,10 @@ Phases 2a–2j established the checked engine-independent world, character, perc
 and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
 lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
 perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l18 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
-that independently authors the two visible world-object identities into one stable snapshot with
-empty descriptions and separate one-time controller ownership with exact value-equal lookup.
+2l1–2l19 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
+that independently authors the two visible world-object identities and distinct non-empty
+descriptions into one stable snapshot, and separate one-time controller ownership with exact
+value-equal lookup.
 Temporary R-resolution is gated on the selected outcome target's existence. The R path passes the exact
 looked-up object into the focused-search controller, which delegates complete world-object-bound
 eligibility and state creation to a pure Domain policy and transition. The transition accepts
@@ -123,7 +124,9 @@ object description. Every existing labelled marker now also presents the matchin
 display name, including for a matching disabled marker; absent objects clear their labels, hidden
 unlabelled markers remain unlabelled, and focus behavior remains unchanged. Marker labels are now
 presentation-only: markers retain independently parsed value-equal object-reference IDs but no
-longer author a separate display-name input.
+longer author a separate display-name input. The source-owned descriptions retain exact stable
+instances but are not focused-search inputs and do not appear in marker labels, focus status, the
+temporary `IDENTIFIED` indicators, or focused-search result presentation.
 The exact next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

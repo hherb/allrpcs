@@ -827,11 +827,14 @@ authoritative.
 stone-marker identities into one retained `WorldObjectSnapshot` when the scene becomes ready. It
 creates one distinct world object per identity in that authored order, retaining the existing exact
 identifier values and display names. Each source identifier is a distinct instance that is
-value-equal to its marker's independently parsed `ObjectIdText` reference. Each object has an empty
-`WorldObjectDescription` because the temporary world has no authored description yet. The source
-does not read, mutate, or replace greybox targets; become authoritative; inspect visibility or
-focus; filter or rank objects; call controllers; grant discovery; or change presentation or
-ordinary-play behavior.
+value-equal to its marker's independently parsed `ObjectIdText` reference. The source also authors
+and retains one distinct non-empty `WorldObjectDescription` for each object: the herb patch has
+`A cluster of narrow leaves gives off a sharp scent.`, while the stone marker has
+`Weathered carvings mark one face of the standing stone.`. These descriptions are not focused-search
+inputs and are not copied into marker labels, focus status, the temporary `IDENTIFIED` indicators,
+or focused-search result presentation. The source does not read, mutate, or replace greybox targets;
+become authoritative; inspect visibility or focus; filter or rank objects; call controllers; grant
+discovery; or change presentation or ordinary-play behavior.
 
 `Allrpcs.Game.WorldObjectController` is the separate scene owner of one optional immutable
 world-object snapshot. Its one-time initialization boundary rejects null, retains the exact first
