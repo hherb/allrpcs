@@ -1,12 +1,12 @@
-using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Presents whether one temporary greybox target is exactly identified in an existing perception
-/// snapshot.
+/// Presents whether one temporary greybox world object is exactly identified in an existing
+/// perception snapshot.
 /// </summary>
 public partial class TemporaryResolvedPerceptionIndicator : Node2D
 {
@@ -22,15 +22,16 @@ public partial class TemporaryResolvedPerceptionIndicator : Node2D
     }
 
     /// <summary>
-    /// Presents the exact target only when its retained visibility is the identified state.
+    /// Presents the existing world object only when its retained visibility is the identified
+    /// state.
     /// </summary>
     public void Present(
-        ObjectId? targetObjectId,
+        WorldObject? targetWorldObject,
         CharacterPerceptionSnapshot? perception)
     {
-        WorldObjectVisibility? visibility = targetObjectId is null || perception is null
+        WorldObjectVisibility? visibility = targetWorldObject is null || perception is null
             ? null
-            : CharacterPerceptionLookup.FindByObject(targetObjectId, perception);
+            : CharacterPerceptionLookup.FindByObject(targetWorldObject.Identity.Id, perception);
         GetIndicator().Visible = ReferenceEquals(
             visibility?.VisibilityState,
             VisibilityState.Identified);
