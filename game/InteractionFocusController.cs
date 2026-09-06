@@ -2,6 +2,7 @@ using Allrpcs.Application.Interaction;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -30,15 +31,20 @@ public partial class InteractionFocusController : Node
     /// <summary>Gets the number of temporary authored focus targets.</summary>
     public int TargetCount => targets.Length;
 
-    /// <summary>Creates a focused-search request for the current valid focus, or null.</summary>
+    /// <summary>Creates a focused-search request for the matching focused world object, or null.</summary>
     /// <param name="searcherCharacterId">The existing identifier of the searcher.</param>
-    /// <returns>A new request retaining the supplied and focused identifiers, or null.</returns>
-    public FocusedSearchRequest? CreateFocusedSearchRequest(CharacterId searcherCharacterId)
+    /// <param name="worldObject">The existing nullable world object for the current focus.</param>
+    /// <returns>A new request retaining the supplied and world-object identifiers, or null.</returns>
+    public FocusedSearchRequest? CreateFocusedSearchRequest(
+        CharacterId searcherCharacterId,
+        WorldObject? worldObject)
     {
         ArgumentNullException.ThrowIfNull(searcherCharacterId);
 
-        return FocusedTargetObjectId is ObjectId targetObjectId
-            ? new FocusedSearchRequest(searcherCharacterId, targetObjectId)
+        return FocusedTargetObjectId is ObjectId focusedTargetObjectId
+            && worldObject is not null
+            && worldObject.Identity.Id == focusedTargetObjectId
+            ? new FocusedSearchRequest(searcherCharacterId, worldObject.Identity.Id)
             : null;
     }
 
@@ -46,12 +52,14 @@ public partial class InteractionFocusController : Node
     /// Attempts to start a focused search for the current valid interaction focus.
     /// </summary>
     public bool TryStartFocusedSearch(
+        WorldObject? worldObject,
         DiscoveryConditionSet conditions,
         CharacterCapabilitySet capabilities,
         CharacterInventory inventory)
     {
         FocusedSearchRequest? request = CreateFocusedSearchRequest(
-            focusedSearchController.SearcherCharacterId);
+            focusedSearchController.SearcherCharacterId,
+            worldObject);
 
         return request is not null
             && focusedSearchController.TryStartSearch(

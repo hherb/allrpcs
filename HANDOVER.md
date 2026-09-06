@@ -2,55 +2,59 @@
 
 ## Current state
 
-Phase 2l13 is implemented on `codex/phase-2l13-world-object-focused-search-context`, based
-directly on PR #109's verified merge commit `9145fb17`.
+Phase 2l14 is implemented on `codex/phase-2l14-world-object-gated-focused-search`, based
+directly on PR #110's merge commit `f9fa86e`.
 
-`TemporaryFocusedSearchContextSource` now derives its capability- and tool-requirement targets
-only from `TemporaryWorldObjectSource.WorldObjects`. The first object's exact identifier retains
-the existing capability-only mapping, and the second object's exact identifier retains the
-existing tool-only mapping. Fewer than two objects fail explicitly without falling back to
-greybox targets. The scene initializes the world-object source before this dependent source.
+`InteractionFocusController.CreateFocusedSearchRequest` now receives an existing nullable
+`WorldObject`. It rejects null, absent-focus, and target-mismatched objects, accepts exact or
+distinct value-equal identifiers, and retains the successful object's exact identifier instance
+with the controller-owned Seeker identifier. `TryStartFocusedSearch` delegates that same object and
+invokes the existing condition-aware start path only for a created request.
 
-The existing capability, tool identifier, requirements, sets, conditions, capabilities, and
-inventory semantics remain unchanged, and the scene retains one stable set of aggregate instances.
-Independent-world-object smoke evidence proves exact identifier and nested-input retention,
-unchanged supplied objects, and explicit undersized-snapshot failure.
+The temporary F path resolves only the current focused identifier through
+`WorldObjectController.FindWorldObject` and passes its exact result into the start boundary. A
+missing object reports `UNCHANGED` without invoking the start path. Focus selection and
+presentation, context aggregates, focused-search snapshots, world-object source and controller
+state, target state, perception, and input instances otherwise remain unchanged.
 
-The focused smoke failed first because the world-object context derivation boundary did not exist.
-After implementation and code review, host-shell `./scripts/quality.sh` passed with a zero-warning
-build, 661 Domain tests, 107 Application tests, six architecture tests, all thirteen Godot smokes,
-and the bounded graphical launch. Authored appearance did not change, so no manual visual inspection
-was needed.
+Credential-free smoke evidence covers null, absent-focus, mismatched, exact, and distinct
+value-equal objects, successful delegation for both visible targets, exact identifier retention,
+and missing-object state identity. After code review, host-shell `./scripts/quality.sh` passed with
+a zero-warning build, 661 Domain tests, 107 Application tests, six architecture tests, all thirteen
+Godot smokes, and the bounded graphical launch. The sandbox attempt reached the build but VSTest
+could not bind its local socket; no product code was changed for that environment restriction.
+Authored appearance did not change, so no manual visual inspection was needed.
 
-Temporary sources, controllers, lifecycle controls, and identified-marker presentation remain
-non-authoritative.
+Temporary sources, controllers, lifecycle controls, greybox focus, and identified-marker
+presentation remain non-authoritative.
 
 ## Exact next bounded slice
 
-Take **Phase 2l14: world-object-gated temporary focused-search request and start**.
+Take **Phase 2l15: world-object-gated temporary interaction-focus availability**.
 
 Acceptance boundary:
 
-1. Make `InteractionFocusController.CreateFocusedSearchRequest` receive an existing nullable
-   `WorldObject` with the searcher identifier. Require a current focus and a value-equal target
-   match; reject null, absent-focus, and mismatched objects, and retain the successful object's exact
-   identifier instance without falling back to a greybox target identifier.
-2. Make `TryStartFocusedSearch` receive and delegate that existing nullable object. In `Main`'s F
-   path, resolve only the current focused identifier through `WorldObjectController`, pass the exact
-   returned object, and report `UNCHANGED` without invoking the start path when it is missing.
-3. Preserve focus selection and presentation, context aggregates, all controller snapshots,
-   world-object/source/target state, and input instances. Extend credential-free evidence for null,
-   absent, mismatched, exact, and distinct value-equal objects plus missing-object state identity.
+1. Make `InteractionFocusController.RefreshFocus` consider an otherwise visible, enabled, in-range
+   greybox target eligible only when its identifier resolves through `WorldObjectController` to an
+   existing matching object. Use identifier equality only; do not inspect identity text or
+   descriptions.
+2. Retain the selected world object's exact identifier instance as `FocusedTargetObjectId`. When
+   the nearest marker's object is absent, select the next eligible in-range marker in existing
+   authored-order/distance semantics; when none exist, clear focus, its indicator, and status.
+3. Preserve the pure selector, range and tie-breaking rules, world-object snapshots and objects,
+   all focused-search snapshots, context and perception, and every supplied nested instance. Extend
+   credential-free evidence for exact and distinct value-equal objects, missing-nearest fallback,
+   all-missing clearing, restoration, and unchanged state outside focus presentation.
 4. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and
    prune this file again to current evidence plus one next slice.
 
 Explicit exclusions:
 
 - Do not change Domain request, discovery-condition, perception, outcome, completion, or resolution
-  contracts; focus range or ordering; requirement semantics; world-object snapshots or lookup; or
-  resolved-perception presentation rules.
-- Do not inspect world-object identity text or descriptions, filter or rank objects, make temporary
-  sources or controllers authoritative, or add knowledge, evidence, events, persistence,
+  contracts; Application focus selection; focus range or ordering; requirement semantics;
+  world-object snapshots or lookup; or resolved-perception presentation rules.
+- Do not filter or rank world objects beyond existing focus eligibility, make temporary sources or
+  controllers authoritative, or add discovery grants, knowledge, evidence, events, persistence,
   serialization, providers, plugins, credentials, or new UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without

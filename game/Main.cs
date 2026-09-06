@@ -126,10 +126,15 @@ public partial class Main : Node
         }
         else if (@event.IsActionPressed(FocusedSearchStartAction))
         {
-            bool changed = interactionFocusController.TryStartFocusedSearch(
-                focusedSearchContextSource.Conditions,
-                focusedSearchContextSource.Capabilities,
-                focusedSearchContextSource.Inventory);
+            bool changed = interactionFocusController.FocusedTargetObjectId
+                    is { } focusedTargetObjectId
+                && worldObjectController.FindWorldObject(focusedTargetObjectId)
+                    is { } focusedWorldObject
+                && interactionFocusController.TryStartFocusedSearch(
+                    focusedWorldObject,
+                    focusedSearchContextSource.Conditions,
+                    focusedSearchContextSource.Capabilities,
+                    focusedSearchContextSource.Inventory);
             PresentFocusedSearchResult("START", changed);
         }
         else if (@event.IsActionPressed(HealerToggleAction))
