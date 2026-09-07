@@ -776,6 +776,37 @@ candidate and nested identifier instances in stable source order. It permits no 
 multiple distinct matches, omits unrelated candidates, rejects null inputs, leaves both inputs
 unchanged, and does not produce, select, rank, reorder, or evaluate candidates.
 
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateLookup.Find` is the pure exact-candidate lookup.
+It matches the complete candidate value, including both observer and target identifiers, and
+returns the exact retained candidate or `null` when no candidate matches. It rejects either null
+input, leaves every input unchanged, and does not produce, project, select among, rank, reorder, or
+evaluate candidates.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateApplicabilityPolicy.CanApply` is the pure
+candidate-to-perception applicability decision. It returns true only when the perception snapshot
+belongs to the candidate's value-equal observer and the existing exact-object lookup finds the
+candidate target. It rejects null inputs, retains every input instance unchanged, and deliberately
+does not inspect the current visibility state, decide a change, or mutate perception.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateChangePolicy.WouldChange` is the pure
+passive-noticing change decision. It delegates complete applicability, selects the exact retained
+target through the existing perception lookup, and returns true only when that target is exactly
+`Unnoticed`. It rejects null inputs and leaves every input unchanged; later visibility states are
+never regressed or redundantly rewritten, and the policy does not itself change perception.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateApplicationTransition.Apply` is the pure
+passive-noticing perception transition. It delegates complete change eligibility and returns a new
+snapshot whose candidate target alone is replaced at its stable position with `Noticed`, retaining
+the perception-owned character and target-object identifier instances and every unrelated entry.
+It rejects inapplicable or non-changing candidates, leaves all inputs unchanged, and does not
+produce, retain, consume, or select a candidate.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateConsumptionPolicy.CanConsume` is the pure
+candidate-retention decision. It delegates complete value matching to the existing exact-candidate
+lookup and returns true only when a value-equal candidate is retained in the supplied snapshot. It
+rejects null inputs, preserves every exact instance and stable order, and does not remove, apply,
+produce, or select among candidates.
+
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
 projection and returns true exactly when the new projected snapshot contains at least one entry,

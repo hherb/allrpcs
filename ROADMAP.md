@@ -132,14 +132,20 @@ that object at exactly `Identified`. Null or absent objects, null or unrelated p
 other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
 replacement description without changing any supplied object, snapshot, lifecycle state, marker
 presentation, or world-object ordering.
-Phases 2m1–2m3 add one immutable identifier-only passive-noticing candidate for an existing observer
-and target, an immutable snapshot of those candidates, and a pure observer-specific projection. The
-snapshot copies caller input in stable supplied order, retains exact candidate instances, rejects
-nulls and value-equal duplicates, and permits candidates that share only an observer or target. The
-projection returns a new snapshot containing exactly the candidates for a value-equal observer,
-preserving stable order and exact retained instances while omitting unrelated entries. These
-boundaries do not produce, select, rank, reorder, or evaluate candidates, so passive noticing remains
-incomplete. The exact next bounded slice is defined in `HANDOVER.md`.
+Phases 2m1–2m8 add one immutable identifier-only passive-noticing candidate for an existing observer
+and target, an immutable snapshot of those candidates, a pure observer-specific projection, an
+exact complete-candidate lookup, a pure candidate-to-perception applicability decision, and pure
+change detection plus application and candidate-consumption eligibility. The snapshot copies caller
+input in stable supplied order, retains exact candidate instances, rejects nulls and value-equal
+duplicates, and permits candidates that share only an observer or target. The projection returns
+exactly the candidates for a value-equal observer in stable order, and the lookup matches both
+observer and target while returning the exact retained candidate. Applicability requires a matching
+perception owner and an existing target without inspecting visibility state. Change detection
+permits only an applicable target at exactly `Unnoticed`; application returns a new snapshot with
+only that target replaced as `Noticed`, preserving stable order and unrelated instances.
+Consumption eligibility separately requires a value-equal candidate retained in its snapshot.
+These boundaries do not produce, remove, resolve, or select among candidates, so passive noticing
+remains incomplete. The exact next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
