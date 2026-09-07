@@ -37,8 +37,10 @@ From the repository root:
 The sequence restores packages serially, rejects C# formatting drift, builds with current
 recommended .NET analysis and compiler warnings treated as errors, runs the domain, application,
 and architecture tests, then exercises both headless and 60-frame graphical Godot launches. The
-headless launches wait for the navigation map to synchronize, prove a route through the bridge,
-reject representative stream, tree, and village targets, and exercise healer follow, wait,
+headless launches wait for the navigation map to synchronize; the interaction-focus check also
+requires the authored healer move destination to resolve onto that map before exercising input.
+They prove a route through the bridge, reject representative stream, tree, and village targets, and
+exercise healer follow, wait,
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct

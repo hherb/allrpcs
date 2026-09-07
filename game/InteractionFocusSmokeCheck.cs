@@ -24,6 +24,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private const string HealerToggleAction = "healer_toggle_follow_wait";
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
     private const int MaximumSynchronizationFrames = 60;
+    private const float NavigationSynchronizationTolerancePixels = 1.0f;
     private const string StartChangedText = "Focused search START: CHANGED";
     private const string StartUnchangedText = "Focused search START: UNCHANGED";
     private const string CancelChangedText = "Focused search CANCEL: CHANGED";
@@ -57,6 +58,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private Label focusedSearchResultStatus = null!;
     private Label instructions = null!;
     private Healer healer = null!;
+    private Marker2D healerCommandDestination = null!;
     private Main main = null!;
     private CharacterBody2D seeker = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
@@ -103,6 +105,7 @@ public partial class InteractionFocusSmokeCheck : Node
         focusedSearchResultStatus = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
         instructions = GetNode<Label>("../CommandOverlay/Panel/Instructions");
         healer = GetNode<Healer>("../Healer");
+        healerCommandDestination = GetNode<Marker2D>("../HealerCommandDestination");
         main = GetNode<Main>("..");
         navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         seeker = GetNode<CharacterBody2D>("../Seeker");
@@ -159,7 +162,12 @@ public partial class InteractionFocusSmokeCheck : Node
         synchronizationFrames++;
         Rid navigationMap = NavigationServer2D.RegionGetMap(navigationRegion.GetRid());
         bool isSynchronized = NavigationServer2D.RegionGetIterationId(navigationRegion.GetRid()) > 0
-            && NavigationServer2D.MapGetIterationId(navigationMap) > 0;
+            && NavigationServer2D.MapGetIterationId(navigationMap) > 0
+            && NavigationServer2D.MapGetClosestPoint(
+                navigationMap,
+                healerCommandDestination.GlobalPosition)
+                .DistanceTo(healerCommandDestination.GlobalPosition)
+                <= NavigationSynchronizationTolerancePixels;
         if (isSynchronized)
         {
             stage = SmokeStage.RepresentativeSelection;

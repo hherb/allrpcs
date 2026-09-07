@@ -18,6 +18,13 @@ was absent and passed after the minimal implementation. The final host-shell `./
 passed workflow and formatting validation, a zero-warning build, 770 Domain tests, 107 Application
 tests, six architecture tests, all fourteen Godot smokes, and the bounded graphical launch.
 
+PR #122's initial hosted headless job exposed a navigation-startup race in the existing
+interaction-focus smoke: map iteration counters could advance before the authored healer move
+destination resolved onto the map, so the synthetic move input was intermittently rejected. The
+failure reproduced locally on pre-fix stress run 3. The smoke now gates startup on that exact
+destination using the healer's existing one-pixel surface tolerance; 100 consecutive isolated
+post-fix launches and the complete quality sequence passed.
+
 README and ROADMAP record Phases 2m9–2m14. Passive noticing remains incomplete: no candidate is yet
 bound to an authoritative existing character and world object, and candidates are not selected or
 connected to Application or Godot. No runtime behavior changed.
