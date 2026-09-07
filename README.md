@@ -788,6 +788,29 @@ the exact retained candidate or `null`. It rejects partial matches and null inpu
 input unchanged, and does not project, produce, rank, reorder, evaluate, apply, or consume
 candidates.
 
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateTriggerPolicy.CanTrigger` is the
+pure knowledge-trigger decision. It returns true only when the complete character has a
+value-equal observer identity and references the candidate's value-equal trigger knowledge. It
+rejects null inputs and leaves the complete character, its ordered knowledge, and the candidate
+unchanged without inspecting perception or the target object.
+
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateApplicabilityPolicy.CanApply` adds
+only the existing-perception boundary. It delegates trigger satisfaction, requires a perception
+snapshot for the value-equal observer, and uses exact object lookup to require the target without
+inspecting its current visibility state. It rejects null inputs and changes nothing.
+
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateChangePolicy.WouldChange` delegates
+complete applicability and returns true only when the retained target is exactly `Noticed`.
+Every missing, mismatched, untriggered, `Unnoticed`, `Identified`, `Understood`, or
+`AlteredOrCollected` combination is false without mutation.
+
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateApplicationTransition.Apply`
+rejects every non-changing combination, then returns a new perception snapshot with only the
+value-equal target changed from `Noticed` to `Identified`. It preserves the perception owner's
+exact identifier, stable entry order, every unrelated entry instance, the target's exact retained
+object identifier, the complete character, and all inputs. Candidate consumption and atomic
+resolution remain deferred.
+
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
 rejects null inputs, retains both supplied identifier instances through get-only properties, and
