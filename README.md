@@ -837,6 +837,26 @@ partial matches; recording appends the exact supplied eligible candidate after a
 in stable order. Both preserve all inputs and do not prove that either identifier names an existing
 authoritative character or world object.
 
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateProductionPolicy.CanProduce` and
+`PassiveNoticingCandidateProductionTransition.Produce` bind recording to an existing authoritative
+character and world object. Eligibility requires both authoritative identities to be value-equal to
+the supplied candidate and delegates duplicate rejection to the recording policy. Production then
+delegates exact append behavior to the recording transition, returning a new snapshot that retains
+the exact supplied candidate. Both accept distinct value-equal identifier instances, reject every
+null, mismatch, and complete duplicate, and leave all character, object, candidate, and snapshot
+inputs unchanged.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionSelection.SelectNext` and
+`PassiveNoticingCandidateResolutionSequence.ResolveNext` provide deterministic per-observer
+resolution. Selection walks the retained snapshot in stable order and returns the exact first
+candidate for a value-equal observer that delegates successfully to complete resolution
+eligibility, skipping other observers, absent targets, and targets no longer at `Unnoticed`.
+Resolution delegates that exact selection to the existing atomic transition, changing only its
+target to `Noticed` and removing only the selected complete candidate in the returned snapshots.
+When no candidate is eligible, selection returns `null` and resolution rejects without changing
+inputs; neither operation ranks candidates or inspects coordinates, distance, line of sight, or
+world state.
+
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
 projection and returns true exactly when the new projected snapshot contains at least one entry,

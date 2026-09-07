@@ -132,24 +132,20 @@ that object at exactly `Identified`. Null or absent objects, null or unrelated p
 other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
 replacement description without changing any supplied object, snapshot, lifecycle state, marker
 presentation, or world-object ordering.
-Phases 2m1–2m14 add one immutable identifier-only passive-noticing candidate for an existing observer
+Phases 2m1–2m18 add one immutable identifier-only passive-noticing candidate for an existing observer
 and target, an immutable snapshot of those candidates, a pure observer-specific projection, an
 exact complete-candidate lookup, a pure candidate-to-perception applicability decision, and pure
-change detection plus application, candidate consumption, resolution, and recording. The snapshot copies caller
-input in stable supplied order, retains exact candidate instances, rejects nulls and value-equal
-duplicates, and permits candidates that share only an observer or target. The projection returns
-exactly the candidates for a value-equal observer in stable order, and the lookup matches both
-observer and target while returning the exact retained candidate. Applicability requires a matching
-perception owner and an existing target without inspecting visibility state. Change detection
-permits only an applicable target at exactly `Unnoticed`; application returns a new snapshot with
-only that target replaced as `Noticed`, preserving stable order and unrelated instances.
-Consumption eligibility separately requires a value-equal candidate retained in its snapshot, and
-consumption returns a new snapshot with only that complete candidate removed. Combined resolution
-eligibility requires both a perception change and consumption; its atomic transition returns an
-immutable result containing the delegated target-only perception change and complete-candidate
-removal. Recording eligibility rejects only a complete duplicate, and recording appends the exact
-eligible candidate after every retained entry. These boundaries do not establish candidate
-production from authoritative characters or world objects, select among candidates, or add runtime
+change detection plus application, candidate consumption, resolution, recording, authoritative
+production eligibility and transition, and deterministic next-candidate resolution. The snapshot
+copies caller input in stable supplied order, retains exact candidate instances, rejects nulls and
+value-equal duplicates, and permits candidates that share only an observer or target. Applicability
+requires a matching perception owner and an existing target at exactly `Unnoticed`; resolution
+changes only that target to `Noticed` and removes only the complete candidate. Authoritative
+production requires an existing value-equal character and world object before delegating exact
+duplicate-free append behavior. Next-candidate selection returns the exact first retained,
+resolution-eligible candidate for a value-equal observer in stable order, and its sequence delegates
+the existing atomic resolution without ranking or mutating inputs. These boundaries do not provide
+an authoritative runtime character source, own live candidate or perception state, or add Godot
 wiring, so passive noticing remains incomplete. The exact next bounded slice is defined in
 `HANDOVER.md`.
 
