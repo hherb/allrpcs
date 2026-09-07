@@ -3,7 +3,8 @@
 ## Current state
 
 PR #128 merged Phases 2n9–2n19 into `main` at `381152b`. The continuation branch
-`codex/phase-2n20-plus-observation-reinterpretation` implements Phases 2n20–2n25.
+`codex/phase-2n20-plus-observation-reinterpretation` implements Phases 2n20–2n25 in commit
+`ebc1db4`; draft PR #129 tracks the branch.
 
 The existing Godot controller now owns an initially empty observation-reinterpretation candidate
 snapshot and delegates exact authoritative production plus stable atomic resolve-next behavior to
