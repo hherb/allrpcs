@@ -3,7 +3,8 @@
 ## Current state
 
 PR #127 merged Phase 2n5–2n8 into `main` at `eb547c1`. The continuation branch
-`codex/phase-2n9-plus-observation-reinterpretation` implements Phases 2n9–2n19.
+`codex/phase-2n9-plus-observation-reinterpretation` implements Phases 2n9–2n19 in implementation
+commit `94d8602`; draft PR #128 tracks the branch.
 
 The Domain path now supports complete-candidate consumption, atomic trigger-aware
 `Noticed`-to-`Identified` resolution, duplicate-free recording, production bound to an existing
