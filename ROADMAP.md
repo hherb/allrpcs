@@ -160,6 +160,15 @@ consumes the complete candidate while leaving the source snapshot, focused-searc
 input, and presentation unchanged. This completes the bounded passive-noticing path without pixel
 clicking, polling, proximity, distance, line-of-sight, timing, or new UI authority. The exact next
 bounded slice is defined in `HANDOVER.md`.
+Phases 2n1–2n4 add one immutable observation-reinterpretation candidate containing only an existing
+observer, target, and triggering knowledge identifier, an immutable ordered snapshot of those
+candidates, a pure observer-specific projection, and a pure complete-candidate lookup. They retain
+exact supplied instances, copy caller collection input, permit an empty snapshot and every proper
+partial match, reject nulls and value-equal complete duplicates, project all value-equal observer
+matches in stable order, and return only an exact retained complete match. They add no candidate
+selection, ranking, evaluation, knowledge or perception inspection, trigger satisfaction,
+resulting visibility state, reinterpretation behavior, or state change. Knowledge-triggered
+reinterpretation remains incomplete.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

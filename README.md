@@ -761,6 +761,33 @@ request has a value-equal searcher character identifier, retaining the existing 
 in stable order. It permits no matches and multiple distinct requests, ignores unrelated
 activities, rejects null inputs, and does not mutate either input.
 
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidate` identifies exactly one earlier
+observation by an existing observer `CharacterId` and target `ObjectId`, together with the existing
+`KnowledgeId` that could trigger its reinterpretation. It rejects null inputs, retains all three
+supplied identifier instances through get-only properties, and uses only their existing value
+semantics. It does not inspect character knowledge or perception, decide whether the trigger is
+satisfied, define a resulting visibility state, reinterpret an observation, or change state.
+
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateSnapshot` contains existing
+reinterpretation candidates in stable supplied order. It explicitly permits an empty sequence,
+copies caller input, exposes a read-only list, retains each exact candidate instance, and rejects
+null input, null entries, and value-equal complete duplicates. Candidates may share any proper
+subset of observer, target, and trigger identifiers. The snapshot does not project, look up,
+select, rank, order, evaluate, apply, or consume candidates.
+
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateProjection.ForCharacter` is the pure
+per-character candidate projection. It returns a new snapshot containing every candidate whose
+observer identifier is value-equal to the supplied character identifier, retaining exact candidate
+and nested identifier instances in stable source order. It permits no matches and multiple matches
+with any target or trigger knowledge, omits unrelated observers, rejects null inputs, and does not
+mutate, evaluate, rank, reorder, or select among candidates.
+
+`Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateLookup.Find` is the pure exact
+candidate lookup. It matches the complete observer, target, and trigger-knowledge value and returns
+the exact retained candidate or `null`. It rejects partial matches and null inputs, leaves every
+input unchanged, and does not project, produce, rank, reorder, evaluate, apply, or consume
+candidates.
+
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
 rejects null inputs, retains both supplied identifier instances through get-only properties, and
