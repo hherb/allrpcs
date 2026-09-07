@@ -47,7 +47,8 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
-        WorldEventId expectedEventId = source.EventId;
+        WorldEvent expectedEvent = source.Event;
+        WorldEventId expectedEventId = expectedEvent.EventId;
         WorldEventLogSnapshot expectedEventLog = eventLogController.EventLog;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
         FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
@@ -67,7 +68,9 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
             return;
         }
 
-        if (!ReferenceEquals(source.EventId, expectedEventId)
+        if (!ReferenceEquals(source.Event, expectedEvent)
+            || !ReferenceEquals(expectedEvent.EventId, expectedEventId)
+            || !ReferenceEquals(expectedEvent.TimeEffect, WorldEventTimeEffect.NoAdvance)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)

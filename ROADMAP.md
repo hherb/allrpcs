@@ -87,13 +87,10 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 ## Phase 2 — Authoritative world and discovery
 
-- [x] Establish typed character, world, perception, inventory, controller, and discovery rules,
-  including focused search, passive noticing, and knowledge-triggered reinterpretation.
-- [x] Establish the append-only authoritative world-event identifier log and its first bounded
-  startup recording path.
-- [ ] Implement explicit meaningful-time events (time-effect vocabulary established), qualitative
-  world time, and deterministic schema-versioned save/load.
-- [ ] Add representative discovery cases, scenario validation, and filtered-view leakage tests.
+- [x] Establish authoritative world, discovery, and world-event foundations through deterministic
+  qualitative-time derivation.
+- [ ] Complete meaningful-time integration and deterministic schema-versioned save/load.
+- [ ] Add representative discoveries, scenario validation, and filtered-view leakage coverage.
 
 Acceptance:
 

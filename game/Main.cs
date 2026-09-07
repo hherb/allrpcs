@@ -106,7 +106,7 @@ public partial class Main : Node
 
     private void RecordInitialWorldEvent()
     {
-        if (!worldEventLogController.TryAppend(worldEventSource.EventId))
+        if (!worldEventLogController.TryAppend(worldEventSource.Event.EventId))
         {
             throw new InvalidOperationException(
                 "The initial greybox world event could not be recorded.");
