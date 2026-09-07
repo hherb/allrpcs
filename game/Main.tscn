@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3]
+[gd_scene load_steps=55 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -48,6 +48,7 @@
 [ext_resource type="Script" path="res://WorldTimeControllerSmokeCheck.cs" id="46_world_time_controller_check"]
 [ext_resource type="Script" path="res://WorldEventController.cs" id="47_world_event_controller"]
 [ext_resource type="Script" path="res://WorldEventControllerSmokeCheck.cs" id="48_world_event_controller_check"]
+[ext_resource type="Script" path="res://FocusedSearchWorldEventSmokeCheck.cs" id="49_search_world_event_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -416,6 +417,9 @@ script = ExtResource("46_world_time_controller_check")
 
 [node name="WorldEventControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("48_world_event_controller_check")
+
+[node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
+script = ExtResource("49_search_world_event_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")

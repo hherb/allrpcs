@@ -86,12 +86,12 @@ and fail-closed mismatched and null rejection without changing activity or prese
 world-object-controller launch proves exact lookup of both scene-authored objects, including through
 a value-equal distinct identifier, absent and uninitialized results, null rejection, stable exact
 snapshot retention, and unchanged source, targets, focused-search state, and presentation. The
-world-event source, controller, and startup-recording launches prove one independently authored,
-stable snapshot containing the canonical `greybox-ready`/`no-advance` event, exact one-time scene
-initialization and lookup, authoritative identifier recording, value-equal duplicate rejection, and
-unchanged world-time, world-object, perception, focused-search, movement, input, and presentation
-state. The world-time controller launch proves the explicit initial state, exact advancing-event
-retention, no-advance, repeat, and null rejection, and unchanged surrounding state.
+world-event source, controller, and startup-recording launches prove two independently authored,
+stable events in source order, exact `greybox-ready` startup selection and recording, and unchanged
+initial qualitative time and surrounding state. The focused-search world-event launch proves that
+identifying the herb patch atomically consumes its outcome, changes perception, records the exact
+`herb-patch-identified` event, and advances qualitative time; an ineligible event preserves both
+controllers. The world-time controller launch retains its focused boundary checks.
 The movement-boundary launch uses the existing Seeker body and authored collision shapes to prove
 all four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -896,13 +896,18 @@ then delegates occurrence eligibility and transition to the Domain contracts. A 
 occurrence installs the returned log and time snapshots together. Uninitialized, undefined,
 duplicate, repeated-current, and null cases preserve every controller snapshot or reject null.
 
-`Allrpcs.Game.TemporaryWorldEventSource` independently authors and retains one exact snapshot
-containing the canonical `greybox-ready` event with the `no-advance` effect. During `Main._Ready`,
-the `WorldEventController` retains that exact snapshot plus a new empty log and explicit initial
-time snapshot, resolves the initial identifier to its exact authoritative event, and applies it
-through atomic occurrence orchestration. Startup therefore records the exact authoritative ID while
-preserving the exact initial time snapshot. No advancing event is connected to ordinary play,
-disease, dialogue, replay, persistence, serialization, or presentation yet.
+`Allrpcs.Game.TemporaryWorldEventSource` independently authors one retained ordered snapshot. Its
+exact `greybox-ready`/`no-advance` event is the explicit startup selection; its exact
+`herb-patch-identified`/`advance` event is the first meaningful-time definition. `Main._Ready`
+initializes the world-event controller and records only the startup event, preserving the exact
+initial time snapshot.
+
+Ordinary herb-patch focused-search resolution preflights both the existing world-object-bound
+resolution policy and world-event occurrence policy. Success consumes the exact outcome, changes
+only the target perception, records the exact authored event identifier, and advances qualitative
+time. If either side is ineligible, both controller states remain unchanged. This temporary
+cross-controller boundary does not add generic event payloads, clocks, disease progression,
+persistence, serialization, or new presentation.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It

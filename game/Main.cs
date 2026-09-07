@@ -2,6 +2,7 @@ using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
@@ -121,7 +122,7 @@ public partial class Main : Node
 
     private void RecordInitialWorldEvent()
     {
-        WorldEventId sourceEventId = worldEventSource.WorldEvents.Entries.Single().EventId;
+        WorldEventId sourceEventId = worldEventSource.InitialWorldEvent.EventId;
         WorldEvent worldEvent = worldEventController.FindWorldEvent(sourceEventId)
             ?? throw new InvalidOperationException(
                 "The initial greybox world event is absent from authoritative world events.");
@@ -224,7 +225,7 @@ public partial class Main : Node
             bool changed = outcome is not null
                 && worldObjectController.FindWorldObject(outcome.Request.TargetObjectId)
                     is { } worldObject
-                && focusedSearchController.TryResolveOutcome(outcome, worldObject);
+                && TryResolveFocusedSearchOutcome(outcome, worldObject);
             if (changed)
             {
                 RefreshResolvedPerceptionPresentation();
@@ -283,6 +284,49 @@ public partial class Main : Node
         return focusedSearchController.Outcomes.Entries.FirstOrDefault(
             outcome => outcome.Request.SearcherCharacterId
                 == focusedSearchController.SearcherCharacterId);
+    }
+
+    private bool TryResolveFocusedSearchOutcome(
+        FocusedSearchOutcome outcome,
+        WorldObject worldObject)
+    {
+        ArgumentNullException.ThrowIfNull(outcome);
+        ArgumentNullException.ThrowIfNull(worldObject);
+
+        WorldObject herbPatch = worldObjectSource.WorldObjects.Entries[0];
+        if (!ReferenceEquals(worldObject, herbPatch)
+            || !ReferenceEquals(outcome.ResultingVisibilityState, VisibilityState.Identified))
+        {
+            return focusedSearchController.TryResolveOutcome(outcome, worldObject);
+        }
+
+        WorldEvent advancingEvent = worldEventSource.HerbPatchIdentifiedWorldEvent;
+        if (focusedSearchController.Perception is not { } perception
+            || worldEventController.WorldEvents is not { } worldEvents
+            || worldEventController.EventLog is not { } eventLog
+            || worldEventController.WorldTime is not { } worldTime
+            || !WorldObjectBoundFocusedSearchOutcomeResolutionPolicy.CanResolve(
+                outcome,
+                worldObject,
+                perception,
+                focusedSearchController.Outcomes)
+            || !WorldEventOccurrencePolicy.CanOccur(
+                advancingEvent.EventId,
+                worldEvents,
+                eventLog,
+                worldTime))
+        {
+            return false;
+        }
+
+        if (!focusedSearchController.TryResolveOutcome(outcome, worldObject)
+            || !worldEventController.TryOccur(advancingEvent.EventId))
+        {
+            throw new InvalidOperationException(
+                "Prevalidated focused-search world-event resolution failed to commit.");
+        }
+
+        return true;
     }
 
     private void PresentFocusedSearchResult(string action, bool changed)

@@ -13,6 +13,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
     private const string CheckEnvironmentVariable = "ALLRPCS_WORLD_EVENT_SOURCE_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const string GreyboxReadyEventIdText = "greybox-ready";
+    private const string HerbPatchIdentifiedEventIdText = "herb-patch-identified";
 
     private TemporaryWorldEventSource source = null!;
     private WorldEventController worldEventController = null!;
@@ -59,38 +60,38 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         string expectedFocusedSearchResult = focusedSearchResult.Text;
         WorldEventSnapshot firstSnapshot = source.WorldEvents;
         WorldEventSnapshot secondSnapshot = source.WorldEvents;
-        WorldEvent first = firstSnapshot.Entries.Single();
+        WorldEvent greyboxReady = firstSnapshot.Entries[0];
+        WorldEvent herbPatchIdentified = firstSnapshot.Entries[1];
 
         if (!HasExpectedPropertySurface()
             || !ReferenceEquals(firstSnapshot, secondSnapshot)
-            || firstSnapshot.Entries.Count != 1
+            || firstSnapshot.Entries.Count != 2
+            || !ReferenceEquals(source.InitialWorldEvent, greyboxReady)
+            || !ReferenceEquals(
+                source.HerbPatchIdentifiedWorldEvent,
+                herbPatchIdentified)
             || !string.Equals(
-                first.EventId.Value,
+                greyboxReady.EventId.Value,
                 GreyboxReadyEventIdText,
                 StringComparison.Ordinal)
-            || !ReferenceEquals(first.TimeEffect, WorldEventTimeEffect.NoAdvance))
-        {
-            Fail("Temporary world-event source failed canonical exact event retention.");
-            return;
-        }
-
-        WorldEvent independent = CreateEvent();
-        if (ReferenceEquals(independent, first)
-            || independent != first
+            || !ReferenceEquals(greyboxReady.TimeEffect, WorldEventTimeEffect.NoAdvance)
             || !string.Equals(
-                independent.EventId.Value,
-                GreyboxReadyEventIdText,
+                herbPatchIdentified.EventId.Value,
+                HerbPatchIdentifiedEventIdText,
                 StringComparison.Ordinal)
-            || !ReferenceEquals(independent.TimeEffect, WorldEventTimeEffect.NoAdvance))
+            || !ReferenceEquals(
+                herbPatchIdentified.TimeEffect,
+                WorldEventTimeEffect.Advance))
         {
-            Fail("Temporary world-event source failed independent construction.");
+            Fail("Temporary world-event source failed stable exact event retention.");
             return;
         }
 
         if (expectedEventLog is null
             || !ReferenceEquals(worldEventController.EventLog, expectedEventLog)
             || expectedEventLog.Entries.Count != 1
-            || !ReferenceEquals(expectedEventLog.Entries[0], first.EventId)
+            || !ReferenceEquals(expectedEventLog.Entries[0], greyboxReady.EventId)
+            || ReferenceEquals(expectedEventLog.Entries[0], herbPatchIdentified.EventId)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
@@ -109,24 +110,12 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
 
         GD.Print(
             "Temporary world-event source smoke passed: one stable exact snapshot containing the "
-            + "canonical greybox-ready no-advance event, minimal surface, independent construction, "
-            + "exact ordinary startup recording, and unchanged event-log, "
+            + "canonical greybox-ready/no-advance and herb-patch-identified/advance events in "
+            + "source order, an exact initial-event reference, exact ordinary startup recording, "
+            + "and unchanged event-log, "
             + "world-object, perception, focused-search, movement, input, and presentation state "
             + "were correct.");
         GetTree().Quit();
-    }
-
-    private static WorldEvent CreateEvent()
-    {
-        System.Reflection.MethodInfo method = typeof(TemporaryWorldEventSource).GetMethod(
-            "CreateEvent",
-            System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
-            ?? throw new InvalidOperationException(
-                "Temporary world-event source factory was not found.");
-
-        return (WorldEvent)(method.Invoke(null, null)
-            ?? throw new InvalidOperationException(
-                "Temporary world-event source returned no event."));
     }
 
     private static bool HasExpectedPropertySurface()
@@ -135,15 +124,28 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
             .GetProperties(
                 System.Reflection.BindingFlags.Public
                     | System.Reflection.BindingFlags.Instance
-                    | System.Reflection.BindingFlags.DeclaredOnly);
+                    | System.Reflection.BindingFlags.DeclaredOnly)
+            .OrderBy(property => property.Name, StringComparer.Ordinal)
+            .ToArray();
 
-        return properties.Length == 1
-            && string.Equals(properties[0].Name, "WorldEvents", StringComparison.Ordinal)
-            && properties[0].PropertyType == typeof(WorldEventSnapshot)
-            && properties[0].CanRead
-            && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate;
+        return properties.Length == 3
+            && IsPrivateSetProperty(
+                properties[0],
+                "HerbPatchIdentifiedWorldEvent",
+                typeof(WorldEvent))
+            && IsPrivateSetProperty(properties[1], "InitialWorldEvent", typeof(WorldEvent))
+            && IsPrivateSetProperty(properties[2], "WorldEvents", typeof(WorldEventSnapshot));
     }
+
+    private static bool IsPrivateSetProperty(
+        System.Reflection.PropertyInfo property,
+        string name,
+        Type propertyType) =>
+        property.Name == name
+        && property.PropertyType == propertyType
+        && property.CanRead
+        && property.SetMethod is not null
+        && property.SetMethod.IsPrivate;
 
     private void Fail(string message)
     {

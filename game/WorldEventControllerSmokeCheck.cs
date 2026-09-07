@@ -52,7 +52,8 @@ public partial class WorldEventControllerSmokeCheck : Node
         SetProcess(false);
 
         WorldEventSnapshot sourceSnapshot = source.WorldEvents;
-        WorldEvent sourceEvent = sourceSnapshot.Entries.Single();
+        WorldEvent sourceEvent = source.InitialWorldEvent;
+        WorldEvent untriggeredAdvancingEvent = sourceSnapshot.Entries[1];
         WorldEventLogSnapshot expectedStandaloneEventLog = eventLogController.EventLog;
         WorldTimeSnapshot expectedStandaloneWorldTime = worldTimeController.WorldTime;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
@@ -72,6 +73,7 @@ public partial class WorldEventControllerSmokeCheck : Node
             || startupTime is null
             || startupLog.Entries.Count != 1
             || !ReferenceEquals(startupLog.Entries[0], sourceEvent.EventId)
+            || ReferenceEquals(startupLog.Entries[0], untriggeredAdvancingEvent.EventId)
             || startupTime.CurrentEventId is not null
             || !ReferenceEquals(controller.FindWorldEvent(sourceEvent.EventId), sourceEvent)
             || controller.TryOccur(new WorldEventId(sourceEvent.EventId.Value))
@@ -90,7 +92,12 @@ public partial class WorldEventControllerSmokeCheck : Node
         }
 
         if (!ReferenceEquals(source.WorldEvents, sourceSnapshot)
-            || !ReferenceEquals(sourceSnapshot.Entries.Single(), sourceEvent)
+            || sourceSnapshot.Entries.Count != 2
+            || !ReferenceEquals(sourceSnapshot.Entries[0], sourceEvent)
+            || !ReferenceEquals(source.InitialWorldEvent, sourceEvent)
+            || !ReferenceEquals(
+                untriggeredAdvancingEvent.TimeEffect,
+                WorldEventTimeEffect.Advance)
             || !ReferenceEquals(controller.WorldEvents, initializedEvents)
             || !ReferenceEquals(controller.EventLog, startupLog)
             || !ReferenceEquals(controller.WorldTime, startupTime)
