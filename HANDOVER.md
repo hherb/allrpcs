@@ -2,39 +2,32 @@
 
 ## Current state
 
-PR #133 merged Phases 2o19–2o28 into `main` at `ff66464`. The branch
-`codex/phase-2o29-plus-world-events` implements Phase 2o29.
+PR #134 merged Phase 2o29 into `main` at `d71f135`. The branch
+`codex/phase-2o30-plus-world-events` implements Phases 2o30–2o31.
 
-`WorldEventController` is now the scene's single ordinary world-event authority. It initializes
-once from exact authoritative-event, identifier-log, and qualitative-time snapshots, then delegates
-occurrences to the pure Domain policy and transition. Successful occurrences install both returned
-snapshots together. Startup routes `greybox-ready` through this path, retaining its exact
-authoritative ID and the exact initial time snapshot because the event is `no-advance`.
+The temporary source retains `greybox-ready`/`no-advance` first and
+`herb-patch-identified`/`advance` second, with exact references for startup and herb identification.
+Startup still records only `greybox-ready`. Eligible herb-patch focused-search resolution preflights
+both controllers, then consumes the outcome, changes perception, records the exact authored event,
+and advances qualitative time. Ineligible event occurrence preserves both controller states.
 
 After code review, `./scripts/quality.sh` passed workflow and formatting validation, a zero-warning
-build, 1,020 Domain tests, 107 Application tests, six architecture tests, all 26 opt-in Godot
-smokes, and the bounded graphical launch. The first full run exposed two obsolete fixture
-assumptions about the old startup log; those smokes now correctly distinguish the aggregate runtime
-controller from the unchanged standalone log/time fixtures, and the complete rerun passed.
+build, 1,020 Domain tests, 107 Application tests, six architecture tests, all 27 opt-in Godot
+smokes, and the bounded graphical launch.
 
 ## Exact next bounded slice
 
-Take **Phase 2o30: first authored advancing greybox event definition**.
+Take **Phase 2o32: ordinary input-path proof for the first meaningful-time event**.
 
 Acceptance boundary:
 
-1. Extend `TemporaryWorldEventSource` with exactly one stable `herb-patch-identified` event whose
-   time effect is `advance`, preserving `greybox-ready` first and exposing an unambiguous exact
-   startup-event reference instead of relying on a single-entry snapshot.
-2. Update startup to select only that exact `greybox-ready` reference. Prove stable source order,
-   exact identifiers/effects, and unchanged startup log/time/world/discovery/presentation state.
-3. Do not trigger the new advancing event in ordinary play yet; cross-controller focused-search
-   integration is a later atomicity slice.
-4. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review intended paths, and prune
-   this file again.
+1. Drive the existing start, complete, and resolve input actions against the authored herb patch in
+   one opt-in Godot smoke; do not add another production path.
+2. Prove no event occurs before successful resolution, then prove exact outcome consumption,
+   perception identification, event recording, time advancement, and existing presentation.
+3. Prove a repeated or ineligible sequence preserves focused-search and world-event state.
+4. Update evidence, run `./scripts/quality.sh`, review intended paths, and prune this file again.
 
-Explicit exclusions: no generic repeatable event types, payloads, actors, targets, clocks,
-durations, disease effects, replay, persistence, serialization, migration,
-Application/provider/credential/UI integration, point-and-click movement, disease-time pausing, or
-debug overlay. Do not merge, release, distribute, sign, notarize, or change repository visibility
-without explicit authorization.
+Explicit exclusions: no new event definitions, generic event mappings, payloads, clocks, disease
+effects, save/load, replay, providers, credentials, or UI. Do not merge, release, distribute, sign,
+notarize, or change repository visibility without explicit authorization.

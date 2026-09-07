@@ -52,8 +52,9 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         SetProcess(false);
 
         WorldEventSnapshot expectedWorldEvents = source.WorldEvents;
-        WorldEvent expectedEvent = expectedWorldEvents.Entries.Single();
+        WorldEvent expectedEvent = source.InitialWorldEvent;
         WorldEventId expectedEventId = expectedEvent.EventId;
+        WorldEvent untriggeredAdvancingEvent = expectedWorldEvents.Entries[1];
         WorldEventSnapshot? expectedControllerEvents = worldEventController.WorldEvents;
         WorldEventLogSnapshot? expectedEventLog = worldEventController.EventLog;
         WorldTimeSnapshot? expectedWorldTime = worldEventController.WorldTime;
@@ -74,6 +75,7 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
             || expectedWorldTime is null
             || expectedEventLog.Entries.Count != 1
             || !ReferenceEquals(expectedEventLog.Entries[0], expectedEventId)
+            || ReferenceEquals(expectedEventLog.Entries[0], untriggeredAdvancingEvent.EventId)
             || expectedWorldTime.CurrentEventId is not null
             || worldEventController.TryOccur(new WorldEventId(expectedEventId.Value))
             || !ReferenceEquals(worldEventController.EventLog, expectedEventLog)
@@ -84,12 +86,17 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         }
 
         if (!ReferenceEquals(source.WorldEvents, expectedWorldEvents)
-            || !ReferenceEquals(expectedWorldEvents.Entries.Single(), expectedEvent)
+            || expectedWorldEvents.Entries.Count != 2
+            || !ReferenceEquals(expectedWorldEvents.Entries[0], expectedEvent)
+            || !ReferenceEquals(source.InitialWorldEvent, expectedEvent)
             || !ReferenceEquals(worldEventController.WorldEvents, expectedControllerEvents)
             || !ReferenceEquals(eventLogController.EventLog, expectedStandaloneEventLog)
             || !ReferenceEquals(worldTimeController.WorldTime, expectedStandaloneWorldTime)
             || !ReferenceEquals(expectedEvent.EventId, expectedEventId)
             || !ReferenceEquals(expectedEvent.TimeEffect, WorldEventTimeEffect.NoAdvance)
+            || !ReferenceEquals(
+                untriggeredAdvancingEvent.TimeEffect,
+                WorldEventTimeEffect.Advance)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
@@ -109,7 +116,7 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         GD.Print(
             "Initial world-event recording smoke passed: the source identifier resolved to the "
             + "exact authoritative event and was recorded once during startup, a value-equal "
-            + "duplicate was rejected, and source, "
+            + "duplicate was rejected, the authored advancing event remained untriggered, and source, "
             + "world-object, perception, focused-search, movement, input, and presentation state "
             + "were unchanged.");
         GetTree().Quit();

@@ -89,8 +89,10 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 - [x] Establish deterministic authoritative world, discovery, event, and qualitative-time rules.
 - [x] Orchestrate atomic world-event occurrence in the scene.
-- [ ] Integrate meaningful time, versioned save/load, representative discoveries, scenario
-  validation, and filtered-view leakage tests; prove saves preserve state and hidden facts stay hidden.
+- [x] Advance qualitative time when herb-patch identification resolves.
+- [ ] Add versioned save/load and prove exact state restoration.
+- [ ] Add representative discoveries and scenario validation.
+- [ ] Prove filtered views do not leak hidden facts.
 
 ## Phase 3 — Natural-language dialogue with a deterministic character
 

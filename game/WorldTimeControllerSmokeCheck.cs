@@ -51,7 +51,7 @@ public partial class WorldTimeControllerSmokeCheck : Node
         CharacterPerceptionSnapshot? expectedPerception = focusedSearchController.Perception;
 
         if (initialTime.CurrentEventId is not null
-            || controller.TryAdvance(source.WorldEvents.Entries.Single())
+            || controller.TryAdvance(source.InitialWorldEvent)
             || !ReferenceEquals(controller.WorldTime, initialTime)
             || !HasExpectedControllerSurface())
         {
@@ -87,7 +87,7 @@ public partial class WorldTimeControllerSmokeCheck : Node
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
             || !ReferenceEquals(focusedSearchController.Perception, expectedPerception)
             || !ReferenceEquals(
-                source.WorldEvents.Entries.Single().TimeEffect,
+                source.InitialWorldEvent.TimeEffect,
                 WorldEventTimeEffect.NoAdvance))
         {
             Fail("World-time controller changed event-log, source, world, or discovery state.");
