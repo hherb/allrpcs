@@ -2,44 +2,45 @@
 
 ## Current state
 
-PR #129 merged Phase 2n20–2n25 into `main` at `c6f507b`. The continuation branch
-`codex/phase-2o1-plus-world-events` implements Phases 2o1–2o5.
+PR #130 merged Phases 2o1–2o5 into `main` at `54f8e69`. The continuation branch
+`codex/phase-2o6-plus-world-events` implements Phases 2o6–2o8.
 
-The Domain now owns an immutable ordered log of unique existing `WorldEventId` instances, exact
-value-equal lookup, duplicate-free append eligibility, and pure append. Successful append returns a
-new snapshot with the exact supplied identifier after every exact retained entry; rejection changes
-nothing. A dedicated Godot controller owns an initially empty snapshot and delegates append without
-changing world objects, perception, focused-search state, or other runtime behavior. Event payloads,
-time, persistence, replay, and ordinary-play production remain absent.
+The scene now has one independent `TemporaryWorldEventSource` retaining the canonical
+`greybox-ready` `WorldEventId`. During `Main._Ready`, the exact source identifier is appended once
+through `WorldEventLogController`; inability to record it fails explicitly. The source exposes no
+controller access, and startup recording changes no world-object, perception, focused-search,
+movement, input, or presentation state. Event payloads and time behavior remain absent.
 
-All five slices were test-first. After code review, host-shell `./scripts/quality.sh` passed workflow
-and formatting validation, a zero-warning build, 949 Domain tests, 107 Application tests, six
-architecture tests, all 22 opt-in Godot smokes, and the bounded graphical launch.
+The Domain also defines the closed `WorldEventTimeEffect` vocabulary as exact `no-advance` and
+`advance` singleton values with stable ordering and strict canonical parsing. No event has an
+assigned effect yet, and no progression behavior exists.
+
+All three slices were test-first through focused Domain tests and dedicated opt-in Godot smokes.
+After code review,
+`./scripts/quality.sh` passed workflow and formatting validation, a zero-warning build, 960 Domain
+tests, 107 Application tests, six architecture tests, all 24 opt-in Godot smokes, and the bounded
+graphical launch.
 
 ## Exact next bounded slice
 
-Take **Phase 2o6: temporary authoritative world-event identifier source**.
+Take **Phase 2o9: immutable authoritative world event**.
 
 Acceptance boundary:
 
-1. Add one `Allrpcs.Game.TemporaryWorldEventSource` node that creates and retains one stable
-   existing `WorldEventId` for a single explicitly named greybox event.
-2. Expose only that identifier through a get-only property; repeated access must return the same
-   exact instance. Keep construction independent from the log controller.
-3. Add one credential-free opt-in Godot smoke for exact stable retention, canonical authored text,
-   minimal public surface, independent construction, and unchanged event log, world-object,
-   perception, focused-search, movement, input, and presentation state.
-4. Update README and ROADMAP evidence, keep production and startup append incomplete, run
-   `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
-   plus one next slice.
+1. Add one sealed, engine-independent Domain value that retains one existing `WorldEventId` and one
+   existing `WorldEventTimeEffect` through get-only properties.
+2. Reject null inputs, retain both exact supplied instances, use their existing value semantics,
+   and expose no other public state or behavior. Add focused tests first.
+3. Update README and ROADMAP evidence, keep logging and progression integration incomplete, run
+   `./scripts/quality.sh`, review every intended path, and prune this file again.
 
 Explicit exclusions:
 
-- Do not append the source identifier to the controller, connect `Main._Ready`, or define event
-  payloads, kinds, actors, targets, timestamps, world time, ordering policy, replay, persistence,
+- Do not change the identifier-only log or define payloads, actors, targets, timestamps, durations,
+  clock units, phase names, progression thresholds, disease effects, replay, persistence,
   serialization, or migration.
-- Do not connect events to discovery, movement, dialogue, characters, world objects, Application,
-  providers, credentials, or UI.
+- Do not connect time behavior to Godot, Application, movement, dialogue, discovery, characters,
+  world objects, providers, credentials, or UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
   explicit user authorization.

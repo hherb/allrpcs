@@ -39,26 +39,27 @@ public partial class WorldEventLogControllerSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
-        WorldEventLogSnapshot emptyLog = controller.EventLog;
+        WorldEventLogSnapshot initialLog = controller.EventLog;
         FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = focusedSearchController.Outcomes;
         CharacterPerceptionSnapshot? expectedPerception = focusedSearchController.Perception;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
-        WorldEventId first = new("greybox-ready");
+        WorldEventId first = new("healer-ready");
 
-        if (emptyLog.Entries.Count != 0
+        if (initialLog.Entries.Count != 1
             || !controller.TryAppend(first)
             || !HasExpectedControllerSurface())
         {
-            Fail("World-event log controller failed empty ownership or initial append.");
+            Fail("World-event log controller failed initialized ownership or append.");
             return;
         }
 
         WorldEventLogSnapshot appendedLog = controller.EventLog;
-        WorldEventId duplicate = new("greybox-ready");
-        if (ReferenceEquals(emptyLog, appendedLog)
-            || appendedLog.Entries.Count != 1
-            || !ReferenceEquals(appendedLog.Entries[0], first)
+        WorldEventId duplicate = new("healer-ready");
+        if (ReferenceEquals(initialLog, appendedLog)
+            || appendedLog.Entries.Count != 2
+            || !ReferenceEquals(appendedLog.Entries[0], initialLog.Entries[0])
+            || !ReferenceEquals(appendedLog.Entries[1], first)
             || controller.TryAppend(duplicate)
             || !ReferenceEquals(controller.EventLog, appendedLog))
         {
@@ -78,8 +79,9 @@ public partial class WorldEventLogControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "World-event log controller smoke passed: empty ownership, exact append, value-equal "
-            + "duplicate and null rejection, minimal surface, and unchanged unrelated state were correct.");
+            "World-event log controller smoke passed: initialized ownership, exact append, "
+            + "value-equal duplicate and null rejection, minimal surface, and unchanged unrelated "
+            + "state were correct.");
         GetTree().Quit();
     }
 
