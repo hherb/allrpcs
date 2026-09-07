@@ -32,6 +32,13 @@ public partial class FocusedSearchActivityController : Node
     public PassiveNoticingCandidateSnapshot PassiveNoticingCandidates { get; private set; } =
         new([]);
 
+    /// <summary>Gets the current immutable observation-reinterpretation candidate snapshot.</summary>
+    public ObservationReinterpretationCandidateSnapshot ObservationReinterpretationCandidates
+    {
+        get;
+        private set;
+    } = new([]);
+
     /// <summary>Gets the Seeker's initialized immutable perception snapshot, if any.</summary>
     public CharacterPerceptionSnapshot? Perception { get; private set; }
 
@@ -44,8 +51,70 @@ public partial class FocusedSearchActivityController : Node
         Activities = new FocusedSearchActivitySnapshot([]);
         Outcomes = new FocusedSearchOutcomeSnapshot([]);
         PassiveNoticingCandidates = new PassiveNoticingCandidateSnapshot([]);
+        ObservationReinterpretationCandidates =
+            new ObservationReinterpretationCandidateSnapshot([]);
         Perception = null;
         indicator.Present(SearcherCharacterId, Activities);
+    }
+
+    /// <summary>
+    /// Produces one observation-reinterpretation candidate for this controller's Seeker when its
+    /// character and world object already exist.
+    /// </summary>
+    public bool TryProduceObservationReinterpretationCandidate(
+        ObservationReinterpretationCandidate candidate,
+        Character character,
+        WorldObject worldObject)
+    {
+        ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(character);
+        ArgumentNullException.ThrowIfNull(worldObject);
+
+        if (candidate.ObserverCharacterId != SearcherCharacterId
+            || !ObservationReinterpretationCandidateProductionPolicy.CanProduce(
+                candidate,
+                character,
+                worldObject,
+                ObservationReinterpretationCandidates))
+        {
+            return false;
+        }
+
+        ObservationReinterpretationCandidates =
+            ObservationReinterpretationCandidateProductionTransition.Produce(
+                candidate,
+                character,
+                worldObject,
+                ObservationReinterpretationCandidates);
+        return true;
+    }
+
+    /// <summary>
+    /// Resolves the exact first eligible retained observation-reinterpretation candidate for this
+    /// controller's Seeker against its owned perception and the supplied complete character.
+    /// </summary>
+    public bool TryResolveNextObservationReinterpretationCandidate(Character character)
+    {
+        ArgumentNullException.ThrowIfNull(character);
+
+        if (character.Identity.Id != SearcherCharacterId
+            || Perception is null
+            || ObservationReinterpretationCandidateResolutionSelection.SelectNext(
+                character,
+                Perception,
+                ObservationReinterpretationCandidates) is null)
+        {
+            return false;
+        }
+
+        ObservationReinterpretationCandidateResolutionResult result =
+            ObservationReinterpretationCandidateResolutionSequence.ResolveNext(
+                character,
+                Perception,
+                ObservationReinterpretationCandidates);
+        Perception = result.Perception;
+        ObservationReinterpretationCandidates = result.Candidates;
+        return true;
     }
 
     /// <summary>

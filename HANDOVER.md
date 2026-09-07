@@ -2,48 +2,49 @@
 
 ## Current state
 
-PR #127 merged Phase 2n5–2n8 into `main` at `eb547c1`. The continuation branch
-`codex/phase-2n9-plus-observation-reinterpretation` implements Phases 2n9–2n19 in implementation
-commit `94d8602`; draft PR #128 tracks the branch.
+PR #128 merged Phases 2n9–2n19 into `main` at `381152b`. The continuation branch
+`codex/phase-2n20-plus-observation-reinterpretation` implements Phases 2n20–2n25 in commit
+`ebc1db4`; draft PR #129 tracks the branch.
 
-The Domain path now supports complete-candidate consumption, atomic trigger-aware
-`Noticed`-to-`Identified` resolution, duplicate-free recording, production bound to an existing
-character and world object, stable first-eligible selection, and deterministic resolve-next
-sequencing. All operations are pure, accept value-equal identifiers where appropriate, preserve
-stable order and exact unrelated instances, and fail closed for mismatches or missing state.
+The existing Godot controller now owns an initially empty observation-reinterpretation candidate
+snapshot and delegates exact authoritative production plus stable atomic resolve-next behavior to
+the completed Domain chain. The temporary Seeker retains one exact trigger-knowledge reference; a
+separate source retains one candidate for the second authoritative world object. During
+`Main._Ready`, the scene resolves that object through live authority, produces the exact candidate,
+then resolves it once. Only the stone marker changes from `Noticed` to `Identified`, the candidate is
+consumed, and the existing indicator presents its authored description. Passive noticing,
+focused-search state, movement, input, and all source snapshots remain unchanged.
 
-Each Phase 2n9–2n19 test suite first failed because its production type did not exist. After the
-minimal implementations and code review, host-shell `./scripts/quality.sh` passed workflow and
-formatting validation, a zero-warning build, 928 Domain tests, 107 Application tests, six
-architecture tests, all eighteen Godot smokes, and the bounded graphical launch. Controller
-ownership, temporary sources, and runtime wiring remain incomplete.
+Phases 2n20–2n25 were test-first through three new opt-in Godot smokes plus focused extensions to
+the character, world-object, and interaction-focus evidence. After code review, host-shell
+`./scripts/quality.sh` passed formatting and workflow validation, a zero-warning build, 928 Domain
+tests, 107 Application tests, six architecture tests, all 21 Godot smokes, and the bounded graphical
+launch. Knowledge-triggered reinterpretation is complete.
 
 ## Exact next bounded slice
 
-Take **Phase 2n20: controller ownership and authoritative candidate production**.
+Take **Phase 2o1: immutable authoritative world-event log snapshot**.
 
 Acceptance boundary:
 
-1. Extend `Allrpcs.Game.FocusedSearchActivityController` with one owned
-   `ObservationReinterpretationCandidateSnapshot`, initialized empty in `_Ready`, and one
-   `TryProduceObservationReinterpretationCandidate(candidate, character, worldObject)` operation.
-2. Require the candidate observer to identify this controller's Seeker, then delegate all remaining
-   authority and duplicate checks to the existing Domain production policy and transition.
-3. On success install the exact returned snapshot. On rejection preserve reinterpretation,
-   perception, focused-search activity/outcome, passive-noticing, and presentation state.
-4. Add one credential-free opt-in Godot smoke covering empty ownership, exact and distinct
-   value-equal success, observer/character/object mismatch, complete duplicate rejection, exact
-   candidate retention, null rejection, and unchanged unrelated state.
-5. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and
-   prune this file again to current evidence plus one next slice.
+1. Add one sealed immutable `Allrpcs.Domain.WorldEvents.WorldEventLogSnapshot` containing existing
+   `WorldEventId` entries in stable supplied order.
+2. Permit an explicitly empty sequence; copy caller input; expose only a read-only list; retain
+   every exact supplied identifier instance; and reject null input, null entries, and value-equal
+   duplicate event identifiers.
+3. Add focused tests first for empty/populated construction, stable order, exact nested-instance
+   retention, source-copy isolation, duplicate/null rejection, unchanged inputs, immutability, and
+   the minimal public API surface.
+4. Update README and ROADMAP evidence, keep event creation/append authority incomplete, run
+   `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
+   plus one next slice.
 
 Explicit exclusions:
 
-- Do not resolve, select, consume, or apply reinterpretation candidates.
-- Do not add a temporary candidate or knowledge source, scene startup wiring, events, persistence,
-  serialization, providers, plugins, credentials, or UI.
-- Do not change passive noticing, focused search, world-object or character ownership, movement,
-  input, or presentation.
+- Do not define event payloads, kinds, actors, targets, timestamps, world time, ordering policy,
+  append/record transitions, event production, replay, persistence, serialization, or migration.
+- Do not connect events to focused search, passive noticing, reinterpretation, movement, dialogue,
+  characters, world objects, Godot, Application, providers, credentials, or UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
   explicit user authorization.

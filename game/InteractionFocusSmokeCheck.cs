@@ -1323,7 +1323,9 @@ public partial class InteractionFocusSmokeCheck : Node
             initialPerception.CharacterId,
             [new WorldObjectVisibility(targetObjectId, VisibilityState.Identified)]);
 
-        if (!AssertResolvedPerceptionIndicators(0, "initial noticed presentation"))
+        if (!AssertResolvedPerceptionIndicatorStates(
+                [false, true],
+                "initial observation-reinterpretation presentation"))
         {
             return false;
         }
@@ -1436,8 +1438,52 @@ public partial class InteractionFocusSmokeCheck : Node
             return false;
         }
 
-        indicator.Present(targetWorldObject, initialPerception);
+        CharacterPerceptionSnapshot noticedBaseline = new(
+            initialPerception.CharacterId,
+            initialPerception.Entries.Select(
+                entry => new WorldObjectVisibility(
+                    entry.ObjectId,
+                    VisibilityState.Noticed)));
+        SetFocusedSearchControllerPerception(noticedBaseline);
+        RefreshResolvedPerceptionPresentation();
         return AssertResolvedPerceptionIndicators(0, "presentation-contract restoration");
+    }
+
+    private bool AssertResolvedPerceptionIndicatorStates(
+        IReadOnlyList<bool> expectedVisibility,
+        string scenario)
+    {
+        if (expectedVisibility.Count != resolvedPerceptionIndicators.Length)
+        {
+            throw new InvalidOperationException(
+                "Resolved-perception visibility expectations must cover every indicator.");
+        }
+
+        for (int index = 0; index < resolvedPerceptionIndicators.Length; index++)
+        {
+            bool expectedVisible = expectedVisibility[index];
+            string expectedDescription = expectedVisible
+                ? worldObjectController.FindWorldObject(sourceObjectIds[index])?.Description.Text
+                    ?? throw new InvalidOperationException(
+                        "Identified presentation requires an existing world object.")
+                : string.Empty;
+            string actualDescription = GetResolvedPerceptionIndicatorText(index);
+            if (resolvedPerceptionIndicators[index].IsIndicatorVisible != expectedVisible
+                || !string.Equals(
+                    actualDescription,
+                    expectedDescription,
+                    StringComparison.Ordinal))
+            {
+                Fail(
+                    $"Interaction-focus smoke failed {scenario}: target {index} identified "
+                    + $"presentation was "
+                    + $"{resolvedPerceptionIndicators[index].IsIndicatorVisible} with text "
+                    + $"'{actualDescription}'.");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private bool AssertResolvedPerceptionIndicators(
@@ -1473,6 +1519,15 @@ public partial class InteractionFocusSmokeCheck : Node
 
     private string GetResolvedPerceptionIndicatorText(int index) =>
         resolvedPerceptionIndicators[index].GetNode<Label>("Indicator").Text;
+
+    private void SetFocusedSearchControllerPerception(CharacterPerceptionSnapshot perception)
+    {
+        System.Reflection.PropertyInfo property = typeof(FocusedSearchActivityController)
+            .GetProperty(nameof(FocusedSearchActivityController.Perception))
+            ?? throw new InvalidOperationException(
+                "The focused-search controller perception property was not found.");
+        property.SetValue(focusedSearchController, perception);
+    }
 
     private bool AssertResolvedDescriptionClears(
         TemporaryResolvedPerceptionIndicator indicator,

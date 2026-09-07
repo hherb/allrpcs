@@ -15,6 +15,7 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
     private const string CheckEnvironmentVariable = "ALLRPCS_SEEKER_CHARACTER_SOURCE_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const string SeekerDisplayName = "SEEKER";
+    private const string TriggerKnowledgeIdText = "stone-marker-meaning";
 
     private TemporarySeekerCharacterSource source = null!;
     private FocusedSearchActivityController controller = null!;
@@ -89,7 +90,11 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
             || first.Limitations.Entries.Count != 0
             || first.Conditions.Entries.Count != 0
             || first.Inventory.ObjectReferences.Count != 0
-            || first.Knowledge.KnowledgeReferences.Count != 0
+            || first.Knowledge.KnowledgeReferences.Count != 1
+            || !string.Equals(
+                first.Knowledge.KnowledgeReferences[0].Value,
+                TriggerKnowledgeIdText,
+                StringComparison.Ordinal)
             || first.Beliefs.Entries.Count != 0
             || first.Relationships.Entries.Count != 0
             || first.Goals.Entries.Count != 0)
@@ -108,7 +113,12 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
             || ReferenceEquals(independent.Identity.Id, controller.SearcherCharacterId)
             || !ReferenceEquals(
                 independent.ControllerAssignment.ControllerType,
-                ControllerType.Human))
+                ControllerType.Human)
+            || independent.Knowledge.KnowledgeReferences.Count != 1
+            || !string.Equals(
+                independent.Knowledge.KnowledgeReferences[0].Value,
+                TriggerKnowledgeIdText,
+                StringComparison.Ordinal))
         {
             Fail("Temporary Seeker character source failed independent identifier retention.");
             return;
@@ -136,7 +146,8 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
         GD.Print(
             "Temporary Seeker character source smoke passed: one stable complete character; "
             + "exact controller-owned identifier retention in identity and human assignment; "
-            + "minimal empty authored components; independent construction; and unchanged "
+            + "one explicit trigger-knowledge reference; otherwise minimal authored components; "
+            + "independent construction; and unchanged "
             + "focused-search, perception, movement, and presentation state were correct.");
         GetTree().Quit();
     }

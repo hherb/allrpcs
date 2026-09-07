@@ -73,7 +73,13 @@ state, then isolates exact one-time source initialization, wrong-character, repe
 rejection while preserving activity, outcome, and presentation state. The passive candidate-source
 launch proves exact ordinary production and atomic resolution consume the one retained candidate,
 change only its live perception target to `Noticed`, and leave source perception, focused-search,
-and presentation state unchanged. The outcome-resolution-controller launch
+and presentation state unchanged. The observation-reinterpretation controller launches prove empty
+ownership, authoritative exact/value-equal production, stable first-eligible trigger-aware
+resolution, target-only identification, complete-candidate consumption, fail-closed mismatches and
+nulls, and unchanged passive-noticing, focused-search, and presentation state. Its source launch
+proves exact character, second-world-object, and trigger-knowledge identifier retention plus the
+ordinary one-time production/resolution path and source-state preservation. The
+outcome-resolution-controller launch
 proves value-equal recorded-outcome and matching value-equal world-object resolution, target-only
 perception replacement, consumption, stable unrelated-entry order and instances, unchanged inputs,
 and fail-closed mismatched and null rejection without changing activity or presentation. The
@@ -837,8 +843,7 @@ resolution performs that check. Eligible production appends the exact candidate 
 per-character resolution. Selection returns the exact first retained candidate that the supplied
 complete character can resolve against its perception, skipping other observers, unmet triggers,
 missing targets, and non-`Noticed` targets. Sequencing delegates that selection and the atomic
-transition, changing and consuming only the selected candidate; controller ownership, temporary
-sources, and runtime wiring remain deferred.
+transition, changing and consuming only the selected candidate.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
@@ -952,9 +957,9 @@ authored cyan in-world ring. The ring is hidden by default, and ordinary play do
 inject activity outside the explicit temporary lifecycle inputs described below.
 
 `Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
-immutable focused-search activity, outcome, passive-noticing candidate, and optional perception
-snapshots. It initializes the activity, outcome, and passive-noticing candidate snapshots empty
-from the Seeker's one authored stable character identifier.
+immutable focused-search activity, outcome, passive-noticing candidate,
+observation-reinterpretation candidate, and optional perception snapshots. It initializes all
+candidate and lifecycle snapshots empty from the Seeker's one authored stable character identifier.
 Its separate one-time perception initialization accepts only an existing snapshot for that
 value-equal Seeker identifier and retains the exact supplied snapshot instance. Null,
 wrong-character, and repeated initialization are rejected without changing any owned snapshot or
@@ -988,6 +993,16 @@ and world object, then invokes resolve-next once. Either impossible step fails e
 consumes the candidate and replaces only its `Unnoticed` live perception entry with `Noticed`.
 This one-time sequence does not poll, inspect coordinates, distance, line of sight, focus, or input,
 and it does not add passive-noticing presentation.
+
+Its observation-reinterpretation production boundary likewise requires the candidate observer to
+identify this controller's Seeker, then delegates authoritative character/world-object matching and
+duplicate-free exact append behavior to the Domain production boundary. Resolve-next requires a
+matching complete Seeker character and initialized perception, then delegates stable selection and
+atomic `Noticed`-to-`Identified` application plus complete-candidate consumption. Rejections preserve
+every owned snapshot and presentation. During `Main._Ready`, the scene produces the exact temporary
+candidate through live character and world-object authority, resolves it once against the
+character's exact trigger knowledge, and refreshes the existing resolved-perception indicators.
+There is no polling, proximity, timing, focus, input, knowledge grant, or new UI authority.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -1037,8 +1052,9 @@ value-equal to its marker's independently parsed `ObjectIdText` reference. The s
 and retains one distinct non-empty `WorldObjectDescription` for each object: the herb patch has
 `A cluster of narrow leaves gives off a sharp scent.`, while the stone marker has
 `Weathered carvings mark one face of the standing stone.`. These descriptions are not focused-search
-inputs and are not copied into marker labels, focus status, the temporary `IDENTIFIED` indicators,
-or focused-search result presentation. The source does not read, mutate, or replace greybox targets;
+inputs and are not copied into marker labels, focus status, or focused-search result presentation.
+The existing resolved-perception indicator receives a description only when the controller's
+matching perception entry is `Identified`. The source does not read, mutate, or replace greybox targets;
 become authoritative; inspect visibility or focus; filter or rank objects; call controllers; grant
 discovery; or change presentation or ordinary-play behavior.
 
@@ -1083,9 +1099,10 @@ boundary before the one-time passive-noticing sequence replaces only the control
 Seeker `Character` after the existing Seeker controller is ready. Its `CharacterIdentity` and human
 `CharacterControllerAssignment` both retain the controller's exact parsed `CharacterId` instance.
 The remaining required aggregate components are explicitly temporary empty authored backgrounds,
-capabilities, limitations, conditions, inventory, knowledge, beliefs, relationships, and goals;
-they are not passive-noticing inputs or rules. The source exposes only its one retained character
-and does not change focused-search, perception, movement, input, or presentation state.
+capabilities, limitations, conditions, inventory, beliefs, relationships, and goals. Its knowledge
+contains exactly one authored `stone-marker-meaning` reference used only by the bounded
+reinterpretation path. The source exposes only its one retained character and does not grant
+knowledge or change focused-search, perception, movement, input, or presentation state.
 
 `Allrpcs.Game.TemporaryPassiveNoticingCandidateSource` separately authors and retains one
 identifier-only candidate after the character and world-object sources are ready. It uses the
@@ -1095,6 +1112,15 @@ input, or perception. It does not call the controller, produce or resolve a cand
 visibility, or alter any presentation. During `Main._Ready`, the separate scene coordinator supplies
 that exact candidate to the controller's one-time ordinary production and resolution sequence; the
 source retains its unchanged candidate after the controller consumes the live snapshot entry.
+
+`Allrpcs.Game.TemporaryObservationReinterpretationCandidateSource` separately retains one candidate
+using the temporary character's exact identifier, the second authoritative world object's exact
+identifier, and the character's exact first knowledge reference. It does not parse copied identity
+text, inspect perception, or call the controller. During `Main._Ready`, the coordinator resolves the
+target through the live world-object controller, produces the exact candidate from the exact source
+character and object, then resolves it once. The atomic result changes only the stone marker from
+`Noticed` to `Identified`, consumes the live candidate, leaves every source unchanged, and exposes
+the already-authored stone-marker description through the existing indicator.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` resolves the current focused identifier through
