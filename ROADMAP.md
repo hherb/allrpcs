@@ -87,29 +87,11 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 ## Phase 2 — Authoritative world and discovery
 
-Phases 2a–2j established the checked engine-independent world, character, perception, inventory,
-and discovery-condition foundations listed below.
-
-Phases 2k1–2k49 implement the bounded focused-search lifecycle through deterministic outcome
-recording and world-object-bound resolution. Temporary F/C/E/R Godot wiring owns immutable Seeker
-state and presents only exact identified targets; missing or mismatched objects fail closed.
-
-Phases 2l1–2l20 make one immutable world-object snapshot the temporary source for object lookup,
-focused-search inputs, perception seeding, focus names, and identified descriptions. Exact
-value-equal lookup and controller boundaries preserve authored instances while the temporary scene
-remains non-authoritative.
-
-Phases 2m1–2m25 complete the bounded passive-noticing path: authoritative candidate production,
-stable next-candidate selection, and atomic resolution change only an existing matching target
-from `Unnoticed` to `Noticed` and consume that candidate. Ordinary scene initialization exercises
-the path once without pixel clicking, proximity, polling, timing, or new UI authority.
-
-Phases 2n1–2n8 define immutable observation-reinterpretation candidates and snapshots, stable
-observer projection, exact lookup, knowledge-trigger satisfaction, perception applicability,
-change detection, and pure application. A triggered candidate changes only an existing matching
-observer target from `Noticed` to `Identified`, preserving stable order and unrelated instances.
-Candidate consumption, atomic resolution, production, sequencing, and runtime wiring remain
-incomplete; `HANDOVER.md` defines the next bounded slice.
+Phases 2a–2m established the checked engine-independent world and discovery foundations, complete
+focused-search and passive-noticing paths, and temporary fail-closed Godot wiring. Phases 2n1–2n19
+now cover immutable observation-reinterpretation candidates through authority-bound production and
+deterministic atomic resolution from `Noticed` to `Identified`. Controller ownership, temporary
+sources, and runtime wiring remain; `HANDOVER.md` defines the next bounded slice.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
