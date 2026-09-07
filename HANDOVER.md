@@ -3,8 +3,9 @@
 ## Current state
 
 Phases 2n1–2n8 are implemented on
-`codex/phase-2n1-plus-observation-reinterpretation`, based on current `origin/main` merge commit
-`b81a252` after PR #125 merged.
+`codex/phase-2n1-plus-observation-reinterpretation`. PR #126 merged the branch's Phase 2n1–2n4
+commit `7a09494` into current `origin/main` merge commit `a92ffbc`; the same branch now continues
+with Phase 2n5–2n8 commit `fa1e6e5`.
 
 The Domain now has an immutable observation-reinterpretation candidate and ordered duplicate-free
 snapshot, stable observer projection, and exact complete-candidate lookup. Pure policies require a
