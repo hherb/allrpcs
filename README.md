@@ -845,6 +845,23 @@ complete character can resolve against its perception, skipping other observers,
 missing targets, and non-`Noticed` targets. Sequencing delegates that selection and the atomic
 transition, changing and consuming only the selected candidate.
 
+`Allrpcs.Domain.WorldEvents.WorldEventLogSnapshot` is the immutable ordered authoritative
+world-event identifier log. It explicitly permits an empty sequence, copies caller input, exposes
+only a read-only list, retains every exact supplied `WorldEventId`, and rejects null input, null
+entries, and value-equal duplicate identifiers.
+
+`WorldEventLogLookup.Find`, `WorldEventLogAppendPolicy.CanAppend`, and
+`WorldEventLogAppendTransition.Append` provide exact retained-identifier lookup and duplicate-free
+pure append. Lookup returns the exact retained value-equal identifier or `null`; eligible append
+returns a new snapshot preserving stable order and every retained instance before the exact supplied
+identifier. Duplicate and null rejection leave all inputs unchanged. These contracts do not define
+event payloads, time, replay, persistence, or production.
+
+`Allrpcs.Game.WorldEventLogController` owns one initially empty immutable log and delegates
+duplicate-free append to the Domain policy and transition. Successful append installs the returned
+snapshot; rejection preserves the current log and unrelated world-object, perception, and
+focused-search state. No temporary event source or ordinary-play event production is connected.
+
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
 rejects null inputs, retains both supplied identifier instances through get-only properties, and

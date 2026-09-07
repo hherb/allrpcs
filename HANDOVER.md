@@ -2,49 +2,44 @@
 
 ## Current state
 
-PR #128 merged Phases 2n9–2n19 into `main` at `381152b`. The continuation branch
-`codex/phase-2n20-plus-observation-reinterpretation` implements Phases 2n20–2n25 in commit
-`ebc1db4`; draft PR #129 tracks the branch.
+PR #129 merged Phase 2n20–2n25 into `main` at `c6f507b`. The continuation branch
+`codex/phase-2o1-plus-world-events` implements Phases 2o1–2o5.
 
-The existing Godot controller now owns an initially empty observation-reinterpretation candidate
-snapshot and delegates exact authoritative production plus stable atomic resolve-next behavior to
-the completed Domain chain. The temporary Seeker retains one exact trigger-knowledge reference; a
-separate source retains one candidate for the second authoritative world object. During
-`Main._Ready`, the scene resolves that object through live authority, produces the exact candidate,
-then resolves it once. Only the stone marker changes from `Noticed` to `Identified`, the candidate is
-consumed, and the existing indicator presents its authored description. Passive noticing,
-focused-search state, movement, input, and all source snapshots remain unchanged.
+The Domain now owns an immutable ordered log of unique existing `WorldEventId` instances, exact
+value-equal lookup, duplicate-free append eligibility, and pure append. Successful append returns a
+new snapshot with the exact supplied identifier after every exact retained entry; rejection changes
+nothing. A dedicated Godot controller owns an initially empty snapshot and delegates append without
+changing world objects, perception, focused-search state, or other runtime behavior. Event payloads,
+time, persistence, replay, and ordinary-play production remain absent.
 
-Phases 2n20–2n25 were test-first through three new opt-in Godot smokes plus focused extensions to
-the character, world-object, and interaction-focus evidence. After code review, host-shell
-`./scripts/quality.sh` passed formatting and workflow validation, a zero-warning build, 928 Domain
-tests, 107 Application tests, six architecture tests, all 21 Godot smokes, and the bounded graphical
-launch. Knowledge-triggered reinterpretation is complete.
+All five slices were test-first. After code review, host-shell `./scripts/quality.sh` passed workflow
+and formatting validation, a zero-warning build, 949 Domain tests, 107 Application tests, six
+architecture tests, all 22 opt-in Godot smokes, and the bounded graphical launch.
 
 ## Exact next bounded slice
 
-Take **Phase 2o1: immutable authoritative world-event log snapshot**.
+Take **Phase 2o6: temporary authoritative world-event identifier source**.
 
 Acceptance boundary:
 
-1. Add one sealed immutable `Allrpcs.Domain.WorldEvents.WorldEventLogSnapshot` containing existing
-   `WorldEventId` entries in stable supplied order.
-2. Permit an explicitly empty sequence; copy caller input; expose only a read-only list; retain
-   every exact supplied identifier instance; and reject null input, null entries, and value-equal
-   duplicate event identifiers.
-3. Add focused tests first for empty/populated construction, stable order, exact nested-instance
-   retention, source-copy isolation, duplicate/null rejection, unchanged inputs, immutability, and
-   the minimal public API surface.
-4. Update README and ROADMAP evidence, keep event creation/append authority incomplete, run
+1. Add one `Allrpcs.Game.TemporaryWorldEventSource` node that creates and retains one stable
+   existing `WorldEventId` for a single explicitly named greybox event.
+2. Expose only that identifier through a get-only property; repeated access must return the same
+   exact instance. Keep construction independent from the log controller.
+3. Add one credential-free opt-in Godot smoke for exact stable retention, canonical authored text,
+   minimal public surface, independent construction, and unchanged event log, world-object,
+   perception, focused-search, movement, input, and presentation state.
+4. Update README and ROADMAP evidence, keep production and startup append incomplete, run
    `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
    plus one next slice.
 
 Explicit exclusions:
 
-- Do not define event payloads, kinds, actors, targets, timestamps, world time, ordering policy,
-  append/record transitions, event production, replay, persistence, serialization, or migration.
-- Do not connect events to focused search, passive noticing, reinterpretation, movement, dialogue,
-  characters, world objects, Godot, Application, providers, credentials, or UI.
+- Do not append the source identifier to the controller, connect `Main._Ready`, or define event
+  payloads, kinds, actors, targets, timestamps, world time, ordering policy, replay, persistence,
+  serialization, or migration.
+- Do not connect events to discovery, movement, dialogue, characters, world objects, Application,
+  providers, credentials, or UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
   explicit user authorization.

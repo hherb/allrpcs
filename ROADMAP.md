@@ -87,27 +87,11 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 ## Phase 2 — Authoritative world and discovery
 
-Phases 2a–2n now provide checked world/discovery foundations and bounded focused-search,
-passive-noticing, and knowledge-triggered reinterpretation paths. `HANDOVER.md` holds the current
-evidence and next bounded slice.
-
-- [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
-  and world events.
-- [x] Define controller types: human, LLM, deterministic test, and dormant.
-- [x] Define the character model: identity, public/private background, capabilities,
-  limitations, condition, inventory, knowledge, beliefs, relationships, goals, and controller.
-- [x] Define location, object, item, and environmental-state models.
-- [x] Define visibility states: unnoticed, noticed, identified, understood, and altered or
-  collected.
-- [x] Implement per-character perception snapshots.
-- [x] Implement inventory ownership, capacity policy, give, take, drop, and use validation.
-- [x] Implement capability- and tool-dependent discovery conditions.
-- [x] Implement bounded focused searches with visible character activity.
-- [x] Connect focused-search outcome resolution to authoritative world objects, perception
-  change, and discovery presentation.
-- [x] Implement passive noticing without relying on arbitrary pixel clicking.
-- [x] Implement knowledge-triggered reinterpretation of earlier observations.
-- [ ] Implement an append-only authoritative world-event log.
+- [x] Establish typed engine-independent character, world, perception, inventory, and controller
+  foundations.
+- [x] Implement bounded discovery conditions, focused search, passive noticing, and
+  knowledge-triggered reinterpretation against authoritative objects.
+- [x] Implement an append-only authoritative world-event identifier log.
 - [ ] Implement qualitative world time and explicit meaningful-time events.
 - [ ] Implement deterministic save and load with a schema version.
 - [ ] Add representative discoveries: visible herb, concealed herb, partial inscription,
