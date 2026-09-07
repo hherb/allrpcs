@@ -132,7 +132,7 @@ that object at exactly `Identified`. Null or absent objects, null or unrelated p
 other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
 replacement description without changing any supplied object, snapshot, lifecycle state, marker
 presentation, or world-object ordering.
-Phases 2m1–2m22 add one immutable identifier-only passive-noticing candidate for an existing observer
+Phases 2m1–2m25 add one immutable identifier-only passive-noticing candidate for an existing observer
 and target, an immutable snapshot of those candidates, a pure observer-specific projection, an
 exact complete-candidate lookup, a pure candidate-to-perception applicability decision, and pure
 change detection plus application, candidate consumption, resolution, recording, authoritative
@@ -150,10 +150,16 @@ existing controller's exact identifier, while every other required authored comp
 explicitly empty. The same controller owns an empty passive-candidate snapshot, delegates
 authoritative production and atomic stable resolve-next behavior to the existing Domain boundaries,
 and remains the sole live perception owner. A separate temporary candidate source retains the exact
-Seeker and first world-object identifiers without invoking those controller paths. No ordinary
-runtime path yet produces or resolves that candidate, and the current temporary perception begins
-with its target already `Noticed`, so passive noticing remains incomplete. The exact next bounded
-slice is defined in `HANDOVER.md`.
+Seeker and first world-object identifiers without invoking those controller paths. Temporary
+perception derivation resolves that source candidate through the world-object snapshot, retains
+every exact source identifier in stable order, seeds only the target at `Unnoticed`, and fails
+explicitly if it is absent. Ordinary scene initialization then resolves the target through the
+live world-object controller, produces the exact candidate from the exact character and world
+object, and resolves it once. The atomic result changes only that live target to `Noticed` and
+consumes the complete candidate while leaving the source snapshot, focused-search, movement,
+input, and presentation unchanged. This completes the bounded passive-noticing path without pixel
+clicking, polling, proximity, distance, line-of-sight, timing, or new UI authority. The exact next
+bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
@@ -169,7 +175,7 @@ slice is defined in `HANDOVER.md`.
 - [x] Implement bounded focused searches with visible character activity.
 - [x] Connect focused-search outcome resolution to authoritative world objects, perception
   change, and discovery presentation.
-- [ ] Implement passive noticing without relying on arbitrary pixel clicking.
+- [x] Implement passive noticing without relying on arbitrary pixel clicking.
 - [ ] Implement knowledge-triggered reinterpretation of earlier observations.
 - [ ] Implement an append-only authoritative world-event log.
 - [ ] Implement qualitative world time and explicit meaningful-time events.

@@ -1,4 +1,4 @@
-using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
@@ -18,28 +18,35 @@ public partial class TemporarySeekerPerceptionSource : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        CharacterId seekerCharacterId = GetNode<FocusedSearchActivityController>(
-            "../Seeker/FocusedSearchActivityController").SearcherCharacterId;
+        PassiveNoticingCandidate candidate =
+            GetNode<TemporaryPassiveNoticingCandidateSource>(
+                "../TemporaryPassiveNoticingCandidateSource").Candidate;
         WorldObjectSnapshot worldObjects = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").WorldObjects;
 
-        Perception = CreatePerception(seekerCharacterId, worldObjects);
+        Perception = CreatePerception(candidate, worldObjects);
     }
 
     private CharacterPerceptionSnapshot CreatePerception(
-        CharacterId characterId,
+        PassiveNoticingCandidate candidate,
         WorldObjectSnapshot worldObjects)
     {
-        ArgumentNullException.ThrowIfNull(characterId);
+        ArgumentNullException.ThrowIfNull(candidate);
         ArgumentNullException.ThrowIfNull(worldObjects);
 
+        WorldObject candidateWorldObject = WorldObjectLookup.FindById(
+            candidate.TargetObjectId,
+            worldObjects) ?? throw new InvalidOperationException(
+                "The passive-noticing candidate target is absent from the world-object snapshot.");
         WorldObjectVisibility[] entries = worldObjects.Entries
             .Select(
                 worldObject => new WorldObjectVisibility(
                     worldObject.Identity.Id,
-                    initialVisibilityState))
+                    ReferenceEquals(worldObject, candidateWorldObject)
+                        ? VisibilityState.Unnoticed
+                        : initialVisibilityState))
             .ToArray();
 
-        return new CharacterPerceptionSnapshot(characterId, entries);
+        return new CharacterPerceptionSnapshot(candidate.ObserverCharacterId, entries);
     }
 }

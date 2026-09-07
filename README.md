@@ -65,12 +65,15 @@ prior text, and that the temporary focused-search source stably authors one
 capability-only first-world-object context and one tool-only second-world-object context from the
 existing world-object snapshot, retains their exact nested instances, fails explicitly for an
 undersized snapshot, and forwards its exact aggregate instances through the input path. The
-temporary Seeker perception-source launch proves exact Seeker and world-object identifier
-retention, empty and populated world-object snapshot derivation, stable order and noticed state,
-unchanged nested inputs and surrounding state, and one stable scene snapshot. The separate
-perception-controller launch proves the scene initializes the controller once with that exact
-Seeker snapshot, rejects wrong-character, repeated, and null initialization, and preserves
-activity, outcome, and presentation state. The outcome-resolution-controller launch
+temporary Seeker perception-source launch proves exact candidate, Seeker, and world-object
+identifier alignment, value-equal target lookup with exact source-identifier retention, explicit
+missing-target failure, stable order, target-only `Unnoticed` seeding, and unchanged inputs and
+surrounding state. The separate perception-controller launch proves the ordinary resolved scene
+state, then isolates exact one-time source initialization, wrong-character, repeated, and null
+rejection while preserving activity, outcome, and presentation state. The passive candidate-source
+launch proves exact ordinary production and atomic resolution consume the one retained candidate,
+change only its live perception target to `Noticed`, and leave source perception, focused-search,
+and presentation state unchanged. The outcome-resolution-controller launch
 proves value-equal recorded-outcome and matching value-equal world-object resolution, target-only
 perception replacement, consumption, stable unrelated-entry order and instances, unchanged inputs,
 and fail-closed mismatched and null rejection without changing activity or presentation. The
@@ -900,7 +903,12 @@ closed while perception is uninitialized or no retained candidate is eligible, o
 stable selection and atomic state construction to the existing Domain selection and sequence and
 installs both returned snapshots. These paths retain value-equal candidate identifiers, keep the
 controller as the only live perception owner, and do not change focused-search or presentation
-state. Ordinary play does not yet invoke either passive-noticing boundary.
+state. During `Main._Ready`, ordinary play resolves the source candidate's exact target through
+the initialized world-object controller, produces it from the exact retained candidate, character,
+and world object, then invokes resolve-next once. Either impossible step fails explicitly; success
+consumes the candidate and replaces only its `Unnoticed` live perception entry with `Noticed`.
+This one-time sequence does not poll, inspect coordinates, distance, line of sight, focus, or input,
+and it does not add passive-noticing presentation.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -980,16 +988,17 @@ temporary E completion path when an active Seeker request exists and its target 
 the world-object controller.
 
 `Allrpcs.Game.TemporarySeekerPerceptionSource` authors one temporary immutable perception snapshot
-when the scene becomes ready. It retains the focused-search controller's exact parsed Seeker
-identifier and derives its ordered visibility entries only from the existing temporary world-object
-snapshot. Each entry retains its world object's exact stable identifier and pairs it with the exact
-`VisibilityState.Noticed` singleton; an empty world-object snapshot produces an empty perception
-snapshot. Repeated scene access returns the same snapshot instance. Derivation leaves the supplied
-snapshot, objects, identities, descriptions, and Seeker identifier unchanged. The source does not
-read greybox targets; inspect authored object text, focus, or lifecycle state; create an outcome;
-call a controller; change perception or visibility; or make either source authoritative. During
-`Main._Ready`, the scene passes this exact snapshot to the controller's one-time initialization
-boundary. Lifecycle inputs do not read the source again.
+when the scene becomes ready. It receives the exact retained temporary passive-noticing candidate and
+derives its ordered visibility entries only from the existing temporary world-object snapshot. It
+resolves the candidate target through value-equal world-object lookup and fails explicitly when that
+target is absent. Every entry retains its world object's exact stable identifier in source order; the
+resolved candidate target alone begins at the exact `VisibilityState.Unnoticed` singleton and every
+other object begins at `Noticed`. The snapshot retains the candidate's exact observer identifier, and
+repeated scene access returns the same snapshot instance. Derivation leaves the candidate, snapshot,
+objects, identities, and descriptions unchanged. The source does not read greybox targets, authored
+identity text, focus, or lifecycle state; call a controller; or make either source authoritative.
+During `Main._Ready`, the scene passes this exact snapshot to the controller's one-time initialization
+boundary before the one-time passive-noticing sequence replaces only the controller-owned snapshot.
 
 `Allrpcs.Game.TemporarySeekerCharacterSource` authors and retains one complete immutable temporary
 Seeker `Character` after the existing Seeker controller is ready. Its `CharacterIdentity` and human
@@ -1004,8 +1013,9 @@ identifier-only candidate after the character and world-object sources are ready
 temporary character's exact identity identifier and the first authoritative world object's exact
 identifier without reading authored text, greybox coordinates, distance, line of sight, focus,
 input, or perception. It does not call the controller, produce or resolve a candidate, change
-visibility, or alter any presentation; ordinary play therefore still begins with an empty owned
-candidate snapshot.
+visibility, or alter any presentation. During `Main._Ready`, the separate scene coordinator supplies
+that exact candidate to the controller's one-time ordinary production and resolution sequence; the
+source retains its unchanged candidate after the controller consumes the live snapshot entry.
 
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` resolves the current focused identifier through

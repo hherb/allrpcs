@@ -17,6 +17,7 @@ public partial class TemporaryPassiveNoticingCandidateSourceSmokeCheck : Node
 
     private TemporaryPassiveNoticingCandidateSource source = null!;
     private TemporarySeekerCharacterSource characterSource = null!;
+    private TemporarySeekerPerceptionSource perceptionSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private FocusedSearchActivityController controller = null!;
     private Line2D searchIndicator = null!;
@@ -35,6 +36,8 @@ public partial class TemporaryPassiveNoticingCandidateSourceSmokeCheck : Node
             "../TemporaryPassiveNoticingCandidateSource");
         characterSource = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
+        perceptionSource = GetNode<TemporarySeekerPerceptionSource>(
+            "../TemporarySeekerPerceptionSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource");
         controller = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
@@ -54,6 +57,7 @@ public partial class TemporaryPassiveNoticingCandidateSourceSmokeCheck : Node
         FocusedSearchActivitySnapshot expectedActivities = controller.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = controller.Outcomes;
         CharacterPerceptionSnapshot? expectedPerception = controller.Perception;
+        CharacterPerceptionSnapshot sourcePerception = perceptionSource.Perception;
         PassiveNoticingCandidateSnapshot expectedCandidates =
             controller.PassiveNoticingCandidates;
         bool expectedIndicatorVisibility = searchIndicator.Visible;
@@ -94,10 +98,20 @@ public partial class TemporaryPassiveNoticingCandidateSourceSmokeCheck : Node
             || !ReferenceEquals(controller.Activities, expectedActivities)
             || !ReferenceEquals(controller.Outcomes, expectedOutcomes)
             || !ReferenceEquals(controller.Perception, expectedPerception)
+            || expectedPerception is null
+            || ReferenceEquals(expectedPerception, sourcePerception)
             || !ReferenceEquals(
                 controller.PassiveNoticingCandidates,
                 expectedCandidates)
             || expectedCandidates.Entries.Count != 0
+            || !ReferenceEquals(
+                expectedPerception.Entries.Single(
+                    entry => entry.ObjectId == first.TargetObjectId).VisibilityState,
+                VisibilityState.Noticed)
+            || !ReferenceEquals(
+                sourcePerception.Entries.Single(
+                    entry => entry.ObjectId == first.TargetObjectId).VisibilityState,
+                VisibilityState.Unnoticed)
             || searchIndicator.Visible != expectedIndicatorVisibility)
         {
             Fail("Temporary passive-noticing source changed inputs or controller state.");
@@ -107,8 +121,9 @@ public partial class TemporaryPassiveNoticingCandidateSourceSmokeCheck : Node
         GD.Print(
             "Temporary passive-noticing candidate source smoke passed: one stable candidate; "
             + "exact scene and independent character/world-object identifier retention; no "
-            + "controller production; and unchanged source, focused-search, perception, and "
-            + "presentation state were correct.");
+            + "source-owned controller mutation; exact ordinary-play production and atomic "
+            + "resolution; unchanged source perception, focused-search, and presentation state "
+            + "were correct.");
         GetTree().Quit();
     }
 

@@ -16,6 +16,7 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
 
     private FocusedSearchActivityController controller = null!;
     private TemporarySeekerPerceptionSource source = null!;
+    private TemporaryPassiveNoticingCandidateSource candidateSource = null!;
     private Line2D indicator = null!;
     private Label focusedSearchResultStatus = null!;
 
@@ -32,6 +33,8 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
         controller = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         source = GetNode<TemporarySeekerPerceptionSource>("../TemporarySeekerPerceptionSource");
+        candidateSource = GetNode<TemporaryPassiveNoticingCandidateSource>(
+            "../TemporaryPassiveNoticingCandidateSource");
         indicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
         focusedSearchResultStatus = GetNode<Label>(
@@ -44,9 +47,30 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
-        CharacterPerceptionSnapshot? initializedPerception = controller.Perception;
-        if (initializedPerception is null
-            || !ReferenceEquals(initializedPerception, source.Perception)
+        CharacterPerceptionSnapshot? resolvedPerception = controller.Perception;
+        if (resolvedPerception is null
+            || ReferenceEquals(resolvedPerception, source.Perception)
+            || !ReferenceEquals(resolvedPerception.CharacterId, controller.SearcherCharacterId)
+            || !ReferenceEquals(
+                resolvedPerception.Entries.Single(
+                    entry => entry.ObjectId == candidateSource.Candidate.TargetObjectId)
+                    .VisibilityState,
+                VisibilityState.Noticed))
+        {
+            Fail(
+                "Focused-search perception controller smoke failed resolved scene perception.");
+            return;
+        }
+
+        SetPerception(null);
+        if (!controller.TryInitializePerception(source.Perception))
+        {
+            Fail("Focused-search perception controller smoke rejected scene initialization.");
+            return;
+        }
+
+        CharacterPerceptionSnapshot initializedPerception = controller.Perception!;
+        if (!ReferenceEquals(initializedPerception, source.Perception)
             || !ReferenceEquals(initializedPerception.CharacterId, controller.SearcherCharacterId))
         {
             Fail(
@@ -93,9 +117,10 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "Focused-search perception controller smoke passed: exact scene-wired Seeker "
-            + "perception retention; wrong-character, repeated, and null rejection; and unchanged "
-            + "activity, outcome, and presentation state were correct.");
+            "Focused-search perception controller smoke passed: resolved ordinary scene state; "
+            + "exact isolated Seeker perception initialization; wrong-character, repeated, and "
+            + "null rejection; and unchanged activity, outcome, and presentation state were "
+            + "correct.");
         GetTree().Quit();
     }
 
@@ -112,6 +137,15 @@ public partial class FocusedSearchPerceptionControllerSmokeCheck : Node
 
         Fail("Focused-search perception controller smoke failed null rejection.");
         return false;
+    }
+
+    private void SetPerception(CharacterPerceptionSnapshot? perception)
+    {
+        System.Reflection.PropertyInfo property = typeof(FocusedSearchActivityController)
+            .GetProperty(nameof(FocusedSearchActivityController.Perception))
+            ?? throw new InvalidOperationException(
+                "Focused-search controller perception property was not found.");
+        property.SetValue(controller, perception);
     }
 
     private void Fail(string message)
