@@ -807,6 +807,34 @@ lookup and returns true only when a value-equal candidate is retained in the sup
 rejects null inputs, preserves every exact instance and stable order, and does not remove, apply,
 produce, or select among candidates.
 
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateConsumptionTransition.Consume` is the pure
+candidate-removal transition. It delegates complete consumption eligibility and returns a new
+snapshot without the value-equal complete retained candidate, preserving every unrelated exact
+candidate and nested identifier instance in stable order. It accepts a distinct value-equal
+candidate, rejects empty, absent, partial-match, and null inputs, and leaves every input unchanged.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionPolicy.CanResolve` is the pure combined
+resolution decision. It returns true only when the existing change policy permits an
+`Unnoticed`-to-`Noticed` perception change and the complete candidate is retained for consumption.
+It leaves both snapshots and every nested instance unchanged and does not create resolution state.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionResult` is the immutable result shape
+for one passive-noticing resolution. It retains the exact supplied perception and candidate
+snapshot instances behind get-only properties, rejects null snapshots, and performs no resolution.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionTransition.Resolve` is the pure atomic
+resolution transition. It delegates complete combined eligibility, then delegates the existing
+application and consumption transitions, returning only the resulting perception and candidate
+snapshots. The target alone changes from `Unnoticed` to `Noticed`, the complete candidate alone is
+removed, and every unrelated exact instance and stable position is retained without mutating input.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateRecordingPolicy.CanRecord` and
+`PassiveNoticingCandidateRecordingTransition.Record` provide duplicate-free pure candidate
+recording. Eligibility rejects only an existing value-equal complete candidate while allowing both
+partial matches; recording appends the exact supplied eligible candidate after all existing entries
+in stable order. Both preserve all inputs and do not prove that either identifier names an existing
+authoritative character or world object.
+
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
 projection and returns true exactly when the new projected snapshot contains at least one entry,
