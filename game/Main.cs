@@ -39,7 +39,6 @@ public partial class Main : Node
     private TemporaryWorldEventSource worldEventSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldEventController worldEventController = null!;
-    private WorldEventLogController worldEventLogController = null!;
     private WorldObjectController worldObjectController = null!;
     private HealerCommandMode displayedMode;
 
@@ -82,7 +81,6 @@ public partial class Main : Node
         worldEventSource = GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
         worldEventController = GetNode<WorldEventController>("WorldEventController");
-        worldEventLogController = GetNode<WorldEventLogController>("WorldEventLogController");
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
         InitializeWorldEvents();
         RecordInitialWorldEvent();
@@ -111,10 +109,13 @@ public partial class Main : Node
 
     private void InitializeWorldEvents()
     {
-        if (!worldEventController.TryInitializeWorldEvents(worldEventSource.WorldEvents))
+        if (!worldEventController.TryInitialize(
+                worldEventSource.WorldEvents,
+                new WorldEventLogSnapshot([]),
+                new WorldTimeSnapshot(null)))
         {
             throw new InvalidOperationException(
-                "The world-event controller could not initialize the scene snapshot.");
+                "The world-event controller could not initialize the scene state.");
         }
     }
 
@@ -125,13 +126,10 @@ public partial class Main : Node
             ?? throw new InvalidOperationException(
                 "The initial greybox world event is absent from authoritative world events.");
 
-        WorldEventSnapshot worldEvents = worldEventController.WorldEvents
-            ?? throw new InvalidOperationException(
-                "Authoritative world events were not initialized before startup recording.");
-        if (!worldEventLogController.TryRecord(worldEvent.EventId, worldEvents))
+        if (!worldEventController.TryOccur(worldEvent.EventId))
         {
             throw new InvalidOperationException(
-                "The initial greybox world event could not be recorded.");
+                "The initial greybox world event could not occur.");
         }
     }
 

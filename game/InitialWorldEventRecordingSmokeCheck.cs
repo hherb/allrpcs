@@ -55,8 +55,10 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         WorldEvent expectedEvent = expectedWorldEvents.Entries.Single();
         WorldEventId expectedEventId = expectedEvent.EventId;
         WorldEventSnapshot? expectedControllerEvents = worldEventController.WorldEvents;
-        WorldEventLogSnapshot expectedEventLog = eventLogController.EventLog;
-        WorldTimeSnapshot expectedWorldTime = worldTimeController.WorldTime;
+        WorldEventLogSnapshot? expectedEventLog = worldEventController.EventLog;
+        WorldTimeSnapshot? expectedWorldTime = worldEventController.WorldTime;
+        WorldEventLogSnapshot expectedStandaloneEventLog = eventLogController.EventLog;
+        WorldTimeSnapshot expectedStandaloneWorldTime = worldTimeController.WorldTime;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
         FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = focusedSearchController.Outcomes;
@@ -68,12 +70,14 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
 
         if (!ReferenceEquals(expectedControllerEvents, expectedWorldEvents)
             || !ReferenceEquals(worldEventController.FindWorldEvent(expectedEventId), expectedEvent)
+            || expectedEventLog is null
+            || expectedWorldTime is null
             || expectedEventLog.Entries.Count != 1
             || !ReferenceEquals(expectedEventLog.Entries[0], expectedEventId)
-            || eventLogController.TryRecord(
-                new WorldEventId(expectedEventId.Value),
-                expectedWorldEvents)
-            || !ReferenceEquals(eventLogController.EventLog, expectedEventLog))
+            || expectedWorldTime.CurrentEventId is not null
+            || worldEventController.TryOccur(new WorldEventId(expectedEventId.Value))
+            || !ReferenceEquals(worldEventController.EventLog, expectedEventLog)
+            || !ReferenceEquals(worldEventController.WorldTime, expectedWorldTime))
         {
             Fail("Initial world-event recording failed exact one-time authoritative recording.");
             return;
@@ -82,7 +86,8 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         if (!ReferenceEquals(source.WorldEvents, expectedWorldEvents)
             || !ReferenceEquals(expectedWorldEvents.Entries.Single(), expectedEvent)
             || !ReferenceEquals(worldEventController.WorldEvents, expectedControllerEvents)
-            || !ReferenceEquals(worldTimeController.WorldTime, expectedWorldTime)
+            || !ReferenceEquals(eventLogController.EventLog, expectedStandaloneEventLog)
+            || !ReferenceEquals(worldTimeController.WorldTime, expectedStandaloneWorldTime)
             || !ReferenceEquals(expectedEvent.EventId, expectedEventId)
             || !ReferenceEquals(expectedEvent.TimeEffect, WorldEventTimeEffect.NoAdvance)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
