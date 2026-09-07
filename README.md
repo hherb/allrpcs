@@ -86,11 +86,12 @@ and fail-closed mismatched and null rejection without changing activity or prese
 world-object-controller launch proves exact lookup of both scene-authored objects, including through
 a value-equal distinct identifier, absent and uninitialized results, null rejection, stable exact
 snapshot retention, and unchanged source, targets, focused-search state, and presentation. The
-world-event source and startup-recording launches prove one independently authored, stable,
-canonical `greybox-ready`/`no-advance` event, exact identifier append, value-equal duplicate
-rejection, and unchanged world-object, perception, focused-search, movement, input, and
-presentation state. The world-time controller launch proves the explicit initial state, exact
-advancing-event retention, no-advance, repeat, and null rejection, and unchanged surrounding state.
+world-event source, controller, and startup-recording launches prove one independently authored,
+stable snapshot containing the canonical `greybox-ready`/`no-advance` event, exact one-time scene
+initialization and lookup, authoritative identifier recording, value-equal duplicate rejection, and
+unchanged world-time, world-object, perception, focused-search, movement, input, and presentation
+state. The world-time controller launch proves the explicit initial state, exact advancing-event
+retention, no-advance, repeat, and null rejection, and unchanged surrounding state.
 The movement-boundary launch uses the existing Seeker body and authored collision shapes to prove
 all four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -862,6 +863,11 @@ returns a new snapshot preserving stable order and every retained instance befor
 identifier. Duplicate and null rejection leave all inputs unchanged. These contracts do not define
 event payloads, time, replay, persistence, or production.
 
+`WorldEventRecordingPolicy.CanRecord` and `WorldEventRecordingTransition.Record` add the
+authoritative-definition boundary to identifier-log append. A requested identifier is recordable
+only when it resolves to a defined event and is absent from the log; recording appends the exact
+identifier retained by that authoritative event, even for a distinct value-equal request.
+
 `WorldEventTimeEffect` is the closed world-event classification vocabulary: exact singleton values
 `no-advance` and `advance` in stable order with strict canonical parsing. Immutable `WorldEvent`
 values retain one exact existing identifier and time effect. `WorldEventSnapshot` copies ordered
@@ -877,18 +883,24 @@ event. `WorldTimeProjection.FromEvents` reconstructs the same state from ordered
 the exact latest `advance` identifier. These contracts define no elapsed time, phase names,
 durations, scheduling, disease progression, persistence, or serialization.
 
+`WorldEventOccurrencePolicy.CanOccur`, `WorldEventOccurrenceResult`, and
+`WorldEventOccurrenceTransition.Occur` combine authoritative recording with qualitative time as one
+immutable Domain operation. Every eligible event is recorded; `no-advance` preserves the exact
+supplied time snapshot, while `advance` installs a new snapshot retaining the authoritative event's
+exact identifier. Undefined, already-recorded, or repeated-current advancing events fail closed.
+
 `Allrpcs.Game.WorldEventLogController` owns one initially empty immutable log and delegates
-duplicate-free append to the Domain policy and transition. Successful append installs the returned
-snapshot; rejection preserves the current log and unrelated world-object, perception, and
+authoritative recording to the Domain policy and transition. Successful recording installs the
+returned snapshot; rejection preserves the current log and unrelated world-object, perception, and
 focused-search state.
 
-`Allrpcs.Game.TemporaryWorldEventSource` independently authors and retains one canonical
-`greybox-ready` event with the `no-advance` effect. It exposes only that exact stable event and does
-not inspect or call either controller. During `Main._Ready`, the scene appends the event's exact
-identifier once through the existing log controller and fails explicitly if it cannot be recorded.
-`Allrpcs.Game.WorldTimeController` independently owns the explicit initial qualitative-time
-snapshot and delegates eligible advances to the Domain policy and transition. Neither controller
-connects event time to ordinary play, disease, dialogue, replay, persistence, or presentation.
+`Allrpcs.Game.TemporaryWorldEventSource` independently authors and retains one exact snapshot
+containing the canonical `greybox-ready` event with the `no-advance` effect. During `Main._Ready`,
+the new `WorldEventController` retains that exact snapshot, resolves the initial identifier to its
+exact authoritative event, and the log controller records that event once. `WorldTimeController`
+independently owns the explicit initial qualitative-time snapshot and delegates eligible advances
+to the Domain policy and transition. Scene orchestration does not yet apply the atomic occurrence
+transition or connect time to ordinary play, disease, dialogue, replay, persistence, or presentation.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It

@@ -14,7 +14,9 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private TemporaryWorldEventSource source = null!;
+    private WorldEventController worldEventController = null!;
     private WorldEventLogController eventLogController = null!;
+    private WorldTimeController worldTimeController = null!;
     private WorldObjectController worldObjectController = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
     private CharacterBody2D seeker = null!;
@@ -32,7 +34,9 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         }
 
         source = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
+        worldEventController = GetNode<WorldEventController>("../WorldEventController");
         eventLogController = GetNode<WorldEventLogController>("../WorldEventLogController");
+        worldTimeController = GetNode<WorldTimeController>("../WorldTimeController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
@@ -47,9 +51,12 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
-        WorldEvent expectedEvent = source.Event;
+        WorldEventSnapshot expectedWorldEvents = source.WorldEvents;
+        WorldEvent expectedEvent = expectedWorldEvents.Entries.Single();
         WorldEventId expectedEventId = expectedEvent.EventId;
+        WorldEventSnapshot? expectedControllerEvents = worldEventController.WorldEvents;
         WorldEventLogSnapshot expectedEventLog = eventLogController.EventLog;
+        WorldTimeSnapshot expectedWorldTime = worldTimeController.WorldTime;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
         FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = focusedSearchController.Outcomes;
@@ -59,16 +66,23 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         string expectedFocusStatus = focusStatus.Text;
         string expectedFocusedSearchResult = focusedSearchResult.Text;
 
-        if (expectedEventLog.Entries.Count != 1
+        if (!ReferenceEquals(expectedControllerEvents, expectedWorldEvents)
+            || !ReferenceEquals(worldEventController.FindWorldEvent(expectedEventId), expectedEvent)
+            || expectedEventLog.Entries.Count != 1
             || !ReferenceEquals(expectedEventLog.Entries[0], expectedEventId)
-            || eventLogController.TryAppend(new WorldEventId(expectedEventId.Value))
+            || eventLogController.TryRecord(
+                new WorldEventId(expectedEventId.Value),
+                expectedWorldEvents)
             || !ReferenceEquals(eventLogController.EventLog, expectedEventLog))
         {
-            Fail("Initial world-event recording failed exact one-time append.");
+            Fail("Initial world-event recording failed exact one-time authoritative recording.");
             return;
         }
 
-        if (!ReferenceEquals(source.Event, expectedEvent)
+        if (!ReferenceEquals(source.WorldEvents, expectedWorldEvents)
+            || !ReferenceEquals(expectedWorldEvents.Entries.Single(), expectedEvent)
+            || !ReferenceEquals(worldEventController.WorldEvents, expectedControllerEvents)
+            || !ReferenceEquals(worldTimeController.WorldTime, expectedWorldTime)
             || !ReferenceEquals(expectedEvent.EventId, expectedEventId)
             || !ReferenceEquals(expectedEvent.TimeEffect, WorldEventTimeEffect.NoAdvance)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
@@ -88,8 +102,9 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         }
 
         GD.Print(
-            "Initial world-event recording smoke passed: the exact source identifier was "
-            + "appended once during startup, a value-equal duplicate was rejected, and source, "
+            "Initial world-event recording smoke passed: the source identifier resolved to the "
+            + "exact authoritative event and was recorded once during startup, a value-equal "
+            + "duplicate was rejected, and source, "
             + "world-object, perception, focused-search, movement, input, and presentation state "
             + "were unchanged.");
         GetTree().Quit();

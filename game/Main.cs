@@ -1,6 +1,8 @@
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -36,6 +38,7 @@ public partial class Main : Node
     private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
+    private WorldEventController worldEventController = null!;
     private WorldEventLogController worldEventLogController = null!;
     private WorldObjectController worldObjectController = null!;
     private HealerCommandMode displayedMode;
@@ -78,8 +81,10 @@ public partial class Main : Node
             "TemporarySeekerPerceptionSource");
         worldEventSource = GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
+        worldEventController = GetNode<WorldEventController>("WorldEventController");
         worldEventLogController = GetNode<WorldEventLogController>("WorldEventLogController");
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
+        InitializeWorldEvents();
         RecordInitialWorldEvent();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
         {
@@ -104,9 +109,26 @@ public partial class Main : Node
         UpdateModeStatus(force: true);
     }
 
+    private void InitializeWorldEvents()
+    {
+        if (!worldEventController.TryInitializeWorldEvents(worldEventSource.WorldEvents))
+        {
+            throw new InvalidOperationException(
+                "The world-event controller could not initialize the scene snapshot.");
+        }
+    }
+
     private void RecordInitialWorldEvent()
     {
-        if (!worldEventLogController.TryAppend(worldEventSource.Event.EventId))
+        WorldEventId sourceEventId = worldEventSource.WorldEvents.Entries.Single().EventId;
+        WorldEvent worldEvent = worldEventController.FindWorldEvent(sourceEventId)
+            ?? throw new InvalidOperationException(
+                "The initial greybox world event is absent from authoritative world events.");
+
+        WorldEventSnapshot worldEvents = worldEventController.WorldEvents
+            ?? throw new InvalidOperationException(
+                "Authoritative world events were not initialized before startup recording.");
+        if (!worldEventLogController.TryRecord(worldEvent.EventId, worldEvents))
         {
             throw new InvalidOperationException(
                 "The initial greybox world event could not be recorded.");

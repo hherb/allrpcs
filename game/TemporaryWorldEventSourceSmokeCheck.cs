@@ -57,11 +57,13 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         Vector2 expectedVelocity = seeker.Velocity;
         string expectedFocusStatus = focusStatus.Text;
         string expectedFocusedSearchResult = focusedSearchResult.Text;
-        WorldEvent first = source.Event;
-        WorldEvent second = source.Event;
+        WorldEventSnapshot firstSnapshot = source.WorldEvents;
+        WorldEventSnapshot secondSnapshot = source.WorldEvents;
+        WorldEvent first = firstSnapshot.Entries.Single();
 
         if (!HasExpectedPropertySurface()
-            || !ReferenceEquals(first, second)
+            || !ReferenceEquals(firstSnapshot, secondSnapshot)
+            || firstSnapshot.Entries.Count != 1
             || !string.Equals(
                 first.EventId.Value,
                 GreyboxReadyEventIdText,
@@ -105,9 +107,9 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         }
 
         GD.Print(
-            "Temporary world-event source smoke passed: one stable canonical greybox-ready "
-            + "no-advance event, minimal surface, independent construction, exact ordinary startup "
-            + "recording, and unchanged event-log, "
+            "Temporary world-event source smoke passed: one stable exact snapshot containing the "
+            + "canonical greybox-ready no-advance event, minimal surface, independent construction, "
+            + "exact ordinary startup recording, and unchanged event-log, "
             + "world-object, perception, focused-search, movement, input, and presentation state "
             + "were correct.");
         GetTree().Quit();
@@ -135,8 +137,8 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
                     | System.Reflection.BindingFlags.DeclaredOnly);
 
         return properties.Length == 1
-            && string.Equals(properties[0].Name, "Event", StringComparison.Ordinal)
-            && properties[0].PropertyType == typeof(WorldEvent)
+            && string.Equals(properties[0].Name, "WorldEvents", StringComparison.Ordinal)
+            && properties[0].PropertyType == typeof(WorldEventSnapshot)
             && properties[0].CanRead
             && properties[0].SetMethod is not null
             && properties[0].SetMethod!.IsPrivate;

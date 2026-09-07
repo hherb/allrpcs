@@ -87,10 +87,9 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 ## Phase 2 — Authoritative world and discovery
 
-- [x] Establish authoritative world, discovery, and world-event foundations through deterministic
-  qualitative-time derivation.
-- [ ] Complete meaningful-time integration and deterministic schema-versioned save/load.
-- [ ] Add representative discoveries, scenario validation, and filtered-view leakage coverage.
+- [x] Establish deterministic authoritative world, discovery, event, and qualitative-time rules.
+- [ ] Add scene occurrence orchestration, meaningful-time integration, schema-versioned save/load,
+  representative discoveries, scenario validation, and filtered-view leakage coverage.
 
 Acceptance:
 

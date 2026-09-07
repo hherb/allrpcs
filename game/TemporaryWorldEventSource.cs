@@ -4,18 +4,18 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Authors one temporary no-advance greybox-ready world event.</summary>
+/// <summary>Authors one temporary snapshot containing the no-advance greybox-ready event.</summary>
 public partial class TemporaryWorldEventSource : Node
 {
     private const string GreyboxReadyEventIdText = "greybox-ready";
 
-    /// <summary>Gets the single retained temporary world event.</summary>
-    public WorldEvent Event { get; private set; } = null!;
+    /// <summary>Gets the retained temporary authoritative world-event snapshot.</summary>
+    public WorldEventSnapshot WorldEvents { get; private set; } = null!;
 
     /// <inheritdoc />
     public override void _Ready()
     {
-        Event = CreateEvent();
+        WorldEvents = new([CreateEvent()]);
     }
 
     private static WorldEvent CreateEvent() =>
