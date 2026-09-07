@@ -49,7 +49,7 @@ public partial class WorldEventLogControllerSmokeCheck : Node
         WorldEventSnapshot worldEvents = new([firstEvent]);
         WorldEventId firstRequest = new("healer-ready");
 
-        if (initialLog.Entries.Count != 1
+        if (initialLog.Entries.Count != 0
             || !controller.TryRecord(firstRequest, worldEvents)
             || !HasExpectedControllerSurface())
         {
@@ -60,9 +60,8 @@ public partial class WorldEventLogControllerSmokeCheck : Node
         WorldEventLogSnapshot appendedLog = controller.EventLog;
         WorldEventId duplicate = new("healer-ready");
         if (ReferenceEquals(initialLog, appendedLog)
-            || appendedLog.Entries.Count != 2
-            || !ReferenceEquals(appendedLog.Entries[0], initialLog.Entries[0])
-            || !ReferenceEquals(appendedLog.Entries[1], first)
+            || appendedLog.Entries.Count != 1
+            || !ReferenceEquals(appendedLog.Entries[0], first)
             || ReferenceEquals(firstRequest, first)
             || controller.TryRecord(duplicate, worldEvents)
             || controller.TryRecord(new WorldEventId("absent-event"), worldEvents)

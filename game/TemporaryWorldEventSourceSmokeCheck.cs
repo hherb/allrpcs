@@ -15,7 +15,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
     private const string GreyboxReadyEventIdText = "greybox-ready";
 
     private TemporaryWorldEventSource source = null!;
-    private WorldEventLogController eventLogController = null!;
+    private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
     private CharacterBody2D seeker = null!;
@@ -33,7 +33,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         }
 
         source = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
-        eventLogController = GetNode<WorldEventLogController>("../WorldEventLogController");
+        worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
@@ -48,7 +48,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         _ = delta;
         SetProcess(false);
 
-        WorldEventLogSnapshot expectedEventLog = eventLogController.EventLog;
+        WorldEventLogSnapshot? expectedEventLog = worldEventController.EventLog;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
         FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = focusedSearchController.Outcomes;
@@ -87,7 +87,8 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
             return;
         }
 
-        if (!ReferenceEquals(eventLogController.EventLog, expectedEventLog)
+        if (expectedEventLog is null
+            || !ReferenceEquals(worldEventController.EventLog, expectedEventLog)
             || expectedEventLog.Entries.Count != 1
             || !ReferenceEquals(expectedEventLog.Entries[0], first.EventId)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)

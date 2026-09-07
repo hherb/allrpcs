@@ -889,18 +889,20 @@ immutable Domain operation. Every eligible event is recorded; `no-advance` prese
 supplied time snapshot, while `advance` installs a new snapshot retaining the authoritative event's
 exact identifier. Undefined, already-recorded, or repeated-current advancing events fail closed.
 
-`Allrpcs.Game.WorldEventLogController` owns one initially empty immutable log and delegates
-authoritative recording to the Domain policy and transition. Successful recording installs the
-returned snapshot; rejection preserves the current log and unrelated world-object, perception, and
-focused-search state.
+`Allrpcs.Game.WorldEventLogController` and `WorldTimeController` remain focused fixtures for their
+individual Domain boundaries. The scene's `WorldEventController` is the ordinary runtime authority:
+it initializes once from exact authoritative-event, identifier-log, and qualitative-time snapshots,
+then delegates occurrence eligibility and transition to the Domain contracts. A successful
+occurrence installs the returned log and time snapshots together. Uninitialized, undefined,
+duplicate, repeated-current, and null cases preserve every controller snapshot or reject null.
 
 `Allrpcs.Game.TemporaryWorldEventSource` independently authors and retains one exact snapshot
 containing the canonical `greybox-ready` event with the `no-advance` effect. During `Main._Ready`,
-the new `WorldEventController` retains that exact snapshot, resolves the initial identifier to its
-exact authoritative event, and the log controller records that event once. `WorldTimeController`
-independently owns the explicit initial qualitative-time snapshot and delegates eligible advances
-to the Domain policy and transition. Scene orchestration does not yet apply the atomic occurrence
-transition or connect time to ordinary play, disease, dialogue, replay, persistence, or presentation.
+the `WorldEventController` retains that exact snapshot plus a new empty log and explicit initial
+time snapshot, resolves the initial identifier to its exact authoritative event, and applies it
+through atomic occurrence orchestration. Startup therefore records the exact authoritative ID while
+preserving the exact initial time snapshot. No advancing event is connected to ordinary play,
+disease, dialogue, replay, persistence, serialization, or presentation yet.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It

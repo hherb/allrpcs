@@ -88,13 +88,9 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 ## Phase 2 — Authoritative world and discovery
 
 - [x] Establish deterministic authoritative world, discovery, event, and qualitative-time rules.
-- [ ] Add scene occurrence orchestration, meaningful-time integration, schema-versioned save/load,
-  representative discoveries, scenario validation, and filtered-view leakage coverage.
-
-Acceptance:
-
-- [ ] Saving and loading preserves world state exactly, and no UI or character context can
-  reveal hidden information before its authored discovery conditions are met.
+- [x] Orchestrate atomic world-event occurrence in the scene.
+- [ ] Integrate meaningful time, versioned save/load, representative discoveries, scenario
+  validation, and filtered-view leakage tests; prove saves preserve state and hidden facts stay hidden.
 
 ## Phase 3 — Natural-language dialogue with a deterministic character
 

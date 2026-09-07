@@ -7,7 +7,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Runs credential-free world-event controller checks when explicitly enabled.</summary>
+/// <summary>Runs credential-free atomic world-event controller checks when explicitly enabled.</summary>
 public partial class WorldEventControllerSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_WORLD_EVENT_CONTROLLER_CHECK";
@@ -53,8 +53,8 @@ public partial class WorldEventControllerSmokeCheck : Node
 
         WorldEventSnapshot sourceSnapshot = source.WorldEvents;
         WorldEvent sourceEvent = sourceSnapshot.Entries.Single();
-        WorldEventLogSnapshot expectedEventLog = eventLogController.EventLog;
-        WorldTimeSnapshot expectedWorldTime = worldTimeController.WorldTime;
+        WorldEventLogSnapshot expectedStandaloneEventLog = eventLogController.EventLog;
+        WorldTimeSnapshot expectedStandaloneWorldTime = worldTimeController.WorldTime;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
         FocusedSearchActivitySnapshot expectedActivities = focusedSearchController.Activities;
         FocusedSearchOutcomeSnapshot expectedOutcomes = focusedSearchController.Outcomes;
@@ -64,48 +64,38 @@ public partial class WorldEventControllerSmokeCheck : Node
         string expectedFocusStatus = focusStatus.Text;
         string expectedFocusedSearchResult = focusedSearchResult.Text;
 
-        WorldEventSnapshot? initializedSnapshot = controller.WorldEvents;
-        WorldEventController uninitializedController = new();
-        AddChild(uninitializedController);
-        if (initializedSnapshot is null
-            || initializedSnapshot.Entries.Count != 1
-            || !ReferenceEquals(initializedSnapshot.Entries[0], sourceEvent)
-            || !ReferenceEquals(initializedSnapshot, sourceSnapshot)
+        WorldEventSnapshot? initializedEvents = controller.WorldEvents;
+        WorldEventLogSnapshot? startupLog = controller.EventLog;
+        WorldTimeSnapshot? startupTime = controller.WorldTime;
+        if (!ReferenceEquals(initializedEvents, sourceSnapshot)
+            || startupLog is null
+            || startupTime is null
+            || startupLog.Entries.Count != 1
+            || !ReferenceEquals(startupLog.Entries[0], sourceEvent.EventId)
+            || startupTime.CurrentEventId is not null
             || !ReferenceEquals(controller.FindWorldEvent(sourceEvent.EventId), sourceEvent)
-            || uninitializedController.FindWorldEvent(sourceEvent.EventId) is not null
+            || controller.TryOccur(new WorldEventId(sourceEvent.EventId.Value))
+            || !ReferenceEquals(controller.EventLog, startupLog)
+            || !ReferenceEquals(controller.WorldTime, startupTime)
             || !HasExpectedControllerSurface())
         {
-            Fail("World-event controller failed its exact scene initialization boundary.");
+            Fail("World-event controller failed exact atomic startup occurrence.");
             return;
         }
 
-        WorldEvent secondEvent = new(
-            new WorldEventId("patient-stabilized"),
-            WorldEventTimeEffect.Advance);
-        WorldEventSnapshot separateSnapshot = new([sourceEvent, secondEvent]);
-        if (!uninitializedController.TryInitializeWorldEvents(separateSnapshot)
-            || !ReferenceEquals(uninitializedController.WorldEvents, separateSnapshot))
+        if (!ProvesInitializationAndAtomicOccurrences(sourceEvent)
+            || !ProvesRejectedOccurrencesPreserveEverySnapshot(sourceEvent))
         {
-            Fail("World-event controller rejected exact one-time snapshot initialization.");
-            return;
-        }
-
-        WorldEventId valueEqualSecondId = new(secondEvent.EventId.Value);
-        if (!ReferenceEquals(controller.FindWorldEvent(sourceEvent.EventId), sourceEvent)
-            || !ReferenceEquals(uninitializedController.FindWorldEvent(valueEqualSecondId), secondEvent)
-            || controller.FindWorldEvent(new WorldEventId("absent-event")) is not null
-            || controller.TryInitializeWorldEvents(new WorldEventSnapshot([]))
-            || !ReferenceEquals(controller.WorldEvents, initializedSnapshot)
-            || !RejectsNullInputs())
-        {
-            Fail("World-event controller failed lookup, rejection, or state preservation.");
             return;
         }
 
         if (!ReferenceEquals(source.WorldEvents, sourceSnapshot)
             || !ReferenceEquals(sourceSnapshot.Entries.Single(), sourceEvent)
-            || !ReferenceEquals(eventLogController.EventLog, expectedEventLog)
-            || !ReferenceEquals(worldTimeController.WorldTime, expectedWorldTime)
+            || !ReferenceEquals(controller.WorldEvents, initializedEvents)
+            || !ReferenceEquals(controller.EventLog, startupLog)
+            || !ReferenceEquals(controller.WorldTime, startupTime)
+            || !ReferenceEquals(eventLogController.EventLog, expectedStandaloneEventLog)
+            || !ReferenceEquals(worldTimeController.WorldTime, expectedStandaloneWorldTime)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
@@ -118,16 +108,105 @@ public partial class WorldEventControllerSmokeCheck : Node
                 expectedFocusedSearchResult,
                 StringComparison.Ordinal))
         {
-            Fail("World-event controller changed source, world, gameplay, or presentation state.");
+            Fail("World-event occurrence changed source, world, gameplay, or presentation state.");
             return;
         }
 
         GD.Print(
-            "World-event controller smoke passed: optional minimal ownership, exact scene and "
-            + "one-time initialization, exact and value-equal lookup, absent and null rejection, and "
-            + "unchanged source, identifier log, world time, world objects, perception, "
-            + "focused search, movement, input, and presentation state were correct.");
+            "World-event controller smoke passed: exact one-time state initialization, atomic "
+            + "no-advance and advancing occurrences, authoritative identifier retention, fail-closed "
+            + "uninitialized, undefined, duplicate, repeated-current, and null handling, and unchanged "
+            + "source, world, discovery, movement, input, and presentation state were correct.");
         GetTree().Quit();
+    }
+
+    private bool ProvesInitializationAndAtomicOccurrences(WorldEvent noAdvanceEvent)
+    {
+        WorldEvent advancingEvent = new(
+            new WorldEventId("patient-stabilized"),
+            WorldEventTimeEffect.Advance);
+        WorldEventSnapshot worldEvents = new([noAdvanceEvent, advancingEvent]);
+        WorldEventLogSnapshot initialLog = new([]);
+        WorldTimeSnapshot initialTime = new(null);
+        WorldEventController separateController = new();
+        AddChild(separateController);
+
+        if (!separateController.TryInitialize(worldEvents, initialLog, initialTime)
+            || !ReferenceEquals(separateController.WorldEvents, worldEvents)
+            || !ReferenceEquals(separateController.EventLog, initialLog)
+            || !ReferenceEquals(separateController.WorldTime, initialTime)
+            || !separateController.TryOccur(new WorldEventId(noAdvanceEvent.EventId.Value)))
+        {
+            Fail("World-event controller rejected exact initialization or a no-advance occurrence.");
+            return false;
+        }
+
+        WorldEventLogSnapshot noAdvanceLog = separateController.EventLog!;
+        if (noAdvanceLog.Entries.Count != 1
+            || !ReferenceEquals(noAdvanceLog.Entries[0], noAdvanceEvent.EventId)
+            || !ReferenceEquals(separateController.WorldTime, initialTime)
+            || !separateController.TryOccur(new WorldEventId(advancingEvent.EventId.Value)))
+        {
+            Fail("World-event controller failed no-advance state preservation or advancing occurrence.");
+            return false;
+        }
+
+        WorldEventLogSnapshot advancedLog = separateController.EventLog!;
+        WorldTimeSnapshot advancedTime = separateController.WorldTime!;
+        if (advancedLog.Entries.Count != 2
+            || !ReferenceEquals(advancedLog.Entries[0], noAdvanceEvent.EventId)
+            || !ReferenceEquals(advancedLog.Entries[1], advancingEvent.EventId)
+            || ReferenceEquals(advancedLog, noAdvanceLog)
+            || ReferenceEquals(advancedTime, initialTime)
+            || !ReferenceEquals(advancedTime.CurrentEventId, advancingEvent.EventId)
+            || separateController.TryInitialize(new WorldEventSnapshot([]), new([]), new(null))
+            || !ReferenceEquals(separateController.WorldEvents, worldEvents)
+            || !ReferenceEquals(separateController.EventLog, advancedLog)
+            || !ReferenceEquals(separateController.WorldTime, advancedTime))
+        {
+            Fail("World-event controller failed exact atomic result installation or one-time initialization.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private bool ProvesRejectedOccurrencesPreserveEverySnapshot(WorldEvent sourceEvent)
+    {
+        WorldEventController uninitialized = new();
+        AddChild(uninitialized);
+        if (uninitialized.TryOccur(sourceEvent.EventId)
+            || uninitialized.FindWorldEvent(sourceEvent.EventId) is not null
+            || uninitialized.WorldEvents is not null
+            || uninitialized.EventLog is not null
+            || uninitialized.WorldTime is not null)
+        {
+            Fail("World-event controller changed uninitialized state after a rejected occurrence.");
+            return false;
+        }
+
+        WorldEvent advancingEvent = new(
+            new WorldEventId("patient-stabilized"),
+            WorldEventTimeEffect.Advance);
+        WorldEventSnapshot events = new([advancingEvent]);
+        WorldEventLogSnapshot log = new([]);
+        WorldTimeSnapshot repeatedTime = new(new WorldEventId(advancingEvent.EventId.Value));
+        WorldEventController repeated = new();
+        AddChild(repeated);
+        if (!repeated.TryInitialize(events, log, repeatedTime)
+            || repeated.TryOccur(advancingEvent.EventId)
+            || repeated.TryOccur(new WorldEventId("absent-event"))
+            || repeated.FindWorldEvent(new WorldEventId("absent-event")) is not null
+            || !ReferenceEquals(repeated.WorldEvents, events)
+            || !ReferenceEquals(repeated.EventLog, log)
+            || !ReferenceEquals(repeated.WorldTime, repeatedTime)
+            || !RejectsNullInputs(repeated, events, log, repeatedTime))
+        {
+            Fail("World-event controller failed rejection or exact snapshot preservation.");
+            return false;
+        }
+
+        return true;
     }
 
     private static bool HasExpectedControllerSurface()
@@ -136,50 +215,76 @@ public partial class WorldEventControllerSmokeCheck : Node
             .GetProperties(
                 System.Reflection.BindingFlags.Public
                     | System.Reflection.BindingFlags.Instance
-                    | System.Reflection.BindingFlags.DeclaredOnly);
+                    | System.Reflection.BindingFlags.DeclaredOnly)
+            .OrderBy(property => property.Name)
+            .ToArray();
         System.Reflection.MethodInfo[] methods = typeof(WorldEventController)
             .GetMethods(
                 System.Reflection.BindingFlags.Public
                     | System.Reflection.BindingFlags.Instance
                     | System.Reflection.BindingFlags.DeclaredOnly)
             .Where(method => !method.IsSpecialName)
+            .OrderBy(method => method.Name)
             .ToArray();
 
-        return properties.Length == 1
-            && properties[0].Name == nameof(WorldEventController.WorldEvents)
-            && properties[0].PropertyType == typeof(WorldEventSnapshot)
-            && properties[0].CanRead
-            && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate
-            && methods.Length == 2
-            && methods.Any(
-                method => method.Name == nameof(WorldEventController.TryInitializeWorldEvents)
-                    && method.ReturnType == typeof(bool)
-                    && method.GetParameters().Length == 1
-                    && method.GetParameters()[0].ParameterType == typeof(WorldEventSnapshot))
-            && methods.Any(
-                method => method.Name == nameof(WorldEventController.FindWorldEvent)
-                    && method.ReturnType == typeof(WorldEvent)
-                    && method.GetParameters().Length == 1
-                    && method.GetParameters()[0].ParameterType == typeof(WorldEventId));
+        return properties.Length == 3
+            && IsPrivateSetProperty(properties[0], "EventLog", typeof(WorldEventLogSnapshot))
+            && IsPrivateSetProperty(properties[1], "WorldEvents", typeof(WorldEventSnapshot))
+            && IsPrivateSetProperty(properties[2], "WorldTime", typeof(WorldTimeSnapshot))
+            && methods.Length == 3
+            && methods[0].Name == nameof(WorldEventController.FindWorldEvent)
+            && methods[0].ReturnType == typeof(WorldEvent)
+            && HasParameters(methods[0], typeof(WorldEventId))
+            && methods[1].Name == nameof(WorldEventController.TryInitialize)
+            && methods[1].ReturnType == typeof(bool)
+            && HasParameters(
+                methods[1],
+                typeof(WorldEventSnapshot),
+                typeof(WorldEventLogSnapshot),
+                typeof(WorldTimeSnapshot))
+            && methods[2].Name == nameof(WorldEventController.TryOccur)
+            && methods[2].ReturnType == typeof(bool)
+            && HasParameters(methods[2], typeof(WorldEventId));
     }
 
-    private bool RejectsNullInputs()
+    private static bool IsPrivateSetProperty(
+        System.Reflection.PropertyInfo property,
+        string name,
+        Type propertyType) =>
+        property.Name == name
+        && property.PropertyType == propertyType
+        && property.CanRead
+        && property.SetMethod is not null
+        && property.SetMethod.IsPrivate;
+
+    private static bool HasParameters(
+        System.Reflection.MethodInfo method,
+        params Type[] parameterTypes) =>
+        method.GetParameters().Select(parameter => parameter.ParameterType).SequenceEqual(parameterTypes);
+
+    private static bool RejectsNullInputs(
+        WorldEventController target,
+        WorldEventSnapshot events,
+        WorldEventLogSnapshot log,
+        WorldTimeSnapshot time) =>
+        ThrowsArgumentNull(() => target.FindWorldEvent(null!))
+        && ThrowsArgumentNull(() => target.TryOccur(null!))
+        && ThrowsArgumentNull(() => target.TryInitialize(null!, log, time))
+        && ThrowsArgumentNull(() => target.TryInitialize(events, null!, time))
+        && ThrowsArgumentNull(() => target.TryInitialize(events, log, null!))
+        && ReferenceEquals(target.WorldEvents, events)
+        && ReferenceEquals(target.EventLog, log)
+        && ReferenceEquals(target.WorldTime, time);
+
+    private static bool ThrowsArgumentNull(Action action)
     {
         try
         {
-            controller.TryInitializeWorldEvents(null!);
+            action();
         }
         catch (ArgumentNullException)
         {
-            try
-            {
-                controller.FindWorldEvent(null!);
-            }
-            catch (ArgumentNullException)
-            {
-                return true;
-            }
+            return true;
         }
 
         return false;
