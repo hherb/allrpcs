@@ -34,7 +34,9 @@ public partial class Main : Node
     private TemporaryPassiveNoticingCandidateSource passiveNoticingCandidateSource = null!;
     private TemporarySeekerCharacterSource seekerCharacterSource = null!;
     private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
+    private TemporaryWorldEventSource worldEventSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
+    private WorldEventLogController worldEventLogController = null!;
     private WorldObjectController worldObjectController = null!;
     private HealerCommandMode displayedMode;
 
@@ -74,8 +76,11 @@ public partial class Main : Node
             "TemporarySeekerCharacterSource");
         seekerPerceptionSource = GetNode<TemporarySeekerPerceptionSource>(
             "TemporarySeekerPerceptionSource");
+        worldEventSource = GetNode<TemporaryWorldEventSource>("TemporaryWorldEventSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
+        worldEventLogController = GetNode<WorldEventLogController>("WorldEventLogController");
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
+        RecordInitialWorldEvent();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
         {
             throw new InvalidOperationException(
@@ -97,6 +102,15 @@ public partial class Main : Node
 
         focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
+    }
+
+    private void RecordInitialWorldEvent()
+    {
+        if (!worldEventLogController.TryAppend(worldEventSource.EventId))
+        {
+            throw new InvalidOperationException(
+                "The initial greybox world event could not be recorded.");
+        }
     }
 
     private void ProduceInitialPassiveNoticingCandidate()

@@ -86,6 +86,9 @@ and fail-closed mismatched and null rejection without changing activity or prese
 world-object-controller launch proves exact lookup of both scene-authored objects, including through
 a value-equal distinct identifier, absent and uninitialized results, null rejection, stable exact
 snapshot retention, and unchanged source, targets, focused-search state, and presentation. The
+world-event source and startup-recording launches prove one independently authored, stable,
+canonical `greybox-ready` identifier, exact one-time append, value-equal duplicate rejection, and
+unchanged world-object, perception, focused-search, movement, input, and presentation state. The
 movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
 four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
@@ -860,7 +863,14 @@ event payloads, time, replay, persistence, or production.
 `Allrpcs.Game.WorldEventLogController` owns one initially empty immutable log and delegates
 duplicate-free append to the Domain policy and transition. Successful append installs the returned
 snapshot; rejection preserves the current log and unrelated world-object, perception, and
-focused-search state. No temporary event source or ordinary-play event production is connected.
+focused-search state.
+
+`Allrpcs.Game.TemporaryWorldEventSource` independently authors and retains one canonical
+`greybox-ready` identifier. It exposes only that exact stable instance and does not inspect or call
+the log controller. During `Main._Ready`, the scene appends the exact source identifier once through
+the existing controller and fails explicitly if it cannot be recorded. This bounded startup event
+does not define payloads, kinds, actors, targets, time effects, clocks, replay, persistence, or any
+gameplay or presentation reaction.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
