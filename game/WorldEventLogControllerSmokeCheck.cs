@@ -45,12 +45,15 @@ public partial class WorldEventLogControllerSmokeCheck : Node
         CharacterPerceptionSnapshot? expectedPerception = focusedSearchController.Perception;
         WorldObjectSnapshot? expectedWorldObjects = worldObjectController.WorldObjects;
         WorldEventId first = new("healer-ready");
+        WorldEvent firstEvent = new(first, WorldEventTimeEffect.Advance);
+        WorldEventSnapshot worldEvents = new([firstEvent]);
+        WorldEventId firstRequest = new("healer-ready");
 
         if (initialLog.Entries.Count != 1
-            || !controller.TryAppend(first)
+            || !controller.TryRecord(firstRequest, worldEvents)
             || !HasExpectedControllerSurface())
         {
-            Fail("World-event log controller failed initialized ownership or append.");
+            Fail("World-event log controller failed initialized ownership or recording.");
             return;
         }
 
@@ -60,10 +63,12 @@ public partial class WorldEventLogControllerSmokeCheck : Node
             || appendedLog.Entries.Count != 2
             || !ReferenceEquals(appendedLog.Entries[0], initialLog.Entries[0])
             || !ReferenceEquals(appendedLog.Entries[1], first)
-            || controller.TryAppend(duplicate)
+            || ReferenceEquals(firstRequest, first)
+            || controller.TryRecord(duplicate, worldEvents)
+            || controller.TryRecord(new WorldEventId("absent-event"), worldEvents)
             || !ReferenceEquals(controller.EventLog, appendedLog))
         {
-            Fail("World-event log controller failed exact append or duplicate rejection.");
+            Fail("World-event log controller failed exact recording or rejection.");
             return;
         }
 
@@ -79,9 +84,9 @@ public partial class WorldEventLogControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "World-event log controller smoke passed: initialized ownership, exact append, "
-            + "value-equal duplicate and null rejection, minimal surface, and unchanged unrelated "
-            + "state were correct.");
+            "World-event log controller smoke passed: initialized ownership, exact authoritative "
+            + "recording, absent, value-equal duplicate, and null rejection, minimal surface, and "
+            + "unchanged unrelated state were correct.");
         GetTree().Quit();
     }
 
@@ -105,21 +110,29 @@ public partial class WorldEventLogControllerSmokeCheck : Node
             && property.PropertyType == typeof(WorldEventLogSnapshot)
             && property.SetMethod is not null
             && property.SetMethod.IsPrivate
-            && method.Name == nameof(WorldEventLogController.TryAppend)
+            && method.Name == nameof(WorldEventLogController.TryRecord)
             && method.ReturnType == typeof(bool)
-            && method.GetParameters().Length == 1
-            && method.GetParameters()[0].ParameterType == typeof(WorldEventId);
+            && method.GetParameters().Length == 2
+            && method.GetParameters()[0].ParameterType == typeof(WorldEventId)
+            && method.GetParameters()[1].ParameterType == typeof(WorldEventSnapshot);
     }
 
     private bool RejectsNullAppend()
     {
         try
         {
-            controller.TryAppend(null!);
+            controller.TryRecord(null!, new WorldEventSnapshot([]));
         }
         catch (ArgumentNullException)
         {
-            return true;
+            try
+            {
+                controller.TryRecord(new WorldEventId("healer-ready"), null!);
+            }
+            catch (ArgumentNullException)
+            {
+                return true;
+            }
         }
 
         return false;

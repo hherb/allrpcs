@@ -10,17 +10,18 @@ public partial class WorldEventLogController : Node
     /// <summary>Gets the current immutable world-event log snapshot.</summary>
     public WorldEventLogSnapshot EventLog { get; private set; } = new([]);
 
-    /// <summary>Appends one previously unrecorded world-event identifier.</summary>
-    public bool TryAppend(WorldEventId eventId)
+    /// <summary>Records one defined, previously unrecorded world-event identifier.</summary>
+    public bool TryRecord(WorldEventId eventId, WorldEventSnapshot worldEvents)
     {
         ArgumentNullException.ThrowIfNull(eventId);
+        ArgumentNullException.ThrowIfNull(worldEvents);
 
-        if (!WorldEventLogAppendPolicy.CanAppend(eventId, EventLog))
+        if (!WorldEventRecordingPolicy.CanRecord(eventId, worldEvents, EventLog))
         {
             return false;
         }
 
-        EventLog = WorldEventLogAppendTransition.Append(eventId, EventLog);
+        EventLog = WorldEventRecordingTransition.Record(eventId, worldEvents, EventLog);
         return true;
     }
 }
