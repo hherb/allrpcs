@@ -2,57 +2,61 @@
 
 ## Current state
 
-Phases 2m15–2m18 are implemented and reviewed without findings on
-`codex/phase-2m15-plus-passive-noticing`, based directly on PR #122's merge commit `7ff6967`.
+Phases 2m19–2m22 are implemented on `codex/phase-2m19-plus-passive-noticing`, based directly on
+PR #123's merge commit `a83abc5`.
 
-The pure Domain passive-noticing chain now binds candidate recording to an existing authoritative
-character and world object, then deterministically selects and atomically resolves the next
-eligible retained candidate for one observer. Production requires value-equal candidate, character,
-and world-object identities and delegates duplicate-free exact-instance append behavior to the
-existing recording boundary. Selection preserves stable candidate order and returns the exact first
-candidate for a value-equal observer that can change perception and be consumed. Resolve-next
-delegates that selection to the existing atomic transition, returning snapshots in which only the
-selected target changes from `Unnoticed` to `Noticed` and only that complete candidate is removed.
-Distinct value-equal identifiers are accepted, while mismatches, duplicates, absent targets,
-already-noticed targets, unrelated observers, and nulls are rejected without changing any input.
+The Godot scene now retains one complete temporary Seeker `Character`. Its identity and human
+controller assignment reuse the focused-search controller's exact `CharacterId`; all other
+required authored character components are explicitly empty. The existing controller also owns an
+initially empty immutable passive-noticing candidate snapshot. Its production method accepts only
+the controller's Seeker backed by a value-equal authoritative character and world object, delegates
+duplicate-free exact append behavior to the Domain production transition, and otherwise preserves
+state. Its resolve-next method fails closed without initialized perception or an eligible candidate,
+then delegates stable selection and atomic resolution and installs both returned snapshots. It
+remains the only live perception owner.
 
-All four slices were test-first: each focused suite failed with `CS0103`/`CS0246` while its new type
-was absent and passed after the minimal implementation. The final host-shell
-`./scripts/quality.sh` passed workflow and formatting validation, a zero-warning build, 801 Domain
-tests, 107 Application tests, six architecture tests, all fourteen Godot smokes, and the bounded
-graphical launch. README and ROADMAP record Phases 2m15–2m18. Passive noticing remains incomplete:
-no authoritative Character exists in the Godot scene, and no runtime owner yet retains candidate
-state or invokes production, selection, or resolution. No Application or Godot behavior changed.
+A separate temporary scene source retains one passive-noticing candidate using the exact character
+source identity and first authoritative world-object identity. It does not call either controller
+method. Ordinary play therefore still retains no candidates and performs no passive-noticing
+production or resolution. The current temporary perception also seeds both scene objects at
+`Noticed`, so the source candidate is deliberately not yet resolution-eligible. Focused-search,
+perception initialization, movement, input, and presentation behavior remain unchanged.
+
+Each slice was test-first: Phase 2m19 first failed with `CS0246` for the absent character source;
+Phase 2m20 with `CS1061` for absent candidate ownership/production; Phase 2m21 with `CS1061` for the
+absent resolve-next boundary; and Phase 2m22 with `CS0246` for the absent candidate source. All four
+targeted host-shell Godot smokes pass. The final host-shell `./scripts/quality.sh` passed workflow
+and formatting validation, a zero-warning build, 801 Domain tests, 107 Application tests, six
+architecture tests, all eighteen Godot smokes, and the bounded graphical launch.
 
 ## Exact next bounded slice
 
-Take **Phase 2m19: temporary authoritative Seeker character source**.
+Take **Phase 2m23: temporary passive-noticing-eligible Seeker perception seed**.
 
 Acceptance boundary:
 
-1. Add one Godot `Allrpcs.Game.TemporarySeekerCharacterSource` node that creates and retains exactly
-   one immutable `Character` for the existing scene Seeker during `_Ready`.
-2. Obtain the Seeker identifier from the already-ready `FocusedSearchActivityController` and retain
-   that exact `CharacterId` instance in both `CharacterIdentity` and its matching human
-   `CharacterControllerAssignment`. Supply only explicitly temporary minimal authored components
-   needed by the existing complete `Character` aggregate; do not derive passive-noticing rules from
-   those components.
-3. Insert the source after the Seeker/controller and before any future passive-noticing consumer in
-   `Main.tscn`. Add one opt-in credential-free smoke proving exact source/identifier/component
-   retention and unchanged focused-search, perception, input, and presentation state.
-4. Add the smoke to the existing headless validation script, update README and ROADMAP evidence, run
-   `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
-   plus one next slice.
+1. Change only the temporary Seeker perception derivation so the passive candidate source's exact
+   first world-object target begins at `Unnoticed`; retain every other world object at `Noticed` in
+   stable source order and retain all exact identifier instances.
+2. Resolve the candidate target from `TemporaryPassiveNoticingCandidateSource` rather than copying
+   identity text or reading a greybox marker. Fail explicitly if the candidate does not identify an
+   existing source world object; do not silently choose a fallback.
+3. Extend the opt-in credential-free smoke evidence to prove exact candidate/perception alignment,
+   independent derivation behavior, unchanged controller candidate state, and unchanged
+   focused-search, movement, input, and presentation state.
+4. Update README and ROADMAP evidence, run `./scripts/quality.sh`, review every intended path, and
+   prune this file again to current evidence plus one next slice.
 
 Explicit exclusions:
 
-- Do not produce, record, select, resolve, or consume a passive-noticing candidate at runtime; do not
-  change perception, focus, movement, input, or presentation; and do not create a second live
-  perception owner.
+- Do not invoke candidate production or resolve-next during ordinary play; do not add polling,
+  proximity, distance, line-of-sight, timing, focus, input, or presentation rules.
+- Do not change focused-search lifecycle behavior, world-object authoring or ownership, character
+  components, movement, input, or UI; and do not create a second live perception owner.
 - Do not infer capabilities, inventory, conditions, knowledge, beliefs, relationships, goals,
-  distance, line of sight, environmental state, timing, or discovery from the temporary character.
+  environmental state, discovery, or visibility from the temporary character or candidate.
 - Do not add Application controllers, events, persistence, serialization, providers, plugins,
-  credentials, or UI.
+  credentials, or final UI.
 - Keep point-and-click movement, disease-time pausing, and the world-time debug overlay deferred.
 - Do not merge, release, distribute, sign, notarize, or change repository visibility without
   explicit user authorization.

@@ -132,7 +132,7 @@ that object at exactly `Identified`. Null or absent objects, null or unrelated p
 other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
 replacement description without changing any supplied object, snapshot, lifecycle state, marker
 presentation, or world-object ordering.
-Phases 2m1–2m18 add one immutable identifier-only passive-noticing candidate for an existing observer
+Phases 2m1–2m22 add one immutable identifier-only passive-noticing candidate for an existing observer
 and target, an immutable snapshot of those candidates, a pure observer-specific projection, an
 exact complete-candidate lookup, a pure candidate-to-perception applicability decision, and pure
 change detection plus application, candidate consumption, resolution, recording, authoritative
@@ -144,10 +144,16 @@ changes only that target to `Noticed` and removes only the complete candidate. A
 production requires an existing value-equal character and world object before delegating exact
 duplicate-free append behavior. Next-candidate selection returns the exact first retained,
 resolution-eligible candidate for a value-equal observer in stable order, and its sequence delegates
-the existing atomic resolution without ranking or mutating inputs. These boundaries do not provide
-an authoritative runtime character source, own live candidate or perception state, or add Godot
-wiring, so passive noticing remains incomplete. The exact next bounded slice is defined in
-`HANDOVER.md`.
+the existing atomic resolution without ranking or mutating inputs. A temporary Godot source now
+retains one complete Seeker character whose identity and human controller assignment reuse the
+existing controller's exact identifier, while every other required authored component is
+explicitly empty. The same controller owns an empty passive-candidate snapshot, delegates
+authoritative production and atomic stable resolve-next behavior to the existing Domain boundaries,
+and remains the sole live perception owner. A separate temporary candidate source retains the exact
+Seeker and first world-object identifiers without invoking those controller paths. No ordinary
+runtime path yet produces or resolves that candidate, and the current temporary perception begins
+with its target already `Noticed`, so passive noticing remains incomplete. The exact next bounded
+slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.

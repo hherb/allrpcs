@@ -870,8 +870,9 @@ authored cyan in-world ring. The ring is hidden by default, and ordinary play do
 inject activity outside the explicit temporary lifecycle inputs described below.
 
 `Allrpcs.Game.FocusedSearchActivityController` is the sole live owner of the existing Seeker's
-immutable focused-search activity, outcome, and optional perception snapshots. It initializes the
-activity and outcome snapshots empty from the Seeker's one authored stable character identifier.
+immutable focused-search activity, outcome, passive-noticing candidate, and optional perception
+snapshots. It initializes the activity, outcome, and passive-noticing candidate snapshots empty
+from the Seeker's one authored stable character identifier.
 Its separate one-time perception initialization accepts only an existing snapshot for that
 value-equal Seeker identifier and retains the exact supplied snapshot instance. Null,
 wrong-character, and repeated initialization are rejected without changing any owned snapshot or
@@ -890,6 +891,16 @@ complete eligibility to the world-object-bound policy and state creation to the 
 transition, then installs the exact returned perception and outcome snapshots without changing
 activity, the supplied world object, or presentation. Ordinary play reaches that boundary only
 through the explicit temporary resolution input described below.
+
+Its passive-noticing production boundary accepts an existing candidate, complete character, and
+world object, requires the candidate's observer to identify this controller's Seeker, and delegates
+the remaining authoritative identity and duplicate checks plus exact append behavior to the
+existing Domain production policy and transition. Its passive-noticing resolve-next boundary fails
+closed while perception is uninitialized or no retained candidate is eligible, otherwise delegates
+stable selection and atomic state construction to the existing Domain selection and sequence and
+installs both returned snapshots. These paths retain value-equal candidate identifiers, keep the
+controller as the only live perception owner, and do not change focused-search or presentation
+state. Ordinary play does not yet invoke either passive-noticing boundary.
 
 Each existing `Allrpcs.Game.GreyboxInteractionTarget` parses its one exported canonical object-ID
 text through the Domain `ObjectId` boundary when the node becomes ready and retains that exact
@@ -980,6 +991,22 @@ call a controller; change perception or visibility; or make either source author
 `Main._Ready`, the scene passes this exact snapshot to the controller's one-time initialization
 boundary. Lifecycle inputs do not read the source again.
 
+`Allrpcs.Game.TemporarySeekerCharacterSource` authors and retains one complete immutable temporary
+Seeker `Character` after the existing Seeker controller is ready. Its `CharacterIdentity` and human
+`CharacterControllerAssignment` both retain the controller's exact parsed `CharacterId` instance.
+The remaining required aggregate components are explicitly temporary empty authored backgrounds,
+capabilities, limitations, conditions, inventory, knowledge, beliefs, relationships, and goals;
+they are not passive-noticing inputs or rules. The source exposes only its one retained character
+and does not change focused-search, perception, movement, input, or presentation state.
+
+`Allrpcs.Game.TemporaryPassiveNoticingCandidateSource` separately authors and retains one
+identifier-only candidate after the character and world-object sources are ready. It uses the
+temporary character's exact identity identifier and the first authoritative world object's exact
+identifier without reading authored text, greybox coordinates, distance, line of sight, focus,
+input, or perception. It does not call the controller, produce or resolve a candidate, change
+visibility, or alter any presentation; ordinary play therefore still begins with an empty owned
+candidate snapshot.
+
 The temporary `focused_search_start` action maps physical F to one `Main._UnhandledInput` branch.
 On that pressed action only, `Main` resolves the current focused identifier through
 `WorldObjectController` and passes only the exact returned object plus the context source's exact
@@ -1057,8 +1084,8 @@ complete-character or world inspection, replacement, range, duration, location, 
 production or application, reason value, further lifecycle policy, in-place mutation, scheduling,
 persistence, production activity source, or final UI behavior. The temporary Godot adapters change
 only the authored indicator visibility and the Boolean-derived result text, and the temporary
-controller owns only its immutable activity and outcome snapshots plus the bounded lifecycle
-delegations described above. The interaction-focus controller adds only
+controller owns only the immutable snapshots and bounded lifecycle delegations described above.
+The interaction-focus controller adds only
 world-object-gated focus availability plus valid-focus and matching-world-object request/start
 composition, while the temporary context source only supplies retained greybox inputs. Ordinary
 greybox play invokes the start bridge only through physical F,

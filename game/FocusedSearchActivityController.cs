@@ -28,6 +28,10 @@ public partial class FocusedSearchActivityController : Node
     /// <summary>Gets the current immutable focused-search outcome snapshot.</summary>
     public FocusedSearchOutcomeSnapshot Outcomes { get; private set; } = new([]);
 
+    /// <summary>Gets the current immutable passive-noticing candidate snapshot.</summary>
+    public PassiveNoticingCandidateSnapshot PassiveNoticingCandidates { get; private set; } =
+        new([]);
+
     /// <summary>Gets the Seeker's initialized immutable perception snapshot, if any.</summary>
     public CharacterPerceptionSnapshot? Perception { get; private set; }
 
@@ -39,8 +43,65 @@ public partial class FocusedSearchActivityController : Node
             "../FocusedSearchActivityIndicator");
         Activities = new FocusedSearchActivitySnapshot([]);
         Outcomes = new FocusedSearchOutcomeSnapshot([]);
+        PassiveNoticingCandidates = new PassiveNoticingCandidateSnapshot([]);
         Perception = null;
         indicator.Present(SearcherCharacterId, Activities);
+    }
+
+    /// <summary>
+    /// Produces one candidate for this controller's Seeker when its character and world object
+    /// already exist.
+    /// </summary>
+    public bool TryProducePassiveNoticingCandidate(
+        PassiveNoticingCandidate candidate,
+        Character character,
+        WorldObject worldObject)
+    {
+        ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(character);
+        ArgumentNullException.ThrowIfNull(worldObject);
+
+        if (candidate.ObserverCharacterId != SearcherCharacterId
+            || !PassiveNoticingCandidateProductionPolicy.CanProduce(
+                candidate,
+                character,
+                worldObject,
+                PassiveNoticingCandidates))
+        {
+            return false;
+        }
+
+        PassiveNoticingCandidates = PassiveNoticingCandidateProductionTransition.Produce(
+            candidate,
+            character,
+            worldObject,
+            PassiveNoticingCandidates);
+        return true;
+    }
+
+    /// <summary>
+    /// Resolves the exact first eligible retained passive-noticing candidate for this controller's
+    /// Seeker against its owned perception.
+    /// </summary>
+    public bool TryResolveNextPassiveNoticingCandidate()
+    {
+        if (Perception is null
+            || PassiveNoticingCandidateResolutionSelection.SelectNext(
+                SearcherCharacterId,
+                Perception,
+                PassiveNoticingCandidates) is null)
+        {
+            return false;
+        }
+
+        PassiveNoticingCandidateResolutionResult result =
+            PassiveNoticingCandidateResolutionSequence.ResolveNext(
+                SearcherCharacterId,
+                Perception,
+                PassiveNoticingCandidates);
+        Perception = result.Perception;
+        PassiveNoticingCandidates = result.Candidates;
+        return true;
     }
 
     /// <summary>
