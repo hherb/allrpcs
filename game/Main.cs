@@ -1,5 +1,7 @@
 using Allrpcs.Application.Movement;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -27,6 +29,8 @@ public partial class Main : Node
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
+    private TemporaryPassiveNoticingCandidateSource passiveNoticingCandidateSource = null!;
+    private TemporarySeekerCharacterSource seekerCharacterSource = null!;
     private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldObjectController worldObjectController = null!;
@@ -59,6 +63,10 @@ public partial class Main : Node
             "TemporaryFocusedSearchContextSource");
         focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
             "TemporaryFocusedSearchOutcomeSource");
+        passiveNoticingCandidateSource = GetNode<TemporaryPassiveNoticingCandidateSource>(
+            "TemporaryPassiveNoticingCandidateSource");
+        seekerCharacterSource = GetNode<TemporarySeekerCharacterSource>(
+            "TemporarySeekerCharacterSource");
         seekerPerceptionSource = GetNode<TemporarySeekerPerceptionSource>(
             "TemporarySeekerPerceptionSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
@@ -75,10 +83,40 @@ public partial class Main : Node
                 "The focused-search controller could not initialize Seeker perception.");
         }
 
+        ProduceInitialPassiveNoticingCandidate();
+        ResolveInitialPassiveNoticingCandidate();
+
         RefreshResolvedPerceptionPresentation();
 
         focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
+    }
+
+    private void ProduceInitialPassiveNoticingCandidate()
+    {
+        PassiveNoticingCandidate candidate = passiveNoticingCandidateSource.Candidate;
+        Character character = seekerCharacterSource.Character;
+        WorldObject worldObject = worldObjectController.FindWorldObject(candidate.TargetObjectId)
+            ?? throw new InvalidOperationException(
+                "The passive-noticing candidate target is absent from live world objects.");
+
+        if (!focusedSearchController.TryProducePassiveNoticingCandidate(
+                candidate,
+                character,
+                worldObject))
+        {
+            throw new InvalidOperationException(
+                "The passive-noticing candidate could not be produced for the Seeker.");
+        }
+    }
+
+    private void ResolveInitialPassiveNoticingCandidate()
+    {
+        if (!focusedSearchController.TryResolveNextPassiveNoticingCandidate())
+        {
+            throw new InvalidOperationException(
+                "The initial passive-noticing candidate could not be resolved for the Seeker.");
+        }
     }
 
     /// <inheritdoc />

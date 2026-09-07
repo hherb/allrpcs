@@ -908,7 +908,8 @@ public partial class InteractionFocusSmokeCheck : Node
             || !ReferenceEquals(
                 completedPerception.Entries.Single(
                     entry => entry.ObjectId == targetObjectId).VisibilityState,
-                VisibilityState.Noticed))
+                initialPerception.Entries.Single(
+                    entry => entry.ObjectId == targetObjectId).VisibilityState))
         {
             Fail("Interaction-focus smoke changed completed resolution inputs.");
             return false;

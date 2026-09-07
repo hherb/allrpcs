@@ -54,8 +54,8 @@ public partial class PassiveNoticingCandidateControllerSmokeCheck : Node
         WorldObjectSnapshot expectedWorldObjects = worldObjectSource.WorldObjects;
         bool expectedIndicatorVisibility = searchIndicator.Visible;
         string expectedResultText = focusedSearchResult.Text;
-        PassiveNoticingCandidateSnapshot initialCandidates =
-            controller.PassiveNoticingCandidates;
+        PassiveNoticingCandidateSnapshot initialCandidates = new([]);
+        SetCandidates(initialCandidates);
         WorldObject target = expectedWorldObjects.Entries[0];
         WorldObject unrelatedWorldObject = expectedWorldObjects.Entries[1];
         PassiveNoticingCandidate candidate = new(
@@ -154,6 +154,15 @@ public partial class PassiveNoticingCandidateControllerSmokeCheck : Node
         return (Character)(method.Invoke(null, [characterId])
             ?? throw new InvalidOperationException(
                 "Temporary Seeker character source returned no character."));
+    }
+
+    private void SetCandidates(PassiveNoticingCandidateSnapshot candidates)
+    {
+        System.Reflection.PropertyInfo property = typeof(FocusedSearchActivityController)
+            .GetProperty(nameof(FocusedSearchActivityController.PassiveNoticingCandidates))
+            ?? throw new InvalidOperationException(
+                "Focused-search controller passive-noticing candidates were not found.");
+        property.SetValue(controller, candidates);
     }
 
     private void Fail(string message)
