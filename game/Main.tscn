@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3]
+[gd_scene load_steps=52 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -44,6 +44,8 @@
 [ext_resource type="Script" path="res://TemporaryWorldEventSource.cs" id="42_world_event_source"]
 [ext_resource type="Script" path="res://TemporaryWorldEventSourceSmokeCheck.cs" id="43_world_event_source_check"]
 [ext_resource type="Script" path="res://InitialWorldEventRecordingSmokeCheck.cs" id="44_initial_world_event_check"]
+[ext_resource type="Script" path="res://WorldTimeController.cs" id="45_world_time_controller"]
+[ext_resource type="Script" path="res://WorldTimeControllerSmokeCheck.cs" id="46_world_time_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -368,6 +370,9 @@ script = ExtResource("42_world_event_source")
 [node name="WorldEventLogController" type="Node" parent="."]
 script = ExtResource("40_world_event_log_controller")
 
+[node name="WorldTimeController" type="Node" parent="."]
+script = ExtResource("45_world_time_controller")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -400,6 +405,9 @@ script = ExtResource("43_world_event_source_check")
 
 [node name="InitialWorldEventRecordingSmokeCheck" type="Node" parent="."]
 script = ExtResource("44_initial_world_event_check")
+
+[node name="WorldTimeControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("46_world_time_controller_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")

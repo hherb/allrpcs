@@ -87,10 +87,12 @@ world-object-controller launch proves exact lookup of both scene-authored object
 a value-equal distinct identifier, absent and uninitialized results, null rejection, stable exact
 snapshot retention, and unchanged source, targets, focused-search state, and presentation. The
 world-event source and startup-recording launches prove one independently authored, stable,
-canonical `greybox-ready` identifier, exact one-time append, value-equal duplicate rejection, and
-unchanged world-object, perception, focused-search, movement, input, and presentation state. The
-movement-boundary launch uses the existing Seeker body and authored collision shapes to prove all
-four outer borders plus representative stream, village, and tree collisions, then proves the
+canonical `greybox-ready`/`no-advance` event, exact identifier append, value-equal duplicate
+rejection, and unchanged world-object, perception, focused-search, movement, input, and
+presentation state. The world-time controller launch proves the explicit initial state, exact
+advancing-event retention, no-advance, repeat, and null rejection, and unchanged surrounding state.
+The movement-boundary launch uses the existing Seeker body and authored collision shapes to prove
+all four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs
 `actionlint` against every hosted workflow. A focused-search presentation launch proves the one
 temporary Seeker indicator is hidden by default, follows empty, unrelated, one-match, multi-match,
@@ -861,9 +863,19 @@ identifier. Duplicate and null rejection leave all inputs unchanged. These contr
 event payloads, time, replay, persistence, or production.
 
 `WorldEventTimeEffect` is the closed world-event classification vocabulary: exact singleton values
-`no-advance` and `advance` in stable order with strict canonical parsing. It does not assign an
-effect to any event, define elapsed time, phases, durations, progression, scheduling, or runtime
-behavior.
+`no-advance` and `advance` in stable order with strict canonical parsing. Immutable `WorldEvent`
+values retain one exact existing identifier and time effect. `WorldEventSnapshot` copies ordered
+events into a read-only collection and rejects nulls and duplicate event identifiers even when
+their time effects differ; `WorldEventLookup.FindById` returns the exact retained value-equal event.
+
+`WorldEventLogProjection.Resolve` deterministically maps the identifier log to exact authoritative
+events in log order, ignores unrecorded definitions, and fails closed when an identifier has no
+definition. `WorldTimeSnapshot` represents qualitative time only as the exact latest event that
+advanced it, with null as the explicit initial state. `WorldTimeAdvancementPolicy.CanAdvance` and
+`WorldTimeAdvancementTransition.Advance` reject `no-advance` events and the current value-equal
+event. `WorldTimeProjection.FromEvents` reconstructs the same state from ordered events by selecting
+the exact latest `advance` identifier. These contracts define no elapsed time, phase names,
+durations, scheduling, disease progression, persistence, or serialization.
 
 `Allrpcs.Game.WorldEventLogController` owns one initially empty immutable log and delegates
 duplicate-free append to the Domain policy and transition. Successful append installs the returned
@@ -871,11 +883,12 @@ snapshot; rejection preserves the current log and unrelated world-object, percep
 focused-search state.
 
 `Allrpcs.Game.TemporaryWorldEventSource` independently authors and retains one canonical
-`greybox-ready` identifier. It exposes only that exact stable instance and does not inspect or call
-the log controller. During `Main._Ready`, the scene appends the exact source identifier once through
-the existing controller and fails explicitly if it cannot be recorded. This bounded startup event
-does not define payloads, kinds, actors, targets, time effects, clocks, replay, persistence, or any
-gameplay or presentation reaction.
+`greybox-ready` event with the `no-advance` effect. It exposes only that exact stable event and does
+not inspect or call either controller. During `Main._Ready`, the scene appends the event's exact
+identifier once through the existing log controller and fails explicitly if it cannot be recorded.
+`Allrpcs.Game.WorldTimeController` independently owns the explicit initial qualitative-time
+snapshot and delegates eligible advances to the Domain policy and transition. Neither controller
+connects event time to ordinary play, disease, dialogue, replay, persistence, or presentation.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It

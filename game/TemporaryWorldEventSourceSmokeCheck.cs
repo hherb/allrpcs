@@ -57,21 +57,29 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         Vector2 expectedVelocity = seeker.Velocity;
         string expectedFocusStatus = focusStatus.Text;
         string expectedFocusedSearchResult = focusedSearchResult.Text;
-        WorldEventId first = source.EventId;
-        WorldEventId second = source.EventId;
+        WorldEvent first = source.Event;
+        WorldEvent second = source.Event;
 
         if (!HasExpectedPropertySurface()
             || !ReferenceEquals(first, second)
-            || !string.Equals(first.Value, GreyboxReadyEventIdText, StringComparison.Ordinal))
+            || !string.Equals(
+                first.EventId.Value,
+                GreyboxReadyEventIdText,
+                StringComparison.Ordinal)
+            || !ReferenceEquals(first.TimeEffect, WorldEventTimeEffect.NoAdvance))
         {
-            Fail("Temporary world-event source failed canonical exact retention.");
+            Fail("Temporary world-event source failed canonical exact event retention.");
             return;
         }
 
-        WorldEventId independent = CreateEventId();
+        WorldEvent independent = CreateEvent();
         if (ReferenceEquals(independent, first)
             || independent != first
-            || !string.Equals(independent.Value, GreyboxReadyEventIdText, StringComparison.Ordinal))
+            || !string.Equals(
+                independent.EventId.Value,
+                GreyboxReadyEventIdText,
+                StringComparison.Ordinal)
+            || !ReferenceEquals(independent.TimeEffect, WorldEventTimeEffect.NoAdvance))
         {
             Fail("Temporary world-event source failed independent construction.");
             return;
@@ -79,7 +87,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
 
         if (!ReferenceEquals(eventLogController.EventLog, expectedEventLog)
             || expectedEventLog.Entries.Count != 1
-            || !ReferenceEquals(expectedEventLog.Entries[0], first)
+            || !ReferenceEquals(expectedEventLog.Entries[0], first.EventId)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedWorldObjects)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, expectedOutcomes)
@@ -98,24 +106,24 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
 
         GD.Print(
             "Temporary world-event source smoke passed: one stable canonical greybox-ready "
-            + "identifier, minimal surface, independent construction, exact ordinary startup "
+            + "no-advance event, minimal surface, independent construction, exact ordinary startup "
             + "recording, and unchanged event-log, "
             + "world-object, perception, focused-search, movement, input, and presentation state "
             + "were correct.");
         GetTree().Quit();
     }
 
-    private static WorldEventId CreateEventId()
+    private static WorldEvent CreateEvent()
     {
         System.Reflection.MethodInfo method = typeof(TemporaryWorldEventSource).GetMethod(
-            "CreateEventId",
+            "CreateEvent",
             System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
             ?? throw new InvalidOperationException(
                 "Temporary world-event source factory was not found.");
 
-        return (WorldEventId)(method.Invoke(null, null)
+        return (WorldEvent)(method.Invoke(null, null)
             ?? throw new InvalidOperationException(
-                "Temporary world-event source returned no identifier."));
+                "Temporary world-event source returned no event."));
     }
 
     private static bool HasExpectedPropertySurface()
@@ -127,8 +135,8 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
                     | System.Reflection.BindingFlags.DeclaredOnly);
 
         return properties.Length == 1
-            && string.Equals(properties[0].Name, "EventId", StringComparison.Ordinal)
-            && properties[0].PropertyType == typeof(WorldEventId)
+            && string.Equals(properties[0].Name, "Event", StringComparison.Ordinal)
+            && properties[0].PropertyType == typeof(WorldEvent)
             && properties[0].CanRead
             && properties[0].SetMethod is not null
             && properties[0].SetMethod!.IsPrivate;
