@@ -762,6 +762,13 @@ rejects null inputs, retains both supplied identifier instances through get-only
 uses only their existing value semantics. It does not inspect world or character state, grant
 discovery, or change perception.
 
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateSnapshot` contains existing passive-noticing
+candidates in stable supplied order. It explicitly permits an empty sequence, copies caller input,
+exposes a read-only list, retains each supplied candidate instance, and rejects null input, null
+entries, and value-equal duplicate candidates. The same observer may have distinct targets and the
+same target may have distinct observers. The snapshot does not produce, select, filter, rank,
+reorder, or evaluate candidates.
+
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
 projection and returns true exactly when the new projected snapshot contains at least one entry,
