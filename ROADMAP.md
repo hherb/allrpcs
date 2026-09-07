@@ -90,6 +90,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Establish deterministic authoritative world, discovery, event, and qualitative-time rules.
 - [x] Orchestrate atomic world-event occurrence in the scene.
 - [x] Advance qualitative time when herb-patch identification resolves.
+- [x] Prove the first meaningful-time event through the ordinary focused-search input path.
 - [ ] Add versioned save/load and prove exact state restoration.
 - [ ] Add representative discoveries and scenario validation.
 - [ ] Prove filtered views do not leak hidden facts.

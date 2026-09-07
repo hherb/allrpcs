@@ -6,19 +6,28 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Checks atomic focused-search resolution and authored world-event occurrence.</summary>
+/// <summary>Checks ordinary input-path focused-search world-event occurrence.</summary>
 public partial class FocusedSearchWorldEventSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable =
         "ALLRPCS_FOCUSED_SEARCH_WORLD_EVENT_CHECK";
+    private const string CompleteChangedText = "Focused search COMPLETE: CHANGED";
     private const string EnabledEnvironmentValue = "1";
-
+    private const string FocusedSearchCompleteAction = "focused_search_complete";
+    private const string FocusedSearchResolveAction = "focused_search_resolve";
+    private const string FocusedSearchStartAction = "focused_search_start";
+    private const string ResolveChangedText = "Focused search RESOLVE: CHANGED";
+    private const string ResolveUnchangedText = "Focused search RESOLVE: UNCHANGED";
+    private const string StartChangedText = "Focused search START: CHANGED";
     private Main main = null!;
+    private InteractionFocusController interactionFocusController = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
+    private TemporaryResolvedPerceptionIndicator resolvedPerceptionIndicator = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldEventController worldEventController = null!;
     private Label focusedSearchResult = null!;
+    private CharacterBody2D seeker = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -31,12 +40,17 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
         }
 
         main = GetNode<Main>("..");
+        interactionFocusController = GetNode<InteractionFocusController>(
+            "../InteractionFocusController");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        resolvedPerceptionIndicator = GetNode<TemporaryResolvedPerceptionIndicator>(
+            "../InteractionCandidates/HerbPatch/TemporaryResolvedPerceptionIndicator");
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         focusedSearchResult = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
+        seeker = GetNode<CharacterBody2D>("../Seeker");
     }
 
     /// <inheritdoc />
@@ -54,25 +68,71 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
             ?? throw new InvalidOperationException("World-event log was not initialized.");
         WorldTimeSnapshot startupTime = worldEventController.WorldTime
             ?? throw new InvalidOperationException("World time was not initialized.");
-        FocusedSearchActivitySnapshot activities = focusedSearchController.Activities;
-        string expectedResultText = focusedSearchResult.Text;
-
-        FocusedSearchOutcome retainedOutcome = Outcome(herbPatch);
-        FocusedSearchOutcomeSnapshot outcomes = new([retainedOutcome]);
+        FocusedSearchActivitySnapshot initialActivities = new([]);
+        FocusedSearchOutcomeSnapshot initialOutcomes = new([]);
         WorldObjectVisibility herbVisibility = new(
             herbPatch.Identity.Id,
             VisibilityState.Noticed);
-        CharacterPerceptionSnapshot perception = new(
+        CharacterPerceptionSnapshot initialPerception = new(
             focusedSearchController.SearcherCharacterId,
             [herbVisibility]);
-        SetFocusedSearchState(outcomes, perception);
+        SetFocusedSearchState(initialActivities, initialOutcomes, initialPerception);
 
-        if (!InvokeResolution(retainedOutcome, herbPatch))
+        seeker.GlobalPosition = interactionFocusController.GetTarget(0).GlobalPosition;
+        interactionFocusController.RefreshFocus();
+        if (interactionFocusController.FocusedTargetIndex != 0
+            || !ReferenceEquals(
+                interactionFocusController.FocusedTargetObjectId,
+                herbPatch.Identity.Id)
+            || !AssertWorldEventState(worldEvents, startupLog, startupTime)
+            || resolvedPerceptionIndicator.IsIndicatorVisible)
         {
-            Fail("Focused-search world-event smoke rejected an eligible atomic resolution.");
+            Fail("Focused-search world-event smoke failed ordinary input-path setup.");
             return;
         }
 
+        PressAction(FocusedSearchStartAction);
+        FocusedSearchActivitySnapshot startedActivities = focusedSearchController.Activities;
+        if (startedActivities.Entries.Count != 1
+            || !ReferenceEquals(focusedSearchController.Outcomes, initialOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, initialPerception)
+            || !ReferenceEquals(
+                startedActivities.Entries[0].Request.SearcherCharacterId,
+                focusedSearchController.SearcherCharacterId)
+            || !ReferenceEquals(
+                startedActivities.Entries[0].Request.TargetObjectId,
+                herbPatch.Identity.Id)
+            || !AssertWorldEventState(worldEvents, startupLog, startupTime)
+            || !AssertResultText(StartChangedText)
+            || resolvedPerceptionIndicator.IsIndicatorVisible)
+        {
+            Fail("Focused-search world-event smoke failed ordinary input-path start.");
+            return;
+        }
+
+        FocusedSearchRequest request = startedActivities.Entries[0].Request;
+        PressAction(FocusedSearchCompleteAction);
+        FocusedSearchActivitySnapshot completedActivities = focusedSearchController.Activities;
+        FocusedSearchOutcomeSnapshot completedOutcomes = focusedSearchController.Outcomes;
+        if (completedActivities.Entries.Count != 0
+            || completedOutcomes.Entries.Count != 1
+            || !ReferenceEquals(focusedSearchController.Perception, initialPerception)
+            || !ReferenceEquals(completedOutcomes.Entries[0].Request, request)
+            || !ReferenceEquals(
+                completedOutcomes.Entries[0].ResultingVisibilityState,
+                VisibilityState.Identified)
+            || !AssertWorldEventState(worldEvents, startupLog, startupTime)
+            || !AssertResultText(CompleteChangedText)
+            || resolvedPerceptionIndicator.IsIndicatorVisible)
+        {
+            Fail(
+                "Focused-search world-event smoke recorded an event before successful input-path "
+                + "resolution or failed exact completion retention.");
+            return;
+        }
+
+        FocusedSearchOutcome retainedOutcome = completedOutcomes.Entries[0];
+        PressAction(FocusedSearchResolveAction);
         FocusedSearchOutcomeSnapshot resolvedOutcomes = focusedSearchController.Outcomes;
         CharacterPerceptionSnapshot resolvedPerception = focusedSearchController.Perception
             ?? throw new InvalidOperationException("Resolved perception was not retained.");
@@ -85,12 +145,10 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
             || !ReferenceEquals(worldObjectSource.WorldObjects, worldObjects)
             || !ReferenceEquals(worldEvents.Entries[0], initialEvent)
             || !ReferenceEquals(worldEvents.Entries[1], advancingEvent)
-            || !ReferenceEquals(focusedSearchController.Activities, activities)
+            || !ReferenceEquals(focusedSearchController.Activities, completedActivities)
             || resolvedOutcomes.Entries.Count != 0
             || resolvedPerception.Entries.Count != 1
-            || !ReferenceEquals(
-                resolvedPerception.Entries[0].ObjectId,
-                herbPatch.Identity.Id)
+            || !ReferenceEquals(resolvedPerception.Entries[0].ObjectId, herbPatch.Identity.Id)
             || !ReferenceEquals(
                 resolvedPerception.Entries[0].VisibilityState,
                 VisibilityState.Identified)
@@ -100,63 +158,136 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
             || !ReferenceEquals(resolvedLog.Entries[1], advancingEvent.EventId)
             || ReferenceEquals(resolvedTime, startupTime)
             || !ReferenceEquals(resolvedTime.CurrentEventId, advancingEvent.EventId)
-            || !string.Equals(focusedSearchResult.Text, expectedResultText, StringComparison.Ordinal))
+            || !AssertResultText(ResolveChangedText)
+            || !resolvedPerceptionIndicator.IsIndicatorVisible
+            || !string.Equals(
+                resolvedPerceptionIndicator.GetNode<Label>("Indicator").Text,
+                herbPatch.Description.Text,
+                StringComparison.Ordinal))
         {
-            Fail("Focused-search world-event smoke failed exact atomic result retention.");
+            Fail("Focused-search world-event smoke failed exact atomic input-path resolution.");
             return;
         }
 
-        FocusedSearchOutcome blockedOutcome = Outcome(herbPatch);
-        FocusedSearchOutcomeSnapshot blockedOutcomes = new([blockedOutcome]);
-        CharacterPerceptionSnapshot blockedPerception = new(
-            focusedSearchController.SearcherCharacterId,
-            [new WorldObjectVisibility(herbPatch.Identity.Id, VisibilityState.Noticed)]);
-        SetFocusedSearchState(blockedOutcomes, blockedPerception);
-
-        if (InvokeResolution(blockedOutcome, herbPatch)
-            || !ReferenceEquals(focusedSearchController.Outcomes, blockedOutcomes)
-            || !ReferenceEquals(focusedSearchController.Perception, blockedPerception)
+        PressAction(FocusedSearchResolveAction);
+        if (!ReferenceEquals(focusedSearchController.Activities, completedActivities)
+            || !ReferenceEquals(focusedSearchController.Outcomes, resolvedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, resolvedPerception)
+            || !ReferenceEquals(worldEventController.WorldEvents, worldEvents)
             || !ReferenceEquals(worldEventController.EventLog, resolvedLog)
             || !ReferenceEquals(worldEventController.WorldTime, resolvedTime)
-            || !ReferenceEquals(worldEventController.WorldEvents, worldEvents)
-            || !string.Equals(focusedSearchResult.Text, expectedResultText, StringComparison.Ordinal))
+            || !ReferenceEquals(completedOutcomes.Entries[0], retainedOutcome)
+            || !ReferenceEquals(completedOutcomes.Entries[0].Request, request)
+            || !ReferenceEquals(initialPerception.Entries[0], herbVisibility)
+            || !ReferenceEquals(
+                initialPerception.Entries[0].VisibilityState,
+                VisibilityState.Noticed)
+            || !AssertResultText(ResolveUnchangedText)
+            || !resolvedPerceptionIndicator.IsIndicatorVisible
+            || !string.Equals(
+                resolvedPerceptionIndicator.GetNode<Label>("Indicator").Text,
+                herbPatch.Description.Text,
+                StringComparison.Ordinal))
         {
-            Fail("Focused-search world-event smoke failed all-or-nothing rejection.");
+            Fail("Focused-search world-event smoke failed repeated input-path preservation.");
+            return;
+        }
+
+        PressAction(FocusedSearchStartAction);
+        FocusedSearchActivitySnapshot ineligibleStartedActivities =
+            focusedSearchController.Activities;
+        if (ineligibleStartedActivities.Entries.Count != 1
+            || !ReferenceEquals(focusedSearchController.Outcomes, resolvedOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, resolvedPerception)
+            || !ReferenceEquals(
+                ineligibleStartedActivities.Entries[0].Request.TargetObjectId,
+                herbPatch.Identity.Id)
+            || !AssertWorldEventState(worldEvents, resolvedLog, resolvedTime)
+            || !AssertResultText(StartChangedText)
+            || !resolvedPerceptionIndicator.IsIndicatorVisible)
+        {
+            Fail("Focused-search world-event smoke failed ineligible-sequence start.");
+            return;
+        }
+
+        FocusedSearchRequest ineligibleRequest = ineligibleStartedActivities.Entries[0].Request;
+        PressAction(FocusedSearchCompleteAction);
+        FocusedSearchActivitySnapshot ineligibleCompletedActivities =
+            focusedSearchController.Activities;
+        FocusedSearchOutcomeSnapshot ineligibleOutcomes = focusedSearchController.Outcomes;
+        if (ineligibleCompletedActivities.Entries.Count != 0
+            || ineligibleOutcomes.Entries.Count != 1
+            || !ReferenceEquals(ineligibleOutcomes.Entries[0].Request, ineligibleRequest)
+            || !ReferenceEquals(focusedSearchController.Perception, resolvedPerception)
+            || !AssertWorldEventState(worldEvents, resolvedLog, resolvedTime)
+            || !AssertResultText(CompleteChangedText)
+            || !resolvedPerceptionIndicator.IsIndicatorVisible)
+        {
+            Fail("Focused-search world-event smoke failed ineligible-sequence completion.");
+            return;
+        }
+
+        FocusedSearchOutcome ineligibleOutcome = ineligibleOutcomes.Entries[0];
+        PressAction(FocusedSearchResolveAction);
+        if (!ReferenceEquals(
+                focusedSearchController.Activities,
+                ineligibleCompletedActivities)
+            || !ReferenceEquals(focusedSearchController.Outcomes, ineligibleOutcomes)
+            || !ReferenceEquals(focusedSearchController.Perception, resolvedPerception)
+            || !AssertWorldEventState(worldEvents, resolvedLog, resolvedTime)
+            || !ReferenceEquals(ineligibleOutcomes.Entries[0], ineligibleOutcome)
+            || !ReferenceEquals(ineligibleOutcome.Request, ineligibleRequest)
+            || !AssertResultText(ResolveUnchangedText)
+            || !resolvedPerceptionIndicator.IsIndicatorVisible
+            || !string.Equals(
+                resolvedPerceptionIndicator.GetNode<Label>("Indicator").Text,
+                herbPatch.Description.Text,
+                StringComparison.Ordinal))
+        {
+            Fail("Focused-search world-event smoke failed ineligible input-path preservation.");
             return;
         }
 
         GD.Print(
-            "Focused-search world-event smoke passed: exact herb-patch identification resolved "
-            + "perception and consumed its outcome while atomically recording the exact authored "
-            + "advancing event and advancing qualitative time; duplicate-event rejection preserved "
-            + "all focused-search and world-event snapshots and presentation.");
+            "Focused-search world-event smoke passed: ordinary start, complete, and resolve input "
+            + "preserved event and time state until exact herb-patch resolution, then consumed "
+            + "the outcome, identified and presented the herb, recorded the exact advancing "
+            + "event, advanced qualitative time, and preserved all state on repeated or "
+            + "ineligible resolution.");
         GetTree().Quit();
     }
 
-    private FocusedSearchOutcome Outcome(WorldObject worldObject) =>
-        new(
-            new FocusedSearchRequest(
-                focusedSearchController.SearcherCharacterId,
-                worldObject.Identity.Id),
-            VisibilityState.Identified);
-
-    private bool InvokeResolution(FocusedSearchOutcome outcome, WorldObject worldObject)
+    private void PressAction(string action)
     {
-        System.Reflection.MethodInfo method = typeof(Main).GetMethod(
-            "TryResolveFocusedSearchOutcome",
-            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
-            ?? throw new InvalidOperationException(
-                "Focused-search world-event orchestration was not found.");
+        main._UnhandledInput(
+            new InputEventAction
+            {
+                Action = new StringName(action),
+                Pressed = true,
+            });
+    }
 
-        return (bool)(method.Invoke(main, [outcome, worldObject])
-            ?? throw new InvalidOperationException(
-                "Focused-search world-event orchestration returned no result."));
+    private bool AssertWorldEventState(
+        WorldEventSnapshot expectedEvents,
+        WorldEventLogSnapshot expectedLog,
+        WorldTimeSnapshot expectedTime)
+    {
+        return ReferenceEquals(worldEventController.WorldEvents, expectedEvents)
+            && ReferenceEquals(worldEventController.EventLog, expectedLog)
+            && ReferenceEquals(worldEventController.WorldTime, expectedTime);
+    }
+
+    private bool AssertResultText(string expectedText)
+    {
+        return string.Equals(focusedSearchResult.Text, expectedText, StringComparison.Ordinal);
     }
 
     private void SetFocusedSearchState(
+        FocusedSearchActivitySnapshot activities,
         FocusedSearchOutcomeSnapshot outcomes,
         CharacterPerceptionSnapshot perception)
     {
+        SetFocusedSearchProperty(nameof(FocusedSearchActivityController.Activities), activities);
         SetFocusedSearchProperty(nameof(FocusedSearchActivityController.Outcomes), outcomes);
         SetFocusedSearchProperty(nameof(FocusedSearchActivityController.Perception), perception);
     }
