@@ -2,55 +2,59 @@
 
 ## Current state
 
-Phases 2m23–2m25 are implemented on `codex/phase-2m23-plus-passive-noticing`, based
-directly on PR #124's merge commit `e228d90`.
+Phases 2n1–2n4 are implemented on
+`codex/phase-2n1-plus-observation-reinterpretation`, based directly on current `origin/main` merge
+commit `b81a252` after PR #125 merged.
 
-The temporary Seeker perception source now consumes the exact retained passive-noticing candidate
-and resolves its value-equal target through the authoritative world-object snapshot. It retains
-every exact source object identifier in stable order, seeds only the resolved target at `Unnoticed`,
-retains the candidate's exact observer identifier, and seeds every other object at `Noticed`. An
-absent candidate target fails explicitly before perception construction; no greybox marker,
-authored identity text, coordinate, focus, or fallback supplies the target.
+The Domain now has one sealed immutable `ObservationReinterpretationCandidate` containing only an
+existing observer `CharacterId`, target `ObjectId`, and triggering `KnowledgeId`. It rejects nulls,
+retains every exact supplied identifier instance, and relies only on the identifiers' existing
+value semantics.
 
-During `Main._Ready`, after exact world-object and perception initialization, the scene resolves
-the candidate target through the live world-object controller and produces it from the exact source
-candidate, complete temporary character, and looked-up world object. It then invokes the existing
-stable resolve-next boundary exactly once. The atomic result changes only the live target from
-`Unnoticed` to `Noticed`, consumes the complete candidate, and leaves the source candidate and
-source perception unchanged. Focused-search state, movement, input, and presentation remain
-unchanged; there is no polling, distance, line-of-sight, timing, or new UI authority. The roadmap's
-bounded passive-noticing item is complete.
+An immutable `ObservationReinterpretationCandidateSnapshot` copies supplied candidates into a
+read-only list in stable order. It permits an empty snapshot and candidates sharing any proper
+subset of their three identifiers, retains exact candidate instances, and rejects null input, null
+entries, and value-equal complete duplicates.
 
-All three slices were test-first. Phase 2m23 failed the focused perception-source smoke on the old
-all-`Noticed` seed; Phase 2m24 failed the candidate-source smoke while ordinary play still retained
-no candidate; and Phase 2m25 failed the same end-to-end smoke before atomic resolution was wired.
-After final code review, host-shell `./scripts/quality.sh` passed workflow and formatting
-validation, a zero-warning build, 801 Domain tests, 107 Application tests, six architecture tests,
-all eighteen Godot smokes, and the bounded graphical launch.
+The pure `ObservationReinterpretationCandidateProjection.ForCharacter` returns a new snapshot with
+every candidate for a value-equal observer in stable source order, retaining exact candidate and
+nested identifier instances. The pure `ObservationReinterpretationCandidateLookup.Find` matches
+all three identifier values and returns the exact retained candidate or `null`; every partial match
+is rejected. Neither boundary mutates its inputs.
+
+Each slice was test-first: its focused test project build failed on the missing production type
+before the minimal implementation was added. After Phase 2n4 and code review, host-shell
+`./scripts/quality.sh` passed workflow and formatting validation, a zero-warning build, 828 Domain
+tests, 107 Application tests, six architecture tests, all eighteen Godot smokes, and the bounded
+graphical launch. Knowledge-triggered reinterpretation remains incomplete.
 
 ## Exact next bounded slice
 
-Take **Phase 2n1: immutable observation-reinterpretation candidate**.
+Take **Phase 2n5: knowledge-trigger satisfaction policy**.
 
 Acceptance boundary:
 
-1. Add one sealed immutable `Allrpcs.Domain.Discovery.ObservationReinterpretationCandidate`
-   containing only an existing `CharacterId ObserverCharacterId`, `ObjectId TargetObjectId`, and
-   `KnowledgeId TriggerKnowledgeId`.
-2. Reject any null input and otherwise retain all three exact supplied identifier instances. Add no
-   custom equality or behavior beyond the identifiers' existing value semantics.
-3. Add focused tests first for exact nested-instance retention, distinct value-equal identifiers,
-   independently different observer/target/knowledge values, all null boundaries, unchanged inputs,
-   and the minimal three-property public API surface.
-4. Update README and ROADMAP evidence, keep knowledge-triggered reinterpretation incomplete, run
+1. Add one pure static
+   `Allrpcs.Domain.Discovery.ObservationReinterpretationCandidateTriggerPolicy` with one
+   `CanTrigger(ObservationReinterpretationCandidate candidate, Character character)` operation.
+2. Return true only when the complete character's identity is value-equal to the candidate's
+   observer identifier and its existing `CharacterKnowledge.KnowledgeReferences` contains a
+   value-equal trigger knowledge identifier. Accept distinct value-equal identifier instances.
+3. Return false for a wrong character, empty knowledge, absent trigger knowledge, and partial
+   combinations. Reject either null input. Leave the candidate, character, every complete
+   character component, knowledge collection, order, and nested instance unchanged.
+4. Add focused tests first for those boundaries and the minimal single-operation public API.
+   Update README and ROADMAP evidence, keep reinterpretation incomplete, run
    `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
    plus one next slice.
 
 Explicit exclusions:
 
-- Do not collect, project, look up, select, rank, order, or evaluate reinterpretation candidates;
-  inspect character knowledge or perception; define trigger satisfaction or a resulting visibility
-  state; reinterpret an observation; change perception; or grant knowledge, evidence, or discovery.
+- Do not inspect perception or visibility; require a target perception entry; define a resulting
+  visibility state; decide whether reinterpretation would change anything; reinterpret an
+  observation; change perception; or grant knowledge, evidence, or discovery.
+- Do not collect, project, look up, record, produce, select, rank, order, apply, consume, or resolve
+  candidates, and do not introduce a knowledge lookup or mutate character state.
 - Do not add Application/Godot sources, controllers, runtime wiring, events, persistence,
   serialization, providers, plugins, credentials, or UI.
 - Do not change passive noticing, focused-search lifecycle behavior, world-object or character
