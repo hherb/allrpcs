@@ -808,8 +808,37 @@ Every missing, mismatched, untriggered, `Unnoticed`, `Identified`, `Understood`,
 rejects every non-changing combination, then returns a new perception snapshot with only the
 value-equal target changed from `Noticed` to `Identified`. It preserves the perception owner's
 exact identifier, stable entry order, every unrelated entry instance, the target's exact retained
-object identifier, the complete character, and all inputs. Candidate consumption and atomic
-resolution remain deferred.
+object identifier, the complete character, and all inputs.
+
+`ObservationReinterpretationCandidateConsumptionPolicy.CanConsume` and
+`ObservationReinterpretationCandidateConsumptionTransition.Consume` provide complete-candidate
+retention checking and pure removal. They accept a distinct value-equal candidate; eligibility is
+false and removal is rejected for empty, absent, or partial-match snapshots, while null inputs are
+rejected. Both preserve stable order, every unrelated exact candidate, every nested identifier,
+and all inputs.
+
+`ObservationReinterpretationCandidateResolutionPolicy.CanResolve`,
+`ObservationReinterpretationCandidateResolutionResult`, and
+`ObservationReinterpretationCandidateResolutionTransition.Resolve` combine trigger-aware
+`Noticed`-to-`Identified` application with complete candidate consumption. Resolution succeeds only
+when both delegated operations are eligible, returns only the two new immutable snapshots, and
+leaves the character and every input snapshot unchanged.
+
+`ObservationReinterpretationCandidateRecordingPolicy.CanRecord` and
+`ObservationReinterpretationCandidateRecordingTransition.Record` provide duplicate-free pure
+recording. `ObservationReinterpretationCandidateProductionPolicy.CanProduce` and
+`ObservationReinterpretationCandidateProductionTransition.Produce` additionally require the
+candidate's observer and target to match an existing authoritative character and world object.
+They deliberately do not require that the trigger knowledge has already been gained; later
+resolution performs that check. Eligible production appends the exact candidate in stable order.
+
+`ObservationReinterpretationCandidateResolutionSelection.SelectNext` and
+`ObservationReinterpretationCandidateResolutionSequence.ResolveNext` provide deterministic
+per-character resolution. Selection returns the exact first retained candidate that the supplied
+complete character can resolve against its perception, skipping other observers, unmet triggers,
+missing targets, and non-`Noticed` targets. Sequencing delegates that selection and the atomic
+transition, changing and consuming only the selected candidate; controller ownership, temporary
+sources, and runtime wiring remain deferred.
 
 `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` identifies exactly one existing observer
 `CharacterId` and one existing target `ObjectId` without selecting or evaluating the candidate. It
