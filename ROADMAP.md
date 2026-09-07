@@ -132,6 +132,9 @@ that object at exactly `Identified`. Null or absent objects, null or unrelated p
 other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
 replacement description without changing any supplied object, snapshot, lifecycle state, marker
 presentation, or world-object ordering.
+Phase 2m1 adds one immutable identifier-only passive-noticing candidate for an existing observer
+and target. It retains exact supplied identifier instances and rejects null inputs without
+selecting, collecting, ordering, or evaluating candidates, so passive noticing remains incomplete.
 The exact next bounded slice is defined in `HANDOVER.md`.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,

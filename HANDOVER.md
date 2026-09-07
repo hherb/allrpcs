@@ -2,53 +2,49 @@
 
 ## Current state
 
-Phase 2l20 is implemented on `codex/phase-2l20-resolved-description-presentation`, based directly
-on PR #116's merge commit `28a8d76`.
+Phase 2m1 is implemented on `codex/phase-2m1-passive-noticing-candidate`, based directly on PR
+#117's merge commit `2da2a28`.
 
-Each existing `TemporaryResolvedPerceptionIndicator` now clears its reused label by default and
-presents the exact looked-up `WorldObject.Description.Text` only while the controller's retained
-perception has that object at the exact `VisibilityState.Identified` singleton. Null or absent
-objects, null or unrelated perception, and every other visibility singleton clear and hide the
-label. A distinct value-equal world object supplies its own replacement description without
-changing either object or any perception snapshot. The two labels wrap within separate bounds and
-no UI node was added.
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidate` is one sealed immutable record containing only
+an existing `CharacterId ObserverCharacterId` and `ObjectId TargetObjectId`. It rejects either null
+input, retains the exact supplied identifier instances, and adds no custom equality or behavior
+beyond the identifiers' existing value semantics.
 
-Test-first interaction evidence failed on the old authored `IDENTIFIED` text, then passed with
-positive coverage for both source-authored descriptions and replacement text. Every negative case
-must clear an already-presented description, and lifecycle evidence preserves marker labels, focus
-status, focused-search result text, controller snapshots, source objects, geometry, visibility, and
-ordering. After final code review, host-shell `./scripts/quality.sh` passed with workflow and
-formatting validation, a zero-warning build, 661 Domain tests, 107 Application tests, six
-architecture tests, all fourteen Godot smokes, and the bounded graphical launch. A captured final
-interaction-smoke frame showed both wrapped descriptions simultaneously without overlap or
-clipping.
+Test-first evidence failed while the type was absent, then five focused tests passed for exact
+nested-instance retention, distinct value-equal identifiers, different observer and target values,
+both null boundaries, unchanged inputs, and the minimal two-property surface. After code review,
+host-shell `./scripts/quality.sh` passed workflow and formatting validation, a zero-warning build,
+666 Domain tests, 107 Application tests, six architecture tests, all fourteen Godot smokes, and the
+bounded graphical launch.
 
-The roadmap's bounded focused-search connection to world objects, perception change, and discovery
-presentation is checked. Temporary sources, controllers, F/C/E/R controls, greybox focus, and the
-resolved-description labels remain non-authoritative and are not final discovery UI.
+README and ROADMAP record the new identifier-only boundary. The roadmap's passive-noticing item
+remains incomplete: there is still no candidate collection, production, selection, eligibility,
+outcome, transition, perception change, discovery grant, or runtime wiring.
 
 ## Exact next bounded slice
 
-Take **Phase 2m1: immutable passive-noticing candidate**.
+Take **Phase 2m2: immutable passive-noticing candidate snapshot**.
 
 Acceptance boundary:
 
-1. Add one sealed immutable `Allrpcs.Domain.Discovery.PassiveNoticingCandidate` containing only an
-   existing `CharacterId ObserverCharacterId` and `ObjectId TargetObjectId`.
-2. Reject either null input and otherwise retain the exact supplied identifier instances. Add no
-   equality, ordering, lookup, eligibility, visibility, or mutation behavior beyond the existing
-   identifier semantics.
-3. Add focused tests first for exact nested-instance retention, distinct value-equal identifiers,
-   both null boundaries, input preservation, and the minimal public API surface.
+1. Add one sealed immutable `Allrpcs.Domain.Discovery.PassiveNoticingCandidateSnapshot` that copies
+   one supplied `IEnumerable<PassiveNoticingCandidate>` and exposes the entries in stable supplied
+   order through one get-only `IReadOnlyList<PassiveNoticingCandidate> Entries` property.
+2. Permit an empty sequence, retain the exact supplied candidate instances, and reject a null
+   sequence, null entries, and duplicate candidates by their existing value semantics. Permit the
+   same observer with different targets and the same target with different observers.
+3. Add focused tests first for empty input, stable order and exact retention, caller-collection
+   copying, value-equal duplicate rejection and permitted non-duplicates, null boundaries, input
+   preservation, read-only behavior, and the minimal public API surface.
 4. Update README and ROADMAP evidence, keep passive noticing incomplete, run
    `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
    plus one next slice.
 
 Explicit exclusions:
 
-- Do not select, collect, rank, or order passive-noticing candidates; inspect world objects,
-  locations, coordinates, distance, line of sight, environmental state, capabilities, inventory,
-  focus, input, or time; or define passive-noticing eligibility, outcomes, or transitions.
+- Do not produce, discover, select, filter, rank, reorder, or look up candidates; inspect world
+  objects, characters, locations, coordinates, distance, line of sight, environmental state,
+  capabilities, inventory, focus, input, or time; or define eligibility, outcomes, or transitions.
 - Do not change perception or visibility, grant discovery, create knowledge or evidence, or add
   Application/Godot sources, controllers, runtime wiring, events, persistence, serialization,
   providers, plugins, credentials, or UI.
