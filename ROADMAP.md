@@ -87,11 +87,9 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 ## Phase 2 — Authoritative world and discovery
 
-Phases 2a–2m established the checked engine-independent world and discovery foundations, complete
-focused-search and passive-noticing paths, and temporary fail-closed Godot wiring. Phases 2n1–2n19
-now cover immutable observation-reinterpretation candidates through authority-bound production and
-deterministic atomic resolution from `Noticed` to `Identified`. Controller ownership, temporary
-sources, and runtime wiring remain; `HANDOVER.md` defines the next bounded slice.
+Phases 2a–2n now provide checked world/discovery foundations and bounded focused-search,
+passive-noticing, and knowledge-triggered reinterpretation paths. `HANDOVER.md` holds the current
+evidence and next bounded slice.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
@@ -108,7 +106,7 @@ sources, and runtime wiring remain; `HANDOVER.md` defines the next bounded slice
 - [x] Connect focused-search outcome resolution to authoritative world objects, perception
   change, and discovery presentation.
 - [x] Implement passive noticing without relying on arbitrary pixel clicking.
-- [ ] Implement knowledge-triggered reinterpretation of earlier observations.
+- [x] Implement knowledge-triggered reinterpretation of earlier observations.
 - [ ] Implement an append-only authoritative world-event log.
 - [ ] Implement qualitative world time and explicit meaningful-time events.
 - [ ] Implement deterministic save and load with a schema version.

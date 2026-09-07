@@ -11,6 +11,7 @@ namespace Allrpcs.Game;
 public partial class TemporarySeekerCharacterSource : Node
 {
     private const string SeekerDisplayName = "SEEKER";
+    private const string TriggerKnowledgeIdText = "stone-marker-meaning";
 
     /// <summary>Gets the single retained temporary Seeker character.</summary>
     public Character Character { get; private set; } = null!;
@@ -37,7 +38,7 @@ public partial class TemporarySeekerCharacterSource : Node
             new CharacterControllerAssignment(characterId, ControllerType.Human),
             new CharacterConditionSet([]),
             new CharacterInventory([]),
-            new CharacterKnowledge([]),
+            new CharacterKnowledge([new KnowledgeId(TriggerKnowledgeIdText)]),
             new CharacterBeliefSet([]),
             new CharacterRelationshipSet([]),
             new CharacterGoalSet([]));

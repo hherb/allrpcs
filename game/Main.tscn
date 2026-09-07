@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3]
+[gd_scene load_steps=45 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -35,6 +35,10 @@
 [ext_resource type="Script" path="res://PassiveNoticingResolutionControllerSmokeCheck.cs" id="33_passive_resolution_controller_check"]
 [ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSource.cs" id="34_passive_candidate_source"]
 [ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSourceSmokeCheck.cs" id="35_passive_candidate_source_check"]
+[ext_resource type="Script" path="res://ObservationReinterpretationCandidateControllerSmokeCheck.cs" id="36_reinterpretation_candidate_controller_check"]
+[ext_resource type="Script" path="res://ObservationReinterpretationResolutionControllerSmokeCheck.cs" id="37_reinterpretation_resolution_controller_check"]
+[ext_resource type="Script" path="res://TemporaryObservationReinterpretationCandidateSource.cs" id="38_reinterpretation_candidate_source"]
+[ext_resource type="Script" path="res://TemporaryObservationReinterpretationCandidateSourceSmokeCheck.cs" id="39_reinterpretation_candidate_source_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -438,6 +442,9 @@ script = ExtResource("30_seeker_character_source")
 [node name="TemporaryPassiveNoticingCandidateSource" type="Node" parent="."]
 script = ExtResource("34_passive_candidate_source")
 
+[node name="TemporaryObservationReinterpretationCandidateSource" type="Node" parent="."]
+script = ExtResource("38_reinterpretation_candidate_source")
+
 [node name="TemporarySeekerPerceptionSource" type="Node" parent="."]
 script = ExtResource("20_seeker_perception_source")
 
@@ -452,6 +459,15 @@ script = ExtResource("33_passive_resolution_controller_check")
 
 [node name="TemporaryPassiveNoticingCandidateSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("35_passive_candidate_source_check")
+
+[node name="ObservationReinterpretationCandidateControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("36_reinterpretation_candidate_controller_check")
+
+[node name="ObservationReinterpretationResolutionControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("37_reinterpretation_resolution_controller_check")
+
+[node name="TemporaryObservationReinterpretationCandidateSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("39_reinterpretation_candidate_source_check")
 
 [node name="TemporarySeekerPerceptionSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("21_seeker_perception_source_check")

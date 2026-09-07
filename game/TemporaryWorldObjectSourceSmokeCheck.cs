@@ -170,7 +170,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 StringComparison.Ordinal)
             || !string.Equals(
                 expectedStoneMarkerIndicatorText,
-                InitialResolvedDescriptionText,
+                StoneMarkerDescription,
                 StringComparison.Ordinal)
             || !string.Equals(expectedFocusStatusText, FocusStatusText, StringComparison.Ordinal)
             || !string.Equals(
@@ -188,7 +188,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         {
             Fail(
                 "Temporary world-object source smoke copied a description into focused-search "
-                + "inputs or non-identified presentation.");
+                + "inputs or failed exact reinterpretation presentation.");
             return;
         }
 
@@ -245,7 +245,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             "Temporary world-object source smoke passed: bounded surface, stable ordered snapshot, "
             + "distinct objects, independently authored value-equal identifiers, exact names, "
             + "distinct exact descriptions, stable nested source values, description-free "
-            + "focused-search inputs, empty non-identified resolved-description presentation, and "
+            + "focused-search inputs, exact identified-only resolved-description presentation, and "
             + "unchanged marker order, geometry, visibility, focus, controller snapshots, and "
             + "presentation were correct.");
         GetTree().Quit();

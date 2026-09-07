@@ -29,6 +29,8 @@ public partial class Main : Node
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
+    private TemporaryObservationReinterpretationCandidateSource
+        observationReinterpretationCandidateSource = null!;
     private TemporaryPassiveNoticingCandidateSource passiveNoticingCandidateSource = null!;
     private TemporarySeekerCharacterSource seekerCharacterSource = null!;
     private TemporarySeekerPerceptionSource seekerPerceptionSource = null!;
@@ -63,6 +65,9 @@ public partial class Main : Node
             "TemporaryFocusedSearchContextSource");
         focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
             "TemporaryFocusedSearchOutcomeSource");
+        observationReinterpretationCandidateSource =
+            GetNode<TemporaryObservationReinterpretationCandidateSource>(
+                "TemporaryObservationReinterpretationCandidateSource");
         passiveNoticingCandidateSource = GetNode<TemporaryPassiveNoticingCandidateSource>(
             "TemporaryPassiveNoticingCandidateSource");
         seekerCharacterSource = GetNode<TemporarySeekerCharacterSource>(
@@ -85,6 +90,8 @@ public partial class Main : Node
 
         ProduceInitialPassiveNoticingCandidate();
         ResolveInitialPassiveNoticingCandidate();
+        ProduceInitialObservationReinterpretationCandidate();
+        ResolveInitialObservationReinterpretationCandidate();
 
         RefreshResolvedPerceptionPresentation();
 
@@ -116,6 +123,35 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The initial passive-noticing candidate could not be resolved for the Seeker.");
+        }
+    }
+
+    private void ProduceInitialObservationReinterpretationCandidate()
+    {
+        ObservationReinterpretationCandidate candidate =
+            observationReinterpretationCandidateSource.Candidate;
+        Character character = seekerCharacterSource.Character;
+        WorldObject worldObject = worldObjectController.FindWorldObject(candidate.TargetObjectId)
+            ?? throw new InvalidOperationException(
+                "The observation-reinterpretation candidate target is absent from live world objects.");
+
+        if (!focusedSearchController.TryProduceObservationReinterpretationCandidate(
+                candidate,
+                character,
+                worldObject))
+        {
+            throw new InvalidOperationException(
+                "The observation-reinterpretation candidate could not be produced for the Seeker.");
+        }
+    }
+
+    private void ResolveInitialObservationReinterpretationCandidate()
+    {
+        if (!focusedSearchController.TryResolveNextObservationReinterpretationCandidate(
+                seekerCharacterSource.Character))
+        {
+            throw new InvalidOperationException(
+                "The initial observation-reinterpretation candidate could not be resolved for the Seeker.");
         }
     }
 
