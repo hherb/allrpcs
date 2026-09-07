@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3]
+[gd_scene load_steps=41 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -29,6 +29,12 @@
 [ext_resource type="Script" path="res://WorldObjectController.cs" id="27_world_object_controller"]
 [ext_resource type="Script" path="res://WorldObjectControllerSmokeCheck.cs" id="28_world_object_controller_check"]
 [ext_resource type="Script" path="res://WorldObjectBoundInteractionFocusSmokeCheck.cs" id="29_world_object_interaction_focus_check"]
+[ext_resource type="Script" path="res://TemporarySeekerCharacterSource.cs" id="30_seeker_character_source"]
+[ext_resource type="Script" path="res://TemporarySeekerCharacterSourceSmokeCheck.cs" id="31_seeker_character_source_check"]
+[ext_resource type="Script" path="res://PassiveNoticingCandidateControllerSmokeCheck.cs" id="32_passive_candidate_controller_check"]
+[ext_resource type="Script" path="res://PassiveNoticingResolutionControllerSmokeCheck.cs" id="33_passive_resolution_controller_check"]
+[ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSource.cs" id="34_passive_candidate_source"]
+[ext_resource type="Script" path="res://TemporaryPassiveNoticingCandidateSourceSmokeCheck.cs" id="35_passive_candidate_source_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -426,8 +432,26 @@ antialiased = true
 script = ExtResource("14_search_controller")
 SearcherCharacterIdText = "seeker"
 
+[node name="TemporarySeekerCharacterSource" type="Node" parent="."]
+script = ExtResource("30_seeker_character_source")
+
+[node name="TemporaryPassiveNoticingCandidateSource" type="Node" parent="."]
+script = ExtResource("34_passive_candidate_source")
+
 [node name="TemporarySeekerPerceptionSource" type="Node" parent="."]
 script = ExtResource("20_seeker_perception_source")
+
+[node name="TemporarySeekerCharacterSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("31_seeker_character_source_check")
+
+[node name="PassiveNoticingCandidateControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("32_passive_candidate_controller_check")
+
+[node name="PassiveNoticingResolutionControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("33_passive_resolution_controller_check")
+
+[node name="TemporaryPassiveNoticingCandidateSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("35_passive_candidate_source_check")
 
 [node name="TemporarySeekerPerceptionSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("21_seeker_perception_source_check")
