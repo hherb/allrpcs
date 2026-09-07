@@ -769,6 +769,13 @@ entries, and value-equal duplicate candidates. The same observer may have distin
 same target may have distinct observers. The snapshot does not produce, select, filter, rank,
 reorder, or evaluate candidates.
 
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateProjection.ForCharacter` is the pure
+per-character candidate projection. It returns a new snapshot containing every candidate whose
+observer identifier is value-equal to the supplied character identifier, retaining the exact
+candidate and nested identifier instances in stable source order. It permits no matches and
+multiple distinct matches, omits unrelated candidates, rejects null inputs, leaves both inputs
+unchanged, and does not produce, select, rank, reorder, or evaluate candidates.
+
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
 projection and returns true exactly when the new projected snapshot contains at least one entry,

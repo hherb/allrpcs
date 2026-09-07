@@ -2,50 +2,51 @@
 
 ## Current state
 
-Phase 2m2 is implemented on `codex/phase-2m2-passive-noticing-candidate-snapshot`, based directly on
-PR #118's merge commit `64e1d06`.
+Phase 2m3 is implemented on `codex/phase-2m3-passive-noticing-candidate-projection`, based directly
+on PR #119's merge commit `d9cc4a1`.
 
-`Allrpcs.Domain.Discovery.PassiveNoticingCandidateSnapshot` is one sealed immutable snapshot that
-copies a supplied candidate sequence once into a read-only list. It permits an empty sequence,
-preserves stable supplied order and exact candidate instances, rejects a null sequence or entry,
-and rejects value-equal duplicate candidates. Candidates may share only an observer or only a
-target.
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateProjection.ForCharacter` is one pure static
+operation accepting an existing `CharacterId` and `PassiveNoticingCandidateSnapshot`. It returns a
+new snapshot containing exactly the candidates whose observer identifier is value-equal to that
+character identifier. It permits no matches and multiple distinct matches, preserves stable source
+order, retains the exact matching candidates and their nested identifier instances, omits unrelated
+candidates, rejects null inputs, and leaves both inputs unchanged.
 
-Test-first evidence failed while the snapshot type was absent, then nine focused tests passed for
-the complete acceptance boundary and minimal public surface. After code and documentation review,
-host-shell `./scripts/quality.sh` passed workflow and formatting validation, a zero-warning build,
-675 Domain tests, 107 Application tests, six architecture tests, all fourteen Godot smokes, and the
-bounded graphical launch.
+Test-first evidence failed with `CS0103`/`CS0246` while the projection type was absent, then all seven
+focused tests passed. After code and documentation review, host-shell `./scripts/quality.sh` passed
+workflow and formatting validation, a zero-warning build, 682 Domain tests, 107 Application tests,
+six architecture tests, all fourteen Godot smokes, and the bounded graphical launch.
 
-README and ROADMAP record the snapshot boundary. Passive noticing remains incomplete: there is no
-candidate production, world-state inspection, observer projection, selection, eligibility,
-outcome, transition, perception change, discovery grant, or runtime wiring.
+README and ROADMAP record the projection boundary. Passive noticing remains incomplete: there is no
+candidate production, lookup, world-state inspection, selection, eligibility, outcome, transition,
+perception change, discovery grant, or runtime wiring.
 
 ## Exact next bounded slice
 
-Take **Phase 2m3: observer-specific passive-noticing candidate projection**.
+Take **Phase 2m4: exact passive-noticing candidate lookup**.
 
 Acceptance boundary:
 
-1. Add one pure static `Allrpcs.Domain.Discovery.PassiveNoticingCandidateProjection.ForCharacter`
-   method accepting an existing `CharacterId` and `PassiveNoticingCandidateSnapshot` and returning
-   a new snapshot containing exactly the candidates whose observer identifier is value-equal to
-   that character identifier.
-2. Permit no matches and multiple distinct matches. Preserve stable source order and retain the
-   exact matching candidate instances; omit every unrelated candidate without changing either
-   input or any retained identifier instance.
-3. Add focused tests first for exact and distinct value-equal observer identifiers, no and multiple
-   matches, unrelated omission, stable order and exact retention, null boundaries, unchanged
-   inputs, and the minimal one-method static public surface.
-4. Update README and ROADMAP evidence, keep passive noticing incomplete, run
+1. Add one pure static `Allrpcs.Domain.Discovery.PassiveNoticingCandidateLookup.Find` operation
+   accepting an existing `PassiveNoticingCandidate` and `PassiveNoticingCandidateSnapshot` and
+   returning the exact value-equal retained candidate, or `null` when none exists.
+2. Match the complete candidate by value, including both observer character and target object.
+   Reject same-observer/different-target and different-observer/same-target candidates, ignore
+   unrelated entries, and rely on the snapshot's duplicate-candidate invariant.
+3. Preserve the exact retained candidate and nested identifier instances; reject either null input
+   and leave every input unchanged.
+4. Add focused tests first for empty and unrelated snapshots, a distinct value-equal candidate,
+   both partial mismatch cases, an exact match among surrounding unrelated entries, exact retention,
+   null boundaries, unchanged inputs, and the minimal one-method static public surface.
+5. Update README and ROADMAP evidence, keep passive noticing incomplete, run
    `./scripts/quality.sh`, review every intended path, and prune this file again to current evidence
    plus one next slice.
 
 Explicit exclusions:
 
-- Do not produce, discover, select, rank, or reorder candidates; inspect target objects, complete
-  characters, locations, coordinates, distance, line of sight, environmental state, capabilities,
-  inventory, focus, input, or time; or define eligibility, outcomes, or transitions.
+- Do not produce, discover, select, rank, reorder, or evaluate candidates; inspect world objects,
+  complete characters, locations, coordinates, distance, line of sight, environmental state,
+  capabilities, inventory, focus, input, or time; or define eligibility, outcomes, or transitions.
 - Do not change perception or visibility, grant discovery, create knowledge or evidence, or add
   Application/Godot sources, controllers, runtime wiring, events, persistence, serialization,
   providers, plugins, credentials, or UI.
