@@ -88,87 +88,28 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 ## Phase 2 — Authoritative world and discovery
 
 Phases 2a–2j established the checked engine-independent world, character, perception, inventory,
-and discovery-condition foundations below. Phases 2k1–2k49 added the bounded focused-search
-lifecycle, deterministic outcome recording and resolution, controller-owned immutable Seeker
-perception, temporary F/C/E/R wiring, and exact target-only `IDENTIFIED` presentation. Phases
-2l1–2l20 added an immutable world-object snapshot, exact identifier lookup, a temporary scene source
-that independently authors the two visible world-object identities and distinct non-empty
-descriptions into one stable snapshot, and separate one-time controller ownership with exact
-value-equal lookup.
-Temporary R-resolution is gated on the selected outcome target's existence. The R path passes the exact
-looked-up object into the focused-search controller, which delegates complete world-object-bound
-eligibility and state creation to a pure Domain policy and transition. The transition accepts
-value-equal target identifiers, rejects every bound or existing resolution ineligibility, delegates
-unchanged state creation to the existing resolution transition, and returns its exact result while
-preserving every input and retained unrelated instance. Resolved-perception presentation also
-receives only exact controller-looked-up world objects, uses their stable identifiers, and hides a
-target marker when its object is missing. These paths preserve immutable state but do not make the
-source or controller authoritative or grant discovery. Temporary outcome creation now also requires
-the active request target to resolve to a matching existing world object, including through a
-distinct value-equal identifier; a missing object leaves the active search and all surrounding state
-unchanged. Initial temporary Seeker perception is now derived only from that world-object snapshot,
-retaining its exact identifier instances and order without reading greybox targets. Temporary
-focused-search condition targets are likewise derived only from the first two world objects in
-snapshot order, retain those exact identifiers, and fail explicitly when both are unavailable
-without changing existing requirement or inventory semantics. Focused-search request creation and
-the F start path now also require the focused target to resolve to a matching existing world object,
-accept distinct value-equal identifiers while retaining the supplied object's exact identifier, and
-leave all surrounding state unchanged when the object is missing. Temporary interaction-focus
-refresh now also resolves each otherwise eligible greybox marker through the world-object
-controller, retains the selected object's exact identifier instance, falls back under the unchanged
-distance and authored-order rules when the nearest object is missing, and clears focus presentation
-when no object-backed marker remains. Its status now presents the exact looked-up object's authored
-display name, including when a value-equal replacement changes the name without changing the
-selected marker, and returns to `Interaction focus: NONE` when focus clears without inspecting the
-object description. Every existing labelled marker now also presents the matching world-object
-display name, including for a matching disabled marker; absent objects clear their labels, hidden
-unlabelled markers remain unlabelled, and focus behavior remains unchanged. Marker labels are now
-presentation-only: markers retain independently parsed value-equal object-reference IDs but no
-longer author a separate display-name input. The source-owned descriptions retain exact stable
-instances and are not focused-search inputs or part of marker labels, focus status, or focused-search
-result presentation. Each resolved-perception indicator now reuses its existing label to present the
-exact looked-up object's authored description only while the controller's retained perception has
-that object at exactly `Identified`. Null or absent objects, null or unrelated perception, and every
-other visibility singleton clear and hide the label. A distinct value-equal object supplies its own
-replacement description without changing any supplied object, snapshot, lifecycle state, marker
-presentation, or world-object ordering.
-Phases 2m1–2m25 add one immutable identifier-only passive-noticing candidate for an existing observer
-and target, an immutable snapshot of those candidates, a pure observer-specific projection, an
-exact complete-candidate lookup, a pure candidate-to-perception applicability decision, and pure
-change detection plus application, candidate consumption, resolution, recording, authoritative
-production eligibility and transition, and deterministic next-candidate resolution. The snapshot
-copies caller input in stable supplied order, retains exact candidate instances, rejects nulls and
-value-equal duplicates, and permits candidates that share only an observer or target. Applicability
-requires a matching perception owner and an existing target at exactly `Unnoticed`; resolution
-changes only that target to `Noticed` and removes only the complete candidate. Authoritative
-production requires an existing value-equal character and world object before delegating exact
-duplicate-free append behavior. Next-candidate selection returns the exact first retained,
-resolution-eligible candidate for a value-equal observer in stable order, and its sequence delegates
-the existing atomic resolution without ranking or mutating inputs. A temporary Godot source now
-retains one complete Seeker character whose identity and human controller assignment reuse the
-existing controller's exact identifier, while every other required authored component is
-explicitly empty. The same controller owns an empty passive-candidate snapshot, delegates
-authoritative production and atomic stable resolve-next behavior to the existing Domain boundaries,
-and remains the sole live perception owner. A separate temporary candidate source retains the exact
-Seeker and first world-object identifiers without invoking those controller paths. Temporary
-perception derivation resolves that source candidate through the world-object snapshot, retains
-every exact source identifier in stable order, seeds only the target at `Unnoticed`, and fails
-explicitly if it is absent. Ordinary scene initialization then resolves the target through the
-live world-object controller, produces the exact candidate from the exact character and world
-object, and resolves it once. The atomic result changes only that live target to `Noticed` and
-consumes the complete candidate while leaving the source snapshot, focused-search, movement,
-input, and presentation unchanged. This completes the bounded passive-noticing path without pixel
-clicking, polling, proximity, distance, line-of-sight, timing, or new UI authority. The exact next
-bounded slice is defined in `HANDOVER.md`.
-Phases 2n1–2n4 add one immutable observation-reinterpretation candidate containing only an existing
-observer, target, and triggering knowledge identifier, an immutable ordered snapshot of those
-candidates, a pure observer-specific projection, and a pure complete-candidate lookup. They retain
-exact supplied instances, copy caller collection input, permit an empty snapshot and every proper
-partial match, reject nulls and value-equal complete duplicates, project all value-equal observer
-matches in stable order, and return only an exact retained complete match. They add no candidate
-selection, ranking, evaluation, knowledge or perception inspection, trigger satisfaction,
-resulting visibility state, reinterpretation behavior, or state change. Knowledge-triggered
-reinterpretation remains incomplete.
+and discovery-condition foundations listed below.
+
+Phases 2k1–2k49 implement the bounded focused-search lifecycle through deterministic outcome
+recording and world-object-bound resolution. Temporary F/C/E/R Godot wiring owns immutable Seeker
+state and presents only exact identified targets; missing or mismatched objects fail closed.
+
+Phases 2l1–2l20 make one immutable world-object snapshot the temporary source for object lookup,
+focused-search inputs, perception seeding, focus names, and identified descriptions. Exact
+value-equal lookup and controller boundaries preserve authored instances while the temporary scene
+remains non-authoritative.
+
+Phases 2m1–2m25 complete the bounded passive-noticing path: authoritative candidate production,
+stable next-candidate selection, and atomic resolution change only an existing matching target
+from `Unnoticed` to `Noticed` and consume that candidate. Ordinary scene initialization exercises
+the path once without pixel clicking, proximity, polling, timing, or new UI authority.
+
+Phases 2n1–2n8 define immutable observation-reinterpretation candidates and snapshots, stable
+observer projection, exact lookup, knowledge-trigger satisfaction, perception applicability,
+change detection, and pure application. A triggered candidate changes only an existing matching
+observer target from `Noticed` to `Identified`, preserving stable order and unrelated instances.
+Candidate consumption, atomic resolution, production, sequencing, and runtime wiring remain
+incomplete; `HANDOVER.md` defines the next bounded slice.
 
 - [x] Define stable typed identifiers for characters, objects, locations, evidence, knowledge,
   and world events.
