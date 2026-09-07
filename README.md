@@ -860,6 +860,11 @@ returns a new snapshot preserving stable order and every retained instance befor
 identifier. Duplicate and null rejection leave all inputs unchanged. These contracts do not define
 event payloads, time, replay, persistence, or production.
 
+`WorldEventTimeEffect` is the closed world-event classification vocabulary: exact singleton values
+`no-advance` and `advance` in stable order with strict canonical parsing. It does not assign an
+effect to any event, define elapsed time, phases, durations, progression, scheduling, or runtime
+behavior.
+
 `Allrpcs.Game.WorldEventLogController` owns one initially empty immutable log and delegates
 duplicate-free append to the Domain policy and transition. Successful append installs the returned
 snapshot; rejection preserves the current log and unrelated world-object, perception, and

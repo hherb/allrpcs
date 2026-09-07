@@ -91,8 +91,8 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
   including focused search, passive noticing, and knowledge-triggered reinterpretation.
 - [x] Establish the append-only authoritative world-event identifier log and its first bounded
   startup recording path.
-- [ ] Implement explicit meaningful-time events, qualitative world time, and deterministic
-  schema-versioned save/load.
+- [ ] Implement explicit meaningful-time events (time-effect vocabulary established), qualitative
+  world time, and deterministic schema-versioned save/load.
 - [ ] Add representative discovery cases, scenario validation, and filtered-view leakage tests.
 
 Acceptance:
