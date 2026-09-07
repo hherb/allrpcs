@@ -37,8 +37,10 @@ From the repository root:
 The sequence restores packages serially, rejects C# formatting drift, builds with current
 recommended .NET analysis and compiler warnings treated as errors, runs the domain, application,
 and architecture tests, then exercises both headless and 60-frame graphical Godot launches. The
-headless launches wait for the navigation map to synchronize, prove a route through the bridge,
-reject representative stream, tree, and village targets, and exercise healer follow, wait,
+headless launches wait for the navigation map to synchronize; the interaction-focus check also
+requires the authored healer move destination to resolve onto that map before exercising input.
+They prove a route through the bridge, reject representative stream, tree, and village targets, and
+exercise healer follow, wait,
 move completion, invalid and excluded command rejection, separation, and cross-bridge return to
 follow. A separate interaction-focus launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
@@ -806,6 +808,34 @@ candidate-retention decision. It delegates complete value matching to the existi
 lookup and returns true only when a value-equal candidate is retained in the supplied snapshot. It
 rejects null inputs, preserves every exact instance and stable order, and does not remove, apply,
 produce, or select among candidates.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateConsumptionTransition.Consume` is the pure
+candidate-removal transition. It delegates complete consumption eligibility and returns a new
+snapshot without the value-equal complete retained candidate, preserving every unrelated exact
+candidate and nested identifier instance in stable order. It accepts a distinct value-equal
+candidate, rejects empty, absent, partial-match, and null inputs, and leaves every input unchanged.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionPolicy.CanResolve` is the pure combined
+resolution decision. It returns true only when the existing change policy permits an
+`Unnoticed`-to-`Noticed` perception change and the complete candidate is retained for consumption.
+It leaves both snapshots and every nested instance unchanged and does not create resolution state.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionResult` is the immutable result shape
+for one passive-noticing resolution. It retains the exact supplied perception and candidate
+snapshot instances behind get-only properties, rejects null snapshots, and performs no resolution.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateResolutionTransition.Resolve` is the pure atomic
+resolution transition. It delegates complete combined eligibility, then delegates the existing
+application and consumption transitions, returning only the resulting perception and candidate
+snapshots. The target alone changes from `Unnoticed` to `Noticed`, the complete candidate alone is
+removed, and every unrelated exact instance and stable position is retained without mutating input.
+
+`Allrpcs.Domain.Discovery.PassiveNoticingCandidateRecordingPolicy.CanRecord` and
+`PassiveNoticingCandidateRecordingTransition.Record` provide duplicate-free pure candidate
+recording. Eligibility rejects only an existing value-equal complete candidate while allowing both
+partial matches; recording appends the exact supplied eligible candidate after all existing entries
+in stable order. Both preserve all inputs and do not prove that either identifier names an existing
+authoritative character or world object.
 
 `Allrpcs.Application.Discovery.FocusedSearchActivityIndicatorPolicy.ShouldShow` is the pure
 per-character activity-indicator decision. It delegates selection to the existing activity
