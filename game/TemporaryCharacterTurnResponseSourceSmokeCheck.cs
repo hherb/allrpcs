@@ -51,13 +51,14 @@ public partial class TemporaryCharacterTurnResponseSourceSmokeCheck : Node
         DialogueEvent dialogueEvent = new(utterance, audience);
         DialogueAct dialogueAct = new(utterance, DialogueActType.Request);
         CharacterTurnRequest request = new(healerId, dialogueEvent, dialogueAct);
+        ObjectId targetObjectId = new("herb-patch");
 
-        CharacterTurnResponse first = source.CreateResponse(request);
-        CharacterTurnResponse second = source.CreateResponse(request);
+        CharacterTurnResponse first = source.CreateResponse(request, targetObjectId);
+        CharacterTurnResponse second = source.CreateResponse(request, targetObjectId);
         if (ReferenceEquals(first, second)
-            || !ProvesResponse(first, request)
-            || !ProvesResponse(second, request)
-            || !RejectsNullRequest()
+            || !ProvesResponse(first, request, targetObjectId)
+            || !ProvesResponse(second, request, targetObjectId)
+            || !RejectsNullInputs(request, targetObjectId)
             || !HasExpectedSourceSurface())
         {
             return;
@@ -78,21 +79,27 @@ public partial class TemporaryCharacterTurnResponseSourceSmokeCheck : Node
 
         GD.Print(
             "Temporary character-turn response source smoke passed: exact live-request retention, "
-            + "deterministic accept speech and wait intention, prompt-shaped text containment, "
-            + "distinct responses, null rejection, and unchanged dialogue state were correct.");
+            + "deterministic accept speech and exact examination intention, prompt-shaped text "
+            + "containment, distinct responses, null rejection, and unchanged dialogue state "
+            + "were correct.");
         GetTree().Quit();
     }
 
-    private bool ProvesResponse(CharacterTurnResponse response, CharacterTurnRequest request)
+    private bool ProvesResponse(
+        CharacterTurnResponse response,
+        CharacterTurnRequest request,
+        ObjectId targetObjectId)
     {
         bool matches = ReferenceEquals(response.Request, request)
             && ReferenceEquals(response.Disposition, CharacterTurnDisposition.Accept)
             && response.Speech is not null
             && ReferenceEquals(response.Speech.SpeakerCharacterId, request.RespondingCharacterId)
-            && response.Speech.Text == DeterministicCharacterTurnResponseSelector.AcceptSpeech
+            && response.Speech.Text == DeterministicExaminationResponseSelector.ExaminationSpeech
             && !response.Speech.Text.Contains(PromptShapedText, StringComparison.Ordinal)
-            && ReferenceEquals(response.ImmediateIntention.Type, CharacterIntentionType.Wait)
-            && response.ImmediateIntention.TargetObjectId is null
+            && ReferenceEquals(
+                response.ImmediateIntention.Type,
+                CharacterIntentionType.ExamineObject)
+            && ReferenceEquals(response.ImmediateIntention.TargetObjectId, targetObjectId)
             && response.Commitments.Count == 0
             && response.StateProposals.Count == 0;
         if (!matches)
@@ -103,18 +110,25 @@ public partial class TemporaryCharacterTurnResponseSourceSmokeCheck : Node
         return matches;
     }
 
-    private bool RejectsNullRequest()
+    private bool RejectsNullInputs(CharacterTurnRequest request, ObjectId targetObjectId)
     {
         try
         {
-            source.CreateResponse(null!);
+            source.CreateResponse(null!, targetObjectId);
         }
         catch (ArgumentNullException)
         {
-            return true;
+            try
+            {
+                source.CreateResponse(request, null!);
+            }
+            catch (ArgumentNullException)
+            {
+                return true;
+            }
         }
 
-        Fail("Temporary response source accepted a null request.");
+        Fail("Temporary response source accepted a null request or target.");
         return false;
     }
 
@@ -138,7 +152,7 @@ public partial class TemporaryCharacterTurnResponseSourceSmokeCheck : Node
             && methods[0].Name == nameof(TemporaryCharacterTurnResponseSource.CreateResponse)
             && methods[0].ReturnType == typeof(CharacterTurnResponse)
             && methods[0].GetParameters().Select(parameter => parameter.ParameterType)
-                .SequenceEqual([typeof(CharacterTurnRequest)]);
+                .SequenceEqual([typeof(CharacterTurnRequest), typeof(ObjectId)]);
         if (!matches)
         {
             Fail("Temporary response source exposed an unexpected public surface.");

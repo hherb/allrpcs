@@ -126,6 +126,9 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Receive and present one complete deterministic response for the exact live request.
 - [x] Record exact healer response speech once before completing its speaking turn.
 - [x] Start later character turns only after the current activity is terminal.
+- [x] Select one deterministic examination response for an exact supplied target.
+- [x] Gate immediate physical intentions on exact observed response speech and authoritative events.
+- [x] Require an exact authoritative safe examination result before collection can occur.
 - [x] Implement accept, refuse, clarify, and conditionally accept behaviours.
 - [x] Implement multi-step commitments one observed action at a time.
 - [x] Allow the player to interrupt and cancel a pending response or spoken turn.

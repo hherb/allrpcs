@@ -91,7 +91,7 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
             || selected?.Speech is null
             || !ReferenceEquals(speaking.State, CharacterTurnActivityState.Speaking)
             || response.Text != selected.Speech.Text
-            || response.Text != DeterministicCharacterTurnResponseSelector.AcceptSpeech
+            || response.Text != DeterministicExaminationResponseSelector.ExaminationSpeech
             || transcript is not { Entries.Count: 2 }
             || transcript.Entries[0].SpokenStatement?.Text != PlayerText
             || !ReferenceEquals(transcript.Entries[1].SpokenStatement, selected.Speech)

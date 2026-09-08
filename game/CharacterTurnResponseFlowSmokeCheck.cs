@@ -1,6 +1,7 @@
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -177,9 +178,13 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
             && ReferenceEquals(
                 response.Speech.SpeakerCharacterId,
                 activity.Request.RespondingCharacterId)
-            && response.Speech.Text == DeterministicCharacterTurnResponseSelector.AcceptSpeech
-            && ReferenceEquals(response.ImmediateIntention.Type, CharacterIntentionType.Wait)
-            && response.ImmediateIntention.TargetObjectId is null
+            && response.Speech.Text == DeterministicExaminationResponseSelector.ExaminationSpeech
+            && ReferenceEquals(
+                response.ImmediateIntention.Type,
+                CharacterIntentionType.ExamineObject)
+            && ReferenceEquals(
+                response.ImmediateIntention.TargetObjectId,
+                GetExpectedTargetObjectId())
             && response.Commitments.Count == 0
             && response.StateProposals.Count == 0
             && ReferenceEquals(entry?.SpokenStatement, utterance)
@@ -191,6 +196,10 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
 
         return matches;
     }
+
+    private ObjectId GetExpectedTargetObjectId() =>
+        GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource")
+            .WorldObjects.Entries[0].Identity.Id;
 
     private bool ProvesLaterDialoguePreservesSpeakingTurn()
     {

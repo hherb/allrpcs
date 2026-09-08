@@ -623,6 +623,22 @@ Pure start eligibility permits a fresh awaiting activity only when current activ
 completed, or cancelled, and its transition retains the exact new request without changing the
 prior immutable activity.
 
+The separate deterministic examination selector accepts an exact request and explicitly supplied
+target identifier. It produces a fresh accepted response with fixed healer speech, an exact-target
+`examine-object` immediate intention, and no commitments or state proposals. The temporary live
+response source now uses that selector with the exact authored herb-patch identifier; it does not
+infer the target from dialogue text or execute the proposed action.
+
+Pure immediate-intention occurrence policy requires the exact speaking response, responder,
+non-wait action, latest observed response speech, and authoritative eligible world event before
+delegating atomic event/time/transcript recording. `CharacterExaminationResult` can retain only a
+targeted observed examination occurrence and one closed `safe-to-collect` or
+`unsafe-to-collect` result. The deterministic post-examination selector proposes collection of the
+exact examined target only for the safe result and otherwise waits. A separate pure collection
+occurrence gate additionally requires the exact examination occurrence to remain latest in the
+transcript before atomic authoritative collection recording. These contracts do not yet source an
+examination result or wire examination/collection occurrence into the live scene.
+
 The focused Godot `CharacterTurnActivityController` initializes once from one exact activity and
 delegates fresh starts, cancellation, response reception, and speaking completion to those Domain
 contracts. The live scene begins without an activity. On a later process pass, a separate temporary
