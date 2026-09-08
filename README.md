@@ -573,6 +573,19 @@ properties, scene nodes, or Godot state.
 exact utterance with one explicitly declared type. These values perform no text classification;
 prompt-shaped text remains ordinary in-world speech and gains no instruction or action authority.
 
+The temporary bottom dialogue panel submits either Return or its button through the focused
+`DialogueInputController`. The controller initializes once with the exact scene Seeker identifier,
+constructs `DialogueUtterance` directly so the Domain remains the sole text validator, and exposes
+only the exact last accepted utterance. Rejected null, blank, or oversized text preserves the last
+accepted value; successful repeated submissions create distinct occurrences and clear the field.
+
+`Main` observes each fresh accepted utterance exactly once. `DialogueEventController` delegates the
+scene's Seeker and healer positions and the named 192-pixel inclusive range to
+`DialogueHearingSelector`, then retains the exact resulting in-world event. The scene's empty
+`CharacterTurnTranscriptController` appends that same utterance as structurally tagged spoken
+speech through `CharacterTurnTranscriptAppendTransition`. Neither controller infers a dialogue-act
+type, selects a responder, constructs a turn request, generates a response, or executes an action.
+
 `CharacterTurnRequest` is provider-neutral and retains one exact responding character, dialogue
 event, and act. It rejects a responder outside the event audience and rejects an act for a
 different utterance. The initial `CharacterIntentionType` vocabulary is limited to `wait`,

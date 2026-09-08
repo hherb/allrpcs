@@ -110,7 +110,8 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 ## Phase 3 — Natural-language dialogue with a deterministic character
 
-- [ ] Build a dialogue panel with unrestricted text input and streaming response display.
+- [x] Build a dialogue panel with unrestricted text input.
+- [ ] Add streaming response display to the dialogue panel.
 - [x] Identify the speaking character and all characters within hearing range.
 - [x] Preserve the player's exact utterance as an in-world dialogue event.
 - [x] Distinguish commands, requests, questions, speculation, warnings, reported claims,
