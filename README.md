@@ -15,7 +15,11 @@ speaking, completed, and cancelled states, with pure cancellation eligibility an
 runtime cancellation, scene wiring, player input, and UI remain later work. Character-turn
 transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
 intentions, while immutable snapshots and a pure append transition preserve occurrence order
-without treating response proposals as executed actions. Event-log integration remains later work.
+without treating response proposals as executed actions. A character-turn world-event occurrence
+now retains an exact authoritative event together with one exact tagged transcript occurrence.
+Pure eligibility and transition rules require that exact authored event, then atomically record its
+identifier, apply its declared qualitative-time effect, and append the tagged occurrence while
+retaining the exact occurrence in the result. Runtime orchestration remains later work.
 
 ## Prerequisites
 
@@ -586,10 +590,24 @@ from the value-matching responder, exactly one immediate intention, a copied nul
 commitments, and a copied stable list of at most eight state proposals. It does not validate or
 execute intentions, advance commitments, apply proposals, or inspect world state.
 
-These dialogue boundaries do not yet define acceptance behavior, a deterministic character,
-commitment progression, proposal validation or application, transcripts, event logging, streaming,
-cancellation, persistence, scene wiring, player input, a dialogue panel, model/provider contracts,
-or runtime world mutation.
+The pure deterministic response selector maps only the declared dialogue-act type to fixed
+accept, refuse, clarify, or conditionally-accept behavior. Commitment progress advances one
+value-equal pending intention per observed action. Character-turn activity and cancellation
+contracts represent awaiting, speaking, completed, and cancelled states without runtime wiring.
+
+Transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
+intentions. Immutable transcript snapshots and append transitions retain exact entries in stable
+occurrence order. `CharacterTurnWorldEventOccurrence` links one exact authoritative `WorldEvent`
+definition to one exact tagged transcript entry without inferring execution from a response
+proposal. Its pure policy accepts only the exact event instance retained in the authored snapshot
+and delegates existing world-event eligibility. The pure transition records that exact event
+identifier, applies its authored qualitative-time effect, appends the exact transcript occurrence,
+and returns all resulting immutable state together with the retained occurrence. Failed
+eligibility changes nothing.
+
+These dialogue boundaries do not yet define runtime cancellation orchestration, proposal
+application, action execution, streaming, persistence, scene wiring, player input, a dialogue
+panel, model/provider contracts, or runtime world mutation.
 
 ## Location model boundaries
 
