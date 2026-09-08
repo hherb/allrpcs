@@ -15,5 +15,6 @@ dotnet test tests/Domain.Tests/Allrpcs.Domain.Tests.csproj --no-build
 dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build
 dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-build
 dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
+dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore
 ./scripts/smoke-godot.sh
 godot --path game --quit-after 60

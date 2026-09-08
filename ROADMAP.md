@@ -105,8 +105,8 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Serialize and strictly deserialize the supported save root as canonical JSON.
 - [x] Prove serialized in-memory round-trip restoration through the scene controllers.
 - [x] Persist and load a versioned save document through a bounded storage seam.
-- [ ] Add representative discoveries and scenario validation.
-- [ ] Prove filtered views do not leak hidden facts.
+- [x] Add representative discoveries and scenario validation.
+- [x] Prove filtered views do not leak hidden facts.
 
 ## Phase 3 — Natural-language dialogue with a deterministic character
 

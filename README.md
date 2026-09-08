@@ -120,6 +120,15 @@ dotnet format Allrpcs.sln --no-restore --verify-no-changes
 The architecture tests inspect authored project files without loading Godot. They enforce the
 project-reference directions listed below.
 
+The quality sequence also runs the pure representative discovery-scenario validator. It exits
+nonzero if its five ordered evidence definitions contain broken ownership or object references,
+unavailable requirements, or evidence that cannot reach its required visibility through the
+authored initial, capability, tool, passive-noticing, or knowledge-triggered routes:
+
+```sh
+dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore
+```
+
 ## Credential-free hosted checks
 
 `.github/workflows/ci.yml` configures pull-request and `main` checks on explicit stable runner
