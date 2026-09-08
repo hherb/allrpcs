@@ -116,7 +116,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Distinguish commands, requests, questions, speculation, warnings, reported claims,
   promises, and conditional plans in the internal representation.
 - [x] Define the provider-neutral character-turn request.
-- [ ] Define the provider-neutral character-turn response: optional speech, one immediate
+- [x] Define the provider-neutral character-turn response: optional speech, one immediate
   intention, commitments, and bounded state proposals.
 - [x] Define the initial internal intention schema and validation errors.
 - [ ] Implement a deterministic test character with predictable responses.
