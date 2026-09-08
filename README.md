@@ -6,6 +6,14 @@ navigation-request, follow-target, command-selection, and focus-selection rules 
 authoritative rules in engine-independent C# projects while Godot owns input mapping, physics
 presentation, camera behavior, collision, navigation topology, and scene authoring.
 
+The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
+types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure
+deterministic character behavior selects fixed accept, refuse, clarify, or conditionally-accept
+responses solely from the declared act type. Immutable commitment progress advances only one
+value-equal pending intention per observation. Character-turn activity can represent awaiting,
+speaking, completed, and cancelled states, with pure cancellation eligibility and transition rules;
+runtime cancellation, transcript integration, scene wiring, player input, and UI remain later work.
+
 ## Prerequisites
 
 - A 64-bit .NET 8 SDK.
