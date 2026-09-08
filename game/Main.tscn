@@ -71,6 +71,11 @@
 [ext_resource type="Script" path="res://DialogueEventControllerSmokeCheck.cs" id="69_dialogue_event_controller_check"]
 [ext_resource type="Script" path="res://CharacterTurnTranscriptController.cs" id="70_character_turn_transcript_controller"]
 [ext_resource type="Script" path="res://CharacterTurnTranscriptControllerSmokeCheck.cs" id="71_character_turn_transcript_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnRequestSourceSmokeCheck.cs" id="72_character_turn_request_source_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnRequestSource.cs" id="73_character_turn_request_source"]
+[ext_resource type="Script" path="res://CharacterTurnRequestFlowSmokeCheck.cs" id="74_character_turn_request_flow_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSourceSmokeCheck.cs" id="75_character_turn_response_source_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSource.cs" id="76_character_turn_response_source"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -428,6 +433,12 @@ script = ExtResource("68_dialogue_event_controller")
 [node name="CharacterTurnTranscriptController" type="Node" parent="."]
 script = ExtResource("70_character_turn_transcript_controller")
 
+[node name="TemporaryCharacterTurnRequestSource" type="Node" parent="."]
+script = ExtResource("73_character_turn_request_source")
+
+[node name="TemporaryCharacterTurnResponseSource" type="Node" parent="."]
+script = ExtResource("76_character_turn_response_source")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -505,6 +516,15 @@ script = ExtResource("69_dialogue_event_controller_check")
 
 [node name="CharacterTurnTranscriptControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("71_character_turn_transcript_check")
+
+[node name="TemporaryCharacterTurnRequestSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("72_character_turn_request_source_check")
+
+[node name="CharacterTurnRequestFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("74_character_turn_request_flow_check")
+
+[node name="TemporaryCharacterTurnResponseSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("75_character_turn_response_source_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")

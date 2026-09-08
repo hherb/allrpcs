@@ -19,7 +19,6 @@ public partial class DialogueEventControllerSmokeCheck : Node
     private LineEdit input = null!;
     private int stage;
     private DialogueEvent? firstEvent;
-    private CharacterTurnActivity? initialTurn;
     private object? initialWorldEventLog;
     private object? initialWorldTime;
     private object? initialWorldObjects;
@@ -87,8 +86,6 @@ public partial class DialogueEventControllerSmokeCheck : Node
 
     private void CaptureInitialState()
     {
-        initialTurn = GetNode<CharacterTurnActivityController>(
-            "../CharacterTurnActivityController").Activity;
         WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
         initialWorldEventLog = worldEvents.EventLog;
         initialWorldTime = worldEvents.WorldTime;
@@ -196,10 +193,7 @@ public partial class DialogueEventControllerSmokeCheck : Node
     private bool UnrelatedStateIsPreserved()
     {
         WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        bool preserved = ReferenceEquals(
-                GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity,
-                initialTurn)
-            && ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
+        bool preserved = ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
             && ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
             && ReferenceEquals(
                 GetNode<WorldObjectController>("../WorldObjectController").WorldObjects,

@@ -32,6 +32,7 @@ public partial class Main : Node
     private CharacterTurnTranscriptController characterTurnTranscriptController = null!;
     private DialogueEventController dialogueEventController = null!;
     private DialogueInputController dialogueInputController = null!;
+    private TemporaryCharacterTurnRequestSource characterTurnRequestSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
@@ -64,6 +65,8 @@ public partial class Main : Node
             "CharacterTurnTranscriptController");
         dialogueEventController = GetNode<DialogueEventController>("DialogueEventController");
         dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
+        characterTurnRequestSource = GetNode<TemporaryCharacterTurnRequestSource>(
+            "TemporaryCharacterTurnRequestSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
@@ -114,12 +117,6 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The character-turn transcript controller could not initialize empty.");
-        }
-
-        if (!characterTurnController.TryInitialize(characterTurnSource.Activity))
-        {
-            throw new InvalidOperationException(
-                "The character-turn controller could not initialize the temporary activity.");
         }
 
         InitializeWorldEvents();
@@ -263,7 +260,38 @@ public partial class Main : Node
                 "The accepted player utterance could not occur and append to the transcript.");
         }
 
+        StartCharacterTurnIfIdle(healerCharacterId);
+
         lastProcessedDialogueUtterance = utterance;
+    }
+
+    private void StartCharacterTurnIfIdle(CharacterId healerCharacterId)
+    {
+        if (characterTurnController.Activity is not null)
+        {
+            return;
+        }
+
+        DialogueEvent occurredEvent = dialogueEventController.LastOccurredEvent
+            ?? throw new InvalidOperationException("The occurred player dialogue event was absent.");
+        CharacterTurnRequest? request = characterTurnRequestSource.CreateRequest(
+            occurredEvent,
+            healerCharacterId,
+            DialogueActType.Request);
+        if (request is null)
+        {
+            return;
+        }
+
+        CharacterTurnActivity activity = new(
+            request,
+            null,
+            CharacterTurnActivityState.AwaitingResponse);
+        if (!characterTurnController.TryInitialize(activity))
+        {
+            throw new InvalidOperationException(
+                "The live character-turn controller could not start the player request.");
+        }
     }
 
     /// <inheritdoc />
