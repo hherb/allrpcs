@@ -111,14 +111,14 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 ## Phase 3 — Natural-language dialogue with a deterministic character
 
 - [ ] Build a dialogue panel with unrestricted text input and streaming response display.
-- [ ] Identify the speaking character and all characters within hearing range.
-- [ ] Preserve the player's exact utterance as an in-world dialogue event.
-- [ ] Distinguish commands, requests, questions, speculation, warnings, reported claims,
+- [x] Identify the speaking character and all characters within hearing range.
+- [x] Preserve the player's exact utterance as an in-world dialogue event.
+- [x] Distinguish commands, requests, questions, speculation, warnings, reported claims,
   promises, and conditional plans in the internal representation.
-- [ ] Define the provider-neutral character-turn request.
+- [x] Define the provider-neutral character-turn request.
 - [ ] Define the provider-neutral character-turn response: optional speech, one immediate
   intention, commitments, and bounded state proposals.
-- [ ] Define the initial internal intention schema and validation errors.
+- [x] Define the initial internal intention schema and validation errors.
 - [ ] Implement a deterministic test character with predictable responses.
 - [ ] Implement accept, refuse, clarify, and conditionally accept behaviours.
 - [ ] Implement multi-step commitments one observed action at a time.
