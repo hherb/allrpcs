@@ -2,46 +2,43 @@
 
 ## Current state
 
-PR #141 merged the remaining Phase 2 scenario-validation work into `main` at `35f4bb9`. The branch
-`codex/phase-3-dialogue-foundation` completes the reviewed Phase 3a1-3c4 dialogue foundation:
+PR #142 merged the Phase 3a1-3c4 dialogue foundation into `main` at `78195b7`. The branch
+`codex/phase-3-turn-response` completes Phase 3c5-3c10:
 
-- `DialogueUtterance`, `DialogueAudienceSnapshot`, and the pure Application
-  `DialogueHearingSelector` retain exact typed identifiers and exact bounded Unicode speech,
-  select every listener inside an inclusive finite range in stable order, and compose a matching
-  immutable `DialogueEvent` without Godot or scene state.
-- The closed `DialogueActType` vocabulary represents commands, requests, questions, speculation,
-  warnings, reported claims, promises, and conditional plans. `DialogueAct` retains the exact
-  utterance plus an explicitly declared type; it does not classify text or grant instruction or
-  action authority.
-- `CharacterTurnRequest` is provider-neutral and accepts only a responder in the event's exact
-  audience plus an act for the same utterance.
-- The initial closed immediate-intention types are wait, examine object, and collect object.
-  `CharacterIntention` retains an optional exact target, and the pure validation policy reports
-  missing or unexpected target errors without world lookup, authorization, execution, or mutation.
+- `CharacterTurnDisposition` defines the exact closed accept, refuse, clarify, and conditionally
+  accept vocabulary.
+- `CharacterCommitment` retains a non-empty ordered sequence of exact proposed intentions without
+  progression or execution authority.
+- `CharacterStateProposal` retains a canonical key and exact nonblank value bounded to 500 UTF-16
+  code units; it is proposed character-owned text, not world truth or mutation authority.
+- `CharacterTurnResponse` retains the exact request and disposition, optional speech from the
+  responder, one immediate intention, copied commitments, and at most eight copied state proposals.
 
-`ROADMAP.md` marks only the five completed Phase 3 contracts. The dialogue panel, response schema,
-deterministic character and behaviours, commitments, transcript/event-log integration, streaming,
-cancellation, persistence, scene wiring, player input, and providers remain incomplete. No release,
-signing, or distribution work was performed.
+`ROADMAP.md` marks the provider-neutral character-turn response complete. Deterministic behavior,
+intention validation or execution, commitment progression, proposal validation or application,
+transcripts, events, providers, persistence, scene wiring, player input, and UI remain incomplete.
 
 ## Validation
 
-After code review, `dotnet format Allrpcs.sln --no-restore --verify-no-changes` passed. The complete
-host `./scripts/quality.sh` run passed workflow and formatting validation, a zero-warning build,
-1,180 Domain tests, 129 Application tests, 23 Infrastructure tests, eight architecture tests, the
-five-evidence representative scenario validator, all 33 opt-in Godot smokes, and the bounded
-graphical launch. The first focused VSTest run reproduced the known sandbox loopback denial;
-focused and complete host runs are authoritative.
+Focused test-first runs passed for each contract after the expected missing-type/member failures.
+The sandbox reproduced the known VSTest loopback denial; identical host runs are authoritative.
+The complete host `./scripts/quality.sh` run passed workflow and formatting validation, a
+zero-warning build, 1,215 Domain tests, 129 Application tests, 23 Infrastructure tests, eight
+architecture tests, the five-evidence representative scenario validator, all 33 opt-in Godot
+smokes, and the bounded graphical launch.
 
 ## Exact next bounded slice
 
-Take **Phase 3c5: define the immutable character-turn disposition vocabulary**.
+Take **Phase 3d1: select predictable initial deterministic-character dispositions**.
 
 Acceptance boundary:
 
-1. Add a closed provider-neutral vocabulary for accept, refuse, clarify, and conditionally accept,
-   with stable canonical text, order, parsing, and exact singleton identity.
-2. Prove the complete closed surface and fail-closed null, unknown, and noncanonical parsing.
-3. Do not compose the character-turn response or add speech, intention execution, commitments,
-   state proposals, behavior selection, a deterministic character, world lookup, model/provider
-   contracts, persistence, scene wiring, Godot input, streaming, cancellation, transcript, or UI.
+1. Add one pure Application selector over the request's explicitly declared `DialogueActType`:
+   request -> accept, command -> refuse, question -> clarify, conditional plan -> conditionally
+   accept, and every other defined act -> refuse.
+2. Compose fixed responder-authored speech, `wait` as the one immediate intention, and empty
+   commitment/proposal collections; retain the exact request in the response.
+3. Prove prompt-shaped text cannot alter selection beyond its separately declared act type.
+4. Do not classify text; inspect world, perception, knowledge, safety, or affordances; execute an
+   intention; advance commitments; apply state; add providers, persistence, scene wiring, input,
+   transcript/event integration, streaming, cancellation, or UI.

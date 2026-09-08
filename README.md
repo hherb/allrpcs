@@ -564,8 +564,19 @@ target `ObjectId`, including invalid shapes so `CharacterIntentionValidationPoli
 closed missing-target or unexpected-target error without mutating input. The policy does not look
 up world objects or authorize or execute an action.
 
-These dialogue boundaries do not yet define response speech, commitments, state proposals,
-acceptance behavior, a deterministic character, transcripts, event logging, streaming,
+`CharacterTurnDisposition` is the closed exact-singleton vocabulary `accept`, `refuse`, `clarify`,
+and `conditionally-accept`. `CharacterCommitment` defensively retains one non-empty ordered sequence
+of exact proposed intentions without selecting, advancing, observing, or executing a step.
+`CharacterStateProposal` retains only a canonical key and exact nonblank proposed value bounded to
+500 UTF-16 code units. It is proposed character-owned text, not world truth or mutation authority.
+
+`CharacterTurnResponse` retains its exact request and disposition, optional exact bounded speech
+from the value-matching responder, exactly one immediate intention, a copied nullable-free list of
+commitments, and a copied stable list of at most eight state proposals. It does not validate or
+execute intentions, advance commitments, apply proposals, or inspect world state.
+
+These dialogue boundaries do not yet define acceptance behavior, a deterministic character,
+commitment progression, proposal validation or application, transcripts, event logging, streaming,
 cancellation, persistence, scene wiring, player input, a dialogue panel, model/provider contracts,
 or runtime world mutation.
 
