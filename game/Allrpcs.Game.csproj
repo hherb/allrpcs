@@ -8,5 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="../src/Application/Allrpcs.Application.csproj" />
+    <ProjectReference Include="../src/Infrastructure/Allrpcs.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

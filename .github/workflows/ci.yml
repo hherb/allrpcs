@@ -45,6 +45,9 @@ jobs:
       - name: Run pure application tests
         run: dotnet test tests/Application.Tests/Allrpcs.Application.Tests.csproj --no-build
 
+      - name: Run infrastructure tests
+        run: dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-build
+
       - name: Run architecture tests
         run: dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
 

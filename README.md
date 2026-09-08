@@ -350,6 +350,37 @@ partially alter either controller. This remains an in-memory restoration seam: i
 parse a serialized representation, choose a file or path, perform migration, autosave, replay events,
 or run automatically during startup.
 
+`SaveSnapshotCaptureController.Capture` is the matching scene-owned in-memory capture seam. It
+returns no snapshot until discovery perception, authored world events, the event log, and qualitative
+time are all initialized. Each successful call creates fresh `DiscoverySaveState`,
+`WorldEventSaveState`, and version-`1` `SaveSnapshot` compositions while retaining the controllers'
+exact current nested snapshot instances. Capture does not mutate or present controller state, and a
+captured root can pass through the existing restoration coordinator. It does not serialize, choose a
+file or path, access storage, migrate, replay, autosave, or orchestrate startup loading.
+
+`Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer` writes one compact canonical JSON
+document from a complete save root. Version, object names, arrays, and array entry fields have one
+stable order; all identifier and visibility values use their existing canonical text; and an
+unadvanced world time is represented explicitly as JSON `null`. Serialization preserves the input
+root and its exact nested instances. It does not write a file, choose a path, validate a scenario,
+migrate, encrypt, or restore runtime state.
+
+`SaveSnapshotJsonDeserializer` is the strict version-`1` inverse. It accepts only the complete known
+object shape and exact JSON value kinds, rejecting malformed JSON, comments, trailing commas,
+duplicate, missing, or unknown properties, non-canonical versions and identifiers, unknown
+visibility values, invalid duplicate collections, and unsupported future versions. Successful reads
+materialize fresh immutable Domain values in their serialized order. Scenario-specific ownership,
+world-object, event-log, and qualitative-time eligibility remains with
+`SaveSnapshotRestorationPolicy`; the deserializer does not access storage or mutate controllers.
+
+`SaveSnapshotJsonController` is the scene composition seam for serialized in-memory round trips.
+`CaptureSerialized` delegates exact live capture to `SaveSnapshotCaptureController` before canonical
+serialization. `TryRestoreSerialized` rejects invalid or unsupported documents before delegating the
+materialized root to `SaveSnapshotRestorationController`, whose complete scenario preflight prevents
+partial restoration. This proves exact state values survive serialization and restoration without
+adding a save file, path policy, storage provider, startup/load behavior, autosave, migration, replay,
+credentials, or final save UI.
+
 ## Stable domain identifiers
 
 `Allrpcs.Domain.Identifiers` defines distinct immutable identifiers for characters, world
