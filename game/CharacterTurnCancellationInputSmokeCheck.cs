@@ -1,3 +1,4 @@
+using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Perception;
@@ -13,12 +14,14 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
     private const string CheckEnvironmentVariable = "ALLRPCS_CHARACTER_TURN_INPUT_CHECK";
     private const string AwaitingMode = "awaiting";
     private const string SpeakingMode = "speaking";
+    private const string RequestText = "Please wait while I examine the flowers.";
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
 
     private string mode = string.Empty;
     private Main main = null!;
     private CharacterTurnActivityController controller = null!;
-    private TemporaryCharacterTurnSource source = null!;
+    private LineEdit input = null!;
+    private int stage;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -33,22 +36,38 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
 
         main = GetNode<Main>("..");
         controller = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
-        source = GetNode<TemporaryCharacterTurnSource>("../TemporaryCharacterTurnSource");
+        input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
     /// <inheritdoc />
     public override void _Process(double delta)
     {
         _ = delta;
-        SetProcess(false);
-
-        if (!ReferenceEquals(controller.Activity, source.Activity))
+        if (stage == 0)
         {
-            Fail("Character-turn cancellation input smoke found no exact initialized activity.");
+            if (controller.Activity is not null)
+            {
+                Fail("Character-turn cancellation input smoke did not begin with an empty controller.");
+                return;
+            }
+
+            input.Text = RequestText;
+            input.EmitSignal(LineEdit.SignalName.TextSubmitted, RequestText);
+            stage = 1;
             return;
         }
 
-        if (mode == SpeakingMode && !controller.TryReceiveResponse(source.Response))
+        SetProcess(false);
+
+        if (controller.Activity is null)
+        {
+            Fail("Character-turn cancellation input smoke found no live player request activity.");
+            return;
+        }
+
+        if (mode == SpeakingMode
+            && !controller.TryReceiveResponse(
+                DeterministicCharacterTurnResponseSelector.Select(controller.Activity.Request)))
         {
             Fail("Character-turn cancellation input smoke could not enter speaking state.");
             return;

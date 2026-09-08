@@ -45,3 +45,6 @@ ALLRPCS_CHARACTER_TURN_INPUT_CHECK=speaking godot --headless --path "$repository
 ALLRPCS_DIALOGUE_INPUT_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_DIALOGUE_EVENT_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_CHARACTER_TURN_TRANSCRIPT_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_CHARACTER_TURN_REQUEST_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_CHARACTER_TURN_REQUEST_FLOW_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_CHARACTER_TURN_RESPONSE_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30

@@ -15,13 +15,17 @@ speaking, completed, and cancelled states, with pure cancellation, response-rece
 completion eligibility and transition rules. A focused Godot controller owns one exact activity,
 delegates those transitions, and exposes an explicit player cancellation action for awaiting and
 speaking turns. Character-turn transcript entries structurally distinguish exact spoken utterances
-from exact non-wait physical
-intentions, while immutable snapshots and a pure append transition preserve occurrence order
+from exact non-wait physical intentions, while immutable snapshots and a pure append transition
+preserve occurrence order
 without treating response proposals as executed actions. A character-turn world-event occurrence
 now retains an exact authoritative event together with one exact tagged transcript occurrence.
 Pure eligibility and transition rules require that exact authored event, then atomically record its
 identifier, apply its declared qualitative-time effect, and append the tagged occurrence while
 retaining the exact occurrence in the result. Response-proposal execution remains later work.
+The live greybox now derives the first in-range healer request from the exact occurred player event
+using an explicitly supplied act type and starts one awaiting-response activity. A separate
+credential-free temporary source can select the existing deterministic response for that exact
+request without installing or presenting it.
 
 ## Prerequisites
 
@@ -583,8 +587,11 @@ accepted value; successful repeated submissions create distinct occurrences and 
 scene's Seeker and healer positions and the named 192-pixel inclusive range to
 `DialogueHearingSelector`, then retains the exact resulting in-world event. The scene's empty
 `CharacterTurnTranscriptController` appends that same utterance as structurally tagged spoken
-speech through `CharacterTurnTranscriptAppendTransition`. Neither controller infers a dialogue-act
-type, selects a responder, constructs a turn request, generates a response, or executes an action.
+speech through `CharacterTurnTranscriptAppendTransition`. When no turn is active, the temporary
+request source gates the exact healer against that event's audience, pairs the event's exact
+utterance with the explicitly supplied `request` act type, and starts one exact awaiting-response
+activity. Later dialogue still becomes a distinct event and transcript occurrence but cannot
+replace that active turn. No text classification, response reception, or action execution occurs.
 
 `CharacterTurnRequest` is provider-neutral and retains one exact responding character, dialogue
 event, and act. It rejects a responder outside the event audience and rejects an act for a
@@ -614,11 +621,13 @@ accepts only speaking activity. Both transitions retain exact request and respon
 
 The focused Godot `CharacterTurnActivityController` initializes once from one exact activity and
 delegates cancellation, response reception, and speaking completion to those Domain contracts.
-The temporary scene source supplies one awaiting request and its complete deterministic response;
-the scene initializes only the awaiting activity. The explicit `V` input cancels either an
-awaiting or speaking turn. Opt-in smokes prove both input cases in fresh processes and prove that
-rejected or successful cancellation does not alter world-event, discovery, movement, or existing
-presentation state. No response intention or proposal is executed by this wiring.
+The live scene begins without an activity and initializes it only from the first valid occurred
+player event. The explicit `V` input cancels either an awaiting or speaking live request. A separate
+temporary response source delegates the exact request to the pure deterministic selector and
+returns a fresh complete response without installing it. Opt-in smokes prove both cancellation
+cases in fresh processes and prove that request derivation and response selection preserve
+unrelated world, discovery, transcript, and presentation state. No response speech, intention, or
+proposal is applied by this wiring.
 
 Transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
 intentions. Immutable transcript snapshots and append transitions retain exact entries in stable
@@ -630,8 +639,9 @@ identifier, applies its authored qualitative-time effect, appends the exact tran
 and returns all resulting immutable state together with the retained occurrence. Failed
 eligibility changes nothing.
 
-These dialogue boundaries do not yet define proposal application, action execution, streaming,
-persistence, a dialogue panel, model/provider contracts, or runtime world mutation.
+These dialogue boundaries do not yet install or present the selected response, apply proposals,
+execute actions, stream content, add persistence or provider contracts, or mutate runtime world
+state from a character response.
 
 ## Location model boundaries
 

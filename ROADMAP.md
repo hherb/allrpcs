@@ -114,6 +114,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [ ] Add streaming response display to the dialogue panel.
 - [x] Identify the speaking character and all characters within hearing range.
 - [x] Preserve the player's exact utterance as an in-world dialogue event.
+- [x] Derive the first explicitly typed healer request from an exact heard player dialogue event.
 - [x] Distinguish commands, requests, questions, speculation, warnings, reported claims,
   promises, and conditional plans in the internal representation.
 - [x] Define the provider-neutral character-turn request.
@@ -121,6 +122,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
   intention, commitments, and bounded state proposals.
 - [x] Define the initial internal intention schema and validation errors.
 - [x] Implement a deterministic test character with predictable responses.
+- [x] Expose credential-free deterministic response selection for the exact live request.
 - [x] Implement accept, refuse, clarify, and conditionally accept behaviours.
 - [x] Implement multi-step commitments one observed action at a time.
 - [x] Allow the player to interrupt and cancel a pending response or spoken turn.

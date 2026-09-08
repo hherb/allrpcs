@@ -2,56 +2,58 @@
 
 ## Current state
 
-`main` contains merged PR #147 at `b5c298`. The branch
-`codex/phase-3-dialogue-panel` continues Phase 3 through these reviewed slices:
+`main` contains merged PR #148 at `c6d09d1`. The branch
+`codex/phase-3-dialogue-turn-flow` continues Phase 3 through these bounded slices:
 
-- Phase 3k1 adds a temporary bottom dialogue panel and focused `DialogueInputController`. Return or
-  the button submits the player's exact nonblank text as a `DialogueUtterance` for the exact scene
-  Seeker. Domain validation rejects null, blank, and text above 2,000 UTF-16 code units without
-  changing the last accepted utterance.
-- Phase 3k2 converts each fresh accepted utterance exactly once into a `DialogueEvent`. The existing
-  pure hearing selector receives the exact Seeker and temporary healer identifiers, current scene
-  positions, and a named inclusive 192-pixel range. The event controller retains the exact event and
-  stable heard audience.
-- Phase 3k3 initializes one empty scene `CharacterTurnTranscriptSnapshot` and appends the same exact
-  player utterance as a structurally tagged spoken statement. Repeated equal text remains distinct
-  ordered occurrences.
+- Phase 3k4 adds `TemporaryCharacterTurnRequestSource`. It accepts an exact occurred
+  `DialogueEvent`, exact supplied healer identifier, and explicit `DialogueActType`; value-equal
+  audience membership gates a new request that retains those exact inputs and the event's exact
+  utterance. Missing listeners and null inputs fail closed. It performs no text classification or
+  state mutation.
+- Phase 3k5 removes the synthetic startup activity from the live scene. The first fresh accepted
+  player utterance now occurs as an exact in-world event, appends as exact transcript speech, and—if
+  no turn is active—starts one exact awaiting-response healer activity with the explicitly supplied
+  `request` act type. Later dialogue still becomes distinct event/transcript occurrences but cannot
+  replace the active turn. Cancellation smokes now start through this live player-input path.
+- Phase 3k6 adds `TemporaryCharacterTurnResponseSource`. It delegates an exact request to the
+  existing pure deterministic selector and returns a fresh complete response retaining that exact
+  request. Prompt-shaped text remains ordinary in-world content. The source does not install,
+  display, append, complete, or execute any part of the response.
 
-`ROADMAP.md` now records unrestricted dialogue input separately from still-incomplete streaming
-response display. These slices do not classify the player's text, select a responder, construct or
-start a character-turn request, generate or display a response, append healer speech or physical
-actions, execute intentions or proposals, add persistence/providers/streaming, or complete the
-Phase 3 acceptance scenario.
+`README.md` and `ROADMAP.md` record the live request boundary and credential-free response-source
+boundary. These slices do not infer act types from text, replace an active turn, receive or display
+the selected response, append healer speech or actions, execute intentions or proposals, complete
+the Phase 3 acceptance scenario, add providers/persistence/streaming, or alter movement and
+discovery behavior.
 
 ## Validation
 
-Each slice began with an expected missing-type build failure. Focused host-local dialogue-input,
-dialogue-event, and character-turn-transcript Godot smokes pass. The complete host-local
+Each slice began with an expected failure at its missing boundary. The complete host-local
 `./scripts/quality.sh` run passes workflow and formatting validation, a zero-warning build, 1,330
 Domain tests, 139 Application tests, 23 Infrastructure tests, eight architecture tests, the
-five-evidence representative scenario validator, all 40 opt-in Godot smokes, and the bounded
-graphical launch.
+five-evidence representative scenario validator, all 43 opt-in Godot smokes, and the bounded
+graphical launch. The focused coverage includes temporary request/response sources, the
+occurred-dialogue request flow, dialogue input/event/transcript integration, and awaiting/speaking
+player cancellation through a live request.
 
-The restricted sandbox still reproduces the known Godot `user://logs` crash, so the executable
-Godot evidence above is host-local. The GitHub Actions budget is exhausted: do not manually dispatch
-hosted workflows, and treat any zero-step hosted failures as infrastructure/account state rather
-than test results.
+The restricted sandbox still reproduces the known Godot `user://logs` crash, so executable Godot
+evidence must run host-local. The GitHub Actions budget is exhausted for the month: do not manually
+dispatch hosted workflows, and treat any zero-step hosted failures as infrastructure/account state
+rather than test results.
 
 ## Exact next bounded slice
 
-Take **Phase 3k4: derive one explicit temporary healer turn request from the occurred player
-dialogue event**.
+Take **Phase 3k7: receive one complete deterministic response for the exact live awaiting request**.
 
 Acceptance boundary:
 
-1. Add a focused temporary request source that accepts the exact occurred `DialogueEvent`, the exact
-   existing healer identifier, and an explicitly supplied `DialogueActType`; it returns no request
-   unless that healer is in the event's exact audience.
-2. On success, construct one `DialogueAct` retaining the event's exact utterance and one
-   `CharacterTurnRequest` retaining the exact event, act, and healer. Prove prompt-shaped text,
-   missing-healer rejection, value-equal identifiers, exact-instance retention, unchanged inputs,
-   and unrelated-state preservation in an opt-in Godot smoke.
-3. Do not infer or classify an act type from text, install the request in the live turn controller,
-   generate or stream a response, append healer transcript/event entries, execute actions or
-   proposals, replace the temporary deterministic turn source, add persistence/providers, or alter
-   movement and discovery behavior.
+1. After a player event starts an awaiting healer activity, use the temporary response source once
+   for that exact request and delegate the exact complete response to
+   `CharacterTurnActivityController.TryReceiveResponse`.
+2. Prove the resulting speaking activity retains the exact live request and exact selected response,
+   including fixed healer speech and the unexecuted wait intention. Prompt-shaped player text must
+   remain ordinary input, and later player dialogue must not replace the speaking turn.
+3. Preserve the player and healer transcript/event boundaries and unrelated world, discovery,
+   movement, and presentation state. Do not display or stream healer speech, complete the speaking
+   turn, append healer speech or a physical action, execute the wait intention or any proposal, add
+   providers/persistence, or alter movement and discovery behavior.

@@ -42,8 +42,6 @@ public partial class DialogueInputSmokeCheck : Node
         TemporarySeekerCharacterSource seekerSource = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
         CharacterId expectedSpeaker = seekerSource.Character.Identity.Id;
-        CharacterTurnActivity? initialTurn = GetNode<CharacterTurnActivityController>(
-            "../CharacterTurnActivityController").Activity;
         WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
         object? initialWorldEventLog = worldEvents.EventLog;
         object? initialWorldTime = worldEvents.WorldTime;
@@ -76,9 +74,6 @@ public partial class DialogueInputSmokeCheck : Node
         if (!ProvesRejectedInputPreserves(first)
             || !ProvesRepeatedPanelSubmission(first, expectedSpeaker)
             || !HasExpectedControllerSurface()
-            || !ReferenceEquals(
-                GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity,
-                initialTurn)
             || !ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
             || !ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
             || !ReferenceEquals(

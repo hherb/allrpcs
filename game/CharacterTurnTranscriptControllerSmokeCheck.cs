@@ -18,7 +18,6 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
     private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
-    private CharacterTurnActivity? initialTurn;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -159,8 +158,6 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
         initialWorldObjects = GetNode<WorldObjectController>("../WorldObjectController").WorldObjects;
         initialPerception = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController").Perception;
-        initialTurn = GetNode<CharacterTurnActivityController>(
-            "../CharacterTurnActivityController").Activity;
     }
 
     private bool UnrelatedStateIsPreserved()
@@ -174,10 +171,7 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
             && ReferenceEquals(
                 GetNode<FocusedSearchActivityController>(
                     "../Seeker/FocusedSearchActivityController").Perception,
-                initialPerception)
-            && ReferenceEquals(
-                GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController").Activity,
-                initialTurn);
+                initialPerception);
         if (!preserved)
         {
             Fail("Player transcript recording changed unrelated scene state.");
