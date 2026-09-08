@@ -51,6 +51,9 @@ jobs:
       - name: Run architecture tests
         run: dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
 
+      - name: Validate representative discovery scenario
+        run: dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore
+
   godot-smoke:
     name: Headless Godot smoke
     runs-on: ubuntu-24.04

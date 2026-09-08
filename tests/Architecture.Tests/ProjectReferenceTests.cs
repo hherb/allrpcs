@@ -31,6 +31,10 @@ public sealed class ProjectReferenceTests
             ["src/Infrastructure/Allrpcs.Infrastructure.csproj"]
         },
         { "tests/Domain.Tests/Allrpcs.Domain.Tests.csproj", ["src/Domain/Allrpcs.Domain.csproj"] },
+        {
+            "tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj",
+            ["src/Domain/Allrpcs.Domain.csproj"]
+        },
     };
 
     [Theory]
