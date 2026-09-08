@@ -123,6 +123,9 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Define the initial internal intention schema and validation errors.
 - [x] Implement a deterministic test character with predictable responses.
 - [x] Expose credential-free deterministic response selection for the exact live request.
+- [x] Receive and present one complete deterministic response for the exact live request.
+- [x] Record exact healer response speech once before completing its speaking turn.
+- [x] Start later character turns only after the current activity is terminal.
 - [x] Implement accept, refuse, clarify, and conditionally accept behaviours.
 - [x] Implement multi-step commitments one observed action at a time.
 - [x] Allow the player to interrupt and cancel a pending response or spoken turn.

@@ -23,6 +23,21 @@ public partial class CharacterTurnActivityController : Node
         return true;
     }
 
+    /// <summary>Starts an exact fresh request only when current activity is absent or terminal.</summary>
+    public bool TryStart(CharacterTurnRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(request);
+
+        CharacterTurnActivity? activity = Activity;
+        if (!CharacterTurnStartPolicy.CanStart(activity))
+        {
+            return false;
+        }
+
+        Activity = CharacterTurnStartTransition.Start(activity, request);
+        return true;
+    }
+
     /// <summary>Cancels the current activity when the Domain cancellation rules permit it.</summary>
     public bool TryCancel()
     {
