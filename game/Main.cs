@@ -1,3 +1,4 @@
+using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
@@ -7,6 +8,7 @@ using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
+using NumericsVector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
@@ -16,6 +18,7 @@ namespace Allrpcs.Game;
 public partial class Main : Node
 {
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
+    private const float DialogueHearingRangePixels = 192.0f;
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
@@ -26,6 +29,9 @@ public partial class Main : Node
 
     private Healer healer = null!;
     private CharacterTurnActivityController characterTurnController = null!;
+    private CharacterTurnTranscriptController characterTurnTranscriptController = null!;
+    private DialogueEventController dialogueEventController = null!;
+    private DialogueInputController dialogueInputController = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
@@ -45,6 +51,7 @@ public partial class Main : Node
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
+    private DialogueUtterance? lastProcessedDialogueUtterance;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -53,6 +60,10 @@ public partial class Main : Node
         healer = GetNode<Healer>("Healer");
         characterTurnController = GetNode<CharacterTurnActivityController>(
             "CharacterTurnActivityController");
+        characterTurnTranscriptController = GetNode<CharacterTurnTranscriptController>(
+            "CharacterTurnTranscriptController");
+        dialogueEventController = GetNode<DialogueEventController>("DialogueEventController");
+        dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
@@ -91,6 +102,20 @@ public partial class Main : Node
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
         worldEventController = GetNode<WorldEventController>("WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
+        if (!dialogueInputController.TryInitialize(
+                seekerCharacterSource.Character.Identity.Id))
+        {
+            throw new InvalidOperationException(
+                "The dialogue-input controller could not initialize the scene Seeker.");
+        }
+
+        if (!characterTurnTranscriptController.TryInitialize(
+                new CharacterTurnTranscriptSnapshot([])))
+        {
+            throw new InvalidOperationException(
+                "The character-turn transcript controller could not initialize empty.");
+        }
+
         if (!characterTurnController.TryInitialize(characterTurnSource.Activity))
         {
             throw new InvalidOperationException(
@@ -208,7 +233,37 @@ public partial class Main : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        ProcessDialogueSubmission();
         UpdateModeStatus(force: false);
+    }
+
+    private void ProcessDialogueSubmission()
+    {
+        DialogueUtterance? utterance = dialogueInputController.LastSubmittedUtterance;
+        if (utterance is null || ReferenceEquals(utterance, lastProcessedDialogueUtterance))
+        {
+            return;
+        }
+
+        CharacterId healerCharacterId =
+            characterTurnSource.Activity.Request.RespondingCharacterId;
+        DialogueHearingCandidate[] candidates =
+        [
+            new(utterance.SpeakerCharacterId, ToNumerics(GetNode<Node2D>("Seeker").Position)),
+            new(healerCharacterId, ToNumerics(healer.Position)),
+        ];
+        if (!dialogueEventController.TryOccur(
+                utterance,
+                candidates[0].Position,
+                DialogueHearingRangePixels,
+                candidates)
+            || !characterTurnTranscriptController.TryAppendSpokenStatement(utterance))
+        {
+            throw new InvalidOperationException(
+                "The accepted player utterance could not occur and append to the transcript.");
+        }
+
+        lastProcessedDialogueUtterance = utterance;
     }
 
     /// <inheritdoc />
@@ -385,4 +440,6 @@ public partial class Main : Node
             _ => "UNKNOWN",
         };
     }
+
+    private static NumericsVector2 ToNumerics(Vector2 value) => new(value.X, value.Y);
 }

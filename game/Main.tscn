@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3]
+[gd_scene load_steps=77 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -64,6 +64,13 @@
 [ext_resource type="Script" path="res://TemporaryCharacterTurnSource.cs" id="62_character_turn_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnSourceSmokeCheck.cs" id="63_character_turn_source_check"]
 [ext_resource type="Script" path="res://CharacterTurnCancellationInputSmokeCheck.cs" id="64_character_turn_input_check"]
+[ext_resource type="Script" path="res://DialogueInputController.cs" id="65_dialogue_input_controller"]
+[ext_resource type="Script" path="res://TemporaryDialogueInputPanel.cs" id="66_dialogue_input_panel"]
+[ext_resource type="Script" path="res://DialogueInputSmokeCheck.cs" id="67_dialogue_input_check"]
+[ext_resource type="Script" path="res://DialogueEventController.cs" id="68_dialogue_event_controller"]
+[ext_resource type="Script" path="res://DialogueEventControllerSmokeCheck.cs" id="69_dialogue_event_controller_check"]
+[ext_resource type="Script" path="res://CharacterTurnTranscriptController.cs" id="70_character_turn_transcript_controller"]
+[ext_resource type="Script" path="res://CharacterTurnTranscriptControllerSmokeCheck.cs" id="71_character_turn_transcript_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -412,6 +419,15 @@ script = ExtResource("60_character_turn_controller")
 [node name="TemporaryCharacterTurnSource" type="Node" parent="."]
 script = ExtResource("62_character_turn_source")
 
+[node name="DialogueInputController" type="Node" parent="."]
+script = ExtResource("65_dialogue_input_controller")
+
+[node name="DialogueEventController" type="Node" parent="."]
+script = ExtResource("68_dialogue_event_controller")
+
+[node name="CharacterTurnTranscriptController" type="Node" parent="."]
+script = ExtResource("70_character_turn_transcript_controller")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -480,6 +496,15 @@ script = ExtResource("63_character_turn_source_check")
 
 [node name="CharacterTurnCancellationInputSmokeCheck" type="Node" parent="."]
 script = ExtResource("64_character_turn_input_check")
+
+[node name="DialogueInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("67_dialogue_input_check")
+
+[node name="DialogueEventControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("69_dialogue_event_controller_check")
+
+[node name="CharacterTurnTranscriptControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("71_character_turn_transcript_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
@@ -615,3 +640,41 @@ offset_top = 88.0
 offset_right = 604.0
 offset_bottom = 111.0
 text = "Focused search: NO ATTEMPT"
+
+[node name="DialogueOverlay" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="ColorRect" parent="DialogueOverlay"]
+offset_left = 12.0
+offset_top = 456.0
+offset_right = 948.0
+offset_bottom = 528.0
+color = Color(0.055, 0.067, 0.082, 0.92)
+script = ExtResource("66_dialogue_input_panel")
+
+[node name="Prompt" type="Label" parent="DialogueOverlay/Panel"]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 118.0
+offset_bottom = 30.0
+text = "SAY AS SEEKER"
+
+[node name="Input" type="LineEdit" parent="DialogueOverlay/Panel"]
+offset_left = 124.0
+offset_top = 5.0
+offset_right = 826.0
+offset_bottom = 36.0
+placeholder_text = "Enter unrestricted in-world dialogue"
+
+[node name="Submit" type="Button" parent="DialogueOverlay/Panel"]
+offset_left = 834.0
+offset_top = 5.0
+offset_right = 924.0
+offset_bottom = 36.0
+text = "SUBMIT"
+
+[node name="Status" type="Label" parent="DialogueOverlay/Panel"]
+offset_left = 124.0
+offset_top = 42.0
+offset_right = 924.0
+offset_bottom = 65.0
+text = "Dialogue submission: NONE"
