@@ -88,10 +88,13 @@ a value-equal distinct identifier, absent and uninitialized results, null reject
 snapshot retention, and unchanged source, targets, focused-search state, and presentation. The
 world-event source, controller, and startup-recording launches prove two independently authored,
 stable events in source order, exact `greybox-ready` startup selection and recording, and unchanged
-initial qualitative time and surrounding state. The focused-search world-event launch proves that
-identifying the herb patch atomically consumes its outcome, changes perception, records the exact
-`herb-patch-identified` event, and advances qualitative time; an ineligible event preserves both
-controllers. The world-time controller launch retains its focused boundary checks.
+initial qualitative time and surrounding state. The focused-search world-event launch drives the
+ordinary F/E/R input path against the authored herb patch. It proves start and completion leave the
+event log and qualitative time unchanged, then successful resolution consumes the exact outcome,
+identifies and presents the herb, records the exact `herb-patch-identified` event, and advances
+qualitative time. Repeated or newly completed but ineligible resolution preserves the exact
+focused-search, world-event, world-time, and presentation state. The world-time controller launch
+retains its focused boundary checks.
 The movement-boundary launch uses the existing Seeker body and authored collision shapes to prove
 all four outer borders plus representative stream, village, and tree collisions, then proves the
 bridge in both directions and open lower terrain remain clear. The sequence first runs

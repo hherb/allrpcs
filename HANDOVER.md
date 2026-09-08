@@ -2,32 +2,36 @@
 
 ## Current state
 
-PR #134 merged Phase 2o29 into `main` at `d71f135`. The branch
-`codex/phase-2o30-plus-world-events` implements Phases 2o30–2o31.
+PR #135 merged Phases 2o30–2o31 into `main` at `a2bf227`. The branch
+`codex/phase-2o32-plus-world-events` implements Phase 2o32 and completes the bounded 2o
+world-event sequence.
 
-The temporary source retains `greybox-ready`/`no-advance` first and
-`herb-patch-identified`/`advance` second, with exact references for startup and herb identification.
-Startup still records only `greybox-ready`. Eligible herb-patch focused-search resolution preflights
-both controllers, then consumes the outcome, changes perception, records the exact authored event,
-and advances qualitative time. Ineligible event occurrence preserves both controller states.
+The existing opt-in focused-search world-event smoke now drives ordinary start, complete, and
+resolve input against the authored herb patch. Start and completion preserve the exact startup
+event log and qualitative time. Successful resolution consumes the exact outcome, identifies and
+presents the herb, records `herb-patch-identified`, and advances qualitative time. Repeated resolve
+and a newly completed but ineligible second resolution preserve the exact focused-search,
+world-event, world-time, and presentation snapshots.
 
 After code review, `./scripts/quality.sh` passed workflow and formatting validation, a zero-warning
 build, 1,020 Domain tests, 107 Application tests, six architecture tests, all 27 opt-in Godot
-smokes, and the bounded graphical launch.
+smokes, and the bounded graphical launch. The restricted run hit the known VSTest loopback denial;
+the identical host run produced the authoritative passing result.
 
 ## Exact next bounded slice
 
-Take **Phase 2o32: ordinary input-path proof for the first meaningful-time event**.
+Take **Phase 2p1: immutable save-schema version vocabulary**.
 
 Acceptance boundary:
 
-1. Drive the existing start, complete, and resolve input actions against the authored herb patch in
-   one opt-in Godot smoke; do not add another production path.
-2. Prove no event occurs before successful resolution, then prove exact outcome consumption,
-   perception identification, event recording, time advancement, and existing presentation.
-3. Prove a repeated or ineligible sequence preserves focused-search and world-event state.
+1. Add one engine-independent immutable save-schema version value with an explicit first supported
+   version, strict construction/parsing, stable equality, and a minimal public surface.
+2. Prove valid round-trip behavior, invalid-value rejection, and unchanged inputs with focused
+   tests. Keep the value independent of JSON, files, paths, Godot, and storage providers.
+3. Document only the version contract and the intended later use as the root discriminator for
+   versioned saves; do not define a save aggregate or serializer yet.
 4. Update evidence, run `./scripts/quality.sh`, review intended paths, and prune this file again.
 
-Explicit exclusions: no new event definitions, generic event mappings, payloads, clocks, disease
-effects, save/load, replay, providers, credentials, or UI. Do not merge, release, distribute, sign,
-notarize, or change repository visibility without explicit authorization.
+Explicit exclusions: no save aggregate, serialization, files, paths, migration, load orchestration,
+autosave, replay, providers, credentials, or UI. Do not merge, release, distribute, sign, notarize,
+or change repository visibility without explicit authorization.
