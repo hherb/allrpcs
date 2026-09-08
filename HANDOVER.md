@@ -27,7 +27,9 @@ the sandbox reproduces the known VSTest loopback denial. After code review, the 
 `./scripts/quality.sh` run passed workflow and formatting validation, a zero-warning build, 1,265
 Domain tests, 139 Application tests, 23 Infrastructure tests, eight architecture tests, the
 five-evidence representative scenario validator, all 33 opt-in Godot smokes, and the bounded
-graphical launch.
+graphical launch. Draft PR #144 was opened. Its first published head `0378cec` was mergeable, but
+all five hosted jobs were rejected before running any steps because an Actions budget prevented
+further use; this is hosted infrastructure/account state, not a hosted test result.
 
 ## Exact next bounded slice
 
