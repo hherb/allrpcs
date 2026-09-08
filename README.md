@@ -11,15 +11,17 @@ types, requests, responses, intentions, commitments, and bounded state proposals
 deterministic character behavior selects fixed accept, refuse, clarify, or conditionally-accept
 responses solely from the declared act type. Immutable commitment progress advances only one
 value-equal pending intention per observation. Character-turn activity can represent awaiting,
-speaking, completed, and cancelled states, with pure cancellation eligibility and transition rules;
-runtime cancellation, scene wiring, player input, and UI remain later work. Character-turn
-transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
+speaking, completed, and cancelled states, with pure cancellation, response-reception, and
+completion eligibility and transition rules. A focused Godot controller owns one exact activity,
+delegates those transitions, and exposes an explicit player cancellation action for awaiting and
+speaking turns. Character-turn transcript entries structurally distinguish exact spoken utterances
+from exact non-wait physical
 intentions, while immutable snapshots and a pure append transition preserve occurrence order
 without treating response proposals as executed actions. A character-turn world-event occurrence
 now retains an exact authoritative event together with one exact tagged transcript occurrence.
 Pure eligibility and transition rules require that exact authored event, then atomically record its
 identifier, apply its declared qualitative-time effect, and append the tagged occurrence while
-retaining the exact occurrence in the result. Runtime orchestration remains later work.
+retaining the exact occurrence in the result. Response-proposal execution remains later work.
 
 ## Prerequisites
 
@@ -592,8 +594,18 @@ execute intentions, advance commitments, apply proposals, or inspect world state
 
 The pure deterministic response selector maps only the declared dialogue-act type to fixed
 accept, refuse, clarify, or conditionally-accept behavior. Commitment progress advances one
-value-equal pending intention per observed action. Character-turn activity and cancellation
-contracts represent awaiting, speaking, completed, and cancelled states without runtime wiring.
+value-equal pending intention per observed action. Character-turn activity contracts represent
+awaiting, speaking, completed, and cancelled states. Pure reception accepts only a complete
+response retaining the exact awaited request and produces speaking activity; pure completion
+accepts only speaking activity. Both transitions retain exact request and response instances.
+
+The focused Godot `CharacterTurnActivityController` initializes once from one exact activity and
+delegates cancellation, response reception, and speaking completion to those Domain contracts.
+The temporary scene source supplies one awaiting request and its complete deterministic response;
+the scene initializes only the awaiting activity. The explicit `V` input cancels either an
+awaiting or speaking turn. Opt-in smokes prove both input cases in fresh processes and prove that
+rejected or successful cancellation does not alter world-event, discovery, movement, or existing
+presentation state. No response intention or proposal is executed by this wiring.
 
 Transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
 intentions. Immutable transcript snapshots and append transitions retain exact entries in stable
@@ -605,9 +617,8 @@ identifier, applies its authored qualitative-time effect, appends the exact tran
 and returns all resulting immutable state together with the retained occurrence. Failed
 eligibility changes nothing.
 
-These dialogue boundaries do not yet define runtime cancellation orchestration, proposal
-application, action execution, streaming, persistence, scene wiring, player input, a dialogue
-panel, model/provider contracts, or runtime world mutation.
+These dialogue boundaries do not yet define proposal application, action execution, streaming,
+persistence, a dialogue panel, model/provider contracts, or runtime world mutation.
 
 ## Location model boundaries
 

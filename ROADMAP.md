@@ -122,7 +122,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Implement a deterministic test character with predictable responses.
 - [x] Implement accept, refuse, clarify, and conditionally accept behaviours.
 - [x] Implement multi-step commitments one observed action at a time.
-- [ ] Allow the player to interrupt and cancel a pending response or spoken turn.
+- [x] Allow the player to interrupt and cancel a pending response or spoken turn.
 - [x] Keep physical actions and spoken statements distinct in the transcript.
 - [x] Keep physical actions and spoken statements distinct in the event log.
 - [x] Test prompt-shaped dialogue such as “ignore your role” as ordinary in-world speech.

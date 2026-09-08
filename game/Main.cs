@@ -1,5 +1,6 @@
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
@@ -15,6 +16,7 @@ namespace Allrpcs.Game;
 public partial class Main : Node
 {
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
+    private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
     private static readonly StringName FocusedSearchResolveAction = new("focused_search_resolve");
@@ -23,6 +25,7 @@ public partial class Main : Node
     private static readonly StringName HealerMoveAction = new("healer_move");
 
     private Healer healer = null!;
+    private CharacterTurnActivityController characterTurnController = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
@@ -32,6 +35,7 @@ public partial class Main : Node
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
+    private TemporaryCharacterTurnSource characterTurnSource = null!;
     private TemporaryObservationReinterpretationCandidateSource
         observationReinterpretationCandidateSource = null!;
     private TemporaryPassiveNoticingCandidateSource passiveNoticingCandidateSource = null!;
@@ -47,6 +51,8 @@ public partial class Main : Node
     public override void _Ready()
     {
         healer = GetNode<Healer>("Healer");
+        characterTurnController = GetNode<CharacterTurnActivityController>(
+            "CharacterTurnActivityController");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
@@ -70,6 +76,8 @@ public partial class Main : Node
             "TemporaryFocusedSearchContextSource");
         focusedSearchOutcomeSource = GetNode<TemporaryFocusedSearchOutcomeSource>(
             "TemporaryFocusedSearchOutcomeSource");
+        characterTurnSource = GetNode<TemporaryCharacterTurnSource>(
+            "TemporaryCharacterTurnSource");
         observationReinterpretationCandidateSource =
             GetNode<TemporaryObservationReinterpretationCandidateSource>(
                 "TemporaryObservationReinterpretationCandidateSource");
@@ -83,6 +91,12 @@ public partial class Main : Node
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
         worldEventController = GetNode<WorldEventController>("WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
+        if (!characterTurnController.TryInitialize(characterTurnSource.Activity))
+        {
+            throw new InvalidOperationException(
+                "The character-turn controller could not initialize the temporary activity.");
+        }
+
         InitializeWorldEvents();
         RecordInitialWorldEvent();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
@@ -200,7 +214,11 @@ public partial class Main : Node
     /// <inheritdoc />
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (@event.IsActionPressed(FocusedSearchCancelAction))
+        if (@event.IsActionPressed(CharacterTurnCancelAction))
+        {
+            _ = characterTurnController.TryCancel();
+        }
+        else if (@event.IsActionPressed(FocusedSearchCancelAction))
         {
             FocusedSearchRequest? activeRequest = GetActiveFocusedSearchRequest();
             bool changed = activeRequest is not null
