@@ -2,6 +2,7 @@ using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
+using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -299,6 +300,33 @@ public partial class FocusedSearchActivityController : Node
                 Outcomes);
         Perception = result.Perception;
         Outcomes = result.Outcomes;
+        return true;
+    }
+
+    /// <summary>
+    /// Restores exact eligible discovery save-state snapshots and presents the restored activity.
+    /// </summary>
+    public bool TryRestoreDiscoveryState(
+        DiscoverySaveState state,
+        WorldObjectSnapshot worldObjects)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+        ArgumentNullException.ThrowIfNull(worldObjects);
+
+        if (!DiscoverySaveStateRestorationPolicy.CanRestore(
+                state,
+                SearcherCharacterId,
+                worldObjects))
+        {
+            return false;
+        }
+
+        Perception = state.Perception;
+        Activities = state.FocusedSearchActivities;
+        Outcomes = state.FocusedSearchOutcomes;
+        PassiveNoticingCandidates = state.PassiveNoticingCandidates;
+        ObservationReinterpretationCandidates = state.ObservationReinterpretationCandidates;
+        indicator.Present(SearcherCharacterId, Activities);
         return true;
     }
 
