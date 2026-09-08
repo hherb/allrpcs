@@ -33,6 +33,7 @@ public partial class Main : Node
     private DialogueEventController dialogueEventController = null!;
     private DialogueInputController dialogueInputController = null!;
     private TemporaryCharacterTurnRequestSource characterTurnRequestSource = null!;
+    private TemporaryCharacterTurnResponseSource characterTurnResponseSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
@@ -67,6 +68,8 @@ public partial class Main : Node
         dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
         characterTurnRequestSource = GetNode<TemporaryCharacterTurnRequestSource>(
             "TemporaryCharacterTurnRequestSource");
+        characterTurnResponseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "TemporaryCharacterTurnResponseSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
@@ -230,8 +233,27 @@ public partial class Main : Node
     public override void _Process(double delta)
     {
         _ = delta;
+        ProcessCharacterTurnResponse();
         ProcessDialogueSubmission();
         UpdateModeStatus(force: false);
+    }
+
+    private void ProcessCharacterTurnResponse()
+    {
+        CharacterTurnActivity? activity = characterTurnController.Activity;
+        if (activity is null
+            || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse))
+        {
+            return;
+        }
+
+        CharacterTurnResponse response = characterTurnResponseSource.CreateResponse(
+            activity.Request);
+        if (!characterTurnController.TryReceiveResponse(response))
+        {
+            throw new InvalidOperationException(
+                "The live character-turn controller could not receive its selected response.");
+        }
     }
 
     private void ProcessDialogueSubmission()
@@ -260,14 +282,14 @@ public partial class Main : Node
                 "The accepted player utterance could not occur and append to the transcript.");
         }
 
-        StartCharacterTurnIfIdle(healerCharacterId);
+        StartCharacterTurnIfEligible(healerCharacterId);
 
         lastProcessedDialogueUtterance = utterance;
     }
 
-    private void StartCharacterTurnIfIdle(CharacterId healerCharacterId)
+    private void StartCharacterTurnIfEligible(CharacterId healerCharacterId)
     {
-        if (characterTurnController.Activity is not null)
+        if (!CharacterTurnStartPolicy.CanStart(characterTurnController.Activity))
         {
             return;
         }
@@ -283,11 +305,7 @@ public partial class Main : Node
             return;
         }
 
-        CharacterTurnActivity activity = new(
-            request,
-            null,
-            CharacterTurnActivityState.AwaitingResponse);
-        if (!characterTurnController.TryInitialize(activity))
+        if (!characterTurnController.TryStart(request))
         {
             throw new InvalidOperationException(
                 "The live character-turn controller could not start the player request.");

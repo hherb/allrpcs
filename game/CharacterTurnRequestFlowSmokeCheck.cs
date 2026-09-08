@@ -184,6 +184,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
     {
         DialogueUtterance? submitted = inputController.LastSubmittedUtterance;
         DialogueEvent? occurred = eventController.LastOccurredEvent;
+        CharacterTurnActivity? activity = turnController.Activity;
         CharacterTurnTranscriptSnapshot? transcript = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController").Transcript;
         CharacterTurnTranscriptEntry? entry = transcript is not null && transcript.Entries.Count > 0
@@ -192,12 +193,17 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
         if (firstActivity is null
             || submitted is null
             || occurred is null
-            || !ReferenceEquals(turnController.Activity, firstActivity)
+            || activity is null
+            || ReferenceEquals(activity, firstActivity)
+            || !ReferenceEquals(activity.Request, firstActivity.Request)
+            || !ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking)
+            || activity.Response is null
+            || !ReferenceEquals(activity.Response.Request, firstActivity.Request)
             || !ReferenceEquals(occurred.Utterance, submitted)
             || !ReferenceEquals(entry?.SpokenStatement, submitted)
             || submitted.Text != SecondText)
         {
-            Fail("Later occurred dialogue replaced the active turn or lost its own exact state.");
+            Fail("Later occurred dialogue replaced the active request or lost its exact state.");
             return false;
         }
 

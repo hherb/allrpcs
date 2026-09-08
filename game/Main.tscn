@@ -76,6 +76,14 @@
 [ext_resource type="Script" path="res://CharacterTurnRequestFlowSmokeCheck.cs" id="74_character_turn_request_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSourceSmokeCheck.cs" id="75_character_turn_response_source_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSource.cs" id="76_character_turn_response_source"]
+[ext_resource type="Script" path="res://CharacterTurnResponseFlowSmokeCheck.cs" id="77_character_turn_response_flow_check"]
+[ext_resource type="Script" path="res://CharacterTurnResponsePresentationSmokeCheck.cs" id="78_character_turn_response_presentation_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnResponseLabel.cs" id="79_character_turn_response_label"]
+[ext_resource type="Script" path="res://CharacterTurnResponseSpeechFlowSmokeCheck.cs" id="80_character_turn_response_speech_flow_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnResponseSpeechRecorder.cs" id="81_character_turn_response_speech_recorder"]
+[ext_resource type="Script" path="res://CharacterTurnCompletionFlowSmokeCheck.cs" id="82_character_turn_completion_flow_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnCompletionController.cs" id="83_character_turn_completion_controller"]
+[ext_resource type="Script" path="res://CharacterTurnRepeatFlowSmokeCheck.cs" id="84_character_turn_repeat_flow_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -526,6 +534,27 @@ script = ExtResource("74_character_turn_request_flow_check")
 [node name="TemporaryCharacterTurnResponseSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("75_character_turn_response_source_check")
 
+[node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("77_character_turn_response_flow_check")
+
+[node name="CharacterTurnResponsePresentationSmokeCheck" type="Node" parent="."]
+script = ExtResource("78_character_turn_response_presentation_check")
+
+[node name="TemporaryCharacterTurnResponseSpeechRecorder" type="Node" parent="."]
+script = ExtResource("81_character_turn_response_speech_recorder")
+
+[node name="CharacterTurnResponseSpeechFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("80_character_turn_response_speech_flow_check")
+
+[node name="TemporaryCharacterTurnCompletionController" type="Node" parent="."]
+script = ExtResource("83_character_turn_completion_controller")
+
+[node name="CharacterTurnCompletionFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("82_character_turn_completion_flow_check")
+
+[node name="CharacterTurnRepeatFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("84_character_turn_repeat_flow_check")
+
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
 
@@ -667,7 +696,7 @@ text = "Focused search: NO ATTEMPT"
 offset_left = 12.0
 offset_top = 456.0
 offset_right = 948.0
-offset_bottom = 528.0
+offset_bottom = 570.0
 color = Color(0.055, 0.067, 0.082, 0.92)
 script = ExtResource("66_dialogue_input_panel")
 
@@ -698,3 +727,19 @@ offset_top = 42.0
 offset_right = 924.0
 offset_bottom = 65.0
 text = "Dialogue submission: NONE"
+
+[node name="ResponsePrompt" type="Label" parent="DialogueOverlay/Panel"]
+offset_left = 12.0
+offset_top = 72.0
+offset_right = 118.0
+offset_bottom = 95.0
+text = "HEALER"
+
+[node name="Response" type="Label" parent="DialogueOverlay/Panel"]
+offset_left = 124.0
+offset_top = 72.0
+offset_right = 924.0
+offset_bottom = 107.0
+text = "Character response: NONE"
+autowrap_mode = 2
+script = ExtResource("79_character_turn_response_label")

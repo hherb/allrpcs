@@ -62,6 +62,7 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
 
         if (!ProvesSpeakingCancellation()
             || !ProvesResponseReceptionAndCompletion()
+            || !ProvesFreshStartAfterAbsentAndTerminalState()
             || !ProvesTerminalAndNullRejection()
             || !HasExpectedControllerSurface()
             || !ReferenceEquals(controller.Activity, expectedSceneActivity))
@@ -70,10 +71,10 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "Character-turn controller smoke passed: exact one-time initialization, awaiting-response "
-            + "and speaking cancellation, exact response reception and speaking completion, Domain-policy "
-            + "delegation, fail-closed uninitialized and terminal states, null rejection, and unchanged "
-            + "rejected state were correct.");
+            "Character-turn controller smoke passed: exact one-time initialization, eligible fresh "
+            + "starts, active replacement rejection, awaiting-response and speaking cancellation, "
+            + "exact response reception and speaking completion, Domain-policy delegation, null "
+            + "rejection, and unchanged rejected state were correct.");
         GetTree().Quit();
     }
 
@@ -204,6 +205,58 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
         return false;
     }
 
+    private bool ProvesFreshStartAfterAbsentAndTerminalState()
+    {
+        CharacterTurnRequest firstRequest = CreateActivity(
+            CharacterTurnActivityState.AwaitingResponse).Request;
+        CharacterTurnRequest secondRequest = CreateActivity(
+            CharacterTurnActivityState.AwaitingResponse).Request;
+        CharacterTurnRequest thirdRequest = CreateActivity(
+            CharacterTurnActivityState.AwaitingResponse).Request;
+        CharacterTurnActivityController target = new();
+        AddChild(target);
+
+        if (!target.TryStart(firstRequest)
+            || target.Activity is not { } first
+            || !ReferenceEquals(first.Request, firstRequest)
+            || !ReferenceEquals(first.State, CharacterTurnActivityState.AwaitingResponse)
+            || target.TryStart(secondRequest)
+            || !ReferenceEquals(target.Activity, first)
+            || !target.TryCancel()
+            || !target.TryStart(secondRequest)
+            || target.Activity is not { } second
+            || !ReferenceEquals(second.Request, secondRequest)
+            || !ReferenceEquals(second.State, CharacterTurnActivityState.AwaitingResponse)
+            || !target.TryReceiveResponse(CreateResponse(secondRequest))
+            || !target.TryComplete()
+            || !target.TryStart(thirdRequest)
+            || target.Activity is not { } third
+            || !ReferenceEquals(third.Request, thirdRequest)
+            || !ReferenceEquals(third.State, CharacterTurnActivityState.AwaitingResponse))
+        {
+            Fail("Character-turn controller failed eligible fresh start or active preservation.");
+            return false;
+        }
+
+        try
+        {
+            target.TryStart(null!);
+        }
+        catch (ArgumentNullException)
+        {
+            if (ReferenceEquals(target.Activity, third))
+            {
+                return true;
+            }
+
+            Fail("Character-turn controller changed state after a null fresh-start request.");
+            return false;
+        }
+
+        Fail("Character-turn controller accepted a null fresh-start request.");
+        return false;
+    }
+
     private bool HasExpectedControllerSurface()
     {
         System.Reflection.PropertyInfo[] properties = typeof(CharacterTurnActivityController)
@@ -226,7 +279,7 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             && properties[0].CanRead
             && properties[0].SetMethod is not null
             && properties[0].SetMethod!.IsPrivate
-            && methods.Length == 4
+            && methods.Length == 5
             && methods[0].Name == nameof(CharacterTurnActivityController.TryCancel)
             && methods[0].ReturnType == typeof(bool)
             && methods[0].GetParameters().Length == 0
@@ -240,7 +293,11 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             && methods[3].Name == nameof(CharacterTurnActivityController.TryReceiveResponse)
             && methods[3].ReturnType == typeof(bool)
             && methods[3].GetParameters().Select(parameter => parameter.ParameterType)
-                .SequenceEqual([typeof(CharacterTurnResponse)]);
+                .SequenceEqual([typeof(CharacterTurnResponse)])
+            && methods[4].Name == nameof(CharacterTurnActivityController.TryStart)
+            && methods[4].ReturnType == typeof(bool)
+            && methods[4].GetParameters().Select(parameter => parameter.ParameterType)
+                .SequenceEqual([typeof(CharacterTurnRequest)]);
 
         if (!matches)
         {

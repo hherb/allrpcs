@@ -590,8 +590,9 @@ scene's Seeker and healer positions and the named 192-pixel inclusive range to
 speech through `CharacterTurnTranscriptAppendTransition`. When no turn is active, the temporary
 request source gates the exact healer against that event's audience, pairs the event's exact
 utterance with the explicitly supplied `request` act type, and starts one exact awaiting-response
-activity. Later dialogue still becomes a distinct event and transcript occurrence but cannot
-replace that active turn. No text classification, response reception, or action execution occurs.
+activity. Awaiting and speaking activity cannot be replaced; after completion or cancellation, a
+later heard utterance can start a fresh exact activity. No text classification or action execution
+occurs.
 
 `CharacterTurnRequest` is provider-neutral and retains one exact responding character, dialogue
 event, and act. It rejects a responder outside the event audience and rejects an act for a
@@ -618,16 +619,25 @@ value-equal pending intention per observed action. Character-turn activity contr
 awaiting, speaking, completed, and cancelled states. Pure reception accepts only a complete
 response retaining the exact awaited request and produces speaking activity; pure completion
 accepts only speaking activity. Both transitions retain exact request and response instances.
+Pure start eligibility permits a fresh awaiting activity only when current activity is absent,
+completed, or cancelled, and its transition retains the exact new request without changing the
+prior immutable activity.
 
 The focused Godot `CharacterTurnActivityController` initializes once from one exact activity and
-delegates cancellation, response reception, and speaking completion to those Domain contracts.
-The live scene begins without an activity and initializes it only from the first valid occurred
-player event. The explicit `V` input cancels either an awaiting or speaking live request. A separate
-temporary response source delegates the exact request to the pure deterministic selector and
-returns a fresh complete response without installing it. Opt-in smokes prove both cancellation
-cases in fresh processes and prove that request derivation and response selection preserve
-unrelated world, discovery, transcript, and presentation state. No response speech, intention, or
-proposal is applied by this wiring.
+delegates fresh starts, cancellation, response reception, and speaking completion to those Domain
+contracts. The live scene begins without an activity. On a later process pass, a separate temporary
+response source delegates the exact awaiting request to the pure deterministic selector and the
+controller receives that fresh complete response as speaking activity. The dialogue panel presents
+only its complete exact speech.
+
+While the response is speaking, a temporary recorder emits its exact healer utterance once through
+the existing hearing boundary and appends that same utterance once to the transcript. It does
+nothing for awaiting, completed, or cancelled activity. A separate completion controller first
+observes that exact event and final transcript entry, preserves a one-frame speaking cancellation
+window, and only then delegates completion. Consecutive heard player utterances can therefore
+produce distinct completed activities after the prior one is terminal while retaining both speech
+pairs in order. The fixed wait intention remains an unexecuted proposal throughout; world,
+discovery, movement-command, and focused-search state are unchanged.
 
 Transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
 intentions. Immutable transcript snapshots and append transitions retain exact entries in stable
@@ -639,9 +649,9 @@ identifier, applies its authored qualitative-time effect, appends the exact tran
 and returns all resulting immutable state together with the retained occurrence. Failed
 eligibility changes nothing.
 
-These dialogue boundaries do not yet install or present the selected response, apply proposals,
-execute actions, stream content, add persistence or provider contracts, or mutate runtime world
-state from a character response.
+These dialogue boundaries do not yet stream content, apply state proposals, execute or record a
+physical action, select an examination target, evaluate flower safety, advance commitments, add
+persistence or provider contracts, or mutate runtime world state from a character response.
 
 ## Location model boundaries
 
