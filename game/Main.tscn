@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3]
+[gd_scene load_steps=65 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -57,6 +57,8 @@
 [ext_resource type="Script" path="res://SaveSnapshotCaptureControllerSmokeCheck.cs" id="55_save_capture_controller_check"]
 [ext_resource type="Script" path="res://SaveSnapshotJsonController.cs" id="56_save_json_controller"]
 [ext_resource type="Script" path="res://SaveSnapshotJsonControllerSmokeCheck.cs" id="57_save_json_controller_check"]
+[ext_resource type="Script" path="res://SaveDocumentStorageController.cs" id="58_save_storage_controller"]
+[ext_resource type="Script" path="res://SaveDocumentStorageControllerSmokeCheck.cs" id="59_save_storage_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -396,6 +398,9 @@ script = ExtResource("52_save_restoration_controller")
 [node name="SaveSnapshotJsonController" type="Node" parent="."]
 script = ExtResource("56_save_json_controller")
 
+[node name="SaveDocumentStorageController" type="Node" parent="."]
+script = ExtResource("58_save_storage_controller")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -452,6 +457,9 @@ script = ExtResource("55_save_capture_controller_check")
 
 [node name="SaveSnapshotJsonControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("57_save_json_controller_check")
+
+[node name="SaveDocumentStorageControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("59_save_storage_controller_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")

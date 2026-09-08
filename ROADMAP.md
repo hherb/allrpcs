@@ -104,7 +104,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Capture exact current controller state as an in-memory versioned save root.
 - [x] Serialize and strictly deserialize the supported save root as canonical JSON.
 - [x] Prove serialized in-memory round-trip restoration through the scene controllers.
-- [ ] Persist and load a versioned save document through a bounded storage seam.
+- [x] Persist and load a versioned save document through a bounded storage seam.
 - [ ] Add representative discoveries and scenario validation.
 - [ ] Prove filtered views do not leak hidden facts.
 

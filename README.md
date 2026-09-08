@@ -36,8 +36,9 @@ From the repository root:
 
 The sequence restores packages serially, rejects C# formatting drift, builds with current
 recommended .NET analysis and compiler warnings treated as errors, runs the domain, application,
-and architecture tests, then exercises both headless and 60-frame graphical Godot launches. The
-headless launches wait for the navigation map to synchronize; the interaction-focus check also
+infrastructure, and architecture tests, then exercises both headless and 60-frame graphical Godot
+launches. The headless launches wait for the navigation map to synchronize; the interaction-focus
+check also
 requires the authored healer move destination to resolve onto that map before exercising input.
 They prove a route through the bridge, reject representative stream, tree, and village targets, and
 exercise healer follow, wait,
@@ -104,7 +105,10 @@ and hide-again decisions, and leaves supplied inputs intact. A separate controll
 condition-aware capability-only, tool-only, and combined starts; fail-closed absent, unsatisfied,
 already-active, and wrong-character starts; unrelated-entry handling; successful cancellation and
 completion; presentation changes; and exact input and activity-instance retention. The checks do
-not require provider credentials or network access after restore. The project selects the
+not require provider credentials or network access after restore. The save-document storage launch
+uses only a process-specific system-temporary file and proves exact persisted restoration, missing
+and failed reads, malformed JSON rejection, replacement recovery, cleanup, and preservation of
+unrelated scene state. The project selects the
 Compatibility renderer for graphical launches.
 
 To verify formatting alone without changing files, run:
@@ -249,13 +253,17 @@ instead, run `godot --editor --path game`.
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
 - `src/Application` contains pure movement, camera-framing, navigation-request validation,
-  healer follow-target selection, healer command selection, and bounded interaction-focus
-  selection and coordinates future domain use cases; it depends only on `Domain`.
-- `src/Infrastructure` is the future adapter boundary and depends on `Application`.
-- `game` is the Godot presentation project and depends on `Application`.
+  healer follow-target selection, healer command selection, bounded interaction-focus selection,
+  and the storage-independent save-document port; it depends only on `Domain`.
+- `src/Infrastructure` owns JSON and local-file save adapters and depends on `Application`.
+- `game` is the Godot presentation and composition project and depends on `Application` and
+  `Infrastructure`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
 - `tests/Application.Tests` tests pure movement, camera-framing, navigation-request, healer
-  follow-target, healer command, and interaction-focus behavior without loading Godot.
+  follow-target, healer command, interaction-focus, and save-document port behavior without
+  loading Godot.
+- `tests/Infrastructure.Tests` tests serialization and isolated local-file behavior without loading
+  Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
 
 The Godot scene also owns credential-free engine checks for navigation topology, healer-command
@@ -377,9 +385,34 @@ world-object, event-log, and qualitative-time eligibility remains with
 `CaptureSerialized` delegates exact live capture to `SaveSnapshotCaptureController` before canonical
 serialization. `TryRestoreSerialized` rejects invalid or unsupported documents before delegating the
 materialized root to `SaveSnapshotRestorationController`, whose complete scenario preflight prevents
-partial restoration. This proves exact state values survive serialization and restoration without
-adding a save file, path policy, storage provider, startup/load behavior, autosave, migration, replay,
-credentials, or final save UI.
+partial restoration.
+
+`Allrpcs.Application.Persistence.ISaveDocumentStore` is the storage-independent single-document
+port. It accepts only a non-empty already-serialized document and returns explicit `Saved` or
+`Failed` write results. Reads distinguish `Loaded`, `Missing`, and `Failed`; only `Loaded` carries
+the exact non-empty document. The port exposes no path, slot, Godot, JSON, provider, or credential
+type.
+
+`FileSaveDocumentStore` is the local Infrastructure adapter. It requires one trusted absolute path,
+writes strict UTF-8 without a byte-order mark to a unique sibling temporary file, flushes it before
+same-directory replacement, and reports expected I/O, access, encoding, and platform failures
+without treating empty or invalid UTF-8 data as a loaded save. `SaveDocumentStorageController`
+composes that adapter at the fixed Godot `user://save-v1.json` path with exact capture and complete
+preflighted restoration. It exposes callable save/load operations but does not invoke them from
+startup or input, add slots or user-selected paths, migrate, encrypt, compress, sync, replay, handle
+credentials, or provide final save UI. Its smoke uses a process-specific system-temporary file and
+deletes it after the check, so validation cannot overwrite an ordinary user save.
+
+## Discovery-scenario validation vocabulary
+
+`DiscoveryEvidence` maps one exact evidence identifier to its authoritative world object, minimum
+visibility threshold, and explicit criticality. `DiscoveryEvidenceSnapshot` retains stable authored
+order while rejecting null entries and duplicate evidence identifiers. `DiscoveryScenario` composes
+the exact observer, authoritative objects, evidence definitions, initial perception, focused-search
+conditions, bounded available capabilities, tool inventory, knowledge, passive-noticing candidates,
+and reinterpretation candidates needed by the next pure validator. These immutable values do not
+yet author the five representative discoveries, validate cross-references or reachability, filter a
+character view, or change scene behavior.
 
 ## Stable domain identifiers
 
