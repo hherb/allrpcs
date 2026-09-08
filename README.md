@@ -12,7 +12,10 @@ deterministic character behavior selects fixed accept, refuse, clarify, or condi
 responses solely from the declared act type. Immutable commitment progress advances only one
 value-equal pending intention per observation. Character-turn activity can represent awaiting,
 speaking, completed, and cancelled states, with pure cancellation eligibility and transition rules;
-runtime cancellation, transcript integration, scene wiring, player input, and UI remain later work.
+runtime cancellation, scene wiring, player input, and UI remain later work. Character-turn
+transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
+intentions, while immutable snapshots and a pure append transition preserve occurrence order
+without treating response proposals as executed actions. Event-log integration remains later work.
 
 ## Prerequisites
 

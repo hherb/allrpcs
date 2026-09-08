@@ -123,7 +123,8 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Implement accept, refuse, clarify, and conditionally accept behaviours.
 - [x] Implement multi-step commitments one observed action at a time.
 - [ ] Allow the player to interrupt and cancel a pending response or spoken turn.
-- [ ] Keep physical actions and spoken statements distinct in the transcript and event log.
+- [x] Keep physical actions and spoken statements distinct in the transcript.
+- [ ] Keep physical actions and spoken statements distinct in the event log.
 - [x] Test prompt-shaped dialogue such as “ignore your role” as ordinary in-world speech.
 
 Acceptance:
