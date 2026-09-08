@@ -15,10 +15,20 @@ public sealed class ProjectReferenceTests
             "src/Infrastructure/Allrpcs.Infrastructure.csproj",
             ["src/Application/Allrpcs.Application.csproj"]
         },
-        { "game/Allrpcs.Game.csproj", ["src/Application/Allrpcs.Application.csproj"] },
+        {
+            "game/Allrpcs.Game.csproj",
+            [
+                "src/Application/Allrpcs.Application.csproj",
+                "src/Infrastructure/Allrpcs.Infrastructure.csproj",
+            ]
+        },
         {
             "tests/Application.Tests/Allrpcs.Application.Tests.csproj",
             ["src/Application/Allrpcs.Application.csproj"]
+        },
+        {
+            "tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj",
+            ["src/Infrastructure/Allrpcs.Infrastructure.csproj"]
         },
         { "tests/Domain.Tests/Allrpcs.Domain.Tests.csproj", ["src/Domain/Allrpcs.Domain.csproj"] },
     };
