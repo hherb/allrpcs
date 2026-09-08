@@ -247,8 +247,10 @@ public partial class Main : Node
             return;
         }
 
+        ObjectId examinationTargetObjectId = worldObjectSource.WorldObjects.Entries[0].Identity.Id;
         CharacterTurnResponse response = characterTurnResponseSource.CreateResponse(
-            activity.Request);
+            activity.Request,
+            examinationTargetObjectId);
         if (!characterTurnController.TryReceiveResponse(response))
         {
             throw new InvalidOperationException(

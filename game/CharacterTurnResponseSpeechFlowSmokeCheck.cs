@@ -101,7 +101,8 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
         GD.Print(
             "Character-turn response speech flow smoke passed: the exact complete healer speech "
             + "occurred once with the Seeker as listener, appended once after player speech, "
-            + "remained speaking, and did not execute the wait intention or change world state.");
+            + "remained speaking, and did not execute the examination intention or change world "
+            + "state.");
         GetTree().Quit();
     }
 
@@ -123,7 +124,13 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
                 occurred.Audience.ListenerCharacterIds[0],
                 playerUtterance.SpeakerCharacterId)
             && ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking)
-            && ReferenceEquals(activity.Response!.ImmediateIntention.Type, CharacterIntentionType.Wait)
+            && ReferenceEquals(
+                activity.Response!.ImmediateIntention.Type,
+                CharacterIntentionType.ExamineObject)
+            && ReferenceEquals(
+                activity.Response.ImmediateIntention.TargetObjectId,
+                GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource")
+                    .WorldObjects.Entries[0].Identity.Id)
             && transcript is { Entries.Count: 2 }
             && ReferenceEquals(transcript.Entries[0].SpokenStatement, playerUtterance)
             && ReferenceEquals(transcript.Entries[1].SpokenStatement, speech)

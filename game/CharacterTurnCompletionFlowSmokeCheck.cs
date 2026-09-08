@@ -112,7 +112,7 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
         GD.Print(
             "Character-turn completion flow smoke passed: the exact speaking activity remained "
             + "cancellable for one frame, completed only after its exact speech occurrence, "
-            + "retained its request and response, and did not execute the wait intention.");
+            + "retained its request and response, and did not execute the examination intention.");
         GetTree().Quit();
     }
 
