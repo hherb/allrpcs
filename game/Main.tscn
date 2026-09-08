@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3]
+[gd_scene load_steps=70 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -59,6 +59,11 @@
 [ext_resource type="Script" path="res://SaveSnapshotJsonControllerSmokeCheck.cs" id="57_save_json_controller_check"]
 [ext_resource type="Script" path="res://SaveDocumentStorageController.cs" id="58_save_storage_controller"]
 [ext_resource type="Script" path="res://SaveDocumentStorageControllerSmokeCheck.cs" id="59_save_storage_controller_check"]
+[ext_resource type="Script" path="res://CharacterTurnActivityController.cs" id="60_character_turn_controller"]
+[ext_resource type="Script" path="res://CharacterTurnActivityControllerSmokeCheck.cs" id="61_character_turn_controller_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnSource.cs" id="62_character_turn_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnSourceSmokeCheck.cs" id="63_character_turn_source_check"]
+[ext_resource type="Script" path="res://CharacterTurnCancellationInputSmokeCheck.cs" id="64_character_turn_input_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -401,6 +406,12 @@ script = ExtResource("56_save_json_controller")
 [node name="SaveDocumentStorageController" type="Node" parent="."]
 script = ExtResource("58_save_storage_controller")
 
+[node name="CharacterTurnActivityController" type="Node" parent="."]
+script = ExtResource("60_character_turn_controller")
+
+[node name="TemporaryCharacterTurnSource" type="Node" parent="."]
+script = ExtResource("62_character_turn_source")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -460,6 +471,15 @@ script = ExtResource("57_save_json_controller_check")
 
 [node name="SaveDocumentStorageControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("59_save_storage_controller_check")
+
+[node name="CharacterTurnActivityControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("61_character_turn_controller_check")
+
+[node name="TemporaryCharacterTurnSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("63_character_turn_source_check")
+
+[node name="CharacterTurnCancellationInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("64_character_turn_input_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
@@ -573,7 +593,7 @@ offset_left = 12.0
 offset_top = 7.0
 offset_right = 604.0
 offset_bottom = 30.0
-text = "TEMP · F START · C CANCEL · E COMPLETE · R RESOLVE · X WAIT · M MOVE"
+text = "TEMP · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
