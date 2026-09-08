@@ -262,15 +262,15 @@ instead, run `godot --editor --path game`.
 
 - `src/Domain` contains authoritative rules and has no project dependencies.
 - `src/Application` contains pure movement, camera-framing, navigation-request validation,
-  healer follow-target selection, healer command selection, bounded interaction-focus selection,
-  and the storage-independent save-document port; it depends only on `Domain`.
+  healer follow-target selection, healer command selection, bounded interaction-focus and dialogue
+  hearing selection, and the storage-independent save-document port; it depends only on `Domain`.
 - `src/Infrastructure` owns JSON and local-file save adapters and depends on `Application`.
 - `game` is the Godot presentation and composition project and depends on `Application` and
   `Infrastructure`.
 - `tests/Domain.Tests` tests the pure `Domain` project without loading Godot.
 - `tests/Application.Tests` tests pure movement, camera-framing, navigation-request, healer
-  follow-target, healer command, interaction-focus, and save-document port behavior without
-  loading Godot.
+  follow-target, healer command, interaction-focus, dialogue-hearing, and save-document port
+  behavior without loading Godot.
 - `tests/Infrastructure.Tests` tests serialization and isolated local-file behavior without loading
   Godot.
 - `tests/Architecture.Tests` enforces these exact references by inspecting project files.
@@ -536,6 +536,38 @@ The complete character-model boundary still does not define mutable state, lifec
 handling, runtime registration, relationship or goal mechanics, capability authorization,
 behavior selection, perception filtering, dialogue context, persistence, serialization, Godot,
 or UI behavior.
+
+## Dialogue model boundaries
+
+`DialogueUtterance` retains one exact typed `CharacterId` speaker and the player's exact nonblank
+Unicode text without trimming, normalization, case folding, or line-ending changes. Text is bounded
+to 2,000 UTF-16 code units. `DialogueAudienceSnapshot` retains that exact speaker plus at most 32
+exact, duplicate-free listener identifiers in stable supplied order; it copies caller input and
+rejects the speaker as a listener.
+
+The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
+a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
+It excludes the speaker and returns every in-range listener in stable candidate order, retaining
+exact identifiers. It does not inspect visibility, perception, obstacles, line of sight, acoustic
+properties, scene nodes, or Godot state.
+
+`DialogueEvent` immutably associates an exact utterance with a value-matching audience.
+`DialogueActType` defines only the eight canonical roadmap categories, and `DialogueAct` pairs one
+exact utterance with one explicitly declared type. These values perform no text classification;
+prompt-shaped text remains ordinary in-world speech and gains no instruction or action authority.
+
+`CharacterTurnRequest` is provider-neutral and retains one exact responding character, dialogue
+event, and act. It rejects a responder outside the event audience and rejects an act for a
+different utterance. The initial `CharacterIntentionType` vocabulary is limited to `wait`,
+`examine-object`, and `collect-object`. `CharacterIntention` retains that type and an optional exact
+target `ObjectId`, including invalid shapes so `CharacterIntentionValidationPolicy` can return the
+closed missing-target or unexpected-target error without mutating input. The policy does not look
+up world objects or authorize or execute an action.
+
+These dialogue boundaries do not yet define response speech, commitments, state proposals,
+acceptance behavior, a deterministic character, transcripts, event logging, streaming,
+cancellation, persistence, scene wiring, player input, a dialogue panel, model/provider contracts,
+or runtime world mutation.
 
 ## Location model boundaries
 
