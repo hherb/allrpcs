@@ -262,6 +262,68 @@ The Godot scene also owns credential-free engine checks for navigation topology,
 movement, interaction-focus presentation, and Seeker collision boundaries. These checks load the
 authored scene; they do not move Godot physics or presentation policy into `Application`.
 
+## Save-schema version boundary
+
+`Allrpcs.Domain.Persistence.SaveSchemaVersion` is the engine-independent immutable root version
+discriminator for later versioned saves. Version `1` is the explicit first supported value.
+Construction accepts positive integers, while `Parse` accepts only their invariant canonical
+decimal text. Whitespace, signs, leading zeroes, zero, negative values, overflow, and non-numeric
+text are rejected rather than normalized. `Value`, `ToString()`, parsing, and record equality are
+stable round-trip boundaries.
+
+`SaveSchemaVersionSupportPolicy.CanLoad` separately accepts only version `1`, including a distinct
+value-equal instance. Later positive versions remain valid version values but fail closed until an
+explicit load contract exists. The policy leaves its input unchanged and does not parse, migrate,
+serialize, or load anything.
+
+These version boundaries do not themselves define a save aggregate, serializer, file or path
+policy, storage provider, migration, load orchestration, autosave, replay, Godot integration,
+credentials, or UI.
+
+`Allrpcs.Domain.Persistence.DiscoverySaveState` is the first immutable save-state composition. It
+retains the exact existing character-perception, focused-search activity, focused-search outcome,
+passive-noticing candidate, and observation-reinterpretation candidate snapshots through get-only
+properties. It rejects null snapshots and adds no cross-snapshot validation, copying, projection,
+transition, serialization, restoration, or controller behavior.
+
+`WorldEventSaveState` separately retains the exact authoritative event-log and qualitative
+world-time snapshots. Authored world-event definitions remain outside this dynamic save state so a
+later restoration boundary can validate saved identifiers against the running scenario. The value
+rejects null snapshots and adds no consistency decision, event replay, time advancement,
+serialization, restoration, or controller behavior.
+
+`SaveSnapshot` is the immutable in-memory root. It retains one exact schema version, discovery
+save state, and world-event save state through get-only properties and rejects null components.
+Its record equality uses the version value and the retained state instances. It does not yet decide
+whether the root can load, validate it against authored scenario definitions, serialize it, restore
+controllers, or define files and paths.
+
+`SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates the complete
+decision to `SaveSchemaVersionSupportPolicy`, accepts only a version-`1` root, preserves the root
+and every nested instance, and does not inspect state contents, migrate, deserialize, or restore.
+
+`WorldEventSaveStateRestorationPolicy.CanRestore` is the pure event-state restoration gate. Every
+saved log identifier must resolve against an exact authored world-event definition, and projecting
+those resolved events must reproduce the saved qualitative time by identifier value. Empty initial
+state is valid; undefined identifiers, missing advances, stale advances, no-advance identifiers,
+and unrelated time identifiers fail closed. The policy leaves all inputs unchanged and does not
+replay events, advance time, replace state, deserialize, or access storage.
+
+`DiscoverySaveStateRestorationPolicy.CanRestore` is the pure discovery-state restoration gate for
+one supplied searcher. The perception owner plus every focused-search activity, outcome,
+passive-noticing candidate, and reinterpretation candidate owner must be value-equal to that
+searcher. Every perception or lifecycle target must resolve against the authoritative world-object
+snapshot. Empty owned collections and distinct value-equal identifiers are accepted; mismatched
+owners and missing objects fail closed. The policy does not evaluate discovery conditions,
+knowledge triggers, visibility changes, lifecycle eligibility, serialization, or controller state.
+
+`SaveSnapshotRestorationPolicy.CanRestore` is the complete pure root gate. It validates every input
+before delegating unchanged to the schema-version, discovery-state, and world-event-state policies.
+Restoration eligibility therefore requires a supported root, one matching Seeker with only known
+world-object targets, a fully resolvable event log, and qualitative time reproduced from that log.
+It returns only a Boolean and does not deserialize, migrate, replay, replace controller state,
+choose a file, or access storage.
+
 ## Stable domain identifiers
 
 `Allrpcs.Domain.Identifiers` defines distinct immutable identifiers for characters, world
