@@ -324,6 +324,32 @@ world-object targets, a fully resolvable event log, and qualitative time reprodu
 It returns only a Boolean and does not deserialize, migrate, replay, replace controller state,
 choose a file, or access storage.
 
+`FocusedSearchActivityController.TryRestoreDiscoveryState` is the first live save-state restoration
+boundary. It delegates complete eligibility to `DiscoverySaveStateRestorationPolicy` using the
+controller's Seeker and a supplied authoritative world-object snapshot. Success installs the save
+state's exact perception, focused-search activity and outcome, passive-noticing candidate, and
+observation-reinterpretation candidate snapshots together, then presents only the restored activity
+through the existing indicator. Rejected and repeated attempts preserve the installed snapshots.
+This operation does not restore world events, coordinate a complete save root, deserialize, migrate,
+access storage, or orchestrate startup loading.
+
+`WorldEventController.TryRestoreWorldEventState` is the matching live event-state restoration
+boundary. It validates an existing save state against the controller's exact initialized authored
+event definitions, then installs the save state's exact event-log and qualitative-time snapshots
+together while retaining those definitions. Unsupported logs, inconsistent time, uninitialized
+controllers, and null input fail without changing controller state. The operation does not replay
+events, coordinate discovery restoration, deserialize, migrate, access storage, or orchestrate
+startup loading.
+
+`SaveSnapshotRestorationController.TryRestore` coordinates the two live boundaries for one
+already-materialized `SaveSnapshot`. It first delegates the complete version, discovery, and event
+decision to `SaveSnapshotRestorationPolicy` using the scene controllers' exact Seeker and authored
+world definitions. Only an eligible root is then installed through both controllers, preserving all
+nested snapshot instances and presenting the restored focused-search activity. Rejected roots do not
+partially alter either controller. This remains an in-memory restoration seam: it does not create or
+parse a serialized representation, choose a file or path, perform migration, autosave, replay events,
+or run automatically during startup.
+
 ## Stable domain identifiers
 
 `Allrpcs.Domain.Identifiers` defines distinct immutable identifiers for characters, world

@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
 using Godot;
 
@@ -60,6 +61,23 @@ public partial class WorldEventController : Node
             worldTime);
         EventLog = result.EventLog;
         WorldTime = result.WorldTime;
+        return true;
+    }
+
+    /// <summary>Restores exact eligible event-log and qualitative-time save snapshots.</summary>
+    public bool TryRestoreWorldEventState(WorldEventSaveState state)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+
+        WorldEventSnapshot? worldEvents = WorldEvents;
+        if (worldEvents is null
+            || !WorldEventSaveStateRestorationPolicy.CanRestore(state, worldEvents))
+        {
+            return false;
+        }
+
+        EventLog = state.EventLog;
+        WorldTime = state.WorldTime;
         return true;
     }
 

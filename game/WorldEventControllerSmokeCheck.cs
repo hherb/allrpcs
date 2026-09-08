@@ -238,7 +238,7 @@ public partial class WorldEventControllerSmokeCheck : Node
             && IsPrivateSetProperty(properties[0], "EventLog", typeof(WorldEventLogSnapshot))
             && IsPrivateSetProperty(properties[1], "WorldEvents", typeof(WorldEventSnapshot))
             && IsPrivateSetProperty(properties[2], "WorldTime", typeof(WorldTimeSnapshot))
-            && methods.Length == 3
+            && methods.Length == 4
             && methods[0].Name == nameof(WorldEventController.FindWorldEvent)
             && methods[0].ReturnType == typeof(WorldEvent)
             && HasParameters(methods[0], typeof(WorldEventId))
@@ -251,7 +251,10 @@ public partial class WorldEventControllerSmokeCheck : Node
                 typeof(WorldTimeSnapshot))
             && methods[2].Name == nameof(WorldEventController.TryOccur)
             && methods[2].ReturnType == typeof(bool)
-            && HasParameters(methods[2], typeof(WorldEventId));
+            && HasParameters(methods[2], typeof(WorldEventId))
+            && methods[3].Name == nameof(WorldEventController.TryRestoreWorldEventState)
+            && methods[3].ReturnType == typeof(bool)
+            && HasParameters(methods[3], typeof(Allrpcs.Domain.Persistence.WorldEventSaveState));
     }
 
     private static bool IsPrivateSetProperty(

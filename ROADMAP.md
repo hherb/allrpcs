@@ -100,6 +100,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Validate saved event logs and qualitative time against authored event definitions.
 - [x] Validate saved discovery ownership and targets against authoritative world objects.
 - [x] Compose version, discovery, and event checks as one pure save-restoration gate.
+- [x] Restore an eligible in-memory save root into the live discovery and event controllers.
 - [ ] Add versioned save/load and prove exact state restoration.
 - [ ] Add representative discoveries and scenario validation.
 - [ ] Prove filtered views do not leak hidden facts.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3]
+[gd_scene load_steps=59 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -49,6 +49,10 @@
 [ext_resource type="Script" path="res://WorldEventController.cs" id="47_world_event_controller"]
 [ext_resource type="Script" path="res://WorldEventControllerSmokeCheck.cs" id="48_world_event_controller_check"]
 [ext_resource type="Script" path="res://FocusedSearchWorldEventSmokeCheck.cs" id="49_search_world_event_check"]
+[ext_resource type="Script" path="res://DiscoverySaveStateRestorationControllerSmokeCheck.cs" id="50_discovery_save_restoration_controller_check"]
+[ext_resource type="Script" path="res://WorldEventSaveStateRestorationControllerSmokeCheck.cs" id="51_world_event_save_restoration_controller_check"]
+[ext_resource type="Script" path="res://SaveSnapshotRestorationController.cs" id="52_save_restoration_controller"]
+[ext_resource type="Script" path="res://SaveSnapshotRestorationControllerSmokeCheck.cs" id="53_save_restoration_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -379,6 +383,9 @@ script = ExtResource("45_world_time_controller")
 [node name="WorldEventController" type="Node" parent="."]
 script = ExtResource("47_world_event_controller")
 
+[node name="SaveSnapshotRestorationController" type="Node" parent="."]
+script = ExtResource("52_save_restoration_controller")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -420,6 +427,15 @@ script = ExtResource("48_world_event_controller_check")
 
 [node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
 script = ExtResource("49_search_world_event_check")
+
+[node name="DiscoverySaveStateRestorationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("50_discovery_save_restoration_controller_check")
+
+[node name="WorldEventSaveStateRestorationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("51_world_event_save_restoration_controller_check")
+
+[node name="SaveSnapshotRestorationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("53_save_restoration_controller_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
