@@ -91,6 +91,15 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 - [x] Orchestrate atomic world-event occurrence in the scene.
 - [x] Advance qualitative time when herb-patch identification resolves.
 - [x] Prove the first meaningful-time event through the ordinary focused-search input path.
+- [x] Define the immutable root save-schema version vocabulary.
+- [x] Reject structurally valid but unsupported save-schema versions.
+- [x] Compose exact discovery snapshots as immutable save state.
+- [x] Compose exact authoritative event log and qualitative time as immutable save state.
+- [x] Compose the schema version and dynamic state as an immutable save root.
+- [x] Gate save-root loading on explicit schema-version support.
+- [x] Validate saved event logs and qualitative time against authored event definitions.
+- [x] Validate saved discovery ownership and targets against authoritative world objects.
+- [x] Compose version, discovery, and event checks as one pure save-restoration gate.
 - [ ] Add versioned save/load and prove exact state restoration.
 - [ ] Add representative discoveries and scenario validation.
 - [ ] Prove filtered views do not leak hidden facts.
