@@ -30,7 +30,9 @@ five-evidence representative scenario validator, all 33 opt-in Godot smokes, and
 graphical launch.
 
 The GitHub Actions budget is exhausted for the month, so hosted CI is not expected to execute.
-Treat local results as the available validation evidence, not as hosted-platform proof.
+Draft PR #146 is open and mergeable. All five hosted jobs on its first published head were rejected
+before running any steps because of that budget. Treat local results as the available validation
+evidence, not as hosted-platform proof.
 
 ## Exact next bounded slice
 
