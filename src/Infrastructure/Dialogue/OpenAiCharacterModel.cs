@@ -131,7 +131,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
             if (!response!.IsSuccessStatusCode)
             {
                 yield return await ObserveAsync(
-                    Failure(OpenAiHttpFailurePolicy.Classify(response.StatusCode)),
+                    Failure(CharacterModelHttpFailurePolicy.Classify(response.StatusCode)),
                     diagnosticStartTimestamp,
                     null,
                     null,

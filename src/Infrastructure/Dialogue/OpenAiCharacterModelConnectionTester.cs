@@ -59,7 +59,7 @@ public sealed class OpenAiCharacterModelConnectionTester : ICharacterModelConnec
             return response.IsSuccessStatusCode
                 ? CharacterModelConnectionTestResult.Connected()
                 : CharacterModelConnectionTestResult.Failed(
-                    OpenAiHttpFailurePolicy.Classify(response.StatusCode));
+                    CharacterModelHttpFailurePolicy.Classify(response.StatusCode));
         }
         catch (HttpRequestException)
         {

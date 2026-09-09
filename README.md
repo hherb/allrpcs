@@ -737,10 +737,16 @@ validated, recorded once, and completed without physical authority; the next req
 fails offline without retaining the prior result. Prompt-shaped dialogue remains untrusted when a
 scripted response targets a hallucinated object: validation replaces that completion with a bounded
 invalid-response failure and no speech or mutation. Explicit ordinary cancellation preserves an
-already-accepted text delta only as presentation and cancels the exact pending turn. Each failure
-emits canonical content-free status and does not stop routine movement. The deterministic response
-source remains explicit focused-test scaffolding only. No real provider call or generated non-wait
-intention execution occurs in standard gameplay.
+already-accepted text delta only as presentation and cancels the exact pending turn. Additional
+credential-free ordinary checks prove a hidden text-free unavailable attempt safely retries the
+same exact request, a non-retryable provider rejection runs once, and the scene's 30-second deadline
+produces a distinct timeout. An unterminated stream with exposed text cannot retry and becomes a
+bounded invalid response. Two consecutive caller-composed models receive distinct exact turns,
+with stream presentation reset and both speeches recorded once in order. Every unsuccessful path
+cancels only its pending turn, exposes only canonical status plus accepted presentation text, and
+does not fabricate dialogue, fallback, action, or authoritative mutation. The deterministic
+response source remains explicit focused-test scaffolding only. No real provider call or generated
+non-wait intention execution occurs in standard gameplay.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
@@ -796,10 +802,10 @@ not retain provider DTOs or error
 bodies, execute intentions, or call a provider. Object existence and current immediate-action
 eligibility are enforced separately by the Application validation gate.
 
-The Infrastructure-only OpenAI boundary serializes a stateless Responses request with
-`store:false`, streaming enabled, and a strict closed JSON schema matching that decoder. Trusted
-bounded context is a developer message while the exact player utterance remains a separate
-untrusted user message. A strict UTF-8 server-sent-event reader accepts LF or CRLF terminated
+Shared Infrastructure-only prompt and schema writers keep trusted bounded context separate from the
+exact untrusted player utterance while preserving one closed local response decoder. The OpenAI
+boundary serializes a stateless Responses request with `store:false`, streaming enabled, and the
+fully bounded strict schema. A strict UTF-8 server-sent-event reader accepts LF or CRLF terminated
 frames, complete comment heartbeats, optional event names, and repeated data lines while bounding
 line length, line count, frame count, document count, and joined document length. Malformed,
 truncated, excessive, or NUL-containing streams return no partial provider content.
@@ -812,6 +818,23 @@ authorization header; unsuccessful response bodies are never read. HTTP authenti
 rate-limit, transient service, request-rejection, and transport outcomes map to bounded codes
 without provider details.
 
+The Anthropic boundary serializes one stateless Messages request with two trusted system text
+blocks, one exact untrusted user message, streaming enabled, and `output_config.format` structured
+JSON. Its provider schema omits unsupported string and array maximum constraints while the strict
+local decoder still enforces every bound. The Messages accumulator accepts only one indexed text
+block, buffers its JSON deltas, permits content-free pings, requires an `end_turn` message delta and
+final stop, and rejects thinking, tools, refusal, unknown events, invalid ordering, malformed usage,
+or incomplete output without retaining provider content. `AnthropicCharacterModel` uses a
+caller-owned `HttpClient`, Anthropic settings, and read-only credential source; it posts only to the
+official Messages endpoint with `x-api-key` and `anthropic-version: 2023-06-01`, never reads failure
+bodies, and yields one provider-neutral terminal update with optional redacted usage diagnostics.
+
+The initial Ollama boundary only serializes a stateless native `/api/chat` request. It disables
+thinking, requests streaming structured output with the same closed schema, uses trusted system
+messages plus one exact untrusted user message, and requests deterministic temperature zero. It
+does not yet define or call a configurable loopback endpoint, parse NDJSON, inspect installed models,
+or construct an Ollama adapter.
+
 The Application diagnostic boundary retains only a canonical provider, terminal status or bounded
 failure code, elapsed duration, and wholly present or absent input/output/total token counts. Counts
 must be non-negative, additive, and no greater than one million; elapsed time is bounded to one
@@ -822,9 +845,10 @@ time and the sink for completed or failed provider attempts; absent usage remain
 malformed usage fails closed without exposing partial provider content.
 
 The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
-provider instance and one bounded model name; it does not claim that the corresponding adapter is
-available. The OpenAI connection tester retrieves only the exact configured model resource over a
-caller-owned HTTP client and the same credential-source contract. It does not generate content or
+provider instance and one bounded model name; it does not select or construct an adapter. OpenAI and
+Anthropic HTTP adapters remain caller-composed, while Ollama currently has only request
+serialization. The OpenAI connection tester retrieves only the exact configured model resource over
+a caller-owned HTTP client and the same credential-source contract. It does not generate content or
 read success or failure bodies, and exposes only connected or existing provider-neutral failure
 codes.
 
@@ -833,9 +857,9 @@ password identity in macOS Keychain. The `/usr/bin/security` process is isolated
 boundary, never uses a shell, receives save bytes only through redirected standard input, bounds
 and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
 saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
-touch a user's real keychain. No Windows Credential Manager or Linux Secret Service adapter,
-settings UI or persistence, diagnostic logging/export, ordinary-turn model selection, live call
-proof, or generated-intention execution exists.
+touch a user's real keychain. No Anthropic credential store, Ollama HTTP adapter, Windows Credential
+Manager or Linux Secret Service adapter, settings UI or persistence, diagnostic logging/export,
+ordinary-turn provider selection, live call proof, or generated-intention execution exists.
 
 ## Location model boundaries
 

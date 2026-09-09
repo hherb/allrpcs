@@ -3,9 +3,9 @@ using Allrpcs.Application.Dialogue;
 
 namespace Allrpcs.Infrastructure.Dialogue;
 
-internal static class OpenAiHttpFailurePolicy
+internal static class CharacterModelHttpFailurePolicy
 {
-    public static CharacterModelFailureCode Classify(HttpStatusCode statusCode)
+    internal static CharacterModelFailureCode Classify(HttpStatusCode statusCode)
     {
         if (statusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
         {
