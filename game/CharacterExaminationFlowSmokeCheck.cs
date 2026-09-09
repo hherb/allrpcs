@@ -14,6 +14,8 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
 
     private CharacterTurnTranscriptController transcriptController = null!;
     private TemporaryCharacterExaminationFlowController flowController = null!;
+    private CharacterTurnActivityController turnController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private WorldEventController worldEventController = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
     private LineEdit input = null!;
@@ -35,6 +37,10 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             "../CharacterTurnTranscriptController");
         flowController = GetNode<TemporaryCharacterExaminationFlowController>(
             "../TemporaryCharacterExaminationFlowController");
+        turnController = GetNode<CharacterTurnActivityController>(
+            "../CharacterTurnActivityController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
@@ -53,6 +59,32 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             input.Text = PlayerText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             stage = 1;
+            return;
+        }
+
+        if (stage == 1)
+        {
+            CharacterTurnActivity? activity = turnController.Activity;
+            if (activity is null
+                || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse))
+            {
+                Fail("Focused examination scaffolding did not observe its awaiting turn.");
+                return;
+            }
+
+            CharacterTurnResponse response = responseSource.CreateResponse(
+                activity.Request,
+                GetNode<TemporaryWorldObjectSource>(
+                    "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
+            if (!turnController.TryReceiveResponse(response))
+            {
+                Fail(
+                    "Focused examination scaffolding could not install its deterministic "
+                    + "response.");
+                return;
+            }
+
+            stage = 2;
             return;
         }
 

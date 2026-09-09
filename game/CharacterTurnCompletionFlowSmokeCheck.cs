@@ -15,6 +15,7 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private TemporaryCharacterExaminationFlowController examinationFlowController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private DialogueEventController eventController = null!;
     private LineEdit input = null!;
     private int stage;
@@ -41,6 +42,8 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
             "../CharacterTurnTranscriptController");
         examinationFlowController = GetNode<TemporaryCharacterExaminationFlowController>(
             "../TemporaryCharacterExaminationFlowController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
@@ -64,6 +67,18 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
                 || !ReferenceEquals(awaiting.State, CharacterTurnActivityState.AwaitingResponse))
             {
                 Fail("Completion flow did not preserve the awaiting activity boundary.");
+                return;
+            }
+
+            CharacterTurnResponse response = responseSource.CreateResponse(
+                awaiting.Request,
+                GetNode<TemporaryWorldObjectSource>(
+                    "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
+            if (!turnController.TryReceiveResponse(response))
+            {
+                Fail(
+                    "Focused completion scaffolding could not install its deterministic "
+                    + "response.");
                 return;
             }
 

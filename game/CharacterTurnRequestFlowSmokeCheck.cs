@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -15,6 +16,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
     private DialogueEventController eventController = null!;
     private DialogueInputController inputController = null!;
     private CharacterTurnActivityController turnController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private LineEdit input = null!;
     private int stage;
     private CharacterTurnActivity? firstActivity;
@@ -38,6 +40,8 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
         turnController = GetNode<CharacterTurnActivityController>(
             "../CharacterTurnActivityController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
@@ -83,6 +87,11 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             }
 
             firstActivity = turnController.Activity;
+            if (!TryInstallDeterministicTestResponse(firstActivity!))
+            {
+                return;
+            }
+
             input.Text = SecondText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, SecondText);
             stage = 3;
@@ -102,6 +111,22 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             + "remained ordinary speech, a later event did not replace the active turn, and "
             + "unrelated world and discovery state was preserved.");
         GetTree().Quit();
+    }
+
+    private bool TryInstallDeterministicTestResponse(CharacterTurnActivity activity)
+    {
+        ObjectId targetObjectId = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id;
+        CharacterTurnResponse response = responseSource.CreateResponse(
+            activity.Request,
+            targetObjectId);
+        if (!turnController.TryReceiveResponse(response))
+        {
+            Fail("Focused request-flow scaffolding could not install its deterministic response.");
+            return false;
+        }
+
+        return true;
     }
 
     private bool ProvesUnheardDialogueDoesNotStartTurn()

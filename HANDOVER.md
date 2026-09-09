@@ -2,46 +2,41 @@
 
 ## Current state
 
-`main` contains merged PR #163 at `affb762`. The current branch is
-`codex/phase-4-healer-generation-input`, published as draft PR #164, and advances Phase 4 through
-Phase 4g2. The reviewed implementation commit is `3a99394`.
+`main` contains merged PR #164 at `76fbdd1`. The current branch is
+`codex/phase-4-offline-ordinary-flow`, published as draft PR #165, and advances Phase 4 through
+Phase 4g4. The reviewed implementation commit is `20785d6`.
 
-- Phase 4g1 authors one stable complete temporary healer. Its identity shares the exact healer ID
-  retained by the live turn source, its controller assignment is the canonical LLM type, and its
-  authored background, capability, limitation, knowledge reference, and goal are minimal and
-  explicit.
-- Phase 4g1 also adds a temporary provider-neutral generation-input source for an exact awaiting
-  healer activity. It delegates to `CharacterModelContextAssembler` and retains the exact request,
-  authoritative world-object snapshot, and response-validation affordance snapshot.
-- The bounded input exposes only the identified herb-patch description, the healer's referenced
-  knowledge, one goal, exact recent heard speech, and exact prompt-shaped player text marked as
-  untrusted. The unnoticed stone marker, display names, unreferenced knowledge, memories, hidden
-  state, and targeted actions remain absent. The empty targeted-affordance snapshot leaves only the
-  validation policy's inherent target-free Wait intention eligible.
-- Phase 4g2 adds one stable credential-free unavailable model and an opt-in source-to-flow smoke.
-  Its terminal unavailable result cancels the exact pending turn without fabricated dialogue,
-  response text, transcript entries, world changes, or discovery changes, while routine healer
-  movement continues.
+- Phase 4g3 routes each ordinary heard healer request through the authored character's canonical
+  LLM assignment, `TemporaryCharacterModelGenerationInputSource`, the existing generation flow,
+  and the stable credential-free unavailable model.
+- Each unavailable result cancels only its exact pending turn, shows canonical content-free failure
+  status, emits no healer speech, and changes no world event, world object, discovery, examination,
+  or collection state. Routine healer movement continues.
+- The deterministic healer-response source is no longer an ordinary runtime fallback. Its focused
+  Phase 3 smokes install responses directly as explicit test scaffolding.
+- Phase 4g4 permits a fully observed terminal scene stream and generation flow to reset exactly
+  once to fresh hidden empty state. Two distinct ordinary offline requests therefore receive
+  distinct generation inputs and results and both fail closed without retaining prior model text or
+  presentation.
 
-The ordinary player-dialogue path still uses the deterministic response source. The offline model
-is composed only by the opt-in smoke, and the OpenAI HTTP adapter, bounded settings, redacted
-connection test and diagnostics, and macOS Keychain store remain caller-composed only. No live key,
-credential access, network call, or hosted workflow was used. Anthropic/Ollama adapters,
-Windows/Linux credential stores, settings UI/persistence, ordinary-turn model selection, physical
+The default ordinary model remains deliberately offline. The OpenAI HTTP adapter, bounded settings,
+redacted connection test and diagnostics, and macOS Keychain store remain caller-composed only. No
+live key, credential access, network call, or hosted workflow was used. Anthropic/Ollama adapters,
+Windows/Linux credential stores, settings UI/persistence, live provider selection, physical
 generated-intention execution, telemetry export, and gameplay persistence or mutation remain
 absent. The OpenAI adapter and full Phase 4 acceptance remain incomplete.
 
 ## Validation
 
-Both new boundaries began with expected focused compile failures. The complete host-local
-`./scripts/quality.sh` passes:
+The repeated ordinary-flow smoke began with the expected bounded failure while the scene flow was
+still one-shot. The complete host-local `./scripts/quality.sh` passes:
 
 - workflow and formatting validation, restore, and a zero-warning build;
 - 1,388 Domain tests, 323 Application tests, 159 Infrastructure tests, and eight architecture
   tests;
 - the five-evidence representative scenario validator;
-- all 60 opt-in Godot smoke invocations, including exact healer input and offline unavailable-flow
-  coverage; and
+- all 60 opt-in Godot smoke invocations, including direct deterministic scaffolding, terminal reset,
+  and two distinct ordinary offline healer turns; and
 - the bounded graphical Compatibility-renderer launch.
 
 The restricted sandbox still reproduces the known .NET VSTest IPC and Godot log-directory denial;
@@ -51,21 +46,20 @@ than test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 4g3: route ordinary heard healer requests through the temporary offline model**.
+Take **Phase 4h1: prove one successful ordinary model-backed Wait response through a caller-owned
+scene model seam**.
 
 Acceptance boundary:
 
-1. Make the canonical LLM assignment select the existing temporary offline model for the ordinary
-   awaiting healer turn. Build its input through
-   `TemporaryCharacterModelGenerationInputSource` and start the existing one-shot generation flow
-   with the exact returned request, world objects, and affordances.
-2. Prove through player dialogue submission that an unavailable terminal result cancels the exact
-   pending turn, shows only canonical failure status, emits no healer speech, and changes no
-   transcript, world-event, world-object, discovery, examination, collection, or presentation state
-   beyond the fixed model status. Routine movement must continue.
-3. Keep the Phase 3 deterministic response source as explicit test scaffolding only. Adjust its
-   focused smokes so their deterministic contract remains directly tested without making it the
-   ordinary runtime fallback.
+1. Decouple `Main` from the concrete temporary offline source through the smallest scene-owned seam
+   that supplies one exact caller-composed `ICharacterModel`. Keep the stable unavailable model as
+   the ordinary default; do not select settings or construct a provider.
+2. Add an opt-in credential-free scripted model smoke that submits player dialogue through the
+   ordinary path and returns one exact completed, validated, target-free `Wait` response.
+3. Prove the exact healer speech occurs and appends once, the exact turn completes, no physical
+   action or deterministic fallback runs, no hidden context is exposed, and world-event,
+   world-object, discovery, examination, and collection state remain unchanged. Prove a later
+   default-offline request still fails closed after terminal reset.
 4. Do not construct OpenAI/Anthropic/Ollama adapters, access credentials or network, select or
-   persist settings, execute generated intentions, add telemetry/persistence, or add Windows/Linux
-   credential facilities.
+   persist settings, execute generated non-wait intentions, add telemetry/persistence, or add
+   Windows/Linux credential facilities.

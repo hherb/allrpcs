@@ -15,6 +15,7 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
 
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private LineEdit input = null!;
     private Label response = null!;
     private int stage;
@@ -35,6 +36,8 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
             "../CharacterTurnActivityController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
         response = GetNode<Label>("../DialogueOverlay/Panel/Response");
     }
@@ -60,6 +63,18 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
                 || response.Text != NoResponseText)
             {
                 Fail("Response presentation did not preserve the exact awaiting boundary.");
+                return;
+            }
+
+            CharacterTurnResponse testResponse = responseSource.CreateResponse(
+                activity.Request,
+                GetNode<TemporaryWorldObjectSource>(
+                    "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
+            if (!turnController.TryReceiveResponse(testResponse))
+            {
+                Fail(
+                    "Focused presentation scaffolding could not install its deterministic "
+                    + "response.");
                 return;
             }
 
