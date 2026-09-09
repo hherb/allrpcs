@@ -30,11 +30,11 @@ public sealed class CharacterModelContextAssemblerTests
         KnowledgeSnapshot knowledge = new(
             [new KnowledgeEntry(new KnowledgeId("herbal-remedies"), knowledgeText)]);
         CharacterModelContextEntry memory = new(CharacterModelContextEntryKind.Memory, "A memory.");
-        CharacterModelContextEntry affordance = new(
-            CharacterModelContextEntryKind.ValidAffordance,
-            "examine-object herb-patch");
+        CharacterIntentionAffordance affordance = new(
+            CharacterIntentionType.ExamineObject,
+            new ObjectId("herb-patch"));
         CharacterModelContextEntry[] memories = [memory];
-        CharacterModelContextEntry[] affordances = [affordance];
+        CharacterIntentionAffordanceSnapshot affordances = new([affordance]);
 
         CharacterModelGenerationRequest result = CharacterModelContextAssembler.Assemble(
             request,
@@ -46,7 +46,6 @@ public sealed class CharacterModelContextAssemblerTests
             [recentSpeech],
             affordances);
         memories[0] = new(CharacterModelContextEntryKind.Memory, "Changed caller memory.");
-        affordances[0] = new(CharacterModelContextEntryKind.ValidAffordance, "Changed affordance.");
 
         Assert.Same(request, result.TurnRequest);
         Assert.Collection(
@@ -72,7 +71,11 @@ public sealed class CharacterModelContextAssemblerTests
                 Assert.Equal(CharacterModelContextEntryKind.RecentSpeech, entry.Kind);
                 Assert.Same(recentSpeech.Utterance.Text, entry.Text);
             },
-            entry => Assert.Same(affordance, entry),
+            entry =>
+            {
+                Assert.Equal(CharacterModelContextEntryKind.ValidAffordance, entry.Kind);
+                Assert.Equal("type=examine-object;target=herb-patch", entry.Text);
+            },
             entry =>
             {
                 Assert.Equal(CharacterModelContextEntryKind.UntrustedPlayerDialogue, entry.Kind);
@@ -88,9 +91,65 @@ public sealed class CharacterModelContextAssemblerTests
             new CharacterGoalSet([]));
 
         CharacterModelGenerationRequest result = Assemble(
-            request, character, CreateEmptyPerception(character), [], [], []);
+            request,
+            character,
+            CreateEmptyPerception(character),
+            [],
+            [],
+            new CharacterIntentionAffordanceSnapshot([]));
 
         Assert.Equal(2, result.Context.Entries.Count);
+    }
+
+    [Fact]
+    public void SharesTheExactAffordanceSnapshotWithResponseValidation()
+    {
+        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
+        Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(
+            new CharacterGoalSet([]));
+        CharacterIntentionAffordanceSnapshot affordances = new(
+            [
+                new CharacterIntentionAffordance(
+                    CharacterIntentionType.ExamineObject,
+                    new ObjectId("herb-patch")),
+            ]);
+        CharacterModelGenerationRequest generationRequest = Assemble(
+            request,
+            character,
+            CreateEmptyPerception(character),
+            [],
+            [],
+            affordances);
+        CharacterTurnResponse response = new(
+            request,
+            CharacterTurnDisposition.Accept,
+            null,
+            new CharacterIntention(
+                CharacterIntentionType.ExamineObject,
+                new ObjectId("herb-patch")),
+            [],
+            []);
+
+        CharacterTurnResponseValidationResult validation =
+            CharacterTurnResponseValidationPolicy.Validate(
+                request,
+                response,
+                new WorldObjectSnapshot(
+                    [
+                        CharacterModelPerceptionContextProjectionTests.CreateWorldObject(
+                            "herb-patch",
+                            "Hidden display name",
+                            "Hidden description."),
+                    ]),
+                affordances);
+
+        Assert.True(validation.IsValid);
+        CharacterModelContextEntry contextAffordance = Assert.Single(
+            generationRequest.Context.Entries.Where(
+                entry => entry.Kind == CharacterModelContextEntryKind.ValidAffordance));
+        Assert.Equal("type=examine-object;target=herb-patch", contextAffordance.Text);
+        Assert.DoesNotContain("Hidden", contextAffordance.Text, StringComparison.Ordinal);
+        Assert.Same(affordances.Entries[0].Type, response.ImmediateIntention.Type);
     }
 
     [Fact]
@@ -102,30 +161,31 @@ public sealed class CharacterModelContextAssemblerTests
         CharacterPerceptionSnapshot perception = CreateEmptyPerception(character);
         WorldObjectSnapshot worldObjects = new([]);
         KnowledgeSnapshot knowledge = CreateKnowledge(character);
+        CharacterIntentionAffordanceSnapshot affordances = new([]);
         Character wrongCharacter = CharacterModelGoalContextProjectionTests.CreateCharacter(
             new CharacterGoalSet([]), "someone-else");
         CharacterPerceptionSnapshot wrongPerception = new(new CharacterId("someone-else"), []);
 
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            null!, character, perception, worldObjects, knowledge, [], [], []));
+            null!, character, perception, worldObjects, knowledge, [], [], affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            request, null!, perception, worldObjects, knowledge, [], [], []));
+            request, null!, perception, worldObjects, knowledge, [], [], affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            request, character, null!, worldObjects, knowledge, [], [], []));
+            request, character, null!, worldObjects, knowledge, [], [], affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            request, character, perception, null!, knowledge, [], [], []));
+            request, character, perception, null!, knowledge, [], [], affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            request, character, perception, worldObjects, null!, [], [], []));
+            request, character, perception, worldObjects, null!, [], [], affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            request, character, perception, worldObjects, knowledge, null!, [], []));
+            request, character, perception, worldObjects, knowledge, null!, [], affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
-            request, character, perception, worldObjects, knowledge, [], null!, []));
+            request, character, perception, worldObjects, knowledge, [], null!, affordances));
         Assert.Throws<ArgumentNullException>(() => CharacterModelContextAssembler.Assemble(
             request, character, perception, worldObjects, knowledge, [], [], null!));
         Assert.Throws<ArgumentException>(() => CharacterModelContextAssembler.Assemble(
-            request, wrongCharacter, perception, worldObjects, knowledge, [], [], []));
+            request, wrongCharacter, perception, worldObjects, knowledge, [], [], affordances));
         Assert.Throws<ArgumentException>(() => CharacterModelContextAssembler.Assemble(
-            request, character, wrongPerception, worldObjects, knowledge, [], [], []));
+            request, character, wrongPerception, worldObjects, knowledge, [], [], affordances));
     }
 
     public static TheoryData<CharacterModelContextEntryKind> NonMemoryKinds =>
@@ -145,32 +205,14 @@ public sealed class CharacterModelContextAssemblerTests
             CreateEmptyPerception(character),
             [new CharacterModelContextEntry(kind, "Spoofed memory.")],
             [],
-            []));
-        Assert.Throws<ArgumentException>(() => Assemble(
-            request, character, CreateEmptyPerception(character), [null!], [], []));
-    }
-
-    public static TheoryData<CharacterModelContextEntryKind> NonAffordanceKinds =>
-        KindsExcept(CharacterModelContextEntryKind.ValidAffordance);
-
-    [Theory]
-    [MemberData(nameof(NonAffordanceKinds))]
-    public void RejectsNullAndEveryNonAffordanceKindFromAffordanceInput(
-        CharacterModelContextEntryKind kind)
-    {
-        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
-        Character character = CharacterModelGoalContextProjectionTests.CreateCharacter(
-            new CharacterGoalSet([]));
-
+            new CharacterIntentionAffordanceSnapshot([])));
         Assert.Throws<ArgumentException>(() => Assemble(
             request,
             character,
             CreateEmptyPerception(character),
+            [null!],
             [],
-            [],
-            [new CharacterModelContextEntry(kind, "Spoofed affordance.")]));
-        Assert.Throws<ArgumentException>(() => Assemble(
-            request, character, CreateEmptyPerception(character), [], [], [null!]));
+            new CharacterIntentionAffordanceSnapshot([])));
     }
 
     [Fact]
@@ -183,10 +225,10 @@ public sealed class CharacterModelContextAssemblerTests
         CharacterModelContextEntry[] memories = Enumerable
             .Repeat(memory, CharacterModelContextSnapshot.MaximumEntryCount)
             .ToArray();
-        CharacterModelContextEntry affordance = new(
-            CharacterModelContextEntryKind.ValidAffordance,
-            "affordance");
-        CharacterModelContextEntry[] affordances = [affordance];
+        CharacterIntentionAffordance affordance = new(
+            CharacterIntentionType.ExamineObject,
+            new ObjectId("herb-patch"));
+        CharacterIntentionAffordanceSnapshot affordances = new([affordance]);
 
         Assert.Throws<ArgumentException>(() => Assemble(
             request,
@@ -196,7 +238,7 @@ public sealed class CharacterModelContextAssemblerTests
             [],
             affordances));
         Assert.All(memories, retained => Assert.Same(memory, retained));
-        Assert.Same(affordance, affordances[0]);
+        Assert.Same(affordance, affordances.Entries[0]);
     }
 
     private static CharacterModelGenerationRequest Assemble(
@@ -205,7 +247,7 @@ public sealed class CharacterModelContextAssemblerTests
         CharacterPerceptionSnapshot perception,
         IEnumerable<CharacterModelContextEntry> memories,
         IEnumerable<DialogueEvent> recentDialogueEvents,
-        IEnumerable<CharacterModelContextEntry> validAffordances) =>
+        CharacterIntentionAffordanceSnapshot validAffordances) =>
         CharacterModelContextAssembler.Assemble(
             request,
             character,

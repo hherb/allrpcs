@@ -1,12 +1,12 @@
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Dialogue;
 
 namespace Allrpcs.Application.Tests.Dialogue;
 
 public sealed class CharacterModelStreamTerminationTests
 {
-    public static TheoryData<CharacterModelStreamTerminationStatus> NonFailureStatuses => new()
+    public static TheoryData<CharacterModelStreamTerminationStatus> NonCompletionStatuses => new()
     {
-        CharacterModelStreamTerminationStatus.Completed,
         CharacterModelStreamTerminationStatus.Cancelled,
         CharacterModelStreamTerminationStatus.TimedOut,
     };
@@ -21,13 +21,30 @@ public sealed class CharacterModelStreamTerminationTests
         CharacterModelFailureCode.ProviderRejected,
     };
 
-    [Theory]
-    [MemberData(nameof(NonFailureStatuses))]
-    public void RetainsANonFailureTerminalStatus(CharacterModelStreamTerminationStatus status)
+    [Fact]
+    public void RetainsTheExactResponseOnlyForCompletedGeneration()
     {
-        CharacterModelStreamTermination termination = new(status, null);
+        CharacterTurnResponse response = CreateResponse();
+
+        CharacterModelStreamTermination termination = new(
+            CharacterModelStreamTerminationStatus.Completed,
+            response,
+            null);
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, termination.Status);
+        Assert.Same(response, termination.Response);
+        Assert.Null(termination.Failure);
+    }
+
+    [Theory]
+    [MemberData(nameof(NonCompletionStatuses))]
+    public void RetainsANonCompletionStatusWithoutAResponse(
+        CharacterModelStreamTerminationStatus status)
+    {
+        CharacterModelStreamTermination termination = new(status, null, null);
 
         Assert.Equal(status, termination.Status);
+        Assert.Null(termination.Response);
         Assert.Null(termination.Failure);
     }
 
@@ -39,9 +56,11 @@ public sealed class CharacterModelStreamTerminationTests
 
         CharacterModelStreamTermination termination = new(
             CharacterModelStreamTerminationStatus.Failed,
+            null,
             failure);
 
         Assert.Equal(CharacterModelStreamTerminationStatus.Failed, termination.Status);
+        Assert.Null(termination.Response);
         Assert.Same(failure, termination.Failure);
     }
 
@@ -51,16 +70,36 @@ public sealed class CharacterModelStreamTerminationTests
         CharacterModelFailure failure = new(CharacterModelFailureCode.Transport);
 
         Assert.Throws<ArgumentNullException>(() => new CharacterModelStreamTermination(
+            CharacterModelStreamTerminationStatus.Completed,
+            null,
+            null));
+        Assert.Throws<ArgumentException>(() => new CharacterModelStreamTermination(
             CharacterModelStreamTerminationStatus.Failed,
+            CreateResponse(),
+            failure));
+        Assert.Throws<ArgumentNullException>(() => new CharacterModelStreamTermination(
+            CharacterModelStreamTerminationStatus.Failed,
+            null,
             null));
         Assert.Throws<ArgumentException>(() => new CharacterModelStreamTermination(
             CharacterModelStreamTerminationStatus.Completed,
+            CreateResponse(),
             failure));
         Assert.Throws<ArgumentException>(() => new CharacterModelStreamTermination(
             CharacterModelStreamTerminationStatus.Cancelled,
+            CreateResponse(),
+            null));
+        Assert.Throws<ArgumentException>(() => new CharacterModelStreamTermination(
+            CharacterModelStreamTerminationStatus.Cancelled,
+            null,
             failure));
         Assert.Throws<ArgumentException>(() => new CharacterModelStreamTermination(
             CharacterModelStreamTerminationStatus.TimedOut,
+            CreateResponse(),
+            null));
+        Assert.Throws<ArgumentException>(() => new CharacterModelStreamTermination(
+            CharacterModelStreamTerminationStatus.TimedOut,
+            null,
             failure));
     }
 
@@ -69,6 +108,7 @@ public sealed class CharacterModelStreamTerminationTests
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => new CharacterModelStreamTermination(
             (CharacterModelStreamTerminationStatus)int.MaxValue,
+            null,
             null));
         Assert.Throws<ArgumentOutOfRangeException>(() => new CharacterModelFailure(
             (CharacterModelFailureCode)int.MaxValue));
@@ -91,7 +131,20 @@ public sealed class CharacterModelStreamTerminationTests
         Assert.Collection(
             typeof(CharacterModelStreamTermination).GetProperties().OrderBy(property => property.Name),
             property => AssertGetOnlyProperty(property, nameof(CharacterModelStreamTermination.Failure)),
+            property => AssertGetOnlyProperty(property, nameof(CharacterModelStreamTermination.Response)),
             property => AssertGetOnlyProperty(property, nameof(CharacterModelStreamTermination.Status)));
+    }
+
+    private static CharacterTurnResponse CreateResponse()
+    {
+        CharacterTurnRequest request = CharacterModelPlayerDialogueContextProjectionTests.CreateRequest();
+        return new CharacterTurnResponse(
+            request,
+            CharacterTurnDisposition.Accept,
+            null,
+            new CharacterIntention(CharacterIntentionType.Wait, null),
+            [],
+            []);
     }
 
     private static void AssertGetOnlyProperty(System.Reflection.PropertyInfo property, string name)

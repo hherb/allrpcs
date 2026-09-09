@@ -1,3 +1,5 @@
+using Allrpcs.Domain.WorldObjects;
+
 namespace Allrpcs.Application.Dialogue;
 
 /// <summary>
@@ -13,11 +15,15 @@ public static class CharacterModelGenerationController
     public static async Task<CharacterModelStreamSnapshot> GenerateAsync(
         ICharacterModel model,
         CharacterModelGenerationRequest request,
+        WorldObjectSnapshot worldObjects,
+        CharacterIntentionAffordanceSnapshot affordances,
         TimeSpan deadline,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(worldObjects);
+        ArgumentNullException.ThrowIfNull(affordances);
 
         if (deadline <= TimeSpan.Zero || deadline == Timeout.InfiniteTimeSpan)
         {
@@ -37,6 +43,7 @@ public static class CharacterModelGenerationController
                 request,
                 deadlineCancellation.Token,
                 cancellationToken).ConfigureAwait(false);
+            attempt = ValidateCompletedResponse(request, worldObjects, affordances, attempt);
 
             if (!CharacterModelRetryPolicy.CanRetry(attemptCount, attempt))
             {
@@ -70,20 +77,67 @@ public static class CharacterModelGenerationController
                 ? CharacterModelStreamTerminationStatus.Cancelled
                 : CharacterModelStreamTerminationStatus.TimedOut;
             return CharacterModelStreamAppendTransition.Append(
-                new CharacterModelStreamTermination(status, null),
+                new CharacterModelStreamTermination(status, null, null),
                 snapshot);
         }
 
         if (snapshot.Updates.Count > 0
-            && snapshot.Updates[^1] is CharacterModelStreamTermination)
+            && snapshot.Updates[^1] is CharacterModelStreamTermination termination)
         {
+            if (termination.Status == CharacterModelStreamTerminationStatus.Completed
+                && !ReferenceEquals(termination.Response?.Request, request.TurnRequest))
+            {
+                return ReplaceTerminationWithInvalidResponse(snapshot);
+            }
+
             return snapshot;
         }
 
         return CharacterModelStreamAppendTransition.Append(
             new CharacterModelStreamTermination(
                 CharacterModelStreamTerminationStatus.Failed,
+                null,
                 new CharacterModelFailure(CharacterModelFailureCode.InvalidResponse)),
             snapshot);
+    }
+
+    private static CharacterModelStreamSnapshot ReplaceTerminationWithInvalidResponse(
+        CharacterModelStreamSnapshot snapshot)
+    {
+        List<CharacterModelStreamUpdate> updates = snapshot.Updates
+            .Take(snapshot.Updates.Count - 1)
+            .ToList();
+        updates.Add(new CharacterModelStreamTermination(
+            CharacterModelStreamTerminationStatus.Failed,
+            null,
+            new CharacterModelFailure(CharacterModelFailureCode.InvalidResponse)));
+        return new CharacterModelStreamSnapshot(updates);
+    }
+
+    private static CharacterModelStreamSnapshot ValidateCompletedResponse(
+        CharacterModelGenerationRequest request,
+        WorldObjectSnapshot worldObjects,
+        CharacterIntentionAffordanceSnapshot affordances,
+        CharacterModelStreamSnapshot snapshot)
+    {
+        if (snapshot.Updates.Count == 0
+            || snapshot.Updates[^1] is not CharacterModelStreamTermination
+            {
+                Status: CharacterModelStreamTerminationStatus.Completed,
+                Response: not null,
+            } termination)
+        {
+            return snapshot;
+        }
+
+        CharacterTurnResponseValidationResult validation =
+            CharacterTurnResponseValidationPolicy.Validate(
+                request.TurnRequest,
+                termination.Response,
+                worldObjects,
+                affordances);
+        return validation.IsValid
+            ? snapshot
+            : ReplaceTerminationWithInvalidResponse(snapshot);
     }
 }

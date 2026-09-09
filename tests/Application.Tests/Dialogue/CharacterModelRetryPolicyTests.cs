@@ -1,4 +1,5 @@
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Dialogue;
 
 namespace Allrpcs.Application.Tests.Dialogue;
 
@@ -72,8 +73,11 @@ public sealed class CharacterModelRetryPolicyTests
     public void RejectsNonFailureAndNonTerminalStreams(
         CharacterModelStreamTerminationStatus status)
     {
-        CharacterModelStreamSnapshot terminal = new(
-            [new CharacterModelStreamTermination(status, null)]);
+        CharacterModelStreamTermination termination =
+            status == CharacterModelStreamTerminationStatus.Completed
+                ? Completed()
+                : new CharacterModelStreamTermination(status, null, null);
+        CharacterModelStreamSnapshot terminal = new([termination]);
         CharacterModelStreamSnapshot empty = new([]);
         CharacterModelStreamSnapshot progress = new([new CharacterModelTextDelta("Progress")]);
 
@@ -104,5 +108,17 @@ public sealed class CharacterModelRetryPolicyTests
     private static CharacterModelStreamTermination Failed(CharacterModelFailureCode code) =>
         new(
             CharacterModelStreamTerminationStatus.Failed,
+            null,
             new CharacterModelFailure(code));
+
+    private static CharacterModelStreamTermination Completed() => new(
+        CharacterModelStreamTerminationStatus.Completed,
+        new CharacterTurnResponse(
+            CharacterModelPlayerDialogueContextProjectionTests.CreateRequest(),
+            CharacterTurnDisposition.Accept,
+            null,
+            new CharacterIntention(CharacterIntentionType.Wait, null),
+            [],
+            []),
+        null);
 }
