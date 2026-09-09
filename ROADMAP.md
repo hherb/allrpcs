@@ -151,13 +151,13 @@ Acceptance:
 - [ ] Implement the OpenAI adapter.
 - [ ] Implement the Anthropic adapter.
 - [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
-- [ ] Prevent provider-specific request or response objects from entering domain state.
+- [x] Prevent provider-specific request or response objects from entering domain state.
 - [x] Validate all structured output and reject unknown objects, destinations, and actions.
 - [x] Retry only safe, idempotent generation failures.
 - [x] Derive provider-visible affordances from the exact validation snapshot and require a complete
   validated response at successful model-stream termination.
-- [x] Serialize a stateless strict-schema OpenAI request and fail closed while accumulating its
-  bounded semantic structured-output events without exposing partial JSON.
+- [x] Serialize a stateless strict-schema OpenAI request, parse bounded SSE frames, and expose a
+  caller-composed authenticated HTTP adapter that fails closed without exposing partial JSON.
 - [ ] Support response cancellation and a visible timeout state.
 - [ ] Stream display text without executing partial intentions.
 - [ ] Add provider and model settings with connection tests.

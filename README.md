@@ -710,7 +710,8 @@ whole operation, translates caller cancellation and deadline expiry into distinc
 and rejects a stream that ends without a terminal update as an invalid response. It permits one
 retry only for unavailable, rate-limited, or transport failures that emitted no text; it never
 retries exposed partial text, authentication, invalid responses, provider rejection, cancellation,
-or timeout. No provider adapter, call, logging, credential access, or intention execution exists.
+or timeout. No runtime composition, provider logging, credential storage, or intention execution
+exists.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
@@ -755,6 +756,24 @@ and intentions per commitment are bounded independently of the Domain response. 
 not retain provider DTOs or error
 bodies, execute intentions, or call a provider. Object existence and current immediate-action
 eligibility are enforced separately by the Application validation gate.
+
+The Infrastructure-only OpenAI boundary serializes a stateless Responses request with
+`store:false`, streaming enabled, and a strict closed JSON schema matching that decoder. Trusted
+bounded context is a developer message while the exact player utterance remains a separate
+untrusted user message. A strict UTF-8 server-sent-event reader accepts LF or CRLF terminated
+frames, complete comment heartbeats, optional event names, and repeated data lines while bounding
+line length, line count, frame count, document count, and joined document length. Malformed,
+truncated, excessive, or NUL-containing streams return no partial provider content.
+
+`OpenAiCharacterModel` implements the provider-neutral model seam over a caller-owned `HttpClient`,
+model name, and `IOpenAiCredentialSource`. It posts only to the official Responses endpoint,
+requests `text/event-stream`, applies each complete framed semantic document, and yields one
+provider-neutral terminal update. Credentials exist only on the transient request authorization
+header; unsuccessful response bodies are never read. HTTP authentication, rate-limit, transient
+service, request-rejection, and transport outcomes map to bounded codes without provider details.
+No concrete credential store, provider/model settings UI, connection test, usage or latency
+logging, runtime scene composition, live call proof, partial display stream, or generated-intention
+execution exists.
 
 ## Location model boundaries
 

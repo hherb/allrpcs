@@ -30,17 +30,7 @@ public static class OpenAiCharacterModelRequestSerializer
         string modelName)
     {
         ArgumentNullException.ThrowIfNull(request);
-        ArgumentNullException.ThrowIfNull(modelName);
-
-        if (string.IsNullOrWhiteSpace(modelName)
-            || modelName.Length > MaximumModelNameLength
-            || modelName.Any(character => char.IsWhiteSpace(character) || char.IsControl(character)))
-        {
-            throw new ArgumentException(
-                $"An OpenAI model name must contain 1 to {MaximumModelNameLength} "
-                    + "non-whitespace characters.",
-                nameof(modelName));
-        }
+        ValidateModelName(modelName);
 
         using MemoryStream stream = new();
         using (Utf8JsonWriter writer = new(stream))
@@ -66,6 +56,20 @@ public static class OpenAiCharacterModelRequestSerializer
         }
 
         return Encoding.UTF8.GetString(stream.ToArray());
+    }
+
+    internal static void ValidateModelName(string modelName)
+    {
+        ArgumentNullException.ThrowIfNull(modelName);
+        if (string.IsNullOrWhiteSpace(modelName)
+            || modelName.Length > MaximumModelNameLength
+            || modelName.Any(character => char.IsWhiteSpace(character) || char.IsControl(character)))
+        {
+            throw new ArgumentException(
+                $"An OpenAI model name must contain 1 to {MaximumModelNameLength} "
+                    + "non-whitespace characters.",
+                nameof(modelName));
+        }
     }
 
     private static void WriteInput(
