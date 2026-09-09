@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #162 at `69ada0d`. The branch
-`codex/phase-4-streaming-flow` advances Phase 4 through Phase 4f5.
+`codex/phase-4-streaming-flow` is published as draft PR #163 and advances Phase 4 through Phase 4f5.
 
 - Phase 4e3 adds a scene-owned one-shot `CharacterModelStreamController`, initialized from an
   explicit empty immutable snapshot and accepting exact updates only through the existing
