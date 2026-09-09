@@ -3,7 +3,8 @@
 ## Current state
 
 `main` contains merged PR #157 at `5d78e3f`. The branch
-`codex/phase-4-affordance-projection` advances Phase 4 through Phase 4d2:
+`codex/phase-4-affordance-projection` is published as draft PR #158 and advances Phase 4 through
+Phase 4d2:
 
 - Phase 4c6 projects the exact `CharacterIntentionAffordanceSnapshot` into fresh bounded model
   context entries and makes `CharacterModelContextAssembler` accept that same validation snapshot.
@@ -46,7 +47,9 @@ smokes, and the bounded graphical launch.
 
 The restricted sandbox still reproduces the known .NET IPC/VSTest denial; identical host-local
 commands pass. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows,
-and treat zero-step hosted failures as account infrastructure rather than test results.
+and treat zero-step hosted failures as account infrastructure rather than test results. Draft PR
+#158 is open and mergeable. All five jobs in hosted run
+[`34306867890`][hosted-budget-run] failed with empty step lists without executing repository code.
 
 ## Exact next bounded slice
 
@@ -70,3 +73,4 @@ Acceptance boundary:
 
 [openai-streaming]: https://developers.openai.com/api/docs/guides/streaming-responses
 [openai-structured-output]: https://developers.openai.com/api/docs/guides/structured-outputs
+[hosted-budget-run]: https://github.com/hherb/allrpcs/actions/runs/34306867890
