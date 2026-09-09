@@ -145,7 +145,7 @@ Acceptance:
 ## Phase 4 — First live LLM character
 
 - [x] Define `ICharacterModel` and streaming, cancellation, timeout, and error contracts.
-- [ ] Build a context assembler that includes only the character's filtered perception,
+- [x] Build a context assembler that includes only the character's filtered perception,
   relevant knowledge, goals, memories, recent speech, and currently valid affordances.
 - [x] Mark player dialogue as untrusted in-world content rather than runtime instructions.
 - [ ] Implement the OpenAI adapter.
