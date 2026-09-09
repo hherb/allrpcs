@@ -148,6 +148,9 @@ Acceptance:
 - [x] Build a context assembler that includes only the character's filtered perception,
   relevant knowledge, goals, memories, recent speech, and currently valid affordances.
 - [x] Mark player dialogue as untrusted in-world content rather than runtime instructions.
+- [x] Author a stable temporary LLM healer and exact filtered provider-neutral generation input.
+- [x] Prove a credential-free unavailable model cancels its opt-in pending turn without fabricated
+  dialogue or stopping routine movement.
 - [ ] Implement the OpenAI adapter.
 - [ ] Implement the Anthropic adapter.
 - [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
