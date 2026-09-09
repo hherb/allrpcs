@@ -159,6 +159,8 @@ Acceptance:
   fallback, or authoritative mutation.
 - [x] Cancel one waiting caller-supplied model through ordinary player input while preserving only
   its already-accepted presentation text.
+- [x] Prove hidden safe retry, terminal provider failure, the real scene timeout, malformed stream
+  termination, and caller-composed model replacement through the ordinary healer path.
 - [ ] Implement the OpenAI adapter.
 - [ ] Implement the Anthropic adapter.
 - [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
@@ -169,6 +171,10 @@ Acceptance:
   validated response at successful model-stream termination.
 - [x] Serialize a stateless strict-schema OpenAI request, parse bounded SSE frames, and expose a
   caller-composed authenticated HTTP adapter that fails closed without exposing partial JSON.
+- [x] Serialize strict-schema Anthropic Messages requests, parse bounded SSE event lifecycles, and
+  expose a caller-composed authenticated HTTP adapter with redacted terminal usage diagnostics.
+- [x] Serialize a stateless strict-schema native Ollama chat request without yet adding loopback
+  transport, NDJSON completion, model inspection, or runtime construction.
 - [x] Support response cancellation and a visible timeout state.
 - [x] Stream display text without executing partial intentions.
 - [x] Add bounded provider and model settings with a redacted OpenAI connection test.
