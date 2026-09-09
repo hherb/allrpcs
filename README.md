@@ -698,10 +698,17 @@ provider calls, logging, credentials, response validation, or execution of gener
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
 separate filtered perception, relevant knowledge, goals, memories, recent speech, valid affordances,
-and untrusted player dialogue. The initial assembler retains already-filtered supplied entries and
-then appends exactly one fresh untrusted-player-dialogue entry retaining the turn request's exact
-text. Generation requests reject missing, duplicate, changed, or merely value-equal replacement
-player text. The assembler does not yet derive any filtered entry from authoritative game state.
+and untrusted player dialogue. The assembler retains already-filtered supplied entries and then
+appends fresh entries for the exact responding character's authored goals, recent local speech,
+and exactly one untrusted player dialogue entry. Goal projection preserves exact authored
+description text and order without exposing goal keys or other character state. Recent-speech
+projection preserves only exact utterance text from supplied dialogue events the character spoke
+or was recorded as hearing; unrelated dialogue is omitted. The assembler rejects a mismatched
+character and caller-supplied goal, recent-speech, or player-dialogue entries so those kinds cannot
+be spoofed through its already-filtered input. Generation requests reject missing, duplicate,
+changed, or merely value-equal replacement player text. The assembler does not yet derive
+perception, knowledge, memories, or affordances from authoritative game state, define a retained
+conversation store or window, or call a provider.
 
 ## Location model boundaries
 
