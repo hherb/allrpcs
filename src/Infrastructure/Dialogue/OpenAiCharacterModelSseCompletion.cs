@@ -16,6 +16,22 @@ public static class OpenAiCharacterModelSseCompletion
         Stream stream,
         CancellationToken cancellationToken = default)
     {
+        OpenAiCharacterModelSseResult result = await CompleteWithUsageAsync(
+                request,
+                stream,
+                cancellationToken)
+            .ConfigureAwait(false);
+        return result.Termination;
+    }
+
+    /// <summary>
+    /// Reads and applies complete semantic events while retaining only bounded terminal usage.
+    /// </summary>
+    public static async Task<OpenAiCharacterModelSseResult> CompleteWithUsageAsync(
+        CharacterTurnRequest request,
+        Stream stream,
+        CancellationToken cancellationToken = default)
+    {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(stream);
 
@@ -27,11 +43,11 @@ public static class OpenAiCharacterModelSseCompletion
         }
         catch (InvalidDataException)
         {
-            return Failure(CharacterModelFailureCode.InvalidResponse);
+            return Result(Failure(CharacterModelFailureCode.InvalidResponse));
         }
         catch (IOException)
         {
-            return Failure(CharacterModelFailureCode.Transport);
+            return Result(Failure(CharacterModelFailureCode.Transport));
         }
 
         OpenAiCharacterModelStreamAccumulator accumulator = new(request);
@@ -40,13 +56,17 @@ public static class OpenAiCharacterModelSseCompletion
         {
             if (termination is not null)
             {
-                return Failure(CharacterModelFailureCode.InvalidResponse);
+                return Result(Failure(CharacterModelFailureCode.InvalidResponse));
             }
 
             termination = accumulator.Apply(document);
         }
 
-        return termination ?? Failure(CharacterModelFailureCode.InvalidResponse);
+        return new OpenAiCharacterModelSseResult(
+            termination ?? Failure(CharacterModelFailureCode.InvalidResponse),
+            accumulator.InputTokenCount,
+            accumulator.OutputTokenCount,
+            accumulator.TotalTokenCount);
     }
 
     private static CharacterModelStreamTermination Failure(CharacterModelFailureCode code) =>
@@ -54,4 +74,7 @@ public static class OpenAiCharacterModelSseCompletion
             CharacterModelStreamTerminationStatus.Failed,
             null,
             new CharacterModelFailure(code));
+
+    private static OpenAiCharacterModelSseResult Result(
+        CharacterModelStreamTermination termination) => new(termination, null, null, null);
 }

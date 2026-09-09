@@ -39,6 +39,68 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
     }
 
     [Fact]
+    public void RetainsOnlyBoundedCountsFromCompletedUsage()
+    {
+        OpenAiCharacterModelStreamAccumulator accumulator = CompletedAccumulator();
+
+        CharacterModelStreamTermination? completed = accumulator.Apply(
+            CompletedWithUsage(11, 7, 18, "secret-response-id"));
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, completed?.Status);
+        Assert.Equal(11, accumulator.InputTokenCount);
+        Assert.Equal(7, accumulator.OutputTokenCount);
+        Assert.Equal(18, accumulator.TotalTokenCount);
+        Assert.DoesNotContain(
+            "secret-response-id",
+            accumulator.ToString(),
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void AcceptsAbsentOrNullCompletedUsageAsUnknown()
+    {
+        OpenAiCharacterModelStreamAccumulator absent = CompletedAccumulator();
+        OpenAiCharacterModelStreamAccumulator nullUsage = CompletedAccumulator();
+
+        CharacterModelStreamTermination? absentResult = absent.Apply(
+            "{\"type\":\"response.completed\",\"response\":{}}");
+        CharacterModelStreamTermination? nullResult = nullUsage.Apply(
+            "{\"type\":\"response.completed\",\"response\":{\"usage\":null}}");
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, absentResult?.Status);
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, nullResult?.Status);
+        Assert.Null(absent.InputTokenCount);
+        Assert.Null(absent.OutputTokenCount);
+        Assert.Null(absent.TotalTokenCount);
+        Assert.Null(nullUsage.InputTokenCount);
+        Assert.Null(nullUsage.OutputTokenCount);
+        Assert.Null(nullUsage.TotalTokenCount);
+    }
+
+    [Theory]
+    [InlineData("{}")]
+    [InlineData("{\"input_tokens\":1,\"output_tokens\":2}")]
+    [InlineData("{\"input_tokens\":1,\"output_tokens\":2,\"total_tokens\":4}")]
+    [InlineData("{\"input_tokens\":-1,\"output_tokens\":0,\"total_tokens\":-1}")]
+    [InlineData("{\"input_tokens\":1.5,\"output_tokens\":2,\"total_tokens\":3.5}")]
+    [InlineData("{\"input_tokens\":1000000,\"output_tokens\":1,\"total_tokens\":1000001}")]
+    [InlineData("{\"input_tokens\":1,\"input_tokens\":1,\"output_tokens\":2,\"total_tokens\":3}")]
+    public void RejectsMalformedInconsistentOrExcessiveCompletedUsage(string usage)
+    {
+        OpenAiCharacterModelStreamAccumulator accumulator = CompletedAccumulator();
+        string completed = "{\"type\":\"response.completed\",\"response\":{\"usage\":"
+            + usage
+            + "}}";
+
+        CharacterModelStreamTermination? result = accumulator.Apply(completed);
+
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+        Assert.Null(accumulator.InputTokenCount);
+        Assert.Null(accumulator.OutputTokenCount);
+        Assert.Null(accumulator.TotalTokenCount);
+    }
+
+    [Fact]
     public void RejectsCompletionWithoutVerifiedDoneText()
     {
         OpenAiCharacterModelStreamAccumulator accumulator = new(CreateRequest());
@@ -127,6 +189,34 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
             type = "response.output_text.done",
             text = value,
         });
+
+    private static string CompletedWithUsage(
+        int inputTokenCount,
+        int outputTokenCount,
+        int totalTokenCount,
+        string responseId) =>
+        System.Text.Json.JsonSerializer.Serialize(new
+        {
+            type = "response.completed",
+            response = new
+            {
+                id = responseId,
+                usage = new
+                {
+                    input_tokens = inputTokenCount,
+                    output_tokens = outputTokenCount,
+                    total_tokens = totalTokenCount,
+                },
+            },
+        });
+
+    private static OpenAiCharacterModelStreamAccumulator CompletedAccumulator()
+    {
+        OpenAiCharacterModelStreamAccumulator accumulator = new(CreateRequest());
+        Assert.Null(accumulator.Apply(Delta(FirstDocumentPart + SecondDocumentPart)));
+        Assert.Null(accumulator.Apply(Done(FirstDocumentPart + SecondDocumentPart)));
+        return accumulator;
+    }
 
     private static CharacterTurnRequest CreateRequest()
     {

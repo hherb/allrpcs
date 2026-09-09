@@ -33,6 +33,38 @@ public sealed class OpenAiCharacterModelSseCompletionTests
         Assert.True(stream.CanRead);
     }
 
+    [Fact]
+    public async Task ReturnsOnlyTerminationAndBoundedUsageFromCompletedEvent()
+    {
+        CharacterTurnRequest request = CreateRequest();
+        string events = Frame(new { type = "response.output_text.delta", delta = ResponseDocument })
+            + Frame(new { type = "response.output_text.done", text = ResponseDocument })
+            + Frame(new
+            {
+                type = "response.completed",
+                response = new
+                {
+                    id = "secret-response-id",
+                    usage = new
+                    {
+                        input_tokens = 11,
+                        output_tokens = 7,
+                        total_tokens = 18,
+                    },
+                },
+            });
+        using MemoryStream stream = Utf8Stream(events);
+
+        OpenAiCharacterModelSseResult result =
+            await OpenAiCharacterModelSseCompletion.CompleteWithUsageAsync(request, stream);
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result.Termination.Status);
+        Assert.Equal(11, result.InputTokenCount);
+        Assert.Equal(7, result.OutputTokenCount);
+        Assert.Equal(18, result.TotalTokenCount);
+        Assert.DoesNotContain("secret-response-id", result.ToString(), StringComparison.Ordinal);
+    }
+
     [Theory]
     [InlineData("response.failed")]
     [InlineData("response.refusal.done")]

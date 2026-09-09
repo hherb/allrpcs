@@ -767,11 +767,20 @@ truncated, excessive, or NUL-containing streams return no partial provider conte
 
 `OpenAiCharacterModel` implements the provider-neutral model seam over a caller-owned `HttpClient`,
 immutable provider/model settings, and `IOpenAiCredentialSource`. It posts only to the official
-Responses endpoint,
-requests `text/event-stream`, applies each complete framed semantic document, and yields one
-provider-neutral terminal update. Credentials exist only on the transient request authorization
-header; unsuccessful response bodies are never read. HTTP authentication, rate-limit, transient
-service, request-rejection, and transport outcomes map to bounded codes without provider details.
+Responses endpoint, requests `text/event-stream`, applies each complete framed semantic document,
+and yields one provider-neutral terminal update. Credentials exist only on the transient request
+authorization header; unsuccessful response bodies are never read. HTTP authentication,
+rate-limit, transient service, request-rejection, and transport outcomes map to bounded codes
+without provider details.
+
+The Application diagnostic boundary retains only a canonical provider, terminal status or bounded
+failure code, elapsed duration, and wholly present or absent input/output/total token counts. Counts
+must be non-negative, additive, and no greater than one million; elapsed time is bounded to one
+hour. A caller-owned cancellation-aware sink is isolated by a best-effort recorder so its failure
+cannot replace the generation result. OpenAI terminal usage is read only from the completed event,
+with all response metadata discarded. Optional adapter instrumentation uses caller-owned monotonic
+time and the sink for completed or failed provider attempts; absent usage remains unknown and
+malformed usage fails closed without exposing partial provider content.
 
 The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
 provider instance and one bounded model name; it does not claim that the corresponding adapter is
@@ -786,8 +795,9 @@ boundary, never uses a shell, receives save bytes only through redirected standa
 and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
 saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
 touch a user's real keychain. No Windows Credential Manager or Linux Secret Service adapter,
-settings UI or persistence, usage or latency logging, runtime scene composition, live call proof,
-partial display stream, or generated-intention execution exists.
+settings UI or persistence, diagnostic logging/export, controller cancellation/timeout diagnostic,
+runtime scene composition, live call proof, partial display stream, or generated-intention
+execution exists.
 
 ## Location model boundaries
 
