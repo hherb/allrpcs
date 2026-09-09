@@ -3,7 +3,8 @@
 ## Current state
 
 `main` contains merged PR #164 at `76fbdd1`. The current branch is
-`codex/phase-4-offline-ordinary-flow` and advances Phase 4 through Phase 4g4.
+`codex/phase-4-offline-ordinary-flow`, published as draft PR #165, and advances Phase 4 through
+Phase 4g4. The reviewed implementation commit is `20785d6`.
 
 - Phase 4g3 routes each ordinary heard healer request through the authored character's canonical
   LLM assignment, `TemporaryCharacterModelGenerationInputSource`, the existing generation flow,
