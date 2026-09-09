@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3]
+[gd_scene load_steps=99 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -101,8 +101,11 @@
 [ext_resource type="Script" path="res://TemporaryHealerCharacterSource.cs" id="99_healer_character_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelGenerationInputSource.cs" id="100_model_input_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelGenerationInputSourceSmokeCheck.cs" id="101_model_input_check"]
-[ext_resource type="Script" path="res://TemporaryOfflineCharacterModelSource.cs" id="102_offline_model_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelSource.cs" id="102_model_source"]
 [ext_resource type="Script" path="res://TemporaryOfflineCharacterModelSourceSmokeCheck.cs" id="103_offline_model_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelSourceSmokeCheck.cs" id="104_scripted_model_check"]
+[ext_resource type="Script" path="res://CharacterModelInvalidResponseFlowSmokeCheck.cs" id="105_invalid_model_check"]
+[ext_resource type="Script" path="res://CharacterModelOrdinaryCancellationSmokeCheck.cs" id="106_ordinary_model_cancel_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -457,8 +460,8 @@ script = ExtResource("99_healer_character_source")
 [node name="TemporaryCharacterModelGenerationInputSource" type="Node" parent="."]
 script = ExtResource("100_model_input_source")
 
-[node name="TemporaryOfflineCharacterModelSource" type="Node" parent="."]
-script = ExtResource("102_offline_model_source")
+[node name="TemporaryCharacterModelSource" type="Node" parent="."]
+script = ExtResource("102_model_source")
 
 [node name="DialogueInputController" type="Node" parent="."]
 script = ExtResource("65_dialogue_input_controller")
@@ -624,6 +627,15 @@ script = ExtResource("101_model_input_check")
 
 [node name="TemporaryOfflineCharacterModelSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("103_offline_model_check")
+
+[node name="TemporaryCharacterModelSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("104_scripted_model_check")
+
+[node name="CharacterModelInvalidResponseFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("105_invalid_model_check")
+
+[node name="CharacterModelOrdinaryCancellationSmokeCheck" type="Node" parent="."]
+script = ExtResource("106_ordinary_model_cancel_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")

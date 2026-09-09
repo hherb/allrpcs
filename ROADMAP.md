@@ -151,6 +151,14 @@ Acceptance:
 - [x] Author a stable temporary LLM healer and exact filtered provider-neutral generation input.
 - [x] Route ordinary healer dialogue through a reusable credential-free unavailable model flow that
   cancels each exact pending turn without fabricated dialogue or stopping routine movement.
+- [x] Supply one exact caller-composed model to the next ordinary healer generation while retaining
+  the stable credential-free unavailable model as the default for later requests.
+- [x] Prove one ordinary model-backed target-free `Wait` response speaks and completes exactly once
+  without physical or hidden-state authority.
+- [x] Reject one hallucinated ordinary response target after prompt-shaped dialogue without speech,
+  fallback, or authoritative mutation.
+- [x] Cancel one waiting caller-supplied model through ordinary player input while preserving only
+  its already-accepted presentation text.
 - [ ] Implement the OpenAI adapter.
 - [ ] Implement the Anthropic adapter.
 - [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
