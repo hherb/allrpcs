@@ -110,5 +110,12 @@ public sealed class CharacterModelStreamSnapshotTests
 
     private static CharacterModelStreamTermination Completed() => new(
         CharacterModelStreamTerminationStatus.Completed,
+        new CharacterTurnResponse(
+            CharacterModelPlayerDialogueContextProjectionTests.CreateRequest(),
+            CharacterTurnDisposition.Accept,
+            null,
+            new CharacterIntention(CharacterIntentionType.Wait, null),
+            [],
+            []),
         null);
 }

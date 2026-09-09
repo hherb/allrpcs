@@ -154,6 +154,10 @@ Acceptance:
 - [ ] Prevent provider-specific request or response objects from entering domain state.
 - [x] Validate all structured output and reject unknown objects, destinations, and actions.
 - [x] Retry only safe, idempotent generation failures.
+- [x] Derive provider-visible affordances from the exact validation snapshot and require a complete
+  validated response at successful model-stream termination.
+- [x] Serialize a stateless strict-schema OpenAI request and fail closed while accumulating its
+  bounded semantic structured-output events without exposing partial JSON.
 - [ ] Support response cancellation and a visible timeout state.
 - [ ] Stream display text without executing partial intentions.
 - [ ] Add provider and model settings with connection tests.

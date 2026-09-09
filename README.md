@@ -27,6 +27,16 @@ using an explicitly supplied act type and starts one awaiting-response activity.
 credential-free temporary source can select the existing deterministic response for that exact
 request without installing or presenting it.
 
+The first live-model boundary remains provider-neutral through Application: one exact affordance
+snapshot now produces the bounded context entries shown to a model and validates the completed
+response returned for that turn. Successful stream termination must retain that exact complete
+response; unknown objects, unavailable immediate intentions, malformed structure, request
+mismatches, cancellation, timeouts, and failures cannot carry one. Infrastructure contains a
+credential-free OpenAI Responses request serializer using stateless strict structured output and a
+bounded semantic-event accumulator. Structured JSON deltas are buffered until completion and are
+never presented or executed as partial intentions. HTTP transport, SSE framing, credentials,
+settings, live calls, Godot wiring, and provider-specific state remain later work.
+
 ## Prerequisites
 
 - A 64-bit .NET 8 SDK.

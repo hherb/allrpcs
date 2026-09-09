@@ -13,7 +13,7 @@ public static class CharacterModelContextAssembler
 {
     /// <summary>
     /// Returns a generation request containing authoritative perception, knowledge and goals,
-    /// supplied memories, recent local speech, supplied valid affordances, and exact untrusted
+    /// supplied memories, recent local speech, exact validation affordances, and exact untrusted
     /// player dialogue in roadmap order.
     /// </summary>
     public static CharacterModelGenerationRequest Assemble(
@@ -24,7 +24,7 @@ public static class CharacterModelContextAssembler
         KnowledgeSnapshot knowledge,
         IEnumerable<CharacterModelContextEntry> memoryEntries,
         IEnumerable<DialogueEvent> recentDialogueEvents,
-        IEnumerable<CharacterModelContextEntry> validAffordanceEntries)
+        CharacterIntentionAffordanceSnapshot validAffordances)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(character);
@@ -33,7 +33,7 @@ public static class CharacterModelContextAssembler
         ArgumentNullException.ThrowIfNull(knowledge);
         ArgumentNullException.ThrowIfNull(memoryEntries);
         ArgumentNullException.ThrowIfNull(recentDialogueEvents);
-        ArgumentNullException.ThrowIfNull(validAffordanceEntries);
+        ArgumentNullException.ThrowIfNull(validAffordances);
 
         if (character.Identity.Id != request.RespondingCharacterId)
         {
@@ -46,11 +46,6 @@ public static class CharacterModelContextAssembler
             memoryEntries,
             CharacterModelContextEntryKind.Memory,
             nameof(memoryEntries));
-        List<CharacterModelContextEntry> validAffordances = RetainExactKind(
-            validAffordanceEntries,
-            CharacterModelContextEntryKind.ValidAffordance,
-            nameof(validAffordanceEntries));
-
         List<CharacterModelContextEntry> entries = new();
         entries.AddRange(CharacterModelPerceptionContextProjection.Project(
             character,
@@ -62,7 +57,7 @@ public static class CharacterModelContextAssembler
         entries.AddRange(CharacterModelRecentSpeechContextProjection.Project(
             character,
             recentDialogueEvents));
-        entries.AddRange(validAffordances);
+        entries.AddRange(CharacterModelValidAffordanceContextProjection.Project(validAffordances));
         entries.Add(CharacterModelPlayerDialogueContextProjection.Project(request));
         CharacterModelContextSnapshot context = new(entries);
 

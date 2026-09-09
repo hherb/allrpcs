@@ -1,6 +1,8 @@
 using System.Runtime.CompilerServices;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Knowledge;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
@@ -12,13 +14,12 @@ public sealed class CharacterModelGenerationControllerTests
     [Fact]
     public async Task RetainsExactCompletedStreamUpdates()
     {
-        CharacterModelTextDelta text = new("Complete response.");
-        CharacterModelStreamTermination completed = Terminal(
-            CharacterModelStreamTerminationStatus.Completed);
-        StubModel model = new(Updates(text, completed));
         CharacterModelGenerationRequest request = Request();
+        CharacterModelTextDelta text = new("Complete response.");
+        CharacterModelStreamTermination completed = Completed(request);
+        StubModel model = new(Updates(text, completed));
 
-        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+        CharacterModelStreamSnapshot result = await GenerateAsync(
             model,
             request,
             TimeSpan.FromSeconds(1),
@@ -35,15 +36,15 @@ public sealed class CharacterModelGenerationControllerTests
     [Fact]
     public async Task RetriesOneTransientTextFreeFailureWithoutExposingIt()
     {
+        CharacterModelGenerationRequest request = Request();
         CharacterModelStreamTermination failed = Failed(CharacterModelFailureCode.Transport);
         CharacterModelTextDelta text = new("Retry succeeded.");
-        CharacterModelStreamTermination completed = Terminal(
-            CharacterModelStreamTerminationStatus.Completed);
+        CharacterModelStreamTermination completed = Completed(request);
         StubModel model = new(Updates(failed), Updates(text, completed));
 
-        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+        CharacterModelStreamSnapshot result = await GenerateAsync(
             model,
-            Request(),
+            request,
             TimeSpan.FromSeconds(1),
             CancellationToken.None);
 
@@ -62,7 +63,7 @@ public sealed class CharacterModelGenerationControllerTests
         CharacterModelStreamTermination failed = Failed(CharacterModelFailureCode.Transport);
         StubModel model = new(Updates(text, failed));
 
-        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+        CharacterModelStreamSnapshot result = await GenerateAsync(
             model,
             Request(),
             TimeSpan.FromSeconds(1),
@@ -81,7 +82,7 @@ public sealed class CharacterModelGenerationControllerTests
         CharacterModelTextDelta text = new("Incomplete response.");
         StubModel model = new(Updates(text));
 
-        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+        CharacterModelStreamSnapshot result = await GenerateAsync(
             model,
             Request(),
             TimeSpan.FromSeconds(1),
@@ -95,11 +96,141 @@ public sealed class CharacterModelGenerationControllerTests
     }
 
     [Fact]
+    public async Task RejectsACompletedResponseForADifferentRequestWithoutExposingIt()
+    {
+        CharacterModelGenerationRequest request = Request();
+        CharacterModelGenerationRequest differentRequest = Request();
+        CharacterModelTextDelta text = new("Visible response text.");
+        CharacterModelStreamTermination mismatched = Completed(differentRequest);
+        StubModel model = new(Updates(text, mismatched));
+
+        CharacterModelStreamSnapshot result = await GenerateAsync(
+            model,
+            request,
+            TimeSpan.FromSeconds(1),
+            CancellationToken.None);
+
+        Assert.Same(text, result.Updates[0]);
+        CharacterModelStreamTermination termination =
+            Assert.IsType<CharacterModelStreamTermination>(result.Updates[1]);
+        Assert.Equal(CharacterModelStreamTerminationStatus.Failed, termination.Status);
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, termination.Failure?.Code);
+        Assert.Null(termination.Response);
+        Assert.DoesNotContain(mismatched, result.Updates);
+        Assert.NotSame(request.TurnRequest, differentRequest.TurnRequest);
+    }
+
+    [Fact]
+    public async Task RejectsAnUnknownCompletedIntentionWithoutChangingSnapshots()
+    {
+        CharacterModelGenerationRequest request = Request();
+        CharacterModelStreamTermination completed = Completed(
+            request,
+            new CharacterIntention(
+                CharacterIntentionType.ExamineObject,
+                new ObjectId("herb-patch")));
+        StubModel model = new(Updates(completed));
+        WorldObjectSnapshot worldObjects = new([]);
+        CharacterIntentionAffordance affordance = new(
+            CharacterIntentionType.ExamineObject,
+            new ObjectId("herb-patch"));
+        CharacterIntentionAffordanceSnapshot affordances = new([affordance]);
+
+        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+            model,
+            request,
+            worldObjects,
+            affordances,
+            TimeSpan.FromSeconds(1),
+            CancellationToken.None);
+
+        CharacterModelStreamTermination termination = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(result.Updates));
+        Assert.Equal(CharacterModelStreamTerminationStatus.Failed, termination.Status);
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, termination.Failure?.Code);
+        Assert.Null(termination.Response);
+        Assert.Empty(worldObjects.Entries);
+        Assert.Same(affordance, Assert.Single(affordances.Entries));
+        Assert.DoesNotContain(completed, result.Updates);
+    }
+
+    [Fact]
+    public async Task RetainsACompletedKnownAndCurrentlyAvailableIntention()
+    {
+        CharacterModelGenerationRequest request = Request();
+        CharacterModelStreamTermination completed = Completed(
+            request,
+            new CharacterIntention(
+                CharacterIntentionType.ExamineObject,
+                new ObjectId("herb-patch")));
+        StubModel model = new(Updates(completed));
+        WorldObjectSnapshot worldObjects = new(
+            [
+                CharacterModelPerceptionContextProjectionTests.CreateWorldObject(
+                    "herb-patch",
+                    "Herb patch",
+                    "A patch of herbs."),
+            ]);
+        CharacterIntentionAffordanceSnapshot affordances = new(
+            [
+                new CharacterIntentionAffordance(
+                    CharacterIntentionType.ExamineObject,
+                    new ObjectId("herb-patch")),
+            ]);
+
+        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+            model,
+            request,
+            worldObjects,
+            affordances,
+            TimeSpan.FromSeconds(1),
+            CancellationToken.None);
+
+        CharacterModelStreamTermination resultTermination =
+            Assert.IsType<CharacterModelStreamTermination>(Assert.Single(result.Updates));
+        Assert.Same(completed, resultTermination);
+        Assert.Same(completed.Response, resultTermination.Response);
+    }
+
+    [Fact]
+    public async Task RejectsAKnownButCurrentlyUnavailableCompletedIntention()
+    {
+        CharacterModelGenerationRequest request = Request();
+        CharacterModelStreamTermination completed = Completed(
+            request,
+            new CharacterIntention(
+                CharacterIntentionType.CollectObject,
+                new ObjectId("herb-patch")));
+        StubModel model = new(Updates(completed));
+        WorldObjectSnapshot worldObjects = new(
+            [
+                CharacterModelPerceptionContextProjectionTests.CreateWorldObject(
+                    "herb-patch",
+                    "Herb patch",
+                    "A patch of herbs."),
+            ]);
+
+        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+            model,
+            request,
+            worldObjects,
+            new CharacterIntentionAffordanceSnapshot([]),
+            TimeSpan.FromSeconds(1),
+            CancellationToken.None);
+
+        CharacterModelStreamTermination termination = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(result.Updates));
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, termination.Failure?.Code);
+        Assert.Null(termination.Response);
+        Assert.DoesNotContain(completed, result.Updates);
+    }
+
+    [Fact]
     public async Task ConvertsElapsedDeadlineToTimedOut()
     {
         StubModel model = new(WaitForCancellation());
 
-        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+        CharacterModelStreamSnapshot result = await GenerateAsync(
             model,
             Request(),
             TimeSpan.FromMilliseconds(10),
@@ -118,7 +249,7 @@ public sealed class CharacterModelGenerationControllerTests
         cancellation.Cancel();
         StubModel model = new(WaitForCancellation());
 
-        CharacterModelStreamSnapshot result = await CharacterModelGenerationController.GenerateAsync(
+        CharacterModelStreamSnapshot result = await GenerateAsync(
             model,
             Request(),
             TimeSpan.FromSeconds(1),
@@ -133,21 +264,57 @@ public sealed class CharacterModelGenerationControllerTests
     [Fact]
     public async Task RejectsNullsAndNonPositiveOrInfiniteDeadline()
     {
-        StubModel model = new(Updates(Terminal(CharacterModelStreamTerminationStatus.Completed)));
         CharacterModelGenerationRequest request = Request();
+        StubModel model = new(Updates(Completed(request)));
 
         await Assert.ThrowsAsync<ArgumentNullException>(() =>
             CharacterModelGenerationController.GenerateAsync(
-                null!, request, TimeSpan.FromSeconds(1), CancellationToken.None));
+                null!,
+                request,
+                new WorldObjectSnapshot([]),
+                new CharacterIntentionAffordanceSnapshot([]),
+                TimeSpan.FromSeconds(1),
+                CancellationToken.None));
         await Assert.ThrowsAsync<ArgumentNullException>(() =>
             CharacterModelGenerationController.GenerateAsync(
-                model, null!, TimeSpan.FromSeconds(1), CancellationToken.None));
+                model,
+                null!,
+                new WorldObjectSnapshot([]),
+                new CharacterIntentionAffordanceSnapshot([]),
+                TimeSpan.FromSeconds(1),
+                CancellationToken.None));
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            CharacterModelGenerationController.GenerateAsync(
+                model,
+                request,
+                null!,
+                new CharacterIntentionAffordanceSnapshot([]),
+                TimeSpan.FromSeconds(1),
+                CancellationToken.None));
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            CharacterModelGenerationController.GenerateAsync(
+                model,
+                request,
+                new WorldObjectSnapshot([]),
+                null!,
+                TimeSpan.FromSeconds(1),
+                CancellationToken.None));
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
             CharacterModelGenerationController.GenerateAsync(
-                model, request, TimeSpan.Zero, CancellationToken.None));
+                model,
+                request,
+                new WorldObjectSnapshot([]),
+                new CharacterIntentionAffordanceSnapshot([]),
+                TimeSpan.Zero,
+                CancellationToken.None));
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
             CharacterModelGenerationController.GenerateAsync(
-                model, request, Timeout.InfiniteTimeSpan, CancellationToken.None));
+                model,
+                request,
+                new WorldObjectSnapshot([]),
+                new CharacterIntentionAffordanceSnapshot([]),
+                Timeout.InfiniteTimeSpan,
+                CancellationToken.None));
     }
 
     private static CharacterModelGenerationRequest Request()
@@ -165,18 +332,47 @@ public sealed class CharacterModelGenerationControllerTests
             knowledge,
             [],
             [],
-            []);
+            new CharacterIntentionAffordanceSnapshot([]));
         return request;
     }
 
-    private static CharacterModelStreamTermination Terminal(
-        CharacterModelStreamTerminationStatus status) =>
-        new(status, null);
+    private static CharacterModelStreamTermination Completed(
+        CharacterModelGenerationRequest request,
+        CharacterIntention? immediateIntention = null) =>
+        new(
+            CharacterModelStreamTerminationStatus.Completed,
+            Response(request.TurnRequest, immediateIntention),
+            null);
 
     private static CharacterModelStreamTermination Failed(CharacterModelFailureCode code) =>
         new(
             CharacterModelStreamTerminationStatus.Failed,
+            null,
             new CharacterModelFailure(code));
+
+    private static CharacterTurnResponse Response(
+        CharacterTurnRequest request,
+        CharacterIntention? immediateIntention = null) =>
+        new(
+            request,
+            CharacterTurnDisposition.Accept,
+            null,
+            immediateIntention ?? new CharacterIntention(CharacterIntentionType.Wait, null),
+            [],
+            []);
+
+    private static Task<CharacterModelStreamSnapshot> GenerateAsync(
+        ICharacterModel model,
+        CharacterModelGenerationRequest request,
+        TimeSpan deadline,
+        CancellationToken cancellationToken) =>
+        CharacterModelGenerationController.GenerateAsync(
+            model,
+            request,
+            new WorldObjectSnapshot([]),
+            new CharacterIntentionAffordanceSnapshot([]),
+            deadline,
+            cancellationToken);
 
     private static async IAsyncEnumerable<CharacterModelStreamUpdate> Updates(
         params CharacterModelStreamUpdate[] updates)
