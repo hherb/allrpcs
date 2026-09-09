@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 
 namespace Allrpcs.Application.Dialogue;
@@ -8,15 +9,27 @@ namespace Allrpcs.Application.Dialogue;
 public static class CharacterModelContextAssembler
 {
     /// <summary>
-    /// Returns a generation request retaining supplied filtered entries in stable order and
-    /// appending the exact player dialogue with its untrusted in-world role.
+    /// Returns a generation request retaining supplied filtered entries in stable order, then
+    /// appending the responding character's authored goals, recent local speech, and exact
+    /// untrusted player dialogue.
     /// </summary>
     public static CharacterModelGenerationRequest Assemble(
         CharacterTurnRequest request,
+        Character character,
+        IEnumerable<DialogueEvent> recentDialogueEvents,
         IEnumerable<CharacterModelContextEntry> filteredEntries)
     {
         ArgumentNullException.ThrowIfNull(request);
+        ArgumentNullException.ThrowIfNull(character);
+        ArgumentNullException.ThrowIfNull(recentDialogueEvents);
         ArgumentNullException.ThrowIfNull(filteredEntries);
+
+        if (character.Identity.Id != request.RespondingCharacterId)
+        {
+            throw new ArgumentException(
+                "The supplied character must be the request's responding character.",
+                nameof(character));
+        }
 
         List<CharacterModelContextEntry> entries = new();
         foreach (CharacterModelContextEntry entry in filteredEntries)
@@ -28,16 +41,22 @@ public static class CharacterModelContextAssembler
                     nameof(filteredEntries));
             }
 
-            if (entry.Kind == CharacterModelContextEntryKind.UntrustedPlayerDialogue)
+            if (entry.Kind is CharacterModelContextEntryKind.Goal
+                or CharacterModelContextEntryKind.RecentSpeech
+                or CharacterModelContextEntryKind.UntrustedPlayerDialogue)
             {
                 throw new ArgumentException(
-                    "The assembler alone supplies untrusted player dialogue.",
+                    "The assembler alone supplies goals, recent speech, and untrusted player dialogue.",
                     nameof(filteredEntries));
             }
 
             entries.Add(entry);
         }
 
+        entries.AddRange(CharacterModelGoalContextProjection.Project(character));
+        entries.AddRange(CharacterModelRecentSpeechContextProjection.Project(
+            character,
+            recentDialogueEvents));
         entries.Add(CharacterModelPlayerDialogueContextProjection.Project(request));
         CharacterModelContextSnapshot context = new(entries);
 
