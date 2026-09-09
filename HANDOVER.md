@@ -2,32 +2,32 @@
 
 ## Current state
 
-`main` contains merged PR #153 at `dc67a98`. The branch
-`codex/phase-4-context-assembler` advances Phase 4 through Phase 4b7:
+`main` contains merged PR #154 at `5720fe6`. The branch
+`codex/phase-4-context-perception` advances Phase 4 through Phase 4b13:
 
-- Phase 4b4 projects only one exact character's authored goal descriptions into fresh `Goal`
-  entries, retaining exact string instances and stable authored order without exposing goal keys or
-  any other character field.
-- Phase 4b5 makes the assembler derive those goals for the exact responding character, rejects a
-  mismatched character, and rejects caller-supplied `Goal` entries.
-- Phase 4b6 projects exact utterance text only from supplied recent dialogue the character spoke or
-  was recorded as hearing. Unrelated dialogue is omitted without changing the source events.
-- Phase 4b7 makes the assembler derive recent speech after goals and before the exact untrusted
-  player dialogue, and rejects caller-supplied `RecentSpeech` entries.
+- Phase 4b8-b9 project only exact identified world-object descriptions for the responding
+  character and make the assembler own that projection. Other visibility states, empty
+  descriptions, identifiers, display names, and absent objects stay hidden; inconsistent
+  authoritative inputs fail closed.
+- Phase 4b10-b11 add immutable authored `KnowledgeEntry`, `KnowledgeSnapshot`, and value-equal
+  `KnowledgeLookup` contracts without adding truth, belief, confidence, provenance, or retrieval
+  semantics.
+- Phase 4b12-b13 project only authored knowledge referenced by the exact character in character
+  order and make the assembler own that projection. Unreferenced content stays hidden and missing
+  references fail closed.
 
-The Phase 4 context-assembler roadmap item remains open. Filtered perception, relevant knowledge,
-memories, and valid affordances are still caller-supplied typed entries; no provider adapter, call,
-deadline executor, retry, credential, provider logging, structured-output validation, Godot wiring,
-partial intention execution, persistence, or gameplay/world-state mutation has been added.
+The Phase 4 context-assembler roadmap item remains open. Only memory and valid-affordance entries
+remain caller-supplied. No memory store/window, affordance eligibility source, provider adapter or
+call, deadline executor, retry, credential, provider logging, structured-output validation, Godot
+wiring, partial intention execution, persistence, or gameplay/world-state mutation has been added.
 
 ## Validation
 
-Each production boundary began with an expected focused compile failure. Focused host-local tests
-for goal projection, recent-speech projection, and assembler ownership pass. The complete
-host-local `./scripts/quality.sh` passes workflow and formatting validation, a zero-warning build,
-1,381 Domain tests, 207 Application tests, 23 Infrastructure tests, eight architecture tests, the
-five-evidence representative scenario validator, all 51 opt-in Godot smokes, and the bounded
-graphical launch.
+Each new boundary began with an expected focused compile failure. Focused host-local knowledge,
+perception, projection, and assembler tests pass. The complete host-local `./scripts/quality.sh`
+passes workflow and formatting validation, a zero-warning build, 1,388 Domain tests, 214
+Application tests, 23 Infrastructure tests, eight architecture tests, the five-evidence
+representative scenario validator, all 51 opt-in Godot smokes, and the bounded graphical launch.
 
 The restricted sandbox reproduces the known .NET IPC/VSTest denial; identical host-local commands
 pass. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows, and treat
@@ -35,21 +35,20 @@ zero-step hosted failures as account infrastructure rather than test results.
 
 ## Exact next bounded slice
 
-Take **Phase 4b8: project the currently proven identified perception boundary into model context**.
+Take **Phase 4b14: close the assembler's remaining generic filtered-entry input**.
 
 Acceptance boundary:
 
-1. Add one pure Application projection from an exact responding `Character`, its exact
-   `CharacterPerceptionSnapshot`, and an authoritative `WorldObjectSnapshot` to fresh
-   `FilteredPerception` entries.
-2. Require the perception snapshot's character identifier to match the exact character. In stable
-   perception order, project only entries at exactly `VisibilityState.Identified` whose exact
-   value-equal world object exists and has non-empty authored description text.
-3. Retain the exact `WorldObject.Description.Text` string without formatting or disclosing object
-   identifiers/display names. Fail closed on a missing identified object; prove exact text-instance
-   retention, value-equal lookup, order, exclusions for every other visibility singleton, empty
-   descriptions, nulls, mismatches, unchanged inputs, and no hidden-object leakage.
-4. Do not yet combine perception with the assembler, infer semantics for later visibility states,
-   project knowledge/memory/affordances, add storage or conversation-window policy, call a provider,
-   wire Godot, validate/execute intentions, add retries/timeouts/credentials/logging, persist, or
-   mutate gameplay state.
+1. Replace `filteredEntries` with separate memory-entry and valid-affordance-entry inputs; accept
+   only exact `Memory` and `ValidAffordance` kinds respectively and reject null collections, null
+   entries, and every mismatched kind.
+2. Assemble in roadmap order: derived perception, derived knowledge, derived goals, supplied
+   memories, derived recent speech, supplied valid affordances, then exact untrusted player
+   dialogue. Retain each accepted supplied entry instance and its stable source order.
+3. Prove empty inputs, independent source copying, spoofed-kind rejection, bounded aggregate
+   failure without input mutation, and the existing character/perception/knowledge fail-closed
+   behavior.
+4. Do not yet define memory storage or a conversation window, claim that structural intention
+   validation proves current affordance eligibility, derive affordances, call a provider, wire
+   Godot, validate/execute generated intentions, add retries/timeouts/credentials/logging, persist,
+   or mutate gameplay state.

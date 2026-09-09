@@ -519,9 +519,12 @@ transfer, visibility, use, crafting, consumption, or executable policy.
 
 `CharacterKnowledge` contains only a character's current ordered references to existing
 `KnowledgeId` values. It explicitly permits an empty sequence, copies caller input, exposes only
-a read-only collection, and rejects null or duplicate identifiers. It does not define knowledge
-content, world truth, evidence, claims, beliefs, confidence, provenance, discovery,
-reinterpretation, visibility, perception, or executable policy.
+a read-only collection, and rejects null or duplicate identifiers. Separate `KnowledgeEntry`
+values associate an exact existing identifier with nonblank authored text bounded to 4,000 UTF-16
+code units. `KnowledgeSnapshot` retains those entries in stable duplicate-free identifier order,
+and `KnowledgeLookup` returns the exact value-equal match. These contracts do not classify content
+as world truth, evidence, a claim, or a belief, and do not define confidence, provenance,
+discovery, reinterpretation, visibility, perception, relevance ranking, or executable policy.
 
 `CharacterBelief` is an authored value with a canonical key and a nonblank statement bounded to
 500 UTF-16 code units. Valid statements preserve whitespace, casing, line endings, and Unicode
@@ -698,17 +701,21 @@ provider calls, logging, credentials, response validation, or execution of gener
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
 separate filtered perception, relevant knowledge, goals, memories, recent speech, valid affordances,
-and untrusted player dialogue. The assembler retains already-filtered supplied entries and then
-appends fresh entries for the exact responding character's authored goals, recent local speech,
-and exactly one untrusted player dialogue entry. Goal projection preserves exact authored
-description text and order without exposing goal keys or other character state. Recent-speech
-projection preserves only exact utterance text from supplied dialogue events the character spoke
-or was recorded as hearing; unrelated dialogue is omitted. The assembler rejects a mismatched
-character and caller-supplied goal, recent-speech, or player-dialogue entries so those kinds cannot
-be spoofed through its already-filtered input. Generation requests reject missing, duplicate,
-changed, or merely value-equal replacement player text. The assembler does not yet derive
-perception, knowledge, memories, or affordances from authoritative game state, define a retained
-conversation store or window, or call a provider.
+and untrusted player dialogue. The assembler first derives identified perception and the exact
+responding character's current authored knowledge, then retains supplied memory and affordance
+entries before appending fresh goals, recent local speech, and exactly one untrusted player dialogue
+entry. Perception projection exposes only non-empty authored descriptions for exact
+`VisibilityState.Identified` entries backed by an authoritative world object; all other visibility
+states, identifiers, display names, and absent objects remain hidden. Knowledge projection follows
+the character's ordered references, excludes unreferenced authored content, and fails closed when
+a referenced entry is missing. Both preserve exact text instances. Goal projection preserves exact
+authored description text and order without exposing goal keys or other character state.
+Recent-speech projection preserves only exact utterance text from supplied dialogue events the
+character spoke or was recorded as hearing; unrelated dialogue is omitted. The assembler rejects
+mismatched character/perception inputs and caller-supplied perception, knowledge, goal,
+recent-speech, or player-dialogue entries. Generation requests reject missing, duplicate, changed,
+or merely value-equal replacement player text. The assembler does not yet derive memories or valid
+affordances, define a retained conversation store or window, or call a provider.
 
 ## Location model boundaries
 

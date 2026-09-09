@@ -57,7 +57,10 @@ public sealed class CharacterModelGoalContextProjectionTests
             CharacterModelGoalContextProjection.Project(null!));
     }
 
-    internal static Character CreateCharacter(CharacterGoalSet goals, string characterIdText = "healer")
+    internal static Character CreateCharacter(
+        CharacterGoalSet goals,
+        string characterIdText = "healer",
+        CharacterKnowledge? knowledge = null)
     {
         CharacterId characterId = new(characterIdText);
 
@@ -70,7 +73,7 @@ public sealed class CharacterModelGoalContextProjectionTests
             new CharacterControllerAssignment(characterId, ControllerType.Llm),
             new CharacterConditionSet([new CharacterCondition("well", "Appears well.")]),
             new CharacterInventory([new ObjectId("healing-herb")]),
-            new CharacterKnowledge([new KnowledgeId("herbal-remedies")]),
+            knowledge ?? new CharacterKnowledge([new KnowledgeId("herbal-remedies")]),
             new CharacterBeliefSet([new CharacterBelief("patient-can-recover", "The patient can recover.")]),
             new CharacterRelationshipSet([]),
             goals);
