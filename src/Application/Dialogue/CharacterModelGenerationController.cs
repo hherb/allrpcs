@@ -20,6 +20,49 @@ public static class CharacterModelGenerationController
         TimeSpan deadline,
         CancellationToken cancellationToken)
     {
+        return await GenerateCoreAsync(
+            model,
+            request,
+            worldObjects,
+            affordances,
+            deadline,
+            null,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Returns one complete bounded stream snapshot and observes only controller-synthesized
+    /// cancellation or timeout through the supplied diagnostic boundary.
+    /// </summary>
+    public static async Task<CharacterModelStreamSnapshot> GenerateAsync(
+        ICharacterModel model,
+        CharacterModelGenerationRequest request,
+        WorldObjectSnapshot worldObjects,
+        CharacterIntentionAffordanceSnapshot affordances,
+        TimeSpan deadline,
+        CharacterModelGenerationControllerDiagnostics diagnostics,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(diagnostics);
+        return await GenerateCoreAsync(
+            model,
+            request,
+            worldObjects,
+            affordances,
+            deadline,
+            diagnostics,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    private static async Task<CharacterModelStreamSnapshot> GenerateCoreAsync(
+        ICharacterModel model,
+        CharacterModelGenerationRequest request,
+        WorldObjectSnapshot worldObjects,
+        CharacterIntentionAffordanceSnapshot affordances,
+        TimeSpan deadline,
+        CharacterModelGenerationControllerDiagnostics? diagnostics,
+        CancellationToken cancellationToken)
+    {
         ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(worldObjects);
@@ -30,6 +73,8 @@ public static class CharacterModelGenerationController
             throw new ArgumentOutOfRangeException(nameof(deadline));
         }
 
+        long? diagnosticStartTimestamp = TryGetDiagnosticTimestamp(diagnostics);
+
         using CancellationTokenSource deadlineCancellation =
             CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
         deadlineCancellation.CancelAfter(deadline);
@@ -38,7 +83,8 @@ public static class CharacterModelGenerationController
              attemptCount <= CharacterModelRetryPolicy.MaximumAttemptCount;
              attemptCount++)
         {
-            CharacterModelStreamSnapshot attempt = await RunAttemptAsync(
+            (CharacterModelStreamSnapshot attempt, bool synthesizedTermination) =
+                await RunAttemptAsync(
                 model,
                 request,
                 deadlineCancellation.Token,
@@ -47,6 +93,14 @@ public static class CharacterModelGenerationController
 
             if (!CharacterModelRetryPolicy.CanRetry(attemptCount, attempt))
             {
+                if (synthesizedTermination)
+                {
+                    await TryRecordSynthesizedDiagnosticAsync(
+                        attempt,
+                        diagnostics,
+                        diagnosticStartTimestamp).ConfigureAwait(false);
+                }
+
                 return attempt;
             }
         }
@@ -54,7 +108,9 @@ public static class CharacterModelGenerationController
         throw new InvalidOperationException("The bounded retry loop did not return a result.");
     }
 
-    private static async Task<CharacterModelStreamSnapshot> RunAttemptAsync(
+    private static async Task<(
+        CharacterModelStreamSnapshot Snapshot,
+        bool SynthesizedTermination)> RunAttemptAsync(
         ICharacterModel model,
         CharacterModelGenerationRequest request,
         CancellationToken deadlineToken,
@@ -76,9 +132,11 @@ public static class CharacterModelGenerationController
             CharacterModelStreamTerminationStatus status = callerToken.IsCancellationRequested
                 ? CharacterModelStreamTerminationStatus.Cancelled
                 : CharacterModelStreamTerminationStatus.TimedOut;
-            return CharacterModelStreamAppendTransition.Append(
-                new CharacterModelStreamTermination(status, null, null),
-                snapshot);
+            return (
+                CharacterModelStreamAppendTransition.Append(
+                    new CharacterModelStreamTermination(status, null, null),
+                    snapshot),
+                true);
         }
 
         if (snapshot.Updates.Count > 0
@@ -87,19 +145,84 @@ public static class CharacterModelGenerationController
             if (termination.Status == CharacterModelStreamTerminationStatus.Completed
                 && !ReferenceEquals(termination.Response?.Request, request.TurnRequest))
             {
-                return ReplaceTerminationWithInvalidResponse(snapshot);
+                return (ReplaceTerminationWithInvalidResponse(snapshot), false);
             }
 
-            return snapshot;
+            return (snapshot, false);
         }
 
-        return CharacterModelStreamAppendTransition.Append(
-            new CharacterModelStreamTermination(
-                CharacterModelStreamTerminationStatus.Failed,
-                null,
-                new CharacterModelFailure(CharacterModelFailureCode.InvalidResponse)),
-            snapshot);
+        return (
+            CharacterModelStreamAppendTransition.Append(
+                new CharacterModelStreamTermination(
+                    CharacterModelStreamTerminationStatus.Failed,
+                    null,
+                    new CharacterModelFailure(CharacterModelFailureCode.InvalidResponse)),
+                snapshot),
+            false);
     }
+
+    private static long? TryGetDiagnosticTimestamp(
+        CharacterModelGenerationControllerDiagnostics? diagnostics)
+    {
+        if (diagnostics is null)
+        {
+            return null;
+        }
+
+        try
+        {
+            return diagnostics.TimeProvider.GetTimestamp();
+        }
+        catch (Exception exception) when (IsObservationalFailure(exception))
+        {
+            return null;
+        }
+    }
+
+    private static async ValueTask TryRecordSynthesizedDiagnosticAsync(
+        CharacterModelStreamSnapshot snapshot,
+        CharacterModelGenerationControllerDiagnostics? diagnostics,
+        long? startTimestamp)
+    {
+        if (diagnostics is null
+            || startTimestamp is null
+            || snapshot.Updates[^1] is not CharacterModelStreamTermination termination)
+        {
+            return;
+        }
+
+        try
+        {
+            TimeSpan elapsed = diagnostics.TimeProvider.GetElapsedTime(startTimestamp.Value);
+            elapsed = elapsed < TimeSpan.Zero
+                ? TimeSpan.Zero
+                : elapsed > CharacterModelGenerationDiagnostic.MaximumElapsed
+                    ? CharacterModelGenerationDiagnostic.MaximumElapsed
+                    : elapsed;
+            CharacterModelGenerationDiagnostic diagnostic = new(
+                diagnostics.Provider,
+                termination.Status,
+                null,
+                elapsed,
+                null,
+                null,
+                null);
+            await CharacterModelGenerationDiagnosticRecorder.TryRecordAsync(
+                    diagnostics.Sink,
+                    diagnostic,
+                    diagnostics.CancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (Exception exception) when (IsObservationalFailure(exception))
+        {
+            return;
+        }
+    }
+
+    private static bool IsObservationalFailure(Exception exception) =>
+        exception is not OutOfMemoryException
+        and not StackOverflowException
+        and not AccessViolationException;
 
     private static CharacterModelStreamSnapshot ReplaceTerminationWithInvalidResponse(
         CharacterModelStreamSnapshot snapshot)

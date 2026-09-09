@@ -165,7 +165,9 @@ Acceptance:
   source, command arguments, environment variables, or model context.
 - [ ] Add equivalent credential facilities for supported Windows and Linux builds.
 - [x] Add bounded redacted latency and terminal usage diagnostics for OpenAI provider attempts.
-- [ ] Add controller-owned redacted cancellation and timeout diagnostics.
+- [x] Add controller-owned redacted cancellation and timeout diagnostics.
+- [x] Project model-stream lifecycle to fixed content-free UI states and prove a visible timeout
+  label seam.
 - [ ] Provide explicit offline behaviour: existing routine movement continues, but the game does
   not fabricate LLM dialogue.
 - [ ] Test hallucinated objects, malformed output, instruction attacks, timeouts, cancellation,
