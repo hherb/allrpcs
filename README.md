@@ -679,6 +679,30 @@ provider contracts, or mutate inventory, world objects, discovery, or movement f
 Examination and collection are authoritative recorded occurrences only; the herb patch remains in
 the live world and no item is added to an inventory.
 
+## Live character-model boundaries
+
+The Application layer now owns the provider-neutral `ICharacterModel` seam. It accepts one exact
+`CharacterModelGenerationRequest`, observes caller cancellation, and exposes an asynchronous stream
+of closed Application update types. Exact non-empty text deltas permit whitespace-only fragments,
+retain text without normalization, and are individually and cumulatively bounded to
+`DialogueUtterance.MaximumTextLength`. An immutable stream prefix preserves exact updates in stable
+order and rejects unknown updates, excessive combined text, multiple terminal outcomes, or any
+update after termination.
+
+One terminal update distinguishes completed, caller-cancelled, timed-out, and failed generation.
+Failures carry only a bounded provider-neutral code for unavailable, authentication, rate-limit,
+transport, invalid-response, or provider-rejection outcomes; provider error bodies and DTOs do not
+enter Domain state. These contracts do not yet implement deadline enforcement, retries, adapters,
+provider calls, logging, credentials, response validation, or execution of generated intentions.
+
+Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
+128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
+separate filtered perception, relevant knowledge, goals, memories, recent speech, valid affordances,
+and untrusted player dialogue. The initial assembler retains already-filtered supplied entries and
+then appends exactly one fresh untrusted-player-dialogue entry retaining the turn request's exact
+text. Generation requests reject missing, duplicate, changed, or merely value-equal replacement
+player text. The assembler does not yet derive any filtered entry from authoritative game state.
+
 ## Location model boundaries
 
 `Allrpcs.Domain.Locations.LocationIdentity` pairs a stable `LocationId` with an authored display
