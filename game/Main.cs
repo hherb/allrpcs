@@ -38,7 +38,7 @@ public partial class Main : Node
     private TemporaryCharacterTurnRequestSource characterTurnRequestSource = null!;
     private TemporaryCharacterModelGenerationInputSource characterModelInputSource = null!;
     private TemporaryHealerCharacterSource healerCharacterSource = null!;
-    private TemporaryOfflineCharacterModelSource offlineCharacterModelSource = null!;
+    private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
@@ -78,8 +78,8 @@ public partial class Main : Node
             "TemporaryCharacterModelGenerationInputSource");
         healerCharacterSource = GetNode<TemporaryHealerCharacterSource>(
             "TemporaryHealerCharacterSource");
-        offlineCharacterModelSource = GetNode<TemporaryOfflineCharacterModelSource>(
-            "TemporaryOfflineCharacterModelSource");
+        characterModelSource = GetNode<TemporaryCharacterModelSource>(
+            "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
@@ -302,14 +302,14 @@ public partial class Main : Node
             || input is null
             || !ReferenceEquals(input.GenerationRequest.TurnRequest, activity.Request)
             || !modelFlowController.TryStart(
-                offlineCharacterModelSource.Model,
+                characterModelSource.TakeModel(),
                 input.GenerationRequest,
                 input.WorldObjects,
                 input.Affordances,
                 CharacterModelGenerationDeadline))
         {
             throw new InvalidOperationException(
-                "The ordinary LLM healer turn could not start its bounded offline generation.");
+                "The ordinary LLM healer turn could not start its bounded generation.");
         }
     }
 

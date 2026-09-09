@@ -39,8 +39,12 @@ separately from those content-free states, and applies asynchronously observed u
 Godot main thread. Completed validated responses enter only their exact awaiting turn; explicit
 player cancellation cancels both generation and turn, while timeout or failure cancels the pending
 turn without fabricating dialogue. Ordinary heard healer requests now use the authored LLM
-assignment, exact bounded input, and a stable offline model. A completed terminal flow can reset to
-a fresh empty stream for a later exact request without retaining prior presentation or content.
+assignment, exact bounded input, and a scene model source that consumes one exact caller-supplied
+model for the next generation or falls back to one stable offline model. A completed terminal flow
+can reset to a fresh empty stream for a later exact request without retaining prior presentation or
+content. Credential-free ordinary-path checks prove one validated target-free `Wait` response
+speaks exactly once, a hallucinated target is rejected without speech or mutation, and caller
+cancellation preserves only already-accepted stream text while cancelling the exact turn.
 
 Infrastructure contains a caller-composed OpenAI Responses HTTP adapter with stateless strict
 structured output, bounded SSE framing, completion-only structured response parsing, and optional
@@ -726,13 +730,17 @@ terminal update; retryable text-free failures stay hidden and observer failure o
 cancellation cannot alter generation. The scene queues those observations across the async boundary,
 applies them on the Godot main thread, and presents text without parsing or executing it. The
 authored healer's canonical LLM assignment routes ordinary heard player requests through the exact
-bounded generation input and stable credential-free unavailable model. Each unavailable terminal
-result cancels only its pending turn, emits canonical content-free failure status, fabricates no
-healer dialogue, and does not stop routine movement. A fully observed terminal stream can reset to
-a fresh hidden empty snapshot, allowing later distinct ordinary requests without retaining prior
-content or presentation. The deterministic response source remains explicit focused-test
-scaffolding only. No real provider call or generated non-wait intention execution occurs in
-standard gameplay.
+bounded generation input and a scene-owned model source. The source consumes one exact
+caller-composed model for the next generation only, then resumes its stable credential-free
+unavailable default. One scripted ordinary response proves exact target-free `Wait` speech can be
+validated, recorded once, and completed without physical authority; the next request resets and
+fails offline without retaining the prior result. Prompt-shaped dialogue remains untrusted when a
+scripted response targets a hallucinated object: validation replaces that completion with a bounded
+invalid-response failure and no speech or mutation. Explicit ordinary cancellation preserves an
+already-accepted text delta only as presentation and cancels the exact pending turn. Each failure
+emits canonical content-free status and does not stop routine movement. The deterministic response
+source remains explicit focused-test scaffolding only. No real provider call or generated non-wait
+intention execution occurs in standard gameplay.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
