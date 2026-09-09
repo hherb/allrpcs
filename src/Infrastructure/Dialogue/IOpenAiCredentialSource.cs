@@ -6,7 +6,8 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public interface IOpenAiCredentialSource
 {
     /// <summary>
-    /// Loads the current API key, or returns <see langword="null"/> when none is available.
+    /// Loads the current API key with an explicit redacted outcome.
     /// </summary>
-    ValueTask<string?> LoadApiKeyAsync(CancellationToken cancellationToken);
+    ValueTask<OpenAiCredentialLoadResult> LoadApiKeyAsync(
+        CancellationToken cancellationToken);
 }

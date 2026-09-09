@@ -1,4 +1,3 @@
-using System.Net;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,10 +15,10 @@ public sealed class OpenAiCharacterModel : ICharacterModel
 
     private readonly HttpClient client;
     private readonly IOpenAiCredentialSource credentialSource;
-    private readonly string modelName;
+    private readonly CharacterModelSettings settings;
 
     /// <summary>Gets the maximum accepted OpenAI API-key length.</summary>
-    public const int MaximumApiKeyLength = 512;
+    public const int MaximumApiKeyLength = OpenAiCredentialPolicy.MaximumApiKeyLength;
 
     /// <summary>
     /// Creates an adapter over caller-owned HTTP and credential dependencies.
@@ -27,15 +26,19 @@ public sealed class OpenAiCharacterModel : ICharacterModel
     public OpenAiCharacterModel(
         HttpClient client,
         IOpenAiCredentialSource credentialSource,
-        string modelName)
+        CharacterModelSettings settings)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
-        OpenAiCharacterModelRequestSerializer.ValidateModelName(modelName);
+        ArgumentNullException.ThrowIfNull(settings);
+        if (settings.Provider != CharacterModelProvider.OpenAi)
+        {
+            throw new ArgumentException("Settings must select the OpenAI provider.", nameof(settings));
+        }
 
         this.client = client;
         this.credentialSource = credentialSource;
-        this.modelName = modelName;
+        this.settings = settings;
     }
 
     /// <inheritdoc />
@@ -46,8 +49,10 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         ArgumentNullException.ThrowIfNull(request);
         cancellationToken.ThrowIfCancellationRequested();
 
-        string? apiKey = await credentialSource.LoadApiKeyAsync(cancellationToken)
+        OpenAiCredentialLoadResult credential =
+            await credentialSource.LoadApiKeyAsync(cancellationToken)
             .ConfigureAwait(false);
+        string? apiKey = credential.ApiKey;
         if (!IsValidApiKey(apiKey))
         {
             yield return Failure(CharacterModelFailureCode.Authentication);
@@ -57,7 +62,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         using HttpRequestMessage message = new(HttpMethod.Post, ResponsesEndpoint)
         {
             Content = new StringContent(
-                OpenAiCharacterModelRequestSerializer.Serialize(request, modelName),
+                OpenAiCharacterModelRequestSerializer.Serialize(request, settings.ModelName),
                 Encoding.UTF8,
                 "application/json"),
         };
@@ -93,7 +98,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         {
             if (!response!.IsSuccessStatusCode)
             {
-                yield return Failure(ClassifyStatus(response.StatusCode));
+                yield return Failure(OpenAiHttpFailurePolicy.Classify(response.StatusCode));
                 yield break;
             }
 
@@ -140,28 +145,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
     }
 
     private static bool IsValidApiKey(string? apiKey) =>
-        apiKey is not null
-        && apiKey.Length is > 0 and <= MaximumApiKeyLength
-        && apiKey.All(character => character is >= '!' and <= '~');
-
-    private static CharacterModelFailureCode ClassifyStatus(HttpStatusCode statusCode)
-    {
-        if (statusCode is HttpStatusCode.Unauthorized or HttpStatusCode.Forbidden)
-        {
-            return CharacterModelFailureCode.Authentication;
-        }
-
-        if ((int)statusCode == 429)
-        {
-            return CharacterModelFailureCode.RateLimited;
-        }
-
-        int numericStatus = (int)statusCode;
-        return statusCode == HttpStatusCode.RequestTimeout
-            || numericStatus is >= 500 and <= 599
-            ? CharacterModelFailureCode.Unavailable
-            : CharacterModelFailureCode.ProviderRejected;
-    }
+        OpenAiCredentialPolicy.IsValid(apiKey);
 
     private static CharacterModelStreamTermination Failure(CharacterModelFailureCode code) =>
         new(

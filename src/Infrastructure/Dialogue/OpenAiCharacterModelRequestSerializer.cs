@@ -17,7 +17,7 @@ public static class OpenAiCharacterModelRequestSerializer
         + "valid affordances. Return one response matching the required schema.";
 
     /// <summary>Gets the maximum supported OpenAI model-name length.</summary>
-    public const int MaximumModelNameLength = 256;
+    public const int MaximumModelNameLength = CharacterModelSettings.MaximumModelNameLength;
 
     /// <summary>Gets the bounded provider output-token request.</summary>
     public const int MaximumOutputTokens = 4_096;
@@ -60,16 +60,7 @@ public static class OpenAiCharacterModelRequestSerializer
 
     internal static void ValidateModelName(string modelName)
     {
-        ArgumentNullException.ThrowIfNull(modelName);
-        if (string.IsNullOrWhiteSpace(modelName)
-            || modelName.Length > MaximumModelNameLength
-            || modelName.Any(character => char.IsWhiteSpace(character) || char.IsControl(character)))
-        {
-            throw new ArgumentException(
-                $"An OpenAI model name must contain 1 to {MaximumModelNameLength} "
-                    + "non-whitespace characters.",
-                nameof(modelName));
-        }
+        CharacterModelSettings.ValidateModelName(modelName);
     }
 
     private static void WriteInput(
