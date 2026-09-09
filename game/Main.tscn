@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3]
+[gd_scene load_steps=91 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -92,6 +92,12 @@
 [ext_resource type="Script" path="res://CharacterExaminationFlowSmokeCheck.cs" id="90_examination_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelGenerationStatusLabel.cs" id="91_model_status_label"]
 [ext_resource type="Script" path="res://CharacterModelGenerationStatusPresentationSmokeCheck.cs" id="92_model_status_check"]
+[ext_resource type="Script" path="res://CharacterModelStreamController.cs" id="93_model_stream_controller"]
+[ext_resource type="Script" path="res://CharacterModelStreamControllerSmokeCheck.cs" id="94_model_stream_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelStreamTextLabel.cs" id="95_model_stream_text_label"]
+[ext_resource type="Script" path="res://CharacterModelStreamTextPresentationSmokeCheck.cs" id="96_model_stream_text_check"]
+[ext_resource type="Script" path="res://CharacterModelGenerationFlowController.cs" id="97_model_flow_controller"]
+[ext_resource type="Script" path="res://CharacterModelGenerationFlowSmokeCheck.cs" id="98_model_flow_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -461,6 +467,12 @@ script = ExtResource("76_character_turn_response_source")
 [node name="TemporaryCharacterExaminationResultSource" type="Node" parent="."]
 script = ExtResource("85_examination_result_source")
 
+[node name="CharacterModelStreamController" type="Node" parent="."]
+script = ExtResource("93_model_stream_controller")
+
+[node name="CharacterModelGenerationFlowController" type="Node" parent="."]
+script = ExtResource("97_model_flow_controller")
+
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
 
@@ -583,6 +595,15 @@ script = ExtResource("84_character_turn_repeat_flow_check")
 
 [node name="CharacterModelGenerationStatusPresentationSmokeCheck" type="Node" parent="."]
 script = ExtResource("92_model_status_check")
+
+[node name="CharacterModelStreamControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("94_model_stream_check")
+
+[node name="CharacterModelStreamTextPresentationSmokeCheck" type="Node" parent="."]
+script = ExtResource("96_model_stream_text_check")
+
+[node name="CharacterModelGenerationFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("98_model_flow_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
@@ -725,7 +746,7 @@ text = "Focused search: NO ATTEMPT"
 offset_left = 12.0
 offset_top = 456.0
 offset_right = 948.0
-offset_bottom = 594.0
+offset_bottom = 634.0
 color = Color(0.055, 0.067, 0.082, 0.92)
 script = ExtResource("66_dialogue_input_panel")
 
@@ -776,8 +797,17 @@ script = ExtResource("79_character_turn_response_label")
 [node name="ModelStatus" type="Label" parent="DialogueOverlay/Panel"]
 visible = false
 offset_left = 124.0
-offset_top = 112.0
+offset_top = 152.0
 offset_right = 924.0
-offset_bottom = 135.0
+offset_bottom = 175.0
 horizontal_alignment = 2
 script = ExtResource("91_model_status_label")
+
+[node name="ModelStreamText" type="Label" parent="DialogueOverlay/Panel"]
+visible = false
+offset_left = 124.0
+offset_top = 112.0
+offset_right = 924.0
+offset_bottom = 147.0
+autowrap_mode = 2
+script = ExtResource("95_model_stream_text_label")

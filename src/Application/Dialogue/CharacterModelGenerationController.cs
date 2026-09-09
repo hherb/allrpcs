@@ -27,6 +27,7 @@ public static class CharacterModelGenerationController
             affordances,
             deadline,
             null,
+            null,
             cancellationToken).ConfigureAwait(false);
     }
 
@@ -51,6 +52,32 @@ public static class CharacterModelGenerationController
             affordances,
             deadline,
             diagnostics,
+            null,
+            cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    /// Returns one complete bounded stream snapshot while best-effort observing accepted text
+    /// updates and only the final validated terminal update.
+    /// </summary>
+    public static async Task<CharacterModelStreamSnapshot> GenerateAsync(
+        ICharacterModel model,
+        CharacterModelGenerationRequest request,
+        WorldObjectSnapshot worldObjects,
+        CharacterIntentionAffordanceSnapshot affordances,
+        TimeSpan deadline,
+        CharacterModelStreamObservation observation,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(observation);
+        return await GenerateCoreAsync(
+            model,
+            request,
+            worldObjects,
+            affordances,
+            deadline,
+            null,
+            observation,
             cancellationToken).ConfigureAwait(false);
     }
 
@@ -61,6 +88,7 @@ public static class CharacterModelGenerationController
         CharacterIntentionAffordanceSnapshot affordances,
         TimeSpan deadline,
         CharacterModelGenerationControllerDiagnostics? diagnostics,
+        CharacterModelStreamObservation? observation,
         CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(model);
@@ -87,12 +115,14 @@ public static class CharacterModelGenerationController
                 await RunAttemptAsync(
                 model,
                 request,
+                observation,
                 deadlineCancellation.Token,
                 cancellationToken).ConfigureAwait(false);
             attempt = ValidateCompletedResponse(request, worldObjects, affordances, attempt);
 
             if (!CharacterModelRetryPolicy.CanRetry(attemptCount, attempt))
             {
+                await TryObserveTerminalAsync(attempt, observation).ConfigureAwait(false);
                 if (synthesizedTermination)
                 {
                     await TryRecordSynthesizedDiagnosticAsync(
@@ -113,6 +143,7 @@ public static class CharacterModelGenerationController
         bool SynthesizedTermination)> RunAttemptAsync(
         ICharacterModel model,
         CharacterModelGenerationRequest request,
+        CharacterModelStreamObservation? observation,
         CancellationToken deadlineToken,
         CancellationToken callerToken)
     {
@@ -125,6 +156,10 @@ public static class CharacterModelGenerationController
                 .ConfigureAwait(false))
             {
                 snapshot = CharacterModelStreamAppendTransition.Append(update, snapshot);
+                if (update is CharacterModelTextDelta)
+                {
+                    await TryObserveUpdateAsync(update, observation).ConfigureAwait(false);
+                }
             }
         }
         catch (OperationCanceledException) when (deadlineToken.IsCancellationRequested)
@@ -223,6 +258,39 @@ public static class CharacterModelGenerationController
         exception is not OutOfMemoryException
         and not StackOverflowException
         and not AccessViolationException;
+
+    private static async ValueTask TryObserveTerminalAsync(
+        CharacterModelStreamSnapshot snapshot,
+        CharacterModelStreamObservation? observation)
+    {
+        if (snapshot.Updates.Count == 0
+            || snapshot.Updates[^1] is not CharacterModelStreamTermination termination)
+        {
+            return;
+        }
+
+        await TryObserveUpdateAsync(termination, observation).ConfigureAwait(false);
+    }
+
+    private static async ValueTask TryObserveUpdateAsync(
+        CharacterModelStreamUpdate update,
+        CharacterModelStreamObservation? observation)
+    {
+        if (observation is null)
+        {
+            return;
+        }
+
+        try
+        {
+            await observation.Sink.RecordAsync(update, observation.CancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (Exception exception) when (IsObservationalFailure(exception))
+        {
+            return;
+        }
+    }
 
     private static CharacterModelStreamSnapshot ReplaceTerminationWithInvalidResponse(
         CharacterModelStreamSnapshot snapshot)

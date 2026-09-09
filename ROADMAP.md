@@ -158,8 +158,8 @@ Acceptance:
   validated response at successful model-stream termination.
 - [x] Serialize a stateless strict-schema OpenAI request, parse bounded SSE frames, and expose a
   caller-composed authenticated HTTP adapter that fails closed without exposing partial JSON.
-- [ ] Support response cancellation and a visible timeout state.
-- [ ] Stream display text without executing partial intentions.
+- [x] Support response cancellation and a visible timeout state.
+- [x] Stream display text without executing partial intentions.
 - [x] Add bounded provider and model settings with a redacted OpenAI connection test.
 - [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,
   source, command arguments, environment variables, or model context.
