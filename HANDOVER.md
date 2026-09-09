@@ -3,7 +3,8 @@
 ## Current state
 
 `main` contains merged PR #160 at `cf2f36a`. The branch
-`codex/phase-4-generation-diagnostics` advances Phase 4 through Phase 4d11:
+`codex/phase-4-generation-diagnostics` is published as draft PR #161 and advances Phase 4 through
+Phase 4d11:
 
 - Phase 4d9 adds an immutable provider-neutral generation diagnostic with only canonical provider,
   terminal outcome/failure code, elapsed duration, and optional input/output/total token counts.
@@ -47,6 +48,7 @@ The restricted sandbox still reproduces the known .NET IPC/VSTest denial; identi
 commands pass. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows,
 and treat zero-step hosted failures as account infrastructure rather than test results. No live API
 request or real credential-store integration was exercised.
+Draft PR #161 is open.
 
 ## Exact next bounded slice
 
