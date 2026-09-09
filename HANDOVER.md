@@ -2,70 +2,66 @@
 
 ## Current state
 
-`main` contains merged PR #158 at `55b7dbf`. The branch
-`codex/phase-4-sse-transport` is published as draft PR #159 and advances Phase 4 through Phase 4d5:
+`main` contains merged PR #159 at `cb13637`. The branch
+`codex/phase-4-credential-store` advances Phase 4 through Phase 4d8:
 
-- Phase 4d3 reads caller-owned UTF-8 OpenAI SSE streams with explicit line, frame, event, and
-  document bounds. It supports LF/CRLF termination, comment heartbeats, `event:` fields, repeated
-  `data:` joining, and cancellation while rejecting malformed, truncated, NUL-containing, or
-  invalid-UTF-8 input without returning partial content.
-- Phase 4d4 feeds complete framed documents in source order to the existing semantic accumulator.
-  Exactly one complete terminal response is required; malformed framing/semantics map to redacted
-  `InvalidResponse`, I/O maps to `Transport`, and caller cancellation propagates.
-- Phase 4d5 adds an Infrastructure-only `OpenAiCharacterModel` over caller-owned HTTP and
-  credential dependencies. It posts the existing stateless strict-schema request to the official
-  Responses endpoint, requires `text/event-stream`, maps HTTP failures to provider-neutral codes,
-  never reads non-success bodies, and returns one terminal Application update.
+- Phase 4d6 makes credential loading an explicit redacted loaded/missing/failed result and adds a
+  save/load/delete store that reuses the same `IOpenAiCredentialSource` path. The macOS adapter
+  targets only service `Allrpcs.OpenAI` and account `api-key` through `/usr/bin/security` behind an
+  injected process boundary. Save bytes use redirected standard input rather than arguments or
+  environment variables; native output is bounded and cleared; stderr and OS details are discarded.
+- Phase 4d7 adds immutable Application settings with canonical OpenAI, Anthropic, and Ollama
+  provider identities plus one exact bounded model name. A provider identity does not claim its
+  adapter exists.
+- Phase 4d8 adds a redacted OpenAI connection tester over caller-owned HTTP and credential
+  dependencies. It retrieves the exact configured model, reads no response body, and returns only
+  connected or an existing provider-neutral failure code. `OpenAiCharacterModel` now consumes the
+  same settings value.
 
-The OpenAI adapter is not runtime-composed or marked complete. No concrete OS credential store,
-provider/model settings, connection test, live provider call, usage/latency logging, partial display
-stream, Godot wiring, intention execution, persistence, Anthropic/Ollama adapter, or gameplay/world
-mutation has been added. API keys are loaded per request through `IOpenAiCredentialSource`, bounded,
-placed only on the transient authorization header, and not retained in Domain or Application state.
-The HTTP client and input stream remain caller-owned.
+No real keychain or provider call is part of standard validation. Windows Credential Manager,
+Linux Secret Service, settings UI/persistence, runtime composition, provider switching,
+latency/usage diagnostics, partial display streaming, Godot wiring, intention execution,
+Anthropic/Ollama adapters, and gameplay persistence or mutation remain absent. The OpenAI adapter
+is not marked complete.
 
-The official OpenAI documentation checked on 2026-09-09 confirms Responses streaming uses HTTP
-server-sent events and typed semantic events. See the official
-[streaming Responses guide][openai-streaming] and [Responses create reference][openai-responses].
+The official OpenAI model reference checked on 2026-09-09 documents
+`GET /models/{model}` as the model-retrieval boundary used by the connection tester. See the
+[retrieve-model reference][openai-model-retrieve].
 
 ## Validation
 
-Each boundary began with an expected focused compile failure. Focused host-local results:
+Every boundary began with an expected focused compile failure. Focused host-local results:
 
-- 20 SSE framing tests pass.
-- 12 SSE semantic-completion tests pass.
-- 18 authenticated HTTP adapter tests pass.
+- 37 credential lifecycle, macOS adapter/native-boundary, and existing HTTP adapter tests pass.
+- 16 provider/model settings and connection-result tests pass.
+- 29 OpenAI connection and existing HTTP adapter tests pass.
 
 The complete host-local `./scripts/quality.sh` passes workflow and formatting validation, restore,
-a zero-warning build, 1,388 Domain tests, 267 Application tests, 116 Infrastructure tests, eight
+a zero-warning build, 1,388 Domain tests, 283 Application tests, 146 Infrastructure tests, eight
 architecture tests, the five-evidence representative scenario validator, all 51 opt-in Godot
 smokes, and the bounded graphical launch.
 
 The restricted sandbox still reproduces the known .NET IPC/VSTest denial; identical host-local
 commands pass. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows,
-and treat zero-step hosted failures as account infrastructure rather than test results. No live API
-request or credential-store integration was exercised. Draft PR #159 is open.
+and treat zero-step hosted failures as account infrastructure rather than test results.
 
 ## Exact next bounded slice
 
-Take **Phase 4d6: add the credential-storage lifecycle boundary without composing live gameplay**.
+Take **Phase 4d9: define provider-neutral redacted generation diagnostics without adapter wiring**.
 
 Acceptance boundary:
 
-1. Define one Infrastructure credential-store contract that can save, load, and delete the OpenAI
-   API key with cancellation and redacted success/missing/failure outcomes. Make the existing
-   `IOpenAiCredentialSource` load path reuse that contract rather than adding a second secret model.
-2. Add a macOS Keychain implementation behind an injected native-keychain boundary. Require an
-   exact service/account identity, keep secret bytes out of arguments, environment variables, and
-   logs, bound all inputs/outputs, and map OS details to redacted outcomes.
-3. Prove save/load/delete, missing key, replacement, cancellation, bounded key handling,
-   native-boundary safety, no shell invocation, no logs, no save/scene/model-context persistence, and
-   unchanged unrelated keychain entries using a deterministic fake command boundary. Do not require
-   a real user keychain in the standard local suite.
-4. Do not add Windows Credential Manager or Linux Secret Service yet; expose credentials in UI or
-   diagnostics; choose a production model; perform a live provider call; add settings/connection
-   tests; mark the OpenAI adapter complete; wire Godot; execute intentions; persist gameplay state;
-   or add Anthropic/Ollama.
+1. Add one immutable Application diagnostic value containing only the canonical provider,
+   terminal outcome/failure code, bounded elapsed duration, and bounded input/output/total token
+   counts when known. It must not retain model input, response text, model name, credentials,
+   provider request/response objects, error bodies, identifiers, or gameplay state.
+2. Add one caller-owned diagnostic sink contract that accepts the value with cancellation. Keep
+   diagnostic failure observational: it must not redefine model-generation success or failure.
+3. Prove success/failure/cancel/timeout outcomes, absent usage, zero and boundary token counts,
+   inconsistent/excessive count rejection, exact canonical provider retention, cancellation, and
+   redacted `ToString` behavior.
+4. Do not parse OpenAI usage yet; add clocks, logging frameworks, file/network persistence, UI,
+   telemetry export, runtime composition, real provider calls, partial display streaming, Godot
+   wiring, intention execution, Windows/Linux credential stores, or Anthropic/Ollama adapters.
 
-[openai-streaming]: https://developers.openai.com/api/docs/guides/streaming-responses
-[openai-responses]: https://developers.openai.com/api/reference/cli/resources/responses/methods/create
+[openai-model-retrieve]: https://developers.openai.com/api/reference/cli/resources/models/methods/retrieve

@@ -160,9 +160,10 @@ Acceptance:
   caller-composed authenticated HTTP adapter that fails closed without exposing partial JSON.
 - [ ] Support response cancellation and a visible timeout state.
 - [ ] Stream display text without executing partial intentions.
-- [ ] Add provider and model settings with connection tests.
-- [ ] Store user-supplied cloud credentials in OS credential facilities, never saves, scenes,
-  logs, source, or model context.
+- [x] Add bounded provider and model settings with a redacted OpenAI connection test.
+- [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,
+  source, command arguments, environment variables, or model context.
+- [ ] Add equivalent credential facilities for supported Windows and Linux builds.
 - [ ] Add redacted latency and usage diagnostics.
 - [ ] Provide explicit offline behaviour: existing routine movement continues, but the game does
   not fabricate LLM dialogue.

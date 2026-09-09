@@ -33,7 +33,7 @@ public sealed class OpenAiCharacterModelTests
         CharacterModelGenerationRequest request = CreateRequest();
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents()));
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), Settings());
 
         CharacterModelStreamUpdate[] updates = await CollectAsync(model, request);
 
@@ -64,7 +64,7 @@ public sealed class OpenAiCharacterModelTests
             Content = new ThrowingContent("secret provider response"),
         });
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), Settings());
 
         CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
             Assert.Single(await CollectAsync(model, CreateRequest())));
@@ -83,7 +83,7 @@ public sealed class OpenAiCharacterModelTests
     {
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource(apiKey), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource(apiKey), Settings());
 
         CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
             Assert.Single(await CollectAsync(model, CreateRequest())));
@@ -98,7 +98,7 @@ public sealed class OpenAiCharacterModelTests
         string apiKey = new('k', OpenAiCharacterModel.MaximumApiKeyLength + 1);
         CapturingHandler handler = new(_ => throw new InvalidOperationException("must not send"));
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource(apiKey), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource(apiKey), Settings());
 
         CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
             Assert.Single(await CollectAsync(model, CreateRequest())));
@@ -115,7 +115,7 @@ public sealed class OpenAiCharacterModelTests
     {
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents(), mediaType));
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), Settings());
 
         CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
             Assert.Single(await CollectAsync(model, CreateRequest())));
@@ -128,7 +128,7 @@ public sealed class OpenAiCharacterModelTests
     {
         CapturingHandler handler = new(_ => throw new HttpRequestException("secret network detail"));
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), Settings());
 
         CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
             Assert.Single(await CollectAsync(model, CreateRequest())));
@@ -142,7 +142,7 @@ public sealed class OpenAiCharacterModelTests
     {
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents()));
         using HttpClient client = new(handler);
-        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), "model-x");
+        OpenAiCharacterModel model = new(client, new StubCredentialSource("test-secret"), Settings());
         using CancellationTokenSource cancellation = new();
         cancellation.Cancel();
 
@@ -151,12 +151,19 @@ public sealed class OpenAiCharacterModelTests
         await Assert.ThrowsAsync<ArgumentNullException>(
             () => CollectAsync(model, null!));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterModel(null!, new StubCredentialSource("key"), "model-x"));
+            new OpenAiCharacterModel(null!, new StubCredentialSource("key"), Settings()));
         Assert.Throws<ArgumentNullException>(() =>
-            new OpenAiCharacterModel(client, null!, "model-x"));
+            new OpenAiCharacterModel(client, null!, Settings()));
         Assert.Throws<ArgumentNullException>(() =>
             new OpenAiCharacterModel(client, new StubCredentialSource("key"), null!));
+        Assert.Throws<ArgumentException>(() => new OpenAiCharacterModel(
+            client,
+            new StubCredentialSource("key"),
+            new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));
     }
+
+    private static CharacterModelSettings Settings() =>
+        new(CharacterModelProvider.OpenAi, "model-x");
 
     private static async Task<CharacterModelStreamUpdate[]> CollectAsync(
         OpenAiCharacterModel model,
@@ -219,10 +226,15 @@ public sealed class OpenAiCharacterModelTests
 
     private sealed class StubCredentialSource(string? apiKey) : IOpenAiCredentialSource
     {
-        public ValueTask<string?> LoadApiKeyAsync(CancellationToken cancellationToken)
+        public ValueTask<OpenAiCredentialLoadResult> LoadApiKeyAsync(
+            CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            return ValueTask.FromResult(apiKey);
+            return ValueTask.FromResult(apiKey is null
+                ? OpenAiCredentialLoadResult.Missing()
+                : OpenAiCredentialPolicy.IsValid(apiKey)
+                    ? OpenAiCredentialLoadResult.Loaded(apiKey)
+                    : OpenAiCredentialLoadResult.Failed());
         }
     }
 

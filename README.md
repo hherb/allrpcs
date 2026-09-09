@@ -766,14 +766,28 @@ line length, line count, frame count, document count, and joined document length
 truncated, excessive, or NUL-containing streams return no partial provider content.
 
 `OpenAiCharacterModel` implements the provider-neutral model seam over a caller-owned `HttpClient`,
-model name, and `IOpenAiCredentialSource`. It posts only to the official Responses endpoint,
+immutable provider/model settings, and `IOpenAiCredentialSource`. It posts only to the official
+Responses endpoint,
 requests `text/event-stream`, applies each complete framed semantic document, and yields one
 provider-neutral terminal update. Credentials exist only on the transient request authorization
 header; unsuccessful response bodies are never read. HTTP authentication, rate-limit, transient
 service, request-rejection, and transport outcomes map to bounded codes without provider details.
-No concrete credential store, provider/model settings UI, connection test, usage or latency
-logging, runtime scene composition, live call proof, partial display stream, or generated-intention
-execution exists.
+
+The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
+provider instance and one bounded model name; it does not claim that the corresponding adapter is
+available. The OpenAI connection tester retrieves only the exact configured model resource over a
+caller-owned HTTP client and the same credential-source contract. It does not generate content or
+read success or failure bodies, and exposes only connected or existing provider-neutral failure
+codes.
+
+`MacOsOpenAiCredentialStore` implements save/replace, load, and delete for one exact generic
+password identity in macOS Keychain. The `/usr/bin/security` process is isolated behind an injected
+boundary, never uses a shell, receives save bytes only through redirected standard input, bounds
+and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
+saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
+touch a user's real keychain. No Windows Credential Manager or Linux Secret Service adapter,
+settings UI or persistence, usage or latency logging, runtime scene composition, live call proof,
+partial display stream, or generated-intention execution exists.
 
 ## Location model boundaries
 
