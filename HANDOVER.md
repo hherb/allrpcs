@@ -3,7 +3,8 @@
 ## Current state
 
 `main` contains merged PR #163 at `affb762`. The current branch is
-`codex/phase-4-healer-generation-input` and advances Phase 4 through Phase 4g2.
+`codex/phase-4-healer-generation-input`, published as draft PR #164, and advances Phase 4 through
+Phase 4g2. The reviewed implementation commit is `3a99394`.
 
 - Phase 4g1 authors one stable complete temporary healer. Its identity shares the exact healer ID
   retained by the live turn source, its controller assignment is the canonical LLM type, and its
