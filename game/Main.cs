@@ -28,6 +28,7 @@ public partial class Main : Node
     private static readonly StringName HealerMoveAction = new("healer_move");
 
     private Healer healer = null!;
+    private CharacterModelGenerationFlowController modelFlowController = null!;
     private CharacterTurnActivityController characterTurnController = null!;
     private CharacterTurnTranscriptController characterTurnTranscriptController = null!;
     private DialogueEventController dialogueEventController = null!;
@@ -53,6 +54,7 @@ public partial class Main : Node
     private TemporaryWorldObjectSource worldObjectSource = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
+    private CharacterModelStreamSnapshot? lastProcessedModelResult;
     private DialogueUtterance? lastProcessedDialogueUtterance;
     private HealerCommandMode displayedMode;
 
@@ -108,6 +110,27 @@ public partial class Main : Node
         worldObjectSource = GetNode<TemporaryWorldObjectSource>("TemporaryWorldObjectSource");
         worldEventController = GetNode<WorldEventController>("WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("WorldObjectController");
+        CharacterModelStreamController modelStreamController =
+            GetNode<CharacterModelStreamController>("CharacterModelStreamController");
+        if (!modelStreamController.TryInitialize(new CharacterModelStreamSnapshot([])))
+        {
+            throw new InvalidOperationException(
+                "The character-model stream controller could not initialize empty.");
+        }
+
+        modelFlowController = GetNode<CharacterModelGenerationFlowController>(
+            "CharacterModelGenerationFlowController");
+        if (!modelFlowController.TryInitialize(
+                modelStreamController,
+                GetNode<TemporaryCharacterModelGenerationStatusLabel>(
+                    "DialogueOverlay/Panel/ModelStatus"),
+                GetNode<TemporaryCharacterModelStreamTextLabel>(
+                    "DialogueOverlay/Panel/ModelStreamText")))
+        {
+            throw new InvalidOperationException(
+                "The character-model generation flow could not initialize.");
+        }
+
         if (!dialogueInputController.TryInitialize(
                 seekerCharacterSource.Character.Identity.Id))
         {
@@ -240,6 +263,12 @@ public partial class Main : Node
 
     private void ProcessCharacterTurnResponse()
     {
+        if (modelFlowController.HasStarted)
+        {
+            ProcessCharacterModelTurnResponse();
+            return;
+        }
+
         CharacterTurnActivity? activity = characterTurnController.Activity;
         if (activity is null
             || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse))
@@ -255,6 +284,47 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The live character-turn controller could not receive its selected response.");
+        }
+    }
+
+    private void ProcessCharacterModelTurnResponse()
+    {
+        CharacterModelStreamSnapshot? result = modelFlowController.Result;
+        if (result is null || ReferenceEquals(result, lastProcessedModelResult))
+        {
+            return;
+        }
+
+        lastProcessedModelResult = result;
+        if (result.Updates[^1] is not CharacterModelStreamTermination termination)
+        {
+            throw new InvalidOperationException("The completed model flow was not terminal.");
+        }
+
+        CharacterTurnActivity? activity = characterTurnController.Activity;
+        if (termination is
+            {
+                Status: CharacterModelStreamTerminationStatus.Completed,
+                Response: not null,
+            })
+        {
+            if (activity is not null
+                && CharacterTurnResponseReceptionPolicy.CanReceive(activity, termination.Response)
+                && !characterTurnController.TryReceiveResponse(termination.Response))
+            {
+                throw new InvalidOperationException(
+                    "The validated model response could not enter its exact awaiting turn.");
+            }
+
+            return;
+        }
+
+        if (activity is not null
+            && CharacterTurnCancellationPolicy.CanCancel(activity)
+            && !characterTurnController.TryCancel())
+        {
+            throw new InvalidOperationException(
+                "The unsuccessful model response could not cancel its exact pending turn.");
         }
     }
 
@@ -319,6 +389,7 @@ public partial class Main : Node
     {
         if (@event.IsActionPressed(CharacterTurnCancelAction))
         {
+            _ = modelFlowController.TryCancel();
             _ = characterTurnController.TryCancel();
         }
         else if (@event.IsActionPressed(FocusedSearchCancelAction))

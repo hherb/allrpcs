@@ -34,15 +34,18 @@ caller cancellation or deadline timeout without allowing any terminal failure to
 Opt-in redacted diagnostics observe provider attempts plus controller-synthesized cancellation and
 timeout through caller-owned sinks, time sources, and independent diagnostic cancellation. Fixed
 content-free presentation states cover generating, completed, cancelled, timed-out, and failed
-streams; a temporary hidden dialogue-overlay label proves that a timeout can be shown without
-retaining provider or response content.
+streams. The scene now owns one exact immutable stream lifecycle, projects bounded text deltas
+separately from those content-free states, and applies asynchronously observed updates only on the
+Godot main thread. Completed validated responses enter only their exact awaiting turn; explicit
+player cancellation cancels both generation and turn, while timeout or failure cancels the pending
+turn without fabricating dialogue.
 
 Infrastructure contains a caller-composed OpenAI Responses HTTP adapter with stateless strict
 structured output, bounded SSE framing, completion-only structured response parsing, and optional
 terminal token diagnostics. Bounded settings, a redacted connection test, and macOS Keychain
-credential storage are present. Live model runtime composition, real provider calls, partial display
-streaming, controller-to-label scene wiring, Windows/Linux credential stores, Anthropic/Ollama
-adapters, and execution of generated intentions remain later work.
+credential storage are present. Live model runtime composition, real provider calls, starting model
+generation from ordinary dialogue, Windows/Linux credential stores, Anthropic/Ollama adapters, and
+execution of generated non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -717,8 +720,12 @@ whole operation, translates caller cancellation and deadline expiry into distinc
 and rejects a stream that ends without a terminal update as an invalid response. It permits one
 retry only for unavailable, rate-limited, or transport failures that emitted no text; it never
 retries exposed partial text, authentication, invalid responses, provider rejection, cancellation,
-or timeout. No runtime composition, provider logging, credential storage, or intention execution
-exists.
+or timeout. An opt-in progress observer receives accepted text deltas and only the final validated
+terminal update; retryable text-free failures stay hidden and observer failure or independent
+cancellation cannot alter generation. The scene queues those observations across the async boundary,
+applies them on the Godot main thread, and presents text without parsing or executing it. No model is
+yet composed into the ordinary dialogue path, and no real provider call or generated non-wait
+intention execution occurs in standard gameplay.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds

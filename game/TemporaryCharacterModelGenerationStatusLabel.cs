@@ -28,6 +28,21 @@ public partial class TemporaryCharacterModelGenerationStatusLabel : Label
         Show();
     }
 
+    /// <summary>Observes and presents the exact initialized snapshot without retaining its owner.</summary>
+    public bool Observe(CharacterModelStreamController controller)
+    {
+        ArgumentNullException.ThrowIfNull(controller);
+
+        CharacterModelStreamSnapshot? snapshot = controller.Snapshot;
+        if (snapshot is null)
+        {
+            return false;
+        }
+
+        Present(snapshot);
+        return true;
+    }
+
     /// <summary>Clears and hides the temporary status without changing prior inputs.</summary>
     public void ClearPresentation()
     {
