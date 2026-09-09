@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3]
+[gd_scene load_steps=83 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -84,6 +84,12 @@
 [ext_resource type="Script" path="res://CharacterTurnCompletionFlowSmokeCheck.cs" id="82_character_turn_completion_flow_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnCompletionController.cs" id="83_character_turn_completion_controller"]
 [ext_resource type="Script" path="res://CharacterTurnRepeatFlowSmokeCheck.cs" id="84_character_turn_repeat_flow_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterExaminationResultSource.cs" id="85_examination_result_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterExaminationResultSourceSmokeCheck.cs" id="86_examination_result_source_check"]
+[ext_resource type="Script" path="res://CharacterTurnWorldEventOccurrenceController.cs" id="87_character_action_controller"]
+[ext_resource type="Script" path="res://CharacterTurnWorldEventOccurrenceControllerSmokeCheck.cs" id="88_character_action_controller_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterExaminationFlowController.cs" id="89_examination_flow_controller"]
+[ext_resource type="Script" path="res://CharacterExaminationFlowSmokeCheck.cs" id="90_examination_flow_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -441,11 +447,17 @@ script = ExtResource("68_dialogue_event_controller")
 [node name="CharacterTurnTranscriptController" type="Node" parent="."]
 script = ExtResource("70_character_turn_transcript_controller")
 
+[node name="CharacterTurnWorldEventOccurrenceController" type="Node" parent="."]
+script = ExtResource("87_character_action_controller")
+
 [node name="TemporaryCharacterTurnRequestSource" type="Node" parent="."]
 script = ExtResource("73_character_turn_request_source")
 
 [node name="TemporaryCharacterTurnResponseSource" type="Node" parent="."]
 script = ExtResource("76_character_turn_response_source")
+
+[node name="TemporaryCharacterExaminationResultSource" type="Node" parent="."]
+script = ExtResource("85_examination_result_source")
 
 [node name="InteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("10_interaction_check")
@@ -534,6 +546,12 @@ script = ExtResource("74_character_turn_request_flow_check")
 [node name="TemporaryCharacterTurnResponseSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("75_character_turn_response_source_check")
 
+[node name="TemporaryCharacterExaminationResultSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("86_examination_result_source_check")
+
+[node name="CharacterTurnWorldEventOccurrenceControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("88_character_action_controller_check")
+
 [node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("77_character_turn_response_flow_check")
 
@@ -546,8 +564,14 @@ script = ExtResource("81_character_turn_response_speech_recorder")
 [node name="CharacterTurnResponseSpeechFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("80_character_turn_response_speech_flow_check")
 
+[node name="TemporaryCharacterExaminationFlowController" type="Node" parent="."]
+script = ExtResource("89_examination_flow_controller")
+
 [node name="TemporaryCharacterTurnCompletionController" type="Node" parent="."]
 script = ExtResource("83_character_turn_completion_controller")
+
+[node name="CharacterExaminationFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("90_examination_flow_check")
 
 [node name="CharacterTurnCompletionFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("82_character_turn_completion_flow_check")

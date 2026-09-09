@@ -1,9 +1,10 @@
+using System.Globalization;
 using Allrpcs.Domain.Dialogue;
 using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Presents only complete character-response speech in the temporary dialogue panel.</summary>
+/// <summary>Streams only received complete character-response speech in the dialogue panel.</summary>
 public partial class TemporaryCharacterTurnResponseLabel : Label
 {
     private const string NoResponseText = "Character response: NONE";
@@ -11,6 +12,8 @@ public partial class TemporaryCharacterTurnResponseLabel : Label
 
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnResponse? lastPresentedResponse;
+    private string? completeSpeechText;
+    private int visibleLength;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -25,12 +28,26 @@ public partial class TemporaryCharacterTurnResponseLabel : Label
     {
         _ = delta;
         CharacterTurnResponse? response = turnController.Activity?.Response;
-        if (response is null || ReferenceEquals(response, lastPresentedResponse))
+        if (response is null)
         {
             return;
         }
 
-        lastPresentedResponse = response;
-        Text = response.Speech?.Text ?? NoSpeechText;
+        if (!ReferenceEquals(response, lastPresentedResponse))
+        {
+            lastPresentedResponse = response;
+            completeSpeechText = response.Speech?.Text;
+            visibleLength = 0;
+            Text = completeSpeechText is null ? NoSpeechText : string.Empty;
+            return;
+        }
+
+        if (completeSpeechText is null || visibleLength >= completeSpeechText.Length)
+        {
+            return;
+        }
+
+        visibleLength += StringInfo.GetNextTextElement(completeSpeechText, visibleLength).Length;
+        Text = completeSpeechText[..visibleLength];
     }
 }

@@ -13,6 +13,7 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
 
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
+    private TemporaryCharacterExaminationFlowController examinationFlowController = null!;
     private DialogueEventController eventController = null!;
     private DialogueInputController inputController = null!;
     private LineEdit input = null!;
@@ -22,8 +23,6 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     private DialogueUtterance? firstSpeech;
     private CharacterTurnRequest? secondRequest;
     private DialogueUtterance? secondSpeech;
-    private object? initialWorldEventLog;
-    private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
 
@@ -41,6 +40,8 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             "../CharacterTurnActivityController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
+        examinationFlowController = GetNode<TemporaryCharacterExaminationFlowController>(
+            "../TemporaryCharacterExaminationFlowController");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
@@ -94,6 +95,11 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
                 return;
             }
 
+            if (examinationFlowController.LastCollectionOccurrence is null)
+            {
+                return;
+            }
+
             Submit(SecondText);
             stage = 4;
             return;
@@ -139,12 +145,13 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             || !ReferenceEquals(secondCompleted.Response?.Speech, secondSpeech)
             || !ReferenceEquals(secondCompleted.State, CharacterTurnActivityState.Completed)
             || !ReferenceEquals(firstCompleted.State, CharacterTurnActivityState.Completed)
-            || transcript is not { Entries.Count: 4 }
+            || transcript is not { Entries.Count: 6 }
             || transcript.Entries[0].SpokenStatement?.Text != FirstText
             || !ReferenceEquals(transcript.Entries[1].SpokenStatement, firstSpeech)
-            || transcript.Entries[2].SpokenStatement?.Text != SecondText
-            || !ReferenceEquals(transcript.Entries[3].SpokenStatement, secondSpeech)
-            || transcript.Entries.Any(entry => entry.PhysicalAction is not null)
+            || transcript.Entries[2].PhysicalAction?.Type != CharacterIntentionType.ExamineObject
+            || transcript.Entries[3].PhysicalAction?.Type != CharacterIntentionType.CollectObject
+            || transcript.Entries[4].SpokenStatement?.Text != SecondText
+            || !ReferenceEquals(transcript.Entries[5].SpokenStatement, secondSpeech)
             || !UnrelatedStateIsPreserved())
         {
             Fail("Second exact live turn did not complete without replacing prior history.");
@@ -154,7 +161,7 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
         GD.Print(
             "Character-turn repeat flow smoke passed: two distinct heard player utterances "
             + "started consecutive exact awaiting, speaking, and completed turns, retained both "
-            + "speech pairs in order, and did not execute intentions or change world state.");
+            + "speech pairs around one exact examination and collection sequence.");
         GetTree().Quit();
     }
 
@@ -187,7 +194,8 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             && ReferenceEquals(activity.Response!.Request, expectedRequest)
             && ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking)
             && ReferenceEquals(eventController.LastOccurredEvent?.Utterance, speech)
-            && ReferenceEquals(transcriptController.Transcript?.Entries[^1].SpokenStatement, speech);
+            && transcriptController.Transcript?.Entries.Any(
+                entry => ReferenceEquals(entry.SpokenStatement, speech)) == true;
         if (!matches)
         {
             Fail("Fresh awaiting turn did not receive and record its exact response speech.");
@@ -204,9 +212,6 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
 
     private void CaptureInitialState()
     {
-        WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        initialWorldEventLog = worldEvents.EventLog;
-        initialWorldTime = worldEvents.WorldTime;
         initialWorldObjects = GetNode<WorldObjectController>("../WorldObjectController").WorldObjects;
         initialPerception = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController").Perception;
@@ -215,8 +220,12 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     private bool UnrelatedStateIsPreserved()
     {
         WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        return ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
-            && ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
+        return worldEvents.EventLog is { Entries.Count: 3 } eventLog
+            && ReferenceEquals(
+                eventLog.Entries[^1],
+                GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource")
+                    .HerbPatchCollectedWorldEvent.EventId)
+            && ReferenceEquals(worldEvents.WorldTime?.CurrentEventId, eventLog.Entries[^1])
             && ReferenceEquals(
                 GetNode<WorldObjectController>("../WorldObjectController").WorldObjects,
                 initialWorldObjects)

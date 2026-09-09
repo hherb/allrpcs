@@ -67,7 +67,10 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
 
         if (mode == SpeakingMode
             && !controller.TryReceiveResponse(
-                DeterministicCharacterTurnResponseSelector.Select(controller.Activity.Request)))
+                DeterministicExaminationResponseSelector.Select(
+                    controller.Activity.Request,
+                    GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource")
+                        .WorldObjects.Entries[0].Identity.Id)))
         {
             Fail("Character-turn cancellation input smoke could not enter speaking state.");
             return;
