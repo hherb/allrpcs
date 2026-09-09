@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #158 at `55b7dbf`. The branch
-`codex/phase-4-sse-transport` advances Phase 4 through Phase 4d5:
+`codex/phase-4-sse-transport` is published as draft PR #159 and advances Phase 4 through Phase 4d5:
 
 - Phase 4d3 reads caller-owned UTF-8 OpenAI SSE streams with explicit line, frame, event, and
   document bounds. It supports LF/CRLF termination, comment heartbeats, `event:` fields, repeated
@@ -44,7 +44,7 @@ smokes, and the bounded graphical launch.
 The restricted sandbox still reproduces the known .NET IPC/VSTest denial; identical host-local
 commands pass. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows,
 and treat zero-step hosted failures as account infrastructure rather than test results. No live API
-request or credential-store integration was exercised.
+request or credential-store integration was exercised. Draft PR #159 is open.
 
 ## Exact next bounded slice
 
