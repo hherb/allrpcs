@@ -701,10 +701,11 @@ provider calls, logging, credentials, response validation, or execution of gener
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
 separate filtered perception, relevant knowledge, goals, memories, recent speech, valid affordances,
-and untrusted player dialogue. The assembler first derives identified perception and the exact
-responding character's current authored knowledge, then retains supplied memory and affordance
-entries before appending fresh goals, recent local speech, and exactly one untrusted player dialogue
-entry. Perception projection exposes only non-empty authored descriptions for exact
+and untrusted player dialogue. The assembler derives identified perception, the exact responding
+character's current authored knowledge, and goals, then retains only separately supplied memory
+entries, derives recent local speech, retains only separately supplied valid-affordance entries,
+and appends exactly one untrusted player-dialogue entry. Perception projection exposes only
+non-empty authored descriptions for exact
 `VisibilityState.Identified` entries backed by an authoritative world object; all other visibility
 states, identifiers, display names, and absent objects remain hidden. Knowledge projection follows
 the character's ordered references, excludes unreferenced authored content, and fails closed when
@@ -712,10 +713,21 @@ a referenced entry is missing. Both preserve exact text instances. Goal projecti
 authored description text and order without exposing goal keys or other character state.
 Recent-speech projection preserves only exact utterance text from supplied dialogue events the
 character spoke or was recorded as hearing; unrelated dialogue is omitted. The assembler rejects
-mismatched character/perception inputs and caller-supplied perception, knowledge, goal,
-recent-speech, or player-dialogue entries. Generation requests reject missing, duplicate, changed,
-or merely value-equal replacement player text. The assembler does not yet derive memories or valid
-affordances, define a retained conversation store or window, or call a provider.
+mismatched character/perception inputs, null supplied entries, and every kind other than exact
+`Memory` or exact `ValidAffordance` in its corresponding supplied input. Generation requests reject
+missing, duplicate, changed, or merely value-equal replacement player text. The assembler does not
+derive memories or valid affordances, claim current affordance eligibility, define a retained
+conversation store or window, or call a provider.
+
+`Allrpcs.Infrastructure.Dialogue.CharacterTurnResponseJsonDeserializer` is the first strict
+provider-response boundary. It accepts one exact provider-neutral turn request and a complete JSON
+document, then materializes only existing Domain response values. Exact property sets reject
+unknown, missing, or duplicate members at every level; canonical closed disposition and intention
+vocabularies reject unknown actions; existing structural intention validation rejects missing or
+unexpected targets. The transport document, commitment count, and intentions per commitment are
+bounded independently of the Domain response. This decoder does not retain provider DTOs or error
+bodies, establish object existence or current affordance eligibility, execute intentions, or call a
+provider.
 
 ## Location model boundaries
 

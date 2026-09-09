@@ -7,14 +7,14 @@ using Allrpcs.Domain.WorldObjects;
 namespace Allrpcs.Application.Dialogue;
 
 /// <summary>
-/// Assembles already filtered typed context with exact untrusted player dialogue.
+/// Assembles authoritative and separately typed supplied context with exact untrusted player dialogue.
 /// </summary>
 public static class CharacterModelContextAssembler
 {
     /// <summary>
-    /// Returns a generation request containing authoritative identified perception, supplied
-    /// filtered entries, the responding character's goals and recent local speech, then exact
-    /// untrusted player dialogue.
+    /// Returns a generation request containing authoritative perception, knowledge and goals,
+    /// supplied memories, recent local speech, supplied valid affordances, and exact untrusted
+    /// player dialogue in roadmap order.
     /// </summary>
     public static CharacterModelGenerationRequest Assemble(
         CharacterTurnRequest request,
@@ -22,16 +22,18 @@ public static class CharacterModelContextAssembler
         CharacterPerceptionSnapshot perception,
         WorldObjectSnapshot worldObjects,
         KnowledgeSnapshot knowledge,
+        IEnumerable<CharacterModelContextEntry> memoryEntries,
         IEnumerable<DialogueEvent> recentDialogueEvents,
-        IEnumerable<CharacterModelContextEntry> filteredEntries)
+        IEnumerable<CharacterModelContextEntry> validAffordanceEntries)
     {
         ArgumentNullException.ThrowIfNull(request);
         ArgumentNullException.ThrowIfNull(character);
         ArgumentNullException.ThrowIfNull(perception);
         ArgumentNullException.ThrowIfNull(worldObjects);
         ArgumentNullException.ThrowIfNull(knowledge);
+        ArgumentNullException.ThrowIfNull(memoryEntries);
         ArgumentNullException.ThrowIfNull(recentDialogueEvents);
-        ArgumentNullException.ThrowIfNull(filteredEntries);
+        ArgumentNullException.ThrowIfNull(validAffordanceEntries);
 
         if (character.Identity.Id != request.RespondingCharacterId)
         {
@@ -40,29 +42,14 @@ public static class CharacterModelContextAssembler
                 nameof(character));
         }
 
-        List<CharacterModelContextEntry> suppliedEntries = new();
-        foreach (CharacterModelContextEntry entry in filteredEntries)
-        {
-            if (entry is null)
-            {
-                throw new ArgumentException(
-                    "Filtered model context cannot contain null entries.",
-                    nameof(filteredEntries));
-            }
-
-            if (entry.Kind is CharacterModelContextEntryKind.FilteredPerception
-                or CharacterModelContextEntryKind.RelevantKnowledge
-                or CharacterModelContextEntryKind.Goal
-                or CharacterModelContextEntryKind.RecentSpeech
-                or CharacterModelContextEntryKind.UntrustedPlayerDialogue)
-            {
-                throw new ArgumentException(
-                    "The assembler alone supplies perception, knowledge, goals, speech, and player dialogue.",
-                    nameof(filteredEntries));
-            }
-
-            suppliedEntries.Add(entry);
-        }
+        List<CharacterModelContextEntry> memories = RetainExactKind(
+            memoryEntries,
+            CharacterModelContextEntryKind.Memory,
+            nameof(memoryEntries));
+        List<CharacterModelContextEntry> validAffordances = RetainExactKind(
+            validAffordanceEntries,
+            CharacterModelContextEntryKind.ValidAffordance,
+            nameof(validAffordanceEntries));
 
         List<CharacterModelContextEntry> entries = new();
         entries.AddRange(CharacterModelPerceptionContextProjection.Project(
@@ -70,14 +57,36 @@ public static class CharacterModelContextAssembler
             perception,
             worldObjects));
         entries.AddRange(CharacterModelKnowledgeContextProjection.Project(character, knowledge));
-        entries.AddRange(suppliedEntries);
         entries.AddRange(CharacterModelGoalContextProjection.Project(character));
+        entries.AddRange(memories);
         entries.AddRange(CharacterModelRecentSpeechContextProjection.Project(
             character,
             recentDialogueEvents));
+        entries.AddRange(validAffordances);
         entries.Add(CharacterModelPlayerDialogueContextProjection.Project(request));
         CharacterModelContextSnapshot context = new(entries);
 
         return new CharacterModelGenerationRequest(request, context);
+    }
+
+    private static List<CharacterModelContextEntry> RetainExactKind(
+        IEnumerable<CharacterModelContextEntry> entries,
+        CharacterModelContextEntryKind requiredKind,
+        string parameterName)
+    {
+        List<CharacterModelContextEntry> retainedEntries = new();
+        foreach (CharacterModelContextEntry entry in entries)
+        {
+            if (entry is null || entry.Kind != requiredKind)
+            {
+                throw new ArgumentException(
+                    $"Supplied entries must all have the {requiredKind} kind.",
+                    parameterName);
+            }
+
+            retainedEntries.Add(entry);
+        }
+
+        return retainedEntries;
     }
 }
