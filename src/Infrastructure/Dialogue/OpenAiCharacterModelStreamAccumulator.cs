@@ -26,6 +26,15 @@ public sealed class OpenAiCharacterModelStreamAccumulator
         this.request = request;
     }
 
+    /// <summary>Gets the bounded terminal input-token count, or unknown.</summary>
+    public int? InputTokenCount { get; private set; }
+
+    /// <summary>Gets the bounded terminal output-token count, or unknown.</summary>
+    public int? OutputTokenCount { get; private set; }
+
+    /// <summary>Gets the bounded terminal total-token count, or unknown.</summary>
+    public int? TotalTokenCount { get; private set; }
+
     /// <summary>
     /// Applies one serialized semantic event and returns a terminal update when the stream ends.
     /// Structured JSON deltas remain buffered and are never exposed as display text.
@@ -81,7 +90,7 @@ public sealed class OpenAiCharacterModelStreamAccumulator
             "response.content_part.done" => null,
             "response.output_text.delta" => ApplyDelta(root),
             "response.output_text.done" => ApplyDone(root),
-            "response.completed" => Complete(),
+            "response.completed" => Complete(root),
             "response.incomplete" => Terminate(CharacterModelFailureCode.InvalidResponse),
             "response.refusal.delta" or
             "response.refusal.done" or
@@ -127,15 +136,76 @@ public sealed class OpenAiCharacterModelStreamAccumulator
         return null;
     }
 
-    private CharacterModelStreamTermination Complete()
+    private CharacterModelStreamTermination Complete(JsonElement root)
     {
-        if (!hasVerifiedOutputTextDone)
+        if (!hasVerifiedOutputTextDone || !TryReadUsage(root))
         {
             return Terminate(CharacterModelFailureCode.InvalidResponse);
         }
 
         isTerminated = true;
         return CharacterModelJsonResponseCompletion.Create(request, responseDocument.ToString());
+    }
+
+    private bool TryReadUsage(JsonElement root)
+    {
+        if (!root.TryGetProperty("response", out JsonElement response))
+        {
+            return true;
+        }
+
+        if (response.ValueKind != JsonValueKind.Object)
+        {
+            return false;
+        }
+
+        if (!response.TryGetProperty("usage", out JsonElement usage)
+            || usage.ValueKind == JsonValueKind.Null)
+        {
+            return true;
+        }
+
+        if (usage.ValueKind != JsonValueKind.Object
+            || !TryReadTokenCount(usage, "input_tokens", out int inputTokenCount)
+            || !TryReadTokenCount(usage, "output_tokens", out int outputTokenCount)
+            || !TryReadTokenCount(usage, "total_tokens", out int totalTokenCount)
+            || (long)inputTokenCount + outputTokenCount != totalTokenCount)
+        {
+            return false;
+        }
+
+        InputTokenCount = inputTokenCount;
+        OutputTokenCount = outputTokenCount;
+        TotalTokenCount = totalTokenCount;
+        return true;
+    }
+
+    private static bool TryReadTokenCount(
+        JsonElement usage,
+        string propertyName,
+        out int tokenCount)
+    {
+        tokenCount = 0;
+        int matchingPropertyCount = 0;
+        foreach (JsonProperty property in usage.EnumerateObject())
+        {
+            if (!string.Equals(property.Name, propertyName, StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            matchingPropertyCount++;
+            if (matchingPropertyCount > 1
+                || property.Value.ValueKind != JsonValueKind.Number
+                || !property.Value.TryGetInt32(out tokenCount)
+                || tokenCount < 0
+                || tokenCount > CharacterModelGenerationDiagnostic.MaximumTokenCount)
+            {
+                return false;
+            }
+        }
+
+        return matchingPropertyCount == 1;
     }
 
     private CharacterModelStreamTermination Terminate(CharacterModelFailureCode code)

@@ -14,6 +14,8 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         new("https://api.openai.com/v1/responses", UriKind.Absolute);
 
     private readonly HttpClient client;
+    private readonly ICharacterModelGenerationDiagnosticSink? diagnosticSink;
+    private readonly TimeProvider? diagnosticTimeProvider;
     private readonly IOpenAiCredentialSource credentialSource;
     private readonly CharacterModelSettings settings;
 
@@ -41,6 +43,23 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         this.settings = settings;
     }
 
+    /// <summary>
+    /// Creates an adapter with caller-owned observational diagnostics and elapsed-time source.
+    /// </summary>
+    public OpenAiCharacterModel(
+        HttpClient client,
+        IOpenAiCredentialSource credentialSource,
+        CharacterModelSettings settings,
+        TimeProvider diagnosticTimeProvider,
+        ICharacterModelGenerationDiagnosticSink diagnosticSink)
+        : this(client, credentialSource, settings)
+    {
+        ArgumentNullException.ThrowIfNull(diagnosticTimeProvider);
+        ArgumentNullException.ThrowIfNull(diagnosticSink);
+        this.diagnosticTimeProvider = diagnosticTimeProvider;
+        this.diagnosticSink = diagnosticSink;
+    }
+
     /// <inheritdoc />
     public async IAsyncEnumerable<CharacterModelStreamUpdate> StreamResponseAsync(
         CharacterModelGenerationRequest request,
@@ -48,6 +67,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
     {
         ArgumentNullException.ThrowIfNull(request);
         cancellationToken.ThrowIfCancellationRequested();
+        long? diagnosticStartTimestamp = TryGetDiagnosticTimestamp();
 
         OpenAiCredentialLoadResult credential =
             await credentialSource.LoadApiKeyAsync(cancellationToken)
@@ -55,7 +75,13 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         string? apiKey = credential.ApiKey;
         if (!IsValidApiKey(apiKey))
         {
-            yield return Failure(CharacterModelFailureCode.Authentication);
+            yield return await ObserveAsync(
+                Failure(CharacterModelFailureCode.Authentication),
+                diagnosticStartTimestamp,
+                null,
+                null,
+                null,
+                cancellationToken).ConfigureAwait(false);
             yield break;
         }
 
@@ -90,7 +116,13 @@ public sealed class OpenAiCharacterModel : ICharacterModel
 
         if (transportFailure is not null)
         {
-            yield return Failure(transportFailure.Value);
+            yield return await ObserveAsync(
+                Failure(transportFailure.Value),
+                diagnosticStartTimestamp,
+                null,
+                null,
+                null,
+                cancellationToken).ConfigureAwait(false);
             yield break;
         }
 
@@ -98,14 +130,26 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         {
             if (!response!.IsSuccessStatusCode)
             {
-                yield return Failure(OpenAiHttpFailurePolicy.Classify(response.StatusCode));
+                yield return await ObserveAsync(
+                    Failure(OpenAiHttpFailurePolicy.Classify(response.StatusCode)),
+                    diagnosticStartTimestamp,
+                    null,
+                    null,
+                    null,
+                    cancellationToken).ConfigureAwait(false);
                 yield break;
             }
 
             string? mediaType = response.Content.Headers.ContentType?.MediaType;
             if (!string.Equals(mediaType, "text/event-stream", StringComparison.OrdinalIgnoreCase))
             {
-                yield return Failure(CharacterModelFailureCode.InvalidResponse);
+                yield return await ObserveAsync(
+                    Failure(CharacterModelFailureCode.InvalidResponse),
+                    diagnosticStartTimestamp,
+                    null,
+                    null,
+                    null,
+                    cancellationToken).ConfigureAwait(false);
                 yield break;
             }
 
@@ -130,19 +174,96 @@ public sealed class OpenAiCharacterModel : ICharacterModel
 
             if (transportFailure is not null)
             {
-                yield return Failure(transportFailure.Value);
+                yield return await ObserveAsync(
+                    Failure(transportFailure.Value),
+                    diagnosticStartTimestamp,
+                    null,
+                    null,
+                    null,
+                    cancellationToken).ConfigureAwait(false);
                 yield break;
             }
 
-            CharacterModelStreamTermination termination =
-                await OpenAiCharacterModelSseCompletion.CompleteAsync(
+            OpenAiCharacterModelSseResult result =
+                await OpenAiCharacterModelSseCompletion.CompleteWithUsageAsync(
                         request.TurnRequest,
                         responseStream!,
                         cancellationToken)
                     .ConfigureAwait(false);
-            yield return termination;
+            yield return await ObserveAsync(
+                result.Termination,
+                diagnosticStartTimestamp,
+                result.InputTokenCount,
+                result.OutputTokenCount,
+                result.TotalTokenCount,
+                cancellationToken).ConfigureAwait(false);
         }
     }
+
+    private long? TryGetDiagnosticTimestamp()
+    {
+        if (diagnosticTimeProvider is null)
+        {
+            return null;
+        }
+
+        try
+        {
+            return diagnosticTimeProvider.GetTimestamp();
+        }
+        catch (Exception exception) when (IsObservationalFailure(exception))
+        {
+            return null;
+        }
+    }
+
+    private async ValueTask<CharacterModelStreamTermination> ObserveAsync(
+        CharacterModelStreamTermination termination,
+        long? startTimestamp,
+        int? inputTokenCount,
+        int? outputTokenCount,
+        int? totalTokenCount,
+        CancellationToken cancellationToken)
+    {
+        if (diagnosticSink is null || diagnosticTimeProvider is null || startTimestamp is null)
+        {
+            return termination;
+        }
+
+        try
+        {
+            TimeSpan elapsed = diagnosticTimeProvider.GetElapsedTime(startTimestamp.Value);
+            elapsed = elapsed < TimeSpan.Zero
+                ? TimeSpan.Zero
+                : elapsed > CharacterModelGenerationDiagnostic.MaximumElapsed
+                    ? CharacterModelGenerationDiagnostic.MaximumElapsed
+                    : elapsed;
+            CharacterModelGenerationDiagnostic diagnostic = new(
+                CharacterModelProvider.OpenAi,
+                termination.Status,
+                termination.Failure?.Code,
+                elapsed,
+                inputTokenCount,
+                outputTokenCount,
+                totalTokenCount);
+            await CharacterModelGenerationDiagnosticRecorder.TryRecordAsync(
+                    diagnosticSink,
+                    diagnostic,
+                    cancellationToken)
+                .ConfigureAwait(false);
+        }
+        catch (Exception exception) when (IsObservationalFailure(exception))
+        {
+            return termination;
+        }
+
+        return termination;
+    }
+
+    private static bool IsObservationalFailure(Exception exception) =>
+        exception is not OutOfMemoryException
+        and not StackOverflowException
+        and not AccessViolationException;
 
     private static bool IsValidApiKey(string? apiKey) =>
         OpenAiCredentialPolicy.IsValid(apiKey);

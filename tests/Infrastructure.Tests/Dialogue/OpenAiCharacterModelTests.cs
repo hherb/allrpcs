@@ -53,6 +53,77 @@ public sealed class OpenAiCharacterModelTests
         Assert.True(handler.CanSendAgain);
     }
 
+    [Fact]
+    public async Task RecordsBoundedRedactedCompletionDiagnostics()
+    {
+        CapturingHandler handler = new(_ => EventStreamResponse(CompletedEventsWithUsage()));
+        using HttpClient client = new(handler);
+        RecordingDiagnosticSink sink = new();
+        SequenceTimeProvider time = new(
+            TimeSpan.Zero,
+            TimeSpan.FromMilliseconds(275));
+        OpenAiCharacterModel model = new(
+            client,
+            new StubCredentialSource("test-secret"),
+            Settings(),
+            time,
+            sink);
+
+        CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(await CollectAsync(model, CreateRequest())));
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result.Status);
+        CharacterModelGenerationDiagnostic diagnostic = Assert.IsType<
+            CharacterModelGenerationDiagnostic>(sink.Diagnostic);
+        Assert.Same(CharacterModelProvider.OpenAi, diagnostic.Provider);
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, diagnostic.Status);
+        Assert.Equal(TimeSpan.FromMilliseconds(275), diagnostic.Elapsed);
+        Assert.Equal(11, diagnostic.InputTokenCount);
+        Assert.Equal(7, diagnostic.OutputTokenCount);
+        Assert.Equal(18, diagnostic.TotalTokenCount);
+        Assert.DoesNotContain("secret", diagnostic.ToString(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task RecordsRedactedFailureWithoutUsage()
+    {
+        CapturingHandler handler = new(_ => new HttpResponseMessage(HttpStatusCode.Unauthorized));
+        using HttpClient client = new(handler);
+        RecordingDiagnosticSink sink = new();
+        OpenAiCharacterModel model = new(
+            client,
+            new StubCredentialSource("test-secret"),
+            Settings(),
+            new SequenceTimeProvider(TimeSpan.Zero, TimeSpan.FromMilliseconds(5)),
+            sink);
+
+        CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(await CollectAsync(model, CreateRequest())));
+
+        Assert.Equal(CharacterModelFailureCode.Authentication, result.Failure?.Code);
+        Assert.Equal(CharacterModelFailureCode.Authentication, sink.Diagnostic?.FailureCode);
+        Assert.Null(sink.Diagnostic?.TotalTokenCount);
+    }
+
+    [Fact]
+    public async Task DiagnosticSinkFailureDoesNotChangeCompletedGeneration()
+    {
+        CapturingHandler handler = new(_ => EventStreamResponse(CompletedEventsWithUsage()));
+        using HttpClient client = new(handler);
+        OpenAiCharacterModel model = new(
+            client,
+            new StubCredentialSource("test-secret"),
+            Settings(),
+            new SequenceTimeProvider(TimeSpan.Zero, TimeSpan.FromMilliseconds(5)),
+            new ThrowingDiagnosticSink());
+
+        CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(await CollectAsync(model, CreateRequest())));
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result.Status);
+        Assert.Null(result.Failure);
+    }
+
     [Theory]
     [MemberData(nameof(FailureStatuses))]
     public async Task MapsHttpStatusWithoutReadingOrRetainingTheErrorBody(
@@ -160,6 +231,18 @@ public sealed class OpenAiCharacterModelTests
             client,
             new StubCredentialSource("key"),
             new CharacterModelSettings(CharacterModelProvider.Anthropic, "model-x")));
+        Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterModel(
+            client,
+            new StubCredentialSource("key"),
+            Settings(),
+            null!,
+            new RecordingDiagnosticSink()));
+        Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterModel(
+            client,
+            new StubCredentialSource("key"),
+            Settings(),
+            TimeProvider.System,
+            null!));
     }
 
     private static CharacterModelSettings Settings() =>
@@ -199,6 +282,24 @@ public sealed class OpenAiCharacterModelTests
         + Frame(new { type = "response.output_text.done", text = ResponseDocument })
         + Frame(new { type = "response.completed" });
 
+    private static string CompletedEventsWithUsage() =>
+        Frame(new { type = "response.output_text.delta", delta = ResponseDocument })
+        + Frame(new { type = "response.output_text.done", text = ResponseDocument })
+        + Frame(new
+        {
+            type = "response.completed",
+            response = new
+            {
+                id = "secret-response-id",
+                usage = new
+                {
+                    input_tokens = 11,
+                    output_tokens = 7,
+                    total_tokens = 18,
+                },
+            },
+        });
+
     private static string Frame(object semanticEvent) =>
         "data: " + JsonSerializer.Serialize(semanticEvent) + "\n\n";
 
@@ -236,6 +337,37 @@ public sealed class OpenAiCharacterModelTests
                     ? OpenAiCredentialLoadResult.Loaded(apiKey)
                     : OpenAiCredentialLoadResult.Failed());
         }
+    }
+
+    private sealed class RecordingDiagnosticSink : ICharacterModelGenerationDiagnosticSink
+    {
+        public CharacterModelGenerationDiagnostic? Diagnostic { get; private set; }
+
+        public ValueTask RecordAsync(
+            CharacterModelGenerationDiagnostic diagnostic,
+            CancellationToken cancellationToken)
+        {
+            Diagnostic = diagnostic;
+            return ValueTask.CompletedTask;
+        }
+    }
+
+    private sealed class ThrowingDiagnosticSink : ICharacterModelGenerationDiagnosticSink
+    {
+        public ValueTask RecordAsync(
+            CharacterModelGenerationDiagnostic diagnostic,
+            CancellationToken cancellationToken) =>
+            throw new InvalidOperationException("private sink detail");
+    }
+
+    private sealed class SequenceTimeProvider(params TimeSpan[] timestamps) : TimeProvider
+    {
+        private readonly Queue<long> values = new(
+            timestamps.Select(timestamp => timestamp.Ticks));
+
+        public override long TimestampFrequency => TimeSpan.TicksPerSecond;
+
+        public override long GetTimestamp() => values.Dequeue();
     }
 
     private sealed class CapturingHandler(

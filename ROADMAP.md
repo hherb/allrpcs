@@ -164,7 +164,8 @@ Acceptance:
 - [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,
   source, command arguments, environment variables, or model context.
 - [ ] Add equivalent credential facilities for supported Windows and Linux builds.
-- [ ] Add redacted latency and usage diagnostics.
+- [x] Add bounded redacted latency and terminal usage diagnostics for OpenAI provider attempts.
+- [ ] Add controller-owned redacted cancellation and timeout diagnostics.
 - [ ] Provide explicit offline behaviour: existing routine movement continues, but the game does
   not fabricate LLM dialogue.
 - [ ] Test hallucinated objects, malformed output, instruction attacks, timeouts, cancellation,
