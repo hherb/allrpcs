@@ -101,8 +101,7 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
         GD.Print(
             "Character-turn response speech flow smoke passed: the exact complete healer speech "
             + "occurred once with the Seeker as listener, appended once after player speech, "
-            + "remained speaking, and did not execute the examination intention or change world "
-            + "state.");
+            + "remained speaking for an interruptible frame without repeating or executing.");
         GetTree().Quit();
     }
 

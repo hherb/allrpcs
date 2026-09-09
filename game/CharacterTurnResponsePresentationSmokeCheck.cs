@@ -18,8 +18,6 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
     private LineEdit input = null!;
     private Label response = null!;
     private int stage;
-    private object? initialWorldEventLog;
-    private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
 
@@ -83,20 +81,51 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
             return;
         }
 
+        if (stage == 3)
+        {
+            string completeSpeech = turnController.Activity!.Response!.Speech!.Text;
+            if (response.Text.Length == 0)
+            {
+                return;
+            }
+
+            if (response.Text.Length >= completeSpeech.Length
+                || !completeSpeech.StartsWith(response.Text, StringComparison.Ordinal))
+            {
+                Fail("Response presentation did not expose an exact bounded streaming prefix.");
+                return;
+            }
+
+            stage = 4;
+            return;
+        }
+
+        CharacterTurnActivity? current = turnController.Activity;
+        CharacterTurnResponse? currentResponse = current?.Response;
+        if (currentResponse?.Speech is null || response.Text != currentResponse.Speech.Text)
+        {
+            return;
+        }
+
         SetProcess(false);
-        CharacterTurnActivity? speaking = turnController.Activity;
-        CharacterTurnResponse? selected = speaking?.Response;
+        CharacterTurnActivity? speaking = current;
+        CharacterTurnResponse? selected = currentResponse;
         CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;
         if (speaking is null
             || selected?.Speech is null
-            || !ReferenceEquals(speaking.State, CharacterTurnActivityState.Speaking)
+            || !ReferenceEquals(speaking.State, CharacterTurnActivityState.Completed)
             || response.Text != selected.Speech.Text
             || response.Text != DeterministicExaminationResponseSelector.ExaminationSpeech
-            || transcript is not { Entries.Count: 2 }
+            || transcript is not { Entries.Count: 4 }
             || transcript.Entries[0].SpokenStatement?.Text != PlayerText
             || !ReferenceEquals(transcript.Entries[1].SpokenStatement, selected.Speech)
             || transcript.Entries[0].PhysicalAction is not null
             || transcript.Entries[1].PhysicalAction is not null
+            || !ReferenceEquals(
+                transcript.Entries[2].PhysicalAction,
+                selected.ImmediateIntention)
+            || transcript.Entries[3].PhysicalAction?.Type
+                != CharacterIntentionType.CollectObject
             || !UnrelatedStateIsPreserved())
         {
             Fail("Complete healer response was not presented without becoming observed state.");
@@ -105,16 +134,13 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
 
         GD.Print(
             "Character-turn response presentation smoke passed: awaiting showed no response, "
-            + "the exact complete deterministic healer speech appeared only after reception, "
-            + "the turn remained speaking, and presentation did not execute the intention.");
+            + "exact deterministic healer speech streamed through a strict prefix before the "
+            + "complete text appeared, without changing its completed action flow.");
         GetTree().Quit();
     }
 
     private void CaptureInitialState()
     {
-        WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        initialWorldEventLog = worldEvents.EventLog;
-        initialWorldTime = worldEvents.WorldTime;
         initialWorldObjects = GetNode<WorldObjectController>("../WorldObjectController").WorldObjects;
         initialPerception = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController").Perception;
@@ -123,8 +149,12 @@ public partial class CharacterTurnResponsePresentationSmokeCheck : Node
     private bool UnrelatedStateIsPreserved()
     {
         WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        return ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
-            && ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
+        return worldEvents.EventLog is { Entries.Count: 3 } eventLog
+            && ReferenceEquals(
+                eventLog.Entries[^1],
+                GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource")
+                    .HerbPatchCollectedWorldEvent.EventId)
+            && ReferenceEquals(worldEvents.WorldTime?.CurrentEventId, eventLog.Entries[^1])
             && ReferenceEquals(
                 GetNode<WorldObjectController>("../WorldObjectController").WorldObjects,
                 initialWorldObjects)

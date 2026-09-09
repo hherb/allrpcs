@@ -111,7 +111,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 ## Phase 3 — Natural-language dialogue with a deterministic character
 
 - [x] Build a dialogue panel with unrestricted text input.
-- [ ] Add streaming response display to the dialogue panel.
+- [x] Add streaming response display to the dialogue panel.
 - [x] Identify the speaking character and all characters within hearing range.
 - [x] Preserve the player's exact utterance as an in-world dialogue event.
 - [x] Derive the first explicitly typed healer request from an exact heard player dialogue event.
@@ -138,7 +138,7 @@ focus, and movement-boundary regression coverage. Its controls and markers remai
 
 Acceptance:
 
-- [ ] The player can ask the deterministic healer to examine flowers and collect them only if
+- [x] The player can ask the deterministic healer to examine flowers and collect them only if
   safe; the character examines first and waits for the authoritative result before deciding
   whether to collect.
 

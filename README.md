@@ -591,8 +591,7 @@ speech through `CharacterTurnTranscriptAppendTransition`. When no turn is active
 request source gates the exact healer against that event's audience, pairs the event's exact
 utterance with the explicitly supplied `request` act type, and starts one exact awaiting-response
 activity. Awaiting and speaking activity cannot be replaced; after completion or cancellation, a
-later heard utterance can start a fresh exact activity. No text classification or action execution
-occurs.
+later heard utterance can start a fresh exact activity. No text classification occurs.
 
 `CharacterTurnRequest` is provider-neutral and retains one exact responding character, dialogue
 event, and act. It rejects a responder outside the event audience and rejects an act for a
@@ -626,8 +625,8 @@ prior immutable activity.
 The separate deterministic examination selector accepts an exact request and explicitly supplied
 target identifier. It produces a fresh accepted response with fixed healer speech, an exact-target
 `examine-object` immediate intention, and no commitments or state proposals. The temporary live
-response source now uses that selector with the exact authored herb-patch identifier; it does not
-infer the target from dialogue text or execute the proposed action.
+response source uses that selector with the exact authored herb-patch identifier; it does not infer
+the target from dialogue text.
 
 Pure immediate-intention occurrence policy requires the exact speaking response, responder,
 non-wait action, latest observed response speech, and authoritative eligible world event before
@@ -636,24 +635,33 @@ targeted observed examination occurrence and one closed `safe-to-collect` or
 `unsafe-to-collect` result. The deterministic post-examination selector proposes collection of the
 exact examined target only for the safe result and otherwise waits. A separate pure collection
 occurrence gate additionally requires the exact examination occurrence to remain latest in the
-transcript before atomic authoritative collection recording. These contracts do not yet source an
-examination result or wire examination/collection occurrence into the live scene.
+transcript before atomic authoritative collection recording. These contracts do not infer an
+examination result from speech, descriptions, or hidden world state.
+
+The pure deterministic examination-result selector returns a fresh `safe-to-collect` result only
+when one observed occurrence is a targeted `examine-object` action retaining the exact explicitly
+supplied herb-patch identifier. Distinct value-equal identifiers and malformed occurrences fail
+closed. The temporary result source delegates only that exact boundary. Separate authored advancing
+events identify the healer's herb-patch examination and collection without changing the object.
 
 The focused Godot `CharacterTurnActivityController` initializes once from one exact activity and
 delegates fresh starts, cancellation, response reception, and speaking completion to those Domain
 contracts. The live scene begins without an activity. On a later process pass, a separate temporary
 response source delegates the exact awaiting request to the pure deterministic selector and the
-controller receives that fresh complete response as speaking activity. The dialogue panel presents
-only its complete exact speech.
+controller receives that fresh complete response as speaking activity. The dialogue panel reveals
+only that already complete exact speech, one Unicode text element per process pass. A displayed
+prefix has no response or action authority.
 
 While the response is speaking, a temporary recorder emits its exact healer utterance once through
 the existing hearing boundary and appends that same utterance once to the transcript. It does
 nothing for awaiting, completed, or cancelled activity. A separate completion controller first
-observes that exact event and final transcript entry, preserves a one-frame speaking cancellation
-window, and only then delegates completion. Consecutive heard player utterances can therefore
-produce distinct completed activities after the prior one is terminal while retaining both speech
-pairs in order. The fixed wait intention remains an unexecuted proposal throughout; world,
-discovery, movement-command, and focused-search state are unchanged.
+observes that exact event and transcript entry, preserves a one-frame speaking cancellation window,
+and only then delegates completion. The temporary examination flow separately occurs the exact
+response intention through the authoritative event/time/transcript coordinator. On the following
+pass it selects the exact safe result, then selects and occurs collection only while the exact
+examination remains the latest transcript occurrence. Intervening speech therefore prevents
+collection. Consecutive heard player utterances still produce distinct completed activities after
+the prior one is terminal.
 
 Transcript entries structurally distinguish exact spoken utterances from exact non-wait physical
 intentions. Immutable transcript snapshots and append transitions retain exact entries in stable
@@ -665,9 +673,11 @@ identifier, applies its authored qualitative-time effect, appends the exact tran
 and returns all resulting immutable state together with the retained occurrence. Failed
 eligibility changes nothing.
 
-These dialogue boundaries do not yet stream content, apply state proposals, execute or record a
-physical action, select an examination target, evaluate flower safety, advance commitments, add
-persistence or provider contracts, or mutate runtime world state from a character response.
+The completed deterministic Phase 3 loop does not classify dialogue text, stream provider content,
+apply state proposals, infer an examination target or general safety, advance live commitments, add
+provider contracts, or mutate inventory, world objects, discovery, or movement from a response.
+Examination and collection are authoritative recorded occurrences only; the herb patch remains in
+the live world and no item is added to an inventory.
 
 ## Location model boundaries
 

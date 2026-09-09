@@ -91,4 +91,12 @@ public partial class WorldEventController : Node
             ? null
             : WorldEventLookup.FindById(eventId, worldEvents);
     }
+
+    internal void InstallCharacterTurnOccurrence(WorldEventOccurrenceResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+
+        EventLog = result.EventLog;
+        WorldTime = result.WorldTime;
+    }
 }

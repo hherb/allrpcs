@@ -14,6 +14,8 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
     private const string GreyboxReadyEventIdText = "greybox-ready";
     private const string HerbPatchIdentifiedEventIdText = "herb-patch-identified";
+    private const string HerbPatchExaminedEventIdText = "healer-examined-herb-patch";
+    private const string HerbPatchCollectedEventIdText = "healer-collected-herb-patch";
 
     private TemporaryWorldEventSource source = null!;
     private WorldEventController worldEventController = null!;
@@ -62,14 +64,18 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
         WorldEventSnapshot secondSnapshot = source.WorldEvents;
         WorldEvent greyboxReady = firstSnapshot.Entries[0];
         WorldEvent herbPatchIdentified = firstSnapshot.Entries[1];
+        WorldEvent herbPatchExamined = firstSnapshot.Entries[2];
+        WorldEvent herbPatchCollected = firstSnapshot.Entries[3];
 
         if (!HasExpectedPropertySurface()
             || !ReferenceEquals(firstSnapshot, secondSnapshot)
-            || firstSnapshot.Entries.Count != 2
+            || firstSnapshot.Entries.Count != 4
             || !ReferenceEquals(source.InitialWorldEvent, greyboxReady)
             || !ReferenceEquals(
                 source.HerbPatchIdentifiedWorldEvent,
                 herbPatchIdentified)
+            || !ReferenceEquals(source.HerbPatchExaminedWorldEvent, herbPatchExamined)
+            || !ReferenceEquals(source.HerbPatchCollectedWorldEvent, herbPatchCollected)
             || !string.Equals(
                 greyboxReady.EventId.Value,
                 GreyboxReadyEventIdText,
@@ -81,7 +87,11 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
                 StringComparison.Ordinal)
             || !ReferenceEquals(
                 herbPatchIdentified.TimeEffect,
-                WorldEventTimeEffect.Advance))
+                WorldEventTimeEffect.Advance)
+            || herbPatchExamined.EventId.Value != HerbPatchExaminedEventIdText
+            || !ReferenceEquals(herbPatchExamined.TimeEffect, WorldEventTimeEffect.Advance)
+            || herbPatchCollected.EventId.Value != HerbPatchCollectedEventIdText
+            || !ReferenceEquals(herbPatchCollected.TimeEffect, WorldEventTimeEffect.Advance))
         {
             Fail("Temporary world-event source failed stable exact event retention.");
             return;
@@ -110,7 +120,7 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
 
         GD.Print(
             "Temporary world-event source smoke passed: one stable exact snapshot containing the "
-            + "canonical greybox-ready/no-advance and herb-patch-identified/advance events in "
+            + "canonical startup, discovery, examination, and collection events in "
             + "source order, an exact initial-event reference, exact ordinary startup recording, "
             + "and unchanged event-log, "
             + "world-object, perception, focused-search, movement, input, and presentation state "
@@ -128,13 +138,21 @@ public partial class TemporaryWorldEventSourceSmokeCheck : Node
             .OrderBy(property => property.Name, StringComparer.Ordinal)
             .ToArray();
 
-        return properties.Length == 3
+        return properties.Length == 5
             && IsPrivateSetProperty(
                 properties[0],
+                "HerbPatchCollectedWorldEvent",
+                typeof(WorldEvent))
+            && IsPrivateSetProperty(
+                properties[1],
+                "HerbPatchExaminedWorldEvent",
+                typeof(WorldEvent))
+            && IsPrivateSetProperty(
+                properties[2],
                 "HerbPatchIdentifiedWorldEvent",
                 typeof(WorldEvent))
-            && IsPrivateSetProperty(properties[1], "InitialWorldEvent", typeof(WorldEvent))
-            && IsPrivateSetProperty(properties[2], "WorldEvents", typeof(WorldEventSnapshot));
+            && IsPrivateSetProperty(properties[3], "InitialWorldEvent", typeof(WorldEvent))
+            && IsPrivateSetProperty(properties[4], "WorldEvents", typeof(WorldEventSnapshot));
     }
 
     private static bool IsPrivateSetProperty(

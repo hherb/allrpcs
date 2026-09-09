@@ -38,4 +38,11 @@ public partial class CharacterTurnTranscriptController : Node
         Transcript = CharacterTurnTranscriptAppendTransition.Append(entry, transcript);
         return true;
     }
+
+    internal void InstallCharacterTurnOccurrence(CharacterTurnTranscriptSnapshot transcript)
+    {
+        ArgumentNullException.ThrowIfNull(transcript);
+
+        Transcript = transcript;
+    }
 }

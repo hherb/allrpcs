@@ -14,14 +14,13 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
 
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
+    private TemporaryCharacterExaminationFlowController examinationFlowController = null!;
     private DialogueEventController eventController = null!;
     private LineEdit input = null!;
     private int stage;
     private CharacterTurnActivity? speakingActivity;
     private CharacterTurnTranscriptSnapshot? spokenTranscript;
     private DialogueEvent? healerSpeechEvent;
-    private object? initialWorldEventLog;
-    private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
     private HealerCommandMode initialHealerMode;
@@ -40,6 +39,8 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
             "../CharacterTurnActivityController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
+        examinationFlowController = GetNode<TemporaryCharacterExaminationFlowController>(
+            "../TemporaryCharacterExaminationFlowController");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
@@ -93,6 +94,11 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
             return;
         }
 
+        if (examinationFlowController.LastCollectionOccurrence is null)
+        {
+            return;
+        }
+
         SetProcess(false);
         CharacterTurnActivity? completed = turnController.Activity;
         if (speakingActivity is null
@@ -101,26 +107,31 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
             || !ReferenceEquals(completed.Request, speakingActivity.Request)
             || !ReferenceEquals(completed.Response, speakingActivity.Response)
             || !ReferenceEquals(completed.State, CharacterTurnActivityState.Completed)
-            || !ReferenceEquals(transcriptController.Transcript, spokenTranscript)
+            || spokenTranscript is not { Entries.Count: 2 }
+            || transcriptController.Transcript is not { Entries.Count: 4 } completedTranscript
+            || !ReferenceEquals(completedTranscript.Entries[0], spokenTranscript.Entries[0])
+            || !ReferenceEquals(completedTranscript.Entries[1], spokenTranscript.Entries[1])
+            || !ReferenceEquals(
+                completedTranscript.Entries[2].PhysicalAction,
+                speakingActivity.Response?.ImmediateIntention)
+            || completedTranscript.Entries[3].PhysicalAction?.Type
+                != CharacterIntentionType.CollectObject
             || !ReferenceEquals(eventController.LastOccurredEvent, healerSpeechEvent)
             || !UnrelatedStateIsPreserved())
         {
-            Fail("Observed speaking activity did not complete without executing its intention.");
+            Fail("Observed speaking activity did not complete through exact safe collection.");
             return;
         }
 
         GD.Print(
             "Character-turn completion flow smoke passed: the exact speaking activity remained "
             + "cancellable for one frame, completed only after its exact speech occurrence, "
-            + "retained its request and response, and did not execute the examination intention.");
+            + "retained its request and response, and completed exact examination and collection.");
         GetTree().Quit();
     }
 
     private void CaptureInitialState()
     {
-        WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        initialWorldEventLog = worldEvents.EventLog;
-        initialWorldTime = worldEvents.WorldTime;
         initialWorldObjects = GetNode<WorldObjectController>("../WorldObjectController").WorldObjects;
         initialPerception = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController").Perception;
@@ -130,8 +141,12 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
     private bool UnrelatedStateIsPreserved()
     {
         WorldEventController worldEvents = GetNode<WorldEventController>("../WorldEventController");
-        return ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
-            && ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
+        return worldEvents.EventLog is { Entries.Count: 3 } eventLog
+            && ReferenceEquals(
+                eventLog.Entries[^1],
+                GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource")
+                    .HerbPatchCollectedWorldEvent.EventId)
+            && ReferenceEquals(worldEvents.WorldTime?.CurrentEventId, eventLog.Entries[^1])
             && ReferenceEquals(
                 GetNode<WorldObjectController>("../WorldObjectController").WorldObjects,
                 initialWorldObjects)

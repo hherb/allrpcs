@@ -103,8 +103,8 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
         GD.Print(
             "Character-turn response flow smoke passed: one exact live awaiting request "
             + "received one fresh deterministic complete response as a speaking activity, "
-            + "prompt-shaped and later player text remained ordinary exact speech, no physical "
-            + "action was observed, and unrelated state was preserved.");
+            + "prompt-shaped and later player text remained ordinary exact speech, prevented the "
+            + "proposed examination, and preserved unrelated state.");
         GetTree().Quit();
     }
 
