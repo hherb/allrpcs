@@ -3,8 +3,8 @@
 ## Current state
 
 `main` contains merged PR #161 at `53c7d11`. The branch
-`codex/phase-4-controller-diagnostics` advances Phase 4 through Phase 4e2 and is prepared for a
-draft pull request.
+`codex/phase-4-controller-diagnostics` is published as draft PR #162 and advances Phase 4 through
+Phase 4e2.
 
 - Phase 4d12 adds opt-in controller diagnostics over an exact canonical provider, caller-owned
   monotonic `TimeProvider`, observational sink, and cancellation independent of generation.
