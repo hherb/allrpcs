@@ -63,3 +63,5 @@ ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=timeout godot --headless --path "$repository_
 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=cancel godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=complete godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_CHARACTER_MODEL_FLOW_CHECK=failed godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_CHARACTER_MODEL_GENERATION_INPUT_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OFFLINE_CHARACTER_MODEL_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120

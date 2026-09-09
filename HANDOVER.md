@@ -2,47 +2,45 @@
 
 ## Current state
 
-`main` contains merged PR #162 at `69ada0d`. The branch
-`codex/phase-4-streaming-flow` is published as draft PR #163 and advances Phase 4 through Phase 4f5.
+`main` contains merged PR #163 at `affb762`. The current branch is
+`codex/phase-4-healer-generation-input` and advances Phase 4 through Phase 4g2.
 
-- Phase 4e3 adds a scene-owned one-shot `CharacterModelStreamController`, initialized from an
-  explicit empty immutable snapshot and accepting exact updates only through the existing
-  Application append transition. Rejected initialization, null updates, and post-terminal updates
-  preserve state.
-- Phases 4e4-4e5 add a pure text-delta projection and a separate temporary scene label. It shows
-  only exact bounded `CharacterModelTextDelta` prefixes, retains no stream or terminal payload, and
-  never parses or executes partial structured content. The existing status label remains
-  content-free.
-- Phase 4f1 adds an opt-in Application progress observer. It sees accepted text updates and only
-  the final validated terminal update; retryable text-free failures remain hidden, and observer
-  failure or independent cancellation cannot change generation.
-- Phases 4f2-4f5 add a one-shot Godot generation flow. Observed updates cross a thread-safe queue
-  and are applied to scene state only on the Godot main thread. Completed validated responses enter
-  only their exact awaiting turn and can complete speech normally. V cancels both an active model
-  generation and its exact turn. Timeout or provider failure cancels the pending turn without
-  deterministic fallback or fabricated dialogue, while retaining canonical visible status and any
-  accepted streamed text.
+- Phase 4g1 authors one stable complete temporary healer. Its identity shares the exact healer ID
+  retained by the live turn source, its controller assignment is the canonical LLM type, and its
+  authored background, capability, limitation, knowledge reference, and goal are minimal and
+  explicit.
+- Phase 4g1 also adds a temporary provider-neutral generation-input source for an exact awaiting
+  healer activity. It delegates to `CharacterModelContextAssembler` and retains the exact request,
+  authoritative world-object snapshot, and response-validation affordance snapshot.
+- The bounded input exposes only the identified herb-patch description, the healer's referenced
+  knowledge, one goal, exact recent heard speech, and exact prompt-shaped player text marked as
+  untrusted. The unnoticed stone marker, display names, unreferenced knowledge, memories, hidden
+  state, and targeted actions remain absent. The empty targeted-affordance snapshot leaves only the
+  validation policy's inherent target-free Wait intention eligible.
+- Phase 4g2 adds one stable credential-free unavailable model and an opt-in source-to-flow smoke.
+  Its terminal unavailable result cancels the exact pending turn without fabricated dialogue,
+  response text, transcript entries, world changes, or discovery changes, while routine healer
+  movement continues.
 
-The ordinary player-dialogue path still uses the deterministic response source because no scene
-model source or generation-input composition exists yet. The OpenAI HTTP adapter, bounded settings,
-redacted connection test and diagnostics, and macOS Keychain store remain caller-composed only.
-No live key, provider call, credential access, or hosted workflow was used. Anthropic/Ollama
-adapters, Windows/Linux credential stores, settings UI/persistence, provider runtime composition,
-physical generated-intention execution, telemetry export, and gameplay persistence or mutation
-remain absent.
-The OpenAI adapter and full Phase 4 acceptance remain incomplete.
+The ordinary player-dialogue path still uses the deterministic response source. The offline model
+is composed only by the opt-in smoke, and the OpenAI HTTP adapter, bounded settings, redacted
+connection test and diagnostics, and macOS Keychain store remain caller-composed only. No live key,
+credential access, network call, or hosted workflow was used. Anthropic/Ollama adapters,
+Windows/Linux credential stores, settings UI/persistence, ordinary-turn model selection, physical
+generated-intention execution, telemetry export, and gameplay persistence or mutation remain
+absent. The OpenAI adapter and full Phase 4 acceptance remain incomplete.
 
 ## Validation
 
-Every new boundary began with an expected focused compile, test, or smoke failure. The complete
-host-local `./scripts/quality.sh` passes:
+Both new boundaries began with expected focused compile failures. The complete host-local
+`./scripts/quality.sh` passes:
 
 - workflow and formatting validation, restore, and a zero-warning build;
 - 1,388 Domain tests, 323 Application tests, 159 Infrastructure tests, and eight architecture
   tests;
 - the five-evidence representative scenario validator;
-- all 58 opt-in Godot smoke invocations, including exact stream ownership, text projection, and
-  completed, cancelled, timed-out, and failed generation-flow modes; and
+- all 60 opt-in Godot smoke invocations, including exact healer input and offline unavailable-flow
+  coverage; and
 - the bounded graphical Compatibility-renderer launch.
 
 The restricted sandbox still reproduces the known .NET VSTest IPC and Godot log-directory denial;
@@ -52,23 +50,21 @@ than test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 4g1: author the temporary LLM healer and its exact provider-neutral generation input
-without constructing a model**.
+Take **Phase 4g3: route ordinary heard healer requests through the temporary offline model**.
 
 Acceptance boundary:
 
-1. Add one stable complete temporary healer `Character` whose exact identifier matches the live
-   healer turn request and whose controller assignment is the canonical LLM type. Keep authored
-   capabilities, limitations, knowledge, goals, and other components minimal and explicit.
-2. Add a temporary generation-input source that uses the existing
-   `CharacterModelContextAssembler` for an exact active healer turn, an explicitly filtered healer
-   perception snapshot, the exact authored knowledge it references, exact recent in-world speech,
-   and an exact current Wait affordance. Return the matching world-object and affordance validation
-   snapshots with the request; do not infer hidden objects or actions from dialogue text.
-3. Prove in focused Godot smokes that prompt-shaped player text remains the exact untrusted
-   in-world entry, unavailable perception and unreferenced knowledge stay absent, all supplied
-   exact instances remain unchanged, and no generation, response reception, transcript/world
-   event, discovery, movement, or presentation state changes.
-4. Do not construct OpenAI/Anthropic/Ollama models, access credentials or network, select or persist
-   settings, start the generation flow, execute intentions, add telemetry/persistence, or add
-   Windows/Linux credential facilities.
+1. Make the canonical LLM assignment select the existing temporary offline model for the ordinary
+   awaiting healer turn. Build its input through
+   `TemporaryCharacterModelGenerationInputSource` and start the existing one-shot generation flow
+   with the exact returned request, world objects, and affordances.
+2. Prove through player dialogue submission that an unavailable terminal result cancels the exact
+   pending turn, shows only canonical failure status, emits no healer speech, and changes no
+   transcript, world-event, world-object, discovery, examination, collection, or presentation state
+   beyond the fixed model status. Routine movement must continue.
+3. Keep the Phase 3 deterministic response source as explicit test scaffolding only. Adjust its
+   focused smokes so their deterministic contract remains directly tested without making it the
+   ordinary runtime fallback.
+4. Do not construct OpenAI/Anthropic/Ollama adapters, access credentials or network, select or
+   persist settings, execute generated intentions, add telemetry/persistence, or add Windows/Linux
+   credential facilities.

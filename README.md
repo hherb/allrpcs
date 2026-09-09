@@ -724,8 +724,11 @@ or timeout. An opt-in progress observer receives accepted text deltas and only t
 terminal update; retryable text-free failures stay hidden and observer failure or independent
 cancellation cannot alter generation. The scene queues those observations across the async boundary,
 applies them on the Godot main thread, and presents text without parsing or executing it. No model is
-yet composed into the ordinary dialogue path, and no real provider call or generated non-wait
-intention execution occurs in standard gameplay.
+yet composed into the ordinary dialogue path. A separate stable credential-free unavailable model
+is composed only by an opt-in scene smoke; its exact bounded input reaches the same flow, cancels the
+pending turn after the terminal unavailable result, fabricates no dialogue, and does not stop routine
+healer movement. No real provider call or generated non-wait intention execution occurs in standard
+gameplay.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
@@ -758,6 +761,16 @@ future commitments. Errors retain the exact offending intention in deterministic
 the response, requests, intentions, world objects, and affordances remain unchanged. The
 affordance snapshot is still supplied by a trusted caller rather than derived from gameplay state or
 serialized into model context.
+
+The temporary scene now authors one complete stable healer whose exact identifier is shared with the
+live turn source and whose controller assignment is the canonical LLM type. Its generation-input
+source accepts only an exact awaiting healer activity and delegates context construction to the
+Application assembler. One identified herb-patch description, one referenced knowledge entry, one
+goal, the exact heard in-world request, and the same text explicitly marked as untrusted player
+dialogue enter the bounded request. The unnoticed stone marker, unreferenced knowledge, display
+names, and other scene state stay absent. The returned bundle retains the exact authoritative
+world-object and empty targeted-affordance snapshots used for response validation; that empty
+snapshot permits only the validation policy's inherent target-free `Wait` intention.
 
 `Allrpcs.Infrastructure.Dialogue.CharacterTurnResponseJsonDeserializer` is the first strict
 provider-response boundary. It accepts one exact provider-neutral turn request and a complete JSON
@@ -809,9 +822,8 @@ boundary, never uses a shell, receives save bytes only through redirected standa
 and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
 saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
 touch a user's real keychain. No Windows Credential Manager or Linux Secret Service adapter,
-settings UI or persistence, diagnostic logging/export, controller cancellation/timeout diagnostic,
-runtime scene composition, live call proof, partial display stream, or generated-intention
-execution exists.
+settings UI or persistence, diagnostic logging/export, ordinary-turn model selection, live call
+proof, or generated-intention execution exists.
 
 ## Location model boundaries
 
