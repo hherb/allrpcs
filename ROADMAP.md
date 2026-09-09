@@ -152,8 +152,8 @@ Acceptance:
 - [ ] Implement the Anthropic adapter.
 - [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
 - [ ] Prevent provider-specific request or response objects from entering domain state.
-- [ ] Validate all structured output and reject unknown objects, destinations, and actions.
-- [ ] Retry only safe, idempotent generation failures.
+- [x] Validate all structured output and reject unknown objects, destinations, and actions.
+- [x] Retry only safe, idempotent generation failures.
 - [ ] Support response cancellation and a visible timeout state.
 - [ ] Stream display text without executing partial intentions.
 - [ ] Add provider and model settings with connection tests.

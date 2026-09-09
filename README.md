@@ -695,8 +695,12 @@ update after termination.
 One terminal update distinguishes completed, caller-cancelled, timed-out, and failed generation.
 Failures carry only a bounded provider-neutral code for unavailable, authentication, rate-limit,
 transport, invalid-response, or provider-rejection outcomes; provider error bodies and DTOs do not
-enter Domain state. These contracts do not yet implement deadline enforcement, retries, adapters,
-provider calls, logging, credentials, response validation, or execution of generated intentions.
+enter Domain state. The generation controller enforces one caller-supplied deadline across the
+whole operation, translates caller cancellation and deadline expiry into distinct terminal states,
+and rejects a stream that ends without a terminal update as an invalid response. It permits one
+retry only for unavailable, rate-limited, or transport failures that emitted no text; it never
+retries exposed partial text, authentication, invalid responses, provider rejection, cancellation,
+or timeout. No provider adapter, call, logging, credential access, or intention execution exists.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
@@ -719,15 +723,28 @@ missing, duplicate, changed, or merely value-equal replacement player text. The 
 derive memories or valid affordances, claim current affordance eligibility, define a retained
 conversation store or window, or call a provider.
 
+Complete provider-neutral responses pass one pure Application validation gate before they can be
+accepted. The gate requires the exact caller-expected turn request, delegates existing structural
+validation for the immediate intention and every future commitment intention, and rejects targeted
+intentions whose value-equal identifier is absent from the authoritative world-object snapshot.
+The immediate intention also must be `Wait` or match an exact type and value-equal target pair in an
+immutable current-affordance snapshot. Current eligibility is deliberately not projected onto
+future commitments. Errors retain the exact offending intention in deterministic response order;
+the response, requests, intentions, world objects, and affordances remain unchanged. The
+affordance snapshot is still supplied by a trusted caller rather than derived from gameplay state or
+serialized into model context.
+
 `Allrpcs.Infrastructure.Dialogue.CharacterTurnResponseJsonDeserializer` is the first strict
 provider-response boundary. It accepts one exact provider-neutral turn request and a complete JSON
 document, then materializes only existing Domain response values. Exact property sets reject
 unknown, missing, or duplicate members at every level; canonical closed disposition and intention
 vocabularies reject unknown actions; existing structural intention validation rejects missing or
-unexpected targets. The transport document, commitment count, and intentions per commitment are
-bounded independently of the Domain response. This decoder does not retain provider DTOs or error
-bodies, establish object existence or current affordance eligibility, execute intentions, or call a
-provider.
+unexpected targets. The initial closed intention vocabulary has no destination-bearing action, so
+a proposed destination has no accepted document shape. The transport document, commitment count,
+and intentions per commitment are bounded independently of the Domain response. This decoder does
+not retain provider DTOs or error
+bodies, execute intentions, or call a provider. Object existence and current immediate-action
+eligibility are enforced separately by the Application validation gate.
 
 ## Location model boundaries
 
