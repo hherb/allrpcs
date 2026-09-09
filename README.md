@@ -46,11 +46,12 @@ content. Credential-free ordinary-path checks prove one validated target-free `W
 speaks exactly once, a hallucinated target is rejected without speech or mutation, and caller
 cancellation preserves only already-accepted stream text while cancelling the exact turn.
 
-Infrastructure contains a caller-composed OpenAI Responses HTTP adapter with stateless strict
-structured output, bounded SSE framing, completion-only structured response parsing, and optional
-terminal token diagnostics. Bounded settings, a redacted connection test, and macOS Keychain
-credential storage are present. Real provider composition and calls, Windows/Linux credential
-stores, Anthropic/Ollama adapters, and execution of generated non-wait intentions remain later work.
+Infrastructure contains caller-composed OpenAI Responses, Anthropic Messages, and loopback-only
+Ollama HTTP adapters with stateless strict structured output, bounded streaming completion, and
+optional terminal token diagnostics. Bounded settings, redacted OpenAI and Ollama connection tests,
+and macOS OpenAI Keychain storage are present. Ordinary-scene provider composition, Windows/Linux
+credential stores, Anthropic credential storage, and execution of generated non-wait intentions
+remain later work.
 
 ## Prerequisites
 
@@ -829,11 +830,15 @@ caller-owned `HttpClient`, Anthropic settings, and read-only credential source; 
 official Messages endpoint with `x-api-key` and `anthropic-version: 2023-06-01`, never reads failure
 bodies, and yields one provider-neutral terminal update with optional redacted usage diagnostics.
 
-The initial Ollama boundary only serializes a stateless native `/api/chat` request. It disables
-thinking, requests streaming structured output with the same closed schema, uses trusted system
-messages plus one exact untrusted user message, and requests deterministic temperature zero. It
-does not yet define or call a configurable loopback endpoint, parse NDJSON, inspect installed models,
-or construct an Ollama adapter.
+The Ollama request boundary disables thinking, requests streaming structured output with the same
+closed schema, uses trusted system messages plus one exact untrusted user message, and requests
+deterministic temperature zero. Provider-unsupported length and maximum-count schema keywords are
+omitted while the strict local decoder retains every bound. A strict UTF-8 NDJSON reader bounds
+every line, document, and stream count, rejects blank or truncated input, and leaves caller-owned
+streams open. The native accumulator accepts only ordered assistant content and one successful
+terminal stop, discards provider metadata, derives wholly present bounded usage, and maps malformed,
+thinking, tool, error, or post-terminal shapes to redacted provider-neutral failures without
+exposing partial structured JSON.
 
 The Application diagnostic boundary retains only a canonical provider, terminal status or bounded
 failure code, elapsed duration, and wholly present or absent input/output/total token counts. Counts
@@ -845,21 +850,23 @@ time and the sink for completed or failed provider attempts; absent usage remain
 malformed usage fails closed without exposing partial provider content.
 
 The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
-provider instance and one bounded model name; it does not select or construct an adapter. OpenAI and
-Anthropic HTTP adapters remain caller-composed, while Ollama currently has only request
-serialization. The OpenAI connection tester retrieves only the exact configured model resource over
-a caller-owned HTTP client and the same credential-source contract. It does not generate content or
-read success or failure bodies, and exposes only connected or existing provider-neutral failure
-codes.
+provider instance and one bounded model name; it does not select or construct an adapter. All three
+HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP IP-loopback
+origin and derives the native `/api/chat` and `/api/show` resources; hostnames, LAN/public addresses,
+credentials, paths, queries, fragments, HTTPS, and implicit ports are rejected. The OpenAI and
+Ollama connection testers inspect only the exact configured model through caller-owned HTTP, never
+generate content or read success or failure bodies, and expose only provider-neutral outcomes.
 
 `MacOsOpenAiCredentialStore` implements save/replace, load, and delete for one exact generic
 password identity in macOS Keychain. The `/usr/bin/security` process is isolated behind an injected
 boundary, never uses a shell, receives save bytes only through redirected standard input, bounds
 and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
 saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
-touch a user's real keychain. No Anthropic credential store, Ollama HTTP adapter, Windows Credential
-Manager or Linux Secret Service adapter, settings UI or persistence, diagnostic logging/export,
-ordinary-turn provider selection, live call proof, or generated-intention execution exists.
+touch a user's real keychain. No Anthropic credential store, Windows Credential Manager or Linux
+Secret Service adapter, settings UI or persistence, diagnostic logging/export, ordinary-turn
+provider selection, or generated-intention execution exists. The opt-in
+`OllamaCharacterModelLiveTests` checks an explicitly named already-installed model without pulling
+or modifying it; the standard suite does not access a local server.
 
 ## Location model boundaries
 
