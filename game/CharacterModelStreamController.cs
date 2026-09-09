@@ -44,4 +44,19 @@ public partial class CharacterModelStreamController : Node
             return false;
         }
     }
+
+    /// <summary>Replaces one completed stream with a fresh empty stream snapshot.</summary>
+    public bool TryReset()
+    {
+        CharacterModelStreamSnapshot? snapshot = Snapshot;
+        if (snapshot is null
+            || snapshot.Updates.Count == 0
+            || snapshot.Updates[^1] is not CharacterModelStreamTermination)
+        {
+            return false;
+        }
+
+        Snapshot = new CharacterModelStreamSnapshot([]);
+        return true;
+    }
 }

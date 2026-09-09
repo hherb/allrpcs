@@ -38,14 +38,15 @@ streams. The scene now owns one exact immutable stream lifecycle, projects bound
 separately from those content-free states, and applies asynchronously observed updates only on the
 Godot main thread. Completed validated responses enter only their exact awaiting turn; explicit
 player cancellation cancels both generation and turn, while timeout or failure cancels the pending
-turn without fabricating dialogue.
+turn without fabricating dialogue. Ordinary heard healer requests now use the authored LLM
+assignment, exact bounded input, and a stable offline model. A completed terminal flow can reset to
+a fresh empty stream for a later exact request without retaining prior presentation or content.
 
 Infrastructure contains a caller-composed OpenAI Responses HTTP adapter with stateless strict
 structured output, bounded SSE framing, completion-only structured response parsing, and optional
 terminal token diagnostics. Bounded settings, a redacted connection test, and macOS Keychain
-credential storage are present. Live model runtime composition, real provider calls, starting model
-generation from ordinary dialogue, Windows/Linux credential stores, Anthropic/Ollama adapters, and
-execution of generated non-wait intentions remain later work.
+credential storage are present. Real provider composition and calls, Windows/Linux credential
+stores, Anthropic/Ollama adapters, and execution of generated non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -723,12 +724,15 @@ retries exposed partial text, authentication, invalid responses, provider reject
 or timeout. An opt-in progress observer receives accepted text deltas and only the final validated
 terminal update; retryable text-free failures stay hidden and observer failure or independent
 cancellation cannot alter generation. The scene queues those observations across the async boundary,
-applies them on the Godot main thread, and presents text without parsing or executing it. No model is
-yet composed into the ordinary dialogue path. A separate stable credential-free unavailable model
-is composed only by an opt-in scene smoke; its exact bounded input reaches the same flow, cancels the
-pending turn after the terminal unavailable result, fabricates no dialogue, and does not stop routine
-healer movement. No real provider call or generated non-wait intention execution occurs in standard
-gameplay.
+applies them on the Godot main thread, and presents text without parsing or executing it. The
+authored healer's canonical LLM assignment routes ordinary heard player requests through the exact
+bounded generation input and stable credential-free unavailable model. Each unavailable terminal
+result cancels only its pending turn, emits canonical content-free failure status, fabricates no
+healer dialogue, and does not stop routine movement. A fully observed terminal stream can reset to
+a fresh hidden empty snapshot, allowing later distinct ordinary requests without retaining prior
+content or presentation. The deterministic response source remains explicit focused-test
+scaffolding only. No real provider call or generated non-wait intention execution occurs in
+standard gameplay.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds

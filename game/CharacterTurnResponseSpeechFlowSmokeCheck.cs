@@ -16,6 +16,7 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
     private CharacterTurnTranscriptController transcriptController = null!;
     private DialogueEventController eventController = null!;
     private DialogueInputController inputController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private LineEdit input = null!;
     private int stage;
     private DialogueUtterance? playerUtterance;
@@ -42,6 +43,8 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
             "../CharacterTurnTranscriptController");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
@@ -69,6 +72,18 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
                 || !ReferenceEquals(transcript.Entries[0].SpokenStatement, playerUtterance))
             {
                 Fail("Healer speech flow did not preserve the exact awaiting player occurrence.");
+                return;
+            }
+
+            CharacterTurnResponse response = responseSource.CreateResponse(
+                awaiting.Request,
+                GetNode<TemporaryWorldObjectSource>(
+                    "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
+            if (!turnController.TryReceiveResponse(response))
+            {
+                Fail(
+                    "Focused speech-flow scaffolding could not install its deterministic "
+                    + "response.");
                 return;
             }
 

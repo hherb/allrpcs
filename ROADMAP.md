@@ -149,8 +149,8 @@ Acceptance:
   relevant knowledge, goals, memories, recent speech, and currently valid affordances.
 - [x] Mark player dialogue as untrusted in-world content rather than runtime instructions.
 - [x] Author a stable temporary LLM healer and exact filtered provider-neutral generation input.
-- [x] Prove a credential-free unavailable model cancels its opt-in pending turn without fabricated
-  dialogue or stopping routine movement.
+- [x] Route ordinary healer dialogue through a reusable credential-free unavailable model flow that
+  cancels each exact pending turn without fabricated dialogue or stopping routine movement.
 - [ ] Implement the OpenAI adapter.
 - [ ] Implement the Anthropic adapter.
 - [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
@@ -171,7 +171,7 @@ Acceptance:
 - [x] Add controller-owned redacted cancellation and timeout diagnostics.
 - [x] Project model-stream lifecycle to fixed content-free UI states and prove a visible timeout
   label seam.
-- [ ] Provide explicit offline behaviour: existing routine movement continues, but the game does
+- [x] Provide explicit offline behaviour: existing routine movement continues, but the game does
   not fabricate LLM dialogue.
 - [ ] Test hallucinated objects, malformed output, instruction attacks, timeouts, cancellation,
   provider errors, and provider switching.

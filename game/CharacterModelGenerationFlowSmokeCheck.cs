@@ -310,10 +310,24 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
             return;
         }
 
+        if (!flow.TryReset()
+            || flow.IsGenerating
+            || flow.HasStarted
+            || flow.Result is not null
+            || stream.Snapshot is not { Updates.Count: 0 }
+            || statusLabel.Visible
+            || statusLabel.Presentation is not null
+            || textLabel.Visible
+            || textLabel.Presentation is not null)
+        {
+            Fail("Completed character-model flow did not reset to an exact hidden empty state.");
+            return;
+        }
+
         GD.Print(
             $"Character-model generation flow {mode} smoke passed: exact streamed text, "
-            + "canonical visible terminal state, independent cancellation, and unchanged "
-            + "authoritative scene state.");
+            + "canonical visible terminal state, exact reset, independent cancellation, and "
+            + "unchanged authoritative scene state.");
         GetTree().Quit();
     }
 

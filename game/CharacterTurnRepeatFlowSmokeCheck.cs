@@ -16,6 +16,7 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     private TemporaryCharacterExaminationFlowController examinationFlowController = null!;
     private DialogueEventController eventController = null!;
     private DialogueInputController inputController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private LineEdit input = null!;
     private int stage;
     private CharacterTurnActivity? firstCompleted;
@@ -44,6 +45,8 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             "../TemporaryCharacterExaminationFlowController");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
@@ -67,6 +70,11 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             }
 
             firstRequest = turnController.Activity!.Request;
+            if (!TryInstallDeterministicTestResponse(firstRequest))
+            {
+                return;
+            }
+
             stage = 2;
             return;
         }
@@ -119,6 +127,11 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             }
 
             secondRequest = turnController.Activity.Request;
+            if (!TryInstallDeterministicTestResponse(secondRequest))
+            {
+                return;
+            }
+
             stage = 5;
             return;
         }
@@ -208,6 +221,21 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     {
         input.Text = text;
         input.EmitSignal(LineEdit.SignalName.TextSubmitted, text);
+    }
+
+    private bool TryInstallDeterministicTestResponse(CharacterTurnRequest request)
+    {
+        CharacterTurnResponse response = responseSource.CreateResponse(
+            request,
+            GetNode<TemporaryWorldObjectSource>(
+                "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
+        if (!turnController.TryReceiveResponse(response))
+        {
+            Fail("Focused repeat-flow scaffolding could not install its deterministic response.");
+            return false;
+        }
+
+        return true;
     }
 
     private void CaptureInitialState()

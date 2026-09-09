@@ -18,6 +18,7 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
     private DialogueInputController inputController = null!;
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
+    private TemporaryCharacterTurnResponseSource responseSource = null!;
     private LineEdit input = null!;
     private int stage;
     private CharacterTurnActivity? awaitingActivity;
@@ -47,6 +48,8 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
             "../CharacterTurnActivityController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
+        responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
+            "../TemporaryCharacterTurnResponseSource");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
@@ -75,12 +78,17 @@ public partial class CharacterTurnResponseFlowSmokeCheck : Node
             }
 
             awaitingActivity = turnController.Activity;
-            stage = 2;
-            return;
-        }
+            CharacterTurnResponse response = responseSource.CreateResponse(
+                awaitingActivity!.Request,
+                GetExpectedTargetObjectId());
+            if (!turnController.TryReceiveResponse(response))
+            {
+                Fail(
+                    "Focused response-flow scaffolding could not install its deterministic "
+                    + "response.");
+                return;
+            }
 
-        if (stage == 2)
-        {
             if (!ProvesExactResponseReception())
             {
                 return;

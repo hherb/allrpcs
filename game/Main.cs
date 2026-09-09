@@ -1,6 +1,7 @@
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Movement;
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Controllers;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
@@ -19,6 +20,7 @@ public partial class Main : Node
 {
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
     private const float DialogueHearingRangePixels = 192.0f;
+    private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
@@ -34,7 +36,9 @@ public partial class Main : Node
     private DialogueEventController dialogueEventController = null!;
     private DialogueInputController dialogueInputController = null!;
     private TemporaryCharacterTurnRequestSource characterTurnRequestSource = null!;
-    private TemporaryCharacterTurnResponseSource characterTurnResponseSource = null!;
+    private TemporaryCharacterModelGenerationInputSource characterModelInputSource = null!;
+    private TemporaryHealerCharacterSource healerCharacterSource = null!;
+    private TemporaryOfflineCharacterModelSource offlineCharacterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
@@ -70,8 +74,12 @@ public partial class Main : Node
         dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
         characterTurnRequestSource = GetNode<TemporaryCharacterTurnRequestSource>(
             "TemporaryCharacterTurnRequestSource");
-        characterTurnResponseSource = GetNode<TemporaryCharacterTurnResponseSource>(
-            "TemporaryCharacterTurnResponseSource");
+        characterModelInputSource = GetNode<TemporaryCharacterModelGenerationInputSource>(
+            "TemporaryCharacterModelGenerationInputSource");
+        healerCharacterSource = GetNode<TemporaryHealerCharacterSource>(
+            "TemporaryHealerCharacterSource");
+        offlineCharacterModelSource = GetNode<TemporaryOfflineCharacterModelSource>(
+            "TemporaryOfflineCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
@@ -266,7 +274,10 @@ public partial class Main : Node
         if (modelFlowController.HasStarted)
         {
             ProcessCharacterModelTurnResponse();
-            return;
+            if (modelFlowController.IsGenerating)
+            {
+                return;
+            }
         }
 
         CharacterTurnActivity? activity = characterTurnController.Activity;
@@ -276,14 +287,29 @@ public partial class Main : Node
             return;
         }
 
-        ObjectId examinationTargetObjectId = worldObjectSource.WorldObjects.Entries[0].Identity.Id;
-        CharacterTurnResponse response = characterTurnResponseSource.CreateResponse(
-            activity.Request,
-            examinationTargetObjectId);
-        if (!characterTurnController.TryReceiveResponse(response))
+        if (modelFlowController.Result is not null && !modelFlowController.TryReset())
         {
             throw new InvalidOperationException(
-                "The live character-turn controller could not receive its selected response.");
+                "The completed character-model flow could not reset for the next exact turn.");
+        }
+
+        Character character = healerCharacterSource.Character;
+        CharacterControllerAssignment assignment = character.ControllerAssignment;
+        TemporaryCharacterModelGenerationInput? input = characterModelInputSource.CreateInput(
+            activity);
+        if (!ReferenceEquals(assignment.CharacterId, activity.Request.RespondingCharacterId)
+            || !ReferenceEquals(assignment.ControllerType, ControllerType.Llm)
+            || input is null
+            || !ReferenceEquals(input.GenerationRequest.TurnRequest, activity.Request)
+            || !modelFlowController.TryStart(
+                offlineCharacterModelSource.Model,
+                input.GenerationRequest,
+                input.WorldObjects,
+                input.Affordances,
+                CharacterModelGenerationDeadline))
+        {
+            throw new InvalidOperationException(
+                "The ordinary LLM healer turn could not start its bounded offline generation.");
         }
     }
 

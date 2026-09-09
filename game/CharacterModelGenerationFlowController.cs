@@ -22,7 +22,7 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
     /// <summary>Gets whether the one scene generation remains active.</summary>
     public bool IsGenerating => generationTask is not null;
 
-    /// <summary>Gets whether this one-shot scene flow has started.</summary>
+    /// <summary>Gets whether the current scene flow has started.</summary>
     public bool HasStarted => generationTask is not null || Result is not null;
 
     /// <summary>Gets the exact completed generation result, if available.</summary>
@@ -107,6 +107,31 @@ public partial class CharacterModelGenerationFlowController : Node, ICharacterMo
 
         cancellationRequested = true;
         generationCancellation.Cancel();
+        return true;
+    }
+
+    /// <summary>Clears one completed terminal flow so another generation can start.</summary>
+    public bool TryReset()
+    {
+        CharacterModelStreamController? stream = streamController;
+        CharacterModelStreamSnapshot? result = Result;
+        if (stream is null
+            || generationTask is not null
+            || result is null
+            || result.Updates.Count == 0
+            || result.Updates[^1] is not CharacterModelStreamTermination
+            || stream.Snapshot is not { } sceneSnapshot
+            || !HasSameExactUpdates(sceneSnapshot, result)
+            || !pendingUpdates.IsEmpty
+            || !stream.TryReset())
+        {
+            return false;
+        }
+
+        Result = null;
+        cancellationRequested = false;
+        statusLabel!.ClearPresentation();
+        textLabel!.ClearPresentation();
         return true;
     }
 

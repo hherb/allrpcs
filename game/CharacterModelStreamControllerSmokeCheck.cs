@@ -64,6 +64,7 @@ public partial class CharacterModelStreamControllerSmokeCheck : Node
         CharacterModelStreamController uninitialized = new();
         AddChild(uninitialized);
         if (uninitialized.TryAppend(text)
+            || uninitialized.TryReset()
             || label.Observe(uninitialized)
             || uninitialized.Snapshot is not null
             || label.Visible
@@ -158,10 +159,22 @@ public partial class CharacterModelStreamControllerSmokeCheck : Node
             return;
         }
 
+        if (!controller.TryReset()
+            || controller.Snapshot is not { Updates.Count: 0 } reset
+            || ReferenceEquals(reset, terminal)
+            || controller.TryReset()
+            || !ReferenceEquals(
+                label.Presentation,
+                CharacterModelGenerationStatusPresentation.TimedOut))
+        {
+            Fail("Terminal model stream did not reset exactly once to a fresh empty snapshot.");
+            return;
+        }
+
         GD.Print(
             "Character-model stream controller smoke passed: explicit empty initialization, "
             + "exact text-prefix and timeout appends, canonical content-free presentation, "
-            + "rejected-state preservation, and unchanged surrounding scene state.");
+            + "terminal reset, rejected-state preservation, and unchanged surrounding scene state.");
         GetTree().Quit();
     }
 
