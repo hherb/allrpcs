@@ -57,7 +57,7 @@ public sealed class OllamaCharacterModelRequestSerializerTests
     }
 
     [Fact]
-    public void WritesTheClosedLocallyBoundedResponseSchema()
+    public void WritesTheClosedSchemaWhileLeavingProviderUnsupportedBoundsToTheLocalDecoder()
     {
         using JsonDocument document = JsonDocument.Parse(
             OllamaCharacterModelRequestSerializer.Serialize(CreateRequest(), "model:test"));
@@ -69,17 +69,42 @@ public sealed class OllamaCharacterModelRequestSerializerTests
             ["disposition", "speech", "immediateIntention", "commitments", "stateProposals"],
             schema.GetProperty("required").EnumerateArray().Select(value => value.GetString()));
         Assert.Equal(
-            CharacterTurnResponseJsonDeserializer.MaximumCommitmentCount,
+            1,
             schema.GetProperty("properties")
                 .GetProperty("commitments")
-                .GetProperty("maxItems")
+                .GetProperty("items")
+                .GetProperty("properties")
+                .GetProperty("proposedIntentions")
+                .GetProperty("minItems")
                 .GetInt32());
-        Assert.Equal(
-            CharacterTurnResponse.MaximumStateProposalCount,
-            schema.GetProperty("properties")
-                .GetProperty("stateProposals")
-                .GetProperty("maxItems")
-                .GetInt32());
+        Assert.DoesNotContain(
+            EnumeratePropertyNames(schema),
+            name => name is "minLength" or "maxLength" or "maxItems");
+    }
+
+    private static IEnumerable<string> EnumeratePropertyNames(JsonElement element)
+    {
+        if (element.ValueKind == JsonValueKind.Object)
+        {
+            foreach (JsonProperty property in element.EnumerateObject())
+            {
+                yield return property.Name;
+                foreach (string nestedName in EnumeratePropertyNames(property.Value))
+                {
+                    yield return nestedName;
+                }
+            }
+        }
+        else if (element.ValueKind == JsonValueKind.Array)
+        {
+            foreach (JsonElement item in element.EnumerateArray())
+            {
+                foreach (string nestedName in EnumeratePropertyNames(item))
+                {
+                    yield return nestedName;
+                }
+            }
+        }
     }
 
     [Fact]

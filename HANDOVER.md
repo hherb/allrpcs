@@ -2,62 +2,65 @@
 
 ## Current state
 
-`main` contains merged PR #166 at `d5af8f4`. The current branch is
-`codex/phase-4-ordinary-provider-failures` and advances Phase 4 through Phase 4j1.
+`main` contains merged PR #167 at `8c1b89c`. The current branch is
+`codex/phase-4-ollama-ndjson` and advances Phase 4 through Phase 4j5.
 
-- Phases 4h4-4h7 extend credential-free ordinary-scene proof: a hidden text-free `Unavailable`
-  attempt safely retries the same request; a terminal provider rejection runs once; the real
-  30-second scene deadline produces canonical timeout; an unterminated stream with exposed text
-  cannot retry; and two caller-composed models serve distinct consecutive turns. All unsuccessful
-  paths cancel only their exact turn without fabricated dialogue, action, fallback, or mutation.
-- Phases 4i1-4i3 add a caller-composed Anthropic Messages adapter. Shared prompt/schema writers keep
-  trusted context separate from the exact untrusted utterance. The Anthropic schema omits provider-
-  unsupported bounds while the local decoder retains them; bounded SSE lifecycle accumulation,
-  terminal usage, HTTP status/transport mapping, diagnostics, `x-api-key`, and the pinned
-  `anthropic-version: 2023-06-01` header remain redacted and provider-neutral above Infrastructure.
-- Phase 4j1 serializes a native Ollama `/api/chat` request with system/user separation, thinking
-  disabled, streaming enabled, deterministic temperature zero, and the closed bounded response
-  schema. It does not yet define transport or parse NDJSON.
+- Phase 4j2 adds strict leave-open UTF-8 Ollama NDJSON framing plus a native chat accumulator. It
+  bounds lines, documents, counts, combined response text, and usage; requires ordered assistant
+  content and one successful `done:true` stop; and rejects blank/truncated input, invalid UTF-8,
+  thinking, tools, malformed metadata, unknown or repeated terminal shapes, and post-terminal data.
+- Phases 4j3-4j4 add `OllamaEndpoint` and `OllamaCharacterModel`. Only explicit HTTP IP-loopback
+  origins with explicit non-default ports are accepted. The caller-composed adapter posts stateless
+  native chat requests, requires NDJSON success content, maps HTTP/transport failures without
+  reading error bodies, emits only a complete provider-neutral termination, and optionally records
+  bounded redacted Ollama diagnostics.
+- Phase 4j5 adds a redacted `/api/show` connection test for the exact configured local model. It
+  uses the same validated endpoint, sends no credentials, generates no content, and never reads
+  success or failure metadata.
+- A live opt-in check against the already-installed `granite4.1:8b-q8_0` model confirmed `/api/show`
+  availability and real `/api/chat` NDJSON. The live provider rejected the prior maximum/string-
+  bound schema grammar; the request now omits those provider-unsupported keywords while the local
+  decoder retains every bound. The model then produced locally invalid gameplay content, which was
+  rejected as a redacted `InvalidResponse` without a response or partial presentation. No model was
+  installed, pulled, changed, or retained by the game.
 
-OpenAI and Anthropic adapters, settings, diagnostics, credential sources, and the macOS OpenAI
-Keychain store remain caller-composed only. No live key, credential access, network call, local
-model process, model download, or hosted workflow was used. Ollama transport, Anthropic credential
-storage, Windows/Linux credential stores, settings UI/persistence, live provider selection,
-generated non-wait intention execution, telemetry export, and gameplay persistence/mutation remain
-absent. Full Phase 4 acceptance remains incomplete.
+OpenAI, Anthropic, and Ollama adapters remain caller-composed only. No production provider binding,
+settings UI/persistence, automatic local-server discovery, model process ownership, Anthropic
+credential store, Windows/Linux credential store, diagnostic export, generated non-wait intention
+execution, or gameplay persistence/mutation was added. Full Phase 4 acceptance remains incomplete.
 
 ## Validation
 
 The complete host-local `./scripts/quality.sh` passes:
 
 - workflow and formatting validation, restore, and a zero-warning build;
-- 1,388 Domain tests, 323 Application tests, 207 Infrastructure tests, and eight architecture
+- 1,388 Domain tests, 323 Application tests, 296 Infrastructure tests, and eight architecture
   tests;
 - the five-evidence representative scenario validator;
-- all 68 opt-in Godot smoke invocations, including ordinary retry/provider failure, the real
-  30-second timeout, consecutive model replacement, and malformed-stream rejection; and
+- all 68 opt-in Godot smoke invocations; and
 - the bounded graphical Compatibility-renderer launch.
 
-The restricted sandbox reproduces the known Godot log-directory denial; identical host-local
-smokes pass. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows,
-and treat zero-step hosted failures as account infrastructure rather than test evidence.
+The additional explicitly enabled live check passes with
+`ALLRPCS_LIVE_OLLAMA_MODEL=granite4.1:8b-q8_0`; without that variable the standard Infrastructure
+suite performs no local network access. The restricted sandbox reproduces the known MSBuild/Godot
+IPC and log-directory denials; identical host-local commands pass. GitHub Actions budget is
+exhausted for the month: do not dispatch hosted workflows, and treat zero-step hosted failures as
+account infrastructure rather than test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 4j2: bounded Ollama native NDJSON completion**.
+Take **Phase 4k1: immutable caller-composed provider bindings and exact selection**.
 
 Acceptance boundary:
 
-1. Add a strict UTF-8 newline-delimited JSON reader with explicit line/document/count bounds. It
-   must consume a caller-owned readable stream without closing it, reject blank/truncated,
-   malformed, NUL-containing, invalid-UTF-8, or excessive input, and propagate caller cancellation.
-2. Accumulate only native `/api/chat` assistant `message.content` chunks in order. Reject thinking,
-   tool calls, non-assistant roles, premature or repeated `done`, unknown error/content shapes, and
-   any update after termination; never expose partial structured JSON as display text.
-3. Require one final `done:true` with a successful stop reason, decode the complete bounded document
-   through `CharacterModelJsonResponseCompletion`, and retain only wholly present bounded
-   `prompt_eval_count`, `eval_count`, and derived total usage. Map mid-stream `error` to one redacted
-   provider failure and I/O to `Transport` without retaining details.
-4. Do not add the HTTP adapter or configurable endpoint yet; do not start Ollama, inspect/pull a
-   model, access network/credentials, wire scenes or provider selection, persist settings, execute
-   generated intentions, add telemetry, or add platform credential facilities.
+1. Add a provider-neutral Application binding that retains one exact `CharacterModelSettings`,
+   `ICharacterModel`, and `ICharacterModelConnectionTester` supplied by a trusted composition root;
+   do not construct Infrastructure adapters or credentials in Application.
+2. Add an immutable copied snapshot of at most the three canonical provider bindings. Reject null,
+   empty, duplicate, non-canonical, or settings/provider-mismatched entries without retaining a
+   caller-owned mutable collection.
+3. Select only by the exact canonical provider and return the exact registered binding. A missing
+   provider must remain explicitly unavailable with no default, provider substitution, credential
+   fallback, or model-name rewriting. Prove exact OpenAI/Anthropic/Ollama switching with fakes.
+4. Do not wire the Godot scene, persist settings, access credentials or network, discover/start
+   Ollama, execute generated intentions, add telemetry/export, or add platform credential stores.

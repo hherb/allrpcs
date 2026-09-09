@@ -161,9 +161,9 @@ Acceptance:
   its already-accepted presentation text.
 - [x] Prove hidden safe retry, terminal provider failure, the real scene timeout, malformed stream
   termination, and caller-composed model replacement through the ordinary healer path.
-- [ ] Implement the OpenAI adapter.
-- [ ] Implement the Anthropic adapter.
-- [ ] Implement the Ollama adapter with configurable loopback endpoint and model.
+- [x] Implement the OpenAI adapter.
+- [x] Implement the Anthropic adapter.
+- [x] Implement the Ollama adapter with configurable loopback endpoint and model.
 - [x] Prevent provider-specific request or response objects from entering domain state.
 - [x] Validate all structured output and reject unknown objects, destinations, and actions.
 - [x] Retry only safe, idempotent generation failures.
@@ -173,8 +173,9 @@ Acceptance:
   caller-composed authenticated HTTP adapter that fails closed without exposing partial JSON.
 - [x] Serialize strict-schema Anthropic Messages requests, parse bounded SSE event lifecycles, and
   expose a caller-composed authenticated HTTP adapter with redacted terminal usage diagnostics.
-- [x] Serialize a stateless strict-schema native Ollama chat request without yet adding loopback
-  transport, NDJSON completion, model inspection, or runtime construction.
+- [x] Serialize a stateless strict-schema native Ollama chat request, parse bounded NDJSON, expose a
+  caller-composed loopback-only HTTP adapter, and test exact configured-model availability without
+  reading provider metadata.
 - [x] Support response cancellation and a visible timeout state.
 - [x] Stream display text without executing partial intentions.
 - [x] Add bounded provider and model settings with a redacted OpenAI connection test.
