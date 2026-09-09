@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3]
+[gd_scene load_steps=85 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -90,6 +90,8 @@
 [ext_resource type="Script" path="res://CharacterTurnWorldEventOccurrenceControllerSmokeCheck.cs" id="88_character_action_controller_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterExaminationFlowController.cs" id="89_examination_flow_controller"]
 [ext_resource type="Script" path="res://CharacterExaminationFlowSmokeCheck.cs" id="90_examination_flow_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelGenerationStatusLabel.cs" id="91_model_status_label"]
+[ext_resource type="Script" path="res://CharacterModelGenerationStatusPresentationSmokeCheck.cs" id="92_model_status_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -579,6 +581,9 @@ script = ExtResource("82_character_turn_completion_flow_check")
 [node name="CharacterTurnRepeatFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("84_character_turn_repeat_flow_check")
 
+[node name="CharacterModelGenerationStatusPresentationSmokeCheck" type="Node" parent="."]
+script = ExtResource("92_model_status_check")
+
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
 
@@ -720,7 +725,7 @@ text = "Focused search: NO ATTEMPT"
 offset_left = 12.0
 offset_top = 456.0
 offset_right = 948.0
-offset_bottom = 570.0
+offset_bottom = 594.0
 color = Color(0.055, 0.067, 0.082, 0.92)
 script = ExtResource("66_dialogue_input_panel")
 
@@ -767,3 +772,12 @@ offset_bottom = 107.0
 text = "Character response: NONE"
 autowrap_mode = 2
 script = ExtResource("79_character_turn_response_label")
+
+[node name="ModelStatus" type="Label" parent="DialogueOverlay/Panel"]
+visible = false
+offset_left = 124.0
+offset_top = 112.0
+offset_right = 924.0
+offset_bottom = 135.0
+horizontal_alignment = 2
+script = ExtResource("91_model_status_label")
