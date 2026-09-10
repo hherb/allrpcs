@@ -221,6 +221,13 @@ Acceptance:
   conformance checks that require completed safe waits and report only bounded outcome counts.
 - [x] Require a separate fixed live action series to complete with a known currently afforded target
   and pass the existing provider-neutral response validation policy.
+- [x] Apply the same fixed wait and known-target live-conformance series to an explicitly selected
+  already-installed Ollama model without changing the permissive safety probe or standard suite.
+- [x] Add an explicitly enabled, content-free Ollama or OpenAI-compatible harness for carrying one
+  live known-target response through the ordinary healer scene and its existing validated action
+  boundary; live execution remains separate evidence.
+- [x] Add the equivalent ordinary-scene harness for target-free live speech while proving no
+  physical, event, time, world-object, or perception mutation; live execution remains separate.
 - [x] Expose the known herb-patch examination affordance to ordinary healer generation and carry a
   validated distinct value-equal provider target through authoritative examination and safe
   collection without changing world objects or perception.

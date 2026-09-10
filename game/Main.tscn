@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3]
+[gd_scene load_steps=114 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -122,6 +122,7 @@
 [ext_resource type="Script" path="res://OpenAiCredentialControllerSmokeCheck.cs" id="120_openai_credential_controller_check"]
 [ext_resource type="Script" path="res://OpenAiCredentialPanelSmokeCheck.cs" id="121_openai_credential_panel_check"]
 [ext_resource type="Script" path="res://CharacterModelConnectionPanelSmokeCheck.cs" id="122_model_connection_panel_check"]
+[ext_resource type="Script" path="res://LiveCharacterModelOrdinaryFlowSmokeCheck.cs" id="123_live_model_flow_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -676,6 +677,9 @@ script = ExtResource("109_ordinary_model_switch_check")
 
 [node name="CharacterModelOrdinaryMalformedStreamSmokeCheck" type="Node" parent="."]
 script = ExtResource("110_ordinary_malformed_model_check")
+
+[node name="LiveCharacterModelOrdinaryFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("123_live_model_flow_check")
 
 [node name="CharacterModelSettingsStorageControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("112_model_settings_storage_check")
