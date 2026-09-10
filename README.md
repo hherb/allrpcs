@@ -56,8 +56,8 @@ model names. Infrastructure factories compose each provider's exact model and te
 caller-owned dependencies without credential, network, discovery, or scene input/output. The
 ordinary scene loads one persisted selection into shared settings/composition state, while macOS
 Keychain, Linux Secret Service, and Windows Credential Manager OpenAI credential stores are present.
-Settings and credential UI, explicit save-on-edit behavior, Anthropic credential storage, and
-execution of generated non-wait intentions remain later work.
+Settings and credential UI remain explicit and do not save on edit. Anthropic credential storage
+and generated actions beyond the single known herb-patch examination flow remain later work.
 
 ## Prerequisites
 
@@ -752,8 +752,9 @@ bounded invalid response. Two consecutive caller-composed models receive distinc
 with stream presentation reset and both speeches recorded once in order. Every unsuccessful path
 cancels only its pending turn, exposes only canonical status plus accepted presentation text, and
 does not fabricate dialogue, fallback, action, or authoritative mutation. The deterministic
-response source remains explicit focused-test scaffolding only. No real provider call or generated
-non-wait intention execution occurs in standard gameplay.
+response source remains explicit focused-test scaffolding only. No real provider call occurs in
+standard validation. Ordinary gameplay exposes only one targeted model affordance and executes it
+only after the completed response passes the existing provider-neutral validation boundary.
 
 Provider-neutral model context is an immutable stable sequence of typed text entries, bounded to
 128 entries, 4,000 UTF-16 code units per entry, and 32,000 code units in total. Its closed kinds
@@ -938,6 +939,23 @@ overloads retain the exact caller-owned `TimeProvider` and redacted diagnostic s
 Construction rejects null or provider-mismatched inputs before creating a binding and performs no
 credential load, HTTP request, provider discovery, or scene mutation.
 
+OpenAI-compatible live conformance is distinct from the permissive fail-closed transport safety
+probe. `ALLRPCS_LIVE_OPENAI_CONFORMANCE=1` runs three fixed target-free wait requests, while
+`ALLRPCS_LIVE_OPENAI_ACTION_CONFORMANCE=1` runs three fixed known-target examination requests through
+the existing response validation policy. Both require one completed response per request, exact
+request identity, bounded healer speech, no commitments or state proposals, and the expected safe
+intention. Their failure output contains only bounded aggregate counts; it retains no model text,
+prompt, credential, or raw provider detail. Both remain network-free unless explicitly enabled and
+also require the existing explicit API-base and model environment values.
+
+The temporary ordinary healer input now exposes only one targeted action in addition to always-safe
+wait: examining the identified herb patch. A completed model response still has to pass the existing
+known-object and current-affordance validation before scene reception. The temporary examination
+flow compares the validated canonical object-id value so an Infrastructure-deserialized target can
+be distinct from the authoritative identifier instance, while the resulting occurrence, safe result,
+collection, transcript, and world event retain the exact proposed action chain. Unknown or
+unafforded targets remain failures and do not mutate authoritative state.
+
 All three HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP
 IP-loopback origin and derives the native `/api/chat` and `/api/show` resources; hostnames,
 LAN/public addresses, credentials, paths, queries, fragments, HTTPS, and implicit ports are
@@ -969,13 +987,14 @@ to redacted outcomes, and clears managed input, unmanaged write memory, copied o
 Credential Manager read buffer before releasing it. Standard tests are fake-boundary-only and do
 not touch a user's credential set. Windows support is not claimed until the same bytes are proved
 on Windows. No Anthropic credential store, automatic credential read, diagnostic export, automatic
-live recomposition, or generated non-wait-intention execution exists. The opt-in
+live recomposition, or generated action beyond the bounded known herb-patch examination exists. The opt-in
 `OllamaCharacterModelLiveTests` and `OpenAiCharacterModelLiveTests` check explicitly named
 already-installed or local models without pulling or modifying them; the standard suite does not
 access a local server. Tested local oMLX `LFM2.5-8B-A1B-MLX-8bit` and
 `gemma-4-26b-a4b-it-4bit` endpoints reached the strict adapter but returned non-conforming
 structured output, which was rejected as `InvalidResponse` without a response object; this is
-safety evidence, not full Phase 4 acceptance.
+safety evidence, not full Phase 4 acceptance. The fixed three-request wait and action conformance
+series against Gemma each reported three terminal failures and no completed responses.
 
 ## Location model boundaries
 

@@ -33,23 +33,29 @@ public partial class TemporaryCharacterExaminationResultSourceSmokeCheck : Node
 
         CharacterExaminationResult? first = source.CreateResult(occurrence, targetObjectId);
         CharacterExaminationResult? second = source.CreateResult(occurrence, targetObjectId);
+        ObjectId valueEqualTargetObjectId = new(targetObjectId.Value);
+        CharacterExaminationResult? valueEqual = source.CreateResult(
+            occurrence,
+            valueEqualTargetObjectId);
         if (first is null
             || second is null
+            || valueEqual is null
             || ReferenceEquals(first, second)
             || !ReferenceEquals(first.Occurrence, occurrence)
             || !ReferenceEquals(first.TargetObjectId, targetObjectId)
+            || !ReferenceEquals(valueEqual.TargetObjectId, targetObjectId)
+            || ReferenceEquals(valueEqualTargetObjectId, targetObjectId)
             || !ReferenceEquals(first.Safety, CharacterExaminationSafety.SafeToCollect)
-            || source.CreateResult(occurrence, new ObjectId(targetObjectId.Value)) is not null
             || !RejectsNullInputs(source, occurrence, targetObjectId))
         {
-            GD.PushError("Temporary examination-result source failed exact safe selection.");
+            GD.PushError("Temporary examination-result source failed known-target safe selection.");
             GetTree().Quit(exitCode: 1);
             return;
         }
 
         GD.Print(
             "Temporary examination-result source smoke passed: fresh safe results retained only "
-            + "the exact observed herb-patch examination and exact supplied target.");
+            + "the exact observed herb-patch examination for exact or value-equal known targets.");
         GetTree().Quit();
     }
 

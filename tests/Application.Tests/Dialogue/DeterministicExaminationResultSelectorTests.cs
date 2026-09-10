@@ -31,7 +31,7 @@ public sealed class DeterministicExaminationResultSelectorTests
     }
 
     [Fact]
-    public void RejectsADistinctValueEqualTargetWithoutChangingInputs()
+    public void AcceptsADistinctValueEqualTargetAndRetainsTheObservedIdentity()
     {
         ObjectId observedTargetObjectId = new("flowers");
         ObjectId suppliedTargetObjectId = new("flowers");
@@ -45,9 +45,11 @@ public sealed class DeterministicExaminationResultSelectorTests
         CharacterExaminationResult? result =
             DeterministicExaminationResultSelector.Select(occurrence, suppliedTargetObjectId);
 
-        Assert.Null(result);
+        Assert.NotNull(result);
         Assert.Equal(observedTargetObjectId, suppliedTargetObjectId);
         Assert.NotSame(observedTargetObjectId, suppliedTargetObjectId);
+        Assert.Same(occurrence, result.Occurrence);
+        Assert.Same(observedTargetObjectId, result.TargetObjectId);
         Assert.Same(originalWorldEvent, occurrence.WorldEvent);
         Assert.Same(originalTranscriptEntry, occurrence.TranscriptEntry);
         Assert.Same(originalAction, occurrence.TranscriptEntry.PhysicalAction);

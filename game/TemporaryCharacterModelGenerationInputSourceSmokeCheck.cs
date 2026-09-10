@@ -75,7 +75,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         if (input is null
             || !ProvesCompleteHealer(healerSource.Character, turnSource)
             || !ProvesExactBoundedInput(input, exactActivity)
-            || !ProvesWaitIsTheOnlyCurrentIntention(input)
+            || !ProvesWaitAndSafeExaminationAreTheOnlyCurrentIntentions(input)
             || !ProvesClosedActivityGate(inputSource, exactActivity)
             || !HasExpectedPublicSurface())
         {
@@ -101,7 +101,8 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         GD.Print(
             "Temporary healer generation-input source smoke passed: the stable LLM healer, "
             + "exact active request, filtered perception, referenced knowledge, recent speech, "
-            + "and Wait-only validation boundary were retained without generation or mutation.");
+            + "and Wait plus known herb-patch examination affordances were retained without "
+            + "generation or mutation.");
         GetTree().Quit();
     }
 
@@ -193,7 +194,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
                         || ReferenceEquals(entry.Text, activity.Request.DialogueEvent.Utterance.Text));
     }
 
-    private static bool ProvesWaitIsTheOnlyCurrentIntention(
+    private static bool ProvesWaitAndSafeExaminationAreTheOnlyCurrentIntentions(
         TemporaryCharacterModelGenerationInput input)
     {
         CharacterTurnRequest request = input.GenerationRequest.TurnRequest;
@@ -204,7 +205,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);
-        CharacterTurnResponse unavailableResponse = new(
+        CharacterTurnResponse examinationResponse = new(
             request,
             CharacterTurnDisposition.Accept,
             null,
@@ -213,14 +214,33 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
                 input.WorldObjects.Entries[0].Identity.Id),
             [],
             []);
+        CharacterTurnResponse unavailableResponse = new(
+            request,
+            CharacterTurnDisposition.Accept,
+            null,
+            new CharacterIntention(
+                CharacterIntentionType.CollectObject,
+                input.WorldObjects.Entries[0].Identity.Id),
+            [],
+            []);
+        CharacterIntentionAffordance affordance = input.Affordances.Entries.Single();
+        CharacterModelContextEntry contextAffordance = Entries(
+            input.GenerationRequest,
+            CharacterModelContextEntryKind.ValidAffordance).Single();
 
-        return input.Affordances.Entries.Count == 0
-            && Entries(
-                input.GenerationRequest,
-                CharacterModelContextEntryKind.ValidAffordance).Length == 0
+        return ReferenceEquals(affordance.Type, CharacterIntentionType.ExamineObject)
+            && ReferenceEquals(
+                affordance.TargetObjectId,
+                input.WorldObjects.Entries[0].Identity.Id)
+            && contextAffordance.Text == "type=examine-object;target=herb-patch"
             && CharacterTurnResponseValidationPolicy.Validate(
                 request,
                 waitResponse,
+                input.WorldObjects,
+                input.Affordances).IsValid
+            && CharacterTurnResponseValidationPolicy.Validate(
+                request,
+                examinationResponse,
                 input.WorldObjects,
                 input.Affordances).IsValid
             && !CharacterTurnResponseValidationPolicy.Validate(
