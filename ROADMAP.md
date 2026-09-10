@@ -185,6 +185,10 @@ Acceptance:
   secret-free JSON boundary.
 - [x] Persist the secret-free provider-settings document through bounded storage outcomes, strict
   local UTF-8 replacement, and isolated Godot scene composition.
+- [x] Support immutable provider-setting replacement, append, selection, and unselected-provider
+  removal behind one scene-owned settings snapshot.
+- [x] Load one exact persisted settings snapshot into shared scene state before composing its
+  selected supported provider.
 - [x] Compose exact OpenAI, Anthropic, and Ollama model bindings from caller-owned dependencies
   without credential, network, discovery, or scene input/output during construction.
 - [x] Compose a valid persisted selected Ollama or OS-supported OpenAI binding into the ordinary

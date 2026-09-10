@@ -12,6 +12,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
     private const string EnabledEnvironmentValue = "1";
 
     private TemporaryCharacterModelCompositionController controller = null!;
+    private CharacterModelSettingsController settingsController = null!;
     private CharacterModelSettingsStorageController storage = null!;
     private TemporaryCharacterModelSource modelSource = null!;
 
@@ -27,6 +28,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
 
         controller = GetNode<TemporaryCharacterModelCompositionController>(
             "../TemporaryCharacterModelCompositionController");
+        settingsController = GetNode<CharacterModelSettingsController>(
+            "../CharacterModelSettingsController");
         storage = GetNode<CharacterModelSettingsStorageController>(
             "../CharacterModelSettingsStorageController");
         modelSource = GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource");
@@ -60,6 +63,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             CharacterModelProvider.Ollama);
         if (storage.SaveCurrent(ollama) != CharacterModelSettingsDocumentWriteResult.Saved
             || !controller.TryLoadCurrent()
+            || settingsController.Snapshot is not { } loaded
+            || !ReferenceEquals(loaded.SelectedProvider, CharacterModelProvider.Ollama)
+            || loaded.Settings.Count != 1
             || controller.TryInitialize(ollama))
         {
             Fail("Provider composition did not initialize the persisted Ollama selection once.");
@@ -77,8 +83,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
 
         GD.Print(
             "Temporary character-model composition smoke passed: unsupported Anthropic remained "
-            + "offline, the exact persisted Ollama setting composed once without credential or "
-            + "network input/output, and the scene retained one stable selected model.");
+            + "offline, one exact retained persisted Ollama snapshot composed once without "
+            + "credential or network input/output, and the scene retained one stable selected "
+            + "model.");
         GetTree().Quit();
     }
 

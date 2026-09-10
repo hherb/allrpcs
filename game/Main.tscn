@@ -114,6 +114,8 @@
 [ext_resource type="Script" path="res://CharacterModelSettingsStorageControllerSmokeCheck.cs" id="112_model_settings_storage_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelCompositionController.cs" id="113_model_composition_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelCompositionControllerSmokeCheck.cs" id="114_model_composition_check"]
+[ext_resource type="Script" path="res://CharacterModelSettingsController.cs" id="115_model_settings_controller"]
+[ext_resource type="Script" path="res://CharacterModelSettingsControllerSmokeCheck.cs" id="116_model_settings_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -474,6 +476,9 @@ script = ExtResource("102_model_source")
 [node name="CharacterModelSettingsStorageController" type="Node" parent="."]
 script = ExtResource("111_model_settings_storage_controller")
 
+[node name="CharacterModelSettingsController" type="Node" parent="."]
+script = ExtResource("115_model_settings_controller")
+
 [node name="TemporaryCharacterModelCompositionController" type="Node" parent="."]
 script = ExtResource("113_model_composition_controller")
 
@@ -668,6 +673,9 @@ script = ExtResource("112_model_settings_storage_check")
 
 [node name="TemporaryCharacterModelCompositionControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("114_model_composition_check")
+
+[node name="CharacterModelSettingsControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("116_model_settings_controller_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
