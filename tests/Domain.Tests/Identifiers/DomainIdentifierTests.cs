@@ -17,6 +17,8 @@ public sealed class DomainIdentifierTests
         Assert.Equal(value, new EvidenceId(value).Value);
         Assert.Equal(value, new KnowledgeId(value).Value);
         Assert.Equal(value, new WorldEventId(value).Value);
+        Assert.Equal(value, new CharacterTurnId(value).Value);
+        Assert.Equal(value, new EpisodicMemoryId(value).Value);
     }
 
     [Theory]
@@ -38,6 +40,8 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentException>(() => new EvidenceId(value));
         Assert.Throws<ArgumentException>(() => new KnowledgeId(value));
         Assert.Throws<ArgumentException>(() => new WorldEventId(value));
+        Assert.Throws<ArgumentException>(() => new CharacterTurnId(value));
+        Assert.Throws<ArgumentException>(() => new EpisodicMemoryId(value));
     }
 
     [Fact]
@@ -49,6 +53,8 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentNullException>(() => new EvidenceId(null!));
         Assert.Throws<ArgumentNullException>(() => new KnowledgeId(null!));
         Assert.Throws<ArgumentNullException>(() => new WorldEventId(null!));
+        Assert.Throws<ArgumentNullException>(() => new CharacterTurnId(null!));
+        Assert.Throws<ArgumentNullException>(() => new EpisodicMemoryId(null!));
     }
 
     [Fact]
@@ -74,6 +80,8 @@ public sealed class DomainIdentifierTests
         AssertRoundTrip(new EvidenceId("laundry-residue"), EvidenceId.Parse);
         AssertRoundTrip(new KnowledgeId("stream-contamination"), KnowledgeId.Parse);
         AssertRoundTrip(new WorldEventId("patient-stabilized"), WorldEventId.Parse);
+        AssertRoundTrip(new CharacterTurnId("healer-turn-2"), CharacterTurnId.Parse);
+        AssertRoundTrip(new EpisodicMemoryId("moonwort-warning"), EpisodicMemoryId.Parse);
     }
 
     private static void AssertRoundTrip<TIdentifier>(
