@@ -1,4 +1,3 @@
-using System.Text;
 using System.Text.Json;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
@@ -11,8 +10,9 @@ namespace Allrpcs.Infrastructure.Dialogue;
 public sealed class OpenAiCharacterModelStreamAccumulator
 {
     private const int MaximumEventDepth = 8;
-    private readonly StringBuilder responseDocument = new();
     private readonly CharacterTurnRequest request;
+    private string? completedResponseDocument;
+    private int responseDeltaLength;
     private bool hasVerifiedOutputTextDone;
     private bool isTerminated;
 
@@ -87,7 +87,11 @@ public sealed class OpenAiCharacterModelStreamAccumulator
             "response.output_item.added" or
             "response.output_item.done" or
             "response.content_part.added" or
-            "response.content_part.done" => null,
+            "response.content_part.done" or
+            "response.reasoning_summary_part.added" or
+            "response.reasoning_summary_part.done" or
+            "response.reasoning_summary_text.delta" or
+            "response.reasoning_summary_text.done" => null,
             "response.output_text.delta" => ApplyDelta(root),
             "response.output_text.done" => ApplyDone(root),
             "response.completed" => Complete(root),
@@ -109,13 +113,13 @@ public sealed class OpenAiCharacterModelStreamAccumulator
         }
 
         string delta = deltaElement.GetString()!;
-        if (responseDocument.Length + delta.Length
+        if (responseDeltaLength + delta.Length
             > CharacterTurnResponseJsonDeserializer.MaximumDocumentLength)
         {
             return Terminate(CharacterModelFailureCode.InvalidResponse);
         }
 
-        responseDocument.Append(delta);
+        responseDeltaLength += delta.Length;
         return null;
     }
 
@@ -123,28 +127,33 @@ public sealed class OpenAiCharacterModelStreamAccumulator
     {
         if (hasVerifiedOutputTextDone
             || !root.TryGetProperty("text", out JsonElement textElement)
-            || textElement.ValueKind != JsonValueKind.String
-            || !string.Equals(
-                responseDocument.ToString(),
-                textElement.GetString(),
-                StringComparison.Ordinal))
+            || textElement.ValueKind != JsonValueKind.String)
         {
             return Terminate(CharacterModelFailureCode.InvalidResponse);
         }
 
+        string response = textElement.GetString()!;
+        if (response.Length > CharacterTurnResponseJsonDeserializer.MaximumDocumentLength)
+        {
+            return Terminate(CharacterModelFailureCode.InvalidResponse);
+        }
+
+        completedResponseDocument = response;
         hasVerifiedOutputTextDone = true;
         return null;
     }
 
     private CharacterModelStreamTermination Complete(JsonElement root)
     {
-        if (!hasVerifiedOutputTextDone || !TryReadUsage(root))
+        if (!hasVerifiedOutputTextDone
+            || completedResponseDocument is null
+            || !TryReadUsage(root))
         {
             return Terminate(CharacterModelFailureCode.InvalidResponse);
         }
 
         isTerminated = true;
-        return CharacterModelJsonResponseCompletion.Create(request, responseDocument.ToString());
+        return CharacterModelJsonResponseCompletion.Create(request, completedResponseDocument);
     }
 
     private bool TryReadUsage(JsonElement root)

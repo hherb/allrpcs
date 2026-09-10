@@ -822,11 +822,14 @@ truncated, excessive, or NUL-containing streams return no partial provider conte
 immutable provider/model settings, `IOpenAiCredentialSource`, and validated `OpenAiEndpoint`. The
 official version-one API base remains the default. Caller-composed alternatives must use HTTPS, or
 HTTP on a numeric loopback address with an explicit port; paths other than `/v1`, user information,
-queries, and fragments are rejected. The adapter posts only to that base's derived Responses
-resource, requests `text/event-stream`, applies each complete framed semantic document, and yields
-one provider-neutral terminal update. Credentials exist only on the transient request authorization
-header; unsuccessful response bodies are never read. HTTP authentication, rate-limit, transient
-service, request-rejection, and transport outcomes map to bounded codes without provider details.
+queries, and fragments are rejected. HTTPS bases use the derived Responses resource and bounded
+semantic SSE completion. Numeric-loopback bases instead use deterministic non-streaming Chat
+Completions so local servers can fully disable reasoning without their Responses compatibility
+layer reopening a hidden reasoning budget. That path accepts only one bounded assistant choice with
+an exact `stop` finish. Both yield one provider-neutral terminal update. Credentials exist only on
+the transient request authorization header; unsuccessful response bodies are never read. HTTP
+authentication, rate-limit, transient service, request-rejection, and transport outcomes map to
+bounded codes without provider details.
 
 The Anthropic boundary serializes one stateless Messages request with two trusted system text
 blocks, one exact untrusted user message, streaming enabled, and `output_config.format` structured
@@ -853,10 +856,11 @@ The Application diagnostic boundary retains only a canonical provider, terminal 
 failure code, elapsed duration, and wholly present or absent input/output/total token counts. Counts
 must be non-negative, additive, and no greater than one million; elapsed time is bounded to one
 hour. A caller-owned cancellation-aware sink is isolated by a best-effort recorder so its failure
-cannot replace the generation result. OpenAI terminal usage is read only from the completed event,
-with all response metadata discarded. Optional adapter instrumentation uses caller-owned monotonic
-time and the sink for completed or failed provider attempts; absent usage remains unknown and
-malformed usage fails closed without exposing partial provider content.
+cannot replace the generation result. Responses usage is read only from the completed event, while
+Chat Completions usage is mapped only from its bounded terminal envelope; all response metadata is
+discarded. Optional adapter instrumentation uses caller-owned monotonic time and the sink for
+completed or failed provider attempts. Absent usage remains unknown and malformed usage fails closed
+without exposing partial provider content.
 
 The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
 provider instance and one bounded model name. An immutable selection snapshot copies one to three
@@ -933,8 +937,12 @@ or credentials or call a provider.
 
 The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
 `HttpClient`, and credential source across the corresponding model and connection tester. OpenAI's
-endpoint-specific overloads also share the exact validated API base. The Ollama factory likewise
-shares one exact caller-supplied `HttpClient` and validated loopback endpoint. Explicit diagnostics
+endpoint-specific overloads also share the exact validated API base. Numeric-loopback OpenAI-
+compatible endpoints use deterministic non-streaming Chat Completions with `reasoning_effort` set
+to `none`, a zero thinking budget, disabled thinking template flags, temperature zero, and a fixed
+seed. HTTPS endpoints retain the Responses API path. Both paths use strict structured output and
+the same bounded local decoder. The Ollama factory likewise shares one exact caller-supplied
+`HttpClient` and validated loopback endpoint. Explicit diagnostics
 overloads retain the exact caller-owned `TimeProvider` and redacted diagnostic sink on the model.
 Construction rejects null or provider-mismatched inputs before creating a binding and performs no
 credential load, HTTP request, provider discovery, or scene mutation.
@@ -978,8 +986,9 @@ unafforded targets remain failures and do not mutate authoritative state.
 All three HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP
 IP-loopback origin and derives the native `/api/chat` and `/api/show` resources; hostnames,
 LAN/public addresses, credentials, paths, queries, fragments, HTTPS, and implicit ports are
-rejected. `OpenAiEndpoint` derives only `/v1/responses` and `/v1/models/` resources from its bounded
-API base. The OpenAI and Anthropic connection testers retrieve only the exact configured model
+rejected. `OpenAiEndpoint` derives only `/v1/responses`, `/v1/chat/completions`, and `/v1/models/`
+resources from its bounded API base. The OpenAI and Anthropic connection testers retrieve only the
+exact configured model
 through their official caller-owned authenticated HTTP boundary; the Ollama tester posts only the
 exact configured model to `/api/show` at its validated loopback endpoint. None generates content or
 reads success or failure bodies, and all expose only provider-neutral outcomes.
@@ -1009,11 +1018,14 @@ on Windows. No Anthropic credential store, automatic credential read, diagnostic
 live recomposition, or generated action beyond the bounded known herb-patch examination exists. The opt-in
 `OllamaCharacterModelLiveTests` and `OpenAiCharacterModelLiveTests` check explicitly named
 already-installed or local models without pulling or modifying them; the standard suite does not
-access a local server. Tested local oMLX `LFM2.5-8B-A1B-MLX-8bit` and
-`gemma-4-26b-a4b-it-4bit` endpoints reached the strict adapter but returned non-conforming
-structured output, which was rejected as `InvalidResponse` without a response object; this is
-safety evidence, not full Phase 4 acceptance. The fixed three-request wait and action conformance
-series against Gemma each reported three terminal failures and no completed responses.
+access a local server. Earlier oMLX Responses probes safely rejected non-conforming or incomplete
+output and exposed an integration defect: reasoning-capable local models could spend the entire
+output budget in reasoning despite a simple bounded game turn, while oMLX's streamed delta text
+could differ from its final structured text. The loopback Chat Completions path disables reasoning
+through every locally supported control and treats only one bounded `stop` completion as a response.
+Local oMLX `LFM2.5-8B-A1B-MLX-8bit` and `Qwen3.6-35B-A3B-8bit`, plus native Ollama
+`qwen3.5:4b-q8_0`, each passed the fixed three-request wait and known-target action series and both
+ordinary-scene flows. No provider output, reasoning, target metadata, or raw failure was retained.
 
 ## Location model boundaries
 

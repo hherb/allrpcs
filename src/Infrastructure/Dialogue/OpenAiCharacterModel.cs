@@ -6,7 +6,7 @@ using Allrpcs.Application.Dialogue;
 namespace Allrpcs.Infrastructure.Dialogue;
 
 /// <summary>
-/// Streams one stateless character response through the OpenAI Responses HTTP endpoint.
+/// Streams one stateless character response through an OpenAI-compatible HTTP endpoint.
 /// </summary>
 public sealed class OpenAiCharacterModel : ICharacterModel
 {
@@ -113,15 +113,23 @@ public sealed class OpenAiCharacterModel : ICharacterModel
             yield break;
         }
 
-        using HttpRequestMessage message = new(HttpMethod.Post, endpoint.ResponsesUri)
+        bool useLocalChatCompletions = endpoint.IsLoopback;
+        Uri requestUri = useLocalChatCompletions
+            ? endpoint.ChatCompletionsUri
+            : endpoint.ResponsesUri;
+        string requestDocument = useLocalChatCompletions
+            ? OpenAiChatCompletionRequestSerializer.Serialize(request, settings.ModelName)
+            : OpenAiCharacterModelRequestSerializer.Serialize(request, settings.ModelName);
+        using HttpRequestMessage message = new(HttpMethod.Post, requestUri)
         {
             Content = new StringContent(
-                OpenAiCharacterModelRequestSerializer.Serialize(request, settings.ModelName),
+                requestDocument,
                 Encoding.UTF8,
                 "application/json"),
         };
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-        message.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/event-stream"));
+        message.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(
+            useLocalChatCompletions ? "application/json" : "text/event-stream"));
 
         HttpResponseMessage? response = null;
         CharacterModelFailureCode? transportFailure = null;
@@ -169,7 +177,10 @@ public sealed class OpenAiCharacterModel : ICharacterModel
             }
 
             string? mediaType = response.Content.Headers.ContentType?.MediaType;
-            if (!string.Equals(mediaType, "text/event-stream", StringComparison.OrdinalIgnoreCase))
+            string expectedMediaType = useLocalChatCompletions
+                ? "application/json"
+                : "text/event-stream";
+            if (!string.Equals(mediaType, expectedMediaType, StringComparison.OrdinalIgnoreCase))
             {
                 yield return await ObserveAsync(
                     Failure(CharacterModelFailureCode.InvalidResponse),
@@ -212,12 +223,15 @@ public sealed class OpenAiCharacterModel : ICharacterModel
                 yield break;
             }
 
-            OpenAiCharacterModelSseResult result =
-                await OpenAiCharacterModelSseCompletion.CompleteWithUsageAsync(
-                        request.TurnRequest,
-                        responseStream!,
-                        cancellationToken)
-                    .ConfigureAwait(false);
+            OpenAiCharacterModelSseResult result = useLocalChatCompletions
+                ? await OpenAiChatCompletionJsonCompletion.CompleteWithUsageAsync(
+                    request.TurnRequest,
+                    responseStream!,
+                    cancellationToken).ConfigureAwait(false)
+                : await OpenAiCharacterModelSseCompletion.CompleteWithUsageAsync(
+                    request.TurnRequest,
+                    responseStream!,
+                    cancellationToken).ConfigureAwait(false);
             yield return await ObserveAsync(
                 result.Termination,
                 diagnosticStartTimestamp,

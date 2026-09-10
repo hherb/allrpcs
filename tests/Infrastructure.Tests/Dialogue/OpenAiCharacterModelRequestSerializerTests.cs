@@ -27,12 +27,18 @@ public sealed class OpenAiCharacterModelRequestSerializerTests
             root.GetProperty("max_output_tokens").GetInt32());
         Assert.False(root.TryGetProperty("api_key", out _));
         Assert.False(root.TryGetProperty("authorization", out _));
+        Assert.False(root.TryGetProperty("reasoning", out _));
+        Assert.False(root.TryGetProperty("chat_template_kwargs", out _));
 
         JsonElement[] input = root.GetProperty("input").EnumerateArray().ToArray();
         Assert.Equal(3, input.Length);
         Assert.Equal("developer", input[0].GetProperty("role").GetString());
         Assert.Contains(
             "untrusted in-world dialogue",
+            input[0].GetProperty("content").GetString(),
+            StringComparison.Ordinal);
+        Assert.Contains(
+            "exactly these five properties",
             input[0].GetProperty("content").GetString(),
             StringComparison.Ordinal);
         Assert.Equal("developer", input[1].GetProperty("role").GetString());
@@ -98,6 +104,39 @@ public sealed class OpenAiCharacterModelRequestSerializerTests
                 .GetProperty("stateProposals")
                 .GetProperty("maxItems")
                 .GetInt32());
+
+        JsonElement[] intentionVariants = schema.GetProperty("properties")
+            .GetProperty("immediateIntention")
+            .GetProperty("anyOf")
+            .EnumerateArray()
+            .ToArray();
+        Assert.Equal(2, intentionVariants.Length);
+        Assert.Equal(
+            [CharacterIntentionType.Wait.Value],
+            intentionVariants[0].GetProperty("properties")
+                .GetProperty("type")
+                .GetProperty("enum")
+                .EnumerateArray()
+                .Select(value => value.GetString()));
+        Assert.Equal(
+            "null",
+            intentionVariants[0].GetProperty("properties")
+                .GetProperty("targetObjectId")
+                .GetProperty("type")
+                .GetString());
+        Assert.Equal(
+            [CharacterIntentionType.ExamineObject.Value, CharacterIntentionType.CollectObject.Value],
+            intentionVariants[1].GetProperty("properties")
+                .GetProperty("type")
+                .GetProperty("enum")
+                .EnumerateArray()
+                .Select(value => value.GetString()));
+        Assert.Equal(
+            "string",
+            intentionVariants[1].GetProperty("properties")
+                .GetProperty("targetObjectId")
+                .GetProperty("type")
+                .GetString());
     }
 
     [Fact]

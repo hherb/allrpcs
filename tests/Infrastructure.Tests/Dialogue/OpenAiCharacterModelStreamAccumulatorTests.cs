@@ -39,6 +39,45 @@ public sealed class OpenAiCharacterModelStreamAccumulatorTests
     }
 
     [Fact]
+    public void IgnoresReasoningEventsAndUsesTheBoundedDoneTextAsAuthoritative()
+    {
+        CharacterTurnRequest request = CreateRequest();
+        OpenAiCharacterModelStreamAccumulator accumulator = new(request);
+        string response = FirstDocumentPart + SecondDocumentPart;
+
+        Assert.Null(accumulator.Apply(
+            "{\"type\":\"response.reasoning_summary_part.added\",\"secret\":\"private\"}"));
+        Assert.Null(accumulator.Apply(
+            "{\"type\":\"response.reasoning_summary_text.delta\",\"delta\":\"private\"}"));
+        Assert.Null(accumulator.Apply(
+            "{\"type\":\"response.reasoning_summary_text.done\",\"text\":\"private\"}"));
+        Assert.Null(accumulator.Apply(
+            "{\"type\":\"response.reasoning_summary_part.done\",\"secret\":\"private\"}"));
+        Assert.Null(accumulator.Apply(Delta("non-authoritative transport rendering")));
+        Assert.Null(accumulator.Apply(Done(response)));
+
+        CharacterModelStreamTermination? completed = accumulator.Apply(
+            "{\"type\":\"response.completed\"}");
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, completed?.Status);
+        Assert.Same(request, completed?.Response?.Request);
+        Assert.DoesNotContain("private", accumulator.ToString(), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void RejectsExcessiveAuthoritativeDoneText()
+    {
+        OpenAiCharacterModelStreamAccumulator accumulator = new(CreateRequest());
+        string excessive = new(
+            'x',
+            CharacterTurnResponseJsonDeserializer.MaximumDocumentLength + 1);
+
+        CharacterModelStreamTermination? result = accumulator.Apply(Done(excessive));
+
+        Assert.Equal(CharacterModelFailureCode.InvalidResponse, result?.Failure?.Code);
+    }
+
+    [Fact]
     public void RetainsOnlyBoundedCountsFromCompletedUsage()
     {
         OpenAiCharacterModelStreamAccumulator accumulator = CompletedAccumulator();
