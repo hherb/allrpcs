@@ -189,6 +189,8 @@ Acceptance:
   removal behind one scene-owned settings snapshot.
 - [x] Load one exact persisted settings snapshot into shared scene state before composing its
   selected supported provider.
+- [x] Expose secret-free provider and model editing through explicit apply, unselected removal, and
+  save controls while deferring activation until restart.
 - [x] Compose exact OpenAI, Anthropic, and Ollama model bindings from caller-owned dependencies
   without credential, network, discovery, or scene input/output during construction.
 - [x] Compose a valid persisted selected Ollama or OS-supported OpenAI binding into the ordinary

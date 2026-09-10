@@ -893,7 +893,17 @@ user settings.
 
 The scene-owned `CharacterModelSettingsController` retains one exact loaded selection and delegates
 replacement, append, selection, and removal to the immutable Application transitions. Rejected
-changes preserve its current snapshot. It does not yet save edits or react to player input.
+changes preserve its current snapshot. Its atomic apply operation computes both the setting update
+and selection before replacing current state. Saving is a separate explicit operation over only the
+exact current snapshot; uninitialized and storage-failed saves return a bounded failure without
+changing memory, and initialization, apply, update, selection, and removal never save implicitly.
+
+The temporary settings panel exposes the three canonical providers and one bounded exact model name
+without a default selection. Apply changes only scene-owned memory, remove accepts only a configured
+unselected provider, and save explicitly replaces the secret-free document. Rejected input retains
+the exact prior snapshot, and the panel states that saved changes take effect after restart because
+provider composition remains a one-time startup operation. The panel has no credential field and
+does not test, construct, discover, or call a provider.
 
 At scene startup, `TemporaryCharacterModelCompositionController` consumes that same retained valid
 selection and composes only its exact selected setting. Ollama uses the fixed validated loopback

@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3]
+[gd_scene load_steps=109 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -116,6 +116,8 @@
 [ext_resource type="Script" path="res://TemporaryCharacterModelCompositionControllerSmokeCheck.cs" id="114_model_composition_check"]
 [ext_resource type="Script" path="res://CharacterModelSettingsController.cs" id="115_model_settings_controller"]
 [ext_resource type="Script" path="res://CharacterModelSettingsControllerSmokeCheck.cs" id="116_model_settings_controller_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelSettingsPanel.cs" id="117_model_settings_panel"]
+[ext_resource type="Script" path="res://CharacterModelSettingsPanelSmokeCheck.cs" id="118_model_settings_panel_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -677,6 +679,9 @@ script = ExtResource("114_model_composition_check")
 [node name="CharacterModelSettingsControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("116_model_settings_controller_check")
 
+[node name="CharacterModelSettingsPanelSmokeCheck" type="Node" parent="."]
+script = ExtResource("118_model_settings_panel_check")
+
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
 
@@ -811,6 +816,71 @@ offset_top = 88.0
 offset_right = 604.0
 offset_bottom = 111.0
 text = "Focused search: NO ATTEMPT"
+
+[node name="SettingsOverlay" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="ColorRect" parent="SettingsOverlay"]
+offset_left = 960.0
+offset_top = 12.0
+offset_right = 1588.0
+offset_bottom = 132.0
+color = Color(0.055, 0.067, 0.082, 0.88)
+script = ExtResource("117_model_settings_panel")
+
+[node name="Title" type="Label" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 604.0
+offset_bottom = 30.0
+text = "CHARACTER MODEL · SECRET-FREE SETTINGS"
+
+[node name="Provider" type="OptionButton" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 34.0
+offset_right = 150.0
+offset_bottom = 65.0
+
+[node name="ModelName" type="LineEdit" parent="SettingsOverlay/Panel"]
+offset_left = 158.0
+offset_top = 34.0
+offset_right = 376.0
+offset_bottom = 65.0
+placeholder_text = "Exact model name"
+
+[node name="Apply" type="Button" parent="SettingsOverlay/Panel"]
+offset_left = 384.0
+offset_top = 34.0
+offset_right = 454.0
+offset_bottom = 65.0
+text = "APPLY"
+
+[node name="Remove" type="Button" parent="SettingsOverlay/Panel"]
+offset_left = 462.0
+offset_top = 34.0
+offset_right = 532.0
+offset_bottom = 65.0
+text = "REMOVE"
+
+[node name="Save" type="Button" parent="SettingsOverlay/Panel"]
+offset_left = 540.0
+offset_top = 34.0
+offset_right = 604.0
+offset_bottom = 65.0
+text = "SAVE"
+
+[node name="Status" type="Label" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 73.0
+offset_right = 604.0
+offset_bottom = 96.0
+text = "Provider settings: NONE"
+
+[node name="RestartHint" type="Label" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 96.0
+offset_right = 604.0
+offset_bottom = 116.0
+text = "Saved changes take effect after restart · credentials stay in the OS store"
 
 [node name="DialogueOverlay" type="CanvasLayer" parent="."]
 
