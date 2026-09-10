@@ -49,10 +49,12 @@ cancellation preserves only already-accepted stream text while cancelling the ex
 Infrastructure contains caller-composed OpenAI Responses, Anthropic Messages, and loopback-only
 Ollama HTTP adapters with stateless strict structured output, bounded streaming completion, and
 optional terminal token diagnostics. Bounded caller-composed bindings select exact providers and
-dispatch redacted OpenAI, Anthropic, or Ollama connection tests. The ordinary scene can switch exact
-fake bindings while macOS Keychain, Linux Secret Service, and Windows Credential Manager OpenAI
-credential stores are present. Production scene composition, Anthropic credential storage, settings
-persistence, and execution of generated non-wait intentions remain later work.
+dispatch redacted OpenAI, Anthropic, or Ollama connection tests. Infrastructure factories compose
+each provider's exact model and tester over the same caller-owned dependencies without credential,
+network, discovery, or scene input/output. The ordinary scene can switch exact fake bindings while
+macOS Keychain, Linux Secret Service, and Windows Credential Manager OpenAI credential stores are
+present. Production scene composition, Anthropic credential storage, settings persistence, and
+execution of generated non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -858,6 +860,14 @@ missing connection-test bindings return only provider-neutral `Unavailable`. The
 source can retain one exact binding snapshot and switch only to an available canonical provider,
 while its stable credential-free offline default and one-shot test seam remain intact. It does not
 construct a provider adapter.
+
+The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
+`HttpClient`, and credential source across the corresponding model and connection tester. The
+Ollama factory likewise shares one exact caller-supplied `HttpClient` and validated loopback
+endpoint. Explicit diagnostics overloads retain the exact caller-owned `TimeProvider` and redacted
+diagnostic sink on the model. Construction rejects null or provider-mismatched inputs before
+creating a binding and performs no credential load, HTTP request, provider discovery, or scene
+mutation.
 
 All three HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP
 IP-loopback origin and derives the native `/api/chat` and `/api/show` resources; hostnames,

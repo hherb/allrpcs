@@ -2,59 +2,59 @@
 
 ## Current state
 
-`main` contains merged PR #169 at `1ff4f6f`. The current branch is
-`codex/phase-4-linux-credential-lifecycle` and advances Phase 4 through Phase 4l2.
+`main` contains merged PR #170 at `526d048`. The current branch is
+`codex/phase-4-openai-composition` and advances Phase 4 through Phase 4m3.
 
-- Phase 4l1 adds `LinuxSecretServiceOpenAiCredentialStore` behind an exact
-  `ILinuxSecretServiceProcessRunner` seam. It uses only `/usr/bin/secret-tool` with fixed
-  `Allrpcs.OpenAI` application and `api-key` account attributes. Save bytes travel only through
-  redirected standard input without a shell or added newline. Lookup output is bounded and cleared;
-  stderr is observed only as present/absent and discarded. Availability is explicit and failures
-  remain redacted. Delete performs a bounded, immediately cleared lookup probe because native
-  `clear` does not distinguish a missing item.
-- Phase 4l2 adds `WindowsOpenAiCredentialStore` behind `IWindowsCredentialManager`. The native
-  implementation uses one fixed generic `Allrpcs.OpenAI` target and `api-key` user, current-user
-  local-machine persistence, exact replace/read/delete operations, and redacted error mapping.
-  Managed input, unmanaged write memory, copied output, and the OS-returned read blob are cleared.
+- Phase 4m1 adds `OpenAiCharacterModelBindingFactory`. Its plain and diagnostics-enabled overloads
+  create one exact OpenAI binding from caller-supplied settings, `HttpClient`, and credential source.
+  The model and connection tester share those exact dependencies, and the model retains the exact
+  settings plus optional caller-owned `TimeProvider` and redacted diagnostic sink.
+- Phase 4m2 adds the equivalent `AnthropicCharacterModelBindingFactory` over the existing Anthropic
+  model, tester, and read-only credential source.
+- Phase 4m3 adds `OllamaCharacterModelBindingFactory`. Its model and tester share the exact
+  caller-owned `HttpClient` and validated loopback `OllamaEndpoint`; its model retains the exact
+  settings and optional diagnostics dependencies.
 
-Standard tests use only deterministic fakes and never access a real keyring or credential set. The
-macOS host proves both contracts but not native Linux or Windows behavior; do not claim platform
-support until the same bytes pass save, replace, load, missing, and delete checks on each platform.
+All three factories reject null and provider-mismatched inputs before constructing a binding.
+Construction performs no credential load, HTTP request, provider discovery, or scene mutation.
 The scene still has no production provider composition, settings UI/persistence, automatic local
-server discovery, model process ownership, Anthropic credential store, diagnostic export, generated
-non-wait intention execution, or gameplay persistence/mutation. The stable offline model remains the
-ordinary default, and full Phase 4 acceptance remains incomplete.
+server discovery, model process ownership, Anthropic credential store, diagnostic export,
+generated non-wait intention execution, or gameplay persistence/mutation. The stable offline model
+remains the ordinary default, native Linux/Windows credential behavior remains unproved, and full
+Phase 4 acceptance remains incomplete.
 
 ## Validation
 
 The complete host-local `./scripts/quality.sh` passes:
 
 - workflow and formatting validation, restore, and a zero-warning build;
-- 1,388 Domain tests, 336 Application tests, 335 Infrastructure tests, and eight architecture tests;
+- 1,388 Domain tests, 336 Application tests, 347 Infrastructure tests, and eight architecture tests;
 - the five-evidence representative scenario validator;
 - all 68 opt-in Godot smoke invocations; and
 - the bounded graphical Compatibility-renderer launch.
 
-Focused red/green evidence covered 16 Linux Secret Service tests and 12 Windows Credential Manager
-tests. The restricted sandbox reproduced the known MSBuild IPC denial; identical host-local commands
-passed. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows, and treat
-zero-step hosted failures as account infrastructure rather than test evidence.
+Focused red/green evidence covered four construction tests per provider: exact binding and dependency
+retention, optional diagnostics retention, rejection, closed public factory surface, and zero-I/O
+construction. The restricted sandbox reproduced the known MSBuild IPC denial; identical host-local
+commands passed. GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows,
+and treat zero-step hosted failures as account infrastructure rather than test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 4m1: exact caller-composed OpenAI binding construction**.
+Take **Phase 4n1: immutable provider-settings selection snapshot**.
 
 Acceptance boundary:
 
-1. Add one Infrastructure composition helper that creates an exact `CharacterModelBinding` for
-   caller-supplied OpenAI settings, `HttpClient`, and `IOpenAiCredentialSource`. The model and
-   connection tester must share those exact dependencies; retain the exact settings instance.
-2. Support the existing optional redacted diagnostic sink and caller-owned `TimeProvider` without
-   adding logging, export, dialogue content, provider details, or a second credential read boundary.
-3. Composition must perform no credential load, HTTP request, provider discovery, or scene mutation.
-   Reject null or non-OpenAI settings before constructing any partial binding.
-4. Prove exact dependency retention and no-I/O construction through focused deterministic tests.
-   Do not wire the Godot scene or access a real credential/network.
-5. Do not add Anthropic/Ollama composition, settings UI/persistence, automatic local-server
-   discovery, model process ownership, Anthropic credential storage, generated intention execution,
-   telemetry/export, native-platform proof, release, or distribution work.
+1. Add one provider-neutral Application snapshot that copies one to three exact existing
+   `CharacterModelSettings` instances in stable caller order and retains one exact canonical selected
+   provider. Require exactly one setting per provider and require the selected provider to be present.
+2. Reject null, empty, excessive, duplicate, non-canonical, and selected-provider-absent input before
+   retaining any caller-owned mutable collection. Do not rewrite model names, select a default, or
+   substitute another provider.
+3. Prove immutability, exact-instance retention, ordering, complete public API shape, and fail-closed
+   rejection through focused Application tests.
+4. Do not add a persistence port or format, filesystem/registry/preferences access, credentials,
+   Infrastructure adapter construction, HTTP, connection testing, Godot scene wiring, UI, automatic
+   local-server discovery, model process ownership, or generated intention execution.
+5. Keep the existing `CharacterModelBindingSnapshot` and stable offline scene default unchanged; this
+   slice records trusted configuration intent only and does not claim a provider is available.
