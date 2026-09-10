@@ -188,7 +188,7 @@ Acceptance:
   label seam.
 - [x] Provide explicit offline behaviour: existing routine movement continues, but the game does
   not fabricate LLM dialogue.
-- [ ] Test hallucinated objects, malformed output, instruction attacks, timeouts, cancellation,
+- [x] Test hallucinated objects, malformed output, instruction attacks, timeouts, cancellation,
   provider errors, and provider switching.
 
 Acceptance:
