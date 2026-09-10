@@ -183,8 +183,12 @@ Acceptance:
   caller-composed binding.
 - [x] Serialize and strictly deserialize the selected provider settings through a versioned,
   secret-free JSON boundary.
+- [x] Persist the secret-free provider-settings document through bounded storage outcomes, strict
+  local UTF-8 replacement, and isolated Godot scene composition.
 - [x] Compose exact OpenAI, Anthropic, and Ollama model bindings from caller-owned dependencies
   without credential, network, discovery, or scene input/output during construction.
+- [x] Compose a valid persisted selected Ollama or OS-supported OpenAI binding into the ordinary
+  healer scene at startup without credential or network input/output during composition.
 - [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,
   source, command arguments, environment variables, or model context.
 - [x] Add the equivalent OpenAI credential facility behind a deterministic Linux Secret Service

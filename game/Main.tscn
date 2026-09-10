@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3]
+[gd_scene load_steps=107 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -110,6 +110,10 @@
 [ext_resource type="Script" path="res://CharacterModelOrdinaryTimeoutSmokeCheck.cs" id="108_ordinary_model_timeout_check"]
 [ext_resource type="Script" path="res://CharacterModelOrdinaryModelSwitchSmokeCheck.cs" id="109_ordinary_model_switch_check"]
 [ext_resource type="Script" path="res://CharacterModelOrdinaryMalformedStreamSmokeCheck.cs" id="110_ordinary_malformed_model_check"]
+[ext_resource type="Script" path="res://CharacterModelSettingsStorageController.cs" id="111_model_settings_storage_controller"]
+[ext_resource type="Script" path="res://CharacterModelSettingsStorageControllerSmokeCheck.cs" id="112_model_settings_storage_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelCompositionController.cs" id="113_model_composition_controller"]
+[ext_resource type="Script" path="res://TemporaryCharacterModelCompositionControllerSmokeCheck.cs" id="114_model_composition_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -467,6 +471,12 @@ script = ExtResource("100_model_input_source")
 [node name="TemporaryCharacterModelSource" type="Node" parent="."]
 script = ExtResource("102_model_source")
 
+[node name="CharacterModelSettingsStorageController" type="Node" parent="."]
+script = ExtResource("111_model_settings_storage_controller")
+
+[node name="TemporaryCharacterModelCompositionController" type="Node" parent="."]
+script = ExtResource("113_model_composition_controller")
+
 [node name="DialogueInputController" type="Node" parent="."]
 script = ExtResource("65_dialogue_input_controller")
 
@@ -652,6 +662,12 @@ script = ExtResource("109_ordinary_model_switch_check")
 
 [node name="CharacterModelOrdinaryMalformedStreamSmokeCheck" type="Node" parent="."]
 script = ExtResource("110_ordinary_malformed_model_check")
+
+[node name="CharacterModelSettingsStorageControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("112_model_settings_storage_check")
+
+[node name="TemporaryCharacterModelCompositionControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("114_model_composition_check")
 
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")

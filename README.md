@@ -872,6 +872,31 @@ selection and binding snapshots and switches only to another exact configured bi
 stable credential-free offline default and one-shot test seam remain intact. It does not construct a
 provider adapter or read a settings document.
 
+`ICharacterModelSettingsDocumentStore` is the provider-settings-specific Application port for one
+already-serialized non-empty document. Writes return only `Saved` or `Failed`; reads return
+`Loaded`, `Missing`, or `Failed`, and only a loaded result retains the exact document. The port does
+not reuse the gameplay-save contract or expose paths, JSON, provider details, credentials, or
+storage exceptions. `FileCharacterModelSettingsDocumentStore` implements strict UTF-8 reads and
+same-directory atomic replacement at one trusted absolute path. Empty or invalid UTF-8 data fails
+closed, and the document remains secret-free.
+
+`CharacterModelSettingsDocumentController` composes the strict JSON boundary with that port. Loads
+distinguish a missing document, storage failure, and invalid supported-schema input without leaking
+parser details. The Godot `CharacterModelSettingsStorageController` owns the fixed
+`user://character-model-settings-v1.json` path but neither saves nor loads in response to input on
+its own. Its smoke uses a process-specific temporary file, so validation cannot replace ordinary
+user settings.
+
+At scene startup, `TemporaryCharacterModelCompositionController` loads a valid selection and
+composes only its exact selected setting. Ollama uses the fixed validated loopback endpoint; OpenAI
+uses the existing OS-specific credential source on macOS, Linux, or Windows. Construction reads no
+credential and makes no HTTP request. Missing, failed, invalid, unsupported-platform, and Anthropic
+selections preserve the stable offline behavior. The scene does not provide settings or credential
+UI, create or discover a local server, own a model process, or claim native Linux/Windows credential
+proof. The deterministic smoke harness disables automatic persisted composition globally and uses
+an isolated temporary document only for its explicit composition check, so local validation cannot
+inherit ordinary user settings or credentials.
+
 The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
 `HttpClient`, and credential source across the corresponding model and connection tester. The
 Ollama factory likewise shares one exact caller-supplied `HttpClient` and validated loopback
