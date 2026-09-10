@@ -181,7 +181,10 @@ Acceptance:
 - [x] Add bounded provider and model settings with a redacted OpenAI connection test.
 - [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,
   source, command arguments, environment variables, or model context.
-- [ ] Add equivalent credential facilities for supported Windows and Linux builds.
+- [x] Add the equivalent OpenAI credential facility behind a deterministic Linux Secret Service
+  seam; native Linux proof remains required before claiming platform support.
+- [x] Add the equivalent OpenAI credential facility behind a deterministic Windows Credential
+  Manager seam; native Windows proof remains required before claiming platform support.
 - [x] Add bounded redacted latency and terminal usage diagnostics for OpenAI provider attempts.
 - [x] Add controller-owned redacted cancellation and timeout diagnostics.
 - [x] Project model-stream lifecycle to fixed content-free UI states and prove a visible timeout
