@@ -242,10 +242,10 @@ Acceptance:
 
 - [x] Store the recent local conversation window per character.
 - [x] Store significant episodic memories with participants, location, time, and provenance.
-- [ ] Store confirmed facts separately from attributed claims and uncertain beliefs.
-- [ ] Store belief confidence and supporting or contradicting evidence.
-- [ ] Store relationships using bounded dimensions and recorded reasons.
-- [ ] Store promises, assigned tasks, and unfinished commitments.
+- [x] Store confirmed facts separately from attributed claims and uncertain beliefs.
+- [x] Store belief confidence and supporting or contradicting evidence.
+- [x] Store relationships using bounded dimensions and recorded reasons.
+- [x] Store promises, assigned tasks, and unfinished commitments.
 - [ ] Retrieve memories by deterministic topic, entity, location, and relationship tags.
 - [ ] Summarize older conversations without deleting the authoritative transcript.
 - [ ] Keep canonical memory local even when a provider offers server-side conversation state.

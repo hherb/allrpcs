@@ -802,8 +802,37 @@ bounded unique participant list that includes that character, an exact location,
 qualitative-world-time snapshot, completed-turn provenance, and a non-blank summary of at most
 1,000 UTF-16 code units. A copied read-only per-character snapshot preserves up to 128 exact memory
 instances in supplied order with unique identities. These initial contracts do not yet derive,
-retrieve, persist, summarize, migrate, or project memory into model context, and do not define
-facts, claims, belief confidence, relationships, promises, tasks, UI, or scene ownership.
+retrieve, persist, summarize, migrate, or project memory into model context, and do not define UI
+or scene ownership.
+
+Epistemic memory is also local and provider-neutral. Each `CharacterEpistemicMemory` has a canonical
+identity, one exact remembering character, one exact completed source turn, bounded statement text,
+and exactly one closed category: confirmed fact, attributed claim, or uncertain belief. Only an
+attributed claim accepts—and requires—an exact speaker. A copied per-character snapshot retains at
+most 256 exact entries in stable unique-identity order. This structural separation records the
+character's classification; it does not establish authoritative world truth or derive memory from
+dialogue.
+
+An uncertain belief alone can have a `CharacterBeliefAssessment`. It retains the exact belief,
+stored confidence from 0 to 10,000 basis points, and independently ordered supporting and
+contradicting `EvidenceId` references. Each disposition is copied, duplicate-free, capped at 32,
+and cannot contain an identity from the other disposition. The assessment does not calculate
+confidence, reinterpret evidence, or promote or demote epistemic categories.
+
+`CharacterRelationshipMemory` stores one directional character-to-character view over the closed
+trust, affection, respect, and fear dimensions, each bounded from -100 to 100. Recorded reasons
+have canonical identities, exact completed-turn provenance, one retained dimension, and bounded
+text. Dimensions and reasons are copied in stable order; dimensions and reason identities are
+unique, reasons can reference only retained dimensions, each relationship retains at most 64
+reasons, and each per-character snapshot retains at most 64 distinct related characters. These
+contracts do not update values, imply reciprocity, or yet bound change across an exchange.
+
+Unfinished character commitments are stored separately as promises, assigned tasks, or an explicit
+other kind. Each `CharacterCommitmentMemory` has a canonical identity, exact responsible character,
+exact counterparty, exact completed source turn, and bounded description. A copied per-character
+snapshot preserves at most 128 exact commitments in stable unique-identity order. There is no
+completion transition, scheduling, execution policy, retrieval, persistence, save-schema change,
+provider-context projection, migration, or provider-side state in these Domain-only contracts.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

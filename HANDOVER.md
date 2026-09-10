@@ -2,56 +2,59 @@
 
 ## Current state
 
-`main` contains merged PR #180 at `2ecc376`. The current branch is
-`codex/phase-5-character-memory`.
+`main` contains merged PR #181 at `80654ba`. The current branch is
+`codex/phase-5-epistemic-memory`.
 
-Phase 5 now has its first two Domain-only local-memory slices. A recent-conversation entry retains
-one canonical `CharacterTurnId` and the exact completed provider-neutral activity. Its immutable
-per-character window retains exact entries in oldest-to-newest order, rejects mismatched characters
-and duplicate turn IDs, copies its collection, and caps retention at 16 turns and 16,000 aggregate
-UTF-16 dialogue code units. Pure append preserves the exact owner and newest entries while evicting
-only as many oldest entries as the count or text bounds require.
+Phase 5 now has Domain-only contracts for recent conversation, episodic memory, epistemic memory,
+belief assessment, relationship memory, and unfinished commitments. Confirmed facts, attributed
+claims, and uncertain beliefs are structurally distinct; only claims require a speaker, and every
+entry retains an exact completed local source turn. Belief confidence is stored from 0 to 10,000
+basis points with bounded, copied, non-overlapping supporting and contradicting `EvidenceId` lists.
 
-A significant episodic memory has a canonical `EpisodicMemoryId`, exact remembering character,
-stable unique participants including that character, exact location, exact qualitative-time
-snapshot, exact source `CharacterTurnId`, and a non-blank summary of at most 1,000 UTF-16 code
-units. Its immutable per-character snapshot copies and retains at most 128 exact entries in stable
-order with unique memory IDs.
+Directional relationship memory uses closed trust, affection, respect, and fear dimensions bounded
+from -100 to 100. Bounded recorded reasons retain exact source turns and refer only to dimensions
+present in that relationship. Unfinished promises, assigned tasks, and other commitments retain an
+exact responsible character, counterparty, source turn, and bounded text. All per-character
+snapshots copy their inputs, preserve exact instances in stable order, reject mismatched ownership,
+nulls, and duplicate identities, and enforce explicit count limits.
 
-No memory derivation, retrieval, persistence, save-schema change, provider-context integration,
-scene state, summarization, beliefs, claims, confidence, relationships, promises, tasks, UI,
-migration, provider-side state, or native-platform claim was added.
+No memory derivation, deterministic retrieval, indexing/tags, transcript summarization,
+persistence/save-schema change, provider-context integration, scene state, UI, migration,
+provider-side state, chain-of-thought, relationship transition, or commitment completion policy was
+added.
 
 ## Validation
 
-- `dotnet format Allrpcs.sln --no-restore --verify-no-changes`
+- workflow validation and `dotnet format Allrpcs.sln --no-restore --verify-no-changes`
 - zero-warning complete solution build
-- 1,414 Domain, 365 Application, 414 Infrastructure, and 8 architecture tests
+- 1,463 Domain, 365 Application, 414 Infrastructure, and 8 architecture tests
 - representative discovery scenario: 5 valid evidence definitions
 - complete `./scripts/smoke-godot.sh`
-- bounded 60-frame Compatibility-renderer launch
+- bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
 
-The complete quality script passed through every managed-code test, then the unchanged generated
-ScenarioValidator native app host stalled in macOS dynamic-loader startup. Rebuilding did not change
-that host behavior. The same rebuilt validator DLL passed immediately through `dotnet exec`, after
-which the complete Godot smoke script and graphical launch passed separately. This is a local app-host
-execution limitation, not a failing validator assertion or product failure. The first sandboxed
-VSTest attempt also hit the known local-socket restriction; its identical host run passed.
+The complete quality script passed workflow validation, restore, format, build, and every managed
+test, then the unchanged generated `ScenarioValidator` native app host again stalled in macOS
+dynamic-loader startup. The same rebuilt validator DLL passed immediately through `dotnet exec`,
+after which the complete Godot smoke script and graphical launch passed separately. This remains a
+local app-host execution limitation, not a failing validator assertion or product failure.
 
 GitHub Actions budget was exhausted for prior draft PRs. Do not dispatch hosted workflows solely to
 compensate for that account infrastructure state; jobs with zero steps are not test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 5c: separate confirmed facts, attributed claims, and uncertain beliefs**.
+Take **Phase 5g1: deterministic memory retrieval tags and index contracts**.
 
 Acceptance boundary:
 
-1. Define the smallest provider-neutral immutable per-character epistemic-memory contracts that
-   structurally distinguish confirmed facts, attributed claims, and uncertain beliefs. Retain exact
-   local provenance; require an attributable speaker only for claims; bound identifiers and text.
-2. Add focused contract tests for each category, invalid category-specific shapes, stable ordering,
-   copied read-only collections, duplicate identity, nulls, and exact-instance retention.
-3. Do not add confidence/evidence scoring, relationship state, promises/tasks, retrieval, memory
-   derivation, persistence/save schema, provider context, scene state, UI, or migration in this slice.
-4. Update `README.md`, `ROADMAP.md`, and this handover after the complete quality spine passes.
+1. Define the smallest provider-neutral immutable tag vocabulary and per-character index-entry
+   contracts needed to reference exact existing episodic, epistemic, relationship, and commitment
+   memories by bounded topic, entity, location, and relationship tags without copying their content.
+2. Preserve exact owner and memory instances, canonical bounded tags, stable supplied order, copied
+   read-only collections, category-safe references, and explicit entry/tag count limits.
+3. Add focused tests for every memory category and tag kind, invalid cross-character or
+   category/reference shapes, duplicate identities/tags, nulls, bounds, and exact-instance
+   retention.
+4. Do not yet add query selection/ranking, semantic or vector search, memory derivation,
+   summarization, persistence/save schema, provider context, scene state, UI, or migration.
+5. Update `README.md`, `ROADMAP.md`, and this handover after the complete quality spine passes.
