@@ -48,7 +48,7 @@ public sealed class OllamaCharacterModelRequestSerializerTests
             entry =>
             {
                 Assert.Equal("valid-affordance", entry.GetProperty("kind").GetString());
-                Assert.Equal("type=wait;target=none", entry.GetProperty("text").GetString());
+                Assert.Equal("type=wait;target=null", entry.GetProperty("text").GetString());
             });
         Assert.Equal("user", messages[2].GetProperty("role").GetString());
         Assert.Equal(
@@ -147,7 +147,7 @@ public sealed class OllamaCharacterModelRequestSerializerTests
                     "The herb patch is identified."),
                 new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.ValidAffordance,
-                    "type=wait;target=none"),
+                    "type=wait;target=null"),
                 new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.UntrustedPlayerDialogue,
                     playerText),

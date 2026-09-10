@@ -169,8 +169,9 @@ Acceptance:
 - [x] Retry only safe, idempotent generation failures.
 - [x] Derive provider-visible affordances from the exact validation snapshot and require a complete
   validated response at successful model-stream termination.
-- [x] Serialize a stateless strict-schema OpenAI request, parse bounded SSE frames, and expose a
-  caller-composed authenticated HTTP adapter that fails closed without exposing partial JSON.
+- [x] Serialize stateless strict-schema OpenAI Responses requests plus deterministic reasoning-free
+  loopback Chat Completions requests, parse bounded provider envelopes, and expose a caller-composed
+  authenticated HTTP adapter that fails closed without exposing partial JSON or reasoning.
 - [x] Serialize strict-schema Anthropic Messages requests, parse bounded SSE event lifecycles, and
   expose a caller-composed authenticated HTTP adapter with redacted terminal usage diagnostics.
 - [x] Serialize a stateless strict-schema native Ollama chat request, parse bounded NDJSON, expose a
@@ -234,7 +235,7 @@ Acceptance:
 
 Acceptance:
 
-- [ ] The live healer converses naturally and attempts legal actions while remaining unable to
+- [x] The live healer converses naturally and attempts legal actions while remaining unable to
   perceive, reveal, or mutate hidden state outside its filtered context and validated tools.
 
 ## Phase 5 — Character memory, beliefs, and relationships

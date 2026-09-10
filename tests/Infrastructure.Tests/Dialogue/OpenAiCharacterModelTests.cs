@@ -50,13 +50,15 @@ public sealed class OpenAiCharacterModelTests
         using JsonDocument body = JsonDocument.Parse(handler.Body!);
         Assert.Equal("model-x", body.RootElement.GetProperty("model").GetString());
         Assert.True(body.RootElement.GetProperty("stream").GetBoolean());
+        Assert.False(body.RootElement.TryGetProperty("reasoning", out _));
+        Assert.False(body.RootElement.TryGetProperty("chat_template_kwargs", out _));
         Assert.True(handler.CanSendAgain);
     }
 
     [Fact]
     public async Task PostsOnlyToTheExactCallerOwnedApiBase()
     {
-        CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents()));
+        CapturingHandler handler = new(_ => JsonResponse(ChatCompletionResponse()));
         using HttpClient client = new(handler);
         OpenAiEndpoint endpoint = new(new Uri("http://127.0.0.1:8000/v1"));
         OpenAiCharacterModel model = new(
@@ -69,7 +71,22 @@ public sealed class OpenAiCharacterModelTests
             Assert.Single(await CollectAsync(model, CreateRequest())));
 
         Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result.Status);
-        Assert.Equal("http://127.0.0.1:8000/v1/responses", handler.RequestUri?.AbsoluteUri);
+        Assert.Equal(
+            "http://127.0.0.1:8000/v1/chat/completions",
+            handler.RequestUri?.AbsoluteUri);
+        using JsonDocument body = JsonDocument.Parse(handler.Body!);
+        Assert.Equal(
+            "none",
+            body.RootElement.GetProperty("reasoning_effort").GetString());
+        Assert.Equal(0, body.RootElement.GetProperty("thinking_budget").GetInt32());
+        Assert.False(
+            body.RootElement.GetProperty("chat_template_kwargs")
+                .GetProperty("enable_thinking")
+                .GetBoolean());
+        Assert.False(
+            body.RootElement.GetProperty("chat_template_kwargs")
+                .GetProperty("preserve_thinking")
+                .GetBoolean());
     }
 
     [Fact]
@@ -302,6 +319,29 @@ public sealed class OpenAiCharacterModelTests
             : new MediaTypeHeaderValue(mediaType);
         return response;
     }
+
+    private static HttpResponseMessage JsonResponse(string body) => new(HttpStatusCode.OK)
+    {
+        Content = new StringContent(body, Encoding.UTF8, "application/json"),
+    };
+
+    private static string ChatCompletionResponse() => JsonSerializer.Serialize(new
+    {
+        choices = new[]
+        {
+            new
+            {
+                message = new { role = "assistant", content = ResponseDocument },
+                finish_reason = "stop",
+            },
+        },
+        usage = new
+        {
+            prompt_tokens = 11,
+            completion_tokens = 7,
+            total_tokens = 18,
+        },
+    });
 
     private static string CompletedEvents() =>
         Frame(new { type = "response.output_text.delta", delta = ResponseDocument })

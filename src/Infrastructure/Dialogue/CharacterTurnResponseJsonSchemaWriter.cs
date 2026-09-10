@@ -42,15 +42,49 @@ internal static class CharacterTurnResponseJsonSchemaWriter
         bool includeBounds)
     {
         writer.WriteStartObject();
+        writer.WritePropertyName("anyOf");
+        writer.WriteStartArray();
+        WriteIntentionVariant(
+            writer,
+            [CharacterIntentionType.Wait.Value],
+            targetIsNull: true,
+            includeBounds);
+        WriteIntentionVariant(
+            writer,
+            [CharacterIntentionType.ExamineObject.Value, CharacterIntentionType.CollectObject.Value],
+            targetIsNull: false,
+            includeBounds);
+        writer.WriteEndArray();
+        writer.WriteEndObject();
+    }
+
+    private static void WriteIntentionVariant(
+        Utf8JsonWriter writer,
+        IEnumerable<string> intentionTypes,
+        bool targetIsNull,
+        bool includeBounds)
+    {
+        writer.WriteStartObject();
         writer.WriteString("type", "object");
         writer.WritePropertyName("properties");
         writer.WriteStartObject();
-        WriteStringEnum(writer, "type", CharacterIntentionType.All.Select(value => value.Value));
-        WriteNullableString(
-            writer,
-            "targetObjectId",
-            CanonicalIdentifierText.MaximumLength,
-            includeBounds);
+        WriteStringEnum(writer, "type", intentionTypes);
+        if (targetIsNull)
+        {
+            writer.WritePropertyName("targetObjectId");
+            writer.WriteStartObject();
+            writer.WriteString("type", "null");
+            writer.WriteEndObject();
+        }
+        else
+        {
+            WriteBoundedString(
+                writer,
+                "targetObjectId",
+                CanonicalIdentifierText.MaximumLength,
+                includeBounds);
+        }
+
         writer.WriteEndObject();
         WriteRequired(writer, "type", "targetObjectId");
         writer.WriteBoolean("additionalProperties", false);

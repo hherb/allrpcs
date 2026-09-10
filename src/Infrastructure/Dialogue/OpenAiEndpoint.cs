@@ -29,15 +29,24 @@ public sealed class OpenAiEndpoint
         BaseUri = baseUri.AbsolutePath.EndsWith('/')
             ? baseUri
             : new Uri(baseUri.AbsoluteUri + "/", UriKind.Absolute);
+        IsLoopback = IPAddress.TryParse(baseUri.Host, out IPAddress? address)
+            && IPAddress.IsLoopback(address);
         ResponsesUri = new Uri(BaseUri, "responses");
+        ChatCompletionsUri = new Uri(BaseUri, "chat/completions");
         ModelsUri = new Uri(BaseUri, "models/");
     }
 
     /// <summary>Gets the validated caller-supplied API base.</summary>
     public Uri BaseUri { get; }
 
+    /// <summary>Gets whether the validated API base is hosted on numeric loopback.</summary>
+    public bool IsLoopback { get; }
+
     /// <summary>Gets the derived Responses resource.</summary>
     public Uri ResponsesUri { get; }
+
+    /// <summary>Gets the derived Chat Completions resource.</summary>
+    public Uri ChatCompletionsUri { get; }
 
     /// <summary>Gets the derived Models collection resource.</summary>
     public Uri ModelsUri { get; }

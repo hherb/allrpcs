@@ -17,7 +17,11 @@ public sealed class OpenAiEndpointTests
 
         Assert.Equal(expectedBase, endpoint.BaseUri.AbsoluteUri);
         Assert.Equal(expectedBase + "responses", endpoint.ResponsesUri.AbsoluteUri);
+        Assert.Equal(
+            expectedBase + "chat/completions",
+            endpoint.ChatCompletionsUri.AbsoluteUri);
         Assert.Equal(expectedBase + "models/", endpoint.ModelsUri.AbsoluteUri);
+        Assert.Equal(supplied.StartsWith("http://", StringComparison.Ordinal), endpoint.IsLoopback);
     }
 
     [Fact]
@@ -27,6 +31,7 @@ public sealed class OpenAiEndpointTests
         Assert.Equal(
             "https://api.openai.com/v1/responses",
             OpenAiEndpoint.Default.ResponsesUri.AbsoluteUri);
+        Assert.False(OpenAiEndpoint.Default.IsLoopback);
     }
 
     [Theory]

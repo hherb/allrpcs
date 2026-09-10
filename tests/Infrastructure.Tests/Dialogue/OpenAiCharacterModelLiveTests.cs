@@ -221,7 +221,7 @@ public sealed class OpenAiCharacterModelLiveTests
                 [
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.ValidAffordance,
-                        "type=wait;target=none"),
+                        "type=wait;target=null"),
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
                         playerText),
