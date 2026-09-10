@@ -240,8 +240,8 @@ Acceptance:
 
 ## Phase 5 — Character memory, beliefs, and relationships
 
-- [ ] Store the recent local conversation window per character.
-- [ ] Store significant episodic memories with participants, location, time, and provenance.
+- [x] Store the recent local conversation window per character.
+- [x] Store significant episodic memories with participants, location, time, and provenance.
 - [ ] Store confirmed facts separately from attributed claims and uncertain beliefs.
 - [ ] Store belief confidence and supporting or contradicting evidence.
 - [ ] Store relationships using bounded dimensions and recorded reasons.

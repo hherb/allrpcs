@@ -2,57 +2,56 @@
 
 ## Current state
 
-`main` contains merged PR #179 at `93e27a0`. The current branch is
-`codex/phase-4-live-provider-acceptance`.
+`main` contains merged PR #180 at `2ecc376`. The current branch is
+`codex/phase-5-character-memory`.
 
-Phase 4 is complete. Numeric-loopback OpenAI-compatible endpoints now use deterministic,
-non-streaming Chat Completions with strict structured output and all locally supported reasoning
-controls disabled. HTTPS endpoints, including official OpenAI, retain the existing Responses API
-path. Both paths still feed the same bounded strict local response decoder and provider-neutral
-validation boundary.
+Phase 5 now has its first two Domain-only local-memory slices. A recent-conversation entry retains
+one canonical `CharacterTurnId` and the exact completed provider-neutral activity. Its immutable
+per-character window retains exact entries in oldest-to-newest order, rejects mismatched characters
+and duplicate turn IDs, copies its collection, and caps retention at 16 turns and 16,000 aggregate
+UTF-16 dialogue code units. Pure append preserves the exact owner and newest entries while evicting
+only as many oldest entries as the count or text bounds require.
 
-The fix also makes the action schema express its actual invariant: `wait` requires JSON `null`,
-while `examine-object` and `collect-object` require a target string. The provider-independent
-instructions state the exact response vocabulary and forbid invented state. Responses streams now
-ignore bounded reasoning-summary lifecycle events without retaining them and treat bounded
-`response.output_text.done` as authoritative over transport-specific delta rendering.
+A significant episodic memory has a canonical `EpisodicMemoryId`, exact remembering character,
+stable unique participants including that character, exact location, exact qualitative-time
+snapshot, exact source `CharacterTurnId`, and a non-blank summary of at most 1,000 UTF-16 code
+units. Its immutable per-character snapshot copies and retains at most 128 exact entries in stable
+order with unique memory IDs.
 
-Local oMLX `LFM2.5-8B-A1B-MLX-8bit` and `Qwen3.6-35B-A3B-8bit` each passed the fixed three-request
-wait and action conformance series and the ordinary Godot wait and herb-patch action flows. Native
-Ollama `qwen3.5:4b-q8_0` passed the same evidence using its existing `think: false`, strict schema,
-and temperature-zero request. No model output, reasoning, prompt, credential, provider metadata,
-or raw failure is retained or reported.
-
-No endpoint persistence/UI, automatic live recomposition, Anthropic credential store, generated
-action beyond the existing herb-patch flow, native platform claim, or Phase 5 memory was added.
+No memory derivation, retrieval, persistence, save-schema change, provider-context integration,
+scene state, summarization, beliefs, claims, confidence, relationships, promises, tasks, UI,
+migration, provider-side state, or native-platform claim was added.
 
 ## Validation
 
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes`
-- complete Infrastructure suite: 414 tests
-- OpenAI-compatible LFM: three wait, three action, ordinary wait, and ordinary action passes
-- OpenAI-compatible Qwen: three wait, three action, ordinary wait, and ordinary action passes
-- native Ollama Qwen: three wait, three action, ordinary wait, and ordinary action passes
-- complete host-local `./scripts/quality.sh`, including the representative scenario validator, all
-  standard Godot smoke checks, and bounded Compatibility-renderer launch
+- zero-warning complete solution build
+- 1,414 Domain, 365 Application, 414 Infrastructure, and 8 architecture tests
+- representative discovery scenario: 5 valid evidence definitions
+- complete `./scripts/smoke-godot.sh`
+- bounded 60-frame Compatibility-renderer launch
 
-The first sandboxed VSTest and Godot attempts can hit the known local-socket and user-log
-restrictions; retry only the identical host command. GitHub Actions budget was exhausted for the
-prior draft PR. Do not dispatch hosted workflows solely to compensate for that account
-infrastructure state; jobs with zero steps are not test evidence.
+The complete quality script passed through every managed-code test, then the unchanged generated
+ScenarioValidator native app host stalled in macOS dynamic-loader startup. Rebuilding did not change
+that host behavior. The same rebuilt validator DLL passed immediately through `dotnet exec`, after
+which the complete Godot smoke script and graphical launch passed separately. This is a local app-host
+execution limitation, not a failing validator assertion or product failure. The first sandboxed
+VSTest attempt also hit the known local-socket restriction; its identical host run passed.
+
+GitHub Actions budget was exhausted for prior draft PRs. Do not dispatch hosted workflows solely to
+compensate for that account infrastructure state; jobs with zero steps are not test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 5a: bounded recent local conversation window contracts**.
+Take **Phase 5c: separate confirmed facts, attributed claims, and uncertain beliefs**.
 
 Acceptance boundary:
 
-1. Define the smallest provider-neutral immutable per-character recent-conversation window needed
-   to retain completed local dialogue turns, with explicit count/text bounds, exact character and
-   turn identity, deterministic ordering, and copied read-only collections.
-2. Add contract and policy tests for empty, append, eviction-at-bound, invalid identity/text, and
-   immutability behavior. Do not integrate persistence, retrieval, provider context, or Godot scene
-   state in this slice.
-3. Update `README.md`, `ROADMAP.md`, and this handover after the complete quality spine passes.
-4. Do not add beliefs, relationships, promises, task tracking, summarization, embeddings, semantic
-   retrieval, provider-side conversation state, UI, migration, or native-platform claims.
+1. Define the smallest provider-neutral immutable per-character epistemic-memory contracts that
+   structurally distinguish confirmed facts, attributed claims, and uncertain beliefs. Retain exact
+   local provenance; require an attributable speaker only for claims; bound identifiers and text.
+2. Add focused contract tests for each category, invalid category-specific shapes, stable ordering,
+   copied read-only collections, duplicate identity, nulls, and exact-instance retention.
+3. Do not add confidence/evidence scoring, relationship state, promises/tasks, retrieval, memory
+   derivation, persistence/save schema, provider context, scene state, UI, or migration in this slice.
+4. Update `README.md`, `ROADMAP.md`, and this handover after the complete quality spine passes.

@@ -788,6 +788,23 @@ the response, requests, intentions, world objects, and affordances remain unchan
 affordance snapshot is still supplied by a trusted caller rather than derived from gameplay state or
 serialized into model context.
 
+Phase 5 begins with provider-neutral local memory contracts rather than provider-owned state. A
+`CharacterRecentConversationWindow` retains up to 16 exact completed character turns and 16,000
+UTF-16 code units of their heard and response speech in stable oldest-to-newest order. Each entry
+has a canonical `CharacterTurnId`; identifiers are unique per window, and pure append evicts only
+the oldest turns needed to restore both bounds. Construction and transition copy their collections,
+retain exact supplied character, activity, and turn instances, and reject incomplete activities,
+mismatched characters, and duplicate turn identities.
+
+Significant episodic memories remain separate from both the recent window and authoritative truth.
+Each `CharacterEpisodicMemory` has a canonical memory identity, one exact remembering character, a
+bounded unique participant list that includes that character, an exact location, an exact
+qualitative-world-time snapshot, completed-turn provenance, and a non-blank summary of at most
+1,000 UTF-16 code units. A copied read-only per-character snapshot preserves up to 128 exact memory
+instances in supplied order with unique identities. These initial contracts do not yet derive,
+retrieve, persist, summarize, migrate, or project memory into model context, and do not define
+facts, claims, belief confidence, relationships, promises, tasks, UI, or scene ownership.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the
