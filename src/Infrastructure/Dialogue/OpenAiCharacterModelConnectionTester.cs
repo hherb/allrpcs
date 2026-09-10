@@ -6,21 +6,30 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// <summary>Tests OpenAI credential and model access without generating content.</summary>
 public sealed class OpenAiCharacterModelConnectionTester : ICharacterModelConnectionTester
 {
-    private static readonly Uri ModelsEndpoint =
-        new("https://api.openai.com/v1/models/", UriKind.Absolute);
-
     private readonly HttpClient client;
     private readonly IOpenAiCredentialSource credentialSource;
+    private readonly OpenAiEndpoint endpoint;
 
     /// <summary>Creates a tester over caller-owned HTTP and credential dependencies.</summary>
     public OpenAiCharacterModelConnectionTester(
         HttpClient client,
         IOpenAiCredentialSource credentialSource)
+        : this(client, credentialSource, OpenAiEndpoint.Default)
+    {
+    }
+
+    /// <summary>Creates a tester over caller-owned dependencies and one validated API base.</summary>
+    public OpenAiCharacterModelConnectionTester(
+        HttpClient client,
+        IOpenAiCredentialSource credentialSource,
+        OpenAiEndpoint endpoint)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
+        ArgumentNullException.ThrowIfNull(endpoint);
         this.client = client;
         this.credentialSource = credentialSource;
+        this.endpoint = endpoint;
     }
 
     /// <inheritdoc />
@@ -44,8 +53,8 @@ public sealed class OpenAiCharacterModelConnectionTester : ICharacterModelConnec
                 CharacterModelFailureCode.Authentication);
         }
 
-        Uri endpoint = new(ModelsEndpoint, Uri.EscapeDataString(settings.ModelName));
-        using HttpRequestMessage message = new(HttpMethod.Get, endpoint);
+        Uri modelEndpoint = new(endpoint.ModelsUri, Uri.EscapeDataString(settings.ModelName));
+        using HttpRequestMessage message = new(HttpMethod.Get, modelEndpoint);
         message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", credential.ApiKey);
         message.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

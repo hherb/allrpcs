@@ -54,6 +54,25 @@ public sealed class OpenAiCharacterModelTests
     }
 
     [Fact]
+    public async Task PostsOnlyToTheExactCallerOwnedApiBase()
+    {
+        CapturingHandler handler = new(_ => EventStreamResponse(CompletedEvents()));
+        using HttpClient client = new(handler);
+        OpenAiEndpoint endpoint = new(new Uri("http://127.0.0.1:8000/v1"));
+        OpenAiCharacterModel model = new(
+            client,
+            new StubCredentialSource("test-secret"),
+            Settings(),
+            endpoint);
+
+        CharacterModelStreamTermination result = Assert.IsType<CharacterModelStreamTermination>(
+            Assert.Single(await CollectAsync(model, CreateRequest())));
+
+        Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result.Status);
+        Assert.Equal("http://127.0.0.1:8000/v1/responses", handler.RequestUri?.AbsoluteUri);
+    }
+
+    [Fact]
     public async Task RecordsBoundedRedactedCompletionDiagnostics()
     {
         CapturingHandler handler = new(_ => EventStreamResponse(CompletedEventsWithUsage()));
@@ -235,12 +254,19 @@ public sealed class OpenAiCharacterModelTests
             client,
             new StubCredentialSource("key"),
             Settings(),
+            null!));
+        Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterModel(
+            client,
+            new StubCredentialSource("key"),
+            Settings(),
+            OpenAiEndpoint.Default,
             null!,
             new RecordingDiagnosticSink()));
         Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterModel(
             client,
             new StubCredentialSource("key"),
             Settings(),
+            OpenAiEndpoint.Default,
             TimeProvider.System,
             null!));
     }

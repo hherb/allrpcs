@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Infrastructure.Dialogue;
 using Godot;
@@ -41,6 +42,12 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         _ = delta;
         SetProcess(false);
 
+        if (controller.TryReplaceCurrentBindings())
+        {
+            Fail("Provider composition replaced bindings without current settings.");
+            return;
+        }
+
         CharacterModelSettings anthropicSettings = new(
             CharacterModelProvider.Anthropic,
             "claude-test");
@@ -81,12 +88,113 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             return;
         }
 
+        ScriptedModel retained = new();
+        CharacterModelSettings retainedSettings = new(
+            CharacterModelProvider.Ollama,
+            "retained-test");
+        CharacterModelSettingsSelectionSnapshot retainedSelection = new(
+            [retainedSettings],
+            CharacterModelProvider.Ollama);
+        CharacterModelBinding retainedBinding = Binding(retainedSettings, retained);
+        if (!modelSource.TryReplaceBindings(
+                retainedSelection,
+                new CharacterModelBindingSnapshot([retainedBinding])))
+        {
+            Fail("The model source rejected one exact replacement binding.");
+            return;
+        }
+
+        ICharacterModel alreadyTaken = modelSource.TakeModel();
+        ScriptedModel replacement = new();
+        ScriptedModel oneShot = new();
+        CharacterModelSettings replacementSettings = new(
+            CharacterModelProvider.Ollama,
+            "replacement-test");
+        CharacterModelSettingsSelectionSnapshot replacementSelection = new(
+            [replacementSettings],
+            CharacterModelProvider.Ollama);
+        CharacterModelBinding replacementBinding = Binding(replacementSettings, replacement);
+        CharacterModelBinding mismatchedBinding = Binding(
+            new CharacterModelSettings(CharacterModelProvider.Ollama, "replacement-test"),
+            replacement);
+        if (!modelSource.TrySupplyModel(oneShot)
+            || modelSource.TryReplaceBindings(
+                replacementSelection,
+                new CharacterModelBindingSnapshot([mismatchedBinding]))
+            || !ReferenceEquals(modelSource.TakeModel(), oneShot)
+            || !ReferenceEquals(modelSource.TakeModel(), retained)
+            || !modelSource.TrySupplyModel(oneShot)
+            || !modelSource.TryReplaceBindings(
+                replacementSelection,
+                new CharacterModelBindingSnapshot([replacementBinding]))
+            || !ReferenceEquals(alreadyTaken, retained)
+            || !ReferenceEquals(modelSource.TakeModel(), oneShot)
+            || !ReferenceEquals(modelSource.TakeModel(), replacement)
+            || !ReferenceEquals(modelSource.TakeModel(), replacement))
+        {
+            Fail("The model source replacement was not atomic, stable, or one-shot preserving.");
+            return;
+        }
+
+        CharacterModelSettings activatedSettings = new(
+            CharacterModelProvider.Ollama,
+            "activated-test");
+        if (!settingsController.TryApply(activatedSettings)
+            || !controller.TryReplaceCurrentBindings())
+        {
+            Fail("Provider composition did not replace the exact current Ollama binding.");
+            return;
+        }
+
+        ICharacterModel activated = modelSource.TakeModel();
+        if (activated is not OllamaCharacterModel
+            || ReferenceEquals(activated, first)
+            || !ReferenceEquals(modelSource.TakeModel(), activated)
+            || !settingsController.TryApply(anthropicSettings)
+            || controller.TryReplaceCurrentBindings()
+            || !ReferenceEquals(modelSource.TakeModel(), activated))
+        {
+            Fail("Provider composition changed the model after an unsupported replacement.");
+            return;
+        }
+
         GD.Print(
             "Temporary character-model composition smoke passed: unsupported Anthropic remained "
-            + "offline, one exact retained persisted Ollama snapshot composed once without "
-            + "credential or network input/output, and the scene retained one stable selected "
-            + "model.");
+            + "offline, one exact persisted Ollama snapshot composed without input/output, "
+            + "replacement was atomic and one-shot preserving, the current Ollama setting "
+            + "activated as one stable future model, and unsupported activation preserved it.");
         GetTree().Quit();
+    }
+
+    private static CharacterModelBinding Binding(
+        CharacterModelSettings settings,
+        ICharacterModel model) =>
+        new(settings.Provider, settings, model, new ScriptedConnectionTester());
+
+    private sealed class ScriptedModel : ICharacterModel
+    {
+        public async IAsyncEnumerable<CharacterModelStreamUpdate> StreamResponseAsync(
+            CharacterModelGenerationRequest request,
+            [EnumeratorCancellation]
+            CancellationToken cancellationToken)
+        {
+            ArgumentNullException.ThrowIfNull(request);
+            cancellationToken.ThrowIfCancellationRequested();
+            await Task.CompletedTask;
+            yield break;
+        }
+    }
+
+    private sealed class ScriptedConnectionTester : ICharacterModelConnectionTester
+    {
+        public ValueTask<CharacterModelConnectionTestResult> TestConnectionAsync(
+            CharacterModelSettings settings,
+            CancellationToken cancellationToken)
+        {
+            ArgumentNullException.ThrowIfNull(settings);
+            cancellationToken.ThrowIfCancellationRequested();
+            return ValueTask.FromResult(CharacterModelConnectionTestResult.Connected());
+        }
     }
 
     private void Fail(string message)

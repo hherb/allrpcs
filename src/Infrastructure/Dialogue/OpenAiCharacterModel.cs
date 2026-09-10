@@ -10,13 +10,11 @@ namespace Allrpcs.Infrastructure.Dialogue;
 /// </summary>
 public sealed class OpenAiCharacterModel : ICharacterModel
 {
-    private static readonly Uri ResponsesEndpoint =
-        new("https://api.openai.com/v1/responses", UriKind.Absolute);
-
     private readonly HttpClient client;
     private readonly ICharacterModelGenerationDiagnosticSink? diagnosticSink;
     private readonly TimeProvider? diagnosticTimeProvider;
     private readonly IOpenAiCredentialSource credentialSource;
+    private readonly OpenAiEndpoint endpoint;
     private readonly CharacterModelSettings settings;
 
     /// <summary>Gets the maximum accepted OpenAI API-key length.</summary>
@@ -29,10 +27,21 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         HttpClient client,
         IOpenAiCredentialSource credentialSource,
         CharacterModelSettings settings)
+        : this(client, credentialSource, settings, OpenAiEndpoint.Default)
+    {
+    }
+
+    /// <summary>Creates an adapter over caller-owned dependencies and one validated API base.</summary>
+    public OpenAiCharacterModel(
+        HttpClient client,
+        IOpenAiCredentialSource credentialSource,
+        CharacterModelSettings settings,
+        OpenAiEndpoint endpoint)
     {
         ArgumentNullException.ThrowIfNull(client);
         ArgumentNullException.ThrowIfNull(credentialSource);
         ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(endpoint);
         if (settings.Provider != CharacterModelProvider.OpenAi)
         {
             throw new ArgumentException("Settings must select the OpenAI provider.", nameof(settings));
@@ -41,6 +50,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         this.client = client;
         this.credentialSource = credentialSource;
         this.settings = settings;
+        this.endpoint = endpoint;
     }
 
     /// <summary>
@@ -52,7 +62,25 @@ public sealed class OpenAiCharacterModel : ICharacterModel
         CharacterModelSettings settings,
         TimeProvider diagnosticTimeProvider,
         ICharacterModelGenerationDiagnosticSink diagnosticSink)
-        : this(client, credentialSource, settings)
+        : this(
+            client,
+            credentialSource,
+            settings,
+            OpenAiEndpoint.Default,
+            diagnosticTimeProvider,
+            diagnosticSink)
+    {
+    }
+
+    /// <summary>Creates an endpoint-specific adapter with caller-owned redacted diagnostics.</summary>
+    public OpenAiCharacterModel(
+        HttpClient client,
+        IOpenAiCredentialSource credentialSource,
+        CharacterModelSettings settings,
+        OpenAiEndpoint endpoint,
+        TimeProvider diagnosticTimeProvider,
+        ICharacterModelGenerationDiagnosticSink diagnosticSink)
+        : this(client, credentialSource, settings, endpoint)
     {
         ArgumentNullException.ThrowIfNull(diagnosticTimeProvider);
         ArgumentNullException.ThrowIfNull(diagnosticSink);
@@ -85,7 +113,7 @@ public sealed class OpenAiCharacterModel : ICharacterModel
             yield break;
         }
 
-        using HttpRequestMessage message = new(HttpMethod.Post, ResponsesEndpoint)
+        using HttpRequestMessage message = new(HttpMethod.Post, endpoint.ResponsesUri)
         {
             Content = new StringContent(
                 OpenAiCharacterModelRequestSerializer.Serialize(request, settings.ModelName),
