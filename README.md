@@ -50,9 +50,9 @@ Infrastructure contains caller-composed OpenAI Responses, Anthropic Messages, an
 Ollama HTTP adapters with stateless strict structured output, bounded streaming completion, and
 optional terminal token diagnostics. Bounded caller-composed bindings select exact providers and
 dispatch redacted OpenAI, Anthropic, or Ollama connection tests. The ordinary scene can switch exact
-fake bindings while macOS OpenAI Keychain storage is present. Production scene composition,
-Windows/Linux credential stores, Anthropic credential storage, settings persistence, and execution
-of generated non-wait intentions remain later work.
+fake bindings while macOS Keychain, Linux Secret Service, and Windows Credential Manager OpenAI
+credential stores are present. Production scene composition, Anthropic credential storage, settings
+persistence, and execution of generated non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -871,10 +871,25 @@ reads success or failure bodies, and all expose only provider-neutral outcomes.
 password identity in macOS Keychain. The `/usr/bin/security` process is isolated behind an injected
 boundary, never uses a shell, receives save bytes only through redirected standard input, bounds
 and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
-saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
-touch a user's real keychain. No Anthropic credential store, Windows Credential Manager or Linux
-Secret Service adapter, settings UI or persistence, diagnostic logging/export, production
-provider composition, or generated-intention execution exists. The opt-in
+saved, deleted, or failed outcomes.
+
+`LinuxSecretServiceOpenAiCredentialStore` uses the fixed `Allrpcs.OpenAI` application and `api-key`
+account attributes through `/usr/bin/secret-tool`. Availability is explicit and fails closed. The
+native runner permits only exact store, lookup, and clear commands, passes save bytes through
+redirected standard input without a shell or added newline, bounds lookup output, clears retained
+secret buffers, and discards error details. Because `secret-tool clear` does not distinguish a
+missing item, delete first performs a bounded lookup probe and clears its output before clearing the
+exact item. Standard tests use deterministic fake boundaries and never touch a user's real
+keychain or Secret Service. Linux support is not claimed until the same bytes are proved on Linux.
+
+`WindowsOpenAiCredentialStore` uses one fixed generic `Allrpcs.OpenAI` target and `api-key` user
+identity behind an injected Credential Manager seam. The native implementation uses the current
+user's local-machine-persistent credential set, replaces only that exact target, maps native errors
+to redacted outcomes, and clears managed input, unmanaged write memory, copied output, and the
+Credential Manager read buffer before releasing it. Standard tests are fake-boundary-only and do
+not touch a user's credential set. Windows support is not claimed until the same bytes are proved
+on Windows. No Anthropic credential store, settings UI or persistence, diagnostic logging/export,
+production provider composition, or generated-intention execution exists. The opt-in
 `OllamaCharacterModelLiveTests` checks an explicitly named already-installed model without pulling
 or modifying it; the standard suite does not access a local server.
 
