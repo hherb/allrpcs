@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #178 at `0f3c9d3`. The current branch is
-`codex/phase-4-ollama-live-conformance` and advances Phase 4 through Phase 4r7.
+`codex/phase-4-ollama-live-conformance`; draft PR #179 advances Phase 4 through Phase 4r7.
 
 - Phase 4r5 gives Ollama the existing strict three-request wait and known-target action
   conformance series. Both reuse the provider-neutral evaluator and bounded count-only summary,
@@ -45,7 +45,8 @@ returns before client/model construction when all four live switches are absent.
 also passed all seven Ollama-live/evaluator tests and the generated examination smoke. The first
 sandboxed VSTest and Godot attempts hit the known local-socket/user-log restrictions; the identical
 host commands passed. GitHub Actions budget is exhausted for the month: do not dispatch hosted
-workflows, and treat zero-step hosted failures as account infrastructure rather than test evidence.
+workflows. All five automatically created draft-PR jobs failed with zero steps at the initial head;
+this is account infrastructure, not test evidence, and must not be retried.
 
 ## Exact next bounded slice
 
