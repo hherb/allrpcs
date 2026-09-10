@@ -16,8 +16,10 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private const string SecondSpeechText = "I will also wait near the garden.";
     private const int MaximumProcessFrames = 240;
 
-    private readonly ScriptedWaitModel firstModel = new(FirstSpeechText);
+    private readonly ScriptedWaitModel firstModel = new(FirstSpeechText, waitsForRelease: true);
     private readonly ScriptedWaitModel secondModel = new(SecondSpeechText);
+    private CharacterModelSettings anthropicSettings = null!;
+    private CharacterModelBinding anthropicBinding = null!;
     private TemporaryCharacterModelSource modelSource = null!;
     private CharacterModelGenerationFlowController flow = null!;
     private DialogueInputController dialogueInputController = null!;
@@ -53,12 +55,12 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         CharacterModelSettings openAiSettings = new(
             CharacterModelProvider.OpenAi,
             "gpt-test");
-        CharacterModelSettings anthropicSettings = new(
+        anthropicSettings = new CharacterModelSettings(
             CharacterModelProvider.Anthropic,
             "claude-test");
         CharacterModelBinding openAi = Binding(openAiSettings, firstModel);
-        CharacterModelBinding anthropic = Binding(anthropicSettings, secondModel);
-        CharacterModelBindingSnapshot bindings = new([openAi, anthropic]);
+        anthropicBinding = Binding(anthropicSettings, secondModel);
+        CharacterModelBindingSnapshot bindings = new([openAi, anthropicBinding]);
         CharacterModelSettingsSelectionSnapshot selection = new(
             [anthropicSettings, openAiSettings],
             CharacterModelProvider.OpenAi);
@@ -141,12 +143,26 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         DialogueUtterance? utterance = dialogueInputController.LastSubmittedUtterance;
         if (activity is null
             || utterance?.Text != FirstPlayerText
-            || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse))
+            || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse)
+            || firstModel.CallCount == 0)
         {
             return;
         }
 
         firstRequest = activity.Request;
+        CharacterModelSettingsSelectionSnapshot replacementSelection = new(
+            [anthropicSettings],
+            CharacterModelProvider.Anthropic);
+        if (!modelSource.TryReplaceBindings(
+                replacementSelection,
+                new CharacterModelBindingSnapshot([anthropicBinding]))
+            || secondModel.CallCount != 0)
+        {
+            Fail("The active-turn model replacement was not retained only for a future request.");
+            return;
+        }
+
+        firstModel.Release();
         stage = 2;
     }
 
@@ -181,13 +197,6 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             || !HasUnchangedAuthoritativeState())
         {
             Fail("The first caller-composed model escaped its exact ordinary turn.");
-            return;
-        }
-
-        if (!modelSource.TrySelectProvider(CharacterModelProvider.Anthropic)
-            || !ReferenceEquals(modelSource.TakeModel(), secondModel))
-        {
-            Fail("The model-switch smoke could not select its second exact provider binding.");
             return;
         }
 
@@ -272,9 +281,9 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         SetProcess(false);
         GD.Print(
             "Ordinary character-model provider-switch smoke passed: exact caller-composed "
-            + "OpenAI and Anthropic bindings served distinct consecutive requests, unavailable "
-            + "Ollama selection did not substitute a model, each speech occurred once in order, "
-            + "and no presentation, action, or authoritative state crossed turn boundaries.");
+            + "OpenAI and Anthropic bindings served distinct consecutive requests, active-turn "
+            + "replacement affected only the future request, unavailable Ollama selection did "
+            + "not substitute a model, and no state crossed turn boundaries.");
         GetTree().Quit();
     }
 
@@ -313,11 +322,18 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         GetTree().Quit(exitCode: 1);
     }
 
-    private sealed class ScriptedWaitModel(string speechText) : ICharacterModel
+    private sealed class ScriptedWaitModel(
+        string speechText,
+        bool waitsForRelease = false) : ICharacterModel
     {
+        private readonly TaskCompletionSource release = new(
+            TaskCreationOptions.RunContinuationsAsynchronously);
+
         public int CallCount { get; private set; }
 
         public CharacterModelGenerationRequest? ReceivedRequest { get; private set; }
+
+        public void Release() => release.TrySetResult();
 
         public async IAsyncEnumerable<CharacterModelStreamUpdate> StreamResponseAsync(
             CharacterModelGenerationRequest request,
@@ -327,6 +343,11 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             cancellationToken.ThrowIfCancellationRequested();
             CallCount++;
             ReceivedRequest = request;
+
+            if (waitsForRelease)
+            {
+                await release.Task.WaitAsync(cancellationToken);
+            }
 
             CharacterTurnResponse response = new(
                 request.TurnRequest,

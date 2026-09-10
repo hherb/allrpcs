@@ -29,6 +29,35 @@ public sealed class OpenAiCharacterModelBindingFactoryTests
         Assert.Same(credentialSource, Field<IOpenAiCredentialSource>(model, "credentialSource"));
         Assert.Same(credentialSource, Field<IOpenAiCredentialSource>(tester, "credentialSource"));
         Assert.Same(settings, Field<CharacterModelSettings>(model, "settings"));
+        Assert.Same(OpenAiEndpoint.Default, Field<OpenAiEndpoint>(model, "endpoint"));
+        Assert.Same(OpenAiEndpoint.Default, Field<OpenAiEndpoint>(tester, "endpoint"));
+        Assert.Equal(0, handler.SendCount);
+        Assert.Equal(0, credentialSource.LoadCount);
+    }
+
+    [Fact]
+    public void CreatesAnExactEndpointSpecificBindingWithoutInputOutput()
+    {
+        CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "local-test");
+        ThrowingHandler handler = new();
+        using HttpClient client = new(handler);
+        ThrowingCredentialSource credentialSource = new();
+        OpenAiEndpoint endpoint = new(new Uri("http://127.0.0.1:8000/v1"));
+
+        CharacterModelBinding binding = OpenAiCharacterModelBindingFactory.Create(
+            settings,
+            client,
+            credentialSource,
+            endpoint);
+
+        Assert.Same(
+            endpoint,
+            Field<OpenAiEndpoint>(Assert.IsType<OpenAiCharacterModel>(binding.Model), "endpoint"));
+        Assert.Same(
+            endpoint,
+            Field<OpenAiEndpoint>(
+                Assert.IsType<OpenAiCharacterModelConnectionTester>(binding.ConnectionTester),
+                "endpoint"));
         Assert.Equal(0, handler.SendCount);
         Assert.Equal(0, credentialSource.LoadCount);
     }
@@ -79,6 +108,8 @@ public sealed class OpenAiCharacterModelBindingFactoryTests
         Assert.Throws<ArgumentException>(() => OpenAiCharacterModelBindingFactory.Create(
             anthropic, client, credentialSource));
         Assert.Throws<ArgumentNullException>(() => OpenAiCharacterModelBindingFactory.Create(
+            settings, client, credentialSource, (OpenAiEndpoint)null!));
+        Assert.Throws<ArgumentNullException>(() => OpenAiCharacterModelBindingFactory.Create(
             settings, client, credentialSource, null!, diagnosticSink));
         Assert.Throws<ArgumentNullException>(() => OpenAiCharacterModelBindingFactory.Create(
             settings, client, credentialSource, timeProvider, null!));
@@ -89,7 +120,7 @@ public sealed class OpenAiCharacterModelBindingFactoryTests
     }
 
     [Fact]
-    public void ExposesOnlyTheTwoExactCreationOverloads()
+    public void ExposesOnlyTheFourExactCreationOverloads()
     {
         MethodInfo[] methods = typeof(OpenAiCharacterModelBindingFactory).GetMethods(
             BindingFlags.Public | BindingFlags.Static | BindingFlags.DeclaredOnly);
@@ -108,6 +139,24 @@ public sealed class OpenAiCharacterModelBindingFactoryTests
                     typeof(CharacterModelSettings),
                     typeof(HttpClient),
                     typeof(IOpenAiCredentialSource),
+                    typeof(OpenAiEndpoint),
+                ],
+                method.GetParameters().Select(parameter => parameter.ParameterType)),
+            method => Assert.Equal(
+                [
+                    typeof(CharacterModelSettings),
+                    typeof(HttpClient),
+                    typeof(IOpenAiCredentialSource),
+                    typeof(TimeProvider),
+                    typeof(ICharacterModelGenerationDiagnosticSink),
+                ],
+                method.GetParameters().Select(parameter => parameter.ParameterType)),
+            method => Assert.Equal(
+                [
+                    typeof(CharacterModelSettings),
+                    typeof(HttpClient),
+                    typeof(IOpenAiCredentialSource),
+                    typeof(OpenAiEndpoint),
                     typeof(TimeProvider),
                     typeof(ICharacterModelGenerationDiagnosticSink),
                 ],

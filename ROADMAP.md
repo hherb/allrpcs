@@ -190,13 +190,17 @@ Acceptance:
 - [x] Load one exact persisted settings snapshot into shared scene state before composing its
   selected supported provider.
 - [x] Expose secret-free provider and model editing through explicit apply, unselected removal, and
-  save controls while deferring activation until restart.
+  save controls.
+- [x] Activate the exact current supported binding explicitly for future turns without saving,
+  interrupting an active turn, or replacing its already-taken model.
 - [x] Expose masked explicit OpenAI credential save/delete through the OS store without startup
   access, readback, settings-document inclusion, or detailed failure output.
 - [x] Test the exact current selected supported provider/model through an explicit redacted scene
   control without generation or authoritative mutation.
 - [x] Compose exact OpenAI, Anthropic, and Ollama model bindings from caller-owned dependencies
   without credential, network, discovery, or scene input/output during construction.
+- [x] Allow caller-composed OpenAI-compatible HTTPS or numeric-loopback version-one API bases while
+  keeping the official OpenAI endpoint as the default.
 - [x] Compose a valid persisted selected Ollama or OS-supported OpenAI binding into the ordinary
   healer scene at startup without credential or network input/output during composition.
 - [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,

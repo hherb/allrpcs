@@ -10,8 +10,8 @@ public partial class TemporaryCharacterModelSettingsPanel : Control
     /// <summary>Displayed after a valid setting is applied only in memory.</summary>
     public const string AppliedStatusText = "Provider settings: APPLIED · SAVE TO KEEP";
 
-    /// <summary>Displayed after current settings are explicitly saved.</summary>
-    public const string SavedStatusText = "Provider settings: SAVED · RESTART TO APPLY";
+    /// <summary>Displayed after current settings are saved for restart or explicit activation.</summary>
+    public const string SavedStatusText = "Provider settings: SAVED · ACTIVATE OR RESTART";
 
     /// <summary>Displayed after provider or model input is rejected.</summary>
     public const string RejectedStatusText = "Provider settings: REJECTED";
@@ -21,6 +21,12 @@ public partial class TemporaryCharacterModelSettingsPanel : Control
 
     /// <summary>Displayed when no initialized settings can be saved.</summary>
     public const string SaveFailedStatusText = "Provider settings: SAVE FAILED";
+
+    /// <summary>Displayed after current settings are activated for future turns only.</summary>
+    public const string ActivatedStatusText = "Provider settings: ACTIVE · SAVE TO KEEP";
+
+    /// <summary>Displayed when current settings cannot replace the live binding.</summary>
+    public const string ActivationFailedStatusText = "Provider settings: ACTIVATION FAILED";
 
     /// <summary>Displayed before any credential operation; no credential is loaded for display.</summary>
     public const string CredentialNotReadStatusText = "OpenAI credential: NOT READ";
@@ -93,6 +99,7 @@ public partial class TemporaryCharacterModelSettingsPanel : Control
         GetNode<Button>("Apply").Pressed += OnApplyPressed;
         GetNode<Button>("Remove").Pressed += OnRemovePressed;
         GetNode<Button>("Save").Pressed += OnSavePressed;
+        GetNode<Button>("Activate").Pressed += OnActivatePressed;
         GetNode<Button>("SaveOpenAiApiKey").Pressed += OnSaveOpenAiApiKeyPressed;
         GetNode<Button>("DeleteOpenAiApiKey").Pressed += OnDeleteOpenAiApiKeyPressed;
         GetNode<Button>("TestConnection").Pressed += OnTestConnectionPressed;
@@ -198,6 +205,19 @@ public partial class TemporaryCharacterModelSettingsPanel : Control
         status.Text = controller.SaveCurrent() == CharacterModelSettingsDocumentWriteResult.Saved
             ? SavedStatusText
             : SaveFailedStatusText;
+    }
+
+    private void OnActivatePressed()
+    {
+        if (OperationIsActive())
+        {
+            status.Text = ActivationFailedStatusText;
+            return;
+        }
+
+        status.Text = compositionController.TryActivateCurrentBindings()
+            ? ActivatedStatusText
+            : ActivationFailedStatusText;
     }
 
     private void OnRemovePressed()

@@ -81,6 +81,31 @@ public partial class TemporaryCharacterModelCompositionController : Node
         return true;
     }
 
+    /// <summary>Composes and replaces the exact current supported binding for future turns.</summary>
+    public bool TryReplaceCurrentBindings()
+    {
+        CharacterModelSettingsSelectionSnapshot? selection = settingsController.Snapshot;
+        if (!isInitialized || selection is null)
+        {
+            return false;
+        }
+
+        CharacterModelBindingSnapshot? bindings = CreateCurrentBindingSnapshot(selection);
+        return bindings is not null && modelSource.TryReplaceBindings(selection, bindings);
+    }
+
+    /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
+    public bool TryActivateCurrentBindings()
+    {
+        CharacterModelSettingsSelectionSnapshot? selection = settingsController.Snapshot;
+        if (selection is null)
+        {
+            return false;
+        }
+
+        return isInitialized ? TryReplaceCurrentBindings() : TryInitialize(selection);
+    }
+
     /// <summary>Tests only the exact current selected setting through a redacted binding.</summary>
     public ValueTask<CharacterModelConnectionTestResult> TestCurrentConnectionAsync(
         CancellationToken cancellationToken)

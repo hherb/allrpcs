@@ -31,6 +31,26 @@ public partial class TemporaryCharacterModelSource : Node
         return true;
     }
 
+    /// <summary>Atomically replaces configured bindings for future model takes only.</summary>
+    public bool TryReplaceBindings(
+        CharacterModelSettingsSelectionSnapshot selection,
+        CharacterModelBindingSnapshot snapshot)
+    {
+        ArgumentNullException.ThrowIfNull(selection);
+        ArgumentNullException.ThrowIfNull(snapshot);
+
+        if (settingsSelection is null
+            || bindings is null
+            || CharacterModelSettingsBindingSelector.Select(selection, snapshot) is null)
+        {
+            return false;
+        }
+
+        settingsSelection = selection;
+        bindings = snapshot;
+        return true;
+    }
+
     /// <summary>Selects one exact available canonical provider without fallback.</summary>
     public bool TrySelectProvider(CharacterModelProvider provider)
     {

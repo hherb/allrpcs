@@ -44,6 +44,26 @@ public sealed class OpenAiCharacterModelConnectionTesterTests
         Assert.Equal(1, handler.SendCount);
     }
 
+    [Fact]
+    public async Task RetrievesOnlyFromTheExactCallerOwnedApiBase()
+    {
+        CapturingHandler handler = new(_ => new HttpResponseMessage(HttpStatusCode.OK));
+        using HttpClient client = new(handler);
+        OpenAiCharacterModelConnectionTester tester = new(
+            client,
+            new StubCredentialSource(OpenAiCredentialLoadResult.Loaded("test-secret")),
+            new OpenAiEndpoint(new Uri("http://127.0.0.1:8000/v1")));
+
+        CharacterModelConnectionTestResult result = await tester.TestConnectionAsync(
+            new CharacterModelSettings(CharacterModelProvider.OpenAi, "local/model"),
+            default);
+
+        Assert.True(result.IsConnected);
+        Assert.Equal(
+            "http://127.0.0.1:8000/v1/models/local%2Fmodel",
+            handler.RequestUri?.AbsoluteUri);
+    }
+
     [Theory]
     [MemberData(nameof(FailureStatuses))]
     public async Task MapsHttpFailuresWithoutReadingOrRetainingProviderDetails(
@@ -134,6 +154,10 @@ public sealed class OpenAiCharacterModelConnectionTesterTests
                 OpenAiCredentialLoadResult.Loaded("key"))));
         Assert.Throws<ArgumentNullException>(() =>
             new OpenAiCharacterModelConnectionTester(client, null!));
+        Assert.Throws<ArgumentNullException>(() => new OpenAiCharacterModelConnectionTester(
+            client,
+            new StubCredentialSource(OpenAiCredentialLoadResult.Loaded("key")),
+            null!));
     }
 
     private sealed class StubCredentialSource(

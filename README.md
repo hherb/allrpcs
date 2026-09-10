@@ -818,12 +818,14 @@ line length, line count, frame count, document count, and joined document length
 truncated, excessive, or NUL-containing streams return no partial provider content.
 
 `OpenAiCharacterModel` implements the provider-neutral model seam over a caller-owned `HttpClient`,
-immutable provider/model settings, and `IOpenAiCredentialSource`. It posts only to the official
-Responses endpoint, requests `text/event-stream`, applies each complete framed semantic document,
-and yields one provider-neutral terminal update. Credentials exist only on the transient request
-authorization header; unsuccessful response bodies are never read. HTTP authentication,
-rate-limit, transient service, request-rejection, and transport outcomes map to bounded codes
-without provider details.
+immutable provider/model settings, `IOpenAiCredentialSource`, and validated `OpenAiEndpoint`. The
+official version-one API base remains the default. Caller-composed alternatives must use HTTPS, or
+HTTP on a numeric loopback address with an explicit port; paths other than `/v1`, user information,
+queries, and fragments are rejected. The adapter posts only to that base's derived Responses
+resource, requests `text/event-stream`, applies each complete framed semantic document, and yields
+one provider-neutral terminal update. Credentials exist only on the transient request authorization
+header; unsuccessful response bodies are never read. HTTP authentication, rate-limit, transient
+service, request-rejection, and transport outcomes map to bounded codes without provider details.
 
 The Anthropic boundary serializes one stateless Messages request with two trusted system text
 blocks, one exact untrusted user message, streaming enabled, and `output_config.format` structured
@@ -871,10 +873,11 @@ return only provider-neutral `Unavailable`.
 The strict version-1 provider-settings JSON boundary writes only `schemaVersion`, canonical provider
 identifiers, and bounded model names in stable settings order. Deserialization rejects malformed,
 future, duplicate, missing, unknown, non-canonical, excessive, or selection-incomplete documents;
-credentials have no field in the closed schema. The ordinary scene source retains the exact settings
-selection and binding snapshots and switches only to another exact configured binding, while its
-stable credential-free offline default and one-shot test seam remain intact. It does not construct a
-provider adapter or read a settings document.
+credentials and API bases have no field in the closed schema. The ordinary scene source retains the
+exact settings selection and binding snapshots and replaces them only after validating the exact
+selected binding. Replacement affects future `TakeModel` calls, preserves an already-taken model and
+one-shot supplied-model precedence, and leaves rejected state unchanged. Its stable credential-free
+offline default remains intact. It does not construct a provider adapter or read a settings document.
 
 `ICharacterModelSettingsDocumentStore` is the provider-settings-specific Application port for one
 already-serialized non-empty document. Writes return only `Saved` or `Failed`; reads return
@@ -900,9 +903,11 @@ changing memory, and initialization, apply, update, selection, and removal never
 
 The temporary settings panel exposes the three canonical providers and one bounded exact model name
 without a default selection. Apply changes only scene-owned memory, remove accepts only a configured
-unselected provider, and save explicitly replaces the secret-free document. Rejected input retains
-the exact prior snapshot, and the panel states that saved changes take effect after restart because
-provider composition remains a one-time startup operation.
+unselected provider, save explicitly replaces the secret-free document, and activate explicitly
+initializes or replaces the exact current supported binding for future turns. Activation performs no
+save, credential read, connection test, or generation. Rejected input or activation retains the
+exact prior live model, and activation during an ordinary turn cannot replace the model already taken
+for that turn.
 
 The same panel exposes a masked OpenAI credential field backed by a scene-owned controller. The
 controller composes only the current OS credential store and performs no startup operation. Save
@@ -917,25 +922,27 @@ endpoint; OpenAI uses the existing OS-specific credential source on macOS, Linux
 Construction reads no credential and makes no HTTP request. Missing, failed, invalid,
 unsupported-platform, and Anthropic selections preserve the stable offline behavior. The scene does
 not create or discover a local server, own a model process, or claim native Linux/Windows credential
-proof. An explicit connection button composes only the exact current selected supported binding and
-delegates its existing redacted tester. It displays only connected, busy, or failed, performs no
-generation or scene mutation, and does nothing at startup. The deterministic smoke harness disables
-automatic persisted composition globally and uses isolated settings, credential stores, and
-bindings, so local validation cannot inherit ordinary user settings or credentials or call a
-provider.
+proof. Explicit activation composes the current supported selection without input/output and
+atomically replaces only future model takes. An explicit connection button composes only the exact
+current selected supported binding and delegates its existing redacted tester. It displays only
+connected, busy, or failed, performs no generation or scene mutation, and does nothing at startup.
+The deterministic smoke harness disables automatic persisted composition globally and uses isolated
+settings, credential stores, and bindings, so local validation cannot inherit ordinary user settings
+or credentials or call a provider.
 
 The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
-`HttpClient`, and credential source across the corresponding model and connection tester. The
-Ollama factory likewise shares one exact caller-supplied `HttpClient` and validated loopback
-endpoint. Explicit diagnostics overloads retain the exact caller-owned `TimeProvider` and redacted
-diagnostic sink on the model. Construction rejects null or provider-mismatched inputs before
-creating a binding and performs no credential load, HTTP request, provider discovery, or scene
-mutation.
+`HttpClient`, and credential source across the corresponding model and connection tester. OpenAI's
+endpoint-specific overloads also share the exact validated API base. The Ollama factory likewise
+shares one exact caller-supplied `HttpClient` and validated loopback endpoint. Explicit diagnostics
+overloads retain the exact caller-owned `TimeProvider` and redacted diagnostic sink on the model.
+Construction rejects null or provider-mismatched inputs before creating a binding and performs no
+credential load, HTTP request, provider discovery, or scene mutation.
 
 All three HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP
 IP-loopback origin and derives the native `/api/chat` and `/api/show` resources; hostnames,
 LAN/public addresses, credentials, paths, queries, fragments, HTTPS, and implicit ports are
-rejected. The OpenAI and Anthropic connection testers retrieve only the exact configured model
+rejected. `OpenAiEndpoint` derives only `/v1/responses` and `/v1/models/` resources from its bounded
+API base. The OpenAI and Anthropic connection testers retrieve only the exact configured model
 through their official caller-owned authenticated HTTP boundary; the Ollama tester posts only the
 exact configured model to `/api/show` at its validated loopback endpoint. None generates content or
 reads success or failure bodies, and all expose only provider-neutral outcomes.
@@ -961,10 +968,14 @@ user's local-machine-persistent credential set, replaces only that exact target,
 to redacted outcomes, and clears managed input, unmanaged write memory, copied output, and the
 Credential Manager read buffer before releasing it. Standard tests are fake-boundary-only and do
 not touch a user's credential set. Windows support is not claimed until the same bytes are proved
-on Windows. No Anthropic credential store, automatic credential read, diagnostic export, live
-provider recomposition, or generated non-wait-intention execution exists. The opt-in
-`OllamaCharacterModelLiveTests` checks an explicitly named already-installed model without pulling
-or modifying it; the standard suite does not access a local server.
+on Windows. No Anthropic credential store, automatic credential read, diagnostic export, automatic
+live recomposition, or generated non-wait-intention execution exists. The opt-in
+`OllamaCharacterModelLiveTests` and `OpenAiCharacterModelLiveTests` check explicitly named
+already-installed or local models without pulling or modifying them; the standard suite does not
+access a local server. Tested local oMLX `LFM2.5-8B-A1B-MLX-8bit` and
+`gemma-4-26b-a4b-it-4bit` endpoints reached the strict adapter but returned non-conforming
+structured output, which was rejected as `InvalidResponse` without a response object; this is
+safety evidence, not full Phase 4 acceptance.
 
 ## Location model boundaries
 
