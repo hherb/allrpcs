@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3]
+[gd_scene load_steps=113 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -118,6 +118,10 @@
 [ext_resource type="Script" path="res://CharacterModelSettingsControllerSmokeCheck.cs" id="116_model_settings_controller_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterModelSettingsPanel.cs" id="117_model_settings_panel"]
 [ext_resource type="Script" path="res://CharacterModelSettingsPanelSmokeCheck.cs" id="118_model_settings_panel_check"]
+[ext_resource type="Script" path="res://OpenAiCredentialController.cs" id="119_openai_credential_controller"]
+[ext_resource type="Script" path="res://OpenAiCredentialControllerSmokeCheck.cs" id="120_openai_credential_controller_check"]
+[ext_resource type="Script" path="res://OpenAiCredentialPanelSmokeCheck.cs" id="121_openai_credential_panel_check"]
+[ext_resource type="Script" path="res://CharacterModelConnectionPanelSmokeCheck.cs" id="122_model_connection_panel_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -484,6 +488,9 @@ script = ExtResource("115_model_settings_controller")
 [node name="TemporaryCharacterModelCompositionController" type="Node" parent="."]
 script = ExtResource("113_model_composition_controller")
 
+[node name="OpenAiCredentialController" type="Node" parent="."]
+script = ExtResource("119_openai_credential_controller")
+
 [node name="DialogueInputController" type="Node" parent="."]
 script = ExtResource("65_dialogue_input_controller")
 
@@ -682,6 +689,15 @@ script = ExtResource("116_model_settings_controller_check")
 [node name="CharacterModelSettingsPanelSmokeCheck" type="Node" parent="."]
 script = ExtResource("118_model_settings_panel_check")
 
+[node name="OpenAiCredentialControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("120_openai_credential_controller_check")
+
+[node name="OpenAiCredentialPanelSmokeCheck" type="Node" parent="."]
+script = ExtResource("121_openai_credential_panel_check")
+
+[node name="CharacterModelConnectionPanelSmokeCheck" type="Node" parent="."]
+script = ExtResource("122_model_connection_panel_check")
+
 [node name="WorldObjectBoundInteractionFocusSmokeCheck" type="Node" parent="."]
 script = ExtResource("29_world_object_interaction_focus_check")
 
@@ -823,7 +839,7 @@ text = "Focused search: NO ATTEMPT"
 offset_left = 960.0
 offset_top = 12.0
 offset_right = 1588.0
-offset_bottom = 132.0
+offset_bottom = 258.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 script = ExtResource("117_model_settings_panel")
 
@@ -880,7 +896,57 @@ offset_left = 12.0
 offset_top = 96.0
 offset_right = 604.0
 offset_bottom = 116.0
-text = "Saved changes take effect after restart · credentials stay in the OS store"
+text = "Saved settings take effect after restart · credentials use the OS store"
+
+[node name="OpenAiApiKey" type="LineEdit" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 126.0
+offset_right = 328.0
+offset_bottom = 157.0
+placeholder_text = "OpenAI API key · never loaded for display"
+secret = true
+
+[node name="SaveOpenAiApiKey" type="Button" parent="SettingsOverlay/Panel"]
+offset_left = 336.0
+offset_top = 126.0
+offset_right = 464.0
+offset_bottom = 157.0
+text = "SAVE KEY"
+
+[node name="DeleteOpenAiApiKey" type="Button" parent="SettingsOverlay/Panel"]
+offset_left = 472.0
+offset_top = 126.0
+offset_right = 604.0
+offset_bottom = 157.0
+text = "DELETE KEY"
+
+[node name="CredentialStatus" type="Label" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 165.0
+offset_right = 604.0
+offset_bottom = 188.0
+text = "OpenAI credential: NOT READ"
+
+[node name="CredentialHint" type="Label" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 188.0
+offset_right = 604.0
+offset_bottom = 208.0
+text = "The key is cleared on submit and never written to provider settings"
+
+[node name="TestConnection" type="Button" parent="SettingsOverlay/Panel"]
+offset_left = 12.0
+offset_top = 216.0
+offset_right = 168.0
+offset_bottom = 247.0
+text = "TEST CONNECTION"
+
+[node name="ConnectionStatus" type="Label" parent="SettingsOverlay/Panel"]
+offset_left = 176.0
+offset_top = 220.0
+offset_right = 604.0
+offset_bottom = 243.0
+text = "Connection: NOT TESTED"
 
 [node name="DialogueOverlay" type="CanvasLayer" parent="."]
 

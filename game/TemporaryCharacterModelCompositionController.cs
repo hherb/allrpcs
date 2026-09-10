@@ -19,6 +19,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterModelSource modelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
+    private CharacterModelBindingSnapshot? connectionTestBindings;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -80,6 +81,46 @@ public partial class TemporaryCharacterModelCompositionController : Node
         return true;
     }
 
+    /// <summary>Tests only the exact current selected setting through a redacted binding.</summary>
+    public ValueTask<CharacterModelConnectionTestResult> TestCurrentConnectionAsync(
+        CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+        CharacterModelSettingsSelectionSnapshot? selection = settingsController.Snapshot;
+        if (selection is null)
+        {
+            return ValueTask.FromResult(
+                CharacterModelConnectionTestResult.Failed(
+                    CharacterModelFailureCode.Unavailable));
+        }
+
+        CharacterModelBindingSnapshot? bindings = connectionTestBindings
+            ?? CreateCurrentBindingSnapshot(selection);
+        if (bindings is null)
+        {
+            return ValueTask.FromResult(
+                CharacterModelConnectionTestResult.Failed(
+                    CharacterModelFailureCode.Unavailable));
+        }
+
+        return CharacterModelBindingConnectionTestController.TestConfiguredAsync(
+            selection,
+            bindings,
+            cancellationToken);
+    }
+
+    internal bool TryInitializeConnectionTestBindings(CharacterModelBindingSnapshot bindings)
+    {
+        ArgumentNullException.ThrowIfNull(bindings);
+        if (connectionTestBindings is not null)
+        {
+            return false;
+        }
+
+        connectionTestBindings = bindings;
+        return true;
+    }
+
     /// <inheritdoc />
     public override void _ExitTree()
     {
@@ -105,6 +146,15 @@ public partial class TemporaryCharacterModelCompositionController : Node
         return credentialSource is null
             ? null
             : OpenAiCharacterModelBindingFactory.Create(settings, client, credentialSource);
+    }
+
+    private CharacterModelBindingSnapshot? CreateCurrentBindingSnapshot(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        CharacterModelBinding? binding = CreateBinding(selectedSettings);
+        return binding is null ? null : new CharacterModelBindingSnapshot([binding]);
     }
 
     private static IOpenAiCredentialSource? CreateOpenAiCredentialSource()
