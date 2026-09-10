@@ -5,6 +5,8 @@ set -eu
 script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 repository_root=$(dirname -- "$script_dir")
 
+export ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1
+
 ALLRPCS_NAVIGATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_HEALER_COMMAND_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1500
 ALLRPCS_INTERACTION_FOCUS_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
@@ -73,3 +75,9 @@ ALLRPCS_ORDINARY_MODEL_FAILURE_CHECK=terminal godot --headless --path "$reposito
 ALLRPCS_ORDINARY_MODEL_TIMEOUT_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 100000000
 ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 240
 ALLRPCS_ORDINARY_MALFORMED_MODEL_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 \
+    ALLRPCS_CHARACTER_MODEL_SETTINGS_STORAGE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_CHARACTER_MODEL_SETTINGS_TEST_STORAGE=1 \
+    ALLRPCS_CHARACTER_MODEL_COMPOSITION_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
