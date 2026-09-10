@@ -49,14 +49,15 @@ cancellation preserves only already-accepted stream text while cancelling the ex
 Infrastructure contains caller-composed OpenAI Responses, Anthropic Messages, and loopback-only
 Ollama HTTP adapters with stateless strict structured output, bounded streaming completion, and
 optional terminal token diagnostics. Immutable provider settings retain one explicit selection and
-resolve only a binding that shares the exact configured settings object. Redacted connection tests
-use that same selection, and a strict versioned JSON boundary contains only canonical provider IDs
-and bounded model names. Infrastructure factories compose each provider's exact model and tester
-over the same caller-owned dependencies without credential, network, discovery, or scene
-input/output. The ordinary scene can switch exact fake bindings while macOS Keychain, Linux Secret
-Service, and Windows Credential Manager OpenAI credential stores are present. Production scene
-composition, settings document storage/UI, Anthropic credential storage, and execution of generated
-non-wait intentions remain later work.
+support immutable replacement, append, selection, and unselected-provider removal. They resolve only
+a binding that shares the exact configured settings object. Redacted connection tests use that same
+selection, and a strict versioned JSON boundary contains only canonical provider IDs and bounded
+model names. Infrastructure factories compose each provider's exact model and tester over the same
+caller-owned dependencies without credential, network, discovery, or scene input/output. The
+ordinary scene loads one persisted selection into shared settings/composition state, while macOS
+Keychain, Linux Secret Service, and Windows Credential Manager OpenAI credential stores are present.
+Settings and credential UI, explicit save-on-edit behavior, Anthropic credential storage, and
+execution of generated non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -858,7 +859,10 @@ The provider/model settings boundary retains one exact canonical OpenAI, Anthrop
 provider instance and one bounded model name. An immutable selection snapshot copies one to three
 exact settings in caller order, requires exactly one per provider, and retains one explicitly
 selected configured provider. Selection transitions preserve the exact settings instances and
-order. An immutable copied binding snapshot retains at most one exact caller-composed model,
+order. Settings updates replace one provider at its stable position or append one newly configured
+canonical provider, retaining the exact supplied setting and every unrelated instance. Removal is
+limited to a configured unselected provider and likewise preserves stable order and exact unrelated
+instances. An immutable copied binding snapshot retains at most one exact caller-composed model,
 settings object, and connection tester per canonical provider. Resolution and redacted connection
 testing require the selected binding to share the exact configured settings object. There is no
 default, substitution, credential fallback, or model-name rewriting; missing or mismatched bindings
@@ -887,15 +891,19 @@ parser details. The Godot `CharacterModelSettingsStorageController` owns the fix
 its own. Its smoke uses a process-specific temporary file, so validation cannot replace ordinary
 user settings.
 
-At scene startup, `TemporaryCharacterModelCompositionController` loads a valid selection and
-composes only its exact selected setting. Ollama uses the fixed validated loopback endpoint; OpenAI
-uses the existing OS-specific credential source on macOS, Linux, or Windows. Construction reads no
-credential and makes no HTTP request. Missing, failed, invalid, unsupported-platform, and Anthropic
-selections preserve the stable offline behavior. The scene does not provide settings or credential
-UI, create or discover a local server, own a model process, or claim native Linux/Windows credential
-proof. The deterministic smoke harness disables automatic persisted composition globally and uses
-an isolated temporary document only for its explicit composition check, so local validation cannot
-inherit ordinary user settings or credentials.
+The scene-owned `CharacterModelSettingsController` retains one exact loaded selection and delegates
+replacement, append, selection, and removal to the immutable Application transitions. Rejected
+changes preserve its current snapshot. It does not yet save edits or react to player input.
+
+At scene startup, `TemporaryCharacterModelCompositionController` consumes that same retained valid
+selection and composes only its exact selected setting. Ollama uses the fixed validated loopback
+endpoint; OpenAI uses the existing OS-specific credential source on macOS, Linux, or Windows.
+Construction reads no credential and makes no HTTP request. Missing, failed, invalid,
+unsupported-platform, and Anthropic selections preserve the stable offline behavior. The scene does
+not provide settings or credential UI, create or discover a local server, own a model process, or
+claim native Linux/Windows credential proof. The deterministic smoke harness disables automatic
+persisted composition globally and uses isolated process-specific storage, so local validation
+cannot inherit ordinary user settings or credentials.
 
 The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
 `HttpClient`, and credential source across the corresponding model and connection tester. The

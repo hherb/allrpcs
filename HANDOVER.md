@@ -2,67 +2,62 @@
 
 ## Current state
 
-`main` contains merged PR #172 at `57840a3`. The current branch is
-`codex/phase-4-provider-settings-storage` and advances Phase 4 through Phase 4p1.
+`main` contains merged PR #173 at `b39bf95`. The current branch is
+`codex/phase-4-provider-settings-updates` and advances Phase 4 through Phase 4p5.
 
-- Phase 4o1 adds the provider-settings-specific `ICharacterModelSettingsDocumentStore` Application
-  port. Its bounded results distinguish saved, loaded, missing, and failed outcomes without exposing
-  paths, JSON, credentials, provider details, exceptions, or the gameplay-save contract.
-- Phase 4o2 adds `FileCharacterModelSettingsDocumentStore`: strict UTF-8 without a BOM, one trusted
-  absolute path, unique same-directory temporary writes, flushed atomic replacement, explicit
-  missing/failure outcomes, and best-effort temporary cleanup.
-- Phase 4o3 adds `CharacterModelSettingsDocumentController`. Canonical secret-free serialization and
-  strict materialization are composed with the store while missing, storage-failed, and invalid
-  documents remain distinct and content-free.
-- Phase 4o4 adds `CharacterModelSettingsStorageController` at the fixed Godot
-  `user://character-model-settings-v1.json` path. It exposes explicit save/load calls but does not
-  react to startup or input itself; its smoke uses only a process-specific temporary file.
-- Phase 4p1 adds `TemporaryCharacterModelCompositionController`. At startup it loads a valid persisted
-  selection and composes only the exact selected Ollama or OS-supported OpenAI binding into the
-  ordinary healer source. Composition performs no credential read or HTTP request; missing, invalid,
-  failed, unsupported-platform, and Anthropic selections preserve stable offline behavior. The smoke
-  harness disables automatic persisted composition and uses an isolated document for its explicit
-  composition check, so validation cannot inherit ordinary user settings or credentials.
+- Phase 4p2 adds `CharacterModelSettingsUpdateTransition`: one exact canonical provider setting is
+  replaced at its stable position or appended within the three-provider bound. The selected
+  provider and every unrelated exact setting remain unchanged; an already-retained exact setting
+  returns the original snapshot.
+- Phase 4p3 adds `CharacterModelSettingsRemovalTransition`. Only a configured unselected canonical
+  provider can be removed, preserving the exact selection and unrelated settings in stable order.
+- Phase 4p4 adds the scene-owned `CharacterModelSettingsController`. It initializes once and
+  delegates immutable update, selection, and removal while rejected operations preserve its exact
+  current snapshot.
+- Phase 4p5 loads one valid persisted selection into that controller at startup. The temporary
+  composition controller consumes the exact same retained snapshot, eliminating duplicate
+  materialization before composing supported Ollama or OS-supported OpenAI bindings.
 
-No settings or credential UI, default settings, automatic server discovery, model installation or
-process ownership, Anthropic credential store, provider metadata read, diagnostic export, generated
-non-wait intention execution, or gameplay persistence/mutation was added. Native Linux/Windows
-credential behavior remains unproved. A stored selection is therefore currently supplied outside
-ordinary gameplay, and full Phase 4 acceptance is still incomplete.
+No automatic save, settings or credential UI, defaults, automatic server discovery, model
+installation or process ownership, Anthropic credential store, provider metadata read, diagnostic
+export, generated non-wait intention execution, or gameplay persistence/mutation was added.
+Composition still performs no credential read or HTTP request; missing, invalid, failed,
+unsupported-platform, and Anthropic selections preserve stable offline behavior. Native
+Linux/Windows credential behavior remains unproved, and full Phase 4 acceptance is incomplete.
 
 ## Validation
 
 The complete host-local `./scripts/quality.sh` passes:
 
 - workflow and formatting validation, restore, and a zero-warning build;
-- 1,388 Domain tests, 357 Application tests, 378 Infrastructure tests, and eight architecture tests;
+- 1,388 Domain tests, 365 Application tests, 378 Infrastructure tests, and eight architecture tests;
 - the five-evidence representative scenario validator;
-- all 70 opt-in Godot smoke invocations, including isolated settings storage and persisted Ollama
-  composition without credential or network input/output; and
+- all 71 opt-in Godot smoke invocations, including isolated immutable settings-state changes and
+  exact shared persisted Ollama composition; and
 - the bounded graphical Compatibility-renderer launch.
 
-Focused red/green suites cover the storage-independent public API, exact document and selection
-retention, null/empty rejection, closed outcomes, atomic strict-UTF-8 file replacement, canonical
-serialization, fail-closed materialization, and startup composition. The restricted sandbox
-reproduced the known VSTest local-IPC denial; identical host-local commands passed. GitHub Actions
-budget is exhausted for the month: do not dispatch hosted workflows, and treat zero-step hosted
-failures as account infrastructure rather than test evidence.
+Focused red/green suites cover the closed transition surfaces, exact-instance retention, stable
+replacement/append/removal order, unchanged rejected inputs, and canonical-provider enforcement.
+Focused game build and Godot smokes cover one-time scene ownership, fail-closed changes, isolated
+persisted loading, and shared composition without credential or network input/output. The restricted
+sandbox reproduced the known VSTest local-IPC denial; the identical host-local command passed.
+GitHub Actions budget is exhausted for the month: do not dispatch hosted workflows, and treat
+zero-step hosted failures as account infrastructure rather than test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 4p2: immutable provider-settings update transition**.
+Take **Phase 4p6: explicit current-settings save**.
 
 Acceptance boundary:
 
-1. Add one pure Application transition that replaces the setting for an exact canonical provider at
-   its existing stable position, or appends one previously unconfigured canonical provider within the
-   three-provider bound.
-2. Retain every unrelated exact settings instance, stable order, and the exact selected provider. A
-   replacement or append must retain the exact supplied setting; supplying the already-retained exact
-   setting should return the original snapshot.
-3. Reject null inputs, non-canonical providers, and appending beyond the bound without changing the
-   input snapshot. Continue to rely on `CharacterModelSettings` for model-name validation.
-4. Prove the complete public surface and transition behavior through focused Application tests.
-5. Do not persist, compose, select, test, or call a provider; do not add UI, defaults, credentials,
-   automatic discovery, process ownership, Anthropic credential storage, or generated intention
-   execution.
+1. Add one explicit operation on the scene-owned settings controller that saves only its exact
+   current initialized snapshot through the existing settings-storage controller.
+2. Return a bounded success/failure result without paths, JSON, credentials, exceptions, or provider
+   details. An uninitialized controller or storage failure must report failure and preserve all
+   in-memory state.
+3. Prove isolated successful replacement and fail-closed uninitialized/failing behavior without
+   touching ordinary user settings. Do not save automatically on startup, update, selection, or
+   removal.
+4. Do not compose, select, test, or call a provider as part of saving; do not add UI, defaults,
+   credentials, automatic discovery, process ownership, Anthropic credential storage, diagnostic
+   export, or generated intention execution.

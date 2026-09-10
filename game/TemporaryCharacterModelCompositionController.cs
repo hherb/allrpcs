@@ -15,7 +15,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
 
     private const string DisabledEnvironmentValue = "1";
 
-    private CharacterModelSettingsStorageController storageController = null!;
+    private CharacterModelSettingsController settingsController = null!;
     private TemporaryCharacterModelSource modelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
@@ -23,8 +23,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        storageController = GetNode<CharacterModelSettingsStorageController>(
-            "../CharacterModelSettingsStorageController");
+        settingsController = GetNode<CharacterModelSettingsController>(
+            "../CharacterModelSettingsController");
         modelSource = GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource");
         client = new NetHttpClient
         {
@@ -40,9 +40,20 @@ public partial class TemporaryCharacterModelCompositionController : Node
     /// <summary>Loads and composes the current supported selected provider once.</summary>
     public bool TryLoadCurrent()
     {
-        CharacterModelSettingsDocumentLoadResult result = storageController.LoadCurrent();
-        return result.Status == CharacterModelSettingsDocumentLoadStatus.Loaded
-            && TryInitialize(result.Selection!);
+        CharacterModelSettingsSelectionSnapshot? selection = settingsController.Snapshot;
+        if (selection is null)
+        {
+            if (!settingsController.TryLoadCurrent())
+            {
+                return false;
+            }
+
+            selection = settingsController.Snapshot
+                ?? throw new InvalidOperationException(
+                    "Loaded character-model settings were not retained.");
+        }
+
+        return TryInitialize(selection);
     }
 
     /// <summary>Composes one exact supported selected provider without input/output.</summary>
