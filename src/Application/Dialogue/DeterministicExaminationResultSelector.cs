@@ -4,12 +4,12 @@ using Allrpcs.Domain.Identifiers;
 namespace Allrpcs.Application.Dialogue;
 
 /// <summary>
-/// Selects the deterministic safe result for one exact observed examination target.
+/// Selects the deterministic safe result for one known observed examination target.
 /// </summary>
 public static class DeterministicExaminationResultSelector
 {
     /// <summary>
-    /// Returns a fresh safe result only when the occurrence examines the exact supplied target.
+    /// Returns a fresh safe result only when the occurrence examines the supplied target identity.
     /// </summary>
     public static CharacterExaminationResult? Select(
         CharacterTurnWorldEventOccurrence occurrence,
@@ -20,7 +20,7 @@ public static class DeterministicExaminationResultSelector
 
         CharacterIntention? action = occurrence.TranscriptEntry.PhysicalAction;
         if (action?.Type != CharacterIntentionType.ExamineObject
-            || !ReferenceEquals(action.TargetObjectId, safeTargetObjectId))
+            || action.TargetObjectId != safeTargetObjectId)
         {
             return null;
         }

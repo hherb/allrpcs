@@ -51,8 +51,12 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
                     UnreferencedKnowledgeText),
             ]);
 
-        // Wait is always structurally and currently eligible. Targeted affordances remain empty.
-        affordances = new CharacterIntentionAffordanceSnapshot([]);
+        affordances = new CharacterIntentionAffordanceSnapshot(
+            [
+                new CharacterIntentionAffordance(
+                    CharacterIntentionType.ExamineObject,
+                    identifiedObjectId),
+            ]);
     }
 
     /// <summary>

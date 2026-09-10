@@ -217,6 +217,13 @@ Acceptance:
   not fabricate LLM dialogue.
 - [x] Test hallucinated objects, malformed output, instruction attacks, timeouts, cancellation,
   provider errors, and provider switching.
+- [x] Separate permissive fail-closed live transport safety from fixed three-attempt OpenAI-compatible
+  conformance checks that require completed safe waits and report only bounded outcome counts.
+- [x] Require a separate fixed live action series to complete with a known currently afforded target
+  and pass the existing provider-neutral response validation policy.
+- [x] Expose the known herb-patch examination affordance to ordinary healer generation and carry a
+  validated distinct value-equal provider target through authoritative examination and safe
+  collection without changing world objects or perception.
 
 Acceptance:
 

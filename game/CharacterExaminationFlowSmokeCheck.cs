@@ -1,5 +1,7 @@
+using System.Runtime.CompilerServices;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.WorldEvents;
 using Godot;
 
@@ -10,7 +12,10 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_CHARACTER_EXAMINATION_FLOW_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const string GeneratedMode = "generated";
     private const string PlayerText = "Please examine the flowers and collect them only if safe.";
+
+    private readonly ScriptedExaminationModel generatedModel = new();
 
     private CharacterTurnTranscriptController transcriptController = null!;
     private TemporaryCharacterExaminationFlowController flowController = null!;
@@ -22,14 +27,25 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
     private object? initialWorldObjects;
     private object? initialPerception;
     private int stage;
+    private bool useGeneratedResponse;
 
     /// <inheritdoc />
     public override void _Ready()
     {
-        bool enabled = OS.GetEnvironment(CheckEnvironmentVariable) == EnabledEnvironmentValue;
+        string mode = OS.GetEnvironment(CheckEnvironmentVariable);
+        bool enabled = mode is EnabledEnvironmentValue or GeneratedMode;
         SetProcess(enabled);
         if (!enabled)
         {
+            return;
+        }
+
+        useGeneratedResponse = mode == GeneratedMode;
+        if (useGeneratedResponse
+            && !GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource")
+                .TrySupplyModel(generatedModel))
+        {
+            Fail("Generated examination smoke could not supply its exact scripted model.");
             return;
         }
 
@@ -64,6 +80,17 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
 
         if (stage == 1)
         {
+            if (useGeneratedResponse)
+            {
+                if (generatedModel.ReceivedRequest is null)
+                {
+                    return;
+                }
+
+                stage = 2;
+                return;
+            }
+
             CharacterTurnActivity? activity = turnController.Activity;
             if (activity is null
                 || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse))
@@ -120,22 +147,103 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             || !ReferenceEquals(
                 GetNode<FocusedSearchActivityController>(
                     "../Seeker/FocusedSearchActivityController").Perception,
-                initialPerception))
+                initialPerception)
+            || (useGeneratedResponse && !ProvesGeneratedResponseBoundary(result)))
         {
             Fail("Live examination flow failed exact ordered safe collection containment.");
             return;
         }
 
         GD.Print(
-            "Character examination flow smoke passed: exact player and healer speech, examination, "
-            + "authoritative safe result, and collection occurred in order while world objects and "
-            + "perception remained unchanged.");
+            useGeneratedResponse
+                ? "Generated character examination flow smoke passed: one validated model response "
+                    + "used a distinct value-equal known target to produce exact healer speech, "
+                    + "authoritative examination and safe collection in order without changing "
+                    + "world objects or perception."
+                : "Character examination flow smoke passed: exact player and healer speech, "
+                    + "examination, authoritative safe result, and collection occurred in order "
+                    + "while world objects and perception remained unchanged.");
         GetTree().Quit();
+    }
+
+    private bool ProvesGeneratedResponseBoundary(CharacterExaminationResult result)
+    {
+        CharacterModelGenerationRequest? request = generatedModel.ReceivedRequest;
+        CharacterTurnResponse? response = generatedModel.Response;
+        ObjectId authoritativeTarget = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id;
+        CharacterModelStreamTermination? termination = GetNode<CharacterModelGenerationFlowController>(
+            "../CharacterModelGenerationFlowController").Result?.Updates[^1]
+            as CharacterModelStreamTermination;
+        CharacterModelContextEntry[] affordances = request?.Context.Entries
+            .Where(entry => entry.Kind == CharacterModelContextEntryKind.ValidAffordance)
+            .ToArray() ?? [];
+        ObjectId? proposedTarget = response?.ImmediateIntention.TargetObjectId;
+
+        return generatedModel.CallCount == 1
+            && request is not null
+            && response is not null
+            && termination is
+            {
+                Status: CharacterModelStreamTerminationStatus.Completed,
+                Failure: null,
+            }
+            && ReferenceEquals(termination.Response, response)
+            && ReferenceEquals(response.Request, request.TurnRequest)
+            && ReferenceEquals(
+                response.ImmediateIntention.Type,
+                CharacterIntentionType.ExamineObject)
+            && proposedTarget == authoritativeTarget
+            && !ReferenceEquals(proposedTarget, authoritativeTarget)
+            && ReferenceEquals(result.TargetObjectId, proposedTarget)
+            && affordances.Length == 1
+            && affordances[0].Text == "type=examine-object;target=herb-patch"
+            && request.Context.Entries.All(
+                entry => !entry.Text.Contains("stone", StringComparison.OrdinalIgnoreCase)
+                    && !entry.Text.Contains("secret", StringComparison.OrdinalIgnoreCase));
     }
 
     private void Fail(string message)
     {
         GD.PushError(message);
         GetTree().Quit(exitCode: 1);
+    }
+
+    private sealed class ScriptedExaminationModel : ICharacterModel
+    {
+        public int CallCount { get; private set; }
+
+        public CharacterModelGenerationRequest? ReceivedRequest { get; private set; }
+
+        public CharacterTurnResponse? Response { get; private set; }
+
+        public async IAsyncEnumerable<CharacterModelStreamUpdate> StreamResponseAsync(
+            CharacterModelGenerationRequest request,
+            [EnumeratorCancellation] CancellationToken cancellationToken)
+        {
+            ArgumentNullException.ThrowIfNull(request);
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            ReceivedRequest = request;
+            Response = new CharacterTurnResponse(
+                request.TurnRequest,
+                CharacterTurnDisposition.Accept,
+                new DialogueUtterance(
+                    request.TurnRequest.RespondingCharacterId,
+                    DeterministicExaminationResponseSelector.ExaminationSpeech),
+                new CharacterIntention(
+                    CharacterIntentionType.ExamineObject,
+                    new ObjectId("herb-patch")),
+                [],
+                []);
+
+            await Task.CompletedTask;
+            yield return new CharacterModelTextDelta(
+                DeterministicExaminationResponseSelector.ExaminationSpeech);
+            yield return new CharacterModelStreamTermination(
+                CharacterModelStreamTerminationStatus.Completed,
+                Response,
+                null);
+        }
     }
 }

@@ -284,7 +284,9 @@ public partial class TemporaryCharacterModelSourceSmokeCheck : Node
         left.Entries.Count == right.Entries.Count
         && left.Entries.Zip(right.Entries).All(
             pair => pair.First.Kind == pair.Second.Kind
-                && ReferenceEquals(pair.First.Text, pair.Second.Text));
+                && (pair.First.Kind == CharacterModelContextEntryKind.ValidAffordance
+                    ? pair.First.Text == pair.Second.Text
+                    : ReferenceEquals(pair.First.Text, pair.Second.Text)));
 
     private void Submit(string text)
     {

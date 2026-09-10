@@ -71,7 +71,7 @@ public partial class TemporaryCharacterExaminationFlowController : Node
             || response is null
             || !ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking)
             || intention?.Type != CharacterIntentionType.ExamineObject
-            || !ReferenceEquals(intention.TargetObjectId, safeTargetObjectId))
+            || intention.TargetObjectId != safeTargetObjectId)
         {
             return;
         }
