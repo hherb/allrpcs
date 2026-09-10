@@ -6,6 +6,23 @@ namespace Allrpcs.Application.Dialogue;
 public static class CharacterModelBindingConnectionTestController
 {
     /// <summary>
+    /// Tests the exact configured binding or returns a redacted unavailable result when absent.
+    /// </summary>
+    public static async ValueTask<CharacterModelConnectionTestResult> TestConfiguredAsync(
+        CharacterModelSettingsSelectionSnapshot selection,
+        CharacterModelBindingSnapshot bindings,
+        CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(selection);
+        ArgumentNullException.ThrowIfNull(bindings);
+
+        CharacterModelBinding? binding = CharacterModelSettingsBindingSelector.Select(
+            selection,
+            bindings);
+        return await TestBindingAsync(binding, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
     /// Tests the exact selected binding or returns a redacted unavailable result when absent.
     /// </summary>
     public static async ValueTask<CharacterModelConnectionTestResult> TestAsync(
@@ -17,14 +34,15 @@ public static class CharacterModelBindingConnectionTestController
         ArgumentNullException.ThrowIfNull(snapshot);
 
         CharacterModelBinding? binding = CharacterModelBindingSelector.Select(provider, snapshot);
-        if (binding is null)
-        {
-            return CharacterModelConnectionTestResult.Failed(
-                CharacterModelFailureCode.Unavailable);
-        }
-
-        return await binding.ConnectionTester.TestConnectionAsync(
-            binding.Settings,
-            cancellationToken).ConfigureAwait(false);
+        return await TestBindingAsync(binding, cancellationToken).ConfigureAwait(false);
     }
+
+    private static async ValueTask<CharacterModelConnectionTestResult> TestBindingAsync(
+        CharacterModelBinding? binding,
+        CancellationToken cancellationToken) =>
+        binding is null
+            ? CharacterModelConnectionTestResult.Failed(CharacterModelFailureCode.Unavailable)
+            : await binding.ConnectionTester.TestConnectionAsync(
+                binding.Settings,
+                cancellationToken).ConfigureAwait(false);
 }

@@ -9,25 +9,25 @@ public partial class TemporaryCharacterModelSource : Node
 {
     private readonly ICharacterModel offlineModel = new UnavailableCharacterModel();
     private CharacterModelBindingSnapshot? bindings;
-    private CharacterModelProvider? selectedProvider;
+    private CharacterModelSettingsSelectionSnapshot? settingsSelection;
     private ICharacterModel? suppliedModel;
 
-    /// <summary>Retains one exact binding snapshot and available initial provider once.</summary>
+    /// <summary>Retains exact configured settings and matching caller-composed bindings once.</summary>
     public bool TryInitializeBindings(
-        CharacterModelBindingSnapshot snapshot,
-        CharacterModelProvider initialProvider)
+        CharacterModelSettingsSelectionSnapshot selection,
+        CharacterModelBindingSnapshot snapshot)
     {
+        ArgumentNullException.ThrowIfNull(selection);
         ArgumentNullException.ThrowIfNull(snapshot);
-        ArgumentNullException.ThrowIfNull(initialProvider);
 
         if (bindings is not null
-            || CharacterModelBindingSelector.Select(initialProvider, snapshot) is null)
+            || CharacterModelSettingsBindingSelector.Select(selection, snapshot) is null)
         {
             return false;
         }
 
+        settingsSelection = selection;
         bindings = snapshot;
-        selectedProvider = initialProvider;
         return true;
     }
 
@@ -36,13 +36,14 @@ public partial class TemporaryCharacterModelSource : Node
     {
         ArgumentNullException.ThrowIfNull(provider);
 
-        if (bindings is null
-            || CharacterModelBindingSelector.Select(provider, bindings) is null)
+        if (SelectConfiguredBinding(provider) is null)
         {
             return false;
         }
 
-        selectedProvider = provider;
+        settingsSelection = CharacterModelSettingsSelectionTransition.Select(
+            provider,
+            settingsSelection!);
         return true;
     }
 
@@ -72,14 +73,29 @@ public partial class TemporaryCharacterModelSource : Node
 
     private ICharacterModel? SelectBoundModel()
     {
-        if (bindings is null || selectedProvider is null)
+        if (settingsSelection is null || bindings is null)
         {
             return null;
         }
 
-        return CharacterModelBindingSelector.Select(selectedProvider, bindings)?.Model
+        return CharacterModelSettingsBindingSelector.Select(settingsSelection, bindings)?.Model
             ?? throw new InvalidOperationException(
                 "The initialized character-model provider binding became unavailable.");
+    }
+
+    private CharacterModelBinding? SelectConfiguredBinding(CharacterModelProvider provider)
+    {
+        CharacterModelSettings? settings = settingsSelection?.Settings.SingleOrDefault(
+            candidate => ReferenceEquals(candidate.Provider, provider));
+        if (settings is null || bindings is null)
+        {
+            return null;
+        }
+
+        CharacterModelBinding? binding = CharacterModelBindingSelector.Select(provider, bindings);
+        return binding is not null && ReferenceEquals(binding.Settings, settings)
+            ? binding
+            : null;
     }
 
     private sealed class UnavailableCharacterModel : ICharacterModel

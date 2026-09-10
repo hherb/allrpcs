@@ -50,17 +50,26 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
 
         modelSource = GetNode<TemporaryCharacterModelSource>(
             "../TemporaryCharacterModelSource");
-        CharacterModelBinding openAi = Binding(
+        CharacterModelSettings openAiSettings = new(
             CharacterModelProvider.OpenAi,
-            "gpt-test",
-            firstModel);
-        CharacterModelBinding anthropic = Binding(
+            "gpt-test");
+        CharacterModelSettings anthropicSettings = new(
             CharacterModelProvider.Anthropic,
-            "claude-test",
-            secondModel);
+            "claude-test");
+        CharacterModelBinding openAi = Binding(openAiSettings, firstModel);
+        CharacterModelBinding anthropic = Binding(anthropicSettings, secondModel);
         CharacterModelBindingSnapshot bindings = new([openAi, anthropic]);
-        if (!modelSource.TryInitializeBindings(bindings, CharacterModelProvider.OpenAi)
-            || modelSource.TryInitializeBindings(bindings, CharacterModelProvider.Anthropic)
+        CharacterModelSettingsSelectionSnapshot selection = new(
+            [anthropicSettings, openAiSettings],
+            CharacterModelProvider.OpenAi);
+        CharacterModelBinding mismatchedOpenAi = Binding(
+            new CharacterModelSettings(CharacterModelProvider.OpenAi, "gpt-test"),
+            firstModel);
+        if (modelSource.TryInitializeBindings(
+                selection,
+                new CharacterModelBindingSnapshot([mismatchedOpenAi]))
+            || !modelSource.TryInitializeBindings(selection, bindings)
+            || modelSource.TryInitializeBindings(selection, bindings)
             || modelSource.TrySelectProvider(CharacterModelProvider.Ollama)
             || !ReferenceEquals(modelSource.TakeModel(), firstModel)
             || !ReferenceEquals(modelSource.TakeModel(), firstModel))
@@ -270,12 +279,11 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     }
 
     private static CharacterModelBinding Binding(
-        CharacterModelProvider provider,
-        string modelName,
+        CharacterModelSettings settings,
         ICharacterModel model) =>
         new(
-            provider,
-            new CharacterModelSettings(provider, modelName),
+            settings.Provider,
+            settings,
             model,
             new UnusedConnectionTester());
 
