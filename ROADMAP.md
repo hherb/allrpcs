@@ -191,6 +191,10 @@ Acceptance:
   selected supported provider.
 - [x] Expose secret-free provider and model editing through explicit apply, unselected removal, and
   save controls while deferring activation until restart.
+- [x] Expose masked explicit OpenAI credential save/delete through the OS store without startup
+  access, readback, settings-document inclusion, or detailed failure output.
+- [x] Test the exact current selected supported provider/model through an explicit redacted scene
+  control without generation or authoritative mutation.
 - [x] Compose exact OpenAI, Anthropic, and Ollama model bindings from caller-owned dependencies
   without credential, network, discovery, or scene input/output during construction.
 - [x] Compose a valid persisted selected Ollama or OS-supported OpenAI binding into the ordinary

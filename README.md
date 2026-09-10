@@ -902,18 +902,27 @@ The temporary settings panel exposes the three canonical providers and one bound
 without a default selection. Apply changes only scene-owned memory, remove accepts only a configured
 unselected provider, and save explicitly replaces the secret-free document. Rejected input retains
 the exact prior snapshot, and the panel states that saved changes take effect after restart because
-provider composition remains a one-time startup operation. The panel has no credential field and
-does not test, construct, discover, or call a provider.
+provider composition remains a one-time startup operation.
+
+The same panel exposes a masked OpenAI credential field backed by a scene-owned controller. The
+controller composes only the current OS credential store and performs no startup operation. Save
+validates the bounded key, clears the field immediately, and delegates it without retaining or
+presenting the key; delete never loads it first. Both controls expose only fixed saved, deleted,
+missing, busy, or failed text. Scene exit cancels an active operation, and deterministic smokes use
+only an injected store rather than a user's credential facility.
 
 At scene startup, `TemporaryCharacterModelCompositionController` consumes that same retained valid
 selection and composes only its exact selected setting. Ollama uses the fixed validated loopback
 endpoint; OpenAI uses the existing OS-specific credential source on macOS, Linux, or Windows.
 Construction reads no credential and makes no HTTP request. Missing, failed, invalid,
 unsupported-platform, and Anthropic selections preserve the stable offline behavior. The scene does
-not provide settings or credential UI, create or discover a local server, own a model process, or
-claim native Linux/Windows credential proof. The deterministic smoke harness disables automatic
-persisted composition globally and uses isolated process-specific storage, so local validation
-cannot inherit ordinary user settings or credentials.
+not create or discover a local server, own a model process, or claim native Linux/Windows credential
+proof. An explicit connection button composes only the exact current selected supported binding and
+delegates its existing redacted tester. It displays only connected, busy, or failed, performs no
+generation or scene mutation, and does nothing at startup. The deterministic smoke harness disables
+automatic persisted composition globally and uses isolated settings, credential stores, and
+bindings, so local validation cannot inherit ordinary user settings or credentials or call a
+provider.
 
 The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
 `HttpClient`, and credential source across the corresponding model and connection tester. The
@@ -952,8 +961,8 @@ user's local-machine-persistent credential set, replaces only that exact target,
 to redacted outcomes, and clears managed input, unmanaged write memory, copied output, and the
 Credential Manager read buffer before releasing it. Standard tests are fake-boundary-only and do
 not touch a user's credential set. Windows support is not claimed until the same bytes are proved
-on Windows. No Anthropic credential store, settings document storage or UI, diagnostic logging/export,
-production provider composition, or generated-intention execution exists. The opt-in
+on Windows. No Anthropic credential store, automatic credential read, diagnostic export, live
+provider recomposition, or generated non-wait-intention execution exists. The opt-in
 `OllamaCharacterModelLiveTests` checks an explicitly named already-installed model without pulling
 or modifying it; the standard suite does not access a local server.
 
