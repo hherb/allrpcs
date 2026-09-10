@@ -48,13 +48,15 @@ cancellation preserves only already-accepted stream text while cancelling the ex
 
 Infrastructure contains caller-composed OpenAI Responses, Anthropic Messages, and loopback-only
 Ollama HTTP adapters with stateless strict structured output, bounded streaming completion, and
-optional terminal token diagnostics. Bounded caller-composed bindings select exact providers and
-dispatch redacted OpenAI, Anthropic, or Ollama connection tests. Infrastructure factories compose
-each provider's exact model and tester over the same caller-owned dependencies without credential,
-network, discovery, or scene input/output. The ordinary scene can switch exact fake bindings while
-macOS Keychain, Linux Secret Service, and Windows Credential Manager OpenAI credential stores are
-present. Production scene composition, Anthropic credential storage, settings persistence, and
-execution of generated non-wait intentions remain later work.
+optional terminal token diagnostics. Immutable provider settings retain one explicit selection and
+resolve only a binding that shares the exact configured settings object. Redacted connection tests
+use that same selection, and a strict versioned JSON boundary contains only canonical provider IDs
+and bounded model names. Infrastructure factories compose each provider's exact model and tester
+over the same caller-owned dependencies without credential, network, discovery, or scene
+input/output. The ordinary scene can switch exact fake bindings while macOS Keychain, Linux Secret
+Service, and Windows Credential Manager OpenAI credential stores are present. Production scene
+composition, settings document storage/UI, Anthropic credential storage, and execution of generated
+non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -853,13 +855,22 @@ time and the sink for completed or failed provider attempts; absent usage remain
 malformed usage fails closed without exposing partial provider content.
 
 The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
-provider instance and one bounded model name. An immutable copied binding snapshot retains at most
-one exact caller-composed model, settings object, and connection tester per canonical provider.
-Exact selection has no default, substitution, credential fallback, or model-name rewriting;
-missing connection-test bindings return only provider-neutral `Unavailable`. The ordinary scene
-source can retain one exact binding snapshot and switch only to an available canonical provider,
-while its stable credential-free offline default and one-shot test seam remain intact. It does not
-construct a provider adapter.
+provider instance and one bounded model name. An immutable selection snapshot copies one to three
+exact settings in caller order, requires exactly one per provider, and retains one explicitly
+selected configured provider. Selection transitions preserve the exact settings instances and
+order. An immutable copied binding snapshot retains at most one exact caller-composed model,
+settings object, and connection tester per canonical provider. Resolution and redacted connection
+testing require the selected binding to share the exact configured settings object. There is no
+default, substitution, credential fallback, or model-name rewriting; missing or mismatched bindings
+return only provider-neutral `Unavailable`.
+
+The strict version-1 provider-settings JSON boundary writes only `schemaVersion`, canonical provider
+identifiers, and bounded model names in stable settings order. Deserialization rejects malformed,
+future, duplicate, missing, unknown, non-canonical, excessive, or selection-incomplete documents;
+credentials have no field in the closed schema. The ordinary scene source retains the exact settings
+selection and binding snapshots and switches only to another exact configured binding, while its
+stable credential-free offline default and one-shot test seam remain intact. It does not construct a
+provider adapter or read a settings document.
 
 The OpenAI and Anthropic binding factories retain one exact caller-supplied settings object,
 `HttpClient`, and credential source across the corresponding model and connection tester. The
@@ -898,7 +909,7 @@ user's local-machine-persistent credential set, replaces only that exact target,
 to redacted outcomes, and clears managed input, unmanaged write memory, copied output, and the
 Credential Manager read buffer before releasing it. Standard tests are fake-boundary-only and do
 not touch a user's credential set. Windows support is not claimed until the same bytes are proved
-on Windows. No Anthropic credential store, settings UI or persistence, diagnostic logging/export,
+on Windows. No Anthropic credential store, settings document storage or UI, diagnostic logging/export,
 production provider composition, or generated-intention execution exists. The opt-in
 `OllamaCharacterModelLiveTests` checks an explicitly named already-installed model without pulling
 or modifying it; the standard suite does not access a local server.

@@ -179,6 +179,10 @@ Acceptance:
 - [x] Support response cancellation and a visible timeout state.
 - [x] Stream display text without executing partial intentions.
 - [x] Add bounded provider and model settings with a redacted OpenAI connection test.
+- [x] Retain ordered provider settings with one explicit selection and resolve only an exact
+  caller-composed binding.
+- [x] Serialize and strictly deserialize the selected provider settings through a versioned,
+  secret-free JSON boundary.
 - [x] Compose exact OpenAI, Anthropic, and Ollama model bindings from caller-owned dependencies
   without credential, network, discovery, or scene input/output during construction.
 - [x] Store the user-supplied OpenAI credential in macOS Keychain, never saves, scenes, logs,
