@@ -48,10 +48,11 @@ cancellation preserves only already-accepted stream text while cancelling the ex
 
 Infrastructure contains caller-composed OpenAI Responses, Anthropic Messages, and loopback-only
 Ollama HTTP adapters with stateless strict structured output, bounded streaming completion, and
-optional terminal token diagnostics. Bounded settings, redacted OpenAI and Ollama connection tests,
-and macOS OpenAI Keychain storage are present. Ordinary-scene provider composition, Windows/Linux
-credential stores, Anthropic credential storage, and execution of generated non-wait intentions
-remain later work.
+optional terminal token diagnostics. Bounded caller-composed bindings select exact providers and
+dispatch redacted OpenAI, Anthropic, or Ollama connection tests. The ordinary scene can switch exact
+fake bindings while macOS OpenAI Keychain storage is present. Production scene composition,
+Windows/Linux credential stores, Anthropic credential storage, settings persistence, and execution
+of generated non-wait intentions remain later work.
 
 ## Prerequisites
 
@@ -850,12 +851,21 @@ time and the sink for completed or failed provider attempts; absent usage remain
 malformed usage fails closed without exposing partial provider content.
 
 The provider/model settings boundary retains one exact canonical OpenAI, Anthropic, or Ollama
-provider instance and one bounded model name; it does not select or construct an adapter. All three
-HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP IP-loopback
-origin and derives the native `/api/chat` and `/api/show` resources; hostnames, LAN/public addresses,
-credentials, paths, queries, fragments, HTTPS, and implicit ports are rejected. The OpenAI and
-Ollama connection testers inspect only the exact configured model through caller-owned HTTP, never
-generate content or read success or failure bodies, and expose only provider-neutral outcomes.
+provider instance and one bounded model name. An immutable copied binding snapshot retains at most
+one exact caller-composed model, settings object, and connection tester per canonical provider.
+Exact selection has no default, substitution, credential fallback, or model-name rewriting;
+missing connection-test bindings return only provider-neutral `Unavailable`. The ordinary scene
+source can retain one exact binding snapshot and switch only to an available canonical provider,
+while its stable credential-free offline default and one-shot test seam remain intact. It does not
+construct a provider adapter.
+
+All three HTTP adapters remain caller-composed. `OllamaEndpoint` permits only an explicit HTTP
+IP-loopback origin and derives the native `/api/chat` and `/api/show` resources; hostnames,
+LAN/public addresses, credentials, paths, queries, fragments, HTTPS, and implicit ports are
+rejected. The OpenAI and Anthropic connection testers retrieve only the exact configured model
+through their official caller-owned authenticated HTTP boundary; the Ollama tester posts only the
+exact configured model to `/api/show` at its validated loopback endpoint. None generates content or
+reads success or failure bodies, and all expose only provider-neutral outcomes.
 
 `MacOsOpenAiCredentialStore` implements save/replace, load, and delete for one exact generic
 password identity in macOS Keychain. The `/usr/bin/security` process is isolated behind an injected
@@ -863,8 +873,8 @@ boundary, never uses a shell, receives save bytes only through redirected standa
 and clears native output buffers, discards standard error, and maps OS details to loaded, missing,
 saved, deleted, or failed outcomes. Standard tests use a deterministic fake boundary and never
 touch a user's real keychain. No Anthropic credential store, Windows Credential Manager or Linux
-Secret Service adapter, settings UI or persistence, diagnostic logging/export, ordinary-turn
-provider selection, or generated-intention execution exists. The opt-in
+Secret Service adapter, settings UI or persistence, diagnostic logging/export, production
+provider composition, or generated-intention execution exists. The opt-in
 `OllamaCharacterModelLiveTests` checks an explicitly named already-installed model without pulling
 or modifying it; the standard suite does not access a local server.
 

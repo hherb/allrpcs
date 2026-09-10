@@ -5,7 +5,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Switches exact caller-composed models across two ordinary healer turns.</summary>
+/// <summary>Switches exact caller-composed provider bindings across ordinary healer turns.</summary>
 public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_ORDINARY_MODEL_SWITCH_CHECK";
@@ -50,9 +50,22 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
 
         modelSource = GetNode<TemporaryCharacterModelSource>(
             "../TemporaryCharacterModelSource");
-        if (!modelSource.TrySupplyModel(firstModel))
+        CharacterModelBinding openAi = Binding(
+            CharacterModelProvider.OpenAi,
+            "gpt-test",
+            firstModel);
+        CharacterModelBinding anthropic = Binding(
+            CharacterModelProvider.Anthropic,
+            "claude-test",
+            secondModel);
+        CharacterModelBindingSnapshot bindings = new([openAi, anthropic]);
+        if (!modelSource.TryInitializeBindings(bindings, CharacterModelProvider.OpenAi)
+            || modelSource.TryInitializeBindings(bindings, CharacterModelProvider.Anthropic)
+            || modelSource.TrySelectProvider(CharacterModelProvider.Ollama)
+            || !ReferenceEquals(modelSource.TakeModel(), firstModel)
+            || !ReferenceEquals(modelSource.TakeModel(), firstModel))
         {
-            Fail("The model-switch smoke could not supply its first exact model.");
+            Fail("The model-switch smoke could not retain its exact initial provider binding.");
             return;
         }
 
@@ -162,9 +175,10 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             return;
         }
 
-        if (!modelSource.TrySupplyModel(secondModel))
+        if (!modelSource.TrySelectProvider(CharacterModelProvider.Anthropic)
+            || !ReferenceEquals(modelSource.TakeModel(), secondModel))
         {
-            Fail("The model-switch smoke could not supply its second exact model.");
+            Fail("The model-switch smoke could not select its second exact provider binding.");
             return;
         }
 
@@ -248,11 +262,22 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
 
         SetProcess(false);
         GD.Print(
-            "Ordinary character-model switch smoke passed: two exact caller-composed models "
-            + "served distinct consecutive requests, each speech occurred once in order, and "
-            + "no model, presentation, action, or authoritative state crossed turn boundaries.");
+            "Ordinary character-model provider-switch smoke passed: exact caller-composed "
+            + "OpenAI and Anthropic bindings served distinct consecutive requests, unavailable "
+            + "Ollama selection did not substitute a model, each speech occurred once in order, "
+            + "and no presentation, action, or authoritative state crossed turn boundaries.");
         GetTree().Quit();
     }
+
+    private static CharacterModelBinding Binding(
+        CharacterModelProvider provider,
+        string modelName,
+        ICharacterModel model) =>
+        new(
+            provider,
+            new CharacterModelSettings(provider, modelName),
+            model,
+            new UnusedConnectionTester());
 
     private static bool HasCurrentUntrustedDialogue(
         CharacterModelGenerationRequest? request,
@@ -309,5 +334,14 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
                 response,
                 null);
         }
+    }
+
+    private sealed class UnusedConnectionTester : ICharacterModelConnectionTester
+    {
+        public ValueTask<CharacterModelConnectionTestResult> TestConnectionAsync(
+            CharacterModelSettings settings,
+            CancellationToken cancellationToken) =>
+            throw new InvalidOperationException(
+                "Ordinary provider selection must not invoke a connection test.");
     }
 }
