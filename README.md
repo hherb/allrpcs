@@ -948,6 +948,25 @@ intention. Their failure output contains only bounded aggregate counts; it retai
 prompt, credential, or raw provider detail. Both remain network-free unless explicitly enabled and
 also require the existing explicit API-base and model environment values.
 
+Ollama has separately enabled parity checks over its existing fixed loopback endpoint.
+`ALLRPCS_LIVE_OLLAMA_CONFORMANCE=1` runs the same three target-free wait requests, while
+`ALLRPCS_LIVE_OLLAMA_ACTION_CONFORMANCE=1` runs the same three known-target examination requests.
+Both require `ALLRPCS_LIVE_OLLAMA_MODEL` to name an already-installed model and reuse the same
+provider-neutral evaluator and count-only failure summary. The original permissive Ollama safety
+probe remains independent, and the standard suite performs no Ollama request when the live switches
+and model are absent.
+
+`ALLRPCS_LIVE_OLLAMA_ORDINARY_WAIT=1` and `ALLRPCS_LIVE_OLLAMA_ORDINARY_ACTION=1` separately supply
+that explicitly named Ollama model to one ordinary healer turn in the Godot scene. The equivalent
+OpenAI-compatible paths use `ALLRPCS_LIVE_OPENAI_ORDINARY_WAIT=1` or
+`ALLRPCS_LIVE_OPENAI_ORDINARY_ACTION=1` plus the existing explicit API-base and model values. Exactly
+one provider and mode may be enabled. The wait check requires completed bounded speech without
+physical, event, time, world-object, or perception mutation. The action check submits the known
+herb-patch request, requires a completed locally validated response, and proves examination and
+deterministic safe collection retain the exact action chain while world objects and perception
+remain unchanged. Console output is fixed and content-free. The checks do not discover or start a
+server, select, pull, or modify a model, or run during standard validation.
+
 The temporary ordinary healer input now exposes only one targeted action in addition to always-safe
 wait: examining the identified herb patch. A completed model response still has to pass the existing
 known-object and current-affordance validation before scene reception. The temporary examination

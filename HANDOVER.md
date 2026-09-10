@@ -2,65 +2,68 @@
 
 ## Current state
 
-`main` contains merged PR #177 at `66f42e4`. The current branch is
-`codex/phase-4-live-conformance` and advances Phase 4 through Phase 4r4.
+`main` contains merged PR #178 at `0f3c9d3`. The current branch is
+`codex/phase-4-ollama-live-conformance`; draft PR #179 advances Phase 4 through Phase 4r7.
 
-- Phase 4r2 separates the existing permissive OpenAI-compatible fail-closed safety probe from an
-  explicitly enabled three-request conformance series. Conformance requires one `Completed`
-  target-free `Wait` response per request, exact request identity, bounded healer speech, no
-  commitments, and no state proposals. Its report contains only bounded outcome counts.
-- Phase 4r3 adds a separate three-request live action series. Each response must complete with the
-  expected known `examine-object` target and pass the existing provider-neutral world-object and
-  current-affordance validation policy. It likewise reports only bounded aggregate counts.
-- Phase 4r4 exposes the identified herb patch as the ordinary healer's sole targeted affordance.
-  After validation, a generated distinct value-equal object identifier can pass through the
-  existing exact response/action chain to authoritative examination and safe deterministic
-  collection. The ordinary generated-action smoke proves world objects and perception remain
-  unchanged, while unknown and unafforded targets still fail closed.
+- Phase 4r5 gives Ollama the existing strict three-request wait and known-target action
+  conformance series. Both reuse the provider-neutral evaluator and bounded count-only summary,
+  require an explicitly named already-installed model, and remain separate from the permissive
+  Ollama safety probe.
+- Phase 4r6 adds one explicitly enabled ordinary-scene known-target live harness for either Ollama
+  or an OpenAI-compatible endpoint. It requires a completed locally validated response before the
+  existing exact examination and deterministic safe-collection chain can occur, while world objects
+  and perception remain unchanged.
+- Phase 4r7 adds the equivalent ordinary-scene target-free `Wait` harness. It requires bounded
+  healer speech and proves there is no physical action or event, time, world-object, or perception
+  mutation.
 
-The two strict live series were run against the already-running local oMLX
-`gemma-4-26b-a4b-it-4bit` endpoint. Each produced the bounded aggregate
-`completed=0; stream-violations=0; termination-failures=3; response-violations=0`. This is negative
-model conformance evidence, not a passing Phase 4 acceptance result. No provider content, prompt,
-credential, or raw failure detail was retained or reported.
+The ordinary harness permits exactly one provider/mode switch, records only the exact
+provider-neutral request for containment checks, and emits fixed content-free pass/fail output. It
+does not discover or start a server, discover/select/pull/change a model, persist an endpoint, read
+an OS credential, or run during standard validation. No live path was run in this branch because no
+endpoint/model was explicitly selected for this session.
 
-No response-schema widening, provider-specific parsing, model/server discovery, model installation
-or process ownership, API-base persistence/UI, automatic live recomposition, Anthropic credential
-store, arbitrary generated action execution, or Phase 5 memory was added. Native Linux/Windows
-credential behavior remains unproved, and full Phase 4 acceptance is incomplete.
+No response-schema widening, provider-specific parsing, model/server process ownership, API-base
+persistence/UI, automatic live recomposition, Anthropic credential store, arbitrary generated
+action execution, or Phase 5 memory was added. Native Linux/Windows credential behavior remains
+unproved, and full Phase 4 acceptance is incomplete.
 
 ## Validation
 
 The complete host-local `./scripts/quality.sh` passes:
 
 - workflow and formatting validation, restore, and a zero-warning build;
-- 1,388 Domain tests, 365 Application tests, 403 Infrastructure tests, and eight architecture tests;
+- 1,388 Domain tests, 365 Application tests, 405 Infrastructure tests, and eight architecture tests;
 - the five-evidence representative scenario validator;
-- all 76 opt-in Godot smoke invocations, including the generated distinct-target examination and
-  safe collection flow; and
+- all 76 standard Godot smoke invocations, including the credential-free generated distinct-target
+  examination and safe-collection flow; and
 - the bounded graphical Compatibility-renderer launch.
 
-The standard suite remains network-free because all live probes return before constructing a client
-unless their explicit environment switch is set. GitHub Actions budget is exhausted for the month:
-do not dispatch hosted workflows, and treat zero-step hosted failures as account infrastructure
-rather than test evidence.
+The two new Ollama live facts are included in the 405 Infrastructure tests and return before model
+construction when their explicit switches are absent. The new ordinary live scene node likewise
+returns before client/model construction when all four live switches are absent. Focused validation
+also passed all seven Ollama-live/evaluator tests and the generated examination smoke. The first
+sandboxed VSTest and Godot attempts hit the known local-socket/user-log restrictions; the identical
+host commands passed. GitHub Actions budget is exhausted for the month: do not dispatch hosted
+workflows. All five automatically created draft-PR jobs failed with zero steps at the initial head;
+this is account infrastructure, not test evidence, and must not be retried.
 
 ## Exact next bounded slice
 
-Take **Phase 4r5: strict Ollama live-conformance parity**.
+Take **Phase 4r8: explicitly selected live-provider acceptance evidence**.
 
 Acceptance boundary:
 
-1. Add separately enabled fixed three-request Ollama conformance series for the same target-free
-   `Wait` and known-target `examine-object` contracts used by the OpenAI-compatible checks.
-   `InvalidResponse` and every other non-`Completed` termination are conformance failures.
-2. Reuse the provider-neutral evaluator and bounded count-only summary. Do not retain or report
-   provider content, prompts, model metadata, credentials, endpoint details, or raw failures.
-3. Keep the existing permissive Ollama safety probe intact and keep the standard suite network-free
-   when live environment variables are absent. If an already-running explicitly selected local
-   model is available, record its positive or negative aggregate without discovering, downloading,
-   starting, or changing that model.
-4. Do not widen the response schema or parser, add provider-specific accepted variants, persist an
-   endpoint, add endpoint UI, alter startup composition, execute any generated action other than the
-   already-bounded known herb-patch examination flow, claim natural-conversation acceptance, or add
-   Phase 5 memory.
+1. After the user explicitly identifies one already-running endpoint and model, run that provider's
+   fixed three-request wait and action conformance series, then its ordinary-scene wait and action
+   harnesses in separate fresh processes. Do not discover, download, start, stop, or change a server
+   or model.
+2. Require both conformance aggregates to report three completed outcomes and both ordinary flows
+   to pass before marking Phase 4 live acceptance complete. A reachable but non-conforming model is
+   negative safety evidence only.
+3. Retain/report only bounded aggregates and fixed pass/fail text. Do not retain or report model
+   speech, prompts, model/server metadata, credentials, endpoint details, or raw failures.
+4. Do not widen the schema/parser, add provider-specific accepted variants, persist an endpoint, add
+   endpoint UI, alter startup composition, add credential facilities, execute any generated action
+   beyond the existing herb-patch examination flow, claim native platform support, or add Phase 5
+   memory.
