@@ -46,6 +46,44 @@ public partial class CharacterModelSettingsController : Node
         return true;
     }
 
+    /// <summary>Saves only the exact current initialized settings snapshot.</summary>
+    public CharacterModelSettingsDocumentWriteResult SaveCurrent()
+    {
+        CharacterModelSettingsSelectionSnapshot? snapshot = Snapshot;
+        return snapshot is null
+            ? CharacterModelSettingsDocumentWriteResult.Failed
+            : storageController.SaveCurrent(snapshot);
+    }
+
+    /// <summary>Atomically updates and selects one exact canonical provider setting.</summary>
+    public bool TryApply(CharacterModelSettings settings)
+    {
+        ArgumentNullException.ThrowIfNull(settings);
+        CharacterModelSettingsSelectionSnapshot? snapshot = Snapshot;
+        if (snapshot is null)
+        {
+            return false;
+        }
+
+        try
+        {
+            CharacterModelSettingsSelectionSnapshot updated =
+                CharacterModelSettingsUpdateTransition.Update(settings, snapshot);
+            Snapshot = CharacterModelSettingsSelectionTransition.Select(
+                settings.Provider,
+                updated);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
     /// <summary>Replaces or appends one exact canonical provider setting.</summary>
     public bool TryUpdate(CharacterModelSettings settings)
     {
