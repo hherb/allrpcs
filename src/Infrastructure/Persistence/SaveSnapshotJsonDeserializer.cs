@@ -70,6 +70,16 @@ public static class SaveSnapshotJsonDeserializer
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents");
         }
+        else if (version == SaveSchemaVersion.FirstPatient)
+        {
+            RequireObject(
+                element,
+                "schemaVersion",
+                "discovery",
+                "worldEvents",
+                "characterMemory",
+                "firstPatient");
+        }
         else
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents", "characterMemory");
@@ -77,13 +87,21 @@ public static class SaveSnapshotJsonDeserializer
 
         DiscoverySaveState discovery = ReadDiscovery(element.GetProperty("discovery"));
         WorldEventSaveState worldEvents = ReadWorldEvents(element.GetProperty("worldEvents"));
-        return version == SaveSchemaVersion.FirstSupported
-            ? new SaveSnapshot(version, discovery, worldEvents)
-            : new SaveSnapshot(
+        if (version == SaveSchemaVersion.FirstSupported)
+        {
+            return new SaveSnapshot(version, discovery, worldEvents);
+        }
+
+        Allrpcs.Domain.Characters.CharacterMemorySnapshot characterMemory =
+            CharacterMemoryJsonReader.Read(element.GetProperty("characterMemory"));
+        return version == SaveSchemaVersion.FirstPatient
+            ? new SaveSnapshot(
                 version,
                 discovery,
                 worldEvents,
-                CharacterMemoryJsonReader.Read(element.GetProperty("characterMemory")));
+                characterMemory,
+                FirstPatientJsonReader.Read(element.GetProperty("firstPatient")))
+            : new SaveSnapshot(version, discovery, worldEvents, characterMemory);
     }
 
     private static SaveSchemaVersion ReadVersion(JsonElement element)
@@ -102,6 +120,7 @@ public static class SaveSnapshotJsonDeserializer
         {
             1 => SaveSchemaVersion.FirstSupported,
             2 => SaveSchemaVersion.CharacterMemory,
+            3 => SaveSchemaVersion.FirstPatient,
             _ => throw InvalidDocument(),
         };
     }

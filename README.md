@@ -1134,9 +1134,13 @@ exact first-patient composition in addition to version-2 character memory and th
 state. Earlier roots cannot retain this composition, and version `3` cannot omit it.
 `SaveSnapshotFirstPatientMigration` is the pure version-2 to version-3 prerequisite: callers must
 supply the exact authored initial first-patient state rather than having the migration fabricate
-disease truth. Version-3 load and JSON support remain disabled, and the serializer fails closed so
-it cannot silently discard the new state. No save document, storage, restoration, or scene capture
-root uses version `3` yet.
+disease truth. Canonical version-3 JSON now writes and strictly reads complete disease truth,
+completed preparations, remaining prepared batches, administration observations, and universal
+experiment records. Stable document-local preparation indices preserve exact shared identity across
+batches and administrations without serializing runtime object references. The reader rejects
+unknown structure, invalid references, incomplete preparations, conflicting shared events, and
+non-canonical values. Version-3 load policy, migration execution, controller restoration, storage,
+and live scene capture remain disabled.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
