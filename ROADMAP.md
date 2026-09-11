@@ -255,11 +255,11 @@ Acceptance:
 - [x] Define the pure version-1 to version-2 empty-memory migration without enabling loading.
 - [x] Serialize and strictly deserialize complete canonical version-2 character memory.
 - [x] Execute memory-schema migration during load and restore character memory atomically.
-- [ ] Test restart and provider-switch continuity.
+- [x] Test restart and provider-switch continuity.
 
 Acceptance:
 
-- [ ] After save, restart, and provider switch, the healer recalls an earlier promise and its
+- [x] After save, restart, and provider switch, the healer recalls an earlier promise and its
   source without receiving the complete campaign transcript.
 
 ## Phase 6 — Disease and evidence-driven quest systems

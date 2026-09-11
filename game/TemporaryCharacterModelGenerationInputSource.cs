@@ -18,6 +18,7 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
         "A secret that must remain unavailable to this healer.";
 
     private CharacterIntentionAffordanceSnapshot affordances = null!;
+    private CharacterMemoryController memoryController = null!;
     private TemporaryHealerCharacterSource healerSource = null!;
     private KnowledgeSnapshot knowledge = null!;
     private CharacterPerceptionSnapshot perception = null!;
@@ -28,6 +29,7 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
     {
         healerSource = GetNode<TemporaryHealerCharacterSource>(
             "../TemporaryHealerCharacterSource");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         worldObjects = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").WorldObjects;
 
@@ -81,7 +83,9 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
                 perception,
                 worldObjects,
                 knowledge,
-                [],
+                CharacterModelCommitmentMemoryContextProjection.Project(
+                    healerSource.Character.Identity.Id,
+                    memoryController.Memory),
                 [activity.Request.DialogueEvent],
                 affordances);
 

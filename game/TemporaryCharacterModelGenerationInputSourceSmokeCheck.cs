@@ -26,6 +26,9 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
     private const string AuthoredKnowledgeText =
         "The healer knows the herb patch must be examined before any collection decision.";
     private const string AuthoredGoalText = "Help the Seeker without claiming unobserved facts.";
+    private const string ProjectedCommitmentText =
+        "kind=promise;counterparty=seeker;source-turn=turn-one;"
+        + "description=Inspect the moonwort before collection.";
 
     /// <inheritdoc />
     public override void _Ready()
@@ -40,6 +43,8 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         TemporaryCharacterModelGenerationInputSource inputSource =
             GetNode<TemporaryCharacterModelGenerationInputSource>(
                 "../TemporaryCharacterModelGenerationInputSource");
+        CharacterMemoryController memoryController =
+            GetNode<CharacterMemoryController>("../CharacterMemoryController");
         TemporaryCharacterTurnSource turnSource = GetNode<TemporaryCharacterTurnSource>(
             "../TemporaryCharacterTurnSource");
         CharacterTurnActivityController turnController = GetNode<CharacterTurnActivityController>(
@@ -61,6 +66,9 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         CharacterTurnActivity exactActivity = CreateAwaitingActivity(
             healerSource.Character.Identity.Id,
             PromptShapedText);
+        CharacterMemorySnapshot expectedMemory =
+            CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
+        memoryController.Install(expectedMemory);
         CharacterTurnActivity? expectedLiveActivity = turnController.Activity;
         DialogueEvent? expectedDialogue = dialogueController.LastOccurredEvent;
         CharacterTurnTranscriptSnapshot? expectedTranscript = transcriptController.Transcript;
@@ -91,6 +99,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
             || !ReferenceEquals(worldEventController.WorldTime, expectedWorldTime)
             || !ReferenceEquals(worldObjectController.WorldObjects, expectedLiveWorldObjects)
             || !ReferenceEquals(searchController.Perception, expectedSeekerPerception)
+            || !ReferenceEquals(memoryController.Memory, expectedMemory)
             || generationController.HasStarted != expectedGenerationStarted
             || generationController.Result is not null)
         {
@@ -100,9 +109,9 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
 
         GD.Print(
             "Temporary healer generation-input source smoke passed: the stable LLM healer, "
-            + "exact active request, filtered perception, referenced knowledge, recent speech, "
-            + "and Wait plus known herb-patch examination affordances were retained without "
-            + "generation or mutation.");
+            + "exact active request, filtered perception, referenced knowledge, unfinished "
+            + "commitment memory, recent speech, and Wait plus known herb-patch examination "
+            + "affordances were retained without generation or mutation.");
         GetTree().Quit();
     }
 
@@ -162,6 +171,9 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         CharacterModelContextEntry[] recentSpeech = Entries(
             request,
             CharacterModelContextEntryKind.RecentSpeech);
+        CharacterModelContextEntry[] memory = Entries(
+            request,
+            CharacterModelContextEntryKind.Memory);
         CharacterModelContextEntry[] playerDialogue = Entries(
             request,
             CharacterModelContextEntryKind.UntrustedPlayerDialogue);
@@ -178,7 +190,8 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
             && perception[0].Text == VisibleWorldObjectDescription
             && knowledge.Length == 1
             && knowledge[0].Text == AuthoredKnowledgeText
-            && Entries(request, CharacterModelContextEntryKind.Memory).Length == 0
+            && memory.Length == 1
+            && memory[0].Text == ProjectedCommitmentText
             && input.WorldObjects.Entries.Count == 2
             && input.WorldObjects.Entries.Any(
                 entry => entry.Description.Text == VisibleWorldObjectDescription)
