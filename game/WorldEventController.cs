@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -96,6 +97,13 @@ public partial class WorldEventController : Node
     {
         ArgumentNullException.ThrowIfNull(result);
 
+        EventLog = result.EventLog;
+        WorldTime = result.WorldTime;
+    }
+
+    internal void InstallFirstPatientAdministration(
+        FirstPatientAdministrationOccurrenceResult result)
+    {
         EventLog = result.EventLog;
         WorldTime = result.WorldTime;
     }

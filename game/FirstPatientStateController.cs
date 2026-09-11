@@ -147,4 +147,13 @@ public partial class FirstPatientStateController : Node
         Experiments = result.Experiments;
         return true;
     }
+
+    internal void InstallAdministrationOccurrence(
+        FirstPatientAdministrationOccurrenceResult result)
+    {
+        DiseaseTruth = result.DiseaseTruth;
+        PreparedBatches = result.PreparedBatches;
+        AdministrationExperiments = result.AdministrationExperiments;
+        Experiments = result.Experiments;
+    }
 }

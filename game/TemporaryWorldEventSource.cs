@@ -11,6 +11,8 @@ public partial class TemporaryWorldEventSource : Node
     private const string HerbPatchIdentifiedEventIdText = "herb-patch-identified";
     private const string HerbPatchExaminedEventIdText = "healer-examined-herb-patch";
     private const string HerbPatchCollectedEventIdText = "healer-collected-herb-patch";
+    private const string FirstPatientRemedyAdministeredEventIdText =
+        "healer-administered-first-patient-remedy";
 
     /// <summary>Gets the exact event selected for ordinary scene startup.</summary>
     public WorldEvent InitialWorldEvent { get; private set; } = null!;
@@ -23,6 +25,9 @@ public partial class TemporaryWorldEventSource : Node
 
     /// <summary>Gets the exact event authored for the healer collecting the herb patch.</summary>
     public WorldEvent HerbPatchCollectedWorldEvent { get; private set; } = null!;
+
+    /// <summary>Gets the exact event authored for administering the first-patient remedy.</summary>
+    public WorldEvent FirstPatientRemedyAdministeredWorldEvent { get; private set; } = null!;
 
     /// <summary>Gets the retained temporary authoritative world-event snapshot.</summary>
     public WorldEventSnapshot WorldEvents { get; private set; } = null!;
@@ -42,12 +47,16 @@ public partial class TemporaryWorldEventSource : Node
         HerbPatchCollectedWorldEvent = new WorldEvent(
             new WorldEventId(HerbPatchCollectedEventIdText),
             WorldEventTimeEffect.Advance);
+        FirstPatientRemedyAdministeredWorldEvent = new WorldEvent(
+            new WorldEventId(FirstPatientRemedyAdministeredEventIdText),
+            WorldEventTimeEffect.Advance);
         WorldEvents = new(
         [
             InitialWorldEvent,
             HerbPatchIdentifiedWorldEvent,
             HerbPatchExaminedWorldEvent,
             HerbPatchCollectedWorldEvent,
+            FirstPatientRemedyAdministeredWorldEvent,
         ]);
     }
 }
