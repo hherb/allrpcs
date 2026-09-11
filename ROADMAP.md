@@ -276,9 +276,9 @@ Acceptance:
 - [x] Model ingredient identity, freshness, condition, quantity, and contamination.
 - [x] Model preparation order, grinding, heating, steeping, cooling, fermentation, dosage, and
   administration.
-- [ ] Record every experiment and observed outcome in the journal.
+- [x] Record every experiment and observed outcome in the journal.
 - [x] Represent open questions, evidence, hypotheses, conclusions, and consequences.
-- [ ] Recognize natural-language hypotheses without turning them into facts.
+- [x] Recognize natural-language hypotheses without turning them into facts.
 - [x] Confirm conclusions through authored combinations of evidence rather than exact phrases.
 - [x] Provide at least three sources, two confirmation routes, one non-cooperation route, and a
   recovery path for every critical conclusion.
