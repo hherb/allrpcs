@@ -58,6 +58,9 @@ scenario validator. The exact validator retry and remaining Godot checks passed,
 aggregate retry passed end to end without a product change. Restricted VSTest focused runs reproduced
 the known local-loopback denial; the identical host-local commands passed.
 
+Draft PR #196 contains this work. Its initial credential-free CI run `34589460849` was queued on
+`1b6cf30a8339bd44698a0472049387147c3d121f` when the PR was opened; no hosted result had executed yet.
+
 ## Exact next bounded slice
 
 Take **Phase 6y1: atomic first-patient prepared-dose and universal-journal integration**.
