@@ -965,9 +965,43 @@ is no decay clock, state transition, inventory, scene, persistence, provider, or
 Ingredient preparation has a closed grinding, heating, steeping, cooling, and fermentation
 vocabulary. A plan copies one to 16 exact steps in authored order and permits repeated process kinds.
 Immutable progress exposes only the exact next step; a pure policy and transition advance it exactly
-once, and distinct value-equal or out-of-order steps fail closed. Plans do not yet specify ingredient
-requirements, results, tools, duration, temperature, events, dosage, administration, or treatment
-effects.
+once, and distinct value-equal or out-of-order steps fail closed. Canonical preparation-recipe
+identities distinguish authored recipes. A recipe retains one exact plan, one to 16 ordered exact
+input requirements with unique ingredient identities, and one exact result definition and quantity.
+Requirements and ingredient-state snapshots are copied, read-only, bounded, and duplicate-free;
+amounts must use the same exact unit and never convert implicitly.
+
+A pure availability policy requires every recipe input by exact definition instance, exact unit, and
+sufficient integer amount. It deliberately does not invent freshness, physical-condition, or
+contamination requirements. Pure consumption removes depleted states, replaces only partially
+consumed states in their original positions, and preserves unrelated exact instances. Starting a
+recipe atomically consumes eligible inputs and creates progress at step zero. An activity can advance
+only through its exact next authored step, and only complete progress produces the exact
+recipe-authored result outcome. The result is not automatically added to ingredient storage.
+
+A dosage retains one exact completed preparation outcome and a positive quantity no larger than that
+outcome in the same exact unit. An authored administration outcome retains exact administrator and
+patient identities, that exact dosage, and one exact meaningful world event; it does not itself
+validate event occurrence, consume a reusable dose, or change disease truth. Self-administration is
+not prohibited at this structural boundary.
+
+Ingredient-administration experiment records retain a canonical experiment identity, one exact
+administration outcome, and one exact qualitative condition observation. Empty observations remain
+valid and do not mean "no effect." The bounded immutable journal preserves exact records in authored
+order, rejects duplicate experiment identities, and provides a pure append transition. Recording is
+not yet atomically coupled to authoritative administration, scene ownership, persistence, or a
+treatment consequence.
+
+Investigation contracts keep open questions, hypotheses, evidence, conclusions, and consequences
+separate. Questions, hypotheses, conclusions, and non-executable consequences retain canonical
+identities plus bounded exact authored text; hypotheses remain possible answers rather than facts.
+Evidence links use only the closed `supports` or `contradicts` relationship and do not bypass the
+existing character-filtered evidence view. An authored conclusion plan contains one to eight
+distinct alternate routes, each requiring one to 16 unique evidence identities. A pure confirmation
+policy succeeds only when one whole route is visible and never pools partial alternate routes.
+Confirmation atomically removes the exact open question and appends the exact authored conclusion;
+it does not parse natural language, execute consequences, reveal hidden evidence, or change gameplay
+state.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

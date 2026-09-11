@@ -274,12 +274,12 @@ Acceptance:
 - [x] Implement patient assessment constrained by capability and perception.
 - [x] Implement comfort, stabilization, and cure outcomes.
 - [x] Model ingredient identity, freshness, condition, quantity, and contamination.
-- [ ] Model preparation order, grinding, heating, steeping, cooling, fermentation, dosage, and
+- [x] Model preparation order, grinding, heating, steeping, cooling, fermentation, dosage, and
   administration.
 - [ ] Record every experiment and observed outcome in the journal.
-- [ ] Represent open questions, evidence, hypotheses, conclusions, and consequences.
+- [x] Represent open questions, evidence, hypotheses, conclusions, and consequences.
 - [ ] Recognize natural-language hypotheses without turning them into facts.
-- [ ] Confirm conclusions through authored combinations of evidence rather than exact phrases.
+- [x] Confirm conclusions through authored combinations of evidence rather than exact phrases.
 - [ ] Provide at least three sources, two confirmation routes, one non-cooperation route, and a
   recovery path for every critical conclusion.
 - [ ] Implement the first patient and the stabilizing remedy.
