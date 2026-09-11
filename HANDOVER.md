@@ -2,8 +2,8 @@
 
 ## Current state
 
-`main` contains merged PR #186 at `997d764`. Work continues on
-`codex/phase-5-memory-atomic-restoration`.
+`main` contains merged PR #186 at `997d764`. The current branch is
+`codex/phase-5-memory-atomic-restoration`; draft PR #187 is open.
 
 Phase 5 now restores complete canonical character memory. One scene-owned
 `CharacterMemoryController` starts with explicit empty memory and retains any exact caller-supplied
@@ -29,6 +29,10 @@ claim yet.
 The generated `ScenarioValidator` native app host again stalled during macOS dynamic-loader startup.
 The same rebuilt validator DLL passed immediately through `dotnet exec`; this remains a local app-host
 limitation, not a validator assertion failure.
+
+All five draft PR #187 jobs on run `34553240923` failed with `steps: []`. This is GitHub Actions
+account infrastructure state rather than test evidence; do not redispatch those jobs solely to
+compensate.
 
 ## Exact next bounded slice
 
