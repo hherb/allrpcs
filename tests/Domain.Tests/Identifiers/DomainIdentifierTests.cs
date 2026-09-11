@@ -25,6 +25,12 @@ public sealed class DomainIdentifierTests
         Assert.Equal(value, new CharacterConversationSummaryId(value).Value);
         Assert.Equal(value, new DiseaseId(value).Value);
         Assert.Equal(value, new IngredientId(value).Value);
+        Assert.Equal(value, new PreparationRecipeId(value).Value);
+        Assert.Equal(value, new ExperimentId(value).Value);
+        Assert.Equal(value, new InvestigationQuestionId(value).Value);
+        Assert.Equal(value, new InvestigationHypothesisId(value).Value);
+        Assert.Equal(value, new InvestigationConclusionId(value).Value);
+        Assert.Equal(value, new InvestigationConsequenceId(value).Value);
     }
 
     [Theory]
@@ -54,6 +60,12 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentException>(() => new CharacterConversationSummaryId(value));
         Assert.Throws<ArgumentException>(() => new DiseaseId(value));
         Assert.Throws<ArgumentException>(() => new IngredientId(value));
+        Assert.Throws<ArgumentException>(() => new PreparationRecipeId(value));
+        Assert.Throws<ArgumentException>(() => new ExperimentId(value));
+        Assert.Throws<ArgumentException>(() => new InvestigationQuestionId(value));
+        Assert.Throws<ArgumentException>(() => new InvestigationHypothesisId(value));
+        Assert.Throws<ArgumentException>(() => new InvestigationConclusionId(value));
+        Assert.Throws<ArgumentException>(() => new InvestigationConsequenceId(value));
     }
 
     [Fact]
@@ -73,6 +85,12 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentNullException>(() => new CharacterConversationSummaryId(null!));
         Assert.Throws<ArgumentNullException>(() => new DiseaseId(null!));
         Assert.Throws<ArgumentNullException>(() => new IngredientId(null!));
+        Assert.Throws<ArgumentNullException>(() => new PreparationRecipeId(null!));
+        Assert.Throws<ArgumentNullException>(() => new ExperimentId(null!));
+        Assert.Throws<ArgumentNullException>(() => new InvestigationQuestionId(null!));
+        Assert.Throws<ArgumentNullException>(() => new InvestigationHypothesisId(null!));
+        Assert.Throws<ArgumentNullException>(() => new InvestigationConclusionId(null!));
+        Assert.Throws<ArgumentNullException>(() => new InvestigationConsequenceId(null!));
     }
 
     [Fact]
@@ -108,6 +126,20 @@ public sealed class DomainIdentifierTests
             CharacterConversationSummaryId.Parse);
         AssertRoundTrip(new DiseaseId("grey-sleep"), DiseaseId.Parse);
         AssertRoundTrip(new IngredientId("moonwort-leaf"), IngredientId.Parse);
+        AssertRoundTrip(new PreparationRecipeId("cooling-tonic"), PreparationRecipeId.Parse);
+        AssertRoundTrip(new ExperimentId("first-cooling-tonic-dose"), ExperimentId.Parse);
+        AssertRoundTrip(
+            new InvestigationQuestionId("what-stabilizes-grey-sleep"),
+            InvestigationQuestionId.Parse);
+        AssertRoundTrip(
+            new InvestigationHypothesisId("cooling-tonic-stabilizes"),
+            InvestigationHypothesisId.Parse);
+        AssertRoundTrip(
+            new InvestigationConclusionId("cooling-tonic-confirmed"),
+            InvestigationConclusionId.Parse);
+        AssertRoundTrip(
+            new InvestigationConsequenceId("patient-can-be-stabilized"),
+            InvestigationConsequenceId.Parse);
     }
 
     private static void AssertRoundTrip<TIdentifier>(
