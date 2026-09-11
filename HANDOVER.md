@@ -28,6 +28,10 @@ model-context wiring yet.
 - all 77 credential-free Godot smokes
 - bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
 
+Draft PR #189 is open from this branch. Its first hosted run `34566859552` ended with all five jobs
+reporting `steps: []`; no checkout or test step ran. Treat that as unavailable account/infrastructure
+evidence, not a product failure, and do not retry or dispatch it without a changed external condition.
+
 ## Exact next bounded slice
 
 Take **Phase 6b3: successful-cure removal and configured-controller restoration**.
