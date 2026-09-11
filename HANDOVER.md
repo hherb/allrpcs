@@ -28,6 +28,8 @@ rebind deserialized state to exact scene-authored disease, recipe, ingredient, o
 restore first-patient controllers; change storage or live scene capture; add UI; call a provider;
 begin Phase 7; release; or distribute.
 
+Draft PR #201 contains this work.
+
 ## Validation and review
 
 - 6 focused version-3 persistence tests passed, alongside 7 existing serializer tests
@@ -44,7 +46,9 @@ begin Phase 7; release; or distribute.
   no-silent-discard, strict-input, minimal-surface, credential-free, and network-free review passed
 
 The restricted focused VSTest run reproduced the known localhost-bind restriction; the identical
-host-local command passed.
+host-local command passed. Draft PR #201 automatically triggered run `34653632459`; all five jobs
+completed with `steps: []` under the unchanged Actions account-budget condition. Do not retry or
+dispatch hosted workflows unless that external condition changes.
 
 ## Exact next bounded slice
 
