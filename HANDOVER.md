@@ -49,6 +49,11 @@ The first sandboxed focused VSTest command reproduced the known local-IPC restri
 host-local command passed. Git staging likewise required the already-known host retry for
 `.git/index.lock`. Neither restriction required a product change.
 
+Draft PR #193 contains this work. Its first final-implementation-head run `34578602994` on
+`4ab0a24504c677a661d76c2e3330737d253c4fd3` reported all five jobs as failures, but every job had
+`steps: []` and completed within 2–10 seconds. This is account/infrastructure state, not executed test
+evidence; do not retry or dispatch the workflow without a changed external condition.
+
 ## Exact next bounded slice
 
 Take **Phase 6k1: authoritative ingredient-administration experiment recording**.
