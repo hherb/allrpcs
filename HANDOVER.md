@@ -28,7 +28,7 @@ authoritative transcript change exists yet.
 ## Validation
 
 - workflow validation, restore, formatting, and zero-warning complete solution build
-- 1,534 Domain, 365 Application, 422 Infrastructure, and 8 architecture tests
+- 1,534 Domain, 365 Application, 423 Infrastructure, and 8 architecture tests
 - representative discovery scenario: 5 valid evidence definitions
 - all 76 credential-free Godot smokes
 - bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
