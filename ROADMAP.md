@@ -285,6 +285,9 @@ Acceptance:
 - [x] Implement the first patient and the stabilizing remedy.
 - [x] Test early correct inference, wrong theories, failed experiments, lost clues, and patient
   deterioration.
+- [x] Compose and capture immutable first-patient state without changing unrelated scene state.
+- [x] Define the version-3 in-memory save root and explicit version-2 migration prerequisite.
+- [ ] Serialize, strictly deserialize, migrate, and atomically restore complete version-3 saves.
 
 Acceptance:
 

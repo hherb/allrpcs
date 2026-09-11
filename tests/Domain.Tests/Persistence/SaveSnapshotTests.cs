@@ -1,6 +1,9 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.Tests.Characters;
@@ -23,6 +26,7 @@ public sealed class SaveSnapshotTests
         Assert.Same(discovery, snapshot.Discovery);
         Assert.Same(worldEvents, snapshot.WorldEvents);
         Assert.Empty(snapshot.CharacterMemory.Characters);
+        Assert.Null(snapshot.FirstPatient);
     }
 
     [Fact]
@@ -42,6 +46,29 @@ public sealed class SaveSnapshotTests
         Assert.Same(discovery, snapshot.Discovery);
         Assert.Same(worldEvents, snapshot.WorldEvents);
         Assert.Same(memory, snapshot.CharacterMemory);
+        Assert.Null(snapshot.FirstPatient);
+    }
+
+    [Fact]
+    public void FirstPatientVersionRetainsTheExactFirstPatientState()
+    {
+        DiscoverySaveState discovery = CreateDiscoveryState();
+        WorldEventSaveState worldEvents = CreateWorldEventState();
+        CharacterMemorySnapshot memory = new([]);
+        FirstPatientSaveState firstPatient = CreateFirstPatientState();
+
+        SaveSnapshot snapshot = new(
+            SaveSchemaVersion.FirstPatient,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient);
+
+        Assert.Same(SaveSchemaVersion.FirstPatient, snapshot.SchemaVersion);
+        Assert.Same(discovery, snapshot.Discovery);
+        Assert.Same(worldEvents, snapshot.WorldEvents);
+        Assert.Same(memory, snapshot.CharacterMemory);
+        Assert.Same(firstPatient, snapshot.FirstPatient);
     }
 
     [Fact]
@@ -55,6 +82,43 @@ public sealed class SaveSnapshotTests
             CreateWorldEventState(),
             memory));
         Assert.Single(memory.Characters);
+    }
+
+    [Fact]
+    public void OtherVersionsRejectFirstPatientStateAndFirstPatientVersionRequiresIt()
+    {
+        DiscoverySaveState discovery = CreateDiscoveryState();
+        WorldEventSaveState worldEvents = CreateWorldEventState();
+        CharacterMemorySnapshot memory = new([]);
+        FirstPatientSaveState firstPatient = CreateFirstPatientState();
+        DiseaseTruthSnapshot diseaseTruth = firstPatient.DiseaseTruth;
+
+        Assert.Throws<ArgumentException>(() => new SaveSnapshot(
+            SaveSchemaVersion.FirstSupported,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient));
+        Assert.Throws<ArgumentException>(() => new SaveSnapshot(
+            SaveSchemaVersion.CharacterMemory,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient));
+        Assert.Throws<ArgumentException>(() => new SaveSnapshot(
+            new SaveSchemaVersion(4),
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient));
+        Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
+            SaveSchemaVersion.FirstPatient,
+            discovery,
+            worldEvents,
+            memory));
+
+        Assert.Same(diseaseTruth, firstPatient.DiseaseTruth);
+        Assert.Empty(memory.Characters);
     }
 
     [Fact]
@@ -91,6 +155,12 @@ public sealed class SaveSnapshotTests
             version, discovery, null!));
         Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
             version, discovery, worldEvents, null!));
+        Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
+            SaveSchemaVersion.FirstPatient,
+            discovery,
+            worldEvents,
+            new CharacterMemorySnapshot([]),
+            null!));
     }
 
     [Fact]
@@ -101,6 +171,7 @@ public sealed class SaveSnapshotTests
         [
             ("CharacterMemory", typeof(CharacterMemorySnapshot)),
             ("Discovery", typeof(DiscoverySaveState)),
+            ("FirstPatient", typeof(FirstPatientSaveState)),
             ("SchemaVersion", typeof(SaveSchemaVersion)),
             ("WorldEvents", typeof(WorldEventSaveState)),
         ];
@@ -127,4 +198,10 @@ public sealed class SaveSnapshotTests
     private static WorldEventSaveState CreateWorldEventState() => new(
         new WorldEventLogSnapshot([]),
         new WorldTimeSnapshot(null));
+
+    private static FirstPatientSaveState CreateFirstPatientState() => new(
+        RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth,
+        new PreparedIngredientBatchSnapshot([]),
+        new IngredientExperimentJournalSnapshot([]),
+        new ExperimentJournalSnapshot([]));
 }

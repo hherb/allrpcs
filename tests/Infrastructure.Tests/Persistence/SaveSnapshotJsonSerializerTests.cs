@@ -1,7 +1,10 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -78,6 +81,29 @@ public sealed class SaveSnapshotJsonSerializerTests
     public void SerializeRejectsNull()
     {
         Assert.Throws<ArgumentNullException>(() => SaveSnapshotJsonSerializer.Serialize(null!));
+    }
+
+    [Fact]
+    public void SerializeRejectsFirstPatientVersionUntilItsJsonContractExists()
+    {
+        SaveSnapshot baseline = CreateCompleteSnapshot();
+        DiseaseTruthSnapshot diseaseTruth =
+            RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth;
+        FirstPatientSaveState firstPatient = new(
+            diseaseTruth,
+            new PreparedIngredientBatchSnapshot([]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
+        SaveSnapshot snapshot = new(
+            SaveSchemaVersion.FirstPatient,
+            baseline.Discovery,
+            baseline.WorldEvents,
+            new CharacterMemorySnapshot([]),
+            firstPatient);
+
+        Assert.Throws<ArgumentException>(() => SaveSnapshotJsonSerializer.Serialize(snapshot));
+        Assert.Same(firstPatient, snapshot.FirstPatient);
+        Assert.Same(diseaseTruth, firstPatient.DiseaseTruth);
     }
 
     [Fact]

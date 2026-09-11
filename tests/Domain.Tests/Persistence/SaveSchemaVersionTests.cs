@@ -5,12 +5,14 @@ namespace Allrpcs.Domain.Tests.Persistence;
 public sealed class SaveSchemaVersionTests
 {
     [Fact]
-    public void DefinesTheFirstSupportedAndCharacterMemoryVersions()
+    public void DefinesTheFirstSupportedCharacterMemoryAndFirstPatientVersions()
     {
         Assert.Equal(1, SaveSchemaVersion.FirstSupported.Value);
         Assert.Equal(2, SaveSchemaVersion.CharacterMemory.Value);
+        Assert.Equal(3, SaveSchemaVersion.FirstPatient.Value);
         Assert.Same(SaveSchemaVersion.FirstSupported, SaveSchemaVersion.FirstSupported);
         Assert.Same(SaveSchemaVersion.CharacterMemory, SaveSchemaVersion.CharacterMemory);
+        Assert.Same(SaveSchemaVersion.FirstPatient, SaveSchemaVersion.FirstPatient);
     }
 
     [Theory]
@@ -112,6 +114,13 @@ public sealed class SaveSchemaVersionTests
             property =>
             {
                 Assert.Equal("CharacterMemory", property.Name);
+                Assert.Equal(typeof(SaveSchemaVersion), property.PropertyType);
+                Assert.False(property.CanWrite);
+                Assert.True(property.GetMethod?.IsStatic);
+            },
+            property =>
+            {
+                Assert.Equal("FirstPatient", property.Name);
                 Assert.Equal(typeof(SaveSchemaVersion), property.PropertyType);
                 Assert.False(property.CanWrite);
                 Assert.True(property.GetMethod?.IsStatic);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3]
+[gd_scene load_steps=121 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -133,6 +133,7 @@
 [ext_resource type="Script" path="res://FirstPatientPreparationControllerSmokeCheck.cs" id="131_first_patient_preparation_check"]
 [ext_resource type="Script" path="res://FirstPatientAdministrationController.cs" id="132_first_patient_administration_controller"]
 [ext_resource type="Script" path="res://FirstPatientAdministrationControllerSmokeCheck.cs" id="133_first_patient_administration_check"]
+[ext_resource type="Script" path="res://FirstPatientSaveStateCaptureSmokeCheck.cs" id="134_first_patient_save_state_capture_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -597,6 +598,9 @@ script = ExtResource("131_first_patient_preparation_check")
 
 [node name="FirstPatientAdministrationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("133_first_patient_administration_check")
+
+[node name="FirstPatientSaveStateCaptureSmokeCheck" type="Node" parent="."]
+script = ExtResource("134_first_patient_save_state_capture_check")
 
 [node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
 script = ExtResource("49_search_world_event_check")

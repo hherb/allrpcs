@@ -12,7 +12,7 @@ public sealed record SaveSnapshot
         SaveSchemaVersion schemaVersion,
         DiscoverySaveState discovery,
         WorldEventSaveState worldEvents)
-        : this(schemaVersion, discovery, worldEvents, EmptyCharacterMemory)
+        : this(schemaVersion, discovery, worldEvents, EmptyCharacterMemory, firstPatient: null)
     {
     }
 
@@ -22,11 +22,35 @@ public sealed record SaveSnapshot
         DiscoverySaveState discovery,
         WorldEventSaveState worldEvents,
         CharacterMemorySnapshot characterMemory)
+        : this(schemaVersion, discovery, worldEvents, characterMemory, firstPatient: null)
+    {
+    }
+
+    /// <summary>Creates a save root retaining exact character-memory and first-patient state.</summary>
+    public SaveSnapshot(
+        SaveSchemaVersion schemaVersion,
+        DiscoverySaveState discovery,
+        WorldEventSaveState worldEvents,
+        CharacterMemorySnapshot characterMemory,
+        FirstPatientSaveState? firstPatient)
     {
         ArgumentNullException.ThrowIfNull(schemaVersion);
         ArgumentNullException.ThrowIfNull(discovery);
         ArgumentNullException.ThrowIfNull(worldEvents);
         ArgumentNullException.ThrowIfNull(characterMemory);
+
+        bool isFirstPatientVersion = schemaVersion == SaveSchemaVersion.FirstPatient;
+        if (isFirstPatientVersion && firstPatient is null)
+        {
+            throw new ArgumentNullException(nameof(firstPatient));
+        }
+
+        if (!isFirstPatientVersion && firstPatient is not null)
+        {
+            throw new ArgumentException(
+                "Only the first-patient save schema can retain first-patient state.",
+                nameof(firstPatient));
+        }
 
         if (schemaVersion == SaveSchemaVersion.FirstSupported
             && characterMemory.Characters.Count > 0)
@@ -40,6 +64,7 @@ public sealed record SaveSnapshot
         Discovery = discovery;
         WorldEvents = worldEvents;
         CharacterMemory = characterMemory;
+        FirstPatient = firstPatient;
     }
 
     /// <summary>Gets the exact retained root schema-version discriminator.</summary>
@@ -53,4 +78,7 @@ public sealed record SaveSnapshot
 
     /// <summary>Gets the exact retained canonical all-character memory snapshot.</summary>
     public CharacterMemorySnapshot CharacterMemory { get; }
+
+    /// <summary>Gets exact first-patient state when retained by the schema version.</summary>
+    public FirstPatientSaveState? FirstPatient { get; }
 }

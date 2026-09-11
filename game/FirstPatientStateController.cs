@@ -3,6 +3,7 @@ using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Ingredients;
+using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
 using Godot;
 
@@ -22,6 +23,28 @@ public partial class FirstPatientStateController : Node
 
     /// <summary>Gets the initialized immutable universal experiments, if any.</summary>
     public ExperimentJournalSnapshot? Experiments { get; private set; }
+
+    /// <summary>Captures one fresh composition of the exact initialized snapshots.</summary>
+    public FirstPatientSaveState? Capture()
+    {
+        DiseaseTruthSnapshot? diseaseTruth = DiseaseTruth;
+        PreparedIngredientBatchSnapshot? preparedBatches = PreparedBatches;
+        IngredientExperimentJournalSnapshot? administrationExperiments = AdministrationExperiments;
+        ExperimentJournalSnapshot? experiments = Experiments;
+        if (diseaseTruth is null
+            || preparedBatches is null
+            || administrationExperiments is null
+            || experiments is null)
+        {
+            return null;
+        }
+
+        return new FirstPatientSaveState(
+            diseaseTruth,
+            preparedBatches,
+            administrationExperiments,
+            experiments);
+    }
 
     /// <summary>Initializes all four state areas once from exact existing snapshots.</summary>
     public bool TryInitialize(
