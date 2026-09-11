@@ -24,7 +24,7 @@ The branch does not add scene nodes, provider calls, generation, dialogue partic
 interjections, silence policy, multi-turn loops, autonomous actions, sabotage, disease or controller
 transitions, UI, persistence, Phase 8 work, release, signing, or distribution.
 
-Draft PR creation is pending.
+Draft PR #203 contains this work.
 
 ## Validation and review
 
