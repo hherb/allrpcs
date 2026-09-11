@@ -918,8 +918,26 @@ effective controller from deep sleep onward without replacing the configured ass
 sleep or without matching infection it returns that assignment by exact instance. Qualitative
 condition projection keeps exposure invisible and emits only fixed nonnumeric appearance text for
 later stages, without disease identity or model-context wiring. Disease persistence, scene ownership,
-automatic progression, transmission, protection, patient assessment, treatment, cure, recovery,
-ingredients, experiments, and journal conclusions remain unimplemented.
+automatic progression, patient assessment, broader treatment and recovery, ingredients, experiments,
+and journal conclusions remain unimplemented.
+
+Successful cure is an explicit immutable outcome retaining the exact authoritative infection and
+exact authored world event; it is never inferred from provider text or a qualitative condition. A
+pure eligibility policy requires that infection, event definition, and most recently recorded event
+identity. The transition removes only the cured infection while retaining exact definitions and every
+unrelated infection in stable order. The existing effective-controller selector consequently returns
+the exact configured assignment after the last deep infection is removed, while any other deep
+infection keeps the character dormant.
+
+Authored disease exposures likewise retain the exact character, disease definition, and world event.
+Eligible exposures require that event to be the most recently recorded occurrence and append one exact
+`Exposed` infection only when the disease and event are canonical, the character is not already
+infected, capacity remains, and no matching active protection exists. Protective-measure definitions
+link an exact disease to a discovery-evidence identity; applying one requires that exact definition,
+the evidence in the exact character view, and the most recently recorded authored application event.
+Protection and infection state stay bounded and immutable. There is still no automatic spread,
+duration or removal of protection, scene ownership, persistence, patient assessment, comfort,
+stabilization, recipe, ingredient, experiment, journal, UI, or provider wiring.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
