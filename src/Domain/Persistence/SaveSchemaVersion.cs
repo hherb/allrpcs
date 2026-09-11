@@ -8,9 +8,13 @@ namespace Allrpcs.Domain.Persistence;
 public sealed record SaveSchemaVersion
 {
     private const int FirstSupportedValue = 1;
+    private const int CharacterMemoryValue = 2;
 
     /// <summary>Gets the first save-schema version supported by the game.</summary>
     public static SaveSchemaVersion FirstSupported { get; } = new(FirstSupportedValue);
+
+    /// <summary>Gets the schema version that first retains canonical character memory.</summary>
+    public static SaveSchemaVersion CharacterMemory { get; } = new(CharacterMemoryValue);
 
     /// <summary>Creates a save-schema version from a positive integer.</summary>
     public SaveSchemaVersion(int value)

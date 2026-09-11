@@ -1,7 +1,9 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
+using Allrpcs.Domain.Tests.Characters;
 using Allrpcs.Domain.WorldEvents;
 
 namespace Allrpcs.Domain.Tests.Persistence;
@@ -20,6 +22,39 @@ public sealed class SaveSnapshotTests
         Assert.Same(version, snapshot.SchemaVersion);
         Assert.Same(discovery, snapshot.Discovery);
         Assert.Same(worldEvents, snapshot.WorldEvents);
+        Assert.Empty(snapshot.CharacterMemory.Characters);
+    }
+
+    [Fact]
+    public void CharacterMemoryVersionRetainsTheExactMemorySnapshot()
+    {
+        DiscoverySaveState discovery = CreateDiscoveryState();
+        WorldEventSaveState worldEvents = CreateWorldEventState();
+        CharacterMemorySnapshot memory = new([CharacterMemorySnapshotTests.Empty("healer")]);
+
+        SaveSnapshot snapshot = new(
+            SaveSchemaVersion.CharacterMemory,
+            discovery,
+            worldEvents,
+            memory);
+
+        Assert.Same(SaveSchemaVersion.CharacterMemory, snapshot.SchemaVersion);
+        Assert.Same(discovery, snapshot.Discovery);
+        Assert.Same(worldEvents, snapshot.WorldEvents);
+        Assert.Same(memory, snapshot.CharacterMemory);
+    }
+
+    [Fact]
+    public void FirstVersionRejectsPopulatedCharacterMemoryWithoutChangingIt()
+    {
+        CharacterMemorySnapshot memory = new([CharacterMemorySnapshotTests.Empty("healer")]);
+
+        Assert.Throws<ArgumentException>(() => new SaveSnapshot(
+            SaveSchemaVersion.FirstSupported,
+            CreateDiscoveryState(),
+            CreateWorldEventState(),
+            memory));
+        Assert.Single(memory.Characters);
     }
 
     [Fact]
@@ -54,6 +89,8 @@ public sealed class SaveSnapshotTests
             version, null!, worldEvents));
         Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
             version, discovery, null!));
+        Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
+            version, discovery, worldEvents, null!));
     }
 
     [Fact]
@@ -62,6 +99,7 @@ public sealed class SaveSnapshotTests
         Type snapshotType = typeof(SaveSnapshot);
         (string Name, Type Type)[] expectedProperties =
         [
+            ("CharacterMemory", typeof(CharacterMemorySnapshot)),
             ("Discovery", typeof(DiscoverySaveState)),
             ("SchemaVersion", typeof(SaveSchemaVersion)),
             ("WorldEvents", typeof(WorldEventSaveState)),

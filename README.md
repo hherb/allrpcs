@@ -363,10 +363,12 @@ rejects null snapshots and adds no consistency decision, event replay, time adva
 serialization, restoration, or controller behavior.
 
 `SaveSnapshot` is the immutable in-memory root. It retains one exact schema version, discovery
-save state, and world-event save state through get-only properties and rejects null components.
-Its record equality uses the version value and the retained state instances. It does not yet decide
-whether the root can load, validate it against authored scenario definitions, serialize it, restore
-controllers, or define files and paths.
+save state, world-event save state, and canonical all-character memory snapshot through get-only
+properties and rejects null components. Its legacy version-`1` constructor supplies one shared
+immutable empty-memory snapshot, and version `1` rejects populated memory. The character-memory
+schema vocabulary is version `2`, but that version remains unsupported by loading and JSON until its
+complete representation is implemented. Record equality continues to use the version value and
+retained state instances.
 
 `SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates the complete
 decision to `SaveSchemaVersionSupportPolicy`, accepts only a version-`1` root, preserves the root
@@ -433,7 +435,8 @@ document from a complete save root. Version, object names, arrays, and array ent
 stable order; all identifier and visibility values use their existing canonical text; and an
 unadvanced world time is represented explicitly as JSON `null`. Serialization preserves the input
 root and its exact nested instances. It does not write a file, choose a path, validate a scenario,
-migrate, encrypt, or restore runtime state.
+migrate, encrypt, or restore runtime state. It rejects the character-memory version until that
+version's JSON representation exists, preventing silent memory loss.
 
 `SaveSnapshotJsonDeserializer` is the strict version-`1` inverse. It accepts only the complete known
 object shape and exact JSON value kinds, rejecting malformed JSON, comments, trailing commas,
@@ -870,6 +873,14 @@ its corresponding category snapshot; a missing, merely value-equal replacement, 
 memory from another category fails closed. The aggregate has no provider conversation identifier,
 provider response state, reasoning, or chain-of-thought field. Provider requests remain stateless
 and reasoning-free, so no provider-owned state can replace this local canonical aggregate.
+
+`CharacterMemorySnapshot` copies zero to 32 exact per-character aggregates into stable supplied
+order, rejects null entries and value-equal duplicate character identities, and exposes only a
+get-only read-only collection. The in-memory save root can retain this exact snapshot under the
+version-`2` character-memory vocabulary. A pure one-way migration accepts only a version-`1` root
+and produces a fresh version-`2` root retaining the exact discovery, world-event, and shared empty
+memory instances. It does not synthesize character memory, mutate the source, enable version-`2`
+loading, serialize or deserialize memory, access storage, or change scene controllers.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

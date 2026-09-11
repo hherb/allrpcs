@@ -251,6 +251,8 @@ Acceptance:
 - [x] Keep canonical memory local even when a provider offers server-side conversation state.
 - [x] Avoid storing or requesting hidden chain-of-thought.
 - [x] Bound relationship changes so one ordinary exchange cannot cause an implausible reversal.
+- [x] Compose bounded all-character memory into the version-2 save-root prerequisite.
+- [x] Define the pure version-1 to version-2 empty-memory migration without enabling loading.
 - [ ] Add save migrations for memory schema changes.
 - [ ] Test restart and provider-switch continuity.
 

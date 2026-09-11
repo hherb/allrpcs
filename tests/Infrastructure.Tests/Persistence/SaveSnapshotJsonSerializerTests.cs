@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
@@ -76,6 +77,18 @@ public sealed class SaveSnapshotJsonSerializerTests
     public void SerializeRejectsNull()
     {
         Assert.Throws<ArgumentNullException>(() => SaveSnapshotJsonSerializer.Serialize(null!));
+    }
+
+    [Fact]
+    public void SerializeRejectsCharacterMemoryVersionUntilItsJsonSchemaIsImplemented()
+    {
+        SaveSnapshot versionTwo = new(
+            SaveSchemaVersion.CharacterMemory,
+            CreateCompleteSnapshot().Discovery,
+            CreateCompleteSnapshot().WorldEvents,
+            new CharacterMemorySnapshot([]));
+
+        Assert.Throws<ArgumentException>(() => SaveSnapshotJsonSerializer.Serialize(versionTwo));
     }
 
     private static SaveSnapshot CreateCompleteSnapshot()

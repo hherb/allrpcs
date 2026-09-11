@@ -2,60 +2,58 @@
 
 ## Current state
 
-`main` contains merged PR #183 at `9615402`. The current branch is
-`codex/phase-5-canonical-memory`; draft PR #184 is open and mergeable.
+`main` contains merged PR #184 at `36e6c14`. The current branch is
+`codex/phase-5-memory-persistence`; its draft PR has not yet been opened.
 
-Phase 5 now has one canonical local provider-neutral `CharacterMemoryAggregate` per character. It
-retains the exact recent conversation, summaries, episodic and epistemic memories, belief
-assessments, relationships, unfinished commitments, and deterministic index. Every constituent
-must have value-equal ownership, and every index entry must retain the exact referenced memory in
-its corresponding category snapshot. Missing, merely value-equal distinct, and cross-category
-matches fail closed. No provider identifier, provider state, reasoning, or chain-of-thought field
-exists; existing provider requests remain stateless and reasoning-free.
+Phase 5 now has a canonical provider-neutral memory aggregate for each character and an immutable
+all-character `CharacterMemorySnapshot`. The snapshot copies zero to 32 exact aggregates in stable
+order and rejects null entries, excessive counts, and value-equal duplicate character identities.
 
-Relationship changes are immutable and bounded. One `CharacterRelationshipChange` alters one
-retained dimension by 1 to 10 points in either direction and carries an exact reason with local-turn
-provenance. Pure eligibility requires matching directional ownership, an existing dimension,
-available reason capacity, unique reason and source-turn identities, and an in-range result. The
-transition rejects overflow rather than clamping, replaces only the affected dimension, appends the
-exact reason, and retains unrelated exact instances. A source turn can change a relationship only
-once.
+The in-memory `SaveSnapshot` retains an exact character-memory snapshot. Version `1` preserves its
+existing equality and serialization behavior through one shared immutable empty-memory snapshot and
+rejects populated memory. `SaveSchemaVersion.CharacterMemory` defines version `2`, while load and
+JSON support remain deliberately disabled. The version-1 serializer now rejects unsupported roots,
+so it cannot silently discard character memory.
 
-The roadmap items for canonical local memory, avoiding hidden chain-of-thought, and bounded
-relationship changes are complete. No populated-memory save state, save-schema change or migration,
-memory JSON, restart continuity, provider-context memory projection, scene-owned memory state, UI,
-summary generation, or commitment-completion policy exists yet.
+`SaveSnapshotCharacterMemoryMigration` is a pure one-way version-1 to version-2 transition. It
+creates a fresh root retaining the exact discovery, world-event, and empty character-memory
+instances, rejects every other source version and null, and leaves the source unchanged.
+
+No version-2 memory JSON, version-2 load support, populated-memory migration, storage/controller or
+scene memory state, restart/provider-switch continuity, provider-context memory projection,
+summary generation, relationship scene transition, commitment completion, UI, or authoritative
+transcript change exists yet. The roadmap migration and continuity items therefore remain open.
 
 ## Validation
 
 - workflow validation and `dotnet format Allrpcs.sln --no-restore --verify-no-changes`
 - zero-warning complete solution build
-- 1,525 Domain, 365 Application, 414 Infrastructure, and 8 architecture tests
+- 1,534 Domain, 365 Application, 415 Infrastructure, and 8 architecture tests
 - representative discovery scenario: 5 valid evidence definitions
 - complete `./scripts/smoke-godot.sh`
 - bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
 
 The generated `ScenarioValidator` native app host still stalls during macOS dynamic-loader startup.
 The same rebuilt validator DLL passes immediately through `dotnet exec`; this is a local app-host
-limitation, not a failing validator assertion. GitHub Actions budget was exhausted for prior draft
-PRs. All five PR #184 jobs on run `34547904682` were immediately reported failed with `steps: []`;
-this is account infrastructure state, not test evidence, and the jobs must not be dispatched again
-solely to compensate.
+limitation, not a failing validator assertion. Prior PR #184 hosted jobs had `steps: []` because the
+GitHub Actions budget was exhausted; do not treat them as test evidence or redispatch them solely to
+compensate.
 
 ## Exact next bounded slice
 
-Take **Phase 5k1: immutable all-character memory snapshot**.
+Take **Phase 5k4: canonical version-2 character-memory JSON serialization**.
 
 Acceptance boundary:
 
-1. Define one immutable provider-neutral snapshot retaining zero to 32 exact
-   `CharacterMemoryAggregate` instances in stable supplied order.
-2. Require unique value-equal character identities, copy the caller collection, reject nulls and an
-   excessive count, and expose only a get-only `IReadOnlyList<CharacterMemoryAggregate>` surface.
-3. Add focused tests for empty and complete snapshots, exact-instance/order retention, caller
-   mutation, value-equal duplicate ownership, nulls, exact bounds, and immutable API shape.
-4. Do not yet change `SaveSnapshot`, schema-version support, JSON, storage, restoration/capture
-   controllers, scenes, provider context, relationships, commitments, or the authoritative
-   transcript.
+1. Extend `SaveSnapshotJsonSerializer` to write a stable complete version-2 `characterMemory`
+   representation for every aggregate constituent and deterministic index reference while leaving
+   the exact version-1 document unchanged.
+2. Encode only provider-neutral canonical state. Preserve supplied collection order and reference
+   index targets by category plus canonical memory identity; include no provider identifiers,
+   credentials, hidden reasoning, chain of thought, or authoritative transcript duplication.
+3. Add focused exact-document tests for empty and representative complete version-2 roots, stable
+   value-equal output, all categories, null/optional fields, and unchanged inputs.
+4. Do not yet enable version-2 load support, deserialize or execute migration, change storage or
+   scene controllers, capture live memory, project provider context, or claim restart continuity.
 5. After the complete quality spine passes, update `README.md`, `ROADMAP.md`, and this handover;
-   then take the next migration prerequisite as a separately reviewed slice.
+   then take strict version-2 deserialization plus version-1 migration execution separately.

@@ -14,6 +14,13 @@ public static class SaveSnapshotJsonSerializer
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
+        if (!SaveSchemaVersionSupportPolicy.CanLoad(snapshot.SchemaVersion))
+        {
+            throw new ArgumentException(
+                "The save snapshot schema does not have a supported JSON representation.",
+                nameof(snapshot));
+        }
+
         using MemoryStream stream = new();
         using (Utf8JsonWriter writer = new(stream))
         {
