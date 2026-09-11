@@ -2,50 +2,50 @@
 
 ## Current state
 
-`main` contains merged PR #187 at `e11bad9`. The current branch is
-`codex/phase-5-memory-context-continuity`.
+`main` contains merged PR #188 at `709b3d7`. The current branch is
+`codex/phase-6-disease-foundation`.
 
-Phase 5 is complete. Canonical provider-neutral memory is local, bounded, version-2 serialized,
-migrated from version 1, and restored atomically with discovery and world-event state. One pure
-Application projection selects only the responding character's unfinished commitments and emits
-stable bounded `Memory` context containing commitment kind, counterparty, completed source-turn
-identity, and exact description. Missing character memory yields no entries; canonical constructors
-and the existing model-context limits reject duplicate, mismatched, null, or excessive input.
+Phase 6 now has canonical hidden disease truth independent of character belief, memory, dialogue,
+and providers. `DiseaseDefinitionSnapshot` retains up to 32 exact unique definitions;
+`DiseaseTruthSnapshot` retains up to 256 stable exact character-disease infections and requires each
+to reference its exact authored definition. The six closed stages are exposed, early illness,
+drowsing, deep sleep, wasting, and final decline.
 
-The scene-owned memory controller supplies those entries to the existing generation-input assembler.
-A credential-free ordinary-flow smoke serializes a healer promise, resets and restores memory, then
-proves the same promise and source reach fresh requests across an exact future-turn OpenAI-to-Anthropic
-binding replacement without the complete campaign transcript. Providers do not own or mutate memory.
-Live memory derivation, summaries, commitment completion, relationship changes, save UI, and semantic
-recall claims from a live model remain unimplemented.
+One pure transition advances an exact infection by exactly one stage only after an exact authored
+`Advance` world event is retained, recorded, and current. Per-infection event provenance prevents
+replay, final decline cannot progress, and unrelated infection instances remain exact. Application
+projections select a dormant effective controller from deep sleep onward without replacing the
+configured assignment, and expose only fixed nonnumeric qualitative conditions while keeping the
+exposed stage and disease identity hidden. There is no scene ownership, persistence, automatic
+progression, transmission, assessment, treatment, cure, ingredient, experiment, journal, or
+model-context wiring yet.
 
 ## Validation
 
 - workflow validation, restore, formatting, and zero-warning complete solution build
-- 1,536 Domain, 369 Application, 423 Infrastructure, and 8 architecture tests
+- 1,571 Domain, 386 Application, 423 Infrastructure, and 8 architecture tests
 - representative discovery scenario: 5 valid evidence definitions through the rebuilt validator DLL
 - all 77 credential-free Godot smokes
 - bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
 
-The generated `ScenarioValidator` native app host again stalled during macOS dynamic-loader startup.
-The same rebuilt validator DLL passed immediately through `dotnet exec`; this remains a local app-host
-limitation, not a validator assertion failure.
+Draft PR #189 is open from this branch. Its first hosted run `34566859552` ended with all five jobs
+reporting `steps: []`; no checkout or test step ran. Treat that as unavailable account/infrastructure
+evidence, not a product failure, and do not retry or dispatch it without a changed external condition.
 
 ## Exact next bounded slice
 
-Take **Phase 6a1: canonical disease identity and hidden-definition foundation**.
+Take **Phase 6b3: successful-cure removal and configured-controller restoration**.
 
 Acceptance boundary:
 
-1. Add one canonical `DiseaseId` and the smallest immutable Domain disease-definition contract needed
-   to establish engine-owned disease truth independently of character beliefs, memory, dialogue, or
-   provider state.
-2. Add a copied read-only disease-definition snapshot with stable supplied order, unique identities,
-   explicit bounds, exact-instance retention, null rejection, and reflection-backed closed-surface
-   tests.
-3. Keep authored disease truth unavailable to perception and model context; do not reuse character
-   belief or epistemic-memory types as authoritative truth.
-4. Do not yet add disease stages, character infection state, symptoms, progression, dormancy,
-   transmission, assessment, treatment, ingredients, experiments, journal/evidence conclusions,
-   persistence, UI, or scene wiring, and do not check the full roadmap truth item until its required
-   mechanics exist.
+1. Add the smallest immutable successful-cure outcome contract with exact authoritative infection and
+   exact authored world-event provenance; do not infer cure from provider text or a condition label.
+2. Add a pure eligibility policy and transition that require the exact retained infection and exact
+   occurred authoritative cure event, remove only that infection, and retain the exact definitions
+   and every unrelated infection in stable order.
+3. Prove that the existing effective-controller selector returns the exact configured assignment
+   after the successful cure removes the last deep infection, while another deep infection keeps the
+   controller dormant.
+4. Do not yet define remedy recipes or cure discovery, comfort/stabilization semantics, transmission,
+   protection, assessment, ingredients, experiments, persistence, scene wiring, UI, or provider tools;
+   leave the broad treatment and controller-roadmap items unchecked until their full mechanics exist.
