@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #185 at `5c9bf5b`. The current branch is
-`codex/phase-5-memory-save-continuity`.
+`codex/phase-5-memory-save-continuity`; draft PR #186 is open and mergeable.
 
 Phase 5 now has a complete canonical version-2 character-memory JSON contract. The existing
 version-1 document is byte-for-byte unchanged. Version 2 writes every ordered aggregate constituent,
@@ -37,7 +37,8 @@ The generated `ScenarioValidator` native app host stalled during macOS dynamic-l
 same rebuilt validator DLL passed immediately through `dotnet exec`; this is the known local app-host
 limitation, not a failing validator assertion.
 GitHub Actions budget failures with `steps: []` are account infrastructure state, not test evidence,
-and those jobs must not be redispatched solely to compensate.
+and those jobs must not be redispatched solely to compensate. All five PR #186 jobs on run
+`34551815140` were reported failed with empty step lists.
 
 ## Exact next bounded slice
 
