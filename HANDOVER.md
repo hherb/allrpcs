@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #184 at `36e6c14`. The current branch is
-`codex/phase-5-memory-persistence`; its draft PR has not yet been opened.
+`codex/phase-5-memory-persistence`; draft PR #185 is open and mergeable.
 
 Phase 5 now has a canonical provider-neutral memory aggregate for each character and an immutable
 all-character `CharacterMemorySnapshot`. The snapshot copies zero to 32 exact aggregates in stable
@@ -35,9 +35,10 @@ transcript change exists yet. The roadmap migration and continuity items therefo
 
 The generated `ScenarioValidator` native app host still stalls during macOS dynamic-loader startup.
 The same rebuilt validator DLL passes immediately through `dotnet exec`; this is a local app-host
-limitation, not a failing validator assertion. Prior PR #184 hosted jobs had `steps: []` because the
-GitHub Actions budget was exhausted; do not treat them as test evidence or redispatch them solely to
-compensate.
+limitation, not a failing validator assertion. All five PR #185 jobs on run `34549910877` were
+immediately reported failed with `steps: []` because the GitHub Actions budget remains exhausted;
+this is account infrastructure state, not test evidence, and the jobs must not be redispatched
+solely to compensate.
 
 ## Exact next bounded slice
 
