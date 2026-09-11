@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #183 at `9615402`. The current branch is
-`codex/phase-5-canonical-memory` and contains the next reviewed Phase 5 work.
+`codex/phase-5-canonical-memory`; draft PR #184 is open and mergeable.
 
 Phase 5 now has one canonical local provider-neutral `CharacterMemoryAggregate` per character. It
 retains the exact recent conversation, summaries, episodic and epistemic memories, belief
@@ -38,8 +38,9 @@ summary generation, or commitment-completion policy exists yet.
 The generated `ScenarioValidator` native app host still stalls during macOS dynamic-loader startup.
 The same rebuilt validator DLL passes immediately through `dotnet exec`; this is a local app-host
 limitation, not a failing validator assertion. GitHub Actions budget was exhausted for prior draft
-PRs. Jobs reported with `steps: []` are account infrastructure state, not test evidence, and must not
-be dispatched again solely to compensate.
+PRs. All five PR #184 jobs on run `34547904682` were immediately reported failed with `steps: []`;
+this is account infrastructure state, not test evidence, and the jobs must not be dispatched again
+solely to compensate.
 
 ## Exact next bounded slice
 
