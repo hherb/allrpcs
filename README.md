@@ -918,8 +918,7 @@ effective controller from deep sleep onward without replacing the configured ass
 sleep or without matching infection it returns that assignment by exact instance. Qualitative
 condition projection keeps exposure invisible and emits only fixed nonnumeric appearance text for
 later stages, without disease identity or model-context wiring. Disease persistence, scene ownership,
-automatic progression, patient assessment, broader treatment and recovery, ingredients, experiments,
-and journal conclusions remain unimplemented.
+automatic progression, and authored-scene ownership remain unimplemented.
 
 Successful cure is an explicit immutable outcome retaining the exact authoritative infection and
 exact authored world event; it is never inferred from provider text or a qualitative condition. A
@@ -1009,8 +1008,12 @@ state.
 A hypothesis-recognition foundation canonicalizes a proposed question and hypothesis identity
 against exact open-question and authored-hypothesis snapshots while retaining the exact source
 natural-language utterance. Its output remains only a possible answer: it does not create a
-conclusion, evidence, belief, fact, or gameplay mutation. No provider/interpreter transport supplies
-those structured proposal identities yet, so end-to-end natural-language recognition remains open.
+conclusion, evidence, belief, fact, or gameplay mutation. A provider-neutral Application request
+retains that exact utterance plus the exact bounded open-question and authored-hypothesis snapshots.
+One cancellable interpreter may propose only a question/hypothesis identity pair or no match; the
+controller delegates every proposal to the Domain canonicalization policy. No concrete language
+interpreter, provider binding, retry, scene ownership, or persistence exists yet, so end-to-end
+natural-language recognition remains open.
 
 Critical-conclusion route validation associates each evidence identity with a distinct authored
 source and whether that source requires character cooperation. Every critical plan must have at
@@ -1018,8 +1021,25 @@ least two complete routes using at least three distinct sources, include one rou
 cooperation, and retain a complete route after any single source is removed. The representative
 first-patient investigation has four sources and two disjoint routes: abandoned-laundry residue plus
 an old-shrine inscription, or an assistant preparation note plus a cooled-dose observation. This
-authors investigation recovery only; it does not yet author the patient, remedy inventory, treatment
-events, disease effects, scene ownership, persistence, or acceptance flow.
+recoverability is reused by the representative first-patient scenario.
+
+The representative first-patient scenario retains an exact sleeping-patient identity, hidden
+grey-sleep truth at deep sleep and without care, available exact moonwort leaf and clean-water state, one
+grind/heat/steep/cool recipe, its stabilizing-remedy link, and the recoverable critical investigation.
+A pure structural policy requires the exact patient infection and disease, exact recipe ingredient
+definitions and units, and an acceptable critical-route scenario. Value-equal replacement patient,
+disease, remedy, ingredient, and conclusion objects fail closed.
+
+Stabilization additionally requires a distinct exact remedy-to-conclusion evidence requirement and
+the exact authored conclusion in current confirmed state. Only an administration using the exact
+patient, exact completed recipe, and latest exact authored event can delegate to the existing
+disease-care transition. The atomic first-patient transition returns both newly stabilized disease truth and
+a newly appended exact experiment record; duplicate/capacity or care rejection returns no partial
+state. Focused representative tests prove either independent evidence route can authorize early
+stabilization, any one source can be lost, an unauthored reasonable theory cannot authorize care, and
+an informative failed experiment can precede deterioration and later successful recovery. These pure
+contracts do not consume reusable prepared dosage, occur events, execute consequences, or own scene
+or persistence state.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

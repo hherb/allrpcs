@@ -282,13 +282,13 @@ Acceptance:
 - [x] Confirm conclusions through authored combinations of evidence rather than exact phrases.
 - [x] Provide at least three sources, two confirmation routes, one non-cooperation route, and a
   recovery path for every critical conclusion.
-- [ ] Implement the first patient and the stabilizing remedy.
-- [ ] Test early correct inference, wrong theories, failed experiments, lost clues, and patient
+- [x] Implement the first patient and the stabilizing remedy.
+- [x] Test early correct inference, wrong theories, failed experiments, lost clues, and patient
   deterioration.
 
 Acceptance:
 
-- [ ] At least two distinct evidence paths permit stabilization of the first patient, while
+- [x] At least two distinct evidence paths permit stabilization of the first patient, while
   incorrect but reasonable experiments produce informative, recoverable consequences.
 
 ## Phase 7 — Multiple autonomous roles and fair sabotage
