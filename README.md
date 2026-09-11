@@ -902,6 +902,25 @@ promise and source reach distinct consecutive OpenAI- and Anthropic-bound reques
 future-turn binding replacement, without supplying the complete campaign transcript. Providers still
 cannot own, rewrite, derive, summarize, complete, or otherwise mutate canonical memory.
 
+Phase 6 begins with hidden engine-owned disease truth rather than character belief, memory, dialogue,
+or provider state. Canonical `DiseaseId` values identify up to 32 exact immutable authored disease
+definitions. `DiseaseTruthSnapshot` copies up to 256 exact character-disease infections in stable
+order, permits multiple distinct diseases per character, rejects duplicate character/disease pairs,
+and requires every infection to retain the exact definition instance in the authoritative snapshot.
+The closed progression vocabulary is exposed, early illness, drowsing, deep sleep, wasting, and
+final decline.
+
+Pure disease progression replaces only one exact retained infection and advances exactly one stage.
+It requires the exact authored `Advance` world event to be retained, recorded, and current, and each
+infection retains the exact last progression-event identity so the same meaningful-time event cannot
+be consumed twice. Final decline cannot progress. A separate Application selector yields a dormant
+effective controller from deep sleep onward without replacing the configured assignment; before deep
+sleep or without matching infection it returns that assignment by exact instance. Qualitative
+condition projection keeps exposure invisible and emits only fixed nonnumeric appearance text for
+later stages, without disease identity or model-context wiring. Disease persistence, scene ownership,
+automatic progression, transmission, protection, patient assessment, treatment, cure, recovery,
+ingredients, experiments, and journal conclusions remain unimplemented.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the

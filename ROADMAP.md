@@ -264,12 +264,12 @@ Acceptance:
 
 ## Phase 6 — Disease and evidence-driven quest systems
 
-- [ ] Define the canonical disease truth independently of character beliefs.
-- [ ] Implement exposed, early illness, drowsing, deep sleep, wasting, and final-decline stages.
+- [x] Define the canonical disease truth independently of character beliefs.
+- [x] Implement exposed, early illness, drowsing, deep sleep, wasting, and final-decline stages.
 - [ ] Switch deeply sleeping characters to dormant controllers.
 - [ ] Restore their configured controller after a successful cure.
-- [ ] Advance disease only through authored meaningful-time events.
-- [ ] Expose qualitative condition changes rather than exact countdowns.
+- [x] Advance disease only through authored meaningful-time events.
+- [x] Expose qualitative condition changes rather than exact countdowns.
 - [ ] Implement transmission exposure and discoverable protective measures.
 - [ ] Implement patient assessment constrained by capability and perception.
 - [ ] Implement comfort, stabilization, and cure outcomes.

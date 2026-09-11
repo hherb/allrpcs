@@ -23,6 +23,7 @@ public sealed class DomainIdentifierTests
         Assert.Equal(value, new RelationshipReasonId(value).Value);
         Assert.Equal(value, new CharacterCommitmentId(value).Value);
         Assert.Equal(value, new CharacterConversationSummaryId(value).Value);
+        Assert.Equal(value, new DiseaseId(value).Value);
     }
 
     [Theory]
@@ -50,6 +51,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentException>(() => new RelationshipReasonId(value));
         Assert.Throws<ArgumentException>(() => new CharacterCommitmentId(value));
         Assert.Throws<ArgumentException>(() => new CharacterConversationSummaryId(value));
+        Assert.Throws<ArgumentException>(() => new DiseaseId(value));
     }
 
     [Fact]
@@ -67,6 +69,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentNullException>(() => new RelationshipReasonId(null!));
         Assert.Throws<ArgumentNullException>(() => new CharacterCommitmentId(null!));
         Assert.Throws<ArgumentNullException>(() => new CharacterConversationSummaryId(null!));
+        Assert.Throws<ArgumentNullException>(() => new DiseaseId(null!));
     }
 
     [Fact]
@@ -100,6 +103,7 @@ public sealed class DomainIdentifierTests
         AssertRoundTrip(
             new CharacterConversationSummaryId("earlier-moonwort-talk"),
             CharacterConversationSummaryId.Parse);
+        AssertRoundTrip(new DiseaseId("grey-sleep"), DiseaseId.Parse);
     }
 
     private static void AssertRoundTrip<TIdentifier>(
