@@ -46,6 +46,11 @@ The first aggregate quality run transiently stalled while launching the already-
 validator after every .NET test had passed. The validator, Godot smokes, and graphical launch then
 passed separately, and one clean aggregate retry passed end to end without a code change.
 
+Draft PR #194 contains this work. Its initial run `34583284219` on
+`be269c207b23e172d8fd8a6e9653e3cb9802c0ed` reported all five jobs as failures, but every job had
+`steps: []` and completed within 2–7 seconds. This is account/infrastructure state, not executed test
+evidence; do not retry or dispatch the workflow without a changed external condition.
+
 ## Exact next bounded slice
 
 Take **Phase 6n1: authored first-patient and stabilizing-remedy foundation**.
