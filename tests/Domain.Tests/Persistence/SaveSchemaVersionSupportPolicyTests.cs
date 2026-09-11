@@ -7,12 +7,16 @@ public sealed class SaveSchemaVersionSupportPolicyTests
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
+    [InlineData(3)]
     public void SupportsEachKnownVersionIncludingADistinctValueEqualInstance(int value)
     {
         SaveSchemaVersion suppliedVersion = new(value);
-        SaveSchemaVersion canonicalVersion = value == SaveSchemaVersion.FirstSupported.Value
-            ? SaveSchemaVersion.FirstSupported
-            : SaveSchemaVersion.CharacterMemory;
+        SaveSchemaVersion canonicalVersion = value switch
+        {
+            1 => SaveSchemaVersion.FirstSupported,
+            2 => SaveSchemaVersion.CharacterMemory,
+            _ => SaveSchemaVersion.FirstPatient,
+        };
 
         bool supported = SaveSchemaVersionSupportPolicy.CanLoad(suppliedVersion);
 

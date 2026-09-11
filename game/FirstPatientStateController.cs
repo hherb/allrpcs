@@ -46,6 +46,40 @@ public partial class FirstPatientStateController : Node
             experiments);
     }
 
+    /// <summary>Rebinds and atomically installs complete compatible first-patient save state.</summary>
+    public bool TryRestore(
+        FirstPatientSaveState saved,
+        FirstPatientTreatmentContext authoredContext,
+        WorldEventSnapshot authoredWorldEvents)
+    {
+        ArgumentNullException.ThrowIfNull(saved);
+        ArgumentNullException.ThrowIfNull(authoredContext);
+        ArgumentNullException.ThrowIfNull(authoredWorldEvents);
+
+        FirstPatientSaveState rebound;
+        try
+        {
+            rebound = FirstPatientSaveStateRestorationTransition.Rebind(
+                saved,
+                authoredContext,
+                authoredWorldEvents);
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+
+        DiseaseTruth = rebound.DiseaseTruth;
+        PreparedBatches = rebound.PreparedBatches;
+        AdministrationExperiments = rebound.AdministrationExperiments;
+        Experiments = rebound.Experiments;
+        return true;
+    }
+
     /// <summary>Initializes all four state areas once from exact existing snapshots.</summary>
     public bool TryInitialize(
         DiseaseTruthSnapshot diseaseTruth,
@@ -178,5 +212,15 @@ public partial class FirstPatientStateController : Node
         PreparedBatches = result.PreparedBatches;
         AdministrationExperiments = result.AdministrationExperiments;
         Experiments = result.Experiments;
+    }
+
+    internal void Install(FirstPatientSaveState state)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+
+        DiseaseTruth = state.DiseaseTruth;
+        PreparedBatches = state.PreparedBatches;
+        AdministrationExperiments = state.AdministrationExperiments;
+        Experiments = state.Experiments;
     }
 }

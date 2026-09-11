@@ -1,6 +1,9 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -17,6 +20,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private SaveSnapshotRestorationController controller = null!;
+    private FirstPatientStateController firstPatientController = null!;
+    private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
     private CharacterMemoryController memoryController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -38,6 +43,10 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
 
         controller = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
+        firstPatientController = GetNode<FirstPatientStateController>(
+            "../FirstPatientStateController");
+        firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            "../TemporaryFirstPatientTreatmentContextSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
@@ -71,14 +80,18 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         DiscoverySaveState discovery = CreateDiscovery(owner, firstTarget, secondTarget);
         WorldEventSaveState eventState = CreateEventState(worldEvents);
         CharacterMemorySnapshot memory = CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
+        FirstPatientSaveState firstPatient = CreateFirstPatientState(
+            firstPatientContextSource.Context);
         SaveSnapshot snapshot = new(
-            SaveSchemaVersion.CharacterMemory,
+            SaveSchemaVersion.FirstPatient,
             discovery,
             eventState,
-            memory);
+            memory,
+            firstPatient);
 
         if (!controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
+            || !HasRestoredFirstPatient(firstPatientContextSource.Context, firstPatient)
             || !activityIndicator.Visible
             || !controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents))
@@ -86,6 +99,13 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             Fail("Save restoration controller smoke failed exact or repeated root restoration.");
             return;
         }
+
+        DiseaseTruthSnapshot restoredDiseaseTruth = firstPatientController.DiseaseTruth!;
+        PreparedIngredientBatchSnapshot restoredPreparedBatches =
+            firstPatientController.PreparedBatches!;
+        IngredientExperimentJournalSnapshot restoredAdministrationExperiments =
+            firstPatientController.AdministrationExperiments!;
+        ExperimentJournalSnapshot restoredExperiments = firstPatientController.Experiments!;
 
         SaveSnapshot futureVersion = new(new SaveSchemaVersion(27), discovery, eventState);
         SaveSnapshot missingTarget = new(
@@ -114,6 +134,17 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             return;
         }
 
+        if (!ReferenceEquals(firstPatientController.DiseaseTruth, restoredDiseaseTruth)
+            || !ReferenceEquals(firstPatientController.PreparedBatches, restoredPreparedBatches)
+            || !ReferenceEquals(
+                firstPatientController.AdministrationExperiments,
+                restoredAdministrationExperiments)
+            || !ReferenceEquals(firstPatientController.Experiments, restoredExperiments))
+        {
+            Fail("Save restoration changed first-patient state after rejected root input.");
+            return;
+        }
+
         if (seeker.Position != expectedPosition
             || seeker.Velocity != expectedVelocity
             || !string.Equals(focusStatus.Text, expectedFocusStatus, StringComparison.Ordinal)
@@ -128,8 +159,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
 
         GD.Print(
             "Save restoration controller smoke passed: complete versioned-root preflight, exact "
-            + "atomic discovery, world-event, and character-memory snapshot installation, repeated "
-            + "restoration, "
+            + "atomic discovery, world-event, character-memory, and rebound first-patient state "
+            + "installation, repeated restoration, "
             + "fail-closed future version, missing target, missing event, and null handling, and "
             + "unchanged authoritative definitions, movement, input, and other presentation state "
             + "were correct.");
@@ -156,6 +187,46 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         && ReferenceEquals(worldEventController.EventLog, snapshot.WorldEvents.EventLog)
         && ReferenceEquals(worldEventController.WorldTime, snapshot.WorldEvents.WorldTime)
         && ReferenceEquals(memoryController.Memory, snapshot.CharacterMemory);
+
+    private bool HasRestoredFirstPatient(
+        FirstPatientTreatmentContext context,
+        FirstPatientSaveState saved)
+    {
+        DiseaseTruthSnapshot? truth = firstPatientController.DiseaseTruth;
+        CharacterDiseaseState? infection = truth?.Infections.Count == 1
+            ? truth.Infections[0]
+            : null;
+        return truth is not null
+            && !ReferenceEquals(truth, saved.DiseaseTruth)
+            && infection is not null
+            && ReferenceEquals(infection.CharacterId, context.Scenario.PatientId)
+            && ReferenceEquals(infection.Disease, context.Scenario.Remedy.Disease)
+            && ReferenceEquals(infection.CareState, DiseaseCareState.Comforted)
+            && firstPatientController.PreparedBatches?.Batches.Count == 0
+            && firstPatientController.AdministrationExperiments?.Records.Count == 0
+            && firstPatientController.Experiments?.Records.Count == 0;
+    }
+
+    private static FirstPatientSaveState CreateFirstPatientState(
+        FirstPatientTreatmentContext context)
+    {
+        CharacterDiseaseState initial = context.Scenario.DiseaseTruth.Infections.Single();
+        DiseaseDefinition savedDisease = new(new DiseaseId(initial.Disease.DiseaseId.Value));
+        return new FirstPatientSaveState(
+            new DiseaseTruthSnapshot(
+                new DiseaseDefinitionSnapshot([savedDisease]),
+                [
+                    new CharacterDiseaseState(
+                        new CharacterId(initial.CharacterId.Value),
+                        savedDisease,
+                        initial.Stage,
+                        null,
+                        DiseaseCareState.Comforted),
+                ]),
+            new PreparedIngredientBatchSnapshot([]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
+    }
 
     private static DiscoverySaveState CreateDiscovery(
         CharacterId owner,

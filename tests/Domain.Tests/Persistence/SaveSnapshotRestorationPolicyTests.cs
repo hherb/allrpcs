@@ -1,5 +1,9 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -30,7 +34,8 @@ public sealed class SaveSnapshotRestorationPolicyTests
             snapshot,
             new CharacterId("seeker"),
             worldObjects,
-            worldEvents);
+            worldEvents,
+            Context());
 
         Assert.True(canRestore);
         Assert.Same(worldObject.Identity.Id, snapshot.Discovery.Perception.Entries[0].ObjectId);
@@ -55,7 +60,8 @@ public sealed class SaveSnapshotRestorationPolicyTests
             snapshot,
             new CharacterId("seeker"),
             new WorldObjectSnapshot([worldObject]),
-            new WorldEventSnapshot([worldEvent])));
+            new WorldEventSnapshot([worldEvent]),
+            Context()));
     }
 
     [Fact]
@@ -74,7 +80,8 @@ public sealed class SaveSnapshotRestorationPolicyTests
             snapshot,
             new CharacterId("seeker"),
             new WorldObjectSnapshot([worldObject]),
-            new WorldEventSnapshot([worldEvent])));
+            new WorldEventSnapshot([worldEvent]),
+            Context()));
     }
 
     [Fact]
@@ -93,7 +100,59 @@ public sealed class SaveSnapshotRestorationPolicyTests
             snapshot,
             new CharacterId("seeker"),
             new WorldObjectSnapshot([worldObject]),
-            new WorldEventSnapshot([worldEvent])));
+            new WorldEventSnapshot([worldEvent]),
+            Context()));
+    }
+
+    [Fact]
+    public void AcceptsCompatibleAndRejectsIncompatibleFirstPatientState()
+    {
+        FirstPatientTreatmentContext context = Context();
+        WorldObject worldObject = CreateWorldObject("herb-patch");
+        WorldEvent worldEvent = CreateWorldEvent("herb-patch-identified");
+        SaveSnapshot baseline = CreateSnapshot(
+            SaveSchemaVersion.CharacterMemory,
+            new CharacterId("seeker"),
+            worldObject.Identity.Id,
+            worldEvent.EventId,
+            worldEvent.EventId);
+        FirstPatientSaveState compatible = new(
+            context.Scenario.DiseaseTruth,
+            new PreparedIngredientBatchSnapshot([]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
+        FirstPatientSaveState incompatible = new(
+            new DiseaseTruthSnapshot(new DiseaseDefinitionSnapshot([]), []),
+            compatible.PreparedBatches,
+            compatible.AdministrationExperiments,
+            compatible.Experiments);
+        SaveSnapshot valid = new(
+            SaveSchemaVersion.FirstPatient,
+            baseline.Discovery,
+            baseline.WorldEvents,
+            new CharacterMemorySnapshot([]),
+            compatible);
+        SaveSnapshot invalid = new(
+            SaveSchemaVersion.FirstPatient,
+            baseline.Discovery,
+            baseline.WorldEvents,
+            new CharacterMemorySnapshot([]),
+            incompatible);
+        WorldObjectSnapshot worldObjects = new([worldObject]);
+        WorldEventSnapshot worldEvents = new([worldEvent]);
+
+        Assert.True(SaveSnapshotRestorationPolicy.CanRestore(
+            valid,
+            new CharacterId("seeker"),
+            worldObjects,
+            worldEvents,
+            context));
+        Assert.False(SaveSnapshotRestorationPolicy.CanRestore(
+            invalid,
+            new CharacterId("seeker"),
+            worldObjects,
+            worldEvents,
+            context));
     }
 
     [Fact]
@@ -104,6 +163,7 @@ public sealed class SaveSnapshotRestorationPolicyTests
         WorldObjectSnapshot worldObjects = new([worldObject]);
         WorldEvent worldEvent = CreateWorldEvent("herb-patch-identified");
         WorldEventSnapshot worldEvents = new([worldEvent]);
+        FirstPatientTreatmentContext context = Context();
         SaveSnapshot snapshot = CreateSnapshot(
             SaveSchemaVersion.FirstSupported,
             searcherId,
@@ -112,13 +172,15 @@ public sealed class SaveSnapshotRestorationPolicyTests
             worldEvent.EventId);
 
         Assert.Throws<ArgumentNullException>(() => SaveSnapshotRestorationPolicy.CanRestore(
-            null!, searcherId, worldObjects, worldEvents));
+            null!, searcherId, worldObjects, worldEvents, context));
         Assert.Throws<ArgumentNullException>(() => SaveSnapshotRestorationPolicy.CanRestore(
-            snapshot, null!, worldObjects, worldEvents));
+            snapshot, null!, worldObjects, worldEvents, context));
         Assert.Throws<ArgumentNullException>(() => SaveSnapshotRestorationPolicy.CanRestore(
-            snapshot, searcherId, null!, worldEvents));
+            snapshot, searcherId, null!, worldEvents, context));
         Assert.Throws<ArgumentNullException>(() => SaveSnapshotRestorationPolicy.CanRestore(
-            snapshot, searcherId, worldObjects, null!));
+            snapshot, searcherId, worldObjects, null!, context));
+        Assert.Throws<ArgumentNullException>(() => SaveSnapshotRestorationPolicy.CanRestore(
+            snapshot, searcherId, worldObjects, worldEvents, null!));
     }
 
     [Fact]
@@ -138,7 +200,10 @@ public sealed class SaveSnapshotRestorationPolicyTests
             parameter => Assert.Equal(typeof(SaveSnapshot), parameter.ParameterType),
             parameter => Assert.Equal(typeof(CharacterId), parameter.ParameterType),
             parameter => Assert.Equal(typeof(WorldObjectSnapshot), parameter.ParameterType),
-            parameter => Assert.Equal(typeof(WorldEventSnapshot), parameter.ParameterType));
+            parameter => Assert.Equal(typeof(WorldEventSnapshot), parameter.ParameterType),
+            parameter => Assert.Equal(
+                typeof(FirstPatientTreatmentContext),
+                parameter.ParameterType));
         Assert.Empty(policyType.GetProperties());
         Assert.Empty(policyType.GetEvents());
     }
@@ -168,4 +233,7 @@ public sealed class SaveSnapshotRestorationPolicyTests
 
     private static WorldEvent CreateWorldEvent(string id) =>
         new(new WorldEventId(id), WorldEventTimeEffect.Advance);
+
+    private static FirstPatientTreatmentContext Context() =>
+        RepresentativeFirstPatientTreatmentContextSource.Create();
 }

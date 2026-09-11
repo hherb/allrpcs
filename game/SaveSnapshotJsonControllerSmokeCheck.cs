@@ -1,6 +1,9 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -17,6 +20,8 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private SaveSnapshotJsonController controller = null!;
+    private FirstPatientStateController firstPatientController = null!;
+    private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
     private CharacterMemoryController memoryController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
@@ -37,6 +42,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         }
 
         controller = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
+        firstPatientController = GetNode<FirstPatientStateController>(
+            "../FirstPatientStateController");
+        firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            "../TemporaryFirstPatientTreatmentContextSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
@@ -66,6 +75,15 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         CharacterMemorySnapshot populatedMemory =
             CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
         memoryController.Install(populatedMemory);
+        FirstPatientTreatmentContext firstPatientContext = firstPatientContextSource.Context;
+        if (!firstPatientController.TryRestore(
+                CreatePopulatedFirstPatientState(firstPatientContext, definitions.Entries[0]),
+                firstPatientContext,
+                definitions))
+        {
+            Fail("Serialized save smoke could not install populated first-patient state.");
+            return;
+        }
 
         string initial = controller.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
@@ -75,7 +93,9 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             initialSnapshot.Discovery,
             initialSnapshot.WorldEvents));
         string expectedMigrated = SaveSnapshotJsonSerializer.Serialize(
-            SaveSnapshotJsonDeserializer.DeserializeCurrent(legacy));
+            SaveSnapshotJsonDeserializer.DeserializeCurrent(
+                legacy,
+                InitialFirstPatientState(firstPatientContext)));
         SaveSnapshot alternate = CreateAlternateState(worldObjects, definitions);
         if (!restorationController.TryRestore(alternate))
         {
@@ -90,7 +110,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":2",
+            "\"schemaVersion\":3",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
 
@@ -108,7 +128,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
 
         if (!controller.TryRestoreSerialized(legacy)
             || !HasSerializedState(expectedMigrated)
-            || memoryController.Memory.Characters.Count != 0)
+            || memoryController.Memory.Characters.Count != 0
+            || firstPatientController.PreparedBatches?.Batches.Count != 0
+            || firstPatientController.AdministrationExperiments?.Records.Count != 0
+            || firstPatientController.Experiments?.Records.Count != 0)
         {
             Fail("Serialized save smoke failed legacy migration to explicit empty memory.");
             return;
@@ -117,6 +140,16 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         if (!controller.TryRestoreSerialized(initial)
             || !HasSerializedState(initial)
             || memoryController.Memory.Characters.Count != 1
+            || firstPatientController.PreparedBatches?.Batches.Count != 1
+            || firstPatientController.AdministrationExperiments?.Records.Count != 1
+            || firstPatientController.Experiments?.Records.Count != 1
+            || !ReferenceEquals(
+                firstPatientController.AdministrationExperiments!.Records[0]
+                    .Administration.WorldEvent,
+                definitions.Entries[0])
+            || !ReferenceEquals(
+                firstPatientController.Experiments!.Records[0].WorldEvent,
+                definitions.Entries[0])
             || !ReferenceEquals(worldObjectController.WorldObjects, worldObjects)
             || !ReferenceEquals(worldEventController.WorldEvents, definitions)
             || seeker.Position != expectedPosition
@@ -133,10 +166,11 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
 
         GD.Print(
             "Serialized save controller smoke passed: canonical populated-memory capture, "
-            + "materially different live state, current-schema restoration, version-1 migration "
-            + "to explicit empty memory, fail-closed malformed, future version, unknown scenario "
-            + "event, and null input, and unchanged authored world, movement, input, and unrelated "
-            + "presentation were correct.");
+            + "complete prepared-batch and dual-journal first-patient restoration, materially "
+            + "different live state, current-schema restoration, version-1 migration to explicit "
+            + "empty memory and initial patient state, fail-closed malformed, future version, "
+            + "unknown scenario event, and null input, and unchanged authored world, movement, "
+            + "input, and unrelated presentation were correct.");
         GetTree().Quit();
     }
 
@@ -162,6 +196,68 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             new WorldEventSaveState(
                 new WorldEventLogSnapshot([firstEvent]),
                 new WorldTimeSnapshot(null)));
+    }
+
+    private static FirstPatientSaveState InitialFirstPatientState(
+        FirstPatientTreatmentContext context) => new(
+        context.Scenario.DiseaseTruth,
+        new PreparedIngredientBatchSnapshot([]),
+        new IngredientExperimentJournalSnapshot([]),
+        new ExperimentJournalSnapshot([]));
+
+    private static FirstPatientSaveState CreatePopulatedFirstPatientState(
+        FirstPatientTreatmentContext context,
+        WorldEvent worldEvent)
+    {
+        CharacterDiseaseState infection = context.Scenario.DiseaseTruth.Infections.Single();
+        DiseaseTruthSnapshot truth = new(
+            context.Scenario.DiseaseTruth.Definitions,
+            [
+                new CharacterDiseaseState(
+                    infection.CharacterId,
+                    infection.Disease,
+                    infection.Stage,
+                    worldEvent.EventId,
+                    DiseaseCareState.Comforted),
+            ]);
+        IngredientPreparationRecipe recipe = context.Scenario.Remedy.Recipe;
+        IngredientPreparationActivity activity = new(
+            recipe,
+            new IngredientPreparationProgress(recipe.Plan, recipe.Plan.Steps.Count));
+        IngredientPreparationOutcome preparation = new(
+            activity,
+            recipe.ResultDefinition,
+            recipe.ResultQuantity);
+        IngredientQuantity dosageQuantity = new(25, recipe.ResultQuantity.Unit);
+        IngredientDosage dosage = new(preparation, dosageQuantity);
+        PreparedIngredientBatch batch = PreparedIngredientBatchConsumptionTransition.Consume(
+            dosage,
+            new PreparedIngredientBatch(preparation))!;
+        IngredientAdministrationOutcome administration = new(
+            new CharacterId("healer"),
+            context.Scenario.PatientId,
+            dosage,
+            worldEvent);
+        ExperimentId experimentId = new("serialized-first-patient-dose");
+
+        return new FirstPatientSaveState(
+            truth,
+            new PreparedIngredientBatchSnapshot([batch]),
+            new IngredientExperimentJournalSnapshot(
+                [
+                    new IngredientAdministrationExperimentRecord(
+                        experimentId,
+                        administration,
+                        new CharacterConditionSet([])),
+                ]),
+            new ExperimentJournalSnapshot(
+                [
+                    new ExperimentJournalRecord(
+                        experimentId,
+                        worldEvent,
+                        "Administer one serialized first-patient dose.",
+                        "The complete first-patient state remains observable."),
+                ]));
     }
 
     private static bool ThrowsArgumentNull(Action action)
