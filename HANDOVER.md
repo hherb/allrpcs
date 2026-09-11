@@ -2,86 +2,71 @@
 
 ## Current state
 
-`main` contains merged PR #195 at `6bbe133`. The current branch is
-`codex/phase-6-hypothesis-serialization`.
+`main` contains merged PR #196 at `6b16d36`. The current branch is
+`codex/phase-6-first-patient-atomic-dose`.
 
-Phase 6 now has a strict caller-composed hypothesis-recognition transport boundary, a universal
-experiment journal, reusable prepared-batch accounting, and one atomic ingredient-administration
-execution path over those contracts.
+This branch completes two bounded Phase 6 integration slices.
 
-`SerializedInvestigationHypothesisInterpreter` accepts only a narrow supplied transport. Its
-deterministic JSON sends the exact utterance text marked `untrusted-in-world-text`, open-question
-identities and statements, and hypothesis identities, question identities, and statements. It
-accepts only explicit `no-match` or one strict question/hypothesis identity pair. Malformed, extra,
-duplicate, oversized, unknown-shape, partial, or noncanonical responses fail without retaining
-provider text. Well-formed unknown identities reach the existing Domain canonicalization policy and
-fail closed. Construction and the standard suite perform no network or credential I/O. There is no
-provider binding, retry, scene, UI, or persistence wiring.
+Phase 6y1 extends first-patient stabilization over the existing prepared-batch and universal
+experiment contracts. A successful transition now requires the administration dosage's exact
+preparation to exist with enough remaining quantity and delegates consumption plus both journal
+records to `IngredientAdministrationExperimentExecutionTransition`. Its result returns exact new
+disease truth, prepared batches, administration-specific experiments, and universal experiments.
+The universal record retains bounded authored procedure and observed-outcome text without deriving
+efficacy. The representative recovery path records an ineffective experiment universally before
+deterioration and later successful stabilization.
 
-The universal experiment journal accepts any exact authored world event rather than only ingredient
-administration. A record retains an exact experiment identity, exact event, bounded procedure, and
-bounded observed qualitative outcome without interpreting efficacy. The immutable journal holds up
-to 256 stable-order records and rejects duplicate experiment or event identities. Recording requires
-the exact event in authored state and its exact identity as the newest authoritative occurrence.
+Phase 6y2 adds `FirstPatientStateController` to the ordinary scene. It initializes those four exact
+immutable snapshots once. `TryStabilize` requires the treatment context to retain the controller's
+exact current disease truth, delegates the pure Phase 6y1 transition, and installs all four result
+snapshots only after complete success. Invalid, unavailable, stale, duplicate, full, and
+uninitialized attempts preserve every installed snapshot.
 
-A reusable prepared batch begins with one exact completed preparation and its full exact quantity.
-Pure consumption permits only a dosage from that exact preparation and unit within the remaining
-amount. Partial use returns a new reduced batch; complete use removes it. A bounded prepared-batch
-snapshot retains up to 256 distinct exact preparation instances and replaces or removes only the
-consumed batch while preserving unrelated exact instances and stable order.
-
-`IngredientAdministrationExperimentExecutionTransition` preflights prepared-batch consumption, the
-latest exact authored administration event, and the universal journal before returning new prepared
-batch state plus both the rich administration-specific journal and universal journal. Any rejection
-exposes no partial state. It does not occur the event, change disease truth, or execute an
-investigation consequence.
-
-The roadmap's universal experiment-recording and natural-language hypothesis-recognition items are
-now complete. Provider-specific hypothesis composition, Phase 6 scene ownership and persistence,
-first-patient use of prepared batches and the universal journal, consequence execution, and final
-authored UI remain open.
+These slices do not occur administration events, infer efficacy from observations, execute
+investigation consequences, initialize authored first-patient scene state, persist Phase 6 state,
+add provider-specific hypothesis composition, expose final UI, begin Phase 7, release, or
+distribute.
 
 ## Validation and review
 
-- complete formatting verification and zero-warning solution build passed
-- 1,909 Domain, 402 Application, 440 Infrastructure, and 8 architecture tests passed
-- representative discovery scenario validated 5 evidence definitions
-- all 77 credential-free Godot smokes passed
-- bounded 60-frame Compatibility-renderer launch passed on Godot 4.6.3 .NET
-- focused slice checks passed: 20 new Domain tests and 17 new Infrastructure tests
-- the staged diff passed whitespace, 120-character, exact-identity, immutability, redaction,
-  no-partial-state, and minimal-surface review
+- focused stabilization and recovery tests passed, including reflection-backed API checks
+- the focused first-patient controller smoke passed on Godot 4.6.3 .NET
+- `./scripts/quality.sh` passed cleanly on an aggregate retry:
+  - workflow validation, restore, formatting, and zero-warning solution build passed
+  - 1,910 Domain, 402 Application, 440 Infrastructure, and 8 architecture tests passed
+  - representative discovery scenario validated 5 evidence definitions
+  - all 78 credential-free Godot smokes passed
+  - the bounded 60-frame Compatibility-renderer launch passed
+- `git diff --check`, the practical 120-character limit, exact-identity, immutability, redaction,
+  no-partial-state, and minimal-surface review passed
 
-The first aggregate `./scripts/quality.sh` run passed workflow validation, restore, formatting,
-zero-warning build, and every .NET suite, then transiently stalled while launching the already-built
-scenario validator. The exact validator retry and remaining Godot checks passed, then one clean
-aggregate retry passed end to end without a product change. Restricted VSTest focused runs reproduced
-the known local-loopback denial; the identical host-local commands passed.
+The first aggregate quality run passed workflow validation, restore, formatting, the zero-warning
+build, and all .NET suites, then reproduced the known transient stall before emitting the already
+built scenario validator. The exact validator, all Godot smokes, and graphical launch passed
+directly. One clean aggregate retry then passed end to end without a product change. The restricted
+focused VSTest and Godot runs reproduced the known localhost-bind and `user://logs` restrictions;
+the identical host-local commands passed.
 
-Draft PR #196 contains this work. Final-head credential-free run `34589507300` reported all five
-jobs as failures, but every job had `steps: []` and completed within 1-7 seconds. This is the same
-account/infrastructure condition seen on PR #195, not executed test evidence. Do not retry or
-dispatch the workflow unless that external condition changes; host-local quality is the executed
-evidence.
+GitHub Actions was still budget-rejected on merged PR #196: final-head run `34589507300` had five
+failed jobs with `steps: []`. Treat that as account/infrastructure state, not executed test evidence,
+and do not retry or dispatch hosted workflows unless the external condition changes.
 
 ## Exact next bounded slice
 
-Take **Phase 6y1: atomic first-patient prepared-dose and universal-journal integration**.
+Take **Phase 6y3: exact authored first-patient scene initialization**.
 
 Acceptance boundary:
 
-1. Extend the first-patient stabilization result and transition so successful treatment returns the
-   resulting prepared-batch snapshot and universal experiment journal alongside disease truth and
-   the existing administration-specific journal.
-2. Require the administration dosage's exact preparation to be retained with enough remaining
-   quantity, and reuse `IngredientAdministrationExperimentExecutionTransition` for consumption and
-   both journal records rather than duplicating those rules.
-3. Preserve the current exact patient, disease, remedy, confirmed-conclusion, recipe, latest-event,
-   stabilization, and experiment constraints. Add bounded authored procedure and observed-outcome
-   inputs without deriving efficacy from their text.
-4. Prove the successful representative path stabilizes disease truth, consumes exactly one dose,
-   and records both exact journal forms atomically. Prove depleted, replacement, duplicate, full,
-   stale-event, wrong-conclusion, and treatment-ineligible paths leave every input unchanged.
-5. Add focused reflection-backed tests and update README/HANDOVER evidence. Do not yet occur the
-   administration event, add provider-specific hypothesis composition, execute consequences, wire
-   scene/UI ownership or persistence, begin Phase 7, release, or distribute.
+1. Add one temporary source that creates and retains one exact
+   `RepresentativeFirstPatientTreatmentContextSource` context for the ordinary scene.
+2. Initialize `FirstPatientStateController` exactly once from that context's exact disease truth and
+   explicit empty prepared-batch, administration-experiment, and universal-experiment snapshots.
+   Do not synthesize a completed preparation or dose at startup.
+3. Prove source/context/disease identity retention, explicit empty journals and batches, stable
+   repeated access, exact controller installation, and fail-closed repeated initialization without
+   changing world events, memory, movement, dialogue, model, or presentation state.
+4. Keep startup credential-free and network-free. Add one focused opt-in Godot smoke, wire it into
+   `scripts/smoke-godot.sh`, and update README/HANDOVER evidence.
+5. Do not yet occur administration events, prepare or administer a remedy from scene input, execute
+   consequences, persist Phase 6 state, compose a provider-specific hypothesis interpreter, expose
+   final UI, begin Phase 7, release, or distribute.

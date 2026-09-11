@@ -1059,14 +1059,26 @@ disease, remedy, ingredient, and conclusion objects fail closed.
 
 Stabilization additionally requires a distinct exact remedy-to-conclusion evidence requirement and
 the exact authored conclusion in current confirmed state. Only an administration using the exact
-patient, exact completed recipe, and latest exact authored event can delegate to the existing
-disease-care transition. The atomic first-patient transition returns both newly stabilized disease truth and
-a newly appended exact experiment record; duplicate/capacity or care rejection returns no partial
-state. Focused representative tests prove either independent evidence route can authorize early
-stabilization, any one source can be lost, an unauthored reasonable theory cannot authorize care, and
-an informative failed experiment can precede deterioration and later successful recovery. These pure
-contracts do not consume reusable prepared dosage, occur events, execute consequences, or own scene
-or persistence state.
+patient, exact completed recipe, latest exact authored event, and an exact retained prepared batch
+with enough quantity can delegate to the existing care and experiment-execution transitions. One
+atomic first-patient result returns newly stabilized disease truth, the dose-consumed prepared-batch
+snapshot, and newly appended administration-specific and universal experiment journals. Authored
+procedure and qualitative outcome text is bounded by the universal journal and never interpreted as
+efficacy. Depleted or replacement batches, duplicate or full journals, stale events, wrong
+conclusions, and treatment-ineligible state expose no partial result and leave every supplied
+snapshot unchanged. Focused representative tests prove either independent evidence route can
+authorize early stabilization, any one source can be lost, an unauthored reasonable theory cannot
+authorize care, and a universally recorded informative failed experiment can precede deterioration
+and later successful recovery. These pure contracts do not occur events, execute consequences, or
+own scene or persistence state.
+
+The first Phase 6 scene controller owns one exact disease-truth snapshot, prepared-batch snapshot,
+administration-specific journal, and universal experiment journal. It initializes all four once and
+accepts stabilization only when the treatment context retains its exact current disease truth. A
+successful call delegates to the pure first-patient transition before installing all four exact
+result snapshots; rejected, stale, duplicate, full, or uninitialized calls preserve every installed
+snapshot. The controller still does not occur the administration event, interpret observed text,
+execute a consequence, save or load state, expose UI, or call a provider.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

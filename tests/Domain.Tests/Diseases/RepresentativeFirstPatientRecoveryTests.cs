@@ -1,6 +1,7 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Investigations;
@@ -48,12 +49,19 @@ public sealed class RepresentativeFirstPatientRecoveryTests
                 context,
                 administration,
                 new CharacterConditionSet([]),
+                "Administer one prepared stabilizing remedy dose.",
+                "The patient's breathing becomes steadier.",
                 new WorldEventSnapshot([worldEvent]),
                 new WorldEventLogSnapshot([worldEvent.EventId]),
-                new IngredientExperimentJournalSnapshot([]));
+                new PreparedIngredientBatchSnapshot(
+                    [new PreparedIngredientBatch(administration.Dosage.Preparation)]),
+                new IngredientExperimentJournalSnapshot([]),
+                new ExperimentJournalSnapshot([]));
 
             Assert.Same(DiseaseCareState.Stabilized, Assert.Single(result.DiseaseTruth.Infections).CareState);
-            Assert.Single(result.ExperimentJournal.Records);
+            Assert.Single(result.AdministrationExperiments.Records);
+            Assert.Single(result.Experiments.Records);
+            Assert.Empty(result.PreparedBatches.Batches);
         }
     }
 
@@ -116,22 +124,32 @@ public sealed class RepresentativeFirstPatientRecoveryTests
         WorldEventSnapshot worldEvents = new([worldEvent]);
         WorldEventLogSnapshot eventLog = new([worldEvent.EventId]);
 
-        IngredientExperimentJournalSnapshot journal =
-            IngredientAdministrationExperimentRecordingTransition.Record(
+        IngredientAdministrationExperimentExecutionResult failedExperiment =
+            IngredientAdministrationExperimentExecutionTransition.Execute(
                 new ExperimentId("ineffective-uncooked-dose"),
                 administration,
                 observedConditions,
+                "Administer one unheated preparation.",
+                "Breathing remains shallow and irregular.",
                 worldEvents,
                 eventLog,
-                new IngredientExperimentJournalSnapshot([]));
+                new PreparedIngredientBatchSnapshot(
+                    [new PreparedIngredientBatch(administration.Dosage.Preparation)]),
+                new IngredientExperimentJournalSnapshot([]),
+                new ExperimentJournalSnapshot([]));
         Assert.Throws<InvalidOperationException>(() => FirstPatientStabilizationTransition.Apply(
             new ExperimentId("must-not-stabilize"),
             context,
             administration,
             observedConditions,
+            "Administer one unheated preparation.",
+            "Breathing remains shallow and irregular.",
             worldEvents,
             eventLog,
-            journal));
+            new PreparedIngredientBatchSnapshot(
+                [new PreparedIngredientBatch(administration.Dosage.Preparation)]),
+            failedExperiment.AdministrationExperiments,
+            failedExperiment.Experiments));
 
         DiseaseTruthSnapshot deteriorated = DiseaseProgressionTransition.Advance(
             Assert.Single(scenario.DiseaseTruth.Infections),
@@ -165,15 +183,24 @@ public sealed class RepresentativeFirstPatientRecoveryTests
             recoveryAdministration,
             new CharacterConditionSet(
                 [new CharacterCondition("breathing", "Breathing becomes steadier.")]),
+            "Administer one correctly cooled preparation.",
+            "Breathing becomes steadier.",
             new WorldEventSnapshot([recoveryEvent]),
             new WorldEventLogSnapshot([recoveryEvent.EventId]),
-            journal);
+            new PreparedIngredientBatchSnapshot(
+                [new PreparedIngredientBatch(recoveryAdministration.Dosage.Preparation)]),
+            failedExperiment.AdministrationExperiments,
+            failedExperiment.Experiments);
 
-        Assert.Same(observedConditions, Assert.Single(journal.Records).ObservedConditions);
+        Assert.Same(
+            observedConditions,
+            Assert.Single(failedExperiment.AdministrationExperiments.Records).ObservedConditions);
         Assert.Same(DiseaseStage.Wasting, Assert.Single(deteriorated.Infections).Stage);
         Assert.Same(DiseaseCareState.Unassisted, Assert.Single(deteriorated.Infections).CareState);
         Assert.Same(DiseaseStage.DeepSleep, Assert.Single(scenario.DiseaseTruth.Infections).Stage);
         Assert.Same(DiseaseCareState.Stabilized, Assert.Single(recovered.DiseaseTruth.Infections).CareState);
-        Assert.Equal(2, recovered.ExperimentJournal.Records.Count);
+        Assert.Equal(2, recovered.AdministrationExperiments.Records.Count);
+        Assert.Equal(2, recovered.Experiments.Records.Count);
+        Assert.Empty(recovered.PreparedBatches.Batches);
     }
 }

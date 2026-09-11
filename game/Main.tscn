@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3]
+[gd_scene load_steps=116 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -125,6 +125,8 @@
 [ext_resource type="Script" path="res://LiveCharacterModelOrdinaryFlowSmokeCheck.cs" id="123_live_model_flow_check"]
 [ext_resource type="Script" path="res://CharacterMemoryController.cs" id="124_character_memory_controller"]
 [ext_resource type="Script" path="res://CharacterMemoryControllerSmokeCheck.cs" id="125_character_memory_controller_check"]
+[ext_resource type="Script" path="res://FirstPatientStateController.cs" id="126_first_patient_state_controller"]
+[ext_resource type="Script" path="res://FirstPatientStateControllerSmokeCheck.cs" id="127_first_patient_state_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -458,6 +460,9 @@ script = ExtResource("47_world_event_controller")
 [node name="CharacterMemoryController" type="Node" parent="."]
 script = ExtResource("124_character_memory_controller")
 
+[node name="FirstPatientStateController" type="Node" parent="."]
+script = ExtResource("126_first_patient_state_controller")
+
 [node name="SaveSnapshotCaptureController" type="Node" parent="."]
 script = ExtResource("54_save_capture_controller")
 
@@ -565,6 +570,9 @@ script = ExtResource("48_world_event_controller_check")
 
 [node name="CharacterMemoryControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("125_character_memory_controller_check")
+
+[node name="FirstPatientStateControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("127_first_patient_state_controller_check")
 
 [node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
 script = ExtResource("49_search_world_event_check")
