@@ -1,25 +1,38 @@
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Ingredients;
 
 namespace Allrpcs.Domain.Diseases;
 
-/// <summary>Retains exact disease truth and journal state after first-patient stabilization.</summary>
+/// <summary>Retains exact disease truth, prepared batches, and journals after stabilization.</summary>
 public sealed class FirstPatientStabilizationResult
 {
     /// <summary>Creates one immutable atomic stabilization result.</summary>
     public FirstPatientStabilizationResult(
         DiseaseTruthSnapshot diseaseTruth,
-        IngredientExperimentJournalSnapshot experimentJournal)
+        PreparedIngredientBatchSnapshot preparedBatches,
+        IngredientExperimentJournalSnapshot administrationExperiments,
+        ExperimentJournalSnapshot experiments)
     {
         ArgumentNullException.ThrowIfNull(diseaseTruth);
-        ArgumentNullException.ThrowIfNull(experimentJournal);
+        ArgumentNullException.ThrowIfNull(preparedBatches);
+        ArgumentNullException.ThrowIfNull(administrationExperiments);
+        ArgumentNullException.ThrowIfNull(experiments);
 
         DiseaseTruth = diseaseTruth;
-        ExperimentJournal = experimentJournal;
+        PreparedBatches = preparedBatches;
+        AdministrationExperiments = administrationExperiments;
+        Experiments = experiments;
     }
 
     /// <summary>Gets the exact resulting authoritative disease truth.</summary>
     public DiseaseTruthSnapshot DiseaseTruth { get; }
 
-    /// <summary>Gets the exact resulting experiment journal.</summary>
-    public IngredientExperimentJournalSnapshot ExperimentJournal { get; }
+    /// <summary>Gets the exact resulting prepared-batch snapshot.</summary>
+    public PreparedIngredientBatchSnapshot PreparedBatches { get; }
+
+    /// <summary>Gets the exact resulting administration-specific experiment journal.</summary>
+    public IngredientExperimentJournalSnapshot AdministrationExperiments { get; }
+
+    /// <summary>Gets the exact resulting universal experiment journal.</summary>
+    public ExperimentJournalSnapshot Experiments { get; }
 }
