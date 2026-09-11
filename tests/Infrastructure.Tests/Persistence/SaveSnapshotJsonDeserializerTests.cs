@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
@@ -14,6 +15,13 @@ public sealed class SaveSnapshotJsonDeserializerTests
         + "\"entries\":[]},\"focusedSearchActivities\":[],\"focusedSearchOutcomes\":[],"
         + "\"passiveNoticingCandidates\":[],\"observationReinterpretationCandidates\":[]},"
         + "\"worldEvents\":{\"eventLog\":[],\"currentTimeEventId\":null}}";
+
+    private const string EmptyVersionTwoJson =
+        "{\"schemaVersion\":2,\"discovery\":{\"perception\":{\"characterId\":\"seeker\","
+        + "\"entries\":[]},\"focusedSearchActivities\":[],\"focusedSearchOutcomes\":[],"
+        + "\"passiveNoticingCandidates\":[],\"observationReinterpretationCandidates\":[]},"
+        + "\"worldEvents\":{\"eventLog\":[],\"currentTimeEventId\":null},"
+        + "\"characterMemory\":{\"characters\":[]}}";
 
     [Fact]
     public void DeserializeMaterializesCompleteCanonicalDocumentInStableOrder()
@@ -77,6 +85,77 @@ public sealed class SaveSnapshotJsonDeserializerTests
         Assert.Null(result.WorldEvents.WorldTime.CurrentEventId);
     }
 
+    [Fact]
+    public void DeserializeCurrentExecutesVersionOneMigrationAndRetainsMaterializedState()
+    {
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(EmptyVersionOneJson);
+
+        Assert.Same(SaveSchemaVersion.CharacterMemory, result.SchemaVersion);
+        Assert.Empty(result.CharacterMemory.Characters);
+        Assert.Empty(result.Discovery.Perception.Entries);
+        Assert.Empty(result.WorldEvents.EventLog.Entries);
+        Assert.Equal(EmptyVersionTwoJson, SaveSnapshotJsonSerializer.Serialize(result));
+    }
+
+    [Fact]
+    public void DeserializeCurrentRetainsAnAlreadyCurrentDocument()
+    {
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(
+            SaveSnapshotJsonSerializerTests.CompleteCharacterMemoryJson);
+
+        Assert.Same(SaveSchemaVersion.CharacterMemory, result.SchemaVersion);
+        Assert.Single(result.CharacterMemory.Characters);
+        Assert.Equal(
+            SaveSnapshotJsonSerializerTests.CompleteCharacterMemoryJson,
+            SaveSnapshotJsonSerializer.Serialize(result));
+    }
+
+    [Fact]
+    public void DeserializeMaterializesCompleteCharacterMemoryWithExactInternalReferences()
+    {
+        SaveSnapshot baseline = CreateCompleteSnapshot();
+        SaveSnapshot source = new(
+            SaveSchemaVersion.CharacterMemory,
+            baseline.Discovery,
+            baseline.WorldEvents,
+            SaveSnapshotJsonSerializerTests.CreateCompleteCharacterMemory());
+        string serialized = SaveSnapshotJsonSerializer.Serialize(source);
+
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.Deserialize(serialized);
+
+        Assert.Same(SaveSchemaVersion.CharacterMemory, result.SchemaVersion);
+        CharacterMemoryAggregate aggregate = Assert.Single(result.CharacterMemory.Characters);
+        Assert.Equal("healer", aggregate.CharacterId.Value);
+        Assert.Equal(2, aggregate.RecentConversation.Turns.Count);
+        Assert.Equal(3, aggregate.EpistemicMemories.Memories.Count);
+        CharacterBeliefAssessment assessment = Assert.Single(
+            aggregate.BeliefAssessments.Assessments);
+        Assert.Same(aggregate.EpistemicMemories.Memories[2], assessment.Belief);
+        Assert.Same(
+            aggregate.EpisodicMemories.Memories[0],
+            aggregate.MemoryIndex.Entries[0].MemoryReference.EpisodicMemory);
+        Assert.Same(
+            aggregate.EpistemicMemories.Memories[2],
+            aggregate.MemoryIndex.Entries[1].MemoryReference.EpistemicMemory);
+        Assert.Same(
+            aggregate.Relationships.Relationships[0],
+            aggregate.MemoryIndex.Entries[2].MemoryReference.RelationshipMemory);
+        Assert.Same(
+            aggregate.Commitments.Commitments[0],
+            aggregate.MemoryIndex.Entries[3].MemoryReference.CommitmentMemory);
+        Assert.Equal(serialized, SaveSnapshotJsonSerializer.Serialize(result));
+    }
+
+    [Fact]
+    public void DeserializeMaterializesExplicitEmptyCharacterMemory()
+    {
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.Deserialize(EmptyVersionTwoJson);
+
+        Assert.Same(SaveSchemaVersion.CharacterMemory, result.SchemaVersion);
+        Assert.Empty(result.CharacterMemory.Characters);
+        Assert.Equal(EmptyVersionTwoJson, SaveSnapshotJsonSerializer.Serialize(result));
+    }
+
     [Theory]
     [InlineData("")]
     [InlineData("[]")]
@@ -88,6 +167,9 @@ public sealed class SaveSnapshotJsonDeserializerTests
     [InlineData(
         "{\"schemaVersion\":2,\"discovery\":{},\"worldEvents\":{}}")]
     [InlineData(
+        "{\"schemaVersion\":3,\"discovery\":{},\"worldEvents\":{},"
+        + "\"characterMemory\":{\"characters\":[]}}")]
+    [InlineData(
         "{\"schemaVersion\":1.0,\"discovery\":{},\"worldEvents\":{}}")]
     [InlineData(
         "{\"schemaVersion\":1,\"discovery\":null,\"worldEvents\":{}}")]
@@ -95,6 +177,38 @@ public sealed class SaveSnapshotJsonDeserializerTests
     {
         Assert.Throws<ArgumentException>(
             () => SaveSnapshotJsonDeserializer.Deserialize(serialized));
+    }
+
+    [Fact]
+    public void DeserializeRejectsInvalidCharacterMemoryShapeAndReferences()
+    {
+        string complete = SaveSnapshotJsonSerializerTests.CompleteCharacterMemoryJson;
+        string missingReference = complete.Replace(
+            "\"memoryIdentity\":\"found-moonwort\"",
+            "\"memoryIdentity\":\"missing-memory\"",
+            StringComparison.Ordinal);
+        string wrongConfidenceKind = complete.Replace(
+            "\"confidenceBasisPoints\":6000",
+            "\"confidenceBasisPoints\":\"6000\"",
+            StringComparison.Ordinal);
+        string duplicateCharacterProperty = complete.Replace(
+            "\"characterId\":\"healer\",\"recentConversation\"",
+            "\"characterId\":\"healer\",\"characterId\":\"healer\","
+                + "\"recentConversation\"",
+            StringComparison.Ordinal);
+        string versionOneWithMemory = EmptyVersionTwoJson.Replace(
+            "\"schemaVersion\":2",
+            "\"schemaVersion\":1",
+            StringComparison.Ordinal);
+
+        Assert.Throws<ArgumentException>(() =>
+            SaveSnapshotJsonDeserializer.Deserialize(missingReference));
+        Assert.Throws<ArgumentException>(() =>
+            SaveSnapshotJsonDeserializer.Deserialize(wrongConfidenceKind));
+        Assert.Throws<ArgumentException>(() =>
+            SaveSnapshotJsonDeserializer.Deserialize(duplicateCharacterProperty));
+        Assert.Throws<ArgumentException>(() =>
+            SaveSnapshotJsonDeserializer.Deserialize(versionOneWithMemory));
     }
 
     [Theory]

@@ -2,59 +2,57 @@
 
 ## Current state
 
-`main` contains merged PR #184 at `36e6c14`. The current branch is
-`codex/phase-5-memory-persistence`; draft PR #185 is open and mergeable.
+`main` contains merged PR #185 at `5c9bf5b`. The current branch is
+`codex/phase-5-memory-save-continuity`.
 
-Phase 5 now has a canonical provider-neutral memory aggregate for each character and an immutable
-all-character `CharacterMemorySnapshot`. The snapshot copies zero to 32 exact aggregates in stable
-order and rejects null entries, excessive counts, and value-equal duplicate character identities.
+Phase 5 now has a complete canonical version-2 character-memory JSON contract. The existing
+version-1 document is byte-for-byte unchanged. Version 2 writes every ordered aggregate constituent,
+uses category plus canonical identity for deterministic index references, uses exact memory identity
+for belief-assessment references, and represents optional values explicitly. It contains no provider
+identifier, credential, provider state, hidden reasoning, chain of thought, or additional
+authoritative transcript.
 
-The in-memory `SaveSnapshot` retains an exact character-memory snapshot. Version `1` preserves its
-existing equality and serialization behavior through one shared immutable empty-memory snapshot and
-rejects populated memory. `SaveSchemaVersion.CharacterMemory` defines version `2`, while load and
-JSON support remain deliberately disabled. The version-1 serializer now rejects unsupported roots,
-so it cannot silently discard character memory.
+Strict version-2 deserialization rejects unknown, missing, or duplicate properties, invalid value
+kinds and closed values, invalid bounded collections, and unresolved memory references. It rebuilds
+belief assessments and index entries against the exact deserialized memory instances. The explicit
+`DeserializeCurrent` entry point returns version 2 unchanged and executes the existing pure
+version-1 to version-2 empty-memory migration for version-1 documents.
 
-`SaveSnapshotCharacterMemoryMigration` is a pure one-way version-1 to version-2 transition. It
-creates a fresh root retaining the exact discovery, world-event, and empty character-memory
-instances, rejects every other source version and null, and leaves the source unchanged.
-
-No version-2 memory JSON, version-2 load support, populated-memory migration, storage/controller or
-scene memory state, restart/provider-switch continuity, provider-context memory projection,
-summary generation, relationship scene transition, commitment completion, UI, or authoritative
-transcript change exists yet. The roadmap migration and continuity items therefore remain open.
+Live loading remains deliberately gated to version 1. `SaveSnapshotJsonController` still uses exact
+deserialization rather than current-schema migration, and the scene has no character-memory
+controller. This prevents a populated version-2 root from restoring discovery and world events while
+silently discarding memory. No live memory capture, storage/controller continuity, provider-context
+memory projection, summary generation, relationship scene transition, commitment completion, UI, or
+authoritative transcript change exists yet.
 
 ## Validation
 
-- workflow validation and `dotnet format Allrpcs.sln --no-restore --verify-no-changes`
-- zero-warning complete solution build
-- 1,534 Domain, 365 Application, 415 Infrastructure, and 8 architecture tests
+- workflow validation, restore, formatting, and zero-warning complete solution build
+- 1,534 Domain, 365 Application, 422 Infrastructure, and 8 architecture tests
 - representative discovery scenario: 5 valid evidence definitions
-- complete `./scripts/smoke-godot.sh`
+- all 76 credential-free Godot smokes
 - bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
 
-The generated `ScenarioValidator` native app host still stalls during macOS dynamic-loader startup.
-The same rebuilt validator DLL passes immediately through `dotnet exec`; this is a local app-host
-limitation, not a failing validator assertion. All five PR #185 jobs on run `34549910877` were
-immediately reported failed with `steps: []` because the GitHub Actions budget remains exhausted;
-this is account infrastructure state, not test evidence, and the jobs must not be redispatched
-solely to compensate.
+The generated `ScenarioValidator` native app host stalled during macOS dynamic-loader startup. The
+same rebuilt validator DLL passed immediately through `dotnet exec`; this is the known local app-host
+limitation, not a failing validator assertion.
+GitHub Actions budget failures with `steps: []` are account infrastructure state, not test evidence,
+and those jobs must not be redispatched solely to compensate.
 
 ## Exact next bounded slice
 
-Take **Phase 5k4: canonical version-2 character-memory JSON serialization**.
+Take **Phase 5k6: scene-owned character memory and atomic current-schema restoration**.
 
 Acceptance boundary:
 
-1. Extend `SaveSnapshotJsonSerializer` to write a stable complete version-2 `characterMemory`
-   representation for every aggregate constituent and deterministic index reference while leaving
-   the exact version-1 document unchanged.
-2. Encode only provider-neutral canonical state. Preserve supplied collection order and reference
-   index targets by category plus canonical memory identity; include no provider identifiers,
-   credentials, hidden reasoning, chain of thought, or authoritative transcript duplication.
-3. Add focused exact-document tests for empty and representative complete version-2 roots, stable
-   value-equal output, all categories, null/optional fields, and unchanged inputs.
-4. Do not yet enable version-2 load support, deserialize or execute migration, change storage or
-   scene controllers, capture live memory, project provider context, or claim restart continuity.
-5. After the complete quality spine passes, update `README.md`, `ROADMAP.md`, and this handover;
-   then take strict version-2 deserialization plus version-1 migration execution separately.
+1. Add one scene-owned controller that retains an exact immutable `CharacterMemorySnapshot`, starts
+   with explicit empty memory, and can install one exact caller-supplied replacement without deriving
+   or mutating memory.
+2. Capture version-2 roots with that exact scene snapshot and extend complete restoration preflight
+   and installation across discovery, world events, and character memory without partial mutation.
+3. Route serialized loading through `DeserializeCurrent` so legacy version-1 documents migrate to
+   empty-memory version 2 before preflight while existing version-2 roots retain exact loaded memory.
+4. Prove exact populated-memory capture/JSON/restore and legacy migration through focused Godot
+   smokes, including repeated restoration, rejection preservation, and unchanged unrelated state.
+5. Do not yet derive live memory, project it into provider context, complete commitments, change
+   relationships, claim provider-switch recall, add save UI, or change authoritative transcripts.
