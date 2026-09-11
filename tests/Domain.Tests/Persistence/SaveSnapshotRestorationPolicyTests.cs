@@ -9,8 +9,10 @@ namespace Allrpcs.Domain.Tests.Persistence;
 
 public sealed class SaveSnapshotRestorationPolicyTests
 {
-    [Fact]
-    public void AcceptsASupportedSnapshotWhoseDiscoveryAndEventStateCanRestore()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void AcceptsAKnownSnapshotWhoseDiscoveryAndEventStateCanRestore(int version)
     {
         CharacterId searcherId = new("seeker");
         WorldObject worldObject = CreateWorldObject("herb-patch");
@@ -18,7 +20,7 @@ public sealed class SaveSnapshotRestorationPolicyTests
         WorldEvent worldEvent = CreateWorldEvent("herb-patch-identified");
         WorldEventSnapshot worldEvents = new([worldEvent]);
         SaveSnapshot snapshot = CreateSnapshot(
-            SaveSchemaVersion.FirstSupported,
+            new SaveSchemaVersion(version),
             searcherId,
             worldObject.Identity.Id,
             worldEvent.EventId,
@@ -43,7 +45,7 @@ public sealed class SaveSnapshotRestorationPolicyTests
         WorldObject worldObject = CreateWorldObject("herb-patch");
         WorldEvent worldEvent = CreateWorldEvent("herb-patch-identified");
         SaveSnapshot snapshot = CreateSnapshot(
-            new SaveSchemaVersion(2),
+            new SaveSchemaVersion(27),
             new CharacterId("seeker"),
             worldObject.Identity.Id,
             worldEvent.EventId,

@@ -884,8 +884,13 @@ order, rejects null entries and value-equal duplicate character identities, and 
 get-only read-only collection. The in-memory save root can retain this exact snapshot under the
 version-`2` character-memory vocabulary. A pure one-way migration accepts only a version-`1` root
 and produces a fresh version-`2` root retaining the exact discovery, world-event, and shared empty
-memory instances. It does not synthesize character memory, mutate the source, enable version-`2`
-loading, serialize or deserialize memory, access storage, or change scene controllers.
+memory instances. Strict current-schema loading executes that migration before complete restoration;
+already-version-`2` roots retain their fully materialized memory. The scene owns one exact immutable
+memory snapshot, starts explicitly empty, captures canonical version-`2` JSON, and installs memory
+with discovery and world-event state only after one complete preflight. Rejected roots preserve all
+three state areas, and legacy documents cannot silently discard populated memory. This boundary does
+not synthesize memory, project it into provider context, complete commitments, change relationships,
+add save UI, or alter the authoritative transcript.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

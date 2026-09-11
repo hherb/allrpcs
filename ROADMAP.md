@@ -254,7 +254,7 @@ Acceptance:
 - [x] Compose bounded all-character memory into the version-2 save-root prerequisite.
 - [x] Define the pure version-1 to version-2 empty-memory migration without enabling loading.
 - [x] Serialize and strictly deserialize complete canonical version-2 character memory.
-- [ ] Execute memory-schema migration during load and restore character memory atomically.
+- [x] Execute memory-schema migration during load and restore character memory atomically.
 - [ ] Test restart and provider-switch continuity.
 
 Acceptance:

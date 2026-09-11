@@ -38,7 +38,7 @@ public partial class SaveSnapshotJsonController : Node
         SaveSnapshot snapshot;
         try
         {
-            snapshot = SaveSnapshotJsonDeserializer.Deserialize(serialized);
+            snapshot = SaveSnapshotJsonDeserializer.DeserializeCurrent(serialized);
         }
         catch (ArgumentException)
         {

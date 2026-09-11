@@ -8,10 +8,12 @@ namespace Allrpcs.Domain.Tests.Persistence;
 
 public sealed class SaveSnapshotLoadPolicyTests
 {
-    [Fact]
-    public void AcceptsASnapshotWithTheSupportedSchemaVersionWithoutChangingIt()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void AcceptsASnapshotWithAKnownSchemaVersionWithoutChangingIt(int value)
     {
-        SaveSnapshot snapshot = CreateSnapshot(SaveSchemaVersion.FirstSupported);
+        SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(value));
         DiscoverySaveState discovery = snapshot.Discovery;
         WorldEventSaveState worldEvents = snapshot.WorldEvents;
 
@@ -25,7 +27,7 @@ public sealed class SaveSnapshotLoadPolicyTests
     [Fact]
     public void RejectsASnapshotWithAStructurallyValidFutureVersionWithoutChangingIt()
     {
-        SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(2));
+        SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(27));
         SaveSchemaVersion version = snapshot.SchemaVersion;
 
         bool canLoad = SaveSnapshotLoadPolicy.CanLoad(snapshot);
