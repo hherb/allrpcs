@@ -2,76 +2,86 @@
 
 ## Current state
 
-`main` contains merged PR #194 at `63915c0`. The current branch is
-`codex/phase-6-first-patient`.
+`main` contains merged PR #195 at `6bbe133`. The current branch is
+`codex/phase-6-hypothesis-serialization`.
 
-Phase 6 now has a pure evidence-driven first-patient stabilization path and a provider-neutral
-hypothesis-recognition transport boundary.
+Phase 6 now has a strict caller-composed hypothesis-recognition transport boundary, a universal
+experiment journal, reusable prepared-batch accounting, and one atomic ingredient-administration
+execution path over those contracts.
 
-The representative first-patient scenario retains an exact sleeping-patient identity, exact hidden
-grey-sleep truth at deep sleep without care, exact moonwort-leaf and clean-water state, one exact
-grind/heat/steep/cool preparation recipe, its exact disease-to-recipe stabilizing-remedy definition,
-and the existing recoverable four-source/two-route investigation. Its structural policy requires the
-exact patient infection and disease, exact available recipe ingredient definitions and units, and an
-acceptable critical investigation.
+`SerializedInvestigationHypothesisInterpreter` accepts only a narrow supplied transport. Its
+deterministic JSON sends the exact utterance text marked `untrusted-in-world-text`, open-question
+identities and statements, and hypothesis identities, question identities, and statements. It
+accepts only explicit `no-match` or one strict question/hypothesis identity pair. Malformed, extra,
+duplicate, oversized, unknown-shape, partial, or noncanonical responses fail without retaining
+provider text. Well-formed unknown identities reach the existing Domain canonicalization policy and
+fail closed. Construction and the standard suite perform no network or credential I/O. There is no
+provider binding, retry, scene, UI, or persistence wiring.
 
-Treatment additionally requires an exact remedy-to-conclusion evidence requirement and that exact
-authored conclusion in current confirmed state. Only the exact patient, exact completed remedy
-recipe, and latest exact authored administration event can delegate to the existing stabilization
-transition. One pure atomic transition returns new stabilized disease truth and an appended exact
-experiment record; duplicate/capacity or treatment rejection yields no partial state. It still does
-not occur the event or consume a reusable prepared dose.
+The universal experiment journal accepts any exact authored world event rather than only ingredient
+administration. A record retains an exact experiment identity, exact event, bounded procedure, and
+bounded observed qualitative outcome without interpreting efficacy. The immutable journal holds up
+to 256 stable-order records and rejects duplicate experiment or event identities. Recording requires
+the exact event in authored state and its exact identity as the newest authoritative occurrence.
 
-Representative acceptance tests prove either independent evidence route can authorize early
-stabilization, losing any one source preserves a complete route, an unauthored plausible theory
-cannot authorize the remedy, and an informative failed experiment can be recorded before the
-unstabilized patient deteriorates and later recovers through the correct remedy. The roadmap's
-first-patient, recovery-testing, and Phase 6 acceptance items are complete.
+A reusable prepared batch begins with one exact completed preparation and its full exact quantity.
+Pure consumption permits only a dosage from that exact preparation and unit within the remaining
+amount. Partial use returns a new reduced batch; complete use removes it. A bounded prepared-batch
+snapshot retains up to 256 distinct exact preparation instances and replaces or removes only the
+consumed batch while preserving unrelated exact instances and stable order.
 
-Application now defines one exact bounded recognition request, a two-identifier/no-match proposal,
-a cancellable provider-neutral interpreter interface, and a controller that delegates every proposal
-to the existing Domain canonicalization policy. A recognition remains only a possible answer and
-cannot create evidence, conclusions, beliefs, facts, or gameplay mutation. No concrete interpreter
-or provider adapter exists, so end-to-end natural-language hypothesis recognition remains open.
+`IngredientAdministrationExperimentExecutionTransition` preflights prepared-batch consumption, the
+latest exact authored administration event, and the universal journal before returning new prepared
+batch state plus both the rich administration-specific journal and universal journal. Any rejection
+exposes no partial state. It does not occur the event, change disease truth, or execute an
+investigation consequence.
 
-Universal experiment capture, reusable prepared-dose accounting, concrete hypothesis
-interpretation/provider composition, scene ownership, persistence, consequence execution, and the
-remaining Phase 6 roadmap checkboxes remain open.
+The roadmap's universal experiment-recording and natural-language hypothesis-recognition items are
+now complete. Provider-specific hypothesis composition, Phase 6 scene ownership and persistence,
+first-patient use of prepared batches and the universal journal, consequence execution, and final
+authored UI remain open.
 
 ## Validation and review
 
-- complete host-local `./scripts/quality.sh` passed: workflow validation, restore, formatting, and
-  zero-warning solution build
-- 1,889 Domain, 402 Application, 423 Infrastructure, and 8 architecture tests passed
+- complete formatting verification and zero-warning solution build passed
+- 1,909 Domain, 402 Application, 440 Infrastructure, and 8 architecture tests passed
 - representative discovery scenario validated 5 evidence definitions
 - all 77 credential-free Godot smokes passed
 - bounded 60-frame Compatibility-renderer launch passed on Godot 4.6.3 .NET
-- focused Phase 6 checks passed: 40 Domain tests and 9 Application tests
-- the staged diff passed whitespace, formatting, 120-character, minimal-surface, exact-identity, and
-  no-partial-state review
+- focused slice checks passed: 20 new Domain tests and 17 new Infrastructure tests
+- the staged diff passed whitespace, 120-character, exact-identity, immutability, redaction,
+  no-partial-state, and minimal-surface review
 
-Draft PR #195 contains this work. Its initial run `34586326575` on
-`fba872d3a81eb09c13a47233d30dd61a0ebe847d` reported all five jobs as failures, but every job had
-`steps: []` and completed within 2–7 seconds. This is account/infrastructure state, not executed test
-evidence. Do not retry or dispatch a workflow unless that external condition changes; host-local
-quality remains the executed evidence.
+The first aggregate `./scripts/quality.sh` run passed workflow validation, restore, formatting,
+zero-warning build, and every .NET suite, then transiently stalled while launching the already-built
+scenario validator. The exact validator retry and remaining Godot checks passed, then one clean
+aggregate retry passed end to end without a product change. Restricted VSTest focused runs reproduced
+the known local-loopback denial; the identical host-local commands passed.
+
+Draft PR #196 contains this work. Final-head credential-free run `34589507300` reported all five
+jobs as failures, but every job had `steps: []` and completed within 1-7 seconds. This is the same
+account/infrastructure condition seen on PR #195, not executed test evidence. Do not retry or
+dispatch the workflow unless that external condition changes; host-local quality is the executed
+evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 6u1: strict hypothesis-interpreter serialization boundary**.
+Take **Phase 6y1: atomic first-patient prepared-dose and universal-journal integration**.
 
 Acceptance boundary:
 
-1. Add one caller-composed Infrastructure implementation of
-   `IInvestigationHypothesisInterpreter` over a narrow supplied transport seam; construction and the
-   standard suite must perform no network or credential input/output.
-2. Serialize only the exact source utterance marked as untrusted in-world text and the bounded exact
-   open-question/hypothesis candidate identities and statements. Use a deterministic strict schema.
-3. Strictly deserialize either an explicit no-match result or one question/hypothesis identity pair;
-   reject malformed, extra, duplicate, oversized, unknown-shape, or partial output without retaining
-   provider text.
-4. Carry valid and invalid proposals through `InvestigationHypothesisRecognitionController` to prove
-   canonical exact-instance retention, cancellation, fail-closed unknown IDs, unchanged inputs, and
-   no conclusion, evidence, belief, fact, consequence, or gameplay mutation.
-5. Do not yet add provider settings, automatic retries, scene/UI wiring, persistence, universal
-   experiment capture, prepared-dose accounting, consequence execution, release, or distribution.
+1. Extend the first-patient stabilization result and transition so successful treatment returns the
+   resulting prepared-batch snapshot and universal experiment journal alongside disease truth and
+   the existing administration-specific journal.
+2. Require the administration dosage's exact preparation to be retained with enough remaining
+   quantity, and reuse `IngredientAdministrationExperimentExecutionTransition` for consumption and
+   both journal records rather than duplicating those rules.
+3. Preserve the current exact patient, disease, remedy, confirmed-conclusion, recipe, latest-event,
+   stabilization, and experiment constraints. Add bounded authored procedure and observed-outcome
+   inputs without deriving efficacy from their text.
+4. Prove the successful representative path stabilizes disease truth, consumes exactly one dose,
+   and records both exact journal forms atomically. Prove depleted, replacement, duplicate, full,
+   stale-event, wrong-conclusion, and treatment-ineligible paths leave every input unchanged.
+5. Add focused reflection-backed tests and update README/HANDOVER evidence. Do not yet occur the
+   administration event, add provider-specific hypothesis composition, execute consequences, wire
+   scene/UI ownership or persistence, begin Phase 7, release, or distribute.

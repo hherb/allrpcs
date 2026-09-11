@@ -981,8 +981,19 @@ recipe-authored result outcome. The result is not automatically added to ingredi
 A dosage retains one exact completed preparation outcome and a positive quantity no larger than that
 outcome in the same exact unit. An authored administration outcome retains exact administrator and
 patient identities, that exact dosage, and one exact meaningful world event; it does not itself
-validate event occurrence, consume a reusable dose, or change disease truth. Self-administration is
-not prohibited at this structural boundary.
+validate event occurrence or change disease truth. Self-administration is not prohibited at this
+structural boundary. A reusable prepared batch begins with the exact completed preparation and its
+full exact quantity. Pure consumption accepts only a dosage retaining that exact preparation and
+unit with no more than the remaining amount; partial use returns a new batch with the exact
+preparation and reduced positive quantity, while complete use returns no remaining batch. Rejected
+dosage leaves the input batch unchanged. A bounded immutable prepared-batch snapshot retains up to
+256 distinct exact preparation instances. Its pure consumption transition finds only the dosage's
+exact preparation, replaces a partially consumed batch in place, removes a fully consumed batch, and
+preserves every unrelated exact batch in stable order. One combined administration transition
+preflights that batch, the exact latest authored event, and both journal boundaries before returning
+new batch state, the rich administration-specific record, and the universal experiment record as one
+externally atomic result. Rejection exposes no partial state. The transition still does not occur the
+event, apply disease truth or consequences, own scene state, or persist the snapshots.
 
 Ingredient-administration experiment records retain a canonical experiment identity, one exact
 administration outcome, and one exact qualitative condition observation. Empty observations remain
@@ -992,7 +1003,16 @@ now atomically gated on the administration outcome's exact authored world event 
 authoritative occurrence. The transition constructs the exact record only after that check and then
 delegates duplicate and capacity enforcement to the existing journal append transition. It does not
 infer efficacy, consume dosage, mutate disease truth, or provide scene ownership or persistence, so
-the broader universal experiment-recording requirement remains open.
+the richer administration-specific record remains available for treatment logic.
+
+A separate universal experiment journal can record every kind of authored experiment rather than
+only ingredient administration. Each immutable record retains an exact experiment identity, the
+exact authoritative world event, and bounded nonblank procedure and observed-outcome text without
+interpreting efficacy. The journal copies up to 256 records in stable order and rejects duplicate
+experiment or event identities. Its pure atomic recorder accepts any exact authored world event only
+when that event identity is the newest authoritative log entry; stale or value-equal replacement
+events, duplicates, and capacity exhaustion leave the input journal unchanged. Scene ownership and
+persistence remain separate later boundaries.
 
 Investigation contracts keep open questions, hypotheses, evidence, conclusions, and consequences
 separate. Questions, hypotheses, conclusions, and non-executable consequences retain canonical
@@ -1011,9 +1031,16 @@ natural-language utterance. Its output remains only a possible answer: it does n
 conclusion, evidence, belief, fact, or gameplay mutation. A provider-neutral Application request
 retains that exact utterance plus the exact bounded open-question and authored-hypothesis snapshots.
 One cancellable interpreter may propose only a question/hypothesis identity pair or no match; the
-controller delegates every proposal to the Domain canonicalization policy. No concrete language
-interpreter, provider binding, retry, scene ownership, or persistence exists yet, so end-to-end
-natural-language recognition remains open.
+controller delegates every proposal to the Domain canonicalization policy.
+
+The first caller-composed Infrastructure interpreter serializes only that bounded state through a
+narrow supplied transport seam. Its deterministic JSON marks the exact source text as untrusted
+in-world text and carries only the exact open-question and hypothesis identities and authored
+statements. Its strict response boundary accepts either an explicit no-match or one canonical
+question/hypothesis identity pair; malformed, extra, duplicate, oversized, unknown-shape, and partial
+documents fail without retaining provider text. Unknown but well-formed identities reach the existing
+canonicalization policy and fail closed. Construction and the standard suite perform no network or
+credential access. No provider binding, retry, scene ownership, or persistence exists yet.
 
 Critical-conclusion route validation associates each evidence identity with a distinct authored
 source and whether that source requires character cooperation. Every critical plan must have at
