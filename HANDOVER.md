@@ -58,8 +58,11 @@ scenario validator. The exact validator retry and remaining Godot checks passed,
 aggregate retry passed end to end without a product change. Restricted VSTest focused runs reproduced
 the known local-loopback denial; the identical host-local commands passed.
 
-Draft PR #196 contains this work. Its initial credential-free CI run `34589460849` was queued on
-`1b6cf30a8339bd44698a0472049387147c3d121f` when the PR was opened; no hosted result had executed yet.
+Draft PR #196 contains this work. Final-head credential-free run `34589507300` reported all five
+jobs as failures, but every job had `steps: []` and completed within 1-7 seconds. This is the same
+account/infrastructure condition seen on PR #195, not executed test evidence. Do not retry or
+dispatch the workflow unless that external condition changes; host-local quality is the executed
+evidence.
 
 ## Exact next bounded slice
 
