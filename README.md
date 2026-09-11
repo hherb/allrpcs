@@ -989,8 +989,11 @@ Ingredient-administration experiment records retain a canonical experiment ident
 administration outcome, and one exact qualitative condition observation. Empty observations remain
 valid and do not mean "no effect." The bounded immutable journal preserves exact records in authored
 order, rejects duplicate experiment identities, and provides a pure append transition. Recording is
-not yet atomically coupled to authoritative administration, scene ownership, persistence, or a
-treatment consequence.
+now atomically gated on the administration outcome's exact authored world event being the most recent
+authoritative occurrence. The transition constructs the exact record only after that check and then
+delegates duplicate and capacity enforcement to the existing journal append transition. It does not
+infer efficacy, consume dosage, mutate disease truth, or provide scene ownership or persistence, so
+the broader universal experiment-recording requirement remains open.
 
 Investigation contracts keep open questions, hypotheses, evidence, conclusions, and consequences
 separate. Questions, hypotheses, conclusions, and non-executable consequences retain canonical
@@ -1002,6 +1005,21 @@ policy succeeds only when one whole route is visible and never pools partial alt
 Confirmation atomically removes the exact open question and appends the exact authored conclusion;
 it does not parse natural language, execute consequences, reveal hidden evidence, or change gameplay
 state.
+
+A hypothesis-recognition foundation canonicalizes a proposed question and hypothesis identity
+against exact open-question and authored-hypothesis snapshots while retaining the exact source
+natural-language utterance. Its output remains only a possible answer: it does not create a
+conclusion, evidence, belief, fact, or gameplay mutation. No provider/interpreter transport supplies
+those structured proposal identities yet, so end-to-end natural-language recognition remains open.
+
+Critical-conclusion route validation associates each evidence identity with a distinct authored
+source and whether that source requires character cooperation. Every critical plan must have at
+least two complete routes using at least three distinct sources, include one route independent of
+cooperation, and retain a complete route after any single source is removed. The representative
+first-patient investigation has four sources and two disjoint routes: abandoned-laundry residue plus
+an old-shrine inscription, or an assistant preparation note plus a cooled-dose observation. This
+authors investigation recovery only; it does not yet author the patient, remedy inventory, treatment
+events, disease effects, scene ownership, persistence, or acceptance flow.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

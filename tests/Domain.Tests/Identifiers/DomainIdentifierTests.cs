@@ -31,6 +31,7 @@ public sealed class DomainIdentifierTests
         Assert.Equal(value, new InvestigationHypothesisId(value).Value);
         Assert.Equal(value, new InvestigationConclusionId(value).Value);
         Assert.Equal(value, new InvestigationConsequenceId(value).Value);
+        Assert.Equal(value, new InvestigationEvidenceSourceId(value).Value);
     }
 
     [Theory]
@@ -66,6 +67,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentException>(() => new InvestigationHypothesisId(value));
         Assert.Throws<ArgumentException>(() => new InvestigationConclusionId(value));
         Assert.Throws<ArgumentException>(() => new InvestigationConsequenceId(value));
+        Assert.Throws<ArgumentException>(() => new InvestigationEvidenceSourceId(value));
     }
 
     [Fact]
@@ -91,6 +93,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentNullException>(() => new InvestigationHypothesisId(null!));
         Assert.Throws<ArgumentNullException>(() => new InvestigationConclusionId(null!));
         Assert.Throws<ArgumentNullException>(() => new InvestigationConsequenceId(null!));
+        Assert.Throws<ArgumentNullException>(() => new InvestigationEvidenceSourceId(null!));
     }
 
     [Fact]
@@ -140,6 +143,9 @@ public sealed class DomainIdentifierTests
         AssertRoundTrip(
             new InvestigationConsequenceId("patient-can-be-stabilized"),
             InvestigationConsequenceId.Parse);
+        AssertRoundTrip(
+            new InvestigationEvidenceSourceId("abandoned-laundry"),
+            InvestigationEvidenceSourceId.Parse);
     }
 
     private static void AssertRoundTrip<TIdentifier>(
