@@ -1122,6 +1122,22 @@ experiment records atomically. Rejected replacement and repeated calls preserve 
 unrelated scene state. There is still no player input or final UI, observed-text efficacy inference,
 investigation-consequence execution, Phase 6 persistence, provider call, release, or distribution.
 
+`Allrpcs.Domain.Persistence.FirstPatientSaveState` now composes the exact disease-truth,
+prepared-batch, administration-specific experiment, and universal experiment snapshots as one
+immutable value. `FirstPatientStateController.Capture` returns a fresh composition only when all
+four live snapshots are initialized. It does not mutate or reinterpret first-patient state, and its
+credential-free ordinary-scene smoke proves world-event, preparation, discovery, memory, dialogue,
+movement, model, and presentation state remain unchanged.
+
+`SaveSchemaVersion.FirstPatient` defines version `3`, whose in-memory `SaveSnapshot` retains one
+exact first-patient composition in addition to version-2 character memory and the earlier dynamic
+state. Earlier roots cannot retain this composition, and version `3` cannot omit it.
+`SaveSnapshotFirstPatientMigration` is the pure version-2 to version-3 prerequisite: callers must
+supply the exact authored initial first-patient state rather than having the migration fabricate
+disease truth. Version-3 load and JSON support remain disabled, and the serializer fails closed so
+it cannot silently discard the new state. No save document, storage, restoration, or scene capture
+root uses version `3` yet.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the

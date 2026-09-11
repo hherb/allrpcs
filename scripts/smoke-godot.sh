@@ -27,6 +27,7 @@ ALLRPCS_FIRST_PATIENT_STATE_CONTROLLER_CHECK=1 godot --headless --path "$reposit
 ALLRPCS_FIRST_PATIENT_CONTEXT_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_PREPARATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_ADMINISTRATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_FIRST_PATIENT_SAVE_STATE_CAPTURE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FOCUSED_SEARCH_WORLD_EVENT_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_WORLD_OBJECT_INTERACTION_FOCUS_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_CHARACTER_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30

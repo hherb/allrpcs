@@ -164,7 +164,8 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
             .ToArray();
         return properties.Length == 4
             && properties.All(property => property.CanRead && property.SetMethod?.IsPrivate == true)
-            && methods.Length == 3
+            && methods.Length == 4
+            && methods.Any(method => method.Name == nameof(FirstPatientStateController.Capture))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryInitialize))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryAddPreparedBatch))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryStabilize));
