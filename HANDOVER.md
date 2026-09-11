@@ -50,9 +50,11 @@ remaining Phase 6 roadmap checkboxes remain open.
 - the staged diff passed whitespace, formatting, 120-character, minimal-surface, exact-identity, and
   no-partial-state review
 
-Hosted Actions recently returned jobs with `steps: []` because of account/infrastructure state. Do
-not retry or dispatch a workflow unless that external condition changes; host-local quality remains
-the executed evidence.
+Draft PR #195 contains this work. Its initial run `34586326575` on
+`fba872d3a81eb09c13a47233d30dd61a0ebe847d` reported all five jobs as failures, but every job had
+`steps: []` and completed within 2–7 seconds. This is account/infrastructure state, not executed test
+evidence. Do not retry or dispatch a workflow unless that external condition changes; host-local
+quality remains the executed evidence.
 
 ## Exact next bounded slice
 
