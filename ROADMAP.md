@@ -273,7 +273,7 @@ Acceptance:
 - [x] Implement transmission exposure and discoverable protective measures.
 - [x] Implement patient assessment constrained by capability and perception.
 - [x] Implement comfort, stabilization, and cure outcomes.
-- [ ] Model ingredient identity, freshness, condition, quantity, and contamination.
+- [x] Model ingredient identity, freshness, condition, quantity, and contamination.
 - [ ] Model preparation order, grinding, heating, steeping, cooling, fermentation, dosage, and
   administration.
 - [ ] Record every experiment and observed outcome in the journal.

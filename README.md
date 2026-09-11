@@ -955,6 +955,20 @@ infection. Comfort leaves meaningful-event progression active, while stabilizati
 progression. Successful cure remains the separate explicit outcome that removes the infection.
 No provider text or qualitative observation can apply care or cure.
 
+Canonical `IngredientId` values identify authored ingredients independently of physical world
+objects. One immutable ingredient definition retains that exact identity. Ingredient quantities use
+only positive bounded integers in the closed count, milligram, or millilitre vocabulary; units never
+convert implicitly. One immutable ingredient state retains the exact definition and quantity plus
+closed qualitative freshness, pre-preparation physical condition, and contamination values. There
+is no decay clock, state transition, inventory, scene, persistence, provider, or discovery wiring.
+
+Ingredient preparation has a closed grinding, heating, steeping, cooling, and fermentation
+vocabulary. A plan copies one to 16 exact steps in authored order and permits repeated process kinds.
+Immutable progress exposes only the exact next step; a pure policy and transition advance it exactly
+once, and distinct value-equal or out-of-order steps fail closed. Plans do not yet specify ingredient
+requirements, results, tools, duration, temperature, events, dosage, administration, or treatment
+effects.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the
