@@ -47,9 +47,10 @@ directly. One clean aggregate retry then passed end to end without a product cha
 focused VSTest and Godot runs reproduced the known localhost-bind and `user://logs` restrictions;
 the identical host-local commands passed.
 
-GitHub Actions was still budget-rejected on merged PR #196: final-head run `34589507300` had five
-failed jobs with `steps: []`. Treat that as account/infrastructure state, not executed test evidence,
-and do not retry or dispatch hosted workflows unless the external condition changes.
+Draft PR #197 contains this work. Its initial-head credential-free run `34595367546` had five failed
+jobs with `steps: []`, confirming the same account-budget infrastructure condition as merged PR
+#196. Treat that as account/infrastructure state, not executed test evidence, and do not retry or
+dispatch hosted workflows unless the external condition changes.
 
 ## Exact next bounded slice
 
