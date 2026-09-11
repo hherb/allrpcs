@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #182 at `ff56055`. The current branch is
-`codex/phase-5-memory-retrieval`.
+`codex/phase-5-memory-retrieval`; draft PR #183 is open and mergeable.
 
 Phase 5 has provider-neutral Domain contracts for per-character recent conversation, episodic and
 epistemic memory, belief assessments, directional relationships, and unfinished commitments. All
@@ -40,8 +40,9 @@ completion policy exists yet.
 The generated `ScenarioValidator` native app host still stalls during macOS dynamic-loader startup.
 The same rebuilt validator DLL passes immediately through `dotnet exec`; this is a local app-host
 limitation, not a failing validator assertion. GitHub Actions budget was exhausted for prior draft
-PRs: jobs with zero steps are infrastructure state, not test evidence, and should not be dispatched
-again solely to compensate.
+PRs. All five PR #183 jobs were immediately reported failed with `steps: []`; this is account
+infrastructure state, not test evidence, and the jobs should not be dispatched again solely to
+compensate.
 
 ## Exact next bounded slice
 
