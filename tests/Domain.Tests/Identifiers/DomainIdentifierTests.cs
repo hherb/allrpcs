@@ -22,6 +22,7 @@ public sealed class DomainIdentifierTests
         Assert.Equal(value, new EpistemicMemoryId(value).Value);
         Assert.Equal(value, new RelationshipReasonId(value).Value);
         Assert.Equal(value, new CharacterCommitmentId(value).Value);
+        Assert.Equal(value, new CharacterConversationSummaryId(value).Value);
     }
 
     [Theory]
@@ -48,6 +49,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentException>(() => new EpistemicMemoryId(value));
         Assert.Throws<ArgumentException>(() => new RelationshipReasonId(value));
         Assert.Throws<ArgumentException>(() => new CharacterCommitmentId(value));
+        Assert.Throws<ArgumentException>(() => new CharacterConversationSummaryId(value));
     }
 
     [Fact]
@@ -64,6 +66,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentNullException>(() => new EpistemicMemoryId(null!));
         Assert.Throws<ArgumentNullException>(() => new RelationshipReasonId(null!));
         Assert.Throws<ArgumentNullException>(() => new CharacterCommitmentId(null!));
+        Assert.Throws<ArgumentNullException>(() => new CharacterConversationSummaryId(null!));
     }
 
     [Fact]
@@ -94,6 +97,9 @@ public sealed class DomainIdentifierTests
         AssertRoundTrip(new EpistemicMemoryId("moonwort-cooling"), EpistemicMemoryId.Parse);
         AssertRoundTrip(new RelationshipReasonId("kept-promise"), RelationshipReasonId.Parse);
         AssertRoundTrip(new CharacterCommitmentId("examine-herbs"), CharacterCommitmentId.Parse);
+        AssertRoundTrip(
+            new CharacterConversationSummaryId("earlier-moonwort-talk"),
+            CharacterConversationSummaryId.Parse);
     }
 
     private static void AssertRoundTrip<TIdentifier>(

@@ -246,8 +246,8 @@ Acceptance:
 - [x] Store belief confidence and supporting or contradicting evidence.
 - [x] Store relationships using bounded dimensions and recorded reasons.
 - [x] Store promises, assigned tasks, and unfinished commitments.
-- [ ] Retrieve memories by deterministic topic, entity, location, and relationship tags.
-- [ ] Summarize older conversations without deleting the authoritative transcript.
+- [x] Retrieve memories by deterministic topic, entity, location, and relationship tags.
+- [x] Summarize older conversations without deleting the authoritative transcript.
 - [ ] Keep canonical memory local even when a provider offers server-side conversation state.
 - [ ] Avoid storing or requesting hidden chain-of-thought.
 - [ ] Bound relationship changes so one ordinary exchange cannot cause an implausible reversal.
