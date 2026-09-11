@@ -834,6 +834,26 @@ snapshot preserves at most 128 exact commitments in stable unique-identity order
 completion transition, scheduling, execution policy, retrieval, persistence, save-schema change,
 provider-context projection, migration, or provider-side state in these Domain-only contracts.
 
+Deterministic memory indexing uses four closed local categories—episodic, epistemic, relationship,
+and commitment—and four closed canonical tag kinds: topic, entity, location, and relationship. A
+category-safe reference retains exactly one existing memory and its exact owner; each index entry
+copies 1 to 16 unique tags in supplied order, and a per-character index copies at most 576 exact
+entries with unique category-specific memory identities. The index does not copy memory content or
+derive, summarize, persist, or project any memory. A per-character query copies 1 to 8 unique exact
+tags and requests 1 to 32 results. Pure retrieval requires all query tags, distinguishes the same
+value under different tag kinds, returns exact entries in index order, and stops at the requested
+bound without scoring, ranking, fuzzy matching, or input mutation.
+
+Older-conversation summaries remain separate from both the bounded recent window and the
+authoritative transcript. Each local `CharacterConversationSummary` has a canonical identity, one
+exact remembering character, 1 to 32 copied unique exact source-turn identities in supplied order,
+and non-blank text of at most 2,000 UTF-16 code units. A copied per-character snapshot retains at
+most 128 exact summaries with unique identities. These contracts do not derive or generate text,
+persist, migrate, index, retrieve, or project summaries. A pure recording transition accepts only
+source-turn identities present in the recent window in the same relative order, appends the exact
+caller-supplied summary, and returns the exact recent window and authoritative transcript unchanged;
+it neither edits nor evicts either conversation source.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the
