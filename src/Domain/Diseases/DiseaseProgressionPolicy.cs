@@ -27,6 +27,7 @@ public static class DiseaseProgressionPolicy
             && eventLog.Entries.Any(eventId => ReferenceEquals(eventId, worldEvent.EventId))
             && ReferenceEquals(worldTime.CurrentEventId, worldEvent.EventId)
             && infection.LastProgressionEventId != worldEvent.EventId
+            && !ReferenceEquals(infection.CareState, DiseaseCareState.Stabilized)
             && !ReferenceEquals(infection.Stage, DiseaseStage.FinalDecline);
     }
 }

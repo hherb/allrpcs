@@ -13,17 +13,20 @@ public sealed class DiseaseCureTransitionTests
             new CharacterId("first-patient"),
             disease,
             DiseaseStage.EarlyIllness,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
         CharacterDiseaseState cured = new(
             new CharacterId("patient"),
             disease,
             DiseaseStage.DeepSleep,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
         CharacterDiseaseState after = new(
             new CharacterId("last-patient"),
             disease,
             DiseaseStage.Drowsing,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
         DiseaseDefinitionSnapshot definitions = new([disease]);
         DiseaseTruthSnapshot truth = new(definitions, [before, cured, after]);
         DiseaseCureEligibilityPolicyTests.CureInput input =

@@ -123,5 +123,10 @@ public sealed class DiseaseTruthSnapshotTests
         string characterId,
         DiseaseDefinition disease,
         DiseaseStage stage) =>
-        new(new CharacterId(characterId), disease, stage, null);
+        new(
+            new CharacterId(characterId),
+            disease,
+            stage,
+            null,
+            DiseaseCareState.Unassisted);
 }

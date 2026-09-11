@@ -34,7 +34,8 @@ public sealed class DiseaseExposureTransitionTests
             new("healer"),
             input.Outcome.Disease,
             DiseaseStage.Drowsing,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
         DiseaseTruthSnapshot truth = new(input.Truth.Definitions, [existing]);
 
         DiseaseTruthSnapshot result = DiseaseExposureTransition.Apply(

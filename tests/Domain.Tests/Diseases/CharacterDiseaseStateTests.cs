@@ -13,12 +13,18 @@ public sealed class CharacterDiseaseStateTests
         DiseaseStage stage = DiseaseStage.EarlyIllness;
         WorldEventId lastProgressionEventId = new("patient-became-ill");
 
-        CharacterDiseaseState state = new(characterId, disease, stage, lastProgressionEventId);
+        CharacterDiseaseState state = new(
+            characterId,
+            disease,
+            stage,
+            lastProgressionEventId,
+            DiseaseCareState.Unassisted);
 
         Assert.Same(characterId, state.CharacterId);
         Assert.Same(disease, state.Disease);
         Assert.Same(stage, state.Stage);
         Assert.Same(lastProgressionEventId, state.LastProgressionEventId);
+        Assert.Same(DiseaseCareState.Unassisted, state.CareState);
     }
 
     [Fact]
@@ -28,13 +34,19 @@ public sealed class CharacterDiseaseStateTests
         DiseaseDefinition disease = new(new DiseaseId("grey-sleep"));
 
         Assert.Throws<ArgumentNullException>(() => new CharacterDiseaseState(
-            null!, disease, DiseaseStage.Exposed, null));
+            null!, disease, DiseaseStage.Exposed, null, DiseaseCareState.Unassisted));
         Assert.Throws<ArgumentNullException>(() => new CharacterDiseaseState(
-            characterId, null!, DiseaseStage.Exposed, null));
+            characterId, null!, DiseaseStage.Exposed, null, DiseaseCareState.Unassisted));
         Assert.Throws<ArgumentNullException>(() => new CharacterDiseaseState(
-            characterId, disease, null!, null));
+            characterId, disease, null!, null, DiseaseCareState.Unassisted));
+        Assert.Throws<ArgumentNullException>(() => new CharacterDiseaseState(
+            characterId, disease, DiseaseStage.Exposed, null, null!));
         Assert.Null(new CharacterDiseaseState(
-            characterId, disease, DiseaseStage.Exposed, null).LastProgressionEventId);
+            characterId,
+            disease,
+            DiseaseStage.Exposed,
+            null,
+            DiseaseCareState.Unassisted).LastProgressionEventId);
     }
 
     [Fact]
@@ -50,6 +62,7 @@ public sealed class CharacterDiseaseStateTests
 
         Assert.Equal(
             [
+                ("CareState", typeof(DiseaseCareState), false),
                 ("CharacterId", typeof(CharacterId), false),
                 ("Disease", typeof(DiseaseDefinition), false),
                 ("LastProgressionEventId", typeof(WorldEventId), false),
@@ -61,7 +74,8 @@ public sealed class CharacterDiseaseStateTests
             parameter => Assert.Equal(typeof(CharacterId), parameter.ParameterType),
             parameter => Assert.Equal(typeof(DiseaseDefinition), parameter.ParameterType),
             parameter => Assert.Equal(typeof(DiseaseStage), parameter.ParameterType),
-            parameter => Assert.Equal(typeof(WorldEventId), parameter.ParameterType));
+            parameter => Assert.Equal(typeof(WorldEventId), parameter.ParameterType),
+            parameter => Assert.Equal(typeof(DiseaseCareState), parameter.ParameterType));
         Assert.Empty(stateType.GetEvents());
         Assert.True(stateType.IsSealed);
     }

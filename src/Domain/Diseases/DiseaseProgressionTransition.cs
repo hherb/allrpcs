@@ -29,7 +29,8 @@ public static class DiseaseProgressionTransition
             infection.CharacterId,
             infection.Disease,
             NextStage(infection.Stage),
-            worldEvent.EventId);
+            worldEvent.EventId,
+            infection.CareState);
         CharacterDiseaseState[] infections = truth.Infections
             .Select(candidate => ReferenceEquals(candidate, infection) ? advanced : candidate)
             .ToArray();

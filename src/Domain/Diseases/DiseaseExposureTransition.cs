@@ -27,7 +27,8 @@ public static class DiseaseExposureTransition
             outcome.CharacterId,
             outcome.Disease,
             DiseaseStage.Exposed,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
 
         return new DiseaseTruthSnapshot(
             truth.Definitions,

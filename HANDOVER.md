@@ -2,51 +2,53 @@
 
 ## Current state
 
-`main` contains merged PR #189 at `9e4ddfa`. The current branch is
-`codex/phase-6-treatment-foundation`.
+`main` contains merged PR #190 at `f8eefe0`. The current branch is
+`codex/phase-6-patient-assessment`.
 
-Phase 6 now has bounded engine-owned disease truth, authored meaningful-event progression, dormant
-effective-controller selection from deep sleep onward, and qualitative condition projection. An
-explicit successful-cure outcome retains the exact infection and authored world event; its pure
-transition requires that event to be the most recently recorded occurrence and removes only that
-infection. Removing the last deep infection restores the exact configured controller, while another
-deep infection keeps the character dormant.
+Phase 6 now includes bounded hidden disease truth, authored meaningful-event progression,
+qualitative condition projection, dormant-controller selection, exact-event cure and exposure,
+discoverable protection, patient assessment, and supportive care.
 
-Authored transmission exposure retains an exact character, disease definition, and world event. It
-requires that event to be the most recently recorded occurrence and appends one `Exposed` infection
-only for canonical capacity-available truth without an
-existing matching infection or active matching protection. Bounded protective-measure definitions
-link exact diseases to discovery-evidence identities. A protection becomes active only when its exact
-definition is known in the exact character evidence view and its authored application event is the
-most recently recorded occurrence. These contracts do not infer authoritative outcomes from provider
-text or condition labels.
+Patient assessment retains exact assessor/patient identities and succeeds only for a distinct
+perceived patient, the matching exact assessor, an authored `assess-patients` capability, and at most
+32 inspected capabilities. It returns only deduplicated fixed qualitative conditions for that
+patient. Exposure, disease identity, stage, diagnosis, beliefs, and treatment authority stay hidden.
 
-There is no disease scene ownership, persistence, automatic progression or transmission, protection
-duration/removal, patient assessment, broader treatment or recovery, ingredient/preparation model,
-experiment journal, conclusion system, UI, or provider wiring yet.
+Every infection has a closed unassisted, comforted, or stabilized care state. Exact authored current
+events can monotonically apply comfort or stabilization to one exact infection. Comfort does not stop
+progression; stabilization does. The existing explicit cure removes the infection. No provider text
+or qualitative condition can create any outcome.
+
+There is no disease scene ownership, persistence, automatic progression/transmission, protection
+duration/removal, treatment discovery, ingredient/preparation model, experiment journal, conclusion
+system, UI, or provider wiring.
 
 ## Validation
 
-- workflow validation, restore, formatting, and zero-warning complete solution build
-- 1,603 Domain, 388 Application, 423 Infrastructure, and 8 architecture tests
-- representative discovery scenario: 5 valid evidence definitions through the rebuilt validator DLL
-- all 77 credential-free Godot smokes
-- bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
+- complete `./scripts/quality.sh` passed: workflow validation, restore, formatting, and zero-warning
+  solution build
+- 1,626 Domain, 393 Application, 423 Infrastructure, and 8 architecture tests passed
+- representative discovery scenario validated 5 evidence definitions
+- all 77 credential-free Godot smokes passed
+- bounded 60-frame Compatibility-renderer launch passed on Godot 4.6.3 .NET
+
+Draft PR #191 is open from this branch. Its initial hosted run `34573907536` ended with all five
+jobs reporting `steps: []`; no checkout or test step ran. Treat that as unavailable
+account/infrastructure evidence, not a product failure, and do not retry or dispatch it without a
+changed external condition.
 
 ## Exact next bounded slice
 
-Take **Phase 6d1: capability- and perception-constrained patient assessment**.
+Take **Phase 6f1: ingredient identity and quantity foundation**.
 
 Acceptance boundary:
 
-1. Add the smallest immutable patient-assessment request and character-to-character perception input,
-   retaining exact assessor and patient identities without exposing hidden disease identity or stage.
-2. Add a pure eligibility policy that requires the matching perception input and an explicitly
-   authored assessment capability; fail closed for self-assessment, absent/mismatched perception,
-   missing capability, nulls, and over-budget inputs.
-3. Project only the existing fixed qualitative observable conditions for the exact perceived patient;
-   keep `Exposed` invisible and do not turn observations into diagnoses, facts, beliefs, or treatment
-   authority.
-4. Do not add scene wiring, persistence, model context, UI, automatic progression/transmission,
-   protection duration/removal, comfort/stabilization/cure discovery, recipes, ingredients,
-   experiments, hypotheses, conclusions, or journal behavior.
+1. Add a canonical ingredient identity distinct from world-object identity and the smallest immutable
+   authored ingredient definition retaining that exact identity.
+2. Add an immutable positive bounded quantity with an explicit closed unit vocabulary suitable for
+   later dosage work; validate limits without floating-point arithmetic or implicit unit conversion.
+3. Add focused reflection-backed tests for exact-instance retention, singleton vocabulary parsing,
+   numeric boundaries, nulls, and a minimal public API.
+4. Do not yet add freshness, physical condition, contamination, preparation steps, recipes, dosage,
+   administration, inventory/scene/persistence/provider wiring, experiments, journal behavior, or
+   treatment discovery; keep the broader ingredient roadmap item unchecked.

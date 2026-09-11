@@ -55,7 +55,8 @@ public sealed class DiseaseProgressionTransitionTests
             new CharacterId("healer"),
             disease,
             DiseaseStage.Exposed,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
         DiseaseDefinitionSnapshot definitions = new([disease]);
         DiseaseTruthSnapshot truth = new(definitions, [target, other]);
         WorldEvent worldEvent = DiseaseProgressionPolicyTests.Event(

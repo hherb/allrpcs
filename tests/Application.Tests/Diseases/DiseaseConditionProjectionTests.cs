@@ -53,7 +53,8 @@ public sealed class DiseaseConditionProjectionTests
             new CharacterId(input.Infection.CharacterId.Value),
             input.Infection.Disease,
             input.Infection.Stage,
-            input.Infection.LastProgressionEventId);
+            input.Infection.LastProgressionEventId,
+            input.Infection.CareState);
 
         Assert.Throws<ArgumentException>(() =>
             DiseaseConditionProjection.Project(replacement, input.Truth));
@@ -87,7 +88,8 @@ public sealed class DiseaseConditionProjectionTests
             new CharacterId("patient"),
             disease,
             stage,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
 
         return (
             infection,
