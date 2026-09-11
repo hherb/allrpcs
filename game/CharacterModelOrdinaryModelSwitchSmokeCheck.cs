@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Godot;
 
@@ -14,6 +15,9 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private const string SecondPlayerText = "Will you also wait near the garden?";
     private const string FirstSpeechText = "I will wait beside the stream.";
     private const string SecondSpeechText = "I will also wait near the garden.";
+    private const string RestoredCommitmentText =
+        "kind=promise;counterparty=seeker;source-turn=turn-one;"
+        + "description=Inspect the moonwort before collection.";
     private const int MaximumProcessFrames = 240;
 
     private readonly ScriptedWaitModel firstModel = new(FirstSpeechText, waitsForRelease: true);
@@ -22,6 +26,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private CharacterModelBinding anthropicBinding = null!;
     private TemporaryCharacterModelSource modelSource = null!;
     private CharacterModelGenerationFlowController flow = null!;
+    private CharacterMemoryController memoryController = null!;
     private DialogueInputController dialogueInputController = null!;
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
@@ -29,6 +34,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
     private FocusedSearchActivityController searchController = null!;
+    private SaveSnapshotJsonController saveController = null!;
     private LineEdit inputControl = null!;
     private int processFrames;
     private int stage;
@@ -36,6 +42,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
+    private CharacterMemorySnapshot? initialMemory;
     private CharacterTurnRequest? firstRequest;
     private CharacterTurnRequest? secondRequest;
     private CharacterModelStreamSnapshot? firstResult;
@@ -93,6 +100,8 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         searchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        saveController = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
         inputControl = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
@@ -130,10 +139,25 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
 
     private void CaptureInitialStateAndSubmit()
     {
+        CharacterMemorySnapshot promised =
+            CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
+        memoryController.Install(promised);
+        string? serialized = saveController.CaptureSerialized();
+        memoryController.Install(new CharacterMemorySnapshot([]));
+        if (serialized is null
+            || !saveController.TryRestoreSerialized(serialized)
+            || ReferenceEquals(memoryController.Memory, promised)
+            || !HasCanonicalPromise(memoryController.Memory))
+        {
+            Fail("The model-switch smoke could not restore its canonical healer promise.");
+            return;
+        }
+
         initialEventLog = worldEventController.EventLog;
         initialWorldTime = worldEventController.WorldTime;
         initialWorldObjects = worldObjectController.WorldObjects;
         initialPerception = searchController.Perception;
+        initialMemory = memoryController.Memory;
         Submit(FirstPlayerText);
     }
 
@@ -184,6 +208,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             || secondModel.CallCount != 0
             || !ReferenceEquals(firstModel.ReceivedRequest?.TurnRequest, firstRequest)
             || !HasCurrentUntrustedDialogue(firstModel.ReceivedRequest, FirstPlayerText)
+            || !HasRestoredCommitment(firstModel.ReceivedRequest)
             || termination is not
             {
                 Status: CharacterModelStreamTerminationStatus.Completed,
@@ -256,6 +281,8 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             || !ReferenceEquals(secondModel.ReceivedRequest?.TurnRequest, secondRequest)
             || ReferenceEquals(firstModel.ReceivedRequest, secondModel.ReceivedRequest)
             || !HasCurrentUntrustedDialogue(secondModel.ReceivedRequest, SecondPlayerText)
+            || !HasRestoredCommitment(secondModel.ReceivedRequest)
+            || !HasMatchingMemoryAcrossProviderSwitch()
             || result.Updates.Count != 2
             || result.Updates[0] is not CharacterModelTextDelta { Text: SecondSpeechText }
             || termination is not
@@ -282,8 +309,10 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         GD.Print(
             "Ordinary character-model provider-switch smoke passed: exact caller-composed "
             + "OpenAI and Anthropic bindings served distinct consecutive requests, active-turn "
-            + "replacement affected only the future request, unavailable Ollama selection did "
-            + "not substitute a model, and no state crossed turn boundaries.");
+            + "replacement affected only the future request, one serialized and restored healer "
+            + "promise retained its source in both bounded requests without the campaign "
+            + "transcript, unavailable Ollama selection did not substitute a model, and no state "
+            + "crossed turn boundaries.");
         GetTree().Quit();
     }
 
@@ -303,11 +332,40 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             entry.Kind == CharacterModelContextEntryKind.UntrustedPlayerDialogue
             && entry.Text == expectedText) == 1;
 
+    private static bool HasRestoredCommitment(CharacterModelGenerationRequest? request) =>
+        request?.Context.Entries.Count(entry =>
+            entry.Kind == CharacterModelContextEntryKind.Memory
+            && entry.Text == RestoredCommitmentText) == 1;
+
+    private bool HasMatchingMemoryAcrossProviderSwitch()
+    {
+        CharacterModelContextEntry? firstMemory = firstModel.ReceivedRequest?.Context.Entries.Single(
+            entry => entry.Kind == CharacterModelContextEntryKind.Memory);
+        CharacterModelContextEntry? secondMemory = secondModel.ReceivedRequest?.Context.Entries.Single(
+            entry => entry.Kind == CharacterModelContextEntryKind.Memory);
+        return firstMemory is not null
+            && secondMemory is not null
+            && firstMemory.Text == secondMemory.Text
+            && !ReferenceEquals(firstMemory, secondMemory);
+    }
+
+    private static bool HasCanonicalPromise(CharacterMemorySnapshot memory)
+    {
+        CharacterMemoryAggregate aggregate = memory.Characters.Single();
+        CharacterCommitmentMemory promise = aggregate.Commitments.Commitments.Single();
+        return aggregate.CharacterId.Value == "healer"
+            && ReferenceEquals(promise.Kind, CharacterCommitmentKind.Promise)
+            && promise.CounterpartyCharacterId.Value == "seeker"
+            && promise.SourceTurnId.Value == "turn-one"
+            && promise.Description == "Inspect the moonwort before collection.";
+    }
+
     private bool HasUnchangedAuthoritativeState() =>
         ReferenceEquals(worldEventController.EventLog, initialEventLog)
         && ReferenceEquals(worldEventController.WorldTime, initialWorldTime)
         && ReferenceEquals(worldObjectController.WorldObjects, initialWorldObjects)
-        && ReferenceEquals(searchController.Perception, initialPerception);
+        && ReferenceEquals(searchController.Perception, initialPerception)
+        && ReferenceEquals(memoryController.Memory, initialMemory);
 
     private void Submit(string text)
     {

@@ -847,8 +847,7 @@ Unfinished character commitments are stored separately as promises, assigned tas
 other kind. Each `CharacterCommitmentMemory` has a canonical identity, exact responsible character,
 exact counterparty, exact completed source turn, and bounded description. A copied per-character
 snapshot preserves at most 128 exact commitments in stable unique-identity order. There is no
-completion transition, scheduling, execution policy, retrieval, persistence, save-schema change,
-provider-context projection, migration, or provider-side state in these Domain-only contracts.
+completion transition, scheduling, execution policy, or provider-side state in these contracts.
 
 Deterministic memory indexing uses four closed local categories—episodic, epistemic, relationship,
 and commitment—and four closed canonical tag kinds: topic, entity, location, and relationship. A
@@ -889,18 +888,29 @@ already-version-`2` roots retain their fully materialized memory. The scene owns
 memory snapshot, starts explicitly empty, captures canonical version-`2` JSON, and installs memory
 with discovery and world-event state only after one complete preflight. Rejected roots preserve all
 three state areas, and legacy documents cannot silently discard populated memory. This boundary does
-not synthesize memory, project it into provider context, complete commitments, change relationships,
-add save UI, or alter the authoritative transcript.
+not synthesize memory, complete commitments, change relationships, add save UI, or alter the
+authoritative transcript.
+
+One pure Application projection now selects only the value-equal responding character's exact
+unfinished commitments from canonical memory. It emits stable `Memory` entries containing only the
+closed commitment kind, counterparty identity, completed source-turn identity, and exact description;
+missing character memory yields no entries, while null or over-budget input fails closed through the
+canonical memory and existing model-context bounds. The temporary scene supplies those entries from
+the scene-owned memory controller to the existing context assembler. A credential-free ordinary-flow
+smoke serializes a healer promise, resets and restores canonical memory, and proves the same bounded
+promise and source reach distinct consecutive OpenAI- and Anthropic-bound requests after an exact
+future-turn binding replacement, without supplying the complete campaign transcript. Providers still
+cannot own, rewrite, derive, summarize, complete, or otherwise mutate canonical memory.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the
 Application assembler. One identified herb-patch description, one referenced knowledge entry, one
-goal, the exact heard in-world request, and the same text explicitly marked as untrusted player
-dialogue enter the bounded request. The unnoticed stone marker, unreferenced knowledge, display
-names, and other scene state stay absent. The returned bundle retains the exact authoritative
-world-object and empty targeted-affordance snapshots used for response validation; that empty
-snapshot permits only the validation policy's inherent target-free `Wait` intention.
+goal, only canonical unfinished commitment memory for the healer, the exact heard in-world request,
+and the same text explicitly marked as untrusted player dialogue enter the bounded request. The
+unnoticed stone marker, unreferenced knowledge, other characters' memory, display names, and other
+scene state stay absent. The returned bundle retains the exact authoritative world-object and
+targeted-affordance snapshots used for response validation.
 
 `Allrpcs.Infrastructure.Dialogue.CharacterTurnResponseJsonDeserializer` is the first strict
 provider-response boundary. It accepts one exact provider-neutral turn request and a complete JSON
