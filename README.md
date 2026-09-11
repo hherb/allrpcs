@@ -342,9 +342,10 @@ text are rejected rather than normalized. `Value`, `ToString()`, parsing, and re
 stable round-trip boundaries.
 
 `SaveSchemaVersionSupportPolicy.CanLoad` separately accepts only version `1`, including a distinct
-value-equal instance. Later positive versions remain valid version values but fail closed until an
-explicit load contract exists. The policy leaves its input unchanged and does not parse, migrate,
-serialize, or load anything.
+value-equal instance. Version `2` now has a complete JSON contract but remains outside this live-load
+gate until scene-owned character memory can be restored atomically with discovery and world-event
+state. Later positive versions remain valid version values but fail closed. The policy leaves its
+input unchanged and does not parse, migrate, serialize, or load anything.
 
 These version boundaries do not themselves define a save aggregate, serializer, file or path
 policy, storage provider, migration, load orchestration, autosave, replay, Godot integration,
@@ -366,9 +367,9 @@ serialization, restoration, or controller behavior.
 save state, world-event save state, and canonical all-character memory snapshot through get-only
 properties and rejects null components. Its legacy version-`1` constructor supplies one shared
 immutable empty-memory snapshot, and version `1` rejects populated memory. The character-memory
-schema vocabulary is version `2`, but that version remains unsupported by loading and JSON until its
-complete representation is implemented. Record equality continues to use the version value and
-retained state instances.
+schema vocabulary is version `2`; its complete JSON representation is implemented while live scene
+loading remains separately gated. Record equality continues to use the version value and retained
+state instances.
 
 `SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates the complete
 decision to `SaveSchemaVersionSupportPolicy`, accepts only a version-`1` root, preserves the root
@@ -431,20 +432,24 @@ captured root can pass through the existing restoration coordinator. It does not
 file or path, access storage, migrate, replay, autosave, or orchestrate startup loading.
 
 `Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer` writes one compact canonical JSON
-document from a complete save root. Version, object names, arrays, and array entry fields have one
-stable order; all identifier and visibility values use their existing canonical text; and an
-unadvanced world time is represented explicitly as JSON `null`. Serialization preserves the input
-root and its exact nested instances. It does not write a file, choose a path, validate a scenario,
-migrate, encrypt, or restore runtime state. It rejects the character-memory version until that
-version's JSON representation exists, preventing silent memory loss.
+document from a complete version-`1` or version-`2` save root. The version-`1` document remains
+unchanged. Version `2` appends all-character memory with each aggregate constituent in stable
+supplied order. Belief assessments and deterministic index entries refer to exact retained memories
+by canonical identity; index references also carry their category so same-valued identities remain
+unambiguous. Nullable speech, targets, attributed speakers, and qualitative time are explicit JSON
+`null` values. Provider identifiers, credentials, provider state, hidden reasoning, and an additional
+authoritative transcript are absent. Serialization preserves the root and every nested input and
+does not write a file, choose a path, validate a scenario, migrate, encrypt, or restore runtime state.
 
-`SaveSnapshotJsonDeserializer` is the strict version-`1` inverse. It accepts only the complete known
-object shape and exact JSON value kinds, rejecting malformed JSON, comments, trailing commas,
-duplicate, missing, or unknown properties, non-canonical versions and identifiers, unknown
-visibility values, invalid duplicate collections, and unsupported future versions. Successful reads
-materialize fresh immutable Domain values in their serialized order. Scenario-specific ownership,
-world-object, event-log, and qualitative-time eligibility remains with
-`SaveSnapshotRestorationPolicy`; the deserializer does not access storage or mutate controllers.
+`SaveSnapshotJsonDeserializer` is the strict inverse for both known JSON versions. It accepts only
+each version's complete closed object shape and exact JSON value kinds, rejecting malformed JSON,
+comments, trailing commas, duplicate, missing, or unknown properties, non-canonical versions and
+identifiers, unknown closed values, invalid collections, and unresolved memory references.
+Successful version-`2` reads materialize fresh immutable Domain values in serialized order while
+reconnecting each belief assessment and index entry to the exact deserialized memory instance.
+`DeserializeCurrent` additionally executes the pure version-`1` to version-`2` empty-memory
+migration and returns an existing version-`2` root unchanged. Scenario eligibility and live loading
+remain separate; neither entry point accesses storage or mutates controllers.
 
 `SaveSnapshotJsonController` is the scene composition seam for serialized in-memory round trips.
 `CaptureSerialized` delegates exact live capture to `SaveSnapshotCaptureController` before canonical

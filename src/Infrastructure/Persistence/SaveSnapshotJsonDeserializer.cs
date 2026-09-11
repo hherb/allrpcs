@@ -14,7 +14,7 @@ public static class SaveSnapshotJsonDeserializer
     private const int MaximumJsonDepth = 16;
 
     /// <summary>
-    /// Materializes one complete version-1 snapshot, rejecting malformed or unexpected structure.
+    /// Materializes one complete known snapshot, rejecting malformed or unexpected structure.
     /// </summary>
     public static SaveSnapshot Deserialize(string serialized)
     {
@@ -46,13 +46,44 @@ public static class SaveSnapshotJsonDeserializer
         }
     }
 
+    /// <summary>
+    /// Materializes one known document and migrates version 1 to the current memory schema.
+    /// </summary>
+    public static SaveSnapshot DeserializeCurrent(string serialized)
+    {
+        SaveSnapshot snapshot = Deserialize(serialized);
+        return snapshot.SchemaVersion == SaveSchemaVersion.FirstSupported
+            ? SaveSnapshotCharacterMemoryMigration.Migrate(snapshot)
+            : snapshot;
+    }
+
     private static SaveSnapshot ReadSnapshot(JsonElement element)
     {
-        RequireObject(element, "schemaVersion", "discovery", "worldEvents");
-        SaveSchemaVersion version = ReadVersion(element.GetProperty("schemaVersion"));
+        if (element.ValueKind != JsonValueKind.Object
+            || !element.TryGetProperty("schemaVersion", out JsonElement versionElement))
+        {
+            throw InvalidDocument();
+        }
+
+        SaveSchemaVersion version = ReadVersion(versionElement);
+        if (version == SaveSchemaVersion.FirstSupported)
+        {
+            RequireObject(element, "schemaVersion", "discovery", "worldEvents");
+        }
+        else
+        {
+            RequireObject(element, "schemaVersion", "discovery", "worldEvents", "characterMemory");
+        }
+
         DiscoverySaveState discovery = ReadDiscovery(element.GetProperty("discovery"));
         WorldEventSaveState worldEvents = ReadWorldEvents(element.GetProperty("worldEvents"));
-        return new SaveSnapshot(version, discovery, worldEvents);
+        return version == SaveSchemaVersion.FirstSupported
+            ? new SaveSnapshot(version, discovery, worldEvents)
+            : new SaveSnapshot(
+                version,
+                discovery,
+                worldEvents,
+                CharacterMemoryJsonReader.Read(element.GetProperty("characterMemory")));
     }
 
     private static SaveSchemaVersion ReadVersion(JsonElement element)
@@ -67,13 +98,12 @@ public static class SaveSnapshotJsonDeserializer
             throw InvalidDocument();
         }
 
-        SaveSchemaVersion version = new(value);
-        if (!SaveSchemaVersionSupportPolicy.CanLoad(version))
+        return value switch
         {
-            throw InvalidDocument();
-        }
-
-        return version;
+            1 => SaveSchemaVersion.FirstSupported,
+            2 => SaveSchemaVersion.CharacterMemory,
+            _ => throw InvalidDocument(),
+        };
     }
 
     private static DiscoverySaveState ReadDiscovery(JsonElement element)
@@ -213,7 +243,22 @@ public static class SaveSnapshotJsonDeserializer
             new WorldTimeSnapshot(currentTimeEventId));
     }
 
-    private static string ReadString(JsonElement element)
+    internal static int ReadInt32(JsonElement element)
+    {
+        if (element.ValueKind != JsonValueKind.Number
+            || !element.TryGetInt32(out int value)
+            || !string.Equals(
+                element.GetRawText(),
+                value.ToString(CultureInfo.InvariantCulture),
+                StringComparison.Ordinal))
+        {
+            throw InvalidDocument();
+        }
+
+        return value;
+    }
+
+    internal static string ReadString(JsonElement element)
     {
         if (element.ValueKind != JsonValueKind.String)
         {
@@ -223,7 +268,7 @@ public static class SaveSnapshotJsonDeserializer
         return element.GetString() ?? throw InvalidDocument();
     }
 
-    private static void RequireArray(JsonElement element)
+    internal static void RequireArray(JsonElement element)
     {
         if (element.ValueKind != JsonValueKind.Array)
         {
@@ -231,7 +276,7 @@ public static class SaveSnapshotJsonDeserializer
         }
     }
 
-    private static void RequireObject(JsonElement element, params string[] propertyNames)
+    internal static void RequireObject(JsonElement element, params string[] propertyNames)
     {
         if (element.ValueKind != JsonValueKind.Object)
         {
@@ -254,6 +299,6 @@ public static class SaveSnapshotJsonDeserializer
         }
     }
 
-    private static InvalidDataException InvalidDocument() =>
+    internal static InvalidDataException InvalidDocument() =>
         new("Unexpected save-snapshot JSON structure or value.");
 }
