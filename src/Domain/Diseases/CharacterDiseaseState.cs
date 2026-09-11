@@ -10,16 +10,19 @@ public sealed record CharacterDiseaseState
         CharacterId characterId,
         DiseaseDefinition disease,
         DiseaseStage stage,
-        WorldEventId? lastProgressionEventId)
+        WorldEventId? lastProgressionEventId,
+        DiseaseCareState careState)
     {
         ArgumentNullException.ThrowIfNull(characterId);
         ArgumentNullException.ThrowIfNull(disease);
         ArgumentNullException.ThrowIfNull(stage);
+        ArgumentNullException.ThrowIfNull(careState);
 
         CharacterId = characterId;
         Disease = disease;
         Stage = stage;
         LastProgressionEventId = lastProgressionEventId;
+        CareState = careState;
     }
 
     /// <summary>Gets the exact infected character identity.</summary>
@@ -33,4 +36,7 @@ public sealed record CharacterDiseaseState
 
     /// <summary>Gets the exact meaningful-time event last consumed for progression, if any.</summary>
     public WorldEventId? LastProgressionEventId { get; }
+
+    /// <summary>Gets the exact current supportive-care state.</summary>
+    public DiseaseCareState CareState { get; }
 }

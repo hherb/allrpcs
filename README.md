@@ -936,8 +936,24 @@ infected, capacity remains, and no matching active protection exists. Protective
 link an exact disease to a discovery-evidence identity; applying one requires that exact definition,
 the evidence in the exact character view, and the most recently recorded authored application event.
 Protection and infection state stay bounded and immutable. There is still no automatic spread,
-duration or removal of protection, scene ownership, persistence, patient assessment, comfort,
-stabilization, recipe, ingredient, experiment, journal, UI, or provider wiring.
+duration or removal of protection, scene ownership, persistence, recipe, ingredient, experiment,
+journal, UI, or provider wiring.
+
+Patient assessment is a pure, fail-closed Application projection over engine-owned truth. Immutable
+requests and character-to-character perception inputs retain exact assessor and patient identities.
+Eligibility requires a distinct patient, matching perception, the exact assessor character, an
+authored `assess-patients` capability, and no more than 32 inspected capabilities. Eligible results
+contain only the existing fixed qualitative condition vocabulary for the perceived patient; exposure
+and disease identities remain hidden, and equal symptoms from multiple diseases are deduplicated.
+The result is an observation, not a diagnosis, fact, belief, or treatment authority.
+
+Each infection now retains one closed supportive-care state: unassisted, comforted, or stabilized.
+Explicit comfort and stabilization outcomes retain the exact infection, stronger care state, and
+authored world event. Their pure policy requires that infection and event by exact instance and that
+event as the most recently recorded occurrence; the transition replaces only the cared-for
+infection. Comfort leaves meaningful-event progression active, while stabilization blocks further
+progression. Successful cure remains the separate explicit outcome that removes the infection.
+No provider text or qualitative observation can apply care or cure.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input

@@ -271,8 +271,8 @@ Acceptance:
 - [x] Advance disease only through authored meaningful-time events.
 - [x] Expose qualitative condition changes rather than exact countdowns.
 - [x] Implement transmission exposure and discoverable protective measures.
-- [ ] Implement patient assessment constrained by capability and perception.
-- [ ] Implement comfort, stabilization, and cure outcomes.
+- [x] Implement patient assessment constrained by capability and perception.
+- [x] Implement comfort, stabilization, and cure outcomes.
 - [ ] Model ingredient identity, freshness, condition, quantity, and contamination.
 - [ ] Model preparation order, grinding, heating, steeping, cooling, fermentation, dosage, and
   administration.

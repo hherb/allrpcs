@@ -97,6 +97,33 @@ public sealed class DiseaseProgressionPolicyTests
     }
 
     [Fact]
+    public void RejectsProgressionAfterStabilizationButNotComfort()
+    {
+        DiseaseDefinition disease = Definition();
+        WorldEvent worldEvent = Event("first-night", WorldEventTimeEffect.Advance);
+        CharacterDiseaseState comforted = new(
+            new("patient"),
+            disease,
+            DiseaseStage.DeepSleep,
+            null,
+            DiseaseCareState.Comforted);
+        CharacterDiseaseState stabilized = new(
+            new("patient"),
+            disease,
+            DiseaseStage.DeepSleep,
+            null,
+            DiseaseCareState.Stabilized);
+        WorldEventSnapshot events = new([worldEvent]);
+        WorldEventLogSnapshot log = new([worldEvent.EventId]);
+        WorldTimeSnapshot time = new(worldEvent.EventId);
+
+        Assert.True(DiseaseProgressionPolicy.CanAdvance(
+            comforted, Truth(disease, comforted), worldEvent, events, log, time));
+        Assert.False(DiseaseProgressionPolicy.CanAdvance(
+            stabilized, Truth(disease, stabilized), worldEvent, events, log, time));
+    }
+
+    [Fact]
     public void RejectsNullInputsAndExposesOnlyOnePureOperation()
     {
         DiseaseDefinition disease = Definition();
@@ -139,7 +166,12 @@ public sealed class DiseaseProgressionPolicyTests
         DiseaseDefinition disease,
         DiseaseStage stage,
         WorldEventId? lastProgressionEventId = null) =>
-        new(new CharacterId("patient"), disease, stage, lastProgressionEventId);
+        new(
+            new CharacterId("patient"),
+            disease,
+            stage,
+            lastProgressionEventId,
+            DiseaseCareState.Unassisted);
 
     internal static DiseaseTruthSnapshot Truth(
         DiseaseDefinition disease,

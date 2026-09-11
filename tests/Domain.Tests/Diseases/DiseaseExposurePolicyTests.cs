@@ -27,7 +27,8 @@ public sealed class DiseaseExposurePolicyTests
             input.Outcome.CharacterId,
             input.Outcome.Disease,
             DiseaseStage.EarlyIllness,
-            null);
+            null,
+            DiseaseCareState.Unassisted);
         DiseaseProtectionDefinition protection = Assert.Single(
             input.Protections.Definitions.Definitions);
         DiseaseProtectionSnapshot activeProtections = new(
@@ -58,7 +59,8 @@ public sealed class DiseaseExposurePolicyTests
                 new CharacterId($"existing-{index}"),
                 input.Outcome.Disease,
                 DiseaseStage.Exposed,
-                null))
+                null,
+                DiseaseCareState.Unassisted))
             .ToArray();
 
         Assert.False(DiseaseExposurePolicy.CanApply(

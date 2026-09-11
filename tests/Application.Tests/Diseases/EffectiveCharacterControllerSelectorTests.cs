@@ -181,7 +181,7 @@ public sealed class EffectiveCharacterControllerSelectorTests
         CharacterId characterId,
         DiseaseDefinition disease,
         DiseaseStage stage) =>
-        new(characterId, disease, stage, null);
+        new(characterId, disease, stage, null, DiseaseCareState.Unassisted);
 
     private static DiseaseTruthSnapshot Truth(
         CharacterDiseaseState state,
