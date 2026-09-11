@@ -594,6 +594,32 @@ relationship set, and goal set. Every component is required, and the controller 
 character identifier must equal the identity identifier. The aggregate adds no other cross-field
 policy and exposes only its supplied components through get-only properties.
 
+`RepresentativeHermitCharacterSource` creates exactly two fresh LLM-controlled hermits in stable
+woodland-then-riverside order. Each composition aligns one exact identity with its controller
+assignment and carries a distinct non-empty private background, knowledge reference, belief, and
+goal. The returned collection is read-only, and the source adds no scheduling, generation,
+provider, autonomous-action, sabotage, scene, persistence, or presentation behavior.
+
+`RepresentativeSageCharacterSource` creates one fresh LLM-controlled village sage whose authored
+capabilities are limited to comparing presented evidence and challenging unsupported assumptions.
+Explicit limitations prevent the role from using unavailable evidence or converting advice into
+authoritative truth, while one private background, knowledge reference, belief, and goal supply
+bounded character state. The source does not select hints, evaluate evidence, mutate an
+investigation, schedule dialogue, call a provider, or add runtime behavior.
+
+`RepresentativeEnemyAgentCharacterSource` creates one fresh LLM-controlled covert role with a
+private national order, ordinary cover, bounded influence capabilities, and explicit physical,
+informational, authoritative-action, and investigation-recovery limitations. Competing delay and
+civilian-safety goals plus one authored belief make changed allegiance representable without
+implementing an allegiance transition. These values grant no action authority and add no
+sabotage, scheduling, provider, scene, or persistence mechanics.
+
+`RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
+forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
+and carries distinct latent background, capability, knowledge, and goal state plus an authored
+deep-sleep condition and dormant-response limitation. The source does not define authoritative
+disease state, healing, wake-up or controller transitions, dialogue, scenes, or persistence.
+
 The complete character-model boundary still does not define mutable state, lifecycle or event
 handling, runtime registration, relationship or goal mechanics, capability authorization,
 behavior selection, perception filtering, dialogue context, persistence, serialization, Godot,
@@ -606,6 +632,13 @@ Unicode text without trimming, normalization, case folding, or line-ending chang
 to 2,000 UTF-16 code units. `DialogueAudienceSnapshot` retains that exact speaker plus at most 32
 exact, duplicate-free listener identifiers in stable supplied order; it copies caller input and
 rejects the speaker as a listener.
+
+`CharacterTurnSpeakerSchedulingPolicy` orders at most 32 distinct eligible speaker identifiers by
+placing value-equal directly addressed candidates first while retaining stable eligible order and
+the exact eligible instances inside both priority partitions. Absent addresses are ignored, input
+collections are unchanged, and the returned schedule is an independent read-only collection. The
+policy does not infer addresses, decide whether anyone should speak, start turns, generate text,
+schedule interjections, or control runtime work.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
