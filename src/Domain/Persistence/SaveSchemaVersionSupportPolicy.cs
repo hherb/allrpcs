@@ -11,6 +11,7 @@ public static class SaveSchemaVersionSupportPolicy
         ArgumentNullException.ThrowIfNull(version);
 
         return version == SaveSchemaVersion.FirstSupported
-            || version == SaveSchemaVersion.CharacterMemory;
+            || version == SaveSchemaVersion.CharacterMemory
+            || version == SaveSchemaVersion.FirstPatient;
     }
 }

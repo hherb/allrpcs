@@ -1,6 +1,9 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -88,26 +91,31 @@ public sealed class SaveSnapshotJsonDeserializerTests
     [Fact]
     public void DeserializeCurrentExecutesVersionOneMigrationAndRetainsMaterializedState()
     {
-        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(EmptyVersionOneJson);
+        FirstPatientSaveState initialFirstPatient = InitialFirstPatient();
 
-        Assert.Same(SaveSchemaVersion.CharacterMemory, result.SchemaVersion);
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(
+            EmptyVersionOneJson,
+            initialFirstPatient);
+
+        Assert.Same(SaveSchemaVersion.FirstPatient, result.SchemaVersion);
         Assert.Empty(result.CharacterMemory.Characters);
         Assert.Empty(result.Discovery.Perception.Entries);
         Assert.Empty(result.WorldEvents.EventLog.Entries);
-        Assert.Equal(EmptyVersionTwoJson, SaveSnapshotJsonSerializer.Serialize(result));
+        Assert.Same(initialFirstPatient, result.FirstPatient);
     }
 
     [Fact]
     public void DeserializeCurrentRetainsAnAlreadyCurrentDocument()
     {
-        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(
-            SaveSnapshotJsonSerializerTests.CompleteCharacterMemoryJson);
+        FirstPatientSaveState initialFirstPatient = InitialFirstPatient();
 
-        Assert.Same(SaveSchemaVersion.CharacterMemory, result.SchemaVersion);
-        Assert.Single(result.CharacterMemory.Characters);
-        Assert.Equal(
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(
             SaveSnapshotJsonSerializerTests.CompleteCharacterMemoryJson,
-            SaveSnapshotJsonSerializer.Serialize(result));
+            initialFirstPatient);
+
+        Assert.Same(SaveSchemaVersion.FirstPatient, result.SchemaVersion);
+        Assert.Single(result.CharacterMemory.Characters);
+        Assert.Same(initialFirstPatient, result.FirstPatient);
     }
 
     [Fact]
@@ -241,6 +249,23 @@ public sealed class SaveSnapshotJsonDeserializerTests
         Assert.Throws<ArgumentNullException>(
             () => SaveSnapshotJsonDeserializer.Deserialize(null!));
     }
+
+    [Fact]
+    public void DeserializeCurrentRejectsEveryNullInput()
+    {
+        FirstPatientSaveState initialFirstPatient = InitialFirstPatient();
+
+        Assert.Throws<ArgumentNullException>(() =>
+            SaveSnapshotJsonDeserializer.DeserializeCurrent(null!, initialFirstPatient));
+        Assert.Throws<ArgumentNullException>(() =>
+            SaveSnapshotJsonDeserializer.DeserializeCurrent(EmptyVersionOneJson, null!));
+    }
+
+    private static FirstPatientSaveState InitialFirstPatient() => new(
+        RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth,
+        new PreparedIngredientBatchSnapshot([]),
+        new IngredientExperimentJournalSnapshot([]),
+        new ExperimentJournalSnapshot([]));
 
     private static SaveSnapshot CreateCompleteSnapshot()
     {

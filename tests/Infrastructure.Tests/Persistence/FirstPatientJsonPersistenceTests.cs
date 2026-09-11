@@ -103,11 +103,16 @@ public sealed class FirstPatientJsonPersistenceTests
     [Fact]
     public void DeserializeCurrentRetainsVersionThreeWithoutExecutingAnotherMigration()
     {
-        string serialized = SaveSnapshotJsonSerializer.Serialize(CreateCompleteSnapshot());
+        SaveSnapshot source = CreateCompleteSnapshot();
+        string serialized = SaveSnapshotJsonSerializer.Serialize(source);
+        FirstPatientSaveState initialFirstPatient = EmptyFirstPatient();
 
-        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(serialized);
+        SaveSnapshot result = SaveSnapshotJsonDeserializer.DeserializeCurrent(
+            serialized,
+            initialFirstPatient);
 
         Assert.Same(SaveSchemaVersion.FirstPatient, result.SchemaVersion);
+        Assert.NotSame(initialFirstPatient, result.FirstPatient);
         Assert.Equal(serialized, SaveSnapshotJsonSerializer.Serialize(result));
     }
 

@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
@@ -14,20 +15,47 @@ public static class SaveSnapshotRestorationPolicy
         SaveSnapshot snapshot,
         CharacterId searcherCharacterId,
         WorldObjectSnapshot worldObjects,
-        WorldEventSnapshot worldEvents)
+        WorldEventSnapshot worldEvents,
+        FirstPatientTreatmentContext firstPatientContext)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
         ArgumentNullException.ThrowIfNull(searcherCharacterId);
         ArgumentNullException.ThrowIfNull(worldObjects);
         ArgumentNullException.ThrowIfNull(worldEvents);
+        ArgumentNullException.ThrowIfNull(firstPatientContext);
 
-        return SaveSnapshotLoadPolicy.CanLoad(snapshot)
-            && DiscoverySaveStateRestorationPolicy.CanRestore(
-                snapshot.Discovery,
-                searcherCharacterId,
-                worldObjects)
-            && WorldEventSaveStateRestorationPolicy.CanRestore(
-                snapshot.WorldEvents,
+        if (!(SaveSnapshotLoadPolicy.CanLoad(snapshot)
+                && DiscoverySaveStateRestorationPolicy.CanRestore(
+                    snapshot.Discovery,
+                    searcherCharacterId,
+                    worldObjects)
+                && WorldEventSaveStateRestorationPolicy.CanRestore(
+                    snapshot.WorldEvents,
+                    worldEvents)))
+        {
+            return false;
+        }
+
+        if (snapshot.FirstPatient is null)
+        {
+            return true;
+        }
+
+        try
+        {
+            _ = FirstPatientSaveStateRestorationTransition.Rebind(
+                snapshot.FirstPatient,
+                firstPatientContext,
                 worldEvents);
+            return true;
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
     }
 }

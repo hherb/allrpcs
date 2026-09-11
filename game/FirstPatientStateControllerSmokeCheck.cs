@@ -3,6 +3,7 @@ using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Ingredients;
+using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
 using Godot;
 
@@ -95,6 +96,56 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
             return;
         }
 
+        FirstPatientSaveState saved = controller.Capture()
+            ?? throw new InvalidOperationException("Initialized first-patient state was not captured.");
+        if (!controller.TryRestore(saved, context, worldEvents))
+        {
+            Fail("First-patient state controller rejected compatible saved state.");
+            return;
+        }
+
+        DiseaseTruthSnapshot restoredTruth = controller.DiseaseTruth!;
+        PreparedIngredientBatchSnapshot restoredBatches = controller.PreparedBatches!;
+        IngredientExperimentJournalSnapshot restoredAdministrationExperiments =
+            controller.AdministrationExperiments!;
+        ExperimentJournalSnapshot restoredExperiments = controller.Experiments!;
+        CharacterDiseaseState restoredInfection = AssertSingle(restoredTruth.Infections);
+        IngredientAdministrationExperimentRecord restoredAdministration = AssertSingle(
+            restoredAdministrationExperiments.Records);
+        ExperimentJournalRecord restoredExperiment = AssertSingle(restoredExperiments.Records);
+        FirstPatientSaveState incompatible = new(
+            new DiseaseTruthSnapshot(
+                restoredTruth.Definitions,
+                [
+                    new CharacterDiseaseState(
+                        restoredInfection.CharacterId,
+                        restoredInfection.Disease,
+                        restoredInfection.Stage,
+                        new WorldEventId("unknown-restoration-event"),
+                        restoredInfection.CareState),
+                ]),
+            restoredBatches,
+            restoredAdministrationExperiments,
+            restoredExperiments);
+
+        if (ReferenceEquals(restoredTruth, saved.DiseaseTruth)
+            || !ReferenceEquals(restoredInfection.Disease, scenario.Remedy.Disease)
+            || !ReferenceEquals(restoredInfection.CharacterId, scenario.PatientId)
+            || restoredInfection.LastProgressionEventId is not null
+            || !ReferenceEquals(restoredAdministration.Administration.WorldEvent, worldEvent)
+            || !ReferenceEquals(restoredExperiment.WorldEvent, worldEvent)
+            || controller.TryRestore(incompatible, context, worldEvents)
+            || !ReferenceEquals(controller.DiseaseTruth, restoredTruth)
+            || !ReferenceEquals(controller.PreparedBatches, restoredBatches)
+            || !ReferenceEquals(
+                controller.AdministrationExperiments,
+                restoredAdministrationExperiments)
+            || !ReferenceEquals(controller.Experiments, restoredExperiments))
+        {
+            Fail("First-patient restore failed exact rebinding or atomic rejection preservation.");
+            return;
+        }
+
         FirstPatientStateController uninitialized = new();
         AddChild(uninitialized);
         if (uninitialized.TryStabilize(
@@ -117,8 +168,9 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
 
         GD.Print(
             "First-patient state controller smoke passed: exact one-time initialization, atomic "
-            + "prepared-dose stabilization and dual-journal installation, and rejected stale and "
-            + "uninitialized operations preserved every snapshot.");
+            + "prepared-dose stabilization, exact authored save restoration, dual-journal "
+            + "installation, and rejected incompatible, stale, and uninitialized operations "
+            + "preserved every snapshot.");
         GetTree().Quit();
     }
 
@@ -126,6 +178,10 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
         IReadOnlyList<CharacterDiseaseState> infections) => infections.Count == 1
             ? infections[0]
             : throw new InvalidOperationException("Expected one first-patient infection.");
+
+    private static T AssertSingle<T>(IReadOnlyList<T> entries) => entries.Count == 1
+        ? entries[0]
+        : throw new InvalidOperationException("Expected one first-patient entry.");
 
     private static WorldEvent CreateWorldEvent() => new(
         new WorldEventId("first-patient-scene-stabilized"),
@@ -164,10 +220,11 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
             .ToArray();
         return properties.Length == 4
             && properties.All(property => property.CanRead && property.SetMethod?.IsPrivate == true)
-            && methods.Length == 4
+            && methods.Length == 5
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.Capture))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryInitialize))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryAddPreparedBatch))
+            && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryRestore))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryStabilize));
     }
 

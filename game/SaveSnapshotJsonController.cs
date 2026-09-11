@@ -1,3 +1,6 @@
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Infrastructure.Persistence;
 using Godot;
@@ -9,6 +12,7 @@ public partial class SaveSnapshotJsonController : Node
 {
     private SaveSnapshotCaptureController captureController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
+    private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -17,6 +21,8 @@ public partial class SaveSnapshotJsonController : Node
             "../SaveSnapshotCaptureController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
+        firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            "../TemporaryFirstPatientTreatmentContextSource");
     }
 
     /// <summary>Captures canonical JSON only when the complete live state is initialized.</summary>
@@ -38,7 +44,9 @@ public partial class SaveSnapshotJsonController : Node
         SaveSnapshot snapshot;
         try
         {
-            snapshot = SaveSnapshotJsonDeserializer.DeserializeCurrent(serialized);
+            snapshot = SaveSnapshotJsonDeserializer.DeserializeCurrent(
+                serialized,
+                InitialFirstPatientState());
         }
         catch (ArgumentException)
         {
@@ -47,4 +55,10 @@ public partial class SaveSnapshotJsonController : Node
 
         return restorationController.TryRestore(snapshot);
     }
+
+    private FirstPatientSaveState InitialFirstPatientState() => new(
+        firstPatientContextSource.Context.Scenario.DiseaseTruth,
+        new PreparedIngredientBatchSnapshot([]),
+        new IngredientExperimentJournalSnapshot([]),
+        new ExperimentJournalSnapshot([]));
 }

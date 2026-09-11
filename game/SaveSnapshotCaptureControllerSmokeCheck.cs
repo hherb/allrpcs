@@ -1,5 +1,6 @@
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -15,6 +16,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private SaveSnapshotCaptureController controller = null!;
+    private FirstPatientStateController firstPatientController = null!;
     private CharacterMemoryController memoryController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
@@ -35,6 +37,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         }
 
         controller = GetNode<SaveSnapshotCaptureController>("../SaveSnapshotCaptureController");
+        firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
@@ -85,8 +88,9 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.CharacterMemory)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.CharacterMemory)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.FirstPatient)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.FirstPatient)
+            || ReferenceEquals(first.FirstPatient, second.FirstPatient)
             || !HasExactNestedState(first)
             || !HasExactNestedState(second))
         {
@@ -110,7 +114,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         }
 
         if (!restorationController.TryRestore(first)
-            || !HasExactNestedState(first)
+            || !HasExactNonFirstPatientState(first)
+            || !HasRestoredFirstPatientState(first.FirstPatient!)
             || !HasExactLiveState(
                 perception,
                 activities,
@@ -143,6 +148,16 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
     }
 
     private bool HasExactNestedState(SaveSnapshot snapshot) =>
+        HasExactNonFirstPatientState(snapshot)
+        && snapshot.FirstPatient is not null
+        && ReferenceEquals(snapshot.FirstPatient.DiseaseTruth, firstPatientController.DiseaseTruth)
+        && ReferenceEquals(snapshot.FirstPatient.PreparedBatches, firstPatientController.PreparedBatches)
+        && ReferenceEquals(
+            snapshot.FirstPatient.AdministrationExperiments,
+            firstPatientController.AdministrationExperiments)
+        && ReferenceEquals(snapshot.FirstPatient.Experiments, firstPatientController.Experiments);
+
+    private bool HasExactNonFirstPatientState(SaveSnapshot snapshot) =>
         ReferenceEquals(snapshot.Discovery.Perception, discoveryController.Perception)
         && ReferenceEquals(
             snapshot.Discovery.FocusedSearchActivities,
@@ -157,6 +172,27 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         && ReferenceEquals(snapshot.WorldEvents.EventLog, worldEventController.EventLog)
         && ReferenceEquals(snapshot.WorldEvents.WorldTime, worldEventController.WorldTime)
         && ReferenceEquals(snapshot.CharacterMemory, memoryController.Memory);
+
+    private bool HasRestoredFirstPatientState(FirstPatientSaveState saved)
+    {
+        DiseaseTruthSnapshot? restoredTruth = firstPatientController.DiseaseTruth;
+        CharacterDiseaseState? savedInfection = saved.DiseaseTruth.Infections.SingleOrDefault();
+        CharacterDiseaseState? restoredInfection = restoredTruth?.Infections.SingleOrDefault();
+        return restoredTruth is not null
+            && !ReferenceEquals(restoredTruth, saved.DiseaseTruth)
+            && savedInfection is not null
+            && restoredInfection is not null
+            && ReferenceEquals(restoredInfection.CharacterId, savedInfection.CharacterId)
+            && ReferenceEquals(restoredInfection.Disease, savedInfection.Disease)
+            && ReferenceEquals(restoredInfection.Stage, savedInfection.Stage)
+            && ReferenceEquals(restoredInfection.CareState, savedInfection.CareState)
+            && restoredInfection.LastProgressionEventId == savedInfection.LastProgressionEventId
+            && firstPatientController.PreparedBatches?.Batches.Count
+                == saved.PreparedBatches.Batches.Count
+            && firstPatientController.AdministrationExperiments?.Records.Count
+                == saved.AdministrationExperiments.Records.Count
+            && firstPatientController.Experiments?.Records.Count == saved.Experiments.Records.Count;
+    }
 
     private bool RejectsEveryUninitializedState(
         WorldEventSnapshot definitions,
@@ -176,40 +212,68 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             definitions,
             eventLog,
             worldTime: null);
+        FirstPatientStateController missingFirstPatient = new();
         SaveSnapshotCaptureController discoveryCapture =
-            CreateCaptureController(missingPerception, worldEventController, memoryController);
+            CreateCaptureController(
+                missingPerception,
+                worldEventController,
+                memoryController,
+                firstPatientController);
         SaveSnapshotCaptureController definitionsCapture =
-            CreateCaptureController(discoveryController, missingDefinitions, memoryController);
+            CreateCaptureController(
+                discoveryController,
+                missingDefinitions,
+                memoryController,
+                firstPatientController);
         SaveSnapshotCaptureController eventLogCapture =
-            CreateCaptureController(discoveryController, missingEventLog, memoryController);
+            CreateCaptureController(
+                discoveryController,
+                missingEventLog,
+                memoryController,
+                firstPatientController);
         SaveSnapshotCaptureController worldTimeCapture =
-            CreateCaptureController(discoveryController, missingWorldTime, memoryController);
+            CreateCaptureController(
+                discoveryController,
+                missingWorldTime,
+                memoryController,
+                firstPatientController);
+        SaveSnapshotCaptureController firstPatientCapture =
+            CreateCaptureController(
+                discoveryController,
+                worldEventController,
+                memoryController,
+                missingFirstPatient);
 
         bool rejected = discoveryCapture.Capture() is null
             && definitionsCapture.Capture() is null
             && eventLogCapture.Capture() is null
-            && worldTimeCapture.Capture() is null;
+            && worldTimeCapture.Capture() is null
+            && firstPatientCapture.Capture() is null;
 
         discoveryCapture.Free();
         definitionsCapture.Free();
         eventLogCapture.Free();
         worldTimeCapture.Free();
+        firstPatientCapture.Free();
         missingPerception.Free();
         missingDefinitions.Free();
         missingEventLog.Free();
         missingWorldTime.Free();
+        missingFirstPatient.Free();
         return rejected;
     }
 
     private static SaveSnapshotCaptureController CreateCaptureController(
         FocusedSearchActivityController discovery,
         WorldEventController worldEvents,
-        CharacterMemoryController memory)
+        CharacterMemoryController memory,
+        FirstPatientStateController firstPatient)
     {
         SaveSnapshotCaptureController captureController = new();
         SetField(captureController, "discoveryController", discovery);
         SetField(captureController, "worldEventController", worldEvents);
         SetField(captureController, "memoryController", memory);
+        SetField(captureController, "firstPatientController", firstPatient);
         return captureController;
     }
 

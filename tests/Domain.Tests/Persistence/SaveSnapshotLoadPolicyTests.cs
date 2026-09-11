@@ -1,5 +1,9 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -11,6 +15,7 @@ public sealed class SaveSnapshotLoadPolicyTests
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
+    [InlineData(3)]
     public void AcceptsASnapshotWithAKnownSchemaVersionWithoutChangingIt(int value)
     {
         SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(value));
@@ -61,15 +66,28 @@ public sealed class SaveSnapshotLoadPolicyTests
         Assert.Empty(policyType.GetEvents());
     }
 
-    private static SaveSnapshot CreateSnapshot(SaveSchemaVersion version) => new(
-        version,
-        new DiscoverySaveState(
+    private static SaveSnapshot CreateSnapshot(SaveSchemaVersion version)
+    {
+        DiscoverySaveState discovery = new(
             new CharacterPerceptionSnapshot(new CharacterId("seeker"), []),
             new FocusedSearchActivitySnapshot([]),
             new FocusedSearchOutcomeSnapshot([]),
             new PassiveNoticingCandidateSnapshot([]),
-            new ObservationReinterpretationCandidateSnapshot([])),
-        new WorldEventSaveState(
+            new ObservationReinterpretationCandidateSnapshot([]));
+        WorldEventSaveState worldEvents = new(
             new WorldEventLogSnapshot([]),
-            new WorldTimeSnapshot(null)));
+            new WorldTimeSnapshot(null));
+        return version == SaveSchemaVersion.FirstPatient
+            ? new SaveSnapshot(
+                version,
+                discovery,
+                worldEvents,
+                new CharacterMemorySnapshot([]),
+                new FirstPatientSaveState(
+                    RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth,
+                    new PreparedIngredientBatchSnapshot([]),
+                    new IngredientExperimentJournalSnapshot([]),
+                    new ExperimentJournalSnapshot([])))
+            : new SaveSnapshot(version, discovery, worldEvents);
+    }
 }

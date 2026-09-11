@@ -47,13 +47,22 @@ public static class SaveSnapshotJsonDeserializer
     }
 
     /// <summary>
-    /// Materializes one known document and migrates version 1 to the current memory schema.
+    /// Materializes one known document and migrates older versions to first-patient state.
     /// </summary>
-    public static SaveSnapshot DeserializeCurrent(string serialized)
+    public static SaveSnapshot DeserializeCurrent(
+        string serialized,
+        FirstPatientSaveState initialFirstPatient)
     {
+        ArgumentNullException.ThrowIfNull(initialFirstPatient);
+
         SaveSnapshot snapshot = Deserialize(serialized);
-        return snapshot.SchemaVersion == SaveSchemaVersion.FirstSupported
-            ? SaveSnapshotCharacterMemoryMigration.Migrate(snapshot)
+        if (snapshot.SchemaVersion == SaveSchemaVersion.FirstSupported)
+        {
+            snapshot = SaveSnapshotCharacterMemoryMigration.Migrate(snapshot);
+        }
+
+        return snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory
+            ? SaveSnapshotFirstPatientMigration.Migrate(snapshot, initialFirstPatient)
             : snapshot;
     }
 

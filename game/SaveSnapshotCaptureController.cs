@@ -11,6 +11,7 @@ namespace Allrpcs.Game;
 public partial class SaveSnapshotCaptureController : Node
 {
     private FocusedSearchActivityController discoveryController = null!;
+    private FirstPatientStateController firstPatientController = null!;
     private CharacterMemoryController memoryController = null!;
     private WorldEventController worldEventController = null!;
 
@@ -19,6 +20,7 @@ public partial class SaveSnapshotCaptureController : Node
     {
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
     }
@@ -33,10 +35,12 @@ public partial class SaveSnapshotCaptureController : Node
         WorldEventSnapshot? worldEvents = worldEventController.WorldEvents;
         WorldEventLogSnapshot? eventLog = worldEventController.EventLog;
         WorldTimeSnapshot? worldTime = worldEventController.WorldTime;
+        FirstPatientSaveState? firstPatient = firstPatientController.Capture();
         if (perception is null
             || worldEvents is null
             || eventLog is null
-            || worldTime is null)
+            || worldTime is null
+            || firstPatient is null)
         {
             return null;
         }
@@ -49,9 +53,10 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
         return new SaveSnapshot(
-            SaveSchemaVersion.CharacterMemory,
+            SaveSchemaVersion.FirstPatient,
             discovery,
             eventState,
-            memory);
+            memory,
+            firstPatient);
     }
 }

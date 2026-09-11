@@ -9,6 +9,8 @@ namespace Allrpcs.Game;
 public partial class SaveSnapshotRestorationController : Node
 {
     private FocusedSearchActivityController discoveryController = null!;
+    private FirstPatientStateController firstPatientController = null!;
+    private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
     private CharacterMemoryController memoryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -18,6 +20,9 @@ public partial class SaveSnapshotRestorationController : Node
     {
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
+        firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            "../TemporaryFirstPatientTreatmentContextSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
@@ -36,9 +41,30 @@ public partial class SaveSnapshotRestorationController : Node
                 snapshot,
                 discoveryController.SearcherCharacterId,
                 worldObjects,
-                worldEvents))
+                worldEvents,
+                firstPatientContextSource.Context))
         {
             return false;
+        }
+
+        FirstPatientSaveState? reboundFirstPatient = null;
+        if (snapshot.FirstPatient is not null)
+        {
+            try
+            {
+                reboundFirstPatient = FirstPatientSaveStateRestorationTransition.Rebind(
+                    snapshot.FirstPatient,
+                    firstPatientContextSource.Context,
+                    worldEvents);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
         }
 
         bool discoveryRestored = discoveryController.TryRestoreDiscoveryState(
@@ -47,6 +73,10 @@ public partial class SaveSnapshotRestorationController : Node
         bool worldEventsRestored = worldEventController.TryRestoreWorldEventState(
             snapshot.WorldEvents);
         memoryController.Install(snapshot.CharacterMemory);
+        if (reboundFirstPatient is not null)
+        {
+            firstPatientController.Install(reboundFirstPatient);
+        }
         if (!discoveryRestored || !worldEventsRestored)
         {
             throw new InvalidOperationException(

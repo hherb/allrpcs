@@ -364,16 +364,15 @@ rejects null snapshots and adds no consistency decision, event replay, time adva
 serialization, restoration, or controller behavior.
 
 `SaveSnapshot` is the immutable in-memory root. It retains one exact schema version, discovery
-save state, world-event save state, and canonical all-character memory snapshot through get-only
-properties and rejects null components. Its legacy version-`1` constructor supplies one shared
-immutable empty-memory snapshot, and version `1` rejects populated memory. The character-memory
-schema vocabulary is version `2`; its complete JSON representation is implemented while live scene
-loading remains separately gated. Record equality continues to use the version value and retained
-state instances.
+save state, world-event save state, canonical all-character memory, and the version-3 first-patient
+composition through get-only properties and rejects invalid version/component combinations. Its
+legacy version-`1` constructor supplies one shared immutable empty-memory snapshot, and version `1`
+rejects populated memory. Record equality continues to use the version value and retained state
+instances.
 
-`SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates the complete
-decision to `SaveSchemaVersionSupportPolicy`, accepts only a version-`1` root, preserves the root
-and every nested instance, and does not inspect state contents, migrate, deserialize, or restore.
+`SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates to
+`SaveSchemaVersionSupportPolicy`, accepts versions 1 through 3, preserves the root and every nested
+instance, and does not inspect state contents, migrate, deserialize, or restore.
 
 `WorldEventSaveStateRestorationPolicy.CanRestore` is the pure event-state restoration gate. Every
 saved log identifier must resolve against an exact authored world-event definition, and projecting
@@ -391,11 +390,12 @@ owners and missing objects fail closed. The policy does not evaluate discovery c
 knowledge triggers, visibility changes, lifecycle eligibility, serialization, or controller state.
 
 `SaveSnapshotRestorationPolicy.CanRestore` is the complete pure root gate. It validates every input
-before delegating unchanged to the schema-version, discovery-state, and world-event-state policies.
-Restoration eligibility therefore requires a supported root, one matching Seeker with only known
-world-object targets, a fully resolvable event log, and qualitative time reproduced from that log.
-It returns only a Boolean and does not deserialize, migrate, replay, replace controller state,
-choose a file, or access storage.
+before delegating unchanged to the schema-version, discovery-state, world-event-state, and
+first-patient restoration boundaries. Version-3 eligibility additionally requires every saved
+disease, infection, preparation recipe, input and result ingredient, ordered step, quantity unit,
+administration, and experiment event to resolve compatibly against the exact authored treatment
+context and world events. It returns only a Boolean and does not deserialize, migrate, replay,
+replace controller state, choose a file, or access storage.
 
 `FocusedSearchActivityController.TryRestoreDiscoveryState` is the first live save-state restoration
 boundary. It delegates complete eligibility to `DiscoverySaveStateRestorationPolicy` using the
@@ -414,48 +414,46 @@ controllers, and null input fail without changing controller state. The operatio
 events, coordinate discovery restoration, deserialize, migrate, access storage, or orchestrate
 startup loading.
 
-`SaveSnapshotRestorationController.TryRestore` coordinates the two live boundaries for one
-already-materialized `SaveSnapshot`. It first delegates the complete version, discovery, and event
-decision to `SaveSnapshotRestorationPolicy` using the scene controllers' exact Seeker and authored
-world definitions. Only an eligible root is then installed through both controllers, preserving all
-nested snapshot instances and presenting the restored focused-search activity. Rejected roots do not
-partially alter either controller. This remains an in-memory restoration seam: it does not create or
-parse a serialized representation, choose a file or path, perform migration, autosave, replay events,
-or run automatically during startup.
+`SaveSnapshotRestorationController.TryRestore` coordinates all live boundaries for one
+already-materialized `SaveSnapshot`. It completes root preflight and constructs the rebound
+first-patient graph before changing any controller. Success atomically installs discovery,
+world-event, memory, and first-patient state while retaining authored definitions and presenting
+only the restored focused-search activity. Rejected roots do not partially alter any controller.
+This remains an in-memory seam: it does not parse JSON, choose a file or path, autosave, replay
+events, or run automatically during startup.
 
 `SaveSnapshotCaptureController.Capture` is the matching scene-owned in-memory capture seam. It
 returns no snapshot until discovery perception, authored world events, the event log, and qualitative
-time are all initialized. Each successful call creates fresh `DiscoverySaveState`,
-`WorldEventSaveState`, and version-`1` `SaveSnapshot` compositions while retaining the controllers'
-exact current nested snapshot instances. Capture does not mutate or present controller state, and a
-captured root can pass through the existing restoration coordinator. It does not serialize, choose a
-file or path, access storage, migrate, replay, autosave, or orchestrate startup loading.
+time plus all first-patient state are initialized. Each successful call creates fresh
+`DiscoverySaveState`, `WorldEventSaveState`, `FirstPatientSaveState`, and version-3 `SaveSnapshot`
+compositions while retaining the controllers' exact current nested snapshots. Capture does not
+mutate or present controller state and does not serialize, choose a file or path, access storage,
+migrate, replay, autosave, or orchestrate startup loading.
 
-`Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer` writes one compact canonical JSON
-document from a complete version-`1` or version-`2` save root. The version-`1` document remains
-unchanged. Version `2` appends all-character memory with each aggregate constituent in stable
-supplied order. Belief assessments and deterministic index entries refer to exact retained memories
-by canonical identity; index references also carry their category so same-valued identities remain
-unambiguous. Nullable speech, targets, attributed speakers, and qualitative time are explicit JSON
-`null` values. Provider identifiers, credentials, provider state, hidden reasoning, and an additional
-authoritative transcript are absent. Serialization preserves the root and every nested input and
-does not write a file, choose a path, validate a scenario, migrate, encrypt, or restore runtime state.
+`Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer` writes compact canonical JSON for
+versions 1 through 3 while preserving the exact legacy documents. Version 2 adds canonical
+all-character memory; version 3 adds complete disease truth, completed preparations, remaining
+batches, administration observations, and universal experiment records. Stable document-local
+references reconnect shared memories, preparations, and events without serializing runtime object
+references. Provider identifiers, credentials, provider state, hidden reasoning, and an additional
+authoritative transcript are absent. Serialization preserves every input and does not write a file,
+choose a path, validate a scenario, migrate, encrypt, or restore runtime state.
 
-`SaveSnapshotJsonDeserializer` is the strict inverse for both known JSON versions. It accepts only
+`SaveSnapshotJsonDeserializer` is the strict inverse for all three known JSON versions. It accepts only
 each version's complete closed object shape and exact JSON value kinds, rejecting malformed JSON,
 comments, trailing commas, duplicate, missing, or unknown properties, non-canonical versions and
 identifiers, unknown closed values, invalid collections, and unresolved memory references.
-Successful version-`2` reads materialize fresh immutable Domain values in serialized order while
-reconnecting each belief assessment and index entry to the exact deserialized memory instance.
-`DeserializeCurrent` additionally executes the pure version-`1` to version-`2` empty-memory
-migration and returns an existing version-`2` root unchanged. Scenario eligibility and live loading
-remain separate; neither entry point accesses storage or mutates controllers.
+Successful reads materialize fresh immutable Domain values in serialized order while reconnecting
+document-local shared identities. `DeserializeCurrent` migrates version 1 through version 2 to
+version 3 using the caller-owned exact initial first-patient composition, and leaves an existing
+version-3 root unchanged. Scenario eligibility and controller mutation remain separate; neither
+entry point accesses storage.
 
 `SaveSnapshotJsonController` is the scene composition seam for serialized in-memory round trips.
 `CaptureSerialized` delegates exact live capture to `SaveSnapshotCaptureController` before canonical
-serialization. `TryRestoreSerialized` rejects invalid or unsupported documents before delegating the
-materialized root to `SaveSnapshotRestorationController`, whose complete scenario preflight prevents
-partial restoration.
+serialization. `TryRestoreSerialized` supplies exact authored initial first-patient state for legacy
+migration, rejects invalid or incompatible documents, and delegates the current materialized root to
+`SaveSnapshotRestorationController`, whose complete scenario preflight prevents partial restoration.
 
 `Allrpcs.Application.Persistence.ISaveDocumentStore` is the storage-independent single-document
 port. It accepts only a non-empty already-serialized document and returns explicit `Saved` or
@@ -1139,8 +1137,12 @@ completed preparations, remaining prepared batches, administration observations,
 experiment records. Stable document-local preparation indices preserve exact shared identity across
 batches and administrations without serializing runtime object references. The reader rejects
 unknown structure, invalid references, incomplete preparations, conflicting shared events, and
-non-canonical values. Version-3 load policy, migration execution, controller restoration, storage,
-and live scene capture remain disabled.
+non-canonical values. `FirstPatientSaveStateRestorationTransition` then fails closed unless that
+materialized graph is compatible with the exact authored disease, ingredients, recipe, steps, units,
+patient infection, and authoritative events. It returns a fresh immutable graph rebound to those
+exact authored instances while preserving saved order and dynamic values. The scene controller and
+complete root coordinator install the rebound state only after full preflight; live capture,
+legacy migration, canonical JSON, and local storage now carry complete version-3 state end to end.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
