@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3]
+[gd_scene load_steps=120 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -127,6 +127,10 @@
 [ext_resource type="Script" path="res://CharacterMemoryControllerSmokeCheck.cs" id="125_character_memory_controller_check"]
 [ext_resource type="Script" path="res://FirstPatientStateController.cs" id="126_first_patient_state_controller"]
 [ext_resource type="Script" path="res://FirstPatientStateControllerSmokeCheck.cs" id="127_first_patient_state_controller_check"]
+[ext_resource type="Script" path="res://TemporaryFirstPatientTreatmentContextSource.cs" id="128_first_patient_context_source"]
+[ext_resource type="Script" path="res://TemporaryFirstPatientTreatmentContextSourceSmokeCheck.cs" id="129_first_patient_context_source_check"]
+[ext_resource type="Script" path="res://FirstPatientPreparationController.cs" id="130_first_patient_preparation_controller"]
+[ext_resource type="Script" path="res://FirstPatientPreparationControllerSmokeCheck.cs" id="131_first_patient_preparation_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -463,6 +467,12 @@ script = ExtResource("124_character_memory_controller")
 [node name="FirstPatientStateController" type="Node" parent="."]
 script = ExtResource("126_first_patient_state_controller")
 
+[node name="TemporaryFirstPatientTreatmentContextSource" type="Node" parent="."]
+script = ExtResource("128_first_patient_context_source")
+
+[node name="FirstPatientPreparationController" type="Node" parent="."]
+script = ExtResource("130_first_patient_preparation_controller")
+
 [node name="SaveSnapshotCaptureController" type="Node" parent="."]
 script = ExtResource("54_save_capture_controller")
 
@@ -573,6 +583,12 @@ script = ExtResource("125_character_memory_controller_check")
 
 [node name="FirstPatientStateControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("127_first_patient_state_controller_check")
+
+[node name="TemporaryFirstPatientTreatmentContextSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("129_first_patient_context_source_check")
+
+[node name="FirstPatientPreparationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("131_first_patient_preparation_check")
 
 [node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
 script = ExtResource("49_search_world_event_check")

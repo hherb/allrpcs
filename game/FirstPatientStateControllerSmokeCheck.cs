@@ -22,8 +22,8 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
             return;
         }
 
-        FirstPatientStateController controller =
-            GetNode<FirstPatientStateController>("../FirstPatientStateController");
+        FirstPatientStateController controller = new();
+        AddChild(controller);
         FirstPatientTreatmentContext context = RepresentativeFirstPatientTreatmentContextSource.Create();
         FirstPatientScenario scenario = context.Scenario;
         WorldEvent worldEvent = CreateWorldEvent();
@@ -164,8 +164,9 @@ public partial class FirstPatientStateControllerSmokeCheck : Node
             .ToArray();
         return properties.Length == 4
             && properties.All(property => property.CanRead && property.SetMethod?.IsPrivate == true)
-            && methods.Length == 2
+            && methods.Length == 3
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryInitialize))
+            && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryAddPreparedBatch))
             && methods.Any(method => method.Name == nameof(FirstPatientStateController.TryStabilize));
     }
 

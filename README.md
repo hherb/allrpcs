@@ -1080,6 +1080,29 @@ result snapshots; rejected, stale, duplicate, full, or uninitialized calls prese
 snapshot. The controller still does not occur the administration event, interpret observed text,
 execute a consequence, save or load state, expose UI, or call a provider.
 
+The ordinary scene now retains one exact authored representative first-patient treatment context and
+initializes the scene controller once from that context's exact disease truth plus explicit empty
+prepared-batch, administration-experiment, and universal-experiment snapshots. Startup creates no
+completed preparation or administered dose. A focused credential-free smoke proves stable context
+access, exact disease identity, empty journals and batches, and fail-closed repeated initialization
+without changing world events, memory, movement, dialogue, model, or presentation state.
+
+One separate scene controller now initializes from the context's exact authored remedy recipe and
+ingredient snapshot and owns a single bounded preparation lifecycle. Starting the exact recipe
+atomically installs the existing Domain transition's consumed ingredient snapshot and new activity;
+only each exact next authored step can advance it, and only complete progress produces the exact
+recipe-authored outcome.
+Repeated, unavailable, value-equal-step, out-of-order, incomplete, or post-completion operations
+preserve every installed value. Completion does not yet create a prepared batch, occur an event,
+administer a dose, alter disease truth or journals, persist state, expose UI, or call a provider.
+
+One pure prepared-batch append transition now turns an exact completed preparation into a full batch
+at the end of stable existing order. It rejects duplicate exact preparations and full snapshots
+without changing the input. The first-patient scene controller accepts that outcome only for the
+exact current treatment context and its exact authored remedy recipe, then atomically installs the
+new prepared-batch snapshot while retaining disease truth and both journals. It still does not occur
+an administration event, select a dosage, stabilize the patient automatically, or add input/UI.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the

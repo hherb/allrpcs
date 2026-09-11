@@ -50,6 +50,39 @@ public partial class FirstPatientStateController : Node
         return true;
     }
 
+    /// <summary>Adds one exact completed authored remedy as a full prepared batch.</summary>
+    public bool TryAddPreparedBatch(
+        FirstPatientTreatmentContext context,
+        IngredientPreparationOutcome preparation)
+    {
+        ArgumentNullException.ThrowIfNull(context);
+        ArgumentNullException.ThrowIfNull(preparation);
+
+        DiseaseTruthSnapshot? diseaseTruth = DiseaseTruth;
+        PreparedIngredientBatchSnapshot? preparedBatches = PreparedBatches;
+        if (diseaseTruth is null
+            || preparedBatches is null
+            || !ReferenceEquals(context.Scenario.DiseaseTruth, diseaseTruth)
+            || !ReferenceEquals(
+                preparation.Activity.Recipe,
+                context.Scenario.Remedy.Recipe))
+        {
+            return false;
+        }
+
+        try
+        {
+            PreparedBatches = PreparedIngredientBatchSnapshotAppendTransition.Append(
+                preparation,
+                preparedBatches);
+            return true;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+    }
+
     /// <summary>Applies one eligible first-patient stabilization and installs its exact result.</summary>
     public bool TryStabilize(
         ExperimentId experimentId,

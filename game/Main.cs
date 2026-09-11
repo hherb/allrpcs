@@ -4,7 +4,9 @@ using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Controllers;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.Experiments;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Ingredients;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
@@ -49,6 +51,8 @@ public partial class Main : Node
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
     private TemporaryFocusedSearchOutcomeSource focusedSearchOutcomeSource = null!;
     private TemporaryCharacterTurnSource characterTurnSource = null!;
+    private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
+    private FirstPatientPreparationController firstPatientPreparationController = null!;
     private TemporaryObservationReinterpretationCandidateSource
         observationReinterpretationCandidateSource = null!;
     private TemporaryPassiveNoticingCandidateSource passiveNoticingCandidateSource = null!;
@@ -105,6 +109,10 @@ public partial class Main : Node
             "TemporaryFocusedSearchOutcomeSource");
         characterTurnSource = GetNode<TemporaryCharacterTurnSource>(
             "TemporaryCharacterTurnSource");
+        firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
+            "TemporaryFirstPatientTreatmentContextSource");
+        firstPatientPreparationController = GetNode<FirstPatientPreparationController>(
+            "FirstPatientPreparationController");
         observationReinterpretationCandidateSource =
             GetNode<TemporaryObservationReinterpretationCandidateSource>(
                 "TemporaryObservationReinterpretationCandidateSource");
@@ -153,6 +161,15 @@ public partial class Main : Node
                 "The character-turn transcript controller could not initialize empty.");
         }
 
+        InitializeFirstPatientState();
+        if (!firstPatientPreparationController.TryInitialize(
+                firstPatientContextSource.Context.Scenario.Remedy.Recipe,
+                firstPatientContextSource.Context.Scenario.Ingredients))
+        {
+            throw new InvalidOperationException(
+                "The first-patient preparation controller could not initialize scene ingredients.");
+        }
+
         InitializeWorldEvents();
         RecordInitialWorldEvent();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
@@ -176,6 +193,21 @@ public partial class Main : Node
 
         focusedSearchResultStatus.Text = InitialFocusedSearchResultText;
         UpdateModeStatus(force: true);
+    }
+
+    private void InitializeFirstPatientState()
+    {
+        FirstPatientStateController controller =
+            GetNode<FirstPatientStateController>("FirstPatientStateController");
+        if (!controller.TryInitialize(
+                firstPatientContextSource.Context.Scenario.DiseaseTruth,
+                new PreparedIngredientBatchSnapshot([]),
+                new IngredientExperimentJournalSnapshot([]),
+                new ExperimentJournalSnapshot([])))
+        {
+            throw new InvalidOperationException(
+                "The first-patient controller could not initialize the authored scene state.");
+        }
     }
 
     private void InitializeWorldEvents()
