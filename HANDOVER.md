@@ -27,6 +27,8 @@ This branch does not serialize, deserialize, load, restore, or persist version-3
 files or storage; alter gameplay input or UI; execute investigation consequences; call a provider;
 begin Phase 7; release; or distribute.
 
+Draft PR #200 contains this work.
+
 ## Validation and review
 
 - 9 new focused Domain tests passed for exact composition, immutable surfaces, root constraints,
@@ -44,9 +46,9 @@ begin Phase 7; release; or distribute.
   review passed
 
 The restricted focused VSTest and Godot runs reproduced the known localhost-bind and `user://logs`
-restrictions; the identical host-local commands passed. Hosted jobs for PR #199 had `steps: []`
-under the unchanged Actions account-budget condition. Do not retry or dispatch hosted workflows
-unless that external condition changes.
+restrictions; the identical host-local commands passed. Draft PR #200 automatically triggered run
+`34652085962`; all five jobs completed with `steps: []` under the unchanged Actions account-budget
+condition. Do not retry or dispatch hosted workflows unless that external condition changes.
 
 ## Exact next bounded slice
 
