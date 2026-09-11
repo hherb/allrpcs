@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
@@ -10,6 +11,7 @@ namespace Allrpcs.Game;
 public partial class SaveSnapshotCaptureController : Node
 {
     private FocusedSearchActivityController discoveryController = null!;
+    private CharacterMemoryController memoryController = null!;
     private WorldEventController worldEventController = null!;
 
     /// <inheritdoc />
@@ -17,6 +19,7 @@ public partial class SaveSnapshotCaptureController : Node
     {
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
     }
 
@@ -26,6 +29,7 @@ public partial class SaveSnapshotCaptureController : Node
     public SaveSnapshot? Capture()
     {
         CharacterPerceptionSnapshot? perception = discoveryController.Perception;
+        CharacterMemorySnapshot memory = memoryController.Memory;
         WorldEventSnapshot? worldEvents = worldEventController.WorldEvents;
         WorldEventLogSnapshot? eventLog = worldEventController.EventLog;
         WorldTimeSnapshot? worldTime = worldEventController.WorldTime;
@@ -45,8 +49,9 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
         return new SaveSnapshot(
-            SaveSchemaVersion.FirstSupported,
+            SaveSchemaVersion.CharacterMemory,
             discovery,
-            eventState);
+            eventState,
+            memory);
     }
 }

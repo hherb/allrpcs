@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
@@ -14,6 +15,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private SaveSnapshotCaptureController controller = null!;
+    private CharacterMemoryController memoryController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -33,6 +35,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         }
 
         controller = GetNode<SaveSnapshotCaptureController>("../SaveSnapshotCaptureController");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -70,6 +73,9 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         bool expectedActivityIndicator = activityIndicator.Visible;
         string expectedFocusStatus = focusStatus.Text;
         string expectedFocusedSearchResult = focusedSearchResult.Text;
+        CharacterMemorySnapshot memory =
+            CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
+        memoryController.Install(memory);
 
         SaveSnapshot first = controller.Capture()
             ?? throw new InvalidOperationException("Initialized state was not captured.");
@@ -79,8 +85,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.FirstSupported)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.FirstSupported)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.CharacterMemory)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.CharacterMemory)
             || !HasExactNestedState(first)
             || !HasExactNestedState(second))
         {
@@ -128,10 +134,11 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "Save capture controller smoke passed: exact live discovery and world-event snapshots, "
-            + "fresh repeated versioned roots, fail-closed uninitialized discovery perception, "
-            + "authored events, event log, and qualitative time, restoration through the existing "
-            + "coordinator, and unchanged controllers, movement, input, and presentation were correct.");
+            "Save capture controller smoke passed: exact live discovery, world-event, and character-"
+            + "memory snapshots, fresh repeated current-schema roots, fail-closed uninitialized "
+            + "discovery perception, authored events, event log, and qualitative time, restoration "
+            + "through the existing coordinator, and unchanged controllers, movement, input, and "
+            + "presentation were correct.");
         GetTree().Quit();
     }
 
@@ -148,7 +155,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             snapshot.Discovery.ObservationReinterpretationCandidates,
             discoveryController.ObservationReinterpretationCandidates)
         && ReferenceEquals(snapshot.WorldEvents.EventLog, worldEventController.EventLog)
-        && ReferenceEquals(snapshot.WorldEvents.WorldTime, worldEventController.WorldTime);
+        && ReferenceEquals(snapshot.WorldEvents.WorldTime, worldEventController.WorldTime)
+        && ReferenceEquals(snapshot.CharacterMemory, memoryController.Memory);
 
     private bool RejectsEveryUninitializedState(
         WorldEventSnapshot definitions,
@@ -169,13 +177,13 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             eventLog,
             worldTime: null);
         SaveSnapshotCaptureController discoveryCapture =
-            CreateCaptureController(missingPerception, worldEventController);
+            CreateCaptureController(missingPerception, worldEventController, memoryController);
         SaveSnapshotCaptureController definitionsCapture =
-            CreateCaptureController(discoveryController, missingDefinitions);
+            CreateCaptureController(discoveryController, missingDefinitions, memoryController);
         SaveSnapshotCaptureController eventLogCapture =
-            CreateCaptureController(discoveryController, missingEventLog);
+            CreateCaptureController(discoveryController, missingEventLog, memoryController);
         SaveSnapshotCaptureController worldTimeCapture =
-            CreateCaptureController(discoveryController, missingWorldTime);
+            CreateCaptureController(discoveryController, missingWorldTime, memoryController);
 
         bool rejected = discoveryCapture.Capture() is null
             && definitionsCapture.Capture() is null
@@ -195,11 +203,13 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
 
     private static SaveSnapshotCaptureController CreateCaptureController(
         FocusedSearchActivityController discovery,
-        WorldEventController worldEvents)
+        WorldEventController worldEvents,
+        CharacterMemoryController memory)
     {
         SaveSnapshotCaptureController captureController = new();
         SetField(captureController, "discoveryController", discovery);
         SetField(captureController, "worldEventController", worldEvents);
+        SetField(captureController, "memoryController", memory);
         return captureController;
     }
 

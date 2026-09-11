@@ -9,6 +9,7 @@ namespace Allrpcs.Game;
 public partial class SaveSnapshotRestorationController : Node
 {
     private FocusedSearchActivityController discoveryController = null!;
+    private CharacterMemoryController memoryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
 
@@ -17,11 +18,12 @@ public partial class SaveSnapshotRestorationController : Node
     {
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
     }
 
-    /// <summary>Restores both exact state compositions after one complete root preflight.</summary>
+    /// <summary>Restores all exact state compositions after one complete root preflight.</summary>
     public bool TryRestore(SaveSnapshot snapshot)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
@@ -44,6 +46,7 @@ public partial class SaveSnapshotRestorationController : Node
             worldObjects);
         bool worldEventsRestored = worldEventController.TryRestoreWorldEventState(
             snapshot.WorldEvents);
+        memoryController.Install(snapshot.CharacterMemory);
         if (!discoveryRestored || !worldEventsRestored)
         {
             throw new InvalidOperationException(

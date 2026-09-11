@@ -123,6 +123,8 @@
 [ext_resource type="Script" path="res://OpenAiCredentialPanelSmokeCheck.cs" id="121_openai_credential_panel_check"]
 [ext_resource type="Script" path="res://CharacterModelConnectionPanelSmokeCheck.cs" id="122_model_connection_panel_check"]
 [ext_resource type="Script" path="res://LiveCharacterModelOrdinaryFlowSmokeCheck.cs" id="123_live_model_flow_check"]
+[ext_resource type="Script" path="res://CharacterMemoryController.cs" id="124_character_memory_controller"]
+[ext_resource type="Script" path="res://CharacterMemoryControllerSmokeCheck.cs" id="125_character_memory_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -453,6 +455,9 @@ script = ExtResource("45_world_time_controller")
 [node name="WorldEventController" type="Node" parent="."]
 script = ExtResource("47_world_event_controller")
 
+[node name="CharacterMemoryController" type="Node" parent="."]
+script = ExtResource("124_character_memory_controller")
+
 [node name="SaveSnapshotCaptureController" type="Node" parent="."]
 script = ExtResource("54_save_capture_controller")
 
@@ -557,6 +562,9 @@ script = ExtResource("46_world_time_controller_check")
 
 [node name="WorldEventControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("48_world_event_controller_check")
+
+[node name="CharacterMemoryControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("125_character_memory_controller_check")
 
 [node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
 script = ExtResource("49_search_world_event_check")

@@ -4,20 +4,24 @@ namespace Allrpcs.Domain.Tests.Persistence;
 
 public sealed class SaveSchemaVersionSupportPolicyTests
 {
-    [Fact]
-    public void SupportsTheFirstVersionIncludingADistinctValueEqualInstance()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void SupportsEachKnownVersionIncludingADistinctValueEqualInstance(int value)
     {
-        SaveSchemaVersion suppliedVersion = new(SaveSchemaVersion.FirstSupported.Value);
+        SaveSchemaVersion suppliedVersion = new(value);
+        SaveSchemaVersion canonicalVersion = value == SaveSchemaVersion.FirstSupported.Value
+            ? SaveSchemaVersion.FirstSupported
+            : SaveSchemaVersion.CharacterMemory;
 
         bool supported = SaveSchemaVersionSupportPolicy.CanLoad(suppliedVersion);
 
         Assert.True(supported);
-        Assert.NotSame(SaveSchemaVersion.FirstSupported, suppliedVersion);
-        Assert.Equal(SaveSchemaVersion.FirstSupported, suppliedVersion);
+        Assert.NotSame(canonicalVersion, suppliedVersion);
+        Assert.Equal(canonicalVersion, suppliedVersion);
     }
 
     [Theory]
-    [InlineData(2)]
     [InlineData(27)]
     [InlineData(int.MaxValue)]
     public void RejectsStructurallyValidFutureVersionsWithoutChangingThem(int value)

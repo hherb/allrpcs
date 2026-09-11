@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
@@ -16,6 +17,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private SaveSnapshotRestorationController controller = null!;
+    private CharacterMemoryController memoryController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -36,6 +38,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
 
         controller = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -67,10 +70,12 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         ObjectId secondTarget = new(worldObjects.Entries[1].Identity.Id.Value);
         DiscoverySaveState discovery = CreateDiscovery(owner, firstTarget, secondTarget);
         WorldEventSaveState eventState = CreateEventState(worldEvents);
+        CharacterMemorySnapshot memory = CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
         SaveSnapshot snapshot = new(
-            SaveSchemaVersion.FirstSupported,
+            SaveSchemaVersion.CharacterMemory,
             discovery,
-            eventState);
+            eventState,
+            memory);
 
         if (!controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
@@ -82,7 +87,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             return;
         }
 
-        SaveSnapshot futureVersion = new(new SaveSchemaVersion(2), discovery, eventState);
+        SaveSnapshot futureVersion = new(new SaveSchemaVersion(27), discovery, eventState);
         SaveSnapshot missingTarget = new(
             SaveSchemaVersion.FirstSupported,
             CreateDiscovery(owner, firstTarget, new ObjectId("missing-object")),
@@ -123,7 +128,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
 
         GD.Print(
             "Save restoration controller smoke passed: complete versioned-root preflight, exact "
-            + "atomic discovery and world-event snapshot installation, repeated restoration, "
+            + "atomic discovery, world-event, and character-memory snapshot installation, repeated "
+            + "restoration, "
             + "fail-closed future version, missing target, missing event, and null handling, and "
             + "unchanged authoritative definitions, movement, input, and other presentation state "
             + "were correct.");
@@ -148,7 +154,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             discoveryController.ObservationReinterpretationCandidates,
             snapshot.Discovery.ObservationReinterpretationCandidates)
         && ReferenceEquals(worldEventController.EventLog, snapshot.WorldEvents.EventLog)
-        && ReferenceEquals(worldEventController.WorldTime, snapshot.WorldEvents.WorldTime);
+        && ReferenceEquals(worldEventController.WorldTime, snapshot.WorldEvents.WorldTime)
+        && ReferenceEquals(memoryController.Memory, snapshot.CharacterMemory);
 
     private static DiscoverySaveState CreateDiscovery(
         CharacterId owner,

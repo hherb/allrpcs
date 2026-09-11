@@ -1,9 +1,11 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
+using Allrpcs.Infrastructure.Persistence;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -15,6 +17,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
 
     private SaveSnapshotJsonController controller = null!;
+    private CharacterMemoryController memoryController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -34,6 +37,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         }
 
         controller = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
+        memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -59,9 +63,19 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         Vector2 expectedVelocity = seeker.Velocity;
         string expectedFocusStatus = focusStatus.Text;
         string expectedFocusedSearchResult = focusedSearchResult.Text;
+        CharacterMemorySnapshot populatedMemory =
+            CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
+        memoryController.Install(populatedMemory);
 
         string initial = controller.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
+        SaveSnapshot initialSnapshot = SaveSnapshotJsonDeserializer.Deserialize(initial);
+        string legacy = SaveSnapshotJsonSerializer.Serialize(new SaveSnapshot(
+            SaveSchemaVersion.FirstSupported,
+            initialSnapshot.Discovery,
+            initialSnapshot.WorldEvents));
+        string expectedMigrated = SaveSnapshotJsonSerializer.Serialize(
+            SaveSnapshotJsonDeserializer.DeserializeCurrent(legacy));
         SaveSnapshot alternate = CreateAlternateState(worldObjects, definitions);
         if (!restorationController.TryRestore(alternate))
         {
@@ -76,8 +90,8 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":1",
             "\"schemaVersion\":2",
+            "\"schemaVersion\":27",
             StringComparison.Ordinal);
 
         if (controller.TryRestoreSerialized("{")
@@ -92,8 +106,17 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             return;
         }
 
+        if (!controller.TryRestoreSerialized(legacy)
+            || !HasSerializedState(expectedMigrated)
+            || memoryController.Memory.Characters.Count != 0)
+        {
+            Fail("Serialized save smoke failed legacy migration to explicit empty memory.");
+            return;
+        }
+
         if (!controller.TryRestoreSerialized(initial)
             || !HasSerializedState(initial)
+            || memoryController.Memory.Characters.Count != 1
             || !ReferenceEquals(worldObjectController.WorldObjects, worldObjects)
             || !ReferenceEquals(worldEventController.WorldEvents, definitions)
             || seeker.Position != expectedPosition
@@ -109,10 +132,11 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         }
 
         GD.Print(
-            "Serialized save controller smoke passed: canonical in-memory capture, materially "
-            + "different live state, exact serialized restoration, fail-closed malformed, future "
-            + "version, unknown scenario event, and null input, and unchanged authored world, "
-            + "movement, input, and unrelated presentation were correct.");
+            "Serialized save controller smoke passed: canonical populated-memory capture, "
+            + "materially different live state, current-schema restoration, version-1 migration "
+            + "to explicit empty memory, fail-closed malformed, future version, unknown scenario "
+            + "event, and null input, and unchanged authored world, movement, input, and unrelated "
+            + "presentation were correct.");
         GetTree().Quit();
     }
 
