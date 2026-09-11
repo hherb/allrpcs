@@ -2,72 +2,66 @@
 
 ## Current state
 
-`main` contains merged PR #197 at `dc3c999`. The current branch is
-`codex/phase-6-scene-initialization`.
+`main` contains merged PR #198 at `6c38176`. The current branch is
+`codex/phase-6-administration-flow`.
 
-This branch completes three bounded Phase 6 scene-integration slices.
+This branch completes **Phase 6y6: atomic authored administration-event and first-patient
+stabilization flow**.
 
-Phase 6y3 adds `TemporaryFirstPatientTreatmentContextSource`. The ordinary scene retains its one
-exact representative treatment context and initializes `FirstPatientStateController` exactly once
-from that context's exact disease truth plus explicit empty prepared-batch, administration-specific
-experiment, and universal experiment snapshots. Startup does not synthesize a preparation or dose.
+The temporary authoritative source retains one exact advancing
+`healer-administered-first-patient-remedy` event in stable order without occurring it at startup.
+`FirstPatientAdministrationOccurrenceTransition` requires that exact event object and one exact
+retained prepared batch, prospectively occurs the event, constructs the dosage and administration,
+and delegates to `FirstPatientStabilizationTransition` using the prospective latest event log. Its
+single immutable result returns exact new event-log, world-time, disease-truth, prepared-batch,
+administration-experiment, and universal-experiment snapshots together.
 
-Phase 6y4 adds `FirstPatientPreparationController`, initialized from the same context's exact remedy
-recipe and ingredient snapshot. It delegates atomic recipe-input consumption, exact ordered
-preparation-step progression, and exact completion to the existing Domain transitions. Invalid, repeated,
-value-equal-step, out-of-order, incomplete, and post-completion calls preserve all installed state.
+`FirstPatientAdministrationController.TryAdminister` gathers both initialized scene controllers,
+performs that one complete pure preflight, and installs the already-accepted result into both without
+a second fallible boundary. The ordinary credential-free smoke prepares the exact authored recipe,
+installs its full batch, occurs the exact authored administration event, consumes the exact full dose,
+stabilizes the exact patient infection, and appends both exact experiment records atomically.
+Replacement events or batches, unavailable quantities, stale or repeated occurrences, wrong contexts
+or preparations, duplicate or full journals, and uninitialized state expose no partial result.
 
-Phase 6y5 adds the pure `PreparedIngredientBatchSnapshotAppendTransition`. It appends one exact
-completed preparation as a full batch in stable order and rejects exact duplicates or capacity
-exhaustion. `FirstPatientStateController.TryAddPreparedBatch` accepts that result only when its
-context retains the exact current disease truth and its preparation retains the exact authored
-remedy recipe; only the prepared-batch snapshot changes on success.
-
-These slices do not occur administration events, choose or administer a dose, automatically
-stabilize the patient, execute investigation consequences, persist Phase 6 state, add scene input or
-final UI, compose a provider-specific hypothesis interpreter, begin Phase 7, release, or distribute.
-
-Draft PR #198 contains this work.
+This slice does not add player input or final UI, interpret observed text as efficacy, execute
+investigation consequences, persist Phase 6 state, call a provider, begin Phase 7, release, or
+distribute.
 
 ## Validation and review
 
-- focused append-transition tests passed: 3/3
-- focused exact scene-initialization, preparation lifecycle, batch-installation, and prior atomic
-  stabilization Godot smokes passed on Godot 4.6.3 .NET
+- 6 focused result/transition Domain tests passed
+- focused temporary world-event source, initial occurrence, world-event controller, and complete
+  first-patient administration Godot smokes passed on Godot 4.6.3 .NET
 - `./scripts/quality.sh` passed cleanly:
   - workflow validation, restore, formatting, and zero-warning solution build passed
-  - 1,913 Domain, 402 Application, 440 Infrastructure, and 8 architecture tests passed
-  - representative discovery scenario validated 5 evidence definitions
-  - all 80 credential-free Godot smokes passed
+  - 1,919 Domain, 402 Application, 440 Infrastructure, and 8 architecture tests passed
+  - the representative discovery scenario validated 5 evidence definitions
+  - all 81 credential-free Godot smokes passed
   - the bounded 60-frame Compatibility-renderer launch passed
-- `git diff --check`, the practical 120-character limit, exact-identity, stable-order, immutability,
-  fail-closed/no-partial-state, minimal-surface, credential-free, and network-free review passed
+- `git diff --check`, the practical 120-character limit, exact-identity, prospective-log,
+  immutability, fail-closed/no-partial-state, minimal-surface, credential-free, and network-free
+  review passed
 
 The restricted focused VSTest and Godot runs reproduced the known localhost-bind and `user://logs`
-restrictions; the identical host-local commands passed. Draft PR #198 automatically triggered
-credential-free run `34648303580`; all five jobs failed with `steps: []`, confirming the unchanged
-Actions account-budget infrastructure condition rather than executed test failures. Do not retry or
-dispatch hosted workflows unless that external condition changes.
+restrictions; the identical host-local commands passed. Hosted Actions remained budget-blocked on PR
+#198 with `steps: []`; do not retry or dispatch hosted workflows unless that external condition
+changes.
 
 ## Exact next bounded slice
 
-Take **Phase 6y6: atomic authored administration-event and first-patient stabilization flow**.
+Take **Phase 6y7: immutable first-patient save-state composition and scene capture**.
 
 Acceptance boundary:
 
-1. Add one exact authored first-patient administration world event to the temporary scene source;
-   retain it in the source's stable authoritative snapshot without occurring it at startup.
-2. Add the smallest pure composite result/transition that preflights occurrence of that exact event,
-   constructs a dosage and administration outcome from the exact retained prepared batch, and
-   delegates to `FirstPatientStabilizationTransition` using the prospective latest event log. Return
-   the exact new world-event log/time and all four exact first-patient result snapshots together.
-3. Add one scene coordinator operation that installs the already-preflighted world-event and
-   first-patient results without a second fallible boundary. Invalid, stale, repeated, unavailable,
-   duplicate, full, wrong-context, or wrong-preparation calls must preserve both controllers and all
-   unrelated scene state.
-4. Prove the ordinary credential-free flow can prepare the exact authored remedy, install its exact
-   full batch, occur exactly one authored administration event, consume exactly one bounded dose,
-   stabilize the exact patient infection, and append both exact experiment records atomically. Add
-   focused Domain tests and one opt-in Godot smoke; update README/HANDOVER evidence.
-5. Do not add player input or final UI, interpret observed text as efficacy, execute consequences,
-   persist Phase 6 state, call a provider, begin Phase 7, release, or distribute.
+1. Add one immutable Domain `FirstPatientSaveState` composition retaining the exact disease-truth,
+   prepared-batch, administration-experiment, and universal-experiment snapshots together.
+2. Add the smallest scene capture operation that returns one fresh composition only when all four
+   `FirstPatientStateController` snapshots are initialized, retaining those exact snapshots without
+   mutation or reinterpretation.
+3. Prove exact retention, bounded immutable surface, null rejection, uninitialized failure, repeated
+   fresh composition with exact nested snapshots, and unchanged world-event, preparation, discovery,
+   memory, dialogue, movement, model, and presentation state with focused Domain tests and one opt-in
+   Godot smoke. Update README/HANDOVER evidence.
+4. Do not yet change `SaveSnapshot`, schema versions, JSON, save files, restoration, gameplay input,
+   UI, consequence execution, providers, Phase 7, release, or distribution.

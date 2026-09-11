@@ -86,7 +86,7 @@ public partial class InitialWorldEventRecordingSmokeCheck : Node
         }
 
         if (!ReferenceEquals(source.WorldEvents, expectedWorldEvents)
-            || expectedWorldEvents.Entries.Count != 4
+            || expectedWorldEvents.Entries.Count != 5
             || !ReferenceEquals(expectedWorldEvents.Entries[0], expectedEvent)
             || !ReferenceEquals(source.InitialWorldEvent, expectedEvent)
             || !ReferenceEquals(worldEventController.WorldEvents, expectedControllerEvents)

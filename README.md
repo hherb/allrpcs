@@ -1103,6 +1103,25 @@ exact current treatment context and its exact authored remedy recipe, then atomi
 new prepared-batch snapshot while retaining disease truth and both journals. It still does not occur
 an administration event, select a dosage, stabilize the patient automatically, or add input/UI.
 
+The temporary authoritative world-event source now also retains one exact advancing event for the
+healer administering the first-patient remedy, without occurring it at startup. One pure composite
+transition requires that exact authored event and one exact retained prepared batch, prospectively
+occurs the event, constructs the dosage and administration from the retained preparation, and
+delegates stabilization against the prospective latest event log. Its single immutable result
+returns the exact new event log, world time, disease truth, prepared batches, administration-specific
+journal, and universal journal together. Replacement events or batches, unavailable quantities,
+stale or repeated occurrences, wrong contexts or preparations, and duplicate or full journals expose
+no partial state.
+
+One scene coordinator gathers both initialized controllers, delegates that whole preflight once,
+then installs the already-accepted result into authoritative world-event and first-patient state
+without a second fallible boundary. The credential-free ordinary-flow smoke prepares the exact
+authored recipe in order, installs its full batch, occurs exactly one authored administration event,
+consumes the exact bounded dose, stabilizes the exact patient infection, and appends both exact
+experiment records atomically. Rejected replacement and repeated calls preserve both controllers and
+unrelated scene state. There is still no player input or final UI, observed-text efficacy inference,
+investigation-consequence execution, Phase 6 persistence, provider call, release, or distribution.
+
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
 source accepts only an exact awaiting healer activity and delegates context construction to the

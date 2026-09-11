@@ -131,6 +131,8 @@
 [ext_resource type="Script" path="res://TemporaryFirstPatientTreatmentContextSourceSmokeCheck.cs" id="129_first_patient_context_source_check"]
 [ext_resource type="Script" path="res://FirstPatientPreparationController.cs" id="130_first_patient_preparation_controller"]
 [ext_resource type="Script" path="res://FirstPatientPreparationControllerSmokeCheck.cs" id="131_first_patient_preparation_check"]
+[ext_resource type="Script" path="res://FirstPatientAdministrationController.cs" id="132_first_patient_administration_controller"]
+[ext_resource type="Script" path="res://FirstPatientAdministrationControllerSmokeCheck.cs" id="133_first_patient_administration_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -473,6 +475,9 @@ script = ExtResource("128_first_patient_context_source")
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")
 
+[node name="FirstPatientAdministrationController" type="Node" parent="."]
+script = ExtResource("132_first_patient_administration_controller")
+
 [node name="SaveSnapshotCaptureController" type="Node" parent="."]
 script = ExtResource("54_save_capture_controller")
 
@@ -589,6 +594,9 @@ script = ExtResource("129_first_patient_context_source_check")
 
 [node name="FirstPatientPreparationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("131_first_patient_preparation_check")
+
+[node name="FirstPatientAdministrationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("133_first_patient_administration_check")
 
 [node name="FocusedSearchWorldEventSmokeCheck" type="Node" parent="."]
 script = ExtResource("49_search_world_event_check")
