@@ -32,6 +32,11 @@ system, UI, or provider wiring.
 - all 77 credential-free Godot smokes passed
 - bounded 60-frame Compatibility-renderer launch passed on Godot 4.6.3 .NET
 
+Draft PR #191 is open from this branch. Its initial hosted run `34573907536` ended with all five
+jobs reporting `steps: []`; no checkout or test step ran. Treat that as unavailable
+account/infrastructure evidence, not a product failure, and do not retry or dispatch it without a
+changed external condition.
+
 ## Exact next bounded slice
 
 Take **Phase 6f1: ingredient identity and quantity foundation**.
