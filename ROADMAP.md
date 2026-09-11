@@ -280,7 +280,7 @@ Acceptance:
 - [x] Represent open questions, evidence, hypotheses, conclusions, and consequences.
 - [ ] Recognize natural-language hypotheses without turning them into facts.
 - [x] Confirm conclusions through authored combinations of evidence rather than exact phrases.
-- [ ] Provide at least three sources, two confirmation routes, one non-cooperation route, and a
+- [x] Provide at least three sources, two confirmation routes, one non-cooperation route, and a
   recovery path for every critical conclusion.
 - [ ] Implement the first patient and the stabilizing remedy.
 - [ ] Test early correct inference, wrong theories, failed experiments, lost clues, and patient
