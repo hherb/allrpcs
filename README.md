@@ -827,6 +827,14 @@ unique, reasons can reference only retained dimensions, each relationship retain
 reasons, and each per-character snapshot retains at most 64 distinct related characters. These
 contracts do not update values, imply reciprocity, or yet bound change across an exchange.
 
+One `CharacterRelationshipChange` can alter one retained dimension by only 1 to 10 points in either
+direction and carries one exact locally authored reason whose source turn identifies the exchange.
+The pure eligibility policy requires value-equal directional ownership, an existing dimension,
+available reason capacity, a unique reason and source turn, and an in-range result; it rejects
+overflow instead of clamping. The immutable transition replaces only that dimension, appends the
+exact reason, and retains unrelated dimension and reason instances. A source turn can therefore
+affect a relationship only once, and no ordinary exchange can reverse a strongly held value.
+
 Unfinished character commitments are stored separately as promises, assigned tasks, or an explicit
 other kind. Each `CharacterCommitmentMemory` has a canonical identity, exact responsible character,
 exact counterparty, exact completed source turn, and bounded description. A copied per-character
@@ -853,6 +861,15 @@ persist, migrate, index, retrieve, or project summaries. A pure recording transi
 source-turn identities present in the recent window in the same relative order, appends the exact
 caller-supplied summary, and returns the exact recent window and authoritative transcript unchanged;
 it neither edits nor evicts either conversation source.
+
+`CharacterMemoryAggregate` is the canonical local provider-neutral memory state for one character.
+It retains the exact recent window, older summaries, episodic and epistemic memories, belief
+assessments, relationships, unfinished commitments, and deterministic index while requiring
+value-equal ownership throughout. Every indexed reference must retain the exact memory instance in
+its corresponding category snapshot; a missing, merely value-equal replacement, or same-valued
+memory from another category fails closed. The aggregate has no provider conversation identifier,
+provider response state, reasoning, or chain-of-thought field. Provider requests remain stateless
+and reasoning-free, so no provider-owned state can replace this local canonical aggregate.
 
 The temporary scene now authors one complete stable healer whose exact identifier is shared with the
 live turn source and whose controller assignment is the canonical LLM type. Its generation-input
