@@ -14,10 +14,12 @@ public static class SaveSnapshotJsonSerializer
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
-        bool isVersionOne = SaveSchemaVersionSupportPolicy.CanLoad(snapshot.SchemaVersion);
-        bool isCharacterMemoryVersion =
-            snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory;
-        if (!isVersionOne && !isCharacterMemoryVersion)
+        bool isVersionOne = snapshot.SchemaVersion == SaveSchemaVersion.FirstSupported;
+        bool hasCharacterMemory =
+            snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory
+            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient;
+        bool isFirstPatientVersion = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient;
+        if (!isVersionOne && !hasCharacterMemory)
         {
             throw new ArgumentException(
                 "The save snapshot schema does not have a supported JSON representation.",
@@ -31,9 +33,14 @@ public static class SaveSnapshotJsonSerializer
             writer.WriteNumber("schemaVersion", snapshot.SchemaVersion.Value);
             WriteDiscovery(writer, snapshot.Discovery);
             WriteWorldEvents(writer, snapshot.WorldEvents);
-            if (isCharacterMemoryVersion)
+            if (hasCharacterMemory)
             {
                 CharacterMemoryJsonWriter.Write(writer, snapshot.CharacterMemory);
+            }
+
+            if (isFirstPatientVersion)
+            {
+                FirstPatientJsonWriter.Write(writer, snapshot.FirstPatient!);
             }
 
             writer.WriteEndObject();

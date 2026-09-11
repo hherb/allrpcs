@@ -84,29 +84,6 @@ public sealed class SaveSnapshotJsonSerializerTests
     }
 
     [Fact]
-    public void SerializeRejectsFirstPatientVersionUntilItsJsonContractExists()
-    {
-        SaveSnapshot baseline = CreateCompleteSnapshot();
-        DiseaseTruthSnapshot diseaseTruth =
-            RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth;
-        FirstPatientSaveState firstPatient = new(
-            diseaseTruth,
-            new PreparedIngredientBatchSnapshot([]),
-            new IngredientExperimentJournalSnapshot([]),
-            new ExperimentJournalSnapshot([]));
-        SaveSnapshot snapshot = new(
-            SaveSchemaVersion.FirstPatient,
-            baseline.Discovery,
-            baseline.WorldEvents,
-            new CharacterMemorySnapshot([]),
-            firstPatient);
-
-        Assert.Throws<ArgumentException>(() => SaveSnapshotJsonSerializer.Serialize(snapshot));
-        Assert.Same(firstPatient, snapshot.FirstPatient);
-        Assert.Same(diseaseTruth, firstPatient.DiseaseTruth);
-    }
-
-    [Fact]
     public void SerializeWritesEmptyCharacterMemoryVersionExplicitly()
     {
         SaveSnapshot versionTwo = new(

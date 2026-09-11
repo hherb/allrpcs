@@ -287,7 +287,8 @@ Acceptance:
   deterioration.
 - [x] Compose and capture immutable first-patient state without changing unrelated scene state.
 - [x] Define the version-3 in-memory save root and explicit version-2 migration prerequisite.
-- [ ] Serialize, strictly deserialize, migrate, and atomically restore complete version-3 saves.
+- [x] Serialize and strictly deserialize complete canonical version-3 first-patient saves.
+- [ ] Execute migration and atomically restore complete version-3 saves.
 
 Acceptance:
 
