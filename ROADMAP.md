@@ -266,11 +266,11 @@ Acceptance:
 
 - [x] Define the canonical disease truth independently of character beliefs.
 - [x] Implement exposed, early illness, drowsing, deep sleep, wasting, and final-decline stages.
-- [ ] Switch deeply sleeping characters to dormant controllers.
-- [ ] Restore their configured controller after a successful cure.
+- [x] Switch deeply sleeping characters to dormant controllers.
+- [x] Restore their configured controller after a successful cure.
 - [x] Advance disease only through authored meaningful-time events.
 - [x] Expose qualitative condition changes rather than exact countdowns.
-- [ ] Implement transmission exposure and discoverable protective measures.
+- [x] Implement transmission exposure and discoverable protective measures.
 - [ ] Implement patient assessment constrained by capability and perception.
 - [ ] Implement comfort, stabilization, and cure outcomes.
 - [ ] Model ingredient identity, freshness, condition, quantity, and contamination.
