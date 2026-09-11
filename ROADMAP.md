@@ -248,9 +248,9 @@ Acceptance:
 - [x] Store promises, assigned tasks, and unfinished commitments.
 - [x] Retrieve memories by deterministic topic, entity, location, and relationship tags.
 - [x] Summarize older conversations without deleting the authoritative transcript.
-- [ ] Keep canonical memory local even when a provider offers server-side conversation state.
-- [ ] Avoid storing or requesting hidden chain-of-thought.
-- [ ] Bound relationship changes so one ordinary exchange cannot cause an implausible reversal.
+- [x] Keep canonical memory local even when a provider offers server-side conversation state.
+- [x] Avoid storing or requesting hidden chain-of-thought.
+- [x] Bound relationship changes so one ordinary exchange cannot cause an implausible reversal.
 - [ ] Add save migrations for memory schema changes.
 - [ ] Test restart and provider-switch continuity.
 

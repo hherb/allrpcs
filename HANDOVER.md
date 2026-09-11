@@ -2,37 +2,35 @@
 
 ## Current state
 
-`main` contains merged PR #182 at `ff56055`. The current branch is
-`codex/phase-5-memory-retrieval`; draft PR #183 is open and mergeable.
+`main` contains merged PR #183 at `9615402`. The current branch is
+`codex/phase-5-canonical-memory` and contains the next reviewed Phase 5 work.
 
-Phase 5 has provider-neutral Domain contracts for per-character recent conversation, episodic and
-epistemic memory, belief assessments, directional relationships, and unfinished commitments. All
-retain exact local provenance, bounded copied collections, stable order, and explicit ownership;
-confirmed facts, attributed claims, uncertain beliefs, relationship dimensions/reasons, promises,
-and assigned tasks remain structurally distinct.
+Phase 5 now has one canonical local provider-neutral `CharacterMemoryAggregate` per character. It
+retains the exact recent conversation, summaries, episodic and epistemic memories, belief
+assessments, relationships, unfinished commitments, and deterministic index. Every constituent
+must have value-equal ownership, and every index entry must retain the exact referenced memory in
+its corresponding category snapshot. Missing, merely value-equal distinct, and cross-category
+matches fail closed. No provider identifier, provider state, reasoning, or chain-of-thought field
+exists; existing provider requests remain stateless and reasoning-free.
 
-Memory retrieval is deterministic and local. Four closed memory categories reference exact existing
-episodic, epistemic, relationship, or commitment instances. Entries carry 1 to 16 unique canonical
-topic, entity, location, or relationship tags, and a per-character index retains at most 576 entries
-with category-specific unique identities. Queries require 1 to 8 exact all-match tags, return 1 to
-32 exact entries in index order, and perform no scoring, semantic/fuzzy search, or content copying.
+Relationship changes are immutable and bounded. One `CharacterRelationshipChange` alters one
+retained dimension by 1 to 10 points in either direction and carries an exact reason with local-turn
+provenance. Pure eligibility requires matching directional ownership, an existing dimension,
+available reason capacity, unique reason and source-turn identities, and an in-range result. The
+transition rejects overflow rather than clamping, replaces only the affected dimension, appends the
+exact reason, and retains unrelated exact instances. A source turn can change a relationship only
+once.
 
-Older-conversation summaries retain one canonical identity, exact character, 1 to 32 ordered unique
-source-turn identities, and at most 2,000 UTF-16 code units of non-blank text; snapshots retain at
-most 128 exact summaries. Pure recording requires every source turn to remain in the recent window
-in relative order, appends the exact supplied summary, and returns the exact recent window and
-authoritative transcript unchanged. No summary generation or transcript/recent-window deletion was
-added.
-
-No Phase 5 persistence/save-schema change, provider-context projection, provider-side state,
-chain-of-thought storage/request, scene state, UI, relationship-change transition, or commitment
-completion policy exists yet.
+The roadmap items for canonical local memory, avoiding hidden chain-of-thought, and bounded
+relationship changes are complete. No populated-memory save state, save-schema change or migration,
+memory JSON, restart continuity, provider-context memory projection, scene-owned memory state, UI,
+summary generation, or commitment-completion policy exists yet.
 
 ## Validation
 
 - workflow validation and `dotnet format Allrpcs.sln --no-restore --verify-no-changes`
 - zero-warning complete solution build
-- 1,500 Domain, 365 Application, 414 Infrastructure, and 8 architecture tests
+- 1,525 Domain, 365 Application, 414 Infrastructure, and 8 architecture tests
 - representative discovery scenario: 5 valid evidence definitions
 - complete `./scripts/smoke-godot.sh`
 - bounded 60-frame Compatibility-renderer launch on Godot 4.6.3 .NET
@@ -40,25 +38,23 @@ completion policy exists yet.
 The generated `ScenarioValidator` native app host still stalls during macOS dynamic-loader startup.
 The same rebuilt validator DLL passes immediately through `dotnet exec`; this is a local app-host
 limitation, not a failing validator assertion. GitHub Actions budget was exhausted for prior draft
-PRs. All five PR #183 jobs were immediately reported failed with `steps: []`; this is account
-infrastructure state, not test evidence, and the jobs should not be dispatched again solely to
-compensate.
+PRs. Jobs reported with `steps: []` are account infrastructure state, not test evidence, and must not
+be dispatched again solely to compensate.
 
 ## Exact next bounded slice
 
-Take **Phase 5i1: canonical local per-character memory aggregate**.
+Take **Phase 5k1: immutable all-character memory snapshot**.
 
 Acceptance boundary:
 
-1. Define one immutable provider-neutral aggregate retaining the exact recent conversation,
-   summaries, episodic memories, epistemic memories, belief assessments, relationships,
-   commitments, and deterministic index for one character.
-2. Require value-equal ownership across every constituent and require each index reference to retain
-   the exact corresponding memory instance in its supplied category snapshot; reject absent,
-   value-equal-but-distinct, or cross-category references.
-3. Add focused tests for empty and complete aggregates, every constituent/category, exact-instance
-   retention, mismatched ownership, missing/distinct index targets, nulls, and immutable surface.
-4. Do not add provider-owned canonical state, context projection, provider requests, persistence or
-   save-schema changes, migration, summary generation, scene state, UI, relationship transitions,
-   commitment completion, or chain-of-thought fields.
-5. Update `README.md`, `ROADMAP.md`, and this handover after the complete quality spine passes.
+1. Define one immutable provider-neutral snapshot retaining zero to 32 exact
+   `CharacterMemoryAggregate` instances in stable supplied order.
+2. Require unique value-equal character identities, copy the caller collection, reject nulls and an
+   excessive count, and expose only a get-only `IReadOnlyList<CharacterMemoryAggregate>` surface.
+3. Add focused tests for empty and complete snapshots, exact-instance/order retention, caller
+   mutation, value-equal duplicate ownership, nulls, exact bounds, and immutable API shape.
+4. Do not yet change `SaveSnapshot`, schema-version support, JSON, storage, restoration/capture
+   controllers, scenes, provider context, relationships, commitments, or the authoritative
+   transcript.
+5. After the complete quality spine passes, update `README.md`, `ROADMAP.md`, and this handover;
+   then take the next migration prerequisite as a separately reviewed slice.
