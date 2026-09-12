@@ -304,7 +304,7 @@ Acceptance:
   changes of allegiance.
 - [x] Add additional infected roles using dormant controllers.
 - [x] Schedule directly addressed speakers first.
-- [ ] Allow motivated interjections, meaningful silence, and player interruption.
+- [x] Allow motivated interjections, meaningful silence, and player interruption.
   - [x] Define, validate, and deterministically select provider-neutral participation decisions.
   - [x] Validate one complete bounded scheduled participation round before selecting its speaker.
   - [x] Derive and scene-start an exact heard-event follow-up from a complete selected round.
@@ -335,14 +335,17 @@ Acceptance:
     flow.
   - [x] Preflight and coordinate a complete stable ordinary listener schedule and direct-address set.
   - [x] Resolve the exact bounded LLM participant for an awaiting selected character turn.
-- [ ] Prevent unbounded LLM-to-LLM conversation loops.
+  - [x] Scene-own an exact healer-first ordinary roster and include its participants in hearing.
+  - [x] Generate and record one exact selected direct response or motivated sage interjection.
+- [x] Prevent unbounded LLM-to-LLM conversation loops.
   - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
   - [x] Gate complete-round and complete-result autonomous selection on the exact conversation
     budget.
   - [x] Gate exact selected follow-up starts and atomically complete turns with one budget advance.
   - [x] Close an initialized ordinary completion/cancellation path at its bound or interruption.
   - [x] Install a fresh finite budget for each eligible ordinary player-rooted autonomous chain.
-  - [ ] Initialize and drive every ordinary autonomous chain through these bounded seams.
+  - [x] Initialize and drive every ordinary autonomous chain through these bounded seams.
+  - [x] Start only heard LLM listeners after exact character speech and stop at the finite bound.
 - [ ] Support whispering and private conversations based on hearing conditions.
 - [ ] Support bounded independent tasks and party separation.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.

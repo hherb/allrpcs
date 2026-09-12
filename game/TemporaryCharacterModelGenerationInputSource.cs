@@ -1,4 +1,5 @@
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Knowledge;
@@ -8,7 +9,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Builds bounded provider-neutral input for an exact temporary healer turn.</summary>
+/// <summary>Builds bounded provider-neutral input for an exact ordinary participant turn.</summary>
 public partial class TemporaryCharacterModelGenerationInputSource : Node
 {
     private const string ReferencedKnowledgeText =
@@ -16,82 +17,102 @@ public partial class TemporaryCharacterModelGenerationInputSource : Node
     private const string UnreferencedKnowledgeIdText = "private-village-secret";
     private const string UnreferencedKnowledgeText =
         "A secret that must remain unavailable to this healer.";
+    private const string SageKnowledgeText =
+        "The sage knows a village oral history about comparing conflicting accounts.";
 
-    private CharacterIntentionAffordanceSnapshot affordances = null!;
+    private IReadOnlyDictionary<CharacterId, CharacterIntentionAffordanceSnapshot> affordances =
+        null!;
     private CharacterMemoryController memoryController = null!;
-    private TemporaryHealerCharacterSource healerSource = null!;
     private KnowledgeSnapshot knowledge = null!;
-    private CharacterPerceptionSnapshot perception = null!;
+    private TemporaryOrdinaryCharacterParticipantSource participantSource = null!;
+    private IReadOnlyDictionary<CharacterId, CharacterPerceptionSnapshot> perceptions = null!;
     private WorldObjectSnapshot worldObjects = null!;
 
     /// <inheritdoc />
     public override void _Ready()
     {
-        healerSource = GetNode<TemporaryHealerCharacterSource>(
-            "../TemporaryHealerCharacterSource");
+        participantSource = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+            "../TemporaryOrdinaryCharacterParticipantSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         worldObjects = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").WorldObjects;
 
+        Character healer = participantSource.Participants[0];
+        Character sage = participantSource.Participants[1];
         ObjectId identifiedObjectId = worldObjects.Entries[0].Identity.Id;
-        perception = new CharacterPerceptionSnapshot(
-            healerSource.Character.Identity.Id,
-            worldObjects.Entries.Select(
-                worldObject => new WorldObjectVisibility(
+        perceptions = new Dictionary<CharacterId, CharacterPerceptionSnapshot>
+        {
+            [healer.Identity.Id] = new CharacterPerceptionSnapshot(
+                healer.Identity.Id,
+                worldObjects.Entries.Select(
+                    worldObject => new WorldObjectVisibility(
+                        worldObject.Identity.Id,
+                        ReferenceEquals(worldObject.Identity.Id, identifiedObjectId)
+                            ? VisibilityState.Identified
+                            : VisibilityState.Unnoticed))),
+            [sage.Identity.Id] = new CharacterPerceptionSnapshot(
+                sage.Identity.Id,
+                worldObjects.Entries.Select(worldObject => new WorldObjectVisibility(
                     worldObject.Identity.Id,
-                    ReferenceEquals(worldObject.Identity.Id, identifiedObjectId)
-                        ? VisibilityState.Identified
-                        : VisibilityState.Unnoticed)));
+                    VisibilityState.Unnoticed))),
+        };
 
         KnowledgeId referencedKnowledgeId =
-            healerSource.Character.Knowledge.KnowledgeReferences[0];
+            healer.Knowledge.KnowledgeReferences[0];
         knowledge = new KnowledgeSnapshot(
             [
                 new KnowledgeEntry(referencedKnowledgeId, ReferencedKnowledgeText),
+                new KnowledgeEntry(sage.Knowledge.KnowledgeReferences[0], SageKnowledgeText),
                 new KnowledgeEntry(
                     new KnowledgeId(UnreferencedKnowledgeIdText),
                     UnreferencedKnowledgeText),
             ]);
 
-        affordances = new CharacterIntentionAffordanceSnapshot(
-            [
-                new CharacterIntentionAffordance(
-                    CharacterIntentionType.ExamineObject,
-                    identifiedObjectId),
-            ]);
+        affordances = new Dictionary<CharacterId, CharacterIntentionAffordanceSnapshot>
+        {
+            [healer.Identity.Id] = new CharacterIntentionAffordanceSnapshot(
+                [
+                    new CharacterIntentionAffordance(
+                        CharacterIntentionType.ExamineObject,
+                        identifiedObjectId),
+                ]),
+            [sage.Identity.Id] = new CharacterIntentionAffordanceSnapshot([]),
+        };
     }
 
     /// <summary>
-    /// Returns bounded input only for an exact awaiting-response turn owned by the authored healer.
+    /// Returns bounded input only for an exact awaiting-response turn owned by the ordinary roster.
     /// </summary>
     public TemporaryCharacterModelGenerationInput? CreateInput(CharacterTurnActivity activity)
     {
         ArgumentNullException.ThrowIfNull(activity);
 
-        if (!ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse)
-            || !ReferenceEquals(
-                activity.Request.RespondingCharacterId,
-                healerSource.Character.Identity.Id))
+        Character? character = CharacterTurnParticipantLookup.Find(
+            participantSource.Participants,
+            activity);
+        if (character is null)
         {
             return null;
         }
 
+        CharacterId characterId = character.Identity.Id;
+        CharacterIntentionAffordanceSnapshot characterAffordances = affordances[characterId];
         CharacterModelGenerationRequest generationRequest =
             CharacterModelContextAssembler.Assemble(
                 activity.Request,
-                healerSource.Character,
-                perception,
+                character,
+                perceptions[characterId],
                 worldObjects,
                 knowledge,
                 CharacterModelCommitmentMemoryContextProjection.Project(
-                    healerSource.Character.Identity.Id,
+                    characterId,
                     memoryController.Memory),
                 [activity.Request.DialogueEvent],
-                affordances);
+                characterAffordances);
 
         return new TemporaryCharacterModelGenerationInput(
             generationRequest,
             worldObjects,
-            affordances);
+            characterAffordances);
     }
 }

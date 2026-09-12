@@ -90,17 +90,23 @@ public partial class OrdinaryAutonomousDialogueFlowSmokeCheck : Node
         }
 
         SetProcess(false);
-        CharacterTurnParticipationConsiderationRequest? consideration =
-            participationModel.Request;
+        IReadOnlyList<CharacterTurnParticipationConsiderationRequest> considerations =
+            participationModel.Requests;
         CharacterModelGenerationRequest? generation = characterModel.Request;
         CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;
-        if (consideration is null
-            || generation is null
-            || participationModel.CallCount != 1
+        if (generation is null
+            || participationModel.CallCount != 2
             || characterModel.CallCount != 1
-            || !consideration.IsDirectlyAddressed
-            || !ReferenceEquals(consideration.HeardDialogueEvent, activity.Request.DialogueEvent)
-            || !ReferenceEquals(consideration.ScheduledCharacter.Identity.Id,
+            || considerations.Count != 2
+            || !considerations[0].IsDirectlyAddressed
+            || considerations[1].IsDirectlyAddressed
+            || !ReferenceEquals(
+                considerations[0].HeardDialogueEvent,
+                activity.Request.DialogueEvent)
+            || !ReferenceEquals(
+                considerations[1].HeardDialogueEvent,
+                activity.Request.DialogueEvent)
+            || !ReferenceEquals(considerations[0].ScheduledCharacter.Identity.Id,
                 activity.Request.RespondingCharacterId)
             || !ReferenceEquals(generation.TurnRequest, activity.Request)
             || activity.Response?.Speech?.Text != HealerText
@@ -146,7 +152,7 @@ public partial class OrdinaryAutonomousDialogueFlowSmokeCheck : Node
     {
         public int CallCount { get; private set; }
 
-        public CharacterTurnParticipationConsiderationRequest? Request { get; private set; }
+        public List<CharacterTurnParticipationConsiderationRequest> Requests { get; } = [];
 
         public ValueTask<CharacterTurnParticipationDecision> DecideAsync(
             CharacterTurnParticipationConsiderationRequest request,
@@ -154,11 +160,15 @@ public partial class OrdinaryAutonomousDialogueFlowSmokeCheck : Node
         {
             cancellationToken.ThrowIfCancellationRequested();
             CallCount++;
-            Request = request;
+            Requests.Add(request);
             return ValueTask.FromResult(new CharacterTurnParticipationDecision(
                 request.ScheduledCharacter.Identity.Id,
-                CharacterTurnParticipationKind.Respond,
-                null));
+                request.IsDirectlyAddressed
+                    ? CharacterTurnParticipationKind.Respond
+                    : CharacterTurnParticipationKind.RemainSilent,
+                request.IsDirectlyAddressed
+                    ? null
+                    : request.ScheduledCharacter.Goals.Entries[0]));
         }
     }
 

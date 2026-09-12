@@ -1,4 +1,5 @@
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -78,9 +79,9 @@ public partial class DialogueEventControllerSmokeCheck : Node
 
         GD.Print(
             "Dialogue event controller smoke passed: accepted panel utterances became exact "
-            + "in-world events, scene hearing selected the exact healer in range, repeated equal "
-            + "text remained distinct occurrences, invalid queries failed closed, and unrelated "
-            + "state was preserved.");
+            + "in-world events, scene hearing selected the exact healer and sage in stable order, "
+            + "repeated equal text remained distinct occurrences, invalid queries failed closed, "
+            + "and unrelated state was preserved.");
         GetTree().Quit();
     }
 
@@ -98,8 +99,9 @@ public partial class DialogueEventControllerSmokeCheck : Node
     {
         DialogueEvent? occurred = controller.LastOccurredEvent;
         DialogueUtterance? submitted = inputController.LastSubmittedUtterance;
-        CharacterId expectedHealer = GetNode<TemporaryCharacterTurnSource>(
-            "../TemporaryCharacterTurnSource").Activity.Request.RespondingCharacterId;
+        IReadOnlyList<Character> expectedParticipants =
+            GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+                "../TemporaryOrdinaryCharacterParticipantSource").Participants;
         if (occurred is null
             || submitted is null
             || !ReferenceEquals(occurred.Utterance, submitted)
@@ -107,10 +109,15 @@ public partial class DialogueEventControllerSmokeCheck : Node
             || !ReferenceEquals(
                 occurred.Audience.SpeakerCharacterId,
                 submitted.SpeakerCharacterId)
-            || occurred.Audience.ListenerCharacterIds.Count != 1
-            || !ReferenceEquals(occurred.Audience.ListenerCharacterIds[0], expectedHealer))
+            || occurred.Audience.ListenerCharacterIds.Count != 2
+            || !ReferenceEquals(
+                occurred.Audience.ListenerCharacterIds[0],
+                expectedParticipants[0].Identity.Id)
+            || !ReferenceEquals(
+                occurred.Audience.ListenerCharacterIds[1],
+                expectedParticipants[1].Identity.Id))
         {
-            Fail("Scene dialogue occurrence did not retain the exact utterance and heard healer.");
+            Fail("Scene dialogue occurrence did not retain the exact utterance and heard roster.");
             return false;
         }
 

@@ -1,4 +1,5 @@
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -6,7 +7,7 @@ using NumericsVector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
-/// <summary>Records each fresh complete healer response speech as one temporary scene occurrence.</summary>
+/// <summary>Records each fresh complete ordinary response speech as one scene occurrence.</summary>
 public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
 {
     private const float DialogueHearingRangePixels = 192.0f;
@@ -17,6 +18,8 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
     private DialogueInputController inputController = null!;
     private CharacterBody2D healer = null!;
     private CharacterBody2D seeker = null!;
+    private Marker2D sageHearingPosition = null!;
+    private TemporaryOrdinaryCharacterParticipantSource participantSource = null!;
     private DialogueUtterance? lastRecordedSpeech;
 
     /// <inheritdoc />
@@ -28,8 +31,11 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
             "../CharacterTurnTranscriptController");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
+        participantSource = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+            "../TemporaryOrdinaryCharacterParticipantSource");
         healer = GetNode<CharacterBody2D>("../Healer");
         seeker = GetNode<CharacterBody2D>("../Seeker");
+        sageHearingPosition = GetNode<Marker2D>("../SageHearingPosition");
     }
 
     /// <inheritdoc />
@@ -48,10 +54,24 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
 
         CharacterId seekerId = inputController.SpeakerCharacterId
             ?? throw new InvalidOperationException("The scene Seeker identifier was absent.");
+        IReadOnlyList<Character> participants = participantSource.Participants;
+        Character speaker = participants.SingleOrDefault(
+            participant => participant.Identity.Id.Equals(speech.SpeakerCharacterId))
+            ?? throw new InvalidOperationException(
+                "The response speaker was absent from ordinary scene participants.");
+        Character otherParticipant = ReferenceEquals(
+            speaker,
+            participants[0])
+            ? participants[1]
+            : participants[0];
+        Vector2 speakerPosition = GetParticipantPosition(speaker, participants);
         DialogueHearingCandidate[] candidates =
         [
-            new(speech.SpeakerCharacterId, ToNumerics(healer.Position)),
+            new(speech.SpeakerCharacterId, ToNumerics(speakerPosition)),
             new(seekerId, ToNumerics(seeker.Position)),
+            new(
+                otherParticipant.Identity.Id,
+                ToNumerics(GetParticipantPosition(otherParticipant, participants))),
         ];
         if (!eventController.TryOccur(
                 speech,
@@ -61,10 +81,28 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
             || !transcriptController.TryAppendSpokenStatement(speech))
         {
             throw new InvalidOperationException(
-                "The complete healer response speech could not occur and append once.");
+                "The complete ordinary response speech could not occur and append once.");
         }
 
         lastRecordedSpeech = speech;
+    }
+
+    private Vector2 GetParticipantPosition(
+        Character participant,
+        IReadOnlyList<Character> participants)
+    {
+        if (ReferenceEquals(participant, participants[0]))
+        {
+            return healer.Position;
+        }
+
+        if (ReferenceEquals(participant, participants[1]))
+        {
+            return sageHearingPosition.Position;
+        }
+
+        throw new InvalidOperationException(
+            "The ordinary response participant had no scene hearing position.");
     }
 
     private static NumericsVector2 ToNumerics(Vector2 value) => new(value.X, value.Y);
