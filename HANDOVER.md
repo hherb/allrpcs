@@ -24,6 +24,8 @@ decisions, loop, schedule or start speakers, invoke a model, wire player input, 
 alter recent-conversation retention, add timeouts/retries, perform actions, add hearing/privacy
 rules, add UI/persistence/provider behavior, start Phase 8, release, sign, or distribute.
 
+Draft PR #205 contains this work.
+
 ## Validation and review
 
 - final host-local `./scripts/quality.sh` passed cleanly:
@@ -41,7 +43,8 @@ The restricted focused VSTest run reproduced the known localhost-bind restrictio
 host-local command passed. The restricted focused Godot run reproduced the known `user://logs`
 failure; the identical host-local command passed. Hosted jobs for recent PRs still had `steps: []`
 under the Actions account-budget condition, so do not retry or dispatch them unless that condition
-changes.
+changes. Draft PR #205 triggered run `34662311735` at implementation commit `91c89d5`; all five
+jobs completed with `steps: []` under that same infrastructure/account condition.
 
 ## Exact next bounded slice
 
