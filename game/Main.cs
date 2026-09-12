@@ -21,8 +21,10 @@ namespace Allrpcs.Game;
 public partial class Main : Node
 {
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
+    private const int AutonomousConversationMaximumTurnCount = 2;
     private const float DialogueHearingRangePixels = 192.0f;
     private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan ParticipationRoundDeadline = TimeSpan.FromSeconds(30);
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
     private static readonly StringName FocusedSearchCompleteAction = new("focused_search_complete");
@@ -33,12 +35,14 @@ public partial class Main : Node
 
     private Healer healer = null!;
     private AutonomousConversationBudgetController autonomousConversationBudgetController = null!;
+    private OrdinaryPlayerDialogueParticipationCoordinator participationCoordinator = null!;
+    private CharacterTurnParticipationRoundTaskController participationRoundController = null!;
+    private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private CharacterModelGenerationFlowController modelFlowController = null!;
     private CharacterTurnActivityController characterTurnController = null!;
     private CharacterTurnTranscriptController characterTurnTranscriptController = null!;
     private DialogueEventController dialogueEventController = null!;
     private DialogueInputController dialogueInputController = null!;
-    private TemporaryCharacterTurnRequestSource characterTurnRequestSource = null!;
     private TemporaryCharacterModelGenerationInputSource characterModelInputSource = null!;
     private TemporaryHealerCharacterSource healerCharacterSource = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
@@ -73,14 +77,18 @@ public partial class Main : Node
         healer = GetNode<Healer>("Healer");
         autonomousConversationBudgetController = GetNode<AutonomousConversationBudgetController>(
             "AutonomousConversationBudgetController");
+        participationCoordinator = GetNode<OrdinaryPlayerDialogueParticipationCoordinator>(
+            "OrdinaryPlayerDialogueParticipationCoordinator");
+        participationRoundController = GetNode<CharacterTurnParticipationRoundTaskController>(
+            "CharacterTurnParticipationRoundTaskController");
+        participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
+            "TemporaryCharacterTurnParticipationModelSource");
         characterTurnController = GetNode<CharacterTurnActivityController>(
             "CharacterTurnActivityController");
         characterTurnTranscriptController = GetNode<CharacterTurnTranscriptController>(
             "CharacterTurnTranscriptController");
         dialogueEventController = GetNode<DialogueEventController>("DialogueEventController");
         dialogueInputController = GetNode<DialogueInputController>("DialogueInputController");
-        characterTurnRequestSource = GetNode<TemporaryCharacterTurnRequestSource>(
-            "TemporaryCharacterTurnRequestSource");
         characterModelInputSource = GetNode<TemporaryCharacterModelGenerationInputSource>(
             "TemporaryCharacterModelGenerationInputSource");
         healerCharacterSource = GetNode<TemporaryHealerCharacterSource>(
@@ -415,34 +423,29 @@ public partial class Main : Node
                 "The accepted player utterance could not occur and append to the transcript.");
         }
 
-        StartCharacterTurnIfEligible(healerCharacterId);
+        StartParticipationRoundIfEligible();
 
         lastProcessedDialogueUtterance = utterance;
     }
 
-    private void StartCharacterTurnIfEligible(CharacterId healerCharacterId)
+    private void StartParticipationRoundIfEligible()
     {
-        if (!CharacterTurnStartPolicy.CanStart(characterTurnController.Activity))
-        {
-            return;
-        }
-
         DialogueEvent occurredEvent = dialogueEventController.LastOccurredEvent
             ?? throw new InvalidOperationException("The occurred player dialogue event was absent.");
-        CharacterTurnRequest? request = characterTurnRequestSource.CreateRequest(
+        Character healerCharacter = healerCharacterSource.Character;
+        _ = participationCoordinator.TryStartNewChain(
             occurredEvent,
-            healerCharacterId,
-            DialogueActType.Request);
-        if (request is null)
-        {
-            return;
-        }
-
-        if (!characterTurnController.TryStart(request))
-        {
-            throw new InvalidOperationException(
-                "The live character-turn controller could not start the player request.");
-        }
+            healerCharacter,
+            new CharacterId(healerCharacter.Identity.Id.Value),
+            participationModelSource,
+            participationRoundController,
+            autonomousConversationBudgetController,
+            characterTurnController,
+            new AutonomousConversationBudget(
+                0,
+                AutonomousConversationMaximumTurnCount,
+                false),
+            ParticipationRoundDeadline);
     }
 
     /// <inheritdoc />
@@ -451,6 +454,7 @@ public partial class Main : Node
         if (@event.IsActionPressed(CharacterTurnCancelAction))
         {
             _ = modelFlowController.TryCancel();
+            _ = participationRoundController.TryCancel();
             _ = characterTurnController.TryCancel();
             _ = autonomousConversationBudgetController.TryInterrupt();
         }

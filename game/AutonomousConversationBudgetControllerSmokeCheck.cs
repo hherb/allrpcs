@@ -25,6 +25,7 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
         AutonomousConversationBudget original = new(0, 2, false);
 
         if (!ExercisesAutonomousTurnCoordination()
+            || !ExercisesFreshPlayerRootedChains()
             || controller.Budget is not null
             || !RejectsNullInitialization(controller)
             || !controller.TryInitialize(original)
@@ -129,6 +130,28 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
         bool result = RejectsCoordinationNulls(controller, turnController, decision, request);
         controller.Free();
         turnController.Free();
+        return result;
+    }
+
+    private static bool ExercisesFreshPlayerRootedChains()
+    {
+        AutonomousConversationBudgetController controller = new();
+        AutonomousConversationBudget first = new(0, 2, false);
+        AutonomousConversationBudget second = new(0, 2, false);
+        bool result = controller.TryInstallNewChain(null, first)
+            && ReferenceEquals(controller.Budget, first)
+            && !controller.TryInstallNewChain(null, second)
+            && !controller.TryInstallNewChain(first, first)
+            && !controller.TryInstallNewChain(
+                first,
+                new AutonomousConversationBudget(1, 2, false))
+            && !controller.TryInstallNewChain(
+                first,
+                new AutonomousConversationBudget(0, 2, true))
+            && ThrowsArgumentNull(() => controller.TryInstallNewChain(first, null!))
+            && controller.TryInstallNewChain(first, second)
+            && ReferenceEquals(controller.Budget, second);
+        controller.Free();
         return result;
     }
 

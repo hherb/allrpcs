@@ -329,7 +329,9 @@ Acceptance:
   - [x] Bind and select exact participation models through canonical provider settings.
   - [x] Compose the selected OpenAI participation model without construction-time input/output.
   - [x] Scene-own configured participation bindings with safe replacement and offline clearing.
-  - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
+  - [x] Coordinate one eligible directly addressed ordinary player event through a bounded
+    participation round and the existing budget-gated follow-up-start seam.
+  - [x] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
   - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
@@ -337,6 +339,7 @@ Acceptance:
     budget.
   - [x] Gate exact selected follow-up starts and atomically complete turns with one budget advance.
   - [x] Close an initialized ordinary completion/cancellation path at its bound or interruption.
+  - [x] Install a fresh finite budget for each eligible ordinary player-rooted autonomous chain.
   - [ ] Initialize and drive every ordinary autonomous chain through these bounded seams.
 - [ ] Support whispering and private conversations based on hearing conditions.
 - [ ] Support bounded independent tasks and party separation.

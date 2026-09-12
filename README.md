@@ -704,7 +704,21 @@ composition installs both ordinary and participation adapters for OpenAI without
 clears participation back to offline when a supported ordinary provider has no participation
 adapter. The controller and source do not invoke participation models during composition, retry,
 select or start a follow-up, advance a budget, or mutate dialogue, transcript, world, or
-presentation state.
+presentation state. One scene-owned ordinary player-dialogue coordinator preflights an exact heard
+event, exact directly addressed LLM listener, available continuing budget, idle participation task,
+and free character-turn slot before consuming one model. It starts at most one bounded round,
+retains no copy of the event or result, hands only a complete result to the existing budget-gated
+follow-up-start seam, and resets every terminal task outcome. Meaningful silence, offline or
+provider failure, timeout, cancellation, interruption, exhaustion, ineligible listeners, overlap,
+and an active turn start no follow-up. Ordinary heard player dialogue now supplies a distinct
+value-equal direct healer address, atomically installs a fresh two-turn budget only after complete
+preflight, and invokes this coordinator. A selected direct response traverses the existing bounded
+generation, validated reception, single speech occurrence, completion, and one-step budget advance;
+player cancellation also cancels an active participation round and monotonically interrupts that
+exact chain. Consecutive eligible player roots replace the exact prior budget with distinct fresh
+state, while stale or invalid replacement and failed round preflight preserve it. The ordinary
+scene still schedules only its single directly addressed healer, does not infer text addresses,
+start another participation round from healer speech, or drive an LLM-to-LLM loop.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the

@@ -12,6 +12,7 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     private const string SecondText = "Now report whether they are safe.";
 
     private CharacterTurnActivityController turnController = null!;
+    private AutonomousConversationBudgetController budgetController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private TemporaryCharacterExaminationFlowController examinationFlowController = null!;
     private DialogueEventController eventController = null!;
@@ -20,6 +21,7 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
     private LineEdit input = null!;
     private int stage;
     private CharacterTurnActivity? firstCompleted;
+    private AutonomousConversationBudget? firstCompletedBudget;
     private CharacterTurnRequest? firstRequest;
     private DialogueUtterance? firstSpeech;
     private CharacterTurnRequest? secondRequest;
@@ -39,6 +41,8 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
 
         turnController = GetNode<CharacterTurnActivityController>(
             "../CharacterTurnActivityController");
+        budgetController = GetNode<AutonomousConversationBudgetController>(
+            "../AutonomousConversationBudgetController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
         examinationFlowController = GetNode<TemporaryCharacterExaminationFlowController>(
@@ -97,11 +101,15 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             if (firstCompleted is null
                 || !ReferenceEquals(firstCompleted.Request, firstRequest)
                 || !ReferenceEquals(firstCompleted.Response?.Speech, firstSpeech)
-                || !ReferenceEquals(firstCompleted.State, CharacterTurnActivityState.Completed))
+                || !ReferenceEquals(firstCompleted.State, CharacterTurnActivityState.Completed)
+                || budgetController.Budget is not
+                { CompletedTurnCount: 1, MaximumTurnCount: 2, HasPlayerInterrupted: false })
             {
                 Fail("First exact live turn did not complete before the second submission.");
                 return;
             }
+
+            firstCompletedBudget = budgetController.Budget;
 
             if (examinationFlowController.LastCollectionOccurrence is null)
             {
@@ -158,6 +166,11 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
             || !ReferenceEquals(secondCompleted.Response?.Speech, secondSpeech)
             || !ReferenceEquals(secondCompleted.State, CharacterTurnActivityState.Completed)
             || !ReferenceEquals(firstCompleted.State, CharacterTurnActivityState.Completed)
+            || firstCompletedBudget is null
+            || budgetController.Budget is not
+            { CompletedTurnCount: 1, MaximumTurnCount: 2, HasPlayerInterrupted: false }
+                secondCompletedBudget
+            || ReferenceEquals(secondCompletedBudget, firstCompletedBudget)
             || transcript is not { Entries.Count: 6 }
             || transcript.Entries[0].SpokenStatement?.Text != FirstText
             || !ReferenceEquals(transcript.Entries[1].SpokenStatement, firstSpeech)
@@ -174,7 +187,8 @@ public partial class CharacterTurnRepeatFlowSmokeCheck : Node
         GD.Print(
             "Character-turn repeat flow smoke passed: two distinct heard player utterances "
             + "started consecutive exact awaiting, speaking, and completed turns, retained both "
-            + "speech pairs around one exact examination and collection sequence.");
+            + "speech pairs around one exact examination and collection sequence, and each "
+            + "player root installed and advanced its own fresh finite budget.");
         GetTree().Quit();
     }
 

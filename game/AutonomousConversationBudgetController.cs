@@ -25,6 +25,25 @@ public partial class AutonomousConversationBudgetController : Node
         return true;
     }
 
+    /// <summary>Atomically installs one exact fresh player-rooted chain budget.</summary>
+    internal bool TryInstallNewChain(
+        AutonomousConversationBudget? expectedCurrentBudget,
+        AutonomousConversationBudget initialBudget)
+    {
+        ArgumentNullException.ThrowIfNull(initialBudget);
+
+        if (!ReferenceEquals(Budget, expectedCurrentBudget)
+            || ReferenceEquals(initialBudget, expectedCurrentBudget)
+            || initialBudget.CompletedTurnCount != 0
+            || initialBudget.HasPlayerInterrupted)
+        {
+            return false;
+        }
+
+        Budget = initialBudget;
+        return true;
+    }
+
     /// <summary>Records exactly one further completed turn when the budget permits it.</summary>
     public bool TryRecordCompletedTurn()
     {
