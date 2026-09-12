@@ -3,7 +3,9 @@
 ## Current state
 
 `main` contains merged PR #214 at `e6f6836`. The current branch is
-`codex/phase-7-complete-listener-scheduling`; its draft PR is pending publication.
+`codex/phase-7-complete-listener-scheduling`.
+
+Draft PR #215 is open at `cd3bc9e`.
 
 This branch completes two bounded Phase 7 slices:
 
