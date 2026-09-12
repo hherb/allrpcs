@@ -663,9 +663,15 @@ up to 32 distinct direct-address identifiers before returning one request per ch
 order. It uses value-based listener and address membership while retaining every exact character
 and the exact event, returns an independent read-only collection, and permits an empty round. These
 requests may be paired with a decision only through an immutable result that applies the exact
-consideration gate first and retains both exact inputs. These contracts do not generate or infer
-motives or addresses, assemble model context, invoke models, start or cancel turns, impose
-interjection frequency or conversation-loop bounds, integrate scenes, or alter player interruption
+consideration gate first and retains both exact inputs. One complete immutable result round copies
+and retains 0–32 positionally aligned exact requests and accepted results, requires distinct
+scheduled character identifiers and one shared exact heard event, and exposes independent read-only
+collections. A one-method provider-neutral Application interface obtains a cancellation-aware
+decision for one exact request. Its bounded controller delegates complete request preflight to the
+Domain transition before any invocation, calls the interface once per request in stable order, and
+returns only the validated complete result round. These contracts do not generate or infer motives
+or addresses, assemble or serialize provider context, define an adapter, retry or impose a timeout,
+select or start a turn, mutate a conversation budget, integrate scenes, or alter player interruption
 behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive

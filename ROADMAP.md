@@ -315,6 +315,9 @@ Acceptance:
     character state.
   - [x] Preflight and create a complete bounded round of stable consideration requests.
   - [x] Bind each accepted participation decision to its exact consideration request.
+  - [x] Retain one complete bounded result round with exact request and event alignment.
+  - [x] Define one provider-neutral cancellation-aware participation decision interface.
+  - [x] Obtain and validate one complete participation decision round through that interface.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.

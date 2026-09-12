@@ -2,69 +2,64 @@
 
 ## Current state
 
-`main` contains merged PR #207 at `b7b9ffb`. The current branch is
-`codex/phase-7-participation-consideration`.
+`main` contains merged PR #208 at `2decced`. The current branch is
+`codex/phase-7-participation-round-results`.
 
-This branch adds four bounded Phase 7 Domain slices:
+This branch adds three bounded Phase 7 slices:
 
-- `CharacterTurnParticipationConsiderationRequest` retains one exact scheduled `Character`, one
-  exact heard `DialogueEvent`, and an explicit direct-address flag only when the character is a
-  value-equal listener;
-- `CharacterTurnParticipationConsiderationPolicy` validates a returned decision against that exact
-  request through the existing exact-character, direct-address, and authored-motive gate;
-- `CharacterTurnParticipationConsiderationRoundTransition` preflights at most 32 distinct scheduled
-  listeners and 32 distinct direct addresses, then returns a stable independent read-only request
-  collection retaining every exact character and the exact event;
-- `CharacterTurnParticipationConsiderationResult` binds one accepted exact decision to its exact
-  request and rejects incompatible, value-equal-but-distinct decision identity.
+- `CharacterTurnParticipationConsiderationRoundResult` retains copied read-only sequences of 0–32
+  exact requests and exact accepted results in stable order, requiring positional request-instance
+  alignment, distinct scheduled character identifiers, and one shared exact heard event;
+- `ICharacterTurnParticipationModel` defines one provider-neutral, cancellation-aware decision
+  operation over an exact consideration request;
+- `CharacterTurnParticipationConsiderationController` delegates complete request-round preflight to
+  the existing Domain transition before invoking that interface once per request in stable order,
+  then returns only the validated complete result round.
 
-The Phase 7 parent items remain open. This branch does not assemble participation model context,
-define or invoke a participation model/provider interface, deserialize a decision, obtain a
-decision, collect a complete decision round, validate or select such a round in ordinary play,
-construct or start its follow-up, initialize an ordinary autonomous budget, loop, change hearing or
-roles, add whispering/private conversations, add independent tasks, implement sabotage, start Phase
-8, release, sign, or distribute.
-
-Draft PR #208 contains this work.
+The Phase 7 parent items remain open. This branch does not assemble or serialize participation
+model context, implement a provider adapter, add retries or timeouts, select a speaker from the new
+result round, mutate an autonomous budget, construct or start a follow-up, initialize or loop an
+ordinary autonomous chain, wire the scene, change hearing or roles, add whispering/private
+conversations or independent tasks, implement sabotage, start Phase 8, release, sign, or distribute.
 
 ## Validation and review
 
-- test-first compile failures were observed before each missing request, policy, round-transition,
-  and result implementation;
-- 32 focused Domain cases pass across the four new surfaces, covering addressed and unaddressed
-  choices, response, interjection, meaningful silence, exact and distinct value-equal identity,
-  authored motives, audience absence, complete preflight, stable order, empty and maximum rounds,
-  null, duplicate, and oversized inputs, unchanged inputs, collection immutability, and smallest
-  public surfaces;
+- test-first compile failures were observed before the missing round result, model interface, and
+  controller implementations;
+- 13 focused cases pass across the three new surfaces, covering empty, single, and maximum rounds;
+  stable order; exact and distinct value-equal request identity; missing, extra, reordered,
+  duplicate-character, mixed-event, oversized, null, and invalid model outputs; complete preflight;
+  cancellation propagation; unchanged inputs; collection immutability; and smallest public
+  surfaces;
 - final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, the
-  zero-warning solution build, 2,081 Domain, 402 Application, 447 Infrastructure, and 8 architecture
+  zero-warning solution build, 2,087 Domain, 409 Application, 447 Infrastructure, and 8 architecture
   tests, all 5 representative scenario definitions, the complete headless smoke matrix, and the
   bounded Compatibility-renderer launch;
-- `git diff --check`, staged-diff review, practical 500-line/120-character limits, exact-identity and
-  value-membership boundaries, complete preflight, immutable collections, network-free behavior,
-  and scope review pass.
+- `git diff --check`, practical 500-line/120-character limits, exact-identity and value-membership
+  boundaries, complete preflight, immutable collection, network-free behavior, and scope review
+  pass.
 
-Restricted VSTest reproduced the known localhost-bind denial; the identical focused commands and
-full quality spine passed host-local. Draft PR #208 triggered run `34682049081`; all five jobs
-completed with `steps: []` without executing checkout or test steps under the continuing Actions
-account-budget condition. Treat them as infrastructure rather than test evidence and do not retry or
-dispatch them.
+Restricted execution reproduced the known local-IPC denial in MSBuild/VSTest; the identical focused
+commands and full quality spine passed host-local. Hosted Actions remained account-budget-blocked on
+PR #208 with all five jobs reporting `steps: []`; treat that as infrastructure rather than test
+evidence and do not retry or dispatch workflows.
 
 ## Exact next bounded slice
 
-Take **Phase 7w: complete participation-consideration result round**.
+Take **Phase 7z: budget-gated selection from a complete consideration result round**.
 
 Acceptance boundary:
 
-1. Add one immutable bounded Domain round result retaining a copied read-only sequence of the exact
-   consideration requests and one exact accepted result per request in the same order.
-2. Require exact request-instance alignment, one result for every request, at most 32 entries,
-   distinct scheduled character identifiers, and one shared exact heard dialogue event.
-3. Add focused Domain tests for empty, single, and maximum rounds; stable order; exact versus
-   distinct value-equal request identity; missing, extra, reordered, duplicate-character, and
-   mixed-event rejection; nulls; unchanged inputs; immutability; and smallest public surface.
-4. Do not define/invoke a model or provider interface, assemble context, serialize/deserialize,
-   retry or time out, mutate a budget, select/start/complete a turn, loop, or wire the scene.
+1. Add one pure Domain policy accepting an exact `AutonomousConversationBudget` and exact
+   `CharacterTurnParticipationConsiderationRoundResult`.
+2. Delegate speaking-decision choice to the existing selection policy and, only while the budget
+   permits continuation, return the exact aligned consideration result for that decision; return
+   no selection for an empty/all-silent round or an exhausted/interrupted budget.
+3. Add focused Domain tests for response and interjection selection, stable first-speaker order,
+   exact result/decision identity, empty and all-silent rounds, exhausted and interrupted budgets,
+   nulls, unchanged inputs, and smallest public surface.
+4. Do not invoke a model, rebuild or revalidate a completed round, mutate the budget, create/start/
+   complete a follow-up turn, initialize or loop an autonomous chain, or wire the scene.
 
-Leave both Phase 7 parent items unticked until later slices obtain one decision per scheduled
-listener and drive every ordinary autonomous chain through the existing bounded scene seams.
+Leave both Phase 7 parent items unticked until later slices adapt provider models and drive every
+ordinary autonomous chain through the existing bounded scene seams.
