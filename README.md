@@ -669,21 +669,29 @@ scheduled character identifiers and one shared exact heard event, and exposes in
 collections. A one-method provider-neutral Application interface obtains a cancellation-aware
 decision for one exact request. Its bounded controller delegates complete request preflight to the
 Domain transition before any invocation, calls the interface once per request in stable order, and
-returns only the validated complete result round. These contracts do not generate or infer motives
-or addresses, assemble or serialize provider context, define an adapter, retry or impose a timeout,
-select or start a turn, mutate a conversation budget, integrate scenes, or alter player interruption
-behavior.
+returns only the validated complete result round. A pure budget-gated selection policy delegates
+speaker choice over that round's exact accepted decisions and returns the exact aligned result. The
+scene budget controller can start a follow-up using that result's exact decision and heard event
+without advancing the budget before completion. A strict bounded JSON decoder reconstructs a
+participation decision with the exact scheduled-character identifier and exact matching authored
+goal, then reapplies the consideration policy. The OpenAI Responses participation serializer sends
+the heard utterance as untrusted in-world dialogue, supplies bounded exact character identity,
+background, goals, and direct-address context, and requests a closed two-property decision schema
+without credentials or retained provider state. These contracts do not generate or infer motives or
+addresses, complete an OpenAI streaming decision, define Anthropic or Ollama participation request
+dialects, define a provider adapter, retry or impose a timeout, initialize an autonomous chain,
+integrate the ordinary scene flow, or alter player interruption behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
 player has interrupted the chain. Pure continuation and transition rules permit another turn only
 below that maximum and before interruption, record exactly one completion at a time, and make
 interruption monotonic. A focused scene controller owns one exact immutable budget and delegates
-those transitions. A pure composition policy validates a complete participation round first and
-returns its exact selected speaker only while that budget permits another autonomous turn, so an
-exhausted or interrupted chain cannot expose a follow-up selection. It does not transition the
-budget, create a conversation loop, schedule or start speakers, infer participation, or wire
-ordinary player input.
+those transitions. Pure composition policies gate both the earlier complete scheduled decision
+round and the completed consideration-result round, so an exhausted or interrupted chain cannot
+expose a follow-up selection. The latter retains the exact aligned result and lets the controller
+start its exact heard-event follow-up. Selection and start do not transition the budget, create a
+conversation loop, schedule speakers, infer participation, or wire ordinary player input.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
