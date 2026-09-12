@@ -652,6 +652,14 @@ characters remain silent. These contracts do not generate or infer motives, insp
 invoke models, start or cancel turns, impose interjection frequency or conversation-loop bounds,
 integrate scenes, or alter player interruption behavior.
 
+`AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
+configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
+player has interrupted the chain. Pure continuation and transition rules permit another turn only
+below that maximum and before interruption, record exactly one completion at a time, and make
+interruption monotonic. A focused scene controller owns one exact immutable budget and delegates
+those transitions, but it does not create a conversation loop, schedule or start speakers, infer
+participation, or wire ordinary player input.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

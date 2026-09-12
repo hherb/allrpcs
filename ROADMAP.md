@@ -308,6 +308,8 @@ Acceptance:
   - [x] Define, validate, and deterministically select provider-neutral participation decisions.
   - [ ] Integrate participation decisions and player interruption into the ordinary dialogue flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
+  - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
+  - [ ] Gate every autonomous follow-up and close the ordinary chain at its bound or interruption.
 - [ ] Support whispering and private conversations based on hearing conditions.
 - [ ] Support bounded independent tasks and party separation.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
