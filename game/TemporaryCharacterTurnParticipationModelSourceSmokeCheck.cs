@@ -7,7 +7,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Checks exact one-shot and fail-closed offline participation-model supply.</summary>
+/// <summary>Checks exact configured, one-shot, and offline participation-model supply.</summary>
 public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_PARTICIPATION_MODEL_SOURCE_CHECK";
@@ -64,6 +64,68 @@ public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : 
     private void StartOfflineFailure()
     {
         originalState = CaptureSceneState();
+        ICharacterTurnParticipationModel offline = source.TakeModel();
+        bool stableOffline = ReferenceEquals(source.TakeModel(), offline);
+        CharacterModelSettings openAiSettings = new(
+            CharacterModelProvider.OpenAi,
+            "gpt-test");
+        CharacterModelSettings anthropicSettings = new(
+            CharacterModelProvider.Anthropic,
+            "claude-test");
+        CharacterModelSettingsSelectionSnapshot selection = new(
+            [openAiSettings, anthropicSettings],
+            CharacterModelProvider.OpenAi);
+        RecordingParticipationModel openAi = new(request => new CharacterTurnParticipationDecision(
+            request.ScheduledCharacter.Identity.Id,
+            CharacterTurnParticipationKind.Respond,
+            null));
+        RecordingParticipationModel anthropic = new(request => new CharacterTurnParticipationDecision(
+            request.ScheduledCharacter.Identity.Id,
+            CharacterTurnParticipationKind.Respond,
+            null));
+        CharacterTurnParticipationModelBinding openAiBinding = new(
+            CharacterModelProvider.OpenAi,
+            openAiSettings,
+            openAi);
+        CharacterTurnParticipationModelBinding anthropicBinding = new(
+            CharacterModelProvider.Anthropic,
+            anthropicSettings,
+            anthropic);
+        CharacterTurnParticipationModelBindingSnapshot bindings = new(
+            [openAiBinding, anthropicBinding]);
+        bool initialized = source.TryInitializeBindings(selection, bindings);
+        bool rejectedRepeatedInitialization = !source.TryInitializeBindings(selection, bindings);
+        bool selectedInitial = ReferenceEquals(source.TakeModel(), openAi)
+            && ReferenceEquals(source.TakeModel(), openAi);
+        bool selectedAnthropic = source.TrySelectProvider(CharacterModelProvider.Anthropic)
+            && ReferenceEquals(source.TakeModel(), anthropic);
+        bool rejectedUnavailable = !source.TrySelectProvider(CharacterModelProvider.Ollama)
+            && ReferenceEquals(source.TakeModel(), anthropic);
+
+        CharacterModelSettings replacementSettings = new(
+            CharacterModelProvider.OpenAi,
+            "replacement-test");
+        CharacterModelSettingsSelectionSnapshot replacementSelection = new(
+            [replacementSettings],
+            CharacterModelProvider.OpenAi);
+        RecordingParticipationModel replacement = new(request =>
+            new CharacterTurnParticipationDecision(
+                request.ScheduledCharacter.Identity.Id,
+                CharacterTurnParticipationKind.Respond,
+                null));
+        CharacterTurnParticipationModelBinding mismatchedReplacement = new(
+            CharacterModelProvider.OpenAi,
+            new CharacterModelSettings(CharacterModelProvider.OpenAi, "replacement-test"),
+            replacement);
+        CharacterTurnParticipationModelBinding exactReplacement = new(
+            CharacterModelProvider.OpenAi,
+            replacementSettings,
+            replacement);
+        bool rejectedMismatch = !source.TryReplaceBindings(
+                replacementSelection,
+                new CharacterTurnParticipationModelBindingSnapshot([mismatchedReplacement]))
+            && ReferenceEquals(source.TakeModel(), anthropic);
+
         RecordingParticipationModel first = new(request => new CharacterTurnParticipationDecision(
             request.ScheduledCharacter.Identity.Id,
             CharacterTurnParticipationKind.Respond,
@@ -76,16 +138,39 @@ public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : 
         bool supplied = source.TrySupplyModel(first);
         bool rejectedOverlap = !source.TrySupplyModel(rejected);
         ICharacterTurnParticipationModel taken = source.TakeModel();
-        ICharacterTurnParticipationModel offline = source.TakeModel();
+        bool replaced = source.TryReplaceBindings(
+            replacementSelection,
+            new CharacterTurnParticipationModelBindingSnapshot([exactReplacement]));
+        bool replacementIsStable = ReferenceEquals(source.TakeModel(), replacement)
+            && ReferenceEquals(source.TakeModel(), replacement);
+        bool resupplied = source.TrySupplyModel(first);
+        bool cleared = source.TryClearBindings();
+        bool rejectedRepeatedClear = !source.TryClearBindings();
+        bool clearPreservedOneShot = ReferenceEquals(source.TakeModel(), first)
+            && ReferenceEquals(source.TakeModel(), offline);
 
         Character listener = CreateCharacter();
         if (!HasClosedSurface()
+            || !stableOffline
+            || !initialized
+            || !rejectedRepeatedInitialization
+            || !selectedInitial
+            || !selectedAnthropic
+            || !rejectedUnavailable
+            || !rejectedMismatch
             || !rejectsNull
             || !supplied
             || !rejectedOverlap
             || !ReferenceEquals(taken, first)
-            || ReferenceEquals(offline, first)
-            || !ReferenceEquals(source.TakeModel(), offline)
+            || !replaced
+            || !replacementIsStable
+            || !resupplied
+            || !cleared
+            || !rejectedRepeatedClear
+            || !clearPreservedOneShot
+            || openAi.CallCount != 0
+            || anthropic.CallCount != 0
+            || replacement.CallCount != 0
             || !taskController.TryStart(
                 offline,
                 [listener],
@@ -109,9 +194,9 @@ public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : 
         }
 
         GD.Print(
-            "Temporary participation-model source smoke passed: one exact one-shot model, "
-            + "overlap and null rejection, one stable fail-closed offline model, bounded task "
-            + "failure, closed surface, and unchanged surrounding scene state.");
+            "Temporary participation-model source smoke passed: exact initialized, selected, and "
+            + "replaced bindings, one exact one-shot model, one stable fail-closed offline model, "
+            + "bounded task failure, closed surface, and unchanged surrounding scene state.");
         GetTree().Quit();
     }
 
@@ -130,7 +215,15 @@ public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : 
                 System.Reflection.BindingFlags.Public
                     | System.Reflection.BindingFlags.Instance
                     | System.Reflection.BindingFlags.DeclaredOnly).Length == 0
-            && methods.SequenceEqual(["TakeModel", "TrySupplyModel"]);
+            && methods.SequenceEqual(
+                [
+                    "TakeModel",
+                    "TryClearBindings",
+                    "TryInitializeBindings",
+                    "TryReplaceBindings",
+                    "TrySelectProvider",
+                    "TrySupplyModel",
+                ]);
     }
 
     private SceneState CaptureSceneState()
@@ -216,4 +309,20 @@ public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : 
         object? WorldTime,
         object? WorldObjects,
         object? ModelStream);
+
+    private sealed class RecordingParticipationModel(
+        Func<CharacterTurnParticipationConsiderationRequest, CharacterTurnParticipationDecision>
+            decide)
+        : ICharacterTurnParticipationModel
+    {
+        internal int CallCount { get; private set; }
+
+        public ValueTask<CharacterTurnParticipationDecision> DecideAsync(
+            CharacterTurnParticipationConsiderationRequest request,
+            CancellationToken cancellationToken)
+        {
+            CallCount++;
+            return ValueTask.FromResult(decide(request));
+        }
+    }
 }

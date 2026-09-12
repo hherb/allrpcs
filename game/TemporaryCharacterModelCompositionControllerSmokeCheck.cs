@@ -16,6 +16,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
     private CharacterModelSettingsController settingsController = null!;
     private CharacterModelSettingsStorageController storage = null!;
     private TemporaryCharacterModelSource modelSource = null!;
+    private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -34,6 +35,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         storage = GetNode<CharacterModelSettingsStorageController>(
             "../CharacterModelSettingsStorageController");
         modelSource = GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource");
+        participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
+            "../TemporaryCharacterTurnParticipationModelSource");
     }
 
     /// <inheritdoc />
@@ -55,8 +58,10 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             [anthropicSettings],
             CharacterModelProvider.Anthropic);
         ICharacterModel offline = modelSource.TakeModel();
+        ICharacterTurnParticipationModel offlineParticipation = participationModelSource.TakeModel();
         if (controller.TryInitialize(unsupported)
-            || !ReferenceEquals(modelSource.TakeModel(), offline))
+            || !ReferenceEquals(modelSource.TakeModel(), offline)
+            || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation))
         {
             Fail("Provider composition did not preserve offline behavior for Anthropic.");
             return;
@@ -82,7 +87,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         ICharacterModel first = modelSource.TakeModel();
         ICharacterModel second = modelSource.TakeModel();
         if (first is not OllamaCharacterModel
-            || !ReferenceEquals(first, second))
+            || !ReferenceEquals(first, second)
+            || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation))
         {
             Fail("Provider composition did not retain its exact persisted Ollama model.");
             return;
@@ -158,11 +164,37 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             return;
         }
 
+        CharacterModelSettings openAiSettings = new(
+            CharacterModelProvider.OpenAi,
+            "gpt-test");
+        if (!settingsController.TryApply(openAiSettings)
+            || !controller.TryReplaceCurrentBindings())
+        {
+            Fail("Provider composition did not activate the current OpenAI bindings.");
+            return;
+        }
+
+        ICharacterModel openAiModel = modelSource.TakeModel();
+        ICharacterTurnParticipationModel openAiParticipation = participationModelSource.TakeModel();
+        if (openAiModel is not OpenAiCharacterModel
+            || openAiParticipation is not OpenAiCharacterTurnParticipationModel
+            || !ReferenceEquals(modelSource.TakeModel(), openAiModel)
+            || !ReferenceEquals(participationModelSource.TakeModel(), openAiParticipation)
+            || !settingsController.TryApply(activatedSettings)
+            || !controller.TryReplaceCurrentBindings()
+            || modelSource.TakeModel() is not OllamaCharacterModel
+            || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation))
+        {
+            Fail("Provider composition did not activate and safely clear participation bindings.");
+            return;
+        }
+
         GD.Print(
             "Temporary character-model composition smoke passed: unsupported Anthropic remained "
             + "offline, one exact persisted Ollama snapshot composed without input/output, "
             + "replacement was atomic and one-shot preserving, the current Ollama setting "
-            + "activated as one stable future model, and unsupported activation preserved it.");
+            + "activated as one stable future model, OpenAI activated exact ordinary and "
+            + "participation bindings, and Ollama restored fail-closed participation.");
         GetTree().Quit();
     }
 

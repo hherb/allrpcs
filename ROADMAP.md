@@ -326,6 +326,9 @@ Acceptance:
   - [x] Bound one complete sequential participation-decision round with a shared deadline.
   - [x] Own one bounded participation-round task through closed scene terminal states.
   - [x] Supply one exact one-shot participation model with fail-closed offline behavior.
+  - [x] Bind and select exact participation models through canonical provider settings.
+  - [x] Compose the selected OpenAI participation model without construction-time input/output.
+  - [x] Scene-own configured participation bindings with safe replacement and offline clearing.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.

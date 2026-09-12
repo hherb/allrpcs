@@ -684,16 +684,27 @@ document followed by successful completion, never exposes deltas as presentation
 the exact decoded decision. A caller-composed OpenAI participation adapter loads one immediate
 credential, posts that stateless request to the exact validated Responses endpoint, requires an SSE
 success response, preserves caller cancellation, and redacts transport and rejected-response
-details. These contracts do not generate or infer motives or addresses, define local Chat
-Completions, Anthropic, or Ollama participation dialects, retry participation decisions, initialize
+details. An immutable Application binding retains one exact participation model with exact matching
+canonical provider settings. A non-empty snapshot copies up to all three canonical provider
+bindings in stable order, rejecting duplicates and mismatches, while pure selectors return only the
+exact provider binding authorized by the exact selected settings instance. A focused Infrastructure
+factory composes the OpenAI adapter over exact caller-owned settings, HTTP, credential, and endpoint
+dependencies without loading credentials, sending HTTP, or invoking the model. These contracts do
+not generate or infer motives or addresses, define local Chat Completions, Anthropic, or Ollama
+participation dialects, retry participation decisions, initialize
 an autonomous chain, integrate the ordinary scene flow, or alter player interruption behavior. A
 focused Godot task controller owns at most one complete participation-decision round, applies its
 result only from the main-thread process callback, and exposes closed idle, running, completed,
-caller-cancelled, timed-out, and failed states without partial decisions or failure details. One
-temporary scene source supplies an exact caller-owned participation model once, then returns one
-stable fail-closed offline model until a later provider-composition slice replaces that seam. The
-controller and source do not read settings or credentials, send network requests, retry, select or
-start a follow-up, advance a budget, or mutate dialogue, transcript, world, or presentation state.
+caller-cancelled, timed-out, and failed states without partial decisions or failure details. The
+temporary scene source gives one exact caller-supplied model precedence, otherwise selects a stable
+exact settings-backed model, and returns one stable fail-closed offline model when unconfigured. It
+atomically initializes or replaces valid bindings, rejects unavailable providers and mismatched
+settings, and can clear bindings without consuming a queued one-shot model. Existing settings
+composition installs both ordinary and participation adapters for OpenAI without input/output and
+clears participation back to offline when a supported ordinary provider has no participation
+adapter. The controller and source do not invoke participation models during composition, retry,
+select or start a follow-up, advance a budget, or mutate dialogue, transcript, world, or
+presentation state.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
