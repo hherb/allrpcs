@@ -5,7 +5,8 @@
 `main` contains merged PR #214 at `e6f6836`. The current branch is
 `codex/phase-7-complete-listener-scheduling`.
 
-Draft PR #215 is open at `cd3bc9e`.
+Draft PR #215 is open and mergeable. Its five hosted jobs failed immediately with `steps: []`,
+confirming the unchanged Actions/account infrastructure condition.
 
 This branch completes two bounded Phase 7 slices:
 
@@ -50,9 +51,8 @@ work; release; sign; or distribute.
   exact-identity, full-preflight, no-consumption, fail-closed, documentation, and scope review pass.
 
 Restricted execution reproduced the known VSTest loopback-socket and Godot `user://logs` failures;
-the identical checks passed host-local. Hosted Actions have previously remained account-budget
-blocked with `steps: []`; treat an unchanged recurrence as infrastructure state and do not retry or
-dispatch workflows.
+the identical checks passed host-local. Hosted Actions remained account-budget blocked with
+`steps: []` on PR #215; do not retry or dispatch those unchanged workflows.
 
 ## Exact next bounded slice
 
