@@ -79,4 +79,24 @@ public partial class CharacterTurnActivityController : Node
         Activity = CharacterTurnCompletionTransition.Complete(activity);
         return true;
     }
+
+    /// <summary>Installs one exact preflighted autonomous completion for the exact current turn.</summary>
+    internal bool TryInstallAutonomousCompletion(
+        CharacterTurnActivity currentActivity,
+        CharacterTurnActivity completedActivity)
+    {
+        ArgumentNullException.ThrowIfNull(currentActivity);
+        ArgumentNullException.ThrowIfNull(completedActivity);
+
+        if (!ReferenceEquals(Activity, currentActivity)
+            || !ReferenceEquals(completedActivity.State, CharacterTurnActivityState.Completed)
+            || !ReferenceEquals(completedActivity.Request, currentActivity.Request)
+            || !ReferenceEquals(completedActivity.Response, currentActivity.Response))
+        {
+            return false;
+        }
+
+        Activity = completedActivity;
+        return true;
+    }
 }

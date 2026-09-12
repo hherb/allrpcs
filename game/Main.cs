@@ -32,6 +32,7 @@ public partial class Main : Node
     private static readonly StringName HealerMoveAction = new("healer_move");
 
     private Healer healer = null!;
+    private AutonomousConversationBudgetController autonomousConversationBudgetController = null!;
     private CharacterModelGenerationFlowController modelFlowController = null!;
     private CharacterTurnActivityController characterTurnController = null!;
     private CharacterTurnTranscriptController characterTurnTranscriptController = null!;
@@ -70,6 +71,8 @@ public partial class Main : Node
     public override void _Ready()
     {
         healer = GetNode<Healer>("Healer");
+        autonomousConversationBudgetController = GetNode<AutonomousConversationBudgetController>(
+            "AutonomousConversationBudgetController");
         characterTurnController = GetNode<CharacterTurnActivityController>(
             "CharacterTurnActivityController");
         characterTurnTranscriptController = GetNode<CharacterTurnTranscriptController>(
@@ -449,6 +452,7 @@ public partial class Main : Node
         {
             _ = modelFlowController.TryCancel();
             _ = characterTurnController.TryCancel();
+            _ = autonomousConversationBudgetController.TryInterrupt();
         }
         else if (@event.IsActionPressed(FocusedSearchCancelAction))
         {

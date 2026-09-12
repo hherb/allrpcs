@@ -7,6 +7,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterTurnCompletionController : Node
 {
     private CharacterTurnActivityController turnController = null!;
+    private AutonomousConversationBudgetController budgetController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private DialogueEventController eventController = null!;
     private CharacterTurnResponse? observedResponse;
@@ -16,6 +17,8 @@ public partial class TemporaryCharacterTurnCompletionController : Node
     {
         turnController = GetNode<CharacterTurnActivityController>(
             "../CharacterTurnActivityController");
+        budgetController = GetNode<AutonomousConversationBudgetController>(
+            "../AutonomousConversationBudgetController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
         eventController = GetNode<DialogueEventController>("../DialogueEventController");
@@ -47,7 +50,10 @@ public partial class TemporaryCharacterTurnCompletionController : Node
             return;
         }
 
-        if (!turnController.TryComplete())
+        bool completed = budgetController.Budget is null
+            ? turnController.TryComplete()
+            : budgetController.TryCompleteTurn(turnController);
+        if (!completed)
         {
             throw new InvalidOperationException(
                 "The observed temporary character turn could not complete.");

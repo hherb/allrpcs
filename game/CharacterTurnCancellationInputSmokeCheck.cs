@@ -20,6 +20,8 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
     private string mode = string.Empty;
     private Main main = null!;
     private CharacterTurnActivityController controller = null!;
+    private AutonomousConversationBudgetController budgetController = null!;
+    private AutonomousConversationBudget initialBudget = null!;
     private LineEdit input = null!;
     private int stage;
 
@@ -36,6 +38,15 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
 
         main = GetNode<Main>("..");
         controller = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
+        budgetController = GetNode<AutonomousConversationBudgetController>(
+            "../AutonomousConversationBudgetController");
+        initialBudget = new AutonomousConversationBudget(0, 2, false);
+        if (!budgetController.TryInitialize(initialBudget))
+        {
+            Fail("Character-turn cancellation input could not initialize its conversation budget.");
+            return;
+        }
+
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
@@ -111,6 +122,10 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
             || !ReferenceEquals(cancelled.Request, before.Request)
             || !ReferenceEquals(cancelled.Response, before.Response)
             || !ReferenceEquals(cancelled.State, CharacterTurnActivityState.Cancelled)
+            || budgetController.Budget is not { HasPlayerInterrupted: true } interruptedBudget
+            || ReferenceEquals(interruptedBudget, initialBudget)
+            || interruptedBudget.CompletedTurnCount != 0
+            || interruptedBudget.MaximumTurnCount != 2
             || !ReferenceEquals(worldEventController.WorldEvents, expectedWorldEvents)
             || !ReferenceEquals(worldEventController.EventLog, expectedEventLog)
             || !ReferenceEquals(worldEventController.WorldTime, expectedWorldTime)
@@ -130,7 +145,8 @@ public partial class CharacterTurnCancellationInputSmokeCheck : Node
 
         GD.Print(
             $"Character-turn cancellation input smoke passed ({mode}): the explicit player action "
-            + "cancelled only the current exact character-turn activity.");
+            + "cancelled the current exact character-turn activity, interrupted its autonomous "
+            + "conversation, and preserved unrelated scene state.");
         GetTree().Quit();
     }
 

@@ -2,77 +2,88 @@
 
 ## Current state
 
-`main` contains merged PR #205 at `1e76568`. The current branch is
-`codex/phase-7-participation-rounds`.
+`main` contains merged PR #206 at `4b5573f`. The current branch is
+`codex/phase-7-autonomous-followups`.
 
-This branch completes two bounded Phase 7 participation and loop-safety foundations:
+This branch advances the two still-open Phase 7 conversation parents through bounded Domain and
+scene foundations:
 
-- `CharacterTurnParticipationRoundPolicy` accepts at most 32 distinct exact scheduled
-  `Character` instances, one distinct positionally aligned decision per character, and at most 32
-  distinct directly addressed identifiers;
-- it uses value-based direct-address membership while the existing decision policy enforces exact
-  scheduled-character identity and exact authored-goal motives, validates the complete round, then
-  delegates to the existing selection policy and returns its exact first speaking decision or no
-  selection for meaningful silence;
-- `AutonomousConversationParticipationPolicy` validates that complete round first, then exposes its
-  exact selected speaker only while the exact autonomous-conversation budget permits another turn;
-- exhausted and interrupted budgets suppress follow-up selection without changing any supplied
-  budget, character, decision, address, or authored-goal instance.
+- `AutonomousConversationTurnStartPolicy` permits an already-selected response or interjection
+  only while the exact budget can continue, the decision and candidate request retain the same
+  responder identifier instance, and the existing activity-start policy accepts the slot;
+- `AutonomousConversationTurnStartTransition` starts that exact request as one awaiting activity
+  without constructing a request or advancing the budget;
+- `AutonomousConversationTurnCompletionTransition` preflights a speaking activity and open budget,
+  then returns both an exact completed activity and one advanced budget in
+  `AutonomousConversationTurnCompletionResult` without partial mutable state;
+- `AutonomousConversationFollowUpRequestTransition` creates one request for an already-selected
+  speaking listener, retaining its exact identifier and exact heard dialogue event while rejecting
+  meaningful silence or an absent audience member;
+- `AutonomousConversationBudgetController` now validates one complete caller-supplied participation
+  round, selects its exact speaker under the scene-owned budget, derives the heard-event request,
+  and starts it through the new gates;
+- the same controller atomically installs exact autonomous completion state and advances its budget
+  once; its lower-level composition helpers and the turn-controller installation seam remain
+  internal;
+- the ordinary observed-speech completion controller uses that atomic path whenever a budget is
+  initialized, and ordinary player cancellation monotonically interrupts an initialized budget
+  after cancelling its exact awaiting or speaking activity.
 
-The ordinary participation/player-interruption and unbounded-loop roadmap parents remain open
-because no character-turn request or activity is gated or started by these seams. This branch does
-not generate or infer decisions or addresses, inspect dialogue text, transition a budget, create a
-loop, schedule or start speakers, invoke a model, wire the scene or player input, cancel an activity,
-alter recent-conversation retention, add timeouts/retries, perform actions, add hearing/privacy
-rules, add UI/persistence/provider behavior, start Phase 8, release, sign, or distribute.
+The roadmap parents remain open. Normal `Main` does not initialize an autonomous budget, schedule
+participants, obtain participation decisions, or start a multi-character chain. The temporary
+model input and character sources still accept only the authored healer. This branch does not
+generate or infer participation decisions, create provider participation prompts, add model
+adapters, add an embodied sage or hermit, change hearing candidates, loop, automatically schedule
+speakers, execute intentions, alter transcript retention, add timeouts/retries, add whispering or
+private conversations, add independent tasks or sabotage, start Phase 8, release, sign, or
+distribute.
 
-Draft PR #206 contains this work.
+Draft PR #207 contains this work at implementation commit `95c31b6`.
 
 ## Validation and review
 
-- final host-local quality sequence passed:
-  - workflow validation, restore, formatting, and zero-warning solution build passed through
-    `./scripts/quality.sh`
-  - 2,011 Domain, 402 Application, 447 Infrastructure, and 8 architecture tests passed through that
-    same invocation
-  - direct `dotnet exec` of the already-built validator confirmed all 5 representative discovery
-    evidence definitions
-  - `./scripts/smoke-godot.sh` and the bounded Compatibility-renderer launch passed
-- 15 focused new participation-round and budgeted-selection Domain tests passed
-- test-first missing-type failures were observed before both Domain implementations
-- `git diff --check`, practical 500-line/120-character limits, complete-round-before-selection,
-  exact-identity, value-membership, immutable-input, upper-bound, fail-closed, smallest-surface,
-  network-free, and scope review passed
+- focused autonomous follow-up Domain tests pass: 38 tests covering response/interjection starts,
+  silence, exhausted/interrupted budgets, exact versus distinct value-equal responder identity,
+  every activity state, immutable inputs, request derivation, unheard speakers, atomic completion,
+  null rejection, and smallest public surfaces;
+- test-first compile failures were observed before each missing Domain policy, transition, and
+  result implementation;
+- the focused scene smoke passes complete-round selection, exact heard-event request creation,
+  gated start, atomic completion, one budget advance, monotonic interruption, invalid attempts,
+  unchanged inputs, and the closed public controller surface;
+- the ordinary completion-flow smoke passes with one initialized budget advance;
+- both ordinary awaiting-turn and speaking-turn cancellation-input smokes pass with monotonic budget
+  interruption and unchanged unrelated world, perception, movement, and presentation state;
+- final host-local `./scripts/quality.sh` passed workflow validation, restore, formatting, and the
+  zero-warning solution build; 2,049 Domain, 402 Application, 447 Infrastructure, and 8
+  architecture tests; all 5 representative scenario definitions; the complete headless smoke
+  matrix; and the bounded Compatibility-renderer launch;
+- `git diff --check`, practical 500-line/120-character limits for new and materially changed files,
+  immutable/exact-identity behavior, complete-round-before-selection, atomic completion, bounded
+  loop closure, smallest public surface, network-free behavior, and scope review pass.
 
-The restricted focused Phase 7k VSTest run and the first complete quality run reproduced the known
-localhost-bind restriction; the identical host-local commands passed. An earlier host-local
-`./scripts/quality.sh` passed cleanly after Phase 7k. On the final tree the combined script passed
-all builds and tests, then its unchanged scenario-validator apphost stalled in macOS `_dyld_start`
-before managed code; the exact built validator DLL passed through `dotnet exec`, followed by the
-complete smoke script and graphical launch. Hosted jobs for recent PRs still had `steps: []` under
-the Actions account-budget condition. Draft PR #206 triggered run `34663656361` at handover commit
-`9d3a78f`; all five jobs completed with `steps: []` under that same infrastructure/account
-condition. Do not retry or dispatch those jobs unless the condition changes.
+Restricted VSTest reproduced the known localhost-bind denial and restricted Godot reproduced the
+known `user://logs` failure; the identical focused commands passed host-local. Recent hosted jobs
+still had `steps: []` under the Actions account-budget condition. Draft PR #207 triggered run
+`34680076640`; all five jobs completed with `steps: []` without executing checkout or test steps.
+Do not retry or dispatch them unless that condition changes.
 
 ## Exact next bounded slice
 
-Take **Phase 7m: autonomous follow-up turn-start eligibility**.
+Take **Phase 7s: provider-neutral participation-consideration request**.
 
 Acceptance boundary:
 
-1. Add one pure Domain policy accepting an exact `AutonomousConversationBudget`, an exact selected
-   `CharacterTurnParticipationDecision`, one candidate `CharacterTurnRequest`, and the optional
-   current `CharacterTurnActivity`.
-2. Permit a start only when the budget can continue, the decision is a speaking response or
-   interjection, the decision retains the exact same responding-character identifier instance as
-   the request, and the existing character-turn start policy accepts the current activity.
-3. Add focused Domain tests for response, interjection, silence, exhausted and interrupted budgets,
-   exact versus distinct value-equal responder identity, absent/awaiting/speaking/completed/cancelled
-   current activity, null rejection, unchanged inputs, and the smallest public API surface.
-4. Do not validate or resolve a participation round again, construct a request, transition a budget
-   or activity, generate or infer decisions or addresses, inspect dialogue text, invoke a model,
-   loop, wire the scene or player input, perform actions, or add hearing/UI/persistence/provider
-   behavior.
+1. Add one immutable Domain request retaining one exact scheduled `Character`, one exact heard
+   `DialogueEvent`, and whether that character was directly addressed.
+2. Require the character identifier to be present in the event audience by value while retaining
+   the exact supplied character, event, and nested instances.
+3. Add focused Domain tests for addressed and unaddressed listeners, distinct value-equal audience
+   identity, absent listener rejection, null rejection, unchanged inputs, immutability, and the
+   smallest public API surface.
+4. Do not assemble model context, define or invoke a provider/model interface, generate a decision,
+   validate or select a round, construct a character-turn request, start or complete activity,
+   mutate a budget, loop, wire the scene, add roles/hearing/UI/persistence, or begin sabotage.
 
-Leave both ordinary participation/player-interruption integration and the unbounded-loop parent
-item unticked until later ordinary-flow slices consume these pure eligibility seams.
+Leave both Phase 7 parent items unticked until later slices obtain one decision per scheduled
+listener and drive every ordinary autonomous chain through the existing bounded scene seams.
