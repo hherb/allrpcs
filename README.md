@@ -656,9 +656,11 @@ speaking decision or no selection. One immutable provider-neutral participation-
 request retains an exact scheduled `Character`, exact heard `DialogueEvent`, and explicit direct-
 address flag only when that character's identifier is present by value among the event listeners.
 Distinct value-equal audience identity is accepted without replacing any supplied or nested
-instance. These contracts do not generate or infer motives or addresses, assemble model context,
-invoke models, start or cancel turns, impose interjection frequency or conversation-loop bounds,
-integrate scenes, or alter player interruption behavior.
+instance. A pure consideration policy delegates one returned decision to the existing exact-
+identity, direct-address, and authored-motive gate using only that request. These contracts do not
+generate or infer motives or addresses, assemble model context, invoke models, start or cancel
+turns, impose interjection frequency or conversation-loop bounds, integrate scenes, or alter player
+interruption behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the

@@ -311,6 +311,8 @@ Acceptance:
   - [x] Interrupt an initialized autonomous chain through ordinary player cancellation input.
   - [x] Define an immutable provider-neutral participation-consideration request for each scheduled
     listener.
+  - [x] Validate a participation decision against the exact consideration request and authored
+    character state.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
