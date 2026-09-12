@@ -305,6 +305,8 @@ Acceptance:
 - [x] Add additional infected roles using dormant controllers.
 - [x] Schedule directly addressed speakers first.
 - [ ] Allow motivated interjections, meaningful silence, and player interruption.
+  - [x] Define, validate, and deterministically select provider-neutral participation decisions.
+  - [ ] Integrate participation decisions and player interruption into the ordinary dialogue flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
 - [ ] Support whispering and private conversations based on hearing conditions.
 - [ ] Support bounded independent tasks and party separation.

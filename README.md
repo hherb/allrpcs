@@ -640,6 +640,18 @@ collections are unchanged, and the returned schedule is an independent read-only
 policy does not infer addresses, decide whether anyone should speak, start turns, generate text,
 schedule interjections, or control runtime work.
 
+`CharacterTurnParticipationKind` defines exactly respond, interject, and remain-silent choices in
+stable order. One immutable `CharacterTurnParticipationDecision` retains an exact scheduled
+character identifier and exact kind. Interjection and meaningful silence require one exact existing
+authored goal as their motive, while a direct response cannot retain a motive. The pure acceptance
+policy additionally requires the character's exact identity and exact retained goal, permits a
+response only when directly addressed, and permits an interjection only when not directly
+addressed. From at most 32 distinct, already-accepted decisions in scheduled order, the pure
+selection policy returns the exact first response or interjection and returns no selection when all
+characters remain silent. These contracts do not generate or infer motives, inspect dialogue text,
+invoke models, start or cancel turns, impose interjection frequency or conversation-loop bounds,
+integrate scenes, or alter player interruption behavior.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining
