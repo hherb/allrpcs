@@ -15,7 +15,7 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
     public static bool Passes()
     {
         return RejectsIneligibleStarts() && RejectsNonLlmCharacter() && RejectsInvalidInputs()
-            && HasClosedSurface();
+            && RejectsInvalidCollectionsWithoutConsumption() && HasClosedSurface();
     }
 
     public static OrdinaryPlayerDialogueParticipationSmokeScenario CreateScenario(
@@ -79,8 +79,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
         _ = unheard.ModelSource.TrySupplyModel(retainedUnheardModel);
         bool unheardRejected = !unheard.Coordinator.TryStartNewChain(
                 otherEvent,
-                unheard.Character,
-                unheard.DirectAddress,
+                [unheard.Character],
+                [unheard.DirectAddress],
                 unheard.ModelSource,
                 unheard.RoundController,
                 unheard.BudgetController,
@@ -127,8 +127,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
             scenario.Character.Goals);
         bool rejected = !scenario.Coordinator.TryStart(
             scenario.Event,
-            human,
-            scenario.DirectAddress,
+            [human],
+            [scenario.DirectAddress],
             scenario.ModelSource,
             scenario.RoundController,
             scenario.BudgetController,
@@ -146,8 +146,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
         [
             null,
             scenario.Event,
-            scenario.Character,
-            scenario.DirectAddress,
+            new Character[] { scenario.Character },
+            new CharacterId[] { scenario.DirectAddress },
             scenario.ModelSource,
             scenario.RoundController,
             scenario.BudgetController,
@@ -157,8 +157,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
             InvokeWithNullAt(scenario, invalidArguments, index)));
         bool rejectedDeadline = ThrowsArgumentOutOfRange(() => scenario.Coordinator.TryStart(
             scenario.Event,
-            scenario.Character,
-            scenario.DirectAddress,
+            [scenario.Character],
+            [scenario.DirectAddress],
             scenario.ModelSource,
             scenario.RoundController,
             scenario.BudgetController,
@@ -167,8 +167,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
         bool rejectedNullInitialBudget = ThrowsArgumentNull(
             () => scenario.Coordinator.TryStartNewChain(
                 scenario.Event,
-                scenario.Character,
-                scenario.DirectAddress,
+                [scenario.Character],
+                [scenario.DirectAddress],
                 scenario.ModelSource,
                 scenario.RoundController,
                 scenario.BudgetController,
@@ -177,6 +177,60 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
                 OrdinaryDeadline));
         scenario.Dispose();
         return rejectedNulls && rejectedDeadline && rejectedNullInitialBudget;
+    }
+
+    private static bool RejectsInvalidCollectionsWithoutConsumption()
+    {
+        OrdinaryPlayerDialogueParticipationSmokeScenario scenario =
+            CreateScenario(CharacterTurnParticipationKind.Respond);
+        ICharacterTurnParticipationModel retainedModel = scenario.ModelSource.TakeModel();
+        _ = scenario.ModelSource.TrySupplyModel(retainedModel);
+        AutonomousConversationBudget retainedBudget = scenario.BudgetController.Budget!;
+        Character human = AsHuman(CreateLlmCharacter("village-sage"));
+        DialogueEvent twoListenerEvent = CreateEvent(
+            scenario.Character.Identity.Id,
+            human.Identity.Id);
+        AutonomousConversationBudget replacementBudget = new(0, 2, false);
+
+        bool emptyRejected = !scenario.Coordinator.TryStartNewChain(
+            scenario.Event,
+            [],
+            [],
+            scenario.ModelSource,
+            scenario.RoundController,
+            scenario.BudgetController,
+            scenario.TurnController,
+            replacementBudget,
+            OrdinaryDeadline);
+        bool completeScheduleRejected = !scenario.Coordinator.TryStartNewChain(
+            twoListenerEvent,
+            [scenario.Character, human],
+            [scenario.DirectAddress],
+            scenario.ModelSource,
+            scenario.RoundController,
+            scenario.BudgetController,
+            scenario.TurnController,
+            replacementBudget,
+            OrdinaryDeadline);
+        bool duplicateAddressesRejected = !scenario.Coordinator.TryStartNewChain(
+            scenario.Event,
+            [scenario.Character],
+            [scenario.DirectAddress, new CharacterId(scenario.DirectAddress.Value)],
+            scenario.ModelSource,
+            scenario.RoundController,
+            scenario.BudgetController,
+            scenario.TurnController,
+            replacementBudget,
+            OrdinaryDeadline);
+        bool stateRetained = ReferenceEquals(scenario.ModelSource.TakeModel(), retainedModel)
+            && ReferenceEquals(scenario.BudgetController.Budget, retainedBudget)
+            && scenario.RoundController.Status == CharacterTurnParticipationRoundTaskStatus.Idle
+            && scenario.TurnController.Activity is null;
+        scenario.Dispose();
+        return emptyRejected
+            && completeScheduleRejected
+            && duplicateAddressesRejected
+            && stateRetained;
     }
 
     private static void InvokeWithNullAt(
@@ -188,8 +242,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
         values[nullIndex] = null;
         _ = scenario.Coordinator.TryStart(
             (DialogueEvent)values[0]!,
-            (Character)values[1]!,
-            (CharacterId)values[2]!,
+            (IEnumerable<Character>)values[1]!,
+            (IEnumerable<CharacterId>)values[2]!,
             (TemporaryCharacterTurnParticipationModelSource)values[3]!,
             (CharacterTurnParticipationRoundTaskController)values[4]!,
             (AutonomousConversationBudgetController)values[5]!,
@@ -201,8 +255,8 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
     {
         return scenario.Coordinator.TryStart(
             scenario.Event,
-            scenario.Character,
-            scenario.DirectAddress,
+            [scenario.Character],
+            [scenario.DirectAddress],
             scenario.ModelSource,
             scenario.RoundController,
             scenario.BudgetController,
@@ -224,16 +278,31 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
             .Where(method => !method.IsSpecialName && method.Name != nameof(Node._Process))
             .OrderBy(method => method.Name, StringComparer.Ordinal)
             .ToArray();
+        Type[] commonParameterTypes =
+        [
+            typeof(DialogueEvent),
+            typeof(IEnumerable<Character>),
+            typeof(IEnumerable<CharacterId>),
+            typeof(TemporaryCharacterTurnParticipationModelSource),
+            typeof(CharacterTurnParticipationRoundTaskController),
+            typeof(AutonomousConversationBudgetController),
+            typeof(CharacterTurnActivityController),
+        ];
         return properties.Length == 0
             && methods.Length == 2
             && methods[0].Name == "TryStart"
             && methods[1].Name == "TryStartNewChain"
-            && methods.All(method => method.ReturnType == typeof(bool));
+            && methods.All(method => method.ReturnType == typeof(bool))
+            && methods[0].GetParameters().Select(parameter => parameter.ParameterType).SequenceEqual(
+                commonParameterTypes.Append(typeof(TimeSpan)))
+            && methods[1].GetParameters().Select(parameter => parameter.ParameterType).SequenceEqual(
+                commonParameterTypes.Append(typeof(AutonomousConversationBudget)).Append(
+                    typeof(TimeSpan)));
     }
 
-    private static Character CreateLlmCharacter()
+    private static Character CreateLlmCharacter(string idValue = "travelling-healer")
     {
-        CharacterId id = new("travelling-healer");
+        CharacterId id = new(idValue);
         return new Character(
             new CharacterIdentity(id, "HEALER"),
             new PublicCharacterBackground("A cautious travelling healer."),
@@ -249,12 +318,29 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
             new CharacterGoalSet([new CharacterGoal("listen", "Listen before choosing.")]));
     }
 
-    private static DialogueEvent CreateEvent(CharacterId listener)
+    private static Character AsHuman(Character character)
+    {
+        return new Character(
+            character.Identity,
+            character.PublicBackground,
+            character.PrivateBackground,
+            character.Capabilities,
+            character.Limitations,
+            new CharacterControllerAssignment(character.Identity.Id, ControllerType.Human),
+            character.Conditions,
+            character.Inventory,
+            character.Knowledge,
+            character.Beliefs,
+            character.Relationships,
+            character.Goals);
+    }
+
+    private static DialogueEvent CreateEvent(params CharacterId[] listeners)
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "Can you help me?");
         return new DialogueEvent(
             utterance,
-            new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [listener]));
+            new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, listeners));
     }
 
     private static bool ThrowsArgumentNull(Action action)

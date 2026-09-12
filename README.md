@@ -704,21 +704,32 @@ composition installs both ordinary and participation adapters for OpenAI without
 clears participation back to offline when a supported ordinary provider has no participation
 adapter. The controller and source do not invoke participation models during composition, retry,
 select or start a follow-up, advance a budget, or mutate dialogue, transcript, world, or
-presentation state. One scene-owned ordinary player-dialogue coordinator preflights an exact heard
-event, exact directly addressed LLM listener, available continuing budget, idle participation task,
-and free character-turn slot before consuming one model. It starts at most one bounded round,
-retains no copy of the event or result, hands only a complete result to the existing budget-gated
-follow-up-start seam, and resets every terminal task outcome. Meaningful silence, offline or
-provider failure, timeout, cancellation, interruption, exhaustion, ineligible listeners, overlap,
-and an active turn start no follow-up. Ordinary heard player dialogue now supplies a distinct
-value-equal direct healer address, atomically installs a fresh two-turn budget only after complete
-preflight, and invokes this coordinator. A selected direct response traverses the existing bounded
-generation, validated reception, single speech occurrence, completion, and one-step budget advance;
+presentation state. One scene-owned ordinary player-dialogue coordinator accepts one complete
+bounded stable collection of exact heard LLM listeners and one complete distinct value-based
+direct-address set. It materializes and validates both inputs with the available continuing budget,
+idle participation task, and free character-turn slot before replacing a budget or consuming one
+model. It starts at most one bounded round, retains no copy of the event or result, hands only a
+complete result to the existing budget-gated follow-up-start seam, and resets every terminal task
+outcome. Meaningful silence, offline or provider failure, timeout, cancellation, interruption,
+exhaustion, invalid or ineligible listener collections, overlap, and an active turn start no
+follow-up. An isolated credential-free two-listener scene check proves stable consideration order,
+value-equal direct addressing, direct-response priority, exact motivated interjection after
+meaningful direct-listener silence, all-silent no-turn behavior, overlap rejection, and unchanged
+surrounding scene state. Ordinary heard player dialogue still supplies only the exact healer and a
+distinct value-equal direct healer address, atomically installs a fresh two-turn budget only after
+complete preflight, and invokes this generalized coordinator. A selected direct response traverses
+the existing bounded generation, validated reception, single speech occurrence, completion, and
+one-step budget advance;
 player cancellation also cancels an active participation round and monotonically interrupts that
 exact chain. Consecutive eligible player roots replace the exact prior budget with distinct fresh
 state, while stale or invalid replacement and failed round preflight preserve it. The ordinary
 scene still schedules only its single directly addressed healer, does not infer text addresses,
 start another participation round from healer speech, or drive an LLM-to-LLM loop.
+
+The pure `CharacterTurnParticipantLookup` preflights a complete bounded roster of distinct exact
+LLM assignments before resolving the exact value-matching character for an awaiting selected turn.
+It returns no character for an absent participant or any non-awaiting lifecycle state and does not
+retain a roster, build generation context, choose a model, start work, or mutate scene state.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the

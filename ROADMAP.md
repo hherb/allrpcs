@@ -333,6 +333,8 @@ Acceptance:
     participation round and the existing budget-gated follow-up-start seam.
   - [x] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
+  - [x] Preflight and coordinate a complete stable ordinary listener schedule and direct-address set.
+  - [x] Resolve the exact bounded LLM participant for an awaiting selected character turn.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
   - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
   - [x] Gate complete-round and complete-result autonomous selection on the exact conversation

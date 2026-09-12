@@ -52,6 +52,7 @@ ALLRPCS_AUTONOMOUS_CONVERSATION_BUDGET_CHECK=1 godot --headless --path "$reposit
 ALLRPCS_PARTICIPATION_ROUND_TASK_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_PARTICIPATION_MODEL_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_ORDINARY_PLAYER_PARTICIPATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_ORDINARY_PARTICIPATION_SCHEDULING_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_ORDINARY_AUTONOMOUS_FLOW_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1000
 ALLRPCS_ORDINARY_PARTICIPATION_CANCELLATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1000
 ALLRPCS_CHARACTER_TURN_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30

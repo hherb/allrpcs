@@ -435,8 +435,8 @@ public partial class Main : Node
         Character healerCharacter = healerCharacterSource.Character;
         _ = participationCoordinator.TryStartNewChain(
             occurredEvent,
-            healerCharacter,
-            new CharacterId(healerCharacter.Identity.Id.Value),
+            [healerCharacter],
+            [new CharacterId(healerCharacter.Identity.Id.Value)],
             participationModelSource,
             participationRoundController,
             autonomousConversationBudgetController,
