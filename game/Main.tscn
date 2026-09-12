@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3]
+[gd_scene load_steps=123 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -134,6 +134,8 @@
 [ext_resource type="Script" path="res://FirstPatientAdministrationController.cs" id="132_first_patient_administration_controller"]
 [ext_resource type="Script" path="res://FirstPatientAdministrationControllerSmokeCheck.cs" id="133_first_patient_administration_check"]
 [ext_resource type="Script" path="res://FirstPatientSaveStateCaptureSmokeCheck.cs" id="134_first_patient_save_state_capture_check"]
+[ext_resource type="Script" path="res://AutonomousConversationBudgetController.cs" id="135_autonomous_conversation_budget_controller"]
+[ext_resource type="Script" path="res://AutonomousConversationBudgetControllerSmokeCheck.cs" id="136_autonomous_conversation_budget_controller_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -530,6 +532,9 @@ script = ExtResource("70_character_turn_transcript_controller")
 [node name="CharacterTurnWorldEventOccurrenceController" type="Node" parent="."]
 script = ExtResource("87_character_action_controller")
 
+[node name="AutonomousConversationBudgetController" type="Node" parent="."]
+script = ExtResource("135_autonomous_conversation_budget_controller")
+
 [node name="TemporaryCharacterTurnRequestSource" type="Node" parent="."]
 script = ExtResource("73_character_turn_request_source")
 
@@ -655,6 +660,9 @@ script = ExtResource("86_examination_result_source_check")
 
 [node name="CharacterTurnWorldEventOccurrenceControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("88_character_action_controller_check")
+
+[node name="AutonomousConversationBudgetControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("136_autonomous_conversation_budget_controller_check")
 
 [node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("77_character_turn_response_flow_check")
