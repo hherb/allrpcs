@@ -648,17 +648,24 @@ policy additionally requires the character's exact identity and exact retained g
 response only when directly addressed, and permits an interjection only when not directly
 addressed. From at most 32 distinct, already-accepted decisions in scheduled order, the pure
 selection policy returns the exact first response or interjection and returns no selection when all
-characters remain silent. These contracts do not generate or infer motives, inspect dialogue text,
-invoke models, start or cancel turns, impose interjection frequency or conversation-loop bounds,
-integrate scenes, or alter player interruption behavior.
+characters remain silent. A complete-round policy accepts at most 32 distinct exact scheduled
+characters, one positionally aligned decision per character, and at most 32 distinct direct
+addresses. It uses value-based address membership while preserving exact character, decision, and
+authored-goal identity, validates every decision before selection, and returns that existing first
+speaking decision or no selection. These contracts do not generate or infer motives or addresses,
+inspect dialogue text, invoke models, start or cancel turns, impose interjection frequency or
+conversation-loop bounds, integrate scenes, or alter player interruption behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
 player has interrupted the chain. Pure continuation and transition rules permit another turn only
 below that maximum and before interruption, record exactly one completion at a time, and make
 interruption monotonic. A focused scene controller owns one exact immutable budget and delegates
-those transitions, but it does not create a conversation loop, schedule or start speakers, infer
-participation, or wire ordinary player input.
+those transitions. A pure composition policy validates a complete participation round first and
+returns its exact selected speaker only while that budget permits another autonomous turn, so an
+exhausted or interrupted chain cannot expose a follow-up selection. It does not transition the
+budget, create a conversation loop, schedule or start speakers, infer participation, or wire
+ordinary player input.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.

@@ -306,9 +306,11 @@ Acceptance:
 - [x] Schedule directly addressed speakers first.
 - [ ] Allow motivated interjections, meaningful silence, and player interruption.
   - [x] Define, validate, and deterministically select provider-neutral participation decisions.
+  - [x] Validate one complete bounded scheduled participation round before selecting its speaker.
   - [ ] Integrate participation decisions and player interruption into the ordinary dialogue flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
   - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
+  - [x] Gate complete-round autonomous speaker selection on the exact conversation budget.
   - [ ] Gate every autonomous follow-up and close the ordinary chain at its bound or interruption.
 - [ ] Support whispering and private conversations based on hearing conditions.
 - [ ] Support bounded independent tasks and party separation.
