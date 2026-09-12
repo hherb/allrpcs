@@ -25,6 +25,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
     private object? initialWorldObjects;
     private object? initialPerception;
     private Vector2 initialHealerPosition;
+    private Vector2 initialSagePosition;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -59,6 +60,9 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             Healer healer = GetNode<Healer>("../Healer");
             initialHealerPosition = healer.Position;
             healer.Position = new Vector2(-10_000.0f, -10_000.0f);
+            Marker2D sagePosition = GetNode<Marker2D>("../SageHearingPosition");
+            initialSagePosition = sagePosition.Position;
+            sagePosition.Position = new Vector2(-10_000.0f, -10_000.0f);
             input.Text = UnheardText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, UnheardText);
             stage = 1;
@@ -73,6 +77,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
             }
 
             GetNode<Healer>("../Healer").Position = initialHealerPosition;
+            GetNode<Marker2D>("../SageHearingPosition").Position = initialSagePosition;
             input.Text = FirstText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, FirstText);
             stage = 2;
@@ -106,7 +111,7 @@ public partial class CharacterTurnRequestFlowSmokeCheck : Node
 
         GD.Print(
             "Character-turn request flow smoke passed: the first exact occurred player event "
-            + "without the healer remained an event without starting a turn, the first heard "
+            + "without listeners remained an event without starting a turn, the first heard "
             + "event started one explicitly typed awaiting healer turn, prompt-shaped text "
             + "remained ordinary speech, a later event did not replace the active turn, and "
             + "unrelated world and discovery state was preserved.");

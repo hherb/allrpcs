@@ -9,7 +9,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Runs credential-free temporary healer generation-input checks when enabled.</summary>
+/// <summary>Runs credential-free temporary ordinary-participant generation-input checks.</summary>
 public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : Node
 {
     private static readonly Type[] ExpectedInputParameterTypes =
@@ -26,6 +26,10 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
     private const string AuthoredKnowledgeText =
         "The healer knows the herb patch must be examined before any collection decision.";
     private const string AuthoredGoalText = "Help the Seeker without claiming unobserved facts.";
+    private const string SageKnowledgeText =
+        "The sage knows a village oral history about comparing conflicting accounts.";
+    private const string SageGoalText =
+        "Help investigators test their conclusions without supplying omniscient answers.";
     private const string ProjectedCommitmentText =
         "kind=promise;counterparty=seeker;source-turn=turn-one;"
         + "description=Inspect the moonwort before collection.";
@@ -40,6 +44,9 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
 
         TemporaryHealerCharacterSource healerSource =
             GetNode<TemporaryHealerCharacterSource>("../TemporaryHealerCharacterSource");
+        TemporaryOrdinaryCharacterParticipantSource participantSource =
+            GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+                "../TemporaryOrdinaryCharacterParticipantSource");
         TemporaryCharacterModelGenerationInputSource inputSource =
             GetNode<TemporaryCharacterModelGenerationInputSource>(
                 "../TemporaryCharacterModelGenerationInputSource");
@@ -84,6 +91,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
             || !ProvesCompleteHealer(healerSource.Character, turnSource)
             || !ProvesExactBoundedInput(input, exactActivity)
             || !ProvesWaitAndSafeExaminationAreTheOnlyCurrentIntentions(input)
+            || !ProvesExactBoundedSageInput(inputSource, participantSource.Participants[1])
             || !ProvesClosedActivityGate(inputSource, exactActivity)
             || !HasExpectedPublicSurface())
         {
@@ -108,10 +116,10 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         }
 
         GD.Print(
-            "Temporary healer generation-input source smoke passed: the stable LLM healer, "
-            + "exact active request, filtered perception, referenced knowledge, unfinished "
-            + "commitment memory, recent speech, and Wait plus known herb-patch examination "
-            + "affordances were retained without generation or mutation.");
+            "Temporary ordinary generation-input source smoke passed: exact value-matching healer "
+            + "and sage turns retained their stable participants, bounded character-specific "
+            + "perception, knowledge, goals, memory, recent speech, and affordances without "
+            + "generation or mutation.");
         GetTree().Quit();
     }
 
@@ -261,6 +269,37 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
                 unavailableResponse,
                 input.WorldObjects,
                 input.Affordances).IsValid;
+    }
+
+    private static bool ProvesExactBoundedSageInput(
+        TemporaryCharacterModelGenerationInputSource source,
+        Character sage)
+    {
+        CharacterTurnActivity activity = CreateAwaitingActivity(
+            new Allrpcs.Domain.Identifiers.CharacterId(sage.Identity.Id.Value),
+            PromptShapedText);
+        TemporaryCharacterModelGenerationInput? input = source.CreateInput(activity);
+        if (input is null)
+        {
+            return false;
+        }
+
+        CharacterModelGenerationRequest request = input.GenerationRequest;
+        return ReferenceEquals(request.TurnRequest, activity.Request)
+            && !ReferenceEquals(activity.Request.RespondingCharacterId, sage.Identity.Id)
+            && activity.Request.RespondingCharacterId.Equals(sage.Identity.Id)
+            && Entries(request, CharacterModelContextEntryKind.FilteredPerception).Length == 0
+            && Entries(request, CharacterModelContextEntryKind.RelevantKnowledge)
+                .Single().Text == SageKnowledgeText
+            && Entries(request, CharacterModelContextEntryKind.Goal)
+                .Single().Text == SageGoalText
+            && Entries(request, CharacterModelContextEntryKind.Memory).Length == 0
+            && ReferenceEquals(
+                Entries(request, CharacterModelContextEntryKind.RecentSpeech).Single().Text,
+                activity.Request.DialogueEvent.Utterance.Text)
+            && Entries(request, CharacterModelContextEntryKind.ValidAffordance).Length == 0
+            && input.Affordances.Entries.Count == 0
+            && input.WorldObjects.Entries.Count == 2;
     }
 
     private static bool ProvesClosedActivityGate(

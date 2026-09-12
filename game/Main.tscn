@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3]
+[gd_scene load_steps=133 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -146,6 +146,10 @@
 [ext_resource type="Script" path="res://OrdinaryParticipationSmokeModelSupplier.cs" id="144_ordinary_participation_smoke_model"]
 [ext_resource type="Script" path="res://OrdinaryParticipationCancellationFlowSmokeCheck.cs" id="145_ordinary_participation_cancel_check"]
 [ext_resource type="Script" path="res://OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck.cs" id="146_ordinary_participation_scheduling_check"]
+[ext_resource type="Script" path="res://TemporaryOrdinaryCharacterParticipantSourceSmokeCheck.cs" id="147_ordinary_character_participant_source_check"]
+[ext_resource type="Script" path="res://TemporaryOrdinaryCharacterParticipantSource.cs" id="148_ordinary_character_participant_source"]
+[ext_resource type="Script" path="res://OrdinarySageInterjectionFlowSmokeCheck.cs" id="149_ordinary_sage_interjection_check"]
+[ext_resource type="Script" path="res://OrdinaryBoundedConversationLoopSmokeCheck.cs" id="150_ordinary_bounded_loop_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -301,6 +305,9 @@ position = Vector2(680, 450)
 
 [node name="HealerCommandDestination" type="Marker2D" parent="."]
 position = Vector2(960, 360)
+
+[node name="SageHearingPosition" type="Marker2D" parent="."]
+position = Vector2(920, 450)
 
 [node name="Ring" type="Line2D" parent="HealerCommandDestination"]
 points = PackedVector2Array(24, 0, 16.971, 16.971, 0, 24, -16.971, 16.971, -24, 0, -16.971, -16.971, 0, -24, 16.971, -16.971, 24, 0)
@@ -512,6 +519,9 @@ script = ExtResource("62_character_turn_source")
 [node name="TemporaryHealerCharacterSource" type="Node" parent="."]
 script = ExtResource("99_healer_character_source")
 
+[node name="TemporaryOrdinaryCharacterParticipantSource" type="Node" parent="."]
+script = ExtResource("148_ordinary_character_participant_source")
+
 [node name="TemporaryCharacterModelGenerationInputSource" type="Node" parent="."]
 script = ExtResource("100_model_input_source")
 
@@ -703,6 +713,15 @@ script = ExtResource("145_ordinary_participation_cancel_check")
 
 [node name="OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck" type="Node" parent="."]
 script = ExtResource("146_ordinary_participation_scheduling_check")
+
+[node name="TemporaryOrdinaryCharacterParticipantSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("147_ordinary_character_participant_source_check")
+
+[node name="OrdinarySageInterjectionFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("149_ordinary_sage_interjection_check")
+
+[node name="OrdinaryBoundedConversationLoopSmokeCheck" type="Node" parent="."]
+script = ExtResource("150_ordinary_bounded_loop_check")
 
 [node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("77_character_turn_response_flow_check")

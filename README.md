@@ -715,21 +715,29 @@ exhaustion, invalid or ineligible listener collections, overlap, and an active t
 follow-up. An isolated credential-free two-listener scene check proves stable consideration order,
 value-equal direct addressing, direct-response priority, exact motivated interjection after
 meaningful direct-listener silence, all-silent no-turn behavior, overlap rejection, and unchanged
-surrounding scene state. Ordinary heard player dialogue still supplies only the exact healer and a
-distinct value-equal direct healer address, atomically installs a fresh two-turn budget only after
-complete preflight, and invokes this generalized coordinator. A selected direct response traverses
-the existing bounded generation, validated reception, single speech occurrence, completion, and
-one-step budget advance;
-player cancellation also cancels an active participation round and monotonically interrupts that
-exact chain. Consecutive eligible player roots replace the exact prior budget with distinct fresh
-state, while stale or invalid replacement and failed round preflight preserve it. The ordinary
-scene still schedules only its single directly addressed healer, does not infer text addresses,
-start another participation round from healer speech, or drive an LLM-to-LLM loop.
+surrounding scene state. A temporary ordinary participant source owns one stable read-only roster
+containing the exact existing healer followed by one fresh representative sage with distinct exact
+LLM assignments. Ordinary player dialogue hearing includes both roster members from the moving
+healer body and a scene-owned sage position while keeping only the healer directly addressed. The
+complete heard roster is scheduled after preflight, and a pure `CharacterTurnParticipantLookup`
+resolves the exact value-matching participant for an awaiting selected turn only after validating
+the whole roster. Absent and non-awaiting turns fail closed without retaining or mutating state.
 
-The pure `CharacterTurnParticipantLookup` preflights a complete bounded roster of distinct exact
-LLM assignments before resolving the exact value-matching character for an awaiting selected turn.
-It returns no character for an absent participant or any non-awaiting lifecycle state and does not
-retain a roster, build generation context, choose a model, start work, or mutate scene state.
+The ordinary generation-input source now supplies either roster participant with exact turn and
+character identity, filtered character-specific perception, only referenced knowledge and goals,
+that character's unfinished commitment memory, heard recent speech, and only currently valid
+affordances. Healer context and behavior remain unchanged; the sage receives no unobserved world
+state or physical affordance. Exact response-speech recording resolves the selected roster member
+to the healer body or sage position, selects its heard audience, and appends one occurrence. A
+selected direct healer response or motivated sage interjection traverses the same bounded
+generation, validated reception, speech, completion, and one-step budget advance. After exact
+character speech completes, only heard LLM roster members enter the next participation round under
+the existing budget. An isolated close-position smoke proves sage then healer interjections advance
+in order and that the exhausted two-turn budget starts no third round. Player cancellation still
+cancels an active participation round and monotonically interrupts that exact chain. Consecutive
+eligible player roots replace the prior budget with distinct fresh state only after complete
+preflight. The scene does not infer addresses or privacy from text, persist an active chain, add a
+sage sprite, or broaden provider dialects.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the

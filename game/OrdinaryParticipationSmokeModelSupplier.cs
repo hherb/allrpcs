@@ -4,7 +4,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Supplies direct-response participation only to legacy ordinary-flow smokes.</summary>
+/// <summary>Supplies one direct response and non-addressed silence to legacy ordinary smokes.</summary>
 public partial class OrdinaryParticipationSmokeModelSupplier : Node
 {
     private const string EnabledEnvironmentVariable =
@@ -16,6 +16,8 @@ public partial class OrdinaryParticipationSmokeModelSupplier : Node
         "ALLRPCS_PARTICIPATION_MODEL_SOURCE_CHECK",
         "ALLRPCS_ORDINARY_AUTONOMOUS_FLOW_CHECK",
         "ALLRPCS_ORDINARY_PARTICIPATION_CANCELLATION_CHECK",
+        "ALLRPCS_ORDINARY_SAGE_INTERJECTION_CHECK",
+        "ALLRPCS_ORDINARY_BOUNDED_LOOP_CHECK",
     ];
 
     private readonly DirectResponseModel model = new();
@@ -59,8 +61,12 @@ public partial class OrdinaryParticipationSmokeModelSupplier : Node
             cancellationToken.ThrowIfCancellationRequested();
             return ValueTask.FromResult(new CharacterTurnParticipationDecision(
                 request.ScheduledCharacter.Identity.Id,
-                CharacterTurnParticipationKind.Respond,
-                null));
+                request.IsDirectlyAddressed
+                    ? CharacterTurnParticipationKind.Respond
+                    : CharacterTurnParticipationKind.RemainSilent,
+                request.IsDirectlyAddressed
+                    ? null
+                    : request.ScheduledCharacter.Goals.Entries[0]));
         }
     }
 }

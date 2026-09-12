@@ -45,8 +45,10 @@ public partial class Main : Node
     private DialogueInputController dialogueInputController = null!;
     private TemporaryCharacterModelGenerationInputSource characterModelInputSource = null!;
     private TemporaryHealerCharacterSource healerCharacterSource = null!;
+    private TemporaryOrdinaryCharacterParticipantSource ordinaryCharacterParticipantSource = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
+    private Marker2D sageHearingPosition = null!;
     private Label healerModeStatus = null!;
     private FocusedSearchActivityController focusedSearchController = null!;
     private Label focusedSearchResultStatus = null!;
@@ -68,6 +70,7 @@ public partial class Main : Node
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
     private CharacterModelStreamSnapshot? lastProcessedModelResult;
+    private CharacterTurnActivity? lastProcessedCompletedCharacterTurn;
     private DialogueUtterance? lastProcessedDialogueUtterance;
     private HealerCommandMode displayedMode;
 
@@ -93,9 +96,12 @@ public partial class Main : Node
             "TemporaryCharacterModelGenerationInputSource");
         healerCharacterSource = GetNode<TemporaryHealerCharacterSource>(
             "TemporaryHealerCharacterSource");
+        ordinaryCharacterParticipantSource = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+            "TemporaryOrdinaryCharacterParticipantSource");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
+        sageHearingPosition = GetNode<Marker2D>("SageHearingPosition");
         healerModeStatus = GetNode<Label>("CommandOverlay/Panel/ModeStatus");
         focusedSearchController = GetNode<FocusedSearchActivityController>(
             "Seeker/FocusedSearchActivityController");
@@ -308,6 +314,7 @@ public partial class Main : Node
     {
         _ = delta;
         ProcessCharacterTurnResponse();
+        ProcessCompletedCharacterTurnParticipation();
         ProcessDialogueSubmission();
         UpdateModeStatus(force: false);
     }
@@ -336,7 +343,11 @@ public partial class Main : Node
                 "The completed character-model flow could not reset for the next exact turn.");
         }
 
-        Character character = healerCharacterSource.Character;
+        Character character = CharacterTurnParticipantLookup.Find(
+            ordinaryCharacterParticipantSource.Participants,
+            activity)
+            ?? throw new InvalidOperationException(
+                "The awaiting ordinary character turn had no exact LLM participant.");
         CharacterControllerAssignment assignment = character.ControllerAssignment;
         TemporaryCharacterModelGenerationInput? input = characterModelInputSource.CreateInput(
             activity);
@@ -397,6 +408,41 @@ public partial class Main : Node
         }
     }
 
+    private void ProcessCompletedCharacterTurnParticipation()
+    {
+        CharacterTurnActivity? activity = characterTurnController.Activity;
+        if (activity is null
+            || !ReferenceEquals(activity.State, CharacterTurnActivityState.Completed)
+            || ReferenceEquals(activity, lastProcessedCompletedCharacterTurn))
+        {
+            return;
+        }
+
+        lastProcessedCompletedCharacterTurn = activity;
+        DialogueUtterance? speech = activity.Response?.Speech;
+        DialogueEvent? occurredEvent = dialogueEventController.LastOccurredEvent;
+        if (speech is null || !ReferenceEquals(occurredEvent?.Utterance, speech))
+        {
+            return;
+        }
+
+        Character[] scheduledCharacters = GetHeardOrdinaryParticipants(occurredEvent);
+        if (scheduledCharacters.Length == 0)
+        {
+            return;
+        }
+
+        _ = participationCoordinator.TryStart(
+            occurredEvent,
+            scheduledCharacters,
+            [],
+            participationModelSource,
+            participationRoundController,
+            autonomousConversationBudgetController,
+            characterTurnController,
+            ParticipationRoundDeadline);
+    }
+
     private void ProcessDialogueSubmission()
     {
         DialogueUtterance? utterance = dialogueInputController.LastSubmittedUtterance;
@@ -405,12 +451,13 @@ public partial class Main : Node
             return;
         }
 
-        CharacterId healerCharacterId =
-            characterTurnSource.Activity.Request.RespondingCharacterId;
+        IReadOnlyList<Character> ordinaryParticipants =
+            ordinaryCharacterParticipantSource.Participants;
         DialogueHearingCandidate[] candidates =
         [
             new(utterance.SpeakerCharacterId, ToNumerics(GetNode<Node2D>("Seeker").Position)),
-            new(healerCharacterId, ToNumerics(healer.Position)),
+            new(ordinaryParticipants[0].Identity.Id, ToNumerics(healer.Position)),
+            new(ordinaryParticipants[1].Identity.Id, ToNumerics(sageHearingPosition.Position)),
         ];
         if (!dialogueEventController.TryOccur(
                 utterance,
@@ -432,11 +479,16 @@ public partial class Main : Node
     {
         DialogueEvent occurredEvent = dialogueEventController.LastOccurredEvent
             ?? throw new InvalidOperationException("The occurred player dialogue event was absent.");
-        Character healerCharacter = healerCharacterSource.Character;
+        Character[] heardParticipants = GetHeardOrdinaryParticipants(occurredEvent);
+        Character healerCharacter = ordinaryCharacterParticipantSource.Participants[0];
+        CharacterId[] directAddresses = heardParticipants.Any(
+            character => ReferenceEquals(character, healerCharacter))
+            ? [new CharacterId(healerCharacter.Identity.Id.Value)]
+            : [];
         _ = participationCoordinator.TryStartNewChain(
             occurredEvent,
-            [healerCharacter],
-            [new CharacterId(healerCharacter.Identity.Id.Value)],
+            heardParticipants,
+            directAddresses,
             participationModelSource,
             participationRoundController,
             autonomousConversationBudgetController,
@@ -446,6 +498,15 @@ public partial class Main : Node
                 AutonomousConversationMaximumTurnCount,
                 false),
             ParticipationRoundDeadline);
+    }
+
+    private Character[] GetHeardOrdinaryParticipants(DialogueEvent occurredEvent)
+    {
+        HashSet<CharacterId> heardCharacterIds =
+            occurredEvent.Audience.ListenerCharacterIds.ToHashSet();
+        return ordinaryCharacterParticipantSource.Participants
+            .Where(character => heardCharacterIds.Contains(character.Identity.Id))
+            .ToArray();
     }
 
     /// <inheritdoc />
