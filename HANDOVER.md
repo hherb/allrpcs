@@ -25,6 +25,8 @@ construct or start its follow-up, initialize an ordinary autonomous budget, loop
 roles, add whispering/private conversations, add independent tasks, implement sabotage, start Phase
 8, release, sign, or distribute.
 
+Draft PR #208 contains this work.
+
 ## Validation and review
 
 - test-first compile failures were observed before each missing request, policy, round-transition,
