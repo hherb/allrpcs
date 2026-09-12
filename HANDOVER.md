@@ -2,71 +2,70 @@
 
 ## Current state
 
-`main` contains merged PR #211 at `20044f7`. The current branch is
-`codex/phase-7-participation-round-task-flow`.
+`main` contains merged PR #212 at `3a1f3c4`. The current branch is
+`codex/phase-7-participation-bindings`.
 
-This branch adds two bounded Phase 7 slices:
+Draft PR #213 is open and mergeable at `50a21df`; its five hosted jobs were queued when last
+queried.
 
-- `CharacterTurnParticipationRoundTaskController` scene-owns at most one complete sequential
-  participation-decision task, installs only a complete successful round from the Godot main
-  thread, and exposes closed idle, running, completed, caller-cancelled, timed-out, and failed
-  states with terminal reset;
-- `TemporaryCharacterTurnParticipationModelSource` supplies one exact caller-owned participation
-  model once or one stable fail-closed offline model, without settings, credentials, provider
-  composition, or network access.
+This branch completes four bounded Phase 7 slices:
 
-The Phase 7 parent items remain open. This branch does not add participation-model bindings or
-provider composition; local Chat Completions, Anthropic, or Ollama participation dialects;
-diagnostics; retries; ordinary dialogue-flow invocation; autonomous-budget initialization;
-follow-up selection/start/completion; multi-character scene hearing/address authoring; a loop;
-whispering/private conversations; independent tasks; sabotage; Phase 8 work; release; signing; or
-distribution.
+- immutable Application participation-model bindings, a non-empty three-provider-bounded snapshot,
+  and exact provider and selected-settings selectors;
+- a zero-I/O OpenAI participation-binding factory over exact caller-owned dependencies;
+- configured, replaceable, selectable participation bindings in the temporary scene source, with
+  one-shot precedence and an explicit return to its stable offline model;
+- existing provider composition now installs the exact OpenAI participation adapter and clears it
+  when selecting supported ordinary providers without participation support.
 
-Draft PR #212 contains this work and is mergeable at `08ac3f6`.
+Both Phase 7 parent items remain open. This branch does not invoke participation models during
+composition; start a participation round from ordinary dialogue; initialize or advance an ordinary
+autonomous budget; select, start, generate, speak, or complete a follow-up; add local Chat
+Completions, Anthropic, or Ollama participation dialects; add diagnostics or retries; add
+multi-character scene hearing/address authoring; drive a loop; add whispering/private
+conversations, independent tasks, sabotage, or Phase 8 work; release; sign; or distribute.
 
 ## Validation and review
 
-- test-first game builds failed on each missing scene type before implementation;
-- the focused task-controller smoke passes exact successful request/result identity and order,
-  main-thread-only result installation, complete preflight before model invocation, overlap and
-  repeated-operation rejection, caller cancellation, timeout, detail-free failure, terminal reset,
-  null and deadline validation, closed public state, and unchanged turn, budget, dialogue,
-  transcript, world, model-stream, and presentation state;
-- the focused model-source smoke passes exact one-shot retention, null and overlap rejection, one
-  stable offline model, safe bounded task failure, closed public surface, and unchanged surrounding
-  scene state;
+- each Application and Infrastructure contract was introduced test-first and failed on its missing
+  type before implementation; the configured-source and composition smokes likewise failed on
+  missing behavior before implementation;
+- focused host-local suites pass 424 Application and 522 Infrastructure tests;
+- focused host-local Godot smokes pass exact binding initialization, selection, replacement,
+  clearing, one-shot precedence, stable offline behavior, OpenAI composition, and Ollama fallback
+  without model calls, credential loads, HTTP, or unrelated scene mutation;
 - final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, the
-  zero-warning solution build, 2,093 Domain, 411 Application, 518 Infrastructure, and 8 architecture
-  tests, all 5 representative scenario definitions, the complete headless smoke matrix including
-  both new credential-free checks, and the bounded Compatibility-renderer launch;
-- `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, `git diff --check`, practical
-  500-line/120-character limits, exact-identity boundaries, main-thread ownership, cancellation
-  precedence, timeout/failure classification, provider-detail non-retention, and scope review pass.
+  zero-warning solution build, 2,093 Domain, 424 Application, 522 Infrastructure, and 8 architecture
+  tests, all 5 representative scenario definitions, the complete headless smoke matrix, and the
+  bounded Compatibility-renderer launch;
+- `git diff --check`, practical 500-line/120-character limits, immutable collection copying,
+  canonical-provider and exact-settings identity, fail-closed unsupported-provider behavior,
+  construction-time zero-I/O, one-shot preservation, and scope review pass.
 
-Restricted execution reproduced the known Godot `user://logs` failure before product code loaded;
-the identical focused smokes passed host-local. PR #211 is verified merged at `20044f7`. All five
-hosted jobs on draft PR #212 failed with `steps: []`, unchanged Actions account-budget
-infrastructure state rather than product-test evidence; do not retry or dispatch hosted workflows
-unless that condition changes.
+Restricted execution reproduced the known VSTest loopback-socket and Godot `user://logs` failures;
+the identical focused and full validations passed host-local. Hosted Actions remained account-budget
+blocked with `steps: []` through PR #212; treat that as infrastructure state and do not retry or
+dispatch hosted workflows unless it changes.
 
 ## Exact next bounded slice
 
-Take **Phase 7ai: provider-neutral participation-model bindings**.
+Take **Phase 7an: ordinary player-dialogue participation-round launch**.
 
 Acceptance boundary:
 
-1. Add one immutable Application binding that retains one canonical
-   `CharacterModelProvider`, its exact matching `CharacterModelSettings`, and one exact
-   `ICharacterTurnParticipationModel` without invoking it.
-2. Add one non-empty immutable bounded binding snapshot plus pure provider and selected-settings
-   selectors. Copy caller collections, reject nulls, duplicate providers, provider/settings
-   mismatches, and unavailable selections, and retain exact binding/settings/model instances.
-3. Add focused Application tests for stable order, exact and value-equal selection behavior,
-   mismatched settings, invalid collections, input preservation, no model calls, and smallest public
-   surfaces.
-4. Do not create Infrastructure factories, load credentials, send HTTP, change existing ordinary
-   `CharacterModelBinding`, install bindings into the temporary source, alter provider composition,
-   wire `Main`, start or select follow-ups, initialize/advance a budget, or drive a loop.
-
-Leave both Phase 7 parent items unticked until later slices compose the OpenAI participation model
-and drive every ordinary autonomous chain through the existing bounded scene seams.
+1. Add one scene-owned coordinator that accepts the exact newly occurred player `DialogueEvent`,
+   the exact scheduled LLM healer, its value-equal direct address, the participation-model source,
+   and the existing bounded participation-round task controller.
+2. Start at most one round for that exact event with the existing positive finite deadline, retain
+   no duplicate coordinator state, and consume no model when the event has no eligible scheduled
+   listener or another round/turn is active.
+3. On a complete round, hand its exact result to the existing budget-gated follow-up-start seam;
+   meaningful silence, offline/provider failure, timeout, cancellation, interruption, and an
+   exhausted budget must start no turn and must reset only terminal round-task state.
+4. Add one credential-free ordinary-flow smoke covering exact request/result/event identity,
+   direct response, meaningful silence, fail-closed terminal outcomes, overlap/repeat rejection,
+   player interruption, unchanged transcript/world/presentation state until a turn actually starts,
+   and the smallest public surface.
+5. Do not yet generate or complete the selected follow-up, advance the budget, add further scene
+   characters or address parsing, alter provider/settings composition, retry decisions, drive a
+   loop, or tick either Phase 7 parent item.

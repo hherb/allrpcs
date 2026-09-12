@@ -17,8 +17,10 @@ public partial class TemporaryCharacterModelCompositionController : Node
 
     private CharacterModelSettingsController settingsController = null!;
     private TemporaryCharacterModelSource modelSource = null!;
+    private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
+    private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
     /// <inheritdoc />
@@ -27,6 +29,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
         settingsController = GetNode<CharacterModelSettingsController>(
             "../CharacterModelSettingsController");
         modelSource = GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource");
+        participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
+            "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
         {
             Timeout = Timeout.InfiniteTimeSpan,
@@ -72,7 +76,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (binding is null
             || !modelSource.TryInitializeBindings(
                 selection,
-                new CharacterModelBindingSnapshot([binding])))
+                new CharacterModelBindingSnapshot([binding]))
+            || !TryApplyParticipationBindings(selection))
         {
             return false;
         }
@@ -91,7 +96,9 @@ public partial class TemporaryCharacterModelCompositionController : Node
         }
 
         CharacterModelBindingSnapshot? bindings = CreateCurrentBindingSnapshot(selection);
-        return bindings is not null && modelSource.TryReplaceBindings(selection, bindings);
+        return bindings is not null
+            && modelSource.TryReplaceBindings(selection, bindings)
+            && TryApplyParticipationBindings(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -180,6 +187,50 @@ public partial class TemporaryCharacterModelCompositionController : Node
             settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
         CharacterModelBinding? binding = CreateBinding(selectedSettings);
         return binding is null ? null : new CharacterModelBindingSnapshot([binding]);
+    }
+
+    private bool TryApplyParticipationBindings(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!participationBindingsInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = participationModelSource.TryClearBindings();
+            if (cleared)
+            {
+                participationBindingsInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        CharacterTurnParticipationModelBinding binding =
+            OpenAiCharacterTurnParticipationModelBindingFactory.Create(
+                selectedSettings,
+                client,
+                credentialSource);
+        CharacterTurnParticipationModelBindingSnapshot bindings = new([binding]);
+        bool applied = participationBindingsInitialized
+            ? participationModelSource.TryReplaceBindings(selection, bindings)
+            : participationModelSource.TryInitializeBindings(selection, bindings);
+        if (applied)
+        {
+            participationBindingsInitialized = true;
+        }
+
+        return applied;
     }
 
     private static IOpenAiCredentialSource? CreateOpenAiCredentialSource()
