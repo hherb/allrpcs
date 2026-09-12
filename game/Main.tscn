@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3]
+[gd_scene load_steps=129 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -145,6 +145,7 @@
 [ext_resource type="Script" path="res://OrdinaryAutonomousDialogueFlowSmokeCheck.cs" id="143_ordinary_autonomous_flow_check"]
 [ext_resource type="Script" path="res://OrdinaryParticipationSmokeModelSupplier.cs" id="144_ordinary_participation_smoke_model"]
 [ext_resource type="Script" path="res://OrdinaryParticipationCancellationFlowSmokeCheck.cs" id="145_ordinary_participation_cancel_check"]
+[ext_resource type="Script" path="res://OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck.cs" id="146_ordinary_participation_scheduling_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -699,6 +700,9 @@ script = ExtResource("143_ordinary_autonomous_flow_check")
 
 [node name="OrdinaryParticipationCancellationFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("145_ordinary_participation_cancel_check")
+
+[node name="OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck" type="Node" parent="."]
+script = ExtResource("146_ordinary_participation_scheduling_check")
 
 [node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("77_character_turn_response_flow_check")

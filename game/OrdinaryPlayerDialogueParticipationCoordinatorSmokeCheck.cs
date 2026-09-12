@@ -94,8 +94,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck : 
         SceneState before = CaptureSceneState();
         bool started = current.Coordinator.TryStart(
             current.Event,
-            current.Character,
-            current.DirectAddress,
+            [current.Character],
+            [current.DirectAddress],
             current.ModelSource,
             current.RoundController,
             current.BudgetController,
@@ -106,8 +106,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck : 
             || current.RoundController.Status != CharacterTurnParticipationRoundTaskStatus.Running
             || current.Coordinator.TryStart(
                 current.Event,
-                current.Character,
-                current.DirectAddress,
+                [current.Character],
+                [current.DirectAddress],
                 current.ModelSource,
                 current.RoundController,
                 current.BudgetController,
@@ -179,8 +179,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck : 
         scenario = OrdinaryPlayerDialogueParticipationPreflightSmoke.CreateScenario(null);
         if (!scenario.Coordinator.TryStart(
                 scenario.Event,
-                scenario.Character,
-                scenario.DirectAddress,
+                [scenario.Character],
+                [scenario.DirectAddress],
                 scenario.ModelSource,
                 scenario.RoundController,
                 scenario.BudgetController,
@@ -232,8 +232,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck : 
             new OrdinaryParticipationWaitingModel());
         if (!scenario.Coordinator.TryStart(
                 scenario.Event,
-                scenario.Character,
-                scenario.DirectAddress,
+                [scenario.Character],
+                [scenario.DirectAddress],
                 scenario.ModelSource,
                 scenario.RoundController,
                 scenario.BudgetController,
@@ -300,8 +300,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinatorSmokeCheck : 
         OrdinaryPlayerDialogueParticipationSmokeScenario current = scenario!;
         if (!current.Coordinator.TryStart(
                 current.Event,
-                current.Character,
-                current.DirectAddress,
+                [current.Character],
+                [current.DirectAddress],
                 current.ModelSource,
                 current.RoundController,
                 current.BudgetController,

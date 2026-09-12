@@ -15,11 +15,11 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
     private AutonomousConversationBudgetController? activeBudgetController;
     private CharacterTurnActivityController? activeTurnController;
 
-    /// <summary>Starts one exact eligible directly addressed LLM participation round.</summary>
+    /// <summary>Starts one complete stable round of exact eligible heard LLM listeners.</summary>
     public bool TryStart(
         DialogueEvent heardDialogueEvent,
-        Character scheduledCharacter,
-        CharacterId directlyAddressedCharacterId,
+        IEnumerable<Character> scheduledCharacters,
+        IEnumerable<CharacterId> directlyAddressedCharacterIds,
         TemporaryCharacterTurnParticipationModelSource modelSource,
         CharacterTurnParticipationRoundTaskController roundController,
         AutonomousConversationBudgetController budgetController,
@@ -28,8 +28,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
     {
         ValidateArguments(
             heardDialogueEvent,
-            scheduledCharacter,
-            directlyAddressedCharacterId,
+            scheduledCharacters,
+            directlyAddressedCharacterIds,
             modelSource,
             roundController,
             budgetController,
@@ -39,20 +39,22 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
         AutonomousConversationBudget? budget = budgetController.Budget;
         if (budget is null
             || !AutonomousConversationContinuationPolicy.CanContinue(budget)
-            || !CanStartRound(
+            || !TryPrepareRound(
                 heardDialogueEvent,
-                scheduledCharacter,
-                directlyAddressedCharacterId,
+                scheduledCharacters,
+                directlyAddressedCharacterIds,
                 roundController,
-                turnController))
+                turnController,
+                out IReadOnlyList<Character> preparedCharacters,
+                out IReadOnlyList<CharacterId> preparedDirectAddresses))
         {
             return false;
         }
 
         StartRound(
             heardDialogueEvent,
-            scheduledCharacter,
-            directlyAddressedCharacterId,
+            preparedCharacters,
+            preparedDirectAddresses,
             modelSource,
             roundController,
             budgetController,
@@ -64,8 +66,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
     /// <summary>Installs and starts one exact fresh finite player-rooted chain.</summary>
     public bool TryStartNewChain(
         DialogueEvent heardDialogueEvent,
-        Character scheduledCharacter,
-        CharacterId directlyAddressedCharacterId,
+        IEnumerable<Character> scheduledCharacters,
+        IEnumerable<CharacterId> directlyAddressedCharacterIds,
         TemporaryCharacterTurnParticipationModelSource modelSource,
         CharacterTurnParticipationRoundTaskController roundController,
         AutonomousConversationBudgetController budgetController,
@@ -75,8 +77,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
     {
         ValidateArguments(
             heardDialogueEvent,
-            scheduledCharacter,
-            directlyAddressedCharacterId,
+            scheduledCharacters,
+            directlyAddressedCharacterIds,
             modelSource,
             roundController,
             budgetController,
@@ -86,12 +88,14 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
 
         if (initialBudget.CompletedTurnCount != 0
             || initialBudget.HasPlayerInterrupted
-            || !CanStartRound(
+            || !TryPrepareRound(
                 heardDialogueEvent,
-                scheduledCharacter,
-                directlyAddressedCharacterId,
+                scheduledCharacters,
+                directlyAddressedCharacterIds,
                 roundController,
-                turnController))
+                turnController,
+                out IReadOnlyList<Character> preparedCharacters,
+                out IReadOnlyList<CharacterId> preparedDirectAddresses))
         {
             return false;
         }
@@ -104,8 +108,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
 
         StartRound(
             heardDialogueEvent,
-            scheduledCharacter,
-            directlyAddressedCharacterId,
+            preparedCharacters,
+            preparedDirectAddresses,
             modelSource,
             roundController,
             budgetController,
@@ -114,29 +118,49 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
         return true;
     }
 
-    private bool CanStartRound(
+    private bool TryPrepareRound(
         DialogueEvent heardDialogueEvent,
-        Character scheduledCharacter,
-        CharacterId directlyAddressedCharacterId,
+        IEnumerable<Character> scheduledCharacters,
+        IEnumerable<CharacterId> directlyAddressedCharacterIds,
         CharacterTurnParticipationRoundTaskController roundController,
-        CharacterTurnActivityController turnController)
+        CharacterTurnActivityController turnController,
+        out IReadOnlyList<Character> preparedCharacters,
+        out IReadOnlyList<CharacterId> preparedDirectAddresses)
     {
-        CharacterId scheduledCharacterId = scheduledCharacter.Identity.Id;
-        CharacterControllerAssignment assignment = scheduledCharacter.ControllerAssignment;
-        return activeRoundController is null
+        List<Character> characters = scheduledCharacters.ToList();
+        List<CharacterId> directAddresses = directlyAddressedCharacterIds.ToList();
+        preparedCharacters = characters.AsReadOnly();
+        preparedDirectAddresses = directAddresses.AsReadOnly();
+        try
+        {
+            _ = CharacterTurnParticipationConsiderationRoundTransition.CreateRequests(
+                preparedCharacters,
+                heardDialogueEvent,
+                preparedDirectAddresses);
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+
+        return characters.Count > 0
+            && activeRoundController is null
             && roundController.Status == CharacterTurnParticipationRoundTaskStatus.Idle
             && roundController.Result is null
             && CharacterTurnStartPolicy.CanStart(turnController.Activity)
-            && ReferenceEquals(assignment.CharacterId, scheduledCharacterId)
-            && ReferenceEquals(assignment.ControllerType, ControllerType.Llm)
-            && heardDialogueEvent.Audience.ListenerCharacterIds.Contains(scheduledCharacterId)
-            && directlyAddressedCharacterId.Equals(scheduledCharacterId);
+            && characters.All(character =>
+                ReferenceEquals(
+                    character.ControllerAssignment.CharacterId,
+                    character.Identity.Id)
+                && ReferenceEquals(
+                    character.ControllerAssignment.ControllerType,
+                    ControllerType.Llm));
     }
 
     private void StartRound(
         DialogueEvent heardDialogueEvent,
-        Character scheduledCharacter,
-        CharacterId directlyAddressedCharacterId,
+        IReadOnlyList<Character> scheduledCharacters,
+        IReadOnlyList<CharacterId> directlyAddressedCharacterIds,
         TemporaryCharacterTurnParticipationModelSource modelSource,
         CharacterTurnParticipationRoundTaskController roundController,
         AutonomousConversationBudgetController budgetController,
@@ -145,9 +169,9 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
     {
         if (!roundController.TryStart(
                 modelSource.TakeModel(),
-                [scheduledCharacter],
+                scheduledCharacters,
                 heardDialogueEvent,
-                [directlyAddressedCharacterId],
+                directlyAddressedCharacterIds,
                 deadline))
         {
             throw new InvalidOperationException(
@@ -192,8 +216,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
 
     private static void ValidateArguments(
         DialogueEvent heardDialogueEvent,
-        Character scheduledCharacter,
-        CharacterId directlyAddressedCharacterId,
+        IEnumerable<Character> scheduledCharacters,
+        IEnumerable<CharacterId> directlyAddressedCharacterIds,
         TemporaryCharacterTurnParticipationModelSource modelSource,
         CharacterTurnParticipationRoundTaskController roundController,
         AutonomousConversationBudgetController budgetController,
@@ -201,8 +225,8 @@ public partial class OrdinaryPlayerDialogueParticipationCoordinator : Node
         TimeSpan deadline)
     {
         ArgumentNullException.ThrowIfNull(heardDialogueEvent);
-        ArgumentNullException.ThrowIfNull(scheduledCharacter);
-        ArgumentNullException.ThrowIfNull(directlyAddressedCharacterId);
+        ArgumentNullException.ThrowIfNull(scheduledCharacters);
+        ArgumentNullException.ThrowIfNull(directlyAddressedCharacterIds);
         ArgumentNullException.ThrowIfNull(modelSource);
         ArgumentNullException.ThrowIfNull(roundController);
         ArgumentNullException.ThrowIfNull(budgetController);
