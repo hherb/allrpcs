@@ -38,6 +38,8 @@ speakers, execute intentions, alter transcript retention, add timeouts/retries, 
 private conversations, add independent tasks or sabotage, start Phase 8, release, sign, or
 distribute.
 
+Draft PR #207 contains this work at implementation commit `95c31b6`.
+
 ## Validation and review
 
 - focused autonomous follow-up Domain tests pass: 38 tests covering response/interjection starts,
@@ -62,8 +64,9 @@ distribute.
 
 Restricted VSTest reproduced the known localhost-bind denial and restricted Godot reproduced the
 known `user://logs` failure; the identical focused commands passed host-local. Recent hosted jobs
-still had `steps: []` under the Actions account-budget condition. Do not retry or dispatch them
-unless that condition changes.
+still had `steps: []` under the Actions account-budget condition. Draft PR #207 triggered run
+`34680076640`; all five jobs completed with `steps: []` without executing checkout or test steps.
+Do not retry or dispatch them unless that condition changes.
 
 ## Exact next bounded slice
 
