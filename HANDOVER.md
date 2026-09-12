@@ -26,7 +26,7 @@ loop, schedule or start speakers, invoke a model, wire the scene or player input
 alter recent-conversation retention, add timeouts/retries, perform actions, add hearing/privacy
 rules, add UI/persistence/provider behavior, start Phase 8, release, sign, or distribute.
 
-This work is prepared for a draft PR.
+Draft PR #206 contains this work.
 
 ## Validation and review
 
