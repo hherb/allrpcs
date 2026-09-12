@@ -652,9 +652,21 @@ characters remain silent. A complete-round policy accepts at most 32 distinct ex
 characters, one positionally aligned decision per character, and at most 32 distinct direct
 addresses. It uses value-based address membership while preserving exact character, decision, and
 authored-goal identity, validates every decision before selection, and returns that existing first
-speaking decision or no selection. These contracts do not generate or infer motives or addresses,
-inspect dialogue text, invoke models, start or cancel turns, impose interjection frequency or
-conversation-loop bounds, integrate scenes, or alter player interruption behavior.
+speaking decision or no selection. One immutable provider-neutral participation-consideration
+request retains an exact scheduled `Character`, exact heard `DialogueEvent`, and explicit direct-
+address flag only when that character's identifier is present by value among the event listeners.
+Distinct value-equal audience identity is accepted without replacing any supplied or nested
+instance. A pure consideration policy delegates one returned decision to the existing exact-
+identity, direct-address, and authored-motive gate using only that request. A bounded round
+transition preflights up to 32 distinct scheduled characters against the same exact heard event and
+up to 32 distinct direct-address identifiers before returning one request per character in stable
+order. It uses value-based listener and address membership while retaining every exact character
+and the exact event, returns an independent read-only collection, and permits an empty round. These
+requests may be paired with a decision only through an immutable result that applies the exact
+consideration gate first and retains both exact inputs. These contracts do not generate or infer
+motives or addresses, assemble model context, invoke models, start or cancel turns, impose
+interjection frequency or conversation-loop bounds, integrate scenes, or alter player interruption
+behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the

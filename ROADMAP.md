@@ -309,6 +309,12 @@ Acceptance:
   - [x] Validate one complete bounded scheduled participation round before selecting its speaker.
   - [x] Derive and scene-start an exact heard-event follow-up from a complete selected round.
   - [x] Interrupt an initialized autonomous chain through ordinary player cancellation input.
+  - [x] Define an immutable provider-neutral participation-consideration request for each scheduled
+    listener.
+  - [x] Validate a participation decision against the exact consideration request and authored
+    character state.
+  - [x] Preflight and create a complete bounded round of stable consideration requests.
+  - [x] Bind each accepted participation decision to its exact consideration request.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.

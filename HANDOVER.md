@@ -2,88 +2,69 @@
 
 ## Current state
 
-`main` contains merged PR #206 at `4b5573f`. The current branch is
-`codex/phase-7-autonomous-followups`.
+`main` contains merged PR #207 at `b7b9ffb`. The current branch is
+`codex/phase-7-participation-consideration`.
 
-This branch advances the two still-open Phase 7 conversation parents through bounded Domain and
-scene foundations:
+This branch adds four bounded Phase 7 Domain slices:
 
-- `AutonomousConversationTurnStartPolicy` permits an already-selected response or interjection
-  only while the exact budget can continue, the decision and candidate request retain the same
-  responder identifier instance, and the existing activity-start policy accepts the slot;
-- `AutonomousConversationTurnStartTransition` starts that exact request as one awaiting activity
-  without constructing a request or advancing the budget;
-- `AutonomousConversationTurnCompletionTransition` preflights a speaking activity and open budget,
-  then returns both an exact completed activity and one advanced budget in
-  `AutonomousConversationTurnCompletionResult` without partial mutable state;
-- `AutonomousConversationFollowUpRequestTransition` creates one request for an already-selected
-  speaking listener, retaining its exact identifier and exact heard dialogue event while rejecting
-  meaningful silence or an absent audience member;
-- `AutonomousConversationBudgetController` now validates one complete caller-supplied participation
-  round, selects its exact speaker under the scene-owned budget, derives the heard-event request,
-  and starts it through the new gates;
-- the same controller atomically installs exact autonomous completion state and advances its budget
-  once; its lower-level composition helpers and the turn-controller installation seam remain
-  internal;
-- the ordinary observed-speech completion controller uses that atomic path whenever a budget is
-  initialized, and ordinary player cancellation monotonically interrupts an initialized budget
-  after cancelling its exact awaiting or speaking activity.
+- `CharacterTurnParticipationConsiderationRequest` retains one exact scheduled `Character`, one
+  exact heard `DialogueEvent`, and an explicit direct-address flag only when the character is a
+  value-equal listener;
+- `CharacterTurnParticipationConsiderationPolicy` validates a returned decision against that exact
+  request through the existing exact-character, direct-address, and authored-motive gate;
+- `CharacterTurnParticipationConsiderationRoundTransition` preflights at most 32 distinct scheduled
+  listeners and 32 distinct direct addresses, then returns a stable independent read-only request
+  collection retaining every exact character and the exact event;
+- `CharacterTurnParticipationConsiderationResult` binds one accepted exact decision to its exact
+  request and rejects incompatible, value-equal-but-distinct decision identity.
 
-The roadmap parents remain open. Normal `Main` does not initialize an autonomous budget, schedule
-participants, obtain participation decisions, or start a multi-character chain. The temporary
-model input and character sources still accept only the authored healer. This branch does not
-generate or infer participation decisions, create provider participation prompts, add model
-adapters, add an embodied sage or hermit, change hearing candidates, loop, automatically schedule
-speakers, execute intentions, alter transcript retention, add timeouts/retries, add whispering or
-private conversations, add independent tasks or sabotage, start Phase 8, release, sign, or
-distribute.
+The Phase 7 parent items remain open. This branch does not assemble participation model context,
+define or invoke a participation model/provider interface, deserialize a decision, obtain a
+decision, collect a complete decision round, validate or select such a round in ordinary play,
+construct or start its follow-up, initialize an ordinary autonomous budget, loop, change hearing or
+roles, add whispering/private conversations, add independent tasks, implement sabotage, start Phase
+8, release, sign, or distribute.
 
-Draft PR #207 contains this work at implementation commit `95c31b6`.
+Draft PR #208 contains this work.
 
 ## Validation and review
 
-- focused autonomous follow-up Domain tests pass: 38 tests covering response/interjection starts,
-  silence, exhausted/interrupted budgets, exact versus distinct value-equal responder identity,
-  every activity state, immutable inputs, request derivation, unheard speakers, atomic completion,
-  null rejection, and smallest public surfaces;
-- test-first compile failures were observed before each missing Domain policy, transition, and
-  result implementation;
-- the focused scene smoke passes complete-round selection, exact heard-event request creation,
-  gated start, atomic completion, one budget advance, monotonic interruption, invalid attempts,
-  unchanged inputs, and the closed public controller surface;
-- the ordinary completion-flow smoke passes with one initialized budget advance;
-- both ordinary awaiting-turn and speaking-turn cancellation-input smokes pass with monotonic budget
-  interruption and unchanged unrelated world, perception, movement, and presentation state;
-- final host-local `./scripts/quality.sh` passed workflow validation, restore, formatting, and the
-  zero-warning solution build; 2,049 Domain, 402 Application, 447 Infrastructure, and 8
-  architecture tests; all 5 representative scenario definitions; the complete headless smoke
-  matrix; and the bounded Compatibility-renderer launch;
-- `git diff --check`, practical 500-line/120-character limits for new and materially changed files,
-  immutable/exact-identity behavior, complete-round-before-selection, atomic completion, bounded
-  loop closure, smallest public surface, network-free behavior, and scope review pass.
+- test-first compile failures were observed before each missing request, policy, round-transition,
+  and result implementation;
+- 32 focused Domain cases pass across the four new surfaces, covering addressed and unaddressed
+  choices, response, interjection, meaningful silence, exact and distinct value-equal identity,
+  authored motives, audience absence, complete preflight, stable order, empty and maximum rounds,
+  null, duplicate, and oversized inputs, unchanged inputs, collection immutability, and smallest
+  public surfaces;
+- final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, the
+  zero-warning solution build, 2,081 Domain, 402 Application, 447 Infrastructure, and 8 architecture
+  tests, all 5 representative scenario definitions, the complete headless smoke matrix, and the
+  bounded Compatibility-renderer launch;
+- `git diff --check`, staged-diff review, practical 500-line/120-character limits, exact-identity and
+  value-membership boundaries, complete preflight, immutable collections, network-free behavior,
+  and scope review pass.
 
-Restricted VSTest reproduced the known localhost-bind denial and restricted Godot reproduced the
-known `user://logs` failure; the identical focused commands passed host-local. Recent hosted jobs
-still had `steps: []` under the Actions account-budget condition. Draft PR #207 triggered run
-`34680076640`; all five jobs completed with `steps: []` without executing checkout or test steps.
-Do not retry or dispatch them unless that condition changes.
+Restricted VSTest reproduced the known localhost-bind denial; the identical focused commands and
+full quality spine passed host-local. Draft PR #208 triggered run `34682049081`; all five jobs
+completed with `steps: []` without executing checkout or test steps under the continuing Actions
+account-budget condition. Treat them as infrastructure rather than test evidence and do not retry or
+dispatch them.
 
 ## Exact next bounded slice
 
-Take **Phase 7s: provider-neutral participation-consideration request**.
+Take **Phase 7w: complete participation-consideration result round**.
 
 Acceptance boundary:
 
-1. Add one immutable Domain request retaining one exact scheduled `Character`, one exact heard
-   `DialogueEvent`, and whether that character was directly addressed.
-2. Require the character identifier to be present in the event audience by value while retaining
-   the exact supplied character, event, and nested instances.
-3. Add focused Domain tests for addressed and unaddressed listeners, distinct value-equal audience
-   identity, absent listener rejection, null rejection, unchanged inputs, immutability, and the
-   smallest public API surface.
-4. Do not assemble model context, define or invoke a provider/model interface, generate a decision,
-   validate or select a round, construct a character-turn request, start or complete activity,
-   mutate a budget, loop, wire the scene, add roles/hearing/UI/persistence, or begin sabotage.
+1. Add one immutable bounded Domain round result retaining a copied read-only sequence of the exact
+   consideration requests and one exact accepted result per request in the same order.
+2. Require exact request-instance alignment, one result for every request, at most 32 entries,
+   distinct scheduled character identifiers, and one shared exact heard dialogue event.
+3. Add focused Domain tests for empty, single, and maximum rounds; stable order; exact versus
+   distinct value-equal request identity; missing, extra, reordered, duplicate-character, and
+   mixed-event rejection; nulls; unchanged inputs; immutability; and smallest public surface.
+4. Do not define/invoke a model or provider interface, assemble context, serialize/deserialize,
+   retry or time out, mutate a budget, select/start/complete a turn, loop, or wire the scene.
 
 Leave both Phase 7 parent items unticked until later slices obtain one decision per scheduled
 listener and drive every ordinary autonomous chain through the existing bounded scene seams.
