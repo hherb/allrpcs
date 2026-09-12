@@ -5,6 +5,10 @@
 `main` contains merged PR #215 at `ab70722`. The current branch is
 `codex/phase-7-ordinary-participant-roster`.
 
+Draft PR #216 is open and mergeable. Its five hosted jobs failed immediately with `steps: []`,
+confirming the unchanged Actions/account infrastructure condition rather than a product-test
+failure; do not retry or dispatch the unchanged workflows.
+
 This branch advances five bounded Phase 7 slices:
 
 - Phase 7as adds a scene-owned stable read-only ordinary roster containing the exact existing
