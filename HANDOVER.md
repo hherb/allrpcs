@@ -3,7 +3,7 @@
 ## Current state
 
 `main` contains merged PR #208 at `2decced`. The current branch is
-`codex/phase-7-participation-round-results`.
+`codex/phase-7-participation-round-results` at `841d708`.
 
 This branch adds three bounded Phase 7 slices:
 
@@ -21,6 +21,8 @@ model context, implement a provider adapter, add retries or timeouts, select a s
 result round, mutate an autonomous budget, construct or start a follow-up, initialize or loop an
 ordinary autonomous chain, wire the scene, change hearing or roles, add whispering/private
 conversations or independent tasks, implement sabotage, start Phase 8, release, sign, or distribute.
+
+Draft PR #209 contains this work.
 
 ## Validation and review
 
@@ -40,9 +42,10 @@ conversations or independent tasks, implement sabotage, start Phase 8, release, 
   pass.
 
 Restricted execution reproduced the known local-IPC denial in MSBuild/VSTest; the identical focused
-commands and full quality spine passed host-local. Hosted Actions remained account-budget-blocked on
-PR #208 with all five jobs reporting `steps: []`; treat that as infrastructure rather than test
-evidence and do not retry or dispatch workflows.
+commands and full quality spine passed host-local. Draft PR #209 triggered run `34685293250`; all
+five jobs completed with `steps: []` without executing checkout or tests under the continuing
+Actions account-budget condition. Treat that as infrastructure rather than test evidence and do not
+retry or dispatch workflows.
 
 ## Exact next bounded slice
 
