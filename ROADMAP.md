@@ -324,6 +324,8 @@ Acceptance:
   - [x] Complete one strict bounded OpenAI Responses participation decision SSE stream.
   - [x] Expose one caller-composed authenticated OpenAI participation decision adapter.
   - [x] Bound one complete sequential participation-decision round with a shared deadline.
+  - [x] Own one bounded participation-round task through closed scene terminal states.
+  - [x] Supply one exact one-shot participation model with fail-closed offline behavior.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
