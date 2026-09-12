@@ -20,6 +20,8 @@ dialogue-flow invocation; autonomous-budget initialization; follow-up selection/
 multi-character scene hearing/address authoring; a loop; whispering/private conversations;
 independent tasks; sabotage; Phase 8 work; release; signing; or distribution.
 
+Draft PR #211 contains this work and is currently mergeable.
+
 ## Validation and review
 
 - test-first compile failures were observed before the missing OpenAI participation stream,
@@ -47,7 +49,8 @@ independent tasks; sabotage; Phase 8 work; release; signing; or distribution.
 Restricted execution reproduced the known VSTest local-IPC denial; identical focused and full
 quality commands passed host-local. PR #210 is verified merged at `068b222`. Its five hosted jobs
 failed with `steps: []`, unchanged Actions account-budget infrastructure state rather than product
-test evidence; do not retry or dispatch hosted workflows unless that condition changes.
+test evidence. Draft PR #211 reproduced the same five empty-step failures; do not retry or dispatch
+hosted workflows unless that condition changes.
 
 ## Exact next bounded slice
 
