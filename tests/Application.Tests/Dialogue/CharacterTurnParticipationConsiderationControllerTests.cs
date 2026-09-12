@@ -148,6 +148,73 @@ public sealed class CharacterTurnParticipationConsiderationControllerTests
     }
 
     [Fact]
+    public async Task AppliesOneDeadlineToTheCompleteRoundWithoutReturningPartialResults()
+    {
+        Character hermit = CreateCharacter("woodland-hermit");
+        Character sage = CreateCharacter("village-sage");
+        DialogueEvent heardEvent = CreateEvent(hermit.Identity.Id, sage.Identity.Id);
+        PartialThenWaitingModel model = new();
+
+        await Assert.ThrowsAsync<TimeoutException>(() =>
+            CharacterTurnParticipationConsiderationController.DecideRoundAsync(
+                model,
+                [hermit, sage],
+                heardEvent,
+                [],
+                TimeSpan.FromMilliseconds(20),
+                CancellationToken.None));
+
+        Assert.Equal(2, model.Requests.Count);
+        Assert.Same(hermit, model.Requests[0].ScheduledCharacter);
+        Assert.Same(sage, model.Requests[1].ScheduledCharacter);
+    }
+
+    [Fact]
+    public async Task DeadlineOverloadPropagatesCallerCancellationAndRejectsInvalidDeadlines()
+    {
+        Character character = CreateCharacter("village-sage");
+        DialogueEvent heardEvent = CreateEvent(character.Identity.Id);
+        CancellingModel model = new();
+        using CancellationTokenSource cancellation = new();
+        cancellation.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
+            CharacterTurnParticipationConsiderationController.DecideRoundAsync(
+                model,
+                [character],
+                heardEvent,
+                [character.Identity.Id],
+                TimeSpan.FromSeconds(1),
+                cancellation.Token));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
+            CharacterTurnParticipationConsiderationController.DecideRoundAsync(
+                model,
+                [character],
+                heardEvent,
+                [character.Identity.Id],
+                TimeSpan.Zero,
+                CancellationToken.None));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() =>
+            CharacterTurnParticipationConsiderationController.DecideRoundAsync(
+                model,
+                [character],
+                heardEvent,
+                [character.Identity.Id],
+                Timeout.InfiniteTimeSpan,
+                CancellationToken.None));
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            CharacterTurnParticipationConsiderationController.DecideRoundAsync(
+                null!,
+                [character],
+                heardEvent,
+                [character.Identity.Id],
+                TimeSpan.FromSeconds(1),
+                CancellationToken.None));
+
+        Assert.Equal(default, model.CancellationToken);
+    }
+
+    [Fact]
     public async Task RejectsNullsAndExposesOnlyTheBoundedAsyncOperation()
     {
         Character character = CreateCharacter("village-sage");
@@ -170,23 +237,37 @@ public sealed class CharacterTurnParticipationConsiderationControllerTests
                 model, [character], heardEvent, null!, CancellationToken.None));
 
         Type controllerType = typeof(CharacterTurnParticipationConsiderationController);
-        System.Reflection.MethodInfo method = Assert.Single(controllerType.GetMethods().Where(
-            candidate => candidate.DeclaringType == controllerType));
+        System.Reflection.MethodInfo[] methods = controllerType.GetMethods().Where(
+            candidate => candidate.DeclaringType == controllerType).ToArray();
 
-        Assert.Equal("DecideRoundAsync", method.Name);
-        Assert.True(method.IsStatic);
-        Assert.Equal(
-            typeof(Task<CharacterTurnParticipationConsiderationRoundResult>),
-            method.ReturnType);
-        Assert.Equal(
+        Assert.Equal(2, methods.Length);
+        Assert.All(methods, method =>
+        {
+            Assert.Equal("DecideRoundAsync", method.Name);
+            Assert.True(method.IsStatic);
+            Assert.Equal(
+                typeof(Task<CharacterTurnParticipationConsiderationRoundResult>),
+                method.ReturnType);
+        });
+        Assert.Contains(methods, method => method.GetParameters().Select(
+            parameter => parameter.ParameterType).SequenceEqual(
             [
                 typeof(ICharacterTurnParticipationModel),
                 typeof(IEnumerable<Character>),
                 typeof(DialogueEvent),
                 typeof(IEnumerable<CharacterId>),
                 typeof(CancellationToken),
-            ],
-            method.GetParameters().Select(parameter => parameter.ParameterType).ToArray());
+            ]));
+        Assert.Contains(methods, method => method.GetParameters().Select(
+            parameter => parameter.ParameterType).SequenceEqual(
+            [
+                typeof(ICharacterTurnParticipationModel),
+                typeof(IEnumerable<Character>),
+                typeof(DialogueEvent),
+                typeof(IEnumerable<CharacterId>),
+                typeof(TimeSpan),
+                typeof(CancellationToken),
+            ]));
         Assert.Empty(controllerType.GetProperties());
         Assert.Empty(controllerType.GetEvents());
         Assert.True(controllerType.IsAbstract && controllerType.IsSealed);
@@ -262,6 +343,25 @@ public sealed class CharacterTurnParticipationConsiderationControllerTests
         {
             CancellationToken = cancellationToken;
             return ValueTask.FromCanceled<CharacterTurnParticipationDecision>(cancellationToken);
+        }
+    }
+
+    private sealed class PartialThenWaitingModel : ICharacterTurnParticipationModel
+    {
+        internal List<CharacterTurnParticipationConsiderationRequest> Requests { get; } = [];
+
+        public async ValueTask<CharacterTurnParticipationDecision> DecideAsync(
+            CharacterTurnParticipationConsiderationRequest request,
+            CancellationToken cancellationToken)
+        {
+            Requests.Add(request);
+            if (Requests.Count == 1)
+            {
+                return Decision(request, CharacterTurnParticipationKind.RemainSilent);
+            }
+
+            await Task.Delay(Timeout.InfiniteTimeSpan, cancellationToken);
+            throw new InvalidOperationException("The cancelled wait unexpectedly resumed.");
         }
     }
 }
