@@ -2,70 +2,75 @@
 
 ## Current state
 
-`main` contains merged PR #212 at `3a1f3c4`. The current branch is
-`codex/phase-7-participation-bindings`.
+`main` contains merged PR #213 at `adaa79c`. The current branch is
+`codex/phase-7-ordinary-participation-launch`.
 
-Draft PR #213 is open and mergeable at `50a21df`; its five hosted jobs were queued when last
-queried.
+Draft PR #214 is open and mergeable at `70e5b5f`. Its five hosted jobs failed immediately with
+`steps: []`, confirming the unchanged Actions/account infrastructure condition.
 
-This branch completes four bounded Phase 7 slices:
+This branch completes three bounded Phase 7 slices:
 
-- immutable Application participation-model bindings, a non-empty three-provider-bounded snapshot,
-  and exact provider and selected-settings selectors;
-- a zero-I/O OpenAI participation-binding factory over exact caller-owned dependencies;
-- configured, replaceable, selectable participation bindings in the temporary scene source, with
-  one-shot precedence and an explicit return to its stable offline model;
-- existing provider composition now installs the exact OpenAI participation adapter and clears it
-  when selecting supported ordinary providers without participation support.
+- a scene coordinator preflights one exact directly addressed LLM listener before
+  consuming a participation model, starts one bounded round, hands only a complete result to the
+  existing budget-gated follow-up seam, and resets every terminal task outcome;
+- ordinary heard player dialogue now installs a fresh two-turn autonomous budget and traverses the
+  participation decision, selected healer follow-up, existing generation, validated response,
+  single speech occurrence, completion, and one budget advance;
+- consecutive eligible player roots install distinct fresh budgets, while explicit player
+  cancellation cancels a waiting participation round and interrupts only its exact current chain.
 
-Both Phase 7 parent items remain open. This branch does not invoke participation models during
-composition; start a participation round from ordinary dialogue; initialize or advance an ordinary
-autonomous budget; select, start, generate, speak, or complete a follow-up; add local Chat
-Completions, Anthropic, or Ollama participation dialects; add diagnostics or retries; add
-multi-character scene hearing/address authoring; drive a loop; add whispering/private
-conversations, independent tasks, sabotage, or Phase 8 work; release; sign; or distribute.
+The first Phase 7 parent remains open because the ordinary scene still schedules only its directly
+addressed healer and cannot yet select or generate another listener's interjection. The loop parent
+also remains open because healer speech does not start a further participation round.
+
+This branch does not add another scene character; infer text addresses; generalize the coordinator
+to a complete listener schedule; generate a non-healer follow-up; start a round from character
+speech; add local Chat Completions, Anthropic, or Ollama participation dialects; add diagnostics or
+retries; persist an active chain; add whispering/private conversations, independent tasks, sabotage,
+or Phase 8 work; release; sign; or distribute.
 
 ## Validation and review
 
-- each Application and Infrastructure contract was introduced test-first and failed on its missing
-  type before implementation; the configured-source and composition smokes likewise failed on
-  missing behavior before implementation;
-- focused host-local suites pass 424 Application and 522 Infrastructure tests;
-- focused host-local Godot smokes pass exact binding initialization, selection, replacement,
-  clearing, one-shot precedence, stable offline behavior, OpenAI composition, and Ollama fallback
-  without model calls, credential loads, HTTP, or unrelated scene mutation;
-- final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, the
-  zero-warning solution build, 2,093 Domain, 424 Application, 522 Infrastructure, and 8 architecture
-  tests, all 5 representative scenario definitions, the complete headless smoke matrix, and the
-  bounded Compatibility-renderer launch;
-- `git diff --check`, practical 500-line/120-character limits, immutable collection copying,
-  canonical-provider and exact-settings identity, fail-closed unsupported-provider behavior,
-  construction-time zero-I/O, one-shot preservation, and scope review pass.
+- the Phase 7an coordinator smoke was introduced before its missing type and failed compilation;
+  the Phase 7ao ordinary-flow smoke failed before scene budget and participation routing existed;
+  the strengthened repeat smoke failed on the stale shared budget before fresh-chain replacement;
+- focused host-local smokes pass exact direct selection, meaningful silence, offline/provider
+  failure, timeout, cancellation, interruption, exhaustion, listener/controller eligibility,
+  overlap/repeat rejection, fresh-chain replacement, complete ordinary generation/speech/
+  completion, and two consecutive player-rooted chains;
+- focused existing smokes pass ordinary request, cancellation, repeat, offline-model, configured
+  participation-source, and OpenAI/Ollama composition regressions through a credential-free
+  test-only direct-response participation fixture;
+- host-local restore, formatting, and the zero-warning solution build pass, followed by 2,093
+  Domain, 426 Application, 522 Infrastructure, and 8 architecture tests;
+- the representative validator passes all 5 evidence definitions through `dotnet exec` on its built
+  DLL after the known macOS `dotnet run` apphost stall;
+- the complete host-local headless Godot smoke matrix and bounded Compatibility-renderer launch
+  pass;
+- `git diff --check`, practical 500-line/120-character limits for new files, exact event/character/
+  budget identity, no-consumption failed preflight, terminal reset, test-only fixture gating, and
+  scope review pass.
 
 Restricted execution reproduced the known VSTest loopback-socket and Godot `user://logs` failures;
-the identical focused and full validations passed host-local. Hosted Actions remained account-budget
-blocked with `steps: []` through PR #212; treat that as infrastructure state and do not retry or
-dispatch hosted workflows unless it changes.
+the identical checks passed host-local. Hosted Actions remained account-budget blocked with
+`steps: []` through PR #213; treat an unchanged recurrence as infrastructure state and do not retry
+or dispatch workflows.
 
 ## Exact next bounded slice
 
-Take **Phase 7an: ordinary player-dialogue participation-round launch**.
+Take **Phase 7aq: complete ordinary listener participation scheduling**.
 
 Acceptance boundary:
 
-1. Add one scene-owned coordinator that accepts the exact newly occurred player `DialogueEvent`,
-   the exact scheduled LLM healer, its value-equal direct address, the participation-model source,
-   and the existing bounded participation-round task controller.
-2. Start at most one round for that exact event with the existing positive finite deadline, retain
-   no duplicate coordinator state, and consume no model when the event has no eligible scheduled
-   listener or another round/turn is active.
-3. On a complete round, hand its exact result to the existing budget-gated follow-up-start seam;
-   meaningful silence, offline/provider failure, timeout, cancellation, interruption, and an
-   exhausted budget must start no turn and must reset only terminal round-task state.
-4. Add one credential-free ordinary-flow smoke covering exact request/result/event identity,
-   direct response, meaningful silence, fail-closed terminal outcomes, overlap/repeat rejection,
-   player interruption, unchanged transcript/world/presentation state until a turn actually starts,
-   and the smallest public surface.
-5. Do not yet generate or complete the selected follow-up, advance the budget, add further scene
-   characters or address parsing, alter provider/settings composition, retry decisions, drive a
-   loop, or tick either Phase 7 parent item.
+1. Generalize the ordinary coordinator from one scheduled healer to one complete bounded stable
+   collection of exact heard LLM listeners plus a complete distinct value-based direct-address set.
+2. Preflight the entire schedule, all addresses, budget replacement, idle task, and free turn slot
+   before consuming a model or changing budget state; preserve exact caller characters, event, and
+   identifiers and keep the coordinator free of copied round state.
+3. Keep ordinary player input wired with its existing single healer schedule, and add an isolated
+   credential-free two-listener smoke proving direct-response priority, motivated interjection when
+   the direct listener is meaningfully silent, all-silent no-turn, stable order, exact motive and
+   event identity, overlap rejection, and unchanged surrounding state.
+4. Do not yet add another embodied scene character, infer addresses from text, generate or complete
+   a non-healer selected turn, start another round from healer speech, add provider dialects or
+   retries, drive a loop, or tick either Phase 7 parent item.

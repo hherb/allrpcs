@@ -6,6 +6,7 @@ script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 repository_root=$(dirname -- "$script_dir")
 
 export ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1
+export ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1
 
 ALLRPCS_NAVIGATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_HEALER_COMMAND_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1500
@@ -50,6 +51,9 @@ ALLRPCS_CHARACTER_TURN_CONTROLLER_CHECK=1 godot --headless --path "$repository_r
 ALLRPCS_AUTONOMOUS_CONVERSATION_BUDGET_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_PARTICIPATION_ROUND_TASK_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_PARTICIPATION_MODEL_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_ORDINARY_PLAYER_PARTICIPATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_ORDINARY_AUTONOMOUS_FLOW_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1000
+ALLRPCS_ORDINARY_PARTICIPATION_CANCELLATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1000
 ALLRPCS_CHARACTER_TURN_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_CHARACTER_TURN_INPUT_CHECK=awaiting godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_CHARACTER_TURN_INPUT_CHECK=speaking godot --headless --path "$repository_root/game" --quit-after 30
