@@ -24,6 +24,8 @@ initialize or drive an ordinary autonomous chain, change existing turn-response 
 add whispering/private conversations or independent tasks, implement sabotage, start Phase 8,
 release, sign, or distribute.
 
+Draft PR #210 contains this work.
+
 ## Validation and review
 
 - test-first compile failures were observed before the missing Domain selection policy, scene
