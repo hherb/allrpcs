@@ -307,11 +307,16 @@ Acceptance:
 - [ ] Allow motivated interjections, meaningful silence, and player interruption.
   - [x] Define, validate, and deterministically select provider-neutral participation decisions.
   - [x] Validate one complete bounded scheduled participation round before selecting its speaker.
-  - [ ] Integrate participation decisions and player interruption into the ordinary dialogue flow.
+  - [x] Derive and scene-start an exact heard-event follow-up from a complete selected round.
+  - [x] Interrupt an initialized autonomous chain through ordinary player cancellation input.
+  - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
+    flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
   - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
   - [x] Gate complete-round autonomous speaker selection on the exact conversation budget.
-  - [ ] Gate every autonomous follow-up and close the ordinary chain at its bound or interruption.
+  - [x] Gate exact selected follow-up starts and atomically complete turns with one budget advance.
+  - [x] Close an initialized ordinary completion/cancellation path at its bound or interruption.
+  - [ ] Initialize and drive every ordinary autonomous chain through these bounded seams.
 - [ ] Support whispering and private conversations based on hearing conditions.
 - [ ] Support bounded independent tasks and party separation.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.

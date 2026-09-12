@@ -13,6 +13,7 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
     private const string PlayerText = "Please wait while we decide what to examine.";
 
     private CharacterTurnActivityController turnController = null!;
+    private AutonomousConversationBudgetController budgetController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private TemporaryCharacterExaminationFlowController examinationFlowController = null!;
     private TemporaryCharacterTurnResponseSource responseSource = null!;
@@ -38,6 +39,14 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
 
         turnController = GetNode<CharacterTurnActivityController>(
             "../CharacterTurnActivityController");
+        budgetController = GetNode<AutonomousConversationBudgetController>(
+            "../AutonomousConversationBudgetController");
+        if (!budgetController.TryInitialize(new AutonomousConversationBudget(0, 2, false)))
+        {
+            Fail("Completion flow could not initialize its autonomous-conversation budget.");
+            return;
+        }
+
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
         examinationFlowController = GetNode<TemporaryCharacterExaminationFlowController>(
@@ -122,6 +131,8 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
             || !ReferenceEquals(completed.Request, speakingActivity.Request)
             || !ReferenceEquals(completed.Response, speakingActivity.Response)
             || !ReferenceEquals(completed.State, CharacterTurnActivityState.Completed)
+            || budgetController.Budget is not
+            { CompletedTurnCount: 1, MaximumTurnCount: 2, HasPlayerInterrupted: false }
             || spokenTranscript is not { Entries.Count: 2 }
             || transcriptController.Transcript is not { Entries.Count: 4 } completedTranscript
             || !ReferenceEquals(completedTranscript.Entries[0], spokenTranscript.Entries[0])
@@ -141,7 +152,8 @@ public partial class CharacterTurnCompletionFlowSmokeCheck : Node
         GD.Print(
             "Character-turn completion flow smoke passed: the exact speaking activity remained "
             + "cancellable for one frame, completed only after its exact speech occurrence, "
-            + "retained its request and response, and completed exact examination and collection.");
+            + "retained its request and response, advanced its autonomous budget once, and "
+            + "completed exact examination and collection.");
         GetTree().Quit();
     }
 

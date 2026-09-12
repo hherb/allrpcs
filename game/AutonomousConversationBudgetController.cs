@@ -1,4 +1,6 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -33,6 +35,121 @@ public partial class AutonomousConversationBudgetController : Node
         }
 
         Budget = AutonomousConversationBudgetTransition.RecordCompletedTurn(budget);
+        return true;
+    }
+
+    /// <summary>Starts one exact selected follow-up while this budget and the turn slot allow it.</summary>
+    internal bool TryStartFollowUp(
+        CharacterTurnActivityController turnController,
+        CharacterTurnParticipationDecision decision,
+        CharacterTurnRequest request)
+    {
+        ArgumentNullException.ThrowIfNull(turnController);
+        ArgumentNullException.ThrowIfNull(decision);
+        ArgumentNullException.ThrowIfNull(request);
+
+        AutonomousConversationBudget? budget = Budget;
+        if (budget is null
+            || !AutonomousConversationTurnStartPolicy.CanStart(
+                budget,
+                decision,
+                request,
+                turnController.Activity))
+        {
+            return false;
+        }
+
+        return turnController.TryStart(request);
+    }
+
+    /// <summary>Creates and starts one selected follow-up from the exact heard dialogue event.</summary>
+    internal bool TryCreateAndStartFollowUp(
+        CharacterTurnActivityController turnController,
+        CharacterTurnParticipationDecision decision,
+        DialogueEvent dialogueEvent,
+        DialogueActType dialogueActType)
+    {
+        ArgumentNullException.ThrowIfNull(turnController);
+        ArgumentNullException.ThrowIfNull(decision);
+        ArgumentNullException.ThrowIfNull(dialogueEvent);
+        ArgumentNullException.ThrowIfNull(dialogueActType);
+
+        bool isSpeakingDecision = decision.Kind == CharacterTurnParticipationKind.Respond
+            || decision.Kind == CharacterTurnParticipationKind.Interject;
+        if (!isSpeakingDecision
+            || !dialogueEvent.Audience.ListenerCharacterIds.Contains(
+                decision.ScheduledCharacterId))
+        {
+            return false;
+        }
+
+        CharacterTurnRequest request =
+            AutonomousConversationFollowUpRequestTransition.Create(
+                decision,
+                dialogueEvent,
+                dialogueActType);
+        return TryStartFollowUp(turnController, decision, request);
+    }
+
+    /// <summary>Validates a complete round and starts its exact selected heard-event follow-up.</summary>
+    public bool TrySelectAndStartFollowUp(
+        CharacterTurnActivityController turnController,
+        IEnumerable<Character> scheduledCharacters,
+        IEnumerable<CharacterTurnParticipationDecision> decisions,
+        IEnumerable<CharacterId> directlyAddressedCharacterIds,
+        DialogueEvent dialogueEvent,
+        DialogueActType dialogueActType)
+    {
+        ArgumentNullException.ThrowIfNull(turnController);
+        ArgumentNullException.ThrowIfNull(scheduledCharacters);
+        ArgumentNullException.ThrowIfNull(decisions);
+        ArgumentNullException.ThrowIfNull(directlyAddressedCharacterIds);
+        ArgumentNullException.ThrowIfNull(dialogueEvent);
+        ArgumentNullException.ThrowIfNull(dialogueActType);
+
+        AutonomousConversationBudget? budget = Budget;
+        if (budget is null)
+        {
+            return false;
+        }
+
+        CharacterTurnParticipationDecision? selected =
+            AutonomousConversationParticipationPolicy.SelectNext(
+                budget,
+                scheduledCharacters,
+                decisions,
+                directlyAddressedCharacterIds);
+        return selected is not null
+            && TryCreateAndStartFollowUp(
+                turnController,
+                selected,
+                dialogueEvent,
+                dialogueActType);
+    }
+
+    /// <summary>Completes one speaking turn and advances this budget as one scene operation.</summary>
+    public bool TryCompleteTurn(CharacterTurnActivityController turnController)
+    {
+        ArgumentNullException.ThrowIfNull(turnController);
+
+        AutonomousConversationBudget? budget = Budget;
+        CharacterTurnActivity? activity = turnController.Activity;
+        if (budget is null
+            || activity is null
+            || !AutonomousConversationContinuationPolicy.CanContinue(budget)
+            || !CharacterTurnCompletionPolicy.CanComplete(activity))
+        {
+            return false;
+        }
+
+        AutonomousConversationTurnCompletionResult result =
+            AutonomousConversationTurnCompletionTransition.Complete(budget, activity);
+        if (!turnController.TryInstallAutonomousCompletion(activity, result.Activity))
+        {
+            return false;
+        }
+
+        Budget = result.Budget;
         return true;
     }
 

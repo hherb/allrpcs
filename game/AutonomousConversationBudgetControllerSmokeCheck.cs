@@ -1,4 +1,6 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -22,7 +24,8 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
                 "../AutonomousConversationBudgetController");
         AutonomousConversationBudget original = new(0, 2, false);
 
-        if (controller.Budget is not null
+        if (!ExercisesAutonomousTurnCoordination()
+            || controller.Budget is not null
             || !RejectsNullInitialization(controller)
             || !controller.TryInitialize(original)
             || !ReferenceEquals(controller.Budget, original)
@@ -60,8 +63,204 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
 
         GD.Print(
             "Autonomous-conversation budget controller smoke passed: exact one-time ownership, "
-            + "immutable completion, monotonic interruption, and fail-closed repeated operations.");
+            + "exact follow-up creation/start, atomic completion, monotonic interruption, and "
+            + "fail-closed repeated operations.");
         GetTree().Quit();
+    }
+
+    private static bool ExercisesAutonomousTurnCoordination()
+    {
+        AutonomousConversationBudgetController controller = new();
+        CharacterTurnActivityController turnController = new();
+        AutonomousConversationBudget originalBudget = new(0, 2, false);
+        Character sage = RepresentativeSageCharacterSource.Create();
+        CharacterId responder = sage.Identity.Id;
+        CharacterTurnParticipationDecision decision = new(
+            responder,
+            CharacterTurnParticipationKind.Respond,
+            null);
+        CharacterTurnRequest request = CreateRequest(responder);
+
+        if (!controller.TryInitialize(originalBudget)
+            || !controller.TryStartFollowUp(turnController, decision, request)
+            || turnController.Activity is not { } awaiting
+            || !ReferenceEquals(awaiting.Request, request)
+            || !ReferenceEquals(awaiting.State, CharacterTurnActivityState.AwaitingResponse)
+            || !ReferenceEquals(controller.Budget, originalBudget)
+            || controller.TryStartFollowUp(turnController, decision, request))
+        {
+            controller.Free();
+            turnController.Free();
+            return false;
+        }
+
+        CharacterTurnResponse response = new(
+            request,
+            CharacterTurnDisposition.Accept,
+            new DialogueUtterance(responder, "The evidence supports another question."),
+            new CharacterIntention(CharacterIntentionType.Wait, null),
+            [],
+            []);
+        if (!turnController.TryReceiveResponse(response)
+            || !controller.TryCompleteTurn(turnController)
+            || turnController.Activity is not { } completed
+            || !ReferenceEquals(completed.Request, request)
+            || !ReferenceEquals(completed.Response, response)
+            || !ReferenceEquals(completed.State, CharacterTurnActivityState.Completed)
+            || controller.Budget is not { CompletedTurnCount: 1 } advanced
+            || ReferenceEquals(advanced, originalBudget)
+            || !StartsOnlyAnEligibleFollowUp(
+                controller,
+                turnController,
+                sage,
+                decision,
+                completed,
+                advanced)
+            || !controller.TryInterrupt()
+            || controller.TryCompleteTurn(turnController)
+            || controller.TryStartFollowUp(turnController, decision, request))
+        {
+            controller.Free();
+            turnController.Free();
+            return false;
+        }
+
+        bool result = RejectsCoordinationNulls(controller, turnController, decision, request);
+        controller.Free();
+        turnController.Free();
+        return result;
+    }
+
+    private static bool StartsOnlyAnEligibleFollowUp(
+        AutonomousConversationBudgetController controller,
+        CharacterTurnActivityController turnController,
+        Character scheduledCharacter,
+        CharacterTurnParticipationDecision decision,
+        CharacterTurnActivity completed,
+        AutonomousConversationBudget advancedBudget)
+    {
+        CharacterId responder = decision.ScheduledCharacterId;
+        DialogueUtterance utterance = new(
+            new CharacterId("travelling-healer"),
+            "The observed leaves support another question.");
+        DialogueEvent heardEvent = new(
+            utterance,
+            new DialogueAudienceSnapshot(
+                utterance.SpeakerCharacterId,
+                [new CharacterId(responder.Value)]));
+        CharacterTurnParticipationDecision silence = new(
+            responder,
+            CharacterTurnParticipationKind.RemainSilent,
+            new Allrpcs.Domain.Characters.CharacterGoal(
+                "compare-evidence",
+                "Compare the available evidence."));
+        DialogueEvent unheardEvent = new(
+            utterance,
+            new DialogueAudienceSnapshot(
+                utterance.SpeakerCharacterId,
+                [new CharacterId("woodland-hermit")]));
+
+        if (controller.TryCreateAndStartFollowUp(
+                turnController,
+                silence,
+                heardEvent,
+                DialogueActType.ReportedClaim)
+            || controller.TryCreateAndStartFollowUp(
+                turnController,
+                decision,
+                unheardEvent,
+                DialogueActType.ReportedClaim)
+            || !ReferenceEquals(turnController.Activity, completed)
+            || !controller.TrySelectAndStartFollowUp(
+                turnController,
+                [scheduledCharacter],
+                [decision],
+                [new CharacterId(responder.Value)],
+                heardEvent,
+                DialogueActType.ReportedClaim)
+            || turnController.Activity is not { } awaitingFollowUp)
+        {
+            return false;
+        }
+
+        return ReferenceEquals(awaitingFollowUp.State, CharacterTurnActivityState.AwaitingResponse)
+            && ReferenceEquals(awaitingFollowUp.Request.RespondingCharacterId, responder)
+            && ReferenceEquals(awaitingFollowUp.Request.DialogueEvent, heardEvent)
+            && ReferenceEquals(
+                awaitingFollowUp.Request.DialogueAct.Utterance,
+                heardEvent.Utterance)
+            && ReferenceEquals(
+                awaitingFollowUp.Request.DialogueAct.Type,
+                DialogueActType.ReportedClaim)
+            && ReferenceEquals(scheduledCharacter.Identity.Id, responder)
+            && ReferenceEquals(controller.Budget, advancedBudget)
+            && advancedBudget.CompletedTurnCount == 1;
+    }
+
+    private static bool RejectsCoordinationNulls(
+        AutonomousConversationBudgetController controller,
+        CharacterTurnActivityController turnController,
+        CharacterTurnParticipationDecision decision,
+        CharacterTurnRequest request)
+    {
+        return ThrowsArgumentNull(() => controller.TryStartFollowUp(null!, decision, request))
+            && ThrowsArgumentNull(
+                () => controller.TryStartFollowUp(turnController, null!, request))
+            && ThrowsArgumentNull(
+                () => controller.TryStartFollowUp(turnController, decision, null!))
+            && ThrowsArgumentNull(
+                () => controller.TryCreateAndStartFollowUp(
+                    null!,
+                    decision,
+                    request.DialogueEvent,
+                    DialogueActType.Question))
+            && ThrowsArgumentNull(
+                () => controller.TryCreateAndStartFollowUp(
+                    turnController,
+                    null!,
+                    request.DialogueEvent,
+                    DialogueActType.Question))
+            && ThrowsArgumentNull(
+                () => controller.TryCreateAndStartFollowUp(
+                    turnController,
+                    decision,
+                    null!,
+                    DialogueActType.Question))
+            && ThrowsArgumentNull(
+                () => controller.TryCreateAndStartFollowUp(
+                    turnController,
+                    decision,
+                    request.DialogueEvent,
+                    null!))
+            && ThrowsArgumentNull(
+                () => controller.TrySelectAndStartFollowUp(
+                    null!,
+                    [],
+                    [],
+                    [],
+                    request.DialogueEvent,
+                    DialogueActType.Question))
+            && ThrowsArgumentNull(
+                () => controller.TrySelectAndStartFollowUp(
+                    turnController,
+                    null!,
+                    [],
+                    [],
+                    request.DialogueEvent,
+                    DialogueActType.Question))
+            && ThrowsArgumentNull(() => controller.TryCompleteTurn(null!));
+    }
+
+    private static CharacterTurnRequest CreateRequest(CharacterId responder)
+    {
+        DialogueUtterance utterance = new(new CharacterId("seeker"), "What follows?");
+        DialogueEvent dialogueEvent = new(
+            utterance,
+            new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [responder]));
+        return new CharacterTurnRequest(
+            responder,
+            dialogueEvent,
+            new DialogueAct(utterance, DialogueActType.Question));
     }
 
     private static bool RejectsNullInitialization(
@@ -74,6 +273,20 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
         catch (ArgumentNullException)
         {
             return controller.Budget is null;
+        }
+
+        return false;
+    }
+
+    private static bool ThrowsArgumentNull(Action action)
+    {
+        try
+        {
+            action();
+        }
+        catch (ArgumentNullException)
+        {
+            return true;
         }
 
         return false;
@@ -98,7 +311,13 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
             && property.PropertyType == typeof(AutonomousConversationBudget)
             && property.SetMethod?.IsPrivate == true
             && methods.Select(method => method.Name).SequenceEqual(
-                ["TryInitialize", "TryInterrupt", "TryRecordCompletedTurn"]);
+                [
+                    "TryCompleteTurn",
+                    "TryInitialize",
+                    "TryInterrupt",
+                    "TryRecordCompletedTurn",
+                    "TrySelectAndStartFollowUp",
+                ]);
     }
 
     private static T AssertSingle<T>(IReadOnlyList<T> entries) => entries.Count == 1
