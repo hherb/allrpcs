@@ -22,6 +22,8 @@ follow-up selection/start/completion; multi-character scene hearing/address auth
 whispering/private conversations; independent tasks; sabotage; Phase 8 work; release; signing; or
 distribution.
 
+Draft PR #212 contains this work and is mergeable at `08ac3f6`.
+
 ## Validation and review
 
 - test-first game builds failed on each missing scene type before implementation;
@@ -42,8 +44,10 @@ distribution.
   precedence, timeout/failure classification, provider-detail non-retention, and scope review pass.
 
 Restricted execution reproduced the known Godot `user://logs` failure before product code loaded;
-the identical focused smokes passed host-local. PR #211 is verified merged at `20044f7`. Its hosted
-job state has not been reused as evidence for this branch.
+the identical focused smokes passed host-local. PR #211 is verified merged at `20044f7`. All five
+hosted jobs on draft PR #212 failed with `steps: []`, unchanged Actions account-budget
+infrastructure state rather than product-test evidence; do not retry or dispatch hosted workflows
+unless that condition changes.
 
 ## Exact next bounded slice
 
