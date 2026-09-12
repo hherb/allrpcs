@@ -50,8 +50,9 @@ localhost-bind restriction; the identical host-local commands passed. An earlier
 all builds and tests, then its unchanged scenario-validator apphost stalled in macOS `_dyld_start`
 before managed code; the exact built validator DLL passed through `dotnet exec`, followed by the
 complete smoke script and graphical launch. Hosted jobs for recent PRs still had `steps: []` under
-the Actions account-budget condition, so classify that as infrastructure/account state and do not
-retry or dispatch those jobs unless the condition changes.
+the Actions account-budget condition. Draft PR #206 triggered run `34663656361` at handover commit
+`9d3a78f`; all five jobs completed with `steps: []` under that same infrastructure/account
+condition. Do not retry or dispatch those jobs unless the condition changes.
 
 ## Exact next bounded slice
 
