@@ -313,6 +313,7 @@ Acceptance:
     listener.
   - [x] Validate a participation decision against the exact consideration request and authored
     character state.
+  - [x] Preflight and create a complete bounded round of stable consideration requests.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
