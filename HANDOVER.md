@@ -5,6 +5,9 @@
 `main` contains merged PR #213 at `adaa79c`. The current branch is
 `codex/phase-7-ordinary-participation-launch`.
 
+Draft PR #214 is open and mergeable at `70e5b5f`. Its five hosted jobs failed immediately with
+`steps: []`, confirming the unchanged Actions/account infrastructure condition.
+
 This branch completes three bounded Phase 7 slices:
 
 - a scene coordinator preflights one exact directly addressed LLM listener before
