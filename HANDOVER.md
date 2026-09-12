@@ -2,65 +2,62 @@
 
 ## Current state
 
-`main` contains merged PR #202 at `365f937`. The current branch is
-`codex/phase-7-hermit-roles`.
+`main` contains merged PR #203 at `1578c75`. The current branch is
+`codex/phase-7-participation`.
 
-This branch completes the first five Phase 7 roadmap items:
+This branch completes three bounded Phase 7 participation foundations:
 
-- `RepresentativeHermitCharacterSource` creates exactly two fresh read-only, stable-order
-  LLM-controlled hermits with distinct private backgrounds, knowledge, beliefs, and goals;
-- `RepresentativeSageCharacterSource` creates a bounded evidence-comparison and
-  assumption-challenging consultant with explicit non-omniscience limits;
-- `RepresentativeEnemyAgentCharacterSource` creates a covert role with a private national
-  objective, bounded capabilities and limits, competing goals, and a possible allegiance-change
-  belief without adding allegiance mechanics;
-- `RepresentativeInfectedCharacterSource` creates exactly two fresh stable-order dormant roles
-  with distinct latent state and no disease or wake-up mechanics;
-- `CharacterTurnSpeakerSchedulingPolicy` places value-equal directly addressed eligible speakers
-  first, preserves stable eligible order and exact eligible instances, and returns an independent
-  read-only schedule.
+- `CharacterTurnParticipationKind` defines exactly `respond`, `interject`, and
+  `remain-silent` canonical singleton values in stable order;
+- `CharacterTurnParticipationDecision` retains an exact scheduled character, exact kind, and the
+  exact existing authored-goal motive required for interjection or meaningful silence;
+- `CharacterTurnParticipationDecisionPolicy` accepts only exact character and goal instances,
+  direct-address responses, non-addressed interjections, and either addressed or non-addressed
+  meaningful silence;
+- `CharacterTurnParticipationSelectionPolicy` returns the exact first response or interjection
+  from at most 32 distinct already-accepted decisions in scheduled order, or no selection when all
+  characters remain silent.
 
-The branch does not add scene nodes, provider calls, generation, dialogue participation decisions,
-interjections, silence policy, multi-turn loops, autonomous actions, sabotage, disease or controller
-transitions, UI, persistence, Phase 8 work, release, signing, or distribution.
-
-Draft PR #203 contains this work.
+The combined roadmap item remains open because this branch does not generate or infer decisions,
+inspect dialogue text, invoke models, start or cancel turns, integrate the ordinary scene, change
+player interruption, add interjection frequency or conversation-loop bounds, perform actions,
+mutate goals, add UI or persistence, start Phase 8, release, sign, or distribute.
 
 ## Validation and review
 
 - final host-local `./scripts/quality.sh` passed cleanly:
   - workflow validation, restore, formatting, and zero-warning solution build passed
-  - 1,951 Domain, 402 Application, 447 Infrastructure, and 8 architecture tests passed
+  - 1,978 Domain, 402 Application, 447 Infrastructure, and 8 architecture tests passed
   - the representative discovery scenario validated 5 evidence definitions
   - all credential-free Godot smokes and the bounded Compatibility-renderer launch passed
-- focused tests passed for the hermits (3), sage (2), enemy agent (3), infected roles (3), and
-  speaker scheduling (5)
-- test-first missing-source failures were observed before each implementation
-- `git diff --check`, practical 500-line/120-character limits, exact-identity, stable-order,
-  immutable-collection, bounded-input, public/private-state, declarative-role, network-free, and
-  scope review passed
+- 27 focused participation tests passed
+- test-first missing-type failures were observed before each implementation slice
+- `git diff --check`, practical 500-line/120-character limits, closed-vocabulary, exact-identity,
+  authored-goal, direct-address, stable-order, bounded-input, network-free, and scope review passed
 
-The restricted full quality run reproduced the known VSTest localhost-bind restriction after its
-zero-warning build; the identical host-local command passed. Hosted jobs for recent PRs still had
-`steps: []` under the Actions account-budget condition, so do not retry or dispatch them unless
-that condition changes.
+The restricted full quality run completed its zero-warning build and reproduced the known VSTest
+localhost-bind restriction. The identical host-local command passed. Hosted jobs for recent PRs
+still had `steps: []` under the Actions account-budget condition, so do not retry or dispatch them
+unless that condition changes.
 
 ## Exact next bounded slice
 
-Take **Phase 7f: pure character-turn participation decisions**.
+Take **Phase 7i: explicit bounded autonomous-conversation budget**.
 
 Acceptance boundary:
 
-1. Add one closed canonical participation kind with exactly `respond`, `interject`, and
-   `remain-silent` singleton values in that stable order.
-2. Add one immutable decision retaining an exact scheduled `CharacterId`, exact participation
-   kind, and an optional exact existing `CharacterGoal` motive. Require a motive for `interject`
-   and `remain-silent`; require no motive for `respond`.
-3. Add focused Domain tests for canonical parsing and identity, exact-instance retention,
-   invalid kind/motive combinations, null rejection, and the smallest public API surface.
-4. Do not select decisions, inspect text, invoke models, schedule or start turns, integrate scenes,
-   alter the existing cancellation path, add interjection frequency or loop bounds, perform
-   actions, mutate goals, or add UI/persistence/provider behavior.
+1. Add one immutable Domain budget retaining a nonnegative completed character-turn count, a
+   positive configured maximum no larger than the existing 16-turn recent-conversation window, and
+   whether the player has interrupted the chain.
+2. Add pure policy and transition seams that allow one further character turn only below the
+   configured maximum and before interruption, increment exactly once after a completed turn, and
+   make interruption monotonic.
+3. Add focused Domain tests for zero/start/exhausted/interrupted states, the exact upper bound,
+   invalid counts, immutable transition results, repeated interruption, null rejection, and the
+   smallest public API surface.
+4. Do not loop, schedule speakers, create participation decisions, invoke a model, start/cancel a
+   character-turn activity, wire player input or scenes, alter recent-conversation retention, add
+   timeouts/retries, perform actions, or add UI/persistence/provider behavior.
 
-Leave the combined roadmap item for motivated interjections, meaningful silence, and player
-interruption unticked until the later selection and ordinary-flow integration are complete.
+Leave both the combined participation/player-interruption roadmap item and the unbounded-loop item
+unticked until their later ordinary-flow integrations are complete.
