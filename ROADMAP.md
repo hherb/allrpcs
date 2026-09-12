@@ -318,11 +318,15 @@ Acceptance:
   - [x] Retain one complete bounded result round with exact request and event alignment.
   - [x] Define one provider-neutral cancellation-aware participation decision interface.
   - [x] Obtain and validate one complete participation decision round through that interface.
+  - [x] Budget-gate and scene-start the exact selected result from a complete consideration round.
+  - [x] Strictly decode participation decision JSON against exact character state and addressing.
+  - [x] Serialize one bounded strict OpenAI Responses participation decision request.
   - [ ] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
     flow.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
   - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
-  - [x] Gate complete-round autonomous speaker selection on the exact conversation budget.
+  - [x] Gate complete-round and complete-result autonomous selection on the exact conversation
+    budget.
   - [x] Gate exact selected follow-up starts and atomically complete turns with one budget advance.
   - [x] Close an initialized ordinary completion/cancellation path at its bound or interruption.
   - [ ] Initialize and drive every ordinary autonomous chain through these bounded seams.

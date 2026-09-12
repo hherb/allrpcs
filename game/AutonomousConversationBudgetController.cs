@@ -127,6 +127,32 @@ public partial class AutonomousConversationBudgetController : Node
                 dialogueActType);
     }
 
+    /// <summary>Starts the exact selected follow-up from one complete consideration round.</summary>
+    public bool TrySelectAndStartFollowUp(
+        CharacterTurnActivityController turnController,
+        CharacterTurnParticipationConsiderationRoundResult round,
+        DialogueActType dialogueActType)
+    {
+        ArgumentNullException.ThrowIfNull(turnController);
+        ArgumentNullException.ThrowIfNull(round);
+        ArgumentNullException.ThrowIfNull(dialogueActType);
+
+        AutonomousConversationBudget? budget = Budget;
+        if (budget is null)
+        {
+            return false;
+        }
+
+        CharacterTurnParticipationConsiderationResult? selected =
+            AutonomousConversationConsiderationSelectionPolicy.SelectNext(budget, round);
+        return selected is not null
+            && TryCreateAndStartFollowUp(
+                turnController,
+                selected.Decision,
+                selected.Request.HeardDialogueEvent,
+                dialogueActType);
+    }
+
     /// <summary>Completes one speaking turn and advances this budget as one scene operation.</summary>
     public bool TryCompleteTurn(CharacterTurnActivityController turnController)
     {
