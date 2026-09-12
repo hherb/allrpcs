@@ -136,6 +136,10 @@
 [ext_resource type="Script" path="res://FirstPatientSaveStateCaptureSmokeCheck.cs" id="134_first_patient_save_state_capture_check"]
 [ext_resource type="Script" path="res://AutonomousConversationBudgetController.cs" id="135_autonomous_conversation_budget_controller"]
 [ext_resource type="Script" path="res://AutonomousConversationBudgetControllerSmokeCheck.cs" id="136_autonomous_conversation_budget_controller_check"]
+[ext_resource type="Script" path="res://CharacterTurnParticipationRoundTaskController.cs" id="137_participation_round_task_controller"]
+[ext_resource type="Script" path="res://CharacterTurnParticipationRoundTaskControllerSmokeCheck.cs" id="138_participation_round_task_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnParticipationModelSource.cs" id="139_participation_model_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterTurnParticipationModelSourceSmokeCheck.cs" id="140_participation_model_source_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -535,6 +539,12 @@ script = ExtResource("87_character_action_controller")
 [node name="AutonomousConversationBudgetController" type="Node" parent="."]
 script = ExtResource("135_autonomous_conversation_budget_controller")
 
+[node name="CharacterTurnParticipationRoundTaskController" type="Node" parent="."]
+script = ExtResource("137_participation_round_task_controller")
+
+[node name="TemporaryCharacterTurnParticipationModelSource" type="Node" parent="."]
+script = ExtResource("139_participation_model_source")
+
 [node name="TemporaryCharacterTurnRequestSource" type="Node" parent="."]
 script = ExtResource("73_character_turn_request_source")
 
@@ -663,6 +673,12 @@ script = ExtResource("88_character_action_controller_check")
 
 [node name="AutonomousConversationBudgetControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("136_autonomous_conversation_budget_controller_check")
+
+[node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("138_participation_round_task_check")
+
+[node name="TemporaryCharacterTurnParticipationModelSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("140_participation_model_source_check")
 
 [node name="CharacterTurnResponseFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("77_character_turn_response_flow_check")

@@ -686,7 +686,14 @@ credential, posts that stateless request to the exact validated Responses endpoi
 success response, preserves caller cancellation, and redacts transport and rejected-response
 details. These contracts do not generate or infer motives or addresses, define local Chat
 Completions, Anthropic, or Ollama participation dialects, retry participation decisions, initialize
-an autonomous chain, integrate the ordinary scene flow, or alter player interruption behavior.
+an autonomous chain, integrate the ordinary scene flow, or alter player interruption behavior. A
+focused Godot task controller owns at most one complete participation-decision round, applies its
+result only from the main-thread process callback, and exposes closed idle, running, completed,
+caller-cancelled, timed-out, and failed states without partial decisions or failure details. One
+temporary scene source supplies an exact caller-owned participation model once, then returns one
+stable fail-closed offline model until a later provider-composition slice replaces that seam. The
+controller and source do not read settings or credentials, send network requests, retry, select or
+start a follow-up, advance a budget, or mutate dialogue, transcript, world, or presentation state.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
