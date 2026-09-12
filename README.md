@@ -669,18 +669,24 @@ scheduled character identifiers and one shared exact heard event, and exposes in
 collections. A one-method provider-neutral Application interface obtains a cancellation-aware
 decision for one exact request. Its bounded controller delegates complete request preflight to the
 Domain transition before any invocation, calls the interface once per request in stable order, and
-returns only the validated complete result round. A pure budget-gated selection policy delegates
-speaker choice over that round's exact accepted decisions and returns the exact aligned result. The
-scene budget controller can start a follow-up using that result's exact decision and heard event
-without advancing the budget before completion. A strict bounded JSON decoder reconstructs a
-participation decision with the exact scheduled-character identifier and exact matching authored
-goal, then reapplies the consideration policy. The OpenAI Responses participation serializer sends
-the heard utterance as untrusted in-world dialogue, supplies bounded exact character identity,
-background, goals, and direct-address context, and requests a closed two-property decision schema
-without credentials or retained provider state. These contracts do not generate or infer motives or
-addresses, complete an OpenAI streaming decision, define Anthropic or Ollama participation request
-dialects, define a provider adapter, retry or impose a timeout, initialize an autonomous chain,
-integrate the ordinary scene flow, or alter player interruption behavior.
+returns only the validated complete result round. Its deadline overload applies one positive finite
+deadline across that complete sequential round, returns no partial result on expiry, and preserves
+caller cancellation distinctly from timeout without retrying. A pure budget-gated selection policy
+delegates speaker choice over that round's exact accepted decisions and returns the exact aligned
+result. The scene budget controller can start a follow-up using that result's exact decision and
+heard event without advancing the budget before completion. A strict bounded JSON decoder
+reconstructs a participation decision with the exact scheduled-character identifier and exact
+matching authored goal, then reapplies the consideration policy. The OpenAI Responses participation
+serializer sends the heard utterance as untrusted in-world dialogue, supplies bounded exact
+character identity, background, goals, and direct-address context, and requests a closed two-
+property decision schema. Its semantic SSE completion accepts one bounded verified output-text
+document followed by successful completion, never exposes deltas as presentation, and returns only
+the exact decoded decision. A caller-composed OpenAI participation adapter loads one immediate
+credential, posts that stateless request to the exact validated Responses endpoint, requires an SSE
+success response, preserves caller cancellation, and redacts transport and rejected-response
+details. These contracts do not generate or infer motives or addresses, define local Chat
+Completions, Anthropic, or Ollama participation dialects, retry participation decisions, initialize
+an autonomous chain, integrate the ordinary scene flow, or alter player interruption behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
