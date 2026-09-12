@@ -5,6 +5,9 @@
 `main` contains merged PR #212 at `3a1f3c4`. The current branch is
 `codex/phase-7-participation-bindings`.
 
+Draft PR #213 is open and mergeable at `50a21df`; its five hosted jobs were queued when last
+queried.
+
 This branch completes four bounded Phase 7 slices:
 
 - immutable Application participation-model bindings, a non-empty three-provider-bounded snapshot,
