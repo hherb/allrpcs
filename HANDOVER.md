@@ -45,9 +45,10 @@ Draft PR #208 contains this work.
   and scope review pass.
 
 Restricted VSTest reproduced the known localhost-bind denial; the identical focused commands and
-full quality spine passed host-local. The most recent known hosted jobs still had `steps: []` under
-the Actions account-budget condition. Treat any unchanged empty-step jobs as infrastructure rather
-than test evidence and do not retry or dispatch them.
+full quality spine passed host-local. Draft PR #208 triggered run `34682049081`; all five jobs
+completed with `steps: []` without executing checkout or test steps under the continuing Actions
+account-budget condition. Treat them as infrastructure rather than test evidence and do not retry or
+dispatch them.
 
 ## Exact next bounded slice
 
