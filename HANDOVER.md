@@ -2,61 +2,65 @@
 
 ## Current state
 
-`main` contains merged PR #201 at `f3ea7b9`. The current branch is
-`codex/phase-6-first-patient-restoration`.
+`main` contains merged PR #202 at `365f937`. The current branch is
+`codex/phase-7-hermit-roles`.
 
-This branch completes the remaining Phase 6 persistence work:
+This branch completes the first five Phase 7 roadmap items:
 
-- pure first-patient restoration preflight rejects any saved disease, infection, preparation
-  recipe, ingredient, ordered step, quantity unit, patient administration, or experiment event
-  that cannot resolve compatibly against the exact authored treatment context and world events;
-- successful preflight returns a fresh immutable graph rebound to exact authored disease,
-  character, recipe, plan, step, ingredient, quantity, and event instances while preserving saved
-  order, dynamic disease/care state, quantities, observations, and journal text;
-- schema versions 1 and 2 migrate in order to version 3 using caller-owned initial first-patient
-  state, while an existing version-3 document remains unchanged;
-- the complete root policy preflights discovery, world events, memory, and first-patient state
-  before scene controllers atomically install the rebound graph;
-- live capture, canonical JSON, and local storage now carry complete version-3 first-patient state,
-  including shared preparation and event references across remaining batches and both journals.
+- `RepresentativeHermitCharacterSource` creates exactly two fresh read-only, stable-order
+  LLM-controlled hermits with distinct private backgrounds, knowledge, beliefs, and goals;
+- `RepresentativeSageCharacterSource` creates a bounded evidence-comparison and
+  assumption-challenging consultant with explicit non-omniscience limits;
+- `RepresentativeEnemyAgentCharacterSource` creates a covert role with a private national
+  objective, bounded capabilities and limits, competing goals, and a possible allegiance-change
+  belief without adding allegiance mechanics;
+- `RepresentativeInfectedCharacterSource` creates exactly two fresh stable-order dormant roles
+  with distinct latent state and no disease or wake-up mechanics;
+- `CharacterTurnSpeakerSchedulingPolicy` places value-equal directly addressed eligible speakers
+  first, preserves stable eligible order and exact eligible instances, and returns an independent
+  read-only schedule.
 
-The final Phase 6 roadmap item is complete. This branch does not add Phase 7 roles or scheduling,
-new UI, autosave or startup loading, save slots, provider calls, releases, signing, or distribution.
+The branch does not add scene nodes, provider calls, generation, dialogue participation decisions,
+interjections, silence policy, multi-turn loops, autonomous actions, sabotage, disease or controller
+transitions, UI, persistence, Phase 8 work, release, signing, or distribution.
 
-Draft PR #202 contains this work.
+Draft PR #203 contains this work.
 
 ## Validation and review
 
-- `./scripts/quality.sh` passed cleanly:
+- final host-local `./scripts/quality.sh` passed cleanly:
   - workflow validation, restore, formatting, and zero-warning solution build passed
-  - 1,935 Domain, 402 Application, 447 Infrastructure, and 8 architecture tests passed
+  - 1,951 Domain, 402 Application, 447 Infrastructure, and 8 architecture tests passed
   - the representative discovery scenario validated 5 evidence definitions
-  - all 82 credential-free Godot smokes passed, including populated first-patient JSON restoration
-  - the bounded 60-frame Compatibility-renderer launch passed
-- focused restoration/load-policy and JSON migration tests passed (25 Domain and 22 Infrastructure)
+  - all credential-free Godot smokes and the bounded Compatibility-renderer launch passed
+- focused tests passed for the hermits (3), sage (2), enemy agent (3), infected roles (3), and
+  speaker scheduling (5)
+- test-first missing-source failures were observed before each implementation
 - `git diff --check`, practical 500-line/120-character limits, exact-identity, stable-order,
-  no-silent-discard, strict-input, atomic-installation, credential-free, and network-free review passed
+  immutable-collection, bounded-input, public/private-state, declarative-role, network-free, and
+  scope review passed
 
-The restricted focused VSTest run reproduced the known localhost-bind restriction; the identical
-host-local command passed. A restricted Godot smoke reproduced the known `user://logs` failure; the
-identical host-local command passed. Hosted jobs for recent PRs still had `steps: []` under the
-Actions account-budget condition, so do not retry or dispatch them unless that condition changes.
-Draft PR #202 automatically triggered run `34656714930` at implementation commit `bb2b46f`; all
-five jobs completed with `steps: []` under that same infrastructure/account condition.
+The restricted full quality run reproduced the known VSTest localhost-bind restriction after its
+zero-warning build; the identical host-local command passed. Hosted jobs for recent PRs still had
+`steps: []` under the Actions account-budget condition, so do not retry or dispatch them unless
+that condition changes.
 
 ## Exact next bounded slice
 
-Take **Phase 7a: pure representative hermit character definitions**.
+Take **Phase 7f: pure character-turn participation decisions**.
 
 Acceptance boundary:
 
-1. Add one pure Domain source that creates exactly two fresh immutable hermit `Character` values in
-   stable order with distinct canonical identities and exact LLM controller assignments.
-2. Give each hermit a distinct non-empty private background, private knowledge identity, and motive
-   represented by existing goal/belief vocabulary; prove neither hermit's private state appears in
-   the other's composition.
-3. Add focused Domain tests for exact internal identity alignment, stable order, distinct private
-   knowledge and motives, fresh repeated compositions, and the smallest public API surface.
-4. Do not add Godot nodes, dialogue scheduling, model generation, provider calls, new character
-   vocabulary, autonomous actions, sabotage, UI, persistence changes, Phase 8 work, release, or
-   distribution.
+1. Add one closed canonical participation kind with exactly `respond`, `interject`, and
+   `remain-silent` singleton values in that stable order.
+2. Add one immutable decision retaining an exact scheduled `CharacterId`, exact participation
+   kind, and an optional exact existing `CharacterGoal` motive. Require a motive for `interject`
+   and `remain-silent`; require no motive for `respond`.
+3. Add focused Domain tests for canonical parsing and identity, exact-instance retention,
+   invalid kind/motive combinations, null rejection, and the smallest public API surface.
+4. Do not select decisions, inspect text, invoke models, schedule or start turns, integrate scenes,
+   alter the existing cancellation path, add interjection frequency or loop bounds, perform
+   actions, mutate goals, or add UI/persistence/provider behavior.
+
+Leave the combined roadmap item for motivated interjections, meaningful silence, and player
+interruption unticked until the later selection and ordinary-flow integration are complete.

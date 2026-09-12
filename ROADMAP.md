@@ -297,13 +297,13 @@ Acceptance:
 
 ## Phase 7 — Multiple autonomous roles and fair sabotage
 
-- [ ] Add the two hermit character roles with distinct private knowledge and motives.
-- [ ] Add the sage role as an evidence-comparison and assumption-challenging consultant, not an
+- [x] Add the two hermit character roles with distinct private knowledge and motives.
+- [x] Add the sage role as an evidence-comparison and assumption-challenging consultant, not an
   omniscient hint system.
-- [ ] Add the enemy agent with a private national objective, capabilities, limits, and possible
+- [x] Add the enemy agent with a private national objective, capabilities, limits, and possible
   changes of allegiance.
-- [ ] Add additional infected roles using dormant controllers.
-- [ ] Schedule directly addressed speakers first.
+- [x] Add additional infected roles using dormant controllers.
+- [x] Schedule directly addressed speakers first.
 - [ ] Allow motivated interjections, meaningful silence, and player interruption.
 - [ ] Prevent unbounded LLM-to-LLM conversation loops.
 - [ ] Support whispering and private conversations based on hearing conditions.
