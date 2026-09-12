@@ -662,9 +662,11 @@ transition preflights up to 32 distinct scheduled characters against the same ex
 up to 32 distinct direct-address identifiers before returning one request per character in stable
 order. It uses value-based listener and address membership while retaining every exact character
 and the exact event, returns an independent read-only collection, and permits an empty round. These
-contracts do not generate or infer motives or addresses, assemble model context, invoke models,
-start or cancel turns, impose interjection frequency or conversation-loop bounds, integrate scenes,
-or alter player interruption behavior.
+requests may be paired with a decision only through an immutable result that applies the exact
+consideration gate first and retains both exact inputs. These contracts do not generate or infer
+motives or addresses, assemble model context, invoke models, start or cancel turns, impose
+interjection frequency or conversation-loop bounds, integrate scenes, or alter player interruption
+behavior.
 
 `AutonomousConversationBudget` retains a nonnegative completed-character-turn count, a positive
 configured maximum no greater than the existing 16-turn recent-conversation window, and whether the
