@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3]
+[gd_scene load_steps=140 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -150,6 +150,13 @@
 [ext_resource type="Script" path="res://TemporaryOrdinaryCharacterParticipantSource.cs" id="148_ordinary_character_participant_source"]
 [ext_resource type="Script" path="res://OrdinarySageInterjectionFlowSmokeCheck.cs" id="149_ordinary_sage_interjection_check"]
 [ext_resource type="Script" path="res://OrdinaryBoundedConversationLoopSmokeCheck.cs" id="150_ordinary_bounded_loop_check"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskDepartureController.cs" id="151_independent_task_departure_controller"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskDepartureControllerSmokeCheck.cs" id="152_independent_task_departure_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskSource.cs" id="153_independent_task_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskSourceSmokeCheck.cs" id="154_independent_task_source_check"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskOccurrenceController.cs" id="155_independent_task_occurrence_controller"]
+[ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskOccurrenceSource.cs" id="156_independent_task_occurrence_source"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskOccurrenceControllerSmokeCheck.cs" id="157_independent_task_occurrence_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -522,6 +529,12 @@ script = ExtResource("99_healer_character_source")
 [node name="TemporaryOrdinaryCharacterParticipantSource" type="Node" parent="."]
 script = ExtResource("148_ordinary_character_participant_source")
 
+[node name="TemporaryCharacterIndependentTaskSource" type="Node" parent="."]
+script = ExtResource("153_independent_task_source")
+
+[node name="TemporaryCharacterIndependentTaskOccurrenceSource" type="Node" parent="."]
+script = ExtResource("156_independent_task_occurrence_source")
+
 [node name="TemporaryCharacterModelGenerationInputSource" type="Node" parent="."]
 script = ExtResource("100_model_input_source")
 
@@ -554,6 +567,12 @@ script = ExtResource("87_character_action_controller")
 
 [node name="AutonomousConversationBudgetController" type="Node" parent="."]
 script = ExtResource("135_autonomous_conversation_budget_controller")
+
+[node name="CharacterIndependentTaskDepartureController" type="Node" parent="."]
+script = ExtResource("151_independent_task_departure_controller")
+
+[node name="CharacterIndependentTaskOccurrenceController" type="Node" parent="."]
+script = ExtResource("155_independent_task_occurrence_controller")
 
 [node name="CharacterTurnParticipationRoundTaskController" type="Node" parent="."]
 script = ExtResource("137_participation_round_task_controller")
@@ -695,6 +714,15 @@ script = ExtResource("88_character_action_controller_check")
 
 [node name="AutonomousConversationBudgetControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("136_autonomous_conversation_budget_controller_check")
+
+[node name="CharacterIndependentTaskDepartureControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("152_independent_task_departure_check")
+
+[node name="TemporaryCharacterIndependentTaskSourceSmokeCheck" type="Node" parent="."]
+script = ExtResource("154_independent_task_source_check")
+
+[node name="CharacterIndependentTaskOccurrenceControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("157_independent_task_occurrence_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")

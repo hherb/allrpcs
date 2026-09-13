@@ -793,9 +793,18 @@ only through a physical-action transcript entry retaining its exact assigned cha
 intention plus an existing authoritative eligible world event; the atomic occurrence transition
 returns fresh task, event-log, world-time, and transcript snapshots. A separate bounded party
 snapshot and departure transition atomically start the selected task and remove the same
-value-equal party member without moving any character. These contracts do not source assignments,
-drive scenes or navigation, simulate off-screen time, infer events, call models, or persist task or
-party state.
+value-equal party member without moving any character. A focused Godot controller now owns exact
+task and party snapshots, initializes them once, and starts a departure only from the exact expected
+current pair. The temporary scene source authors one healer herb-patch examination and the exact
+healer-first ordinary party; `Main` installs those snapshots and starts that exact departure without
+moving the healer. A separate authored source binds the resulting exact active task to the existing
+healer examination event and physical-action transcript entry. Its scene controller completes the
+task and installs fresh task, event-log, world-time, and transcript snapshots only when every
+expected current snapshot is still exact. Credential-free smokes prove stable selection,
+same-character separation, stale and ineligible no-ops, exact authoritative completion, and no
+partial installation. Ordinary scene flow does not yet trigger that completion, navigate or hide a
+departing character, simulate off-screen time, rejoin a party member, change dialogue/model context,
+or persist task or party state.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
