@@ -680,6 +680,18 @@ snapshot while retaining unrelated exact identifiers, the exact evidence view, a
 candidate. It does not consume evidence, mutate an object or perception, prove how the character
 discovered the evidence, or add routes, scenes, persistence, or providers.
 
+`CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
+evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
+and install both fresh apply results, or only the fresh recovered concealment while retaining the
+exact evidence snapshot. Stale, value-equal expected snapshots and ineligible operations fail
+without partial installation. `TemporaryCharacterObjectSabotageSource` authors one isolated exact
+enemy concealment candidate with explicit access and empty initial state; the temporary flow
+initializes that state without effect and applies only on an explicit request. Recovery first uses
+the existing perception-to-evidence projection, so unseen evidence cannot recover the target and
+noticed authoritative evidence can. These temporary isolated scene seams do not select timing or
+behavior, change `Main.tscn`, hide or reveal a node, consume evidence, persist state, or invoke a
+provider.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored

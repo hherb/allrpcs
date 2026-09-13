@@ -407,12 +407,18 @@ Acceptance:
     requirements while rejecting non-object action kinds.
   - [x] Bind one eligible object sabotage proposal to its exact authoritative world-object target
     without applying an effect.
+  - [x] Author one exact temporary enemy concealment candidate with explicit physical access,
+    authoritative object state, empty concealment state, and fresh noticed evidence.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
     evidence, without mutating the authoritative object, its position, or any critical route.
   - [x] Recover only the evidence-bound concealed target after a character can see its exact
     authoritative sabotage evidence, preserving unrelated concealment and all source snapshots.
+  - [x] Scene-own exact concealment and evidence snapshots and compare-and-swap eligible apply and
+    recovery results without mutating authoritative inputs.
+  - [x] Run one explicitly requested temporary concealment exactly once and recover it only through
+    the existing perception-to-evidence projection without consuming evidence.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
