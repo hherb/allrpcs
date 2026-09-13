@@ -3,7 +3,13 @@
 ## Current state
 
 `main` contains merged PR #221 at `97bc4cf`. The current branch is
-`codex/phase-7-independent-task-arrival`.
+`codex/phase-7-independent-task-arrival`, with three reviewed implementation commits:
+
+- `e097cea` adds Phase 7by exact completed-travel occurrence eligibility;
+- `2e4e5db` adds Phase 7bz pure atomic final-arrival occurrence composition;
+- `20175d1` adds Phase 7ca exact scene installation of that combined result.
+
+Draft PR #222 is open and mergeable.
 
 Three reviewed slices now close the arrival-to-occurrence boundary:
 
@@ -46,6 +52,8 @@ dialogue/model-context, persistence, or provider policy was added.
   the known `user://logs` crash; the identical focused commands passed host-local.
 - Cumulative `git diff --check` and the practical 120-character authored-code check pass.
 - No live-conformance environment variable was enabled and no provider was invoked.
+- Initial hosted run `34751447169` completed with all five jobs at `steps: []`; it provides no
+  product-test or unsigned-build evidence and should not be retried unchanged.
 
 ## Exact next bounded slice
 
