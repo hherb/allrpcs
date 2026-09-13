@@ -358,6 +358,11 @@ Acceptance:
   - [x] Apply exact response delivery to scene hearing and transcript recording.
   - [x] Persist exact heard and response delivery modes through the version-4 save boundary.
 - [ ] Support bounded independent tasks and party separation.
+  - [x] Define canonical bounded independent-task assignments and immutable lifecycle snapshots.
+  - [x] Enforce closed forward task lifecycle transitions and stable per-character scheduling.
+  - [x] Complete only an exact active task through an authoritative physical-action occurrence.
+  - [x] Represent bounded party membership and atomically start a task while separating its member.
+  - [ ] Scene-own task and party state and drive one authored departure through existing rules.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.

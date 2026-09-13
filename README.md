@@ -783,6 +783,20 @@ expose a follow-up selection. The latter retains the exact aligned result and le
 start its exact heard-event follow-up. Selection and start do not transition the budget, create a
 conversation loop, schedule speakers, infer participation, or wire ordinary player input.
 
+Independent character-task Domain contracts use canonical task identifiers and retain exact
+assigned characters plus exact non-wait examine/collect intentions. Bounded immutable assignment
+and lifecycle snapshots preserve stable order, reject value-equal task duplicates, and allow at
+most one active task per character. Pure lifecycle rules permit only assigned-to-active/cancelled
+and active-to-completed/cancelled transitions. Stable scheduling selects the first assigned task
+for a character only while that character has no active task. One exact active task can complete
+only through a physical-action transcript entry retaining its exact assigned character and
+intention plus an existing authoritative eligible world event; the atomic occurrence transition
+returns fresh task, event-log, world-time, and transcript snapshots. A separate bounded party
+snapshot and departure transition atomically start the selected task and remove the same
+value-equal party member without moving any character. These contracts do not source assignments,
+drive scenes or navigation, simulate off-screen time, infer events, call models, or persist task or
+party state.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining
