@@ -621,6 +621,14 @@ physically accessible. Its pure lookup requires value-matching character and obj
 It does not infer reachability from visibility, perception, dialogue, model output, or coordinates,
 and it grants no capability or action authority.
 
+`CharacterActionAccessRequirement` retains one exact target object, one canonical required
+capability key, and one exact required knowledge reference. Its pure eligibility policy succeeds
+only when the same value-matching character has explicit physical access to that object, an authored
+capability with that key, and the referenced knowledge. Missing or mismatched physical,
+informational, or capability input fails closed without changing any input. This gate does not
+define an action vocabulary, treat eligibility as occurrence, mutate a target, or grant model text
+authority.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
