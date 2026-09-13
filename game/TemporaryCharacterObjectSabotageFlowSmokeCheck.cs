@@ -33,7 +33,9 @@ public partial class TemporaryCharacterObjectSabotageFlowSmokeCheck : Node
         WorldObjectConcealmentSnapshot initialConcealment = source.Concealment;
         DiscoveryEvidenceSnapshot initialEvidence = source.Evidence;
 
-        if (!ReferenceEquals(state.Concealment, initialConcealment)
+        if (source.Candidates.Count != 1
+            || !ReferenceEquals(source.Candidates[0], source.Candidate)
+            || !ReferenceEquals(state.Concealment, initialConcealment)
             || !ReferenceEquals(state.Evidence, initialEvidence)
             || initialConcealment.ConcealedObjectIds.Count != 0
             || initialEvidence.Entries.Count != 0)
@@ -52,7 +54,7 @@ public partial class TemporaryCharacterObjectSabotageFlowSmokeCheck : Node
 
         if (!ReferenceEquals(
                 appliedConcealment.ConcealedObjectIds.Single(),
-                source.Candidate.Occurrence.Target.Identity.Id)
+                source.Candidates[0].Occurrence.Target.Identity.Id)
             || !ReferenceEquals(appliedEvidence.Entries.Single(), source.Candidate.Evidence)
             || !ReferenceEquals(state.Concealment, appliedConcealment)
             || !ReferenceEquals(state.Evidence, appliedEvidence))

@@ -8,7 +8,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterObjectSabotageSourceSmokeCheck : Node
 {
     private static readonly string[] ExpectedPropertyNames =
-        ["Candidate", "Character", "Concealment", "Evidence", "PhysicalAccess", "WorldObjects"];
+        ["Candidate", "Candidates", "Character", "Concealment", "Evidence", "PhysicalAccess", "WorldObjects"];
 
     /// <inheritdoc />
     public override void _Ready()
@@ -18,7 +18,12 @@ public partial class TemporaryCharacterObjectSabotageSourceSmokeCheck : Node
                 "../TemporaryCharacterObjectSabotageSource");
         CharacterObjectSabotageEvidence candidate = source.Candidate;
 
-        if (!ReferenceEquals(candidate.Occurrence.Proposal.ActorId, source.Character.Identity.Id)
+        if (source.Candidates.Count != 1
+            || source.Candidates.Count > CharacterObjectSabotageConcealmentSelection.MaximumCandidateCount
+            || !ReferenceEquals(source.Candidates[0], candidate)
+            || source.Candidates is not System.Collections.ObjectModel.ReadOnlyCollection<
+                CharacterObjectSabotageEvidence>
+            || !ReferenceEquals(candidate.Occurrence.Proposal.ActorId, source.Character.Identity.Id)
             || !ReferenceEquals(
                 candidate.Occurrence.Proposal.AccessRequirement.TargetObjectId,
                 candidate.Occurrence.Target.Identity.Id)

@@ -59,6 +59,8 @@ public partial class TemporaryCharacterObjectSabotageMainSceneSmokeCheck : Node
                 WaterCaskObjectId,
                 StringComparison.Ordinal)
             || !ReferenceEquals(sabotageSource.WorldObjects, worldObjects)
+            || sabotageSource.Candidates.Count != 1
+            || !ReferenceEquals(sabotageSource.Candidates[0], sabotageSource.Candidate)
             || !ReferenceEquals(sabotageSource.Candidate.Occurrence.Target, waterCask)
             || ReferenceEquals(sabotageSource.Candidate.Occurrence.Target, worldObjects.Entries[0])
             || ReferenceEquals(sabotageSource.Candidate.Occurrence.Target, worldObjects.Entries[1])

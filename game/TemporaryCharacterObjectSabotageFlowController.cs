@@ -34,13 +34,13 @@ public partial class TemporaryCharacterObjectSabotageFlowController : Node
             return false;
         }
 
-        return state.TryApply(
+        return state.TryApplyFirstEligible(
             source.Character,
             source.PhysicalAccess,
             source.WorldObjects,
             concealment,
             evidence,
-            source.Candidate);
+            source.Candidates);
     }
 
     /// <summary>Recovers the authored target only through evidence projected from perception.</summary>

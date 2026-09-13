@@ -415,6 +415,14 @@ Acceptance:
     capability-gated investigation condition without selecting sabotage behavior or timing.
   - [x] Select the exact first currently eligible concealment candidate from a fully validated
     bounded caller collection in stable order without applying it.
+  - [x] Route the authored temporary enemy concealment through its stable bounded candidate
+    collection while retaining explicit occurrence and unchanged evidence-gated recovery.
+  - [x] Retain one immutable provider-neutral concealment consideration request with exact current
+    authority snapshots and a fully validated bounded candidate collection.
+  - [x] Define an explicit provider-neutral concealment selection-or-abstention decision keyed to
+    exact character and evidence identifiers.
+  - [x] Accept that decision only for the exact considering character and a currently eligible
+    exact candidate, while allowing explicit abstention without applying an effect.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
