@@ -9,6 +9,8 @@
 - `5f2b9a9` adds Phase 7bw exact scene ownership and compare-and-swap advancement;
 - `ec5817d` adds Phase 7bx authored healer travel-plan composition in `Main`.
 
+Draft PR #221 is open and mergeable.
+
 The branch advances the existing exact active healer task without broadening its authority:
 
 - `CharacterIndependentTaskTravelPlan` retains the exact active activity, validated world bounds
@@ -47,6 +49,8 @@ off-screen-location, rejoin, dialogue/model-context, persistence, or provider po
 - Restricted MSBuild reproduced the known local socket denial, and restricted Godot reproduced the
   known `user://logs` crash; the identical focused and complete commands passed host-local.
 - No live-conformance environment variable was enabled and no provider was invoked.
+- Initial hosted run `34741561533` completed with all five jobs at `steps: []`; it provides no
+  product-test or unsigned-build evidence and should not be retried unchanged.
 
 ## Exact next bounded slice
 
