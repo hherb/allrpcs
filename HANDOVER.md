@@ -5,6 +5,10 @@
 `main` contains merged PR #216 at `a4e70da`. The current branch is
 `codex/phase-7-whispering-hearing`.
 
+Draft PR #217 is open and mergeable. Its five hosted jobs failed immediately with `steps: []`,
+confirming the unchanged Actions/account infrastructure condition rather than a product-test
+failure; do not retry or dispatch the unchanged workflows.
+
 This branch advances four bounded Phase 7 slices:
 
 - Phase 7ay defines the closed provider-neutral `DialogueDeliveryMode` values
@@ -48,7 +52,9 @@ Phase 8 work; release; sign; or distribute.
   Compatibility-renderer launch.
 - Restricted Godot reproduced the known `user://logs` crash. The identical focused and full checks
   passed host-local. No hosted workflow was retried or dispatched.
-- Review found the 75-file breadth is the required mechanical `DialogueEvent` constructor migration:
+- Draft PR #217 is open and mergeable. Hosted run `34727768116` completed with all five jobs at
+  `steps: []`; it provides no product-test or unsigned-build evidence.
+- Review found the broad file count is the required mechanical `DialogueEvent` constructor migration:
   every existing event now wraps its exact utterance in explicit `ordinary-speech`; authored behavior
   changes remain confined to the new delivery/hearing contracts and player scene path.
 
