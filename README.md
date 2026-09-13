@@ -663,6 +663,23 @@ snapshot remains unchanged. This evidence-only transition does not apply the sab
 record a world event, advance time, append a transcript, establish discovery reachability, or add
 scene, persistence, or provider behavior.
 
+`WorldObjectConcealmentSnapshot` retains at most 64 value-unique exact object identifiers in stable
+order; absence means that an object is not concealed. `CharacterObjectSabotageConcealmentPolicy`
+accepts only a completely eligible evidence-bound `conceal` candidate whose target is not already
+concealed. Its immutable transition returns one fresh concealment snapshot containing the exact
+target identifier and the existing fresh evidence-transition result as one all-or-nothing value.
+It does not mutate the authoritative object or its position, remove any route, reveal or recover a
+concealed object, apply another sabotage kind, or add events, time, transcripts, scenes,
+persistence, or provider behavior.
+
+`CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
+whose target is currently concealed, whose exact target-bound evidence definition remains in the
+authoritative evidence snapshot, and whose identifier is visible in one supplied character
+evidence view. Its transition removes only the value-matching target into a fresh concealment
+snapshot while retaining unrelated exact identifiers, the exact evidence view, and the exact
+candidate. It does not consume evidence, mutate an object or perception, prove how the character
+discovered the evidence, or add routes, scenes, persistence, or providers.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
