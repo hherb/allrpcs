@@ -20,6 +20,9 @@ No slice selects when sabotage occurs. The temporary source and flow still expos
 apply one authored candidate directly. This work does not add automatic or model-selected behavior,
 another sabotage kind, input/UI/events/time/transcripts/persistence, or provider activity.
 
+Draft PR #230 is open from implementation commit `b7d6fe4`. Hosted run `34784744732` had all five
+jobs queued at the first live query; re-query the final PR head before treating that run as evidence.
+
 ## Validation and review
 
 - Each slice began with an expected compile failure for its absent contract or scene seam.
