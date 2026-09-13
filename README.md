@@ -835,6 +835,13 @@ authored one-waypoint final arrival permits one occurrence. `Main` still does no
 trigger that occurrence, and no elapsed-time, speed, interpolation, collision, body presentation,
 return travel, party rejoin, persistence, or provider policy is implied.
 
+A separate pure Application transition composes the exact final waypoint with the existing
+authoritative independent-task occurrence. It returns one immutable result containing fresh
+completed travel progress plus fresh task, event-log, qualitative-time, and transcript state only
+after every travel and occurrence precondition succeeds. Non-final, skipped, repeated,
+distinct-plan, distinct-activity, stale-task, ineligible-event, and null inputs fail without changing
+any supplied immutable value. This combined result is not yet installed by Godot or ordinary flow.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

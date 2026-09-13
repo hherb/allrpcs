@@ -5,10 +5,10 @@
 `main` contains merged PR #221 at `97bc4cf`. The current branch is
 `codex/phase-7-independent-task-arrival`.
 
-Phase 7by makes exact completed travel a prerequisite for the existing independent-task physical
-occurrence:
+Two reviewed slices now close the pure arrival-to-occurrence boundary:
 
-- `CharacterIndependentTaskTravelOccurrenceEligibilityPolicy` permits an occurrence only for the
+- Phase 7by adds `CharacterIndependentTaskTravelOccurrenceEligibilityPolicy`, which permits an
+  occurrence only for the
   exact active activity retained by the exact plan and exact completed progress;
 - incomplete progress, a distinct plan, and distinct or value-equal activity instances fail closed;
 - `CharacterIndependentTaskOccurrenceController` now compare-and-swaps the exact scene-owned plan
@@ -16,7 +16,12 @@ occurrence:
   transcript transition;
 - the occurrence smoke proves no occurrence before arrival, exact one-step final arrival, one
   eligible atomic occurrence, and stale, mismatched, repeated, and null failure without partial
-  scene mutation.
+  scene mutation;
+- Phase 7bz adds `CharacterIndependentTaskArrivalOccurrenceTransition` and its immutable result,
+  composing an exact final-waypoint advance with the existing authoritative task occurrence only
+  after every input validates;
+- non-final, skipped, repeated, distinct-plan, distinct-activity, stale-task, ineligible-event, and
+  null inputs produce no partial result and leave every supplied immutable value unchanged.
 
 `Main` still initializes but does not advance travel or trigger the occurrence. The departed healer
 remains visible and continues existing ordinary body behavior. No elapsed-time, speed,
@@ -25,8 +30,8 @@ dialogue/model-context, persistence, or provider policy was added.
 
 ## Validation and review
 
-- Phase 7by was driven through the focused missing-policy compile failure before implementation.
-- All 14 focused Application travel tests pass host-local.
+- Phase 7by and 7bz were driven through focused missing-type compile failures before implementation.
+- All 18 focused Application travel and arrival-occurrence tests pass host-local.
 - The zero-warning solution build and focused occurrence-controller Godot smoke pass host-local.
 - Restricted VSTest reproduced the known loopback socket denial, and restricted Godot reproduced
   the known `user://logs` crash; the identical focused commands passed host-local.
@@ -36,18 +41,17 @@ dialogue/model-context, persistence, or provider policy was added.
 
 ## Exact next bounded slice
 
-Take **Phase 7bz: make final arrival plus independent-task occurrence one pure atomic result**.
+Take **Phase 7ca: install exact final arrival and occurrence atomically in scene state**.
 
 Acceptance boundary:
 
-1. Add one immutable Application result and pure transition that first validates an exact final
-   next waypoint and the complete existing task occurrence, then returns fresh completed travel,
-   task, event-log, world-time, and transcript state without partial results.
-2. Reject non-final, skipped, repeated, distinct-plan, distinct-activity, stale, null, and otherwise
-   ineligible occurrence inputs while preserving every supplied immutable value.
-3. Add focused Application tests only; do not replace or weaken the Phase 7by policy or its existing
-   scene controller boundary.
-4. Do not yet install this combined result in Godot or `Main`; auto-advance travel; choose elapsed
-   time, speed, interpolation, collision, or navigation-agent policy; move or hide a body; create a
-   return route; rejoin a party member; change dialogue/model context; persist state; or invoke a
-   provider.
+1. Add an exact compare-and-swap scene method that delegates Phase 7bz and installs its completed
+   travel, task, event-log, world-time, and transcript snapshots only from the exact expected current
+   plan, progress, activity, and authoritative snapshots.
+2. Extend the occurrence smoke to exercise one exact authored final arrival and occurrence through
+   that single method, plus stale, mismatched, ineligible, repeated, and null no-ops with every
+   surrounding scene snapshot preserved.
+3. Preserve the Phase 7by already-completed `TryOccur` boundary and the pure Phase 7bz transition.
+4. Do not yet call the new method from `Main`; auto-advance travel; choose elapsed time, speed,
+   interpolation, collision, or navigation-agent policy; move or hide a body; create a return route;
+   rejoin a party member; change dialogue/model context; persist state; or invoke a provider.
