@@ -842,6 +842,13 @@ after every travel and occurrence precondition succeeds. Non-final, skipped, rep
 distinct-plan, distinct-activity, stale-task, ineligible-event, and null inputs fail without changing
 any supplied immutable value. This combined result is not yet installed by Godot or ordinary flow.
 
+The scene occurrence controller can now delegate that combined transition and install its exact
+completed travel, task, event-log, qualitative-time, and transcript state through one
+compare-and-swap operation. Its smoke proves stale snapshots, mismatched travel, an unrecognized
+event, pre-arrival occurrence, repetition, and nulls cannot partially change scene state. This
+method remains an explicit seam: `Main` does not call it, no movement or timing policy was chosen,
+and return travel and party rejoin remain later work.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

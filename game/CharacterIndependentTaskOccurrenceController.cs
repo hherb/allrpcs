@@ -3,6 +3,7 @@ using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.WorldEvents;
 using Godot;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
@@ -99,6 +100,79 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
         transcriptController.InstallCharacterTurnOccurrence(
             result.WorldEventResult.Transcript);
         LastOccurrence = result.Candidate;
+        return true;
+    }
+
+    /// <summary>Applies one exact final arrival and occurrence as one scene operation.</summary>
+    public bool TryArriveAndOccur(
+        CharacterIndependentTaskWorldEventOccurrence candidate,
+        CharacterIndependentTaskTravelPlan expectedTravelPlan,
+        CharacterIndependentTaskTravelProgress expectedTravelProgress,
+        Vector2 reachedWaypoint,
+        CharacterIndependentTaskActivitySnapshot expectedActivities,
+        WorldEventLogSnapshot expectedEventLog,
+        WorldTimeSnapshot expectedWorldTime,
+        CharacterTurnTranscriptSnapshot expectedTranscript)
+    {
+        ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(expectedTravelPlan);
+        ArgumentNullException.ThrowIfNull(expectedTravelProgress);
+        ArgumentNullException.ThrowIfNull(expectedActivities);
+        ArgumentNullException.ThrowIfNull(expectedEventLog);
+        ArgumentNullException.ThrowIfNull(expectedWorldTime);
+        ArgumentNullException.ThrowIfNull(expectedTranscript);
+
+        CharacterIndependentTaskActivity? activeActivity = taskController.ActiveActivity;
+        WorldEventSnapshot? worldEvents = worldController.WorldEvents;
+        if (activeActivity is null
+            || worldEvents is null
+            || !ReferenceEquals(candidate.Activity, activeActivity)
+            || !ReferenceEquals(travelController.Plan, expectedTravelPlan)
+            || !ReferenceEquals(travelController.Progress, expectedTravelProgress)
+            || !ReferenceEquals(taskController.Activities, expectedActivities)
+            || !ReferenceEquals(worldController.EventLog, expectedEventLog)
+            || !ReferenceEquals(worldController.WorldTime, expectedWorldTime)
+            || !ReferenceEquals(transcriptController.Transcript, expectedTranscript))
+        {
+            return false;
+        }
+
+        CharacterIndependentTaskArrivalOccurrenceResult result;
+        try
+        {
+            result = CharacterIndependentTaskArrivalOccurrenceTransition.ArriveAndOccur(
+                expectedTravelProgress,
+                expectedTravelPlan,
+                reachedWaypoint,
+                candidate,
+                expectedActivities,
+                worldEvents,
+                expectedEventLog,
+                expectedWorldTime,
+                expectedTranscript);
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+
+        if (!travelController.TryInstallArrival(
+                expectedTravelPlan,
+                expectedTravelProgress,
+                result)
+            || !taskController.TryInstallCompletion(
+                activeActivity,
+                expectedActivities,
+                result.TaskOccurrenceResult))
+        {
+            return false;
+        }
+
+        worldController.InstallCharacterTurnOccurrence(
+            result.TaskOccurrenceResult.WorldEventResult.WorldEventResult);
+        transcriptController.InstallCharacterTurnOccurrence(
+            result.TaskOccurrenceResult.WorldEventResult.Transcript);
+        LastOccurrence = result.TaskOccurrenceResult.Candidate;
         return true;
     }
 }

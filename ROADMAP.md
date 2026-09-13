@@ -376,6 +376,8 @@ Acceptance:
     can atomically change task, event, qualitative-time, or transcript state.
   - [x] Compose one pure final-waypoint arrival and authoritative task occurrence as an immutable
     all-or-nothing Application result without scene installation.
+  - [x] Install one exact final-waypoint arrival and authoritative task occurrence atomically from
+    compare-and-swapped scene-owned travel, task, event, time, and transcript state.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route

@@ -1,6 +1,7 @@
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.WorldEvents;
 using Godot;
 
@@ -79,10 +80,11 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         }
 
         WorldEventLogSnapshot staleEventLog = new(eventLog.Entries);
-        if (occurrenceController.TryOccur(
+        if (occurrenceController.TryArriveAndOccur(
                 candidate,
                 travelPlan,
                 initialTravelProgress,
+                travelPlan.Waypoints.Single(),
                 activities,
                 staleEventLog,
                 worldTime,
@@ -141,10 +143,11 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
                 new CharacterIndependentTaskTravelProgress(mismatchedTravelPlan),
                 mismatchedTravelPlan,
                 mismatchedTravelPlan.Waypoints.Single());
-        if (occurrenceController.TryOccur(
+        if (occurrenceController.TryArriveAndOccur(
                 candidate,
                 mismatchedTravelPlan,
                 mismatchedTravelProgress,
+                mismatchedTravelPlan.Waypoints.Single(),
                 activities,
                 eventLog,
                 worldTime,
@@ -167,22 +170,19 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             return;
         }
 
-        if (!travelController.TryAdvance(
+        WorldEvent ineligibleEvent = new(
+            new WorldEventId("unrecognized-independent-task-event"),
+            WorldEventTimeEffect.Advance);
+        CharacterIndependentTaskWorldEventOccurrence ineligibleCandidate = new(
+            active,
+            new CharacterTurnWorldEventOccurrence(
+                ineligibleEvent,
+                candidate.Occurrence.TranscriptEntry));
+        if (occurrenceController.TryArriveAndOccur(
+                ineligibleCandidate,
                 travelPlan,
                 initialTravelProgress,
-                travelPlan.Waypoints.Single())
-            || travelController.Progress is not { IsComplete: true } completedTravelProgress
-            || ReferenceEquals(completedTravelProgress, initialTravelProgress)
-            || !ReferenceEquals(completedTravelProgress.Plan, travelPlan))
-        {
-            Fail("The authored task did not reach exact final arrival in one step.");
-            return;
-        }
-
-        if (occurrenceController.TryOccur(
-                candidate,
-                travelPlan,
-                initialTravelProgress,
+                travelPlan.Waypoints.Single(),
                 activities,
                 eventLog,
                 worldTime,
@@ -194,25 +194,29 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
                 transcriptController,
                 active,
                 travelPlan,
-                completedTravelProgress,
+                initialTravelProgress,
                 activities,
                 party,
                 eventLog,
                 worldTime,
                 transcript))
         {
-            Fail("Stale travel progress changed authoritative occurrence state.");
+            Fail("An ineligible arrival occurrence changed authoritative scene state.");
             return;
         }
 
-        if (!occurrenceController.TryOccur(
+        if (!occurrenceController.TryArriveAndOccur(
                 candidate,
                 travelPlan,
-                completedTravelProgress,
+                initialTravelProgress,
+                travelPlan.Waypoints.Single(),
                 activities,
                 eventLog,
                 worldTime,
                 transcript)
+            || travelController.Progress is not { IsComplete: true } completedTravelProgress
+            || ReferenceEquals(completedTravelProgress, initialTravelProgress)
+            || !ReferenceEquals(completedTravelProgress.Plan, travelPlan)
             || taskController.ActiveActivity is not null
             || taskController.Activities is not { } completedActivities
             || AssertSingle(completedActivities.Activities) is not { } completed
@@ -241,10 +245,11 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         WorldEventLogSnapshot completedLog = worldController.EventLog!;
         WorldTimeSnapshot completedTime = worldController.WorldTime!;
         CharacterTurnTranscriptSnapshot completedTranscript = transcriptController.Transcript!;
-        if (occurrenceController.TryOccur(
+        if (occurrenceController.TryArriveAndOccur(
                 candidate,
                 travelPlan,
-                completedTravelProgress,
+                initialTravelProgress,
+                travelPlan.Waypoints.Single(),
                 completedActivities,
                 completedLog,
                 completedTime,
@@ -265,6 +270,15 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
                 completedActivities,
                 completedLog,
                 completedTime,
+                completedTranscript)
+            || !RejectsArrivalNulls(
+                occurrenceController,
+                candidate,
+                travelPlan,
+                initialTravelProgress,
+                completedActivities,
+                completedLog,
+                completedTime,
                 completedTranscript))
         {
             Fail("Repeated or null task occurrence input did not preserve completed state.");
@@ -273,8 +287,8 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
 
         GD.Print(
             "Independent-task occurrence controller smoke passed: the exact active authored task "
-            + "completed only after exact final travel arrival, with its authoritative event, "
-            + "meaningful time, and physical-action transcript as one fail-closed scene operation.");
+            + "installed exact final travel arrival, authoritative event, meaningful time, and "
+            + "physical-action transcript as one fail-closed scene operation.");
         GetTree().Quit();
     }
 
@@ -323,6 +337,37 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             candidate, travelPlan, travelProgress, activities, eventLog, null!, transcript))
         && ThrowsArgumentNull(() => controller.TryOccur(
             candidate, travelPlan, travelProgress, activities, eventLog, worldTime, null!));
+
+    private static bool RejectsArrivalNulls(
+        CharacterIndependentTaskOccurrenceController controller,
+        CharacterIndependentTaskWorldEventOccurrence candidate,
+        CharacterIndependentTaskTravelPlan travelPlan,
+        CharacterIndependentTaskTravelProgress travelProgress,
+        CharacterIndependentTaskActivitySnapshot activities,
+        WorldEventLogSnapshot eventLog,
+        WorldTimeSnapshot worldTime,
+        CharacterTurnTranscriptSnapshot transcript) =>
+        ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            null!, travelPlan, travelProgress, travelPlan.Waypoints[0],
+            activities, eventLog, worldTime, transcript))
+        && ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            candidate, null!, travelProgress, travelPlan.Waypoints[0],
+            activities, eventLog, worldTime, transcript))
+        && ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            candidate, travelPlan, null!, travelPlan.Waypoints[0],
+            activities, eventLog, worldTime, transcript))
+        && ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            candidate, travelPlan, travelProgress, travelPlan.Waypoints[0],
+            null!, eventLog, worldTime, transcript))
+        && ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            candidate, travelPlan, travelProgress, travelPlan.Waypoints[0],
+            activities, null!, worldTime, transcript))
+        && ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            candidate, travelPlan, travelProgress, travelPlan.Waypoints[0],
+            activities, eventLog, null!, transcript))
+        && ThrowsArgumentNull(() => controller.TryArriveAndOccur(
+            candidate, travelPlan, travelProgress, travelPlan.Waypoints[0],
+            activities, eventLog, worldTime, null!));
 
     private static bool RejectsInvalidSourceInputs(
         TemporaryCharacterIndependentTaskOccurrenceSource source,
