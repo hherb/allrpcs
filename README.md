@@ -656,6 +656,13 @@ present in the supplied snapshot. It does not append evidence, apply sabotage, p
 authored discovery route can reveal the evidence, or alter truth, perception, state, scenes,
 persistence, or providers.
 
+`CharacterObjectSabotageEvidenceTransition` accepts only that complete evidence-bound eligibility
+and returns a fresh discovery-evidence snapshot with the candidate's exact definition appended at
+the stable tail. Its immutable result retains the exact accepted candidate, while the caller's
+snapshot remains unchanged. This evidence-only transition does not apply the sabotage effect,
+record a world event, advance time, append a transcript, establish discovery reachability, or add
+scene, persistence, or provider behavior.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored

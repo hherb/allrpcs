@@ -412,6 +412,8 @@ Acceptance:
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
+  - [x] Append that exact evidence to a fresh stable snapshot only after complete occurrence and
+    evidence eligibility succeeds.
 - [ ] Test characters with mutually incompatible beliefs and goals.
 
 Acceptance:
