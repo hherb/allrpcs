@@ -54,7 +54,9 @@ public sealed class CharacterPostExaminationCollectionOccurrencePolicyTests
                 CharacterIntentionType.ExamineObject,
                 result.TargetObjectId));
         CharacterTurnTranscriptEntry laterSpeech = new(
-            new DialogueUtterance(new CharacterId("seeker"), "Collect them now."));
+            new DialogueDelivery(
+                new DialogueUtterance(new CharacterId("seeker"), "Collect them now."),
+                DialogueDeliveryMode.OrdinarySpeech));
         WorldEventSnapshot worldEvents = WorldEvents(result, collectionEvent);
 
         Assert.False(CharacterPostExaminationCollectionOccurrencePolicy.CanOccur(

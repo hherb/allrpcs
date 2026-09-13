@@ -17,8 +17,10 @@ public static class SaveSnapshotJsonSerializer
         bool isVersionOne = snapshot.SchemaVersion == SaveSchemaVersion.FirstSupported;
         bool hasCharacterMemory =
             snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory
-            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient;
-        bool isFirstPatientVersion = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient;
+            || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
+            || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery;
+        bool hasFirstPatient = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
+            || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery;
         if (!isVersionOne && !hasCharacterMemory)
         {
             throw new ArgumentException(
@@ -35,10 +37,13 @@ public static class SaveSnapshotJsonSerializer
             WriteWorldEvents(writer, snapshot.WorldEvents);
             if (hasCharacterMemory)
             {
-                CharacterMemoryJsonWriter.Write(writer, snapshot.CharacterMemory);
+                CharacterMemoryJsonWriter.Write(
+                    writer,
+                    snapshot.CharacterMemory,
+                    snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery);
             }
 
-            if (isFirstPatientVersion)
+            if (hasFirstPatient)
             {
                 FirstPatientJsonWriter.Write(writer, snapshot.FirstPatient!);
             }

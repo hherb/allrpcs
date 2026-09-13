@@ -18,6 +18,7 @@ public sealed record CharacterModelGenerationRequest
         ArgumentNullException.ThrowIfNull(context);
 
         string playerDialogue = turnRequest.DialogueEvent.Utterance.Text;
+        DialogueDeliveryMode playerDeliveryMode = turnRequest.DialogueEvent.Delivery.Mode;
         int untrustedDialogueCount = 0;
         foreach (CharacterModelContextEntry entry in context.Entries)
         {
@@ -27,10 +28,11 @@ public sealed record CharacterModelGenerationRequest
             }
 
             untrustedDialogueCount++;
-            if (!ReferenceEquals(entry.Text, playerDialogue))
+            if (!ReferenceEquals(entry.Text, playerDialogue)
+                || !ReferenceEquals(entry.DeliveryMode, playerDeliveryMode))
             {
                 throw new ArgumentException(
-                    "Untrusted player dialogue must retain the exact turn-request text.",
+                    "Untrusted player dialogue must retain the exact turn-request text and mode.",
                     nameof(context));
             }
         }

@@ -16,6 +16,7 @@ public sealed class CharacterModelPlayerDialogueContextProjectionTests
 
         Assert.Equal(CharacterModelContextEntryKind.UntrustedPlayerDialogue, entry.Kind);
         Assert.Same(request.DialogueEvent.Utterance.Text, entry.Text);
+        Assert.Same(request.DialogueEvent.Delivery.Mode, entry.DeliveryMode);
     }
 
     [Fact]
@@ -36,7 +37,7 @@ public sealed class CharacterModelPlayerDialogueContextProjectionTests
         return new CharacterTurnRequest(
             healerId,
             new DialogueEvent(
-                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+                new DialogueDelivery(utterance, DialogueDeliveryMode.Whispering),
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(utterance, DialogueActType.Request));
     }

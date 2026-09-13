@@ -162,7 +162,9 @@ public sealed class CharacterTurnActivityTests
         new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(request.RespondingCharacterId, "I will wait."),
+            new DialogueDelivery(
+                new DialogueUtterance(request.RespondingCharacterId, "I will wait."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

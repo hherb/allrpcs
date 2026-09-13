@@ -63,7 +63,9 @@ public sealed class DeterministicExaminationResultSelectorTests
         CharacterTurnWorldEventOccurrence speech = new(
             Event(),
             new CharacterTurnTranscriptEntry(
-                new DialogueUtterance(new CharacterId("healer"), "I examined it.")));
+                new DialogueDelivery(
+                    new DialogueUtterance(new CharacterId("healer"), "I examined it."),
+                    DialogueDeliveryMode.OrdinarySpeech)));
 
         Assert.Null(DeterministicExaminationResultSelector.Select(speech, targetObjectId));
         Assert.Null(DeterministicExaminationResultSelector.Select(

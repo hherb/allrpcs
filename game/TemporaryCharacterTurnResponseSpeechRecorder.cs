@@ -7,7 +7,7 @@ using NumericsVector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
-/// <summary>Records each fresh complete ordinary response speech as one scene occurrence.</summary>
+/// <summary>Records each fresh complete response delivery as one scene occurrence.</summary>
 public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
 {
     private const float DialogueHearingRangePixels = 192.0f;
@@ -21,7 +21,7 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
     private CharacterBody2D seeker = null!;
     private Marker2D sageHearingPosition = null!;
     private TemporaryOrdinaryCharacterParticipantSource participantSource = null!;
-    private DialogueUtterance? lastRecordedSpeech;
+    private DialogueDelivery? lastRecordedDelivery;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -44,11 +44,13 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
     {
         _ = delta;
         CharacterTurnActivity? activity = turnController.Activity;
-        DialogueUtterance? speech = activity?.Response?.Speech;
+        DialogueDelivery? delivery = activity?.Response?.Delivery;
+        DialogueUtterance? speech = delivery?.Utterance;
         if (activity is null
             || !ReferenceEquals(activity.State, CharacterTurnActivityState.Speaking)
+            || delivery is null
             || speech is null
-            || ReferenceEquals(speech, lastRecordedSpeech))
+            || ReferenceEquals(delivery, lastRecordedDelivery))
         {
             return;
         }
@@ -75,18 +77,18 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
                 ToNumerics(GetParticipantPosition(otherParticipant, participants))),
         ];
         if (!eventController.TryOccur(
-                new DialogueDelivery(speech, DialogueDeliveryMode.OrdinarySpeech),
+                delivery,
                 candidates[0].Position,
                 DialogueHearingRangePixels,
                 WhisperHearingRangePixels,
                 candidates)
-            || !transcriptController.TryAppendSpokenStatement(speech))
+            || !transcriptController.TryAppendSpokenStatement(delivery))
         {
             throw new InvalidOperationException(
-                "The complete ordinary response speech could not occur and append once.");
+                "The complete response delivery could not occur and append once.");
         }
 
-        lastRecordedSpeech = speech;
+        lastRecordedDelivery = delivery;
     }
 
     private Vector2 GetParticipantPosition(

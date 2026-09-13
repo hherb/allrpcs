@@ -110,7 +110,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":3",
+            "\"schemaVersion\":4",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
 

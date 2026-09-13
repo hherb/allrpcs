@@ -14,9 +14,9 @@ value-equal pending intention per observation. Character-turn activity can repre
 speaking, completed, and cancelled states, with pure cancellation, response-reception, and
 completion eligibility and transition rules. A focused Godot controller owns one exact activity,
 delegates those transitions, and exposes an explicit player cancellation action for awaiting and
-speaking turns. Character-turn transcript entries structurally distinguish exact spoken utterances
-from exact non-wait physical intentions, while immutable snapshots and a pure append transition
-preserve occurrence order
+speaking turns. Character-turn transcript entries structurally distinguish exact spoken deliveries
+from exact non-wait physical intentions while continuing to project each delivery's exact utterance.
+Immutable snapshots and a pure append transition preserve occurrence order
 without treating response proposals as executed actions. A character-turn world-event occurrence
 now retains an exact authoritative event together with one exact tagged transcript occurrence.
 Pure eligibility and transition rules require that exact authored event, then atomically record its
@@ -335,17 +335,15 @@ authored scene; they do not move Godot physics or presentation policy into `Appl
 ## Save-schema version boundary
 
 `Allrpcs.Domain.Persistence.SaveSchemaVersion` is the engine-independent immutable root version
-discriminator for later versioned saves. Version `1` is the explicit first supported value.
-Construction accepts positive integers, while `Parse` accepts only their invariant canonical
-decimal text. Whitespace, signs, leading zeroes, zero, negative values, overflow, and non-numeric
-text are rejected rather than normalized. `Value`, `ToString()`, parsing, and record equality are
-stable round-trip boundaries.
+discriminator for versioned saves. It defines canonical versions `1` through `4`; construction
+still accepts any positive integer, while `Parse` accepts only invariant canonical decimal text.
+Whitespace, signs, leading zeroes, zero, negative values, overflow, and non-numeric text are rejected
+rather than normalized. `Value`, `ToString()`, parsing, and record equality remain stable round-trip
+boundaries.
 
-`SaveSchemaVersionSupportPolicy.CanLoad` separately accepts only version `1`, including a distinct
-value-equal instance. Version `2` now has a complete JSON contract but remains outside this live-load
-gate until scene-owned character memory can be restored atomically with discovery and world-event
-state. Later positive versions remain valid version values but fail closed. The policy leaves its
-input unchanged and does not parse, migrate, serialize, or load anything.
+`SaveSchemaVersionSupportPolicy.CanLoad` separately accepts only the four known versions, including
+distinct value-equal instances. Later positive versions remain valid version values but fail closed.
+The policy leaves its input unchanged and does not parse, migrate, serialize, or load anything.
 
 These version boundaries do not themselves define a save aggregate, serializer, file or path
 policy, storage provider, migration, load orchestration, autosave, replay, Godot integration,
@@ -364,14 +362,15 @@ rejects null snapshots and adds no consistency decision, event replay, time adva
 serialization, restoration, or controller behavior.
 
 `SaveSnapshot` is the immutable in-memory root. It retains one exact schema version, discovery
-save state, world-event save state, canonical all-character memory, and the version-3 first-patient
-composition through get-only properties and rejects invalid version/component combinations. Its
+save state, world-event save state, canonical all-character memory, and the version-3-or-later
+first-patient composition through get-only properties and rejects invalid version/component
+combinations. Its
 legacy version-`1` constructor supplies one shared immutable empty-memory snapshot, and version `1`
 rejects populated memory. Record equality continues to use the version value and retained state
 instances.
 
 `SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates to
-`SaveSchemaVersionSupportPolicy`, accepts versions 1 through 3, preserves the root and every nested
+`SaveSchemaVersionSupportPolicy`, accepts versions 1 through 4, preserves the root and every nested
 instance, and does not inspect state contents, migrate, deserialize, or restore.
 
 `WorldEventSaveStateRestorationPolicy.CanRestore` is the pure event-state restoration gate. Every
@@ -425,29 +424,31 @@ events, or run automatically during startup.
 `SaveSnapshotCaptureController.Capture` is the matching scene-owned in-memory capture seam. It
 returns no snapshot until discovery perception, authored world events, the event log, and qualitative
 time plus all first-patient state are initialized. Each successful call creates fresh
-`DiscoverySaveState`, `WorldEventSaveState`, `FirstPatientSaveState`, and version-3 `SaveSnapshot`
+`DiscoverySaveState`, `WorldEventSaveState`, `FirstPatientSaveState`, and version-4 `SaveSnapshot`
 compositions while retaining the controllers' exact current nested snapshots. Capture does not
 mutate or present controller state and does not serialize, choose a file or path, access storage,
 migrate, replay, autosave, or orchestrate startup loading.
 
 `Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer` writes compact canonical JSON for
-versions 1 through 3 while preserving the exact legacy documents. Version 2 adds canonical
+versions 1 through 4 while preserving the exact legacy documents. Version 2 adds canonical
 all-character memory; version 3 adds complete disease truth, completed preparations, remaining
-batches, administration observations, and universal experiment records. Stable document-local
+batches, administration observations, and universal experiment records; version 4 adds the exact
+delivery mode to each heard event and optional response in recent conversation. Stable document-local
 references reconnect shared memories, preparations, and events without serializing runtime object
 references. Provider identifiers, credentials, provider state, hidden reasoning, and an additional
 authoritative transcript are absent. Serialization preserves every input and does not write a file,
 choose a path, validate a scenario, migrate, encrypt, or restore runtime state.
 
-`SaveSnapshotJsonDeserializer` is the strict inverse for all three known JSON versions. It accepts only
+`SaveSnapshotJsonDeserializer` is the strict inverse for all four known JSON versions. It accepts only
 each version's complete closed object shape and exact JSON value kinds, rejecting malformed JSON,
 comments, trailing commas, duplicate, missing, or unknown properties, non-canonical versions and
 identifiers, unknown closed values, invalid collections, and unresolved memory references.
 Successful reads materialize fresh immutable Domain values in serialized order while reconnecting
-document-local shared identities. `DeserializeCurrent` migrates version 1 through version 2 to
-version 3 using the caller-owned exact initial first-patient composition, and leaves an existing
-version-3 root unchanged. Scenario eligibility and controller mutation remain separate; neither
-entry point accesses storage.
+document-local shared identities. `DeserializeCurrent` migrates versions 1 through 3 to version 4,
+using the caller-owned exact initial first-patient composition when required. Versions 1 through 3
+historically lacked delivery metadata, so their heard dialogue and non-null response speech migrate
+as explicit ordinary speech; an existing version-4 root retains its exact ordinary or whisper modes.
+Scenario eligibility and controller mutation remain separate; neither entry point accesses storage.
 
 `SaveSnapshotJsonController` is the scene composition seam for serialized in-memory round trips.
 `CaptureSerialized` delegates exact live capture to `SaveSnapshotCaptureController` before canonical
@@ -637,14 +638,27 @@ infer direct address or privacy, inspect visibility or occlusion, mutate scene s
 `DialogueEvent` now retains the exact delivery and audience while continuing to project that
 delivery's exact utterance. Every event construction explicitly names ordinary speech or
 whispering. The scene occurrence controller accepts one exact delivery, validates both named
-hearing ranges through the mode-aware selector, and retains no event on invalid input. Existing
-player and character speech paths remain explicitly ordinary; an isolated scene check proves an
-exact whisper uses the shorter inclusive hearing boundary without changing surrounding state.
+hearing ranges through the mode-aware selector, and retains no event on invalid input. An isolated
+scene check proves an exact whisper uses the shorter inclusive hearing boundary without changing
+surrounding state.
 The temporary dialogue panel exposes an explicit `WHISPER` toggle. The input controller retains
 the resulting exact delivery and projects its utterance for existing consumers; `Main` carries that
-same delivery into event occurrence. Ordinary response speech remains explicitly ordinary. The
-transcript and provider context still retain only utterance text, so this does not yet complete the
-roadmap's whisper/private-conversation parent or preserve delivery mode across save boundaries.
+same delivery into event occurrence. The spoken transcript retains the exact delivery while
+continuing to project its utterance for existing consumers. `Main` appends the exact occurred player
+delivery. `CharacterTurnResponse` retains one optional exact delivery from the responder and projects
+its utterance as speech; deterministic responses explicitly use ordinary speech. Provider responses
+must pair non-null speech with exactly one canonical delivery mode and pair null speech with null
+mode. The scene response recorder applies that exact delivery to hearing and transcript append, and
+an end-to-end check proves an explicit whisper reaches only the nearby listener. Provider-neutral
+recent-speech and current untrusted-dialogue context entries now retain their exact delivery mode,
+while non-dialogue context rejects one. The generation request requires the current entry's text and
+mode to be the exact request values. Shared trusted request JSON serializes the current delivery mode
+and each recent-speech mode for OpenAI, Anthropic, Ollama, and compatible local requests while the
+raw in-world line remains separate untrusted user content. Version-4 save JSON retains each exact
+heard and response delivery mode; versions 1 through 3 migrate historically implicit non-null speech
+as ordinary speech. These explicit distance-governed flows complete the bounded whisper/private-
+conversation roadmap item without inferring privacy or direct address from text or promising secrecy
+against every physically present listener.
 
 `DialogueUtterance` retains one exact typed `CharacterId` speaker and the player's exact nonblank
 Unicode text without trimming, normalization, case folding, or line-ending changes. Text is bounded
@@ -810,10 +824,11 @@ of exact proposed intentions without selecting, advancing, observing, or executi
 `CharacterStateProposal` retains only a canonical key and exact nonblank proposed value bounded to
 500 UTF-16 code units. It is proposed character-owned text, not world truth or mutation authority.
 
-`CharacterTurnResponse` retains its exact request and disposition, optional exact bounded speech
-from the value-matching responder, exactly one immediate intention, a copied nullable-free list of
-commitments, and a copied stable list of at most eight state proposals. It does not validate or
-execute intentions, advance commitments, apply proposals, or inspect world state.
+`CharacterTurnResponse` retains its exact request and disposition, optional exact bounded delivery
+from the value-matching responder while projecting its utterance as speech, exactly one immediate
+intention, a copied nullable-free list of commitments, and a copied stable list of at most eight
+state proposals. It does not validate or execute intentions, advance commitments, apply proposals,
+or inspect world state.
 
 The pure deterministic response selector maps only the declared dialogue-act type to fixed
 accept, refuse, clarify, or conditionally-accept behavior. Commitment progress advances one
@@ -1318,8 +1333,10 @@ targeted-affordance snapshots used for response validation.
 
 `Allrpcs.Infrastructure.Dialogue.CharacterTurnResponseJsonDeserializer` is the first strict
 provider-response boundary. It accepts one exact provider-neutral turn request and a complete JSON
-document, then materializes only existing Domain response values. Exact property sets reject
-unknown, missing, or duplicate members at every level; canonical closed disposition and intention
+document, then materializes only existing Domain response values. Speech and delivery mode must be
+jointly null or a bounded string paired with exactly `ordinary-speech` or `whispering`. Exact
+property sets reject unknown, missing, or duplicate members at every level; canonical closed
+disposition and intention
 vocabularies reject unknown actions; existing structural intention validation rejects missing or
 unexpected targets. The initial closed intention vocabulary has no destination-bearing action, so
 a proposed destination has no accepted document shape. The transport document, commitment count,

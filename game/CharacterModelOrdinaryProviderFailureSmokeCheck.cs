@@ -327,7 +327,11 @@ public partial class CharacterModelOrdinaryProviderFailureSmokeCheck : Node
             CharacterTurnResponse response = new(
                 request.TurnRequest,
                 CharacterTurnDisposition.Accept,
-                new DialogueUtterance(request.TurnRequest.RespondingCharacterId, HealerSpeechText),
+                new DialogueDelivery(
+                    new DialogueUtterance(
+                        request.TurnRequest.RespondingCharacterId,
+                        HealerSpeechText),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(CharacterIntentionType.Wait, null),
                 [],
                 []);

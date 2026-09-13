@@ -13,6 +13,7 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
     private CharacterTurnTranscriptController controller = null!;
     private DialogueInputController inputController = null!;
     private LineEdit input = null!;
+    private CheckButton whispering = null!;
     private int stage;
     private object? initialWorldEventLog;
     private object? initialWorldTime;
@@ -33,6 +34,7 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
             "../CharacterTurnTranscriptController");
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
+        whispering = GetNode<CheckButton>("../DialogueOverlay/Panel/Whispering");
     }
 
     /// <inheritdoc />
@@ -71,6 +73,7 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
             || transcript.Entries.Count != 2
             || !ProvesEntryAt(1)
             || ReferenceEquals(transcript.Entries[0], transcript.Entries[1])
+            || ReferenceEquals(transcript.Entries[0].Delivery, transcript.Entries[1].Delivery)
             || ReferenceEquals(
                 transcript.Entries[0].SpokenStatement,
                 transcript.Entries[1].SpokenStatement)
@@ -82,13 +85,15 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
 
         GD.Print(
             "Character-turn transcript controller smoke passed: the empty scene transcript "
-            + "appended exact player speech in stable occurrence order, retained repeated equal "
-            + "utterances as distinct entries, rejected invalid calls, and preserved unrelated state.");
+            + "appended exact whisper deliveries in stable occurrence order, retained repeated "
+            + "equal deliveries as distinct entries, rejected invalid calls, and preserved "
+            + "unrelated state.");
         GetTree().Quit();
     }
 
     private void Submit()
     {
+        whispering.ButtonPressed = true;
         input.Text = Text;
         input.EmitSignal(LineEdit.SignalName.TextSubmitted, Text);
     }
@@ -96,9 +101,11 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
     private bool ProvesEntryAt(int index)
     {
         CharacterTurnTranscriptSnapshot? transcript = controller.Transcript;
+        DialogueDelivery? submittedDelivery = inputController.LastSubmittedDelivery;
         DialogueUtterance? submitted = inputController.LastSubmittedUtterance;
         if (transcript is null
             || transcript.Entries.Count != index + 1
+            || submittedDelivery is null
             || submitted is null)
         {
             Fail("Scene character-turn transcript did not append one submitted utterance.");
@@ -108,7 +115,9 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
         CharacterTurnTranscriptEntry entry = transcript.Entries[index];
         if (!ReferenceEquals(entry.Kind, CharacterTurnTranscriptEntryKind.SpokenStatement)
             || !ReferenceEquals(entry.CharacterId, submitted.SpeakerCharacterId)
+            || !ReferenceEquals(entry.Delivery, submittedDelivery)
             || !ReferenceEquals(entry.SpokenStatement, submitted)
+            || !ReferenceEquals(entry.Delivery.Mode, DialogueDeliveryMode.Whispering)
             || entry.PhysicalAction is not null
             || submitted.Text != Text)
         {
@@ -124,7 +133,8 @@ public partial class CharacterTurnTranscriptControllerSmokeCheck : Node
         CharacterTurnTranscriptController target = new();
         AddChild(target);
         DialogueUtterance utterance = new(inputController.SpeakerCharacterId!, "Hello.");
-        if (target.TryAppendSpokenStatement(utterance) || target.Transcript is not null)
+        DialogueDelivery delivery = new(utterance, DialogueDeliveryMode.OrdinarySpeech);
+        if (target.TryAppendSpokenStatement(delivery) || target.Transcript is not null)
         {
             Fail("Uninitialized transcript controller accepted speech.");
             return false;

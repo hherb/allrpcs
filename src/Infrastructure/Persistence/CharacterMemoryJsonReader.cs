@@ -9,7 +9,9 @@ namespace Allrpcs.Infrastructure.Persistence;
 internal static class CharacterMemoryJsonReader
 {
     /// <summary>Reads every exact character-memory aggregate from its closed document shape.</summary>
-    internal static CharacterMemorySnapshot Read(JsonElement element)
+    internal static CharacterMemorySnapshot Read(
+        JsonElement element,
+        bool includesDialogueDeliveryMode)
     {
         SaveSnapshotJsonDeserializer.RequireObject(element, "characters");
         JsonElement charactersElement = element.GetProperty("characters");
@@ -17,13 +19,15 @@ internal static class CharacterMemoryJsonReader
         List<CharacterMemoryAggregate> characters = new();
         foreach (JsonElement characterElement in charactersElement.EnumerateArray())
         {
-            characters.Add(ReadAggregate(characterElement));
+            characters.Add(ReadAggregate(characterElement, includesDialogueDeliveryMode));
         }
 
         return new CharacterMemorySnapshot(characters);
     }
 
-    private static CharacterMemoryAggregate ReadAggregate(JsonElement element)
+    private static CharacterMemoryAggregate ReadAggregate(
+        JsonElement element,
+        bool includesDialogueDeliveryMode)
     {
         SaveSnapshotJsonDeserializer.RequireObject(
             element,
@@ -40,7 +44,8 @@ internal static class CharacterMemoryJsonReader
         Allrpcs.Domain.Dialogue.CharacterRecentConversationWindow recentConversation =
             CharacterRecentConversationJsonReader.Read(
                 element.GetProperty("recentConversation"),
-                characterId);
+                characterId,
+                includesDialogueDeliveryMode);
         CharacterConversationSummarySnapshot summaries = ReadConversationSummaries(
             element.GetProperty("conversationSummaries"),
             characterId);

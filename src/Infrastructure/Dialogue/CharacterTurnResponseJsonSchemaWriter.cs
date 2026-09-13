@@ -21,6 +21,10 @@ internal static class CharacterTurnResponseJsonSchemaWriter
             "speech",
             DialogueUtterance.MaximumTextLength,
             includeBounds);
+        WriteNullableStringEnum(
+            writer,
+            "deliveryMode",
+            DialogueDeliveryMode.All.Select(value => value.Value));
         writer.WritePropertyName("immediateIntention");
         WriteIntentionSchema(writer, includeBounds);
         WriteCommitmentsSchema(writer, includeBounds);
@@ -30,6 +34,7 @@ internal static class CharacterTurnResponseJsonSchemaWriter
             writer,
             "disposition",
             "speech",
+            "deliveryMode",
             "immediateIntention",
             "commitments",
             "stateProposals");
@@ -202,6 +207,40 @@ internal static class CharacterTurnResponseJsonSchemaWriter
             writer.WriteNumber("maxLength", maximumLength);
         }
 
+        writer.WriteEndObject();
+    }
+
+    private static void WriteNullableStringEnum(
+        Utf8JsonWriter writer,
+        string propertyName,
+        IEnumerable<string> values)
+    {
+        writer.WritePropertyName(propertyName);
+        writer.WriteStartObject();
+        writer.WritePropertyName("anyOf");
+        writer.WriteStartArray();
+        WriteStringEnumValue(writer, values);
+        writer.WriteStartObject();
+        writer.WriteString("type", "null");
+        writer.WriteEndObject();
+        writer.WriteEndArray();
+        writer.WriteEndObject();
+    }
+
+    private static void WriteStringEnumValue(
+        Utf8JsonWriter writer,
+        IEnumerable<string> values)
+    {
+        writer.WriteStartObject();
+        writer.WriteString("type", "string");
+        writer.WritePropertyName("enum");
+        writer.WriteStartArray();
+        foreach (string value in values)
+        {
+            writer.WriteStringValue(value);
+        }
+
+        writer.WriteEndArray();
         writer.WriteEndObject();
     }
 

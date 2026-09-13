@@ -6,14 +6,16 @@ namespace Allrpcs.Domain.Tests.Dialogue;
 public sealed class CharacterTurnTranscriptEntryTests
 {
     [Fact]
-    public void RetainsAnExactSpokenStatementWithoutAPhysicalAction()
+    public void RetainsAnExactSpokenDeliveryWithoutAPhysicalAction()
     {
         DialogueUtterance speech = new(new CharacterId("healer"), "I will examine it.");
+        DialogueDelivery delivery = new(speech, DialogueDeliveryMode.Whispering);
 
-        CharacterTurnTranscriptEntry entry = new(speech);
+        CharacterTurnTranscriptEntry entry = new(delivery);
 
         Assert.Same(CharacterTurnTranscriptEntryKind.SpokenStatement, entry.Kind);
         Assert.Same(speech.SpeakerCharacterId, entry.CharacterId);
+        Assert.Same(delivery, entry.Delivery);
         Assert.Same(speech, entry.SpokenStatement);
         Assert.Null(entry.PhysicalAction);
     }
@@ -31,6 +33,7 @@ public sealed class CharacterTurnTranscriptEntryTests
         Assert.Same(CharacterTurnTranscriptEntryKind.PhysicalAction, entry.Kind);
         Assert.Same(characterId, entry.CharacterId);
         Assert.Same(action, entry.PhysicalAction);
+        Assert.Null(entry.Delivery);
         Assert.Null(entry.SpokenStatement);
     }
 
@@ -66,7 +69,7 @@ public sealed class CharacterTurnTranscriptEntryTests
             new ObjectId("moonwort"));
 
         Assert.Throws<ArgumentNullException>(() =>
-            new CharacterTurnTranscriptEntry((DialogueUtterance)null!));
+            new CharacterTurnTranscriptEntry((DialogueDelivery)null!));
         Assert.Throws<ArgumentNullException>(() =>
             new CharacterTurnTranscriptEntry(null!, action));
         Assert.Throws<ArgumentNullException>(() =>
@@ -84,7 +87,7 @@ public sealed class CharacterTurnTranscriptEntryTests
             .ToArray();
 
         Assert.Equal(
-            ["CharacterId", "Kind", "PhysicalAction", "SpokenStatement"],
+            ["CharacterId", "Delivery", "Kind", "PhysicalAction", "SpokenStatement"],
             publicProperties);
         Assert.All(
             entryType.GetProperties(),

@@ -70,6 +70,7 @@ public sealed class CharacterModelContextAssemblerTests
             {
                 Assert.Equal(CharacterModelContextEntryKind.RecentSpeech, entry.Kind);
                 Assert.Same(recentSpeech.Utterance.Text, entry.Text);
+                Assert.Same(recentSpeech.Delivery.Mode, entry.DeliveryMode);
             },
             entry =>
             {
@@ -80,6 +81,7 @@ public sealed class CharacterModelContextAssemblerTests
             {
                 Assert.Equal(CharacterModelContextEntryKind.UntrustedPlayerDialogue, entry.Kind);
                 Assert.Same(request.DialogueEvent.Utterance.Text, entry.Text);
+                Assert.Same(request.DialogueEvent.Delivery.Mode, entry.DeliveryMode);
             });
     }
 

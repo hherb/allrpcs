@@ -14,7 +14,7 @@ public sealed class OllamaCharacterModelStreamAccumulatorTests
     };
 
     private const string ResponseDocument =
-        "{\"disposition\":\"accept\",\"speech\":null,"
+        "{\"disposition\":\"accept\",\"speech\":null,\"deliveryMode\":null,"
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 

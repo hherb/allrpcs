@@ -8,7 +8,7 @@ namespace Allrpcs.Infrastructure.Tests.Dialogue;
 public sealed class OpenAiCharacterModelStreamAccumulatorTests
 {
     private const string FirstDocumentPart =
-        "{\"disposition\":\"accept\",\"speech\":null,";
+        "{\"disposition\":\"accept\",\"speech\":null,\"deliveryMode\":null,";
     private const string SecondDocumentPart =
         "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";

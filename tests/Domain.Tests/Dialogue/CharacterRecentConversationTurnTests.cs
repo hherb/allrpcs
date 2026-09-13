@@ -102,7 +102,9 @@ public sealed class CharacterRecentConversationTurnTests
         new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(request.RespondingCharacterId, responseText),
+            new DialogueDelivery(
+                new DialogueUtterance(request.RespondingCharacterId, responseText),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

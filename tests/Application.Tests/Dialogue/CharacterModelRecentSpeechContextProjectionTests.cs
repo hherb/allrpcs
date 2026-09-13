@@ -14,7 +14,11 @@ public sealed class CharacterModelRecentSpeechContextProjectionTests
             new CharacterGoalSet([]));
         string heardText = "  Can you examine this?  ";
         string spokenText = "I can examine it.";
-        DialogueEvent heard = CreateEvent("seeker", heardText, "healer");
+        DialogueEvent heard = CreateEvent(
+            "seeker",
+            heardText,
+            DialogueDeliveryMode.Whispering,
+            "healer");
         DialogueEvent unrelated = CreateEvent("villager", "Keep this private.", "seeker");
         DialogueEvent spoken = CreateEvent("healer", spokenText, "seeker");
         DialogueEvent[] source = [heard, unrelated, spoken];
@@ -29,11 +33,13 @@ public sealed class CharacterModelRecentSpeechContextProjectionTests
             {
                 Assert.Equal(CharacterModelContextEntryKind.RecentSpeech, entry.Kind);
                 Assert.Same(heardText, entry.Text);
+                Assert.Same(heard.Delivery.Mode, entry.DeliveryMode);
             },
             entry =>
             {
                 Assert.Equal(CharacterModelContextEntryKind.RecentSpeech, entry.Kind);
                 Assert.Same(spokenText, entry.Text);
+                Assert.Same(spoken.Delivery.Mode, entry.DeliveryMode);
             });
         Assert.Collection(
             source,
@@ -68,12 +74,19 @@ public sealed class CharacterModelRecentSpeechContextProjectionTests
             CharacterModelRecentSpeechContextProjection.Project(character, [null!]));
     }
 
-    internal static DialogueEvent CreateEvent(string speaker, string text, params string[] listeners)
+    internal static DialogueEvent CreateEvent(string speaker, string text, params string[] listeners) =>
+        CreateEvent(speaker, text, DialogueDeliveryMode.OrdinarySpeech, listeners);
+
+    internal static DialogueEvent CreateEvent(
+        string speaker,
+        string text,
+        DialogueDeliveryMode mode,
+        params string[] listeners)
     {
         DialogueUtterance utterance = new(new CharacterId(speaker), text);
         CharacterId[] listenerIds = listeners.Select(listener => new CharacterId(listener)).ToArray();
         return new DialogueEvent(
-            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+            new DialogueDelivery(utterance, mode),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, listenerIds));
     }
 }

@@ -12,7 +12,7 @@ namespace Allrpcs.Infrastructure.Tests.Dialogue;
 public sealed class AnthropicCharacterModelTests
 {
     private const string ResponseDocument =
-        "{\"disposition\":\"accept\",\"speech\":null,"
+        "{\"disposition\":\"accept\",\"speech\":null,\"deliveryMode\":null,"
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 
@@ -321,7 +321,8 @@ public sealed class AnthropicCharacterModelTests
                 [
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                        playerText),
+                        playerText,
+                        DialogueDeliveryMode.OrdinarySpeech),
                 ]));
     }
 

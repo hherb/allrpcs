@@ -15,7 +15,9 @@ public sealed class CharacterTurnWorldEventOccurrenceResultTests
         CharacterTurnWorldEventOccurrence occurrence = new(
             worldEvent,
             new CharacterTurnTranscriptEntry(
-                new DialogueUtterance(new CharacterId("healer"), "The flowers appear safe.")));
+                new DialogueDelivery(
+                    new DialogueUtterance(new CharacterId("healer"), "The flowers appear safe."),
+                    DialogueDeliveryMode.OrdinarySpeech)));
         WorldEventOccurrenceResult worldEventResult = new(
             new WorldEventLogSnapshot([worldEvent.EventId]),
             new WorldTimeSnapshot(null));
@@ -41,7 +43,9 @@ public sealed class CharacterTurnWorldEventOccurrenceResultTests
         CharacterTurnWorldEventOccurrence occurrence = new(
             worldEvent,
             new CharacterTurnTranscriptEntry(
-                new DialogueUtterance(new CharacterId("healer"), "It is safe.")));
+                new DialogueDelivery(
+                    new DialogueUtterance(new CharacterId("healer"), "It is safe."),
+                    DialogueDeliveryMode.OrdinarySpeech)));
         WorldEventOccurrenceResult worldEventResult = new(
             new WorldEventLogSnapshot([]),
             new WorldTimeSnapshot(null));

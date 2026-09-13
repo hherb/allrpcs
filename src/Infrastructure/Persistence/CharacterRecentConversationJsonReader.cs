@@ -10,7 +10,8 @@ internal static class CharacterRecentConversationJsonReader
     /// <summary>Reads completed local turns in stable oldest-to-newest order.</summary>
     internal static CharacterRecentConversationWindow Read(
         JsonElement element,
-        CharacterId characterId)
+        CharacterId characterId,
+        bool includesDialogueDeliveryMode)
     {
         SaveSnapshotJsonDeserializer.RequireArray(element);
         List<CharacterRecentConversationTurn> turns = new();
@@ -19,10 +20,12 @@ internal static class CharacterRecentConversationJsonReader
             SaveSnapshotJsonDeserializer.RequireObject(turnElement, "turnId", "heard", "response");
             CharacterTurnRequest request = ReadRequest(
                 turnElement.GetProperty("heard"),
-                characterId);
+                characterId,
+                includesDialogueDeliveryMode);
             CharacterTurnResponse response = ReadResponse(
                 turnElement.GetProperty("response"),
-                request);
+                request,
+                includesDialogueDeliveryMode);
             turns.Add(
                 new CharacterRecentConversationTurn(
                     new CharacterTurnId(ReadString(turnElement, "turnId")),
@@ -35,16 +38,36 @@ internal static class CharacterRecentConversationJsonReader
         return new CharacterRecentConversationWindow(characterId, turns);
     }
 
-    private static CharacterTurnRequest ReadRequest(JsonElement element, CharacterId characterId)
+    private static CharacterTurnRequest ReadRequest(
+        JsonElement element,
+        CharacterId characterId,
+        bool includesDialogueDeliveryMode)
     {
-        SaveSnapshotJsonDeserializer.RequireObject(
-            element,
-            "speakerCharacterId",
-            "listenerCharacterIds",
-            "text",
-            "dialogueAct");
+        if (includesDialogueDeliveryMode)
+        {
+            SaveSnapshotJsonDeserializer.RequireObject(
+                element,
+                "speakerCharacterId",
+                "deliveryMode",
+                "listenerCharacterIds",
+                "text",
+                "dialogueAct");
+        }
+        else
+        {
+            SaveSnapshotJsonDeserializer.RequireObject(
+                element,
+                "speakerCharacterId",
+                "listenerCharacterIds",
+                "text",
+                "dialogueAct");
+        }
+
         CharacterId speakerId = new(ReadString(element, "speakerCharacterId"));
         DialogueUtterance utterance = new(speakerId, ReadString(element, "text"));
+        DialogueDeliveryMode deliveryMode = includesDialogueDeliveryMode
+            ? DialogueDeliveryMode.Parse(ReadString(element, "deliveryMode"))
+            : DialogueDeliveryMode.OrdinarySpeech;
         JsonElement listenersElement = element.GetProperty("listenerCharacterIds");
         SaveSnapshotJsonDeserializer.RequireArray(listenersElement);
         List<CharacterId> listenerIds = new();
@@ -57,7 +80,7 @@ internal static class CharacterRecentConversationJsonReader
         return new CharacterTurnRequest(
             characterId,
             new DialogueEvent(
-                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+                new DialogueDelivery(utterance, deliveryMode),
                 new DialogueAudienceSnapshot(speakerId, listenerIds)),
             new DialogueAct(
                 utterance,
@@ -66,16 +89,42 @@ internal static class CharacterRecentConversationJsonReader
 
     private static CharacterTurnResponse ReadResponse(
         JsonElement element,
-        CharacterTurnRequest request)
+        CharacterTurnRequest request,
+        bool includesDialogueDeliveryMode)
     {
-        SaveSnapshotJsonDeserializer.RequireObject(
-            element,
-            "disposition",
-            "speech",
-            "immediateIntention",
-            "commitments",
-            "stateProposals");
+        if (includesDialogueDeliveryMode)
+        {
+            SaveSnapshotJsonDeserializer.RequireObject(
+                element,
+                "disposition",
+                "speech",
+                "deliveryMode",
+                "immediateIntention",
+                "commitments",
+                "stateProposals");
+        }
+        else
+        {
+            SaveSnapshotJsonDeserializer.RequireObject(
+                element,
+                "disposition",
+                "speech",
+                "immediateIntention",
+                "commitments",
+                "stateProposals");
+        }
+
         string? speechText = ReadNullableString(element.GetProperty("speech"));
+        DialogueDeliveryMode? deliveryMode = includesDialogueDeliveryMode
+            ? ReadNullableDeliveryMode(element.GetProperty("deliveryMode"))
+            : speechText is null
+                ? null
+                : DialogueDeliveryMode.OrdinarySpeech;
+        if ((speechText is null) != (deliveryMode is null))
+        {
+            throw SaveSnapshotJsonDeserializer.InvalidDocument();
+        }
+
         JsonElement commitmentsElement = element.GetProperty("commitments");
         SaveSnapshotJsonDeserializer.RequireArray(commitmentsElement);
         List<CharacterCommitment> commitments = new();
@@ -108,7 +157,9 @@ internal static class CharacterRecentConversationJsonReader
             CharacterTurnDisposition.Parse(ReadString(element, "disposition")),
             speechText is null
                 ? null
-                : new DialogueUtterance(request.RespondingCharacterId, speechText),
+                : new DialogueDelivery(
+                    new DialogueUtterance(request.RespondingCharacterId, speechText),
+                    deliveryMode!),
             ReadIntention(element.GetProperty("immediateIntention")),
             commitments,
             proposals);
@@ -132,4 +183,13 @@ internal static class CharacterRecentConversationJsonReader
         JsonValueKind.String => SaveSnapshotJsonDeserializer.ReadString(element),
         _ => throw SaveSnapshotJsonDeserializer.InvalidDocument(),
     };
+
+    private static DialogueDeliveryMode? ReadNullableDeliveryMode(JsonElement element) =>
+        element.ValueKind switch
+        {
+            JsonValueKind.Null => null,
+            JsonValueKind.String => DialogueDeliveryMode.Parse(
+                SaveSnapshotJsonDeserializer.ReadString(element)),
+            _ => throw SaveSnapshotJsonDeserializer.InvalidDocument(),
+        };
 }

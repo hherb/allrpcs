@@ -25,7 +25,9 @@ public static class DeterministicExaminationResponseSelector
         return new CharacterTurnResponse(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(request.RespondingCharacterId, ExaminationSpeech),
+            new DialogueDelivery(
+                new DialogueUtterance(request.RespondingCharacterId, ExaminationSpeech),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.ExamineObject, targetObjectId),
             [],
             []);

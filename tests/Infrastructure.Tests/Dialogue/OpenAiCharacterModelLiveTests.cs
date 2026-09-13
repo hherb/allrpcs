@@ -224,7 +224,8 @@ public sealed class OpenAiCharacterModelLiveTests
                         "type=wait;target=null"),
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                        playerText),
+                        playerText,
+                        DialogueDeliveryMode.OrdinarySpeech),
                 ]));
     }
 
@@ -243,7 +244,8 @@ public sealed class OpenAiCharacterModelLiveTests
                         "type=examine-object;target=herb-patch"),
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                        request.TurnRequest.DialogueEvent.Utterance.Text),
+                        request.TurnRequest.DialogueEvent.Utterance.Text,
+                        request.TurnRequest.DialogueEvent.Delivery.Mode),
                 ]));
     }
 

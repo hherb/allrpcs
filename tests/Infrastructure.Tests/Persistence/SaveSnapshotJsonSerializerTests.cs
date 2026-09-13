@@ -357,7 +357,11 @@ public sealed class SaveSnapshotJsonSerializerTests
             includeDetails
                 ? CharacterTurnDisposition.ConditionallyAccept
                 : CharacterTurnDisposition.Accept,
-            responseText is null ? null : new DialogueUtterance(healer, responseText),
+            responseText is null
+                ? null
+                : new DialogueDelivery(
+                    new DialogueUtterance(healer, responseText),
+                    DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(
                 includeDetails ? CharacterIntentionType.ExamineObject : CharacterIntentionType.Wait,
                 includeDetails ? new ObjectId("moonwort-patch") : null),

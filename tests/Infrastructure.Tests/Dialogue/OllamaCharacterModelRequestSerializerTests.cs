@@ -38,6 +38,9 @@ public sealed class OllamaCharacterModelRequestSerializerTests
             messages[1].GetProperty("content").GetString()!);
         Assert.Equal("healer", context.RootElement.GetProperty("respondingCharacterId").GetString());
         Assert.Equal("request", context.RootElement.GetProperty("dialogueAct").GetString());
+        Assert.Equal(
+            DialogueDeliveryMode.OrdinarySpeech.Value,
+            context.RootElement.GetProperty("dialogueDeliveryMode").GetString());
         Assert.Collection(
             context.RootElement.GetProperty("context").EnumerateArray(),
             entry =>
@@ -66,7 +69,14 @@ public sealed class OllamaCharacterModelRequestSerializerTests
         Assert.Equal("object", schema.GetProperty("type").GetString());
         Assert.False(schema.GetProperty("additionalProperties").GetBoolean());
         Assert.Equal(
-            ["disposition", "speech", "immediateIntention", "commitments", "stateProposals"],
+            [
+                "disposition",
+                "speech",
+                "deliveryMode",
+                "immediateIntention",
+                "commitments",
+                "stateProposals",
+            ],
             schema.GetProperty("required").EnumerateArray().Select(value => value.GetString()));
         Assert.Equal(
             1,
@@ -150,7 +160,8 @@ public sealed class OllamaCharacterModelRequestSerializerTests
                     "type=wait;target=null"),
                 new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                    playerText),
+                    playerText,
+                    DialogueDeliveryMode.OrdinarySpeech),
             ]);
         return new CharacterModelGenerationRequest(request, context);
     }

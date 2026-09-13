@@ -35,7 +35,11 @@ public sealed class CharacterModelStreamTextPresentationTests
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(request.RespondingCharacterId, "private complete speech"),
+            new DialogueDelivery(
+                new DialogueUtterance(
+                    request.RespondingCharacterId,
+                    "private complete speech"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

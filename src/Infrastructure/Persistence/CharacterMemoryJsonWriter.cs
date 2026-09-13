@@ -9,7 +9,10 @@ namespace Allrpcs.Infrastructure.Persistence;
 internal static class CharacterMemoryJsonWriter
 {
     /// <summary>Writes every aggregate in stable supplied order.</summary>
-    internal static void Write(Utf8JsonWriter writer, CharacterMemorySnapshot snapshot)
+    internal static void Write(
+        Utf8JsonWriter writer,
+        CharacterMemorySnapshot snapshot,
+        bool includeDialogueDeliveryMode)
     {
         writer.WritePropertyName("characterMemory");
         writer.WriteStartObject();
@@ -17,18 +20,24 @@ internal static class CharacterMemoryJsonWriter
         writer.WriteStartArray();
         foreach (CharacterMemoryAggregate aggregate in snapshot.Characters)
         {
-            WriteAggregate(writer, aggregate);
+            WriteAggregate(writer, aggregate, includeDialogueDeliveryMode);
         }
 
         writer.WriteEndArray();
         writer.WriteEndObject();
     }
 
-    private static void WriteAggregate(Utf8JsonWriter writer, CharacterMemoryAggregate aggregate)
+    private static void WriteAggregate(
+        Utf8JsonWriter writer,
+        CharacterMemoryAggregate aggregate,
+        bool includeDialogueDeliveryMode)
     {
         writer.WriteStartObject();
         writer.WriteString("characterId", aggregate.CharacterId.Value);
-        WriteRecentConversation(writer, aggregate.RecentConversation);
+        WriteRecentConversation(
+            writer,
+            aggregate.RecentConversation,
+            includeDialogueDeliveryMode);
         WriteConversationSummaries(writer, aggregate.ConversationSummaries);
         WriteEpisodicMemories(writer, aggregate.EpisodicMemories);
         WriteEpistemicMemories(writer, aggregate.EpistemicMemories);
@@ -41,7 +50,8 @@ internal static class CharacterMemoryJsonWriter
 
     private static void WriteRecentConversation(
         Utf8JsonWriter writer,
-        CharacterRecentConversationWindow window)
+        CharacterRecentConversationWindow window,
+        bool includeDialogueDeliveryMode)
     {
         writer.WritePropertyName("recentConversation");
         writer.WriteStartArray();
@@ -49,20 +59,34 @@ internal static class CharacterMemoryJsonWriter
         {
             writer.WriteStartObject();
             writer.WriteString("turnId", turn.TurnId.Value);
-            WriteHeardDialogue(writer, turn.Activity.Request);
-            WriteResponse(writer, turn.Activity.Response!);
+            WriteHeardDialogue(
+                writer,
+                turn.Activity.Request,
+                includeDialogueDeliveryMode);
+            WriteResponse(
+                writer,
+                turn.Activity.Response!,
+                includeDialogueDeliveryMode);
             writer.WriteEndObject();
         }
 
         writer.WriteEndArray();
     }
 
-    private static void WriteHeardDialogue(Utf8JsonWriter writer, CharacterTurnRequest request)
+    private static void WriteHeardDialogue(
+        Utf8JsonWriter writer,
+        CharacterTurnRequest request,
+        bool includeDialogueDeliveryMode)
     {
         DialogueUtterance utterance = request.DialogueEvent.Utterance;
         writer.WritePropertyName("heard");
         writer.WriteStartObject();
         writer.WriteString("speakerCharacterId", utterance.SpeakerCharacterId.Value);
+        if (includeDialogueDeliveryMode)
+        {
+            writer.WriteString("deliveryMode", request.DialogueEvent.Delivery.Mode.Value);
+        }
+
         writer.WritePropertyName("listenerCharacterIds");
         writer.WriteStartArray();
         foreach (CharacterId listenerId in request.DialogueEvent.Audience.ListenerCharacterIds)
@@ -76,12 +100,20 @@ internal static class CharacterMemoryJsonWriter
         writer.WriteEndObject();
     }
 
-    private static void WriteResponse(Utf8JsonWriter writer, CharacterTurnResponse response)
+    private static void WriteResponse(
+        Utf8JsonWriter writer,
+        CharacterTurnResponse response,
+        bool includeDialogueDeliveryMode)
     {
         writer.WritePropertyName("response");
         writer.WriteStartObject();
         writer.WriteString("disposition", response.Disposition.Value);
         writer.WriteString("speech", response.Speech?.Text);
+        if (includeDialogueDeliveryMode)
+        {
+            writer.WriteString("deliveryMode", response.Delivery?.Mode.Value);
+        }
+
         writer.WritePropertyName("immediateIntention");
         WriteIntention(writer, response.ImmediateIntention);
         writer.WritePropertyName("commitments");

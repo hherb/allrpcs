@@ -53,7 +53,7 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
         return new SaveSnapshot(
-            SaveSchemaVersion.FirstPatient,
+            SaveSchemaVersion.DialogueDelivery,
             discovery,
             eventState,
             memory,

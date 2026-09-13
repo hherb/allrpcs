@@ -49,6 +49,10 @@ public sealed class OpenAiChatCompletionRequestSerializerTests
         Assert.Equal(["system", "user"], messages.Select(
             message => message.GetProperty("role").GetString()));
         Assert.Contains("respondingCharacterId", messages[0].GetProperty("content").GetString());
+        Assert.Contains(
+            "\"dialogueDeliveryMode\":\"ordinary-speech\"",
+            messages[0].GetProperty("content").GetString(),
+            StringComparison.Ordinal);
         Assert.Equal(
             request.TurnRequest.DialogueEvent.Utterance.Text,
             messages[1].GetProperty("content").GetString());
@@ -87,7 +91,8 @@ public sealed class OpenAiChatCompletionRequestSerializerTests
                         "type=wait;target=null"),
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                        utterance.Text),
+                        utterance.Text,
+                        DialogueDeliveryMode.OrdinarySpeech),
                 ]));
     }
 }

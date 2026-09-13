@@ -105,7 +105,9 @@ public sealed class CharacterTurnResponseReceptionPolicyTests
         new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(request.RespondingCharacterId, "I will do that."),
+            new DialogueDelivery(
+                new DialogueUtterance(request.RespondingCharacterId, "I will do that."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

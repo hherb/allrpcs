@@ -39,16 +39,17 @@ public sealed record SaveSnapshot
         ArgumentNullException.ThrowIfNull(worldEvents);
         ArgumentNullException.ThrowIfNull(characterMemory);
 
-        bool isFirstPatientVersion = schemaVersion == SaveSchemaVersion.FirstPatient;
-        if (isFirstPatientVersion && firstPatient is null)
+        bool retainsFirstPatient = schemaVersion == SaveSchemaVersion.FirstPatient
+            || schemaVersion == SaveSchemaVersion.DialogueDelivery;
+        if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
         }
 
-        if (!isFirstPatientVersion && firstPatient is not null)
+        if (!retainsFirstPatient && firstPatient is not null)
         {
             throw new ArgumentException(
-                "Only the first-patient save schema can retain first-patient state.",
+                "Only a first-patient-capable save schema can retain first-patient state.",
                 nameof(firstPatient));
         }
 

@@ -16,6 +16,7 @@ public sealed class SaveSnapshotLoadPolicyTests
     [InlineData(1)]
     [InlineData(2)]
     [InlineData(3)]
+    [InlineData(4)]
     public void AcceptsASnapshotWithAKnownSchemaVersionWithoutChangingIt(int value)
     {
         SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(value));
@@ -78,6 +79,7 @@ public sealed class SaveSnapshotLoadPolicyTests
             new WorldEventLogSnapshot([]),
             new WorldTimeSnapshot(null));
         return version == SaveSchemaVersion.FirstPatient
+                || version == SaveSchemaVersion.DialogueDelivery
             ? new SaveSnapshot(
                 version,
                 discovery,

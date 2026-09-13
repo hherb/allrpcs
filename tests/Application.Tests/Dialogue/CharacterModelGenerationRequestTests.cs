@@ -12,7 +12,8 @@ public sealed class CharacterModelGenerationRequestTests
         CharacterTurnRequest turnRequest = CreateTurnRequest();
         CharacterModelContextEntry dialogueEntry = new(
             CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-            turnRequest.DialogueEvent.Utterance.Text);
+            turnRequest.DialogueEvent.Utterance.Text,
+            turnRequest.DialogueEvent.Delivery.Mode);
         CharacterModelContextSnapshot context = new([dialogueEntry]);
 
         CharacterModelGenerationRequest request = new(turnRequest, context);
@@ -42,14 +43,21 @@ public sealed class CharacterModelGenerationRequestTests
         CharacterTurnRequest turnRequest = CreateTurnRequest();
         CharacterModelContextEntry exactEntry = new(
             CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-            turnRequest.DialogueEvent.Utterance.Text);
+            turnRequest.DialogueEvent.Utterance.Text,
+            turnRequest.DialogueEvent.Delivery.Mode);
         string distinctEqualText = new(turnRequest.DialogueEvent.Utterance.Text.ToCharArray());
         CharacterModelContextEntry distinctEntry = new(
             CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-            distinctEqualText);
+            distinctEqualText,
+            turnRequest.DialogueEvent.Delivery.Mode);
         CharacterModelContextEntry changedEntry = new(
             CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-            "Changed player dialogue.");
+            "Changed player dialogue.",
+            turnRequest.DialogueEvent.Delivery.Mode);
+        CharacterModelContextEntry changedModeEntry = new(
+            CharacterModelContextEntryKind.UntrustedPlayerDialogue,
+            turnRequest.DialogueEvent.Utterance.Text,
+            DialogueDeliveryMode.OrdinarySpeech);
 
         Assert.Throws<ArgumentException>(() => new CharacterModelGenerationRequest(
             turnRequest,
@@ -63,6 +71,9 @@ public sealed class CharacterModelGenerationRequestTests
         Assert.Throws<ArgumentException>(() => new CharacterModelGenerationRequest(
             turnRequest,
             new CharacterModelContextSnapshot([changedEntry])));
+        Assert.Throws<ArgumentException>(() => new CharacterModelGenerationRequest(
+            turnRequest,
+            new CharacterModelContextSnapshot([changedModeEntry])));
     }
 
     [Fact]
@@ -87,7 +98,8 @@ public sealed class CharacterModelGenerationRequestTests
     private static CharacterModelContextSnapshot ContextFor(CharacterTurnRequest turnRequest) => new(
         [new CharacterModelContextEntry(
             CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-            turnRequest.DialogueEvent.Utterance.Text)]);
+            turnRequest.DialogueEvent.Utterance.Text,
+            turnRequest.DialogueEvent.Delivery.Mode)]);
 
     private static void AssertGetOnlyProperty(
         System.Reflection.PropertyInfo property,
@@ -109,7 +121,7 @@ public sealed class CharacterModelGenerationRequestTests
         return new CharacterTurnRequest(
             healerId,
             new DialogueEvent(
-                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+                new DialogueDelivery(utterance, DialogueDeliveryMode.Whispering),
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(utterance, DialogueActType.Request));
     }

@@ -33,7 +33,9 @@ public sealed class CharacterExaminationResultTests
             new CharacterTurnWorldEventOccurrence(
                 worldEvent,
                 new CharacterTurnTranscriptEntry(
-                    new DialogueUtterance(new CharacterId("healer"), "I examined it."))),
+                    new DialogueDelivery(
+                        new DialogueUtterance(new CharacterId("healer"), "I examined it."),
+                        DialogueDeliveryMode.OrdinarySpeech))),
             CharacterExaminationSafety.SafeToCollect));
         Assert.Throws<ArgumentException>(() => new CharacterExaminationResult(
             new CharacterTurnWorldEventOccurrence(

@@ -39,7 +39,8 @@ public partial class CharacterTurnWorldEventOccurrenceControllerSmokeCheck : Nod
         CharacterTurnActivity activity = SpeakingActivity(targetObjectId);
         DialogueUtterance speech = activity.Response!.Speech!;
 
-        if (!transcriptController.TryAppendSpokenStatement(speech)
+        if (!transcriptController.TryAppendSpokenStatement(
+                new DialogueDelivery(speech, DialogueDeliveryMode.OrdinarySpeech))
             || !controller.TryOccurImmediateIntention(
                 activity,
                 eventSource.HerbPatchExaminedWorldEvent))
@@ -130,7 +131,9 @@ public partial class CharacterTurnWorldEventOccurrenceControllerSmokeCheck : Nod
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(healerId, "I will examine them first."),
+            new DialogueDelivery(
+                new DialogueUtterance(healerId, "I will examine them first."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.ExamineObject, targetObjectId),
             [],
             []);

@@ -35,7 +35,9 @@ public static class DeterministicCharacterTurnResponseSelector
         return new CharacterTurnResponse(
             request,
             selection.Disposition,
-            new DialogueUtterance(request.RespondingCharacterId, selection.Speech),
+            new DialogueDelivery(
+                new DialogueUtterance(request.RespondingCharacterId, selection.Speech),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

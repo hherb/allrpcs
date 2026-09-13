@@ -9,12 +9,12 @@ public sealed record CharacterTurnResponse
     public const int MaximumStateProposalCount = 8;
 
     /// <summary>
-    /// Creates a response core with optional bounded speech and one immediate intention.
+    /// Creates a response core with an optional spoken delivery and one immediate intention.
     /// </summary>
     public CharacterTurnResponse(
         CharacterTurnRequest request,
         CharacterTurnDisposition disposition,
-        DialogueUtterance? speech,
+        DialogueDelivery? delivery,
         CharacterIntention immediateIntention,
         IEnumerable<CharacterCommitment> commitments,
         IEnumerable<CharacterStateProposal> stateProposals)
@@ -25,12 +25,12 @@ public sealed record CharacterTurnResponse
         ArgumentNullException.ThrowIfNull(commitments);
         ArgumentNullException.ThrowIfNull(stateProposals);
 
-        if (speech is not null
-            && speech.SpeakerCharacterId != request.RespondingCharacterId)
+        if (delivery is not null
+            && delivery.Utterance.SpeakerCharacterId != request.RespondingCharacterId)
         {
             throw new ArgumentException(
                 "Response speech must come from the responding character.",
-                nameof(speech));
+                nameof(delivery));
         }
 
         List<CharacterCommitment> retainedCommitments = new();
@@ -67,7 +67,7 @@ public sealed record CharacterTurnResponse
 
         Request = request;
         Disposition = disposition;
-        Speech = speech;
+        Delivery = delivery;
         ImmediateIntention = immediateIntention;
         Commitments = retainedCommitments.AsReadOnly();
         StateProposals = retainedStateProposals.AsReadOnly();
@@ -79,8 +79,11 @@ public sealed record CharacterTurnResponse
     /// <summary>Gets the exact declared response disposition.</summary>
     public CharacterTurnDisposition Disposition { get; }
 
-    /// <summary>Gets the exact proposed speech, or <see langword="null"/> for no speech.</summary>
-    public DialogueUtterance? Speech { get; }
+    /// <summary>Gets the exact proposed spoken delivery, or <see langword="null"/>.</summary>
+    public DialogueDelivery? Delivery { get; }
+
+    /// <summary>Gets the exact delivered utterance, or <see langword="null"/> for no speech.</summary>
+    public DialogueUtterance? Speech => Delivery?.Utterance;
 
     /// <summary>Gets the exact one proposed immediate intention.</summary>
     public CharacterIntention ImmediateIntention { get; }

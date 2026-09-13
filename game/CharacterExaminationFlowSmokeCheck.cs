@@ -228,9 +228,11 @@ public partial class CharacterExaminationFlowSmokeCheck : Node
             Response = new CharacterTurnResponse(
                 request.TurnRequest,
                 CharacterTurnDisposition.Accept,
-                new DialogueUtterance(
-                    request.TurnRequest.RespondingCharacterId,
-                    DeterministicExaminationResponseSelector.ExaminationSpeech),
+                new DialogueDelivery(
+                    new DialogueUtterance(
+                        request.TurnRequest.RespondingCharacterId,
+                        DeterministicExaminationResponseSelector.ExaminationSpeech),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(
                     CharacterIntentionType.ExamineObject,
                     new ObjectId("herb-patch")),
