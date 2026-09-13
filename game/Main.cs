@@ -47,6 +47,8 @@ public partial class Main : Node
     private TemporaryCharacterModelGenerationInputSource characterModelInputSource = null!;
     private TemporaryHealerCharacterSource healerCharacterSource = null!;
     private TemporaryOrdinaryCharacterParticipantSource ordinaryCharacterParticipantSource = null!;
+    private TemporaryCharacterIndependentTaskSource independentTaskSource = null!;
+    private CharacterIndependentTaskDepartureController independentTaskDepartureController = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -99,6 +101,11 @@ public partial class Main : Node
             "TemporaryHealerCharacterSource");
         ordinaryCharacterParticipantSource = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
             "TemporaryOrdinaryCharacterParticipantSource");
+        independentTaskSource = GetNode<TemporaryCharacterIndependentTaskSource>(
+            "TemporaryCharacterIndependentTaskSource");
+        independentTaskDepartureController =
+            GetNode<CharacterIndependentTaskDepartureController>(
+                "CharacterIndependentTaskDepartureController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -196,6 +203,8 @@ public partial class Main : Node
                 "The world-object controller could not initialize the scene snapshot.");
         }
 
+        InitializeAndStartIndependentTaskDeparture();
+
         if (!focusedSearchController.TryInitializePerception(seekerPerceptionSource.Perception))
         {
             throw new InvalidOperationException(
@@ -225,6 +234,21 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The first-patient controller could not initialize the authored scene state.");
+        }
+    }
+
+    private void InitializeAndStartIndependentTaskDeparture()
+    {
+        CharacterIndependentTaskActivitySnapshot activities = independentTaskSource.Activities;
+        CharacterPartySnapshot party = independentTaskSource.Party;
+        if (!independentTaskDepartureController.TryInitialize(activities, party)
+            || !independentTaskDepartureController.TryStartAndSeparate(
+                independentTaskSource.DepartingCharacterId,
+                activities,
+                party))
+        {
+            throw new InvalidOperationException(
+                "The authored independent-task departure could not start atomically.");
         }
     }
 

@@ -362,8 +362,12 @@ Acceptance:
   - [x] Enforce closed forward task lifecycle transitions and stable per-character scheduling.
   - [x] Complete only an exact active task through an authoritative physical-action occurrence.
   - [x] Represent bounded party membership and atomically start a task while separating its member.
-  - [ ] Scene-own task and party state and drive one authored departure through existing rules.
+  - [x] Scene-own task and party state and drive one authored departure through existing rules.
+  - [x] Complete one exact active authored task through authoritative event, time, and transcript
+    state only.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
+  - [ ] Define one bounded provider-neutral travel plan and immutable progress transition for an
+    exact active independent task without introducing Godot navigation or elapsed-time policy.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
