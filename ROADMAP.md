@@ -409,6 +409,8 @@ Acceptance:
     without applying an effect.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
+  - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
+    evidence, without mutating the authoritative object, its position, or any critical route.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
