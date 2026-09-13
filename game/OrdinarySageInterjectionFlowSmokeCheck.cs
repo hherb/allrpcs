@@ -208,7 +208,9 @@ public partial class OrdinarySageInterjectionFlowSmokeCheck : Node
             CharacterTurnResponse response = new(
                 request.TurnRequest,
                 CharacterTurnDisposition.Clarify,
-                new DialogueUtterance(request.TurnRequest.RespondingCharacterId, SageText),
+                new DialogueDelivery(
+                    new DialogueUtterance(request.TurnRequest.RespondingCharacterId, SageText),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(CharacterIntentionType.Wait, null),
                 [],
                 []);

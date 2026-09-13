@@ -101,7 +101,9 @@ public partial class CharacterModelStreamTextPresentationSmokeCheck : Node
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(healerId, "private completed response"),
+            new DialogueDelivery(
+                new DialogueUtterance(healerId, "private completed response"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(
                 CharacterIntentionType.ExamineObject,
                 new ObjectId("private-target")),

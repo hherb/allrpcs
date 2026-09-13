@@ -17,7 +17,8 @@ public sealed class CharacterTurnTranscriptSnapshotTests
     public void PreservesOrderExactInstancesAndRepeatedEvents()
     {
         DialogueUtterance repeatedSpeech = new(new CharacterId("healer"), "Careful.");
-        CharacterTurnTranscriptEntry first = new(repeatedSpeech);
+        CharacterTurnTranscriptEntry first = new(
+            new DialogueDelivery(repeatedSpeech, DialogueDeliveryMode.OrdinarySpeech));
         CharacterTurnTranscriptEntry action = new(
             repeatedSpeech.SpeakerCharacterId,
             new CharacterIntention(
@@ -83,5 +84,7 @@ public sealed class CharacterTurnTranscriptSnapshotTests
     }
 
     private static CharacterTurnTranscriptEntry Speech(string text) =>
-        new(new DialogueUtterance(new CharacterId("healer"), text));
+        new(new DialogueDelivery(
+            new DialogueUtterance(new CharacterId("healer"), text),
+            DialogueDeliveryMode.OrdinarySpeech));
 }

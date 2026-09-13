@@ -101,7 +101,7 @@ public sealed class FirstPatientJsonPersistenceTests
     }
 
     [Fact]
-    public void DeserializeCurrentRetainsVersionThreeWithoutExecutingAnotherMigration()
+    public void DeserializeCurrentMigratesVersionThreeToDialogueDelivery()
     {
         SaveSnapshot source = CreateCompleteSnapshot();
         string serialized = SaveSnapshotJsonSerializer.Serialize(source);
@@ -111,9 +111,9 @@ public sealed class FirstPatientJsonPersistenceTests
             serialized,
             initialFirstPatient);
 
-        Assert.Same(SaveSchemaVersion.FirstPatient, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.DialogueDelivery, result.SchemaVersion);
         Assert.NotSame(initialFirstPatient, result.FirstPatient);
-        Assert.Equal(serialized, SaveSnapshotJsonSerializer.Serialize(result));
+        Assert.NotEqual(serialized, SaveSnapshotJsonSerializer.Serialize(result));
     }
 
     [Fact]

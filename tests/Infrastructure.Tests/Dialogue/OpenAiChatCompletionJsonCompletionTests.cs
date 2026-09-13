@@ -11,6 +11,7 @@ public sealed class OpenAiChatCompletionJsonCompletionTests
 {
     private const string ResponseDocument =
         "{\"disposition\":\"accept\",\"speech\":\"I will wait.\","
+        + "\"deliveryMode\":\"ordinary-speech\","
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 

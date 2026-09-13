@@ -347,7 +347,8 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
             [
                 new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                    playerText),
+                    playerText,
+                    DialogueDeliveryMode.OrdinarySpeech),
             ]);
         return new CharacterModelGenerationRequest(turnRequest, context);
     }
@@ -365,7 +366,9 @@ public partial class CharacterModelGenerationFlowSmokeCheck : Node
         new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(request.RespondingCharacterId, WaitingModel.PartialText),
+            new DialogueDelivery(
+                new DialogueUtterance(request.RespondingCharacterId, WaitingModel.PartialText),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

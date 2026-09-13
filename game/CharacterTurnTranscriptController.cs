@@ -23,10 +23,10 @@ public partial class CharacterTurnTranscriptController : Node
         return true;
     }
 
-    /// <summary>Appends one exact spoken occurrence through the Domain transcript transition.</summary>
-    public bool TryAppendSpokenStatement(DialogueUtterance spokenStatement)
+    /// <summary>Appends one exact spoken delivery through the Domain transcript transition.</summary>
+    public bool TryAppendSpokenStatement(DialogueDelivery delivery)
     {
-        ArgumentNullException.ThrowIfNull(spokenStatement);
+        ArgumentNullException.ThrowIfNull(delivery);
 
         CharacterTurnTranscriptSnapshot? transcript = Transcript;
         if (transcript is null)
@@ -34,7 +34,7 @@ public partial class CharacterTurnTranscriptController : Node
             return false;
         }
 
-        CharacterTurnTranscriptEntry entry = new(spokenStatement);
+        CharacterTurnTranscriptEntry entry = new(delivery);
         Transcript = CharacterTurnTranscriptAppendTransition.Append(entry, transcript);
         return true;
     }

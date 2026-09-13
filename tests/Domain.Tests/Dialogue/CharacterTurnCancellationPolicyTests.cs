@@ -62,7 +62,9 @@ public sealed class CharacterTurnCancellationPolicyTests
             : new CharacterTurnResponse(
                 request,
                 CharacterTurnDisposition.Accept,
-                new DialogueUtterance(healerId, "I will wait."),
+                new DialogueDelivery(
+                    new DialogueUtterance(healerId, "I will wait."),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(CharacterIntentionType.Wait, null),
                 [],
                 []);

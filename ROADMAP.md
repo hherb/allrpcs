@@ -346,11 +346,17 @@ Acceptance:
   - [x] Install a fresh finite budget for each eligible ordinary player-rooted autonomous chain.
   - [x] Initialize and drive every ordinary autonomous chain through these bounded seams.
   - [x] Start only heard LLM listeners after exact character speech and stop at the finite bound.
-- [ ] Support whispering and private conversations based on hearing conditions.
+- [x] Support whispering and private conversations based on hearing conditions.
   - [x] Define explicit provider-neutral ordinary-speech and whispering delivery values.
   - [x] Select ordinary or whisper listeners through explicit bounded hearing ranges.
   - [x] Retain exact delivery on dialogue events and apply it at scene occurrence.
   - [x] Carry explicit player-authored whisper intent through ordinary scene occurrence.
+  - [x] Retain exact delivery on spoken transcript entries and scene transcript append.
+  - [x] Retain exact delivery mode on recent and current dialogue model context.
+  - [x] Serialize exact dialogue delivery modes into shared trusted model-request context.
+  - [x] Retain an optional exact response delivery and strictly decode provider-selected modes.
+  - [x] Apply exact response delivery to scene hearing and transcript recording.
+  - [x] Persist exact heard and response delivery modes through the version-4 save boundary.
 - [ ] Support bounded independent tasks and party separation.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence

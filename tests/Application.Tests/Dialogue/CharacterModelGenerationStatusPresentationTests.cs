@@ -119,7 +119,9 @@ public sealed class CharacterModelGenerationStatusPresentationTests
         return new CharacterTurnResponse(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(healerId, speechText),
+            new DialogueDelivery(
+                new DialogueUtterance(healerId, speechText),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

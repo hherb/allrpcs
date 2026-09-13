@@ -11,6 +11,7 @@ public sealed class CharacterModelJsonResponseCompletionTests
         {
           "disposition":"accept",
           "speech":"I will inspect it.",
+          "deliveryMode":"whispering",
           "immediateIntention":{"type":"examine-object","targetObjectId":"herb-patch"},
           "commitments":[],
           "stateProposals":[]
@@ -29,6 +30,7 @@ public sealed class CharacterModelJsonResponseCompletionTests
         Assert.Equal(CharacterModelStreamTerminationStatus.Completed, result.Status);
         Assert.Same(request, result.Response?.Request);
         Assert.Equal("I will inspect it.", result.Response?.Speech?.Text);
+        Assert.Same(DialogueDeliveryMode.Whispering, result.Response?.Delivery?.Mode);
         Assert.Same(CharacterIntentionType.ExamineObject, result.Response?.ImmediateIntention.Type);
         Assert.Equal(new ObjectId("herb-patch"), result.Response?.ImmediateIntention.TargetObjectId);
         Assert.Null(result.Failure);

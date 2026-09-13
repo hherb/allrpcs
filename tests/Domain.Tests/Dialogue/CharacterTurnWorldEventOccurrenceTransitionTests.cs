@@ -170,5 +170,7 @@ public sealed class CharacterTurnWorldEventOccurrenceTransitionTests
         new(new WorldEventId(id), effect);
 
     private static CharacterTurnTranscriptEntry Speech(string text) =>
-        new(new DialogueUtterance(new CharacterId("healer"), text));
+        new(new DialogueDelivery(
+            new DialogueUtterance(new CharacterId("healer"), text),
+            DialogueDeliveryMode.OrdinarySpeech));
 }

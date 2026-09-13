@@ -80,7 +80,9 @@ public sealed class CharacterTurnTranscriptAppendTransitionTests
     }
 
     private static CharacterTurnTranscriptEntry Speech(string text) =>
-        new(new DialogueUtterance(new CharacterId("healer"), text));
+        new(new DialogueDelivery(
+            new DialogueUtterance(new CharacterId("healer"), text),
+            DialogueDeliveryMode.OrdinarySpeech));
 
     private static CharacterTurnTranscriptEntry Action(CharacterIntentionType type) =>
         new(

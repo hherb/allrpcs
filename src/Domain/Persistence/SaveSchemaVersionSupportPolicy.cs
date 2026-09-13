@@ -12,6 +12,7 @@ public static class SaveSchemaVersionSupportPolicy
 
         return version == SaveSchemaVersion.FirstSupported
             || version == SaveSchemaVersion.CharacterMemory
-            || version == SaveSchemaVersion.FirstPatient;
+            || version == SaveSchemaVersion.FirstPatient
+            || version == SaveSchemaVersion.DialogueDelivery;
     }
 }

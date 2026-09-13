@@ -1,3 +1,5 @@
+using Allrpcs.Domain.Dialogue;
+
 namespace Allrpcs.Application.Dialogue;
 
 /// <summary>
@@ -15,6 +17,61 @@ public sealed record CharacterModelContextEntry
     /// </summary>
     public CharacterModelContextEntry(CharacterModelContextEntryKind kind, string text)
     {
+        ValidateKindAndText(kind, text);
+        if (IsDialogueKind(kind))
+        {
+            throw new ArgumentException(
+                "Dialogue context must retain an explicit delivery mode.",
+                nameof(kind));
+        }
+
+        Kind = kind;
+        Text = text;
+    }
+
+    /// <summary>
+    /// Creates one dialogue context entry while retaining its exact text and delivery mode.
+    /// </summary>
+    public CharacterModelContextEntry(
+        CharacterModelContextEntryKind kind,
+        string text,
+        DialogueDeliveryMode deliveryMode)
+    {
+        ValidateKindAndText(kind, text);
+        ArgumentNullException.ThrowIfNull(deliveryMode);
+        if (!IsDialogueKind(kind))
+        {
+            throw new ArgumentException(
+                "Only dialogue context can retain a delivery mode.",
+                nameof(kind));
+        }
+
+        Kind = kind;
+        Text = text;
+        DeliveryMode = deliveryMode;
+    }
+
+    /// <summary>
+    /// Gets the trusted provider-neutral origin and role of the entry.
+    /// </summary>
+    public CharacterModelContextEntryKind Kind { get; }
+
+    /// <summary>
+    /// Gets the exact context text as supplied.
+    /// </summary>
+    public string Text { get; }
+
+    /// <summary>
+    /// Gets the exact delivery mode for recent or current dialogue context, if applicable.
+    /// </summary>
+    public DialogueDeliveryMode? DeliveryMode { get; }
+
+    private static bool IsDialogueKind(CharacterModelContextEntryKind kind) =>
+        kind is CharacterModelContextEntryKind.RecentSpeech
+            or CharacterModelContextEntryKind.UntrustedPlayerDialogue;
+
+    private static void ValidateKindAndText(CharacterModelContextEntryKind kind, string text)
+    {
         if (!Enum.IsDefined(kind))
         {
             throw new ArgumentOutOfRangeException(nameof(kind));
@@ -28,18 +85,5 @@ public sealed record CharacterModelContextEntry
                     + $"{MaximumTextLength} UTF-16 code units.",
                 nameof(text));
         }
-
-        Kind = kind;
-        Text = text;
     }
-
-    /// <summary>
-    /// Gets the trusted provider-neutral origin and role of the entry.
-    /// </summary>
-    public CharacterModelContextEntryKind Kind { get; }
-
-    /// <summary>
-    /// Gets the exact context text as supplied.
-    /// </summary>
-    public string Text { get; }
 }

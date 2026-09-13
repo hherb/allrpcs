@@ -47,7 +47,7 @@ public static class SaveSnapshotJsonDeserializer
     }
 
     /// <summary>
-    /// Materializes one known document and migrates older versions to first-patient state.
+    /// Materializes one known document and migrates older versions to current state.
     /// </summary>
     public static SaveSnapshot DeserializeCurrent(
         string serialized,
@@ -61,8 +61,13 @@ public static class SaveSnapshotJsonDeserializer
             snapshot = SaveSnapshotCharacterMemoryMigration.Migrate(snapshot);
         }
 
-        return snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory
-            ? SaveSnapshotFirstPatientMigration.Migrate(snapshot, initialFirstPatient)
+        if (snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory)
+        {
+            snapshot = SaveSnapshotFirstPatientMigration.Migrate(snapshot, initialFirstPatient);
+        }
+
+        return snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
+            ? SaveSnapshotDialogueDeliveryMigration.Migrate(snapshot)
             : snapshot;
     }
 
@@ -79,7 +84,8 @@ public static class SaveSnapshotJsonDeserializer
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents");
         }
-        else if (version == SaveSchemaVersion.FirstPatient)
+        else if (version == SaveSchemaVersion.FirstPatient
+            || version == SaveSchemaVersion.DialogueDelivery)
         {
             RequireObject(
                 element,
@@ -102,8 +108,11 @@ public static class SaveSnapshotJsonDeserializer
         }
 
         Allrpcs.Domain.Characters.CharacterMemorySnapshot characterMemory =
-            CharacterMemoryJsonReader.Read(element.GetProperty("characterMemory"));
+            CharacterMemoryJsonReader.Read(
+                element.GetProperty("characterMemory"),
+                version == SaveSchemaVersion.DialogueDelivery);
         return version == SaveSchemaVersion.FirstPatient
+                || version == SaveSchemaVersion.DialogueDelivery
             ? new SaveSnapshot(
                 version,
                 discovery,
@@ -130,6 +139,7 @@ public static class SaveSnapshotJsonDeserializer
             1 => SaveSchemaVersion.FirstSupported,
             2 => SaveSchemaVersion.CharacterMemory,
             3 => SaveSchemaVersion.FirstPatient,
+            4 => SaveSchemaVersion.DialogueDelivery,
             _ => throw InvalidDocument(),
         };
     }

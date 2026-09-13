@@ -1,6 +1,7 @@
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Dialogue;
 using Godot;
+using NumericsVector2 = System.Numerics.Vector2;
 
 namespace Allrpcs.Game;
 
@@ -11,13 +12,14 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
         "ALLRPCS_CHARACTER_TURN_RESPONSE_SPEECH_FLOW_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const string PlayerText = "Please examine the flowers before collecting them.";
+    private const float DialogueHearingRangePixels = 192.0f;
+    private const float WhisperHearingRangePixels = 48.0f;
 
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private DialogueEventController eventController = null!;
     private DialogueInputController inputController = null!;
     private TemporaryCharacterTurnResponseSource responseSource = null!;
-    private LineEdit input = null!;
     private int stage;
     private DialogueUtterance? playerUtterance;
     private CharacterTurnTranscriptSnapshot? recordedTranscript;
@@ -45,7 +47,6 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
         inputController = GetNode<DialogueInputController>("../DialogueInputController");
         responseSource = GetNode<TemporaryCharacterTurnResponseSource>(
             "../TemporaryCharacterTurnResponseSource");
-        input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
 
     /// <inheritdoc />
@@ -55,43 +56,16 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
         if (stage == 0)
         {
             CaptureInitialState();
-            input.Text = PlayerText;
-            input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
+            if (!ArrangeWhisperResponse())
+            {
+                return;
+            }
+
             stage = 1;
             return;
         }
 
         if (stage == 1)
-        {
-            playerUtterance = inputController.LastSubmittedUtterance;
-            if (playerUtterance is null
-                || turnController.Activity is not { Response: null } awaiting
-                || !ReferenceEquals(awaiting.State, CharacterTurnActivityState.AwaitingResponse)
-                || !ReferenceEquals(eventController.LastOccurredEvent?.Utterance, playerUtterance)
-                || transcriptController.Transcript is not { Entries.Count: 1 } transcript
-                || !ReferenceEquals(transcript.Entries[0].SpokenStatement, playerUtterance))
-            {
-                Fail("Healer speech flow did not preserve the exact awaiting player occurrence.");
-                return;
-            }
-
-            CharacterTurnResponse response = responseSource.CreateResponse(
-                awaiting.Request,
-                GetNode<TemporaryWorldObjectSource>(
-                    "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
-            if (!turnController.TryReceiveResponse(response))
-            {
-                Fail(
-                    "Focused speech-flow scaffolding could not install its deterministic "
-                    + "response.");
-                return;
-            }
-
-            stage = 2;
-            return;
-        }
-
-        if (stage == 2)
         {
             if (!ProvesExactHealerSpeechOccurrence())
             {
@@ -100,7 +74,7 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
 
             recordedTranscript = transcriptController.Transcript;
             recordedHealerEvent = eventController.LastOccurredEvent;
-            stage = 3;
+            stage = 2;
             return;
         }
 
@@ -115,23 +89,92 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
 
         GD.Print(
             "Character-turn response speech flow smoke passed: the exact complete healer speech "
-            + "occurred once with the Seeker as listener, appended once after player speech, "
+            + "whisper occurred once with only the nearby Seeker as listener, appended once after "
+            + "player speech, "
             + "remained speaking for an interruptible frame without repeating or executing.");
         GetTree().Quit();
+    }
+
+    private bool ArrangeWhisperResponse()
+    {
+        CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
+        CharacterBody2D healer = GetNode<CharacterBody2D>("../Healer");
+        Marker2D sage = GetNode<Marker2D>("../SageHearingPosition");
+        IReadOnlyList<Allrpcs.Domain.Characters.Character> participants =
+            GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+                "../TemporaryOrdinaryCharacterParticipantSource").Participants;
+        playerUtterance = new DialogueUtterance(inputController.SpeakerCharacterId!, PlayerText);
+        DialogueDelivery playerDelivery = new(
+            playerUtterance,
+            DialogueDeliveryMode.OrdinarySpeech);
+        DialogueHearingCandidate[] candidates =
+        [
+            new(playerUtterance.SpeakerCharacterId, ToNumerics(seeker.Position)),
+            new(participants[0].Identity.Id, ToNumerics(healer.Position)),
+            new(participants[1].Identity.Id, ToNumerics(sage.Position)),
+        ];
+        if (!eventController.TryOccur(
+                playerDelivery,
+                candidates[0].Position,
+                DialogueHearingRangePixels,
+                WhisperHearingRangePixels,
+                candidates)
+            || eventController.LastOccurredEvent is not { } playerEvent
+            || !ReferenceEquals(playerEvent.Delivery, playerDelivery)
+            || !transcriptController.TryAppendSpokenStatement(playerEvent.Delivery))
+        {
+            Fail("Focused speech-flow scaffolding could not record its exact player occurrence.");
+            return false;
+        }
+
+        CharacterTurnRequest? request = GetNode<TemporaryCharacterTurnRequestSource>(
+            "../TemporaryCharacterTurnRequestSource").CreateRequest(
+                playerEvent,
+                participants[0].Identity.Id,
+                DialogueActType.Request);
+        if (request is null || !turnController.TryStart(request))
+        {
+            Fail("Focused speech-flow scaffolding could not start its exact healer request.");
+            return false;
+        }
+
+        CharacterTurnResponse selected = responseSource.CreateResponse(
+            request,
+            GetNode<TemporaryWorldObjectSource>(
+                "../TemporaryWorldObjectSource").WorldObjects.Entries[0].Identity.Id);
+        CharacterTurnResponse response = new(
+            request,
+            selected.Disposition,
+            new DialogueDelivery(selected.Speech!, DialogueDeliveryMode.Whispering),
+            selected.ImmediateIntention,
+            selected.Commitments,
+            selected.StateProposals);
+        seeker.Position = healer.Position + new Vector2(32.0f, 0.0f);
+        if (!turnController.TryReceiveResponse(response))
+        {
+            Fail("Focused speech-flow scaffolding could not install its whisper response.");
+            return false;
+        }
+
+        return true;
     }
 
     private bool ProvesExactHealerSpeechOccurrence()
     {
         CharacterTurnActivity? activity = turnController.Activity;
-        DialogueUtterance? speech = activity?.Response?.Speech;
+        DialogueDelivery? delivery = activity?.Response?.Delivery;
+        DialogueUtterance? speech = delivery?.Utterance;
         DialogueEvent? occurred = eventController.LastOccurredEvent;
         CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;
         bool matches = playerUtterance is not null
             && activity is not null
             && speech is not null
+            && delivery is not null
             && occurred is not null
             && !ReferenceEquals(occurred.Utterance, playerUtterance)
+            && ReferenceEquals(occurred.Delivery, delivery)
             && ReferenceEquals(occurred.Utterance, speech)
+            && ReferenceEquals(delivery.Mode, DialogueDeliveryMode.Whispering)
             && ReferenceEquals(occurred.Audience.SpeakerCharacterId, speech.SpeakerCharacterId)
             && occurred.Audience.ListenerCharacterIds.Count == 1
             && ReferenceEquals(
@@ -147,6 +190,7 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
                     .WorldObjects.Entries[0].Identity.Id)
             && transcript is { Entries.Count: 2 }
             && ReferenceEquals(transcript.Entries[0].SpokenStatement, playerUtterance)
+            && ReferenceEquals(transcript.Entries[1].Delivery, delivery)
             && ReferenceEquals(transcript.Entries[1].SpokenStatement, speech)
             && transcript.Entries.All(entry => entry.PhysicalAction is null);
         if (!matches)
@@ -180,6 +224,8 @@ public partial class CharacterTurnResponseSpeechFlowSmokeCheck : Node
                     "../Seeker/FocusedSearchActivityController").Perception,
                 initialPerception);
     }
+
+    private static NumericsVector2 ToNumerics(Vector2 value) => new(value.X, value.Y);
 
     private void Fail(string message)
     {

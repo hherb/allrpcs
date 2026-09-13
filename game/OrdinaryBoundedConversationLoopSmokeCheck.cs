@@ -215,7 +215,9 @@ public partial class OrdinaryBoundedConversationLoopSmokeCheck : Node
             CharacterTurnResponse response = new(
                 request.TurnRequest,
                 CharacterTurnDisposition.Clarify,
-                new DialogueUtterance(request.TurnRequest.RespondingCharacterId, text),
+                new DialogueDelivery(
+                    new DialogueUtterance(request.TurnRequest.RespondingCharacterId, text),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(CharacterIntentionType.Wait, null),
                 [],
                 []);

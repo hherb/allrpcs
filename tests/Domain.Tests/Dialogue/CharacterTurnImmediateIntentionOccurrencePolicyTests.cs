@@ -99,9 +99,14 @@ public sealed class CharacterTurnImmediateIntentionOccurrencePolicyTests
         WorldEvent worldEvent = Event("healer-examined-flowers");
         CharacterTurnWorldEventOccurrence occurrence = Occurrence(activity, worldEvent);
         WorldEventSnapshot worldEvents = new([worldEvent]);
-        CharacterTurnTranscriptEntry exactSpeech = new(activity.Response!.Speech!);
+        CharacterTurnTranscriptEntry exactSpeech = new(
+            new DialogueDelivery(
+                activity.Response!.Speech!,
+                DialogueDeliveryMode.OrdinarySpeech));
         CharacterTurnTranscriptEntry laterSpeech = new(
-            new DialogueUtterance(new CharacterId("seeker"), "What did you find?"));
+            new DialogueDelivery(
+                new DialogueUtterance(new CharacterId("seeker"), "What did you find?"),
+                DialogueDeliveryMode.OrdinarySpeech));
 
         Assert.False(CharacterTurnImmediateIntentionOccurrencePolicy.CanOccur(
             activity,
@@ -222,7 +227,9 @@ public sealed class CharacterTurnImmediateIntentionOccurrencePolicyTests
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(healerId, "I will examine them first."),
+            new DialogueDelivery(
+                new DialogueUtterance(healerId, "I will examine them first."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(
                 CharacterIntentionType.ExamineObject,
                 new ObjectId("flowers")),
@@ -246,7 +253,10 @@ public sealed class CharacterTurnImmediateIntentionOccurrencePolicyTests
 
     internal static CharacterTurnTranscriptSnapshot TranscriptWithResponseSpeech(
         CharacterTurnActivity activity) =>
-        new([new CharacterTurnTranscriptEntry(activity.Response!.Speech!)]);
+        new([new CharacterTurnTranscriptEntry(
+            new DialogueDelivery(
+                activity.Response!.Speech!,
+                DialogueDeliveryMode.OrdinarySpeech))]);
 
     internal static WorldEvent Event(string id) =>
         new(new WorldEventId(id), WorldEventTimeEffect.Advance);

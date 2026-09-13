@@ -12,7 +12,7 @@ namespace Allrpcs.Infrastructure.Tests.Dialogue;
 public sealed class OpenAiCharacterModelTests
 {
     private const string ResponseDocument =
-        "{\"disposition\":\"accept\",\"speech\":null,"
+        "{\"disposition\":\"accept\",\"speech\":null,\"deliveryMode\":null,"
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 
@@ -386,7 +386,8 @@ public sealed class OpenAiCharacterModelTests
             [
                 new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                    playerText),
+                    playerText,
+                    DialogueDeliveryMode.OrdinarySpeech),
             ]);
         return new CharacterModelGenerationRequest(turnRequest, context);
     }

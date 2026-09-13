@@ -32,7 +32,8 @@ public sealed class CharacterTurnWorldEventOccurrenceTests
             new WorldEventId("healer-spoke"),
             WorldEventTimeEffect.NoAdvance);
         DialogueUtterance speech = new(new CharacterId("healer"), "The flowers appear safe.");
-        CharacterTurnTranscriptEntry transcriptEntry = new(speech);
+        DialogueDelivery delivery = new(speech, DialogueDeliveryMode.OrdinarySpeech);
+        CharacterTurnTranscriptEntry transcriptEntry = new(delivery);
 
         CharacterTurnWorldEventOccurrence occurrence = new(worldEvent, transcriptEntry);
 
@@ -48,7 +49,9 @@ public sealed class CharacterTurnWorldEventOccurrenceTests
             new WorldEventId("healer-spoke"),
             WorldEventTimeEffect.NoAdvance);
         CharacterTurnTranscriptEntry transcriptEntry = new(
-            new DialogueUtterance(new CharacterId("healer"), "I will examine it."));
+            new DialogueDelivery(
+                new DialogueUtterance(new CharacterId("healer"), "I will examine it."),
+                DialogueDeliveryMode.OrdinarySpeech));
 
         Assert.Throws<ArgumentNullException>(() =>
             new CharacterTurnWorldEventOccurrence(null!, transcriptEntry));

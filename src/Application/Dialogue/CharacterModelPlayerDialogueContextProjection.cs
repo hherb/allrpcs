@@ -16,6 +16,7 @@ public static class CharacterModelPlayerDialogueContextProjection
 
         return new CharacterModelContextEntry(
             CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-            request.DialogueEvent.Utterance.Text);
+            request.DialogueEvent.Utterance.Text,
+            request.DialogueEvent.Delivery.Mode);
     }
 }

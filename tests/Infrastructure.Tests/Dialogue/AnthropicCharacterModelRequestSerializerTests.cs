@@ -38,6 +38,9 @@ public sealed class AnthropicCharacterModelRequestSerializerTests
         using JsonDocument context = JsonDocument.Parse(system[1].GetProperty("text").GetString()!);
         Assert.Equal("healer", context.RootElement.GetProperty("respondingCharacterId").GetString());
         Assert.Equal("request", context.RootElement.GetProperty("dialogueAct").GetString());
+        Assert.Equal(
+            DialogueDeliveryMode.OrdinarySpeech.Value,
+            context.RootElement.GetProperty("dialogueDeliveryMode").GetString());
         Assert.Collection(
             context.RootElement.GetProperty("context").EnumerateArray(),
             entry =>
@@ -77,7 +80,14 @@ public sealed class AnthropicCharacterModelRequestSerializerTests
         Assert.Equal("object", schema.GetProperty("type").GetString());
         Assert.False(schema.GetProperty("additionalProperties").GetBoolean());
         Assert.Equal(
-            ["disposition", "speech", "immediateIntention", "commitments", "stateProposals"],
+            [
+                "disposition",
+                "speech",
+                "deliveryMode",
+                "immediateIntention",
+                "commitments",
+                "stateProposals",
+            ],
             schema.GetProperty("required").EnumerateArray().Select(value => value.GetString()));
         Assert.Equal(
             CharacterTurnDisposition.All.Select(disposition => disposition.Value),
@@ -171,7 +181,8 @@ public sealed class AnthropicCharacterModelRequestSerializerTests
                     "type=examine-object;target=herb-patch"),
                 new CharacterModelContextEntry(
                     CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                    playerText),
+                    playerText,
+                    DialogueDeliveryMode.OrdinarySpeech),
             ]);
         return new CharacterModelGenerationRequest(request, context);
     }

@@ -6,12 +6,13 @@ namespace Allrpcs.Domain.Tests.Dialogue;
 public sealed class CharacterTurnResponseTests
 {
     [Fact]
-    public void RetainsExactRequestDispositionSpeechAndIntentionInstances()
+    public void RetainsExactRequestDispositionDeliveryAndIntentionInstances()
     {
         CharacterTurnRequest request = CreateRequest();
         DialogueUtterance speech = new(
             request.RespondingCharacterId,
             "I will examine the flowers first.");
+        DialogueDelivery delivery = new(speech, DialogueDeliveryMode.Whispering);
         CharacterIntention intention = new(
             CharacterIntentionType.ExamineObject,
             new ObjectId("moonwort"));
@@ -24,13 +25,14 @@ public sealed class CharacterTurnResponseTests
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Accept,
-            speech,
+            delivery,
             intention,
             [commitment],
             [proposal]);
 
         Assert.Same(request, response.Request);
         Assert.Same(CharacterTurnDisposition.Accept, response.Disposition);
+        Assert.Same(delivery, response.Delivery);
         Assert.Same(speech, response.Speech);
         Assert.Same(intention, response.ImmediateIntention);
         Assert.Same(commitment, Assert.Single(response.Commitments));
@@ -52,6 +54,7 @@ public sealed class CharacterTurnResponseTests
             []);
 
         Assert.Null(response.Speech);
+        Assert.Null(response.Delivery);
         Assert.Same(intention, response.ImmediateIntention);
     }
 
@@ -62,15 +65,17 @@ public sealed class CharacterTurnResponseTests
         DialogueUtterance speech = new(
             new CharacterId(request.RespondingCharacterId.Value),
             "Please identify which flowers you mean.");
+        DialogueDelivery delivery = new(speech, DialogueDeliveryMode.OrdinarySpeech);
 
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Clarify,
-            speech,
+            delivery,
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);
 
+        Assert.Same(delivery, response.Delivery);
         Assert.Same(speech, response.Speech);
     }
 
@@ -81,11 +86,12 @@ public sealed class CharacterTurnResponseTests
         DialogueUtterance speech = new(
             new CharacterId("seeker"),
             "I will examine the flowers.");
+        DialogueDelivery delivery = new(speech, DialogueDeliveryMode.Whispering);
 
         Assert.Throws<ArgumentException>(() => new CharacterTurnResponse(
             request,
             CharacterTurnDisposition.Accept,
-            speech,
+            delivery,
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []));
@@ -224,6 +230,7 @@ public sealed class CharacterTurnResponseTests
         (string Name, Type Type)[] expectedProperties =
         [
             ("Commitments", typeof(IReadOnlyList<CharacterCommitment>)),
+            ("Delivery", typeof(DialogueDelivery)),
             ("Disposition", typeof(CharacterTurnDisposition)),
             ("ImmediateIntention", typeof(CharacterIntention)),
             ("Request", typeof(CharacterTurnRequest)),

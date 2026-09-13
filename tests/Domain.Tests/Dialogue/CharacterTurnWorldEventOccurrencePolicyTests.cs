@@ -137,5 +137,7 @@ public sealed class CharacterTurnWorldEventOccurrencePolicyTests
         new(
             worldEvent,
             new CharacterTurnTranscriptEntry(
-                new DialogueUtterance(new CharacterId("healer"), "I will examine it.")));
+                new DialogueDelivery(
+                    new DialogueUtterance(new CharacterId("healer"), "I will examine it."),
+                    DialogueDeliveryMode.OrdinarySpeech)));
 }

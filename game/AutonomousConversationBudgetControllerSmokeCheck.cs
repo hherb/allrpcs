@@ -99,7 +99,9 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
         CharacterTurnResponse response = new(
             request,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(responder, "The evidence supports another question."),
+            new DialogueDelivery(
+                new DialogueUtterance(responder, "The evidence supports another question."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);

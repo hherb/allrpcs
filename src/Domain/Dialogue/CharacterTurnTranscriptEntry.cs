@@ -7,14 +7,14 @@ namespace Allrpcs.Domain.Dialogue;
 /// </summary>
 public sealed record CharacterTurnTranscriptEntry
 {
-    /// <summary>Creates one transcript entry from exact spoken dialogue.</summary>
-    public CharacterTurnTranscriptEntry(DialogueUtterance spokenStatement)
+    /// <summary>Creates one transcript entry from one exact spoken delivery.</summary>
+    public CharacterTurnTranscriptEntry(DialogueDelivery delivery)
     {
-        ArgumentNullException.ThrowIfNull(spokenStatement);
+        ArgumentNullException.ThrowIfNull(delivery);
 
         Kind = CharacterTurnTranscriptEntryKind.SpokenStatement;
-        CharacterId = spokenStatement.SpeakerCharacterId;
-        SpokenStatement = spokenStatement;
+        CharacterId = delivery.Utterance.SpeakerCharacterId;
+        Delivery = delivery;
     }
 
     /// <summary>Creates one transcript entry from an exact acting character and physical action.</summary>
@@ -43,8 +43,11 @@ public sealed record CharacterTurnTranscriptEntry
     /// <summary>Gets the exact identifier of the speaking or acting character.</summary>
     public CharacterId CharacterId { get; }
 
-    /// <summary>Gets the exact speech payload when this is a spoken statement.</summary>
-    public DialogueUtterance? SpokenStatement { get; }
+    /// <summary>Gets the exact delivery when this is a spoken statement.</summary>
+    public DialogueDelivery? Delivery { get; }
+
+    /// <summary>Gets the exact delivered utterance when this is a spoken statement.</summary>
+    public DialogueUtterance? SpokenStatement => Delivery?.Utterance;
 
     /// <summary>Gets the exact intention payload when this is a physical action.</summary>
     public CharacterIntention? PhysicalAction { get; }

@@ -72,6 +72,28 @@ public sealed class SaveSnapshotTests
     }
 
     [Fact]
+    public void DialogueDeliveryVersionRetainsTheExactExistingState()
+    {
+        DiscoverySaveState discovery = CreateDiscoveryState();
+        WorldEventSaveState worldEvents = CreateWorldEventState();
+        CharacterMemorySnapshot memory = new([]);
+        FirstPatientSaveState firstPatient = CreateFirstPatientState();
+
+        SaveSnapshot snapshot = new(
+            SaveSchemaVersion.DialogueDelivery,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient);
+
+        Assert.Same(SaveSchemaVersion.DialogueDelivery, snapshot.SchemaVersion);
+        Assert.Same(discovery, snapshot.Discovery);
+        Assert.Same(worldEvents, snapshot.WorldEvents);
+        Assert.Same(memory, snapshot.CharacterMemory);
+        Assert.Same(firstPatient, snapshot.FirstPatient);
+    }
+
+    [Fact]
     public void FirstVersionRejectsPopulatedCharacterMemoryWithoutChangingIt()
     {
         CharacterMemorySnapshot memory = new([CharacterMemorySnapshotTests.Empty("healer")]);
@@ -106,13 +128,18 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient));
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(
-            new SaveSchemaVersion(4),
+            new SaveSchemaVersion(5),
             discovery,
             worldEvents,
             memory,
             firstPatient));
         Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
             SaveSchemaVersion.FirstPatient,
+            discovery,
+            worldEvents,
+            memory));
+        Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
+            SaveSchemaVersion.DialogueDelivery,
             discovery,
             worldEvents,
             memory));

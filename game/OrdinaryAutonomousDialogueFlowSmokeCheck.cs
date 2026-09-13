@@ -188,7 +188,9 @@ public partial class OrdinaryAutonomousDialogueFlowSmokeCheck : Node
             CharacterTurnResponse response = new(
                 request.TurnRequest,
                 CharacterTurnDisposition.Accept,
-                new DialogueUtterance(request.TurnRequest.RespondingCharacterId, HealerText),
+                new DialogueDelivery(
+                    new DialogueUtterance(request.TurnRequest.RespondingCharacterId, HealerText),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(CharacterIntentionType.Wait, null),
                 [],
                 []);

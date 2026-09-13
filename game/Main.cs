@@ -466,11 +466,20 @@ public partial class Main : Node
                 candidates[0].Position,
                 DialogueHearingRangePixels,
                 WhisperHearingRangePixels,
-                candidates)
-            || !characterTurnTranscriptController.TryAppendSpokenStatement(utterance))
+                candidates))
         {
             throw new InvalidOperationException(
-                "The accepted player utterance could not occur and append to the transcript.");
+                "The accepted player dialogue delivery could not occur.");
+        }
+
+        DialogueEvent occurredEvent = dialogueEventController.LastOccurredEvent
+            ?? throw new InvalidOperationException("The occurred player dialogue event was absent.");
+        if (!ReferenceEquals(occurredEvent.Delivery, delivery)
+            || !characterTurnTranscriptController.TryAppendSpokenStatement(
+                occurredEvent.Delivery))
+        {
+            throw new InvalidOperationException(
+                "The occurred player dialogue delivery could not append to the transcript.");
         }
 
         StartParticipationRoundIfEligible();

@@ -410,7 +410,9 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             CharacterTurnResponse response = new(
                 request.TurnRequest,
                 CharacterTurnDisposition.Accept,
-                new DialogueUtterance(request.TurnRequest.RespondingCharacterId, speechText),
+                new DialogueDelivery(
+                    new DialogueUtterance(request.TurnRequest.RespondingCharacterId, speechText),
+                    DialogueDeliveryMode.OrdinarySpeech),
                 new CharacterIntention(CharacterIntentionType.Wait, null),
                 [],
                 []);

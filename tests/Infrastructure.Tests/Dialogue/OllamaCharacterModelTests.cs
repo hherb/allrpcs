@@ -17,7 +17,7 @@ public sealed class OllamaCharacterModelTests
     };
 
     private const string ResponseDocument =
-        "{\"disposition\":\"accept\",\"speech\":null,"
+        "{\"disposition\":\"accept\",\"speech\":null,\"deliveryMode\":null,"
         + "\"immediateIntention\":{\"type\":\"wait\",\"targetObjectId\":null},"
         + "\"commitments\":[],\"stateProposals\":[]}";
 
@@ -274,7 +274,8 @@ public sealed class OllamaCharacterModelTests
                 [
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                        playerText),
+                        playerText,
+                        DialogueDeliveryMode.OrdinarySpeech),
                 ]));
     }
 

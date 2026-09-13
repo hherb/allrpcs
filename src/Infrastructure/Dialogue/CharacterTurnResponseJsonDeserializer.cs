@@ -64,28 +64,45 @@ public static class CharacterTurnResponseJsonDeserializer
             element,
             "disposition",
             "speech",
+            "deliveryMode",
             "immediateIntention",
             "commitments",
             "stateProposals");
         return new CharacterTurnResponse(
             request,
             CharacterTurnDisposition.Parse(ReadString(element.GetProperty("disposition"))),
-            ReadSpeech(request, element.GetProperty("speech")),
+            ReadDelivery(
+                request,
+                element.GetProperty("speech"),
+                element.GetProperty("deliveryMode")),
             ReadIntention(element.GetProperty("immediateIntention")),
             ReadCommitments(element.GetProperty("commitments")),
             ReadStateProposals(element.GetProperty("stateProposals")));
     }
 
-    private static DialogueUtterance? ReadSpeech(
+    private static DialogueDelivery? ReadDelivery(
         CharacterTurnRequest request,
-        JsonElement element) => element.ValueKind switch
+        JsonElement speechElement,
+        JsonElement modeElement)
+    {
+        if (speechElement.ValueKind == JsonValueKind.Null
+            && modeElement.ValueKind == JsonValueKind.Null)
         {
-            JsonValueKind.Null => null,
-            JsonValueKind.String => new DialogueUtterance(
-                request.RespondingCharacterId,
-                ReadString(element)),
-            _ => throw InvalidDocument(),
-        };
+            return null;
+        }
+
+        if (speechElement.ValueKind != JsonValueKind.String
+            || modeElement.ValueKind != JsonValueKind.String)
+        {
+            throw InvalidDocument();
+        }
+
+        return new DialogueDelivery(
+                new DialogueUtterance(
+                    request.RespondingCharacterId,
+                    ReadString(speechElement)),
+                DialogueDeliveryMode.Parse(ReadString(modeElement)));
+    }
 
     private static CharacterIntention ReadIntention(JsonElement element)
     {

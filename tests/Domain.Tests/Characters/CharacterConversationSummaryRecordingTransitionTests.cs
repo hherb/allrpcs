@@ -165,5 +165,7 @@ public sealed class CharacterConversationSummaryRecordingTransitionTests
     private static CharacterTurnTranscriptSnapshot Transcript() =>
         new(
             [new CharacterTurnTranscriptEntry(
-                new DialogueUtterance(new CharacterId("healer"), "We discussed it."))]);
+                new DialogueDelivery(
+                    new DialogueUtterance(new CharacterId("healer"), "We discussed it."),
+                    DialogueDeliveryMode.OrdinarySpeech))]);
 }

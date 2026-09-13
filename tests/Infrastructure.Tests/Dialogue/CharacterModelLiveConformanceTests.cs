@@ -14,9 +14,11 @@ public sealed class CharacterModelLiveConformanceTests
         CharacterTurnResponse response = new(
             request.TurnRequest,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(
-                request.TurnRequest.RespondingCharacterId,
-                "I will wait here."),
+            new DialogueDelivery(
+                new DialogueUtterance(
+                    request.TurnRequest.RespondingCharacterId,
+                    "I will wait here."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [],
             []);
@@ -47,9 +49,11 @@ public sealed class CharacterModelLiveConformanceTests
         CharacterTurnResponse commitmentResponse = new(
             request.TurnRequest,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(
-                request.TurnRequest.RespondingCharacterId,
-                "I will wait and then examine it."),
+            new DialogueDelivery(
+                new DialogueUtterance(
+                    request.TurnRequest.RespondingCharacterId,
+                    "I will wait and then examine it."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(CharacterIntentionType.Wait, null),
             [new CharacterCommitment([new CharacterIntention(CharacterIntentionType.Wait, null)])],
             []);
@@ -88,9 +92,11 @@ public sealed class CharacterModelLiveConformanceTests
         CharacterTurnResponse response = new(
             request.TurnRequest,
             CharacterTurnDisposition.Accept,
-            new DialogueUtterance(
-                request.TurnRequest.RespondingCharacterId,
-                "I will inspect the herbs."),
+            new DialogueDelivery(
+                new DialogueUtterance(
+                    request.TurnRequest.RespondingCharacterId,
+                    "I will inspect the herbs."),
+                DialogueDeliveryMode.OrdinarySpeech),
             new CharacterIntention(
                 CharacterIntentionType.ExamineObject,
                 new ObjectId(knownId.Value)),
@@ -186,7 +192,8 @@ public sealed class CharacterModelLiveConformanceTests
                         "type=wait;target=null"),
                     new CharacterModelContextEntry(
                         CharacterModelContextEntryKind.UntrustedPlayerDialogue,
-                        utterance.Text),
+                        utterance.Text,
+                        DialogueDeliveryMode.OrdinarySpeech),
                 ]));
     }
 }

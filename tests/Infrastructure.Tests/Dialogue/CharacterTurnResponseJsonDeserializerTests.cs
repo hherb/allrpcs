@@ -10,6 +10,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
         {
           "disposition":"conditionally-accept",
           "speech":"I will inspect it before collecting it.",
+          "deliveryMode":"whispering",
           "immediateIntention":{"type":"examine-object","targetObjectId":"herb-patch"},
           "commitments":[
             {"proposedIntentions":[
@@ -34,6 +35,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
         Assert.Same(CharacterTurnDisposition.ConditionallyAccept, response.Disposition);
         Assert.Equal(request.RespondingCharacterId, response.Speech?.SpeakerCharacterId);
         Assert.Equal("I will inspect it before collecting it.", response.Speech?.Text);
+        Assert.Same(DialogueDeliveryMode.Whispering, response.Delivery?.Mode);
         Assert.Same(CharacterIntentionType.ExamineObject, response.ImmediateIntention.Type);
         Assert.Equal(new ObjectId("herb-patch"), response.ImmediateIntention.TargetObjectId);
         CharacterCommitment commitment = Assert.Single(response.Commitments);
@@ -54,6 +56,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
             {
               "disposition":"clarify",
               "speech":null,
+              "deliveryMode":null,
               "immediateIntention":{"type":"wait","targetObjectId":null},
               "commitments":[],
               "stateProposals":[]
@@ -65,6 +68,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
             document);
 
         Assert.Null(response.Speech);
+        Assert.Null(response.Delivery);
         Assert.Empty(response.Commitments);
         Assert.Empty(response.StateProposals);
     }
@@ -79,6 +83,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
         CompleteDocument.Replace("{", "{/*comment*/", StringComparison.Ordinal),
         CompleteDocument.Replace("\"stateProposals\":", "\"unknown\":[],\"stateProposals\":", StringComparison.Ordinal),
         CompleteDocument.Replace("\"speech\":", "\"speech\":null,\"speech\":", StringComparison.Ordinal),
+        CompleteDocument.Replace("\"deliveryMode\":", "\"deliveryMode\":null,\"deliveryMode\":", StringComparison.Ordinal),
         CompleteDocument.Replace(
             "\"targetObjectId\":\"herb-patch\"",
             "\"unknown\":null,\"targetObjectId\":\"herb-patch\"",
@@ -91,6 +96,13 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
             "\"speech\":\"I will inspect it before collecting it.\",",
             string.Empty,
             StringComparison.Ordinal),
+        CompleteDocument.Replace(
+            "\"deliveryMode\":\"whispering\",",
+            string.Empty,
+            StringComparison.Ordinal),
+        CompleteDocument.Replace("\"deliveryMode\":\"whispering\"", "\"deliveryMode\":\"quietly\"", StringComparison.Ordinal),
+        CompleteDocument.Replace("\"deliveryMode\":\"whispering\"", "\"deliveryMode\":null", StringComparison.Ordinal),
+        CompleteDocument.Replace("\"speech\":\"I will inspect it before collecting it.\"", "\"speech\":null", StringComparison.Ordinal),
         CompleteDocument.Replace(
             "\"disposition\":\"conditionally-accept\"",
             "\"disposition\":\"ACCEPT\"",
@@ -120,6 +132,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
             {
               "disposition":"accept",
               "speech":null,
+              "deliveryMode":null,
               "immediateIntention":{"type":"{{type}}","targetObjectId":{{target}}},
               "commitments":[],
               "stateProposals":[]
@@ -172,6 +185,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
         {
           "disposition":"accept",
           "speech":null,
+          "deliveryMode":null,
           "immediateIntention":{"type":"wait","targetObjectId":null},
           "commitments":{{commitments}},
           "stateProposals":[]
