@@ -75,6 +75,49 @@ public partial class CharacterObjectSabotageConcealmentController : Node
         return true;
     }
 
+    /// <summary>Selects and applies the first eligible candidate from exact current scene state.</summary>
+    public bool TryApplyFirstEligible(
+        Character character,
+        CharacterPhysicalAccessSnapshot physicalAccess,
+        WorldObjectSnapshot worldObjects,
+        WorldObjectConcealmentSnapshot expectedConcealment,
+        DiscoveryEvidenceSnapshot expectedEvidence,
+        IEnumerable<CharacterObjectSabotageEvidence> candidates)
+    {
+        ArgumentNullException.ThrowIfNull(character);
+        ArgumentNullException.ThrowIfNull(physicalAccess);
+        ArgumentNullException.ThrowIfNull(worldObjects);
+        ArgumentNullException.ThrowIfNull(expectedConcealment);
+        ArgumentNullException.ThrowIfNull(expectedEvidence);
+        ArgumentNullException.ThrowIfNull(candidates);
+
+        if (!ReferenceEquals(Concealment, expectedConcealment)
+            || !ReferenceEquals(Evidence, expectedEvidence))
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageConcealmentResult result;
+        try
+        {
+            result = CharacterObjectSabotageConcealmentSequence.ApplyFirstEligible(
+                character,
+                physicalAccess,
+                worldObjects,
+                expectedConcealment,
+                expectedEvidence,
+                candidates);
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+
+        Concealment = result.Concealment;
+        Evidence = result.EvidenceResult.Evidence;
+        return true;
+    }
+
     /// <summary>Recovers exact eligible concealment only from expected current scene state.</summary>
     public bool TryRecover(
         WorldObjectConcealmentSnapshot expectedConcealment,
