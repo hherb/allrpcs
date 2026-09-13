@@ -119,6 +119,77 @@ public partial class CharacterIndependentTaskRoundTripCoordinator : Node
             reachedWaypoint);
     }
 
+    /// <summary>
+    /// Selects and advances the only active leg from one exact caller-supplied scene snapshot.
+    /// </summary>
+    public bool TryAdvanceNext(
+        CharacterIndependentTaskTravelPlan expectedOutboundPlan,
+        CharacterIndependentTaskTravelProgress expectedOutboundProgress,
+        CharacterIndependentTaskReturnTravelPlan? expectedReturnPlan,
+        CharacterIndependentTaskReturnTravelProgress? expectedReturnProgress,
+        Vector2 reachedWaypoint,
+        CharacterIndependentTaskWorldEventOccurrence? candidate,
+        CharacterIndependentTaskActivitySnapshot expectedActivities,
+        CharacterPartySnapshot expectedParty,
+        WorldEventLogSnapshot expectedEventLog,
+        WorldTimeSnapshot expectedWorldTime,
+        CharacterTurnTranscriptSnapshot expectedTranscript)
+    {
+        ArgumentNullException.ThrowIfNull(expectedOutboundPlan);
+        ArgumentNullException.ThrowIfNull(expectedOutboundProgress);
+        ArgumentNullException.ThrowIfNull(expectedActivities);
+        ArgumentNullException.ThrowIfNull(expectedParty);
+        ArgumentNullException.ThrowIfNull(expectedEventLog);
+        ArgumentNullException.ThrowIfNull(expectedWorldTime);
+        ArgumentNullException.ThrowIfNull(expectedTranscript);
+
+        if (!ReferenceEquals(outboundController.Plan, expectedOutboundPlan)
+            || !ReferenceEquals(outboundController.Progress, expectedOutboundProgress)
+            || !ReferenceEquals(taskController.Activities, expectedActivities)
+            || !ReferenceEquals(taskController.Party, expectedParty)
+            || !ReferenceEquals(worldController.EventLog, expectedEventLog)
+            || !ReferenceEquals(worldController.WorldTime, expectedWorldTime)
+            || !ReferenceEquals(transcriptController.Transcript, expectedTranscript))
+        {
+            return false;
+        }
+
+        if (returnController.Plan is null && returnController.Progress is null)
+        {
+            if (expectedReturnPlan is not null
+                || expectedReturnProgress is not null
+                || candidate is null)
+            {
+                return false;
+            }
+
+            return TryAdvanceOutbound(
+                candidate,
+                expectedOutboundPlan,
+                expectedOutboundProgress,
+                reachedWaypoint,
+                expectedActivities,
+                expectedEventLog,
+                expectedWorldTime,
+                expectedTranscript);
+        }
+
+        if (returnController.Plan is not { } returnPlan
+            || returnController.Progress is not { } returnProgress
+            || !ReferenceEquals(returnPlan, expectedReturnPlan)
+            || !ReferenceEquals(returnProgress, expectedReturnProgress)
+            || candidate is not null)
+        {
+            return false;
+        }
+
+        return TryAdvanceReturn(
+            returnPlan,
+            returnProgress,
+            reachedWaypoint,
+            expectedParty);
+    }
+
     private static bool IsFinalOutboundStep(
         CharacterIndependentTaskTravelPlan plan,
         CharacterIndependentTaskTravelProgress progress) =>

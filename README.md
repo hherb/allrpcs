@@ -872,6 +872,11 @@ repeated, and null input cannot change any scene-owned snapshot. `Main` does not
 coordinator, and it defines no timing, movement, navigation, body-presentation, persistence,
 dialogue/model-context, or provider policy.
 
+The coordinator also accepts one complete exact scene snapshot and selects the only active leg: an
+outbound step requires no initialized return plus the exact current active-task occurrence, while a
+return step requires the exact initialized return pair and no occurrence candidate. It rejects an
+incomplete, stale, mismatched, or caller-selected phase before delegating either existing operation.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

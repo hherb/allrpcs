@@ -126,12 +126,27 @@ public partial class CharacterIndependentTaskRoundTripCoordinatorSmokeCheck : No
             return;
         }
 
-        if (!coordinator.TryAdvanceOutbound(
-                candidate,
+        if (coordinator.TryAdvanceNext(
                 outboundPlan,
                 outboundProgress,
+                null,
+                null,
                 outboundPlan.Waypoints.Single(),
+                null,
                 activeActivities,
+                separatedParty,
+                eventLog,
+                worldTime,
+                transcript)
+            || !coordinator.TryAdvanceNext(
+                outboundPlan,
+                outboundProgress,
+                null,
+                null,
+                outboundPlan.Waypoints.Single(),
+                candidate,
+                activeActivities,
+                separatedParty,
                 eventLog,
                 worldTime,
                 transcript)
@@ -197,11 +212,42 @@ public partial class CharacterIndependentTaskRoundTripCoordinatorSmokeCheck : No
             return;
         }
 
-        if (!coordinator.TryAdvanceReturn(
+        if (coordinator.TryAdvanceNext(
+                outboundPlan,
+                completedOutboundProgress,
+                null,
+                null,
+                returnPlan.Waypoints.Single(),
+                null,
+                completedActivities,
+                separatedParty,
+                completedEventLog,
+                completedWorldTime,
+                completedTranscript)
+            || coordinator.TryAdvanceNext(
+                outboundPlan,
+                completedOutboundProgress,
                 returnPlan,
                 returnProgress,
                 returnPlan.Waypoints.Single(),
-                separatedParty)
+                candidate,
+                completedActivities,
+                separatedParty,
+                completedEventLog,
+                completedWorldTime,
+                completedTranscript)
+            || !coordinator.TryAdvanceNext(
+                outboundPlan,
+                completedOutboundProgress,
+                returnPlan,
+                returnProgress,
+                returnPlan.Waypoints.Single(),
+                null,
+                completedActivities,
+                separatedParty,
+                completedEventLog,
+                completedWorldTime,
+                completedTranscript)
             || returnController.Progress is not { IsComplete: true } completedReturnProgress
             || taskController.Party is not { } rejoinedParty
             || !ReferenceEquals(completedReturnProgress.Plan, returnPlan)
