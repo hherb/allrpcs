@@ -846,8 +846,22 @@ The scene occurrence controller can now delegate that combined transition and in
 completed travel, task, event-log, qualitative-time, and transcript state through one
 compare-and-swap operation. Its smoke proves stale snapshots, mismatched travel, an unrecognized
 event, pre-arrival occurrence, repetition, and nulls cannot partially change scene state. This
-method remains an explicit seam: `Main` does not call it, no movement or timing policy was chosen,
-and return travel and party rejoin remain later work.
+method also retains the exact accepted combined result and initializes one authored return route
+from the herb patch to the outbound origin. The return route is created only for the exact authored
+completed healer task; invalid, stale, mismatched, repeated, or already-initialized state cannot
+partially install it.
+
+Provider-neutral return-travel contracts retain that exact successful arrival result, its exact
+completed task activity, validated finite bounds and origin, and 1-32 stable copied waypoints. The
+return must begin at the outbound final waypoint and end at the outbound origin. Immutable progress
+advances only through the exact next waypoint. A scene controller owns one exact return plan and
+progress, while a temporary source authors only the exact healer route. Domain rejoin rules append
+one absent exact character to a party with capacity without changing existing order. A pure
+Application transition composes only the exact final return waypoint with that bounded rejoin, and
+the scene installs both fresh states through compare-and-swap guards. `Main` still does not advance
+outbound or return travel, trigger the task occurrence, or rejoin the party; no elapsed-time, speed,
+interpolation, collision, navigation-agent, off-screen-location, body-presentation,
+dialogue/model-context, persistence, or provider policy was added.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.

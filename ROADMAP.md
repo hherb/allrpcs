@@ -357,7 +357,7 @@ Acceptance:
   - [x] Retain an optional exact response delivery and strictly decode provider-selected modes.
   - [x] Apply exact response delivery to scene hearing and transcript recording.
   - [x] Persist exact heard and response delivery modes through the version-4 save boundary.
-- [ ] Support bounded independent tasks and party separation.
+- [x] Support bounded independent tasks and party separation.
   - [x] Define canonical bounded independent-task assignments and immutable lifecycle snapshots.
   - [x] Enforce closed forward task lifecycle transitions and stable per-character scheduling.
   - [x] Complete only an exact active task through an authoritative physical-action occurrence.
@@ -365,6 +365,8 @@ Acceptance:
   - [x] Scene-own task and party state and drive one authored departure through existing rules.
   - [x] Complete one exact active authored task through authoritative event, time, and transcript
     state only.
+  - [x] Rejoin one exact completed-task character through stable bounded party membership only after
+    its exact return completes.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
   - [x] Define one bounded provider-neutral travel plan and immutable progress transition for an
     exact active independent task without introducing Godot navigation or elapsed-time policy.
@@ -378,6 +380,11 @@ Acceptance:
     all-or-nothing Application result without scene installation.
   - [x] Install one exact final-waypoint arrival and authoritative task occurrence atomically from
     compare-and-swapped scene-owned travel, task, event, time, and transcript state.
+  - [x] Define bounded exact completed-task return travel and immutable one-waypoint progress.
+  - [x] Scene-own and author the healer return route from its exact successful arrival back to its
+    outbound origin without selecting timing or movement policy.
+  - [x] Initialize that exact return route as part of the final arrival-occurrence scene operation.
+  - [x] Compose and install exact final return progress plus stable bounded party rejoin atomically.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
