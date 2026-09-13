@@ -165,6 +165,7 @@
 [ext_resource type="Script" path="res://CharacterIndependentTaskReturnTravelControllerSmokeCheck.cs" id="163_independent_task_return_travel_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskReturnTravelSource.cs" id="164_independent_task_return_travel_source"]
 [ext_resource type="Script" path="res://TemporaryCharacterIndependentTaskReturnTravelSourceSmokeCheck.cs" id="165_independent_task_return_travel_source_check"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskReturnRejoinControllerSmokeCheck.cs" id="166_independent_task_return_rejoin_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -755,6 +756,9 @@ script = ExtResource("164_independent_task_return_travel_source")
 
 [node name="TemporaryCharacterIndependentTaskReturnTravelSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("165_independent_task_return_travel_source_check")
+
+[node name="CharacterIndependentTaskReturnRejoinControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("166_independent_task_return_rejoin_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")

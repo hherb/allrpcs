@@ -1,3 +1,4 @@
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -90,6 +91,33 @@ public partial class CharacterIndependentTaskDepartureController : Node
 
         Activities = result.Activities;
         ActiveActivity = null;
+        return true;
+    }
+
+    /// <summary>Installs only an exact prevalidated party rejoin from completed task state.</summary>
+    internal bool TryInstallRejoin(
+        CharacterIndependentTaskActivity expectedCompletedActivity,
+        CharacterPartySnapshot expectedParty,
+        CharacterIndependentTaskReturnRejoinResult result)
+    {
+        ArgumentNullException.ThrowIfNull(expectedCompletedActivity);
+        ArgumentNullException.ThrowIfNull(expectedParty);
+        ArgumentNullException.ThrowIfNull(result);
+
+        if (ActiveActivity is not null
+            || Activities is null
+            || !Activities.Activities.Any(activity =>
+                ReferenceEquals(activity, expectedCompletedActivity))
+            || !ReferenceEquals(Party, expectedParty)
+            || !ReferenceEquals(
+                result.ReturnProgress.Plan.CompletedActivity,
+                expectedCompletedActivity)
+            || !result.ReturnProgress.IsComplete)
+        {
+            return false;
+        }
+
+        Party = result.Party;
         return true;
     }
 }
