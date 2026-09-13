@@ -806,6 +806,25 @@ partial installation. Ordinary scene flow does not yet trigger that completion, 
 departing character, simulate off-screen time, rejoin a party member, change dialogue/model context,
 or persist task or party state.
 
+One immutable Application travel plan retains an exact active independent-task activity, validated
+finite world bounds and origin, and 1-32 stable copied waypoints. It delegates all bounds and
+coordinate validation to the existing provider-neutral navigation request validator. Immutable
+progress retains that exact plan and exposes only its completed waypoint count and final completion
+state. A pure transition advances through exactly the next waypoint, one at a time, and rejects
+skips, repeats, completed progress, or a distinct plan identity without changing either input. These
+contracts do not choose a route, add Godot navigation, define elapsed time, speed, interpolation, or
+collision behavior, move or hide a body, trigger a task occurrence, or invoke a provider. A focused
+Godot controller owns one exact plan and its current immutable progress, initializes once, and
+installs a one-waypoint advance only from the exact expected current plan and progress. Its isolated
+credential-free smoke proves stale, skipped, repeated, and completed inputs leave both scene values
+unchanged. The controller does not author or start a route, integrate `Main`, or broaden any motion
+or timing policy. A temporary scene source binds only the exact authored active healer task to one
+fresh route from its captured departure position to the exact existing herb-patch scene position.
+`Main` creates that route only after the atomic task departure and initializes the scene travel
+controller without advancing progress or changing the healer body. An isolated source smoke proves
+the task, origin, destination, and zero progress are retained exactly. This composition still does
+not simulate travel, hide a separated character, trigger the task occurrence, or rejoin the party.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

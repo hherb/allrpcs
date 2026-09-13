@@ -366,8 +366,12 @@ Acceptance:
   - [x] Complete one exact active authored task through authoritative event, time, and transcript
     state only.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
-  - [ ] Define one bounded provider-neutral travel plan and immutable progress transition for an
+  - [x] Define one bounded provider-neutral travel plan and immutable progress transition for an
     exact active independent task without introducing Godot navigation or elapsed-time policy.
+  - [x] Scene-own one exact independent-task travel plan and advance its immutable progress only
+    from the exact expected current plan, progress, and next waypoint.
+  - [x] Author and scene-initialize one exact active healer route from its departure position to
+    the existing herb-patch task target without advancing or moving it.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
