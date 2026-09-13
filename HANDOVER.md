@@ -5,6 +5,10 @@
 `main` contains merged PR #224 at `39170f0`. The current branch is
 `codex/phase-7-sabotage-proposals`, with four reviewed Phase 7 commits after that merge.
 
+Draft PR #225 is open and mergeable. Hosted run `34759529279` completed with all five jobs at
+`steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+unchanged.
+
 Phase 7 now carries object-targeted sabotage from a closed kind through exact access, authoritative
 target, and evidence-only state:
 
@@ -36,6 +40,8 @@ evidence.
 - The scenario validator accepts all 5 evidence definitions.
 - The complete credential-free headless Godot smoke suite passes, and the Compatibility-renderer
   graphical launch passes on the Apple M3 Max.
+- Hosted run `34759529279` executed no job steps; its five failures are Actions/account
+  infrastructure state, not product-test results.
 - Restricted VSTest reproduced the known loopback `SocketException (13)`; the identical focused
   tests and complete quality spine pass host-local.
 - Cumulative `git diff --check` and the practical 120-character authored-code check pass.
