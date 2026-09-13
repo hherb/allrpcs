@@ -635,6 +635,13 @@ singletons in stable order. Parsing accepts only those exact values. A kind alon
 target, access requirement, proposal, occurrence, effect, recovery consequence, evidence, scene,
 persistence, or provider authority.
 
+`CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
+admitting only the object-targeted `conceal`, `move`, `substitute`, and `contaminate` kinds. Its
+pure eligibility policy first requires the proposal actor to value-match the supplied character,
+then delegates the complete unchanged physical, capability, and knowledge requirement to
+`CharacterActionAccessPolicy`. It does not model `misquote`, `delay`, or `influence` as object
+targets, and it grants no occurrence, effect, mutation, scene, persistence, or provider authority.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored

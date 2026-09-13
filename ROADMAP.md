@@ -403,6 +403,8 @@ Acceptance:
     together through a pure fail-closed eligibility gate.
   - [x] Define the closed conceal, move, substitute, contaminate, misquote, delay, and influence
     action-kind vocabulary without granting occurrence authority.
+  - [x] Bind object-targeted sabotage proposals to exact actors and complete unchanged access
+    requirements while rejecting non-object action kinds.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
 - [ ] Make sabotage leave potentially discoverable evidence.
