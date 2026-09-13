@@ -428,6 +428,14 @@ Acceptance:
   - [x] Obtain and validate one exact concealment decision through that interface.
   - [x] Apply an accepted selection through the existing immutable concealment/evidence transition
     while preserving explicit abstention without state application.
+  - [x] Resolve one exact accepted consideration result against scene-owned snapshots, atomically
+    installing selection output while retaining exact state for abstention.
+  - [x] Own one bounded concealment-decision task through closed scene terminal states and resolve
+    only its exact non-stale accepted result on the main thread.
+  - [x] Supply one exact one-shot concealment model with stable fail-closed offline behavior.
+  - [x] Compose one explicit authored concealment consideration from exact current scene state
+    without selecting when it starts.
+  - [x] Wire that explicit consideration flow into the main scene while keeping startup inert.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
