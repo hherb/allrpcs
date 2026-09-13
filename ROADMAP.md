@@ -411,6 +411,8 @@ Acceptance:
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
     evidence, without mutating the authoritative object, its position, or any critical route.
+  - [x] Recover only the evidence-bound concealed target after a character can see its exact
+    authoritative sabotage evidence, preserving unrelated concealment and all source snapshots.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

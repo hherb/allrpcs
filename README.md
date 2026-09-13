@@ -672,6 +672,14 @@ It does not mutate the authoritative object or its position, remove any route, r
 concealed object, apply another sabotage kind, or add events, time, transcripts, scenes,
 persistence, or provider behavior.
 
+`CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
+whose target is currently concealed, whose exact target-bound evidence definition remains in the
+authoritative evidence snapshot, and whose identifier is visible in one supplied character
+evidence view. Its transition removes only the value-matching target into a fresh concealment
+snapshot while retaining unrelated exact identifiers, the exact evidence view, and the exact
+candidate. It does not consume evidence, mutate an object or perception, prove how the character
+discovered the evidence, or add routes, scenes, persistence, or providers.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
