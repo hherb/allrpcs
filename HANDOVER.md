@@ -13,6 +13,8 @@
 - `a5a2637` composes an exact final return waypoint with party rejoin;
 - `7ae32bb` installs final return progress and party membership atomically in the scene.
 
+Draft PR #223 is open and mergeable.
+
 Phase 7 now has a complete explicit outbound-task-return contract:
 
 - `CharacterIndependentTaskReturnTravelPlan` retains the exact successful arrival-occurrence
@@ -58,6 +60,8 @@ added.
   the known `user://logs` crash; the identical focused commands passed host-local.
 - Cumulative `git diff --check` and the practical 120-character authored-code check pass.
 - No live-conformance environment variable was enabled and no provider was invoked.
+- Initial hosted run `34753008633` completed with all five jobs at `steps: []`; it provides no
+  product-test or unsigned-build evidence and should not be retried unchanged.
 
 ## Exact next bounded slice
 
