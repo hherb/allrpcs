@@ -615,6 +615,12 @@ civilian-safety goals plus one authored belief make changed allegiance represent
 implementing an allegiance transition. These values grant no action authority and add no
 sabotage, scheduling, provider, scene, or persistence mechanics.
 
+`CharacterPhysicalAccessSnapshot` explicitly retains one exact character identifier and at most 64
+stable copied, value-unique world-object identifiers that authoritative caller state says are
+physically accessible. Its pure lookup requires value-matching character and object identifiers.
+It does not infer reachability from visibility, perception, dialogue, model output, or coordinates,
+and it grants no capability or action authority.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
