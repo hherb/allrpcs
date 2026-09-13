@@ -20,6 +20,10 @@ Sabotage still never occurs automatically. The new focused-search route does not
 behavior or timing, infer physical access from coordinates, move an actor or object, rewrite an
 authoritative world object, consume evidence, persist sabotage state, or invoke a provider.
 
+Draft PR #229 is open from implementation commit `14d65cd`. Hosted run `34783568840` completed
+with all five jobs at `steps: []`; it provides no product-test or unsigned-build evidence and should
+not be retried unchanged.
+
 ## Validation and review
 
 - Each behavior slice began with an expected failing check: Phase 7df lacked the explicit-position
@@ -37,6 +41,8 @@ authoritative world object, consume evidence, persist sabotage state, or invoke 
   graphical launch.
 - Authored changed C# files are within 120 characters per line; both new smoke files remain below
   500 lines. No live-conformance environment variable was enabled and no provider was invoked.
+- Hosted run `34783568840` executed no job steps; its failures are Actions/account infrastructure
+  state, not product-test results.
 
 ## Exact next bounded slice
 
