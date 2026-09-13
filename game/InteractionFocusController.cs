@@ -99,6 +99,13 @@ public partial class InteractionFocusController : Node
     /// <summary>Re-evaluates and presents interaction focus for the current Seeker position.</summary>
     public void RefreshFocus()
     {
+        RefreshFocusFrom(new NumericsVector2(seeker.GlobalPosition.X, seeker.GlobalPosition.Y));
+    }
+
+    /// <summary>Re-evaluates and presents interaction focus from one supplied position.</summary>
+    /// <param name="seekerPosition">The finite position to evaluate without moving the Seeker.</param>
+    public void RefreshFocusFrom(NumericsVector2 seekerPosition)
+    {
         for (int index = 0; index < targets.Length; index++)
         {
             GreyboxInteractionTarget target = targets[index];
@@ -124,7 +131,7 @@ public partial class InteractionFocusController : Node
         }
 
         InteractionFocusSelection? selection = InteractionFocusSelector.Select(
-            new NumericsVector2(seeker.GlobalPosition.X, seeker.GlobalPosition.Y),
+            seekerPosition,
             InteractionRangePixels,
             candidates);
         int? nextFocusedIndex = selection?.CandidateIndex;

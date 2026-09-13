@@ -14,11 +14,14 @@ public partial class TemporaryFocusedSearchContextSource : Node
     private const int CapabilityRequirementObjectIndex = 0;
     private const string CapabilityKey = "identify-healing-plants";
     private const string CapabilityDescription = "Identifies healing plants.";
-    private const int RequiredWorldObjectCount = 2;
+    private const int RequiredWorldObjectCount = 3;
     private const int ToolRequirementObjectIndex = 1;
     private const string ToolObjectIdText = "field-lens";
+    private const int WaterCaskRequirementObjectIndex = 2;
+    private const string WaterCaskCapabilityKey = "inspect-water-sources";
+    private const string WaterCaskCapabilityDescription = "Inspects water sources for tampering.";
 
-    /// <summary>Gets the retained discovery conditions for the first two world objects.</summary>
+    /// <summary>Gets the retained discovery conditions for the three authored world objects.</summary>
     public DiscoveryConditionSet Conditions { get; private set; } = null!;
 
     /// <summary>Gets the retained temporary Seeker capability set.</summary>
@@ -43,7 +46,7 @@ public partial class TemporaryFocusedSearchContextSource : Node
     }
 
     /// <summary>
-    /// Creates the fixed temporary context from the first two world objects in authored order.
+    /// Creates the fixed temporary context from the first three world objects in authored order.
     /// </summary>
     private static (
         DiscoveryConditionSet Conditions,
@@ -62,18 +65,27 @@ public partial class TemporaryFocusedSearchContextSource : Node
             worldObjects.Entries[CapabilityRequirementObjectIndex].Identity.Id;
         ObjectId toolTargetObjectId =
             worldObjects.Entries[ToolRequirementObjectIndex].Identity.Id;
+        ObjectId waterCaskTargetObjectId =
+            worldObjects.Entries[WaterCaskRequirementObjectIndex].Identity.Id;
         CharacterCapability capability = new(CapabilityKey, CapabilityDescription);
+        CharacterCapability waterCaskCapability = new(
+            WaterCaskCapabilityKey,
+            WaterCaskCapabilityDescription);
         ObjectId toolObjectId = new(ToolObjectIdText);
         DiscoveryCapabilityRequirement capabilityRequirement = new(
             capabilityTargetObjectId,
             capability.Key);
+        DiscoveryCapabilityRequirement waterCaskRequirement = new(
+            waterCaskTargetObjectId,
+            waterCaskCapability.Key);
         DiscoveryToolRequirement toolRequirement = new(toolTargetObjectId, toolObjectId);
-        DiscoveryCapabilityRequirementSet capabilityRequirements = new([capabilityRequirement]);
+        DiscoveryCapabilityRequirementSet capabilityRequirements = new(
+            [capabilityRequirement, waterCaskRequirement]);
         DiscoveryToolRequirementSet toolRequirements = new([toolRequirement]);
 
         return (
             new DiscoveryConditionSet(capabilityRequirements, toolRequirements),
-            new CharacterCapabilitySet([capability]),
+            new CharacterCapabilitySet([capability, waterCaskCapability]),
             new CharacterInventory([toolObjectId]));
     }
 }

@@ -411,6 +411,8 @@ Acceptance:
     authoritative object state, empty concealment state, and fresh noticed evidence.
   - [x] Bind that authored candidate to the exact tail water cask in the existing complete scene
     world-object snapshot and initialize its empty state without applying it automatically.
+  - [x] Bind the visible water cask to existing interaction focus and append one exact
+    capability-gated investigation condition without selecting sabotage behavior or timing.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
@@ -424,6 +426,8 @@ Acceptance:
   - [x] Project exact concealment snapshots onto one scene body through stale-safe visibility state.
   - [x] Explicitly conceal and hide the main-scene water cask, then recover and restore it only from
     noticed exact evidence without changing its position or authoritative world object.
+  - [x] Recover that concealment from ordinary focused-search resolution only for the exact water
+    cask outcome, while unrelated resolved targets leave it concealed.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
