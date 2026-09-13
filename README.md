@@ -877,6 +877,13 @@ outbound step requires no initialized return plus the exact current active-task 
 return step requires the exact initialized return pair and no occurrence candidate. It rejects an
 incomplete, stale, mismatched, or caller-selected phase before delegating either existing operation.
 
+Provider-neutral independent-task step timing now consists of one finite positive cadence bounded
+to one hour and one immutable clock retaining unconsumed elapsed time for that exact cadence. A pure
+transition accepts no more than one interval per call, produces a fresh clock, and exposes at most
+one due step while carrying sub-interval remainder forward. It does not select or advance a route,
+read a scene clock, process a frame, move or hide a body, or define navigation, persistence,
+dialogue/model-context, or provider behavior.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining
