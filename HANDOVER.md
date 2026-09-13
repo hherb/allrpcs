@@ -18,6 +18,10 @@ recovery, behavior choice, or timing occurs automatically. The new body is delib
 interaction-focus target, and the focused-search context still covers only the herb patch and stone
 marker.
 
+Draft PR #228 is open from commit `8b4ec9c`. Hosted run `34764015151` completed with all five jobs
+at `steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+unchanged.
+
 ## Validation and review
 
 - Both implementation slices with new behavior began with the expected missing-type compilation
@@ -34,6 +38,8 @@ marker.
 - Authored C# remains below 500 lines per file and within 120 characters per line;
   `git diff --check` passes.
 - No live-conformance environment variable was enabled and no provider was invoked.
+- Hosted run `34764015151` executed no job steps; its failures are Actions/account infrastructure
+  state, not product-test results.
 
 ## Exact next bounded slice
 
