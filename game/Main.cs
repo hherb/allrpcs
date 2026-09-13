@@ -58,6 +58,9 @@ public partial class Main : Node
     private TemporaryCharacterIndependentTaskTravelSource independentTaskTravelSource = null!;
     private CharacterIndependentTaskTravelController independentTaskTravelController = null!;
     private CharacterIndependentTaskReturnTravelController independentTaskReturnTravelController = null!;
+    private TemporaryCharacterObjectSabotageSource objectSabotageSource = null!;
+    private TemporaryCharacterObjectSabotagePresentationFlowController
+        objectSabotagePresentationFlow = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -136,6 +139,11 @@ public partial class Main : Node
         independentTaskReturnTravelController =
             GetNode<CharacterIndependentTaskReturnTravelController>(
                 "CharacterIndependentTaskReturnTravelController");
+        objectSabotageSource = GetNode<TemporaryCharacterObjectSabotageSource>(
+            "TemporaryCharacterObjectSabotageSource");
+        objectSabotagePresentationFlow =
+            GetNode<TemporaryCharacterObjectSabotagePresentationFlowController>(
+                "TemporaryCharacterObjectSabotagePresentationFlowController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -778,6 +786,7 @@ public partial class Main : Node
             if (changed)
             {
                 RefreshResolvedPerceptionPresentation();
+                TryRecoverObjectSabotageForResolvedOutcome(outcome!);
             }
 
             PresentFocusedSearchResult("RESOLVE", changed);
@@ -892,6 +901,15 @@ public partial class Main : Node
                 worldObjectController.FindWorldObject(
                     resolvedPerceptionTargets[index].ObjectId),
                 focusedSearchController.Perception);
+        }
+    }
+
+    private void TryRecoverObjectSabotageForResolvedOutcome(FocusedSearchOutcome outcome)
+    {
+        if (outcome.Request.TargetObjectId == objectSabotageSource.Candidate.Evidence.ObjectId
+            && focusedSearchController.Perception is { } perception)
+        {
+            _ = objectSabotagePresentationFlow.TryRecover(perception);
         }
     }
 

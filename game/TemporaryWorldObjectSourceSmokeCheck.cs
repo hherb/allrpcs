@@ -35,6 +35,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
     private FocusedSearchActivityController controller = null!;
     private GreyboxInteractionTarget herbPatch = null!;
     private GreyboxInteractionTarget stoneMarker = null!;
+    private GreyboxInteractionTarget waterCask = null!;
     private Line2D searchIndicator = null!;
     private Label herbPatchResolvedIndicator = null!;
     private Label stoneMarkerResolvedIndicator = null!;
@@ -59,6 +60,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             "../Seeker/FocusedSearchActivityController");
         herbPatch = GetNode<GreyboxInteractionTarget>("../InteractionCandidates/HerbPatch");
         stoneMarker = GetNode<GreyboxInteractionTarget>("../InteractionCandidates/StoneMarker");
+        waterCask = GetNode<GreyboxInteractionTarget>("../InteractionCandidates/WaterCask");
         searchIndicator = GetNode<Line2D>(
             "../Seeker/FocusedSearchActivityIndicator/Indicator");
         herbPatchResolvedIndicator = GetNode<Label>(
@@ -172,6 +174,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 StoneMarkerDescription)
             || !HasExpectedWorldObject(
                 waterCaskObject,
+                waterCask,
                 WaterCaskObjectId,
                 WaterCaskDisplayName,
                 WaterCaskDescription))
@@ -200,8 +203,10 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 expectedInventory,
                 herbPatchIdentity.Id,
                 stoneMarkerIdentity.Id,
+                waterCaskIdentity.Id,
                 HerbPatchDescription,
-                StoneMarkerDescription))
+                StoneMarkerDescription,
+                WaterCaskDescription))
         {
             Fail(
                 "Temporary world-object source smoke copied a description into focused-search "
@@ -290,44 +295,28 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 StringComparison.Ordinal);
     }
 
-    private static bool HasExpectedWorldObject(
-        WorldObject worldObject,
-        string expectedObjectId,
-        string expectedDisplayName,
-        string expectedDescription)
-    {
-        return string.Equals(
-                worldObject.Identity.Id.Value,
-                expectedObjectId,
-                StringComparison.Ordinal)
-            && string.Equals(
-                worldObject.Identity.DisplayName,
-                expectedDisplayName,
-                StringComparison.Ordinal)
-            && string.Equals(
-                worldObject.Description.Text,
-                expectedDescription,
-                StringComparison.Ordinal);
-    }
-
     private static bool HasExpectedDescriptionFreeFocusedSearchInputs(
         DiscoveryConditionSet conditions,
         CharacterCapabilitySet capabilities,
         CharacterInventory inventory,
         ObjectId herbPatchObjectId,
         ObjectId stoneMarkerObjectId,
+        ObjectId waterCaskObjectId,
         params string[] descriptions)
     {
-        if (conditions.CapabilityRequirements.Entries.Count != 1
+        if (conditions.CapabilityRequirements.Entries.Count != 2
             || conditions.ToolRequirements.Entries.Count != 1
-            || capabilities.Entries.Count != 1
+            || capabilities.Entries.Count != 2
             || inventory.ObjectReferences.Count != 1
             || !ReferenceEquals(
                 conditions.CapabilityRequirements.Entries[0].ObjectId,
                 herbPatchObjectId)
             || !ReferenceEquals(
                 conditions.ToolRequirements.Entries[0].ObjectId,
-                stoneMarkerObjectId))
+                stoneMarkerObjectId)
+            || !ReferenceEquals(
+                conditions.CapabilityRequirements.Entries[1].ObjectId,
+                waterCaskObjectId))
         {
             return false;
         }
@@ -355,7 +344,14 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
     private static bool HasExpectedMarkerLabelTexts(IReadOnlyList<string?> markerLabelTexts)
     {
-        string?[] expectedTexts = [HerbPatchDisplayName, StoneMarkerDisplayName, null, string.Empty];
+        string?[] expectedTexts =
+        [
+            HerbPatchDisplayName,
+            StoneMarkerDisplayName,
+            WaterCaskDisplayName,
+            null,
+            string.Empty,
+        ];
 
         return markerLabelTexts.Count == expectedTexts.Length
             && markerLabelTexts.Select(

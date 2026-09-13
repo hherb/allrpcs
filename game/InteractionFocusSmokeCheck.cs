@@ -41,6 +41,7 @@ public partial class InteractionFocusSmokeCheck : Node
     [
         "herb-patch",
         "stone-marker",
+        "village-water-cask",
         "hidden-marker",
         "excluded-marker",
     ];
@@ -73,8 +74,10 @@ public partial class InteractionFocusSmokeCheck : Node
     private DiscoveryCapabilityRequirementSet authoredCapabilityRequirements = null!;
     private DiscoveryToolRequirementSet authoredToolRequirements = null!;
     private DiscoveryCapabilityRequirement authoredCapabilityRequirement = null!;
+    private DiscoveryCapabilityRequirement authoredWaterCaskCapabilityRequirement = null!;
     private DiscoveryToolRequirement authoredToolRequirement = null!;
     private CharacterCapability authoredCapability = null!;
+    private CharacterCapability authoredWaterCaskCapability = null!;
     private ObjectId authoredToolObjectId = null!;
     private int synchronizationFrames;
     private SmokeStage stage;
@@ -253,7 +256,7 @@ public partial class InteractionFocusSmokeCheck : Node
             return;
         }
 
-        GreyboxInteractionTarget hiddenTarget = controller.GetTarget(2);
+        GreyboxInteractionTarget hiddenTarget = controller.GetTarget(3);
         if (hiddenTarget.Visible)
         {
             Fail("The hidden interaction target remained visible in the scene.");
@@ -1787,25 +1790,28 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
         WorldObject sourceHerbPatch = sourceWorldObjects.Entries[0];
         WorldObject sourceStoneMarker = sourceWorldObjects.Entries[1];
+        WorldObject sourceWaterCask = sourceWorldObjects.Entries[2];
         authoredConditions = focusedSearchContextSource.Conditions;
         authoredCapabilities = focusedSearchContextSource.Capabilities;
         authoredInventory = focusedSearchContextSource.Inventory;
         authoredCapabilityRequirements = authoredConditions.CapabilityRequirements;
         authoredToolRequirements = authoredConditions.ToolRequirements;
-        if (authoredCapabilityRequirements.Entries.Count != 1
+        if (authoredCapabilityRequirements.Entries.Count != 2
             || authoredToolRequirements.Entries.Count != 1
-            || authoredCapabilities.Entries.Count != 1
+            || authoredCapabilities.Entries.Count != 2
             || authoredInventory.ObjectReferences.Count != 1)
         {
             Fail(
-                "Interaction-focus smoke failed focused-search context authoring: expected one "
-                + "capability requirement, tool requirement, capability, and inventory tool.");
+                "Interaction-focus smoke failed focused-search context authoring: expected two "
+                + "capability requirements and capabilities plus one tool requirement and tool.");
             return false;
         }
 
         authoredCapabilityRequirement = authoredCapabilityRequirements.Entries[0];
+        authoredWaterCaskCapabilityRequirement = authoredCapabilityRequirements.Entries[1];
         authoredToolRequirement = authoredToolRequirements.Entries[0];
         authoredCapability = authoredCapabilities.Entries[0];
+        authoredWaterCaskCapability = authoredCapabilities.Entries[1];
         authoredToolObjectId = authoredInventory.ObjectReferences[0];
 
         bool isStable = ReferenceEquals(
@@ -1822,6 +1828,21 @@ public partial class InteractionFocusSmokeCheck : Node
             && string.Equals(
                 authoredCapability.Description,
                 "Identifies healing plants.",
+                StringComparison.Ordinal)
+            && ReferenceEquals(
+                authoredWaterCaskCapabilityRequirement.ObjectId,
+                sourceWaterCask.Identity.Id)
+            && string.Equals(
+                authoredWaterCaskCapabilityRequirement.RequiredCapabilityKey,
+                authoredWaterCaskCapability.Key,
+                StringComparison.Ordinal)
+            && string.Equals(
+                authoredWaterCaskCapability.Key,
+                "inspect-water-sources",
+                StringComparison.Ordinal)
+            && string.Equals(
+                authoredWaterCaskCapability.Description,
+                "Inspects water sources for tampering.",
                 StringComparison.Ordinal)
             && ReferenceEquals(authoredToolRequirement.ObjectId, sourceStoneMarker.Identity.Id)
             && ReferenceEquals(
@@ -1864,10 +1885,13 @@ public partial class InteractionFocusSmokeCheck : Node
                 independentWorldObjects);
 
         DiscoveryCapabilityRequirement independentCapabilityRequirement =
-            independentConditions.CapabilityRequirements.Entries.Single();
+            independentConditions.CapabilityRequirements.Entries[0];
+        DiscoveryCapabilityRequirement independentWaterCaskRequirement =
+            independentConditions.CapabilityRequirements.Entries[1];
         DiscoveryToolRequirement independentToolRequirement =
             independentConditions.ToolRequirements.Entries.Single();
-        CharacterCapability independentCapability = independentCapabilities.Entries.Single();
+        CharacterCapability independentCapability = independentCapabilities.Entries[0];
+        CharacterCapability independentWaterCaskCapability = independentCapabilities.Entries[1];
         ObjectId independentToolObjectId = independentInventory.ObjectReferences.Single();
         bool isWorldObjectDerived = ReferenceEquals(
                 independentCapabilityRequirement.ObjectId,
@@ -1886,6 +1910,21 @@ public partial class InteractionFocusSmokeCheck : Node
                 "Identifies healing plants.",
                 StringComparison.Ordinal)
             && ReferenceEquals(
+                independentWaterCaskRequirement.ObjectId,
+                independentUnrelatedObjectId)
+            && string.Equals(
+                independentWaterCaskRequirement.RequiredCapabilityKey,
+                independentWaterCaskCapability.Key,
+                StringComparison.Ordinal)
+            && string.Equals(
+                independentWaterCaskCapability.Key,
+                "inspect-water-sources",
+                StringComparison.Ordinal)
+            && string.Equals(
+                independentWaterCaskCapability.Description,
+                "Inspects water sources for tampering.",
+                StringComparison.Ordinal)
+            && ReferenceEquals(
                 independentToolRequirement.RequiredToolObjectId,
                 independentToolObjectId)
             && string.Equals(
@@ -1899,8 +1938,12 @@ public partial class InteractionFocusSmokeCheck : Node
                 independentConditions.ToolRequirements.Entries[0],
                 independentToolRequirement)
             && ReferenceEquals(
-                independentCapabilities.Entries[0],
-                independentCapability)
+                independentConditions.CapabilityRequirements.Entries[1],
+                independentWaterCaskRequirement)
+            && ReferenceEquals(independentCapabilities.Entries[0], independentCapability)
+            && ReferenceEquals(
+                independentCapabilities.Entries[1],
+                independentWaterCaskCapability)
             && ReferenceEquals(
                 independentInventory.ObjectReferences[0],
                 independentToolObjectId)
@@ -1921,7 +1964,7 @@ public partial class InteractionFocusSmokeCheck : Node
                 independentUnrelatedObject.Identity.Id,
                 independentUnrelatedObjectId)
             && ThrowsForInsufficientWorldObjects(
-                new WorldObjectSnapshot([independentFirstObject]));
+                new WorldObjectSnapshot([independentFirstObject, independentSecondObject]));
         if (!isWorldObjectDerived)
         {
             Fail(
@@ -1993,19 +2036,26 @@ public partial class InteractionFocusSmokeCheck : Node
                 conditions.CapabilityRequirements,
                 authoredCapabilityRequirements)
             && ReferenceEquals(conditions.ToolRequirements, authoredToolRequirements)
-            && conditions.CapabilityRequirements.Entries.Count == 1
+            && conditions.CapabilityRequirements.Entries.Count == 2
             && ReferenceEquals(
                 conditions.CapabilityRequirements.Entries[0],
                 authoredCapabilityRequirement)
+            && ReferenceEquals(
+                conditions.CapabilityRequirements.Entries[1],
+                authoredWaterCaskCapabilityRequirement)
             && conditions.ToolRequirements.Entries.Count == 1
             && ReferenceEquals(
                 conditions.ToolRequirements.Entries[0],
                 authoredToolRequirement)
-            && capabilities.Entries.Count == 1
+            && capabilities.Entries.Count == 2
             && ReferenceEquals(capabilities.Entries[0], authoredCapability)
+            && ReferenceEquals(capabilities.Entries[1], authoredWaterCaskCapability)
             && inventory.ObjectReferences.Count == 1
             && ReferenceEquals(inventory.ObjectReferences[0], authoredToolObjectId)
             && ReferenceEquals(authoredCapabilityRequirement.ObjectId, sourceObjectIds[0])
+            && ReferenceEquals(
+                authoredWaterCaskCapabilityRequirement.ObjectId,
+                worldObjectSource.WorldObjects.Entries[2].Identity.Id)
             && ReferenceEquals(authoredToolRequirement.ObjectId, sourceObjectIds[1])
             && ReferenceEquals(
                 authoredToolRequirement.RequiredToolObjectId,

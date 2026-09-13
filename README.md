@@ -281,12 +281,13 @@ validated 12-pixel distance, then changes to wait. Press X again to resume follo
 obstacle-excluded destinations are rejected without changing the active command. These keys, the
 ring, and the status panel are temporary behavior-test controls, not final command or dialogue UX.
 
-Two nearby temporary markers exercise interaction focus without performing an interaction. A
-bright yellow **FOCUS** ring and the top-left status identify only the nearest visible, enabled
-marker inside the inclusive 112-pixel range. Exact distance ties resolve by authored scene order,
-so focus is stable at the Seeker's initial midpoint. Moving nearer the other marker changes focus;
-moving outside both ranges clears it. A hidden marker and an obvious excluded marker exercise the
-fail-closed presentation paths and can never receive the indicator. These markers, labels, range,
+Three temporary authored objects exercise interaction focus: the two nearby discovery markers and
+the village water cask. A bright yellow **FOCUS** ring and the top-left status identify only the
+nearest visible, enabled target inside the inclusive 112-pixel range. Exact distance ties resolve by
+authored scene order, so focus is stable at the Seeker's initial midpoint. Moving nearer another
+target changes focus; moving outside every range clears it. A hidden marker and an obvious excluded
+marker exercise the fail-closed presentation paths and can never receive the indicator. These
+markers, labels, range,
 ordering, and indicator are temporary greybox behavior evidence. Each marker also authors one
 canonical object-identifier text value, which its Godot adapter parses once while ready. The focus
 controller exposes the exact identifier instance for only the currently selected visible, enabled,
@@ -695,9 +696,12 @@ snapshot instances; only a fresh snapshot from the exact last-presented snapshot
 visibility. The temporary main-scene presentation flow explicitly composes one eligible apply with
 hiding the water-cask body, then uses the existing perception-to-evidence projection so noticed
 authoritative evidence can recover and reveal it. Unseen, null, stale, and repeated operations
-preserve state and presentation. No behavior or timing is selected automatically, and these seams
-do not move an object or actor, infer coordinate access, consume evidence, add a discovery route,
-persist state, or invoke a provider.
+preserve state and presentation. The ordinary focused-search route now supplies that discovery
+path: the exact cask is a value-equal interaction target with one exact capability-gated condition,
+and only successful resolution of its own recorded outcome asks the presentation flow to recover
+it. Resolving another target leaves the cask concealed. No sabotage behavior or timing is selected
+automatically, and these seams do not move an object or actor, infer coordinate access, consume
+evidence, persist state, or invoke a provider.
 
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
@@ -2501,9 +2505,11 @@ behavior.
 `Allrpcs.Game.TemporaryFocusedSearchContextSource` is the narrow scene source for those three
 aggregate start inputs. It derives its target identifiers only from the existing temporary
 world-object snapshot: the first object's exact identifier authors the capability-only requirement,
-and the second object's exact identifier authors the tool-only requirement. It fails explicitly
-when fewer than two objects are supplied and never falls back to greybox interaction targets. The
-source retains the exact created capability, tool identifier, requirements, sets, and aggregates and
+the second object's exact identifier authors the tool-only requirement, and the third water-cask
+identifier appends an `inspect-water-sources` capability requirement plus matching capability. It
+fails explicitly when fewer than three objects are supplied and never falls back to greybox
+interaction targets. The source retains the exact created capabilities, tool identifier,
+requirements, sets, and aggregates and
 exposes only the existing discovery-condition set, capability set, and inventory needed by the start
 bridge. Independent-snapshot smoke evidence proves exact nested retention without selecting by
 authored identity text or changing the supplied snapshot and objects. The source does not start a
@@ -2513,11 +2519,11 @@ authoritative.
 `Allrpcs.Game.TemporaryWorldObjectSource` independently authors the herb patch, stone marker, and
 village water cask into one retained `WorldObjectSnapshot` in that stable order when the scene
 becomes ready. It creates one distinct world object per identity, retaining exact identifier values,
-display names, and non-empty descriptions. The first two source identifiers remain distinct
-instances that are value-equal to their greybox targets' independently parsed `ObjectIdText`
-references. Their descriptions are not focused-search inputs or copied into focus presentation;
-the existing resolved-perception indicator receives one only when its matching perception entry is
-`Identified`. The exact tail water-cask instance instead supplies the temporary sabotage seam. The
+display names, and non-empty descriptions. All three source identifiers remain distinct instances
+that are value-equal to their greybox targets' independently parsed `ObjectIdText` references. Their
+descriptions are not focused-search inputs or copied into focus presentation; the first two existing
+resolved-perception indicators receive one only when their matching perception entry is
+`Identified`. The exact tail water-cask instance also supplies the temporary sabotage seam. The
 source does not mutate or replace targets, become authoritative, filter or rank objects, call
 controllers, grant discovery, or select ordinary-play behavior.
 
@@ -2531,7 +2537,9 @@ temporary source's exact retained snapshot once and fails explicitly if initiali
 established. The temporary F, E, and R paths call lookup only for the focused identifier, active
 request target, and selected recorded-outcome target respectively. The controller does not filter,
 rank, or mutate world objects; inspect focused-search or perception state; grant discovery; or
-change presentation itself.
+change presentation itself. The focus controller's explicit-position refresh seam exercises the
+same lookup and presentation without moving the Seeker; ordinary per-frame refresh still supplies
+the Seeker's current position.
 
 `Allrpcs.Game.TemporaryFocusedSearchOutcomeSource` is a separate narrow scene source for one
 explicitly temporary deterministic focused-search result. Each call accepts an existing request
@@ -2622,10 +2630,12 @@ instance to `FocusedSearchActivityController.TryResolveOutcome` only when the ob
 controller delegates complete bound eligibility to the pure Domain policy before applying or
 consuming anything. That decision accepts distinct value-equal target identifiers and rejects a
 mismatch. The path does not inspect interaction focus, mutate the world-object snapshot or object,
-or make either world-object component authoritative. A successful resolution for either
-scene-authored target replaces only the matching perception entry with its `Identified` successor,
+or make either world-object component authoritative. A successful resolution for any of the three
+scene-authored targets replaces only the matching perception entry with its `Identified` successor,
 consumes the exact outcome, and preserves completed activity absence plus every unrelated entry
-instance and order. With no matching outcome, a target absent from the current world-object
+instance and order. Exact water-cask resolution additionally asks the existing sabotage
+presentation flow to recover through the now-visible authoritative evidence; other target outcomes
+do not ask for recovery. With no matching outcome, a target absent from the current world-object
 snapshot, a target-mismatched controller input, or a repeated R after consumption, all three
 focused-search snapshots plus world-object, source, target, and presentation state retain their
 exact instances; R reports `UNCHANGED` where input was attempted.

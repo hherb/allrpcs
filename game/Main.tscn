@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3]
+[gd_scene load_steps=158 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -182,6 +182,8 @@
 [ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentPresentationController.cs" id="180_object_sabotage_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowController.cs" id="181_object_sabotage_presentation_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck.cs" id="182_object_sabotage_presentation_flow_check"]
+[ext_resource type="Script" path="res://WaterCaskInteractionFocusSmokeCheck.cs" id="183_water_cask_interaction_focus_check"]
+[ext_resource type="Script" path="res://WaterCaskSabotageInvestigationFlowSmokeCheck.cs" id="184_water_cask_sabotage_investigation_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -449,6 +451,8 @@ horizontal_alignment = 1
 
 [node name="WaterCask" type="Node2D" parent="InteractionCandidates"]
 position = Vector2(1216, 656)
+script = ExtResource("8_interaction_target")
+ObjectIdText = "village-water-cask"
 
 [node name="Body" type="Polygon2D" parent="InteractionCandidates/WaterCask"]
 polygon = PackedVector2Array(-22, -24, 22, -24, 28, 22, -28, 22)
@@ -461,6 +465,13 @@ offset_right = 76.0
 offset_bottom = 51.0
 text = "VILLAGE WATER CASK"
 horizontal_alignment = 1
+
+[node name="FocusIndicator" type="Line2D" parent="InteractionCandidates/WaterCask"]
+visible = false
+points = PackedVector2Array(38, 0, 26.87, 26.87, 0, 38, -26.87, 26.87, -38, 0, -26.87, -26.87, 0, -38, 26.87, -26.87, 38, 0)
+width = 6.0
+default_color = Color(1, 0.827, 0.227, 1)
+antialiased = true
 
 [node name="HiddenMarker" type="Node2D" parent="InteractionCandidates"]
 visible = false
@@ -838,6 +849,12 @@ script = ExtResource("179_object_sabotage_presentation_check")
 
 [node name="TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("182_object_sabotage_presentation_flow_check")
+
+[node name="WaterCaskInteractionFocusSmokeCheck" type="Node" parent="."]
+script = ExtResource("183_water_cask_interaction_focus_check")
+
+[node name="WaterCaskSabotageInvestigationFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("184_water_cask_sabotage_investigation_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")
