@@ -6,6 +6,8 @@
 `codex/phase-7-round-trip-coordination`, with eleven reviewed implementation commits after that
 merge.
 
+Draft PR #224 is open and mergeable. Its initial five credential-free jobs are queued.
+
 Phase 7 now runs the authored healer independent task as a complete bounded live round trip:
 
 - one scene coordinator delegates exact outbound and return waypoints through the existing atomic
