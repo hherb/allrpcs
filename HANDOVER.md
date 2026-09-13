@@ -3,7 +3,8 @@
 ## Current state
 
 `main` contains merged PR #217 at `aa55021`. The current branch is
-`codex/phase-7-delivery-transcript`; publication of this branch is still pending.
+`codex/phase-7-delivery-transcript`. Draft PR #218 is open and mergeable with implementation commit
+`0973ae7`.
 
 This branch completes the bounded Phase 7 whisper/private-conversation roadmap item through seven
 connected slices:
@@ -47,6 +48,9 @@ sabotage, or Phase 8 work; invoke live providers; dispatch workflows; release; s
   reproduced the known `user://logs` crash. Identical checks passed host-local.
 - No live-conformance environment variable was enabled, no provider was invoked, and no hosted
   workflow was dispatched.
+- Draft PR #218 is open and mergeable. Hosted run `34730588562` completed with all five jobs at
+  `steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+  unchanged.
 
 ## Exact next bounded slice
 
