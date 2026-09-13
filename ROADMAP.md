@@ -367,7 +367,7 @@ Acceptance:
     state only.
   - [x] Rejoin one exact completed-task character through stable bounded party membership only after
     its exact return completes.
-- [ ] Simulate off-screen movement and actions through the same authoritative rules.
+- [x] Simulate off-screen movement and actions through the same authoritative rules.
   - [x] Define one bounded provider-neutral travel plan and immutable progress transition for an
     exact active independent task without introducing Godot navigation or elapsed-time policy.
   - [x] Scene-own one exact independent-task travel plan and advance its immutable progress only
@@ -385,8 +385,24 @@ Acceptance:
     outbound origin without selecting timing or movement policy.
   - [x] Initialize that exact return route as part of the final arrival-occurrence scene operation.
   - [x] Compose and install exact final return progress plus stable bounded party rejoin atomically.
+  - [x] Coordinate one explicit next outbound or return waypoint through those existing atomic scene
+    operations without selecting when a step occurs.
+  - [x] Select the active outbound or return leg only from one exact caller-supplied scene snapshot.
+  - [x] Define a bounded provider-neutral cadence and immutable elapsed clock that exposes at most
+    one due independent-task travel step per advance.
+  - [x] Scene-own one exact task-step cadence and compare-and-swap immutable elapsed clock progress.
+  - [x] Consume one due cadence interval only when the exact active outbound or return step succeeds.
+  - [x] Drive the authored one-waypoint task occurrence and return rejoin from a bounded live-scene
+    cadence without moving or hiding its character body.
+  - [x] Hide the exact separated task character body and restore it only from the exact rejoined
+    party snapshot without changing its retained scene position.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
+  - [x] Define bounded explicit per-character physical access to stable world-object identifiers.
+  - [x] Require one targeted action's physical access, authored capability, and referenced knowledge
+    together through a pure fail-closed eligibility gate.
+  - [x] Define the closed conceal, move, substitute, contaminate, misquote, delay, and influence
+    action-kind vocabulary without granting occurrence authority.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
 - [ ] Make sabotage leave potentially discoverable evidence.

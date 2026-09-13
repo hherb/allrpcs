@@ -615,6 +615,26 @@ civilian-safety goals plus one authored belief make changed allegiance represent
 implementing an allegiance transition. These values grant no action authority and add no
 sabotage, scheduling, provider, scene, or persistence mechanics.
 
+`CharacterPhysicalAccessSnapshot` explicitly retains one exact character identifier and at most 64
+stable copied, value-unique world-object identifiers that authoritative caller state says are
+physically accessible. Its pure lookup requires value-matching character and object identifiers.
+It does not infer reachability from visibility, perception, dialogue, model output, or coordinates,
+and it grants no capability or action authority.
+
+`CharacterActionAccessRequirement` retains one exact target object, one canonical required
+capability key, and one exact required knowledge reference. Its pure eligibility policy succeeds
+only when the same value-matching character has explicit physical access to that object, an authored
+capability with that key, and the referenced knowledge. Missing or mismatched physical,
+informational, or capability input fails closed without changing any input. This gate does not
+define an action vocabulary, treat eligibility as occurrence, mutate a target, or grant model text
+authority.
+
+`CharacterSabotageActionKind` defines only the seven closed canonical roadmap kinds—`conceal`,
+`move`, `substitute`, `contaminate`, `misquote`, `delay`, and `influence`—as identity-preserving
+singletons in stable order. Parsing accepts only those exact values. A kind alone has no actor,
+target, access requirement, proposal, occurrence, effect, recovery consequence, evidence, scene,
+persistence, or provider authority.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
@@ -862,6 +882,55 @@ the scene installs both fresh states through compare-and-swap guards. `Main` sti
 outbound or return travel, trigger the task occurrence, or rejoin the party; no elapsed-time, speed,
 interpolation, collision, navigation-agent, off-screen-location, body-presentation,
 dialogue/model-context, persistence, or provider policy was added.
+
+A separate scene-owned round-trip coordinator delegates exactly one caller-supplied next waypoint.
+Non-final outbound and return steps use the existing immutable travel controllers; final outbound
+arrival delegates the existing atomic task occurrence and return-route initialization, while final
+return arrival delegates the existing atomic party rejoin. Its isolated credential-free smoke
+drives the authored one-waypoint outbound and return routes in order and proves stale, mismatched,
+repeated, and null input cannot change any scene-owned snapshot. `Main` does not call this
+coordinator, and it defines no timing, movement, navigation, body-presentation, persistence,
+dialogue/model-context, or provider policy.
+
+The coordinator also accepts one complete exact scene snapshot and selects the only active leg: an
+outbound step requires no initialized return plus the exact current active-task occurrence, while a
+return step requires the exact initialized return pair and no occurrence candidate. It rejects an
+incomplete, stale, mismatched, or caller-selected phase before delegating either existing operation.
+
+Provider-neutral independent-task step timing now consists of one finite positive cadence bounded
+to one hour and one immutable clock retaining unconsumed elapsed time for that exact cadence. A pure
+transition accepts no more than one interval per call, produces a fresh clock, and exposes at most
+one due step while carrying sub-interval remainder forward. It does not select or advance a route,
+read a scene clock, process a frame, move or hide a body, or define navigation, persistence,
+dialogue/model-context, or provider behavior.
+
+A focused scene controller initializes one exact task-step cadence and its zero-elapsed clock once.
+It installs each pure clock advance only from the exact expected cadence and clock, retaining the
+exact accepted result so a later coordinator can observe whether one step became due. Stale,
+repeated, invalid-duration, and null input cannot change its clock. The controller does not read
+Godot frame time, invoke the round-trip coordinator, or alter task, party, world, transcript, or
+body state.
+
+The round-trip coordinator can now compose one exact clock advance with the complete caller-supplied
+task, party, travel, world-event, time, and transcript snapshot. Sub-interval elapsed time changes
+only the immutable clock. When a step becomes due, the clock result installs only after the active
+outbound or return operation succeeds, so stale, invalid, failed, or repeated route input leaves the
+due interval unconsumed and every scene snapshot unchanged. This remains an explicit call boundary;
+`Main` does not initialize the cadence or process elapsed time.
+
+`Main` now initializes a fixed three-second authored cadence and advances its immutable scene clock
+with finite non-negative frame elapsed time capped to one interval per process call. Each due
+interval supplies the exact current task, party, outbound or return progress, world-event, time, and
+transcript state to the timed coordinator. The first authored interval completes the herb-patch
+arrival and authoritative task occurrence; the second completes return travel and stable party
+rejoin; completed return state stops further clock consumption.
+
+A dedicated body-presentation controller retains the exact authored healer identifier and last
+presented party snapshot. Initial separated party state hides that body, and only a fresh exact
+party snapshot can update visibility; the stable rejoined party therefore restores it once. The
+live round-trip keeps the healer's scene position unchanged throughout. This presentation adds no
+interpolation, speed, collision/navigation agent, generalized concealment action, off-screen
+position model, dialogue/model-context, persistence, or provider behavior.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.

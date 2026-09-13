@@ -2,81 +2,81 @@
 
 ## Current state
 
-`main` contains merged PR #222 at `09605b1`. The current branch is
-`codex/phase-7-independent-task-return`, with seven reviewed implementation commits:
+`main` contains merged PR #223 at `8a3463b`. The current branch is
+`codex/phase-7-round-trip-coordination`, with eleven reviewed implementation commits after that
+merge.
 
-- `eeab97e` defines exact completed-task return plans and immutable progress;
-- `0e1779f` scene-owns return plans and compare-and-swap waypoint advancement;
-- `7067533` authors the exact healer route from the herb patch to its outbound origin;
-- `eadd139` initializes that route atomically with the accepted final arrival occurrence;
-- `ce54e54` defines stable bounded party rejoin policy and transition;
-- `a5a2637` composes an exact final return waypoint with party rejoin;
-- `7ae32bb` installs final return progress and party membership atomically in the scene.
+Draft PR #224 is open and mergeable. Hosted run `34758317069` completed with all five jobs at
+`steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+unchanged.
 
-Draft PR #223 is open and mergeable.
+Phase 7 now runs the authored healer independent task as a complete bounded live round trip:
 
-Phase 7 now has a complete explicit outbound-task-return contract:
+- one scene coordinator delegates exact outbound and return waypoints through the existing atomic
+  travel, occurrence, return-route, and party-rejoin operations;
+- a complete caller-supplied scene snapshot selects the only active travel leg and rejects stale,
+  mismatched, repeated, null, or caller-selected phase input before mutation;
+- a provider-neutral cadence and immutable clock retain bounded elapsed progress and expose at most
+  one due step per advance;
+- the scene clock compare-and-swaps exact timing state, and a due interval is consumed only when its
+  exact route step succeeds;
+- `Main` initializes a three-second cadence, supplies bounded frame elapsed time, completes the
+  one-waypoint outbound occurrence and one-waypoint return/rejoin on consecutive due intervals, and
+  stops consuming time after completion;
+- exact separated party state hides the healer body, exact rejoin restores it, and its scene
+  position remains unchanged.
 
-- `CharacterIndependentTaskReturnTravelPlan` retains the exact successful arrival-occurrence
-  result, exact completed task activity, validated bounds and origin, and 1-32 copied waypoints;
-- return travel must start at the outbound final waypoint and end at the outbound origin, and
-  incomplete or mismatched outbound/task results fail closed;
-- immutable return progress advances only through the exact next waypoint and rejects skips,
-  repeats, completion, and distinct-plan identity;
-- `CharacterIndependentTaskReturnTravelController` scene-owns one exact plan and progress;
-- `TemporaryCharacterIndependentTaskReturnTravelSource` authors only the exact completed healer
-  route from the herb patch back to the captured departure origin;
-- the final outbound arrival-occurrence operation retains its exact combined result and initializes
-  the authored return controller only after all task, travel, event, time, and transcript input
-  validates;
-- Domain party rejoin appends the exact absent character after existing stable members only while
-  the 32-member party has capacity;
-- the pure return-rejoin transition composes exactly one final return advance with that rejoin;
-- the return controller and task controller compare-and-swap exact return, completed-task, and party
-  state before installing the fresh completed progress and party together.
+The next fair-sabotage foundation has also started:
 
-`Main` still initializes outbound travel but does not advance it, trigger the task occurrence,
-advance return travel, or rejoin the healer. The healer remains visible and continues ordinary body
-behavior. No elapsed-time, speed, interpolation, collision, navigation-agent,
-off-screen-location, body-presentation, dialogue/model-context, persistence, or provider policy was
-added.
+- `CharacterPhysicalAccessSnapshot` retains one character and at most 64 stable value-unique
+  physically accessible world-object identifiers;
+- `CharacterActionAccessRequirement` and its pure policy require explicit physical access, one
+  authored capability key, and one referenced knowledge identifier together;
+- `CharacterSabotageActionKind` defines only the closed `conceal`, `move`, `substitute`,
+  `contaminate`, `misquote`, `delay`, and `influence` identity values.
+
+No sabotage proposal or effect, generalized concealment, off-screen position model, interpolation,
+speed, collision or navigation-agent change, dialogue/model-context change, persistence, or provider
+policy was added. The healer's hidden body retains its existing collision state. Access eligibility
+is not occurrence authority, and action kinds do not identify an actor, target, or effect.
 
 ## Validation and review
 
-- Each slice was driven through a focused missing-type or missing-member compile failure before its
+- Every slice began with a focused missing-type, missing-member, or failing live smoke before its
   implementation.
-- Focused host-local tests pass: 4 Domain party-rejoin tests, 8 Application return-plan/progress
-  tests, and 4 Application final-return/rejoin tests.
-- The focused return controller, authored return source, expanded arrival-occurrence, and final
-  return-rejoin Godot smokes pass host-local.
-- The validation spine passed workflow validation, restore, formatting, a zero-warning solution
-  build, 2,216 Domain, 473 Application, 532 Infrastructure, and 8 architecture tests.
-- The script's `dotnet run` ScenarioValidator apphost then stalled with no output; it was interrupted
-  and the same built validator passed through `dotnet exec`, validating all 5 scenario definitions.
-- All 100 credential-free headless Godot smoke invocations pass host-local, including the four new
-  or expanded return-flow checks.
-- The Compatibility-renderer graphical launch passes on the Apple M3 Max.
-- Restricted VSTest reproduced the known loopback socket denial, and restricted Godot reproduced
-  the known `user://logs` crash; the identical focused commands passed host-local.
+- Focused host-local tests pass: 5 Application timing tests, 5 Domain physical-access tests, 8 Domain
+  action-access tests, and 9 Domain sabotage-kind tests.
+- All 13 credential-free independent-task smokes pass together, including exact timed progression,
+  body hiding/restoration, stale input, and completed-state no-op coverage.
+- The complete host-local `./scripts/quality.sh` spine passes workflow validation, restore,
+  formatting, a zero-warning solution build, 2,238 Domain, 478 Application, 532 Infrastructure, and
+  8 Architecture tests.
+- The scenario validator accepts all 5 evidence definitions.
+- All 104 credential-free headless Godot smoke invocations pass, and the Compatibility-renderer
+  graphical launch passes on the Apple M3 Max.
+- The long ordinary-model timeout smoke now waits for the legitimate background round trip before
+  capturing its isolation baseline; it still proves the 30-second provider timeout adds no dialogue,
+  action, fallback, or mutation.
+- Restricted VSTest reproduced the known loopback `SocketException (13)` and restricted Godot
+  reproduced the known `user://logs` crash; the identical focused and full commands pass host-local.
 - Cumulative `git diff --check` and the practical 120-character authored-code check pass.
 - No live-conformance environment variable was enabled and no provider was invoked.
-- Initial hosted run `34753008633` completed with all five jobs at `steps: []`; it provides no
-  product-test or unsigned-build evidence and should not be retried unchanged.
 
 ## Exact next bounded slice
 
-Take **Phase 7ci: coordinate one explicit independent-task round-trip step**.
+Take **Phase 7cs: bind object-targeted sabotage proposals to exact access requirements**.
 
 Acceptance boundary:
 
-1. Add one scene-owned coordinator that delegates exactly one next outbound or return waypoint from
-   the exact current controller state supplied by the caller.
-2. At the outbound final waypoint, delegate the existing atomic arrival-occurrence operation so the
-   exact return route initializes; at the return final waypoint, delegate the existing atomic
-   return-rejoin operation. Do not duplicate Domain or Application transition rules.
-3. Add one credential-free smoke proving the authored one-waypoint outbound route and one-waypoint
-   return route progress through task occurrence and rejoin in order, while stale, mismatched,
-   repeated, and null input leaves every scene-owned snapshot unchanged.
-4. Do not call the coordinator from `Main`; select elapsed time, speed, interpolation, collision,
-   navigation-agent, or off-screen scheduling policy; move or hide a body; change
-   dialogue/model-context; persist state; or invoke a provider.
+1. Add one immutable provider-neutral object-targeted sabotage proposal retaining an exact actor
+   `CharacterId`, one exact `CharacterActionAccessRequirement`, and only the `conceal`, `move`,
+   `substitute`, or `contaminate` kind.
+2. Reject `misquote`, `delay`, and `influence` so character-, statement-, and action-target shapes
+   are not falsely modeled as `ObjectId` targets.
+3. Add one pure eligibility policy that requires a value-matching proposal actor and delegates the
+   complete existing `CharacterActionAccessPolicy` without changing any input.
+4. Add focused Domain tests for exact-instance retention, closed object-kind acceptance, wrong actor,
+   missing physical/capability/knowledge access, nulls, and unchanged inputs.
+5. Do not define sabotage effects or occurrence, mutate a world object or ingredient, author live
+   enemy-agent access, add scene/provider wiring, change dialogue/model context, persist state, or
+   broaden non-object action target shapes.

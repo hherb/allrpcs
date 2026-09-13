@@ -26,6 +26,7 @@ public partial class Main : Node
     private const float DialogueHearingRangePixels = 192.0f;
     private const float WhisperHearingRangePixels = 48.0f;
     private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
+    private static readonly TimeSpan IndependentTaskStepInterval = TimeSpan.FromSeconds(3);
     private static readonly TimeSpan ParticipationRoundDeadline = TimeSpan.FromSeconds(30);
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
     private static readonly StringName FocusedSearchCancelAction = new("focused_search_cancel");
@@ -50,8 +51,13 @@ public partial class Main : Node
     private TemporaryOrdinaryCharacterParticipantSource ordinaryCharacterParticipantSource = null!;
     private TemporaryCharacterIndependentTaskSource independentTaskSource = null!;
     private CharacterIndependentTaskDepartureController independentTaskDepartureController = null!;
+    private TemporaryCharacterIndependentTaskOccurrenceSource independentTaskOccurrenceSource = null!;
+    private CharacterIndependentTaskBodyPresentationController independentTaskBodyPresentationController = null!;
+    private CharacterIndependentTaskRoundTripCoordinator independentTaskRoundTripCoordinator = null!;
+    private CharacterIndependentTaskStepClockController independentTaskStepClockController = null!;
     private TemporaryCharacterIndependentTaskTravelSource independentTaskTravelSource = null!;
     private CharacterIndependentTaskTravelController independentTaskTravelController = null!;
+    private CharacterIndependentTaskReturnTravelController independentTaskReturnTravelController = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -109,12 +115,27 @@ public partial class Main : Node
         independentTaskDepartureController =
             GetNode<CharacterIndependentTaskDepartureController>(
                 "CharacterIndependentTaskDepartureController");
+        independentTaskOccurrenceSource =
+            GetNode<TemporaryCharacterIndependentTaskOccurrenceSource>(
+                "TemporaryCharacterIndependentTaskOccurrenceSource");
+        independentTaskBodyPresentationController =
+            GetNode<CharacterIndependentTaskBodyPresentationController>(
+                "CharacterIndependentTaskBodyPresentationController");
+        independentTaskRoundTripCoordinator =
+            GetNode<CharacterIndependentTaskRoundTripCoordinator>(
+                "CharacterIndependentTaskRoundTripCoordinator");
+        independentTaskStepClockController =
+            GetNode<CharacterIndependentTaskStepClockController>(
+                "CharacterIndependentTaskStepClockController");
         independentTaskTravelSource =
             GetNode<TemporaryCharacterIndependentTaskTravelSource>(
                 "TemporaryCharacterIndependentTaskTravelSource");
         independentTaskTravelController =
             GetNode<CharacterIndependentTaskTravelController>(
                 "CharacterIndependentTaskTravelController");
+        independentTaskReturnTravelController =
+            GetNode<CharacterIndependentTaskReturnTravelController>(
+                "CharacterIndependentTaskReturnTravelController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -214,6 +235,8 @@ public partial class Main : Node
 
         InitializeAndStartIndependentTaskDeparture();
         InitializeIndependentTaskTravel();
+        InitializeIndependentTaskStepClock();
+        InitializeIndependentTaskBodyPresentation();
 
         if (!focusedSearchController.TryInitializePerception(seekerPerceptionSource.Perception))
         {
@@ -275,6 +298,31 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The authored independent-task travel plan could not initialize.");
+        }
+    }
+
+    private void InitializeIndependentTaskStepClock()
+    {
+        if (!independentTaskStepClockController.TryInitialize(
+                new CharacterIndependentTaskStepCadence(IndependentTaskStepInterval)))
+        {
+            throw new InvalidOperationException(
+                "The authored independent-task step clock could not initialize.");
+        }
+    }
+
+    private void InitializeIndependentTaskBodyPresentation()
+    {
+        CharacterPartySnapshot party = independentTaskDepartureController.Party
+            ?? throw new InvalidOperationException(
+                "The independent-task party state was not initialized for body presentation.");
+        if (!independentTaskBodyPresentationController.TryInitialize(
+                independentTaskSource.DepartingCharacterId,
+                healer,
+                party))
+        {
+            throw new InvalidOperationException(
+                "The authored independent-task body presentation could not initialize.");
         }
     }
 
@@ -363,11 +411,131 @@ public partial class Main : Node
     /// <inheritdoc />
     public override void _Process(double delta)
     {
-        _ = delta;
+        ProcessIndependentTaskRoundTrip(delta);
         ProcessCharacterTurnResponse();
         ProcessCompletedCharacterTurnParticipation();
         ProcessDialogueSubmission();
         UpdateModeStatus(force: false);
+    }
+
+    private void ProcessIndependentTaskRoundTrip(double delta)
+    {
+        CharacterIndependentTaskStepCadence cadence =
+            independentTaskStepClockController.Cadence
+            ?? throw new InvalidOperationException(
+                "The independent-task step cadence was not initialized.");
+        CharacterIndependentTaskStepClock clock =
+            independentTaskStepClockController.Clock
+            ?? throw new InvalidOperationException(
+                "The independent-task step clock was not initialized.");
+        CharacterIndependentTaskTravelPlan outboundPlan =
+            independentTaskTravelController.Plan
+            ?? throw new InvalidOperationException(
+                "The independent-task outbound plan was not initialized.");
+        CharacterIndependentTaskTravelProgress outboundProgress =
+            independentTaskTravelController.Progress
+            ?? throw new InvalidOperationException(
+                "The independent-task outbound progress was not initialized.");
+        CharacterIndependentTaskReturnTravelPlan? returnPlan =
+            independentTaskReturnTravelController.Plan;
+        CharacterIndependentTaskReturnTravelProgress? returnProgress =
+            independentTaskReturnTravelController.Progress;
+        if ((returnPlan is null) != (returnProgress is null))
+        {
+            throw new InvalidOperationException(
+                "The independent-task return plan and progress must be jointly present.");
+        }
+
+        if (returnProgress?.IsComplete == true)
+        {
+            return;
+        }
+
+        CharacterIndependentTaskWorldEventOccurrence? candidate = null;
+        System.Numerics.Vector2 reachedWaypoint;
+        if (returnPlan is null)
+        {
+            CharacterIndependentTaskActivity activeActivity =
+                independentTaskDepartureController.ActiveActivity
+                ?? throw new InvalidOperationException(
+                    "Outbound independent-task travel requires its exact active activity.");
+            if (outboundProgress.IsComplete)
+            {
+                throw new InvalidOperationException(
+                    "Completed outbound travel did not initialize exact return travel.");
+            }
+
+            candidate = independentTaskOccurrenceSource.CreateOccurrence(activeActivity);
+            reachedWaypoint = outboundPlan.Waypoints[outboundProgress.CompletedWaypointCount];
+        }
+        else
+        {
+            reachedWaypoint = returnPlan.Waypoints[returnProgress!.CompletedWaypointCount];
+        }
+
+        CharacterIndependentTaskActivitySnapshot activities =
+            independentTaskDepartureController.Activities
+            ?? throw new InvalidOperationException(
+                "Independent-task activities were not initialized.");
+        CharacterPartySnapshot party = independentTaskDepartureController.Party
+            ?? throw new InvalidOperationException(
+                "Independent-task party state was not initialized.");
+        WorldEventLogSnapshot eventLog = worldEventController.EventLog
+            ?? throw new InvalidOperationException(
+                "World-event log state was not initialized.");
+        WorldTimeSnapshot worldTime = worldEventController.WorldTime
+            ?? throw new InvalidOperationException(
+                "World-time state was not initialized.");
+        CharacterTurnTranscriptSnapshot transcript =
+            characterTurnTranscriptController.Transcript
+            ?? throw new InvalidOperationException(
+                "Character-turn transcript state was not initialized.");
+        TimeSpan elapsed = BoundedIndependentTaskElapsed(delta, cadence);
+        if (!independentTaskRoundTripCoordinator.TryAdvanceElapsed(
+                cadence,
+                clock,
+                elapsed,
+                outboundPlan,
+                outboundProgress,
+                returnPlan,
+                returnProgress,
+                reachedWaypoint,
+                candidate,
+                activities,
+                party,
+                eventLog,
+                worldTime,
+                transcript))
+        {
+            throw new InvalidOperationException(
+                "The exact live independent-task elapsed step could not advance.");
+        }
+
+        CharacterPartySnapshot currentParty = independentTaskDepartureController.Party
+            ?? throw new InvalidOperationException(
+                "Independent-task party state disappeared after elapsed processing.");
+        if (!ReferenceEquals(currentParty, party)
+            && !independentTaskBodyPresentationController.TryPresent(party, currentParty))
+        {
+            throw new InvalidOperationException(
+                "The exact independent-task party change could not update body presentation.");
+        }
+    }
+
+    private static TimeSpan BoundedIndependentTaskElapsed(
+        double delta,
+        CharacterIndependentTaskStepCadence cadence)
+    {
+        if (!double.IsFinite(delta) || delta < 0.0d)
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(delta),
+                delta,
+                "Independent-task frame time must be finite and non-negative.");
+        }
+
+        return TimeSpan.FromSeconds(
+            Math.Min(delta, cadence.Interval.TotalSeconds));
     }
 
     private void ProcessCharacterTurnResponse()

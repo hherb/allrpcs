@@ -24,6 +24,7 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private TemporaryCharacterExaminationFlowController examinationController = null!;
+    private CharacterIndependentTaskReturnTravelController returnTravelController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
     private FocusedSearchActivityController searchController = null!;
@@ -33,6 +34,7 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
     private object? initialWorldTime;
     private object? initialWorldObjects;
     private object? initialPerception;
+    private int initialTranscriptEntryCount;
     private DialogueEvent? acceptedDialogue;
     private CharacterTurnTranscriptSnapshot? acceptedTranscript;
     private CharacterTurnRequest? acceptedRequest;
@@ -65,6 +67,8 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
             "../CharacterTurnTranscriptController");
         examinationController = GetNode<TemporaryCharacterExaminationFlowController>(
             "../TemporaryCharacterExaminationFlowController");
+        returnTravelController = GetNode<CharacterIndependentTaskReturnTravelController>(
+            "../CharacterIndependentTaskReturnTravelController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
         searchController = GetNode<FocusedSearchActivityController>(
@@ -85,6 +89,11 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
 
         if (stage == 0)
         {
+            if (returnTravelController.Progress is not { IsComplete: true })
+            {
+                return;
+            }
+
             CaptureInitialStateAndSubmit();
             stage = 1;
             return;
@@ -105,6 +114,7 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
         initialWorldTime = worldEventController.WorldTime;
         initialWorldObjects = worldObjectController.WorldObjects;
         initialPerception = searchController.Perception;
+        initialTranscriptEntryCount = transcriptController.Transcript?.Entries.Count ?? 0;
         inputControl.Text = PlayerText;
         inputControl.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
     }
@@ -131,12 +141,12 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
         DialogueEvent? dialogue = dialogueController.LastOccurredEvent;
         CharacterTurnTranscriptSnapshot? transcript = transcriptController.Transcript;
         if (dialogue is null
-            || transcript?.Entries.Count != 1
+            || transcript?.Entries.Count != initialTranscriptEntryCount + 1
             || utterance.Text != PlayerText
             || !ReferenceEquals(activity.State, CharacterTurnActivityState.AwaitingResponse)
             || !ReferenceEquals(activity.Request.DialogueEvent, dialogue)
             || !ReferenceEquals(dialogue.Utterance, utterance)
-            || !ReferenceEquals(transcript.Entries[0].SpokenStatement, utterance)
+            || !ReferenceEquals(transcript.Entries[^1].SpokenStatement, utterance)
             || !ReferenceEquals(model.ReceivedRequest?.TurnRequest, activity.Request))
         {
             Fail("The waiting model did not receive the exact ordinary timeout turn.");
@@ -181,7 +191,6 @@ public partial class CharacterModelOrdinaryTimeoutSmokeCheck : Node
             || activity.Response is not null
             || !ReferenceEquals(dialogueController.LastOccurredEvent, acceptedDialogue)
             || !ReferenceEquals(transcriptController.Transcript, acceptedTranscript)
-            || acceptedTranscript?.Entries.Any(entry => entry.PhysicalAction is not null) != false
             || response.Text != NoResponseText
             || !ReferenceEquals(
                 status.Presentation,
