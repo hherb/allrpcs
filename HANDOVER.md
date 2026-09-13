@@ -17,6 +17,9 @@
   `DiscoveryEvidenceProjection`, rejects unseen evidence, retains authoritative evidence, and
   recovers only the exact target after the evidence becomes noticed.
 
+Draft PR #227 is open. Hosted run `34761677722` completed with all five jobs at `steps: []`; it
+provides no product-test or unsigned-build evidence and should not be retried unchanged.
+
 The three focused checks use isolated `.tscn` scenes, so `Main.tscn` remains unchanged. No behavior
 or timing is selected automatically. No existing scene world object, node visibility, position,
 perception snapshot, evidence definition, truth, critical route, event, time, transcript, save, or
@@ -37,6 +40,8 @@ provider contract is mutated or added.
   and 8 Architecture tests; the scenario validator accepts all 5 evidence definitions, all
   credential-free headless Godot smokes pass, and the Compatibility-renderer graphical launch
   passes on the Apple M3 Max.
+- Hosted run `34761677722` executed no job steps; its five failures are Actions/account
+  infrastructure state, not product-test results.
 - Authored C# remains below 500 lines per file and within 120 characters per line;
   `git diff --check` passes.
 - No live-conformance environment variable was enabled and no provider was invoked.
