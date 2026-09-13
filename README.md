@@ -825,6 +825,16 @@ controller without advancing progress or changing the healer body. An isolated s
 the task, origin, destination, and zero progress are retained exactly. This composition still does
 not simulate travel, hide a separated character, trigger the task occurrence, or rejoin the party.
 
+Independent-task occurrence now also requires the exact scene-owned travel plan and its exact
+completed immutable progress. A pure Application eligibility policy rejects incomplete progress,
+a distinct plan, and distinct or value-equal activity instances. The occurrence controller
+compare-and-swaps that travel state before applying the existing atomic task, event-log,
+qualitative-time, and transcript transition. Its credential-free smoke proves pre-arrival,
+mismatched, stale, and repeated attempts preserve every surrounding snapshot, while the exact
+authored one-waypoint final arrival permits one occurrence. `Main` still does not advance travel or
+trigger that occurrence, and no elapsed-time, speed, interpolation, collision, body presentation,
+return travel, party rejoin, persistence, or provider policy is implied.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

@@ -1,3 +1,4 @@
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.WorldEvents;
@@ -9,6 +10,7 @@ namespace Allrpcs.Game;
 public partial class CharacterIndependentTaskOccurrenceController : Node
 {
     private CharacterIndependentTaskDepartureController taskController = null!;
+    private CharacterIndependentTaskTravelController travelController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private WorldEventController worldController = null!;
 
@@ -20,6 +22,8 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
     {
         taskController = GetNode<CharacterIndependentTaskDepartureController>(
             "../CharacterIndependentTaskDepartureController");
+        travelController = GetNode<CharacterIndependentTaskTravelController>(
+            "../CharacterIndependentTaskTravelController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
         worldController = GetNode<WorldEventController>("../WorldEventController");
@@ -28,12 +32,16 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
     /// <summary>Applies one exact candidate only from all exact expected current snapshots.</summary>
     public bool TryOccur(
         CharacterIndependentTaskWorldEventOccurrence candidate,
+        CharacterIndependentTaskTravelPlan expectedTravelPlan,
+        CharacterIndependentTaskTravelProgress expectedTravelProgress,
         CharacterIndependentTaskActivitySnapshot expectedActivities,
         WorldEventLogSnapshot expectedEventLog,
         WorldTimeSnapshot expectedWorldTime,
         CharacterTurnTranscriptSnapshot expectedTranscript)
     {
         ArgumentNullException.ThrowIfNull(candidate);
+        ArgumentNullException.ThrowIfNull(expectedTravelPlan);
+        ArgumentNullException.ThrowIfNull(expectedTravelProgress);
         ArgumentNullException.ThrowIfNull(expectedActivities);
         ArgumentNullException.ThrowIfNull(expectedEventLog);
         ArgumentNullException.ThrowIfNull(expectedWorldTime);
@@ -44,10 +52,20 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
         if (activeActivity is null
             || worldEvents is null
             || !ReferenceEquals(candidate.Activity, activeActivity)
+            || !ReferenceEquals(travelController.Plan, expectedTravelPlan)
+            || !ReferenceEquals(travelController.Progress, expectedTravelProgress)
             || !ReferenceEquals(taskController.Activities, expectedActivities)
             || !ReferenceEquals(worldController.EventLog, expectedEventLog)
             || !ReferenceEquals(worldController.WorldTime, expectedWorldTime)
             || !ReferenceEquals(transcriptController.Transcript, expectedTranscript))
+        {
+            return false;
+        }
+
+        if (!CharacterIndependentTaskTravelOccurrenceEligibilityPolicy.IsEligible(
+                expectedTravelPlan,
+                expectedTravelProgress,
+                activeActivity))
         {
             return false;
         }

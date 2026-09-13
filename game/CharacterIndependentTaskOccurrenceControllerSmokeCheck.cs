@@ -1,3 +1,4 @@
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.WorldEvents;
@@ -30,6 +31,9 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         CharacterIndependentTaskOccurrenceController occurrenceController =
             GetNode<CharacterIndependentTaskOccurrenceController>(
                 "../CharacterIndependentTaskOccurrenceController");
+        CharacterIndependentTaskTravelController travelController =
+            GetNode<CharacterIndependentTaskTravelController>(
+                "../CharacterIndependentTaskTravelController");
         TemporaryCharacterIndependentTaskOccurrenceSource occurrenceSource =
             GetNode<TemporaryCharacterIndependentTaskOccurrenceSource>(
                 "../TemporaryCharacterIndependentTaskOccurrenceSource");
@@ -39,6 +43,8 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             GetNode<CharacterTurnTranscriptController>("../CharacterTurnTranscriptController");
 
         CharacterIndependentTaskActivity active = taskController.ActiveActivity!;
+        CharacterIndependentTaskTravelPlan travelPlan = travelController.Plan!;
+        CharacterIndependentTaskTravelProgress initialTravelProgress = travelController.Progress!;
         CharacterIndependentTaskActivitySnapshot activities = taskController.Activities!;
         CharacterPartySnapshot party = taskController.Party!;
         WorldEventLogSnapshot eventLog = worldController.EventLog!;
@@ -58,6 +64,9 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             || !ReferenceEquals(
                 candidate.Occurrence.TranscriptEntry.PhysicalAction,
                 active.Assignment.Intention)
+            || !ReferenceEquals(travelPlan.Activity, active)
+            || !ReferenceEquals(initialTravelProgress.Plan, travelPlan)
+            || initialTravelProgress.IsComplete
             || !ReferenceEquals(taskController.Activities, activities)
             || !ReferenceEquals(worldController.EventLog, eventLog)
             || !ReferenceEquals(worldController.WorldTime, worldTime)
@@ -72,15 +81,20 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         WorldEventLogSnapshot staleEventLog = new(eventLog.Entries);
         if (occurrenceController.TryOccur(
                 candidate,
+                travelPlan,
+                initialTravelProgress,
                 activities,
                 staleEventLog,
                 worldTime,
                 transcript)
             || !HasExactState(
                 taskController,
+                travelController,
                 worldController,
                 transcriptController,
                 active,
+                travelPlan,
+                initialTravelProgress,
                 activities,
                 party,
                 eventLog,
@@ -91,8 +105,110 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             return;
         }
 
+        if (occurrenceController.TryOccur(
+                candidate,
+                travelPlan,
+                initialTravelProgress,
+                activities,
+                eventLog,
+                worldTime,
+                transcript)
+            || !HasExactState(
+                taskController,
+                travelController,
+                worldController,
+                transcriptController,
+                active,
+                travelPlan,
+                initialTravelProgress,
+                activities,
+                party,
+                eventLog,
+                worldTime,
+                transcript))
+        {
+            Fail("The task occurred before the exact authored travel plan completed.");
+            return;
+        }
+
+        CharacterIndependentTaskTravelPlan mismatchedTravelPlan = new(
+            active,
+            travelPlan.WorldBounds,
+            travelPlan.Origin,
+            travelPlan.Waypoints);
+        CharacterIndependentTaskTravelProgress mismatchedTravelProgress =
+            CharacterIndependentTaskTravelProgressTransition.Advance(
+                new CharacterIndependentTaskTravelProgress(mismatchedTravelPlan),
+                mismatchedTravelPlan,
+                mismatchedTravelPlan.Waypoints.Single());
+        if (occurrenceController.TryOccur(
+                candidate,
+                mismatchedTravelPlan,
+                mismatchedTravelProgress,
+                activities,
+                eventLog,
+                worldTime,
+                transcript)
+            || !HasExactState(
+                taskController,
+                travelController,
+                worldController,
+                transcriptController,
+                active,
+                travelPlan,
+                initialTravelProgress,
+                activities,
+                party,
+                eventLog,
+                worldTime,
+                transcript))
+        {
+            Fail("Mismatched completed travel state changed authoritative occurrence state.");
+            return;
+        }
+
+        if (!travelController.TryAdvance(
+                travelPlan,
+                initialTravelProgress,
+                travelPlan.Waypoints.Single())
+            || travelController.Progress is not { IsComplete: true } completedTravelProgress
+            || ReferenceEquals(completedTravelProgress, initialTravelProgress)
+            || !ReferenceEquals(completedTravelProgress.Plan, travelPlan))
+        {
+            Fail("The authored task did not reach exact final arrival in one step.");
+            return;
+        }
+
+        if (occurrenceController.TryOccur(
+                candidate,
+                travelPlan,
+                initialTravelProgress,
+                activities,
+                eventLog,
+                worldTime,
+                transcript)
+            || !HasExactState(
+                taskController,
+                travelController,
+                worldController,
+                transcriptController,
+                active,
+                travelPlan,
+                completedTravelProgress,
+                activities,
+                party,
+                eventLog,
+                worldTime,
+                transcript))
+        {
+            Fail("Stale travel progress changed authoritative occurrence state.");
+            return;
+        }
+
         if (!occurrenceController.TryOccur(
                 candidate,
+                travelPlan,
+                completedTravelProgress,
                 activities,
                 eventLog,
                 worldTime,
@@ -103,6 +219,8 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             || !ReferenceEquals(completed.Assignment, active.Assignment)
             || !ReferenceEquals(completed.State, CharacterIndependentTaskActivityState.Completed)
             || !ReferenceEquals(taskController.Party, party)
+            || !ReferenceEquals(travelController.Plan, travelPlan)
+            || !ReferenceEquals(travelController.Progress, completedTravelProgress)
             || worldController.EventLog is not { Entries.Count: 2 } resultingLog
             || !ReferenceEquals(
                 resultingLog.Entries[^1],
@@ -125,12 +243,16 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         CharacterTurnTranscriptSnapshot completedTranscript = transcriptController.Transcript!;
         if (occurrenceController.TryOccur(
                 candidate,
+                travelPlan,
+                completedTravelProgress,
                 completedActivities,
                 completedLog,
                 completedTime,
                 completedTranscript)
             || !ReferenceEquals(taskController.Activities, completedActivities)
             || !ReferenceEquals(taskController.Party, party)
+            || !ReferenceEquals(travelController.Plan, travelPlan)
+            || !ReferenceEquals(travelController.Progress, completedTravelProgress)
             || !ReferenceEquals(worldController.EventLog, completedLog)
             || !ReferenceEquals(worldController.WorldTime, completedTime)
             || !ReferenceEquals(transcriptController.Transcript, completedTranscript)
@@ -138,6 +260,8 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             || !RejectsNulls(
                 occurrenceController,
                 candidate,
+                travelPlan,
+                completedTravelProgress,
                 completedActivities,
                 completedLog,
                 completedTime,
@@ -149,22 +273,27 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
 
         GD.Print(
             "Independent-task occurrence controller smoke passed: the exact active authored task "
-            + "completed with its authoritative event, meaningful time, and physical-action "
-            + "transcript as one fail-closed scene operation.");
+            + "completed only after exact final travel arrival, with its authoritative event, "
+            + "meaningful time, and physical-action transcript as one fail-closed scene operation.");
         GetTree().Quit();
     }
 
     private static bool HasExactState(
         CharacterIndependentTaskDepartureController taskController,
+        CharacterIndependentTaskTravelController travelController,
         WorldEventController worldController,
         CharacterTurnTranscriptController transcriptController,
         CharacterIndependentTaskActivity active,
+        CharacterIndependentTaskTravelPlan travelPlan,
+        CharacterIndependentTaskTravelProgress travelProgress,
         CharacterIndependentTaskActivitySnapshot activities,
         CharacterPartySnapshot party,
         WorldEventLogSnapshot eventLog,
         WorldTimeSnapshot worldTime,
         CharacterTurnTranscriptSnapshot transcript) =>
         ReferenceEquals(taskController.ActiveActivity, active)
+        && ReferenceEquals(travelController.Plan, travelPlan)
+        && ReferenceEquals(travelController.Progress, travelProgress)
         && ReferenceEquals(taskController.Activities, activities)
         && ReferenceEquals(taskController.Party, party)
         && ReferenceEquals(worldController.EventLog, eventLog)
@@ -174,20 +303,26 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
     private static bool RejectsNulls(
         CharacterIndependentTaskOccurrenceController controller,
         CharacterIndependentTaskWorldEventOccurrence candidate,
+        CharacterIndependentTaskTravelPlan travelPlan,
+        CharacterIndependentTaskTravelProgress travelProgress,
         CharacterIndependentTaskActivitySnapshot activities,
         WorldEventLogSnapshot eventLog,
         WorldTimeSnapshot worldTime,
         CharacterTurnTranscriptSnapshot transcript) =>
         ThrowsArgumentNull(() => controller.TryOccur(
-            null!, activities, eventLog, worldTime, transcript))
+            null!, travelPlan, travelProgress, activities, eventLog, worldTime, transcript))
         && ThrowsArgumentNull(() => controller.TryOccur(
-            candidate, null!, eventLog, worldTime, transcript))
+            candidate, null!, travelProgress, activities, eventLog, worldTime, transcript))
         && ThrowsArgumentNull(() => controller.TryOccur(
-            candidate, activities, null!, worldTime, transcript))
+            candidate, travelPlan, null!, activities, eventLog, worldTime, transcript))
         && ThrowsArgumentNull(() => controller.TryOccur(
-            candidate, activities, eventLog, null!, transcript))
+            candidate, travelPlan, travelProgress, null!, eventLog, worldTime, transcript))
         && ThrowsArgumentNull(() => controller.TryOccur(
-            candidate, activities, eventLog, worldTime, null!));
+            candidate, travelPlan, travelProgress, activities, null!, worldTime, transcript))
+        && ThrowsArgumentNull(() => controller.TryOccur(
+            candidate, travelPlan, travelProgress, activities, eventLog, null!, transcript))
+        && ThrowsArgumentNull(() => controller.TryOccur(
+            candidate, travelPlan, travelProgress, activities, eventLog, worldTime, null!));
 
     private static bool RejectsInvalidSourceInputs(
         TemporaryCharacterIndependentTaskOccurrenceSource source,
