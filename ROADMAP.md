@@ -401,6 +401,8 @@ Acceptance:
   - [x] Define bounded explicit per-character physical access to stable world-object identifiers.
   - [x] Require one targeted action's physical access, authored capability, and referenced knowledge
     together through a pure fail-closed eligibility gate.
+  - [x] Define the closed conceal, move, substitute, contaminate, misquote, delay, and influence
+    action-kind vocabulary without granting occurrence authority.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
 - [ ] Make sabotage leave potentially discoverable evidence.

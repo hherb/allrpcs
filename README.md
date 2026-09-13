@@ -629,6 +629,12 @@ informational, or capability input fails closed without changing any input. This
 define an action vocabulary, treat eligibility as occurrence, mutate a target, or grant model text
 authority.
 
+`CharacterSabotageActionKind` defines only the seven closed canonical roadmap kinds—`conceal`,
+`move`, `substitute`, `contaminate`, `misquote`, `delay`, and `influence`—as identity-preserving
+singletons in stable order. Parsing accepts only those exact values. A kind alone has no actor,
+target, access requirement, proposal, occurrence, effect, recovery consequence, evidence, scene,
+persistence, or provider authority.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
