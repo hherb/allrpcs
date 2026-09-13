@@ -825,6 +825,30 @@ controller without advancing progress or changing the healer body. An isolated s
 the task, origin, destination, and zero progress are retained exactly. This composition still does
 not simulate travel, hide a separated character, trigger the task occurrence, or rejoin the party.
 
+Independent-task occurrence now also requires the exact scene-owned travel plan and its exact
+completed immutable progress. A pure Application eligibility policy rejects incomplete progress,
+a distinct plan, and distinct or value-equal activity instances. The occurrence controller
+compare-and-swaps that travel state before applying the existing atomic task, event-log,
+qualitative-time, and transcript transition. Its credential-free smoke proves pre-arrival,
+mismatched, stale, and repeated attempts preserve every surrounding snapshot, while the exact
+authored one-waypoint final arrival permits one occurrence. `Main` still does not advance travel or
+trigger that occurrence, and no elapsed-time, speed, interpolation, collision, body presentation,
+return travel, party rejoin, persistence, or provider policy is implied.
+
+A separate pure Application transition composes the exact final waypoint with the existing
+authoritative independent-task occurrence. It returns one immutable result containing fresh
+completed travel progress plus fresh task, event-log, qualitative-time, and transcript state only
+after every travel and occurrence precondition succeeds. Non-final, skipped, repeated,
+distinct-plan, distinct-activity, stale-task, ineligible-event, and null inputs fail without changing
+any supplied immutable value. This combined result is not yet installed by Godot or ordinary flow.
+
+The scene occurrence controller can now delegate that combined transition and install its exact
+completed travel, task, event-log, qualitative-time, and transcript state through one
+compare-and-swap operation. Its smoke proves stale snapshots, mismatched travel, an unrecognized
+event, pre-arrival occurrence, repetition, and nulls cannot partially change scene state. This
+method remains an explicit seam: `Main` does not call it, no movement or timing policy was chosen,
+and return travel and party rejoin remain later work.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

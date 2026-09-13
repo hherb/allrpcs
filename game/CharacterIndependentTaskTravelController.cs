@@ -59,4 +59,28 @@ public partial class CharacterIndependentTaskTravelController : Node
         Progress = nextProgress;
         return true;
     }
+
+    /// <summary>Installs only an exact prevalidated final-arrival result from current state.</summary>
+    internal bool TryInstallArrival(
+        CharacterIndependentTaskTravelPlan expectedPlan,
+        CharacterIndependentTaskTravelProgress expectedProgress,
+        CharacterIndependentTaskArrivalOccurrenceResult result)
+    {
+        ArgumentNullException.ThrowIfNull(expectedPlan);
+        ArgumentNullException.ThrowIfNull(expectedProgress);
+        ArgumentNullException.ThrowIfNull(result);
+
+        if (!ReferenceEquals(Plan, expectedPlan)
+            || !ReferenceEquals(Progress, expectedProgress)
+            || !ReferenceEquals(result.TravelProgress.Plan, expectedPlan)
+            || !result.TravelProgress.IsComplete
+            || result.TravelProgress.CompletedWaypointCount
+                != expectedProgress.CompletedWaypointCount + 1)
+        {
+            return false;
+        }
+
+        Progress = result.TravelProgress;
+        return true;
+    }
 }

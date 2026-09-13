@@ -372,6 +372,12 @@ Acceptance:
     from the exact expected current plan, progress, and next waypoint.
   - [x] Author and scene-initialize one exact active healer route from its departure position to
     the existing herb-patch task target without advancing or moving it.
+  - [x] Require exact completed scene-owned travel before the independent-task physical occurrence
+    can atomically change task, event, qualitative-time, or transcript state.
+  - [x] Compose one pure final-waypoint arrival and authoritative task occurrence as an immutable
+    all-or-nothing Application result without scene installation.
+  - [x] Install one exact final-waypoint arrival and authoritative task occurrence atomically from
+    compare-and-swapped scene-owned travel, task, event, time, and transcript state.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
