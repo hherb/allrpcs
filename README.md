@@ -818,7 +818,12 @@ Godot controller owns one exact plan and its current immutable progress, initial
 installs a one-waypoint advance only from the exact expected current plan and progress. Its isolated
 credential-free smoke proves stale, skipped, repeated, and completed inputs leave both scene values
 unchanged. The controller does not author or start a route, integrate `Main`, or broaden any motion
-or timing policy.
+or timing policy. A temporary scene source binds only the exact authored active healer task to one
+fresh route from its captured departure position to the exact existing herb-patch scene position.
+`Main` creates that route only after the atomic task departure and initializes the scene travel
+controller without advancing progress or changing the healer body. An isolated source smoke proves
+the task, origin, destination, and zero progress are retained exactly. This composition still does
+not simulate travel, hide a separated character, trigger the task occurrence, or rejoin the party.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.

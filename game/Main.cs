@@ -1,5 +1,6 @@
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Movement;
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Controllers;
 using Allrpcs.Domain.Dialogue;
@@ -49,6 +50,8 @@ public partial class Main : Node
     private TemporaryOrdinaryCharacterParticipantSource ordinaryCharacterParticipantSource = null!;
     private TemporaryCharacterIndependentTaskSource independentTaskSource = null!;
     private CharacterIndependentTaskDepartureController independentTaskDepartureController = null!;
+    private TemporaryCharacterIndependentTaskTravelSource independentTaskTravelSource = null!;
+    private CharacterIndependentTaskTravelController independentTaskTravelController = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -106,6 +109,12 @@ public partial class Main : Node
         independentTaskDepartureController =
             GetNode<CharacterIndependentTaskDepartureController>(
                 "CharacterIndependentTaskDepartureController");
+        independentTaskTravelSource =
+            GetNode<TemporaryCharacterIndependentTaskTravelSource>(
+                "TemporaryCharacterIndependentTaskTravelSource");
+        independentTaskTravelController =
+            GetNode<CharacterIndependentTaskTravelController>(
+                "CharacterIndependentTaskTravelController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -204,6 +213,7 @@ public partial class Main : Node
         }
 
         InitializeAndStartIndependentTaskDeparture();
+        InitializeIndependentTaskTravel();
 
         if (!focusedSearchController.TryInitializePerception(seekerPerceptionSource.Perception))
         {
@@ -249,6 +259,22 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The authored independent-task departure could not start atomically.");
+        }
+    }
+
+    private void InitializeIndependentTaskTravel()
+    {
+        CharacterIndependentTaskActivity activeActivity =
+            independentTaskDepartureController.ActiveActivity
+            ?? throw new InvalidOperationException(
+                "The authored independent task did not retain its active departure state.");
+        NumericsVector2 origin = new(healer.GlobalPosition.X, healer.GlobalPosition.Y);
+        CharacterIndependentTaskTravelPlan plan =
+            independentTaskTravelSource.CreatePlan(activeActivity, origin);
+        if (!independentTaskTravelController.TryInitialize(plan))
+        {
+            throw new InvalidOperationException(
+                "The authored independent-task travel plan could not initialize.");
         }
     }
 
