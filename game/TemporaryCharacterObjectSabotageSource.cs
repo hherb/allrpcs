@@ -31,6 +31,9 @@ public partial class TemporaryCharacterObjectSabotageSource : Node
     /// <summary>Gets the exact authored eligible concealment candidate.</summary>
     public CharacterObjectSabotageEvidence Candidate { get; private set; } = null!;
 
+    /// <summary>Gets the stable bounded authored concealment candidates.</summary>
+    public IReadOnlyList<CharacterObjectSabotageEvidence> Candidates { get; private set; } = null!;
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -59,5 +62,6 @@ public partial class TemporaryCharacterObjectSabotageSource : Node
                 target.Identity.Id,
                 VisibilityState.Noticed,
                 false));
+        Candidates = Array.AsReadOnly([Candidate]);
     }
 }

@@ -677,6 +677,15 @@ mutate the authoritative object or its position, remove any route, reveal or rec
 object, apply another sabotage kind, or add events, time, transcripts, scenes, persistence, or
 provider behavior.
 
+`CharacterObjectSabotageConcealmentConsiderationRequest` defensively retains at most 64 exact
+caller-ordered candidates with value-unique evidence identifiers together with the exact character,
+physical-access, world-object, concealment, and evidence snapshots that define the current choice.
+`CharacterObjectSabotageConcealmentDecision` explicitly selects one exact candidate evidence
+identifier or abstains with no selection. Its pure acceptance policy requires the exact considering
+character identifier and, for selection, the exact identifier of a candidate accepted by the
+complete current concealment policy. These provider-neutral contracts do not decide timing, decode
+or generate a choice, apply state, schedule work, persist data, or invoke a provider.
+
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the
 authoritative evidence snapshot, and whose identifier is visible in one supplied character
@@ -692,9 +701,11 @@ concealment while retaining the exact evidence snapshot. Stale, value-equal expe
 ineligible operations fail without partial installation. First-eligible application does not choose
 when to run or retain a candidate schedule. `TemporaryCharacterObjectSabotageSource` retains the
 exact tail water-cask object and complete snapshot from the existing scene world-object source,
-then authors one exact enemy concealment candidate with explicit access and empty initial state.
-`Main.tscn` initializes that source, scene-owned state, and temporary flow without applying an
-effect.
+then authors one exact enemy concealment candidate with explicit access and empty initial state. It
+also retains one stable read-only bounded collection whose sole entry is that exact candidate. The
+temporary flow routes its explicit apply request through first-eligible collection selection while
+preserving the exact candidate for recovery and presentation. `Main.tscn` initializes that source,
+scene-owned state, and temporary flow without applying an effect.
 
 `CharacterObjectSabotageConcealmentPresentationController` projects exact immutable concealment
 state onto one retained scene body. Initialization and later presentation retain exact target and

@@ -42,7 +42,9 @@ public partial class TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck 
         WorldObjectSnapshot expectedWorldObjects = source.WorldObjects;
         WorldObjectConcealmentSnapshot initialConcealment = source.Concealment;
 
-        if (!body.Visible
+        if (source.Candidates.Count != 1
+            || !ReferenceEquals(source.Candidates[0], source.Candidate)
+            || !body.Visible
             || !ReferenceEquals(presentation.TargetObjectId, source.Candidate.Evidence.ObjectId)
             || !ReferenceEquals(presentation.LastPresentedConcealment, initialConcealment))
         {
