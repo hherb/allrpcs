@@ -19,6 +19,10 @@ No real provider is composed or invoked. Nothing starts sabotage automatically, 
 decodes or serializes provider data, persists concealment, or adds UI/input/events/time/transcripts,
 movement, or another sabotage effect.
 
+Draft PR #233 is open from implementation commit `9209fd1`. Hosted run `34790368095` completed
+with all five jobs at `steps: []`; it is Actions/account infrastructure state, not product-test or
+unsigned-build evidence, and should not be retried unchanged.
+
 ## Validation and review
 
 - Every slice began with the expected failure for its absent operation, type, or scene node.
@@ -32,6 +36,7 @@ movement, or another sabotage effect.
   graphical launch.
 - All changed authored C# files are below 500 lines and use no lines longer than 120 characters.
   No live-conformance switch was enabled and no provider was invoked.
+- Hosted run `34790368095` executed no job steps; host-local quality is the current product evidence.
 
 ## Exact next bounded slice
 
