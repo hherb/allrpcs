@@ -6,7 +6,9 @@
 `codex/phase-7-round-trip-coordination`, with eleven reviewed implementation commits after that
 merge.
 
-Draft PR #224 is open and mergeable. Its initial five credential-free jobs are queued.
+Draft PR #224 is open and mergeable. Hosted run `34758317069` completed with all five jobs at
+`steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+unchanged.
 
 Phase 7 now runs the authored healer independent task as a complete bounded live round trip:
 
