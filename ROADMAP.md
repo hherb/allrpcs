@@ -410,6 +410,8 @@ Acceptance:
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
 - [ ] Make sabotage leave potentially discoverable evidence.
+  - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
+    target-bound discovery-evidence value without applying it.
 - [ ] Test characters with mutually incompatible beliefs and goals.
 
 Acceptance:

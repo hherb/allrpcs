@@ -649,6 +649,13 @@ and delegates unchanged proposal eligibility. It does not apply an effect, repla
 change truth, position, perception, evidence, events, time, or transcripts, or grant scene,
 persistence, or provider authority.
 
+`CharacterObjectSabotageEvidence` binds one exact object-sabotage occurrence candidate to one exact
+discovery-evidence definition. Its pure policy delegates complete occurrence eligibility, requires
+the evidence to identify the occurrence target by value, and rejects an evidence identifier already
+present in the supplied snapshot. It does not append evidence, apply sabotage, prove that an
+authored discovery route can reveal the evidence, or alter truth, perception, state, scenes,
+persistence, or providers.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
