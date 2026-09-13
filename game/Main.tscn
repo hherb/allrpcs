@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3]
+[gd_scene load_steps=144 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -168,6 +168,8 @@
 [ext_resource type="Script" path="res://CharacterIndependentTaskReturnRejoinControllerSmokeCheck.cs" id="166_independent_task_return_rejoin_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskRoundTripCoordinator.cs" id="167_independent_task_round_trip_coordinator"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskRoundTripCoordinatorSmokeCheck.cs" id="168_independent_task_round_trip_check"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskStepClockController.cs" id="169_independent_task_step_clock_controller"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskStepClockControllerSmokeCheck.cs" id="170_independent_task_step_clock_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -759,6 +761,9 @@ script = ExtResource("164_independent_task_return_travel_source")
 [node name="CharacterIndependentTaskRoundTripCoordinator" type="Node" parent="."]
 script = ExtResource("167_independent_task_round_trip_coordinator")
 
+[node name="CharacterIndependentTaskStepClockController" type="Node" parent="."]
+script = ExtResource("169_independent_task_step_clock_controller")
+
 [node name="TemporaryCharacterIndependentTaskReturnTravelSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("165_independent_task_return_travel_source_check")
 
@@ -767,6 +772,9 @@ script = ExtResource("166_independent_task_return_rejoin_check")
 
 [node name="CharacterIndependentTaskRoundTripCoordinatorSmokeCheck" type="Node" parent="."]
 script = ExtResource("168_independent_task_round_trip_check")
+
+[node name="CharacterIndependentTaskStepClockControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("170_independent_task_step_clock_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")

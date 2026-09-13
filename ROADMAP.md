@@ -390,6 +390,7 @@ Acceptance:
   - [x] Select the active outbound or return leg only from one exact caller-supplied scene snapshot.
   - [x] Define a bounded provider-neutral cadence and immutable elapsed clock that exposes at most
     one due independent-task travel step per advance.
+  - [x] Scene-own one exact task-step cadence and compare-and-swap immutable elapsed clock progress.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route

@@ -884,6 +884,13 @@ one due step while carrying sub-interval remainder forward. It does not select o
 read a scene clock, process a frame, move or hide a body, or define navigation, persistence,
 dialogue/model-context, or provider behavior.
 
+A focused scene controller initializes one exact task-step cadence and its zero-elapsed clock once.
+It installs each pure clock advance only from the exact expected cadence and clock, retaining the
+exact accepted result so a later coordinator can observe whether one step became due. Stale,
+repeated, invalid-duration, and null input cannot change its clock. The controller does not read
+Godot frame time, invoke the round-trip coordinator, or alter task, party, world, transcript, or
+body state.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining
