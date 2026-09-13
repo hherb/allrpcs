@@ -51,13 +51,15 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
         CharacterTurnTranscriptController transcriptController =
             GetNode<CharacterTurnTranscriptController>("../CharacterTurnTranscriptController");
 
-        CharacterIndependentTaskStepCadence cadence = new(TimeSpan.FromSeconds(3));
-        if (!clockController.TryInitialize(cadence)
+        if (clockController.Cadence is not { } cadence
             || clockController.Clock is not { } initialClock)
         {
             Fail("The timed round-trip check could not initialize its exact cadence.");
             return;
         }
+
+        TimeSpan remainingInterval = cadence.Interval - initialClock.ElapsedTowardNextStep;
+        TimeSpan subInterval = TimeSpan.FromTicks(remainingInterval.Ticks / 2);
 
         CharacterIndependentTaskActivity active = taskController.ActiveActivity!;
         CharacterIndependentTaskWorldEventOccurrence candidate =
@@ -73,7 +75,7 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
         if (!coordinator.TryAdvanceElapsed(
                 cadence,
                 initialClock,
-                TimeSpan.FromSeconds(2),
+                subInterval,
                 outboundPlan,
                 outboundProgress,
                 null,
@@ -87,7 +89,8 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
                 transcript)
             || clockController.Clock is not { } accumulatedClock
             || clockController.LastAdvanceResult is not { IsStepDue: false }
-            || accumulatedClock.ElapsedTowardNextStep != TimeSpan.FromSeconds(2)
+            || accumulatedClock.ElapsedTowardNextStep
+                != initialClock.ElapsedTowardNextStep + subInterval
             || !HasOutboundState(
                 taskController,
                 occurrenceController,
@@ -115,7 +118,7 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
         if (coordinator.TryAdvanceElapsed(
                 cadence,
                 accumulatedClock,
-                TimeSpan.FromSeconds(2),
+                cadence.Interval - accumulatedClock.ElapsedTowardNextStep,
                 outboundPlan,
                 outboundProgress,
                 null,
@@ -167,7 +170,7 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
         if (!coordinator.TryAdvanceElapsed(
                 cadence,
                 accumulatedClock,
-                TimeSpan.FromSeconds(2),
+                cadence.Interval - accumulatedClock.ElapsedTowardNextStep,
                 outboundPlan,
                 outboundProgress,
                 null,
@@ -182,7 +185,7 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
             || clockController.Clock is not { } outboundDueClock
             || clockController.LastAdvanceResult is not { IsStepDue: true } outboundDueResult
             || !ReferenceEquals(outboundDueResult.PreviousClock, accumulatedClock)
-            || outboundDueClock.ElapsedTowardNextStep != TimeSpan.FromSeconds(1)
+            || outboundDueClock.ElapsedTowardNextStep != TimeSpan.Zero
             || occurrenceController.LastArrivalOccurrenceResult is not { }
             || outboundController.Progress is not { IsComplete: true } completedOutboundProgress
             || taskController.Activities is not { } completedActivities
@@ -200,7 +203,7 @@ public partial class CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck
         if (!coordinator.TryAdvanceElapsed(
                 cadence,
                 outboundDueClock,
-                TimeSpan.FromSeconds(2),
+                cadence.Interval,
                 outboundPlan,
                 completedOutboundProgress,
                 returnPlan,

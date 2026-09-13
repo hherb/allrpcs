@@ -898,6 +898,15 @@ outbound or return operation succeeds, so stale, invalid, failed, or repeated ro
 due interval unconsumed and every scene snapshot unchanged. This remains an explicit call boundary;
 `Main` does not initialize the cadence or process elapsed time.
 
+`Main` now initializes a fixed three-second authored cadence and advances its immutable scene clock
+with finite non-negative frame elapsed time capped to one interval per process call. Each due
+interval supplies the exact current task, party, outbound or return progress, world-event, time, and
+transcript state to the timed coordinator. The first authored interval completes the herb-patch
+arrival and authoritative task occurrence; the second completes return travel and stable party
+rejoin; completed return state stops further clock consumption. The healer body remains visible and
+unmoved, and no interpolation, speed, collision/navigation agent, off-screen position,
+dialogue/model-context, persistence, or provider behavior was added.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

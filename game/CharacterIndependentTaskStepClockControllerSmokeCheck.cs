@@ -18,9 +18,7 @@ public partial class CharacterIndependentTaskStepClockControllerSmokeCheck : Nod
             return;
         }
 
-        CharacterIndependentTaskStepClockController controller =
-            GetNode<CharacterIndependentTaskStepClockController>(
-                "../CharacterIndependentTaskStepClockController");
+        CharacterIndependentTaskStepClockController controller = new();
         CharacterIndependentTaskStepCadence cadence = new(TimeSpan.FromSeconds(3));
         if (!RejectsNullInitialization(controller)
             || !controller.TryInitialize(cadence)
@@ -82,6 +80,7 @@ public partial class CharacterIndependentTaskStepClockControllerSmokeCheck : Nod
             "Independent-task step clock controller smoke passed: exact one-time cadence "
             + "ownership, compare-and-swap immutable elapsed progress, one due step, and "
             + "fail-closed stale, invalid, repeated, and null input.");
+        controller.Free();
         GetTree().Quit();
     }
 

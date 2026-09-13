@@ -392,6 +392,8 @@ Acceptance:
     one due independent-task travel step per advance.
   - [x] Scene-own one exact task-step cadence and compare-and-swap immutable elapsed clock progress.
   - [x] Consume one due cadence interval only when the exact active outbound or return step succeeds.
+  - [x] Drive the authored one-waypoint task occurrence and return rejoin from a bounded live-scene
+    cadence without moving or hiding its character body.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
