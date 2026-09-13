@@ -24,6 +24,9 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
     private const string StoneMarkerDisplayName = "STONE MARKER";
     private const string StoneMarkerDescription =
         "Weathered carvings mark one face of the standing stone.";
+    private const string WaterCaskObjectId = "village-water-cask";
+    private const string WaterCaskDisplayName = "Village water cask";
+    private const string WaterCaskDescription = "A covered cask beside the village well.";
     private const string InitialResolvedDescriptionText = "";
 
     private TemporaryWorldObjectSource source = null!;
@@ -129,7 +132,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             return;
         }
 
-        if (!ReferenceEquals(first, second) || first.Entries.Count != 2)
+        if (!ReferenceEquals(first, second) || first.Entries.Count != 3)
         {
             Fail("Temporary world-object source smoke failed stable ordered snapshot retention.");
             return;
@@ -137,15 +140,24 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
 
         WorldObject herbPatchObject = first.Entries[0];
         WorldObject stoneMarkerObject = first.Entries[1];
+        WorldObject waterCaskObject = first.Entries[2];
         WorldObjectIdentity herbPatchIdentity = herbPatchObject.Identity;
         WorldObjectIdentity stoneMarkerIdentity = stoneMarkerObject.Identity;
         WorldObjectDescription herbPatchDescription = herbPatchObject.Description;
         WorldObjectDescription stoneMarkerDescription = stoneMarkerObject.Description;
+        WorldObjectIdentity waterCaskIdentity = waterCaskObject.Identity;
+        WorldObjectDescription waterCaskDescription = waterCaskObject.Description;
         string herbPatchName = herbPatchIdentity.DisplayName;
         string stoneMarkerName = stoneMarkerIdentity.DisplayName;
         if (ReferenceEquals(herbPatchObject, stoneMarkerObject)
             || ReferenceEquals(herbPatchIdentity, stoneMarkerIdentity)
             || ReferenceEquals(herbPatchDescription, stoneMarkerDescription)
+            || ReferenceEquals(waterCaskObject, herbPatchObject)
+            || ReferenceEquals(waterCaskObject, stoneMarkerObject)
+            || ReferenceEquals(waterCaskIdentity, herbPatchIdentity)
+            || ReferenceEquals(waterCaskIdentity, stoneMarkerIdentity)
+            || ReferenceEquals(waterCaskDescription, herbPatchDescription)
+            || ReferenceEquals(waterCaskDescription, stoneMarkerDescription)
             || !HasExpectedWorldObject(
                 herbPatchObject,
                 herbPatch,
@@ -157,7 +169,12 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                 stoneMarker,
                 StoneMarkerObjectId,
                 StoneMarkerDisplayName,
-                StoneMarkerDescription))
+                StoneMarkerDescription)
+            || !HasExpectedWorldObject(
+                waterCaskObject,
+                WaterCaskObjectId,
+                WaterCaskDisplayName,
+                WaterCaskDescription))
         {
             Fail("Temporary world-object source smoke failed exact authored target retention.");
             return;
@@ -208,6 +225,8 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             || !ReferenceEquals(first.Entries[1].Identity.DisplayName, stoneMarkerName)
             || !ReferenceEquals(first.Entries[0].Description, herbPatchDescription)
             || !ReferenceEquals(first.Entries[1].Description, stoneMarkerDescription)
+            || !ReferenceEquals(first.Entries[2].Identity, waterCaskIdentity)
+            || !ReferenceEquals(first.Entries[2].Description, waterCaskDescription)
             || !HasUnchangedTargets(
                 expectedTargets,
                 expectedObjectIdTexts,
@@ -261,6 +280,26 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         return string.Equals(target.ObjectId.Value, expectedObjectId, StringComparison.Ordinal)
             && !ReferenceEquals(worldObject.Identity.Id, target.ObjectId)
             && worldObject.Identity.Id == target.ObjectId
+            && string.Equals(
+                worldObject.Identity.DisplayName,
+                expectedDisplayName,
+                StringComparison.Ordinal)
+            && string.Equals(
+                worldObject.Description.Text,
+                expectedDescription,
+                StringComparison.Ordinal);
+    }
+
+    private static bool HasExpectedWorldObject(
+        WorldObject worldObject,
+        string expectedObjectId,
+        string expectedDisplayName,
+        string expectedDescription)
+    {
+        return string.Equals(
+                worldObject.Identity.Id.Value,
+                expectedObjectId,
+                StringComparison.Ordinal)
             && string.Equals(
                 worldObject.Identity.DisplayName,
                 expectedDisplayName,

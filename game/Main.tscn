@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3]
+[gd_scene load_steps=156 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -174,6 +174,14 @@
 [ext_resource type="Script" path="res://IndependentTaskLiveRoundTripFlowSmokeCheck.cs" id="172_independent_task_live_round_trip_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskBodyPresentationController.cs" id="173_independent_task_body_presentation_controller"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskBodyPresentationControllerSmokeCheck.cs" id="174_independent_task_body_presentation_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMainSceneSmokeCheck.cs" id="175_object_sabotage_main_scene_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSource.cs" id="176_object_sabotage_source"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentController.cs" id="177_object_sabotage_state"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageFlowController.cs" id="178_object_sabotage_flow"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentPresentationControllerSmokeCheck.cs" id="179_object_sabotage_presentation_check"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentPresentationController.cs" id="180_object_sabotage_presentation"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowController.cs" id="181_object_sabotage_presentation_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck.cs" id="182_object_sabotage_presentation_flow_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -439,6 +447,21 @@ offset_bottom = -43.0
 text = "FOCUS"
 horizontal_alignment = 1
 
+[node name="WaterCask" type="Node2D" parent="InteractionCandidates"]
+position = Vector2(1216, 656)
+
+[node name="Body" type="Polygon2D" parent="InteractionCandidates/WaterCask"]
+polygon = PackedVector2Array(-22, -24, 22, -24, 28, 22, -28, 22)
+color = Color(0.455, 0.302, 0.18, 1)
+
+[node name="Label" type="Label" parent="InteractionCandidates/WaterCask"]
+offset_left = -76.0
+offset_top = 28.0
+offset_right = 76.0
+offset_bottom = 51.0
+text = "VILLAGE WATER CASK"
+horizontal_alignment = 1
+
 [node name="HiddenMarker" type="Node2D" parent="InteractionCandidates"]
 visible = false
 position = Vector2(800, 280)
@@ -485,6 +508,21 @@ script = ExtResource("9_interaction_controller")
 
 [node name="TemporaryWorldObjectSource" type="Node" parent="."]
 script = ExtResource("25_world_object_source")
+
+[node name="TemporaryCharacterObjectSabotageSource" type="Node" parent="."]
+script = ExtResource("176_object_sabotage_source")
+
+[node name="CharacterObjectSabotageConcealmentController" type="Node" parent="."]
+script = ExtResource("177_object_sabotage_state")
+
+[node name="CharacterObjectSabotageConcealmentPresentationController" type="Node" parent="."]
+script = ExtResource("180_object_sabotage_presentation")
+
+[node name="TemporaryCharacterObjectSabotageFlowController" type="Node" parent="."]
+script = ExtResource("178_object_sabotage_flow")
+
+[node name="TemporaryCharacterObjectSabotagePresentationFlowController" type="Node" parent="."]
+script = ExtResource("181_object_sabotage_presentation_flow")
 
 [node name="TemporaryFocusedSearchContextSource" type="Node" parent="."]
 script = ExtResource("16_search_context_source")
@@ -791,6 +829,15 @@ script = ExtResource("172_independent_task_live_round_trip_check")
 
 [node name="CharacterIndependentTaskBodyPresentationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("174_independent_task_body_presentation_check")
+
+[node name="TemporaryCharacterObjectSabotageMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("175_object_sabotage_main_scene_check")
+
+[node name="CharacterObjectSabotageConcealmentPresentationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("179_object_sabotage_presentation_check")
+
+[node name="TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("182_object_sabotage_presentation_flow_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")

@@ -13,8 +13,10 @@ public partial class TemporaryCharacterObjectSabotageFlowController : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        source = GetNode<TemporaryCharacterObjectSabotageSource>("../Source");
-        state = GetNode<CharacterObjectSabotageConcealmentController>("../State");
+        source = GetNode<TemporaryCharacterObjectSabotageSource>(
+            "../TemporaryCharacterObjectSabotageSource");
+        state = GetNode<CharacterObjectSabotageConcealmentController>(
+            "../CharacterObjectSabotageConcealmentController");
 
         if (!state.TryInitialize(source.Concealment, source.Evidence))
         {

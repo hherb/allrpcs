@@ -2,68 +2,62 @@
 
 ## Current state
 
-`main` contains merged PR #226 at `54dec55`. The current branch is
-`codex/phase-7-scene-concealment-state` and advances four bounded Phase 7 scene seams:
+`main` contains merged PR #227 at `ee6c6dd`. The current branch is
+`codex/phase-7-main-scene-sabotage` and advances three bounded Phase 7 scene slices:
 
-- `CharacterObjectSabotageConcealmentController` owns exact optional concealment and authoritative
-  evidence snapshots, initializes them once, and compare-and-swaps complete Domain apply/recovery
-  results without partial state;
-- `TemporaryCharacterObjectSabotageSource` authors one isolated exact eligible enemy `conceal`
-  candidate, explicit physical access, one authoritative target, empty initial state, and fresh
-  noticed non-critical evidence without applying an effect;
-- `TemporaryCharacterObjectSabotageFlowController` initializes that exact source state without an
-  effect and applies the candidate only on an explicit call, once;
-- its recovery path projects a caller-supplied perception snapshot through the existing
-  `DiscoveryEvidenceProjection`, rejects unseen evidence, retains authoritative evidence, and
-  recovers only the exact target after the evidence becomes noticed.
+- Phase 7dc adds the water cask at the stable tail of the existing scene world-object snapshot;
+  the temporary sabotage source retains that exact object and complete snapshot, and `Main.tscn`
+  initializes the source, concealment state, and flow without applying an effect;
+- the next slice adds a reusable exact-snapshot concealment presentation controller whose
+  compare-and-swap projection hides only its retained body and restores it on recovery;
+- the composed temporary main-scene flow explicitly conceals and hides the water-cask body once,
+  then recovers and reveals it only through noticed exact evidence.
 
-Draft PR #227 is open. Hosted run `34761677722` completed with all five jobs at `steps: []`; it
-provides no product-test or unsigned-build evidence and should not be retried unchanged.
+The water-cask body remains visible during ordinary scene initialization. No sabotage action,
+recovery, behavior choice, or timing occurs automatically. The new body is deliberately not yet an
+interaction-focus target, and the focused-search context still covers only the herb patch and stone
+marker.
 
-The three focused checks use isolated `.tscn` scenes, so `Main.tscn` remains unchanged. No behavior
-or timing is selected automatically. No existing scene world object, node visibility, position,
-perception snapshot, evidence definition, truth, critical route, event, time, transcript, save, or
-provider contract is mutated or added.
+Draft PR #228 is open from commit `8b4ec9c`. Hosted run `34764015151` completed with all five jobs
+at `steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+unchanged.
 
 ## Validation and review
 
-- Each slice began with the expected missing-type or missing-operation compilation failure.
+- Both implementation slices with new behavior began with the expected missing-type compilation
+  failure.
 - The game project builds with zero warnings and zero errors.
-- All three isolated host-local headless Godot checks pass, covering exact one-time initialization,
-  stable unrelated entries, stale/value-equal expected snapshot rejection, null and ineligible
-  operations, minimal surfaces, exact one-shot apply, perception-projected recovery, retained
-  evidence, and atomic preservation on every failure.
+- Focused host-local Godot checks pass for exact scene-world binding, the two existing world-object
+  seams, isolated sabotage source/flow compatibility, stale-safe concealment presentation, inert
+  main-scene initialization, and explicit conceal/hide plus evidence-authorized recover/reveal.
 - The restricted focused Godot run reproduced the known `user://logs` crash before project code;
   the identical host-local checks pass.
-- The cumulative host-local `./scripts/quality.sh` spine passes workflow validation, restore,
-  formatting, a zero-warning solution build, 2,276 Domain, 478 Application, 532 Infrastructure,
-  and 8 Architecture tests; the scenario validator accepts all 5 evidence definitions, all
-  credential-free headless Godot smokes pass, and the Compatibility-renderer graphical launch
-  passes on the Apple M3 Max.
-- Hosted run `34761677722` executed no job steps; its five failures are Actions/account
-  infrastructure state, not product-test results.
+- `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning build, all
+  Domain, Application, Infrastructure, and Architecture tests, scenario validation, every
+  credential-free headless Godot smoke, and the Compatibility-renderer graphical launch.
 - Authored C# remains below 500 lines per file and within 120 characters per line;
   `git diff --check` passes.
 - No live-conformance environment variable was enabled and no provider was invoked.
+- Hosted run `34764015151` executed no job steps; its failures are Actions/account infrastructure
+  state, not product-test results.
 
 ## Exact next bounded slice
 
-Take **Phase 7dc: bind authored concealment to exact existing scene world state without applying
-it**.
+Take **Phase 7df: bind the visible water cask to existing interaction focus without granting
+sabotage or recovery authority**.
 
 Acceptance boundary:
 
-1. Add one temporary water-cask `WorldObject` at the stable tail of
-   `TemporaryWorldObjectSource.WorldObjects`, preserving the exact existing herb-patch and
-   stone-marker instances and their order.
-2. Change `TemporaryCharacterObjectSabotageSource` to retain that exact water-cask instance and the
-   complete exact scene world-object snapshot instead of authoring a separate object or snapshot.
-3. Add the temporary sabotage source, concealment controller, and flow controller to `Main.tscn` in
-   dependency order. Initialization must retain exact empty source state and must not apply the
-   candidate automatically.
-4. Add one opt-in main-scene smoke proving exact world-object identity, unchanged existing scene
-   objects, initialized empty state, eligible candidate composition, and absence of an automatic
-   concealment or evidence effect.
-5. Do not call `TryApply` or `TryRecover`, choose behavior or timing, hide or reveal a node, grant
-   coordinate-derived access, mutate perception, add a discovery route, events/time/transcripts,
-   persistence, another sabotage kind, or a provider.
+1. Make the existing `InteractionCandidates/WaterCask` body one `GreyboxInteractionTarget` whose
+   independently parsed `ObjectIdText` is value-equal to the exact scene water-cask identifier.
+2. Preserve the existing herb-patch and stone-marker target instances and their authored order;
+   append the water cask only at the stable eligible tail while leaving hidden/excluded markers and
+   their behavior unchanged.
+3. Add one opt-in main-scene smoke that moves no actor but directly refreshes focus from a captured
+   in-range Seeker position, proving the exact authoritative water-cask identity and display name
+   are presented through the existing `WorldObjectController` lookup.
+4. Prove out-of-range refresh clears that focus and that focus operations do not change sabotage
+   source, concealment, evidence, presentation, world-object, or existing-target state.
+5. Do not call either sabotage flow, add a focused-search condition or outcome for the cask,
+   manufacture perception/evidence, recover concealment, choose behavior or timing, infer physical
+   access from coordinates, add events/time/transcripts/persistence, or invoke a provider.
