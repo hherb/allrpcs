@@ -423,6 +423,11 @@ Acceptance:
     exact character and evidence identifiers.
   - [x] Accept that decision only for the exact considering character and a currently eligible
     exact candidate, while allowing explicit abstention without applying an effect.
+  - [x] Bind one accepted concealment decision to its exact request and selected exact candidate.
+  - [x] Define one provider-neutral cancellation-aware concealment-decision interface.
+  - [x] Obtain and validate one exact concealment decision through that interface.
+  - [x] Apply an accepted selection through the existing immutable concealment/evidence transition
+    while preserving explicit abstention without state application.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh

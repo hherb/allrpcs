@@ -683,8 +683,13 @@ physical-access, world-object, concealment, and evidence snapshots that define t
 `CharacterObjectSabotageConcealmentDecision` explicitly selects one exact candidate evidence
 identifier or abstains with no selection. Its pure acceptance policy requires the exact considering
 character identifier and, for selection, the exact identifier of a candidate accepted by the
-complete current concealment policy. These provider-neutral contracts do not decide timing, decode
-or generate a choice, apply state, schedule work, persist data, or invoke a provider.
+complete current concealment policy. The immutable consideration result binds one accepted decision
+to its exact request and retains the exact selected request candidate, or `null` for abstention. A
+provider-neutral cancellation-aware Application interface obtains one decision, and its coordinator
+returns only that validated exact result. The pure consideration transition delegates a selection
+through the existing all-or-nothing concealment and evidence transition while abstention returns no
+application. These contracts do not decide timing, decode or serialize a choice, install scene
+state, schedule work, persist data, construct a model, or invoke a provider.
 
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the
