@@ -8,6 +8,10 @@
 - `1a02faf` applies one eligible `conceal` occurrence together with its exact fresh evidence;
 - `dc85737` recovers only that concealed target through visible exact authoritative evidence.
 
+Draft PR #226 is open and mergeable. Hosted run `34760675229` completed with all five jobs at
+`steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+unchanged.
+
 Phase 7 now has a bounded recoverable concealment loop in engine-independent Domain code:
 
 - `WorldObjectConcealmentSnapshot` copies at most 64 value-unique exact `ObjectId` instances in
@@ -36,6 +40,8 @@ time, transcript, live enemy behavior, scene wiring, save migration, or provider
 - The scenario validator accepts all 5 evidence definitions.
 - The complete credential-free headless Godot smoke suite passes, and the Compatibility-renderer
   graphical launch passes on the Apple M3 Max.
+- Hosted run `34760675229` executed no job steps; its five failures are Actions/account
+  infrastructure state, not product-test results.
 - Restricted VSTest reproduced the known loopback `SocketException (13)`; identical focused and
   complete validation passes host-local.
 - Staged diffs were reviewed, `git diff --cached --check` passed, and authored code stays within the
