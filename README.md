@@ -642,6 +642,13 @@ then delegates the complete unchanged physical, capability, and knowledge requir
 `CharacterActionAccessPolicy`. It does not model `misquote`, `delay`, or `influence` as object
 targets, and it grants no occurrence, effect, mutation, scene, persistence, or provider authority.
 
+`CharacterObjectSabotageOccurrence` binds one exact object proposal to one exact authoritative
+world-object target candidate. Its pure policy requires the proposal requirement to name that
+target by value, requires the exact target instance to belong to the supplied world-object snapshot,
+and delegates unchanged proposal eligibility. It does not apply an effect, replace an object,
+change truth, position, perception, evidence, events, time, or transcripts, or grant scene,
+persistence, or provider authority.
+
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
 and carries distinct latent background, capability, knowledge, and goal state plus an authored
