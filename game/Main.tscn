@@ -1101,6 +1101,13 @@ offset_right = 924.0
 offset_bottom = 36.0
 text = "SUBMIT"
 
+[node name="Whispering" type="CheckButton" parent="DialogueOverlay/Panel"]
+offset_left = 12.0
+offset_top = 38.0
+offset_right = 112.0
+offset_bottom = 69.0
+text = "WHISPER"
+
 [node name="Status" type="Label" parent="DialogueOverlay/Panel"]
 offset_left = 124.0
 offset_top = 42.0

@@ -107,7 +107,7 @@ public sealed class CharacterTurnParticipantLookupTests
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "What do you think?");
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [respondingCharacterId]));
         CharacterTurnRequest request = new(
             respondingCharacterId,

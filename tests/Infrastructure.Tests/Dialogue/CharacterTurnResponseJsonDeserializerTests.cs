@@ -183,7 +183,7 @@ public sealed class CharacterTurnResponseJsonDeserializerTests
         CharacterId seekerId = new("seeker");
         DialogueUtterance utterance = new(seekerId, "Please inspect the herb.");
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(seekerId, [new CharacterId("healer")]));
         return new CharacterTurnRequest(
             new CharacterId("healer"),

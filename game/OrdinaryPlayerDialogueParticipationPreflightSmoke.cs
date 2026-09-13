@@ -339,7 +339,7 @@ internal static class OrdinaryPlayerDialogueParticipationPreflightSmoke
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "Can you help me?");
         return new DialogueEvent(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, listeners));
     }
 

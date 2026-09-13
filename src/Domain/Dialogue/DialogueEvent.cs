@@ -1,35 +1,40 @@
 namespace Allrpcs.Domain.Dialogue;
 
 /// <summary>
-/// Associates one exact in-world utterance with the characters who heard it.
+/// Associates one exact in-world dialogue delivery with the characters who heard it.
 /// </summary>
 public sealed record DialogueEvent
 {
     /// <summary>
-    /// Creates an immutable dialogue event when utterance and audience identify the same speaker.
+    /// Creates an immutable dialogue event when delivery and audience identify the same speaker.
     /// </summary>
     public DialogueEvent(
-        DialogueUtterance utterance,
+        DialogueDelivery delivery,
         DialogueAudienceSnapshot audience)
     {
-        ArgumentNullException.ThrowIfNull(utterance);
+        ArgumentNullException.ThrowIfNull(delivery);
         ArgumentNullException.ThrowIfNull(audience);
 
-        if (utterance.SpeakerCharacterId != audience.SpeakerCharacterId)
+        if (delivery.Utterance.SpeakerCharacterId != audience.SpeakerCharacterId)
         {
             throw new ArgumentException(
-                "Dialogue utterance and audience must identify the same speaker.",
+                "Dialogue delivery and audience must identify the same speaker.",
                 nameof(audience));
         }
 
-        Utterance = utterance;
+        Delivery = delivery;
         Audience = audience;
     }
 
     /// <summary>
-    /// Gets the exact utterance that occurred in the world.
+    /// Gets the exact dialogue delivery that occurred in the world.
     /// </summary>
-    public DialogueUtterance Utterance { get; }
+    public DialogueDelivery Delivery { get; }
+
+    /// <summary>
+    /// Gets the exact utterance retained by the delivery.
+    /// </summary>
+    public DialogueUtterance Utterance => Delivery.Utterance;
 
     /// <summary>
     /// Gets the exact audience snapshot captured for the utterance.

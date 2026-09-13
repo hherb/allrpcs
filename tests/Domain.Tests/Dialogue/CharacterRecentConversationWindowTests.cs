@@ -172,7 +172,7 @@ public sealed class CharacterRecentConversationWindowTests
         return new CharacterTurnRequest(
             responderId,
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seekerId, [responderId])),
             new DialogueAct(utterance, DialogueActType.Request));
     }

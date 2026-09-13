@@ -406,7 +406,9 @@ public partial class CharacterTurnParticipationRoundTaskControllerSmokeCheck : N
     {
         CharacterId speaker = new("seeker");
         return new DialogueEvent(
-            new DialogueUtterance(speaker, "What do you make of this evidence?"),
+            new DialogueDelivery(
+                new DialogueUtterance(speaker, "What do you make of this evidence?"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(speaker, listeners));
     }
 

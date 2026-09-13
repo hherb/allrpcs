@@ -15,22 +15,24 @@ public partial class DialogueEventController : Node
     /// Selects an audience and records an exact event when the hearing query is valid.
     /// </summary>
     public bool TryOccur(
-        DialogueUtterance utterance,
+        DialogueDelivery delivery,
         NumericsVector2 speakerPosition,
-        float hearingRangePixels,
+        float ordinaryHearingRangePixels,
+        float whisperHearingRangePixels,
         IReadOnlyList<DialogueHearingCandidate> candidates)
     {
-        ArgumentNullException.ThrowIfNull(utterance);
+        ArgumentNullException.ThrowIfNull(delivery);
         ArgumentNullException.ThrowIfNull(candidates);
 
         try
         {
-            DialogueAudienceSnapshot audience = DialogueHearingSelector.Select(
-                utterance.SpeakerCharacterId,
+            DialogueAudienceSnapshot audience = DialogueDeliveryHearingSelector.Select(
+                delivery,
                 speakerPosition,
-                hearingRangePixels,
+                ordinaryHearingRangePixels,
+                whisperHearingRangePixels,
                 candidates);
-            LastOccurredEvent = new DialogueEvent(utterance, audience);
+            LastOccurredEvent = new DialogueEvent(delivery, audience);
             return true;
         }
         catch (ArgumentException)

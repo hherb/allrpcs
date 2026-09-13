@@ -11,6 +11,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
 {
     private const float DialogueHearingRangePixels = 192.0f;
+    private const float WhisperHearingRangePixels = 48.0f;
 
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
@@ -74,9 +75,10 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
                 ToNumerics(GetParticipantPosition(otherParticipant, participants))),
         ];
         if (!eventController.TryOccur(
-                speech,
+                new DialogueDelivery(speech, DialogueDeliveryMode.OrdinarySpeech),
                 candidates[0].Position,
                 DialogueHearingRangePixels,
+                WhisperHearingRangePixels,
                 candidates)
             || !transcriptController.TryAppendSpokenStatement(speech))
         {

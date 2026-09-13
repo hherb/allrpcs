@@ -322,7 +322,7 @@ public partial class OrdinaryPlayerDialogueParticipationSchedulingSmokeCheck : N
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "What do you both think?");
         return new DialogueEvent(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(
                 utterance.SpeakerCharacterId,
                 characters.Select(character => new CharacterId(character.Identity.Id.Value))));

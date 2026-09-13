@@ -151,7 +151,7 @@ public partial class TemporaryOrdinaryCharacterParticipantSourceSmokeCheck : Nod
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "What should we conclude?");
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [respondingCharacterId]));
         CharacterTurnRequest request = new(
             respondingCharacterId,

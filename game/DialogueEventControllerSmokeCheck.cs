@@ -70,6 +70,7 @@ public partial class DialogueEventControllerSmokeCheck : Node
 
         SetProcess(false);
         if (!ProvesRepeatedOccurrence()
+            || !ProvesWhisperOccurrence()
             || !ProvesInvalidQueryPreservation()
             || !HasExpectedControllerSurface()
             || !UnrelatedStateIsPreserved())
@@ -104,6 +105,7 @@ public partial class DialogueEventControllerSmokeCheck : Node
                 "../TemporaryOrdinaryCharacterParticipantSource").Participants;
         if (occurred is null
             || submitted is null
+            || !ReferenceEquals(occurred.Delivery.Mode, DialogueDeliveryMode.OrdinarySpeech)
             || !ReferenceEquals(occurred.Utterance, submitted)
             || occurred.Utterance.Text != FirstText
             || !ReferenceEquals(
@@ -147,7 +149,8 @@ public partial class DialogueEventControllerSmokeCheck : Node
         DialogueEventController target = new();
         AddChild(target);
         DialogueUtterance utterance = new(new CharacterId("seeker"), "Hello.");
-        if (target.TryOccur(utterance, NumericsVector2.Zero, -1.0f, [])
+        DialogueDelivery delivery = new(utterance, DialogueDeliveryMode.OrdinarySpeech);
+        if (target.TryOccur(delivery, NumericsVector2.Zero, -1.0f, 1.0f, [])
             || target.LastOccurredEvent is not null)
         {
             Fail("Dialogue event controller accepted an invalid hearing query.");
@@ -156,14 +159,50 @@ public partial class DialogueEventControllerSmokeCheck : Node
 
         try
         {
-            target.TryOccur(null!, NumericsVector2.Zero, 1.0f, []);
+            target.TryOccur(null!, NumericsVector2.Zero, 1.0f, 1.0f, []);
         }
         catch (ArgumentNullException)
         {
             return target.LastOccurredEvent is null;
         }
 
-        Fail("Dialogue event controller accepted a null utterance.");
+        Fail("Dialogue event controller accepted a null delivery.");
+        return false;
+    }
+
+    private bool ProvesWhisperOccurrence()
+    {
+        DialogueEventController target = new();
+        AddChild(target);
+        CharacterId speaker = new("seeker");
+        CharacterId nearListener = new("healer");
+        DialogueDelivery delivery = new(
+            new DialogueUtterance(speaker, "Keep this close."),
+            DialogueDeliveryMode.Whispering);
+        bool occurred = target.TryOccur(
+            delivery,
+            NumericsVector2.Zero,
+            192.0f,
+            48.0f,
+            [
+                new DialogueHearingCandidate(nearListener, new NumericsVector2(48.0f, 0.0f)),
+                new DialogueHearingCandidate(
+                    new CharacterId("sage"),
+                    new NumericsVector2(49.0f, 0.0f)),
+            ]);
+        DialogueEvent? dialogueEvent = target.LastOccurredEvent;
+
+        if (occurred
+            && dialogueEvent is not null
+            && ReferenceEquals(dialogueEvent.Delivery, delivery)
+            && ReferenceEquals(dialogueEvent.Utterance, delivery.Utterance)
+            && dialogueEvent.Audience.ListenerCharacterIds.Count == 1
+            && ReferenceEquals(dialogueEvent.Audience.ListenerCharacterIds[0], nearListener))
+        {
+            return true;
+        }
+
+        Fail("Whisper occurrence did not apply the explicit bounded whisper hearing range.");
         return false;
     }
 

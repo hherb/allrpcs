@@ -174,7 +174,7 @@ public sealed class CharacterModelLiveConformanceTests
         CharacterTurnRequest turnRequest = new(
             healerId,
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(utterance, DialogueActType.Request));
         return new CharacterModelGenerationRequest(

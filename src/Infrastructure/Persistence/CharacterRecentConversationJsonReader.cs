@@ -56,7 +56,9 @@ internal static class CharacterRecentConversationJsonReader
 
         return new CharacterTurnRequest(
             characterId,
-            new DialogueEvent(utterance, new DialogueAudienceSnapshot(speakerId, listenerIds)),
+            new DialogueEvent(
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+                new DialogueAudienceSnapshot(speakerId, listenerIds)),
             new DialogueAct(
                 utterance,
                 DialogueActType.Parse(ReadString(element, "dialogueAct"))));

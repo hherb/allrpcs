@@ -129,7 +129,7 @@ public sealed class CharacterTurnRequestTests
         CharacterId listenerCharacterId)
     {
         return new DialogueEvent(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(
                 utterance.SpeakerCharacterId,
                 [listenerCharacterId]));

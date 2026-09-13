@@ -164,7 +164,9 @@ public sealed class AutonomousConversationConsiderationSelectionPolicyTests
         CharacterId speakerCharacterId = new("seeker");
 
         return new DialogueEvent(
-            new DialogueUtterance(speakerCharacterId, "What do you make of this evidence?"),
+            new DialogueDelivery(
+                new DialogueUtterance(speakerCharacterId, "What do you make of this evidence?"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(speakerCharacterId, listeners));
     }
 

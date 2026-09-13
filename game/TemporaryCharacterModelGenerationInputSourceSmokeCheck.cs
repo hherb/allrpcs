@@ -130,7 +130,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
         Allrpcs.Domain.Identifiers.CharacterId seekerId = new("seeker");
         DialogueUtterance utterance = new(seekerId, text);
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(seekerId, [healerId]));
         CharacterTurnRequest request = new(
             healerId,

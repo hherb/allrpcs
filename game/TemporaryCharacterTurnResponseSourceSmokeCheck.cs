@@ -48,7 +48,9 @@ public partial class TemporaryCharacterTurnResponseSourceSmokeCheck : Node
         CharacterId healerId = new("healer");
         DialogueUtterance utterance = new(seekerId, PromptShapedText);
         DialogueAudienceSnapshot audience = new(seekerId, [healerId]);
-        DialogueEvent dialogueEvent = new(utterance, audience);
+        DialogueEvent dialogueEvent = new(
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+            audience);
         DialogueAct dialogueAct = new(utterance, DialogueActType.Request);
         CharacterTurnRequest request = new(healerId, dialogueEvent, dialogueAct);
         ObjectId targetObjectId = new("herb-patch");

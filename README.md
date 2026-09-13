@@ -627,6 +627,25 @@ or UI behavior.
 
 ## Dialogue model boundaries
 
+`DialogueDeliveryMode` defines only ordinary speech and whispering as closed provider-neutral
+values. An immutable `DialogueDelivery` retains one exact existing `DialogueUtterance` and exact
+mode with record value equality. Delivery is explicit authored or player intent and is never
+inferred from dialogue text. The pure Application `DialogueDeliveryHearingSelector` validates one
+ordinary and one whisper hearing range, selects only the range named by the exact mode, and delegates
+bounded stable candidate filtering to `DialogueHearingSelector`. It does not create dialogue events,
+infer direct address or privacy, inspect visibility or occlusion, mutate scene state, or define UI.
+`DialogueEvent` now retains the exact delivery and audience while continuing to project that
+delivery's exact utterance. Every event construction explicitly names ordinary speech or
+whispering. The scene occurrence controller accepts one exact delivery, validates both named
+hearing ranges through the mode-aware selector, and retains no event on invalid input. Existing
+player and character speech paths remain explicitly ordinary; an isolated scene check proves an
+exact whisper uses the shorter inclusive hearing boundary without changing surrounding state.
+The temporary dialogue panel exposes an explicit `WHISPER` toggle. The input controller retains
+the resulting exact delivery and projects its utterance for existing consumers; `Main` carries that
+same delivery into event occurrence. Ordinary response speech remains explicitly ordinary. The
+transcript and provider context still retain only utterance text, so this does not yet complete the
+roadmap's whisper/private-conversation parent or preserve delivery mode across save boundaries.
+
 `DialogueUtterance` retains one exact typed `CharacterId` speaker and the player's exact nonblank
 Unicode text without trimming, normalization, case folding, or line-ending changes. Text is bounded
 to 2,000 UTF-16 code units. `DialogueAudienceSnapshot` retains that exact speaker plus at most 32

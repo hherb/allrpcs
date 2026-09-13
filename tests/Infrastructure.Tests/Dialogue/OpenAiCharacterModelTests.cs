@@ -376,7 +376,7 @@ public sealed class OpenAiCharacterModelTests
         string playerText = "Please inspect the herb.";
         DialogueUtterance utterance = new(seekerId, playerText);
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(seekerId, [healerId]));
         CharacterTurnRequest turnRequest = new(
             healerId,
