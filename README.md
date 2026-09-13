@@ -806,6 +806,15 @@ partial installation. Ordinary scene flow does not yet trigger that completion, 
 departing character, simulate off-screen time, rejoin a party member, change dialogue/model context,
 or persist task or party state.
 
+One immutable Application travel plan retains an exact active independent-task activity, validated
+finite world bounds and origin, and 1-32 stable copied waypoints. It delegates all bounds and
+coordinate validation to the existing provider-neutral navigation request validator. Immutable
+progress retains that exact plan and exposes only its completed waypoint count and final completion
+state. A pure transition advances through exactly the next waypoint, one at a time, and rejects
+skips, repeats, completed progress, or a distinct plan identity without changing either input. These
+contracts do not choose a route, add Godot navigation, define elapsed time, speed, interpolation, or
+collision behavior, move or hide a body, trigger a task occurrence, or invoke a provider.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining
