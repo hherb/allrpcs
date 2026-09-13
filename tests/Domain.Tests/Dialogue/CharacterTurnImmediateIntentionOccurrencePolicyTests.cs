@@ -216,7 +216,7 @@ public sealed class CharacterTurnImmediateIntentionOccurrencePolicyTests
         CharacterTurnRequest request = new(
             healerId,
             new DialogueEvent(
-                playerSpeech,
+                new DialogueDelivery(playerSpeech, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(playerSpeech, DialogueActType.Request));
         CharacterTurnResponse response = new(

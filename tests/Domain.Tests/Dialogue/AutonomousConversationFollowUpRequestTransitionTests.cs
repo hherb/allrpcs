@@ -130,7 +130,7 @@ public sealed class AutonomousConversationFollowUpRequestTransitionTests
             new CharacterId("travelling-healer"),
             "The observed leaves support that conclusion.");
         return new DialogueEvent(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [listener]));
     }
 }

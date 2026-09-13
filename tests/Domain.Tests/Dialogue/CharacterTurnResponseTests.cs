@@ -257,7 +257,7 @@ public sealed class CharacterTurnResponseTests
         return new CharacterTurnRequest(
             healerId,
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(
                     utterance.SpeakerCharacterId,
                     [healerId])),

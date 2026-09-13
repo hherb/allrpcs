@@ -191,7 +191,9 @@ public sealed class OpenAiCharacterTurnParticipationStreamAccumulatorTests
                 [new CharacterGoal("compare-evidence", "Compare the available evidence.")]));
         CharacterId speakerCharacterId = new("seeker");
         DialogueEvent heardEvent = new(
-            new DialogueUtterance(speakerCharacterId, "What do you make of this evidence?"),
+            new DialogueDelivery(
+                new DialogueUtterance(speakerCharacterId, "What do you make of this evidence?"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(speakerCharacterId, [characterId]));
         return new CharacterTurnParticipationConsiderationRequest(
             character,

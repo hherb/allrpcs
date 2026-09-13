@@ -120,7 +120,9 @@ public sealed class CharacterTurnParticipationConsiderationPolicyTests
     {
         CharacterId speakerCharacterId = new("seeker");
         DialogueEvent heardEvent = new(
-            new DialogueUtterance(speakerCharacterId, "What do you make of this evidence?"),
+            new DialogueDelivery(
+                new DialogueUtterance(speakerCharacterId, "What do you make of this evidence?"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(speakerCharacterId, [character.Identity.Id]));
 
         return new(character, heardEvent, isDirectlyAddressed);

@@ -347,6 +347,10 @@ Acceptance:
   - [x] Initialize and drive every ordinary autonomous chain through these bounded seams.
   - [x] Start only heard LLM listeners after exact character speech and stop at the finite bound.
 - [ ] Support whispering and private conversations based on hearing conditions.
+  - [x] Define explicit provider-neutral ordinary-speech and whispering delivery values.
+  - [x] Select ordinary or whisper listeners through explicit bounded hearing ranges.
+  - [x] Retain exact delivery on dialogue events and apply it at scene occurrence.
+  - [x] Carry explicit player-authored whisper intent through ordinary scene occurrence.
 - [ ] Support bounded independent tasks and party separation.
 - [ ] Simulate off-screen movement and actions through the same authoritative rules.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence

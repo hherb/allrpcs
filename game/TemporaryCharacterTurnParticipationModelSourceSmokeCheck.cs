@@ -276,7 +276,9 @@ public partial class TemporaryCharacterTurnParticipationModelSourceSmokeCheck : 
     {
         CharacterId speaker = new("seeker");
         return new DialogueEvent(
-            new DialogueUtterance(speaker, "What follows from the evidence?"),
+            new DialogueDelivery(
+                new DialogueUtterance(speaker, "What follows from the evidence?"),
+                DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(speaker, [listener]));
     }
 

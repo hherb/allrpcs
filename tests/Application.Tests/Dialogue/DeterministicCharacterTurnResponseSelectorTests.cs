@@ -114,7 +114,7 @@ public sealed class DeterministicCharacterTurnResponseSelectorTests
         return new CharacterTurnRequest(
             healerId,
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(utterance, actType));
     }

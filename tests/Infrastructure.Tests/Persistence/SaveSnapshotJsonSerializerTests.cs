@@ -349,7 +349,7 @@ public sealed class SaveSnapshotJsonSerializerTests
         CharacterTurnRequest request = new(
             healer,
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seeker, [healer, new CharacterId("hermit")])),
             new DialogueAct(utterance, DialogueActType.Request));
         CharacterTurnResponse response = new(

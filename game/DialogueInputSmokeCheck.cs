@@ -15,6 +15,7 @@ public partial class DialogueInputSmokeCheck : Node
     private DialogueInputController controller = null!;
     private LineEdit input = null!;
     private Button submit = null!;
+    private CheckButton whispering = null!;
     private Label status = null!;
 
     /// <inheritdoc />
@@ -30,6 +31,7 @@ public partial class DialogueInputSmokeCheck : Node
         controller = GetNode<DialogueInputController>("../DialogueInputController");
         input = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
         submit = GetNode<Button>("../DialogueOverlay/Panel/Submit");
+        whispering = GetNode<CheckButton>("../DialogueOverlay/Panel/Whispering");
         status = GetNode<Label>("../DialogueOverlay/Panel/Status");
     }
 
@@ -52,6 +54,7 @@ public partial class DialogueInputSmokeCheck : Node
         Vector2 initialSeekerPosition = GetNode<CharacterBody2D>("../Seeker").Position;
 
         if (!ReferenceEquals(controller.SpeakerCharacterId, expectedSpeaker)
+            || controller.LastSubmittedDelivery is not null
             || controller.LastSubmittedUtterance is not null)
         {
             Fail("Dialogue input did not initialize with the exact scene Seeker identifier.");
@@ -60,8 +63,12 @@ public partial class DialogueInputSmokeCheck : Node
 
         input.Text = FirstText;
         input.EmitSignal(LineEdit.SignalName.TextSubmitted, FirstText);
+        DialogueDelivery? firstDelivery = controller.LastSubmittedDelivery;
         DialogueUtterance? first = controller.LastSubmittedUtterance;
-        if (first is null
+        if (firstDelivery is null
+            || first is null
+            || !ReferenceEquals(firstDelivery.Utterance, first)
+            || !ReferenceEquals(firstDelivery.Mode, DialogueDeliveryMode.OrdinarySpeech)
             || !ReferenceEquals(first.SpeakerCharacterId, expectedSpeaker)
             || first.Text != FirstText
             || input.Text.Length != 0
@@ -71,8 +78,8 @@ public partial class DialogueInputSmokeCheck : Node
             return;
         }
 
-        if (!ProvesRejectedInputPreserves(first)
-            || !ProvesRepeatedPanelSubmission(first, expectedSpeaker)
+        if (!ProvesRejectedInputPreserves(firstDelivery)
+            || !ProvesRepeatedPanelSubmission(firstDelivery, expectedSpeaker)
             || !HasExpectedControllerSurface()
             || !ReferenceEquals(worldEvents.EventLog, initialWorldEventLog)
             || !ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
@@ -95,13 +102,13 @@ public partial class DialogueInputSmokeCheck : Node
         GetTree().Quit();
     }
 
-    private bool ProvesRejectedInputPreserves(DialogueUtterance expected)
+    private bool ProvesRejectedInputPreserves(DialogueDelivery expected)
     {
         string oversized = new('x', DialogueUtterance.MaximumTextLength + 1);
         foreach (string? rejected in new string?[] { null, string.Empty, " \t", oversized })
         {
-            if (controller.TrySubmit(rejected!)
-                || !ReferenceEquals(controller.LastSubmittedUtterance, expected))
+            if (controller.TrySubmit(rejected!, DialogueDeliveryMode.Whispering)
+                || !ReferenceEquals(controller.LastSubmittedDelivery, expected))
             {
                 Fail("Dialogue input accepted invalid text or changed its retained utterance.");
                 return false;
@@ -112,15 +119,20 @@ public partial class DialogueInputSmokeCheck : Node
     }
 
     private bool ProvesRepeatedPanelSubmission(
-        DialogueUtterance previous,
+        DialogueDelivery previous,
         CharacterId expectedSpeaker)
     {
+        whispering.ButtonPressed = true;
         input.Text = SecondText;
         submit.EmitSignal(BaseButton.SignalName.Pressed);
 
+        DialogueDelivery? repeatedDelivery = controller.LastSubmittedDelivery;
         DialogueUtterance? repeated = controller.LastSubmittedUtterance;
-        if (repeated is null
-            || ReferenceEquals(repeated, previous)
+        if (repeatedDelivery is null
+            || repeated is null
+            || ReferenceEquals(repeatedDelivery, previous)
+            || !ReferenceEquals(repeatedDelivery.Utterance, repeated)
+            || !ReferenceEquals(repeatedDelivery.Mode, DialogueDeliveryMode.Whispering)
             || !ReferenceEquals(repeated.SpeakerCharacterId, expectedSpeaker)
             || repeated.Text != SecondText
             || input.Text.Length != 0
@@ -151,15 +163,18 @@ public partial class DialogueInputSmokeCheck : Node
             .OrderBy(method => method.Name, StringComparer.Ordinal)
             .ToArray();
 
-        bool matches = properties.Length == 2
-            && properties[0].Name == nameof(DialogueInputController.LastSubmittedUtterance)
-            && properties[0].PropertyType == typeof(DialogueUtterance)
+        bool matches = properties.Length == 3
+            && properties[0].Name == nameof(DialogueInputController.LastSubmittedDelivery)
+            && properties[0].PropertyType == typeof(DialogueDelivery)
             && properties[0].SetMethod is not null
             && properties[0].SetMethod!.IsPrivate
-            && properties[1].Name == nameof(DialogueInputController.SpeakerCharacterId)
-            && properties[1].PropertyType == typeof(CharacterId)
-            && properties[1].SetMethod is not null
-            && properties[1].SetMethod!.IsPrivate
+            && properties[1].Name == nameof(DialogueInputController.LastSubmittedUtterance)
+            && properties[1].PropertyType == typeof(DialogueUtterance)
+            && properties[1].SetMethod is null
+            && properties[2].Name == nameof(DialogueInputController.SpeakerCharacterId)
+            && properties[2].PropertyType == typeof(CharacterId)
+            && properties[2].SetMethod is not null
+            && properties[2].SetMethod!.IsPrivate
             && methods.Length == 2
             && methods[0].Name == nameof(DialogueInputController.TryInitialize)
             && methods[0].ReturnType == typeof(bool)
@@ -168,7 +183,7 @@ public partial class DialogueInputSmokeCheck : Node
             && methods[1].Name == nameof(DialogueInputController.TrySubmit)
             && methods[1].ReturnType == typeof(bool)
             && methods[1].GetParameters().Select(parameter => parameter.ParameterType)
-                .SequenceEqual([typeof(string)]);
+                .SequenceEqual([typeof(string), typeof(DialogueDeliveryMode)]);
 
         if (!matches)
         {

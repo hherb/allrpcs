@@ -4,14 +4,17 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Owns the exact player speaker and most recently accepted dialogue utterance.</summary>
+/// <summary>Owns the exact player speaker and most recently accepted dialogue delivery.</summary>
 public partial class DialogueInputController : Node
 {
     /// <summary>Gets the exact initialized player character identifier, if any.</summary>
     public CharacterId? SpeakerCharacterId { get; private set; }
 
-    /// <summary>Gets the exact most recently accepted utterance, if any.</summary>
-    public DialogueUtterance? LastSubmittedUtterance { get; private set; }
+    /// <summary>Gets the exact most recently accepted delivery, if any.</summary>
+    public DialogueDelivery? LastSubmittedDelivery { get; private set; }
+
+    /// <summary>Gets the exact utterance retained by the most recent delivery, if any.</summary>
+    public DialogueUtterance? LastSubmittedUtterance => LastSubmittedDelivery?.Utterance;
 
     /// <summary>Initializes this controller once with the exact player character identifier.</summary>
     public bool TryInitialize(CharacterId speakerCharacterId)
@@ -28,10 +31,12 @@ public partial class DialogueInputController : Node
     }
 
     /// <summary>
-    /// Retains an exact utterance when the Domain dialogue-text rules accept the supplied text.
+    /// Retains an exact delivery when the Domain dialogue-text rules accept the supplied text.
     /// </summary>
-    public bool TrySubmit(string text)
+    public bool TrySubmit(string text, DialogueDeliveryMode mode)
     {
+        ArgumentNullException.ThrowIfNull(mode);
+
         CharacterId? speakerCharacterId = SpeakerCharacterId;
         if (speakerCharacterId is null)
         {
@@ -40,7 +45,8 @@ public partial class DialogueInputController : Node
 
         try
         {
-            LastSubmittedUtterance = new DialogueUtterance(speakerCharacterId, text);
+            DialogueUtterance utterance = new(speakerCharacterId, text);
+            LastSubmittedDelivery = new DialogueDelivery(utterance, mode);
             return true;
         }
         catch (ArgumentException)

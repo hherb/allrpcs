@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Dialogue;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -13,6 +14,7 @@ public partial class TemporaryDialogueInputPanel : Control
     private DialogueInputController controller = null!;
     private LineEdit input = null!;
     private Label status = null!;
+    private CheckButton whispering = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -20,6 +22,7 @@ public partial class TemporaryDialogueInputPanel : Control
         controller = GetNode<DialogueInputController>("../../DialogueInputController");
         input = GetNode<LineEdit>("Input");
         status = GetNode<Label>("Status");
+        whispering = GetNode<CheckButton>("Whispering");
 
         input.TextSubmitted += OnTextSubmitted;
         GetNode<Button>("Submit").Pressed += OnSubmitPressed;
@@ -37,7 +40,10 @@ public partial class TemporaryDialogueInputPanel : Control
 
     private void SubmitInput(string text)
     {
-        bool accepted = controller.TrySubmit(text);
+        DialogueDeliveryMode mode = whispering.ButtonPressed
+            ? DialogueDeliveryMode.Whispering
+            : DialogueDeliveryMode.OrdinarySpeech;
+        bool accepted = controller.TrySubmit(text, mode);
         status.Text = accepted ? AcceptedStatusText : RejectedStatusText;
         if (accepted)
         {

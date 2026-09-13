@@ -128,7 +128,7 @@ public sealed class OpenAiChatCompletionJsonCompletionTests
         return new CharacterTurnRequest(
             new CharacterId("healer"),
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seekerId, [new CharacterId("healer")])),
             new DialogueAct(utterance, DialogueActType.Request));
     }

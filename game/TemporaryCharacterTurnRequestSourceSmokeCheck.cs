@@ -59,7 +59,9 @@ public partial class TemporaryCharacterTurnRequestSourceSmokeCheck : Node
         CharacterId audienceHealerId = new("healer");
         DialogueUtterance utterance = new(speakerId, PromptShapedText);
         DialogueAudienceSnapshot audience = new(speakerId, [audienceHealerId]);
-        DialogueEvent dialogueEvent = new(utterance, audience);
+        DialogueEvent dialogueEvent = new(
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+            audience);
         CharacterId exactSuppliedHealerId = new(audienceHealerId.Value);
 
         CharacterTurnRequest? request = source.CreateRequest(

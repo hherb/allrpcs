@@ -73,7 +73,7 @@ public sealed class CharacterModelRecentSpeechContextProjectionTests
         DialogueUtterance utterance = new(new CharacterId(speaker), text);
         CharacterId[] listenerIds = listeners.Select(listener => new CharacterId(listener)).ToArray();
         return new DialogueEvent(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, listenerIds));
     }
 }

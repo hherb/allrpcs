@@ -164,7 +164,7 @@ public sealed class AutonomousConversationTurnStartTransitionTests
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "Please continue.");
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [responder]));
         return new CharacterTurnRequest(
             responder,

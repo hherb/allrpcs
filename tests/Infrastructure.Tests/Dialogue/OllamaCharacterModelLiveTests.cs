@@ -196,7 +196,7 @@ public sealed class OllamaCharacterModelLiveTests
         CharacterId healerId = new("healer");
         DialogueUtterance utterance = new(seekerId, playerText);
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(seekerId, [healerId]));
         CharacterTurnRequest turnRequest = new(
             healerId,

@@ -109,7 +109,7 @@ public sealed class CharacterModelGenerationRequestTests
         return new CharacterTurnRequest(
             healerId,
             new DialogueEvent(
-                utterance,
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(utterance, DialogueActType.Request));
     }

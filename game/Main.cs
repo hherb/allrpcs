@@ -23,6 +23,7 @@ public partial class Main : Node
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
     private const int AutonomousConversationMaximumTurnCount = 2;
     private const float DialogueHearingRangePixels = 192.0f;
+    private const float WhisperHearingRangePixels = 48.0f;
     private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
     private static readonly TimeSpan ParticipationRoundDeadline = TimeSpan.FromSeconds(30);
     private static readonly StringName CharacterTurnCancelAction = new("character_turn_cancel");
@@ -71,7 +72,7 @@ public partial class Main : Node
     private WorldObjectController worldObjectController = null!;
     private CharacterModelStreamSnapshot? lastProcessedModelResult;
     private CharacterTurnActivity? lastProcessedCompletedCharacterTurn;
-    private DialogueUtterance? lastProcessedDialogueUtterance;
+    private DialogueDelivery? lastProcessedDialogueDelivery;
     private HealerCommandMode displayedMode;
 
     /// <inheritdoc />
@@ -445,12 +446,13 @@ public partial class Main : Node
 
     private void ProcessDialogueSubmission()
     {
-        DialogueUtterance? utterance = dialogueInputController.LastSubmittedUtterance;
-        if (utterance is null || ReferenceEquals(utterance, lastProcessedDialogueUtterance))
+        DialogueDelivery? delivery = dialogueInputController.LastSubmittedDelivery;
+        if (delivery is null || ReferenceEquals(delivery, lastProcessedDialogueDelivery))
         {
             return;
         }
 
+        DialogueUtterance utterance = delivery.Utterance;
         IReadOnlyList<Character> ordinaryParticipants =
             ordinaryCharacterParticipantSource.Participants;
         DialogueHearingCandidate[] candidates =
@@ -460,9 +462,10 @@ public partial class Main : Node
             new(ordinaryParticipants[1].Identity.Id, ToNumerics(sageHearingPosition.Position)),
         ];
         if (!dialogueEventController.TryOccur(
-                utterance,
+                delivery,
                 candidates[0].Position,
                 DialogueHearingRangePixels,
+                WhisperHearingRangePixels,
                 candidates)
             || !characterTurnTranscriptController.TryAppendSpokenStatement(utterance))
         {
@@ -472,7 +475,7 @@ public partial class Main : Node
 
         StartParticipationRoundIfEligible();
 
-        lastProcessedDialogueUtterance = utterance;
+        lastProcessedDialogueDelivery = delivery;
     }
 
     private void StartParticipationRoundIfEligible()

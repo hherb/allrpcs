@@ -192,7 +192,7 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
             new CharacterId("travelling-healer"),
             "The observed leaves support another question.");
         DialogueEvent heardEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(
                 utterance.SpeakerCharacterId,
                 [new CharacterId(responder.Value)]));
@@ -203,7 +203,7 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
                 "compare-evidence",
                 "Compare the available evidence."));
         DialogueEvent unheardEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(
                 utterance.SpeakerCharacterId,
                 [new CharacterId("woodland-hermit")]));
@@ -321,7 +321,7 @@ public partial class AutonomousConversationBudgetControllerSmokeCheck : Node
     {
         DialogueUtterance utterance = new(new CharacterId("seeker"), "What follows?");
         DialogueEvent dialogueEvent = new(
-            utterance,
+            new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
             new DialogueAudienceSnapshot(utterance.SpeakerCharacterId, [responder]));
         return new CharacterTurnRequest(
             responder,
