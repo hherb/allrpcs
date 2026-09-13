@@ -813,7 +813,12 @@ progress retains that exact plan and exposes only its completed waypoint count a
 state. A pure transition advances through exactly the next waypoint, one at a time, and rejects
 skips, repeats, completed progress, or a distinct plan identity without changing either input. These
 contracts do not choose a route, add Godot navigation, define elapsed time, speed, interpolation, or
-collision behavior, move or hide a body, trigger a task occurrence, or invoke a provider.
+collision behavior, move or hide a body, trigger a task occurrence, or invoke a provider. A focused
+Godot controller owns one exact plan and its current immutable progress, initializes once, and
+installs a one-waypoint advance only from the exact expected current plan and progress. Its isolated
+credential-free smoke proves stale, skipped, repeated, and completed inputs leave both scene values
+unchanged. The controller does not author or start a route, integrate `Main`, or broaden any motion
+or timing policy.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
