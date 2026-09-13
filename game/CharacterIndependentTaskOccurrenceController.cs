@@ -11,6 +11,8 @@ namespace Allrpcs.Game;
 public partial class CharacterIndependentTaskOccurrenceController : Node
 {
     private CharacterIndependentTaskDepartureController taskController = null!;
+    private CharacterIndependentTaskReturnTravelController returnTravelController = null!;
+    private TemporaryCharacterIndependentTaskReturnTravelSource returnTravelSource = null!;
     private CharacterIndependentTaskTravelController travelController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
     private WorldEventController worldController = null!;
@@ -18,11 +20,18 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
     /// <summary>Gets the exact most recently accepted independent-task occurrence.</summary>
     public CharacterIndependentTaskWorldEventOccurrence? LastOccurrence { get; private set; }
 
+    /// <summary>Gets the exact most recently accepted combined arrival and occurrence result.</summary>
+    public CharacterIndependentTaskArrivalOccurrenceResult? LastArrivalOccurrenceResult { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
         taskController = GetNode<CharacterIndependentTaskDepartureController>(
             "../CharacterIndependentTaskDepartureController");
+        returnTravelController = GetNode<CharacterIndependentTaskReturnTravelController>(
+            "../CharacterIndependentTaskReturnTravelController");
+        returnTravelSource = GetNode<TemporaryCharacterIndependentTaskReturnTravelSource>(
+            "../TemporaryCharacterIndependentTaskReturnTravelSource");
         travelController = GetNode<CharacterIndependentTaskTravelController>(
             "../CharacterIndependentTaskTravelController");
         transcriptController = GetNode<CharacterTurnTranscriptController>(
@@ -132,7 +141,9 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
             || !ReferenceEquals(taskController.Activities, expectedActivities)
             || !ReferenceEquals(worldController.EventLog, expectedEventLog)
             || !ReferenceEquals(worldController.WorldTime, expectedWorldTime)
-            || !ReferenceEquals(transcriptController.Transcript, expectedTranscript))
+            || !ReferenceEquals(transcriptController.Transcript, expectedTranscript)
+            || returnTravelController.Plan is not null
+            || returnTravelController.Progress is not null)
         {
             return false;
         }
@@ -156,6 +167,23 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
             return false;
         }
 
+        CharacterIndependentTaskActivity completedActivity =
+            result.TaskOccurrenceResult.Activities.Activities.Single(activity =>
+                ReferenceEquals(activity.Assignment, activeActivity.Assignment));
+        CharacterIndependentTaskReturnTravelPlan returnPlan;
+        try
+        {
+            returnPlan = returnTravelSource.CreatePlan(result, completedActivity);
+        }
+        catch (ArgumentException)
+        {
+            return false;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
+
         if (!travelController.TryInstallArrival(
                 expectedTravelPlan,
                 expectedTravelProgress,
@@ -172,7 +200,14 @@ public partial class CharacterIndependentTaskOccurrenceController : Node
             result.TaskOccurrenceResult.WorldEventResult.WorldEventResult);
         transcriptController.InstallCharacterTurnOccurrence(
             result.TaskOccurrenceResult.WorldEventResult.Transcript);
+        if (!returnTravelController.TryInitialize(returnPlan))
+        {
+            throw new InvalidOperationException(
+                "Validated independent-task return travel could not initialize.");
+        }
+
         LastOccurrence = result.TaskOccurrenceResult.Candidate;
+        LastArrivalOccurrenceResult = result;
         return true;
     }
 }

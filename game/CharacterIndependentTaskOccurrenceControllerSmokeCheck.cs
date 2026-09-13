@@ -35,6 +35,9 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         CharacterIndependentTaskTravelController travelController =
             GetNode<CharacterIndependentTaskTravelController>(
                 "../CharacterIndependentTaskTravelController");
+        CharacterIndependentTaskReturnTravelController returnTravelController =
+            GetNode<CharacterIndependentTaskReturnTravelController>(
+                "../CharacterIndependentTaskReturnTravelController");
         TemporaryCharacterIndependentTaskOccurrenceSource occurrenceSource =
             GetNode<TemporaryCharacterIndependentTaskOccurrenceSource>(
                 "../TemporaryCharacterIndependentTaskOccurrenceSource");
@@ -72,6 +75,8 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             || !ReferenceEquals(worldController.EventLog, eventLog)
             || !ReferenceEquals(worldController.WorldTime, worldTime)
             || !ReferenceEquals(transcriptController.Transcript, transcript)
+            || returnTravelController.Plan is not null
+            || returnTravelController.Progress is not null
             || !RejectsInvalidSourceInputs(occurrenceSource, active)
             || !HasClosedSourceSurface())
         {
@@ -236,7 +241,8 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             || !ReferenceEquals(
                 resultingTranscript.Entries[0],
                 candidate.Occurrence.TranscriptEntry)
-            || !ReferenceEquals(occurrenceController.LastOccurrence, candidate))
+            || !ReferenceEquals(occurrenceController.LastOccurrence, candidate)
+            || occurrenceController.LastArrivalOccurrenceResult is null)
         {
             Fail("The task occurrence controller failed atomic authoritative completion.");
             return;
@@ -245,6 +251,26 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
         WorldEventLogSnapshot completedLog = worldController.EventLog!;
         WorldTimeSnapshot completedTime = worldController.WorldTime!;
         CharacterTurnTranscriptSnapshot completedTranscript = transcriptController.Transcript!;
+        CharacterIndependentTaskArrivalOccurrenceResult arrivalResult =
+            occurrenceController.LastArrivalOccurrenceResult!;
+        CharacterIndependentTaskReturnTravelPlan returnPlan = returnTravelController.Plan!;
+        CharacterIndependentTaskReturnTravelProgress returnProgress = returnTravelController.Progress!;
+        if (!ReferenceEquals(arrivalResult.TravelProgress, completedTravelProgress)
+            || !ReferenceEquals(arrivalResult.TaskOccurrenceResult.Activities, completedActivities)
+            || !ReferenceEquals(returnPlan.ArrivalOccurrenceResult, arrivalResult)
+            || !ReferenceEquals(returnPlan.CompletedActivity, completed)
+            || returnPlan.WorldBounds != travelPlan.WorldBounds
+            || returnPlan.Origin != travelPlan.Waypoints[^1]
+            || returnPlan.Waypoints.Count != 1
+            || returnPlan.Waypoints[0] != travelPlan.Origin
+            || !ReferenceEquals(returnProgress.Plan, returnPlan)
+            || returnProgress.CompletedWaypointCount != 0
+            || returnProgress.IsComplete)
+        {
+            Fail("The final arrival did not initialize the exact authored return route.");
+            return;
+        }
+
         if (occurrenceController.TryArriveAndOccur(
                 candidate,
                 travelPlan,
@@ -262,6 +288,11 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
             || !ReferenceEquals(worldController.WorldTime, completedTime)
             || !ReferenceEquals(transcriptController.Transcript, completedTranscript)
             || !ReferenceEquals(occurrenceController.LastOccurrence, candidate)
+            || !ReferenceEquals(
+                occurrenceController.LastArrivalOccurrenceResult,
+                arrivalResult)
+            || !ReferenceEquals(returnTravelController.Plan, returnPlan)
+            || !ReferenceEquals(returnTravelController.Progress, returnProgress)
             || !RejectsNulls(
                 occurrenceController,
                 candidate,
@@ -287,8 +318,9 @@ public partial class CharacterIndependentTaskOccurrenceControllerSmokeCheck : No
 
         GD.Print(
             "Independent-task occurrence controller smoke passed: the exact active authored task "
-            + "installed exact final travel arrival, authoritative event, meaningful time, and "
-            + "physical-action transcript as one fail-closed scene operation.");
+            + "installed exact final travel arrival, authoritative event, meaningful time, "
+            + "physical-action transcript, and an authored return route as one fail-closed scene "
+            + "operation.");
         GetTree().Quit();
     }
 
