@@ -8,6 +8,8 @@ namespace Allrpcs.Game;
 /// <summary>Owns exact scene concealment and authoritative evidence snapshots.</summary>
 public partial class CharacterObjectSabotageConcealmentController : Node
 {
+    private CharacterObjectSabotageConcealmentConsiderationRequest? lastResolvedRequest;
+
     /// <summary>Gets the initialized exact concealment snapshot, if any.</summary>
     public WorldObjectConcealmentSnapshot? Concealment { get; private set; }
 
@@ -115,6 +117,33 @@ public partial class CharacterObjectSabotageConcealmentController : Node
 
         Concealment = result.Concealment;
         Evidence = result.EvidenceResult.Evidence;
+        return true;
+    }
+
+    /// <summary>Resolves one exact accepted consideration result from current scene state.</summary>
+    public bool TryResolveConsideration(
+        CharacterObjectSabotageConcealmentConsiderationResult considerationResult)
+    {
+        ArgumentNullException.ThrowIfNull(considerationResult);
+
+        CharacterObjectSabotageConcealmentConsiderationRequest request =
+            considerationResult.Request;
+        if (ReferenceEquals(lastResolvedRequest, request)
+            || !ReferenceEquals(Concealment, request.Concealment)
+            || !ReferenceEquals(Evidence, request.Evidence))
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageConcealmentResult? result =
+            CharacterObjectSabotageConcealmentConsiderationTransition.Apply(considerationResult);
+        if (result is not null)
+        {
+            Concealment = result.Concealment;
+            Evidence = result.EvidenceResult.Evidence;
+        }
+
+        lastResolvedRequest = request;
         return true;
     }
 

@@ -688,8 +688,18 @@ to its exact request and retains the exact selected request candidate, or `null`
 provider-neutral cancellation-aware Application interface obtains one decision, and its coordinator
 returns only that validated exact result. The pure consideration transition delegates a selection
 through the existing all-or-nothing concealment and evidence transition while abstention returns no
-application. These contracts do not decide timing, decode or serialize a choice, install scene
-state, schedule work, persist data, construct a model, or invoke a provider.
+application. The scene controller resolves that result only when its request retains the exact
+current concealment and evidence snapshots: selection installs both fresh result snapshots
+atomically, while abstention retains both exact scene instances and consumes that exact request.
+A bounded scene task obtains one decision with caller cancellation, installs only a non-stale
+accepted result on the main thread, and exposes closed idle, running, completed, cancelled, and
+failed states plus terminal reset. A temporary model source consumes one exact caller-supplied model
+for the next decision only, then resumes one stable fail-closed offline model. The explicit
+temporary consideration flow composes the authored enemy, access, world objects, current scene
+snapshots, and stable candidate collection only when asked, then delegates to that task. `Main.tscn`
+wires these nodes after exact sabotage-state initialization but does not start them automatically.
+These contracts do not decide timing, decode or serialize a choice, schedule work automatically,
+persist data, compose a provider binding, or invoke a provider.
 
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the

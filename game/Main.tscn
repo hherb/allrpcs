@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3]
+[gd_scene load_steps=162 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -184,6 +184,10 @@
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotagePresentationFlowSmokeCheck.cs" id="182_object_sabotage_presentation_flow_check"]
 [ext_resource type="Script" path="res://WaterCaskInteractionFocusSmokeCheck.cs" id="183_water_cask_interaction_focus_check"]
 [ext_resource type="Script" path="res://WaterCaskSabotageInvestigationFlowSmokeCheck.cs" id="184_water_cask_sabotage_investigation_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageConsiderationMainSceneSmokeCheck.cs" id="185_object_sabotage_consideration_main_scene_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageConcealmentModelSource.cs" id="186_object_sabotage_model_source"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentTaskController.cs" id="187_object_sabotage_task_controller"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageConsiderationFlowController.cs" id="188_object_sabotage_consideration_flow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -532,6 +536,15 @@ script = ExtResource("180_object_sabotage_presentation")
 [node name="TemporaryCharacterObjectSabotageFlowController" type="Node" parent="."]
 script = ExtResource("178_object_sabotage_flow")
 
+[node name="TemporaryCharacterObjectSabotageConcealmentModelSource" type="Node" parent="."]
+script = ExtResource("186_object_sabotage_model_source")
+
+[node name="CharacterObjectSabotageConcealmentTaskController" type="Node" parent="."]
+script = ExtResource("187_object_sabotage_task_controller")
+
+[node name="TemporaryCharacterObjectSabotageConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("188_object_sabotage_consideration_flow")
+
 [node name="TemporaryCharacterObjectSabotagePresentationFlowController" type="Node" parent="."]
 script = ExtResource("181_object_sabotage_presentation_flow")
 
@@ -843,6 +856,9 @@ script = ExtResource("174_independent_task_body_presentation_check")
 
 [node name="TemporaryCharacterObjectSabotageMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("175_object_sabotage_main_scene_check")
+
+[node name="TemporaryCharacterObjectSabotageConsiderationMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("185_object_sabotage_consideration_main_scene_check")
 
 [node name="CharacterObjectSabotageConcealmentPresentationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("179_object_sabotage_presentation_check")

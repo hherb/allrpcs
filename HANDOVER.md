@@ -2,54 +2,54 @@
 
 ## Current state
 
-`main` contains merged PR #231 at `5f1409d`. The current branch is
-`codex/phase-7-sabotage-decision-flow` and advances four bounded Phase 7 slices:
+`main` contains merged PR #232 at `038476a`. The current branch is
+`codex/phase-7-sabotage-scene-resolution` and advances five bounded Phase 7 slices:
 
-- Phase 7dp binds one accepted concealment decision to its exact consideration request and retains
-  the exact selected request candidate, or `null` for abstention;
-- Phase 7dq defines one provider-neutral cancellation-aware interface for obtaining that decision;
-- Phase 7dr obtains one decision for the exact request and returns only its validated exact result;
-- Phase 7ds applies an accepted selection through the existing immutable concealment/evidence
-  transition while explicit abstention returns no application.
+- Phase 7dt resolves one exact accepted concealment consideration result against scene-owned
+  snapshots, atomically installing selection output while exact abstention retains both instances;
+- Phase 7du owns one cancellation-aware decision task through closed terminal states and resolves
+  only a non-stale accepted result on the Godot main thread;
+- Phase 7dv supplies one exact one-shot decision model or one stable fail-closed offline model;
+- Phase 7dw explicitly composes the authored enemy/access/world/current-state/candidate request and
+  starts that task without selecting timing; and
+- Phase 7dx wires the model source, task, and explicit flow into `Main.tscn` after sabotage-state
+  initialization while startup remains inert.
 
-The flow does not yet own or install an accepted result in the scene. It also does not choose timing,
-construct or supply a model, decode or serialize model data, invoke a provider, add another sabotage
-kind, or add UI/input/events/time/transcripts/persistence or movement behavior.
-
-Draft PR #232 is open from implementation commit `b5bb6a3`. Hosted run `34789236838` completed with
-all five jobs at `steps: []`; it is Actions/account infrastructure state, not product-test or
-unsigned-build evidence, and should not be retried unchanged.
+No real provider is composed or invoked. Nothing starts sabotage automatically, chooses timing,
+decodes or serializes provider data, persists concealment, or adds UI/input/events/time/transcripts,
+movement, or another sabotage effect.
 
 ## Validation and review
 
-- Every slice began with the expected compile failure for its absent contract or operation.
-- Focused host-local Domain tests pass exact result/candidate retention, abstention, identifier and
-  eligibility rejection, immutable application, unchanged inputs, and closed public surfaces.
-- Focused host-local Application tests pass exact request and cancellation forwarding, one model
-  call, abstention, invalid-decision rejection, cancellation, unchanged input state, and closed
-  public surfaces.
+- Every slice began with the expected failure for its absent operation, type, or scene node.
+- Focused host-local Godot smokes pass exact selection and abstention resolution, stale/null/repeated
+  rejection, closed task lifecycle, cancellation, safe failure, one-shot/offline model selection,
+  exact request composition, overlap preservation, real-main-scene wiring, inert startup, unchanged
+  source/surrounding state, and all-or-nothing main-thread installation.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
   build, 2,306 Domain tests, 484 Application tests, 532 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
   graphical launch.
 - All changed authored C# files are below 500 lines and use no lines longer than 120 characters.
   No live-conformance switch was enabled and no provider was invoked.
-- Hosted run `34789236838` executed no job steps; host-local quality is the current product evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7dt: scene-own resolution of one exact accepted concealment consideration result**.
+Take **Phase 7dy: strictly decode one concealment decision JSON document for an exact request**.
 
 Acceptance boundary:
 
-1. Extend `CharacterObjectSabotageConcealmentController` with one narrowly named operation accepting
-   an exact `CharacterObjectSabotageConcealmentConsiderationResult`.
-2. Compare the result request's exact concealment and evidence snapshots against current scene-owned
-   instances before resolving it; stale or uninitialized state must fail without partial mutation.
-3. Install both fresh snapshots from an accepted selection atomically; accept an exact abstention
-   while retaining the same scene snapshot instances.
-4. Prove selection, abstention, stale/null/repeated rejection, unchanged surrounding state, and the
-   smallest controller surface in the focused credential-free Godot smoke.
-5. Do not obtain a decision, create a model source or task controller, choose timing, trigger
-   sabotage automatically, decode/serialize provider data, invoke a provider, add UI/events/time/
-   transcripts/persistence, or add non-conceal effects or movement behavior.
+1. Add one Infrastructure deserializer accepting the exact
+   `CharacterObjectSabotageConcealmentConsiderationRequest` and one complete JSON document.
+2. Require exactly `characterId` and nullable `selectedEvidenceId`, reject duplicate, missing,
+   unknown, non-string, malformed, trailing, over-depth, and over-length input, and preserve
+   identifier text exactly through existing parsers.
+3. Materialize a provider-neutral `CharacterObjectSabotageConcealmentDecision` and delegate the
+   existing exact-request acceptance policy before returning it; invalid selection and character
+   identifiers must fail as one bounded invalid-response argument error.
+4. Prove accepted exact selection and abstention, distinct value-equal identifier materialization,
+   complete rejection coverage, unchanged request state, and the smallest static public surface in
+   focused Infrastructure tests.
+5. Do not add SSE accumulation, request serialization, an HTTP adapter, provider/model bindings,
+   scene composition, timing/automatic triggers, persistence, UI/events/time/transcripts, movement,
+   or another sabotage effect.
