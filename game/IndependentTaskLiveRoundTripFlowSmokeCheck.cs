@@ -57,14 +57,15 @@ public partial class IndependentTaskLiveRoundTripFlowSmokeCheck : Node
         WorldTimeSnapshot initialWorldTime = worldController.WorldTime!;
         CharacterTurnTranscriptSnapshot initialTranscript = transcriptController.Transcript!;
         Vector2 healerPosition = healer.GlobalPosition;
-        bool healerVisibility = healer.Visible;
+        bool initialHealerVisibility = healer.Visible;
         if (clockController.Cadence is not { } cadence
             || cadence.Interval != ExpectedCadence
             || clockController.Clock is not { } initialClock
             || initialClock.ElapsedTowardNextStep >= cadence.Interval
             || initialOutboundProgress.IsComplete
             || returnController.Plan is not null
-            || returnController.Progress is not null)
+            || returnController.Progress is not null
+            || initialHealerVisibility)
         {
             Fail("The live scene did not initialize the authored independent-task cadence.");
             return;
@@ -89,7 +90,7 @@ public partial class IndependentTaskLiveRoundTripFlowSmokeCheck : Node
             || ReferenceEquals(occurredTranscript, initialTranscript)
             || !ReferenceEquals(arrival.TravelProgress, completedOutboundProgress)
             || healer.GlobalPosition != healerPosition
-            || healer.Visible != healerVisibility)
+            || healer.Visible)
         {
             Fail("One live cadence interval did not complete only the exact outbound occurrence.");
             return;
@@ -112,7 +113,7 @@ public partial class IndependentTaskLiveRoundTripFlowSmokeCheck : Node
             || clockController.Clock is not { } completedClock
             || ReferenceEquals(completedClock, initialClock)
             || healer.GlobalPosition != healerPosition
-            || healer.Visible != healerVisibility)
+            || !healer.Visible)
         {
             Fail("The next live cadence interval did not complete only the exact return rejoin.");
             return;
@@ -123,7 +124,7 @@ public partial class IndependentTaskLiveRoundTripFlowSmokeCheck : Node
             || !ReferenceEquals(taskController.Party, rejoinedParty)
             || !ReferenceEquals(clockController.Clock, completedClock)
             || healer.GlobalPosition != healerPosition
-            || healer.Visible != healerVisibility)
+            || !healer.Visible)
         {
             Fail("Completed live round-trip processing changed task, timing, or body state again.");
             return;
@@ -131,8 +132,8 @@ public partial class IndependentTaskLiveRoundTripFlowSmokeCheck : Node
 
         GD.Print(
             "Independent-task live round-trip flow smoke passed: two authored cadence intervals "
-            + "completed the exact outbound occurrence and return rejoin once while leaving the "
-            + "healer body visible and unmoved.");
+            + "completed the exact outbound occurrence and return rejoin once while hiding the "
+            + "separated healer body, restoring it on rejoin, and retaining its position.");
         GetTree().Quit();
     }
 

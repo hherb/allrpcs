@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3]
+[gd_scene load_steps=148 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -172,6 +172,8 @@
 [ext_resource type="Script" path="res://CharacterIndependentTaskStepClockControllerSmokeCheck.cs" id="170_independent_task_step_clock_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck.cs" id="171_independent_task_timed_round_trip_check"]
 [ext_resource type="Script" path="res://IndependentTaskLiveRoundTripFlowSmokeCheck.cs" id="172_independent_task_live_round_trip_check"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskBodyPresentationController.cs" id="173_independent_task_body_presentation_controller"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskBodyPresentationControllerSmokeCheck.cs" id="174_independent_task_body_presentation_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -766,6 +768,9 @@ script = ExtResource("167_independent_task_round_trip_coordinator")
 [node name="CharacterIndependentTaskStepClockController" type="Node" parent="."]
 script = ExtResource("169_independent_task_step_clock_controller")
 
+[node name="CharacterIndependentTaskBodyPresentationController" type="Node" parent="."]
+script = ExtResource("173_independent_task_body_presentation_controller")
+
 [node name="TemporaryCharacterIndependentTaskReturnTravelSourceSmokeCheck" type="Node" parent="."]
 script = ExtResource("165_independent_task_return_travel_source_check")
 
@@ -783,6 +788,9 @@ script = ExtResource("171_independent_task_timed_round_trip_check")
 
 [node name="IndependentTaskLiveRoundTripFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("172_independent_task_live_round_trip_check")
+
+[node name="CharacterIndependentTaskBodyPresentationControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("174_independent_task_body_presentation_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")

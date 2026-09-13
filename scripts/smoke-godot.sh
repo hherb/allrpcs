@@ -61,6 +61,7 @@ ALLRPCS_INDEPENDENT_TASK_ROUND_TRIP_COORDINATOR_CHECK=1 godot --headless --path 
 ALLRPCS_INDEPENDENT_TASK_STEP_CLOCK_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_INDEPENDENT_TASK_TIMED_ROUND_TRIP_COORDINATOR_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_INDEPENDENT_TASK_LIVE_ROUND_TRIP_FLOW_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_INDEPENDENT_TASK_BODY_PRESENTATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_PARTICIPATION_ROUND_TASK_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_PARTICIPATION_MODEL_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_ORDINARY_PLAYER_PARTICIPATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120

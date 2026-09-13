@@ -52,6 +52,7 @@ public partial class Main : Node
     private TemporaryCharacterIndependentTaskSource independentTaskSource = null!;
     private CharacterIndependentTaskDepartureController independentTaskDepartureController = null!;
     private TemporaryCharacterIndependentTaskOccurrenceSource independentTaskOccurrenceSource = null!;
+    private CharacterIndependentTaskBodyPresentationController independentTaskBodyPresentationController = null!;
     private CharacterIndependentTaskRoundTripCoordinator independentTaskRoundTripCoordinator = null!;
     private CharacterIndependentTaskStepClockController independentTaskStepClockController = null!;
     private TemporaryCharacterIndependentTaskTravelSource independentTaskTravelSource = null!;
@@ -117,6 +118,9 @@ public partial class Main : Node
         independentTaskOccurrenceSource =
             GetNode<TemporaryCharacterIndependentTaskOccurrenceSource>(
                 "TemporaryCharacterIndependentTaskOccurrenceSource");
+        independentTaskBodyPresentationController =
+            GetNode<CharacterIndependentTaskBodyPresentationController>(
+                "CharacterIndependentTaskBodyPresentationController");
         independentTaskRoundTripCoordinator =
             GetNode<CharacterIndependentTaskRoundTripCoordinator>(
                 "CharacterIndependentTaskRoundTripCoordinator");
@@ -232,6 +236,7 @@ public partial class Main : Node
         InitializeAndStartIndependentTaskDeparture();
         InitializeIndependentTaskTravel();
         InitializeIndependentTaskStepClock();
+        InitializeIndependentTaskBodyPresentation();
 
         if (!focusedSearchController.TryInitializePerception(seekerPerceptionSource.Perception))
         {
@@ -303,6 +308,21 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The authored independent-task step clock could not initialize.");
+        }
+    }
+
+    private void InitializeIndependentTaskBodyPresentation()
+    {
+        CharacterPartySnapshot party = independentTaskDepartureController.Party
+            ?? throw new InvalidOperationException(
+                "The independent-task party state was not initialized for body presentation.");
+        if (!independentTaskBodyPresentationController.TryInitialize(
+                independentTaskSource.DepartingCharacterId,
+                healer,
+                party))
+        {
+            throw new InvalidOperationException(
+                "The authored independent-task body presentation could not initialize.");
         }
     }
 
@@ -489,6 +509,16 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The exact live independent-task elapsed step could not advance.");
+        }
+
+        CharacterPartySnapshot currentParty = independentTaskDepartureController.Party
+            ?? throw new InvalidOperationException(
+                "Independent-task party state disappeared after elapsed processing.");
+        if (!ReferenceEquals(currentParty, party)
+            && !independentTaskBodyPresentationController.TryPresent(party, currentParty))
+        {
+            throw new InvalidOperationException(
+                "The exact independent-task party change could not update body presentation.");
         }
     }
 

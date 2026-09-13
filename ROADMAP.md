@@ -367,7 +367,7 @@ Acceptance:
     state only.
   - [x] Rejoin one exact completed-task character through stable bounded party membership only after
     its exact return completes.
-- [ ] Simulate off-screen movement and actions through the same authoritative rules.
+- [x] Simulate off-screen movement and actions through the same authoritative rules.
   - [x] Define one bounded provider-neutral travel plan and immutable progress transition for an
     exact active independent task without introducing Godot navigation or elapsed-time policy.
   - [x] Scene-own one exact independent-task travel plan and advance its immutable progress only
@@ -394,6 +394,8 @@ Acceptance:
   - [x] Consume one due cadence interval only when the exact active outbound or return step succeeds.
   - [x] Drive the authored one-waypoint task occurrence and return rejoin from a bounded live-scene
     cadence without moving or hiding its character body.
+  - [x] Hide the exact separated task character body and restore it only from the exact rejoined
+    party snapshot without changing its retained scene position.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route

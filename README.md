@@ -903,9 +903,14 @@ with finite non-negative frame elapsed time capped to one interval per process c
 interval supplies the exact current task, party, outbound or return progress, world-event, time, and
 transcript state to the timed coordinator. The first authored interval completes the herb-patch
 arrival and authoritative task occurrence; the second completes return travel and stable party
-rejoin; completed return state stops further clock consumption. The healer body remains visible and
-unmoved, and no interpolation, speed, collision/navigation agent, off-screen position,
-dialogue/model-context, persistence, or provider behavior was added.
+rejoin; completed return state stops further clock consumption.
+
+A dedicated body-presentation controller retains the exact authored healer identifier and last
+presented party snapshot. Initial separated party state hides that body, and only a fresh exact
+party snapshot can update visibility; the stable rejoined party therefore restores it once. The
+live round-trip keeps the healer's scene position unchanged throughout. This presentation adds no
+interpolation, speed, collision/navigation agent, generalized concealment action, off-screen
+position model, dialogue/model-context, persistence, or provider behavior.
 
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
