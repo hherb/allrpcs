@@ -409,6 +409,8 @@ Acceptance:
     without applying an effect.
   - [x] Author one exact temporary enemy concealment candidate with explicit physical access,
     authoritative object state, empty concealment state, and fresh noticed evidence.
+  - [x] Bind that authored candidate to the exact tail water cask in the existing complete scene
+    world-object snapshot and initialize its empty state without applying it automatically.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
@@ -419,6 +421,9 @@ Acceptance:
     recovery results without mutating authoritative inputs.
   - [x] Run one explicitly requested temporary concealment exactly once and recover it only through
     the existing perception-to-evidence projection without consuming evidence.
+  - [x] Project exact concealment snapshots onto one scene body through stale-safe visibility state.
+  - [x] Explicitly conceal and hide the main-scene water cask, then recover and restore it only from
+    noticed exact evidence without changing its position or authoritative world object.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

@@ -22,11 +22,14 @@ public partial class TemporaryCharacterObjectSabotageFlowSmokeCheck : Node
         SetProcess(false);
 
         TemporaryCharacterObjectSabotageSource source =
-            GetNode<TemporaryCharacterObjectSabotageSource>("../Source");
+            GetNode<TemporaryCharacterObjectSabotageSource>(
+                "../TemporaryCharacterObjectSabotageSource");
         CharacterObjectSabotageConcealmentController state =
-            GetNode<CharacterObjectSabotageConcealmentController>("../State");
+            GetNode<CharacterObjectSabotageConcealmentController>(
+                "../CharacterObjectSabotageConcealmentController");
         TemporaryCharacterObjectSabotageFlowController flow =
-            GetNode<TemporaryCharacterObjectSabotageFlowController>("../Flow");
+            GetNode<TemporaryCharacterObjectSabotageFlowController>(
+                "../TemporaryCharacterObjectSabotageFlowController");
         WorldObjectConcealmentSnapshot initialConcealment = source.Concealment;
         DiscoveryEvidenceSnapshot initialEvidence = source.Evidence;
 

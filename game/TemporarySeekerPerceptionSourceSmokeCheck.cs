@@ -64,6 +64,7 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
         WorldObjectSnapshot sourceWorldObjects = worldObjectSource.WorldObjects;
         WorldObject sourceHerbPatch = sourceWorldObjects.Entries[0];
         WorldObject sourceStoneMarker = sourceWorldObjects.Entries[1];
+        WorldObject sourceWaterCask = sourceWorldObjects.Entries[2];
         WorldObjectIdentity sourceHerbPatchIdentity = sourceHerbPatch.Identity;
         WorldObjectDescription sourceHerbPatchDescription = sourceHerbPatch.Description;
         WorldObjectIdentity sourceStoneMarkerIdentity = sourceStoneMarker.Identity;
@@ -88,12 +89,14 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             return;
         }
 
-        if (first.Entries.Count != 2
+        if (first.Entries.Count != 3
             || !ReferenceEquals(first.Entries[0].ObjectId, sourceHerbPatch.Identity.Id)
             || !ReferenceEquals(first.Entries[0].ObjectId, candidate.TargetObjectId)
             || !ReferenceEquals(first.Entries[0].VisibilityState, VisibilityState.Unnoticed)
             || !ReferenceEquals(first.Entries[1].ObjectId, sourceStoneMarker.Identity.Id)
             || !ReferenceEquals(first.Entries[1].VisibilityState, VisibilityState.Noticed)
+            || !ReferenceEquals(first.Entries[2].ObjectId, sourceWaterCask.Identity.Id)
+            || !ReferenceEquals(first.Entries[2].VisibilityState, VisibilityState.Noticed)
             || ReferenceEquals(sourceHerbPatch.Identity.Id, herbPatch.ObjectId)
             || sourceHerbPatch.Identity.Id != herbPatch.ObjectId
             || ReferenceEquals(sourceStoneMarker.Identity.Id, stoneMarker.ObjectId)
@@ -157,6 +160,7 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
         if (!ReferenceEquals(worldObjectSource.WorldObjects, sourceWorldObjects)
             || !ReferenceEquals(sourceWorldObjects.Entries[0], sourceHerbPatch)
             || !ReferenceEquals(sourceWorldObjects.Entries[1], sourceStoneMarker)
+            || !ReferenceEquals(sourceWorldObjects.Entries[2], sourceWaterCask)
             || !ReferenceEquals(sourceHerbPatch.Identity, sourceHerbPatchIdentity)
             || !ReferenceEquals(sourceHerbPatch.Description, sourceHerbPatchDescription)
             || !ReferenceEquals(sourceStoneMarker.Identity, sourceStoneMarkerIdentity)

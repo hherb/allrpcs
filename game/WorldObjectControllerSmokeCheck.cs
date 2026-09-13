@@ -57,7 +57,7 @@ public partial class WorldObjectControllerSmokeCheck : Node
         WorldObjectSnapshot? initializedSnapshot = controller.WorldObjects;
         if (initializedSnapshot is null
             || !ReferenceEquals(initializedSnapshot, sourceSnapshot)
-            || sourceSnapshot.Entries.Count != 2
+            || sourceSnapshot.Entries.Count != 3
             || !HasExpectedControllerSurface())
         {
             Fail(
@@ -77,9 +77,12 @@ public partial class WorldObjectControllerSmokeCheck : Node
 
         WorldObject expectedHerbPatch = sourceSnapshot.Entries[0];
         WorldObject expectedStoneMarker = sourceSnapshot.Entries[1];
+        WorldObject expectedWaterCask = sourceSnapshot.Entries[2];
         ObjectId valueEqualStoneMarkerObjectId = new(stoneMarker.ObjectId.Value);
         WorldObject? herbPatchResult = controller.FindWorldObject(herbPatch.ObjectId);
         WorldObject? stoneMarkerResult = controller.FindWorldObject(valueEqualStoneMarkerObjectId);
+        WorldObject? waterCaskResult = controller.FindWorldObject(
+            new ObjectId(expectedWaterCask.Identity.Id.Value));
         WorldObject? absentResult = controller.FindWorldObject(new ObjectId("absent-object"));
         WorldObjectController uninitializedController = new();
         AddChild(uninitializedController);
@@ -88,6 +91,7 @@ public partial class WorldObjectControllerSmokeCheck : Node
 
         if (!ReferenceEquals(herbPatchResult, expectedHerbPatch)
             || !ReferenceEquals(stoneMarkerResult, expectedStoneMarker)
+            || !ReferenceEquals(waterCaskResult, expectedWaterCask)
             || ReferenceEquals(valueEqualStoneMarkerObjectId, stoneMarker.ObjectId)
             || valueEqualStoneMarkerObjectId != stoneMarker.ObjectId
             || absentResult is not null
@@ -121,6 +125,7 @@ public partial class WorldObjectControllerSmokeCheck : Node
             || !ReferenceEquals(source.WorldObjects, sourceSnapshot)
             || !ReferenceEquals(sourceSnapshot.Entries[0], expectedHerbPatch)
             || !ReferenceEquals(sourceSnapshot.Entries[1], expectedStoneMarker)
+            || !ReferenceEquals(sourceSnapshot.Entries[2], expectedWaterCask)
             || !ReferenceEquals(herbPatch.ObjectId, herbPatchObjectId)
             || !ReferenceEquals(stoneMarker.ObjectId, stoneMarkerObjectId)
             || !ReferenceEquals(focusedSearchController.Activities, expectedActivities)

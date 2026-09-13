@@ -10,9 +10,6 @@ namespace Allrpcs.Game;
 /// <summary>Authors one exact temporary eligible enemy concealment candidate and initial state.</summary>
 public partial class TemporaryCharacterObjectSabotageSource : Node
 {
-    private const string TargetObjectIdText = "village-water-cask";
-    private const string TargetDisplayName = "Village water cask";
-    private const string TargetDescription = "A covered cask beside the village well.";
     private const string RequiredCapabilityKey = "assess-local-influence";
     private const string EvidenceIdText = "disturbed-cask-cover";
 
@@ -38,13 +35,12 @@ public partial class TemporaryCharacterObjectSabotageSource : Node
     public override void _Ready()
     {
         Character = RepresentativeEnemyAgentCharacterSource.Create();
-        WorldObject target = new(
-            new WorldObjectIdentity(new ObjectId(TargetObjectIdText), TargetDisplayName),
-            new WorldObjectDescription(TargetDescription));
+        WorldObjects = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").WorldObjects;
+        WorldObject target = WorldObjects.Entries[^1];
         PhysicalAccess = new CharacterPhysicalAccessSnapshot(
             Character.Identity.Id,
             [target.Identity.Id]);
-        WorldObjects = new WorldObjectSnapshot([target]);
         Concealment = new WorldObjectConcealmentSnapshot([]);
         Evidence = new DiscoveryEvidenceSnapshot([]);
         CharacterObjectSabotageOccurrence occurrence = new(

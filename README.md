@@ -684,13 +684,20 @@ discovered the evidence, or add routes, scenes, persistence, or providers.
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
 and install both fresh apply results, or only the fresh recovered concealment while retaining the
 exact evidence snapshot. Stale, value-equal expected snapshots and ineligible operations fail
-without partial installation. `TemporaryCharacterObjectSabotageSource` authors one isolated exact
-enemy concealment candidate with explicit access and empty initial state; the temporary flow
-initializes that state without effect and applies only on an explicit request. Recovery first uses
-the existing perception-to-evidence projection, so unseen evidence cannot recover the target and
-noticed authoritative evidence can. These temporary isolated scene seams do not select timing or
-behavior, change `Main.tscn`, hide or reveal a node, consume evidence, persist state, or invoke a
-provider.
+without partial installation. `TemporaryCharacterObjectSabotageSource` retains the exact tail
+water-cask object and complete snapshot from the existing scene world-object source, then authors
+one exact enemy concealment candidate with explicit access and empty initial state. `Main.tscn`
+initializes that source, scene-owned state, and temporary flow without applying an effect.
+
+`CharacterObjectSabotageConcealmentPresentationController` projects exact immutable concealment
+state onto one retained scene body. Initialization and later presentation retain exact target and
+snapshot instances; only a fresh snapshot from the exact last-presented snapshot can change
+visibility. The temporary main-scene presentation flow explicitly composes one eligible apply with
+hiding the water-cask body, then uses the existing perception-to-evidence projection so noticed
+authoritative evidence can recover and reveal it. Unseen, null, stale, and repeated operations
+preserve state and presentation. No behavior or timing is selected automatically, and these seams
+do not move an object or actor, infer coordinate access, consume evidence, add a discovery route,
+persist state, or invoke a provider.
 
 `RepresentativeInfectedCharacterSource` creates exactly two fresh dormant roles in stable
 forester-then-scribe order. Each exact identity is shared with its dormant controller assignment
@@ -2503,19 +2510,16 @@ authored identity text or changing the supplied snapshot and objects. The source
 search, poll focus, own lifecycle state, grant discovery, or make temporary scene state
 authoritative.
 
-`Allrpcs.Game.TemporaryWorldObjectSource` independently authors only the visible herb-patch and
-stone-marker identities into one retained `WorldObjectSnapshot` when the scene becomes ready. It
-creates one distinct world object per identity in that authored order, retaining the existing exact
-identifier values and display names. Each source identifier is a distinct instance that is
-value-equal to its marker's independently parsed `ObjectIdText` reference. The source also authors
-and retains one distinct non-empty `WorldObjectDescription` for each object: the herb patch has
-`A cluster of narrow leaves gives off a sharp scent.`, while the stone marker has
-`Weathered carvings mark one face of the standing stone.`. These descriptions are not focused-search
-inputs and are not copied into marker labels, focus status, or focused-search result presentation.
-The existing resolved-perception indicator receives a description only when the controller's
-matching perception entry is `Identified`. The source does not read, mutate, or replace greybox targets;
-become authoritative; inspect visibility or focus; filter or rank objects; call controllers; grant
-discovery; or change presentation or ordinary-play behavior.
+`Allrpcs.Game.TemporaryWorldObjectSource` independently authors the herb patch, stone marker, and
+village water cask into one retained `WorldObjectSnapshot` in that stable order when the scene
+becomes ready. It creates one distinct world object per identity, retaining exact identifier values,
+display names, and non-empty descriptions. The first two source identifiers remain distinct
+instances that are value-equal to their greybox targets' independently parsed `ObjectIdText`
+references. Their descriptions are not focused-search inputs or copied into focus presentation;
+the existing resolved-perception indicator receives one only when its matching perception entry is
+`Identified`. The exact tail water-cask instance instead supplies the temporary sabotage seam. The
+source does not mutate or replace targets, become authoritative, filter or rank objects, call
+controllers, grant discovery, or select ordinary-play behavior.
 
 `Allrpcs.Game.WorldObjectController` is the separate scene owner of one optional immutable
 world-object snapshot. Its one-time initialization boundary rejects null, retains the exact first

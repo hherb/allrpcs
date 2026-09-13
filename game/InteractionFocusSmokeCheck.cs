@@ -23,6 +23,7 @@ public partial class InteractionFocusSmokeCheck : Node
     private const string HealerMoveAction = "healer_move";
     private const string HealerToggleAction = "healer_toggle_follow_wait";
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
+    private const int FocusedWorldObjectCount = 2;
     private const int MaximumSynchronizationFrames = 60;
     private const float NavigationSynchronizationTolerancePixels = 1.0f;
     private const string StartChangedText = "Focused search START: CHANGED";
@@ -343,8 +344,9 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObject exactWorldObject = worldObjectController.FindWorldObject(focusedTargetObjectId)
             ?? throw new InvalidOperationException(
                 "The interaction-focus smoke requires the focused world object.");
-        WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries.Single(
-            worldObject => worldObject.Identity.Id != focusedTargetObjectId);
+        WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries
+            .Take(FocusedWorldObjectCount)
+            .Single(worldObject => worldObject.Identity.Id != focusedTargetObjectId);
         ObjectId valueEqualObjectId = new(focusedTargetObjectId.Value);
         WorldObject valueEqualWorldObject = CreateWorldObject(
             valueEqualObjectId,
@@ -466,8 +468,9 @@ public partial class InteractionFocusSmokeCheck : Node
     private bool AssertWorldObjectGatedStartDelegation(int expectedTargetIndex)
     {
         ObjectId focusedTargetObjectId = sourceObjectIds[expectedTargetIndex];
-        WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries.Single(
-            worldObject => worldObject.Identity.Id != focusedTargetObjectId);
+        WorldObject mismatchedWorldObject = worldObjectSource.WorldObjects.Entries
+            .Take(FocusedWorldObjectCount)
+            .Single(worldObject => worldObject.Identity.Id != focusedTargetObjectId);
         ObjectId valueEqualObjectId = new(focusedTargetObjectId.Value);
         WorldObject valueEqualWorldObject = CreateWorldObject(
             valueEqualObjectId,
@@ -1073,8 +1076,9 @@ public partial class InteractionFocusSmokeCheck : Node
             worldObjectController.FindWorldObject(targetObjectId)
             ?? throw new InvalidOperationException(
                 "The interaction-focus smoke requires the target world object.");
-        WorldObject mismatchedWorldObject = expectedWorldObjects.Entries.Single(
-            worldObject => worldObject.Identity.Id != targetObjectId);
+        WorldObject mismatchedWorldObject = expectedWorldObjects.Entries
+            .Take(FocusedWorldObjectCount)
+            .Single(worldObject => worldObject.Identity.Id != targetObjectId);
         WorldObjectIdentity targetIdentity = targetWorldObject.Identity;
         WorldObjectDescription targetDescription = targetWorldObject.Description;
         WorldObjectIdentity mismatchedIdentity = mismatchedWorldObject.Identity;
@@ -2051,9 +2055,10 @@ public partial class InteractionFocusSmokeCheck : Node
         }
 
         sourceObjectIds = worldObjectSource.WorldObjects.Entries
+            .Take(FocusedWorldObjectCount)
             .Select(worldObject => worldObject.Identity.Id)
             .ToArray();
-        if (sourceObjectIds.Length != 2)
+        if (sourceObjectIds.Length != FocusedWorldObjectCount)
         {
             Fail("Interaction-focus smoke found an unexpected temporary world-object count.");
             return false;

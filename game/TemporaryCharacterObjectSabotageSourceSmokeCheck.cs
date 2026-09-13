@@ -14,7 +14,8 @@ public partial class TemporaryCharacterObjectSabotageSourceSmokeCheck : Node
     public override void _Ready()
     {
         TemporaryCharacterObjectSabotageSource source =
-            GetNode<TemporaryCharacterObjectSabotageSource>("../Source");
+            GetNode<TemporaryCharacterObjectSabotageSource>(
+                "../TemporaryCharacterObjectSabotageSource");
         CharacterObjectSabotageEvidence candidate = source.Candidate;
 
         if (!ReferenceEquals(candidate.Occurrence.Proposal.ActorId, source.Character.Identity.Id)
@@ -27,9 +28,8 @@ public partial class TemporaryCharacterObjectSabotageSourceSmokeCheck : Node
             || !ReferenceEquals(
                 candidate.Occurrence.Proposal.AccessRequirement.RequiredKnowledgeId,
                 source.Character.Knowledge.KnowledgeReferences.Single())
-            || !ReferenceEquals(
-                source.WorldObjects.Entries.Single(),
-                candidate.Occurrence.Target)
+            || source.WorldObjects.Entries.Count != 3
+            || !ReferenceEquals(source.WorldObjects.Entries[^1], candidate.Occurrence.Target)
             || !ReferenceEquals(
                 source.PhysicalAccess.AccessibleObjectIds.Single(),
                 candidate.Occurrence.Target.Identity.Id)
