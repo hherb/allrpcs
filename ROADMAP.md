@@ -385,6 +385,8 @@ Acceptance:
     outbound origin without selecting timing or movement policy.
   - [x] Initialize that exact return route as part of the final arrival-occurrence scene operation.
   - [x] Compose and install exact final return progress plus stable bounded party rejoin atomically.
+  - [x] Coordinate one explicit next outbound or return waypoint through those existing atomic scene
+    operations without selecting when a step occurs.
 - [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
   only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route

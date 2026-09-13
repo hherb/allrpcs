@@ -863,6 +863,15 @@ outbound or return travel, trigger the task occurrence, or rejoin the party; no 
 interpolation, collision, navigation-agent, off-screen-location, body-presentation,
 dialogue/model-context, persistence, or provider policy was added.
 
+A separate scene-owned round-trip coordinator delegates exactly one caller-supplied next waypoint.
+Non-final outbound and return steps use the existing immutable travel controllers; final outbound
+arrival delegates the existing atomic task occurrence and return-route initialization, while final
+return arrival delegates the existing atomic party rejoin. Its isolated credential-free smoke
+drives the authored one-waypoint outbound and return routes in order and proves stale, mismatched,
+repeated, and null input cannot change any scene-owned snapshot. `Main` does not call this
+coordinator, and it defines no timing, movement, navigation, body-presentation, persistence,
+dialogue/model-context, or provider policy.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining
