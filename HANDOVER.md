@@ -2,71 +2,56 @@
 
 ## Current state
 
-`main` contains merged PR #217 at `aa55021`. The current branch is
-`codex/phase-7-delivery-transcript`. Draft PR #218 is open and mergeable with implementation commit
-`0973ae7`.
+`main` contains merged PR #218 at `1a9935d`. The current branch is
+`codex/phase-7-independent-tasks`.
 
-This branch completes the bounded Phase 7 whisper/private-conversation roadmap item through seven
-connected slices:
+This branch completes Phase 7bk-7br as one reviewed Domain foundation for bounded independent tasks
+and party separation:
 
-- Phase 7bd makes spoken transcript entries retain one exact `DialogueDelivery` while preserving
-  the exact utterance projection and physical-action behavior.
-- Phase 7be-7bf retain exact delivery modes on recent and current dialogue model context and
-  serialize them into the shared trusted request context for every ordinary provider dialect.
-- Phase 7bg introduces save schema version 4, strict canonical JSON, and migrations that make
-  historically mode-free version 1-3 speech explicitly ordinary.
-- Phase 7bh makes `CharacterTurnResponse` retain an optional exact delivery and preserves its
-  utterance through the existing `Speech` projection.
-- Phase 7bi requires provider response JSON to pair non-null speech with exactly one canonical
-  `ordinary-speech` or `whispering` mode and null speech with null mode.
-- Phase 7bj applies the exact response delivery to scene hearing and transcript occurrence. A
-  credential-free smoke proves one explicit whisper reaches only the nearby Seeker.
-- Version 4 persists exact heard and response delivery modes; legacy version JSON remains byte-shape
-  compatible and migrates non-null speech to ordinary delivery.
+- canonical `CharacterIndependentTaskId`, exact non-wait examine/collect assignments, and copied
+  32-entry assignment snapshots;
+- closed assigned, active, completed, and cancelled lifecycle state with legal forward-only
+  transitions;
+- bounded activity snapshots with unique task identities and at most one active task per
+  value-equal character;
+- stable first-assigned task selection and exact contained-activity replacement;
+- exact active-task binding to existing authoritative physical-action world-event occurrences and
+  atomic task/event-log/world-time/transcript completion;
+- bounded ordered party membership, pure separation, and atomic task start plus same-character
+  departure.
 
-The completed roadmap item is distance-governed conversation scope, not a secrecy guarantee. This
-branch does not infer privacy or direct address from text; define explicit private addressee
-authorization; inspect visibility, occlusion, obstacles, acoustic materials, or eavesdropping;
-change the participation dialects; add independent tasks, party separation, off-screen simulation,
-sabotage, or Phase 8 work; invoke live providers; dispatch workflows; release; sign; or distribute.
+The slice does not source authored assignments; scene-own task or party state; drive tasks,
+movement, or off-screen time; infer world events; rejoin characters; add model/provider context;
+persist task or party state; invoke live providers; dispatch workflows; release; sign; or
+distribute.
 
 ## Validation and review
 
-- Focused Domain, Application, Infrastructure, persistence, provider-schema, transcript, save, and
-  response-flow checks were driven through failing compile/test states before implementation.
-- Exact delivery identity is retained across input/event/transcript and response/event/transcript;
-  recorder deduplication is by delivery identity rather than shared utterance identity.
-- Provider decoding rejects missing, duplicate, unknown, invalid, or speech/mode-mismatched fields.
-  Shared schemas expose only the two canonical modes, and the corrected developer instruction lists
-  every actual closed disposition value.
-- Version-4 round trips preserve whispered heard and response speech. Version 3 serialization omits
-  delivery metadata, and `DeserializeCurrent` reconstructs its historically implicit ordinary mode.
+- Every contract was driven through a focused failing compile state before implementation.
+- The complete focused independent-task and party suite passes host-local: 94 tests, zero failures.
+- Review tightened snapshot construction so two value-equal active tasks for one character are
+  rejected even when callers bypass the scheduler.
 - `./scripts/quality.sh` passes host-local: restore and formatting; zero-warning solution build;
-  2,118 Domain, 443 Application, 532 Infrastructure, and 8 architecture tests; all 5 scenario
+  2,212 Domain, 443 Application, 532 Infrastructure, and 8 architecture tests; all 5 scenario
   definitions; the complete headless Godot smoke matrix; and Compatibility-renderer launch.
-- Restricted VSTest reproduced the known localhost `SocketException (13)`, and restricted Godot
-  reproduced the known `user://logs` crash. Identical checks passed host-local.
-- No live-conformance environment variable was enabled, no provider was invoked, and no hosted
-  workflow was dispatched.
-- Draft PR #218 is open and mergeable. Hosted run `34730588562` completed with all five jobs at
-  `steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
-  unchanged.
+- Restricted VSTest reproduced the known localhost `SocketException (13)`; identical focused tests
+  passed host-local.
+- No live-conformance environment variable was enabled and no provider was invoked.
 
 ## Exact next bounded slice
 
-Take **Phase 7bk: bounded independent-task assignment contracts**.
+Take **Phase 7bs: scene-owned independent-task departure state**.
 
 Acceptance boundary:
 
-1. Define a canonical `CharacterIndependentTaskId` and an immutable provider-neutral
-   `CharacterIndependentTaskAssignment` that retains one exact task identifier, assigned
-   `CharacterId`, and exact non-wait `CharacterIntention`.
-2. Add a bounded immutable assignment snapshot that copies caller input, retains stable order and
-   exact instances, rejects nulls and value-equal duplicate task identifiers, and exposes only a
-   read-only collection.
-3. Add focused Domain tests for canonical identifier parsing, supported examine/collect intentions,
-   wait rejection, exact/value-equal identity behavior, bounds, mutation resistance, and closed
-   public surfaces.
-4. Do not yet add task lifecycle or outcomes, queues, scheduling, model context or provider output,
-   navigation, scene controllers, party membership or separation, persistence, or new intention
-   types.
+1. Add a focused Godot node controller that owns one exact
+   `CharacterIndependentTaskActivitySnapshot` and one exact `CharacterPartySnapshot`, with
+   one-time atomic initialization.
+2. Add one compare-and-swap-style `TryStartAndSeparate` operation. It must require the exact
+   expected current snapshots, delegate to `CharacterIndependentTaskDepartureTransition`, and
+   install both resulting snapshots plus the exact active activity only after full success.
+3. Add a credential-free Godot smoke proving stable first-task selection, same-character party
+   removal, stale-snapshot rejection, ineligible no-op behavior, and no partial installation.
+4. Do not yet author assignment sources; drive task occurrences, navigation, movement, or
+   off-screen simulation; rejoin a party member; change dialogue/model context; persist state; or
+   invoke a provider.

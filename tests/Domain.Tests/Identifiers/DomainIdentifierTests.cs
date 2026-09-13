@@ -18,6 +18,7 @@ public sealed class DomainIdentifierTests
         Assert.Equal(value, new KnowledgeId(value).Value);
         Assert.Equal(value, new WorldEventId(value).Value);
         Assert.Equal(value, new CharacterTurnId(value).Value);
+        Assert.Equal(value, new CharacterIndependentTaskId(value).Value);
         Assert.Equal(value, new EpisodicMemoryId(value).Value);
         Assert.Equal(value, new EpistemicMemoryId(value).Value);
         Assert.Equal(value, new RelationshipReasonId(value).Value);
@@ -54,6 +55,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentException>(() => new KnowledgeId(value));
         Assert.Throws<ArgumentException>(() => new WorldEventId(value));
         Assert.Throws<ArgumentException>(() => new CharacterTurnId(value));
+        Assert.Throws<ArgumentException>(() => new CharacterIndependentTaskId(value));
         Assert.Throws<ArgumentException>(() => new EpisodicMemoryId(value));
         Assert.Throws<ArgumentException>(() => new EpistemicMemoryId(value));
         Assert.Throws<ArgumentException>(() => new RelationshipReasonId(value));
@@ -80,6 +82,7 @@ public sealed class DomainIdentifierTests
         Assert.Throws<ArgumentNullException>(() => new KnowledgeId(null!));
         Assert.Throws<ArgumentNullException>(() => new WorldEventId(null!));
         Assert.Throws<ArgumentNullException>(() => new CharacterTurnId(null!));
+        Assert.Throws<ArgumentNullException>(() => new CharacterIndependentTaskId(null!));
         Assert.Throws<ArgumentNullException>(() => new EpisodicMemoryId(null!));
         Assert.Throws<ArgumentNullException>(() => new EpistemicMemoryId(null!));
         Assert.Throws<ArgumentNullException>(() => new RelationshipReasonId(null!));
@@ -120,6 +123,9 @@ public sealed class DomainIdentifierTests
         AssertRoundTrip(new KnowledgeId("stream-contamination"), KnowledgeId.Parse);
         AssertRoundTrip(new WorldEventId("patient-stabilized"), WorldEventId.Parse);
         AssertRoundTrip(new CharacterTurnId("healer-turn-2"), CharacterTurnId.Parse);
+        AssertRoundTrip(
+            new CharacterIndependentTaskId("examine-moonwort"),
+            CharacterIndependentTaskId.Parse);
         AssertRoundTrip(new EpisodicMemoryId("moonwort-warning"), EpisodicMemoryId.Parse);
         AssertRoundTrip(new EpistemicMemoryId("moonwort-cooling"), EpistemicMemoryId.Parse);
         AssertRoundTrip(new RelationshipReasonId("kept-promise"), RelationshipReasonId.Parse);
