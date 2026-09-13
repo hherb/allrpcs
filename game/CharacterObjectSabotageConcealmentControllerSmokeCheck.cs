@@ -11,7 +11,7 @@ namespace Allrpcs.Game;
 public partial class CharacterObjectSabotageConcealmentControllerSmokeCheck : Node
 {
     private static readonly string[] ExpectedMethodNames =
-        ["TryApply", "TryInitialize", "TryRecover"];
+        ["TryApply", "TryApplyFirstEligible", "TryInitialize", "TryRecover"];
 
     /// <inheritdoc />
     public override void _Ready()
@@ -20,6 +20,12 @@ public partial class CharacterObjectSabotageConcealmentControllerSmokeCheck : No
         ConcealmentInput input = CreateInput();
         WorldObjectConcealmentSnapshot concealment = new([input.RetainedObjectId]);
         DiscoveryEvidenceSnapshot evidence = new([input.RetainedEvidence]);
+
+        if (!AppliesFirstEligibleCandidateFromExactState(input, concealment, evidence))
+        {
+            Fail("Concealment controller failed exact first-eligible selection and application.");
+            return;
+        }
 
         if (!RejectsNullInitialization(controller, concealment, evidence)
             || !controller.TryInitialize(concealment, evidence)
@@ -90,11 +96,58 @@ public partial class CharacterObjectSabotageConcealmentControllerSmokeCheck : No
         }
 
         GD.Print(
-            "Concealment controller smoke passed: one-time scene ownership, exact CAS apply and "
-            + "recovery, stable unrelated entries, stale rejection, minimal surface, and atomic "
-            + "failure.");
+            "Concealment controller smoke passed: one-time scene ownership, exact CAS explicit "
+            + "and first-eligible apply, recovery, stable unrelated entries, stale rejection, "
+            + "minimal surface, and atomic failure.");
         controller.Free();
         GetTree().Quit();
+    }
+
+    private static bool AppliesFirstEligibleCandidateFromExactState(
+        ConcealmentInput input,
+        WorldObjectConcealmentSnapshot concealment,
+        DiscoveryEvidenceSnapshot evidence)
+    {
+        CharacterObjectSabotageConcealmentController controller = new();
+        WorldObject inaccessibleTarget = new(
+            new WorldObjectIdentity(new ObjectId("sealed-store-cask"), "Sealed store cask"),
+            new WorldObjectDescription("A cask beyond the enemy agent's physical access."));
+        CharacterObjectSabotageEvidence inaccessible = CreateCandidate(
+            input.Character,
+            inaccessibleTarget,
+            "sealed-store-cask-evidence");
+        WorldObjectSnapshot worldObjects = new([inaccessibleTarget, input.Target]);
+        WorldObjectConcealmentSnapshot staleConcealment = new(
+            concealment.ConcealedObjectIds);
+
+        bool initialized = controller.TryInitialize(concealment, evidence);
+        bool rejectedStale = !controller.TryApplyFirstEligible(
+            input.Character,
+            input.PhysicalAccess,
+            worldObjects,
+            staleConcealment,
+            evidence,
+            [inaccessible, input.Candidate]);
+        bool applied = controller.TryApplyFirstEligible(
+            input.Character,
+            input.PhysicalAccess,
+            worldObjects,
+            concealment,
+            evidence,
+            [inaccessible, input.Candidate]);
+        bool hasExpectedResult = controller.Concealment is { } appliedConcealment
+            && controller.Evidence is { } appliedEvidence
+            && ReferenceEquals(
+                appliedConcealment.ConcealedObjectIds[0],
+                input.RetainedObjectId)
+            && ReferenceEquals(
+                appliedConcealment.ConcealedObjectIds[1],
+                input.Target.Identity.Id)
+            && ReferenceEquals(appliedEvidence.Entries[0], input.RetainedEvidence)
+            && ReferenceEquals(appliedEvidence.Entries[1], input.Candidate.Evidence);
+
+        controller.Free();
+        return initialized && rejectedStale && applied && hasExpectedResult;
     }
 
     private static bool RejectsStaleApply(
@@ -265,6 +318,30 @@ public partial class CharacterObjectSabotageConcealmentControllerSmokeCheck : No
 
     private static T AssertSingle<T>(IReadOnlyList<T> values) =>
         values.Count == 1 ? values[0] : default!;
+
+    private static CharacterObjectSabotageEvidence CreateCandidate(
+        Character character,
+        WorldObject target,
+        string evidenceId)
+    {
+        CharacterObjectSabotageOccurrence occurrence = new(
+            new CharacterObjectSabotageProposal(
+                character.Identity.Id,
+                new CharacterActionAccessRequirement(
+                    target.Identity.Id,
+                    "assess-local-influence",
+                    character.Knowledge.KnowledgeReferences.Single()),
+                CharacterSabotageActionKind.Conceal),
+            target);
+
+        return new CharacterObjectSabotageEvidence(
+            occurrence,
+            new DiscoveryEvidence(
+                new EvidenceId(evidenceId),
+                target.Identity.Id,
+                VisibilityState.Noticed,
+                false));
+    }
 
     private static ConcealmentInput CreateInput()
     {

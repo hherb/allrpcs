@@ -413,6 +413,8 @@ Acceptance:
     world-object snapshot and initialize its empty state without applying it automatically.
   - [x] Bind the visible water cask to existing interaction focus and append one exact
     capability-gated investigation condition without selecting sabotage behavior or timing.
+  - [x] Select the exact first currently eligible concealment candidate from a fully validated
+    bounded caller collection in stable order without applying it.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
@@ -428,6 +430,10 @@ Acceptance:
     noticed exact evidence without changing its position or authoritative world object.
   - [x] Recover that concealment from ordinary focused-search resolution only for the exact water
     cask outcome, while unrelated resolved targets leave it concealed.
+  - [x] Compose first-eligible concealment selection and immutable application as one all-or-nothing
+    Domain result without choosing when it occurs.
+  - [x] Compare-and-swap that first-eligible result into scene-owned concealment and evidence state
+    without installing stale, absent, or partial results.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

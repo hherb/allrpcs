@@ -667,11 +667,15 @@ scene, persistence, or provider behavior.
 `WorldObjectConcealmentSnapshot` retains at most 64 value-unique exact object identifiers in stable
 order; absence means that an object is not concealed. `CharacterObjectSabotageConcealmentPolicy`
 accepts only a completely eligible evidence-bound `conceal` candidate whose target is not already
-concealed. Its immutable transition returns one fresh concealment snapshot containing the exact
-target identifier and the existing fresh evidence-transition result as one all-or-nothing value.
-It does not mutate the authoritative object or its position, remove any route, reveal or recover a
-concealed object, apply another sabotage kind, or add events, time, transcripts, scenes,
-persistence, or provider behavior.
+concealed. `CharacterObjectSabotageConcealmentSelection` fully materializes at most 64 caller-ordered
+candidates, rejects null entries and value-equal duplicate evidence identifiers, then returns the
+exact first candidate accepted by that complete policy or `null`. The immutable transition returns
+one fresh concealment snapshot containing the exact target identifier and the existing fresh
+evidence-transition result as one all-or-nothing value; the pure sequence composes selection and
+that transition, failing before a result when no candidate is eligible. These operations do not
+mutate the authoritative object or its position, remove any route, reveal or recover a concealed
+object, apply another sabotage kind, or add events, time, transcripts, scenes, persistence, or
+provider behavior.
 
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the
@@ -683,12 +687,14 @@ discovered the evidence, or add routes, scenes, persistence, or providers.
 
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
-and install both fresh apply results, or only the fresh recovered concealment while retaining the
-exact evidence snapshot. Stale, value-equal expected snapshots and ineligible operations fail
-without partial installation. `TemporaryCharacterObjectSabotageSource` retains the exact tail
-water-cask object and complete snapshot from the existing scene world-object source, then authors
-one exact enemy concealment candidate with explicit access and empty initial state. `Main.tscn`
-initializes that source, scene-owned state, and temporary flow without applying an effect.
+and install both fresh explicit or first-eligible apply results, or only the fresh recovered
+concealment while retaining the exact evidence snapshot. Stale, value-equal expected snapshots and
+ineligible operations fail without partial installation. First-eligible application does not choose
+when to run or retain a candidate schedule. `TemporaryCharacterObjectSabotageSource` retains the
+exact tail water-cask object and complete snapshot from the existing scene world-object source,
+then authors one exact enemy concealment candidate with explicit access and empty initial state.
+`Main.tscn` initializes that source, scene-owned state, and temporary flow without applying an
+effect.
 
 `CharacterObjectSabotageConcealmentPresentationController` projects exact immutable concealment
 state onto one retained scene body. Initialization and later presentation retain exact target and

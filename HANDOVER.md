@@ -2,65 +2,62 @@
 
 ## Current state
 
-`main` contains merged PR #228 at `bf9a6b5`. The current branch is
-`codex/phase-7-water-cask-focus` and advances three bounded Phase 7 slices:
+`main` contains merged PR #229 at `eeb71a3`. The current branch is
+`codex/phase-7-concealment-selection` and advances three bounded Phase 7 slices:
 
-- Phase 7df converts the existing visible water-cask body into the stable third eligible
-  `GreyboxInteractionTarget`; its independently parsed identifier is value-equal to the exact tail
-  scene world object, and explicit-position focus refresh presents that authoritative identity and
-  display name without moving the Seeker;
-- Phase 7dg appends one exact `inspect-water-sources` capability requirement and matching Seeker
-  capability for the water cask while retaining the existing herb capability, stone-marker tool,
-  authored order, and exact instances;
-- Phase 7dh routes only successful resolution of the exact water-cask focused-search outcome to the
-  existing evidence-gated concealment recovery flow. Resolving another target leaves the cask
-  concealed; exact cask resolution recovers and reveals it.
+- Phase 7di adds `CharacterObjectSabotageConcealmentSelection`, which fully materializes and
+  validates at most 64 ordered evidence-bound candidates, rejects null entries and value-equal
+  duplicate evidence identifiers, and returns the exact first candidate accepted by the existing
+  complete concealment policy or `null`;
+- Phase 7dj composes that selection with the existing immutable concealment transition as one pure
+  `CharacterObjectSabotageConcealmentSequence` result, failing before any result when no candidate
+  is eligible;
+- Phase 7dk exposes first-eligible selection and application through the existing scene-owned
+  concealment controller, preserving exact concealment/evidence compare-and-swap and installing no
+  stale, absent, or partial result.
 
-Sabotage still never occurs automatically. The new focused-search route does not select enemy
-behavior or timing, infer physical access from coordinates, move an actor or object, rewrite an
-authoritative world object, consume evidence, persist sabotage state, or invoke a provider.
+No slice selects when sabotage occurs. The temporary source and flow still expose and explicitly
+apply one authored candidate directly. This work does not add automatic or model-selected behavior,
+another sabotage kind, input/UI/events/time/transcripts/persistence, or provider activity.
 
-Draft PR #229 is open from implementation commit `14d65cd`. Hosted run `34783568840` completed
-with all five jobs at `steps: []`; it provides no product-test or unsigned-build evidence and should
-not be retried unchanged.
+Draft PR #230 is open from implementation commit `b7d6fe4`. Hosted run `34784744732` had all five
+jobs queued at the first live query; re-query the final PR head before treating that run as evidence.
 
 ## Validation and review
 
-- Each behavior slice began with an expected failing check: Phase 7df lacked the explicit-position
-  refresh seam, Phase 7dg lacked cask investigation context, and Phase 7dh left the cask
-  concealed after exact outcome resolution.
-- The game project builds with zero warnings and zero errors.
-- Focused host-local Godot checks pass for exact water-cask focus, appended investigation context,
-  the existing interaction-focus and world-object source contracts, and exact investigation-driven
-  recovery with unrelated-outcome rejection.
-- The restricted focused Godot run reproduced the known `user://logs` crash before project code;
-  the identical host-local check passes.
+- Each slice began with an expected compile failure for its absent contract or scene seam.
+- Focused host-local Domain tests pass: 22 concealment tests cover complete collection validation,
+  stable exact-instance selection, every required ineligible case, immutable sequence application,
+  null/duplicate/over-bound rejection, and unchanged inputs.
+- The focused host-local Godot controller smoke passes exact first-eligible selection after an
+  ineligible candidate, stale-state rejection, atomic state installation, and the existing explicit
+  apply/recovery behavior. The restricted run reproduced the known `user://logs` crash before
+  project code; the identical host-local command passes.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
-  build, 2,276 Domain tests, 478 Application tests, 532 Infrastructure tests, 8 architecture tests,
+  build, 2,286 Domain tests, 478 Application tests, 532 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
   graphical launch.
-- Authored changed C# files are within 120 characters per line; both new smoke files remain below
-  500 lines. No live-conformance environment variable was enabled and no provider was invoked.
-- Hosted run `34783568840` executed no job steps; its failures are Actions/account infrastructure
-  state, not product-test results.
+- All changed authored C# files are below 500 lines and use no lines longer than 120 characters.
+  `git diff --check` passes. No live-conformance switch was enabled and no provider was invoked.
 
 ## Exact next bounded slice
 
-Take **Phase 7di: select one exact currently eligible concealment candidate without applying it**.
+Take **Phase 7dl: route the authored temporary sabotage flow through one bounded candidate
+collection**.
 
 Acceptance boundary:
 
-1. Add one pure Domain selection operation over a caller-supplied bounded ordered collection of
-   `CharacterObjectSabotageEvidence` candidates plus the complete existing character, access,
-   world-object, concealment, and evidence snapshots.
-2. Materialize and validate the complete collection before selection: reject null inputs, null
-   entries, over-bound collections, and value-equal duplicate evidence identifiers without
-   mutating any input.
-3. Delegate eligibility to the existing complete concealment policy and return the exact first
-   eligible retained candidate in stable caller order, or `null` when none is eligible.
-4. Prove in focused Domain tests that inaccessible, incapable, unknown, missing-target,
-   already-concealed, stale-evidence, and non-conceal candidates are skipped; an earlier ineligible
-   candidate must not block a later eligible one.
-5. Do not apply or recover concealment, append evidence, mutate truth or perception, choose timing,
-   wire the scene, add input/UI/events/transcripts/persistence, construct model context, or invoke a
-   provider.
+1. Extend `TemporaryCharacterObjectSabotageSource` to retain one stable read-only candidate
+   collection bounded by `CharacterObjectSabotageConcealmentSelection.MaximumCandidateCount`; its
+   only entry must be the exact existing water-cask candidate without reconstructing it.
+2. Route the existing explicit `TemporaryCharacterObjectSabotageFlowController.TryApply()` through
+   `CharacterObjectSabotageConcealmentController.TryApplyFirstEligible` with that exact collection.
+3. Prove in the focused source, flow, presentation-flow, and main-scene smokes that initialization
+   still applies nothing automatically, the explicit call selects and installs the exact cask
+   candidate, repeat application fails closed, and recovery remains unchanged.
+4. Preserve `Candidate` while it is required by recovery/presentation seams; do not duplicate the
+   candidate, introduce another authored sabotage behavior, or broaden existing node surfaces
+   unnecessarily.
+5. Do not choose timing, trigger sabotage automatically, invoke a model, add input/UI/events/time/
+   transcripts/persistence, move an actor or object, infer physical access from coordinates, consume
+   evidence, or add non-conceal effects.
