@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3]
+[gd_scene load_steps=145 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -170,6 +170,7 @@
 [ext_resource type="Script" path="res://CharacterIndependentTaskRoundTripCoordinatorSmokeCheck.cs" id="168_independent_task_round_trip_check"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskStepClockController.cs" id="169_independent_task_step_clock_controller"]
 [ext_resource type="Script" path="res://CharacterIndependentTaskStepClockControllerSmokeCheck.cs" id="170_independent_task_step_clock_check"]
+[ext_resource type="Script" path="res://CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck.cs" id="171_independent_task_timed_round_trip_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -775,6 +776,9 @@ script = ExtResource("168_independent_task_round_trip_check")
 
 [node name="CharacterIndependentTaskStepClockControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("170_independent_task_step_clock_check")
+
+[node name="CharacterIndependentTaskTimedRoundTripCoordinatorSmokeCheck" type="Node" parent="."]
+script = ExtResource("171_independent_task_timed_round_trip_check")
 
 [node name="CharacterTurnParticipationRoundTaskControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("138_participation_round_task_check")

@@ -891,6 +891,13 @@ repeated, invalid-duration, and null input cannot change its clock. The controll
 Godot frame time, invoke the round-trip coordinator, or alter task, party, world, transcript, or
 body state.
 
+The round-trip coordinator can now compose one exact clock advance with the complete caller-supplied
+task, party, travel, world-event, time, and transcript snapshot. Sub-interval elapsed time changes
+only the immutable clock. When a step becomes due, the clock result installs only after the active
+outbound or return operation succeeds, so stale, invalid, failed, or repeated route input leaves the
+due interval unconsumed and every scene snapshot unchanged. This remains an explicit call boundary;
+`Main` does not initialize the cadence or process elapsed time.
+
 The pure Application `DialogueHearingSelector` accepts one exact speaker, a finite world position,
 a finite positive inclusive range, and at most 32 uniquely identified finite-position candidates.
 It excludes the speaker and returns every in-range listener in stable candidate order, retaining

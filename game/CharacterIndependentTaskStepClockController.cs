@@ -62,6 +62,27 @@ public partial class CharacterIndependentTaskStepClockController : Node
             return false;
         }
 
+        return TryInstallAdvance(expectedCadence, expectedClock, result);
+    }
+
+    /// <summary>Installs only an exact prevalidated clock advance from current scene state.</summary>
+    internal bool TryInstallAdvance(
+        CharacterIndependentTaskStepCadence expectedCadence,
+        CharacterIndependentTaskStepClock expectedClock,
+        CharacterIndependentTaskStepClockAdvanceResult result)
+    {
+        ArgumentNullException.ThrowIfNull(expectedCadence);
+        ArgumentNullException.ThrowIfNull(expectedClock);
+        ArgumentNullException.ThrowIfNull(result);
+
+        if (!ReferenceEquals(Cadence, expectedCadence)
+            || !ReferenceEquals(Clock, expectedClock)
+            || !ReferenceEquals(result.PreviousClock, expectedClock)
+            || !ReferenceEquals(result.Clock.Cadence, expectedCadence))
+        {
+            return false;
+        }
+
         Clock = result.Clock;
         LastAdvanceResult = result;
         return true;
