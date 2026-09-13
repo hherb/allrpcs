@@ -3,7 +3,8 @@
 ## Current state
 
 `main` contains merged PR #219 at `14c86ad`. The current branch is
-`codex/phase-7-independent-task-departure`.
+`codex/phase-7-independent-task-departure`. Draft PR #220 is open and mergeable with implementation
+commit `2628d59`.
 
 This branch completes Phase 7bs-7bu as one reviewed scene flow over the merged bounded
 independent-task Domain contracts:
@@ -39,6 +40,9 @@ state, or invoke a provider.
 - Restricted VSTest reproduced the known localhost `SocketException (13)`; the identical complete
   quality command passed host-local.
 - No live-conformance environment variable was enabled and no provider was invoked.
+- Draft PR #220 is open and mergeable. Hosted run `34740250447` completed with all five jobs at
+  `steps: []`; it provides no product-test or unsigned-build evidence and should not be retried
+  unchanged.
 
 ## Exact next bounded slice
 
