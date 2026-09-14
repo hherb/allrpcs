@@ -198,6 +198,9 @@
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMovePresentationFlowController.cs" id="196_object_sabotage_move_presentation_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMovePresentationFlowSmokeCheck.cs" id="197_object_sabotage_move_presentation_flow_check"]
 [ext_resource type="Script" path="res://WaterCaskMoveSabotageInvestigationFlowSmokeCheck.cs" id="198_water_cask_move_sabotage_investigation_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveModelSource.cs" id="199_object_sabotage_move_model_source"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageMoveTaskController.cs" id="200_object_sabotage_move_task_controller"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveConsiderationFlowController.cs" id="201_object_sabotage_move_consideration_flow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -557,6 +560,15 @@ script = ExtResource("178_object_sabotage_flow")
 
 [node name="TemporaryCharacterObjectSabotageMoveFlowController" type="Node" parent="."]
 script = ExtResource("194_object_sabotage_move_flow")
+
+[node name="TemporaryCharacterObjectSabotageMoveModelSource" type="Node" parent="."]
+script = ExtResource("199_object_sabotage_move_model_source")
+
+[node name="CharacterObjectSabotageMoveTaskController" type="Node" parent="."]
+script = ExtResource("200_object_sabotage_move_task_controller")
+
+[node name="TemporaryCharacterObjectSabotageMoveConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("201_object_sabotage_move_consideration_flow")
 
 [node name="TemporaryCharacterObjectSabotageMovePresentationFlowController" type="Node" parent="."]
 script = ExtResource("196_object_sabotage_move_presentation_flow")

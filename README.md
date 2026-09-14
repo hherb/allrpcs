@@ -885,8 +885,16 @@ snapshots: selection installs both fresh result snapshots atomically, while abst
 exact request and retains both scene instances. A bounded scene task obtains one decision with
 caller cancellation, installs only a non-stale accepted result on the main thread, and exposes
 closed idle, running, completed, cancelled, and failed states plus terminal reset. These seams do
-not recover a move, choose timing, construct or supply a model, add ordinary-flow scene wiring, or
-invoke a provider by themselves.
+not recover a move, choose timing, construct a provider model, or invoke a provider by themselves.
+The temporary scene model source retains at most one exact caller-supplied move model for the next
+decision and otherwise returns one stable fail-closed offline model. One explicit flow composes the
+authored enemy, access, world, exact current placement and evidence snapshots, and move candidate,
+then starts the bounded task with the next model only while that task is idle. Overlap rejection
+does not consume a newly queued model. `Main.tscn` wires the source, task, and explicit flow after
+the existing move state initialization; ordinary startup remains inert with the offline model,
+idle task, source placement, and empty evidence. These scene seams add no configured binding,
+request serialization, provider adapter or invocation, automatic timing, recovery or presentation,
+persistence, input, UI, event, time, transcript, navigation, or actor-movement behavior.
 
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
