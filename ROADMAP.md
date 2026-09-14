@@ -477,6 +477,12 @@ Acceptance:
 - [ ] Test characters with mutually incompatible beliefs and goals.
   - [x] Author one immutable representative sage/enemy-agent fixture with explicit incompatible
     beliefs, goals, and rationale, without inferring conflict or adding runtime behavior.
+  - [x] Project that declaration into two exact per-character perspectives in stable authored order
+    without evaluating either position or mutating character state.
+  - [x] Define closed provider-neutral maintain, reconsider-belief, reconsider-goal, and
+    seek-reconciliation response kinds without selecting or applying one.
+  - [x] Bind one exact perspective and canonical response kind to a bounded explicit explanation
+    without changing either character's belief, goal, or allegiance.
 
 Acceptance:
 

@@ -627,6 +627,21 @@ roles' exact knowledge, capabilities, limitations, and public/private background
 does not resolve the conflict, change allegiance, schedule behavior, call a provider, or add scene,
 persistence, input, UI, event, time, transcript, movement, or sabotage mechanics.
 
+`CharacterBeliefGoalIncompatibilityPerspective` orients that declaration from either exact retained
+character to the other, carrying both sides' exact declared beliefs and goals without inferring a
+side from value-equal character state, authored prose, or keys. Its pure projection returns exactly
+the first-character and second-character perspectives in stable declaration order as a read-only
+collection. It does not evaluate either position, choose a response, resolve the conflict, mutate a
+character, or add scheduling, dialogue, sabotage, provider, Application, Infrastructure, scene,
+persistence, input, UI, event, time, transcript, or movement behavior.
+
+`CharacterBeliefGoalIncompatibilityResponseKind` closes provider-neutral responses to maintaining
+the subject position, reconsidering its belief, reconsidering its goal, or seeking reconciliation.
+`CharacterBeliefGoalIncompatibilityResponse` binds one exact perspective and canonical kind to a
+non-blank explanation of at most 500 UTF-16 code units. These values make an explicit response
+representable but do not select one, judge either character, alter a belief or goal, change
+allegiance, produce dialogue, call a provider, or apply any runtime state change.
+
 `CharacterPhysicalAccessSnapshot` explicitly retains one exact character identifier and at most 64
 stable copied, value-unique world-object identifiers that authoritative caller state says are
 physically accessible. Its pure lookup requires value-matching character and object identifiers.
