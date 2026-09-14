@@ -642,6 +642,32 @@ non-blank explanation of at most 500 UTF-16 code units. These values make an exp
 representable but do not select one, judge either character, alter a belief or goal, change
 allegiance, produce dialogue, call a provider, or apply any runtime state change.
 
+`CharacterBeliefGoalIncompatibilityResponseRound` retains exactly the two declaration-ordered exact
+perspectives and one exact response for each perspective. It copies both caller collections, rejects
+incomplete, duplicate, reversed, cross-declaration, value-equal replacement, or otherwise
+non-exactly aligned entries, and exposes only read-only collections. A complete round does not judge
+or select responses, mutate either character, resolve the incompatibility, or authorize any runtime
+behavior.
+
+`CharacterBeliefGoalIncompatibilityConsiderationRequest` retains one exact perspective as a
+provider-neutral request for an explicit response. It preserves every nested declaration reference
+without copying character state and grants no provider, scheduling, selection, application, or
+mutation authority.
+
+`CharacterBeliefGoalIncompatibilityResponsePolicy` accepts a response only when it retains the
+request's exact perspective instance. Other subjects, independently composed fixtures, and distinct
+value-equal replacement perspectives fail closed. The pure policy does not judge the response kind
+or explanation, choose a response, or change either character.
+
+`CharacterBeliefGoalIncompatibilityConsiderationResult` binds one exact request to one response only
+after that exact-perspective policy accepts it. The immutable result adds no response judgment,
+round orchestration, model invocation, state transition, or runtime authority.
+
+`ICharacterBeliefGoalIncompatibilityResponseModel` defines one provider-neutral asynchronous method
+for obtaining a response to an exact consideration request while observing caller cancellation. It
+defines no implementation, provider binding, retry, timeout, orchestration, scene, or response
+application behavior.
+
 `CharacterPhysicalAccessSnapshot` explicitly retains one exact character identifier and at most 64
 stable copied, value-unique world-object identifiers that authoritative caller state says are
 physically accessible. Its pure lookup requires value-matching character and object identifiers.
