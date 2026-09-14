@@ -485,6 +485,14 @@ Acceptance:
     consuming evidence or changing unrelated placements.
   - [x] Scene-own exact move placements and evidence and compare-and-swap eligible apply and
     recovery results without installing stale, absent, or partial state.
+  - [x] Author one exact temporary enemy move candidate and aligned recovery from the existing tail
+    water cask, explicit locations, complete current authority, and empty evidence without applying it.
+  - [x] Initialize that exact authored move in isolated scene-owned state, then apply it only on an
+    explicit request and recover it only through noticed exact evidence without consuming evidence.
+  - [x] Compose that source, scene-owned state, and explicit flow in the main scene while retaining
+    exact empty initial state and applying no move automatically.
+  - [x] Project one exact target's source and destination placements onto explicit authored scene
+    coordinates with stale-safe presentation and no path, timing, or occurrence authority.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

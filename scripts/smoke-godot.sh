@@ -63,6 +63,7 @@ ALLRPCS_INDEPENDENT_TASK_TIMED_ROUND_TRIP_COORDINATOR_CHECK=1 godot --headless -
 ALLRPCS_INDEPENDENT_TASK_LIVE_ROUND_TRIP_FLOW_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_INDEPENDENT_TASK_BODY_PRESENTATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_MAIN_SCENE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OBJECT_SABOTAGE_MOVE_MAIN_SCENE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OBJECT_SABOTAGE_MODEL_PRESENTATION_MAIN_SCENE_CHECK=1 \
@@ -75,6 +76,12 @@ godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageMoveControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterObjectSabotageMoveSourceSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterObjectSabotageMoveFlowSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterObjectSabotageMovePresentationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentConsiderationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
