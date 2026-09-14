@@ -2,59 +2,60 @@
 
 ## Current state
 
-`main` contains merged PR #232 at `038476a`. The current branch is
-`codex/phase-7-sabotage-scene-resolution` and advances five bounded Phase 7 slices:
+`main` contains merged PR #233 at `710f1ff`. The current branch is
+`codex/phase-7-sabotage-provider-flow` and advances four bounded Phase 7 slices:
 
-- Phase 7dt resolves one exact accepted concealment consideration result against scene-owned
-  snapshots, atomically installing selection output while exact abstention retains both instances;
-- Phase 7du owns one cancellation-aware decision task through closed terminal states and resolves
-  only a non-stale accepted result on the Godot main thread;
-- Phase 7dv supplies one exact one-shot decision model or one stable fail-closed offline model;
-- Phase 7dw explicitly composes the authored enemy/access/world/current-state/candidate request and
-  starts that task without selecting timing; and
-- Phase 7dx wires the model source, task, and explicit flow into `Main.tscn` after sabotage-state
-  initialization while startup remains inert.
+- Phase 7dy strictly decodes one complete concealment decision JSON document against its exact
+  consideration request, resolving valid parsed identifier text to request-owned instances before
+  delegating the existing exact acceptance policy;
+- Phase 7dz serializes only relevant authored character context and its exact eligible candidates
+  into one stateless strict-schema OpenAI Responses request;
+- Phase 7ea completes one bounded OpenAI Responses SSE lifecycle without exposing a partial
+  decision or retaining provider text and identifiers; and
+- Phase 7eb exposes one caller-composed authenticated OpenAI adapter behind the existing
+  provider-neutral concealment-decision interface.
 
-No real provider is composed or invoked. Nothing starts sabotage automatically, chooses timing,
-decodes or serializes provider data, persists concealment, or adds UI/input/events/time/transcripts,
-movement, or another sabotage effect.
+No model binding or scene composition was added. Construction performs no credential or network
+input/output. Nothing invokes a provider at startup, starts sabotage automatically, chooses timing,
+persists concealment, adds UI/input/events/time/transcripts/movement, or adds another sabotage
+effect.
 
-Draft PR #233 is open from implementation commit `9209fd1`. Hosted run `34790368095` completed
+Draft PR #234 is open from implementation commit `1de6f05`. Hosted run `34794615126` completed
 with all five jobs at `steps: []`; it is Actions/account infrastructure state, not product-test or
 unsigned-build evidence, and should not be retried unchanged.
 
 ## Validation and review
 
-- Every slice began with the expected failure for its absent operation, type, or scene node.
-- Focused host-local Godot smokes pass exact selection and abstention resolution, stale/null/repeated
-  rejection, closed task lifecycle, cancellation, safe failure, one-shot/offline model selection,
-  exact request composition, overlap preservation, real-main-scene wiring, inert startup, unchanged
-  source/surrounding state, and all-or-nothing main-thread installation.
+- Every slice began with the expected compile failure for its absent public operation or type.
+- Focused Infrastructure tests pass strict selection and abstention decoding, distinct parsed-ID
+  resolution, complete shape/value/depth/length rejection, bounded trusted-context and exact-schema
+  serialization, complete SSE framing and terminal-state rules, authenticated request construction,
+  exact custom endpoints, cancellation, redaction, and transport/content-type failures.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
-  build, 2,306 Domain tests, 484 Application tests, 532 Infrastructure tests, 8 architecture tests,
+  build, 2,306 Domain tests, 484 Application tests, 602 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
   graphical launch.
-- All changed authored C# files are below 500 lines and use no lines longer than 120 characters.
-  No live-conformance switch was enabled and no provider was invoked.
-- Hosted run `34790368095` executed no job steps; host-local quality is the current product evidence.
+- All changed authored C# files are below 500 lines with no lines longer than 120 characters. No
+  live-conformance switch was enabled and no provider was invoked.
+- Hosted run `34794615126` executed no job steps; host-local quality is the current product
+  evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7dy: strictly decode one concealment decision JSON document for an exact request**.
+Take **Phase 7ec: bind one exact OpenAI concealment model through canonical provider settings**.
 
 Acceptance boundary:
 
-1. Add one Infrastructure deserializer accepting the exact
-   `CharacterObjectSabotageConcealmentConsiderationRequest` and one complete JSON document.
-2. Require exactly `characterId` and nullable `selectedEvidenceId`, reject duplicate, missing,
-   unknown, non-string, malformed, trailing, over-depth, and over-length input, and preserve
-   identifier text exactly through existing parsers.
-3. Materialize a provider-neutral `CharacterObjectSabotageConcealmentDecision` and delegate the
-   existing exact-request acceptance policy before returning it; invalid selection and character
-   identifiers must fail as one bounded invalid-response argument error.
-4. Prove accepted exact selection and abstention, distinct value-equal identifier materialization,
-   complete rejection coverage, unchanged request state, and the smallest static public surface in
-   focused Infrastructure tests.
-5. Do not add SSE accumulation, request serialization, an HTTP adapter, provider/model bindings,
-   scene composition, timing/automatic triggers, persistence, UI/events/time/transcripts, movement,
-   or another sabotage effect.
+1. Add one Application binding that retains the exact `CharacterModelSettings` and exact
+   `ICharacterObjectSabotageConcealmentDecisionModel`, requiring the OpenAI provider and rejecting
+   nulls.
+2. Add one Infrastructure factory accepting caller-owned `HttpClient`, `IOpenAiCredentialSource`,
+   exact OpenAI settings, and an optional validated `OpenAiEndpoint`, returning that exact binding
+   around `OpenAiCharacterObjectSabotageConcealmentModel` without credential, network, discovery,
+   or scene input/output during construction.
+3. Prove exact settings retention, default and custom endpoints on later explicit invocation,
+   wrong-provider/null rejection before construction, no credential load or HTTP send during
+   construction, and the smallest static public factory surface.
+4. Do not add settings selection, scene composition or replacement, startup invocation, timing or
+   automatic triggers, persistence, UI/events/time/transcripts, movement, another provider, or
+   another sabotage effect.

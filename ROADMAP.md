@@ -436,6 +436,10 @@ Acceptance:
   - [x] Compose one explicit authored concealment consideration from exact current scene state
     without selecting when it starts.
   - [x] Wire that explicit consideration flow into the main scene while keeping startup inert.
+  - [x] Strictly decode one exact concealment decision JSON document against its current request.
+  - [x] Serialize one bounded strict OpenAI Responses concealment-decision request.
+  - [x] Complete one strict bounded OpenAI Responses concealment-decision SSE stream.
+  - [x] Expose one caller-composed authenticated OpenAI concealment-decision adapter.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh

@@ -698,8 +698,13 @@ for the next decision only, then resumes one stable fail-closed offline model. T
 temporary consideration flow composes the authored enemy, access, world objects, current scene
 snapshots, and stable candidate collection only when asked, then delegates to that task. `Main.tscn`
 wires these nodes after exact sabotage-state initialization but does not start them automatically.
-These contracts do not decide timing, decode or serialize a choice, schedule work automatically,
-persist data, compose a provider binding, or invoke a provider.
+Infrastructure strictly decodes a complete selection-or-abstention document against that exact
+request, serializes only relevant authored character context and its eligible candidates into one
+stateless strict OpenAI Responses request, completes only a bounded valid SSE lifecycle, and exposes
+one caller-composed authenticated adapter behind the provider-neutral decision interface. Adapter
+construction performs no credential or network input/output. These contracts do not decide timing,
+schedule work automatically, persist data, compose a settings-selected provider binding, invoke a
+provider during scene startup, or authorize another sabotage effect.
 
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the
