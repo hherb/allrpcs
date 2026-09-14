@@ -19,6 +19,10 @@ duration, timing, or scene coordinates; move an actor or Godot body; change an a
 object; consume evidence; select sabotage behavior; or add main-scene wiring, persistence, input,
 UI, event, time, transcript, navigation, provider, model, or presentation behavior.
 
+Draft PR #243 is open from implementation commit `dd250cf`. Hosted run `34840402983` failed all
+five jobs immediately with `steps: []`; this is Actions/account infrastructure state, not product-
+test or unsigned-build evidence, and the unchanged run must not be retried.
+
 ## Validation and review
 
 - Tests began with the expected missing-type compile failures for the candidate, policy, transition,
