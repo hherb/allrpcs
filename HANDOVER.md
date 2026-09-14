@@ -33,6 +33,9 @@ models, persistence, input, UI, events, time, transcripts, navigation, or actor 
   `git diff --check` passes, and manual review found no unresolved findings.
 - Sandboxed MSBuild/VSTest was blocked or stalled on local IPC; each identical host-local focused
   command passed. Product code was not changed to work around the sandbox.
+- Implementation commit `6f5e8e9` is published in mergeable draft PR #246. Initial hosted run
+  `34849735322` failed before execution with `steps: []` for all five jobs; this is Actions/account
+  infrastructure state, not product-test evidence, and the unchanged run was not retried.
 - Unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Exact next bounded slice
