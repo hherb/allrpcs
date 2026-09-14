@@ -20,6 +20,10 @@ resolve the incompatibility, change belief, goal, relationship, or allegiance st
 Infrastructure, scene, persistence, input, UI, dialogue, event, time, transcript, movement, or
 sabotage-effect behavior.
 
+Draft PR #241 is open from implementation commit `810653d`. Hosted run `34833490054` failed all
+five jobs immediately with `steps: []`; this is Actions/account infrastructure state, not product-
+test or unsigned-build evidence, and the unchanged run must not be retried.
+
 ## Validation and review
 
 - Tests began with the expected missing-controller and missing-overload compile failures.
