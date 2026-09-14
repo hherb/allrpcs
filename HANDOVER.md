@@ -17,6 +17,10 @@ invocation was added. Nothing chooses sabotage timing, starts a decision automat
 presents a model-selected move, persists sabotage, or adds input, UI, events, time, transcripts,
 navigation, or actor movement.
 
+Implementation commit `3fedb1a` is published in mergeable draft PR #248. Initial hosted run
+`34860416372` failed before execution with `steps: []` for all five jobs; this is Actions/account
+infrastructure state, not product-test evidence, and the unchanged run was not retried.
+
 ## Validation and review
 
 - The first focused build failed as expected because the new move-model source did not exist.
@@ -33,6 +37,7 @@ navigation, or actor movement.
   `git diff --cached --check` passes, and manual review found no unresolved findings.
 - The first sandboxed focused Godot smoke was blocked by its `user://logs` crash; the identical
   host-local smoke passed. Product code was not changed to work around the sandbox.
+- Hosted run `34860416372` executed no job steps; host-local quality is the product evidence.
 - Unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Exact next bounded slice
