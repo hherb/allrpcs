@@ -23,6 +23,11 @@ state, apply a response, resolve the incompatibility, implement or call a model,
 policy, schedule dialogue or sabotage, or add Infrastructure, scene, persistence, input, UI, event,
 time, transcript, movement, or sabotage-effect behavior.
 
+Draft PR #240 is open from implementation commit `8a85c4a`. Hosted run `34809723070` exposed
+`steps: []` for all five jobs; four failed immediately and the pure-C# job remained queued without
+steps at the final pre-documentation query. This is Actions/account infrastructure state, not
+product-test or unsigned-build evidence, and should not be retried unchanged.
+
 ## Validation and review
 
 - Tests began with the expected missing-type compile failures for every slice. Focused host-local
