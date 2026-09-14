@@ -469,6 +469,14 @@ Acceptance:
     Domain result without choosing when it occurs.
   - [x] Compare-and-swap that first-eligible result into scene-owned concealment and evidence state
     without installing stale, absent, or partial results.
+  - [x] Bind one exact move-sabotage occurrence to one exact authored destination without applying
+    it or inferring scene movement.
+  - [x] Retain bounded exact authoritative world-object placements in stable order without deriving
+    positions, paths, or reachability.
+  - [x] Bind one exact move destination and discoverable evidence only when both retain the same
+    exact occurrence.
+  - [x] Apply one eligible exact move as a target-only placement replacement together with its exact
+    fresh evidence, without moving an actor or changing the authoritative world object.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
