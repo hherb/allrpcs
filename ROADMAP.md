@@ -483,6 +483,16 @@ Acceptance:
     seek-reconciliation response kinds without selecting or applying one.
   - [x] Bind one exact perspective and canonical response kind to a bounded explicit explanation
     without changing either character's belief, goal, or allegiance.
+  - [x] Retain one complete exact two-character response round in stable declaration order without
+    judging or applying either response.
+  - [x] Request one provider-neutral response consideration for one exact incompatibility
+    perspective without selecting or applying a response.
+  - [x] Accept an incompatibility response only for its exact consideration perspective without
+    judging or applying the response.
+  - [x] Bind one accepted incompatibility response to its exact consideration request without
+    applying it or changing character state.
+  - [x] Define one provider-neutral cancellation-aware incompatibility-response interface without
+    implementing or invoking a model.
 
 Acceptance:
 
