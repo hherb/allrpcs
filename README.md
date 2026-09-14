@@ -616,6 +616,17 @@ civilian-safety goals plus one authored belief make changed allegiance represent
 implementing an allegiance transition. These values grant no action authority and add no
 sabotage, scheduling, provider, scene, or persistence mechanics.
 
+`CharacterBeliefGoalIncompatibility` explicitly binds two value-distinct exact characters to one
+exact belief and goal retained by each character, together with a non-blank rationale of at most 500
+UTF-16 code units. It rejects value-equal character identities and value-equal replacement beliefs
+or goals instead of inferring conflict from authored prose or keys. The pure
+`RepresentativeSageEnemyAgentIncompatibilitySource` creates one fresh fixture whose sage favors
+timely evidence-led recovery while the enemy agent favors a limited politically useful delay. It
+extends only the fresh fixture characters' belief and goal sets, retaining the representative
+roles' exact knowledge, capabilities, limitations, and public/private backgrounds. The declaration
+does not resolve the conflict, change allegiance, schedule behavior, call a provider, or add scene,
+persistence, input, UI, event, time, transcript, movement, or sabotage mechanics.
+
 `CharacterPhysicalAccessSnapshot` explicitly retains one exact character identifier and at most 64
 stable copied, value-unique world-object identifiers that authoritative caller state says are
 physically accessible. Its pure lookup requires value-matching character and object identifiers.

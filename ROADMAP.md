@@ -475,6 +475,8 @@ Acceptance:
   - [x] Append that exact evidence to a fresh stable snapshot only after complete occurrence and
     evidence eligibility succeeds.
 - [ ] Test characters with mutually incompatible beliefs and goals.
+  - [x] Author one immutable representative sage/enemy-agent fixture with explicit incompatible
+    beliefs, goals, and rationale, without inferring conflict or adding runtime behavior.
 
 Acceptance:
 
