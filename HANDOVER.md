@@ -21,6 +21,10 @@ world object; apply a value-equal replacement; recover the move; select sabotage
 Application, Infrastructure, scene, persistence, input, UI, event, time, transcript, navigation,
 provider, model, or presentation behavior.
 
+Draft PR #242 is open from implementation commit `223c5ca`. Hosted run `34835684130` failed all
+five jobs immediately with `steps: []`; this is Actions/account infrastructure state, not product-
+test or unsigned-build evidence, and the unchanged run must not be retried.
+
 ## Validation and review
 
 - Tests began with the expected missing-type compile failures for each slice.
