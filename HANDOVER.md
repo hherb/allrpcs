@@ -10,6 +10,9 @@
   seam. `Main.tscn` wires it after the exact state, task, and presentation nodes, and an explicitly
   started selected result hides only the water-cask body.
 
+Draft PR #236 is open from implementation commit `c5b5d12`. Hosted run `34796908911` was queued
+when last observed; re-query its final state rather than assuming it executed product checks.
+
 Accepted abstention, idle, running, cancelled, failed, stale-presentation, repeated, and null-result
 states do not change presentation or task state. Startup remains inert. Nothing chooses timing,
 starts a model or sabotage automatically, resets a completed task, persists sabotage, adds
