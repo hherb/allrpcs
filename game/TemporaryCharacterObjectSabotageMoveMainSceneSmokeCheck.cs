@@ -1,3 +1,4 @@
+using Allrpcs.Application.Characters;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.WorldObjects;
@@ -37,8 +38,18 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
         TemporaryCharacterObjectSabotageMoveFlowController flow =
             GetNode<TemporaryCharacterObjectSabotageMoveFlowController>(
                 "../TemporaryCharacterObjectSabotageMoveFlowController");
+        TemporaryCharacterObjectSabotageMoveModelSource modelSource =
+            GetNode<TemporaryCharacterObjectSabotageMoveModelSource>(
+                "../TemporaryCharacterObjectSabotageMoveModelSource");
+        CharacterObjectSabotageMoveTaskController task =
+            GetNode<CharacterObjectSabotageMoveTaskController>(
+                "../CharacterObjectSabotageMoveTaskController");
+        TemporaryCharacterObjectSabotageMoveConsiderationFlowController considerationFlow =
+            GetNode<TemporaryCharacterObjectSabotageMoveConsiderationFlowController>(
+                "../TemporaryCharacterObjectSabotageMoveConsiderationFlowController");
         WorldObject target = worldSource.WorldObjects.Entries[^1];
         WorldObjectPlacement placement = source.Placements.Entries.Single();
+        ICharacterObjectSabotageMoveDecisionModel offline = modelSource.TakeModel();
 
         if (!ReferenceEquals(source.WorldObjects, worldSource.WorldObjects)
             || worldSource.WorldObjects.Entries.Count != 3
@@ -59,7 +70,11 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
                 state.Placements,
                 state.Evidence,
                 source.Candidate)
-            || !HasExpectedFlowSurface(flow))
+            || task.Status != CharacterObjectSabotageMoveTaskStatus.Idle
+            || task.Result is not null
+            || !ReferenceEquals(modelSource.TakeModel(), offline)
+            || !HasExpectedFlowSurface(flow)
+            || !HasExpectedConsiderationFlowSurface(considerationFlow))
         {
             Fail("The main scene did not retain one exact inert eligible move candidate.");
             return;
@@ -67,8 +82,8 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
 
         GD.Print(
             "Temporary move sabotage main-scene smoke passed: exact tail water-cask source, "
-            + "eligible move and aligned recovery, exact empty scene-owned state, and no "
-            + "automatic effect.");
+            + "eligible move and aligned recovery, exact empty scene-owned state, stable offline "
+            + "decision source, idle task, explicit consideration flow, and no automatic effect.");
         GetTree().Quit();
     }
 
@@ -82,6 +97,17 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .SequenceEqual(["TryApply", "TryRecover", "_Ready"]);
+
+    private static bool HasExpectedConsiderationFlowSurface(
+        TemporaryCharacterObjectSabotageMoveConsiderationFlowController flow) =>
+        flow.GetType().GetMethods(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly)
+            .Where(method => !method.IsSpecialName)
+            .Select(method => method.Name)
+            .Order(StringComparer.Ordinal)
+            .SequenceEqual(["TryStart", "_Ready"]);
 
     private void Fail(string message)
     {

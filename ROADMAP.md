@@ -512,6 +512,11 @@ Acceptance:
     atomically installing selection output while retaining exact state for abstention.
   - [x] Own one bounded move-decision task through closed scene terminal states and resolve only its
     exact non-stale accepted result on the main thread.
+  - [x] Supply one exact one-shot move-decision model with stable fail-closed offline behavior.
+  - [x] Compose and explicitly start one authored move consideration from exact current scene state
+    without selecting timing or consuming an overlapping queued model.
+  - [x] Wire that model source, task, and explicit consideration flow into the main scene while
+    preserving inert startup and the exact initial move state.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
