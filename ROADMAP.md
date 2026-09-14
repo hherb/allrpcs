@@ -493,6 +493,12 @@ Acceptance:
     exact empty initial state and applying no move automatically.
   - [x] Project one exact target's source and destination placements onto explicit authored scene
     coordinates with stale-safe presentation and no path, timing, or occurrence authority.
+  - [x] Explicitly move and restore the main-scene water cask at exact authored coordinates only
+    through current scene-owned placement state and noticed exact evidence.
+  - [x] Recover that moved placement from ordinary focused-search resolution only for the exact
+    water-cask outcome, while unrelated resolved targets leave it at the authored destination.
+  - [x] Retain one immutable provider-neutral move consideration request with exact current
+    authority snapshots and a fully validated bounded exact candidate collection.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

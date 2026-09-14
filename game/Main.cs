@@ -61,6 +61,9 @@ public partial class Main : Node
     private TemporaryCharacterObjectSabotageSource objectSabotageSource = null!;
     private TemporaryCharacterObjectSabotagePresentationFlowController
         objectSabotagePresentationFlow = null!;
+    private TemporaryCharacterObjectSabotageMoveSource objectSabotageMoveSource = null!;
+    private TemporaryCharacterObjectSabotageMovePresentationFlowController
+        objectSabotageMovePresentationFlow = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -144,6 +147,11 @@ public partial class Main : Node
         objectSabotagePresentationFlow =
             GetNode<TemporaryCharacterObjectSabotagePresentationFlowController>(
                 "TemporaryCharacterObjectSabotagePresentationFlowController");
+        objectSabotageMoveSource = GetNode<TemporaryCharacterObjectSabotageMoveSource>(
+            "TemporaryCharacterObjectSabotageMoveSource");
+        objectSabotageMovePresentationFlow =
+            GetNode<TemporaryCharacterObjectSabotageMovePresentationFlowController>(
+                "TemporaryCharacterObjectSabotageMovePresentationFlowController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -786,7 +794,7 @@ public partial class Main : Node
             if (changed)
             {
                 RefreshResolvedPerceptionPresentation();
-                TryRecoverObjectSabotageForResolvedOutcome(outcome!);
+                TryRecoverObjectSabotagesForResolvedOutcome(outcome!);
             }
 
             PresentFocusedSearchResult("RESOLVE", changed);
@@ -904,12 +912,22 @@ public partial class Main : Node
         }
     }
 
-    private void TryRecoverObjectSabotageForResolvedOutcome(FocusedSearchOutcome outcome)
+    private void TryRecoverObjectSabotagesForResolvedOutcome(FocusedSearchOutcome outcome)
     {
-        if (outcome.Request.TargetObjectId == objectSabotageSource.Candidate.Evidence.ObjectId
-            && focusedSearchController.Perception is { } perception)
+        if (focusedSearchController.Perception is not { } perception)
+        {
+            return;
+        }
+
+        if (outcome.Request.TargetObjectId == objectSabotageSource.Candidate.Evidence.ObjectId)
         {
             _ = objectSabotagePresentationFlow.TryRecover(perception);
+        }
+
+        if (outcome.Request.TargetObjectId
+            == objectSabotageMoveSource.Candidate.Evidence.Evidence.ObjectId)
+        {
+            _ = objectSabotageMovePresentationFlow.TryRecover(perception);
         }
     }
 
