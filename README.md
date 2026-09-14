@@ -812,6 +812,17 @@ view. The immutable transition restores the exact retained source placement at t
 index while preserving unrelated placements and all evidence. It does not infer where the object
 was, consume evidence, mutate an authoritative object or perception, or move a scene body.
 
+`CharacterObjectSabotageSubstitution` binds one exact `substitute` occurrence to one exact authored
+replacement with a distinct object identifier. A candidate requires that substitution and its
+discoverable evidence to retain the same exact occurrence. Bounded substitution snapshots retain at
+most 64 exact entries in stable order and reject value-duplicate target identifiers. The pure policy
+delegates complete occurrence and fresh-evidence eligibility and rejects a target already present in
+the substitution overlay. Its immutable transition appends the exact substitution and evidence as
+one all-or-nothing result while leaving the authoritative world-object snapshot and both source
+objects unchanged. These contracts do not infer inventory, placement, similarity, plausibility,
+reachability, critical-route safety, or replacement eligibility; recover or present a substitution;
+or add scene, persistence, input, UI, event, time, transcript, navigation, or provider behavior.
+
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
 snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the
 fresh recovered placements while retaining the exact evidence snapshot. Stale, value-equal expected

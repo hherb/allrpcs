@@ -2,45 +2,34 @@
 
 ## Current state
 
-`main` contains merged PR #249 at `1f9ae68`. The current branch is
-`codex/phase-7-move-model-binding` and advances five bounded Phase 7 slices:
+`main` contains merged PR #250 at `278da6c`. The current branch is
+`codex/phase-7-substitute-sabotage` and advances four bounded Phase 7 Domain slices:
 
-- Phase 7fx binds one exact OpenAI move-decision model to its canonical
-  `CharacterModelSettings` and composes it through a caller-owned factory with default or custom
-  validated endpoints;
-- Phase 7fy extends the move-model source with exact configured-binding initialization,
-  compare-and-swap replacement and clearing, preserved one-shot precedence, and stable fail-closed
-  offline fallback;
-- Phase 7fz composes, replaces, and clears that move binding through the existing selected-model
-  settings flow: OpenAI activates it, an OpenAI setting change replaces it, and Ollama clears it;
-- Phase 7ga observes each fresh exact completed move-decision result at most once and presents only
-  a selected result through the existing stale-safe placement seam; and
-- Phase 7gb explicitly acknowledges only an already-observed completed result whose exact selection
-  presentation, or exact abstention request snapshots, remain current.
+- Phase 7gc binds one exact substitute-sabotage occurrence to one exact authored replacement with
+  a distinct world-object identifier;
+- Phase 7gd binds that substitution to discoverable evidence only when both retain the same exact
+  occurrence;
+- Phase 7ge retains at most 64 exact active substitutions in stable caller order with value-unique
+  target identifiers; and
+- Phase 7gf applies an eligible exact substitution as a fresh overlay together with its exact fresh
+  evidence, leaving the authoritative world-object snapshot and every source object unchanged.
 
-Implementation commit `982ad10` is published in mergeable draft PR #250. Hosted run `34886260455`
-failed before execution with `steps: []` for all five jobs; this is Actions/account infrastructure
-state, not product-test or unsigned-build evidence, and the unchanged run was not retried.
-
-Binding, factory, source, and settings composition perform no credential or network input/output
-and invoke no model. Startup remains inert. Nothing chooses timing, starts sabotage automatically,
-recovers a move automatically, persists sabotage, adds input/UI/events/time/transcripts/navigation
-or actor movement, adds another provider, or adds another sabotage effect. The unrelated untracked
+The implementation is pure Domain state and policy. It does not infer inventory, current placement,
+physical similarity, plausibility, paths, reachability, critical-route safety, or replacement
+eligibility. It does not replace a world object or scene body, recover or present a substitution,
+choose sabotage or timing, persist state, or add Application, Infrastructure, scene, input, UI,
+event, time, transcript, navigation, model, or provider behavior. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing binding, factory, source-operation, coordinator, and
-  acknowledgement compile failures. The settings-composition smoke also failed as expected before
-  the move binding was wired.
-- Focused binding tests pass 3 Application and 5 Infrastructure cases. The configured-source,
-  settings-composition, isolated selected/abstaining/failed presentation and acknowledgement, and
-  real-main-scene inert-wiring Godot smokes pass.
-- The first sandboxed focused VSTest was blocked by local IPC `SocketException (13)` and the first
-  sandboxed Godot smoke by its `user://logs` restriction; the identical host-local commands passed.
-  Product code was not changed to work around either sandbox restriction.
+- Tests began with the expected missing substitution, candidate, snapshot, policy, transition, and
+  result compile failures.
+- The focused host-local substitution suite passes 19 Domain cases. The first sandboxed VSTest run
+  was blocked by local IPC `SocketException (13)`; the identical host-local test passed, and product
+  code was not changed around the restriction.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,407 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
+  build, 2,426 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility-
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters.
@@ -48,20 +37,20 @@ or actor movement, adds another provider, or adds another sabotage effect. The u
 
 ## Exact next bounded slice
 
-Take **Phase 7gc: bind one exact substitute-sabotage occurrence to one authored replacement**.
+Take **Phase 7gg: require exact active substitution and visible evidence for recovery**.
 
 Acceptance boundary:
 
-1. Add one immutable Domain value that accepts one exact `CharacterObjectSabotageOccurrence` and one
-   exact authored replacement `WorldObject`, retaining both without copying or applying state.
-2. Accept only an occurrence whose proposal uses the exact canonical
-   `CharacterSabotageActionKind.Substitute`; reject nulls, non-substitute occurrences, the exact
-   occurrence target as its own replacement, and a replacement with the same object identifier.
-3. Prove exact nested actor, access requirement, target, and replacement retention; non-substitute
-   rejection; independently composed value-equal replacement rejection; unchanged source objects;
-   and a closed get-only surface.
-4. Do not infer inventory, current placement, physical similarity, plausibility, path, reachability,
-   critical-route safety, or replacement eligibility; do not replace a world object or body, treat
-   binding as occurrence or success, leave evidence, change truth or perception, or add selection,
-   application, recovery, scheduling, model, provider, Application, Infrastructure, scene,
-   persistence, input, UI, event, time, transcript, navigation, or presentation behavior.
+1. Add one pure Domain policy that accepts one character evidence view, one current substitution
+   snapshot, one authoritative evidence snapshot, and one exact substitution candidate.
+2. Permit recovery only when the candidate's exact substitution instance remains in the current
+   snapshot, its exact evidence definition remains in authoritative evidence, and that evidence
+   identifier is visible in the supplied character view.
+3. Reject nulls, absent or distinct value-equal substitution state, absent or distinct value-equal
+   authoritative evidence, and unseen evidence while leaving every input unchanged; expose only one
+   closed static query.
+4. Do not remove a substitution, consume evidence, restore or replace a world object or body, infer
+   inventory, placement, similarity, plausibility, route safety, perception, or discovery, or add
+   transition, controller, source, selection, scheduling, model, provider, Application,
+   Infrastructure, scene, persistence, input, UI, event, time, transcript, navigation, or
+   presentation behavior.
