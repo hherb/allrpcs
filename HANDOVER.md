@@ -2,60 +2,50 @@
 
 ## Current state
 
-`main` contains merged PR #233 at `710f1ff`. The current branch is
-`codex/phase-7-sabotage-provider-flow` and advances four bounded Phase 7 slices:
+`main` contains merged PR #234 at `8177676`. The current branch is
+`codex/phase-7-sabotage-model-binding` and advances three bounded Phase 7 slices:
 
-- Phase 7dy strictly decodes one complete concealment decision JSON document against its exact
-  consideration request, resolving valid parsed identifier text to request-owned instances before
-  delegating the existing exact acceptance policy;
-- Phase 7dz serializes only relevant authored character context and its exact eligible candidates
-  into one stateless strict-schema OpenAI Responses request;
-- Phase 7ea completes one bounded OpenAI Responses SSE lifecycle without exposing a partial
-  decision or retaining provider text and identifiers; and
-- Phase 7eb exposes one caller-composed authenticated OpenAI adapter behind the existing
-  provider-neutral concealment-decision interface.
+- Phase 7ec binds one exact OpenAI concealment-decision model to its canonical
+  `CharacterModelSettings` and composes it through a caller-owned factory with default or custom
+  validated endpoints;
+- Phase 7ed extends the temporary concealment-model source with exact configured binding
+  initialization, compare-and-swap replacement and clearing, preserved one-shot precedence, and
+  stable fail-closed offline fallback; and
+- Phase 7ee composes, replaces, and clears the concealment binding with the existing selected-model
+  settings flow: OpenAI activates it, an OpenAI setting change replaces it, and Ollama clears it.
 
-No model binding or scene composition was added. Construction performs no credential or network
-input/output. Nothing invokes a provider at startup, starts sabotage automatically, chooses timing,
-persists concealment, adds UI/input/events/time/transcripts/movement, or adds another sabotage
-effect.
-
-Draft PR #234 is open from implementation commit `1de6f05`. Hosted run `34794615126` completed
-with all five jobs at `steps: []`; it is Actions/account infrastructure state, not product-test or
-unsigned-build evidence, and should not be retried unchanged.
+Binding, factory, source, and settings-composition construction perform no credential or network
+input/output and invoke no model. Nothing starts concealment automatically, chooses timing,
+presents a completed model-selected concealment on the water-cask body, persists sabotage, adds
+UI/input/events/time/transcripts/movement, adds another provider, or adds another sabotage effect.
 
 ## Validation and review
 
-- Every slice began with the expected compile failure for its absent public operation or type.
-- Focused Infrastructure tests pass strict selection and abstention decoding, distinct parsed-ID
-  resolution, complete shape/value/depth/length rejection, bounded trusted-context and exact-schema
-  serialization, complete SSE framing and terminal-state rules, authenticated request construction,
-  exact custom endpoints, cancellation, redaction, and transport/content-type failures.
+- Every slice began with the expected compile or smoke failure for its absent operation or wiring.
+- Focused Application tests pass 3 binding cases; focused Infrastructure tests pass 5 factory
+  cases; the focused game build passes with zero warnings; and isolated Godot smokes pass exact
+  configured-source semantics and OpenAI activation/replacement plus Ollama clearing.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
-  build, 2,306 Domain tests, 484 Application tests, 602 Infrastructure tests, 8 architecture tests,
+  build, 2,306 Domain tests, 487 Application tests, 607 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
   graphical launch.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters. No
   live-conformance switch was enabled and no provider was invoked.
-- Hosted run `34794615126` executed no job steps; host-local quality is the current product
-  evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7ec: bind one exact OpenAI concealment model through canonical provider settings**.
+Take **Phase 7ef: present one exact completed model-selected concealment in the main scene**.
 
 Acceptance boundary:
 
-1. Add one Application binding that retains the exact `CharacterModelSettings` and exact
-   `ICharacterObjectSabotageConcealmentDecisionModel`, requiring the OpenAI provider and rejecting
-   nulls.
-2. Add one Infrastructure factory accepting caller-owned `HttpClient`, `IOpenAiCredentialSource`,
-   exact OpenAI settings, and an optional validated `OpenAiEndpoint`, returning that exact binding
-   around `OpenAiCharacterObjectSabotageConcealmentModel` without credential, network, discovery,
-   or scene input/output during construction.
-3. Prove exact settings retention, default and custom endpoints on later explicit invocation,
-   wrong-provider/null rejection before construction, no credential load or HTTP send during
-   construction, and the smallest static public factory surface.
-4. Do not add settings selection, scene composition or replacement, startup invocation, timing or
-   automatic triggers, persistence, UI/events/time/transcripts, movement, another provider, or
-   another sabotage effect.
+1. Add one scene coordinator that observes a completed concealment-decision task result once and
+   presents only its exact selected concealment transition through the existing
+   `CharacterObjectSabotageConcealmentPresentationController` compare-and-swap seam.
+2. Treat accepted abstention as an exact no-op; failed, cancelled, stale, repeated, null, and
+   non-selected terminal states must not change visibility, concealment, evidence, task state, or
+   unrelated scene state.
+3. Wire the coordinator after the existing state, task, and presentation nodes and prove the exact
+   water-cask body hides only after an explicitly started selected result; do not start a model or
+   concealment during scene startup.
+4. Do not add timing or automatic triggers, new input/UI, persistence, events/time/transcripts,
+   movement, another provider, another sabotage effect, or provider calls in standard validation.

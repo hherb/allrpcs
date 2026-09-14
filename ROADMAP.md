@@ -440,6 +440,12 @@ Acceptance:
   - [x] Serialize one bounded strict OpenAI Responses concealment-decision request.
   - [x] Complete one strict bounded OpenAI Responses concealment-decision SSE stream.
   - [x] Expose one caller-composed authenticated OpenAI concealment-decision adapter.
+  - [x] Bind one exact OpenAI concealment model through canonical provider settings without
+    construction-time input/output.
+  - [x] Scene-own one configured concealment binding with exact stale-safe replacement, explicit
+    offline clearing, and preserved one-shot precedence.
+  - [x] Compose, replace, and clear that binding with the selected canonical OpenAI setting while
+    keeping unsupported providers fail-closed.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
