@@ -1,4 +1,6 @@
+using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
 using Godot;
 using NetHttpClient = System.Net.Http.HttpClient;
@@ -17,9 +19,11 @@ public partial class TemporaryCharacterModelCompositionController : Node
 
     private CharacterModelSettingsController settingsController = null!;
     private TemporaryCharacterModelSource modelSource = null!;
+    private TemporaryCharacterObjectSabotageConcealmentModelSource concealmentModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
+    private CharacterObjectSabotageConcealmentModelBinding? concealmentBinding;
     private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
@@ -29,6 +33,9 @@ public partial class TemporaryCharacterModelCompositionController : Node
         settingsController = GetNode<CharacterModelSettingsController>(
             "../CharacterModelSettingsController");
         modelSource = GetNode<TemporaryCharacterModelSource>("../TemporaryCharacterModelSource");
+        concealmentModelSource =
+            GetNode<TemporaryCharacterObjectSabotageConcealmentModelSource>(
+                "../TemporaryCharacterObjectSabotageConcealmentModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
@@ -77,7 +84,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !modelSource.TryInitializeBindings(
                 selection,
                 new CharacterModelBindingSnapshot([binding]))
-            || !TryApplyParticipationBindings(selection))
+            || !TryApplyParticipationBindings(selection)
+            || !TryApplyConcealmentBinding(selection))
         {
             return false;
         }
@@ -98,7 +106,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
         CharacterModelBindingSnapshot? bindings = CreateCurrentBindingSnapshot(selection);
         return bindings is not null
             && modelSource.TryReplaceBindings(selection, bindings)
-            && TryApplyParticipationBindings(selection);
+            && TryApplyParticipationBindings(selection)
+            && TryApplyConcealmentBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -228,6 +237,49 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             participationBindingsInitialized = true;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyConcealmentBinding(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (concealmentBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = concealmentModelSource.TryClearBinding(concealmentBinding);
+            if (cleared)
+            {
+                concealmentBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageConcealmentModelBinding replacement =
+            OpenAiCharacterObjectSabotageConcealmentModelBindingFactory.Create(
+                selectedSettings,
+                client,
+                credentialSource);
+        bool applied = concealmentBinding is null
+            ? concealmentModelSource.TryInitializeBinding(replacement)
+            : concealmentModelSource.TryReplaceBinding(concealmentBinding, replacement);
+        if (applied)
+        {
+            concealmentBinding = replacement;
         }
 
         return applied;
