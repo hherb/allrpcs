@@ -14,6 +14,8 @@
 - Phase 7ee composes, replaces, and clears the concealment binding with the existing selected-model
   settings flow: OpenAI activates it, an OpenAI setting change replaces it, and Ollama clears it.
 
+Draft PR #235 is open from implementation commit `a4de97a`.
+
 Binding, factory, source, and settings-composition construction perform no credential or network
 input/output and invoke no model. Nothing starts concealment automatically, chooses timing,
 presents a completed model-selected concealment on the water-cask body, persists sabotage, adds
