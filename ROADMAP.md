@@ -521,6 +521,16 @@ Acceptance:
   - [x] Serialize one bounded strict OpenAI Responses move-decision request.
   - [x] Complete one strict bounded OpenAI Responses move-decision SSE stream.
   - [x] Expose one caller-composed authenticated OpenAI move-decision adapter.
+  - [x] Bind one exact OpenAI move model through canonical provider settings without
+    construction-time input/output.
+  - [x] Scene-own one configured move binding with exact stale-safe replacement, explicit offline
+    clearing, and preserved one-shot precedence.
+  - [x] Compose, replace, and clear that binding with the selected canonical OpenAI setting while
+    keeping unsupported providers fail-closed.
+  - [x] Present one exact explicitly started completed model-selected move on the water-cask body
+    once while abstention and invalid terminal states remain exact no-ops.
+  - [x] Explicitly acknowledge only the exact observed current selection or abstention so a later
+    move decision can start without automatic task reset or scene mutation.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

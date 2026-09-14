@@ -20,10 +20,12 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private CharacterModelSettingsController settingsController = null!;
     private TemporaryCharacterModelSource modelSource = null!;
     private TemporaryCharacterObjectSabotageConcealmentModelSource concealmentModelSource = null!;
+    private TemporaryCharacterObjectSabotageMoveModelSource moveModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
     private CharacterObjectSabotageConcealmentModelBinding? concealmentBinding;
+    private CharacterObjectSabotageMoveModelBinding? moveBinding;
     private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
@@ -36,6 +38,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
         concealmentModelSource =
             GetNode<TemporaryCharacterObjectSabotageConcealmentModelSource>(
                 "../TemporaryCharacterObjectSabotageConcealmentModelSource");
+        moveModelSource = GetNode<TemporaryCharacterObjectSabotageMoveModelSource>(
+            "../TemporaryCharacterObjectSabotageMoveModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
@@ -85,7 +89,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
                 selection,
                 new CharacterModelBindingSnapshot([binding]))
             || !TryApplyParticipationBindings(selection)
-            || !TryApplyConcealmentBinding(selection))
+            || !TryApplyConcealmentBinding(selection)
+            || !TryApplyMoveBinding(selection))
         {
             return false;
         }
@@ -107,7 +112,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
         return bindings is not null
             && modelSource.TryReplaceBindings(selection, bindings)
             && TryApplyParticipationBindings(selection)
-            && TryApplyConcealmentBinding(selection);
+            && TryApplyConcealmentBinding(selection)
+            && TryApplyMoveBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -280,6 +286,48 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             concealmentBinding = replacement;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyMoveBinding(CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (moveBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = moveModelSource.TryClearBinding(moveBinding);
+            if (cleared)
+            {
+                moveBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageMoveModelBinding replacement =
+            OpenAiCharacterObjectSabotageMoveModelBindingFactory.Create(
+                selectedSettings,
+                client,
+                credentialSource);
+        bool applied = moveBinding is null
+            ? moveModelSource.TryInitializeBinding(replacement)
+            : moveModelSource.TryReplaceBinding(moveBinding, replacement);
+        if (applied)
+        {
+            moveBinding = replacement;
         }
 
         return applied;
