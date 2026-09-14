@@ -8,7 +8,50 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterObjectSabotageMoveModelSource : Node
 {
     private readonly ICharacterObjectSabotageMoveDecisionModel offlineModel = new UnavailableMoveModel();
+    private CharacterObjectSabotageMoveModelBinding? binding;
     private ICharacterObjectSabotageMoveDecisionModel? suppliedModel;
+
+    /// <summary>Retains one exact configured move-model binding once.</summary>
+    public bool TryInitializeBinding(CharacterObjectSabotageMoveModelBinding configured)
+    {
+        ArgumentNullException.ThrowIfNull(configured);
+        if (binding is not null)
+        {
+            return false;
+        }
+
+        binding = configured;
+        return true;
+    }
+
+    /// <summary>Atomically replaces the exact expected configured binding for future decisions.</summary>
+    public bool TryReplaceBinding(
+        CharacterObjectSabotageMoveModelBinding expected,
+        CharacterObjectSabotageMoveModelBinding replacement)
+    {
+        ArgumentNullException.ThrowIfNull(expected);
+        ArgumentNullException.ThrowIfNull(replacement);
+        if (!ReferenceEquals(binding, expected))
+        {
+            return false;
+        }
+
+        binding = replacement;
+        return true;
+    }
+
+    /// <summary>Clears only the exact expected binding while preserving any one-shot model.</summary>
+    public bool TryClearBinding(CharacterObjectSabotageMoveModelBinding expected)
+    {
+        ArgumentNullException.ThrowIfNull(expected);
+        if (!ReferenceEquals(binding, expected))
+        {
+            return false;
+        }
+
+        binding = null;
+        return true;
+    }
 
     /// <summary>Retains one exact move model for the next scene decision only.</summary>
     public bool TrySupplyModel(ICharacterObjectSabotageMoveDecisionModel model)
@@ -24,10 +67,10 @@ public partial class TemporaryCharacterObjectSabotageMoveModelSource : Node
         return true;
     }
 
-    /// <summary>Takes the exact one-shot model or the stable fail-closed offline model.</summary>
+    /// <summary>Takes the exact one-shot, configured, or stable fail-closed offline model.</summary>
     public ICharacterObjectSabotageMoveDecisionModel TakeModel()
     {
-        ICharacterObjectSabotageMoveDecisionModel model = suppliedModel ?? offlineModel;
+        ICharacterObjectSabotageMoveDecisionModel model = suppliedModel ?? binding?.Model ?? offlineModel;
         suppliedModel = null;
         return model;
     }

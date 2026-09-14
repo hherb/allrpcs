@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=3]
+[gd_scene load_steps=167 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -201,6 +201,7 @@
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveModelSource.cs" id="199_object_sabotage_move_model_source"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageMoveTaskController.cs" id="200_object_sabotage_move_task_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveConsiderationFlowController.cs" id="201_object_sabotage_move_consideration_flow"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageMovePresentationCoordinator.cs" id="202_object_sabotage_move_presentation_coordinator"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -572,6 +573,9 @@ script = ExtResource("201_object_sabotage_move_consideration_flow")
 
 [node name="TemporaryCharacterObjectSabotageMovePresentationFlowController" type="Node" parent="."]
 script = ExtResource("196_object_sabotage_move_presentation_flow")
+
+[node name="CharacterObjectSabotageMovePresentationCoordinator" type="Node" parent="."]
+script = ExtResource("202_object_sabotage_move_presentation_coordinator")
 
 [node name="TemporaryCharacterObjectSabotageConcealmentModelSource" type="Node" parent="."]
 script = ExtResource("186_object_sabotage_model_source")

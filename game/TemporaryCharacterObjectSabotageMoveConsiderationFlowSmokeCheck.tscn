@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveSource.cs" id="1"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageMoveController.cs" id="2"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveConsiderationFlowController.cs" id="6"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeCheck.cs" id="7"]
 [ext_resource type="Script" path="res://TemporaryWorldObjectSource.cs" id="8"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageMovePresentationController.cs" id="9"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMovePresentationFlowController.cs" id="10"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageMovePresentationCoordinator.cs" id="11"]
 
 [node name="TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeCheck" type="Node"]
 
@@ -31,6 +34,20 @@ script = ExtResource("5")
 
 [node name="TemporaryCharacterObjectSabotageMoveConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("6")
+
+[node name="CharacterObjectSabotageMovePresentationController" type="Node" parent="."]
+script = ExtResource("9")
+
+[node name="TemporaryCharacterObjectSabotageMovePresentationFlowController" type="Node" parent="."]
+script = ExtResource("10")
+
+[node name="CharacterObjectSabotageMovePresentationCoordinator" type="Node" parent="."]
+script = ExtResource("11")
+
+[node name="InteractionCandidates" type="Node2D" parent="."]
+
+[node name="WaterCask" type="Node2D" parent="InteractionCandidates"]
+position = Vector2(1216, 656)
 
 [node name="SmokeCheck" type="Node" parent="."]
 script = ExtResource("7")

@@ -16,12 +16,16 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
     private TemporaryCharacterObjectSabotageMoveModelSource modelSource = null!;
     private CharacterObjectSabotageMoveTaskController task = null!;
     private TemporaryCharacterObjectSabotageMoveConsiderationFlowController flow = null!;
+    private CharacterObjectSabotageMovePresentationController presentation = null!;
+    private CharacterObjectSabotageMovePresentationCoordinator coordinator = null!;
+    private Node2D body = null!;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
     private WorldObjectPlacementSnapshot initialPlacements = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
     private WorldObjectPlacementSnapshot? appliedPlacements;
     private DiscoveryEvidenceSnapshot? appliedEvidence;
+    private Vector2 initialPosition;
     private int processFrames;
     private int stage;
 
@@ -38,8 +42,15 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
             "../CharacterObjectSabotageMoveTaskController");
         flow = GetNode<TemporaryCharacterObjectSabotageMoveConsiderationFlowController>(
             "../TemporaryCharacterObjectSabotageMoveConsiderationFlowController");
+        presentation = GetNode<CharacterObjectSabotageMovePresentationController>(
+            "../CharacterObjectSabotageMovePresentationController");
+        coordinator = GetNode<CharacterObjectSabotageMovePresentationCoordinator>(
+            "../CharacterObjectSabotageMovePresentationCoordinator");
+        body = GetNode<Node2D>("../InteractionCandidates/WaterCask");
         initialPlacements = source.Placements;
         initialEvidence = source.Evidence;
+        initialPosition = body.Position;
+        coordinator.SetProcess(false);
         SetProcess(true);
     }
 
@@ -60,9 +71,12 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
                 StartExactSelection();
                 break;
             case 1:
-                ObserveSelectionAndStartOfflineFailure();
+                ObserveSelectionAndStartAbstention();
                 break;
             case 2:
+                ObserveAbstentionAndStartOfflineFailure();
+                break;
+            case 3:
                 ObserveOfflineFailure();
                 break;
             default:
@@ -81,7 +95,10 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
         bool unchangedBeforeRequest = ReferenceEquals(state.Placements, initialPlacements)
             && ReferenceEquals(state.Evidence, initialEvidence)
             && task.Status == CharacterObjectSabotageMoveTaskStatus.Idle
-            && task.Result is null;
+            && task.Result is null
+            && ReferenceEquals(presentation.LastPresentedPlacements, initialPlacements)
+            && !coordinator.TryPresentCompletedResult()
+            && !coordinator.TryAcknowledgeCompletedResult();
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart()
             && task.Status == CharacterObjectSabotageMoveTaskStatus.Running;
@@ -100,7 +117,7 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
         stage = 1;
     }
 
-    private void ObserveSelectionAndStartOfflineFailure()
+    private void ObserveSelectionAndStartAbstention()
     {
         if (task.Status == CharacterObjectSabotageMoveTaskStatus.Running)
         {
@@ -113,6 +130,15 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
         if (task.Status != CharacterObjectSabotageMoveTaskStatus.Completed
             || task.Result is not { } result
             || request is null
+            || appliedPlacements is null
+            || appliedEvidence is null)
+        {
+            Fail("Temporary move consideration did not produce a complete selected result.");
+            return;
+        }
+
+        if (coordinator.TryAcknowledgeCompletedResult()
+            || !coordinator.TryPresentCompletedResult()
             || !ReferenceEquals(result.Request, request)
             || !ReferenceEquals(request.Character, source.Character)
             || !ReferenceEquals(request.PhysicalAccess, source.PhysicalAccess)
@@ -120,16 +146,24 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
             || !ReferenceEquals(request.Placements, initialPlacements)
             || !ReferenceEquals(request.Evidence, initialEvidence)
             || !ReferenceEquals(request.Candidates.Single(), source.Candidate)
-            || appliedPlacements is null
-            || appliedEvidence is null
             || !ReferenceEquals(
                 appliedPlacements.Entries.Single().WorldObject,
                 source.Candidate.Destination.Occurrence.Target)
             || !ReferenceEquals(appliedPlacements.Entries.Single().Location, source.Destination)
             || !ReferenceEquals(appliedEvidence.Entries.Single(), source.Candidate.Evidence.Evidence)
-            || !ReferenceEquals(modelSource.TakeModel(), overlapModel)
+            || !ReferenceEquals(presentation.LastPresentedPlacements, appliedPlacements)
+            || body.Position == initialPosition
+            || coordinator.TryPresentCompletedResult()
             || overlapModel!.CallCount != 0
-            || !task.TryReset()
+            || !presentation.TryPresent(appliedPlacements, initialPlacements)
+            || body.Position != initialPosition
+            || coordinator.TryAcknowledgeCompletedResult()
+            || !presentation.TryPresent(initialPlacements, appliedPlacements)
+            || body.Position == initialPosition
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || coordinator.TryAcknowledgeCompletedResult()
+            || task.Status != CharacterObjectSabotageMoveTaskStatus.Idle
+            || task.Result is not null
             || !flow.TryStart())
         {
             Fail("Temporary move consideration failed exact request or resolution.");
@@ -137,6 +171,34 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
         }
 
         stage = 2;
+    }
+
+    private void ObserveAbstentionAndStartOfflineFailure()
+    {
+        if (task.Status == CharacterObjectSabotageMoveTaskStatus.Running)
+        {
+            return;
+        }
+
+        if (task.Status != CharacterObjectSabotageMoveTaskStatus.Completed
+            || task.Result is not { SelectedCandidate: null }
+            || overlapModel!.CallCount != 1
+            || coordinator.TryPresentCompletedResult()
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || coordinator.TryAcknowledgeCompletedResult()
+            || task.Status != CharacterObjectSabotageMoveTaskStatus.Idle
+            || task.Result is not null
+            || !ReferenceEquals(state.Placements, appliedPlacements)
+            || !ReferenceEquals(state.Evidence, appliedEvidence)
+            || !ReferenceEquals(presentation.LastPresentedPlacements, appliedPlacements)
+            || body.Position == initialPosition
+            || !flow.TryStart())
+        {
+            Fail("Temporary move abstention changed exact presentation or scene state.");
+            return;
+        }
+
+        stage = 3;
     }
 
     private void ObserveOfflineFailure()
@@ -150,6 +212,8 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
             || task.Result is not null
             || !ReferenceEquals(state.Placements, appliedPlacements)
             || !ReferenceEquals(state.Evidence, appliedEvidence)
+            || !ReferenceEquals(presentation.LastPresentedPlacements, appliedPlacements)
+            || body.Position == initialPosition
             || !ReferenceEquals(source.Placements.Entries.Single().Location, source.SourceLocation)
             || source.Evidence.Entries.Count != 0)
         {
@@ -160,7 +224,8 @@ public partial class TemporaryCharacterObjectSabotageMoveConsiderationFlowSmokeC
         GD.Print(
             "Temporary move consideration flow smoke passed: no automatic effect, exact request "
             + "composition, one-shot decision, atomic main-thread resolution, overlap preservation, "
-            + "stable offline failure, closed surface, and unchanged source state.");
+            + "one-time selected presentation, inert abstention, stable offline failure, closed "
+            + "surface, exact explicit acknowledgement, and unchanged source state.");
         GetTree().Quit();
     }
 

@@ -901,9 +901,22 @@ destination context into a stateless strict OpenAI Responses request, and comple
 valid SSE lifecycle. One caller-composed authenticated adapter exposes that transport behind the
 provider-neutral move-decision interface. Construction performs no credential load or network I/O;
 explicit invocation validates credentials, response status and media type, redacts transport and
-semantic failures, and preserves caller cancellation. These contracts do not bind settings into
-the scene, select timing, apply or recover a move, project coordinates, persist state, or add input,
-UI, events, time, transcripts, navigation, or actor movement.
+semantic failures, and preserves caller cancellation. Exact immutable bindings retain the canonical
+OpenAI setting and model and are composed through default or caller-supplied validated endpoints.
+The scene model source supports exact stale-safe configured-binding initialization, replacement,
+and clearing while preserving one-shot precedence and stable fail-closed offline behavior. The
+existing selected-settings flow activates and replaces that future OpenAI move model without
+construction-time input/output, while Ollama clears it back to offline behavior.
+
+One scene coordinator observes each fresh exact completed move result at most once. A selected
+result projects only the request's exact prior placement to the current scene-owned placement
+through the existing stale-safe presentation seam; abstention and every other terminal state
+preserve the body and task state. Explicit acknowledgement resets only an exact already-observed
+completed result: a selection must retain the exact current last-presented placement, while an
+abstention must retain its exact request placement and evidence snapshots as current scene state.
+Unobserved, stale, idle, running, failed, null, and repeated acknowledgements remain inert. These
+contracts do not select timing, schedule or acknowledge work automatically, recover a move, persist
+state, or add input, UI, events, time, transcripts, navigation, or actor movement.
 
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions

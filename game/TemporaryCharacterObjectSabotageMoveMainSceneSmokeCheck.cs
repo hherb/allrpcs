@@ -47,6 +47,9 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
         TemporaryCharacterObjectSabotageMoveConsiderationFlowController considerationFlow =
             GetNode<TemporaryCharacterObjectSabotageMoveConsiderationFlowController>(
                 "../TemporaryCharacterObjectSabotageMoveConsiderationFlowController");
+        CharacterObjectSabotageMovePresentationCoordinator presentationCoordinator =
+            GetNode<CharacterObjectSabotageMovePresentationCoordinator>(
+                "../CharacterObjectSabotageMovePresentationCoordinator");
         WorldObject target = worldSource.WorldObjects.Entries[^1];
         WorldObjectPlacement placement = source.Placements.Entries.Single();
         ICharacterObjectSabotageMoveDecisionModel offline = modelSource.TakeModel();
@@ -73,8 +76,10 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
             || task.Status != CharacterObjectSabotageMoveTaskStatus.Idle
             || task.Result is not null
             || !ReferenceEquals(modelSource.TakeModel(), offline)
+            || presentationCoordinator.TryPresentCompletedResult()
             || !HasExpectedFlowSurface(flow)
-            || !HasExpectedConsiderationFlowSurface(considerationFlow))
+            || !HasExpectedConsiderationFlowSurface(considerationFlow)
+            || !HasExpectedPresentationCoordinatorSurface(presentationCoordinator))
         {
             Fail("The main scene did not retain one exact inert eligible move candidate.");
             return;
@@ -83,7 +88,8 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
         GD.Print(
             "Temporary move sabotage main-scene smoke passed: exact tail water-cask source, "
             + "eligible move and aligned recovery, exact empty scene-owned state, stable offline "
-            + "decision source, idle task, explicit consideration flow, and no automatic effect.");
+            + "decision source, idle task, explicit consideration and presentation flow, and no "
+            + "automatic effect.");
         GetTree().Quit();
     }
 
@@ -108,6 +114,18 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .SequenceEqual(["TryStart", "_Ready"]);
+
+    private static bool HasExpectedPresentationCoordinatorSurface(
+        CharacterObjectSabotageMovePresentationCoordinator coordinator) =>
+        coordinator.GetType().GetMethods(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly)
+            .Where(method => !method.IsSpecialName)
+            .Select(method => method.Name)
+            .Order(StringComparer.Ordinal)
+            .SequenceEqual(
+                ["TryAcknowledgeCompletedResult", "TryPresentCompletedResult", "_Process", "_Ready"]);
 
     private void Fail(string message)
     {
