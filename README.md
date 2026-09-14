@@ -668,6 +668,20 @@ for obtaining a response to an exact consideration request while observing calle
 defines no implementation, provider binding, retry, timeout, orchestration, scene, or response
 application behavior.
 
+`CharacterBeliefGoalIncompatibilityConsiderationController` forwards one exact request and caller
+cancellation token to one exact provider-neutral response model exactly once, then constructs the
+existing validated result. Null inputs and pre-cancellation fail before model invocation; null or
+non-exact output fails through the Domain result contract, while model cancellation and failure
+propagate unchanged. The controller adds no retry, deadline, provider, judgment, application, or
+character mutation behavior.
+
+`CharacterBeliefGoalIncompatibilityResponseRoundController` projects one exact declaration into its
+two exact perspectives, obtains one validated response for each in stable declaration order, and
+returns the existing complete immutable response round. Its optional finite shared deadline applies
+to the complete sequential round, reports deadline expiry separately from caller cancellation, and
+never returns a partial round. It does not implement a model, judge or apply either response, resolve
+the incompatibility, or mutate character state.
+
 `CharacterPhysicalAccessSnapshot` explicitly retains one exact character identifier and at most 64
 stable copied, value-unique world-object identifiers that authoritative caller state says are
 physically accessible. Its pure lookup requires value-matching character and object identifiers.
