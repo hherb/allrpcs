@@ -706,14 +706,19 @@ coordinator observes each fresh exact completed result at most once: a selection
 request's exact prior concealment to the current scene-owned concealment through the existing
 stale-safe presentation seam, while abstention and every other task state preserve presentation and
 task state. The main-scene water-cask body therefore hides only after an explicitly started selected
-result; startup remains inert.
+result; startup remains inert. One explicit acknowledgement resets only that exact already-observed
+completed result. A selected result must still match the exact last-presented current concealment;
+an abstention must still retain its exact request concealment and evidence as current scene state.
+Unobserved, stale, idle, running, cancelled, failed, null, and repeated acknowledgements preserve
+task, concealment, evidence, and presentation state. An acknowledged result permits a later explicit
+decision without changing the authored source, authoritative world object, or body position.
 Infrastructure strictly decodes a complete selection-or-abstention document against that exact
 request, serializes only relevant authored character context and its eligible candidates into one
 stateless strict OpenAI Responses request, completes only a bounded valid SSE lifecycle, and exposes
 one caller-composed authenticated adapter behind the provider-neutral decision interface. Adapter
 and binding construction perform no credential or network input/output. These contracts do not
-decide timing, schedule work automatically, reset completed tasks, persist data, invoke a provider
-during scene startup, or authorize another sabotage effect.
+decide timing, schedule work automatically, acknowledge completed tasks automatically, persist
+data, invoke a provider during scene startup, or authorize another sabotage effect.
 
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the

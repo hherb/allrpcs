@@ -24,6 +24,8 @@ public partial class TemporaryCharacterObjectSabotageModelPresentationMainSceneS
     private Node2D body = null!;
     private WorldObjectConcealmentSnapshot initialConcealment = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
+    private WorldObjectConcealmentSnapshot selectedConcealment = null!;
+    private DiscoveryEvidenceSnapshot selectedEvidence = null!;
     private WorldObjectSnapshot worldObjects = null!;
     private Vector2 initialPosition;
     private int processFrames;
@@ -77,7 +79,13 @@ public partial class TemporaryCharacterObjectSabotageModelPresentationMainSceneS
             return;
         }
 
-        ObserveSelection();
+        if (stage == 1)
+        {
+            ObserveSelectionAndStartAbstention();
+            return;
+        }
+
+        ObserveAbstention();
     }
 
     private void StartSelection()
@@ -101,31 +109,30 @@ public partial class TemporaryCharacterObjectSabotageModelPresentationMainSceneS
         stage = 1;
     }
 
-    private void ObserveSelection()
+    private void ObserveSelectionAndStartAbstention()
     {
         if (task.Status == CharacterObjectSabotageConcealmentTaskStatus.Running)
         {
             return;
         }
 
-        WorldObjectConcealmentSnapshot? currentConcealment = state.Concealment;
-        DiscoveryEvidenceSnapshot? currentEvidence = state.Evidence;
+        selectedConcealment = state.Concealment!;
+        selectedEvidence = state.Evidence!;
         if (task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
             || task.Result is not { SelectedCandidate: not null } result
-            || currentConcealment is null
-            || currentEvidence is null
             || body.Visible
-            || !ReferenceEquals(presentation.LastPresentedConcealment, currentConcealment)
+            || !ReferenceEquals(presentation.LastPresentedConcealment, selectedConcealment)
             || !ReferenceEquals(result.Request.Concealment, initialConcealment)
             || !ReferenceEquals(result.Request.Evidence, initialEvidence)
             || !ReferenceEquals(result.SelectedCandidate, source.Candidate)
             || !ReferenceEquals(
-                currentConcealment.ConcealedObjectIds.Single(),
+                selectedConcealment.ConcealedObjectIds.Single(),
                 source.Candidate.Evidence.ObjectId)
-            || !ReferenceEquals(currentEvidence.Entries.Single(), source.Candidate.Evidence)
+            || !ReferenceEquals(selectedEvidence.Entries.Single(), source.Candidate.Evidence)
             || coordinator.TryPresentCompletedResult()
-            || task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
-            || !ReferenceEquals(task.Result, result)
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || task.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
+            || task.Result is not null
             || !ReferenceEquals(source.WorldObjects, worldObjects)
             || !ReferenceEquals(source.Concealment, initialConcealment)
             || !ReferenceEquals(source.Evidence, initialEvidence)
@@ -135,10 +142,47 @@ public partial class TemporaryCharacterObjectSabotageModelPresentationMainSceneS
             return;
         }
 
+        if (!modelSource.TrySupplyModel(new AbstainingModel())
+            || !flow.TryStart()
+            || task.Status != CharacterObjectSabotageConcealmentTaskStatus.Running)
+        {
+            Fail("A later explicit main-scene decision did not start after acknowledgement.");
+            return;
+        }
+
+        stage = 2;
+    }
+
+    private void ObserveAbstention()
+    {
+        if (task.Status == CharacterObjectSabotageConcealmentTaskStatus.Running)
+        {
+            return;
+        }
+
+        if (task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
+            || task.Result is not { SelectedCandidate: null }
+            || coordinator.TryPresentCompletedResult()
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || task.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
+            || task.Result is not null
+            || body.Visible
+            || !ReferenceEquals(state.Concealment, selectedConcealment)
+            || !ReferenceEquals(state.Evidence, selectedEvidence)
+            || !ReferenceEquals(presentation.LastPresentedConcealment, selectedConcealment)
+            || !ReferenceEquals(source.WorldObjects, worldObjects)
+            || !ReferenceEquals(source.Concealment, initialConcealment)
+            || !ReferenceEquals(source.Evidence, initialEvidence)
+            || body.Position != initialPosition)
+        {
+            Fail("The later acknowledged abstention changed main-scene source or presentation state.");
+            return;
+        }
+
         GD.Print(
-            "Main-scene model concealment presentation smoke passed: startup remained inert, one "
-            + "explicit selected result hid the exact water-cask body once, and task, source, "
-            + "world-object, and position state remained exact.");
+            "Main-scene model concealment presentation smoke passed: one exact selected result was "
+            + "acknowledged, a later abstention completed and was acknowledged, and source, "
+            + "world-object, presentation, and position state remained exact.");
         GetTree().Quit();
     }
 
@@ -159,6 +203,18 @@ public partial class TemporaryCharacterObjectSabotageModelPresentationMainSceneS
                 new CharacterObjectSabotageConcealmentDecision(
                     request.Character.Identity.Id,
                     request.Candidates.Single().Evidence.EvidenceId));
+        }
+    }
+
+    private sealed class AbstainingModel : ICharacterObjectSabotageConcealmentDecisionModel
+    {
+        public ValueTask<CharacterObjectSabotageConcealmentDecision> DecideAsync(
+            CharacterObjectSabotageConcealmentConsiderationRequest request,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            return ValueTask.FromResult(
+                new CharacterObjectSabotageConcealmentDecision(request.Character.Identity.Id, null));
         }
     }
 }

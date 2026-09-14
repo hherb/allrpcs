@@ -57,6 +57,9 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
             case 6:
                 ObserveStalePresentation();
                 break;
+            case 7:
+                ObserveStaleAbstention();
+                break;
             default:
                 Fail("Concealment result presentation entered an unknown smoke stage.");
                 break;
@@ -73,6 +76,7 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
         if (!inert
             || !scenario.Start(new ImmediateModel(scenario.SelectionDecision))
             || scenario.Coordinator.TryPresentCompletedResult()
+            || scenario.Coordinator.TryAcknowledgeCompletedResult()
             || !HasClosedSurface())
         {
             Fail("Selection presentation did not begin from an inert null-result task.");
@@ -89,12 +93,19 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
             return;
         }
 
+        if (scenario.Task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
+            || scenario.Task.Result is not { SelectedCandidate: not null } result
+            || scenario.Coordinator.TryAcknowledgeCompletedResult()
+            || !scenario.Coordinator.TryPresentCompletedResult())
+        {
+            Fail("An unobserved selection was acknowledged or could not be presented.");
+            return;
+        }
+
         retainedConcealment = scenario.State.Concealment;
         retainedEvidence = scenario.State.Evidence;
         retainedPresentation = scenario.Presentation.LastPresentedConcealment;
-        if (scenario.Task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
-            || scenario.Task.Result is not { SelectedCandidate: not null } result
-            || scenario.Body.Visible
+        if (scenario.Body.Visible
             || !ReferenceEquals(retainedPresentation, retainedConcealment)
             || !ReferenceEquals(
                 retainedConcealment!.ConcealedObjectIds.Single(),
@@ -111,25 +122,26 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
 
     private void ObserveRepeatedSelectionAndStartAbstention()
     {
-        if (scenario!.Coordinator.TryPresentCompletedResult()
-            || scenario.Task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
+        if (!scenario!.Coordinator.TryAcknowledgeCompletedResult()
+            || scenario.Coordinator.TryAcknowledgeCompletedResult()
+            || scenario.Coordinator.TryPresentCompletedResult()
+            || scenario.Task.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
+            || scenario.Task.Result is not null
             || !ReferenceEquals(scenario.State.Concealment, retainedConcealment)
             || !ReferenceEquals(scenario.State.Evidence, retainedEvidence)
             || !ReferenceEquals(scenario.Presentation.LastPresentedConcealment, retainedPresentation)
             || scenario.Body.Visible)
         {
-            Fail("Repeated selection observation changed exact terminal or scene state.");
+            Fail("Exact selection acknowledgement or its repetition changed scene state.");
             return;
         }
 
-        DisposeScenario();
-        scenario = CreateScenario();
         CharacterObjectSabotageConcealmentDecision abstention = new(
             scenario.Input.Character.Identity.Id,
             null);
-        if (!scenario.Start(new ImmediateModel(abstention)))
+        if (!scenario.StartCurrent(new ImmediateModel(abstention)))
         {
-            Fail("The accepted abstention could not start.");
+            Fail("A later explicit decision could not start after acknowledgement.");
             return;
         }
 
@@ -145,13 +157,16 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
 
         if (scenario.Task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
             || scenario.Task.Result is not { SelectedCandidate: null }
-            || !scenario.Body.Visible
-            || !scenario.HasInitialState()
-            || !ReferenceEquals(
-                scenario.Presentation.LastPresentedConcealment,
-                scenario.Input.Concealment))
+            || scenario.Body.Visible
+            || !ReferenceEquals(scenario.State.Concealment, retainedConcealment)
+            || !ReferenceEquals(scenario.State.Evidence, retainedEvidence)
+            || !ReferenceEquals(scenario.Presentation.LastPresentedConcealment, retainedPresentation)
+            || scenario.Coordinator.TryPresentCompletedResult()
+            || !scenario.Coordinator.TryAcknowledgeCompletedResult()
+            || scenario.Task.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
+            || scenario.Task.Result is not null)
         {
-            Fail("Accepted abstention changed concealment presentation or task state.");
+            Fail("Exact abstention acknowledgement changed concealment presentation or state.");
             return;
         }
 
@@ -239,24 +254,32 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
             || !ReferenceEquals(
                 scenario.Presentation.LastPresentedConcealment,
                 retainedPresentation)
-            || scenario.Coordinator.TryPresentCompletedResult())
+            || scenario.Coordinator.TryPresentCompletedResult()
+            || scenario.Coordinator.TryAcknowledgeCompletedResult())
         {
             Fail("A stale completed selection changed presentation or terminal task state.");
             return;
         }
 
-        GD.Print(
-            "Concealment result presentation coordinator smoke passed: one exact selected result "
-            + "hid its body once, while idle, running, abstaining, cancelled, failed, stale, "
-            + "repeated, and null-result states preserved task and presentation state.");
         DisposeScenario();
-        GetTree().Quit();
+        scenario = CreateScenario();
+        CharacterObjectSabotageConcealmentDecision abstention = new(
+            scenario.Input.Character.Identity.Id,
+            null);
+        if (!scenario.Start(new ImmediateModel(abstention)))
+        {
+            Fail("The stale abstention scenario could not start.");
+            return;
+        }
+
+        stage = 7;
     }
 
     private Scenario CreateScenario()
     {
         Scenario created = new(CreateInput());
         AddChild(created.Container);
+        created.Coordinator.SetProcess(false);
         return created;
     }
 
@@ -277,7 +300,8 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .ToArray();
-        return methods.SequenceEqual(["TryPresentCompletedResult", "_Process", "_Ready"])
+        return methods.SequenceEqual(
+                ["TryAcknowledgeCompletedResult", "TryPresentCompletedResult", "_Process", "_Ready"])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
@@ -381,6 +405,18 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinatorSm
 
         public bool Start(ICharacterObjectSabotageConcealmentDecisionModel model) =>
             Task.TryStart(model, Input.Request, State);
+
+        public bool StartCurrent(ICharacterObjectSabotageConcealmentDecisionModel model) =>
+            Task.TryStart(
+                model,
+                new CharacterObjectSabotageConcealmentConsiderationRequest(
+                    Input.Character,
+                    Input.Request.PhysicalAccess,
+                    Input.Request.WorldObjects,
+                    State.Concealment!,
+                    State.Evidence!,
+                    [Input.Candidate]),
+                State);
 
         public bool HasInitialState() =>
             ReferenceEquals(State.Concealment, Input.Concealment)

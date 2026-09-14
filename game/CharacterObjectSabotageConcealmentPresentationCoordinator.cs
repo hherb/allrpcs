@@ -51,4 +51,28 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinator :
         WorldObjectConcealmentSnapshot expectedConcealment = result.Request.Concealment;
         return presentation.TryPresent(expectedConcealment, currentConcealment);
     }
+
+    /// <summary>Explicitly resets only the exact completed result already observed in current state.</summary>
+    public bool TryAcknowledgeCompletedResult()
+    {
+        CharacterObjectSabotageConcealmentConsiderationResult? result = task.Result;
+        if (task.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
+            || result is null
+            || !ReferenceEquals(observedResult, result))
+        {
+            return false;
+        }
+
+        bool isCurrent = result.SelectedCandidate is null
+            ? ReferenceEquals(state.Concealment, result.Request.Concealment)
+                && ReferenceEquals(state.Evidence, result.Request.Evidence)
+            : ReferenceEquals(state.Concealment, presentation.LastPresentedConcealment);
+        if (!isCurrent || !task.TryReset())
+        {
+            return false;
+        }
+
+        observedResult = null;
+        return true;
+    }
 }
