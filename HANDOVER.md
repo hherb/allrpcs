@@ -19,9 +19,9 @@ presentation, persistence, input, UI, events, time, transcripts, navigation, or 
 added. Construction performs no credential load, HTTP send, or model invocation. The unrelated
 untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-Implementation commit `41dc01d` is published in mergeable draft PR #249. Initial hosted run
-`34880050881` queued all five credential-free jobs; its final status must be re-queried rather than
-inferred from the host-local result.
+Implementation commit `41dc01d` is published in mergeable draft PR #249. Hosted run `34880099514`
+failed before execution with `steps: []` for all five jobs; this is Actions/account infrastructure
+state, not product-test evidence, and the unchanged run was not retried.
 
 ## Validation and review
 
