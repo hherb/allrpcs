@@ -8,6 +8,8 @@ namespace Allrpcs.Game;
 /// <summary>Owns exact scene placement and authoritative sabotage-evidence snapshots.</summary>
 public partial class CharacterObjectSabotageMoveController : Node
 {
+    private CharacterObjectSabotageMoveConsiderationRequest? lastResolvedRequest;
+
     /// <summary>Gets the initialized exact world-object placement snapshot, if any.</summary>
     public WorldObjectPlacementSnapshot? Placements { get; private set; }
 
@@ -72,6 +74,32 @@ public partial class CharacterObjectSabotageMoveController : Node
 
         Placements = result.Placements;
         Evidence = result.EvidenceResult.Evidence;
+        return true;
+    }
+
+    /// <summary>Resolves one exact accepted consideration result from current scene state.</summary>
+    public bool TryResolveConsideration(
+        CharacterObjectSabotageMoveConsiderationResult considerationResult)
+    {
+        ArgumentNullException.ThrowIfNull(considerationResult);
+
+        CharacterObjectSabotageMoveConsiderationRequest request = considerationResult.Request;
+        if (ReferenceEquals(lastResolvedRequest, request)
+            || !ReferenceEquals(Placements, request.Placements)
+            || !ReferenceEquals(Evidence, request.Evidence))
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageMoveResult? result =
+            CharacterObjectSabotageMoveConsiderationTransition.Apply(considerationResult);
+        if (result is not null)
+        {
+            Placements = result.Placements;
+            Evidence = result.EvidenceResult.Evidence;
+        }
+
+        lastResolvedRequest = request;
         return true;
     }
 

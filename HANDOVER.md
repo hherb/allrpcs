@@ -2,56 +2,59 @@
 
 ## Current state
 
-`main` contains merged PR #245 at `6176bc3`. The current branch is
-`codex/phase-7-move-decision-flow` and advances five bounded Phase 7 slices:
+`main` contains merged PR #246 at `23e1026`. The current branch is
+`codex/phase-7-move-consideration-application` and advances three bounded Phase 7 slices:
 
-- Phase 7fi defines `CharacterObjectSabotageMoveDecision`, retaining the exact deciding character
-  identifier and exact selected move-candidate evidence identifier, or `null` for abstention.
-- Phase 7fj accepts only that exact considering character and, for selection, an exact candidate
-  that remains eligible under the complete current move policy; exact abstention is accepted.
-- Phase 7fk binds one accepted decision to its exact request and selected exact request candidate,
-  or retains `null` for abstention.
-- Phase 7fl defines one provider-neutral cancellation-aware move-decision model interface.
-- Phase 7fm obtains one model decision and returns only its exact validated consideration result.
+- Phase 7fn applies one exact accepted move selection through the existing immutable placement and
+  evidence transition, while accepted abstention returns no application.
+- Phase 7fo resolves that result only against its exact current scene-owned placement and evidence
+  snapshots, installing both fresh selection snapshots atomically or consuming abstention without
+  replacing either snapshot.
+- Phase 7fp owns one cancellation-aware move-decision task through closed idle, running, completed,
+  cancelled, and failed states, resolving only a non-stale accepted result on the Godot main thread.
 
-These slices do not apply or recover a move; mutate placement, evidence, world-object, or scene
-state; choose sabotage behavior or timing; add tasks, scene wiring, serialization, provider adapters,
-models, persistence, input, UI, events, time, transcripts, navigation, or actor movement.
+These slices do not recover or present a move; construct, supply, serialize, or invoke a model; add
+ordinary-flow or main-scene wiring; choose sabotage behavior or timing; or add persistence, input,
+UI, events, time, transcripts, navigation, or actor movement.
+
+Implementation commit `cc8bf61` is published in mergeable draft PR #247. Initial hosted run
+`34853418068` failed before execution with `steps: []` for all five jobs; this is Actions/account
+infrastructure state, not product-test evidence, and the unchanged run was not retried.
 
 ## Validation and review
 
-- Tests began with the expected missing decision, policy, result, model interface, and coordinator
-  failures.
-- The combined focused host-local regression sets pass 13 Domain and 6 Application tests, covering
-  exact selection, abstention, value-equal identity rejection, current eligibility, immutable
-  result binding, cancellation, invalid model output, nulls, and closed public surfaces.
+- Tests began with the expected missing transition, scene operation, and task-controller failures.
+- The focused host-local Domain regression passes 4 tests for exact application, abstention, stale
+  construction rejection, unchanged inputs, null rejection, and the closed pure surface.
+- Dedicated host-local Godot smokes pass exact selection and abstention resolution, stale/null/
+  uninitialized/repeated rejection, main-thread task installation, overlap rejection, cancellation,
+  safe model failure, stale completion rejection, reset, closed surfaces, and unchanged inputs.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,403 Domain tests, 512 Application tests, 607 Infrastructure tests, 8 architecture tests,
+  build, 2,407 Domain tests, 512 Application tests, 607 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility-
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
-- All ten new C# files are 12–199 lines with no lines longer than 120 characters.
-  `git diff --check` passes, and manual review found no unresolved findings.
-- Sandboxed MSBuild/VSTest was blocked or stalled on local IPC; each identical host-local focused
-  command passed. Product code was not changed to work around the sandbox.
-- Implementation commit `6f5e8e9` is published in mergeable draft PR #246. Initial hosted run
-  `34849735322` failed before execution with `steps: []` for all five jobs; this is Actions/account
-  infrastructure state, not product-test evidence, and the unchanged run was not retried.
+- All changed authored C# files are at most 456 lines with no lines longer than 120 characters.
+  `git diff --cached --check` passes, and manual review found no unresolved findings.
+- Sandboxed MSBuild/VSTest and Godot were blocked by local IPC or `user://logs`; each identical
+  host-local focused command passed. Product code was not changed to work around the sandbox.
+- Hosted run `34853418068` executed no job steps; host-local quality is the product evidence.
 - Unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Exact next bounded slice
 
-Take **Phase 7fn: apply an accepted move selection through the existing immutable transition**.
+Take **Phase 7fq: supply one exact one-shot move-decision model or one stable offline model**.
 
 Acceptance boundary:
 
-1. Add one pure Domain transition accepting an exact
-   `CharacterObjectSabotageMoveConsiderationResult`.
-2. For selection, delegate the result's exact request authority snapshots and exact selected
-   candidate to `CharacterObjectSabotageMoveTransition.Apply`, returning its fresh placement and
-   evidence result; for abstention, return `null` without changing any retained input.
-3. Add focused Domain tests for exact selected application, explicit abstention, stale or invalid
-   construction remaining impossible through the existing result contract, null rejection,
-   unchanged inputs, and one closed pure operation.
-4. Do not resolve against scene-owned state; add controllers, tasks, scene wiring, model sources,
-   serialization, provider adapters, model invocation, recovery, presentation, timing, persistence,
-   input, UI, events, transcripts, navigation, or actor movement.
+1. Add one temporary Godot model source retaining at most one exact caller-supplied
+   `ICharacterObjectSabotageMoveDecisionModel` for the next decision only.
+2. `TakeModel` must atomically consume that one-shot model; without one, return the same stable
+   fail-closed offline model on every call.
+3. The offline model must reject null requests, honor caller cancellation first, and otherwise fail
+   without returning a fabricated move decision.
+4. Prove exact one-shot selection, overlap rejection, later resupply, stable offline identity,
+   cancellation, no model invocation during selection, unchanged request state, and the smallest
+   public source surface in one focused credential-free Godot smoke.
+5. Do not add configured bindings, request serialization, provider adapters or invocation, a task
+   flow, main-scene wiring, automatic timing, application/recovery/presentation, persistence, input,
+   UI, events, time, transcripts, navigation, or actor movement.

@@ -12,7 +12,7 @@ namespace Allrpcs.Game;
 public partial class CharacterObjectSabotageMoveControllerSmokeCheck : Node
 {
     private static readonly string[] ExpectedMethodNames =
-        ["TryApply", "TryInitialize", "TryRecover"];
+        ["TryApply", "TryInitialize", "TryRecover", "TryResolveConsideration"];
 
     /// <inheritdoc />
     public override void _Ready()
