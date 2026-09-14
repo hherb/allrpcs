@@ -474,7 +474,7 @@ Acceptance:
     target-bound discovery-evidence value without applying it.
   - [x] Append that exact evidence to a fresh stable snapshot only after complete occurrence and
     evidence eligibility succeeds.
-- [ ] Test characters with mutually incompatible beliefs and goals.
+- [x] Test characters with mutually incompatible beliefs and goals.
   - [x] Author one immutable representative sage/enemy-agent fixture with explicit incompatible
     beliefs, goals, and rationale, without inferring conflict or adding runtime behavior.
   - [x] Project that declaration into two exact per-character perspectives in stable authored order
@@ -493,6 +493,12 @@ Acceptance:
     applying it or changing character state.
   - [x] Define one provider-neutral cancellation-aware incompatibility-response interface without
     implementing or invoking a model.
+  - [x] Obtain and validate one exact incompatibility response through that interface without
+    judging or applying it.
+  - [x] Obtain one complete exact two-perspective response round in stable declaration order without
+    returning partial state.
+  - [x] Bound that complete sequential response round with one shared finite deadline while
+    distinguishing caller cancellation.
 
 Acceptance:
 
