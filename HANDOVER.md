@@ -2,56 +2,52 @@
 
 ## Current state
 
-`main` contains merged PR #237 at `d6d145d`. The current branch is
-`codex/phase-7-incompatible-belief-goal-fixture` and advances one bounded Phase 7 slice:
+`main` contains merged PR #238 at `57f9177`. The current branch is
+`codex/phase-7-incompatibility-perspectives` and advances three bounded Phase 7 slices:
 
-- Phase 7eh adds `CharacterBeliefGoalIncompatibility`, an immutable Domain declaration binding two
-  value-distinct exact characters to one exact belief and goal retained by each character plus one
-  explicit non-blank rationale of at most 500 UTF-16 code units.
-- `RepresentativeSageEnemyAgentIncompatibilitySource` composes one fresh declaration from the
-  existing representative roles. Only the fixture characters' belief and goal sets are extended;
-  their exact knowledge, capabilities, limitations, relationships, controller assignments, and
-  public/private backgrounds are retained.
+- Phase 7ei adds `CharacterBeliefGoalIncompatibilityPerspective` and its pure projection. Only the
+  declaration's exact first or second character is accepted; the read-only projection returns both
+  orientations in stable declaration order with every nested reference retained.
+- Phase 7ej adds the closed canonical `CharacterBeliefGoalIncompatibilityResponseKind` values
+  `maintain-position`, `reconsider-belief`, `reconsider-goal`, and `seek-reconciliation`.
+- Phase 7ek adds `CharacterBeliefGoalIncompatibilityResponse`, retaining one exact perspective,
+  one exact canonical kind, and one non-blank explanation of at most 500 UTF-16 code units.
 
-The declaration rejects nulls, same-character values, and value-equal replacement beliefs or goals.
-It does not infer incompatibility from prose or keys, evaluate or resolve the conflict, change
-allegiance, schedule dialogue or sabotage, call a provider, or add scene, persistence, input, UI,
-event, time, transcript, movement, or sabotage-effect behavior.
+These Domain-only values do not infer or select a response, judge either position, resolve the
+conflict, alter a belief or goal, change allegiance, schedule dialogue or sabotage, call a provider,
+or add Application, Infrastructure, scene, persistence, input, UI, event, time, transcript,
+movement, or sabotage-effect behavior.
 
-Draft PR #238 is open from implementation commit `5d3d16b`. Hosted run `34807601323`
+Draft PR #239 is open from implementation commit `f47781f`. Hosted run `34808592102`
 completed with all five jobs at `steps: []`; this is Actions/account infrastructure state, not
 product-test or unsigned-build evidence, and should not be retried unchanged.
 
 ## Validation and review
 
-- The tests began with the expected `CS0246` compile failure for the absent declaration. Seven new
-  contract/source tests and five adjacent representative-role tests pass.
-- The first full run exposed six older dialogue tests whose single-goal assumption was broken by
-  extending the global sage role. Review moved all new authored state into the fresh fixture only;
-  the unchanged global representative roles and their complete dialogue regressions then passed.
+- Tests began with the expected missing-type compile failures for the perspective and response
+  vocabulary/value. The combined focused incompatibility-response suite passes 13 tests.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
-  build, 2,313 Domain tests, 487 Application tests, 607 Infrastructure tests, 8 architecture tests,
+  build, 2,332 Domain tests, 487 Application tests, 607 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
-  graphical launch.
-- Changed authored C# files are below 500 lines with no lines longer than 120 characters.
+  graphical launch. The sandbox-only run reached a clean build before VSTest loopback was denied.
+- All eight authored C# files are below 500 lines with no lines longer than 120 characters.
   `git diff --check` passes. No live-conformance switch was enabled and no provider was invoked.
-- Unrelated untracked `scripts/code_statistics.py` appeared during the work and remains untouched and
-  unstaged.
+- Unrelated untracked `scripts/code_statistics.py` remains untouched and unstaged.
 
 ## Exact next bounded slice
 
-Take **Phase 7ei: project the explicit incompatibility into exact per-character perspectives**.
+Take **Phase 7el: retain one complete exact two-character incompatibility response round**.
 
 Acceptance boundary:
 
-1. Define one immutable Domain perspective that retains the exact incompatibility declaration, one
-   exact subject character and its declared belief/goal, and the exact counterpart character and its
-   declared belief/goal. Accept only the declaration's exact first or second character reference;
-   reject value-equal replacements without inferring a side from prose or keys.
-2. Project the representative fixture into exactly two perspectives in stable declaration order,
-   retaining every exact nested reference without copying or mutating either character.
-3. Prove null/replacement rejection, both exact orientations, bounded two-entry output, stable order,
-   exact-instance retention, fresh independent fixture composition, and no mutation.
-4. Do not evaluate a response, decide which position is correct, resolve the conflict, change
-   allegiance, schedule dialogue or sabotage, call a provider, or add Application, Infrastructure,
-   scene, persistence, input, UI, event, time, transcript, movement, or sabotage-effect behavior.
+1. Define one immutable Domain round that retains an exact stable two-perspective projection and
+   exactly one exact response for each perspective in the same declaration order.
+2. Fully validate before construction: reject null entries, missing or duplicate subjects, reversed
+   order, response perspectives not retained by exact reference, and perspectives from different or
+   value-equal replacement declarations. Retain all accepted nested instances without copying or
+   mutating either character.
+3. Prove exact two-entry bounds, stable order, exact-instance retention, complete rejection, fresh
+   independent fixture composition, unchanged inputs, and a closed immutable public surface.
+4. Do not choose or apply a response, change belief, goal, relationship, or allegiance state,
+   schedule dialogue or sabotage, call a provider, or add Application, Infrastructure, scene,
+   persistence, input, UI, event, time, transcript, movement, or sabotage-effect behavior.
