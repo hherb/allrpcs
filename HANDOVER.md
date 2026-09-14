@@ -14,6 +14,10 @@
 - Phase 7gf applies an eligible exact substitution as a fresh overlay together with its exact fresh
   evidence, leaving the authoritative world-object snapshot and every source object unchanged.
 
+Implementation commit `f6ec34c` is published in mergeable draft PR #251. Hosted run `34902576897`
+was queued across all five credential-free jobs at the initial post-publication query; recheck its
+current state rather than treating that queued snapshot as a result.
+
 The implementation is pure Domain state and policy. It does not infer inventory, current placement,
 physical similarity, plausibility, paths, reachability, critical-route safety, or replacement
 eligibility. It does not replace a world object or scene body, recover or present a substitution,
