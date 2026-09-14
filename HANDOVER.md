@@ -10,8 +10,9 @@
   seam. `Main.tscn` wires it after the exact state, task, and presentation nodes, and an explicitly
   started selected result hides only the water-cask body.
 
-Draft PR #236 is open from implementation commit `c5b5d12`. Hosted run `34796908911` was queued
-when last observed; re-query its final state rather than assuming it executed product checks.
+Draft PR #236 is open from implementation commit `c5b5d12`. Hosted runs `34796908911` and
+`34796949495` completed with all five jobs at `steps: []`; this is Actions/account infrastructure
+state, not product-test or unsigned-build evidence, and should not be retried unchanged.
 
 Accepted abstention, idle, running, cancelled, failed, stale-presentation, repeated, and null-result
 states do not change presentation or task state. Startup remains inert. Nothing chooses timing,
