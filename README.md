@@ -872,6 +872,16 @@ rejects null entries, duplicate evidence identifiers, excess entries, and null a
 The provider-neutral request does not select or apply a move, recover a placement, project scene
 coordinates, invoke a model, or mutate any retained input.
 
+`CharacterObjectSabotageMoveDecision` explicitly selects one exact move-candidate evidence
+identifier or abstains with no selection. Its pure acceptance policy requires the exact considering
+character identifier and, for selection, the exact identifier of a candidate accepted by the
+complete current move policy. The immutable consideration result binds one accepted decision to its
+exact request and retains the exact selected request candidate, or `null` for abstention. A
+provider-neutral cancellation-aware Application interface obtains one decision, and its coordinator
+returns only that validated exact result. These seams do not apply or recover a move, mutate any
+placement or evidence snapshot, choose timing, add a task or scene wiring, or invoke a provider by
+themselves.
+
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
 and install both fresh explicit or first-eligible apply results, or only the fresh recovered

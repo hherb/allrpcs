@@ -499,6 +499,13 @@ Acceptance:
     water-cask outcome, while unrelated resolved targets leave it at the authored destination.
   - [x] Retain one immutable provider-neutral move consideration request with exact current
     authority snapshots and a fully validated bounded exact candidate collection.
+  - [x] Define an explicit provider-neutral move selection-or-abstention decision keyed to exact
+    character and evidence identifiers.
+  - [x] Accept that decision only for the exact considering character and a currently eligible
+    exact move candidate, while allowing explicit abstention without applying an effect.
+  - [x] Bind one accepted move decision to its exact request and selected exact candidate.
+  - [x] Define one provider-neutral cancellation-aware move-decision interface.
+  - [x] Obtain and validate one exact move decision through that interface.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
