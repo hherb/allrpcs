@@ -19,6 +19,10 @@ presentation, persistence, input, UI, events, time, transcripts, navigation, or 
 added. Construction performs no credential load, HTTP send, or model invocation. The unrelated
 untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `41dc01d` is published in mergeable draft PR #249. Initial hosted run
+`34880050881` queued all five credential-free jobs; its final status must be re-queried rather than
+inferred from the host-local result.
+
 ## Validation and review
 
 - Focused tests pass for the strict decoder, serializer, stream accumulator/completion, and HTTP
@@ -30,7 +34,8 @@ untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility-
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters.
-  Staged-diff review and live draft-PR status will be recorded before handoff.
+  `git diff --cached --check` and formatting verification pass, and manual review found no
+  unresolved findings.
 
 ## Exact next bounded slice
 
