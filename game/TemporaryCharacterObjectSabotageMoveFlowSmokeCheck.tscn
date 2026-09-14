@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveSource.cs" id="1"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageMoveController.cs" id="2"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveFlowController.cs" id="3"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageMoveFlowSmokeCheck.cs" id="4"]
+[ext_resource type="Script" path="res://TemporaryWorldObjectSource.cs" id="5"]
+
+[node name="TemporaryCharacterObjectSabotageMoveFlowSmokeCheck" type="Node"]
+
+[node name="TemporaryWorldObjectSource" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="TemporaryCharacterObjectSabotageMoveSource" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="CharacterObjectSabotageMoveController" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="TemporaryCharacterObjectSabotageMoveFlowController" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("4")

@@ -819,6 +819,34 @@ snapshots and ineligible operations fail without partial installation. The isola
 not wired into `Main.tscn`, selects no sabotage behavior or timing, and adds no persistence,
 navigation, presentation, provider, event, time, transcript, or input behavior.
 
+`TemporaryCharacterObjectSabotageMoveSource` retains the existing exact world-object snapshot and
+its tail water cask, authors exact source and destination locations, and exposes one representative
+enemy, complete physical access, the exact initial placement, empty evidence, one currently eligible
+move candidate, and its exact aligned recovery candidate. Its isolated smoke proves stable bounded
+read-only output and inert startup. It initializes no scene-owned state, applies or recovers nothing,
+and adds no coordinate, body, path, reachability, duration, timing, persistence, input, UI, event,
+transcript, navigation, provider, model, or presentation behavior.
+
+`TemporaryCharacterObjectSabotageMoveFlowController` initializes the existing move controller from
+that exact authored placement and empty evidence without applying the move. One explicit request
+delegates the existing all-or-nothing move transition; recovery projects the current authoritative
+evidence through one supplied perception snapshot and delegates the exact recovery transition.
+Repeat application, unseen evidence, and repeated recovery fail closed; recovery retains evidence,
+and source snapshots remain unchanged. The flow adds no automatic timing or choice, physical scene
+movement, persistence, UI, provider, or presentation.
+The main scene now composes the exact source, move controller, and explicit flow in dependency order.
+An opt-in smoke proves that ordinary startup retains the exact tail water cask, authored source
+placement, eligible move, aligned recovery, and empty scene-owned evidence without invoking either
+operation. No ordinary scene flow calls the move or recovery seams.
+
+`CharacterObjectSabotageMovePresentationController` binds one exact authoritative world object,
+exact source and destination `Location` instances, and explicit finite scene coordinates. It
+initially projects and then stale-safely advances only snapshots retaining that exact target at one
+of those exact locations. Value-equal replacement targets or locations, unsupported locations,
+stale or repeated snapshots, invalid coordinates, and nulls preserve the body position and last
+presented snapshot. This isolated presentation contract does not choose or apply sabotage, infer a
+path or coordinate, move an actor, or add timing, navigation, persistence, input, UI, or providers.
+
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
 and install both fresh explicit or first-eligible apply results, or only the fresh recovered
