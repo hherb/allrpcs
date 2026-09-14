@@ -878,9 +878,15 @@ character identifier and, for selection, the exact identifier of a candidate acc
 complete current move policy. The immutable consideration result binds one accepted decision to its
 exact request and retains the exact selected request candidate, or `null` for abstention. A
 provider-neutral cancellation-aware Application interface obtains one decision, and its coordinator
-returns only that validated exact result. These seams do not apply or recover a move, mutate any
-placement or evidence snapshot, choose timing, add a task or scene wiring, or invoke a provider by
-themselves.
+returns only that validated exact result. The pure consideration transition delegates selection to
+the existing all-or-nothing move transition and returns no application for abstention. The scene
+controller resolves a result only when its request retains the exact current placement and evidence
+snapshots: selection installs both fresh result snapshots atomically, while abstention consumes the
+exact request and retains both scene instances. A bounded scene task obtains one decision with
+caller cancellation, installs only a non-stale accepted result on the main thread, and exposes
+closed idle, running, completed, cancelled, and failed states plus terminal reset. These seams do
+not recover a move, choose timing, construct or supply a model, add ordinary-flow scene wiring, or
+invoke a provider by themselves.
 
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions

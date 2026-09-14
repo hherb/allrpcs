@@ -506,6 +506,12 @@ Acceptance:
   - [x] Bind one accepted move decision to its exact request and selected exact candidate.
   - [x] Define one provider-neutral cancellation-aware move-decision interface.
   - [x] Obtain and validate one exact move decision through that interface.
+  - [x] Apply an accepted move selection through the existing immutable placement/evidence
+    transition while preserving explicit abstention without state application.
+  - [x] Resolve one exact accepted move consideration result against scene-owned snapshots,
+    atomically installing selection output while retaining exact state for abstention.
+  - [x] Own one bounded move-decision task through closed scene terminal states and resolve only its
+    exact non-stale accepted result on the main thread.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
