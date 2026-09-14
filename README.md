@@ -847,6 +847,31 @@ stale or repeated snapshots, invalid coordinates, and nulls preserve the body po
 presented snapshot. This isolated presentation contract does not choose or apply sabotage, infer a
 path or coordinate, move an actor, or add timing, navigation, persistence, input, UI, or providers.
 
+`TemporaryCharacterObjectSabotageMovePresentationFlowController` composes that projection with the
+existing main-scene move state and explicit flow. Startup presents the water cask at its exact
+authored source coordinate without applying a move. Each explicit apply or perception-gated
+recovery first requires the presentation controller's exact last snapshot to match current
+scene-owned placements, then presents only the exact fresh successful transition. Repeat apply,
+unseen recovery, repeated recovery, and stale presentation fail closed. Recovery restores the exact
+retained source coordinate and evidence remains authoritative; world objects and all authored source
+snapshots remain unchanged. No ordinary caller or automatic schedule invokes these operations, and
+the coordinator adds no actor movement, derived coordinates or paths, evidence consumption,
+persistence, input, UI, events, time, transcripts, navigation, providers, or models.
+
+Ordinary focused-search resolution also forwards only the exact water-cask outcome and current
+perception to the move presentation flow. If an explicit move left its exact authoritative evidence,
+identifying that cask restores its retained source placement and scene coordinate; resolving another
+target leaves the cask at its destination. This forwarding neither applies sabotage nor changes
+world-object truth, actors, evidence, authored source snapshots, search policy, or any unrelated
+placement.
+
+`CharacterObjectSabotageMoveConsiderationRequest` immutably retains one exact character, physical-
+access snapshot, authoritative world-object, placement, and evidence snapshots, plus at most 64
+exact move candidates in stable caller order. It defensively copies the supplied candidates and
+rejects null entries, duplicate evidence identifiers, excess entries, and null authority inputs.
+The provider-neutral request does not select or apply a move, recover a placement, project scene
+coordinates, invoke a model, or mutate any retained input.
+
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
 and install both fresh explicit or first-eligible apply results, or only the fresh recovered
