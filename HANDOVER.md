@@ -17,6 +17,10 @@ These slices do not recover or present a move; construct, supply, serialize, or 
 ordinary-flow or main-scene wiring; choose sabotage behavior or timing; or add persistence, input,
 UI, events, time, transcripts, navigation, or actor movement.
 
+Implementation commit `cc8bf61` is published in mergeable draft PR #247. Initial hosted run
+`34853418068` failed before execution with `steps: []` for all five jobs; this is Actions/account
+infrastructure state, not product-test evidence, and the unchanged run was not retried.
+
 ## Validation and review
 
 - Tests began with the expected missing transition, scene operation, and task-controller failures.
@@ -33,6 +37,7 @@ UI, events, time, transcripts, navigation, or actor movement.
   `git diff --cached --check` passes, and manual review found no unresolved findings.
 - Sandboxed MSBuild/VSTest and Godot were blocked by local IPC or `user://logs`; each identical
   host-local focused command passed. Product code was not changed to work around the sandbox.
+- Hosted run `34853418068` executed no job steps; host-local quality is the product evidence.
 - Unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Exact next bounded slice
