@@ -18,6 +18,10 @@ It does not infer incompatibility from prose or keys, evaluate or resolve the co
 allegiance, schedule dialogue or sabotage, call a provider, or add scene, persistence, input, UI,
 event, time, transcript, movement, or sabotage-effect behavior.
 
+Draft PR #238 is open from implementation commit `5d3d16b`. Hosted run `34807601323`
+completed with all five jobs at `steps: []`; this is Actions/account infrastructure state, not
+product-test or unsigned-build evidence, and should not be retried unchanged.
+
 ## Validation and review
 
 - The tests began with the expected `CS0246` compile failure for the absent declaration. Seven new
