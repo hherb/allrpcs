@@ -895,6 +895,15 @@ the existing move state initialization; ordinary startup remains inert with the 
 idle task, source placement, and empty evidence. These scene seams add no configured binding,
 request serialization, provider adapter or invocation, automatic timing, recovery or presentation,
 persistence, input, UI, event, time, transcript, navigation, or actor-movement behavior.
+Infrastructure strictly decodes one complete selection-or-abstention document against the exact
+move request, serializes only the relevant trusted character, eligible candidate, and authored
+destination context into a stateless strict OpenAI Responses request, and completes only a bounded
+valid SSE lifecycle. One caller-composed authenticated adapter exposes that transport behind the
+provider-neutral move-decision interface. Construction performs no credential load or network I/O;
+explicit invocation validates credentials, response status and media type, redacts transport and
+semantic failures, and preserves caller cancellation. These contracts do not bind settings into
+the scene, select timing, apply or recover a move, project coordinates, persist state, or add input,
+UI, events, time, transcripts, navigation, or actor movement.
 
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
