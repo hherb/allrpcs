@@ -18,6 +18,10 @@ conflict, alter a belief or goal, change allegiance, schedule dialogue or sabota
 or add Application, Infrastructure, scene, persistence, input, UI, event, time, transcript,
 movement, or sabotage-effect behavior.
 
+Draft PR #239 is open from implementation commit `f47781f`. Hosted run `34808592102`
+completed with all five jobs at `steps: []`; this is Actions/account infrastructure state, not
+product-test or unsigned-build evidence, and should not be retried unchanged.
+
 ## Validation and review
 
 - Tests began with the expected missing-type compile failures for the perspective and response
