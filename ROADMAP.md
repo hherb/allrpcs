@@ -448,6 +448,8 @@ Acceptance:
     keeping unsupported providers fail-closed.
   - [x] Present one exact explicitly started completed model-selected concealment on the main-scene
     water-cask body once while abstention and invalid terminal states remain exact no-ops.
+  - [x] Explicitly acknowledge only the exact observed current selection or abstention so a later
+    concealment decision can start without automatic task reset or scene mutation.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
   to a critical conclusion.
   - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh

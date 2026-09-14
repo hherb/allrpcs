@@ -2,53 +2,55 @@
 
 ## Current state
 
-`main` contains merged PR #235 at `7ed263f`. The current branch is
-`codex/phase-7-model-concealment-presentation` and advances one bounded Phase 7 slice:
+`main` contains merged PR #236 at `3d38437`. The current branch is
+`codex/phase-7-concealment-result-acknowledgement` and advances one bounded Phase 7 slice:
 
-- Phase 7ef observes each fresh exact completed concealment-decision task result at most once and
-  presents only a selected result through the existing stale-safe compare-and-swap presentation
-  seam. `Main.tscn` wires it after the exact state, task, and presentation nodes, and an explicitly
-  started selected result hides only the water-cask body.
+- Phase 7eg adds one explicit acknowledgement operation to the completed concealment-result
+  presentation coordinator. It resets only the exact result already observed when a selection's
+  current concealment is the exact last-presented snapshot, or an abstention's exact request
+  concealment and evidence remain current.
+- Exact acknowledgement returns the task to idle with no result. The real main scene proves that a
+  later explicitly requested abstention can complete and be acknowledged after one selected result,
+  without changing the authored source, authoritative world object, presentation, or body position.
 
-Draft PR #236 is open from implementation commit `c5b5d12`. Hosted runs `34796908911` and
-`34796949495` completed with all five jobs at `steps: []`; this is Actions/account infrastructure
-state, not product-test or unsigned-build evidence, and should not be retried unchanged.
-
-Accepted abstention, idle, running, cancelled, failed, stale-presentation, repeated, and null-result
-states do not change presentation or task state. Startup remains inert. Nothing chooses timing,
-starts a model or sabotage automatically, resets a completed task, persists sabotage, adds
-input/UI/events/time/transcripts/movement, invokes a provider during standard validation, or adds
-another provider or sabotage effect.
+Unobserved, stale, idle, running, cancelled, failed, null, and repeated acknowledgements preserve
+task, concealment, evidence, and presentation state. `_Process` observes/presents but never
+acknowledges. Nothing chooses timing, starts a model or sabotage automatically, persists sabotage,
+adds input/UI/events/time/transcripts/movement, invokes a provider during standard validation, or
+adds another provider or sabotage effect.
 
 ## Validation and review
 
-- The focused coordinator smoke began with the expected `CS0246` compile failure for the absent
-  coordinator. The main-scene smoke then began with the expected missing-node failure before scene
-  wiring.
-- The isolated smoke passes exact selected presentation plus idle, running, abstaining, cancelled,
-  failed, stale, repeated, and null-result preservation. The real-main-scene smoke passes inert
-  startup and one explicitly started selected result hiding the exact water-cask body once without
-  changing task, source, world-object, or position state.
+- The acknowledgement-first smoke began with the expected `CS1061` compile failure for the absent
+  operation. The isolated smoke disables coordinator processing after tree entry so unobserved and
+  stale rejection are deterministic rather than dependent on frame order.
+- The isolated smoke passes exact selected and abstaining acknowledgement, a later explicit start,
+  and preservation for idle, running, cancelled, failed, unobserved, stale, null, and repeated
+  acknowledgement. The real-main-scene smoke passes selected acknowledgement followed by a later
+  acknowledged abstention with exact surrounding state.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
   build, 2,306 Domain tests, 487 Application tests, 607 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
   graphical launch.
-- All changed authored C# files are below 500 lines with no lines longer than 120 characters. No
-  live-conformance switch was enabled and no provider was invoked.
+- The initial sandbox quality run reached the known VSTest `SocketException (13)` restriction; the
+  identical host-local run passed. All changed authored C# files are below 500 lines with no lines
+  longer than 120 characters. No live-conformance switch was enabled and no provider was invoked.
 
 ## Exact next bounded slice
 
-Take **Phase 7eg: explicitly acknowledge one observed completed concealment result**.
+Take **Phase 7eh: explicitly author one incompatible-belief and incompatible-goal character
+fixture**.
 
 Acceptance boundary:
 
-1. Extend the presentation coordinator with one explicit operation that resets only the exact
-   completed task result it has already observed; do not reset from `_Process`.
-2. For a selection, require the exact current scene concealment to be the last-presented snapshot.
-   For abstention, require the exact request concealment and evidence snapshots still to be current.
-   Stale, unobserved, idle, running, cancelled, failed, null, and repeated acknowledgement must not
-   change task, state, or presentation.
-3. Prove one exact acknowledged selection or abstention returns the task to idle with no result and
-   permits a later explicitly requested decision without changing source or unrelated scene state.
-4. Do not add timing or automatic triggers, new input/UI, persistence, events/time/transcripts,
-   movement, another provider, another sabotage effect, or provider calls in standard validation.
+1. Define one immutable Domain declaration that binds two distinct exact characters to one exact
+   belief and one exact goal each, all retained by their owning character, plus one bounded explicit
+   incompatibility rationale. Do not infer incompatibility from prose, keys, or model output.
+2. Compose one fresh representative fixture from the existing sage and enemy-agent roles. Extend
+   only their authored belief/goal state if necessary to make both conflicts explicit; preserve each
+   role's existing knowledge, capabilities, limitations, and private/public boundary.
+3. Prove exact-instance retention, value-distinct character identity, bounded inputs, rejected
+   mismatches/nulls/same-character declarations, fresh independent composition, and no mutation.
+4. Do not schedule dialogue or sabotage, call a provider, resolve either conflict, change allegiance,
+   add scene/persistence/input/UI/events/time/transcripts/movement, or implement another sabotage
+   effect.
