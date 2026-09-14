@@ -22,7 +22,9 @@ coordinates, paths, reachability, travel, or duration; move an actor; consume ev
 authoritative world object; or add persistence, input, UI, events, time, transcripts, navigation,
 providers, models, or ordinary-flow presentation.
 
-Draft publication is pending from the implementation branch.
+Draft PR #244 is open from implementation commit `eec5c10`. Hosted run `34844320831` failed all
+five jobs immediately with `steps: []`; this is Actions/account infrastructure state, not product-
+test or unsigned-build evidence, and the unchanged run must not be retried.
 
 ## Validation and review
 
