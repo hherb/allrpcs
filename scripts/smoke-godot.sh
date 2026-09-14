@@ -65,6 +65,8 @@ ALLRPCS_INDEPENDENT_TASK_BODY_PRESENTATION_CONTROLLER_CHECK=1 godot --headless -
 ALLRPCS_OBJECT_SABOTAGE_MAIN_SCENE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_OBJECT_SABOTAGE_MODEL_PRESENTATION_MAIN_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OBJECT_SABOTAGE_CONCEALMENT_PRESENTATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_PRESENTATION_FLOW_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_WATER_CASK_INTERACTION_FOCUS_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
@@ -75,6 +77,8 @@ godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentConsiderationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentTaskControllerSmokeCheck.tscn --quit-after 120
+godot --headless --path "$repository_root/game" \
+    res://CharacterObjectSabotageConcealmentPresentationCoordinatorSmokeCheck.tscn --quit-after 120
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterObjectSabotageConcealmentModelSourceSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \

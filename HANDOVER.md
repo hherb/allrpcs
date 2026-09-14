@@ -2,33 +2,29 @@
 
 ## Current state
 
-`main` contains merged PR #234 at `8177676`. The current branch is
-`codex/phase-7-sabotage-model-binding` and advances three bounded Phase 7 slices:
+`main` contains merged PR #235 at `7ed263f`. The current branch is
+`codex/phase-7-model-concealment-presentation` and advances one bounded Phase 7 slice:
 
-- Phase 7ec binds one exact OpenAI concealment-decision model to its canonical
-  `CharacterModelSettings` and composes it through a caller-owned factory with default or custom
-  validated endpoints;
-- Phase 7ed extends the temporary concealment-model source with exact configured binding
-  initialization, compare-and-swap replacement and clearing, preserved one-shot precedence, and
-  stable fail-closed offline fallback; and
-- Phase 7ee composes, replaces, and clears the concealment binding with the existing selected-model
-  settings flow: OpenAI activates it, an OpenAI setting change replaces it, and Ollama clears it.
+- Phase 7ef observes each fresh exact completed concealment-decision task result at most once and
+  presents only a selected result through the existing stale-safe compare-and-swap presentation
+  seam. `Main.tscn` wires it after the exact state, task, and presentation nodes, and an explicitly
+  started selected result hides only the water-cask body.
 
-Draft PR #235 is open from implementation commit `a4de97a`. Hosted run `34795879224`
-completed with all five jobs at `steps: []`; it is Actions/account infrastructure state, not
-product-test or unsigned-build evidence, and should not be retried unchanged.
-
-Binding, factory, source, and settings-composition construction perform no credential or network
-input/output and invoke no model. Nothing starts concealment automatically, chooses timing,
-presents a completed model-selected concealment on the water-cask body, persists sabotage, adds
-UI/input/events/time/transcripts/movement, adds another provider, or adds another sabotage effect.
+Accepted abstention, idle, running, cancelled, failed, stale-presentation, repeated, and null-result
+states do not change presentation or task state. Startup remains inert. Nothing chooses timing,
+starts a model or sabotage automatically, resets a completed task, persists sabotage, adds
+input/UI/events/time/transcripts/movement, invokes a provider during standard validation, or adds
+another provider or sabotage effect.
 
 ## Validation and review
 
-- Every slice began with the expected compile or smoke failure for its absent operation or wiring.
-- Focused Application tests pass 3 binding cases; focused Infrastructure tests pass 5 factory
-  cases; the focused game build passes with zero warnings; and isolated Godot smokes pass exact
-  configured-source semantics and OpenAI activation/replacement plus Ollama clearing.
+- The focused coordinator smoke began with the expected `CS0246` compile failure for the absent
+  coordinator. The main-scene smoke then began with the expected missing-node failure before scene
+  wiring.
+- The isolated smoke passes exact selected presentation plus idle, running, abstaining, cancelled,
+  failed, stale, repeated, and null-result preservation. The real-main-scene smoke passes inert
+  startup and one explicitly started selected result hiding the exact water-cask body once without
+  changing task, source, world-object, or position state.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, zero-warning
   build, 2,306 Domain tests, 487 Application tests, 607 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the Compatibility-renderer
@@ -38,18 +34,17 @@ UI/input/events/time/transcripts/movement, adds another provider, or adds anothe
 
 ## Exact next bounded slice
 
-Take **Phase 7ef: present one exact completed model-selected concealment in the main scene**.
+Take **Phase 7eg: explicitly acknowledge one observed completed concealment result**.
 
 Acceptance boundary:
 
-1. Add one scene coordinator that observes a completed concealment-decision task result once and
-   presents only its exact selected concealment transition through the existing
-   `CharacterObjectSabotageConcealmentPresentationController` compare-and-swap seam.
-2. Treat accepted abstention as an exact no-op; failed, cancelled, stale, repeated, null, and
-   non-selected terminal states must not change visibility, concealment, evidence, task state, or
-   unrelated scene state.
-3. Wire the coordinator after the existing state, task, and presentation nodes and prove the exact
-   water-cask body hides only after an explicitly started selected result; do not start a model or
-   concealment during scene startup.
+1. Extend the presentation coordinator with one explicit operation that resets only the exact
+   completed task result it has already observed; do not reset from `_Process`.
+2. For a selection, require the exact current scene concealment to be the last-presented snapshot.
+   For abstention, require the exact request concealment and evidence snapshots still to be current.
+   Stale, unobserved, idle, running, cancelled, failed, null, and repeated acknowledgement must not
+   change task, state, or presentation.
+3. Prove one exact acknowledged selection or abstention returns the task to idle with no result and
+   permits a later explicitly requested decision without changing source or unrelated scene state.
 4. Do not add timing or automatic triggers, new input/UI, persistence, events/time/transcripts,
    movement, another provider, another sabotage effect, or provider calls in standard validation.

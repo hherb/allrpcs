@@ -701,15 +701,19 @@ without credential or network input/output. OpenAI-to-OpenAI changes replace the
 concealment model, while selecting Ollama clears it back to offline behavior. The explicit temporary
 consideration flow composes the authored enemy, access, world objects, current scene snapshots, and
 stable candidate collection only when asked, then delegates to that task. `Main.tscn` wires these
-nodes after exact sabotage-state initialization but does not start them automatically.
+nodes after exact sabotage-state initialization but does not start them automatically. One scene
+coordinator observes each fresh exact completed result at most once: a selection projects only the
+request's exact prior concealment to the current scene-owned concealment through the existing
+stale-safe presentation seam, while abstention and every other task state preserve presentation and
+task state. The main-scene water-cask body therefore hides only after an explicitly started selected
+result; startup remains inert.
 Infrastructure strictly decodes a complete selection-or-abstention document against that exact
 request, serializes only relevant authored character context and its eligible candidates into one
 stateless strict OpenAI Responses request, completes only a bounded valid SSE lifecycle, and exposes
 one caller-composed authenticated adapter behind the provider-neutral decision interface. Adapter
 and binding construction perform no credential or network input/output. These contracts do not
-decide timing, schedule work automatically, persist data, invoke a provider during scene startup,
-present a completed model-selected concealment on the scene body, or authorize another sabotage
-effect.
+decide timing, schedule work automatically, reset completed tasks, persist data, invoke a provider
+during scene startup, or authorize another sabotage effect.
 
 `CharacterObjectSabotageConcealmentRecoveryPolicy` permits recovery only for a `conceal` candidate
 whose target is currently concealed, whose exact target-bound evidence definition remains in the
