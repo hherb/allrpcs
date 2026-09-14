@@ -19,6 +19,10 @@ acknowledges. Nothing chooses timing, starts a model or sabotage automatically, 
 adds input/UI/events/time/transcripts/movement, invokes a provider during standard validation, or
 adds another provider or sabotage effect.
 
+Draft PR #237 is open from implementation commit `cc57b32`. Hosted run `34806704339`
+completed with all five jobs at `steps: []`; this is Actions/account infrastructure state, not
+product-test or unsigned-build evidence, and should not be retried unchanged.
+
 ## Validation and review
 
 - The acknowledgement-first smoke began with the expected `CS1061` compile failure for the absent
