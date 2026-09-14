@@ -517,6 +517,10 @@ Acceptance:
     without selecting timing or consuming an overlapping queued model.
   - [x] Wire that model source, task, and explicit consideration flow into the main scene while
     preserving inert startup and the exact initial move state.
+  - [x] Strictly decode one exact move decision JSON document against its current request.
+  - [x] Serialize one bounded strict OpenAI Responses move-decision request.
+  - [x] Complete one strict bounded OpenAI Responses move-decision SSE stream.
+  - [x] Expose one caller-composed authenticated OpenAI move-decision adapter.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
