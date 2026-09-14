@@ -477,6 +477,14 @@ Acceptance:
     exact occurrence.
   - [x] Apply one eligible exact move as a target-only placement replacement together with its exact
     fresh evidence, without moving an actor or changing the authoritative world object.
+  - [x] Retain one exact move-recovery candidate with its exact pre-move source placement without
+    applying recovery or inferring prior scene position.
+  - [x] Permit move recovery only while the exact target remains at its exact authored destination
+    and its exact authoritative evidence is visible to one character.
+  - [x] Restore only the exact retained source placement at the stable target index without
+    consuming evidence or changing unrelated placements.
+  - [x] Scene-own exact move placements and evidence and compare-and-swap eligible apply and
+    recovery results without installing stale, absent, or partial state.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

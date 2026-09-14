@@ -794,6 +794,31 @@ snapshot while retaining unrelated exact identifiers, the exact evidence view, a
 candidate. It does not consume evidence, mutate an object or perception, prove how the character
 discovered the evidence, or add routes, scenes, persistence, or providers.
 
+`CharacterObjectSabotageMoveDestination` binds one exact `move` occurrence to one exact authored
+destination. `WorldObjectPlacementSnapshot` retains at most 64 exact authoritative object/location
+pairs in stable copied order with value-duplicate object identifiers rejected. One move candidate
+requires its destination and discovery evidence to retain the same exact occurrence. Its complete
+policy requires the existing object-sabotage evidence eligibility, the exact authoritative target
+placement, and a destination with a different location identifier. The immutable transition
+replaces only that target placement at its stable index and appends the exact fresh evidence as one
+all-or-nothing result. It does not infer coordinates, paths, reachability, travel, timing, current
+actor location, or scene movement.
+
+`CharacterObjectSabotageMoveRecoveryCandidate` retains that exact move candidate and one exact
+pre-move source placement for the occurrence target, rejecting exact and value-equal destination
+reuse. Recovery requires the exact target to remain at the exact authored destination, the exact
+evidence definition to remain authoritative, and its identifier to appear in one character evidence
+view. The immutable transition restores the exact retained source placement at the same stable
+index while preserving unrelated placements and all evidence. It does not infer where the object
+was, consume evidence, mutate an authoritative object or perception, or move a scene body.
+
+`CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
+snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the
+fresh recovered placements while retaining the exact evidence snapshot. Stale, value-equal expected
+snapshots and ineligible operations fail without partial installation. The isolated controller is
+not wired into `Main.tscn`, selects no sabotage behavior or timing, and adds no persistence,
+navigation, presentation, provider, event, time, transcript, or input behavior.
+
 `CharacterObjectSabotageConcealmentController` initializes exact concealment and authoritative
 evidence snapshots once. Its compare-and-swap operations delegate the complete Domain transitions
 and install both fresh explicit or first-eligible apply results, or only the fresh recovered

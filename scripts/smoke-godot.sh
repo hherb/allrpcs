@@ -74,6 +74,8 @@ ALLRPCS_WATER_CASK_SABOTAGE_INVESTIGATION_CHECK=1 godot --headless --path "$repo
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://CharacterObjectSabotageMoveControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentConsiderationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentTaskControllerSmokeCheck.tscn --quit-after 120
