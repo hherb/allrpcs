@@ -18,6 +18,10 @@
 - Phase 7gb explicitly acknowledges only an already-observed completed result whose exact selection
   presentation, or exact abstention request snapshots, remain current.
 
+Implementation commit `982ad10` is published in mergeable draft PR #250. Hosted run `34886260455`
+failed before execution with `steps: []` for all five jobs; this is Actions/account infrastructure
+state, not product-test or unsigned-build evidence, and the unchanged run was not retried.
+
 Binding, factory, source, and settings composition perform no credential or network input/output
 and invoke no model. Startup remains inert. Nothing chooses timing, starts sabotage automatically,
 recovers a move automatically, persists sabotage, adds input/UI/events/time/transcripts/navigation
