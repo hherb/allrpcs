@@ -20,6 +20,10 @@ input/output. Nothing invokes a provider at startup, starts sabotage automatical
 persists concealment, adds UI/input/events/time/transcripts/movement, or adds another sabotage
 effect.
 
+Draft PR #234 is open from implementation commit `1de6f05`. Hosted run `34794615126` completed
+with all five jobs at `steps: []`; it is Actions/account infrastructure state, not product-test or
+unsigned-build evidence, and should not be retried unchanged.
+
 ## Validation and review
 
 - Every slice began with the expected compile failure for its absent public operation or type.
@@ -33,6 +37,8 @@ effect.
   graphical launch.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters. No
   live-conformance switch was enabled and no provider was invoked.
+- Hosted run `34794615126` executed no job steps; host-local quality is the current product
+  evidence.
 
 ## Exact next bounded slice
 
