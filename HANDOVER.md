@@ -19,6 +19,10 @@ through these bounded slices:
   composes the adapter over caller-owned HTTP, credential, and default or validated endpoint
   dependencies without construction-time input/output or model invocation.
 
+Implementation commit `1eb0bfb` is published in mergeable draft PR #256. Hosted run
+`34937945054` failed before executing any steps in all five credential-free jobs (`steps: []`), so
+it is Actions/account infrastructure state rather than product-test evidence and was not retried.
+
 The slice does not add configured model-source ownership, settings composition, scene wiring,
 automatic invocation, acknowledgement, presentation, persistence, input, UI, timing, scheduling,
 events, time, transcripts, navigation, actor movement, another provider, or another sabotage
