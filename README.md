@@ -856,14 +856,20 @@ The scene controller resolves a result only when its request retains the exact c
 substitution and evidence snapshots, installs both fresh selection snapshots atomically, and accepts
 each exact request at most once. A closed scene task owns one decision through idle, running,
 completed, cancelled, and failed states, resolves only a non-stale successful result on the main
-thread, and resets only explicitly from terminal state. One temporary source supplies exactly one
-caller-composed model or a stable fail-closed offline model. The main scene composes exact current
-source and scene snapshots into one request only on explicit start; selection and abstention resolve
-without automatic presentation, while overlap, cancellation, provider failure, invalid decisions,
-and stale success remain mutation-free. The strict JSON boundary canonicalizes accepted identifiers
-back to exact request instances, rejects malformed or unsupported documents behind one bounded
-error, and serializes a stateless streaming OpenAI request with a closed selection-or-null schema
-and only bounded trusted character, target, replacement, and eligibility context.
+thread, and resets only explicitly from terminal state. One temporary source gives an exact one-shot
+model precedence over an exact configured binding, otherwise returning one stable fail-closed
+offline model. Binding initialization, replacement, and clearing use exact-reference compare-and-
+swap and preserve a queued one-shot. The selected-settings scene flow composes, replaces, or clears
+the OpenAI substitution binding without construction-time credential or network input/output. The
+main scene composes exact current source and scene snapshots into one request only on explicit start;
+overlap, cancellation, provider failure, invalid decisions, and stale success remain mutation-free.
+A scene coordinator observes each fresh completed result once, projects only a selected result
+through the existing exact substitution presentation seam, and explicitly acknowledges only an
+already-observed result whose presentation or abstention state remains current. The strict JSON
+boundary canonicalizes accepted identifiers back to exact request instances, rejects malformed or
+unsupported documents behind one bounded error, and serializes a stateless streaming OpenAI request
+with a closed selection-or-null schema and only bounded trusted character, target, replacement, and
+eligibility context.
 
 The request-bound substitution stream accumulator accepts only the supported OpenAI Responses
 semantic lifecycle, bounds output deltas, validates the complete output-text document through the
@@ -876,8 +882,8 @@ HTTP and credential dependencies, requires an event-stream success response, red
 failures, and performs no input/output until explicitly invoked. Its immutable Application binding
 retains the exact OpenAI settings and model; the factory creates that binding with a default or
 validated caller-supplied endpoint without loading credentials, sending HTTP, or invoking a model.
-These contracts do not add scene binding composition, automatic invocation, acknowledgement,
-presentation, persistence, timing, scheduling, event, time, transcript, navigation, input, or UI.
+These contracts add no automatic invocation or acknowledgement, persistence, timing, scheduling,
+event, time, transcript, navigation, input, or UI.
 
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
 snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the

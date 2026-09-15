@@ -214,6 +214,7 @@
 [ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionTaskController.cs" id="212_object_sabotage_substitution_task_controller"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController.cs" id="213_object_sabotage_substitution_consideration_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionConsiderationMainSceneSmokeCheck.cs" id="214_object_sabotage_substitution_consideration_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionPresentationCoordinator.cs" id="215_object_sabotage_substitution_presentation_coordinator"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -602,6 +603,9 @@ script = ExtResource("212_object_sabotage_substitution_task_controller")
 
 [node name="TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("213_object_sabotage_substitution_consideration_flow")
+
+[node name="CharacterObjectSabotageSubstitutionPresentationCoordinator" type="Node" parent="."]
+script = ExtResource("215_object_sabotage_substitution_presentation_coordinator")
 
 [node name="TemporaryCharacterObjectSabotageMoveModelSource" type="Node" parent="."]
 script = ExtResource("199_object_sabotage_move_model_source")

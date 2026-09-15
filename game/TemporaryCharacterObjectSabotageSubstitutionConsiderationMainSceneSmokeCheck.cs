@@ -19,6 +19,10 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
     private TemporaryCharacterObjectSabotageSubstitutionModelSource modelSource = null!;
     private CharacterObjectSabotageSubstitutionTaskController task = null!;
     private TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController flow = null!;
+    private CharacterObjectSabotageSubstitutionPresentationController presentation = null!;
+    private CharacterObjectSabotageSubstitutionPresentationCoordinator coordinator = null!;
+    private CanvasItem originalBody = null!;
+    private CanvasItem replacementBody = null!;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
     private CharacterObjectSabotageSubstitutionSnapshot initialSubstitutions = null!;
@@ -48,8 +52,16 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
             "../CharacterObjectSabotageSubstitutionTaskController");
         flow = GetNode<TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController>(
             "../TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController");
+        presentation = GetNode<CharacterObjectSabotageSubstitutionPresentationController>(
+            "../CharacterObjectSabotageSubstitutionPresentationController");
+        coordinator = GetNode<CharacterObjectSabotageSubstitutionPresentationCoordinator>(
+            "../CharacterObjectSabotageSubstitutionPresentationCoordinator");
+        originalBody = GetNode<CanvasItem>("../InteractionCandidates/WaterCask/Body");
+        replacementBody = GetNode<CanvasItem>(
+            "../InteractionCandidates/WaterCask/SubstituteBody");
         initialSubstitutions = source.Substitutions;
         initialEvidence = source.Evidence;
+        coordinator.SetProcess(false);
         SetProcess(true);
     }
 
@@ -94,14 +106,23 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
         bool unchangedBeforeRequest = ReferenceEquals(state.Substitutions, initialSubstitutions)
             && ReferenceEquals(state.Evidence, initialEvidence)
             && task.Status == CharacterObjectSabotageSubstitutionTaskStatus.Idle
-            && task.Result is null;
+            && task.Result is null
+            && ReferenceEquals(presentation.LastPresentedSubstitutions, initialSubstitutions)
+            && originalBody.Visible
+            && !replacementBody.Visible
+            && !coordinator.TryPresentCompletedResult()
+            && !coordinator.TryAcknowledgeCompletedResult();
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart()
             && task.Status == CharacterObjectSabotageSubstitutionTaskStatus.Running;
         bool overlapRetained = modelSource.TrySupplyModel(overlapModel)
             && !flow.TryStart();
 
-        if (!unchangedBeforeRequest || !started || !overlapRetained || !HasClosedSurface())
+        if (!unchangedBeforeRequest
+            || !started
+            || !overlapRetained
+            || !HasClosedSurface()
+            || !HasClosedCoordinatorSurface())
         {
             Fail("Temporary substitution consideration failed explicit start or overlap handling.");
             return;
@@ -139,7 +160,23 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
                 appliedEvidence.Entries.Single(),
                 source.Candidate.Evidence.Evidence)
             || overlapModel!.CallCount != 0
-            || !task.TryReset()
+            || coordinator.TryAcknowledgeCompletedResult()
+            || !coordinator.TryPresentCompletedResult()
+            || !ReferenceEquals(presentation.LastPresentedSubstitutions, appliedSubstitutions)
+            || originalBody.Visible
+            || !replacementBody.Visible
+            || coordinator.TryPresentCompletedResult()
+            || !presentation.TryPresent(appliedSubstitutions, initialSubstitutions)
+            || !originalBody.Visible
+            || replacementBody.Visible
+            || coordinator.TryAcknowledgeCompletedResult()
+            || !presentation.TryPresent(initialSubstitutions, appliedSubstitutions)
+            || originalBody.Visible
+            || !replacementBody.Visible
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || coordinator.TryAcknowledgeCompletedResult()
+            || task.Status != CharacterObjectSabotageSubstitutionTaskStatus.Idle
+            || task.Result is not null
             || !flow.TryStart())
         {
             Fail("Temporary substitution consideration failed exact request or resolution.");
@@ -159,9 +196,16 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
         if (task.Status != CharacterObjectSabotageSubstitutionTaskStatus.Completed
             || task.Result is not { SelectedCandidate: null }
             || overlapModel!.CallCount != 1
+            || coordinator.TryPresentCompletedResult()
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || coordinator.TryAcknowledgeCompletedResult()
+            || task.Status != CharacterObjectSabotageSubstitutionTaskStatus.Idle
+            || task.Result is not null
             || !ReferenceEquals(state.Substitutions, appliedSubstitutions)
             || !ReferenceEquals(state.Evidence, appliedEvidence)
-            || !task.TryReset()
+            || !ReferenceEquals(presentation.LastPresentedSubstitutions, appliedSubstitutions)
+            || originalBody.Visible
+            || !replacementBody.Visible
             || !flow.TryStart())
         {
             Fail("Temporary substitution abstention changed exact scene state.");
@@ -182,6 +226,9 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
             || task.Result is not null
             || !ReferenceEquals(state.Substitutions, appliedSubstitutions)
             || !ReferenceEquals(state.Evidence, appliedEvidence)
+            || !ReferenceEquals(presentation.LastPresentedSubstitutions, appliedSubstitutions)
+            || originalBody.Visible
+            || !replacementBody.Visible
             || source.Substitutions.Entries.Count != 0
             || source.Evidence.Entries.Count != 0)
         {
@@ -192,8 +239,8 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
         GD.Print(
             "Temporary substitution consideration main-scene smoke passed: no automatic effect, "
             + "exact request composition, one-shot selection and abstention, atomic main-thread "
-            + "resolution, overlap preservation, stable offline failure, closed surface, and "
-            + "unchanged source state.");
+            + "resolution, overlap preservation, stable offline failure, closed surface, one-time "
+            + "presentation, exact acknowledgement, and unchanged source state.");
         GetTree().Quit();
     }
 
@@ -210,6 +257,26 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionConsiderationMa
             .ToArray();
 
         return methods.SequenceEqual(["TryStart", "_Ready"])
+            && type.GetProperties(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly).Length == 0;
+    }
+
+    private static bool HasClosedCoordinatorSurface()
+    {
+        Type type = typeof(CharacterObjectSabotageSubstitutionPresentationCoordinator);
+        string[] methods = type.GetMethods(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly)
+            .Where(method => !method.IsSpecialName)
+            .Select(method => method.Name)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+
+        return methods.SequenceEqual(
+                ["TryAcknowledgeCompletedResult", "TryPresentCompletedResult", "_Process", "_Ready"])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
