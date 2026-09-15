@@ -17,6 +17,9 @@ Live GitHub state still reports draft PR #269 as open on
   inert, while one switch-gated smoke proves exact selection, abstention, reset, overlap
   preservation, and fail-closed offline behavior.
 
+Implementation commit `b87d437` is published in draft PR #270, intentionally targeting #269's
+branch while that parent remains open. Retarget #270 to `main` after #269 merges.
+
 No evidence is exposed, applied, presented, or acknowledged. No live dialogue is created or
 delivered, and no source event, delivered event, occurrence, witness, candidate, transcript, truth,
 character, world object, perception, or other authoritative state is mutated. No automatic task,
