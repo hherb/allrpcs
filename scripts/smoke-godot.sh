@@ -93,6 +93,10 @@ godot --headless --path "$repository_root/game" \
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageSubstitutionConsiderationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://CharacterObjectSabotageContaminationControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterObjectSabotageContaminationTaskControllerSmokeCheck.tscn --quit-after 120
+godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageSubstitutionTaskControllerSmokeCheck.tscn --quit-after 120
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterObjectSabotageSubstitutionModelSourceSmokeCheck.tscn --quit-after 30
