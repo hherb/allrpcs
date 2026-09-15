@@ -348,6 +348,8 @@ Current continuation:
 - [x] Select one exact observable misquotation-evidence candidate, retain a bounded provider-neutral
   consideration, bind only its exact actor's exact current selection or abstention, and obtain one
   validated result through a cancellation-aware provider-neutral model seam.
+- [x] Strictly decode and stream one exact misquotation-evidence decision, serialize its bounded
+  stateless OpenAI request and closed schema, and compose an exact authenticated model binding.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

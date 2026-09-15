@@ -908,7 +908,15 @@ contracts do not expose or apply evidence, change dialogue or truth, or mutate a
 event, audience, transcript, caller collection, or world state. A provider-neutral cancellation-aware
 Application interface obtains one decision, and its controller forwards the exact request and caller
 cancellation once before constructing only the existing validated result. It adds no provider,
-decoder, retry, deadline, fallback, task, scene, persistence, or application behavior.
+retry, deadline, fallback, task, scene, persistence, or application behavior. The strict OpenAI
+path accepts only `actorId` plus a nullable zero-based candidate index, rebinds both to exact request
+instances, requires a complete bounded semantic-event/SSE lifecycle, and serializes one stateless
+streaming request with trusted actor/candidate context and a closed schema. Its caller-composed
+adapter loads one credential only on explicit invocation, rejects failed response bodies without
+reading them, and requires an event-stream success response. The exact settings/model binding and
+factory retain caller-owned dependencies without construction-time credential or network I/O.
+This transport path does not expose or apply evidence, deliver dialogue, mutate truth or
+transcripts, select retries or fallbacks, or compose a task, scene, settings source, or persistence.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
