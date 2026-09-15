@@ -346,7 +346,8 @@ Current continuation:
 - [x] Define one exact heard-source misquotation proposal, strict delivered-dialogue occurrence,
   and non-actor witness seam without rewriting dialogue truth or automatically delivering text.
 - [x] Select one exact observable misquotation-evidence candidate, retain a bounded provider-neutral
-  consideration, and accept only its exact actor's exact current selection or abstention.
+  consideration, bind only its exact actor's exact current selection or abstention, and obtain one
+  validated result through a cancellation-aware provider-neutral model seam.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
