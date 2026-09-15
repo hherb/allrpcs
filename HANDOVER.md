@@ -14,6 +14,10 @@
 - visible authoritative exact evidence permits recovery into a fresh snapshot that removes only
   the value-matching contaminated target without consuming evidence.
 
+Implementation commit `62f6069` is published in mergeable draft PR #258. Hosted run
+`34941813631` failed before executing any steps in all five credential-free jobs (`steps: []`), so
+it is Actions/account infrastructure state rather than product-test evidence and was not retried.
+
 No provider was invoked. The work adds no candidate selection, consideration/model/provider path,
 controller, scene ownership, presentation, persistence, input, UI, contamination contents or
 effects, ingredient-state coupling, timing, scheduling, events, time, transcripts, navigation, or
