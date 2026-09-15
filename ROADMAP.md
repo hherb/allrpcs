@@ -354,6 +354,8 @@ Current continuation:
   cancellation-aware decision task, and start it only through one explicit isolated scene flow.
 - [x] Author one stable exact observable misquotation-evidence candidate and compose it into an
   inert source-owned main-scene consideration flow without exposing or applying the evidence.
+- [x] Retain bounded exact exposed misquotation evidence, append only one accepted exact selection,
+  and own the exact exposure snapshot through a stale-safe scene controller without presentation.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

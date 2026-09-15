@@ -2,62 +2,61 @@
 
 ## Current state
 
-Live GitHub state still reports draft PR #269 as open on
-`codex/phase-7-misquotation-model-source`, despite the previous-session completion report. Branch
-`codex/phase-7-misquotation-evidence-source` is therefore based directly on #269's exact head
-`cfdea44` and advances Phase 7 through Phase 7iu:
+PR #270 is merged into `main` at `79cae26`. Branch
+`codex/phase-7-misquotation-evidence-exposure` advances Phase 7 through the exact exposure-state
+and scene-ownership boundary:
 
-- `TemporaryCharacterDialogueMisquotationEvidenceSource` retains one stable representative enemy,
-  exact heard source event, exact already-composed delivered occurrence, exact non-actor witness,
-  and exact observable evidence candidate;
-- `TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController` now owns that source
-  and creates a fresh request retaining its exact actor and candidate only on explicit `TryStart()`;
-  overlap is rejected before a queued one-shot model is consumed; and
-- `Main.tscn` owns the source, model source, task, and flow in dependency order. Ordinary startup is
-  inert, while one switch-gated smoke proves exact selection, abstention, reset, overlap
-  preservation, and fail-closed offline behavior.
+- `CharacterDialogueMisquotationEvidenceExposureSnapshot` copies at most 64 exact evidence entries
+  in stable order, rejecting nulls and duplicate exact delivered events while allowing distinct
+  value-equal events;
+- `CharacterDialogueMisquotationEvidenceExposureTransition` returns the exact current snapshot for
+  abstention or appends one accepted exact selection into a fresh snapshot, rejecting exact repeat
+  delivery and capacity exhaustion without partial state; and
+- `CharacterDialogueMisquotationEvidenceExposureController` initializes one exact snapshot once
+  and resolves an exact request at most once only from expected current state. Selection installs
+  the fresh snapshot; abstention retains the exact current instance.
 
-Implementation commit `b87d437` is published in draft PR #270, intentionally targeting #269's
-branch while that parent remains open. Retarget #270 to `main` after #269 merges.
-
-No evidence is exposed, applied, presented, or acknowledged. No live dialogue is created or
-delivered, and no source event, delivered event, occurrence, witness, candidate, transcript, truth,
-character, world object, perception, or other authoritative state is mutated. No automatic task,
-credential or provider I/O, persistence, input, retry, timing, scheduling, navigation, or movement
-behavior was added. The unrelated untracked `scripts/code_statistics.py` remains untouched and must
-stay unstaged.
+No task result is observed, presented, acknowledged, discovered, corrected, or persisted. The new
+controller is not in `Main.tscn`; no dialogue, truth, transcript, character, event, audience, world
+object, perception, or other authoritative state is mutated. No automatic task, credential or
+provider I/O, input, retry, timing, scheduling, navigation, or movement behavior was added. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Each slice began with its expected missing-source, missing-parameterless-flow, or missing-main-node
-  failure.
-- The isolated source, source-owned consideration flow, and switch-gated main-scene smokes pass.
-- Sandboxed `./scripts/quality.sh` produced a zero-warning build, then VSTest was blocked by the known
-  loopback `SocketException (13)`. The identical host-local command passes workflow validation,
-  restore, formatting, a zero-warning build, 2,536 Domain tests, 542 Application tests, 897
-  Infrastructure tests, 8 architecture tests, scenario validation, every credential-free headless
-  Godot smoke, and the final Compatibility renderer launch.
-- Session-wide review checked exact actor/event/occurrence/witness/candidate retention, all four
-  existing policies, fresh request composition, one-shot precedence, overlap preservation, explicit
-  reset, offline failure, main-scene dependency order, closed public surfaces, ordinary inert
-  startup, file sizes, C# line lengths, and whitespace. No unresolved issue remains.
+- Phase 7iv began with the expected missing snapshot and transition failures; 10 focused Domain
+  tests now prove copying, bounds, exact delivered-event uniqueness, distinct value-equal allowance,
+  selection append, abstention identity, failure atomicity, null rejection, and closed surfaces.
+- The exposure-controller slice has a credential-free isolated Godot smoke proving one-time
+  initialization, exact compare-and-swap selection, one-shot abstention, stale, duplicate, repeated,
+  uninitialized and null rejection, nested reference retention, closed surface, and atomic failure.
+- Sandboxed VSTest and Godot were blocked only by the known loopback and `user://logs` restrictions.
+  The identical host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
+  zero-warning build, 2,546 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
+  architecture tests, scenario validation, every credential-free Godot smoke, and the final
+  Compatibility renderer launch.
+- Session-wide review checked exact nested event retention, distinct value-equal acceptance,
+  duplicate and capacity rejection, selection and abstention identity, one-time request resolution,
+  stale-safe atomic failure, closed surfaces, file sizes, C# line lengths, formatting, and
+  whitespace. No unresolved issue remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7iv: retain and append exact exposed misquotation evidence**.
+Take **Phase 7ix: observe and explicitly acknowledge one exposed misquotation-evidence result**.
 
 Acceptance boundary:
 
-1. Add one immutable `CharacterDialogueMisquotationEvidenceExposureSnapshot` that copies at most 64
-   exact evidence entries into stable caller order and rejects nulls or duplicate exact delivered
-   events before retaining anything.
-2. Add one pure exposure transition that accepts the exact current snapshot and one validated
-   `CharacterDialogueMisquotationEvidenceConsiderationResult`: append its exact selected evidence
-   into a fresh snapshot, or return the exact current snapshot for abstention.
-3. Reject an already-exposed exact delivered event and overflow, preserve all existing exact entries
-   and every nested source/delivered event, and allow a distinct value-equal delivered event under
-   the existing exact-reference rule.
-4. Do not add a scene controller or `Main.tscn` wiring; change the current source, task, model, or
-   flow; present or acknowledge evidence; mutate dialogue, transcripts, truth, characters, world
-   state, or perception; or add provider, persistence, input, retry, timing, scheduling, navigation,
-   or movement behavior.
+1. Add one isolated scene coordinator that observes each fresh exact completed
+   `CharacterDialogueMisquotationEvidenceTaskController` result at most once and delegates it to
+   `CharacterDialogueMisquotationEvidenceExposureController` only when the result request can
+   resolve from the controller's exact current snapshot.
+2. Selected evidence must install the transition's fresh snapshot; abstention must retain the exact
+   current snapshot. Stale, duplicate, full, idle, running, cancelled, failed, null, and repeatedly
+   observed results must be inert.
+3. Add explicit acknowledgement that resets only the exact completed result already observed while
+   the exposure controller still retains the expected post-resolution snapshot; repeated or stale
+   acknowledgement must fail closed.
+4. Prove the flow in an isolated credential-free smoke. Do not add it to `Main.tscn`; present,
+   discover, correct, or persist evidence; change the existing source/model/task/start flow; deliver
+   dialogue; mutate truth, transcripts, characters, events, audiences, world state, or perception;
+   or add provider, input, retry, timing, scheduling, navigation, or movement behavior.

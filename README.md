@@ -931,6 +931,18 @@ expose or apply evidence, present or acknowledge a result, deliver dialogue, mut
 transcript, or add credentials, provider traffic, persistence, input, retry, timing, scheduling,
 navigation, or movement.
 
+`CharacterDialogueMisquotationEvidenceExposureSnapshot` defensively copies at most 64 exact
+evidence entries in stable caller order and rejects nulls or duplicate exact delivered events while
+allowing distinct value-equal events. Its pure exposure transition returns the exact current
+snapshot for abstention or appends the selected result evidence into a fresh snapshot; exact repeat
+delivery and capacity exhaustion fail without changing current state. A scene controller initializes
+one exact snapshot once and resolves each exact consideration request at most once only from the
+expected current snapshot. Selection installs the fresh transition result, while abstention retains
+the exact current instance. Stale, duplicate, overflowing, repeated, uninitialized, and null inputs
+leave controller state unchanged. These contracts do not present, acknowledge, discover, correct,
+or persist evidence; change dialogue, truth, transcripts, characters, or world state; or compose
+task results into the main scene.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
