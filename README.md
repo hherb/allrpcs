@@ -880,14 +880,15 @@ the marker unchanged. Recovery hides only the marker and does not consume eviden
 resolved perception, actors, source snapshots, positions, or authoritative world objects.
 
 `CharacterDialogueMisquotationProposal` retains one exact prior dialogue event, bounded differing
-quotation text, one exact actor, and one canonical capability requirement while leaving the source delivery and
-audience unchanged. Its pure eligibility policy requires the actor to value-match the supplied
-character, to have heard the source as an explicit listener, and to own the required authored
-capability. Truth-equivalent, blank, excessive, unheard, wrong-actor, and missing-capability inputs
-fail closed. `CharacterDialogueMisquotationOccurrence` then binds one exact proposal to one exact
-already-composed dialogue event. Its pure policy requires an eligible proposal, the exact proposal
-actor identifier as speaker, exact proposed text, and at least one listener. It does not create, select,
-send, append, or persist dialogue, infer hearing from positions, or alter the source event.
+quotation text, one exact actor, and one canonical capability requirement while leaving the source
+delivery and audience unchanged. Its pure eligibility policy requires the actor to value-match the
+supplied character, to have heard the source as an explicit listener, and to own the required
+authored capability. Truth-equivalent, blank, excessive, unheard, wrong-actor, and
+missing-capability inputs fail closed. `CharacterDialogueMisquotationOccurrence` then binds one
+exact proposal to one exact already-composed dialogue event. Its pure policy requires an eligible
+proposal, the exact proposal actor identifier as speaker, exact proposed text, and at least one
+listener. It does not create, select, send, append, or persist dialogue, infer hearing from
+positions, or alter the source event.
 
 `CharacterDialogueMisquotationEvidence` identifies one exact non-actor witness for one exact
 misquotation occurrence. Its pure policy requires that witness to occur in both the unchanged
@@ -917,6 +918,18 @@ reading them, and requires an event-stream success response. The exact settings/
 factory retain caller-owned dependencies without construction-time credential or network I/O.
 This transport path does not expose or apply evidence, deliver dialogue, mutate truth or
 transcripts, select retries or fallbacks, or compose a task, scene, settings source, or persistence.
+
+`TemporaryCharacterDialogueMisquotationEvidenceSource` authors one stable representative enemy,
+one exact heard source event, one exact already-composed delivered occurrence, and one exact
+observable non-actor witness candidate. Its source-owned consideration flow creates a fresh request
+retaining that exact actor and candidate only on explicit start, then uses the existing one-shot,
+configured, or offline model selection and bounded task. The main scene owns those inert nodes in
+dependency order; its switch-gated smoke proves exact selection, abstention, overlap preservation,
+explicit reset, and fail-closed offline behavior without changing either dialogue event or the
+candidate. Ordinary startup does not begin a task or invoke a model. This composition does not
+expose or apply evidence, present or acknowledge a result, deliver dialogue, mutate truth or a
+transcript, or add credentials, provider traffic, persistence, input, retry, timing, scheduling,
+navigation, or movement.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution

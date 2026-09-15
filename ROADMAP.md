@@ -352,6 +352,8 @@ Current continuation:
   stateless OpenAI request and closed schema, and compose an exact authenticated model binding.
 - [x] Supply configured, one-shot, or offline misquotation-evidence models, own one bounded
   cancellation-aware decision task, and start it only through one explicit isolated scene flow.
+- [x] Author one stable exact observable misquotation-evidence candidate and compose it into an
+  inert source-owned main-scene consideration flow without exposing or applying the evidence.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

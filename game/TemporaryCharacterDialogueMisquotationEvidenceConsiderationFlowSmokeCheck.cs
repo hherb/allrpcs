@@ -1,7 +1,5 @@
 using Allrpcs.Application.Characters;
 using Allrpcs.Domain.Characters;
-using Allrpcs.Domain.Dialogue;
-using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -15,7 +13,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     private TemporaryCharacterDialogueMisquotationEvidenceModelSource modelSource = null!;
     private CharacterDialogueMisquotationEvidenceTaskController task = null!;
     private TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController flow = null!;
-    private TaskInput input = null!;
+    private TemporaryCharacterDialogueMisquotationEvidenceSource source = null!;
     private RecordingModel selectionModel = null!;
     private RecordingModel overlapModel = null!;
     private int processFrames;
@@ -24,13 +22,14 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     /// <inheritdoc />
     public override void _Ready()
     {
+        source = GetNode<TemporaryCharacterDialogueMisquotationEvidenceSource>(
+            "../TemporaryCharacterDialogueMisquotationEvidenceSource");
         modelSource = GetNode<TemporaryCharacterDialogueMisquotationEvidenceModelSource>(
             "../TemporaryCharacterDialogueMisquotationEvidenceModelSource");
         task = GetNode<CharacterDialogueMisquotationEvidenceTaskController>(
             "../CharacterDialogueMisquotationEvidenceTaskController");
         flow = GetNode<TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController>(
             "../TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController");
-        input = CreateInput();
         selectionModel = new RecordingModel(request => new(
             request.Actor.Identity.Id,
             request.Candidates.Single()));
@@ -74,13 +73,12 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         bool inertStartup = task.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             && task.Result is null
             && selectionModel.CallCount == 0
-            && overlapModel.CallCount == 0
-            && ThrowsArgumentNull(() => flow.TryStart(null!));
+            && overlapModel.CallCount == 0;
         bool started = modelSource.TrySupplyModel(selectionModel)
-            && flow.TryStart(input.Request)
+            && flow.TryStart()
             && task.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Running;
         bool overlapPreserved = modelSource.TrySupplyModel(overlapModel)
-            && !flow.TryStart(input.Request);
+            && !flow.TryStart();
 
         if (!inertStartup
             || !started
@@ -105,12 +103,13 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         if (task.Status != CharacterDialogueMisquotationEvidenceTaskStatus.Completed
             || task.Result is not { } result
             || selectionModel.CallCount != 1
-            || !ReferenceEquals(selectionModel.Request, input.Request)
-            || !ReferenceEquals(result.Request, input.Request)
-            || !ReferenceEquals(result.SelectedEvidence, input.Evidence)
+            || selectionModel.Request is not { } selectionRequest
+            || !RequestRetainsExactSource(selectionRequest)
+            || !ReferenceEquals(result.Request, selectionRequest)
+            || !ReferenceEquals(result.SelectedEvidence, source.Candidate)
             || overlapModel.CallCount != 0
             || !task.TryReset()
-            || !flow.TryStart(input.Request))
+            || !flow.TryStart())
         {
             Fail("Misquotation-evidence consideration failed its exact selected result.");
             return;
@@ -129,9 +128,10 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         if (task.Status != CharacterDialogueMisquotationEvidenceTaskStatus.Completed
             || task.Result is not { SelectedEvidence: null }
             || overlapModel.CallCount != 1
-            || !ReferenceEquals(overlapModel.Request, input.Request)
+            || overlapModel.Request is not { } abstentionRequest
+            || !RequestRetainsExactSource(abstentionRequest)
             || !task.TryReset()
-            || !flow.TryStart(input.Request))
+            || !flow.TryStart())
         {
             Fail("Misquotation-evidence consideration failed its preserved one-shot abstention.");
             return;
@@ -184,50 +184,15 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     }
 
     private bool InputsAreUnchanged() =>
-        ReferenceEquals(input.Request.Actor, input.Actor)
-        && ReferenceEquals(input.Request.Candidates.Single(), input.Evidence)
-        && ReferenceEquals(input.Evidence.Occurrence.Proposal.SourceEvent, input.SourceEvent)
-        && ReferenceEquals(input.Evidence.Occurrence.DeliveredEvent, input.DeliveredEvent);
+        ReferenceEquals(source.Candidate.Occurrence, source.Occurrence)
+        && ReferenceEquals(source.Occurrence.Proposal.SourceEvent, source.SourceEvent)
+        && ReferenceEquals(source.Occurrence.DeliveredEvent, source.DeliveredEvent)
+        && ReferenceEquals(source.Candidate.WitnessCharacterId, source.WitnessCharacterId);
 
-    private static TaskInput CreateInput()
-    {
-        Character actor = RepresentativeEnemyAgentCharacterSource.Create();
-        CharacterId witness = new("seeker");
-        CharacterId sourceSpeaker = new("sage");
-        DialogueEvent sourceEvent = new(
-            new DialogueDelivery(
-                new DialogueUtterance(sourceSpeaker, "Use the clean herb now."),
-                DialogueDeliveryMode.OrdinarySpeech),
-            new DialogueAudienceSnapshot(sourceSpeaker, [actor.Identity.Id, witness]));
-        CharacterDialogueMisquotationProposal proposal = new(
-            actor.Identity.Id,
-            sourceEvent,
-            "The sage said the remedy should wait for royal approval.",
-            "assess-local-influence");
-        DialogueEvent deliveredEvent = new(
-            new DialogueDelivery(
-                new DialogueUtterance(proposal.ActorId, proposal.MisquotedText),
-                DialogueDeliveryMode.OrdinarySpeech),
-            new DialogueAudienceSnapshot(proposal.ActorId, [witness]));
-        CharacterDialogueMisquotationEvidence evidence = new(
-            new CharacterDialogueMisquotationOccurrence(proposal, deliveredEvent),
-            witness);
-        CharacterDialogueMisquotationEvidenceConsiderationRequest request = new(actor, [evidence]);
-        return new(actor, sourceEvent, deliveredEvent, evidence, request);
-    }
-
-    private static bool ThrowsArgumentNull(Action action)
-    {
-        try
-        {
-            action();
-            return false;
-        }
-        catch (ArgumentNullException)
-        {
-            return true;
-        }
-    }
+    private bool RequestRetainsExactSource(
+        CharacterDialogueMisquotationEvidenceConsiderationRequest request) =>
+        ReferenceEquals(request.Actor, source.Actor)
+        && ReferenceEquals(request.Candidates.Single(), source.Candidate);
 
     private void Fail(string message)
     {
@@ -254,11 +219,4 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             return ValueTask.FromResult(decide(request));
         }
     }
-
-    private sealed record TaskInput(
-        Character Actor,
-        DialogueEvent SourceEvent,
-        DialogueEvent DeliveredEvent,
-        CharacterDialogueMisquotationEvidence Evidence,
-        CharacterDialogueMisquotationEvidenceConsiderationRequest Request);
 }
