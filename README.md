@@ -943,6 +943,19 @@ leave controller state unchanged. These contracts do not present, acknowledge, d
 or persist evidence; change dialogue, truth, transcripts, characters, or world state; or compose
 task results into the main scene.
 
+`CharacterDialogueMisquotationEvidenceExposureCoordinator` observes each fresh exact completed
+misquotation-evidence task result once and delegates it only from the exposure controller's exact
+current snapshot. Selection installs the transition's fresh snapshot, while abstention retains the
+exact current instance. Explicit acknowledgement resets only the exact observed result while its
+post-resolution exposure snapshot remains current; stale acknowledgement and stale, duplicate,
+full, idle, running, cancelled, failed, null, or repeatedly observed results are inert. The temporary
+exposure flow initializes exact empty scene state without starting a task, and the main scene owns
+the exposure controller and coordinator in dependency order. Ordinary startup remains inert, and
+the switch-gated smoke proves exact selection, abstention, acknowledgement, offline failure, and
+unchanged source dialogue. This composition does not present, discover, correct, or persist
+evidence; deliver dialogue; change truth, transcripts, characters, events, audiences, world state,
+or perception; or add input, retry, timing, scheduling, navigation, or movement behavior.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
