@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #265 (`27ce1fc`). Branch
-`codex/phase-7-misquotation-evidence-selection` advances Phase 7 through Phase 7ih:
+`codex/phase-7-misquotation-evidence-selection` advances Phase 7 through Phase 7ih in commit
+`27fa127`. Draft PR #266 is open for this branch:
 
 - one pure bounded selector fully preflights caller-ordered misquotation-evidence candidates before
   eligibility checks, rejects nulls, over-bound collections, and duplicate exact delivered events,
@@ -34,6 +35,9 @@ retry, fallback, delay, influence, time, navigation, or movement behavior. The u
 - Session-wide review confirmed full collection preflight, reference-identity event deduplication,
   stable exact retention, copied request ownership, exact decision binding, and fail-closed current
   eligibility without mutation.
+- Draft PR #266's credential-free workflow run `34968258214` failed all five jobs before any steps
+  began (`steps: []`). This is Actions/account infrastructure, not product-test evidence, and the
+  unchanged jobs were not retried.
 
 ## Exact next bounded slice
 
