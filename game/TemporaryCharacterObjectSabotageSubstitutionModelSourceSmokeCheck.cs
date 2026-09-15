@@ -1,4 +1,5 @@
 using Allrpcs.Application.Characters;
+using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
@@ -8,7 +9,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Checks one-shot and offline substitution-decision model supply.</summary>
+/// <summary>Checks configured, one-shot, and offline substitution-decision model supply.</summary>
 public partial class TemporaryCharacterObjectSabotageSubstitutionModelSourceSmokeCheck : Node
 {
     /// <inheritdoc />
@@ -17,23 +18,66 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionModelSourceSmok
         TemporaryCharacterObjectSabotageSubstitutionModelSource source = new();
         RecordingModel first = new();
         RecordingModel overlap = new();
+        RecordingModel configured = new();
+        RecordingModel replacement = new();
+        CharacterModelSettings settings = new(CharacterModelProvider.OpenAi, "gpt-test");
+        CharacterObjectSabotageSubstitutionModelBinding binding = new(settings, configured);
+        CharacterObjectSabotageSubstitutionModelBinding valueEqualBinding = new(
+            settings,
+            configured);
+        CharacterObjectSabotageSubstitutionModelBinding replacementBinding = new(
+            new CharacterModelSettings(CharacterModelProvider.OpenAi, "replacement-test"),
+            replacement);
         ICharacterObjectSabotageSubstitutionDecisionModel offline = source.TakeModel();
         bool stableOffline = ReferenceEquals(source.TakeModel(), offline);
+        bool initialized = source.TryInitializeBinding(binding);
+        bool rejectedRepeatedInitialization = !source.TryInitializeBinding(binding);
+        bool stableConfigured = ReferenceEquals(source.TakeModel(), configured)
+            && ReferenceEquals(source.TakeModel(), configured);
+        bool rejectedValueEqualReplacement = !source.TryReplaceBinding(
+                valueEqualBinding,
+                replacementBinding)
+            && ReferenceEquals(source.TakeModel(), configured);
         bool supplied = source.TrySupplyModel(first);
         bool rejectedOverlap = !source.TrySupplyModel(overlap);
         ICharacterObjectSabotageSubstitutionDecisionModel taken = source.TakeModel();
-        bool resumedOffline = ReferenceEquals(source.TakeModel(), offline);
+        bool resumedConfigured = ReferenceEquals(source.TakeModel(), configured);
+        bool replaced = source.TryReplaceBinding(binding, replacementBinding);
+        bool stableReplacement = ReferenceEquals(source.TakeModel(), replacement)
+            && ReferenceEquals(source.TakeModel(), replacement);
+        bool rejectedStaleClear = !source.TryClearBinding(binding)
+            && ReferenceEquals(source.TakeModel(), replacement);
+        bool resupplied = source.TrySupplyModel(overlap);
+        bool cleared = source.TryClearBinding(replacementBinding);
+        bool rejectedRepeatedClear = !source.TryClearBinding(replacementBinding);
+        bool clearPreservedOneShot = ReferenceEquals(source.TakeModel(), overlap)
+            && ReferenceEquals(source.TakeModel(), offline);
 
         if (!stableOffline
+            || !initialized
+            || !rejectedRepeatedInitialization
+            || !stableConfigured
+            || !rejectedValueEqualReplacement
             || !supplied
             || !rejectedOverlap
             || !ReferenceEquals(taken, first)
             || ReferenceEquals(taken, overlap)
-            || !resumedOffline
+            || !resumedConfigured
+            || !replaced
+            || !stableReplacement
+            || !rejectedStaleClear
+            || !resupplied
+            || !cleared
+            || !rejectedRepeatedClear
+            || !clearPreservedOneShot
             || !ThrowsArgumentNull(() => source.TrySupplyModel(null!))
+            || !ThrowsArgumentNull(() => source.TryInitializeBinding(null!))
+            || !ThrowsArgumentNull(() => source.TryReplaceBinding(null!, replacementBinding))
+            || !ThrowsArgumentNull(() => source.TryReplaceBinding(binding, null!))
+            || !ThrowsArgumentNull(() => source.TryClearBinding(null!))
             || !HasClosedSurface())
         {
-            Fail("Substitution model source failed one-shot or offline selection.");
+            Fail("Substitution model source failed configured, one-shot, or offline selection.");
             return;
         }
 
@@ -64,6 +108,8 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionModelSourceSmok
                 () => offline.DecideAsync(null!, CancellationToken.None).AsTask().GetAwaiter().GetResult())
             || first.CallCount != 0
             || overlap.CallCount != 0
+            || configured.CallCount != 0
+            || replacement.CallCount != 0
             || request.Substitutions.Entries.Count != 0
             || request.Evidence.Entries.Count != 0
             || request.Candidates.Count != 1)
@@ -73,8 +119,9 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionModelSourceSmok
         }
 
         GD.Print(
-            "Substitution model source smoke passed: one exact one-shot model, one stable "
-            + "fail-closed offline model, cancellation, closed surface, and no model input.");
+            "Substitution model source smoke passed: exact initialized and replaced binding, "
+            + "one exact one-shot model, exact stale-safe clearing, one stable fail-closed "
+            + "offline model, cancellation, closed surface, and no model input.");
         source.Free();
         GetTree().Quit();
     }
@@ -91,7 +138,14 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionModelSourceSmok
             .Order(StringComparer.Ordinal)
             .ToArray();
 
-        return methods.SequenceEqual(["TakeModel", "TrySupplyModel"])
+        return methods.SequenceEqual(
+                [
+                    "TakeModel",
+                    "TryClearBinding",
+                    "TryInitializeBinding",
+                    "TryReplaceBinding",
+                    "TrySupplyModel",
+                ])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance

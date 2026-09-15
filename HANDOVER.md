@@ -2,64 +2,60 @@
 
 ## Current state
 
-`main` is verified at merged PR #255 (`70c0e36`). Branch
-`codex/phase-7-substitution-provider-flow` advances the exact Phase 7 substitution-decision chain
-through these bounded slices:
+`main` is verified at merged PR #256 (`bd08f6b`). Branch
+`codex/phase-7-substitution-configured-source` completes the configured substitution-decision
+scene chain through four bounded slices:
 
-- a request-bound accumulator accepts only the supported bounded OpenAI Responses semantic
-  lifecycle, validates one complete output-text document through the existing strict decoder, and
-  exposes the exact accepted substitution decision only after one successful completion event;
-- an asynchronous completion seam applies those events from the existing bounded SSE reader,
-  rejects incomplete or trailing input, preserves caller cancellation and I/O failure identity,
-  leaves the caller-owned stream open, and retains no provider text after materialization;
-- a caller-composed OpenAI adapter serializes one exact request, obtains one credential only on
-  explicit invocation, requires a successful event-stream response, redacts transport failure
-  details, and returns only the strict request-owned decision; and
-- an immutable Application binding plus Infrastructure factory retains exact OpenAI settings and
-  composes the adapter over caller-owned HTTP, credential, and default or validated endpoint
-  dependencies without construction-time input/output or model invocation.
+- the existing temporary source owns one exact configured
+  `CharacterObjectSabotageSubstitutionModelBinding` through exact-reference initialization,
+  replacement, and clearing while preserving one-shot precedence and one stable offline fallback;
+- the selected-settings composition controller activates and replaces that exact future OpenAI
+  substitution model, and clears it back to offline behavior for Ollama or unsupported providers,
+  without construction-time credential access, HTTP send, or model invocation;
+- one main-scene coordinator observes each fresh completed substitution result at most once and
+  presents only an exact selected result through the existing stale-safe body projection; and
+- explicit acknowledgement resets only an already-observed completed result whose selected
+  presentation or abstention request snapshots remain exact current scene state.
 
-Implementation commit `1eb0bfb` is published in mergeable draft PR #256. Hosted run
-`34937945054` failed before executing any steps in all five credential-free jobs (`steps: []`), so
+Implementation commit `e7b9b13` is published in mergeable draft PR #257. Hosted run
+`34939423963` failed before executing any steps in all five credential-free jobs (`steps: []`), so
 it is Actions/account infrastructure state rather than product-test evidence and was not retried.
 
-The slice does not add configured model-source ownership, settings composition, scene wiring,
-automatic invocation, acknowledgement, presentation, persistence, input, UI, timing, scheduling,
-events, time, transcripts, navigation, actor movement, another provider, or another sabotage
-effect. Authoritative world objects and every supplied request, candidate, substitution, evidence,
-and scene snapshot remain unchanged. The unrelated untracked `scripts/code_statistics.py` remains
-untouched and must stay unstaged.
+No provider was invoked. The work adds no automatic model invocation, sabotage selection, timing,
+scheduling, persistence, input, UI, events, time, transcripts, navigation, actor movement, or new
+sabotage effect. Authoritative world objects and every supplied request, candidate, substitution,
+evidence, and scene snapshot remain unchanged. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing substitution accumulator/completion, HTTP adapter, binding,
-  and factory compile failures.
-- Focused host-local checks pass 31 SSE tests, 48 substitution provider-path tests, 3 Application
-  binding tests, and 5 Infrastructure factory tests. The first sandboxed VSTest run hit the known
-  IPC `SocketException (13)`; the identical host-local command passed without product changes.
+- Tests began with the expected missing source operations, then the expected focused composition
+  failure, then the expected missing presentation-coordinator compile failure.
+- Focused host-local Godot smokes pass configured/one-shot/offline model-source ownership,
+  selected-settings composition and clearing, and exact main-scene selection, one-time
+  presentation, stale-safe acknowledgement, abstention, and offline failure.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
   build, 2,455 Domain tests, 524 Application tests, 757 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
-- Every new authored C# file is below 500 lines with no lines longer than 120 characters.
-  `git diff --check` passes. Source-to-source comparison with the established move provider path
-  and a complete changed-file review found no unresolved findings.
+- Every changed authored C# file remains below 500 lines with no lines longer than 120 characters.
+  `git diff --check` passes. The implementation mirrors the established concealment and move
+  contracts; complete changed-file review found no unresolved findings.
 
 ## Exact next bounded slice
 
-Take **Phase 7hb: own one exact configured substitution-model binding in the existing source**.
+Take **Phase 7hf: define bounded immutable world-object contamination state**.
 
 Acceptance boundary:
 
-1. Extend `TemporaryCharacterObjectSabotageSubstitutionModelSource` with one exact configured
-   `CharacterObjectSabotageSubstitutionModelBinding`, initialized once and replaceable or clearable
-   only by exact-reference compare-and-swap operations.
-2. Preserve the existing one-shot supplied-model precedence, consume only that one-shot on take,
-   return the configured model stably for later decisions, and retain the same stable fail-closed
-   offline model when no configured or one-shot model exists.
-3. Prove stale/value-equal replacement and clearing fail closed, clearing preserves any queued
-   one-shot model, selection performs no model invocation or request mutation, cancellation retains
-   precedence in the offline model, and the source exposes only the five bounded operations.
-4. Do not compose settings into the source or `Main.tscn`; load credentials; perform HTTP or model
-   I/O; start a decision; apply, recover, acknowledge, or present a substitution; or add persistence,
-   input, UI, timing, scheduling, events, time, transcripts, navigation, or actor movement.
+1. Add one Domain `WorldObjectContaminationSnapshot` that defensively retains at most 64 exact
+   contaminated `ObjectId` instances in stable caller order and exposes a pure value-based
+   `IsContaminated(ObjectId)` lookup.
+2. Reject null input, null entries, value-equal duplicate identifiers, and excess entries before
+   retaining state; expose only the bounded read-only entries and lookup surface.
+3. Prove exact identifier-instance retention, defensive collection copying, stable order, absent
+   lookup, null rejection, boundary counts, unchanged caller input, and a closed get-only surface.
+4. Do not reuse or mutate ingredient contamination; define a contamination candidate, policy,
+   transition, evidence application, recovery, consideration/model/provider path, scene ownership,
+   persistence, input, UI, timing, scheduling, events, time, transcripts, navigation, presentation,
+   or actor movement.

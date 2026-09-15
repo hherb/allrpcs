@@ -20,6 +20,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
     private TemporaryCharacterModelSource modelSource = null!;
     private TemporaryCharacterObjectSabotageConcealmentModelSource concealmentModelSource = null!;
     private TemporaryCharacterObjectSabotageMoveModelSource moveModelSource = null!;
+    private TemporaryCharacterObjectSabotageSubstitutionModelSource substitutionModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
 
     /// <inheritdoc />
@@ -44,6 +45,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
                 "../TemporaryCharacterObjectSabotageConcealmentModelSource");
         moveModelSource = GetNode<TemporaryCharacterObjectSabotageMoveModelSource>(
             "../TemporaryCharacterObjectSabotageMoveModelSource");
+        substitutionModelSource =
+            GetNode<TemporaryCharacterObjectSabotageSubstitutionModelSource>(
+                "../TemporaryCharacterObjectSabotageSubstitutionModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
     }
@@ -71,11 +75,14 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         ICharacterObjectSabotageConcealmentDecisionModel offlineConcealment =
             concealmentModelSource.TakeModel();
         ICharacterObjectSabotageMoveDecisionModel offlineMove = moveModelSource.TakeModel();
+        ICharacterObjectSabotageSubstitutionDecisionModel offlineSubstitution =
+            substitutionModelSource.TakeModel();
         if (controller.TryInitialize(unsupported)
             || !ReferenceEquals(modelSource.TakeModel(), offline)
             || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation)
             || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
-            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove))
+            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
+            || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution))
         {
             Fail("Provider composition did not preserve offline behavior for Anthropic.");
             return;
@@ -104,7 +111,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(first, second)
             || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation)
             || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
-            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove))
+            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
+            || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution))
         {
             Fail("Provider composition did not retain its exact persisted Ollama model.");
             return;
@@ -195,6 +203,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         ICharacterObjectSabotageConcealmentDecisionModel openAiConcealment =
             concealmentModelSource.TakeModel();
         ICharacterObjectSabotageMoveDecisionModel openAiMove = moveModelSource.TakeModel();
+        ICharacterObjectSabotageSubstitutionDecisionModel openAiSubstitution =
+            substitutionModelSource.TakeModel();
         CharacterModelSettings replacementOpenAiSettings = new(
             CharacterModelProvider.OpenAi,
             "gpt-replacement-test");
@@ -202,10 +212,12 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || openAiParticipation is not OpenAiCharacterTurnParticipationModel
             || openAiConcealment is not OpenAiCharacterObjectSabotageConcealmentModel
             || openAiMove is not OpenAiCharacterObjectSabotageMoveModel
+            || openAiSubstitution is not OpenAiCharacterObjectSabotageSubstitutionModel
             || !ReferenceEquals(modelSource.TakeModel(), openAiModel)
             || !ReferenceEquals(participationModelSource.TakeModel(), openAiParticipation)
             || !ReferenceEquals(concealmentModelSource.TakeModel(), openAiConcealment)
             || !ReferenceEquals(moveModelSource.TakeModel(), openAiMove)
+            || !ReferenceEquals(substitutionModelSource.TakeModel(), openAiSubstitution)
             || !settingsController.TryApply(replacementOpenAiSettings)
             || !controller.TryReplaceCurrentBindings()
             || concealmentModelSource.TakeModel()
@@ -216,12 +228,19 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
                 is not OpenAiCharacterObjectSabotageMoveModel replacementMove
             || ReferenceEquals(replacementMove, openAiMove)
             || !ReferenceEquals(moveModelSource.TakeModel(), replacementMove)
+            || substitutionModelSource.TakeModel()
+                is not OpenAiCharacterObjectSabotageSubstitutionModel replacementSubstitution
+            || ReferenceEquals(replacementSubstitution, openAiSubstitution)
+            || !ReferenceEquals(
+                substitutionModelSource.TakeModel(),
+                replacementSubstitution)
             || !settingsController.TryApply(activatedSettings)
             || !controller.TryReplaceCurrentBindings()
             || modelSource.TakeModel() is not OllamaCharacterModel
             || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation)
             || !ReferenceEquals(concealmentModelSource.TakeModel(), offlineConcealment)
-            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove))
+            || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
+            || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution))
         {
             Fail("Provider composition did not activate and safely clear specialized bindings.");
             return;
@@ -232,8 +251,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             + "offline, one exact persisted Ollama snapshot composed without input/output, "
             + "replacement was atomic and one-shot preserving, the current Ollama setting "
             + "activated as one stable future model, OpenAI activated exact ordinary and "
-            + "specialized bindings with exact concealment and move replacement, and Ollama "
-            + "restored fail-closed participation, concealment, and move decisions.");
+            + "specialized bindings with exact concealment, move, and substitution replacement, "
+            + "and Ollama restored fail-closed participation, concealment, move, and substitution "
+            + "decisions.");
         GetTree().Quit();
     }
 

@@ -321,12 +321,14 @@ Completed foundations:
   Responses request with a closed schema and bounded trusted context.
 - [x] Complete one strict bounded OpenAI Responses substitution-decision SSE lifecycle and expose
   one caller-composed authenticated adapter plus construction-only exact OpenAI model binding.
+- [x] Own, replace, and clear the exact configured substitution binding through selected settings,
+  then present and explicitly acknowledge each exact completed main-scene result at most once.
 - [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
   provider-neutral response rounds without judging or applying either response.
 
 Current continuation:
 
-- [ ] Extend the substitution model source with stale-safe configured-binding ownership while
+- [x] Extend the substitution model source with stale-safe configured-binding ownership while
   preserving one-shot precedence and stable fail-closed offline fallback.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
