@@ -831,6 +831,18 @@ one exact substitution/evidence pair and installs eligible application or recove
 the exact expected current snapshots. Stale, distinct value-equal, null, and ineligible operations
 leave both scene-owned snapshots unchanged.
 
+`WorldObjectContaminationSnapshot` retains at most 64 value-unique exact object identifiers in
+stable caller order, exposes a value-based contamination lookup, and leaves authoritative world
+objects unchanged. The pure contamination policy accepts only a completely eligible evidence-bound
+`contaminate` occurrence whose target is not already contaminated. Its immutable transition appends
+the exact target identifier and exact fresh evidence as one all-or-nothing result. Recovery requires
+that target to remain contaminated, its exact target-bound evidence definition to remain
+authoritative, and that evidence identifier to appear in one character evidence view; it removes
+only the value-matching target into a fresh contamination snapshot without consuming evidence.
+These contracts do not define contamination contents or effects, mutate ingredient contamination,
+select a candidate, invoke a model, own scene state, persist data, or change objects, perception,
+movement, events, time, transcripts, input, or UI.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound

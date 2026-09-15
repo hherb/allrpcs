@@ -323,6 +323,8 @@ Completed foundations:
   one caller-composed authenticated adapter plus construction-only exact OpenAI model binding.
 - [x] Own, replace, and clear the exact configured substitution binding through selected settings,
   then present and explicitly acknowledge each exact completed main-scene result at most once.
+- [x] Define bounded immutable world-object contamination, exact evidence-bound application, and
+  visible-evidence recovery without changing authoritative objects or consuming evidence.
 - [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
   provider-neutral response rounds without judging or applying either response.
 
