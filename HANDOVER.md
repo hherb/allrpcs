@@ -19,6 +19,10 @@
   candidates, while an exact-character selection-or-abstention decision accepts only an exact
   currently eligible evidence identifier.
 
+Implementation commit `fe7b7cd` is published in draft PR #253. Hosted run `34916632446` failed
+before executing any steps in all five credential-free jobs (`steps: []`), so it is recorded as
+Actions/account infrastructure state rather than product-test evidence and was not retried.
+
 The implementation does not replace or mutate authoritative world objects, consume evidence,
 infer inventory, placement, similarity, plausibility, reachability, critical-route safety, or
 replacement eligibility, or add timing, scheduling, a task, model, provider, persistence, new
@@ -40,7 +44,7 @@ untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters.
   `dotnet format Allrpcs.sln --no-restore --verify-no-changes` and `git diff --check` pass. Final
-  staged-diff review must remain clean before publication.
+  staged-diff review found no unresolved findings.
 
 ## Exact next bounded slice
 
