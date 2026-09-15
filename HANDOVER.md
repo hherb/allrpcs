@@ -17,6 +17,8 @@ observation, acknowledgement, and inert main-scene exposure ownership:
   main-scene exposure state without starting a task. The main scene owns the exposure controller,
   initialization flow, and coordinator in dependency order.
 
+Implementation commit `5bbaae0` is published in draft PR #272 targeting `main`.
+
 No result is presented, discovered, corrected, or persisted. Ordinary startup remains inert. No
 dialogue, truth, transcript, character, event, audience, world object, perception, or other
 authoritative state is mutated. No automatic task, credential or provider I/O, input, retry, timing,
