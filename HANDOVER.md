@@ -18,6 +18,10 @@
   overlap, resolves accepted results on the Godot main thread, and closes cancellation, failure,
   stale-result, teardown, and reset behavior.
 
+Implementation commit `7b68e40` is published in draft PR #260. Hosted run `34951601197` failed
+before executing any steps in all five credential-free jobs (`steps: []`), so it is Actions/account
+infrastructure state rather than product-test evidence and was not retried.
+
 No provider was invoked. The work adds no decoder, serialization, schema, HTTP/SSE transport,
 credential or configured binding, model implementation/source, main-scene composition,
 presentation, acknowledgement, persistence, input, UI, contamination contents or effects,
