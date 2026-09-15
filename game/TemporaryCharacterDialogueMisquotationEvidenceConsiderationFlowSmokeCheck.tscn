@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceModelSource.cs" id="1"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceTaskController.cs" id="2"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController.cs" id="3"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowSmokeCheck.cs" id="4"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSource.cs" id="5"]
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowSmokeCheck" type="Node"]
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceSource" type="Node" parent="."]
+script = ExtResource("5")
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceModelSource" type="Node" parent="."]
 script = ExtResource("1")

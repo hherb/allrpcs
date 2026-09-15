@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=3]
+[gd_scene load_steps=184 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -225,6 +225,11 @@
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationPresentationFlowController.cs" id="223_object_sabotage_contamination_presentation_flow"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationCoordinator.cs" id="224_object_sabotage_contamination_coordinator"]
 [ext_resource type="Script" path="res://WaterCaskContaminationSabotageInvestigationFlowSmokeCheck.cs" id="225_water_cask_contamination_sabotage_investigation_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationMainSceneSmokeCheck.cs" id="226_misquotation_evidence_main_scene_check"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSource.cs" id="227_misquotation_evidence_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceModelSource.cs" id="228_misquotation_evidence_model_source"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceTaskController.cs" id="229_misquotation_evidence_task"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController.cs" id="230_misquotation_evidence_flow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -638,6 +643,18 @@ script = ExtResource("223_object_sabotage_contamination_presentation_flow")
 [node name="CharacterObjectSabotageContaminationPresentationCoordinator" type="Node" parent="."]
 script = ExtResource("224_object_sabotage_contamination_coordinator")
 
+[node name="TemporaryCharacterDialogueMisquotationEvidenceSource" type="Node" parent="."]
+script = ExtResource("227_misquotation_evidence_source")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceModelSource" type="Node" parent="."]
+script = ExtResource("228_misquotation_evidence_model_source")
+
+[node name="CharacterDialogueMisquotationEvidenceTaskController" type="Node" parent="."]
+script = ExtResource("229_misquotation_evidence_task")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("230_misquotation_evidence_flow")
+
 [node name="CharacterObjectSabotageSubstitutionTaskController" type="Node" parent="."]
 script = ExtResource("212_object_sabotage_substitution_task_controller")
 
@@ -997,6 +1014,9 @@ script = ExtResource("207_object_sabotage_substitution_presentation_flow_check")
 
 [node name="TemporaryCharacterObjectSabotageSubstitutionConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("214_object_sabotage_substitution_consideration_main_scene_check")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("226_misquotation_evidence_main_scene_check")
 
 [node name="TemporaryCharacterObjectSabotageMovePresentationFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("197_object_sabotage_move_presentation_flow_check")

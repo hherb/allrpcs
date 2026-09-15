@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSourceSmokeCheck.cs" id="1"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSource.cs" id="2"]
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceSourceSmokeCheck" type="Node"]
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceSource" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("1")

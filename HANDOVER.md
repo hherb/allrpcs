@@ -2,59 +2,62 @@
 
 ## Current state
 
-`main` includes merged PR #268 at `663cc19`. Branch
-`codex/phase-7-misquotation-model-source` advances Phase 7 through Phase 7ir. Draft PR #269 is open
-for this branch:
+Live GitHub state still reports draft PR #269 as open on
+`codex/phase-7-misquotation-model-source`, despite the previous-session completion report. Branch
+`codex/phase-7-misquotation-evidence-source` is therefore based directly on #269's exact head
+`cfdea44` and advances Phase 7 through Phase 7iu:
 
-- `TemporaryCharacterDialogueMisquotationEvidenceModelSource` retains one exact configured OpenAI
-  binding, replaces or clears it only by exact-reference comparison, consumes one caller-supplied
-  model for the next decision, then falls back to the configured model or one stable fail-closed
-  offline model;
-- `CharacterDialogueMisquotationEvidenceTaskController` owns one cancellable decision at a time,
-  installs only a complete accepted result on the Godot main thread, exposes bounded terminal
-  states, and requires an explicit reset; and
-- `TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController` remains inert until
-  explicitly given one exact request, takes a model only after task preflight, and preserves a
-  queued one-shot model when an overlapping start is rejected.
+- `TemporaryCharacterDialogueMisquotationEvidenceSource` retains one stable representative enemy,
+  exact heard source event, exact already-composed delivered occurrence, exact non-actor witness,
+  and exact observable evidence candidate;
+- `TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController` now owns that source
+  and creates a fresh request retaining its exact actor and candidate only on explicit `TryStart()`;
+  overlap is rejected before a queued one-shot model is consumed; and
+- `Main.tscn` owns the source, model source, task, and flow in dependency order. Ordinary startup is
+  inert, while one switch-gated smoke proves exact selection, abstention, reset, overlap
+  preservation, and fail-closed offline behavior.
 
-No node was added to `Main.tscn`. No dialogue was created or delivered, no evidence was sourced,
-exposed, applied, presented, or acknowledged, and no credential, HTTP, model input/output,
-settings composition, persistence, UI, retry, timing, delay, influence, scheduling, event, truth,
-transcript, navigation, or movement behavior was added. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
+Implementation commit `b87d437` is published in draft PR #270, intentionally targeting #269's
+branch while that parent remains open. Retarget #270 to `main` after #269 merges.
+
+No evidence is exposed, applied, presented, or acknowledged. No live dialogue is created or
+delivered, and no source event, delivered event, occurrence, witness, candidate, transcript, truth,
+character, world object, perception, or other authoritative state is mutated. No automatic task,
+credential or provider I/O, persistence, input, retry, timing, scheduling, navigation, or movement
+behavior was added. The unrelated untracked `scripts/code_statistics.py` remains untouched and must
+stay unstaged.
 
 ## Validation and review
 
-- Each slice began with its expected missing-type compile failure.
-- The isolated model-source, task-controller, and consideration-flow Godot smokes pass.
-- `dotnet format Allrpcs.sln --no-restore --verify-no-changes --verbosity minimal` passes.
-- Full host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,536 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
-  architecture tests, scenario validation, every credential-free headless Godot smoke, and the
-  final Compatibility renderer launch.
-- Draft PR #269's hosted jobs failed with `steps: []`; this is Actions/account infrastructure, not
-  executed product-test or development-build evidence, and the unchanged jobs were not retried.
-- Session-wide review found no remaining issue after checking exact binding/request/result
-  retention, one-shot precedence and overlap preservation, stale/value-equal CAS rejection,
-  cancellation and failure redaction, explicit reset, closed public surfaces, unchanged dialogue
-  evidence, file sizes, C# line lengths, and whitespace.
+- Each slice began with its expected missing-source, missing-parameterless-flow, or missing-main-node
+  failure.
+- The isolated source, source-owned consideration flow, and switch-gated main-scene smokes pass.
+- Sandboxed `./scripts/quality.sh` produced a zero-warning build, then VSTest was blocked by the known
+  loopback `SocketException (13)`. The identical host-local command passes workflow validation,
+  restore, formatting, a zero-warning build, 2,536 Domain tests, 542 Application tests, 897
+  Infrastructure tests, 8 architecture tests, scenario validation, every credential-free headless
+  Godot smoke, and the final Compatibility renderer launch.
+- Session-wide review checked exact actor/event/occurrence/witness/candidate retention, all four
+  existing policies, fresh request composition, one-shot precedence, overlap preservation, explicit
+  reset, offline failure, main-scene dependency order, closed public surfaces, ordinary inert
+  startup, file sizes, C# line lengths, and whitespace. No unresolved issue remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7is: author one isolated exact misquotation-evidence source**.
+Take **Phase 7iv: retain and append exact exposed misquotation evidence**.
 
 Acceptance boundary:
 
-1. Add `TemporaryCharacterDialogueMisquotationEvidenceSource` with one stable representative enemy
-   agent, one exact heard source dialogue event, one exact delivered misquotation occurrence, and
-   one exact non-actor witness evidence candidate.
-2. Retain the same exact actor, source event, delivered event, occurrence, witness identifier, and
-   candidate across repeated reads; prove the existing proposal, occurrence, evidence, and
-   first-observable selection policies accept them without changing any input.
-3. Expose only the bounded immutable source values and one `_Ready` operation, and add one isolated
-   credential-free Godot smoke.
-4. Do not add the source, model source, task, or flow to `Main.tscn`; start a task; invoke a model;
-   create or deliver live scene dialogue; mutate a transcript, truth, character, evidence, event,
-   world object, or perception; or add presentation, acknowledgement, credentials, HTTP, settings
-   composition, persistence, input, UI, retry, timing, delay, influence, scheduling, navigation,
-   or movement.
+1. Add one immutable `CharacterDialogueMisquotationEvidenceExposureSnapshot` that copies at most 64
+   exact evidence entries into stable caller order and rejects nulls or duplicate exact delivered
+   events before retaining anything.
+2. Add one pure exposure transition that accepts the exact current snapshot and one validated
+   `CharacterDialogueMisquotationEvidenceConsiderationResult`: append its exact selected evidence
+   into a fresh snapshot, or return the exact current snapshot for abstention.
+3. Reject an already-exposed exact delivered event and overflow, preserve all existing exact entries
+   and every nested source/delivered event, and allow a distinct value-equal delivered event under
+   the existing exact-reference rule.
+4. Do not add a scene controller or `Main.tscn` wiring; change the current source, task, model, or
+   flow; present or acknowledge evidence; mutate dialogue, transcripts, truth, characters, world
+   state, or perception; or add provider, persistence, input, retry, timing, scheduling, navigation,
+   or movement behavior.
