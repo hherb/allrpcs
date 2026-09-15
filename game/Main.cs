@@ -64,6 +64,10 @@ public partial class Main : Node
     private TemporaryCharacterObjectSabotageMoveSource objectSabotageMoveSource = null!;
     private TemporaryCharacterObjectSabotageMovePresentationFlowController
         objectSabotageMovePresentationFlow = null!;
+    private TemporaryCharacterObjectSabotageSubstitutionSource
+        objectSabotageSubstitutionSource = null!;
+    private TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController
+        objectSabotageSubstitutionPresentationFlow = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -152,6 +156,12 @@ public partial class Main : Node
         objectSabotageMovePresentationFlow =
             GetNode<TemporaryCharacterObjectSabotageMovePresentationFlowController>(
                 "TemporaryCharacterObjectSabotageMovePresentationFlowController");
+        objectSabotageSubstitutionSource =
+            GetNode<TemporaryCharacterObjectSabotageSubstitutionSource>(
+                "TemporaryCharacterObjectSabotageSubstitutionSource");
+        objectSabotageSubstitutionPresentationFlow =
+            GetNode<TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController>(
+                "TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -928,6 +938,12 @@ public partial class Main : Node
             == objectSabotageMoveSource.Candidate.Evidence.Evidence.ObjectId)
         {
             _ = objectSabotageMovePresentationFlow.TryRecover(perception);
+        }
+
+        if (outcome.Request.TargetObjectId
+            == objectSabotageSubstitutionSource.Candidate.Evidence.Evidence.ObjectId)
+        {
+            _ = objectSabotageSubstitutionPresentationFlow.TryRecover(perception);
         }
     }
 

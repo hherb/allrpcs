@@ -2,63 +2,63 @@
 
 ## Current state
 
-`main` contains merged PR #251 at `f5d750f`. The current branch is
-`codex/phase-7-substitution-recovery` and advances three bounded Phase 7 slices:
+`main` is verified at merged PR #252 (`03fe0c7`). Branch
+`codex/phase-7-substitution-source` advances Phase 7 substitution through these bounded slices:
 
-- Phase 7gg permits substitution recovery only when the exact candidate substitution remains
-  active, its exact target-bound evidence remains authoritative, and its evidence identifier is
-  visible in one supplied character evidence view;
-- Phase 7gh removes only that exact substitution into a fresh stable snapshot while retaining
-  unrelated exact substitutions, the exact evidence view, the exact candidate, and all
-  authoritative evidence; and
-- Phase 7gi adds an isolated scene controller that owns exact substitution/evidence snapshots once
-  and applies or recovers only through exact-reference compare-and-swap operations.
+- an inert temporary source retains the existing exact authoritative world-object snapshot and its
+  tail `village-water-cask`, one representative enemy, complete target access, a distinct
+  `tainted-water-cask`, empty substitution/evidence snapshots, and one exact eligible
+  evidence-bound candidate;
+- isolated and main-scene flows initialize exact scene-owned state, apply only on explicit request,
+  and recover only after exact evidence is visible through supplied perception;
+- a stale-safe presentation controller swaps only the original and substitute cask polygons while
+  preserving authoritative world objects and all scene positions;
+- ordinary focused-search resolution recovers the substitution only for the exact water-cask
+  outcome; unrelated outcomes leave it active; and
+- a provider-neutral consideration request retains exact authority plus at most 64 stable copied
+  candidates, while an exact-character selection-or-abstention decision accepts only an exact
+  currently eligible evidence identifier.
 
-Implementation commit `f1cfc61` is published in mergeable draft PR #252. Hosted run `34914815173`
-failed before executing any steps in all five credential-free jobs (`steps: []`), so it is recorded
-as Actions/account infrastructure state rather than product-test evidence and was not retried.
+Implementation commit `fe7b7cd` is published in draft PR #253. Hosted run `34916632446` failed
+before executing any steps in all five credential-free jobs (`steps: []`), so it is recorded as
+Actions/account infrastructure state rather than product-test evidence and was not retried.
 
-The implementation does not replace an authoritative world object or scene body, consume evidence,
-infer inventory, placement, similarity, plausibility, reachability, critical-route safety,
-perception, or discovery, or add a source, selection, scheduling, consideration, task, model,
-provider, persistence, `Main.tscn` wiring, input, UI, event, time, transcript, navigation, or
-presentation behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
-must stay unstaged.
+The implementation does not replace or mutate authoritative world objects, consume evidence,
+infer inventory, placement, similarity, plausibility, reachability, critical-route safety, or
+replacement eligibility, or add timing, scheduling, a task, model, provider, persistence, new
+input, UI controls, events, time, transcripts, navigation, or automatic sabotage. The unrelated
+untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing policy, result, transition, and controller compile failures.
-- The focused substitution-recovery suite passes 7 Domain cases. Sandboxed VSTest was blocked by
-  local IPC `SocketException (13)`; the identical host-local test passed without product changes.
-- The focused substitution-controller Godot smoke passes one-time initialization, exact CAS apply
-  and recovery, stable unrelated state, stale/value-equal rejection, null rejection, and atomic
-  failure. The first sandboxed smoke hit the known `user://logs` failure and signal 11; the identical
-  host-local smoke passed. An initial parallel solution build stalled after Domain output; the
-  documented build-server-disabled single-worker invocation produced the expected red controller
-  compile failure, then a zero-warning successful build after implementation.
+- Tests began with the expected missing source, flow, presentation, request, and decision compile or
+  focused-smoke failures.
+- Focused host-local checks pass the inert source, explicit apply/recovery flow, main-scene
+  composition, stale-safe presentation, ordinary water-cask investigation, 5 consideration-request
+  cases, and 8 decision/policy cases. Sandboxed Godot hit the known `user://logs` crash and
+  sandboxed VSTest hit the known IPC `SocketException (13)`; identical host-local commands passed
+  without product changes.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,433 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
-  scenario validation, every credential-free headless Godot smoke including the new substitution
-  controller, and the final Compatibility-renderer launch. No live-conformance switch was enabled
-  and no provider was invoked.
+  build, 2,446 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
+  scenario validation, every credential-free headless Godot smoke, and the final Compatibility
+  renderer launch. No live-conformance switch was enabled and no provider was invoked.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters.
-  `git diff --check` passes; final staged-diff review found no unresolved findings.
+  `dotnet format Allrpcs.sln --no-restore --verify-no-changes` and `git diff --check` pass. Final
+  staged-diff review found no unresolved findings.
 
 ## Exact next bounded slice
 
-Take **Phase 7gj: author one inert temporary substitution source**.
+Take **Phase 7gr: bind one accepted substitution consideration result**.
 
 Acceptance boundary:
 
-1. Add one isolated Godot source that retains the existing exact authoritative world-object
-   snapshot and its tail `village-water-cask`, then authors one representative enemy, complete
-   physical access, one distinct replacement object, empty substitution/evidence snapshots, and one
-   exact eligible substitution candidate with target-bound discoverable evidence.
-2. Expose only stable read-only exact outputs needed by the existing substitution policy and
-   controller; prove the candidate is currently eligible and every retained collection is immutable
-   through one credential-free smoke scene.
-3. Keep startup inert: do not initialize the substitution controller, apply or recover a
-   substitution, replace a world object or scene body, or mutate evidence, perception, or any
-   authoritative source object.
-4. Do not wire `Main.tscn` or add selection, timing, scheduling, consideration, task, model,
-   provider, persistence, input, UI, event, time, transcript, navigation, or presentation behavior.
+1. Add one immutable provider-neutral result retaining the exact substitution consideration
+   request, accepted decision, and exact selected candidate, or null only for explicit abstention.
+2. Add one pure transition that delegates the existing exact decision policy, resolves a selection
+   only by the decision's exact evidence-identifier instance, and returns the request's exact
+   candidate without applying it.
+3. Reject null, invalid, stale, unknown, distinct value-equal, or currently ineligible decisions;
+   preserve the exact request and every authority snapshot and candidate on success.
+4. Do not apply or present a substitution or add a model interface, controller, task, provider,
+   persistence, `Main.tscn` wiring, input, UI, timing, scheduling, events, time, transcripts, or
+   navigation behavior.
