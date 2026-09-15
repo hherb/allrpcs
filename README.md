@@ -902,9 +902,13 @@ candidate observable by one supplied actor. Distinct value-equal deliveries rema
 candidates. A provider-neutral consideration request retains that exact actor and a copied read-only
 candidate view under the same bounds. Its explicit decision selects one exact request candidate or
 abstains, and the pure acceptance policy rechecks exact actor identity, request membership, and
-current observability. These contracts do not expose or apply evidence, create a result, invoke a
-model, change dialogue or truth, or mutate any character, event, audience, transcript, or world
-state.
+current observability. The immutable consideration result binds one accepted exact decision to its
+exact request and resolves the exact selected request evidence, or `null` for abstention. These
+contracts do not expose or apply evidence, change dialogue or truth, or mutate any character,
+event, audience, transcript, caller collection, or world state. A provider-neutral cancellation-aware
+Application interface obtains one decision, and its controller forwards the exact request and caller
+cancellation once before constructing only the existing validated result. It adds no provider,
+decoder, retry, deadline, fallback, task, scene, persistence, or application behavior.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
