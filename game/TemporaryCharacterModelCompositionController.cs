@@ -22,12 +22,14 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterObjectSabotageConcealmentModelSource concealmentModelSource = null!;
     private TemporaryCharacterObjectSabotageMoveModelSource moveModelSource = null!;
     private TemporaryCharacterObjectSabotageSubstitutionModelSource substitutionModelSource = null!;
+    private TemporaryCharacterObjectSabotageContaminationModelSource contaminationModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
     private CharacterObjectSabotageConcealmentModelBinding? concealmentBinding;
     private CharacterObjectSabotageMoveModelBinding? moveBinding;
     private CharacterObjectSabotageSubstitutionModelBinding? substitutionBinding;
+    private CharacterObjectSabotageContaminationModelBinding? contaminationBinding;
     private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
@@ -45,6 +47,9 @@ public partial class TemporaryCharacterModelCompositionController : Node
         substitutionModelSource =
             GetNode<TemporaryCharacterObjectSabotageSubstitutionModelSource>(
                 "../TemporaryCharacterObjectSabotageSubstitutionModelSource");
+        contaminationModelSource =
+            GetNode<TemporaryCharacterObjectSabotageContaminationModelSource>(
+                "../TemporaryCharacterObjectSabotageContaminationModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
@@ -96,7 +101,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyParticipationBindings(selection)
             || !TryApplyConcealmentBinding(selection)
             || !TryApplyMoveBinding(selection)
-            || !TryApplySubstitutionBinding(selection))
+            || !TryApplySubstitutionBinding(selection)
+            || !TryApplyContaminationBinding(selection))
         {
             return false;
         }
@@ -120,7 +126,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyParticipationBindings(selection)
             && TryApplyConcealmentBinding(selection)
             && TryApplyMoveBinding(selection)
-            && TryApplySubstitutionBinding(selection);
+            && TryApplySubstitutionBinding(selection)
+            && TryApplyContaminationBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -378,6 +385,49 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             substitutionBinding = replacement;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyContaminationBinding(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (contaminationBinding is null)
+            {
+                return true;
+            }
+
+            bool cleared = contaminationModelSource.TryClearBinding(contaminationBinding);
+            if (cleared)
+            {
+                contaminationBinding = null;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageContaminationModelBinding replacement =
+            OpenAiCharacterObjectSabotageContaminationModelBindingFactory.Create(
+                selectedSettings,
+                client,
+                credentialSource);
+        bool applied = contaminationBinding is null
+            ? contaminationModelSource.TryInitializeBinding(replacement)
+            : contaminationModelSource.TryReplaceBinding(contaminationBinding, replacement);
+        if (applied)
+        {
+            contaminationBinding = replacement;
         }
 
         return applied;
