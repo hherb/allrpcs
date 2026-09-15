@@ -2,59 +2,59 @@
 
 ## Current state
 
-`main` contains merged PR #250 at `278da6c`. The current branch is
-`codex/phase-7-substitute-sabotage` and advances four bounded Phase 7 Domain slices:
+`main` contains merged PR #251 at `f5d750f`. The current branch is
+`codex/phase-7-substitution-recovery` and advances three bounded Phase 7 slices:
 
-- Phase 7gc binds one exact substitute-sabotage occurrence to one exact authored replacement with
-  a distinct world-object identifier;
-- Phase 7gd binds that substitution to discoverable evidence only when both retain the same exact
-  occurrence;
-- Phase 7ge retains at most 64 exact active substitutions in stable caller order with value-unique
-  target identifiers; and
-- Phase 7gf applies an eligible exact substitution as a fresh overlay together with its exact fresh
-  evidence, leaving the authoritative world-object snapshot and every source object unchanged.
+- Phase 7gg permits substitution recovery only when the exact candidate substitution remains
+  active, its exact target-bound evidence remains authoritative, and its evidence identifier is
+  visible in one supplied character evidence view;
+- Phase 7gh removes only that exact substitution into a fresh stable snapshot while retaining
+  unrelated exact substitutions, the exact evidence view, the exact candidate, and all
+  authoritative evidence; and
+- Phase 7gi adds an isolated scene controller that owns exact substitution/evidence snapshots once
+  and applies or recovers only through exact-reference compare-and-swap operations.
 
-Implementation commit `f6ec34c` is published in mergeable draft PR #251. Hosted run `34902576897`
-was queued across all five credential-free jobs at the initial post-publication query; recheck its
-current state rather than treating that queued snapshot as a result.
-
-The implementation is pure Domain state and policy. It does not infer inventory, current placement,
-physical similarity, plausibility, paths, reachability, critical-route safety, or replacement
-eligibility. It does not replace a world object or scene body, recover or present a substitution,
-choose sabotage or timing, persist state, or add Application, Infrastructure, scene, input, UI,
-event, time, transcript, navigation, model, or provider behavior. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
+The implementation does not replace an authoritative world object or scene body, consume evidence,
+infer inventory, placement, similarity, plausibility, reachability, critical-route safety,
+perception, or discovery, or add a source, selection, scheduling, consideration, task, model,
+provider, persistence, `Main.tscn` wiring, input, UI, event, time, transcript, navigation, or
+presentation behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
+must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing substitution, candidate, snapshot, policy, transition, and
-  result compile failures.
-- The focused host-local substitution suite passes 19 Domain cases. The first sandboxed VSTest run
-  was blocked by local IPC `SocketException (13)`; the identical host-local test passed, and product
-  code was not changed around the restriction.
+- Tests began with the expected missing policy, result, transition, and controller compile failures.
+- The focused substitution-recovery suite passes 7 Domain cases. Sandboxed VSTest was blocked by
+  local IPC `SocketException (13)`; the identical host-local test passed without product changes.
+- The focused substitution-controller Godot smoke passes one-time initialization, exact CAS apply
+  and recovery, stable unrelated state, stale/value-equal rejection, null rejection, and atomic
+  failure. The first sandboxed smoke hit the known `user://logs` failure and signal 11; the identical
+  host-local smoke passed. An initial parallel solution build stalled after Domain output; the
+  documented build-server-disabled single-worker invocation produced the expected red controller
+  compile failure, then a zero-warning successful build after implementation.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,426 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
-  scenario validation, every credential-free headless Godot smoke, and the final Compatibility-
-  renderer launch. No live-conformance switch was enabled and no provider was invoked.
+  build, 2,433 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
+  scenario validation, every credential-free headless Godot smoke including the new substitution
+  controller, and the final Compatibility-renderer launch. No live-conformance switch was enabled
+  and no provider was invoked.
 - All changed authored C# files are below 500 lines with no lines longer than 120 characters.
-  `git diff --check` passes, and manual review found no unresolved findings.
+  `git diff --check` passes; final staged-diff review found no unresolved findings.
 
 ## Exact next bounded slice
 
-Take **Phase 7gg: require exact active substitution and visible evidence for recovery**.
+Take **Phase 7gj: author one inert temporary substitution source**.
 
 Acceptance boundary:
 
-1. Add one pure Domain policy that accepts one character evidence view, one current substitution
-   snapshot, one authoritative evidence snapshot, and one exact substitution candidate.
-2. Permit recovery only when the candidate's exact substitution instance remains in the current
-   snapshot, its exact evidence definition remains in authoritative evidence, and that evidence
-   identifier is visible in the supplied character view.
-3. Reject nulls, absent or distinct value-equal substitution state, absent or distinct value-equal
-   authoritative evidence, and unseen evidence while leaving every input unchanged; expose only one
-   closed static query.
-4. Do not remove a substitution, consume evidence, restore or replace a world object or body, infer
-   inventory, placement, similarity, plausibility, route safety, perception, or discovery, or add
-   transition, controller, source, selection, scheduling, model, provider, Application,
-   Infrastructure, scene, persistence, input, UI, event, time, transcript, navigation, or
-   presentation behavior.
+1. Add one isolated Godot source that retains the existing exact authoritative world-object
+   snapshot and its tail `village-water-cask`, then authors one representative enemy, complete
+   physical access, one distinct replacement object, empty substitution/evidence snapshots, and one
+   exact eligible substitution candidate with target-bound discoverable evidence.
+2. Expose only stable read-only exact outputs needed by the existing substitution policy and
+   controller; prove the candidate is currently eligible and every retained collection is immutable
+   through one credential-free smoke scene.
+3. Keep startup inert: do not initialize the substitution controller, apply or recover a
+   substitution, replace a world object or scene body, or mutate evidence, perception, or any
+   authoritative source object.
+4. Do not wire `Main.tscn` or add selection, timing, scheduling, consideration, task, model,
+   provider, persistence, input, UI, event, time, transcript, navigation, or presentation behavior.

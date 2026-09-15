@@ -820,8 +820,18 @@ delegates complete occurrence and fresh-evidence eligibility and rejects a targe
 the substitution overlay. Its immutable transition appends the exact substitution and evidence as
 one all-or-nothing result while leaving the authoritative world-object snapshot and both source
 objects unchanged. These contracts do not infer inventory, placement, similarity, plausibility,
-reachability, critical-route safety, or replacement eligibility; recover or present a substitution;
-or add scene, persistence, input, UI, event, time, transcript, navigation, or provider behavior.
+reachability, critical-route safety, or replacement eligibility, or present a substitution.
+
+Substitution recovery requires the exact candidate substitution to remain active, its exact
+target-bound evidence definition to remain authoritative, and that evidence identifier to appear in
+one character evidence view. The immutable transition removes only that exact substitution into a
+fresh stable snapshot while retaining unrelated substitutions, the exact evidence view, and the
+exact candidate without consuming evidence. `CharacterObjectSabotageSubstitutionController` owns
+one exact substitution/evidence pair and installs eligible application or recovery results only from
+the exact expected current snapshots. Stale, distinct value-equal, null, and ineligible operations
+leave both scene-owned snapshots unchanged. The isolated controller is not wired into `Main.tscn`
+and adds no world-object or body replacement, inventory, source, selection, scheduling, model,
+provider, persistence, input, UI, event, time, transcript, navigation, or presentation behavior.
 
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
 snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the
