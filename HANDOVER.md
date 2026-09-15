@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #268 at `663cc19`. Branch
-`codex/phase-7-misquotation-model-source` advances Phase 7 through Phase 7ir:
+`codex/phase-7-misquotation-model-source` advances Phase 7 through Phase 7ir. Draft PR #269 is open
+for this branch:
 
 - `TemporaryCharacterDialogueMisquotationEvidenceModelSource` retains one exact configured OpenAI
   binding, replaces or clears it only by exact-reference comparison, consumes one caller-supplied
@@ -31,6 +32,8 @@ transcript, navigation, or movement behavior was added. The unrelated untracked
   zero-warning build, 2,536 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free headless Godot smoke, and the
   final Compatibility renderer launch.
+- Draft PR #269's hosted jobs failed with `steps: []`; this is Actions/account infrastructure, not
+  executed product-test or development-build evidence, and the unchanged jobs were not retried.
 - Session-wide review found no remaining issue after checking exact binding/request/result
   retention, one-shot precedence and overlap preservation, stale/value-equal CAS rejection,
   cancellation and failure redaction, explicit reset, closed public surfaces, unchanged dialogue
