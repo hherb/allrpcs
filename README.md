@@ -851,9 +851,15 @@ with caller cancellation before constructing that exact result. The scene contro
 exact contamination/evidence pair, rejects stale or repeated results, and applies visible-evidence
 recovery without consuming evidence. Its bounded task controller installs accepted results only on
 the Godot main thread and closes overlap, cancellation, failure, stale-result, and reset behavior.
-These contracts do not define contamination contents or effects, mutate ingredient contamination,
-implement a model/provider or transport, persist data, or change objects, perception, movement,
-events, time, transcripts, input, presentation, or UI.
+The strict OpenAI path accepts only one complete request-owned contamination decision, serializes
+one stateless streaming Responses request with bounded trusted character and candidate context plus
+a closed nullable-selection schema, and rejects incomplete or trailing semantic-event lifecycles.
+Its caller-composed adapter loads one credential only on explicit invocation, requires an event
+stream, redacts provider and transport failure detail, and exposes one construction-only binding
+over exact OpenAI settings, HTTP, credential, and endpoint dependencies. These contracts do not
+define contamination contents or effects, mutate ingredient contamination, own a configured scene
+model, retry or fall back, persist data, or change objects, perception, movement, events, time,
+transcripts, input, presentation, or UI.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution

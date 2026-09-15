@@ -330,6 +330,10 @@ Completed foundations:
   abstention without applying it.
 - [x] Bind and apply one accepted exact contamination decision, then own its provider-neutral
   cancellation-aware decision task and stale-safe recoverable scene state without a model binding.
+- [x] Strictly decode one exact contamination decision, serialize one bounded stateless OpenAI
+  Responses request with a closed schema, and complete its bounded semantic-event/SSE lifecycle.
+- [x] Expose one caller-composed authenticated contamination adapter and construction-only exact
+  OpenAI model binding without construction-time input/output or model invocation.
 - [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
   provider-neutral response rounds without judging or applying either response.
 
