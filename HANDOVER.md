@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #266 (`dc6d9ef`). Branch
-`codex/phase-7-misquotation-consideration-result` advances Phase 7 through Phase 7ij:
+`codex/phase-7-misquotation-consideration-result` advances Phase 7 through Phase 7ij. Draft PR #267
+is open for this branch:
 
 - an immutable `CharacterDialogueMisquotationEvidenceConsiderationResult` retains the exact request
   and accepted decision, resolving the exact selected request evidence or null for abstention;
