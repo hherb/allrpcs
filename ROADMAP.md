@@ -339,8 +339,8 @@ Completed foundations:
 
 Current continuation:
 
-- [x] Extend the substitution model source with stale-safe configured-binding ownership while
-  preserving one-shot precedence and stable fail-closed offline fallback.
+- [x] Own and compose the exact contamination model binding, then run, present, and explicitly
+  acknowledge one exact main-scene contamination consideration without automatic selection.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

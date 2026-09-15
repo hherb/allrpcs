@@ -856,10 +856,24 @@ one stateless streaming Responses request with bounded trusted character and can
 a closed nullable-selection schema, and rejects incomplete or trailing semantic-event lifecycles.
 Its caller-composed adapter loads one credential only on explicit invocation, requires an event
 stream, redacts provider and transport failure detail, and exposes one construction-only binding
-over exact OpenAI settings, HTTP, credential, and endpoint dependencies. These contracts do not
-define contamination contents or effects, mutate ingredient contamination, own a configured scene
-model, retry or fall back, persist data, or change objects, perception, movement, events, time,
-transcripts, input, presentation, or UI.
+over exact OpenAI settings, HTTP, credential, and endpoint dependencies.
+
+`TemporaryCharacterObjectSabotageContaminationModelSource` gives one exact caller-supplied model
+precedence for the next decision, otherwise returning an exact configured model or one stable
+fail-closed offline model. Configured binding initialization, replacement, and clearing use
+exact-reference compare-and-swap and preserve a queued one-shot. The selected-settings scene flow
+composes, replaces, or clears its OpenAI binding without construction-time credential or network
+input/output. The main scene authors one exact eligible water-cask candidate from its authoritative
+world-object snapshot, initializes exact empty contamination and evidence state, and composes one
+current request only on explicit start. Its existing task resolves selection on the main thread;
+overlap preserves the queued model, abstention is inert, and offline failure changes no state. One
+temporary triangular marker projects only exact contamination snapshots. A scene coordinator
+observes each fresh completed result once and explicitly acknowledges only an already-observed
+result whose selected presentation or abstention snapshots remain current. These contracts do not
+define contamination contents or effects, mutate ingredient contamination, automatically start a
+decision, recover contamination through ordinary focused search, retry or fall back to another
+provider, persist data, or change authoritative objects, movement, events, time, transcripts, input,
+or final UI.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution

@@ -215,6 +215,15 @@
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionConsiderationFlowController.cs" id="213_object_sabotage_substitution_consideration_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSubstitutionConsiderationMainSceneSmokeCheck.cs" id="214_object_sabotage_substitution_consideration_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageSubstitutionPresentationCoordinator.cs" id="215_object_sabotage_substitution_presentation_coordinator"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationModelSource.cs" id="216_object_sabotage_contamination_model_source"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationSource.cs" id="217_object_sabotage_contamination_source"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageContaminationController.cs" id="218_object_sabotage_contamination_state"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageContaminationTaskController.cs" id="219_object_sabotage_contamination_task"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationConsiderationFlowController.cs" id="220_object_sabotage_contamination_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck.cs" id="221_object_sabotage_contamination_check"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationController.cs" id="222_object_sabotage_contamination_presentation"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationPresentationFlowController.cs" id="223_object_sabotage_contamination_presentation_flow"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationCoordinator.cs" id="224_object_sabotage_contamination_coordinator"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -494,6 +503,12 @@ visible = false
 polygon = PackedVector2Array(-22, -24, 22, -24, 28, 22, -28, 22)
 color = Color(0.275, 0.404, 0.224, 1)
 
+[node name="ContaminationMarker" type="Polygon2D" parent="InteractionCandidates/WaterCask"]
+visible = false
+position = Vector2(0, -6)
+polygon = PackedVector2Array(0, -10, 9, 6, -9, 6)
+color = Color(0.804, 0.286, 0.235, 1)
+
 [node name="Label" type="Label" parent="InteractionCandidates/WaterCask"]
 offset_left = -76.0
 offset_top = 28.0
@@ -597,6 +612,30 @@ script = ExtResource("209_object_sabotage_substitution_presentation_flow")
 
 [node name="TemporaryCharacterObjectSabotageSubstitutionModelSource" type="Node" parent="."]
 script = ExtResource("211_object_sabotage_substitution_model_source")
+
+[node name="TemporaryCharacterObjectSabotageContaminationModelSource" type="Node" parent="."]
+script = ExtResource("216_object_sabotage_contamination_model_source")
+
+[node name="TemporaryCharacterObjectSabotageContaminationSource" type="Node" parent="."]
+script = ExtResource("217_object_sabotage_contamination_source")
+
+[node name="CharacterObjectSabotageContaminationController" type="Node" parent="."]
+script = ExtResource("218_object_sabotage_contamination_state")
+
+[node name="CharacterObjectSabotageContaminationTaskController" type="Node" parent="."]
+script = ExtResource("219_object_sabotage_contamination_task")
+
+[node name="TemporaryCharacterObjectSabotageContaminationConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("220_object_sabotage_contamination_flow")
+
+[node name="CharacterObjectSabotageContaminationPresentationController" type="Node" parent="."]
+script = ExtResource("222_object_sabotage_contamination_presentation")
+
+[node name="TemporaryCharacterObjectSabotageContaminationPresentationFlowController" type="Node" parent="."]
+script = ExtResource("223_object_sabotage_contamination_presentation_flow")
+
+[node name="CharacterObjectSabotageContaminationPresentationCoordinator" type="Node" parent="."]
+script = ExtResource("224_object_sabotage_contamination_coordinator")
 
 [node name="CharacterObjectSabotageSubstitutionTaskController" type="Node" parent="."]
 script = ExtResource("212_object_sabotage_substitution_task_controller")
@@ -1086,6 +1125,9 @@ script = ExtResource("112_model_settings_storage_check")
 
 [node name="TemporaryCharacterModelCompositionControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("114_model_composition_check")
+
+[node name="TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("221_object_sabotage_contamination_check")
 
 [node name="CharacterModelSettingsControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("116_model_settings_controller_check")

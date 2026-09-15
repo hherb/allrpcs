@@ -2,56 +2,68 @@
 
 ## Current state
 
-`main` is verified at merged PR #262 (`a695ac7`). Branch
-`codex/phase-7-contamination-request-model` advances the exact Phase 7 contamination-decision
-chain through Phase 7hu–7hw:
+`main` is verified at merged PR #263 (`2db4f7e`). Branch
+`codex/phase-7-contamination-model-flow` advances the exact Phase 7 contamination chain through
+Phase 7hx–7ia. Draft PR #264 is open for this branch:
 
-- a pure OpenAI Responses serializer emits one stateless streaming request with bounded trusted
-  character and exact caller-ordered candidate context plus a closed schema whose only selection
-  values are the request's evidence identifiers in stable order followed by explicit JSON null;
-- a caller-composed OpenAI adapter obtains one credential only on explicit invocation, posts that
-  exact request to the default or supplied validated Responses endpoint, requires a successful
-  event stream, and returns only the request-owned decision from the existing strict SSE path; and
-- an immutable Application binding plus Infrastructure factory retains exact OpenAI settings and
-  composes the adapter over caller-owned HTTP, credential, and endpoint dependencies without
-  construction-time input/output or model invocation.
+- a temporary model source owns one exact configured
+  `CharacterObjectSabotageContaminationModelBinding` through exact-reference initialization,
+  replacement, and clearing while preserving one-shot precedence and one stable fail-closed
+  offline model;
+- the selected-settings composition controller activates and replaces that exact future OpenAI
+  contamination model, and clears it back to offline behavior for Ollama or unsupported providers,
+  without construction-time credential access, HTTP send, or model invocation;
+- the main scene authors one exact eligible enemy/water-cask contamination candidate, initializes
+  exact empty contamination and evidence state, and starts one exact current request only when
+  explicitly called; selection resolves atomically on the main thread, overlap preserves its queued
+  model, abstention is inert, and offline failure leaves state unchanged; and
+- a temporary triangular scene marker projects only exact contamination snapshots, while one
+  coordinator observes each fresh completed result at most once and explicitly acknowledges only
+  an already-observed result whose selected presentation or abstention state remains exact-current.
 
-The slice adds no model-source ownership, selected-settings composition, automatic invocation,
-retry, fallback, timeout policy, scene wiring, application or recovery, presentation,
-acknowledgement, persistence, input, UI, contamination contents or effects, ingredient coupling,
-scheduling, events, time, transcripts, navigation, or movement. No provider was invoked. The
-unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+No provider was invoked. The work adds no automatic contamination selection, timing, recovery
+through ordinary focused search, persistence, new input, final UI, new contamination contents or
+effects, ingredient coupling, retry, fallback provider, scheduling, events, time, transcripts,
+navigation, or movement. Authoritative world objects and all supplied request, candidate,
+contamination, evidence, settings, and source snapshots remain unchanged. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing contamination adapter and binding compile failures.
-- Focused host-local checks pass 6 serializer tests, 11 HTTP adapter tests, 3 Application binding
-  tests, and 5 Infrastructure binding-factory tests. The first sandboxed VSTest run hit the known
-  IPC `SocketException (13)`; identical host-local commands passed without product changes.
+- Tests began with the expected missing contamination model-source compile failure, the expected
+  uncomposed OpenAI contamination binding failure, the expected missing main-scene source/flow
+  compile failure, and the expected missing presentation/coordinator compile failure.
+- Focused host-local checks pass the exact configured/one-shot/offline model-source smoke,
+  selected-settings composition/clearing smoke, and main-scene selection, abstention, overlap,
+  offline failure, one-time presentation, and stale-safe acknowledgement smoke. The first sandboxed
+  Godot run hit the known `user://logs` signal-11 crash; its identical host-local command passed
+  without product changes.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
   build, 2,502 Domain tests, 533 Application tests, 826 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
-- Every new authored C# file is below 500 lines with no lines longer than 120 characters.
-  `git diff --check` passes. Source-to-source comparison with the established concealment and
-  substitution provider paths plus complete changed-file review found no unresolved findings.
+- Every changed authored C# file remains below 500 lines with no lines longer than 120 characters.
+  `git diff --check` passes. Source-to-source comparison with the established concealment, move,
+  and substitution model/presentation paths plus complete changed-file review found no unresolved
+  findings.
 
 ## Exact next bounded slice
 
-Take **Phase 7hx: supply one exact contamination model or a stable offline default**.
+Take **Phase 7ib: recover the exact presented contamination through ordinary focused search**.
 
 Acceptance boundary:
 
-1. Add `TemporaryCharacterObjectSabotageContaminationModelSource` with one exact configured
-   `CharacterObjectSabotageContaminationModelBinding`, initialized once and replaceable or
-   clearable only by exact-reference compare-and-swap operations.
-2. Permit one exact caller-supplied model to take precedence for the next decision only; consume
-   only that one-shot model, return the configured model stably for later decisions, and otherwise
-   return one stable fail-closed offline model.
-3. Prove stale/value-equal replacement and clearing fail closed, clearing preserves a queued
-   one-shot model, selection performs no model invocation or request mutation, caller cancellation
-   precedes offline request validation, and the source exposes only the five bounded operations.
-4. Add only an isolated credential-free Godot smoke for this source. Do not compose settings into
-   `Main.tscn`, load credentials, perform HTTP or model input/output, start a task, apply or recover
-   contamination, present or acknowledge a result, or add persistence, input, UI, retry, timing,
-   scheduling, events, time, transcripts, navigation, or movement.
+1. Extend the temporary contamination presentation flow with one explicit
+   `TryRecover(CharacterPerceptionSnapshot)` that first requires the exact last-presented current
+   contamination, projects the retained evidence through supplied perception, delegates the exact
+   stale-safe recovery, and presents only its fresh contamination snapshot.
+2. After ordinary focused-search resolution, ask that flow to recover from the exact current Seeker
+   perception alongside the existing concealment, move, and substitution recovery calls.
+3. Prove an unrelated resolved target leaves the selected contamination and marker unchanged, while
+   resolving the exact water cask removes only its contamination and hides the marker through the
+   retained noticed evidence. Preserve the exact evidence, world objects, source state, target and
+   actor positions, and resolved perception.
+4. Do not automatically select or invoke contamination, add contamination contents or effects,
+   consume evidence, change ingredient contamination, load credentials, call a provider, add retry
+   or fallback, persist state, add input or final UI, or change scheduling, events, time,
+   transcripts, navigation, or movement.
