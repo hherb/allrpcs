@@ -4,7 +4,7 @@
 
 `main` is verified at merged PR #263 (`2db4f7e`). Branch
 `codex/phase-7-contamination-model-flow` advances the exact Phase 7 contamination chain through
-Phase 7hx–7ia:
+Phase 7hx–7ia. Draft PR #264 is open for this branch:
 
 - a temporary model source owns one exact configured
   `CharacterObjectSabotageContaminationModelBinding` through exact-reference initialization,
