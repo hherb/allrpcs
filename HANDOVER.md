@@ -20,6 +20,10 @@ through these bounded slices:
 - a pure OpenAI Responses serializer emits one stateless streaming request with a closed strict
   schema and bounded trusted character, target, replacement, and eligibility context.
 
+Implementation commit `66c485e` is published in draft PR #255. Hosted run `34922959779` failed
+before executing any steps in all five credential-free jobs (`steps: []`), so it is Actions/account
+infrastructure state rather than product-test evidence and was not retried.
+
 The slice does not add SSE handling, HTTP transport, credentials, provider adapters or bindings,
 automatic invocation, task acknowledgement, model-selected presentation, persistence, timing,
 scheduling, events, time, transcripts, navigation, input, or UI. Authoritative world objects and
@@ -38,6 +42,8 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
   build, 2,455 Domain tests, 521 Application tests, 710 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
+- Hosted run `34922959779` contains no executed job steps and therefore adds no product-validation
+  evidence; the host-local quality result above remains authoritative for this draft head.
 - Every new authored C# file is below 500 lines with no lines longer than 120 characters.
   `git diff --check` passes. Slice-by-slice review found no unresolved findings.
 
