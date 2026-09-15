@@ -212,6 +212,9 @@ public sealed class OpenAiCharacterObjectSabotageSubstitutionRequestSerializerTe
         Assert.Same(input.Candidate, Assert.Single(input.Request.Candidates));
     }
 
+    internal static CharacterObjectSabotageSubstitutionConsiderationRequest CreateRequest() =>
+        CreateInput().Request;
+
     private static Input CreateInput()
     {
         Character character = RepresentativeEnemyAgentCharacterSource.Create();
