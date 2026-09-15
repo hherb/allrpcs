@@ -328,6 +328,8 @@ Completed foundations:
 - [x] Select and atomically apply the first exact eligible contamination candidate, then retain one
   bounded provider-neutral consideration request and strictly validate an exact selection or
   abstention without applying it.
+- [x] Bind and apply one accepted exact contamination decision, then own its provider-neutral
+  cancellation-aware decision task and stale-safe recoverable scene state without a model binding.
 - [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
   provider-neutral response rounds without judging or applying either response.
 

@@ -844,10 +844,16 @@ exact first eligible candidate, and one sequence can apply that candidate throug
 atomic transition. A provider-neutral consideration request retains exact snapshots and a copied
 read-only candidate view. Its exact selection-or-abstention decision policy accepts only the
 request character and exact candidate evidence identifier, rechecking current contamination
-eligibility before acceptance. These contracts do not bind or apply a decision, define
-contamination contents or effects, mutate ingredient contamination, invoke a model, own scene
-state, persist data, or change objects, perception, movement, events, time, transcripts, input, or
-UI.
+eligibility before acceptance. An immutable result binds only an accepted exact decision and its
+selected request candidate; its pure transition applies selections atomically and leaves accepted
+abstentions inert. A provider-neutral model seam and Application controller obtain one decision
+with caller cancellation before constructing that exact result. The scene controller owns one
+exact contamination/evidence pair, rejects stale or repeated results, and applies visible-evidence
+recovery without consuming evidence. Its bounded task controller installs accepted results only on
+the Godot main thread and closes overlap, cancellation, failure, stale-result, and reset behavior.
+These contracts do not define contamination contents or effects, mutate ingredient contamination,
+implement a model/provider or transport, persist data, or change objects, perception, movement,
+events, time, transcripts, input, presentation, or UI.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
