@@ -3,7 +3,8 @@
 ## Current state
 
 `main` is verified at merged PR #264 (`e6e2203`). Branch
-`codex/phase-7-contamination-recovery` advances Phase 7 through Phase 7ie:
+`codex/phase-7-contamination-recovery` advances Phase 7 through Phase 7ie. Draft PR #265 is open for
+this branch:
 
 - exact current contamination can recover only through its retained evidence projected from
   supplied perception, and ordinary exact water-cask focused-search resolution invokes that path;
@@ -41,6 +42,9 @@ fallback, scheduling, events, time, navigation, or movement. The unrelated untra
   `git diff --check` passes. Complete changed-file review plus source-to-source comparison with the
   concealment, move, and substitution recovery/investigation paths and existing bounded sabotage
   contracts found no unresolved findings.
+- Draft PR #265's credential-free workflow run `34962195571` failed all five jobs before any steps
+  began (`steps: []`). This is Actions/account infrastructure, not product-test evidence, and the
+  unchanged jobs were not retried.
 
 ## Exact next bounded slice
 
