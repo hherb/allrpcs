@@ -16,6 +16,10 @@
   abstention, while its pure policy requires the exact request character and exact candidate
   evidence identifier and rechecks current contamination eligibility.
 
+Implementation commit `1e8274a` is published in draft PR #259. Hosted run `34943602414` failed
+before executing any steps in all five credential-free jobs (`steps: []`), so it is Actions/account
+infrastructure state rather than product-test evidence and was not retried.
+
 No provider was invoked. The work adds no accepted-result binding, consideration application,
 controller, task, model/provider path, scene ownership, presentation, persistence, input, UI,
 contamination contents or effects, ingredient-state coupling, timing, scheduling, events, time,
