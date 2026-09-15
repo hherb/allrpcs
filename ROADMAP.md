@@ -548,8 +548,14 @@ Acceptance:
     substitution/evidence transition while preserving explicit abstention without application.
   - [x] Resolve one exact accepted substitution consideration result against scene-owned snapshots,
     atomically installing selection output while retaining exact state for abstention.
-  - [ ] Own one bounded substitution-decision task through closed scene terminal states and resolve
+  - [x] Own one bounded substitution-decision task through closed scene terminal states and resolve
     only its exact non-stale accepted result on the main thread.
+  - [x] Supply one exact one-shot substitution model with stable fail-closed offline behavior.
+  - [x] Compose one explicitly started authored substitution consideration from exact current scene
+    state without automatic invocation or presentation.
+  - [x] Strictly decode one exact substitution decision JSON document against its current request.
+  - [x] Serialize one bounded strict OpenAI Responses substitution-decision request.
+  - [ ] Complete one strict bounded OpenAI Responses substitution-decision SSE stream.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

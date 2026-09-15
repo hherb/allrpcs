@@ -854,9 +854,18 @@ only that validated result. Its pure consideration transition delegates selected
 existing atomic substitution/evidence transition while preserving abstention without application.
 The scene controller resolves a result only when its request retains the exact current scene-owned
 substitution and evidence snapshots, installs both fresh selection snapshots atomically, and accepts
-each exact request at most once. These contracts do not present a substitution or add a task, model
-source, provider, persistence, timing, scheduling, event, time, transcript, navigation, input, UI,
-or automatic invocation.
+each exact request at most once. A closed scene task owns one decision through idle, running,
+completed, cancelled, and failed states, resolves only a non-stale successful result on the main
+thread, and resets only explicitly from terminal state. One temporary source supplies exactly one
+caller-composed model or a stable fail-closed offline model. The main scene composes exact current
+source and scene snapshots into one request only on explicit start; selection and abstention resolve
+without automatic presentation, while overlap, cancellation, provider failure, invalid decisions,
+and stale success remain mutation-free. The strict JSON boundary canonicalizes accepted identifiers
+back to exact request instances, rejects malformed or unsupported documents behind one bounded
+error, and serializes a stateless streaming OpenAI request with a closed selection-or-null schema
+and only bounded trusted character, target, replacement, and eligibility context. These contracts
+do not add SSE handling, HTTP transport, credentials, provider binding, automatic invocation,
+presentation, persistence, timing, scheduling, event, time, transcript, navigation, input, or UI.
 
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
 snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the
