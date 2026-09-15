@@ -2,63 +2,59 @@
 
 ## Current state
 
-`main` is verified at merged PR #252 (`03fe0c7`). Branch
-`codex/phase-7-substitution-source` advances Phase 7 substitution through these bounded slices:
+`main` is verified at merged PR #253 (`ed48fc1`). Branch
+`codex/phase-7-substitution-decision-flow` advances Phase 7 substitution through these exact
+provider-neutral and scene-owned slices:
 
-- an inert temporary source retains the existing exact authoritative world-object snapshot and its
-  tail `village-water-cask`, one representative enemy, complete target access, a distinct
-  `tainted-water-cask`, empty substitution/evidence snapshots, and one exact eligible
-  evidence-bound candidate;
-- isolated and main-scene flows initialize exact scene-owned state, apply only on explicit request,
-  and recover only after exact evidence is visible through supplied perception;
-- a stale-safe presentation controller swaps only the original and substitute cask polygons while
-  preserving authoritative world objects and all scene positions;
-- ordinary focused-search resolution recovers the substitution only for the exact water-cask
-  outcome; unrelated outcomes leave it active; and
-- a provider-neutral consideration request retains exact authority plus at most 64 stable copied
-  candidates, while an exact-character selection-or-abstention decision accepts only an exact
-  currently eligible evidence identifier.
+- an immutable consideration result retains the exact request, accepted decision, and exact
+  selected request candidate, or null only for explicit abstention;
+- one cancellation-aware model interface and pure Application controller obtain a decision for the
+  exact request and return only its validated result;
+- one pure transition applies an accepted selection through the existing atomic
+  substitution/evidence transition while abstention returns no application; and
+- the scene-owned substitution controller resolves each exact request at most once, requires its
+  exact current substitution/evidence snapshots, atomically installs both fresh selection outputs,
+  and retains both exact snapshots for abstention.
 
-Implementation commit `fe7b7cd` is published in draft PR #253. Hosted run `34916632446` failed
-before executing any steps in all five credential-free jobs (`steps: []`), so it is recorded as
-Actions/account infrastructure state rather than product-test evidence and was not retried.
+Implementation commit `34e8e9a` is published in draft PR #254. Hosted run `34921658259` on the
+first documentation head failed before executing any steps in all five credential-free jobs
+(`steps: []`), so it is recorded as Actions/account infrastructure state rather than product-test
+evidence and was not retried.
 
-The implementation does not replace or mutate authoritative world objects, consume evidence,
-infer inventory, placement, similarity, plausibility, reachability, critical-route safety, or
-replacement eligibility, or add timing, scheduling, a task, model, provider, persistence, new
-input, UI controls, events, time, transcripts, navigation, or automatic sabotage. The unrelated
-untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+The implementation does not present a substitution or add a task, model source, provider adapter,
+provider binding, persistence, `Main.tscn` wiring, input, UI, timing, scheduling, automatic
+sabotage, events, time, transcripts, or navigation. Authoritative world objects and every supplied
+request, candidate, substitution, evidence, and surrounding snapshot remain unchanged. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing source, flow, presentation, request, and decision compile or
-  focused-smoke failures.
-- Focused host-local checks pass the inert source, explicit apply/recovery flow, main-scene
-  composition, stale-safe presentation, ordinary water-cask investigation, 5 consideration-request
-  cases, and 8 decision/policy cases. Sandboxed Godot hit the known `user://logs` crash and
-  sandboxed VSTest hit the known IPC `SocketException (13)`; identical host-local commands passed
-  without product changes.
+- Tests began with the expected missing result, provider-neutral model/controller, consideration
+  transition, and scene-resolution compile failures.
+- Focused host-local checks pass 14 substitution-consideration Domain tests, 6 substitution
+  Application tests, a zero-warning game build, and the exact scene-owned consideration-resolution
+  Godot smoke. Sandboxed Godot hit the known `user://logs` crash and sandboxed VSTest hit the known
+  IPC `SocketException (13)`; identical host-local commands passed without product changes.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,446 Domain tests, 515 Application tests, 682 Infrastructure tests, 8 architecture tests,
+  build, 2,455 Domain tests, 521 Application tests, 682 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free headless Godot smoke, and the final Compatibility
   renderer launch. No live-conformance switch was enabled and no provider was invoked.
-- All changed authored C# files are below 500 lines with no lines longer than 120 characters.
-  `dotnet format Allrpcs.sln --no-restore --verify-no-changes` and `git diff --check` pass. Final
-  staged-diff review found no unresolved findings.
+- All new or changed authored C# files are below 500 lines with no lines longer than 120 characters.
+  `git diff --check` passes. Slice-by-slice review found no unresolved findings.
 
 ## Exact next bounded slice
 
-Take **Phase 7gr: bind one accepted substitution consideration result**.
+Take **Phase 7gw: own one bounded substitution-decision task**.
 
 Acceptance boundary:
 
-1. Add one immutable provider-neutral result retaining the exact substitution consideration
-   request, accepted decision, and exact selected candidate, or null only for explicit abstention.
-2. Add one pure transition that delegates the existing exact decision policy, resolves a selection
-   only by the decision's exact evidence-identifier instance, and returns the request's exact
-   candidate without applying it.
-3. Reject null, invalid, stale, unknown, distinct value-equal, or currently ineligible decisions;
-   preserve the exact request and every authority snapshot and candidate on success.
-4. Do not apply or present a substitution or add a model interface, controller, task, provider,
-   persistence, `Main.tscn` wiring, input, UI, timing, scheduling, events, time, transcripts, or
-   navigation behavior.
+1. Add one closed task status with idle, running, completed, cancelled, and failed states, plus one
+   scene controller retaining only the exact successfully resolved consideration result.
+2. Start only while idle and only when the request carries the exact current scene-owned
+   substitution/evidence snapshots; reject null, stale, repeated, or overlapping starts.
+3. Observe completion on the main thread, resolve only through the existing exact scene controller,
+   keep cancellation, model failure, invalid decisions, and stale successful results mutation-free,
+   and permit explicit reset only from terminal state.
+4. Cancel an active task on explicit request or tree exit without adding a model source, provider,
+   presentation, `Main.tscn` wiring, persistence, input, timing, scheduling, automatic invocation,
+   events, time, transcripts, or navigation behavior.

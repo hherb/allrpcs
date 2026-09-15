@@ -540,8 +540,16 @@ Acceptance:
     authority snapshots and a fully validated bounded exact candidate collection.
   - [x] Accept an explicit substitution selection or abstention only for the exact considering
     character and a currently eligible exact candidate.
-  - [ ] Bind one accepted substitution decision to its exact request and selected exact candidate
+  - [x] Bind one accepted substitution decision to its exact request and selected exact candidate
     without applying or presenting it.
+  - [x] Define one provider-neutral cancellation-aware substitution-decision interface and obtain
+    one exact validated consideration result through it.
+  - [x] Apply an accepted substitution selection through the existing immutable
+    substitution/evidence transition while preserving explicit abstention without application.
+  - [x] Resolve one exact accepted substitution consideration result against scene-owned snapshots,
+    atomically installing selection output while retaining exact state for abstention.
+  - [ ] Own one bounded substitution-decision task through closed scene terminal states and resolve
+    only its exact non-stale accepted result on the main thread.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.

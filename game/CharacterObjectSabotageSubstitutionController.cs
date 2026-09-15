@@ -8,6 +8,8 @@ namespace Allrpcs.Game;
 /// <summary>Owns exact scene substitution and authoritative sabotage-evidence snapshots.</summary>
 public partial class CharacterObjectSabotageSubstitutionController : Node
 {
+    private CharacterObjectSabotageSubstitutionConsiderationRequest? lastResolvedRequest;
+
     /// <summary>Gets the initialized exact active substitution snapshot, if any.</summary>
     public CharacterObjectSabotageSubstitutionSnapshot? Substitutions { get; private set; }
 
@@ -72,6 +74,32 @@ public partial class CharacterObjectSabotageSubstitutionController : Node
 
         Substitutions = result.Substitutions;
         Evidence = result.EvidenceResult.Evidence;
+        return true;
+    }
+
+    /// <summary>Resolves one exact accepted consideration result from current scene state.</summary>
+    public bool TryResolveConsideration(
+        CharacterObjectSabotageSubstitutionConsiderationResult considerationResult)
+    {
+        ArgumentNullException.ThrowIfNull(considerationResult);
+
+        CharacterObjectSabotageSubstitutionConsiderationRequest request = considerationResult.Request;
+        if (ReferenceEquals(lastResolvedRequest, request)
+            || !ReferenceEquals(Substitutions, request.Substitutions)
+            || !ReferenceEquals(Evidence, request.Evidence))
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageSubstitutionResult? result =
+            CharacterObjectSabotageSubstitutionConsiderationTransition.Apply(considerationResult);
+        if (result is not null)
+        {
+            Substitutions = result.Substitutions;
+            Evidence = result.EvidenceResult.Evidence;
+        }
+
+        lastResolvedRequest = request;
         return true;
     }
 
