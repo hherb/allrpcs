@@ -2,44 +2,44 @@
 
 ## Current state
 
-`main` includes merged PR #260 at `35e5259`. Branch
-`codex/phase-7-contamination-decision-decoding` completes Phase 7hr:
+`main` includes merged PR #261 at `ab43fa2`. This branch completes Phase 7hs–7ht:
 
-- `CharacterObjectSabotageContaminationDecisionJsonDeserializer` accepts one complete,
-  comment-free, maximum-4,096-UTF-16-code-unit JSON object with exactly case-sensitive
-  `characterId` and `selectedEvidenceId` properties;
-- it rejects trailing content, duplicates, missing or extra properties, invalid shapes,
-  identifiers, unknown candidates, over-depth JSON, and currently ineligible selections through
-  one bounded `ArgumentException` for `serialized`; and
-- value-equal parsed identifiers are resolved to the exact request character and candidate
-  evidence instances before the existing acceptance policy is applied.
+- `OpenAiCharacterObjectSabotageContaminationStreamAccumulator` binds one exact contamination
+  consideration request to one bounded Responses-style semantic-event lifecycle. It requires
+  `response.created`, then `response.in_progress`, then one bounded terminal output-text JSON
+  document and `response.completed`; malformed, duplicate, out-of-order, partial, failed,
+  oversized, and trailing states fail closed without exposing a decision.
+- `OpenAiCharacterObjectSabotageContaminationSseCompletion` consumes only complete framed SSE
+  documents through the existing reader and returns an exact accepted decision only after the
+  completed terminal sequence. It preserves caller cancellation and does not perform transport.
 
-No serializer/schema, SSE or HTTP transport, model implementation, credentials, binding,
-retry/timeout policy, source, main-scene composition, presentation, acknowledgement,
-persistence, input, UI, contamination effects, ingredient coupling, scheduling, events, time,
-transcripts, navigation, or actor movement was added. No provider was invoked. The unrelated
-untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+No HTTP sending, model implementation or composition, credentials, settings/binding,
+retry/timeout policy, scene composition, presentation, acknowledgement, persistence, input, UI,
+contamination effects, ingredient coupling, scheduling, events, time, transcripts, navigation, or
+movement was added. No provider was invoked. The unrelated untracked `scripts/code_statistics.py`
+remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Focused host-local decoder tests pass: 22 tests.
-- Host-local `./scripts/quality.sh` passes with a zero-warning build, 2,502 Domain, 530
-  Application, 779 Infrastructure, and 8 architecture tests, scenario validation, and the
-  credential-free Godot smoke suite.
-- Review confirms both authored C# files are below 500 lines and have no lines over 120
-  characters; `git diff --check` is clean. No unresolved findings remain.
+- Host-local focused contamination infrastructure tests pass: 36 accumulator/deserializer tests
+  and 25 contamination SSE tests.
+- Review confirms the accumulator retains only the exact request and completed exact decision,
+  bounds every serialized event/output document, and has no provider text or identifier output
+  surface. Authored files are below 500 lines and lines are within 120 characters.
 
 ## Exact next bounded slice
 
-Take **Phase 7hs: accumulate one strict completed contamination decision stream**.
+Take **Phase 7hu: serialize one exact contamination consideration request and closed decision
+schema**.
 
 Acceptance boundary:
 
-1. Add one stateful, bounded OpenAI Responses-style SSE accumulator that accepts only the exact
-   current contamination request and invokes the Phase 7hr deserializer only after one complete
-   terminal JSON decision document.
-2. Fail closed on malformed, duplicate, out-of-order, partial, trailing, oversized, cancelled,
-   or failed stream state; expose no partial decision and retain no mutable request inputs.
+1. Add pure, bounded request serialization and a closed JSON-schema writer for the exact current
+   contamination request, retaining no filesystem paths, credentials, provider identifiers, or
+   mutable caller collections.
+2. Reject invalid/null/beyond-bound request inputs before producing transport text; prove exact
+   stable candidate ordering and the explicit nullable-selection schema with focused tests.
 3. Do not add HTTP sending, model composition, credentials, settings/binding, retry/timeout,
-   scene composition, presentation, acknowledgement, persistence, input, UI, contamination
-   effects, ingredient coupling, scheduling, events, time, transcripts, navigation, or movement.
+   SSE changes, scene composition, presentation, acknowledgement, persistence, input, UI,
+   contamination effects, ingredient coupling, scheduling, events, time, transcripts,
+   navigation, or movement.
