@@ -14,6 +14,10 @@
 - Phase 7gi adds an isolated scene controller that owns exact substitution/evidence snapshots once
   and applies or recovers only through exact-reference compare-and-swap operations.
 
+Implementation commit `f1cfc61` is published in mergeable draft PR #252. Hosted run `34914815173`
+failed before executing any steps in all five credential-free jobs (`steps: []`), so it is recorded
+as Actions/account infrastructure state rather than product-test evidence and was not retried.
+
 The implementation does not replace an authoritative world object or scene body, consume evidence,
 infer inventory, placement, similarity, plausibility, reachability, critical-route safety,
 perception, or discovery, or add a source, selection, scheduling, consideration, task, model,
