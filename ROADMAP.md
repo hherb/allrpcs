@@ -297,295 +297,39 @@ Acceptance:
 
 ## Phase 7 — Multiple autonomous roles and fair sabotage
 
-- [x] Add the two hermit character roles with distinct private knowledge and motives.
-- [x] Add the sage role as an evidence-comparison and assumption-challenging consultant, not an
-  omniscient hint system.
-- [x] Add the enemy agent with a private national objective, capabilities, limits, and possible
-  changes of allegiance.
-- [x] Add additional infected roles using dormant controllers.
-- [x] Schedule directly addressed speakers first.
-- [x] Allow motivated interjections, meaningful silence, and player interruption.
-  - [x] Define, validate, and deterministically select provider-neutral participation decisions.
-  - [x] Validate one complete bounded scheduled participation round before selecting its speaker.
-  - [x] Derive and scene-start an exact heard-event follow-up from a complete selected round.
-  - [x] Interrupt an initialized autonomous chain through ordinary player cancellation input.
-  - [x] Define an immutable provider-neutral participation-consideration request for each scheduled
-    listener.
-  - [x] Validate a participation decision against the exact consideration request and authored
-    character state.
-  - [x] Preflight and create a complete bounded round of stable consideration requests.
-  - [x] Bind each accepted participation decision to its exact consideration request.
-  - [x] Retain one complete bounded result round with exact request and event alignment.
-  - [x] Define one provider-neutral cancellation-aware participation decision interface.
-  - [x] Obtain and validate one complete participation decision round through that interface.
-  - [x] Budget-gate and scene-start the exact selected result from a complete consideration round.
-  - [x] Strictly decode participation decision JSON against exact character state and addressing.
-  - [x] Serialize one bounded strict OpenAI Responses participation decision request.
-  - [x] Complete one strict bounded OpenAI Responses participation decision SSE stream.
-  - [x] Expose one caller-composed authenticated OpenAI participation decision adapter.
-  - [x] Bound one complete sequential participation-decision round with a shared deadline.
-  - [x] Own one bounded participation-round task through closed scene terminal states.
-  - [x] Supply one exact one-shot participation model with fail-closed offline behavior.
-  - [x] Bind and select exact participation models through canonical provider settings.
-  - [x] Compose the selected OpenAI participation model without construction-time input/output.
-  - [x] Scene-own configured participation bindings with safe replacement and offline clearing.
-  - [x] Coordinate one eligible directly addressed ordinary player event through a bounded
-    participation round and the existing budget-gated follow-up-start seam.
-  - [x] Obtain participation decisions and drive the selected follow-up in the ordinary dialogue
-    flow.
-  - [x] Preflight and coordinate a complete stable ordinary listener schedule and direct-address set.
-  - [x] Resolve the exact bounded LLM participant for an awaiting selected character turn.
-  - [x] Scene-own an exact healer-first ordinary roster and include its participants in hearing.
-  - [x] Generate and record one exact selected direct response or motivated sage interjection.
-- [x] Prevent unbounded LLM-to-LLM conversation loops.
-  - [x] Define and scene-own bounded completed-turn and monotonic-interruption state.
-  - [x] Gate complete-round and complete-result autonomous selection on the exact conversation
-    budget.
-  - [x] Gate exact selected follow-up starts and atomically complete turns with one budget advance.
-  - [x] Close an initialized ordinary completion/cancellation path at its bound or interruption.
-  - [x] Install a fresh finite budget for each eligible ordinary player-rooted autonomous chain.
-  - [x] Initialize and drive every ordinary autonomous chain through these bounded seams.
-  - [x] Start only heard LLM listeners after exact character speech and stop at the finite bound.
-- [x] Support whispering and private conversations based on hearing conditions.
-  - [x] Define explicit provider-neutral ordinary-speech and whispering delivery values.
-  - [x] Select ordinary or whisper listeners through explicit bounded hearing ranges.
-  - [x] Retain exact delivery on dialogue events and apply it at scene occurrence.
-  - [x] Carry explicit player-authored whisper intent through ordinary scene occurrence.
-  - [x] Retain exact delivery on spoken transcript entries and scene transcript append.
-  - [x] Retain exact delivery mode on recent and current dialogue model context.
-  - [x] Serialize exact dialogue delivery modes into shared trusted model-request context.
-  - [x] Retain an optional exact response delivery and strictly decode provider-selected modes.
-  - [x] Apply exact response delivery to scene hearing and transcript recording.
-  - [x] Persist exact heard and response delivery modes through the version-4 save boundary.
-- [x] Support bounded independent tasks and party separation.
-  - [x] Define canonical bounded independent-task assignments and immutable lifecycle snapshots.
-  - [x] Enforce closed forward task lifecycle transitions and stable per-character scheduling.
-  - [x] Complete only an exact active task through an authoritative physical-action occurrence.
-  - [x] Represent bounded party membership and atomically start a task while separating its member.
-  - [x] Scene-own task and party state and drive one authored departure through existing rules.
-  - [x] Complete one exact active authored task through authoritative event, time, and transcript
-    state only.
-  - [x] Rejoin one exact completed-task character through stable bounded party membership only after
-    its exact return completes.
-- [x] Simulate off-screen movement and actions through the same authoritative rules.
-  - [x] Define one bounded provider-neutral travel plan and immutable progress transition for an
-    exact active independent task without introducing Godot navigation or elapsed-time policy.
-  - [x] Scene-own one exact independent-task travel plan and advance its immutable progress only
-    from the exact expected current plan, progress, and next waypoint.
-  - [x] Author and scene-initialize one exact active healer route from its departure position to
-    the existing herb-patch task target without advancing or moving it.
-  - [x] Require exact completed scene-owned travel before the independent-task physical occurrence
-    can atomically change task, event, qualitative-time, or transcript state.
-  - [x] Compose one pure final-waypoint arrival and authoritative task occurrence as an immutable
-    all-or-nothing Application result without scene installation.
-  - [x] Install one exact final-waypoint arrival and authoritative task occurrence atomically from
-    compare-and-swapped scene-owned travel, task, event, time, and transcript state.
-  - [x] Define bounded exact completed-task return travel and immutable one-waypoint progress.
-  - [x] Scene-own and author the healer return route from its exact successful arrival back to its
-    outbound origin without selecting timing or movement policy.
-  - [x] Initialize that exact return route as part of the final arrival-occurrence scene operation.
-  - [x] Compose and install exact final return progress plus stable bounded party rejoin atomically.
-  - [x] Coordinate one explicit next outbound or return waypoint through those existing atomic scene
-    operations without selecting when a step occurs.
-  - [x] Select the active outbound or return leg only from one exact caller-supplied scene snapshot.
-  - [x] Define a bounded provider-neutral cadence and immutable elapsed clock that exposes at most
-    one due independent-task travel step per advance.
-  - [x] Scene-own one exact task-step cadence and compare-and-swap immutable elapsed clock progress.
-  - [x] Consume one due cadence interval only when the exact active outbound or return step succeeds.
-  - [x] Drive the authored one-waypoint task occurrence and return rejoin from a bounded live-scene
-    cadence without moving or hiding its character body.
-  - [x] Hide the exact separated task character body and restore it only from the exact rejoined
-    party snapshot without changing its retained scene position.
-- [ ] Permit the agent to conceal, move, substitute, contaminate, misquote, delay, and influence
-  only when physically and informationally able.
-  - [x] Define bounded explicit per-character physical access to stable world-object identifiers.
-  - [x] Require one targeted action's physical access, authored capability, and referenced knowledge
-    together through a pure fail-closed eligibility gate.
-  - [x] Define the closed conceal, move, substitute, contaminate, misquote, delay, and influence
-    action-kind vocabulary without granting occurrence authority.
-  - [x] Bind object-targeted sabotage proposals to exact actors and complete unchanged access
-    requirements while rejecting non-object action kinds.
-  - [x] Bind one eligible object sabotage proposal to its exact authoritative world-object target
-    without applying an effect.
-  - [x] Author one exact temporary enemy concealment candidate with explicit physical access,
-    authoritative object state, empty concealment state, and fresh noticed evidence.
-  - [x] Bind that authored candidate to the exact tail water cask in the existing complete scene
-    world-object snapshot and initialize its empty state without applying it automatically.
-  - [x] Bind the visible water cask to existing interaction focus and append one exact
-    capability-gated investigation condition without selecting sabotage behavior or timing.
-  - [x] Select the exact first currently eligible concealment candidate from a fully validated
-    bounded caller collection in stable order without applying it.
-  - [x] Route the authored temporary enemy concealment through its stable bounded candidate
-    collection while retaining explicit occurrence and unchanged evidence-gated recovery.
-  - [x] Retain one immutable provider-neutral concealment consideration request with exact current
-    authority snapshots and a fully validated bounded candidate collection.
-  - [x] Define an explicit provider-neutral concealment selection-or-abstention decision keyed to
-    exact character and evidence identifiers.
-  - [x] Accept that decision only for the exact considering character and a currently eligible
-    exact candidate, while allowing explicit abstention without applying an effect.
-  - [x] Bind one accepted concealment decision to its exact request and selected exact candidate.
-  - [x] Define one provider-neutral cancellation-aware concealment-decision interface.
-  - [x] Obtain and validate one exact concealment decision through that interface.
-  - [x] Apply an accepted selection through the existing immutable concealment/evidence transition
-    while preserving explicit abstention without state application.
-  - [x] Resolve one exact accepted consideration result against scene-owned snapshots, atomically
-    installing selection output while retaining exact state for abstention.
-  - [x] Own one bounded concealment-decision task through closed scene terminal states and resolve
-    only its exact non-stale accepted result on the main thread.
-  - [x] Supply one exact one-shot concealment model with stable fail-closed offline behavior.
-  - [x] Compose one explicit authored concealment consideration from exact current scene state
-    without selecting when it starts.
-  - [x] Wire that explicit consideration flow into the main scene while keeping startup inert.
-  - [x] Strictly decode one exact concealment decision JSON document against its current request.
-  - [x] Serialize one bounded strict OpenAI Responses concealment-decision request.
-  - [x] Complete one strict bounded OpenAI Responses concealment-decision SSE stream.
-  - [x] Expose one caller-composed authenticated OpenAI concealment-decision adapter.
-  - [x] Bind one exact OpenAI concealment model through canonical provider settings without
-    construction-time input/output.
-  - [x] Scene-own one configured concealment binding with exact stale-safe replacement, explicit
-    offline clearing, and preserved one-shot precedence.
-  - [x] Compose, replace, and clear that binding with the selected canonical OpenAI setting while
-    keeping unsupported providers fail-closed.
-  - [x] Present one exact explicitly started completed model-selected concealment on the main-scene
-    water-cask body once while abstention and invalid terminal states remain exact no-ops.
-  - [x] Explicitly acknowledge only the exact observed current selection or abstention so a later
-    concealment decision can start without automatic task reset or scene mutation.
-- [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route
-  to a critical conclusion.
-  - [x] Apply one eligible concealment as fresh bounded object state together with its exact fresh
-    evidence, without mutating the authoritative object, its position, or any critical route.
-  - [x] Recover only the evidence-bound concealed target after a character can see its exact
-    authoritative sabotage evidence, preserving unrelated concealment and all source snapshots.
-  - [x] Scene-own exact concealment and evidence snapshots and compare-and-swap eligible apply and
-    recovery results without mutating authoritative inputs.
-  - [x] Run one explicitly requested temporary concealment exactly once and recover it only through
-    the existing perception-to-evidence projection without consuming evidence.
-  - [x] Project exact concealment snapshots onto one scene body through stale-safe visibility state.
-  - [x] Explicitly conceal and hide the main-scene water cask, then recover and restore it only from
-    noticed exact evidence without changing its position or authoritative world object.
-  - [x] Recover that concealment from ordinary focused-search resolution only for the exact water
-    cask outcome, while unrelated resolved targets leave it concealed.
-  - [x] Compose first-eligible concealment selection and immutable application as one all-or-nothing
-    Domain result without choosing when it occurs.
-  - [x] Compare-and-swap that first-eligible result into scene-owned concealment and evidence state
-    without installing stale, absent, or partial results.
-  - [x] Bind one exact move-sabotage occurrence to one exact authored destination without applying
-    it or inferring scene movement.
-  - [x] Retain bounded exact authoritative world-object placements in stable order without deriving
-    positions, paths, or reachability.
-  - [x] Bind one exact move destination and discoverable evidence only when both retain the same
-    exact occurrence.
-  - [x] Apply one eligible exact move as a target-only placement replacement together with its exact
-    fresh evidence, without moving an actor or changing the authoritative world object.
-  - [x] Retain one exact move-recovery candidate with its exact pre-move source placement without
-    applying recovery or inferring prior scene position.
-  - [x] Permit move recovery only while the exact target remains at its exact authored destination
-    and its exact authoritative evidence is visible to one character.
-  - [x] Restore only the exact retained source placement at the stable target index without
-    consuming evidence or changing unrelated placements.
-  - [x] Scene-own exact move placements and evidence and compare-and-swap eligible apply and
-    recovery results without installing stale, absent, or partial state.
-  - [x] Author one exact temporary enemy move candidate and aligned recovery from the existing tail
-    water cask, explicit locations, complete current authority, and empty evidence without applying it.
-  - [x] Initialize that exact authored move in isolated scene-owned state, then apply it only on an
-    explicit request and recover it only through noticed exact evidence without consuming evidence.
-  - [x] Compose that source, scene-owned state, and explicit flow in the main scene while retaining
-    exact empty initial state and applying no move automatically.
-  - [x] Project one exact target's source and destination placements onto explicit authored scene
-    coordinates with stale-safe presentation and no path, timing, or occurrence authority.
-  - [x] Explicitly move and restore the main-scene water cask at exact authored coordinates only
-    through current scene-owned placement state and noticed exact evidence.
-  - [x] Recover that moved placement from ordinary focused-search resolution only for the exact
-    water-cask outcome, while unrelated resolved targets leave it at the authored destination.
-  - [x] Retain one immutable provider-neutral move consideration request with exact current
-    authority snapshots and a fully validated bounded exact candidate collection.
-  - [x] Define an explicit provider-neutral move selection-or-abstention decision keyed to exact
-    character and evidence identifiers.
-  - [x] Accept that decision only for the exact considering character and a currently eligible
-    exact move candidate, while allowing explicit abstention without applying an effect.
-  - [x] Bind one accepted move decision to its exact request and selected exact candidate.
-  - [x] Define one provider-neutral cancellation-aware move-decision interface.
-  - [x] Obtain and validate one exact move decision through that interface.
-  - [x] Apply an accepted move selection through the existing immutable placement/evidence
-    transition while preserving explicit abstention without state application.
-  - [x] Resolve one exact accepted move consideration result against scene-owned snapshots,
-    atomically installing selection output while retaining exact state for abstention.
-  - [x] Own one bounded move-decision task through closed scene terminal states and resolve only its
-    exact non-stale accepted result on the main thread.
-  - [x] Supply one exact one-shot move-decision model with stable fail-closed offline behavior.
-  - [x] Compose and explicitly start one authored move consideration from exact current scene state
-    without selecting timing or consuming an overlapping queued model.
-  - [x] Wire that model source, task, and explicit consideration flow into the main scene while
-    preserving inert startup and the exact initial move state.
-  - [x] Strictly decode one exact move decision JSON document against its current request.
-  - [x] Serialize one bounded strict OpenAI Responses move-decision request.
-  - [x] Complete one strict bounded OpenAI Responses move-decision SSE stream.
-  - [x] Expose one caller-composed authenticated OpenAI move-decision adapter.
-  - [x] Bind one exact OpenAI move model through canonical provider settings without
-    construction-time input/output.
-  - [x] Scene-own one configured move binding with exact stale-safe replacement, explicit offline
-    clearing, and preserved one-shot precedence.
-  - [x] Compose, replace, and clear that binding with the selected canonical OpenAI setting while
-    keeping unsupported providers fail-closed.
-  - [x] Present one exact explicitly started completed model-selected move on the water-cask body
-    once while abstention and invalid terminal states remain exact no-ops.
-  - [x] Explicitly acknowledge only the exact observed current selection or abstention so a later
-    move decision can start without automatic task reset or scene mutation.
-  - [x] Define, apply, and recover one exact evidence-bound substitution as immutable bounded
-    overlay state without replacing or mutating authoritative world objects or consuming evidence.
-  - [x] Author and main-scene-compose one inert eligible water-cask substitution, project its exact
-    original/replacement bodies stale-safely, and recover it only through the exact ordinary
-    focused-search outcome while preserving every source object and position.
-  - [x] Retain one immutable provider-neutral substitution consideration request with exact current
-    authority snapshots and a fully validated bounded exact candidate collection.
-  - [x] Accept an explicit substitution selection or abstention only for the exact considering
-    character and a currently eligible exact candidate.
-  - [x] Bind one accepted substitution decision to its exact request and selected exact candidate
-    without applying or presenting it.
-  - [x] Define one provider-neutral cancellation-aware substitution-decision interface and obtain
-    one exact validated consideration result through it.
-  - [x] Apply an accepted substitution selection through the existing immutable
-    substitution/evidence transition while preserving explicit abstention without application.
-  - [x] Resolve one exact accepted substitution consideration result against scene-owned snapshots,
-    atomically installing selection output while retaining exact state for abstention.
-  - [x] Own one bounded substitution-decision task through closed scene terminal states and resolve
-    only its exact non-stale accepted result on the main thread.
-  - [x] Supply one exact one-shot substitution model with stable fail-closed offline behavior.
-  - [x] Compose one explicitly started authored substitution consideration from exact current scene
-    state without automatic invocation or presentation.
-  - [x] Strictly decode one exact substitution decision JSON document against its current request.
-  - [x] Serialize one bounded strict OpenAI Responses substitution-decision request.
-  - [ ] Complete one strict bounded OpenAI Responses substitution-decision SSE stream.
+Completed foundations:
+
+- [x] Author the hermits, sage, enemy agent, and additional dormant infected roles with distinct
+  bounded identity, knowledge, motives, goals, limitations, and controller assignments.
+- [x] Schedule directly addressed speakers first while allowing motivated interjections, meaningful
+  silence, explicit whisper delivery, player interruption, and finite LLM-to-LLM conversation.
+- [x] Support bounded independent tasks, party separation, authoritative off-screen occurrence,
+  finite cadence-based outbound and return travel, party rejoin, and stale-safe body presentation.
+- [x] Define provider-neutral sabotage vocabulary, exact physical/informational eligibility,
+  authoritative occurrence, fresh discoverable evidence, and immutable fail-closed scene ownership.
+- [x] Complete the recoverable concealment chain through exact candidate selection, consideration,
+  strict OpenAI decoding/SSE/adapter/binding, explicit main-scene presentation, and acknowledgement.
+- [x] Complete the recoverable move chain through exact placement authority, candidate selection,
+  consideration, strict OpenAI decoding/SSE/adapter/binding, explicit main-scene presentation,
+  focused-search recovery, and acknowledgement.
+- [x] Define, apply, present, and recover one exact evidence-bound water-cask substitution without
+  replacing authoritative world-object truth, consuming evidence, or changing source positions.
+- [x] Carry substitution consideration through exact request, selection-or-abstention decision,
+  accepted result, atomic transition, scene resolution, bounded task ownership, one-shot/offline
+  model supply, and explicit main-scene request composition.
+- [x] Strictly decode one exact substitution decision and serialize one bounded stateless OpenAI
+  Responses request with a closed schema and bounded trusted context.
+- [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
+  provider-neutral response rounds without judging or applying either response.
+
+Current continuation:
+
+- [ ] Complete one strict bounded OpenAI Responses substitution-decision SSE stream.
+- [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
+  influence only when physically and informationally able.
+- [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
+  critical conclusion.
 - [ ] Make sabotage leave potentially discoverable evidence.
-  - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
-    target-bound discovery-evidence value without applying it.
-  - [x] Append that exact evidence to a fresh stable snapshot only after complete occurrence and
-    evidence eligibility succeeds.
-- [x] Test characters with mutually incompatible beliefs and goals.
-  - [x] Author one immutable representative sage/enemy-agent fixture with explicit incompatible
-    beliefs, goals, and rationale, without inferring conflict or adding runtime behavior.
-  - [x] Project that declaration into two exact per-character perspectives in stable authored order
-    without evaluating either position or mutating character state.
-  - [x] Define closed provider-neutral maintain, reconsider-belief, reconsider-goal, and
-    seek-reconciliation response kinds without selecting or applying one.
-  - [x] Bind one exact perspective and canonical response kind to a bounded explicit explanation
-    without changing either character's belief, goal, or allegiance.
-  - [x] Retain one complete exact two-character response round in stable declaration order without
-    judging or applying either response.
-  - [x] Request one provider-neutral response consideration for one exact incompatibility
-    perspective without selecting or applying a response.
-  - [x] Accept an incompatibility response only for its exact consideration perspective without
-    judging or applying the response.
-  - [x] Bind one accepted incompatibility response to its exact consideration request without
-    applying it or changing character state.
-  - [x] Define one provider-neutral cancellation-aware incompatibility-response interface without
-    implementing or invoking a model.
-  - [x] Obtain and validate one exact incompatibility response through that interface without
-    judging or applying it.
-  - [x] Obtain one complete exact two-perspective response round in stable declaration order without
-    returning partial state.
-  - [x] Bound that complete sequential response round with one shared finite deadline while
-    distinguishing caller cancellation.
 
 Acceptance:
 
