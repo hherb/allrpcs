@@ -341,6 +341,10 @@ Current continuation:
 
 - [x] Own and compose the exact contamination model binding, then run, present, and explicitly
   acknowledge one exact main-scene contamination consideration without automatic selection.
+- [x] Recover exact presented water-cask contamination only through its ordinary resolved focused
+  search and retained noticed evidence, without consuming evidence or changing world truth.
+- [x] Define one exact heard-source misquotation proposal, strict delivered-dialogue occurrence,
+  and non-actor witness seam without rewriting dialogue truth or automatically delivering text.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

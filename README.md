@@ -871,9 +871,30 @@ temporary triangular marker projects only exact contamination snapshots. A scene
 observes each fresh completed result once and explicitly acknowledges only an already-observed
 result whose selected presentation or abstention snapshots remain current. These contracts do not
 define contamination contents or effects, mutate ingredient contamination, automatically start a
-decision, recover contamination through ordinary focused search, retry or fall back to another
-provider, persist data, or change authoritative objects, movement, events, time, transcripts, input,
-or final UI.
+decision, retry or fall back to another provider, persist data, or change authoritative objects,
+movement, events, time, transcripts, input, or final UI. The presentation flow can explicitly
+recover only the exact last-presented current contamination through retained evidence projected
+from supplied perception. Ordinary exact water-cask focused-search resolution asks that flow to
+recover; unrelated outcomes, null input, and stale presentation leave contamination, evidence, and
+the marker unchanged. Recovery hides only the marker and does not consume evidence or change the
+resolved perception, actors, source snapshots, positions, or authoritative world objects.
+
+`CharacterDialogueMisquotationProposal` retains one exact prior dialogue event, bounded differing
+quotation text, one exact actor, and one canonical capability requirement while leaving the source delivery and
+audience unchanged. Its pure eligibility policy requires the actor to value-match the supplied
+character, to have heard the source as an explicit listener, and to own the required authored
+capability. Truth-equivalent, blank, excessive, unheard, wrong-actor, and missing-capability inputs
+fail closed. `CharacterDialogueMisquotationOccurrence` then binds one exact proposal to one exact
+already-composed dialogue event. Its pure policy requires an eligible proposal, the exact proposal
+actor identifier as speaker, exact proposed text, and at least one listener. It does not create, select,
+send, append, or persist dialogue, infer hearing from positions, or alter the source event.
+
+`CharacterDialogueMisquotationEvidence` identifies one exact non-actor witness for one exact
+misquotation occurrence. Its pure policy requires that witness to occur in both the unchanged
+source audience and the delivered misquotation audience after complete occurrence validation. This
+is only a provider-neutral potentially discoverable contradiction seam: it does not declare either
+text true, automatically expose or correct a claim, mutate a transcript or character, deliver new
+dialogue, select a candidate, or define scene, persistence, model, delay, or influence behavior.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
