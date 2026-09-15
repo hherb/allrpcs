@@ -350,6 +350,8 @@ Current continuation:
   validated result through a cancellation-aware provider-neutral model seam.
 - [x] Strictly decode and stream one exact misquotation-evidence decision, serialize its bounded
   stateless OpenAI request and closed schema, and compose an exact authenticated model binding.
+- [x] Supply configured, one-shot, or offline misquotation-evidence models, own one bounded
+  cancellation-aware decision task, and start it only through one explicit isolated scene flow.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
