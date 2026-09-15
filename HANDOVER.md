@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #267 (`915cd19`). Branch
-`codex/phase-7-misquotation-decision-decoding` advances Phase 7 through Phase 7io:
+`codex/phase-7-misquotation-decision-decoding` advances Phase 7 through Phase 7io. Draft PR #268 is
+open for this branch:
 
 - strict bounded JSON decoding rebinds value-matching `actorId` and a nullable zero-based candidate
   index to the request's exact actor identifier and evidence instance, then applies the existing
