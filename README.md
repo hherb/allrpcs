@@ -896,6 +896,16 @@ is only a provider-neutral potentially discoverable contradiction seam: it does 
 text true, automatically expose or correct a claim, mutate a transcript or character, deliver new
 dialogue, select a candidate, or define scene, persistence, model, delay, or influence behavior.
 
+`CharacterDialogueMisquotationEvidenceSelection` fully preflights at most 64 caller-ordered
+evidence candidates, rejects nulls and duplicate exact delivered events, and returns the exact first
+candidate observable by one supplied actor. Distinct value-equal deliveries remain separate exact
+candidates. A provider-neutral consideration request retains that exact actor and a copied read-only
+candidate view under the same bounds. Its explicit decision selects one exact request candidate or
+abstains, and the pure acceptance policy rechecks exact actor identity, request membership, and
+current observability. These contracts do not expose or apply evidence, create a result, invoke a
+model, change dialogue or truth, or mutate any character, event, audience, transcript, or world
+state.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
