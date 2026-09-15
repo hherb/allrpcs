@@ -17,6 +17,10 @@ scene chain through four bounded slices:
 - explicit acknowledgement resets only an already-observed completed result whose selected
   presentation or abstention request snapshots remain exact current scene state.
 
+Implementation commit `e7b9b13` is published in mergeable draft PR #257. Hosted run
+`34939423963` failed before executing any steps in all five credential-free jobs (`steps: []`), so
+it is Actions/account infrastructure state rather than product-test evidence and was not retried.
+
 No provider was invoked. The work adds no automatic model invocation, sabotage selection, timing,
 scheduling, persistence, input, UI, events, time, transcripts, navigation, actor movement, or new
 sabotage effect. Authoritative world objects and every supplied request, candidate, substitution,
