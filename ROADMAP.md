@@ -531,6 +531,14 @@ Acceptance:
     once while abstention and invalid terminal states remain exact no-ops.
   - [x] Explicitly acknowledge only the exact observed current selection or abstention so a later
     move decision can start without automatic task reset or scene mutation.
+  - [x] Bind one exact substitute-sabotage occurrence to a distinct authored replacement without
+    applying it or inferring replacement eligibility.
+  - [x] Bind one exact substitution and discoverable evidence only when both retain the same exact
+    occurrence.
+  - [x] Retain at most 64 exact substitutions in stable order with value-unique target identifiers,
+    without changing authoritative world objects.
+  - [x] Apply one eligible exact substitution as fresh bounded overlay state together with its exact
+    fresh evidence, without replacing or mutating the authoritative world-object snapshot.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
