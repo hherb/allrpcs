@@ -157,7 +157,7 @@ public sealed class CharacterObjectSabotageContaminationDecisionJsonDeserializer
         Assert.Same(input.Candidate, Assert.Single(input.Request.Candidates));
     }
 
-    private static Input CreateInput()
+    internal static Input CreateInput()
     {
         Character character = RepresentativeEnemyAgentCharacterSource.Create();
         WorldObject target = new(
@@ -200,7 +200,7 @@ public sealed class CharacterObjectSabotageContaminationDecisionJsonDeserializer
             request);
     }
 
-    private sealed record Input(
+    internal sealed record Input(
         Character Character,
         CharacterPhysicalAccessSnapshot PhysicalAccess,
         WorldObjectSnapshot WorldObjects,
