@@ -2,64 +2,59 @@
 
 ## Current state
 
-`main` includes merged PR #267 (`915cd19`). Branch
-`codex/phase-7-misquotation-decision-decoding` advances Phase 7 through Phase 7io. Draft PR #268 is
-open for this branch:
+`main` includes merged PR #268 at `663cc19`. Branch
+`codex/phase-7-misquotation-model-source` advances Phase 7 through Phase 7ir. Draft PR #269 is open
+for this branch:
 
-- strict bounded JSON decoding rebinds value-matching `actorId` and a nullable zero-based candidate
-  index to the request's exact actor identifier and evidence instance, then applies the existing
-  current-observability policy;
-- a stateful OpenAI Responses semantic-event accumulator and SSE completion expose a decision only
-  after one complete ordered lifecycle, with no partial or trailing result;
-- pure request content, a closed exact schema, and stateless serialization retain candidate order
-  without credentials, filesystem paths, provider state, or mutable collections;
-- one caller-composed OpenAI HTTP adapter validates credentials before sending, requires a successful
-  event stream, returns only the exact decoded decision, and redacts transport or semantic failures;
-  and
-- an immutable Application binding plus Infrastructure factory retain exact OpenAI settings, HTTP,
-  credential, and endpoint dependencies without construction-time input/output or model invocation.
+- `TemporaryCharacterDialogueMisquotationEvidenceModelSource` retains one exact configured OpenAI
+  binding, replaces or clears it only by exact-reference comparison, consumes one caller-supplied
+  model for the next decision, then falls back to the configured model or one stable fail-closed
+  offline model;
+- `CharacterDialogueMisquotationEvidenceTaskController` owns one cancellable decision at a time,
+  installs only a complete accepted result on the Godot main thread, exposes bounded terminal
+  states, and requires an explicit reset; and
+- `TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController` remains inert until
+  explicitly given one exact request, takes a model only after task preflight, and preserves a
+  queued one-shot model when an overlapping start is rejected.
 
-No evidence is exposed or applied, and no dialogue is created or delivered. The work adds no retry,
-deadline, fallback, model source, task, scene, persistence, transcript/truth/character/audience/event
-mutation, delay, influence, movement, navigation, or settings composition. The unrelated untracked
+No node was added to `Main.tscn`. No dialogue was created or delivered, no evidence was sourced,
+exposed, applied, presented, or acknowledged, and no credential, HTTP, model input/output,
+settings composition, persistence, UI, retry, timing, delay, influence, scheduling, event, truth,
+transcript, navigation, or movement behavior was added. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Tests began with the expected missing decoder, stream, serializer, adapter, binding, and factory
-  compile failures.
-- Focused host-local tests pass: 24 decoder, 25 semantic-event/SSE, 6 serializer/schema, 11 HTTP
-  adapter, 3 Application binding, and 5 factory cases.
+- Each slice began with its expected missing-type compile failure.
+- The isolated model-source, task-controller, and consideration-flow Godot smokes pass.
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes --verbosity minimal` passes.
 - Full host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
   zero-warning build, 2,536 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free headless Godot smoke, and the
   final Compatibility renderer launch.
-- Draft PR #268's hosted jobs failed with `steps: []`; this is Actions/account infrastructure, not
+- Draft PR #269's hosted jobs failed with `steps: []`; this is Actions/account infrastructure, not
   executed product-test or development-build evidence, and the unchanged jobs were not retried.
-- Every new C# file is below 500 lines with no lines longer than 120 characters.
-- Session-wide review confirmed exact request/actor/candidate retention, closed decoder/schema/API
-  surfaces, ordered terminal stream handling, bounded output, pre-cancellation, failed-body
-  avoidance, redacted failures, exact caller-owned dependency retention, and construction-time
-  I/O absence. It also replaced a tautological serializer immutability assertion with exact
-  request-candidate reference checks.
+- Session-wide review found no remaining issue after checking exact binding/request/result
+  retention, one-shot precedence and overlap preservation, stale/value-equal CAS rejection,
+  cancellation and failure redaction, explicit reset, closed public surfaces, unchanged dialogue
+  evidence, file sizes, C# line lengths, and whitespace.
 
 ## Exact next bounded slice
 
-Take **Phase 7ip: supply one exact misquotation-evidence model or a stable offline default**.
+Take **Phase 7is: author one isolated exact misquotation-evidence source**.
 
 Acceptance boundary:
 
-1. Add `TemporaryCharacterDialogueMisquotationEvidenceModelSource` with one exact configured
-   `CharacterDialogueMisquotationEvidenceModelBinding`, initialized once and replaceable or
-   clearable only by exact-reference compare-and-swap operations.
-2. Permit one exact caller-supplied model to take precedence for the next decision only; consume
-   only that one-shot model, return the configured model stably for later decisions, and otherwise
-   return one stable fail-closed offline model.
-3. Prove stale/value-equal replacement and clearing fail closed, clearing preserves a queued
-   one-shot model, selection performs no model invocation or request mutation, caller cancellation
-   precedes offline request validation, and the source exposes only the five bounded operations.
-4. Add only an isolated credential-free Godot smoke. Do not compose settings into `Main.tscn`, load
-   credentials, perform HTTP or model input/output, start a task, expose or apply evidence, deliver
-   dialogue, present or acknowledge a result, or add persistence, input, UI, retry, timing, delay,
-   influence, scheduling, events, truth mutation, transcripts, navigation, or movement.
+1. Add `TemporaryCharacterDialogueMisquotationEvidenceSource` with one stable representative enemy
+   agent, one exact heard source dialogue event, one exact delivered misquotation occurrence, and
+   one exact non-actor witness evidence candidate.
+2. Retain the same exact actor, source event, delivered event, occurrence, witness identifier, and
+   candidate across repeated reads; prove the existing proposal, occurrence, evidence, and
+   first-observable selection policies accept them without changing any input.
+3. Expose only the bounded immutable source values and one `_Ready` operation, and add one isolated
+   credential-free Godot smoke.
+4. Do not add the source, model source, task, or flow to `Main.tscn`; start a task; invoke a model;
+   create or deliver live scene dialogue; mutate a transcript, truth, character, evidence, event,
+   world object, or perception; or add presentation, acknowledgement, credentials, HTTP, settings
+   composition, persistence, input, UI, retry, timing, delay, influence, scheduling, navigation,
+   or movement.
