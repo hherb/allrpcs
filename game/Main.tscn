@@ -224,6 +224,7 @@
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationController.cs" id="222_object_sabotage_contamination_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageContaminationPresentationFlowController.cs" id="223_object_sabotage_contamination_presentation_flow"]
 [ext_resource type="Script" path="res://CharacterObjectSabotageContaminationPresentationCoordinator.cs" id="224_object_sabotage_contamination_coordinator"]
+[ext_resource type="Script" path="res://WaterCaskContaminationSabotageInvestigationFlowSmokeCheck.cs" id="225_water_cask_contamination_sabotage_investigation_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1128,6 +1129,9 @@ script = ExtResource("114_model_composition_check")
 
 [node name="TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("221_object_sabotage_contamination_check")
+
+[node name="WaterCaskContaminationSabotageInvestigationFlowSmokeCheck" type="Node" parent="."]
+script = ExtResource("225_water_cask_contamination_sabotage_investigation_check")
 
 [node name="CharacterModelSettingsControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("116_model_settings_controller_check")

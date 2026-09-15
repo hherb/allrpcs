@@ -68,6 +68,10 @@ public partial class Main : Node
         objectSabotageSubstitutionSource = null!;
     private TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController
         objectSabotageSubstitutionPresentationFlow = null!;
+    private TemporaryCharacterObjectSabotageContaminationSource
+        objectSabotageContaminationSource = null!;
+    private TemporaryCharacterObjectSabotageContaminationPresentationFlowController
+        objectSabotageContaminationPresentationFlow = null!;
     private TemporaryCharacterModelSource characterModelSource = null!;
     private Marker2D healerCommandDestination = null!;
     private Marker2D sageHearingPosition = null!;
@@ -162,6 +166,12 @@ public partial class Main : Node
         objectSabotageSubstitutionPresentationFlow =
             GetNode<TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController>(
                 "TemporaryCharacterObjectSabotageSubstitutionPresentationFlowController");
+        objectSabotageContaminationSource =
+            GetNode<TemporaryCharacterObjectSabotageContaminationSource>(
+                "TemporaryCharacterObjectSabotageContaminationSource");
+        objectSabotageContaminationPresentationFlow =
+            GetNode<TemporaryCharacterObjectSabotageContaminationPresentationFlowController>(
+                "TemporaryCharacterObjectSabotageContaminationPresentationFlowController");
         characterModelSource = GetNode<TemporaryCharacterModelSource>(
             "TemporaryCharacterModelSource");
         healerCommandDestination = GetNode<Marker2D>("HealerCommandDestination");
@@ -944,6 +954,12 @@ public partial class Main : Node
             == objectSabotageSubstitutionSource.Candidate.Evidence.Evidence.ObjectId)
         {
             _ = objectSabotageSubstitutionPresentationFlow.TryRecover(perception);
+        }
+
+        if (outcome.Request.TargetObjectId
+            == objectSabotageContaminationSource.Candidate.Evidence.ObjectId)
+        {
+            _ = objectSabotageContaminationPresentationFlow.TryRecover(perception);
         }
     }
 
