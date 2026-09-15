@@ -847,9 +847,16 @@ access, world objects, substitutions, evidence, and a stable copied collection o
 candidates with unique evidence identifiers. Its provider-neutral decision selects one exact
 evidence identifier or explicitly abstains. The pure acceptance policy requires the exact character
 identifier instance and either abstention or an exact currently eligible candidate identifier; an
-unknown or distinct value-equal identifier fails closed. These contracts do not apply or present a
-substitution, invoke a model, or add task, provider, persistence, timing, scheduling, event, time,
-transcript, navigation, or UI behavior.
+unknown or distinct value-equal identifier fails closed. An immutable consideration result retains
+the exact request, accepted decision, and exact selected request candidate, or null only for explicit
+abstention. The provider-neutral cancellation-aware decision seam obtains one decision and returns
+only that validated result. Its pure consideration transition delegates selected results to the
+existing atomic substitution/evidence transition while preserving abstention without application.
+The scene controller resolves a result only when its request retains the exact current scene-owned
+substitution and evidence snapshots, installs both fresh selection snapshots atomically, and accepts
+each exact request at most once. These contracts do not present a substitution or add a task, model
+source, provider, persistence, timing, scheduling, event, time, transcript, navigation, input, UI,
+or automatic invocation.
 
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
 snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the
