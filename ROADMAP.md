@@ -325,6 +325,9 @@ Completed foundations:
   then present and explicitly acknowledge each exact completed main-scene result at most once.
 - [x] Define bounded immutable world-object contamination, exact evidence-bound application, and
   visible-evidence recovery without changing authoritative objects or consuming evidence.
+- [x] Select and atomically apply the first exact eligible contamination candidate, then retain one
+  bounded provider-neutral consideration request and strictly validate an exact selection or
+  abstention without applying it.
 - [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
   provider-neutral response rounds without judging or applying either response.
 

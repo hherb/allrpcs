@@ -838,10 +838,16 @@ objects unchanged. The pure contamination policy accepts only a completely eligi
 the exact target identifier and exact fresh evidence as one all-or-nothing result. Recovery requires
 that target to remain contaminated, its exact target-bound evidence definition to remain
 authoritative, and that evidence identifier to appear in one character evidence view; it removes
-only the value-matching target into a fresh contamination snapshot without consuming evidence.
-These contracts do not define contamination contents or effects, mutate ingredient contamination,
-select a candidate, invoke a model, own scene state, persist data, or change objects, perception,
-movement, events, time, transcripts, input, or UI.
+only the value-matching target into a fresh contamination snapshot without consuming evidence. One
+pure bounded selection fully validates a caller-ordered candidate collection before returning the
+exact first eligible candidate, and one sequence can apply that candidate through the existing
+atomic transition. A provider-neutral consideration request retains exact snapshots and a copied
+read-only candidate view. Its exact selection-or-abstention decision policy accepts only the
+request character and exact candidate evidence identifier, rechecking current contamination
+eligibility before acceptance. These contracts do not bind or apply a decision, define
+contamination contents or effects, mutate ingredient contamination, invoke a model, own scene
+state, persist data, or change objects, perception, movement, events, time, transcripts, input, or
+UI.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
