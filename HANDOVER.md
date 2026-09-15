@@ -16,8 +16,10 @@ provider-neutral and scene-owned slices:
   exact current substitution/evidence snapshots, atomically installs both fresh selection outputs,
   and retains both exact snapshots for abstention.
 
-Implementation commit `34e8e9a` is published in draft PR #254. GitHub reported no check runs yet
-for that implementation head when the draft was created.
+Implementation commit `34e8e9a` is published in draft PR #254. Hosted run `34921658259` on the
+first documentation head failed before executing any steps in all five credential-free jobs
+(`steps: []`), so it is recorded as Actions/account infrastructure state rather than product-test
+evidence and was not retried.
 
 The implementation does not present a substitution or add a task, model source, provider adapter,
 provider binding, persistence, `Main.tscn` wiring, input, UI, timing, scheduling, automatic
