@@ -863,8 +863,20 @@ without automatic presentation, while overlap, cancellation, provider failure, i
 and stale success remain mutation-free. The strict JSON boundary canonicalizes accepted identifiers
 back to exact request instances, rejects malformed or unsupported documents behind one bounded
 error, and serializes a stateless streaming OpenAI request with a closed selection-or-null schema
-and only bounded trusted character, target, replacement, and eligibility context. These contracts
-do not add SSE handling, HTTP transport, credentials, provider binding, automatic invocation,
+and only bounded trusted character, target, replacement, and eligibility context.
+
+The request-bound substitution stream accumulator accepts only the supported OpenAI Responses
+semantic lifecycle, bounds output deltas, validates the complete output-text document through the
+strict decoder, and exposes the exact accepted decision only after one successful completion event.
+Its bounded SSE completion seam rejects empty, malformed, incomplete, refused, failed, unframed,
+duplicate-terminal, and post-completion input without retaining or exposing provider text. It
+preserves caller cancellation and transport I/O failure identity and leaves the caller-owned stream
+open. The OpenAI adapter composes that strict path with the existing serializer over caller-owned
+HTTP and credential dependencies, requires an event-stream success response, redacts transport
+failures, and performs no input/output until explicitly invoked. Its immutable Application binding
+retains the exact OpenAI settings and model; the factory creates that binding with a default or
+validated caller-supplied endpoint without loading credentials, sending HTTP, or invoking a model.
+These contracts do not add scene binding composition, automatic invocation, acknowledgement,
 presentation, persistence, timing, scheduling, event, time, transcript, navigation, input, or UI.
 
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence

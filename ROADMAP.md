@@ -319,12 +319,15 @@ Completed foundations:
   model supply, and explicit main-scene request composition.
 - [x] Strictly decode one exact substitution decision and serialize one bounded stateless OpenAI
   Responses request with a closed schema and bounded trusted context.
+- [x] Complete one strict bounded OpenAI Responses substitution-decision SSE lifecycle and expose
+  one caller-composed authenticated adapter plus construction-only exact OpenAI model binding.
 - [x] Test representative sage/enemy incompatible beliefs and goals through complete bounded
   provider-neutral response rounds without judging or applying either response.
 
 Current continuation:
 
-- [ ] Complete one strict bounded OpenAI Responses substitution-decision SSE stream.
+- [ ] Extend the substitution model source with stale-safe configured-binding ownership while
+  preserving one-shot precedence and stable fail-closed offline fallback.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
