@@ -829,9 +829,27 @@ fresh stable snapshot while retaining unrelated substitutions, the exact evidenc
 exact candidate without consuming evidence. `CharacterObjectSabotageSubstitutionController` owns
 one exact substitution/evidence pair and installs eligible application or recovery results only from
 the exact expected current snapshots. Stale, distinct value-equal, null, and ineligible operations
-leave both scene-owned snapshots unchanged. The isolated controller is not wired into `Main.tscn`
-and adds no world-object or body replacement, inventory, source, selection, scheduling, model,
-provider, persistence, input, UI, event, time, transcript, navigation, or presentation behavior.
+leave both scene-owned snapshots unchanged.
+
+`TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
+and its tail water cask, one representative enemy with complete target access, empty substitution
+and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
+candidate. Its flow initializes the scene controller without effect and applies only on explicit
+request. Recovery projects retained authoritative evidence through supplied perception and removes
+only the exact active substitution. `CharacterObjectSabotageSubstitutionPresentationController`
+stale-safely projects that overlay onto distinct original and replacement cask polygons. The main
+scene starts with the original visible and uses no new input; ordinary exact water-cask focused-search
+resolution can recover an explicitly applied substitution while unrelated outcomes leave it active.
+World-object truth, evidence, source objects, cask position, and actor positions remain unchanged.
+
+`CharacterObjectSabotageSubstitutionConsiderationRequest` retains the exact character, physical
+access, world objects, substitutions, evidence, and a stable copied collection of at most 64 exact
+candidates with unique evidence identifiers. Its provider-neutral decision selects one exact
+evidence identifier or explicitly abstains. The pure acceptance policy requires the exact character
+identifier instance and either abstention or an exact currently eligible candidate identifier; an
+unknown or distinct value-equal identifier fails closed. These contracts do not apply or present a
+substitution, invoke a model, or add task, provider, persistence, timing, scheduling, event, time,
+transcript, navigation, or UI behavior.
 
 `CharacterObjectSabotageMoveController` initializes exact placement and authoritative evidence
 snapshots once. Its compare-and-swap operations install both fresh move-result snapshots or only the

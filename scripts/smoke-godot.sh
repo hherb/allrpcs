@@ -64,6 +64,10 @@ ALLRPCS_INDEPENDENT_TASK_LIVE_ROUND_TRIP_FLOW_CHECK=1 godot --headless --path "$
 ALLRPCS_INDEPENDENT_TASK_BODY_PRESENTATION_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_MAIN_SCENE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_MOVE_MAIN_SCENE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OBJECT_SABOTAGE_SUBSTITUTION_MAIN_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OBJECT_SABOTAGE_SUBSTITUTION_PRESENTATION_FLOW_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_MOVE_PRESENTATION_FLOW_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_CONSIDERATION_MAIN_SCENE_CHECK=1 \
@@ -76,12 +80,20 @@ ALLRPCS_WATER_CASK_INTERACTION_FOCUS_CHECK=1 godot --headless --path "$repositor
 ALLRPCS_WATER_CASK_SABOTAGE_INVESTIGATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_WATER_CASK_MOVE_SABOTAGE_INVESTIGATION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_WATER_CASK_SUBSTITUTION_SABOTAGE_INVESTIGATION_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageConcealmentControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageMoveControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageSubstitutionControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterObjectSabotageSubstitutionSourceSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterObjectSabotageSubstitutionFlowSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterObjectSabotageSubstitutionPresentationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterObjectSabotageMoveConsiderationControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \

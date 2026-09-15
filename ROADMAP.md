@@ -531,14 +531,17 @@ Acceptance:
     once while abstention and invalid terminal states remain exact no-ops.
   - [x] Explicitly acknowledge only the exact observed current selection or abstention so a later
     move decision can start without automatic task reset or scene mutation.
-  - [x] Bind one exact substitute-sabotage occurrence to a distinct authored replacement without
-    applying it or inferring replacement eligibility.
-  - [x] Bind one exact substitution and discoverable evidence only when both retain the same exact
-    occurrence.
-  - [x] Retain at most 64 exact substitutions in stable order with value-unique target identifiers,
-    without changing authoritative world objects.
-  - [x] Apply one eligible exact substitution as fresh bounded overlay state together with its exact
-    fresh evidence, without replacing or mutating the authoritative world-object snapshot.
+  - [x] Define, apply, and recover one exact evidence-bound substitution as immutable bounded
+    overlay state without replacing or mutating authoritative world objects or consuming evidence.
+  - [x] Author and main-scene-compose one inert eligible water-cask substitution, project its exact
+    original/replacement bodies stale-safely, and recover it only through the exact ordinary
+    focused-search outcome while preserving every source object and position.
+  - [x] Retain one immutable provider-neutral substitution consideration request with exact current
+    authority snapshots and a fully validated bounded exact candidate collection.
+  - [x] Accept an explicit substitution selection or abstention only for the exact considering
+    character and a currently eligible exact candidate.
+  - [ ] Bind one accepted substitution decision to its exact request and selected exact candidate
+    without applying or presenting it.
 - [ ] Make sabotage leave potentially discoverable evidence.
   - [x] Require each eligible object-sabotage occurrence candidate to define one fresh exact
     target-bound discovery-evidence value without applying it.
