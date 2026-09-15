@@ -35,6 +35,8 @@ mutation, delay, influence, movement, navigation, or settings composition. The u
   zero-warning build, 2,536 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free headless Godot smoke, and the
   final Compatibility renderer launch.
+- Draft PR #268's hosted jobs failed with `steps: []`; this is Actions/account infrastructure, not
+  executed product-test or development-build evidence, and the unchanged jobs were not retried.
 - Every new C# file is below 500 lines with no lines longer than 120 characters.
 - Session-wide review confirmed exact request/actor/candidate retention, closed decoder/schema/API
   surfaces, ordered terminal stream handling, bounded output, pre-cancellation, failed-body
