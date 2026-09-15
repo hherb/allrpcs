@@ -16,6 +16,8 @@ and scene-ownership boundary:
   and resolves an exact request at most once only from expected current state. Selection installs
   the fresh snapshot; abstention retains the exact current instance.
 
+Implementation commit `2bb5e65` is published in draft PR #271 targeting `main`.
+
 No task result is observed, presented, acknowledged, discovered, corrected, or persisted. The new
 controller is not in `Main.tscn`; no dialogue, truth, transcript, character, event, audience, world
 object, perception, or other authoritative state is mutated. No automatic task, credential or
@@ -39,6 +41,8 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   duplicate and capacity rejection, selection and abstention identity, one-time request resolution,
   stale-safe atomic failure, closed surfaces, file sizes, C# line lengths, formatting, and
   whitespace. No unresolved issue remains.
+- Hosted run `35030156922` completed with every job reporting `steps: []`; this is Actions/account
+  infrastructure state rather than product-test evidence. Do not retry it unchanged.
 
 ## Exact next bounded slice
 
