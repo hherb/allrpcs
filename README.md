@@ -723,6 +723,34 @@ proposal requirement and delegates the complete unchanged actor and access eligi
 apply an effect, delay elapsed time, change a relationship, author evidence, or grant scene,
 persistence, or provider authority.
 
+`CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
+one exact existing directional relationship change. Its pure policy accepts only `influence`,
+requires the change to belong to the occurrence target and relate that target to the proposal actor,
+reuses the complete occurrence eligibility gate, and delegates unchanged applicability to
+`CharacterRelationshipChangePolicy`. It does not apply the change, infer a relationship, select a
+target, author evidence, or grant elapsed-time, scene, persistence, or provider authority.
+
+`CharacterTargetSabotageInfluenceTransition` accepts only that fully eligible candidate, delegates
+the immutable change to the existing relationship transition, and returns a fresh relationship
+together with the exact applied candidate. Rejected input throws without changing any source. This
+Domain-only transition does not select the candidate, recover the prior relationship, author
+evidence, or add elapsed-time, Application, scene, persistence, UI, or provider behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryCandidate` retains one exact applied influence result and
+one exact proposed inverse relationship change. Its pure policy requires the exact current result
+relationship instance, the same target-to-actor direction and relationship dimension, the exact
+applied reason at the history tail, the exact inverse delta, and unchanged applicability through
+`CharacterRelationshipChangePolicy`. Stale, rebuilt, fabricated, mismatched, or inapplicable input
+fails closed. It does not apply recovery, remove history, infer evidence, or authorize Application,
+scene, UI, persistence, or provider behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryTransition` accepts only that exact-current recovery,
+delegates the inverse update to the existing immutable relationship transition, and returns the
+exact recovery candidate with fresh numerically restored relationship state. Both the influence and
+recovery reasons remain recorded; rejected input leaves every source unchanged. This transition
+does not discover or consume evidence, select recovery, or add Application, scene, UI, persistence,
+elapsed-time, or provider behavior.
+
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
 admitting only the object-targeted `conceal`, `move`, `substitute`, and `contaminate` kinds. Its
 pure eligibility policy first requires the proposal actor to value-match the supplied character,
