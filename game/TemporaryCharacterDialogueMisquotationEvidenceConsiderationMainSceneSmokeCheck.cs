@@ -24,6 +24,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         null!;
     private CharacterDialogueMisquotationEvidencePresentationController presentationProjection =
         null!;
+    private TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController
+        presentationFlow = null!;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
@@ -60,6 +62,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         presentationProjection =
             GetNode<CharacterDialogueMisquotationEvidencePresentationController>(
                 "../CharacterDialogueMisquotationEvidencePresentationController");
+        presentationFlow =
+            GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController>(
+                "../TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController");
         SetProcess(true);
     }
 
@@ -100,18 +105,24 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             request.Actor.Identity.Id,
             request.Candidates.Single()));
         overlapModel = new RecordingModel(request => new(request.Actor.Identity.Id, null));
+        CharacterDialogueMisquotationEvidenceViewSnapshot? initialView = view.View;
 
         bool inertStartup = task.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             && task.Result is null
             && exposure.Exposure is { Entries.Count: 0 }
             && exposure.Exposure is { } initialExposure
             && ReferenceEquals(view.SourceExposure, initialExposure)
-            && view.View is { Entries.Count: 0 } initialView
+            && initialView is { Entries.Count: 0 }
             && ReferenceEquals(initialView.WitnessCharacterId, source.WitnessCharacterId)
             && PresentationSelectionIsInert()
             && selectionModel.CallCount == 0
             && overlapModel.CallCount == 0
             && SourceIsUnchanged();
+        bool abstained = initialView is not null
+            && presentationFlow.TryChoose(initialView, null)
+            && presentation.Selection is { SelectedEvidence: null } abstention
+            && ReferenceEquals(abstention.WitnessView, initialView)
+            && presentationProjection.Presentation is null;
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart()
             && task.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Running;
@@ -119,6 +130,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             && !flow.TryStart();
 
         if (!inertStartup
+            || !abstained
             || !started
             || !overlapPreserved
             || !HasClosedSurfaces())
@@ -214,11 +226,29 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             return;
         }
 
+        if (view.View is not { } currentView
+            || !presentationFlow.TryChoose(currentView, source.Candidate)
+            || presentation.Selection is not { } selection
+            || presentationProjection.Presentation is not { } projected
+            || !ReferenceEquals(selection.WitnessView, currentView)
+            || !ReferenceEquals(selection.SelectedEvidence, source.Candidate)
+            || !ReferenceEquals(projected.Selection, selection)
+            || !ReferenceEquals(projected.WitnessCharacterId, source.WitnessCharacterId)
+            || !ReferenceEquals(projected.SourceEvent, source.SourceEvent)
+            || !ReferenceEquals(projected.DeliveredEvent, source.DeliveredEvent)
+            || presentationFlow.TryChoose(currentView, source.Candidate)
+            || !SourceIsUnchanged())
+        {
+            Fail("Main-scene misquotation-evidence presentation choice was not exact and one-shot.");
+            return;
+        }
+
         GD.Print(
             "Misquotation-evidence main-scene smoke passed: inert startup, exact source-owned "
             + "request, one-shot selection and abstention, overlap preservation, explicit reset, "
             + "exact exposure, witness view and acknowledgement, stable offline failure, closed "
-            + "flows, and unchanged dialogue evidence.");
+            + "flows, explicit presentation abstention and selection, and unchanged dialogue "
+            + "evidence.");
         GetTree().Quit();
     }
 
@@ -268,6 +298,16 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             .Where(method => !method.IsSpecialName)
             .Select(method => method.Name)
             .ToArray();
+        Type presentationFlowType = typeof(
+            TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController);
+        string[] presentationFlowMethods = presentationFlowType.GetMethods(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly)
+            .Where(method => !method.IsSpecialName)
+            .Select(method => method.Name)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
 
         return flowMethods.SequenceEqual(["TryStart", "_Ready"])
             && flowType.GetProperties(
@@ -276,6 +316,11 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
                 | System.Reflection.BindingFlags.DeclaredOnly).Length == 0
             && exposureFlowMethods.SequenceEqual(["_Ready"])
             && exposureFlowType.GetProperties(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly).Length == 0
+            && presentationFlowMethods.SequenceEqual(["TryChoose", "_Ready"])
+            && presentationFlowType.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
                 | System.Reflection.BindingFlags.DeclaredOnly).Length == 0;

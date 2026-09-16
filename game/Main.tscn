@@ -236,6 +236,7 @@
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceViewController.cs" id="234_misquotation_evidence_view"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationSelectionController.cs" id="235_misquotation_evidence_presentation_selection"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationController.cs" id="236_misquotation_evidence_presentation"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController.cs" id="237_misquotation_evidence_presentation_flow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -672,6 +673,9 @@ script = ExtResource("235_misquotation_evidence_presentation_selection")
 
 [node name="CharacterDialogueMisquotationEvidencePresentationController" type="Node" parent="."]
 script = ExtResource("236_misquotation_evidence_presentation")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController" type="Node" parent="."]
+script = ExtResource("237_misquotation_evidence_presentation_flow")
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController" type="Node" parent="."]
 script = ExtResource("232_misquotation_evidence_exposure_flow")

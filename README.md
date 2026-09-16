@@ -993,6 +993,16 @@ automatically. No text formatting, UI, truth judgment, correction, discovery, ev
 persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
 behavior is added.
 
+`TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController` explicitly composes
+one exact current witness-view choice through the existing selection and presentation owners. It
+accepts either one exact view member or abstention, and stale, distinct equivalent, non-member, and
+repeated choices fail closed. The main scene owns this flow after its dependencies but does not call
+it automatically. Its switch-gated smoke proves an explicit initial abstention and later exact
+selection after successful exposure while ordinary startup, failures, and acknowledgement remain
+presentation-free. No UI, truth judgment, correction, discovery, evidence consumption,
+persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
+behavior is added.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
