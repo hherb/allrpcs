@@ -1,4 +1,4 @@
-[gd_scene load_steps=190 format=3]
+[gd_scene load_steps=191 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -237,6 +237,7 @@
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationSelectionController.cs" id="235_misquotation_evidence_presentation_selection"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationController.cs" id="236_misquotation_evidence_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController.cs" id="237_misquotation_evidence_presentation_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanel.cs" id="238_misquotation_evidence_presentation_panel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -676,6 +677,28 @@ script = ExtResource("236_misquotation_evidence_presentation")
 
 [node name="TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController" type="Node" parent="."]
 script = ExtResource("237_misquotation_evidence_presentation_flow")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("238_misquotation_evidence_presentation_panel")
+
+[node name="Panel" type="VBoxContainer" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel"]
+offset_left = 1096.0
+offset_top = 12.0
+offset_right = 1588.0
+offset_bottom = 132.0
+
+[node name="SourceLabel" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+text = "Source statement"
+
+[node name="SourceText" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+autowrap_mode = 2
+
+[node name="DeliveredLabel" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+text = "Delivered statement"
+
+[node name="DeliveredText" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+autowrap_mode = 2
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController" type="Node" parent="."]
 script = ExtResource("232_misquotation_evidence_exposure_flow")

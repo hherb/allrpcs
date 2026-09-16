@@ -977,9 +977,9 @@ exact current view instance so stale or distinct equivalent views fail closed. A
 accepts at most one explicit choice per exact current view, retains all nested evidence and dialogue
 identities, and replaces an older choice only after the scene-owned view advances. The main scene
 owns that controller after the view owner but never invokes it automatically: ordinary startup,
-selection, abstention, acknowledgement, and offline failure remain presentation-free. No UI,
-truth judgment, correction, discovery, consumption, persistence, dialogue delivery, input,
-provider activity, scheduling, navigation, or movement behavior is added.
+selection, abstention, acknowledgement, and offline failure remain presentation-free. This
+selection layer adds no UI, truth judgment, correction, discovery, consumption, persistence,
+dialogue delivery, input, provider activity, scheduling, navigation, or movement behavior.
 
 `CharacterDialogueMisquotationEvidencePresentationSnapshot` derives one exact witness identifier,
 source dialogue event, and delivered misquotation event from one non-abstaining exact presentation
@@ -993,9 +993,9 @@ hides only the presentation while retaining the view, selection, exposure, evide
 events. Stale, distinct equivalent, abstaining, repeated, and null acknowledgement inputs fail
 closed.
 The main scene owns that controller after its view and selection dependencies but never invokes it
-automatically. No text formatting, UI, truth judgment, correction, discovery, evidence consumption,
-persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
-behavior is added.
+automatically. This projection layer adds no text formatting, UI, truth judgment, correction,
+discovery, evidence consumption, persistence, dialogue delivery, input, provider activity,
+scheduling, navigation, or movement behavior.
 
 `TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController` explicitly composes
 one exact current witness-view choice through the existing selection and presentation owners. It
@@ -1005,10 +1005,20 @@ selection or evidence. The main scene owns this flow after its dependencies but 
 automatically. Its switch-gated smoke proves an explicit initial abstention and later exact
 selection and acknowledgement after successful exposure while ordinary startup and failures remain
 presentation-free. Acknowledgement hides only the exact presentation; the switch-gated smoke
-retains the exact main-scene view, selection, exposure, evidence, and source dialogue events. No UI,
-truth judgment, correction, discovery, evidence consumption,
-persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
-behavior is added.
+retains the exact main-scene view, selection, exposure, evidence, and source dialogue events. This
+orchestration adds no automatic UI behavior, truth judgment, correction, discovery, evidence
+consumption, persistence, dialogue delivery, input, provider activity, scheduling, navigation, or
+movement behavior.
+
+`TemporaryCharacterDialogueMisquotationEvidencePresentationPanel` is an initially hidden
+screen-space temporary UI that accepts only the presentation owner's exact current non-null
+snapshot. It renders the source and delivered utterance texts separately under the neutral labels
+`Source statement` and `Delivered statement`, without calling either one true, false, corrected, or
+authoritative. A stale or distinct equivalent snapshot is rejected, and the panel clears and hides
+after the exact presentation is acknowledged or becomes stale. The main scene owns this panel but
+never presents it automatically; only the switch-gated smoke performs explicit selection,
+presentation, and acknowledgement. The panel adds no selection or acknowledgement input and does
+not mutate the retained view, selection, exposure, evidence, or dialogue events.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
