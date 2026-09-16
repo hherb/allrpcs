@@ -2,61 +2,56 @@
 
 ## Current state
 
-PR #281 is merged into `main` at `7cbc2ea`. Branch
-`codex/phase-7-misquotation-live-decision-flow` advances Phase 7 through two bounded slices:
+PR #282 is merged into `main` at `76203eb`. Branch
+`codex/phase-7-misquotation-live-exposure-flow` advances Phase 7 through two bounded integration
+slices using only the existing main-scene owners:
 
-- Phase 7jx adds
-  `CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController`. It starts one
-  decision only for the candidate-request controller's exact current request and only while the
-  shared task is idle. Request currentness and task availability are checked before model take.
-- Phase 7jy owns that flow immediately after its live request dependency in `Main.tscn`. Only the
-  dedicated occurrence smoke invokes it, after explicitly creating the exact occurrence, candidate,
-  and request; one supplied model then completes for that exact request and candidate.
+- Phase 7jz carries the exact completed live-candidate decision through one-time exposure, exact
+  witness-view refresh, and explicit result acknowledgement. Repeated observation and premature or
+  repeated acknowledgement fail closed; the task returns to idle while live evidence remains.
+- Phase 7ka explicitly reviews, selects, renders, and dismisses that exact live evidence through the
+  existing truth-neutral UI. The distinct preauthored candidate is rejected, and dismissal retains
+  every live occurrence, candidate, request, exposure, view, and dialogue event.
 
-Implementation commit `9d56eb7` is published in draft PR #282 targeting `main`.
-
-The preauthored `TemporaryCharacterDialogueMisquotationEvidenceSource` and its existing
-consideration flow remain unchanged. Ordinary startup does not start a task or consume a model. No
-live result is exposed, reviewed, presented, acknowledged, corrected, consumed, or persisted by the
-new flow. No provider, retry, timing, navigation, movement, world, perception, character, transcript,
-or general dialogue-controller behavior changed. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
+Only `TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck` changes runtime test
+coverage; no production API or scene composition changes. Ordinary startup remains inert. Nothing
+automatically starts an occurrence, candidate, request, decision, exposure, review, selection, or
+presentation. No dialogue is corrected or redelivered; no transcript, evidence, character, world,
+perception, navigation, movement, provider, timing, retry, or persistence behavior changes. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Phase 7jx began with the expected missing-controller smoke failure. Its standalone smoke proves
-  unavailable, null, distinct stale, overlapping, cancelled, and completed/repeated starts preserve
-  a queued one-shot model and the exact request; after explicit task reset, one accepted start
-  completes with the exact live request and candidate.
-- Phase 7jy began with the expected missing-main-node smoke failure. The extended main-scene smoke
-  proves ordinary startup stays inert and only the switch-gated occurrence/candidate/request chain
-  starts the exact decision, while transcript, exposure, view, presentation, world, perception, and
-  preauthored source references remain unchanged.
-- Session review inspected every changed and new path and found no unresolved issue. The repository
-  formatter, `git diff --check`, and a 120-column check pass. The production controller is 40
-  lines and the focused smoke is 280 lines.
-- Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,562 Domain tests, 542 Application tests, 897 Infrastructure tests, 8 architecture tests,
-  scenario validation, every credential-free Godot smoke, and the final Compatibility renderer
-  launch. The sandbox-only VSTest `SocketException (13)` was retried unchanged on the host.
-- Draft PR #282 run `35087948958` failed all five jobs immediately with `steps: []`; no hosted
-  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
-  unchanged run.
+- The rebuilt dedicated main-scene smoke passes the exact live occurrence-to-dismissal chain and
+  all retained-state assertions. Its first sandbox attempt hit the known Godot `user://logs` crash;
+  the identical host run passed.
+- `dotnet build Allrpcs.sln --no-restore --disable-build-servers --maxcpucount:1
+  --verbosity:minimal` passes with zero warnings and zero errors.
+- Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
+  zero-warning build, 2,562 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
+  architecture tests, scenario validation, every credential-free Godot smoke, and the final
+  Compatibility renderer launch. The sandbox-only VSTest `SocketException (13)` was retried
+  unchanged on the host.
+- Session review found and fixed one smoke-only failure-reporting issue by stopping before UI
+  assertions when the required live exposure/view is absent. Formatter verification,
+  `git diff --check`, and the 120-column check pass; no unresolved review finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7jz: expose and acknowledge one exact completed live-candidate decision through the
-existing main-scene evidence owners**.
+Take **Phase 7kb: define character-targeted physical and informational access without yet defining
+a delay or influence effect**.
 
 Acceptance boundary:
 
-1. Extend only the dedicated switch-gated live-occurrence smoke so its exact selected result is
-   observed once by `CharacterDialogueMisquotationEvidenceExposureCoordinator`, appends the exact
-   live candidate to the current exposure, and refreshes the exact witness view.
-2. Prove repeated observation is inert, then acknowledge only that observed exact result through the
-   existing coordinator. The task returns to idle while the exact exposure and witness view remain;
-   stale or mismatched state must fail closed.
-3. Do not add automatic occurrence, candidate, request, or decision start; replace the preauthored
-   source/flow; automatically select a reviewed entry, present UI, correct dialogue, consume or
-   persist evidence; or add provider, retry, timing, navigation, movement, world, perception,
-   character, transcript, or general dialogue-controller mutation.
+1. Test-first add the smallest Domain-only immutable snapshot/requirement/policy seam analogous to
+   object access: one exact actor, a bounded defensive stable set of value-unique target-character
+   identifiers currently reachable through ordinary interaction, one exact target character, one
+   canonical capability key, and one exact required knowledge identifier.
+2. The pure policy accepts only the value-matching actor and target when the interaction snapshot,
+   authored capability, and retained knowledge all satisfy the unchanged requirement. Null,
+   self-target, missing, mismatched, duplicate, excessive, and distinct unsupported inputs fail
+   closed without mutating any input. Add reflection-backed closed-surface tests.
+3. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add a
+   delay/influence proposal, action selection, occurrence, elapsed-time state, relationship change,
+   dialogue delivery, provider, Application, Infrastructure, scene, input, UI, persistence,
+   navigation, movement, or world/perception mutation.
