@@ -981,6 +981,18 @@ selection, abstention, acknowledgement, and offline failure remain presentation-
 truth judgment, correction, discovery, consumption, persistence, dialogue delivery, input,
 provider activity, scheduling, navigation, or movement behavior is added.
 
+`CharacterDialogueMisquotationEvidencePresentationSnapshot` derives one exact witness identifier,
+source dialogue event, and delivered misquotation event from one non-abstaining exact presentation
+selection without copying text or declaring either event true or false. Its pure projection returns
+that immutable event pair only when the selection retains the exact current witness view; accepted
+abstention and stale or distinct equivalent views return no presentation. A scene controller
+projects each exact current selection at most once, records abstention without fabricating a
+snapshot, and exposes a selected snapshot only while its exact selection and view remain current.
+The main scene owns that controller after its view and selection dependencies but never invokes it
+automatically. No text formatting, UI, truth judgment, correction, discovery, evidence consumption,
+persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
+behavior is added.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound

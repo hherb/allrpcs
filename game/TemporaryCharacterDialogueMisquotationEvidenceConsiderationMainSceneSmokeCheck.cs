@@ -22,6 +22,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     private CharacterDialogueMisquotationEvidenceViewController view = null!;
     private CharacterDialogueMisquotationEvidencePresentationSelectionController presentation =
         null!;
+    private CharacterDialogueMisquotationEvidencePresentationController presentationProjection =
+        null!;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
@@ -55,6 +57,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         presentation =
             GetNode<CharacterDialogueMisquotationEvidencePresentationSelectionController>(
                 "../CharacterDialogueMisquotationEvidencePresentationSelectionController");
+        presentationProjection =
+            GetNode<CharacterDialogueMisquotationEvidencePresentationController>(
+                "../CharacterDialogueMisquotationEvidencePresentationController");
         SetProcess(true);
     }
 
@@ -239,7 +244,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             currentView.Entries.Single().Occurrence.DeliveredEvent,
             source.DeliveredEvent);
 
-    private bool PresentationSelectionIsInert() => presentation.Selection is null;
+    private bool PresentationSelectionIsInert() =>
+        presentation.Selection is null && presentationProjection.Presentation is null;
 
     private static bool HasClosedSurfaces()
     {
