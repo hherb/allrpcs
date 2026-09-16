@@ -39,6 +39,9 @@ or general dialogue-controller behavior changed. The unrelated untracked
   build, 2,562 Domain tests, 542 Application tests, 897 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the final Compatibility renderer
   launch. The sandbox-only VSTest `SocketException (13)` was retried unchanged on the host.
+- Draft PR #282 run `35087948958` failed all five jobs immediately with `steps: []`; no hosted
+  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
+  unchanged run.
 
 ## Exact next bounded slice
 
