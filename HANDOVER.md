@@ -16,6 +16,8 @@ PR #279 is merged into `main` at `07dc36b`. Branch
   occurrence and only when the existing observability policy accepts the explicit actor and
   witness.
 
+Implementation commit `485dfda` is published in draft PR #280 targeting `main`.
+
 No misquotation is automatically proposed, scheduled, delivered, appended to a transcript,
 evaluated, exposed, reviewed, selected, presented, acknowledged, corrected, consumed, or persisted.
 The existing temporary preauthored evidence source is unchanged and is not yet connected to the new
@@ -44,6 +46,9 @@ character, or general dialogue-controller behavior changed. The unrelated untrac
   launch. The sandbox-only VSTest `SocketException (13)` was retried unchanged on the host.
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes --verbosity minimal` and
   `git diff --check` pass.
+- Draft PR #280 is open and mergeable. Hosted run `35083046594` failed every job with `steps: []`,
+  including Pure C# quality and Headless Godot smoke; this is Actions/account infrastructure rather
+  than hosted product-test evidence and was not retried unchanged.
 
 ## Exact next bounded slice
 
