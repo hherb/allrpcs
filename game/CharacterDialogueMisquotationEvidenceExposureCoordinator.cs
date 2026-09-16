@@ -10,6 +10,7 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinator : 
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? resolvedExposure;
     private CharacterDialogueMisquotationEvidenceExposureController exposure = null!;
     private CharacterDialogueMisquotationEvidenceTaskController task = null!;
+    private CharacterDialogueMisquotationEvidenceViewController view = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -18,6 +19,8 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinator : 
             "../CharacterDialogueMisquotationEvidenceExposureController");
         task = GetNode<CharacterDialogueMisquotationEvidenceTaskController>(
             "../CharacterDialogueMisquotationEvidenceTaskController");
+        view = GetNode<CharacterDialogueMisquotationEvidenceViewController>(
+            "../CharacterDialogueMisquotationEvidenceViewController");
     }
 
     /// <inheritdoc />
@@ -42,12 +45,27 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinator : 
         resolvedExposure = null;
         CharacterDialogueMisquotationEvidenceExposureSnapshot? expectedExposure =
             exposure.Exposure;
-        if (expectedExposure is null || !exposure.TryExpose(expectedExposure, result))
+        if (expectedExposure is null
+            || !ReferenceEquals(view.SourceExposure, expectedExposure)
+            || !exposure.TryExpose(expectedExposure, result))
         {
             return false;
         }
 
         resolvedExposure = exposure.Exposure;
+        if (resolvedExposure is null)
+        {
+            throw new InvalidOperationException(
+                "Successful misquotation-evidence exposure must retain an exact snapshot.");
+        }
+
+        if (!ReferenceEquals(resolvedExposure, expectedExposure)
+            && !view.TryRefresh(expectedExposure, resolvedExposure))
+        {
+            throw new InvalidOperationException(
+                "The misquotation-evidence view must advance with successful exposure.");
+        }
+
         return true;
     }
 
@@ -60,6 +78,7 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinator : 
             || !ReferenceEquals(observedResult, result)
             || resolvedExposure is null
             || !ReferenceEquals(exposure.Exposure, resolvedExposure)
+            || !ReferenceEquals(view.SourceExposure, resolvedExposure)
             || !task.TryReset())
         {
             return false;

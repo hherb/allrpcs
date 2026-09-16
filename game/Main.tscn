@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3]
+[gd_scene load_steps=188 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -233,6 +233,7 @@
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceExposureController.cs" id="231_misquotation_evidence_exposure"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController.cs" id="232_misquotation_evidence_exposure_flow"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceExposureCoordinator.cs" id="233_misquotation_evidence_exposure_coordinator"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceViewController.cs" id="234_misquotation_evidence_view"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -660,6 +661,9 @@ script = ExtResource("230_misquotation_evidence_flow")
 
 [node name="CharacterDialogueMisquotationEvidenceExposureController" type="Node" parent="."]
 script = ExtResource("231_misquotation_evidence_exposure")
+
+[node name="CharacterDialogueMisquotationEvidenceViewController" type="Node" parent="."]
+script = ExtResource("234_misquotation_evidence_view")
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController" type="Node" parent="."]
 script = ExtResource("232_misquotation_evidence_exposure_flow")

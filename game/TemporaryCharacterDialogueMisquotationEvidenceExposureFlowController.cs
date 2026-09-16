@@ -9,13 +9,21 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceExposureFlowC
     /// <inheritdoc />
     public override void _Ready()
     {
+        TemporaryCharacterDialogueMisquotationEvidenceSource source =
+            GetNode<TemporaryCharacterDialogueMisquotationEvidenceSource>(
+                "../TemporaryCharacterDialogueMisquotationEvidenceSource");
         CharacterDialogueMisquotationEvidenceExposureController exposure =
             GetNode<CharacterDialogueMisquotationEvidenceExposureController>(
                 "../CharacterDialogueMisquotationEvidenceExposureController");
-        if (!exposure.TryInitialize(new CharacterDialogueMisquotationEvidenceExposureSnapshot([])))
+        CharacterDialogueMisquotationEvidenceViewController view =
+            GetNode<CharacterDialogueMisquotationEvidenceViewController>(
+                "../CharacterDialogueMisquotationEvidenceViewController");
+        CharacterDialogueMisquotationEvidenceExposureSnapshot initial = new([]);
+        if (!exposure.TryInitialize(initial)
+            || !view.TryInitialize(initial, source.WitnessCharacterId))
         {
             throw new InvalidOperationException(
-                "The temporary misquotation-evidence flow requires uninitialized exposure state.");
+                "The temporary misquotation-evidence flow requires uninitialized exposure and view state.");
         }
     }
 }

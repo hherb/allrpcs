@@ -2,63 +2,68 @@
 
 ## Current state
 
-PR #271 is merged into `main` at `66cc05a`. Branch
-`codex/phase-7-misquotation-evidence-observation` advances Phase 7 through exact completed-result
-observation, acknowledgement, and inert main-scene exposure ownership:
+PR #272 is merged into `main` at `6a591a1`. Branch
+`codex/phase-7-misquotation-evidence-view` advances Phase 7 through bounded exact-witness evidence
+views and inert scene ownership:
 
-- `CharacterDialogueMisquotationEvidenceExposureCoordinator` observes each fresh exact completed
-  task result once, delegates it only from the exposure controller's exact current snapshot, and
-  retains the exact post-resolution snapshot required for acknowledgement;
-- selection installs a fresh exposure snapshot, abstention retains the exact current instance, and
-  stale, duplicate, full, idle, running, cancelled, failed, null, or repeated results are inert;
-- acknowledgement resets only the exact observed completed result while its exact resolved exposure
-  remains current; and
-- `TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController` initializes exact empty
-  main-scene exposure state without starting a task. The main scene owns the exposure controller,
-  initialization flow, and coordinator in dependency order.
+- `CharacterDialogueMisquotationEvidenceViewSnapshot` retains one exact witness and defensively
+  copies at most 64 exact entries in stable exposure order. It rejects nulls, non-identical
+  witnesses, and duplicate exact delivered events while allowing distinct value-equal deliveries;
+- `CharacterDialogueMisquotationEvidenceViewProjection` filters an exposure snapshot only by exact
+  witness-identifier reference, retaining exact entry, occurrence, proposal, and event identities;
+- `CharacterDialogueMisquotationEvidenceViewController` initializes once and refreshes only from
+  its exact expected source exposure, rejecting stale and same-snapshot changes; and
+- the exposure coordinator advances the exact view with successful selection, preserves it for
+  abstention and failures, and acknowledges only while exposure and view remain aligned. The main
+  scene initializes the representative witness's empty view without starting work.
 
-Implementation commit `5bbaae0` is published in draft PR #272 targeting `main`.
+Implementation commit `fc18883` is published in draft PR #273 targeting `main`.
 
-No result is presented, discovered, corrected, or persisted. Ordinary startup remains inert. No
-dialogue, truth, transcript, character, event, audience, world object, perception, or other
-authoritative state is mutated. No automatic task, credential or provider I/O, input, retry, timing,
-scheduling, navigation, or movement behavior was added. The unrelated untracked
+No evidence is presented, discovered, corrected, consumed, or persisted. Ordinary startup remains
+inert. No dialogue, truth, transcript, character, event, audience, world object, perception, or
+other authoritative state is mutated. No automatic task, credential or provider I/O, input, retry,
+timing, scheduling, navigation, or movement behavior was added. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Phase 7ix began with the expected missing-coordinator build failure. Its isolated credential-free
-  smoke proves exact one-shot selection, abstention, acknowledgement, stale acknowledgement,
-  stale-request, duplicate, capacity, idle, running, cancellation, failure, repeat, closed-surface,
-  nested-reference, and unchanged-evidence behavior.
-- The main-scene continuation began with the expected missing exposure-flow build failure. Its
-  switch-gated credential-free smoke proves inert startup, exact source-owned selection and
-  abstention, exposure identity, explicit acknowledgement, overlap preservation, stable offline
-  failure, closed flows, and unchanged dialogue evidence.
-- Sandboxed validation was blocked only by the known VSTest loopback restriction. The identical
-  host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,546 Domain tests, 542 Application tests, 897 Infrastructure tests, 8 architecture tests,
-  scenario validation, every credential-free Godot smoke, and the final Compatibility renderer
-  launch.
-- Session-wide review checked one-shot observation, exact current/post-resolution exposure identity,
-  selection and abstention identity, acknowledgement ordering, stale and failure inertness, nested
-  evidence retention, main-scene dependency order, ordinary-startup behavior, closed surfaces, file
-  sizes, line lengths, formatting, and whitespace. No unresolved issue remains.
+- Phase 7iz began with the expected missing-view build failure. Focused Domain coverage proves
+  exact witness filtering, empty views, stable order, defensive copying, the 64-entry bound, null
+  and duplicate rejection, distinct value-equal delivery allowance, mismatched and value-equal
+  witness rejection, nested-reference retention, and closed immutable surfaces.
+- Phase 7ja began with the expected missing-controller build failure. Its isolated credential-free
+  Godot smoke proves one-time initialization, exact exposure CAS refresh, stale and same-snapshot
+  rejection, exact witness filtering, nested-reference retention, null guards, and a closed scene
+  surface. The updated coordinator and main-scene smokes prove aligned view refresh, inert startup,
+  selection, abstention, acknowledgement, cancellation, failure, duplicate, capacity, and stale
+  behavior without changing source dialogue.
+- Session-wide review tightened the public view invariant so direct construction also rejects
+  evidence belonging to another or distinct value-equal witness, and extracted the smoke scenario
+  helper to keep authored source files within the practical size limit. No unresolved issue remains.
+- The host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
+  zero-warning build, 2,554 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
+  architecture tests, scenario validation, every credential-free Godot smoke, and the final
+  Compatibility renderer launch. `git diff --check` also passes.
+- Draft PR #273 workflow run `35050985023` failed at account infrastructure before execution: all
+  five jobs reported `steps: []`. It provides no hosted product-test or build evidence and was not
+  retried unchanged; the complete host-local quality evidence above remains authoritative.
 
 ## Exact next bounded slice
 
-Take **Phase 7iz: define one bounded witness-specific view of exposed misquotation evidence**.
+Take **Phase 7jb: define one explicit truth-neutral presentation selection from an exact witness
+view**.
 
 Acceptance boundary:
 
-1. Add one immutable view snapshot that defensively copies at most 64 exact exposed
-   `CharacterDialogueMisquotationEvidence` entries in stable order, rejecting nulls and duplicate
-   exact delivered events while allowing distinct value-equal events.
-2. Add one pure projection that returns only entries whose exact `WitnessCharacterId` is the exact
-   requested character identifier, retaining entry and nested occurrence/event identities and
-   stable exposure order. A value-equal distinct character identifier must not match.
-3. Prove exact filtering, empty output, bounds, null rejection, stable order, distinct value-equal
-   allowance, and a closed immutable surface in focused Domain tests. Do not compose the view into
-   Godot; present, discover, correct, consume, or persist evidence; deliver dialogue; change truth,
-   transcripts, characters, events, audiences, world state, or perception; or add provider, input,
-   retry, timing, scheduling, navigation, or movement behavior.
+1. Add one immutable presentation selection that retains the exact witness view and either one
+   exact member evidence entry or explicit abstention; reject nulls and non-member or distinct
+   value-equal evidence without recreating any nested dialogue object.
+2. Add one pure acceptance policy requiring the selection's exact witness-view identity to be the
+   supplied exact current view, so stale or distinct value-equal views fail closed while a current
+   abstention remains valid.
+3. Prove selection, abstention, stale view, exact membership, distinct value-equal rejection,
+   nested identity retention, null rejection, and closed immutable surfaces in focused Domain
+   tests. Do not compose it into Godot; render UI; present, discover, correct, consume, or persist
+   evidence; deliver dialogue; change truth, transcripts, characters, events, audiences, world
+   state, or perception; or add provider, input, retry, timing, scheduling, navigation, or movement
+   behavior.
