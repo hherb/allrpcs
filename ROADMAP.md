@@ -426,6 +426,14 @@ Current continuation:
   stale, rebuilt, misdirected, wrong-dimension, wrong-delta, and inapplicable input failing closed.
 - [x] Apply one exact-current eligible inverse influence change as fresh numerically restored
   relationship state while retaining both immutable influence and recovery reasons.
+- [x] Select the exact first eligible influence candidate in stable bounded caller order only after
+  complete one-pass collection validation, without applying or recovering it.
+- [x] Retain exact current actor, interaction-access, relationship, and bounded candidate state for
+  one provider-neutral influence consideration without deciding or applying it.
+- [x] Accept only an exact-actor abstention or exact currently eligible request-member influence
+  selection, then bind that decision immutably to its exact consideration request.
+- [x] Apply an accepted exact influence selection through the existing immutable transition while
+  leaving an accepted abstention inert and every request source unchanged.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
