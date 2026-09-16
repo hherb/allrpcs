@@ -17,6 +17,8 @@ main-scene temporary UI for one exact witness presentation:
   acknowledgement do not present it automatically. Only the existing switch-gated main-scene
   smoke explicitly selects, presents, verifies, and acknowledges one exact snapshot.
 
+Implementation commit `83e2fac` is published in draft PR #278 targeting `main`.
+
 No evidence picker or acknowledgement input was added. No evidence is automatically selected,
 presented, acknowledged, discovered, corrected, consumed, or persisted. Neither statement is
 called true, false, corrected, or authoritative. No dialogue, transcript, character, event,
