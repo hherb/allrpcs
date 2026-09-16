@@ -2,64 +2,60 @@
 
 ## Current state
 
-PR #285 is merged into `main` at `4494409`. Branch
-`codex/phase-7-influence-selection` advances Phase 7 through four bounded Domain-only slices:
+PR #286 is merged into `main` at `a1c282a`. Branch
+`codex/phase-7-influence-decision` advances Phase 7 through five dependency-ordered slices:
 
-- Phase 7ki selects the exact first currently eligible influence candidate in stable caller order
-  only after one-pass validation of the complete, at-most-64 candidate collection. Null and
-  duplicate exact candidate references are rejected; distinct structurally equivalent candidates
-  remain valid.
-- Phase 7kj retains the exact actor, interaction-access snapshot, relationship, and a stable bounded
-  copy of candidates in one immutable provider-neutral consideration request.
-- Phase 7kk admits only an exact-actor abstention or exact currently eligible request-member
-  selection, then binds the accepted decision to its exact request and selected candidate.
-- Phase 7kl leaves accepted abstention inert and delegates an accepted selection through the
-  existing immutable influence transition to fresh relationship state.
+- Phase 7km adds the provider-neutral influence decision-model interface and pure Application
+  controller. It forwards one exact request and caller token to one model invocation and constructs
+  the existing Domain result so invalid decisions fail closed.
+- Phase 7kn retains one exact OpenAI setting and caller-composed model without invoking it.
+- Phase 7ko supplies exact-instance initialized/replaced/cleared bindings, one-shot precedence,
+  configured fallback, and one stable fail-closed offline model without construction-time I/O.
+- Phase 7kp owns one isolated bounded decision task. It rejects overlap, supports one cancellation
+  request and explicit terminal reset, and installs only an accepted completed result on the main
+  thread while model, cancellation, and validation failures expose no result.
+- Phase 7kq explicitly composes one already-authored exact request with the model source and task,
+  preserving a queued one-shot model across rejected overlap and remaining inert at startup.
 
-Implementation commit `c3294f3` is published in draft PR #286 targeting `main`.
-
-The branch changes only Domain contracts, Domain tests, README, ROADMAP, and this handover. It adds
-no Application, Infrastructure, model, binding, task, scene, input, UI, provider, persistence,
-evidence, recovery-selection, elapsed-time, delay, navigation, movement, world, perception, or
-dialogue behavior. Ordinary startup remains unchanged. The unrelated untracked
+The branch changes only Application contracts/tests, isolated game nodes and smokes, the
+credential-free smoke script, README, ROADMAP, and this handover. None of the new nodes are in
+`Main.tscn`. It adds no OpenAI transport/decoder, binding factory, settings composition, automatic
+scheduling, influence application, evidence, recovery selection, persistence, input/UI, time,
+navigation, movement, perception, dialogue, or other world behavior. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Test-first focused host runs pass all 22 new selection, request, decision/result, and transition
-  tests. The combined influence suite passes all 42 tests.
+- Test-first host runs pass all 9 new Application controller and binding tests. Focused zero-warning
+  game builds and all three new isolated model-source, task, and consideration-flow smokes pass.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,633 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
+  zero-warning build, 2,633 Domain tests, 551 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
-  Compatibility renderer launch. The sandbox run reached the same zero-warning build and stopped
-  only at the known VSTest loopback `SocketException (13): Permission denied` restriction.
-- Session-wide review verified complete-validation-before-selection, exact-reference duplicate and
-  membership checks, stable immutable retention, exact actor identity, current eligibility,
-  abstention inertness, and delegation only through the existing influence transition. No
-  unresolved finding remains.
-- `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, `git diff --check`, and the
-  120-column check pass. Every new file is below 500 lines.
-- Draft PR #286 run `35152526872` failed all five jobs immediately with `steps: []`; no hosted
-  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
-  unchanged run.
+  Compatibility renderer launch.
+- Session-wide review verified exact request/token/model retention, validation through the existing
+  Domain result, pre-cancellation, exception propagation, exact-instance binding CAS, one-shot
+  preservation across overlap, stable offline failure, main-thread-only result installation,
+  cancellation/reset state, inert startup, and unchanged request/relationship state. One weak
+  self-reference smoke assertion found during review was replaced with a concrete relationship-value
+  check; no unresolved finding remains.
+- `git diff --check`, the 120-column check, and per-file 500-line checks pass.
 
 ## Exact next bounded slice
 
-Take **Phase 7km: obtain and validate one provider-neutral influence decision**.
+Take **Phase 7kr: strictly decode one provider influence decision JSON document**.
 
 Acceptance boundary:
 
-1. Test-first add the smallest Application interface whose `DecideAsync` accepts one exact
-   `CharacterTargetSabotageInfluenceConsiderationRequest` plus caller cancellation and returns one
-   `CharacterTargetSabotageInfluenceDecision`.
-2. Add one pure-orchestration Application controller that rejects nulls and pre-cancellation before
-   model invocation, invokes the supplied model exactly once with the exact request and token, and
-   constructs `CharacterTargetSabotageInfluenceConsiderationResult` so invalid decisions fail
-   closed through the existing Domain policy.
-3. Prove exact selection and abstention, exact request/token forwarding, invalid-decision rejection,
-   cancellation/exception propagation, unchanged request state, and reflection-locked interface and
-   controller surfaces.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add a
-   model binding/source, background task owner, OpenAI transport/decoder, scene/controller wiring,
-   input/UI, provider settings, persistence, evidence, recovery selection, elapsed-time/delay, or
-   other world behavior.
+1. Test-first add one Infrastructure deserializer that accepts an exact
+   `CharacterTargetSabotageInfluenceConsiderationRequest` and a bounded JSON document containing
+   exactly `actorId` and nullable zero-based `selectedCandidateIndex`.
+2. Rebind value-matching actor text to the request's exact actor identifier, resolve any index to the
+   exact retained candidate, construct `CharacterTargetSabotageInfluenceDecision`, and delegate
+   final acceptance to the existing Domain policy without changing request state.
+3. Reject null, oversized, malformed, trailing, commented, over-depth, unknown, duplicate, missing,
+   wrong-type, invalid-actor, negative, and out-of-range input through one bounded redacted argument
+   error; reflection-lock the strict public surface and length bound.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add SSE
+   accumulation, HTTP/OpenAI model execution, prompts/request serialization, binding factories,
+   settings composition, `Main.tscn` wiring, automatic scheduling, influence application, evidence,
+   recovery selection, persistence, input/UI, timing, or other world behavior.

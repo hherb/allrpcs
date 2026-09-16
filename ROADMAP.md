@@ -434,6 +434,12 @@ Current continuation:
   selection, then bind that decision immutably to its exact consideration request.
 - [x] Apply an accepted exact influence selection through the existing immutable transition while
   leaving an accepted abstention inert and every request source unchanged.
+- [x] Obtain and validate one provider-neutral influence decision with exact request and caller
+  cancellation forwarding, without binding a model or owning background work.
+- [x] Retain exact OpenAI influence settings and model, then supply configured, one-shot, or stable
+  offline models without construction-time I/O or automatic invocation.
+- [x] Own one isolated bounded influence-decision task and explicit consideration flow with exact
+  result installation, overlap rejection, cancellation, reset, and fail-closed offline behavior.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
