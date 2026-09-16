@@ -418,6 +418,14 @@ Current continuation:
   the unchanged character-target access policy without defining occurrence or effect semantics.
 - [x] Bind one exact eligible `delay` or `influence` proposal to its exact retained target-character
   occurrence candidate without applying elapsed-time or relationship effects.
+- [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
+  relationship change without applying that change.
+- [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
+  retaining the exact candidate and leaving every rejected source unchanged.
+- [x] Define one exact-current inverse relationship-change candidate for influence recovery, with
+  stale, rebuilt, misdirected, wrong-dimension, wrong-delta, and inapplicable input failing closed.
+- [x] Apply one exact-current eligible inverse influence change as fresh numerically restored
+  relationship state while retaining both immutable influence and recovery reasons.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
