@@ -237,9 +237,17 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || !ReferenceEquals(projected.SourceEvent, source.SourceEvent)
             || !ReferenceEquals(projected.DeliveredEvent, source.DeliveredEvent)
             || presentationFlow.TryChoose(currentView, source.Candidate)
+            || !presentationFlow.TryAcknowledge(currentView, selection, projected)
+            || presentationProjection.Presentation is not null
+            || !ReferenceEquals(presentation.Selection, selection)
+            || !ReferenceEquals(exposure.Exposure, selectedExposure)
+            || !ViewRetainsExactSource(selectedExposure!)
+            || presentationFlow.TryAcknowledge(currentView, selection, projected)
             || !SourceIsUnchanged())
         {
-            Fail("Main-scene misquotation-evidence presentation choice was not exact and one-shot.");
+            Fail(
+                "Main-scene misquotation-evidence presentation choice and acknowledgement "
+                + "were not exact and one-shot.");
             return;
         }
 
@@ -247,8 +255,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             "Misquotation-evidence main-scene smoke passed: inert startup, exact source-owned "
             + "request, one-shot selection and abstention, overlap preservation, explicit reset, "
             + "exact exposure, witness view and acknowledgement, stable offline failure, closed "
-            + "flows, explicit presentation abstention and selection, and unchanged dialogue "
-            + "evidence.");
+            + "flows, explicit presentation abstention, selection and acknowledgement, and "
+            + "unchanged dialogue evidence.");
         GetTree().Quit();
     }
 
@@ -319,7 +327,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
                 | System.Reflection.BindingFlags.DeclaredOnly).Length == 0
-            && presentationFlowMethods.SequenceEqual(["TryChoose", "_Ready"])
+            && presentationFlowMethods.SequenceEqual(["TryAcknowledge", "TryChoose", "_Ready"])
             && presentationFlowType.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance

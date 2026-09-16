@@ -55,4 +55,25 @@ public partial class CharacterDialogueMisquotationEvidencePresentationController
         presentation = projected;
         return true;
     }
+
+    /// <summary>Hides one exact current presentation without consuming its evidence.</summary>
+    public bool TryAcknowledge(
+        CharacterDialogueMisquotationEvidenceViewSnapshot expectedView,
+        CharacterDialogueMisquotationEvidencePresentationSelection expectedSelection,
+        CharacterDialogueMisquotationEvidencePresentationSnapshot expectedPresentation)
+    {
+        ArgumentNullException.ThrowIfNull(expectedView);
+        ArgumentNullException.ThrowIfNull(expectedSelection);
+        ArgumentNullException.ThrowIfNull(expectedPresentation);
+
+        if (!ReferenceEquals(view?.View, expectedView)
+            || !ReferenceEquals(selections?.Selection, expectedSelection)
+            || !ReferenceEquals(Presentation, expectedPresentation))
+        {
+            return false;
+        }
+
+        presentation = null;
+        return true;
+    }
 }

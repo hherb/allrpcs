@@ -6,7 +6,7 @@ namespace Allrpcs.Game;
 /// <summary>Checks exact scene ownership of truth-neutral misquotation-evidence presentation.</summary>
 public partial class CharacterDialogueMisquotationEvidencePresentationControllerSmokeCheck : Node
 {
-    private static readonly string[] ExpectedMethodNames = ["TryPresent", "_Ready"];
+    private static readonly string[] ExpectedMethodNames = ["TryAcknowledge", "TryPresent", "_Ready"];
 
     /// <inheritdoc />
     public override void _Ready()
@@ -65,6 +65,9 @@ public partial class CharacterDialogueMisquotationEvidencePresentationController
         CharacterDialogueMisquotationEvidencePresentationSelection distinctSelection = new(
             selectedView,
             source.Candidate);
+        CharacterDialogueMisquotationEvidencePresentationSelection selectedViewAbstention = new(
+            selectedView,
+            null);
         bool rejected = !controller.TryPresent(initialView, abstention)
             && !controller.TryPresent(distinctEquivalentView, selection)
             && !controller.TryPresent(selectedView, distinctSelection)
@@ -80,10 +83,73 @@ public partial class CharacterDialogueMisquotationEvidencePresentationController
             && ReferenceEquals(selectedView.Entries.Single(), source.Candidate)
             && !controller.TryPresent(selectedView, selection);
 
+        CharacterDialogueMisquotationEvidencePresentationSnapshot presentedSnapshot =
+            controller.Presentation!;
+        CharacterDialogueMisquotationEvidencePresentationSnapshot distinctPresentation = new(
+            distinctSelection);
+        bool acknowledgementRejected = !controller.TryAcknowledge(
+                initialView,
+                selection,
+                presentedSnapshot)
+            && !controller.TryAcknowledge(
+                distinctEquivalentView,
+                selection,
+                presentedSnapshot)
+            && !controller.TryAcknowledge(
+                selectedView,
+                distinctSelection,
+                presentedSnapshot)
+            && !controller.TryAcknowledge(
+                selectedView,
+                selectedViewAbstention,
+                presentedSnapshot)
+            && !controller.TryAcknowledge(
+                selectedView,
+                selection,
+                distinctPresentation)
+            && ThrowsArgumentNull(() => controller.TryAcknowledge(
+                null!,
+                selection,
+                presentedSnapshot))
+            && ThrowsArgumentNull(() => controller.TryAcknowledge(
+                selectedView,
+                null!,
+                presentedSnapshot))
+            && ThrowsArgumentNull(() => controller.TryAcknowledge(
+                selectedView,
+                selection,
+                null!));
+        bool acknowledged = controller.TryAcknowledge(
+                selectedView,
+                selection,
+                presentedSnapshot)
+            && controller.Presentation is null
+            && ReferenceEquals(viewController.View, selectedView)
+            && ReferenceEquals(selectionController.Selection, selection)
+            && ReferenceEquals(selectedView.Entries.Single(), source.Candidate)
+            && ReferenceEquals(source.Candidate.Occurrence.Proposal.SourceEvent, source.SourceEvent)
+            && ReferenceEquals(source.Candidate.Occurrence.DeliveredEvent, source.DeliveredEvent)
+            && !controller.TryAcknowledge(selectedView, selection, presentedSnapshot)
+            && !controller.TryPresent(selectedView, selection);
+        CharacterDialogueMisquotationEvidenceExposureSnapshot laterExposure = new(
+            [source.Candidate]);
         CharacterDialogueMisquotationEvidenceExposureSnapshot clearedExposure = new([]);
-        bool staleHidden = viewController.TryRefresh(selectedExposure, clearedExposure)
+        bool laterStaleHidden = viewController.TryRefresh(selectedExposure, laterExposure)
+            && viewController.View is { } laterView
+            && selectionController.TryChoose(laterView, source.Candidate)
+            && selectionController.Selection is { } laterSelection
+            && controller.TryPresent(laterView, laterSelection)
+            && controller.Presentation is not null
+            && viewController.TryRefresh(laterExposure, clearedExposure)
             && controller.Presentation is null;
-        if (!inert || !rejected || !presented || !staleHidden || !HasClosedSurface())
+
+        if (!inert
+            || !rejected
+            || !presented
+            || !acknowledgementRejected
+            || !acknowledged
+            || !laterStaleHidden
+            || !HasClosedSurface())
         {
             Fail("Misquotation-evidence presentation failed exact scene ownership.");
             return;
@@ -92,7 +158,9 @@ public partial class CharacterDialogueMisquotationEvidencePresentationController
         GD.Print(
             "Misquotation-evidence presentation controller smoke passed: inert startup, exact "
             + "selection projection, explicit abstention, stale and value-equal rejection, "
-            + "stale hiding, exact nested identity retention, null guards, and closed surface.");
+            + "exact acknowledgement, later fresh presentation, stale hiding, repeated rejection, "
+            + "unchanged source state, exact nested identity retention, null guards, and closed "
+            + "surface.");
         GetTree().Quit();
     }
 

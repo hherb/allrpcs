@@ -38,4 +38,16 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationF
 
         return presentation.TryPresent(expectedView, selection);
     }
+
+    /// <summary>Hides one exact current presentation without consuming its evidence.</summary>
+    public bool TryAcknowledge(
+        CharacterDialogueMisquotationEvidenceViewSnapshot expectedView,
+        CharacterDialogueMisquotationEvidencePresentationSelection expectedSelection,
+        CharacterDialogueMisquotationEvidencePresentationSnapshot expectedPresentation)
+    {
+        return presentation.TryAcknowledge(
+            expectedView,
+            expectedSelection,
+            expectedPresentation);
+    }
 }

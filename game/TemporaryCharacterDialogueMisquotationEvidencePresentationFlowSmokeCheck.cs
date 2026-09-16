@@ -8,7 +8,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationFlowSmokeCheck
     : Node
 {
-    private static readonly string[] ExpectedMethodNames = ["TryChoose", "_Ready"];
+    private static readonly string[] ExpectedMethodNames = ["TryAcknowledge", "TryChoose", "_Ready"];
 
     /// <inheritdoc />
     public override void _Ready()
@@ -86,7 +86,69 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationF
             && ReferenceEquals(source.Candidate.Occurrence.DeliveredEvent, source.DeliveredEvent)
             && !flow.TryChoose(selectedView, source.Candidate);
 
-        if (!inert || !rejected || !selected || !HasClosedSurface())
+        CharacterDialogueMisquotationEvidencePresentationSelection exactSelection =
+            selectionController.Selection!;
+        CharacterDialogueMisquotationEvidencePresentationSnapshot exactPresentation =
+            presentationController.Presentation!;
+        CharacterDialogueMisquotationEvidencePresentationSelection distinctSelection = new(
+            selectedView,
+            source.Candidate);
+        CharacterDialogueMisquotationEvidencePresentationSelection selectedViewAbstention = new(
+            selectedView,
+            null);
+        CharacterDialogueMisquotationEvidencePresentationSnapshot distinctPresentation = new(
+            distinctSelection);
+        bool acknowledgementRejected = !flow.TryAcknowledge(
+                initialView,
+                exactSelection,
+                exactPresentation)
+            && !flow.TryAcknowledge(
+                distinctEquivalentView,
+                exactSelection,
+                exactPresentation)
+            && !flow.TryAcknowledge(
+                selectedView,
+                distinctSelection,
+                exactPresentation)
+            && !flow.TryAcknowledge(
+                selectedView,
+                selectedViewAbstention,
+                exactPresentation)
+            && !flow.TryAcknowledge(
+                selectedView,
+                exactSelection,
+                distinctPresentation)
+            && ThrowsArgumentNull(() => flow.TryAcknowledge(
+                null!,
+                exactSelection,
+                exactPresentation))
+            && ThrowsArgumentNull(() => flow.TryAcknowledge(
+                selectedView,
+                null!,
+                exactPresentation))
+            && ThrowsArgumentNull(() => flow.TryAcknowledge(
+                selectedView,
+                exactSelection,
+                null!));
+        bool acknowledged = flow.TryAcknowledge(
+                selectedView,
+                exactSelection,
+                exactPresentation)
+            && presentationController.Presentation is null
+            && ReferenceEquals(viewController.View, selectedView)
+            && ReferenceEquals(selectionController.Selection, exactSelection)
+            && ReferenceEquals(selectedView.Entries.Single(), source.Candidate)
+            && ReferenceEquals(source.Candidate.Occurrence.Proposal.SourceEvent, source.SourceEvent)
+            && ReferenceEquals(source.Candidate.Occurrence.DeliveredEvent, source.DeliveredEvent)
+            && !flow.TryAcknowledge(selectedView, exactSelection, exactPresentation)
+            && !flow.TryChoose(selectedView, source.Candidate);
+
+        if (!inert
+            || !rejected
+            || !selected
+            || !acknowledgementRejected
+            || !acknowledged
+            || !HasClosedSurface())
         {
             Fail("Misquotation-evidence presentation flow failed exact-view orchestration.");
             return;
@@ -95,8 +157,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationF
         GD.Print(
             "Misquotation-evidence presentation flow smoke passed: inert startup, explicit "
             + "selection and abstention, stale, value-equal, non-member, and repeated rejection, "
-            + "exact nested identity retention, unchanged source state, null guards, and closed "
-            + "surface.");
+            + "exact acknowledgement, exact nested identity retention, unchanged source state, "
+            + "null guards, and closed surface.");
         GetTree().Quit();
     }
 
