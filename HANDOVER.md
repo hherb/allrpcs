@@ -17,6 +17,8 @@ truth-neutral presentation projection and inert main-scene ownership:
   snapshot as soon as its exact selection or view is no longer current. The main scene owns this
   controller after its view and selection dependencies but never invokes it automatically.
 
+Implementation commit `c153fc8` is published in draft PR #275 targeting `main`.
+
 No text formatting or UI was added. No evidence is discovered, corrected, consumed, or persisted.
 No dialogue, truth, transcript, character, event, audience, world object, perception, or other
 authoritative state is mutated. No automatic task, credential or provider I/O, input, retry,
@@ -47,6 +49,9 @@ timing, scheduling, navigation, or movement behavior was added. The unrelated un
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch. `dotnet format Allrpcs.sln --no-restore --verify-no-changes
   --verbosity minimal` and `git diff --check` also pass.
+- Draft PR #275 workflow run `35053684517` failed at account infrastructure before execution: all
+  five jobs reported `steps: []`. It provides no hosted product-test or build evidence and was not
+  retried unchanged; the complete host-local quality evidence above remains authoritative.
 
 ## Exact next bounded slice
 
