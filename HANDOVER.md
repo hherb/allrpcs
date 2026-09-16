@@ -44,6 +44,9 @@ timing, scheduling, navigation, or movement behavior was added. The unrelated un
   zero-warning build, 2,554 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch. `git diff --check` also passes.
+- Draft PR #273 workflow run `35050985023` failed at account infrastructure before execution: all
+  five jobs reported `steps: []`. It provides no hosted product-test or build evidence and was not
+  retried unchanged; the complete host-local quality evidence above remains authoritative.
 
 ## Exact next bounded slice
 
