@@ -376,6 +376,10 @@ Current continuation:
   truth-neutral presentation owners without automatic choice or authoritative mutation.
 - [x] Own that presentation flow inertly in the main scene and prove only switch-gated explicit
   abstention and selection after exact evidence exposure.
+- [x] Explicitly acknowledge one exact current witness presentation through its isolated flow,
+  hiding only that snapshot while retaining its view, selection, exposure, and source evidence.
+- [x] Exercise that acknowledgement only in the switch-gated main-scene smoke after explicit
+  presentation selection, leaving ordinary startup and every retained exact source inert.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

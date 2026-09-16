@@ -988,6 +988,10 @@ that immutable event pair only when the selection retains the exact current witn
 abstention and stale or distinct equivalent views return no presentation. A scene controller
 projects each exact current selection at most once, records abstention without fabricating a
 snapshot, and exposes a selected snapshot only while its exact selection and view remain current.
+Explicit acknowledgement accepts only that exact current view, selection, and presentation, then
+hides only the presentation while retaining the view, selection, exposure, evidence, and dialogue
+events. Stale, distinct equivalent, abstaining, repeated, and null acknowledgement inputs fail
+closed.
 The main scene owns that controller after its view and selection dependencies but never invokes it
 automatically. No text formatting, UI, truth judgment, correction, discovery, evidence consumption,
 persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
@@ -996,10 +1000,13 @@ behavior is added.
 `TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController` explicitly composes
 one exact current witness-view choice through the existing selection and presentation owners. It
 accepts either one exact view member or abstention, and stale, distinct equivalent, non-member, and
-repeated choices fail closed. The main scene owns this flow after its dependencies but does not call
-it automatically. Its switch-gated smoke proves an explicit initial abstention and later exact
-selection after successful exposure while ordinary startup, failures, and acknowledgement remain
-presentation-free. No UI, truth judgment, correction, discovery, evidence consumption,
+repeated choices fail closed. It also delegates exact acknowledgement without mutating the retained
+selection or evidence. The main scene owns this flow after its dependencies but does not call it
+automatically. Its switch-gated smoke proves an explicit initial abstention and later exact
+selection and acknowledgement after successful exposure while ordinary startup and failures remain
+presentation-free. Acknowledgement hides only the exact presentation; the switch-gated smoke
+retains the exact main-scene view, selection, exposure, evidence, and source dialogue events. No UI,
+truth judgment, correction, discovery, evidence consumption,
 persistence, dialogue delivery, input, provider activity, scheduling, navigation, or movement
 behavior is added.
 
