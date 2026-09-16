@@ -912,8 +912,15 @@ but only the dedicated switch-gated smoke requests a candidate. The
 consideration request only for the candidate controller's exact current candidate while the existing
 observability policy still accepts the supplied actor. Its request preserves that exact actor and
 candidate, and the main scene owns the request controller immediately after its candidate dependency.
-These owners do not automatically deliver dialogue, append a transcript, start a task, consume a
-model, create or expose evidence, select, present, acknowledge, correct, consume, or persist anything.
+`CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController` can explicitly start
+one decision only for that request controller's exact current request while the existing shared task
+is idle. It validates request identity and task availability before taking the next one-shot,
+configured, or offline model, so unavailable, stale, overlapping, cancelled, and completed paths do
+not consume a queued model. The main scene owns this flow after its request dependency, but only the
+dedicated switch-gated smoke invokes it after creating the exact live occurrence, candidate, and
+request. These owners do not automatically deliver dialogue, append a transcript, start a task,
+consume a model, create or expose evidence, select, present, acknowledge, correct, consume, or
+persist anything.
 
 `CharacterDialogueMisquotationEvidenceSelection` fully preflights at most 64 caller-ordered
 evidence candidates, rejects nulls and duplicate exact delivered events, and returns the exact first
