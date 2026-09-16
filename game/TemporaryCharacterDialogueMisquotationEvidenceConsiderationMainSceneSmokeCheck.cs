@@ -19,6 +19,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     private TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController flow = null!;
     private CharacterDialogueMisquotationEvidenceExposureController exposure = null!;
     private CharacterDialogueMisquotationEvidenceExposureCoordinator coordinator = null!;
+    private CharacterDialogueMisquotationEvidenceViewController view = null!;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
@@ -47,6 +48,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             "../CharacterDialogueMisquotationEvidenceExposureController");
         coordinator = GetNode<CharacterDialogueMisquotationEvidenceExposureCoordinator>(
             "../CharacterDialogueMisquotationEvidenceExposureCoordinator");
+        view = GetNode<CharacterDialogueMisquotationEvidenceViewController>(
+            "../CharacterDialogueMisquotationEvidenceViewController");
         SetProcess(true);
     }
 
@@ -91,6 +94,10 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         bool inertStartup = task.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             && task.Result is null
             && exposure.Exposure is { Entries.Count: 0 }
+            && exposure.Exposure is { } initialExposure
+            && ReferenceEquals(view.SourceExposure, initialExposure)
+            && view.View is { Entries.Count: 0 } initialView
+            && ReferenceEquals(initialView.WitnessCharacterId, source.WitnessCharacterId)
             && selectionModel.CallCount == 0
             && overlapModel.CallCount == 0
             && SourceIsUnchanged();
@@ -131,6 +138,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || !SourceIsUnchanged()
             || exposure.Exposure is not { Entries.Count: 1 } currentExposure
             || !ReferenceEquals(currentExposure.Entries.Single(), source.Candidate)
+            || !ViewRetainsExactSource(currentExposure)
             || coordinator.TryExposeCompletedResult()
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart())
@@ -159,6 +167,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || overlapModel.CallCount != 1
             || !SourceIsUnchanged()
             || !ReferenceEquals(exposure.Exposure, selectedExposure)
+            || !ViewRetainsExactSource(selectedExposure!)
             || coordinator.TryExposeCompletedResult()
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart())
@@ -182,6 +191,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || selectionModel!.CallCount != 1
             || overlapModel!.CallCount != 1
             || !ReferenceEquals(exposure.Exposure, selectedExposure)
+            || !ViewRetainsExactSource(selectedExposure!)
             || coordinator.TryExposeCompletedResult()
             || coordinator.TryAcknowledgeCompletedResult()
             || !SourceIsUnchanged())
@@ -193,8 +203,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         GD.Print(
             "Misquotation-evidence main-scene smoke passed: inert startup, exact source-owned "
             + "request, one-shot selection and abstention, overlap preservation, explicit reset, "
-            + "exact exposure and acknowledgement, stable offline failure, closed flows, and "
-            + "unchanged dialogue evidence.");
+            + "exact exposure, witness view and acknowledgement, stable offline failure, closed "
+            + "flows, and unchanged dialogue evidence.");
         GetTree().Quit();
     }
 
@@ -209,6 +219,16 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         && ReferenceEquals(source.Occurrence.DeliveredEvent, source.DeliveredEvent)
         && ReferenceEquals(source.Candidate.WitnessCharacterId, source.WitnessCharacterId)
         && CharacterDialogueMisquotationEvidencePolicy.CanObserve(source.Actor, source.Candidate);
+
+    private bool ViewRetainsExactSource(
+        CharacterDialogueMisquotationEvidenceExposureSnapshot expectedExposure) =>
+        ReferenceEquals(view.SourceExposure, expectedExposure)
+        && view.View is { Entries.Count: 1 } currentView
+        && ReferenceEquals(currentView.WitnessCharacterId, source.WitnessCharacterId)
+        && ReferenceEquals(currentView.Entries.Single(), source.Candidate)
+        && ReferenceEquals(
+            currentView.Entries.Single().Occurrence.DeliveredEvent,
+            source.DeliveredEvent);
 
     private static bool HasClosedSurfaces()
     {

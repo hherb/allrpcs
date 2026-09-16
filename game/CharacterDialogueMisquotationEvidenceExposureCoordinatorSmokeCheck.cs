@@ -11,7 +11,7 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinatorSmo
 
     private TemporaryCharacterDialogueMisquotationEvidenceSource primary = null!;
     private TemporaryCharacterDialogueMisquotationEvidenceSource alternate = null!;
-    private Scenario? scenario;
+    private MisquotationEvidenceExposureScenario? scenario;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private int processFrames;
     private int stage;
@@ -113,6 +113,7 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinatorSmo
         if (selectedExposure is null
             || selectedExposure.Entries.Count != 1
             || !ReferenceEquals(selectedExposure.Entries.Single(), primary.Candidate)
+            || !scenario.HasView(selectedExposure, [primary.Candidate])
             || !ReferenceEquals(
                 selectedExposure.Entries.Single().Occurrence.DeliveredEvent,
                 primary.DeliveredEvent))
@@ -131,6 +132,7 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinatorSmo
             || scenario.Task.Status != CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             || scenario.Task.Result is not null
             || !ReferenceEquals(scenario.Exposure.Exposure, selectedExposure)
+            || !scenario.HasView(selectedExposure!, [primary.Candidate])
             || !scenario.Start(
                 primary,
                 new ExposureCoordinatorImmediateModel(Decision(primary, null))))
@@ -151,6 +153,7 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinatorSmo
 
         if (!scenario.Coordinator.TryExposeCompletedResult()
             || !ReferenceEquals(scenario.Exposure.Exposure, selectedExposure)
+            || !scenario.HasView(selectedExposure!, [primary.Candidate])
             || !scenario.Coordinator.TryAcknowledgeCompletedResult())
         {
             Fail("Abstention did not retain and acknowledge the exact current snapshot.");
@@ -370,9 +373,12 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinatorSmo
         return ReferenceEquals(entries[entries.Count - 1], alternate.Candidate);
     }
 
-    private Scenario CreateScenario(CharacterDialogueMisquotationEvidenceExposureSnapshot initial)
+    private MisquotationEvidenceExposureScenario CreateScenario(
+        CharacterDialogueMisquotationEvidenceExposureSnapshot initial)
     {
-        Scenario created = new(initial);
+        MisquotationEvidenceExposureScenario created = new(
+            initial,
+            primary.WitnessCharacterId);
         AddChild(created.Container);
         created.Coordinator.SetProcess(false);
         return created;
@@ -443,49 +449,4 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinatorSmo
         GetTree().Quit(1);
     }
 
-    private sealed class Scenario
-    {
-        public Scenario(CharacterDialogueMisquotationEvidenceExposureSnapshot initial)
-        {
-            Container = new Node();
-            Exposure = new CharacterDialogueMisquotationEvidenceExposureController
-            {
-                Name = "CharacterDialogueMisquotationEvidenceExposureController",
-            };
-            Task = new CharacterDialogueMisquotationEvidenceTaskController
-            {
-                Name = "CharacterDialogueMisquotationEvidenceTaskController",
-            };
-            Coordinator = new CharacterDialogueMisquotationEvidenceExposureCoordinator();
-            Container.AddChild(Exposure);
-            Container.AddChild(Task);
-            Container.AddChild(Coordinator);
-            if (!Exposure.TryInitialize(initial))
-            {
-                throw new InvalidOperationException("Smoke exposure initialization failed.");
-            }
-        }
-
-        public Node Container { get; }
-
-        public CharacterDialogueMisquotationEvidenceExposureController Exposure { get; }
-
-        public CharacterDialogueMisquotationEvidenceTaskController Task { get; }
-
-        public CharacterDialogueMisquotationEvidenceExposureCoordinator Coordinator { get; }
-
-        public bool Start(
-            TemporaryCharacterDialogueMisquotationEvidenceSource source,
-            ICharacterDialogueMisquotationEvidenceDecisionModel model)
-        {
-            CharacterDialogueMisquotationEvidenceConsiderationRequest request = new(
-                source.Actor,
-                [source.Candidate]);
-            return Task.TryStart(model, request);
-        }
-
-        public bool HasExposure(CharacterDialogueMisquotationEvidence[] entries) =>
-            Exposure.Exposure is { } current
-            && current.Entries.SequenceEqual(entries, ReferenceEqualityComparer.Instance);
-    }
 }

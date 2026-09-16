@@ -358,6 +358,10 @@ Current continuation:
   and own the exact exposure snapshot through a stale-safe scene controller without presentation.
 - [x] Observe and explicitly acknowledge each exact completed misquotation-evidence result once,
   then compose exact empty exposure ownership into the inert source-owned main-scene flow.
+- [x] Project bounded exposed misquotation evidence into one immutable exact-witness view without
+  leaking entries to a distinct value-equal character identifier.
+- [x] Own and refresh the exact witness view with successful main-scene evidence exposure while
+  keeping ordinary startup, abstention, failure, and acknowledgement presentation-free.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

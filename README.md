@@ -956,6 +956,20 @@ unchanged source dialogue. This composition does not present, discover, correct,
 evidence; deliver dialogue; change truth, transcripts, characters, events, audiences, world state,
 or perception; or add input, retry, timing, scheduling, navigation, or movement behavior.
 
+`CharacterDialogueMisquotationEvidenceViewSnapshot` retains one exact witness identifier and a
+defensive stable copy of at most 64 exact exposed entries for only that witness. It rejects nulls,
+entries owned by any other or distinct value-equal witness, and duplicate exact delivered events,
+while allowing distinct value-equal deliveries. Its pure projection filters one exact exposure
+snapshot by witness reference identity without recreating entries, occurrences, or dialogue
+events. `CharacterDialogueMisquotationEvidenceViewController` owns the exact source exposure and
+projected view behind one-time initialization and exact-reference compare-and-swap refresh. The
+exposure coordinator advances that view with each successful selection; abstention retains both
+exact instances, and acknowledgement requires the exposure and view to remain aligned. The inert
+main-scene flow initializes the representative witness's empty view without presenting,
+discovering, correcting, consuming, or persisting evidence; changing dialogue, truth, transcripts,
+characters, events, audiences, world state, or perception; or adding input, provider, retry,
+timing, scheduling, navigation, or movement behavior.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
