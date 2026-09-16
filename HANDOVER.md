@@ -17,6 +17,8 @@ witness-evidence review, selection, presentation, and dismissal:
   one-shot selection and presentation owners. Missing, stale, repeated, and out-of-range
   state stays inert.
 
+Implementation commit `2f27104` is published in draft PR #279 targeting `main`.
+
 Evidence creation and exposure remain switch-gated. No misquotation is automatically proposed,
 delivered, exposed, reviewed, selected, presented, acknowledged, dismissed, discovered, corrected,
 consumed, or persisted. Neither statement is called true, false, corrected, or authoritative. No
@@ -47,6 +49,9 @@ retry, timing, or scheduling behavior changed. The unrelated untracked
   without mutation, and hidden repeated signals stay inert. No unresolved review issue remains.
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes --verbosity minimal` and
   `git diff --check` pass.
+- Draft PR #279 is open and mergeable. Initial hosted run `35081208698` failed every job with
+  `steps: []`, including Pure C# quality and Headless Godot smoke; this is Actions/account
+  infrastructure rather than hosted product-test evidence and was not retried unchanged.
 
 ## Exact next bounded slice
 
