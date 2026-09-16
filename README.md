@@ -970,6 +970,17 @@ discovering, correcting, consuming, or persisting evidence; changing dialogue, t
 characters, events, audiences, world state, or perception; or adding input, provider, retry,
 timing, scheduling, navigation, or movement behavior.
 
+`CharacterDialogueMisquotationEvidencePresentationSelection` retains one exact witness view and
+either one exact member evidence entry or explicit abstention. Construction rejects non-members,
+including distinct value-equal evidence, and its pure policy accepts the selection only for the
+exact current view instance so stale or distinct equivalent views fail closed. A scene controller
+accepts at most one explicit choice per exact current view, retains all nested evidence and dialogue
+identities, and replaces an older choice only after the scene-owned view advances. The main scene
+owns that controller after the view owner but never invokes it automatically: ordinary startup,
+selection, abstention, acknowledgement, and offline failure remain presentation-free. No UI,
+truth judgment, correction, discovery, consumption, persistence, dialogue delivery, input,
+provider activity, scheduling, navigation, or movement behavior is added.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
