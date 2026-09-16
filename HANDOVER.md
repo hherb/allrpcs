@@ -12,6 +12,8 @@ PR #283 is merged into `main` at `bfcee57`. Branch
 - Phase 7kd binds one exact eligible proposal to its exact retained target-character occurrence
   candidate without applying an effect.
 
+Implementation commit `c4dc338` is published in draft PR #284 targeting `main`.
+
 The branch changes only Domain contracts, Domain tests, README, ROADMAP, and this handover. It adds
 no Application, Infrastructure, scene, input, UI, provider, persistence, navigation, movement,
 dialogue, evidence, elapsed-time, or relationship mutation. Ordinary startup remains unchanged.
@@ -29,6 +31,9 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
 - Session review found and fixed one test-surface gap by locking the access snapshot, requirement,
   and policy signatures with reflection-backed assertions. The updated 11-test access suite passes.
 - `git diff --check` and the 120-column check pass. No unresolved review finding remains.
+- Draft PR #284 run `35097537395` failed all five jobs immediately with `steps: []`; no hosted
+  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
+  unchanged run.
 
 ## Exact next bounded slice
 
