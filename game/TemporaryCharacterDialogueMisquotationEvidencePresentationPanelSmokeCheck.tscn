@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSource.cs" id="1"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceViewController.cs" id="2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationController.cs" id="4"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanel.cs" id="5"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanelSmokeCheck.cs" id="6"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController.cs" id="7"]
 
 [node name="TemporaryCharacterDialogueMisquotationEvidencePresentationPanelSmokeCheck" type="Node"]
 
@@ -21,6 +22,9 @@ script = ExtResource("3")
 [node name="CharacterDialogueMisquotationEvidencePresentationController" type="Node" parent="."]
 script = ExtResource("4")
 
+[node name="TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController" type="Node" parent="."]
+script = ExtResource("7")
+
 [node name="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel" type="CanvasLayer" parent="."]
 script = ExtResource("5")
 
@@ -35,6 +39,9 @@ text = "Source statement"
 text = "Delivered statement"
 
 [node name="DeliveredText" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+
+[node name="Dismiss" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+text = "Dismiss"
 
 [node name="SmokeCheck" type="Node" parent="."]
 script = ExtResource("6")

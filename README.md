@@ -1016,9 +1016,22 @@ snapshot. It renders the source and delivered utterance texts separately under t
 `Source statement` and `Delivered statement`, without calling either one true, false, corrected, or
 authoritative. A stale or distinct equivalent snapshot is rejected, and the panel clears and hides
 after the exact presentation is acknowledged or becomes stale. The main scene owns this panel but
-never presents it automatically; only the switch-gated smoke performs explicit selection,
-presentation, and acknowledgement. The panel adds no selection or acknowledgement input and does
-not mutate the retained view, selection, exposure, evidence, or dialogue events.
+never presents it automatically. Its neutral `Dismiss` input delegates only the exact current view,
+selection, and non-null presentation through the existing acknowledgement flow; missing, stale,
+distinct equivalent, repeated, and already-acknowledged state stays inert. Dismissal clears only the
+temporary text and visibility and does not mutate the retained view, selection, exposure, evidence,
+or dialogue events.
+
+`TemporaryCharacterDialogueMisquotationEvidenceReviewPanel` keeps its statement list hidden until
+the player explicitly chooses `Review evidence`. An empty or unavailable witness view remains inert;
+otherwise the list renders each exact current entry in stable exposure order as separate neutral
+source and delivered statement text. `Close review` hides and clears that observational list without
+selecting anything. Selecting one list item resolves only that exact retained entry and delegates it
+through the existing one-shot presentation flow and panel; absent, stale, repeated, and out-of-range
+signals fail closed. The main scene owns this input surface, while evidence creation and exposure
+remain switch-gated. Review, selection, close, and dismissal do not label either statement as true,
+false, corrected, or authoritative and do not discover, consume, correct, persist, or redeliver
+evidence or mutate dialogue, transcripts, characters, events, audiences, world state, or perception.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution

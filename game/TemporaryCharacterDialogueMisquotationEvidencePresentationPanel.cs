@@ -7,6 +7,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationPanel
     : CanvasLayer
 {
+    private TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController flow = null!;
     private CharacterDialogueMisquotationEvidencePresentationController presentations = null!;
     private Label sourceText = null!;
     private Label deliveredText = null!;
@@ -22,10 +23,13 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
     /// <inheritdoc />
     public override void _Ready()
     {
+        flow = GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController>(
+            "../TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController");
         presentations = GetNode<CharacterDialogueMisquotationEvidencePresentationController>(
             "../CharacterDialogueMisquotationEvidencePresentationController");
         sourceText = GetNode<Label>("Panel/SourceText");
         deliveredText = GetNode<Label>("Panel/DeliveredText");
+        GetNode<Button>("Panel/Dismiss").Pressed += OnDismissPressed;
         ClearPresentation();
     }
 
@@ -56,6 +60,22 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
         deliveredText.Text = expectedPresentation.DeliveredEvent.Utterance.Text;
         Show();
         return true;
+    }
+
+    private void OnDismissPressed()
+    {
+        CharacterDialogueMisquotationEvidencePresentationSnapshot? currentPresentation =
+            Presentation;
+        if (currentPresentation is null
+            || !flow.TryAcknowledge(
+                currentPresentation.Selection.WitnessView,
+                currentPresentation.Selection,
+                currentPresentation))
+        {
+            return;
+        }
+
+        ClearPresentation();
     }
 
     private void ClearPresentation()

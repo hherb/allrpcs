@@ -29,6 +29,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
                 "../TemporaryCharacterDialogueMisquotationEvidencePresentationPanel");
         Label sourceText = panel.GetNode<Label>("Panel/SourceText");
         Label deliveredText = panel.GetNode<Label>("Panel/DeliveredText");
+        Button dismiss = panel.GetNode<Button>("Panel/Dismiss");
         CharacterDialogueMisquotationEvidenceExposureSnapshot initialExposure = new([]);
         CharacterDialogueMisquotationEvidenceExposureSnapshot selectedExposure = new(
             [source.Candidate]);
@@ -37,6 +38,11 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
             && panel.Presentation is null
             && sourceText.Text.Length == 0
             && deliveredText.Text.Length == 0;
+        dismiss.EmitSignal(BaseButton.SignalName.Pressed);
+        inert = inert
+            && !panel.Visible
+            && panel.Presentation is null
+            && presentations.Presentation is null;
         if (!view.TryInitialize(initialExposure, source.WitnessCharacterId)
             || !view.TryRefresh(initialExposure, selectedExposure)
             || view.View is not { } selectedView
@@ -60,6 +66,11 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
             && sourceText.Text.Length == 0
             && deliveredText.Text.Length == 0
             && ThrowsArgumentNull(() => panel.TryPresent(null!));
+        dismiss.EmitSignal(BaseButton.SignalName.Pressed);
+        rejected = rejected
+            && presentations.Presentation is not null
+            && !panel.Visible
+            && panel.Presentation is null;
         bool presented = panel.TryPresent(presentation)
             && panel.Visible
             && ReferenceEquals(panel.Presentation, presentation)
@@ -93,14 +104,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
         CharacterDialogueMisquotationEvidenceViewSnapshot currentView = view.View!;
         CharacterDialogueMisquotationEvidencePresentationSelection currentSelection =
             selections.Selection!;
-        CharacterDialogueMisquotationEvidencePresentationSnapshot currentPresentation =
-            presentations.Presentation!;
-        bool acknowledged = presentations.TryAcknowledge(
-            currentView,
-            currentSelection,
-            currentPresentation);
-        panel._Process(0);
-        acknowledged = acknowledged
+        dismiss.EmitSignal(BaseButton.SignalName.Pressed);
+        bool acknowledged = presentations.Presentation is null
             && !panel.Visible
             && panel.Presentation is null
             && sourceText.Text.Length == 0
@@ -110,6 +115,11 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
             && ReferenceEquals(currentView.Entries.Single(), source.Candidate)
             && ReferenceEquals(source.Candidate.Occurrence.Proposal.SourceEvent, source.SourceEvent)
             && ReferenceEquals(source.Candidate.Occurrence.DeliveredEvent, source.DeliveredEvent);
+        dismiss.EmitSignal(BaseButton.SignalName.Pressed);
+        acknowledged = acknowledged
+            && presentations.Presentation is null
+            && !panel.Visible
+            && panel.Presentation is null;
 
         if (!inert
             || !rejected
@@ -117,6 +127,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
             || !staleHidden
             || !acknowledged
             || !HasNeutralLabels(panel)
+            || dismiss.Text != "Dismiss"
             || !HasClosedSurface())
         {
             Fail("Misquotation-evidence temporary UI failed exact truth-neutral rendering.");
@@ -127,7 +138,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidencePresentationP
             "Misquotation-evidence temporary UI smoke passed: hidden inert startup, exact "
             + "snapshot and text retention, neutral separate labels, stale and distinct "
             + "equivalent rejection, acknowledgement hiding, unchanged source state, null "
-            + "guard, and closed surface.");
+            + "guard, explicit one-shot dismissal, and closed surface.");
         GetTree().Quit();
     }
 

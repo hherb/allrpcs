@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceSource.cs" id="1"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceViewController.cs" id="2"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationSelectionController.cs" id="3"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationController.cs" id="4"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController.cs" id="5"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanel.cs" id="6"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceReviewPanel.cs" id="7"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceReviewSelectionSmokeCheck.cs" id="8"]
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceReviewSelectionSmokeCheck" type="Node"]
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceSource" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="CharacterDialogueMisquotationEvidenceViewController" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="CharacterDialogueMisquotationEvidencePresentationSelectionController" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="CharacterDialogueMisquotationEvidencePresentationController" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel" type="CanvasLayer" parent="."]
+script = ExtResource("6")
+
+[node name="Panel" type="VBoxContainer" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel"]
+
+[node name="SourceText" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+
+[node name="DeliveredText" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+
+[node name="Dismiss" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+text = "Dismiss"
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel" type="CanvasLayer" parent="."]
+script = ExtResource("7")
+
+[node name="Review" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
+text = "Review evidence"
+
+[node name="Statements" type="ItemList" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
+
+[node name="Close" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
+text = "Close review"
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("8")
