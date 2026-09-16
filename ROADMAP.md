@@ -392,6 +392,12 @@ Current continuation:
   rejecting absent, stale, repeated, and out-of-range UI signals without authoritative mutation.
 - [x] Close the observational evidence list explicitly without selecting, presenting,
   acknowledging, consuming, correcting, or persisting evidence.
+- [x] Derive one explicit one-shot misquotation occurrence through the ordinary dialogue-event
+  hearing seam, rejecting invalid actor, text, delivery mode, audience, query, and repeated input.
+- [x] Own that occurrence coordinator inertly in the main scene and exercise it only through one
+  switch-gated delivery without changing transcripts or any evidence flow.
+- [x] Create one potential witness-evidence candidate only for the exact current occurrence,
+  rejecting unavailable, stale, unheard, null, and repeated input without exposure or mutation.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

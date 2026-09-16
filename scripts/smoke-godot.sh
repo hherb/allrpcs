@@ -130,9 +130,15 @@ godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterDialogueMisquotationEvidenceReviewSelectionSmokeCheck.tscn \
     --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://CharacterDialogueMisquotationOccurrenceCoordinatorSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterDialogueMisquotationEvidenceCandidateControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
     res://CharacterDialogueMisquotationEvidenceExposureCoordinatorSmokeCheck.tscn --quit-after 120
 ALLRPCS_DIALOGUE_MISQUOTATION_EVIDENCE_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_DIALOGUE_MISQUOTATION_OCCURRENCE_MAIN_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OBJECT_SABOTAGE_CONTAMINATION_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_WATER_CASK_CONTAMINATION_SABOTAGE_INVESTIGATION_CHECK=1 \

@@ -897,6 +897,18 @@ is only a provider-neutral potentially discoverable contradiction seam: it does 
 text true, automatically expose or correct a claim, mutate a transcript or character, deliver new
 dialogue, select a candidate, or define scene, persistence, model, delay, or influence behavior.
 
+`CharacterDialogueMisquotationOccurrenceCoordinator` accepts one explicit proposal, delivery, and
+bounded caller-supplied hearing query. It preflights the exact proposal actor, proposed text, retained
+source delivery mode, and non-empty selected audience before delegating once to the ordinary
+`DialogueEventController`; the resulting exact event then becomes the occurrence's exact delivered
+event. Invalid hearing, actor, text, mode, absent-listener, null, stale, and repeated inputs cannot
+replace either owner. The main scene owns this coordinator inertly and exercises it only behind a
+dedicated smoke switch. `CharacterDialogueMisquotationEvidenceCandidateController` can then retain
+one potential witness-evidence candidate only for that occurrence coordinator's exact current
+occurrence and only when the existing pure observability policy accepts the explicit actor and
+witness. It does not automatically deliver dialogue, append a transcript, create or expose evidence,
+start consideration, select, present, acknowledge, correct, consume, or persist anything.
+
 `CharacterDialogueMisquotationEvidenceSelection` fully preflights at most 64 caller-ordered
 evidence candidates, rejects nulls and duplicate exact delivered events, and returns the exact first
 candidate observable by one supplied actor. Distinct value-equal deliveries remain separate exact
