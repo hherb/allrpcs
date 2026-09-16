@@ -17,6 +17,8 @@ explicit exact witness-presentation acknowledgement:
   the exact exposed candidate. Ordinary startup remains inert, and acknowledgement leaves the
   exact main-scene view, selection, exposure, candidate, and source/delivered events unchanged.
 
+Implementation commit `856a1c4` is published in draft PR #277 targeting `main`.
+
 No UI or text formatting was added. No evidence is automatically chosen, presented, acknowledged,
 discovered, corrected, consumed, or persisted. No dialogue, truth, transcript, character, event,
 audience, world object, perception, or other authoritative state is mutated. No credential or
@@ -39,6 +41,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   Compatibility renderer launch. The sandbox-only VSTest `SocketException (13)` was retried
   unchanged on the host. `dotnet format Allrpcs.sln --no-restore --verify-no-changes --verbosity
   minimal` and `git diff --check` also pass.
+- Draft PR #277 workflow run `35071364928` failed at account infrastructure before execution: all
+  five jobs reported `steps: []`. It provides no hosted product-test or build evidence and was not
+  retried unchanged; the complete host-local quality evidence above remains authoritative.
 
 ## Exact next bounded slice
 
