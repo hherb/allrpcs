@@ -1058,6 +1058,17 @@ remain switch-gated. Review, selection, close, and dismissal do not label either
 false, corrected, or authoritative and do not discover, consume, correct, persist, or redeliver
 evidence or mutate dialogue, transcripts, characters, events, audiences, world state, or perception.
 
+The dedicated switch-gated live-misquotation main-scene smoke carries its exact newly delivered
+event through occurrence, witness-candidate creation, request ownership, one completed decision,
+exposure, witness-view refresh, and explicit result acknowledgement. It then reviews, selects,
+renders, and dismisses that exact live evidence through the existing truth-neutral UI owners. The
+distinct preauthored candidate is rejected even though it describes equivalent authored dialogue;
+repeated observation, acknowledgement, selection, and dismissal remain inert. The task returns to
+idle while the exact live exposure, witness view, request, candidate, occurrence, and dialogue
+events remain retained. Ordinary startup still performs none of these actions, and the smoke does
+not append a transcript, correct or consume evidence, judge truth, persist state, invoke a provider,
+or change characters, world objects, perception, navigation, movement, or general dialogue flow.
+
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
 and its tail water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound

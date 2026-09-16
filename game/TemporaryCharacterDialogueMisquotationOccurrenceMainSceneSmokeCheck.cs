@@ -50,6 +50,9 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
         CharacterDialogueMisquotationEvidenceExposureController exposure =
             GetNode<CharacterDialogueMisquotationEvidenceExposureController>(
                 "../CharacterDialogueMisquotationEvidenceExposureController");
+        CharacterDialogueMisquotationEvidenceExposureCoordinator exposureCoordinator =
+            GetNode<CharacterDialogueMisquotationEvidenceExposureCoordinator>(
+                "../CharacterDialogueMisquotationEvidenceExposureCoordinator");
         CharacterDialogueMisquotationEvidenceViewController view =
             GetNode<CharacterDialogueMisquotationEvidenceViewController>(
                 "../CharacterDialogueMisquotationEvidenceViewController");
@@ -59,6 +62,16 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
         CharacterDialogueMisquotationEvidencePresentationController presentation =
             GetNode<CharacterDialogueMisquotationEvidencePresentationController>(
                 "../CharacterDialogueMisquotationEvidencePresentationController");
+        TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController
+            presentationFlow =
+                GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController>(
+                    "../TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController");
+        TemporaryCharacterDialogueMisquotationEvidencePresentationPanel presentationPanel =
+            GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationPanel>(
+                "../TemporaryCharacterDialogueMisquotationEvidencePresentationPanel");
+        TemporaryCharacterDialogueMisquotationEvidenceReviewPanel reviewPanel =
+            GetNode<TemporaryCharacterDialogueMisquotationEvidenceReviewPanel>(
+                "../TemporaryCharacterDialogueMisquotationEvidenceReviewPanel");
         TemporaryWorldObjectSource worldSource = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource");
         FocusedSearchActivityController perception =
@@ -200,7 +213,43 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
             && ReferenceEquals(source.Occurrence, authoredOccurrence)
             && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
             && ReferenceEquals(source.Candidate, authoredCandidate);
-
+        CharacterDialogueMisquotationEvidenceConsiderationResult? completedResult =
+            evidenceTask.Result;
+        bool prematureAcknowledgementRejected =
+            !exposureCoordinator.TryAcknowledgeCompletedResult();
+        bool exposed = exposureCoordinator.TryExposeCompletedResult();
+        CharacterDialogueMisquotationEvidenceExposureSnapshot? liveExposure = exposure.Exposure;
+        CharacterDialogueMisquotationEvidenceViewSnapshot? liveView = view.View;
+        bool exactLiveEvidenceExposed = exposed
+            && completedResult is not null
+            && liveExposure is { Entries.Count: 1 }
+            && !ReferenceEquals(liveExposure, retainedExposure)
+            && ReferenceEquals(liveExposure.Entries.Single(), retainedCandidate)
+            && ReferenceEquals(view.SourceExposure, liveExposure)
+            && liveView is { Entries.Count: 1 }
+            && ReferenceEquals(liveView.WitnessCharacterId, source.WitnessCharacterId)
+            && ReferenceEquals(liveView.Entries.Single(), retainedCandidate)
+            && !exposureCoordinator.TryExposeCompletedResult()
+            && ReferenceEquals(evidenceTask.Result, completedResult);
+        bool acknowledged = exposureCoordinator.TryAcknowledgeCompletedResult();
+        bool exactLiveEvidenceRetained = acknowledged
+            && evidenceTask.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
+            && evidenceTask.Result is null
+            && ReferenceEquals(exposure.Exposure, liveExposure)
+            && ReferenceEquals(view.SourceExposure, liveExposure)
+            && ReferenceEquals(view.View, liveView)
+            && selection.Selection is null
+            && presentation.Presentation is null
+            && !exposureCoordinator.TryExposeCompletedResult()
+            && !exposureCoordinator.TryAcknowledgeCompletedResult()
+            && ReferenceEquals(requestController.Request, retainedRequest)
+            && ReferenceEquals(candidateController.Candidate, retainedCandidate)
+            && ReferenceEquals(transcript.Transcript, retainedTranscript)
+            && ReferenceEquals(worldSource.WorldObjects, retainedWorldObjects)
+            && ReferenceEquals(perception.Perception, retainedPerception)
+            && ReferenceEquals(source.Occurrence, authoredOccurrence)
+            && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
+            && ReferenceEquals(source.Candidate, authoredCandidate);
         if (!inertStartup
             || !unavailableRejected
             || !occurred
@@ -208,17 +257,93 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
             || !created
             || !requestCreated
             || !oneShotAndUnrelatedStatePreserved
-            || !exactDecisionCompleted)
+            || !exactDecisionCompleted
+            || !prematureAcknowledgementRejected
+            || !exactLiveEvidenceExposed
+            || !exactLiveEvidenceRetained
+            || liveExposure is null
+            || liveView is null)
         {
-            Fail("Main-scene misquotation candidate decision was not inert, exact, and one-shot.");
+            Fail("Main-scene misquotation candidate evidence was not inert, exact, and one-shot.");
+            return;
+        }
+
+        Button review = reviewPanel.GetNode<Button>("Review");
+        ItemList statements = reviewPanel.GetNode<ItemList>("Statements");
+        bool authoredCandidateRejected = !presentationFlow.TryChoose(liveView, authoredCandidate)
+            && selection.Selection is null
+            && presentation.Presentation is null
+            && presentationPanel.Presentation is null
+            && !presentationPanel.Visible
+            && !statements.Visible
+            && statements.ItemCount == 0;
+        review.EmitSignal(BaseButton.SignalName.Pressed);
+        string expectedReviewText = $"Source statement: {proposal.SourceEvent.Utterance.Text}\n"
+            + $"Delivered statement: {currentOccurrence.DeliveredEvent.Utterance.Text}";
+        bool exactLiveEvidenceReviewed = statements.Visible
+            && statements.ItemCount == 1
+            && statements.GetItemText(0) == expectedReviewText;
+        statements.EmitSignal(ItemList.SignalName.ItemSelected, 0L);
+        CharacterDialogueMisquotationEvidencePresentationSelection? liveSelection =
+            selection.Selection;
+        CharacterDialogueMisquotationEvidencePresentationSnapshot? livePresentation =
+            presentation.Presentation;
+        bool exactLiveEvidencePresented = liveSelection is not null
+            && livePresentation is not null
+            && ReferenceEquals(liveSelection.WitnessView, liveView)
+            && ReferenceEquals(liveSelection.SelectedEvidence, retainedCandidate)
+            && ReferenceEquals(livePresentation.Selection, liveSelection)
+            && ReferenceEquals(livePresentation.WitnessCharacterId, source.WitnessCharacterId)
+            && ReferenceEquals(livePresentation.SourceEvent, proposal.SourceEvent)
+            && ReferenceEquals(livePresentation.DeliveredEvent, currentOccurrence.DeliveredEvent)
+            && !ReferenceEquals(livePresentation.DeliveredEvent, authoredDeliveredEvent)
+            && presentationPanel.Visible
+            && ReferenceEquals(presentationPanel.Presentation, livePresentation)
+            && !statements.Visible
+            && presentationPanel.GetNode<Label>("Panel/SourceText").Text
+                == proposal.SourceEvent.Utterance.Text
+            && presentationPanel.GetNode<Label>("Panel/DeliveredText").Text
+                == currentOccurrence.DeliveredEvent.Utterance.Text
+            && !presentationFlow.TryChoose(liveView, retainedCandidate);
+        presentationPanel.GetNode<Button>("Panel/Dismiss")
+            .EmitSignal(BaseButton.SignalName.Pressed);
+        bool exactLiveEvidenceDismissed = liveSelection is not null
+            && livePresentation is not null
+            && presentation.Presentation is null
+            && !presentationPanel.Visible
+            && presentationPanel.Presentation is null
+            && ReferenceEquals(selection.Selection, liveSelection)
+            && ReferenceEquals(exposure.Exposure, liveExposure)
+            && ReferenceEquals(view.SourceExposure, liveExposure)
+            && ReferenceEquals(view.View, liveView)
+            && !presentationFlow.TryAcknowledge(
+                liveView,
+                liveSelection,
+                livePresentation)
+            && ReferenceEquals(requestController.Request, retainedRequest)
+            && ReferenceEquals(candidateController.Candidate, retainedCandidate)
+            && ReferenceEquals(transcript.Transcript, retainedTranscript)
+            && ReferenceEquals(worldSource.WorldObjects, retainedWorldObjects)
+            && ReferenceEquals(perception.Perception, retainedPerception)
+            && ReferenceEquals(source.Occurrence, authoredOccurrence)
+            && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
+            && ReferenceEquals(source.Candidate, authoredCandidate);
+
+        if (!authoredCandidateRejected
+            || !exactLiveEvidenceReviewed
+            || !exactLiveEvidencePresented
+            || !exactLiveEvidenceDismissed)
+        {
+            Fail("Main-scene live misquotation evidence was not reviewed and dismissed exactly.");
             return;
         }
 
         GD.Print(
             "Misquotation candidate main-scene smoke passed: ordinary startup, unavailable, "
             + "stale, unheard, and repeated paths stayed inert; one switch-gated exact delivery "
-            + "produced one exact witness candidate, request, and completed decision without "
-            + "changing existing scene state.");
+            + "produced one exact witness candidate, request, completed decision, exposed view, "
+            + "acknowledgement, neutral review, presentation, and dismissal without changing "
+            + "retained scene state.");
         GetTree().Quit();
     }
 

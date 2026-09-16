@@ -408,6 +408,10 @@ Current continuation:
   task is idle, preserving a queued one-shot model across every rejected start.
 - [x] Own that exact-request decision flow inertly in the main scene and exercise it only after the
   dedicated switch-gated occurrence, candidate, and request chain without exposing evidence.
+- [x] Expose and explicitly acknowledge one exact completed live-candidate decision through the
+  existing exposure and witness-view owners, with repeated and mismatched state failing closed.
+- [x] Review, select, render, and dismiss only that exact live witness evidence through the existing
+  truth-neutral UI owners while retaining every source, occurrence, request, and exposed entry.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
