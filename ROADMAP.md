@@ -372,6 +372,10 @@ Current continuation:
   and retaining abstention without UI or authoritative mutation.
 - [x] Compose the inert presentation owner into the main scene while keeping ordinary startup,
   selection, abstention, acknowledgement, and offline failure presentation-free.
+- [x] Orchestrate one explicit exact witness-view selection or abstention through the existing
+  truth-neutral presentation owners without automatic choice or authoritative mutation.
+- [x] Own that presentation flow inertly in the main scene and prove only switch-gated explicit
+  abstention and selection after exact evidence exposure.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
