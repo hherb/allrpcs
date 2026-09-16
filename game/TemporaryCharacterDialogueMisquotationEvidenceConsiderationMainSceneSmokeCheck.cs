@@ -26,6 +26,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         null!;
     private TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController
         presentationFlow = null!;
+    private TemporaryCharacterDialogueMisquotationEvidencePresentationPanel presentationPanel =
+        null!;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
@@ -65,6 +67,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         presentationFlow =
             GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController>(
                 "../TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController");
+        presentationPanel =
+            GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationPanel>(
+                "../TemporaryCharacterDialogueMisquotationEvidencePresentationPanel");
         SetProcess(true);
     }
 
@@ -236,6 +241,13 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || !ReferenceEquals(projected.WitnessCharacterId, source.WitnessCharacterId)
             || !ReferenceEquals(projected.SourceEvent, source.SourceEvent)
             || !ReferenceEquals(projected.DeliveredEvent, source.DeliveredEvent)
+            || !presentationPanel.TryPresent(projected)
+            || !presentationPanel.Visible
+            || !ReferenceEquals(presentationPanel.Presentation, projected)
+            || presentationPanel.GetNode<Label>("Panel/SourceText").Text
+                != source.SourceEvent.Utterance.Text
+            || presentationPanel.GetNode<Label>("Panel/DeliveredText").Text
+                != source.DeliveredEvent.Utterance.Text
             || presentationFlow.TryChoose(currentView, source.Candidate)
             || !presentationFlow.TryAcknowledge(currentView, selection, projected)
             || presentationProjection.Presentation is not null
@@ -251,12 +263,22 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             return;
         }
 
+        presentationPanel._Process(0);
+        if (presentationPanel.Visible
+            || presentationPanel.Presentation is not null
+            || presentationPanel.GetNode<Label>("Panel/SourceText").Text.Length != 0
+            || presentationPanel.GetNode<Label>("Panel/DeliveredText").Text.Length != 0)
+        {
+            Fail("Main-scene misquotation-evidence UI remained visible after acknowledgement.");
+            return;
+        }
+
         GD.Print(
             "Misquotation-evidence main-scene smoke passed: inert startup, exact source-owned "
             + "request, one-shot selection and abstention, overlap preservation, explicit reset, "
             + "exact exposure, witness view and acknowledgement, stable offline failure, closed "
-            + "flows, explicit presentation abstention, selection and acknowledgement, and "
-            + "unchanged dialogue evidence.");
+            + "flows, explicit presentation abstention, selection, neutral temporary UI, "
+            + "acknowledgement hiding, and unchanged dialogue evidence.");
         GetTree().Quit();
     }
 
@@ -283,7 +305,12 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             source.DeliveredEvent);
 
     private bool PresentationSelectionIsInert() =>
-        presentation.Selection is null && presentationProjection.Presentation is null;
+        presentation.Selection is null
+        && presentationProjection.Presentation is null
+        && presentationPanel.Presentation is null
+        && !presentationPanel.Visible
+        && presentationPanel.GetNode<Label>("Panel/SourceText").Text.Length == 0
+        && presentationPanel.GetNode<Label>("Panel/DeliveredText").Text.Length == 0;
 
     private static bool HasClosedSurfaces()
     {

@@ -380,6 +380,10 @@ Current continuation:
   hiding only that snapshot while retaining its view, selection, exposure, and source evidence.
 - [x] Exercise that acknowledgement only in the switch-gated main-scene smoke after explicit
   presentation selection, leaving ordinary startup and every retained exact source inert.
+- [x] Render one exact current witness presentation in isolated screen-space temporary UI under
+  separate truth-neutral source and delivered statement labels, hiding stale or acknowledged data.
+- [x] Compose that temporary UI inertly into the main scene and exercise it only through the
+  switch-gated exact selection, presentation, and acknowledgement smoke path.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
