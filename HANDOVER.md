@@ -17,6 +17,8 @@ views and inert scene ownership:
   abstention and failures, and acknowledges only while exposure and view remain aligned. The main
   scene initializes the representative witness's empty view without starting work.
 
+Implementation commit `fc18883` is published in draft PR #273 targeting `main`.
+
 No evidence is presented, discovered, corrected, consumed, or persisted. Ordinary startup remains
 inert. No dialogue, truth, transcript, character, event, audience, world object, perception, or
 other authoritative state is mutated. No automatic task, credential or provider I/O, input, retry,
@@ -41,8 +43,7 @@ timing, scheduling, navigation, or movement behavior was added. The unrelated un
 - The host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
   zero-warning build, 2,554 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
-  Compatibility renderer launch. `git diff --check` also passes. Draft PR status will be recorded
-  here after publication.
+  Compatibility renderer launch. `git diff --check` also passes.
 
 ## Exact next bounded slice
 
