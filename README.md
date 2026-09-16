@@ -696,10 +696,31 @@ informational, or capability input fails closed without changing any input. This
 define an action vocabulary, treat eligibility as occurrence, mutate a target, or grant model text
 authority.
 
+`CharacterInteractionAccessSnapshot` retains one exact actor and at most 64 stable copied,
+value-unique target-character identifiers currently reachable through ordinary interaction. It
+rejects self-targets without inferring reachability from dialogue, perception, model output, or
+coordinates. `CharacterTargetAccessRequirement` retains one exact target character, one canonical
+required capability key, and one exact required knowledge reference. Its pure policy succeeds only
+for a distinct value-matching actor and target when the unchanged interaction snapshot, actor
+capabilities, and retained knowledge satisfy every requirement. These contracts do not define a
+delay or influence proposal, occurrence, elapsed time, relationship effect, or runtime authority.
+
 `CharacterSabotageActionKind` defines only the seven closed canonical roadmap kinds—`conceal`,
 `move`, `substitute`, `contaminate`, `misquote`, `delay`, and `influence`—as identity-preserving
 singletons in stable order. Parsing accepts only those exact values. A kind alone has no actor,
 target, access requirement, proposal, occurrence, effect, recovery consequence, evidence, scene,
+persistence, or provider authority.
+
+`CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
+requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
+pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the
+value-matching actor and target. It does not make a proposal occur, define elapsed time or a
+relationship change, select an action, or grant scene, persistence, or provider authority.
+
+`CharacterTargetSabotageOccurrence` binds one exact eligible `delay` or `influence` proposal to one
+exact retained target-character candidate. Its pure policy requires that target to value-match the
+proposal requirement and delegates the complete unchanged actor and access eligibility. It does not
+apply an effect, delay elapsed time, change a relationship, author evidence, or grant scene,
 persistence, or provider authority.
 
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
