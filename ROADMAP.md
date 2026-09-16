@@ -384,6 +384,14 @@ Current continuation:
   separate truth-neutral source and delivered statement labels, hiding stale or acknowledged data.
 - [x] Compose that temporary UI inertly into the main scene and exercise it only through the
   switch-gated exact selection, presentation, and acknowledgement smoke path.
+- [x] Dismiss one exact current temporary witness presentation through neutral explicit UI input,
+  delegating only through the existing acknowledgement flow while preserving every source object.
+- [x] Review one exact current witness evidence view explicitly as stable truth-neutral source and
+  delivered statement pairs, with empty and stale views hidden and no automatic selection.
+- [x] Select one exact reviewed evidence entry through the existing one-shot presentation owners,
+  rejecting absent, stale, repeated, and out-of-range UI signals without authoritative mutation.
+- [x] Close the observational evidence list explicitly without selecting, presenting,
+  acknowledging, consuming, correcting, or persisting evidence.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

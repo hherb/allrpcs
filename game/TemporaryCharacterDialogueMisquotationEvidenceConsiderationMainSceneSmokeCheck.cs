@@ -28,6 +28,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         presentationFlow = null!;
     private TemporaryCharacterDialogueMisquotationEvidencePresentationPanel presentationPanel =
         null!;
+    private TemporaryCharacterDialogueMisquotationEvidenceReviewPanel reviewPanel = null!;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
@@ -70,6 +71,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         presentationPanel =
             GetNode<TemporaryCharacterDialogueMisquotationEvidencePresentationPanel>(
                 "../TemporaryCharacterDialogueMisquotationEvidencePresentationPanel");
+        reviewPanel = GetNode<TemporaryCharacterDialogueMisquotationEvidenceReviewPanel>(
+            "../TemporaryCharacterDialogueMisquotationEvidenceReviewPanel");
         SetProcess(true);
     }
 
@@ -231,9 +234,27 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             return;
         }
 
-        if (view.View is not { } currentView
-            || !presentationFlow.TryChoose(currentView, source.Candidate)
-            || presentation.Selection is not { } selection
+        if (view.View is not { } currentView)
+        {
+            Fail("Main-scene misquotation-evidence review had no exact witness view.");
+            return;
+        }
+
+        Button review = reviewPanel.GetNode<Button>("Review");
+        ItemList statements = reviewPanel.GetNode<ItemList>("Statements");
+        review.EmitSignal(BaseButton.SignalName.Pressed);
+        string expectedReviewText = $"Source statement: {source.SourceEvent.Utterance.Text}\n"
+            + $"Delivered statement: {source.DeliveredEvent.Utterance.Text}";
+        if (!statements.Visible
+            || statements.ItemCount != 1
+            || statements.GetItemText(0) != expectedReviewText)
+        {
+            Fail("Main-scene misquotation-evidence review did not render the exact statements.");
+            return;
+        }
+
+        statements.EmitSignal(ItemList.SignalName.ItemSelected, 0L);
+        if (presentation.Selection is not { } selection
             || presentationProjection.Presentation is not { } projected
             || !ReferenceEquals(selection.WitnessView, currentView)
             || !ReferenceEquals(selection.SelectedEvidence, source.Candidate)
@@ -241,32 +262,40 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || !ReferenceEquals(projected.WitnessCharacterId, source.WitnessCharacterId)
             || !ReferenceEquals(projected.SourceEvent, source.SourceEvent)
             || !ReferenceEquals(projected.DeliveredEvent, source.DeliveredEvent)
-            || !presentationPanel.TryPresent(projected)
             || !presentationPanel.Visible
             || !ReferenceEquals(presentationPanel.Presentation, projected)
+            || statements.Visible
             || presentationPanel.GetNode<Label>("Panel/SourceText").Text
                 != source.SourceEvent.Utterance.Text
             || presentationPanel.GetNode<Label>("Panel/DeliveredText").Text
                 != source.DeliveredEvent.Utterance.Text
             || presentationFlow.TryChoose(currentView, source.Candidate)
-            || !presentationFlow.TryAcknowledge(currentView, selection, projected)
-            || presentationProjection.Presentation is not null
+            || presentationPanel.GetNode<Button>("Panel/Dismiss").Text != "Dismiss")
+        {
+            Fail(
+                "Main-scene misquotation-evidence presentation choice was not exact and "
+                + "truth-neutral.");
+            return;
+        }
+
+        presentationPanel.GetNode<Button>("Panel/Dismiss")
+            .EmitSignal(BaseButton.SignalName.Pressed);
+        if (presentationProjection.Presentation is not null
+            || presentationPanel.Visible
+            || presentationPanel.Presentation is not null
             || !ReferenceEquals(presentation.Selection, selection)
             || !ReferenceEquals(exposure.Exposure, selectedExposure)
             || !ViewRetainsExactSource(selectedExposure!)
             || presentationFlow.TryAcknowledge(currentView, selection, projected)
             || !SourceIsUnchanged())
         {
-            Fail(
-                "Main-scene misquotation-evidence presentation choice and acknowledgement "
-                + "were not exact and one-shot.");
+            Fail("Main-scene misquotation-evidence dismissal was not exact and one-shot.");
             return;
         }
 
-        presentationPanel._Process(0);
-        if (presentationPanel.Visible
-            || presentationPanel.Presentation is not null
-            || presentationPanel.GetNode<Label>("Panel/SourceText").Text.Length != 0
+        presentationPanel.GetNode<Button>("Panel/Dismiss")
+            .EmitSignal(BaseButton.SignalName.Pressed);
+        if (presentationPanel.GetNode<Label>("Panel/SourceText").Text.Length != 0
             || presentationPanel.GetNode<Label>("Panel/DeliveredText").Text.Length != 0)
         {
             Fail("Main-scene misquotation-evidence UI remained visible after acknowledgement.");
@@ -277,8 +306,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             "Misquotation-evidence main-scene smoke passed: inert startup, exact source-owned "
             + "request, one-shot selection and abstention, overlap preservation, explicit reset, "
             + "exact exposure, witness view and acknowledgement, stable offline failure, closed "
-            + "flows, explicit presentation abstention, selection, neutral temporary UI, "
-            + "acknowledgement hiding, and unchanged dialogue evidence.");
+            + "flows, explicit presentation abstention, neutral evidence review and selection, "
+            + "exact temporary UI, one-shot dismissal, and unchanged dialogue evidence.");
         GetTree().Quit();
     }
 
@@ -310,7 +339,10 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         && presentationPanel.Presentation is null
         && !presentationPanel.Visible
         && presentationPanel.GetNode<Label>("Panel/SourceText").Text.Length == 0
-        && presentationPanel.GetNode<Label>("Panel/DeliveredText").Text.Length == 0;
+        && presentationPanel.GetNode<Label>("Panel/DeliveredText").Text.Length == 0
+        && reviewPanel.GetNode<Button>("Review").Text == "Review evidence"
+        && !reviewPanel.GetNode<ItemList>("Statements").Visible
+        && reviewPanel.GetNode<ItemList>("Statements").ItemCount == 0;
 
     private static bool HasClosedSurfaces()
     {

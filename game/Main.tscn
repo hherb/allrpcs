@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=3]
+[gd_scene load_steps=192 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -238,6 +238,7 @@
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidencePresentationController.cs" id="236_misquotation_evidence_presentation"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController.cs" id="237_misquotation_evidence_presentation_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanel.cs" id="238_misquotation_evidence_presentation_panel"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceReviewPanel.cs" id="239_misquotation_evidence_review_panel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -669,6 +670,31 @@ script = ExtResource("231_misquotation_evidence_exposure")
 [node name="CharacterDialogueMisquotationEvidenceViewController" type="Node" parent="."]
 script = ExtResource("234_misquotation_evidence_view")
 
+[node name="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel" type="CanvasLayer" parent="."]
+script = ExtResource("239_misquotation_evidence_review_panel")
+
+[node name="Review" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
+offset_left = 880.0
+offset_top = 12.0
+offset_right = 1072.0
+offset_bottom = 44.0
+text = "Review evidence"
+
+[node name="Statements" type="ItemList" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
+visible = false
+offset_left = 880.0
+offset_top = 52.0
+offset_right = 1072.0
+offset_bottom = 252.0
+
+[node name="Close" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidenceReviewPanel"]
+visible = false
+offset_left = 880.0
+offset_top = 260.0
+offset_right = 1072.0
+offset_bottom = 292.0
+text = "Close review"
+
 [node name="CharacterDialogueMisquotationEvidencePresentationSelectionController" type="Node" parent="."]
 script = ExtResource("235_misquotation_evidence_presentation_selection")
 
@@ -699,6 +725,9 @@ text = "Delivered statement"
 
 [node name="DeliveredText" type="Label" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
 autowrap_mode = 2
+
+[node name="Dismiss" type="Button" parent="TemporaryCharacterDialogueMisquotationEvidencePresentationPanel/Panel"]
+text = "Dismiss"
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController" type="Node" parent="."]
 script = ExtResource("232_misquotation_evidence_exposure_flow")
