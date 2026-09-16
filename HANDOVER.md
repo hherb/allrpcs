@@ -14,6 +14,8 @@ PR #284 is merged into `main` at `b8fa5fc`. Branch
 - Phase 7kh applies that exact-current recovery as fresh numerically restored relationship state
   while retaining both the influence and recovery reasons.
 
+Implementation commit `789be13` is published in draft PR #285 targeting `main`.
+
 The branch changes only Domain contracts, Domain tests, README, ROADMAP, and this handover. It adds
 no Application, Infrastructure, scene, input, UI, provider, persistence, selection, consideration,
 evidence, dialogue, elapsed-time, delay, navigation, movement, world, or perception behavior.
@@ -35,7 +37,7 @@ untouched and must stay unstaged.
   with exact retained-reference checks. The updated 20-test influence suite passes.
 - `git diff --check` and the 120-column check pass. Every new file is below 500 lines. No unresolved
   review finding remains.
-- PR #284's final run `35097625911` failed all five jobs immediately with `steps: []`; no hosted
+- Draft PR #285 run `35099535833` failed all five jobs immediately with `steps: []`; no hosted
   product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
   unchanged run.
 
