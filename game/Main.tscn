@@ -1,4 +1,4 @@
-[gd_scene load_steps=184 format=3]
+[gd_scene load_steps=187 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -230,6 +230,9 @@
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceModelSource.cs" id="228_misquotation_evidence_model_source"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceTaskController.cs" id="229_misquotation_evidence_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController.cs" id="230_misquotation_evidence_flow"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceExposureController.cs" id="231_misquotation_evidence_exposure"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController.cs" id="232_misquotation_evidence_exposure_flow"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceExposureCoordinator.cs" id="233_misquotation_evidence_exposure_coordinator"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -654,6 +657,15 @@ script = ExtResource("229_misquotation_evidence_task")
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("230_misquotation_evidence_flow")
+
+[node name="CharacterDialogueMisquotationEvidenceExposureController" type="Node" parent="."]
+script = ExtResource("231_misquotation_evidence_exposure")
+
+[node name="TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController" type="Node" parent="."]
+script = ExtResource("232_misquotation_evidence_exposure_flow")
+
+[node name="CharacterDialogueMisquotationEvidenceExposureCoordinator" type="Node" parent="."]
+script = ExtResource("233_misquotation_evidence_exposure_coordinator")
 
 [node name="CharacterObjectSabotageSubstitutionTaskController" type="Node" parent="."]
 script = ExtResource("212_object_sabotage_substitution_task_controller")

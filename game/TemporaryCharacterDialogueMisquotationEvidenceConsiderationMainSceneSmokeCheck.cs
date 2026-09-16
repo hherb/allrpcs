@@ -17,6 +17,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     private TemporaryCharacterDialogueMisquotationEvidenceModelSource modelSource = null!;
     private CharacterDialogueMisquotationEvidenceTaskController task = null!;
     private TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController flow = null!;
+    private CharacterDialogueMisquotationEvidenceExposureController exposure = null!;
+    private CharacterDialogueMisquotationEvidenceExposureCoordinator coordinator = null!;
+    private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
     private int processFrames;
@@ -40,6 +43,10 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             "../CharacterDialogueMisquotationEvidenceTaskController");
         flow = GetNode<TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController>(
             "../TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController");
+        exposure = GetNode<CharacterDialogueMisquotationEvidenceExposureController>(
+            "../CharacterDialogueMisquotationEvidenceExposureController");
+        coordinator = GetNode<CharacterDialogueMisquotationEvidenceExposureCoordinator>(
+            "../CharacterDialogueMisquotationEvidenceExposureCoordinator");
         SetProcess(true);
     }
 
@@ -83,6 +90,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
 
         bool inertStartup = task.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             && task.Result is null
+            && exposure.Exposure is { Entries.Count: 0 }
             && selectionModel.CallCount == 0
             && overlapModel.CallCount == 0
             && SourceIsUnchanged();
@@ -95,7 +103,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         if (!inertStartup
             || !started
             || !overlapPreserved
-            || !HasClosedFlowSurface())
+            || !HasClosedSurfaces())
         {
             Fail("Main-scene misquotation-evidence consideration failed explicit start.");
             return;
@@ -121,13 +129,17 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || selectionModel.CallCount != 1
             || overlapModel!.CallCount != 0
             || !SourceIsUnchanged()
-            || !task.TryReset()
+            || exposure.Exposure is not { Entries.Count: 1 } currentExposure
+            || !ReferenceEquals(currentExposure.Entries.Single(), source.Candidate)
+            || coordinator.TryExposeCompletedResult()
+            || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart())
         {
             Fail("Main-scene misquotation-evidence consideration failed exact selection.");
             return;
         }
 
+        selectedExposure = currentExposure;
         stage = 2;
     }
 
@@ -146,7 +158,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || !ReferenceEquals(result.Request, request)
             || overlapModel.CallCount != 1
             || !SourceIsUnchanged()
-            || !task.TryReset()
+            || !ReferenceEquals(exposure.Exposure, selectedExposure)
+            || coordinator.TryExposeCompletedResult()
+            || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart())
         {
             Fail("Main-scene misquotation-evidence abstention changed exact source state.");
@@ -167,6 +181,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || task.Result is not null
             || selectionModel!.CallCount != 1
             || overlapModel!.CallCount != 1
+            || !ReferenceEquals(exposure.Exposure, selectedExposure)
+            || coordinator.TryExposeCompletedResult()
+            || coordinator.TryAcknowledgeCompletedResult()
             || !SourceIsUnchanged())
         {
             Fail("Main-scene misquotation-evidence offline failure changed source state.");
@@ -176,7 +193,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         GD.Print(
             "Misquotation-evidence main-scene smoke passed: inert startup, exact source-owned "
             + "request, one-shot selection and abstention, overlap preservation, explicit reset, "
-            + "stable offline failure, closed flow, and unchanged dialogue evidence.");
+            + "exact exposure and acknowledgement, stable offline failure, closed flows, and "
+            + "unchanged dialogue evidence.");
         GetTree().Quit();
     }
 
@@ -192,10 +210,11 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         && ReferenceEquals(source.Candidate.WitnessCharacterId, source.WitnessCharacterId)
         && CharacterDialogueMisquotationEvidencePolicy.CanObserve(source.Actor, source.Candidate);
 
-    private static bool HasClosedFlowSurface()
+    private static bool HasClosedSurfaces()
     {
-        Type type = typeof(TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController);
-        string[] methods = type.GetMethods(
+        Type flowType = typeof(
+            TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowController);
+        string[] flowMethods = flowType.GetMethods(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
                 | System.Reflection.BindingFlags.DeclaredOnly)
@@ -203,9 +222,23 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .ToArray();
+        Type exposureFlowType = typeof(
+            TemporaryCharacterDialogueMisquotationEvidenceExposureFlowController);
+        string[] exposureFlowMethods = exposureFlowType.GetMethods(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly)
+            .Where(method => !method.IsSpecialName)
+            .Select(method => method.Name)
+            .ToArray();
 
-        return methods.SequenceEqual(["TryStart", "_Ready"])
-            && type.GetProperties(
+        return flowMethods.SequenceEqual(["TryStart", "_Ready"])
+            && flowType.GetProperties(
+                System.Reflection.BindingFlags.Public
+                | System.Reflection.BindingFlags.Instance
+                | System.Reflection.BindingFlags.DeclaredOnly).Length == 0
+            && exposureFlowMethods.SequenceEqual(["_Ready"])
+            && exposureFlowType.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
                 | System.Reflection.BindingFlags.DeclaredOnly).Length == 0;
