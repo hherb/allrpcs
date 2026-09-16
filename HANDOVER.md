@@ -13,6 +13,8 @@ PR #281 is merged into `main` at `7cbc2ea`. Branch
   dedicated occurrence smoke invokes it, after explicitly creating the exact occurrence, candidate,
   and request; one supplied model then completes for that exact request and candidate.
 
+Implementation commit `9d56eb7` is published in draft PR #282 targeting `main`.
+
 The preauthored `TemporaryCharacterDialogueMisquotationEvidenceSource` and its existing
 consideration flow remain unchanged. Ordinary startup does not start a task or consume a model. No
 live result is exposed, reviewed, presented, acknowledged, corrected, consumed, or persisted by the
