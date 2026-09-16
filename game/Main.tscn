@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=3]
+[gd_scene load_steps=194 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -239,6 +239,8 @@
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationFlowController.cs" id="237_misquotation_evidence_presentation_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidencePresentationPanel.cs" id="238_misquotation_evidence_presentation_panel"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceReviewPanel.cs" id="239_misquotation_evidence_review_panel"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationOccurrenceCoordinator.cs" id="240_misquotation_occurrence_coordinator"]
+[ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck.cs" id="241_misquotation_occurrence_main_scene_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -867,6 +869,9 @@ script = ExtResource("65_dialogue_input_controller")
 [node name="DialogueEventController" type="Node" parent="."]
 script = ExtResource("68_dialogue_event_controller")
 
+[node name="CharacterDialogueMisquotationOccurrenceCoordinator" type="Node" parent="."]
+script = ExtResource("240_misquotation_occurrence_coordinator")
+
 [node name="CharacterTurnTranscriptController" type="Node" parent="."]
 script = ExtResource("70_character_turn_transcript_controller")
 
@@ -1097,6 +1102,9 @@ script = ExtResource("214_object_sabotage_substitution_consideration_main_scene_
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("226_misquotation_evidence_main_scene_check")
+
+[node name="TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("241_misquotation_occurrence_main_scene_check")
 
 [node name="TemporaryCharacterObjectSabotageMovePresentationFlowSmokeCheck" type="Node" parent="."]
 script = ExtResource("197_object_sabotage_move_presentation_flow_check")
