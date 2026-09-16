@@ -1,3 +1,4 @@
+using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
@@ -35,6 +36,12 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
         CharacterDialogueMisquotationEvidenceCandidateRequestController requestController =
             GetNode<CharacterDialogueMisquotationEvidenceCandidateRequestController>(
                 "../CharacterDialogueMisquotationEvidenceCandidateRequestController");
+        CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController decisionFlow =
+            GetNode<CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController>(
+                "../CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController");
+        TemporaryCharacterDialogueMisquotationEvidenceModelSource modelSource =
+            GetNode<TemporaryCharacterDialogueMisquotationEvidenceModelSource>(
+                "../TemporaryCharacterDialogueMisquotationEvidenceModelSource");
         CharacterTurnTranscriptController transcript = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
         CharacterDialogueMisquotationEvidenceTaskController evidenceTask =
@@ -165,6 +172,34 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
             && ReferenceEquals(source.Occurrence, authoredOccurrence)
             && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
             && ReferenceEquals(source.Candidate, authoredCandidate);
+        RecordingModel decisionModel = new(input => new(
+            input.Actor.Identity.Id,
+            input.Candidates.Single()));
+        bool exactDecisionCompleted = modelSource.TrySupplyModel(decisionModel)
+            && decisionFlow.TryStart(retainedRequest)
+            && evidenceTask.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Running;
+        evidenceTask._Process(0.0);
+        exactDecisionCompleted = exactDecisionCompleted
+            && evidenceTask.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Completed
+            && evidenceTask.Result is { } result
+            && ReferenceEquals(result.Request, retainedRequest)
+            && ReferenceEquals(result.SelectedEvidence, retainedCandidate)
+            && decisionModel.CallCount == 1
+            && ReferenceEquals(decisionModel.Request, retainedRequest)
+            && !decisionFlow.TryStart(retainedRequest)
+            && ReferenceEquals(requestController.Request, retainedRequest)
+            && ReferenceEquals(candidateController.Candidate, retainedCandidate)
+            && ReferenceEquals(transcript.Transcript, retainedTranscript)
+            && ReferenceEquals(exposure.Exposure, retainedExposure)
+            && ReferenceEquals(view.SourceExposure, retainedViewExposure)
+            && ReferenceEquals(view.View, retainedView)
+            && ReferenceEquals(selection.Selection, retainedSelection)
+            && ReferenceEquals(presentation.Presentation, retainedPresentation)
+            && ReferenceEquals(worldSource.WorldObjects, retainedWorldObjects)
+            && ReferenceEquals(perception.Perception, retainedPerception)
+            && ReferenceEquals(source.Occurrence, authoredOccurrence)
+            && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
+            && ReferenceEquals(source.Candidate, authoredCandidate);
 
         if (!inertStartup
             || !unavailableRejected
@@ -172,17 +207,18 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
             || !staleAndUnheardRejected
             || !created
             || !requestCreated
-            || !oneShotAndUnrelatedStatePreserved)
+            || !oneShotAndUnrelatedStatePreserved
+            || !exactDecisionCompleted)
         {
-            Fail("Main-scene misquotation candidate was not inert, exact, and one-shot.");
+            Fail("Main-scene misquotation candidate decision was not inert, exact, and one-shot.");
             return;
         }
 
         GD.Print(
             "Misquotation candidate main-scene smoke passed: ordinary startup, unavailable, "
             + "stale, unheard, and repeated paths stayed inert; one switch-gated exact delivery "
-            + "produced one exact witness candidate and request without changing existing scene "
-            + "state or starting consideration.");
+            + "produced one exact witness candidate, request, and completed decision without "
+            + "changing existing scene state.");
         GetTree().Quit();
     }
 
@@ -190,5 +226,25 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
     {
         GD.PushError(message);
         GetTree().Quit(1);
+    }
+
+    private sealed class RecordingModel(
+        Func<CharacterDialogueMisquotationEvidenceConsiderationRequest,
+            CharacterDialogueMisquotationEvidenceDecision> decide)
+        : ICharacterDialogueMisquotationEvidenceDecisionModel
+    {
+        public int CallCount { get; private set; }
+
+        public CharacterDialogueMisquotationEvidenceConsiderationRequest? Request { get; private set; }
+
+        public ValueTask<CharacterDialogueMisquotationEvidenceDecision> DecideAsync(
+            CharacterDialogueMisquotationEvidenceConsiderationRequest request,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            Request = request;
+            return ValueTask.FromResult(decide(request));
+        }
     }
 }

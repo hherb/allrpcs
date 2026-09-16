@@ -2,63 +2,61 @@
 
 ## Current state
 
-PR #280 is merged into `main` at `0dd600d`. Branch
-`codex/phase-7-misquotation-live-candidate-flow` advances Phase 7 through three bounded slices:
+PR #281 is merged into `main` at `7cbc2ea`. Branch
+`codex/phase-7-misquotation-live-decision-flow` advances Phase 7 through two bounded slices:
 
-- Phase 7ju owns `CharacterDialogueMisquotationEvidenceCandidateController` immediately after the
-  occurrence coordinator in `Main.tscn`. Only the dedicated occurrence smoke requests a candidate,
-  after its switch-gated exact occurrence.
-- Phase 7jv adds `CharacterDialogueMisquotationEvidenceCandidateRequestController`, which retains
-  one immutable consideration request only for the candidate controller's exact current candidate
-  while the existing observability policy still accepts the supplied actor. The request retains that
-  exact actor and candidate.
-- Phase 7jw owns the request controller immediately after its candidate dependency in `Main.tscn`.
-  The dedicated smoke explicitly creates the request only after the live occurrence and candidate.
+- Phase 7jx adds
+  `CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController`. It starts one
+  decision only for the candidate-request controller's exact current request and only while the
+  shared task is idle. Request currentness and task availability are checked before model take.
+- Phase 7jy owns that flow immediately after its live request dependency in `Main.tscn`. Only the
+  dedicated occurrence smoke invokes it, after explicitly creating the exact occurrence, candidate,
+  and request; one supplied model then completes for that exact request and candidate.
 
-Implementation commit `d951425` is published in draft PR #281 targeting `main`.
+Implementation commit `9d56eb7` is published in draft PR #282 targeting `main`.
 
 The preauthored `TemporaryCharacterDialogueMisquotationEvidenceSource` and its existing
-consideration flow remain unchanged. No live candidate request starts a task or consumes a model.
-No misquotation is automatically proposed, scheduled, delivered, appended to a transcript,
-evaluated, exposed, reviewed, selected, presented, acknowledged, corrected, consumed, or persisted.
-No provider, retry, timing, navigation, movement, world, perception, character, or general
-dialogue-controller behavior changed. The unrelated untracked `scripts/code_statistics.py` remains
-untouched and must stay unstaged.
+consideration flow remain unchanged. Ordinary startup does not start a task or consume a model. No
+live result is exposed, reviewed, presented, acknowledged, corrected, consumed, or persisted by the
+new flow. No provider, retry, timing, navigation, movement, world, perception, character, transcript,
+or general dialogue-controller behavior changed. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Phase 7ju began with the expected missing-main-node smoke failure. Its focused main-scene smoke
-  proves ordinary startup plus unavailable, stale, unheard, and repeated paths remain inert; one
-  exact switch-gated occurrence can create one exact witness candidate.
-- Phase 7jv began with the expected missing-controller build failure. Its focused standalone smoke
-  proves unavailable, stale, null, and repeated request creation remains inert while one accepted
-  request retains the exact supplied actor and current candidate without starting work.
-- Phase 7jw began with the expected missing-main-node smoke failure. The extended main-scene smoke
-  proves the exact request is created only after the live occurrence/candidate chain while the
-  transcript, task, exposure, view, presentation, world, perception, and preauthored source remain
-  reference-identical.
-- Session review inspected every changed path and found no unresolved issue. `git diff --check`, the
-  repository formatter, and a 120-column check pass.
+- Phase 7jx began with the expected missing-controller smoke failure. Its standalone smoke proves
+  unavailable, null, distinct stale, overlapping, cancelled, and completed/repeated starts preserve
+  a queued one-shot model and the exact request; after explicit task reset, one accepted start
+  completes with the exact live request and candidate.
+- Phase 7jy began with the expected missing-main-node smoke failure. The extended main-scene smoke
+  proves ordinary startup stays inert and only the switch-gated occurrence/candidate/request chain
+  starts the exact decision, while transcript, exposure, view, presentation, world, perception, and
+  preauthored source references remain unchanged.
+- Session review inspected every changed and new path and found no unresolved issue. The repository
+  formatter, `git diff --check`, and a 120-column check pass. The production controller is 40
+  lines and the focused smoke is 280 lines.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
   build, 2,562 Domain tests, 542 Application tests, 897 Infrastructure tests, 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the final Compatibility renderer
   launch. The sandbox-only VSTest `SocketException (13)` was retried unchanged on the host.
+- Draft PR #282 run `35087948958` failed all five jobs immediately with `steps: []`; no hosted
+  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
+  unchanged run.
 
 ## Exact next bounded slice
 
-Take **Phase 7jx: start one explicit decision from the exact current live-candidate request without
-main-scene composition**.
+Take **Phase 7jz: expose and acknowledge one exact completed live-candidate decision through the
+existing main-scene evidence owners**.
 
 Acceptance boundary:
 
-1. Add a focused scene flow that accepts an expected request only when it is the request controller's
-   exact current `Request` and the existing misquotation-evidence task is idle. Validate currentness
-   before taking one model from `TemporaryCharacterDialogueMisquotationEvidenceModelSource`, then
-   delegate that exact request to `CharacterDialogueMisquotationEvidenceTaskController`.
-2. Prove unavailable, stale, null, overlapping, cancelled, and repeated starts fail closed without
-   consuming a queued one-shot model or replacing the exact request; one explicit accepted start may
-   complete with a result retaining the exact request and selected live candidate.
-3. Keep the new flow out of `Main.tscn`. Do not replace or remove the preauthored source/flow;
-   automatically propose, schedule, deliver, append, start, expose, review, select, present,
-   acknowledge, correct, consume, or persist evidence; or add provider, retry, timing, navigation,
-   movement, world, perception, or character mutation.
+1. Extend only the dedicated switch-gated live-occurrence smoke so its exact selected result is
+   observed once by `CharacterDialogueMisquotationEvidenceExposureCoordinator`, appends the exact
+   live candidate to the current exposure, and refreshes the exact witness view.
+2. Prove repeated observation is inert, then acknowledge only that observed exact result through the
+   existing coordinator. The task returns to idle while the exact exposure and witness view remain;
+   stale or mismatched state must fail closed.
+3. Do not add automatic occurrence, candidate, request, or decision start; replace the preauthored
+   source/flow; automatically select a reviewed entry, present UI, correct dialogue, consume or
+   persist evidence; or add provider, retry, timing, navigation, movement, world, perception,
+   character, transcript, or general dialogue-controller mutation.

@@ -404,6 +404,10 @@ Current continuation:
   candidate, rejecting unavailable, stale, null, and repeated input without starting work.
 - [x] Own that exact-current request controller inertly after its main-scene candidate dependency,
   retaining the exact actor and candidate without replacing the preauthored consideration flow.
+- [x] Start one explicit decision only for the exact current live-candidate request while the shared
+  task is idle, preserving a queued one-shot model across every rejected start.
+- [x] Own that exact-request decision flow inertly in the main scene and exercise it only after the
+  dedicated switch-gated occurrence, candidate, and request chain without exposing evidence.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
