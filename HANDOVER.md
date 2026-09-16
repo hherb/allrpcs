@@ -16,6 +16,8 @@ PR #285 is merged into `main` at `4494409`. Branch
 - Phase 7kl leaves accepted abstention inert and delegates an accepted selection through the
   existing immutable influence transition to fresh relationship state.
 
+Implementation commit `c3294f3` is published in draft PR #286 targeting `main`.
+
 The branch changes only Domain contracts, Domain tests, README, ROADMAP, and this handover. It adds
 no Application, Infrastructure, model, binding, task, scene, input, UI, provider, persistence,
 evidence, recovery-selection, elapsed-time, delay, navigation, movement, world, perception, or
@@ -37,6 +39,9 @@ dialogue behavior. Ordinary startup remains unchanged. The unrelated untracked
   unresolved finding remains.
 - `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, `git diff --check`, and the
   120-column check pass. Every new file is below 500 lines.
+- Draft PR #286 run `35152526872` failed all five jobs immediately with `steps: []`; no hosted
+  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
+  unchanged run.
 
 ## Exact next bounded slice
 
