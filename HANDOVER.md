@@ -15,6 +15,8 @@ PR #280 is merged into `main` at `0dd600d`. Branch
 - Phase 7jw owns the request controller immediately after its candidate dependency in `Main.tscn`.
   The dedicated smoke explicitly creates the request only after the live occurrence and candidate.
 
+Implementation commit `d951425` is published in draft PR #281 targeting `main`.
+
 The preauthored `TemporaryCharacterDialogueMisquotationEvidenceSource` and its existing
 consideration flow remain unchanged. No live candidate request starts a task or consumes a model.
 No misquotation is automatically proposed, scheduled, delivered, appended to a transcript,
