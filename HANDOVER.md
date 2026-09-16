@@ -16,6 +16,8 @@ witness-presentation orchestration and inert main-scene ownership:
   switch-gated main-scene smoke explicitly abstains on the empty initial view and later selects the
   exact exposed candidate; ordinary startup never invokes the flow.
 
+Implementation commit `cd5b2cb` is published in draft PR #276 targeting `main`.
+
 No UI or text formatting was added. No evidence is automatically chosen, presented, discovered,
 corrected, consumed, or persisted. No dialogue, truth, transcript, character, event, audience,
 world object, perception, or other authoritative state is mutated. No credential or provider I/O,
@@ -40,8 +42,9 @@ untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch. `dotnet format Allrpcs.sln --no-restore --verify-no-changes
   --verbosity minimal` and `git diff --check` also pass.
-- Hosted checks must be treated separately from this complete local evidence and re-queried at the
-  final published head.
+- Draft PR #276 workflow run `35067232919` failed at account infrastructure before execution: all
+  five jobs reported `steps: []`. It provides no hosted product-test or build evidence and was not
+  retried unchanged; the complete host-local quality evidence above remains authoritative.
 
 ## Exact next bounded slice
 
