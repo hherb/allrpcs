@@ -398,6 +398,12 @@ Current continuation:
   switch-gated delivery without changing transcripts or any evidence flow.
 - [x] Create one potential witness-evidence candidate only for the exact current occurrence,
   rejecting unavailable, stale, unheard, null, and repeated input without exposure or mutation.
+- [x] Own that exact-current candidate controller inertly in the main scene and request one
+  candidate only after the dedicated switch-gated occurrence without changing existing state.
+- [x] Create one provider-free consideration request only for the exact current observable
+  candidate, rejecting unavailable, stale, null, and repeated input without starting work.
+- [x] Own that exact-current request controller inertly after its main-scene candidate dependency,
+  retaining the exact actor and candidate without replacing the preauthored consideration flow.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

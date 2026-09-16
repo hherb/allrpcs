@@ -1,4 +1,4 @@
-[gd_scene load_steps=194 format=3]
+[gd_scene load_steps=196 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -241,6 +241,8 @@
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationEvidenceReviewPanel.cs" id="239_misquotation_evidence_review_panel"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationOccurrenceCoordinator.cs" id="240_misquotation_occurrence_coordinator"]
 [ext_resource type="Script" path="res://TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck.cs" id="241_misquotation_occurrence_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateController.cs" id="242_misquotation_evidence_candidate"]
+[ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateRequestController.cs" id="243_misquotation_evidence_candidate_request"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -871,6 +873,12 @@ script = ExtResource("68_dialogue_event_controller")
 
 [node name="CharacterDialogueMisquotationOccurrenceCoordinator" type="Node" parent="."]
 script = ExtResource("240_misquotation_occurrence_coordinator")
+
+[node name="CharacterDialogueMisquotationEvidenceCandidateController" type="Node" parent="."]
+script = ExtResource("242_misquotation_evidence_candidate")
+
+[node name="CharacterDialogueMisquotationEvidenceCandidateRequestController" type="Node" parent="."]
+script = ExtResource("243_misquotation_evidence_candidate_request")
 
 [node name="CharacterTurnTranscriptController" type="Node" parent="."]
 script = ExtResource("70_character_turn_transcript_controller")
