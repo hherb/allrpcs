@@ -29,6 +29,12 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
         CharacterDialogueMisquotationOccurrenceCoordinator coordinator =
             GetNode<CharacterDialogueMisquotationOccurrenceCoordinator>(
                 "../CharacterDialogueMisquotationOccurrenceCoordinator");
+        CharacterDialogueMisquotationEvidenceCandidateController candidateController =
+            GetNode<CharacterDialogueMisquotationEvidenceCandidateController>(
+                "../CharacterDialogueMisquotationEvidenceCandidateController");
+        CharacterDialogueMisquotationEvidenceCandidateRequestController requestController =
+            GetNode<CharacterDialogueMisquotationEvidenceCandidateRequestController>(
+                "../CharacterDialogueMisquotationEvidenceCandidateRequestController");
         CharacterTurnTranscriptController transcript = GetNode<CharacterTurnTranscriptController>(
             "../CharacterTurnTranscriptController");
         CharacterDialogueMisquotationEvidenceTaskController evidenceTask =
@@ -37,11 +43,35 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
         CharacterDialogueMisquotationEvidenceExposureController exposure =
             GetNode<CharacterDialogueMisquotationEvidenceExposureController>(
                 "../CharacterDialogueMisquotationEvidenceExposureController");
+        CharacterDialogueMisquotationEvidenceViewController view =
+            GetNode<CharacterDialogueMisquotationEvidenceViewController>(
+                "../CharacterDialogueMisquotationEvidenceViewController");
+        CharacterDialogueMisquotationEvidencePresentationSelectionController selection =
+            GetNode<CharacterDialogueMisquotationEvidencePresentationSelectionController>(
+                "../CharacterDialogueMisquotationEvidencePresentationSelectionController");
+        CharacterDialogueMisquotationEvidencePresentationController presentation =
+            GetNode<CharacterDialogueMisquotationEvidencePresentationController>(
+                "../CharacterDialogueMisquotationEvidencePresentationController");
+        TemporaryWorldObjectSource worldSource = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource");
+        FocusedSearchActivityController perception =
+            GetNode<FocusedSearchActivityController>("../Seeker/FocusedSearchActivityController");
 
         CharacterDialogueMisquotationOccurrence authoredOccurrence = source.Occurrence;
         DialogueEvent authoredDeliveredEvent = source.DeliveredEvent;
         CharacterDialogueMisquotationEvidence authoredCandidate = source.Candidate;
         CharacterTurnTranscriptSnapshot? retainedTranscript = transcript.Transcript;
+        CharacterDialogueMisquotationEvidenceExposureSnapshot? retainedExposure =
+            exposure.Exposure;
+        CharacterDialogueMisquotationEvidenceExposureSnapshot? retainedViewExposure =
+            view.SourceExposure;
+        CharacterDialogueMisquotationEvidenceViewSnapshot? retainedView = view.View;
+        CharacterDialogueMisquotationEvidencePresentationSelection? retainedSelection =
+            selection.Selection;
+        CharacterDialogueMisquotationEvidencePresentationSnapshot? retainedPresentation =
+            presentation.Presentation;
+        object retainedWorldObjects = worldSource.WorldObjects;
+        object? retainedPerception = perception.Perception;
         CharacterDialogueMisquotationProposal proposal = authoredOccurrence.Proposal;
         DialogueDelivery delivery = new(
             new DialogueUtterance(proposal.ActorId, proposal.MisquotedText),
@@ -52,6 +82,8 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
         ];
 
         bool inertStartup = coordinator.LastOccurrence is null
+            && candidateController.Candidate is null
+            && requestController.Request is null
             && dialogue.LastOccurredEvent is null
             && evidenceTask.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             && evidenceTask.Result is null
@@ -59,6 +91,11 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
             && ReferenceEquals(source.Occurrence, authoredOccurrence)
             && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
             && ReferenceEquals(source.Candidate, authoredCandidate);
+        bool unavailableRejected = !candidateController.TryCreate(
+                source.Actor,
+                authoredOccurrence,
+                source.WitnessCharacterId)
+            && candidateController.Candidate is null;
         bool occurred = coordinator.TryOccur(
                 proposal,
                 delivery,
@@ -73,31 +110,79 @@ public partial class TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSm
             && ReferenceEquals(
                 occurrence.DeliveredEvent.Audience.ListenerCharacterIds.Single(),
                 source.WitnessCharacterId);
-        bool oneShotAndUnrelatedStatePreserved = !coordinator.TryOccur(
+        CharacterDialogueMisquotationOccurrence currentOccurrence = coordinator.LastOccurrence!;
+        bool staleAndUnheardRejected = !candidateController.TryCreate(
+                source.Actor,
+                authoredOccurrence,
+                source.WitnessCharacterId)
+            && !candidateController.TryCreate(
+                source.Actor,
+                currentOccurrence,
+                source.Actor.Identity.Id)
+            && candidateController.Candidate is null;
+        bool created = candidateController.TryCreate(
+                source.Actor,
+                currentOccurrence,
+                source.WitnessCharacterId)
+            && candidateController.Candidate is { } candidate
+            && ReferenceEquals(candidate.Occurrence, currentOccurrence)
+            && ReferenceEquals(candidate.WitnessCharacterId, source.WitnessCharacterId);
+        CharacterDialogueMisquotationEvidence retainedCandidate = candidateController.Candidate!;
+        bool requestCreated = !requestController.TryCreate(source.Actor, authoredCandidate)
+            && requestController.TryCreate(source.Actor, retainedCandidate)
+            && requestController.Request is { } request
+            && ReferenceEquals(request.Actor, source.Actor)
+            && request.Candidates.Count == 1
+            && ReferenceEquals(request.Candidates.Single(), retainedCandidate);
+        CharacterDialogueMisquotationEvidenceConsiderationRequest retainedRequest =
+            requestController.Request!;
+        bool oneShotAndUnrelatedStatePreserved = !requestController.TryCreate(
+                source.Actor,
+                retainedCandidate)
+            && !candidateController.TryCreate(
+                source.Actor,
+                currentOccurrence,
+                source.WitnessCharacterId)
+            && !coordinator.TryOccur(
                 proposal,
                 delivery,
                 NumericsVector2.Zero,
                 192.0f,
                 48.0f,
                 candidates)
+            && ReferenceEquals(requestController.Request, retainedRequest)
+            && ReferenceEquals(candidateController.Candidate, retainedCandidate)
             && ReferenceEquals(transcript.Transcript, retainedTranscript)
             && evidenceTask.Status == CharacterDialogueMisquotationEvidenceTaskStatus.Idle
             && evidenceTask.Result is null
-            && exposure.Exposure is { Entries.Count: 0 }
+            && ReferenceEquals(exposure.Exposure, retainedExposure)
+            && ReferenceEquals(view.SourceExposure, retainedViewExposure)
+            && ReferenceEquals(view.View, retainedView)
+            && ReferenceEquals(selection.Selection, retainedSelection)
+            && ReferenceEquals(presentation.Presentation, retainedPresentation)
+            && ReferenceEquals(worldSource.WorldObjects, retainedWorldObjects)
+            && ReferenceEquals(perception.Perception, retainedPerception)
             && ReferenceEquals(source.Occurrence, authoredOccurrence)
             && ReferenceEquals(source.DeliveredEvent, authoredDeliveredEvent)
             && ReferenceEquals(source.Candidate, authoredCandidate);
 
-        if (!inertStartup || !occurred || !oneShotAndUnrelatedStatePreserved)
+        if (!inertStartup
+            || !unavailableRejected
+            || !occurred
+            || !staleAndUnheardRejected
+            || !created
+            || !requestCreated
+            || !oneShotAndUnrelatedStatePreserved)
         {
-            Fail("Main-scene misquotation occurrence was not inert, exact, and one-shot.");
+            Fail("Main-scene misquotation candidate was not inert, exact, and one-shot.");
             return;
         }
 
         GD.Print(
-            "Misquotation occurrence main-scene smoke passed: ordinary startup was inert; one "
-            + "switch-gated exact delivery occurred once without changing transcripts, evidence "
-            + "tasks, exposure, or the existing authored evidence source.");
+            "Misquotation candidate main-scene smoke passed: ordinary startup, unavailable, "
+            + "stale, unheard, and repeated paths stayed inert; one switch-gated exact delivery "
+            + "produced one exact witness candidate and request without changing existing scene "
+            + "state or starting consideration.");
         GetTree().Quit();
     }
 

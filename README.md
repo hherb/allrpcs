@@ -906,8 +906,14 @@ replace either owner. The main scene owns this coordinator inertly and exercises
 dedicated smoke switch. `CharacterDialogueMisquotationEvidenceCandidateController` can then retain
 one potential witness-evidence candidate only for that occurrence coordinator's exact current
 occurrence and only when the existing pure observability policy accepts the explicit actor and
-witness. It does not automatically deliver dialogue, append a transcript, create or expose evidence,
-start consideration, select, present, acknowledge, correct, consume, or persist anything.
+witness. The main scene owns that candidate controller immediately after the occurrence coordinator,
+but only the dedicated switch-gated smoke requests a candidate. The
+`CharacterDialogueMisquotationEvidenceCandidateRequestController` can then retain one immutable
+consideration request only for the candidate controller's exact current candidate while the existing
+observability policy still accepts the supplied actor. Its request preserves that exact actor and
+candidate, and the main scene owns the request controller immediately after its candidate dependency.
+These owners do not automatically deliver dialogue, append a transcript, start a task, consume a
+model, create or expose evidence, select, present, acknowledge, correct, consume, or persist anything.
 
 `CharacterDialogueMisquotationEvidenceSelection` fully preflights at most 64 caller-ordered
 evidence candidates, rejects nulls and duplicate exact delivered events, and returns the exact first
