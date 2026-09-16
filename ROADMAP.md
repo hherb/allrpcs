@@ -412,6 +412,12 @@ Current continuation:
   existing exposure and witness-view owners, with repeated and mismatched state failing closed.
 - [x] Review, select, render, and dismiss only that exact live witness evidence through the existing
   truth-neutral UI owners while retaining every source, occurrence, request, and exposed entry.
+- [x] Define bounded character-targeted ordinary-interaction, capability, and knowledge access with
+  explicit self-target rejection, without yet defining a delay or influence proposal or effect.
+- [x] Retain only access-bound, non-self `delay` and `influence` proposals and validate them through
+  the unchanged character-target access policy without defining occurrence or effect semantics.
+- [x] Bind one exact eligible `delay` or `influence` proposal to its exact retained target-character
+  occurrence candidate without applying elapsed-time or relationship effects.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
