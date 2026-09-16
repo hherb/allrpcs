@@ -20,6 +20,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
     private CharacterDialogueMisquotationEvidenceExposureController exposure = null!;
     private CharacterDialogueMisquotationEvidenceExposureCoordinator coordinator = null!;
     private CharacterDialogueMisquotationEvidenceViewController view = null!;
+    private CharacterDialogueMisquotationEvidencePresentationSelectionController presentation =
+        null!;
     private CharacterDialogueMisquotationEvidenceExposureSnapshot? selectedExposure;
     private RecordingModel? selectionModel;
     private RecordingModel? overlapModel;
@@ -50,6 +52,9 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             "../CharacterDialogueMisquotationEvidenceExposureCoordinator");
         view = GetNode<CharacterDialogueMisquotationEvidenceViewController>(
             "../CharacterDialogueMisquotationEvidenceViewController");
+        presentation =
+            GetNode<CharacterDialogueMisquotationEvidencePresentationSelectionController>(
+                "../CharacterDialogueMisquotationEvidencePresentationSelectionController");
         SetProcess(true);
     }
 
@@ -98,6 +103,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             && ReferenceEquals(view.SourceExposure, initialExposure)
             && view.View is { Entries.Count: 0 } initialView
             && ReferenceEquals(initialView.WitnessCharacterId, source.WitnessCharacterId)
+            && PresentationSelectionIsInert()
             && selectionModel.CallCount == 0
             && overlapModel.CallCount == 0
             && SourceIsUnchanged();
@@ -139,6 +145,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || exposure.Exposure is not { Entries.Count: 1 } currentExposure
             || !ReferenceEquals(currentExposure.Entries.Single(), source.Candidate)
             || !ViewRetainsExactSource(currentExposure)
+            || !PresentationSelectionIsInert()
             || coordinator.TryExposeCompletedResult()
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart())
@@ -168,6 +175,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || !SourceIsUnchanged()
             || !ReferenceEquals(exposure.Exposure, selectedExposure)
             || !ViewRetainsExactSource(selectedExposure!)
+            || !PresentationSelectionIsInert()
             || coordinator.TryExposeCompletedResult()
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart())
@@ -192,6 +200,7 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
             || overlapModel!.CallCount != 1
             || !ReferenceEquals(exposure.Exposure, selectedExposure)
             || !ViewRetainsExactSource(selectedExposure!)
+            || !PresentationSelectionIsInert()
             || coordinator.TryExposeCompletedResult()
             || coordinator.TryAcknowledgeCompletedResult()
             || !SourceIsUnchanged())
@@ -229,6 +238,8 @@ public partial class TemporaryCharacterDialogueMisquotationEvidenceConsideration
         && ReferenceEquals(
             currentView.Entries.Single().Occurrence.DeliveredEvent,
             source.DeliveredEvent);
+
+    private bool PresentationSelectionIsInert() => presentation.Selection is null;
 
     private static bool HasClosedSurfaces()
     {

@@ -362,6 +362,10 @@ Current continuation:
   leaking entries to a distinct value-equal character identifier.
 - [x] Own and refresh the exact witness view with successful main-scene evidence exposure while
   keeping ordinary startup, abstention, failure, and acknowledgement presentation-free.
+- [x] Define one truth-neutral exact-member presentation selection and accept it only for the exact
+  current witness view, with explicit abstention and stale-view rejection.
+- [x] Own at most one explicit presentation selection per exact current view in the main scene while
+  keeping ordinary startup and evidence consideration presentation-free.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
