@@ -730,6 +730,34 @@ reuses the complete occurrence eligibility gate, and delegates unchanged applica
 `CharacterRelationshipChangePolicy`. It does not apply the change, infer a relationship, select a
 target, author evidence, or grant elapsed-time, scene, persistence, or provider authority.
 
+`CharacterTargetSabotageInfluenceSelection` materializes and validates at most 64 supplied
+influence candidates once, rejects null or duplicate exact candidate references, and returns the
+exact first currently eligible candidate in stable caller order. Distinct structurally equivalent
+candidates remain valid. This pure Domain selection does not apply or recover influence, make a
+decision, retain a consideration request, author evidence, or grant elapsed-time, Application,
+scene, persistence, UI, or provider authority.
+
+`CharacterTargetSabotageInfluenceConsiderationRequest` retains the exact actor, ordinary-interaction
+access snapshot, current directional relationship, and a stable defensive copy of at most 64 exact
+influence candidates. Construction enumerates the supplied candidates once and rejects null or
+duplicate exact references while permitting distinct structurally equivalent candidates. The
+provider-neutral request does not judge eligibility, decide, apply, or recover influence; author
+evidence; or grant elapsed-time, Application, scene, persistence, UI, or provider authority.
+
+`CharacterTargetSabotageInfluenceDecision` retains the exact deciding actor identifier and either
+one exact candidate or an explicit abstention. Its pure acceptance policy requires the exact actor
+identifier instance, requires any selection to be the exact currently eligible request member, and
+permits abstention without changing request state. An immutable consideration result binds only an
+accepted decision to its exact request and selected candidate. These contracts do not apply or
+recover influence, author evidence, invoke a model, or grant elapsed-time, Application, scene,
+persistence, UI, or provider authority.
+
+`CharacterTargetSabotageInfluenceConsiderationTransition` leaves an accepted abstention inert and
+delegates an accepted exact selection through the existing immutable influence transition, yielding
+fresh relationship state with the exact candidate and reason retained. It accepts only the already
+validated consideration result and does not select, reconsider, recover, author evidence, or add
+elapsed-time, Application, scene, persistence, UI, model, or provider behavior.
+
 `CharacterTargetSabotageInfluenceTransition` accepts only that fully eligible candidate, delegates
 the immutable change to the existing relationship transition, and returns a fresh relationship
 together with the exact applied candidate. Rejected input throws without changing any source. This

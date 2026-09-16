@@ -2,61 +2,64 @@
 
 ## Current state
 
-PR #284 is merged into `main` at `b8fa5fc`. Branch
-`codex/phase-7-influence-effect-flow` advances Phase 7 through four bounded Domain-only slices:
+PR #285 is merged into `main` at `4494409`. Branch
+`codex/phase-7-influence-selection` advances Phase 7 through four bounded Domain-only slices:
 
-- Phase 7ke binds one exact eligible `influence` occurrence to one exact applicable directional
-  target-to-actor relationship change without applying it.
-- Phase 7kf applies that exact eligible candidate through the existing immutable relationship
-  transition and retains both the exact candidate and fresh relationship result.
-- Phase 7kg defines recovery only for the exact current applied result, exact influence-reason
-  history tail, same direction and dimension, exact inverse delta, and otherwise applicable change.
-- Phase 7kh applies that exact-current recovery as fresh numerically restored relationship state
-  while retaining both the influence and recovery reasons.
+- Phase 7ki selects the exact first currently eligible influence candidate in stable caller order
+  only after one-pass validation of the complete, at-most-64 candidate collection. Null and
+  duplicate exact candidate references are rejected; distinct structurally equivalent candidates
+  remain valid.
+- Phase 7kj retains the exact actor, interaction-access snapshot, relationship, and a stable bounded
+  copy of candidates in one immutable provider-neutral consideration request.
+- Phase 7kk admits only an exact-actor abstention or exact currently eligible request-member
+  selection, then binds the accepted decision to its exact request and selected candidate.
+- Phase 7kl leaves accepted abstention inert and delegates an accepted selection through the
+  existing immutable influence transition to fresh relationship state.
 
-Implementation commit `789be13` is published in draft PR #285 targeting `main`.
+Implementation commit `c3294f3` is published in draft PR #286 targeting `main`.
 
 The branch changes only Domain contracts, Domain tests, README, ROADMAP, and this handover. It adds
-no Application, Infrastructure, scene, input, UI, provider, persistence, selection, consideration,
-evidence, dialogue, elapsed-time, delay, navigation, movement, world, or perception behavior.
-Ordinary startup remains unchanged. The unrelated untracked `scripts/code_statistics.py` remains
-untouched and must stay unstaged.
+no Application, Infrastructure, model, binding, task, scene, input, UI, provider, persistence,
+evidence, recovery-selection, elapsed-time, delay, navigation, movement, world, perception, or
+dialogue behavior. Ordinary startup remains unchanged. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Test-first focused host runs pass all 20 influence candidate, transition, recovery-candidate, and
-  recovery-transition tests. Their sandbox runs reached VSTest and hit only the known loopback
-  `SocketException (13): Permission denied` restriction.
+- Test-first focused host runs pass all 22 new selection, request, decision/result, and transition
+  tests. The combined influence suite passes all 42 tests.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,611 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
+  zero-warning build, 2,633 Domain tests, 542 Application tests, 897 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
-  Compatibility renderer launch.
-- Session review found and fixed a recovery-authority gap: exact-current recovery now additionally
-  requires the exact applied influence reason at the relationship-history tail, so a fabricated
-  result with unrelated history fails closed. A tautological stale-state assertion was also replaced
-  with exact retained-reference checks. The updated 20-test influence suite passes.
-- `git diff --check` and the 120-column check pass. Every new file is below 500 lines. No unresolved
-  review finding remains.
-- Draft PR #285 run `35099535833` failed all five jobs immediately with `steps: []`; no hosted
+  Compatibility renderer launch. The sandbox run reached the same zero-warning build and stopped
+  only at the known VSTest loopback `SocketException (13): Permission denied` restriction.
+- Session-wide review verified complete-validation-before-selection, exact-reference duplicate and
+  membership checks, stable immutable retention, exact actor identity, current eligibility,
+  abstention inertness, and delegation only through the existing influence transition. No
+  unresolved finding remains.
+- `dotnet format Allrpcs.sln --no-restore --verify-no-changes`, `git diff --check`, and the
+  120-column check pass. Every new file is below 500 lines.
+- Draft PR #286 run `35152526872` failed all five jobs immediately with `steps: []`; no hosted
   product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
   unchanged run.
 
 ## Exact next bounded slice
 
-Take **Phase 7ki: select one exact eligible influence candidate without applying it**.
+Take **Phase 7km: obtain and validate one provider-neutral influence decision**.
 
 Acceptance boundary:
 
-1. Test-first add the smallest Domain-only pure selection over supplied
-   `CharacterTargetSabotageInfluenceCandidate` instances, returning the exact first candidate for
-   which `CharacterTargetSabotageInfluencePolicy.CanApply` succeeds in stable caller order, or null.
-2. Materialize and validate the complete enumerable exactly once before selection; accept at most
-   64 candidates, reject null entries and duplicate exact candidate references, and permit distinct
-   structurally equivalent candidates. Reuse `ReferenceEqualityComparer`.
-3. Prove complete-validation-before-selection, one-pass enumeration, exact returned identity,
-   stable ordering, null when none is eligible, unchanged inputs, and a reflection-locked closed
-   surface.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet apply
-   or recover a selected candidate; add delay duration or elapsed-time state; require or expose
-   evidence; add consideration, decision/model, Application, Infrastructure, scene, input, UI,
-   provider, persistence, dialogue, navigation, movement, world, or perception behavior.
+1. Test-first add the smallest Application interface whose `DecideAsync` accepts one exact
+   `CharacterTargetSabotageInfluenceConsiderationRequest` plus caller cancellation and returns one
+   `CharacterTargetSabotageInfluenceDecision`.
+2. Add one pure-orchestration Application controller that rejects nulls and pre-cancellation before
+   model invocation, invokes the supplied model exactly once with the exact request and token, and
+   constructs `CharacterTargetSabotageInfluenceConsiderationResult` so invalid decisions fail
+   closed through the existing Domain policy.
+3. Prove exact selection and abstention, exact request/token forwarding, invalid-decision rejection,
+   cancellation/exception propagation, unchanged request state, and reflection-locked interface and
+   controller surfaces.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add a
+   model binding/source, background task owner, OpenAI transport/decoder, scene/controller wiring,
+   input/UI, provider settings, persistence, evidence, recovery selection, elapsed-time/delay, or
+   other world behavior.
