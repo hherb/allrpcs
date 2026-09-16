@@ -18,6 +18,8 @@ truth-neutral presentation selection and inert main-scene ownership:
   The main scene owns the controller after its witness-view dependency but never invokes it
   automatically.
 
+Implementation commit `f93fed0` is published in draft PR #274 targeting `main`.
+
 No UI is rendered and no evidence is presented, discovered, corrected, consumed, or persisted.
 Ordinary startup and completed selection, abstention, acknowledgement, and offline-failure flows
 remain presentation-free. No dialogue, truth, transcript, character, event, audience, world
