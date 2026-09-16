@@ -366,6 +366,12 @@ Current continuation:
   current witness view, with explicit abstention and stale-view rejection.
 - [x] Own at most one explicit presentation selection per exact current view in the main scene while
   keeping ordinary startup and evidence consideration presentation-free.
+- [x] Project one accepted exact selected misquotation-evidence item into an immutable truth-neutral
+  source/delivered event pair while returning no presentation for abstention or a stale view.
+- [x] Own each exact current presentation projection at most once while hiding stale projections
+  and retaining abstention without UI or authoritative mutation.
+- [x] Compose the inert presentation owner into the main scene while keeping ordinary startup,
+  selection, abstention, acknowledgement, and offline failure presentation-free.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
