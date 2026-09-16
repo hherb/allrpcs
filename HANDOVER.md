@@ -13,6 +13,8 @@ slices using only the existing main-scene owners:
   existing truth-neutral UI. The distinct preauthored candidate is rejected, and dismissal retains
   every live occurrence, candidate, request, exposure, view, and dialogue event.
 
+Implementation commit `782d7ec` is published in draft PR #283 targeting `main`.
+
 Only `TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck` changes runtime test
 coverage; no production API or scene composition changes. Ordinary startup remains inert. Nothing
 automatically starts an occurrence, candidate, request, decision, exposure, review, selection, or
@@ -35,6 +37,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
 - Session review found and fixed one smoke-only failure-reporting issue by stopping before UI
   assertions when the required live exposure/view is absent. Formatter verification,
   `git diff --check`, and the 120-column check pass; no unresolved review finding remains.
+- Draft PR #283 run `35094911277` failed all five jobs immediately with `steps: []`; no hosted
+  product or packaging step ran. Treat this as Actions/account infrastructure and do not retry an
+  unchanged run.
 
 ## Exact next bounded slice
 
