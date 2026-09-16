@@ -24,6 +24,8 @@ scheduling, influence application, evidence, recovery selection, persistence, in
 navigation, movement, perception, dialogue, or other world behavior. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `cd86a32` is published in draft PR #287 targeting `main`.
+
 ## Validation and review
 
 - Test-first host runs pass all 9 new Application controller and binding tests. Focused zero-warning
