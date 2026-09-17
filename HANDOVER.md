@@ -41,7 +41,9 @@ movement, perception, dialogue, or other world behavior. The unrelated untracked
   queued one-shot precedence and preservation, main-thread completion, overlap, cancellation,
   reset, model and validation failure, inert startup, public surfaces, file size, line length,
   documentation, and whitespace. No unresolved finding remains.
-- Draft PR #292 is open; re-query its final-head checks before relying on hosted evidence.
+- Draft PR #292 is open. Its initial five hosted jobs all completed as failures with empty step
+  lists, so no hosted product test or development-build step ran; this is Actions/account
+  infrastructure state. Re-query the final documentation head before relying on hosted evidence.
 
 ## Exact next bounded slice
 
