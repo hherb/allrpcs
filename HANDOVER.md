@@ -4,7 +4,7 @@
 
 `main` includes merged PR #289 at `6a54534`. Branch
 `codex/phase-7-influence-relationship-authority` advances the influence scene path through three
-bounded slices:
+bounded slices in draft PR #290:
 
 - Phase 7ky adds `CharacterTargetSabotageInfluenceController`, which owns one exact authoritative
   relationship, consumes every exact accepted consideration request once, leaves abstention
@@ -40,6 +40,9 @@ movement, perception, dialogue, or other world behavior. The unrelated untracked
   zero-warning build, 2,633 Domain tests, 551 Application tests, 959 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
+- Draft PR #290 is open. All five hosted jobs completed as failures with empty step lists, so no
+  hosted product test or development-build step ran; this is Actions/account infrastructure state
+  and the unchanged jobs were not retried.
 - Session-wide review covers exact initialization and current-state gating, selection and abstention,
   non-consecutive replay, weak request retention, one-shot completed-result observation, exact
   acknowledgement tokens, dependency ordering, inert startup, unchanged sources, public surfaces,
