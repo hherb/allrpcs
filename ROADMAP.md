@@ -468,6 +468,10 @@ Current continuation:
   overlap rejection, cancellation, reset, and fail-closed model or validation failure.
 - [x] Start one recovery decision only through an explicit isolated flow while its task is idle,
   preserving a queued one-shot model across every rejected overlapping start.
+- [x] Strictly decode one exact influence-recovery decision from a bounded closed JSON object while
+  rebinding actor text and candidate index to exact request instances.
+- [x] Serialize one bounded stateless OpenAI structured-output request over trusted exact
+  influence-recovery relationship and candidate context without credential or network access.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
