@@ -842,6 +842,22 @@ relationship, change, or reason graph. The controller does not create a consider
 start recovery work, author evidence, persist state, or add UI, input, timing, movement,
 perception, or dialogue behavior.
 
+`CharacterTargetSabotageInfluenceRecoveryCandidateRequestController` retains one immutable
+consideration request only for the recovery-candidate controller's exact current candidate. It
+derives the exact relationship-owning target from the retained influence occurrence and publishes
+that target, the influence result's exact current relationship, and only that candidate after the
+unchanged recovery and decision policies accept the graph. Unavailable, stale, value-equal rebuilt,
+foreign, repeated, and null input stays inert. The main scene owns this request source immediately
+after its candidate dependency, but ordinary startup does not create a request or start recovery.
+
+`CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController` starts a decision
+only for that request source's exact current request while the recovery task is idle, and only then
+consumes the queued, configured, or offline recovery model. Rejected stale, null, overlapping, and
+repeated starts preserve the queued model and exact request graph. The main scene dependency-orders
+this flow with the existing recovery model, task, state, and resolution owners; only the dedicated
+switch-gated smoke initializes recovery authority and explicitly starts the exact request, proving
+the influence relationship can be restored without making ordinary startup autonomous.
+
 `CharacterTargetSabotageInfluenceRecoveryTransition` accepts only that exact-current recovery,
 delegates the inverse update to the existing immutable relationship transition, and returns the
 exact recovery candidate with fresh numerically restored relationship state. Both the influence and

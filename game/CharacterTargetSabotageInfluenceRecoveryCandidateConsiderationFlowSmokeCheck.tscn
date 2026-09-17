@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceController.cs" id="1"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateController.cs" id="2"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateRequestController.cs" id="3"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource.cs" id="4"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryTaskController.cs" id="5"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController.cs" id="6"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowSmokeCheck.cs" id="7"]
+
+[node name="InfluenceRecoveryCandidateConsiderationFlowSmoke" type="Node"]
+
+[node name="CharacterTargetSabotageInfluenceController" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="CharacterTargetSabotageInfluenceRecoveryCandidateController" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="CharacterTargetSabotageInfluenceRecoveryCandidateRequestController" type="Node" parent="."]
+script = ExtResource("3")
+
+[node name="TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="CharacterTargetSabotageInfluenceRecoveryTaskController" type="Node" parent="."]
+script = ExtResource("5")
+
+[node name="CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("7")

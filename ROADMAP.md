@@ -490,6 +490,14 @@ Current continuation:
   latest applied-result authority while every invalid or repeated input remains inert.
 - [x] Dependency-order that candidate source in the main scene and prove explicit production after
   one applied influence while ordinary startup remains inert and recovery work stays unstarted.
+- [x] Retain one request from only the candidate source's exact current recovery candidate, deriving
+  the exact relationship-owning target and preserving the exact current relationship graph.
+- [x] Dependency-order that request source in the main scene while ordinary startup stays inert and
+  the switch-gated influence smoke alone creates the exact candidate and request.
+- [x] Start recovery consideration only for the request source's exact current request while the
+  task is idle, preserving the queued model across every rejected start.
+- [x] Dependency-order the exact-request flow and prove one switch-gated influence-to-recovery chain
+  while ordinary startup remains inert and no autonomous trigger is added.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
