@@ -839,6 +839,35 @@ recovery reasons remain recorded; rejected input leaves every source unchanged. 
 does not discover or consume evidence, select recovery, or add Application, scene, UI, persistence,
 elapsed-time, or provider behavior.
 
+`CharacterTargetSabotageInfluenceRecoverySelection` materializes and validates at most 64 supplied
+recovery candidates once, rejects null or duplicate exact candidate references, and returns the
+exact first currently eligible candidate in stable caller order. Distinct structurally equivalent
+candidates remain valid. This pure Domain selection does not author candidates or evidence, apply
+recovery, retain a consideration request, invoke a model, or add Application, scene, UI,
+persistence, elapsed-time, or provider behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryConsiderationRequest` retains one exact deciding
+character, exact current directional relationship, and a stable defensive copy of at most 64 exact
+recovery candidates. Construction enumerates the supplied candidates once and rejects null or
+duplicate exact references while permitting distinct structurally equivalent candidates. This
+provider-neutral request does not judge eligibility, decide, apply recovery, author evidence,
+invoke a model, or add Application, scene, UI, persistence, elapsed-time, or provider behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryDecision` retains the exact deciding actor identifier and
+either one exact recovery candidate or an explicit abstention. Its pure acceptance policy requires
+the request actor to own the current directional relationship, the exact actor identifier instance,
+and any selection to be an exact currently eligible request member; it permits abstention without
+changing request state. An immutable consideration result binds only an accepted decision to its
+exact request and selected candidate. These contracts do not apply recovery, author evidence,
+invoke a model, or add Application, scene, UI, persistence, elapsed-time, or provider behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryConsiderationTransition` leaves an accepted abstention
+inert and delegates an accepted exact selection through the existing immutable recovery transition,
+yielding fresh numerically restored relationship state with the exact candidate and both reasons
+retained. It accepts only the already validated consideration result and does not select,
+reconsider, author evidence, or add Application, scene, UI, persistence, elapsed-time, model, or
+provider behavior.
+
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
 admitting only the object-targeted `conceal`, `move`, `substitute`, and `contaminate` kinds. Its
 pure eligibility policy first requires the proposal actor to value-match the supplied character,
