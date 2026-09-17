@@ -4,7 +4,7 @@
 
 `main` includes merged PR #291 at `5ae7f78`. Branch
 `codex/phase-7-influence-recovery-decision` advances the influence-recovery path through four
-bounded slices:
+bounded slices in draft PR #292:
 
 - Phase 7lf adds the provider-neutral
   `ICharacterTargetSabotageInfluenceRecoveryDecisionModel` and pure consideration controller. The
@@ -41,7 +41,7 @@ movement, perception, dialogue, or other world behavior. The unrelated untracked
   queued one-shot precedence and preservation, main-thread completion, overlap, cancellation,
   reset, model and validation failure, inert startup, public surfaces, file size, line length,
   documentation, and whitespace. No unresolved finding remains.
-- Draft PR publication is pending the reviewed commit and push requested for this session.
+- Draft PR #292 is open; re-query its final-head checks before relying on hosted evidence.
 
 ## Exact next bounded slice
 
