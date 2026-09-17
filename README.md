@@ -784,6 +784,18 @@ decision. Stateless request serialization supplies only bounded trusted actor, c
 time, occurred-event identifiers, and exact candidate summaries as in-world data, plus a closed
 schema for one exact candidate index or abstention. It stores no provider state, carries no
 credential, sends no request, invokes no model, and neither selects nor applies a delay by itself.
+The OpenAI adapter loads one credential only when invoked, posts that stateless request through
+caller-owned HTTP and endpoint dependencies, requires semantic event-stream content, and exposes
+only bounded redacted transport or semantic failure. Its factory creates an exact retained binding
+without credential access, network input/output, or model invocation.
+
+An explicit target-delay composition seam initializes, replaces, or clears only its own exact
+binding in the existing temporary model source. Selected OpenAI game settings activate that seam;
+switching to Ollama restores the stable offline delay model. The dependency-ordered source, task,
+and explicit consideration flow are owned inertly in `Main.tscn`: ordinary startup schedules
+nothing, while a dedicated credential-free smoke proves one exact caller-started selection, reset,
+offline failure, and unchanged authoritative event-log and world-time inputs. No current runtime
+path applies the accepted delay automatically.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,

@@ -442,6 +442,14 @@ Current continuation:
   into that exact decision without exposing partial, failed, refused, or trailing output.
 - [x] Serialize one stateless streaming target-delay request with bounded trusted actor, event-log,
   world-time, and candidate context plus a closed exact decision schema.
+- [x] Execute one target-delay request through caller-owned OpenAI credential, HTTP, settings, and
+  endpoint dependencies, then create its exact binding without construction-time input/output.
+- [x] Compose, replace, and clear that exact OpenAI binding explicitly through the existing
+  temporary target-delay model source while preserving its stable offline fallback.
+- [x] Activate the target-delay binding from selected OpenAI game settings and restore the exact
+  offline model for Ollama without automatic decision work or authoritative mutation.
+- [x] Own the target-delay model source, decision task, and explicit consideration flow inertly in
+  the main scene, with one switch-gated exact-selection smoke and unchanged world state.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
