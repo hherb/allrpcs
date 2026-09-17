@@ -24,6 +24,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterObjectSabotageSubstitutionModelSource substitutionModelSource = null!;
     private TemporaryCharacterObjectSabotageContaminationModelSource contaminationModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceModelSource influenceModelSource = null!;
+    private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
@@ -33,6 +34,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private CharacterObjectSabotageContaminationModelBinding? contaminationBinding;
     private TemporaryCharacterTargetSabotageInfluenceModelComposition influenceComposition = null!;
     private bool influenceBindingInitialized;
+    private TemporaryCharacterTargetSabotageInfluenceRecoveryModelComposition recoveryComposition = null!;
+    private bool recoveryBindingInitialized;
     private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
@@ -55,6 +58,9 @@ public partial class TemporaryCharacterModelCompositionController : Node
                 "../TemporaryCharacterObjectSabotageContaminationModelSource");
         influenceModelSource = GetNode<TemporaryCharacterTargetSabotageInfluenceModelSource>(
             "../TemporaryCharacterTargetSabotageInfluenceModelSource");
+        recoveryModelSource =
+            GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource>(
+                "../TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
@@ -62,6 +68,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             Timeout = Timeout.InfiniteTimeSpan,
         };
         influenceComposition = new(influenceModelSource);
+        recoveryComposition = new(recoveryModelSource);
         if (OS.GetEnvironment(AutomaticCompositionDisabledEnvironmentVariable)
             != DisabledEnvironmentValue)
         {
@@ -109,7 +116,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyMoveBinding(selection)
             || !TryApplySubstitutionBinding(selection)
             || !TryApplyContaminationBinding(selection)
-            || !TryApplyInfluenceBinding(selection))
+            || !TryApplyInfluenceBinding(selection)
+            || !TryApplyRecoveryBinding(selection))
         {
             return false;
         }
@@ -135,7 +143,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyMoveBinding(selection)
             && TryApplySubstitutionBinding(selection)
             && TryApplyContaminationBinding(selection)
-            && TryApplyInfluenceBinding(selection);
+            && TryApplyInfluenceBinding(selection)
+            && TryApplyRecoveryBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -474,6 +483,44 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             influenceBindingInitialized = true;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyRecoveryBinding(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!recoveryBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = recoveryComposition.TryClear();
+            if (cleared)
+            {
+                recoveryBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        bool applied = recoveryBindingInitialized
+            ? recoveryComposition.TryReplace(selectedSettings, client, credentialSource)
+            : recoveryComposition.TryInitialize(selectedSettings, client, credentialSource);
+        if (applied)
+        {
+            recoveryBindingInitialized = true;
         }
 
         return applied;
