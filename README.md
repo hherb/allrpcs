@@ -868,6 +868,33 @@ retained. It accepts only the already validated consideration result and does no
 reconsider, author evidence, or add Application, scene, UI, persistence, elapsed-time, model, or
 provider behavior.
 
+`ICharacterTargetSabotageInfluenceRecoveryDecisionModel` is the provider-neutral Application seam
+for one exact recovery request. The pure consideration controller rejects null and pre-cancelled
+input, forwards the exact request and caller cancellation once, and constructs the existing Domain
+result so wrong-owner, foreign, stale, or otherwise invalid decisions fail closed. It does not bind
+a model, own background work, apply recovery, decode provider output, send HTTP, or add scene, UI,
+persistence, elapsed-time, or other world behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryModelBinding` retains one exact OpenAI setting and exact
+caller-composed recovery model without construction-time I/O or invocation. The temporary scene
+source supplies one queued exact one-shot model before a stable configured model and otherwise
+returns one stable fail-closed offline model; exact expected-binding replacement and clearing do
+not consume a queued one-shot model. This source does not start work, apply recovery, decode or send
+provider traffic, wire `Main.tscn`, persist state, or add UI or world behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryTaskController` owns at most one isolated recovery
+decision through idle, running, completed, cancelled, and failed states. It installs only an exact
+accepted result during main-thread processing, rejects overlap, supports one explicit cancellation
+and terminal reset, and leaves the full request graph unchanged on model or validation failure. It
+does not choose when to start, consume a model source, apply recovery, integrate scene authority,
+decode provider output, send HTTP, or persist state.
+
+`TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController` starts that task
+only when explicitly called while it is idle, taking the next one-shot, configured, or stable
+offline model only after the idle check. Rejected overlap therefore preserves a queued one-shot
+model. The isolated flow remains inert at startup and does not apply or acknowledge recovery, wire
+`Main.tscn`, create provider traffic, persist state, or add UI or world scheduling.
+
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
 admitting only the object-targeted `conceal`, `move`, `substitute`, and `contaminate` kinds. Its
 pure eligibility policy first requires the proposal actor to value-match the supplied character,
