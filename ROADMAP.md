@@ -440,6 +440,10 @@ Current continuation:
   offline models without construction-time I/O or automatic invocation.
 - [x] Own one isolated bounded influence-decision task and explicit consideration flow with exact
   result installation, overlap rejection, cancellation, reset, and fail-closed offline behavior.
+- [x] Strictly decode and semantically stream one exact influence decision, then serialize one
+  bounded stateless OpenAI structured-output request over trusted relationship context.
+- [x] Execute that request through caller-owned credential and HTTP dependencies, requiring a
+  successful event stream and exposing an inert exact OpenAI model binding without construction I/O.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

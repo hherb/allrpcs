@@ -774,6 +774,22 @@ overlap. These nodes are not present in `Main.tscn` and do not decode provider o
 influence, schedule themselves, or add input/UI, settings mutation, persistence, evidence, recovery
 selection, elapsed-time, navigation, movement, perception, dialogue, or other world behavior.
 
+The strict influence decision decoder accepts only one bounded closed JSON object containing the
+exact actor text and a nullable zero-based candidate index. It rebinds value-matching text and the
+index to exact request instances, delegates final acceptance to the Domain policy, and collapses
+malformed, unknown, duplicate, over-depth, oversized, or policy-invalid input into one redacted
+error. The semantic Responses accumulator and SSE completion require an ordered complete lifecycle,
+bound every event and output document, reject partial, failed, refused, trailing, or malformed
+streams, preserve caller cancellation, and expose a decision only after successful completion.
+
+The OpenAI influence request serializer emits one stateless streaming structured-output request
+with bounded actor, relationship, and candidate context and a closed exact schema. The HTTP adapter
+loads and validates a credential before sending, requires a successful `text/event-stream`
+response, redacts provider and transport failures, and returns only the exact accepted decision.
+Its binding factory retains caller-owned settings, HTTP, credential, and endpoint dependencies
+without construction-time I/O. This provider path is not yet composed into game settings or scenes,
+does not schedule itself, and does not apply influence or mutate any request source.
+
 `CharacterTargetSabotageInfluenceTransition` accepts only that fully eligible candidate, delegates
 the immutable change to the existing relationship transition, and returns a fresh relationship
 together with the exact applied candidate. Rejected input throws without changing any source. This
