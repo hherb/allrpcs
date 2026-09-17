@@ -776,6 +776,15 @@ These nodes are not present in `Main.tscn` and do not decode provider output, ap
 delay, schedule themselves, or add input/UI, settings mutation, persistence, evidence, navigation,
 movement, perception, dialogue, or other world behavior.
 
+The target-delay provider boundary strictly decodes one bounded JSON decision into the exact
+request actor and candidate instances, delegates final acceptance to the existing Domain policy,
+and redacts malformed values. A bounded accumulator and framed-SSE completion path require the
+complete ordered OpenAI Responses lifecycle and expose no partial, failed, refused, or trailing
+decision. Stateless request serialization supplies only bounded trusted actor, current qualitative
+time, occurred-event identifiers, and exact candidate summaries as in-world data, plus a closed
+schema for one exact candidate index or abstention. It stores no provider state, carries no
+credential, sends no request, invokes no model, and neither selects nor applies a delay by itself.
+
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
 requires the change to belong to the occurrence target and relate that target to the proposal actor,

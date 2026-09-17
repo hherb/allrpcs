@@ -436,6 +436,12 @@ Current continuation:
   stable offline models without construction-time I/O or automatic invocation.
 - [x] Own one isolated bounded target-delay decision task and explicit consideration flow with
   exact result installation, overlap rejection, cancellation, reset, and fail-closed offline behavior.
+- [x] Strictly decode one bounded provider target-delay decision into an accepted exact request
+  selection or abstention without exposing malformed content or changing request world state.
+- [x] Accumulate only one complete ordered OpenAI Responses event lifecycle and framed SSE stream
+  into that exact decision without exposing partial, failed, refused, or trailing output.
+- [x] Serialize one stateless streaming target-delay request with bounded trusted actor, event-log,
+  world-time, and candidate context plus a closed exact decision schema.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
