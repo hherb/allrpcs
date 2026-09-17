@@ -776,12 +776,30 @@ source's expected-instance operations. The selected-provider composition activat
 OpenAI, leaves an unsupported replacement unchanged, and restores the stable offline model for a
 supported local-provider replacement without performing construction-time input/output.
 
-The influence model source, task, and explicit consideration flow are dependency-ordered in
-`Main.tscn`. Ordinary startup does not start a decision; a credential-free main-scene smoke proves
-one exact explicit selection, reset, and fail-closed offline decision without changing relationship
-state. This scene path does not apply influence, schedule itself, or add input/UI, settings mutation,
-persistence, evidence, recovery selection, elapsed-time, navigation, movement, perception,
-dialogue, or other world behavior.
+The influence model source, authoritative relationship controller, task, explicit consideration
+flow, and resolution coordinator are dependency-ordered in `Main.tscn`. Ordinary startup neither
+initializes authority nor starts a decision; a switch-gated credential-free smoke explicitly
+initializes one exact request relationship, applies one exact selected result, acknowledges it only
+while that authority remains current, and proves a later offline failure leaves the applied state
+unchanged. This scene path does not schedule itself or add input/UI, settings mutation, persistence,
+evidence, recovery selection, elapsed-time, navigation, movement, perception, dialogue, or other
+world behavior.
+
+`CharacterTargetSabotageInfluenceController` separately owns one exact authoritative directional
+relationship and resolves each exact accepted consideration request at most once. It requires the
+request relationship to be the exact current instance, retains abstention numerically and
+referentially unchanged while consuming that request, and installs only the existing pure
+transition's fresh relationship plus exact applied result for a selection. Stale, repeated,
+uninitialized, null, and distinct value-equivalent state fail closed. It does not schedule
+consideration, author evidence, select or apply recovery, persist relationship state, or add other
+world behavior.
+
+`CharacterTargetSabotageInfluenceResolutionCoordinator` observes each exact completed influence
+task result once and delegates it to that authoritative controller. An explicit acknowledgement
+resets the task only while the exact resolved relationship and latest applied-result token remain
+current; repeated observation or acknowledgement and externally advanced authority fail closed.
+The coordinator does not start work, construct requests, schedule decisions, recover influence,
+author evidence, or persist relationship state.
 
 The strict influence decision decoder accepts only one bounded closed JSON object containing the
 exact actor text and a nullable zero-based candidate index. It rebinds value-matching text and the

@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=3]
+[gd_scene load_steps=203 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -248,6 +248,8 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceTaskController.cs" id="246_influence_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController.cs" id="247_influence_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceConsiderationMainSceneSmokeCheck.cs" id="248_influence_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceController.cs" id="249_influence_state"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceResolutionCoordinator.cs" id="250_influence_resolution"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -643,11 +645,17 @@ script = ExtResource("216_object_sabotage_contamination_model_source")
 [node name="TemporaryCharacterTargetSabotageInfluenceModelSource" type="Node" parent="."]
 script = ExtResource("245_influence_model_source")
 
+[node name="CharacterTargetSabotageInfluenceController" type="Node" parent="."]
+script = ExtResource("249_influence_state")
+
 [node name="CharacterTargetSabotageInfluenceTaskController" type="Node" parent="."]
 script = ExtResource("246_influence_task")
 
 [node name="TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("247_influence_flow")
+
+[node name="CharacterTargetSabotageInfluenceResolutionCoordinator" type="Node" parent="."]
+script = ExtResource("250_influence_resolution")
 
 [node name="TemporaryCharacterObjectSabotageContaminationSource" type="Node" parent="."]
 script = ExtResource("217_object_sabotage_contamination_source")
