@@ -21,6 +21,8 @@ relationships, or add UI/input, elapsed time, navigation, movement, perception, 
 world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
 unstaged.
 
+Implementation commit `147b687` is published in draft PR #296 targeting `main`.
+
 ## Validation and review
 
 - Test-first host-local smokes failed on the absent coordinator and absent main-scene authority
@@ -31,6 +33,9 @@ unstaged.
   zero-warning build, 2,655 Domain tests, 560 Application tests, 1,028 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
+- Draft PR #296 is open. All five hosted jobs completed as failures with empty step lists, so no
+  hosted product test or development-build step ran; this is Actions/account infrastructure state
+  and the unchanged jobs were not retried.
 - Session-wide review covers exact one-shot observation, selected and abstaining resolution,
   relationship and latest-result authority tokens, stale and duplicate failure, explicit reset,
   dependency order, inert startup, unchanged source graphs, closed public surfaces, documentation,
