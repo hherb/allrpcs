@@ -426,6 +426,12 @@ Current continuation:
   complete one-pass collection validation, without applying it.
 - [x] Retain exact current actor, access, authoritative event, log, time, and bounded candidate state
   for one provider-neutral delay consideration without selecting, deciding, or applying it.
+- [x] Accept only an exact-actor abstention or exact currently eligible request-member delay
+  selection, then bind that decision immutably to its exact consideration request.
+- [x] Apply an accepted exact delay selection through the existing immutable world-event transition
+  while leaving an accepted abstention inert and every request source unchanged.
+- [x] Obtain and validate one provider-neutral delay decision with exact request and caller
+  cancellation forwarding, without binding a model or owning background work.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
