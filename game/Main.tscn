@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=3]
+[gd_scene load_steps=209 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -254,6 +254,8 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryTaskController.cs" id="252_influence_recovery_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController.cs" id="253_influence_recovery_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationMainSceneSmokeCheck.cs" id="254_influence_recovery_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryController.cs" id="255_influence_recovery_state"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator.cs" id="256_influence_recovery_resolution"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -664,11 +666,17 @@ script = ExtResource("250_influence_resolution")
 [node name="TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource" type="Node" parent="."]
 script = ExtResource("251_influence_recovery_model_source")
 
+[node name="CharacterTargetSabotageInfluenceRecoveryController" type="Node" parent="."]
+script = ExtResource("255_influence_recovery_state")
+
 [node name="CharacterTargetSabotageInfluenceRecoveryTaskController" type="Node" parent="."]
 script = ExtResource("252_influence_recovery_task")
 
 [node name="TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("253_influence_recovery_flow")
+
+[node name="CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator" type="Node" parent="."]
+script = ExtResource("256_influence_recovery_resolution")
 
 [node name="TemporaryCharacterObjectSabotageContaminationSource" type="Node" parent="."]
 script = ExtResource("217_object_sabotage_contamination_source")

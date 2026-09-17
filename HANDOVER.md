@@ -2,58 +2,56 @@
 
 ## Current state
 
-`main` includes merged PR #294 at `0619830`. Branch
-`codex/phase-7-influence-recovery-composition` advances the influence-recovery path through three
-bounded game-composition slices:
+`main` includes merged PR #295 at `e2e87f7`. Branch
+`codex/phase-7-influence-recovery-resolution` advances recovery authority through two bounded game
+slices:
 
-- Phase 7lo creates, replaces, and clears one exact OpenAI recovery binding through the existing
-  temporary model source without construction-time input/output.
-- Phase 7lp activates that binding through selected OpenAI game settings, restores the stable
-  offline model for Ollama, and dependency-orders the recovery source, task, and explicit flow in
-  `Main.tscn` while ordinary startup remains inert.
-- Phase 7lq owns one exact authoritative recovery relationship in an isolated scene controller;
-  selection installs fresh numerically restored state, abstention is inert but consumed, and stale
-  or repeated requests fail closed.
+- Phase 7lr adds `CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator`, which observes
+  each exact completed recovery result once and permits explicit task reset only while the exact
+  resolved relationship and latest applied recovery-result tokens remain current.
+- Phase 7ls dependency-orders recovery authority and result resolution in `Main.tscn`. Ordinary
+  startup remains uninitialized and inert; the switch-gated credential-free smoke alone initializes
+  one exact request relationship and proves selected recovery, guarded acknowledgement, and
+  unchanged restored authority after a later offline failure.
 
-The branch changes only bounded game composition/controllers/smokes, README, ROADMAP, the Godot
-smoke script, and this handover. It does not automatically schedule work, apply or acknowledge a
-task result in `Main.tscn`, persist relationships, author candidates or evidence, add UI/input, or
-change elapsed time, navigation, movement, perception, dialogue, or other world behavior. The
-unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
-
-Implementation commit `f686526` is published in draft PR #295 targeting `main`.
+The branch changes only the bounded coordinator, its isolated smoke, main-scene dependency order
+and smoke, the Godot smoke script, README, ROADMAP, and this handover. It does not automatically
+schedule work, author candidates or evidence, connect influence output to recovery input, persist
+relationships, or add UI/input, elapsed time, navigation, movement, perception, dialogue, or other
+world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
+unstaged.
 
 ## Validation and review
 
-- Test-first builds failed on the absent composition and recovery-authority contracts before the
-  smallest implementations were added.
-- Focused host-local smokes pass exact composition, selected-provider initialization/replacement/
-  clearing, inert main-scene task flow, and exact-current recovery authority.
+- Test-first host-local smokes failed on the absent coordinator and absent main-scene authority
+  nodes before their smallest implementations were added.
+- Focused host-local builds and the isolated recovery-resolution and switch-gated main-scene smokes
+  pass with zero warnings.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
   zero-warning build, 2,655 Domain tests, 560 Application tests, 1,028 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
-- Session-wide review covers exact expected-binding operations, provider switching, zero-I/O
-  construction, node dependency order, inert startup, exact request consumption, abstention,
-  stale/value-equal/repeated/null failure, immutable relationship state and reasons, documentation,
-  line length, formatting, and whitespace. One test-precision finding was fixed by retaining the
-  exact applied influence candidate while varying only the stale relationship instance; its focused
-  smoke and formatter verification pass. No unresolved finding remains.
+- Session-wide review covers exact one-shot observation, selected and abstaining resolution,
+  relationship and latest-result authority tokens, stale and duplicate failure, explicit reset,
+  dependency order, inert startup, unchanged source graphs, closed public surfaces, documentation,
+  file size, line length, formatting, and whitespace. One documentation-precision issue was fixed;
+  no unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7lr: observe and explicitly acknowledge one completed influence-recovery result**.
+Take **Phase 7lt: produce one exact recovery candidate from current applied influence authority**.
 
 Acceptance boundary:
 
-1. Test-first add one isolated coordinator over the existing recovery task and recovery authority
-   controller. Observe each fresh exact completed consideration result at most once.
-2. Resolve through `CharacterTargetSabotageInfluenceRecoveryController` only while its exact
-   relationship authority is current. Permit explicit task reset only while the exact resolved
-   relationship and exact latest recovery result remain current.
-3. Prove selected recovery, referentially inert abstention, explicit acknowledgement, duplicate
-   observation, and stale-authority rejection without changing request, candidate, influence, or
-   relationship source graphs.
+1. Test-first add one isolated scene controller that accepts the influence controller's exact
+   current `LatestAppliedResult` and one exact caller-authored inverse relationship change.
+2. Publish a fresh `CharacterTargetSabotageInfluenceRecoveryCandidate` only while the influence
+   result's exact relationship remains the influence controller's current authority and the
+   unchanged recovery policy accepts the inverse change.
+3. Reject uninitialized, missing, stale, value-equal rebuilt, repeated, misdirected,
+   wrong-dimension, wrong-delta, and null input without replacing an already current candidate or
+   changing the influence result, relationship, change, or reason graph.
 4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet wire
-   the recovery authority/coordinator into `Main.tscn`, automatically schedule recovery, author or
-   discover evidence, persist relationships, or add UI/input, timing, or other world behavior.
+   this source into `Main.tscn`, create a consideration request, start recovery work automatically,
+   author discoverable evidence, persist relationships, or add UI/input, timing, navigation,
+   movement, perception, dialogue, or other world behavior.
