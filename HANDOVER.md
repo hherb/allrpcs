@@ -17,6 +17,8 @@ slices:
   `Main.tscn`; ordinary startup is inert, while a switch-gated credential-free smoke proves one
   exact selection, explicit reset, offline failure, and unchanged authoritative world state.
 
+Implementation commit `9ac07ee` is published in draft PR #304 targeting `main`.
+
 The branch does not apply or recover a delay, observe task completion automatically, author
 evidence, persist state, or add input/UI, navigation, movement, perception, dialogue, or other
 world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and must
