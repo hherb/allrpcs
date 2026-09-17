@@ -4,7 +4,7 @@
 
 `main` includes merged PR #292 at `18b396a`. Branch
 `codex/phase-7-influence-recovery-json` advances the influence-recovery path through two bounded
-Infrastructure slices:
+Infrastructure slices in draft PR #293:
 
 - Phase 7lj adds an internal closed JSON schema and public strict decoder for one exact recovery
   decision. Actor text and a nullable zero-based candidate index rebind only to exact request
@@ -34,6 +34,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   redacted failures, unchanged source graphs, public surfaces, file size, line length,
   documentation, and whitespace. The one review finding tightened redaction coverage to inspect the
   complete exception chain; no unresolved finding remains.
+- Draft PR #293 is open and mergeable. Its five hosted jobs were queued on implementation commit
+  `bf504ac` when this documentation update was prepared; re-query the final head before relying on
+  hosted evidence.
 
 ## Exact next bounded slice
 
