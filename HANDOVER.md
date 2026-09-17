@@ -19,6 +19,8 @@ slices:
   request with the model source and task, preserves a queued one-shot across rejected overlap, and
   remains inert at startup.
 
+Implementation commit `8588c94` is published in draft PR #302 targeting `main`.
+
 The branch changes only one Application binding and test, isolated game nodes and smokes, the
 credential-free smoke script, README, ROADMAP, and this handover. None of the new nodes are in
 `Main.tscn`. It adds no provider decoder or transport, binding factory, settings composition,
