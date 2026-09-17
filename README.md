@@ -904,8 +904,22 @@ relationship and consumes each exact accepted consideration request at most once
 delegates through the existing immutable recovery transition and installs the fresh numerically
 restored relationship plus its exact result; abstention preserves the exact relationship and prior
 result while still consuming that request. Uninitialized, stale, value-equal rebuilt, repeated, or
-null input fails closed. This isolated controller is not in `Main.tscn` and does not observe or
-acknowledge tasks, author candidates or evidence, persist state, or add scheduling or UI.
+null input fails closed.
+
+`CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator` observes each exact completed
+recovery result at most once and delegates it only while the recovery controller retains the
+request's exact relationship authority. Explicit acknowledgement resets the task only while the
+exact resolved relationship and exact latest recovery result remain current. Selected recovery
+succeeds, referentially inert abstention is consumed without mutation, and duplicate observation,
+stale authority, and repeated acknowledgement fail closed without changing any request source.
+
+The recovery model source, authoritative relationship controller, task, explicit consideration
+flow, and result-resolution coordinator are dependency-ordered in `Main.tscn`. Ordinary startup
+remains uninitialized and inert. The dedicated switch-gated credential-free smoke alone initializes
+one exact relationship, applies one explicitly selected recovery, acknowledges its exact completed
+result, and proves a later offline failure leaves the restored authority unchanged. This path does
+not automatically schedule work, author candidates or evidence, persist relationships, or add UI,
+input, elapsed time, navigation, movement, perception, dialogue, or other world behavior.
 
 The strict influence-recovery decision decoder accepts only one bounded closed JSON object
 containing exact actor text and a nullable zero-based recovery-candidate index. It rebinds

@@ -17,11 +17,15 @@ public partial class TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderat
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource modelSource = null!;
     private CharacterTargetSabotageInfluenceRecoveryTaskController task = null!;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController flow = null!;
+    private CharacterTargetSabotageInfluenceRecoveryController state = null!;
+    private CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageInfluenceRecoveryConsiderationRequest request = null!;
     private CharacterTargetSabotageInfluenceRecoveryCandidate candidate = null!;
     private CharacterRelationshipReason influenceReason = null!;
     private CharacterRelationshipReason recoveryReason = null!;
     private RecordingModel selectionModel = null!;
+    private CharacterRelationshipMemory? restoredRelationship;
+    private CharacterTargetSabotageInfluenceRecoveryResult? appliedResult;
     private int processFrames;
     private int stage;
 
@@ -41,8 +45,18 @@ public partial class TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderat
             "../CharacterTargetSabotageInfluenceRecoveryTaskController");
         flow = GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController>(
             "../TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController");
+        state = GetNode<CharacterTargetSabotageInfluenceRecoveryController>(
+            "../CharacterTargetSabotageInfluenceRecoveryController");
+        coordinator = GetNode<CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator>(
+            "../CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator");
         request = CreateRequest(out candidate, out influenceReason, out recoveryReason);
         selectionModel = new(value => new(value.Actor.Identity.Id, candidate));
+        if (!state.TryInitialize(request.Relationship))
+        {
+            Fail("Main-scene influence-recovery authority rejected exact smoke initialization.");
+            return;
+        }
+
         SetProcess(true);
     }
 
@@ -80,6 +94,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderat
             task.Status == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Idle
             && task.Result is null
             && selectionModel.CallCount == 0
+            && ReferenceEquals(state.Relationship, request.Relationship)
+            && state.LatestAppliedResult is null
             && InputsAreUnchanged();
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart(request)
@@ -101,15 +117,24 @@ public partial class TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderat
             return;
         }
 
-        bool exactSelection =
-            task.Status == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Completed
+        restoredRelationship = state.Relationship;
+        appliedResult = state.LatestAppliedResult;
+        bool exactSelection = task.Status == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Completed
             && task.Result is { } result
             && selectionModel.CallCount == 1
             && ReferenceEquals(selectionModel.Request, request)
             && ReferenceEquals(result.Request, request)
             && ReferenceEquals(result.SelectedCandidate, candidate)
+            && restoredRelationship is not null
+            && appliedResult is not null
+            && !ReferenceEquals(restoredRelationship, request.Relationship)
+            && ReferenceEquals(appliedResult.Relationship, restoredRelationship)
+            && ReferenceEquals(appliedResult.Candidate, candidate)
+            && restoredRelationship.Dimensions.Single().Value == 10
             && InputsAreUnchanged();
-        if (!exactSelection || !task.TryReset() || !flow.TryStart(request))
+        if (!exactSelection
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || !flow.TryStart(request))
         {
             Fail("Main-scene influence-recovery failed its exact selection or offline restart.");
             return;
@@ -128,6 +153,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderat
         if (task.Status != CharacterTargetSabotageInfluenceRecoveryTaskStatus.Failed
             || task.Result is not null
             || selectionModel.CallCount != 1
+            || !ReferenceEquals(state.Relationship, restoredRelationship)
+            || !ReferenceEquals(state.LatestAppliedResult, appliedResult)
             || !InputsAreUnchanged())
         {
             Fail("Main-scene influence-recovery offline failure changed source state.");
@@ -136,8 +163,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderat
 
         GD.Print(
             "Main-scene influence-recovery consideration smoke passed: dependency-ordered inert "
-            + "startup, one explicit exact selection, explicit reset, stable offline failure, "
-            + "and unchanged relationship state.");
+            + "startup, one explicit exact applied selection, guarded acknowledgement, stable "
+            + "offline failure, and unchanged source relationship state.");
         GetTree().Quit();
     }
 

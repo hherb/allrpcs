@@ -482,6 +482,10 @@ Current continuation:
   and explicit task flow in the main scene while keeping ordinary startup inert.
 - [x] Own one exact authoritative recovery relationship in an isolated scene controller, consuming
   each exact accepted request at most once while keeping abstention referentially inert.
+- [x] Observe and explicitly acknowledge each exact completed influence-recovery result once,
+  resetting its task only while the exact resolved relationship authority remains current.
+- [x] Dependency-order recovery authority and result resolution in the main scene while keeping
+  ordinary startup inert and proving exact recovery only through a switch-gated smoke.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
