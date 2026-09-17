@@ -17,6 +17,8 @@ character-targeted delay path through three bounded slices:
   one exact request state and proves selected application, guarded acknowledgement, and unchanged
   applied authority after a later offline failure.
 
+Implementation commit `41d9636` is published in draft PR #305 targeting `main`.
+
 No slice constructs or schedules requests automatically, recovers elapsed time, authors evidence,
 persists world state, or adds input/UI, navigation, movement, perception, dialogue, or other world
 behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
@@ -40,6 +42,9 @@ unstaged.
   public surfaces, documentation, file size, line length, formatting, whitespace, and scoped paths.
   One test-precision finding was fixed by proving failed null initialization leaves the complete
   authority pair uninitialized; no unresolved finding remains.
+- Draft PR #305 is open, draft, and mergeable. Its five hosted jobs failed immediately with empty
+  step lists, so they are Actions/account infrastructure failures rather than hosted product-test
+  evidence; the complete host-local quality result above remains the executable validation.
 
 ## Exact next bounded slice
 
