@@ -19,13 +19,25 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
     private TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController flow = null!;
     private CharacterTargetSabotageInfluenceController state = null!;
     private CharacterTargetSabotageInfluenceRecoveryCandidateController recoveryCandidates = null!;
+    private CharacterTargetSabotageInfluenceRecoveryCandidateRequestController recoveryRequests =
+        null!;
+    private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource =
+        null!;
+    private CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController
+        recoveryFlow = null!;
+    private CharacterTargetSabotageInfluenceRecoveryTaskController recoveryTask = null!;
+    private CharacterTargetSabotageInfluenceRecoveryController recoveryState = null!;
+    private CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator recoveryCoordinator =
+        null!;
     private CharacterTargetSabotageInfluenceResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageInfluenceConsiderationRequest request = null!;
     private CharacterTargetSabotageInfluenceCandidate candidate = null!;
     private RecordingModel selectionModel = null!;
+    private RecordingRecoveryModel recoverySelectionModel = null!;
     private CharacterRelationshipMemory? appliedRelationship;
     private CharacterTargetSabotageInfluenceResult? appliedResult;
     private CharacterTargetSabotageInfluenceRecoveryCandidate? recoveryCandidate;
+    private CharacterTargetSabotageInfluenceRecoveryConsiderationRequest? recoveryRequest;
     private int processFrames;
     private int stage;
 
@@ -49,10 +61,29 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             "../CharacterTargetSabotageInfluenceController");
         recoveryCandidates = GetNode<CharacterTargetSabotageInfluenceRecoveryCandidateController>(
             "../CharacterTargetSabotageInfluenceRecoveryCandidateController");
+        recoveryRequests =
+            GetNode<CharacterTargetSabotageInfluenceRecoveryCandidateRequestController>(
+                "../CharacterTargetSabotageInfluenceRecoveryCandidateRequestController");
+        recoveryModelSource =
+            GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource>(
+                "../TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource");
+        recoveryFlow = GetNode<
+            CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController>(
+                "../CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController");
+        recoveryTask = GetNode<CharacterTargetSabotageInfluenceRecoveryTaskController>(
+            "../CharacterTargetSabotageInfluenceRecoveryTaskController");
+        recoveryState = GetNode<CharacterTargetSabotageInfluenceRecoveryController>(
+            "../CharacterTargetSabotageInfluenceRecoveryController");
+        recoveryCoordinator =
+            GetNode<CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator>(
+                "../CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator");
         coordinator = GetNode<CharacterTargetSabotageInfluenceResolutionCoordinator>(
             "../CharacterTargetSabotageInfluenceResolutionCoordinator");
         request = CreateRequest(out candidate);
         selectionModel = new(value => new(value.Actor.Identity.Id, candidate));
+        recoverySelectionModel = new(value => new(
+            value.Actor.Identity.Id,
+            value.Candidates.Single()));
         if (!state.TryInitialize(request.Relationship))
         {
             Fail("Main-scene influence authority rejected exact smoke initialization.");
@@ -98,6 +129,13 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             && ReferenceEquals(state.Relationship, request.Relationship)
             && state.LatestAppliedResult is null
             && recoveryCandidates.Candidate is null
+            && recoveryRequests.Request is null
+            && recoveryTask.Status
+                == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Idle
+            && recoveryTask.Result is null
+            && recoveryState.Relationship is null
+            && recoveryState.LatestAppliedResult is null
+            && recoverySelectionModel.CallCount == 0
             && InputsAreUnchanged();
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart(request)
@@ -146,6 +184,19 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             || recoveryCandidates.Candidate is not { } createdRecoveryCandidate
             || !ReferenceEquals(createdRecoveryCandidate.InfluenceResult, appliedResult)
             || !ReferenceEquals(createdRecoveryCandidate.RecoveryChange, recoveryChange)
+            || !recoveryRequests.TryCreate(createdRecoveryCandidate)
+            || recoveryRequests.Request is not { } createdRecoveryRequest
+            || !ReferenceEquals(createdRecoveryRequest.Actor, candidate.Occurrence.Target)
+            || !ReferenceEquals(createdRecoveryRequest.Relationship, appliedRelationship)
+            || createdRecoveryRequest.Candidates.Count != 1
+            || !ReferenceEquals(
+                createdRecoveryRequest.Candidates.Single(),
+                createdRecoveryCandidate)
+            || !recoveryState.TryInitialize(createdRecoveryRequest.Relationship)
+            || !recoveryModelSource.TrySupplyModel(recoverySelectionModel)
+            || !recoveryFlow.TryStart(createdRecoveryRequest)
+            || recoveryTask.Status
+                != CharacterTargetSabotageInfluenceRecoveryTaskStatus.Running
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart(request)
             || !InputsAreUnchanged())
@@ -155,6 +206,7 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
         }
 
         recoveryCandidate = createdRecoveryCandidate;
+        recoveryRequest = createdRecoveryRequest;
         stage = 2;
     }
 
@@ -165,12 +217,37 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             return;
         }
 
+        if (recoveryTask.Status == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Running)
+        {
+            return;
+        }
+
+        CharacterRelationshipMemory? restoredRelationship = recoveryState.Relationship;
+        CharacterTargetSabotageInfluenceRecoveryResult? recoveryResult =
+            recoveryState.LatestAppliedResult;
+        bool exactRecovery = recoveryTask.Status
+                == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Completed
+            && recoveryTask.Result is { } recoveryConsideration
+            && ReferenceEquals(recoveryConsideration.Request, recoveryRequest)
+            && ReferenceEquals(recoveryConsideration.SelectedCandidate, recoveryCandidate)
+            && recoverySelectionModel.CallCount == 1
+            && ReferenceEquals(recoverySelectionModel.Request, recoveryRequest)
+            && restoredRelationship is not null
+            && recoveryResult is not null
+            && !ReferenceEquals(restoredRelationship, appliedRelationship)
+            && ReferenceEquals(recoveryResult.Relationship, restoredRelationship)
+            && ReferenceEquals(recoveryResult.Candidate, recoveryCandidate)
+            && restoredRelationship.Dimensions.Single().Value == 10
+            && restoredRelationship.Reasons.Count == 2;
         if (task.Status != CharacterTargetSabotageInfluenceTaskStatus.Failed
             || task.Result is not null
             || selectionModel.CallCount != 1
+            || !exactRecovery
             || !ReferenceEquals(state.Relationship, appliedRelationship)
             || !ReferenceEquals(state.LatestAppliedResult, appliedResult)
             || !ReferenceEquals(recoveryCandidates.Candidate, recoveryCandidate)
+            || !ReferenceEquals(recoveryRequests.Request, recoveryRequest)
+            || !recoveryCoordinator.TryAcknowledgeCompletedResult()
             || !InputsAreUnchanged())
         {
             Fail("Main-scene influence offline failure changed source state.");
@@ -179,7 +256,7 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
 
         GD.Print(
             "Main-scene influence consideration smoke passed: dependency-ordered inert startup, "
-            + "one explicit exact applied selection and recovery candidate, guarded "
+            + "one explicit exact influence and recovery selection, candidate and request, guarded "
             + "acknowledgement, stable offline failure, and unchanged source relationship state.");
         GetTree().Quit();
     }
@@ -257,6 +334,30 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
 
         public ValueTask<CharacterTargetSabotageInfluenceDecision> DecideAsync(
             CharacterTargetSabotageInfluenceConsiderationRequest value,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            Request = value;
+            return ValueTask.FromResult(decide(value));
+        }
+    }
+
+    private sealed class RecordingRecoveryModel(
+        Func<CharacterTargetSabotageInfluenceRecoveryConsiderationRequest,
+            CharacterTargetSabotageInfluenceRecoveryDecision> decide)
+        : ICharacterTargetSabotageInfluenceRecoveryDecisionModel
+    {
+        internal int CallCount { get; private set; }
+
+        internal CharacterTargetSabotageInfluenceRecoveryConsiderationRequest? Request
+        {
+            get;
+            private set;
+        }
+
+        public ValueTask<CharacterTargetSabotageInfluenceRecoveryDecision> DecideAsync(
+            CharacterTargetSabotageInfluenceRecoveryConsiderationRequest value,
             CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
