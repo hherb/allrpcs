@@ -35,6 +35,11 @@ other autonomous behavior. The unrelated untracked `scripts/code_statistics.py` 
   rejection, abstention inertness, immutable event application, cancellation/failure propagation,
   closed public surfaces, documentation, file size, line length, formatting, whitespace, and scoped
   paths. The review added explicit already-recorded-event coverage; no unresolved finding remains.
+- Draft PR #301's initial hosted run `35228368467` completed with all five jobs reporting
+  `steps: []`. That is Actions/account infrastructure state rather than hosted product-test evidence;
+  the unchanged jobs were not retried.
+
+Implementation commit `deff62a` is published in draft PR #301 targeting `main`.
 
 ## Exact next bounded slice
 
