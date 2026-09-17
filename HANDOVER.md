@@ -20,6 +20,8 @@ recovery, persist relationships, author candidates or evidence, or add input/UI,
 navigation, movement, perception, dialogue, or other world behavior. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `0555239` is published in mergeable draft PR #294 targeting `main`.
+
 ## Validation and review
 
 - Test-first focused runs failed on each absent contract, then all 40 recovery OpenAI serializer,
