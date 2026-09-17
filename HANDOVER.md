@@ -2,59 +2,52 @@
 
 ## Current state
 
-`main` includes merged PR #292 at `18b396a`. Branch
-`codex/phase-7-influence-recovery-json` advances the influence-recovery path through two bounded
-Infrastructure slices in draft PR #293:
+`main` includes merged PR #293 at `2e71006`. Branch
+`codex/phase-7-influence-recovery-openai` advances the recovery provider path through three bounded
+Infrastructure slices:
 
-- Phase 7lj adds an internal closed JSON schema and public strict decoder for one exact recovery
-  decision. Actor text and a nullable zero-based candidate index rebind only to exact request
-  instances; final acceptance remains owned by the existing Domain policy. All malformed,
-  adversarial, stale, foreign, wrong-owner, oversized, and policy-invalid input fails with one
-  redacted error.
-- Phase 7lk adds one stateless strict OpenAI Responses request serializer. It supplies bounded
-  actor-owned character data, current directional relationship values, and exact indexed recovery
-  candidate context without credential access, network traffic, model invocation, or mutation.
+- Phase 7ll accumulates one request-bound ordered OpenAI Responses semantic-event lifecycle and
+  exposes an exact decoded selection or abstention only after successful response completion.
+- Phase 7lm completes one bounded framed SSE lifecycle, rejects incomplete or trailing streams, and
+  preserves caller cancellation.
+- Phase 7ln posts the existing stateless request through caller-owned credential, HTTP, settings,
+  and endpoint dependencies, requires a successful event stream, and exposes an inert exact OpenAI
+  recovery model binding without construction-time input/output.
 
-No slice parses semantic response events or SSE bytes, sends HTTP, loads credentials, constructs an
-OpenAI recovery model, composes a configured binding, wires `Main.tscn`, applies or acknowledges
-recovery in scene authority, persists relationships, authors candidates or evidence, or adds
-input/UI, elapsed time, navigation, movement, perception, dialogue, or other world behavior. The
-unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+The branch changes only Infrastructure contracts/tests, README, ROADMAP, and this handover. It does
+not compose game settings, add scene nodes or `Main.tscn` wiring, schedule work, apply or acknowledge
+recovery, persist relationships, author candidates or evidence, or add input/UI, elapsed time,
+navigation, movement, perception, dialogue, or other world behavior. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Test-first focused checks failed because each new decoder/serializer contract was absent, then
-  passed 29 strict JSON tests and 5 request-serializer tests.
+- Test-first focused runs failed on each absent contract, then all 40 recovery OpenAI serializer,
+  semantic-event, SSE, HTTP-adapter, and binding-factory tests passed; the full suite also passed the
+  existing strict decoder tests.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,655 Domain tests, 560 Application tests, 993 Infrastructure tests, 8
+  zero-warning build, 2,655 Domain tests, 560 Application tests, 1,027 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
-- Review covers exact actor and candidate rebinding, abstention, the 64-candidate boundary, closed
-  schema output, bounded trusted context, stale and wrong-owner rejection, adversarial JSON,
-  redacted failures, unchanged source graphs, public surfaces, file size, line length,
-  documentation, and whitespace. The one review finding tightened redaction coverage to inspect the
-  complete exception chain; no unresolved finding remains.
-- Draft PR #293 is open and mergeable. On documentation head `68ecb0d`, all five hosted jobs
-  completed as failures with empty step lists, so no hosted product test or development-build step
-  ran; this is Actions/account infrastructure state. Re-query the latest head before relying on
-  hosted evidence.
+- Session-wide review covers exact request rebinding, ordered terminal lifecycle behavior, event and
+  document bounds, SSE completion and cancellation, credential-before-send behavior, HTTP/content
+  validation, provider/transport redaction, exact dependency retention, closed public surfaces,
+  documentation, file size, line length, and whitespace. No unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7ll: semantically accumulate one OpenAI influence-recovery response**.
+Take **Phase 7lo: compose one influence-recovery model binding from explicit game settings**.
 
 Acceptance boundary:
 
-1. Test-first add one request-bound Infrastructure accumulator for an ordered OpenAI Responses
-   semantic-event lifecycle: created, in-progress, permitted metadata, bounded output-text deltas,
-   one verified output-text completion, and response completion.
-2. Materialize the decision only through the existing strict recovery decoder and expose it only
-   after successful response completion. Bound each semantic event and the accumulated output;
-   permanently terminate on malformed, unknown, duplicate, out-of-order, incomplete, refused,
-   failed, oversized, stale, or policy-invalid input with one content-free error.
-3. Prove exact selection and abstention, unchanged request/relationship/reason state, terminal
-   success and failure behavior, redaction, and a closed public surface.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add SSE
-   byte framing/completion, HTTP execution, credential access, OpenAI model construction, binding
-   composition, `Main.tscn` integration, recovery application/acknowledgement, persistence, UI,
-   elapsed time, navigation, movement, perception, dialogue, or other world behavior.
+1. Test-first add one isolated composition seam that accepts exact already-authored OpenAI settings,
+   caller-owned HTTP and credential dependencies, and the existing temporary recovery model source.
+2. Create the binding through
+   `OpenAiCharacterTargetSabotageInfluenceRecoveryModelBindingFactory` and install it only through
+   the source's existing exact expected-instance initialize, replace, and clear operations.
+3. Keep construction and ordinary startup inert: no credential load, HTTP send, model invocation,
+   automatic consideration, recovery application, or acknowledgement. Prove explicit configured,
+   offline, replacement, and clearing paths in one isolated credential-free smoke.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet wire
+   `Main.tscn` or the global model-composition controller, automatically schedule work, apply or
+   acknowledge recovery, persist relationships, or add input/UI, timing, or other world behavior.
