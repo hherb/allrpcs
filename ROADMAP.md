@@ -486,6 +486,10 @@ Current continuation:
   resetting its task only while the exact resolved relationship authority remains current.
 - [x] Dependency-order recovery authority and result resolution in the main scene while keeping
   ordinary startup inert and proving exact recovery only through a switch-gated smoke.
+- [x] Produce at most one exact-current inverse recovery candidate from the influence controller's
+  latest applied-result authority while every invalid or repeated input remains inert.
+- [x] Dependency-order that candidate source in the main scene and prove explicit production after
+  one applied influence while ordinary startup remains inert and recovery work stays unstarted.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

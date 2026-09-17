@@ -776,14 +776,15 @@ source's expected-instance operations. The selected-provider composition activat
 OpenAI, leaves an unsupported replacement unchanged, and restores the stable offline model for a
 supported local-provider replacement without performing construction-time input/output.
 
-The influence model source, authoritative relationship controller, task, explicit consideration
-flow, and resolution coordinator are dependency-ordered in `Main.tscn`. Ordinary startup neither
-initializes authority nor starts a decision; a switch-gated credential-free smoke explicitly
-initializes one exact request relationship, applies one exact selected result, acknowledges it only
-while that authority remains current, and proves a later offline failure leaves the applied state
-unchanged. This scene path does not schedule itself or add input/UI, settings mutation, persistence,
-evidence, recovery selection, elapsed-time, navigation, movement, perception, dialogue, or other
-world behavior.
+The influence model source, authoritative relationship controller, recovery-candidate controller,
+task, explicit consideration flow, and resolution coordinator are dependency-ordered in
+`Main.tscn`. Ordinary startup neither initializes authority nor starts a decision; a switch-gated
+credential-free smoke explicitly initializes one exact request relationship, applies one exact
+selected result, creates one exact caller-authored inverse recovery candidate, acknowledges the
+result only while that authority remains current, and proves a later offline failure leaves the
+applied state and candidate unchanged. This scene path does not schedule itself, create a recovery
+request, start recovery work, or add input/UI, settings mutation, persistence, evidence,
+elapsed-time, navigation, movement, perception, dialogue, or other world behavior.
 
 `CharacterTargetSabotageInfluenceController` separately owns one exact authoritative directional
 relationship and resolves each exact accepted consideration request at most once. It requires the
@@ -831,6 +832,15 @@ applied reason at the history tail, the exact inverse delta, and unchanged appli
 `CharacterRelationshipChangePolicy`. Stale, rebuilt, fabricated, mismatched, or inapplicable input
 fails closed. It does not apply recovery, remove history, infer evidence, or authorize Application,
 scene, UI, persistence, or provider behavior.
+
+`CharacterTargetSabotageInfluenceRecoveryCandidateController` owns at most one recovery candidate
+for the influence controller's exact latest applied-result and relationship authority. Explicit
+creation retains the caller-authored inverse change only when the unchanged recovery policy accepts
+it. Uninitialized, missing, stale, value-equal rebuilt, repeated, misdirected, wrong-dimension,
+wrong-delta, and null input cannot replace its current candidate or change the influence result,
+relationship, change, or reason graph. The controller does not create a consideration request,
+start recovery work, author evidence, persist state, or add UI, input, timing, movement,
+perception, or dialogue behavior.
 
 `CharacterTargetSabotageInfluenceRecoveryTransition` accepts only that exact-current recovery,
 delegates the inverse update to the existing immutable relationship transition, and returns the
