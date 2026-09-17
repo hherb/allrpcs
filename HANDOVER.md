@@ -2,68 +2,61 @@
 
 ## Current state
 
-`main` includes merged PR #297 at `1db4fb8`. Branch
-`codex/phase-7-influence-recovery-consideration` advances the exact influence-recovery scene chain
-through four bounded slices:
+`main` includes merged PR #298 at `4560552`. Branch
+`codex/phase-7-influence-recovery-coordination` advances the exact influence-recovery scene chain
+through two bounded slices:
 
-- Phase 7lv adds `CharacterTargetSabotageInfluenceRecoveryCandidateRequestController`, which
-  retains one request only from the candidate source's exact current candidate and derives the
-  exact relationship-owning target from the retained influence occurrence.
-- Phase 7lw dependency-orders that request source after its candidate in `Main.tscn`; only the
-  switch-gated influence smoke creates the exact candidate and request.
-- Phase 7lx adds
-  `CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController`, which starts
-  only the request source's exact current request while the recovery task is idle and otherwise
-  preserves the queued model.
-- Phase 7ly dependency-orders that flow with the existing recovery model/task/state/resolution
-  owners. Ordinary startup stays inert; the switch-gated smoke alone initializes recovery
-  authority and explicitly proves one exact influence-to-recovery chain.
+- Phase 7lz adds `CharacterTargetSabotageInfluenceRecoveryStartCoordinator`. One explicit call
+  requires the influence controller's exact latest result and relationship, unused candidate and
+  request sources, uninitialized recovery authority, and an idle recovery task. It validates a
+  prospective inverse candidate and request before publishing state or consuming the queued model,
+  then creates the exact candidate/request, initializes recovery authority, and starts that request
+  once.
+- Phase 7ma dependency-orders that coordinator in `Main.tscn` after its exact scene dependencies.
+  The existing switch-gated influence smoke now uses the coordinator for its full
+  influence-to-recovery chain, while ordinary startup remains inert.
 
-The branch changes only the two bounded controllers, their isolated smokes, the existing
-switch-gated main-scene influence smoke, main-scene dependency order, smoke script, README,
-ROADMAP, and this handover. It does not autonomously start recovery, author inverse evidence or
-changes, persist relationships, or add UI/input, timing, navigation, movement, perception,
-dialogue, or other world behavior. The unrelated untracked `scripts/code_statistics.py` in the
-original checkout remains untouched.
-
-Implementation commit `7670ed4` is published in draft PR #298 targeting `main`.
+The branch changes only the bounded coordinator, its isolated smoke, the existing switch-gated
+main-scene influence smoke, main-scene dependency order, smoke script, README, ROADMAP, and this
+handover. It does not autonomously start recovery, infer or author inverse evidence, apply elapsed
+time, persist relationships, or add UI/input, navigation, movement, perception, dialogue, or other
+world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched.
 
 ## Validation and review
 
-- Test-first focused builds failed only on each absent controller, and the main-scene checks failed
-  only on each absent dependency-ordered node before the smallest implementations were added.
-- Focused zero-warning builds, both isolated controller smokes, and the switch-gated main-scene
+- Test-first validation produced the expected `CS0246` for the absent coordinator and the expected
+  missing-node failure for the absent `Main.tscn` owner before the smallest implementations were
+  added.
+- The focused zero-warning game build, isolated coordinator smoke, and switch-gated main-scene
   influence-to-recovery smoke pass host-locally.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
   zero-warning build, 2,655 Domain tests, 560 Application tests, 1,028 Infrastructure tests, all 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
-  Compatibility renderer launch.
-- Session-wide review covers exact request/candidate/result/relationship/character retention,
-  policy delegation, one-shot ownership, queued-model preservation, task/status gating, inert
-  startup, main-scene dependency order, unchanged source graphs, closed public surfaces,
+  Compatibility renderer launch. The first sandboxed run reached the same zero-warning build but
+  VSTest could not bind its loopback socket; the identical host-local run is the product evidence.
+- Session-wide review covers preflight-before-publication ordering, exact result/relationship and
+  nested graph retention, queued-model preservation, one-shot ownership, task/authority gates,
+  inert startup, scene dependency order, unchanged source graphs, closed public surfaces,
   documentation, file size, line length, formatting, and whitespace. No unresolved finding remains.
-- Hosted run `35218468129` completed all five jobs with `steps: []`; this is Actions/account
-  infrastructure, not executed product-test evidence, and should not be retried unchanged.
+
+The implementation is not yet committed or published.
 
 ## Exact next bounded slice
 
-Take **Phase 7lz: coordinate one explicit recovery-consideration start from exact current influence
-state**.
+Take **Phase 7mb: define one exact target-delay effect candidate without applying it**.
 
 Acceptance boundary:
 
-1. Test-first add one isolated scene controller that accepts the influence controller's exact
-   current applied result plus one caller-authored inverse relationship change and composes only the
-   existing recovery candidate, request, authority, task, model-source, and exact-request flow.
-2. Before consuming a model or publishing state, require the exact influence result/relationship,
-   an accepted prospective recovery graph, unused candidate/request sources, uninitialized recovery
-   authority, and an idle recovery task; then create the exact candidate and request, initialize
-   recovery authority from that exact relationship, and start only that exact request once.
-3. Reject unavailable, stale, value-equal rebuilt, foreign, misdirected, wrong-dimension,
-   wrong-delta, null, repeated, or already-occupied input without consuming the queued model or
-   changing the influence result, relationship, candidate, request, change, reason, occurrence, or
-   character graph.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet wire
-   this coordinator into `Main.tscn`, trigger recovery autonomously, infer or author inverse
-   evidence, persist relationships, or add UI/input, timing, navigation, movement, perception,
-   dialogue, or other world behavior.
+1. Test-first add one immutable Domain candidate that binds an exact eligible
+   `CharacterTargetSabotageOccurrence` to one exact caller-authored `WorldEvent` whose time effect
+   advances meaningful world time.
+2. Add one pure policy that accepts only `delay`, delegates the unchanged character-target
+   occurrence/access gate, and rejects influence, wrong actor/target, inaccessible, non-advancing,
+   null, or rebuilt/mismatched input without changing the occurrence, actor, target, access, event,
+   or world-time graph.
+3. Retain exact nested instances and keep the public surface get-only, bounded, and free of elapsed
+   application, selection, recovery, provider, scene, persistence, UI/input, navigation, movement,
+   perception, dialogue, or other world behavior.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet apply
+   the delay event, advance world time, create a consideration request/model flow, wire `Main.tscn`,
+   or infer/authenticate evidence.

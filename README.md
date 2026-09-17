@@ -858,6 +858,17 @@ this flow with the existing recovery model, task, state, and resolution owners; 
 switch-gated smoke initializes recovery authority and explicitly starts the exact request, proving
 the influence relationship can be restored without making ordinary startup autonomous.
 
+`CharacterTargetSabotageInfluenceRecoveryStartCoordinator` composes those exact scene owners behind
+one explicit start. It first requires the influence controller's exact latest result and
+relationship, unused candidate and request sources, uninitialized recovery authority, and an idle
+recovery task, then validates a prospective inverse candidate and request before publishing any
+state or consuming the queued model. Only after that complete preflight does it create the exact
+candidate and request, initialize recovery authority from their exact relationship, and start the
+exact request once. The main scene dependency-orders this coordinator, and the existing
+switch-gated influence smoke uses it for the complete influence-to-recovery chain while ordinary
+startup remains inert. Stale, rebuilt, foreign, misdirected, wrong-dimension, wrong-delta, null,
+repeated, and occupied input cannot change either authority or consume the queued model.
+
 `CharacterTargetSabotageInfluenceRecoveryTransition` accepts only that exact-current recovery,
 delegates the inverse update to the existing immutable relationship transition, and returns the
 exact recovery candidate with fresh numerically restored relationship state. Both the influence and
