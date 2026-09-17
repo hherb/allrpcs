@@ -452,6 +452,14 @@ Current continuation:
   task only while the exact resolved relationship authority remains current.
 - [x] Dependency-order influence authority and result resolution in the main scene while keeping
   ordinary startup inert and proving exact application only through a switch-gated smoke.
+- [x] Select one exact eligible influence-recovery candidate in stable bounded caller order only
+  after complete one-pass collection validation, without applying recovery.
+- [x] Retain the exact deciding character, current relationship, and bounded candidate state for
+  one provider-neutral influence-recovery consideration without deciding or applying it.
+- [x] Accept only an exact relationship-owner abstention or exact currently eligible request-member
+  recovery selection, then bind that decision immutably to its exact consideration request.
+- [x] Apply one accepted exact recovery selection through the existing immutable transition while
+  leaving an accepted abstention inert and every request source unchanged.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
