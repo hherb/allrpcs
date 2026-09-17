@@ -763,6 +763,19 @@ the exact request and caller cancellation, then construct the validated Domain r
 bind a provider, own background work, apply automatically, recover time, author evidence, or grant
 scene, persistence, or UI behavior.
 
+An immutable target-delay binding retains exact caller-composed OpenAI settings and model without
+invoking it. The isolated temporary model source supports exact-instance initialized, replaced, and
+cleared bindings, one-shot precedence, configured fallback, and one stable fail-closed offline
+model without construction-time input/output.
+
+A bounded target-delay task owns one decision at a time, installs only a completed accepted result
+on the main thread, rejects overlap, supports one cancellation request and explicit terminal reset,
+and exposes failures only as status. An explicit isolated flow composes an already-authored exact
+request with the model source and task while preserving a queued one-shot across rejected overlap.
+These nodes are not present in `Main.tscn` and do not decode provider output, apply or recover a
+delay, schedule themselves, or add input/UI, settings mutation, persistence, evidence, navigation,
+movement, perception, dialogue, or other world behavior.
+
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
 requires the change to belong to the occurrence target and relate that target to the proposal actor,
