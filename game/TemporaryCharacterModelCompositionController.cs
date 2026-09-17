@@ -23,6 +23,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterObjectSabotageMoveModelSource moveModelSource = null!;
     private TemporaryCharacterObjectSabotageSubstitutionModelSource substitutionModelSource = null!;
     private TemporaryCharacterObjectSabotageContaminationModelSource contaminationModelSource = null!;
+    private TemporaryCharacterTargetSabotageDelayModelSource delayModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceModelSource influenceModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
@@ -32,6 +33,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private CharacterObjectSabotageMoveModelBinding? moveBinding;
     private CharacterObjectSabotageSubstitutionModelBinding? substitutionBinding;
     private CharacterObjectSabotageContaminationModelBinding? contaminationBinding;
+    private TemporaryCharacterTargetSabotageDelayModelComposition delayComposition = null!;
+    private bool delayBindingInitialized;
     private TemporaryCharacterTargetSabotageInfluenceModelComposition influenceComposition = null!;
     private bool influenceBindingInitialized;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelComposition recoveryComposition = null!;
@@ -56,6 +59,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
         contaminationModelSource =
             GetNode<TemporaryCharacterObjectSabotageContaminationModelSource>(
                 "../TemporaryCharacterObjectSabotageContaminationModelSource");
+        delayModelSource = GetNode<TemporaryCharacterTargetSabotageDelayModelSource>(
+            "../TemporaryCharacterTargetSabotageDelayModelSource");
         influenceModelSource = GetNode<TemporaryCharacterTargetSabotageInfluenceModelSource>(
             "../TemporaryCharacterTargetSabotageInfluenceModelSource");
         recoveryModelSource =
@@ -67,6 +72,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
         {
             Timeout = Timeout.InfiniteTimeSpan,
         };
+        delayComposition = new(delayModelSource);
         influenceComposition = new(influenceModelSource);
         recoveryComposition = new(recoveryModelSource);
         if (OS.GetEnvironment(AutomaticCompositionDisabledEnvironmentVariable)
@@ -116,6 +122,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyMoveBinding(selection)
             || !TryApplySubstitutionBinding(selection)
             || !TryApplyContaminationBinding(selection)
+            || !TryApplyDelayBinding(selection)
             || !TryApplyInfluenceBinding(selection)
             || !TryApplyRecoveryBinding(selection))
         {
@@ -143,6 +150,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyMoveBinding(selection)
             && TryApplySubstitutionBinding(selection)
             && TryApplyContaminationBinding(selection)
+            && TryApplyDelayBinding(selection)
             && TryApplyInfluenceBinding(selection)
             && TryApplyRecoveryBinding(selection);
     }
@@ -483,6 +491,43 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             influenceBindingInitialized = true;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyDelayBinding(CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!delayBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = delayComposition.TryClear();
+            if (cleared)
+            {
+                delayBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        bool applied = delayBindingInitialized
+            ? delayComposition.TryReplace(selectedSettings, client, credentialSource)
+            : delayComposition.TryInitialize(selectedSettings, client, credentialSource);
+        if (applied)
+        {
+            delayBindingInitialized = true;
         }
 
         return applied;

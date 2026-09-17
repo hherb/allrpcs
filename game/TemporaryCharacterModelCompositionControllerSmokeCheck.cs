@@ -22,6 +22,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
     private TemporaryCharacterObjectSabotageMoveModelSource moveModelSource = null!;
     private TemporaryCharacterObjectSabotageSubstitutionModelSource substitutionModelSource = null!;
     private TemporaryCharacterObjectSabotageContaminationModelSource contaminationModelSource = null!;
+    private TemporaryCharacterTargetSabotageDelayModelSource delayModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceModelSource influenceModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
@@ -54,6 +55,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         contaminationModelSource =
             GetNode<TemporaryCharacterObjectSabotageContaminationModelSource>(
                 "../TemporaryCharacterObjectSabotageContaminationModelSource");
+        delayModelSource = GetNode<TemporaryCharacterTargetSabotageDelayModelSource>(
+            "../TemporaryCharacterTargetSabotageDelayModelSource");
         influenceModelSource = GetNode<TemporaryCharacterTargetSabotageInfluenceModelSource>(
             "../TemporaryCharacterTargetSabotageInfluenceModelSource");
         recoveryModelSource =
@@ -90,6 +93,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             substitutionModelSource.TakeModel();
         ICharacterObjectSabotageContaminationDecisionModel offlineContamination =
             contaminationModelSource.TakeModel();
+        ICharacterTargetSabotageDelayDecisionModel offlineDelay = delayModelSource.TakeModel();
         ICharacterTargetSabotageInfluenceDecisionModel offlineInfluence =
             influenceModelSource.TakeModel();
         ICharacterTargetSabotageInfluenceRecoveryDecisionModel offlineRecovery =
@@ -101,6 +105,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
             || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)
             || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
+            || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery))
         {
@@ -134,6 +139,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
             || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)
             || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
+            || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery))
         {
@@ -230,6 +236,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             substitutionModelSource.TakeModel();
         ICharacterObjectSabotageContaminationDecisionModel openAiContamination =
             contaminationModelSource.TakeModel();
+        ICharacterTargetSabotageDelayDecisionModel openAiDelay = delayModelSource.TakeModel();
         ICharacterTargetSabotageInfluenceDecisionModel openAiInfluence =
             influenceModelSource.TakeModel();
         ICharacterTargetSabotageInfluenceRecoveryDecisionModel openAiRecovery =
@@ -243,6 +250,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || openAiMove is not OpenAiCharacterObjectSabotageMoveModel
             || openAiSubstitution is not OpenAiCharacterObjectSabotageSubstitutionModel
             || openAiContamination is not OpenAiCharacterObjectSabotageContaminationModel
+            || openAiDelay is not OpenAiCharacterTargetSabotageDelayModel
             || openAiInfluence is not OpenAiCharacterTargetSabotageInfluenceModel
             || openAiRecovery is not OpenAiCharacterTargetSabotageInfluenceRecoveryModel
             || !ReferenceEquals(modelSource.TakeModel(), openAiModel)
@@ -251,6 +259,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(moveModelSource.TakeModel(), openAiMove)
             || !ReferenceEquals(substitutionModelSource.TakeModel(), openAiSubstitution)
             || !ReferenceEquals(contaminationModelSource.TakeModel(), openAiContamination)
+            || !ReferenceEquals(delayModelSource.TakeModel(), openAiDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), openAiInfluence)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), openAiRecovery)
             || !settingsController.TryApply(replacementOpenAiSettings)
@@ -275,6 +284,10 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(
                 contaminationModelSource.TakeModel(),
                 replacementContamination)
+            || delayModelSource.TakeModel()
+                is not OpenAiCharacterTargetSabotageDelayModel replacementDelay
+            || ReferenceEquals(replacementDelay, openAiDelay)
+            || !ReferenceEquals(delayModelSource.TakeModel(), replacementDelay)
             || influenceModelSource.TakeModel()
                 is not OpenAiCharacterTargetSabotageInfluenceModel replacementInfluence
             || ReferenceEquals(replacementInfluence, openAiInfluence)
@@ -291,6 +304,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(moveModelSource.TakeModel(), offlineMove)
             || !ReferenceEquals(substitutionModelSource.TakeModel(), offlineSubstitution)
             || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
+            || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery))
         {
@@ -304,9 +318,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             + "replacement was atomic and one-shot preserving, the current Ollama setting "
             + "activated as one stable future model, OpenAI activated exact ordinary and "
             + "specialized bindings with exact concealment, move, substitution, contamination, "
-            + "influence, and recovery replacement, and Ollama restored fail-closed "
-            + "participation, concealment, move, substitution, contamination, influence, and "
-            + "recovery decisions.");
+            + "delay, influence, and recovery replacement, and Ollama restored fail-closed "
+            + "participation, concealment, move, substitution, contamination, delay, influence, "
+            + "and recovery decisions.");
         GetTree().Quit();
     }
 

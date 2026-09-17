@@ -260,6 +260,10 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateRequestController.cs" id="258_influence_recovery_candidate_request"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController.cs" id="259_influence_recovery_candidate_flow"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryStartCoordinator.cs" id="260_influence_recovery_start"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayModelSource.cs" id="261_delay_model_source"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageDelayTaskController.cs" id="262_delay_task"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayConsiderationFlowController.cs" id="263_delay_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayConsiderationMainSceneSmokeCheck.cs" id="264_delay_main_scene_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -651,6 +655,15 @@ script = ExtResource("211_object_sabotage_substitution_model_source")
 
 [node name="TemporaryCharacterObjectSabotageContaminationModelSource" type="Node" parent="."]
 script = ExtResource("216_object_sabotage_contamination_model_source")
+
+[node name="TemporaryCharacterTargetSabotageDelayModelSource" type="Node" parent="."]
+script = ExtResource("261_delay_model_source")
+
+[node name="CharacterTargetSabotageDelayTaskController" type="Node" parent="."]
+script = ExtResource("262_delay_task")
+
+[node name="TemporaryCharacterTargetSabotageDelayConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("263_delay_flow")
 
 [node name="TemporaryCharacterTargetSabotageInfluenceModelSource" type="Node" parent="."]
 script = ExtResource("245_influence_model_source")
@@ -1175,6 +1188,9 @@ script = ExtResource("226_misquotation_evidence_main_scene_check")
 
 [node name="TemporaryCharacterTargetSabotageInfluenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("248_influence_main_scene_check")
+
+[node name="TemporaryCharacterTargetSabotageDelayConsiderationMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("264_delay_main_scene_check")
 
 [node name="TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("254_influence_recovery_main_scene_check")
