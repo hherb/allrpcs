@@ -895,6 +895,21 @@ offline model only after the idle check. Rejected overlap therefore preserves a 
 model. The isolated flow remains inert at startup and does not apply or acknowledge recovery, wire
 `Main.tscn`, create provider traffic, persist state, or add UI or world scheduling.
 
+The strict influence-recovery decision decoder accepts only one bounded closed JSON object
+containing exact actor text and a nullable zero-based recovery-candidate index. It rebinds
+value-matching actor text and the index to exact request instances, delegates final acceptance to
+the existing Domain policy, and collapses malformed, unknown, duplicate, over-depth, oversized,
+out-of-range, wrong-owner, stale, foreign, or otherwise policy-invalid input into one redacted
+error. The internal schema writer bounds the selection enum to the exact request candidate count
+plus abstention. Neither contract changes the request, relationship, candidate, or reason graph.
+
+The OpenAI influence-recovery request serializer emits one stateless streaming structured-output
+request with bounded actor-owned character context, current directional relationship values, and
+exact indexed recovery-candidate context. Its strict closed schema permits only the exact actor and
+one supplied candidate index or abstention. Serialization performs no credential lookup, HTTP,
+streaming, model invocation, task work, scene integration, recovery application, persistence, UI,
+or other world behavior.
+
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
 admitting only the object-targeted `conceal`, `move`, `substitute`, and `contaminate` kinds. Its
 pure eligibility policy first requires the proposal actor to value-match the supplied character,
