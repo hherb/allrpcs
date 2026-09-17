@@ -39,7 +39,7 @@ world behavior. The unrelated untracked `scripts/code_statistics.py` remains unt
   inert startup, scene dependency order, unchanged source graphs, closed public surfaces,
   documentation, file size, line length, formatting, and whitespace. No unresolved finding remains.
 
-The implementation is not yet committed or published.
+Implementation commit `056f9af` is published in draft PR #299 targeting `main`.
 
 ## Exact next bounded slice
 
