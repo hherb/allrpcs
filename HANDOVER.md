@@ -34,8 +34,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   redacted failures, unchanged source graphs, public surfaces, file size, line length,
   documentation, and whitespace. The one review finding tightened redaction coverage to inspect the
   complete exception chain; no unresolved finding remains.
-- Draft PR #293 is open and mergeable. Its five hosted jobs were queued on implementation commit
-  `bf504ac` when this documentation update was prepared; re-query the final head before relying on
+- Draft PR #293 is open and mergeable. On documentation head `68ecb0d`, all five hosted jobs
+  completed as failures with empty step lists, so no hosted product test or development-build step
+  ran; this is Actions/account infrastructure state. Re-query the latest head before relying on
   hosted evidence.
 
 ## Exact next bounded slice
