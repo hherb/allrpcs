@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3]
+[gd_scene load_steps=210 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -256,6 +256,7 @@
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationMainSceneSmokeCheck.cs" id="254_influence_recovery_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryController.cs" id="255_influence_recovery_state"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator.cs" id="256_influence_recovery_resolution"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceRecoveryCandidateController.cs" id="257_influence_recovery_candidate"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -653,6 +654,9 @@ script = ExtResource("245_influence_model_source")
 
 [node name="CharacterTargetSabotageInfluenceController" type="Node" parent="."]
 script = ExtResource("249_influence_state")
+
+[node name="CharacterTargetSabotageInfluenceRecoveryCandidateController" type="Node" parent="."]
+script = ExtResource("257_influence_recovery_candidate")
 
 [node name="CharacterTargetSabotageInfluenceTaskController" type="Node" parent="."]
 script = ExtResource("246_influence_task")
