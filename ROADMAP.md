@@ -446,6 +446,12 @@ Current continuation:
   successful event stream and exposing an inert exact OpenAI model binding without construction I/O.
 - [x] Compose, replace, and clear one exact OpenAI influence binding from selected game settings,
   then dependency-order its source and explicit task flow in the main scene without automatic work.
+- [x] Own one exact authoritative influence relationship in an isolated scene controller, consuming
+  each exact accepted request at most once while keeping abstention referentially and numerically inert.
+- [x] Observe and explicitly acknowledge each exact completed influence result once, resetting its
+  task only while the exact resolved relationship authority remains current.
+- [x] Dependency-order influence authority and result resolution in the main scene while keeping
+  ordinary startup inert and proving exact application only through a switch-gated smoke.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

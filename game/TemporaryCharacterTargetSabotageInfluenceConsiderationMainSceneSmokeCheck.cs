@@ -17,9 +17,13 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
     private TemporaryCharacterTargetSabotageInfluenceModelSource modelSource = null!;
     private CharacterTargetSabotageInfluenceTaskController task = null!;
     private TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController flow = null!;
+    private CharacterTargetSabotageInfluenceController state = null!;
+    private CharacterTargetSabotageInfluenceResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageInfluenceConsiderationRequest request = null!;
     private CharacterTargetSabotageInfluenceCandidate candidate = null!;
     private RecordingModel selectionModel = null!;
+    private CharacterRelationshipMemory? appliedRelationship;
+    private CharacterTargetSabotageInfluenceResult? appliedResult;
     private int processFrames;
     private int stage;
 
@@ -39,8 +43,18 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             "../CharacterTargetSabotageInfluenceTaskController");
         flow = GetNode<TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController>(
             "../TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController");
+        state = GetNode<CharacterTargetSabotageInfluenceController>(
+            "../CharacterTargetSabotageInfluenceController");
+        coordinator = GetNode<CharacterTargetSabotageInfluenceResolutionCoordinator>(
+            "../CharacterTargetSabotageInfluenceResolutionCoordinator");
         request = CreateRequest(out candidate);
         selectionModel = new(value => new(value.Actor.Identity.Id, candidate));
+        if (!state.TryInitialize(request.Relationship))
+        {
+            Fail("Main-scene influence authority rejected exact smoke initialization.");
+            return;
+        }
+
         SetProcess(true);
     }
 
@@ -77,6 +91,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
         bool inertStartup = task.Status == CharacterTargetSabotageInfluenceTaskStatus.Idle
             && task.Result is null
             && selectionModel.CallCount == 0
+            && ReferenceEquals(state.Relationship, request.Relationship)
+            && state.LatestAppliedResult is null
             && InputsAreUnchanged();
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart(request)
@@ -98,12 +114,20 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             return;
         }
 
+        appliedRelationship = state.Relationship;
+        appliedResult = state.LatestAppliedResult;
         bool exactSelection = task.Status == CharacterTargetSabotageInfluenceTaskStatus.Completed
             && task.Result is { } result
             && selectionModel.CallCount == 1
             && ReferenceEquals(selectionModel.Request, request)
             && ReferenceEquals(result.Request, request)
             && ReferenceEquals(result.SelectedCandidate, candidate)
+            && appliedRelationship is not null
+            && appliedResult is not null
+            && !ReferenceEquals(appliedRelationship, request.Relationship)
+            && ReferenceEquals(appliedResult.Relationship, appliedRelationship)
+            && ReferenceEquals(appliedResult.Candidate, candidate)
+            && appliedRelationship.Dimensions.Single().Value == 11
             && InputsAreUnchanged();
         if (!exactSelection)
         {
@@ -112,7 +136,7 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             return;
         }
 
-        if (!task.TryReset()
+        if (!coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart(request)
             || !InputsAreUnchanged())
         {
@@ -133,6 +157,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
         if (task.Status != CharacterTargetSabotageInfluenceTaskStatus.Failed
             || task.Result is not null
             || selectionModel.CallCount != 1
+            || !ReferenceEquals(state.Relationship, appliedRelationship)
+            || !ReferenceEquals(state.LatestAppliedResult, appliedResult)
             || !InputsAreUnchanged())
         {
             Fail("Main-scene influence offline failure changed source state.");
@@ -141,8 +167,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
 
         GD.Print(
             "Main-scene influence consideration smoke passed: dependency-ordered inert startup, "
-            + "one explicit exact selection, reset, stable offline failure, and unchanged "
-            + "relationship state.");
+            + "one explicit exact applied selection, guarded acknowledgement, stable offline "
+            + "failure, and unchanged source relationship state.");
         GetTree().Quit();
     }
 
