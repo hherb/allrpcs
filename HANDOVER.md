@@ -2,54 +2,56 @@
 
 ## Current state
 
-`main` includes merged PR #293 at `2e71006`. Branch
-`codex/phase-7-influence-recovery-openai` advances the recovery provider path through three bounded
-Infrastructure slices:
+`main` includes merged PR #294 at `0619830`. Branch
+`codex/phase-7-influence-recovery-composition` advances the influence-recovery path through three
+bounded game-composition slices:
 
-- Phase 7ll accumulates one request-bound ordered OpenAI Responses semantic-event lifecycle and
-  exposes an exact decoded selection or abstention only after successful response completion.
-- Phase 7lm completes one bounded framed SSE lifecycle, rejects incomplete or trailing streams, and
-  preserves caller cancellation.
-- Phase 7ln posts the existing stateless request through caller-owned credential, HTTP, settings,
-  and endpoint dependencies, requires a successful event stream, and exposes an inert exact OpenAI
-  recovery model binding without construction-time input/output.
+- Phase 7lo creates, replaces, and clears one exact OpenAI recovery binding through the existing
+  temporary model source without construction-time input/output.
+- Phase 7lp activates that binding through selected OpenAI game settings, restores the stable
+  offline model for Ollama, and dependency-orders the recovery source, task, and explicit flow in
+  `Main.tscn` while ordinary startup remains inert.
+- Phase 7lq owns one exact authoritative recovery relationship in an isolated scene controller;
+  selection installs fresh numerically restored state, abstention is inert but consumed, and stale
+  or repeated requests fail closed.
 
-The branch changes only Infrastructure contracts/tests, README, ROADMAP, and this handover. It does
-not compose game settings, add scene nodes or `Main.tscn` wiring, schedule work, apply or acknowledge
-recovery, persist relationships, author candidates or evidence, or add input/UI, elapsed time,
-navigation, movement, perception, dialogue, or other world behavior. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
-
-Implementation commit `0555239` is published in mergeable draft PR #294 targeting `main`.
+The branch changes only bounded game composition/controllers/smokes, README, ROADMAP, the Godot
+smoke script, and this handover. It does not automatically schedule work, apply or acknowledge a
+task result in `Main.tscn`, persist relationships, author candidates or evidence, add UI/input, or
+change elapsed time, navigation, movement, perception, dialogue, or other world behavior. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Test-first focused runs failed on each absent contract, then all 40 recovery OpenAI serializer,
-  semantic-event, SSE, HTTP-adapter, and binding-factory tests passed; the full suite also passed the
-  existing strict decoder tests.
+- Test-first builds failed on the absent composition and recovery-authority contracts before the
+  smallest implementations were added.
+- Focused host-local smokes pass exact composition, selected-provider initialization/replacement/
+  clearing, inert main-scene task flow, and exact-current recovery authority.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,655 Domain tests, 560 Application tests, 1,027 Infrastructure tests, 8
+  zero-warning build, 2,655 Domain tests, 560 Application tests, 1,028 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
-- Session-wide review covers exact request rebinding, ordered terminal lifecycle behavior, event and
-  document bounds, SSE completion and cancellation, credential-before-send behavior, HTTP/content
-  validation, provider/transport redaction, exact dependency retention, closed public surfaces,
-  documentation, file size, line length, and whitespace. No unresolved finding remains.
+- Session-wide review covers exact expected-binding operations, provider switching, zero-I/O
+  construction, node dependency order, inert startup, exact request consumption, abstention,
+  stale/value-equal/repeated/null failure, immutable relationship state and reasons, documentation,
+  line length, formatting, and whitespace. One test-precision finding was fixed by retaining the
+  exact applied influence candidate while varying only the stale relationship instance; its focused
+  smoke and formatter verification pass. No unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7lo: compose one influence-recovery model binding from explicit game settings**.
+Take **Phase 7lr: observe and explicitly acknowledge one completed influence-recovery result**.
 
 Acceptance boundary:
 
-1. Test-first add one isolated composition seam that accepts exact already-authored OpenAI settings,
-   caller-owned HTTP and credential dependencies, and the existing temporary recovery model source.
-2. Create the binding through
-   `OpenAiCharacterTargetSabotageInfluenceRecoveryModelBindingFactory` and install it only through
-   the source's existing exact expected-instance initialize, replace, and clear operations.
-3. Keep construction and ordinary startup inert: no credential load, HTTP send, model invocation,
-   automatic consideration, recovery application, or acknowledgement. Prove explicit configured,
-   offline, replacement, and clearing paths in one isolated credential-free smoke.
+1. Test-first add one isolated coordinator over the existing recovery task and recovery authority
+   controller. Observe each fresh exact completed consideration result at most once.
+2. Resolve through `CharacterTargetSabotageInfluenceRecoveryController` only while its exact
+   relationship authority is current. Permit explicit task reset only while the exact resolved
+   relationship and exact latest recovery result remain current.
+3. Prove selected recovery, referentially inert abstention, explicit acknowledgement, duplicate
+   observation, and stale-authority rejection without changing request, candidate, influence, or
+   relationship source graphs.
 4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet wire
-   `Main.tscn` or the global model-composition controller, automatically schedule work, apply or
-   acknowledge recovery, persist relationships, or add input/UI, timing, or other world behavior.
+   the recovery authority/coordinator into `Main.tscn`, automatically schedule recovery, author or
+   discover evidence, persist relationships, or add UI/input, timing, or other world behavior.

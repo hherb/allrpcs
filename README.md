@@ -879,8 +879,10 @@ persistence, elapsed-time, or other world behavior.
 caller-composed recovery model without construction-time I/O or invocation. The temporary scene
 source supplies one queued exact one-shot model before a stable configured model and otherwise
 returns one stable fail-closed offline model; exact expected-binding replacement and clearing do
-not consume a queued one-shot model. This source does not start work, apply recovery, decode or send
-provider traffic, wire `Main.tscn`, persist state, or add UI or world behavior.
+not consume a queued one-shot model. One inert composition seam creates, replaces, and clears only
+its exact source binding from caller-owned settings, HTTP, and credential dependencies. The shared
+selected-provider composition activates this seam only for OpenAI and restores its stable offline
+model for a supported local-provider selection without construction-time input/output.
 
 `CharacterTargetSabotageInfluenceRecoveryTaskController` owns at most one isolated recovery
 decision through idle, running, completed, cancelled, and failed states. It installs only an exact
@@ -892,8 +894,18 @@ decode provider output, send HTTP, or persist state.
 `TemporaryCharacterTargetSabotageInfluenceRecoveryConsiderationFlowController` starts that task
 only when explicitly called while it is idle, taking the next one-shot, configured, or stable
 offline model only after the idle check. Rejected overlap therefore preserves a queued one-shot
-model. The isolated flow remains inert at startup and does not apply or acknowledge recovery, wire
-`Main.tscn`, create provider traffic, persist state, or add UI or world scheduling.
+model. Its source, task, and explicit flow are dependency-ordered in `Main.tscn`; an environment-
+gated credential-free smoke proves one exact selection, explicit reset, and stable offline failure,
+while ordinary startup remains inert. This path does not apply or acknowledge recovery, create
+provider traffic, persist state, or add UI or world scheduling.
+
+`CharacterTargetSabotageInfluenceRecoveryController` owns one exact initialized authoritative
+relationship and consumes each exact accepted consideration request at most once. A selection
+delegates through the existing immutable recovery transition and installs the fresh numerically
+restored relationship plus its exact result; abstention preserves the exact relationship and prior
+result while still consuming that request. Uninitialized, stale, value-equal rebuilt, repeated, or
+null input fails closed. This isolated controller is not in `Main.tscn` and does not observe or
+acknowledge tasks, author candidates or evidence, persist state, or add scheduling or UI.
 
 The strict influence-recovery decision decoder accepts only one bounded closed JSON object
 containing exact actor text and a nullable zero-based recovery-candidate index. It rebinds
@@ -917,8 +929,9 @@ SSE completion rejects incomplete or trailing event streams while preserving cal
 The caller-composed HTTP adapter loads one credential only on explicit invocation, posts the
 stateless structured-output request, requires a successful event-stream response, and redacts
 provider and transport failure details. Its factory retains exact OpenAI settings, HTTP, credential,
-and endpoint dependencies without construction-time input/output. This path does not compose game
-settings, wire scenes, schedule work, apply or acknowledge recovery, persist state, or add UI or
+and endpoint dependencies without construction-time input/output. Game composition now installs
+that binding only for selected OpenAI settings and the main scene retains the explicit task flow,
+but neither path schedules itself, applies or acknowledges recovery, persists state, or adds UI or
 other world behavior.
 
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while

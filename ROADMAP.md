@@ -476,6 +476,12 @@ Current continuation:
   exact accepted decision only after successful response completion.
 - [x] Execute that request through caller-owned credential and HTTP dependencies, requiring a
   successful event stream and exposing an inert exact OpenAI model binding without construction I/O.
+- [x] Compose, replace, and clear one exact OpenAI influence-recovery binding from explicit game
+  settings without credential, HTTP, model, task, scene, or authoritative input/output.
+- [x] Activate that recovery binding through selected game settings and dependency-order its source
+  and explicit task flow in the main scene while keeping ordinary startup inert.
+- [x] Own one exact authoritative recovery relationship in an isolated scene controller, consuming
+  each exact accepted request at most once while keeping abstention referentially inert.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
