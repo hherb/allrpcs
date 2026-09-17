@@ -910,6 +910,17 @@ one supplied candidate index or abstention. Serialization performs no credential
 streaming, model invocation, task work, scene integration, recovery application, persistence, UI,
 or other world behavior.
 
+The bounded influence-recovery semantic accumulator accepts only one ordered OpenAI Responses
+lifecycle, permits bounded metadata and output-text deltas, and materializes a decision through the
+strict request-bound decoder only after verified output completion and response completion. Framed
+SSE completion rejects incomplete or trailing event streams while preserving caller cancellation.
+The caller-composed HTTP adapter loads one credential only on explicit invocation, posts the
+stateless structured-output request, requires a successful event-stream response, and redacts
+provider and transport failure details. Its factory retains exact OpenAI settings, HTTP, credential,
+and endpoint dependencies without construction-time input/output. This path does not compose game
+settings, wire scenes, schedule work, apply or acknowledge recovery, persist state, or add UI or
+other world behavior.
+
 `CharacterObjectSabotageProposal` retains one exact actor and action-access requirement while
 admitting only the object-targeted `conceal`, `move`, `substitute`, and `contaminate` kinds. Its
 pure eligibility policy first requires the proposal actor to value-match the supplied character,

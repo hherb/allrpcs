@@ -472,6 +472,10 @@ Current continuation:
   rebinding actor text and candidate index to exact request instances.
 - [x] Serialize one bounded stateless OpenAI structured-output request over trusted exact
   influence-recovery relationship and candidate context without credential or network access.
+- [x] Complete one bounded influence-recovery semantic-event and framed SSE lifecycle, exposing an
+  exact accepted decision only after successful response completion.
+- [x] Execute that request through caller-owned credential and HTTP dependencies, requiring a
+  successful event stream and exposing an inert exact OpenAI model binding without construction I/O.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
