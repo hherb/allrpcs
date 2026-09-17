@@ -432,6 +432,10 @@ Current continuation:
   while leaving an accepted abstention inert and every request source unchanged.
 - [x] Obtain and validate one provider-neutral delay decision with exact request and caller
   cancellation forwarding, without binding a model or owning background work.
+- [x] Retain exact OpenAI target-delay settings and model, then supply configured, one-shot, or
+  stable offline models without construction-time I/O or automatic invocation.
+- [x] Own one isolated bounded target-delay decision task and explicit consideration flow with
+  exact result installation, overlap rejection, cancellation, reset, and fail-closed offline behavior.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
