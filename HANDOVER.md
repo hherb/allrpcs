@@ -43,6 +43,9 @@ stay unstaged.
   length, formatting, whitespace, and scoped paths. One test-precision finding was fixed by proving
   the custom endpoint, default endpoint retention, null rejection, and exact factory overloads; no
   unresolved finding remains.
+- Draft PR #304 is open, draft, and mergeable. Its five hosted jobs failed immediately with empty
+  step lists, so they are Actions/account infrastructure failures rather than hosted product-test
+  evidence; the complete host-local quality result above remains the executable validation.
 
 ## Exact next bounded slice
 
