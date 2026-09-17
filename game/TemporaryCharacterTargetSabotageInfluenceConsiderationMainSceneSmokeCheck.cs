@@ -23,8 +23,7 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
         null!;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource =
         null!;
-    private CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController
-        recoveryFlow = null!;
+    private CharacterTargetSabotageInfluenceRecoveryStartCoordinator recoveryStart = null!;
     private CharacterTargetSabotageInfluenceRecoveryTaskController recoveryTask = null!;
     private CharacterTargetSabotageInfluenceRecoveryController recoveryState = null!;
     private CharacterTargetSabotageInfluenceRecoveryResolutionCoordinator recoveryCoordinator =
@@ -67,9 +66,8 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
         recoveryModelSource =
             GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource>(
                 "../TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource");
-        recoveryFlow = GetNode<
-            CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController>(
-                "../CharacterTargetSabotageInfluenceRecoveryCandidateConsiderationFlowController");
+        recoveryStart = GetNode<CharacterTargetSabotageInfluenceRecoveryStartCoordinator>(
+            "../CharacterTargetSabotageInfluenceRecoveryStartCoordinator");
         recoveryTask = GetNode<CharacterTargetSabotageInfluenceRecoveryTaskController>(
             "../CharacterTargetSabotageInfluenceRecoveryTaskController");
         recoveryState = GetNode<CharacterTargetSabotageInfluenceRecoveryController>(
@@ -180,11 +178,11 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             return;
         }
 
-        if (!recoveryCandidates.TryCreate(appliedResult!, recoveryChange)
+        if (!recoveryModelSource.TrySupplyModel(recoverySelectionModel)
+            || !recoveryStart.TryStart(appliedResult!, recoveryChange)
             || recoveryCandidates.Candidate is not { } createdRecoveryCandidate
             || !ReferenceEquals(createdRecoveryCandidate.InfluenceResult, appliedResult)
             || !ReferenceEquals(createdRecoveryCandidate.RecoveryChange, recoveryChange)
-            || !recoveryRequests.TryCreate(createdRecoveryCandidate)
             || recoveryRequests.Request is not { } createdRecoveryRequest
             || !ReferenceEquals(createdRecoveryRequest.Actor, candidate.Occurrence.Target)
             || !ReferenceEquals(createdRecoveryRequest.Relationship, appliedRelationship)
@@ -192,9 +190,7 @@ public partial class TemporaryCharacterTargetSabotageInfluenceConsiderationMainS
             || !ReferenceEquals(
                 createdRecoveryRequest.Candidates.Single(),
                 createdRecoveryCandidate)
-            || !recoveryState.TryInitialize(createdRecoveryRequest.Relationship)
-            || !recoveryModelSource.TrySupplyModel(recoverySelectionModel)
-            || !recoveryFlow.TryStart(createdRecoveryRequest)
+            || !ReferenceEquals(recoveryState.Relationship, createdRecoveryRequest.Relationship)
             || recoveryTask.Status
                 != CharacterTargetSabotageInfluenceRecoveryTaskStatus.Running
             || !coordinator.TryAcknowledgeCompletedResult()

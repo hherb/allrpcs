@@ -498,6 +498,10 @@ Current continuation:
   task is idle, preserving the queued model across every rejected start.
 - [x] Dependency-order the exact-request flow and prove one switch-gated influence-to-recovery chain
   while ordinary startup remains inert and no autonomous trigger is added.
+- [x] Preflight one complete exact-current recovery graph before publishing its candidate, request,
+  or authority and before consuming the queued model, then start that exact request once.
+- [x] Dependency-order the recovery-start coordinator in the main scene and route the switch-gated
+  influence-to-recovery smoke through it while ordinary startup remains inert.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
