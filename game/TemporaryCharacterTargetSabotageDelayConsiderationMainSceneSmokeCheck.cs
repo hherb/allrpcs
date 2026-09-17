@@ -17,6 +17,8 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
     private TemporaryCharacterTargetSabotageDelayModelSource modelSource = null!;
     private CharacterTargetSabotageDelayTaskController task = null!;
     private TemporaryCharacterTargetSabotageDelayConsiderationFlowController flow = null!;
+    private CharacterTargetSabotageDelayController state = null!;
+    private CharacterTargetSabotageDelayResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageDelayConsiderationRequest request = null!;
     private CharacterTargetSabotageDelayCandidate candidate = null!;
     private RecordingModel selectionModel = null!;
@@ -39,8 +41,18 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             "../CharacterTargetSabotageDelayTaskController");
         flow = GetNode<TemporaryCharacterTargetSabotageDelayConsiderationFlowController>(
             "../TemporaryCharacterTargetSabotageDelayConsiderationFlowController");
+        state = GetNode<CharacterTargetSabotageDelayController>(
+            "../CharacterTargetSabotageDelayController");
+        coordinator = GetNode<CharacterTargetSabotageDelayResolutionCoordinator>(
+            "../CharacterTargetSabotageDelayResolutionCoordinator");
         request = CreateRequest(out candidate);
         selectionModel = new(value => new(value.Actor.Identity.Id, candidate));
+        if (!state.TryInitialize(request.EventLog, request.WorldTime))
+        {
+            Fail("Main-scene target-delay authority rejected exact smoke initialization.");
+            return;
+        }
+
         SetProcess(true);
     }
 
@@ -76,7 +88,10 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
     {
         bool inertStartup = task.Status == CharacterTargetSabotageDelayTaskStatus.Idle
             && task.Result is null
-            && selectionModel.CallCount == 0;
+            && selectionModel.CallCount == 0
+            && ReferenceEquals(state.EventLog, request.EventLog)
+            && ReferenceEquals(state.WorldTime, request.WorldTime)
+            && state.LatestAppliedResult is null;
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart(request)
             && task.Status == CharacterTargetSabotageDelayTaskStatus.Running;
@@ -97,13 +112,24 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             return;
         }
 
+        WorldEventLogSnapshot? appliedEventLog = state.EventLog;
+        WorldTimeSnapshot? appliedWorldTime = state.WorldTime;
+        CharacterTargetSabotageDelayResult? appliedResult = state.LatestAppliedResult;
         if (task.Status != CharacterTargetSabotageDelayTaskStatus.Completed
             || task.Result is not { } result
             || selectionModel.CallCount != 1
             || !ReferenceEquals(selectionModel.Request, request)
             || !ReferenceEquals(result.Request, request)
             || !ReferenceEquals(result.SelectedCandidate, candidate)
-            || !task.TryReset()
+            || appliedEventLog is null
+            || appliedWorldTime is null
+            || appliedResult is null
+            || !ReferenceEquals(appliedResult.EventLog, appliedEventLog)
+            || !ReferenceEquals(appliedResult.WorldTime, appliedWorldTime)
+            || !ReferenceEquals(appliedResult.Candidate, candidate)
+            || !ReferenceEquals(appliedEventLog.Entries.Single(), candidate.WorldEvent.EventId)
+            || !ReferenceEquals(appliedWorldTime.CurrentEventId, candidate.WorldEvent.EventId)
+            || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart(request)
             || !InputsAreUnchanged())
         {
@@ -124,6 +150,14 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
         if (task.Status != CharacterTargetSabotageDelayTaskStatus.Failed
             || task.Result is not null
             || selectionModel.CallCount != 1
+            || state.EventLog is not { } appliedEventLog
+            || state.WorldTime is not { } appliedWorldTime
+            || state.LatestAppliedResult is not { } appliedResult
+            || !ReferenceEquals(appliedResult.EventLog, appliedEventLog)
+            || !ReferenceEquals(appliedResult.WorldTime, appliedWorldTime)
+            || !ReferenceEquals(appliedResult.Candidate, candidate)
+            || !ReferenceEquals(appliedEventLog.Entries.Single(), candidate.WorldEvent.EventId)
+            || !ReferenceEquals(appliedWorldTime.CurrentEventId, candidate.WorldEvent.EventId)
             || !InputsAreUnchanged())
         {
             Fail("Main-scene target-delay consideration changed state after offline failure.");
@@ -131,8 +165,9 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
         }
 
         GD.Print(
-            "Main-scene target-delay consideration smoke passed: inert startup, exact explicit "
-            + "selection, reset, stable offline failure, and unchanged authoritative world state.");
+            "Main-scene target-delay consideration smoke passed: dependency-ordered inert startup, "
+            + "one explicit exact delay, guarded acknowledgement, stable offline failure, and "
+            + "unchanged source world state.");
         GetTree().Quit();
     }
 

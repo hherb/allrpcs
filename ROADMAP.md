@@ -450,6 +450,12 @@ Current continuation:
   offline model for Ollama without automatic decision work or authoritative mutation.
 - [x] Own the target-delay model source, decision task, and explicit consideration flow inertly in
   the main scene, with one switch-gated exact-selection smoke and unchanged world state.
+- [x] Own one exact authoritative target-delay event-log and world-time pair in an isolated scene
+  controller, consuming each exact accepted request at most once while keeping abstention inert.
+- [x] Observe and explicitly acknowledge each exact completed target-delay result once, resetting
+  its task only while the exact resolved world-state authority remains current.
+- [x] Dependency-order target-delay authority and result resolution in the main scene while keeping
+  ordinary startup inert and proving exact application only through a switch-gated smoke.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while

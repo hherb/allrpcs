@@ -772,9 +772,22 @@ A bounded target-delay task owns one decision at a time, installs only a complet
 on the main thread, rejects overlap, supports one cancellation request and explicit terminal reset,
 and exposes failures only as status. An explicit isolated flow composes an already-authored exact
 request with the model source and task while preserving a queued one-shot across rejected overlap.
-These nodes are not present in `Main.tscn` and do not decode provider output, apply or recover a
-delay, schedule themselves, or add input/UI, settings mutation, persistence, evidence, navigation,
-movement, perception, dialogue, or other world behavior.
+These nodes do not schedule themselves or add input/UI, settings mutation, persistence, evidence,
+navigation, movement, perception, dialogue, or other world behavior.
+
+`CharacterTargetSabotageDelayController` owns one exact authoritative event-log and qualitative-time
+pair and resolves each exact accepted consideration request at most once. It retains abstention
+referentially unchanged while consuming that request, and atomically installs only the existing pure
+transition's fresh snapshots plus exact applied result for a selection. Stale, repeated,
+uninitialized, null, and distinct value-equivalent state fail closed. It does not schedule
+consideration, author evidence, recover elapsed time, persist state, or add other world behavior.
+
+`CharacterTargetSabotageDelayResolutionCoordinator` observes each exact completed target-delay task
+result once and delegates it to that authoritative controller. Explicit acknowledgement resets the
+task only while the exact resolved event log, world time, and latest-applied-result token all remain
+current; repeated observation or acknowledgement and externally advanced authority fail closed.
+The coordinator does not start work, construct requests, schedule decisions, recover elapsed time,
+author evidence, or persist world state.
 
 The target-delay provider boundary strictly decodes one bounded JSON decision into the exact
 request actor and candidate instances, delegates final acceptance to the existing Domain policy,
@@ -791,11 +804,13 @@ without credential access, network input/output, or model invocation.
 
 An explicit target-delay composition seam initializes, replaces, or clears only its own exact
 binding in the existing temporary model source. Selected OpenAI game settings activate that seam;
-switching to Ollama restores the stable offline delay model. The dependency-ordered source, task,
-and explicit consideration flow are owned inertly in `Main.tscn`: ordinary startup schedules
-nothing, while a dedicated credential-free smoke proves one exact caller-started selection, reset,
-offline failure, and unchanged authoritative event-log and world-time inputs. No current runtime
-path applies the accepted delay automatically.
+switching to Ollama restores the stable offline delay model. The dependency-ordered source,
+authoritative state controller, task, explicit consideration flow, and resolution coordinator are
+owned inertly in `Main.tscn`: ordinary startup neither initializes authority nor schedules work,
+while a dedicated credential-free smoke explicitly initializes one exact request state, applies one
+exact caller-started selection, acknowledges it only while that authority remains current, and
+proves a later offline failure leaves the applied state unchanged. This scene path does not schedule
+itself, recover elapsed time, author evidence, persist state, or add input/UI or other world behavior.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,

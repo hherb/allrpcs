@@ -1,4 +1,4 @@
-[gd_scene load_steps=213 format=3]
+[gd_scene load_steps=215 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -264,6 +264,8 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayTaskController.cs" id="262_delay_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayConsiderationFlowController.cs" id="263_delay_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayConsiderationMainSceneSmokeCheck.cs" id="264_delay_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageDelayController.cs" id="265_delay_state"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageDelayResolutionCoordinator.cs" id="266_delay_resolution"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -659,11 +661,17 @@ script = ExtResource("216_object_sabotage_contamination_model_source")
 [node name="TemporaryCharacterTargetSabotageDelayModelSource" type="Node" parent="."]
 script = ExtResource("261_delay_model_source")
 
+[node name="CharacterTargetSabotageDelayController" type="Node" parent="."]
+script = ExtResource("265_delay_state")
+
 [node name="CharacterTargetSabotageDelayTaskController" type="Node" parent="."]
 script = ExtResource("262_delay_task")
 
 [node name="TemporaryCharacterTargetSabotageDelayConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("263_delay_flow")
+
+[node name="CharacterTargetSabotageDelayResolutionCoordinator" type="Node" parent="."]
+script = ExtResource("266_delay_resolution")
 
 [node name="TemporaryCharacterTargetSabotageInfluenceModelSource" type="Node" parent="."]
 script = ExtResource("245_influence_model_source")
