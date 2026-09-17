@@ -14,6 +14,8 @@ bounded Infrastructure slices:
 - Phase 7mo serializes one stateless streaming structured-output request with bounded trusted actor,
   world-time, event-log, and candidate context plus a closed exact decision schema.
 
+Implementation commit `19024e6` is published in draft PR #303 targeting `main`.
+
 The branch changes only Infrastructure contracts/tests, README, ROADMAP, and this handover. It does
 not execute HTTP, access credentials, compose a provider model or binding, change game settings,
 add scene nodes or `Main.tscn` wiring, schedule work, apply or recover a delay, author evidence,
@@ -36,6 +38,9 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
   failures, caller cancellation, stable trusted-context indexes, closed schemas and public surfaces,
   unchanged request world state, documentation, file size, line length, formatting, whitespace, and
   scoped paths. No unresolved finding remains.
+- Draft PR #303 is open, draft, and mergeable. Its five hosted jobs failed immediately with empty
+  step lists, so they are Actions/account infrastructure failures rather than hosted product-test
+  evidence; the complete host-local quality result above remains the executable validation.
 
 ## Exact next bounded slice
 
