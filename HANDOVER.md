@@ -4,7 +4,7 @@
 
 `main` includes merged PR #290 at `81e3091`. Branch
 `codex/phase-7-influence-recovery-selection` advances the recoverable influence path through four
-bounded Domain slices:
+bounded Domain slices in draft PR #291:
 
 - Phase 7lb adds `CharacterTargetSabotageInfluenceRecoverySelection`, which fully materializes and
   validates at most 64 candidates before returning the exact first currently eligible candidate in
@@ -36,6 +36,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   zero-warning build, 2,655 Domain tests, 551 Application tests, 959 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
+- Draft PR #291 is open. All five hosted jobs completed as failures with empty step lists, so no
+  hosted product test or development-build step ran; this is Actions/account infrastructure state
+  and the unchanged jobs were not retried.
 - Session-wide review covers complete one-pass validation, the 64-candidate cap, null and exact
   duplicate rejection, stable caller order, exact-member selection, distinct equivalent inputs,
   exact relationship ownership, stale eligibility, abstention, immutable result binding, recovery
