@@ -444,6 +444,8 @@ Current continuation:
   bounded stateless OpenAI structured-output request over trusted relationship context.
 - [x] Execute that request through caller-owned credential and HTTP dependencies, requiring a
   successful event stream and exposing an inert exact OpenAI model binding without construction I/O.
+- [x] Compose, replace, and clear one exact OpenAI influence binding from selected game settings,
+  then dependency-order its source and explicit task flow in the main scene without automatic work.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

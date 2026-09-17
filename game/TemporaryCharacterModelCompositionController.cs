@@ -23,6 +23,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterObjectSabotageMoveModelSource moveModelSource = null!;
     private TemporaryCharacterObjectSabotageSubstitutionModelSource substitutionModelSource = null!;
     private TemporaryCharacterObjectSabotageContaminationModelSource contaminationModelSource = null!;
+    private TemporaryCharacterTargetSabotageInfluenceModelSource influenceModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
@@ -30,6 +31,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private CharacterObjectSabotageMoveModelBinding? moveBinding;
     private CharacterObjectSabotageSubstitutionModelBinding? substitutionBinding;
     private CharacterObjectSabotageContaminationModelBinding? contaminationBinding;
+    private TemporaryCharacterTargetSabotageInfluenceModelComposition influenceComposition = null!;
+    private bool influenceBindingInitialized;
     private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
@@ -50,12 +53,15 @@ public partial class TemporaryCharacterModelCompositionController : Node
         contaminationModelSource =
             GetNode<TemporaryCharacterObjectSabotageContaminationModelSource>(
                 "../TemporaryCharacterObjectSabotageContaminationModelSource");
+        influenceModelSource = GetNode<TemporaryCharacterTargetSabotageInfluenceModelSource>(
+            "../TemporaryCharacterTargetSabotageInfluenceModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
         {
             Timeout = Timeout.InfiniteTimeSpan,
         };
+        influenceComposition = new(influenceModelSource);
         if (OS.GetEnvironment(AutomaticCompositionDisabledEnvironmentVariable)
             != DisabledEnvironmentValue)
         {
@@ -102,7 +108,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyConcealmentBinding(selection)
             || !TryApplyMoveBinding(selection)
             || !TryApplySubstitutionBinding(selection)
-            || !TryApplyContaminationBinding(selection))
+            || !TryApplyContaminationBinding(selection)
+            || !TryApplyInfluenceBinding(selection))
         {
             return false;
         }
@@ -127,7 +134,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyConcealmentBinding(selection)
             && TryApplyMoveBinding(selection)
             && TryApplySubstitutionBinding(selection)
-            && TryApplyContaminationBinding(selection);
+            && TryApplyContaminationBinding(selection)
+            && TryApplyInfluenceBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -428,6 +436,44 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             contaminationBinding = replacement;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyInfluenceBinding(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!influenceBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = influenceComposition.TryClear();
+            if (cleared)
+            {
+                influenceBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        bool applied = influenceBindingInitialized
+            ? influenceComposition.TryReplace(selectedSettings, client, credentialSource)
+            : influenceComposition.TryInitialize(selectedSettings, client, credentialSource);
+        if (applied)
+        {
+            influenceBindingInitialized = true;
         }
 
         return applied;
