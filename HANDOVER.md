@@ -26,6 +26,8 @@ changes, persist relationships, or add UI/input, timing, navigation, movement, p
 dialogue, or other world behavior. The unrelated untracked `scripts/code_statistics.py` in the
 original checkout remains untouched.
 
+Implementation commit `7670ed4` is published in draft PR #298 targeting `main`.
+
 ## Validation and review
 
 - Test-first focused builds failed only on each absent controller, and the main-scene checks failed
@@ -40,6 +42,8 @@ original checkout remains untouched.
   policy delegation, one-shot ownership, queued-model preservation, task/status gating, inert
   startup, main-scene dependency order, unchanged source graphs, closed public surfaces,
   documentation, file size, line length, formatting, and whitespace. No unresolved finding remains.
+- Hosted run `35218468129` completed all five jobs with `steps: []`; this is Actions/account
+  infrastructure, not executed product-test evidence, and should not be retried unchanged.
 
 ## Exact next bounded slice
 
