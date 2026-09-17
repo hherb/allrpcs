@@ -2,62 +2,52 @@
 
 ## Current state
 
-PR #286 is merged into `main` at `a1c282a`. Branch
-`codex/phase-7-influence-decision` advances Phase 7 through five dependency-ordered slices:
+`main` includes merged PR #287 at `911a9dc`. Branch `codex/phase-7-influence-openai` advances the
+provider path through four dependency-ordered slices:
 
-- Phase 7km adds the provider-neutral influence decision-model interface and pure Application
-  controller. It forwards one exact request and caller token to one model invocation and constructs
-  the existing Domain result so invalid decisions fail closed.
-- Phase 7kn retains one exact OpenAI setting and caller-composed model without invoking it.
-- Phase 7ko supplies exact-instance initialized/replaced/cleared bindings, one-shot precedence,
-  configured fallback, and one stable fail-closed offline model without construction-time I/O.
-- Phase 7kp owns one isolated bounded decision task. It rejects overlap, supports one cancellation
-  request and explicit terminal reset, and installs only an accepted completed result on the main
-  thread while model, cancellation, and validation failures expose no result.
-- Phase 7kq explicitly composes one already-authored exact request with the model source and task,
-  preserving a queued one-shot model across rejected overlap and remaining inert at startup.
+- Phase 7kr strictly decodes one bounded closed influence-decision JSON document, rebinds actor text
+  and a nullable candidate index to exact request instances, and delegates final acceptance to the
+  existing Domain policy.
+- Phase 7ks accumulates one bounded ordered OpenAI Responses semantic stream and completes framed
+  SSE only after an accepted exact selection or abstention.
+- Phase 7kt serializes one stateless streaming structured-output request with bounded trusted actor,
+  relationship, and candidate context plus a closed exact decision schema.
+- Phase 7ku executes that request through caller-owned OpenAI credential, HTTP, settings, and
+  endpoint dependencies, and creates an exact binding without construction-time I/O.
 
-The branch changes only Application contracts/tests, isolated game nodes and smokes, the
-credential-free smoke script, README, ROADMAP, and this handover. None of the new nodes are in
-`Main.tscn`. It adds no OpenAI transport/decoder, binding factory, settings composition, automatic
-scheduling, influence application, evidence, recovery selection, persistence, input/UI, time,
-navigation, movement, perception, dialogue, or other world behavior. The unrelated untracked
+The branch changes only Infrastructure contracts/tests, README, ROADMAP, and this handover. It does
+not compose game settings, add scene nodes or `Main.tscn` wiring, schedule work, apply influence,
+author evidence, select recovery, persist state, or add input/UI, time, navigation, movement,
+perception, dialogue, or other world behavior. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
-
-Implementation commit `cd86a32` is published in draft PR #287 targeting `main`.
 
 ## Validation and review
 
-- Test-first host runs pass all 9 new Application controller and binding tests. Focused zero-warning
-  game builds and all three new isolated model-source, task, and consideration-flow smokes pass.
+- Focused host runs pass 24 decoder tests, 24 stream/SSE tests, 5 request-serialization tests, and 9
+  model/binding tests.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,633 Domain tests, 551 Application tests, 897 Infrastructure tests, 8
+  zero-warning build, 2,633 Domain tests, 551 Application tests, 959 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
-- Session-wide review verified exact request/token/model retention, validation through the existing
-  Domain result, pre-cancellation, exception propagation, exact-instance binding CAS, one-shot
-  preservation across overlap, stable offline failure, main-thread-only result installation,
-  cancellation/reset state, inert startup, and unchanged request/relationship state. One weak
-  self-reference smoke assertion found during review was replaced with a concrete relationship-value
-  check; no unresolved finding remains.
-- `git diff --check`, the 120-column check, and per-file 500-line checks pass.
+- Session-wide review verified exact request-instance rebinding, Domain-policy delegation, complete
+  ordered SSE lifecycle enforcement, bounded redacted failures, stable trusted-context indexes,
+  credential-before-send behavior, caller cancellation, caller-owned dependency retention, and
+  construction-time I/O absence. No unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7kr: strictly decode one provider influence decision JSON document**.
+Take **Phase 7kv: compose one influence model binding from explicit game settings**.
 
 Acceptance boundary:
 
-1. Test-first add one Infrastructure deserializer that accepts an exact
-   `CharacterTargetSabotageInfluenceConsiderationRequest` and a bounded JSON document containing
-   exactly `actorId` and nullable zero-based `selectedCandidateIndex`.
-2. Rebind value-matching actor text to the request's exact actor identifier, resolve any index to the
-   exact retained candidate, construct `CharacterTargetSabotageInfluenceDecision`, and delegate
-   final acceptance to the existing Domain policy without changing request state.
-3. Reject null, oversized, malformed, trailing, commented, over-depth, unknown, duplicate, missing,
-   wrong-type, invalid-actor, negative, and out-of-range input through one bounded redacted argument
-   error; reflection-lock the strict public surface and length bound.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add SSE
-   accumulation, HTTP/OpenAI model execution, prompts/request serialization, binding factories,
-   settings composition, `Main.tscn` wiring, automatic scheduling, influence application, evidence,
-   recovery selection, persistence, input/UI, timing, or other world behavior.
+1. Test-first add one isolated composition seam that accepts exact already-authored OpenAI settings,
+   caller-owned HTTP and credential dependencies, and the existing temporary influence model source.
+2. Create the binding through `OpenAiCharacterTargetSabotageInfluenceModelBindingFactory` and install
+   it only through the source's existing expected-instance initialize/replace/clear operations.
+3. Keep construction and ordinary startup inert: no credential load, HTTP send, model invocation,
+   automatic consideration, or influence application. Prove the explicit configured/offline and
+   replacement/clear paths in an isolated credential-free smoke.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add
+   `Main.tscn` wiring, global model-composition-controller integration, automatic scheduling,
+   influence application, evidence, recovery selection, persistence, input/UI, timing, or other
+   world behavior.
