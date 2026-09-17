@@ -758,6 +758,22 @@ fresh relationship state with the exact candidate and reason retained. It accept
 validated consideration result and does not select, reconsider, recover, author evidence, or add
 elapsed-time, Application, scene, persistence, UI, model, or provider behavior.
 
+`ICharacterTargetSabotageInfluenceDecisionModel` is the provider-neutral Application seam for one
+exact influence request and caller cancellation. The pure orchestration controller rejects nulls
+and pre-cancellation before invoking that model exactly once, then constructs the existing Domain
+consideration result so invalid decisions fail closed without changing request state. An immutable
+OpenAI binding retains exact caller-composed settings and model without invoking it.
+
+The isolated temporary influence model source supports exact-instance initialized, replaced, and
+cleared bindings, one-shot model precedence, configured fallback, and one stable fail-closed
+offline model. A bounded scene task owns one decision at a time, installs only a completed accepted
+result on the main thread, rejects overlap, supports one cancellation request and explicit terminal
+reset, and exposes failures only as status. An explicit isolated flow composes an already-authored
+exact request with that source and task while preserving a queued one-shot model across rejected
+overlap. These nodes are not present in `Main.tscn` and do not decode provider output, apply
+influence, schedule themselves, or add input/UI, settings mutation, persistence, evidence, recovery
+selection, elapsed-time, navigation, movement, perception, dialogue, or other world behavior.
+
 `CharacterTargetSabotageInfluenceTransition` accepts only that fully eligible candidate, delegates
 the immutable change to the existing relationship transition, and returns a fresh relationship
 together with the exact applied candidate. Rejected input throws without changing any source. This

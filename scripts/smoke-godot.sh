@@ -101,6 +101,12 @@ godot --headless --path "$repository_root/game" \
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterDialogueMisquotationEvidenceModelSourceSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterTargetSabotageInfluenceModelSourceSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterTargetSabotageInfluenceTaskControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterTargetSabotageInfluenceConsiderationFlowSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
     res://CharacterDialogueMisquotationEvidenceTaskControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterDialogueMisquotationEvidenceConsiderationFlowSmokeCheck.tscn \
