@@ -39,6 +39,11 @@ or other world behavior. The unrelated untracked `scripts/code_statistics.py` re
   world-state delegation, advancing-only delay eligibility, immutable application, complete
   one-pass selection validation, stable exact-reference retention, closed public surfaces,
   documentation, file size, line length, formatting, and whitespace. No unresolved finding remains.
+- Draft PR #300's initial hosted run `35222404114` completed with all five jobs reporting
+  `steps: []`. That is Actions/account infrastructure state rather than hosted product-test evidence;
+  the unchanged jobs were not retried.
+
+Implementation commit `46e0d53` is published in draft PR #300 targeting `main`.
 
 ## Exact next bounded slice
 
