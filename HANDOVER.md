@@ -20,6 +20,8 @@ consideration request, start recovery work automatically, author evidence, persi
 or add UI/input, elapsed time, navigation, movement, perception, dialogue, or other world behavior.
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `48df87a` is published in draft PR #297 targeting `main`.
+
 ## Validation and review
 
 - Test-first builds failed only on the absent candidate controller, and the main-scene smoke failed
