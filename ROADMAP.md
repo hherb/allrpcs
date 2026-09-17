@@ -418,6 +418,14 @@ Current continuation:
   the unchanged character-target access policy without defining occurrence or effect semantics.
 - [x] Bind one exact eligible `delay` or `influence` proposal to its exact retained target-character
   occurrence candidate without applying elapsed-time or relationship effects.
+- [x] Bind one exact eligible `delay` occurrence to an exact authoritative advancing world event
+  without recording that event or advancing qualitative world time.
+- [x] Apply one exact eligible `delay` candidate through the immutable authoritative world-event
+  occurrence transition while retaining the exact candidate and every rejected source.
+- [x] Select the exact first eligible delay candidate in stable bounded caller order only after
+  complete one-pass collection validation, without applying it.
+- [x] Retain exact current actor, access, authoritative event, log, time, and bounded candidate state
+  for one provider-neutral delay consideration without selecting, deciding, or applying it.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while

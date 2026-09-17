@@ -723,6 +723,31 @@ proposal requirement and delegates the complete unchanged actor and access eligi
 apply an effect, delay elapsed time, change a relationship, author evidence, or grant scene,
 persistence, or provider authority.
 
+`CharacterTargetSabotageDelayCandidate` binds one exact eligible character-target occurrence to one
+exact caller-authored world event. Its pure policy accepts only `delay`, requires that exact event to
+be an authoritative advancing definition eligible against the current log and qualitative time, and
+reuses the complete unchanged occurrence eligibility gate. It does not record the event, advance
+time, select a target, author evidence, or grant scene, persistence, or provider authority.
+
+`CharacterTargetSabotageDelayTransition` applies one exact eligible target delay through the existing
+authoritative world-event occurrence transition. Its immutable result retains the exact candidate
+and returns fresh event-log and qualitative-time snapshots while rejected input leaves every source
+unchanged. It does not select, decide, recover, persist, or grant Application, scene, UI, or provider
+authority.
+
+`CharacterTargetSabotageDelaySelection` materializes and validates at most 64 supplied delay
+candidates once, rejects null or duplicate exact candidate references, and returns the exact first
+currently eligible candidate in stable caller order. Distinct structurally equivalent candidates
+remain valid. This pure Domain selection does not apply the delay, retain a consideration request,
+author evidence, or grant Application, scene, persistence, UI, or provider authority.
+
+`CharacterTargetSabotageDelayConsiderationRequest` retains the exact actor, ordinary-interaction
+access, authoritative event definitions, current event log, qualitative time, and a stable defensive
+copy of at most 64 exact delay candidates. Construction enumerates candidates once and rejects null
+or duplicate exact references while permitting distinct structurally equivalent candidates. The
+provider-neutral request does not judge eligibility, select, decide, apply, invoke a model, or grant
+Application, scene, persistence, UI, or provider authority.
+
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
 requires the change to belong to the occurrence target and relate that target to the proposal actor,

@@ -2,61 +2,59 @@
 
 ## Current state
 
-`main` includes merged PR #298 at `4560552`. Branch
-`codex/phase-7-influence-recovery-coordination` advances the exact influence-recovery scene chain
-through two bounded slices:
+`main` includes merged PR #299 at `466a69d`. Branch `codex/phase-7-delay-effects` advances the
+character-targeted delay chain through four bounded Domain slices:
 
-- Phase 7lz adds `CharacterTargetSabotageInfluenceRecoveryStartCoordinator`. One explicit call
-  requires the influence controller's exact latest result and relationship, unused candidate and
-  request sources, uninitialized recovery authority, and an idle recovery task. It validates a
-  prospective inverse candidate and request before publishing state or consuming the queued model,
-  then creates the exact candidate/request, initializes recovery authority, and starts that request
-  once.
-- Phase 7ma dependency-orders that coordinator in `Main.tscn` after its exact scene dependencies.
-  The existing switch-gated influence smoke now uses the coordinator for its full
-  influence-to-recovery chain, while ordinary startup remains inert.
+- Phase 7mb adds `CharacterTargetSabotageDelayCandidate` and its pure policy. One exact retained
+  `delay` occurrence may bind only its exact authoritative, recordable, advancing `WorldEvent`
+  against the unchanged actor, access, event definitions, event log, and qualitative time.
+- Phase 7mc applies one eligible delay through `WorldEventOccurrenceTransition`, retaining the exact
+  candidate and returning fresh immutable event-log and world-time snapshots while rejected sources
+  remain unchanged.
+- Phase 7md selects the exact first eligible delay candidate in stable caller order only after
+  validating the entire enumerable once, with a 64-item maximum and null or duplicate exact
+  references rejected.
+- Phase 7me retains the exact actor, access, authoritative events, current event log, world time,
+  and a stable defensive copy of bounded exact candidates in one provider-neutral consideration
+  request without judging eligibility or making a decision.
 
-The branch changes only the bounded coordinator, its isolated smoke, the existing switch-gated
-main-scene influence smoke, main-scene dependency order, smoke script, README, ROADMAP, and this
-handover. It does not autonomously start recovery, infer or author inverse evidence, apply elapsed
-time, persist relationships, or add UI/input, navigation, movement, perception, dialogue, or other
-world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched.
+The branch changes only bounded Domain contracts and tests plus README, ROADMAP, and this handover.
+It does not add delay decision/model/task flow, autonomous application, recovery, evidence,
+Application or scene ownership, persistence, UI/input, navigation, movement, perception, dialogue,
+or other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched.
 
 ## Validation and review
 
-- Test-first validation produced the expected `CS0246` for the absent coordinator and the expected
-  missing-node failure for the absent `Main.tscn` owner before the smallest implementations were
-  added.
-- The focused zero-warning game build, isolated coordinator smoke, and switch-gated main-scene
-  influence-to-recovery smoke pass host-locally.
+- Test-first validation produced the expected missing-type `CS0246` failures for the candidate,
+  transition result, selection, and consideration request before their smallest implementations
+  were added.
+- The focused target-delay Domain suite passes all 22 tests host-locally. The first focused sandbox
+  run built successfully but VSTest could not bind its loopback socket; the identical host-local
+  run is the test evidence.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,655 Domain tests, 560 Application tests, 1,028 Infrastructure tests, all 8
+  zero-warning build, 2,677 Domain tests, 560 Application tests, 1,028 Infrastructure tests, all 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
-  Compatibility renderer launch. The first sandboxed run reached the same zero-warning build but
-  VSTest could not bind its loopback socket; the identical host-local run is the product evidence.
-- Session-wide review covers preflight-before-publication ordering, exact result/relationship and
-  nested graph retention, queued-model preservation, one-shot ownership, task/authority gates,
-  inert startup, scene dependency order, unchanged source graphs, closed public surfaces,
+  Compatibility renderer launch.
+- Session-wide review covers exact authoritative event identity, unchanged occurrence/access and
+  world-state delegation, advancing-only delay eligibility, immutable application, complete
+  one-pass selection validation, stable exact-reference retention, closed public surfaces,
   documentation, file size, line length, formatting, and whitespace. No unresolved finding remains.
-
-Implementation commit `056f9af` is published in draft PR #299 targeting `main`.
 
 ## Exact next bounded slice
 
-Take **Phase 7mb: define one exact target-delay effect candidate without applying it**.
+Take **Phase 7mf: accept and retain one provider-neutral target-delay decision**.
 
 Acceptance boundary:
 
-1. Test-first add one immutable Domain candidate that binds an exact eligible
-   `CharacterTargetSabotageOccurrence` to one exact caller-authored `WorldEvent` whose time effect
-   advances meaningful world time.
-2. Add one pure policy that accepts only `delay`, delegates the unchanged character-target
-   occurrence/access gate, and rejects influence, wrong actor/target, inaccessible, non-advancing,
-   null, or rebuilt/mismatched input without changing the occurrence, actor, target, access, event,
-   or world-time graph.
-3. Retain exact nested instances and keep the public surface get-only, bounded, and free of elapsed
-   application, selection, recovery, provider, scene, persistence, UI/input, navigation, movement,
-   perception, dialogue, or other world behavior.
+1. Test-first add one immutable decision containing the exact deciding actor identifier and either
+   one exact selected `CharacterTargetSabotageDelayCandidate` or null for explicit abstention.
+2. Add one pure policy that accepts only an exact request-actor abstention or an exact current
+   request-member candidate still eligible against the request's unchanged access and world state;
+   reject rebuilt actor identifiers, foreign or distinct-equivalent candidates, stale/ineligible
+   world state, and null inputs.
+3. Bind one accepted decision immutably to its exact
+   `CharacterTargetSabotageDelayConsiderationRequest`, exposing the exact selected candidate or null
+   without applying a delay or changing any request source.
 4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet apply
-   the delay event, advance world time, create a consideration request/model flow, wire `Main.tscn`,
-   or infer/authenticate evidence.
+   a consideration result, add a decision model or provider transport, own background work, wire
+   `Main.tscn`, infer/authenticate evidence, persist state, or add UI/input or autonomous behavior.
