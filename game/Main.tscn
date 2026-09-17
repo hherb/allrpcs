@@ -1,4 +1,4 @@
-[gd_scene load_steps=197 format=3]
+[gd_scene load_steps=201 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -244,6 +244,10 @@
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateController.cs" id="242_misquotation_evidence_candidate"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateRequestController.cs" id="243_misquotation_evidence_candidate_request"]
 [ext_resource type="Script" path="res://CharacterDialogueMisquotationEvidenceCandidateConsiderationFlowController.cs" id="244_misquotation_evidence_candidate_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceModelSource.cs" id="245_influence_model_source"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageInfluenceTaskController.cs" id="246_influence_task"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController.cs" id="247_influence_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInfluenceConsiderationMainSceneSmokeCheck.cs" id="248_influence_main_scene_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -635,6 +639,15 @@ script = ExtResource("211_object_sabotage_substitution_model_source")
 
 [node name="TemporaryCharacterObjectSabotageContaminationModelSource" type="Node" parent="."]
 script = ExtResource("216_object_sabotage_contamination_model_source")
+
+[node name="TemporaryCharacterTargetSabotageInfluenceModelSource" type="Node" parent="."]
+script = ExtResource("245_influence_model_source")
+
+[node name="CharacterTargetSabotageInfluenceTaskController" type="Node" parent="."]
+script = ExtResource("246_influence_task")
+
+[node name="TemporaryCharacterTargetSabotageInfluenceConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("247_influence_flow")
 
 [node name="TemporaryCharacterObjectSabotageContaminationSource" type="Node" parent="."]
 script = ExtResource("217_object_sabotage_contamination_source")
@@ -1114,6 +1127,9 @@ script = ExtResource("214_object_sabotage_substitution_consideration_main_scene_
 
 [node name="TemporaryCharacterDialogueMisquotationEvidenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("226_misquotation_evidence_main_scene_check")
+
+[node name="TemporaryCharacterTargetSabotageInfluenceConsiderationMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("248_influence_main_scene_check")
 
 [node name="TemporaryCharacterDialogueMisquotationOccurrenceMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("241_misquotation_occurrence_main_scene_check")

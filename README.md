@@ -770,9 +770,18 @@ offline model. A bounded scene task owns one decision at a time, installs only a
 result on the main thread, rejects overlap, supports one cancellation request and explicit terminal
 reset, and exposes failures only as status. An explicit isolated flow composes an already-authored
 exact request with that source and task while preserving a queued one-shot model across rejected
-overlap. These nodes are not present in `Main.tscn` and do not decode provider output, apply
-influence, schedule themselves, or add input/UI, settings mutation, persistence, evidence, recovery
-selection, elapsed-time, navigation, movement, perception, dialogue, or other world behavior.
+overlap. One inert game composition seam creates exact OpenAI influence bindings from caller-owned
+settings, HTTP, and credential dependencies and installs, replaces, or clears them only through the
+source's expected-instance operations. The selected-provider composition activates that seam for
+OpenAI, leaves an unsupported replacement unchanged, and restores the stable offline model for a
+supported local-provider replacement without performing construction-time input/output.
+
+The influence model source, task, and explicit consideration flow are dependency-ordered in
+`Main.tscn`. Ordinary startup does not start a decision; a credential-free main-scene smoke proves
+one exact explicit selection, reset, and fail-closed offline decision without changing relationship
+state. This scene path does not apply influence, schedule itself, or add input/UI, settings mutation,
+persistence, evidence, recovery selection, elapsed-time, navigation, movement, perception,
+dialogue, or other world behavior.
 
 The strict influence decision decoder accepts only one bounded closed JSON object containing the
 exact actor text and a nullable zero-based candidate index. It rebinds value-matching text and the
@@ -787,8 +796,9 @@ with bounded actor, relationship, and candidate context and a closed exact schem
 loads and validates a credential before sending, requires a successful `text/event-stream`
 response, redacts provider and transport failures, and returns only the exact accepted decision.
 Its binding factory retains caller-owned settings, HTTP, credential, and endpoint dependencies
-without construction-time I/O. This provider path is not yet composed into game settings or scenes,
-does not schedule itself, and does not apply influence or mutate any request source.
+without construction-time I/O. Game composition now installs that binding only for selected OpenAI
+settings and the main scene retains the explicit task flow, but neither path schedules itself,
+applies influence, or mutates any request source.
 
 `CharacterTargetSabotageInfluenceTransition` accepts only that fully eligible candidate, delegates
 the immutable change to the existing relationship transition, and returns a fresh relationship

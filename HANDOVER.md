@@ -2,52 +2,57 @@
 
 ## Current state
 
-`main` includes merged PR #287 at `911a9dc`. Branch `codex/phase-7-influence-openai` advances the
-provider path through four dependency-ordered slices:
+`main` includes merged PR #288 at `93e014e`. Branch
+`codex/phase-7-influence-composition` advances the influence scene path through three bounded
+slices:
 
-- Phase 7kr strictly decodes one bounded closed influence-decision JSON document, rebinds actor text
-  and a nullable candidate index to exact request instances, and delegates final acceptance to the
-  existing Domain policy.
-- Phase 7ks accumulates one bounded ordered OpenAI Responses semantic stream and completes framed
-  SSE only after an accepted exact selection or abstention.
-- Phase 7kt serializes one stateless streaming structured-output request with bounded trusted actor,
-  relationship, and candidate context plus a closed exact decision schema.
-- Phase 7ku executes that request through caller-owned OpenAI credential, HTTP, settings, and
-  endpoint dependencies, and creates an exact binding without construction-time I/O.
+- Phase 7kv adds an inert composition seam over one exact temporary influence model source. It
+  creates bindings only through `OpenAiCharacterTargetSabotageInfluenceModelBindingFactory`, retains
+  the exact installed binding as its compare-and-swap token, and supports exact initialize, replace,
+  and clear paths.
+- Phase 7kw composes that seam from selected game settings. OpenAI activates or replaces one exact
+  caller-owned binding; unsupported replacement fails closed without changing current activation,
+  while a supported local-provider replacement restores the stable offline influence model.
+- Phase 7kx dependency-orders the influence model source, task, and explicit consideration flow in
+  `Main.tscn`. Ordinary startup is inert; the gated credential-free smoke proves one exact explicit
+  selection, reset, offline failure, and unchanged relationship state.
 
-The branch changes only Infrastructure contracts/tests, README, ROADMAP, and this handover. It does
-not compose game settings, add scene nodes or `Main.tscn` wiring, schedule work, apply influence,
-author evidence, select recovery, persist state, or add input/UI, time, navigation, movement,
-perception, dialogue, or other world behavior. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
+No slice schedules a decision, applies influence, authors evidence, selects or applies recovery,
+persists relationship state, or adds input/UI, timing, navigation, movement, perception, dialogue,
+or other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
+must stay unstaged.
 
 ## Validation and review
 
-- Focused host runs pass 24 decoder tests, 24 stream/SSE tests, 5 request-serialization tests, and 9
-  model/binding tests.
+- Focused zero-warning game builds pass, as do the isolated composition smoke, the selected-provider
+  composition smoke, and the gated main-scene influence consideration smoke.
+- The initial sandboxed Godot run reproduced the known `user://logs` failure and signal 11; identical
+  credential-free host runs pass without product changes.
+- Session-wide review covers exact dependency retention, stale-safe expected-instance replacement
+  and clearing, provider activation/offline restoration, dependency ordering, inert startup, exact
+  request/candidate retention, and unchanged relationship state. No unresolved finding remains.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
   zero-warning build, 2,633 Domain tests, 551 Application tests, 959 Infrastructure tests, 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
-- Session-wide review verified exact request-instance rebinding, Domain-policy delegation, complete
-  ordered SSE lifecycle enforcement, bounded redacted failures, stable trusted-context indexes,
-  credential-before-send behavior, caller cancellation, caller-owned dependency retention, and
-  construction-time I/O absence. No unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7kv: compose one influence model binding from explicit game settings**.
+Take **Phase 7ky: own one exact authoritative influence relationship transition**.
 
 Acceptance boundary:
 
-1. Test-first add one isolated composition seam that accepts exact already-authored OpenAI settings,
-   caller-owned HTTP and credential dependencies, and the existing temporary influence model source.
-2. Create the binding through `OpenAiCharacterTargetSabotageInfluenceModelBindingFactory` and install
-   it only through the source's existing expected-instance initialize/replace/clear operations.
-3. Keep construction and ordinary startup inert: no credential load, HTTP send, model invocation,
-   automatic consideration, or influence application. Prove the explicit configured/offline and
-   replacement/clear paths in an isolated credential-free smoke.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet add
-   `Main.tscn` wiring, global model-composition-controller integration, automatic scheduling,
-   influence application, evidence, recovery selection, persistence, input/UI, timing, or other
-   world behavior.
+1. Test-first add one isolated scene controller that initializes exactly one current
+   `CharacterRelationshipMemory` and exposes only that exact current instance plus the latest exact
+   applied `CharacterTargetSabotageInfluenceResult`, if any.
+2. Resolve one accepted `CharacterTargetSabotageInfluenceConsiderationResult` at most once. Require
+   its request relationship to be the exact current instance; keep abstention numerically and
+   referentially inert while still consuming that exact request, and install only the existing pure
+   transition's fresh result for a selected candidate.
+3. Reject stale, repeated, uninitialized, null, and distinct value-equivalent inputs without
+   changing state. Prove exact-reference behavior and unchanged rejected sources in an isolated
+   credential-free smoke.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet wire
+   the controller into `Main.tscn`, observe task completion automatically, schedule consideration,
+   author evidence, select/apply recovery, persist relationships, or add input/UI, timing,
+   navigation, movement, perception, dialogue, or other world behavior.
