@@ -2,64 +2,53 @@
 
 ## Current state
 
-`main` includes merged PR #299 at `466a69d`. Branch `codex/phase-7-delay-effects` advances the
-character-targeted delay chain through four bounded Domain slices:
+`main` includes merged PR #300 at `410350c`. Branch `codex/phase-7-delay-decisions` advances the
+character-targeted delay chain through three bounded slices:
 
-- Phase 7mb adds `CharacterTargetSabotageDelayCandidate` and its pure policy. One exact retained
-  `delay` occurrence may bind only its exact authoritative, recordable, advancing `WorldEvent`
-  against the unchanged actor, access, event definitions, event log, and qualitative time.
-- Phase 7mc applies one eligible delay through `WorldEventOccurrenceTransition`, retaining the exact
-  candidate and returning fresh immutable event-log and world-time snapshots while rejected sources
-  remain unchanged.
-- Phase 7md selects the exact first eligible delay candidate in stable caller order only after
-  validating the entire enumerable once, with a 64-item maximum and null or duplicate exact
-  references rejected.
-- Phase 7me retains the exact actor, access, authoritative events, current event log, world time,
-  and a stable defensive copy of bounded exact candidates in one provider-neutral consideration
-  request without judging eligibility or making a decision.
+- Phase 7mf adds `CharacterTargetSabotageDelayDecision`, its exact-current acceptance policy, and
+  `CharacterTargetSabotageDelayConsiderationResult`. Only the exact request actor may abstain or
+  select an exact currently eligible request-member candidate against unchanged access/world state.
+- Phase 7mg adds `CharacterTargetSabotageDelayConsiderationTransition`. Accepted abstention is inert;
+  an accepted selection delegates through the existing immutable delay transition and produces fresh
+  event-log and qualitative-time snapshots.
+- Phase 7mh adds provider-neutral `ICharacterTargetSabotageDelayDecisionModel` and
+  `CharacterTargetSabotageDelayConsiderationController`. The controller forwards the exact request
+  and caller cancellation once, then validates the returned decision through the Domain result.
 
-The branch changes only bounded Domain contracts and tests plus README, ROADMAP, and this handover.
-It does not add delay decision/model/task flow, autonomous application, recovery, evidence,
-Application or scene ownership, persistence, UI/input, navigation, movement, perception, dialogue,
-or other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched.
+The branch changes only bounded Domain/Application contracts and tests plus README, ROADMAP, and this
+handover. It does not bind a provider or settings, own background work, automatically apply delay,
+recover time, author/authenticate evidence, add scene ownership, persist state, or add UI/input or
+other autonomous behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched.
 
 ## Validation and review
 
-- Test-first validation produced the expected missing-type `CS0246` failures for the candidate,
-  transition result, selection, and consideration request before their smallest implementations
-  were added.
-- The focused target-delay Domain suite passes all 22 tests host-locally. The first focused sandbox
-  run built successfully but VSTest could not bind its loopback socket; the identical host-local
-  run is the test evidence.
+- Test-first validation produced the expected missing-type compiler failures for each decision,
+  result, transition, model, and controller before the smallest implementations were added.
+- Focused host-local validation passes all 7 decision/result tests, 3 consideration-transition
+  tests, and 6 Application controller/model tests. Sandboxed .NET runs were blocked by local IPC or
+  VSTest loopback permissions; identical host-local commands supply the test evidence.
 - Final host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a
-  zero-warning build, 2,677 Domain tests, 560 Application tests, 1,028 Infrastructure tests, all 8
+  zero-warning build, 2,687 Domain tests, 566 Application tests, 1,028 Infrastructure tests, all 8
   architecture tests, scenario validation, every credential-free Godot smoke, and the final
   Compatibility renderer launch.
-- Session-wide review covers exact authoritative event identity, unchanged occurrence/access and
-  world-state delegation, advancing-only delay eligibility, immutable application, complete
-  one-pass selection validation, stable exact-reference retention, closed public surfaces,
-  documentation, file size, line length, formatting, and whitespace. No unresolved finding remains.
-- Draft PR #300's initial hosted run `35222404114` completed with all five jobs reporting
-  `steps: []`. That is Actions/account infrastructure state rather than hosted product-test evidence;
-  the unchanged jobs were not retried.
-
-Implementation commit `46e0d53` is published in draft PR #300 targeting `main`.
+- Session-wide review covers exact actor and candidate identity, stale/ineligible world-state
+  rejection, abstention inertness, immutable event application, cancellation/failure propagation,
+  closed public surfaces, documentation, file size, line length, formatting, whitespace, and scoped
+  paths. The review added explicit already-recorded-event coverage; no unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7mf: accept and retain one provider-neutral target-delay decision**.
+Take **Phase 7mi: retain and supply one provider-neutral target-delay decision model**.
 
 Acceptance boundary:
 
-1. Test-first add one immutable decision containing the exact deciding actor identifier and either
-   one exact selected `CharacterTargetSabotageDelayCandidate` or null for explicit abstention.
-2. Add one pure policy that accepts only an exact request-actor abstention or an exact current
-   request-member candidate still eligible against the request's unchanged access and world state;
-   reject rebuilt actor identifiers, foreign or distinct-equivalent candidates, stale/ineligible
-   world state, and null inputs.
-3. Bind one accepted decision immutably to its exact
-   `CharacterTargetSabotageDelayConsiderationRequest`, exposing the exact selected candidate or null
-   without applying a delay or changing any request source.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet apply
-   a consideration result, add a decision model or provider transport, own background work, wire
-   `Main.tscn`, infer/authenticate evidence, persist state, or add UI/input or autonomous behavior.
+1. Test-first add one immutable binding retaining the exact selected OpenAI settings and exact
+   `ICharacterTargetSabotageDelayDecisionModel`, without loading credentials or invoking the model.
+2. Add one temporary provider-neutral source with exact-instance configured binding initialization,
+   replacement, and clearing; one queued one-shot model must take precedence, and the same stable
+   fail-closed offline model must be returned when neither source exists.
+3. Require exact-reference compare-and-swap for configured replacement/clear, preserve any queued
+   one-shot across those operations, and expose only closed read-only/provider-neutral surfaces.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet own a
+   task, start consideration, decode/serialize provider traffic, load credentials, send HTTP, wire
+   `Main.tscn`, apply/recover a delay autonomously, infer evidence, persist state, or add UI/input.

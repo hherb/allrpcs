@@ -748,6 +748,21 @@ or duplicate exact references while permitting distinct structurally equivalent 
 provider-neutral request does not judge eligibility, select, decide, apply, invoke a model, or grant
 Application, scene, persistence, UI, or provider authority.
 
+`CharacterTargetSabotageDelayDecision` retains the exact deciding actor identifier and either one
+exact request candidate or an explicit abstention. Its pure acceptance policy requires the exact
+actor identifier instance and requires any selection to remain an exact currently eligible request
+member against the unchanged access and world state. An immutable consideration result binds only
+an accepted decision to its exact request. These contracts do not apply a delay, invoke a model,
+author evidence, or grant scene, persistence, UI, or provider authority.
+
+`CharacterTargetSabotageDelayConsiderationTransition` leaves an accepted abstention inert and
+delegates an accepted exact selection through the existing immutable target-delay transition,
+yielding fresh event-log and qualitative-time state. The provider-neutral
+`ICharacterTargetSabotageDelayDecisionModel` and its Application controller obtain one decision for
+the exact request and caller cancellation, then construct the validated Domain result. They do not
+bind a provider, own background work, apply automatically, recover time, author evidence, or grant
+scene, persistence, or UI behavior.
+
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
 requires the change to belong to the occurrence target and relate that target to the proposal actor,
