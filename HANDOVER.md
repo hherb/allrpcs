@@ -21,6 +21,8 @@ task result in `Main.tscn`, persist relationships, author candidates or evidence
 change elapsed time, navigation, movement, perception, dialogue, or other world behavior. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `f686526` is published in draft PR #295 targeting `main`.
+
 ## Validation and review
 
 - Test-first builds failed on the absent composition and recovery-authority contracts before the
