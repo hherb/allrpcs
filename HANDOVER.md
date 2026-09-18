@@ -19,6 +19,8 @@ continues the character-targeted delay path through three bounded pure Domain sl
   authoritative event definitions, event log, world time, and candidates without selecting or
   applying them.
 
+Implementation commit `f0d6b59` is published in draft PR #306 targeting `main`.
+
 No slice decides recovery, applies a consideration result, constructs or schedules requests,
 invokes a model, owns background work, wires recovery into the scene, authors evidence, persists
 state, or adds input/UI, navigation, movement, perception, dialogue, or other world behavior. The
@@ -40,6 +42,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   and scoped paths. One fail-closed finding was fixed by requiring the delay result's exact original
   event to remain an authoritative advancing definition; its regression test is included. No
   unresolved finding remains.
+- Draft PR #306 is open, draft, and mergeable. Its five hosted jobs failed immediately with empty
+  step lists, so they are Actions/account infrastructure failures rather than hosted product-test
+  evidence; the complete host-local quality result above remains the executable validation.
 
 ## Exact next bounded slice
 
