@@ -812,6 +812,27 @@ exact caller-started selection, acknowledges it only while that authority remain
 proves a later offline failure leaves the applied state unchanged. This scene path does not schedule
 itself, recover elapsed time, author evidence, persist state, or add input/UI or other world behavior.
 
+`CharacterTargetSabotageDelayRecoveryCandidate` binds one exact applied delay result to one exact
+caller-authored recovery world event. Its pure policy requires the applied result's exact event-log
+and qualitative-time snapshots to remain current, the exact delay event identifier to remain both
+the log tail and current qualitative-time event, and the recovery event to be the exact
+authoritative unrecorded advancing definition. Stale, rebuilt, mismatched, already-recorded,
+non-authoritative, and non-advancing input fails closed without changing any source.
+
+`CharacterTargetSabotageDelayRecoveryTransition` applies one exact-current eligible recovery through
+the existing immutable world-event occurrence transition. Its result retains the exact recovery
+candidate, appends recovery after the complete delay history, and returns fresh event-log and
+qualitative-time snapshots without deleting or rewriting the delay occurrence. Bounded stable
+selection validates at most 64 supplied recovery candidates once before returning the exact first
+eligible candidate; it rejects null and duplicate exact references while permitting distinct
+equivalent wrappers.
+
+`CharacterTargetSabotageDelayRecoveryConsiderationRequest` retains the exact recovery actor,
+authoritative event definitions, current event log, qualitative time, and a defensive read-only
+copy of at most 64 exact recovery candidates. It validates the collection once but does not judge
+eligibility, select, decide, apply, invoke a model, schedule work, author evidence, persist state, or
+grant Application, scene, UI, navigation, movement, perception, dialogue, or other world authority.
+
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
 requires the change to belong to the occurrence target and relate that target to the proposal actor,

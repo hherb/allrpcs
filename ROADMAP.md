@@ -456,6 +456,14 @@ Current continuation:
   its task only while the exact resolved world-state authority remains current.
 - [x] Dependency-order target-delay authority and result resolution in the main scene while keeping
   ordinary startup inert and proving exact application only through a switch-gated smoke.
+- [x] Define one exact-current authoritative advancing world-event candidate for target-delay
+  recovery, with stale, rebuilt, mismatched, recorded, non-authoritative, and non-advancing input
+  failing closed.
+- [x] Apply one exact-current target-delay recovery as a fresh immutable world-event occurrence,
+  retaining complete delay history and the exact recovery candidate.
+- [x] Select one exact eligible target-delay recovery in stable bounded caller order, then retain
+  exact actor and current authoritative world state for provider-neutral consideration without
+  selecting, deciding, or applying it.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while

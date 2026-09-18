@@ -2,67 +2,60 @@
 
 ## Current state
 
-`main` includes merged PR #304 at `1e8c500`. Branch `codex/phase-7-delay-authority` advances the
-character-targeted delay path through three bounded slices:
+`main` includes merged PR #305 at `7ceb984`. Branch `codex/phase-7-delay-recovery`
+continues the character-targeted delay path through three bounded pure Domain slices:
 
-- Phase 7mt adds `CharacterTargetSabotageDelayController`, which initializes one exact authoritative
-  `WorldEventLogSnapshot` and `WorldTimeSnapshot` pair, consumes every exact accepted consideration
-  request once, keeps abstention referentially inert, and atomically installs only the existing pure
-  transition's fresh pair plus exact applied result for a selection.
-- Phase 7mu adds `CharacterTargetSabotageDelayResolutionCoordinator`, which observes each exact
-  completed task result once and permits explicit task reset only while the exact resolved event log,
-  world time, and latest-applied-result tokens remain current.
-- Phase 7mv dependency-orders the authority and resolution coordinator in `Main.tscn`. Ordinary
-  startup remains uninitialized and inert; the switch-gated credential-free smoke alone initializes
-  one exact request state and proves selected application, guarded acknowledgement, and unchanged
-  applied authority after a later offline failure.
+- Phase 7mw adds `CharacterTargetSabotageDelayRecoveryCandidate` and its policy. One exact applied
+  delay result is recoverable only while its exact event-log and qualitative-time snapshots remain
+  current, its exact authoritative advancing delay event remains both the log tail and current-time
+  event, and the exact caller-authored recovery event remains authoritative, unrecorded, and
+  advancing.
+- Phase 7mx adds `CharacterTargetSabotageDelayRecoveryTransition` and its immutable result. Recovery
+  delegates to the existing world-event occurrence transition, appends recovery after the complete
+  delay history, and returns fresh log/time snapshots without deleting or rewriting delay.
+- Phase 7my–7mz add stable first-eligible selection and one provider-neutral consideration request.
+  Both validate a complete one-pass collection of at most 64 candidates, reject null and duplicate
+  exact references, and retain exact caller order; the request defensively retains the exact actor,
+  authoritative event definitions, event log, world time, and candidates without selecting or
+  applying them.
 
-Implementation commit `41d9636` is published in draft PR #305 targeting `main`.
-
-No slice constructs or schedules requests automatically, recovers elapsed time, authors evidence,
-persists world state, or adds input/UI, navigation, movement, perception, dialogue, or other world
-behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
-unstaged.
+No slice decides recovery, applies a consideration result, constructs or schedules requests,
+invokes a model, owns background work, wires recovery into the scene, authors evidence, persists
+state, or adds input/UI, navigation, movement, perception, dialogue, or other world behavior. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Test-first focused runs recorded the expected missing authority and resolution types and the
-  missing main-scene authority nodes before implementation.
-- Focused zero-warning game builds pass, as do the isolated exact authority, completed-result
-  resolution, and switch-gated main-scene smokes.
-- Sandboxed Godot reproduced the known `user://logs` failure and signal 11; identical
-  credential-free host runs pass without product changes.
-- Sandboxed VSTest reproduced the known loopback `SocketException (13)`; the identical host-local
-  `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning build,
-  2,687 Domain tests, 569 Application tests, 1,091 Infrastructure tests, all 8 architecture tests,
-  scenario validation, every credential-free Godot smoke, and the final Compatibility launch.
-- Session-wide review covers atomic pair initialization/application, exact current-state gating,
-  selection and abstention, non-consecutive request replay, weak request retention, one-shot result
-  observation, three-token acknowledgement, dependency order, inert startup, unchanged sources,
-  public surfaces, documentation, file size, line length, formatting, whitespace, and scoped paths.
-  One test-precision finding was fixed by proving failed null initialization leaves the complete
-  authority pair uninitialized; no unresolved finding remains.
-- Draft PR #305 is open, draft, and mergeable. Its five hosted jobs failed immediately with empty
-  step lists, so they are Actions/account infrastructure failures rather than hosted product-test
-  evidence; the complete host-local quality result above remains the executable validation.
+- Each slice began with a focused compile/test failure for its missing contract. The final focused
+  delay-recovery suite passes all 23 tests.
+- The sandbox reproduced the known VSTest loopback `SocketException (13)`; identical host-local
+  focused runs passed without product changes.
+- Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
+  build, 2,710 Domain tests, 569 Application tests, 1,091 Infrastructure tests, all 8 architecture
+  tests, scenario validation, every credential-free Godot smoke, and the final Compatibility launch.
+- Session-wide review covers exact applied-result/current-state identity, exact authoritative event
+  identity and time effects, log-tail/current-time alignment, one-shot event recordability, immutable
+  append-only recovery, stable complete bounded selection, defensive request retention, nulls,
+  duplicate exact references, public surfaces, docs, file size, line length, formatting, whitespace,
+  and scoped paths. One fail-closed finding was fixed by requiring the delay result's exact original
+  event to remain an authoritative advancing definition; its regression test is included. No
+  unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7mw: define one exact target-delay recovery candidate**.
+Take **Phase 7na: define one provider-neutral target-delay recovery decision**.
 
 Acceptance boundary:
 
-1. Test-first add the smallest pure Domain vocabulary that binds one exact applied
-   `CharacterTargetSabotageDelayResult` to one exact caller-authored recovery world event without
-   applying or recording that event.
-2. Require the applied result's exact delay event to remain the current qualitative-time event and
-   the exact tail of the current event log. Require the recovery event to be an authoritative,
-   unrecorded advancing definition so a later transition can append recovery without deleting or
-   rewriting the delay occurrence.
-3. Reject stale, rebuilt, already-recorded, non-authoritative, wrong-time-effect, null, and
-   mismatched state without changing any source. Retain the exact applied result and recovery event
-   instances in the accepted candidate.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff. Do not yet select
-   or apply recovery, construct or schedule recovery consideration, invoke a model, wire recovery
-   into the scene, author evidence, persist state, or add input/UI, navigation, movement,
-   perception, dialogue, or other world behavior.
+1. Test-first add the smallest immutable decision and consideration-result vocabulary for either
+   one exact request-member recovery candidate or explicit abstention, retaining the exact deciding
+   actor identifier, request, decision, and optional selection.
+2. Accept only the request actor's exact identifier instance. For a selection, require the exact
+   request-member candidate, the candidate delay occurrence's exact target identifier to be the
+   request actor, and current eligibility against the request's unchanged authoritative event, log,
+   and time state. Reject value-equal rebuilt actors/candidates and stale or ineligible state.
+3. Keep accepted abstention referentially inert and leave every request source unchanged. Do not yet
+   apply the consideration result, define a model interface/controller, bind a provider, own or
+   schedule background work, construct requests in the scene, author evidence, persist state, or add
+   input/UI, navigation, movement, perception, dialogue, or other world behavior.
+4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff.
