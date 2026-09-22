@@ -2,64 +2,59 @@
 
 ## Current state
 
-`main` includes merged PR #306 at `e1532b2`. Branch
-`codex/phase-7-delay-recovery-decision` continues target-delay recovery through seven bounded
-slices:
+`main` includes merged PR #307 at `efa465f`. Branch
+`codex/phase-7-delay-recovery-transport` continues target-delay recovery through two bounded
+Infrastructure slices:
 
-- Phase 7na–7nb add one provider-neutral exact selection-or-abstention decision, immutable accepted
-  result, and pure consideration transition. Selection requires the request actor's exact identifier,
-  the exact request-member candidate, that candidate's exact target identifier, and unchanged
-  authoritative event/log/time eligibility. Abstention remains inert; selection delegates through
-  the existing append-only recovery transition.
-- Phase 7nc adds the provider-neutral decision-model interface and cancellation-aware Application
-  controller. It forwards one exact request and caller token, then relies on the Domain result to
-  reject foreign, stale, null, or otherwise invalid output.
-- Phase 7nd–7ng add a construction-only OpenAI binding, configured/one-shot/offline scene model
-  source, isolated bounded decision task, and explicit start flow. Rejected overlap preserves a
-  queued one-shot model; completion installs only an accepted result on the main thread; cancellation
-  and terminal reset remain explicit.
+- Phase 7nh strictly decodes one complete closed JSON selection-or-abstention document within the
+  existing 4,096-code-unit transport boundary. Value-equal actor text and an in-range candidate
+  index rebind to the request's exact instances before the unchanged Domain policy rejects foreign,
+  stale, wrong-owner, or otherwise ineligible decisions through one content-free error.
+- Phase 7ni writes one request-bound strict selection schema and one stateless streaming OpenAI
+  Responses request. It includes only the selected model, disabled storage, bounded output budget,
+  provider-independent instructions, and trusted bounded actor, current world-event, event-log, and
+  recovery-candidate context.
 
-Implementation commit `ff8cbab` is published in draft PR #307 targeting `main`.
-
-Nothing decodes provider output, sends HTTP, accesses credentials, composes provider dependencies,
-applies recovery automatically, owns authoritative recovery state, schedules work automatically,
-authors evidence, persists state, or adds input/UI, navigation, movement, perception, dialogue, or
-other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
-must stay unstaged.
+Nothing accumulates provider events, parses SSE framing, sends HTTP, accesses credentials, invokes a
+model, composes a live binding, applies recovery automatically, owns authoritative recovery state,
+schedules work automatically, authors evidence, persists state, or adds input/UI, navigation,
+movement, perception, dialogue, or other world behavior. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Every slice began with a focused missing-contract compile failure. Focused final checks pass 7
-  decision/result tests, 3 consideration-transition tests, 6 Application-controller tests, 3 binding
-  tests, a zero-warning Game build, and the model-source, task, and explicit-flow Godot smokes.
-- The sandbox reproduced the known VSTest loopback/MSBuild IPC restrictions and Godot `user://logs`
-  crash; identical host-local focused commands passed without product changes.
+- Both slices began with a focused missing-contract compile failure. Focused final checks pass all
+  26 strict-deserializer cases and all 8 schema/request-serializer cases.
+- The sandbox reproduced the known .NET local-IPC restriction; identical host-local focused commands
+  passed without product changes.
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,720 Domain tests, 578 Application tests, 1,091 Infrastructure tests, all 8 architecture
+  build, 2,720 Domain tests, 578 Application tests, 1,125 Infrastructure tests, all 8 architecture
   tests, scenario validation, every credential-free Godot smoke, and the final Compatibility launch.
-- Session review covers exact actor/target/candidate identity, full current-state eligibility,
-  immutable abstention and append-only recovery, request preservation, nulls, cancellation, overlap,
-  one-shot precedence and preservation, stable offline failure, closed public surfaces, documentation,
-  file and line limits, formatting, whitespace, and scoped staged paths. No unresolved finding remains.
+- Session review covers exact actor/candidate rebinding, full current-state policy delegation,
+  immutable request state, malformed/duplicate/unknown/over-depth/oversized input, content-free
+  failures, request-bound abstention and candidate enums, trusted-context scope, credential absence,
+  closed public surfaces, documentation, file and line limits, formatting, whitespace, and scoped
+  paths. No unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7nh: strictly decode one bounded provider target-delay recovery decision**.
+Take **Phase 7nj: complete one bounded target-delay recovery semantic-event and framed SSE
+lifecycle**.
 
 Acceptance boundary:
 
-1. Test-first add one Infrastructure JSON deserializer for the exact current
-   `CharacterTargetSabotageDelayRecoveryConsiderationRequest`. Accept only a complete closed object
-   containing `actorId` and nullable integer `selectedCandidateIndex`, with no comments, trailing
-   content/commas, duplicate, missing, or unknown properties, wrong types, excessive depth, or input
-   beyond the existing 4,096-code-unit transport boundary.
-2. Rebind value-equal actor text and an in-range candidate index to the request's exact actor and
-   candidate instances, then delegate final acceptance to
-   `CharacterTargetSabotageDelayRecoveryDecisionPolicy`. Reject foreign actors, negative/out-of-range
-   indices, stale state, wrong target ownership, and otherwise ineligible selections through one
-   bounded content-free error; accepted abstention remains exact and inert.
-3. Leave the request actor, authoritative event definitions, event log, world time, candidates, and
-   every nested instance unchanged. Do not yet add schemas, request serialization, stream/SSE
-   accumulation, HTTP, credentials, an OpenAI model, composition, main-scene ownership, automatic
-   application, evidence, persistence, or input/UI behavior.
-4. Update README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff.
+1. Test-first add one exact-request stream accumulator. Accept only the ordered
+   `response.created` -> `response.in_progress` -> zero or more supported metadata/text-delta events
+   -> one valid `response.output_text.done` -> `response.completed` lifecycle. Return an exact
+   accepted decision only at successful completion.
+2. Bound each semantic event to the existing 64,000-code-unit event limit and accumulated response
+   text to the decoder's 4,096-code-unit document limit. Fail closed and terminally on malformed,
+   duplicate, out-of-order, unknown, incomplete, refused, failed, excessive, or policy-invalid
+   content without exposing provider details.
+3. Test-first compose the accumulator with `OpenAiServerSentEventReader` so one bounded UTF-8 SSE
+   stream returns only that exact completed decision. Reject empty, malformed, unterminated,
+   post-completion, or cancelled streams; leave the exact request and every nested instance
+   unchanged.
+4. Do not yet add HTTP, credentials, an OpenAI decision model, composition, main-scene ownership,
+   automatic application, evidence, persistence, or input/UI behavior. Update README/ROADMAP, run
+   `./scripts/quality.sh`, and review the complete diff.

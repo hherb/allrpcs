@@ -852,9 +852,17 @@ expected binding and preserve any queued one-shot model.
 One isolated scene task owns the bounded delay-recovery decision lifecycle, installing only an
 accepted result on the main thread while rejecting overlap and exposing explicit cancellation and
 terminal reset. An explicit flow consumes a model only while that task is idle, so rejected overlap
-cannot consume a queued one-shot model. These seams do not decode provider output, send HTTP,
-compose credentials, apply recovery automatically, own authoritative recovery state, schedule
-themselves, author evidence, persist state, or add input/UI or other world behavior.
+cannot consume a queued one-shot model. Infrastructure strictly decodes one complete bounded closed
+JSON object containing only the request actor and a nullable candidate index, rebinds value-equal
+text and an in-range selection to the request's exact instances, and delegates final acceptance to
+the unchanged Domain policy. Malformed, foreign, stale, wrong-owner, out-of-range, over-depth, and
+oversized input fails through one content-free error. A stateless OpenAI request serializer emits
+only the selected model, disabled storage, streaming mode, a bounded output budget, provider-
+independent instructions, bounded trusted actor/world/recovery-candidate context, and one strict
+request-bound selection-or-abstention schema. It never reads credentials or invokes a provider.
+These seams do not accumulate streaming events, send HTTP, compose credentials, apply recovery
+automatically, own authoritative recovery state, schedule themselves, author evidence, persist
+state, or add input/UI or other world behavior.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
