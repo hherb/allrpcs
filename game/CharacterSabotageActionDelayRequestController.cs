@@ -14,6 +14,9 @@ public partial class CharacterSabotageActionDelayRequestController
     public CharacterSabotageActionConsiderationRequest? Request { get; private set; }
 
     /// <inheritdoc />
+    public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
+
+    /// <inheritdoc />
     public override void _Ready()
     {
         state = GetNode<CharacterTargetSabotageDelayController>(
@@ -59,9 +62,15 @@ public partial class CharacterSabotageActionDelayRequestController
             return false;
         }
 
-        Request = new CharacterSabotageActionConsiderationRequest(
+        CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Delay]);
+        Request = request;
+        CandidateBinding = new CharacterSabotageActionCandidateBinding<
+            CharacterTargetSabotageDelayCandidate>(
+                request,
+                CharacterSabotageActionKind.Delay,
+                candidate);
         return true;
     }
 }

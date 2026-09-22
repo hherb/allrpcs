@@ -15,6 +15,9 @@ public partial class CharacterSabotageActionMisquotationRequestController
     public CharacterSabotageActionConsiderationRequest? Request { get; private set; }
 
     /// <inheritdoc />
+    public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
+
+    /// <inheritdoc />
     public override void _Ready()
     {
         source = GetNode<TemporaryCharacterDialogueMisquotationEvidenceSource>(
@@ -49,9 +52,15 @@ public partial class CharacterSabotageActionMisquotationRequestController
             return false;
         }
 
-        Request = new CharacterSabotageActionConsiderationRequest(
+        CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Misquote]);
+        Request = request;
+        CandidateBinding = new CharacterSabotageActionCandidateBinding<
+            CharacterDialogueMisquotationEvidence>(
+                request,
+                CharacterSabotageActionKind.Misquote,
+                candidate);
         return true;
     }
 }

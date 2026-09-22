@@ -7,4 +7,7 @@ public interface ICharacterSabotageActionRequestAuthor
 {
     /// <summary>Gets the author's exact current request, or null when none was authored.</summary>
     CharacterSabotageActionConsiderationRequest? Request { get; }
+
+    /// <summary>Gets the exact action-specific candidate bound to the request, or null.</summary>
+    CharacterSabotageActionCandidateBinding? CandidateBinding { get; }
 }

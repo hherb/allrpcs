@@ -844,14 +844,19 @@ output or authoritative state.
 `CharacterSabotageActionAuthorBindingCoordinator` explicitly reads one already-observed exact
 selection only when its result belongs to the composer's exact request and all seven retained author
 outputs remain the same current instances in canonical order. A selected kind exposes only its
-corresponding exact singleton author request; abstention binds once without exposing any author
-output. Unavailable, running, cancelled, failed, stale, rebuilt, foreign-actor, wrong-kind,
-duplicate, null, and repeated states remain inert. This isolated binding does not acknowledge the
-generic result, select an action-specific candidate, dispatch or apply an action, author evidence,
-or mutate composer, author, task, selection, or authoritative state. The main scene
-dependency-orders the binder after all of those owners without polling it; the existing
-switch-gated request smoke explicitly observes and binds one live conceal selection while ordinary
-startup stays inert.
+corresponding exact singleton author request and its immutable strongly typed action-specific
+candidate binding; abstention binds once without exposing either. Each author creates its candidate
+binding atomically with the generic request, and the binding accepts only that exact request,
+canonical kind, and candidate instance. The coordinator acknowledges only a still-current exact
+bound result through the existing selection coordinator, retains exact internal acknowledgement
+provenance, then retains the selected author request and candidate binding as later dispatch tokens.
+Unavailable, unbound, running, cancelled, failed,
+reset, stale, rebuilt, replaced, foreign-actor, wrong-kind, duplicate, null, externally
+acknowledged, and repeated states remain inert. This isolated binding does not start an
+action-specific consideration, dispatch or apply an action, author evidence, or mutate composer,
+authors, authoritative state, or a queued model. The main scene dependency-orders the binder after
+all of those owners without polling it; the existing switch-gated request smoke explicitly
+observes, binds, and acknowledges one live conceal selection while ordinary startup stays inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

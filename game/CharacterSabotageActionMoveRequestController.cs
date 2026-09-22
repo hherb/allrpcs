@@ -17,6 +17,9 @@ public partial class CharacterSabotageActionMoveRequestController
     public CharacterSabotageActionConsiderationRequest? Request { get; private set; }
 
     /// <inheritdoc />
+    public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
+
+    /// <inheritdoc />
     public override void _Ready()
     {
         source = GetNode<TemporaryCharacterObjectSabotageMoveSource>(
@@ -62,9 +65,15 @@ public partial class CharacterSabotageActionMoveRequestController
             return false;
         }
 
-        Request = new CharacterSabotageActionConsiderationRequest(
+        CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Move]);
+        Request = request;
+        CandidateBinding = new CharacterSabotageActionCandidateBinding<
+            CharacterObjectSabotageMoveCandidate>(
+                request,
+                CharacterSabotageActionKind.Move,
+                candidate);
         return true;
     }
 }

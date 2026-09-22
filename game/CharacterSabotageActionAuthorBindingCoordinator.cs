@@ -15,6 +15,12 @@ public partial class CharacterSabotageActionAuthorBindingCoordinator : Node
     /// <summary>Gets the exact selected action author's request, or null after abstention.</summary>
     public CharacterSabotageActionConsiderationRequest? SelectedAuthorRequest { get; private set; }
 
+    /// <summary>Gets the selected author's exact action-specific candidate binding, or null.</summary>
+    public CharacterSabotageActionCandidateBinding? SelectedCandidateBinding { get; private set; }
+
+    /// <summary>Gets the exact result acknowledged through this binder, or null.</summary>
+    internal CharacterSabotageActionConsiderationResult? AcknowledgedResult { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -68,9 +74,63 @@ public partial class CharacterSabotageActionAuthorBindingCoordinator : Node
             return false;
         }
 
+        CharacterSabotageActionCandidateBinding? candidateBinding =
+            authors[selectedIndex].CandidateBinding;
+        if (candidateBinding is null
+            || !ReferenceEquals(candidateBinding.Request, selectedRequest)
+            || !ReferenceEquals(candidateBinding.ActionKind, selectedKind))
+        {
+            return false;
+        }
+
         SelectedAuthorRequest = selectedRequest;
+        SelectedCandidateBinding = candidateBinding;
         boundResult = result;
         return true;
+    }
+
+    /// <summary>Acknowledges only the same exact result after its author output was bound.</summary>
+    public bool TryAcknowledgeBoundResult()
+    {
+        CharacterSabotageActionConsiderationResult? result = boundResult;
+        CharacterSabotageActionConsiderationRequest? request = composer.Request;
+        IReadOnlyList<CharacterSabotageActionConsiderationRequest?>? composedOutputs =
+            composer.ComposedAuthorOutputs;
+        if (result is null
+            || request is null
+            || composedOutputs is null
+            || task.Status != CharacterSabotageActionTaskStatus.Completed
+            || !ReferenceEquals(task.Result, result)
+            || !ReferenceEquals(selection.ObservedResult, result)
+            || !ReferenceEquals(result.Request, request)
+            || !ExactOutputsRemainCurrent(request, composedOutputs)
+            || !ExactSelectedCandidateBindingRemainsCurrent(result))
+        {
+            return false;
+        }
+
+        if (!selection.TryAcknowledgeCompletedResult())
+        {
+            return false;
+        }
+
+        AcknowledgedResult = result;
+        return true;
+    }
+
+    private bool ExactSelectedCandidateBindingRemainsCurrent(
+        CharacterSabotageActionConsiderationResult result)
+    {
+        CharacterSabotageActionKind? selectedKind = result.SelectedActionKind;
+        if (selectedKind is null)
+        {
+            return SelectedAuthorRequest is null && SelectedCandidateBinding is null;
+        }
+
+        int selectedIndex = IndexOfCanonicalKind(selectedKind);
+        return selectedIndex >= 0
+            && ReferenceEquals(authors[selectedIndex].Request, SelectedAuthorRequest)
+            && ReferenceEquals(authors[selectedIndex].CandidateBinding, SelectedCandidateBinding);
     }
 
     private bool ExactOutputsRemainCurrent(

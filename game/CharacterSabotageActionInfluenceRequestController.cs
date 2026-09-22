@@ -13,6 +13,9 @@ public partial class CharacterSabotageActionInfluenceRequestController
     public CharacterSabotageActionConsiderationRequest? Request { get; private set; }
 
     /// <inheritdoc />
+    public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
+
+    /// <inheritdoc />
     public override void _Ready()
     {
         state = GetNode<CharacterTargetSabotageInfluenceController>(
@@ -49,9 +52,15 @@ public partial class CharacterSabotageActionInfluenceRequestController
             return false;
         }
 
-        Request = new CharacterSabotageActionConsiderationRequest(
+        CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Influence]);
+        Request = request;
+        CandidateBinding = new CharacterSabotageActionCandidateBinding<
+            CharacterTargetSabotageInfluenceCandidate>(
+                request,
+                CharacterSabotageActionKind.Influence,
+                candidate);
         return true;
     }
 }
