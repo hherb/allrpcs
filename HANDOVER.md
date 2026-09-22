@@ -36,6 +36,9 @@ movement, perception, dialogue, or other world behavior. The unrelated untracked
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
   build, 2,720 Domain tests, 578 Application tests, 1,160 Infrastructure tests, all 8 architecture
   tests, scenario validation, every credential-free Godot smoke, and the final Compatibility launch.
+- Draft PR #309's first hosted run on `8cc95fe` failed all five jobs before any step executed
+  (`steps: []`); that is Actions/account infrastructure state and provides no hosted product-test or
+  build evidence. Re-query the current PR head before relying on hosted status.
 - Session review covers lifecycle ordering and terminality, event/document bounds, exact actor and
   candidate rebinding, malformed and provider-failed content redaction, credential-before-send,
   HTTP method/endpoint/media type, caller cancellation, exact dependency retention, construction
