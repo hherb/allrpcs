@@ -833,6 +833,29 @@ copy of at most 64 exact recovery candidates. It validates the collection once b
 eligibility, select, decide, apply, invoke a model, schedule work, author evidence, persist state, or
 grant Application, scene, UI, navigation, movement, perception, dialogue, or other world authority.
 
+`CharacterTargetSabotageDelayRecoveryDecision` retains the exact deciding actor identifier and
+either one exact recovery candidate or explicit abstention. Its acceptance policy requires the
+request actor's exact identifier instance and, for a selection, the exact request-member candidate,
+the candidate delay occurrence's exact target identifier, and unchanged authoritative event, log,
+and time eligibility. An immutable consideration result binds only an accepted decision to its
+exact request. The consideration transition leaves abstention inert and delegates an accepted
+selection through the existing append-only recovery transition without changing request sources.
+
+`ICharacterTargetSabotageDelayRecoveryDecisionModel` is the provider-neutral Application seam for
+one exact request. Its controller rejects null and pre-cancelled input, forwards the exact request
+and caller cancellation once, and constructs the Domain result so foreign, stale, or invalid
+decisions fail closed. A construction-only binding retains one exact OpenAI setting and exact model.
+The temporary scene source supplies one queued one-shot model before a stable configured model and
+otherwise returns one stable fail-closed offline model; replacement and clearing require the exact
+expected binding and preserve any queued one-shot model.
+
+One isolated scene task owns the bounded delay-recovery decision lifecycle, installing only an
+accepted result on the main thread while rejecting overlap and exposing explicit cancellation and
+terminal reset. An explicit flow consumes a model only while that task is idle, so rejected overlap
+cannot consume a queued one-shot model. These seams do not decode provider output, send HTTP,
+compose credentials, apply recovery automatically, own authoritative recovery state, schedule
+themselves, author evidence, persist state, or add input/UI or other world behavior.
+
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
 requires the change to belong to the occurrence target and relate that target to the proposal actor,
