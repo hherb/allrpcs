@@ -484,6 +484,10 @@ Current continuation:
   construction-time credential access, HTTP, or model invocation.
 - [x] Compose, replace, and clear that exact binding explicitly through the existing temporary
   target-delay recovery model source while preserving its stable offline fallback.
+- [x] Activate that exact target-delay recovery binding from selected OpenAI game settings while
+  restoring the same stable offline model for Ollama without automatic decision work.
+- [x] Dependency-order the target-delay recovery source, task, and explicit consideration flow in
+  the main scene with one switch-gated exact-selection smoke and unchanged request world state.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while

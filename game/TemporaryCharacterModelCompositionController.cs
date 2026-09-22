@@ -26,6 +26,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private TemporaryCharacterTargetSabotageDelayModelSource delayModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceModelSource influenceModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource = null!;
+    private TemporaryCharacterTargetSabotageDelayRecoveryModelSource delayRecoveryModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
     private NetHttpClient client = null!;
     private bool isInitialized;
@@ -39,6 +40,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
     private bool influenceBindingInitialized;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelComposition recoveryComposition = null!;
     private bool recoveryBindingInitialized;
+    private TemporaryCharacterTargetSabotageDelayRecoveryModelComposition delayRecoveryComposition = null!;
+    private bool delayRecoveryBindingInitialized;
     private bool participationBindingsInitialized;
     private CharacterModelBindingSnapshot? connectionTestBindings;
 
@@ -66,6 +69,9 @@ public partial class TemporaryCharacterModelCompositionController : Node
         recoveryModelSource =
             GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource>(
                 "../TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource");
+        delayRecoveryModelSource =
+            GetNode<TemporaryCharacterTargetSabotageDelayRecoveryModelSource>(
+                "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
         client = new NetHttpClient
@@ -75,6 +81,7 @@ public partial class TemporaryCharacterModelCompositionController : Node
         delayComposition = new(delayModelSource);
         influenceComposition = new(influenceModelSource);
         recoveryComposition = new(recoveryModelSource);
+        delayRecoveryComposition = new(delayRecoveryModelSource);
         if (OS.GetEnvironment(AutomaticCompositionDisabledEnvironmentVariable)
             != DisabledEnvironmentValue)
         {
@@ -124,7 +131,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             || !TryApplyContaminationBinding(selection)
             || !TryApplyDelayBinding(selection)
             || !TryApplyInfluenceBinding(selection)
-            || !TryApplyRecoveryBinding(selection))
+            || !TryApplyRecoveryBinding(selection)
+            || !TryApplyDelayRecoveryBinding(selection))
         {
             return false;
         }
@@ -152,7 +160,8 @@ public partial class TemporaryCharacterModelCompositionController : Node
             && TryApplyContaminationBinding(selection)
             && TryApplyDelayBinding(selection)
             && TryApplyInfluenceBinding(selection)
-            && TryApplyRecoveryBinding(selection);
+            && TryApplyRecoveryBinding(selection)
+            && TryApplyDelayRecoveryBinding(selection);
     }
 
     /// <summary>Initializes or replaces the exact current supported binding for future turns.</summary>
@@ -566,6 +575,44 @@ public partial class TemporaryCharacterModelCompositionController : Node
         if (applied)
         {
             recoveryBindingInitialized = true;
+        }
+
+        return applied;
+    }
+
+    private bool TryApplyDelayRecoveryBinding(
+        CharacterModelSettingsSelectionSnapshot selection)
+    {
+        CharacterModelSettings selectedSettings = selection.Settings.Single(
+            settings => ReferenceEquals(settings.Provider, selection.SelectedProvider));
+        if (!ReferenceEquals(selectedSettings.Provider, CharacterModelProvider.OpenAi))
+        {
+            if (!delayRecoveryBindingInitialized)
+            {
+                return true;
+            }
+
+            bool cleared = delayRecoveryComposition.TryClear();
+            if (cleared)
+            {
+                delayRecoveryBindingInitialized = false;
+            }
+
+            return cleared;
+        }
+
+        IOpenAiCredentialSource? credentialSource = CreateOpenAiCredentialSource();
+        if (credentialSource is null)
+        {
+            return false;
+        }
+
+        bool applied = delayRecoveryBindingInitialized
+            ? delayRecoveryComposition.TryReplace(selectedSettings, client, credentialSource)
+            : delayRecoveryComposition.TryInitialize(selectedSettings, client, credentialSource);
+        if (applied)
+        {
+            delayRecoveryBindingInitialized = true;
         }
 
         return applied;
