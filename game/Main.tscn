@@ -275,6 +275,7 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryCandidateController.cs" id="273_delay_recovery_candidate"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryCandidateRequestController.cs" id="274_delay_recovery_candidate_request"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController.cs" id="275_delay_recovery_candidate_flow"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryStartCoordinator.cs" id="276_delay_recovery_start"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -696,6 +697,9 @@ script = ExtResource("273_delay_recovery_candidate")
 
 [node name="CharacterTargetSabotageDelayRecoveryCandidateRequestController" type="Node" parent="."]
 script = ExtResource("274_delay_recovery_candidate_request")
+
+[node name="CharacterTargetSabotageDelayRecoveryStartCoordinator" type="Node" parent="."]
+script = ExtResource("276_delay_recovery_start")
 
 [node name="CharacterTargetSabotageDelayTaskController" type="Node" parent="."]
 script = ExtResource("262_delay_task")

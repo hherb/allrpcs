@@ -22,10 +22,9 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
     private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests =
         null!;
     private TemporaryCharacterTargetSabotageDelayRecoveryModelSource recoveryModelSource = null!;
-    private CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController recoveryFlow =
-        null!;
     private CharacterTargetSabotageDelayRecoveryTaskController recoveryTask = null!;
     private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
+    private CharacterTargetSabotageDelayRecoveryStartCoordinator recoveryStartCoordinator = null!;
     private CharacterTargetSabotageDelayRecoveryResolutionCoordinator recoveryCoordinator = null!;
     private CharacterTargetSabotageDelayResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageDelayConsiderationRequest request = null!;
@@ -66,13 +65,13 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
                 "../CharacterTargetSabotageDelayRecoveryCandidateRequestController");
         recoveryModelSource = GetNode<TemporaryCharacterTargetSabotageDelayRecoveryModelSource>(
             "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
-        recoveryFlow =
-            GetNode<CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController>(
-                "../CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController");
         recoveryTask = GetNode<CharacterTargetSabotageDelayRecoveryTaskController>(
             "../CharacterTargetSabotageDelayRecoveryTaskController");
         recoveryState = GetNode<CharacterTargetSabotageDelayRecoveryController>(
             "../CharacterTargetSabotageDelayRecoveryController");
+        recoveryStartCoordinator =
+            GetNode<CharacterTargetSabotageDelayRecoveryStartCoordinator>(
+                "../CharacterTargetSabotageDelayRecoveryStartCoordinator");
         recoveryCoordinator =
             GetNode<CharacterTargetSabotageDelayRecoveryResolutionCoordinator>(
                 "../CharacterTargetSabotageDelayRecoveryResolutionCoordinator");
@@ -173,11 +172,14 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             || !ReferenceEquals(appliedResult.Candidate, candidate)
             || !ReferenceEquals(appliedEventLog.Entries.Single(), candidate.WorldEvent.EventId)
             || !ReferenceEquals(appliedWorldTime.CurrentEventId, candidate.WorldEvent.EventId)
-            || !recoveryCandidates.TryCreate(request.WorldEvents, appliedResult, recoveryEvent)
+            || !recoveryModelSource.TrySupplyModel(recoverySelectionModel)
+            || !recoveryStartCoordinator.TryStart(
+                request.WorldEvents,
+                appliedResult,
+                recoveryEvent)
             || recoveryCandidates.Candidate is not { } recoveryCandidate
             || !ReferenceEquals(recoveryCandidate.DelayResult, appliedResult)
             || !ReferenceEquals(recoveryCandidate.RecoveryEvent, recoveryEvent)
-            || !recoveryRequests.TryCreate(request.WorldEvents, recoveryCandidate)
             || recoveryRequests.Request is not { } recoveryRequest
             || !ReferenceEquals(recoveryRequest.Actor, candidate.Occurrence.Target)
             || !ReferenceEquals(recoveryRequest.WorldEvents, request.WorldEvents)
@@ -185,10 +187,16 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             || !ReferenceEquals(recoveryRequest.WorldTime, appliedWorldTime)
             || recoveryRequest.Candidates.Count != 1
             || !ReferenceEquals(recoveryRequest.Candidates.Single(), recoveryCandidate)
-            || !recoveryState.TryInitialize(recoveryRequest.EventLog, recoveryRequest.WorldTime)
-            || !recoveryModelSource.TrySupplyModel(recoverySelectionModel)
-            || !recoveryFlow.TryStart(recoveryRequest)
             || recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Running
+            || recoverySelectionModel.CallCount != 1
+            || !ReferenceEquals(recoverySelectionModel.Request, recoveryRequest)
+            || recoveryStartCoordinator.TryStart(
+                request.WorldEvents,
+                appliedResult,
+                recoveryEvent)
+            || recoverySelectionModel.CallCount != 1
+            || !ReferenceEquals(recoveryCandidates.Candidate, recoveryCandidate)
+            || !ReferenceEquals(recoveryRequests.Request, recoveryRequest)
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart(request)
             || !InputsAreUnchanged())

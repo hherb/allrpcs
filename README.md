@@ -711,6 +711,23 @@ singletons in stable order. Parsing accepts only those exact values. A kind alon
 target, access requirement, proposal, occurrence, effect, recovery consequence, evidence, scene,
 persistence, or provider authority.
 
+`CharacterSabotageActionConsiderationRequest` retains one exact actor and a stable defensive copy
+of distinct caller-supplied canonical action kinds in caller order. It permits an empty request and
+enumerates the supplied sequence once. The caller remains responsible for including only kinds
+whose action-specific physical, informational, capability, and current-state gates have already
+passed; the request does not infer eligibility, choose a target, or authorize an occurrence.
+
+`CharacterSabotageActionDecision` retains the exact deciding actor identifier and either one exact
+request-member action kind or explicit abstention. The pure decision policy requires identifier
+reference identity and exact request membership, and an immutable consideration result binds only
+an accepted decision to its exact request. These contracts select only a kind: they do not select
+or construct an action-specific candidate, apply an effect, or grant scene or provider authority.
+
+`ICharacterSabotageActionDecisionModel` is the provider-neutral Application seam for one exact
+action-kind request. Its controller rejects null and pre-cancelled input, forwards the exact request
+and caller cancellation once, and constructs the existing validated result. It adds no provider
+binding, retry, deadline, background task, action-specific dispatch, or authoritative mutation.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the
@@ -854,9 +871,12 @@ one append-only delay-to-recovery chain without making ordinary startup autonomo
 before publishing the candidate or request, initializing recovery authority, or consuming a model.
 It requires the exact latest applied delay result and world-state authority, an applicable
 caller-authored recovery event in the supplied definitions, unused one-shot sources, uninitialized
-recovery authority, and an idle task. The coordinator remains isolated: it is not yet owned by
-`Main.tscn`, invoked automatically, or allowed to author events, evidence, persistence, UI, input,
-timing, movement, perception, or dialogue behavior.
+recovery authority, and an idle task. The main scene dependency-orders the coordinator after every
+exact dependency, and only the existing switch-gated target-delay smoke calls it after one exact
+applied delay. Rejected repeated or occupied starts preserve the current candidate and request
+graph and consume no additional model. Ordinary startup remains inert, and the coordinator is not invoked
+automatically or allowed to author events, evidence, persistence, UI, input, timing, movement,
+perception, or dialogue behavior.
 
 `CharacterTargetSabotageDelayRecoveryDecision` retains the exact deciding actor identifier and
 either one exact recovery candidate or explicit abstention. Its acceptance policy requires the
@@ -915,9 +935,10 @@ completed result once; stale authority cannot be acknowledged or reset. Stale, r
 uninitialized, and null inputs fail closed. An isolated one-shot candidate controller additionally
 accepts only the exact current applied delay result plus one caller-authored authoritative advancing
 recovery event. Missing, recorded, non-advancing, stale, rebuilt, repeated, and null inputs stay
-inert. It is not yet owned by `Main.tscn` or used to create a consideration request. Nothing
-automatically schedules recovery, authors the recovery event, persists state, or adds input/UI or
-other world behavior.
+inert. The main scene owns that candidate source, its exact-request source, and their explicit
+start coordinator; only the switch-gated target-delay smoke publishes them and begins recovery.
+Nothing automatically schedules recovery, authors the recovery event, persists state, or adds
+input/UI or other world behavior.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
