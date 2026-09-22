@@ -2,69 +2,68 @@
 
 ## Current state
 
-`main` includes merged PR #320 at `a2c7bb3`. Branch
-`codex/phase-7-sabotage-action-binding` advances Phase 7 through two bounded slices:
+`main` includes merged PR #321 at `3e6e61f`. Branch
+`codex/phase-7-sabotage-action-acknowledgement` advances Phase 7 through two bounded slices:
 
-- Phase 7oz binds one exact already-observed generic sabotage-action selection or abstention to
-  the still-current exact output of its corresponding action-specific request author.
-- Phase 7pa dependency-orders that binder in `Main.tscn`; ordinary startup stays inert, while the
-  existing switch-gated request smoke explicitly observes and binds one live conceal selection.
+- Phase 7pb acknowledges only one still-current exact generic sabotage-action result after its
+  selection or abstention was bound, delegates reset through the existing selection coordinator,
+  retains exact internal acknowledgement provenance, and preserves the selected exact author
+  request as a later dispatch token.
+- Phase 7pc gives every action-specific author an immutable strongly typed binding between its
+  exact singleton generic request and exact candidate. The binder retains only the selected exact
+  candidate binding, verifies it remains current through acknowledgement, and leaves abstention
+  without an output.
 
-The composer now internally retains the exact seven-output snapshot used by successful composition.
-The binder accepts only the composer's exact request, the selection coordinator's exact current
-observation, the task's same exact completed result, and an unchanged canonical author-output
-snapshot. Selection exposes only the corresponding exact singleton author request; abstention binds
-once without exposing an output. Unavailable, idle, running, reset, cancelled, failed, stale,
-rebuilt value-equal, foreign-actor, wrong-kind, duplicate, null, and repeated states remain inert.
+Selected request and candidate provenance is now exact across conceal, move, substitute,
+contaminate, misquote, delay, and influence. Unavailable, unbound, running, cancelled, failed,
+reset, stale, rebuilt, replaced, foreign, wrong-kind, duplicate, null, externally acknowledged,
+and repeated states remain inert. The switch-gated main-scene smoke observes, binds, and
+acknowledges one live conceal selection while ordinary startup remains inert.
 
-No slice acknowledges the generic result, selects an action-specific candidate, dispatches or
-applies an action, authors evidence, persists state, or adds input/UI, timing, navigation,
-perception, dialogue delivery, or other world behavior. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
-
-Implementation commit `577efa4` is published in draft PR #321 targeting `main`.
+No slice starts action-specific consideration, dispatches or applies an action, authors evidence,
+persists state, or adds input/UI, timing, navigation, movement, perception, dialogue delivery, or
+other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
+must stay unstaged.
 
 ## Validation and review
 
-- Both slices were test-first: the isolated game build first failed because the binding coordinator
-  did not exist, and the switch-gated main-scene smoke then failed on its absent scene node.
-- The isolated binding smoke and switch-gated main-scene smoke pass host-local after implementation.
-- The sandboxed `./scripts/quality.sh` reached a zero-warning build before the known VSTest loopback
-  `SocketException (13): Permission denied`. The identical host-local command passes restore,
-  formatting, a zero-warning build, 2,728 Domain tests, 586 Application tests, 1,220 Infrastructure
-  tests, all 8 architecture tests, scenario validation, every credential-free Godot smoke, and the
-  Compatibility renderer launch.
-- Session-wide review covered exact composer provenance, task/result/observation identity, canonical
-  author mapping, selection and abstention, replacement and stale failure, ordinary-startup
-  inertness, unchanged authoritative state, closed surfaces, documentation, file/line limits, and
-  whitespace. Review found and fixed a lifecycle gap: the binder now also requires the task to
-  retain the same exact completed result, so a reset or later terminal task cannot authorize a
-  stale observation. The affected build and both smokes pass after the fix.
-- Draft PR #321 run `35787184834` reports all five hosted jobs failed with `steps: []`; no checkout,
-  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
-  than hosted product-test evidence.
+- Both slices were test-first: the game build first failed on the absent acknowledgement operation,
+  and the focused Domain test first failed on the absent typed candidate-binding contract.
+- The focused candidate-binding Domain tests pass host-local after the sandbox's known VSTest
+  loopback denial. All seven action-author smokes, the expanded author-binding smoke, and the
+  switch-gated main-scene smoke pass host-local after the sandbox's known Godot user-log denial.
+- `scripts/smoke-godot.sh` now gives the expanded asynchronous author-binding graph enough frames
+  to reach and assert its terminal state rather than exiting before completion.
+- The final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build,
+  2,731 Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
+  scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
+- Session-wide review covered immutable typed candidate provenance, atomic author publication,
+  selected and abstaining acknowledgement, replacement and external-reset failure, ordinary-startup
+  inertness, unchanged authoritative state, closed public surfaces, documentation, file/line limits,
+  and whitespace. Review found and fixed one lifecycle gap: the binder now retains the exact result
+  acknowledged through its own guarded operation, so an external reset cannot masquerade as a
+  binder-authorized dispatch token.
 
 ## Exact next bounded slice
 
-Take **Phase 7pb: explicitly acknowledge one exact bound sabotage-action result**.
+Take **Phase 7pd: compose one selected candidate binding into its action-specific consideration
+request without starting or applying it**.
 
 Acceptance boundary:
 
-1. Test-first extend the binding coordinator with one explicit acknowledgement operation that is
-   available only after its exact selection or abstention has bound successfully.
-2. Require the task to remain completed with the same exact bound result, the selection coordinator
-   to retain that same observation, the composer to retain the same request, and every author output
-   to remain the exact snapshot used by composition. Delegate reset only through the existing
-   selection coordinator's exact acknowledgement operation.
-3. Preserve the selected exact author request after acknowledgement as the later dispatch token;
-   preserve abstention as no selected output. Keep unavailable, unbound, running, cancelled, failed,
-   reset, stale, rebuilt, replaced, null, and repeated acknowledgement inert, with composer, authors,
-   authoritative state, and any queued model unchanged.
-4. Update the isolated and switch-gated main-scene smokes to acknowledge only after exact binding.
-   Ordinary startup must remain inert.
-5. Do not yet select an action-specific candidate, dispatch or apply an action, author evidence,
-   persist state, or add input/UI, timing, navigation, movement, perception, dialogue delivery, or
-   other world behavior.
+1. Test-first add one explicit coordinator that accepts only the binding coordinator's retained
+   exact selected author request and exact strongly typed candidate binding after successful
+   acknowledgement. Abstention remains inert.
+2. Revalidate the corresponding action-specific scene source and authoritative snapshots by exact
+   reference and the existing action policy, then create only that action's existing provider-neutral
+   consideration request containing the exact selected candidate once.
+3. Preserve all seven typed branches without reflection, untyped candidate casts, rebuilt values,
+   or kind inference. Stale, replaced, foreign, wrong-kind, null, repeated, and ineligible inputs
+   must fail closed without consuming any queued action-specific model.
+4. Dependency-order the coordinator in `Main.tscn`; extend the switch-gated smoke through exact
+   concealment request composition only. Ordinary startup stays inert.
+5. Do not start an action-specific task, dispatch or apply an action, acknowledge an action-specific
+   result, author evidence, persist state, or add input/UI, timing, navigation, movement,
+   perception, dialogue delivery, or other world behavior.
 6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to bind the selected author request to its exact action-specific candidate without applying
-   it.
+   slice to start only the selected exact action-specific consideration request.

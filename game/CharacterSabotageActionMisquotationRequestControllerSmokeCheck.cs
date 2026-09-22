@@ -52,7 +52,13 @@ public partial class CharacterSabotageActionMisquotationRequestControllerSmokeCh
             && request.ActionKinds.Count == 1
             && ReferenceEquals(
                 request.ActionKinds.Single(),
-                CharacterSabotageActionKind.Misquote);
+                CharacterSabotageActionKind.Misquote)
+            && requests.CandidateBinding
+                is CharacterSabotageActionCandidateBinding<
+                    CharacterDialogueMisquotationEvidence> binding
+            && ReferenceEquals(binding.Request, request)
+            && ReferenceEquals(binding.ActionKind, CharacterSabotageActionKind.Misquote)
+            && ReferenceEquals(binding.Candidate, source.Candidate);
 
         CharacterSabotageActionConsiderationRequest retained = requests.Request!;
         bool repeatedIsInert = !TryCreate(requests, source)
@@ -143,13 +149,16 @@ public partial class CharacterSabotageActionMisquotationRequestControllerSmokeCh
             | System.Reflection.BindingFlags.DeclaredOnly);
 
         return methods.SequenceEqual(["TryCreate", "_Ready"])
-            && properties.Length == 1
-            && properties[0].Name == "Request"
-            && properties[0].PropertyType
-                == typeof(CharacterSabotageActionConsiderationRequest)
-            && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate;
+            && HasExpectedProperties(properties);
     }
+
+    private static bool HasExpectedProperties(System.Reflection.PropertyInfo[] properties) =>
+        properties.Length == 2
+        && properties.Single(property => property.Name == "CandidateBinding").PropertyType
+            == typeof(CharacterSabotageActionCandidateBinding)
+        && properties.Single(property => property.Name == "Request").PropertyType
+            == typeof(CharacterSabotageActionConsiderationRequest)
+        && properties.All(property => property.SetMethod is { IsPrivate: true });
 
     private static bool ThrowsArgumentNull(Action action)
     {

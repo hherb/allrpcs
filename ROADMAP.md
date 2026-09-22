@@ -648,6 +648,10 @@ Current continuation:
   action-specific author output without acknowledging, dispatching, or applying the result.
 - [x] Dependency-order the exact author binding in the main scene while ordinary startup remains
   inert and only the switch-gated smoke observes and binds one live selection.
+- [x] Explicitly acknowledge only the still-current exact bound generic result while retaining its
+  selected author request as a later dispatch token and leaving abstention without an output.
+- [x] Bind every authored singleton request to its exact strongly typed action-specific candidate,
+  and retain only the selected exact binding without starting, dispatching, or applying an action.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

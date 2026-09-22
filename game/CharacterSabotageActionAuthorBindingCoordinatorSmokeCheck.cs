@@ -13,6 +13,8 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
     private BindingGraph abstained = null!;
     private BindingGraph invalid = null!;
     private BindingGraph stale = null!;
+    private BindingGraph invalidAcknowledgement = null!;
+    private BindingGraph externallyAcknowledged = null!;
     private Character actor = null!;
     private int processFrames;
 
@@ -24,13 +26,24 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
         abstained = CreateGraph("Abstained", actor, null);
         invalid = CreateGraph("Invalid", actor, CharacterSabotageActionKind.Move);
         stale = CreateGraph("Stale", actor, CharacterSabotageActionKind.Move, rebuildRequest: true);
+        invalidAcknowledgement = CreateGraph(
+            "InvalidAcknowledgement",
+            actor,
+            CharacterSabotageActionKind.Move);
+        externallyAcknowledged = CreateGraph(
+            "ExternallyAcknowledged",
+            actor,
+            CharacterSabotageActionKind.Move);
 
         if (selected.Binding.TryBindObservedSelection()
+            || selected.Binding.TryAcknowledgeBoundResult()
             || invalid.Binding.TryBindObservedSelection()
             || !Starts(selected)
             || !Starts(abstained)
             || !Starts(invalid)
             || !Starts(stale)
+            || !Starts(invalidAcknowledgement)
+            || !Starts(externallyAcknowledged)
             || selected.Binding.TryBindObservedSelection())
         {
             Fail("Binding did not remain inert before exact completed-result observation.");
@@ -44,7 +57,10 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
-            Fail("Sabotage-action author binding exceeded its bounded duration.");
+            string statuses = string.Join(
+                ", ",
+                Graphs().Select(graph => graph.Task.Status.ToString()));
+            Fail($"Sabotage-action author binding exceeded its bounded duration: {statuses}.");
             return;
         }
 
@@ -59,6 +75,9 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
             || !RejectsInvalidCurrentOutputs()
             || !RejectsStaleResult()
             || !RejectsResetObservation()
+            || !RejectsChangedAcknowledgementInputs()
+            || !RejectsExternallyAcknowledgedResult()
+            || !AcknowledgesExactBindings()
             || !HasClosedSurface())
         {
             Fail("Observed sabotage-action selection did not bind only its exact author output.");
@@ -67,9 +86,9 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
 
         GD.Print(
             "Sabotage-action author binding smoke passed: exact selection and abstention bound once; "
-            + "unavailable, running, reset, stale, rebuilt, foreign, wrong-kind, duplicate, null, "
-            + "and repeated states stayed inert with composer, authors, task, selection, and inputs "
-            + "unchanged.");
+            + "exact bound results acknowledged once; unavailable, unbound, running, reset, stale, "
+            + "rebuilt, replaced, foreign, wrong-kind, duplicate, null, and repeated states stayed "
+            + "inert while selected author requests remained exact dispatch tokens.");
         GetTree().Quit();
     }
 
@@ -83,7 +102,10 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
         CharacterSabotageActionRequestAuthorStub[] authors = GetAuthors(parent);
         authors[0].Request = Request(exactActor, CharacterSabotageActionKind.Conceal);
         authors[1].Request = Request(exactActor, CharacterSabotageActionKind.Move);
+        BindCandidates(authors);
         CharacterSabotageActionConsiderationRequest?[] outputs = Outputs(authors);
+        CharacterSabotageActionCandidateBinding?[] candidateBindings =
+            CandidateBindings(authors);
         CharacterSabotageActionRequestComposer composer =
             parent.GetNode<CharacterSabotageActionRequestComposer>(
                 "CharacterSabotageActionRequestComposer");
@@ -101,6 +123,7 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
         return new BindingGraph(
             authors,
             outputs,
+            candidateBindings,
             composer,
             parent.GetNode<CharacterSabotageActionTaskController>(
                 "CharacterSabotageActionTaskController"),
@@ -128,6 +151,9 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
         return result is not null
             && selected.Binding.TryBindObservedSelection()
             && ReferenceEquals(selected.Binding.SelectedAuthorRequest, selected.Outputs[1])
+            && ReferenceEquals(
+                selected.Binding.SelectedCandidateBinding,
+                selected.CandidateBindings[1])
             && !selected.Binding.TryBindObservedSelection()
             && ReferenceEquals(selected.Composer.Request, result.Request)
             && ReferenceEquals(selected.Selection.ObservedResult, result)
@@ -141,6 +167,7 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
             && result.SelectedActionKind is null
             && abstained.Binding.TryBindObservedSelection()
             && abstained.Binding.SelectedAuthorRequest is null
+            && abstained.Binding.SelectedCandidateBinding is null
             && !abstained.Binding.TryBindObservedSelection()
             && ReferenceEquals(abstained.Selection.ObservedResult, result)
             && GraphIsUnchanged(abstained);
@@ -175,6 +202,9 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
             && invalid.Binding.SelectedAuthorRequest is null
             && invalid.Binding.TryBindObservedSelection()
             && ReferenceEquals(invalid.Binding.SelectedAuthorRequest, exactMove)
+            && ReferenceEquals(
+                invalid.Binding.SelectedCandidateBinding,
+                invalid.CandidateBindings[1])
             && GraphIsUnchanged(invalid);
     }
 
@@ -199,7 +229,100 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
             && graph.Binding.SelectedAuthorRequest is null;
     }
 
-    private IEnumerable<BindingGraph> Graphs() => [selected, abstained, invalid, stale];
+    private bool RejectsChangedAcknowledgementInputs()
+    {
+        BindingGraph graph = invalidAcknowledgement;
+        CharacterSabotageActionConsiderationRequest exactMove = graph.Outputs[1]!;
+        CharacterSabotageActionRequestAuthorStub move = graph.Authors[1];
+        if (!graph.Binding.TryBindObservedSelection()
+            || !ReferenceEquals(graph.Binding.SelectedAuthorRequest, exactMove))
+        {
+            return false;
+        }
+
+        move.Request = Request(actor, CharacterSabotageActionKind.Move);
+        bool rebuiltRejected = !graph.Binding.TryAcknowledgeBoundResult();
+        move.Request = null;
+        bool nullRejected = !graph.Binding.TryAcknowledgeBoundResult();
+        move.Request = exactMove;
+        CharacterSabotageActionCandidateBinding exactBinding = graph.CandidateBindings[1]!;
+        move.CandidateBinding = new CharacterSabotageActionCandidateBinding<object>(
+            exactMove,
+            CharacterSabotageActionKind.Move,
+            new object());
+        bool replacedBindingRejected = !graph.Binding.TryAcknowledgeBoundResult();
+        move.CandidateBinding = exactBinding;
+
+        return rebuiltRejected
+            && nullRejected
+            && replacedBindingRejected
+            && ReferenceEquals(graph.Task.Result, graph.Selection.ObservedResult)
+            && graph.Task.Status == CharacterSabotageActionTaskStatus.Completed
+            && GraphIsUnchanged(graph);
+    }
+
+    private bool RejectsExternallyAcknowledgedResult()
+    {
+        BindingGraph graph = externallyAcknowledged;
+        CharacterSabotageActionConsiderationRequest exactMove = graph.Outputs[1]!;
+        return graph.Binding.TryBindObservedSelection()
+            && ReferenceEquals(graph.Binding.SelectedAuthorRequest, exactMove)
+            && graph.Selection.TryAcknowledgeCompletedResult()
+            && graph.Task.Status == CharacterSabotageActionTaskStatus.Idle
+            && graph.Task.Result is null
+            && graph.Selection.ObservedResult is null
+            && !graph.Binding.TryAcknowledgeBoundResult()
+            && graph.Binding.AcknowledgedResult is null
+            && ReferenceEquals(graph.Binding.SelectedAuthorRequest, exactMove)
+            && ReferenceEquals(
+                graph.Binding.SelectedCandidateBinding,
+                graph.CandidateBindings[1]);
+    }
+
+    private bool AcknowledgesExactBindings() =>
+        AcknowledgesExactBinding(selected, selected.Outputs[1])
+        && AcknowledgesExactBinding(abstained, null)
+        && AcknowledgesExactBinding(invalid, invalid.Outputs[1])
+        && AcknowledgesExactBinding(invalidAcknowledgement, invalidAcknowledgement.Outputs[1]);
+
+    private static bool AcknowledgesExactBinding(
+        BindingGraph graph,
+        CharacterSabotageActionConsiderationRequest? expectedSelectedRequest)
+    {
+        CharacterSabotageActionConsiderationResult? result = graph.Task.Result;
+        CharacterSabotageActionCandidateBinding? expectedCandidateBinding =
+            expectedSelectedRequest is null ? null : graph.CandidateBindings[1];
+        return result is not null
+            && ReferenceEquals(graph.Selection.ObservedResult, result)
+            && ReferenceEquals(graph.Binding.SelectedAuthorRequest, expectedSelectedRequest)
+            && ReferenceEquals(
+                graph.Binding.SelectedCandidateBinding,
+                expectedCandidateBinding)
+            && graph.Binding.TryAcknowledgeBoundResult()
+            && graph.Task.Status == CharacterSabotageActionTaskStatus.Idle
+            && graph.Task.Result is null
+            && graph.Selection.ObservedResult is null
+            && ReferenceEquals(graph.Binding.AcknowledgedResult, result)
+            && ReferenceEquals(graph.Binding.SelectedAuthorRequest, expectedSelectedRequest)
+            && ReferenceEquals(
+                graph.Binding.SelectedCandidateBinding,
+                expectedCandidateBinding)
+            && !graph.Binding.TryAcknowledgeBoundResult()
+            && ReferenceEquals(graph.Binding.SelectedAuthorRequest, expectedSelectedRequest)
+            && ReferenceEquals(
+                graph.Binding.SelectedCandidateBinding,
+                expectedCandidateBinding);
+    }
+
+    private IEnumerable<BindingGraph> Graphs() =>
+    [
+        selected,
+        abstained,
+        invalid,
+        stale,
+        invalidAcknowledgement,
+        externallyAcknowledged,
+    ];
 
     private static CharacterSabotageActionRequestAuthorStub[] GetAuthors(Node parent) =>
     [
@@ -227,10 +350,35 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
         IEnumerable<CharacterSabotageActionRequestAuthorStub> authors) =>
         authors.Select(author => author.Request).ToArray();
 
+    private static CharacterSabotageActionCandidateBinding?[] CandidateBindings(
+        IEnumerable<CharacterSabotageActionRequestAuthorStub> authors) =>
+        authors.Select(author => author.CandidateBinding).ToArray();
+
+    private static void BindCandidates(
+        IEnumerable<CharacterSabotageActionRequestAuthorStub> authors)
+    {
+        foreach (CharacterSabotageActionRequestAuthorStub author in authors)
+        {
+            if (author.Request is not { } request)
+            {
+                continue;
+            }
+
+            author.CandidateBinding = new CharacterSabotageActionCandidateBinding<object>(
+                request,
+                request.ActionKinds.Single(),
+                new object());
+        }
+    }
+
     private static bool GraphIsUnchanged(BindingGraph graph) =>
         ReferenceEquals(graph.Composer.Request?.Actor, graph.DecisionRequest.Actor)
         && Outputs(graph.Authors)
             .Select((output, index) => ReferenceEquals(output, graph.Outputs[index]))
+            .All(value => value)
+        && CandidateBindings(graph.Authors)
+            .Select((binding, index) =>
+                ReferenceEquals(binding, graph.CandidateBindings[index]))
             .All(value => value)
         && ReferenceEquals(graph.Task.Result, graph.Selection.ObservedResult)
         && graph.Task.Status == CharacterSabotageActionTaskStatus.Completed;
@@ -254,8 +402,14 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
             .Order(StringComparer.Ordinal)
             .ToArray();
 
-        return properties.SequenceEqual(["SelectedAuthorRequest"])
-            && methods.SequenceEqual(["TryBindObservedSelection", "_Ready"]);
+        return properties.SequenceEqual(
+            ["SelectedAuthorRequest", "SelectedCandidateBinding"])
+            && methods.SequenceEqual(
+            [
+                "TryAcknowledgeBoundResult",
+                "TryBindObservedSelection",
+                "_Ready",
+            ]);
     }
 
     private void Fail(string message)
@@ -275,6 +429,7 @@ public partial class CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck :
     private sealed record BindingGraph(
         CharacterSabotageActionRequestAuthorStub[] Authors,
         CharacterSabotageActionConsiderationRequest?[] Outputs,
+        CharacterSabotageActionCandidateBinding?[] CandidateBindings,
         CharacterSabotageActionRequestComposer Composer,
         CharacterSabotageActionTaskController Task,
         CharacterSabotageActionSelectionCoordinator Selection,

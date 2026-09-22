@@ -9,6 +9,8 @@
 [node name="Abstained" parent="." instance=ExtResource("1")]
 [node name="Invalid" parent="." instance=ExtResource("1")]
 [node name="Stale" parent="." instance=ExtResource("1")]
+[node name="InvalidAcknowledgement" parent="." instance=ExtResource("1")]
+[node name="ExternallyAcknowledged" parent="." instance=ExtResource("1")]
 
 [node name="SmokeCheck" type="Node" parent="."]
 script = ExtResource("2")

@@ -59,7 +59,12 @@ public partial class CharacterSabotageActionContaminationRequestControllerSmokeC
             && request.ActionKinds.Count == 1
             && ReferenceEquals(
                 request.ActionKinds.Single(),
-                CharacterSabotageActionKind.Contaminate);
+                CharacterSabotageActionKind.Contaminate)
+            && eligible.Requests.CandidateBinding
+                is CharacterSabotageActionCandidateBinding<CharacterObjectSabotageEvidence> binding
+            && ReferenceEquals(binding.Request, request)
+            && ReferenceEquals(binding.ActionKind, CharacterSabotageActionKind.Contaminate)
+            && ReferenceEquals(binding.Candidate, eligible.Source.Candidate);
 
         CharacterSabotageActionConsiderationRequest retained = eligible.Requests.Request!;
         bool repeatedIsInert = !TryCreate(eligible)
@@ -156,13 +161,16 @@ public partial class CharacterSabotageActionContaminationRequestControllerSmokeC
             | System.Reflection.BindingFlags.DeclaredOnly);
 
         return methods.SequenceEqual(["TryCreate", "_Ready"])
-            && properties.Length == 1
-            && properties[0].Name == "Request"
-            && properties[0].PropertyType
-                == typeof(CharacterSabotageActionConsiderationRequest)
-            && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate;
+            && HasExpectedProperties(properties);
     }
+
+    private static bool HasExpectedProperties(System.Reflection.PropertyInfo[] properties) =>
+        properties.Length == 2
+        && properties.Single(property => property.Name == "CandidateBinding").PropertyType
+            == typeof(CharacterSabotageActionCandidateBinding)
+        && properties.Single(property => property.Name == "Request").PropertyType
+            == typeof(CharacterSabotageActionConsiderationRequest)
+        && properties.All(property => property.SetMethod is { IsPrivate: true });
 
     private static bool ThrowsArgumentNull(Action action)
     {

@@ -99,6 +99,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             && task.Result is null
             && selection.ObservedResult is null
             && binding.SelectedAuthorRequest is null
+            && binding.SelectedCandidateBinding is null
             && StateIsUnchanged();
         bool authored = concealmentAuthor.TryCreate(
             source.Character,
@@ -161,9 +162,16 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             || !ReferenceEquals(selection.ObservedResult, result)
             || !binding.TryBindObservedSelection()
             || !ReferenceEquals(binding.SelectedAuthorRequest, concealmentAuthor.Request)
+            || !CandidateBindingIsExact()
             || binding.TryBindObservedSelection()
-            || task.Status != CharacterSabotageActionTaskStatus.Completed
-            || !ReferenceEquals(task.Result, result)
+            || !binding.TryAcknowledgeBoundResult()
+            || task.Status != CharacterSabotageActionTaskStatus.Idle
+            || task.Result is not null
+            || selection.ObservedResult is not null
+            || !ReferenceEquals(binding.AcknowledgedResult, result)
+            || !ReferenceEquals(binding.SelectedAuthorRequest, concealmentAuthor.Request)
+            || !CandidateBindingIsExact()
+            || binding.TryAcknowledgeBoundResult()
             || !RequestIsExact(request)
             || !StateIsUnchanged())
         {
@@ -173,9 +181,9 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
 
         GD.Print(
             "Main-scene composed sabotage-action request smoke passed: ordinary startup stayed "
-            + "inert; one exact live conceal request completed, was observed, and bound to its "
-            + "exact author output without acknowledgement, dispatch, application, or "
-            + "authoritative-state mutation.");
+            + "inert; one exact live conceal request completed, was observed, bound to its exact "
+            + "author output, and acknowledged while retaining that output as an exact later "
+            + "dispatch token without dispatch, application, or authoritative-state mutation.");
         GetTree().Quit();
     }
 
@@ -203,6 +211,18 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
         && ReferenceEquals(request.ActionKinds[0], CharacterSabotageActionKind.Conceal)
         && ReferenceEquals(authors[0].Request, concealmentAuthor.Request)
         && authors.Skip(1).All(author => author.Request is null);
+
+    private bool CandidateBindingIsExact() =>
+        binding.SelectedCandidateBinding
+            is CharacterSabotageActionCandidateBinding<CharacterObjectSabotageEvidence>
+        {
+            Candidate: { } candidate,
+            Request: { } request,
+            ActionKind: { } actionKind,
+        }
+        && ReferenceEquals(candidate, source.Candidate)
+        && ReferenceEquals(request, concealmentAuthor.Request)
+        && ReferenceEquals(actionKind, CharacterSabotageActionKind.Conceal);
 
     private bool StateIsUnchanged() =>
         ReferenceEquals(concealmentState.Concealment, initialConcealment)

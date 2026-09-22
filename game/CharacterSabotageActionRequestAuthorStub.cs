@@ -8,4 +8,7 @@ public partial class CharacterSabotageActionRequestAuthorStub : Node, ICharacter
 {
     /// <inheritdoc />
     public CharacterSabotageActionConsiderationRequest? Request { get; set; }
+
+    /// <inheritdoc />
+    public CharacterSabotageActionCandidateBinding? CandidateBinding { get; set; }
 }

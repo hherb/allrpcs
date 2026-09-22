@@ -16,6 +16,9 @@ public partial class CharacterSabotageActionConcealmentRequestController
     public CharacterSabotageActionConsiderationRequest? Request { get; private set; }
 
     /// <inheritdoc />
+    public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
+
+    /// <inheritdoc />
     public override void _Ready()
     {
         source = GetNode<TemporaryCharacterObjectSabotageSource>(
@@ -58,9 +61,15 @@ public partial class CharacterSabotageActionConcealmentRequestController
             return false;
         }
 
-        Request = new CharacterSabotageActionConsiderationRequest(
+        CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Conceal]);
+        Request = request;
+        CandidateBinding = new CharacterSabotageActionCandidateBinding<
+            CharacterObjectSabotageEvidence>(
+                request,
+                CharacterSabotageActionKind.Conceal,
+                candidate);
         return true;
     }
 }
