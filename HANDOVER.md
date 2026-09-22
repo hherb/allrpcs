@@ -21,6 +21,8 @@ acknowledge completed results automatically, schedule work, author evidence, per
 input/UI, timing, navigation, movement, perception, dialogue, or other world behavior. The unrelated
 untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `96cbb68` is published in draft PR #316 targeting `main`.
+
 ## Validation and review
 
 - Test-first focused runs failed only on the absent composition type, the missing selected-provider
@@ -38,6 +40,9 @@ untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
   explicit reset, stable offline failure, documentation, file and line limits, whitespace, and
   scoped paths. The selected-provider smoke was strengthened to prove the initial sabotage-action
   model retains the exact OpenAI setting; no unresolved finding remains.
+- Draft PR #316 run `35728647024` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather than
+  hosted product-test evidence.
 
 ## Exact next bounded slice
 
