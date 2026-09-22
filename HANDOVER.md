@@ -25,6 +25,8 @@ persists state, or adds input/UI, timing, navigation, movement, perception, dial
 other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
 must stay unstaged.
 
+Implementation commit `23a7cc7` is published in draft PR #322 targeting `main`.
+
 ## Validation and review
 
 - Both slices were test-first: the game build first failed on the absent acknowledgement operation,
@@ -43,6 +45,9 @@ must stay unstaged.
   and whitespace. Review found and fixed one lifecycle gap: the binder now retains the exact result
   acknowledged through its own guarded operation, so an external reset cannot masquerade as a
   binder-authorized dispatch token.
+- Draft PR #322 run `35791235753` currently has four failed jobs and one queued job, all with
+  `steps: []`; no checkout, build, test, smoke, or export step ran, so this is Actions/account
+  infrastructure state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
