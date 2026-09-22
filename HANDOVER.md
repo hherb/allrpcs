@@ -20,6 +20,8 @@ apply an action, poll or acknowledge automatically, schedule work, author eviden
 or add input/UI, timing, navigation, movement, perception, dialogue, or other world behavior. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `295d304` is published in draft PR #317 targeting `main`.
+
 ## Validation and review
 
 - Test-first focused runs failed only on the absent selection coordinator and then the absent
@@ -36,6 +38,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   idle/running/cancelled/failed/null inertness, unchanged request graph, main-scene dependency
   order, inert startup, documentation, file and line limits, whitespace, and scoped paths. No
   unresolved finding remains.
+- Draft PR #317 run `35731197560` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
