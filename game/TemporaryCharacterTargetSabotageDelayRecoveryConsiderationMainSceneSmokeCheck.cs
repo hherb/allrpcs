@@ -18,10 +18,15 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryConsiderationM
     private TemporaryCharacterTargetSabotageDelayRecoveryModelSource modelSource = null!;
     private CharacterTargetSabotageDelayRecoveryTaskController task = null!;
     private TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowController flow = null!;
+    private CharacterTargetSabotageDelayRecoveryController state = null!;
+    private CharacterTargetSabotageDelayRecoveryResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageDelayRecoveryConsiderationRequest request = null!;
     private CharacterTargetSabotageDelayRecoveryCandidate candidate = null!;
     private WorldEvent delayEvent = null!;
     private RecordingModel selectionModel = null!;
+    private WorldEventLogSnapshot? recoveredEventLog;
+    private WorldTimeSnapshot? recoveredWorldTime;
+    private CharacterTargetSabotageDelayRecoveryResult? appliedResult;
     private int processFrames;
     private int stage;
 
@@ -41,8 +46,18 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryConsiderationM
             "../CharacterTargetSabotageDelayRecoveryTaskController");
         flow = GetNode<TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowController>(
             "../TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowController");
+        state = GetNode<CharacterTargetSabotageDelayRecoveryController>(
+            "../CharacterTargetSabotageDelayRecoveryController");
+        coordinator = GetNode<CharacterTargetSabotageDelayRecoveryResolutionCoordinator>(
+            "../CharacterTargetSabotageDelayRecoveryResolutionCoordinator");
         request = CreateRequest(out candidate, out delayEvent);
         selectionModel = new(value => new(value.Actor.Identity.Id, candidate));
+        if (!state.TryInitialize(request.EventLog, request.WorldTime))
+        {
+            Fail("Main-scene delay-recovery authority rejected exact smoke initialization.");
+            return;
+        }
+
         SetProcess(true);
     }
 
@@ -78,7 +93,11 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryConsiderationM
     {
         bool inertStartup = task.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
             && task.Result is null
-            && selectionModel.CallCount == 0;
+            && selectionModel.CallCount == 0
+            && ReferenceEquals(state.EventLog, request.EventLog)
+            && ReferenceEquals(state.WorldTime, request.WorldTime)
+            && state.LatestAppliedResult is null
+            && InputsAreUnchanged();
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart(request)
             && task.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running;
@@ -94,22 +113,37 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryConsiderationM
 
     private void ObserveSelectionAndStartOfflineFailure()
     {
-        if (task.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running)
+        if (task.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running
+            || state.LatestAppliedResult is null)
         {
             return;
         }
 
-        if (task.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Completed
-            || task.Result is not { } result
-            || selectionModel.CallCount != 1
-            || !ReferenceEquals(selectionModel.Request, request)
-            || !ReferenceEquals(result.Request, request)
-            || !ReferenceEquals(result.SelectedCandidate, candidate)
-            || !task.TryReset()
-            || !flow.TryStart(request)
-            || !InputsAreUnchanged())
+        recoveredEventLog = state.EventLog;
+        recoveredWorldTime = state.WorldTime;
+        appliedResult = state.LatestAppliedResult;
+        bool exactSelection = task.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Completed
+            && task.Result is { } result
+            && selectionModel.CallCount == 1
+            && ReferenceEquals(selectionModel.Request, request)
+            && ReferenceEquals(result.Request, request)
+            && ReferenceEquals(result.SelectedCandidate, candidate)
+            && recoveredEventLog is not null
+            && recoveredWorldTime is not null
+            && appliedResult is not null
+            && !ReferenceEquals(recoveredEventLog, request.EventLog)
+            && !ReferenceEquals(recoveredWorldTime, request.WorldTime)
+            && ReferenceEquals(appliedResult.Candidate, candidate)
+            && ReferenceEquals(appliedResult.EventLog, recoveredEventLog)
+            && ReferenceEquals(appliedResult.WorldTime, recoveredWorldTime)
+            && ReferenceEquals(recoveredEventLog.Entries[^1], candidate.RecoveryEvent.EventId)
+            && ReferenceEquals(recoveredWorldTime.CurrentEventId, candidate.RecoveryEvent.EventId)
+            && InputsAreUnchanged();
+        if (!exactSelection
+            || !coordinator.TryAcknowledgeCompletedResult()
+            || !flow.TryStart(request))
         {
-            Fail("Main-scene delay-recovery failed its exact selected result.");
+            Fail("Main-scene delay-recovery failed its exact selection or offline restart.");
             return;
         }
 
@@ -126,6 +160,9 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryConsiderationM
         if (task.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Failed
             || task.Result is not null
             || selectionModel.CallCount != 1
+            || !ReferenceEquals(state.EventLog, recoveredEventLog)
+            || !ReferenceEquals(state.WorldTime, recoveredWorldTime)
+            || !ReferenceEquals(state.LatestAppliedResult, appliedResult)
             || !InputsAreUnchanged())
         {
             Fail("Main-scene delay-recovery offline failure changed source world state.");
@@ -134,8 +171,8 @@ public partial class TemporaryCharacterTargetSabotageDelayRecoveryConsiderationM
 
         GD.Print(
             "Main-scene delay-recovery consideration smoke passed: dependency-ordered inert "
-            + "startup, one explicit exact selection, explicit reset, stable offline failure, "
-            + "and unchanged source world state.");
+            + "startup, one explicit exact applied selection, guarded acknowledgement, stable "
+            + "offline failure, and unchanged source world state.");
         GetTree().Quit();
     }
 

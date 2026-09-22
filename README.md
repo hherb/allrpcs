@@ -877,17 +877,22 @@ selection clears only its installed binding and restores the same offline model.
 dependency-ordered model source is owned by `Main.tscn`; ordinary startup remains inert, and
 the credential-free composition smoke proves unsupported Anthropic selection is unchanged, queued
 one-shot precedence survives replacement, and no credential, HTTP, or model input occurs. The scene
-also dependency-orders the existing delay-recovery task and explicit consideration flow without
-starting them. A dedicated switch-gated credential-free smoke alone supplies one exact one-shot
-selection, observes its exact accepted result, explicitly resets the task, and proves a later
-offline failure leaves every request world-state input unchanged. The scene does not yet apply or
-acknowledge recovery, schedule work, author evidence, persist state, or add input/UI or other world
-behavior. A separate isolated scene controller now owns one exact initialized event-log and
-qualitative-time pair and consumes each exact accepted request at most once. It requires both
-request snapshot instances to remain current, installs a selected recovery's fresh snapshots and
-exact result together, and leaves current authority plus any prior applied result referentially
-unchanged for abstention. Stale, rebuilt, repeated, uninitialized, and null inputs fail closed. The
-controller is not yet owned by `Main.tscn` or connected to task observation or acknowledgement.
+also dependency-orders the target-delay recovery task, explicit consideration flow, authority, and
+resolution coordinator without starting them. Ordinary startup leaves recovery uninitialized and
+inert. A dedicated switch-gated credential-free smoke alone initializes the exact request world
+pair, supplies one exact one-shot selection, observes its exact applied recovery, acknowledges the
+completed task only while the observed result and all resolved authority tokens remain current,
+and proves a later offline failure leaves both applied authority and every request input unchanged.
+The controller consumes each exact accepted request at most once, installs a selected recovery's
+fresh event-log, world-time, and exact result together, and leaves current authority plus any prior
+applied result referentially unchanged for abstention. The coordinator observes each fresh
+completed result once; stale authority cannot be acknowledged or reset. Stale, rebuilt, repeated,
+uninitialized, and null inputs fail closed. An isolated one-shot candidate controller additionally
+accepts only the exact current applied delay result plus one caller-authored authoritative advancing
+recovery event. Missing, recorded, non-advancing, stale, rebuilt, repeated, and null inputs stay
+inert. It is not yet owned by `Main.tscn` or used to create a consideration request. Nothing
+automatically schedules recovery, authors the recovery event, persists state, or adds input/UI or
+other world behavior.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,

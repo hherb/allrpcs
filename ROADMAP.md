@@ -490,6 +490,12 @@ Current continuation:
   the main scene with one switch-gated exact-selection smoke and unchanged request world state.
 - [x] Own one exact target-delay recovery event-log and world-time pair in an isolated scene
   controller, consuming each exact accepted request once while preserving abstention and prior result.
+- [x] Resolve each fresh exact completed target-delay recovery once through scene authority, then
+  acknowledge only while the observed result and all resolved authority tokens remain current.
+- [x] Dependency-order target-delay recovery authority and result resolution in the main scene while
+  keeping ordinary startup inert and proving exact application only through switch-gated smoke.
+- [x] Own one exact-current target-delay recovery candidate from the applied delay result and one
+  caller-authored advancing recovery event, with stale or inapplicable input failing closed.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
