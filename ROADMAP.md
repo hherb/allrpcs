@@ -464,6 +464,14 @@ Current continuation:
 - [x] Select one exact eligible target-delay recovery in stable bounded caller order, then retain
   exact actor and current authoritative world state for provider-neutral consideration without
   selecting, deciding, or applying it.
+- [x] Accept only an exact-actor abstention or exact currently eligible request-member target-delay
+  recovery selection, then bind and apply that decision while leaving abstention inert.
+- [x] Obtain and validate one provider-neutral target-delay recovery decision with exact request and
+  caller cancellation forwarding, without binding a model or owning background work.
+- [x] Retain exact OpenAI target-delay recovery settings and model, then supply configured, one-shot,
+  or stable offline models without construction-time I/O or automatic invocation.
+- [x] Own one isolated bounded target-delay recovery task and explicit consideration flow with
+  exact result installation, overlap preservation, cancellation, reset, and fail-closed behavior.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
