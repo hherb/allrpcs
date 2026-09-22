@@ -31,6 +31,8 @@ evidence authorship, recovery selection, navigation, movement, perception, dialo
 new Domain effect logic. The unrelated untracked `scripts/code_statistics.py` remains untouched and
 must stay unstaged.
 
+Implementation commit `5d76f6e` is published in draft PR #323 targeting `main`.
+
 ## Validation and review
 
 - All three slices were test-first: the game build failed in turn on each absent coordinator type
@@ -46,6 +48,9 @@ must stay unstaged.
   result and acknowledgement lifecycle, abstention, repeated/foreign/null failure, ordinary-startup
   inertness, dependency order, unchanged authority, closed typed surfaces, documentation,
   file/line limits, and whitespace. No additional defect remained after the lifecycle smokes.
+- Draft PR #323's five hosted jobs fail with `steps: []`; no checkout, build, test, smoke, or export
+  step runs, so this is Actions/account infrastructure state rather than hosted product-test
+  evidence.
 
 ## Exact next bounded slice
 
