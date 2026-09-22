@@ -782,6 +782,15 @@ result and clears the observation. The main scene dependency-orders the coordina
 and flow, but neither startup nor the coordinator polls, dispatches, applies, or acknowledges an
 action automatically.
 
+`CharacterSabotageActionConcealmentRequestController` authors a one-shot sabotage-action request
+only from the existing source's exact enemy actor, physical access, world objects, and concealment
+candidate plus the scene controller's exact current concealment and evidence snapshots. The
+existing concealment policy must still accept that complete graph. The request retains only the
+exact actor and canonical `Conceal` kind; unavailable, stale, value-equal replacement, ineligible,
+null, and repeated inputs remain inert. This isolated controller is not in `Main.tscn` and does not
+start a model or task, observe a selection, dispatch or apply concealment, or change source or
+authoritative state.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://TemporaryWorldObjectSource.cs" id="1"]
+[ext_resource type="Script" path="res://TemporaryCharacterObjectSabotageSource.cs" id="2"]
+[ext_resource type="Script" path="res://CharacterObjectSabotageConcealmentController.cs" id="3"]
+[ext_resource type="Script" path="res://CharacterSabotageActionConcealmentRequestController.cs" id="4"]
+[ext_resource type="Script" path="res://CharacterSabotageActionConcealmentRequestControllerSmokeCheck.cs" id="5"]
+
+[node name="CharacterSabotageActionConcealmentRequestControllerSmokeCheck" type="Node"]
+
+[node name="Unavailable" type="Node" parent="."]
+
+[node name="TemporaryWorldObjectSource" type="Node" parent="Unavailable"]
+script = ExtResource("1")
+
+[node name="TemporaryCharacterObjectSabotageSource" type="Node" parent="Unavailable"]
+script = ExtResource("2")
+
+[node name="CharacterObjectSabotageConcealmentController" type="Node" parent="Unavailable"]
+script = ExtResource("3")
+
+[node name="CharacterSabotageActionConcealmentRequestController" type="Node" parent="Unavailable"]
+script = ExtResource("4")
+
+[node name="Ineligible" type="Node" parent="."]
+
+[node name="TemporaryWorldObjectSource" type="Node" parent="Ineligible"]
+script = ExtResource("1")
+
+[node name="TemporaryCharacterObjectSabotageSource" type="Node" parent="Ineligible"]
+script = ExtResource("2")
+
+[node name="CharacterObjectSabotageConcealmentController" type="Node" parent="Ineligible"]
+script = ExtResource("3")
+
+[node name="CharacterSabotageActionConcealmentRequestController" type="Node" parent="Ineligible"]
+script = ExtResource("4")
+
+[node name="Eligible" type="Node" parent="."]
+
+[node name="TemporaryWorldObjectSource" type="Node" parent="Eligible"]
+script = ExtResource("1")
+
+[node name="TemporaryCharacterObjectSabotageSource" type="Node" parent="Eligible"]
+script = ExtResource("2")
+
+[node name="CharacterObjectSabotageConcealmentController" type="Node" parent="Eligible"]
+script = ExtResource("3")
+
+[node name="CharacterSabotageActionConcealmentRequestController" type="Node" parent="Eligible"]
+script = ExtResource("4")
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("5")
