@@ -506,6 +506,8 @@ Current continuation:
   while ordinary startup remains inert and no autonomous trigger is added.
 - [x] Preflight one complete exact-current delay-recovery graph before publishing candidate,
   request, or authority state and before consuming the queued model, then start it exactly once.
+- [x] Dependency-order the delay-recovery start coordinator in the main scene and route the
+  switch-gated delay-to-recovery smoke through it while ordinary startup remains inert.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
@@ -590,6 +592,12 @@ Current continuation:
   or authority and before consuming the queued model, then start that exact request once.
 - [x] Dependency-order the recovery-start coordinator in the main scene and route the switch-gated
   influence-to-recovery smoke through it while ordinary startup remains inert.
+- [x] Retain one exact actor and stable distinct caller-filtered canonical sabotage kinds for one
+  provider-neutral action consideration without inferring eligibility or selecting a target.
+- [x] Accept only that actor's exact request-member action kind or explicit abstention, then bind
+  the accepted decision immutably to its exact request without dispatching an action.
+- [x] Obtain and validate one provider-neutral sabotage-action decision with exact request and
+  caller cancellation forwarding, without binding a model or owning background work.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
