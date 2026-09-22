@@ -2,68 +2,59 @@
 
 ## Current state
 
-`main` includes merged PR #308 at `a58375e`. Branch
-`codex/phase-7-delay-recovery-stream` continues target-delay recovery through four bounded slices:
+`main` includes merged PR #309 at `bdcfbd4`. Branch
+`codex/phase-7-delay-recovery-activation` continues target-delay recovery through two bounded
+slices:
 
-- Phase 7nj accepts only one bounded ordered OpenAI Responses semantic-event lifecycle and framed
-  UTF-8 SSE stream, returning an exact request-bound decision only after verified output and response
-  completion. Malformed, unknown, duplicate, out-of-order, incomplete, refused, failed, excessive,
-  trailing, cancelled, and policy-invalid streams fail closed without provider detail.
-- Phase 7nk executes one exact request through caller-owned OpenAI settings, credential source, HTTP
-  client, and validated Responses endpoint. It validates credentials before sending, requires SSE,
-  redacts provider and transport failure details, and preserves caller cancellation.
-- Phase 7nl creates one exact OpenAI delay-recovery model binding from caller-owned dependencies
-  without construction-time credential access, HTTP, or model invocation.
-- Phase 7nm explicitly initializes, exact-CAS replaces, and exact-CAS clears only that composition's
-  binding in the existing temporary delay-recovery model source, preserving queued one-shot model
-  precedence and the stable offline fallback.
+- Phase 7nn activates the existing exact OpenAI delay-recovery composition from selected game
+  settings. OpenAI initialization and replacement install fresh settings-bound models; supported
+  Ollama selection clears only that composition's binding and restores the same stable offline
+  model. Unsupported Anthropic remains inert, and queued one-shot precedence survives replacement.
+- Phase 7no dependency-orders the existing delay-recovery source, decision task, and explicit
+  consideration flow in `Main.tscn`. Ordinary startup stays idle. A dedicated switch-gated smoke
+  alone supplies one exact selection, observes its accepted result, resets explicitly, and proves a
+  later offline failure leaves the request's immutable world state unchanged.
 
-Implementation commit `60fcf0f` is published in draft PR #309 targeting `main`.
-
-Nothing activates the binding from selected game settings, adds delay-recovery ownership to
-`Main.tscn`, invokes a model automatically, applies or acknowledges recovery, owns authoritative
-recovery state, schedules work, authors evidence, persists state, or adds input/UI, navigation,
-movement, perception, dialogue, or other world behavior. The unrelated untracked
-`scripts/code_statistics.py` remains untouched and must stay unstaged.
+Nothing applies or acknowledges recovery, owns authoritative recovery state, observes completed
+results automatically, schedules decision work, authors candidates or evidence, persists state, or
+adds input/UI, navigation, movement, perception, dialogue, or other world behavior. The unrelated
+untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Each slice began with a focused missing-contract compile failure. The completed provider boundary
-  passes 40 focused delay-recovery transport tests, the binding factory's 2 focused tests, and the
-  dedicated credential-free Godot composition smoke.
-- The sandbox reproduced the known VSTest local-IPC restriction and Godot `user://logs` crash;
-  identical host-local focused commands passed without product changes.
-- Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
-  build, 2,720 Domain tests, 578 Application tests, 1,160 Infrastructure tests, all 8 architecture
-  tests, scenario validation, every credential-free Godot smoke, and the final Compatibility launch.
-- Draft PR #309's first hosted run on `8cc95fe` failed all five jobs before any step executed
-  (`steps: []`); that is Actions/account infrastructure state and provides no hosted product-test or
-  build evidence. Re-query the current PR head before relying on hosted status.
-- Session review covers lifecycle ordering and terminality, event/document bounds, exact actor and
-  candidate rebinding, malformed and provider-failed content redaction, credential-before-send,
-  HTTP method/endpoint/media type, caller cancellation, exact dependency retention, construction
-  I/O absence, composition CAS behavior, one-shot/offline preservation, closed public surfaces,
-  documentation, formatting, whitespace, line limits, and scoped paths. Review found and fixed one
-  metadata-after-output-completion ordering defect; its regression case passes. No unresolved
+- Both slices began with a focused missing-scene-contract failure and pass their credential-free
+  Godot smokes after implementation.
+- The sandbox reached a zero-warning build before reproducing the known VSTest loopback
+  `SocketException (13): Permission denied`; the identical host-local `./scripts/quality.sh` passed.
+- Host validation passes workflow checks, restore, formatting, a zero-warning build, 2,720 Domain
+  tests, 578 Application tests, 1,160 Infrastructure tests, all 8 architecture tests, scenario
+  validation, every credential-free Godot smoke, and the Compatibility launch.
+- Session review covers exact selected-setting retention, binding initialization/replacement/clear,
+  queued one-shot precedence, stable offline identity, no construction-time credential/HTTP/model
+  work, scene dependency order, idle task ownership, exact request/result retention, explicit reset,
+  offline failure, immutable request world state, closed exclusions, documentation, whitespace, and
+  scoped paths. Review found and fixed one contradictory README ownership sentence. No unresolved
   finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7nn: activate the target-delay recovery binding from selected game settings**.
+Take **Phase 7np: own one exact authoritative target-delay recovery world state in an isolated
+scene controller**.
 
 Acceptance boundary:
 
-1. Test-first add the existing temporary delay-recovery model source and its inert composition to
-   `TemporaryCharacterModelCompositionController`. Selected OpenAI initialization and replacement
-   must install fresh exact bindings; a supported Ollama selection must clear only the installed
-   binding and restore the exact stable offline fallback.
-2. Add only the delay-recovery model source needed by that composition to `Main.tscn` in dependency
-   order. Extend the credential-free model-composition smoke to prove unsupported Anthropic stays
-   inert, OpenAI initialization/replacement retains the exact selected settings, and Ollama restores
-   the same offline model without credential access, HTTP, or model invocation.
-3. Preserve any queued one-shot model across binding replacement or clearing, leave ordinary startup
-   inert, and keep existing ordinary and specialized provider bindings unchanged.
-4. Do not yet add the delay-recovery task, consideration flow, authoritative controller, resolution
-   coordinator, automatic decision work, recovery application or acknowledgement, evidence,
-   persistence, or input/UI behavior to `Main.tscn`. Update README/ROADMAP, run
-   `./scripts/quality.sh`, and review the complete diff.
+1. Test-first add `CharacterTargetSabotageDelayRecoveryController` with one-time exact
+   `WorldEventLogSnapshot` and `WorldTimeSnapshot` initialization plus nullable latest applied
+   recovery result.
+2. Resolve each exact accepted consideration request at most once. Require the controller's exact
+   current event-log and world-time instances to match the request before delegating selection to
+   `CharacterTargetSabotageDelayRecoveryConsiderationTransition.Apply`.
+3. An exact selection installs the returned fresh event log, world time, and exact result together.
+   Accepted abstention consumes only that exact request while preserving both authoritative snapshot
+   instances and the prior latest applied result. Stale, rebuilt/value-equal, uninitialized, repeated,
+   and null inputs fail closed without changing source graphs.
+4. Prove the closed controller surface and exact-reference behavior in a dedicated isolated Godot
+   smoke. Update README/ROADMAP and run `./scripts/quality.sh`.
+5. Do not yet add this authority, a result-resolution coordinator, automatic observation or
+   acknowledgement, candidate authoring, persistence, scheduling, or input/UI behavior to
+   `Main.tscn`.

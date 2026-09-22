@@ -871,10 +871,18 @@ provider body or transport detail, while caller cancellation is preserved. A con
 factory binds the exact OpenAI settings and caller-owned dependencies without credential access,
 HTTP, or model invocation. An isolated inert scene composition explicitly initializes, replaces,
 or clears only its own exact binding in the existing temporary model source, preserving queued
-one-shot precedence and the stable offline fallback. These seams are not yet activated from
-selected game settings or owned by `Main.tscn`; they do not apply recovery automatically, own
-authoritative recovery state, schedule themselves, author evidence, persist state, or add input/UI
-or other world behavior.
+one-shot precedence and the stable offline fallback. Selected OpenAI game settings now initialize
+and replace that exact composition with fresh settings-bound models, while a supported Ollama
+selection clears only its installed binding and restores the same offline model. The
+dependency-ordered model source is owned by `Main.tscn`; ordinary startup remains inert, and
+the credential-free composition smoke proves unsupported Anthropic selection is unchanged, queued
+one-shot precedence survives replacement, and no credential, HTTP, or model input occurs. The scene
+also dependency-orders the existing delay-recovery task and explicit consideration flow without
+starting them. A dedicated switch-gated credential-free smoke alone supplies one exact one-shot
+selection, observes its exact accepted result, explicitly resets the task, and proves a later
+offline failure leaves every request world-state input unchanged. The scene does not yet apply or
+acknowledge recovery, own authoritative recovery state, schedule work, author evidence, persist
+state, or add input/UI or other world behavior.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,

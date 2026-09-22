@@ -1,6 +1,8 @@
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Allrpcs.Application.Characters;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Domain.Characters;
 using Allrpcs.Infrastructure.Characters;
 using Allrpcs.Infrastructure.Dialogue;
 using Godot;
@@ -25,6 +27,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
     private TemporaryCharacterTargetSabotageDelayModelSource delayModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceModelSource influenceModelSource = null!;
     private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModelSource = null!;
+    private TemporaryCharacterTargetSabotageDelayRecoveryModelSource delayRecoveryModelSource = null!;
     private TemporaryCharacterTurnParticipationModelSource participationModelSource = null!;
 
     /// <inheritdoc />
@@ -62,6 +65,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         recoveryModelSource =
             GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource>(
                 "../TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource");
+        delayRecoveryModelSource =
+            GetNode<TemporaryCharacterTargetSabotageDelayRecoveryModelSource>(
+                "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
         participationModelSource = GetNode<TemporaryCharacterTurnParticipationModelSource>(
             "../TemporaryCharacterTurnParticipationModelSource");
     }
@@ -98,6 +104,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             influenceModelSource.TakeModel();
         ICharacterTargetSabotageInfluenceRecoveryDecisionModel offlineRecovery =
             recoveryModelSource.TakeModel();
+        ICharacterTargetSabotageDelayRecoveryDecisionModel offlineDelayRecovery =
+            delayRecoveryModelSource.TakeModel();
         if (controller.TryInitialize(unsupported)
             || !ReferenceEquals(modelSource.TakeModel(), offline)
             || !ReferenceEquals(participationModelSource.TakeModel(), offlineParticipation)
@@ -107,7 +115,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
             || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
-            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery))
+            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery)
+            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), offlineDelayRecovery))
         {
             Fail("Provider composition did not preserve offline behavior for Anthropic.");
             return;
@@ -141,7 +150,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
             || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
-            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery))
+            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery)
+            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), offlineDelayRecovery))
         {
             Fail("Provider composition did not retain its exact persisted Ollama model.");
             return;
@@ -241,6 +251,9 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             influenceModelSource.TakeModel();
         ICharacterTargetSabotageInfluenceRecoveryDecisionModel openAiRecovery =
             recoveryModelSource.TakeModel();
+        ICharacterTargetSabotageDelayRecoveryDecisionModel openAiDelayRecovery =
+            delayRecoveryModelSource.TakeModel();
+        ScriptedDelayRecoveryModel oneShotDelayRecovery = new();
         CharacterModelSettings replacementOpenAiSettings = new(
             CharacterModelProvider.OpenAi,
             "gpt-replacement-test");
@@ -253,6 +266,10 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || openAiDelay is not OpenAiCharacterTargetSabotageDelayModel
             || openAiInfluence is not OpenAiCharacterTargetSabotageInfluenceModel
             || openAiRecovery is not OpenAiCharacterTargetSabotageInfluenceRecoveryModel
+            || openAiDelayRecovery is not OpenAiCharacterTargetSabotageDelayRecoveryModel
+            || !ReferenceEquals(
+                Field<CharacterModelSettings>(openAiDelayRecovery, "settings"),
+                openAiSettings)
             || !ReferenceEquals(modelSource.TakeModel(), openAiModel)
             || !ReferenceEquals(participationModelSource.TakeModel(), openAiParticipation)
             || !ReferenceEquals(concealmentModelSource.TakeModel(), openAiConcealment)
@@ -262,6 +279,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(delayModelSource.TakeModel(), openAiDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), openAiInfluence)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), openAiRecovery)
+            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), openAiDelayRecovery)
+            || !delayRecoveryModelSource.TrySupplyModel(oneShotDelayRecovery)
             || !settingsController.TryApply(replacementOpenAiSettings)
             || !controller.TryReplaceCurrentBindings()
             || concealmentModelSource.TakeModel()
@@ -296,6 +315,14 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
                 is not OpenAiCharacterTargetSabotageInfluenceRecoveryModel replacementRecovery
             || ReferenceEquals(replacementRecovery, openAiRecovery)
             || !ReferenceEquals(recoveryModelSource.TakeModel(), replacementRecovery)
+            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), oneShotDelayRecovery)
+            || delayRecoveryModelSource.TakeModel()
+                is not OpenAiCharacterTargetSabotageDelayRecoveryModel replacementDelayRecovery
+            || ReferenceEquals(replacementDelayRecovery, openAiDelayRecovery)
+            || !ReferenceEquals(
+                Field<CharacterModelSettings>(replacementDelayRecovery, "settings"),
+                replacementOpenAiSettings)
+            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), replacementDelayRecovery)
             || !settingsController.TryApply(activatedSettings)
             || !controller.TryReplaceCurrentBindings()
             || modelSource.TakeModel() is not OllamaCharacterModel
@@ -306,7 +333,8 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             || !ReferenceEquals(contaminationModelSource.TakeModel(), offlineContamination)
             || !ReferenceEquals(delayModelSource.TakeModel(), offlineDelay)
             || !ReferenceEquals(influenceModelSource.TakeModel(), offlineInfluence)
-            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery))
+            || !ReferenceEquals(recoveryModelSource.TakeModel(), offlineRecovery)
+            || !ReferenceEquals(delayRecoveryModelSource.TakeModel(), offlineDelayRecovery))
         {
             Fail("Provider composition did not activate and safely clear specialized bindings.");
             return;
@@ -320,7 +348,7 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             + "specialized bindings with exact concealment, move, substitution, contamination, "
             + "delay, influence, and recovery replacement, and Ollama restored fail-closed "
             + "participation, concealment, move, substitution, contamination, delay, influence, "
-            + "and recovery decisions.");
+            + "influence recovery, and delay recovery decisions.");
         GetTree().Quit();
     }
 
@@ -328,6 +356,11 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
         CharacterModelSettings settings,
         ICharacterModel model) =>
         new(settings.Provider, settings, model, new ScriptedConnectionTester());
+
+    private static T Field<T>(object instance, string name) where T : class =>
+        (T)instance.GetType().GetField(
+            name,
+            BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(instance)!;
 
     private sealed class ScriptedModel : ICharacterModel
     {
@@ -353,6 +386,15 @@ public partial class TemporaryCharacterModelCompositionControllerSmokeCheck : No
             cancellationToken.ThrowIfCancellationRequested();
             return ValueTask.FromResult(CharacterModelConnectionTestResult.Connected());
         }
+    }
+
+    private sealed class ScriptedDelayRecoveryModel
+        : ICharacterTargetSabotageDelayRecoveryDecisionModel
+    {
+        public ValueTask<CharacterTargetSabotageDelayRecoveryDecision> DecideAsync(
+            CharacterTargetSabotageDelayRecoveryConsiderationRequest request,
+            CancellationToken cancellationToken) =>
+            throw new InvalidOperationException("The composition smoke invoked a model.");
     }
 
     private void Fail(string message)
