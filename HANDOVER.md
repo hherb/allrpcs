@@ -45,9 +45,9 @@ Implementation commit `23a7cc7` is published in draft PR #322 targeting `main`.
   and whitespace. Review found and fixed one lifecycle gap: the binder now retains the exact result
   acknowledged through its own guarded operation, so an external reset cannot masquerade as a
   binder-authorized dispatch token.
-- Draft PR #322's published heads report four failed jobs and one queued job, all with `steps: []`;
-  no checkout, build, test, smoke, or export step ran, so this is Actions/account infrastructure
-  state rather than hosted product-test evidence.
+- Draft PR #322's hosted jobs continue to fail or remain queued with `steps: []`; no checkout,
+  build, test, smoke, or export step runs, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
