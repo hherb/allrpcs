@@ -881,8 +881,13 @@ also dependency-orders the existing delay-recovery task and explicit considerati
 starting them. A dedicated switch-gated credential-free smoke alone supplies one exact one-shot
 selection, observes its exact accepted result, explicitly resets the task, and proves a later
 offline failure leaves every request world-state input unchanged. The scene does not yet apply or
-acknowledge recovery, own authoritative recovery state, schedule work, author evidence, persist
-state, or add input/UI or other world behavior.
+acknowledge recovery, schedule work, author evidence, persist state, or add input/UI or other world
+behavior. A separate isolated scene controller now owns one exact initialized event-log and
+qualitative-time pair and consumes each exact accepted request at most once. It requires both
+request snapshot instances to remain current, installs a selected recovery's fresh snapshots and
+exact result together, and leaves current authority plus any prior applied result referentially
+unchanged for abstention. Stale, rebuilt, repeated, uninitialized, and null inputs fail closed. The
+controller is not yet owned by `Main.tscn` or connected to task observation or acknowledgement.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,
