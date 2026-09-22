@@ -472,6 +472,10 @@ Current continuation:
   or stable offline models without construction-time I/O or automatic invocation.
 - [x] Own one isolated bounded target-delay recovery task and explicit consideration flow with
   exact result installation, overlap preservation, cancellation, reset, and fail-closed behavior.
+- [x] Strictly decode one exact target-delay recovery decision from a bounded closed JSON object
+  while rebinding actor text and candidate index to exact request instances.
+- [x] Serialize one bounded stateless OpenAI structured-output request over trusted exact
+  target-delay recovery world and candidate context without credential or network access.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
