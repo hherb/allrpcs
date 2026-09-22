@@ -624,6 +624,8 @@ Current continuation:
   and acknowledge only that same current task result without dispatching an action.
 - [x] Dependency-order that explicit selection coordinator in the main scene while ordinary startup
   remains inert and only the switch-gated smoke observes and acknowledges a result.
+- [x] Author one exact sabotage-action request containing only the canonical conceal kind when the
+  exact current authored concealment graph remains eligible, without starting or applying work.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
