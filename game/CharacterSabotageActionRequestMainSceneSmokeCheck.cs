@@ -23,6 +23,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
     private CharacterSabotageActionTaskController task = null!;
     private CharacterSabotageActionRequestConsiderationFlowController flow = null!;
     private CharacterSabotageActionSelectionCoordinator selection = null!;
+    private CharacterSabotageActionAuthorBindingCoordinator binding = null!;
     private WorldObjectConcealmentSnapshot initialConcealment = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
     private RecordingModel model = null!;
@@ -56,6 +57,8 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             "../CharacterSabotageActionRequestConsiderationFlowController");
         selection = GetNode<CharacterSabotageActionSelectionCoordinator>(
             "../CharacterSabotageActionSelectionCoordinator");
+        binding = GetNode<CharacterSabotageActionAuthorBindingCoordinator>(
+            "../CharacterSabotageActionAuthorBindingCoordinator");
         initialConcealment = concealmentState.Concealment!;
         initialEvidence = concealmentState.Evidence!;
         model = new(value => new(value.Actor.Identity.Id, CharacterSabotageActionKind.Conceal));
@@ -81,7 +84,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
 
         if (stage == 1)
         {
-            ObserveCompletedSelection();
+            ObserveAndBindCompletedSelection();
             return;
         }
 
@@ -95,6 +98,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             && task.Status == CharacterSabotageActionTaskStatus.Idle
             && task.Result is null
             && selection.ObservedResult is null
+            && binding.SelectedAuthorRequest is null
             && StateIsUnchanged();
         bool authored = concealmentAuthor.TryCreate(
             source.Character,
@@ -131,7 +135,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
         stage = 1;
     }
 
-    private void ObserveCompletedSelection()
+    private void ObserveAndBindCompletedSelection()
     {
         if (task.Status == CharacterSabotageActionTaskStatus.Running)
         {
@@ -153,10 +157,25 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             return;
         }
 
+        if (!selection.TryObserveCompletedResult()
+            || !ReferenceEquals(selection.ObservedResult, result)
+            || !binding.TryBindObservedSelection()
+            || !ReferenceEquals(binding.SelectedAuthorRequest, concealmentAuthor.Request)
+            || binding.TryBindObservedSelection()
+            || task.Status != CharacterSabotageActionTaskStatus.Completed
+            || !ReferenceEquals(task.Result, result)
+            || !RequestIsExact(request)
+            || !StateIsUnchanged())
+        {
+            Fail("Main-scene exact selection did not bind once without acknowledgement or mutation.");
+            return;
+        }
+
         GD.Print(
             "Main-scene composed sabotage-action request smoke passed: ordinary startup stayed "
-            + "inert; one exact live conceal request completed selection without observation, "
-            + "acknowledgement, dispatch, application, or authoritative-state mutation.");
+            + "inert; one exact live conceal request completed, was observed, and bound to its "
+            + "exact author output without acknowledgement, dispatch, application, or "
+            + "authoritative-state mutation.");
         GetTree().Quit();
     }
 

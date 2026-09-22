@@ -644,6 +644,10 @@ Current continuation:
   exact request without observing, dispatching, or applying its eventual selection.
 - [x] Dependency-order the seven request authors, composer, and exact-start coordinator in the main
   scene while ordinary startup stays inert and only a switch-gated smoke starts consideration.
+- [x] Bind one exact observed sabotage-action selection or abstention to only its still-current
+  action-specific author output without acknowledging, dispatching, or applying the result.
+- [x] Dependency-order the exact author binding in the main scene while ordinary startup remains
+  inert and only the switch-gated smoke observes and binds one live selection.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

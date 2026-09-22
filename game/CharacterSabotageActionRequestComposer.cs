@@ -19,6 +19,13 @@ public partial class CharacterSabotageActionRequestComposer : Node
 
     private ICharacterSabotageActionRequestAuthor[] authors = null!;
 
+    /// <summary>Gets the exact author-output snapshot retained by successful composition.</summary>
+    internal IReadOnlyList<CharacterSabotageActionConsiderationRequest?>? ComposedAuthorOutputs
+    {
+        get;
+        private set;
+    }
+
     /// <summary>Gets the exact one-shot composed request accepted by this controller.</summary>
     public CharacterSabotageActionConsiderationRequest? Request { get; private set; }
 
@@ -81,6 +88,7 @@ public partial class CharacterSabotageActionRequestComposer : Node
         }
 
         Request = new CharacterSabotageActionConsiderationRequest(actor, eligibleKinds);
+        ComposedAuthorOutputs = Array.AsReadOnly(expectedCurrentOutputs.ToArray());
         return true;
     }
 
