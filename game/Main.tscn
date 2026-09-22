@@ -1,4 +1,4 @@
-[gd_scene load_steps=224 format=3]
+[gd_scene load_steps=225 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -280,6 +280,7 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionTaskController.cs" id="278_sabotage_action_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationFlowController.cs" id="279_sabotage_action_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck.cs" id="280_sabotage_action_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSelectionCoordinator.cs" id="281_sabotage_action_selection"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -686,6 +687,9 @@ script = ExtResource("278_sabotage_action_task")
 
 [node name="TemporaryCharacterSabotageActionConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("279_sabotage_action_flow")
+
+[node name="CharacterSabotageActionSelectionCoordinator" type="Node" parent="."]
+script = ExtResource("281_sabotage_action_selection")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

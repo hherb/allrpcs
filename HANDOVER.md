@@ -2,67 +2,65 @@
 
 ## Current state
 
-`main` includes merged PR #315 at `d1200ad`. Branch
-`codex/phase-7-sabotage-action-composition` advances Phase 7 through three bounded slices:
+`main` includes merged PR #316 at `f35611c`. Branch
+`codex/phase-7-sabotage-action-observation` advances Phase 7 through two bounded slices:
 
-- Phase 7ok composes one explicit OpenAI sabotage-action binding into the exact existing temporary
-  model source. It retains its installed binding as the expected-instance token for initialize,
-  replacement, and clear, and performs no construction-time credential, HTTP, or model work.
-- Phase 7ol activates or replaces that exact binding from selected OpenAI game settings and clears
-  only that composition's binding for supported Ollama settings. Replacement preserves a queued
-  one-shot model, and clearing restores the same stable fail-closed offline model.
-- Phase 7om dependency-orders the sabotage-action source, task, and explicit consideration flow in
-  `Main.tscn`. Ordinary startup remains inert; only a switch-gated credential-free smoke starts one
-  exact selection, resets it explicitly, and observes a later offline failure.
+- Phase 7on adds `CharacterSabotageActionSelectionCoordinator`. A caller must explicitly observe
+  one exact completed sabotage-action selection or abstention, and duplicate observation is inert.
+  Only the same exact currently observed task result can be acknowledged; acknowledgement resets
+  the task and clears the observation.
+- Phase 7oo dependency-orders that coordinator after the existing sabotage-action task and explicit
+  flow in `Main.tscn`. Ordinary startup remains inert. Only the existing switch-gated,
+  credential-free smoke explicitly observes and acknowledges one exact selected result before
+  verifying a later offline failure remains unexposed.
 
-The chain still only selects one caller-prefiltered sabotage kind or abstains. It does not infer
-action-specific eligibility, choose a target or candidate, dispatch or apply an action, observe or
-acknowledge completed results automatically, schedule work, author evidence, persist state, or add
-input/UI, timing, navigation, movement, perception, dialogue, or other world behavior. The unrelated
-untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+The chain still only selects one caller-prefiltered sabotage kind or abstains. It does not author
+the request from current action-specific eligibility, choose a target or candidate, dispatch or
+apply an action, poll or acknowledge automatically, schedule work, author evidence, persist state,
+or add input/UI, timing, navigation, movement, perception, dialogue, or other world behavior. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-Implementation commit `96cbb68` is published in draft PR #316 targeting `main`.
+Implementation commit `295d304` is published in draft PR #317 targeting `main`.
 
 ## Validation and review
 
-- Test-first focused runs failed only on the absent composition type, the missing selected-provider
-  activation path, and the absent main-scene task/flow nodes before their implementations were added.
-- Focused host-local runs pass a zero-warning game build, the isolated exact composition smoke, the
-  selected-provider initialization/replacement/clear smoke, and the gated inert main-scene flow.
+- Test-first focused runs failed only on the absent selection coordinator and then the absent
+  `Main.tscn` coordinator node before their implementations were added.
+- Focused host-local runs pass a zero-warning game build, the isolated exact selection-coordinator
+  smoke, and the switch-gated main-scene flow.
 - The sandboxed full quality run reached a zero-warning build before the known VSTest loopback
   `SocketException (13): Permission denied`; the identical host-local `./scripts/quality.sh` passes
   workflow validation, restore, formatting, a zero-warning build, 2,728 Domain tests, 586
   Application tests, 1,220 Infrastructure tests, all 8 architecture tests, scenario validation,
   every credential-free Godot smoke, and the Compatibility renderer launch.
-- Session-wide review covers exact initial and replacement settings retention, expected-binding
-  replacement and clear, queued one-shot precedence, stable offline identity, zero construction-time
-  input/output, source/task/flow dependency order, inert startup, exact request/result retention,
-  explicit reset, stable offline failure, documentation, file and line limits, whitespace, and
-  scoped paths. The selected-provider smoke was strengthened to prove the initial sabotage-action
-  model retains the exact OpenAI setting; no unresolved finding remains.
-- Draft PR #316 run `35728647024` reports all five hosted jobs failed with `steps: []`; no checkout,
-  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather than
-  hosted product-test evidence.
+- Session-wide review covers the coordinator's explicit-only surface, exact selected and abstaining
+  result retention, duplicate observation, stale acknowledgement, exact reset-and-clear behavior,
+  idle/running/cancelled/failed/null inertness, unchanged request graph, main-scene dependency
+  order, inert startup, documentation, file and line limits, whitespace, and scoped paths. No
+  unresolved finding remains.
+- Draft PR #317 run `35731197560` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7on: observe and explicitly acknowledge one completed sabotage-action selection**.
+Take **Phase 7op: author one concealment-gated sabotage-action request**.
 
 Acceptance boundary:
 
-1. Test-first add one isolated `CharacterSabotageActionSelectionCoordinator` over the existing
-   `CharacterSabotageActionTaskController`.
-2. Observe each fresh exact completed consideration result at most once and expose only that exact
-   observed result for a later action-specific consumer. Preserve its exact request, decision, and
-   selected request-member kind; accepted abstention remains an exact observed result rather than a
-   fabricated selection.
-3. Permit explicit acknowledgement only for the same exact observed task result, then reset the task
-   and clear the observation atomically. Keep idle, running, cancelled, failed, duplicate, stale, and
-   null paths inert, and leave the complete request graph unchanged.
-4. Prove selected result, abstention, duplicate observation, exact acknowledgement, and terminal
-   failure behavior in one isolated credential-free smoke. Update README/ROADMAP, run
-   `./scripts/quality.sh`, and review the complete diff.
-5. Do not yet wire the coordinator into `Main.tscn`, observe or acknowledge automatically, construct
-   candidates, infer action-specific eligibility, dispatch or apply an action, author evidence,
-   persist state, or add input/UI, timing, navigation, movement, perception, dialogue, or other world
-   behavior.
+1. Test-first add one isolated scene controller that receives the exact current enemy actor and the
+   existing exact concealment source/state graph, then exposes a fresh
+   `CharacterSabotageActionConsiderationRequest` only when the existing concealment eligibility
+   policy accepts that graph.
+2. Retain the exact actor and only the canonical `CharacterSabotageActionKind.Conceal` singleton in
+   the authored request. Reuse the existing physical access, world objects, concealment, evidence,
+   and candidate instances for eligibility; do not rebuild value-equal substitutes or infer access.
+3. Keep unavailable, stale, value-equal replacement, ineligible, already-authored, and null inputs
+   inert. Prove one exact eligible request plus every fail-closed path in one isolated
+   credential-free smoke, including unchanged source and authoritative state.
+4. Do not yet wire the request author into `Main.tscn`, start the sabotage-action model/task,
+   observe or acknowledge a result, add the other six action kinds, dispatch or apply concealment,
+   author evidence, persist state, or add input/UI, timing, navigation, movement, perception,
+   dialogue, or other world behavior.
+5. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
+   slice to add one further action-specific eligibility gate without weakening this exact boundary.

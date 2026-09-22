@@ -620,6 +620,10 @@ Current continuation:
   one-shot precedence and restoring the stable offline model for supported local settings.
 - [x] Dependency-order the sabotage-action source, task, and explicit flow in the main scene while
   ordinary startup remains inert and only a switch-gated smoke starts consideration.
+- [x] Explicitly observe one exact completed sabotage-action selection or abstention at most once
+  and acknowledge only that same current task result without dispatching an action.
+- [x] Dependency-order that explicit selection coordinator in the main scene while ordinary startup
+  remains inert and only the switch-gated smoke observes and acknowledges a result.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
