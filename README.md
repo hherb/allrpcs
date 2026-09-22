@@ -832,6 +832,24 @@ the unchanged graph before the one-shot controller authors only the canonical `I
 It does not start consideration, alter a relationship, record a reason, or mutate either request or
 scene state.
 
+`CharacterSabotageActionRequestComposer` reads the seven action-specific authors' exact current
+outputs and accepts only a caller-held exact snapshot of those references for the same enemy actor.
+It creates one fresh request containing each available singleton once in canonical roadmap order.
+Empty, foreign-actor, value-equal replacement, wrong-kind, duplicate-kind, stale, null, and repeated
+composition stays inert. The isolated composer does not rerun an action-specific gate, start the
+existing consideration flow, select a candidate, dispatch or apply an action, or mutate any author
+output or authoritative state.
+
+`CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
+current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
+starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
+abstention remain task results only: this isolated coordinator does not observe or acknowledge a
+result, dispatch or apply an action, select an action-specific candidate, or mutate author output or
+authoritative state. The main scene dependency-orders all seven authors, the composer, and this
+coordinator while ordinary startup remains inert. A switch-gated smoke authors one exact live
+conceal-only request and completes its selection without observation, acknowledgement, dispatch,
+application, or authoritative-state mutation.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the

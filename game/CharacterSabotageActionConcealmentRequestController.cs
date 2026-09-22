@@ -6,7 +6,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one conceal action request from exact eligible scene state.</summary>
-public partial class CharacterSabotageActionConcealmentRequestController : Node
+public partial class CharacterSabotageActionConcealmentRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private TemporaryCharacterObjectSabotageSource source = null!;
     private CharacterObjectSabotageConcealmentController state = null!;

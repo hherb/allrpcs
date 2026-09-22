@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestAuthorStub.cs" id="1"]
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestComposer.cs" id="2"]
+[ext_resource type="Script" path="res://TemporaryCharacterSabotageActionModelSource.cs" id="3"]
+[ext_resource type="Script" path="res://CharacterSabotageActionTaskController.cs" id="4"]
+[ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationFlowController.cs" id="5"]
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestConsiderationFlowController.cs" id="6"]
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestConsiderationFlowSmokeCheck.cs" id="7"]
+
+[node name="CharacterSabotageActionRequestConsiderationFlowSmokeCheck" type="Node"]
+
+[node name="CharacterSabotageActionConcealmentRequestController" type="Node" parent="."]
+script = ExtResource("1")
+[node name="CharacterSabotageActionMoveRequestController" type="Node" parent="."]
+script = ExtResource("1")
+[node name="CharacterSabotageActionSubstitutionRequestController" type="Node" parent="."]
+script = ExtResource("1")
+[node name="CharacterSabotageActionContaminationRequestController" type="Node" parent="."]
+script = ExtResource("1")
+[node name="CharacterSabotageActionMisquotationRequestController" type="Node" parent="."]
+script = ExtResource("1")
+[node name="CharacterSabotageActionDelayRequestController" type="Node" parent="."]
+script = ExtResource("1")
+[node name="CharacterSabotageActionInfluenceRequestController" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="CharacterSabotageActionRequestComposer" type="Node" parent="."]
+script = ExtResource("2")
+[node name="TemporaryCharacterSabotageActionModelSource" type="Node" parent="."]
+script = ExtResource("3")
+[node name="CharacterSabotageActionTaskController" type="Node" parent="."]
+script = ExtResource("4")
+[node name="TemporaryCharacterSabotageActionConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("5")
+[node name="CharacterSabotageActionRequestConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("7")
