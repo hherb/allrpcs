@@ -488,6 +488,8 @@ Current continuation:
   restoring the same stable offline model for Ollama without automatic decision work.
 - [x] Dependency-order the target-delay recovery source, task, and explicit consideration flow in
   the main scene with one switch-gated exact-selection smoke and unchanged request world state.
+- [x] Own one exact target-delay recovery event-log and world-time pair in an isolated scene
+  controller, consuming each exact accepted request once while preserving abstention and prior result.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
