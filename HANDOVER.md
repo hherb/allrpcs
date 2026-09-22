@@ -28,6 +28,8 @@ nodes to `Main.tscn`, schedule work autonomously, author evidence, persist state
 timing, navigation, movement, perception, dialogue, or other world behavior. The unrelated
 untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `433be6f` is published in draft PR #315 targeting `main`.
+
 ## Validation and review
 
 - Test-first focused runs failed only on each absent decoder, stream/SSE, serializer, binding,
@@ -45,6 +47,9 @@ untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
   overlap preservation, stable offline failure, main-thread task installation, inert startup,
   documentation accuracy, file/line limits, whitespace, and scoped staged paths. One ambiguous
   layer-local documentation exclusion was clarified; no unresolved finding remains.
+- Draft PR #315 run `35724517500` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather than
+  hosted product-test evidence.
 
 ## Exact next bounded slice
 
