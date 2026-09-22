@@ -652,6 +652,12 @@ Current continuation:
   selected author request as a later dispatch token and leaving abstention without an output.
 - [x] Bind every authored singleton request to its exact strongly typed action-specific candidate,
   and retain only the selected exact binding without starting, dispatching, or applying an action.
+- [x] Compose one acknowledged exact candidate binding into only its existing action-specific
+  provider-neutral request after revalidating the corresponding live source and authority.
+- [x] Start only that exact composed action-specific request once after revalidating its typed
+  candidate and current authority, preserving queued models across every rejected preflight.
+- [x] Observe and explicitly acknowledge only the exact typed terminal result for that started
+  request through its existing action-specific result owner.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

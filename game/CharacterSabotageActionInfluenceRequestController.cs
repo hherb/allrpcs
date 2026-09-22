@@ -15,6 +15,13 @@ public partial class CharacterSabotageActionInfluenceRequestController
     /// <inheritdoc />
     public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
 
+    /// <summary>Gets the exact influence request that supplied the selected candidate context.</summary>
+    internal CharacterTargetSabotageInfluenceConsiderationRequest? SourceRequest
+    {
+        get;
+        private set;
+    }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -55,6 +62,7 @@ public partial class CharacterSabotageActionInfluenceRequestController
         CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Influence]);
+        SourceRequest = influenceRequest;
         Request = request;
         CandidateBinding = new CharacterSabotageActionCandidateBinding<
             CharacterTargetSabotageInfluenceCandidate>(

@@ -24,9 +24,15 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
     private CharacterSabotageActionRequestConsiderationFlowController flow = null!;
     private CharacterSabotageActionSelectionCoordinator selection = null!;
     private CharacterSabotageActionAuthorBindingCoordinator binding = null!;
+    private CharacterSabotageActionSpecificRequestCoordinator actionSpecificRequests = null!;
+    private TemporaryCharacterObjectSabotageConcealmentModelSource concealmentModelSource = null!;
+    private CharacterObjectSabotageConcealmentTaskController concealmentTask = null!;
+    private CharacterSabotageActionSpecificRequestStartCoordinator actionSpecificStart = null!;
+    private CharacterSabotageActionSpecificResultCoordinator actionSpecificResult = null!;
     private WorldObjectConcealmentSnapshot initialConcealment = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
     private RecordingModel model = null!;
+    private RecordingConcealmentModel concealmentModel = null!;
     private int processFrames;
     private int stage;
 
@@ -59,9 +65,20 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             "../CharacterSabotageActionSelectionCoordinator");
         binding = GetNode<CharacterSabotageActionAuthorBindingCoordinator>(
             "../CharacterSabotageActionAuthorBindingCoordinator");
+        actionSpecificRequests = GetNode<CharacterSabotageActionSpecificRequestCoordinator>(
+            "../CharacterSabotageActionSpecificRequestCoordinator");
+        concealmentModelSource = GetNode<TemporaryCharacterObjectSabotageConcealmentModelSource>(
+            "../TemporaryCharacterObjectSabotageConcealmentModelSource");
+        concealmentTask = GetNode<CharacterObjectSabotageConcealmentTaskController>(
+            "../CharacterObjectSabotageConcealmentTaskController");
+        actionSpecificStart = GetNode<CharacterSabotageActionSpecificRequestStartCoordinator>(
+            "../CharacterSabotageActionSpecificRequestStartCoordinator");
+        actionSpecificResult = GetNode<CharacterSabotageActionSpecificResultCoordinator>(
+            "../CharacterSabotageActionSpecificResultCoordinator");
         initialConcealment = concealmentState.Concealment!;
         initialEvidence = concealmentState.Evidence!;
         model = new(value => new(value.Actor.Identity.Id, CharacterSabotageActionKind.Conceal));
+        concealmentModel = new(value => new(value.Character.Identity.Id, null));
         SetProcess(true);
     }
 
@@ -88,6 +105,12 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             return;
         }
 
+        if (stage == 2)
+        {
+            ObserveActionSpecificAbstention();
+            return;
+        }
+
         Fail("Main-scene composed sabotage-action request entered an unknown stage.");
     }
 
@@ -100,6 +123,15 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             && selection.ObservedResult is null
             && binding.SelectedAuthorRequest is null
             && binding.SelectedCandidateBinding is null
+            && actionSpecificRequests.RequestCount == 0
+            && concealmentTask.Status == CharacterObjectSabotageConcealmentTaskStatus.Idle
+            && concealmentTask.Result is null
+            && actionSpecificStart.StartedAuthorRequest is null
+            && actionSpecificResult.ResultCount == 0
+            && !actionSpecificRequests.TryCompose(null, null)
+            && !actionSpecificStart.TryStart()
+            && !actionSpecificResult.TryObserveCompletedResult()
+            && !actionSpecificResult.TryAcknowledgeCompletedResult()
             && StateIsUnchanged();
         bool authored = concealmentAuthor.TryCreate(
             source.Character,
@@ -164,6 +196,9 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             || !ReferenceEquals(binding.SelectedAuthorRequest, concealmentAuthor.Request)
             || !CandidateBindingIsExact()
             || binding.TryBindObservedSelection()
+            || actionSpecificRequests.TryCompose(
+                binding.SelectedAuthorRequest,
+                binding.SelectedCandidateBinding)
             || !binding.TryAcknowledgeBoundResult()
             || task.Status != CharacterSabotageActionTaskStatus.Idle
             || task.Result is not null
@@ -172,18 +207,86 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             || !ReferenceEquals(binding.SelectedAuthorRequest, concealmentAuthor.Request)
             || !CandidateBindingIsExact()
             || binding.TryAcknowledgeBoundResult()
+            || actionSpecificRequests.TryCompose(
+                new CharacterSabotageActionConsiderationRequest(
+                    source.Character,
+                    [CharacterSabotageActionKind.Conceal]),
+                binding.SelectedCandidateBinding)
+            || !actionSpecificRequests.TryCompose(
+                binding.SelectedAuthorRequest!,
+                binding.SelectedCandidateBinding!)
+            || actionSpecificRequests.ConcealmentRequest is not { } concealmentRequest
+            || actionSpecificRequests.RequestCount != 1
+            || !ReferenceEquals(concealmentRequest.Character, source.Character)
+            || !ReferenceEquals(concealmentRequest.PhysicalAccess, source.PhysicalAccess)
+            || !ReferenceEquals(concealmentRequest.WorldObjects, source.WorldObjects)
+            || !ReferenceEquals(concealmentRequest.Concealment, initialConcealment)
+            || !ReferenceEquals(concealmentRequest.Evidence, initialEvidence)
+            || concealmentRequest.Candidates.Count != 1
+            || !ReferenceEquals(concealmentRequest.Candidates.Single(), source.Candidate)
+            || actionSpecificRequests.TryCompose(
+                binding.SelectedAuthorRequest!,
+                binding.SelectedCandidateBinding!)
+            || !concealmentModelSource.TrySupplyModel(concealmentModel)
+            || !actionSpecificStart.TryStart()
+            || !ReferenceEquals(
+                actionSpecificStart.StartedAuthorRequest,
+                binding.SelectedAuthorRequest)
+            || actionSpecificResult.TryObserveCompletedResult()
+            || concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Running
+            || actionSpecificStart.TryStart()
             || !RequestIsExact(request)
             || !StateIsUnchanged())
         {
-            Fail("Main-scene exact selection did not bind once without acknowledgement or mutation.");
+            Fail("Main-scene exact selection did not compose and start once without mutation.");
+            return;
+        }
+
+        stage = 2;
+    }
+
+    private void ObserveActionSpecificAbstention()
+    {
+        if (concealmentTask.Status == CharacterObjectSabotageConcealmentTaskStatus.Running)
+        {
+            return;
+        }
+
+        CharacterObjectSabotageConcealmentConsiderationRequest request =
+            actionSpecificRequests.ConcealmentRequest!;
+        if (concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
+            || concealmentTask.Result is not { } result
+            || !ReferenceEquals(result.Request, request)
+            || result.SelectedCandidate is not null
+            || concealmentModel.CallCount != 1
+            || !ReferenceEquals(concealmentModel.Request, request)
+            || !ReferenceEquals(
+                actionSpecificStart.StartedAuthorRequest,
+                binding.SelectedAuthorRequest)
+            || actionSpecificStart.TryStart()
+            || !actionSpecificResult.TryObserveCompletedResult()
+            || !ReferenceEquals(actionSpecificResult.ConcealmentResult, result)
+            || actionSpecificResult.ResultCount != 1
+            || actionSpecificResult.TryObserveCompletedResult()
+            || !actionSpecificResult.TryAcknowledgeCompletedResult()
+            || concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
+            || concealmentTask.Result is not null
+            || !ReferenceEquals(
+                actionSpecificResult.AcknowledgedAuthorRequest,
+                binding.SelectedAuthorRequest)
+            || actionSpecificResult.TryAcknowledgeCompletedResult()
+            || !StateIsUnchanged())
+        {
+            Fail("Main-scene exact action-specific start did not preserve abstaining state.");
             return;
         }
 
         GD.Print(
             "Main-scene composed sabotage-action request smoke passed: ordinary startup stayed "
             + "inert; one exact live conceal request completed, was observed, bound to its exact "
-            + "author output, and acknowledged while retaining that output as an exact later "
-            + "dispatch token without dispatch, application, or authoritative-state mutation.");
+            + "author output, acknowledged, composed into one exact concealment request, and "
+            + "started once through an explicit abstaining model, observed, and acknowledged "
+            + "without sabotage application or authoritative-state mutation.");
         GetTree().Quit();
     }
 
@@ -246,6 +349,30 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
 
         public ValueTask<CharacterSabotageActionDecision> DecideAsync(
             CharacterSabotageActionConsiderationRequest value,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            Request = value;
+            return ValueTask.FromResult(decide(value));
+        }
+    }
+
+    private sealed class RecordingConcealmentModel(
+        Func<CharacterObjectSabotageConcealmentConsiderationRequest,
+            CharacterObjectSabotageConcealmentDecision> decide)
+        : ICharacterObjectSabotageConcealmentDecisionModel
+    {
+        public int CallCount { get; private set; }
+
+        public CharacterObjectSabotageConcealmentConsiderationRequest? Request
+        {
+            get;
+            private set;
+        }
+
+        public ValueTask<CharacterObjectSabotageConcealmentDecision> DecideAsync(
+            CharacterObjectSabotageConcealmentConsiderationRequest value,
             CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();

@@ -2,73 +2,72 @@
 
 ## Current state
 
-`main` includes merged PR #321 at `3e6e61f`. Branch
-`codex/phase-7-sabotage-action-acknowledgement` advances Phase 7 through two bounded slices:
+`main` includes merged PR #322 at `97780ba`. Branch
+`codex/phase-7-sabotage-action-specific-composition` advances Phase 7 through three bounded slices:
 
-- Phase 7pb acknowledges only one still-current exact generic sabotage-action result after its
-  selection or abstention was bound, delegates reset through the existing selection coordinator,
-  retains exact internal acknowledgement provenance, and preserves the selected exact author
-  request as a later dispatch token.
-- Phase 7pc gives every action-specific author an immutable strongly typed binding between its
-  exact singleton generic request and exact candidate. The binder retains only the selected exact
-  candidate binding, verifies it remains current through acknowledgement, and leaves abstention
-  without an output.
+- Phase 7pd composes only the acknowledged generic selection's exact strongly typed candidate into
+  its existing action-specific provider-neutral request after revalidating the corresponding live
+  source, authoritative snapshots, and unchanged policy.
+- Phase 7pe starts only that exact composed request once. All seven typed branches revalidate current
+  authority before consuming the matching action-specific model, so rejected preflight leaves a
+  queued model untouched.
+- Phase 7pf observes only the exact terminal action-specific result for that started request and
+  explicitly acknowledges it through the branch's existing presentation, exposure, or resolution
+  coordinator.
 
-Selected request and candidate provenance is now exact across conceal, move, substitute,
-contaminate, misquote, delay, and influence. Unavailable, unbound, running, cancelled, failed,
-reset, stale, rebuilt, replaced, foreign, wrong-kind, duplicate, null, externally acknowledged,
-and repeated states remain inert. The switch-gated main-scene smoke observes, binds, and
-acknowledges one live conceal selection while ordinary startup remains inert.
+The new seams preserve compile-time types for conceal, move, substitute, contaminate, misquote,
+delay, and influence. They use no reflection or untyped candidate casts. Delay and influence authors
+retain their exact upstream bounded request internally for later snapshot revalidation. Null,
+unavailable, pre-acknowledgement, stale, rebuilt, replaced, foreign, wrong-kind, repeated,
+ineligible, running, failed, cancelled, and externally reset states remain inert.
 
-No slice starts action-specific consideration, dispatches or applies an action, authors evidence,
-persists state, or adds input/UI, timing, navigation, movement, perception, dialogue delivery, or
-other world behavior. The unrelated untracked `scripts/code_statistics.py` remains untouched and
+Ordinary startup remains inert. The switch-gated main-scene smoke exercises one live conceal path
+through generic selection, binding and acknowledgement, exact concealment-request composition, an
+explicit abstaining action-specific model, typed result observation, and acknowledgement. It proves
+the whole new chain without applying sabotage or changing authoritative concealment/evidence state.
+
+No slice adds autonomous scheduling, input/UI, persistence, provider transport, credentials,
+evidence authorship, recovery selection, navigation, movement, perception, dialogue delivery, or
+new Domain effect logic. The unrelated untracked `scripts/code_statistics.py` remains untouched and
 must stay unstaged.
-
-Implementation commit `23a7cc7` is published in draft PR #322 targeting `main`.
 
 ## Validation and review
 
-- Both slices were test-first: the game build first failed on the absent acknowledgement operation,
-  and the focused Domain test first failed on the absent typed candidate-binding contract.
-- The focused candidate-binding Domain tests pass host-local after the sandbox's known VSTest
-  loopback denial. All seven action-author smokes, the expanded author-binding smoke, and the
-  switch-gated main-scene smoke pass host-local after the sandbox's known Godot user-log denial.
-- `scripts/smoke-godot.sh` now gives the expanded asynchronous author-binding graph enough frames
-  to reach and assert its terminal state rather than exiting before completion.
+- All three slices were test-first: the game build failed in turn on each absent coordinator type
+  before its production seam was added.
+- The focused switch-gated main-scene smoke passes host-local after the sandbox's known Godot
+  `user://logs` denial, including null, pre-acknowledgement, foreign, repeated, exact-start,
+  abstention, exact-result, acknowledgement, inert-startup, and unchanged-authority assertions.
 - The final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build,
   2,731 Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
-- Session-wide review covered immutable typed candidate provenance, atomic author publication,
-  selected and abstaining acknowledgement, replacement and external-reset failure, ordinary-startup
-  inertness, unchanged authoritative state, closed public surfaces, documentation, file/line limits,
-  and whitespace. Review found and fixed one lifecycle gap: the binder now retains the exact result
-  acknowledged through its own guarded operation, so an external reset cannot masquerade as a
-  binder-authorized dispatch token.
-- Draft PR #322's hosted jobs continue to fail or remain queued with `steps: []`; no checkout,
-  build, test, smoke, or export step runs, so this is Actions/account infrastructure state rather
-  than hosted product-test evidence.
+- Session-wide review covered all seven typed composition/start/result branches, exact candidate and
+  request provenance, action-specific current-authority checks before model consumption, terminal
+  result and acknowledgement lifecycle, abstention, repeated/foreign/null failure, ordinary-startup
+  inertness, dependency order, unchanged authority, closed typed surfaces, documentation,
+  file/line limits, and whitespace. No additional defect remained after the lifecycle smokes.
 
 ## Exact next bounded slice
 
-Take **Phase 7pd: compose one selected candidate binding into its action-specific consideration
-request without starting or applying it**.
+Take **Phase 7pg: bind one acknowledged selected action-specific result to its exact current
+authoritative outcome without scheduling recovery**.
 
 Acceptance boundary:
 
-1. Test-first add one explicit coordinator that accepts only the binding coordinator's retained
-   exact selected author request and exact strongly typed candidate binding after successful
-   acknowledgement. Abstention remains inert.
-2. Revalidate the corresponding action-specific scene source and authoritative snapshots by exact
-   reference and the existing action policy, then create only that action's existing provider-neutral
-   consideration request containing the exact selected candidate once.
-3. Preserve all seven typed branches without reflection, untyped candidate casts, rebuilt values,
-   or kind inference. Stale, replaced, foreign, wrong-kind, null, repeated, and ineligible inputs
-   must fail closed without consuming any queued action-specific model.
-4. Dependency-order the coordinator in `Main.tscn`; extend the switch-gated smoke through exact
-   concealment request composition only. Ordinary startup stays inert.
-5. Do not start an action-specific task, dispatch or apply an action, acknowledge an action-specific
-   result, author evidence, persist state, or add input/UI, timing, navigation, movement,
+1. Test-first add one explicit coordinator that accepts only Phase 7pf's retained exact typed result
+   and acknowledged generic author request. Abstention remains inert and exposes no outcome.
+2. For each of the seven typed selected branches, revalidate the exact selected candidate, exact
+   action-specific request, and the existing branch owner's exact current post-action authority or
+   presentation/resolution token. Retain only typed exact outcome provenance; do not rebuild values.
+3. Stale, replaced, foreign, wrong-kind, null, repeated, unacknowledged, abstaining, and
+   non-current-authority paths must fail closed without starting or consuming any model.
+4. Dependency-order the coordinator in `Main.tscn`. Extend the switch-gated smoke with one selected
+   concealment path only if it can prove the existing exact application and presentation without
+   weakening the ordinary-startup or recoverability boundaries; otherwise add an isolated exact
+   selected-result smoke and keep the main smoke abstaining.
+5. Do not start recovery consideration, remove evidence, conceal truth, author new evidence,
+   schedule another action, persist state, or add input/UI, provider, timing, navigation, movement,
    perception, dialogue delivery, or other world behavior.
 6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to start only the selected exact action-specific consideration request.
+   slice to route the retained exact outcome into an existing recovery/evidence seam only after a
+   separately bounded eligibility gate.

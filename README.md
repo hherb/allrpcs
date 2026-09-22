@@ -858,6 +858,33 @@ authors, authoritative state, or a queued model. The main scene dependency-order
 all of those owners without polling it; the existing switch-gated request smoke explicitly
 observes, binds, and acknowledges one live conceal selection while ordinary startup stays inert.
 
+`CharacterSabotageActionSpecificRequestCoordinator` accepts only the binding coordinator's exact
+selected author request and strongly typed candidate binding after that generic result was
+acknowledged. Seven compile-time-typed branches revalidate the corresponding live scene source,
+authoritative snapshots, and existing action policy before creating exactly one existing
+provider-neutral consideration request containing the selected exact candidate. Delay and
+influence authors retain their exact upstream bounded request internally so the later gate can
+revalidate event-log, world-time, interaction-access, and relationship context without rebuilding
+it. Abstention, unavailable, pre-acknowledgement, stale, replaced, foreign, wrong-kind, null,
+repeated, and ineligible states remain inert. Composition consumes no model and starts or applies
+no action.
+
+`CharacterSabotageActionSpecificRequestStartCoordinator` starts only that one exact composed
+request. It rebinds the selected generic author token to the matching typed candidate without
+reflection or untyped candidate casts, rechecks the exact current authority and existing policy,
+and only then consumes the corresponding queued, configured, or offline action-specific model.
+Every rejected preflight preserves queued model state, and a successful start is retained once by
+its exact generic author request. The coordinator adds no scheduling or automatic startup.
+
+`CharacterSabotageActionSpecificResultCoordinator` observes only the exact terminal result whose
+request is the one started above and whose optional selection is the same exact typed candidate.
+It retains one of seven strongly typed results and explicitly acknowledges that result only through
+the existing concealment, move, substitution, contamination, misquotation, delay, or influence
+result owner, preserving each owner's current-state and presentation/resolution checks. Ordinary
+startup remains inert. The switch-gated main-scene smoke drives one live conceal selection through
+generic acknowledgement, exact request composition, an explicit abstaining action-specific start,
+typed observation, and acknowledgement without applying sabotage or mutating authoritative state.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
