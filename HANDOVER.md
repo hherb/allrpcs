@@ -18,6 +18,8 @@
   binding in the existing temporary delay-recovery model source, preserving queued one-shot model
   precedence and the stable offline fallback.
 
+Implementation commit `60fcf0f` is published in draft PR #309 targeting `main`.
+
 Nothing activates the binding from selected game settings, adds delay-recovery ownership to
 `Main.tscn`, invokes a model automatically, applies or acknowledges recovery, owns authoritative
 recovery state, schedules work, authors evidence, persists state, or adds input/UI, navigation,
