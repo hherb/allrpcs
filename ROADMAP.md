@@ -614,6 +614,12 @@ Current continuation:
   explicit terminal reset, and main-thread-only accepted-result installation.
 - [x] Explicitly compose one already-authored sabotage-action request with the isolated model source
   and task while preserving a queued one-shot model across rejected overlap.
+- [x] Compose one explicit OpenAI sabotage-action binding into the exact existing model source with
+  stale-safe initialize, replacement, and clear behavior and no construction-time input/output.
+- [x] Activate, replace, or clear that exact binding from selected game settings while preserving
+  one-shot precedence and restoring the stable offline model for supported local settings.
+- [x] Dependency-order the sabotage-action source, task, and explicit flow in the main scene while
+  ordinary startup remains inert and only a switch-gated smoke starts consideration.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

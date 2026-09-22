@@ -755,17 +755,25 @@ I/O, or model invocation; failures remain bounded and omit provider bodies and p
 `TemporaryCharacterSabotageActionModelSource` owns an exact configured binding through
 initialize/expected-instance replace/clear operations, gives one supplied one-shot model priority,
 and otherwise returns one stable fail-closed offline model. Taking or changing a model never invokes
-it, and clearing a binding preserves any queued one-shot model. The isolated source is not in
-`Main.tscn` and does not schedule consideration. `CharacterSabotageActionTaskController` owns one
-bounded scene task, rejects overlap, supports one cancellation request and explicit terminal reset,
-and installs only an accepted exact result on the main thread. Cancellation, model failure, and
-Domain rejection expose no result; the task is also isolated from `Main.tscn`.
+it, and clearing a binding preserves any queued one-shot model.
+
+`TemporaryCharacterSabotageActionModelComposition` creates bindings only through the exact OpenAI
+factory and retains its installed binding as the expected-instance token for replacement and clear.
+The shared selected-provider composition controller activates or replaces that seam for OpenAI and
+clears only its exact binding for a supported Ollama selection, restoring the same stable offline
+model while preserving a queued one-shot. Composition itself performs no credential access, HTTP
+send, or model call.
+
+`CharacterSabotageActionTaskController` owns one bounded scene task, rejects overlap, supports one
+cancellation request and explicit terminal reset, and installs only an accepted exact result on the
+main thread. Cancellation, model failure, and Domain rejection expose no result.
 
 `TemporaryCharacterSabotageActionConsiderationFlowController` composes that exact source and task
 only when its public `TryStart` is called with an already-authored request. It checks task idleness
 before consuming a model, so rejected overlap preserves a queued one-shot model. Ordinary startup
-is inert, and the isolated flow does not create requests, schedule work, dispatch an action, mutate
-world state, or appear in `Main.tscn`.
+is inert. The main scene dependency-orders the source, task, and explicit flow, but no node invokes
+it automatically. The flow does not create requests, schedule work, dispatch an action, or mutate
+world state.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

@@ -105,6 +105,8 @@ godot --headless --path "$repository_root/game" \
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterSabotageActionModelSourceSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://TemporaryCharacterSabotageActionModelCompositionSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
     res://CharacterSabotageActionTaskControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterSabotageActionConsiderationFlowSmokeCheck.tscn --quit-after 30
@@ -193,6 +195,8 @@ ALLRPCS_TARGET_SABOTAGE_DELAY_CONSIDERATION_MAIN_SCENE_CHECK=1 \
 ALLRPCS_TARGET_SABOTAGE_DELAY_RECOVERY_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_TARGET_SABOTAGE_INFLUENCE_RECOVERY_CONSIDERATION_MAIN_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_SABOTAGE_ACTION_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 godot --headless --path "$repository_root/game" \
     res://CharacterDialogueMisquotationEvidenceTaskControllerSmokeCheck.tscn --quit-after 30

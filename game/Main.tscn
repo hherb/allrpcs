@@ -1,4 +1,4 @@
-[gd_scene load_steps=220 format=3]
+[gd_scene load_steps=224 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -276,6 +276,10 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryCandidateRequestController.cs" id="274_delay_recovery_candidate_request"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController.cs" id="275_delay_recovery_candidate_flow"]
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryStartCoordinator.cs" id="276_delay_recovery_start"]
+[ext_resource type="Script" path="res://TemporaryCharacterSabotageActionModelSource.cs" id="277_sabotage_action_model_source"]
+[ext_resource type="Script" path="res://CharacterSabotageActionTaskController.cs" id="278_sabotage_action_task"]
+[ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationFlowController.cs" id="279_sabotage_action_flow"]
+[ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck.cs" id="280_sabotage_action_main_scene_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -673,6 +677,15 @@ script = ExtResource("261_delay_model_source")
 
 [node name="TemporaryCharacterTargetSabotageDelayRecoveryModelSource" type="Node" parent="."]
 script = ExtResource("267_delay_recovery_model_source")
+
+[node name="TemporaryCharacterSabotageActionModelSource" type="Node" parent="."]
+script = ExtResource("277_sabotage_action_model_source")
+
+[node name="CharacterSabotageActionTaskController" type="Node" parent="."]
+script = ExtResource("278_sabotage_action_task")
+
+[node name="TemporaryCharacterSabotageActionConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("279_sabotage_action_flow")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")
@@ -1374,6 +1387,9 @@ script = ExtResource("112_model_settings_storage_check")
 
 [node name="TemporaryCharacterModelCompositionControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("114_model_composition_check")
+
+[node name="TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("280_sabotage_action_main_scene_check")
 
 [node name="TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("221_object_sabotage_contamination_check")
