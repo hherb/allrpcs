@@ -142,7 +142,13 @@ godot --headless --path "$repository_root/game" \
     res://CharacterTargetSabotageInfluenceRecoveryResolutionCoordinatorSmokeCheck.tscn \
     --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://CharacterTargetSabotageDelayRecoveryResolutionCoordinatorSmokeCheck.tscn \
+    --quit-after 30
+godot --headless --path "$repository_root/game" \
     res://CharacterTargetSabotageInfluenceRecoveryCandidateControllerSmokeCheck.tscn \
+    --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterTargetSabotageDelayRecoveryCandidateControllerSmokeCheck.tscn \
     --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://CharacterTargetSabotageInfluenceRecoveryCandidateRequestControllerSmokeCheck.tscn \

@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=3]
+[gd_scene load_steps=217 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -270,6 +270,8 @@
 [ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryTaskController.cs" id="268_delay_recovery_task"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowController.cs" id="269_delay_recovery_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageDelayRecoveryConsiderationMainSceneSmokeCheck.cs" id="270_delay_recovery_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryController.cs" id="271_delay_recovery_state"]
+[ext_resource type="Script" path="res://CharacterTargetSabotageDelayRecoveryResolutionCoordinator.cs" id="272_delay_recovery_resolution"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -668,11 +670,17 @@ script = ExtResource("261_delay_model_source")
 [node name="TemporaryCharacterTargetSabotageDelayRecoveryModelSource" type="Node" parent="."]
 script = ExtResource("267_delay_recovery_model_source")
 
+[node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
+script = ExtResource("271_delay_recovery_state")
+
 [node name="CharacterTargetSabotageDelayRecoveryTaskController" type="Node" parent="."]
 script = ExtResource("268_delay_recovery_task")
 
 [node name="TemporaryCharacterTargetSabotageDelayRecoveryConsiderationFlowController" type="Node" parent="."]
 script = ExtResource("269_delay_recovery_flow")
+
+[node name="CharacterTargetSabotageDelayRecoveryResolutionCoordinator" type="Node" parent="."]
+script = ExtResource("272_delay_recovery_resolution")
 
 [node name="CharacterTargetSabotageDelayController" type="Node" parent="."]
 script = ExtResource("265_delay_state")
