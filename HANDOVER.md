@@ -23,6 +23,8 @@ persists state, or adds input/UI, timing, navigation, movement, perception, dial
 behavior. The start coordinator is not in `Main.tscn`. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `ecc5e2c` is published in draft PR #313 targeting `main`.
+
 ## Validation and review
 
 - Test-first builds failed only on each absent controller, and main-scene smokes failed only on each
@@ -34,6 +36,9 @@ behavior. The start coordinator is not in `Main.tscn`. The unrelated untracked
 - Host validation passes workflow checks, restore, formatting, a zero-warning build, 2,720 Domain
   tests, 578 Application tests, 1,160 Infrastructure tests, all 8 architecture tests, scenario
   validation, every credential-free Godot smoke, and the Compatibility renderer launch.
+- Draft PR #313 run `35716314760` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather than
+  hosted product-test evidence.
 - Session review covers exact candidate/request/result/character/event/log/time retention, unchanged
   Domain-policy delegation, one-shot ownership, queued-model preservation, task/status and complete
   preflight gates, main-scene dependency order and ordinary inertness, append-only recovery, source
