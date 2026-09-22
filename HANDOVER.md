@@ -21,6 +21,8 @@ author evidence, persist state, or add input/UI, timing, navigation, movement, p
 dialogue, or other world behavior. The unrelated untracked `scripts/code_statistics.py` remains
 untouched and must stay unstaged.
 
+Implementation commit `16bea91` is published in draft PR #318 targeting `main`.
+
 ## Validation and review
 
 - The test-first game build failed only because
@@ -38,6 +40,9 @@ untouched and must stay unstaged.
   rejection, unchanged source and state, closed public surface, scene dependency order,
   documentation, file and line limits, whitespace, and scoped paths. One README wording blemish was
   fixed; no unresolved finding remains.
+- Draft PR #318 run `35734033946` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
