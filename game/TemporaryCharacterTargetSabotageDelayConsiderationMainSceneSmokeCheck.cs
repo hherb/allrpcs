@@ -18,10 +18,26 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
     private CharacterTargetSabotageDelayTaskController task = null!;
     private TemporaryCharacterTargetSabotageDelayConsiderationFlowController flow = null!;
     private CharacterTargetSabotageDelayController state = null!;
+    private CharacterTargetSabotageDelayRecoveryCandidateController recoveryCandidates = null!;
+    private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests =
+        null!;
+    private TemporaryCharacterTargetSabotageDelayRecoveryModelSource recoveryModelSource = null!;
+    private CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController recoveryFlow =
+        null!;
+    private CharacterTargetSabotageDelayRecoveryTaskController recoveryTask = null!;
+    private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
+    private CharacterTargetSabotageDelayRecoveryResolutionCoordinator recoveryCoordinator = null!;
     private CharacterTargetSabotageDelayResolutionCoordinator coordinator = null!;
     private CharacterTargetSabotageDelayConsiderationRequest request = null!;
     private CharacterTargetSabotageDelayCandidate candidate = null!;
+    private WorldEvent recoveryEvent = null!;
     private RecordingModel selectionModel = null!;
+    private RecordingRecoveryModel recoverySelectionModel = null!;
+    private WorldEventLogSnapshot? appliedEventLog;
+    private WorldTimeSnapshot? appliedWorldTime;
+    private CharacterTargetSabotageDelayResult? appliedResult;
+    private CharacterTargetSabotageDelayRecoveryCandidate? recoveryCandidate;
+    private CharacterTargetSabotageDelayRecoveryConsiderationRequest? recoveryRequest;
     private int processFrames;
     private int stage;
 
@@ -43,10 +59,30 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             "../TemporaryCharacterTargetSabotageDelayConsiderationFlowController");
         state = GetNode<CharacterTargetSabotageDelayController>(
             "../CharacterTargetSabotageDelayController");
+        recoveryCandidates = GetNode<CharacterTargetSabotageDelayRecoveryCandidateController>(
+            "../CharacterTargetSabotageDelayRecoveryCandidateController");
+        recoveryRequests =
+            GetNode<CharacterTargetSabotageDelayRecoveryCandidateRequestController>(
+                "../CharacterTargetSabotageDelayRecoveryCandidateRequestController");
+        recoveryModelSource = GetNode<TemporaryCharacterTargetSabotageDelayRecoveryModelSource>(
+            "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
+        recoveryFlow =
+            GetNode<CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController>(
+                "../CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController");
+        recoveryTask = GetNode<CharacterTargetSabotageDelayRecoveryTaskController>(
+            "../CharacterTargetSabotageDelayRecoveryTaskController");
+        recoveryState = GetNode<CharacterTargetSabotageDelayRecoveryController>(
+            "../CharacterTargetSabotageDelayRecoveryController");
+        recoveryCoordinator =
+            GetNode<CharacterTargetSabotageDelayRecoveryResolutionCoordinator>(
+                "../CharacterTargetSabotageDelayRecoveryResolutionCoordinator");
         coordinator = GetNode<CharacterTargetSabotageDelayResolutionCoordinator>(
             "../CharacterTargetSabotageDelayResolutionCoordinator");
-        request = CreateRequest(out candidate);
+        request = CreateRequest(out candidate, out recoveryEvent);
         selectionModel = new(value => new(value.Actor.Identity.Id, candidate));
+        recoverySelectionModel = new(value => new(
+            value.Actor.Identity.Id,
+            value.Candidates.Single()));
         if (!state.TryInitialize(request.EventLog, request.WorldTime))
         {
             Fail("Main-scene target-delay authority rejected exact smoke initialization.");
@@ -91,7 +127,15 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             && selectionModel.CallCount == 0
             && ReferenceEquals(state.EventLog, request.EventLog)
             && ReferenceEquals(state.WorldTime, request.WorldTime)
-            && state.LatestAppliedResult is null;
+            && state.LatestAppliedResult is null
+            && recoveryCandidates.Candidate is null
+            && recoveryRequests.Request is null
+            && recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
+            && recoveryTask.Result is null
+            && recoveryState.EventLog is null
+            && recoveryState.WorldTime is null
+            && recoveryState.LatestAppliedResult is null
+            && recoverySelectionModel.CallCount == 0;
         bool started = modelSource.TrySupplyModel(selectionModel)
             && flow.TryStart(request)
             && task.Status == CharacterTargetSabotageDelayTaskStatus.Running;
@@ -112,9 +156,9 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             return;
         }
 
-        WorldEventLogSnapshot? appliedEventLog = state.EventLog;
-        WorldTimeSnapshot? appliedWorldTime = state.WorldTime;
-        CharacterTargetSabotageDelayResult? appliedResult = state.LatestAppliedResult;
+        appliedEventLog = state.EventLog;
+        appliedWorldTime = state.WorldTime;
+        appliedResult = state.LatestAppliedResult;
         if (task.Status != CharacterTargetSabotageDelayTaskStatus.Completed
             || task.Result is not { } result
             || selectionModel.CallCount != 1
@@ -129,6 +173,22 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             || !ReferenceEquals(appliedResult.Candidate, candidate)
             || !ReferenceEquals(appliedEventLog.Entries.Single(), candidate.WorldEvent.EventId)
             || !ReferenceEquals(appliedWorldTime.CurrentEventId, candidate.WorldEvent.EventId)
+            || !recoveryCandidates.TryCreate(request.WorldEvents, appliedResult, recoveryEvent)
+            || recoveryCandidates.Candidate is not { } recoveryCandidate
+            || !ReferenceEquals(recoveryCandidate.DelayResult, appliedResult)
+            || !ReferenceEquals(recoveryCandidate.RecoveryEvent, recoveryEvent)
+            || !recoveryRequests.TryCreate(request.WorldEvents, recoveryCandidate)
+            || recoveryRequests.Request is not { } recoveryRequest
+            || !ReferenceEquals(recoveryRequest.Actor, candidate.Occurrence.Target)
+            || !ReferenceEquals(recoveryRequest.WorldEvents, request.WorldEvents)
+            || !ReferenceEquals(recoveryRequest.EventLog, appliedEventLog)
+            || !ReferenceEquals(recoveryRequest.WorldTime, appliedWorldTime)
+            || recoveryRequest.Candidates.Count != 1
+            || !ReferenceEquals(recoveryRequest.Candidates.Single(), recoveryCandidate)
+            || !recoveryState.TryInitialize(recoveryRequest.EventLog, recoveryRequest.WorldTime)
+            || !recoveryModelSource.TrySupplyModel(recoverySelectionModel)
+            || !recoveryFlow.TryStart(recoveryRequest)
+            || recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Running
             || !coordinator.TryAcknowledgeCompletedResult()
             || !flow.TryStart(request)
             || !InputsAreUnchanged())
@@ -137,6 +197,8 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             return;
         }
 
+        this.recoveryCandidate = recoveryCandidate;
+        this.recoveryRequest = recoveryRequest;
         stage = 2;
     }
 
@@ -147,17 +209,43 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
             return;
         }
 
+        if (recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running)
+        {
+            return;
+        }
+
+        WorldEventLogSnapshot? recoveredEventLog = recoveryState.EventLog;
+        WorldTimeSnapshot? recoveredWorldTime = recoveryState.WorldTime;
+        CharacterTargetSabotageDelayRecoveryResult? recoveryResult =
+            recoveryState.LatestAppliedResult;
+        bool exactRecovery = recoveryTask.Status
+                == CharacterTargetSabotageDelayRecoveryTaskStatus.Completed
+            && recoveryTask.Result is { } recoveryConsideration
+            && ReferenceEquals(recoveryConsideration.Request, recoveryRequest)
+            && ReferenceEquals(recoveryConsideration.SelectedCandidate, recoveryCandidate)
+            && recoverySelectionModel.CallCount == 1
+            && ReferenceEquals(recoverySelectionModel.Request, recoveryRequest)
+            && recoveredEventLog is not null
+            && recoveredWorldTime is not null
+            && recoveryResult is not null
+            && !ReferenceEquals(recoveredEventLog, appliedEventLog)
+            && !ReferenceEquals(recoveredWorldTime, appliedWorldTime)
+            && ReferenceEquals(recoveryResult.EventLog, recoveredEventLog)
+            && ReferenceEquals(recoveryResult.WorldTime, recoveredWorldTime)
+            && ReferenceEquals(recoveryResult.Candidate, recoveryCandidate)
+            && recoveredEventLog.Entries.Count == 2
+            && ReferenceEquals(recoveredEventLog.Entries[^1], recoveryEvent.EventId)
+            && ReferenceEquals(recoveredWorldTime.CurrentEventId, recoveryEvent.EventId);
         if (task.Status != CharacterTargetSabotageDelayTaskStatus.Failed
             || task.Result is not null
             || selectionModel.CallCount != 1
-            || state.EventLog is not { } appliedEventLog
-            || state.WorldTime is not { } appliedWorldTime
-            || state.LatestAppliedResult is not { } appliedResult
-            || !ReferenceEquals(appliedResult.EventLog, appliedEventLog)
-            || !ReferenceEquals(appliedResult.WorldTime, appliedWorldTime)
-            || !ReferenceEquals(appliedResult.Candidate, candidate)
-            || !ReferenceEquals(appliedEventLog.Entries.Single(), candidate.WorldEvent.EventId)
-            || !ReferenceEquals(appliedWorldTime.CurrentEventId, candidate.WorldEvent.EventId)
+            || !exactRecovery
+            || !ReferenceEquals(state.EventLog, appliedEventLog)
+            || !ReferenceEquals(state.WorldTime, appliedWorldTime)
+            || !ReferenceEquals(state.LatestAppliedResult, appliedResult)
+            || !ReferenceEquals(recoveryCandidates.Candidate, recoveryCandidate)
+            || !ReferenceEquals(recoveryRequests.Request, recoveryRequest)
+            || !recoveryCoordinator.TryAcknowledgeCompletedResult()
             || !InputsAreUnchanged())
         {
             Fail("Main-scene target-delay consideration changed state after offline failure.");
@@ -166,8 +254,8 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
 
         GD.Print(
             "Main-scene target-delay consideration smoke passed: dependency-ordered inert startup, "
-            + "one explicit exact delay, guarded acknowledgement, stable offline failure, and "
-            + "unchanged source world state.");
+            + "one explicit exact delay and recovery selection, candidate and request, guarded "
+            + "acknowledgement, stable offline failure, and unchanged source world state.");
         GetTree().Quit();
     }
 
@@ -178,7 +266,8 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
         && request.WorldTime.CurrentEventId is null;
 
     private static CharacterTargetSabotageDelayConsiderationRequest CreateRequest(
-        out CharacterTargetSabotageDelayCandidate candidate)
+        out CharacterTargetSabotageDelayCandidate candidate,
+        out WorldEvent recoveryEvent)
     {
         Character actor = RepresentativeEnemyAgentCharacterSource.Create();
         Character target = RepresentativeSageCharacterSource.Create();
@@ -194,11 +283,14 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
         WorldEvent worldEvent = new(
             new WorldEventId("enemy-agent-delayed-sage"),
             WorldEventTimeEffect.Advance);
+        recoveryEvent = new WorldEvent(
+            new WorldEventId("sage-delay-recovered"),
+            WorldEventTimeEffect.Advance);
         candidate = new CharacterTargetSabotageDelayCandidate(occurrence, worldEvent);
         return new CharacterTargetSabotageDelayConsiderationRequest(
             actor,
             new CharacterInteractionAccessSnapshot(actor.Identity.Id, [target.Identity.Id]),
-            new WorldEventSnapshot([worldEvent]),
+            new WorldEventSnapshot([worldEvent, recoveryEvent]),
             new WorldEventLogSnapshot([]),
             new WorldTimeSnapshot(null),
             [candidate]);
@@ -221,6 +313,30 @@ public partial class TemporaryCharacterTargetSabotageDelayConsiderationMainScene
 
         public ValueTask<CharacterTargetSabotageDelayDecision> DecideAsync(
             CharacterTargetSabotageDelayConsiderationRequest value,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            Request = value;
+            return ValueTask.FromResult(decide(value));
+        }
+    }
+
+    private sealed class RecordingRecoveryModel(
+        Func<CharacterTargetSabotageDelayRecoveryConsiderationRequest,
+            CharacterTargetSabotageDelayRecoveryDecision> decide)
+        : ICharacterTargetSabotageDelayRecoveryDecisionModel
+    {
+        internal int CallCount { get; private set; }
+
+        internal CharacterTargetSabotageDelayRecoveryConsiderationRequest? Request
+        {
+            get;
+            private set;
+        }
+
+        public ValueTask<CharacterTargetSabotageDelayRecoveryDecision> DecideAsync(
+            CharacterTargetSabotageDelayRecoveryConsiderationRequest value,
             CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();

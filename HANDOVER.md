@@ -2,56 +2,61 @@
 
 ## Current state
 
-`main` includes merged PR #311 at `d935d4b`. Branch
-`codex/phase-7-delay-recovery-resolution` adds three bounded target-delay recovery slices:
+`main` includes merged PR #312 at `4b7e234`. Branch
+`codex/phase-7-delay-recovery-request` advances the exact target-delay recovery scene chain through
+five bounded slices:
 
-- `CharacterTargetSabotageDelayRecoveryResolutionCoordinator` observes each fresh exact completed
-  task result once, resolves it through the recovery authority, and resets only while the observed
-  result plus resolved event-log, world-time, and latest-result tokens remain current.
-- `Main.tscn` dependency-orders that authority and coordinator with the existing source, task, and
-  explicit flow. Ordinary startup remains uninitialized and inert; the switch-gated smoke alone
-  initializes authority, proves one applied selection, guarded acknowledgement, and stable failure.
-- `CharacterTargetSabotageDelayRecoveryCandidateController` owns one candidate for the exact current
-  applied delay result and a caller-authored authoritative advancing recovery event. It is isolated
-  and one-shot; stale, rebuilt, missing, recorded, non-advancing, null, and repeated inputs are inert.
+- Phase 7nt adds a one-shot request owner for only the recovery-candidate source's exact current
+  candidate, delayed target, caller-supplied authoritative events, event log, and qualitative time.
+- Phase 7nu dependency-orders the candidate and request owners in `Main.tscn`; only the existing
+  switch-gated delay smoke creates their exact state after one applied delay.
+- Phase 7nv starts consideration only for that request owner's exact current request while the task
+  is idle, preserving the queued model across rejected starts.
+- Phase 7nw dependency-orders that exact-request flow with the existing recovery model, task,
+  authority, and resolution owners. The switch-gated smoke alone proves one explicit append-only
+  delay-to-recovery selection chain; ordinary startup remains inert.
+- Phase 7nx adds an isolated start coordinator that preflights the complete exact-current graph
+  before publishing candidate/request state, initializing recovery authority, or consuming a model.
 
-Nothing automatically creates a recovery request, starts or schedules recovery work, authors a
-recovery event, persists recovery, or adds input/UI or other world behavior. The candidate controller
-is not in `Main.tscn`. The unrelated untracked `scripts/code_statistics.py` remains untouched and
-must stay unstaged.
+Nothing autonomously starts recovery, chooses or authors a recovery event, creates evidence,
+persists state, or adds input/UI, timing, navigation, movement, perception, dialogue, or other world
+behavior. The start coordinator is not in `Main.tscn`. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Test-first checkpoints proved the missing coordinator, missing main-scene nodes, and missing
-  candidate controller before implementation. Both focused isolated smokes and the strengthened
-  main-scene smoke pass.
+- Test-first builds failed only on each absent controller, and main-scene smokes failed only on each
+  absent dependency-ordered node before the smallest implementations were added.
+- Focused zero-warning builds, all three new isolated smokes, and the strengthened switch-gated
+  main-scene delay-to-recovery smoke pass host-locally.
 - The sandbox reached a zero-warning build before the known VSTest loopback
   `SocketException (13): Permission denied`; the identical host-local `./scripts/quality.sh` passed.
 - Host validation passes workflow checks, restore, formatting, a zero-warning build, 2,720 Domain
   tests, 578 Application tests, 1,160 Infrastructure tests, all 8 architecture tests, scenario
-  validation, every credential-free Godot smoke, and the Compatibility launch.
-- Session review covers one-shot result observation, all acknowledgement authority tokens,
-  selection and abstention, stale-authority preservation, dependency order and ordinary inertness,
-  exact-current candidate ownership, inapplicable recovery events, source immutability, closed
-  surfaces, documentation, whitespace, line limits, and scoped paths. No unresolved finding remains.
+  validation, every credential-free Godot smoke, and the Compatibility renderer launch.
+- Session review covers exact candidate/request/result/character/event/log/time retention, unchanged
+  Domain-policy delegation, one-shot ownership, queued-model preservation, task/status and complete
+  preflight gates, main-scene dependency order and ordinary inertness, append-only recovery, source
+  immutability, closed surfaces, documentation, file and line limits, whitespace, and scoped paths.
+  No unresolved finding remains.
 
 ## Exact next bounded slice
 
-Take **Phase 7nt: retain one consideration request for the exact current target-delay recovery
-candidate in an isolated controller**.
+Take **Phase 7ny: own the delay-recovery start coordinator inertly in the main scene**.
 
 Acceptance boundary:
 
-1. Test-first add `CharacterTargetSabotageDelayRecoveryCandidateRequestController`, depending only
-   on the isolated candidate controller. Ordinary unavailable state remains inert.
-2. Accept only the candidate controller's exact current candidate plus a caller-supplied world-event
-   snapshot for which the existing recovery policy still accepts that candidate against its exact
-   delay-result event-log and world-time authority.
-3. Create one request retaining the exact occurrence target as actor, exact supplied world events,
-   exact delay-result event log and world time, and exact candidate. Preflight an exact-actor
-   abstention through the existing decision policy before installation.
-4. Reject stale, rebuilt, foreign, missing-event, inapplicable, null, and repeated input without
-   replacing the one-shot request. Prove exact nested identity, unchanged sources, and the closed
-   surface in a dedicated isolated Godot smoke; update README/ROADMAP and run `./scripts/quality.sh`.
-5. Do not yet add candidate/request controllers to `Main.tscn`, start the live recovery flow,
-   schedule work, author events, persist recovery, or add input/UI behavior.
+1. Test-first dependency-order `CharacterTargetSabotageDelayRecoveryStartCoordinator` after its
+   exact candidate, request, recovery authority, task, model-source, and exact-request flow
+   dependencies in `Main.tscn`; ordinary startup must remain uninitialized and inert.
+2. Route only the existing switch-gated target-delay smoke through `TryStart` after its exact delay
+   selection, supplying the already authored authoritative world events, exact current applied
+   delay result, and caller-authored recovery event.
+3. Prove the coordinator publishes the exact candidate/request graph, initializes recovery from
+   the exact delay event-log/time pair, consumes the queued model once, applies and acknowledges one
+   append-only recovery, and leaves the original delay authority plus all request sources unchanged.
+4. Reject repeated or occupied start without replacing state or consuming another model; update
+   README/ROADMAP, run `./scripts/quality.sh`, and review the complete diff.
+5. Do not trigger recovery autonomously, infer or author a recovery event or discoverable evidence,
+   persist state, or add input/UI, elapsed-time, navigation, movement, perception, dialogue, or
+   other world behavior.

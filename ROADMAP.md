@@ -496,6 +496,16 @@ Current continuation:
   keeping ordinary startup inert and proving exact application only through switch-gated smoke.
 - [x] Own one exact-current target-delay recovery candidate from the applied delay result and one
   caller-authored advancing recovery event, with stale or inapplicable input failing closed.
+- [x] Retain one request only from the delay-recovery candidate source's exact current candidate,
+  preserving the exact delayed target and current authoritative event, log, and time graph.
+- [x] Dependency-order the delay-recovery candidate and request sources in the main scene while
+  ordinary startup stays inert and only the switch-gated delay smoke creates their exact state.
+- [x] Start recovery consideration only for the request source's exact current request while the
+  task is idle, preserving the queued model across every rejected start.
+- [x] Dependency-order that exact-request flow and prove one switch-gated delay-to-recovery chain
+  while ordinary startup remains inert and no autonomous trigger is added.
+- [x] Preflight one complete exact-current delay-recovery graph before publishing candidate,
+  request, or authority state and before consuming the queued model, then start it exactly once.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
