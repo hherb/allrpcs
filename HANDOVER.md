@@ -23,6 +23,8 @@ delivery.
 
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `927ce5a` is published in draft PR #320 targeting `main`.
+
 ## Validation and review
 
 - Every slice was test-first: the focused game build failed for the missing composer or flow type,
