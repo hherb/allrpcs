@@ -22,6 +22,8 @@ applies an action, authors evidence, persists state, or adds input/UI, timing, n
 perception, dialogue delivery, or other world behavior. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `577efa4` is published in draft PR #321 targeting `main`.
+
 ## Validation and review
 
 - Both slices were test-first: the isolated game build first failed because the binding coordinator
@@ -38,6 +40,9 @@ perception, dialogue delivery, or other world behavior. The unrelated untracked
   whitespace. Review found and fixed a lifecycle gap: the binder now also requires the task to
   retain the same exact completed result, so a reset or later terminal task cannot authorize a
   stale observation. The affected build and both smokes pass after the fix.
+- Draft PR #321 run `35787184834` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
