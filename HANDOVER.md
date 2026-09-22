@@ -15,6 +15,8 @@ Infrastructure slices:
   provider-independent instructions, and trusted bounded actor, current world-event, event-log, and
   recovery-candidate context.
 
+Implementation commit `db0cb3c` is published in draft PR #308 targeting `main`.
+
 Nothing accumulates provider events, parses SSE framing, sends HTTP, accesses credentials, invokes a
 model, composes a live binding, applies recovery automatically, owns authoritative recovery state,
 schedules work automatically, authors evidence, persists state, or adds input/UI, navigation,
@@ -30,6 +32,8 @@ movement, perception, dialogue, or other world behavior. The unrelated untracked
 - Host-local `./scripts/quality.sh` passes workflow validation, restore, formatting, a zero-warning
   build, 2,720 Domain tests, 578 Application tests, 1,125 Infrastructure tests, all 8 architecture
   tests, scenario validation, every credential-free Godot smoke, and the final Compatibility launch.
+- Draft PR #308's first hosted run failed all five jobs before any step executed (`steps: []`); that
+  is Actions/account infrastructure state and provides no hosted product-test or build evidence.
 - Session review covers exact actor/candidate rebinding, full current-state policy delegation,
   immutable request state, malformed/duplicate/unknown/over-depth/oversized input, content-free
   failures, request-bound abstention and candidate enums, trusted-context scope, credential absence,
