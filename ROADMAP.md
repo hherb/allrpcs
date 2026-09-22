@@ -598,6 +598,22 @@ Current continuation:
   the accepted decision immutably to its exact request without dispatching an action.
 - [x] Obtain and validate one provider-neutral sabotage-action decision with exact request and
   caller cancellation forwarding, without binding a model or owning background work.
+- [x] Strictly decode one bounded sabotage-action decision document and rebind only value-matching
+  actor and request-member kind text to their exact request instances.
+- [x] Accumulate one bounded ordered OpenAI Responses stream and complete framed SSE only after an
+  exact accepted sabotage-action selection or abstention.
+- [x] Serialize one stateless structured-output sabotage-action request with only bounded trusted
+  actor and caller-filtered action-kind context plus a closed exact decision schema.
+- [x] Retain one exact OpenAI setting and caller-composed sabotage-action decision model without
+  construction-time model invocation or input/output.
+- [x] Execute one sabotage-action request through caller-owned OpenAI dependencies and create its
+  exact immutable binding without construction-time credential access, network I/O, or invocation.
+- [x] Supply one configured, one-shot, or stable fail-closed offline sabotage-action model through
+  exact-instance binding replacement and clearing without construction-time input/output.
+- [x] Own one isolated sabotage-action decision task with overlap rejection, bounded cancellation,
+  explicit terminal reset, and main-thread-only accepted-result installation.
+- [x] Explicitly compose one already-authored sabotage-action request with the isolated model source
+  and task while preserving a queued one-shot model across rejected overlap.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

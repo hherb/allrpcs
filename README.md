@@ -725,8 +725,47 @@ or construct an action-specific candidate, apply an effect, or grant scene or pr
 
 `ICharacterSabotageActionDecisionModel` is the provider-neutral Application seam for one exact
 action-kind request. Its controller rejects null and pre-cancelled input, forwards the exact request
-and caller cancellation once, and constructs the existing validated result. It adds no provider
-binding, retry, deadline, background task, action-specific dispatch, or authoritative mutation.
+and caller cancellation once, and constructs the existing validated result. The interface and
+controller themselves add no provider binding, retry, deadline, background task, action-specific
+dispatch, or authoritative mutation.
+
+`CharacterSabotageActionModelBinding` retains one exact OpenAI setting and one exact caller-composed
+decision model without invoking it, accessing a credential, or performing network I/O.
+
+`CharacterSabotageActionDecisionJsonDeserializer` accepts only one bounded complete JSON object
+containing exactly `actorId` and nullable `selectedActionKind`. It ordinally rebinds value-matching
+text to the request's exact actor identifier and exact member kind, delegates final acceptance to
+the Domain policy, and rejects every other shape or value through one content-free failure. It does
+not itself define a schema, serialize a request, or bind a provider.
+
+The matching OpenAI stream boundary accepts only one ordered Responses lifecycle, bounds semantic
+events and accumulated output, and completes framed SSE only after that strict decoder accepts an
+exact selection or abstention. It does not send HTTP, access credentials, retry, or retain partial
+or failed output. The request serializer emits one stateless streaming structured-output request
+with bounded trusted actor and caller-filtered action-kind context plus a closed exact schema.
+Descriptive actor text remains in-world data; no credential, target, candidate, capability set,
+knowledge, or world state is added.
+
+The OpenAI adapter loads a valid credential before its single caller-owned HTTP send, requires a
+successful event-stream response, preserves caller cancellation, and completes only through that
+strict SSE boundary. Its factory creates the exact immutable binding over caller-owned settings,
+HTTP, credential, and endpoint dependencies without construction-time credential access, network
+I/O, or model invocation; failures remain bounded and omit provider bodies and partial output.
+
+`TemporaryCharacterSabotageActionModelSource` owns an exact configured binding through
+initialize/expected-instance replace/clear operations, gives one supplied one-shot model priority,
+and otherwise returns one stable fail-closed offline model. Taking or changing a model never invokes
+it, and clearing a binding preserves any queued one-shot model. The isolated source is not in
+`Main.tscn` and does not schedule consideration. `CharacterSabotageActionTaskController` owns one
+bounded scene task, rejects overlap, supports one cancellation request and explicit terminal reset,
+and installs only an accepted exact result on the main thread. Cancellation, model failure, and
+Domain rejection expose no result; the task is also isolated from `Main.tscn`.
+
+`TemporaryCharacterSabotageActionConsiderationFlowController` composes that exact source and task
+only when its public `TryStart` is called with an already-authored request. It checks task idleness
+before consuming a model, so rejected overlap preserves a queued one-shot model. Ordinary startup
+is inert, and the isolated flow does not create requests, schedule work, dispatch an action, mutate
+world state, or appear in `Main.tscn`.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
