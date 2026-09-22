@@ -19,6 +19,8 @@ slices:
   queued one-shot model; completion installs only an accepted result on the main thread; cancellation
   and terminal reset remain explicit.
 
+Implementation commit `ff8cbab` is published in draft PR #307 targeting `main`.
+
 Nothing decodes provider output, sends HTTP, accesses credentials, composes provider dependencies,
 applies recovery automatically, owns authoritative recovery state, schedules work automatically,
 authors evidence, persists state, or adds input/UI, navigation, movement, perception, dialogue, or
