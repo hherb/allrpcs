@@ -7,7 +7,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one move action request from exact eligible scene state.</summary>
-public partial class CharacterSabotageActionMoveRequestController : Node
+public partial class CharacterSabotageActionMoveRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private TemporaryCharacterObjectSabotageMoveSource source = null!;
     private CharacterObjectSabotageMoveController state = null!;

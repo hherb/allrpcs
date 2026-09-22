@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=3]
+[gd_scene load_steps=235 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -281,6 +281,16 @@
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationFlowController.cs" id="279_sabotage_action_flow"]
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck.cs" id="280_sabotage_action_main_scene_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSelectionCoordinator.cs" id="281_sabotage_action_selection"]
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestMainSceneSmokeCheck.cs" id="282_sabotage_action_request_main_scene_check"]
+[ext_resource type="Script" path="res://CharacterSabotageActionConcealmentRequestController.cs" id="283_sabotage_action_conceal_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveRequestController.cs" id="284_sabotage_action_move_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSubstitutionRequestController.cs" id="285_sabotage_action_substitute_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionContaminationRequestController.cs" id="286_sabotage_action_contaminate_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMisquotationRequestController.cs" id="287_sabotage_action_misquote_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionDelayRequestController.cs" id="288_sabotage_action_delay_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionInfluenceRequestController.cs" id="289_sabotage_action_influence_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestComposer.cs" id="290_sabotage_action_request_composer"]
+[ext_resource type="Script" path="res://CharacterSabotageActionRequestConsiderationFlowController.cs" id="291_sabotage_action_request_flow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -690,6 +700,33 @@ script = ExtResource("279_sabotage_action_flow")
 
 [node name="CharacterSabotageActionSelectionCoordinator" type="Node" parent="."]
 script = ExtResource("281_sabotage_action_selection")
+
+[node name="CharacterSabotageActionConcealmentRequestController" type="Node" parent="."]
+script = ExtResource("283_sabotage_action_conceal_request")
+
+[node name="CharacterSabotageActionMoveRequestController" type="Node" parent="."]
+script = ExtResource("284_sabotage_action_move_request")
+
+[node name="CharacterSabotageActionSubstitutionRequestController" type="Node" parent="."]
+script = ExtResource("285_sabotage_action_substitute_request")
+
+[node name="CharacterSabotageActionContaminationRequestController" type="Node" parent="."]
+script = ExtResource("286_sabotage_action_contaminate_request")
+
+[node name="CharacterSabotageActionMisquotationRequestController" type="Node" parent="."]
+script = ExtResource("287_sabotage_action_misquote_request")
+
+[node name="CharacterSabotageActionDelayRequestController" type="Node" parent="."]
+script = ExtResource("288_sabotage_action_delay_request")
+
+[node name="CharacterSabotageActionInfluenceRequestController" type="Node" parent="."]
+script = ExtResource("289_sabotage_action_influence_request")
+
+[node name="CharacterSabotageActionRequestComposer" type="Node" parent="."]
+script = ExtResource("290_sabotage_action_request_composer")
+
+[node name="CharacterSabotageActionRequestConsiderationFlowController" type="Node" parent="."]
+script = ExtResource("291_sabotage_action_request_flow")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")
@@ -1394,6 +1431,9 @@ script = ExtResource("114_model_composition_check")
 
 [node name="TemporaryCharacterSabotageActionConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("280_sabotage_action_main_scene_check")
+
+[node name="CharacterSabotageActionRequestMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("282_sabotage_action_request_main_scene_check")
 
 [node name="TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("221_object_sabotage_contamination_check")

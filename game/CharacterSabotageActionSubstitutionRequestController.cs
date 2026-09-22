@@ -6,7 +6,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one substitute action request from exact eligible scene state.</summary>
-public partial class CharacterSabotageActionSubstitutionRequestController : Node
+public partial class CharacterSabotageActionSubstitutionRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private TemporaryCharacterObjectSabotageSubstitutionSource source = null!;
     private CharacterObjectSabotageSubstitutionController state = null!;

@@ -6,7 +6,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one contaminate action request from exact eligible scene state.</summary>
-public partial class CharacterSabotageActionContaminationRequestController : Node
+public partial class CharacterSabotageActionContaminationRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private TemporaryCharacterObjectSabotageContaminationSource source = null!;
     private CharacterObjectSabotageContaminationController state = null!;

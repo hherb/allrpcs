@@ -638,6 +638,12 @@ Current continuation:
   exact bounded delay graph remains eligible against current event-log and world-time state.
 - [x] Author one exact sabotage-action request containing only the canonical influence kind when
   the exact bounded influence graph remains eligible against current relationship state.
+- [x] Compose the seven action-specific authors' exact current outputs into at most one fresh
+  same-actor request in canonical order without rerunning a gate or starting consideration.
+- [x] Start the existing explicit sabotage-action consideration flow only for the composer-owned
+  exact request without observing, dispatching, or applying its eventual selection.
+- [x] Dependency-order the seven request authors, composer, and exact-start coordinator in the main
+  scene while ordinary startup stays inert and only a switch-gated smoke starts consideration.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

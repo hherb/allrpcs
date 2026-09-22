@@ -4,7 +4,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one influence action request from exact eligible relationship state.</summary>
-public partial class CharacterSabotageActionInfluenceRequestController : Node
+public partial class CharacterSabotageActionInfluenceRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private CharacterTargetSabotageInfluenceController state = null!;
 

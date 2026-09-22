@@ -6,7 +6,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one misquote action request from exact eligible source state.</summary>
-public partial class CharacterSabotageActionMisquotationRequestController : Node
+public partial class CharacterSabotageActionMisquotationRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private TemporaryCharacterDialogueMisquotationEvidenceSource source = null!;
 

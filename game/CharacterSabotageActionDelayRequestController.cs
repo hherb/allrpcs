@@ -5,7 +5,8 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Authors one delay action request from exact eligible current world state.</summary>
-public partial class CharacterSabotageActionDelayRequestController : Node
+public partial class CharacterSabotageActionDelayRequestController
+    : Node, ICharacterSabotageActionRequestAuthor
 {
     private CharacterTargetSabotageDelayController state = null!;
 
