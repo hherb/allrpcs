@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://CharacterSabotageActionAuthorBindingGraph.tscn" id="1"]
+[ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck.cs" id="2"]
+
+[node name="CharacterSabotageActionAuthorBindingCoordinatorSmokeCheck" type="Node"]
+
+[node name="Selected" parent="." instance=ExtResource("1")]
+[node name="Abstained" parent="." instance=ExtResource("1")]
+[node name="Invalid" parent="." instance=ExtResource("1")]
+[node name="Stale" parent="." instance=ExtResource("1")]
+
+[node name="SmokeCheck" type="Node" parent="."]
+script = ExtResource("2")
