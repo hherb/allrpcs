@@ -23,6 +23,8 @@ authoritative state.
 
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
+Implementation commit `23c572a` is published in draft PR #319 targeting `main`.
+
 ## Validation and review
 
 - Every slice was test-first: the focused game build failed only for its missing request-controller
@@ -40,6 +42,9 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
   inputs and state, closed public surfaces, isolation from `Main.tscn`, documentation, file and
   line limits, and whitespace. Tautological unchanged-source smoke assertions were replaced with
   comparisons against retained pre-call references; no unresolved finding remains.
+- Draft PR #319 run `35738560598` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
