@@ -15,6 +15,7 @@ public partial class TemporaryCharacterSabotageActionConsiderationMainSceneSmoke
     private TemporaryCharacterSabotageActionModelSource modelSource = null!;
     private CharacterSabotageActionTaskController task = null!;
     private TemporaryCharacterSabotageActionConsiderationFlowController flow = null!;
+    private CharacterSabotageActionSelectionCoordinator selection = null!;
     private CharacterSabotageActionConsiderationRequest request = null!;
     private CharacterSabotageActionKind selectedKind = null!;
     private RecordingModel selectionModel = null!;
@@ -37,6 +38,8 @@ public partial class TemporaryCharacterSabotageActionConsiderationMainSceneSmoke
             "../CharacterSabotageActionTaskController");
         flow = GetNode<TemporaryCharacterSabotageActionConsiderationFlowController>(
             "../TemporaryCharacterSabotageActionConsiderationFlowController");
+        selection = GetNode<CharacterSabotageActionSelectionCoordinator>(
+            "../CharacterSabotageActionSelectionCoordinator");
         request = CreateRequest(out selectedKind);
         selectionModel = new(value => new(value.Actor.Identity.Id, selectedKind));
         SetProcess(true);
@@ -74,6 +77,9 @@ public partial class TemporaryCharacterSabotageActionConsiderationMainSceneSmoke
     {
         bool inertStartup = task.Status == CharacterSabotageActionTaskStatus.Idle
             && task.Result is null
+            && selection.ObservedResult is null
+            && !selection.TryObserveCompletedResult()
+            && !selection.TryAcknowledgeCompletedResult()
             && selectionModel.CallCount == 0
             && InputsAreUnchanged();
         bool started = modelSource.TrySupplyModel(selectionModel)
@@ -102,7 +108,11 @@ public partial class TemporaryCharacterSabotageActionConsiderationMainSceneSmoke
             || !ReferenceEquals(selectionModel.Request, request)
             || !ReferenceEquals(result.Request, request)
             || !ReferenceEquals(result.SelectedActionKind, selectedKind)
-            || !task.TryReset()
+            || !selection.TryObserveCompletedResult()
+            || !ReferenceEquals(selection.ObservedResult, result)
+            || selection.TryObserveCompletedResult()
+            || !selection.TryAcknowledgeCompletedResult()
+            || selection.ObservedResult is not null
             || !flow.TryStart(request)
             || !InputsAreUnchanged())
         {
@@ -122,6 +132,9 @@ public partial class TemporaryCharacterSabotageActionConsiderationMainSceneSmoke
 
         if (task.Status != CharacterSabotageActionTaskStatus.Failed
             || task.Result is not null
+            || selection.ObservedResult is not null
+            || selection.TryObserveCompletedResult()
+            || selection.TryAcknowledgeCompletedResult()
             || selectionModel.CallCount != 1
             || !InputsAreUnchanged())
         {
@@ -131,8 +144,8 @@ public partial class TemporaryCharacterSabotageActionConsiderationMainSceneSmoke
 
         GD.Print(
             "Main-scene sabotage-action consideration smoke passed: inert startup, one exact "
-            + "explicit selection, explicit reset, stable offline failure, and unchanged request "
-            + "state.");
+            + "explicit selection observation and acknowledgement, stable offline failure, and "
+            + "unchanged request state.");
         GetTree().Quit();
     }
 

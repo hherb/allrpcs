@@ -775,6 +775,13 @@ is inert. The main scene dependency-orders the source, task, and explicit flow, 
 it automatically. The flow does not create requests, schedule work, dispatch an action, or mutate
 world state.
 
+`CharacterSabotageActionSelectionCoordinator` exposes one exact completed selection or abstention
+only when a caller explicitly observes it. Duplicate, idle, running, cancelled, failed, null, and
+stale acknowledgement paths stay inert. Explicit acknowledgement resets only the same exact task
+result and clears the observation. The main scene dependency-orders the coordinator after the task
+and flow, but neither startup nor the coordinator polls, dispatches, applies, or acknowledges an
+action automatically.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the

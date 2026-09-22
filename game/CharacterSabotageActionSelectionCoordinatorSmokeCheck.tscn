@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://CharacterSabotageActionTaskController.cs" id="1"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSelectionCoordinator.cs" id="2"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSelectionCoordinatorSmokeCheck.cs" id="3"]
+
+[node name="CharacterSabotageActionSelectionCoordinatorSmokeCheck" type="Node"]
+script = ExtResource("3")
+
+[node name="CharacterSabotageActionTaskController" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="CharacterSabotageActionSelectionCoordinator" type="Node" parent="."]
+script = ExtResource("2")
