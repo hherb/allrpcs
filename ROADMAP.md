@@ -626,6 +626,18 @@ Current continuation:
   remains inert and only the switch-gated smoke observes and acknowledges a result.
 - [x] Author one exact sabotage-action request containing only the canonical conceal kind when the
   exact current authored concealment graph remains eligible, without starting or applying work.
+- [x] Author one exact sabotage-action request containing only the canonical move kind when the
+  exact current authored move graph remains eligible, without combining, starting, or applying it.
+- [x] Author one exact sabotage-action request containing only the canonical substitute kind when
+  the exact current authored substitution graph remains eligible, without starting or applying it.
+- [x] Author one exact sabotage-action request containing only the canonical contaminate kind when
+  the exact current authored contamination graph remains eligible, without starting or applying it.
+- [x] Author one exact sabotage-action request containing only the canonical misquote kind when the
+  exact authored hearing and witness graph remains eligible, without delivering dialogue.
+- [x] Author one exact sabotage-action request containing only the canonical delay kind when the
+  exact bounded delay graph remains eligible against current event-log and world-time state.
+- [x] Author one exact sabotage-action request containing only the canonical influence kind when
+  the exact bounded influence graph remains eligible against current relationship state.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

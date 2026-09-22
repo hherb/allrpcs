@@ -113,6 +113,18 @@ godot --headless --path "$repository_root/game" \
 godot --headless --path "$repository_root/game" \
     res://CharacterSabotageActionConcealmentRequestControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
+    res://CharacterSabotageActionMoveRequestControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterSabotageActionSubstitutionRequestControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterSabotageActionContaminationRequestControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterSabotageActionMisquotationRequestControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterSabotageActionDelayRequestControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    res://CharacterSabotageActionInfluenceRequestControllerSmokeCheck.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterSabotageActionConsiderationFlowSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \
     res://TemporaryCharacterTargetSabotageDelayModelSourceSmokeCheck.tscn --quit-after 30
