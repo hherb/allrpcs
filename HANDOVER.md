@@ -45,6 +45,9 @@ Implementation commit `927ce5a` is published in draft PR #320 targeting `main`.
   and whitespace. Review found and fixed two smoke paths that dereferenced the composed request
   before checking composition success; the affected build and smokes pass after the fix. No
   unresolved finding remains.
+- Draft PR #320 run `35743219549` reports all five hosted jobs failed with `steps: []`; no checkout,
+  build, test, smoke, or export step ran, so this is Actions/account infrastructure state rather
+  than hosted product-test evidence.
 
 ## Exact next bounded slice
 
