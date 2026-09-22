@@ -791,6 +791,47 @@ null, and repeated inputs remain inert. This isolated controller is not in `Main
 start a model or task, observe a selection, dispatch or apply concealment, or change source or
 authoritative state.
 
+`CharacterSabotageActionMoveRequestController` applies the same one-shot exact-state boundary to
+the existing move source and scene state. It requires the source's exact enemy actor, physical
+access, world objects, destination, and candidate together with the move controller's exact current
+placements and evidence, and the existing move policy must still accept that graph. The authored
+request retains only the exact actor and canonical `Move` kind. The controller remains isolated
+from `Main.tscn` and does not combine kinds, start work, dispatch or apply movement, or mutate any
+source or authoritative state.
+
+`CharacterSabotageActionSubstitutionRequestController` authors only the canonical `Substitute`
+request after exact-reference checks join the existing substitution source to the scene's current
+substitution and evidence snapshots and the existing policy accepts the unchanged graph. Its
+one-shot output retains the exact enemy actor. It remains isolated and does not combine kinds,
+start or observe work, dispatch or apply substitution, or mutate source or authoritative state.
+
+`CharacterSabotageActionContaminationRequestController` provides the corresponding isolated gate
+for the canonical `Contaminate` kind. It accepts only the existing source's exact enemy actor,
+physical access, world objects, and evidence candidate with the contamination controller's exact
+current contamination and evidence snapshots, then delegates to the existing contamination
+policy. Unavailable, stale, replacement, ineligible, null, and repeated inputs remain inert and no
+model, task, dispatch, application, or mutation follows from the authored request.
+
+`CharacterSabotageActionMisquotationRequestController` binds the canonical `Misquote` kind to the
+temporary source's complete exact actor, heard source event, composed delivery, occurrence,
+witness, and evidence-candidate graph. The existing witness-evidence policy must still prove actor
+capability and both hearings. The isolated one-shot gate does not deliver dialogue, expose
+evidence, combine kinds, start consideration, or mutate any source or authoritative state.
+
+`CharacterSabotageActionDelayRequestController` accepts one already-bounded target-delay
+consideration request only when every supplied actor, interaction-access, world-event, event-log,
+world-time, and member-candidate reference is exact, the scene delay controller still owns those
+current state snapshots, and the existing delay policy accepts the graph. It authors only the
+canonical `Delay` kind and does not start consideration, record an event, advance time, or mutate
+the action-specific request or state.
+
+`CharacterSabotageActionInfluenceRequestController` similarly binds an existing bounded influence
+request's exact actor, interaction access, current relationship, and exact member candidate to the
+scene influence controller's still-current relationship. The existing influence policy must accept
+the unchanged graph before the one-shot controller authors only the canonical `Influence` kind.
+It does not start consideration, alter a relationship, record a reason, or mutate either request or
+scene state.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the
