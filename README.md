@@ -860,9 +860,21 @@ oversized input fails through one content-free error. A stateless OpenAI request
 only the selected model, disabled storage, streaming mode, a bounded output budget, provider-
 independent instructions, bounded trusted actor/world/recovery-candidate context, and one strict
 request-bound selection-or-abstention schema. It never reads credentials or invokes a provider.
-These seams do not accumulate streaming events, send HTTP, compose credentials, apply recovery
-automatically, own authoritative recovery state, schedule themselves, author evidence, persist
-state, or add input/UI or other world behavior.
+The bounded semantic accumulator accepts only one ordered OpenAI Responses lifecycle, permits
+bounded metadata and output-text deltas, and materializes a decision through the strict
+request-bound decoder only after verified output completion and response completion. Framed SSE
+completion rejects malformed, incomplete, refused, failed, excessive, trailing, or cancelled
+streams without exposing provider content. The OpenAI adapter validates a caller-owned credential,
+posts that exact serialized request to the configured Responses endpoint, requires an SSE response,
+and returns only the completed exact decision. Provider rejections and transport failures expose no
+provider body or transport detail, while caller cancellation is preserved. A construction-only
+factory binds the exact OpenAI settings and caller-owned dependencies without credential access,
+HTTP, or model invocation. An isolated inert scene composition explicitly initializes, replaces,
+or clears only its own exact binding in the existing temporary model source, preserving queued
+one-shot precedence and the stable offline fallback. These seams are not yet activated from
+selected game settings or owned by `Main.tscn`; they do not apply recovery automatically, own
+authoritative recovery state, schedule themselves, author evidence, persist state, or add input/UI
+or other world behavior.
 
 `CharacterTargetSabotageInfluenceCandidate` binds one exact eligible character-target occurrence to
 one exact existing directional relationship change. Its pure policy accepts only `influence`,

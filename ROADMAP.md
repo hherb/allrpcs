@@ -476,6 +476,14 @@ Current continuation:
   while rebinding actor text and candidate index to exact request instances.
 - [x] Serialize one bounded stateless OpenAI structured-output request over trusted exact
   target-delay recovery world and candidate context without credential or network access.
+- [x] Accumulate one complete ordered target-delay recovery OpenAI Responses lifecycle and framed
+  SSE stream into an exact accepted decision without exposing partial or provider-failed output.
+- [x] Execute one exact target-delay recovery request through caller-owned OpenAI credential, HTTP,
+  settings, and endpoint dependencies with redacted failures and caller cancellation.
+- [x] Create one exact target-delay recovery OpenAI binding from caller-owned dependencies without
+  construction-time credential access, HTTP, or model invocation.
+- [x] Compose, replace, and clear that exact binding explicitly through the existing temporary
+  target-delay recovery model source while preserving its stable offline fallback.
 - [x] Bind one exact eligible `influence` occurrence to an applicable directional target-to-actor
   relationship change without applying that change.
 - [x] Apply one exact eligible `influence` candidate as an immutable relationship transition while
