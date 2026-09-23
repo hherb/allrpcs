@@ -41,6 +41,9 @@ navigation, perception, dialogue, recovery, or new Domain behavior was added.
 - Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
   Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
+- Draft PR #337's five hosted jobs for head `c116ccb` failed before execution with `steps: []` in
+  run `35864216583`. No checkout, build, test, smoke, or unsigned development export step ran, so
+  this is Actions/account infrastructure state rather than hosted product-test evidence.
 - Session review covered exact-reference provenance, completed-task authority, acknowledgement
   order, candidate binding, preflight model preservation, separate task ownership, unchanged prior
   owners and ordinary-turn state, inert startup, docstrings, 120-character limits, the under-500-line
