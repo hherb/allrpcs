@@ -4,7 +4,8 @@
 
 `main` includes merged PR #334 at `e26a6df`. Branch
 `codex/phase-7-sabotage-action-authoring-admission` completes **Phase 7qd** and
-**Phase 7qe**. The unrelated untracked `scripts/code_statistics.py` remains
+**Phase 7qe**. Implementation commit `3812772` is published in draft PR #335
+targeting `main`. The unrelated untracked `scripts/code_statistics.py` remains
 untouched and must stay unstaged.
 
 `CharacterSabotageActionAuthoringAdmissionCoordinator` admits the exact current
@@ -51,6 +52,10 @@ Ordinary startup remains inert.
   focused smoke, formatting, and whitespace. Review removed a new tautological
   source assertion, added nullable verifier preflight, and verified the guarded
   author's exact typed binding before retaining output.
+- Draft PR #335's initial five hosted jobs failed before execution with
+  `steps: []`. No checkout, build, test, smoke, or unsigned development export
+  step ran, so this is Actions/account infrastructure state rather than hosted
+  product-test evidence.
 
 ## Exact next bounded slice
 
