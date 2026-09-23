@@ -32,6 +32,7 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeRecoveryCoordinator recovery = null!;
     private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
+    private CharacterSabotageTurnCompletionCoordinator turnCompletion = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingMoveModel moveModel = null!;
     private int processFrames;
@@ -83,6 +84,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             "../CharacterSabotageOutcomeRecoveryCoordinator");
         terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
             "../CharacterSabotageTerminalRouteCoordinator");
+        turnCompletion = GetNode<CharacterSabotageTurnCompletionCoordinator>(
+            "../CharacterSabotageTurnCompletionCoordinator");
         actionModel = new();
         moveModel = new();
         SetProcess(true);
@@ -211,9 +214,26 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
         CharacterSabotageActionConsiderationRequest rebuiltAuthor = new(
             source.Character,
             [CharacterSabotageActionKind.Move]);
+        Character foreignActor = RepresentativeEnemyAgentCharacterSource.Create();
         CharacterObjectSabotageMoveRecoveryCandidate rebuiltCandidate = new(
             source.Candidate,
             source.RecoveryCandidate.SourcePlacement);
+        CharacterSabotageTurnCompletion rebuiltCompletion = new(
+            source.Character,
+            binding.SelectedAuthorRequest!,
+            CharacterSabotageActionKind.Move);
+        CharacterSabotageTurnCompletion foreignActorCompletion = new(
+            foreignActor,
+            binding.SelectedAuthorRequest!,
+            CharacterSabotageActionKind.Move);
+        CharacterSabotageTurnCompletion rebuiltAuthorCompletion = new(
+            source.Character,
+            rebuiltAuthor,
+            CharacterSabotageActionKind.Move);
+        CharacterSabotageTurnCompletion wrongKindCompletion = new(
+            source.Character,
+            binding.SelectedAuthorRequest!,
+            CharacterSabotageActionKind.Conceal);
 
         if (moveTask.Status != CharacterObjectSabotageMoveTaskStatus.Completed
             || moveTask.Result is not { SelectedCandidate: { } selected }
@@ -256,6 +276,10 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             || terminalRoute.TryRetain(
                 binding.SelectedAuthorRequest,
                 CharacterSabotageActionKind.Move)
+            || turnCompletion.TryComplete(
+                source.Character,
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
             || terminalRoute.TryReset(rebuiltAuthor, CharacterSabotageActionKind.Move)
             || terminalRoute.TryReset(
                 binding.SelectedAuthorRequest,
@@ -275,6 +299,55 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
                 CharacterSabotageActionKind.Move)
             || !ReferenceEquals(recovery.RecoveredPlacements, recovered)
             || !ReferenceEquals(moveState.Placements, recovered)
+            || turnCompletion.TryComplete(
+                null,
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || turnCompletion.TryComplete(
+                source.Character,
+                null,
+                CharacterSabotageActionKind.Move)
+            || turnCompletion.TryComplete(
+                source.Character,
+                rebuiltAuthor,
+                CharacterSabotageActionKind.Move)
+            || turnCompletion.TryComplete(
+                foreignActor,
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || turnCompletion.TryComplete(
+                source.Character,
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Conceal)
+            || !turnCompletion.TryComplete(
+                source.Character,
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || turnCompletion.Completion is not { } completion
+            || !ReferenceEquals(completion.Actor, source.Character)
+            || !ReferenceEquals(completion.AuthorRequest, binding.SelectedAuthorRequest)
+            || !ReferenceEquals(completion.ActionKind, CharacterSabotageActionKind.Move)
+            || CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(null, completion)
+            || CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(completion, null)
+            || CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(
+                completion,
+                rebuiltCompletion)
+            || CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(
+                completion,
+                foreignActorCompletion)
+            || CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(
+                completion,
+                rebuiltAuthorCompletion)
+            || CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(
+                completion,
+                wrongKindCompletion)
+            || !CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(
+                completion,
+                completion)
+            || turnCompletion.TryComplete(
+                source.Character,
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
             || terminalRoute.TryReset(
                 binding.SelectedAuthorRequest,
                 CharacterSabotageActionKind.Move)
@@ -296,8 +369,10 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "acknowledgement, outcome, evidence-view, and source-placement tokens; and the "
             + "existing recovery transition restored that placement once while preserving "
             + "authoritative evidence and both model call counts, then the exact terminal route "
-            + "was retained and explicitly reset once without clearing its route owner or "
-            + "scheduling another action.");
+            + "was retained and explicitly reset once; one exact completed-turn token retained "
+            + "its actor, author request, and canonical kind, and passed only its pure exact-token "
+            + "scheduling eligibility gate without clearing its route owner or scheduling "
+            + "another action.");
         GetTree().Quit();
     }
 

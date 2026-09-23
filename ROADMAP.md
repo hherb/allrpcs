@@ -690,6 +690,10 @@ Current continuation:
   copying its terminal output or scheduling another action.
 - [x] Reset only that exact retained terminal route once while preserving every prior route owner,
   authoritative snapshot, presentation, task, and model source.
+- [x] Expose one exact completed sabotage-turn token after terminal-route reset while retaining its
+  actor, generic author request, and canonical action kind without copying route output.
+- [x] Define a pure ordinary-scheduling eligibility gate for only that exact current completed-turn
+  token without scheduling or authoring another action.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
