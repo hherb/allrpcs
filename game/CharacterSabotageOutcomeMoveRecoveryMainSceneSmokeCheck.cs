@@ -462,8 +462,10 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "result was observed, bound to the follow-up candidate, and acknowledged; one fresh "
             + "typed Move request then retained current authority and started on a separate fresh "
             + "task; its exact applied result and fresh authoritative snapshots were observed, "
-            + "bound, and acknowledged without routing, reserving the slot, clearing prior owners, "
-            + "or enabling automatic sabotage.");
+            + "bound, and acknowledged; one exact recovery candidate was authored from its retained "
+            + "source placement, paired with explicitly supplied visible evidence, and recovered "
+            + "through the existing stale-safe owner without routing, reserving the slot, clearing "
+            + "prior owners, another model call, or automatic sabotage.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
