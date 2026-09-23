@@ -71,6 +71,8 @@ public partial class CharacterObjectSabotageMoveTaskControllerSmokeCheck : Node
             && RejectsInvalidInputs()
             && task.Status == CharacterObjectSabotageMoveTaskStatus.Idle
             && task.Result is null
+            && task.ResolvedPlacements is null
+            && task.ResolvedEvidence is null
             && !task.TryCancel()
             && !task.TryReset()
             && task.TryStart(new ImmediateModel(decision), input.Request, state)
@@ -101,12 +103,16 @@ public partial class CharacterObjectSabotageMoveTaskControllerSmokeCheck : Node
                 input.Candidate.Evidence.Evidence.EvidenceId)
             || state.Placements is not { } appliedPlacements
             || state.Evidence is not { } appliedEvidence
+            || !ReferenceEquals(task.ResolvedPlacements, appliedPlacements)
+            || !ReferenceEquals(task.ResolvedEvidence, appliedEvidence)
             || !ReferenceEquals(appliedPlacements.Entries.Single().WorldObject, input.Target)
             || !ReferenceEquals(appliedPlacements.Entries.Single().Location, input.Destination)
             || !ReferenceEquals(appliedEvidence.Entries.Single(), input.Candidate.Evidence.Evidence)
             || !task.TryReset()
             || task.Status != CharacterObjectSabotageMoveTaskStatus.Idle
             || task.Result is not null
+            || task.ResolvedPlacements is not null
+            || task.ResolvedEvidence is not null
             || !InputsAreUnchanged())
         {
             Fail("Move task failed exact selection completion and reset.");
@@ -135,6 +141,8 @@ public partial class CharacterObjectSabotageMoveTaskControllerSmokeCheck : Node
         if (task.Status != CharacterObjectSabotageMoveTaskStatus.Completed
             || task.Result is not { SelectedCandidate: null }
             || !HasInitialState()
+            || !ReferenceEquals(task.ResolvedPlacements, input.Placements)
+            || !ReferenceEquals(task.ResolvedEvidence, input.Evidence)
             || !task.TryReset())
         {
             Fail("Move task failed exact abstention completion.");

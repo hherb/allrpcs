@@ -1,5 +1,7 @@
 using Allrpcs.Application.Characters;
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Discovery;
+using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -17,6 +19,12 @@ public partial class CharacterObjectSabotageMoveTaskController : Node
 
     /// <summary>Gets the exact accepted and resolved result, if successful.</summary>
     public CharacterObjectSabotageMoveConsiderationResult? Result { get; private set; }
+
+    /// <summary>Gets the exact authoritative placements installed for the completed result.</summary>
+    internal WorldObjectPlacementSnapshot? ResolvedPlacements { get; private set; }
+
+    /// <summary>Gets the exact authoritative evidence installed for the completed result.</summary>
+    internal DiscoveryEvidenceSnapshot? ResolvedEvidence { get; private set; }
 
     /// <summary>Starts one decision only for exact current scene-owned request snapshots.</summary>
     public bool TryStart(
@@ -75,6 +83,8 @@ public partial class CharacterObjectSabotageMoveTaskController : Node
         }
 
         Result = null;
+        ResolvedPlacements = null;
+        ResolvedEvidence = null;
         cancellationRequested = false;
         Status = CharacterObjectSabotageMoveTaskStatus.Idle;
         return true;
@@ -117,6 +127,8 @@ public partial class CharacterObjectSabotageMoveTaskController : Node
             && state.TryResolveConsideration(task.Result))
         {
             Result = task.Result;
+            ResolvedPlacements = state.Placements;
+            ResolvedEvidence = state.Evidence;
             Status = CharacterObjectSabotageMoveTaskStatus.Completed;
         }
         else

@@ -722,6 +722,10 @@ Current continuation:
   over the current authoritative placement and evidence snapshots without starting it.
 - [x] Explicitly start only that exact fresh typed Move request on a separate fresh scene-owned task
   while preserving its queued model across rejected preflight and leaving completion unobserved.
+- [x] Observe only that exact completed typed follow-up Move result together with the controller's
+  exact fresh placement and evidence snapshots, without acknowledging or routing it.
+- [x] Bind and acknowledge only that exact observed typed result and current outcome, resetting only
+  its task while retaining the exact result and authoritative snapshot tokens.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

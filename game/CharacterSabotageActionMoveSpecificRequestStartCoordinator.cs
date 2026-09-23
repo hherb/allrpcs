@@ -48,4 +48,23 @@ public partial class CharacterSabotageActionMoveSpecificRequestStartCoordinator 
         StartedRequest = expectedRequest;
         return true;
     }
+
+    /// <summary>Checks one exact completed selected result against the retained start graph.</summary>
+    internal bool IsCurrentCompletedResult(
+        CharacterObjectSabotageMoveConsiderationResult? expectedResult) =>
+        StartedRequest is not null
+        && expectedResult is not null
+        && task.Status == CharacterObjectSabotageMoveTaskStatus.Completed
+        && ReferenceEquals(task.Result, expectedResult)
+        && ReferenceEquals(expectedResult.Request, StartedRequest)
+        && expectedResult.SelectedCandidate is { } selectedCandidate
+        && StartedRequest.Candidates.Count == 1
+        && ReferenceEquals(StartedRequest.Candidates[0], selectedCandidate)
+        && requests.IsRetainedRequest(StartedRequest)
+        && state.Placements is { } placements
+        && state.Evidence is { } evidence
+        && ReferenceEquals(task.ResolvedPlacements, placements)
+        && ReferenceEquals(task.ResolvedEvidence, evidence)
+        && !ReferenceEquals(placements, StartedRequest.Placements)
+        && !ReferenceEquals(evidence, StartedRequest.Evidence);
 }
