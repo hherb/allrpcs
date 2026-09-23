@@ -1,4 +1,4 @@
-[gd_scene load_steps=236 format=3]
+[gd_scene load_steps=239 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -292,6 +292,9 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionRequestComposer.cs" id="290_sabotage_action_request_composer"]
 [ext_resource type="Script" path="res://CharacterSabotageActionRequestConsiderationFlowController.cs" id="291_sabotage_action_request_flow"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestStartCoordinator.cs" id="294_sabotage_action_specific_start"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSpecificResultCoordinator.cs" id="295_sabotage_action_specific_result"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -731,6 +734,15 @@ script = ExtResource("291_sabotage_action_request_flow")
 
 [node name="CharacterSabotageActionAuthorBindingCoordinator" type="Node" parent="."]
 script = ExtResource("292_sabotage_action_author_binding")
+
+[node name="CharacterSabotageActionSpecificRequestCoordinator" type="Node" parent="."]
+script = ExtResource("293_sabotage_action_specific_request")
+
+[node name="CharacterSabotageActionSpecificRequestStartCoordinator" type="Node" parent="."]
+script = ExtResource("294_sabotage_action_specific_start")
+
+[node name="CharacterSabotageActionSpecificResultCoordinator" type="Node" parent="."]
+script = ExtResource("295_sabotage_action_specific_result")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

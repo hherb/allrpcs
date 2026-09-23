@@ -16,6 +16,9 @@ public partial class CharacterSabotageActionDelayRequestController
     /// <inheritdoc />
     public CharacterSabotageActionCandidateBinding? CandidateBinding { get; private set; }
 
+    /// <summary>Gets the exact delay request that supplied the selected candidate context.</summary>
+    internal CharacterTargetSabotageDelayConsiderationRequest? SourceRequest { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -65,6 +68,7 @@ public partial class CharacterSabotageActionDelayRequestController
         CharacterSabotageActionConsiderationRequest request = new(
             actor,
             [CharacterSabotageActionKind.Delay]);
+        SourceRequest = delayRequest;
         Request = request;
         CandidateBinding = new CharacterSabotageActionCandidateBinding<
             CharacterTargetSabotageDelayCandidate>(
