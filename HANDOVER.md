@@ -4,6 +4,7 @@
 
 `main` includes merged PR #325 at `cd07417`. Branch
 `codex/phase-7-sabotage-recovery-routing` completes **Phase 7pj** and **Phase 7pk**.
+Implementation commit `e61defe` is published in draft PR #326 targeting `main`.
 
 `CharacterSabotageOutcomeRecoveryCoordinator` now routes three retained exact eligibility branches
 through their existing recovery owners:
@@ -37,6 +38,9 @@ misquotation, delay, and influence remain unrouted. The unrelated untracked
   current authority, evidence gates, source-placement identity, one-shot behavior, partial-mutation
   safety, evidence preservation, scene order, ordinary-startup inertness, public-surface
   containment, documentation, file size, formatting, and whitespace. No further defect was found.
+- Draft PR #326's Pure C#, Headless Godot, and three unsigned development-build jobs all failed
+  with `steps: []`; no checkout, build, test, smoke, or export step ran. This is Actions/account
+  infrastructure state, not hosted product-test evidence.
 
 ## Exact next bounded slice
 
