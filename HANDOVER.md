@@ -4,6 +4,7 @@
 
 `main` includes merged PR #337 at `137c6e4`. Branch
 `codex/phase-7-sabotage-action-applied-result` completes **Phase 7ql** and **Phase 7qm**. The
+implementation is committed at `0eb74ae` and published in draft PR #338 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The scheduled typed follow-up Move task now retains internal-only references to the exact
@@ -38,6 +39,9 @@ inert and both follow-up models are called once.
 - Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
   Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
+- Draft PR #338's five hosted jobs for head `0eb74ae` failed before execution with `steps: []` in
+  run `35868037777`. No checkout, build, test, smoke, or unsigned development export step ran, so
+  this is Actions/account infrastructure state rather than hosted product-test evidence.
 - Session review found and fixed one exact-provenance gap by retaining the task's installed snapshot
   references internally. The first full suite then caught and fixed an accidental public-surface
   expansion; the corrected task smoke and complete quality suite pass.
