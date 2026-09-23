@@ -4,8 +4,8 @@
 
 `main` includes merged PR #336 at `eb1f41b`. Branch
 `codex/phase-7-sabotage-action-result-followup` completes **Phase 7qh** through
-**Phase 7qk**. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
-unstaged.
+**Phase 7qk**. Implementation commit `0fea221` is published in draft PR #337 targeting `main`. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The fresh generic follow-up Move task now has one exact observation seam. It accepts only the exact
 completed result for `CharacterSabotageActionMoveCompositionStartCoordinator.StartedRequest` while
