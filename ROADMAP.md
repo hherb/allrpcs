@@ -686,6 +686,10 @@ Current continuation:
 - [x] Bind one exact completed generic Influence recovery back to its author route only after the
   existing resolution owner installs the fresh restored relationship, then acknowledge it once and
   retain its exact terminal output.
+- [x] Retain one exact completed generic sabotage route across the seven canonical branches without
+  copying its terminal output or scheduling another action.
+- [x] Reset only that exact retained terminal route once while preserving every prior route owner,
+  authoritative snapshot, presentation, task, and model source.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

@@ -932,6 +932,17 @@ ineligible, non-current, unresolved, occupied, and repeated calls remain inert. 
 defines a new recovery rule. Separate switch-gated main-scene smokes carry every branch while
 ordinary startup remains inert.
 
+`CharacterSabotageTerminalRouteCoordinator` accepts only the exact selected generic author request
+and canonical kind after exactly one of the seven existing route owners exposes its final current
+output. It retains the exact recovered concealment, placement, substitution, contamination,
+misquotation presentation, Delay recovery, or Influence recovery without copying it into a common
+value-shaped result. Null, rebuilt, wrong-kind, incomplete, stale, multiple-branch, and repeated
+inputs remain inert. An explicit exact reset clears only this coordinator's retained references
+once and records the reset provenance; it does not clear or change any branch owner, authoritative
+state, presentation, task, model source, or prior output, and it does not schedule another sabotage
+action. The existing switch-gated route smokes prove all seven terminal bindings while ordinary
+startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

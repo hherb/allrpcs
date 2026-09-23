@@ -31,6 +31,7 @@ public partial class CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeC
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeRecoveryCoordinator recovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingSubstitutionModel substitutionModel = null!;
     private int processFrames;
@@ -80,6 +81,8 @@ public partial class CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeC
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeRecoveryCoordinator>(
             "../CharacterSabotageOutcomeRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         actionModel = new();
         substitutionModel = new();
         SetProcess(true);
@@ -244,6 +247,14 @@ public partial class CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeC
             || !ReferenceEquals(substitutionState.Evidence, specificOutcome.SubstitutionEvidence)
             || actionModel.CallCount != 1
             || substitutionModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Substitute)
+            || !ReferenceEquals(terminalRoute.RecoveredSubstitutions, recovered)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Substitute)
             || recovery.TryRecoverSubstitution(
                 eligibility.AuthorRequest,
                 eligibility.SubstitutionCandidate,
@@ -258,7 +269,8 @@ public partial class CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeC
             + "inert; one exact live substitution selection retained its author, typed candidate, "
             + "acknowledgement, outcome, and evidence-view tokens; and the existing recovery "
             + "transition removed that exact active substitution once while preserving "
-            + "authoritative evidence and both model call counts.");
+            + "authoritative evidence and both model call counts, then the exact terminal route "
+            + "was retained once without scheduling another action.");
         GetTree().Quit();
     }
 

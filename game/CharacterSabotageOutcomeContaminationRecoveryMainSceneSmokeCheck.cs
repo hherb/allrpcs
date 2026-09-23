@@ -31,6 +31,7 @@ public partial class CharacterSabotageOutcomeContaminationRecoveryMainSceneSmoke
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeRecoveryCoordinator recovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingContaminationModel contaminationModel = null!;
     private int processFrames;
@@ -80,6 +81,8 @@ public partial class CharacterSabotageOutcomeContaminationRecoveryMainSceneSmoke
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeRecoveryCoordinator>(
             "../CharacterSabotageOutcomeRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         actionModel = new();
         contaminationModel = new();
         SetProcess(true);
@@ -245,6 +248,14 @@ public partial class CharacterSabotageOutcomeContaminationRecoveryMainSceneSmoke
             || !ReferenceEquals(contaminationState.Evidence, specificOutcome.ContaminationEvidence)
             || actionModel.CallCount != 1
             || contaminationModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Contaminate)
+            || !ReferenceEquals(terminalRoute.RecoveredContamination, recovered)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Contaminate)
             || recovery.TryRecoverContamination(
                 eligibility.AuthorRequest,
                 eligibility.ContaminationCandidate,
@@ -259,7 +270,8 @@ public partial class CharacterSabotageOutcomeContaminationRecoveryMainSceneSmoke
             + "stayed inert; one exact live contamination selection retained its author, typed "
             + "candidate, acknowledgement, outcome, and evidence-view tokens; and the existing "
             + "recovery transition removed that exact contamination once while preserving "
-            + "authoritative evidence and both model call counts.");
+            + "authoritative evidence and both model call counts, then the exact terminal route "
+            + "was retained once without scheduling another action.");
         GetTree().Quit();
     }
 

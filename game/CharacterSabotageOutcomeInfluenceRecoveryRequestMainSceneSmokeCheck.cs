@@ -29,6 +29,7 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeInfluenceRecoveryCoordinator recovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private CharacterTargetSabotageInfluenceController influenceState = null!;
     private CharacterTargetSabotageInfluenceRecoveryCandidateController recoveryCandidates = null!;
     private CharacterTargetSabotageInfluenceRecoveryCandidateRequestController recoveryRequests =
@@ -84,6 +85,8 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeInfluenceRecoveryCoordinator>(
             "../CharacterSabotageOutcomeInfluenceRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         influenceState = GetNode<CharacterTargetSabotageInfluenceController>(
             "../CharacterTargetSabotageInfluenceController");
         recoveryCandidates = GetNode<CharacterTargetSabotageInfluenceRecoveryCandidateController>(
@@ -324,7 +327,15 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             || applied.Relationship.Dimensions.Single().Value != 10
             || applied.Relationship.Reasons.Count != 2
             || recovery.TryComplete(recovery.AuthorRequest, started)
-            || recoveryModel.CallCount != 1)
+            || recoveryModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Influence)
+            || !ReferenceEquals(terminalRoute.InfluenceRecovery, applied)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Influence))
         {
             Fail("Main-scene exact Influence recovery did not route and acknowledge once.");
             return;
@@ -334,7 +345,7 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             "Main-scene sabotage outcome Influence recovery smoke passed: ordinary startup stayed "
             + "inert; one exact generic Influence selection retained its typed outcome and current "
             + "relationship authority; and its exact recovery completed, routed, and acknowledged "
-            + "once without another model call.");
+            + "once without another model call before the exact terminal route was retained once.");
         GetTree().Quit();
     }
 
