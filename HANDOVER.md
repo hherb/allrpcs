@@ -4,6 +4,7 @@
 
 `main` includes merged PR #328 at `03eba735`. Branch
 `codex/phase-7-sabotage-delay-recovery-route` completes **Phase 7pp** and **Phase 7pq**.
+Implementation commit `33c6608` is published in draft PR #329 targeting `main`.
 
 `CharacterSabotageOutcomeDelayRecoveryCoordinator` now accepts only the exact completed recovery
 for its own started generic Delay request after the existing resolution owner has installed the
@@ -39,6 +40,9 @@ remains untouched and must stay unstaged.
   preservation, scene order, ordinary-startup inertness, public-surface containment, file size,
   formatting, and whitespace. The over-500-line Delay smoke helper was extracted into a focused
   internal model; no further defect was found after final validation.
+- Draft PR #329's five hosted jobs failed before execution with `steps: []`. No checkout, build,
+  test, smoke, or unsigned development export step ran, so this is Actions/account infrastructure
+  state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
