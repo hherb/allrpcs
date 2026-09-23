@@ -14,6 +14,11 @@ public partial class CharacterSabotageOutcomeRecoveryCoordinator : Node
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterObjectSabotageConcealmentController concealmentState = null!;
     private CharacterObjectSabotageConcealmentPresentationCoordinator concealmentResults = null!;
+    private TemporaryCharacterObjectSabotageMoveSource moveSource = null!;
+    private CharacterObjectSabotageMoveController moveState = null!;
+    private CharacterObjectSabotageMovePresentationCoordinator moveResults = null!;
+    private CharacterObjectSabotageSubstitutionController substitutionState = null!;
+    private CharacterObjectSabotageSubstitutionPresentationCoordinator substitutionResults = null!;
 
     /// <summary>Gets the exact generic author request whose concealment was recovered.</summary>
     public CharacterSabotageActionConsiderationRequest? AuthorRequest { get; private set; }
@@ -23,6 +28,12 @@ public partial class CharacterSabotageOutcomeRecoveryCoordinator : Node
 
     /// <summary>Gets the exact recovered concealment snapshot installed by the existing owner.</summary>
     public WorldObjectConcealmentSnapshot? RecoveredConcealment { get; private set; }
+
+    /// <summary>Gets the exact recovered placement snapshot installed by the existing owner.</summary>
+    public WorldObjectPlacementSnapshot? RecoveredPlacements { get; private set; }
+
+    /// <summary>Gets the exact recovered substitution snapshot installed by the existing owner.</summary>
+    public CharacterObjectSabotageSubstitutionSnapshot? RecoveredSubstitutions { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -39,6 +50,16 @@ public partial class CharacterSabotageOutcomeRecoveryCoordinator : Node
             "../CharacterObjectSabotageConcealmentController");
         concealmentResults = GetNode<CharacterObjectSabotageConcealmentPresentationCoordinator>(
             "../CharacterObjectSabotageConcealmentPresentationCoordinator");
+        moveSource = GetNode<TemporaryCharacterObjectSabotageMoveSource>(
+            "../TemporaryCharacterObjectSabotageMoveSource");
+        moveState = GetNode<CharacterObjectSabotageMoveController>(
+            "../CharacterObjectSabotageMoveController");
+        moveResults = GetNode<CharacterObjectSabotageMovePresentationCoordinator>(
+            "../CharacterObjectSabotageMovePresentationCoordinator");
+        substitutionState = GetNode<CharacterObjectSabotageSubstitutionController>(
+            "../CharacterObjectSabotageSubstitutionController");
+        substitutionResults = GetNode<CharacterObjectSabotageSubstitutionPresentationCoordinator>(
+            "../CharacterObjectSabotageSubstitutionPresentationCoordinator");
     }
 
     /// <summary>Recovers only the exact eligible concealment branch once.</summary>
@@ -93,6 +114,126 @@ public partial class CharacterSabotageOutcomeRecoveryCoordinator : Node
         AuthorRequest = expectedAuthorRequest;
         EvidenceView = expectedEvidenceView;
         RecoveredConcealment = recovered;
+        return true;
+    }
+
+    /// <summary>Recovers only the exact eligible move branch once.</summary>
+    public bool TryRecoverMove(
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterObjectSabotageMoveRecoveryCandidate? expectedCandidate,
+        CharacterEvidenceViewSnapshot? expectedEvidenceView)
+    {
+        if (expectedAuthorRequest is null
+            || expectedCandidate is null
+            || expectedEvidenceView is null
+            || AuthorRequest is not null
+            || EvidenceView is not null
+            || RecoveredConcealment is not null
+            || RecoveredPlacements is not null
+            || eligibility.EligibilityCount != 1
+            || !ReferenceEquals(eligibility.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(eligibility.MoveCandidate, expectedCandidate)
+            || !ReferenceEquals(eligibility.EvidenceView, expectedEvidenceView)
+            || !ReferenceEquals(moveSource.RecoveryCandidate, expectedCandidate)
+            || !ReferenceEquals(
+                moveSource.RecoveryCandidate.SourcePlacement,
+                moveSource.Placements.Entries.Single())
+            || !ReferenceEquals(
+                binding.AcknowledgedResult?.SelectedActionKind,
+                CharacterSabotageActionKind.Move)
+            || !ReferenceEquals(binding.SelectedAuthorRequest, expectedAuthorRequest)
+            || results.MoveResult is not { SelectedCandidate: { } candidate } result
+            || !ReferenceEquals(results.AcknowledgedAuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(candidate, expectedCandidate.Candidate)
+            || !ReferenceEquals(moveResults.AcknowledgedResult, result)
+            || outcomes.Placements is not { } placements
+            || outcomes.MoveEvidence is not { } evidence
+            || !ReferenceEquals(outcomes.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(moveResults.AcknowledgedPlacements, placements)
+            || !ReferenceEquals(moveResults.AcknowledgedEvidence, evidence)
+            || !ReferenceEquals(moveState.Placements, placements)
+            || !ReferenceEquals(moveState.Evidence, evidence)
+            || !moveState.TryRecover(
+                placements,
+                evidence,
+                expectedEvidenceView,
+                expectedCandidate))
+        {
+            return false;
+        }
+
+        WorldObjectPlacementSnapshot recovered = moveState.Placements
+            ?? throw new InvalidOperationException(
+                "Successful move recovery must install an exact snapshot.");
+        if (!ReferenceEquals(moveState.Evidence, evidence))
+        {
+            throw new InvalidOperationException(
+                "Move recovery must preserve authoritative evidence.");
+        }
+
+        AuthorRequest = expectedAuthorRequest;
+        EvidenceView = expectedEvidenceView;
+        RecoveredPlacements = recovered;
+        return true;
+    }
+
+    /// <summary>Recovers only the exact eligible substitution branch once.</summary>
+    public bool TryRecoverSubstitution(
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterObjectSabotageSubstitutionCandidate? expectedCandidate,
+        CharacterEvidenceViewSnapshot? expectedEvidenceView)
+    {
+        if (expectedAuthorRequest is null
+            || expectedCandidate is null
+            || expectedEvidenceView is null
+            || AuthorRequest is not null
+            || EvidenceView is not null
+            || RecoveredConcealment is not null
+            || RecoveredPlacements is not null
+            || RecoveredSubstitutions is not null
+            || eligibility.EligibilityCount != 1
+            || !ReferenceEquals(eligibility.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(eligibility.SubstitutionCandidate, expectedCandidate)
+            || !ReferenceEquals(eligibility.EvidenceView, expectedEvidenceView)
+            || !ReferenceEquals(
+                binding.AcknowledgedResult?.SelectedActionKind,
+                CharacterSabotageActionKind.Substitute)
+            || !ReferenceEquals(binding.SelectedAuthorRequest, expectedAuthorRequest)
+            || results.SubstitutionResult is not { SelectedCandidate: { } candidate } result
+            || !ReferenceEquals(results.AcknowledgedAuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(candidate, expectedCandidate)
+            || !ReferenceEquals(substitutionResults.AcknowledgedResult, result)
+            || outcomes.Substitutions is not { } substitutions
+            || outcomes.SubstitutionEvidence is not { } evidence
+            || !ReferenceEquals(outcomes.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(
+                substitutionResults.AcknowledgedSubstitutions,
+                substitutions)
+            || !ReferenceEquals(substitutionResults.AcknowledgedEvidence, evidence)
+            || !ReferenceEquals(substitutionState.Substitutions, substitutions)
+            || !ReferenceEquals(substitutionState.Evidence, evidence)
+            || !substitutionState.TryRecover(
+                substitutions,
+                evidence,
+                expectedEvidenceView,
+                expectedCandidate))
+        {
+            return false;
+        }
+
+        CharacterObjectSabotageSubstitutionSnapshot recovered =
+            substitutionState.Substitutions
+            ?? throw new InvalidOperationException(
+                "Successful substitution recovery must install an exact snapshot.");
+        if (!ReferenceEquals(substitutionState.Evidence, evidence))
+        {
+            throw new InvalidOperationException(
+                "Substitution recovery must preserve authoritative evidence.");
+        }
+
+        AuthorRequest = expectedAuthorRequest;
+        EvidenceView = expectedEvidenceView;
+        RecoveredSubstitutions = recovered;
         return true;
     }
 }
