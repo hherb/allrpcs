@@ -1003,6 +1003,22 @@ acknowledging the result, selecting or dispatching an action, resetting either a
 ordinary turn, clearing prior provenance, or enabling automatic cadence. Ordinary startup remains
 inert.
 
+`CharacterSabotageActionMoveResultObservationCoordinator` observes only the exact completed result
+of that fresh generic Move task while the complete admission, authoring, composition, and start
+graph remains current. It retains the exact result once without acknowledging it. The paired result
+binding coordinator then accepts only that observation and the guarded author's exact typed
+follow-up candidate binding, acknowledges the same exact task result, and retains both tokens after
+the task resets. Null, running, rebuilt-result, rebuilt-request, foreign-actor, wrong-kind,
+stale-graph, replaced-binding, and repeated paths remain inert.
+
+`CharacterSabotageActionMoveSpecificRequestCoordinator` composes only that exact acknowledged
+result and follow-up candidate into one fresh provider-neutral typed Move request over the exact
+current placement and evidence snapshots. Its explicit start coordinator revalidates the complete
+graph and starts only that request on a separate fresh task, preserving its queued model across
+rejected preflight. These seams do not reset either author, reserve the ordinary turn, clear prior
+provenance, add automatic cadence, or change ordinary startup behavior. The newly started typed
+result remains unobserved and unacknowledged.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

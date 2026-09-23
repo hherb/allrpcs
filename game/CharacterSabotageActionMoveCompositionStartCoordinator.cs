@@ -45,4 +45,14 @@ public partial class CharacterSabotageActionMoveCompositionStartCoordinator : No
         StartedRequest = expectedRequest;
         return true;
     }
+
+    /// <summary>Checks one exact completed result against the full retained start graph.</summary>
+    internal bool IsCurrentCompletedResult(
+        CharacterSabotageActionConsiderationResult? expectedResult) =>
+        StartedRequest is not null
+        && expectedResult is not null
+        && task.Status == CharacterSabotageActionTaskStatus.Completed
+        && ReferenceEquals(task.Result, expectedResult)
+        && ReferenceEquals(expectedResult.Request, StartedRequest)
+        && composition.IsCurrentRequest(StartedRequest);
 }
