@@ -35,6 +35,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
     private CharacterSabotageTurnCompletionCoordinator turnCompletion = null!;
     private CharacterSabotageTurnAdmissionCoordinator turnAdmission = null!;
     private CharacterSabotageOrdinaryTurnBoundaryCoordinator turnBoundary = null!;
+    private CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator
+        schedulingAuthorization = null!;
+    private CharacterSabotageCycleBoundaryCoordinator sabotageCycleBoundary = null!;
     private CharacterTurnActivityController ordinaryTurns = null!;
     private TemporaryCharacterTurnSource ordinaryTurnSource = null!;
     private RecordingActionModel actionModel = null!;
@@ -94,6 +97,11 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             "../CharacterSabotageTurnAdmissionCoordinator");
         turnBoundary = GetNode<CharacterSabotageOrdinaryTurnBoundaryCoordinator>(
             "../CharacterSabotageOrdinaryTurnBoundaryCoordinator");
+        schedulingAuthorization =
+            GetNode<CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator>(
+                "../CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator");
+        sabotageCycleBoundary = GetNode<CharacterSabotageCycleBoundaryCoordinator>(
+            "../CharacterSabotageCycleBoundaryCoordinator");
         ordinaryTurns = GetNode<CharacterTurnActivityController>(
             "../CharacterTurnActivityController");
         ordinaryTurnSource = GetNode<TemporaryCharacterTurnSource>(
@@ -400,6 +408,31 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
                 ordinaryTurnSource.Activity, ordinaryTurnSource.Activity)
             || !CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy.CanSchedule(
                 turnBoundary.Admission, completion, null, null)
+            || schedulingAuthorization.TryAuthorize(null, ordinaryTurns.Activity)
+            || schedulingAuthorization.TryAuthorize(rebuiltCompletion, ordinaryTurns.Activity)
+            || schedulingAuthorization.TryAuthorize(completion, ordinaryTurnSource.Activity)
+            || schedulingAuthorization.Authorization is not null
+            || !schedulingAuthorization.TryAuthorize(completion, ordinaryTurns.Activity)
+            || schedulingAuthorization.Authorization is not { } authorization
+            || !ReferenceEquals(authorization.Admission, completion)
+            || authorization.TurnActivity is not null
+            || schedulingAuthorization.TryAuthorize(completion, ordinaryTurns.Activity)
+            || !ReferenceEquals(schedulingAuthorization.Authorization, authorization)
+            || sabotageCycleBoundary.TryEnter(null)
+            || sabotageCycleBoundary.TryEnter(
+                new CharacterSabotageOrdinaryTurnSchedulingAuthorization(completion, null))
+            || sabotageCycleBoundary.Boundary is not null
+            || !sabotageCycleBoundary.TryEnter(authorization)
+            || sabotageCycleBoundary.Boundary is not { } cycleBoundary
+            || !ReferenceEquals(cycleBoundary.Authorization, authorization)
+            || sabotageCycleBoundary.TryEnter(authorization)
+            || !ReferenceEquals(sabotageCycleBoundary.Boundary, cycleBoundary)
+            || !CharacterSabotageCycleStartEligibilitySmokeVerifier.Passes(
+                cycleBoundary,
+                ordinaryTurnSource.Activity)
+            || !ReferenceEquals(turnBoundary.Admission, completion)
+            || turnBoundary.TurnActivity is not null
+            || ordinaryTurns.Activity is not null
             || turnCompletion.TryComplete(
                 source.Character,
                 binding.SelectedAuthorRequest,
@@ -429,8 +462,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "its actor, author request, and canonical kind, passed only its pure exact-token "
             + "scheduling eligibility gate, and was retained as one exact ordinary-scheduling "
             + "admission, then bound once to the exact empty ordinary character-turn start "
-            + "boundary and revalidated there without clearing its route owner or starting "
-            + "another action.");
+            + "boundary, revalidated there, authorized once, and consumed only at one explicit "
+            + "sabotage-cycle boundary without reserving the slot, clearing its route owner, or "
+            + "starting another action.");
         GetTree().Quit();
     }
 
@@ -463,37 +497,4 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
         GetTree().Quit(1);
     }
 
-    private sealed class RecordingActionModel : ICharacterSabotageActionDecisionModel
-    {
-        public int CallCount { get; private set; }
-
-        public ValueTask<CharacterSabotageActionDecision> DecideAsync(
-            CharacterSabotageActionConsiderationRequest request,
-            CancellationToken cancellationToken)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            CallCount++;
-            return ValueTask.FromResult(
-                new CharacterSabotageActionDecision(
-                    request.Actor.Identity.Id,
-                    CharacterSabotageActionKind.Move));
-        }
-    }
-
-    private sealed class RecordingMoveModel : ICharacterObjectSabotageMoveDecisionModel
-    {
-        public int CallCount { get; private set; }
-
-        public ValueTask<CharacterObjectSabotageMoveDecision> DecideAsync(
-            CharacterObjectSabotageMoveConsiderationRequest request,
-            CancellationToken cancellationToken)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            CallCount++;
-            return ValueTask.FromResult(
-                new CharacterObjectSabotageMoveDecision(
-                    request.Character.Identity.Id,
-                    request.Candidates.Single().Evidence.Evidence.EvidenceId));
-        }
-    }
 }

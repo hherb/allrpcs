@@ -958,8 +958,18 @@ while the exact current `CharacterTurnActivityController` activity passes the ex
 turn-start policy; it retains that exact activity reference, including an empty slot, without
 changing the controller. `CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy` purely
 revalidates the exact admission and bound/current activity references immediately before any future
-scheduling. None of these boundaries authors, starts, observes, acknowledges, dispatches, applies,
-resets, reserves, or schedules another action, and ordinary startup remains inert.
+scheduling. `CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator` retains one fresh
+authorization only from that exact still-current boundary graph. The authorization contains only
+the exact admission and ordinary-turn references, including an exact empty slot; it does not copy
+actor, request, kind, or route output. Null, rebuilt, replaced-admission, changed-slot, active-slot,
+malformed-provenance, and repeated inputs remain inert. `CharacterSabotageCycleBoundaryCoordinator`
+consumes only that exact current authorization once at an explicit boundary and retains one fresh
+token containing the authorization itself, without copying its provenance. Null, rebuilt, stale,
+changed-slot, and repeated inputs fail closed. `CharacterSabotageCycleStartEligibilityPolicy`
+purely revalidates the exact current boundary, authorization, admission, and ordinary-turn graph
+before any future action authoring; rebuilt or active-slot graphs fail closed. None of these
+boundaries authors, starts, observes, acknowledges, dispatches, applies, resets, reserves, or
+schedules another action, and ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
