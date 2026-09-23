@@ -4,6 +4,7 @@
 
 `main` includes merged PR #340 at `9b48da6`. Branch
 `codex/phase-7-follow-up-move-cycle-admission` completes **Phase 7qw** through **Phase 7qz**. The
+implementation is committed at `8852755` and published in draft PR #341 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The recovered follow-up Move now advances through four additional explicit seams:
