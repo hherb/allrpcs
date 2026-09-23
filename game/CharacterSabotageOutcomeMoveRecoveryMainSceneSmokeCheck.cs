@@ -33,6 +33,10 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
     private CharacterSabotageOutcomeRecoveryCoordinator recovery = null!;
     private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private CharacterSabotageTurnCompletionCoordinator turnCompletion = null!;
+    private CharacterSabotageTurnAdmissionCoordinator turnAdmission = null!;
+    private CharacterSabotageOrdinaryTurnBoundaryCoordinator turnBoundary = null!;
+    private CharacterTurnActivityController ordinaryTurns = null!;
+    private TemporaryCharacterTurnSource ordinaryTurnSource = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingMoveModel moveModel = null!;
     private int processFrames;
@@ -86,6 +90,14 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             "../CharacterSabotageTerminalRouteCoordinator");
         turnCompletion = GetNode<CharacterSabotageTurnCompletionCoordinator>(
             "../CharacterSabotageTurnCompletionCoordinator");
+        turnAdmission = GetNode<CharacterSabotageTurnAdmissionCoordinator>(
+            "../CharacterSabotageTurnAdmissionCoordinator");
+        turnBoundary = GetNode<CharacterSabotageOrdinaryTurnBoundaryCoordinator>(
+            "../CharacterSabotageOrdinaryTurnBoundaryCoordinator");
+        ordinaryTurns = GetNode<CharacterTurnActivityController>(
+            "../CharacterTurnActivityController");
+        ordinaryTurnSource = GetNode<TemporaryCharacterTurnSource>(
+            "../TemporaryCharacterTurnSource");
         actionModel = new();
         moveModel = new();
         SetProcess(true);
@@ -344,6 +356,50 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             || !CharacterSabotageTurnSchedulingEligibilityPolicy.CanSchedule(
                 completion,
                 completion)
+            || turnAdmission.TryAdmit(null)
+            || turnAdmission.TryAdmit(rebuiltCompletion)
+            || turnAdmission.TryAdmit(foreignActorCompletion)
+            || turnAdmission.TryAdmit(rebuiltAuthorCompletion)
+            || turnAdmission.TryAdmit(wrongKindCompletion)
+            || turnAdmission.Admission is not null
+            || !ReferenceEquals(turnCompletion.Completion, completion)
+            || !ReferenceEquals(recovery.RecoveredPlacements, recovered)
+            || !ReferenceEquals(moveState.Placements, recovered)
+            || actionModel.CallCount != 1
+            || moveModel.CallCount != 1
+            || !turnAdmission.TryAdmit(completion)
+            || !ReferenceEquals(turnAdmission.Admission, completion)
+            || turnAdmission.TryAdmit(completion)
+            || !ReferenceEquals(turnAdmission.Admission, completion)
+            || !ReferenceEquals(turnCompletion.Completion, completion)
+            || !ReferenceEquals(recovery.RecoveredPlacements, recovered)
+            || !ReferenceEquals(moveState.Placements, recovered)
+            || actionModel.CallCount != 1
+            || moveModel.CallCount != 1
+            || turnBoundary.TryBind(null, ordinaryTurns.Activity)
+            || turnBoundary.TryBind(rebuiltCompletion, ordinaryTurns.Activity)
+            || turnBoundary.TryBind(completion, ordinaryTurnSource.Activity)
+            || turnBoundary.Admission is not null
+            || turnBoundary.TurnActivity is not null
+            || ordinaryTurns.Activity is not null
+            || !turnBoundary.TryBind(completion, ordinaryTurns.Activity)
+            || !ReferenceEquals(turnBoundary.Admission, completion)
+            || turnBoundary.TurnActivity is not null
+            || turnBoundary.TryBind(completion, ordinaryTurns.Activity)
+            || !ReferenceEquals(turnBoundary.Admission, completion)
+            || turnBoundary.TurnActivity is not null
+            || ordinaryTurns.Activity is not null
+            || CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy.CanSchedule(
+                null, completion, null, null)
+            || CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy.CanSchedule(
+                turnBoundary.Admission, rebuiltCompletion, null, null)
+            || CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy.CanSchedule(
+                turnBoundary.Admission, completion, null, ordinaryTurnSource.Activity)
+            || CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy.CanSchedule(
+                turnBoundary.Admission, completion,
+                ordinaryTurnSource.Activity, ordinaryTurnSource.Activity)
+            || !CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy.CanSchedule(
+                turnBoundary.Admission, completion, null, null)
             || turnCompletion.TryComplete(
                 source.Character,
                 binding.SelectedAuthorRequest,
@@ -370,8 +426,10 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "existing recovery transition restored that placement once while preserving "
             + "authoritative evidence and both model call counts, then the exact terminal route "
             + "was retained and explicitly reset once; one exact completed-turn token retained "
-            + "its actor, author request, and canonical kind, and passed only its pure exact-token "
-            + "scheduling eligibility gate without clearing its route owner or scheduling "
+            + "its actor, author request, and canonical kind, passed only its pure exact-token "
+            + "scheduling eligibility gate, and was retained as one exact ordinary-scheduling "
+            + "admission, then bound once to the exact empty ordinary character-turn start "
+            + "boundary and revalidated there without clearing its route owner or starting "
             + "another action.");
         GetTree().Quit();
     }
