@@ -2,65 +2,69 @@
 
 ## Current state
 
-`main` includes merged PR #328 at `03eba735`. Branch
-`codex/phase-7-sabotage-delay-recovery-route` completes **Phase 7pp** and **Phase 7pq**.
-Implementation commit `33c6608` is published in draft PR #329 targeting `main`.
+`main` includes merged PR #329 at `1739455`. Branch
+`codex/phase-7-sabotage-influence-recovery-route` completes **Phase 7pr** and **Phase 7ps**.
+Implementation commit `9391b9b` is published in draft PR #330 targeting `main`.
+The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-`CharacterSabotageOutcomeDelayRecoveryCoordinator` now accepts only the exact completed recovery
-for its own started generic Delay request after the existing resolution owner has installed the
-selected exact candidate's fresh append-only event-log and world-time snapshots. It acknowledges
-that same result once and retains the exact completed consideration, applied recovery, and snapshots
-as terminal Delay output. Rebuilt, wrong-branch, stale, unresolved, non-current, and repeated calls
-remain inert without another model call or state change.
+`CharacterSabotageOutcomeInfluenceRecoveryCoordinator` now explicitly starts only its retained
+exact generic Influence recovery request. It rechecks the acknowledged generic selection, typed
+request/result/outcome, exact inverse candidate, current influence authority, one-shot sources,
+uninitialized recovery authority, and idle task before initializing from the exact relationship or
+consuming the queued model. Rebuilt, replaced, foreign, wrong-branch, stale, occupied, and repeated
+paths remain inert and preserve the queued model.
 
-`CharacterSabotageOutcomeInfluenceRecoveryCoordinator` now composes only the retained exact generic
-Influence eligibility into the existing recovery-request owner. It rechecks the acknowledged generic
-and typed branch, exact applied outcome, inverse candidate, and current relationship authority. It
-does not initialize recovery authority, consume a model, start a task, resolve a decision, or apply
-recovery. Ordinary startup remains inert. The unrelated untracked `scripts/code_statistics.py`
-remains untouched and must stay unstaged.
+The same coordinator now accepts only that started request's exact completed selected recovery after
+the existing resolution owner installs the fresh restored relationship. It verifies the complete
+dimension order and values, exact retained reason prefix, exact appended recovery reason, candidate,
+author, request, and current typed/generic provenance; acknowledges the result once; and retains the
+exact completed consideration, applied recovery, and relationship as terminal Influence output.
+Ordinary startup remains inert.
 
 ## Validation and review
 
-- Test-first game builds failed only for the deliberately missing Phase 7pp surface and then the
-  deliberately missing Phase 7pq coordinator before each implementation was added.
-- The focused switch-gated Delay smoke passes host-local with one exact recovery applied through the
-  existing resolution owner, acknowledged once, and retained without a second model call.
-- The focused switch-gated Influence smoke passes host-local with one exact recovery request composed
-  while recovery authority, task, and model consumption remain inert.
-- Sandboxed Godot still hits the known `user://logs` permission crash; identical focused commands
-  pass host-local with Godot 4.6.3 Mono.
+- Test-first game builds failed only for the deliberately missing Phase 7pr `TryStart` surface and
+  Phase 7ps terminal route surface before each implementation was added.
+- The focused switch-gated Influence smoke passes host-local through exact generic selection, typed
+  application, recovery composition, explicit recovery start, existing resolution, one-shot generic
+  acknowledgement, and terminal exact-output retention without another model call.
+- Sandboxed Godot still hits the known `user://logs` permission crash; the identical focused command
+  passes host-local with Godot 4.6.3 Mono.
 - Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
   Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
   The sandboxed run reached the zero-warning build before VSTest hit its known loopback restriction;
   the identical host-local command passed.
-- Session review covers exact author/result/candidate provenance, branch acknowledgement, current
-  world/relationship authority, append-only Delay snapshots, one-shot acknowledgement, model
-  preservation, scene order, ordinary-startup inertness, public-surface containment, file size,
-  formatting, and whitespace. The over-500-line Delay smoke helper was extracted into a focused
-  internal model; no further defect was found after final validation.
-- Draft PR #329's five hosted jobs failed before execution with `steps: []`. No checkout, build,
+- Session review covers exact author/request/result/outcome/candidate provenance, current influence
+  and recovery authority, queued-model preservation, one-shot start/completion/acknowledgement,
+  complete restored relationship dimensions and reason history, ordinary-startup inertness, public
+  surface containment, file size, formatting, and whitespace. Review strengthened the terminal gate
+  to verify all restored dimensions and the exact prior-reason prefix; no further defect was found.
+- Draft PR #330's five hosted jobs failed before execution with `steps: []`. No checkout, build,
   test, smoke, or unsigned development export step ran, so this is Actions/account infrastructure
   state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7pr: explicitly start only the exact composed generic Influence recovery request**.
+Take **Phase 7pt: retain one exact terminal generic sabotage route result across the seven canonical
+branches without scheduling another action**.
 
 Acceptance boundary:
 
-1. Test-first extend the focused Influence route to accept only Phase 7pq's exact author and composed
-   request while its exact typed outcome, inverse candidate, and relationship authority remain current.
-2. Initialize the existing Influence-recovery authority from that request's exact relationship and
-   explicitly start only that same request through the existing candidate consideration flow.
-3. Consume one queued recovery model only after the full exact graph passes preflight; null, rebuilt,
-   replaced, foreign, wrong-branch, stale, already-started, occupied, and repeated paths must preserve
-   the queued model and leave source, recovery, request, and other branch state unchanged.
-4. Extend the switch-gated Influence proof with a pending recovery model and prove one exact explicit
-   start. Quit before decision completion, resolution, acknowledgement, or recovery application.
-5. Ordinary startup and all earlier branch proofs must remain unchanged.
-6. Do not schedule sabotage, persist state, or add provider transport, credentials, UI/input, timing,
-   navigation, movement, perception, dialogue delivery, or new Domain behavior.
-7. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to bind the completed exact Influence recovery back to its generic author route.
+1. Test-first add one scene-owned one-shot terminal coordinator that accepts only the exact selected
+   generic author request and canonical action kind after that branch's existing route owner exposes
+   its final exact output.
+2. Support the canonical order `Conceal`, `Move`, `Substitute`, `Contaminate`, `Misquote`, `Delay`,
+   `Influence`; require exactly one branch output and retain it by exact reference without copying or
+   introducing a common value-shaped replacement.
+3. Reject null, rebuilt, replaced, foreign, wrong-kind, incomplete, stale, multiple-branch, and
+   repeated inputs without clearing or changing any branch owner, authoritative state, presentation,
+   task, model source, or retained terminal output.
+4. Extend only focused switch-gated proofs. Ordinary startup must remain inert; do not reset prior
+   owners, schedule another sabotage action, or create a loop/cadence.
+5. Do not add provider transport, credentials, persistence, UI/input, timing, navigation, movement,
+   perception, dialogue delivery, new Domain behavior, or a claim that ordinary enemy-agent
+   sabotage is now enabled.
+6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
+   slice to define an explicit one-shot reset boundary for a fully retained terminal route before
+   any ordinary scheduling is considered.

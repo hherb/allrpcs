@@ -681,6 +681,11 @@ Current continuation:
   once and retain its exact terminal output.
 - [x] Compose one exact eligible generic Influence outcome into its existing recovery request while
   retaining the exact current relationship and inverse recovery candidate without starting work.
+- [x] Explicitly start only that exact composed Influence-recovery request after complete preflight,
+  preserving its queued recovery model across rejected paths and leaving completion unapplied.
+- [x] Bind one exact completed generic Influence recovery back to its author route only after the
+  existing resolution owner installs the fresh restored relationship, then acknowledge it once and
+  retain its exact terminal output.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

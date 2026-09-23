@@ -921,12 +921,16 @@ without consuming evidence. Delay composes and explicitly starts only its exact 
 then accepts only that request's exact selected recovery after the existing resolution owner has
 installed fresh append-only event-log and world-time snapshots. It acknowledges that result once and
 retains the exact completed consideration, applied recovery, and fresh snapshots as terminal generic
-Delay output. Influence delegates only request construction once with the exact current relationship
-and existing inverse recovery candidate; it does not initialize recovery authority or start work.
-Rejected calls cannot consume another model. Null, rebuilt, stale, replaced, foreign, wrong-branch,
-ineligible, non-current, unresolved, and repeated calls remain inert. No coordinator defines a new
-recovery rule or routes Influence beyond request composition. Separate switch-gated main-scene
-smokes carry every branch while ordinary startup remains inert.
+Delay output. Influence likewise composes and explicitly starts only its exact request after complete
+preflight, initializes recovery authority from the exact current relationship, and consumes the
+queued model only after every generic and typed provenance token remains current. It then accepts
+only that request's exact selected recovery after the existing resolution owner has installed the
+fresh restored relationship, acknowledges the result once, and retains the exact completed
+consideration, applied recovery, and relationship as terminal generic Influence output. Rejected
+calls cannot consume another model. Null, rebuilt, stale, replaced, foreign, wrong-branch,
+ineligible, non-current, unresolved, occupied, and repeated calls remain inert. Neither coordinator
+defines a new recovery rule. Separate switch-gated main-scene smokes carry every branch while
+ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
