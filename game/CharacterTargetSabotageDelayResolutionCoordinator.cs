@@ -14,6 +14,14 @@ public partial class CharacterTargetSabotageDelayResolutionCoordinator : Node
     private CharacterTargetSabotageDelayController state = null!;
     private CharacterTargetSabotageDelayTaskController task = null!;
 
+    internal CharacterTargetSabotageDelayConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal CharacterTargetSabotageDelayResult? AcknowledgedAppliedResult { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -79,6 +87,8 @@ public partial class CharacterTargetSabotageDelayResolutionCoordinator : Node
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedAppliedResult = resolvedAppliedResult;
         observedResult = null;
         resolvedEventLog = null;
         resolvedWorldTime = null;

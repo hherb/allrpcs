@@ -29,6 +29,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
     private CharacterObjectSabotageConcealmentTaskController concealmentTask = null!;
     private CharacterSabotageActionSpecificRequestStartCoordinator actionSpecificStart = null!;
     private CharacterSabotageActionSpecificResultCoordinator actionSpecificResult = null!;
+    private CharacterSabotageActionSpecificOutcomeCoordinator actionSpecificOutcome = null!;
     private WorldObjectConcealmentSnapshot initialConcealment = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
     private RecordingModel model = null!;
@@ -75,10 +76,15 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             "../CharacterSabotageActionSpecificRequestStartCoordinator");
         actionSpecificResult = GetNode<CharacterSabotageActionSpecificResultCoordinator>(
             "../CharacterSabotageActionSpecificResultCoordinator");
+        actionSpecificOutcome = GetNode<CharacterSabotageActionSpecificOutcomeCoordinator>(
+            "../CharacterSabotageActionSpecificOutcomeCoordinator");
         initialConcealment = concealmentState.Concealment!;
         initialEvidence = concealmentState.Evidence!;
         model = new(value => new(value.Actor.Identity.Id, CharacterSabotageActionKind.Conceal));
-        concealmentModel = new(value => new(value.Character.Identity.Id, null));
+        concealmentModel = new(
+            value => new(
+                value.Character.Identity.Id,
+                value.Candidates.Single().Evidence.EvidenceId));
         SetProcess(true);
     }
 
@@ -107,7 +113,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
 
         if (stage == 2)
         {
-            ObserveActionSpecificAbstention();
+            ObserveActionSpecificSelection();
             return;
         }
 
@@ -128,10 +134,12 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             && concealmentTask.Result is null
             && actionSpecificStart.StartedAuthorRequest is null
             && actionSpecificResult.ResultCount == 0
+            && actionSpecificOutcome.OutcomeCount == 0
             && !actionSpecificRequests.TryCompose(null, null)
             && !actionSpecificStart.TryStart()
             && !actionSpecificResult.TryObserveCompletedResult()
             && !actionSpecificResult.TryAcknowledgeCompletedResult()
+            && !actionSpecificOutcome.TryBindAcknowledgedOutcome()
             && StateIsUnchanged();
         bool authored = concealmentAuthor.TryCreate(
             source.Character,
@@ -245,7 +253,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
         stage = 2;
     }
 
-    private void ObserveActionSpecificAbstention()
+    private void ObserveActionSpecificSelection()
     {
         if (concealmentTask.Status == CharacterObjectSabotageConcealmentTaskStatus.Running)
         {
@@ -257,7 +265,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
         if (concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
             || concealmentTask.Result is not { } result
             || !ReferenceEquals(result.Request, request)
-            || result.SelectedCandidate is not null
+            || !ReferenceEquals(result.SelectedCandidate, source.Candidate)
             || concealmentModel.CallCount != 1
             || !ReferenceEquals(concealmentModel.Request, request)
             || !ReferenceEquals(
@@ -268,6 +276,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             || !ReferenceEquals(actionSpecificResult.ConcealmentResult, result)
             || actionSpecificResult.ResultCount != 1
             || actionSpecificResult.TryObserveCompletedResult()
+            || actionSpecificOutcome.TryBindAcknowledgedOutcome()
             || !actionSpecificResult.TryAcknowledgeCompletedResult()
             || concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
             || concealmentTask.Result is not null
@@ -275,9 +284,28 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
                 actionSpecificResult.AcknowledgedAuthorRequest,
                 binding.SelectedAuthorRequest)
             || actionSpecificResult.TryAcknowledgeCompletedResult()
-            || !StateIsUnchanged())
+            || !actionSpecificOutcome.TryBindAcknowledgedOutcome()
+            || !ReferenceEquals(
+                actionSpecificOutcome.AuthorRequest,
+                binding.SelectedAuthorRequest)
+            || !ReferenceEquals(actionSpecificOutcome.Concealment, concealmentState.Concealment)
+            || !ReferenceEquals(
+                actionSpecificOutcome.ConcealmentEvidence,
+                concealmentState.Evidence)
+            || actionSpecificOutcome.OutcomeCount != 1
+            || actionSpecificOutcome.Placements is not null
+            || actionSpecificOutcome.MoveEvidence is not null
+            || actionSpecificOutcome.Substitutions is not null
+            || actionSpecificOutcome.SubstitutionEvidence is not null
+            || actionSpecificOutcome.Contamination is not null
+            || actionSpecificOutcome.ContaminationEvidence is not null
+            || actionSpecificOutcome.MisquotationExposure is not null
+            || actionSpecificOutcome.Delay is not null
+            || actionSpecificOutcome.Influence is not null
+            || actionSpecificOutcome.TryBindAcknowledgedOutcome()
+            || StateIsUnchanged())
         {
-            Fail("Main-scene exact action-specific start did not preserve abstaining state.");
+            Fail("Main-scene exact selected action did not retain its current typed outcome.");
             return;
         }
 
@@ -285,8 +313,8 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             "Main-scene composed sabotage-action request smoke passed: ordinary startup stayed "
             + "inert; one exact live conceal request completed, was observed, bound to its exact "
             + "author output, acknowledged, composed into one exact concealment request, and "
-            + "started once through an explicit abstaining model, observed, and acknowledged "
-            + "without sabotage application or authoritative-state mutation.");
+            + "started once through an explicit selecting model, applied, presented, observed, "
+            + "acknowledged, and bound to its exact current typed authoritative outcome.");
         GetTree().Quit();
     }
 

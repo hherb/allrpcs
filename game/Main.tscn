@@ -295,6 +295,7 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestStartCoordinator.cs" id="294_sabotage_action_specific_start"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificResultCoordinator.cs" id="295_sabotage_action_specific_result"]
+[ext_resource type="Script" path="res://CharacterSabotageActionSpecificOutcomeCoordinator.cs" id="296_sabotage_action_specific_outcome"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -743,6 +744,9 @@ script = ExtResource("294_sabotage_action_specific_start")
 
 [node name="CharacterSabotageActionSpecificResultCoordinator" type="Node" parent="."]
 script = ExtResource("295_sabotage_action_specific_result")
+
+[node name="CharacterSabotageActionSpecificOutcomeCoordinator" type="Node" parent="."]
+script = ExtResource("296_sabotage_action_specific_outcome")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

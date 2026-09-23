@@ -882,8 +882,19 @@ It retains one of seven strongly typed results and explicitly acknowledges that 
 the existing concealment, move, substitution, contamination, misquotation, delay, or influence
 result owner, preserving each owner's current-state and presentation/resolution checks. Ordinary
 startup remains inert. The switch-gated main-scene smoke drives one live conceal selection through
-generic acknowledgement, exact request composition, an explicit abstaining action-specific start,
-typed observation, and acknowledgement without applying sabotage or mutating authoritative state.
+generic acknowledgement, exact request composition, an explicit selecting action-specific start,
+typed application, presentation, observation, and acknowledgement.
+
+`CharacterSabotageActionSpecificOutcomeCoordinator` accepts only that acknowledged selected result
+while its exact generic author request, strongly typed candidate binding, action-specific request,
+and existing branch-owned post-action authority remain current. It retains only one typed outcome:
+the exact object-state and evidence snapshots for concealment, movement, substitution, or
+contamination; the exact current exposure for misquotation; or the existing exact applied delay or
+influence result. Abstention, unavailable, pre-acknowledgement, stale, replaced, foreign,
+wrong-kind, null, repeated, and non-current-authority paths remain inert. The coordinator performs
+no transition, model access, recovery consideration, evidence removal, scheduling, or persistence.
+The switch-gated main-scene smoke proves one exact selected concealment outcome while ordinary
+startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

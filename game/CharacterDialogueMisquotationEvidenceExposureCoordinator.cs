@@ -12,6 +12,18 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinator : 
     private CharacterDialogueMisquotationEvidenceTaskController task = null!;
     private CharacterDialogueMisquotationEvidenceViewController view = null!;
 
+    internal CharacterDialogueMisquotationEvidenceConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal CharacterDialogueMisquotationEvidenceExposureSnapshot? AcknowledgedExposure
+    {
+        get;
+        private set;
+    }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -84,6 +96,8 @@ public partial class CharacterDialogueMisquotationEvidenceExposureCoordinator : 
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedExposure = resolvedExposure;
         observedResult = null;
         resolvedExposure = null;
         return true;
