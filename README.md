@@ -950,8 +950,16 @@ reset request's exact actor, generic author request, and canonical action kind w
 route output. Null, pre-reset, rebuilt, foreign-actor, wrong-kind, stale-owner, multiple-branch, and
 repeated inputs remain inert. `CharacterSabotageTurnSchedulingEligibilityPolicy` is a pure gate
 that accepts only the coordinator's exact current token with coherent exact-reference provenance.
-Neither boundary schedules, authors, starts, or resets another action, and ordinary startup remains
-inert.
+`CharacterSabotageTurnAdmissionCoordinator` retains that same exact current token once after the
+gate accepts it, without copying its actor, request, kind, or route output. Null, rebuilt,
+malformed-provenance, replaced, and repeated tokens leave the admission and every prior owner
+unchanged. `CharacterSabotageOrdinaryTurnBoundaryCoordinator` binds the exact admission once only
+while the exact current `CharacterTurnActivityController` activity passes the existing ordinary
+turn-start policy; it retains that exact activity reference, including an empty slot, without
+changing the controller. `CharacterSabotageOrdinaryTurnBoundaryEligibilityPolicy` purely
+revalidates the exact admission and bound/current activity references immediately before any future
+scheduling. None of these boundaries authors, starts, observes, acknowledges, dispatches, applies,
+resets, reserves, or schedules another action, and ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

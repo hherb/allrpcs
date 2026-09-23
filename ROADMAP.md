@@ -694,6 +694,12 @@ Current continuation:
   actor, generic author request, and canonical action kind without copying route output.
 - [x] Define a pure ordinary-scheduling eligibility gate for only that exact current completed-turn
   token without scheduling or authoring another action.
+- [x] Retain one exact ordinary-scheduling admission for the eligible completed-turn token without
+  copying its provenance or starting another sabotage action.
+- [x] Bind that exact admission once to the existing ordinary character-turn start boundary without
+  creating a turn request, reserving the slot, or starting the sabotage flow.
+- [x] Purely revalidate the exact bound admission against the still-current ordinary turn reference
+  before any future scheduling without mutating either owner.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
