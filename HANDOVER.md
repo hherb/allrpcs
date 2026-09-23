@@ -4,7 +4,8 @@
 
 `main` includes merged PR #338 at `5397400`. Branch
 `codex/phase-7-sabotage-action-move-recovery-candidate` completes **Phase 7qn**, **Phase 7qo**, and
-**Phase 7qp**. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
+**Phase 7qp**. The implementation is committed at `f4efd20` and published in draft PR #339 targeting
+`main`. The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
 unstaged.
 
 The acknowledged typed follow-up Move route now owns three explicit, dependency-ordered seams:
@@ -40,6 +41,9 @@ follow-up models are called once.
   revalidation, policy delegation, compare-and-swap recovery, evidence preservation, rejected and
   repeated paths, model call counts, inert startup, docstrings, file/line limits, formatting, and
   whitespace. No unresolved findings remain.
+- Draft PR #339's five hosted jobs for head `f4efd20` failed before execution with `steps: []` in
+  run `35872538691`. No checkout, build, test, smoke, or unsigned development export step ran, so
+  this is Actions/account infrastructure state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
