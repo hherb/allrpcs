@@ -660,6 +660,10 @@ Current continuation:
   request through its existing action-specific result owner.
 - [x] Bind one acknowledged selected typed result to its exact current branch-owned authoritative
   outcome without starting recovery, consuming a model, or rebuilding any value.
+- [x] Gate one retained exact typed sabotage outcome for its existing recovery or evidence route
+  while preserving branch acknowledgement and current-authority reference identity.
+- [x] Route one exact eligible concealment outcome through its existing evidence-gated recovery
+  transition without adding a new recovery rule or consuming another model.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

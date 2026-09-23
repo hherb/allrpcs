@@ -1,4 +1,4 @@
-[gd_scene load_steps=239 format=3]
+[gd_scene load_steps=241 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -296,6 +296,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestStartCoordinator.cs" id="294_sabotage_action_specific_start"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificResultCoordinator.cs" id="295_sabotage_action_specific_result"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificOutcomeCoordinator.cs" id="296_sabotage_action_specific_outcome"]
+[ext_resource type="Script" path="res://CharacterSabotageOutcomeEligibilityCoordinator.cs" id="297_sabotage_outcome_eligibility"]
+[ext_resource type="Script" path="res://CharacterSabotageOutcomeRecoveryCoordinator.cs" id="298_sabotage_outcome_recovery"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -747,6 +749,12 @@ script = ExtResource("295_sabotage_action_specific_result")
 
 [node name="CharacterSabotageActionSpecificOutcomeCoordinator" type="Node" parent="."]
 script = ExtResource("296_sabotage_action_specific_outcome")
+
+[node name="CharacterSabotageOutcomeEligibilityCoordinator" type="Node" parent="."]
+script = ExtResource("297_sabotage_outcome_eligibility")
+
+[node name="CharacterSabotageOutcomeRecoveryCoordinator" type="Node" parent="."]
+script = ExtResource("298_sabotage_outcome_recovery")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")
