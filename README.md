@@ -943,6 +943,16 @@ state, presentation, task, model source, or prior output, and it does not schedu
 action. The existing switch-gated route smokes prove all seven terminal bindings while ordinary
 startup remains inert.
 
+`CharacterSabotageTurnCompletionCoordinator` exposes one scene-owned completed-turn token only
+after that exact terminal route has been reset, its retained output has been cleared, and exactly
+one matching branch owner still retains its current authoritative result. The token retains the
+reset request's exact actor, generic author request, and canonical action kind without copying the
+route output. Null, pre-reset, rebuilt, foreign-actor, wrong-kind, stale-owner, multiple-branch, and
+repeated inputs remain inert. `CharacterSabotageTurnSchedulingEligibilityPolicy` is a pure gate
+that accepts only the coordinator's exact current token with coherent exact-reference provenance.
+Neither boundary schedules, authors, starts, or resets another action, and ordinary startup remains
+inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
