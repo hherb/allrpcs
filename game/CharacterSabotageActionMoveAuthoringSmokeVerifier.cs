@@ -31,6 +31,10 @@ internal static class CharacterSabotageActionMoveAuthoringSmokeVerifier
                 admissions,
                 boundary,
                 source,
+                state)
+            && CharacterSabotageActionMoveCompositionSmokeVerifier.PassesMainScene(
+                scene,
+                source,
                 state);
     }
 

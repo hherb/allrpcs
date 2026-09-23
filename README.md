@@ -985,6 +985,24 @@ malformed, stale, and repeated admission paths remain inert. This seam does not 
 generic consideration request, reserve the ordinary turn, consume a model, clear prior ownership,
 or enable automatic sabotage; ordinary startup remains inert.
 
+`CharacterSabotageActionMoveCompositionCoordinator` accepts only that guarded author's exact
+current output while its admission, typed Move candidate binding, cycle boundary, authorization,
+completed-turn admission, and empty ordinary-turn slot remain current. It retains the exact
+admission and guarded author request, then produces one fresh generic request containing the exact
+actor and only canonical `Move`. Null, rebuilt-request, foreign-actor, wrong-kind, replaced-binding,
+stale-graph, and repeated paths remain inert. It does not start consideration, consume or supply a
+model, reset either author, reserve the ordinary turn, clear prior provenance, or enable automatic
+sabotage; ordinary startup remains inert.
+
+`CharacterSabotageActionMoveCompositionStartCoordinator` explicitly starts only that composition
+coordinator's exact fresh request while its complete retained graph remains current. It uses a
+fresh scene-owned task and one-shot model source, preserving the queued model across null, original
+author-output, rebuilt-request, stale-graph, and other rejected preflight failures. A successful
+start retains the exact request and consumes the queued model once without observing or
+acknowledging the result, selecting or dispatching an action, resetting either author, reserving the
+ordinary turn, clearing prior provenance, or enabling automatic cadence. Ordinary startup remains
+inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

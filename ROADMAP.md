@@ -710,6 +710,10 @@ Current continuation:
   copying provenance or invoking any action-specific author.
 - [x] Let only that exact admission guard one fresh invocation of the existing Move author without
   resetting prior ownership, composing a request, or consuming another model.
+- [x] Compose only that exact admission-guarded Move author output into one fresh generic Move
+  request without starting consideration, resetting either author, or consuming a model.
+- [x] Explicitly start only that exact fresh generic Move request on a fresh scene-owned task while
+  preserving the queued model across rejected preflight and leaving completion unobserved.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

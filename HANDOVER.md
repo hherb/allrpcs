@@ -2,86 +2,84 @@
 
 ## Current state
 
-`main` includes merged PR #334 at `e26a6df`. Branch
-`codex/phase-7-sabotage-action-authoring-admission` completes **Phase 7qd** and
-**Phase 7qe**. Implementation commit `3812772` is published in draft PR #335
+`main` includes merged PR #335 at `f4eedce`. Branch
+`codex/phase-7-sabotage-action-authoring-composition` completes **Phase 7qf** and
+**Phase 7qg**. Implementation commit `344edbe` is published in draft PR #336
 targeting `main`. The unrelated untracked `scripts/code_statistics.py` remains
 untouched and must stay unstaged.
 
-`CharacterSabotageActionAuthoringAdmissionCoordinator` admits the exact current
-sabotage-cycle boundary once only after revalidating its authorization,
-completed-turn admission, and empty ordinary-turn slot. Its fresh token contains
-only that boundary and exposes the actor by following retained provenance rather
-than copying identity.
+`CharacterSabotageActionMoveCompositionCoordinator` accepts only the exact
+admission-guarded follow-up Move author output while its typed candidate binding,
+cycle boundary, authorization, completed-turn admission, and empty ordinary-turn
+slot remain current. It retains the exact admission and guarded author request,
+then creates one fresh generic request containing the exact actor and only
+canonical `Move`.
 
-`CharacterSabotageActionMoveAuthoringCoordinator` accepts only that exact current
-admission and invokes a fresh instance of the existing Move author once. The
-temporary Move source supplies a follow-up candidate with a distinct evidence ID,
-so the existing author can use the recovered placement and retained first-cycle
-evidence without resetting any prior owner. The coordinator retains the exact
-admission and exact authored request; the author retains the exact typed candidate
-binding.
+`CharacterSabotageActionMoveCompositionStartCoordinator` explicitly starts only
+that exact fresh request on a fresh scene-owned generic sabotage task. Rejected
+null, source-author, rebuilt, stale-graph, occupied-task, and repeated preflight
+paths do not consume the queued one-shot model. A successful start retains the
+exact request and calls the fresh model once.
 
-Null, rebuilt, malformed, changed-slot, active-slot, stale, and repeated paths
-remain inert. The completed route, recovery output, first-cycle author, scheduling
-graph, ordinary turn, authoritative placement/evidence, tasks, and both model call
-counts remain unchanged. Nothing composes or starts another generic consideration,
-reserves a turn, clears an owner, or enables automatic enemy-agent sabotage.
-Ordinary startup remains inert.
+The new request is not observed, acknowledged, selected, bound to its typed Move
+candidate, dispatched, applied, or reset. Neither author is reset, the ordinary
+turn remains empty, all first-cycle owners and authoritative placement/evidence
+remain unchanged, and ordinary startup remains inert. No cadence, timer,
+provider, credential, persistence, UI/input, navigation, movement, perception,
+dialogue, or new Domain behavior was added.
 
 ## Validation and review
 
-- Each slice was test-first: the focused game build initially failed only for the
-  deliberately missing Phase 7qd and Phase 7qe coordinators/verifiers.
-- The focused switch-gated Move proof passes host-local through exact recovery,
-  terminal reset, completion, scheduling admission, empty ordinary-turn binding,
-  authorization, explicit cycle boundary, action-authoring admission, and one
-  guarded follow-up Move author output. Rejected graphs remain inert and neither
-  model is called again.
-- The changed temporary Move-source and Move-author smokes pass independently.
+- Both slices were test-first. The focused game build failed only for each
+  deliberately missing coordinator before its implementation was added.
+- The focused switch-gated Move route passes host-local through exact recovery,
+  terminal reset, completion, scheduling admission, authorization, cycle and
+  authoring boundaries, guarded follow-up authoring, fresh composition, and one
+  explicit fresh-task start. The new model is called once; its result remains
+  unobserved and the first-cycle model counts remain unchanged.
 - Sandboxed Godot still cannot open `user://logs`, and sandboxed VSTest still
   cannot bind its local communication socket. Identical host-local commands pass
   with Godot 4.6.3 Mono and .NET 8.
-- Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning
-  build, 2,731 Domain tests, 586 Application tests, 1,220 Infrastructure tests,
-  all 8 architecture tests, scenario validation, every credential-free Godot
-  smoke, and the Compatibility renderer launch.
-- Session review covered exact-reference provenance, one-shot behavior, fresh
-  evidence, unchanged prior owners and authoritative state, model-call counts,
-  dependency order, inert startup, docstrings, 120-character limits, the 500-line
-  focused smoke, formatting, and whitespace. Review removed a new tautological
-  source assertion, added nullable verifier preflight, and verified the guarded
-  author's exact typed binding before retaining output.
-- Draft PR #335's initial five hosted jobs failed before execution with
+- Final host-local `./scripts/quality.sh` passes restore, formatting, a
+  zero-warning build, 2,731 Domain tests, 586 Application tests, 1,220
+  Infrastructure tests, all 8 architecture tests, scenario validation, every
+  credential-free Godot smoke, and the Compatibility renderer launch.
+- Session review covered exact-reference provenance, full graph revalidation,
+  one-shot behavior, rejected-preflight model preservation, fresh task isolation,
+  unchanged prior owners and authoritative state, inert startup, docstrings,
+  120-character limits, the 500-line focused smoke, formatting, and whitespace.
+  Review corrected an overbroad README coverage claim and restored the focused
+  smoke to the 500-line limit. No unresolved code-review findings remain.
+- Draft PR #336's initial five hosted jobs failed before execution with
   `steps: []`. No checkout, build, test, smoke, or unsigned development export
   step ran, so this is Actions/account infrastructure state rather than hosted
   product-test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7qf: compose the exact admission-guarded Move author output into one
-fresh generic sabotage request without starting consideration**.
+Take **Phase 7qh: observe one exact completed fresh generic Move result without
+acknowledging or dispatching it**.
 
 Acceptance boundary:
 
-1. Test-first add one scene-owned, one-shot composition seam that accepts only
-   `CharacterSabotageActionMoveAuthoringCoordinator.AuthorRequest` while that
-   coordinator's exact admission, scheduled Move author request, typed candidate
-   binding, cycle boundary, authorization, completion, and empty ordinary-turn
-   graph all remain current.
-2. Produce one fresh `CharacterSabotageActionConsiderationRequest` containing the
-   exact admitted actor and only canonical `Move`. Retain the exact guarded source
-   request and admission; do not rebuild or copy the candidate, evidence,
-   placement, actor, completion, boundary, or authorization.
-3. Reject null, rebuilt-request, rebuilt-admission, replaced-binding, foreign-actor,
-   wrong-kind, changed-slot, active-slot, stale, and repeated inputs without
-   changing either author, any prior owner, authoritative state, task, result,
-   model source, or model count.
-4. Extend only the focused switch-gated Move proof. Ordinary startup must remain
-   inert; do not start consideration, supply or consume a model, select an action,
-   reset either author, reserve the ordinary turn, or clear prior provenance.
-5. Do not add cadence, timers, provider transport, credentials, persistence,
-   UI/input, navigation, movement, perception, dialogue delivery, new Domain
-   behavior, or a claim that ordinary enemy-agent sabotage is enabled.
+1. Test-first add one scene-owned, one-shot observation seam for the scheduled
+   generic task. It must accept only `StartedRequest` from
+   `CharacterSabotageActionMoveCompositionStartCoordinator` after that exact task
+   reaches `Completed` and its result retains the same exact request.
+2. Revalidate the complete current composition/start graph before retaining the
+   exact completed result. The selected result must retain the exact admitted
+   actor and canonical `Move`; do not rebuild its request, decision, actor, kind,
+   admission, candidate binding, boundary, authorization, or completion.
+3. Reject null, running, failed, cancelled, rebuilt-result, rebuilt-request,
+   foreign-actor, wrong-kind, stale-graph, replaced-task, and repeated paths
+   without consuming another model or changing any prior owner or state.
+4. Extend only the focused switch-gated Move proof. Do not acknowledge or reset
+   the scheduled task, bind the selected typed candidate, compose or start the
+   action-specific Move request, apply another move, reserve the ordinary turn,
+   clear provenance, or add automatic scheduling.
+5. Keep ordinary startup inert and preserve all existing exclusions: no cadence,
+   timers, provider transport, credentials, persistence, UI/input, navigation,
+   movement, perception, dialogue delivery, or new Domain behavior.
 6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and
-   leave the next slice to start only that exact fresh composed request explicitly.
+   leave the following slice to acknowledge and bind only that exact observed
+   result to the retained follow-up Move candidate.
