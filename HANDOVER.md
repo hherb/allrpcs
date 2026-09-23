@@ -4,9 +4,9 @@
 
 `main` includes merged PR #335 at `f4eedce`. Branch
 `codex/phase-7-sabotage-action-authoring-composition` completes **Phase 7qf** and
-**Phase 7qg**. Publication details are recorded below after the draft PR is opened.
-The unrelated untracked `scripts/code_statistics.py` remains untouched and must
-stay unstaged.
+**Phase 7qg**. Implementation commit `344edbe` is published in draft PR #336
+targeting `main`. The unrelated untracked `scripts/code_statistics.py` remains
+untouched and must stay unstaged.
 
 `CharacterSabotageActionMoveCompositionCoordinator` accepts only the exact
 admission-guarded follow-up Move author output while its typed candidate binding,
@@ -50,6 +50,10 @@ dialogue, or new Domain behavior was added.
   120-character limits, the 500-line focused smoke, formatting, and whitespace.
   Review corrected an overbroad README coverage claim and restored the focused
   smoke to the 500-line limit. No unresolved code-review findings remain.
+- Draft PR #336's initial five hosted jobs failed before execution with
+  `steps: []`. No checkout, build, test, smoke, or unsigned development export
+  step ran, so this is Actions/account infrastructure state rather than hosted
+  product-test evidence.
 
 ## Exact next bounded slice
 
