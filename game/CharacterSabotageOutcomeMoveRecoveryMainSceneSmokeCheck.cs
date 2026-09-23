@@ -452,21 +452,16 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
         }
 
         GD.Print(
-            "Main-scene sabotage outcome move recovery smoke passed: ordinary startup stayed "
-            + "inert; one exact live move selection retained its author, typed candidate, "
-            + "acknowledgement, outcome, evidence-view, and source-placement tokens; and the "
-            + "existing recovery transition restored that placement once while preserving "
-            + "authoritative evidence and both model call counts, then the exact terminal route "
-            + "was retained and explicitly reset once; one exact completed-turn token retained "
-            + "its actor, author request, and canonical kind, passed only its pure exact-token "
-            + "scheduling eligibility gate, and was retained as one exact ordinary-scheduling "
-            + "admission, then bound once to the exact empty ordinary character-turn start "
-            + "boundary, revalidated there, authorized once, and consumed only at one explicit "
-            + "sabotage-cycle boundary; that exact boundary was admitted once at the first "
-            + "action-authoring seam, then guarded one fresh exact follow-up Move author output "
-            + "and composed it once into a fresh exact generic Move request, then explicitly "
-            + "started only that request on a fresh task without observing its result, reserving "
-            + "the slot, clearing a prior owner, or enabling automatic sabotage.");
+            "Main-scene sabotage outcome move recovery smoke passed: ordinary startup stayed inert; "
+            + "one exact first-cycle Move retained its author, candidate, acknowledgement, outcome, "
+            + "evidence view, and source placement through recovery without extra model calls; the "
+            + "exact terminal route reset once; one exact completed-turn token passed its pure "
+            + "scheduling gate, ordinary admission, empty turn boundary, authorization, and explicit "
+            + "cycle boundary; that boundary admitted one guarded follow-up Move author output and "
+            + "composed one fresh generic request; only that request started, its exact completed "
+            + "result was observed, bound to the follow-up candidate, and acknowledged; one fresh "
+            + "typed Move request then retained current authority and started on a separate fresh "
+            + "task without reserving the slot, clearing prior owners, or enabling automatic sabotage.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

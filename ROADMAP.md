@@ -714,6 +714,14 @@ Current continuation:
   request without starting consideration, resetting either author, or consuming a model.
 - [x] Explicitly start only that exact fresh generic Move request on a fresh scene-owned task while
   preserving the queued model across rejected preflight and leaving completion unobserved.
+- [x] Observe only that exact completed fresh generic Move result after revalidating its complete
+  retained graph, without acknowledging, dispatching, or applying it.
+- [x] Bind the exact observed fresh result to the guarded follow-up Move candidate, then acknowledge
+  only that same bound result while retaining both exact downstream tokens.
+- [x] Compose those exact acknowledged tokens into one fresh provider-neutral typed Move request
+  over the current authoritative placement and evidence snapshots without starting it.
+- [x] Explicitly start only that exact fresh typed Move request on a separate fresh scene-owned task
+  while preserving its queued model across rejected preflight and leaving completion unobserved.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
