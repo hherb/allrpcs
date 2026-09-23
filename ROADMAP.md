@@ -732,6 +732,18 @@ Current continuation:
   accepted by the existing recovery policy without invoking recovery.
 - [x] Recover only that exact published follow-up Move pair through the existing stale-safe state
   owner, retaining the fresh restored placements and authoritative evidence without routing it.
+- [x] Retain that exact recovered follow-up Move as a distinct terminal route without copying its
+  placement output, resetting the route, or completing the sabotage turn.
+- [x] Reset only that exact retained follow-up terminal route once while preserving its recovery
+  owner, authoritative snapshots, prior provenance, and both one-shot model sources.
+- [x] Expose one exact completed follow-up sabotage-turn token after route reset without copying the
+  recovered placement, admitting ordinary scheduling, or reserving the turn slot.
+- [x] Reuse the pure ordinary-scheduling gate for only that exact current follow-up completion token
+  without mutating its route, recovery owner, or ordinary turn.
+- [x] Retain one exact ordinary-scheduling admission for the eligible follow-up completion without
+  copying its provenance, authorizing scheduling, or starting another sabotage cycle.
+- [x] Bind that exact follow-up admission once to the existing empty ordinary-turn start boundary
+  without reserving the slot, authorizing scheduling, or invoking another model.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

@@ -1036,8 +1036,19 @@ explicitly supplied evidence view accepted by the existing recovery policy. The 
 delegates only that exact pair to the existing stale-safe Move controller, retains the fresh restored
 placement snapshot, and preserves authoritative evidence. Missing or ambiguous source placement,
 null, rebuilt, foreign, unseen-evidence, stale, and repeated paths remain inert. These seams do not
-publish a terminal route, complete or admit a turn, reset either author, reserve the ordinary turn,
-start another cycle, invoke another model, or add automatic startup behavior.
+reset either author, reserve the ordinary turn, start another cycle, invoke another model, or add
+automatic startup behavior.
+
+The recovered follow-up Move can then retain one exact second-cycle terminal route from only the
+guarded author request, canonical Move kind, and fresh recovered placement while that complete graph
+remains current. An explicit reset clears only those retained route references once and records the
+exact author/kind provenance without changing the recovery owner or authoritative state. A separate
+completion owner exposes one fresh `CharacterSabotageTurnCompletion` for only that exact reset route.
+The existing pure scheduling gate admits only its exact current token, a distinct one-shot admission
+owner retains that token, and a distinct ordinary-turn boundary binds it only while the exact current
+turn slot remains empty. Null, rebuilt, foreign-actor, wrong-kind, replaced-placement, stale,
+active-slot, and repeated paths remain inert. These seams do not reserve the slot, authorize scheduling,
+start another cycle, clear prior owners, consume another model, or enable automatic sabotage.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

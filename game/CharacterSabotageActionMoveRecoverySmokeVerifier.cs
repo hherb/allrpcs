@@ -57,6 +57,12 @@ internal static class CharacterSabotageActionMoveRecoverySmokeVerifier
             return false;
         }
 
-        return true;
+        return CharacterSabotageActionMoveTerminalRouteSmokeVerifier.PassesMainScene(
+            scene,
+            state,
+            recovered,
+            evidence,
+            model,
+            actionModel);
     }
 }
