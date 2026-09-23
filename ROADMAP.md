@@ -668,6 +668,10 @@ Current continuation:
   while retaining its exact source placement and consuming no additional model.
 - [x] Route one exact eligible substitution outcome through its existing evidence-gated recovery
   transition without rebuilding its candidate or consuming another model.
+- [x] Route one exact eligible contamination outcome through its existing evidence-gated recovery
+  transition while preserving authoritative evidence and consuming no additional model.
+- [x] Route one exact eligible misquotation exposure through its current witness view and existing
+  truth-neutral presentation route without consuming evidence or another model.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
