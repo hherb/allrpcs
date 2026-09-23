@@ -4,6 +4,7 @@
 
 `main` includes merged PR #331 at `a2b1826`. Branch
 `codex/phase-7-sabotage-turn-completion` completes **Phase 7pv** and **Phase 7pw**.
+Implementation commit `e94350c` is published in draft PR #332 targeting `main`.
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 `CharacterSabotageTurnCompletionCoordinator` accepts only the terminal coordinator's exact reset
@@ -32,6 +33,9 @@ Ordinary startup remains inert.
   eligibility, preserved prior owners and models, ordinary-startup inertness, docstrings, practical
   file-size and line-length limits, formatting, and whitespace. Review added the missing internal
   token-constructor contract docstring; no behavioral defect remained.
+- Draft PR #332's five hosted jobs failed before execution with `steps: []`. No checkout, build,
+  test, smoke, or unsigned development export step ran, so this is Actions/account infrastructure
+  state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
