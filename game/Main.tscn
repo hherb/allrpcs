@@ -306,6 +306,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnBoundaryCoordinator.cs" id="298f_sabotage_turn_boundary"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator.cs" id="298g_sabotage_scheduling_authorization"]
 [ext_resource type="Script" path="res://CharacterSabotageCycleBoundaryCoordinator.cs" id="298h_sabotage_cycle_boundary"]
+[ext_resource type="Script" path="res://CharacterSabotageActionAuthoringAdmissionCoordinator.cs" id="298i_sabotage_authoring_admission"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveAuthoringCoordinator.cs" id="298j_sabotage_move_authoring"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -793,6 +795,15 @@ script = ExtResource("298g_sabotage_scheduling_authorization")
 
 [node name="CharacterSabotageCycleBoundaryCoordinator" type="Node" parent="."]
 script = ExtResource("298h_sabotage_cycle_boundary")
+
+[node name="CharacterSabotageActionAuthoringAdmissionCoordinator" type="Node" parent="."]
+script = ExtResource("298i_sabotage_authoring_admission")
+
+[node name="ScheduledCharacterSabotageActionMoveRequestController" type="Node" parent="."]
+script = ExtResource("284_sabotage_action_move_request")
+
+[node name="CharacterSabotageActionMoveAuthoringCoordinator" type="Node" parent="."]
+script = ExtResource("298j_sabotage_move_authoring")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

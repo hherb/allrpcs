@@ -1,11 +1,12 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Locations;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Checks one exact inert temporary move-sabotage source.</summary>
+/// <summary>Checks exact inert temporary initial and follow-up move candidates.</summary>
 public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
 {
     private const string WaterCaskObjectId = "village-water-cask";
@@ -18,6 +19,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         "Character",
         "Destination",
         "Evidence",
+        "FollowUpCandidate",
         "PhysicalAccess",
         "Placements",
         "RecoveryCandidate",
@@ -32,12 +34,14 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
             GetNode<TemporaryCharacterObjectSabotageMoveSource>(
                 "../TemporaryCharacterObjectSabotageMoveSource");
         CharacterObjectSabotageMoveCandidate candidate = source.Candidate;
+        CharacterObjectSabotageMoveCandidate followUpCandidate = source.FollowUpCandidate;
         CharacterObjectSabotageOccurrence occurrence = candidate.Destination.Occurrence;
         WorldObject target = occurrence.Target;
         WorldObjectPlacement sourcePlacement = source.Placements.Entries.Single();
         Location destination = candidate.Destination.Destination;
+        DiscoveryEvidenceSnapshot priorEvidence = new([candidate.Evidence.Evidence]);
 
-        if (!HasStableExactOutput(source, candidate)
+        if (!HasStableExactOutput(source, candidate, followUpCandidate)
             || source.WorldObjects.Entries.Count != 3
             || !ReferenceEquals(source.WorldObjects.Entries[^1], target)
             || target.Identity.Id.Value != WaterCaskObjectId
@@ -58,6 +62,10 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
             || occurrence.Proposal.ActionKind != CharacterSabotageActionKind.Move
             || !ReferenceEquals(candidate.Evidence.Occurrence, occurrence)
             || !ReferenceEquals(candidate.Evidence.Evidence.ObjectId, target.Identity.Id)
+            || !ReferenceEquals(followUpCandidate.Destination, candidate.Destination)
+            || ReferenceEquals(followUpCandidate.Evidence, candidate.Evidence)
+            || followUpCandidate.Evidence.Evidence.EvidenceId
+                == candidate.Evidence.Evidence.EvidenceId
             || source.Evidence.Entries.Count != 0
             || !CharacterObjectSabotageMovePolicy.CanApply(
                 source.Character,
@@ -66,24 +74,32 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
                 source.Placements,
                 source.Evidence,
                 candidate)
+            || !CharacterObjectSabotageMovePolicy.CanApply(
+                source.Character,
+                source.PhysicalAccess,
+                source.WorldObjects,
+                source.Placements,
+                priorEvidence,
+                followUpCandidate)
             || !ReferenceEquals(source.RecoveryCandidate.Candidate, candidate)
             || !ReferenceEquals(source.RecoveryCandidate.SourcePlacement, sourcePlacement)
             || !HasClosedSourceSurface())
         {
-            Fail("The temporary move source did not retain one exact eligible recoverable move.");
+            Fail("The temporary move source did not retain exact eligible move candidates.");
             return;
         }
 
         GD.Print(
             "Temporary move sabotage source smoke passed: exact enemy, tail water cask, access, "
-            + "source and destination, empty evidence, eligible move, aligned recovery, inert "
-            + "startup, and closed output.");
+            + "source and destination, empty then distinct evidence, eligible initial and "
+            + "follow-up moves, aligned recovery, inert startup, and closed output.");
         GetTree().Quit();
     }
 
     private static bool HasStableExactOutput(
         TemporaryCharacterObjectSabotageMoveSource source,
-        CharacterObjectSabotageMoveCandidate candidate) =>
+        CharacterObjectSabotageMoveCandidate candidate,
+        CharacterObjectSabotageMoveCandidate followUpCandidate) =>
         ReferenceEquals(source.Character, source.Character)
         && ReferenceEquals(source.PhysicalAccess, source.PhysicalAccess)
         && ReferenceEquals(source.WorldObjects, source.WorldObjects)
@@ -92,6 +108,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         && ReferenceEquals(source.Placements, source.Placements)
         && ReferenceEquals(source.Evidence, source.Evidence)
         && ReferenceEquals(source.Candidate, candidate)
+        && ReferenceEquals(source.FollowUpCandidate, followUpCandidate)
         && ReferenceEquals(source.RecoveryCandidate, source.RecoveryCandidate)
         && source.Placements.Entries
             is System.Collections.ObjectModel.ReadOnlyCollection<WorldObjectPlacement>

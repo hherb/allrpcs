@@ -8,11 +8,12 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Authors one exact temporary eligible and recoverable enemy move candidate.</summary>
+/// <summary>Authors exact temporary initial and follow-up enemy move candidates.</summary>
 public partial class TemporaryCharacterObjectSabotageMoveSource : Node
 {
     private const string RequiredCapabilityKey = "assess-local-influence";
     private const string EvidenceIdText = "cask-drag-marks";
+    private const string FollowUpEvidenceIdText = "cask-wheel-ruts";
     private const string SourceLocationIdText = "village-square";
     private const string SourceLocationDisplayName = "Village square";
     private const string SourceLocationDescription = "The cask stands beside the village well.";
@@ -44,6 +45,9 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
 
     /// <summary>Gets the exact authored eligible move candidate.</summary>
     public CharacterObjectSabotageMoveCandidate Candidate { get; private set; } = null!;
+
+    /// <summary>Gets one fresh exact candidate for a later admitted move-authoring seam.</summary>
+    public CharacterObjectSabotageMoveCandidate FollowUpCandidate { get; private set; } = null!;
 
     /// <summary>Gets the exact aligned move-recovery candidate.</summary>
     public CharacterObjectSabotageMoveRecoveryCandidate RecoveryCandidate { get; private set; } = null!;
@@ -86,6 +90,14 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
                 VisibilityState.Noticed,
                 false));
         Candidate = new CharacterObjectSabotageMoveCandidate(destination, evidence);
+        CharacterObjectSabotageEvidence followUpEvidence = new(
+            occurrence,
+            new DiscoveryEvidence(
+                new EvidenceId(FollowUpEvidenceIdText),
+                target.Identity.Id,
+                VisibilityState.Noticed,
+                false));
+        FollowUpCandidate = new CharacterObjectSabotageMoveCandidate(destination, followUpEvidence);
         RecoveryCandidate = new CharacterObjectSabotageMoveRecoveryCandidate(
             Candidate,
             sourcePlacement);

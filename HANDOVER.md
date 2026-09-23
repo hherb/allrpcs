@@ -2,77 +2,81 @@
 
 ## Current state
 
-`main` includes merged PR #333 at `c33ef3a`. Branch
-`codex/phase-7-sabotage-scheduling-authorization` completes **Phase 7qa**,
-**Phase 7qb**, and **Phase 7qc**. Implementation commit `f6f2b4f` is published in
-draft PR #334 targeting `main`. The unrelated untracked `scripts/code_statistics.py`
-remains untouched and must stay unstaged.
+`main` includes merged PR #334 at `e26a6df`. Branch
+`codex/phase-7-sabotage-action-authoring-admission` completes **Phase 7qd** and
+**Phase 7qe**. The unrelated untracked `scripts/code_statistics.py` remains
+untouched and must stay unstaged.
 
-`CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator` retains one fresh
-authorization only from the exact still-current admission and ordinary-turn boundary.
-The token contains those exact references, including an empty slot, without copying
-actor, request, action kind, or route output.
+`CharacterSabotageActionAuthoringAdmissionCoordinator` admits the exact current
+sabotage-cycle boundary once only after revalidating its authorization,
+completed-turn admission, and empty ordinary-turn slot. Its fresh token contains
+only that boundary and exposes the actor by following retained provenance rather
+than copying identity.
 
-`CharacterSabotageCycleBoundaryCoordinator` consumes only that coordinator's exact
-current authorization once at an explicit sabotage-cycle boundary. Its fresh boundary
-token retains the authorization itself and no copied provenance.
+`CharacterSabotageActionMoveAuthoringCoordinator` accepts only that exact current
+admission and invokes a fresh instance of the existing Move author once. The
+temporary Move source supplies a follow-up candidate with a distinct evidence ID,
+so the existing author can use the recovered placement and retained first-cycle
+evidence without resetting any prior owner. The coordinator retains the exact
+admission and exact authored request; the author retains the exact typed candidate
+binding.
 
-`CharacterSabotageCycleStartEligibilityPolicy` purely revalidates the exact current
-boundary, authorization, admission, and ordinary-turn graph immediately before future
-action authoring. Rebuilt, stale, changed-slot, and exact-active-slot graphs fail closed.
-Ordinary startup remains inert. Nothing in this branch reserves a turn; clears a prior
-owner; authors, starts, observes, acknowledges, dispatches, applies, resets, or schedules
-an action; or claims ordinary enemy-agent sabotage is enabled.
+Null, rebuilt, malformed, changed-slot, active-slot, stale, and repeated paths
+remain inert. The completed route, recovery output, first-cycle author, scheduling
+graph, ordinary turn, authoritative placement/evidence, tasks, and both model call
+counts remain unchanged. Nothing composes or starts another generic consideration,
+reserves a turn, clears an owner, or enables automatic enemy-agent sabotage.
+Ordinary startup remains inert.
 
 ## Validation and review
 
-- Test-first game builds failed only for the deliberately missing Phase 7qa authorization
-  coordinator, Phase 7qb cycle-boundary coordinator, and Phase 7qc pure eligibility policy
-  before each implementation was added.
-- The focused switch-gated Move proof passes host-local through exact recovery, terminal
-  reset, turn completion, scheduling admission, empty ordinary-turn binding, one-shot
-  authorization, explicit cycle-boundary entry, and pure start revalidation. Null, rebuilt,
-  stale, changed-slot, exact-active-slot, malformed-provenance, and repeated graphs remain
-  inert while the ordinary turn and every prior owner remain unchanged.
-- Sandboxed Godot still hits the known `user://logs` permission crash, and sandboxed
-  VSTest still cannot bind its local communication socket. The identical focused and full
-  commands pass host-local with Godot 4.6.3 Mono and .NET 8.
-- Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build,
-  2,731 Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture
-  tests, scenario validation, every credential-free Godot smoke, and the Compatibility
-  renderer launch.
-- Session review covers exact identity through every new boundary, one-shot ownership,
-  null-slot semantics, rebuilt/stale/active rejection, unchanged upstream owners, scene
-  dependency order, inert startup, docstrings, 120-character limits, the 500-line focused
-  smoke, formatting, and whitespace. Review added the missing coherent exact-active graph
-  proof; focused format/build/smoke validation passed afterward.
-- Draft PR #334's five hosted jobs failed before execution with `steps: []`. No checkout,
-  build, test, smoke, or unsigned development export step ran, so this is Actions/account
-  infrastructure state rather than hosted product-test evidence.
+- Each slice was test-first: the focused game build initially failed only for the
+  deliberately missing Phase 7qd and Phase 7qe coordinators/verifiers.
+- The focused switch-gated Move proof passes host-local through exact recovery,
+  terminal reset, completion, scheduling admission, empty ordinary-turn binding,
+  authorization, explicit cycle boundary, action-authoring admission, and one
+  guarded follow-up Move author output. Rejected graphs remain inert and neither
+  model is called again.
+- The changed temporary Move-source and Move-author smokes pass independently.
+- Sandboxed Godot still cannot open `user://logs`, and sandboxed VSTest still
+  cannot bind its local communication socket. Identical host-local commands pass
+  with Godot 4.6.3 Mono and .NET 8.
+- Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning
+  build, 2,731 Domain tests, 586 Application tests, 1,220 Infrastructure tests,
+  all 8 architecture tests, scenario validation, every credential-free Godot
+  smoke, and the Compatibility renderer launch.
+- Session review covered exact-reference provenance, one-shot behavior, fresh
+  evidence, unchanged prior owners and authoritative state, model-call counts,
+  dependency order, inert startup, docstrings, 120-character limits, the 500-line
+  focused smoke, formatting, and whitespace. Review removed a new tautological
+  source assertion, added nullable verifier preflight, and verified the guarded
+  author's exact typed binding before retaining output.
 
 ## Exact next bounded slice
 
-Take **Phase 7qd: admit the exact current sabotage-cycle boundary at the first action-
-authoring seam without invoking any action-specific author**.
+Take **Phase 7qf: compose the exact admission-guarded Move author output into one
+fresh generic sabotage request without starting consideration**.
 
 Acceptance boundary:
 
-1. Test-first add one scene-owned, one-shot action-authoring admission coordinator that
-   accepts only `CharacterSabotageCycleBoundaryCoordinator.Boundary` after
-   `CharacterSabotageCycleStartEligibilityPolicy` accepts that exact still-current
-   boundary, authorization, admission, and ordinary-turn graph.
-2. Retain one fresh admission token containing only that exact cycle boundary. Expose the
-   actor only by following the retained boundary's exact authorization and completion;
-   do not copy actor, request, action kind, ordinary-turn reference, or route output.
-3. Reject null, rebuilt-boundary, rebuilt-authorization, replaced-admission, changed-slot,
-   exact-active-slot, malformed-provenance, and repeated inputs without changing any
-   boundary, admission, turn controller, terminal route, prior branch owner, authoritative
-   state, task, result, model source, or model count.
-4. Extend only the focused switch-gated Move proof. Ordinary startup must remain inert;
-   do not invoke conceal, move, substitute, contaminate, misquote, delay, or influence
-   authors, compose a generic request, reserve a turn, or start consideration.
-5. Do not add cadence, timers, provider transport, credentials, persistence, UI/input,
-   navigation, movement, perception, dialogue delivery, new Domain behavior, author reset,
-   or a claim that ordinary enemy-agent sabotage is enabled.
-6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave
-   the next slice to let only this exact admission guard one existing author invocation.
+1. Test-first add one scene-owned, one-shot composition seam that accepts only
+   `CharacterSabotageActionMoveAuthoringCoordinator.AuthorRequest` while that
+   coordinator's exact admission, scheduled Move author request, typed candidate
+   binding, cycle boundary, authorization, completion, and empty ordinary-turn
+   graph all remain current.
+2. Produce one fresh `CharacterSabotageActionConsiderationRequest` containing the
+   exact admitted actor and only canonical `Move`. Retain the exact guarded source
+   request and admission; do not rebuild or copy the candidate, evidence,
+   placement, actor, completion, boundary, or authorization.
+3. Reject null, rebuilt-request, rebuilt-admission, replaced-binding, foreign-actor,
+   wrong-kind, changed-slot, active-slot, stale, and repeated inputs without
+   changing either author, any prior owner, authoritative state, task, result,
+   model source, or model count.
+4. Extend only the focused switch-gated Move proof. Ordinary startup must remain
+   inert; do not start consideration, supply or consume a model, select an action,
+   reset either author, reserve the ordinary turn, or clear prior provenance.
+5. Do not add cadence, timers, provider transport, credentials, persistence,
+   UI/input, navigation, movement, perception, dialogue delivery, new Domain
+   behavior, or a claim that ordinary enemy-agent sabotage is enabled.
+6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and
+   leave the next slice to start only that exact fresh composed request explicitly.

@@ -967,9 +967,23 @@ consumes only that exact current authorization once at an explicit boundary and 
 token containing the authorization itself, without copying its provenance. Null, rebuilt, stale,
 changed-slot, and repeated inputs fail closed. `CharacterSabotageCycleStartEligibilityPolicy`
 purely revalidates the exact current boundary, authorization, admission, and ordinary-turn graph
-before any future action authoring; rebuilt or active-slot graphs fail closed. None of these
-boundaries authors, starts, observes, acknowledges, dispatches, applies, resets, reserves, or
-schedules another action, and ordinary startup remains inert.
+before any future action authoring; rebuilt or active-slot graphs fail closed.
+`CharacterSabotageActionAuthoringAdmissionCoordinator` then retains one fresh admission containing
+only that exact still-current boundary. Its actor projection follows the boundary's authorization
+and completed-turn token rather than copying identity. Null, rebuilt-boundary, malformed-provenance,
+and repeated inputs fail closed. None of these boundaries authors, starts, observes, acknowledges,
+dispatches, applies, resets, reserves, or schedules another action, and ordinary startup remains
+inert.
+
+`CharacterSabotageActionMoveAuthoringCoordinator` accepts only that coordinator's exact current
+authoring admission while the complete boundary graph remains current. It invokes a fresh instance
+of the existing Move request author once for an exact follow-up candidate whose evidence identifier
+is distinct from the retained first-cycle evidence. The guarded author retains its exact request and
+typed candidate binding; the coordinator retains the exact admission and author request without
+resetting the original author or changing recovered placement or evidence. Null, rebuilt,
+malformed, stale, and repeated admission paths remain inert. This seam does not compose or start a
+generic consideration request, reserve the ordinary turn, consume a model, clear prior ownership,
+or enable automatic sabotage; ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
