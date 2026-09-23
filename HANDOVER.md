@@ -41,8 +41,9 @@ remain unrouted. The unrelated untracked
   inertness, public-surface containment, documentation, file size, formatting, and whitespace. One
   review strengthening added a fresh exact misquotation candidate-binding check and exact retained
   selection/presentation checks; no further defect was found.
-- Draft PR #327 is open; hosted-check state must be queried fresh rather than inferred from local
-  evidence.
+- Draft PR #327's Pure C#, Headless Godot, and three unsigned development-build jobs all failed
+  with `steps: []`; no checkout, build, test, smoke, or export step ran. This is Actions/account
+  infrastructure state, not hosted product-test evidence.
 
 ## Exact next bounded slice
 
