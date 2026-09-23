@@ -4,6 +4,7 @@
 
 `main` includes merged PR #327 at `bdf5e1d`. Branch
 `codex/phase-7-sabotage-delay-recovery-request` completes **Phase 7pn** and **Phase 7po**.
+Implementation commit `0bc6d63` is published in draft PR #328 targeting `main`.
 
 `CharacterSabotageOutcomeDelayRecoveryCoordinator` now composes the retained exact Delay eligibility
 through the existing recovery-request owner, then explicitly starts only that exact request. It
@@ -38,6 +39,10 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
   that adding both slices directly would take the existing multi-branch coordinator past its
   practical file-size boundary, so the Delay path was extracted into a focused 178-line coordinator;
   no further defect was found.
+- Draft PR #328's implementation-head Pure C# and three unsigned development-build jobs failed with
+  `steps: []`; Headless Godot remained queued with `steps: []` at inspection. No checkout, build,
+  test, smoke, or export step had run, so this is Actions/account infrastructure state rather than
+  hosted product-test evidence.
 
 ## Exact next bounded slice
 
