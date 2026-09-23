@@ -4,7 +4,8 @@
 
 `main` includes merged PR #333 at `c33ef3a`. Branch
 `codex/phase-7-sabotage-scheduling-authorization` completes **Phase 7qa**,
-**Phase 7qb**, and **Phase 7qc**. The unrelated untracked `scripts/code_statistics.py`
+**Phase 7qb**, and **Phase 7qc**. Implementation commit `f6f2b4f` is published in
+draft PR #334 targeting `main`. The unrelated untracked `scripts/code_statistics.py`
 remains untouched and must stay unstaged.
 
 `CharacterSabotageOrdinaryTurnSchedulingAuthorizationCoordinator` retains one fresh
@@ -45,6 +46,9 @@ an action; or claims ordinary enemy-agent sabotage is enabled.
   dependency order, inert startup, docstrings, 120-character limits, the 500-line focused
   smoke, formatting, and whitespace. Review added the missing coherent exact-active graph
   proof; focused format/build/smoke validation passed afterward.
+- Draft PR #334's five hosted jobs failed before execution with `steps: []`. No checkout,
+  build, test, smoke, or unsigned development export step ran, so this is Actions/account
+  infrastructure state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
