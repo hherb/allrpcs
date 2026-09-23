@@ -464,8 +464,10 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "task; its exact applied result and fresh authoritative snapshots were observed, "
             + "bound, and acknowledged; one exact recovery candidate was authored from its retained "
             + "source placement, paired with explicitly supplied visible evidence, and recovered "
-            + "through the existing stale-safe owner without routing, reserving the slot, clearing "
-            + "prior owners, another model call, or automatic sabotage.");
+            + "through the existing stale-safe owner; that exact recovery was retained and reset as "
+            + "a distinct terminal route, exposed as one exact completion, admitted by the existing "
+            + "pure scheduling gate, and bound to the empty ordinary-turn boundary without reserving "
+            + "the slot, clearing prior owners, another model call, or automatic sabotage.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
