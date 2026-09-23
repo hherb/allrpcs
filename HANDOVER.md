@@ -5,6 +5,7 @@
 `main` includes merged PR #323 at `e6586f7`. Branch
 `codex/phase-7-sabotage-action-outcome-binding` completes **Phase 7pg**: one acknowledged,
 selected action-specific result can now bind once to its exact current typed authoritative outcome.
+Implementation commit `b1d1cbd` is published in draft PR #324 targeting `main`.
 
 `CharacterSabotageActionSpecificOutcomeCoordinator` accepts only Phase 7pf's exact acknowledged
 generic author request, strongly typed candidate binding, composed action-specific request, selected
@@ -50,6 +51,10 @@ perception, dialogue delivery, timing, or new Domain effect logic. The unrelated
   after acknowledgement. Each branch owner now retains the exact acknowledged result and outcome
   tokens, and the binder requires those unchanged instances. The final full quality run passes
   after this fix.
+- Draft PR #324's Headless Godot and three unsigned development-build jobs failed with `steps: []`;
+  no checkout, build, test, smoke, or export step ran. The Pure C# job was still queued with
+  `steps: []` at the recorded head, so hosted checks are Actions/account infrastructure state and
+  not hosted product-test evidence.
 
 ## Exact next bounded slice
 
