@@ -35,10 +35,12 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
         null!;
     private CharacterTargetSabotageInfluenceRecoveryTaskController recoveryTask = null!;
     private CharacterTargetSabotageInfluenceRecoveryController recoveryState = null!;
+    private TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource recoveryModels = null!;
     private CharacterTargetSabotageInfluenceConsiderationRequest request = null!;
     private CharacterTargetSabotageInfluenceCandidate candidate = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingInfluenceModel influenceModel = null!;
+    private RecordingRecoveryModel recoveryModel = null!;
     private int processFrames;
     private int stage;
 
@@ -93,9 +95,12 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             "../CharacterTargetSabotageInfluenceRecoveryTaskController");
         recoveryState = GetNode<CharacterTargetSabotageInfluenceRecoveryController>(
             "../CharacterTargetSabotageInfluenceRecoveryController");
+        recoveryModels = GetNode<TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource>(
+            "../TemporaryCharacterTargetSabotageInfluenceRecoveryModelSource");
         request = CreateRequest(out candidate);
         actionModel = new();
         influenceModel = new();
+        recoveryModel = new();
         if (!influenceState.TryInitialize(request.Relationship))
         {
             Fail("Main-scene Influence recovery request rejected authority initialization.");
@@ -126,6 +131,10 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
         else if (stage == 2)
         {
             ComposeRecoveryRequest();
+        }
+        else if (stage == 3)
+        {
+            CompleteRecoveryRoute();
         }
         else
         {
@@ -222,16 +231,26 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             || specificOutcome.Influence is not { } outcome
             || !recoveryCandidates.TryCreate(outcome, recoveryChange)
             || recoveryCandidates.Candidate is not { } recoveryCandidate
-            || !eligibility.TryPublish(binding.SelectedAuthorRequest, null)
-            || recovery.TryCompose(rebuiltAuthor, recoveryCandidate)
+            || !eligibility.TryPublish(binding.SelectedAuthorRequest, null))
+        {
+            Fail("Main-scene exact eligible Influence did not publish one recovery candidate.");
+            return;
+        }
+
+        if (recovery.TryCompose(rebuiltAuthor, recoveryCandidate)
             || recovery.TryCompose(
                 eligibility.AuthorRequest,
                 new CharacterTargetSabotageInfluenceRecoveryCandidate(
                     outcome,
                     recoveryChange))
             || !recovery.TryCompose(eligibility.AuthorRequest, recoveryCandidate)
-            || recovery.Request is not { } recoveryRequest
-            || !ReferenceEquals(recoveryRequests.Request, recoveryRequest)
+            || recovery.Request is not { } recoveryRequest)
+        {
+            Fail("Main-scene exact eligible Influence did not compose one recovery request.");
+            return;
+        }
+
+        if (!ReferenceEquals(recoveryRequests.Request, recoveryRequest)
             || !ReferenceEquals(recoveryRequest.Actor, candidate.Occurrence.Target)
             || !ReferenceEquals(recoveryRequest.Relationship, outcome.Relationship)
             || !ReferenceEquals(recoveryRequest.Candidates.Single(), recoveryCandidate)
@@ -241,17 +260,81 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             || recoveryState.LatestAppliedResult is not null
             || actionModel.CallCount != 1
             || influenceModel.CallCount != 1
-            || recovery.TryCompose(eligibility.AuthorRequest, recoveryCandidate))
+            || recovery.TryCompose(eligibility.AuthorRequest, recoveryCandidate)
+            || !recoveryModels.TrySupplyModel(recoveryModel)
+            || recovery.TryStart(rebuiltAuthor, recoveryCandidate)
+            || recovery.TryStart(
+                eligibility.AuthorRequest,
+                new CharacterTargetSabotageInfluenceRecoveryCandidate(
+                    outcome,
+                    recoveryChange))
+            || recoveryModel.CallCount != 0
+            || recoveryModels.TrySupplyModel(new RecordingRecoveryModel())
+            || !recovery.TryStart(eligibility.AuthorRequest, recoveryCandidate)
+            || recoveryTask.Status != CharacterTargetSabotageInfluenceRecoveryTaskStatus.Running
+            || recoveryTask.Result is not null
+            || !ReferenceEquals(recoveryState.Relationship, outcome.Relationship)
+            || recoveryState.LatestAppliedResult is not null
+            || recoveryModel.CallCount != 1
+            || !ReferenceEquals(recoveryModel.Request, recoveryRequest)
+            || recovery.TryStart(eligibility.AuthorRequest, recoveryCandidate))
         {
-            Fail("Main-scene exact eligible Influence did not compose one inert recovery request.");
+            Fail("Main-scene exact eligible Influence did not start one exact recovery request.");
+            return;
+        }
+
+        stage = 3;
+    }
+
+    private void CompleteRecoveryRoute()
+    {
+        if (recoveryTask.Status == CharacterTargetSabotageInfluenceRecoveryTaskStatus.Running)
+        {
+            return;
+        }
+
+        CharacterTargetSabotageInfluenceRecoveryConsiderationRequest started = recovery.Request!;
+        CharacterTargetSabotageInfluenceRecoveryConsiderationRequest rebuiltRequest = new(
+            started.Actor,
+            started.Relationship,
+            started.Candidates);
+        CharacterSabotageActionConsiderationRequest rebuiltAuthor = new(
+            request.Actor,
+            [CharacterSabotageActionKind.Influence]);
+        if (recoveryTask.Status != CharacterTargetSabotageInfluenceRecoveryTaskStatus.Completed
+            || recoveryTask.Result is not { } completed
+            || recoveryState.LatestAppliedResult is not { } applied)
+        {
+            Fail("Main-scene exact Influence recovery did not complete through its owner.");
+            return;
+        }
+
+        if (!ReferenceEquals(completed.Request, started)
+            || !ReferenceEquals(completed.SelectedCandidate, started.Candidates.Single())
+            || !ReferenceEquals(applied.Candidate, completed.SelectedCandidate)
+            || recovery.TryComplete(rebuiltAuthor, started)
+            || recovery.TryComplete(recovery.AuthorRequest, rebuiltRequest)
+            || !recovery.TryComplete(recovery.AuthorRequest, started)
+            || !ReferenceEquals(recovery.CompletedResult, completed)
+            || !ReferenceEquals(recovery.RecoveredResult, applied)
+            || !ReferenceEquals(recovery.RecoveredRelationship, applied.Relationship)
+            || recoveryTask.Status != CharacterTargetSabotageInfluenceRecoveryTaskStatus.Idle
+            || recoveryTask.Result is not null
+            || !ReferenceEquals(recoveryState.Relationship, applied.Relationship)
+            || applied.Relationship.Dimensions.Single().Value != 10
+            || applied.Relationship.Reasons.Count != 2
+            || recovery.TryComplete(recovery.AuthorRequest, started)
+            || recoveryModel.CallCount != 1)
+        {
+            Fail("Main-scene exact Influence recovery did not route and acknowledge once.");
             return;
         }
 
         GD.Print(
-            "Main-scene sabotage outcome Influence recovery-request smoke passed: ordinary startup "
-            + "stayed inert; one exact generic Influence selection retained its typed outcome and "
-            + "current relationship authority; and its existing owner composed one exact recovery "
-            + "request without initializing recovery authority or consuming another model.");
+            "Main-scene sabotage outcome Influence recovery smoke passed: ordinary startup stayed "
+            + "inert; one exact generic Influence selection retained its typed outcome and current "
+            + "relationship authority; and its exact recovery completed, routed, and acknowledged "
+            + "once without another model call.");
         GetTree().Quit();
     }
 
@@ -359,6 +442,31 @@ public partial class CharacterSabotageOutcomeInfluenceRecoveryRequestMainSceneSm
             CallCount++;
             return ValueTask.FromResult(
                 new CharacterTargetSabotageInfluenceDecision(
+                    value.Actor.Identity.Id,
+                    value.Candidates.Single()));
+        }
+    }
+
+    private sealed class RecordingRecoveryModel
+        : ICharacterTargetSabotageInfluenceRecoveryDecisionModel
+    {
+        public int CallCount { get; private set; }
+
+        public CharacterTargetSabotageInfluenceRecoveryConsiderationRequest? Request
+        {
+            get;
+            private set;
+        }
+
+        public ValueTask<CharacterTargetSabotageInfluenceRecoveryDecision> DecideAsync(
+            CharacterTargetSabotageInfluenceRecoveryConsiderationRequest value,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            Request = value;
+            return ValueTask.FromResult(
+                new CharacterTargetSabotageInfluenceRecoveryDecision(
                     value.Actor.Identity.Id,
                     value.Candidates.Single()));
         }
