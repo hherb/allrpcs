@@ -4,10 +4,8 @@
 
 `main` includes merged PR #339 at `72b5fa3`. Branch
 `codex/phase-7-follow-up-move-terminal-route` completes **Phase 7qq** through **Phase 7qv**. The
-implementation is committed at `9f392c1` and pushed to `origin`. Draft PR creation is pending
-explicit destination confirmation for `github.com/hherb/allrpcs` after the environment disclosure
-guard rejected the authorized command. The unrelated untracked `scripts/code_statistics.py` remains
-untouched and must stay unstaged.
+implementation is committed at `9f392c1` and published in draft PR #340 targeting `main`. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The acknowledged follow-up Move now continues through six explicit, dependency-ordered seams:
 
@@ -43,8 +41,9 @@ added. Ordinary startup remains inert.
   paths, model call counts, inert startup, docstrings, file/line limits, formatting, and whitespace.
   The unused verifier parameter and one documentation wrap found during review were fixed; no
   unresolved findings remain.
-- Hosted checks have not started because the draft PR could not be created without the additional
-  explicit GitHub-destination confirmation described above.
+- Draft PR #340's five hosted jobs for head `f9d0670` failed before execution with `steps: []` in
+  run `35924296391`. No checkout, build, test, smoke, or unsigned development export step ran, so
+  this is Actions/account infrastructure state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
