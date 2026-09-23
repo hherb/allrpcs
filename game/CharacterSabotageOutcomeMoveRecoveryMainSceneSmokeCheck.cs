@@ -44,7 +44,6 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
     private RecordingMoveModel moveModel = null!;
     private int processFrames;
     private int stage;
-
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -110,7 +109,6 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
         moveModel = new();
         SetProcess(true);
     }
-
     /// <inheritdoc />
     public override void _Process(double delta)
     {
@@ -139,7 +137,6 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             Fail("Main-scene move recovery entered an unknown stage.");
         }
     }
-
     private void StartActionSelection()
     {
         bool inert = authors.All(author => author.Request is null)
@@ -179,7 +176,6 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
 
         stage = 1;
     }
-
     private void StartMoveSelection()
     {
         if (actionTask.Status == CharacterSabotageActionTaskStatus.Running)
@@ -214,7 +210,6 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             Fail("Main-scene generic move selection did not start its exact typed request.");
             return;
         }
-
         stage = 2;
     }
 
@@ -224,7 +219,6 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
         {
             return;
         }
-
         CharacterEvidenceViewSnapshot view = new(
             source.Character.Identity.Id,
             [source.Candidate.Evidence.Evidence.EvidenceId]);
@@ -427,9 +421,14 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             || !ReferenceEquals(cycleBoundary.Authorization, authorization)
             || sabotageCycleBoundary.TryEnter(authorization)
             || !ReferenceEquals(sabotageCycleBoundary.Boundary, cycleBoundary)
-            || !CharacterSabotageCycleStartEligibilitySmokeVerifier.Passes(
+            || !CharacterSabotageActionMoveAuthoringSmokeVerifier.PassesMainScene(
+                this,
                 cycleBoundary,
+                source,
+                moveState,
                 ordinaryTurnSource.Activity)
+            || !ReferenceEquals(moveAuthor.Request, binding.SelectedAuthorRequest)
+            || actionModel.CallCount != 1 || moveModel.CallCount != 1
             || !ReferenceEquals(turnBoundary.Admission, completion)
             || turnBoundary.TurnActivity is not null
             || ordinaryTurns.Activity is not null
@@ -463,11 +462,12 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "scheduling eligibility gate, and was retained as one exact ordinary-scheduling "
             + "admission, then bound once to the exact empty ordinary character-turn start "
             + "boundary, revalidated there, authorized once, and consumed only at one explicit "
-            + "sabotage-cycle boundary without reserving the slot, clearing its route owner, or "
-            + "starting another action.");
+            + "sabotage-cycle boundary; that exact boundary was admitted once at the first "
+            + "action-authoring seam, then guarded one fresh exact follow-up Move author output "
+            + "without reserving the slot, clearing a prior owner, composing a new generic "
+            + "request, or consuming another model.");
         GetTree().Quit();
     }
-
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
     [
         GetNode<CharacterSabotageActionConcealmentRequestController>(

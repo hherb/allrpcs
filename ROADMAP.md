@@ -706,6 +706,10 @@ Current continuation:
   boundary without copying provenance, reserving the turn, or starting any action.
 - [x] Purely revalidate the exact current sabotage-cycle boundary graph immediately before future
   action authoring without mutating its authorization, admission, or ordinary turn.
+- [x] Admit that exact still-current cycle boundary once at the first action-authoring seam without
+  copying provenance or invoking any action-specific author.
+- [x] Let only that exact admission guard one fresh invocation of the existing Move author without
+  resetting prior ownership, composing a request, or consuming another model.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
