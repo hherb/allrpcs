@@ -910,21 +910,23 @@ relationship, or provider state. The switch-gated concealment smoke proves exact
 outcome acknowledgement while ordinary startup remains inert.
 
 `CharacterSabotageOutcomeRecoveryCoordinator` routes the five non-targeted retained eligibility
-branches through their existing owners. `CharacterSabotageOutcomeDelayRecoveryCoordinator` owns
-the bounded Delay continuation. Both recheck the generic author token, typed result and candidate,
-eligibility-owned view, branch-owned acknowledgement snapshots, and still-current authoritative
-state immediately before delegation. Movement additionally retains the source's exact pre-move
-placement token. Object recovery retains only the exact recovered concealment, placement,
-substitution, or contamination snapshot and preserves authoritative evidence. Misquotation retains
-the exact current exposure and witness view, then delegates once through the existing truth-neutral
-presentation route without consuming evidence. Delay retains the existing recovery candidate,
-delegates request construction once with the typed delay request's exact authoritative world-event
-definitions, and explicitly starts only that exact composed request after initializing recovery
-authority from its exact event-log and world-time snapshots. Rejected calls cannot consume a queued
-recovery model. Null, rebuilt, stale, replaced, foreign, wrong-branch, ineligible, non-current, and
-repeated calls remain inert. The coordinator defines no recovery rule, does not observe or apply the
-started delay recovery, and does not route influence. Separate switch-gated main-scene smokes carry
-the five earlier branches and the delay request/start path while ordinary startup remains inert.
+branches through their existing owners. Focused Delay and Influence coordinators own the two
+targeted continuations. All recheck the generic author token, typed result and candidate,
+branch-owned acknowledgement snapshots, eligibility output, and still-current authoritative state
+immediately before delegation. Movement additionally retains the source's exact pre-move placement
+token. Object recovery retains only the exact recovered concealment, placement, substitution, or
+contamination snapshot and preserves authoritative evidence. Misquotation retains the exact current
+exposure and witness view, then delegates once through the existing truth-neutral presentation route
+without consuming evidence. Delay composes and explicitly starts only its exact recovery request,
+then accepts only that request's exact selected recovery after the existing resolution owner has
+installed fresh append-only event-log and world-time snapshots. It acknowledges that result once and
+retains the exact completed consideration, applied recovery, and fresh snapshots as terminal generic
+Delay output. Influence delegates only request construction once with the exact current relationship
+and existing inverse recovery candidate; it does not initialize recovery authority or start work.
+Rejected calls cannot consume another model. Null, rebuilt, stale, replaced, foreign, wrong-branch,
+ineligible, non-current, unresolved, and repeated calls remain inert. No coordinator defines a new
+recovery rule or routes Influence beyond request composition. Separate switch-gated main-scene
+smokes carry every branch while ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

@@ -676,6 +676,11 @@ Current continuation:
   the authoritative world-event, event-log, world-time, and recovery-candidate instances.
 - [x] Explicitly start only that exact composed delay-recovery request once without observing or
   applying its result, and preserve the queued recovery model across rejected preflight.
+- [x] Bind one exact completed generic Delay recovery back to its author route only after the
+  existing resolution owner installs current fresh append-only world snapshots, then acknowledge it
+  once and retain its exact terminal output.
+- [x] Compose one exact eligible generic Influence outcome into its existing recovery request while
+  retaining the exact current relationship and inverse recovery candidate without starting work.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
