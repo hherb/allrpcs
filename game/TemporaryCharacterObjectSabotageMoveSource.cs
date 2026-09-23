@@ -14,6 +14,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
     private const string RequiredCapabilityKey = "assess-local-influence";
     private const string EvidenceIdText = "cask-drag-marks";
     private const string FollowUpEvidenceIdText = "cask-wheel-ruts";
+    private const string CycleEvidenceIdText = "cask-spoke-scuffs";
     private const string SourceLocationIdText = "village-square";
     private const string SourceLocationDisplayName = "Village square";
     private const string SourceLocationDescription = "The cask stands beside the village well.";
@@ -48,6 +49,9 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
 
     /// <summary>Gets one fresh exact candidate for a later admitted move-authoring seam.</summary>
     public CharacterObjectSabotageMoveCandidate FollowUpCandidate { get; private set; } = null!;
+
+    /// <summary>Gets one fresh exact candidate for the next admitted sabotage cycle.</summary>
+    public CharacterObjectSabotageMoveCandidate CycleCandidate { get; private set; } = null!;
 
     /// <summary>Gets the exact aligned move-recovery candidate.</summary>
     public CharacterObjectSabotageMoveRecoveryCandidate RecoveryCandidate { get; private set; } = null!;
@@ -98,6 +102,14 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
                 VisibilityState.Noticed,
                 false));
         FollowUpCandidate = new CharacterObjectSabotageMoveCandidate(destination, followUpEvidence);
+        CharacterObjectSabotageEvidence cycleEvidence = new(
+            occurrence,
+            new DiscoveryEvidence(
+                new EvidenceId(CycleEvidenceIdText),
+                target.Identity.Id,
+                VisibilityState.Noticed,
+                false));
+        CycleCandidate = new CharacterObjectSabotageMoveCandidate(destination, cycleEvidence);
         RecoveryCandidate = new CharacterObjectSabotageMoveRecoveryCandidate(
             Candidate,
             sourcePlacement);
