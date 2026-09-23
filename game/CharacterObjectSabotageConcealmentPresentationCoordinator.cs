@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -11,6 +12,16 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinator :
     private CharacterObjectSabotageConcealmentPresentationController presentation = null!;
     private CharacterObjectSabotageConcealmentController state = null!;
     private CharacterObjectSabotageConcealmentTaskController task = null!;
+
+    internal CharacterObjectSabotageConcealmentConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal WorldObjectConcealmentSnapshot? AcknowledgedConcealment { get; private set; }
+
+    internal DiscoveryEvidenceSnapshot? AcknowledgedEvidence { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -72,6 +83,9 @@ public partial class CharacterObjectSabotageConcealmentPresentationCoordinator :
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedConcealment = state.Concealment;
+        AcknowledgedEvidence = state.Evidence;
         observedResult = null;
         return true;
     }

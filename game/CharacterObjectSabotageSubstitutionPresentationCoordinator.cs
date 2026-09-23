@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Discovery;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -10,6 +11,20 @@ public partial class CharacterObjectSabotageSubstitutionPresentationCoordinator 
     private CharacterObjectSabotageSubstitutionPresentationController presentation = null!;
     private CharacterObjectSabotageSubstitutionController state = null!;
     private CharacterObjectSabotageSubstitutionTaskController task = null!;
+
+    internal CharacterObjectSabotageSubstitutionConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal CharacterObjectSabotageSubstitutionSnapshot? AcknowledgedSubstitutions
+    {
+        get;
+        private set;
+    }
+
+    internal DiscoveryEvidenceSnapshot? AcknowledgedEvidence { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -74,6 +89,9 @@ public partial class CharacterObjectSabotageSubstitutionPresentationCoordinator 
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedSubstitutions = state.Substitutions;
+        AcknowledgedEvidence = state.Evidence;
         observedResult = null;
         return true;
     }

@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -11,6 +12,16 @@ public partial class CharacterObjectSabotageContaminationPresentationCoordinator
     private CharacterObjectSabotageContaminationPresentationController presentation = null!;
     private CharacterObjectSabotageContaminationController state = null!;
     private CharacterObjectSabotageContaminationTaskController task = null!;
+
+    internal CharacterObjectSabotageContaminationConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal WorldObjectContaminationSnapshot? AcknowledgedContamination { get; private set; }
+
+    internal DiscoveryEvidenceSnapshot? AcknowledgedEvidence { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -74,6 +85,9 @@ public partial class CharacterObjectSabotageContaminationPresentationCoordinator
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedContamination = state.Contamination;
+        AcknowledgedEvidence = state.Evidence;
         observedResult = null;
         return true;
     }

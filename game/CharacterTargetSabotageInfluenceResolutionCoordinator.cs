@@ -12,6 +12,14 @@ public partial class CharacterTargetSabotageInfluenceResolutionCoordinator : Nod
     private CharacterTargetSabotageInfluenceController state = null!;
     private CharacterTargetSabotageInfluenceTaskController task = null!;
 
+    internal CharacterTargetSabotageInfluenceConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal CharacterTargetSabotageInfluenceResult? AcknowledgedAppliedResult { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -73,6 +81,8 @@ public partial class CharacterTargetSabotageInfluenceResolutionCoordinator : Nod
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedAppliedResult = resolvedAppliedResult;
         observedResult = null;
         resolvedRelationship = null;
         resolvedAppliedResult = null;

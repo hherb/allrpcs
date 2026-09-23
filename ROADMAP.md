@@ -658,6 +658,8 @@ Current continuation:
   candidate and current authority, preserving queued models across every rejected preflight.
 - [x] Observe and explicitly acknowledge only the exact typed terminal result for that started
   request through its existing action-specific result owner.
+- [x] Bind one acknowledged selected typed result to its exact current branch-owned authoritative
+  outcome without starting recovery, consuming a model, or rebuilding any value.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

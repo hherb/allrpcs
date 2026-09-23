@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
 
@@ -11,6 +12,16 @@ public partial class CharacterObjectSabotageMovePresentationCoordinator : Node
     private CharacterObjectSabotageMovePresentationController presentation = null!;
     private CharacterObjectSabotageMoveController state = null!;
     private CharacterObjectSabotageMoveTaskController task = null!;
+
+    internal CharacterObjectSabotageMoveConsiderationResult? AcknowledgedResult
+    {
+        get;
+        private set;
+    }
+
+    internal WorldObjectPlacementSnapshot? AcknowledgedPlacements { get; private set; }
+
+    internal DiscoveryEvidenceSnapshot? AcknowledgedEvidence { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -72,6 +83,9 @@ public partial class CharacterObjectSabotageMovePresentationCoordinator : Node
             return false;
         }
 
+        AcknowledgedResult = result;
+        AcknowledgedPlacements = state.Placements;
+        AcknowledgedEvidence = state.Evidence;
         observedResult = null;
         return true;
     }
