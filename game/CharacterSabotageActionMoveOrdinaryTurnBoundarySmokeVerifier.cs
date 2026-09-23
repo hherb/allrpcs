@@ -62,6 +62,13 @@ internal static class CharacterSabotageActionMoveOrdinaryTurnBoundarySmokeVerifi
             return false;
         }
 
-        return true;
+        return CharacterSabotageActionMoveSchedulingAuthorizationSmokeVerifier.PassesMainScene(
+            scene,
+            state,
+            completion,
+            recovered,
+            evidence,
+            model,
+            actionModel);
     }
 }

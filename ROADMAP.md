@@ -744,6 +744,14 @@ Current continuation:
   copying its provenance, authorizing scheduling, or starting another sabotage cycle.
 - [x] Bind that exact follow-up admission once to the existing empty ordinary-turn start boundary
   without reserving the slot, authorizing scheduling, or invoking another model.
+- [x] Retain one fresh scheduling authorization from only that exact still-current follow-up Move
+  boundary without reserving the ordinary turn or starting another sabotage cycle.
+- [x] Consume only that exact follow-up authorization once at a distinct explicit cycle boundary
+  without copying provenance, reserving the turn, or starting any action.
+- [x] Reuse the pure cycle-start gate to revalidate that exact current follow-up boundary graph
+  without mutating its authorization, completion admission, or ordinary turn.
+- [x] Admit that exact still-current follow-up cycle once at a distinct action-authoring seam without
+  copying provenance or invoking an action-specific author.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
