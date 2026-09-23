@@ -4,6 +4,7 @@
 
 `main` includes merged PR #330 at `aad6ead`. Branch
 `codex/phase-7-sabotage-terminal-route` completes **Phase 7pt** and **Phase 7pu**.
+Implementation commit `06ebab4` is published in draft PR #331 targeting `main`.
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 `CharacterSabotageTerminalRouteCoordinator` is dependency-ordered after the seven existing route
@@ -37,6 +38,9 @@ unchanged. Ordinary startup remains inert, and no action is scheduled.
   practical file-size limits, formatting, and whitespace. Review moved the reset proof out of the
   concealment smoke after that file crossed 500 lines; it is now 498 lines. No further defect was
   found.
+- Draft PR #331's five hosted jobs failed before execution with `steps: []`. No checkout, build,
+  test, smoke, or unsigned development export step ran, so this is Actions/account infrastructure
+  state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
