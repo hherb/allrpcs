@@ -896,6 +896,30 @@ no transition, model access, recovery consideration, evidence removal, schedulin
 The switch-gated main-scene smoke proves one exact selected concealment outcome while ordinary
 startup remains inert.
 
+`CharacterSabotageOutcomeEligibilityCoordinator` publishes at most one strongly typed retained
+outcome for its existing recovery or evidence route. It requires the exact generic author request,
+typed result and candidate binding, branch-owned acknowledgement snapshots, and current authority
+retained through the outcome seam. Concealment, movement, substitution, and contamination also
+delegate to their existing recovery policies with one caller-supplied evidence view; delay and
+influence accept only the exact candidate already admitted by their existing one-shot recovery
+candidate controller; misquotation retains only its exact current exposure and witness view. Null,
+rebuilt, wrong-kind, stale, replaced, repeated, unacknowledged, ineligible, and non-current paths
+remain inert. Publication starts no recovery or consideration, consumes no model, creates no
+recovery request, and changes no source, evidence, perception, presentation, event-log, world-time,
+relationship, or provider state. The switch-gated concealment smoke proves exact eligibility after
+outcome acknowledgement while ordinary startup remains inert.
+
+`CharacterSabotageOutcomeRecoveryCoordinator` routes only the exact retained concealment
+eligibility through the existing concealment controller's recovery transition. It rechecks the
+generic author token, typed result and candidate, eligibility-owned evidence view, branch-owned
+acknowledgement snapshots, and still-current concealment and evidence references immediately before
+delegation. Successful routing retains the exact recovered concealment snapshot and preserves the
+authoritative evidence snapshot. Null, rebuilt, stale, replaced, wrong-branch, ineligible,
+non-current, and repeated calls remain inert. The coordinator defines no recovery rule, starts no
+consideration, consumes no model, and does not route movement, substitution, contamination,
+misquotation, delay, or influence. The switch-gated main-scene smoke carries one exact eligible
+concealment branch through that existing transition while ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

@@ -30,6 +30,8 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
     private CharacterSabotageActionSpecificRequestStartCoordinator actionSpecificStart = null!;
     private CharacterSabotageActionSpecificResultCoordinator actionSpecificResult = null!;
     private CharacterSabotageActionSpecificOutcomeCoordinator actionSpecificOutcome = null!;
+    private CharacterSabotageOutcomeEligibilityCoordinator outcomeEligibility = null!;
+    private CharacterSabotageOutcomeRecoveryCoordinator outcomeRecovery = null!;
     private WorldObjectConcealmentSnapshot initialConcealment = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
     private RecordingModel model = null!;
@@ -78,6 +80,10 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             "../CharacterSabotageActionSpecificResultCoordinator");
         actionSpecificOutcome = GetNode<CharacterSabotageActionSpecificOutcomeCoordinator>(
             "../CharacterSabotageActionSpecificOutcomeCoordinator");
+        outcomeEligibility = GetNode<CharacterSabotageOutcomeEligibilityCoordinator>(
+            "../CharacterSabotageOutcomeEligibilityCoordinator");
+        outcomeRecovery = GetNode<CharacterSabotageOutcomeRecoveryCoordinator>(
+            "../CharacterSabotageOutcomeRecoveryCoordinator");
         initialConcealment = concealmentState.Concealment!;
         initialEvidence = concealmentState.Evidence!;
         model = new(value => new(value.Actor.Identity.Id, CharacterSabotageActionKind.Conceal));
@@ -135,11 +141,15 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             && actionSpecificStart.StartedAuthorRequest is null
             && actionSpecificResult.ResultCount == 0
             && actionSpecificOutcome.OutcomeCount == 0
+            && outcomeEligibility.EligibilityCount == 0
+            && outcomeRecovery.RecoveredConcealment is null
             && !actionSpecificRequests.TryCompose(null, null)
             && !actionSpecificStart.TryStart()
             && !actionSpecificResult.TryObserveCompletedResult()
             && !actionSpecificResult.TryAcknowledgeCompletedResult()
             && !actionSpecificOutcome.TryBindAcknowledgedOutcome()
+            && !outcomeEligibility.TryPublish(null, null)
+            && !outcomeRecovery.TryRecoverConcealment(null, null, null)
             && StateIsUnchanged();
         bool authored = concealmentAuthor.TryCreate(
             source.Character,
@@ -262,6 +272,18 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
 
         CharacterObjectSabotageConcealmentConsiderationRequest request =
             actionSpecificRequests.ConcealmentRequest!;
+        CharacterEvidenceViewSnapshot eligibleEvidenceView = new(
+            source.Character.Identity.Id,
+            [source.Candidate.Evidence.EvidenceId]);
+        CharacterEvidenceViewSnapshot unseenEvidenceView = new(
+            source.Character.Identity.Id,
+            []);
+        CharacterEvidenceViewSnapshot rebuiltEvidenceView = new(
+            source.Character.Identity.Id,
+            [source.Candidate.Evidence.EvidenceId]);
+        CharacterSabotageActionConsiderationRequest rebuiltAuthorRequest = new(
+            source.Character,
+            [CharacterSabotageActionKind.Conceal]);
         if (concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Completed
             || concealmentTask.Result is not { } result
             || !ReferenceEquals(result.Request, request)
@@ -277,6 +299,9 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             || actionSpecificResult.ResultCount != 1
             || actionSpecificResult.TryObserveCompletedResult()
             || actionSpecificOutcome.TryBindAcknowledgedOutcome()
+            || outcomeEligibility.TryPublish(
+                binding.SelectedAuthorRequest,
+                eligibleEvidenceView)
             || !actionSpecificResult.TryAcknowledgeCompletedResult()
             || concealmentTask.Status != CharacterObjectSabotageConcealmentTaskStatus.Idle
             || concealmentTask.Result is not null
@@ -303,6 +328,50 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             || actionSpecificOutcome.Delay is not null
             || actionSpecificOutcome.Influence is not null
             || actionSpecificOutcome.TryBindAcknowledgedOutcome()
+            || outcomeEligibility.TryPublish(rebuiltAuthorRequest, eligibleEvidenceView)
+            || outcomeEligibility.TryPublish(binding.SelectedAuthorRequest, unseenEvidenceView)
+            || !outcomeEligibility.TryPublish(
+                binding.SelectedAuthorRequest,
+                eligibleEvidenceView)
+            || !ReferenceEquals(
+                outcomeEligibility.AuthorRequest,
+                binding.SelectedAuthorRequest)
+            || !ReferenceEquals(
+                outcomeEligibility.ConcealmentCandidate,
+                source.Candidate)
+            || outcomeEligibility.EligibilityCount != 1
+            || outcomeRecovery.TryRecoverConcealment(
+                rebuiltAuthorRequest,
+                outcomeEligibility.ConcealmentCandidate,
+                outcomeEligibility.EvidenceView)
+            || outcomeRecovery.TryRecoverConcealment(
+                outcomeEligibility.AuthorRequest,
+                outcomeEligibility.ConcealmentCandidate,
+                rebuiltEvidenceView)
+            || !outcomeRecovery.TryRecoverConcealment(
+                outcomeEligibility.AuthorRequest,
+                outcomeEligibility.ConcealmentCandidate,
+                outcomeEligibility.EvidenceView)
+            || !ReferenceEquals(
+                outcomeRecovery.AuthorRequest,
+                outcomeEligibility.AuthorRequest)
+            || !ReferenceEquals(outcomeRecovery.EvidenceView, eligibleEvidenceView)
+            || outcomeRecovery.RecoveredConcealment is not { } recoveredConcealment
+            || !ReferenceEquals(concealmentState.Concealment, recoveredConcealment)
+            || ReferenceEquals(recoveredConcealment, actionSpecificOutcome.Concealment)
+            || recoveredConcealment.ConcealedObjectIds.Count != 0
+            || !ReferenceEquals(
+                concealmentState.Evidence,
+                actionSpecificOutcome.ConcealmentEvidence)
+            || model.CallCount != 1
+            || concealmentModel.CallCount != 1
+            || outcomeRecovery.TryRecoverConcealment(
+                outcomeEligibility.AuthorRequest,
+                outcomeEligibility.ConcealmentCandidate,
+                outcomeEligibility.EvidenceView)
+            || outcomeEligibility.TryPublish(
+                binding.SelectedAuthorRequest,
+                eligibleEvidenceView)
             || StateIsUnchanged())
         {
             Fail("Main-scene exact selected action did not retain its current typed outcome.");
@@ -314,7 +383,9 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             + "inert; one exact live conceal request completed, was observed, bound to its exact "
             + "author output, acknowledged, composed into one exact concealment request, and "
             + "started once through an explicit selecting model, applied, presented, observed, "
-            + "acknowledged, and bound to its exact current typed authoritative outcome.");
+            + "acknowledged, bound to its exact current typed authoritative outcome, and passed "
+            + "its existing evidence gate into one-shot eligibility before the exact retained "
+            + "concealment branch alone routed through its existing recovery transition.");
         GetTree().Quit();
     }
 
