@@ -4,6 +4,7 @@
 
 `main` includes merged PR #341 at `99b32ba`. Branch
 `codex/phase-7-follow-up-move-authoring-chain` completes **Phase 7ra** through **Phase 7rc**. The
+implementation is committed at `f4a796e` and published in draft PR #342 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The exact admitted follow-up cycle now advances through three more explicit seams:
