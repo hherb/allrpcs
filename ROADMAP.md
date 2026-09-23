@@ -726,6 +726,12 @@ Current continuation:
   exact fresh placement and evidence snapshots, without acknowledging or routing it.
 - [x] Bind and acknowledge only that exact observed typed result and current outcome, resetting only
   its task while retaining the exact result and authoritative snapshot tokens.
+- [x] Author one exact follow-up Move recovery candidate from that acknowledged result and its typed
+  request's exact pre-move source placement without publishing eligibility or starting recovery.
+- [x] Pair only that exact recovery candidate with one explicitly supplied current evidence view
+  accepted by the existing recovery policy without invoking recovery.
+- [x] Recover only that exact published follow-up Move pair through the existing stale-safe state
+  owner, retaining the fresh restored placements and authoritative evidence without routing it.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

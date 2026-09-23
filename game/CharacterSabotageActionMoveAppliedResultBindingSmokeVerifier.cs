@@ -81,6 +81,14 @@ internal static class CharacterSabotageActionMoveAppliedResultBindingSmokeVerifi
             return false;
         }
 
-        return true;
+        return CharacterSabotageActionMoveRecoveryCandidateSmokeVerifier.PassesMainScene(
+            scene,
+            source,
+            state,
+            result,
+            placements,
+            evidence,
+            model,
+            actionModel);
     }
 }

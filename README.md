@@ -1029,6 +1029,16 @@ and evidence. Rebuilt result, request, candidate, placement, evidence, stale, nu
 repeated paths remain inert. No terminal route, recovery, turn completion, ordinary-turn
 reservation, author reset, or additional cycle is started, and ordinary startup remains inert.
 
+The acknowledged follow-up Move result can explicitly author one exact recovery candidate from its
+typed request's exact pre-move source placement while the retained result and fresh authoritative
+snapshots remain current. A separate one-shot eligibility seam pairs only that candidate with an
+explicitly supplied evidence view accepted by the existing recovery policy. The recovery seam then
+delegates only that exact pair to the existing stale-safe Move controller, retains the fresh restored
+placement snapshot, and preserves authoritative evidence. Missing or ambiguous source placement,
+null, rebuilt, foreign, unseen-evidence, stale, and repeated paths remain inert. These seams do not
+publish a terminal route, complete or admit a turn, reset either author, reserve the ordinary turn,
+start another cycle, invoke another model, or add automatic startup behavior.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
