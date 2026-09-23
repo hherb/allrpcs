@@ -672,6 +672,10 @@ Current continuation:
   transition while preserving authoritative evidence and consuming no additional model.
 - [x] Route one exact eligible misquotation exposure through its current witness view and existing
   truth-neutral presentation route without consuming evidence or another model.
+- [x] Compose one exact eligible delay outcome into its existing recovery request while retaining
+  the authoritative world-event, event-log, world-time, and recovery-candidate instances.
+- [x] Explicitly start only that exact composed delay-recovery request once without observing or
+  applying its result, and preserve the queued recovery model across rejected preflight.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

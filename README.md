@@ -909,19 +909,22 @@ recovery request, and changes no source, evidence, perception, presentation, eve
 relationship, or provider state. The switch-gated concealment smoke proves exact eligibility after
 outcome acknowledgement while ordinary startup remains inert.
 
-`CharacterSabotageOutcomeRecoveryCoordinator` routes only the exact retained concealment, move,
-substitution, contamination, or misquotation eligibility through that branch's existing follow-up.
-It rechecks the generic author token, typed result and candidate, eligibility-owned view,
-branch-owned acknowledgement snapshots, and still-current authoritative state immediately before
-delegation. Movement additionally retains the source's exact pre-move placement token. Object
-recovery retains only the exact recovered concealment, placement, substitution, or contamination
-snapshot and preserves authoritative evidence. Misquotation retains the exact current exposure and
-witness view, then delegates once through the existing truth-neutral presentation route without
-consuming evidence. Null, rebuilt, stale, replaced, foreign, wrong-branch, ineligible, non-current,
-and repeated calls remain inert. The coordinator defines no recovery rule, starts no recovery
-consideration, consumes no additional model, and does not route delay or influence. Separate
-switch-gated main-scene smokes carry all five exact eligible branches through their existing routes
-while ordinary startup remains inert.
+`CharacterSabotageOutcomeRecoveryCoordinator` routes the five non-targeted retained eligibility
+branches through their existing owners. `CharacterSabotageOutcomeDelayRecoveryCoordinator` owns
+the bounded Delay continuation. Both recheck the generic author token, typed result and candidate,
+eligibility-owned view, branch-owned acknowledgement snapshots, and still-current authoritative
+state immediately before delegation. Movement additionally retains the source's exact pre-move
+placement token. Object recovery retains only the exact recovered concealment, placement,
+substitution, or contamination snapshot and preserves authoritative evidence. Misquotation retains
+the exact current exposure and witness view, then delegates once through the existing truth-neutral
+presentation route without consuming evidence. Delay retains the existing recovery candidate,
+delegates request construction once with the typed delay request's exact authoritative world-event
+definitions, and explicitly starts only that exact composed request after initializing recovery
+authority from its exact event-log and world-time snapshots. Rejected calls cannot consume a queued
+recovery model. Null, rebuilt, stale, replaced, foreign, wrong-branch, ineligible, non-current, and
+repeated calls remain inert. The coordinator defines no recovery rule, does not observe or apply the
+started delay recovery, and does not route influence. Separate switch-gated main-scene smokes carry
+the five earlier branches and the delay request/start path while ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
