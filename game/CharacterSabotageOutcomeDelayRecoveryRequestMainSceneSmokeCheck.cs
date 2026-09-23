@@ -6,7 +6,7 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Checks one exact eligible delay outcome through recovery-request composition.</summary>
+/// <summary>Checks one exact eligible delay outcome through completed recovery routing.</summary>
 public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable =
@@ -41,7 +41,7 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
     private WorldEvent recoveryEvent = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingDelayModel delayModel = null!;
-    private PendingRecoveryModel recoveryModel = null!;
+    private CharacterSabotageOutcomeDelayRecoverySelectingModel recoveryModel = null!;
     private int processFrames;
     private int stage;
 
@@ -138,6 +138,10 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
         {
             StartRecoveryRequest();
         }
+        else if (stage == 4)
+        {
+            CompleteRecoveryRoute();
+        }
         else
         {
             Fail("Main-scene delay recovery request entered an unknown stage.");
@@ -155,7 +159,10 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
             && recoveryState.EventLog is null
             && recoveryState.WorldTime is null
             && recoveryState.LatestAppliedResult is null
+            && recovery.CompletedResult is null
+            && recovery.RecoveredResult is null
             && !recovery.TryCompose(null, null)
+            && !recovery.TryComplete(null, null)
             && StateIsInitial();
         bool authored = delayAuthor.TryCreate(
             request,
@@ -302,6 +309,7 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
             [CharacterSabotageActionKind.Delay]);
 
         if (!recoveryModels.TrySupplyModel(recoveryModel)
+            || recovery.TryComplete(recovery.AuthorRequest, requestToStart)
             || recovery.TryStart(rebuiltAuthor, requestToStart)
             || recovery.TryStart(recovery.AuthorRequest, rebuiltRequest)
             || recoveryModel.CallCount != 0
@@ -328,12 +336,65 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
             return;
         }
 
+        stage = 4;
+    }
+
+    private void CompleteRecoveryRoute()
+    {
+        if (recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running)
+        {
+            return;
+        }
+
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest started = recovery.StartedRequest!;
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest rebuilt = new(
+            started.Actor,
+            started.WorldEvents,
+            started.EventLog,
+            started.WorldTime,
+            started.Candidates);
+        CharacterSabotageActionConsiderationRequest rebuiltAuthor = new(
+            request.Actor,
+            [CharacterSabotageActionKind.Delay]);
+        if (recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Completed
+            || recoveryTask.Result is not { } completed
+            || recoveryState.LatestAppliedResult is not { } applied)
+        {
+            Fail("Main-scene exact delay recovery did not complete through its resolution owner.");
+            return;
+        }
+
+        if (!ReferenceEquals(completed.Request, started)
+            || !ReferenceEquals(completed.SelectedCandidate, started.Candidates.Single())
+            || !ReferenceEquals(applied.Candidate, completed.SelectedCandidate)
+            || recovery.TryComplete(rebuiltAuthor, started)
+            || recovery.TryComplete(recovery.AuthorRequest, rebuilt)
+            || !recovery.TryComplete(recovery.AuthorRequest, started)
+            || !ReferenceEquals(recovery.CompletedResult, completed)
+            || !ReferenceEquals(recovery.RecoveredResult, applied)
+            || !ReferenceEquals(recovery.RecoveredEventLog, applied.EventLog)
+            || !ReferenceEquals(recovery.RecoveredWorldTime, applied.WorldTime)
+            || recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
+            || recoveryTask.Result is not null
+            || !ReferenceEquals(recoveryState.EventLog, applied.EventLog)
+            || !ReferenceEquals(recoveryState.WorldTime, applied.WorldTime)
+            || applied.EventLog.Entries.Count != started.EventLog.Entries.Count + 1
+            || !ReferenceEquals(applied.EventLog.Entries[^1], recoveryEvent.EventId)
+            || !ReferenceEquals(applied.WorldTime.CurrentEventId, recoveryEvent.EventId)
+            || recovery.TryComplete(recovery.AuthorRequest, started)
+            || recoveryModel.CallCount != 1
+            || !ReferenceEquals(delayState.LatestAppliedResult, started.Candidates[0].DelayResult))
+        {
+            Fail("Main-scene exact completed delay recovery did not route and acknowledge once.");
+            return;
+        }
+
         GD.Print(
-            "Main-scene sabotage outcome delay recovery-request smoke passed: ordinary startup "
+            "Main-scene sabotage outcome delay recovery smoke passed: ordinary startup "
             + "stayed inert; one exact live delay selection retained its author, typed candidate, "
-            + "acknowledgement, applied outcome, authority, and eligibility tokens; and its existing "
-            + "owner composed one exact recovery request before an explicit exact start consumed one "
-            + "pending recovery model without resolving or applying recovery.");
+            + "acknowledgement, applied outcome, authority, and eligibility tokens; its exact recovery "
+            + "request completed through the existing resolution owner; and the generic route retained "
+            + "and acknowledged that one exact applied recovery without consuming another model.");
         GetTree().Quit();
     }
 
@@ -432,27 +493,4 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
         }
     }
 
-    private sealed class PendingRecoveryModel
-        : ICharacterTargetSabotageDelayRecoveryDecisionModel
-    {
-        public int CallCount { get; private set; }
-
-        public CharacterTargetSabotageDelayRecoveryConsiderationRequest? Request
-        {
-            get;
-            private set;
-        }
-
-        public ValueTask<CharacterTargetSabotageDelayRecoveryDecision> DecideAsync(
-            CharacterTargetSabotageDelayRecoveryConsiderationRequest value,
-            CancellationToken cancellationToken)
-        {
-            CallCount++;
-            Request = value;
-            TaskCompletionSource<CharacterTargetSabotageDelayRecoveryDecision> pending = new(
-                TaskCreationOptions.RunContinuationsAsynchronously);
-            cancellationToken.Register(() => pending.TrySetCanceled(cancellationToken));
-            return new ValueTask<CharacterTargetSabotageDelayRecoveryDecision>(pending.Task);
-        }
-    }
 }

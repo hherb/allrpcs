@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.WorldEvents;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -17,6 +18,7 @@ public partial class CharacterSabotageOutcomeDelayRecoveryCoordinator : Node
     private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests = null!;
     private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
     private CharacterTargetSabotageDelayRecoveryTaskController recoveryTask = null!;
+    private CharacterTargetSabotageDelayRecoveryResolutionCoordinator recoveryResults = null!;
     private CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController recoveryFlow =
         null!;
 
@@ -32,6 +34,22 @@ public partial class CharacterSabotageOutcomeDelayRecoveryCoordinator : Node
         get;
         private set;
     }
+
+    /// <summary>Gets the exact completed recovery result acknowledged by this generic route.</summary>
+    public CharacterTargetSabotageDelayRecoveryConsiderationResult? CompletedResult
+    {
+        get;
+        private set;
+    }
+
+    /// <summary>Gets the exact applied Delay recovery retained as this route's terminal output.</summary>
+    public CharacterTargetSabotageDelayRecoveryResult? RecoveredResult { get; private set; }
+
+    /// <summary>Gets the exact fresh event log retained with the terminal Delay recovery.</summary>
+    public WorldEventLogSnapshot? RecoveredEventLog { get; private set; }
+
+    /// <summary>Gets the exact fresh world time retained with the terminal Delay recovery.</summary>
+    public WorldTimeSnapshot? RecoveredWorldTime { get; private set; }
 
     /// <inheritdoc />
     public override void _Ready()
@@ -59,6 +77,8 @@ public partial class CharacterSabotageOutcomeDelayRecoveryCoordinator : Node
             "../CharacterTargetSabotageDelayRecoveryController");
         recoveryTask = GetNode<CharacterTargetSabotageDelayRecoveryTaskController>(
             "../CharacterTargetSabotageDelayRecoveryTaskController");
+        recoveryResults = GetNode<CharacterTargetSabotageDelayRecoveryResolutionCoordinator>(
+            "../CharacterTargetSabotageDelayRecoveryResolutionCoordinator");
         recoveryFlow =
             GetNode<CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController>(
                 "../CharacterTargetSabotageDelayRecoveryCandidateConsiderationFlowController");
@@ -173,6 +193,82 @@ public partial class CharacterSabotageOutcomeDelayRecoveryCoordinator : Node
         }
 
         StartedRequest = expectedRequest;
+        return true;
+    }
+
+    /// <summary>Retains and acknowledges only the exact completed recovery for this Delay route.</summary>
+    public bool TryComplete(
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest? expectedRequest)
+    {
+        if (expectedAuthorRequest is null
+            || expectedRequest is null
+            || CompletedResult is not null
+            || RecoveredResult is not null
+            || RecoveredEventLog is not null
+            || RecoveredWorldTime is not null
+            || !ReferenceEquals(AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(eligibility.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(binding.SelectedAuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(
+                binding.AcknowledgedResult?.SelectedActionKind,
+                CharacterSabotageActionKind.Delay)
+            || !ReferenceEquals(Request, expectedRequest)
+            || !ReferenceEquals(StartedRequest, expectedRequest)
+            || !ReferenceEquals(recoveryRequests.Request, expectedRequest)
+            || eligibility.EligibilityCount != 1
+            || eligibility.DelayCandidate is not { } candidate
+            || expectedRequest.Candidates.Count != 1
+            || !ReferenceEquals(expectedRequest.Candidates[0], candidate)
+            || !ReferenceEquals(recoveryCandidates.Candidate, candidate)
+            || !ReferenceEquals(delayState.LatestAppliedResult, candidate.DelayResult)
+            || !ReferenceEquals(delayState.EventLog, expectedRequest.EventLog)
+            || !ReferenceEquals(delayState.WorldTime, expectedRequest.WorldTime)
+            || recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Completed
+            || recoveryTask.Result is not { } completed
+            || !ReferenceEquals(completed.Request, expectedRequest)
+            || !ReferenceEquals(completed.SelectedCandidate, candidate)
+            || recoveryState.LatestAppliedResult is not { } recovered
+            || !ReferenceEquals(recovered.Candidate, candidate)
+            || !ReferenceEquals(recoveryState.EventLog, recovered.EventLog)
+            || !ReferenceEquals(recoveryState.WorldTime, recovered.WorldTime)
+            || !IsExactRecoveryAppend(expectedRequest, recovered, candidate)
+            || !recoveryResults.TryAcknowledgeCompletedResult())
+        {
+            return false;
+        }
+
+        CompletedResult = completed;
+        RecoveredResult = recovered;
+        RecoveredEventLog = recovered.EventLog;
+        RecoveredWorldTime = recovered.WorldTime;
+        return true;
+    }
+
+    private static bool IsExactRecoveryAppend(
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest request,
+        CharacterTargetSabotageDelayRecoveryResult recovered,
+        CharacterTargetSabotageDelayRecoveryCandidate candidate)
+    {
+        if (ReferenceEquals(recovered.EventLog, request.EventLog)
+            || ReferenceEquals(recovered.WorldTime, request.WorldTime)
+            || recovered.EventLog.Entries.Count != request.EventLog.Entries.Count + 1
+            || !ReferenceEquals(recovered.EventLog.Entries[^1], candidate.RecoveryEvent.EventId)
+            || !ReferenceEquals(recovered.WorldTime.CurrentEventId, candidate.RecoveryEvent.EventId))
+        {
+            return false;
+        }
+
+        for (int index = 0; index < request.EventLog.Entries.Count; index++)
+        {
+            if (!ReferenceEquals(
+                    recovered.EventLog.Entries[index],
+                    request.EventLog.Entries[index]))
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 }
