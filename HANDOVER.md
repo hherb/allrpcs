@@ -2,77 +2,77 @@
 
 ## Current state
 
-`main` includes merged PR #336 at `eb1f41b`. Branch
-`codex/phase-7-sabotage-action-result-followup` completes **Phase 7qh** through
-**Phase 7qk**. Implementation commit `0fea221` is published in draft PR #337 targeting `main`. The
+`main` includes merged PR #337 at `137c6e4`. Branch
+`codex/phase-7-sabotage-action-applied-result` completes **Phase 7ql** and **Phase 7qm**. The
+implementation is committed at `0eb74ae` and published in draft PR #338 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-The fresh generic follow-up Move task now has one exact observation seam. It accepts only the exact
-completed result for `CharacterSabotageActionMoveCompositionStartCoordinator.StartedRequest` while
-the complete admission, authoring, candidate-binding, composition, and start graph remains current.
-It retains the exact result once without acknowledging it.
+The scheduled typed follow-up Move task now retains internal-only references to the exact
+authoritative placement and evidence snapshots it installs for a completed result. Reset clears
+those task-owned tokens. Its public surface remains unchanged.
 
-`CharacterSabotageActionMoveResultBindingCoordinator` binds only that observed result to the guarded
-author's exact `FollowUpCandidate` binding. It then acknowledges only the same bound result, resets
-the scheduled generic task to idle, clears the observer, and retains the exact acknowledged result
-and candidate-binding tokens.
+`CharacterSabotageActionMoveAppliedResultObservationCoordinator` accepts only the exact completed
+result for `CharacterSabotageActionMoveSpecificRequestStartCoordinator.StartedRequest`, requires
+the exact retained `FollowUpCandidate`, and requires the live Move controller to own the task's
+exact resolved snapshots. It retains that result and those snapshots once without acknowledging.
+The retained request graph deliberately does not require its pre-application snapshots to remain
+current.
 
-`CharacterSabotageActionMoveSpecificRequestCoordinator` composes those tokens into one fresh typed
-Move request containing the exact actor, access, world objects, current authoritative placements and
-evidence, and only the exact follow-up candidate. Its start coordinator revalidates the complete
-graph and starts only that exact request on a separate fresh scene-owned Move task. Rejected
-preflight paths preserve the queued one-shot model; the successful path calls it once.
+`CharacterSabotageActionMoveAppliedResultBindingCoordinator` binds only that exact observation and
+its exact authoritative snapshots. It acknowledges only the same bound result, resets the scheduled
+typed task to idle, clears the observer, and retains the exact acknowledged result, placement, and
+evidence tokens. Rebuilt result, request, candidate, placement, evidence, stale, null, running,
+abstaining, and repeated paths remain inert.
 
-The new typed task is left running and its result is not observed or acknowledged. Neither author
-is reset, the empty ordinary-turn slot remains unreserved, all first-cycle owners remain retained,
-and ordinary startup remains inert. No cadence, timer, provider, credential, persistence, UI/input,
-navigation, perception, dialogue, recovery, or new Domain behavior was added.
+No terminal route, recovery candidate, evidence-view eligibility, recovery, turn completion,
+ordinary-turn reservation, author reset, cadence, timer, provider, credential, persistence,
+UI/input, navigation, perception, dialogue, or new Domain effect was added. Ordinary startup stays
+inert and both follow-up models are called once.
 
 ## Validation and review
 
-- All four slices were test-first: each focused game build failed only for the deliberately missing
-  next verifier before its implementation was added.
-- The focused switch-gated Move proof passes host-local through exact generic observation, typed
-  candidate binding, acknowledgement, fresh typed request composition, and explicit fresh-task
-  start. Generic and typed follow-up models are each called once; rejected preflight calls consume
-  neither model.
-- Sandboxed Godot still cannot open `user://logs`; the identical focused command passes host-local
-  with Godot 4.6.3 Mono and .NET 8.
+- Both slices were test-first; each focused build first failed only for its deliberately absent next
+  coordinator.
+- The focused Move proof passes host-local with Godot 4.6.3 Mono and .NET 8 through exact applied
+  result observation, snapshot binding, acknowledgement, and typed-task reset.
+- Sandboxed Godot cannot open `user://logs`; the identical focused command passes host-local.
 - Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
   Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
-- Draft PR #337's five hosted jobs for head `c116ccb` failed before execution with `steps: []` in
-  run `35864216583`. No checkout, build, test, smoke, or unsigned development export step ran, so
+- Draft PR #338's five hosted jobs for head `0eb74ae` failed before execution with `steps: []` in
+  run `35868037777`. No checkout, build, test, smoke, or unsigned development export step ran, so
   this is Actions/account infrastructure state rather than hosted product-test evidence.
-- Session review covered exact-reference provenance, completed-task authority, acknowledgement
-  order, candidate binding, preflight model preservation, separate task ownership, unchanged prior
-  owners and ordinary-turn state, inert startup, docstrings, 120-character limits, the under-500-line
-  focused smoke, formatting, and whitespace. No unresolved review findings remain.
+- Session review found and fixed one exact-provenance gap by retaining the task's installed snapshot
+  references internally. The first full suite then caught and fixed an accidental public-surface
+  expansion; the corrected task smoke and complete quality suite pass.
+- Review covered exact-reference provenance, selected-result authority, pre/post-application state,
+  acknowledgement order, reset clearing, rejected/repeated paths, unchanged prior owners and
+  ordinary-turn state, inert startup, docstrings, file/line limits, formatting, and whitespace. No
+  unresolved review findings remain.
 
 ## Exact next bounded slice
 
-Take **Phase 7ql: observe one exact completed applied typed follow-up Move result without
-acknowledging or routing it**.
+Take **Phase 7qn: author one exact follow-up Move recovery candidate without publishing eligibility
+or starting recovery**.
 
 Acceptance boundary:
 
-1. Test-first add one scene-owned, one-shot observation seam for the scheduled typed Move task. It
-   must accept only the result whose request is the exact
-   `CharacterSabotageActionMoveSpecificRequestStartCoordinator.StartedRequest` after that exact task
-   reaches `Completed`.
-2. Require the selected candidate to be the exact retained `FollowUpCandidate` and require the live
-   Move controller to own the result's exact fresh placement and evidence snapshots. Revalidate the
-   retained acknowledged generic result, typed candidate binding, composed request, and start tokens
-   without incorrectly requiring the request's pre-application snapshots to remain current.
-3. Reject null, running, failed, cancelled, abstaining, rebuilt-result, rebuilt-request,
-   foreign-candidate, stale-authority, replaced-task, and repeated paths without another model call
-   or changes to any retained owner.
-4. Extend only the focused switch-gated Move proof. Do not acknowledge or reset the typed task,
-   bind or publish its authoritative outcome, recover the move, retain/reset a terminal route,
-   complete/admit another sabotage turn, reserve the ordinary turn, or start another cycle.
+1. Test-first add one scene-owned, one-shot coordinator that accepts only the exact acknowledged
+   result, placement, and evidence tokens retained by
+   `CharacterSabotageActionMoveAppliedResultBindingCoordinator` while that full graph remains
+   current.
+2. Require the selected candidate to be the exact retained `FollowUpCandidate`. Resolve its target's
+   exact pre-move source placement from the acknowledged typed request's placement snapshot and
+   retain one fresh `CharacterObjectSabotageMoveRecoveryCandidate` containing those exact instances.
+3. Reject null, rebuilt-result, rebuilt-placement, rebuilt-evidence, foreign-candidate,
+   missing/ambiguous-source-placement, stale-authority, and repeated paths without state changes or
+   another model call.
+4. Extend only the focused switch-gated Move proof. Do not create or publish an evidence view,
+   publish recovery eligibility, recover the move, retain/reset a terminal route, complete/admit
+   another sabotage turn, reserve the ordinary turn, reset either author, or start another cycle.
 5. Keep ordinary startup inert and preserve all existing exclusions: no cadence, timers, provider
    transport, credentials, persistence, UI/input, navigation, perception, dialogue delivery, or new
    Domain behavior.
-6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the
-   following slice to acknowledge and bind only that exact observed typed result to its current
-   authoritative Move outcome.
+6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
+   slice to pair that exact recovery candidate with an explicitly supplied current evidence view
+   without invoking recovery.

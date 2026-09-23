@@ -64,6 +64,24 @@ public partial class CharacterSabotageActionMoveSpecificRequestCoordinator : Nod
     internal bool IsCurrentRequest(
         CharacterObjectSabotageMoveConsiderationRequest? expectedRequest)
     {
+        CharacterSabotageActionCandidateBinding<CharacterObjectSabotageMoveCandidate>?
+            candidateBinding = binding.CandidateBinding;
+        return IsRetainedRequest(expectedRequest)
+            && ReferenceEquals(Request!.Placements, state.Placements)
+            && ReferenceEquals(Request.Evidence, state.Evidence)
+            && CharacterObjectSabotageMovePolicy.CanApply(
+                Request.Character,
+                Request.PhysicalAccess,
+                Request.WorldObjects,
+                Request.Placements,
+                Request.Evidence,
+                candidateBinding!.Candidate);
+    }
+
+    /// <summary>Checks retained request provenance after its snapshots have been applied.</summary>
+    internal bool IsRetainedRequest(
+        CharacterObjectSabotageMoveConsiderationRequest? expectedRequest)
+    {
         CharacterSabotageActionConsiderationResult? result = binding.AcknowledgedResult;
         CharacterSabotageActionCandidateBinding<CharacterObjectSabotageMoveCandidate>?
             candidateBinding = binding.CandidateBinding;
@@ -73,16 +91,7 @@ public partial class CharacterSabotageActionMoveSpecificRequestCoordinator : Nod
             && ReferenceEquals(Request.Character, source.Character)
             && ReferenceEquals(Request.PhysicalAccess, source.PhysicalAccess)
             && ReferenceEquals(Request.WorldObjects, source.WorldObjects)
-            && ReferenceEquals(Request.Placements, state.Placements)
-            && ReferenceEquals(Request.Evidence, state.Evidence)
             && Request.Candidates.Count == 1
-            && ReferenceEquals(Request.Candidates[0], candidateBinding!.Candidate)
-            && CharacterObjectSabotageMovePolicy.CanApply(
-                Request.Character,
-                Request.PhysicalAccess,
-                Request.WorldObjects,
-                Request.Placements,
-                Request.Evidence,
-                candidateBinding.Candidate);
+            && ReferenceEquals(Request.Candidates[0], candidateBinding!.Candidate);
     }
 }

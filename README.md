@@ -1017,7 +1017,17 @@ current placement and evidence snapshots. Its explicit start coordinator revalid
 graph and starts only that request on a separate fresh task, preserving its queued model across
 rejected preflight. These seams do not reset either author, reserve the ordinary turn, clear prior
 provenance, add automatic cadence, or change ordinary startup behavior. The newly started typed
-result remains unobserved and unacknowledged.
+result is observed only after that exact task completes, selects the retained follow-up candidate,
+and installs fresh authoritative placement and evidence snapshots. The observer retains that exact
+result and those exact live snapshots without requiring the request's pre-application snapshots to
+remain current.
+
+`CharacterSabotageActionMoveAppliedResultBindingCoordinator` binds only that exact observation to
+the same exact authoritative snapshots. It then acknowledges only the bound result, resets only the
+scheduled typed task, clears the observer, and retains the exact acknowledged result, placements,
+and evidence. Rebuilt result, request, candidate, placement, evidence, stale, null, running, and
+repeated paths remain inert. No terminal route, recovery, turn completion, ordinary-turn
+reservation, author reset, or additional cycle is started, and ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

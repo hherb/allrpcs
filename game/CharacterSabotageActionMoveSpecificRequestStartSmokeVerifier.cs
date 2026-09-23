@@ -61,6 +61,11 @@ internal static class CharacterSabotageActionMoveSpecificRequestStartSmokeVerifi
             return false;
         }
 
-        return true;
+        return CharacterSabotageActionMoveAppliedResultObservationSmokeVerifier.PassesMainScene(
+            scene,
+            source,
+            state,
+            model,
+            actionModel);
     }
 }

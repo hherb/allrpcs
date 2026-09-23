@@ -461,7 +461,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "composed one fresh generic request; only that request started, its exact completed "
             + "result was observed, bound to the follow-up candidate, and acknowledged; one fresh "
             + "typed Move request then retained current authority and started on a separate fresh "
-            + "task without reserving the slot, clearing prior owners, or enabling automatic sabotage.");
+            + "task; its exact applied result and fresh authoritative snapshots were observed, "
+            + "bound, and acknowledged without routing, reserving the slot, clearing prior owners, "
+            + "or enabling automatic sabotage.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
