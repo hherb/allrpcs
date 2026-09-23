@@ -909,16 +909,17 @@ recovery request, and changes no source, evidence, perception, presentation, eve
 relationship, or provider state. The switch-gated concealment smoke proves exact eligibility after
 outcome acknowledgement while ordinary startup remains inert.
 
-`CharacterSabotageOutcomeRecoveryCoordinator` routes only the exact retained concealment
-eligibility through the existing concealment controller's recovery transition. It rechecks the
+`CharacterSabotageOutcomeRecoveryCoordinator` routes only the exact retained concealment, move, or
+substitution eligibility through that branch's existing recovery transition. It rechecks the
 generic author token, typed result and candidate, eligibility-owned evidence view, branch-owned
-acknowledgement snapshots, and still-current concealment and evidence references immediately before
-delegation. Successful routing retains the exact recovered concealment snapshot and preserves the
-authoritative evidence snapshot. Null, rebuilt, stale, replaced, wrong-branch, ineligible,
+acknowledgement snapshots, and still-current authoritative state immediately before delegation.
+Movement additionally retains the source's exact pre-move placement token. Successful routing
+retains only the exact recovered concealment, placement, or substitution snapshot and preserves the
+authoritative evidence snapshot. Null, rebuilt, stale, replaced, foreign, wrong-branch, ineligible,
 non-current, and repeated calls remain inert. The coordinator defines no recovery rule, starts no
-consideration, consumes no model, and does not route movement, substitution, contamination,
-misquotation, delay, or influence. The switch-gated main-scene smoke carries one exact eligible
-concealment branch through that existing transition while ordinary startup remains inert.
+consideration, consumes no model, and does not route contamination, misquotation, delay, or
+influence. Separate switch-gated main-scene smokes carry exact eligible concealment, move, and
+substitution branches through their existing transitions while ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

@@ -222,6 +222,10 @@ ALLRPCS_SABOTAGE_ACTION_CONSIDERATION_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_SABOTAGE_ACTION_REQUEST_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_SABOTAGE_OUTCOME_MOVE_RECOVERY_MAIN_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_SABOTAGE_OUTCOME_SUBSTITUTION_RECOVERY_MAIN_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
 godot --headless --path "$repository_root/game" \
     res://CharacterDialogueMisquotationEvidenceTaskControllerSmokeCheck.tscn --quit-after 30
 godot --headless --path "$repository_root/game" \

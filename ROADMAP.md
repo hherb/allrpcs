@@ -664,6 +664,10 @@ Current continuation:
   while preserving branch acknowledgement and current-authority reference identity.
 - [x] Route one exact eligible concealment outcome through its existing evidence-gated recovery
   transition without adding a new recovery rule or consuming another model.
+- [x] Route one exact eligible move outcome through its existing evidence-gated recovery transition
+  while retaining its exact source placement and consuming no additional model.
+- [x] Route one exact eligible substitution outcome through its existing evidence-gated recovery
+  transition without rebuilding its candidate or consuming another model.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

@@ -298,6 +298,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificOutcomeCoordinator.cs" id="296_sabotage_action_specific_outcome"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeEligibilityCoordinator.cs" id="297_sabotage_outcome_eligibility"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeRecoveryCoordinator.cs" id="298_sabotage_outcome_recovery"]
+[ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
+[ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1462,6 +1464,12 @@ script = ExtResource("280_sabotage_action_main_scene_check")
 
 [node name="CharacterSabotageActionRequestMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("282_sabotage_action_request_main_scene_check")
+
+[node name="CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("299_sabotage_outcome_move_recovery_check")
+
+[node name="CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("300_sabotage_outcome_substitution_recovery_check")
 
 [node name="TemporaryCharacterObjectSabotageContaminationConsiderationMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("221_object_sabotage_contamination_check")
