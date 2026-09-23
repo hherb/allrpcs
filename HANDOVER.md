@@ -4,7 +4,7 @@
 
 `main` includes merged PR #326 at `3761b4a`. Branch
 `codex/phase-7-sabotage-followup-routing` completes **Phase 7pl** and **Phase 7pm**.
-The branch is not yet published.
+Implementation commit `2def243` is published in draft PR #327 targeting `main`.
 
 `CharacterSabotageOutcomeRecoveryCoordinator` now routes two additional retained exact eligibility
 branches through their existing owners:
@@ -41,7 +41,8 @@ remain unrouted. The unrelated untracked
   inertness, public-surface containment, documentation, file size, formatting, and whitespace. One
   review strengthening added a fresh exact misquotation candidate-binding check and exact retained
   selection/presentation checks; no further defect was found.
-- Publication is pending.
+- Draft PR #327 is open; hosted-check state must be queried fresh rather than inferred from local
+  evidence.
 
 ## Exact next bounded slice
 
