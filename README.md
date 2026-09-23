@@ -1050,6 +1050,15 @@ turn slot remains empty. Null, rebuilt, foreign-actor, wrong-kind, replaced-plac
 active-slot, and repeated paths remain inert. These seams do not reserve the slot, authorize scheduling,
 start another cycle, clear prior owners, consume another model, or enable automatic sabotage.
 
+The still-current follow-up boundary can now retain one fresh ordinary-turn scheduling authorization
+containing only its exact admission and empty turn reference. A distinct explicit cycle owner consumes
+only that exact authorization once, and the existing pure cycle-start gate revalidates the resulting
+boundary before a distinct one-shot admission owner retains it for future authoring. Null, rebuilt,
+malformed-provenance, changed-slot, stale-route, stale-recovery, foreign-chain, and repeated paths
+remain inert. These seams do not reserve the ordinary turn, invoke an action author, compose or start a
+request, reset either prior author, clear prior provenance, consume another model, or enable automatic
+sabotage.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
