@@ -33,6 +33,7 @@ public partial class CharacterSabotageOutcomeMisquotationViewMainSceneSmokeCheck
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeRecoveryCoordinator recovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingMisquotationModel misquotationModel = null!;
     private int processFrames;
@@ -88,6 +89,8 @@ public partial class CharacterSabotageOutcomeMisquotationViewMainSceneSmokeCheck
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeRecoveryCoordinator>(
             "../CharacterSabotageOutcomeRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         actionModel = new();
         misquotationModel = new();
         SetProcess(true);
@@ -259,6 +262,14 @@ public partial class CharacterSabotageOutcomeMisquotationViewMainSceneSmokeCheck
             || !ReferenceEquals(presentation.DeliveredEvent, source.DeliveredEvent)
             || actionModel.CallCount != 1
             || misquotationModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Misquote)
+            || !ReferenceEquals(terminalRoute.MisquotationPresentation, presentation)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Misquote)
             || recovery.TryRouteMisquotation(
                 eligibility.AuthorRequest,
                 exposure,
@@ -272,7 +283,8 @@ public partial class CharacterSabotageOutcomeMisquotationViewMainSceneSmokeCheck
             "Main-scene sabotage outcome misquotation-view smoke passed: ordinary startup stayed "
             + "inert; one exact live misquotation selection retained its author, evidence, "
             + "acknowledgement, exposure, and witness-view tokens; and the existing truth-neutral "
-            + "presentation route projected it once without consuming evidence or another model.");
+            + "presentation route projected it once without consuming evidence or another model, "
+            + "then the exact terminal route was retained without scheduling another action.");
         GetTree().Quit();
     }
 

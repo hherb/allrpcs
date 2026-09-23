@@ -2,69 +2,68 @@
 
 ## Current state
 
-`main` includes merged PR #329 at `1739455`. Branch
-`codex/phase-7-sabotage-influence-recovery-route` completes **Phase 7pr** and **Phase 7ps**.
-Implementation commit `9391b9b` is published in draft PR #330 targeting `main`.
+`main` includes merged PR #330 at `aad6ead`. Branch
+`codex/phase-7-sabotage-terminal-route` completes **Phase 7pt** and **Phase 7pu**.
+Implementation commit `06ebab4` is published in draft PR #331 targeting `main`.
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-`CharacterSabotageOutcomeInfluenceRecoveryCoordinator` now explicitly starts only its retained
-exact generic Influence recovery request. It rechecks the acknowledged generic selection, typed
-request/result/outcome, exact inverse candidate, current influence authority, one-shot sources,
-uninitialized recovery authority, and idle task before initializing from the exact relationship or
-consuming the queued model. Rebuilt, replaced, foreign, wrong-branch, stale, occupied, and repeated
-paths remain inert and preserve the queued model.
+`CharacterSabotageTerminalRouteCoordinator` is dependency-ordered after the seven existing route
+owners. It accepts only the exact acknowledged generic author request and canonical selected kind
+after exactly one route exposes its final current output. It retains the exact recovered
+concealment, placements, substitutions, contamination, misquotation presentation, Delay recovery,
+or Influence recovery without creating a common value-shaped result.
 
-The same coordinator now accepts only that started request's exact completed selected recovery after
-the existing resolution owner installs the fresh restored relationship. It verifies the complete
-dimension order and values, exact retained reason prefix, exact appended recovery reason, candidate,
-author, request, and current typed/generic provenance; acknowledges the result once; and retains the
-exact completed consideration, applied recovery, and relationship as terminal Influence output.
-Ordinary startup remains inert.
+The same coordinator explicitly resets only its retained references once for the exact retained
+author request and kind. It preserves reset provenance and blocks repeated reset or re-retention.
+Every branch owner, authoritative snapshot, presentation, task, result, and model source remains
+unchanged. Ordinary startup remains inert, and no action is scheduled.
 
 ## Validation and review
 
-- Test-first game builds failed only for the deliberately missing Phase 7pr `TryStart` surface and
-  Phase 7ps terminal route surface before each implementation was added.
-- The focused switch-gated Influence smoke passes host-local through exact generic selection, typed
-  application, recovery composition, explicit recovery start, existing resolution, one-shot generic
-  acknowledgement, and terminal exact-output retention without another model call.
-- Sandboxed Godot still hits the known `user://logs` permission crash; the identical focused command
-  passes host-local with Godot 4.6.3 Mono.
+- Test-first game builds failed only for the deliberately missing Phase 7pt coordinator and Phase
+  7pu reset surface before each implementation was added.
+- All seven existing switch-gated route smokes pass host-local through exact terminal retention.
+  The Move proof additionally passes exact rejected reset inputs, one successful reset, preserved
+  branch owner and authoritative placement, repeated-reset rejection, and blocked re-retention.
+- Sandboxed Godot still hits the known `user://logs` permission crash; the identical focused
+  commands pass host-local with Godot 4.6.3 Mono.
 - Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
   Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
   The sandboxed run reached the zero-warning build before VSTest hit its known loopback restriction;
   the identical host-local command passed.
-- Session review covers exact author/request/result/outcome/candidate provenance, current influence
-  and recovery authority, queued-model preservation, one-shot start/completion/acknowledgement,
-  complete restored relationship dimensions and reason history, ordinary-startup inertness, public
-  surface containment, file size, formatting, and whitespace. Review strengthened the terminal gate
-  to verify all restored dimensions and the exact prior-reason prefix; no further defect was found.
-- Draft PR #330's five hosted jobs failed before execution with `steps: []`. No checkout, build,
+- Session review covers exact author/kind/output provenance, canonical branch order, exactly-one
+  output gating, current authoritative snapshots, stale and multiple-output rejection, one-shot
+  retention/reset, preserved owners and models, ordinary-startup inertness, public docstrings,
+  practical file-size limits, formatting, and whitespace. Review moved the reset proof out of the
+  concealment smoke after that file crossed 500 lines; it is now 498 lines. No further defect was
+  found.
+- Draft PR #331's five hosted jobs failed before execution with `steps: []`. No checkout, build,
   test, smoke, or unsigned development export step ran, so this is Actions/account infrastructure
   state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7pt: retain one exact terminal generic sabotage route result across the seven canonical
-branches without scheduling another action**.
+Take **Phase 7pv: expose one exact completed sabotage-turn token after terminal-route reset without
+scheduling another sabotage action**.
 
 Acceptance boundary:
 
-1. Test-first add one scene-owned one-shot terminal coordinator that accepts only the exact selected
-   generic author request and canonical action kind after that branch's existing route owner exposes
-   its final exact output.
-2. Support the canonical order `Conceal`, `Move`, `Substitute`, `Contaminate`, `Misquote`, `Delay`,
-   `Influence`; require exactly one branch output and retain it by exact reference without copying or
-   introducing a common value-shaped replacement.
-3. Reject null, rebuilt, replaced, foreign, wrong-kind, incomplete, stale, multiple-branch, and
-   repeated inputs without clearing or changing any branch owner, authoritative state, presentation,
-   task, model source, or retained terminal output.
-4. Extend only focused switch-gated proofs. Ordinary startup must remain inert; do not reset prior
-   owners, schedule another sabotage action, or create a loop/cadence.
+1. Test-first add one scene-owned one-shot completion coordinator that accepts only the terminal
+   coordinator's exact `ResetAuthorRequest` and `ResetActionKind` after its retained output has been
+   cleared and exactly one existing branch owner still retains the completed route.
+2. Retain the reset request's exact actor, exact generic author request, and canonical action kind as
+   completion provenance. Do not copy the route output, rebuild an actor/request/kind, or infer a
+   different branch.
+3. Reject null, pre-reset, rebuilt, replaced, foreign-actor, wrong-kind, stale-owner,
+   multiple-branch, and repeated inputs without changing the terminal coordinator, any prior route
+   owner, authoritative state, presentation, task, result, model source, or completion output.
+4. Extend only the focused switch-gated Move proof. Ordinary startup must remain inert; do not reset
+   any earlier owner, author another request, consume a model, schedule a turn, or create a loop or
+   cadence.
 5. Do not add provider transport, credentials, persistence, UI/input, timing, navigation, movement,
    perception, dialogue delivery, new Domain behavior, or a claim that ordinary enemy-agent
-   sabotage is now enabled.
+   sabotage is enabled.
 6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to define an explicit one-shot reset boundary for a fully retained terminal route before
-   any ordinary scheduling is considered.
+   slice to define a pure ordinary-scheduling eligibility gate for the exact completed-turn token,
+   not scheduling itself.

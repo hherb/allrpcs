@@ -32,6 +32,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
     private CharacterSabotageActionSpecificOutcomeCoordinator actionSpecificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator outcomeEligibility = null!;
     private CharacterSabotageOutcomeRecoveryCoordinator outcomeRecovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private WorldObjectConcealmentSnapshot initialConcealment = null!;
     private DiscoveryEvidenceSnapshot initialEvidence = null!;
     private RecordingModel model = null!;
@@ -84,6 +85,8 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         outcomeRecovery = GetNode<CharacterSabotageOutcomeRecoveryCoordinator>(
             "../CharacterSabotageOutcomeRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         initialConcealment = concealmentState.Concealment!;
         initialEvidence = concealmentState.Evidence!;
         model = new(value => new(value.Actor.Identity.Id, CharacterSabotageActionKind.Conceal));
@@ -143,6 +146,7 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             && actionSpecificOutcome.OutcomeCount == 0
             && outcomeEligibility.EligibilityCount == 0
             && outcomeRecovery.RecoveredConcealment is null
+            && terminalRoute.TerminalOutputCount == 0
             && !actionSpecificRequests.TryCompose(null, null)
             && !actionSpecificStart.TryStart()
             && !actionSpecificResult.TryObserveCompletedResult()
@@ -365,6 +369,16 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
                 actionSpecificOutcome.ConcealmentEvidence)
             || model.CallCount != 1
             || concealmentModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Conceal)
+            || !ReferenceEquals(terminalRoute.AuthorRequest, binding.SelectedAuthorRequest)
+            || !ReferenceEquals(terminalRoute.ActionKind, CharacterSabotageActionKind.Conceal)
+            || !ReferenceEquals(terminalRoute.RecoveredConcealment, recoveredConcealment)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Conceal)
             || outcomeRecovery.TryRecoverConcealment(
                 outcomeEligibility.AuthorRequest,
                 outcomeEligibility.ConcealmentCandidate,
@@ -385,7 +399,8 @@ public partial class CharacterSabotageActionRequestMainSceneSmokeCheck : Node
             + "started once through an explicit selecting model, applied, presented, observed, "
             + "acknowledged, bound to its exact current typed authoritative outcome, and passed "
             + "its existing evidence gate into one-shot eligibility before the exact retained "
-            + "concealment branch alone routed through its existing recovery transition.");
+            + "concealment branch alone routed through its existing recovery transition and was "
+            + "retained once as the exact terminal generic route output.");
         GetTree().Quit();
     }
 

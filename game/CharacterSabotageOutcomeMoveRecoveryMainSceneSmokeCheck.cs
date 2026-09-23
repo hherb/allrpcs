@@ -31,6 +31,7 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeRecoveryCoordinator recovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private RecordingActionModel actionModel = null!;
     private RecordingMoveModel moveModel = null!;
     private int processFrames;
@@ -80,6 +81,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeRecoveryCoordinator>(
             "../CharacterSabotageOutcomeRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         actionModel = new();
         moveModel = new();
         SetProcess(true);
@@ -245,6 +248,39 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             || !ReferenceEquals(moveState.Evidence, specificOutcome.MoveEvidence)
             || actionModel.CallCount != 1
             || moveModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || !ReferenceEquals(terminalRoute.RecoveredPlacements, recovered)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || terminalRoute.TryReset(rebuiltAuthor, CharacterSabotageActionKind.Move)
+            || terminalRoute.TryReset(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Conceal)
+            || !terminalRoute.TryReset(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || terminalRoute.AuthorRequest is not null
+            || terminalRoute.ActionKind is not null
+            || terminalRoute.RecoveredPlacements is not null
+            || terminalRoute.TerminalOutputCount != 0
+            || !ReferenceEquals(
+                terminalRoute.ResetAuthorRequest,
+                binding.SelectedAuthorRequest)
+            || !ReferenceEquals(
+                terminalRoute.ResetActionKind,
+                CharacterSabotageActionKind.Move)
+            || !ReferenceEquals(recovery.RecoveredPlacements, recovered)
+            || !ReferenceEquals(moveState.Placements, recovered)
+            || terminalRoute.TryReset(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Move)
             || recovery.TryRecoverMove(
                 eligibility.AuthorRequest,
                 eligibility.MoveCandidate,
@@ -259,7 +295,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "inert; one exact live move selection retained its author, typed candidate, "
             + "acknowledgement, outcome, evidence-view, and source-placement tokens; and the "
             + "existing recovery transition restored that placement once while preserving "
-            + "authoritative evidence and both model call counts.");
+            + "authoritative evidence and both model call counts, then the exact terminal route "
+            + "was retained and explicitly reset once without clearing its route owner or "
+            + "scheduling another action.");
         GetTree().Quit();
     }
 

@@ -30,6 +30,7 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcome = null!;
     private CharacterSabotageOutcomeEligibilityCoordinator eligibility = null!;
     private CharacterSabotageOutcomeDelayRecoveryCoordinator recovery = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private CharacterTargetSabotageDelayController delayState = null!;
     private CharacterTargetSabotageDelayRecoveryCandidateController recoveryCandidates = null!;
     private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests = null!;
@@ -85,6 +86,8 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
             "../CharacterSabotageOutcomeEligibilityCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeDelayRecoveryCoordinator>(
             "../CharacterSabotageOutcomeDelayRecoveryCoordinator");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         delayState = GetNode<CharacterTargetSabotageDelayController>(
             "../CharacterTargetSabotageDelayController");
         recoveryCandidates = GetNode<CharacterTargetSabotageDelayRecoveryCandidateController>(
@@ -383,6 +386,14 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
             || !ReferenceEquals(applied.WorldTime.CurrentEventId, recoveryEvent.EventId)
             || recovery.TryComplete(recovery.AuthorRequest, started)
             || recoveryModel.CallCount != 1
+            || !terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Delay)
+            || !ReferenceEquals(terminalRoute.DelayRecovery, applied)
+            || terminalRoute.TerminalOutputCount != 1
+            || terminalRoute.TryRetain(
+                binding.SelectedAuthorRequest,
+                CharacterSabotageActionKind.Delay)
             || !ReferenceEquals(delayState.LatestAppliedResult, started.Candidates[0].DelayResult))
         {
             Fail("Main-scene exact completed delay recovery did not route and acknowledge once.");
@@ -394,7 +405,8 @@ public partial class CharacterSabotageOutcomeDelayRecoveryRequestMainSceneSmokeC
             + "stayed inert; one exact live delay selection retained its author, typed candidate, "
             + "acknowledgement, applied outcome, authority, and eligibility tokens; its exact recovery "
             + "request completed through the existing resolution owner; and the generic route retained "
-            + "and acknowledged that one exact applied recovery without consuming another model.");
+            + "and acknowledged that one exact applied recovery without consuming another model "
+            + "before the exact terminal route was retained once.");
         GetTree().Quit();
     }
 
