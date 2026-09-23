@@ -4,8 +4,8 @@
 
 `main` includes merged PR #332 at `1c74861`. Branch
 `codex/phase-7-sabotage-scheduling-admission` completes **Phase 7px**, **Phase 7py**,
-and **Phase 7pz**. The unrelated untracked `scripts/code_statistics.py` remains untouched and must
-stay unstaged.
+and **Phase 7pz**. Implementation commit `af23070` is published in draft PR #333 targeting `main`.
+The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 `CharacterSabotageTurnAdmissionCoordinator` retains the completion coordinator's exact current
 token once only after the existing pure scheduling gate accepts that same instance. It copies no
@@ -42,6 +42,9 @@ observes, acknowledges, dispatches, applies, resets, or schedules a sabotage act
   node ordering, inert startup, unchanged prior owners, docstrings, the 499-line focused smoke,
   120-character limits, formatting, and whitespace. Review removed duplicated boundary checks and
   added the missing same-reference active-turn rejection; the full suite passed again afterward.
+- Draft PR #333's five hosted jobs failed before execution with `steps: []`. No checkout, build,
+  test, smoke, or unsigned development export step ran, so this is Actions/account infrastructure
+  state rather than hosted product-test evidence.
 
 ## Exact next bounded slice
 
