@@ -4,6 +4,7 @@
 
 `main` includes merged PR #324 at `fcdf3c1`. Branch
 `codex/phase-7-sabotage-outcome-eligibility` completes **Phase 7ph** and **Phase 7pi**.
+Implementation commit `65079ce` is published in draft PR #325 targeting `main`.
 
 Phase 7ph adds `CharacterSabotageOutcomeEligibilityCoordinator`, a one-shot, compile-time-typed
 eligibility seam after Phase 7pg. It accepts only the exact retained generic author request,
@@ -53,6 +54,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   second model call were enforced by production code but not explicitly asserted by the smoke. The
   smoke now rejects a distinct value-equal view and verifies both model call counts stay at one.
   Formatting, a zero-warning build, and the exact main-scene smoke pass after that review fix.
+- Draft PR #325's Pure C#, Headless Godot, and three unsigned development-build jobs all failed
+  with `steps: []`; no checkout, build, test, smoke, or export step ran. These hosted checks are
+  Actions/account infrastructure state and not hosted product-test evidence.
 
 ## Exact next bounded slice
 
