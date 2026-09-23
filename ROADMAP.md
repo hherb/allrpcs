@@ -700,6 +700,12 @@ Current continuation:
   creating a turn request, reserving the slot, or starting the sabotage flow.
 - [x] Purely revalidate the exact bound admission against the still-current ordinary turn reference
   before any future scheduling without mutating either owner.
+- [x] Retain one exact ordinary-turn scheduling authorization from the still-current revalidated
+  sabotage admission without reserving the slot or starting another sabotage action.
+- [x] Consume only that exact still-current authorization once at an explicit sabotage-cycle
+  boundary without copying provenance, reserving the turn, or starting any action.
+- [x] Purely revalidate the exact current sabotage-cycle boundary graph immediately before future
+  action authoring without mutating its authorization, admission, or ordinary turn.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
