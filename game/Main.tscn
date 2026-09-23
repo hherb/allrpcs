@@ -308,6 +308,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageCycleBoundaryCoordinator.cs" id="298h_sabotage_cycle_boundary"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthoringAdmissionCoordinator.cs" id="298i_sabotage_authoring_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveAuthoringCoordinator.cs" id="298j_sabotage_move_authoring"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCompositionCoordinator.cs" id="298k_sabotage_move_composition"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCompositionStartCoordinator.cs" id="298l_sabotage_move_composition_start"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -804,6 +806,18 @@ script = ExtResource("284_sabotage_action_move_request")
 
 [node name="CharacterSabotageActionMoveAuthoringCoordinator" type="Node" parent="."]
 script = ExtResource("298j_sabotage_move_authoring")
+
+[node name="CharacterSabotageActionMoveCompositionCoordinator" type="Node" parent="."]
+script = ExtResource("298k_sabotage_move_composition")
+
+[node name="ScheduledTemporaryCharacterSabotageActionModelSource" type="Node" parent="."]
+script = ExtResource("277_sabotage_action_model_source")
+
+[node name="ScheduledCharacterSabotageActionTaskController" type="Node" parent="."]
+script = ExtResource("278_sabotage_action_task")
+
+[node name="CharacterSabotageActionMoveCompositionStartCoordinator" type="Node" parent="."]
+script = ExtResource("298l_sabotage_move_composition_start")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

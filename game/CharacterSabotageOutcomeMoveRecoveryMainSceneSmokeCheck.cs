@@ -464,8 +464,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "boundary, revalidated there, authorized once, and consumed only at one explicit "
             + "sabotage-cycle boundary; that exact boundary was admitted once at the first "
             + "action-authoring seam, then guarded one fresh exact follow-up Move author output "
-            + "without reserving the slot, clearing a prior owner, composing a new generic "
-            + "request, or consuming another model.");
+            + "and composed it once into a fresh exact generic Move request, then explicitly "
+            + "started only that request on a fresh task without observing its result, reserving "
+            + "the slot, clearing a prior owner, or enabling automatic sabotage.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
@@ -496,5 +497,4 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
         GD.PushError(message);
         GetTree().Quit(1);
     }
-
 }
