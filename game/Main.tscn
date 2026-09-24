@@ -1,4 +1,4 @@
-[gd_scene load_steps=244 format=3]
+[gd_scene load_steps=246 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -329,6 +329,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleAuthoringCoordinator.cs" id="298zc_sabotage_move_cycle_authoring"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleCompositionCoordinator.cs" id="298zd_sabotage_move_cycle_composition"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleCompositionStartCoordinator.cs" id="298ze_sabotage_move_cycle_composition_start"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleResultObservationCoordinator.cs" id="298zf_sabotage_move_cycle_result_observation"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleResultBindingCoordinator.cs" id="298zg_sabotage_move_cycle_result_binding"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -909,6 +911,12 @@ script = ExtResource("278_sabotage_action_task")
 
 [node name="CharacterSabotageActionMoveCycleCompositionStartCoordinator" type="Node" parent="."]
 script = ExtResource("298ze_sabotage_move_cycle_composition_start")
+
+[node name="CharacterSabotageActionMoveCycleResultObservationCoordinator" type="Node" parent="."]
+script = ExtResource("298zf_sabotage_move_cycle_result_observation")
+
+[node name="CharacterSabotageActionMoveCycleResultBindingCoordinator" type="Node" parent="."]
+script = ExtResource("298zg_sabotage_move_cycle_result_binding")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")
