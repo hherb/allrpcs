@@ -4,7 +4,8 @@
 
 `main` includes merged PR #353 at `fba1ba8`. Branch
 `codex/phase-7-fifth-move-typed-request` advances the exact fifth Move cycle through two bounded
-seams: typed-request composition and explicit typed-task start.
+seams: typed-request composition and explicit typed-task start. The reviewed implementation is
+committed at `9fd9b02` and published in draft PR #354 targeting `main`.
 
 The new path:
 
@@ -37,6 +38,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
 - Complete-diff review found and fixed a missing still-current predecessor-graph revalidation in
   typed composition; the final review found no remaining provenance, scene-ordering, public-surface,
   formatting, line-length, documentation, or whitespace issues.
+- Draft PR #354's five hosted jobs completed as failures with `steps: []`; no hosted product step
+  executed, so this is Actions/account infrastructure state rather than contradictory product-test
+  evidence.
 
 ## Exact next bounded slice
 
