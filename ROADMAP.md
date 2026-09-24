@@ -836,6 +836,10 @@ Current continuation:
   without copying completion provenance or invoking an author.
 - [x] Admit only that exact current successor boundary through the pure cycle-start gate without
   authoring or starting another action.
+- [x] Guard one fresh fifth-cycle Move author invocation with only that exact successor admission
+  and a new distinct-evidence candidate without composing or starting consideration.
+- [x] Compose only that exact fifth-cycle guarded author output into one fresh generic Move request
+  without starting consideration, reserving the ordinary turn, or consuming a model.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

@@ -36,7 +36,7 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorAutho
                     CharacterSabotageActionKind.Conceal),
                 boundary.Authorization.TurnActivity));
 
-        return target.Admission is null
+        bool admittedSuccessfully = target.Admission is null
             && !target.TryAdmit(null)
             && !target.TryAdmit(rebuiltBoundary)
             && !target.TryAdmit(malformedBoundary)
@@ -54,5 +54,18 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorAutho
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return admittedSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationSuccessorAuthoringSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    target.Admission!,
+                    recovered,
+                    evidence,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    actionModel,
+                    priorActionModel,
+                    priorMoveModel);
     }
 }

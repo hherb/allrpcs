@@ -26,6 +26,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         "Placements",
         "RecoveryCandidate",
         "SourceLocation",
+        "SuccessorCandidate",
         "WorldObjects",
     ];
 
@@ -39,6 +40,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         CharacterObjectSabotageMoveCandidate followUpCandidate = source.FollowUpCandidate;
         CharacterObjectSabotageMoveCandidate cycleCandidate = source.CycleCandidate;
         CharacterObjectSabotageMoveCandidate continuationCandidate = source.ContinuationCandidate;
+        CharacterObjectSabotageMoveCandidate successorCandidate = source.SuccessorCandidate;
         CharacterObjectSabotageOccurrence occurrence = candidate.Destination.Occurrence;
         WorldObject target = occurrence.Target;
         WorldObjectPlacement sourcePlacement = source.Placements.Entries.Single();
@@ -50,7 +52,8 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
                 candidate,
                 followUpCandidate,
                 cycleCandidate,
-                continuationCandidate)
+                continuationCandidate,
+                successorCandidate)
             || source.WorldObjects.Entries.Count != 3
             || !ReferenceEquals(source.WorldObjects.Entries[^1], target)
             || target.Identity.Id.Value != WaterCaskObjectId
@@ -92,6 +95,19 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
                 == followUpCandidate.Evidence.Evidence.EvidenceId
             || continuationCandidate.Evidence.Evidence.EvidenceId
                 == cycleCandidate.Evidence.Evidence.EvidenceId
+            || !ReferenceEquals(successorCandidate.Destination, candidate.Destination)
+            || ReferenceEquals(successorCandidate.Evidence, candidate.Evidence)
+            || ReferenceEquals(successorCandidate.Evidence, followUpCandidate.Evidence)
+            || ReferenceEquals(successorCandidate.Evidence, cycleCandidate.Evidence)
+            || ReferenceEquals(successorCandidate.Evidence, continuationCandidate.Evidence)
+            || successorCandidate.Evidence.Evidence.EvidenceId
+                == candidate.Evidence.Evidence.EvidenceId
+            || successorCandidate.Evidence.Evidence.EvidenceId
+                == followUpCandidate.Evidence.Evidence.EvidenceId
+            || successorCandidate.Evidence.Evidence.EvidenceId
+                == cycleCandidate.Evidence.Evidence.EvidenceId
+            || successorCandidate.Evidence.Evidence.EvidenceId
+                == continuationCandidate.Evidence.Evidence.EvidenceId
             || source.Evidence.Entries.Count != 0
             || !CharacterObjectSabotageMovePolicy.CanApply(
                 source.Character,
@@ -127,6 +143,19 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
                         cycleCandidate.Evidence.Evidence,
                     ]),
                 continuationCandidate)
+            || !CharacterObjectSabotageMovePolicy.CanApply(
+                source.Character,
+                source.PhysicalAccess,
+                source.WorldObjects,
+                source.Placements,
+                new DiscoveryEvidenceSnapshot(
+                    [
+                        candidate.Evidence.Evidence,
+                        followUpCandidate.Evidence.Evidence,
+                        cycleCandidate.Evidence.Evidence,
+                        continuationCandidate.Evidence.Evidence,
+                    ]),
+                successorCandidate)
             || !ReferenceEquals(source.RecoveryCandidate.Candidate, candidate)
             || !ReferenceEquals(source.RecoveryCandidate.SourcePlacement, sourcePlacement)
             || !HasClosedSourceSurface())
@@ -138,7 +167,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         GD.Print(
             "Temporary move sabotage source smoke passed: exact enemy, tail water cask, access, "
             + "source and destination, empty then distinct evidence, eligible initial, follow-up, "
-            + "next-cycle, and continuation moves, aligned recovery, inert startup, and closed "
+            + "next-cycle, continuation, and successor moves, aligned recovery, inert startup, and closed "
             + "output.");
         GetTree().Quit();
     }
@@ -148,7 +177,8 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         CharacterObjectSabotageMoveCandidate candidate,
         CharacterObjectSabotageMoveCandidate followUpCandidate,
         CharacterObjectSabotageMoveCandidate cycleCandidate,
-        CharacterObjectSabotageMoveCandidate continuationCandidate) =>
+        CharacterObjectSabotageMoveCandidate continuationCandidate,
+        CharacterObjectSabotageMoveCandidate successorCandidate) =>
         ReferenceEquals(source.Character, source.Character)
         && ReferenceEquals(source.PhysicalAccess, source.PhysicalAccess)
         && ReferenceEquals(source.WorldObjects, source.WorldObjects)
@@ -160,6 +190,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         && ReferenceEquals(source.FollowUpCandidate, followUpCandidate)
         && ReferenceEquals(source.CycleCandidate, cycleCandidate)
         && ReferenceEquals(source.ContinuationCandidate, continuationCandidate)
+        && ReferenceEquals(source.SuccessorCandidate, successorCandidate)
         && ReferenceEquals(source.RecoveryCandidate, source.RecoveryCandidate)
         && source.Placements.Entries
             is System.Collections.ObjectModel.ReadOnlyCollection<WorldObjectPlacement>

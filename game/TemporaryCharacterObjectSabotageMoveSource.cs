@@ -16,6 +16,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
     private const string FollowUpEvidenceIdText = "cask-wheel-ruts";
     private const string CycleEvidenceIdText = "cask-spoke-scuffs";
     private const string ContinuationEvidenceIdText = "cask-axle-scrapes";
+    private const string SuccessorEvidenceIdText = "cask-hub-gouges";
     private const string SourceLocationIdText = "village-square";
     private const string SourceLocationDisplayName = "Village square";
     private const string SourceLocationDescription = "The cask stands beside the village well.";
@@ -56,6 +57,9 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
 
     /// <summary>Gets one fresh exact candidate for the continuation sabotage cycle.</summary>
     public CharacterObjectSabotageMoveCandidate ContinuationCandidate { get; private set; } = null!;
+
+    /// <summary>Gets one fresh exact candidate for the successor sabotage cycle.</summary>
+    public CharacterObjectSabotageMoveCandidate SuccessorCandidate { get; private set; } = null!;
 
     /// <summary>Gets the exact aligned move-recovery candidate.</summary>
     public CharacterObjectSabotageMoveRecoveryCandidate RecoveryCandidate { get; private set; } = null!;
@@ -124,6 +128,14 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
         ContinuationCandidate = new CharacterObjectSabotageMoveCandidate(
             destination,
             continuationEvidence);
+        CharacterObjectSabotageEvidence successorEvidence = new(
+            occurrence,
+            new DiscoveryEvidence(
+                new EvidenceId(SuccessorEvidenceIdText),
+                target.Identity.Id,
+                VisibilityState.Noticed,
+                false));
+        SuccessorCandidate = new CharacterObjectSabotageMoveCandidate(destination, successorEvidence);
         RecoveryCandidate = new CharacterObjectSabotageMoveRecoveryCandidate(
             Candidate,
             sourcePlacement);

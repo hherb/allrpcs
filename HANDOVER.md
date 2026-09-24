@@ -2,61 +2,69 @@
 
 ## Current state
 
-`main` includes merged PR #349 at `f5984e3`. Branch
-`codex/phase-7-continuation-turn-boundary` continues the exact fourth-cycle Move chain after its
-completed-turn admission and implements **Phase 7sj–7sm**. The reviewed implementation is committed
-at `6e9c9e4` and published in draft PR #350 targeting `main`.
+`main` includes merged PR #350 at `fe672dc`. Branch
+`codex/phase-7-fifth-move-author` continues its exact successor-cycle boundary and implements the
+next two bounded seams: one fifth-cycle Move author invocation and one generic request composition.
+The reviewed implementation is committed at `eebf435` and published in draft PR #351 targeting
+`main`.
 
-The admitted continuation completion now:
+The new path:
 
-- binds once to the exact current ordinary-turn reference only while it remains empty and startable;
-- retains one fresh scheduling authorization over only that exact completion and turn reference;
-- enters one explicit successor boundary only from that exact still-current authorization; and
-- passes the existing pure cycle-start gate into one exact successor authoring admission.
+- adds one source-owned fifth Move candidate whose evidence identifier is distinct from all four
+  earlier focused-proof Move candidates;
+- accepts that candidate only as the exact caller-supplied reference after revalidating the complete
+  successor admission, empty ordinary-turn, continuation recovery, placement, and evidence graph;
+- invokes a fresh `CharacterSabotageActionMoveRequestController` once and retains its exact typed
+  candidate binding; and
+- composes only that exact guarded author output into one fresh generic request containing the exact
+  actor and canonical `Move` kind.
 
-Null, rebuilt, malformed, changed-slot, active-slot, stale, and repeated inputs remain inert. The
-ordinary turn remains empty and unbound. No fifth Move is authored or started, no slot is reserved,
-and no model, provider, credential, persistence, UI/input, navigation, perception, dialogue, timer,
-or new Domain behavior was added. Ordinary startup remains inert. The unrelated untracked
+Null, rebuilt, malformed, foreign, wrong-kind, prior-cycle, duplicate-evidence, stale-authority, and
+repeated inputs remain inert. No consideration is started, no model is supplied or consumed, the
+ordinary turn remains empty, and authoritative placement/evidence remain unchanged. No cadence,
+provider, credential, persistence, UI/input, navigation, perception, dialogue, timer, or new Domain
+behavior was added. Ordinary startup remains inert. The unrelated untracked
 `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Each of the four seams was introduced test-first with the focused game build failing for the
+- Both seams were introduced test-first; each focused game build failed with `CS0246` for its
   deliberately absent coordinator before implementation.
 - The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8 through
-  exact boundary binding, authorization, successor entry, and authoring admission while
-  authoritative placement/evidence and all five model-call counts remain unchanged.
+  fifth-cycle exact authoring and composition while authoritative placement/evidence and all five
+  existing model-call counts remain unchanged.
 - Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
   1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
   smoke, formatting, and the Compatibility launch.
-- Complete-diff review found no correctness, exact-reference, scene-ordering, public-surface,
-  formatting, line-length, or documentation issues. Whitespace validation is clean.
-- Draft PR #350's five hosted jobs failed with `steps: []`; no hosted product step executed, so this
-  is Actions/account infrastructure state rather than contradictory product-test evidence.
+- Session-wide review found one stale bounded-surface expectation in the temporary Move source smoke
+  after the fifth candidate was added. It now verifies that candidate's exact retention, distinct
+  evidence, eligibility after all four earlier evidence entries, and closed surface; the focused
+  smoke and full quality suite pass after the fix.
+- Complete-diff review found no remaining correctness, exact-reference, scene-ordering,
+  public-surface, formatting, line-length, or documentation issues. Whitespace validation is clean.
+- Draft PR #351's four completed hosted jobs failed with `steps: []`, while its remaining queued job
+  also exposed `steps: []`; no hosted product step executed, so this is Actions/account
+  infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
-Guard one fresh fifth-cycle Move author invocation with only the exact successor authoring
-admission, without composing or starting consideration.
+Explicitly start only the exact fifth-cycle generic Move request on a fresh scene-owned task with a
+fresh one-shot model source, stopping before result observation.
 
 Acceptance boundary:
 
-1. Test-first add one distinct Move authoring coordinator over the exact current successor
-   admission and one caller-supplied fifth eligible Move candidate.
-2. Require the admission's complete boundary, authorization, admitted completion, empty-turn, and
-   current continuation-recovery graph to remain exact and current.
-3. Require the fifth candidate's evidence identifier to be distinct from every earlier Move-cycle
-   evidence identifier used by the focused proof.
-4. Invoke a fresh `CharacterSabotageActionMoveRequestController` once and retain only the exact
-   admission and authored request/candidate binding.
-5. Reject null, rebuilt, malformed, foreign-actor, wrong-kind, stale-graph, replaced-authority,
-   duplicate-evidence, and repeated inputs without changing any owner or consuming a model.
-6. Do not compose or start a generic request, start typed work, reserve the turn, clear prior
-   provenance, add cadence, or alter placement/evidence authority.
-7. Extend only the focused switch-gated Move proof. Keep ordinary startup inert and every existing
-   model call count at one.
-8. Preserve all existing exclusions: no timers, provider transport, credentials, persistence,
-   UI/input, navigation, perception, dialogue delivery, or new Domain behavior.
-9. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to compose one fresh generic Move request from only that exact guarded author output.
+1. Test-first add one distinct start coordinator over only the exact current fifth-cycle composition
+   request and its complete retained admission/author/candidate/recovery/empty-turn graph.
+2. Add a fresh `CharacterSabotageActionTaskController` and fresh
+   `TemporaryCharacterSabotageActionModelSource`; do not reuse or reset an earlier task or source.
+3. Preserve the queued model across null, guarded-author-output, rebuilt-request, foreign-actor,
+   wrong-kind, stale-graph, replaced-authority, and repeated rejected preflight calls.
+4. On the one successful explicit start, retain the exact generic request and consume the queued
+   model once; keep all earlier model-call counts at one and the new model-call count at one.
+5. Do not observe, bind, acknowledge, select, dispatch, or apply the result; do not start typed Move
+   work, reserve the ordinary turn, clear prior provenance, or alter placement/evidence authority.
+6. Extend only the focused switch-gated Move proof. Keep ordinary startup inert.
+7. Preserve all existing exclusions: no cadence, timers, provider transport, credentials,
+   persistence, UI/input, navigation, perception, dialogue delivery, or new Domain behavior.
+8. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
+   slice to observe only the exact completed fifth-cycle generic result without acknowledging it.
