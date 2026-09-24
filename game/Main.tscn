@@ -360,6 +360,10 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationTerminalRouteCoordinator.cs" id="298zzh_sabotage_move_cycle_continuation_terminal_route"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationTurnCompletionCoordinator.cs" id="298zzi_sabotage_move_cycle_continuation_turn_completion"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationTurnAdmissionCoordinator.cs" id="298zzj_sabotage_move_cycle_continuation_turn_admission"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationOrdinaryTurnBoundaryCoordinator.cs" id="298zzk_sabotage_move_cycle_continuation_turn_boundary"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSchedulingAuthorizationCoordinator.cs" id="298zzl_sabotage_move_cycle_continuation_scheduling_authorization"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorBoundaryCoordinator.cs" id="298zzm_sabotage_move_cycle_continuation_successor_boundary"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorAuthoringAdmissionCoordinator.cs" id="298zzn_sabotage_move_cycle_continuation_successor_authoring_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -1054,6 +1058,18 @@ script = ExtResource("298zzi_sabotage_move_cycle_continuation_turn_completion")
 
 [node name="CharacterSabotageActionMoveCycleContinuationTurnAdmissionCoordinator" type="Node" parent="."]
 script = ExtResource("298zzj_sabotage_move_cycle_continuation_turn_admission")
+
+[node name="CharacterSabotageActionMoveCycleContinuationOrdinaryTurnBoundaryCoordinator" type="Node" parent="."]
+script = ExtResource("298zzk_sabotage_move_cycle_continuation_turn_boundary")
+
+[node name="CharacterSabotageActionMoveCycleContinuationSchedulingAuthorizationCoordinator" type="Node" parent="."]
+script = ExtResource("298zzl_sabotage_move_cycle_continuation_scheduling_authorization")
+
+[node name="CharacterSabotageActionMoveCycleContinuationSuccessorBoundaryCoordinator" type="Node" parent="."]
+script = ExtResource("298zzm_sabotage_move_cycle_continuation_successor_boundary")
+
+[node name="CharacterSabotageActionMoveCycleContinuationSuccessorAuthoringAdmissionCoordinator" type="Node" parent="."]
+script = ExtResource("298zzn_sabotage_move_cycle_continuation_successor_authoring_admission")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")
