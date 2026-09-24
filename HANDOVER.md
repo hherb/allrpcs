@@ -4,7 +4,8 @@
 
 `main` includes merged PR #351 at `08dcc26`. Branch
 `codex/phase-7-fifth-move-start` advances the exact fifth Move cycle through two bounded seams:
-one explicit generic-request start and one exact completed-result observation.
+one explicit generic-request start and one exact completed-result observation. The reviewed
+implementation is committed at `689d89b` and published in draft PR #352 targeting `main`.
 
 The new path:
 
