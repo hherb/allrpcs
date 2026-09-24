@@ -848,6 +848,10 @@ Current continuation:
   by its guarded author without acknowledging, resetting, or composing typed work.
 - [x] Acknowledge only that exact current bound result, resetting its generic task while retaining
   exact result and candidate provenance for future typed Move composition.
+- [x] Compose only those exact fifth-cycle acknowledgement tokens into one fresh provider-neutral
+  typed Move request over current authoritative placement and evidence without starting it.
+- [x] Explicitly start only that exact typed fifth-cycle request on fresh scene-owned owners while
+  preserving its queued model across rejected preflight and leaving completion unobserved.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

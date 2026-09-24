@@ -472,7 +472,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "the pure cycle-start gate; its exact admission guarded a fifth distinct Move author "
             + "and composed only that output into one fresh generic request; only that exact request "
             + "started on fresh owners; only its exact completed result was observed, bound to the "
-            + "fifth author's candidate, and acknowledged while retaining exact provenance.");
+            + "fifth author's candidate, and acknowledged while retaining exact provenance; those "
+            + "tokens composed one exact typed request, which alone started on fresh typed owners.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

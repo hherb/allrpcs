@@ -114,6 +114,14 @@ public partial class
         && ReferenceEquals(expectedBinding.ActionKind, CharacterSabotageActionKind.Move)
         && ReferenceEquals(expectedBinding.Candidate, source.SuccessorCandidate);
 
+    /// <summary>Checks retained acknowledgement against its current fifth-cycle graph.</summary>
+    internal bool IsCurrentAcknowledgedBinding(
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionCandidateBinding<CharacterObjectSabotageMoveCandidate>?
+            expectedBinding) =>
+        IsRetainedAcknowledgedBinding(expectedResult, expectedBinding)
+        && composition.IsCurrentRequest(expectedResult!.Request);
+
     private bool HasCurrentObservedGraph(
         CharacterSabotageActionConsiderationResult? expectedResult) =>
         expectedResult is not null
