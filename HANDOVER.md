@@ -4,6 +4,7 @@
 
 `main` includes merged PR #342 at `d9f9327`. Branch
 `codex/phase-7-follow-up-move-cycle-result` completes **Phase 7rd** through **Phase 7rf**. The
+implementation is committed at `b81c5b1` and published in draft PR #343 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The third admitted Move cycle now advances through three more exact seams:
