@@ -381,6 +381,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorTurnAdmissionCoordinator.cs" id="298zzzc_sabotage_move_cycle_continuation_successor_turn_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorOrdinaryTurnBoundaryCoordinator.cs" id="298zzzd_sabotage_move_cycle_continuation_successor_turn_boundary"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorSchedulingAuthorizationCoordinator.cs" id="298zzze_sabotage_move_cycle_continuation_successor_scheduling_authorization"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorCycleBoundaryCoordinator.cs" id="298zzzf_sabotage_move_cycle_continuation_successor_cycle_boundary"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleContinuationSuccessorCycleStartAdmissionCoordinator.cs" id="298zzzg_sabotage_move_cycle_continuation_successor_cycle_start_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -1153,6 +1155,12 @@ script = ExtResource("298zzzd_sabotage_move_cycle_continuation_successor_turn_bo
 
 [node name="CharacterSabotageActionMoveCycleContinuationSuccessorSchedulingAuthorizationCoordinator" type="Node" parent="."]
 script = ExtResource("298zzze_sabotage_move_cycle_continuation_successor_scheduling_authorization")
+
+[node name="CharacterSabotageActionMoveCycleContinuationSuccessorCycleBoundaryCoordinator" type="Node" parent="."]
+script = ExtResource("298zzzf_sabotage_move_cycle_continuation_successor_cycle_boundary")
+
+[node name="CharacterSabotageActionMoveCycleContinuationSuccessorCycleStartAdmissionCoordinator" type="Node" parent="."]
+script = ExtResource("298zzzg_sabotage_move_cycle_continuation_successor_cycle_start_admission")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

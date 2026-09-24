@@ -872,6 +872,10 @@ Current continuation:
   without reserving, replacing, or cancelling the turn.
 - [x] Retain one fresh scheduling authorization only from that exact still-current fifth-cycle
   boundary without entering a sixth sabotage cycle.
+- [x] Consume only that exact fifth-cycle authorization once at an explicit successor boundary
+  without copying completion provenance, reserving the turn, or starting a sixth sabotage action.
+- [x] Admit only that exact current successor boundary through the pure cycle-start gate without
+  invoking an author or model, then stop extending the repeated Move-cycle chain.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

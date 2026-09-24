@@ -38,7 +38,7 @@ internal static class
             completion.AuthorRequest,
             completion.ActionKind);
 
-        return target.Authorization is null
+        bool authorizedSuccessfully = target.Authorization is null
             && !target.TryAuthorize(null, turns.Activity)
             && !target.TryAuthorize(rebuiltCompletion, turns.Activity)
             && !target.TryAuthorize(completion, turnSource.Activity)
@@ -59,5 +59,20 @@ internal static class
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1
             && moveModel.CallCount == 1;
+        return authorizedSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationSuccessorCycleBoundarySmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    target.Authorization!,
+                    recovered,
+                    evidence,
+                    actionModel,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    cycleActionModel,
+                    priorActionModel,
+                    priorMoveModel,
+                    moveModel);
     }
 }

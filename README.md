@@ -1264,6 +1264,14 @@ stale-graph, and repeated inputs remain inert. Neither seam reserves, replaces, 
 an ordinary turn, enters a sixth sabotage cycle, clears earlier provenance, changes recovered
 authority, or invokes another model; ordinary startup remains inert.
 
+That exact fifth-cycle authorization can now enter one explicit successor boundary and pass the
+existing pure cycle-start gate once after revalidating the complete retained graph. Null, rebuilt
+authorization, rebuilt admission, substituted activity, rebuilt or malformed boundary, stale-graph,
+and repeated inputs remain inert. The resulting admission retains only the exact boundary; it does
+not invoke an author or model, compose or start consideration, reserve an ordinary turn, or begin a
+sixth sabotage action. This closes the repeated Move-cycle proof boundary so Phase 7 can pivot to
+acceptance-level behavior rather than extend the same chain again; ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
