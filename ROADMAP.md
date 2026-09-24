@@ -844,6 +844,10 @@ Current continuation:
   while preserving its queued model across rejected preflight and leaving completion unobserved.
 - [x] Observe only that exact completed fifth-cycle generic Move result after revalidating its
   retained graph, without acknowledging, binding a candidate, dispatching, or applying it.
+- [x] Bind only that exact observed fifth-cycle generic Move result to the exact candidate retained
+  by its guarded author without acknowledging, resetting, or composing typed work.
+- [x] Acknowledge only that exact current bound result, resetting its generic task while retaining
+  exact result and candidate provenance for future typed Move composition.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

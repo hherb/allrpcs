@@ -60,7 +60,7 @@ internal static class
 
         task._Process(0);
         CharacterSabotageActionConsiderationResult? result = task.Result;
-        return task.Status == CharacterSabotageActionTaskStatus.Completed
+        bool observedSuccessfully = task.Status == CharacterSabotageActionTaskStatus.Completed
             && result is not null
             && ReferenceEquals(result.Request, request)
             && ReferenceEquals(result.SelectedActionKind, CharacterSabotageActionKind.Move)
@@ -75,6 +75,20 @@ internal static class
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return observedSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationSuccessorResultBindingSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    result!,
+                    recovered,
+                    evidence,
+                    model,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    actionModel,
+                    priorActionModel,
+                    priorMoveModel);
     }
 
     private static CharacterSabotageActionConsiderationResult CreateResult(

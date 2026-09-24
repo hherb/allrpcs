@@ -43,4 +43,20 @@ public partial class
         ObservedResult = expectedResult;
         return true;
     }
+
+    /// <summary>Resets only the same exact completed result already retained here.</summary>
+    internal bool TryAcknowledgeCompletedResult(
+        CharacterSabotageActionConsiderationResult? expectedResult)
+    {
+        if (expectedResult is null
+            || !ReferenceEquals(ObservedResult, expectedResult)
+            || !start.IsCurrentCompletedResult(expectedResult)
+            || !task.TryReset())
+        {
+            return false;
+        }
+
+        ObservedResult = null;
+        return true;
+    }
 }
