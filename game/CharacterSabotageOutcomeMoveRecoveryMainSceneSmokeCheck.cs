@@ -477,7 +477,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "only its exact applied result and task-installed authority were observed, bound, and "
             + "acknowledged; one exact visible-evidence recovery candidate was authored, admitted, "
             + "and restored through the stale-safe state owner; its exact terminal route was retained "
-            + "and reset while recovered authority remained current and every model stayed one-shot.");
+            + "and reset; only that route produced one exact completed-turn token admitted through "
+            + "the pure scheduling gate while recovered authority remained current and every model "
+            + "stayed one-shot.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

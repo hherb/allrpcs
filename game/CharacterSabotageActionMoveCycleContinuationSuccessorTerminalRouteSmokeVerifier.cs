@@ -125,7 +125,7 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorTermi
                 CharacterSabotageActionKind.Move,
                 recovered,
                 evidence);
-        return reset
+        bool statePreserved = reset
             && ReferenceEquals(state.Placements, recovered)
             && ReferenceEquals(state.Evidence, evidence)
             && actionModel.CallCount == 1
@@ -135,5 +135,20 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorTermi
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1
             && moveModel.CallCount == 1;
+        return statePreserved
+            && CharacterSabotageActionMoveCycleContinuationSuccessorTurnCompletionSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    authorRequest,
+                    recovered,
+                    evidence,
+                    actionModel,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    cycleActionModel,
+                    priorActionModel,
+                    priorMoveModel,
+                    moveModel);
     }
 }
