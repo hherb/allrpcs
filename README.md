@@ -1066,9 +1066,13 @@ so replaced authority fails closed. A separate composition seam produces one fre
 request from only that guarded output, and an explicit start seam consumes one separately supplied
 model on a fresh scene-owned task only after the complete admission, authoring, composition, recovery,
 and empty-turn graph is revalidated. Null, rebuilt, foreign, wrong-kind, stale-authority, and repeated
-paths remain inert and preserve the queued model before successful start. Completion remains
-unobserved; no candidate binding, acknowledgement, typed request, dispatch, application, prior-author
-reset, turn reservation, automatic cadence, provider transport, or ordinary-startup behavior is added.
+paths remain inert and preserve the queued model before successful start. A distinct observer retains
+only the exact completed result while that full graph remains current. The adjacent binding seam pairs
+only that exact observation with the third author's exact typed candidate, then acknowledges the same
+bound result and resets only its task while retaining both exact downstream tokens. Null, running,
+rebuilt-result/request, foreign-actor, wrong-kind, replaced-binding, stale-graph, and repeated paths
+remain inert. No typed request, dispatch, application, prior-author reset, turn reservation, automatic
+cadence, provider transport, or ordinary-startup behavior is added.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

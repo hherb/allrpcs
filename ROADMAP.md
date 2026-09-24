@@ -758,8 +758,14 @@ Current continuation:
   starting consideration, reserving the ordinary turn, or consuming a model.
 - [x] Explicitly start only that exact fresh cycle request on a distinct scene-owned task while
   preserving its queued model across rejected preflight and leaving completion unobserved.
-- [ ] Observe only that exact completed cycle Move result after revalidating its complete retained
+- [x] Observe only that exact completed cycle Move result after revalidating its complete retained
   graph, without acknowledging, binding a candidate, dispatching, or applying it.
+- [x] Bind that exact observed cycle result to the third guarded Move candidate without resetting
+  the task, clearing the observation, dispatching, or applying it.
+- [x] Acknowledge only that exact bound cycle result, resetting only its task while retaining the
+  exact result and candidate tokens for future typed composition.
+- [ ] Compose those exact third-cycle acknowledgement tokens into one fresh provider-neutral typed
+  Move request over the current authoritative placement and evidence snapshots without starting it.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

@@ -68,10 +68,17 @@ internal static class CharacterSabotageActionMoveCycleCompositionStartSmokeVerif
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1
             && ReferenceEquals(state.Placements, placements)
-            && ReferenceEquals(state.Evidence, evidence);
+            && ReferenceEquals(state.Evidence, evidence)
+            && CharacterSabotageActionMoveCycleResultObservationSmokeVerifier.PassesMainScene(
+                scene,
+                source,
+                state,
+                model,
+                priorActionModel,
+                priorMoveModel);
     }
 
-    private sealed class RecordingModel : ICharacterSabotageActionDecisionModel
+    internal sealed class RecordingModel : ICharacterSabotageActionDecisionModel
     {
         internal int CallCount { get; private set; }
 
