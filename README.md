@@ -1216,6 +1216,15 @@ replaced-authority, and repeated inputs remain inert. Neither seam composes or s
 work, dispatches or applies an action, reserves the ordinary turn, clears prior provenance, or
 changes placement or evidence authority; ordinary startup remains inert.
 
+Those exact fifth-cycle acknowledgement tokens can now compose one fresh provider-neutral typed
+Move request over the current authoritative placement and evidence snapshots and only the exact
+source-owned fifth candidate. An explicit start seam consumes one separately supplied Move model
+on fresh scene-owned owners only while that request and its complete retained graph remain current.
+Null, rebuilt-result, rebuilt-binding, wrong-candidate, stale-authority, occupied, and repeated
+inputs remain inert, and rejected preflight preserves the queued model. Successful start leaves
+completion unobserved and does not acknowledge or reset the task, apply movement, reserve the
+ordinary turn, clear provenance, or enable automatic sabotage; ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

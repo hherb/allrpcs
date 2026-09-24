@@ -42,7 +42,7 @@ internal static class
                 result.Request.Actor.Identity.Id,
                 CharacterSabotageActionKind.Move));
 
-        return target.CandidateBinding is { } binding
+        bool acknowledgedSuccessfully = target.CandidateBinding is { } binding
             && target.AcknowledgedResult is null
             && !target.TryAcknowledgeBoundResult(null)
             && !target.TryAcknowledgeBoundResult(rebuiltResult)
@@ -61,5 +61,18 @@ internal static class
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return acknowledgedSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationSuccessorSpecificRequestSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    recovered,
+                    evidence,
+                    model,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    actionModel,
+                    priorActionModel,
+                    priorMoveModel);
     }
 }
