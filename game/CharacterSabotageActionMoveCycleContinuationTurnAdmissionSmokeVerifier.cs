@@ -46,7 +46,7 @@ internal static class CharacterSabotageActionMoveCycleContinuationTurnAdmissionS
             completion.AuthorRequest,
             CharacterSabotageActionKind.Conceal);
 
-        return target.Admission is null
+        bool admitted = target.Admission is null
             && !target.TryAdmit(null)
             && !target.TryAdmit(rebuiltCompletion)
             && !target.TryAdmit(foreignActorCompletion)
@@ -63,5 +63,18 @@ internal static class CharacterSabotageActionMoveCycleContinuationTurnAdmissionS
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return admitted
+            && CharacterSabotageActionMoveCycleContinuationOrdinaryTurnBoundarySmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    target.Admission!,
+                    recovered,
+                    evidence,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    actionModel,
+                    priorActionModel,
+                    priorMoveModel);
     }
 }

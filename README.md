@@ -1179,6 +1179,15 @@ replaced-authority, stale, and repeated inputs remain inert. These seams do not 
 turn, clear upstream provenance, invoke another model, authorize another cycle, or enable automatic
 sabotage.
 
+That admitted continuation completion can now bind once to the ordinary-turn boundary only while
+the scene's exact current turn reference remains empty and startable. A separate authorization
+owner then retains one fresh scheduling token over only that exact completion and empty reference.
+An explicit successor boundary consumes only that exact still-current authorization, and the
+existing pure cycle-start gate admits only that exact boundary once for future action authoring.
+Null, rebuilt, malformed, changed-slot, active-slot, stale, and repeated references remain inert.
+These seams do not reserve or replace the turn, invoke an author or model, enter an action-specific
+flow, clear prior owners, or enable automatic sabotage; ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

@@ -467,7 +467,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "continuation cycle whose fourth Move was authored, generically selected, acknowledged, "
             + "applied, and recovered through exact task-installed authority; its terminal route was "
             + "retained, reset, completed, and admitted through the pure scheduling gate with "
-            + "automatic sabotage disabled.");
+            + "automatic sabotage disabled; that admission bound the still-empty ordinary turn, "
+            + "retained one exact authorization, entered an explicit successor boundary, and passed "
+            + "the pure cycle-start gate without authoring another action.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

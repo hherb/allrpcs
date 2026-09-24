@@ -828,6 +828,14 @@ Current continuation:
   admitting it to scheduling or changing the ordinary turn.
 - [x] Admit only that exact current continuation completion through the pure scheduling gate without
   binding or reserving the ordinary turn.
+- [x] Bind that exact admitted continuation completion to the still-empty ordinary-turn reference
+  without reserving or replacing the turn.
+- [x] Retain one fresh scheduling authorization only from that exact still-current continuation
+  boundary without entering another cycle.
+- [x] Consume only that exact continuation authorization once at an explicit successor boundary
+  without copying completion provenance or invoking an author.
+- [x] Admit only that exact current successor boundary through the pure cycle-start gate without
+  authoring or starting another action.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
