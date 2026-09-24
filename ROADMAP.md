@@ -820,8 +820,14 @@ Current continuation:
   accepted by the existing recovery policy without changing authoritative state.
 - [x] Recover only that exact published continuation Move pair through the existing stale-safe state
   owner, restoring its source placement while retaining authoritative evidence.
-- [ ] Retain that exact recovered continuation Move as a distinct terminal route without resetting
+- [x] Retain that exact recovered continuation Move as a distinct terminal route without resetting
   recovery authority, completing a turn, or adding automatic cadence.
+- [x] Reset only that exact retained continuation terminal route once while preserving its recovery
+  owner and authoritative placement and evidence snapshots.
+- [x] Expose one fresh completed-turn token only from that exact reset continuation route without
+  admitting it to scheduling or changing the ordinary turn.
+- [x] Admit only that exact current continuation completion through the pure scheduling gate without
+  binding or reserving the ordinary turn.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
