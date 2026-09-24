@@ -470,7 +470,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "automatic sabotage disabled; that admission bound the still-empty ordinary turn, "
             + "retained one exact authorization, entered an explicit successor boundary, and passed "
             + "the pure cycle-start gate; its exact admission guarded a fifth distinct Move author "
-            + "and composed only that output into one fresh generic request without starting it.");
+            + "and composed only that output into one fresh generic request; only that exact request "
+            + "started on fresh owners and only its exact completed result was observed.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
