@@ -37,7 +37,7 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorRecov
             evidenceView.CharacterId,
             evidenceView.EvidenceIds);
 
-        return target.RecoveryCandidate is null
+        bool recoveredSuccessfully = target.RecoveryCandidate is null
             && target.EvidenceView is null
             && target.RecoveredPlacements is null
             && target.RecoveredEvidence is null
@@ -68,5 +68,19 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorRecov
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1
             && moveModel.CallCount == 1;
+        return recoveredSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationSuccessorTerminalRouteSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    target.RecoveredPlacements!,
+                    target.RecoveredEvidence!,
+                    actionModel,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    cycleActionModel,
+                    priorActionModel,
+                    priorMoveModel,
+                    moveModel);
     }
 }

@@ -862,6 +862,8 @@ Current continuation:
   existing recovery policy without changing authoritative state.
 - [x] Recover only that exact admitted fifth-cycle Move pair through the existing stale-safe state
   owner, restoring its source placement while retaining authoritative evidence.
+- [x] Retain only that exact recovered fifth-cycle Move as one terminal route and explicitly reset
+  only that route while preserving recovered authority and all earlier provenance.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
