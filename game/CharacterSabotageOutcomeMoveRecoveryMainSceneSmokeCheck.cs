@@ -473,7 +473,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "and composed only that output into one fresh generic request; only that exact request "
             + "started on fresh owners; only its exact completed result was observed, bound to the "
             + "fifth author's candidate, and acknowledged while retaining exact provenance; those "
-            + "tokens composed one exact typed request, which alone started on fresh typed owners.");
+            + "tokens composed one exact typed request, which alone started on fresh typed owners; "
+            + "only its exact applied result and task-installed authority were observed, bound, and "
+            + "acknowledged while every earlier model remained one-shot.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

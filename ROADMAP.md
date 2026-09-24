@@ -852,6 +852,10 @@ Current continuation:
   typed Move request over current authoritative placement and evidence without starting it.
 - [x] Explicitly start only that exact typed fifth-cycle request on fresh scene-owned owners while
   preserving its queued model across rejected preflight and leaving completion unobserved.
+- [x] Observe only that exact completed applied fifth-cycle typed Move result with its task-installed
+  authoritative placement and evidence snapshots without acknowledgement or recovery authoring.
+- [x] Bind and acknowledge only that exact applied result and authoritative snapshots, resetting
+  only its completed typed task while retaining exact provenance for future recovery composition.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
