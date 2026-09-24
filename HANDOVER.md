@@ -42,6 +42,9 @@ new Domain behavior was added. Ordinary startup remains inert. The unrelated unt
   passes after the fix.
 - Complete-diff review found no remaining correctness, exact-reference, scene-ordering,
   public-surface, formatting, line-length, or documentation issues. Whitespace validation is clean.
+- Draft PR #352's five hosted jobs completed as failures with `steps: []`; no hosted product step
+  executed, so this is Actions/account infrastructure state rather than contradictory product-test
+  evidence.
 
 ## Exact next bounded slice
 
