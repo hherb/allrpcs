@@ -3,8 +3,9 @@
 ## Current state
 
 `main` includes merged PR #344 at `c21e1e6`. Branch
-`codex/phase-7-third-move-recovery` completes **Phase 7rj** through **Phase 7rm**. The unrelated
-untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+`codex/phase-7-third-move-recovery` completes **Phase 7rj** through **Phase 7rm**. The implementation
+is committed at `a6122a0` and published in draft PR #345 targeting `main`. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The exact observed applied third-cycle Move now advances through four bounded seams:
 
@@ -33,6 +34,8 @@ persistence, UI/input, navigation, perception, dialogue, timer, or new Domain be
 - Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
   1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
   smoke, and the Compatibility launch. Formatting, whitespace, and the complete diff also pass.
+- Draft PR #345's hosted jobs failed with `steps: []`; no hosted product step executed, so this is
+  Actions/account infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
