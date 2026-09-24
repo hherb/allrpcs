@@ -69,6 +69,20 @@ internal static class CharacterSabotageActionMoveCycleContinuationSuccessorTurnA
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1
             && moveModel.CallCount == 1;
-        return admitted;
+        return admitted
+            && CharacterSabotageActionMoveCycleContinuationSuccessorOrdinaryTurnBoundarySmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    target.Admission!,
+                    recovered,
+                    evidence,
+                    actionModel,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    cycleActionModel,
+                    priorActionModel,
+                    priorMoveModel,
+                    moveModel);
     }
 }

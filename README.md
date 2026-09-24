@@ -1256,6 +1256,14 @@ wrong-kind, substituted-recovery-snapshot, stale-graph, and repeated inputs rema
 seam binds or reserves the ordinary turn, starts a sixth sabotage cycle, clears earlier provenance,
 changes recovered authority, or invokes another model; ordinary startup remains inert.
 
+That exact admitted fifth-cycle completion can now bind once to the still-empty ordinary-turn
+reference after revalidating its complete completion, recovery, and admission graph through the
+existing pure boundary gate. A separate owner retains one fresh scheduling authorization only from
+that exact still-current boundary. Null, rebuilt-admission, substituted non-empty activity,
+stale-graph, and repeated inputs remain inert. Neither seam reserves, replaces, starts, or cancels
+an ordinary turn, enters a sixth sabotage cycle, clears earlier provenance, changes recovered
+authority, or invokes another model; ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
