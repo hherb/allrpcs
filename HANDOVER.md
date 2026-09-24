@@ -4,7 +4,8 @@
 
 `main` includes merged PR #352 at `1e08b7f`. Branch
 `codex/phase-7-fifth-move-binding` advances the exact fifth Move cycle through two bounded seams:
-exact result-to-candidate binding and exact generic-result acknowledgement.
+exact result-to-candidate binding and exact generic-result acknowledgement. The reviewed
+implementation is committed at `2565ad1` and published in draft PR #353 targeting `main`.
 
 The new path:
 
@@ -39,6 +40,9 @@ unrelated untracked `scripts/code_statistics.py` remains untouched and must stay
   acknowledgement boundary. Complete-diff review found no remaining correctness, exact-reference,
   scene-ordering, public-surface, formatting, line-length, or documentation issues. Whitespace
   validation is clean.
+- Draft PR #353's five hosted jobs completed as failures with `steps: []`; no hosted product step
+  executed, so this is Actions/account infrastructure state rather than contradictory product-test
+  evidence.
 
 ## Exact next bounded slice
 
