@@ -4,7 +4,8 @@
 
 `main` includes merged PR #348 at `7ba6560`. Branch
 `codex/phase-7-continuation-terminal-route` continues the exact fourth-cycle Move chain after its
-recovery and completes **Phase 7si** plus the next three bounded seams.
+recovery and completes **Phase 7si** plus the next three bounded seams. The implementation is
+committed at `69957e6` and published in draft PR #349 targeting `main`.
 
 The recovered continuation Move now:
 
@@ -34,6 +35,8 @@ untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
   smoke, formatting, and the Compatibility launch.
 - Complete-diff review found no additional correctness, exact-reference, scene-ordering, formatting,
   or documentation issues after the smoke success report was updated to the new terminal boundary.
+- Draft PR #349's five hosted jobs failed with `steps: []`; no hosted product step executed, so this
+  is Actions/account infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
