@@ -34,6 +34,8 @@ perception, dialogue, timer, or new Domain behavior was added.
 - Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
   1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
   smoke, and the Compatibility launch. Formatting and whitespace checks also pass.
+- Draft PR #344's hosted jobs failed with `steps: []`; no hosted product step executed, so this is
+  Actions/account infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
