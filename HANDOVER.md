@@ -2,58 +2,70 @@
 
 ## Current state
 
-`main` includes merged PR #360 at `efb67db`. Branch
-`codex/phase-7-fifth-move-cycle-boundary` completes the deliberately final repeated Move-cycle
-boundary proof after the fifth recovered Move.
+`main` includes merged PR #361 at `803b77d`. Branch
+`codex/phase-7-acceptance-audit` completes the Phase 7 acceptance traceability audit after the
+deliberately final repeated Move-cycle proof.
 
-The exact fifth-cycle scheduling authorization can now enter one explicit successor boundary once.
-Only that exact still-current boundary passes the existing pure cycle-start gate and produces one
-fresh `CharacterSabotageActionAuthoringAdmission`. Null, rebuilt authorization, rebuilt admission,
-substituted activity, rebuilt or malformed boundary, stale-graph, and repeated inputs remain inert.
-Recovered placement and evidence authority stay exact, the ordinary turn stays empty, and all seven
-model-call counts remain one. No sixth author or action is started.
+`PHASE_7_ACCEPTANCE_AUDIT.md` maps all seven canonical kinds to their current Domain, Application,
+Infrastructure, and Godot owners and evidence. It distinguishes reusable contracts and switch-gated
+smokes from ordinary player-visible behavior. `ROADMAP.md` records the audit as complete, while the three
+broad Phase 7 outcomes and final acceptance remain unchecked.
 
-This is the endpoint for the repeated Move-chain pattern. Do not add sixth, seventh, or later Move
-cycles. The next work pivots to Phase 7 acceptance evidence across all seven sabotage kinds.
+The audit found one shared first gap: `Main.tscn` owns the seven exact request authors and canonical
+composer, but no ordinary runtime owner evaluates current enemy-agent turn authority, invokes the seven
+authors, and composes their exact eligible outputs. Complete sabotage paths currently start only from
+smoke environment variables or isolated test scenes.
+
+The repeated Move boundary is closed. Do not add a sixth or later Move candidate, author, request, task,
+result, recovery, terminal route, turn completion, scheduling authorization, cycle boundary, or admission.
 
 The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
-- Both slices were introduced test-first. Each focused game build failed only with `CS0246` for its
-  absent coordinator, then passed with zero warnings after the minimum implementation.
-- The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8. It covers
-  substitute graphs, exact one-shot boundary entry and admission, unchanged recovered authority,
-  the empty ordinary-turn slot, no sixth author invocation, and all seven model-call counts at one.
-- Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
-  1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
-  smoke, formatting, and the Compatibility launch. The sandbox-only run reached the build and then
-  hit the known VSTest loopback `SocketException (13)`; the identical host-local command passed.
-- `dotnet format Allrpcs.sln --no-restore --verify-no-changes` and `git diff --check` pass.
-- Complete-diff review found no remaining exact-provenance, stale-graph, one-shot, scene-ordering,
-  public-surface, line-length, documentation, formatting, or whitespace issue.
-- Hosted checks with `steps: []` are Actions/account infrastructure, not product-test evidence.
+- The audit cross-checks all seven canonical kinds against production owners and Domain, Application,
+  Infrastructure, and Godot evidence without treating switch-gated smokes as ordinary-play acceptance.
+- Truth, placement, history, evidence, and recovery claims were checked against the current transition and
+  policy implementations. No broad acceptance checkbox was changed.
+- Final host-local `./scripts/quality.sh` passes workflow validation, formatting, a zero-warning build,
+  2,731 Domain, 586 Application, 1,220 Infrastructure, and 8 architecture tests, scenario validation,
+  every credential-free Godot smoke, and the Compatibility launch. The sandbox-only run reached the
+  zero-warning build and then hit the known VSTest loopback `SocketException (13)`; the identical
+  host-local command passed.
+- Complete-diff review found no unsupported acceptance claim, missed canonical kind, mistaken
+  ordinary-play classification, stale next-slice boundary, line-length issue, or whitespace error.
+  `git diff --check` passes, and all changed Markdown lines remain within 120 characters.
 
 ## Exact next bounded slice
 
-Perform a Phase 7 acceptance traceability audit across the current production paths and validation
-evidence, then identify the first genuine acceptance gap. Do not extend the repeated Move chain.
+Add one provider-neutral, explicit, one-shot ordinary-turn sabotage authoring coordinator. It must accept
+the exact current enemy-agent ordinary-turn token and current scene authority required by the seven
+existing request authors, invoke those authors in canonical order, and compose only their exact current
+outputs through `CharacterSabotageActionRequestComposer`.
 
 Acceptance boundary:
 
-1. Map each remaining Phase 7 capability and the final acceptance statement in `ROADMAP.md` to
-   concrete production owners and current Domain, Application, Infrastructure, and Godot evidence.
-2. Cover all canonical kinds: Conceal, Move, Substitute, Contaminate, Misquote, Delay, and Influence.
-3. Distinguish isolated contract/smoke coverage from a live user-observable path. Do not check a
-   roadmap item merely because a request can be authored or a recovery helper exists.
-4. Verify physical and informational eligibility, truth and movement safety, critical-route
-   recoverability, discoverable evidence, and attentive-player investigation without treating the
-   five repeated Move cycles as additional acceptance breadth.
-5. If the existing evidence fully satisfies an item, record the exact evidence and check only that
-   item. Otherwise leave one precise implementation slice for the smallest missing acceptance path.
-6. Do not add another Move candidate, author, task, typed request, recovery, terminal route, turn
-   completion, scheduling authorization, cycle boundary, or authoring admission.
-7. Preserve ordinary-startup inertness and all existing exclusions: no new cadence, timers,
-   provider transport, credentials, persistence, UI/input, navigation, or unrelated Domain behavior.
-8. Run validation appropriate to any changed files, review the complete diff, and prune this handover
-   to the exact first acceptance implementation gap rather than another repetition proof.
+1. Start test-first with a focused switch-gated Godot smoke that proves both eligible and ineligible
+   canonical kinds from one exact current enemy-agent turn.
+2. Retain and require the exact ordinary-turn token and exact actor. Reject null, rebuilt, foreign,
+   replaced, stale, repeated, and already-composed graphs without partial publication.
+3. Reuse the existing seven `CharacterSabotageAction*RequestController` owners and their current scene
+   sources/states. Do not duplicate typed eligibility policy or construct generic requests directly.
+4. Invoke authors in canonical order: Conceal, Move, Substitute, Contaminate, Misquote, Delay, Influence.
+   Pass their exact current outputs to `CharacterSabotageActionRequestComposer` only after complete
+   preflight proves the graph is current.
+5. Preserve ineligible kinds as absent author outputs. Require at least one eligible exact output; an empty
+   set stays inert.
+6. Retain only the exact successfully composed request and turn provenance needed for the next slice.
+   Keep the public surface closed to scene-owned implementation tokens where practical.
+7. Wire the coordinator inertly into `Main.tscn`; ordinary startup must perform no authoring, model work,
+   state mutation, turn reservation, or presentation.
+8. Stop before supplying a model, starting generic or typed consideration, selecting or applying an
+   outcome, recovering it, completing a turn, scheduling another action, or adding cadence.
+9. Add no provider transport, credentials, persistence, UI/input, navigation, or unrelated Domain behavior.
+10. Do not extend the repeated Move-cycle chain. The slice is acceptance orchestration across the existing
+    seven-kind boundary, not another Move proof.
+11. Update `README.md`, `ROADMAP.md`, and `PHASE_7_ACCEPTANCE_AUDIT.md` only for evidence actually added;
+    do not check a broad acceptance item until ordinary player-visible behavior satisfies it.
+12. Run `./scripts/quality.sh`, review the complete diff, preserve `scripts/code_statistics.py`, and leave
+    one exact next acceptance slice.

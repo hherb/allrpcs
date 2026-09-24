@@ -876,6 +876,9 @@ Current continuation:
   without copying completion provenance, reserving the turn, or starting a sixth sabotage action.
 - [x] Admit only that exact current successor boundary through the pure cycle-start gate without
   invoking an author or model, then stop extending the repeated Move-cycle chain.
+- [x] Audit Phase 7 acceptance across all seven canonical sabotage kinds, distinguish reusable and
+  switch-gated evidence from ordinary play, and identify the first genuine acceptance gap without
+  extending the repeated Move-cycle chain. See `PHASE_7_ACCEPTANCE_AUDIT.md`.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
