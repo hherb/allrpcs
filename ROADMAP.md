@@ -864,6 +864,10 @@ Current continuation:
   owner, restoring its source placement while retaining authoritative evidence.
 - [x] Retain only that exact recovered fifth-cycle Move as one terminal route and explicitly reset
   only that route while preserving recovered authority and all earlier provenance.
+- [x] Expose one fresh completed-turn token only from that exact reset fifth-cycle route without
+  admitting it to ordinary-turn binding or changing recovered authority.
+- [x] Admit only that exact current fifth-cycle completion through the pure scheduling gate without
+  binding or reserving the ordinary turn.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

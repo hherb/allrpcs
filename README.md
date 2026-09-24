@@ -1247,8 +1247,14 @@ That exact recovered fifth-cycle Move can now be retained as one terminal route 
 task-owned generic author request, canonical `Move` kind, and recovered placement/evidence outputs.
 An explicit reset clears only that exact route once while preserving its reset provenance and the
 recovered authoritative state. Null, rebuilt-author, wrong-kind, substituted-snapshot, stale-graph,
-and repeated inputs remain inert. No turn is completed or admitted, no ordinary turn is reserved,
-no provenance owner is cleared, and no additional model is invoked; ordinary startup remains inert.
+and repeated inputs remain inert.
+
+Only that exact reset fifth-cycle terminal route can now expose one fresh
+`CharacterSabotageTurnCompletion`. A separate admission owner accepts only that exact current token
+through the existing pure scheduling gate. Null, rebuilt-completion, rebuilt-author, foreign-actor,
+wrong-kind, substituted-recovery-snapshot, stale-graph, and repeated inputs remain inert. Neither
+seam binds or reserves the ordinary turn, starts a sixth sabotage cycle, clears earlier provenance,
+changes recovered authority, or invokes another model; ordinary startup remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
