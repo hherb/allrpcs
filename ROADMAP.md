@@ -868,6 +868,10 @@ Current continuation:
   admitting it to ordinary-turn binding or changing recovered authority.
 - [x] Admit only that exact current fifth-cycle completion through the pure scheduling gate without
   binding or reserving the ordinary turn.
+- [x] Bind that exact admitted fifth-cycle completion to the still-empty ordinary-turn reference
+  without reserving, replacing, or cancelling the turn.
+- [x] Retain one fresh scheduling authorization only from that exact still-current fifth-cycle
+  boundary without entering a sixth sabotage cycle.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

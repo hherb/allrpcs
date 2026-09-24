@@ -2,56 +2,52 @@
 
 ## Current state
 
-`main` includes merged PR #358 at `0f0585f`. The current branch advances the exact fifth Move cycle
-through completion and pure scheduling admission after its terminal route reset. GitHub still shows
-the older draft PR #357 open; do not treat it as the branch carrying this work.
+`main` includes merged PR #359 at `29f0862`. Branch
+`codex/phase-7-fifth-move-turn-boundary` advances the exact fifth Move cycle through ordinary-turn
+boundary binding and scheduling authorization after its completion admission.
 
-The new completion coordinator accepts only the exact fifth-cycle reset author request, canonical
-`Move` kind, actor, and still-current recovered placement/evidence outputs. It retains one fresh
-`CharacterSabotageTurnCompletion`. A separate admission coordinator revalidates that entire graph
-and accepts only the exact completion through the existing pure scheduling gate.
+The boundary coordinator accepts only the exact current fifth-cycle admission and the exact empty
+`CharacterTurnActivityController` reference. The authorization coordinator revalidates that whole
+graph and retains one fresh `CharacterSabotageOrdinaryTurnSchedulingAuthorization`. Null, rebuilt,
+substituted non-empty activity, stale-graph, and repeated inputs remain inert. No turn is started,
+reserved, replaced, or cancelled; no sixth sabotage cycle is entered; all seven model-call counts
+remain one; ordinary startup remains inert.
 
-Null, rebuilt-completion, rebuilt-author, foreign-actor, wrong-kind, substituted-snapshot,
-stale-graph, and repeated inputs remain inert. No ordinary turn is bound or reserved, no sixth
-sabotage cycle is started, no prior provenance is cleared, and no extra model is invoked. Ordinary
-startup remains inert. The unrelated untracked `scripts/code_statistics.py` remains untouched and
-must stay unstaged.
+The unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 ## Validation and review
 
 - Both slices were introduced test-first. Each focused game build failed only with `CS0246` for its
   absent coordinator, then passed with zero warnings after the minimum implementation.
 - The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8, including
-  rejected substitute tokens, exact one-shot completion and admission, preserved recovered
-  authority, and all seven model-call counts remaining one. The sandbox cannot open `user://logs`;
-  the identical host-local command passes.
+  rejected substitute references, exact one-shot binding and authorization, preserved recovered
+  authority, an unchanged empty ordinary-turn slot, and all seven model-call counts remaining one.
 - Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
   1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
-  smoke, formatting, and the Compatibility launch.
-- Complete-diff review found no remaining exact-provenance, stale-authority, one-shot, scene-ordering,
-  public-surface, formatting, line-length, documentation, or whitespace issues.
-- Hosted checks may fail with `steps: []` under the current Actions/account infrastructure state;
-  such jobs are not product-test evidence.
+  smoke, formatting, and the Compatibility launch. The sandbox-only run reached the build and then
+  hit the known VSTest loopback `SocketException (13)`; the identical host-local command passed.
+- Complete-diff review found no remaining exact-provenance, stale-authority, one-shot,
+  scene-ordering, public-surface, formatting, line-length, documentation, or whitespace issue.
+- Hosted checks with `steps: []` are Actions/account infrastructure, not product-test evidence.
 
 ## Exact next bounded slice
 
-Bind only the exact admitted fifth-cycle completion to the still-empty ordinary-turn reference,
-stopping before scheduling authorization, turn reservation, or a sixth sabotage cycle.
+Consume only the exact fifth-cycle scheduling authorization once at an explicit successor boundary,
+stopping before cycle-start admission, authoring, consideration, or a sixth sabotage action.
 
 Acceptance boundary:
 
-1. Test-first add one ordinary-turn boundary coordinator over only the exact current fifth-cycle
-   admission and the current empty `CharacterTurnActivityController` reference.
-2. Revalidate the complete completion/admission provenance graph and use the existing pure ordinary
-   turn boundary eligibility policy.
-3. Reject null or rebuilt admission, a substituted non-empty activity, stale authority, stale graph,
-   and repeated binding.
-4. Retain the exact admitted completion and exact null activity reference without starting,
-   reserving, replacing, or cancelling any ordinary turn.
-5. Do not authorize scheduling or begin a sixth sabotage cycle.
+1. Test-first add one successor-boundary coordinator over only the exact current fifth-cycle
+   authorization.
+2. Revalidate the complete completion, admission, ordinary-turn boundary, and authorization graph.
+3. Reject null, rebuilt authorization, rebuilt admission, substituted activity, stale graph, and
+   repeated entry.
+4. Retain only the exact authorization; do not copy completion provenance or mutate any owner.
+5. Do not admit cycle start, invoke an author/model, compose or start consideration, reserve a turn,
+   or begin a sixth sabotage action.
 6. Extend only the focused switch-gated Move proof. Keep ordinary startup inert and every model-call
    count unchanged.
 7. Preserve all existing exclusions: no cadence, timers, provider transport, credentials,
    persistence, UI/input, navigation, perception, dialogue delivery, or new Domain behavior.
 8. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to retain one exact scheduling authorization from only that still-current boundary.
+   slice to admit only that exact current successor boundary through the pure cycle-start gate.
