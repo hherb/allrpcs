@@ -44,7 +44,7 @@ internal static class CharacterSabotageActionMoveCycleContinuationSpecificReques
             [source.ContinuationCandidate]);
         RecordingMoveModel continuedMoveModel = new();
 
-        return models.TrySupplyModel(continuedMoveModel)
+        bool startedSuccessfully = models.TrySupplyModel(continuedMoveModel)
             && target.StartedRequest is null
             && task.Status == CharacterObjectSabotageMoveTaskStatus.Idle
             && !target.TryStart(null)
@@ -63,5 +63,16 @@ internal static class CharacterSabotageActionMoveCycleContinuationSpecificReques
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return startedSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationAppliedResultObservationSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    source,
+                    state,
+                    continuedModel,
+                    model,
+                    actionModel,
+                    priorActionModel,
+                    priorMoveModel);
     }
 }

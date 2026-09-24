@@ -1155,6 +1155,19 @@ current. Rejected preflight preserves the queued model. Successful start leaves 
 unobserved and does not itself reset the task, recover the Move, reserve the ordinary turn, or add
 automatic cadence.
 
+Only the exact completed applied typed continuation result can now be observed with the fresh
+placement and evidence snapshots installed by its task. The adjacent binding seam accepts and
+acknowledges only that exact observation and current authority, resets only the typed task, and
+retains the result and snapshots as downstream provenance. A separate recovery-candidate owner
+derives the unique exact pre-move source placement from that retained request, and an eligibility
+owner pairs only that candidate with an explicitly supplied visible-evidence view accepted by the
+existing policy. The recovery owner delegates only that exact pair to the stale-safe Move state
+controller, retaining the fresh restored placement and unchanged authoritative evidence. Null,
+running, rebuilt, foreign-actor, wrong-candidate, unseen-evidence, replaced-authority, stale, and
+repeated inputs remain inert. No terminal route, turn completion, ordinary-turn reservation,
+automatic cadence, provider, credential, persistence, UI/input, navigation, perception, dialogue,
+timer, or new Domain behavior is added.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
