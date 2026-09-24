@@ -4,7 +4,8 @@
 
 `main` includes merged PR #349 at `f5984e3`. Branch
 `codex/phase-7-continuation-turn-boundary` continues the exact fourth-cycle Move chain after its
-completed-turn admission and implements **Phase 7sj–7sm**.
+completed-turn admission and implements **Phase 7sj–7sm**. The reviewed implementation is committed
+at `6e9c9e4` and published in draft PR #350 targeting `main`.
 
 The admitted continuation completion now:
 
@@ -31,6 +32,8 @@ or new Domain behavior was added. Ordinary startup remains inert. The unrelated 
   smoke, formatting, and the Compatibility launch.
 - Complete-diff review found no correctness, exact-reference, scene-ordering, public-surface,
   formatting, line-length, or documentation issues. Whitespace validation is clean.
+- Draft PR #350's five hosted jobs failed with `steps: []`; no hosted product step executed, so this
+  is Actions/account infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
