@@ -2,60 +2,55 @@
 
 ## Current state
 
-`main` includes merged PR #343 at `66cd06d`. Branch
-`codex/phase-7-third-move-typed-route` completes **Phase 7rg** through **Phase 7ri**. The
-implementation is committed at `965917f` and published in draft PR #344 targeting `main`. The
-unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+`main` includes merged PR #344 at `c21e1e6`. Branch
+`codex/phase-7-third-move-recovery` completes **Phase 7rj** through **Phase 7rm**. The unrelated
+untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-The exact acknowledged third-cycle generic Move result now advances through three bounded seams:
+The exact observed applied third-cycle Move now advances through four bounded seams:
 
-- `CharacterSabotageActionMoveCycleSpecificRequestCoordinator` composes one typed request from only
-  the retained exact result/candidate binding and current recovered placement/evidence authority.
-- An explicit start coordinator uses a separate one-shot typed model source and task, preserving the
-  queued model across rejected preflight and starting only that exact request.
-- `CharacterSabotageActionMoveCycleAppliedResultObservationCoordinator` accepts only the exact
-  completed selected result and the exact fresh authoritative snapshots installed by that task.
+- An applied-result binding coordinator binds only the exact result and fresh authoritative
+  placement/evidence snapshots, then resets only its typed task and retains those downstream tokens.
+- A recovery-candidate coordinator derives the unique exact pre-move source placement from the
+  retained typed request and selected third-cycle candidate.
+- An eligibility coordinator pairs only that exact recovery candidate with one explicitly supplied
+  current evidence view accepted by the existing recovery policy.
+- A recovery coordinator delegates only that exact pair through the existing stale-safe Move state
+  owner, retaining the fresh restored placement and unchanged authoritative evidence.
 
-Null, rebuilt-result/request/binding, foreign-candidate, stale-authority, ineligible, abstaining,
-running, and repeated paths remain inert. Retained acknowledgement provenance remains exact after
-application without incorrectly requiring the request's pre-application recovered snapshots to
-remain current. Each of the four bounded model calls occurs once, the ordinary turn stays empty,
-and ordinary startup remains inert. No acknowledgement or task reset, recovery, terminal route,
-author reset, turn reservation, cadence, provider, credential, persistence, UI/input, navigation,
-perception, dialogue, timer, or new Domain behavior was added.
+Null, rebuilt-result/request/candidate/snapshot/view, foreign-candidate, unseen-evidence,
+stale-authority, running, and repeated paths remain inert. Each of the four bounded model calls still
+occurs once, the ordinary turn stays empty, and ordinary startup remains inert. No terminal route,
+route reset, turn completion, ordinary-turn reservation, cadence, author reset, provider, credential,
+persistence, UI/input, navigation, perception, dialogue, timer, or new Domain behavior was added.
 
 ## Validation and review
 
-- Each slice was test-first: the focused game build failed only for the deliberately absent
-  composition, start, or observation coordinator before its implementation.
+- Each slice was test-first: the focused game build failed only for the deliberately absent binding,
+  recovery-candidate, eligibility, or recovery coordinator before its implementation.
 - The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8 through
-  exact typed composition, explicit start, application, and observation of fresh authority.
-- Sandboxed Godot could not open `user://logs`; the identical focused commands passed host-local.
+  exact binding, acknowledgement, recovery-candidate authoring, eligibility, and stale-safe recovery.
+- Sandboxed Godot could not open `user://logs`; the identical focused command passed host-local.
 - Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
   1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
-  smoke, and the Compatibility launch. Formatting and whitespace checks also pass.
-- Draft PR #344's hosted jobs failed with `steps: []`; no hosted product step executed, so this is
-  Actions/account infrastructure state rather than contradictory product-test evidence.
+  smoke, and the Compatibility launch. Formatting, whitespace, and the complete diff also pass.
 
 ## Exact next bounded slice
 
-Take **Phase 7rj: bind and acknowledge the exact observed applied third-cycle Move result**.
+Take **Phase 7rn: retain the exact recovered third-cycle Move as one terminal route**.
 
 Acceptance boundary:
 
-1. Test-first add one binding coordinator over the exact observation, typed start/task, request
-   owner, and current `CharacterObjectSabotageMoveController` state.
-2. Bind only the exact observed result together with its exact observed placement/evidence snapshots
-   while those same snapshots remain authoritative and task-owned provenance remains exact.
-3. Acknowledge only that same bound graph, reset only the third-cycle typed task, clear only the
-   observation, and retain the exact result plus authoritative snapshots as downstream tokens.
-4. Reject null, rebuilt-result/request/candidate/snapshots, stale authority, running, foreign,
-   abstaining, and repeated inputs without changing prior owners, authoritative state, ordinary
-   turn, or any model call count.
-5. Extend only the focused switch-gated Move proof. Do not author or publish a recovery candidate,
-   recover or route the result, reset any author, reserve the ordinary turn, or add cadence.
-6. Keep ordinary startup inert and preserve all existing exclusions: no timers, provider transport,
+1. Test-first add one terminal-route coordinator over the exact third-cycle recovery, its guarded
+   author request/canonical `Move` kind, and current recovered placement/evidence authority.
+2. Retain only that exact still-current graph once; do not copy the placement output or clear any
+   upstream provenance.
+3. Reject null, rebuilt-request/placement, foreign actor, wrong kind, replaced authority, stale
+   recovery, and repeated inputs without changing prior owners, authoritative state, ordinary turn,
+   or any model call count.
+4. Extend only the focused switch-gated Move proof. Do not reset the route, complete the sabotage
+   turn, reserve the ordinary turn, authorize scheduling, start another cycle, or add cadence.
+5. Keep ordinary startup inert and preserve all existing exclusions: no timers, provider transport,
    credentials, persistence, UI/input, navigation, perception, dialogue delivery, or new Domain
    behavior.
-7. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to author only one exact recovery candidate from the retained applied provenance.
+6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
+   slice to reset only that exact retained terminal route while preserving recovery authority.

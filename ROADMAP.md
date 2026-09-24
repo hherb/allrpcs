@@ -770,8 +770,16 @@ Current continuation:
   task while preserving its queued model across rejected preflight and leaving completion unobserved.
 - [x] Observe only that exact completed applied typed result with the task-installed authoritative
   placement and evidence snapshots without acknowledging, resetting, recovering, or routing it.
-- [ ] Bind and acknowledge only that exact observed applied result and authoritative outcome,
+- [x] Bind and acknowledge only that exact observed applied result and authoritative outcome,
   resetting only its typed task while retaining exact downstream provenance.
+- [x] Author one exact third-cycle Move recovery candidate from that retained provenance and its
+  typed request's unique exact pre-move source placement without publishing eligibility.
+- [x] Pair only that exact recovery candidate with one explicitly supplied current evidence view
+  accepted by the existing recovery policy without invoking recovery.
+- [x] Recover only that exact published third-cycle Move pair through the existing stale-safe state
+  owner, retaining the fresh restored placements and authoritative evidence without routing it.
+- [ ] Retain that exact recovered third-cycle Move as a distinct terminal route without resetting
+  the route, completing the sabotage turn, reserving the ordinary turn, or adding cadence.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
