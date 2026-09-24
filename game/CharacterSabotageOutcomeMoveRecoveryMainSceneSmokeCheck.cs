@@ -476,7 +476,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "tokens composed one exact typed request, which alone started on fresh typed owners; "
             + "only its exact applied result and task-installed authority were observed, bound, and "
             + "acknowledged; one exact visible-evidence recovery candidate was authored, admitted, "
-            + "and restored through the stale-safe state owner while every model remained one-shot.");
+            + "and restored through the stale-safe state owner; its exact terminal route was "
+            + "retained, reset, completed, and admitted through the pure scheduling gate while every "
+            + "model remained one-shot and the ordinary turn stayed unchanged.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

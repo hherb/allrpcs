@@ -1241,9 +1241,13 @@ retained authoritative placement and evidence snapshots. A separate admission se
 that exact candidate/view pair, and a stale-safe recovery seam delegates it through the existing
 state owner, installing one fresh restored placement snapshot while retaining authoritative
 evidence. Null, rebuilt-result, rebuilt-candidate, substituted-snapshot, unseen-evidence, stale,
-and repeated inputs remain inert. No terminal route is retained or reset, no turn is completed or
-admitted, no provenance is cleared, and no additional model is invoked; ordinary startup remains
-inert.
+and repeated inputs remain inert. The exact recovery can now be retained as one distinct terminal
+route and reset once without clearing recovery output. Only that exact reset route can expose one
+fresh completed-turn token, which alone can be admitted through the existing pure scheduling gate.
+Null, rebuilt-author, wrong-kind, substituted-authority, stale-graph, and repeated route,
+completion, or admission inputs remain inert. No ordinary-turn boundary is bound or reserved, no
+sixth cycle begins, no provenance is cleared, and no additional model is invoked; ordinary startup
+remains inert.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
