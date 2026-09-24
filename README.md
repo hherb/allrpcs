@@ -1168,6 +1168,17 @@ repeated inputs remain inert. No terminal route, turn completion, ordinary-turn 
 automatic cadence, provider, credential, persistence, UI/input, navigation, perception, dialogue,
 timer, or new Domain behavior is added.
 
+That exact recovered continuation Move can now retain one distinct terminal route over the guarded
+author request, canonical Move kind, retained generic acknowledgement and candidate binding, and
+the exact current recovered placement and evidence authority. Its explicit reset clears only the
+route references once while preserving recovery authority and recording the exact author/kind
+provenance. A separate completion owner exposes one fresh `CharacterSabotageTurnCompletion` from
+only that exact reset route, and a distinct admission owner retains it only after the existing pure
+scheduling gate accepts the same exact token. Null, rebuilt, foreign-actor, wrong-kind,
+replaced-authority, stale, and repeated inputs remain inert. These seams do not reserve the ordinary
+turn, clear upstream provenance, invoke another model, authorize another cycle, or enable automatic
+sabotage.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
