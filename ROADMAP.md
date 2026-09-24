@@ -778,8 +778,16 @@ Current continuation:
   accepted by the existing recovery policy without invoking recovery.
 - [x] Recover only that exact published third-cycle Move pair through the existing stale-safe state
   owner, retaining the fresh restored placements and authoritative evidence without routing it.
-- [ ] Retain that exact recovered third-cycle Move as a distinct terminal route without resetting
+- [x] Retain that exact recovered third-cycle Move as a distinct terminal route without resetting
   the route, completing the sabotage turn, reserving the ordinary turn, or adding cadence.
+- [x] Reset only that exact retained third-cycle terminal route once while preserving its recovery
+  owner and authoritative placement and evidence snapshots.
+- [x] Expose one fresh completed-turn token only from that exact reset third-cycle route without
+  admitting it to scheduling or changing the ordinary turn.
+- [x] Admit only that exact current third-cycle completion through the pure scheduling gate without
+  binding or reserving the ordinary turn.
+- [ ] Bind that exact admitted third-cycle completion to the still-empty ordinary-turn boundary
+  without reserving the slot or authorizing another cycle.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

@@ -1088,6 +1088,16 @@ foreign, unseen-evidence, stale-authority, running, and repeated paths remain in
 not reset a prior author, reserve the ordinary turn, add automatic cadence, contact a provider, or
 change ordinary-startup behavior.
 
+That exact recovered third-cycle Move can now retain one distinct terminal route over the guarded
+author request, canonical Move kind, and exact recovered placement and evidence authority. Its
+explicit reset clears only the route references once while preserving recovery authority and
+recording the exact author/kind provenance. A separate completion owner exposes one fresh
+`CharacterSabotageTurnCompletion` from only that exact reset route, and a distinct admission owner
+retains it only after the existing pure scheduling gate accepts the same exact token. Null, rebuilt,
+foreign-actor, wrong-kind, replaced-authority, stale, and repeated inputs remain inert. These seams
+do not bind or reserve the ordinary turn, authorize another cycle, clear upstream provenance,
+consume another model, or enable automatic sabotage.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

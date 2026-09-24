@@ -338,6 +338,9 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleRecoveryCandidateCoordinator.cs" id="298zl_sabotage_move_cycle_recovery_candidate"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleRecoveryEligibilityCoordinator.cs" id="298zm_sabotage_move_cycle_recovery_eligibility"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleRecoveryCoordinator.cs" id="298zn_sabotage_move_cycle_recovery"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleTerminalRouteCoordinator.cs" id="298zo_sabotage_move_cycle_terminal_route"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleTurnCompletionCoordinator.cs" id="298zp_sabotage_move_cycle_turn_completion"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleTurnAdmissionCoordinator.cs" id="298zq_sabotage_move_cycle_turn_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -951,6 +954,15 @@ script = ExtResource("298zm_sabotage_move_cycle_recovery_eligibility")
 
 [node name="CharacterSabotageActionMoveCycleRecoveryCoordinator" type="Node" parent="."]
 script = ExtResource("298zn_sabotage_move_cycle_recovery")
+
+[node name="CharacterSabotageActionMoveCycleTerminalRouteCoordinator" type="Node" parent="."]
+script = ExtResource("298zo_sabotage_move_cycle_terminal_route")
+
+[node name="CharacterSabotageActionMoveCycleTurnCompletionCoordinator" type="Node" parent="."]
+script = ExtResource("298zp_sabotage_move_cycle_turn_completion")
+
+[node name="CharacterSabotageActionMoveCycleTurnAdmissionCoordinator" type="Node" parent="."]
+script = ExtResource("298zq_sabotage_move_cycle_turn_admission")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

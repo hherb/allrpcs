@@ -462,7 +462,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "before one exact typed request started on a separate task; only its exact applied result "
             + "and fresh authoritative state were observed, bound, and acknowledged; one exact "
             + "recovery candidate was paired with visible evidence and restored through the stale-safe "
-            + "state owner, with the ordinary slot empty and automatic sabotage disabled.");
+            + "state owner; its exact terminal route was retained, reset, completed, and admitted "
+            + "through the pure scheduling gate with the ordinary slot empty and automatic sabotage "
+            + "disabled.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
