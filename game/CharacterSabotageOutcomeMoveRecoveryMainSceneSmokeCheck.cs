@@ -471,7 +471,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "retained one exact authorization, entered an explicit successor boundary, and passed "
             + "the pure cycle-start gate; its exact admission guarded a fifth distinct Move author "
             + "and composed only that output into one fresh generic request; only that exact request "
-            + "started on fresh owners and only its exact completed result was observed.");
+            + "started on fresh owners; only its exact completed result was observed, bound to the "
+            + "fifth author's candidate, and acknowledged while retaining exact provenance.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

@@ -1208,6 +1208,14 @@ the task remains completed, and no typed Move request is composed or started. Ea
 counts, ordinary-turn state, placement, evidence, and all retained provenance remain unchanged;
 ordinary startup remains inert.
 
+That exact fifth-cycle observation can now bind once to only the fresh author's exact source-owned
+Move candidate binding. A separate explicit acknowledgement accepts only that same still-current
+bound result, resets only its completed generic task, clears the observation, and retains the exact
+result and candidate provenance. Null, rebuilt-result, wrong-candidate, stale-graph,
+replaced-authority, and repeated inputs remain inert. Neither seam composes or starts typed Move
+work, dispatches or applies an action, reserves the ordinary turn, clears prior provenance, or
+changes placement or evidence authority; ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
