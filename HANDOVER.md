@@ -4,7 +4,7 @@
 
 `main` includes merged PR #361 at `803b77d`. Branch
 `codex/phase-7-acceptance-audit` completes the Phase 7 acceptance traceability audit after the
-deliberately final repeated Move-cycle proof.
+deliberately final repeated Move-cycle proof. Draft PR #362 carries this branch.
 
 `PHASE_7_ACCEPTANCE_AUDIT.md` maps all seven canonical kinds to their current Domain, Application,
 Infrastructure, and Godot owners and evidence. It distinguishes reusable contracts and switch-gated
@@ -35,6 +35,9 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
 - Complete-diff review found no unsupported acceptance claim, missed canonical kind, mistaken
   ordinary-play classification, stale next-slice boundary, line-length issue, or whitespace error.
   `git diff --check` passes, and all changed Markdown lines remain within 120 characters.
+- Draft PR #362 is mergeable. All five hosted jobs completed as failures with `steps: []`; they ran no
+  checkout, build, test, smoke, or packaging step and are Actions/account infrastructure rather than
+  product-test evidence.
 
 ## Exact next bounded slice
 
