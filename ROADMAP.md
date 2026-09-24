@@ -810,8 +810,18 @@ Current continuation:
   Move request over the current authoritative placement and evidence snapshots without starting it.
 - [x] Explicitly start only that exact typed continuation Move request on a fresh scene-owned task
   while preserving its queued model across rejected preflight and leaving completion unobserved.
-- [ ] Observe only that exact completed typed continuation result together with the task-installed
+- [x] Observe only that exact completed typed continuation result together with the task-installed
   fresh placement and evidence snapshots, without acknowledging, resetting, or recovering it.
+- [x] Bind and acknowledge only that exact applied continuation result and authoritative snapshots,
+  resetting only its typed task while retaining exact downstream provenance.
+- [x] Author one exact continuation Move recovery candidate from that retained provenance and its
+  unique exact pre-move source placement without publishing or applying recovery.
+- [x] Pair only that exact recovery candidate with one explicitly supplied visible-evidence view
+  accepted by the existing recovery policy without changing authoritative state.
+- [x] Recover only that exact published continuation Move pair through the existing stale-safe state
+  owner, restoring its source placement while retaining authoritative evidence.
+- [ ] Retain that exact recovered continuation Move as a distinct terminal route without resetting
+  recovery authority, completing a turn, or adding automatic cadence.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

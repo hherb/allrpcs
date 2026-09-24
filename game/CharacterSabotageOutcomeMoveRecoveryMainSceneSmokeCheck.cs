@@ -465,7 +465,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "state owner; its exact terminal route was retained, reset, completed, and admitted "
             + "through the pure scheduling gate; the still-empty ordinary slot authorized a distinct "
             + "continuation cycle whose fourth Move was authored, generically selected, acknowledged, "
-            + "and started as one exact typed request with automatic sabotage disabled.");
+            + "applied, and recovered through exact task-installed authority with automatic sabotage "
+            + "disabled.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
