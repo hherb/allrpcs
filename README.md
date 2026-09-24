@@ -1188,6 +1188,16 @@ Null, rebuilt, malformed, changed-slot, active-slot, stale, and repeated referen
 These seams do not reserve or replace the turn, invoke an author or model, enter an action-specific
 flow, clear prior owners, or enable automatic sabotage; ordinary startup remains inert.
 
+That successor admission now guards one fresh fifth-cycle Move author invocation with a distinct
+source-owned evidence identity. The author accepts the candidate only as an exact caller-supplied
+reference after revalidating the complete successor-boundary and continuation-recovery graph. A
+separate composition seam accepts only that exact guarded output and produces one fresh generic
+request containing the exact actor and canonical `Move` kind. Null, rebuilt, malformed, prior-cycle,
+duplicate-evidence, stale-authority, and repeated inputs remain inert. Neither seam starts
+consideration, supplies or consumes a model, reserves the ordinary turn, changes placement or
+evidence authority, clears prior provenance, or enables automatic sabotage; ordinary startup
+remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
