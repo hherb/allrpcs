@@ -3,8 +3,9 @@
 ## Current state
 
 `main` includes merged PR #346 at `bdd2709`. Branch
-`codex/phase-7-third-move-next-cycle` completes **Phase 7rr** through **Phase 7sc**. The unrelated
-untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+`codex/phase-7-third-move-next-cycle` completes **Phase 7rr** through **Phase 7sc**. The implementation
+is committed at `4f35138` and published in draft PR #347 targeting `main`. The unrelated untracked
+`scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The exact recovered third-cycle Move now advances through a distinct continuation cycle:
 
