@@ -47,7 +47,7 @@ internal static class
             [source.SuccessorCandidate]);
         RecordingMoveModel moveModel = new();
 
-        return models.TrySupplyModel(moveModel)
+        bool started = models.TrySupplyModel(moveModel)
             && target.StartedRequest is null
             && task.Status == CharacterObjectSabotageMoveTaskStatus.Idle
             && !target.TryStart(null)
@@ -67,5 +67,18 @@ internal static class
             && cycleActionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return started
+            && CharacterSabotageActionMoveCycleContinuationSuccessorAppliedResultObservationSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    source,
+                    state,
+                    actionModel,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    cycleActionModel,
+                    priorActionModel,
+                    priorMoveModel,
+                    moveModel);
     }
 }

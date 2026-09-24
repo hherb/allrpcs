@@ -1225,6 +1225,15 @@ inputs remain inert, and rejected preflight preserves the queued model. Successf
 completion unobserved and does not acknowledge or reset the task, apply movement, reserve the
 ordinary turn, clear provenance, or enable automatic sabotage; ordinary startup remains inert.
 
+Only that exact fifth-cycle typed task's completed applied result can now be observed together with
+the fresh placement and evidence snapshots installed by the task. A separate binding seam accepts
+only those exact three observed tokens and explicitly acknowledges them, resetting only the
+completed typed task while retaining the result and authoritative snapshots for future recovery
+composition. Null, running, rebuilt-request, rebuilt-result, foreign-actor, wrong-candidate,
+stale-authority, stale-graph, substituted-snapshot, and repeated inputs remain inert. Neither seam
+authors recovery, recovers movement, reserves the ordinary turn, clears earlier provenance, or
+invokes another model; ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
