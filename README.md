@@ -1234,6 +1234,17 @@ stale-authority, stale-graph, substituted-snapshot, and repeated inputs remain i
 authors recovery, recovers movement, reserves the ordinary turn, clears earlier provenance, or
 invokes another model; ordinary startup remains inert.
 
+Only that exact acknowledged fifth-cycle applied result can now author one recovery candidate from
+its source-owned Move candidate and unique pre-move source placement. The candidate retains one
+exact caller-supplied evidence view only when the existing recovery policy accepts it against the
+retained authoritative placement and evidence snapshots. A separate admission seam publishes only
+that exact candidate/view pair, and a stale-safe recovery seam delegates it through the existing
+state owner, installing one fresh restored placement snapshot while retaining authoritative
+evidence. Null, rebuilt-result, rebuilt-candidate, substituted-snapshot, unseen-evidence, stale,
+and repeated inputs remain inert. No terminal route is retained or reset, no turn is completed or
+admitted, no provenance is cleared, and no additional model is invoked; ordinary startup remains
+inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

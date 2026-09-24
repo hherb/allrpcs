@@ -45,7 +45,7 @@ internal static class
                 result.Request.Character.Identity.Id,
                 result.SelectedCandidate!.Evidence.Evidence.EvidenceId));
 
-        return target.BoundResult is null
+        bool acknowledged = target.BoundResult is null
             && target.AcknowledgedResult is null
             && target.Placements is null
             && target.Evidence is null
@@ -87,5 +87,20 @@ internal static class
             && moveModel.CallCount == 1
             && ReferenceEquals(state.Placements, placements)
             && ReferenceEquals(state.Evidence, evidence);
+        return acknowledged
+            && CharacterSabotageActionMoveCycleContinuationSuccessorRecoveryCandidateSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    result,
+                    placements,
+                    evidence,
+                    actionModel,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    cycleActionModel,
+                    priorActionModel,
+                    priorMoveModel,
+                    moveModel);
     }
 }

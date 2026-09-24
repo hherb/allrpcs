@@ -856,6 +856,12 @@ Current continuation:
   authoritative placement and evidence snapshots without acknowledgement or recovery authoring.
 - [x] Bind and acknowledge only that exact applied result and authoritative snapshots, resetting
   only its completed typed task while retaining exact provenance for future recovery composition.
+- [x] Author one exact fifth-cycle recovery candidate and visible evidence view from only that
+  acknowledged result and retained authoritative state without admitting recovery.
+- [x] Admit only that exact current fifth-cycle recovery candidate and evidence view through the
+  existing recovery policy without changing authoritative state.
+- [x] Recover only that exact admitted fifth-cycle Move pair through the existing stale-safe state
+  owner, restoring its source placement while retaining authoritative evidence.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

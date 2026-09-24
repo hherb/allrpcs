@@ -475,7 +475,8 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "fifth author's candidate, and acknowledged while retaining exact provenance; those "
             + "tokens composed one exact typed request, which alone started on fresh typed owners; "
             + "only its exact applied result and task-installed authority were observed, bound, and "
-            + "acknowledged while every earlier model remained one-shot.");
+            + "acknowledged; one exact visible-evidence recovery candidate was authored, admitted, "
+            + "and restored through the stale-safe state owner while every model remained one-shot.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
