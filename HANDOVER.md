@@ -5,6 +5,8 @@
 `main` includes merged PR #350 at `fe672dc`. Branch
 `codex/phase-7-fifth-move-author` continues its exact successor-cycle boundary and implements the
 next two bounded seams: one fifth-cycle Move author invocation and one generic request composition.
+The reviewed implementation is committed at `eebf435` and published in draft PR #351 targeting
+`main`.
 
 The new path:
 
@@ -40,6 +42,9 @@ behavior was added. Ordinary startup remains inert. The unrelated untracked
   smoke and full quality suite pass after the fix.
 - Complete-diff review found no remaining correctness, exact-reference, scene-ordering,
   public-surface, formatting, line-length, or documentation issues. Whitespace validation is clean.
+- Draft PR #351's four completed hosted jobs failed with `steps: []`, while its remaining queued job
+  also exposed `steps: []`; no hosted product step executed, so this is Actions/account
+  infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
