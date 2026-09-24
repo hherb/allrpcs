@@ -4,6 +4,7 @@
 
 `main` includes merged PR #347 at `fbced06`. Branch
 `codex/phase-7-continuation-move-applied-result` completes **Phase 7sd** through **Phase 7sh**. The
+implementation is committed at `25db309` and published in draft PR #348 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The exact fourth-cycle continuation Move now completes its guarded applied-result and recovery path:
@@ -35,6 +36,8 @@ behavior was added.
 - Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
   1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
   smoke, formatting, and the Compatibility launch.
+- Draft PR #348's five hosted jobs failed with `steps: []`; no hosted product step executed, so this
+  is Actions/account infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
