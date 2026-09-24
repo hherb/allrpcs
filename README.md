@@ -1095,8 +1095,65 @@ recording the exact author/kind provenance. A separate completion owner exposes 
 `CharacterSabotageTurnCompletion` from only that exact reset route, and a distinct admission owner
 retains it only after the existing pure scheduling gate accepts the same exact token. Null, rebuilt,
 foreign-actor, wrong-kind, replaced-authority, stale, and repeated inputs remain inert. These seams
-do not bind or reserve the ordinary turn, authorize another cycle, clear upstream provenance,
-consume another model, or enable automatic sabotage.
+do not reserve the ordinary turn, authorize another cycle, clear upstream provenance, consume
+another model, or enable automatic sabotage. A separate ordinary-turn boundary now binds that exact
+admission once only while the scene's exact turn reference is still empty and startable. It retains
+the exact completion and empty reference without creating a request, reserving the slot, or changing
+any prior owner or authoritative snapshot.
+
+That third-cycle ordinary-turn boundary can now retain one fresh scheduling authorization after
+revalidating its exact admitted completion and still-empty turn reference. The authorization keeps
+only those exact references; it does not reserve or replace the turn, enter another sabotage cycle,
+invoke an author, or consume a model.
+
+That exact authorization can now be consumed once at a distinct explicit continuation boundary.
+The boundary retains the authorization itself, revalidates its complete current graph, and does not
+copy completion provenance, reserve the ordinary turn, invoke an author, or start another action.
+
+The continuation boundary can now pass the existing pure cycle-start gate into one distinct
+action-authoring admission. Only the exact still-current boundary is admitted once; rebuilt,
+malformed, stale, and repeated references remain inert, and no action-specific author is invoked.
+
+That exact admission can now guard one fresh invocation of a distinct Move author over a fourth
+eligible candidate with its own evidence identity. The author retains the exact continuation
+admission, request, typed candidate binding, and current third-cycle recovery authority. It does not
+reset any prior author, compose or start consideration, change placement or evidence state, reserve
+the ordinary turn, or consume a model.
+
+The exact continuation-guarded author output can now compose one fresh generic Move request after
+revalidating the full admission, recovery, candidate-binding, and empty-turn graph. Composition
+retains the author tokens and creates no task, model call, decision, state change, or cadence.
+
+An explicit continuation start seam can now consume one separately supplied model on a fresh
+scene-owned task only after the exact composed request and its complete retained graph remain
+current. Null, rebuilt, author-owned, stale, occupied, and repeated starts fail before model
+consumption. Successful start leaves its result unobserved and authoritative state unchanged.
+
+A distinct observer can now retain only the exact completed generic Move result installed by that
+fresh task while the complete continuation graph remains current. Running, null, rebuilt-request,
+foreign, wrong-kind, stale, and repeated results remain inert; observation does not acknowledge the
+result, reset the task, bind its candidate, dispatch it, or alter authoritative state.
+
+The adjacent continuation binding seam can now pair only that exact observation with the fourth
+author's exact typed candidate binding. Null, rebuilt, wrong-request, stale-author, and repeated
+inputs remain inert. Binding retains both references without clearing the observation, resetting
+the task, composing a typed request, dispatching, or applying the candidate.
+
+Only that bound continuation pair can now be acknowledged once. Acknowledgement resets the fresh
+generic task and clears its observation while retaining the exact result, candidate binding, author
+output, and current recovery graph as downstream provenance. It starts no typed work and changes no
+authoritative snapshot or prior owner.
+
+Those exact continuation acknowledgement tokens can now compose one fresh provider-neutral typed
+Move request over the current authoritative placement and evidence snapshots and the exact fourth
+candidate. Composition revalidates eligibility and retained provenance, but does not start the typed
+task, consume a model, apply movement, author recovery, or alter the ordinary turn.
+
+An explicit typed continuation start seam can now consume one separately supplied Move model on a
+fresh scene-owned typed task only while that exact request and its complete retained graph remain
+current. Rejected preflight preserves the queued model. Successful start leaves completion
+unobserved and does not itself reset the task, recover the Move, reserve the ordinary turn, or add
+automatic cadence.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
