@@ -786,8 +786,32 @@ Current continuation:
   admitting it to scheduling or changing the ordinary turn.
 - [x] Admit only that exact current third-cycle completion through the pure scheduling gate without
   binding or reserving the ordinary turn.
-- [ ] Bind that exact admitted third-cycle completion to the still-empty ordinary-turn boundary
+- [x] Bind that exact admitted third-cycle completion to the still-empty ordinary-turn boundary
   without reserving the slot or authorizing another cycle.
+- [x] Retain one fresh scheduling authorization from only that exact still-current third-cycle Move
+  boundary without reserving the ordinary turn or entering another sabotage cycle.
+- [x] Consume only that exact third-cycle authorization once at a distinct explicit cycle boundary
+  without copying provenance, reserving the turn, or starting any action.
+- [x] Admit that exact still-current continuation boundary once at a distinct action-authoring seam
+  without copying provenance or invoking an action-specific author.
+- [x] Guard one fresh Move author invocation with that exact continuation admission and a new exact
+  eligible candidate without resetting prior authors or changing authoritative state.
+- [x] Compose only that exact continuation-guarded Move output into one fresh generic request
+  without starting consideration, reserving the ordinary turn, or consuming a model.
+- [x] Explicitly start only that exact continuation request on a fresh scene-owned task while
+  preserving its queued model across rejected preflight and leaving completion unobserved.
+- [x] Observe only that exact completed continuation Move result after revalidating its retained
+  graph, without acknowledging, binding a candidate, dispatching, or applying it.
+- [x] Bind that exact observed continuation result to its guarded Move candidate without resetting
+  the task, clearing the observation, dispatching, or applying it.
+- [x] Acknowledge only that exact bound continuation result, resetting only its generic task while
+  retaining the exact result and candidate tokens for future typed composition.
+- [x] Compose those exact continuation acknowledgement tokens into one fresh provider-neutral typed
+  Move request over the current authoritative placement and evidence snapshots without starting it.
+- [x] Explicitly start only that exact typed continuation Move request on a fresh scene-owned task
+  while preserving its queued model across rejected preflight and leaving completion unobserved.
+- [ ] Observe only that exact completed typed continuation result together with the task-installed
+  fresh placement and evidence snapshots, without acknowledging, resetting, or recovering it.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

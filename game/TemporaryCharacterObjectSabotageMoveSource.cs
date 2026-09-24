@@ -15,6 +15,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
     private const string EvidenceIdText = "cask-drag-marks";
     private const string FollowUpEvidenceIdText = "cask-wheel-ruts";
     private const string CycleEvidenceIdText = "cask-spoke-scuffs";
+    private const string ContinuationEvidenceIdText = "cask-axle-scrapes";
     private const string SourceLocationIdText = "village-square";
     private const string SourceLocationDisplayName = "Village square";
     private const string SourceLocationDescription = "The cask stands beside the village well.";
@@ -52,6 +53,9 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
 
     /// <summary>Gets one fresh exact candidate for the next admitted sabotage cycle.</summary>
     public CharacterObjectSabotageMoveCandidate CycleCandidate { get; private set; } = null!;
+
+    /// <summary>Gets one fresh exact candidate for the continuation sabotage cycle.</summary>
+    public CharacterObjectSabotageMoveCandidate ContinuationCandidate { get; private set; } = null!;
 
     /// <summary>Gets the exact aligned move-recovery candidate.</summary>
     public CharacterObjectSabotageMoveRecoveryCandidate RecoveryCandidate { get; private set; } = null!;
@@ -110,6 +114,16 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
                 VisibilityState.Noticed,
                 false));
         CycleCandidate = new CharacterObjectSabotageMoveCandidate(destination, cycleEvidence);
+        CharacterObjectSabotageEvidence continuationEvidence = new(
+            occurrence,
+            new DiscoveryEvidence(
+                new EvidenceId(ContinuationEvidenceIdText),
+                target.Identity.Id,
+                VisibilityState.Noticed,
+                false));
+        ContinuationCandidate = new CharacterObjectSabotageMoveCandidate(
+            destination,
+            continuationEvidence);
         RecoveryCandidate = new CharacterObjectSabotageMoveRecoveryCandidate(
             Candidate,
             sourcePlacement);
