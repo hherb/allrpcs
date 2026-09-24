@@ -54,4 +54,28 @@ public partial class CharacterSabotageActionMoveCycleAppliedResultObservationCoo
         ObservedEvidence = evidence;
         return true;
     }
+
+    /// <summary>Resets only the same exact completed result and fresh state retained here.</summary>
+    internal bool TryAcknowledgeCompletedResult(
+        CharacterObjectSabotageMoveConsiderationResult? expectedResult,
+        WorldObjectPlacementSnapshot? expectedPlacements,
+        DiscoveryEvidenceSnapshot? expectedEvidence)
+    {
+        if (!ReferenceEquals(ObservedResult, expectedResult)
+            || !ReferenceEquals(ObservedPlacements, expectedPlacements)
+            || !ReferenceEquals(ObservedEvidence, expectedEvidence)
+            || !ReferenceEquals(state.Placements, expectedPlacements)
+            || !ReferenceEquals(state.Evidence, expectedEvidence)
+            || !start.IsCurrentCompletedResult(expectedResult)
+            || !ReferenceEquals(task.Result, expectedResult)
+            || !task.TryReset())
+        {
+            return false;
+        }
+
+        ObservedResult = null;
+        ObservedPlacements = null;
+        ObservedEvidence = null;
+        return true;
+    }
 }

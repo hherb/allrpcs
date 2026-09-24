@@ -78,7 +78,7 @@ internal static class CharacterSabotageActionMoveCycleAppliedResultObservationSm
             new CharacterObjectSabotageMoveDecision(
                 request.Character.Identity.Id,
                 source.CycleCandidate.Evidence.Evidence.EvidenceId));
-        return ReferenceEquals(result.Request, request)
+        bool observed = ReferenceEquals(result.Request, request)
             && ReferenceEquals(result.SelectedCandidate, source.CycleCandidate)
             && ReferenceEquals(task.ResolvedPlacements, appliedPlacements)
             && ReferenceEquals(task.ResolvedEvidence, appliedEvidence)
@@ -100,6 +100,18 @@ internal static class CharacterSabotageActionMoveCycleAppliedResultObservationSm
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return observed
+            && CharacterSabotageActionMoveCycleAppliedResultBindingSmokeVerifier.PassesMainScene(
+                scene,
+                source,
+                state,
+                result,
+                appliedPlacements,
+                appliedEvidence,
+                model,
+                actionModel,
+                priorActionModel,
+                priorMoveModel);
     }
 
     private static CharacterObjectSabotageMoveConsiderationResult CreateAbstainingResult(

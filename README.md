@@ -1077,9 +1077,16 @@ complete graph before consuming one separately supplied model on a distinct type
 preflight preserves the queued model. A separate observer accepts only the exact completed selected
 result and the exact fresh placement and evidence snapshots installed by that task; it relies on
 retained exact acknowledgement provenance after application rather than requiring the request's
-pre-application snapshots to remain current. It does not acknowledge or reset the task, recover or
-route the outcome, reset a prior author, reserve the ordinary turn, add automatic cadence, contact a
-provider, or change ordinary-startup behavior.
+pre-application snapshots to remain current. The adjacent binding seam accepts only that exact
+observation and authoritative outcome, then resets only the typed task while retaining the exact
+result and snapshot tokens. One recovery-candidate owner derives the unique exact pre-move source
+placement from that retained typed request; a separate eligibility owner pairs only that candidate
+with one explicitly supplied current evidence view accepted by the existing policy. The recovery
+owner delegates only that exact pair to the stale-safe Move controller, retains the fresh restored
+placement and unchanged authoritative evidence, and stops before terminal routing. Null, rebuilt,
+foreign, unseen-evidence, stale-authority, running, and repeated paths remain inert. These seams do
+not reset a prior author, reserve the ordinary turn, add automatic cadence, contact a provider, or
+change ordinary-startup behavior.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated

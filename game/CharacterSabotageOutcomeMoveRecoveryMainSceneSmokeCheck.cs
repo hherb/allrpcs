@@ -460,8 +460,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "admission guarded a third eligible Move author and one fresh generic decision; only "
             + "that exact result was observed, bound to the third author's candidate, and acknowledged "
             + "before one exact typed request started on a separate task; only its exact applied result "
-            + "and fresh authoritative state were observed, with the ordinary slot empty and automatic "
-            + "sabotage disabled.");
+            + "and fresh authoritative state were observed, bound, and acknowledged; one exact "
+            + "recovery candidate was paired with visible evidence and restored through the stale-safe "
+            + "state owner, with the ordinary slot empty and automatic sabotage disabled.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
