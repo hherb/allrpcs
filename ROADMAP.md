@@ -764,8 +764,14 @@ Current continuation:
   the task, clearing the observation, dispatching, or applying it.
 - [x] Acknowledge only that exact bound cycle result, resetting only its task while retaining the
   exact result and candidate tokens for future typed composition.
-- [ ] Compose those exact third-cycle acknowledgement tokens into one fresh provider-neutral typed
+- [x] Compose those exact third-cycle acknowledgement tokens into one fresh provider-neutral typed
   Move request over the current authoritative placement and evidence snapshots without starting it.
+- [x] Explicitly start only that exact typed third-cycle Move request on a separate fresh scene-owned
+  task while preserving its queued model across rejected preflight and leaving completion unobserved.
+- [x] Observe only that exact completed applied typed result with the task-installed authoritative
+  placement and evidence snapshots without acknowledging, resetting, recovering, or routing it.
+- [ ] Bind and acknowledge only that exact observed applied result and authoritative outcome,
+  resetting only its typed task while retaining exact downstream provenance.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

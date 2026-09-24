@@ -94,6 +94,14 @@ public partial class CharacterSabotageActionMoveCycleResultBindingCoordinator : 
         CharacterSabotageActionConsiderationResult? expectedResult,
         CharacterSabotageActionCandidateBinding<CharacterObjectSabotageMoveCandidate>?
             expectedBinding) =>
+        IsRetainedAcknowledgedBinding(expectedResult, expectedBinding)
+        && composition.IsCurrentRequest(expectedResult!.Request);
+
+    /// <summary>Checks exact acknowledged provenance after downstream state has advanced.</summary>
+    internal bool IsRetainedAcknowledgedBinding(
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionCandidateBinding<CharacterObjectSabotageMoveCandidate>?
+            expectedBinding) =>
         expectedResult is not null
         && expectedBinding is not null
         && ReferenceEquals(BoundResult, expectedResult)
@@ -104,7 +112,6 @@ public partial class CharacterSabotageActionMoveCycleResultBindingCoordinator : 
         && task.Result is null
         && ReferenceEquals(expectedResult.Request, composition.Request)
         && ReferenceEquals(expectedResult.SelectedActionKind, CharacterSabotageActionKind.Move)
-        && composition.IsCurrentRequest(expectedResult.Request)
         && ReferenceEquals(moveAuthor.CandidateBinding, expectedBinding)
         && ReferenceEquals(expectedBinding.Request, composition.AuthorRequest)
         && ReferenceEquals(expectedBinding.ActionKind, CharacterSabotageActionKind.Move)

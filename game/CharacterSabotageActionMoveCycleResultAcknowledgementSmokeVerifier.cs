@@ -43,23 +43,34 @@ internal static class CharacterSabotageActionMoveCycleResultAcknowledgementSmoke
             new CharacterSabotageActionDecision(
                 request.Actor.Identity.Id,
                 CharacterSabotageActionKind.Move));
-        return target.AcknowledgedResult is null
-            && !target.TryAcknowledgeBoundResult(null)
-            && !target.TryAcknowledgeBoundResult(rebuiltResult)
-            && target.TryAcknowledgeBoundResult(result)
-            && ReferenceEquals(target.AcknowledgedResult, result)
-            && !target.TryAcknowledgeBoundResult(result)
-            && observation.ObservedResult is null
-            && task.Status == CharacterSabotageActionTaskStatus.Idle
-            && task.Result is null
-            && ReferenceEquals(target.BoundResult, result)
-            && ReferenceEquals(target.CandidateBinding, candidateBinding)
-            && ReferenceEquals(candidateBinding.Candidate, source.CycleCandidate)
-            && model.CallCount == 1
-            && priorActionModel.CallCount == 1
-            && priorMoveModel.CallCount == 1
-            && turns.Activity is null
-            && ReferenceEquals(state.Placements, placements)
-            && ReferenceEquals(state.Evidence, evidence);
+        if (target.AcknowledgedResult is not null
+            || target.TryAcknowledgeBoundResult(null)
+            || target.TryAcknowledgeBoundResult(rebuiltResult)
+            || !target.TryAcknowledgeBoundResult(result)
+            || !ReferenceEquals(target.AcknowledgedResult, result)
+            || target.TryAcknowledgeBoundResult(result)
+            || observation.ObservedResult is not null
+            || task.Status != CharacterSabotageActionTaskStatus.Idle
+            || task.Result is not null
+            || !ReferenceEquals(target.BoundResult, result)
+            || !ReferenceEquals(target.CandidateBinding, candidateBinding)
+            || !ReferenceEquals(candidateBinding.Candidate, source.CycleCandidate)
+            || model.CallCount != 1
+            || priorActionModel.CallCount != 1
+            || priorMoveModel.CallCount != 1
+            || turns.Activity is not null
+            || !ReferenceEquals(state.Placements, placements)
+            || !ReferenceEquals(state.Evidence, evidence))
+        {
+            return false;
+        }
+
+        return CharacterSabotageActionMoveCycleSpecificRequestSmokeVerifier.PassesMainScene(
+            scene,
+            source,
+            state,
+            model,
+            priorActionModel,
+            priorMoveModel);
     }
 }

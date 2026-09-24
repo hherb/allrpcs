@@ -2,68 +2,60 @@
 
 ## Current state
 
-`main` includes merged PR #342 at `d9f9327`. Branch
-`codex/phase-7-follow-up-move-cycle-result` completes **Phase 7rd** through **Phase 7rf**. The
-implementation is committed at `b81c5b1` and published in draft PR #343 targeting `main`. The
+`main` includes merged PR #343 at `66cd06d`. Branch
+`codex/phase-7-third-move-typed-route` completes **Phase 7rg** through **Phase 7ri**. The
+implementation is committed at `965917f` and published in draft PR #344 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-The third admitted Move cycle now advances through three more exact seams:
+The exact acknowledged third-cycle generic Move result now advances through three bounded seams:
 
-- `CharacterSabotageActionMoveCycleResultObservationCoordinator` retains only the exact completed
-  generic Move result while the complete admission, recovery-authority, authoring, composition, and
-  start graph remains current.
-- `CharacterSabotageActionMoveCycleResultBindingCoordinator` pairs that exact observation only with
-  the third author's exact `CycleCandidate` binding, leaving the completed task and observation
-  intact.
-- Explicit acknowledgement accepts only that same bound graph, resets only the third-cycle generic
-  task, clears its observation, and retains the exact result and candidate binding as downstream
-  tokens.
+- `CharacterSabotageActionMoveCycleSpecificRequestCoordinator` composes one typed request from only
+  the retained exact result/candidate binding and current recovered placement/evidence authority.
+- An explicit start coordinator uses a separate one-shot typed model source and task, preserving the
+  queued model across rejected preflight and starting only that exact request.
+- `CharacterSabotageActionMoveCycleAppliedResultObservationCoordinator` accepts only the exact
+  completed selected result and the exact fresh authoritative snapshots installed by that task.
 
-Null, idle/running, rebuilt-result/request/binding, foreign-actor, wrong-kind, replaced-authority,
-stale-graph, and repeated paths remain inert. All three model call counts remain one; authoritative
-placement and evidence snapshots remain the exact recovered instances; the ordinary turn stays
-empty. No typed request, dispatch/application, another recovery or terminal route, author reset,
-turn reservation, cadence, provider, credential, persistence, UI/input, navigation, perception,
-dialogue, timer, or new Domain behavior was added. Ordinary startup remains inert.
+Null, rebuilt-result/request/binding, foreign-candidate, stale-authority, ineligible, abstaining,
+running, and repeated paths remain inert. Retained acknowledgement provenance remains exact after
+application without incorrectly requiring the request's pre-application recovered snapshots to
+remain current. Each of the four bounded model calls occurs once, the ordinary turn stays empty,
+and ordinary startup remains inert. No acknowledgement or task reset, recovery, terminal route,
+author reset, turn reservation, cadence, provider, credential, persistence, UI/input, navigation,
+perception, dialogue, timer, or new Domain behavior was added.
 
 ## Validation and review
 
 - Each slice was test-first: the focused game build failed only for the deliberately absent
-  observation coordinator, result-binding coordinator, or acknowledgement members before their
-  respective implementations.
+  composition, start, or observation coordinator before its implementation.
 - The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8 through
-  third-cycle completion, exact observation, candidate binding, acknowledgement, and task reset.
-- Sandboxed Godot could not open `user://logs`; the identical focused command passed host-local.
-- Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
-  Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
-  scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
-- Session review covered exact-reference provenance, current recovered placement/evidence authority,
-  task lifecycle, one-shot behavior, model call counts, inert startup, closed surfaces, docstrings,
-  file/line limits, scene dependency order, documentation, formatting, and whitespace. It reduced
-  the main smoke below the practical 500-line limit and narrowed the bound-result surface to
-  assembly-internal visibility; no unresolved findings remain.
+  exact typed composition, explicit start, application, and observation of fresh authority.
+- Sandboxed Godot could not open `user://logs`; the identical focused commands passed host-local.
+- Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
+  1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
+  smoke, and the Compatibility launch. Formatting and whitespace checks also pass.
+- Draft PR #344's hosted jobs failed with `steps: []`; no hosted product step executed, so this is
+  Actions/account infrastructure state rather than contradictory product-test evidence.
 
 ## Exact next bounded slice
 
-Take **Phase 7rg: compose one fresh typed Move request from the exact acknowledged third-cycle
-result and candidate binding without starting it**.
+Take **Phase 7rj: bind and acknowledge the exact observed applied third-cycle Move result**.
 
 Acceptance boundary:
 
-1. Test-first add one composition coordinator over the third-cycle result-binding owner and the
-   current `CharacterObjectSabotageMoveController` state.
-2. Accept only the exact acknowledged result and exact retained `CycleCandidate` binding while the
-   complete third-cycle graph and exact current recovered placement/evidence snapshots remain
-   authoritative.
-3. Produce one fresh `CharacterObjectSabotageMoveConsiderationRequest` retaining the exact character,
-   physical access, world objects, current placements, current evidence, and sole cycle candidate.
-4. Reject null, rebuilt-result/binding, foreign candidate, ineligible candidate, replaced authority,
-   stale graph, and repeated composition without changing any prior owner, task, authoritative state,
-   ordinary turn, or model call count.
-5. Extend only the focused switch-gated Move proof. Do not start the typed request, observe/apply a
-   typed result, recover or route it, reset either author, reserve the ordinary turn, or add cadence.
+1. Test-first add one binding coordinator over the exact observation, typed start/task, request
+   owner, and current `CharacterObjectSabotageMoveController` state.
+2. Bind only the exact observed result together with its exact observed placement/evidence snapshots
+   while those same snapshots remain authoritative and task-owned provenance remains exact.
+3. Acknowledge only that same bound graph, reset only the third-cycle typed task, clear only the
+   observation, and retain the exact result plus authoritative snapshots as downstream tokens.
+4. Reject null, rebuilt-result/request/candidate/snapshots, stale authority, running, foreign,
+   abstaining, and repeated inputs without changing prior owners, authoritative state, ordinary
+   turn, or any model call count.
+5. Extend only the focused switch-gated Move proof. Do not author or publish a recovery candidate,
+   recover or route the result, reset any author, reserve the ordinary turn, or add cadence.
 6. Keep ordinary startup inert and preserve all existing exclusions: no timers, provider transport,
    credentials, persistence, UI/input, navigation, perception, dialogue delivery, or new Domain
    behavior.
 7. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to explicitly start only that exact typed request on a separate fresh task/model source.
+   slice to author only one exact recovery candidate from the retained applied provenance.
