@@ -459,8 +459,9 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "tokens; its empty-turn authorization entered a second explicit cycle boundary; that "
             + "admission guarded a third eligible Move author and one fresh generic decision; only "
             + "that exact result was observed, bound to the third author's candidate, and acknowledged "
-            + "while resetting only its task and leaving authoritative state unchanged, the ordinary "
-            + "slot empty, and automatic sabotage disabled.");
+            + "before one exact typed request started on a separate task; only its exact applied result "
+            + "and fresh authoritative state were observed, with the ordinary slot empty and automatic "
+            + "sabotage disabled.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>

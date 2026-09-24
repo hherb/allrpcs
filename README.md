@@ -1071,8 +1071,15 @@ only the exact completed result while that full graph remains current. The adjac
 only that exact observation with the third author's exact typed candidate, then acknowledges the same
 bound result and resets only its task while retaining both exact downstream tokens. Null, running,
 rebuilt-result/request, foreign-actor, wrong-kind, replaced-binding, stale-graph, and repeated paths
-remain inert. No typed request, dispatch, application, prior-author reset, turn reservation, automatic
-cadence, provider transport, or ordinary-startup behavior is added.
+remain inert. Those tokens can now compose one fresh provider-neutral typed Move request over the
+exact current recovered placement and evidence snapshots. An explicit start seam revalidates that
+complete graph before consuming one separately supplied model on a distinct typed task. Rejected
+preflight preserves the queued model. A separate observer accepts only the exact completed selected
+result and the exact fresh placement and evidence snapshots installed by that task; it relies on
+retained exact acknowledgement provenance after application rather than requiring the request's
+pre-application snapshots to remain current. It does not acknowledge or reset the task, recover or
+route the outcome, reset a prior author, reserve the ordinary turn, add automatic cadence, contact a
+provider, or change ordinary-startup behavior.
 
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
