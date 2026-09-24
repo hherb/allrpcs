@@ -1059,6 +1059,17 @@ remain inert. These seams do not reserve the ordinary turn, invoke an action aut
 request, reset either prior author, clear prior provenance, consume another model, or enable automatic
 sabotage.
 
+That exact cycle admission now guards a third scene-owned Move author using one fresh source-owned
+candidate whose evidence identifier is distinct from both earlier Move cycles. The recovery owner
+retains and revalidates the exact authoritative evidence snapshot as well as the recovered placement,
+so replaced authority fails closed. A separate composition seam produces one fresh generic Move
+request from only that guarded output, and an explicit start seam consumes one separately supplied
+model on a fresh scene-owned task only after the complete admission, authoring, composition, recovery,
+and empty-turn graph is revalidated. Null, rebuilt, foreign, wrong-kind, stale-authority, and repeated
+paths remain inert and preserve the queued model before successful start. Completion remains
+unobserved; no candidate binding, acknowledgement, typed request, dispatch, application, prior-author
+reset, turn reservation, automatic cadence, provider transport, or ordinary-startup behavior is added.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and

@@ -326,6 +326,9 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveSchedulingAuthorizationCoordinator.cs" id="298z_sabotage_move_scheduling_authorization"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleBoundaryCoordinator.cs" id="298za_sabotage_move_cycle_boundary"]
 [ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleAuthoringAdmissionCoordinator.cs" id="298zb_sabotage_move_cycle_authoring_admission"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleAuthoringCoordinator.cs" id="298zc_sabotage_move_cycle_authoring"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleCompositionCoordinator.cs" id="298zd_sabotage_move_cycle_composition"]
+[ext_resource type="Script" path="res://CharacterSabotageActionMoveCycleCompositionStartCoordinator.cs" id="298ze_sabotage_move_cycle_composition_start"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck.cs" id="299_sabotage_outcome_move_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeSubstitutionRecoveryMainSceneSmokeCheck.cs" id="300_sabotage_outcome_substitution_recovery_check"]
 [ext_resource type="Script" path="res://CharacterSabotageOutcomeContaminationRecoveryMainSceneSmokeCheck.cs" id="301_sabotage_outcome_contamination_recovery_check"]
@@ -888,6 +891,24 @@ script = ExtResource("298za_sabotage_move_cycle_boundary")
 
 [node name="CharacterSabotageActionMoveCycleAuthoringAdmissionCoordinator" type="Node" parent="."]
 script = ExtResource("298zb_sabotage_move_cycle_authoring_admission")
+
+[node name="CycledCharacterSabotageActionMoveRequestController" type="Node" parent="."]
+script = ExtResource("284_sabotage_action_move_request")
+
+[node name="CharacterSabotageActionMoveCycleAuthoringCoordinator" type="Node" parent="."]
+script = ExtResource("298zc_sabotage_move_cycle_authoring")
+
+[node name="CharacterSabotageActionMoveCycleCompositionCoordinator" type="Node" parent="."]
+script = ExtResource("298zd_sabotage_move_cycle_composition")
+
+[node name="CycledTemporaryCharacterSabotageActionModelSource" type="Node" parent="."]
+script = ExtResource("277_sabotage_action_model_source")
+
+[node name="CycledCharacterSabotageActionTaskController" type="Node" parent="."]
+script = ExtResource("278_sabotage_action_task")
+
+[node name="CharacterSabotageActionMoveCycleCompositionStartCoordinator" type="Node" parent="."]
+script = ExtResource("298ze_sabotage_move_cycle_composition_start")
 
 [node name="CharacterTargetSabotageDelayRecoveryController" type="Node" parent="."]
 script = ExtResource("271_delay_recovery_state")

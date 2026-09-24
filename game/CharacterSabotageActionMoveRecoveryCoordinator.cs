@@ -20,6 +20,9 @@ public partial class CharacterSabotageActionMoveRecoveryCoordinator : Node
     /// <summary>Gets the exact fresh recovered placements installed by the state owner.</summary>
     public WorldObjectPlacementSnapshot? RecoveredPlacements { get; private set; }
 
+    /// <summary>Gets the exact authoritative evidence retained across recovery.</summary>
+    public DiscoveryEvidenceSnapshot? RecoveredEvidence { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -39,6 +42,7 @@ public partial class CharacterSabotageActionMoveRecoveryCoordinator : Node
         if (RecoveryCandidate is not null
             || EvidenceView is not null
             || RecoveredPlacements is not null
+            || RecoveredEvidence is not null
             || placements is null
             || evidence is null
             || !eligibility.IsCurrentEligibility(expectedCandidate, expectedEvidenceView)
@@ -64,6 +68,20 @@ public partial class CharacterSabotageActionMoveRecoveryCoordinator : Node
         RecoveryCandidate = expectedCandidate;
         EvidenceView = expectedEvidenceView;
         RecoveredPlacements = recovered;
+        RecoveredEvidence = evidence;
         return true;
     }
+
+    /// <summary>Checks the exact recovery output against current authoritative state.</summary>
+    internal bool IsCurrentRecovery(
+        WorldObjectPlacementSnapshot? expectedPlacements,
+        DiscoveryEvidenceSnapshot? expectedEvidence) =>
+        RecoveryCandidate is not null
+        && EvidenceView is not null
+        && expectedPlacements is not null
+        && expectedEvidence is not null
+        && ReferenceEquals(RecoveredPlacements, expectedPlacements)
+        && ReferenceEquals(RecoveredEvidence, expectedEvidence)
+        && ReferenceEquals(state.Placements, expectedPlacements)
+        && ReferenceEquals(state.Evidence, expectedEvidence);
 }

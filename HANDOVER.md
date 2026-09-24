@@ -2,71 +2,69 @@
 
 ## Current state
 
-`main` includes merged PR #340 at `9b48da6`. Branch
-`codex/phase-7-follow-up-move-cycle-admission` completes **Phase 7qw** through **Phase 7qz**. The
-implementation is committed at `8852755` and published in draft PR #341 targeting `main`. The
+`main` includes merged PR #341 at `99b32ba`. Branch
+`codex/phase-7-follow-up-move-authoring-chain` completes **Phase 7ra** through **Phase 7rc**. The
+implementation is committed at `f4a796e` and published in draft PR #342 targeting `main`. The
 unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
-The recovered follow-up Move now advances through four additional explicit seams:
+The exact admitted follow-up cycle now advances through three more explicit seams:
 
-- `CharacterSabotageActionMoveSchedulingAuthorizationCoordinator` retains one fresh scheduling
-  authorization containing only the exact follow-up completion admission and bound empty ordinary
-  turn reference while the complete route, recovery, completion, admission, and boundary graph is
-  still current.
-- `CharacterSabotageActionMoveCycleBoundaryCoordinator` consumes only that exact authorization once
-  at a distinct explicit follow-up cycle boundary without copying its provenance.
-- The existing pure `CharacterSabotageCycleStartEligibilityPolicy` revalidates the exact follow-up
-  boundary, authorization, completion admission, and empty ordinary-turn reference.
-- `CharacterSabotageActionMoveCycleAuthoringAdmissionCoordinator` retains one fresh authoring
-  admission containing only that exact still-current follow-up cycle boundary.
+- `CharacterSabotageActionMoveCycleAuthoringCoordinator` invokes a third scene-owned Move author
+  only for the exact current cycle admission, recovered placement/evidence authority, and one fresh
+  source-owned cycle candidate.
+- `CharacterSabotageActionMoveCycleCompositionCoordinator` retains that exact admission and author
+  output while composing one distinct generic Move request without starting it.
+- `CharacterSabotageActionMoveCycleCompositionStartCoordinator` revalidates the complete retained
+  graph and explicitly starts only that request on a fresh task/model-source pair.
 
-Null, rebuilt-completion, rebuilt-authorization, rebuilt-boundary, malformed-provenance,
-changed/active-slot, stale-route, stale-recovery, foreign-chain, and repeated paths remain inert.
-Both model call counts remain one. No turn reservation, action-author invocation, request
-composition/start, another typed action, author reset, provider, credential, persistence, UI/input,
-navigation, perception, dialogue, cadence, timer, or new Domain behavior was added. Ordinary startup
-remains inert.
+The inherited acceptance wording called for reusing `FollowUpCandidate`, but its evidence remains
+authoritative after recovery, so the existing freshness policy correctly rejects it. The bounded
+implementation adds only a third temporary source candidate with a distinct evidence identifier; no
+Domain rule was weakened. The recovery owner now retains and revalidates the exact authoritative
+evidence token as well as the recovered placement, closing a stale-evidence gap found in review.
+
+Null, rebuilt-admission/boundary/request, malformed-provenance, foreign-actor, wrong-kind,
+changed/active-slot, stale-route/recovery/authority, and repeated paths remain inert. Rejected start
+preflight preserves the queued model. The two earlier model call counts remain one, the new generic
+model is called once, and its completion is not observed. No candidate binding, acknowledgement,
+task reset, typed request, dispatch/application, prior-author reset, turn reservation, terminal
+route, cadence, provider, credential, persistence, UI/input, navigation, perception, dialogue, timer,
+or new Domain behavior was added. Ordinary startup remains inert.
 
 ## Validation and review
 
-- Each new coordinator was test-first; its focused game build first failed only for the deliberately
-  absent next coordinator.
+- Each new coordinator was test-first; its focused game build failed only for the deliberately
+  absent coordinator before implementation.
 - The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8 through the
-  exact follow-up scheduling authorization, explicit cycle boundary, pure cycle-start gate, and
-  distinct future-authoring admission.
+  exact admission, third author, generic composition, and explicit fresh-task start.
 - Sandboxed Godot cannot open `user://logs`; the identical focused command passes host-local.
 - Final host-local `./scripts/quality.sh` passes restore, formatting, a zero-warning build, 2,731
   Domain tests, 586 Application tests, 1,220 Infrastructure tests, all 8 architecture tests,
   scenario validation, every credential-free Godot smoke, and the Compatibility renderer launch.
-- Session review covered exact-reference provenance, complete live route/recovery ownership,
-  one-shot authorization/boundary/admission behavior, pure eligibility, empty-slot freshness,
-  malformed/rebuilt/repeated rejection, model call counts, inert startup, docstrings, file/line
-  limits, scene dependency order, formatting, and whitespace. Import ordering and one unused import
-  were fixed; no unresolved findings remain.
+- Session review covers exact-reference provenance, recovered placement/evidence authority,
+  one-shot author/composition/start behavior, queued-model preservation, model call counts, inert
+  startup, docstrings, file/line limits, scene dependency order, formatting, and whitespace. It
+  fixed one tautological smoke assertion and the stale-evidence identity gap; no unresolved findings
+  remain.
 
 ## Exact next bounded slice
 
-Take **Phase 7ra: let only the exact current follow-up-cycle authoring admission guard one fresh
-invocation of a distinct scene-owned Move author without composing or starting its request**.
+Take **Phase 7rd: observe only the exact completed third-cycle generic Move result without
+acknowledging, binding, dispatching, or applying it**.
 
 Acceptance boundary:
 
-1. Test-first add one distinct scene-owned `CharacterSabotageActionMoveRequestController` and one
-   one-shot coordinator that accepts only
-   `CharacterSabotageActionMoveCycleAuthoringAdmissionCoordinator`'s exact admission while its
-   complete cycle, authorization, completion, recovery, and empty-turn graph remains current.
-2. Invoke that fresh author once for the admitted actor, current authoritative recovered placements
-   and evidence, and the existing exact follow-up Move candidate; retain the exact admission and new
-   author request without changing the prior two author owners.
-3. Reject null, rebuilt-admission, rebuilt-boundary, malformed-provenance, changed/active-slot,
-   stale-route/recovery/authority, foreign-chain, and repeated paths without author output, state
-   changes, or another model call.
-4. Extend only the focused switch-gated Move proof. Do not compose or start the new generic request,
-   supply or consume a model, reserve the ordinary turn, reset any author, clear prior provenance,
-   dispatch/apply another Move, or enter another terminal route.
-5. Keep ordinary startup inert and preserve all existing exclusions: no cadence, timers, provider
-   transport, credentials, persistence, UI/input, navigation, perception, dialogue delivery, or new
-   Domain behavior.
+1. Test-first add one one-shot observation coordinator over the fresh cycle task and start owner.
+2. Retain only the exact completed result whose request is the exact started request while the full
+   admission, recovery authority, authoring, composition, and start graph remains current.
+3. Reject null, idle/running/cancelled/failed, rebuilt-result/request, foreign-actor, wrong-kind,
+   stale-graph/authority, and repeated paths without changing the task, prior owners, authoritative
+   state, ordinary turn, or any model call count.
+4. Extend only the focused switch-gated Move proof. Do not acknowledge the result, bind its typed
+   cycle candidate, reset the task, compose/start a typed Move request, dispatch/apply another Move,
+   recover it, enter another terminal route, or add automatic cadence.
+5. Keep ordinary startup inert and preserve all existing exclusions: no timers, provider transport,
+   credentials, persistence, UI/input, navigation, perception, dialogue delivery, or new Domain
+   behavior.
 6. Update README/ROADMAP, run `./scripts/quality.sh`, review the complete diff, and leave the next
-   slice to compose only that exact newly guarded author output without starting consideration or
-   consuming a model.
+   slice to bind that exact observed result to the third cycle candidate without acknowledging it.

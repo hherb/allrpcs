@@ -49,6 +49,13 @@ internal static class CharacterSabotageActionMoveCycleAuthoringAdmissionSmokeVer
             return false;
         }
 
-        return true;
+        return CharacterSabotageActionMoveCycleAuthoringSmokeVerifier.PassesMainScene(
+            scene,
+            boundary,
+            scene.GetNode<TemporaryCharacterObjectSabotageMoveSource>(
+                "../TemporaryCharacterObjectSabotageMoveSource"),
+            state,
+            actionModel,
+            model);
     }
 }

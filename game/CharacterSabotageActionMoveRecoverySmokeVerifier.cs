@@ -33,6 +33,7 @@ internal static class CharacterSabotageActionMoveRecoverySmokeVerifier
         if (target.RecoveryCandidate is not null
             || target.EvidenceView is not null
             || target.RecoveredPlacements is not null
+            || target.RecoveredEvidence is not null
             || target.TryRecover(null, evidenceView)
             || target.TryRecover(recoveryCandidate, null)
             || target.TryRecover(rebuiltCandidate, evidenceView)
@@ -43,6 +44,7 @@ internal static class CharacterSabotageActionMoveRecoverySmokeVerifier
             || target.RecoveredPlacements is not { } recovered
             || !ReferenceEquals(target.RecoveryCandidate, recoveryCandidate)
             || !ReferenceEquals(target.EvidenceView, evidenceView)
+            || !ReferenceEquals(target.RecoveredEvidence, evidence)
             || ReferenceEquals(recovered, placements)
             || !ReferenceEquals(state.Placements, recovered)
             || !ReferenceEquals(state.Evidence, evidence)
@@ -51,6 +53,7 @@ internal static class CharacterSabotageActionMoveRecoverySmokeVerifier
                 ReferenceEquals(entry, recoveryCandidate.SourcePlacement)) != 1
             || target.TryRecover(recoveryCandidate, evidenceView)
             || !ReferenceEquals(target.RecoveredPlacements, recovered)
+            || !target.IsCurrentRecovery(recovered, evidence)
             || model.CallCount != 1
             || actionModel.CallCount != 1)
         {

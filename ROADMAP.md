@@ -752,6 +752,14 @@ Current continuation:
   without mutating its authorization, completion admission, or ordinary turn.
 - [x] Admit that exact still-current follow-up cycle once at a distinct action-authoring seam without
   copying provenance or invoking an action-specific author.
+- [x] Guard one fresh Move author invocation with that exact admission and a new exact eligible
+  cycle candidate without resetting either prior author or changing authoritative state.
+- [x] Compose only that exact guarded cycle Move output into one fresh generic request without
+  starting consideration, reserving the ordinary turn, or consuming a model.
+- [x] Explicitly start only that exact fresh cycle request on a distinct scene-owned task while
+  preserving its queued model across rejected preflight and leaving completion unobserved.
+- [ ] Observe only that exact completed cycle Move result after revalidating its complete retained
+  graph, without acknowledging, binding a candidate, dispatching, or applying it.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

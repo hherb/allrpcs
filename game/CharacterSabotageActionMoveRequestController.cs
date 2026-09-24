@@ -52,7 +52,8 @@ public partial class CharacterSabotageActionMoveRequestController
             || !ReferenceEquals(source.WorldObjects, worldObjects)
             || !ReferenceEquals(source.Destination, destination)
             || (!ReferenceEquals(source.Candidate, candidate)
-                && !ReferenceEquals(source.FollowUpCandidate, candidate))
+                && !ReferenceEquals(source.FollowUpCandidate, candidate)
+                && !ReferenceEquals(source.CycleCandidate, candidate))
             || !ReferenceEquals(state.Placements, placements)
             || !ReferenceEquals(state.Evidence, evidence)
             || !CharacterObjectSabotageMovePolicy.CanApply(

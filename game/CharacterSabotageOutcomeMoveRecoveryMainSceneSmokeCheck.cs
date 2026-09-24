@@ -467,10 +467,11 @@ public partial class CharacterSabotageOutcomeMoveRecoveryMainSceneSmokeCheck : N
             + "through the existing stale-safe owner; that exact recovery was retained and reset as "
             + "a distinct terminal route, exposed as one exact completion, admitted by the existing "
             + "pure scheduling gate, and bound to the empty ordinary-turn boundary; one fresh "
-            + "authorization then entered a distinct explicit cycle boundary, passed the existing "
-            + "pure cycle-start gate, and was admitted at a distinct future-authoring seam without "
-            + "reserving the slot, clearing prior owners, invoking an author, another model call, or "
-            + "automatic sabotage.");
+            + "authorization then entered a distinct explicit cycle boundary and passed the existing "
+            + "pure cycle-start gate; its admission guarded a third eligible Move author, composed a "
+            + "fresh generic request, and explicitly started it on a separate task with one fresh "
+            + "model call while leaving completion unobserved, authoritative state unchanged, the "
+            + "ordinary slot empty, and automatic sabotage disabled.");
         GetTree().Quit();
     }
     private ICharacterSabotageActionRequestAuthor[] GetAuthors() =>
