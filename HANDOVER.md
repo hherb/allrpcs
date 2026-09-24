@@ -3,8 +3,9 @@
 ## Current state
 
 `main` includes merged PR #343 at `66cd06d`. Branch
-`codex/phase-7-third-move-typed-route` completes **Phase 7rg** through **Phase 7ri**. The unrelated
-untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
+`codex/phase-7-third-move-typed-route` completes **Phase 7rg** through **Phase 7ri**. The
+implementation is committed at `965917f` and published in draft PR #344 targeting `main`. The
+unrelated untracked `scripts/code_statistics.py` remains untouched and must stay unstaged.
 
 The exact acknowledged third-cycle generic Move result now advances through three bounded seams:
 
@@ -30,8 +31,9 @@ perception, dialogue, timer, or new Domain behavior was added.
 - The focused switch-gated Move proof passes host-local with Godot 4.6.3 Mono and .NET 8 through
   exact typed composition, explicit start, application, and observation of fresh authority.
 - Sandboxed Godot could not open `user://logs`; the identical focused commands passed host-local.
-- Final `./scripts/quality.sh`, formatting/whitespace review, and publication evidence are recorded
-  in the draft PR for this branch.
+- Final host-local `./scripts/quality.sh` passes a zero-warning build, 2,731 Domain, 586 Application,
+  1,220 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
+  smoke, and the Compatibility launch. Formatting and whitespace checks also pass.
 
 ## Exact next bounded slice
 
