@@ -840,6 +840,10 @@ Current continuation:
   and a new distinct-evidence candidate without composing or starting consideration.
 - [x] Compose only that exact fifth-cycle guarded author output into one fresh generic Move request
   without starting consideration, reserving the ordinary turn, or consuming a model.
+- [x] Explicitly start only that exact fifth-cycle generic Move request on a fresh scene-owned task
+  while preserving its queued model across rejected preflight and leaving completion unobserved.
+- [x] Observe only that exact completed fifth-cycle generic Move result after revalidating its
+  retained graph, without acknowledging, binding a candidate, dispatching, or applying it.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

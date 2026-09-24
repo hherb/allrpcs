@@ -34,7 +34,7 @@ internal static class
             authorRequest.Actor,
             [CharacterSabotageActionKind.Conceal]);
 
-        return target.Request is null
+        bool composedSuccessfully = target.Request is null
             && !target.TryCompose(null)
             && !target.TryCompose(rebuiltRequest)
             && !target.TryCompose(wrongKindRequest)
@@ -54,5 +54,18 @@ internal static class
             && actionModel.CallCount == 1
             && priorActionModel.CallCount == 1
             && priorMoveModel.CallCount == 1;
+        return composedSuccessfully
+            && CharacterSabotageActionMoveCycleContinuationSuccessorCompositionStartSmokeVerifier
+                .PassesMainScene(
+                    scene,
+                    state,
+                    target.Request!,
+                    recovered,
+                    evidence,
+                    continuedActionModel,
+                    continuedMoveModel,
+                    actionModel,
+                    priorActionModel,
+                    priorMoveModel);
     }
 }

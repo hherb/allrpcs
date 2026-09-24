@@ -1198,6 +1198,16 @@ consideration, supplies or consumes a model, reserves the ordinary turn, changes
 evidence authority, clears prior provenance, or enables automatic sabotage; ordinary startup
 remains inert.
 
+That exact fifth-cycle generic request can now start once on its own fresh scene-owned task and
+fresh one-shot model source only after the complete retained successor graph is revalidated. A
+separate observer retains only the exact completed task-installed result for the exact started
+request and canonical `Move` selection. Null, guarded-author-output, rebuilt-request,
+foreign-actor, wrong-kind, running, stale-graph, replaced-authority, and repeated inputs fail closed
+without consuming the queued model during rejected preflight. The result remains unacknowledged,
+the task remains completed, and no typed Move request is composed or started. Earlier model-call
+counts, ordinary-turn state, placement, evidence, and all retained provenance remain unchanged;
+ordinary startup remains inert.
+
 `CharacterSabotageActionRequestConsiderationFlowController` connects only the composer's exact
 current request to the existing explicit consideration flow. Stale, null, overlapping, and repeated
 starts fail closed before replacing or consuming a queued one-shot model. Exact selection and
