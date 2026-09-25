@@ -57,6 +57,15 @@ acceptance.
 - `CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator` resolves only the exact admitted
   sabotage-owning activity into a response-free terminal `Resolved` successor, and the existing
   ordinary-turn boundary binds only that exact current successor.
+- `CharacterSabotageTurnOpportunityCadenceSignalTransition` derives a due signal only from an exact
+  authoritative meaningful event, event log, qualitative time, and bounded cadence. The main scene
+  observes those qualitative changes without consulting elapsed wall time.
+- `CharacterSabotageTurnOpportunityController` retains the existing scene-owned enemy actor and one
+  exact opportunity; `CharacterSabotageTurnReservationCoordinator` reserves the shared turn slot so
+  normal dialogue cannot overlap sabotage and no dialogue event is fabricated.
+- The ordinary authoring, generic-start, and observation coordinators accept that exact reservation,
+  invoke the existing seven authors, compose eligible Conceal, Delay, and Influence outputs, start the
+  provider-neutral selection, and observe its exact completed result once without binding it.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -197,19 +206,20 @@ player can discover. The roadmap item remains unchecked.
 
 ### Final acceptance
 
-`Main.tscn` now owns explicit ordinary-turn authoring through one exact applied, recovered, terminally
-reset, completed, admitted, response-free resolved, and boundary-bound Delay, but only a smoke
-environment variable calls the path. The exact lifecycle no longer blocks a later turn, but no ordinary
-scheduler supplies a real enemy turn or invokes this path, and no player investigation surface exposes
-the outcome. Therefore the enemy agent still cannot perform and expose consequential sabotage during
-ordinary play, and the final acceptance statement remains unchecked.
+`Main.tscn` now schedules one real inert enemy opportunity from an authoritative meaningful-event
+cadence. An explicit proof reserves the shared turn slot, invokes the seven exact current authors, and
+starts and observes the provider-neutral generic selection. The older switch-gated path proves one
+selected Delay through application, recovery, terminal reset, response-free resolution, and boundary
+binding. The new ordinary path has not yet bound its observed selection into that typed continuation,
+and no player investigation surface exposes Delay or Influence. Therefore the enemy agent still cannot
+complete and expose consequential sabotage during ordinary play, and the final acceptance statement
+remains unchecked.
 
 ## Next genuine acceptance gap
 
-Define the smallest provider-neutral ordinary-play scheduling contract that can select the exact
-scene-owned enemy agent and produce one explicit sabotage-turn opportunity from an authoritative
-meaningful-world-event cadence signal rather than wall-clock time. Stop before creating a turn or
-invoking authoring. Do not reuse the unrelated independent-task travel cadence, create a smoke-only
-actor, automatically chain a second sabotage action, add a sixth Move chain, or add provider,
-persistence, UI, or presentation work. Rejected actor, event, cadence, stale-authority, and repeated
-inputs must remain inert, and ordinary startup without an explicit eligible signal must perform no work.
+Bind and acknowledge only the exact observed reserved ordinary-play generic selection through the
+existing author-provenance owner, resetting only its generic task while retaining the exact reservation,
+selected author request, and candidate binding. Stop before composing or starting typed action work.
+Reject rebuilt reservation, opportunity, request, result, selected kind, stale author output, changed
+scene authority, null, and repeated input without consuming another model or releasing the shared turn
+slot. Do not add a sixth Move chain or provider, persistence, UI, presentation, or investigation work.

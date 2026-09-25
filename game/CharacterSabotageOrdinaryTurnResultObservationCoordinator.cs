@@ -53,7 +53,7 @@ public partial class CharacterSabotageOrdinaryTurnResultObservationCoordinator :
             || selectedIndex < 0
             || outputs is null
             || outputs.Count != authors.Length
-            || !start.IsCurrentCompletedResult(expectedResult)
+            || !IsCurrentCompletedResult(expectedResult)
             || !ReferenceEquals(task.Result, expectedResult)
             || !HasCurrentSelectedAuthor(outputs, selectedIndex, selectedKind))
         {
@@ -70,6 +70,12 @@ public partial class CharacterSabotageOrdinaryTurnResultObservationCoordinator :
         ObservedResult = expectedResult;
         return true;
     }
+
+    private bool IsCurrentCompletedResult(
+        CharacterSabotageActionConsiderationResult expectedResult) =>
+        start.Reservation is null
+            ? start.IsCurrentCompletedResult(expectedResult)
+            : start.IsCurrentReservedCompletedResult(expectedResult);
 
     private bool HasCurrentSelectedAuthor(
         IReadOnlyList<CharacterSabotageActionConsiderationRequest?> outputs,

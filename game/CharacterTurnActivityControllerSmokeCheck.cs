@@ -1,5 +1,7 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldEvents;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -63,6 +65,7 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
         if (!ProvesSpeakingCancellation()
             || !ProvesResponseReceptionAndCompletion()
             || !ProvesFreshStartAfterAbsentAndTerminalState()
+            || !ProvesSabotageReservationExcludesDialogueStart()
             || !ProvesTerminalAndNullRejection()
             || !HasExpectedControllerSurface()
             || !ReferenceEquals(controller.Activity, expectedSceneActivity))
@@ -74,7 +77,8 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             "Character-turn controller smoke passed: exact one-time initialization, eligible fresh "
             + "starts, active replacement rejection, awaiting-response and speaking cancellation, "
             + "exact response reception and speaking completion, Domain-policy delegation, null "
-            + "rejection, and unchanged rejected state were correct.");
+            + "rejection, exact sabotage reservation, mutually exclusive dialogue start, and "
+            + "unchanged rejected state were correct.");
         GetTree().Quit();
     }
 
@@ -257,6 +261,38 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
         return false;
     }
 
+    private bool ProvesSabotageReservationExcludesDialogueStart()
+    {
+        CharacterTurnActivityController target = new();
+        AddChild(target);
+        Character actor = RepresentativeEnemyAgentCharacterSource.Create();
+        CharacterSabotageTurnOpportunityCadence cadence = new(2);
+        CharacterSabotageTurnOpportunity opportunity = new(
+            actor,
+            new CharacterSabotageTurnOpportunityCadenceSignal(
+                cadence,
+                new WorldEvent(new WorldEventId("second-event"), WorldEventTimeEffect.Advance),
+                2));
+        CharacterTurnRequest request = CreateActivity(
+            CharacterTurnActivityState.AwaitingResponse).Request;
+
+        if (!target.TryReserveSabotageTurn(opportunity, opportunity)
+            || target.SabotageReservation is not { } reservation
+            || !ReferenceEquals(reservation.Opportunity, opportunity)
+            || target.Activity is not null
+            || target.TryReserveSabotageTurn(opportunity, opportunity)
+            || target.TryStart(request)
+            || target.TryInitialize(CreateActivity(CharacterTurnActivityState.AwaitingResponse))
+            || target.Activity is not null
+            || !ReferenceEquals(target.SabotageReservation, reservation))
+        {
+            Fail("Character-turn controller failed exact exclusive sabotage reservation.");
+            return false;
+        }
+
+        return true;
+    }
+
     private bool HasExpectedControllerSurface()
     {
         System.Reflection.PropertyInfo[] properties = typeof(CharacterTurnActivityController)
@@ -273,13 +309,20 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             .OrderBy(method => method.Name, StringComparer.Ordinal)
             .ToArray();
 
-        bool matches = properties.Length == 1
-            && properties[0].Name == nameof(CharacterTurnActivityController.Activity)
-            && properties[0].PropertyType == typeof(CharacterTurnActivity)
-            && properties[0].CanRead
-            && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate
-            && methods.Length == 5
+        bool matches = properties.Length == 2
+            && properties.Any(property =>
+                property.Name == nameof(CharacterTurnActivityController.Activity)
+                && property.PropertyType == typeof(CharacterTurnActivity)
+                && property.CanRead
+                && property.SetMethod is not null
+                && property.SetMethod.IsPrivate)
+            && properties.Any(property =>
+                property.Name == nameof(CharacterTurnActivityController.SabotageReservation)
+                && property.PropertyType == typeof(CharacterSabotageTurnReservation)
+                && property.CanRead
+                && property.SetMethod is not null
+                && property.SetMethod.IsPrivate)
+            && methods.Length == 6
             && methods[0].Name == nameof(CharacterTurnActivityController.TryCancel)
             && methods[0].ReturnType == typeof(bool)
             && methods[0].GetParameters().Length == 0
@@ -294,9 +337,17 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             && methods[3].ReturnType == typeof(bool)
             && methods[3].GetParameters().Select(parameter => parameter.ParameterType)
                 .SequenceEqual([typeof(CharacterTurnResponse)])
-            && methods[4].Name == nameof(CharacterTurnActivityController.TryStart)
+            && methods[4].Name == nameof(CharacterTurnActivityController.TryReserveSabotageTurn)
             && methods[4].ReturnType == typeof(bool)
             && methods[4].GetParameters().Select(parameter => parameter.ParameterType)
+                .SequenceEqual(
+                [
+                    typeof(CharacterSabotageTurnOpportunity),
+                    typeof(CharacterSabotageTurnOpportunity),
+                ])
+            && methods[5].Name == nameof(CharacterTurnActivityController.TryStart)
+            && methods[5].ReturnType == typeof(bool)
+            && methods[5].GetParameters().Select(parameter => parameter.ParameterType)
                 .SequenceEqual([typeof(CharacterTurnRequest)]);
 
         if (!matches)

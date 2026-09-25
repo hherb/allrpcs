@@ -8,6 +8,7 @@ namespace Allrpcs.Game;
 public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
 {
     private CharacterTurnActivityController turns = null!;
+    private CharacterSabotageTurnReservationCoordinator reservations = null!;
     private TemporaryCharacterSabotageOrdinaryTurnAuthoringSource source = null!;
     private TemporaryCharacterObjectSabotageSource concealSource = null!;
     private TemporaryCharacterObjectSabotageMoveSource moveSource = null!;
@@ -33,6 +34,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
     /// <summary>Gets the exact ordinary-turn token retained by successful authoring.</summary>
     public CharacterTurnActivity? Turn { get; private set; }
 
+    /// <summary>Gets the exact ordinary sabotage-turn reservation retained by authoring.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact enemy actor retained by successful authoring.</summary>
     public Character? Actor { get; private set; }
 
@@ -50,6 +54,8 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
     public override void _Ready()
     {
         turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
+        reservations = GetNode<CharacterSabotageTurnReservationCoordinator>(
+            "../CharacterSabotageTurnReservationCoordinator");
         source = GetNode<TemporaryCharacterSabotageOrdinaryTurnAuthoringSource>(
             "../TemporaryCharacterSabotageOrdinaryTurnAuthoringSource");
         concealSource = GetNode<TemporaryCharacterObjectSabotageSource>(
@@ -107,6 +113,7 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
     {
         CharacterTurnActivity? currentTurn = turns.Activity;
         if (Turn is not null
+            || Reservation is not null
             || Actor is not null
             || Request is not null
             || AuthorOutputs is not null
@@ -122,34 +129,43 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
             return false;
         }
 
-        bool[] eligible = EvaluateEligibility(expectedActor);
-        if (!eligible.Any(value => value))
+        if (!TryComposeCurrent(expectedActor))
         {
             return false;
         }
 
-        bool[] authored = InvokeAuthors(expectedActor);
-        if (!authored.SequenceEqual(eligible))
-        {
-            throw new InvalidOperationException(
-                "Preflighted sabotage authors must publish exactly their eligible outputs. "
-                + $"Eligible={string.Join(',', eligible)}; authored={string.Join(',', authored)}.");
-        }
-
-        CharacterSabotageActionConsiderationRequest?[] outputs =
-            authors.Select(author => author.Request).ToArray();
-        if (!composer.TryCompose(expectedActor, outputs)
-            || composer.Request is not { } request
-            || composer.ComposedAuthorOutputs is not { } composedOutputs)
-        {
-            throw new InvalidOperationException(
-                "Preflighted sabotage author outputs must compose exactly once.");
-        }
-
         Turn = currentTurn;
-        Actor = expectedActor;
-        Request = request;
-        AuthorOutputs = composedOutputs;
+        return true;
+    }
+
+    /// <summary>Authors only for the exact current shared-slot sabotage reservation.</summary>
+    public bool TryAuthor(CharacterSabotageTurnReservation? expectedReservation)
+    {
+        CharacterSabotageTurnReservation? currentReservation = reservations.Reservation;
+        if (Turn is not null
+            || Reservation is not null
+            || Actor is not null
+            || Request is not null
+            || AuthorOutputs is not null
+            || currentReservation is null
+            || expectedReservation is null
+            || !ReferenceEquals(currentReservation, expectedReservation)
+            || !ReferenceEquals(turns.SabotageReservation, currentReservation)
+            || turns.Activity is not null
+            || !ReferenceEquals(currentReservation.Opportunity.Actor, source.Actor)
+            || !HasFreshCompositionGraph())
+        {
+            return false;
+        }
+
+        if (!EnsureTargetStateInitialized()
+            || !HasCurrentSceneAuthority()
+            || !TryComposeCurrent(source.Actor))
+        {
+            return false;
+        }
+
+        Reservation = currentReservation;
         return true;
     }
 
@@ -160,11 +176,34 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
         IsRetained(expectedTurn, expectedRequest)
         && HasCurrentSceneAuthority();
 
+    /// <summary>Checks the complete exact reserved authoring graph for downstream work.</summary>
+    internal bool IsCurrent(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationRequest? expectedRequest) =>
+        Reservation is not null
+        && Turn is null
+        && Actor is not null
+        && Request is not null
+        && AuthorOutputs is not null
+        && ReferenceEquals(Reservation, expectedReservation)
+        && ReferenceEquals(Request, expectedRequest)
+        && ReferenceEquals(reservations.Reservation, Reservation)
+        && ReferenceEquals(turns.SabotageReservation, Reservation)
+        && turns.Activity is null
+        && ReferenceEquals(Reservation.Opportunity.Actor, Actor)
+        && ReferenceEquals(composer.Request, Request)
+        && ReferenceEquals(composer.ComposedAuthorOutputs, AuthorOutputs)
+        && AuthorOutputs.Count == authors.Length
+        && AuthorOutputs.Select((output, index) => ReferenceEquals(output, authors[index].Request))
+            .All(value => value)
+        && HasCurrentSceneAuthority();
+
     /// <summary>Checks retained authoring provenance after action authority has advanced.</summary>
     internal bool IsRetained(
         CharacterTurnActivity? expectedTurn,
         CharacterSabotageActionConsiderationRequest? expectedRequest) =>
         Turn is not null
+        && Reservation is null
         && Actor is not null
         && Request is not null
         && AuthorOutputs is not null
@@ -207,6 +246,58 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
             && ReferenceEquals(influence.Actor, source.Actor)
             && delay.Candidates.Count > 0
             && influence.Candidates.Count > 0;
+    }
+
+    private bool EnsureTargetStateInitialized()
+    {
+        CharacterTargetSabotageDelayConsiderationRequest delay = source.DelayRequest;
+        CharacterTargetSabotageInfluenceConsiderationRequest influence = source.InfluenceRequest;
+        bool delayReady = ReferenceEquals(delayState.EventLog, delay.EventLog)
+            && ReferenceEquals(delayState.WorldTime, delay.WorldTime);
+        if (!delayReady
+            && (delayState.EventLog is not null
+                || delayState.WorldTime is not null
+                || !delayState.TryInitialize(delay.EventLog, delay.WorldTime)))
+        {
+            return false;
+        }
+
+        bool influenceReady = ReferenceEquals(influenceState.Relationship, influence.Relationship);
+        return influenceReady
+            || (influenceState.Relationship is null
+                && influenceState.TryInitialize(influence.Relationship));
+    }
+
+    private bool TryComposeCurrent(Character actor)
+    {
+        bool[] eligible = EvaluateEligibility(actor);
+        if (!eligible.Any(value => value))
+        {
+            return false;
+        }
+
+        bool[] authored = InvokeAuthors(actor);
+        if (!authored.SequenceEqual(eligible))
+        {
+            throw new InvalidOperationException(
+                "Preflighted sabotage authors must publish exactly their eligible outputs. "
+                + $"Eligible={string.Join(',', eligible)}; authored={string.Join(',', authored)}.");
+        }
+
+        CharacterSabotageActionConsiderationRequest?[] outputs =
+            authors.Select(author => author.Request).ToArray();
+        if (!composer.TryCompose(actor, outputs)
+            || composer.Request is not { } request
+            || composer.ComposedAuthorOutputs is not { } composedOutputs)
+        {
+            throw new InvalidOperationException(
+                "Preflighted sabotage author outputs must compose exactly once.");
+        }
+
+        Actor = actor;
+        Request = request;
+        AuthorOutputs = composedOutputs;
+        return true;
     }
 
     private bool[] EvaluateEligibility(Character actor)

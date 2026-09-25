@@ -2,65 +2,57 @@
 
 ## Current state
 
-`main` includes merged PR #368 at `2801e10`. Branch
-`codex/phase-7-acceptance-turn-lifecycle` continues the switch-gated Phase 7 acceptance path without
-extending the closed repeated Move-cycle chain. Draft PR #369 carries this branch.
+`main` includes merged PR #369 at `fa3b2c5`. Branch
+`codex/phase-7-ordinary-sabotage-scheduling` advances the genuine Phase 7 ordinary-play acceptance
+path without extending the closed repeated Move-cycle chain.
 
-The ordinary-turn Delay path now resolves its exact sabotage-owning character turn after terminal
-route reset, completion exposure, and admission. Domain state `Resolved` is a distinct response-free
-terminal state: it retains the exact request, fabricates no dialogue response, is not player
-cancellation, and permits the existing turn-start policy to accept a later turn. One scene coordinator
-revalidates the original ordinary-turn authoring provenance through the exact acknowledged selected
-Delay author, exact admitted completion, and current recovered event-log/world-time authority before
-installing the successor. The existing ordinary-turn boundary rejects the active `AwaitingResponse`
-activity and binds only that exact installed `Resolved` successor.
+The scene now owns a bounded sabotage cadence measured only in exact authoritative
+meaningful-world-event occurrences. At the due boundary it retains one inert opportunity for the
+existing scene-owned enemy actor. An explicit continuation reserves the shared character-turn slot
+without fabricating dialogue, invokes all seven existing authors, composes eligible Conceal, Delay, and
+Influence outputs, starts the existing provider-neutral generic task, and observes its exact completed
+selection once. Normal dialogue cannot overlap that explicit reservation. Ordinary startup remains
+inert until an eligible event occurs and does not advance the incomplete chain beyond the opportunity.
 
-Ordinary startup remains inert. The path still runs only under its smoke environment variable: no
-ordinary scheduler produces a real sabotage-turn opportunity, and Delay/Influence still have no
-player-visible investigation surface. Broad Phase 7 outcomes and final acceptance remain unchecked.
-
-Do not add a sixth or later Move candidate, author, request, task, result, recovery, terminal route,
-turn completion, scheduling authorization, cycle boundary, or admission.
+The new ordinary path stops before binding or acknowledging that observed selection. It has not composed
+typed Delay work, applied or recovered an action, released the reservation, or added player-visible
+investigation. The older switch-gated proof still covers the complete Delay lifecycle. Do not add a
+sixth or later Move chain.
 
 ## Validation and review
 
-- The switch-gated proof was extended first; the focused game build failed with `CS0246` for the
-  intentionally absent lifecycle coordinator, then passed zero-warning after implementation.
-- The first sandboxed focused Domain run hit the known VSTest loopback `SocketException (13)`; the
-  identical host-local run passed, and the final review-driven focused run passed all 2,748 Domain
-  tests.
-- The host-local switch-gated ordinary-turn Godot proof passed with the generic, typed Delay, and
-  recovery model-call counts remaining one each.
+- Test-first focused Domain runs proved cadence, exact signal derivation, opportunity, and reservation
+  policy/transition surfaces. The sandboxed VSTest run hit the known loopback `SocketException (13)`;
+  identical host-local runs passed 24 opportunity tests and 8 reservation tests.
+- The focused game build passed with zero warnings. Host-local main-scene smokes proved ordinary
+  startup inertness, early-event rejection, exact due-event scheduling, exclusive shared-slot
+  reservation, canonical authoring, one-shot model preservation, exact generic start, and one exact
+  completed-result observation. The existing complete switch-gated Delay lifecycle and character-turn
+  controller smokes also passed after the shared-slot change.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,745 Domain, 586 Application, 1,220 Infrastructure, and 8 architecture tests, scenario validation,
-  every credential-free Godot smoke, and the Compatibility launch. The three review-added state-surface
-  cases then passed in the final 2,748-test focused Domain run, zero-warning game build, and switch-gated
-  Godot proof.
-- Complete-diff review fixed one misleading next-slice cadence statement and added missing `Resolved`
-  rejection/eligibility coverage across the remaining turn consumers. It found no fabricated response,
-  cancellation reuse, request replacement, stale-authority acceptance, extra model use, automatic
-  scheduling, Move-chain extension, line-length issue, or whitespace error.
-- Draft PR #369 targets `main`. Hosted run `36108207789` failed all five jobs with `steps: []`; no
-  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
+  2,780 Domain, 586 Application, 1,220 Infrastructure, and 8 architecture tests, representative
+  scenario validation, every credential-free Godot smoke, and the Compatibility launch.
+- Complete-diff review removed automatic downstream reservation/authoring/start/observation from the
+  incomplete ordinary path so offline failure or the deliberate post-observation stop cannot hold the
+  shared turn slot indefinitely. Automatic ordinary behavior now ends at one inert opportunity; the
+  focused proof invokes later seams explicitly. No fabricated dialogue, independent-task cadence reuse,
+  sixth Move chain, provider/persistence/UI work, whitespace error, or changed C# file over 500 lines
+  remains.
 
 ## Exact next bounded slice
 
-Define only the provider-neutral ordinary-play scheduling contract that produces one sabotage-turn
-opportunity from an authoritative meaningful-world-event cadence signal.
+Bind and acknowledge only the exact observed reserved ordinary-play generic selection through the
+existing author-provenance owner.
 
 Acceptance boundary:
 
-1. Start test-first in the pure Domain/Application layer; do not extend the current smoke chain first.
-2. Retain the exact scene-owned enemy actor and exact authoritative event/cadence provenance in one
-   immutable opportunity token.
-3. Require an explicit eligible meaningful-world-event signal; do not use wall-clock time or reuse the
-   unrelated independent-task travel cadence.
-4. Reject null, rebuilt actor, foreign or non-authoritative event, stale cadence, duplicate, and repeated
-   inputs without partial output or mutation.
-5. Stop before creating or reserving a `CharacterTurnActivity`, invoking any sabotage author, consuming
-   a model, applying an action, or chaining another opportunity.
-6. Add no sixth or later Move-cycle seam and no provider, persistence, UI, presentation, or investigation
+1. Retain the exact reservation, selected author request, candidate binding, and observed result.
+2. Reuse the existing selection/binding/acknowledgement owners; reset only the completed generic task.
+3. Reject null, rebuilt reservation, opportunity, request, result, selected kind, stale author output,
+   changed scene authority, and repeated input without consuming another model or releasing the slot.
+4. Stop before composing or starting typed action work, applying an action, or releasing the reservation.
+5. Add no sixth or later Move-cycle seam and no provider, persistence, UI, presentation, or investigation
    work.
-7. Keep ordinary startup inert without an explicit eligible signal; update `README.md`, `ROADMAP.md`, and
-   `PHASE_7_ACCEPTANCE_AUDIT.md` only for evidence actually added.
-8. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next acceptance slice.
+6. Keep ordinary startup inert without an eligible meaningful event; update acceptance evidence only for
+   behavior actually proved.
+7. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next acceptance slice.

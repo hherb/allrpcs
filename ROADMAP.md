@@ -914,6 +914,14 @@ Current continuation:
 - [x] Resolve only that admitted completion's exact sabotage-owning character turn through a distinct
   response-free terminal state, then bind only its exact successor at the ordinary-turn boundary
   without using player cancellation or scheduling another action.
+- [x] Derive one bounded sabotage cadence only from exact authoritative meaningful-world-event
+  occurrences and retain its exact scene-owned enemy actor and event provenance in one opportunity.
+- [x] Reserve the shared ordinary-turn slot only for that exact current opportunity without
+  fabricating dialogue or allowing overlapping dialogue work.
+- [x] Invoke all seven existing action authors only for that exact reservation and canonically
+  compose their current eligible outputs without partial publication.
+- [x] Start and observe only that exact reserved provider-neutral generic selection once without
+  binding, acknowledging, dispatching, or applying it.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

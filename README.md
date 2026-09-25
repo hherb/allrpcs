@@ -1319,6 +1319,20 @@ already-resolved activities, and repeated calls remain inert while all three mod
 one. The proof stops before scheduling another action. Ordinary startup remains authoring-, model-,
 mutation-, scheduling-, and presentation-free, and no sixth Move cycle is introduced.
 
+The ordinary scene now owns a separate bounded sabotage cadence measured only in authoritative
+meaningful-world-event occurrences, not frames, wall-clock time, or the independent-task travel
+clock. One exact due event can produce one opportunity for the existing scene-owned enemy actor.
+An explicit continuation can reserve the shared character-turn slot without fabricating dialogue, so
+a normal dialogue turn cannot overlap it. Only the exact current reservation invokes the seven existing
+authors, composes eligible Conceal, Delay, and Influence outputs in canonical order, starts the existing
+provider-neutral generic decision flow, and observes its exact completed result once.
+Null, rebuilt actor, cadence, event, opportunity, reservation, request, stale authority, early,
+duplicate, and repeated inputs remain inert and preserve a queued one-shot model. Ordinary startup
+without an eligible meaningful event performs no sabotage work, and ordinary play stops at the inert
+opportunity until the downstream lifecycle is complete. The explicit proof currently stops before
+binding or acknowledging the generic selection, composing typed work, applying an action, releasing
+the reservation, or exposing player-visible investigation evidence.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the

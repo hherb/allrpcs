@@ -291,6 +291,9 @@
 [ext_resource type="Script" path="res://CharacterSabotageActionInfluenceRequestController.cs" id="289_sabotage_action_influence_request"]
 [ext_resource type="Script" path="res://CharacterSabotageActionRequestComposer.cs" id="290_sabotage_action_request_composer"]
 [ext_resource type="Script" path="res://TemporaryCharacterSabotageOrdinaryTurnAuthoringSource.cs" id="290a_sabotage_ordinary_authoring_source"]
+[ext_resource type="Script" path="res://CharacterSabotageTurnOpportunityController.cs" id="290aa_sabotage_turn_opportunity"]
+[ext_resource type="Script" path="res://CharacterSabotageTurnOpportunitySchedulingCoordinator.cs" id="290ab_sabotage_turn_scheduling"]
+[ext_resource type="Script" path="res://CharacterSabotageTurnReservationCoordinator.cs" id="290ac_sabotage_turn_reservation"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringCoordinator.cs" id="290b_sabotage_ordinary_authoring"]
 [ext_resource type="Script" path="res://CharacterSabotageActionRequestConsiderationFlowController.cs" id="291_sabotage_action_request_flow"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnConsiderationStartCoordinator.cs" id="291a_sabotage_ordinary_start"]
@@ -310,6 +313,7 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator.cs" id="291an_sabotage_ordinary_completion_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator.cs" id="291ao_sabotage_ordinary_lifecycle_resolution"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck.cs" id="291b_sabotage_ordinary_authoring_check"]
+[ext_resource type="Script" path="res://CharacterSabotageTurnOpportunityControllerSmokeCheck.cs" id="291c_sabotage_turn_opportunity_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestStartCoordinator.cs" id="294_sabotage_action_specific_start"]
@@ -844,6 +848,15 @@ script = ExtResource("290_sabotage_action_request_composer")
 
 [node name="TemporaryCharacterSabotageOrdinaryTurnAuthoringSource" type="Node" parent="."]
 script = ExtResource("290a_sabotage_ordinary_authoring_source")
+
+[node name="CharacterSabotageTurnOpportunityController" type="Node" parent="."]
+script = ExtResource("290aa_sabotage_turn_opportunity")
+
+[node name="CharacterSabotageTurnOpportunitySchedulingCoordinator" type="Node" parent="."]
+script = ExtResource("290ab_sabotage_turn_scheduling")
+
+[node name="CharacterSabotageTurnReservationCoordinator" type="Node" parent="."]
+script = ExtResource("290ac_sabotage_turn_reservation")
 
 [node name="CharacterSabotageOrdinaryTurnAuthoringCoordinator" type="Node" parent="."]
 script = ExtResource("290b_sabotage_ordinary_authoring")
@@ -2319,3 +2332,6 @@ script = ExtResource("95_model_stream_text_label")
 
 [node name="CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("291b_sabotage_ordinary_authoring_check")
+
+[node name="CharacterSabotageTurnOpportunityControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("291c_sabotage_turn_opportunity_check")
