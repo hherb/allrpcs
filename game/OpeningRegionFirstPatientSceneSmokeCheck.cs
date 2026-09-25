@@ -28,15 +28,16 @@ public partial class OpeningRegionFirstPatientSceneSmokeCheck : Node
         OpeningRegionFirstPatientSceneSource source =
             GetNode<OpeningRegionFirstPatientSceneSource>("../OpeningRegionFirstPatientSceneSource");
         OpeningRegionFirstPatientSceneBinding? binding = source.Binding;
-        if (binding is null && readyFrames < MaximumReadyFrames)
+        OpeningRegionSickhouseLayout? layout = source.Layout;
+        if ((binding is null || layout is null) && readyFrames < MaximumReadyFrames)
         {
             return;
         }
 
         SetProcess(false);
-        if (binding is null)
+        if (binding is null || layout is null)
         {
-            Fail("The first-patient scene binding did not become ready.");
+            Fail("The first-patient scene binding and sickhouse layout did not become ready.");
             return;
         }
 
@@ -54,6 +55,8 @@ public partial class OpeningRegionFirstPatientSceneSmokeCheck : Node
             || binding.SickhouseAnchor.Location.Identity.Id.Value != "sickhouse"
             || binding.PatientPosition.X != source.Position.X
             || binding.PatientPosition.Y != source.Position.Y
+            || !ReferenceEquals(layout.FirstPatientBinding, binding)
+            || layout.PatientApproach != binding.SickhouseAnchor.Position
             || !hasDeepSleepingPatient)
         {
             Fail("The first-patient scene lost exact sickhouse, patient, or placement provenance.");
@@ -62,7 +65,7 @@ public partial class OpeningRegionFirstPatientSceneSmokeCheck : Node
 
         GD.Print(
             "Opening-region first-patient scene smoke passed: exact sickhouse entry, exact "
-            + "deep-sleeping patient, and bounded greybox placement were retained without "
+            + "deep-sleeping patient, and collision-aware greybox layout were retained without "
             + "changing disease state.");
         GetTree().Quit();
     }

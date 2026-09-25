@@ -22,6 +22,15 @@ public partial class GreyboxNavigation : NavigationRegion2D
     private const float VillageClearanceRight = 1480.0f;
     private const float VillageClearanceTop = 480.0f;
     private const float VillageClearanceBottom = 800.0f;
+    private const float SickhouseClearanceLeft = 800.0f;
+    private const float SickhouseInteriorLeft = 848.0f;
+    private const float SickhouseEntranceLeft = 896.0f;
+    private const float SickhouseEntranceRight = 944.0f;
+    private const float SickhouseInteriorRight = 992.0f;
+    private const float SickhouseClearanceRight = 1040.0f;
+    private const float SickhouseClearanceTop = 656.0f;
+    private const float SickhouseInteriorTop = 704.0f;
+    private const float SickhouseInteriorBottom = 848.0f;
 
     private static readonly Vector2[] UpperBank =
     [
@@ -48,8 +57,12 @@ public partial class GreyboxNavigation : NavigationRegion2D
     private static readonly Vector2[] LowerBankEast =
     [
         new(EastStreamCollisionStart, 226.0f),
+        new(SickhouseEntranceLeft, 230.57143f),
         new(920.0f, 234.0f),
+        new(SickhouseEntranceRight, 229.25f),
+        new(SickhouseInteriorRight, 219.75f),
         new(VillageClearanceLeft, 215.0f),
+        new(SickhouseClearanceRight, 210.34483f),
         new(1248.0f, 170.0f),
         new(VillageClearanceRight, 191.0f),
         new(WorldRight, 200.0f),
@@ -69,6 +82,7 @@ public partial class GreyboxNavigation : NavigationRegion2D
         AddLowerBank(builder, LowerBankWest);
         AddLowerBank(builder, LowerBankEast);
         AddLowerField(builder);
+        AddSickhouseInterior(builder);
         return builder.Build();
     }
 
@@ -78,6 +92,22 @@ public partial class GreyboxNavigation : NavigationRegion2D
         {
             Vector2 leftBank = UpperBank[index];
             Vector2 rightBank = UpperBank[index + 1];
+            if (index == 3)
+            {
+                Vector2 splitBank = GetBridgeSplitUpperBank();
+                builder.AddQuadrilateral(
+                    new Vector2(leftBank.X, WorldInset),
+                    new Vector2(SickhouseClearanceLeft, WorldInset),
+                    splitBank,
+                    leftBank);
+                builder.AddQuadrilateral(
+                    new Vector2(SickhouseClearanceLeft, WorldInset),
+                    new Vector2(rightBank.X, WorldInset),
+                    rightBank,
+                    splitBank);
+                continue;
+            }
+
             builder.AddQuadrilateral(
                 new Vector2(leftBank.X, WorldInset),
                 new Vector2(rightBank.X, WorldInset),
@@ -88,12 +118,22 @@ public partial class GreyboxNavigation : NavigationRegion2D
 
     private static void AddBridge(NavigationPolygonBuilder builder)
     {
+        Vector2 splitUpperBank = GetBridgeSplitUpperBank();
         builder.AddQuadrilateral(
             UpperBank[3],
+            splitUpperBank,
+            new Vector2(SickhouseClearanceLeft, LowerFieldTop),
+            new Vector2(BridgeLeft, LowerFieldTop));
+        builder.AddQuadrilateral(
+            splitUpperBank,
             UpperBank[4],
             new Vector2(BridgeRight, LowerFieldTop),
-            new Vector2(BridgeLeft, LowerFieldTop));
+            new Vector2(SickhouseClearanceLeft, LowerFieldTop));
     }
+
+    private static Vector2 GetBridgeSplitUpperBank() => UpperBank[3].Lerp(
+        UpperBank[4],
+        (SickhouseClearanceLeft - BridgeLeft) / (BridgeRight - BridgeLeft));
 
     private static void AddLowerBank(NavigationPolygonBuilder builder, Vector2[] bank)
     {
@@ -120,10 +160,16 @@ public partial class GreyboxNavigation : NavigationRegion2D
             624.0f,
             WestStreamCollisionEnd,
             BridgeLeft,
+            SickhouseClearanceLeft,
             BridgeRight,
+            SickhouseInteriorLeft,
             EastStreamCollisionStart,
+            SickhouseEntranceLeft,
             920.0f,
+            SickhouseEntranceRight,
+            SickhouseInteriorRight,
             VillageClearanceLeft,
+            SickhouseClearanceRight,
             1248.0f,
             VillageClearanceRight,
             WorldRight,
@@ -133,7 +179,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
             LowerFieldTop,
             TreeClearanceBottom,
             VillageClearanceTop,
+            SickhouseClearanceTop,
+            SickhouseInteriorTop,
             VillageClearanceBottom,
+            SickhouseInteriorBottom,
             WorldBottom,
         ];
 
@@ -165,7 +214,45 @@ public partial class GreyboxNavigation : NavigationRegion2D
             && right <= VillageClearanceRight
             && top >= VillageClearanceTop
             && bottom <= VillageClearanceBottom;
-        return isTreeClearance || isVillageClearance;
+        bool isSickhouseClearance = left >= SickhouseClearanceLeft
+            && right <= SickhouseClearanceRight
+            && top >= SickhouseClearanceTop
+            && bottom <= WorldBottom;
+        return isTreeClearance || isVillageClearance || isSickhouseClearance;
+    }
+
+    private static void AddSickhouseInterior(NavigationPolygonBuilder builder)
+    {
+        builder.AddRectangle(
+            SickhouseInteriorLeft,
+            SickhouseInteriorTop,
+            SickhouseEntranceLeft,
+            SickhouseInteriorBottom);
+        builder.AddRectangle(
+            SickhouseEntranceLeft,
+            SickhouseInteriorTop,
+            920.0f,
+            SickhouseInteriorBottom);
+        builder.AddRectangle(
+            920.0f,
+            SickhouseInteriorTop,
+            SickhouseEntranceRight,
+            SickhouseInteriorBottom);
+        builder.AddRectangle(
+            SickhouseEntranceRight,
+            SickhouseInteriorTop,
+            SickhouseInteriorRight,
+            SickhouseInteriorBottom);
+        builder.AddRectangle(
+            SickhouseEntranceLeft,
+            SickhouseClearanceTop,
+            920.0f,
+            SickhouseInteriorTop);
+        builder.AddRectangle(
+            920.0f,
+            SickhouseClearanceTop,
+            SickhouseEntranceRight,
+            SickhouseInteriorTop);
     }
 
     private sealed class NavigationPolygonBuilder

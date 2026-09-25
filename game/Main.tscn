@@ -1,4 +1,4 @@
-[gd_scene load_steps=259 format=3]
+[gd_scene load_steps=265 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -418,6 +418,9 @@
 [ext_resource type="Script" path="res://OpeningRegionProjectionSmokeCheck.cs" id="306_opening_region_projection_check"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientSceneSource.cs" id="307_opening_region_first_patient_scene"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientSceneSmokeCheck.cs" id="308_opening_region_first_patient_scene_check"]
+[ext_resource type="Script" path="res://OpeningRegionSickhouseNavigationSmokeCheck.cs" id="309_opening_region_sickhouse_check"]
+[ext_resource type="Script" path="res://OpeningRegionRemedyPreparationSceneSource.cs" id="310_opening_region_remedy_preparation_scene"]
+[ext_resource type="Script" path="res://OpeningRegionRemedyPreparationSceneSmokeCheck.cs" id="311_opening_region_remedy_preparation_scene_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -436,6 +439,15 @@ size = Vector2(416, 272)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tree"]
 radius = 34.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_top"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_side"]
+size = Vector2(8, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_bottom"]
+size = Vector2(192, 8)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -1551,15 +1563,63 @@ script = ExtResource("128_first_patient_context_source")
 position = Vector2(920, 760)
 script = ExtResource("307_opening_region_first_patient_scene")
 
-[node name="Room" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
-polygon = PackedVector2Array(-80, -60, 80, -60, 80, 100, -80, 100)
+[node name="Floor" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
+polygon = PackedVector2Array(-96, -80, 96, -80, 96, 112, -96, 112)
 color = Color(0.365, 0.337, 0.29, 1)
 
-[node name="Outline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Room"]
-points = PackedVector2Array(-80, -60, 80, -60, 80, 100, -80, 100, -80, -60)
+[node name="OuterWallOutline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Floor"]
+points = PackedVector2Array(-96, -80, -96, 112, 96, 112, 96, -80)
 width = 6.0
 default_color = Color(0.204, 0.188, 0.157, 1)
 antialiased = true
+
+[node name="NorthWallLeftOutline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Floor"]
+points = PackedVector2Array(-96, -80, -32, -80)
+width = 6.0
+default_color = Color(0.204, 0.188, 0.157, 1)
+antialiased = true
+
+[node name="NorthWallRightOutline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Floor"]
+points = PackedVector2Array(32, -80, 96, -80)
+width = 6.0
+default_color = Color(0.204, 0.188, 0.157, 1)
+antialiased = true
+
+[node name="Entrance" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
+polygon = PackedVector2Array(-12, -86, 12, -86, 0, -70)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="Walls" type="Node2D" parent="OpeningRegionFirstPatientSceneSource"]
+
+[node name="TopLeft" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
+position = Vector2(-64, -80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/TopLeft"]
+shape = SubResource("RectangleShape2D_sickhouse_top")
+
+[node name="TopRight" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
+position = Vector2(64, -80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/TopRight"]
+shape = SubResource("RectangleShape2D_sickhouse_top")
+
+[node name="Left" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
+position = Vector2(-96, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/Left"]
+shape = SubResource("RectangleShape2D_sickhouse_side")
+
+[node name="Right" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
+position = Vector2(96, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/Right"]
+shape = SubResource("RectangleShape2D_sickhouse_side")
+
+[node name="Bottom" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
+position = Vector2(0, 112)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/Bottom"]
+shape = SubResource("RectangleShape2D_sickhouse_bottom")
 
 [node name="Bed" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
 polygon = PackedVector2Array(-30, -22, 30, -22, 30, 22, -30, 22)
@@ -1571,14 +1631,50 @@ color = Color(0.58, 0.659, 0.69, 1)
 
 [node name="Label" type="Label" parent="OpeningRegionFirstPatientSceneSource"]
 offset_left = -88.0
-offset_top = 30.0
+offset_top = 82.0
 offset_right = 88.0
-offset_bottom = 53.0
+offset_bottom = 105.0
 text = "SICKHOUSE · SLEEPING PATIENT"
 horizontal_alignment = 1
 
 [node name="OpeningRegionFirstPatientSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("308_opening_region_first_patient_scene_check")
+
+[node name="OpeningRegionSickhouseNavigationSmokeCheck" type="Node" parent="."]
+script = ExtResource("309_opening_region_sickhouse_check")
+
+[node name="OpeningRegionRemedyPreparationSceneSource" type="Node2D" parent="."]
+position = Vector2(920, 620)
+script = ExtResource("310_opening_region_remedy_preparation_scene")
+
+[node name="GardenPlot" type="Polygon2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+polygon = PackedVector2Array(-104, -52, 72, -52, 72, 52, -104, 52)
+color = Color(0.286, 0.443, 0.247, 1)
+
+[node name="Beds" type="Line2D" parent="OpeningRegionRemedyPreparationSceneSource/GardenPlot"]
+points = PackedVector2Array(-88, -34, 56, -34, -88, -10, 56, -10, -88, 14, 56, 14, -88, 38, 56, 38)
+width = 5.0
+default_color = Color(0.494, 0.62, 0.322, 1)
+antialiased = true
+
+[node name="PreparationBench" type="Polygon2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+polygon = PackedVector2Array(-22, -18, 22, -18, 22, 18, -22, 18)
+color = Color(0.498, 0.42, 0.314, 1)
+
+[node name="Mortar" type="Polygon2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+polygon = PackedVector2Array(-10, -7, 10, -7, 7, 9, -7, 9)
+color = Color(0.69, 0.671, 0.612, 1)
+
+[node name="Label" type="Label" parent="OpeningRegionRemedyPreparationSceneSource"]
+offset_left = -92.0
+offset_top = 58.0
+offset_right = 92.0
+offset_bottom = 81.0
+text = "HEALER'S GARDEN · PREPARATION STATION"
+horizontal_alignment = 1
+
+[node name="OpeningRegionRemedyPreparationSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("311_opening_region_remedy_preparation_scene_check")
 
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")
