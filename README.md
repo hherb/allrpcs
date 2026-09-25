@@ -1365,9 +1365,21 @@ all eleven endpoints, rather than inferring traversal from topology or straight-
 The first Phase 8 landmark scene is a temporary greybox sickhouse containing the exact representative
 deep-sleeping patient. `OpeningRegionFirstPatientSceneBinding` accepts only the projection's exact
 sickhouse entry anchor, the structurally valid exact deep-sleep infection, and a patient position within
-96 pixels of that anchor. It changes no disease or treatment state. The room, bed, body, and label are
-scale evidence only; collision-aware walls, an entrance, interior navigation, interactions, production
-art, weather, sound, and story-state variations remain deferred.
+96 pixels of that anchor. `OpeningRegionSickhouseLayout` retains that exact binding, a single north-wall
+entrance at least twice the 24-pixel route clearance, and the exact sickhouse anchor as the patient
+approach. Five collision-backed wall sections replace the former rectangle. The synchronized navigation
+surface admits the entrance corridor and room interior while excluding wall clearance, and the pure
+route policy rejects wall-crossing or out-of-bounds paths. A main-scene proof routes the Seeker into the
+room, to the patient approach, and back out. Disease and treatment state remain unchanged; interaction,
+dialogue, focus, discovery, production art, weather, sound, and story-state variations remain deferred.
+
+The second Phase 8 landmark scene is a temporary greybox healer's garden and preparation station.
+`OpeningRegionRemedyPreparationSceneBinding` accepts only the projection's exact retained
+`healer-garden` anchor, the structurally valid first-patient context and its exact remedy recipe, and a
+station position within 72 pixels. The reachable scene shows garden beds, a bench, and mortar without
+starting or advancing preparation. The switch-gated proof retains the ordinary controller's exact recipe
+while its activity and outcome remain absent; ingredient interaction, preparation input, discovery,
+dialogue, treatment, production art, and state variation remain deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

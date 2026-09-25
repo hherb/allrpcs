@@ -961,8 +961,8 @@ Acceptance:
 - [x] Author and validate one continuous multi-route opening-region topology containing every required
   landmark without assigning scene coordinates or prescribing a clue order.
 - [x] Build the continuous opening region at validated gameplay scale.
-- [ ] Build the sickhouse and first sleeping patient scene.
-- [ ] Build the healer's garden and remedy-preparation station.
+- [x] Build the sickhouse and first sleeping patient scene.
+- [x] Build the healer's garden and remedy-preparation station.
 - [ ] Build the village square and village-edge transitions.
 - [ ] Build the stream and abandoned laundry.
 - [ ] Build the woodland clearing and concealed rare specimen.
