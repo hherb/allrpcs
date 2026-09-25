@@ -300,6 +300,10 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator.cs" id="291ad_sabotage_ordinary_specific_start"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnSpecificResultCoordinator.cs" id="291ae_sabotage_ordinary_specific_result"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator.cs" id="291af_sabotage_ordinary_specific_outcome"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator.cs" id="291ag_sabotage_ordinary_delay_recovery_candidate"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator.cs" id="291ah_sabotage_ordinary_delay_recovery_request"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator.cs" id="291ai_sabotage_ordinary_delay_recovery_start"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator.cs" id="291aj_sabotage_ordinary_delay_recovery_result"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck.cs" id="291b_sabotage_ordinary_authoring_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
@@ -862,6 +866,18 @@ script = ExtResource("291ae_sabotage_ordinary_specific_result")
 
 [node name="CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator" type="Node" parent="."]
 script = ExtResource("291af_sabotage_ordinary_specific_outcome")
+
+[node name="CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator" type="Node" parent="."]
+script = ExtResource("291ag_sabotage_ordinary_delay_recovery_candidate")
+
+[node name="CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator" type="Node" parent="."]
+script = ExtResource("291ah_sabotage_ordinary_delay_recovery_request")
+
+[node name="CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator" type="Node" parent="."]
+script = ExtResource("291ai_sabotage_ordinary_delay_recovery_start")
+
+[node name="CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator" type="Node" parent="."]
+script = ExtResource("291aj_sabotage_ordinary_delay_recovery_result")
 
 [node name="CharacterSabotageActionAuthorBindingCoordinator" type="Node" parent="."]
 script = ExtResource("292_sabotage_action_author_binding")

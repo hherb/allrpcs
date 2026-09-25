@@ -2,6 +2,7 @@ using Allrpcs.Application.Characters;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.WorldEvents;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -24,6 +25,16 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
     private CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator specificStart = null!;
     private CharacterSabotageOrdinaryTurnSpecificResultCoordinator specificResult = null!;
     private CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator specificOutcome = null!;
+    private CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator delayRecovery = null!;
+    private CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator recoveryRequest = null!;
+    private CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator recoveryStart = null!;
+    private CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator recoveryResult = null!;
+    private CharacterSabotageOutcomeDelayRecoveryCoordinator recovery = null!;
+    private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests = null!;
+    private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
+    private CharacterTargetSabotageDelayRecoveryTaskController recoveryTask = null!;
+    private TemporaryCharacterTargetSabotageDelayRecoveryModelSource recoveryModelSource = null!;
+    private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
     private CharacterSabotageActionSpecificResultCoordinator specificResults = null!;
     private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcomes = null!;
     private CharacterTargetSabotageDelayResolutionCoordinator delayResolution = null!;
@@ -41,7 +52,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
     private CharacterTurnActivity turn = null!;
     private RecordingModel model = null!;
     private RecordingDelayModel delayModel = null!;
+    private RecordingDelayRecoveryModel recoveryModel = null!;
     private int processFrames;
+    private bool recoveryStarted;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -72,6 +85,26 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             "../CharacterSabotageOrdinaryTurnSpecificResultCoordinator");
         specificOutcome = GetNode<CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator>(
             "../CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator");
+        delayRecovery = GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator>(
+            "../CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator");
+        recoveryRequest = GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator>(
+            "../CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator");
+        recoveryStart = GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator>(
+            "../CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator");
+        recoveryResult = GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator>(
+            "../CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator");
+        recovery = GetNode<CharacterSabotageOutcomeDelayRecoveryCoordinator>(
+            "../CharacterSabotageOutcomeDelayRecoveryCoordinator");
+        recoveryRequests = GetNode<CharacterTargetSabotageDelayRecoveryCandidateRequestController>(
+            "../CharacterTargetSabotageDelayRecoveryCandidateRequestController");
+        recoveryState = GetNode<CharacterTargetSabotageDelayRecoveryController>(
+            "../CharacterTargetSabotageDelayRecoveryController");
+        recoveryTask = GetNode<CharacterTargetSabotageDelayRecoveryTaskController>(
+            "../CharacterTargetSabotageDelayRecoveryTaskController");
+        recoveryModelSource = GetNode<TemporaryCharacterTargetSabotageDelayRecoveryModelSource>(
+            "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
+        terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
+            "../CharacterSabotageTerminalRouteCoordinator");
         specificResults = GetNode<CharacterSabotageActionSpecificResultCoordinator>(
             "../CharacterSabotageActionSpecificResultCoordinator");
         specificOutcomes = GetNode<CharacterSabotageActionSpecificOutcomeCoordinator>(
@@ -101,6 +134,7 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
         turn = CreateTurn(source.Actor);
         model = new RecordingModel();
         delayModel = new RecordingDelayModel();
+        recoveryModel = new RecordingDelayRecoveryModel();
 
         RunAuthoringChecks();
     }
@@ -114,6 +148,12 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
         if (processFrames > MaximumProcessFrames)
         {
             Fail("Ordinary-turn sabotage consideration exceeded its bounded duration.");
+            return;
+        }
+
+        if (recoveryStarted)
+        {
+            CompleteExactDelayRecovery();
             return;
         }
 
@@ -135,9 +175,28 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             || !ComposeExactDelayRequest(result)
             || !StartExactDelayRequest(specificRequest.Request)
             || !ObserveAndAcknowledgeExactDelayResult(specificRequest.Request)
-            || !BindExactDelayOutcome())
+            || !BindExactDelayOutcome()
+            || !PublishExactDelayRecoveryCandidate()
+            || !ComposeExactDelayRecoveryRequest()
+            || !StartExactDelayRecoveryRequest())
         {
             Fail("Ordinary-turn sabotage generic consideration did not remain exact and one-shot.");
+            return;
+        }
+
+        recoveryStarted = true;
+    }
+
+    private void CompleteExactDelayRecovery()
+    {
+        if (recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running)
+        {
+            return;
+        }
+
+        if (!RetainExactCompletedDelayRecovery())
+        {
+            Fail("Ordinary-turn sabotage Delay recovery did not remain exact and one-shot.");
             return;
         }
 
@@ -149,7 +208,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             + "before observing, binding, and acknowledging its exact selected Delay result once "
             + "and composing and explicitly starting one exact typed Delay request, then observing, "
             + "resolving, and acknowledging only its exact completed result once before binding its "
-            + "exact applied outcome without entering recovery.");
+            + "exact applied outcome, publishing its exact recovery candidate, and composing its "
+            + "exact recovery request before explicitly starting, completing, and acknowledging its "
+            + "exact applied recovery once without terminal routing.");
         GetTree().Quit();
     }
 
@@ -179,6 +240,31 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && specificOutcome.EventLog is null
             && specificOutcome.WorldTime is null
             && specificOutcome.Delay is null
+            && delayRecovery.AuthorRequest is null
+            && delayRecovery.Delay is null
+            && delayRecovery.RecoveryEvent is null
+            && delayRecovery.Candidate is null
+            && recoveryRequest.AuthorRequest is null
+            && recoveryRequest.Candidate is null
+            && recoveryRequest.Request is null
+            && recoveryStart.AuthorRequest is null
+            && recoveryStart.Request is null
+            && recoveryResult.AuthorRequest is null
+            && recoveryResult.Request is null
+            && recoveryResult.Result is null
+            && recoveryResult.AppliedResult is null
+            && recoveryResult.EventLog is null
+            && recoveryResult.WorldTime is null
+            && recovery.AuthorRequest is null
+            && recovery.Request is null
+            && recovery.StartedRequest is null
+            && recoveryRequests.Request is null
+            && recoveryState.EventLog is null
+            && recoveryState.WorldTime is null
+            && recoveryState.LatestAppliedResult is null
+            && recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
+            && recoveryTask.Result is null
+            && terminalRoute.TerminalOutputCount == 0
             && specificResults.ResultCount == 0
             && specificResults.AcknowledgedAuthorRequest is null
             && specificOutcomes.AuthorRequest is null
@@ -195,7 +281,8 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && delayResolution.AcknowledgedAppliedResult is null
             && turns.Activity is null
             && model.CallCount == 0
-            && delayModel.CallCount == 0;
+            && delayModel.CallCount == 0
+            && recoveryModel.CallCount == 0;
         bool initialized = delayState.TryInitialize(
                 source.DelayRequest.EventLog,
                 source.DelayRequest.WorldTime)
@@ -537,6 +624,197 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
         return initialState && invalidRejected && bound && retained;
     }
 
+    private bool PublishExactDelayRecoveryCandidate()
+    {
+        if (specificOutcome.Delay is not { } appliedResult)
+        {
+            return false;
+        }
+
+        CharacterTargetSabotageDelayResult rebuiltAppliedResult = new(
+            appliedResult.Candidate,
+            appliedResult.EventLog,
+            appliedResult.WorldTime);
+        WorldEvent rebuiltRecoveryEvent = new(
+            source.RecoveryEvent.EventId,
+            source.RecoveryEvent.TimeEffect);
+        bool initialState = delayRecovery.AuthorRequest is null
+            && delayRecovery.Delay is null
+            && delayRecovery.RecoveryEvent is null
+            && delayRecovery.Candidate is null;
+        bool invalidRejected = !delayRecovery.TryPublish(null, source.RecoveryEvent)
+            && !delayRecovery.TryPublish(appliedResult, null)
+            && !delayRecovery.TryPublish(rebuiltAppliedResult, source.RecoveryEvent)
+            && !delayRecovery.TryPublish(appliedResult, rebuiltRecoveryEvent);
+        bool published = delayRecovery.TryPublish(appliedResult, source.RecoveryEvent);
+        bool retained = ReferenceEquals(
+                delayRecovery.AuthorRequest,
+                resultBinding.SelectedAuthorRequest)
+            && ReferenceEquals(delayRecovery.Delay, appliedResult)
+            && ReferenceEquals(delayRecovery.RecoveryEvent, source.RecoveryEvent)
+            && delayRecovery.Candidate is { } candidate
+            && ReferenceEquals(candidate.DelayResult, appliedResult)
+            && ReferenceEquals(candidate.RecoveryEvent, source.RecoveryEvent)
+            && delayModel.CallCount == 1
+            && ReferenceEquals(turns.Activity, turn)
+            && !delayRecovery.TryPublish(appliedResult, source.RecoveryEvent);
+        return initialState && invalidRejected && published && retained;
+    }
+
+    private bool ComposeExactDelayRecoveryRequest()
+    {
+        if (delayRecovery.AuthorRequest is not { } authorRequest
+            || delayRecovery.Candidate is not { } candidate)
+        {
+            return false;
+        }
+
+        CharacterSabotageActionConsiderationRequest rebuiltAuthorRequest = new(
+            authorRequest.Actor,
+            authorRequest.ActionKinds);
+        CharacterTargetSabotageDelayRecoveryCandidate rebuiltCandidate = new(
+            candidate.DelayResult,
+            candidate.RecoveryEvent);
+        bool initialState = recoveryRequest.AuthorRequest is null
+            && recoveryRequest.Candidate is null
+            && recoveryRequest.Request is null
+            && recovery.Request is null
+            && recoveryRequests.Request is null;
+        bool invalidRejected = !recoveryRequest.TryCompose(null, candidate)
+            && !recoveryRequest.TryCompose(authorRequest, null)
+            && !recoveryRequest.TryCompose(rebuiltAuthorRequest, candidate)
+            && !recoveryRequest.TryCompose(authorRequest, rebuiltCandidate);
+        bool composed = recoveryRequest.TryCompose(authorRequest, candidate);
+        bool retained = ReferenceEquals(recoveryRequest.AuthorRequest, authorRequest)
+            && ReferenceEquals(recoveryRequest.Candidate, candidate)
+            && recoveryRequest.Request is { } request
+            && ReferenceEquals(recovery.AuthorRequest, authorRequest)
+            && ReferenceEquals(recovery.Request, request)
+            && ReferenceEquals(recoveryRequests.Request, request)
+            && ReferenceEquals(request.Actor, candidate.DelayResult.Candidate.Occurrence.Target)
+            && ReferenceEquals(request.WorldEvents, source.DelayRequest.WorldEvents)
+            && ReferenceEquals(request.EventLog, candidate.DelayResult.EventLog)
+            && ReferenceEquals(request.WorldTime, candidate.DelayResult.WorldTime)
+            && request.Candidates.Count == 1
+            && ReferenceEquals(request.Candidates[0], candidate)
+            && recovery.StartedRequest is null
+            && recoveryState.EventLog is null
+            && recoveryState.WorldTime is null
+            && recoveryState.LatestAppliedResult is null
+            && recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
+            && recoveryTask.Result is null
+            && delayModel.CallCount == 1
+            && !recoveryRequest.TryCompose(authorRequest, candidate);
+        return initialState && invalidRejected && composed && retained;
+    }
+
+    private bool StartExactDelayRecoveryRequest()
+    {
+        if (recoveryRequest.AuthorRequest is not { } authorRequest
+            || recoveryRequest.Request is not { } request)
+        {
+            return false;
+        }
+
+        CharacterSabotageActionConsiderationRequest rebuiltAuthorRequest = new(
+            authorRequest.Actor,
+            authorRequest.ActionKinds);
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest rebuiltRequest = new(
+            request.Actor,
+            request.WorldEvents,
+            request.EventLog,
+            request.WorldTime,
+            request.Candidates);
+        bool initialState = recoveryStart.AuthorRequest is null
+            && recoveryStart.Request is null
+            && recovery.StartedRequest is null
+            && recoveryState.EventLog is null
+            && recoveryState.WorldTime is null
+            && recoveryState.LatestAppliedResult is null
+            && recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
+            && recoveryTask.Result is null;
+        bool invalidRejected = recoveryModelSource.TrySupplyModel(recoveryModel)
+            && !recoveryStart.TryStart(null, request)
+            && !recoveryStart.TryStart(authorRequest, null)
+            && !recoveryStart.TryStart(rebuiltAuthorRequest, request)
+            && !recoveryStart.TryStart(authorRequest, rebuiltRequest)
+            && recoveryModel.CallCount == 0;
+        bool started = recoveryStart.TryStart(authorRequest, request);
+        bool retained = ReferenceEquals(recoveryStart.AuthorRequest, authorRequest)
+            && ReferenceEquals(recoveryStart.Request, request)
+            && ReferenceEquals(recovery.StartedRequest, request)
+            && ReferenceEquals(recoveryState.EventLog, request.EventLog)
+            && ReferenceEquals(recoveryState.WorldTime, request.WorldTime)
+            && recoveryState.LatestAppliedResult is null
+            && recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Running
+            && recoveryTask.Result is null
+            && recoveryModel.CallCount == 1
+            && ReferenceEquals(recoveryModel.Request, request)
+            && delayModel.CallCount == 1
+            && !recoveryStart.TryStart(authorRequest, request)
+            && recoveryModel.CallCount == 1;
+        return initialState && invalidRejected && started && retained;
+    }
+
+    private bool RetainExactCompletedDelayRecovery()
+    {
+        if (recoveryStart.AuthorRequest is not { } authorRequest
+            || recoveryStart.Request is not { } request
+            || recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Completed
+            || recoveryTask.Result is not { } completedResult)
+        {
+            return false;
+        }
+
+        CharacterSabotageActionConsiderationRequest rebuiltAuthorRequest = new(
+            authorRequest.Actor,
+            authorRequest.ActionKinds);
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest rebuiltRequest = new(
+            request.Actor,
+            request.WorldEvents,
+            request.EventLog,
+            request.WorldTime,
+            request.Candidates);
+        bool initialState = recoveryResult.AuthorRequest is null
+            && recoveryResult.Request is null
+            && recoveryResult.Result is null
+            && recoveryResult.AppliedResult is null
+            && recoveryResult.EventLog is null
+            && recoveryResult.WorldTime is null
+            && recovery.CompletedResult is null
+            && recovery.RecoveredResult is null;
+        bool invalidRejected = !recoveryResult.TryRetain(null, request)
+            && !recoveryResult.TryRetain(authorRequest, null)
+            && !recoveryResult.TryRetain(rebuiltAuthorRequest, request)
+            && !recoveryResult.TryRetain(authorRequest, rebuiltRequest);
+        bool retained = recoveryResult.TryRetain(authorRequest, request);
+        bool exact = ReferenceEquals(recoveryResult.AuthorRequest, authorRequest)
+            && ReferenceEquals(recoveryResult.Request, request)
+            && ReferenceEquals(recoveryResult.Result, completedResult)
+            && ReferenceEquals(recovery.CompletedResult, completedResult)
+            && recoveryResult.AppliedResult is { } appliedResult
+            && ReferenceEquals(recovery.RecoveredResult, appliedResult)
+            && ReferenceEquals(recoveryResult.EventLog, appliedResult.EventLog)
+            && ReferenceEquals(recoveryResult.WorldTime, appliedResult.WorldTime)
+            && ReferenceEquals(recovery.RecoveredEventLog, appliedResult.EventLog)
+            && ReferenceEquals(recovery.RecoveredWorldTime, appliedResult.WorldTime)
+            && ReferenceEquals(completedResult.Request, request)
+            && ReferenceEquals(completedResult.SelectedCandidate, request.Candidates.Single())
+            && ReferenceEquals(appliedResult.Candidate, completedResult.SelectedCandidate)
+            && appliedResult.EventLog.Entries.Count == request.EventLog.Entries.Count + 1
+            && ReferenceEquals(
+                appliedResult.EventLog.Entries[^1],
+                source.RecoveryEvent.EventId)
+            && ReferenceEquals(appliedResult.WorldTime.CurrentEventId, source.RecoveryEvent.EventId)
+            && recoveryTask.Status == CharacterTargetSabotageDelayRecoveryTaskStatus.Idle
+            && recoveryTask.Result is null
+            && recoveryModel.CallCount == 1
+            && delayModel.CallCount == 1
+            && terminalRoute.TerminalOutputCount == 0
+            && !recoveryResult.TryRetain(authorRequest, request);
+        return initialState && invalidRejected && retained && exact;
+    }
+
     private bool AuthorsAreEmpty() =>
         authors.All(author => author.Request is null && author.CandidateBinding is null)
         && composer.Request is null;
@@ -616,6 +894,31 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             Request = value;
             return ValueTask.FromResult(
                 new CharacterTargetSabotageDelayDecision(
+                    value.Actor.Identity.Id,
+                    value.Candidates.Single()));
+        }
+    }
+
+    private sealed class RecordingDelayRecoveryModel
+        : ICharacterTargetSabotageDelayRecoveryDecisionModel
+    {
+        public int CallCount { get; private set; }
+
+        public CharacterTargetSabotageDelayRecoveryConsiderationRequest? Request
+        {
+            get;
+            private set;
+        }
+
+        public ValueTask<CharacterTargetSabotageDelayRecoveryDecision> DecideAsync(
+            CharacterTargetSabotageDelayRecoveryConsiderationRequest value,
+            CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            CallCount++;
+            Request = value;
+            return ValueTask.FromResult(
+                new CharacterTargetSabotageDelayRecoveryDecision(
                     value.Actor.Identity.Id,
                     value.Candidates.Single()));
         }

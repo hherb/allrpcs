@@ -1301,10 +1301,15 @@ exact task-installed completed selection, delegates the existing typed observati
 and acknowledgement owners, and retains the exact result, fresh event log and world time, and applied
 result. Post-application checks use retained acknowledgement provenance rather than rerunning the stale
 pre-action authority predicate. One adjacent outcome coordinator delegates the existing action-specific
-outcome binder for only those exact retained tokens. Its switch-gated main-scene smoke proves eligible
-Conceal, Delay, and Influence outputs beside four absent kinds through one applied Delay outcome without
-entering recovery. Ordinary startup remains authoring-, model-, mutation-, scheduling-, and
-presentation-free, and no sixth Move cycle is introduced.
+outcome binder for only those exact retained tokens. Four adjacent recovery coordinators then publish
+the exact Delay recovery candidate and eligibility token, compose and explicitly start its exact
+provider-neutral request, and retain and acknowledge only its exact completed applied recovery with
+fresh authoritative event-log and world-time snapshots. Null, rebuilt, foreign, replaced-authority,
+already-published, and repeated inputs stay inert without consuming queued one-shot models. Its
+switch-gated main-scene smoke proves eligible Conceal, Delay, and Influence outputs beside four absent
+kinds through one applied and recovered Delay while stopping before terminal routing. Ordinary startup
+remains authoring-, model-, mutation-, scheduling-, and presentation-free, and no sixth Move cycle is
+introduced.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

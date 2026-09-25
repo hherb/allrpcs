@@ -895,6 +895,14 @@ Current continuation:
   existing action-specific owners, retaining its exact applied event-log and world-time authority.
 - [x] Bind only that exact acknowledged typed result and applied Delay outcome through the existing
   action-specific outcome seam without entering recovery.
+- [x] Publish only that bound ordinary-turn Delay outcome as one exact recovery candidate and
+  eligibility token with its exact scene-owned recovery event.
+- [x] Compose only that exact eligible candidate into one provider-neutral recovery request without
+  starting recovery or consuming another model.
+- [x] Explicitly start only that exact recovery request while preserving its queued model across
+  rejected preflight and leaving completion unobserved.
+- [x] Retain and acknowledge only that exact completed Delay recovery with its fresh authoritative
+  event log and world time without entering terminal routing.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
