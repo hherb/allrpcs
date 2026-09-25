@@ -26,7 +26,9 @@ water, woodland, shrine, and road connections. It has no scene coordinates or ga
   scenario validator, every credential-free Godot smoke, and the Compatibility launch.
 - Complete-diff review added explicit incomplete Influence-history rejection, corrected one wrapped-call
   indentation issue, confirmed whitespace and 120-character cleanliness, and kept every changed C# file
-  below 500 lines. The draft PR and hosted-check state are recorded after publication.
+  below 500 lines.
+- Draft PR #373 targets `main`. Hosted run `36132095858` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 - Ordinary startup remains inert; no automatic model work, next sabotage action, sixth Move cycle,
   provider, persistence, production UI, art, audio, signing, release, or distribution work was added.
 
