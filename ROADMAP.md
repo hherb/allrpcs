@@ -879,6 +879,10 @@ Current continuation:
 - [x] Audit Phase 7 acceptance across all seven canonical sabotage kinds, distinguish reusable and
   switch-gated evidence from ordinary play, and identify the first genuine acceptance gap without
   extending the repeated Move-cycle chain. See `PHASE_7_ACCEPTANCE_AUDIT.md`.
+- [x] Author and canonically compose only the exact eligible outputs from all seven existing action
+  authors for one exact current enemy-agent ordinary turn without partial publication or cadence.
+- [x] Explicitly start only that exact ordinary-turn composed request through the existing
+  provider-neutral generic decision flow without observing, acknowledging, or routing its result.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

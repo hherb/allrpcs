@@ -1282,6 +1282,18 @@ coordinator while ordinary startup remains inert. A switch-gated smoke authors o
 conceal-only request and completes its selection without observation, acknowledgement, dispatch,
 application, or authoritative-state mutation.
 
+`CharacterSabotageOrdinaryTurnAuthoringCoordinator` now accepts only the exact current awaiting
+enemy-agent turn and the exact scene-owned actor, preflights the complete seven-author graph, invokes
+the existing authors in canonical order, and composes only their exact eligible outputs. The
+temporary scene-owned target-action source provides representative exact Delay and Influence inputs
+without starting either action. Null, rebuilt-turn, replacement-actor, stale, already-authored, and repeated
+graphs stay inert without partial publication. A separate ordinary-turn start coordinator retains
+that exact turn and composed request and delegates one explicit provider-neutral generic decision to
+the existing task flow. Its switch-gated main-scene smoke proves eligible Conceal, Delay, and
+Influence outputs beside four absent kinds, preserves a queued model across rejected start preflight,
+and stops with the exact completed task result unobserved. Ordinary startup remains authoring-,
+model-, mutation-, scheduling-, and presentation-free, and no sixth Move cycle is introduced.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the

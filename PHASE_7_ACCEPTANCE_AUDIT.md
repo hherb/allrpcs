@@ -19,6 +19,13 @@ acceptance.
   against exact current state before publishing one eligible kind.
 - `CharacterSabotageActionRequestComposer` accepts only exact current author outputs, preserves canonical
   order, and rejects an empty or malformed set.
+- `CharacterSabotageOrdinaryTurnAuthoringCoordinator` now preflights one exact current awaiting enemy
+  turn and complete scene graph, invokes the seven existing authors in canonical order, and composes
+  only their exact eligible outputs without partial publication.
+- `CharacterSabotageOrdinaryTurnConsiderationStartCoordinator` starts only that exact composed request
+  through the existing provider-neutral generic task flow while retaining the exact turn provenance.
+- `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
+  Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
   Application and Infrastructure tests cover provider-neutral decisions, strict decoding, bounded
   request serialization, SSE completion, and model bindings.
@@ -129,9 +136,10 @@ acceptance.
 
 ### Physical and informational ability
 
-The reusable policies and seven exact author owners enforce this statement, but only tests and explicit
-smoke drivers currently call the owners. The roadmap item remains unchecked until an ordinary enemy-turn
-path evaluates current scene authority and exposes only the eligible canonical kinds.
+The reusable policies and seven exact author owners enforce this statement. The new explicit ordinary-
+turn path evaluates current scene authority and exposes only eligible canonical kinds, including a
+mixed eligible/ineligible graph. Its only caller remains a switch-gated smoke, so the roadmap item stays
+unchecked until ordinary play supplies a real enemy turn and proceeds through the guarded path.
 
 ### Truth, movement, and critical-route safety
 
@@ -150,18 +158,16 @@ player can discover. The roadmap item remains unchecked.
 
 ### Final acceptance
 
-No ordinary runtime owner currently starts this chain. `Main.tscn` owns the contracts, but each complete
-sabotage path is activated only by a smoke environment variable or an isolated test scene. Therefore the
-enemy agent cannot yet perform and expose consequential sabotage during ordinary play, and the final
-acceptance statement remains unchecked.
+`Main.tscn` now owns explicit ordinary-turn authoring, canonical composition, and generic consideration
+start seams, but only a smoke environment variable calls them. No ordinary scheduler supplies a real
+enemy turn, and the exact completed generic result is not yet observed or routed through an action-
+specific request. Therefore the enemy agent still cannot perform and expose consequential sabotage
+during ordinary play, and the final acceptance statement remains unchecked.
 
-## First genuine acceptance gap
+## Next genuine acceptance gap
 
-The first missing seam is provider-neutral ordinary-turn authoring, not another action implementation.
-Add one explicit, one-shot coordinator that accepts the exact current enemy-agent ordinary-turn token and
-the current scene authority required by the seven existing request authors. It must invoke those authors in
-canonical order, then compose only their exact current outputs through
-`CharacterSabotageActionRequestComposer`. Rejected, stale, foreign, repeated, or empty inputs must remain
-inert. The slice must stop before supplying a model, starting consideration, reserving another turn,
-applying an outcome, adding cadence, or adding UI. Wire it inertly into `Main.tscn` and prove it only with a
-switch-gated smoke containing both eligible and ineligible kinds.
+Observe only the exact completed generic result started by the ordinary-turn coordinator while its exact
+turn, actor, request, author outputs, task result, and current scene graph remain unchanged. Retain that
+result once without acknowledgement, action-specific request composition, typed consideration, outcome
+application, turn completion, cadence, provider work, or UI. Rebuilt, foreign, stale, running, failed,
+replaced, and repeated inputs must remain inert, and ordinary startup must still perform no work.
