@@ -4,7 +4,7 @@
 
 `main` includes merged PR #362 at `85d1699`. Branch
 `codex/phase-7-ordinary-turn-sabotage-authoring` completes the next two bounded Phase 7 acceptance
-slices without extending the repeated Move-cycle chain.
+slices without extending the repeated Move-cycle chain. Draft PR #363 carries this branch.
 
 `CharacterSabotageOrdinaryTurnAuthoringCoordinator` accepts only the exact current awaiting enemy-
 agent turn and exact scene-owned actor. It preflights the complete graph, invokes the existing
@@ -50,7 +50,11 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
   smoke and full quality suite passed again afterward.
 - Complete-diff review found no partial-publication path, unsupported ordinary-play claim, broad
   acceptance overstatement, Move-chain extension, stale next slice, line-length issue, or whitespace
-  error. `git diff --check` passes; staged-path and final draft-PR checks remain before publication.
+  error. The staged set contained exactly the ten intended files, excluded `scripts/code_statistics.py`,
+  and passed `git diff --cached --check`.
+- Draft PR #363 is mergeable. Its implementation-head workflow completed all five jobs as failures
+  with `steps: []`; no checkout, build, test, smoke, or packaging step ran, so this is Actions/account
+  infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
