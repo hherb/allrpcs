@@ -2,57 +2,52 @@
 
 ## Current state
 
-`main` includes merged PR #369 at `fa3b2c5`. Branch
-`codex/phase-7-ordinary-sabotage-scheduling` advances the genuine Phase 7 ordinary-play acceptance
-path without extending the closed repeated Move-cycle chain. Draft PR #370 carries this branch.
+`main` includes merged PR #370 at `6e9dba3`. Branch
+`codex/phase-7-reserved-sabotage-lifecycle` advances the genuine Phase 7 ordinary-play acceptance path
+without extending the closed repeated Move-cycle chain.
 
-The scene now owns a bounded sabotage cadence measured only in exact authoritative
-meaningful-world-event occurrences. At the due boundary it retains one inert opportunity for the
-existing scene-owned enemy actor. An explicit continuation reserves the shared character-turn slot
-without fabricating dialogue, invokes all seven existing authors, composes eligible Conceal, Delay, and
-Influence outputs, starts the existing provider-neutral generic task, and observes its exact completed
-selection once. Normal dialogue cannot overlap that explicit reservation. Ordinary startup remains
-inert until an eligible event occurs and does not advance the incomplete chain beyond the opportunity.
+The exact reserved ordinary-play path now binds and acknowledges its generic Delay selection through
+the existing author-provenance owner, composes and explicitly starts the typed request, applies and
+acknowledges its exact result, and binds the fresh authoritative event-log and world-time outcome. It
+then publishes the exact recovery candidate and eligibility token, composes the provider-neutral
+recovery request, and explicitly starts it. All three queued models are one-shot, the shared reservation
+remains current, and normal dialogue cannot overlap it.
 
-The new ordinary path stops before binding or acknowledging that observed selection. It has not composed
-typed Delay work, applied or recovered an action, released the reservation, or added player-visible
-investigation. The older switch-gated proof still covers the complete Delay lifecycle. Do not add a
-sixth or later Move chain.
+The path stops before observing or acknowledging recovery. It has not retained or reset a terminal
+route, completed the reserved sabotage turn, released the shared slot, or added player-visible
+investigation. The older switch-gated proof covers those reusable downstream owners. Do not add a sixth
+or later Move chain.
 
 ## Validation and review
 
-- Test-first focused Domain runs proved cadence, exact signal derivation, opportunity, and reservation
-  policy/transition surfaces. The sandboxed VSTest run hit the known loopback `SocketException (13)`;
-  identical host-local runs passed 24 opportunity tests and 8 reservation tests.
-- The focused game build passed with zero warnings. Host-local main-scene smokes proved ordinary
-  startup inertness, early-event rejection, exact due-event scheduling, exclusive shared-slot
-  reservation, canonical authoring, one-shot model preservation, exact generic start, and one exact
-  completed-result observation. The existing complete switch-gated Delay lifecycle and character-turn
-  controller smokes also passed after the shared-slot change.
+- Test-first focused builds failed on each absent reserved overload before implementation. The focused
+  host-local main-scene smoke now proves exact reservation retention, generic binding and acknowledgement,
+  typed Delay composition/start/application/acknowledgement, outcome binding, recovery-candidate and
+  eligibility publication, recovery-request composition, and explicit recovery start. Null, rebuilt,
+  stale, and repeated inputs stay inert without extra model calls or slot release.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
   2,780 Domain, 586 Application, 1,220 Infrastructure, and 8 architecture tests, representative
   scenario validation, every credential-free Godot smoke, and the Compatibility launch.
-- Complete-diff review removed automatic downstream reservation/authoring/start/observation from the
-  incomplete ordinary path so offline failure or the deliberate post-observation stop cannot hold the
-  shared turn slot indefinitely. Automatic ordinary behavior now ends at one inert opportunity; the
-  focused proof invokes later seams explicitly. No fabricated dialogue, independent-task cadence reuse,
-  sixth Move chain, provider/persistence/UI work, whitespace error, or changed C# file over 500 lines
-  remains.
-- Draft PR #370 targets `main`. Hosted run `36111533651` failed all five jobs with `steps: []`; no
-  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
+- The sandboxed quality run reached a zero-warning build, then hit the known VSTest loopback
+  `SocketException (13)`; the identical host-local run passed completely.
+- Complete-diff review added an exact one-call recovery-model assertion and split smoke-only models so
+  every changed C# file remains below 500 lines. No automatic lifecycle progression, fabricated
+  dialogue, sixth Move chain, provider/persistence/UI work, whitespace error, or release claim remains.
 
 ## Exact next bounded slice
 
-Bind and acknowledge only the exact observed reserved ordinary-play generic selection through the
-existing author-provenance owner.
+Retain and acknowledge only the exact completed reserved ordinary-play Delay recovery through the
+existing recovery-result owner.
 
 Acceptance boundary:
 
-1. Retain the exact reservation, selected author request, candidate binding, and observed result.
-2. Reuse the existing selection/binding/acknowledgement owners; reset only the completed generic task.
-3. Reject null, rebuilt reservation, opportunity, request, result, selected kind, stale author output,
-   changed scene authority, and repeated input without consuming another model or releasing the slot.
-4. Stop before composing or starting typed action work, applying an action, or releasing the reservation.
+1. Retain the exact reservation, author request, recovery request, task-installed result, applied recovery,
+   and fresh authoritative event-log and world-time snapshots.
+2. Reuse the existing recovery observation, resolution, and acknowledgement owners; reset only the
+   completed recovery task.
+3. Reject null, rebuilt reservation/request/result/candidate, stale provenance or authority, and repeated
+   input without consuming another model or releasing the slot.
+4. Stop before terminal-route retention or reset, turn completion, or reservation release.
 5. Add no sixth or later Move-cycle seam and no provider, persistence, UI, presentation, or investigation
    work.
 6. Keep ordinary startup inert without an eligible meaningful event; update acceptance evidence only for

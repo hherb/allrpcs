@@ -922,6 +922,21 @@ Current continuation:
   compose their current eligible outputs without partial publication.
 - [x] Start and observe only that exact reserved provider-neutral generic selection once without
   binding, acknowledging, dispatching, or applying it.
+- [x] Bind and acknowledge only that exact reserved generic selection while retaining its exact
+  reservation and selected-author provenance and resetting only the completed generic task.
+- [x] Compose only that exact acknowledged reserved Delay selection into one typed request without
+  starting it.
+- [x] Explicitly start only that exact reserved typed Delay request while preserving its queued
+  model across rejected preflight and leaving completion unobserved.
+- [x] Observe, resolve, and acknowledge only that exact completed reserved typed Delay result while
+  retaining its applied event-log and world-time authority.
+- [x] Bind only that exact acknowledged reserved typed result and applied Delay outcome without
+  entering recovery.
+- [x] Publish only that exact reserved Delay outcome as one recovery candidate and eligibility token.
+- [x] Compose only that exact reserved recovery candidate into one provider-neutral request without
+  starting it.
+- [x] Explicitly start only that exact reserved recovery request while preserving its queued model
+  across rejected preflight and leaving completion unobserved.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

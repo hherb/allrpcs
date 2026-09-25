@@ -11,6 +11,9 @@ public partial class CharacterSabotageOrdinaryTurnSpecificRequestCoordinator : N
     private CharacterSabotageActionDelayRequestController delayAuthor = null!;
     private CharacterTargetSabotageDelayController delayState = null!;
 
+    /// <summary>Gets the exact sabotage-turn reservation retained by typed composition.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact typed Delay request composed through the existing seam.</summary>
     public CharacterTargetSabotageDelayConsiderationRequest? Request { get; private set; }
 
@@ -58,6 +61,41 @@ public partial class CharacterSabotageOrdinaryTurnSpecificRequestCoordinator : N
         return true;
     }
 
+    /// <summary>Composes once from only the exact acknowledged reserved Delay provenance.</summary>
+    public bool TryCompose(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterSabotageActionCandidateBinding<CharacterTargetSabotageDelayCandidate>?
+            expectedBinding)
+    {
+        if (Reservation is not null
+            || Request is not null
+            || requests.RequestCount != 0
+            || !binding.IsCurrentAcknowledgedBinding(
+                expectedReservation,
+                expectedResult,
+                expectedAuthorRequest,
+                expectedBinding)
+            || !ReferenceEquals(expectedResult!.SelectedActionKind, CharacterSabotageActionKind.Delay)
+            || !ReferenceEquals(expectedBinding!.ActionKind, CharacterSabotageActionKind.Delay)
+            || !HasCurrentDelayGraph(expectedAuthorRequest!, expectedBinding))
+        {
+            return false;
+        }
+
+        if (!requests.TryCompose(expectedAuthorRequest, expectedBinding)
+            || requests.DelayRequest is not { } request)
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved Delay result must compose one exact typed request.");
+        }
+
+        Reservation = expectedReservation;
+        Request = request;
+        return true;
+    }
+
     /// <summary>Checks the retained typed request against its complete current provenance.</summary>
     internal bool IsCurrentRequest(
         CharacterTargetSabotageDelayConsiderationRequest? expectedRequest)
@@ -73,6 +111,32 @@ public partial class CharacterSabotageOrdinaryTurnSpecificRequestCoordinator : N
             && requests.RequestCount == 1
             && ReferenceEquals(requests.DelayRequest, Request)
             && binding.IsCurrentAcknowledgedBinding(result, authorRequest, candidateBinding)
+            && HasCurrentDelayGraph(authorRequest!, candidateBinding!)
+            && HasExactRequestValues(Request, candidateBinding!.Candidate);
+    }
+
+    /// <summary>Checks the retained typed request against its exact reserved provenance.</summary>
+    internal bool IsCurrentRequest(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterTargetSabotageDelayConsiderationRequest? expectedRequest)
+    {
+        CharacterSabotageActionConsiderationResult? result = binding.AcknowledgedResult;
+        CharacterSabotageActionConsiderationRequest? authorRequest =
+            binding.SelectedAuthorRequest;
+        CharacterSabotageActionCandidateBinding<CharacterTargetSabotageDelayCandidate>?
+            candidateBinding = binding.SelectedCandidateBinding as
+                CharacterSabotageActionCandidateBinding<CharacterTargetSabotageDelayCandidate>;
+        return Reservation is not null
+            && ReferenceEquals(Reservation, expectedReservation)
+            && Request is not null
+            && ReferenceEquals(Request, expectedRequest)
+            && requests.RequestCount == 1
+            && ReferenceEquals(requests.DelayRequest, Request)
+            && binding.IsCurrentAcknowledgedBinding(
+                expectedReservation,
+                result,
+                authorRequest,
+                candidateBinding)
             && HasCurrentDelayGraph(authorRequest!, candidateBinding!)
             && HasExactRequestValues(Request, candidateBinding!.Candidate);
     }

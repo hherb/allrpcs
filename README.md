@@ -1325,13 +1325,17 @@ clock. One exact due event can produce one opportunity for the existing scene-ow
 An explicit continuation can reserve the shared character-turn slot without fabricating dialogue, so
 a normal dialogue turn cannot overlap it. Only the exact current reservation invokes the seven existing
 authors, composes eligible Conceal, Delay, and Influence outputs in canonical order, starts the existing
-provider-neutral generic decision flow, and observes its exact completed result once.
+provider-neutral generic decision flow, and observes its exact completed result once. The reserved path
+now binds and acknowledges that selection through its exact author provenance, composes and explicitly
+starts its typed Delay request, applies and acknowledges the exact completed result, and binds the
+authoritative event-log and world-time outcome. It then publishes the exact scene-owned recovery
+candidate and eligibility token, composes the provider-neutral recovery request, and explicitly starts
+that request while retaining the same reservation.
 Null, rebuilt actor, cadence, event, opportunity, reservation, request, stale authority, early,
-duplicate, and repeated inputs remain inert and preserve a queued one-shot model. Ordinary startup
-without an eligible meaningful event performs no sabotage work, and ordinary play stops at the inert
-opportunity until the downstream lifecycle is complete. The explicit proof currently stops before
-binding or acknowledging the generic selection, composing typed work, applying an action, releasing
-the reservation, or exposing player-visible investigation evidence.
+duplicate, and repeated inputs remain inert and preserve queued one-shot models. Ordinary startup
+without an eligible meaningful event performs no sabotage work. The explicit proof currently stops
+before observing or acknowledging recovery, retaining or resetting a terminal route, completing the
+reserved turn, releasing the shared slot, or exposing player-visible investigation evidence.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

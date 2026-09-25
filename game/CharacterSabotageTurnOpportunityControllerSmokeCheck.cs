@@ -13,11 +13,14 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
     private const string CheckEnvironmentVariable =
         "ALLRPCS_SABOTAGE_TURN_OPPORTUNITY_CONTROLLER_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const int EarlyProcessPriority = -100;
     private const int MaximumProcessFrames = 30;
 
     private int processFrames;
     private bool decisionStarted;
-    private RecordingModel? recordingModel;
+    private bool typedDecisionStarted;
+    private CharacterSabotageTurnOpportunityRecordingModel? recordingModel;
+    private CharacterSabotageTurnOpportunityRecordingDelayModel? delayModel;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -25,7 +28,12 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
         if (OS.GetEnvironment(CheckEnvironmentVariable) != EnabledEnvironmentValue)
         {
             SetProcess(false);
+            return;
         }
+
+        ProcessPriority = EarlyProcessPriority;
+        GetNode<CharacterTargetSabotageDelayResolutionCoordinator>(
+            "../CharacterTargetSabotageDelayResolutionCoordinator").SetProcess(false);
     }
 
     /// <inheritdoc />
@@ -33,6 +41,12 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
     {
         _ = delta;
         processFrames++;
+
+        if (typedDecisionStarted)
+        {
+            VerifyCompletedTypedDecision();
+            return;
+        }
 
         if (decisionStarted)
         {
@@ -155,7 +169,7 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
             return;
         }
 
-        recordingModel = new RecordingModel();
+        recordingModel = new CharacterSabotageTurnOpportunityRecordingModel();
         CharacterSabotageTurnReservation rebuiltReservation = new(opportunity);
         CharacterSabotageActionConsiderationRequest rebuiltRequest = new(
             actor,
@@ -195,16 +209,249 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
         CharacterSabotageOrdinaryTurnResultBindingCoordinator binding =
             GetNode<CharacterSabotageOrdinaryTurnResultBindingCoordinator>(
                 "../CharacterSabotageOrdinaryTurnResultBindingCoordinator");
+        CharacterSabotageOrdinaryTurnSpecificRequestCoordinator specificRequest =
+            GetNode<CharacterSabotageOrdinaryTurnSpecificRequestCoordinator>(
+                "../CharacterSabotageOrdinaryTurnSpecificRequestCoordinator");
+        CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator specificStart =
+            GetNode<CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator>(
+                "../CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator");
+        TemporaryCharacterTargetSabotageDelayModelSource delayModelSource =
+            GetNode<TemporaryCharacterTargetSabotageDelayModelSource>(
+                "../TemporaryCharacterTargetSabotageDelayModelSource");
+        CharacterTargetSabotageDelayTaskController delayTask =
+            GetNode<CharacterTargetSabotageDelayTaskController>(
+                "../CharacterTargetSabotageDelayTaskController");
+        CharacterTurnActivityController turns =
+            GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
+        CharacterSabotageTurnReservation? reservation = turns.SabotageReservation;
         if (task.Status != CharacterSabotageActionTaskStatus.Completed
             || task.Result is not { } result
+            || reservation is null
             || recordingModel?.CallCount != 1
             || !observation.TryObserveCompletedResult(result)
             || !ReferenceEquals(observation.ObservedResult, result)
             || observation.TryObserveCompletedResult(result)
-            || binding.BoundResult is not null
-            || binding.AcknowledgedResult is not null)
+            || binding.TryBindObservedResult(null, result)
+            || binding.TryBindObservedResult(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                result)
+            || binding.TryBindObservedResult(
+                reservation,
+                new CharacterSabotageActionConsiderationResult(
+                    result.Request,
+                    new CharacterSabotageActionDecision(
+                        result.Decision.ActorId,
+                        result.SelectedActionKind)))
+            || !binding.TryBindObservedResult(reservation, result)
+            || !ReferenceEquals(binding.Reservation, reservation)
+            || !ReferenceEquals(binding.BoundResult, result)
+            || binding.SelectedAuthorRequest is null
+            || binding.SelectedCandidateBinding is null
+            || binding.TryBindObservedResult(reservation, result)
+            || binding.TryAcknowledgeBoundResult(null, result)
+            || binding.TryAcknowledgeBoundResult(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                result)
+            || !binding.TryAcknowledgeBoundResult(reservation, result)
+            || !ReferenceEquals(binding.AcknowledgedResult, result)
+            || task.Status != CharacterSabotageActionTaskStatus.Idle
+            || task.Result is not null
+            || binding.TryAcknowledgeBoundResult(reservation, result)
+            || recordingModel.CallCount != 1
+            || binding.SelectedAuthorRequest is not { } selectedRequest
+            || binding.SelectedCandidateBinding is not
+                CharacterSabotageActionCandidateBinding<CharacterTargetSabotageDelayCandidate>
+                    selectedBinding
+            || specificRequest.TryCompose(
+                null,
+                result,
+                selectedRequest,
+                selectedBinding)
+            || specificRequest.TryCompose(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                result,
+                selectedRequest,
+                selectedBinding)
+            || !specificRequest.TryCompose(
+                reservation,
+                result,
+                selectedRequest,
+                selectedBinding)
+            || !ReferenceEquals(specificRequest.Reservation, reservation)
+            || specificRequest.Request is not { } typedRequest
+            || specificRequest.TryCompose(
+                reservation,
+                result,
+                selectedRequest,
+                selectedBinding)
+            || !delayModelSource.TrySupplyModel(
+                delayModel = new CharacterSabotageTurnOpportunityRecordingDelayModel())
+            || specificStart.TryStart(
+                reservation,
+                new CharacterTargetSabotageDelayConsiderationRequest(
+                    typedRequest.Actor,
+                    typedRequest.InteractionAccess,
+                    typedRequest.WorldEvents,
+                    typedRequest.EventLog,
+                    typedRequest.WorldTime,
+                    typedRequest.Candidates))
+            || !specificStart.TryStart(reservation, typedRequest)
+            || !ReferenceEquals(specificStart.Reservation, reservation)
+            || !ReferenceEquals(specificStart.Request, typedRequest)
+            || delayTask.Status != CharacterTargetSabotageDelayTaskStatus.Running
+            || delayTask.Result is not null
+            || specificStart.TryStart(reservation, typedRequest)
+            || recordingModel.CallCount != 1)
         {
-            Fail("The reserved generic decision was not observed exactly once without binding.");
+            Fail("The reserved generic decision did not start one exact typed Delay request.");
+            return;
+        }
+
+        typedDecisionStarted = true;
+    }
+
+    private void VerifyCompletedTypedDecision()
+    {
+        CharacterTurnActivityController turns =
+            GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
+        CharacterSabotageTurnReservation? reservation = turns.SabotageReservation;
+        CharacterTargetSabotageDelayTaskController task =
+            GetNode<CharacterTargetSabotageDelayTaskController>(
+                "../CharacterTargetSabotageDelayTaskController");
+        if (task.Status == CharacterTargetSabotageDelayTaskStatus.Running)
+        {
+            return;
+        }
+
+        CharacterSabotageOrdinaryTurnSpecificResultCoordinator resultCoordinator =
+            GetNode<CharacterSabotageOrdinaryTurnSpecificResultCoordinator>(
+                "../CharacterSabotageOrdinaryTurnSpecificResultCoordinator");
+        CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator outcomeCoordinator =
+            GetNode<CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator>(
+                "../CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator");
+        CharacterSabotageOrdinaryTurnResultBindingCoordinator binding =
+            GetNode<CharacterSabotageOrdinaryTurnResultBindingCoordinator>(
+                "../CharacterSabotageOrdinaryTurnResultBindingCoordinator");
+        CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator recoveryCandidate =
+            GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator>(
+                "../CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator");
+        CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator recoveryRequest =
+            GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator>(
+                "../CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator");
+        CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator recoveryStart =
+            GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator>(
+                "../CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator");
+        TemporaryCharacterTargetSabotageDelayRecoveryModelSource recoveryModelSource =
+            GetNode<TemporaryCharacterTargetSabotageDelayRecoveryModelSource>(
+                "../TemporaryCharacterTargetSabotageDelayRecoveryModelSource");
+        CharacterTargetSabotageDelayRecoveryTaskController recoveryTask =
+            GetNode<CharacterTargetSabotageDelayRecoveryTaskController>(
+                "../CharacterTargetSabotageDelayRecoveryTaskController");
+        TemporaryCharacterSabotageOrdinaryTurnAuthoringSource source =
+            GetNode<TemporaryCharacterSabotageOrdinaryTurnAuthoringSource>(
+                "../TemporaryCharacterSabotageOrdinaryTurnAuthoringSource");
+        CharacterSabotageTurnOpportunityRecordingDelayRecoveryModel recoveryModel = new();
+        if (reservation is null
+            || task.Status != CharacterTargetSabotageDelayTaskStatus.Completed
+            || task.Result is not { } result
+            || delayModel?.CallCount != 1
+            || !ReferenceEquals(delayModel.Request, result.Request))
+        {
+            Fail("The exact reserved typed Delay decision did not complete once.");
+            return;
+        }
+
+        CharacterTargetSabotageDelayConsiderationResult rebuiltResult = new(
+            result.Request,
+            new CharacterTargetSabotageDelayDecision(
+                result.Decision.ActorId,
+                result.SelectedCandidate));
+        bool nullRejected = !resultCoordinator.TryObserveAndAcknowledge(null, result);
+        bool rebuiltReservationRejected = !resultCoordinator.TryObserveAndAcknowledge(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                result);
+        bool rebuiltResultRejected =
+            !resultCoordinator.TryObserveAndAcknowledge(reservation, rebuiltResult);
+        bool acknowledged = resultCoordinator.TryObserveAndAcknowledge(reservation, result);
+        bool repeatedRejected = !resultCoordinator.TryObserveAndAcknowledge(reservation, result);
+        if (!nullRejected
+            || !rebuiltReservationRejected
+            || !rebuiltResultRejected
+            || !acknowledged
+            || !ReferenceEquals(resultCoordinator.Reservation, reservation)
+            || !ReferenceEquals(resultCoordinator.Result, result)
+            || resultCoordinator.EventLog is null
+            || resultCoordinator.WorldTime is null
+            || resultCoordinator.AppliedResult is not { } appliedResult
+            || task.Status != CharacterTargetSabotageDelayTaskStatus.Idle
+            || task.Result is not null
+            || !repeatedRejected
+            || recordingModel?.CallCount != 1
+            || delayModel.CallCount != 1
+            || outcomeCoordinator.TryBind(null, result, appliedResult)
+            || outcomeCoordinator.TryBind(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                result,
+                appliedResult)
+            || !outcomeCoordinator.TryBind(reservation, result, appliedResult)
+            || !ReferenceEquals(outcomeCoordinator.Reservation, reservation)
+            || !ReferenceEquals(outcomeCoordinator.Result, result)
+            || !ReferenceEquals(outcomeCoordinator.Delay, appliedResult)
+            || outcomeCoordinator.TryBind(reservation, result, appliedResult)
+            || recoveryCandidate.TryPublish(null, appliedResult, source.RecoveryEvent)
+            || recoveryCandidate.TryPublish(reservation, null, source.RecoveryEvent)
+            || !recoveryCandidate.TryPublish(
+                reservation,
+                appliedResult,
+                source.RecoveryEvent)
+            || !ReferenceEquals(recoveryCandidate.Reservation, reservation)
+            || !ReferenceEquals(recoveryCandidate.Delay, appliedResult)
+            || !ReferenceEquals(recoveryCandidate.RecoveryEvent, source.RecoveryEvent)
+            || recoveryCandidate.Candidate is null
+            || recoveryCandidate.TryPublish(
+                reservation,
+                appliedResult,
+                source.RecoveryEvent)
+            || binding.SelectedAuthorRequest is not { } authorRequest
+            || recoveryCandidate.Candidate is not { } candidate
+            || recoveryRequest.TryCompose(null, authorRequest, candidate)
+            || recoveryRequest.TryCompose(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                authorRequest,
+                candidate)
+            || !recoveryRequest.TryCompose(reservation, authorRequest, candidate)
+            || !ReferenceEquals(recoveryRequest.Reservation, reservation)
+            || !ReferenceEquals(recoveryRequest.AuthorRequest, authorRequest)
+            || !ReferenceEquals(recoveryRequest.Candidate, candidate)
+            || recoveryRequest.Request is not { } composedRecoveryRequest
+            || recoveryRequest.TryCompose(reservation, authorRequest, candidate)
+            || !recoveryModelSource.TrySupplyModel(recoveryModel)
+            || recoveryStart.TryStart(null, authorRequest, composedRecoveryRequest)
+            || recoveryStart.TryStart(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                authorRequest,
+                composedRecoveryRequest)
+            || !recoveryStart.TryStart(
+                reservation,
+                authorRequest,
+                composedRecoveryRequest)
+            || !ReferenceEquals(recoveryStart.Reservation, reservation)
+            || !ReferenceEquals(recoveryStart.AuthorRequest, authorRequest)
+            || !ReferenceEquals(recoveryStart.Request, composedRecoveryRequest)
+            || recoveryTask.Status != CharacterTargetSabotageDelayRecoveryTaskStatus.Running
+            || recoveryTask.Result is not null
+            || recoveryModel.CallCount != 1
+            || !ReferenceEquals(recoveryModel.Request, composedRecoveryRequest)
+            || recoveryStart.TryStart(
+                reservation,
+                authorRequest,
+                composedRecoveryRequest))
+        {
+            Fail(
+                "The reserved Delay recovery request did not start exactly once. "
+                + $"null={nullRejected}; rebuiltReservation={rebuiltReservationRejected}; "
+                + $"rebuiltResult={rebuiltResultRejected}; acknowledged={acknowledged}; "
+                + $"repeated={repeatedRejected}; status={task.Status}.");
             return;
         }
 
@@ -212,8 +459,12 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
             "Sabotage-turn opportunity controller smoke passed: ordinary startup stayed inert; "
             + "one exact due authoritative meaningful-event signal produced one opportunity "
             + "and reserved the shared turn slot before invoking all exact current authors once "
-            + "and starting and observing only their exact completed generic decision once without "
-            + "binding or acknowledging it.");
+            + "and starting, observing, binding, and acknowledging only their exact completed "
+            + "generic decision once before composing, explicitly starting, applying, and "
+            + "acknowledging one exact typed Delay result, then binding its exact applied outcome "
+            + "and authoritative snapshots before publishing one exact recovery candidate and "
+            + "eligibility token, composing its exact provider-neutral recovery request, and "
+            + "explicitly starting it without observing recovery or releasing the reservation.");
         GetTree().Quit();
     }
 
@@ -236,20 +487,4 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
             new DialogueAct(utterance, DialogueActType.ReportedClaim));
     }
 
-    private sealed class RecordingModel : ICharacterSabotageActionDecisionModel
-    {
-        public int CallCount { get; private set; }
-
-        public ValueTask<CharacterSabotageActionDecision> DecideAsync(
-            CharacterSabotageActionConsiderationRequest request,
-            CancellationToken cancellationToken)
-        {
-            cancellationToken.ThrowIfCancellationRequested();
-            CallCount++;
-            return ValueTask.FromResult(
-                new CharacterSabotageActionDecision(
-                    request.Actor.Identity.Id,
-                    CharacterSabotageActionKind.Delay));
-        }
-    }
 }

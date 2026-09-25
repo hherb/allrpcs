@@ -10,6 +10,9 @@ public partial class CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinato
     private CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator candidate = null!;
     private CharacterSabotageOutcomeDelayRecoveryCoordinator recovery = null!;
 
+    /// <summary>Gets the exact sabotage-turn reservation retained for recovery composition.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact generic author request retained for the recovery request.</summary>
     public CharacterSabotageActionConsiderationRequest? AuthorRequest { get; private set; }
 
@@ -61,6 +64,49 @@ public partial class CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinato
                 "A preflighted ordinary-turn Delay recovery request must compose once.");
         }
 
+        AuthorRequest = expectedAuthorRequest;
+        Candidate = expectedCandidate;
+        Request = request;
+        return true;
+    }
+
+    /// <summary>Composes once from only the exact retained reserved recovery tokens.</summary>
+    public bool TryCompose(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterTargetSabotageDelayRecoveryCandidate? expectedCandidate)
+    {
+        if (expectedReservation is null
+            || expectedAuthorRequest is null
+            || expectedCandidate is null
+            || Reservation is not null
+            || AuthorRequest is not null
+            || Candidate is not null
+            || Request is not null
+            || recovery.AuthorRequest is not null
+            || recovery.Request is not null
+            || !ReferenceEquals(candidate.Reservation, expectedReservation)
+            || !ReferenceEquals(binding.Reservation, expectedReservation)
+            || !ReferenceEquals(binding.SelectedAuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(candidate.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(candidate.Candidate, expectedCandidate)
+            || !ReferenceEquals(candidate.Delay, expectedCandidate.DelayResult)
+            || !ReferenceEquals(candidate.RecoveryEvent, expectedCandidate.RecoveryEvent))
+        {
+            return false;
+        }
+
+        if (!recovery.TryCompose(expectedAuthorRequest, expectedCandidate)
+            || recovery.Request is not { } request
+            || !ReferenceEquals(recovery.AuthorRequest, expectedAuthorRequest)
+            || request.Candidates.Count != 1
+            || !ReferenceEquals(request.Candidates[0], expectedCandidate))
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved Delay recovery request must compose once.");
+        }
+
+        Reservation = expectedReservation;
         AuthorRequest = expectedAuthorRequest;
         Candidate = expectedCandidate;
         Request = request;
