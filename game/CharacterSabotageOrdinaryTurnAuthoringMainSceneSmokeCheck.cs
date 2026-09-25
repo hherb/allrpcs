@@ -22,6 +22,11 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
     private CharacterSabotageOrdinaryTurnResultBindingCoordinator resultBinding = null!;
     private CharacterSabotageOrdinaryTurnSpecificRequestCoordinator specificRequest = null!;
     private CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator specificStart = null!;
+    private CharacterSabotageOrdinaryTurnSpecificResultCoordinator specificResult = null!;
+    private CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator specificOutcome = null!;
+    private CharacterSabotageActionSpecificResultCoordinator specificResults = null!;
+    private CharacterSabotageActionSpecificOutcomeCoordinator specificOutcomes = null!;
+    private CharacterTargetSabotageDelayResolutionCoordinator delayResolution = null!;
     private CharacterSabotageActionSelectionCoordinator selection = null!;
     private CharacterSabotageActionSpecificRequestCoordinator specificRequests = null!;
     private CharacterSabotageActionRequestComposer composer = null!;
@@ -63,6 +68,14 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             "../CharacterSabotageOrdinaryTurnSpecificRequestCoordinator");
         specificStart = GetNode<CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator>(
             "../CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator");
+        specificResult = GetNode<CharacterSabotageOrdinaryTurnSpecificResultCoordinator>(
+            "../CharacterSabotageOrdinaryTurnSpecificResultCoordinator");
+        specificOutcome = GetNode<CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator>(
+            "../CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator");
+        specificResults = GetNode<CharacterSabotageActionSpecificResultCoordinator>(
+            "../CharacterSabotageActionSpecificResultCoordinator");
+        specificOutcomes = GetNode<CharacterSabotageActionSpecificOutcomeCoordinator>(
+            "../CharacterSabotageActionSpecificOutcomeCoordinator");
         selection = GetNode<CharacterSabotageActionSelectionCoordinator>(
             "../CharacterSabotageActionSelectionCoordinator");
         specificRequests = GetNode<CharacterSabotageActionSpecificRequestCoordinator>(
@@ -81,6 +94,8 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             "../CharacterTargetSabotageDelayController");
         delayTask = GetNode<CharacterTargetSabotageDelayTaskController>(
             "../CharacterTargetSabotageDelayTaskController");
+        delayResolution = GetNode<CharacterTargetSabotageDelayResolutionCoordinator>(
+            "../CharacterTargetSabotageDelayResolutionCoordinator");
         influenceState = GetNode<CharacterTargetSabotageInfluenceController>(
             "../CharacterTargetSabotageInfluenceController");
         turn = CreateTurn(source.Actor);
@@ -118,7 +133,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             || !ObserveExactResult(result)
             || !BindAndAcknowledgeExactResult(result)
             || !ComposeExactDelayRequest(result)
-            || !StartExactDelayRequest(specificRequest.Request))
+            || !StartExactDelayRequest(specificRequest.Request)
+            || !ObserveAndAcknowledgeExactDelayResult(specificRequest.Request)
+            || !BindExactDelayOutcome())
         {
             Fail("Ordinary-turn sabotage generic consideration did not remain exact and one-shot.");
             return;
@@ -130,8 +147,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             + "retained eligible Conceal, Delay, and Influence outputs while leaving four kinds "
             + "absent, composed once, and explicitly started one provider-neutral generic decision "
             + "before observing, binding, and acknowledging its exact selected Delay result once "
-            + "and composing and explicitly starting one exact typed Delay request while leaving "
-            + "its completion unobserved.");
+            + "and composing and explicitly starting one exact typed Delay request, then observing, "
+            + "resolving, and acknowledging only its exact completed result once before binding its "
+            + "exact applied outcome without entering recovery.");
         GetTree().Quit();
     }
 
@@ -152,6 +170,19 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && resultBinding.AcknowledgedResult is null
             && specificRequest.Request is null
             && specificStart.Request is null
+            && specificResult.Result is null
+            && specificResult.EventLog is null
+            && specificResult.WorldTime is null
+            && specificResult.AppliedResult is null
+            && specificOutcome.AuthorRequest is null
+            && specificOutcome.Result is null
+            && specificOutcome.EventLog is null
+            && specificOutcome.WorldTime is null
+            && specificOutcome.Delay is null
+            && specificResults.ResultCount == 0
+            && specificResults.AcknowledgedAuthorRequest is null
+            && specificOutcomes.AuthorRequest is null
+            && specificOutcomes.OutcomeCount == 0
             && selection.ObservedResult is null
             && specificRequests.RequestCount == 0
             && composer.Request is null
@@ -160,6 +191,8 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && task.Result is null
             && delayTask.Status == CharacterTargetSabotageDelayTaskStatus.Idle
             && delayTask.Result is null
+            && delayResolution.AcknowledgedResult is null
+            && delayResolution.AcknowledgedAppliedResult is null
             && turns.Activity is null
             && model.CallCount == 0
             && delayModel.CallCount == 0;
@@ -371,6 +404,137 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && delayTask.Status == CharacterTargetSabotageDelayTaskStatus.Running
             && delayTask.Result is null
             && !specificStart.TryStart(request);
+    }
+
+    private bool ObserveAndAcknowledgeExactDelayResult(
+        CharacterTargetSabotageDelayConsiderationRequest? request)
+    {
+        if (request is null)
+        {
+            return false;
+        }
+
+        CharacterTargetSabotageDelayConsiderationResult runningResult = new(
+            request,
+            new CharacterTargetSabotageDelayDecision(
+                request.Actor.Identity.Id,
+                request.Candidates.Single()));
+        if (specificResult.TryObserveAndAcknowledge(runningResult)
+            || delayTask.Status != CharacterTargetSabotageDelayTaskStatus.Running
+            || delayTask.Result is not null)
+        {
+            return false;
+        }
+
+        delayTask._Process(0.0);
+        if (delayTask.Status != CharacterTargetSabotageDelayTaskStatus.Completed
+            || delayTask.Result is not { } result)
+        {
+            return false;
+        }
+
+        CharacterTargetSabotageDelayConsiderationResult rebuiltResult = new(
+            request,
+            new CharacterTargetSabotageDelayDecision(
+                result.Decision.ActorId,
+                result.SelectedCandidate));
+        CharacterTargetSabotageDelayConsiderationRequest foreignRequest = new(
+            request.Actor,
+            request.InteractionAccess,
+            request.WorldEvents,
+            request.EventLog,
+            request.WorldTime,
+            request.Candidates);
+        CharacterTargetSabotageDelayConsiderationResult foreignResult = new(
+            foreignRequest,
+            new CharacterTargetSabotageDelayDecision(
+                result.Decision.ActorId,
+                result.SelectedCandidate));
+        return specificResult.Result is null
+            && specificResult.EventLog is null
+            && specificResult.WorldTime is null
+            && specificResult.AppliedResult is null
+            && specificResults.ResultCount == 0
+            && specificResults.AcknowledgedAuthorRequest is null
+            && !specificResult.TryObserveAndAcknowledge(null)
+            && !specificResult.TryObserveAndAcknowledge(rebuiltResult)
+            && !specificResult.TryObserveAndAcknowledge(foreignResult)
+            && ReferenceEquals(delayState.EventLog, request.EventLog)
+            && ReferenceEquals(delayState.WorldTime, request.WorldTime)
+            && delayState.LatestAppliedResult is null
+            && specificResult.TryObserveAndAcknowledge(result)
+            && ReferenceEquals(specificResult.Result, result)
+            && specificResult.EventLog is { } eventLog
+            && specificResult.WorldTime is { } worldTime
+            && specificResult.AppliedResult is { } appliedResult
+            && ReferenceEquals(delayState.EventLog, eventLog)
+            && ReferenceEquals(delayState.WorldTime, worldTime)
+            && ReferenceEquals(delayState.LatestAppliedResult, appliedResult)
+            && ReferenceEquals(appliedResult.Candidate, result.SelectedCandidate)
+            && ReferenceEquals(appliedResult.EventLog, eventLog)
+            && ReferenceEquals(appliedResult.WorldTime, worldTime)
+            && !ReferenceEquals(eventLog, request.EventLog)
+            && !ReferenceEquals(worldTime, request.WorldTime)
+            && ReferenceEquals(specificResults.DelayResult, result)
+            && ReferenceEquals(
+                specificResults.AcknowledgedAuthorRequest,
+                resultBinding.SelectedAuthorRequest)
+            && ReferenceEquals(delayResolution.AcknowledgedResult, result)
+            && ReferenceEquals(delayResolution.AcknowledgedAppliedResult, appliedResult)
+            && delayTask.Status == CharacterTargetSabotageDelayTaskStatus.Idle
+            && delayTask.Result is null
+            && delayModel.CallCount == 1
+            && ReferenceEquals(turns.Activity, turn)
+            && !specificResult.TryObserveAndAcknowledge(result);
+    }
+
+    private bool BindExactDelayOutcome()
+    {
+        if (specificResult.Result is not { } result
+            || specificResult.AppliedResult is not { } appliedResult)
+        {
+            return false;
+        }
+
+        CharacterTargetSabotageDelayConsiderationResult rebuiltResult = new(
+            result.Request,
+            new CharacterTargetSabotageDelayDecision(
+                result.Decision.ActorId,
+                result.SelectedCandidate));
+        CharacterTargetSabotageDelayResult rebuiltAppliedResult = new(
+            appliedResult.Candidate,
+            appliedResult.EventLog,
+            appliedResult.WorldTime);
+        bool initialState = specificOutcome.AuthorRequest is null
+            && specificOutcome.Result is null
+            && specificOutcome.EventLog is null
+            && specificOutcome.WorldTime is null
+            && specificOutcome.Delay is null
+            && specificOutcomes.AuthorRequest is null
+            && specificOutcomes.OutcomeCount == 0;
+        bool invalidRejected = !specificOutcome.TryBind(null, appliedResult)
+            && !specificOutcome.TryBind(result, null)
+            && !specificOutcome.TryBind(rebuiltResult, appliedResult)
+            && !specificOutcome.TryBind(result, rebuiltAppliedResult);
+        bool bound = specificOutcome.TryBind(result, appliedResult);
+        bool retained = ReferenceEquals(
+                specificOutcome.AuthorRequest,
+                resultBinding.SelectedAuthorRequest)
+            && ReferenceEquals(
+                specificOutcome.Result,
+                result)
+            && ReferenceEquals(specificOutcome.EventLog, appliedResult.EventLog)
+            && ReferenceEquals(specificOutcome.WorldTime, appliedResult.WorldTime)
+            && ReferenceEquals(specificOutcome.Delay, appliedResult)
+            && ReferenceEquals(
+                specificOutcomes.AuthorRequest,
+                resultBinding.SelectedAuthorRequest)
+            && ReferenceEquals(specificOutcomes.Delay, appliedResult)
+            && specificOutcomes.OutcomeCount == 1
+            && delayModel.CallCount == 1
+            && ReferenceEquals(turns.Activity, turn)
+            && !specificOutcome.TryBind(result, appliedResult);
+        return initialState && invalidRejected && bound && retained;
     }
 
     private bool AuthorsAreEmpty() =>

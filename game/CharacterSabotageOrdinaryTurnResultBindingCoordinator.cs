@@ -111,6 +111,14 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         CharacterSabotageActionConsiderationResult? expectedResult,
         CharacterSabotageActionConsiderationRequest? expectedRequest,
         CharacterSabotageActionCandidateBinding? expectedBinding) =>
+        IsRetainedAcknowledgedBinding(expectedResult, expectedRequest, expectedBinding)
+        && authoring.IsCurrent(start.Turn, start.Request);
+
+    /// <summary>Checks retained acknowledgement provenance after action authority has advanced.</summary>
+    internal bool IsRetainedAcknowledgedBinding(
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionConsiderationRequest? expectedRequest,
+        CharacterSabotageActionCandidateBinding? expectedBinding) =>
         expectedResult is not null
         && expectedRequest is not null
         && expectedBinding is not null
@@ -118,7 +126,7 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         && ReferenceEquals(AcknowledgedResult, expectedResult)
         && ReferenceEquals(observation.ObservedResult, expectedResult)
         && ReferenceEquals(expectedResult.Request, start.Request)
-        && authoring.IsCurrent(start.Turn, start.Request)
+        && authoring.IsRetained(start.Turn, start.Request)
         && ReferenceEquals(SelectedAuthorRequest, expectedRequest)
         && ReferenceEquals(SelectedCandidateBinding, expectedBinding)
         && ReferenceEquals(binding.AcknowledgedResult, expectedResult)

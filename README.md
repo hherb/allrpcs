@@ -1296,9 +1296,14 @@ acknowledges only that exact observed result, leaving its selected Delay request
 while resetting only the completed generic task. One adjacent coordinator revalidates that entire
 acknowledged graph and delegates the existing action-specific seam to compose one exact typed Delay
 request. A separate start coordinator accepts only that exact request, preserves its queued model across
-rejected preflight, and delegates the existing typed start once. Its switch-gated main-scene smoke proves
-eligible Conceal, Delay, and Influence outputs beside four absent kinds and stops with the typed Delay
-result unobserved. Ordinary startup remains authoring-, model-, mutation-, scheduling-, and
+rejected preflight, and delegates the existing typed start once. One result coordinator accepts only its
+exact task-installed completed selection, delegates the existing typed observation and Delay resolution
+and acknowledgement owners, and retains the exact result, fresh event log and world time, and applied
+result. Post-application checks use retained acknowledgement provenance rather than rerunning the stale
+pre-action authority predicate. One adjacent outcome coordinator delegates the existing action-specific
+outcome binder for only those exact retained tokens. Its switch-gated main-scene smoke proves eligible
+Conceal, Delay, and Influence outputs beside four absent kinds through one applied Delay outcome without
+entering recovery. Ordinary startup remains authoring-, model-, mutation-, scheduling-, and
 presentation-free, and no sixth Move cycle is introduced.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access

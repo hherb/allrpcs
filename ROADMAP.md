@@ -891,6 +891,10 @@ Current continuation:
   the existing action-specific seam without starting typed work.
 - [x] Explicitly start only that exact typed Delay request while preserving its queued model across
   rejected preflight and leaving completion unobserved.
+- [x] Observe, resolve, and acknowledge only that exact completed typed Delay result through the
+  existing action-specific owners, retaining its exact applied event-log and world-time authority.
+- [x] Bind only that exact acknowledged typed result and applied Delay outcome through the existing
+  action-specific outcome seam without entering recovery.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

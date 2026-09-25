@@ -34,6 +34,11 @@ acceptance.
   delegates the existing action-specific seam to compose one exact typed Delay request.
 - `CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator` starts only that exact current request
   through the existing typed seam while preserving its queued one-shot model across rejected preflight.
+- `CharacterSabotageOrdinaryTurnSpecificResultCoordinator` accepts only that exact task-installed
+  completed selection, delegates existing typed observation plus Delay resolution and acknowledgement,
+  and retains the exact result, fresh authoritative snapshots, and applied result.
+- `CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator` uses retained acknowledgement provenance
+  after application advances authority and delegates the existing action-specific outcome binder once.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -42,8 +47,8 @@ acceptance.
 - `CharacterSabotageActionRequestMainSceneSmokeCheck` proves one explicitly invoked Conceal chain.
   Action-specific and outcome smoke checks prove the other branches. These checks are disabled during
   ordinary startup. The separate ordinary-turn smoke now evaluates all seven authors, selects, observes,
-  binds, and acknowledges one exact Delay result, then composes and starts its exact typed request while
-  leaving completion unobserved.
+  binds, and acknowledges one exact generic Delay selection, then composes, starts, resolves,
+  acknowledges, and binds the exact applied typed Delay outcome without entering recovery.
 
 ## Canonical-kind traceability
 
@@ -127,8 +132,9 @@ acceptance.
 - Validation: Domain access, selection, decision, transition, and recovery tests; Application and strict
   Infrastructure tests; isolated task/resolution/recovery checks; and switch-gated main-scene apply and
   recovery paths.
-- Acceptance status: consequential and recoverable when explicitly invoked, but it has no ordinary
-  player-visible investigation surface and is not entered from an ordinary enemy turn.
+- Acceptance status: the switch-gated ordinary-turn proof now selects and applies one exact Delay and
+  binds its outcome, but no ordinary scheduler enters the path and it has no player-visible investigation
+  surface.
 
 ### Influence
 
@@ -170,17 +176,18 @@ player can discover. The roadmap item remains unchecked.
 
 ### Final acceptance
 
-`Main.tscn` now owns explicit ordinary-turn authoring through exact typed Delay start, but only a smoke
-environment variable calls the path. No ordinary scheduler supplies a real enemy turn, and the typed
-result remains unobserved and unapplied by that proof. Therefore the enemy agent still cannot perform
-and expose consequential sabotage during ordinary play, and the final acceptance statement remains
-unchecked.
+`Main.tscn` now owns explicit ordinary-turn authoring through one exact applied Delay outcome, but only a
+smoke environment variable calls the path. No ordinary scheduler supplies a real enemy turn, and the
+proof does not enter recovery or expose the outcome to a player investigation surface. Therefore the
+enemy agent still cannot perform and expose consequential sabotage during ordinary play, and the final
+acceptance statement remains unchecked.
 
 ## Next genuine acceptance gap
 
-Observe and acknowledge only the exact completed typed Delay result started by the ordinary-turn
-coordinator after revalidating its full retained generic and typed provenance. Delegate only the existing
-action-specific result and Delay resolution behavior, retain its exact result and applied state tokens,
-and stop before downstream outcome binding, recovery, terminal routing, turn completion, cadence,
-provider work, persistence, UI, or presentation. Rebuilt, foreign, stale, running, replaced, and repeated
-inputs must remain inert, and ordinary startup must still perform no work.
+Author and publish only the exact Delay recovery candidate derived from the bound ordinary-turn outcome.
+Require the exact retained generic acknowledgement, typed result, applied Delay result, current event log
+and world time, and the scene-owned recovery event before delegating the existing recovery-candidate and
+outcome-eligibility owners. Stop before recovery request composition, consideration, application,
+terminal routing, turn completion, cadence, provider work, persistence, UI, or presentation. Null,
+rebuilt, foreign, stale, replaced, already-published, and repeated inputs must remain inert, and ordinary
+startup must still perform no work.
