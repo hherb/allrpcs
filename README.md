@@ -1289,10 +1289,14 @@ temporary scene-owned target-action source provides representative exact Delay a
 without starting either action. Null, rebuilt-turn, replacement-actor, stale, already-authored, and repeated
 graphs stay inert without partial publication. A separate ordinary-turn start coordinator retains
 that exact turn and composed request and delegates one explicit provider-neutral generic decision to
-the existing task flow. Its switch-gated main-scene smoke proves eligible Conceal, Delay, and
-Influence outputs beside four absent kinds, preserves a queued model across rejected start preflight,
-and stops with the exact completed task result unobserved. Ordinary startup remains authoring-,
-model-, mutation-, scheduling-, and presentation-free, and no sixth Move cycle is introduced.
+the existing task flow. One observation coordinator accepts only that exact task-installed completed
+selection while the complete turn, authoring, selected-kind output, candidate binding, and scene graph
+remain current. A separate binding coordinator delegates the existing author-provenance binding and
+acknowledges only that exact observed result, leaving its selected Delay request and candidate retained
+while resetting only the completed generic task. Its switch-gated main-scene smoke proves eligible
+Conceal, Delay, and Influence outputs beside four absent kinds, preserves a queued model across rejected
+start preflight, and stops before composing or starting a typed Delay request. Ordinary startup remains
+authoring-, model-, mutation-, scheduling-, and presentation-free, and no sixth Move cycle is introduced.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

@@ -883,6 +883,10 @@ Current continuation:
   authors for one exact current enemy-agent ordinary turn without partial publication or cadence.
 - [x] Explicitly start only that exact ordinary-turn composed request through the existing
   provider-neutral generic decision flow without observing, acknowledging, or routing its result.
+- [x] Observe only that exact completed ordinary-turn generic selection while its full turn,
+  authoring, selected-kind output, candidate binding, task result, and scene graph remain current.
+- [x] Bind and acknowledge only that exact observed ordinary-turn selection through the existing
+  author-provenance owner, resetting only the generic task without composing a typed request.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
