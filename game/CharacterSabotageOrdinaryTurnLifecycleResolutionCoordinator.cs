@@ -17,6 +17,9 @@ public partial class CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator
     /// <summary>Gets the exact awaiting activity replaced by successful resolution.</summary>
     public CharacterTurnActivity? OriginalTurn { get; private set; }
 
+    /// <summary>Gets the exact shared-slot reservation retained by reserved resolution.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact terminal activity installed by successful resolution.</summary>
     public CharacterTurnActivity? ResolvedTurn { get; private set; }
 
@@ -87,6 +90,72 @@ public partial class CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator
                 "A preflighted sabotage-owning turn must install its exact terminal successor.");
         }
 
+        OriginalTurn = expectedTurn;
+        ResolvedTurn = resolved;
+        Completion = expectedCompletion;
+        DelayRecovery = expectedDelayRecovery;
+        return true;
+    }
+
+    /// <summary>Installs one terminal successor for the exact admitted reserved Delay turn.</summary>
+    public bool TryResolve(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterTurnActivity? expectedTurn,
+        CharacterSabotageTurnCompletion? expectedCompletion,
+        CharacterTargetSabotageDelayRecoveryResult? expectedDelayRecovery)
+    {
+        if (Reservation is not null
+            || OriginalTurn is not null
+            || ResolvedTurn is not null
+            || Completion is not null
+            || DelayRecovery is not null
+            || expectedReservation is null
+            || expectedTurn is null
+            || expectedCompletion is null
+            || expectedDelayRecovery is null
+            || turns.Activity is not null
+            || !ReferenceEquals(turns.ReservedSabotageTurn, expectedTurn)
+            || !ReferenceEquals(turns.SabotageReservation, expectedReservation)
+            || !ReferenceEquals(admission.Reservation, expectedReservation)
+            || !ReferenceEquals(admission.Admission, expectedCompletion)
+            || !ReferenceEquals(expectedReservation.Opportunity.Actor, expectedCompletion.Actor)
+            || !ReferenceEquals(
+                expectedTurn.Request.RespondingCharacterId,
+                expectedCompletion.Actor.Identity.Id)
+            || !CharacterTurnActionResolutionPolicy.CanResolve(expectedTurn)
+            || !ReferenceEquals(expectedCompletion.ActionKind, CharacterSabotageActionKind.Delay)
+            || !binding.IsRetainedAcknowledgedBinding(
+                expectedReservation,
+                binding.AcknowledgedResult,
+                expectedCompletion.AuthorRequest,
+                binding.SelectedCandidateBinding)
+            || !ReferenceEquals(
+                binding.SelectedCandidateBinding?.ActionKind,
+                expectedCompletion.ActionKind)
+            || !ReferenceEquals(terminalReset.Reservation, expectedReservation)
+            || !ReferenceEquals(terminalReset.ResetAuthorRequest, expectedCompletion.AuthorRequest)
+            || !ReferenceEquals(terminalReset.ResetActionKind, expectedCompletion.ActionKind)
+            || !ReferenceEquals(terminalReset.DelayRecovery, expectedDelayRecovery)
+            || !ReferenceEquals(recoveryState.LatestAppliedResult, expectedDelayRecovery)
+            || !ReferenceEquals(recoveryState.EventLog, expectedDelayRecovery.EventLog)
+            || !ReferenceEquals(recoveryState.WorldTime, expectedDelayRecovery.WorldTime))
+        {
+            return false;
+        }
+
+        CharacterTurnActivity resolved =
+            CharacterTurnActionResolutionTransition.Resolve(expectedTurn);
+        if (!turns.TryInstallReservedActionResolution(
+                expectedReservation,
+                expectedTurn,
+                resolved)
+            || !ReferenceEquals(turns.Activity, resolved))
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved sabotage turn must install its exact terminal successor.");
+        }
+
+        Reservation = expectedReservation;
         OriginalTurn = expectedTurn;
         ResolvedTurn = resolved;
         Completion = expectedCompletion;

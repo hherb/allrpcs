@@ -1331,12 +1331,29 @@ starts its typed Delay request, applies and acknowledges the exact completed res
 authoritative event-log and world-time outcome. It then publishes the exact scene-owned recovery
 candidate and eligibility token, composes and explicitly starts the provider-neutral recovery request,
 applies and acknowledges its exact completed recovery, retains and resets the exact terminal route,
-and exposes and admits one exact completed-turn token while retaining the same reservation.
+and exposes and admits one exact completed-turn token while retaining the same reservation. The shared
+turn owner can then stage only one exact actor-bound response-free activity without exposing that
+pending token to ordinary dialogue processing. The existing lifecycle owner resolves only that exact
+activity, the ordinary boundary binds only its terminal successor, and the shared turn owner releases
+only the same exact reservation. A separate access-gated investigation coordinator accepts only the
+released route's exact recovered Delay history and scene-authored Seeker interaction access, then
+publishes one filtered `CharacterEvidenceViewSnapshot` containing only the authored
+`sage-delay-history` identifier. The matching pure Domain investigation boundaries also cover recovered
+Influence history; they reject inaccessible targets, rebuilt candidates or recovery results, stale
+relationship authority, and incomplete Delay history before exposing evidence.
 Null, rebuilt actor, cadence, event, opportunity, reservation, request, stale authority, early,
 duplicate, and repeated inputs remain inert and preserve queued one-shot models. Ordinary startup
-without an eligible meaningful event performs no sabotage work. The explicit proof currently stops
-before resolving the reserved turn, releasing the shared slot, scheduling another action, or exposing
-player-visible investigation evidence.
+without an eligible meaningful event performs no sabotage work. The explicit proof stops after exact
+release and evidence exposure without scheduling another opportunity, action, or cadence cycle.
+
+`RepresentativeOpeningRegionSource` begins Phase 8 with one immutable authored topology containing the
+sickhouse, healer's garden, village square, village edge, stream, abandoned laundry, woodland clearing,
+old shrine, southern road, abandoned wagon, and closed deeper-forest path. Exact bidirectional
+connections provide alternate routes between the water, woodland, shrine, and road branches. The
+snapshot rejects duplicate landmarks, duplicate undirected connections, foreign endpoints, and a
+non-retained entry; the pure continuity policy proves every landmark reachable from the exact sickhouse
+entry. This slice authors no coordinates, navigation mesh, structures, art, weather, sound, story state,
+or player route prescription; gameplay-scale scene projection remains the next boundary.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

@@ -188,39 +188,42 @@ acceptance.
 
 The reusable policies and seven exact author owners enforce this statement. The new explicit ordinary-
 turn path evaluates current scene authority and exposes only eligible canonical kinds, including a
-mixed eligible/ineligible graph. Its only caller remains a switch-gated smoke, so the roadmap item stays
-unchecked until ordinary play supplies a real enemy turn and proceeds through the guarded path.
+mixed eligible/ineligible graph. The main-scene acceptance proof now begins at an authoritative
+meaningful-event opportunity and completes one exact eligible reserved Delay route without weakening any
+of those seven action gates. The roadmap item is checked from that bounded ordinary-play evidence; normal
+startup remains inert and the proof does not enable automatic model work.
 
 ### Truth, movement, and critical-route safety
 
 The typed transitions preserve truth snapshots, do not move actors, retain append-only histories, and
 provide exact recovery routes. The object investigation smokes prove focused-search recovery for Conceal,
-Move, Substitute, and Contaminate. Misquote preserves source truth and exposes a witness review. Delay and
-Influence retain recoverable history, but neither has a normal player investigation surface. The roadmap
-item remains unchecked because a complete critical conclusion has not been exercised through ordinary
-sabotage, investigation, and recovery.
+Move, Substitute, and Contaminate. Misquote preserves source truth and exposes a witness review. Exact
+recovered Delay and Influence histories can now expose only authored evidence identifiers to an
+investigator with ordinary interaction access to the affected target. No action rewrites source truth or
+actor placement, and every applied action retains an exact recovery route, so the roadmap item is checked.
 
 ### Potentially discoverable evidence
 
 Object actions create fresh target-bound evidence and Misquote creates witness-bound evidence. Delay and
-Influence currently retain exact recovery provenance for internal routing, not evidence that an attentive
-player can discover. The roadmap item remains unchecked.
+Influence now bind exact recovered histories to authored evidence identifiers behind the same ordinary
+target-access boundary. The reserved main-scene Delay proof exposes only `sage-delay-history` in the
+scene Seeker's filtered evidence view after exact terminal binding and reservation release. Rebuilt,
+inaccessible, stale, or incomplete histories remain invisible, so the roadmap item is checked.
 
 ### Final acceptance
 
-`Main.tscn` now schedules one real inert enemy opportunity from an authoritative meaningful-event
-cadence. An explicit proof reserves the shared turn slot, invokes the seven exact current authors, and
-carries one selected Delay through application, recovery, terminal reset, and exact completion
-admission. The older switch-gated path proves response-free resolution and boundary binding. The new
-ordinary path has not yet resolved its reserved turn or released the shared slot, and no player
-investigation surface exposes Delay or Influence. Therefore the enemy agent still cannot complete and
-expose consequential sabotage during ordinary play, and the final acceptance statement remains
-unchecked.
+`Main.tscn` schedules one real inert enemy opportunity from an authoritative meaningful-event cadence.
+The explicit ordinary-play proof reserves the shared turn slot, invokes the seven exact current authors,
+and carries one selected Delay through application, recovery, terminal reset, completion admission,
+response-free resolution, terminal boundary binding, and exact reservation release. It then exposes one
+authored evidence identifier only through exact Seeker interaction access to the affected target. All
+three model-call counts remain one, no next action is scheduled, and ordinary startup stays inert. This
+proves consequential recoverable sabotage plus an attentive-player investigation route under the same
+authoritative action, access, time, and filtered-evidence rules, so Phase 7 acceptance is checked.
 
-## Next genuine acceptance gap
+## Phase 7 closure
 
-Resolve only the exact admitted reserved ordinary-play Delay completion into its response-free terminal
-turn, bind that exact successor at the ordinary-turn boundary, and release only its exact shared
-reservation. Reject null, rebuilt reservation, turn, completion, recovery, stale provenance or
-authority, and repeated input without consuming another model or scheduling another action. Do not add
-a sixth Move chain or provider, persistence, UI, presentation, or investigation work.
+Phase 7 closes at this acceptance boundary. Do not add a sixth Move chain or another sabotage cadence
+cycle as substitute progress. Further player-facing journal, map, authored-world, and scenario content
+belongs to Phase 8; provider activation, persistence expansion, production UI, art, audio, signing, and
+release remain separate bounded work.

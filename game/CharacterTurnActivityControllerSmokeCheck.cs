@@ -309,7 +309,7 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             .OrderBy(method => method.Name, StringComparer.Ordinal)
             .ToArray();
 
-        bool matches = properties.Length == 2
+        bool matches = properties.Length == 3
             && properties.Any(property =>
                 property.Name == nameof(CharacterTurnActivityController.Activity)
                 && property.PropertyType == typeof(CharacterTurnActivity)
@@ -322,7 +322,13 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
                 && property.CanRead
                 && property.SetMethod is not null
                 && property.SetMethod.IsPrivate)
-            && methods.Length == 6
+            && properties.Any(property =>
+                property.Name == nameof(CharacterTurnActivityController.ReservedSabotageTurn)
+                && property.PropertyType == typeof(CharacterTurnActivity)
+                && property.CanRead
+                && property.SetMethod is not null
+                && property.SetMethod.IsPrivate)
+            && methods.Length == 7
             && methods[0].Name == nameof(CharacterTurnActivityController.TryCancel)
             && methods[0].ReturnType == typeof(bool)
             && methods[0].GetParameters().Length == 0
@@ -348,7 +354,16 @@ public partial class CharacterTurnActivityControllerSmokeCheck : Node
             && methods[5].Name == nameof(CharacterTurnActivityController.TryStart)
             && methods[5].ReturnType == typeof(bool)
             && methods[5].GetParameters().Select(parameter => parameter.ParameterType)
-                .SequenceEqual([typeof(CharacterTurnRequest)]);
+                .SequenceEqual([typeof(CharacterTurnRequest)])
+            && methods[6].Name
+                == nameof(CharacterTurnActivityController.TryStartReservedSabotageTurn)
+            && methods[6].ReturnType == typeof(bool)
+            && methods[6].GetParameters().Select(parameter => parameter.ParameterType)
+                .SequenceEqual(
+                [
+                    typeof(CharacterSabotageTurnReservation),
+                    typeof(CharacterTurnActivity),
+                ]);
 
         if (!matches)
         {

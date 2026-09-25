@@ -1,4 +1,4 @@
-[gd_scene load_steps=253 format=3]
+[gd_scene load_steps=255 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -312,6 +312,8 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionCoordinator.cs" id="291am_sabotage_ordinary_completion"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator.cs" id="291an_sabotage_ordinary_completion_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator.cs" id="291ao_sabotage_ordinary_lifecycle_resolution"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayInvestigationCoordinator.cs" id="291ap_sabotage_ordinary_delay_investigation"]
+[ext_resource type="Script" path="res://TemporaryCharacterTargetSabotageInvestigationSource.cs" id="291aq_target_sabotage_investigation_source"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck.cs" id="291b_sabotage_ordinary_authoring_check"]
 [ext_resource type="Script" path="res://CharacterSabotageTurnOpportunityControllerSmokeCheck.cs" id="291c_sabotage_turn_opportunity_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
@@ -911,6 +913,9 @@ script = ExtResource("291an_sabotage_ordinary_completion_admission")
 
 [node name="CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator" type="Node" parent="."]
 script = ExtResource("291ao_sabotage_ordinary_lifecycle_resolution")
+
+[node name="CharacterSabotageOrdinaryTurnDelayInvestigationCoordinator" type="Node" parent="."]
+script = ExtResource("291ap_sabotage_ordinary_delay_investigation")
 
 [node name="CharacterSabotageActionAuthorBindingCoordinator" type="Node" parent="."]
 script = ExtResource("292_sabotage_action_author_binding")
@@ -2051,6 +2056,9 @@ SearcherCharacterIdText = "seeker"
 
 [node name="TemporarySeekerCharacterSource" type="Node" parent="."]
 script = ExtResource("30_seeker_character_source")
+
+[node name="TemporaryCharacterTargetSabotageInvestigationSource" type="Node" parent="."]
+script = ExtResource("291aq_target_sabotage_investigation_source")
 
 [node name="TemporaryPassiveNoticingCandidateSource" type="Node" parent="."]
 script = ExtResource("34_passive_candidate_source")

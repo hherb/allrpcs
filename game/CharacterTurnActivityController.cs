@@ -13,12 +13,17 @@ public partial class CharacterTurnActivityController : Node
     /// <summary>Gets the exact sabotage opportunity that currently owns the shared turn slot.</summary>
     public CharacterSabotageTurnReservation? SabotageReservation { get; private set; }
 
+    /// <summary>Gets the exact response-free activity staged for the reserved sabotage action.</summary>
+    public CharacterTurnActivity? ReservedSabotageTurn { get; private set; }
+
     /// <summary>Initializes this controller once from one exact existing activity.</summary>
     public bool TryInitialize(CharacterTurnActivity activity)
     {
         ArgumentNullException.ThrowIfNull(activity);
 
-        if (Activity is not null || SabotageReservation is not null)
+        if (Activity is not null
+            || SabotageReservation is not null
+            || ReservedSabotageTurn is not null)
         {
             return false;
         }
@@ -33,7 +38,9 @@ public partial class CharacterTurnActivityController : Node
         ArgumentNullException.ThrowIfNull(request);
 
         CharacterTurnActivity? activity = Activity;
-        if (SabotageReservation is not null || !CharacterTurnStartPolicy.CanStart(activity))
+        if (SabotageReservation is not null
+            || ReservedSabotageTurn is not null
+            || !CharacterTurnStartPolicy.CanStart(activity))
         {
             return false;
         }
@@ -54,7 +61,8 @@ public partial class CharacterTurnActivityController : Node
             opportunity,
             currentOpportunity,
             Activity,
-            SabotageReservation))
+            SabotageReservation)
+            || ReservedSabotageTurn is not null)
         {
             return false;
         }
@@ -64,6 +72,29 @@ public partial class CharacterTurnActivityController : Node
             currentOpportunity,
             Activity,
             SabotageReservation);
+        return true;
+    }
+
+    /// <summary>Starts one exact response-free activity owned by the current sabotage reservation.</summary>
+    public bool TryStartReservedSabotageTurn(
+        CharacterSabotageTurnReservation reservation,
+        CharacterTurnActivity activity)
+    {
+        ArgumentNullException.ThrowIfNull(reservation);
+        ArgumentNullException.ThrowIfNull(activity);
+
+        if (Activity is not null
+            || ReservedSabotageTurn is not null
+            || !ReferenceEquals(SabotageReservation, reservation)
+            || !ReferenceEquals(
+                activity.Request.RespondingCharacterId,
+                reservation.Opportunity.Actor.Identity.Id)
+            || !CharacterTurnActionResolutionPolicy.CanResolve(activity))
+        {
+            return false;
+        }
+
+        ReservedSabotageTurn = activity;
         return true;
     }
 
@@ -147,6 +178,55 @@ public partial class CharacterTurnActivityController : Node
         }
 
         Activity = resolvedActivity;
+        return true;
+    }
+
+    /// <summary>Installs the exact terminal activity staged by the current sabotage reservation.</summary>
+    internal bool TryInstallReservedActionResolution(
+        CharacterSabotageTurnReservation currentReservation,
+        CharacterTurnActivity awaitingActivity,
+        CharacterTurnActivity resolvedActivity)
+    {
+        ArgumentNullException.ThrowIfNull(currentReservation);
+        ArgumentNullException.ThrowIfNull(awaitingActivity);
+        ArgumentNullException.ThrowIfNull(resolvedActivity);
+
+        if (Activity is not null
+            || !ReferenceEquals(SabotageReservation, currentReservation)
+            || !ReferenceEquals(ReservedSabotageTurn, awaitingActivity)
+            || !ReferenceEquals(resolvedActivity.State, CharacterTurnActivityState.Resolved)
+            || !ReferenceEquals(resolvedActivity.Request, awaitingActivity.Request)
+            || resolvedActivity.Response is not null)
+        {
+            return false;
+        }
+
+        Activity = resolvedActivity;
+        ReservedSabotageTurn = null;
+        return true;
+    }
+
+    /// <summary>Releases only the exact reservation after its exact action-resolved activity.</summary>
+    internal bool TryReleaseSabotageTurn(
+        CharacterSabotageTurnReservation currentReservation,
+        CharacterTurnActivity resolvedActivity)
+    {
+        ArgumentNullException.ThrowIfNull(currentReservation);
+        ArgumentNullException.ThrowIfNull(resolvedActivity);
+
+        if (!ReferenceEquals(SabotageReservation, currentReservation)
+            || !ReferenceEquals(Activity, resolvedActivity)
+            || ReservedSabotageTurn is not null
+            || !ReferenceEquals(resolvedActivity.State, CharacterTurnActivityState.Resolved)
+            || resolvedActivity.Response is not null
+            || !ReferenceEquals(
+                resolvedActivity.Request.RespondingCharacterId,
+                currentReservation.Opportunity.Actor.Identity.Id))
+        {
+            return false;
+        }
+
+        SabotageReservation = null;
         return true;
     }
 }
