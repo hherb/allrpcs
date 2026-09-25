@@ -1352,8 +1352,22 @@ old shrine, southern road, abandoned wagon, and closed deeper-forest path. Exact
 connections provide alternate routes between the water, woodland, shrine, and road branches. The
 snapshot rejects duplicate landmarks, duplicate undirected connections, foreign endpoints, and a
 non-retained entry; the pure continuity policy proves every landmark reachable from the exact sickhouse
-entry. This slice authors no coordinates, navigation mesh, structures, art, weather, sound, story state,
-or player route prescription; gameplay-scale scene projection remains the next boundary.
+entry.
+
+`OpeningRegionProjection` now binds one exact retained anchor to every topology location inside an
+explicit 1600-by-900-pixel gameplay region. Every anchor retains at least 24 pixels of route-endpoint
+clearance and 120 pixels of landmark separation. Missing, duplicate, foreign, rebuilt, non-finite,
+out-of-bounds, and insufficiently separated inputs fail before a projection is published. Projected
+connections retain their exact authored topology edge and exact endpoint anchors. The main-scene proof
+asks the synchronized Godot navigation map for all twelve routes and checks the free-space probes around
+all eleven endpoints, rather than inferring traversal from topology or straight-line distance.
+
+The first Phase 8 landmark scene is a temporary greybox sickhouse containing the exact representative
+deep-sleeping patient. `OpeningRegionFirstPatientSceneBinding` accepts only the projection's exact
+sickhouse entry anchor, the structurally valid exact deep-sleep infection, and a patient position within
+96 pixels of that anchor. It changes no disease or treatment state. The room, bed, body, and label are
+scale evidence only; collision-aware walls, an entrance, interior navigation, interactions, production
+art, weather, sound, and story-state variations remain deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

@@ -2,51 +2,50 @@
 
 ## Current state
 
-`main` includes merged PR #372 at `1bcc1cf`. Branch `codex/phase-7-reserved-turn-release` closes the
-remaining Phase 7 acceptance gap and begins Phase 8 with an authored opening-region topology.
+`main` includes merged PR #373 at `6588edf`. Branch
+`codex/phase-8-opening-region-projection` projects the authored Phase 8 topology at gameplay scale and
+starts the sickhouse/first-patient greybox scene.
 
-The exact reserved ordinary-play Delay path now stages and resolves only its actor-bound response-free
-activity, binds its exact terminal successor, and releases only its exact shared reservation. Its
-recovered history can expose one authored evidence identifier only to the exact scene Seeker with
-ordinary interaction access to the affected target. Recovered Influence has the matching pure Domain
-investigation boundary. Phase 7 is closed; do not add another Move chain or sabotage cadence cycle.
+The exact Phase 8 topology now projects all eleven retained locations into a 1600-by-900-pixel scene.
+Each projected edge retains its exact topology provenance and has a real route over the synchronized
+Godot navigation map. Anchors require 24 pixels of endpoint clearance and 120 pixels of landmark
+separation; missing, duplicate, foreign, rebuilt, non-finite, out-of-bounds, or crowded inputs fail
+before publication.
 
-Phase 8 now owns one immutable continuous graph for all eleven required opening landmarks and alternate
-water, woodland, shrine, and road connections. It has no scene coordinates or gameplay-scale proof yet.
+The exact sickhouse entry now binds the representative deep-sleeping first patient within 96 pixels.
+The room, bed, body, and label are temporary scale evidence only. Disease and treatment state remain
+unchanged. Phase 7 is closed; do not add another Move chain or sabotage cadence cycle.
 
 ## Validation and review
 
-- Test-first focused builds failed at the absent reserved lifecycle/release, target-investigation, and
-  opening-region contracts before implementation.
-- Focused host-local tests pass for six Delay/Influence investigation cases and three opening-region
-  topology cases. The focused host-local main-scene smoke passes the complete reserved Delay route,
-  exact release, and access-gated evidence exposure with all three model-call counts remaining one.
+- Test-first focused Application builds failed at the absent projection and first-patient binding types.
+- Seven focused host-local Application tests pass for exact provenance, anchor rejection, bounds,
+  clearances, sickhouse binding, deep-sleep state, and bounded patient placement.
+- Focused host-local Godot smokes pass all eleven endpoint-clearance probes, all twelve authored
+  navigation routes, and the exact sickhouse/deep-sleeping-patient scene binding.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,789 Domain, 586 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
+  2,789 Domain, 593 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
   scenario validator, every credential-free Godot smoke, and the Compatibility launch.
-- Complete-diff review added explicit incomplete Influence-history rejection, corrected one wrapped-call
-  indentation issue, confirmed whitespace and 120-character cleanliness, and kept every changed C# file
-  below 500 lines.
-- Draft PR #373 targets `main`. Hosted run `36132095858` failed all five jobs with `steps: []`; no
-  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
-- Ordinary startup remains inert; no automatic model work, next sabotage action, sixth Move cycle,
-  provider, persistence, production UI, art, audio, signing, release, or distribution work was added.
+- Complete-diff review confirmed whitespace and 120-character cleanliness, kept every changed C# file
+  below 500 lines, and corrected one overbroad focused-test name before publication.
+- Ordinary provider/model startup remains unchanged; no Phase 7 action/cadence work, garden, village
+  transition, discovery, production art, weather, sound, persistence, signing, release, or distribution
+  work was added.
 
 ## Exact next bounded slice
 
-Project only the exact `RepresentativeOpeningRegionSource` topology into bounded gameplay-scale scene
-anchors and prove every authored connection has a traversable greybox route.
+Make the greybox sickhouse enterable without broadening into treatment interaction or another landmark.
 
 Acceptance boundary:
 
-1. Add one scene-owned anchor per exact retained opening location; reject missing, duplicate, foreign,
-   rebuilt, or out-of-bounds anchors before publishing a projection.
-2. Define and document explicit gameplay-scale bounds and minimum path/landmark clearances without
-   changing the engine, projection, camera, or art direction.
-3. Validate every authored connection against the existing Godot navigation surface and retain exact
-   topology provenance; do not infer continuity from straight-line distance alone.
-4. Stop before building the sickhouse, garden, village, stream, laundry, woodland, shrine, road, wagon,
-   closed-path structures, discoveries, weather, lighting, sound, story variations, journal, or map.
-5. Add no Phase 7 action/cadence work and no provider, persistence, production art, UI, audio, signing,
+1. Replace only the temporary sickhouse rectangle with collision-aware greybox walls and one explicit
+   entrance while retaining the exact sickhouse anchor and first-patient binding.
+2. Update the navigation surface so the entrance and patient approach remain traversable with the
+   existing 24-pixel clearance; reject routes that cross a wall or exit the 1600-by-900 bounds.
+3. Prove the Seeker can enter, reach the patient approach, and leave over synchronized Godot navigation;
+   keep treatment, dialogue, focus, discovery, and disease state unchanged.
+4. Stop before the healer's garden, other landmarks, final camera/projection/art direction, production
+   art, weather, lighting, sound, story variations, journal, or map.
+5. Add no Phase 7 action/cadence work and no provider, persistence, production UI, audio, signing,
    release, or distribution work.
 6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.

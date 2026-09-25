@@ -9,6 +9,10 @@ export ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1
 export ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1
 
 ALLRPCS_NAVIGATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_OPENING_REGION_PROJECTION_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_OPENING_REGION_FIRST_PATIENT_SCENE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_HEALER_COMMAND_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1500
 ALLRPCS_INTERACTION_FOCUS_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_BOUNDARY_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
