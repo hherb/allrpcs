@@ -4,7 +4,7 @@
 
 `main` includes merged PR #370 at `6e9dba3`. Branch
 `codex/phase-7-reserved-sabotage-lifecycle` advances the genuine Phase 7 ordinary-play acceptance path
-without extending the closed repeated Move-cycle chain.
+without extending the closed repeated Move-cycle chain. Draft PR #371 carries this branch.
 
 The exact reserved ordinary-play path now binds and acknowledges its generic Delay selection through
 the existing author-provenance owner, composes and explicitly starts the typed request, applies and
@@ -33,6 +33,8 @@ or later Move chain.
 - Complete-diff review added an exact one-call recovery-model assertion and split smoke-only models so
   every changed C# file remains below 500 lines. No automatic lifecycle progression, fabricated
   dialogue, sixth Move chain, provider/persistence/UI work, whitespace error, or release claim remains.
+- Draft PR #371 targets `main`. Hosted run `36115308443` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
