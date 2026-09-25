@@ -2,55 +2,71 @@
 
 ## Current state
 
-`main` includes merged PR #374 at `dbef4b5`. Branch `codex/phase-8-enterable-sickhouse` completes two
-bounded Phase 8 landmark slices: an enterable sickhouse and a reachable healer-garden preparation
-station.
+`main` includes merged PR #375 at `a9409ca`. Branch `codex/phase-8-village-transitions`
+completes the next Phase 8 landmark slice: collision-aware village-square and village-edge
+transitions, plus the display-scaling correction identified during review.
 
-The sickhouse retains the exact projection anchor and first-patient binding. Five collision-backed wall
-sections leave one 64-pixel north entrance. The navigation surface reserves 24-pixel wall clearance,
-connects the entrance corridor to the interior, and retains all twelve earlier topology routes. The exact
-sickhouse anchor is the patient approach; the Seeker can enter, reach it, and leave. A pure route policy
-rejects wall-crossing and out-of-bounds paths.
+`OpeningRegionVillageTransitionSceneBinding` accepts only the projection's exact retained
+`village-square` and `village-edge` anchors in distinct bounded areas with 24-pixel endpoint
+clearance. The layout retains explicit garden, square, edge, stream-branch, and woodland-branch
+openings. Thirteen scene-authored collision sections and the synchronized navigation surface admit
+the exact garden -> square -> edge round trip and its return while retaining all twelve existing
+opening-region routes. Rebuilt, foreign, missing, swapped, overlapping, out-of-bounds, narrow, and
+oversized-wall inputs fail closed.
 
-The healer's garden retains its exact projection anchor, the structurally valid first-patient context,
-and that context's exact remedy recipe. Its greybox garden beds and reachable preparation station do not
-start or advance preparation. Disease, treatment, dialogue, focus, discovery, and ordinary provider or
-model startup remain unchanged.
+The new runtime geometry uses named constants in `OpeningRegionVillageTransitionGeometry`; raw
+coordinates in `Main.tscn` remain authored Godot scene data and are exercised against the binding,
+collision, and navigation contracts. The 1600-by-900 value remains world space, not screen size.
+The window now treats 960-by-540 as its minimum physical size and design viewport, remains resizable,
+and uses Godot `canvas_items` scaling with `expand` aspect handling so larger, differently shaped,
+and fullscreen windows do not change world coordinates or stretch one axis independently.
 
 ## Validation and review
 
-- Test-first focused Application builds failed at the absent sickhouse layout, route policy, and garden
-  preparation-scene binding types.
-- Seven focused host-local Application tests pass for exact provenance, bounded geometry, entrance
-  clearance, wall and world-bound route rejection, exact garden recipe, and station placement.
-- Focused host-local Godot smokes pass all twelve opening-region routes, the exact patient binding, the
-  collision-backed Seeker enter/approach/leave route, and the reachable inert garden station.
+- Test-first focused Application compilation initially failed at the absent village binding and layout
+  types; eight focused village-transition tests now pass.
+- The switch-gated village smoke passes exact binding, thirteen collision bodies, synchronized
+  navigation, physical garden/square/edge travel, wall blocking, and the return route.
+- Review found and fixed three integration defects: a square boundary initially occupied the established
+  Seeker origin, a navigation opening admitted collision-unsafe corner paths for the healer, and an
+  intermediate square placement crossed the established bridge. Exact sickhouse-return regression
+  coverage, healer follow, both bridge directions, and all twelve topology routes now pass.
+- Review also replaced parallel navigation numbers with the named shared geometry source and added
+  fail-closed oversized-wall validation plus collision-shape verification.
+- The adaptive-display smoke passes the exact 960-by-540 minimum, resizable window, canvas-item scaling,
+  and expanded aspect configuration. This is configuration evidence, not complete manual high-DPI,
+  multi-monitor, or every-platform fullscreen QA; that later roadmap item remains open.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,789 Domain, 600 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
-  scenario validator, every credential-free Godot smoke, and the Compatibility launch.
-- Complete-diff review confirmed whitespace and 120-character cleanliness, kept every changed C# file
-  below 500 lines, and restored exact shared polygon seams after the initial sickhouse mesh split had
-  disconnected earlier bridge and east-bank routes.
-- Draft PR #375 targets `main`. Hosted run `36138265953` failed all five jobs with `steps: []`; no
-  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
-- No preparation interaction or progression, treatment, dialogue, focus, discovery, other landmark,
-  production art, weather, lighting, sound, story variation, journal, map, provider, persistence,
-  production UI, audio, signing, release, or distribution work was added.
+  2,789 Domain, 608 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
+  scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
+- Draft PR #376 targets `main`. Its Credential-free CI run ended with all five jobs failed before any
+  step was instantiated (`steps: []`), so those hosted results are Actions/account infrastructure and
+  provide no product-test evidence; the host-local validation above remains the executed evidence.
+- Complete-diff review confirmed whitespace and 120-character cleanliness and kept every changed C#
+  file below 500 lines.
+- No stream, laundry, woodland, clue placement, investigation, discovery, dialogue, inhabitants,
+  preparation or treatment progression, production art, weather, lighting, sound, journal, map,
+  provider, persistence, production UI, audio, signing, release, or distribution work was added.
 
 ## Exact next bounded slice
 
-Build the village-square and village-edge greybox transitions without adding their later investigations.
+Build the stream and abandoned-laundry greybox without adding their later investigation content.
 
 Acceptance boundary:
 
-1. Bind only the exact retained `village-square` and `village-edge` projection anchors to distinct,
-   bounded scene areas; rebuilt, foreign, missing, overlapping, or out-of-bounds bindings fail closed.
-2. Add collision-aware greybox boundaries and explicit transition openings while retaining the existing
-   24-pixel endpoint clearance and every authored opening-region route.
-3. Prove the Seeker can travel garden -> village square -> village edge and return over synchronized
-   Godot navigation without crossing a boundary or leaving the 1600-by-900 region.
-4. Stop before the stream, laundry, woodland, shrine, road, wagon, closed path, clue placement,
-   discovery, dialogue, inhabitants, production art, weather, lighting, sound, journal, or map.
-5. Add no treatment or preparation progression and no Phase 7 cadence, provider, persistence,
+1. Bind only the exact retained `stream` and `abandoned-laundry` projection anchors to distinct,
+   bounded world-space scene areas; rebuilt, foreign, missing, overlapping, out-of-bounds, or
+   insufficient-clearance bindings fail closed.
+2. Keep new geometry in one named source of truth; Godot scene coordinates are authored world data,
+   never viewport or device dimensions. Preserve the resizable 960-by-540 minimum/design viewport,
+   `canvas_items` scaling, `expand` aspect handling, and fullscreen capability.
+3. Add collision-aware stream-bank and inert laundry greybox geometry with explicit route openings.
+   Preserve the existing bridge, village transitions, 24-pixel endpoint clearance, default actor
+   origins, healer movement, and every authored opening-region route.
+4. Prove synchronized Seeker travel village edge -> stream -> abandoned laundry and return without
+   crossing a bank, building boundary, or the 1600-by-900 world bound.
+5. Stop before laundry clues or interactions, woodland, rare specimen, shrine, road, wagon, closed
+   path, discovery, dialogue, inhabitants, production art, weather, lighting, sound, journal, or map.
+6. Add no preparation or treatment progression and no Phase 7 cadence, provider, persistence,
    production UI, audio, signing, release, or distribution work.
-6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.
+7. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.

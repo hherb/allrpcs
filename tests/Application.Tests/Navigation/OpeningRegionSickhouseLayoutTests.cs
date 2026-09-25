@@ -125,6 +125,25 @@ public sealed class OpeningRegionSickhouseLayoutTests
         Assert.True(OpeningRegionSickhouseRoutePolicy.IsAcceptable(
             layout,
             [PatientApproach, EntranceCenter, ExteriorApproach]));
+        Assert.True(OpeningRegionSickhouseRoutePolicy.IsAcceptable(
+            layout,
+            [
+                PatientApproach,
+                new Vector2(908.6829f, 704.0f),
+                new Vector2(904.0f, 656.0f),
+                new Vector2(896.0f, 646.50006f),
+                new Vector2(864.0f, 608.5f),
+                new Vector2(856.0f, 599.00006f),
+                new Vector2(848.0f, 589.5f),
+                new Vector2(840.0f, 580.00006f),
+                new Vector2(824.0f, 561.00006f),
+                new Vector2(800.0f, 532.50006f),
+                new Vector2(776.0f, 504.0f),
+                new Vector2(776.0f, 480.0f),
+                new Vector2(776.0f, 466.0f),
+                new Vector2(776.0f, 456.0f),
+                new Vector2(776.0f, 450.0f),
+            ]));
         Assert.False(OpeningRegionSickhouseRoutePolicy.IsAcceptable(
             layout,
             [new Vector2(800.0f, 760.0f), new Vector2(900.0f, 760.0f)]));

@@ -963,7 +963,7 @@ Acceptance:
 - [x] Build the continuous opening region at validated gameplay scale.
 - [x] Build the sickhouse and first sleeping patient scene.
 - [x] Build the healer's garden and remedy-preparation station.
-- [ ] Build the village square and village-edge transitions.
+- [x] Build the village square and village-edge transitions.
 - [ ] Build the stream and abandoned laundry.
 - [ ] Build the woodland clearing and concealed rare specimen.
 - [ ] Build the old shrine and layered inscription discovery.
