@@ -39,6 +39,9 @@ and fullscreen windows do not change world coordinates or stretch one axis indep
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
   2,789 Domain, 608 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
   scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
+- Draft PR #376 targets `main`. Its Credential-free CI run ended with all five jobs failed before any
+  step was instantiated (`steps: []`), so those hosted results are Actions/account infrastructure and
+  provide no product-test evidence; the host-local validation above remains the executed evidence.
 - Complete-diff review confirmed whitespace and 120-character cleanliness and kept every changed C#
   file below 500 lines.
 - No stream, laundry, woodland, clue placement, investigation, discovery, dialogue, inhabitants,
