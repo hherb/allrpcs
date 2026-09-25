@@ -13,6 +13,9 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
     private CharacterSabotageActionAuthorBindingCoordinator binding = null!;
     private CharacterSabotageActionTaskController task = null!;
 
+    /// <summary>Gets the exact sabotage-turn reservation retained by successful binding.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact observed result retained by successful binding.</summary>
     public CharacterSabotageActionConsiderationResult? BoundResult { get; private set; }
 
@@ -46,7 +49,8 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
     public bool TryBindObservedResult(
         CharacterSabotageActionConsiderationResult? expectedResult)
     {
-        if (BoundResult is not null
+        if (Reservation is not null
+            || BoundResult is not null
             || SelectedAuthorRequest is not null
             || SelectedCandidateBinding is not null
             || expectedResult is null
@@ -72,6 +76,38 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         BoundResult = expectedResult;
         SelectedAuthorRequest = selectedRequest;
         SelectedCandidateBinding = selectedCandidate;
+        return true;
+    }
+
+    /// <summary>Binds one exact reserved observed selection to unchanged author provenance.</summary>
+    public bool TryBindObservedResult(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationResult? expectedResult)
+    {
+        if (Reservation is not null
+            || BoundResult is not null
+            || SelectedAuthorRequest is not null
+            || SelectedCandidateBinding is not null
+            || expectedReservation is null
+            || expectedResult is null
+            || !ReferenceEquals(start.Reservation, expectedReservation)
+            || !ReferenceEquals(observation.ObservedResult, expectedResult)
+            || !ReferenceEquals(selection.ObservedResult, expectedResult)
+            || !start.IsCurrentReservedCompletedResult(expectedResult)
+            || !authoring.IsCurrent(expectedReservation, start.Request)
+            || !ReferenceEquals(task.Result, expectedResult))
+        {
+            return false;
+        }
+
+        if (!TryBindExactAuthorProvenance(expectedResult))
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved result must bind exact author provenance.");
+        }
+
+        Reservation = expectedReservation;
+        BoundResult = expectedResult;
         return true;
     }
 
@@ -106,6 +142,40 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         return true;
     }
 
+    /// <summary>Acknowledges only the exact reserved result with unchanged bound provenance.</summary>
+    public bool TryAcknowledgeBoundResult(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationResult? expectedResult)
+    {
+        if (expectedReservation is null
+            || expectedResult is null
+            || AcknowledgedResult is not null
+            || !ReferenceEquals(Reservation, expectedReservation)
+            || !ReferenceEquals(BoundResult, expectedResult)
+            || !ReferenceEquals(start.Reservation, expectedReservation)
+            || !ReferenceEquals(observation.ObservedResult, expectedResult)
+            || !ReferenceEquals(selection.ObservedResult, expectedResult)
+            || !start.IsCurrentReservedCompletedResult(expectedResult)
+            || !authoring.IsCurrent(expectedReservation, start.Request)
+            || !HasExactSelectedAuthorProvenance())
+        {
+            return false;
+        }
+
+        if (!binding.TryAcknowledgeBoundResult()
+            || !ReferenceEquals(binding.AcknowledgedResult, expectedResult)
+            || task.Status != CharacterSabotageActionTaskStatus.Idle
+            || task.Result is not null
+            || selection.ObservedResult is not null)
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved result must acknowledge exactly once.");
+        }
+
+        AcknowledgedResult = expectedResult;
+        return true;
+    }
+
     /// <summary>Checks the exact retained acknowledgement against the complete current graph.</summary>
     internal bool IsCurrentAcknowledgedBinding(
         CharacterSabotageActionConsiderationResult? expectedResult,
@@ -113,6 +183,22 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         CharacterSabotageActionCandidateBinding? expectedBinding) =>
         IsRetainedAcknowledgedBinding(expectedResult, expectedRequest, expectedBinding)
         && authoring.IsCurrent(start.Turn, start.Request);
+
+    /// <summary>Checks an exact reserved acknowledgement against the complete current graph.</summary>
+    internal bool IsCurrentAcknowledgedBinding(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionConsiderationRequest? expectedRequest,
+        CharacterSabotageActionCandidateBinding? expectedBinding)
+    {
+        bool retained = IsRetainedAcknowledgedBinding(
+            expectedReservation,
+            expectedResult,
+            expectedRequest,
+            expectedBinding);
+        bool current = authoring.IsCurrent(expectedReservation, start.Request);
+        return retained && current;
+    }
 
     /// <summary>Checks retained acknowledgement provenance after action authority has advanced.</summary>
     internal bool IsRetainedAcknowledgedBinding(
@@ -137,4 +223,55 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         && selection.ObservedResult is null
         && task.Status == CharacterSabotageActionTaskStatus.Idle
         && task.Result is null;
+
+    /// <summary>Checks retained reserved acknowledgement provenance after authority advances.</summary>
+    internal bool IsRetainedAcknowledgedBinding(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionConsiderationRequest? expectedRequest,
+        CharacterSabotageActionCandidateBinding? expectedBinding) =>
+        expectedReservation is not null
+        && expectedResult is not null
+        && expectedRequest is not null
+        && expectedBinding is not null
+        && ReferenceEquals(Reservation, expectedReservation)
+        && ReferenceEquals(start.Reservation, expectedReservation)
+        && ReferenceEquals(BoundResult, expectedResult)
+        && ReferenceEquals(AcknowledgedResult, expectedResult)
+        && ReferenceEquals(observation.ObservedResult, expectedResult)
+        && ReferenceEquals(expectedResult.Request, start.Request)
+        && ReferenceEquals(SelectedAuthorRequest, expectedRequest)
+        && ReferenceEquals(SelectedCandidateBinding, expectedBinding)
+        && ReferenceEquals(binding.AcknowledgedResult, expectedResult)
+        && ReferenceEquals(binding.SelectedAuthorRequest, expectedRequest)
+        && ReferenceEquals(binding.SelectedCandidateBinding, expectedBinding)
+        && ReferenceEquals(expectedBinding.Request, expectedRequest)
+        && ReferenceEquals(expectedBinding.ActionKind, expectedResult.SelectedActionKind)
+        && authoring.IsRetained(expectedReservation, start.Request)
+        && selection.ObservedResult is null
+        && task.Status == CharacterSabotageActionTaskStatus.Idle
+        && task.Result is null;
+
+    private bool TryBindExactAuthorProvenance(
+        CharacterSabotageActionConsiderationResult expectedResult)
+    {
+        if (!binding.TryBindObservedSelection()
+            || binding.SelectedAuthorRequest is not { } selectedRequest
+            || binding.SelectedCandidateBinding is not { } selectedCandidate
+            || !ReferenceEquals(selectedCandidate.Request, selectedRequest)
+            || !ReferenceEquals(selectedCandidate.ActionKind, expectedResult.SelectedActionKind))
+        {
+            return false;
+        }
+
+        SelectedAuthorRequest = selectedRequest;
+        SelectedCandidateBinding = selectedCandidate;
+        return true;
+    }
+
+    private bool HasExactSelectedAuthorProvenance() =>
+        SelectedAuthorRequest is not null
+        && SelectedCandidateBinding is not null
+        && ReferenceEquals(binding.SelectedAuthorRequest, SelectedAuthorRequest)
+        && ReferenceEquals(binding.SelectedCandidateBinding, SelectedCandidateBinding);
 }

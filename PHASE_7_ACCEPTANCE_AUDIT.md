@@ -63,9 +63,10 @@ acceptance.
 - `CharacterSabotageTurnOpportunityController` retains the existing scene-owned enemy actor and one
   exact opportunity; `CharacterSabotageTurnReservationCoordinator` reserves the shared turn slot so
   normal dialogue cannot overlap sabotage and no dialogue event is fabricated.
-- The ordinary authoring, generic-start, and observation coordinators accept that exact reservation,
-  invoke the existing seven authors, compose eligible Conceal, Delay, and Influence outputs, start the
-  provider-neutral selection, and observe its exact completed result once without binding it.
+- The ordinary lifecycle coordinators accept that exact reservation, invoke the existing seven authors,
+  compose eligible Conceal, Delay, and Influence outputs, and carry one exact selected Delay through
+  generic acknowledgement, typed application and acknowledgement, outcome binding, recovery-candidate
+  publication, recovery-request composition, and explicit recovery start without releasing the slot.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -208,18 +209,17 @@ player can discover. The roadmap item remains unchecked.
 
 `Main.tscn` now schedules one real inert enemy opportunity from an authoritative meaningful-event
 cadence. An explicit proof reserves the shared turn slot, invokes the seven exact current authors, and
-starts and observes the provider-neutral generic selection. The older switch-gated path proves one
-selected Delay through application, recovery, terminal reset, response-free resolution, and boundary
-binding. The new ordinary path has not yet bound its observed selection into that typed continuation,
-and no player investigation surface exposes Delay or Influence. Therefore the enemy agent still cannot
-complete and expose consequential sabotage during ordinary play, and the final acceptance statement
-remains unchecked.
+carries one selected Delay through application and explicit recovery start. The older switch-gated path
+proves the remaining recovery, terminal reset, response-free resolution, and boundary binding. The new
+ordinary path has not yet observed or acknowledged its recovery, completed the reserved turn, or
+released the shared slot, and no player investigation surface exposes Delay or Influence. Therefore the
+enemy agent still cannot complete and expose consequential sabotage during ordinary play, and the final
+acceptance statement remains unchecked.
 
 ## Next genuine acceptance gap
 
-Bind and acknowledge only the exact observed reserved ordinary-play generic selection through the
-existing author-provenance owner, resetting only its generic task while retaining the exact reservation,
-selected author request, and candidate binding. Stop before composing or starting typed action work.
-Reject rebuilt reservation, opportunity, request, result, selected kind, stale author output, changed
-scene authority, null, and repeated input without consuming another model or releasing the shared turn
-slot. Do not add a sixth Move chain or provider, persistence, UI, presentation, or investigation work.
+Retain and acknowledge only the exact completed reserved ordinary-play Delay recovery with its fresh
+authoritative event log and world time. Reject null, rebuilt reservation, request, result, candidate,
+stale provenance or authority, and repeated input without consuming another model or releasing the
+shared turn slot. Stop before terminal-route retention or reset. Do not add a sixth Move chain or
+provider, persistence, UI, presentation, or investigation work.

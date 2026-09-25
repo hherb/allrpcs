@@ -15,6 +15,9 @@ public partial class CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator : N
     private CharacterTargetSabotageDelayResolutionCoordinator resolution = null!;
     private CharacterTargetSabotageDelayController state = null!;
 
+    /// <summary>Gets the exact sabotage-turn reservation retained by outcome binding.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact generic author request bound to the ordinary-turn outcome.</summary>
     public CharacterSabotageActionConsiderationRequest? AuthorRequest { get; private set; }
 
@@ -83,6 +86,43 @@ public partial class CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator : N
         return true;
     }
 
+    /// <summary>Binds once from only the exact retained reserved result and outcome.</summary>
+    public bool TryBind(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterTargetSabotageDelayConsiderationResult? expectedResult,
+        CharacterTargetSabotageDelayResult? expectedDelay)
+    {
+        if (Reservation is not null
+            || AuthorRequest is not null
+            || Result is not null
+            || EventLog is not null
+            || WorldTime is not null
+            || Delay is not null
+            || outcomes.AuthorRequest is not null
+            || outcomes.OutcomeCount != 0
+            || !HasRetainedGraph(expectedReservation, expectedResult, expectedDelay))
+        {
+            return false;
+        }
+
+        if (!outcomes.TryBindAcknowledgedOutcome()
+            || outcomes.OutcomeCount != 1
+            || !ReferenceEquals(outcomes.AuthorRequest, binding.SelectedAuthorRequest)
+            || !ReferenceEquals(outcomes.Delay, expectedDelay))
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved Delay outcome must bind exactly once.");
+        }
+
+        Reservation = expectedReservation;
+        AuthorRequest = binding.SelectedAuthorRequest;
+        Result = expectedResult;
+        EventLog = expectedDelay!.EventLog;
+        WorldTime = expectedDelay.WorldTime;
+        Delay = expectedDelay;
+        return true;
+    }
+
     private bool HasRetainedGraph(
         CharacterTargetSabotageDelayConsiderationResult? expectedResult,
         CharacterTargetSabotageDelayResult? expectedDelay)
@@ -104,6 +144,44 @@ public partial class CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator : N
             && ReferenceEquals(result.AppliedResult, expectedDelay)
             && ReferenceEquals(result.EventLog, expectedDelay.EventLog)
             && ReferenceEquals(result.WorldTime, expectedDelay.WorldTime)
+            && ReferenceEquals(request.Request, expectedResult.Request)
+            && ReferenceEquals(results.DelayResult, expectedResult)
+            && ReferenceEquals(results.AcknowledgedAuthorRequest, authorRequest)
+            && ReferenceEquals(resolution.AcknowledgedResult, expectedResult)
+            && ReferenceEquals(resolution.AcknowledgedAppliedResult, expectedDelay)
+            && ReferenceEquals(state.LatestAppliedResult, expectedDelay)
+            && ReferenceEquals(state.EventLog, expectedDelay.EventLog)
+            && ReferenceEquals(state.WorldTime, expectedDelay.WorldTime)
+            && ReferenceEquals(expectedResult.SelectedCandidate, candidateBinding.Candidate)
+            && ReferenceEquals(expectedDelay.Candidate, candidateBinding.Candidate);
+    }
+
+    private bool HasRetainedGraph(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterTargetSabotageDelayConsiderationResult? expectedResult,
+        CharacterTargetSabotageDelayResult? expectedDelay)
+    {
+        CharacterSabotageActionConsiderationResult? genericResult = binding.AcknowledgedResult;
+        CharacterSabotageActionConsiderationRequest? authorRequest =
+            binding.SelectedAuthorRequest;
+        CharacterSabotageActionCandidateBinding<CharacterTargetSabotageDelayCandidate>?
+            candidateBinding = binding.SelectedCandidateBinding as
+                CharacterSabotageActionCandidateBinding<CharacterTargetSabotageDelayCandidate>;
+        return expectedReservation is not null
+            && expectedResult is not null
+            && expectedDelay is not null
+            && candidateBinding is not null
+            && binding.IsRetainedAcknowledgedBinding(
+                expectedReservation,
+                genericResult,
+                authorRequest,
+                candidateBinding)
+            && ReferenceEquals(result.Reservation, expectedReservation)
+            && ReferenceEquals(result.Result, expectedResult)
+            && ReferenceEquals(result.AppliedResult, expectedDelay)
+            && ReferenceEquals(result.EventLog, expectedDelay.EventLog)
+            && ReferenceEquals(result.WorldTime, expectedDelay.WorldTime)
+            && ReferenceEquals(request.Reservation, expectedReservation)
             && ReferenceEquals(request.Request, expectedResult.Request)
             && ReferenceEquals(results.DelayResult, expectedResult)
             && ReferenceEquals(results.AcknowledgedAuthorRequest, authorRequest)

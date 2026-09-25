@@ -11,6 +11,9 @@ public partial class CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinato
     private CharacterSabotageActionSpecificRequestStartCoordinator start = null!;
     private CharacterTargetSabotageDelayTaskController task = null!;
 
+    /// <summary>Gets the exact sabotage-turn reservation retained by typed start.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact typed Delay request started through the existing seam.</summary>
     public CharacterTargetSabotageDelayConsiderationRequest? Request { get; private set; }
 
@@ -53,12 +56,57 @@ public partial class CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinato
         return true;
     }
 
+    /// <summary>Starts once only while the exact reserved Delay graph remains current.</summary>
+    public bool TryStart(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterTargetSabotageDelayConsiderationRequest? expectedRequest)
+    {
+        if (Reservation is not null
+            || Request is not null
+            || expectedReservation is null
+            || expectedRequest is null
+            || start.StartedAuthorRequest is not null
+            || task.Status != CharacterTargetSabotageDelayTaskStatus.Idle
+            || task.Result is not null
+            || !request.IsCurrentRequest(expectedReservation, expectedRequest))
+        {
+            return false;
+        }
+
+        if (!start.TryStart()
+            || !ReferenceEquals(start.StartedAuthorRequest, binding.SelectedAuthorRequest)
+            || task.Status != CharacterTargetSabotageDelayTaskStatus.Running
+            || task.Result is not null)
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved Delay request must start exactly once.");
+        }
+
+        Reservation = expectedReservation;
+        Request = expectedRequest;
+        return true;
+    }
+
     /// <summary>Checks one exact completed result against the retained ordinary-turn start graph.</summary>
     internal bool IsCurrentCompletedResult(
         CharacterTargetSabotageDelayConsiderationResult? expectedResult) =>
         Request is not null
         && expectedResult is not null
         && request.IsCurrentRequest(Request)
+        && task.Status == CharacterTargetSabotageDelayTaskStatus.Completed
+        && ReferenceEquals(task.Result, expectedResult)
+        && ReferenceEquals(expectedResult.Request, Request)
+        && ReferenceEquals(start.StartedAuthorRequest, binding.SelectedAuthorRequest);
+
+    /// <summary>Checks one exact completed result against the retained reserved start graph.</summary>
+    internal bool IsCurrentCompletedResult(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterTargetSabotageDelayConsiderationResult? expectedResult) =>
+        Reservation is not null
+        && ReferenceEquals(Reservation, expectedReservation)
+        && Request is not null
+        && expectedResult is not null
+        && request.IsCurrentRequest(expectedReservation, Request)
         && task.Status == CharacterTargetSabotageDelayTaskStatus.Completed
         && ReferenceEquals(task.Result, expectedResult)
         && ReferenceEquals(expectedResult.Request, Request)
