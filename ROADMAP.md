@@ -887,6 +887,10 @@ Current continuation:
   authoring, selected-kind output, candidate binding, task result, and scene graph remain current.
 - [x] Bind and acknowledge only that exact observed ordinary-turn selection through the existing
   author-provenance owner, resetting only the generic task without composing a typed request.
+- [x] Compose only that exact acknowledged ordinary-turn Delay selection into one typed request through
+  the existing action-specific seam without starting typed work.
+- [x] Explicitly start only that exact typed Delay request while preserving its queued model across
+  rejected preflight and leaving completion unobserved.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

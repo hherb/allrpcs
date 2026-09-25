@@ -1293,10 +1293,13 @@ the existing task flow. One observation coordinator accepts only that exact task
 selection while the complete turn, authoring, selected-kind output, candidate binding, and scene graph
 remain current. A separate binding coordinator delegates the existing author-provenance binding and
 acknowledges only that exact observed result, leaving its selected Delay request and candidate retained
-while resetting only the completed generic task. Its switch-gated main-scene smoke proves eligible
-Conceal, Delay, and Influence outputs beside four absent kinds, preserves a queued model across rejected
-start preflight, and stops before composing or starting a typed Delay request. Ordinary startup remains
-authoring-, model-, mutation-, scheduling-, and presentation-free, and no sixth Move cycle is introduced.
+while resetting only the completed generic task. One adjacent coordinator revalidates that entire
+acknowledged graph and delegates the existing action-specific seam to compose one exact typed Delay
+request. A separate start coordinator accepts only that exact request, preserves its queued model across
+rejected preflight, and delegates the existing typed start once. Its switch-gated main-scene smoke proves
+eligible Conceal, Delay, and Influence outputs beside four absent kinds and stops with the typed Delay
+result unobserved. Ordinary startup remains authoring-, model-, mutation-, scheduling-, and
+presentation-free, and no sixth Move cycle is introduced.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

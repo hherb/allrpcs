@@ -105,4 +105,28 @@ public partial class CharacterSabotageOrdinaryTurnResultBindingCoordinator : Nod
         AcknowledgedResult = expectedResult;
         return true;
     }
+
+    /// <summary>Checks the exact retained acknowledgement against the complete current graph.</summary>
+    internal bool IsCurrentAcknowledgedBinding(
+        CharacterSabotageActionConsiderationResult? expectedResult,
+        CharacterSabotageActionConsiderationRequest? expectedRequest,
+        CharacterSabotageActionCandidateBinding? expectedBinding) =>
+        expectedResult is not null
+        && expectedRequest is not null
+        && expectedBinding is not null
+        && ReferenceEquals(BoundResult, expectedResult)
+        && ReferenceEquals(AcknowledgedResult, expectedResult)
+        && ReferenceEquals(observation.ObservedResult, expectedResult)
+        && ReferenceEquals(expectedResult.Request, start.Request)
+        && authoring.IsCurrent(start.Turn, start.Request)
+        && ReferenceEquals(SelectedAuthorRequest, expectedRequest)
+        && ReferenceEquals(SelectedCandidateBinding, expectedBinding)
+        && ReferenceEquals(binding.AcknowledgedResult, expectedResult)
+        && ReferenceEquals(binding.SelectedAuthorRequest, expectedRequest)
+        && ReferenceEquals(binding.SelectedCandidateBinding, expectedBinding)
+        && ReferenceEquals(expectedBinding.Request, expectedRequest)
+        && ReferenceEquals(expectedBinding.ActionKind, expectedResult.SelectedActionKind)
+        && selection.ObservedResult is null
+        && task.Status == CharacterSabotageActionTaskStatus.Idle
+        && task.Result is null;
 }
