@@ -4,7 +4,7 @@
 
 `main` includes merged PR #367 at `520c7f0`. Branch
 `codex/phase-7-acceptance-terminal-route` continues the switch-gated Phase 7 acceptance path without
-extending the closed repeated Move-cycle chain.
+extending the closed repeated Move-cycle chain. Draft PR #368 carries this branch.
 
 The ordinary-turn Delay path now preserves the exact generic acknowledgement, typed candidate, applied
 Delay, recovery request/result, fresh event log and world time, and recovered Delay authority. Four new
