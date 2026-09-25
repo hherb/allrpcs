@@ -11,6 +11,9 @@ public partial class CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator
     private CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator request = null!;
     private CharacterSabotageOutcomeDelayRecoveryCoordinator recovery = null!;
 
+    /// <summary>Gets the exact sabotage-turn reservation retained at recovery completion.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
+
     /// <summary>Gets the exact generic author request retained at recovery completion.</summary>
     public CharacterSabotageActionConsiderationRequest? AuthorRequest { get; private set; }
 
@@ -74,6 +77,55 @@ public partial class CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator
                 "A preflighted ordinary-turn Delay recovery must complete and acknowledge once.");
         }
 
+        AuthorRequest = expectedAuthorRequest;
+        Request = expectedRequest;
+        Result = result;
+        AppliedResult = appliedResult;
+        EventLog = appliedResult.EventLog;
+        WorldTime = appliedResult.WorldTime;
+        return true;
+    }
+
+    /// <summary>Retains and acknowledges only the exact completed reserved recovery.</summary>
+    public bool TryRetain(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterTargetSabotageDelayRecoveryConsiderationRequest? expectedRequest)
+    {
+        if (expectedReservation is null
+            || expectedAuthorRequest is null
+            || expectedRequest is null
+            || Reservation is not null
+            || AuthorRequest is not null
+            || Request is not null
+            || Result is not null
+            || AppliedResult is not null
+            || EventLog is not null
+            || WorldTime is not null
+            || !ReferenceEquals(request.Reservation, expectedReservation)
+            || !ReferenceEquals(start.Reservation, expectedReservation)
+            || !ReferenceEquals(request.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(request.Request, expectedRequest)
+            || !ReferenceEquals(start.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(start.Request, expectedRequest)
+            || !ReferenceEquals(recovery.AuthorRequest, expectedAuthorRequest)
+            || !ReferenceEquals(recovery.Request, expectedRequest)
+            || !ReferenceEquals(recovery.StartedRequest, expectedRequest))
+        {
+            return false;
+        }
+
+        if (!recovery.TryComplete(expectedAuthorRequest, expectedRequest)
+            || recovery.CompletedResult is not { } result
+            || recovery.RecoveredResult is not { } appliedResult
+            || !ReferenceEquals(recovery.RecoveredEventLog, appliedResult.EventLog)
+            || !ReferenceEquals(recovery.RecoveredWorldTime, appliedResult.WorldTime))
+        {
+            throw new InvalidOperationException(
+                "A preflighted reserved Delay recovery must complete and acknowledge once.");
+        }
+
+        Reservation = expectedReservation;
         AuthorRequest = expectedAuthorRequest;
         Request = expectedRequest;
         Result = result;

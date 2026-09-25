@@ -2,56 +2,44 @@
 
 ## Current state
 
-`main` includes merged PR #370 at `6e9dba3`. Branch
-`codex/phase-7-reserved-sabotage-lifecycle` advances the genuine Phase 7 ordinary-play acceptance path
-without extending the closed repeated Move-cycle chain. Draft PR #371 carries this branch.
+`main` includes merged PR #371 at `40b1062`. Branch
+`codex/phase-7-reserved-recovery-completion` continues the genuine Phase 7 ordinary-play path without
+extending the closed repeated Move-cycle chain.
 
-The exact reserved ordinary-play path now binds and acknowledges its generic Delay selection through
-the existing author-provenance owner, composes and explicitly starts the typed request, applies and
-acknowledges its exact result, and binds the fresh authoritative event-log and world-time outcome. It
-then publishes the exact recovery candidate and eligibility token, composes the provider-neutral
-recovery request, and explicitly starts it. All three queued models are one-shot, the shared reservation
-remains current, and normal dialogue cannot overlap it.
+The exact reserved Delay path now completes and acknowledges recovery, retains fresh authoritative
+event-log and world-time snapshots, retains then resets its exact terminal route, and exposes and admits
+one exact completed-turn token. The completed recovery task alone is reset, all three model-call counts
+remain one, and the shared reservation remains current so normal dialogue still cannot overlap it.
 
-The path stops before observing or acknowledging recovery. It has not retained or reset a terminal
-route, completed the reserved sabotage turn, released the shared slot, or added player-visible
-investigation. The older switch-gated proof covers those reusable downstream owners. Do not add a sixth
-or later Move chain.
+The path stops before resolving the reserved activity or releasing its shared slot. It schedules no
+next action and adds no player-visible investigation. Do not add a sixth or later Move chain.
 
 ## Validation and review
 
-- Test-first focused builds failed on each absent reserved overload before implementation. The focused
-  host-local main-scene smoke now proves exact reservation retention, generic binding and acknowledgement,
-  typed Delay composition/start/application/acknowledgement, outcome binding, recovery-candidate and
-  eligibility publication, recovery-request composition, and explicit recovery start. Null, rebuilt,
-  stale, and repeated inputs stay inert without extra model calls or slot release.
+- Test-first focused builds failed at each absent reserved overload before implementation.
+- The focused host-local main-scene smoke proves null, rebuilt-reservation, rebuilt-request, and repeated
+  inputs stay inert through recovery acknowledgement, terminal retention/reset, completion, and admission.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
   2,780 Domain, 586 Application, 1,220 Infrastructure, and 8 architecture tests, representative
   scenario validation, every credential-free Godot smoke, and the Compatibility launch.
-- The sandboxed quality run reached a zero-warning build, then hit the known VSTest loopback
-  `SocketException (13)`; the identical host-local run passed completely.
-- Complete-diff review added an exact one-call recovery-model assertion and split smoke-only models so
-  every changed C# file remains below 500 lines. No automatic lifecycle progression, fabricated
-  dialogue, sixth Move chain, provider/persistence/UI work, whitespace error, or release claim remains.
-- Draft PR #371 targets `main`. Hosted run `36115308443` failed all five jobs with `steps: []`; no
-  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
+- Complete-diff review separated reserved from dialogue-turn provenance and kept every changed C# file
+  below 500 lines. No automatic progression, fabricated dialogue, sixth Move chain, provider,
+  persistence, UI, presentation, investigation, whitespace error, or release claim remains.
+- The draft PR number and hosted-check state belong to the publishing step for this branch.
 
 ## Exact next bounded slice
 
-Retain and acknowledge only the exact completed reserved ordinary-play Delay recovery through the
-existing recovery-result owner.
+Resolve and release only the exact admitted reserved ordinary-play Delay turn.
 
 Acceptance boundary:
 
-1. Retain the exact reservation, author request, recovery request, task-installed result, applied recovery,
-   and fresh authoritative event-log and world-time snapshots.
-2. Reuse the existing recovery observation, resolution, and acknowledgement owners; reset only the
-   completed recovery task.
-3. Reject null, rebuilt reservation/request/result/candidate, stale provenance or authority, and repeated
-   input without consuming another model or releasing the slot.
-4. Stop before terminal-route retention or reset, turn completion, or reservation release.
-5. Add no sixth or later Move-cycle seam and no provider, persistence, UI, presentation, or investigation
-   work.
+1. Reuse the existing response-free lifecycle-resolution and ordinary-turn-boundary owners for the exact
+   reservation, admitted completion, awaiting activity, applied recovery, and authoritative snapshots.
+2. Bind only the exact terminal successor, then release only that exact shared reservation.
+3. Reject null, rebuilt reservation/turn/completion/recovery, stale authority, active-boundary, and repeated
+   input without consuming another model or scheduling another action.
+4. Stop before another opportunity, action, cadence cycle, or player-visible investigation.
+5. Add no sixth or later Move-cycle seam and no provider, persistence, UI, or presentation work.
 6. Keep ordinary startup inert without an eligible meaningful event; update acceptance evidence only for
    behavior actually proved.
 7. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next acceptance slice.

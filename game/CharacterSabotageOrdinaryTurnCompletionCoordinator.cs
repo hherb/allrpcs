@@ -9,6 +9,10 @@ public partial class CharacterSabotageOrdinaryTurnCompletionCoordinator : Node
     private CharacterSabotageOrdinaryTurnTerminalResetCoordinator terminalReset = null!;
     private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
     private CharacterSabotageTurnCompletionCoordinator completion = null!;
+    private CharacterTurnActivityController turns = null!;
+
+    /// <summary>Gets the exact sabotage-turn reservation retained at completion.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
 
     /// <summary>Gets the exact completed-turn token exposed through the existing owner.</summary>
     public CharacterSabotageTurnCompletion? Completion { get; private set; }
@@ -22,6 +26,7 @@ public partial class CharacterSabotageOrdinaryTurnCompletionCoordinator : Node
             "../CharacterTargetSabotageDelayRecoveryController");
         completion = GetNode<CharacterSabotageTurnCompletionCoordinator>(
             "../CharacterSabotageTurnCompletionCoordinator");
+        turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
     }
 
     /// <summary>Exposes completion only for the exact reset ordinary-turn Delay route.</summary>
@@ -59,6 +64,36 @@ public partial class CharacterSabotageOrdinaryTurnCompletionCoordinator : Node
         }
 
         Completion = completed;
+        return true;
+    }
+
+    /// <summary>Exposes completion only for the exact reset reserved Delay route.</summary>
+    public bool TryComplete(
+        CharacterSabotageTurnReservation? expectedReservation,
+        Character? expectedActor,
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterSabotageActionKind? expectedActionKind,
+        CharacterTargetSabotageDelayRecoveryResult? expectedDelayRecovery)
+    {
+        if (Reservation is not null
+            || expectedReservation is null
+            || !ReferenceEquals(turns.SabotageReservation, expectedReservation)
+            || !ReferenceEquals(terminalReset.Reservation, expectedReservation)
+            || !ReferenceEquals(expectedReservation.Opportunity.Actor, expectedActor))
+        {
+            return false;
+        }
+
+        if (!TryComplete(
+                expectedActor,
+                expectedAuthorRequest,
+                expectedActionKind,
+                expectedDelayRecovery))
+        {
+            return false;
+        }
+
+        Reservation = expectedReservation;
         return true;
     }
 }

@@ -1329,13 +1329,14 @@ provider-neutral generic decision flow, and observes its exact completed result 
 now binds and acknowledges that selection through its exact author provenance, composes and explicitly
 starts its typed Delay request, applies and acknowledges the exact completed result, and binds the
 authoritative event-log and world-time outcome. It then publishes the exact scene-owned recovery
-candidate and eligibility token, composes the provider-neutral recovery request, and explicitly starts
-that request while retaining the same reservation.
+candidate and eligibility token, composes and explicitly starts the provider-neutral recovery request,
+applies and acknowledges its exact completed recovery, retains and resets the exact terminal route,
+and exposes and admits one exact completed-turn token while retaining the same reservation.
 Null, rebuilt actor, cadence, event, opportunity, reservation, request, stale authority, early,
 duplicate, and repeated inputs remain inert and preserve queued one-shot models. Ordinary startup
 without an eligible meaningful event performs no sabotage work. The explicit proof currently stops
-before observing or acknowledging recovery, retaining or resetting a terminal route, completing the
-reserved turn, releasing the shared slot, or exposing player-visible investigation evidence.
+before resolving the reserved turn, releasing the shared slot, scheduling another action, or exposing
+player-visible investigation evidence.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

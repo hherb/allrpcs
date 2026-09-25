@@ -937,6 +937,12 @@ Current continuation:
   starting it.
 - [x] Explicitly start only that exact reserved recovery request while preserving its queued model
   across rejected preflight and leaving completion unobserved.
+- [x] Retain and acknowledge only that exact completed reserved recovery with fresh authoritative
+  event-log and world-time snapshots while resetting only its completed task.
+- [x] Retain and reset only that exact reserved terminal route while preserving recovered authority
+  and the shared reservation.
+- [x] Expose and admit one exact completed-turn token from that reset reserved route without
+  scheduling another action or releasing the shared slot.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
