@@ -157,6 +157,13 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
     internal bool IsCurrent(
         CharacterTurnActivity? expectedTurn,
         CharacterSabotageActionConsiderationRequest? expectedRequest) =>
+        IsRetained(expectedTurn, expectedRequest)
+        && HasCurrentSceneAuthority();
+
+    /// <summary>Checks retained authoring provenance after action authority has advanced.</summary>
+    internal bool IsRetained(
+        CharacterTurnActivity? expectedTurn,
+        CharacterSabotageActionConsiderationRequest? expectedRequest) =>
         Turn is not null
         && Actor is not null
         && Request is not null
@@ -168,7 +175,6 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringCoordinator : Node
         && ReferenceEquals(Turn.State, CharacterTurnActivityState.AwaitingResponse)
         && ReferenceEquals(composer.Request, Request)
         && ReferenceEquals(composer.ComposedAuthorOutputs, AuthorOutputs)
-        && HasCurrentSceneAuthority()
         && AuthorOutputs.Count == authors.Length
         && AuthorOutputs.Select((output, index) => ReferenceEquals(output, authors[index].Request))
             .All(value => value);
