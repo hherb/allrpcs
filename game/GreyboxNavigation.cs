@@ -1,4 +1,5 @@
 using Godot;
+using static Allrpcs.Game.OpeningRegionVillageTransitionGeometry;
 
 namespace Allrpcs.Game;
 
@@ -25,13 +26,14 @@ public partial class GreyboxNavigation : NavigationRegion2D
     private const float SickhouseClearanceLeft = 800.0f;
     private const float SickhouseInteriorLeft = 848.0f;
     private const float SickhouseEntranceLeft = 896.0f;
+    private const float SickhouseEntranceSubdivisionLeft = 904.0f;
+    private const float SickhouseEntranceSubdivisionRight = 936.0f;
     private const float SickhouseEntranceRight = 944.0f;
     private const float SickhouseInteriorRight = 992.0f;
     private const float SickhouseClearanceRight = 1040.0f;
     private const float SickhouseClearanceTop = 656.0f;
     private const float SickhouseInteriorTop = 704.0f;
     private const float SickhouseInteriorBottom = 848.0f;
-
     private static readonly Vector2[] UpperBank =
     [
         new(WorldInset, 128.0f),
@@ -157,16 +159,28 @@ public partial class GreyboxNavigation : NavigationRegion2D
             TreeClearanceLeft,
             320.0f,
             TreeClearanceRight,
+            VillageEdgeClearanceLeft,
+            VillageEdgeInteriorLeft,
             624.0f,
+            VillageEdgeNorthOpeningLeft,
+            VillageEdgeNorthOpeningRight,
+            VillageEdgeInteriorRight,
             WestStreamCollisionEnd,
+            VillageEdgeClearanceRight,
             BridgeLeft,
             SickhouseClearanceLeft,
+            VillageSquareClearanceLeft,
             BridgeRight,
             SickhouseInteriorLeft,
             EastStreamCollisionStart,
+            VillageSquareSouthOpeningLeft,
+            VillageSquareSouthOpeningRight,
             SickhouseEntranceLeft,
+            SickhouseEntranceSubdivisionLeft,
             920.0f,
+            SickhouseEntranceSubdivisionRight,
             SickhouseEntranceRight,
+            VillageSquareClearanceRight,
             SickhouseInteriorRight,
             VillageClearanceLeft,
             SickhouseClearanceRight,
@@ -177,8 +191,14 @@ public partial class GreyboxNavigation : NavigationRegion2D
         float[] verticalEdges =
         [
             LowerFieldTop,
+            VillageTransitionClearanceTop,
+            VillageTransitionInteriorTop,
+            VillageTransitionSideOpeningTop,
+            VillageTransitionSideOpeningBottom,
+            VillageTransitionInteriorBottom,
             TreeClearanceBottom,
             VillageClearanceTop,
+            VillageTransitionClearanceBottom,
             SickhouseClearanceTop,
             SickhouseInteriorTop,
             VillageClearanceBottom,
@@ -218,8 +238,121 @@ public partial class GreyboxNavigation : NavigationRegion2D
             && right <= SickhouseClearanceRight
             && top >= SickhouseClearanceTop
             && bottom <= WorldBottom;
-        return isTreeClearance || isVillageClearance || isSickhouseClearance;
+        bool isVillageTransitionClearance = IsVillageTransitionClearance(
+            left,
+            top,
+            right,
+            bottom);
+        return isTreeClearance
+            || isVillageClearance
+            || isSickhouseClearance
+            || isVillageTransitionClearance;
     }
+
+    private static bool IsVillageTransitionClearance(
+        float left,
+        float top,
+        float right,
+        float bottom)
+    {
+        bool isInsideEdgeClearance = IsInside(
+            left,
+            top,
+            right,
+            bottom,
+            VillageEdgeClearanceLeft,
+            VillageTransitionClearanceTop,
+            VillageEdgeClearanceRight,
+            VillageTransitionClearanceBottom);
+        bool isInsideEdgeSurface = IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageEdgeInteriorLeft,
+                VillageTransitionInteriorTop,
+                VillageEdgeInteriorRight,
+                VillageTransitionInteriorBottom)
+            || IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageEdgeNorthOpeningLeft,
+                VillageTransitionClearanceTop,
+                VillageEdgeNorthOpeningRight,
+                VillageTransitionInteriorTop)
+            || IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageEdgeClearanceLeft,
+                VillageTransitionSideOpeningTop,
+                VillageEdgeInteriorLeft,
+                VillageTransitionSideOpeningBottom)
+            || IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageEdgeInteriorRight,
+                VillageTransitionSideOpeningTop,
+                VillageEdgeClearanceRight,
+                VillageTransitionSideOpeningBottom);
+        bool isInsideSquareClearance = IsInside(
+            left,
+            top,
+            right,
+            bottom,
+            VillageSquareClearanceLeft,
+            VillageTransitionClearanceTop,
+            VillageSquareClearanceRight,
+            VillageTransitionClearanceBottom);
+        bool isInsideSquareSurface = IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageSquareInteriorLeft,
+                VillageTransitionInteriorTop,
+                VillageSquareInteriorRight,
+                VillageTransitionInteriorBottom)
+            || IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageSquareClearanceLeft,
+                VillageTransitionSideOpeningTop,
+                VillageSquareInteriorLeft,
+                VillageTransitionSideOpeningBottom)
+            || IsInside(
+                left,
+                top,
+                right,
+                bottom,
+                VillageSquareSouthOpeningLeft,
+                VillageTransitionInteriorBottom,
+                VillageSquareSouthOpeningRight,
+                VillageTransitionClearanceBottom);
+        return (isInsideEdgeClearance && !isInsideEdgeSurface)
+            || (isInsideSquareClearance && !isInsideSquareSurface);
+    }
+
+    private static bool IsInside(
+        float left,
+        float top,
+        float right,
+        float bottom,
+        float areaLeft,
+        float areaTop,
+        float areaRight,
+        float areaBottom) =>
+        left >= areaLeft
+        && right <= areaRight
+        && top >= areaTop
+        && bottom <= areaBottom;
 
     private static void AddSickhouseInterior(NavigationPolygonBuilder builder)
     {
@@ -231,10 +364,20 @@ public partial class GreyboxNavigation : NavigationRegion2D
         builder.AddRectangle(
             SickhouseEntranceLeft,
             SickhouseInteriorTop,
+            SickhouseEntranceSubdivisionLeft,
+            SickhouseInteriorBottom);
+        builder.AddRectangle(
+            SickhouseEntranceSubdivisionLeft,
+            SickhouseInteriorTop,
             920.0f,
             SickhouseInteriorBottom);
         builder.AddRectangle(
             920.0f,
+            SickhouseInteriorTop,
+            SickhouseEntranceSubdivisionRight,
+            SickhouseInteriorBottom);
+        builder.AddRectangle(
+            SickhouseEntranceSubdivisionRight,
             SickhouseInteriorTop,
             SickhouseEntranceRight,
             SickhouseInteriorBottom);
@@ -246,10 +389,20 @@ public partial class GreyboxNavigation : NavigationRegion2D
         builder.AddRectangle(
             SickhouseEntranceLeft,
             SickhouseClearanceTop,
+            SickhouseEntranceSubdivisionLeft,
+            SickhouseInteriorTop);
+        builder.AddRectangle(
+            SickhouseEntranceSubdivisionLeft,
+            SickhouseClearanceTop,
             920.0f,
             SickhouseInteriorTop);
         builder.AddRectangle(
             920.0f,
+            SickhouseClearanceTop,
+            SickhouseEntranceSubdivisionRight,
+            SickhouseInteriorTop);
+        builder.AddRectangle(
+            SickhouseEntranceSubdivisionRight,
             SickhouseClearanceTop,
             SickhouseEntranceRight,
             SickhouseInteriorTop);

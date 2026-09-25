@@ -249,6 +249,12 @@ not move faster than a cardinal direction. The camera follows with a named smoot
 Its named minimum, default, and maximum zoom tuning values are 0.75, 1.0, and 2.0. Zoom and
 camera-pan input are intentionally not mapped yet.
 
+The 1600-by-900 region is authored world space, not a required display resolution. The window uses
+960-by-540 only as its minimum supported physical size and 16:9 design viewport. It remains resizable,
+uses canvas-item scaling with aspect expansion, and can occupy larger or fullscreen displays without
+changing world coordinates or stretching one axis independently. Wider screens reveal more horizontal
+camera space and taller screens reveal more vertical camera space within the same bounded world.
+
 Four thin collision walls keep the Seeker inside the temporary outer border. Simple collision
 geometry also blocks the blue stream outside the obvious brown temporary bridge, the complete
 grey village block, and a representative three-tree cluster. The bridge is traversable in both
@@ -1380,6 +1386,15 @@ station position within 72 pixels. The reachable scene shows garden beds, a benc
 starting or advancing preparation. The switch-gated proof retains the ordinary controller's exact recipe
 while its activity and outcome remain absent; ingredient interaction, preparation input, discovery,
 dialogue, treatment, production art, and state variation remain deferred.
+
+The village-square and village-edge transition scene binds only the projection's exact retained anchors
+to separate bounded areas with 24-pixel endpoint clearance. Thirteen collision-backed boundary sections
+leave explicit garden, square, edge, stream-branch, and woodland-branch openings. The synchronized
+navigation surface excludes wall clearance while retaining every authored opening-region route, and a
+switch-gated proof drives the Seeker garden -> square -> edge and back through both navigation paths and
+physical collision openings. Rebuilt, foreign, missing, swapped, overlapping, out-of-bounds, and
+insufficient-clearance bindings fail closed. Stream, laundry, woodland, clue, discovery, dialogue,
+inhabitant, production-art, weather, sound, journal, and map work remains deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
