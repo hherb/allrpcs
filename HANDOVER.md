@@ -31,6 +31,8 @@ model startup remain unchanged.
 - Complete-diff review confirmed whitespace and 120-character cleanliness, kept every changed C# file
   below 500 lines, and restored exact shared polygon seams after the initial sickhouse mesh split had
   disconnected earlier bridge and east-bank routes.
+- Draft PR #375 targets `main`. Hosted run `36138265953` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 - No preparation interaction or progression, treatment, dialogue, focus, discovery, other landmark,
   production art, weather, lighting, sound, story variation, journal, map, provider, persistence,
   production UI, audio, signing, release, or distribution work was added.
