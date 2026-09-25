@@ -1304,12 +1304,15 @@ pre-action authority predicate. One adjacent outcome coordinator delegates the e
 outcome binder for only those exact retained tokens. Four adjacent recovery coordinators then publish
 the exact Delay recovery candidate and eligibility token, compose and explicitly start its exact
 provider-neutral request, and retain and acknowledge only its exact completed applied recovery with
-fresh authoritative event-log and world-time snapshots. Null, rebuilt, foreign, replaced-authority,
-already-published, and repeated inputs stay inert without consuming queued one-shot models. Its
-switch-gated main-scene smoke proves eligible Conceal, Delay, and Influence outputs beside four absent
-kinds through one applied and recovered Delay while stopping before terminal routing. Ordinary startup
-remains authoring-, model-, mutation-, scheduling-, and presentation-free, and no sixth Move cycle is
-introduced.
+fresh authoritative event-log and world-time snapshots. Four terminal coordinators validate that full
+retained graph, delegate the existing terminal-route retention and reset owners, expose one exact
+completed-turn token, and admit only that token through the pure scheduling gate. Null, rebuilt,
+foreign, replaced-authority, wrong-kind, already-published, and repeated inputs stay inert without
+consuming queued one-shot models. Its switch-gated main-scene smoke proves eligible Conceal, Delay, and
+Influence outputs beside four absent kinds through one applied and recovered Delay, terminal reset, and
+completion admission while stopping before binding the still-awaiting character turn or scheduling
+another action. Ordinary startup remains authoring-, model-, mutation-, scheduling-, and
+presentation-free, and no sixth Move cycle is introduced.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

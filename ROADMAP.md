@@ -903,6 +903,14 @@ Current continuation:
   rejected preflight and leaving completion unobserved.
 - [x] Retain and acknowledge only that exact completed Delay recovery with its fresh authoritative
   event log and world time without entering terminal routing.
+- [x] Retain only that exact completed ordinary-turn Delay recovery as one terminal route while its
+  generic acknowledgement, typed candidate, recovery request, result, and authority remain current.
+- [x] Reset only that exact retained ordinary-turn terminal route while preserving its recovered
+  event-log and world-time authority.
+- [x] Expose one exact completed-turn token only from that reset ordinary-turn Delay route without
+  scheduling another action.
+- [x] Admit only that exact current completed-turn token through the pure scheduling gate without
+  binding the still-awaiting character turn or entering another sabotage cycle.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

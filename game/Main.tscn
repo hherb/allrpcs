@@ -304,6 +304,10 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator.cs" id="291ah_sabotage_ordinary_delay_recovery_request"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator.cs" id="291ai_sabotage_ordinary_delay_recovery_start"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator.cs" id="291aj_sabotage_ordinary_delay_recovery_result"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnTerminalRouteCoordinator.cs" id="291ak_sabotage_ordinary_terminal_route"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnTerminalResetCoordinator.cs" id="291al_sabotage_ordinary_terminal_reset"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionCoordinator.cs" id="291am_sabotage_ordinary_completion"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator.cs" id="291an_sabotage_ordinary_completion_admission"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck.cs" id="291b_sabotage_ordinary_authoring_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
@@ -878,6 +882,18 @@ script = ExtResource("291ai_sabotage_ordinary_delay_recovery_start")
 
 [node name="CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator" type="Node" parent="."]
 script = ExtResource("291aj_sabotage_ordinary_delay_recovery_result")
+
+[node name="CharacterSabotageOrdinaryTurnTerminalRouteCoordinator" type="Node" parent="."]
+script = ExtResource("291ak_sabotage_ordinary_terminal_route")
+
+[node name="CharacterSabotageOrdinaryTurnTerminalResetCoordinator" type="Node" parent="."]
+script = ExtResource("291al_sabotage_ordinary_terminal_reset")
+
+[node name="CharacterSabotageOrdinaryTurnCompletionCoordinator" type="Node" parent="."]
+script = ExtResource("291am_sabotage_ordinary_completion")
+
+[node name="CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator" type="Node" parent="."]
+script = ExtResource("291an_sabotage_ordinary_completion_admission")
 
 [node name="CharacterSabotageActionAuthorBindingCoordinator" type="Node" parent="."]
 script = ExtResource("292_sabotage_action_author_binding")

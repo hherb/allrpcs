@@ -29,6 +29,10 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
     private CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator recoveryRequest = null!;
     private CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator recoveryStart = null!;
     private CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator recoveryResult = null!;
+    private CharacterSabotageOrdinaryTurnTerminalRouteCoordinator ordinaryTerminalRoute = null!;
+    private CharacterSabotageOrdinaryTurnTerminalResetCoordinator ordinaryTerminalReset = null!;
+    private CharacterSabotageOrdinaryTurnCompletionCoordinator ordinaryCompletion = null!;
+    private CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator completionAdmission = null!;
     private CharacterSabotageOutcomeDelayRecoveryCoordinator recovery = null!;
     private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests = null!;
     private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
@@ -93,6 +97,14 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             "../CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator");
         recoveryResult = GetNode<CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator>(
             "../CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator");
+        ordinaryTerminalRoute = GetNode<CharacterSabotageOrdinaryTurnTerminalRouteCoordinator>(
+            "../CharacterSabotageOrdinaryTurnTerminalRouteCoordinator");
+        ordinaryTerminalReset = GetNode<CharacterSabotageOrdinaryTurnTerminalResetCoordinator>(
+            "../CharacterSabotageOrdinaryTurnTerminalResetCoordinator");
+        ordinaryCompletion = GetNode<CharacterSabotageOrdinaryTurnCompletionCoordinator>(
+            "../CharacterSabotageOrdinaryTurnCompletionCoordinator");
+        completionAdmission = GetNode<CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator>(
+            "../CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeDelayRecoveryCoordinator>(
             "../CharacterSabotageOutcomeDelayRecoveryCoordinator");
         recoveryRequests = GetNode<CharacterTargetSabotageDelayRecoveryCandidateRequestController>(
@@ -194,7 +206,18 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             return;
         }
 
-        if (!RetainExactCompletedDelayRecovery())
+        if (!RetainExactCompletedDelayRecovery()
+            || !CharacterSabotageOrdinaryTurnTerminalSmokeVerifier.TryVerify(
+                source.Actor,
+                recoveryResult,
+                ordinaryTerminalRoute,
+                ordinaryTerminalReset,
+                ordinaryCompletion,
+                completionAdmission,
+                terminalRoute,
+                model.CallCount,
+                delayModel.CallCount,
+                recoveryModel.CallCount))
         {
             Fail("Ordinary-turn sabotage Delay recovery did not remain exact and one-shot.");
             return;
@@ -210,7 +233,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             + "resolving, and acknowledging only its exact completed result once before binding its "
             + "exact applied outcome, publishing its exact recovery candidate, and composing its "
             + "exact recovery request before explicitly starting, completing, and acknowledging its "
-            + "exact applied recovery once without terminal routing.");
+            + "exact applied recovery once before retaining and resetting its exact terminal route, "
+            + "then exposing and admitting one exact completed-turn token without scheduling another "
+            + "action.");
         GetTree().Quit();
     }
 
@@ -255,6 +280,14 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && recoveryResult.AppliedResult is null
             && recoveryResult.EventLog is null
             && recoveryResult.WorldTime is null
+            && ordinaryTerminalRoute.AuthorRequest is null
+            && ordinaryTerminalRoute.ActionKind is null
+            && ordinaryTerminalRoute.DelayRecovery is null
+            && ordinaryTerminalReset.ResetAuthorRequest is null
+            && ordinaryTerminalReset.ResetActionKind is null
+            && ordinaryTerminalReset.DelayRecovery is null
+            && ordinaryCompletion.Completion is null
+            && completionAdmission.Admission is null
             && recovery.AuthorRequest is null
             && recovery.Request is null
             && recovery.StartedRequest is null
