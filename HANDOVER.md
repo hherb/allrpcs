@@ -4,7 +4,7 @@
 
 `main` includes merged PR #363 at `dca598d`. Branch
 `codex/phase-7-ordinary-turn-result-observation` completes the next two bounded Phase 7 acceptance
-slices without extending the repeated Move-cycle chain.
+slices without extending the repeated Move-cycle chain. Draft PR #364 carries this branch.
 
 `CharacterSabotageOrdinaryTurnResultObservationCoordinator` accepts only the exact completed generic
 selection started by `CharacterSabotageOrdinaryTurnConsiderationStartCoordinator`. It revalidates the
@@ -44,6 +44,9 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
 - Complete-diff review found no partial observation or acknowledgement path, lost exact-reference
   provenance, premature typed composition, unsupported ordinary-play claim, acceptance overstatement,
   Move-chain extension, stale next slice, line-length issue, or whitespace error.
+- Draft PR #364 is mergeable. Its implementation-head workflow completed all five jobs as failures
+  with `steps: []`; no checkout, build, test, smoke, or packaging step ran, so this is Actions/account
+  infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
