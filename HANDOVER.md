@@ -4,7 +4,7 @@
 
 `main` includes merged PR #365 at `b09b235`. Branch
 `codex/phase-7-ordinary-turn-delay-result` continues the switch-gated Phase 7 acceptance path without
-extending the closed repeated Move-cycle chain.
+extending the closed repeated Move-cycle chain. Draft PR #366 carries this branch.
 
 `CharacterSabotageOrdinaryTurnSpecificResultCoordinator` accepts only the exact task-installed completed
 typed Delay result whose generic acknowledgement, selected author request, typed candidate binding,
@@ -41,6 +41,9 @@ completion, scheduling authorization, cycle boundary, or admission. Preserve unr
 - Complete-diff review found no stale pre-action eligibility reuse, rebuilt-token admission, partial
   resolution/acknowledgement, extra model consumption, recovery start, acceptance overstatement,
   Move-chain extension, line-length issue, or whitespace error.
+- Draft PR #366 is mergeable. Its implementation-head workflow completed all five jobs as failures with
+  `steps: []`; no checkout, build, test, smoke, or packaging step ran, so this is Actions/account
+  infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
