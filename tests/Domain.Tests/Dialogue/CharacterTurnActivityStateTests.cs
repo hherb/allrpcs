@@ -5,10 +5,10 @@ namespace Allrpcs.Domain.Tests.Dialogue;
 public sealed class CharacterTurnActivityStateTests
 {
     private static readonly string[] ExpectedValues =
-        ["awaiting-response", "speaking", "completed", "cancelled"];
+        ["awaiting-response", "speaking", "completed", "resolved", "cancelled"];
 
     private static readonly string[] ExpectedPropertyNames =
-        ["All", "AwaitingResponse", "Cancelled", "Completed", "Speaking", "Value"];
+        ["All", "AwaitingResponse", "Cancelled", "Completed", "Resolved", "Speaking", "Value"];
 
     [Fact]
     public void DefinesTheCompleteCanonicalStateSetInStableOrder()
@@ -18,6 +18,7 @@ public sealed class CharacterTurnActivityStateTests
             state => Assert.Same(CharacterTurnActivityState.AwaitingResponse, state),
             state => Assert.Same(CharacterTurnActivityState.Speaking, state),
             state => Assert.Same(CharacterTurnActivityState.Completed, state),
+            state => Assert.Same(CharacterTurnActivityState.Resolved, state),
             state => Assert.Same(CharacterTurnActivityState.Cancelled, state));
     }
 

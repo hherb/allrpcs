@@ -308,6 +308,7 @@
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnTerminalResetCoordinator.cs" id="291al_sabotage_ordinary_terminal_reset"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionCoordinator.cs" id="291am_sabotage_ordinary_completion"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator.cs" id="291an_sabotage_ordinary_completion_admission"]
+[ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator.cs" id="291ao_sabotage_ordinary_lifecycle_resolution"]
 [ext_resource type="Script" path="res://CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck.cs" id="291b_sabotage_ordinary_authoring_check"]
 [ext_resource type="Script" path="res://CharacterSabotageActionAuthorBindingCoordinator.cs" id="292_sabotage_action_author_binding"]
 [ext_resource type="Script" path="res://CharacterSabotageActionSpecificRequestCoordinator.cs" id="293_sabotage_action_specific_request"]
@@ -894,6 +895,9 @@ script = ExtResource("291am_sabotage_ordinary_completion")
 
 [node name="CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator" type="Node" parent="."]
 script = ExtResource("291an_sabotage_ordinary_completion_admission")
+
+[node name="CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator" type="Node" parent="."]
+script = ExtResource("291ao_sabotage_ordinary_lifecycle_resolution")
 
 [node name="CharacterSabotageActionAuthorBindingCoordinator" type="Node" parent="."]
 script = ExtResource("292_sabotage_action_author_binding")

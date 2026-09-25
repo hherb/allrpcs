@@ -9,6 +9,7 @@ public sealed class CharacterTurnCancellationPolicyTests
     [InlineData("awaiting-response", true)]
     [InlineData("speaking", true)]
     [InlineData("completed", false)]
+    [InlineData("resolved", false)]
     [InlineData("cancelled", false)]
     public void AllowsOnlyAwaitingOrSpeakingActivity(string stateValue, bool expected)
     {
@@ -58,6 +59,7 @@ public sealed class CharacterTurnCancellationPolicyTests
                 new DialogueAudienceSnapshot(seekerId, [healerId])),
             new DialogueAct(utterance, DialogueActType.Request));
         CharacterTurnResponse? response = state == CharacterTurnActivityState.AwaitingResponse
+            || state == CharacterTurnActivityState.Resolved
             ? null
             : new CharacterTurnResponse(
                 request,

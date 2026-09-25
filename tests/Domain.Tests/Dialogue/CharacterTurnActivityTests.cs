@@ -56,6 +56,21 @@ public sealed class CharacterTurnActivityTests
     }
 
     [Fact]
+    public void ResolvedStateRetainsTheRequestWithoutFabricatingAResponse()
+    {
+        CharacterTurnRequest request = CreateRequest("Please wait.");
+
+        CharacterTurnActivity resolved = new(
+            request,
+            null,
+            CharacterTurnActivityState.Resolved);
+
+        Assert.Same(request, resolved.Request);
+        Assert.Null(resolved.Response);
+        Assert.Same(CharacterTurnActivityState.Resolved, resolved.State);
+    }
+
+    [Fact]
     public void RejectsInvalidResponseShapes()
     {
         CharacterTurnRequest request = CreateRequest("Please wait.");
@@ -73,6 +88,10 @@ public sealed class CharacterTurnActivityTests
             request,
             null,
             CharacterTurnActivityState.Completed));
+        Assert.Throws<ArgumentException>(() => new CharacterTurnActivity(
+            request,
+            response,
+            CharacterTurnActivityState.Resolved));
     }
 
     [Fact]

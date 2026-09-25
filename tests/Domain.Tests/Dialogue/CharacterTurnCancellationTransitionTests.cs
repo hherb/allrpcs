@@ -23,6 +23,7 @@ public sealed class CharacterTurnCancellationTransitionTests
 
     [Theory]
     [InlineData("completed")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void RejectsIneligibleActivityWithoutChangingIt(string stateValue)
     {

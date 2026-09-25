@@ -33,6 +33,7 @@ public sealed class AutonomousConversationTurnStartTransitionTests
     [Theory]
     [InlineData(null)]
     [InlineData("completed")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void StartsAfterEveryEligibleCurrentActivityState(string? stateValue)
     {

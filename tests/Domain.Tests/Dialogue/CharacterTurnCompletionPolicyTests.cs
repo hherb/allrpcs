@@ -8,6 +8,7 @@ public sealed class CharacterTurnCompletionPolicyTests
     [InlineData("awaiting-response", false)]
     [InlineData("speaking", true)]
     [InlineData("completed", false)]
+    [InlineData("resolved", false)]
     [InlineData("cancelled", false)]
     public void AllowsOnlySpeakingActivity(string stateValue, bool expected)
     {
@@ -49,6 +50,7 @@ public sealed class CharacterTurnCompletionPolicyTests
         CharacterTurnActivity awaiting =
             CharacterTurnResponseReceptionPolicyTests.CreateAwaitingActivity("Please wait.");
         CharacterTurnResponse? response = state == CharacterTurnActivityState.AwaitingResponse
+            || state == CharacterTurnActivityState.Resolved
             ? null
             : CharacterTurnResponseReceptionPolicyTests.CreateResponse(awaiting.Request);
         return new CharacterTurnActivity(awaiting.Request, response, state);

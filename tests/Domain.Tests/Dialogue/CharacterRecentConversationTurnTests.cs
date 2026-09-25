@@ -21,12 +21,14 @@ public sealed class CharacterRecentConversationTurnTests
     [Theory]
     [InlineData("awaiting-response")]
     [InlineData("speaking")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void RejectsAnActivityThatDidNotComplete(string stateValue)
     {
         CharacterTurnRequest request = CreateRequest("Please wait.");
         CharacterTurnActivityState state = CharacterTurnActivityState.Parse(stateValue);
         CharacterTurnResponse? response = state == CharacterTurnActivityState.AwaitingResponse
+            || state == CharacterTurnActivityState.Resolved
             ? null
             : CreateResponse(request, "I will wait.");
         CharacterTurnActivity activity = new(request, response, state);

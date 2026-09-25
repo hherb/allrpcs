@@ -93,6 +93,7 @@ public sealed class AutonomousConversationTurnStartPolicyTests
     [InlineData("awaiting-response", false)]
     [InlineData("speaking", false)]
     [InlineData("completed", true)]
+    [InlineData("resolved", true)]
     [InlineData("cancelled", true)]
     public void DelegatesCurrentActivityEligibilityToTheExistingStartPolicy(
         string stateValue,

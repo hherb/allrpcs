@@ -8,6 +8,7 @@ public static class CharacterTurnStartPolicy
     {
         return currentActivity is null
             || currentActivity.State == CharacterTurnActivityState.Completed
+            || currentActivity.State == CharacterTurnActivityState.Resolved
             || currentActivity.State == CharacterTurnActivityState.Cancelled;
     }
 }

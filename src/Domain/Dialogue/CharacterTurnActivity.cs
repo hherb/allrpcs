@@ -21,10 +21,12 @@ public sealed record CharacterTurnActivity
                 nameof(response));
         }
 
-        if (state == CharacterTurnActivityState.AwaitingResponse && response is not null)
+        if ((state == CharacterTurnActivityState.AwaitingResponse
+                || state == CharacterTurnActivityState.Resolved)
+            && response is not null)
         {
             throw new ArgumentException(
-                "An awaiting-response activity cannot already retain a response.",
+                "An awaiting or action-resolved activity cannot retain a response.",
                 nameof(response));
         }
 
