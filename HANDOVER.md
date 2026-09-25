@@ -4,7 +4,7 @@
 
 `main` includes merged PR #366 at `871dd57`. Branch
 `codex/phase-7-ordinary-turn-delay-recovery` continues the switch-gated Phase 7 acceptance path without
-extending the closed repeated Move-cycle chain.
+extending the closed repeated Move-cycle chain. Draft PR #367 carries this branch.
 
 The ordinary-turn Delay path now preserves the exact generic acknowledgement, selected typed candidate,
 acknowledged typed result, applied Delay result, fresh event log and world time, and scene-owned recovery
@@ -36,6 +36,9 @@ completion, scheduling authorization, cycle boundary, or admission. Preserve unr
 - Complete-diff review found no partial candidate/request publication, queued-model loss, stale or
   rebuilt-token admission, authority mismatch, extra model consumption, premature terminal routing,
   acceptance overstatement, Move-chain extension, line-length issue, or whitespace error.
+- Draft PR #367 is mergeable. Its implementation-head workflow completed all five jobs as failures with
+  `steps: []`; no checkout, build, test, smoke, or packaging step ran, so this is Actions/account
+  infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
