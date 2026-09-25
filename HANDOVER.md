@@ -4,7 +4,7 @@
 
 `main` includes merged PR #371 at `40b1062`. Branch
 `codex/phase-7-reserved-recovery-completion` continues the genuine Phase 7 ordinary-play path without
-extending the closed repeated Move-cycle chain.
+extending the closed repeated Move-cycle chain. Draft PR #372 carries this branch.
 
 The exact reserved Delay path now completes and acknowledges recovery, retains fresh authoritative
 event-log and world-time snapshots, retains then resets its exact terminal route, and exposes and admits
@@ -25,7 +25,8 @@ next action and adds no player-visible investigation. Do not add a sixth or late
 - Complete-diff review separated reserved from dialogue-turn provenance and kept every changed C# file
   below 500 lines. No automatic progression, fabricated dialogue, sixth Move chain, provider,
   persistence, UI, presentation, investigation, whitespace error, or release claim remains.
-- The draft PR number and hosted-check state belong to the publishing step for this branch.
+- Draft PR #372 targets `main`. Hosted run `36128309297` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
