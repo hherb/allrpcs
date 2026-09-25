@@ -47,6 +47,13 @@ acceptance.
   request while preserving its queued one-shot model across rejected preflight.
 - `CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator` retains and acknowledges only that
   task-installed completed recovery and its fresh authoritative snapshots.
+- `CharacterSabotageOrdinaryTurnTerminalRouteCoordinator` revalidates that full retained graph and
+  delegates only the existing terminal-route retention seam for canonical `Delay`.
+- `CharacterSabotageOrdinaryTurnTerminalResetCoordinator` resets only that exact route while retaining
+  the recovered event-log and world-time authority.
+- `CharacterSabotageOrdinaryTurnCompletionCoordinator` exposes one exact completed-turn token from only
+  that reset route, and `CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator` delegates its
+  exact token through the existing pure scheduling gate.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -57,7 +64,9 @@ acceptance.
   ordinary startup. The separate ordinary-turn smoke now evaluates all seven authors, selects, observes,
   binds, and acknowledges one exact generic Delay selection, then composes, starts, resolves,
   acknowledges, and binds the exact applied typed Delay outcome before publishing, composing,
-  starting, completing, and acknowledging its exact recovery without terminal routing.
+  starting, completing, and acknowledging its exact recovery before terminal retention, reset,
+  completed-turn exposure, and pure scheduling admission. It stops before the still-awaiting character
+  turn can bind at the ordinary-turn boundary.
 
 ## Canonical-kind traceability
 
@@ -141,8 +150,9 @@ acceptance.
 - Validation: Domain access, selection, decision, transition, and recovery tests; Application and strict
   Infrastructure tests; isolated task/resolution/recovery checks; and switch-gated main-scene apply and
   recovery paths.
-- Acceptance status: the switch-gated ordinary-turn proof now selects, applies, and recovers one exact
-  Delay, but no ordinary scheduler enters the path and it has no player-visible investigation surface.
+- Acceptance status: the switch-gated ordinary-turn proof now selects, applies, recovers, terminally
+  resets, completes, and admits one exact Delay turn, but no ordinary scheduler enters the path and it
+  has no player-visible investigation surface.
 
 ### Influence
 
@@ -184,17 +194,19 @@ player can discover. The roadmap item remains unchecked.
 
 ### Final acceptance
 
-`Main.tscn` now owns explicit ordinary-turn authoring through one exact applied and recovered Delay, but
-only a smoke environment variable calls the path. No ordinary scheduler supplies a real enemy turn, and
-the proof does not retain a terminal route or expose the outcome to a player investigation surface.
-Therefore the enemy agent still cannot perform and expose consequential sabotage during ordinary play,
-and the final acceptance statement remains unchecked.
+`Main.tscn` now owns explicit ordinary-turn authoring through one exact applied, recovered, terminally
+reset, completed, and admitted Delay, but only a smoke environment variable calls the path. The
+associated character turn remains `AwaitingResponse`, so the existing ordinary-turn boundary correctly
+rejects scheduling; no ordinary scheduler supplies a real enemy turn, and no player investigation
+surface exposes the outcome. Therefore the enemy agent still cannot perform and expose consequential
+sabotage during ordinary play, and the final acceptance statement remains unchecked.
 
 ## Next genuine acceptance gap
 
-Retain only the exact completed ordinary-turn Delay recovery as one terminal route through the existing
-terminal owner. Require the exact retained generic acknowledgement, selected typed candidate, recovery
-request, completed recovery result, applied recovery, current event log and world time, and canonical
-`Delay` kind. Stop before terminal reset, turn completion, scheduling, cadence, provider work,
-persistence, UI, or presentation. Null, rebuilt, foreign, stale, replaced-authority, already-retained,
-and repeated inputs must remain inert, and ordinary startup must still perform no work.
+Define the smallest explicit lifecycle seam that resolves the exact sabotage-owning character turn
+after its admitted completion. It must not fabricate speech, misuse player cancellation, or replace the
+exact turn request. Prove that the existing ordinary-turn boundary rejects the current
+`AwaitingResponse` activity, then accepts only the exact deliberately terminal successor. Stop before
+scheduling another sabotage action, cadence, provider work, persistence, UI, or presentation. Null,
+rebuilt, foreign, stale, already-resolved, and repeated inputs must remain inert, ordinary startup must
+still perform no work, and no sixth or later Move chain may be added.
