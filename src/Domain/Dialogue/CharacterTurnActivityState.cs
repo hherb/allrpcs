@@ -20,12 +20,15 @@ public sealed class CharacterTurnActivityState : IEquatable<CharacterTurnActivit
     /// <summary>Gets the state after the turn finished normally.</summary>
     public static CharacterTurnActivityState Completed { get; } = new("completed");
 
+    /// <summary>Gets the state after an exact non-dialogue action resolved the turn.</summary>
+    public static CharacterTurnActivityState Resolved { get; } = new("resolved");
+
     /// <summary>Gets the state after pending or speaking work was cancelled.</summary>
     public static CharacterTurnActivityState Cancelled { get; } = new("cancelled");
 
     /// <summary>Gets every defined state in stable lifecycle order.</summary>
     public static IReadOnlyList<CharacterTurnActivityState> All { get; } = Array.AsReadOnly(
-        new[] { AwaitingResponse, Speaking, Completed, Cancelled });
+        new[] { AwaitingResponse, Speaking, Completed, Resolved, Cancelled });
 
     /// <summary>Gets the stable canonical text for this state.</summary>
     public string Value { get; }
@@ -40,6 +43,7 @@ public sealed class CharacterTurnActivityState : IEquatable<CharacterTurnActivit
             "awaiting-response" => AwaitingResponse,
             "speaking" => Speaking,
             "completed" => Completed,
+            "resolved" => Resolved,
             "cancelled" => Cancelled,
             _ => throw new ArgumentException("Unknown character-turn activity state.", nameof(value)),
         };

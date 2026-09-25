@@ -33,6 +33,8 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
     private CharacterSabotageOrdinaryTurnTerminalResetCoordinator ordinaryTerminalReset = null!;
     private CharacterSabotageOrdinaryTurnCompletionCoordinator ordinaryCompletion = null!;
     private CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator completionAdmission = null!;
+    private CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator lifecycleResolution = null!;
+    private CharacterSabotageOrdinaryTurnBoundaryCoordinator ordinaryTurnBoundary = null!;
     private CharacterSabotageOutcomeDelayRecoveryCoordinator recovery = null!;
     private CharacterTargetSabotageDelayRecoveryCandidateRequestController recoveryRequests = null!;
     private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
@@ -105,6 +107,10 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             "../CharacterSabotageOrdinaryTurnCompletionCoordinator");
         completionAdmission = GetNode<CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator>(
             "../CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator");
+        lifecycleResolution = GetNode<CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator>(
+            "../CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator");
+        ordinaryTurnBoundary = GetNode<CharacterSabotageOrdinaryTurnBoundaryCoordinator>(
+            "../CharacterSabotageOrdinaryTurnBoundaryCoordinator");
         recovery = GetNode<CharacterSabotageOutcomeDelayRecoveryCoordinator>(
             "../CharacterSabotageOutcomeDelayRecoveryCoordinator");
         recoveryRequests = GetNode<CharacterTargetSabotageDelayRecoveryCandidateRequestController>(
@@ -217,6 +223,17 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
                 terminalRoute,
                 model.CallCount,
                 delayModel.CallCount,
+                recoveryModel.CallCount)
+            || !CharacterSabotageOrdinaryTurnLifecycleSmokeVerifier.TryVerify(
+                turn,
+                recoveryResult,
+                ordinaryCompletion,
+                completionAdmission,
+                lifecycleResolution,
+                ordinaryTurnBoundary,
+                turns,
+                model.CallCount,
+                delayModel.CallCount,
                 recoveryModel.CallCount))
         {
             Fail("Ordinary-turn sabotage Delay recovery did not remain exact and one-shot.");
@@ -234,8 +251,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             + "exact applied outcome, publishing its exact recovery candidate, and composing its "
             + "exact recovery request before explicitly starting, completing, and acknowledging its "
             + "exact applied recovery once before retaining and resetting its exact terminal route, "
-            + "then exposing and admitting one exact completed-turn token without scheduling another "
-            + "action.");
+            + "then exposing and admitting one exact completed-turn token, resolving its exact "
+            + "response-free character turn, and binding only that terminal successor at the "
+            + "ordinary-turn boundary without scheduling another action.");
         GetTree().Quit();
     }
 

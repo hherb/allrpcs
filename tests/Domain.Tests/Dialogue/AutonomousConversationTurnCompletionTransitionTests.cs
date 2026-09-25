@@ -42,6 +42,7 @@ public sealed class AutonomousConversationTurnCompletionTransitionTests
     [Theory]
     [InlineData("awaiting-response")]
     [InlineData("completed")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void RejectsAnIneligibleActivityWithoutAdvancingTheBudget(string stateValue)
     {

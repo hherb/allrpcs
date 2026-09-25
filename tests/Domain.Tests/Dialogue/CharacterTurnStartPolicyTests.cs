@@ -12,6 +12,7 @@ public sealed class CharacterTurnStartPolicyTests
 
     [Theory]
     [InlineData("completed")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void AllowsStartingAfterATerminalActivity(string stateValue)
     {
@@ -65,7 +66,10 @@ public sealed class CharacterTurnStartPolicyTests
             CharacterTurnResponseReceptionPolicyTests.CreateResponse(awaiting.Request);
         return new CharacterTurnActivity(
             awaiting.Request,
-            ReferenceEquals(state, CharacterTurnActivityState.Cancelled) ? null : response,
+            ReferenceEquals(state, CharacterTurnActivityState.Cancelled)
+                || ReferenceEquals(state, CharacterTurnActivityState.Resolved)
+                ? null
+                : response,
             state);
     }
 }

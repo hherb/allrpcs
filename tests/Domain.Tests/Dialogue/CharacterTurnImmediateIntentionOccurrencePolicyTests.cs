@@ -49,6 +49,18 @@ public sealed class CharacterTurnImmediateIntentionOccurrencePolicyTests
                 new WorldTimeSnapshot(null),
                 transcript));
         }
+
+        CharacterTurnActivity resolved = new(
+            speaking.Request,
+            null,
+            CharacterTurnActivityState.Resolved);
+        Assert.False(CharacterTurnImmediateIntentionOccurrencePolicy.CanOccur(
+            resolved,
+            occurrence,
+            worldEvents,
+            new WorldEventLogSnapshot([]),
+            new WorldTimeSnapshot(null),
+            transcript));
     }
 
     [Fact]

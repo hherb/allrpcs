@@ -19,6 +19,7 @@ public sealed class CharacterTurnResponseReceptionPolicyTests
     [Theory]
     [InlineData("speaking")]
     [InlineData("completed")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void RejectsNonAwaitingActivity(string stateValue)
     {
@@ -26,7 +27,11 @@ public sealed class CharacterTurnResponseReceptionPolicyTests
         CharacterTurnResponse response = CreateResponse(awaiting.Request);
         CharacterTurnActivity activity = new(
             awaiting.Request,
-            response,
+            ReferenceEquals(
+                CharacterTurnActivityState.Parse(stateValue),
+                CharacterTurnActivityState.Resolved)
+                ? null
+                : response,
             CharacterTurnActivityState.Parse(stateValue));
 
         Assert.False(CharacterTurnResponseReceptionPolicy.CanReceive(activity, response));

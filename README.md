@@ -1310,9 +1310,14 @@ completed-turn token, and admit only that token through the pure scheduling gate
 foreign, replaced-authority, wrong-kind, already-published, and repeated inputs stay inert without
 consuming queued one-shot models. Its switch-gated main-scene smoke proves eligible Conceal, Delay, and
 Influence outputs beside four absent kinds through one applied and recovered Delay, terminal reset, and
-completion admission while stopping before binding the still-awaiting character turn or scheduling
-another action. Ordinary startup remains authoring-, model-, mutation-, scheduling-, and
-presentation-free, and no sixth Move cycle is introduced.
+completion admission. A sabotage-specific lifecycle coordinator then retains the exact admitted
+completion and recovered authority, replaces only its exact response-free `AwaitingResponse` activity
+with a distinct terminal `Resolved` successor that keeps the same request, and binds only that exact
+successor through the existing ordinary-turn boundary. It neither fabricates speech nor delegates
+player cancellation. Rebuilt turn, completion, or recovery tokens, active-boundary attempts, stale or
+already-resolved activities, and repeated calls remain inert while all three model-call counts stay at
+one. The proof stops before scheduling another action. Ordinary startup remains authoring-, model-,
+mutation-, scheduling-, and presentation-free, and no sixth Move cycle is introduced.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

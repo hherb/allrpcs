@@ -35,6 +35,9 @@ public sealed class CharacterTurnParticipantLookupTests
         Assert.Null(CharacterTurnParticipantLookup.Find(
             [healer, sage],
             CreateActivity(healer.Identity.Id, CharacterTurnActivityState.Cancelled)));
+        Assert.Null(CharacterTurnParticipantLookup.Find(
+            [healer, sage],
+            CreateActivity(healer.Identity.Id, CharacterTurnActivityState.Resolved)));
     }
 
     [Fact]

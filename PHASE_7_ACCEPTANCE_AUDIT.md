@@ -54,6 +54,9 @@ acceptance.
 - `CharacterSabotageOrdinaryTurnCompletionCoordinator` exposes one exact completed-turn token from only
   that reset route, and `CharacterSabotageOrdinaryTurnCompletionAdmissionCoordinator` delegates its
   exact token through the existing pure scheduling gate.
+- `CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator` resolves only the exact admitted
+  sabotage-owning activity into a response-free terminal `Resolved` successor, and the existing
+  ordinary-turn boundary binds only that exact current successor.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -65,8 +68,8 @@ acceptance.
   binds, and acknowledges one exact generic Delay selection, then composes, starts, resolves,
   acknowledges, and binds the exact applied typed Delay outcome before publishing, composing,
   starting, completing, and acknowledging its exact recovery before terminal retention, reset,
-  completed-turn exposure, and pure scheduling admission. It stops before the still-awaiting character
-  turn can bind at the ordinary-turn boundary.
+  completed-turn exposure, pure scheduling admission, exact response-free lifecycle resolution, and
+  terminal ordinary-turn boundary binding. It stops before scheduling another action.
 
 ## Canonical-kind traceability
 
@@ -151,8 +154,8 @@ acceptance.
   Infrastructure tests; isolated task/resolution/recovery checks; and switch-gated main-scene apply and
   recovery paths.
 - Acceptance status: the switch-gated ordinary-turn proof now selects, applies, recovers, terminally
-  resets, completes, and admits one exact Delay turn, but no ordinary scheduler enters the path and it
-  has no player-visible investigation surface.
+  resets, completes, admits, resolves, and binds one exact Delay turn, but no ordinary scheduler enters
+  the path and it has no player-visible investigation surface.
 
 ### Influence
 
@@ -195,18 +198,18 @@ player can discover. The roadmap item remains unchecked.
 ### Final acceptance
 
 `Main.tscn` now owns explicit ordinary-turn authoring through one exact applied, recovered, terminally
-reset, completed, and admitted Delay, but only a smoke environment variable calls the path. The
-associated character turn remains `AwaitingResponse`, so the existing ordinary-turn boundary correctly
-rejects scheduling; no ordinary scheduler supplies a real enemy turn, and no player investigation
-surface exposes the outcome. Therefore the enemy agent still cannot perform and expose consequential
-sabotage during ordinary play, and the final acceptance statement remains unchecked.
+reset, completed, admitted, response-free resolved, and boundary-bound Delay, but only a smoke
+environment variable calls the path. The exact lifecycle no longer blocks a later turn, but no ordinary
+scheduler supplies a real enemy turn or invokes this path, and no player investigation surface exposes
+the outcome. Therefore the enemy agent still cannot perform and expose consequential sabotage during
+ordinary play, and the final acceptance statement remains unchecked.
 
 ## Next genuine acceptance gap
 
-Define the smallest explicit lifecycle seam that resolves the exact sabotage-owning character turn
-after its admitted completion. It must not fabricate speech, misuse player cancellation, or replace the
-exact turn request. Prove that the existing ordinary-turn boundary rejects the current
-`AwaitingResponse` activity, then accepts only the exact deliberately terminal successor. Stop before
-scheduling another sabotage action, cadence, provider work, persistence, UI, or presentation. Null,
-rebuilt, foreign, stale, already-resolved, and repeated inputs must remain inert, ordinary startup must
-still perform no work, and no sixth or later Move chain may be added.
+Define the smallest provider-neutral ordinary-play scheduling contract that can select the exact
+scene-owned enemy agent and produce one explicit sabotage-turn opportunity from an authoritative
+meaningful-world-event cadence signal rather than wall-clock time. Stop before creating a turn or
+invoking authoring. Do not reuse the unrelated independent-task travel cadence, create a smoke-only
+actor, automatically chain a second sabotage action, add a sixth Move chain, or add provider,
+persistence, UI, or presentation work. Rejected actor, event, cadence, stale-authority, and repeated
+inputs must remain inert, and ordinary startup without an explicit eligible signal must perform no work.

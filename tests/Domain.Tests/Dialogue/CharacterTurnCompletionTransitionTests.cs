@@ -22,6 +22,7 @@ public sealed class CharacterTurnCompletionTransitionTests
     [Theory]
     [InlineData("awaiting-response")]
     [InlineData("completed")]
+    [InlineData("resolved")]
     [InlineData("cancelled")]
     public void RejectsIneligibleActivity(string stateValue)
     {

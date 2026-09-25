@@ -911,6 +911,9 @@ Current continuation:
   scheduling another action.
 - [x] Admit only that exact current completed-turn token through the pure scheduling gate without
   binding the still-awaiting character turn or entering another sabotage cycle.
+- [x] Resolve only that admitted completion's exact sabotage-owning character turn through a distinct
+  response-free terminal state, then bind only its exact successor at the ordinary-turn boundary
+  without using player cancellation or scheduling another action.
 - [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
 - [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a

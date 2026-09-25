@@ -99,4 +99,25 @@ public partial class CharacterTurnActivityController : Node
         Activity = completedActivity;
         return true;
     }
+
+    /// <summary>Installs one exact preflighted non-dialogue resolution for the current turn.</summary>
+    internal bool TryInstallActionResolution(
+        CharacterTurnActivity currentActivity,
+        CharacterTurnActivity resolvedActivity)
+    {
+        ArgumentNullException.ThrowIfNull(currentActivity);
+        ArgumentNullException.ThrowIfNull(resolvedActivity);
+
+        if (!ReferenceEquals(Activity, currentActivity)
+            || !ReferenceEquals(resolvedActivity.State, CharacterTurnActivityState.Resolved)
+            || !ReferenceEquals(resolvedActivity.Request, currentActivity.Request)
+            || resolvedActivity.Response is not null
+            || !CharacterTurnActionResolutionPolicy.CanResolve(currentActivity))
+        {
+            return false;
+        }
+
+        Activity = resolvedActivity;
+        return true;
+    }
 }
