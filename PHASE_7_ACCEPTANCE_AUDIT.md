@@ -66,7 +66,8 @@ acceptance.
 - The ordinary lifecycle coordinators accept that exact reservation, invoke the existing seven authors,
   compose eligible Conceal, Delay, and Influence outputs, and carry one exact selected Delay through
   generic acknowledgement, typed application and acknowledgement, outcome binding, recovery-candidate
-  publication, recovery-request composition, and explicit recovery start without releasing the slot.
+  publication, recovery request and application, terminal retention and reset, and exact completion
+  admission without releasing the slot.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -209,17 +210,17 @@ player can discover. The roadmap item remains unchecked.
 
 `Main.tscn` now schedules one real inert enemy opportunity from an authoritative meaningful-event
 cadence. An explicit proof reserves the shared turn slot, invokes the seven exact current authors, and
-carries one selected Delay through application and explicit recovery start. The older switch-gated path
-proves the remaining recovery, terminal reset, response-free resolution, and boundary binding. The new
-ordinary path has not yet observed or acknowledged its recovery, completed the reserved turn, or
-released the shared slot, and no player investigation surface exposes Delay or Influence. Therefore the
-enemy agent still cannot complete and expose consequential sabotage during ordinary play, and the final
-acceptance statement remains unchecked.
+carries one selected Delay through application, recovery, terminal reset, and exact completion
+admission. The older switch-gated path proves response-free resolution and boundary binding. The new
+ordinary path has not yet resolved its reserved turn or released the shared slot, and no player
+investigation surface exposes Delay or Influence. Therefore the enemy agent still cannot complete and
+expose consequential sabotage during ordinary play, and the final acceptance statement remains
+unchecked.
 
 ## Next genuine acceptance gap
 
-Retain and acknowledge only the exact completed reserved ordinary-play Delay recovery with its fresh
-authoritative event log and world time. Reject null, rebuilt reservation, request, result, candidate,
-stale provenance or authority, and repeated input without consuming another model or releasing the
-shared turn slot. Stop before terminal-route retention or reset. Do not add a sixth Move chain or
-provider, persistence, UI, presentation, or investigation work.
+Resolve only the exact admitted reserved ordinary-play Delay completion into its response-free terminal
+turn, bind that exact successor at the ordinary-turn boundary, and release only its exact shared
+reservation. Reject null, rebuilt reservation, turn, completion, recovery, stale provenance or
+authority, and repeated input without consuming another model or scheduling another action. Do not add
+a sixth Move chain or provider, persistence, UI, presentation, or investigation work.

@@ -11,6 +11,10 @@ public partial class CharacterSabotageOrdinaryTurnTerminalResetCoordinator : Nod
     private CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator recoveryResult = null!;
     private CharacterTargetSabotageDelayRecoveryController recoveryState = null!;
     private CharacterSabotageTerminalRouteCoordinator terminalRoute = null!;
+    private CharacterTurnActivityController turns = null!;
+
+    /// <summary>Gets the exact sabotage-turn reservation retained across terminal reset.</summary>
+    public CharacterSabotageTurnReservation? Reservation { get; private set; }
 
     /// <summary>Gets the exact generic author request whose terminal route was reset.</summary>
     public CharacterSabotageActionConsiderationRequest? ResetAuthorRequest { get; private set; }
@@ -32,6 +36,7 @@ public partial class CharacterSabotageOrdinaryTurnTerminalResetCoordinator : Nod
             "../CharacterTargetSabotageDelayRecoveryController");
         terminalRoute = GetNode<CharacterSabotageTerminalRouteCoordinator>(
             "../CharacterSabotageTerminalRouteCoordinator");
+        turns = GetNode<CharacterTurnActivityController>("../CharacterTurnActivityController");
     }
 
     /// <summary>Resets only the exact retained ordinary-turn Delay terminal route once.</summary>
@@ -82,6 +87,38 @@ public partial class CharacterSabotageOrdinaryTurnTerminalResetCoordinator : Nod
         ResetAuthorRequest = expectedAuthorRequest;
         ResetActionKind = expectedActionKind;
         DelayRecovery = expectedDelayRecovery;
+        return true;
+    }
+
+    /// <summary>Resets only the exact retained reserved Delay terminal route once.</summary>
+    public bool TryReset(
+        CharacterSabotageTurnReservation? expectedReservation,
+        CharacterSabotageActionConsiderationRequest? expectedAuthorRequest,
+        CharacterSabotageActionKind? expectedActionKind,
+        CharacterTargetSabotageDelayRecoveryResult? expectedDelayRecovery,
+        WorldEventLogSnapshot? expectedEventLog,
+        WorldTimeSnapshot? expectedWorldTime)
+    {
+        if (Reservation is not null
+            || expectedReservation is null
+            || !ReferenceEquals(turns.SabotageReservation, expectedReservation)
+            || !ReferenceEquals(ordinaryTerminalRoute.Reservation, expectedReservation)
+            || !ReferenceEquals(recoveryResult.Reservation, expectedReservation))
+        {
+            return false;
+        }
+
+        if (!TryReset(
+                expectedAuthorRequest,
+                expectedActionKind,
+                expectedDelayRecovery,
+                expectedEventLog,
+                expectedWorldTime))
+        {
+            return false;
+        }
+
+        Reservation = expectedReservation;
         return true;
     }
 }

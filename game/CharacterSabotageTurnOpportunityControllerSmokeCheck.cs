@@ -19,8 +19,10 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
     private int processFrames;
     private bool decisionStarted;
     private bool typedDecisionStarted;
+    private bool recoveryStarted;
     private CharacterSabotageTurnOpportunityRecordingModel? recordingModel;
     private CharacterSabotageTurnOpportunityRecordingDelayModel? delayModel;
+    private CharacterSabotageTurnOpportunityRecordingDelayRecoveryModel? recoveryModel;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -41,6 +43,12 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
     {
         _ = delta;
         processFrames++;
+
+        if (recoveryStarted)
+        {
+            VerifyCompletedRecovery();
+            return;
+        }
 
         if (typedDecisionStarted)
         {
@@ -350,7 +358,7 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
         TemporaryCharacterSabotageOrdinaryTurnAuthoringSource source =
             GetNode<TemporaryCharacterSabotageOrdinaryTurnAuthoringSource>(
                 "../TemporaryCharacterSabotageOrdinaryTurnAuthoringSource");
-        CharacterSabotageTurnOpportunityRecordingDelayRecoveryModel recoveryModel = new();
+        recoveryModel = new CharacterSabotageTurnOpportunityRecordingDelayRecoveryModel();
         if (reservation is null
             || task.Status != CharacterTargetSabotageDelayTaskStatus.Completed
             || task.Result is not { } result
@@ -455,17 +463,7 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck : Node
             return;
         }
 
-        GD.Print(
-            "Sabotage-turn opportunity controller smoke passed: ordinary startup stayed inert; "
-            + "one exact due authoritative meaningful-event signal produced one opportunity "
-            + "and reserved the shared turn slot before invoking all exact current authors once "
-            + "and starting, observing, binding, and acknowledging only their exact completed "
-            + "generic decision once before composing, explicitly starting, applying, and "
-            + "acknowledging one exact typed Delay result, then binding its exact applied outcome "
-            + "and authoritative snapshots before publishing one exact recovery candidate and "
-            + "eligibility token, composing its exact provider-neutral recovery request, and "
-            + "explicitly starting it without observing recovery or releasing the reservation.");
-        GetTree().Quit();
+        recoveryStarted = true;
     }
 
     private static void Fail(string message)
