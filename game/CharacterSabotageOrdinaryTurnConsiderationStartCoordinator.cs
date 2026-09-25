@@ -56,4 +56,15 @@ public partial class CharacterSabotageOrdinaryTurnConsiderationStartCoordinator 
         Request = expectedRequest;
         return true;
     }
+
+    /// <summary>Checks one exact completed result against the complete retained start graph.</summary>
+    internal bool IsCurrentCompletedResult(
+        CharacterSabotageActionConsiderationResult? expectedResult) =>
+        Turn is not null
+        && Request is not null
+        && expectedResult is not null
+        && task.Status == CharacterSabotageActionTaskStatus.Completed
+        && ReferenceEquals(task.Result, expectedResult)
+        && ReferenceEquals(expectedResult.Request, Request)
+        && authoring.IsCurrent(Turn, Request);
 }

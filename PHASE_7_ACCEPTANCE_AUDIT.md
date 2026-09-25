@@ -24,6 +24,12 @@ acceptance.
   only their exact eligible outputs without partial publication.
 - `CharacterSabotageOrdinaryTurnConsiderationStartCoordinator` starts only that exact composed request
   through the existing provider-neutral generic task flow while retaining the exact turn provenance.
+- `CharacterSabotageOrdinaryTurnResultObservationCoordinator` observes only the exact task-installed
+  completed selection while the complete turn, authoring, canonical selected output, candidate binding,
+  and scene graph remain current.
+- `CharacterSabotageOrdinaryTurnResultBindingCoordinator` delegates the existing selected-author binding
+  and acknowledges only that exact observed result, retaining its exact Delay request and candidate while
+  resetting only the completed generic task.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -31,7 +37,8 @@ acceptance.
   request serialization, SSE completion, and model bindings.
 - `CharacterSabotageActionRequestMainSceneSmokeCheck` proves one explicitly invoked Conceal chain.
   Action-specific and outcome smoke checks prove the other branches. These checks are disabled during
-  ordinary startup and therefore do not prove that an enemy turn evaluates the seven authors.
+  ordinary startup. The separate ordinary-turn smoke now evaluates all seven authors, selects, observes,
+  binds, and acknowledges one exact Delay result, but does not yet compose or start its typed request.
 
 ## Canonical-kind traceability
 

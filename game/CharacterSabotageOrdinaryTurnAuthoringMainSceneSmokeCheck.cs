@@ -18,6 +18,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
     private TemporaryCharacterSabotageOrdinaryTurnAuthoringSource source = null!;
     private CharacterSabotageOrdinaryTurnAuthoringCoordinator authoring = null!;
     private CharacterSabotageOrdinaryTurnConsiderationStartCoordinator start = null!;
+    private CharacterSabotageOrdinaryTurnResultObservationCoordinator observation = null!;
+    private CharacterSabotageOrdinaryTurnResultBindingCoordinator resultBinding = null!;
+    private CharacterSabotageActionSelectionCoordinator selection = null!;
     private CharacterSabotageActionRequestComposer composer = null!;
     private ICharacterSabotageActionRequestAuthor[] authors = null!;
     private TemporaryCharacterSabotageActionModelSource modelSource = null!;
@@ -46,6 +49,12 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             "../CharacterSabotageOrdinaryTurnAuthoringCoordinator");
         start = GetNode<CharacterSabotageOrdinaryTurnConsiderationStartCoordinator>(
             "../CharacterSabotageOrdinaryTurnConsiderationStartCoordinator");
+        observation = GetNode<CharacterSabotageOrdinaryTurnResultObservationCoordinator>(
+            "../CharacterSabotageOrdinaryTurnResultObservationCoordinator");
+        resultBinding = GetNode<CharacterSabotageOrdinaryTurnResultBindingCoordinator>(
+            "../CharacterSabotageOrdinaryTurnResultBindingCoordinator");
+        selection = GetNode<CharacterSabotageActionSelectionCoordinator>(
+            "../CharacterSabotageActionSelectionCoordinator");
         composer = GetNode<CharacterSabotageActionRequestComposer>(
             "../CharacterSabotageActionRequestComposer");
         authors = GetAuthors();
@@ -88,7 +97,9 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             || model.CallCount != 1
             || !ReferenceEquals(model.Request, composer.Request)
             || start.TryStart(turn, composer.Request)
-            || !ReferenceEquals(turns.Activity, turn))
+            || !ReferenceEquals(turns.Activity, turn)
+            || !ObserveExactResult(result)
+            || !BindAndAcknowledgeExactResult(result))
         {
             Fail("Ordinary-turn sabotage generic consideration did not remain exact and one-shot.");
             return;
@@ -99,7 +110,8 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             + "inert; one exact current enemy turn invoked all seven authors in canonical order, "
             + "retained eligible Conceal, Delay, and Influence outputs while leaving four kinds "
             + "absent, composed once, and explicitly started one provider-neutral generic decision "
-            + "without observing or routing its result.");
+            + "before observing, binding, and acknowledging its exact selected Delay result once "
+            + "without typed request composition or routing.");
         GetTree().Quit();
     }
 
@@ -115,6 +127,10 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && authoring.Request is null
             && start.Turn is null
             && start.Request is null
+            && observation.ObservedResult is null
+            && resultBinding.BoundResult is null
+            && resultBinding.AcknowledgedResult is null
+            && selection.ObservedResult is null
             && composer.Request is null
             && authors.All(author => author.Request is null)
             && task.Status == CharacterSabotageActionTaskStatus.Idle
@@ -166,6 +182,7 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
             && ReferenceEquals(start.Turn, turn)
             && ReferenceEquals(start.Request, request)
             && task.Status == CharacterSabotageActionTaskStatus.Running
+            && !observation.TryObserveCompletedResult(null)
             && !start.TryStart(turn, request);
 
         if (!inertStartup
@@ -180,6 +197,79 @@ public partial class CharacterSabotageOrdinaryTurnAuthoringMainSceneSmokeCheck :
         }
 
         SetProcess(true);
+    }
+
+    private bool ObserveExactResult(CharacterSabotageActionConsiderationResult result)
+    {
+        CharacterSabotageActionConsiderationRequest request = composer.Request!;
+        CharacterSabotageActionConsiderationResult rebuiltResult = new(
+            request,
+            new CharacterSabotageActionDecision(
+                result.Decision.ActorId,
+                result.SelectedActionKind));
+        CharacterSabotageActionConsiderationRequest foreignRequest = new(
+            source.Actor,
+            request.ActionKinds);
+        CharacterSabotageActionConsiderationResult foreignResult = new(
+            foreignRequest,
+            new CharacterSabotageActionDecision(
+                source.Actor.Identity.Id,
+                CharacterSabotageActionKind.Delay));
+        ICharacterSabotageActionRequestAuthor selectedAuthor = authors[5];
+        CharacterSabotageActionConsiderationRequest? selectedRequest = selectedAuthor.Request;
+        CharacterSabotageActionCandidateBinding? selectedBinding = selectedAuthor.CandidateBinding;
+
+        return observation.ObservedResult is null
+            && selection.ObservedResult is null
+            && selectedRequest is not null
+            && selectedBinding is not null
+            && !observation.TryObserveCompletedResult(null)
+            && !observation.TryObserveCompletedResult(rebuiltResult)
+            && !observation.TryObserveCompletedResult(foreignResult)
+            && observation.TryObserveCompletedResult(result)
+            && ReferenceEquals(observation.ObservedResult, result)
+            && ReferenceEquals(selection.ObservedResult, result)
+            && ReferenceEquals(selectedAuthor.Request, selectedRequest)
+            && ReferenceEquals(selectedAuthor.CandidateBinding, selectedBinding)
+            && ReferenceEquals(selectedBinding.Request, selectedRequest)
+            && ReferenceEquals(selectedBinding.ActionKind, result.SelectedActionKind)
+            && !observation.TryObserveCompletedResult(result)
+            && task.Status == CharacterSabotageActionTaskStatus.Completed
+            && ReferenceEquals(task.Result, result);
+    }
+
+    private bool BindAndAcknowledgeExactResult(
+        CharacterSabotageActionConsiderationResult result)
+    {
+        CharacterSabotageActionConsiderationResult rebuiltResult = new(
+            result.Request,
+            new CharacterSabotageActionDecision(
+                result.Decision.ActorId,
+                result.SelectedActionKind));
+        ICharacterSabotageActionRequestAuthor selectedAuthor = authors[5];
+        CharacterSabotageActionConsiderationRequest selectedRequest = selectedAuthor.Request!;
+        CharacterSabotageActionCandidateBinding selectedBinding = selectedAuthor.CandidateBinding!;
+
+        return resultBinding.BoundResult is null
+            && resultBinding.AcknowledgedResult is null
+            && !resultBinding.TryBindObservedResult(null)
+            && !resultBinding.TryBindObservedResult(rebuiltResult)
+            && resultBinding.TryBindObservedResult(result)
+            && ReferenceEquals(resultBinding.BoundResult, result)
+            && ReferenceEquals(resultBinding.SelectedAuthorRequest, selectedRequest)
+            && ReferenceEquals(resultBinding.SelectedCandidateBinding, selectedBinding)
+            && !resultBinding.TryBindObservedResult(result)
+            && !resultBinding.TryAcknowledgeBoundResult(null)
+            && !resultBinding.TryAcknowledgeBoundResult(rebuiltResult)
+            && resultBinding.TryAcknowledgeBoundResult(result)
+            && ReferenceEquals(resultBinding.AcknowledgedResult, result)
+            && ReferenceEquals(resultBinding.SelectedAuthorRequest, selectedRequest)
+            && ReferenceEquals(resultBinding.SelectedCandidateBinding, selectedBinding)
+            && !resultBinding.TryAcknowledgeBoundResult(result)
+            && ReferenceEquals(observation.ObservedResult, result)
+            && selection.ObservedResult is null
+            && task.Status == CharacterSabotageActionTaskStatus.Idle
+            && task.Result is null;
     }
 
     private bool AuthorsAreEmpty() =>
