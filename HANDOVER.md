@@ -4,7 +4,7 @@
 
 `main` includes merged PR #369 at `fa3b2c5`. Branch
 `codex/phase-7-ordinary-sabotage-scheduling` advances the genuine Phase 7 ordinary-play acceptance
-path without extending the closed repeated Move-cycle chain.
+path without extending the closed repeated Move-cycle chain. Draft PR #370 carries this branch.
 
 The scene now owns a bounded sabotage cadence measured only in exact authoritative
 meaningful-world-event occurrences. At the due boundary it retains one inert opportunity for the
@@ -38,6 +38,8 @@ sixth or later Move chain.
   focused proof invokes later seams explicitly. No fabricated dialogue, independent-task cadence reuse,
   sixth Move chain, provider/persistence/UI work, whitespace error, or changed C# file over 500 lines
   remains.
+- Draft PR #370 targets `main`. Hosted run `36111533651` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
