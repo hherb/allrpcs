@@ -28,6 +28,8 @@ unchanged. Phase 7 is closed; do not add another Move chain or sabotage cadence 
   scenario validator, every credential-free Godot smoke, and the Compatibility launch.
 - Complete-diff review confirmed whitespace and 120-character cleanliness, kept every changed C# file
   below 500 lines, and corrected one overbroad focused-test name before publication.
+- Draft PR #374 targets `main`. Hosted run `36134253771` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 - Ordinary provider/model startup remains unchanged; no Phase 7 action/cadence work, garden, village
   transition, discovery, production art, weather, sound, persistence, signing, release, or distribution
   work was added.
