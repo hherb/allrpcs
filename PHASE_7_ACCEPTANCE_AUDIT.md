@@ -30,6 +30,10 @@ acceptance.
 - `CharacterSabotageOrdinaryTurnResultBindingCoordinator` delegates the existing selected-author binding
   and acknowledges only that exact observed result, retaining its exact Delay request and candidate while
   resetting only the completed generic task.
+- `CharacterSabotageOrdinaryTurnSpecificRequestCoordinator` revalidates that retained acknowledgement and
+  delegates the existing action-specific seam to compose one exact typed Delay request.
+- `CharacterSabotageOrdinaryTurnSpecificRequestStartCoordinator` starts only that exact current request
+  through the existing typed seam while preserving its queued one-shot model across rejected preflight.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -38,7 +42,8 @@ acceptance.
 - `CharacterSabotageActionRequestMainSceneSmokeCheck` proves one explicitly invoked Conceal chain.
   Action-specific and outcome smoke checks prove the other branches. These checks are disabled during
   ordinary startup. The separate ordinary-turn smoke now evaluates all seven authors, selects, observes,
-  binds, and acknowledges one exact Delay result, but does not yet compose or start its typed request.
+  binds, and acknowledges one exact Delay result, then composes and starts its exact typed request while
+  leaving completion unobserved.
 
 ## Canonical-kind traceability
 
@@ -165,16 +170,17 @@ player can discover. The roadmap item remains unchecked.
 
 ### Final acceptance
 
-`Main.tscn` now owns explicit ordinary-turn authoring, canonical composition, and generic consideration
-start seams, but only a smoke environment variable calls them. No ordinary scheduler supplies a real
-enemy turn, and the exact completed generic result is not yet observed or routed through an action-
-specific request. Therefore the enemy agent still cannot perform and expose consequential sabotage
-during ordinary play, and the final acceptance statement remains unchecked.
+`Main.tscn` now owns explicit ordinary-turn authoring through exact typed Delay start, but only a smoke
+environment variable calls the path. No ordinary scheduler supplies a real enemy turn, and the typed
+result remains unobserved and unapplied by that proof. Therefore the enemy agent still cannot perform
+and expose consequential sabotage during ordinary play, and the final acceptance statement remains
+unchecked.
 
 ## Next genuine acceptance gap
 
-Observe only the exact completed generic result started by the ordinary-turn coordinator while its exact
-turn, actor, request, author outputs, task result, and current scene graph remain unchanged. Retain that
-result once without acknowledgement, action-specific request composition, typed consideration, outcome
-application, turn completion, cadence, provider work, or UI. Rebuilt, foreign, stale, running, failed,
-replaced, and repeated inputs must remain inert, and ordinary startup must still perform no work.
+Observe and acknowledge only the exact completed typed Delay result started by the ordinary-turn
+coordinator after revalidating its full retained generic and typed provenance. Delegate only the existing
+action-specific result and Delay resolution behavior, retain its exact result and applied state tokens,
+and stop before downstream outcome binding, recovery, terminal routing, turn completion, cadence,
+provider work, persistence, UI, or presentation. Rebuilt, foreign, stale, running, replaced, and repeated
+inputs must remain inert, and ordinary startup must still perform no work.
