@@ -943,19 +943,23 @@ Current continuation:
   and the shared reservation.
 - [x] Expose and admit one exact completed-turn token from that reset reserved route without
   scheduling another action or releasing the shared slot.
-- [ ] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
+- [x] Resolve and release only that exact admitted reserved Delay turn, then expose one exact
+  access-gated authored evidence identifier from its recovered history without scheduling another action.
+- [x] Permit the enemy agent to conceal, move, substitute, contaminate, misquote, delay, and
   influence only when physically and informationally able.
-- [ ] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
+- [x] Ensure sabotage cannot rewrite truth, teleport actors, or permanently remove every route to a
   critical conclusion.
-- [ ] Make sabotage leave potentially discoverable evidence.
+- [x] Make sabotage leave potentially discoverable evidence.
 
 Acceptance:
 
-- [ ] The enemy agent can perform consequential, recoverable sabotage under the same action and
+- [x] The enemy agent can perform consequential, recoverable sabotage under the same action and
   perception rules as every other character, and an attentive player can investigate it.
 
 ## Phase 8 — Authored opening vertical slice
 
+- [x] Author and validate one continuous multi-route opening-region topology containing every required
+  landmark without assigning scene coordinates or prescribing a clue order.
 - [ ] Build the continuous opening region at validated gameplay scale.
 - [ ] Build the sickhouse and first sleeping patient scene.
 - [ ] Build the healer's garden and remedy-preparation station.

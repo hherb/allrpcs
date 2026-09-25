@@ -1,4 +1,6 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -259,14 +261,189 @@ public partial class CharacterSabotageTurnOpportunityControllerSmokeCheck
             return;
         }
 
+        CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator resolution =
+            GetNode<CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator>(
+                "../CharacterSabotageOrdinaryTurnLifecycleResolutionCoordinator");
+        CharacterSabotageOrdinaryTurnBoundaryCoordinator boundary =
+            GetNode<CharacterSabotageOrdinaryTurnBoundaryCoordinator>(
+                "../CharacterSabotageOrdinaryTurnBoundaryCoordinator");
+        CharacterTurnActivity awaitingTurn = CreateReservedTurn(reservation.Opportunity.Actor);
+        CharacterTurnActivity rebuiltTurn = new(
+            awaitingTurn.Request,
+            null,
+            CharacterTurnActivityState.AwaitingResponse);
+        CharacterSabotageTurnCompletion rebuiltCompletion = new(
+            completedTurn.Actor,
+            completedTurn.AuthorRequest,
+            completedTurn.ActionKind);
+        CharacterTargetSabotageDelayRecoveryResult rebuiltRecovery = new(
+            appliedResult.Candidate,
+            appliedResult.EventLog,
+            appliedResult.WorldTime);
+        bool activityStarted = !turns.TryStartReservedSabotageTurn(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                awaitingTurn)
+            && turns.TryStartReservedSabotageTurn(reservation, awaitingTurn)
+            && turns.Activity is null
+            && ReferenceEquals(turns.ReservedSabotageTurn, awaitingTurn)
+            && !turns.TryStartReservedSabotageTurn(reservation, rebuiltTurn);
+        bool activeBoundaryRejected = activityStarted
+            && !boundary.TryBindAndRelease(
+                reservation,
+                completedTurn,
+                awaitingTurn);
+        bool invalidResolutionRejected = !resolution.TryResolve(
+                null,
+                awaitingTurn,
+                completedTurn,
+                appliedResult)
+            && !resolution.TryResolve(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                awaitingTurn,
+                completedTurn,
+                appliedResult)
+            && !resolution.TryResolve(
+                reservation,
+                rebuiltTurn,
+                completedTurn,
+                appliedResult)
+            && !resolution.TryResolve(
+                reservation,
+                awaitingTurn,
+                rebuiltCompletion,
+                appliedResult)
+            && !resolution.TryResolve(
+                reservation,
+                awaitingTurn,
+                completedTurn,
+                rebuiltRecovery);
+        bool resolved = resolution.TryResolve(
+            reservation,
+            awaitingTurn,
+            completedTurn,
+            appliedResult);
+        CharacterTurnActivity? resolvedTurn = resolution.ResolvedTurn;
+        bool exactResolution = resolvedTurn is not null
+            && ReferenceEquals(resolution.Reservation, reservation)
+            && ReferenceEquals(resolution.OriginalTurn, awaitingTurn)
+            && ReferenceEquals(resolution.Completion, completedTurn)
+            && ReferenceEquals(resolution.DelayRecovery, appliedResult)
+            && ReferenceEquals(turns.Activity, resolvedTurn)
+            && ReferenceEquals(resolvedTurn.Request, awaitingTurn.Request)
+            && resolvedTurn.Response is null
+            && ReferenceEquals(resolvedTurn.State, CharacterTurnActivityState.Resolved)
+            && !resolution.TryResolve(
+                reservation,
+                awaitingTurn,
+                completedTurn,
+                appliedResult);
+        bool released = resolvedTurn is not null
+            && !boundary.TryBindAndRelease(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                completedTurn,
+                resolvedTurn)
+            && !boundary.TryBindAndRelease(reservation, rebuiltCompletion, resolvedTurn)
+            && boundary.TryBindAndRelease(reservation, completedTurn, resolvedTurn)
+            && ReferenceEquals(boundary.Reservation, reservation)
+            && ReferenceEquals(boundary.Admission, completedTurn)
+            && ReferenceEquals(boundary.TurnActivity, resolvedTurn)
+            && turns.SabotageReservation is null
+            && !boundary.TryBindAndRelease(reservation, completedTurn, resolvedTurn);
+        TemporaryCharacterTargetSabotageInvestigationSource investigationSource =
+            GetNode<TemporaryCharacterTargetSabotageInvestigationSource>(
+                "../TemporaryCharacterTargetSabotageInvestigationSource");
+        CharacterSabotageOrdinaryTurnDelayInvestigationCoordinator investigation =
+            GetNode<CharacterSabotageOrdinaryTurnDelayInvestigationCoordinator>(
+                "../CharacterSabotageOrdinaryTurnDelayInvestigationCoordinator");
+        CharacterInteractionAccessSnapshot rebuiltAccess = new(
+            investigationSource.Investigator.Identity.Id,
+            investigationSource.InteractionAccess.ReachableTargetCharacterIds);
+        bool investigated = !investigation.TryInvestigate(
+                null,
+                appliedResult,
+                investigationSource.Investigator,
+                investigationSource.InteractionAccess,
+                investigationSource.DelayEvidenceId)
+            && !investigation.TryInvestigate(
+                new CharacterSabotageTurnReservation(reservation.Opportunity),
+                appliedResult,
+                investigationSource.Investigator,
+                investigationSource.InteractionAccess,
+                investigationSource.DelayEvidenceId)
+            && !investigation.TryInvestigate(
+                reservation,
+                rebuiltRecovery,
+                investigationSource.Investigator,
+                investigationSource.InteractionAccess,
+                investigationSource.DelayEvidenceId)
+            && !investigation.TryInvestigate(
+                reservation,
+                appliedResult,
+                investigationSource.Investigator,
+                rebuiltAccess,
+                investigationSource.DelayEvidenceId)
+            && investigation.TryInvestigate(
+                reservation,
+                appliedResult,
+                investigationSource.Investigator,
+                investigationSource.InteractionAccess,
+                investigationSource.DelayEvidenceId)
+            && investigation.Candidate is { } investigationCandidate
+            && ReferenceEquals(investigationCandidate.RecoveryResult, appliedResult)
+            && ReferenceEquals(
+                investigationCandidate.EvidenceId,
+                investigationSource.DelayEvidenceId)
+            && investigation.EvidenceView is { } evidenceView
+            && ReferenceEquals(
+                evidenceView.CharacterId,
+                investigationSource.Investigator.Identity.Id)
+            && evidenceView.EvidenceIds.Count == 1
+            && ReferenceEquals(
+                evidenceView.EvidenceIds[0],
+                investigationSource.DelayEvidenceId)
+            && !investigation.TryInvestigate(
+                reservation,
+                appliedResult,
+                investigationSource.Investigator,
+                investigationSource.InteractionAccess,
+                investigationSource.DelayEvidenceId);
+        if (!activeBoundaryRejected
+            || !invalidResolutionRejected
+            || !resolved
+            || !exactResolution
+            || !released
+            || !investigated
+            || recoveryModel.CallCount != 1)
+        {
+            Fail("The reserved Delay turn did not resolve, bind, and release exactly once.");
+            return;
+        }
+
         GD.Print(
             "Sabotage-turn opportunity controller smoke passed: ordinary startup stayed inert; "
             + "one exact reserved Delay route completed its generic and typed decisions, applied "
             + "and recovered once, and retained fresh authoritative recovery snapshots while "
             + "resetting only the completed recovery task, retaining then resetting one exact "
-            + "terminal route, exposing and admitting one exact completed-turn token, and "
-            + "preserving the recovery authority and reservation without scheduling another "
-            + "action.");
+            + "terminal route, exposing and admitting one exact completed-turn token, resolving "
+            + "its response-free activity, binding its exact terminal successor, and releasing "
+            + "only its reservation before one exact interaction-access investigation exposed "
+            + "authored evidence without scheduling another action.");
         GetTree().Quit();
+    }
+
+    private static CharacterTurnActivity CreateReservedTurn(Character actor)
+    {
+        CharacterId speakerId = new("reserved-sabotage-turn-smoke-speaker");
+        DialogueUtterance utterance = new(speakerId, "The road remains open.");
+        CharacterTurnRequest request = new(
+            actor.Identity.Id,
+            new DialogueEvent(
+                new DialogueDelivery(utterance, DialogueDeliveryMode.OrdinarySpeech),
+                new DialogueAudienceSnapshot(speakerId, [actor.Identity.Id])),
+            new DialogueAct(utterance, DialogueActType.ReportedClaim));
+        return new CharacterTurnActivity(
+            request,
+            null,
+            CharacterTurnActivityState.AwaitingResponse);
     }
 }
