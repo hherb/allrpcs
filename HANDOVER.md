@@ -4,7 +4,7 @@
 
 `main` includes merged PR #364 at `bf3013f`. Branch
 `codex/phase-7-ordinary-turn-delay-composition` completes the next two bounded Phase 7 acceptance
-slices without extending the repeated Move-cycle chain.
+slices without extending the repeated Move-cycle chain. Draft PR #365 carries this branch.
 
 `CharacterSabotageOrdinaryTurnSpecificRequestCoordinator` accepts only the exact generic Delay result
 acknowledged by `CharacterSabotageOrdinaryTurnResultBindingCoordinator`, its exact retained selected
@@ -43,6 +43,9 @@ The unrelated untracked `scripts/code_statistics.py` remains untouched and must 
 - Complete-diff review found no stale-reference admission, partial composition/start, model-consumption
   leak, typed-task overlap, unsupported ordinary-play claim, acceptance overstatement, Move-chain
   extension, line-length issue, or whitespace error.
+- Draft PR #365 is mergeable. Its implementation-head workflow completed all five jobs as failures with
+  `steps: []`; no checkout, build, test, smoke, or packaging step ran, so this is Actions/account
+  infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
