@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Godot;
 
@@ -9,12 +10,15 @@ public partial class CharacterTurnActivityController : Node
     /// <summary>Gets the exact initialized current activity, if any.</summary>
     public CharacterTurnActivity? Activity { get; private set; }
 
+    /// <summary>Gets the exact sabotage opportunity that currently owns the shared turn slot.</summary>
+    public CharacterSabotageTurnReservation? SabotageReservation { get; private set; }
+
     /// <summary>Initializes this controller once from one exact existing activity.</summary>
     public bool TryInitialize(CharacterTurnActivity activity)
     {
         ArgumentNullException.ThrowIfNull(activity);
 
-        if (Activity is not null)
+        if (Activity is not null || SabotageReservation is not null)
         {
             return false;
         }
@@ -29,12 +33,37 @@ public partial class CharacterTurnActivityController : Node
         ArgumentNullException.ThrowIfNull(request);
 
         CharacterTurnActivity? activity = Activity;
-        if (!CharacterTurnStartPolicy.CanStart(activity))
+        if (SabotageReservation is not null || !CharacterTurnStartPolicy.CanStart(activity))
         {
             return false;
         }
 
         Activity = CharacterTurnStartTransition.Start(activity, request);
+        return true;
+    }
+
+    /// <summary>Reserves the available shared turn slot for one exact current sabotage opportunity.</summary>
+    public bool TryReserveSabotageTurn(
+        CharacterSabotageTurnOpportunity opportunity,
+        CharacterSabotageTurnOpportunity currentOpportunity)
+    {
+        ArgumentNullException.ThrowIfNull(opportunity);
+        ArgumentNullException.ThrowIfNull(currentOpportunity);
+
+        if (!CharacterSabotageTurnReservationPolicy.CanReserve(
+            opportunity,
+            currentOpportunity,
+            Activity,
+            SabotageReservation))
+        {
+            return false;
+        }
+
+        SabotageReservation = CharacterSabotageTurnReservationTransition.Reserve(
+            opportunity,
+            currentOpportunity,
+            Activity,
+            SabotageReservation);
         return true;
     }
 

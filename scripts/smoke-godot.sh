@@ -224,6 +224,8 @@ ALLRPCS_SABOTAGE_ACTION_REQUEST_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_SABOTAGE_ORDINARY_TURN_AUTHORING_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_SABOTAGE_TURN_OPPORTUNITY_CONTROLLER_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_SABOTAGE_OUTCOME_MOVE_RECOVERY_MAIN_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_SABOTAGE_OUTCOME_SUBSTITUTION_RECOVERY_MAIN_SCENE_CHECK=1 \

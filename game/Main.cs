@@ -23,6 +23,7 @@ public partial class Main : Node
 {
     private const string InitialFocusedSearchResultText = "Focused search: NO ATTEMPT";
     private const int AutonomousConversationMaximumTurnCount = 2;
+    private const int SabotageTurnMeaningfulEventInterval = 2;
     private const float DialogueHearingRangePixels = 192.0f;
     private const float WhisperHearingRangePixels = 48.0f;
     private static readonly TimeSpan CharacterModelGenerationDeadline = TimeSpan.FromSeconds(30);
@@ -263,6 +264,7 @@ public partial class Main : Node
 
         InitializeWorldEvents();
         RecordInitialWorldEvent();
+        InitializeSabotageTurnOpportunity();
         if (!worldObjectController.TryInitializeWorldObjects(worldObjectSource.WorldObjects))
         {
             throw new InvalidOperationException(
@@ -371,6 +373,24 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The world-event controller could not initialize the scene state.");
+        }
+    }
+
+    private void InitializeSabotageTurnOpportunity()
+    {
+        TemporaryCharacterSabotageOrdinaryTurnAuthoringSource source =
+            GetNode<TemporaryCharacterSabotageOrdinaryTurnAuthoringSource>(
+                "TemporaryCharacterSabotageOrdinaryTurnAuthoringSource");
+        CharacterSabotageTurnOpportunityController controller =
+            GetNode<CharacterSabotageTurnOpportunityController>(
+                "CharacterSabotageTurnOpportunityController");
+        if (!controller.TryInitialize(
+                source.Actor,
+                new CharacterSabotageTurnOpportunityCadence(
+                    SabotageTurnMeaningfulEventInterval)))
+        {
+            throw new InvalidOperationException(
+                "The sabotage-turn opportunity controller could not initialize inertly.");
         }
     }
 
