@@ -20,8 +20,7 @@ evidence. Broad Phase 7 outcomes and final acceptance remain unchecked because n
 invokes the path and no player-visible investigation surface exists.
 
 Do not add a sixth or later Move candidate, author, request, task, result, recovery, terminal route, turn
-completion, scheduling authorization, cycle boundary, or admission. Preserve unrelated untracked
-`scripts/code_statistics.py`.
+completion, scheduling authorization, cycle boundary, or admission.
 
 ## Validation and review
 
@@ -60,5 +59,4 @@ Acceptance boundary:
    or later Move-cycle seam.
 7. Update `README.md`, `ROADMAP.md`, and `PHASE_7_ACCEPTANCE_AUDIT.md` only for evidence actually added;
    leave broad acceptance items unchecked.
-8. Run `./scripts/quality.sh`, review the complete diff, preserve `scripts/code_statistics.py`, and leave
-   one exact next acceptance slice.
+8. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next acceptance slice.
