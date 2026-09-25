@@ -4,7 +4,7 @@
 
 `main` includes merged PR #368 at `2801e10`. Branch
 `codex/phase-7-acceptance-turn-lifecycle` continues the switch-gated Phase 7 acceptance path without
-extending the closed repeated Move-cycle chain.
+extending the closed repeated Move-cycle chain. Draft PR #369 carries this branch.
 
 The ordinary-turn Delay path now resolves its exact sabotage-owning character turn after terminal
 route reset, completion exposure, and admission. Domain state `Resolved` is a distinct response-free
@@ -40,6 +40,8 @@ turn completion, scheduling authorization, cycle boundary, or admission.
   rejection/eligibility coverage across the remaining turn consumers. It found no fabricated response,
   cancellation reuse, request replacement, stale-authority acceptance, extra model use, automatic
   scheduling, Move-chain extension, line-length issue, or whitespace error.
+- Draft PR #369 targets `main`. Hosted run `36108207789` failed all five jobs with `steps: []`; no
+  workflow step executed, so this is Actions/account infrastructure rather than product-test evidence.
 
 ## Exact next bounded slice
 
