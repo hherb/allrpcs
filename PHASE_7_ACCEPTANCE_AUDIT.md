@@ -39,6 +39,14 @@ acceptance.
   and retains the exact result, fresh authoritative snapshots, and applied result.
 - `CharacterSabotageOrdinaryTurnSpecificOutcomeCoordinator` uses retained acknowledgement provenance
   after application advances authority and delegates the existing action-specific outcome binder once.
+- `CharacterSabotageOrdinaryTurnDelayRecoveryCandidateCoordinator` publishes only that exact retained
+  outcome with the scene-owned recovery event through the existing candidate and eligibility owners.
+- `CharacterSabotageOrdinaryTurnDelayRecoveryRequestCoordinator` composes only those exact tokens into
+  the existing provider-neutral recovery request without starting it.
+- `CharacterSabotageOrdinaryTurnDelayRecoveryStartCoordinator` explicitly starts only that exact
+  request while preserving its queued one-shot model across rejected preflight.
+- `CharacterSabotageOrdinaryTurnDelayRecoveryResultCoordinator` retains and acknowledges only that
+  task-installed completed recovery and its fresh authoritative snapshots.
 - `TemporaryCharacterSabotageOrdinaryTurnAuthoringSource` supplies representative exact Delay and
   Influence inputs for the switch-gated proof; it is not an ordinary-play scheduler or live authority.
 - Domain policy tests cover rejected physical, informational, identity, target, and stale-state inputs.
@@ -48,7 +56,8 @@ acceptance.
   Action-specific and outcome smoke checks prove the other branches. These checks are disabled during
   ordinary startup. The separate ordinary-turn smoke now evaluates all seven authors, selects, observes,
   binds, and acknowledges one exact generic Delay selection, then composes, starts, resolves,
-  acknowledges, and binds the exact applied typed Delay outcome without entering recovery.
+  acknowledges, and binds the exact applied typed Delay outcome before publishing, composing,
+  starting, completing, and acknowledging its exact recovery without terminal routing.
 
 ## Canonical-kind traceability
 
@@ -132,9 +141,8 @@ acceptance.
 - Validation: Domain access, selection, decision, transition, and recovery tests; Application and strict
   Infrastructure tests; isolated task/resolution/recovery checks; and switch-gated main-scene apply and
   recovery paths.
-- Acceptance status: the switch-gated ordinary-turn proof now selects and applies one exact Delay and
-  binds its outcome, but no ordinary scheduler enters the path and it has no player-visible investigation
-  surface.
+- Acceptance status: the switch-gated ordinary-turn proof now selects, applies, and recovers one exact
+  Delay, but no ordinary scheduler enters the path and it has no player-visible investigation surface.
 
 ### Influence
 
@@ -176,18 +184,17 @@ player can discover. The roadmap item remains unchecked.
 
 ### Final acceptance
 
-`Main.tscn` now owns explicit ordinary-turn authoring through one exact applied Delay outcome, but only a
-smoke environment variable calls the path. No ordinary scheduler supplies a real enemy turn, and the
-proof does not enter recovery or expose the outcome to a player investigation surface. Therefore the
-enemy agent still cannot perform and expose consequential sabotage during ordinary play, and the final
-acceptance statement remains unchecked.
+`Main.tscn` now owns explicit ordinary-turn authoring through one exact applied and recovered Delay, but
+only a smoke environment variable calls the path. No ordinary scheduler supplies a real enemy turn, and
+the proof does not retain a terminal route or expose the outcome to a player investigation surface.
+Therefore the enemy agent still cannot perform and expose consequential sabotage during ordinary play,
+and the final acceptance statement remains unchecked.
 
 ## Next genuine acceptance gap
 
-Author and publish only the exact Delay recovery candidate derived from the bound ordinary-turn outcome.
-Require the exact retained generic acknowledgement, typed result, applied Delay result, current event log
-and world time, and the scene-owned recovery event before delegating the existing recovery-candidate and
-outcome-eligibility owners. Stop before recovery request composition, consideration, application,
-terminal routing, turn completion, cadence, provider work, persistence, UI, or presentation. Null,
-rebuilt, foreign, stale, replaced, already-published, and repeated inputs must remain inert, and ordinary
-startup must still perform no work.
+Retain only the exact completed ordinary-turn Delay recovery as one terminal route through the existing
+terminal owner. Require the exact retained generic acknowledgement, selected typed candidate, recovery
+request, completed recovery result, applied recovery, current event log and world time, and canonical
+`Delay` kind. Stop before terminal reset, turn completion, scheduling, cadence, provider work,
+persistence, UI, or presentation. Null, rebuilt, foreign, stale, replaced-authority, already-retained,
+and repeated inputs must remain inert, and ordinary startup must still perform no work.

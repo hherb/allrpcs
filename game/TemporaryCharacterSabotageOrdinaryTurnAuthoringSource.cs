@@ -16,6 +16,9 @@ public partial class TemporaryCharacterSabotageOrdinaryTurnAuthoringSource : Nod
     /// <summary>Gets the exact current target-delay input.</summary>
     public CharacterTargetSabotageDelayConsiderationRequest DelayRequest { get; private set; } = null!;
 
+    /// <summary>Gets the exact scene-owned event that can recover the target delay.</summary>
+    public WorldEvent RecoveryEvent { get; private set; } = null!;
+
     /// <summary>Gets the exact current target-influence input.</summary>
     public CharacterTargetSabotageInfluenceConsiderationRequest InfluenceRequest
     {
@@ -29,13 +32,15 @@ public partial class TemporaryCharacterSabotageOrdinaryTurnAuthoringSource : Nod
         Actor = GetNode<TemporaryCharacterObjectSabotageSource>(
             "../TemporaryCharacterObjectSabotageSource").Character;
         Character target = RepresentativeSageCharacterSource.Create();
-        DelayRequest = CreateDelayRequest(Actor, target);
+        DelayRequest = CreateDelayRequest(Actor, target, out WorldEvent recoveryEvent);
+        RecoveryEvent = recoveryEvent;
         InfluenceRequest = CreateInfluenceRequest(Actor, target);
     }
 
     private static CharacterTargetSabotageDelayConsiderationRequest CreateDelayRequest(
         Character actor,
-        Character target)
+        Character target,
+        out WorldEvent recoveryEvent)
     {
         CharacterTargetSabotageOccurrence occurrence = new(
             new CharacterTargetSabotageProposal(
@@ -49,11 +54,14 @@ public partial class TemporaryCharacterSabotageOrdinaryTurnAuthoringSource : Nod
         WorldEvent worldEvent = new(
             new WorldEventId("ordinary-turn-enemy-delay"),
             WorldEventTimeEffect.Advance);
+        recoveryEvent = new WorldEvent(
+            new WorldEventId("ordinary-turn-enemy-delay-recovered"),
+            WorldEventTimeEffect.Advance);
         CharacterTargetSabotageDelayCandidate candidate = new(occurrence, worldEvent);
         return new CharacterTargetSabotageDelayConsiderationRequest(
             actor,
             new CharacterInteractionAccessSnapshot(actor.Identity.Id, [target.Identity.Id]),
-            new WorldEventSnapshot([worldEvent]),
+            new WorldEventSnapshot([worldEvent, recoveryEvent]),
             new WorldEventLogSnapshot([]),
             new WorldTimeSnapshot(null),
             [candidate]);
