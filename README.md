@@ -596,8 +596,21 @@ The adjacent observation-world projection retains that exact filtered section bi
 with one exact authoritative world-object snapshot only after every visible target resolves by
 identifier. Value-equal perception identifiers are valid, unrelated authoritative objects remain
 retained, and a missing visible target rejects the complete binding without changing either input.
-It still creates no journal entry or text and performs no visibility interpretation, state
-ownership, mutation, presentation, input handling, persistence, or provider work.
+It performs no visibility interpretation, state ownership, mutation, presentation, input handling,
+persistence, or provider work.
+
+The structural observation-entry projection resolves that validated binding into fresh read-only
+entries in perception order. Each entry retains the exact filtered visibility and its exact
+value-equal matching authoritative world object; unrelated world objects remain outside the result,
+and empty perception produces an empty independent collection. A separate authored-copy projection
+keeps only the exact `Identified` visibility singleton and copies its filtered object identifier plus
+exact authored display name and description. It neither ranks later visibility states nor exposes an
+authoritative object through its safe output.
+
+The immutable observations-section snapshot composes those projections into a consumer-safe
+boundary containing only the exact canonical section, exact Seeker identifier, and independent
+read-only authored copies. It exposes no perception or authoritative world snapshot and still owns
+no editable journal state, scene, UI, input, persistence, gameplay mutation, or provider behavior.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
