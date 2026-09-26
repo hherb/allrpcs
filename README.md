@@ -576,6 +576,29 @@ claims that a distant destination is navigation-reachable. Pronouns are retained
 projected into dialogue; appearance assets, downstream background-specific interactions,
 persistence, and provider behavior remain deferred.
 
+The journal foundation defines one asset-neutral catalogue containing observations, testimony,
+hypotheses, experiments, and open questions in stable canonical order. Each immutable definition
+retains its exact bounded authored key and display label. The catalogue defensively copies the
+complete five-section sequence, preserves the exact supplied definitions, and rejects missing,
+null, duplicate, reordered, or unknown keys. The representative source returns a fresh catalogue
+without entries, perception or dialogue projection, editable notes, scene ownership, UI, input,
+persistence, authoritative gameplay mutation, or provider behavior.
+
+The observations-section projection binds only the catalogue's exact first definition to one exact
+Seeker-owned perception snapshot that has already excluded every `Unnoticed` object. It retains the
+exact catalogue, definition, Seeker identifier, snapshot, visibility entries, and stable order;
+value-equal rebuilt or different character identifiers and still-hidden inputs fail closed. Empty
+filtered perception is valid. This boundary creates no observation text or entry, resolves no world
+object, and does not own scene state, mutate perception, present UI, handle input, persist, or call a
+provider.
+
+The adjacent observation-world projection retains that exact filtered section binding together
+with one exact authoritative world-object snapshot only after every visible target resolves by
+identifier. Value-equal perception identifiers are valid, unrelated authoritative objects remain
+retained, and a missing visible target rejects the complete binding without changing either input.
+It still creates no journal entry or text and performs no visibility interpretation, state
+ownership, mutation, presentation, input handling, persistence, or provider work.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain
