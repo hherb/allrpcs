@@ -1,4 +1,4 @@
-[gd_scene load_steps=288 format=3]
+[gd_scene load_steps=292 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -441,6 +441,10 @@
 [ext_resource type="Script" path="res://OpeningRegionEnvironmentalStateSmokeCheck.cs" id="329_opening_region_environment_check"]
 [ext_resource type="Script" path="res://OpeningRegionEnvironmentalGreyboxPresentationController.cs" id="330_opening_region_environment_presentation"]
 [ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator.cs" id="331_opening_region_environment_flow"]
+[ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSource.cs" id="332_seeker_customization_source"]
+[ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSmokeCheck.cs" id="333_seeker_customization_check"]
+[ext_resource type="Script" path="res://SeekerCustomizationMenuController.cs" id="334_seeker_customization_menu"]
+[ext_resource type="Script" path="res://SeekerCustomizationMenuSmokeCheck.cs" id="335_seeker_customization_menu_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2134,6 +2138,15 @@ script = ExtResource("331_opening_region_environment_flow")
 [node name="OpeningRegionEnvironmentalStateSmokeCheck" type="Node" parent="."]
 script = ExtResource("329_opening_region_environment_check")
 
+[node name="SeekerCustomizationSelectionSceneSource" type="Node" parent="."]
+script = ExtResource("332_seeker_customization_source")
+
+[node name="SeekerCustomizationSelectionSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("333_seeker_customization_check")
+
+[node name="SeekerCustomizationMenuSmokeCheck" type="Node" parent="."]
+script = ExtResource("335_seeker_customization_menu_check")
+
 [node name="OpeningRegionOldShrineSmokeCheck" type="Node" parent="."]
 script = ExtResource("322_opening_region_old_shrine_check")
 
@@ -2864,6 +2877,165 @@ script = ExtResource("22_search_perception_controller_check")
 [node name="FocusedSearchOutcomeResolutionControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("23_search_outcome_resolution_controller_check")
 
+[node name="SeekerCustomizationOverlay" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Panel" type="ColorRect" parent="SeekerCustomizationOverlay"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -230.0
+offset_right = 360.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.055, 0.067, 0.082, 0.98)
+script = ExtResource("334_seeker_customization_menu")
+
+[node name="Title" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 696.0
+offset_bottom = 44.0
+text = "CUSTOMIZE THE SEEKER"
+horizontal_alignment = 1
+
+[node name="DisplayNameLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 58.0
+offset_right = 176.0
+offset_bottom = 89.0
+text = "Name"
+
+[node name="DisplayName" type="LineEdit" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 184.0
+offset_top = 54.0
+offset_right = 696.0
+offset_bottom = 85.0
+placeholder_text = "Seeker display name"
+
+[node name="SubjectLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 104.0
+offset_right = 176.0
+offset_bottom = 135.0
+text = "Subject pronoun"
+
+[node name="Subject" type="LineEdit" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 184.0
+offset_top = 100.0
+offset_right = 344.0
+offset_bottom = 131.0
+placeholder_text = "they"
+
+[node name="ObjectiveLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 376.0
+offset_top = 104.0
+offset_right = 512.0
+offset_bottom = 135.0
+text = "Object pronoun"
+
+[node name="Objective" type="LineEdit" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 520.0
+offset_top = 100.0
+offset_right = 696.0
+offset_bottom = 131.0
+placeholder_text = "them"
+
+[node name="PossessiveDeterminerLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 150.0
+offset_right = 176.0
+offset_bottom = 181.0
+text = "Possessive adjective"
+
+[node name="PossessiveDeterminer" type="LineEdit" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 184.0
+offset_top = 146.0
+offset_right = 344.0
+offset_bottom = 177.0
+placeholder_text = "their"
+
+[node name="PossessivePronounLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 376.0
+offset_top = 150.0
+offset_right = 512.0
+offset_bottom = 181.0
+text = "Possessive pronoun"
+
+[node name="PossessivePronoun" type="LineEdit" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 520.0
+offset_top = 146.0
+offset_right = 696.0
+offset_bottom = 177.0
+placeholder_text = "theirs"
+
+[node name="ReflexiveLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 196.0
+offset_right = 176.0
+offset_bottom = 227.0
+text = "Reflexive pronoun"
+
+[node name="Reflexive" type="LineEdit" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 184.0
+offset_top = 192.0
+offset_right = 344.0
+offset_bottom = 223.0
+placeholder_text = "themself"
+
+[node name="AppearanceLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 250.0
+offset_right = 176.0
+offset_bottom = 281.0
+text = "Appearance"
+
+[node name="Appearance" type="OptionButton" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 184.0
+offset_top = 246.0
+offset_right = 696.0
+offset_bottom = 277.0
+
+[node name="BackgroundLabel" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 296.0
+offset_right = 176.0
+offset_bottom = 327.0
+text = "Background"
+
+[node name="Background" type="OptionButton" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 184.0
+offset_top = 292.0
+offset_right = 696.0
+offset_bottom = 323.0
+
+[node name="Hint" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 340.0
+offset_right = 696.0
+offset_bottom = 365.0
+text = "Selection is one-shot. Background route effects are not active yet."
+horizontal_alignment = 1
+
+[node name="Confirm" type="Button" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 264.0
+offset_top = 376.0
+offset_right = 456.0
+offset_bottom = 411.0
+text = "CONFIRM SEEKER"
+
+[node name="Status" type="Label" parent="SeekerCustomizationOverlay/Panel"]
+offset_left = 24.0
+offset_top = 420.0
+offset_right = 696.0
+offset_bottom = 448.0
+horizontal_alignment = 1
+
 [node name="CommandOverlay" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="ColorRect" parent="CommandOverlay"]
@@ -2879,7 +3051,7 @@ offset_left = 12.0
 offset_top = 7.0
 offset_right = 736.0
 offset_bottom = 30.0
-text = "TEMP · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
+text = "TEMP · U CUSTOMIZE · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
