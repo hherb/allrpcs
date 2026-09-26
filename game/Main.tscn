@@ -471,6 +471,10 @@
 [ext_resource type="Script" path="res://SeekerMapPresentationControllerSmokeCheck.cs" id="359_seeker_map_presentation_check"]
 [ext_resource type="Script" path="res://SeekerMapPanel.cs" id="360_seeker_map_panel"]
 [ext_resource type="Script" path="res://SeekerMapPanelSmokeCheck.cs" id="361_seeker_map_panel_check"]
+[ext_resource type="Script" path="res://SeekerMapOpenCloseInputController.cs" id="362_seeker_map_input"]
+[ext_resource type="Script" path="res://SeekerMapOpenCloseInputSmokeCheck.cs" id="363_seeker_map_input_check"]
+[ext_resource type="Script" path="res://SeekerMapNoteEditingController.cs" id="364_seeker_map_note_editing"]
+[ext_resource type="Script" path="res://SeekerMapNoteEditingSmokeCheck.cs" id="365_seeker_map_note_editing_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1706,7 +1710,7 @@ horizontal_alignment = 1
 offset_left = 20.0
 offset_top = 60.0
 offset_right = 700.0
-offset_bottom = 460.0
+offset_bottom = 300.0
 horizontal_scroll_mode = 0
 
 [node name="Content" type="Label" parent="SeekerMapPanel/Panel/Scroll"]
@@ -1714,6 +1718,47 @@ custom_minimum_size = Vector2(660, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 autowrap_mode = 2
+
+[node name="Locations" type="OptionButton" parent="SeekerMapPanel/Panel"]
+offset_left = 20.0
+offset_top = 316.0
+offset_right = 270.0
+offset_bottom = 352.0
+
+[node name="Note" type="LineEdit" parent="SeekerMapPanel/Panel"]
+offset_left = 282.0
+offset_top = 316.0
+offset_right = 700.0
+offset_bottom = 352.0
+placeholder_text = "Add a note for the selected known location"
+max_length = 1000
+
+[node name="SaveNote" type="Button" parent="SeekerMapPanel/Panel"]
+offset_left = 20.0
+offset_top = 368.0
+offset_right = 180.0
+offset_bottom = 404.0
+text = "Save note"
+
+[node name="RemoveNote" type="Button" parent="SeekerMapPanel/Panel"]
+offset_left = 540.0
+offset_top = 368.0
+offset_right = 700.0
+offset_bottom = 404.0
+text = "Remove note"
+
+[node name="Close" type="Button" parent="SeekerMapPanel/Panel"]
+offset_left = 270.0
+offset_top = 428.0
+offset_right = 450.0
+offset_bottom = 464.0
+text = "Close map"
+
+[node name="SeekerMapOpenCloseInputController" type="Node" parent="."]
+script = ExtResource("362_seeker_map_input")
+
+[node name="SeekerMapNoteEditingController" type="Node" parent="."]
+script = ExtResource("364_seeker_map_note_editing")
 
 [node name="JournalSectionSelectionController" type="Node" parent="."]
 script = ExtResource("347_journal_selection")
@@ -2621,6 +2666,12 @@ script = ExtResource("359_seeker_map_presentation_check")
 
 [node name="SeekerMapPanelSmokeCheck" type="Node" parent="."]
 script = ExtResource("361_seeker_map_panel_check")
+
+[node name="SeekerMapOpenCloseInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("363_seeker_map_input_check")
+
+[node name="SeekerMapNoteEditingSmokeCheck" type="Node" parent="."]
+script = ExtResource("365_seeker_map_note_editing_check")
 
 [node name="RepresentativeJournalCompositionSmokeCheck" type="Node" parent="."]
 script = ExtResource("346_journal_composition_check")
