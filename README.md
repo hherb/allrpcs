@@ -808,6 +808,19 @@ catalogue once and install those explicit operations through expected-state comp
 Ordinary startup does not initialize or advance it, and it does not start discovery, reveal
 evidence, change first-patient state, write the journal or map, call a provider, or present UI.
 
+A separate pure authority transition accepts a route location only when the exact supplied map
+definition is in the exact supplied `SeekerMapSnapshot` verified-location view and its identifier is
+an exact member of that route. Its evidence operation likewise accepts only an exact route evidence
+identifier retained by the supplied filtered `CharacterEvidenceViewSnapshot`. A scene coordinator
+requires the exact current scene-owned map for location progress and installs both operations through
+the route controller's expected-progress compare-and-swap. Rebuilt, foreign, unverified, unseen,
+nonmember, repeated, mismatched, and stale inputs remain inert. The coordinator is explicit and inert
+at ordinary startup; it still does not capture visits or discoveries automatically, infer route
+completion, write any authority source, or present progress. A separate pure completion policy now
+returns an immutable provenance token only when one exact route entry contains every exact authored
+location and evidence member. It accepts any observation order, never pools partial progress across
+routes, and exposes no completion Boolean. Nothing observes or presents that token in the scene yet.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain
