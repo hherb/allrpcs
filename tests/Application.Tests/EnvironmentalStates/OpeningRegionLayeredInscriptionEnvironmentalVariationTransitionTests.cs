@@ -57,6 +57,60 @@ public sealed class OpeningRegionLayeredInscriptionEnvironmentalVariationTransit
     }
 
     [Fact]
+    public void AllowsOnlyExactBaselineCurrentPresentationAndVariationGraph()
+    {
+        OpeningRegionProjection projection = OpeningRegionOldShrineSceneBindingTests.Projection();
+        OpeningRegionEnvironmentalRegionSet baseline =
+            RepresentativeOpeningRegionEnvironmentalSource.Create(projection.Topology);
+        OpeningRegionLayeredInscriptionPresentation presentation = Presentation(projection);
+        OpeningRegionLayeredInscriptionEnvironmentalVariation variation =
+            OpeningRegionLayeredInscriptionEnvironmentalVariationTransition.Create(
+                baseline,
+                presentation,
+                new EnvironmentalState("revealed-light", "A restrained revealed light."),
+                new EnvironmentalState("revealed-sound", "A restrained revealed sound."));
+
+        Assert.True(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, baseline, presentation, variation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, variation.VariedRegions, presentation, variation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(
+                RepresentativeOpeningRegionEnvironmentalSource.Create(projection.Topology),
+                baseline,
+                presentation,
+                variation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, baseline, Presentation(projection), variation));
+    }
+
+    [Fact]
+    public void InstallationAuthorityRejectsForeignVariationAndNullInputs()
+    {
+        OpeningRegionProjection projection = OpeningRegionOldShrineSceneBindingTests.Projection();
+        OpeningRegionEnvironmentalRegionSet baseline =
+            RepresentativeOpeningRegionEnvironmentalSource.Create(projection.Topology);
+        OpeningRegionLayeredInscriptionPresentation presentation = Presentation(projection);
+        OpeningRegionLayeredInscriptionEnvironmentalVariation foreignVariation =
+            OpeningRegionLayeredInscriptionEnvironmentalVariationTransition.Create(
+                baseline,
+                Presentation(projection),
+                new EnvironmentalState("foreign-light", "A foreign revealed light."),
+                new EnvironmentalState("foreign-sound", "A foreign revealed sound."));
+
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, baseline, presentation, foreignVariation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(null, baseline, presentation, foreignVariation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, null, presentation, foreignVariation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, baseline, null, foreignVariation));
+        Assert.False(OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+            .CanInstall(baseline, baseline, presentation, null));
+    }
+
+    [Fact]
     public void RejectsForeignTopologyAndCollidingVariationKeys()
     {
         OpeningRegionProjection projection = OpeningRegionOldShrineSceneBindingTests.Projection();

@@ -436,6 +436,10 @@
 [ext_resource type="Script" path="res://OpeningRegionSouthernRoadWagonSmokeCheck.cs" id="324_opening_region_road_wagon_check"]
 [ext_resource type="Script" path="res://OpeningRegionClosedForestPathSceneSource.cs" id="325_opening_region_closed_forest_scene"]
 [ext_resource type="Script" path="res://OpeningRegionClosedForestPathSmokeCheck.cs" id="326_opening_region_closed_forest_check"]
+[ext_resource type="Script" path="res://OpeningRegionEnvironmentalStateSource.cs" id="327_opening_region_environment_source"]
+[ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator.cs" id="328_opening_region_environment_coordinator"]
+[ext_resource type="Script" path="res://OpeningRegionEnvironmentalStateSmokeCheck.cs" id="329_opening_region_environment_check"]
+[ext_resource type="Script" path="res://OpeningRegionEnvironmentalGreyboxPresentationController.cs" id="330_opening_region_environment_presentation"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2072,6 +2076,13 @@ position = Vector2(110, 90)
 [node name="UnderlyingText" type="Marker2D" parent="OpeningRegionOldShrineSceneSource/LayeredInscription"]
 position = Vector2(0, 4)
 
+[node name="EnvironmentalVariationStatus" type="Label" parent="OpeningRegionOldShrineSceneSource"]
+visible = false
+offset_left = 40.0
+offset_top = 104.0
+offset_right = 360.0
+offset_bottom = 127.0
+
 [node name="ShrineBoundaries" type="Node2D" parent="OpeningRegionOldShrineSceneSource"]
 
 [node name="ShrineTop" type="StaticBody2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries"]
@@ -2106,6 +2117,18 @@ shape = SubResource("RectangleShape2D_shrine_bottom_left")
 
 [node name="OpeningRegionLayeredInscriptionDiscoveryCoordinator" type="Node" parent="."]
 script = ExtResource("321_opening_region_inscription_coordinator")
+
+[node name="OpeningRegionEnvironmentalStateSource" type="Node" parent="."]
+script = ExtResource("327_opening_region_environment_source")
+
+[node name="OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator" type="Node" parent="."]
+script = ExtResource("328_opening_region_environment_coordinator")
+
+[node name="OpeningRegionEnvironmentalGreyboxPresentationController" type="Node" parent="."]
+script = ExtResource("330_opening_region_environment_presentation")
+
+[node name="OpeningRegionEnvironmentalStateSmokeCheck" type="Node" parent="."]
+script = ExtResource("329_opening_region_environment_check")
 
 [node name="OpeningRegionOldShrineSmokeCheck" type="Node" parent="."]
 script = ExtResource("322_opening_region_old_shrine_check")

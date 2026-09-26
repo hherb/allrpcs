@@ -2,83 +2,88 @@
 
 ## Current state
 
-`main` includes merged PR #381 at `1c51641`. Branch
-`codex/phase-8-closed-forest-gate` completes the closed deeper-forest approach and adds
-provider-neutral environmental-region and inscription-variation foundations.
+`main` includes merged PR #382 at `d5cfd98`. Branch
+`codex/phase-8-environmental-state` adds scene-owned qualitative environmental state and one exact
+location-scoped greybox presentation boundary.
 
-`OpeningRegionClosedForestPathSceneBinding` retains the exact existing woodland-clearing layout,
-the projection's exact `closed-deeper-forest-path` anchor, and their exact projected connection.
-`OpeningRegionClosedForestPathLayout` aligns a 48-pixel approach throat with the clearing's existing
-opening, retains 24 pixels of route clearance, and closes it with one immutable gate boundary. Two
-collision-backed approach sides and a visible collision-backed gate remain inside the clearing.
-The distant deeper-forest anchor is provenance only and is not reachable.
+`OpeningRegionEnvironmentalStateSource` creates the representative baseline from the projection's
+exact opening topology and owns that same instance as the exact current snapshot at ordinary
+startup. `OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator` accepts only the
+old-shrine source's exact current presentation, the source's exact baseline/current pair, and its
+own exact replacement woodland light and sound states. It delegates the existing pure transition
+and installs the varied snapshot once through exact-instance compare-and-swap. Null, absent,
+rebuilt, foreign, stale, already-varied, and repeated paths remain inert.
 
-The switch-gated proof reaches the near-side clearance point through synchronized navigation and
-physical movement, rejects representative side and gate crossings, and preserves the concealed
-rare specimen, shrine discovery, southern-road, and wagon snapshots. Review shortened only the
-gate throat after the first full run found that its initial side boundary clipped the established
-clearing-to-shrine route; both the retained shrine smoke and the new gate smoke now pass.
+`OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy` keeps installation
+authority provider- and scene-neutral. The installed variation retains baseline weather and every
+non-woodland region while changing only the exact woodland lighting and sound states. Discovery,
+evidence, the baseline, time, persistence, rendered lighting, and audio playback remain unchanged.
 
-`OpeningRegionEnvironmentalRegionSet` assigns every exact opening-topology location exactly once
-across four stable regions: village shelter, waterway, woodland edge, and southern road. Each region
-retains exact qualitative weather, lighting, and sound states from one catalog. Missing, overlapping,
-rebuilt, foreign, duplicate-key, and unretained-state graphs fail closed, while exact-location lookup
-returns only the retained region.
+`OpeningRegionEnvironmentalLocationPresentationProjection` resolves only an exact retained
+location against one exact current region set. Its immutable result retains the exact location,
+region, weather, lighting, and sound instances and exposes fixed greybox text containing only their
+canonical keys. `OpeningRegionEnvironmentalGreyboxPresentationController` accepts only the exact
+current snapshot and exact old-shrine location once. Its dedicated label stays hidden at ordinary
+startup; its public current presentation remains available only while the source, label visibility,
+and exact text remain current.
 
-`OpeningRegionLayeredInscriptionEnvironmentalVariationTransition` accepts only the exact existing
-layered-inscription presentation from the baseline topology. It returns a new immutable snapshot
-that retains weather and every non-woodland region while replacing only woodland lighting and sound
-with exact caller-authored states. It changes no discovery, scene, playback, or baseline state.
+The switch-gated main-scene proof starts from inert baseline ownership, rejects absent/rebuilt
+variation inputs, performs the exact inscription discovery, installs one exact environmental
+variation, rejects a rebuilt state and repeated install, preserves weather/non-woodland regions and
+the exact discovery/evidence graph, rejects a foreign location, and presents the exact old-shrine
+canonical-key text once. No ordinary input invokes the environmental coordinators yet.
 
-`ROADMAP.md` marks the closed deeper-forest path complete. The broader weather, lighting, sound, and
-story-state item remains open because no scene owner, ambient playback, or rendered lighting was
-added. Deeper-forest content or unlocking, additional discovery routes, production assets, weather
-or time simulation, dialogue, inhabitants, progression, journal, map, provider, audio, signing,
-release, and distribution work remain untouched.
+`ROADMAP.md` keeps the broader weather, lighting, sound, and story-state item open. Automatic
+post-discovery environmental flow, rendered light, ambient playback, weather simulation, time
+progression, persistence, production assets, other location presentations, other discovery
+variations, deeper-forest content, dialogue, inhabitants, journal, map, signing, release, and
+distribution remain untouched.
 
 ## Validation and review
 
-- Focused TDD added 7 Application tests for exact closed-path provenance, geometry, clearance,
-  malformed/rebuilt/foreign/wrong-role/overlapping/out-of-bounds/misaligned/open-gate and
-  boundary-crossing rejection; 7 Domain tests for exact complete environmental regions; and 3
-  Application tests for exact inscription-authorized variation.
-- The first sandboxed `./scripts/quality.sh` passed the zero-warning build, all .NET tests, and the
-  scenario validator, then crashed before Godot scene execution because Godot could not open
-  `user://logs`. The identical host run exposed the clearing/shrine collision described above.
-- After review fixes, host-local `./scripts/quality.sh` passed workflow validation, formatting, a
-  zero-warning build, 2,796 Domain, 654 Application, 1,220 Infrastructure, and 8 architecture tests,
+- Focused TDD added 4 Application tests: 2 for exact baseline/current/presentation/variation
+  installation authority and null/foreign rejection, plus 2 for exact location projection and
+  null/foreign-location rejection. The existing variation suite now totals 5 tests.
+- The sandboxed `./scripts/quality.sh` passed the zero-warning build, all .NET tests, and scenario
+  validation, then crashed before Godot execution because Godot could not open `user://logs`.
+- The identical host-local `./scripts/quality.sh` passed workflow validation, formatting, a
+  zero-warning build, 2,796 Domain, 658 Application, 1,220 Infrastructure, and 8 architecture tests,
   the representative scenario validator, every credential-free Godot smoke, and the graphical
   Compatibility launch.
-- Session review also replaced an implicit missing-woodland `Single` failure with an explicit
-  fail-closed argument rejection and regression coverage. Every new C# file is below 500 lines;
-  the 120-character and whitespace checks are clean.
-- Draft PR #382 targets `main` from implementation commit `1030be9`. Credential-free CI run
-  `36215387525` ended with all five jobs failed before any step was instantiated (`steps: []`), so
+- Session review found that the greybox controller's current token initially survived external
+  label hiding or text replacement. The getter now requires the exact current region set, visible
+  label, and exact projected text; one-shot internal ownership still prevents replay after staleness.
+  The focused build, format check, whitespace check, and host Godot smoke passed after that fix.
+- Every new C# file is below 500 lines; the 120-character and whitespace checks are clean.
+- Draft PR #383 targets `main` from implementation commit `e95a0a5`. Credential-free CI run
+  `36216677563` ended with all five jobs failed before any step was instantiated (`steps: []`), so
   those hosted results are Actions/account infrastructure and provide no product-test evidence;
   the complete host-local validation above remains the executed evidence.
 
 ## Exact next bounded slice
 
-Add scene-owned qualitative environmental state and apply the existing pure inscription variation
-once, without rendering or playing environmental assets.
+Connect one successful ordinary layered-inscription discovery to the existing qualitative
+environmental variation and old-shrine greybox presentation, without adding environmental assets.
 
 Acceptance boundary:
 
-1. Add one `OpeningRegionEnvironmentalStateSource` that creates the representative baseline from
-   `OpeningRegionProjectionSource.Projection.Topology` and exposes that exact baseline as the exact
-   current region set at ordinary startup.
-2. Add one narrow coordinator that accepts only the old-shrine source's exact current
-   `OpeningRegionLayeredInscriptionPresentation`, the environmental source's exact baseline and
-   current snapshots, and scene-authored replacement woodland lighting/sound states. Delegate to
-   `OpeningRegionLayeredInscriptionEnvironmentalVariationTransition` and install its varied snapshot
-   once through exact-instance compare-and-swap.
-3. Keep ordinary startup inert beyond baseline ownership. Null, absent, rebuilt, foreign, stale,
-   already-varied, or repeated inputs must leave the exact current snapshot unchanged.
-4. Wire the source and coordinator into `Main.tscn` after their projection and old-shrine owners.
-   Add no automatic input handling, model work, time progression, discovery mutation, audio stream,
-   rendered light, shader, weather particles, persistence, or production asset.
-5. Add focused Application tests for exact installation authority and one switch-gated main-scene
-   smoke proving inert startup, one exact post-presentation variation, repeated rejection, retained
-   weather/non-woodland regions, and unchanged discovery/evidence state.
-6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice for
-   greybox environmental presentation boundaries.
+1. Add one narrow scene flow coordinator that accepts only the old-shrine source's exact current
+   `OpeningRegionLayeredInscriptionPresentation`, the environmental source's exact baseline/current
+   pair, the variation coordinator's exact authored replacement states, and an empty/current
+   greybox presenter. Preflight the complete graph before changing environmental or label state.
+2. Delegate only to the existing variation coordinator, exact location projection, and greybox
+   presentation controller. Retain one exact completed flow token only after the varied snapshot and
+   exact old-shrine presentation are both current. Do not duplicate transition or lookup rules.
+3. In `Main._UnhandledInput`, invoke that flow only when the existing mapped I action successfully
+   creates the exact inscription presentation. Preserve the discovery commit independently if the
+   downstream environmental preflight rejects; do not retry or roll discovery back.
+4. Null, released, unrelated, rebuilt, foreign, stale, already-varied, already-presented, and
+   repeated inputs must leave environmental and label state unchanged. Ordinary startup and every
+   unrelated input remain inert.
+5. Add no rendered light, shader, weather particles, audio stream or playback, timer, time
+   progression, persistence, provider/model work, production asset, broader UI, or other location
+   and discovery variation.
+6. Add focused Application coverage only if a new pure boundary is required, plus one switch-gated
+   main-scene smoke proving one ordinary I-key discovery -> exact variation -> exact label flow and
+   rejected/repeated-path inertness. Run `./scripts/quality.sh`, review the complete diff, and leave
+   one exact next Phase 8 slice.
