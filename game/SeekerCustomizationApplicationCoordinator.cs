@@ -10,6 +10,8 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
     private SeekerCustomizationSelectionSceneSource selectionSource = null!;
     private TemporarySeekerCharacterSource characterSource = null!;
     private SeekerBackgroundRouteVariationSceneSource routeSource = null!;
+    private SeekerBackgroundRouteAccessSceneSource routeAccessSource = null!;
+    private OpeningRegionClosedForestPathSceneSource closedForestPathSource = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -20,6 +22,10 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             "../TemporarySeekerCharacterSource");
         routeSource = GetNode<SeekerBackgroundRouteVariationSceneSource>(
             "../SeekerBackgroundRouteVariationSceneSource");
+        routeAccessSource = GetNode<SeekerBackgroundRouteAccessSceneSource>(
+            "../SeekerBackgroundRouteAccessSceneSource");
+        closedForestPathSource = GetNode<OpeningRegionClosedForestPathSceneSource>(
+            "../OpeningRegionClosedForestPathSceneSource");
     }
 
     /// <summary>Installs exact preflighted selection and character states in one scene call.</summary>
@@ -63,12 +69,47 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             return false;
         }
 
+        SeekerBackgroundRouteAccess? routeAccess =
+            SeekerBackgroundRouteAccessPolicy.Authorize(
+                selectedRoutes,
+                selectedRoutes,
+                selectedRoutes.SelectedVariation!.DestinationAnchor,
+                routeAccessSource.CurrentAccess);
+        if (routeAccess is null
+            || !routeAccessSource.CanInstallAccess(selectedRoutes, routeAccess))
+        {
+            return false;
+        }
+
+        OpeningRegionClosedForestPathAccess? closedPathAccess = null;
+        if (ReferenceEquals(
+                routeAccess.DestinationAnchor,
+                closedForestPathSource.Binding.ClosedForestPathAnchor))
+        {
+            closedPathAccess = new OpeningRegionClosedForestPathAccess(
+                closedForestPathSource.Binding,
+                routeAccess);
+            if (!closedForestPathSource.CanInstallAccess(
+                    selectedRoutes,
+                    closedPathAccess))
+            {
+                return false;
+            }
+        }
+
         if (!selectionSource.TryInstallSelection(expectedCurrent, selectedState))
         {
             return false;
         }
 
-        return characterSource.TryApplyCustomization(application)
-            && routeSource.TryInstallSelection(currentRoutes, selectedRoutes);
+        if (!characterSource.TryApplyCustomization(application)
+            || !routeSource.TryInstallSelection(currentRoutes, selectedRoutes)
+            || !routeAccessSource.TryInstallAccess(selectedRoutes, routeAccess))
+        {
+            return false;
+        }
+
+        return closedPathAccess is null
+            || closedForestPathSource.TryInstallAccess(selectedRoutes, closedPathAccess);
     }
 }
