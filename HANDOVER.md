@@ -6,6 +6,7 @@
 `codex/phase-8-journal-controller` continues the Phase 8 journal work through exact scene ownership
 and one explicit representative composition from existing scene sources. The roadmap journal item
 remains open because section selection, presentation, input, refresh, and persistence do not exist.
+Draft PR #396 targets `main`.
 
 `JournalController` starts with a null journal and retains one caller-supplied exact
 `JournalSnapshot` only when testimony, hypotheses, experiments, and open questions are installed and
@@ -40,6 +41,9 @@ mutation, model invocation, provider call, or credential access was added.
   validation, every credential-free Godot smoke, and the graphical Compatibility launch.
 - The restricted quality run passed every pure check before the known Godot `user://logs`
   restriction; the identical host run supplied complete Godot evidence.
+- Draft PR #396's credential-free CI run `36240638678` at implementation commit `0746a29` failed
+  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
+  infrastructure and not product-test evidence.
 - Session review covered all new controllers and smokes, `Main.tscn`, `scripts/smoke-godot.sh`,
   `README.md`, and this handover. Exact ownership, canonical order, safe-copy surfaces, source
   isolation, null/incomplete/repeated paths, inert startup, public API documentation, 120-character
