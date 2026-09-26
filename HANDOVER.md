@@ -4,7 +4,8 @@
 
 `main` includes merged PR #407 at `d87c51a`. Branch
 `codex/phase-8-investigation-route-authority` adds three bounded Phase 8 slices over the existing
-opening-region investigation-route catalogue and progress state:
+opening-region investigation-route catalogue and progress state. Draft PR #408 targets `main` from
+this branch:
 
 - `OpeningRegionInvestigationRouteAuthorityTransition` records an exact route location only when
   its exact `MapLocationDefinition` is retained by the supplied `SeekerMapSnapshot` verified view,
