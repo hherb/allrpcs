@@ -1,4 +1,4 @@
-[gd_scene load_steps=292 format=3]
+[gd_scene load_steps=293 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -448,6 +448,7 @@
 [ext_resource type="Script" path="res://SeekerCustomizationApplicationCoordinator.cs" id="336_seeker_customization_application"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSource.cs" id="337_seeker_background_route_source"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSmokeCheck.cs" id="338_seeker_background_route_check"]
+[ext_resource type="Script" path="res://SeekerBackgroundRouteAccessSceneSource.cs" id="339_seeker_background_route_access_source"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2149,6 +2150,9 @@ script = ExtResource("333_seeker_customization_check")
 
 [node name="SeekerBackgroundRouteVariationSceneSource" type="Node" parent="."]
 script = ExtResource("337_seeker_background_route_source")
+
+[node name="SeekerBackgroundRouteAccessSceneSource" type="Node" parent="."]
+script = ExtResource("339_seeker_background_route_access_source")
 
 [node name="SeekerBackgroundRouteVariationSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("338_seeker_background_route_check")

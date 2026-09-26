@@ -557,11 +557,15 @@ projected character. A representative route catalogue maps the exact Forester ch
 forest path, Scribe to the old shrine, Apothecary's Assistant to the healer's garden, and Traveller
 to the southern road. One immutable scene-owned route state retains that exact catalogue and the
 one selected definition. The synchronous scene coordinator preflights and compare-and-swaps the
-selected customization, live temporary character, and route state, rejecting null, empty, rebuilt,
-foreign, stale, repeated, and already-applied paths without partial mutation. The route selection
-does not open a gate, alter collision, remove an existing route, or grant a capability. Pronouns are
-retained but not yet projected into dialogue; appearance assets, route activation, persistence, and
-provider behavior remain deferred.
+selected customization, live temporary character, route state, and one exact scene-owned additive
+access token, rejecting null, empty, rebuilt, foreign, stale, non-destination, repeated, and
+already-applied paths without partial mutation. Only exact Forester access is consumed by a route
+effect: the existing closed-path owner removes its gate collision and greybox gate presentation
+once while retaining the exact route, variation, destination, and scene provenance. Ordinary
+startup remains closed, the other three backgrounds leave that gate unchanged, and access neither
+closes a baseline route nor claims the distant destination is navigation-reachable. Pronouns are
+retained but not yet projected into dialogue; appearance assets, the Scribe, Apothecary's Assistant,
+and Traveller route effects, persistence, and provider behavior remain deferred.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

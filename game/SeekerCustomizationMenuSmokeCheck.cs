@@ -44,6 +44,13 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         SeekerBackgroundRouteVariationSceneSource routeSource =
             GetNode<SeekerBackgroundRouteVariationSceneSource>(
                 "../SeekerBackgroundRouteVariationSceneSource");
+        SeekerBackgroundRouteAccessSceneSource routeAccessSource =
+            GetNode<SeekerBackgroundRouteAccessSceneSource>(
+                "../SeekerBackgroundRouteAccessSceneSource");
+        OpeningRegionClosedForestPathSceneSource closedPathSource =
+            GetNode<OpeningRegionClosedForestPathSceneSource>(
+                "../OpeningRegionClosedForestPathSceneSource");
+        StaticBody2D closedGate = closedPathSource.GetNode<StaticBody2D>("ClosedGate");
         SeekerCustomizationSelectionState initial = source.CurrentState;
         SeekerBackgroundRouteVariationState initialRoutes = routeSource.CurrentState;
         Character initialCharacter = characterSource.Character;
@@ -80,7 +87,9 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             || !ReferenceEquals(source.CurrentState, initial)
             || !ReferenceEquals(routeSource.CurrentState, initialRoutes)
             || !ReferenceEquals(characterSource.Character, initialCharacter)
-            || characterSource.CustomizationApplication is not null)
+            || characterSource.CustomizationApplication is not null
+            || routeAccessSource.CurrentAccess is not null
+            || closedPathSource.CurrentAccess is not null)
         {
             Fail("Rejected customization applications changed scene state.");
             return;
@@ -146,7 +155,20 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             || !ReferenceEquals(routeSource.CurrentState.PreviousState, initialRoutes)
             || !ReferenceEquals(
                 routeSource.CurrentState.SelectedVariation,
-                initialRoutes.Variations[2]))
+                initialRoutes.Variations[2])
+            || !ReferenceEquals(
+                routeAccessSource.CurrentAccess?.RouteState,
+                routeSource.CurrentState)
+            || !ReferenceEquals(
+                routeAccessSource.CurrentAccess?.SelectedVariation,
+                routeSource.CurrentState.SelectedVariation)
+            || !ReferenceEquals(
+                routeAccessSource.CurrentAccess?.DestinationAnchor,
+                routeSource.CurrentState.SelectedVariation?.DestinationAnchor)
+            || closedPathSource.CurrentAccess is not null
+            || closedGate.GetChild<CollisionShape2D>(0).Disabled
+            || !closedGate.GetChild<Line2D>(1).Visible
+            || !closedPathSource.ClosedGateMarker.Visible)
         {
             Fail("The complete modal selection did not retain and install exact input.");
             return;
@@ -154,12 +176,14 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
 
         SeekerCustomizationSelectionState installed = source.CurrentState;
         SeekerBackgroundRouteVariationState installedRoutes = routeSource.CurrentState;
+        SeekerBackgroundRouteAccess installedAccess = routeAccessSource.CurrentAccess!;
         Character installedCharacter = characterSource.Character;
         menu._UnhandledInput(Action(OpenAction, pressed: true));
         confirm.EmitSignal(BaseButton.SignalName.Pressed);
         if (menu.Visible
             || !ReferenceEquals(source.CurrentState, installed)
             || !ReferenceEquals(routeSource.CurrentState, installedRoutes)
+            || !ReferenceEquals(routeAccessSource.CurrentAccess, installedAccess)
             || !ReferenceEquals(characterSource.Character, installedCharacter)
             || !ReferenceEquals(characterSource.CustomizationApplication, application)
             || !seeker.IsPhysicsProcessing())
@@ -172,8 +196,8 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             "Seeker customization menu smoke passed: inert hidden startup, released/unrelated "
             + "input rejection, explicit modal opening with movement suspension, complete-field "
             + "validation, exact appearance/background submission, atomic customized-character "
-            + "and route-definition application, one-shot closure, movement resumption, and "
-            + "repeated-input preservation.");
+            + "and route-definition application, unchanged non-Forester gate, one-shot closure, "
+            + "movement resumption, and repeated-input preservation.");
         GetTree().Quit();
     }
 

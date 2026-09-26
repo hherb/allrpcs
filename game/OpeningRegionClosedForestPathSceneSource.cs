@@ -16,6 +16,9 @@ public partial class OpeningRegionClosedForestPathSceneSource : Node2D
     /// <summary>Gets the inert marker at the visibly closed gate.</summary>
     public Marker2D ClosedGateMarker { get; private set; } = null!;
 
+    /// <summary>Gets the exact consumed Forester access, or null while the gate is closed.</summary>
+    public OpeningRegionClosedForestPathAccess? CurrentAccess { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -42,6 +45,36 @@ public partial class OpeningRegionClosedForestPathSceneSource : Node2D
 
         ConfigureApproachBoundaries();
         ConfigureBoundary(GetNode<StaticBody2D>("ClosedGate"), Layout.GateBoundary);
+    }
+
+    /// <summary>Reports whether exact current Forester access can open this gate once.</summary>
+    public bool CanInstallAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionClosedForestPathAccess? access) =>
+        CurrentAccess is null
+        && access is not null
+        && ReferenceEquals(access.SceneBinding, Binding)
+        && ReferenceEquals(access.RouteAccess.RouteState, currentRouteState)
+        && ReferenceEquals(
+            access.RouteAccess.DestinationAnchor,
+            Binding.ClosedForestPathAnchor);
+
+    /// <summary>Consumes exact Forester access and removes only the existing gate barrier.</summary>
+    public bool TryInstallAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionClosedForestPathAccess? access)
+    {
+        if (!CanInstallAccess(currentRouteState, access))
+        {
+            return false;
+        }
+
+        CurrentAccess = access;
+        StaticBody2D gate = GetNode<StaticBody2D>("ClosedGate");
+        gate.GetChild<CollisionShape2D>(0).Disabled = true;
+        gate.GetChild<Line2D>(1).Visible = false;
+        ClosedGateMarker.Visible = false;
+        return true;
     }
 
     private void ConfigureApproachBoundaries()
