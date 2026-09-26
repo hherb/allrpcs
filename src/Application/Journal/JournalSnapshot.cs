@@ -8,10 +8,12 @@ public sealed class JournalSnapshot
     internal JournalSnapshot(
         JournalSectionCatalogue catalogue,
         JournalObservationSectionSnapshot observations,
+        JournalTestimonySectionSnapshot? testimony,
         IEnumerable<JournalSectionDefinition> pendingSections)
     {
         Catalogue = catalogue;
         Observations = observations;
+        Testimony = testimony;
         PendingSections = pendingSections.ToList().AsReadOnly();
     }
 
@@ -23,6 +25,9 @@ public sealed class JournalSnapshot
 
     /// <summary>Gets the exact Seeker identifier retained by the observations snapshot.</summary>
     public CharacterId SeekerId => Observations.SeekerId;
+
+    /// <summary>Gets the exact audience-free testimony snapshot when installed.</summary>
+    public JournalTestimonySectionSnapshot? Testimony { get; }
 
     /// <summary>Gets copied content-free pending-section definitions in canonical order.</summary>
     public IReadOnlyList<JournalSectionDefinition> PendingSections { get; }

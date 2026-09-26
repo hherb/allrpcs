@@ -24,6 +24,6 @@ public static class JournalSnapshotProjection
             .Skip(FirstPendingSectionIndex)
             .ToList()
             .AsReadOnly();
-        return new JournalSnapshot(catalogue, observations, pendingSections);
+        return new JournalSnapshot(catalogue, observations, null, pendingSections);
     }
 }
