@@ -2,70 +2,77 @@
 
 ## Current state
 
-`main` includes merged PR #403 at `5f7c752`. Branch
-`codex/phase-8-map-visits-testimony` advances the open Phase 8 map roadmap item through two bounded
-scene flows: exact live opening-region visit verification and explicit safe testimony-to-location
-reporting.
+`main` includes merged PR #404 at `14b7a17`. Branch `codex/phase-8-map-persistence`
+advances the open Phase 8 map roadmap item through two bounded persistence slices.
 
-`OpeningRegionMapVisitVerificationCoordinator` accepts only the map controller's exact current map,
-the current scene Seeker's exact identifier and position, the scene source's exact opening-region
-projection, one exact retained anchor, and its matching canonical map location. It delegates
-proximity to `OpeningRegionLocationVisitProjection` with a named 24-pixel radius and passes only the
-coordinate-free visit token to `SeekerMapController.TryVerifyVisit`. It never scans anchors or runs
-during ordinary movement.
+`MapSaveState` retains only one Seeker identifier, reported and verified location identifiers, and
+location/note-text pairs. `MapSaveStateCaptureProjection` accepts only exact same-Seeker map and note
+snapshots backed by one exact catalogue, requires every note to target a known location, and emits
+fresh immutable values in canonical location order. It exposes no hidden definitions, hidden labels,
+coordinates, topology, testimony, scene objects, controllers, or UI state.
 
-`SeekerMapTestimonyReportingCoordinator` accepts only the exact current complete safe journal, its
-exact testimony section and retained authored copy, the current scene Seeker, the map controller's
-exact current map, and one caller-authored canonical location. It delegates to
-`SeekerMapController.TryReport` without classifying testimony text, speaker, or delivery mode.
+`MapSaveStateRestorationProjection` preflights unknown, duplicate, overlapping reported/verified,
+hidden-note, duplicate-note, invalid-text, and null state before returning anything. Valid state
+creates one fresh representative catalogue plus fresh same-Seeker map and note snapshots, with every
+restored location rebound to the exact fresh canonical definition and every arm in canonical order.
 
-Both coordinators are inert during ordinary startup. Their switch-gated smokes are the only callers.
-Accepted visits promote reported locations or add hidden verified locations, and accepted reports
-add hidden reported locations, always in canonical order with immutable prior snapshots preserved.
-Stale, rebuilt, foreign, wrong-owner, wrong-location, non-finite, stale-position, out-of-range,
-already-applied, repeated, and null paths fail closed without changing map notes, presentation,
-panels, journal, perception, world objects, or other gameplay state.
+`SaveSchemaVersion.Map` is version 6. A version-6 `SaveSnapshot` requires the existing first-patient
+and journal state plus same-owner map state; discovery, journal, and map owners must agree.
+`SaveSnapshotMapMigration` accepts only version 5, preserves every existing root component by exact
+reference, and adds fresh empty same-Seeker map collections. Version 6 intentionally remains outside
+`SaveSchemaVersionSupportPolicy` until strict JSON and runtime wiring are complete.
 
-No automatic visit polling, automatic testimony reporting, player-visible reporting choice,
-coordinate or topology presentation, map persistence/schema change, provider call, credential
-access, release, or signing work was added. The Phase 8 map roadmap item remains open.
+No map JSON, storage, current-loading migration activation, scene capture/restoration, automatic
+visit polling or testimony reporting, new UI, provider call, credential access, release, or signing
+work was added. Ordinary startup and the Phase 8 map roadmap item remain unchanged.
 
 ## Validation and review
 
-- Test-first work observed each missing coordinator before implementation. The two new switch-gated
-  smokes cover inert startup; exact current map, Seeker, position, projection, anchor, journal,
-  testimony, entry, catalogue, and location provenance; reported-to-verified promotion;
-  hidden-to-verified addition; content-neutral hidden-to-reported additions; canonical order;
-  immutable sources; and rejection/isolation paths.
-- Session review covered every changed coordinator, smoke, scene, script, README, and handover path.
-  It found and fixed one coverage gap: the visit smoke now distinguishes a stale supplied position
-  from an exact current but out-of-range scene position.
+- Test-first checkpoints observed the missing map persistence types and missing schema-6 root before
+  implementation.
+- Thirteen focused Application tests cover empty/populated capture and restoration, canonical order,
+  fresh exact definitions, immutable independent values, round trips, closed surfaces, exact
+  catalogue/owner provenance, and every malformed-state rejection named above.
+- Focused Domain tests cover the schema-6 value, required root components and owner agreement, exact
+  version-5 migration retention, fresh empty map collections, wrong-version rejection, and the
+  deliberate absence of a version-6 load contract.
+- Session review found and fixed a staged-contract inconsistency: older tests that used numeric 6 as
+  a future version now use 7, and the README explicitly records that version 6 is not loadable yet.
 - Every changed C# file is below 500 lines and every changed C# line is at most 120 characters.
-  `dotnet format Allrpcs.sln --no-restore --verify-no-changes` and `git diff --check` passed.
+  `git diff --check` passed.
+- After the first slice, host-local `./scripts/quality.sh` passed workflow validation, formatting, a
+  zero-warning build, 2,817 Domain, 877 Application, 1,227 Infrastructure, and 8 architecture tests,
+  scenario validation, every credential-free Godot smoke, and the graphical Compatibility launch.
+  The restricted sandbox failed only at Godot's known `user://logs` boundary.
 - Final host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning
-  build, 2,817 Domain, 864 Application, 1,227 Infrastructure, and 8 architecture tests, scenario
-  validation, every credential-free Godot smoke, and the graphical Compatibility launch. The
-  restricted sandbox cannot create Godot's `user://logs`; the identical focused and full host runs
-  passed.
+  build, 2,822 Domain, 877 Application, 1,227 Infrastructure, and 8 architecture tests, scenario
+  validation, every credential-free Godot smoke, and the graphical Compatibility launch.
 
 ## Exact next bounded slice
 
-Add visibility-safe map save-state contracts and pure capture/restoration projections without root
-save-schema or scene-controller wiring.
+Complete schema-6 persistence and runtime integration atomically; do not leave current loading able
+to produce map state that scene restoration ignores.
 
 Acceptance boundary:
 
-1. Add one map save-state value containing only the canonical Seeker identifier, reported location
-   identifiers, verified location identifiers, and canonical location/note-text pairs.
-2. Add a pure capture projection from exact same-Seeker `SeekerMapSnapshot` and
-   `SeekerMapNoteSnapshot`; preserve canonical order and expose no hidden catalogue entries,
-   coordinates, topology, testimony, or scene objects.
-3. Add a pure restoration projection that creates a fresh representative catalogue plus fresh map
-   and note snapshots from valid state. Reject unknown, duplicate, overlapping reported/verified,
-   hidden-note, duplicate-note, invalid-text, and inconsistent-owner state atomically.
-4. Prove empty and populated round trips, reported/verified/note ordering, exact fresh canonical
-   definitions, immutable inputs, and all malformed-state rejection with focused Application tests.
-5. Do not change the root save DTO, schema version, JSON, storage, scene controllers, startup,
-   automatic visit/report behavior, UI, providers, or credentials.
-6. Run the focused tests and `./scripts/quality.sh`, review the complete diff, update `README.md`, and
-   leave one next slice for root schema integration and migration behavior.
+1. Add strict bounded `MapSaveState` JSON writer/reader support. Canonically write only `seekerId`,
+   `reportedLocationIds`, `verifiedLocationIds`, and ordered `{locationId,text}` notes; reject null,
+   missing, duplicate-property, unknown-property, wrong-kind, oversized, and malformed values.
+2. Extend root JSON serialization/deserialization for exact version 6 with both journal and map.
+   Preserve exact version-1-through-5 document contracts.
+3. Extend `DeserializeCurrent` through `SaveSnapshotMapMigration` and only then add version 6 to the
+   supported-load policy. Prove versions 1 through 5 migrate to fresh empty same-Seeker map state and
+   direct version-6 documents round trip without sharing collections.
+4. Extend scene capture to require exact initialized same-Seeker map and note state, capture it through
+   `MapSaveStateCaptureProjection`, and emit version 6 only after every root component is available.
+5. Extend scene restoration with complete map preflight through `MapSaveStateRestorationProjection`,
+   then install discovery, world events, memory, first-patient state, journal/selection, and map/notes
+   atomically. Add only the minimum exact-state controller restore operation needed for that install.
+6. Extend serialized-save and isolated-storage smokes for populated map/report/verify/note round trips,
+   version-5 empty-map migration, malformed/unknown/hidden-note rejection, fresh canonical definitions,
+   and preservation of every controller on failure.
+7. Do not add automatic visit/report behavior, player-visible reporting choices, coordinate/topology
+   exposure, new map UI, providers, credentials, release, or signing work.
+8. Run focused tests and `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave
+   one next bounded slice to close the Phase 8 map roadmap item only if end-to-end persistence is
+   complete.

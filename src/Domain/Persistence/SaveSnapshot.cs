@@ -18,7 +18,8 @@ public sealed record SaveSnapshot
             worldEvents,
             EmptyCharacterMemory,
             firstPatient: null,
-            journal: null)
+            journal: null,
+            map: null)
     {
     }
 
@@ -34,7 +35,8 @@ public sealed record SaveSnapshot
             worldEvents,
             characterMemory,
             firstPatient: null,
-            journal: null)
+            journal: null,
+            map: null)
     {
     }
 
@@ -45,7 +47,14 @@ public sealed record SaveSnapshot
         WorldEventSaveState worldEvents,
         CharacterMemorySnapshot characterMemory,
         FirstPatientSaveState? firstPatient)
-        : this(schemaVersion, discovery, worldEvents, characterMemory, firstPatient, journal: null)
+        : this(
+            schemaVersion,
+            discovery,
+            worldEvents,
+            characterMemory,
+            firstPatient,
+            journal: null,
+            map: null)
     {
     }
 
@@ -57,6 +66,26 @@ public sealed record SaveSnapshot
         CharacterMemorySnapshot characterMemory,
         FirstPatientSaveState? firstPatient,
         JournalSaveState? journal)
+        : this(
+            schemaVersion,
+            discovery,
+            worldEvents,
+            characterMemory,
+            firstPatient,
+            journal,
+            map: null)
+    {
+    }
+
+    /// <summary>Creates a save root retaining exact journal and visibility-safe map state.</summary>
+    public SaveSnapshot(
+        SaveSchemaVersion schemaVersion,
+        DiscoverySaveState discovery,
+        WorldEventSaveState worldEvents,
+        CharacterMemorySnapshot characterMemory,
+        FirstPatientSaveState? firstPatient,
+        JournalSaveState? journal,
+        MapSaveState? map)
     {
         ArgumentNullException.ThrowIfNull(schemaVersion);
         ArgumentNullException.ThrowIfNull(discovery);
@@ -65,7 +94,8 @@ public sealed record SaveSnapshot
 
         bool retainsFirstPatient = schemaVersion == SaveSchemaVersion.FirstPatient
             || schemaVersion == SaveSchemaVersion.DialogueDelivery
-            || schemaVersion == SaveSchemaVersion.Journal;
+            || schemaVersion == SaveSchemaVersion.Journal
+            || schemaVersion == SaveSchemaVersion.Map;
         if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
@@ -86,12 +116,14 @@ public sealed record SaveSnapshot
                 nameof(characterMemory));
         }
 
-        if (schemaVersion == SaveSchemaVersion.Journal && journal is null)
+        bool retainsJournal = schemaVersion == SaveSchemaVersion.Journal
+            || schemaVersion == SaveSchemaVersion.Map;
+        if (retainsJournal && journal is null)
         {
             throw new ArgumentNullException(nameof(journal));
         }
 
-        if (schemaVersion != SaveSchemaVersion.Journal && journal is not null)
+        if (!retainsJournal && journal is not null)
         {
             throw new ArgumentException(
                 "Only the journal save schema can retain journal state.",
@@ -106,12 +138,34 @@ public sealed record SaveSnapshot
                 nameof(journal));
         }
 
+        if (schemaVersion == SaveSchemaVersion.Map && map is null)
+        {
+            throw new ArgumentNullException(nameof(map));
+        }
+
+        if (schemaVersion != SaveSchemaVersion.Map && map is not null)
+        {
+            throw new ArgumentException(
+                "Only the map save schema can retain map state.",
+                nameof(map));
+        }
+
+        if (map is not null
+            && (map.SeekerId != discovery.Perception.CharacterId
+                || map.SeekerId != journal!.SeekerId))
+        {
+            throw new ArgumentException(
+                "Map state must belong to the saved discovery character and journal owner.",
+                nameof(map));
+        }
+
         SchemaVersion = schemaVersion;
         Discovery = discovery;
         WorldEvents = worldEvents;
         CharacterMemory = characterMemory;
         FirstPatient = firstPatient;
         Journal = journal;
+        Map = map;
     }
 
     /// <summary>Gets the exact retained root schema-version discriminator.</summary>
@@ -131,4 +185,7 @@ public sealed record SaveSnapshot
 
     /// <summary>Gets exact content-safe journal state when retained by the schema version.</summary>
     public JournalSaveState? Journal { get; }
+
+    /// <summary>Gets exact visibility-safe map state when retained by the schema version.</summary>
+    public MapSaveState? Map { get; }
 }

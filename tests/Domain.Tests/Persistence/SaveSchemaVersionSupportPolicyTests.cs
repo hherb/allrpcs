@@ -30,9 +30,10 @@ public sealed class SaveSchemaVersionSupportPolicyTests
     }
 
     [Theory]
+    [InlineData(6)]
     [InlineData(27)]
     [InlineData(int.MaxValue)]
-    public void RejectsStructurallyValidFutureVersionsWithoutChangingThem(int value)
+    public void RejectsVersionsWithoutACompleteLoadContractWithoutChangingThem(int value)
     {
         SaveSchemaVersion version = new(value);
         int originalValue = version.Value;
