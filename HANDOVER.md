@@ -6,7 +6,7 @@
 `codex/phase-8-journal-testimony-provenance` advances the open Phase 8 journal roadmap item through
 three bounded, scene-neutral Application slices. The roadmap item remains open because testimony is
 not installed into a journal snapshot and hypotheses, experiments, open questions, scene ownership,
-UI, input, and persistence do not exist yet.
+UI, input, and persistence do not exist yet. Draft PR #393 targets `main`.
 
 `JournalSnapshotProjection` composes the existing visibility-safe observations snapshot with its
 exact catalogue. It retains the exact catalogue, observations snapshot, and Seeker identifier while
@@ -42,6 +42,9 @@ owns scene state, presents UI, handles input, persists, mutates gameplay, or cal
   boundaries, heard-dialogue filtering, audience exclusion, stable order, caller isolation, public
   API documentation, 120-character limits, sub-500-line C# files, formatting, and whitespace. The
   review clarified foreign-section coverage; no review issues remain.
+- Draft PR #393's credential-free CI run `36234627082` at implementation commit `bf89c24` failed all
+  five jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure
+  and not product-test evidence.
 
 ## Exact next bounded slice
 
