@@ -964,7 +964,7 @@ Acceptance:
 - [x] Build the sickhouse and first sleeping patient scene.
 - [x] Build the healer's garden and remedy-preparation station.
 - [x] Build the village square and village-edge transitions.
-- [ ] Build the stream and abandoned laundry.
+- [x] Build the stream and abandoned laundry.
 - [ ] Build the woodland clearing and concealed rare specimen.
 - [ ] Build the old shrine and layered inscription discovery.
 - [ ] Build the southern road and abandoned wagon.

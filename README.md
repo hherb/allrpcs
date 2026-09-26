@@ -1394,7 +1394,19 @@ navigation surface excludes wall clearance while retaining every authored openin
 switch-gated proof drives the Seeker garden -> square -> edge and back through both navigation paths and
 physical collision openings. Rebuilt, foreign, missing, swapped, overlapping, out-of-bounds, and
 insufficient-clearance bindings fail closed. Stream, laundry, woodland, clue, discovery, dialogue,
-inhabitant, production-art, weather, sound, journal, and map work remains deferred.
+inhabitant, production-art, weather, sound, journal, and map work was deferred at that boundary.
+
+The stream and abandoned-laundry scene binds only those two exact retained projection anchors to
+distinct bounded areas with 24-pixel endpoint clearance. The layout copies and validates the two
+authored stream-bank collision polygons and adds an inert laundry shell whose east and west openings
+retain the water and later woodland routes. Its pure route policy rejects paths through either bank,
+the laundry top/bottom or closed side sections, and the 1600-by-900 world bound. The switch-gated
+main-scene proof checks that the collision polygons still match the named geometry, then drives the
+Seeker village edge -> stream -> abandoned laundry and back over synchronized navigation and physical
+openings. Missing, rebuilt, foreign, swapped, overlapping, out-of-bounds, insufficient-clearance,
+narrow-opening, oversized-wall, invalid-approach, malformed-bank, and bank-crossing inputs fail closed.
+Laundry interaction and clues, woodland, rare-specimen, shrine, road, wagon, discovery, dialogue,
+inhabitant, production-art, weather, lighting, sound, journal, and map work remain deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
