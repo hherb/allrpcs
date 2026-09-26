@@ -2,75 +2,78 @@
 
 ## Current state
 
-`main` includes merged PR #379 at `e8d35b2`. Branch
-`codex/phase-8-inscription-coordinator` completes Phase 8's player-triggered old-shrine
-layered-inscription discovery while preserving fail-closed exact authority.
+`main` includes merged PR #380 at `016a974`. Branch
+`codex/phase-8-southern-road-wagon` completes Phase 8's southern-road and abandoned-wagon
+greybox shell while keeping wagon discovery inactive.
 
-`OpeningRegionLayeredInscriptionDiscoveryCoordinator` retains the exact current
-`OpeningRegionOldShrineSceneSource` and accepts only its exact knowledgeable Seeker. One explicit
-operation constructs shrine-local access from the live Seeker position, binds the representative
-scenario's exact reinterpretation candidate and trigger knowledge, resolves the existing pure
-`Noticed`-to-`Identified` transition, and prepares discovery state, presentation, and filtered
-`partial-inscription` evidence before the first scene mutation.
+`OpeningRegionSouthernRoadWagonSceneBinding` retains the exact existing old-shrine layout and
+accepts only the opening projection's exact `southern-road` and `abandoned-wagon` anchors, their
+exact shrine/road and road/wagon topology connections, and one non-overlapping in-world wagon
+area with endpoint clearance. Rebuilt, foreign, swapped, malformed, overlapping, out-of-bounds,
+and insufficient-clearance inputs fail closed.
 
-`OpeningRegionOldShrineSceneSource.TryCommitInscriptionDiscovery` revalidates the complete exact
-graph plus the live Seeker and marker positions, then installs the state, reveals the existing two
-inert marker layers, and retains presentation and evidence in one atomic commit. The superseded
-piecemeal scene mutation methods were removed during review, so no public partial-application path
-remains.
+`OpeningRegionSouthernRoadWagonLayout` defines a 24-pixel-clear road from the exact southern-road
+anchor to the sole north opening of an inert wagon shell. Two road edges and five shell sections
+are exposed as exact finite segments. The pure route policy accepts the authored centerline and
+rejects road, shell, or world-bound crossings without treating collinear disjoint routes as
+collisions.
 
-Ordinary startup remains concealed. The mapped physical I action invokes the exact coordinator;
-released, unrelated, far, stale, foreign, rebuilt, missing-knowledge, already-visible, and repeated
-paths remain inert. The temporary control panel and README document this ordinary activation. No
-player-facing inscription copy, journal, persistence, focused-search/focus integration, new
-knowledge acquisition, collection, or broader evidence route was added.
+The main scene derives every collision segment and greybox line from that validated layout and
+retains one childless marker at the exact wagon anchor. The switch-gated proof follows the existing
+physical shrine -> clearing -> laundry -> stream crossing, stays east of the village shell, enters
+the road on-axis, reaches the wagon, and returns. It also proves representative road/wagon
+collision rejection and preserves the shrine discovery graph. The wagon footprint was narrowed
+during review so the established bottom-border probe remains independent; the obsolete generic
+lower-terrain clear probe now exercises the authored open road corridor.
 
-`ROADMAP.md` now marks player-triggered layered-inscription discovery complete. Road, wagon,
-closed-path, dialogue, inhabitants, remedy progression, production art, weather, lighting, sound,
-map, provider, audio, signing, release, and distribution work remain untouched.
+`wagon-clue`, `wagon-residue`, passive noticing, focused search, collection, presentation, and
+evidence remain absent from ordinary play. Closed-path behavior, dialogue, inhabitants, remedy
+progression, production art, weather, lighting, sound, journal, map, provider, audio, signing,
+release, and distribution work remain untouched.
+
+`ROADMAP.md` marks the southern-road/abandoned-wagon greybox complete.
 
 ## Validation and review
 
-- A zero-warning solution build passes after the coordinator, atomic commit, input action, and
-  scene wiring changes.
-- The host-local switch-gated old-shrine smoke passes complete preflight, atomic accepted discovery,
-  ordinary I-key activation, one-shot marker reveal and evidence exposure, null/foreign/rebuilt/
-  missing-knowledge/far/moved-marker/already-visible/repeated rejection, released and unrelated
-  input inertness, exact scenario/source retention, five collision-backed boundaries, and the
-  synchronized clearing round trip.
-- The sandboxed focused smoke again failed before scene execution because Godot could not open
-  `user://logs`; the identical host-local command above passed.
-- Review removed the obsolete partial scene mutation API. The new coordinator and modified shrine
-  source/smoke files remain below 500 lines; 120-character and whitespace checks are clean. Existing
-  long `Main.cs` and `InteractionFocusSmokeCheck.cs` received only narrow wiring/assertion edits.
-- Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,789 Domain, 638 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
-  scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
-  The first complete run found only a stale interaction-focus smoke expectation for the temporary
-  control label; review updated that assertion and added an exact physical-I mapping check before the
-  final complete pass.
-- Draft PR #380 targets `main` from implementation commit `67cd97d`. Initial credential-free CI
-  run `36211237831` ended with all five jobs failed before any step was instantiated (`steps: []`),
-  so those hosted results are Actions/account infrastructure and provide no product-test evidence;
+- Focused Application tests cover exact retained provenance, geometry, minimum clearance, and
+  malformed, rebuilt, foreign, swapped, overlapping, out-of-bounds, misaligned-opening,
+  collinear-disjoint, road-crossing, and wagon-crossing cases.
+- The switch-gated host smoke passes exact geometry/provenance, synchronized and physically clear
+  round-trip travel, representative collisions, inert marker state, absent clue/residue state, and
+  retained shrine snapshots.
+- The first sandboxed `./scripts/quality.sh` passed the zero-warning build, all .NET tests, and the
+  scenario validator, then crashed before Godot scene execution because Godot could not open
+  `user://logs`. The identical host run exposed two legacy movement-probe conflicts with the new
+  shell; review narrowed the wagon footprint and moved only the obsolete open-terrain probe.
+- After those fixes, host-local `./scripts/quality.sh` passed workflow validation, formatting, a
+  zero-warning build, 2,789 Domain, 644 Application, 1,220 Infrastructure, and 8 architecture
+  tests, the representative scenario validator, every credential-free Godot smoke, and the
+  graphical Compatibility launch.
+- Review keeps every new C# file below 500 lines. The 120-character and whitespace checks are
+  clean. No wagon discovery state, input, evidence, or broader Phase 8 behavior was introduced.
+- Draft PR #381 targets `main` from implementation commit `05ecec9`. Credential-free CI run
+  `36213617312` ended with all five jobs failed before any step was instantiated (`steps: []`), so
+  those hosted results are Actions/account infrastructure and provide no product-test evidence;
   the complete host-local validation above remains the executed evidence.
 
 ## Exact next bounded slice
 
-Build the southern-road and abandoned-wagon greybox shell without activating wagon discovery.
+Build the closed deeper-forest path greybox boundary without opening the deeper forest.
 
 Acceptance boundary:
 
-1. Bind the projection's exact retained `southern-road` and `abandoned-wagon` anchors into one
-   bounded collision-aware road/wagon layout that preserves the existing old-shrine connection and
-   the wagon connection with the projection's minimum path clearance.
-2. Author only greybox road boundaries and one inert wagon shell/marker. Keep `wagon-clue`,
-   `wagon-residue`, passive noticing, focused search, collection, presentation, and evidence state
-   absent from ordinary play.
-3. Add pure Application tests for exact projection provenance, geometry, clearance, and malformed,
-   rebuilt, foreign, swapped, overlapping, out-of-bounds, or route-crossing rejection.
-4. Add one switch-gated main-scene smoke for synchronized and physically clear old-shrine ->
-   southern-road -> abandoned-wagon travel and representative collision rejection. Preserve all
-   existing shrine discovery, scene, navigation, and source snapshots.
-5. Add no closed deeper-forest path, dialogue, inhabitants, remedy progression, production art,
-   weather, lighting, sound, journal, map, provider, audio, signing, release, or distribution work.
+1. Retain the existing exact `OpeningRegionWoodlandClearingLayout` and bind its projection's exact
+   `closed-deeper-forest-path` anchor into one bounded approach aligned with the clearing's existing
+   `ClosedForestPathOpening` and the projection's minimum path clearance.
+2. Author only greybox approach boundaries and one visibly closed collision-backed gate/marker.
+   Ordinary startup and all input must leave the gate closed.
+3. Add pure Application tests for exact projection and clearing provenance, approach geometry,
+   clearance, and malformed, rebuilt, foreign, wrong-role, overlapping, out-of-bounds,
+   misaligned, open-gate, or boundary-crossing rejection.
+4. Add one switch-gated main-scene smoke for synchronized and physically clear travel from the
+   clearing to the closed gate, representative side/gate collision rejection, and preservation of
+   the clearing rare-specimen, shrine discovery, and road/wagon snapshots.
+5. Add no deeper-forest region, unlocking condition, dialogue, inhabitants, wagon or specimen
+   discovery, remedy progression, production art, weather, lighting, sound, journal, map,
+   provider, audio, signing, release, or distribution work.
 6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.

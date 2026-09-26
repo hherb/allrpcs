@@ -60,8 +60,8 @@ public partial class SeekerMovementBoundarySmokeCheck : Node
             new Vector2(0.0f, 280.0f),
             "north-to-south bridge traversal"),
         new(
-            new Vector2(500.0f, 600.0f),
-            new Vector2(400.0f, 0.0f),
+            new Vector2(620.0f, 620.0f),
+            new Vector2(70.0f, 124.0f),
             "representative open lower terrain"),
     ];
 
@@ -149,9 +149,10 @@ public partial class SeekerMovementBoundarySmokeCheck : Node
             return true;
         }
 
-        Fail(
-            $"Expected clear {scenario.Description}, but the Seeker hit "
-            + $"{collision.GetCollider()}.");
+        string collider = collision.GetCollider() is Node node
+            ? node.Name.ToString()
+            : collision.GetCollider().ToString() ?? "unknown";
+        Fail($"Expected clear {scenario.Description}, but the Seeker hit {collider}.");
         return false;
     }
 
