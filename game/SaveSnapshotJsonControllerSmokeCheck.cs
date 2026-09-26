@@ -92,10 +92,15 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             SaveSchemaVersion.FirstSupported,
             initialSnapshot.Discovery,
             initialSnapshot.WorldEvents));
-        string expectedMigrated = SaveSnapshotJsonSerializer.Serialize(
-            SaveSnapshotJsonDeserializer.DeserializeCurrent(
-                legacy,
-                InitialFirstPatientState(firstPatientContext)));
+        SaveSnapshot migrated = SaveSnapshotJsonDeserializer.DeserializeCurrent(
+            legacy,
+            InitialFirstPatientState(firstPatientContext));
+        string expectedMigratedCapture = SaveSnapshotJsonSerializer.Serialize(new SaveSnapshot(
+            SaveSchemaVersion.DialogueDelivery,
+            migrated.Discovery,
+            migrated.WorldEvents,
+            migrated.CharacterMemory,
+            migrated.FirstPatient));
         SaveSnapshot alternate = CreateAlternateState(worldObjects, definitions);
         if (!restorationController.TryRestore(alternate))
         {
@@ -127,7 +132,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         }
 
         if (!controller.TryRestoreSerialized(legacy)
-            || !HasSerializedState(expectedMigrated)
+            || !HasSerializedState(expectedMigratedCapture)
             || memoryController.Memory.Characters.Count != 0
             || firstPatientController.PreparedBatches?.Batches.Count != 0
             || firstPatientController.AdministrationExperiments?.Records.Count != 0

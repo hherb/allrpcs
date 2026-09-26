@@ -17,6 +17,7 @@ public sealed class SaveSnapshotLoadPolicyTests
     [InlineData(2)]
     [InlineData(3)]
     [InlineData(4)]
+    [InlineData(5)]
     public void AcceptsASnapshotWithAKnownSchemaVersionWithoutChangingIt(int value)
     {
         SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(value));
@@ -78,18 +79,40 @@ public sealed class SaveSnapshotLoadPolicyTests
         WorldEventSaveState worldEvents = new(
             new WorldEventLogSnapshot([]),
             new WorldTimeSnapshot(null));
-        return version == SaveSchemaVersion.FirstPatient
-                || version == SaveSchemaVersion.DialogueDelivery
-            ? new SaveSnapshot(
-                version,
-                discovery,
-                worldEvents,
-                new CharacterMemorySnapshot([]),
-                new FirstPatientSaveState(
-                    RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth,
-                    new PreparedIngredientBatchSnapshot([]),
-                    new IngredientExperimentJournalSnapshot([]),
-                    new ExperimentJournalSnapshot([])))
-            : new SaveSnapshot(version, discovery, worldEvents);
+        if (version == SaveSchemaVersion.FirstPatient
+            || version == SaveSchemaVersion.DialogueDelivery
+            || version == SaveSchemaVersion.Journal)
+        {
+            FirstPatientSaveState firstPatient = new(
+                RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth,
+                new PreparedIngredientBatchSnapshot([]),
+                new IngredientExperimentJournalSnapshot([]),
+                new ExperimentJournalSnapshot([]));
+            return version == SaveSchemaVersion.Journal
+                ? new SaveSnapshot(
+                    version,
+                    discovery,
+                    worldEvents,
+                    new CharacterMemorySnapshot([]),
+                    firstPatient,
+                    EmptyJournal(discovery.Perception.CharacterId))
+                : new SaveSnapshot(
+                    version,
+                    discovery,
+                    worldEvents,
+                    new CharacterMemorySnapshot([]),
+                    firstPatient);
+        }
+
+        return new SaveSnapshot(version, discovery, worldEvents);
     }
+
+    private static JournalSaveState EmptyJournal(CharacterId seekerId) => new(
+        seekerId,
+        [],
+        [],
+        [],
+        [],
+        [],
+        null);
 }
