@@ -135,7 +135,7 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 - [x] Complete player-triggered layered-inscription discovery at the old shrine through the mapped
   ordinary I action, exact access and reinterpretation, atomic one-shot presentation, and filtered
   evidence exposure.
-- [ ] Build the southern road and abandoned wagon.
+- [x] Build the southern road and abandoned wagon.
 - [ ] Build the closed path leading toward the deeper forest.
 - [ ] Add weather, lighting, sound regions, and story-state variations needed by discoveries.
 - [ ] Implement Seeker name, pronouns, appearance choices, and background selection.

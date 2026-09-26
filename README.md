@@ -1440,6 +1440,19 @@ the mapped I action is the only ordinary activation path and reveals the existin
 layers without adding inscription copy, journal/UI presentation, persistence, or a broader evidence
 route.
 
+The southern-road/abandoned-wagon scene retains the exact old-shrine layout and accepts only the
+projection's exact `southern-road` and `abandoned-wagon` anchors with both exact topology
+connections. The road begins at its retained anchor with 24 pixels of clearance on each side and
+ends at the sole north opening of a bounded inert wagon shell. Two collision-backed road edges and
+five wagon-shell sections are derived directly from the pure validated layout; malformed, rebuilt,
+foreign, swapped, overlapping, out-of-bounds, insufficient-clearance, misaligned-opening, and
+boundary-crossing inputs fail closed. The switch-gated proof follows the existing synchronized
+shrine, clearing, laundry, and stream crossing before entering the southern road, reaches the exact
+wagon marker, returns physically clear, rejects representative road and wagon collisions, and
+preserves the shrine discovery graph. `wagon-clue`, `wagon-residue`, passive noticing, focused
+search, collection, presentation, evidence, closed-path, dialogue, inhabitants, production art,
+weather, lighting, sound, journal, and map behavior remain absent.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the
