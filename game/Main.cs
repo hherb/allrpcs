@@ -36,6 +36,8 @@ public partial class Main : Node
     private static readonly StringName FocusedSearchStartAction = new("focused_search_start");
     private static readonly StringName HealerToggleAction = new("healer_toggle_follow_wait");
     private static readonly StringName HealerMoveAction = new("healer_move");
+    private static readonly StringName LayeredInscriptionDiscoverAction =
+        new("layered_inscription_discover");
 
     private Healer healer = null!;
     private AutonomousConversationBudgetController autonomousConversationBudgetController = null!;
@@ -80,6 +82,8 @@ public partial class Main : Node
     private FocusedSearchActivityController focusedSearchController = null!;
     private Label focusedSearchResultStatus = null!;
     private InteractionFocusController interactionFocusController = null!;
+    private OpeningRegionLayeredInscriptionDiscoveryCoordinator
+        layeredInscriptionDiscoveryCoordinator = null!;
     private TemporaryResolvedPerceptionIndicator[] resolvedPerceptionIndicators = [];
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
@@ -183,6 +187,9 @@ public partial class Main : Node
         focusedSearchResultStatus = GetNode<Label>("CommandOverlay/Panel/FocusedSearchResult");
         interactionFocusController = GetNode<InteractionFocusController>(
             "InteractionFocusController");
+        layeredInscriptionDiscoveryCoordinator =
+            GetNode<OpeningRegionLayeredInscriptionDiscoveryCoordinator>(
+                "OpeningRegionLayeredInscriptionDiscoveryCoordinator");
         resolvedPerceptionIndicators =
         [
             GetNode<TemporaryResolvedPerceptionIndicator>(
@@ -851,6 +858,11 @@ public partial class Main : Node
                     focusedSearchContextSource.Capabilities,
                     focusedSearchContextSource.Inventory);
             PresentFocusedSearchResult("START", changed);
+        }
+        else if (@event.IsActionPressed(LayeredInscriptionDiscoverAction))
+        {
+            _ = layeredInscriptionDiscoveryCoordinator.TryDiscover(
+                layeredInscriptionDiscoveryCoordinator.SceneSource.KnowledgeableSeeker);
         }
         else if (@event.IsActionPressed(HealerToggleAction))
         {

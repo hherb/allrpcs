@@ -1,5 +1,7 @@
 using Allrpcs.Application.Discovery;
 using Allrpcs.Application.Navigation;
+using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Controllers;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
@@ -25,6 +27,9 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
 
     /// <summary>Gets the caller-owned representative discovery scenario.</summary>
     public DiscoveryScenario DiscoveryScenario { get; private set; } = null!;
+
+    /// <summary>Gets the exact scenario-owned knowledgeable Seeker.</summary>
+    public Character KnowledgeableSeeker { get; private set; } = null!;
 
     /// <summary>Gets the inert exact shrine-inscription binding.</summary>
     public OpeningRegionLayeredInscriptionBinding InscriptionBinding { get; private set; } = null!;
@@ -60,6 +65,7 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
             OpeningRegionOldShrineGeometry.SouthernRoadOpening);
 
         DiscoveryScenario = RepresentativeDiscoveryScenarioSource.Create();
+        KnowledgeableSeeker = CreateKnowledgeableSeeker(DiscoveryScenario);
         WorldObject inscription = DiscoveryScenario.WorldObjects.Entries.Single(candidate =>
             candidate.Identity.Id.Value == "shrine-inscription");
         WorldObjectVisibility visibility = DiscoveryScenario.InitialPerception.Entries.Single(candidate =>
@@ -77,19 +83,38 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
         EvidenceExposure = null;
     }
 
-    /// <summary>Applies the exact first pure inscription resolution without presenting it.</summary>
-    public bool TryApplyInscriptionResolution(
-        OpeningRegionLayeredInscriptionResolution resolution)
+    /// <summary>Commits one completely preflighted discovery graph without partial application.</summary>
+    public bool TryCommitInscriptionDiscovery(
+        OpeningRegionLayeredInscriptionDiscoveryState? expectedState,
+        OpeningRegionLayeredInscriptionDiscoveryState? appliedState,
+        OpeningRegionLayeredInscriptionPresentation? presentation,
+        OpeningRegionLayeredInscriptionEvidenceExposure? evidenceExposure)
     {
-        ArgumentNullException.ThrowIfNull(resolution);
-        OpeningRegionLayeredInscriptionAccess access = resolution.CandidateBinding.Access;
-        if (DiscoveryState.Resolution is not null
+        OpeningRegionLayeredInscriptionResolution? resolution = appliedState?.Resolution;
+        OpeningRegionLayeredInscriptionAccess? access = resolution?.CandidateBinding.Access;
+        if (expectedState is null
+            || appliedState is null
+            || presentation is null
+            || evidenceExposure is null
+            || !ReferenceEquals(DiscoveryState, expectedState)
+            || expectedState.Resolution is not null
             || Presentation is not null
             || EvidenceExposure is not null
             || LayeredInscription.Visible
+            || !ReferenceEquals(expectedState.InscriptionBinding, InscriptionBinding)
+            || !ReferenceEquals(expectedState.Perception, DiscoveryScenario.InitialPerception)
             || !ReferenceEquals(
-                access.InscriptionBinding,
-                InscriptionBinding)
+                expectedState.Candidates,
+                DiscoveryScenario.ReinterpretationCandidates)
+            || !ReferenceEquals(appliedState.InscriptionBinding, InscriptionBinding)
+            || resolution is null
+            || !ReferenceEquals(resolution.Seeker, KnowledgeableSeeker)
+            || !ReferenceEquals(access?.InscriptionBinding, InscriptionBinding)
+            || !ReferenceEquals(appliedState.Perception, resolution.Result.Perception)
+            || !ReferenceEquals(appliedState.Candidates, resolution.Result.Candidates)
+            || !ReferenceEquals(presentation.DiscoveryState, appliedState)
+            || !ReferenceEquals(presentation.Resolution, resolution)
+            || !ReferenceEquals(evidenceExposure.Presentation, presentation)
             || access.SeekerPosition != ToNumerics(
                 GetNode<CharacterBody2D>("../Seeker").GlobalPosition)
             || access.InscriptionPosition != ToNumerics(LayeredInscription.GlobalPosition))
@@ -97,46 +122,31 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
             return false;
         }
 
-        DiscoveryState = OpeningRegionLayeredInscriptionDiscoveryStateTransition.Apply(
-            DiscoveryState,
-            resolution);
-        return true;
-    }
-
-    /// <summary>Reveals the existing marker once for the exact applied discovery state.</summary>
-    public bool TryPresentInscription(
-        OpeningRegionLayeredInscriptionPresentation presentation)
-    {
-        ArgumentNullException.ThrowIfNull(presentation);
-        if (Presentation is not null
-            || LayeredInscription.Visible
-            || !ReferenceEquals(presentation.DiscoveryState, DiscoveryState)
-            || !ReferenceEquals(presentation.Resolution, DiscoveryState.Resolution))
-        {
-            return false;
-        }
-
+        DiscoveryState = appliedState;
         LayeredInscription.Visible = true;
         Presentation = presentation;
-        return true;
-    }
-
-    /// <summary>Retains the exact single-evidence exposure once without adding UI or persistence.</summary>
-    public bool TryExposeInscriptionEvidence(
-        OpeningRegionLayeredInscriptionEvidenceExposure exposure)
-    {
-        ArgumentNullException.ThrowIfNull(exposure);
-        if (EvidenceExposure is not null
-            || !LayeredInscription.Visible
-            || !ReferenceEquals(exposure.Presentation, Presentation))
-        {
-            return false;
-        }
-
-        EvidenceExposure = exposure;
+        EvidenceExposure = evidenceExposure;
         return true;
     }
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
+
+    private static Character CreateKnowledgeableSeeker(DiscoveryScenario scenario)
+    {
+        Allrpcs.Domain.Identifiers.CharacterId characterId = scenario.ObserverCharacterId;
+        return new Character(
+            new CharacterIdentity(characterId, "SEEKER"),
+            new PublicCharacterBackground(string.Empty),
+            new PrivateCharacterBackground(string.Empty),
+            new CharacterCapabilitySet([]),
+            new CharacterLimitationSet([]),
+            new CharacterControllerAssignment(characterId, ControllerType.Human),
+            new CharacterConditionSet([]),
+            new CharacterInventory([]),
+            scenario.AvailableKnowledge,
+            new CharacterBeliefSet([]),
+            new CharacterRelationshipSet([]),
+            new CharacterGoalSet([]));
+    }
 }
