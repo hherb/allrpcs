@@ -752,9 +752,23 @@ They add or replace nonblank notes up to the existing 1,000-code-unit bound and 
 existing note, then synchronously refresh the safe presentation while retaining the selected known
 location. Empty, whitespace, stale, hidden, released, unrelated, repeated, rebuilt-owner, and null
 paths do not change map, note, presentation, panel, focus, movement, journal, or gameplay state.
-There is still no automatic testimony reporting or visit capture, coordinate or topology exposure,
-map persistence/schema change, provider call, or credential access, so the Phase 8 map roadmap item
-remains open.
+
+One explicit scene coordinator can verify one exact live opening-region visit without retaining or
+presenting coordinates. It requires the controller's exact current map, the current scene Seeker's
+exact identifier and position, the scene source's exact projection, one exact retained anchor, and
+the matching canonical map location. It delegates proximity to the existing pure visit projection
+with a named 24-pixel radius, then delegates only its coordinate-free token to the map controller.
+It does not scan anchors or run during ordinary movement; switch-gated validation is its only caller.
+
+A separate explicit scene coordinator can report one canonical map location only from the exact
+current complete safe journal, its exact testimony section and retained authored copy, the exact
+current Seeker, and the controller's exact current map. The pairing remains caller-authored: it does
+not classify testimony text, delivery mode, or speaker, and it does not infer a location. Reporting
+and visit verification preserve source snapshots, promote reported locations when visited, add
+hidden verified locations, and retain canonical location order. There is still no automatic
+testimony reporting or visit capture, player-visible reporting choice, coordinate or topology
+exposure, map persistence/schema change, provider call, or credential access, so the Phase 8 map
+roadmap item remains open.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
