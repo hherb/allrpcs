@@ -730,10 +730,18 @@ location provenance are required before verification changes the map.
 Player map notes remain a separate immutable Seeker-owned safe state. Explicit transitions add or
 replace one bounded nonblank note only for an exact reported or verified location, keep notes in
 canonical location order, and remove only an existing exact note. Every successful operation
-returns fresh state while preserving its map and note inputs. No scene controller, automatic
-testimony refresh or visit capture, map panel, input, editable widget, coordinates in presentation,
-persistence/schema change, gameplay mutation, provider call, or credential access exists yet, so
-the Phase 8 map roadmap item remains open.
+returns fresh state while preserving its map and note inputs. A scene-owned controller now
+initializes one exact fresh catalogue, empty map, and empty note state atomically for one Seeker,
+then delegates explicit testimony report, visit verification, note set or replace, and note removal
+through exact expected-state compare-and-swap. Ordinary startup leaves it uninitialized.
+
+A pure safe map presentation exposes only known definitions in canonical order, their reported or
+verified status, and optional bounded note text. Stable plain text has one neutral empty state and
+contains no hidden catalogue locations, coordinates, or topology. A scene presentation controller
+projects or refreshes only the map controller's exact current map and notes, and a hidden-by-default
+read-only panel renders only that controller's exact presentation. There is still no map input,
+automatic testimony refresh or visit capture, editable widget, persistence/schema change, gameplay
+mutation, provider call, or credential access, so the Phase 8 map roadmap item remains open.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
