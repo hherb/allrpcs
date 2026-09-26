@@ -55,6 +55,10 @@ distribution remain untouched.
   label, and exact projected text; one-shot internal ownership still prevents replay after staleness.
   The focused build, format check, whitespace check, and host Godot smoke passed after that fix.
 - Every new C# file is below 500 lines; the 120-character and whitespace checks are clean.
+- Draft PR #383 targets `main` from implementation commit `e95a0a5`. Credential-free CI run
+  `36216677563` ended with all five jobs failed before any step was instantiated (`steps: []`), so
+  those hosted results are Actions/account infrastructure and provide no product-test evidence;
+  the complete host-local validation above remains the executed evidence.
 
 ## Exact next bounded slice
 
