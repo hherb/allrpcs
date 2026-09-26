@@ -1422,8 +1422,19 @@ Five collision-backed boundary sections leave explicit openings toward the woodl
 southern road. A hidden scene-authored inscription node contains two inert marker layers without an
 interaction script, collision, visible presentation, or authoritative state. The switch-gated proof
 drives a synchronized and physically clear woodland-clearing/shrine round trip while rejecting shrine
-wall crossings. Layer reading, discovery, evidence mutation, interaction, dialogue, road/wagon
+wall crossings. Ordinary interaction and input, player-facing inscription text, dialogue, road/wagon
 content, production art, weather, lighting, sound, journal, and map work remain deferred.
+
+The layered-inscription discovery boundary now binds that exact authored marker position to the
+representative scenario's exact `shrine-inscription` object and initial Seeker `Noticed` visibility.
+Only the exact live Seeker position inside the shrine and within the fixed 112-pixel access radius can
+carry the scenario's retained reinterpretation candidate and trigger knowledge through the existing
+pure `Noticed`-to-`Identified` resolution. Scene state accepts that exact result once, a separate exact
+presentation token reveals the existing two-layer marker once, and a final filtered view exposes only
+the exact `partial-inscription` evidence identifier. Rebuilt or foreign authority, stale live position,
+repeated application/presentation/exposure, and missing or mismatched inputs fail closed. This entire
+chain remains switch-gated: ordinary startup is concealed and unchanged, and ordinary interaction
+input, journal/UI presentation, persistence, and any broader evidence route remain deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its

@@ -1,4 +1,9 @@
+using Allrpcs.Application.Discovery;
 using Allrpcs.Application.Navigation;
+using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Controllers;
+using Allrpcs.Domain.Identifiers;
+using Allrpcs.Domain.Perception;
 using Godot;
 using NumericsVector2 = System.Numerics.Vector2;
 
@@ -13,6 +18,7 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
     private const int ExpectedBoundarySectionCount = 5;
     private const int ExpectedInscriptionLayerCount = 2;
     private const float SurfaceTolerancePixels = 1.0f;
+    private static readonly NumericsVector2 InscriptionAccessPosition = new(110.0f, 128.0f);
 
     private int physicsFrames;
 
@@ -63,16 +69,112 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
 
     private void RunChecks(OpeningRegionOldShrineLayout layout, Rid navigationMap)
     {
+        OpeningRegionOldShrineSceneSource source =
+            GetNode<OpeningRegionOldShrineSceneSource>("../OpeningRegionOldShrineSceneSource");
         Node boundaries = GetNode("../OpeningRegionOldShrineSceneSource/ShrineBoundaries");
         Node2D inscription = GetNode<Node2D>(
             "../OpeningRegionOldShrineSceneSource/LayeredInscription");
+        CharacterBody2D seekerBody = GetNode<CharacterBody2D>("../Seeker");
+        seekerBody.GlobalPosition = ToGodot(InscriptionAccessPosition);
+        OpeningRegionLayeredInscriptionAccess access = new(
+            source.InscriptionBinding,
+            source.DiscoveryScenario.ObserverCharacterId,
+            ToNumerics(seekerBody.GlobalPosition));
+        OpeningRegionLayeredInscriptionCandidateBinding candidateBinding = new(
+            access,
+            source.DiscoveryScenario.ReinterpretationCandidates.Entries.Single(),
+            source.DiscoveryScenario.AvailableKnowledge.KnowledgeReferences.Single());
+        Character seeker = CreateSeeker(source);
+        OpeningRegionLayeredInscriptionResolution resolution =
+            OpeningRegionLayeredInscriptionResolutionTransition.Resolve(candidateBinding, seeker);
+        WorldObjectVisibility resolvedVisibility = resolution.Result.Perception.Entries.Single(
+            entry => ReferenceEquals(entry.ObjectId, candidateBinding.Candidate.TargetObjectId));
+        OpeningRegionLayeredInscriptionDiscoveryState initialDiscoveryState =
+            source.DiscoveryState;
+        bool initialInscriptionVisibility = inscription.Visible;
+        seekerBody.GlobalPosition += new Vector2(1.0f, 0.0f);
+        bool stalePositionResolution = source.TryApplyInscriptionResolution(resolution);
+        bool stalePositionPreservedState = ReferenceEquals(
+            source.DiscoveryState,
+            initialDiscoveryState);
+        seekerBody.GlobalPosition = ToGodot(InscriptionAccessPosition);
+        bool appliedResolution = source.TryApplyInscriptionResolution(resolution);
+        bool repeatedResolution = source.TryApplyInscriptionResolution(resolution);
+        OpeningRegionLayeredInscriptionPresentation presentation =
+            OpeningRegionLayeredInscriptionPresentationTransition.Create(source.DiscoveryState);
+        bool presented = source.TryPresentInscription(presentation);
+        bool repeatedPresentation = source.TryPresentInscription(presentation);
+        OpeningRegionLayeredInscriptionEvidenceExposure evidenceExposure =
+            OpeningRegionLayeredInscriptionEvidenceExposureTransition.Create(presentation);
+        bool exposedEvidence = source.TryExposeInscriptionEvidence(evidenceExposure);
+        bool repeatedEvidenceExposure = source.TryExposeInscriptionEvidence(evidenceExposure);
         if (!HasCollisionShapes(boundaries)
-            || inscription.Visible
+            || initialInscriptionVisibility
+            || !inscription.Visible
             || inscription.GetChildCount() != ExpectedInscriptionLayerCount
             || inscription.GetChildren().Any(child => child is not Marker2D marker
                 || marker.GetChildCount() != 0)
             || ToNumerics(inscription.Position)
                 != OpeningRegionOldShrineGeometry.LayeredInscriptionPosition
+            || !ReferenceEquals(source.Layout, layout)
+            || !ReferenceEquals(source.Binding, layout.SceneBinding)
+            || !ReferenceEquals(source.LayeredInscription, inscription)
+            || !ReferenceEquals(source.InscriptionBinding.ShrineSceneBinding, layout.SceneBinding)
+            || !ReferenceEquals(
+                source.InscriptionBinding.DiscoveryScenario,
+                source.DiscoveryScenario)
+            || !source.DiscoveryScenario.WorldObjects.Entries.Any(candidate =>
+                ReferenceEquals(candidate, source.InscriptionBinding.WorldObject))
+            || !source.DiscoveryScenario.InitialPerception.Entries.Any(candidate =>
+                ReferenceEquals(candidate, source.InscriptionBinding.InitialVisibility))
+            || !ReferenceEquals(
+                source.InscriptionBinding.WorldObject.Identity.Id,
+                source.InscriptionBinding.InitialVisibility.ObjectId)
+            || !ReferenceEquals(access.InscriptionBinding, source.InscriptionBinding)
+            || !ReferenceEquals(
+                access.SeekerCharacterId,
+                source.DiscoveryScenario.ObserverCharacterId)
+            || access.InscriptionPosition != ToNumerics(inscription.GlobalPosition)
+            || !ReferenceEquals(candidateBinding.Access, access)
+            || !ReferenceEquals(
+                candidateBinding.Candidate,
+                source.DiscoveryScenario.ReinterpretationCandidates.Entries.Single())
+            || !ReferenceEquals(
+                candidateBinding.TriggerKnowledgeId,
+                source.DiscoveryScenario.AvailableKnowledge.KnowledgeReferences.Single())
+            || !ReferenceEquals(resolution.CandidateBinding, candidateBinding)
+            || !ReferenceEquals(resolution.Seeker, seeker)
+            || resolution.Result.Candidates.Entries.Count != 0
+            || !ReferenceEquals(resolvedVisibility.VisibilityState, VisibilityState.Identified)
+            || stalePositionResolution
+            || !stalePositionPreservedState
+            || !appliedResolution
+            || repeatedResolution
+            || ReferenceEquals(source.DiscoveryState, initialDiscoveryState)
+            || !ReferenceEquals(
+                source.DiscoveryState.InscriptionBinding,
+                source.InscriptionBinding)
+            || !ReferenceEquals(source.DiscoveryState.Perception, resolution.Result.Perception)
+            || !ReferenceEquals(source.DiscoveryState.Candidates, resolution.Result.Candidates)
+            || !ReferenceEquals(source.DiscoveryState.Resolution, resolution)
+            || initialDiscoveryState.Resolution is not null
+            || !presented
+            || repeatedPresentation
+            || !ReferenceEquals(source.Presentation, presentation)
+            || !ReferenceEquals(presentation.DiscoveryState, source.DiscoveryState)
+            || !ReferenceEquals(presentation.Resolution, resolution)
+            || !exposedEvidence
+            || repeatedEvidenceExposure
+            || !ReferenceEquals(source.EvidenceExposure, evidenceExposure)
+            || !ReferenceEquals(evidenceExposure.Presentation, presentation)
+            || evidenceExposure.EvidenceView.EvidenceIds.Count != 1
+            || !ReferenceEquals(
+                evidenceExposure.EvidenceView.EvidenceIds.Single(),
+                evidenceExposure.Evidence.EvidenceId)
+            || evidenceExposure.Evidence.EvidenceId.Value != "partial-inscription"
+            || !ReferenceEquals(
+                source.InscriptionBinding.InitialVisibility.VisibilityState,
+                VisibilityState.Noticed)
             || !ReferenceEquals(
                 layout.SceneBinding.Projection,
                 GetNode<OpeningRegionProjectionSource>("../OpeningRegionProjectionSource").Projection))
@@ -100,8 +202,10 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
 
         GD.Print(
             "Opening-region old-shrine smoke passed: five collision-backed boundaries, two "
-            + "topology openings, one concealed two-layer inscription marker, and synchronized "
-            + "clearing round trip.");
+            + "topology openings, one exact shrine-local Seeker access, one exact noticed "
+            + "inscription binding, one applied exact-candidate reinterpretation, repeated-apply "
+            + "rejection, one exact one-shot two-layer marker reveal, one exact filtered evidence "
+            + "exposure, and synchronized clearing round trip.");
         GetTree().Quit();
     }
 
@@ -187,6 +291,24 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
     private static Vector2 ToGodot(NumericsVector2 position) => new(position.X, position.Y);
 
     private static NumericsVector2 ToNumerics(Vector2 position) => new(position.X, position.Y);
+
+    private static Character CreateSeeker(OpeningRegionOldShrineSceneSource source)
+    {
+        CharacterId characterId = source.DiscoveryScenario.ObserverCharacterId;
+        return new Character(
+            new CharacterIdentity(characterId, "SEEKER"),
+            new PublicCharacterBackground(string.Empty),
+            new PrivateCharacterBackground(string.Empty),
+            new CharacterCapabilitySet([]),
+            new CharacterLimitationSet([]),
+            new CharacterControllerAssignment(characterId, ControllerType.Human),
+            new CharacterConditionSet([]),
+            new CharacterInventory([]),
+            source.DiscoveryScenario.AvailableKnowledge,
+            new CharacterBeliefSet([]),
+            new CharacterRelationshipSet([]),
+            new CharacterGoalSet([]));
+    }
 
     private void Fail(string message)
     {
