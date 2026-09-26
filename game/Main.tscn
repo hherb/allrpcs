@@ -1,4 +1,4 @@
-[gd_scene load_steps=293 format=3]
+[gd_scene load_steps=297 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -452,6 +452,10 @@
 [ext_resource type="Script" path="res://SeekerScribeInspectionAccessSceneSmokeCheck.cs" id="340_seeker_scribe_inspection_access_check"]
 [ext_resource type="Script" path="res://SeekerApothecaryPreparationAccessSceneSmokeCheck.cs" id="341_seeker_apothecary_preparation_access_check"]
 [ext_resource type="Script" path="res://SeekerTravellerRoadWagonAccessSceneSmokeCheck.cs" id="342_seeker_traveller_road_wagon_access_check"]
+[ext_resource type="Script" path="res://JournalController.cs" id="343_journal_controller"]
+[ext_resource type="Script" path="res://JournalControllerSmokeCheck.cs" id="344_journal_controller_check"]
+[ext_resource type="Script" path="res://RepresentativeJournalCompositionCoordinator.cs" id="345_journal_composition"]
+[ext_resource type="Script" path="res://RepresentativeJournalCompositionSmokeCheck.cs" id="346_journal_composition_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1647,11 +1651,17 @@ script = ExtResource("47_world_event_controller")
 [node name="CharacterMemoryController" type="Node" parent="."]
 script = ExtResource("124_character_memory_controller")
 
+[node name="JournalController" type="Node" parent="."]
+script = ExtResource("343_journal_controller")
+
 [node name="FirstPatientStateController" type="Node" parent="."]
 script = ExtResource("126_first_patient_state_controller")
 
 [node name="TemporaryFirstPatientTreatmentContextSource" type="Node" parent="."]
 script = ExtResource("128_first_patient_context_source")
+
+[node name="RepresentativeJournalCompositionCoordinator" type="Node" parent="."]
+script = ExtResource("345_journal_composition")
 
 [node name="OpeningRegionFirstPatientSceneSource" type="Node2D" parent="."]
 position = Vector2(920, 760)
@@ -2468,6 +2478,12 @@ script = ExtResource("48_world_event_controller_check")
 
 [node name="CharacterMemoryControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("125_character_memory_controller_check")
+
+[node name="JournalControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("344_journal_controller_check")
+
+[node name="RepresentativeJournalCompositionSmokeCheck" type="Node" parent="."]
+script = ExtResource("346_journal_composition_check")
 
 [node name="FirstPatientStateControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("127_first_patient_state_controller_check")
