@@ -6,6 +6,7 @@
 continues the Phase 8 journal through three bounded slices: safe plain-text projection and a
 read-only panel, explicit modal open/close input, and canonical section traversal. The roadmap
 journal checkbox remains open because journal persistence and save-schema integration are absent.
+Draft PR #398 targets `main`.
 
 `JournalSectionPresentationTextProjection` converts only one already-safe selected-section snapshot
 into its exact authored label and stable plain text. Observations render copied names and
@@ -45,6 +46,9 @@ credential access was added.
   validation, every credential-free Godot smoke, and the graphical Compatibility launch.
 - The restricted quality run passed every pure check before the known Godot `user://logs`
   restriction; the identical host run supplied complete Godot evidence.
+- Draft PR #398's credential-free CI run `36243534269` at implementation commit `6f3b48d` failed
+  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
+  infrastructure and not product-test evidence.
 - Session review covered all new Application values/tests, panel/input controllers and smokes,
   `Main.tscn`, input mapping, smoke registration, README, and this handover. It fixed the initial
   off-viewport panel placement, clipped long content, release of only the Close button rather than
