@@ -1,4 +1,5 @@
 using Allrpcs.Application.Journal;
+using Allrpcs.Application.Map;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
 using Allrpcs.Domain.WorldObjects;
@@ -15,6 +16,7 @@ public partial class SaveSnapshotRestorationController : Node
     private CharacterMemoryController memoryController = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
+    private SeekerMapController mapController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
 
@@ -30,6 +32,7 @@ public partial class SaveSnapshotRestorationController : Node
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
+        mapController = GetNode<SeekerMapController>("../SeekerMapController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
     }
@@ -55,6 +58,7 @@ public partial class SaveSnapshotRestorationController : Node
 
         FirstPatientSaveState? reboundFirstPatient = null;
         JournalSaveStateRestoration? restoredJournal = null;
+        MapSaveStateRestoration? restoredMap = null;
         if (snapshot.FirstPatient is not null)
         {
             try
@@ -86,6 +90,18 @@ public partial class SaveSnapshotRestorationController : Node
             }
         }
 
+        if (snapshot.Map is not null)
+        {
+            try
+            {
+                restoredMap = MapSaveStateRestorationProjection.Restore(snapshot.Map);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+        }
+
         bool discoveryRestored = discoveryController.TryRestoreDiscoveryState(
             snapshot.Discovery,
             worldObjects);
@@ -100,6 +116,10 @@ public partial class SaveSnapshotRestorationController : Node
         {
             journalController.InstallRestored(restoredJournal.Journal);
             journalSelection.InstallRestored(restoredJournal.SelectedSection);
+        }
+        if (restoredMap is not null)
+        {
+            restoredMap.InstallInto(mapController);
         }
         if (!discoveryRestored || !worldEventsRestored)
         {

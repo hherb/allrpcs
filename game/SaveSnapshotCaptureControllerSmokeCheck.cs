@@ -1,7 +1,9 @@
 using Allrpcs.Application.Journal;
+using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
+using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.Persistence;
 using Allrpcs.Domain.WorldEvents;
@@ -22,6 +24,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
     private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
+    private SeekerMapController mapController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -48,6 +51,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
+        mapController = GetNode<SeekerMapController>("../SeekerMapController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -96,6 +100,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             Fail("Save capture smoke could not initialize exact journal state.");
             return;
         }
+        MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
 
         SaveSnapshot first = controller.Capture()
             ?? throw new InvalidOperationException("Initialized state was not captured.");
@@ -105,10 +110,11 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.Journal)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.Journal)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.Map)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.Map)
             || ReferenceEquals(first.FirstPatient, second.FirstPatient)
             || ReferenceEquals(first.Journal, second.Journal)
+            || ReferenceEquals(first.Map, second.Map)
             || !HasExactNestedState(first)
             || !HasExactNestedState(second))
         {
@@ -159,8 +165,9 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         GD.Print(
             "Save capture controller smoke passed: exact live discovery, world-event, and character-"
             + "memory snapshots, fresh repeated current-schema roots, fail-closed uninitialized "
-            + "discovery perception, authored events, event log, qualitative time, and journal, "
-            + "safe journal and exact selection capture, restoration through the existing "
+            + "discovery perception, authored events, event log, qualitative time, journal, and "
+            + "map state, safe journal, exact selection, and populated map capture, restoration "
+            + "through the existing "
             + "coordinator, and unchanged controllers, movement, input, and presentation were "
             + "correct.");
         GetTree().Quit();
@@ -170,6 +177,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         HasExactNonFirstPatientState(snapshot)
         && snapshot.FirstPatient is not null
         && snapshot.Journal is not null
+        && snapshot.Map is not null
         && snapshot.Journal.SeekerId == snapshot.Discovery.Perception.CharacterId
         && string.Equals(snapshot.Journal.SelectedSectionKey, "hypotheses", StringComparison.Ordinal)
         && snapshot.Journal.Observations.Count == journalController.Journal!.Observations.Entries.Count
@@ -177,6 +185,10 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         && snapshot.Journal.Hypotheses.Count == journalController.Journal.Hypotheses!.Entries.Count
         && snapshot.Journal.Experiments.Count == journalController.Journal.Experiments!.Entries.Count
         && snapshot.Journal.OpenQuestions.Count == journalController.Journal.OpenQuestions!.Entries.Count
+        && snapshot.Map.SeekerId == snapshot.Discovery.Perception.CharacterId
+        && snapshot.Map.ReportedLocationIds.Single().Value == "stream"
+        && snapshot.Map.VerifiedLocationIds.Single().Value == "old-shrine"
+        && snapshot.Map.Notes.Single().Text == "Inspect the layered marks."
         && ReferenceEquals(snapshot.FirstPatient.DiseaseTruth, firstPatientController.DiseaseTruth)
         && ReferenceEquals(snapshot.FirstPatient.PreparedBatches, firstPatientController.PreparedBatches)
         && ReferenceEquals(
@@ -242,6 +254,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         FirstPatientStateController missingFirstPatient = new();
         JournalController missingJournal = new();
         JournalSectionSelectionController noSelection = new();
+        SeekerMapController missingMap = new();
         SaveSnapshotCaptureController discoveryCapture =
             CreateCaptureController(
                 missingPerception,
@@ -249,7 +262,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 memoryController,
                 firstPatientController,
                 journalController,
-                journalSelection);
+                journalSelection,
+                mapController);
         SaveSnapshotCaptureController definitionsCapture =
             CreateCaptureController(
                 discoveryController,
@@ -257,7 +271,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 memoryController,
                 firstPatientController,
                 journalController,
-                journalSelection);
+                journalSelection,
+                mapController);
         SaveSnapshotCaptureController eventLogCapture =
             CreateCaptureController(
                 discoveryController,
@@ -265,7 +280,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 memoryController,
                 firstPatientController,
                 journalController,
-                journalSelection);
+                journalSelection,
+                mapController);
         SaveSnapshotCaptureController worldTimeCapture =
             CreateCaptureController(
                 discoveryController,
@@ -273,7 +289,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 memoryController,
                 firstPatientController,
                 journalController,
-                journalSelection);
+                journalSelection,
+                mapController);
         SaveSnapshotCaptureController firstPatientCapture =
             CreateCaptureController(
                 discoveryController,
@@ -281,7 +298,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 memoryController,
                 missingFirstPatient,
                 journalController,
-                journalSelection);
+                journalSelection,
+                mapController);
         SaveSnapshotCaptureController journalCapture =
             CreateCaptureController(
                 discoveryController,
@@ -289,14 +307,25 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 memoryController,
                 firstPatientController,
                 missingJournal,
-                noSelection);
+                noSelection,
+                mapController);
+        SaveSnapshotCaptureController mapCapture =
+            CreateCaptureController(
+                discoveryController,
+                worldEventController,
+                memoryController,
+                firstPatientController,
+                journalController,
+                journalSelection,
+                missingMap);
 
         bool rejected = discoveryCapture.Capture() is null
             && definitionsCapture.Capture() is null
             && eventLogCapture.Capture() is null
             && worldTimeCapture.Capture() is null
             && firstPatientCapture.Capture() is null
-            && journalCapture.Capture() is null;
+            && journalCapture.Capture() is null
+            && mapCapture.Capture() is null;
 
         discoveryCapture.Free();
         definitionsCapture.Free();
@@ -304,6 +333,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         worldTimeCapture.Free();
         firstPatientCapture.Free();
         journalCapture.Free();
+        mapCapture.Free();
         missingPerception.Free();
         missingDefinitions.Free();
         missingEventLog.Free();
@@ -311,6 +341,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         missingFirstPatient.Free();
         missingJournal.Free();
         noSelection.Free();
+        missingMap.Free();
         return rejected;
     }
 
@@ -320,7 +351,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         CharacterMemoryController memory,
         FirstPatientStateController firstPatient,
         JournalController journal,
-        JournalSectionSelectionController selection)
+        JournalSectionSelectionController selection,
+        SeekerMapController map)
     {
         SaveSnapshotCaptureController captureController = new();
         SetField(captureController, "discoveryController", discovery);
@@ -329,8 +361,15 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         SetField(captureController, "firstPatientController", firstPatient);
         SetField(captureController, "journalController", journal);
         SetField(captureController, "journalSelection", selection);
+        SetField(captureController, "mapController", map);
         return captureController;
     }
+
+    private static MapSaveState PopulatedMapState() => new(
+        new CharacterId("seeker"),
+        [new LocationId("stream")],
+        [new LocationId("old-shrine")],
+        [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
 
     private static WorldEventController CreateWorldEventController(
         WorldEventSnapshot? worldEvents,

@@ -769,22 +769,26 @@ hidden verified locations, and retain canonical location order. There is still n
 testimony reporting or visit capture, player-visible reporting choice, coordinate or topology
 exposure, provider call, or credential access.
 
-The map now has a closed visibility-safe persistence boundary without root save-schema wiring. A
-pure capture accepts only an exact same-Seeker map and note pair backed by one exact catalogue, then
-copies only the owner identifier, reported and verified location identifiers, and bounded
-location/text note pairs in canonical order. A pure restoration projection rejects unknown,
-duplicate, overlapping, hidden-note, duplicate-note, invalid-text, and inconsistent-provenance
-state before creating fresh map and note snapshots bound to exact definitions from one fresh
-representative catalogue. Empty and populated state round trip without exposing hidden catalogue
-locations, labels for hidden locations, coordinates, topology, testimony, scene objects,
-controllers, or UI state.
+The map has a closed visibility-safe persistence boundary. Pure capture accepts only an exact
+same-Seeker map and note pair backed by one exact catalogue, then retains only the Seeker identifier,
+reported and verified location identifiers, and location/note-text pairs in canonical order. Pure
+restoration preflights unknown, duplicate, overlapping, hidden-note, duplicate-note, invalid-text,
+and inconsistent-provenance state before creating fresh map and note snapshots bound to exact
+definitions from one fresh representative catalogue. Empty and populated state round trip without
+exposing hidden catalogue locations, labels for hidden locations, coordinates, topology, testimony,
+scene objects, controllers, or UI state.
 
-Schema version 6 extends the immutable root with one required map state alongside the existing
-journal, and rejects any map whose owner differs from either discovery or journal ownership. A pure
-version-5-to-6 migration preserves every existing root component by exact reference and adds fresh
-empty same-Seeker map collections. Version 6 intentionally remains outside the supported load
-policy until its strict JSON, current-loading chain, storage, and scene capture/restoration wiring
-are added, so ordinary startup and the Phase 8 map roadmap item remain unchanged.
+Schema version 6 is the current supported save contract. Its strict JSON adds only `map` with
+`seekerId`, `reportedLocationIds`, `verifiedLocationIds`, and ordered `{locationId,text}` notes;
+unknown, missing, duplicate-property, wrong-kind, oversized, and malformed structures fail closed.
+Versions 1 through 5 retain their exact document shapes and migrate to fresh empty same-Seeker map
+state. Scene capture requires complete initialized same-Seeker journal, map, and note state before
+emitting version 6. Scene restoration preflights first-patient, journal, and map state before
+installing discovery, world events, memory, first-patient state, journal selection, and the exact
+fresh map composition. Serialized and isolated-storage checks cover populated report, verification,
+and note round trips, legacy empty-map migration, canonical rebinding, and unchanged controller state
+after malformed, unknown-location, or hidden-note rejection. Ordinary startup remains inert; there
+is still no automatic visit/report behavior, new map UI, or coordinate/topology exposure.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

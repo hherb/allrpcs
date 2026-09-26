@@ -19,10 +19,12 @@ public static class SaveSnapshotJsonSerializer
             snapshot.SchemaVersion == SaveSchemaVersion.CharacterMemory
             || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
             || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
-            || snapshot.SchemaVersion == SaveSchemaVersion.Journal;
+            || snapshot.SchemaVersion == SaveSchemaVersion.Journal
+            || snapshot.SchemaVersion == SaveSchemaVersion.Map;
         bool hasFirstPatient = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
             || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
-            || snapshot.SchemaVersion == SaveSchemaVersion.Journal;
+            || snapshot.SchemaVersion == SaveSchemaVersion.Journal
+            || snapshot.SchemaVersion == SaveSchemaVersion.Map;
         if (!isVersionOne && !hasCharacterMemory)
         {
             throw new ArgumentException(
@@ -43,7 +45,8 @@ public static class SaveSnapshotJsonSerializer
                     writer,
                     snapshot.CharacterMemory,
                     snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
-                        || snapshot.SchemaVersion == SaveSchemaVersion.Journal);
+                        || snapshot.SchemaVersion == SaveSchemaVersion.Journal
+                        || snapshot.SchemaVersion == SaveSchemaVersion.Map);
             }
 
             if (hasFirstPatient)
@@ -51,9 +54,15 @@ public static class SaveSnapshotJsonSerializer
                 FirstPatientJsonWriter.Write(writer, snapshot.FirstPatient!);
             }
 
-            if (snapshot.SchemaVersion == SaveSchemaVersion.Journal)
+            if (snapshot.SchemaVersion == SaveSchemaVersion.Journal
+                || snapshot.SchemaVersion == SaveSchemaVersion.Map)
             {
                 JournalSaveStateJsonWriter.Write(writer, snapshot.Journal!);
+            }
+
+            if (snapshot.SchemaVersion == SaveSchemaVersion.Map)
+            {
+                MapSaveStateJsonWriter.Write(writer, snapshot.Map!);
             }
 
             writer.WriteEndObject();

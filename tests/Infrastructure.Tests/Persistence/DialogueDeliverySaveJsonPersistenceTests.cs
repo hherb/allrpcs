@@ -72,7 +72,7 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
             serialized,
             EmptyFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.Journal, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.Map, result.SchemaVersion);
         Assert.Same(
             DialogueDeliveryMode.OrdinarySpeech,
             RecentDialogueEvent(result).Delivery.Mode);
@@ -95,13 +95,15 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
             serialized,
             EmptyFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.Journal, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.Map, result.SchemaVersion);
         Assert.Same(
             DialogueDeliveryMode.Whispering,
             RecentDialogueEvent(result).Delivery.Mode);
         Assert.Same(DialogueDeliveryMode.Whispering, ResponseDelivery(result).Mode);
         Assert.NotNull(result.Journal);
         Assert.Empty(result.Journal.Observations);
+        Assert.NotNull(result.Map);
+        Assert.Empty(result.Map.ReportedLocationIds);
         Assert.NotEqual(serialized, SaveSnapshotJsonSerializer.Serialize(result));
     }
 

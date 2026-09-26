@@ -71,8 +71,13 @@ public static class SaveSnapshotJsonDeserializer
             snapshot = SaveSnapshotDialogueDeliveryMigration.Migrate(snapshot);
         }
 
-        return snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
-            ? SaveSnapshotJournalMigration.Migrate(snapshot)
+        if (snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery)
+        {
+            snapshot = SaveSnapshotJournalMigration.Migrate(snapshot);
+        }
+
+        return snapshot.SchemaVersion == SaveSchemaVersion.Journal
+            ? SaveSnapshotMapMigration.Migrate(snapshot)
             : snapshot;
     }
 
@@ -88,6 +93,18 @@ public static class SaveSnapshotJsonDeserializer
         if (version == SaveSchemaVersion.FirstSupported)
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents");
+        }
+        else if (version == SaveSchemaVersion.Map)
+        {
+            RequireObject(
+                element,
+                "schemaVersion",
+                "discovery",
+                "worldEvents",
+                "characterMemory",
+                "firstPatient",
+                "journal",
+                "map");
         }
         else if (version == SaveSchemaVersion.Journal)
         {
@@ -127,7 +144,20 @@ public static class SaveSnapshotJsonDeserializer
             CharacterMemoryJsonReader.Read(
                 element.GetProperty("characterMemory"),
                 version == SaveSchemaVersion.DialogueDelivery
-                    || version == SaveSchemaVersion.Journal);
+                    || version == SaveSchemaVersion.Journal
+                    || version == SaveSchemaVersion.Map);
+        if (version == SaveSchemaVersion.Map)
+        {
+            return new SaveSnapshot(
+                version,
+                discovery,
+                worldEvents,
+                characterMemory,
+                FirstPatientJsonReader.Read(element.GetProperty("firstPatient")),
+                JournalSaveStateJsonReader.Read(element.GetProperty("journal")),
+                MapSaveStateJsonReader.Read(element.GetProperty("map")));
+        }
+
         if (version == SaveSchemaVersion.Journal)
         {
             return new SaveSnapshot(
@@ -169,6 +199,7 @@ public static class SaveSnapshotJsonDeserializer
             3 => SaveSchemaVersion.FirstPatient,
             4 => SaveSchemaVersion.DialogueDelivery,
             5 => SaveSchemaVersion.Journal,
+            6 => SaveSchemaVersion.Map,
             _ => throw InvalidDocument(),
         };
     }

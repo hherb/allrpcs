@@ -7,7 +7,7 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>Owns one exact opening-region catalogue and one Seeker's safe in-memory map state.</summary>
-public partial class SeekerMapController : Node
+public partial class SeekerMapController : Node, IMapSaveStateRestorationTarget
 {
     /// <summary>Gets the exact initialized complete catalogue, or null before initialization.</summary>
     public OpeningRegionMapLocationCatalogue? Catalogue { get; private set; }
@@ -43,6 +43,33 @@ public partial class SeekerMapController : Node
         Map = map;
         Notes = notes;
         return true;
+    }
+
+    void IMapSaveStateRestorationTarget.InstallRestored(
+        OpeningRegionMapLocationCatalogue catalogue,
+        SeekerMapSnapshot map,
+        SeekerMapNoteSnapshot notes)
+    {
+        ArgumentNullException.ThrowIfNull(catalogue);
+        ArgumentNullException.ThrowIfNull(map);
+        ArgumentNullException.ThrowIfNull(notes);
+
+        _ = MapSaveStateCaptureProjection.Capture(map, notes);
+        bool hasExactCatalogue = map.ReportedLocations
+            .Concat(map.VerifiedLocations)
+            .All(location => catalogue.Locations.Any(candidate => ReferenceEquals(candidate, location)))
+            && notes.Notes.All(note =>
+                catalogue.Locations.Any(candidate => ReferenceEquals(candidate, note.Location)));
+        if (!hasExactCatalogue)
+        {
+            throw new ArgumentException(
+                "Restored map definitions must belong to the supplied exact catalogue.",
+                nameof(catalogue));
+        }
+
+        Catalogue = catalogue;
+        Map = map;
+        Notes = notes;
     }
 
     /// <summary>Reports one exact location from exact current map and already-safe testimony.</summary>

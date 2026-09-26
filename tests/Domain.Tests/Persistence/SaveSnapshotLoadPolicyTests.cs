@@ -18,6 +18,7 @@ public sealed class SaveSnapshotLoadPolicyTests
     [InlineData(3)]
     [InlineData(4)]
     [InlineData(5)]
+    [InlineData(6)]
     public void AcceptsASnapshotWithAKnownSchemaVersionWithoutChangingIt(int value)
     {
         SaveSnapshot snapshot = CreateSnapshot(new SaveSchemaVersion(value));
@@ -81,13 +82,27 @@ public sealed class SaveSnapshotLoadPolicyTests
             new WorldTimeSnapshot(null));
         if (version == SaveSchemaVersion.FirstPatient
             || version == SaveSchemaVersion.DialogueDelivery
-            || version == SaveSchemaVersion.Journal)
+            || version == SaveSchemaVersion.Journal
+            || version == SaveSchemaVersion.Map)
         {
             FirstPatientSaveState firstPatient = new(
                 RepresentativeFirstPatientTreatmentContextSource.Create().Scenario.DiseaseTruth,
                 new PreparedIngredientBatchSnapshot([]),
                 new IngredientExperimentJournalSnapshot([]),
                 new ExperimentJournalSnapshot([]));
+            if (version == SaveSchemaVersion.Map)
+            {
+                JournalSaveState journal = EmptyJournal(discovery.Perception.CharacterId);
+                return new SaveSnapshot(
+                    version,
+                    discovery,
+                    worldEvents,
+                    new CharacterMemorySnapshot([]),
+                    firstPatient,
+                    journal,
+                    new MapSaveState(discovery.Perception.CharacterId, [], [], []));
+            }
+
             return version == SaveSchemaVersion.Journal
                 ? new SaveSnapshot(
                     version,

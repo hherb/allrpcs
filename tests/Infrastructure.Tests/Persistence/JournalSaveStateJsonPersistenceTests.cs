@@ -77,7 +77,7 @@ public sealed class JournalSaveStateJsonPersistenceTests
     }
 
     [Fact]
-    public void CurrentLoadingMigratesVersionFourToEmptyJournalVersion()
+    public void CurrentLoadingMigratesVersionFourToEmptyJournalAndMapVersion()
     {
         SaveSnapshot versionFour = DialogueDeliveryVersion();
 
@@ -85,11 +85,13 @@ public sealed class JournalSaveStateJsonPersistenceTests
             SaveSnapshotJsonSerializer.Serialize(versionFour),
             versionFour.FirstPatient!);
 
-        Assert.Same(SaveSchemaVersion.Journal, current.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.Map, current.SchemaVersion);
         Assert.NotNull(current.Journal);
         Assert.Equal("seeker", current.Journal.SeekerId.Value);
         Assert.Empty(current.Journal.Observations);
         Assert.Null(current.Journal.SelectedSectionKey);
+        Assert.NotNull(current.Map);
+        Assert.Empty(current.Map.ReportedLocationIds);
     }
 
     [Theory]
