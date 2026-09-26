@@ -1474,9 +1474,25 @@ change scene lighting, advance time, mutate discovery state, or select productio
 One adjacent pure story-state transition accepts only a layered-inscription presentation from that
 baseline's exact topology. It retains weather and every non-woodland region while replacing only
 the woodland-edge lighting and sound states with caller-authored exact states. The result is a new
-immutable region snapshot; the discovery graph, baseline, Godot scene, and playback state remain
-unchanged. Scene-owned environmental presentation and any additional discovery variations remain
-deferred.
+immutable region snapshot; the discovery graph and baseline remain unchanged.
+
+The main scene now owns that exact representative baseline as its exact current qualitative
+environmental snapshot at ordinary startup. One explicit coordinator accepts only the old-shrine
+source's exact current layered-inscription presentation, the environmental source's exact
+baseline/current snapshot pair, and its own exact authored replacement light and sound states. It
+delegates the pure variation and installs the result once through exact-instance compare-and-swap.
+Null, absent, rebuilt, foreign, stale, already-varied, and repeated paths remain inert. No ordinary
+input automatically invokes this coordinator, and no time, discovery, persistence, rendered light,
+or audio state changes with the qualitative snapshot.
+
+An adjacent Application projection resolves one exact retained location to its exact current region
+and emits fixed greybox text containing only the canonical weather, lighting, and sound keys. The
+scene's old-shrine presentation controller accepts only the exact current environmental snapshot and
+exact retained shrine location once, then renders that projected text in a dedicated label. Its
+switch-gated proof keeps the label hidden at ordinary startup, applies one exact inscription variation,
+rejects a foreign location and repeated presentation, and verifies that discovery/evidence state is
+unchanged. Automatic post-discovery presentation, rendered lighting, ambient playback, production
+assets, other location presentations, and additional story-state variations remain deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
@@ -3662,11 +3678,13 @@ opening-region environmental boundary separately assigns every exact retained op
 one complete, non-overlapping region with exact weather, lighting, and sound states. Its lookup
 uses exact location identity, and its representative source provides only qualitative baseline
 authorship. One Application transition derives a new woodland light/sound snapshot from the exact
-layered-inscription presentation without mutating either input.
+layered-inscription presentation without mutating either input. A separate exact-instance policy
+authorizes only the baseline-to-derived installation, while a location-scoped projection retains the
+exact current snapshot, location, region, and channel states behind canonical-key greybox text.
 
 These boundaries still do not define terrain, hazards, ambient playback, rendered lighting,
 transitions over time, mutation, lifecycle, events, simulation, persistence, serialization, or
-general Godot/UI behavior.
+general production UI behavior.
 
 ## Perception-snapshot boundaries
 
