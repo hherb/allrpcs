@@ -6,7 +6,7 @@
 `codex/phase-8-journal-hypotheses-snapshot` completes the scene-neutral safe-journal composition
 chain through hypotheses, experiments, and open questions. The Phase 8 journal roadmap item remains
 open because scene ownership, ordinary source composition, UI, input, and persistence do not exist.
-Draft PR creation is pending.
+Draft PR #395 targets `main`.
 
 `JournalHypothesisSectionSnapshotProjection` composes the existing exact hypotheses binding and
 authored-copy projection into a fresh immutable section snapshot. `JournalHypothesisSnapshotProjection`
@@ -44,6 +44,9 @@ provider.
   validation, every credential-free Godot smoke, and the graphical Compatibility launch. The
   restricted run passed every pure check before the known Godot `user://logs` restriction; the
   identical host run supplied complete Godot evidence.
+- Draft PR #395's credential-free CI run `36239372961` at implementation commit `d0f5f66` failed
+  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
+  infrastructure and not product-test evidence.
 - Session review covered all thirty-four changed files, exact-reference and canonical-order gates,
   safe-copy surfaces, authoritative-event exclusion, source isolation, null and stale paths, public
   API documentation, 120-character limits, sub-500-line C# files, formatting, and whitespace. No
