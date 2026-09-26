@@ -479,6 +479,8 @@
 [ext_resource type="Script" path="res://OpeningRegionMapVisitVerificationSmokeCheck.cs" id="367_map_visit_verification_check"]
 [ext_resource type="Script" path="res://SeekerMapTestimonyReportingCoordinator.cs" id="368_map_testimony_reporting"]
 [ext_resource type="Script" path="res://SeekerMapTestimonyReportingSmokeCheck.cs" id="369_map_testimony_reporting_check"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteProgressController.cs" id="370_route_progress_controller"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteProgressControllerSmokeCheck.cs" id="371_route_progress_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1680,6 +1682,9 @@ script = ExtResource("343_journal_controller")
 [node name="SeekerMapController" type="Node" parent="."]
 script = ExtResource("356_seeker_map_controller")
 
+[node name="OpeningRegionInvestigationRouteProgressController" type="Node" parent="."]
+script = ExtResource("370_route_progress_controller")
+
 [node name="OpeningRegionMapVisitVerificationCoordinator" type="Node" parent="."]
 script = ExtResource("366_map_visit_verification")
 
@@ -2670,6 +2675,9 @@ script = ExtResource("344_journal_controller_check")
 
 [node name="SeekerMapControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("357_seeker_map_controller_check")
+
+[node name="OpeningRegionInvestigationRouteProgressControllerSmokeCheck" type="Node" parent="."]
+script = ExtResource("371_route_progress_check")
 
 [node name="SeekerMapPresentationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("359_seeker_map_presentation_check")
