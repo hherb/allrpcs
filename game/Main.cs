@@ -84,6 +84,8 @@ public partial class Main : Node
     private InteractionFocusController interactionFocusController = null!;
     private OpeningRegionLayeredInscriptionDiscoveryCoordinator
         layeredInscriptionDiscoveryCoordinator = null!;
+    private OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator
+        layeredInscriptionEnvironmentalFlowCoordinator = null!;
     private TemporaryResolvedPerceptionIndicator[] resolvedPerceptionIndicators = [];
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
@@ -190,6 +192,9 @@ public partial class Main : Node
         layeredInscriptionDiscoveryCoordinator =
             GetNode<OpeningRegionLayeredInscriptionDiscoveryCoordinator>(
                 "OpeningRegionLayeredInscriptionDiscoveryCoordinator");
+        layeredInscriptionEnvironmentalFlowCoordinator =
+            GetNode<OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator>(
+                "OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator");
         resolvedPerceptionIndicators =
         [
             GetNode<TemporaryResolvedPerceptionIndicator>(
@@ -861,8 +866,20 @@ public partial class Main : Node
         }
         else if (@event.IsActionPressed(LayeredInscriptionDiscoverAction))
         {
-            _ = layeredInscriptionDiscoveryCoordinator.TryDiscover(
-                layeredInscriptionDiscoveryCoordinator.SceneSource.KnowledgeableSeeker);
+            if (layeredInscriptionDiscoveryCoordinator.TryDiscover(
+                    layeredInscriptionDiscoveryCoordinator.SceneSource.KnowledgeableSeeker))
+            {
+                OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator variation =
+                    layeredInscriptionEnvironmentalFlowCoordinator.VariationCoordinator;
+                OpeningRegionEnvironmentalStateSource environment =
+                    layeredInscriptionEnvironmentalFlowCoordinator.EnvironmentalSource;
+                _ = layeredInscriptionEnvironmentalFlowCoordinator.TryComplete(
+                    layeredInscriptionEnvironmentalFlowCoordinator.ShrineSource.Presentation,
+                    environment.BaselineRegions,
+                    environment.CurrentRegions,
+                    variation.RevealedLightingState,
+                    variation.RevealedSoundState);
+            }
         }
         else if (@event.IsActionPressed(HealerToggleAction))
         {

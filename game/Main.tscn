@@ -440,6 +440,7 @@
 [ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator.cs" id="328_opening_region_environment_coordinator"]
 [ext_resource type="Script" path="res://OpeningRegionEnvironmentalStateSmokeCheck.cs" id="329_opening_region_environment_check"]
 [ext_resource type="Script" path="res://OpeningRegionEnvironmentalGreyboxPresentationController.cs" id="330_opening_region_environment_presentation"]
+[ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator.cs" id="331_opening_region_environment_flow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2126,6 +2127,9 @@ script = ExtResource("328_opening_region_environment_coordinator")
 
 [node name="OpeningRegionEnvironmentalGreyboxPresentationController" type="Node" parent="."]
 script = ExtResource("330_opening_region_environment_presentation")
+
+[node name="OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator" type="Node" parent="."]
+script = ExtResource("331_opening_region_environment_flow")
 
 [node name="OpeningRegionEnvironmentalStateSmokeCheck" type="Node" parent="."]
 script = ExtResource("329_opening_region_environment_check")

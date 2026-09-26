@@ -187,6 +187,77 @@ public sealed class OpeningRegionLayeredInscriptionEnvironmentalVariationTransit
                 sound));
     }
 
+    [Fact]
+    public void EnvironmentalFlowRetainsExactCompletedGraph()
+    {
+        OpeningRegionProjection projection = OpeningRegionOldShrineSceneBindingTests.Projection();
+        OpeningRegionEnvironmentalRegionSet baseline =
+            RepresentativeOpeningRegionEnvironmentalSource.Create(projection.Topology);
+        OpeningRegionLayeredInscriptionPresentation presentation = Presentation(projection);
+        OpeningRegionLayeredInscriptionEnvironmentalVariation variation =
+            OpeningRegionLayeredInscriptionEnvironmentalVariationTransition.Create(
+                baseline,
+                presentation,
+                new EnvironmentalState("revealed-light", "A restrained revealed light."),
+                new EnvironmentalState("revealed-sound", "A restrained revealed sound."));
+        Allrpcs.Domain.Locations.Location shrine = projection.Topology.Locations.Single(location =>
+            location.Identity.Id.Value == "old-shrine");
+        OpeningRegionEnvironmentalLocationPresentation locationPresentation =
+            OpeningRegionEnvironmentalLocationPresentationProjection.Project(
+                variation.VariedRegions,
+                shrine);
+
+        OpeningRegionLayeredInscriptionEnvironmentalFlow flow = new(
+            presentation,
+            variation,
+            locationPresentation);
+
+        Assert.Same(presentation, flow.Presentation);
+        Assert.Same(variation, flow.Variation);
+        Assert.Same(locationPresentation, flow.LocationPresentation);
+    }
+
+    [Fact]
+    public void EnvironmentalFlowRejectsIncompleteOrForeignGraph()
+    {
+        OpeningRegionProjection projection = OpeningRegionOldShrineSceneBindingTests.Projection();
+        OpeningRegionEnvironmentalRegionSet baseline =
+            RepresentativeOpeningRegionEnvironmentalSource.Create(projection.Topology);
+        OpeningRegionLayeredInscriptionPresentation presentation = Presentation(projection);
+        OpeningRegionLayeredInscriptionEnvironmentalVariation variation =
+            OpeningRegionLayeredInscriptionEnvironmentalVariationTransition.Create(
+                baseline,
+                presentation,
+                new EnvironmentalState("revealed-light", "A restrained revealed light."),
+                new EnvironmentalState("revealed-sound", "A restrained revealed sound."));
+        Allrpcs.Domain.Locations.Location shrine = projection.Topology.Locations.Single(location =>
+            location.Identity.Id.Value == "old-shrine");
+        OpeningRegionEnvironmentalLocationPresentation locationPresentation =
+            OpeningRegionEnvironmentalLocationPresentationProjection.Project(
+                variation.VariedRegions,
+                shrine);
+        OpeningRegionEnvironmentalLocationPresentation foreignLocationPresentation =
+            OpeningRegionEnvironmentalLocationPresentationProjection.Project(
+                baseline,
+                shrine);
+
+        Assert.Throws<ArgumentNullException>(() =>
+            new OpeningRegionLayeredInscriptionEnvironmentalFlow(
+                null!,
+                variation,
+                locationPresentation));
+        Assert.Throws<ArgumentException>(() =>
+            new OpeningRegionLayeredInscriptionEnvironmentalFlow(
+                Presentation(projection),
+                variation,
+                locationPresentation));
+        Assert.Throws<ArgumentException>(() =>
+            new OpeningRegionLayeredInscriptionEnvironmentalFlow(
+                presentation,
+                variation,
+                foreignLocationPresentation));
+    }
+
     private static OpeningRegionLayeredInscriptionPresentation Presentation(
         OpeningRegionProjection projection)
     {
