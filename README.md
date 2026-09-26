@@ -790,6 +790,24 @@ and note round trips, legacy empty-map migration, canonical rebinding, and uncha
 after malformed, unknown-location, or hidden-note rejection. Ordinary startup remains inert; there
 is still no automatic visit/report behavior, new map UI, or coordinate/topology exposure.
 
+The opening region now has three asset-neutral, provider-neutral investigation routes. The
+stream/laundry route retains only `stream`, `abandoned-laundry`, and `residue`; the shrine route
+retains only `old-shrine` and `partial-inscription`; and the road/wagon route retains only
+`southern-road`, `abandoned-wagon`, and `tool-gated-clue`. Route keys and ordered location/evidence
+identifier lists are immutable, copied, nonempty, and duplicate-free. One pure policy validates
+that every identifier is an exact member of one supplied representative map catalogue and
+discovery scenario and that no two routes repeat the same ID shape. No label, description,
+coordinate, topology, testimony, background, provider, controller, or UI state enters the route
+catalogue.
+
+Separate immutable route-progress state starts with one empty entry per exact route and records
+only explicitly supplied exact member locations or evidence identities. Each successful operation
+returns a fresh bounded snapshot, preserves every unrelated entry, and does not infer or expose
+route completion. An inert scene controller can initialize this validated
+catalogue once and install those explicit operations through expected-state compare-and-swap.
+Ordinary startup does not initialize or advance it, and it does not start discovery, reveal
+evidence, change first-patient state, write the journal or map, call a provider, or present UI.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain

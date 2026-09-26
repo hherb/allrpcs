@@ -62,6 +62,8 @@ ALLRPCS_CHARACTER_MEMORY_CONTROLLER_CHECK=1 godot --headless --path "$repository
 ALLRPCS_JOURNAL_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_MAP_CONTROLLER_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_PROGRESS_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_MAP_PRESENTATION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_MAP_PANEL_CHECK=1 \
