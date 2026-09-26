@@ -49,7 +49,10 @@ map, provider, audio, signing, release, and distribution work remain untouched.
   The first complete run found only a stale interaction-focus smoke expectation for the temporary
   control label; review updated that assertion and added an exact physical-I mapping check before the
   final complete pass.
-- Draft-PR state belongs below after publication.
+- Draft PR #380 targets `main` from implementation commit `67cd97d`. Initial credential-free CI
+  run `36211237831` ended with all five jobs failed before any step was instantiated (`steps: []`),
+  so those hosted results are Actions/account infrastructure and provide no product-test evidence;
+  the complete host-local validation above remains the executed evidence.
 
 ## Exact next bounded slice
 
