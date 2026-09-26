@@ -694,8 +694,8 @@ presents its first canonical section, captures focus inside the panel, stops See
 restores the exact prior movement-processing state on close. Previous and Next controls traverse the
 five existing exact definitions in stable canonical order with closed ends; Close or J hides the
 panel while retaining the exact immutable presentation for reopening. Ordinary startup remains
-inert. There is still no automatic source refresh, editable note, map, gameplay mutation,
-authoritative source exposure, or provider work.
+inert. The journal flow still adds no automatic source refresh, gameplay mutation, authoritative
+source exposure, or provider work.
 
 The journal now has a closed content-safe persistence boundary. A pure capture accepts only a
 complete exact safe journal and an optional exact canonical selection, then creates fresh immutable
@@ -739,9 +739,22 @@ A pure safe map presentation exposes only known definitions in canonical order, 
 verified status, and optional bounded note text. Stable plain text has one neutral empty state and
 contains no hidden catalogue locations, coordinates, or topology. A scene presentation controller
 projects or refreshes only the map controller's exact current map and notes, and a hidden-by-default
-read-only panel renders only that controller's exact presentation. There is still no map input,
-automatic testimony refresh or visit capture, editable widget, persistence/schema change, gameplay
-mutation, provider call, or credential access, so the Phase 8 map roadmap item remains open.
+panel renders only that controller's exact presentation.
+
+Physical M now opens that panel and the temporary healer-move command uses H. First open initializes
+the map once from the exact current scene Seeker, projects empty safe state, captures focus, and
+suspends movement. Later opens refresh only after the exact map or note source changes; unchanged
+state reuses the retained presentation. Close or M restores the exact prior focus and
+movement-processing state. The map and journal reject opening over each other.
+
+The panel's note controls list only already-known safe presentation entries in canonical order.
+They add or replace nonblank notes up to the existing 1,000-code-unit bound and remove only an exact
+existing note, then synchronously refresh the safe presentation while retaining the selected known
+location. Empty, whitespace, stale, hidden, released, unrelated, repeated, rebuilt-owner, and null
+paths do not change map, note, presentation, panel, focus, movement, journal, or gameplay state.
+There is still no automatic testimony reporting or visit capture, coordinate or topology exposure,
+map persistence/schema change, provider call, or credential access, so the Phase 8 map roadmap item
+remains open.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

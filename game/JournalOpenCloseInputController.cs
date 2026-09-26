@@ -12,6 +12,7 @@ public partial class JournalOpenCloseInputController : Node
     private RepresentativeJournalCompositionCoordinator composition = null!;
     private JournalController journal = null!;
     private JournalSectionPanel panel = null!;
+    private SeekerMapPanel mapPanel = null!;
     private JournalSectionPresentationController presentation = null!;
     private Button next = null!;
     private Button previous = null!;
@@ -28,6 +29,7 @@ public partial class JournalOpenCloseInputController : Node
             "../RepresentativeJournalCompositionCoordinator");
         journal = GetNode<JournalController>("../JournalController");
         panel = GetNode<JournalSectionPanel>("../JournalSectionPanel");
+        mapPanel = GetNode<SeekerMapPanel>("../SeekerMapPanel");
         presentation = GetNode<JournalSectionPresentationController>(
             "../JournalSectionPresentationController");
         next = GetNode<Button>("../JournalSectionPanel/Panel/Next");
@@ -57,7 +59,8 @@ public partial class JournalOpenCloseInputController : Node
 
     private bool TryOpen()
     {
-        if (journal.Journal is null && !composition.TryComposeAndInitialize())
+        if (mapPanel.Visible
+            || (journal.Journal is null && !composition.TryComposeAndInitialize()))
         {
             return false;
         }

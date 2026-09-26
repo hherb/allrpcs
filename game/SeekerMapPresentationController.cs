@@ -84,4 +84,12 @@ public partial class SeekerMapPresentationController : Node
         Presentation = replacement;
         return true;
     }
+
+    internal bool HasExactSources(
+        SeekerMapSnapshot expectedMap,
+        SeekerMapNoteSnapshot expectedNotes,
+        SeekerMapPresentationSnapshot expectedPresentation) =>
+        ReferenceEquals(projectedMap, expectedMap)
+        && ReferenceEquals(projectedNotes, expectedNotes)
+        && ReferenceEquals(Presentation, expectedPresentation);
 }

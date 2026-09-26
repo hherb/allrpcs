@@ -66,6 +66,10 @@ ALLRPCS_SEEKER_MAP_PRESENTATION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_MAP_PANEL_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_SEEKER_MAP_OPEN_CLOSE_INPUT_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_SEEKER_MAP_NOTE_EDITING_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_REPRESENTATIVE_JOURNAL_COMPOSITION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_JOURNAL_SECTION_SELECTION_CHECK=1 \
