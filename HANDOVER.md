@@ -4,7 +4,7 @@
 
 `main` includes merged PR #387 at `fbdab1c`. Branch
 `codex/phase-8-route-access-decision` continues the open Phase 8 background-route roadmap item
-through three bounded route-access slices.
+through three bounded route-access slices. Draft PR #388 targets `main`.
 
 Application now owns one immutable `SeekerBackgroundRouteAccess` token. The pure authorization
 policy accepts only the exact authoritative selected route-state instance, its exact empty
@@ -45,6 +45,9 @@ forest geometry, alter discovery, persist customization, or add provider behavio
   scene dependency order, public API shape, documentation claims, 120-character limits,
   sub-500-line C# files, formatting, and whitespace. Review found and fixed one policy weakness by
   requiring the selected state's exact empty predecessor, projection, and catalogue provenance.
+- Draft PR #388's credential-free CI run `36226449173` at feature commit `aba51f8` failed all five
+  jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure and
+  not product-test evidence.
 
 ## Exact next bounded slice
 
