@@ -7,6 +7,7 @@
 four bounded, scene-neutral Application slices. The roadmap item remains open because hypotheses
 are not yet composed or installed, and experiments, open questions, scene ownership, UI, input, and
 persistence do not exist yet.
+Draft PR #394 targets `main`.
 
 `JournalTestimonySectionSnapshotProjection` composes the existing exact testimony binding and
 audience-free authored-copy projection into a fresh immutable snapshot. It retains only the exact
@@ -44,6 +45,9 @@ UI; handles input; persists; mutates authoritative gameplay state; or calls a pr
 - Session review covered every changed file, exact-reference and staged-order boundaries, safe
   copy surfaces, caller isolation, public API documentation, 120-character limits, sub-500-line C#
   files, formatting, and whitespace. No review issues remain.
+- Draft PR #394's credential-free CI run `36235624399` at implementation commit `db5c5a6` failed
+  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
+  infrastructure and not product-test evidence.
 
 ## Exact next bounded slice
 
