@@ -1,4 +1,4 @@
-[gd_scene load_steps=303 format=3]
+[gd_scene load_steps=307 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -475,6 +475,10 @@
 [ext_resource type="Script" path="res://SeekerMapOpenCloseInputSmokeCheck.cs" id="363_seeker_map_input_check"]
 [ext_resource type="Script" path="res://SeekerMapNoteEditingController.cs" id="364_seeker_map_note_editing"]
 [ext_resource type="Script" path="res://SeekerMapNoteEditingSmokeCheck.cs" id="365_seeker_map_note_editing_check"]
+[ext_resource type="Script" path="res://OpeningRegionMapVisitVerificationCoordinator.cs" id="366_map_visit_verification"]
+[ext_resource type="Script" path="res://OpeningRegionMapVisitVerificationSmokeCheck.cs" id="367_map_visit_verification_check"]
+[ext_resource type="Script" path="res://SeekerMapTestimonyReportingCoordinator.cs" id="368_map_testimony_reporting"]
+[ext_resource type="Script" path="res://SeekerMapTestimonyReportingSmokeCheck.cs" id="369_map_testimony_reporting_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1676,6 +1680,12 @@ script = ExtResource("343_journal_controller")
 [node name="SeekerMapController" type="Node" parent="."]
 script = ExtResource("356_seeker_map_controller")
 
+[node name="OpeningRegionMapVisitVerificationCoordinator" type="Node" parent="."]
+script = ExtResource("366_map_visit_verification")
+
+[node name="SeekerMapTestimonyReportingCoordinator" type="Node" parent="."]
+script = ExtResource("368_map_testimony_reporting")
+
 [node name="SeekerMapPresentationController" type="Node" parent="."]
 script = ExtResource("358_seeker_map_presentation")
 
@@ -2672,6 +2682,12 @@ script = ExtResource("363_seeker_map_input_check")
 
 [node name="SeekerMapNoteEditingSmokeCheck" type="Node" parent="."]
 script = ExtResource("365_seeker_map_note_editing_check")
+
+[node name="OpeningRegionMapVisitVerificationSmokeCheck" type="Node" parent="."]
+script = ExtResource("367_map_visit_verification_check")
+
+[node name="SeekerMapTestimonyReportingSmokeCheck" type="Node" parent="."]
+script = ExtResource("369_map_testimony_reporting_check")
 
 [node name="RepresentativeJournalCompositionSmokeCheck" type="Node" parent="."]
 script = ExtResource("346_journal_composition_check")
