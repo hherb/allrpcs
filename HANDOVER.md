@@ -2,75 +2,76 @@
 
 ## Current state
 
-`main` includes merged PR #384 at `5036fe2`. Branch
-`codex/phase-8-seeker-customization-state` continues Phase 8 with two bounded Seeker-customization
-slices. Draft PR #385 targets `main`.
+`main` includes merged PR #385 at `76753ec`. Branch
+`codex/phase-8-customized-character-projection` continues Phase 8 through three bounded
+customization-application slices. Draft PR #386 targets `main`.
 
-The Domain now owns an immutable `SeekerCustomizationSelectionState`. Initial state retains one
-exact representative options catalogue and no profile. A successful pure transition composes only
-through the existing exact-choice `SeekerCustomizationSelection`, retains its exact empty
-predecessor, and returns one fresh state with the exact identity, five pronoun forms, appearance,
-background, and profile. Already-selected, null, rebuilt, foreign, wrong-character, and incomplete
-inputs fail without changing the original state.
+The Domain now owns a pure `SeekerCustomizedCharacterProjection` and immutable
+`SeekerCustomizedCharacterApplication` token. Projection requires a selected profile whose exact
+`CharacterId` is the current temporary Seeker's identifier and rejects null, empty, rebuilt,
+wrong-character, and already-projected inputs. It creates one fresh `Character` with the profile's
+exact identity and public background while retaining the current character's exact private
+background, capabilities, limitations, controller assignment, conditions, inventory, knowledge,
+beliefs, relationships, and goals. The token retains the exact selected state, prior character,
+and projected character.
 
-`SeekerCustomizationSelectionSceneSource` creates one representative catalogue and exact empty
-current state at ordinary startup. Its compare-and-swap installation requires the exact current
-state, exact shared options, and a selected state whose exact predecessor is that current state.
-No default profile is selected.
+`TemporarySeekerCharacterSource` starts with no application and compare-and-swaps one token bound
+to its exact current character. Null, rebuilt, foreign, stale, and repeated applications leave both
+owned properties unchanged. `SeekerCustomizationApplicationCoordinator` preflights the exact empty
+selection state, representative options, selected predecessor, current character, and empty
+application slot before synchronously installing the exact selected state and projected character.
 
-The main scene has a hidden one-shot customization menu. U opens it explicitly; released,
-unrelated, and post-selection input stay inert. While open it suspends Seeker physics and retains
-the prior processing state. It requires a display name, all five pronoun forms, and explicit
-appearance/background choices with no defaults. Successful confirmation uses the existing live
-Seeker character's exact `CharacterId`, installs one exact selected state, closes the menu, and
-restores the prior movement-processing state. Invalid or incomplete submission remains open and
-does not change selection state.
+The U-key customization menu now uses only that coordinator. A complete valid submission atomically
+installs the selected profile and live customized temporary Seeker, closes the menu, and restores
+the Seeker's prior physics-processing state. Rejected and repeated paths preserve selection,
+character, application, movement, and presentation state. The Phase 8 Seeker name, pronouns,
+appearance-choice, and background-selection roadmap item is complete at this boundary.
 
-The selected profile does not yet replace the live temporary `Character`; therefore the Phase 8
-Seeker-customization roadmap item remains open. Pronoun dialogue projection, appearance assets,
-background capabilities/routes, persistence, provider/model work, and all unrelated discovery,
-environmental, movement, journal, map, signing, release, and distribution behavior remain
-untouched.
+Pronouns are retained but are not projected into dialogue. No appearance asset is rendered. The
+four backgrounds do not yet grant capabilities or route variations. Customization is not persisted.
+Provider/model behavior and all unrelated discovery, environment, movement, journal, map, signing,
+release, and distribution behavior remain untouched.
 
 ## Validation and review
 
-- Focused customization coverage passes 12 Domain tests, including exact predecessor retention,
-  stable representative order, one-shot composition, and null/rebuilt/foreign/wrong-character
-  rejection.
-- The selection-source smoke passes inert startup, exact predecessor-bound compare-and-swap,
-  representative order, one install, and rejected/repeated-path preservation.
-- The menu smoke passes hidden startup, explicit U activation, prior movement-state preservation,
-  complete-field validation, exact live Seeker identifier retention, one-shot installation, and
-  repeated-input rejection.
+- Focused Domain coverage passes three projection tests for exact token/component provenance and
+  null, empty, rebuilt-identifier, wrong-character, and already-projected rejection.
+- The temporary-character-source smoke passes inert startup, one exact application, and
+  null/foreign/rebuilt/repeated rejection without changing focused-search, perception, movement,
+  or presentation state.
+- The menu smoke passes exact coordinator rejection, complete-field submission, atomic selected
+  state and live-character installation, movement restoration, and repeated-input preservation.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,808 Domain, 660 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
-  validation, every credential-free Godot smoke, and the graphical Compatibility launch.
-- Draft PR #385's credential-free CI run `36218942231` failed all five jobs before any step was
-  instantiated (`steps: []`), so it is Actions/account infrastructure and not product-test evidence.
-- Session review added exact predecessor provenance so results derived from rebuilt current state
-  cannot install, preserved the Seeker's prior physics-processing state across repeated U input,
-  and reused the live character source's exact `CharacterId`. No remaining correctness issue was
-  found. New C# files are below 500 lines; 120-character and whitespace checks pass.
+  2,811 Domain, 660 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
+  validation, every credential-free Godot smoke, and the graphical Compatibility launch. The
+  sandbox-only run reached all .NET tests and scenario validation before the known Godot
+  `user://logs` restriction; the identical host run supplied the Godot evidence.
+- Draft PR #386's credential-free CI run `36221360337` at feature commit `1158d03` failed all five
+  jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure and
+  not product-test evidence.
+- Session review checked the complete diff, exact-reference rejection paths, synchronous scene
+  ordering, source consumers, public API shape, documentation claims, 120-character limits,
+  sub-500-line C# files, and whitespace. No remaining correctness issue was found.
 
 ## Exact next bounded slice
 
-Add one pure, scene-neutral customized-`Character` projection and exact application token without
-mutating the live scene yet.
+Begin the next open Phase 8 roadmap item with one pure, scene-neutral representative background
+route-variation catalogue. Do not change navigation or unlock a route yet.
 
 Acceptance boundary:
 
-1. Add one immutable application token retaining the exact selected state, exact current temporary
-   Seeker `Character`, and one freshly projected customized `Character`.
-2. Add one pure projection that accepts only a selected state whose profile identity retains the
-   current character's exact `CharacterId`. Reject null, empty, rebuilt-identifier, wrong-character,
-   foreign, and repeated/already-applied inputs without changing either input.
-3. The projected character must use the profile's exact identity and public background while
-   retaining the current character's exact private background, capabilities, limitations,
-   controller assignment, conditions, inventory, knowledge, beliefs, relationships, and goals.
-   The token must retain all three exact provenance references.
-4. Add focused Domain/Application coverage as appropriate. Do not change
-   `TemporarySeekerCharacterSource.Character`, wire the menu to character replacement, project
-   pronouns into dialogue, grant background capabilities/routes, render appearance assets, or add
-   persistence yet.
-5. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact
-   next Phase 8 slice for the later atomic scene application boundary.
+1. Add one immutable route-variation definition retaining an exact representative
+   `SeekerBackgroundChoice` and one exact existing opening-region destination anchor.
+2. Author four definitions in representative background order: Forester to the closed-forest-path
+   anchor, Scribe to the old-shrine anchor, Apothecary's Assistant to the healer-garden anchor, and
+   Traveller to the southern-road anchor. Every background must have one variation; none may be a
+   mandatory default or remove another existing route.
+3. Add one pure exact-choice lookup/projection that accepts only the selected background instance
+   retained by the applied customization token and the exact supplied opening-region projection.
+   Reject null, empty/unapplied, rebuilt, foreign, missing-anchor, and duplicate-catalogue inputs
+   without changing customization or navigation state.
+4. Add focused Domain/Application coverage as appropriate. Do not grant capabilities, mutate the
+   live character, open the closed gate, change collision/navigation, alter discovery visibility,
+   render appearance, project pronouns, persist customization, or add provider/UI behavior.
+5. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
+   slice for applying a selected variation through an explicit scene-owned route state.
