@@ -139,7 +139,7 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 - [x] Build the closed path leading toward the deeper forest.
 - [x] Add weather, lighting, sound regions, and story-state variations needed by discoveries.
 - [x] Implement Seeker name, pronouns, appearance choices, and background selection.
-- [ ] Implement Forester, Scribe, Apothecary's Assistant, and Traveller route variations without
+- [x] Implement Forester, Scribe, Apothecary's Assistant, and Traveller route variations without
   making any one background mandatory.
 - [ ] Implement the journal sections for observations, testimony, hypotheses, experiments, and
   open questions.

@@ -16,6 +16,9 @@ public partial class OpeningRegionRemedyPreparationSceneSource : Node2D
     /// <summary>Gets the exact garden and recipe binding after scene sources become ready.</summary>
     public OpeningRegionRemedyPreparationSceneBinding? Binding { get; private set; }
 
+    /// <summary>Gets exact additive Apothecary preparation access, or null before selection.</summary>
+    public OpeningRegionRemedyPreparationAccess? CurrentPreparationAccess { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -40,6 +43,39 @@ public partial class OpeningRegionRemedyPreparationSceneSource : Node2D
             context,
             ToNumerics(Position),
             MaximumStationDistancePixels);
+    }
+
+    /// <summary>Reports whether exact current Apothecary access can be retained once.</summary>
+    public bool CanInstallPreparationAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionRemedyPreparationAccess? access)
+    {
+        OpeningRegionRemedyPreparationSceneBinding? binding = Binding;
+        return CurrentPreparationAccess is null
+            && binding is not null
+            && currentRouteState?.SelectedVariation is not null
+            && access is not null
+            && ReferenceEquals(access.RouteAccess.RouteState, currentRouteState)
+            && ReferenceEquals(access.RouteAccess.SelectedVariation, access.ApothecaryVariation)
+            && ReferenceEquals(access.ApothecaryVariation, currentRouteState.SelectedVariation)
+            && ReferenceEquals(access.RouteAccess.DestinationAnchor, binding.GardenAnchor)
+            && ReferenceEquals(access.SceneBinding, binding)
+            && ReferenceEquals(access.TreatmentContext, binding.TreatmentContext)
+            && ReferenceEquals(access.Recipe, binding.Recipe);
+    }
+
+    /// <summary>Retains exact Apothecary authorization without changing preparation.</summary>
+    public bool TryInstallPreparationAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionRemedyPreparationAccess? access)
+    {
+        if (!CanInstallPreparationAccess(currentRouteState, access))
+        {
+            return false;
+        }
+
+        CurrentPreparationAccess = access;
+        return true;
     }
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>

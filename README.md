@@ -565,13 +565,16 @@ retaining the exact route, variation, destination, and scene provenance. Exact S
 separately bound to the exact old-shrine scene and layered-inscription provenance; the shrine owner
 retains that additive inspection authorization once without identifying or revealing the
 inscription, changing discovery, presentation, evidence, or environmental state, or bypassing the
-ordinary discovery transition. A pure Apothecary's Assistant decision can bind exact current
-healer-garden access to the existing remedy-preparation scene, treatment context, and recipe
-without starting or advancing preparation; scene ownership remains deferred. Ordinary startup
-remains closed and concealed, non-Forester choices leave the forest gate unchanged, and access
-neither closes a baseline route nor claims that a distant destination is navigation-reachable.
-Pronouns are retained but not yet projected into dialogue; appearance assets, Apothecary scene
-consumption, the Traveller route effect, persistence, and provider behavior remain deferred.
+ordinary discovery transition. Exact Apothecary's Assistant access is separately bound to the
+existing healer-garden preparation scene, treatment context, and recipe; that scene retains the
+authorization once without starting or advancing preparation, consuming ingredients, or changing
+patient or evidence state. Exact Traveller access is separately bound to the existing southern-road
+and abandoned-wagon scene; that scene retains the authorization once without changing geometry,
+navigation, discovery, or presentation. Ordinary startup remains closed, concealed, and inert,
+non-Forester choices leave the forest gate unchanged, and no access closes a baseline route or
+claims that a distant destination is navigation-reachable. Pronouns are retained but not yet
+projected into dialogue; appearance assets, downstream background-specific interactions,
+persistence, and provider behavior remain deferred.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
