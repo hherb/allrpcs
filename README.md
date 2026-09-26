@@ -559,13 +559,19 @@ to the southern road. One immutable scene-owned route state retains that exact c
 one selected definition. The synchronous scene coordinator preflights and compare-and-swaps the
 selected customization, live temporary character, route state, and one exact scene-owned additive
 access token, rejecting null, empty, rebuilt, foreign, stale, non-destination, repeated, and
-already-applied paths without partial mutation. Only exact Forester access is consumed by a route
-effect: the existing closed-path owner removes its gate collision and greybox gate presentation
-once while retaining the exact route, variation, destination, and scene provenance. Ordinary
-startup remains closed, the other three backgrounds leave that gate unchanged, and access neither
-closes a baseline route nor claims the distant destination is navigation-reachable. Pronouns are
-retained but not yet projected into dialogue; appearance assets, the Scribe, Apothecary's Assistant,
-and Traveller route effects, persistence, and provider behavior remain deferred.
+already-applied paths without partial mutation. Exact Forester access is consumed by the existing
+closed-path owner, which removes its gate collision and greybox gate presentation once while
+retaining the exact route, variation, destination, and scene provenance. Exact Scribe access is
+separately bound to the exact old-shrine scene and layered-inscription provenance; the shrine owner
+retains that additive inspection authorization once without identifying or revealing the
+inscription, changing discovery, presentation, evidence, or environmental state, or bypassing the
+ordinary discovery transition. A pure Apothecary's Assistant decision can bind exact current
+healer-garden access to the existing remedy-preparation scene, treatment context, and recipe
+without starting or advancing preparation; scene ownership remains deferred. Ordinary startup
+remains closed and concealed, non-Forester choices leave the forest gate unchanged, and access
+neither closes a baseline route nor claims that a distant destination is navigation-reachable.
+Pronouns are retained but not yet projected into dialogue; appearance assets, Apothecary scene
+consumption, the Traveller route effect, persistence, and provider behavior remain deferred.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

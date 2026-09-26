@@ -47,6 +47,9 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
     /// <summary>Gets the exact filtered evidence exposure, or null before presentation.</summary>
     public OpeningRegionLayeredInscriptionEvidenceExposure? EvidenceExposure { get; private set; }
 
+    /// <summary>Gets exact additive Scribe inspection access, or null before selection.</summary>
+    public OpeningRegionOldShrineInspectionAccess? CurrentInspectionAccess { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -81,6 +84,36 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
             InscriptionBinding);
         Presentation = null;
         EvidenceExposure = null;
+        CurrentInspectionAccess = null;
+    }
+
+    /// <summary>Reports whether exact current Scribe access can be retained once.</summary>
+    public bool CanInstallInspectionAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionOldShrineInspectionAccess? access) =>
+        CurrentInspectionAccess is null
+        && access is not null
+        && ReferenceEquals(access.RouteAccess.RouteState, currentRouteState)
+        && ReferenceEquals(access.ShrineSceneBinding, Binding)
+        && ReferenceEquals(access.InscriptionBinding, InscriptionBinding)
+        && ReferenceEquals(DiscoveryState.InscriptionBinding, InscriptionBinding)
+        && DiscoveryState.Resolution is null
+        && Presentation is null
+        && EvidenceExposure is null
+        && !LayeredInscription.Visible;
+
+    /// <summary>Retains exact Scribe inspection authorization without changing discovery.</summary>
+    public bool TryInstallInspectionAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionOldShrineInspectionAccess? access)
+    {
+        if (!CanInstallInspectionAccess(currentRouteState, access))
+        {
+            return false;
+        }
+
+        CurrentInspectionAccess = access;
+        return true;
     }
 
     /// <summary>Commits one completely preflighted discovery graph without partial application.</summary>
