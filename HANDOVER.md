@@ -40,6 +40,10 @@ round trip, village transitions, actor origins, healer movement, and all twelve 
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
   2,789 Domain, 625 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
   scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
+- Draft PR #378 targets `main` at `5002f02`. Credential-free CI run `36206844930` ended with all
+  five jobs failed before any step was instantiated (`steps: []`), so those hosted results are
+  Actions/account infrastructure and provide no product-test evidence; the host-local validation
+  above remains the executed evidence.
 - Every new C# file remains below 500 lines; 120-character and whitespace checks are clean.
 - No rare-specimen discovery or interaction, inscription reading or discovery, authoritative
   evidence mutation, road/wagon/closed-path content, dialogue, inhabitants, preparation or
