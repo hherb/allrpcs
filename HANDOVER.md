@@ -43,6 +43,10 @@ summaries. The unfinished ordinary layered-inscription activation remains untick
   scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
   The sandboxed run reached all managed tests but Godot could not open `user://logs`; the identical
   host-local run above is the executed Godot evidence.
+- Draft PR #379 targets `main`. Credential-free CI run `36209442371` ended with all five jobs
+  failed before any step was instantiated (`steps: []`), so those hosted results are Actions/account
+  infrastructure and provide no product-test evidence; the host-local validation above remains the
+  executed evidence.
 - Every new C# file remains below 500 lines; 120-character and whitespace checks are clean.
 - No ordinary interaction/input path, focused search, passive noticing, new knowledge acquisition,
   journal/UI text, persistence, collection, road/wagon/closed-path content, dialogue, inhabitants,
