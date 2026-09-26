@@ -461,6 +461,10 @@
 [ext_resource type="Script" path="res://JournalSectionPresentationController.cs" id="349_journal_presentation"]
 [ext_resource type="Script" path="res://JournalSectionPresentationSmokeCheck.cs" id="350_journal_presentation_check"]
 [ext_resource type="Script" path="res://JournalSectionPresentationRefreshSmokeCheck.cs" id="351_journal_refresh_check"]
+[ext_resource type="Script" path="res://JournalSectionPanel.cs" id="352_journal_panel"]
+[ext_resource type="Script" path="res://JournalSectionPanelSmokeCheck.cs" id="353_journal_panel_check"]
+[ext_resource type="Script" path="res://JournalOpenCloseInputController.cs" id="354_journal_input"]
+[ext_resource type="Script" path="res://JournalOpenCloseInputSmokeCheck.cs" id="355_journal_input_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1665,6 +1669,70 @@ script = ExtResource("347_journal_selection")
 [node name="JournalSectionPresentationController" type="Node" parent="."]
 script = ExtResource("349_journal_presentation")
 
+[node name="JournalSectionPanel" type="CanvasLayer" parent="."]
+visible = false
+layer = 8
+script = ExtResource("352_journal_panel")
+
+[node name="Panel" type="ColorRect" parent="JournalSectionPanel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -240.0
+offset_right = 360.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.055, 0.067, 0.082, 0.94)
+mouse_filter = 2
+
+[node name="SectionLabel" type="Label" parent="JournalSectionPanel/Panel"]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 700.0
+offset_bottom = 44.0
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="JournalSectionPanel/Panel"]
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 700.0
+offset_bottom = 410.0
+horizontal_scroll_mode = 0
+
+[node name="Content" type="Label" parent="JournalSectionPanel/Panel/Scroll"]
+custom_minimum_size = Vector2(660, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 2
+
+[node name="Previous" type="Button" parent="JournalSectionPanel/Panel"]
+offset_left = 20.0
+offset_top = 428.0
+offset_right = 180.0
+offset_bottom = 464.0
+text = "Previous section"
+
+[node name="Close" type="Button" parent="JournalSectionPanel/Panel"]
+offset_left = 270.0
+offset_top = 428.0
+offset_right = 450.0
+offset_bottom = 464.0
+text = "Close journal"
+
+[node name="Next" type="Button" parent="JournalSectionPanel/Panel"]
+offset_left = 540.0
+offset_top = 428.0
+offset_right = 700.0
+offset_bottom = 464.0
+text = "Next section"
+
+[node name="JournalOpenCloseInputController" type="Node" parent="."]
+script = ExtResource("354_journal_input")
+
 [node name="FirstPatientStateController" type="Node" parent="."]
 script = ExtResource("126_first_patient_state_controller")
 
@@ -2505,6 +2573,12 @@ script = ExtResource("350_journal_presentation_check")
 [node name="JournalSectionPresentationRefreshSmokeCheck" type="Node" parent="."]
 script = ExtResource("351_journal_refresh_check")
 
+[node name="JournalSectionPanelSmokeCheck" type="Node" parent="."]
+script = ExtResource("353_journal_panel_check")
+
+[node name="JournalOpenCloseInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("355_journal_input_check")
+
 [node name="FirstPatientStateControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("127_first_patient_state_controller_check")
 
@@ -3115,7 +3189,7 @@ offset_left = 12.0
 offset_top = 7.0
 offset_right = 736.0
 offset_bottom = 30.0
-text = "TEMP · U CUSTOMIZE · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
+text = "TEMP · U CUSTOMIZE · J JOURNAL · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0

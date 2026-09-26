@@ -68,6 +68,10 @@ ALLRPCS_JOURNAL_SECTION_PRESENTATION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_JOURNAL_SECTION_PRESENTATION_REFRESH_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_JOURNAL_SECTION_PANEL_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_JOURNAL_OPEN_CLOSE_INPUT_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_STATE_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_CONTEXT_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_PREPARATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30

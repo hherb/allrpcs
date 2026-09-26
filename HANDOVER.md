@@ -2,79 +2,74 @@
 
 ## Current state
 
-`main` includes merged PR #396 at `9d7e025`. Branch
-`codex/phase-8-journal-selection` continues the Phase 8 journal item through exact section
-selection plus content-safe UI-free projection and explicit refresh. The roadmap journal checkbox
-remains open because no journal panel, input/opening flow, or persistence exists. Draft PR #397
-targets `main`.
+`main` includes merged PR #397 at `4158cd7`. Branch `codex/phase-8-journal-panel`
+continues the Phase 8 journal through three bounded slices: safe plain-text projection and a
+read-only panel, explicit modal open/close input, and canonical section traversal. The roadmap
+journal checkbox remains open because journal persistence and save-schema integration are absent.
 
-`JournalSectionSelectionController` starts null and accepts only the exact journal retained by
-`JournalController` plus one exact canonical definition from that journal. It permits explicit
-replacement by a different exact canonical section while uninitialized, stale, foreign, rebuilt,
-value-equal, repeated, and null inputs cannot change the current selection.
+`JournalSectionPresentationTextProjection` converts only one already-safe selected-section snapshot
+into its exact authored label and stable plain text. Observations render copied names and
+descriptions, testimony renders canonical speaker/delivery identifiers without audiences,
+hypotheses render authored questions/statements, experiments render procedures/observed outcomes,
+and open questions render prompts. Every empty arm uses the same explicit neutral state.
 
-`JournalSectionPresentationProjection` accepts only a complete exact journal and one of its exact
-canonical sections. Its immutable `JournalSectionPresentationSnapshot` exposes that definition and
-exactly one already-safe observation, testimony, hypothesis, experiment, or open-question snapshot.
-It does not expose the complete journal, catalogue, perception, world objects, dialogue audiences,
-investigation aggregates, authoritative experiment events, or confirmed conclusions.
+`JournalSectionPanel` starts hidden and empty. It accepts only the exact snapshot currently retained
+by `JournalSectionPresentationController`, preserves rendered state for stale, rebuilt, foreign,
+repeated, and null rejection, and replaces content only after an explicit exact refresh. The panel
+is centred within the supported 960x540 viewport and exposes no complete journal, catalogue,
+authoritative source, dialogue audience, or world event.
 
-`JournalSectionPresentationController` starts null and explicitly owns one projection of the current
-exact selection. A later exact selection replacement remains stale until `TryRefresh` is explicitly
-called; unchanged, unprojected, repeated, or invalid refreshes preserve the prior immutable value.
-`Main.tscn` owns both new controllers in dependency order. Ordinary startup still does not compose a
-journal, select a section, project content, or change any existing UI or source state.
+The mapped J action explicitly composes the representative journal on first open, selects and
+presents the first exact canonical section, captures panel focus, stops Seeker movement, and restores
+the exact prior physics-processing state on close. Previous/Next buttons traverse all five existing
+definitions in stable order with closed ends. Close or J hides the panel, releases the actual GUI
+focus owner, and retains the exact immutable presentation for reopening. Ordinary startup remains
+inert.
 
-No journal label or panel, input action, automatic opening, display-name lookup, editable note,
-map, source-content refresh, persistence or save schema, gameplay mutation, authoritative source
-exposure, model invocation, provider call, or credential access was added.
+No automatic source refresh, display-name lookup, editable note, map, journal persistence or save
+schema, gameplay mutation, authoritative source exposure, model invocation, provider call, or
+credential access was added.
 
 ## Validation and review
 
-- Test-first checks observed the missing selection controller, presentation value/projection, and
-  refresh operation before their implementations were added.
-- Focused Application tests cover all five safe content arms plus incomplete, foreign, rebuilt, and
-  null rejection and the closed immutable public surface. All 7 focused cases passed.
-- The three switch-gated Godot smokes passed exact selection/replacement, safe one-arm projection,
-  explicit refresh, immutable prior values, every rejection path, closed controller surfaces, inert
-  startup, and journal/source/UI isolation.
+- Test-first panel and input smoke builds observed the missing scene owners before their
+  implementations were added.
+- All 11 focused Application text-projection cases passed every non-empty content arm, every neutral
+  empty arm, null rejection, and the closed plain-text surface.
+- The two switch-gated journal smokes passed hidden inert startup, exact presentation ownership,
+  stable text for all five sections, explicit refreshed replacement, rejection preservation,
+  J/Close opening and closing, focus capture/release, exact movement restoration, canonical
+  closed-end traversal, retained reopening, and journal/source/gameplay/unrelated-UI isolation.
 - Final host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning
-  build, 2,811 Domain, 802 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
+  build, 2,811 Domain, 813 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
   validation, every credential-free Godot smoke, and the graphical Compatibility launch.
 - The restricted quality run passed every pure check before the known Godot `user://logs`
   restriction; the identical host run supplied complete Godot evidence.
-- Draft PR #397's credential-free CI run `36242186152` at implementation commit `e7f90ad` failed
-  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
-  infrastructure and not product-test evidence.
-- Session review covered all new Application values and tests, scene controllers and smokes,
-  `Main.tscn`, `scripts/smoke-godot.sh`, `README.md`, and this handover. Exact ownership,
-  fail-closed replacement, immutable safe surfaces, source isolation, null and repeated paths,
-  inert startup, documentation, formatting, whitespace, 120-character limits, and sub-500-line C#
-  files were checked. A reflective content-arm invariant was replaced with direct typed checks; no
-  review issue remains.
+- Session review covered all new Application values/tests, panel/input controllers and smokes,
+  `Main.tscn`, input mapping, smoke registration, README, and this handover. It fixed the initial
+  off-viewport panel placement, clipped long content, release of only the Close button rather than
+  the actual focus owner, a stale selection/presentation opening edge, rejected-state smoke
+  assertions, and the existing exact command-overlay expectation. Exact ownership, fail-closed
+  replacement, stable content, modal restoration, inert startup, documentation, formatting,
+  whitespace, 120-character limits, and sub-500-line C# files were checked; no review issue remains.
 
 ## Exact next bounded slice
 
-Add one read-only journal-section panel that explicitly renders the current exact content-safe
-presentation snapshot, without adding an opening input flow yet.
+Add one pure journal persistence-capture boundary without changing the existing root save document
+or restoring journal state yet.
 
 Acceptance boundary:
 
-1. Add one hidden-by-default panel whose explicit presentation operation requires the exact snapshot
-   currently retained by `JournalSectionPresentationController`.
-2. Render the exact canonical section label and stable safe content for all five arms: observation
-   names/descriptions, audience-free testimony, authored hypothesis question/statements, experiment
-   procedure/observed outcomes, and open-question prompts. Present an explicit neutral empty state.
-3. Permit explicit replacement only after the presentation controller has explicitly refreshed to a
-   different exact snapshot. Reject stale, rebuilt, foreign, repeated, and null values without
-   changing the currently rendered panel.
-4. Wire the panel into `Main.tscn` without automatic composition, selection, projection, visibility,
-   focus capture, movement suspension, or input mapping.
-5. Add one switch-gated credential-free smoke that explicitly composes the representative journal,
-   visits all five exact sections through selection/projection/refresh, verifies safe stable text and
-   replacement/rejection behavior, and preserves journal, source, gameplay, and unrelated UI state.
-6. Do not add a journal open/close action, automatic refresh from changed sources, display-name
-   lookup, editable notes, the map, persistence/save schema, gameplay mutation, authoritative source
-   exposure, or provider work.
-7. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
-   slice for explicit journal open/close input with focus and movement suspension.
+1. Define one immutable content-safe journal save-state value for a complete `JournalSnapshot` plus
+   the optional exact selected canonical section key.
+2. Capture all five safe authored section arms in stable order without retaining the complete
+   catalogue, perception/world bindings, dialogue audiences, authoritative experiment events,
+   investigation aggregates, controller instances, or UI state.
+3. Require a complete exact journal and, when supplied, an exact canonical selection from that
+   journal. Reject incomplete, foreign, rebuilt, and null inputs without partial output.
+4. Prove fresh independent immutable copies, stable order, the explicit no-selection state, and
+   closed persistence surfaces with focused Application tests.
+5. Do not change the current save root/version, JSON serialization, restoration controllers, scene
+   wiring, journal source refresh, panel behavior, editable notes, map, gameplay, or providers.
+6. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
+   slice for integrating the captured journal state into a new versioned save root and canonical JSON.

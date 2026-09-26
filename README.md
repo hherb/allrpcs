@@ -673,9 +673,24 @@ open-question snapshots; it exposes no complete journal, catalogue, authoritativ
 audience, or world event. A scene controller owns one explicitly requested projection and can
 explicitly replace it only after the exact selection changes. Unprojected, unchanged, repeated,
 foreign, rebuilt, incomplete, and null paths fail closed without changing prior presentation state.
-Ordinary startup, journal composition, and section selection do not project automatically. No
-label, panel, input action, automatic opening, display-name lookup, editable note, persistence,
-save schema, gameplay mutation, authoritative source exposure, or provider work is present.
+Ordinary startup, journal composition, and section selection do not project automatically.
+
+A pure plain-text projection renders only that selected safe arm with the exact authored section
+label. Observations show copied names and descriptions, testimony shows canonical speaker and
+delivery identifiers without audiences, hypotheses show authored question and statement text,
+experiments show authored procedure and observed outcome text, and open questions show authored
+prompts. Every empty arm uses one explicit neutral empty state. The hidden-by-default journal panel
+accepts only the presentation controller's exact current snapshot, preserves rendered state across
+rejected stale, rebuilt, foreign, repeated, and null values, and permits replacement only after an
+explicit exact presentation refresh.
+
+The mapped J action explicitly composes the representative journal on first open, selects and
+presents its first canonical section, captures focus inside the panel, stops Seeker movement, and
+restores the exact prior movement-processing state on close. Previous and Next controls traverse the
+five existing exact definitions in stable canonical order with closed ends; Close or J hides the
+panel while retaining the exact immutable presentation for reopening. Ordinary startup remains
+inert. There is still no automatic source refresh, display-name lookup, editable note, map,
+persistence or save schema, gameplay mutation, authoritative source exposure, or provider work.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
