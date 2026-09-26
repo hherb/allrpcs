@@ -4,7 +4,7 @@
 
 `main` includes merged PR #386 at `5f424f0`. Branch
 `codex/phase-8-background-route-variations` continues the open Phase 8 background-route roadmap
-item through two bounded slices.
+item through two bounded slices. Draft PR #387 targets `main`.
 
 Application now owns four immutable representative `SeekerBackgroundRouteVariation` definitions.
 They retain exact background-choice and opening-region anchor instances in representative order:
@@ -46,6 +46,9 @@ The Phase 8 route-variation roadmap item therefore remains open.
   three-owner preflight/install ordering, public API shape, scene dependency order, documentation
   claims, 120-character limits, sub-500-line C# files, formatting, and whitespace. No remaining
   correctness issue was found.
+- Draft PR #387's credential-free CI run `36224060883` at feature commit `1e3a313` failed all five
+  jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure and
+  not product-test evidence.
 
 ## Exact next bounded slice
 
