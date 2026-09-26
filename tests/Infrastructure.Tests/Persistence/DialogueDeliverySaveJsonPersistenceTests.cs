@@ -72,7 +72,7 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
             serialized,
             EmptyFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.DialogueDelivery, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.Journal, result.SchemaVersion);
         Assert.Same(
             DialogueDeliveryMode.OrdinarySpeech,
             RecentDialogueEvent(result).Delivery.Mode);
@@ -84,7 +84,7 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
     }
 
     [Fact]
-    public void DeserializeCurrentRetainsAnAlreadyCurrentVersionFourDocument()
+    public void DeserializeCurrentMigratesAnAlreadyValidVersionFourDocument()
     {
         SaveSnapshot source = CreateSnapshot(
             SaveSchemaVersion.DialogueDelivery,
@@ -95,12 +95,14 @@ public sealed class DialogueDeliverySaveJsonPersistenceTests
             serialized,
             EmptyFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.DialogueDelivery, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.Journal, result.SchemaVersion);
         Assert.Same(
             DialogueDeliveryMode.Whispering,
             RecentDialogueEvent(result).Delivery.Mode);
         Assert.Same(DialogueDeliveryMode.Whispering, ResponseDelivery(result).Mode);
-        Assert.Equal(serialized, SaveSnapshotJsonSerializer.Serialize(result));
+        Assert.NotNull(result.Journal);
+        Assert.Empty(result.Journal.Observations);
+        Assert.NotEqual(serialized, SaveSnapshotJsonSerializer.Serialize(result));
     }
 
     [Fact]

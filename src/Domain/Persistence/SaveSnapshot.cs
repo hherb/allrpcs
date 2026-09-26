@@ -12,7 +12,13 @@ public sealed record SaveSnapshot
         SaveSchemaVersion schemaVersion,
         DiscoverySaveState discovery,
         WorldEventSaveState worldEvents)
-        : this(schemaVersion, discovery, worldEvents, EmptyCharacterMemory, firstPatient: null)
+        : this(
+            schemaVersion,
+            discovery,
+            worldEvents,
+            EmptyCharacterMemory,
+            firstPatient: null,
+            journal: null)
     {
     }
 
@@ -22,7 +28,13 @@ public sealed record SaveSnapshot
         DiscoverySaveState discovery,
         WorldEventSaveState worldEvents,
         CharacterMemorySnapshot characterMemory)
-        : this(schemaVersion, discovery, worldEvents, characterMemory, firstPatient: null)
+        : this(
+            schemaVersion,
+            discovery,
+            worldEvents,
+            characterMemory,
+            firstPatient: null,
+            journal: null)
     {
     }
 
@@ -33,6 +45,18 @@ public sealed record SaveSnapshot
         WorldEventSaveState worldEvents,
         CharacterMemorySnapshot characterMemory,
         FirstPatientSaveState? firstPatient)
+        : this(schemaVersion, discovery, worldEvents, characterMemory, firstPatient, journal: null)
+    {
+    }
+
+    /// <summary>Creates a save root retaining exact first-patient and journal state.</summary>
+    public SaveSnapshot(
+        SaveSchemaVersion schemaVersion,
+        DiscoverySaveState discovery,
+        WorldEventSaveState worldEvents,
+        CharacterMemorySnapshot characterMemory,
+        FirstPatientSaveState? firstPatient,
+        JournalSaveState? journal)
     {
         ArgumentNullException.ThrowIfNull(schemaVersion);
         ArgumentNullException.ThrowIfNull(discovery);
@@ -40,7 +64,8 @@ public sealed record SaveSnapshot
         ArgumentNullException.ThrowIfNull(characterMemory);
 
         bool retainsFirstPatient = schemaVersion == SaveSchemaVersion.FirstPatient
-            || schemaVersion == SaveSchemaVersion.DialogueDelivery;
+            || schemaVersion == SaveSchemaVersion.DialogueDelivery
+            || schemaVersion == SaveSchemaVersion.Journal;
         if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
@@ -61,11 +86,32 @@ public sealed record SaveSnapshot
                 nameof(characterMemory));
         }
 
+        if (schemaVersion == SaveSchemaVersion.Journal && journal is null)
+        {
+            throw new ArgumentNullException(nameof(journal));
+        }
+
+        if (schemaVersion != SaveSchemaVersion.Journal && journal is not null)
+        {
+            throw new ArgumentException(
+                "Only the journal save schema can retain journal state.",
+                nameof(journal));
+        }
+
+        if (journal is not null
+            && journal.SeekerId != discovery.Perception.CharacterId)
+        {
+            throw new ArgumentException(
+                "Journal state must belong to the saved discovery character.",
+                nameof(journal));
+        }
+
         SchemaVersion = schemaVersion;
         Discovery = discovery;
         WorldEvents = worldEvents;
         CharacterMemory = characterMemory;
         FirstPatient = firstPatient;
+        Journal = journal;
     }
 
     /// <summary>Gets the exact retained root schema-version discriminator.</summary>
@@ -82,4 +128,7 @@ public sealed record SaveSnapshot
 
     /// <summary>Gets exact first-patient state when retained by the schema version.</summary>
     public FirstPatientSaveState? FirstPatient { get; }
+
+    /// <summary>Gets exact content-safe journal state when retained by the schema version.</summary>
+    public JournalSaveState? Journal { get; }
 }

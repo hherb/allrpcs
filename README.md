@@ -692,6 +692,14 @@ panel while retaining the exact immutable presentation for reopening. Ordinary s
 inert. There is still no automatic source refresh, display-name lookup, editable note, map,
 persistence or save schema, gameplay mutation, authoritative source exposure, or provider work.
 
+The journal now has a closed content-safe persistence boundary. A pure capture accepts only a
+complete exact safe journal and an optional exact canonical selection, then creates fresh immutable
+ordered copies of all five section arms without retaining the catalogue, authoritative sources,
+dialogue audiences, experiment events, controllers, or UI state. Save schema version 5 requires that
+journal state, canonical JSON writes and strictly reads it, and current loading migrates versions 1
+through 4 to an explicit empty unselected journal owned by the saved discovery character. Scene save
+capture and journal restoration are not wired yet, so the Phase 8 journal roadmap item remains open.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain
