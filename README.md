@@ -710,6 +710,31 @@ after complete root preflight. Scene capture requires a complete same-Seeker jou
 safe content copies into schema version 5. JSON and local storage round trips preserve the safe
 journal and selection, so the Phase 8 journal roadmap item is complete.
 
+The pure opening-region map foundation derives one fresh asset-neutral catalogue from all eleven
+already-authored representative landmarks. Each definition retains only its exact canonical
+location identifier and bounded player-facing label in stable authored order. One immutable
+Seeker-owned map snapshot exposes only reported and verified definitions, keeps hidden catalogue
+membership private, requires unique exact definitions with disjoint membership, and returns fresh
+canonical-order snapshots for explicit reporting or verification. Verification promotes a reported
+location or adds a previously hidden visited location without exposing world objects, positions,
+navigation topology, or unrelated landmarks.
+
+An explicit testimony-report projection accepts only one exact audience-free authored copy already
+retained by the exact Seeker's safe journal testimony section. The caller explicitly supplies the
+exact canonical location to report: text, speaker, and ordinary or whisper delivery are never
+classified or treated as authority. A separate pure visit projection accepts one exact retained
+opening-region anchor and a finite Seeker position within an explicit positive distance, then emits
+only a coordinate-free Seeker/location token. Exact token, projection, owner, catalogue, and
+location provenance are required before verification changes the map.
+
+Player map notes remain a separate immutable Seeker-owned safe state. Explicit transitions add or
+replace one bounded nonblank note only for an exact reported or verified location, keep notes in
+canonical location order, and remove only an existing exact note. Every successful operation
+returns fresh state while preserving its map and note inputs. No scene controller, automatic
+testimony refresh or visit capture, map panel, input, editable widget, coordinates in presentation,
+persistence/schema change, gameplay mutation, provider call, or credential access exists yet, so
+the Phase 8 map roadmap item remains open.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain
