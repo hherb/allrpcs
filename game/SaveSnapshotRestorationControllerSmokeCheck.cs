@@ -1,3 +1,4 @@
+using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
@@ -23,6 +24,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
     private FirstPatientStateController firstPatientController = null!;
     private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
     private CharacterMemoryController memoryController = null!;
+    private JournalController journalController = null!;
+    private JournalSectionSelectionController journalSelection = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -48,6 +51,9 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
             "../TemporaryFirstPatientTreatmentContextSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        journalController = GetNode<JournalController>("../JournalController");
+        journalSelection = GetNode<JournalSectionSelectionController>(
+            "../JournalSectionSelectionController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -82,19 +88,23 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         CharacterMemorySnapshot memory = CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
         FirstPatientSaveState firstPatient = CreateFirstPatientState(
             firstPatientContextSource.Context);
+        JournalSaveState journal = CreateJournalState(owner);
         SaveSnapshot snapshot = new(
-            SaveSchemaVersion.FirstPatient,
+            SaveSchemaVersion.Journal,
             discovery,
             eventState,
             memory,
-            firstPatient);
+            firstPatient,
+            journal);
 
         if (!controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !HasRestoredFirstPatient(firstPatientContextSource.Context, firstPatient)
+            || !HasRestoredJournal(journal)
             || !activityIndicator.Visible
             || !controller.TryRestore(snapshot)
-            || !HasExactState(snapshot, worldObjects, worldEvents))
+            || !HasExactState(snapshot, worldObjects, worldEvents)
+            || !HasRestoredJournal(journal))
         {
             Fail("Save restoration controller smoke failed exact or repeated root restoration.");
             return;
@@ -106,6 +116,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         IngredientExperimentJournalSnapshot restoredAdministrationExperiments =
             firstPatientController.AdministrationExperiments!;
         ExperimentJournalSnapshot restoredExperiments = firstPatientController.Experiments!;
+        JournalSnapshot restoredJournal = journalController.Journal!;
+        JournalSectionDefinition restoredSelection = journalSelection.Selection!;
 
         SaveSnapshot futureVersion = new(new SaveSchemaVersion(27), discovery, eventState);
         SaveSnapshot missingTarget = new(
@@ -119,12 +131,29 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             SaveSchemaVersion.FirstSupported,
             discovery,
             missingEventState);
+        JournalSaveState duplicateJournal = new(
+            journal.SeekerId,
+            [journal.Observations[0], journal.Observations[0]],
+            journal.Testimony,
+            journal.Hypotheses,
+            journal.Experiments,
+            journal.OpenQuestions,
+            journal.SelectedSectionKey);
+        SaveSnapshot invalidJournal = new(
+            SaveSchemaVersion.Journal,
+            discovery,
+            eventState,
+            memory,
+            firstPatient,
+            duplicateJournal);
 
         if (controller.TryRestore(futureVersion)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || controller.TryRestore(missingTarget)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || controller.TryRestore(missingEvent)
+            || !HasExactState(snapshot, worldObjects, worldEvents)
+            || controller.TryRestore(invalidJournal)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !ThrowsArgumentNull(() => controller.TryRestore(null!))
             || !HasExactState(snapshot, worldObjects, worldEvents)
@@ -145,6 +174,13 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             return;
         }
 
+        if (!ReferenceEquals(journalController.Journal, restoredJournal)
+            || !ReferenceEquals(journalSelection.Selection, restoredSelection))
+        {
+            Fail("Save restoration changed journal state after rejected root input.");
+            return;
+        }
+
         if (seeker.Position != expectedPosition
             || seeker.Velocity != expectedVelocity
             || !string.Equals(focusStatus.Text, expectedFocusStatus, StringComparison.Ordinal)
@@ -160,8 +196,9 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         GD.Print(
             "Save restoration controller smoke passed: complete versioned-root preflight, exact "
             + "atomic discovery, world-event, character-memory, and rebound first-patient state "
-            + "installation, repeated restoration, "
-            + "fail-closed future version, missing target, missing event, and null handling, and "
+            + "installation plus fresh safe journal and exact selection installation, repeated "
+            + "restoration, fail-closed future version, missing target, missing event, duplicate "
+            + "journal, and null handling, and "
             + "unchanged authoritative definitions, movement, input, and other presentation state "
             + "were correct.");
         GetTree().Quit();
@@ -187,6 +224,24 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         && ReferenceEquals(worldEventController.EventLog, snapshot.WorldEvents.EventLog)
         && ReferenceEquals(worldEventController.WorldTime, snapshot.WorldEvents.WorldTime)
         && ReferenceEquals(memoryController.Memory, snapshot.CharacterMemory);
+
+    private bool HasRestoredJournal(JournalSaveState saved)
+    {
+        JournalSnapshot? journal = journalController.Journal;
+        JournalSectionDefinition? selected = journalSelection.Selection;
+        return journal is not null
+            && !ReferenceEquals(journal, saved)
+            && journal.SeekerId == saved.SeekerId
+            && journal.PendingSections.Count == 0
+            && journal.Observations.Entries.Count == 1
+            && journal.Observations.Entries[0].ObjectId == saved.Observations[0].ObjectId
+            && journal.Testimony?.Entries.Count == 0
+            && journal.Hypotheses?.Entries.Count == 0
+            && journal.Experiments?.Entries.Count == 0
+            && journal.OpenQuestions?.Entries.Count == 0
+            && selected is not null
+            && ReferenceEquals(selected, journal.Catalogue.Sections[2]);
+    }
 
     private bool HasRestoredFirstPatient(
         FirstPatientTreatmentContext context,
@@ -264,6 +319,20 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             new WorldEventLogSnapshot([firstEvent.EventId, advancingEvent.EventId]),
             new WorldTimeSnapshot(new WorldEventId(advancingEvent.EventId.Value)));
     }
+
+    private static JournalSaveState CreateJournalState(CharacterId owner) => new(
+        owner,
+        [
+            new JournalObservationSaveEntry(
+                new ObjectId("old-shrine"),
+                "Old Shrine",
+                "Layered marks cross the weathered stone."),
+        ],
+        [],
+        [],
+        [],
+        [],
+        "hypotheses");
 
     private static bool ThrowsArgumentNull(Action action)
     {

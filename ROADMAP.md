@@ -141,7 +141,7 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 - [x] Implement Seeker name, pronouns, appearance choices, and background selection.
 - [x] Implement Forester, Scribe, Apothecary's Assistant, and Traveller route variations without
   making any one background mandatory.
-- [ ] Implement the journal sections for observations, testimony, hypotheses, experiments, and
+- [x] Implement the journal sections for observations, testimony, hypotheses, experiments, and
   open questions.
 - [ ] Implement the incomplete map, reported locations, verified locations, and player notes.
 - [ ] Author multiple investigation routes through the region.

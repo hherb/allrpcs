@@ -27,4 +27,12 @@ public partial class JournalController : Node
         Journal = journal;
         return true;
     }
+
+    /// <summary>Installs one preflighted complete safe journal during root restoration.</summary>
+    internal void InstallRestored(JournalSnapshot journal)
+    {
+        ArgumentNullException.ThrowIfNull(journal);
+
+        Journal = journal;
+    }
 }

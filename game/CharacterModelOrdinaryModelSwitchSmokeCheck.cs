@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
 using Godot;
@@ -27,6 +28,9 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private TemporaryCharacterModelSource modelSource = null!;
     private CharacterModelGenerationFlowController flow = null!;
     private CharacterMemoryController memoryController = null!;
+    private RepresentativeJournalCompositionCoordinator journalComposition = null!;
+    private JournalController journalController = null!;
+    private JournalSectionSelectionController journalSelection = null!;
     private DialogueInputController dialogueInputController = null!;
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
@@ -101,6 +105,11 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         searchController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
+            "../RepresentativeJournalCompositionCoordinator");
+        journalController = GetNode<JournalController>("../JournalController");
+        journalSelection = GetNode<JournalSectionSelectionController>(
+            "../JournalSectionSelectionController");
         saveController = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
         inputControl = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
@@ -142,6 +151,14 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         CharacterMemorySnapshot promised =
             CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
         memoryController.Install(promised);
+        if (!journalComposition.TryComposeAndInitialize()
+            || !journalSelection.TrySelect(
+                journalController.Journal!,
+                journalController.Journal!.Catalogue.Sections[0]))
+        {
+            Fail("The model-switch smoke could not initialize its safe journal.");
+            return;
+        }
         string? serialized = saveController.CaptureSerialized();
         memoryController.Install(new CharacterMemorySnapshot([]));
         if (serialized is null

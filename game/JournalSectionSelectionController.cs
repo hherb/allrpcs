@@ -33,4 +33,10 @@ public partial class JournalSectionSelectionController : Node
         Selection = section;
         return true;
     }
+
+    /// <summary>Installs one preflighted optional selection during root restoration.</summary>
+    internal void InstallRestored(JournalSectionDefinition? section)
+    {
+        Selection = section;
+    }
 }
