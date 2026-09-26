@@ -16,6 +16,9 @@ public partial class OpeningRegionSouthernRoadWagonSceneSource : Node2D
     /// <summary>Gets the exact inert wagon marker.</summary>
     public Marker2D AbandonedWagonMarker { get; private set; } = null!;
 
+    /// <summary>Gets exact additive Traveller access, or null before selection.</summary>
+    public OpeningRegionSouthernRoadWagonAccess? CurrentTravellerAccess { get; private set; }
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -54,6 +57,37 @@ public partial class OpeningRegionSouthernRoadWagonSceneSource : Node2D
             GetNode<Node2D>("WagonBoundaries"),
             Layout.WagonBoundarySegments,
             "WagonBoundary");
+    }
+
+    /// <summary>Reports whether exact current Traveller access can be retained once.</summary>
+    public bool CanInstallTravellerAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionSouthernRoadWagonAccess? access)
+    {
+        OpeningRegionSouthernRoadWagonSceneBinding? binding = Binding;
+        return CurrentTravellerAccess is null
+            && binding is not null
+            && currentRouteState?.SelectedVariation is not null
+            && access is not null
+            && ReferenceEquals(access.RouteAccess.RouteState, currentRouteState)
+            && ReferenceEquals(access.RouteAccess.SelectedVariation, access.TravellerVariation)
+            && ReferenceEquals(access.TravellerVariation, currentRouteState.SelectedVariation)
+            && ReferenceEquals(access.RouteAccess.DestinationAnchor, binding.SouthernRoadAnchor)
+            && ReferenceEquals(access.SceneBinding, binding);
+    }
+
+    /// <summary>Retains exact Traveller authorization without changing the road or wagon.</summary>
+    public bool TryInstallTravellerAccess(
+        SeekerBackgroundRouteVariationState? currentRouteState,
+        OpeningRegionSouthernRoadWagonAccess? access)
+    {
+        if (!CanInstallTravellerAccess(currentRouteState, access))
+        {
+            return false;
+        }
+
+        CurrentTravellerAccess = access;
+        return true;
     }
 
     private static void ConfigureBoundaries(

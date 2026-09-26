@@ -450,6 +450,8 @@
 [ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSmokeCheck.cs" id="338_seeker_background_route_check"]
 [ext_resource type="Script" path="res://SeekerBackgroundRouteAccessSceneSource.cs" id="339_seeker_background_route_access_source"]
 [ext_resource type="Script" path="res://SeekerScribeInspectionAccessSceneSmokeCheck.cs" id="340_seeker_scribe_inspection_access_check"]
+[ext_resource type="Script" path="res://SeekerApothecaryPreparationAccessSceneSmokeCheck.cs" id="341_seeker_apothecary_preparation_access_check"]
+[ext_resource type="Script" path="res://SeekerTravellerRoadWagonAccessSceneSmokeCheck.cs" id="342_seeker_traveller_road_wagon_access_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2160,6 +2162,12 @@ script = ExtResource("338_seeker_background_route_check")
 
 [node name="SeekerScribeInspectionAccessSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("340_seeker_scribe_inspection_access_check")
+
+[node name="SeekerApothecaryPreparationAccessSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("341_seeker_apothecary_preparation_access_check")
+
+[node name="SeekerTravellerRoadWagonAccessSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("342_seeker_traveller_road_wagon_access_check")
 
 [node name="SeekerCustomizationMenuSmokeCheck" type="Node" parent="."]
 script = ExtResource("335_seeker_customization_menu_check")

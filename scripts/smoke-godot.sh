@@ -36,6 +36,10 @@ ALLRPCS_SEEKER_BACKGROUND_ROUTE_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_SEEKER_SCRIBE_INSPECTION_ACCESS_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_SEEKER_APOTHECARY_PREPARATION_ACCESS_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_SEEKER_TRAVELLER_ROAD_WAGON_ACCESS_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_SOUTHERN_ROAD_WAGON_CHECK=1 \
     godot --headless --fixed-fps 60 --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_CLOSED_FOREST_PATH_CHECK=1 \

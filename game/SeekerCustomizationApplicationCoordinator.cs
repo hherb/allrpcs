@@ -7,12 +7,16 @@ namespace Allrpcs.Game;
 /// <summary>Atomically installs one exact Seeker selection and projected character.</summary>
 public partial class SeekerCustomizationApplicationCoordinator : Node
 {
+    private const string ApothecaryBackgroundKey = "apothecarys-assistant";
+
     private SeekerCustomizationSelectionSceneSource selectionSource = null!;
     private TemporarySeekerCharacterSource characterSource = null!;
     private SeekerBackgroundRouteVariationSceneSource routeSource = null!;
     private SeekerBackgroundRouteAccessSceneSource routeAccessSource = null!;
     private OpeningRegionClosedForestPathSceneSource closedForestPathSource = null!;
     private OpeningRegionOldShrineSceneSource oldShrineSource = null!;
+    private OpeningRegionRemedyPreparationSceneSource remedyPreparationSource = null!;
+    private OpeningRegionSouthernRoadWagonSceneSource southernRoadWagonSource = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -29,6 +33,10 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             "../OpeningRegionClosedForestPathSceneSource");
         oldShrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
             "../OpeningRegionOldShrineSceneSource");
+        remedyPreparationSource = GetNode<OpeningRegionRemedyPreparationSceneSource>(
+            "../OpeningRegionRemedyPreparationSceneSource");
+        southernRoadWagonSource = GetNode<OpeningRegionSouthernRoadWagonSceneSource>(
+            "../OpeningRegionSouthernRoadWagonSceneSource");
     }
 
     /// <summary>Installs exact preflighted selection and character states in one scene call.</summary>
@@ -122,6 +130,54 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             }
         }
 
+        OpeningRegionRemedyPreparationAccess? preparationAccess = null;
+        OpeningRegionRemedyPreparationSceneBinding? preparationBinding =
+            remedyPreparationSource.Binding;
+        if (selectedRoutes.SelectedVariation!.Background.Key == ApothecaryBackgroundKey)
+        {
+            if (preparationBinding is null
+                || !ReferenceEquals(
+                    routeAccess.DestinationAnchor,
+                    preparationBinding.GardenAnchor))
+            {
+                return false;
+            }
+
+            preparationAccess = OpeningRegionRemedyPreparationAccessPolicy.Authorize(
+                routeAccess,
+                routeAccess,
+                preparationBinding,
+                preparationBinding,
+                remedyPreparationSource.CurrentPreparationAccess);
+            if (preparationAccess is null
+                || !remedyPreparationSource.CanInstallPreparationAccess(
+                    selectedRoutes,
+                    preparationAccess))
+            {
+                return false;
+            }
+        }
+
+        OpeningRegionSouthernRoadWagonAccess? travellerAccess = null;
+        if (ReferenceEquals(
+                routeAccess.DestinationAnchor,
+                southernRoadWagonSource.Binding.SouthernRoadAnchor))
+        {
+            travellerAccess = OpeningRegionSouthernRoadWagonAccessPolicy.Authorize(
+                routeAccess,
+                routeAccess,
+                southernRoadWagonSource.Binding,
+                southernRoadWagonSource.Binding,
+                southernRoadWagonSource.CurrentTravellerAccess);
+            if (travellerAccess is null
+                || !southernRoadWagonSource.CanInstallTravellerAccess(
+                    selectedRoutes,
+                    travellerAccess))
+            {
+                return false;
+            }
+        }
+
         if (!selectionSource.TryInstallSelection(expectedCurrent, selectedState))
         {
             return false;
@@ -140,7 +196,23 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             return false;
         }
 
-        return inspectionAccess is null
-            || oldShrineSource.TryInstallInspectionAccess(selectedRoutes, inspectionAccess);
+        if (inspectionAccess is not null
+            && !oldShrineSource.TryInstallInspectionAccess(selectedRoutes, inspectionAccess))
+        {
+            return false;
+        }
+
+        if (preparationAccess is not null
+            && !remedyPreparationSource.TryInstallPreparationAccess(
+                selectedRoutes,
+                preparationAccess))
+        {
+            return false;
+        }
+
+        return travellerAccess is null
+            || southernRoadWagonSource.TryInstallTravellerAccess(
+                selectedRoutes,
+                travellerAccess);
     }
 }
