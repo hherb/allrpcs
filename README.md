@@ -612,6 +612,20 @@ boundary containing only the exact canonical section, exact Seeker identifier, a
 read-only authored copies. It exposes no perception or authoritative world snapshot and still owns
 no editable journal state, scene, UI, input, persistence, gameplay mutation, or provider behavior.
 
+The safe journal snapshot retains that exact observations snapshot with its exact catalogue and
+Seeker while copying the remaining testimony, hypotheses, experiments, and open-questions
+definitions into an independent read-only pending sequence. Composition requires the exact
+catalogue observations definition; rebuilt value-equal and foreign definitions fail closed.
+
+The testimony-section projection binds the exact canonical testimony definition only to dialogue
+events whose recorded audience contains the journal Seeker. It copies the selected exact events in
+stable source order, accepts value-equal listener identifiers, and leaves unrelated dialogue and
+the Seeker's own speech outside the result. A separate authored-copy projection creates fresh
+audience-free values containing only the exact speaker identifier, utterance text, and
+provider-neutral delivery mode. These types do not yet install testimony into the journal snapshot,
+resolve speaker display names, edit or interpret statements, own scene state, present UI, handle
+input, persist, mutate authoritative gameplay state, or call a provider.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain
