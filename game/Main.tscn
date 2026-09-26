@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=3]
+[gd_scene load_steps=284 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -427,6 +427,10 @@
 [ext_resource type="Script" path="res://AdaptiveDisplaySmokeCheck.cs" id="315_adaptive_display_check"]
 [ext_resource type="Script" path="res://OpeningRegionStreamLaundrySceneSource.cs" id="316_opening_region_stream_laundry_scene"]
 [ext_resource type="Script" path="res://OpeningRegionStreamLaundrySmokeCheck.cs" id="317_opening_region_stream_laundry_check"]
+[ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSceneSource.cs" id="318_opening_region_woodland_clearing_scene"]
+[ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSmokeCheck.cs" id="319_opening_region_woodland_clearing_check"]
+[ext_resource type="Script" path="res://OpeningRegionOldShrineSceneSource.cs" id="320_opening_region_old_shrine_scene"]
+[ext_resource type="Script" path="res://OpeningRegionOldShrineSmokeCheck.cs" id="321_opening_region_old_shrine_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -478,6 +482,39 @@ size = Vector2(128, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_laundry_side_section"]
 size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clearing_top"]
+size = Vector2(296, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clearing_side_top"]
+size = Vector2(8, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clearing_side_bottom"]
+size = Vector2(8, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clearing_bottom_left"]
+size = Vector2(174, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clearing_bottom_middle"]
+size = Vector2(11, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clearing_bottom_right"]
+size = Vector2(15, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_top"]
+size = Vector2(192, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_left"]
+size = Vector2(8, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_right_top"]
+size = Vector2(8, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_right_middle"]
+size = Vector2(8, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrine_bottom_left"]
+size = Vector2(144, 8)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_main")
@@ -1909,6 +1946,161 @@ shape = SubResource("RectangleShape2D_laundry_side_section")
 
 [node name="OpeningRegionStreamLaundrySmokeCheck" type="Node" parent="."]
 script = ExtResource("317_opening_region_stream_laundry_check")
+
+[node name="OpeningRegionWoodlandClearingSceneSource" type="Node2D" parent="."]
+script = ExtResource("318_opening_region_woodland_clearing_scene")
+
+[node name="ClearingArea" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+polygon = PackedVector2Array(240, 24, 536, 24, 536, 120, 240, 120)
+color = Color(0.251, 0.376, 0.29, 0.42)
+
+[node name="LaundryOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+polygon = PackedVector2Array(528, 46, 544, 46, 544, 94, 528, 94)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="ShrineOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+polygon = PackedVector2Array(232, 46, 248, 46, 248, 94, 232, 94)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="VillageEdgeOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+polygon = PackedVector2Array(473, 112, 521, 112, 521, 128, 473, 128)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="ClosedForestPathOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+polygon = PackedVector2Array(414, 112, 462, 112, 462, 128, 414, 128)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="ClearingLabel" type="Label" parent="OpeningRegionWoodlandClearingSceneSource"]
+offset_left = 300.0
+offset_top = 58.0
+offset_right = 476.0
+offset_bottom = 81.0
+text = "WOODLAND CLEARING"
+horizontal_alignment = 1
+
+[node name="ConcealedRareSpecimen" type="Marker2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+visible = false
+position = Vector2(450, 90)
+
+[node name="TreeBoundaries" type="Node2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+
+[node name="ClearingTop" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(388, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingTop"]
+shape = SubResource("RectangleShape2D_clearing_top")
+
+[node name="ClearingLeftTop" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(240, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingLeftTop"]
+shape = SubResource("RectangleShape2D_clearing_side_top")
+
+[node name="ClearingLeftBottom" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(240, 107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingLeftBottom"]
+shape = SubResource("RectangleShape2D_clearing_side_bottom")
+
+[node name="ClearingRightTop" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(536, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingRightTop"]
+shape = SubResource("RectangleShape2D_clearing_side_top")
+
+[node name="ClearingRightBottom" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(536, 107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingRightBottom"]
+shape = SubResource("RectangleShape2D_clearing_side_bottom")
+
+[node name="ClearingBottomLeft" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(327, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomLeft"]
+shape = SubResource("RectangleShape2D_clearing_bottom_left")
+
+[node name="ClearingBottomMiddle" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(467.5, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomMiddle"]
+shape = SubResource("RectangleShape2D_clearing_bottom_middle")
+
+[node name="ClearingBottomRight" type="StaticBody2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries"]
+position = Vector2(528.5, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomRight"]
+shape = SubResource("RectangleShape2D_clearing_bottom_right")
+
+[node name="OpeningRegionWoodlandClearingSmokeCheck" type="Node" parent="."]
+script = ExtResource("319_opening_region_woodland_clearing_check")
+
+[node name="OpeningRegionOldShrineSceneSource" type="Node2D" parent="."]
+script = ExtResource("320_opening_region_old_shrine_scene")
+
+[node name="ShrineArea" type="Polygon2D" parent="OpeningRegionOldShrineSceneSource"]
+polygon = PackedVector2Array(24, 24, 216, 24, 216, 136, 24, 136)
+color = Color(0.443, 0.408, 0.345, 0.72)
+
+[node name="WoodlandClearingOpening" type="Polygon2D" parent="OpeningRegionOldShrineSceneSource"]
+polygon = PackedVector2Array(208, 46, 224, 46, 224, 94, 208, 94)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="SouthernRoadOpening" type="Polygon2D" parent="OpeningRegionOldShrineSceneSource"]
+polygon = PackedVector2Array(168, 128, 216, 128, 216, 144, 168, 144)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="ShrineLabel" type="Label" parent="OpeningRegionOldShrineSceneSource"]
+offset_left = 62.0
+offset_top = 52.0
+offset_right = 190.0
+offset_bottom = 75.0
+text = "OLD SHRINE"
+horizontal_alignment = 1
+
+[node name="LayeredInscription" type="Node2D" parent="OpeningRegionOldShrineSceneSource"]
+visible = false
+position = Vector2(110, 90)
+
+[node name="WeatheredSurface" type="Marker2D" parent="OpeningRegionOldShrineSceneSource/LayeredInscription"]
+
+[node name="UnderlyingText" type="Marker2D" parent="OpeningRegionOldShrineSceneSource/LayeredInscription"]
+position = Vector2(0, 4)
+
+[node name="ShrineBoundaries" type="Node2D" parent="OpeningRegionOldShrineSceneSource"]
+
+[node name="ShrineTop" type="StaticBody2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries"]
+position = Vector2(120, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries/ShrineTop"]
+shape = SubResource("RectangleShape2D_shrine_top")
+
+[node name="ShrineLeft" type="StaticBody2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries"]
+position = Vector2(24, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries/ShrineLeft"]
+shape = SubResource("RectangleShape2D_shrine_left")
+
+[node name="ShrineRightTop" type="StaticBody2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries"]
+position = Vector2(216, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries/ShrineRightTop"]
+shape = SubResource("RectangleShape2D_shrine_right_top")
+
+[node name="ShrineRightMiddle" type="StaticBody2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries"]
+position = Vector2(216, 103)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries/ShrineRightMiddle"]
+shape = SubResource("RectangleShape2D_shrine_right_middle")
+
+[node name="ShrineBottomLeft" type="StaticBody2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries"]
+position = Vector2(96, 136)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries/ShrineBottomLeft"]
+shape = SubResource("RectangleShape2D_shrine_bottom_left")
+
+[node name="OpeningRegionOldShrineSmokeCheck" type="Node" parent="."]
+script = ExtResource("321_opening_region_old_shrine_check")
 
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")

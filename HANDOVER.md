@@ -2,73 +2,72 @@
 
 ## Current state
 
-`main` includes merged PR #376 at `26cca8f`. Branch `codex/phase-8-stream-laundry`
-completes the next Phase 8 landmark slice: collision-aware stream banks and an inert
-abandoned-laundry greybox with explicit east/west route openings.
+`main` includes merged PR #377 at `a42f8ff`. Branch
+`codex/phase-8-woodland-clearing` completes two bounded Phase 8 scene slices: the
+woodland-clearing greybox with a concealed rare-specimen marker, followed by the old-shrine
+greybox with a concealed two-layer inscription marker.
 
-`OpeningRegionStreamLaundrySceneBinding` accepts only the projection's exact retained `stream`
-and `abandoned-laundry` anchors in distinct bounded areas with 24-pixel endpoint clearance.
-`OpeningRegionStreamLaundryLayout` retains the exact village-edge connection endpoint, an aligned
-north bridge approach, copied non-degenerate bank polygons, and two 64-pixel laundry openings.
-Missing, rebuilt, foreign, swapped, overlapping, out-of-bounds, insufficient-clearance,
-narrow-opening, oversized-wall, invalid-approach, malformed-bank, and bank-crossing inputs fail
-closed.
+`OpeningRegionWoodlandClearingSceneBinding` accepts only the projection's exact retained
+`woodland-clearing` anchor in one bounded area with 24-pixel endpoint clearance.
+`OpeningRegionWoodlandClearingLayout` retains four explicit topology-facing openings without
+overlapping the existing stream bank. Eight collision-backed tree-boundary sections preserve
+routes toward the laundry, village edge, shrine, and closed deeper-forest path. The rare-specimen
+marker is scene-authored, hidden, childless, and has no interaction, world-object, discovery,
+collection, identification, or evidence authority.
 
-`OpeningRegionStreamLaundryGeometry` is the named source for the new world-space areas, dimensions,
-approaches, and bank polygons. Authored `Main.tscn` coordinates are exercised against that source.
-Six collision-backed laundry boundary sections retain the stream and later woodland routes. The
-existing two collision-backed stream banks and bridge remain aligned with synchronized navigation.
-The 1600-by-900 values remain world space; the existing resizable 960-by-540 minimum/design viewport,
-`canvas_items` scaling, `expand` aspect handling, and fullscreen capability are unchanged.
+`OpeningRegionOldShrineSceneBinding` accepts only the exact retained `old-shrine` anchor.
+`OpeningRegionOldShrineLayout` retains explicit clearing and road openings behind five
+collision-backed boundary sections. Its hidden scene-authored inscription has exactly two inert
+marker layers and no script, collision, interaction, visibility-state, or evidence authority.
+
+Both scenes keep the 1600-by-900 world, existing resizable 960-by-540 minimum/design viewport,
+`canvas_items` scaling, `expand` aspect handling, fullscreen capability, bridge, stream/laundry
+round trip, village transitions, actor origins, healer movement, and all twelve topology routes.
 
 ## Validation and review
 
-- Test-first focused Application compilation initially failed at the absent stream/laundry types;
-  seven focused binding, layout, bank, and route-policy tests now pass.
-- The switch-gated stream/laundry smoke passes exact projection provenance, named bank geometry,
-  two collision-backed banks, six laundry boundary sections, synchronized village-edge -> stream ->
-  laundry travel and return, physical openings, and representative bank/building blocking.
-- Navigation, opening-region projection, and village-transition regression smokes pass, retaining the
-  bridge, all eleven endpoint-clearance probes, all twelve topology routes, and the prior village
-  transitions.
-- Review found and fixed a physical-route defect in the first smoke draft: its direct diagonal left
-  the village edge through a wall. The proof now uses the exact north opening, full endpoint clearance,
-  and a south-bridge approach. Review also added fail-closed degenerate-bank rejection.
+- Ten focused Application tests pass for exact-anchor binding, bounded geometry, opening
+  alignment, dimension rejection, wall-crossing rejection, and world-bound rejection.
+- The woodland switch-gated smoke passes exact projection provenance, eight collision-backed
+  tree sections, one hidden inert specimen marker, synchronized navigation from village edge and
+  laundry into the clearing and back, physical opening travel, and representative wall blocking.
+- The shrine switch-gated smoke passes exact provenance, five collision-backed shrine sections,
+  one hidden two-layer inscription marker, synchronized and physical clearing/shrine travel, and
+  representative wall blocking.
+- Review corrected the first clearing footprint because its southern edge overlapped the west
+  stream bank. The final footprint ends above that bank while preserving all four openings and
+  the exact 24-pixel clearance boundary.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,789 Domain, 615 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
+  2,789 Domain, 625 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
   scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
-- Draft PR #377 targets `main`. Credential-free CI run `36204509901` ended with all five jobs failed
-  before any step was instantiated (`steps: []`), so those hosted results are Actions/account
-  infrastructure and provide no product-test evidence; the host-local validation above remains the
-  executed evidence.
-- Complete-diff review keeps every changed C# file below 500 lines and preserves 120-character and
-  whitespace cleanliness.
-- No laundry interaction or clue, woodland, rare specimen, shrine, road, wagon, closed-path,
-  discovery, dialogue, inhabitant, preparation or treatment progression, production art, weather,
-  lighting, sound, journal, map, provider, persistence, production UI, audio, signing, release, or
-  distribution work was added.
+- Draft PR #378 targets `main` at `5002f02`. Credential-free CI run `36206844930` ended with all
+  five jobs failed before any step was instantiated (`steps: []`), so those hosted results are
+  Actions/account infrastructure and provide no product-test evidence; the host-local validation
+  above remains the executed evidence.
+- Every new C# file remains below 500 lines; 120-character and whitespace checks are clean.
+- No rare-specimen discovery or interaction, inscription reading or discovery, authoritative
+  evidence mutation, road/wagon/closed-path content, dialogue, inhabitants, preparation or
+  treatment progression, production art, weather, lighting, sound, journal, map, provider,
+  persistence, production UI, audio, signing, release, or distribution work was added.
 
 ## Exact next bounded slice
 
-Build the woodland-clearing greybox and concealed rare-specimen placement without adding discovery
-or investigation progression.
+Bind the scene-authored layered inscription to the existing representative `shrine-inscription`
+world object and its initial Seeker visibility without yet resolving or reinterpreting it.
 
 Acceptance boundary:
 
-1. Bind only the exact retained `woodland-clearing` projection anchor to one bounded world-space
-   scene area with 24-pixel endpoint clearance; rebuilt, foreign, missing, out-of-bounds, or
-   insufficient-clearance bindings fail closed.
-2. Keep new geometry in one named world-space source of truth. Preserve the resizable 960-by-540
-   minimum/design viewport, `canvas_items` scaling, `expand` aspect handling, and fullscreen capability.
-3. Add collision-aware inert clearing geometry with explicit openings toward village edge, abandoned
-   laundry, old shrine, and the closed deeper-forest path. Preserve the stream/laundry round trip,
-   bridge, village transitions, default actor origins, healer movement, and all twelve topology routes.
-4. Place one scene-authored concealed rare-specimen marker inside the clearing without making it
-   visible, interactable, discoverable, collectible, identified, or authoritative evidence.
-5. Prove synchronized Seeker travel from both village edge and abandoned laundry into the clearing
-   and back without crossing a tree boundary or the 1600-by-900 world bound.
-6. Stop before rare-specimen discovery or interaction, shrine inscription, road, wagon, closed-path
-   content, dialogue, inhabitants, production art, weather, lighting, sound, journal, or map.
-7. Add no preparation or treatment progression and no provider, persistence, production UI, audio,
-   signing, release, or distribution work.
-8. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.
+1. Retain the exact `shrine-inscription` object and its exact initial `Noticed` visibility from one
+   caller-owned representative discovery scenario; rebuilt, foreign, missing, duplicate, wrong-id,
+   wrong-character, or non-`Noticed` inputs fail closed.
+2. Bind only that exact object/visibility pair to the existing exact old-shrine binding and exact
+   scene-authored `LayeredInscription` node; do not create a second marker or replace scene geometry.
+3. Keep ordinary startup presentation-free and interaction-free. Exercise the binding only through
+   one switch-gated smoke that proves exact provenance and unchanged scenario, scene, perception,
+   world-object, and marker instances.
+4. Stop before focused-search input, passive noticing, observation reinterpretation, knowledge
+   acquisition, visibility transition, evidence exposure, collection, presentation, or persistence.
+5. Add no road, wagon, closed-path content, dialogue, inhabitants, preparation or treatment
+   progression, production art, weather, lighting, sound, journal, map, provider, production UI,
+   audio, signing, release, or distribution work.
+6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.

@@ -1408,6 +1408,23 @@ narrow-opening, oversized-wall, invalid-approach, malformed-bank, and bank-cross
 Laundry interaction and clues, woodland, rare-specimen, shrine, road, wagon, discovery, dialogue,
 inhabitant, production-art, weather, lighting, sound, journal, and map work remain deferred.
 
+The woodland-clearing scene binds only the projection's exact retained clearing anchor to one
+bounded area with 24-pixel endpoint clearance. Eight collision-backed tree-boundary sections leave
+explicit openings toward the abandoned laundry, village edge, old shrine, and closed deeper-forest
+path without overlapping the stream bank. Its pure route policy rejects wall-crossing and
+out-of-world paths. The switch-gated proof retains exact projection provenance, a hidden inert
+rare-specimen marker, synchronized village/laundry round trips, and physical travel through the
+existing bridge, laundry, and clearing openings. The marker is not an interaction candidate, world
+object, discovery, collectible, identified specimen, or authoritative evidence.
+
+The old-shrine scene similarly binds only its exact retained projection anchor to one bounded area.
+Five collision-backed boundary sections leave explicit openings toward the woodland clearing and
+southern road. A hidden scene-authored inscription node contains two inert marker layers without an
+interaction script, collision, visible presentation, or authoritative state. The switch-gated proof
+drives a synchronized and physically clear woodland-clearing/shrine round trip while rejecting shrine
+wall crossings. Layer reading, discovery, evidence mutation, interaction, dialogue, road/wagon
+content, production art, weather, lighting, sound, journal, and map work remain deferred.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the

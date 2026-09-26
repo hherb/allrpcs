@@ -965,8 +965,9 @@ Acceptance:
 - [x] Build the healer's garden and remedy-preparation station.
 - [x] Build the village square and village-edge transitions.
 - [x] Build the stream and abandoned laundry.
-- [ ] Build the woodland clearing and concealed rare specimen.
-- [ ] Build the old shrine and layered inscription discovery.
+- [x] Build the woodland clearing and concealed rare specimen.
+- [x] Build the old-shrine greybox and place its inert layered inscription.
+- [ ] Implement layered inscription discovery at the old shrine.
 - [ ] Build the southern road and abandoned wagon.
 - [ ] Build the closed path leading toward the deeper forest.
 - [ ] Add weather, lighting, sound regions, and story-state variations needed by discoveries.
