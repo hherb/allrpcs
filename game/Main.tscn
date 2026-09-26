@@ -456,6 +456,11 @@
 [ext_resource type="Script" path="res://JournalControllerSmokeCheck.cs" id="344_journal_controller_check"]
 [ext_resource type="Script" path="res://RepresentativeJournalCompositionCoordinator.cs" id="345_journal_composition"]
 [ext_resource type="Script" path="res://RepresentativeJournalCompositionSmokeCheck.cs" id="346_journal_composition_check"]
+[ext_resource type="Script" path="res://JournalSectionSelectionController.cs" id="347_journal_selection"]
+[ext_resource type="Script" path="res://JournalSectionSelectionSmokeCheck.cs" id="348_journal_selection_check"]
+[ext_resource type="Script" path="res://JournalSectionPresentationController.cs" id="349_journal_presentation"]
+[ext_resource type="Script" path="res://JournalSectionPresentationSmokeCheck.cs" id="350_journal_presentation_check"]
+[ext_resource type="Script" path="res://JournalSectionPresentationRefreshSmokeCheck.cs" id="351_journal_refresh_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1654,6 +1659,12 @@ script = ExtResource("124_character_memory_controller")
 [node name="JournalController" type="Node" parent="."]
 script = ExtResource("343_journal_controller")
 
+[node name="JournalSectionSelectionController" type="Node" parent="."]
+script = ExtResource("347_journal_selection")
+
+[node name="JournalSectionPresentationController" type="Node" parent="."]
+script = ExtResource("349_journal_presentation")
+
 [node name="FirstPatientStateController" type="Node" parent="."]
 script = ExtResource("126_first_patient_state_controller")
 
@@ -2484,6 +2495,15 @@ script = ExtResource("344_journal_controller_check")
 
 [node name="RepresentativeJournalCompositionSmokeCheck" type="Node" parent="."]
 script = ExtResource("346_journal_composition_check")
+
+[node name="JournalSectionSelectionSmokeCheck" type="Node" parent="."]
+script = ExtResource("348_journal_selection_check")
+
+[node name="JournalSectionPresentationSmokeCheck" type="Node" parent="."]
+script = ExtResource("350_journal_presentation_check")
+
+[node name="JournalSectionPresentationRefreshSmokeCheck" type="Node" parent="."]
+script = ExtResource("351_journal_refresh_check")
 
 [node name="FirstPatientStateControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("127_first_patient_state_controller_check")

@@ -62,6 +62,12 @@ ALLRPCS_CHARACTER_MEMORY_CONTROLLER_CHECK=1 godot --headless --path "$repository
 ALLRPCS_JOURNAL_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_REPRESENTATIVE_JOURNAL_COMPOSITION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_JOURNAL_SECTION_SELECTION_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_JOURNAL_SECTION_PRESENTATION_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_JOURNAL_SECTION_PRESENTATION_REFRESH_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_STATE_CONTROLLER_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_CONTEXT_SOURCE_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_FIRST_PATIENT_PREPARATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
