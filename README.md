@@ -646,8 +646,21 @@ canonical definition to one existing open-question snapshot, then copies only ea
 identifier and prompt in authored order. Their immutable section snapshots retain only the exact
 section, exact Seeker, and independent safe copies. Installing both in order completes the safe
 journal without inferring experiment efficacy, question answers, confidence, truth, status, or
-completion. Journal work still does not resolve display names, own scene state, present UI, handle
+completion. One scene-owned controller can retain an already-complete exact safe journal once. It
+starts null, accepts only a journal with every section installed and no pending definitions, and
+rejects incomplete, repeated, replacement, and null initialization without replacing retained
+state. Ordinary startup leaves it uninitialized and inert. Journal work still does not compose an
+ordinary source, refresh content, resolve display names, select or present sections, handle UI or
 input, persist, mutate authoritative gameplay state, or call a provider.
+
+An explicitly invoked scene coordinator can compose that journal from existing exact ordinary
+state: current filtered Seeker perception and world objects, the latest heard dialogue event when
+present, authored first-patient investigation plans and confirmed conclusions, and the universal
+experiment journal. It copies only identified observations and safe authored section values, keeps
+confirmed questions out of the open-question section, and initializes the journal controller once.
+Missing, unsafe, or repeated inputs fail closed. Ordinary startup never invokes this path, authors
+no replacement facts, and leaves journal UI, input, refresh, persistence, gameplay mutation, and
+providers absent.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
