@@ -32,6 +32,9 @@ public static class JournalTestimonySnapshotProjection
             journal.Catalogue,
             journal.Observations,
             testimony,
+            journal.Hypotheses,
+            journal.Experiments,
+            journal.OpenQuestions,
             remainingPendingSections);
     }
 }
