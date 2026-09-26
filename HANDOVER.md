@@ -52,6 +52,10 @@ release, and distribution work remain untouched.
 - Session review also replaced an implicit missing-woodland `Single` failure with an explicit
   fail-closed argument rejection and regression coverage. Every new C# file is below 500 lines;
   the 120-character and whitespace checks are clean.
+- Draft PR #382 targets `main` from implementation commit `1030be9`. Credential-free CI run
+  `36215387525` ended with all five jobs failed before any step was instantiated (`steps: []`), so
+  those hosted results are Actions/account infrastructure and provide no product-test evidence;
+  the complete host-local validation above remains the executed evidence.
 
 ## Exact next bounded slice
 
