@@ -4,7 +4,7 @@
 
 `main` includes merged PR #385 at `76753ec`. Branch
 `codex/phase-8-customized-character-projection` continues Phase 8 through three bounded
-customization-application slices.
+customization-application slices. Draft PR #386 targets `main`.
 
 The Domain now owns a pure `SeekerCustomizedCharacterProjection` and immutable
 `SeekerCustomizedCharacterApplication` token. Projection requires a selected profile whose exact
@@ -46,6 +46,9 @@ release, and distribution behavior remain untouched.
   validation, every credential-free Godot smoke, and the graphical Compatibility launch. The
   sandbox-only run reached all .NET tests and scenario validation before the known Godot
   `user://logs` restriction; the identical host run supplied the Godot evidence.
+- Draft PR #386's credential-free CI run `36221360337` at feature commit `1158d03` failed all five
+  jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure and
+  not product-test evidence.
 - Session review checked the complete diff, exact-reference rejection paths, synchronous scene
   ordering, source consumers, public API shape, documentation claims, 120-character limits,
   sub-500-line C# files, and whitespace. No remaining correctness issue was found.
