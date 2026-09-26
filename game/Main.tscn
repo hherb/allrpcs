@@ -1,4 +1,4 @@
-[gd_scene load_steps=286 format=3]
+[gd_scene load_steps=288 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -434,6 +434,8 @@
 [ext_resource type="Script" path="res://OpeningRegionOldShrineSmokeCheck.cs" id="322_opening_region_old_shrine_check"]
 [ext_resource type="Script" path="res://OpeningRegionSouthernRoadWagonSceneSource.cs" id="323_opening_region_road_wagon_scene"]
 [ext_resource type="Script" path="res://OpeningRegionSouthernRoadWagonSmokeCheck.cs" id="324_opening_region_road_wagon_check"]
+[ext_resource type="Script" path="res://OpeningRegionClosedForestPathSceneSource.cs" id="325_opening_region_closed_forest_scene"]
+[ext_resource type="Script" path="res://OpeningRegionClosedForestPathSmokeCheck.cs" id="326_opening_region_closed_forest_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2199,6 +2201,46 @@ default_color = Color(0.18, 0.137, 0.09, 1)
 
 [node name="OpeningRegionSouthernRoadWagonSmokeCheck" type="Node" parent="."]
 script = ExtResource("324_opening_region_road_wagon_check")
+
+[node name="OpeningRegionClosedForestPathSceneSource" type="Node2D" parent="."]
+script = ExtResource("325_opening_region_closed_forest_scene")
+
+[node name="ApproachBoundaries" type="Node2D" parent="OpeningRegionClosedForestPathSceneSource"]
+
+[node name="ApproachBoundary1" type="StaticBody2D" parent="OpeningRegionClosedForestPathSceneSource/ApproachBoundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary1"]
+
+[node name="Line2D" type="Line2D" parent="OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary1"]
+default_color = Color(0.145, 0.239, 0.157, 1)
+
+[node name="ApproachBoundary2" type="StaticBody2D" parent="OpeningRegionClosedForestPathSceneSource/ApproachBoundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary2"]
+
+[node name="Line2D" type="Line2D" parent="OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary2"]
+default_color = Color(0.145, 0.239, 0.157, 1)
+
+[node name="ClosedGate" type="StaticBody2D" parent="OpeningRegionClosedForestPathSceneSource"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionClosedForestPathSceneSource/ClosedGate"]
+
+[node name="Line2D" type="Line2D" parent="OpeningRegionClosedForestPathSceneSource/ClosedGate"]
+default_color = Color(0.58, 0.18, 0.12, 1)
+
+[node name="ClosedGateMarker" type="Marker2D" parent="OpeningRegionClosedForestPathSceneSource"]
+position = Vector2(438, 120)
+
+[node name="ClosedGateLabel" type="Label" parent="OpeningRegionClosedForestPathSceneSource"]
+offset_left = 372.0
+offset_top = 96.0
+offset_right = 504.0
+offset_bottom = 119.0
+text = "DEEPER FOREST — CLOSED"
+horizontal_alignment = 1
+
+[node name="OpeningRegionClosedForestPathSmokeCheck" type="Node" parent="."]
+script = ExtResource("326_opening_region_closed_forest_check")
 
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")

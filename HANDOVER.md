@@ -2,78 +2,79 @@
 
 ## Current state
 
-`main` includes merged PR #380 at `016a974`. Branch
-`codex/phase-8-southern-road-wagon` completes Phase 8's southern-road and abandoned-wagon
-greybox shell while keeping wagon discovery inactive.
+`main` includes merged PR #381 at `1c51641`. Branch
+`codex/phase-8-closed-forest-gate` completes the closed deeper-forest approach and adds
+provider-neutral environmental-region and inscription-variation foundations.
 
-`OpeningRegionSouthernRoadWagonSceneBinding` retains the exact existing old-shrine layout and
-accepts only the opening projection's exact `southern-road` and `abandoned-wagon` anchors, their
-exact shrine/road and road/wagon topology connections, and one non-overlapping in-world wagon
-area with endpoint clearance. Rebuilt, foreign, swapped, malformed, overlapping, out-of-bounds,
-and insufficient-clearance inputs fail closed.
+`OpeningRegionClosedForestPathSceneBinding` retains the exact existing woodland-clearing layout,
+the projection's exact `closed-deeper-forest-path` anchor, and their exact projected connection.
+`OpeningRegionClosedForestPathLayout` aligns a 48-pixel approach throat with the clearing's existing
+opening, retains 24 pixels of route clearance, and closes it with one immutable gate boundary. Two
+collision-backed approach sides and a visible collision-backed gate remain inside the clearing.
+The distant deeper-forest anchor is provenance only and is not reachable.
 
-`OpeningRegionSouthernRoadWagonLayout` defines a 24-pixel-clear road from the exact southern-road
-anchor to the sole north opening of an inert wagon shell. Two road edges and five shell sections
-are exposed as exact finite segments. The pure route policy accepts the authored centerline and
-rejects road, shell, or world-bound crossings without treating collinear disjoint routes as
-collisions.
+The switch-gated proof reaches the near-side clearance point through synchronized navigation and
+physical movement, rejects representative side and gate crossings, and preserves the concealed
+rare specimen, shrine discovery, southern-road, and wagon snapshots. Review shortened only the
+gate throat after the first full run found that its initial side boundary clipped the established
+clearing-to-shrine route; both the retained shrine smoke and the new gate smoke now pass.
 
-The main scene derives every collision segment and greybox line from that validated layout and
-retains one childless marker at the exact wagon anchor. The switch-gated proof follows the existing
-physical shrine -> clearing -> laundry -> stream crossing, stays east of the village shell, enters
-the road on-axis, reaches the wagon, and returns. It also proves representative road/wagon
-collision rejection and preserves the shrine discovery graph. The wagon footprint was narrowed
-during review so the established bottom-border probe remains independent; the obsolete generic
-lower-terrain clear probe now exercises the authored open road corridor.
+`OpeningRegionEnvironmentalRegionSet` assigns every exact opening-topology location exactly once
+across four stable regions: village shelter, waterway, woodland edge, and southern road. Each region
+retains exact qualitative weather, lighting, and sound states from one catalog. Missing, overlapping,
+rebuilt, foreign, duplicate-key, and unretained-state graphs fail closed, while exact-location lookup
+returns only the retained region.
 
-`wagon-clue`, `wagon-residue`, passive noticing, focused search, collection, presentation, and
-evidence remain absent from ordinary play. Closed-path behavior, dialogue, inhabitants, remedy
-progression, production art, weather, lighting, sound, journal, map, provider, audio, signing,
+`OpeningRegionLayeredInscriptionEnvironmentalVariationTransition` accepts only the exact existing
+layered-inscription presentation from the baseline topology. It returns a new immutable snapshot
+that retains weather and every non-woodland region while replacing only woodland lighting and sound
+with exact caller-authored states. It changes no discovery, scene, playback, or baseline state.
+
+`ROADMAP.md` marks the closed deeper-forest path complete. The broader weather, lighting, sound, and
+story-state item remains open because no scene owner, ambient playback, or rendered lighting was
+added. Deeper-forest content or unlocking, additional discovery routes, production assets, weather
+or time simulation, dialogue, inhabitants, progression, journal, map, provider, audio, signing,
 release, and distribution work remain untouched.
-
-`ROADMAP.md` marks the southern-road/abandoned-wagon greybox complete.
 
 ## Validation and review
 
-- Focused Application tests cover exact retained provenance, geometry, minimum clearance, and
-  malformed, rebuilt, foreign, swapped, overlapping, out-of-bounds, misaligned-opening,
-  collinear-disjoint, road-crossing, and wagon-crossing cases.
-- The switch-gated host smoke passes exact geometry/provenance, synchronized and physically clear
-  round-trip travel, representative collisions, inert marker state, absent clue/residue state, and
-  retained shrine snapshots.
+- Focused TDD added 7 Application tests for exact closed-path provenance, geometry, clearance,
+  malformed/rebuilt/foreign/wrong-role/overlapping/out-of-bounds/misaligned/open-gate and
+  boundary-crossing rejection; 7 Domain tests for exact complete environmental regions; and 3
+  Application tests for exact inscription-authorized variation.
 - The first sandboxed `./scripts/quality.sh` passed the zero-warning build, all .NET tests, and the
   scenario validator, then crashed before Godot scene execution because Godot could not open
-  `user://logs`. The identical host run exposed two legacy movement-probe conflicts with the new
-  shell; review narrowed the wagon footprint and moved only the obsolete open-terrain probe.
-- After those fixes, host-local `./scripts/quality.sh` passed workflow validation, formatting, a
-  zero-warning build, 2,789 Domain, 644 Application, 1,220 Infrastructure, and 8 architecture
-  tests, the representative scenario validator, every credential-free Godot smoke, and the
-  graphical Compatibility launch.
-- Review keeps every new C# file below 500 lines. The 120-character and whitespace checks are
-  clean. No wagon discovery state, input, evidence, or broader Phase 8 behavior was introduced.
-- Draft PR #381 targets `main` from implementation commit `05ecec9`. Credential-free CI run
-  `36213617312` ended with all five jobs failed before any step was instantiated (`steps: []`), so
-  those hosted results are Actions/account infrastructure and provide no product-test evidence;
-  the complete host-local validation above remains the executed evidence.
+  `user://logs`. The identical host run exposed the clearing/shrine collision described above.
+- After review fixes, host-local `./scripts/quality.sh` passed workflow validation, formatting, a
+  zero-warning build, 2,796 Domain, 654 Application, 1,220 Infrastructure, and 8 architecture tests,
+  the representative scenario validator, every credential-free Godot smoke, and the graphical
+  Compatibility launch.
+- Session review also replaced an implicit missing-woodland `Single` failure with an explicit
+  fail-closed argument rejection and regression coverage. Every new C# file is below 500 lines;
+  the 120-character and whitespace checks are clean.
 
 ## Exact next bounded slice
 
-Build the closed deeper-forest path greybox boundary without opening the deeper forest.
+Add scene-owned qualitative environmental state and apply the existing pure inscription variation
+once, without rendering or playing environmental assets.
 
 Acceptance boundary:
 
-1. Retain the existing exact `OpeningRegionWoodlandClearingLayout` and bind its projection's exact
-   `closed-deeper-forest-path` anchor into one bounded approach aligned with the clearing's existing
-   `ClosedForestPathOpening` and the projection's minimum path clearance.
-2. Author only greybox approach boundaries and one visibly closed collision-backed gate/marker.
-   Ordinary startup and all input must leave the gate closed.
-3. Add pure Application tests for exact projection and clearing provenance, approach geometry,
-   clearance, and malformed, rebuilt, foreign, wrong-role, overlapping, out-of-bounds,
-   misaligned, open-gate, or boundary-crossing rejection.
-4. Add one switch-gated main-scene smoke for synchronized and physically clear travel from the
-   clearing to the closed gate, representative side/gate collision rejection, and preservation of
-   the clearing rare-specimen, shrine discovery, and road/wagon snapshots.
-5. Add no deeper-forest region, unlocking condition, dialogue, inhabitants, wagon or specimen
-   discovery, remedy progression, production art, weather, lighting, sound, journal, map,
-   provider, audio, signing, release, or distribution work.
-6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice.
+1. Add one `OpeningRegionEnvironmentalStateSource` that creates the representative baseline from
+   `OpeningRegionProjectionSource.Projection.Topology` and exposes that exact baseline as the exact
+   current region set at ordinary startup.
+2. Add one narrow coordinator that accepts only the old-shrine source's exact current
+   `OpeningRegionLayeredInscriptionPresentation`, the environmental source's exact baseline and
+   current snapshots, and scene-authored replacement woodland lighting/sound states. Delegate to
+   `OpeningRegionLayeredInscriptionEnvironmentalVariationTransition` and install its varied snapshot
+   once through exact-instance compare-and-swap.
+3. Keep ordinary startup inert beyond baseline ownership. Null, absent, rebuilt, foreign, stale,
+   already-varied, or repeated inputs must leave the exact current snapshot unchanged.
+4. Wire the source and coordinator into `Main.tscn` after their projection and old-shrine owners.
+   Add no automatic input handling, model work, time progression, discovery mutation, audio stream,
+   rendered light, shader, weather particles, persistence, or production asset.
+5. Add focused Application tests for exact installation authority and one switch-gated main-scene
+   smoke proving inert startup, one exact post-presentation variation, repeated rejection, retained
+   weather/non-woodland regions, and unchanged discovery/evidence state.
+6. Run `./scripts/quality.sh`, review the complete diff, and leave one exact next Phase 8 slice for
+   greybox environmental presentation boundaries.

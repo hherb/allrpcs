@@ -321,7 +321,10 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
             return true;
         }
 
-        Fail($"The physical clearing/shrine route hit {collision.GetCollider()}.");
+        string actual = collision.GetCollider() is Node collider
+            ? collider.Name.ToString()
+            : collision.GetCollider().ToString() ?? "unknown";
+        Fail($"The physical clearing/shrine route hit {actual}.");
         return false;
     }
 

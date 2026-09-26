@@ -1453,6 +1453,31 @@ preserves the shrine discovery graph. `wagon-clue`, `wagon-residue`, passive not
 search, collection, presentation, evidence, closed-path, dialogue, inhabitants, production art,
 weather, lighting, sound, journal, and map behavior remain absent.
 
+The closed deeper-forest-path scene retains the exact existing woodland-clearing layout and the
+projection's exact `closed-deeper-forest-path` anchor without making that distant landmark
+reachable. Two collision-backed approach sides remain inside the clearing and align with its
+existing 48-pixel closed-path opening; a visible collision-backed gate spans that opening and has
+no input or opening transition. The nearest reachable point keeps the projection's full 24-pixel
+clearance from the gate. The switch-gated proof reaches that point over synchronized navigation
+and physical movement, rejects representative side and gate crossings, and preserves the
+concealed rare specimen, shrine discovery, southern-road, and wagon snapshots. The deeper forest,
+unlock conditions, dialogue, discovery, progression, production assets, and broader presentation
+remain absent.
+
+The opening-region environmental baseline now groups every exact retained topology location into
+one of four stable, non-overlapping regions: village shelter, waterway, woodland edge, or southern
+road. Each region retains exact qualitative weather, lighting, and sound states from one catalog;
+rebuilt or foreign locations and states, missing coverage, overlap, and duplicate keys fail closed.
+An exact-location lookup returns only the retained region. These definitions do not play audio,
+change scene lighting, advance time, mutate discovery state, or select production assets.
+
+One adjacent pure story-state transition accepts only a layered-inscription presentation from that
+baseline's exact topology. It retains weather and every non-woodland region while replacing only
+the woodland-edge lighting and sound states with caller-authored exact states. The result is a new
+immutable region snapshot; the discovery graph, baseline, Godot scene, and playback state remain
+unchanged. Scene-owned environmental presentation and any additional discovery variations remain
+deferred.
+
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
 pure eligibility policy delegates the unchanged interaction, capability, and knowledge gate for the
@@ -3632,9 +3657,16 @@ separate from `CharacterCondition`.
 explicitly permits an empty sequence, copies caller input, exposes a read-only collection, and
 rejects null input, null entries, and duplicate canonical keys using ordinal equality.
 
-These boundaries do not assign environmental states to locations or objects or define weather,
-lighting, terrain, hazards, transitions, mutation, lifecycle, events, time, simulation,
-visibility, perception, discovery, persistence, serialization, Godot, or UI behavior.
+The generic state and set boundaries do not assign environmental states by themselves. The
+opening-region environmental boundary separately assigns every exact retained opening location to
+one complete, non-overlapping region with exact weather, lighting, and sound states. Its lookup
+uses exact location identity, and its representative source provides only qualitative baseline
+authorship. One Application transition derives a new woodland light/sound snapshot from the exact
+layered-inscription presentation without mutating either input.
+
+These boundaries still do not define terrain, hazards, ambient playback, rendered lighting,
+transitions over time, mutation, lifecycle, events, simulation, persistence, serialization, or
+general Godot/UI behavior.
 
 ## Perception-snapshot boundaries
 
