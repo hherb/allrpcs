@@ -28,6 +28,9 @@ public sealed class JournalTestimonySnapshotProjectionTests
         Assert.Same(journal.Observations, result.Observations);
         Assert.Same(seekerId, result.SeekerId);
         Assert.Same(testimony, result.Testimony);
+        Assert.Null(result.Hypotheses);
+        Assert.Null(result.Experiments);
+        Assert.Null(result.OpenQuestions);
         Assert.Collection(
             result.PendingSections,
             section => Assert.Same(catalogue.Sections[2], section),
@@ -71,7 +74,16 @@ public sealed class JournalTestimonySnapshotProjectionTests
         Assert.Empty(result.Testimony!.Entries);
         Assert.Equal(3, result.PendingSections.Count);
         Assert.Equal(
-            ["Catalogue", "Observations", "PendingSections", "SeekerId", "Testimony"],
+            [
+                "Catalogue",
+                "Experiments",
+                "Hypotheses",
+                "Observations",
+                "OpenQuestions",
+                "PendingSections",
+                "SeekerId",
+                "Testimony",
+            ],
             typeof(JournalSnapshot)
                 .GetProperties()
                 .Select(property => property.Name)
