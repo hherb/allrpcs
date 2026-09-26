@@ -37,6 +37,10 @@ The 1600-by-900 values remain world space; the existing resizable 960-by-540 min
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
   2,789 Domain, 615 Application, 1,220 Infrastructure, and 8 architecture tests, the representative
   scenario validator, every credential-free Godot smoke, and the graphical Compatibility launch.
+- Draft PR #377 targets `main`. Credential-free CI run `36204509901` ended with all five jobs failed
+  before any step was instantiated (`steps: []`), so those hosted results are Actions/account
+  infrastructure and provide no product-test evidence; the host-local validation above remains the
+  executed evidence.
 - Complete-diff review keeps every changed C# file below 500 lines and preserves 120-character and
   whitespace cleanliness.
 - No laundry interaction or clue, woodland, rare specimen, shrine, road, wagon, closed-path,
