@@ -4,7 +4,7 @@
 
 `main` includes merged PR #384 at `5036fe2`. Branch
 `codex/phase-8-seeker-customization-state` continues Phase 8 with two bounded Seeker-customization
-slices.
+slices. Draft PR #385 targets `main`.
 
 The Domain now owns an immutable `SeekerCustomizationSelectionState`. Initial state retains one
 exact representative options catalogue and no profile. A successful pure transition composes only
@@ -45,6 +45,8 @@ untouched.
 - Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
   2,808 Domain, 660 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
   validation, every credential-free Godot smoke, and the graphical Compatibility launch.
+- Draft PR #385's credential-free CI run `36218942231` failed all five jobs before any step was
+  instantiated (`steps: []`), so it is Actions/account infrastructure and not product-test evidence.
 - Session review added exact predecessor provenance so results derived from rebuilt current state
   cannot install, preserved the Seeker's prior physics-processing state across repeated U input,
   and reused the live character source's exact `CharacterId`. No remaining correctness issue was
