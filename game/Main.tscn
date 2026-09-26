@@ -430,7 +430,8 @@
 [ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSceneSource.cs" id="318_opening_region_woodland_clearing_scene"]
 [ext_resource type="Script" path="res://OpeningRegionWoodlandClearingSmokeCheck.cs" id="319_opening_region_woodland_clearing_check"]
 [ext_resource type="Script" path="res://OpeningRegionOldShrineSceneSource.cs" id="320_opening_region_old_shrine_scene"]
-[ext_resource type="Script" path="res://OpeningRegionOldShrineSmokeCheck.cs" id="321_opening_region_old_shrine_check"]
+[ext_resource type="Script" path="res://OpeningRegionLayeredInscriptionDiscoveryCoordinator.cs" id="321_opening_region_inscription_coordinator"]
+[ext_resource type="Script" path="res://OpeningRegionOldShrineSmokeCheck.cs" id="322_opening_region_old_shrine_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2099,8 +2100,11 @@ position = Vector2(96, 136)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionOldShrineSceneSource/ShrineBoundaries/ShrineBottomLeft"]
 shape = SubResource("RectangleShape2D_shrine_bottom_left")
 
+[node name="OpeningRegionLayeredInscriptionDiscoveryCoordinator" type="Node" parent="."]
+script = ExtResource("321_opening_region_inscription_coordinator")
+
 [node name="OpeningRegionOldShrineSmokeCheck" type="Node" parent="."]
-script = ExtResource("321_opening_region_old_shrine_check")
+script = ExtResource("322_opening_region_old_shrine_check")
 
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")
@@ -2702,7 +2706,7 @@ script = ExtResource("23_search_outcome_resolution_controller_check")
 [node name="Panel" type="ColorRect" parent="CommandOverlay"]
 offset_left = 12.0
 offset_top = 12.0
-offset_right = 628.0
+offset_right = 760.0
 offset_bottom = 132.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 mouse_filter = 2
@@ -2710,9 +2714,9 @@ mouse_filter = 2
 [node name="Instructions" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
 offset_top = 7.0
-offset_right = 604.0
+offset_right = 736.0
 offset_bottom = 30.0
-text = "TEMP · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
+text = "TEMP · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0

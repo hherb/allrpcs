@@ -132,9 +132,9 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 - [x] Establish the continuous validated opening region through the sickhouse, healer's garden,
   village transitions, stream, abandoned laundry, woodland clearing, and old-shrine greyboxes,
   including the inert rare-specimen and layered-inscription markers.
-- [ ] Complete player-triggered layered-inscription discovery at the old shrine. Exact scene,
-  access, reinterpretation, one-shot presentation, and filtered-evidence contracts now exist only
-  behind the switch-gated proof; ordinary interaction/input activation remains.
+- [x] Complete player-triggered layered-inscription discovery at the old shrine through the mapped
+  ordinary I action, exact access and reinterpretation, atomic one-shot presentation, and filtered
+  evidence exposure.
 - [ ] Build the southern road and abandoned wagon.
 - [ ] Build the closed path leading toward the deeper forest.
 - [ ] Add weather, lighting, sound regions, and story-state variations needed by discoveries.

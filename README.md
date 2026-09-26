@@ -280,7 +280,9 @@ The small **TEMP** panel shows the current controls, healer mode, interaction fo
 explicit focused-search attempt. Press F to start a focused search only when the current valid
 interaction focus resolves to an existing world object, C to cancel the Seeker's active search, E
 to complete it, or R to resolve the first retained Seeker outcome; these temporary search controls
-are detailed below. Press X to
+are detailed below. At the old shrine, press I while inside the shrine and within the fixed
+112-pixel inscription radius to reveal the layered-inscription marker once through its exact
+discovery coordinator. Press X to
 toggle between follow and wait. Press M to move the
 healer to the obvious pink ring; the healer uses the existing navigation surface, stops within a
 validated 12-pixel distance, then changes to wait. Press X again to resume follow. Off-world and
@@ -1429,12 +1431,14 @@ The layered-inscription discovery boundary now binds that exact authored marker 
 representative scenario's exact `shrine-inscription` object and initial Seeker `Noticed` visibility.
 Only the exact live Seeker position inside the shrine and within the fixed 112-pixel access radius can
 carry the scenario's retained reinterpretation candidate and trigger knowledge through the existing
-pure `Noticed`-to-`Identified` resolution. Scene state accepts that exact result once, a separate exact
-presentation token reveals the existing two-layer marker once, and a final filtered view exposes only
-the exact `partial-inscription` evidence identifier. Rebuilt or foreign authority, stale live position,
-repeated application/presentation/exposure, and missing or mismatched inputs fail closed. This entire
-chain remains switch-gated: ordinary startup is concealed and unchanged, and ordinary interaction
-input, journal/UI presentation, persistence, and any broader evidence route remain deferred.
+pure `Noticed`-to-`Identified` resolution. One scene-owned coordinator preflights access, exact
+candidate and trigger retention, reinterpretation, state application, marker presentation, and
+filtered evidence exposure before one atomic scene commit. Rebuilt or foreign authority, missing
+trigger knowledge, stale or far live position, changed marker position, already-visible state, null
+input, and repeated input fail closed without partial application. Ordinary startup remains concealed;
+the mapped I action is the only ordinary activation path and reveals the existing two inert marker
+layers without adding inscription copy, journal/UI presentation, persistence, or a broader evidence
+route.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
