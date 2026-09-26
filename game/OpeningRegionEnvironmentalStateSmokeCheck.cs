@@ -11,16 +11,21 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
     private const string CheckEnvironmentVariable =
         "ALLRPCS_OPENING_REGION_ENVIRONMENTAL_STATE_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const string LayeredInscriptionDiscoverAction = "layered_inscription_discover";
+    private const string UnrelatedAction = "opening_region_environment_unrelated";
     private static readonly Vector2 InscriptionAccessPosition = new(110.0f, 128.0f);
 
     /// <inheritdoc />
     public override void _Ready()
     {
-        if (OS.GetEnvironment(CheckEnvironmentVariable) != EnabledEnvironmentValue)
-        {
-            return;
-        }
+        SetProcess(OS.GetEnvironment(CheckEnvironmentVariable) == EnabledEnvironmentValue);
+    }
 
+    /// <inheritdoc />
+    public override void _Process(double delta)
+    {
+        _ = delta;
+        SetProcess(false);
         RunChecks();
     }
 
@@ -36,12 +41,16 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
         OpeningRegionEnvironmentalStateSource environmentalSource =
             GetNode<OpeningRegionEnvironmentalStateSource>(
                 "../OpeningRegionEnvironmentalStateSource");
-        OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator coordinator =
+        OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator variationCoordinator =
             GetNode<OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator>(
                 "../OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator");
         OpeningRegionEnvironmentalGreyboxPresentationController presentationController =
             GetNode<OpeningRegionEnvironmentalGreyboxPresentationController>(
                 "../OpeningRegionEnvironmentalGreyboxPresentationController");
+        OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator flowCoordinator =
+            GetNode<OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator>(
+                "../OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator");
+        Main main = GetNode<Main>("..");
         Label presentationLabel = shrineSource.GetNode<Label>("EnvironmentalVariationStatus");
         OpeningRegionEnvironmentalRegionSet baseline = environmentalSource.BaselineRegions;
         OpeningRegionEnvironmentalRegionSet rebuiltBaseline =
@@ -50,21 +59,39 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
         object? initialPresentation = shrineSource.Presentation;
         object? initialEvidenceExposure = shrineSource.EvidenceExposure;
 
-        bool absentPresentation = coordinator.TryApply(
+        main._UnhandledInput(new InputEventAction
+        {
+            Action = LayeredInscriptionDiscoverAction,
+            Pressed = false,
+        });
+        main._UnhandledInput(new InputEventAction
+        {
+            Action = UnrelatedAction,
+            Pressed = true,
+        });
+        bool nullFlow = flowCoordinator.TryComplete(
+            null,
+            baseline,
+            environmentalSource.CurrentRegions,
+            variationCoordinator.RevealedLightingState,
+            variationCoordinator.RevealedSoundState);
+        bool absentPresentation = flowCoordinator.TryComplete(
             shrineSource.Presentation,
             baseline,
             environmentalSource.CurrentRegions,
-            coordinator.RevealedLightingState,
-            coordinator.RevealedSoundState);
-        bool rebuiltBaselineAccepted = coordinator.TryApply(
+            variationCoordinator.RevealedLightingState,
+            variationCoordinator.RevealedSoundState);
+        bool rebuiltBaselineAccepted = flowCoordinator.TryComplete(
             shrineSource.Presentation,
             rebuiltBaseline,
             environmentalSource.CurrentRegions,
-            coordinator.RevealedLightingState,
-            coordinator.RevealedSoundState);
-        if (absentPresentation
+            variationCoordinator.RevealedLightingState,
+            variationCoordinator.RevealedSoundState);
+        if (nullFlow
+            || absentPresentation
             || rebuiltBaselineAccepted
-            || coordinator.CurrentVariation is not null
+            || flowCoordinator.CompletedFlow is not null
+            || variationCoordinator.CurrentVariation is not null
             || presentationController.CurrentPresentation is not null
             || presentationLabel.Visible
             || presentationLabel.Text.Length != 0
@@ -79,10 +106,15 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
         }
 
         GetNode<CharacterBody2D>("../Seeker").GlobalPosition = InscriptionAccessPosition;
-        if (!discoveryCoordinator.TryDiscover(shrineSource.KnowledgeableSeeker)
-            || shrineSource.Presentation is not { } presentation)
+        main._UnhandledInput(new InputEventAction
         {
-            Fail("The exact layered-inscription presentation was unavailable.");
+            Action = LayeredInscriptionDiscoverAction,
+            Pressed = true,
+        });
+        if (shrineSource.Presentation is not { } presentation
+            || flowCoordinator.CompletedFlow is not { } flow)
+        {
+            Fail("The ordinary I-key path did not complete the exact environmental flow.");
             return;
         }
 
@@ -90,33 +122,32 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
         OpeningRegionLayeredInscriptionEvidenceExposure? evidenceExposure =
             shrineSource.EvidenceExposure;
         EnvironmentalState rebuiltLighting = new(
-            coordinator.RevealedLightingState.Key,
-            coordinator.RevealedLightingState.Description);
-        bool rebuiltStateAccepted = coordinator.TryApply(
-            presentation,
-            baseline,
-            baseline,
-            rebuiltLighting,
-            coordinator.RevealedSoundState);
-        bool varied = coordinator.TryApply(
-            presentation,
-            baseline,
-            baseline,
-            coordinator.RevealedLightingState,
-            coordinator.RevealedSoundState);
-        OpeningRegionLayeredInscriptionEnvironmentalVariation? variation =
-            coordinator.CurrentVariation;
+            variationCoordinator.RevealedLightingState.Key,
+            variationCoordinator.RevealedLightingState.Description);
         OpeningRegionEnvironmentalRegionSet current = environmentalSource.CurrentRegions;
-        bool repeated = coordinator.TryApply(
+        OpeningRegionLayeredInscriptionEnvironmentalVariation variation = flow.Variation;
+        OpeningRegionEnvironmentalLocationPresentation locationPresentation =
+            flow.LocationPresentation;
+        bool rebuiltStateAccepted = flowCoordinator.TryComplete(
+            presentation,
+            baseline,
+            current,
+            rebuiltLighting,
+            variationCoordinator.RevealedSoundState);
+        bool staleCurrentAccepted = flowCoordinator.TryComplete(
             presentation,
             baseline,
             baseline,
-            coordinator.RevealedLightingState,
-            coordinator.RevealedSoundState);
+            variationCoordinator.RevealedLightingState,
+            variationCoordinator.RevealedSoundState);
+        bool repeated = flowCoordinator.TryComplete(
+            presentation,
+            baseline,
+            current,
+            variationCoordinator.RevealedLightingState,
+            variationCoordinator.RevealedSoundState);
         Allrpcs.Domain.Locations.Location shrine =
             shrineSource.Binding.OldShrineAnchor.Location;
-        OpeningRegionEnvironmentalLocationPresentation locationPresentation =
-            OpeningRegionEnvironmentalLocationPresentationProjection.Project(current, shrine);
         Allrpcs.Domain.Locations.Location clearing = current.Topology.Locations.Single(location =>
             location.Identity.Id.Value == "woodland-clearing");
         OpeningRegionEnvironmentalLocationPresentation clearingPresentation =
@@ -125,10 +156,6 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
             current,
             clearing,
             clearingPresentation);
-        bool presented = presentationController.TryPresent(
-            current,
-            shrine,
-            locationPresentation);
         bool presentationRepeated = presentationController.TryPresent(
             current,
             shrine,
@@ -141,22 +168,30 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
             locationPresentation);
 
         if (rebuiltStateAccepted
-            || !varied
+            || staleCurrentAccepted
             || repeated
             || foreignLocationPresented
-            || !presented
             || presentationRepeated
             || !hiddenPresentationInvalidated
             || !restoredPresentationIsCurrent
-            || variation is null
+            || !ReferenceEquals(flowCoordinator.CompletedFlow, flow)
+            || !ReferenceEquals(flow.Presentation, presentation)
+            || !ReferenceEquals(flow.Variation, variation)
+            || !ReferenceEquals(flow.LocationPresentation, locationPresentation)
             || !ReferenceEquals(variation.BaselineRegions, baseline)
             || !ReferenceEquals(variation.Presentation, presentation)
             || !ReferenceEquals(variation.VariedRegions, current)
-            || !ReferenceEquals(variation.RevealedLightingState, coordinator.RevealedLightingState)
-            || !ReferenceEquals(variation.RevealedSoundState, coordinator.RevealedSoundState)
+            || !ReferenceEquals(
+                variation.RevealedLightingState,
+                variationCoordinator.RevealedLightingState)
+            || !ReferenceEquals(
+                variation.RevealedSoundState,
+                variationCoordinator.RevealedSoundState)
+            || !ReferenceEquals(variationCoordinator.CurrentVariation, variation)
             || !ReferenceEquals(shrineSource.DiscoveryState, discoveryState)
             || !ReferenceEquals(shrineSource.Presentation, presentation)
             || !ReferenceEquals(shrineSource.EvidenceExposure, evidenceExposure)
+            || !ReferenceEquals(discoveryCoordinator.CompletedExposure, evidenceExposure)
             || !ReferenceEquals(
                 presentationController.CurrentPresentation,
                 locationPresentation)
@@ -167,7 +202,7 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
                 current.Regions.Single(region => region.Key == "woodland-edge"))
             || !presentationLabel.Visible
             || presentationLabel.Text != locationPresentation.Text
-            || !VerifyRegions(baseline, current, coordinator))
+            || !VerifyRegions(baseline, current, variationCoordinator))
         {
             Fail("The exact environmental variation lost authority or retained state.");
             return;
@@ -175,9 +210,10 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
 
         GD.Print(
             "Opening-region environmental-state smoke passed: inert exact baseline ownership, "
-            + "absent/rebuilt input rejection, one exact inscription-authorized compare-and-swap, "
-            + "repeated rejection, retained weather/non-woodland regions, unchanged discovery and "
-            + "evidence state, and one exact location-scoped canonical greybox presentation.");
+            + "released/unrelated/null/absent/rebuilt input rejection, one ordinary I-key exact "
+            + "discovery-to-variation-to-label flow, stale/already-varied/already-presented/repeated "
+            + "rejection, retained weather/non-woodland regions, unchanged exact discovery and "
+            + "evidence state, and one exact completed flow token.");
         GetTree().Quit();
     }
 

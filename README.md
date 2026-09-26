@@ -535,6 +535,14 @@ no background is authored, reject null, and are bounded to 4,000 UTF-16 code uni
 background is ordinary authored character state: it is not hidden chain-of-thought, a credential
 container, arbitrary metadata, or a provider instruction channel.
 
+The Seeker customization foundation retains one exact canonical Seeker identity, five bounded
+custom pronoun forms, one asset-neutral appearance choice, and one public background choice.
+Representative options author three greybox appearance labels and the Forester, Scribe,
+Apothecary's Assistant, and Traveller backgrounds in stable order. Pure composition accepts only
+the exact retained appearance and background instances. These contracts do not replace the live
+Seeker, grant capabilities or route effects, select defaults, render a menu or asset, persist a
+profile, or expose provider behavior.
+
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
 contract and a nonblank description bounded to 500 UTF-16 code units. Valid descriptions retain
@@ -1480,19 +1488,21 @@ The main scene now owns that exact representative baseline as its exact current 
 environmental snapshot at ordinary startup. One explicit coordinator accepts only the old-shrine
 source's exact current layered-inscription presentation, the environmental source's exact
 baseline/current snapshot pair, and its own exact authored replacement light and sound states. It
-delegates the pure variation and installs the result once through exact-instance compare-and-swap.
-Null, absent, rebuilt, foreign, stale, already-varied, and repeated paths remain inert. No ordinary
-input automatically invokes this coordinator, and no time, discovery, persistence, rendered light,
-or audio state changes with the qualitative snapshot.
+prepares the pure variation without mutation, preflights its exact old-shrine projection and empty
+presenter, and installs the result once through exact-instance compare-and-swap. The mapped I action
+invokes that flow only after it successfully creates the exact inscription presentation; a rejected
+downstream preflight neither retries nor rolls back discovery. Null, absent, rebuilt, foreign,
+stale, already-varied, already-presented, and repeated paths remain inert. No time, persistence,
+rendered light, or audio state changes with the qualitative snapshot.
 
 An adjacent Application projection resolves one exact retained location to its exact current region
 and emits fixed greybox text containing only the canonical weather, lighting, and sound keys. The
 scene's old-shrine presentation controller accepts only the exact current environmental snapshot and
 exact retained shrine location once, then renders that projected text in a dedicated label. Its
-switch-gated proof keeps the label hidden at ordinary startup, applies one exact inscription variation,
-rejects a foreign location and repeated presentation, and verifies that discovery/evidence state is
-unchanged. Automatic post-discovery presentation, rendered lighting, ambient playback, production
-assets, other location presentations, and additional story-state variations remain deferred.
+switch-gated proof keeps the label hidden at ordinary startup, drives one ordinary I-key discovery
+through exact variation and label presentation, rejects foreign and repeated presentation, and
+retains one exact completed flow token. Rendered lighting, ambient playback, production assets,
+other location presentations, and additional story-state variations remain deferred.
 
 `CharacterTargetSabotageProposal` retains one exact actor and complete character-target access
 requirement while admitting only the `delay` and `influence` kinds. It rejects self-targets, and its
@@ -3681,6 +3691,8 @@ authorship. One Application transition derives a new woodland light/sound snapsh
 layered-inscription presentation without mutating either input. A separate exact-instance policy
 authorizes only the baseline-to-derived installation, while a location-scoped projection retains the
 exact current snapshot, location, region, and channel states behind canonical-key greybox text.
+One scene flow preflights the exact derived snapshot and location projection before installing the
+variation and presenting it after the ordinary layered-inscription discovery.
 
 These boundaries still do not define terrain, hazards, ambient playback, rendered lighting,
 transitions over time, mutation, lifecycle, events, simulation, persistence, serialization, or

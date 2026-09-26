@@ -45,16 +45,39 @@ public partial class OpeningRegionEnvironmentalGreyboxPresentationController : N
         Location? location,
         OpeningRegionEnvironmentalLocationPresentation? presentation)
     {
-        if (currentRegions is null
+        if (!CanPresentAfterRegionReplacement(
+                currentRegions,
+                currentRegions,
+                location,
+                presentation))
+        {
+            return false;
+        }
+
+        currentPresentation = presentation;
+        label.Text = presentation!.Text;
+        label.Show();
+        return true;
+    }
+
+    /// <summary>Checks one exact projection before or after replacing the current regions.</summary>
+    public bool CanPresentAfterRegionReplacement(
+        OpeningRegionEnvironmentalRegionSet? expectedCurrentRegions,
+        OpeningRegionEnvironmentalRegionSet? replacementRegions,
+        Location? location,
+        OpeningRegionEnvironmentalLocationPresentation? presentation)
+    {
+        if (expectedCurrentRegions is null
+            || replacementRegions is null
             || location is null
             || presentation is null
             || currentPresentation is not null
-            || !ReferenceEquals(EnvironmentalSource.CurrentRegions, currentRegions)
+            || !ReferenceEquals(EnvironmentalSource.CurrentRegions, expectedCurrentRegions)
             || !ReferenceEquals(ShrineSource.Binding.OldShrineAnchor.Location, location)
-            || !ReferenceEquals(presentation.Regions, currentRegions)
+            || !ReferenceEquals(presentation.Regions, replacementRegions)
             || !ReferenceEquals(presentation.Location, location)
             || !ReferenceEquals(
-                OpeningRegionEnvironmentalRegionLookup.FindByLocation(currentRegions, location),
+                OpeningRegionEnvironmentalRegionLookup.FindByLocation(replacementRegions, location),
                 presentation.Region)
             || label.Visible
             || label.Text.Length != 0)
@@ -62,9 +85,6 @@ public partial class OpeningRegionEnvironmentalGreyboxPresentationController : N
             return false;
         }
 
-        currentPresentation = presentation;
-        label.Text = presentation.Text;
-        label.Show();
         return true;
     }
 }

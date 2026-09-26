@@ -51,6 +51,23 @@ public partial class OpeningRegionLayeredInscriptionEnvironmentalVariationCoordi
         EnvironmentalState? revealedLightingState,
         EnvironmentalState? revealedSoundState)
     {
+        OpeningRegionLayeredInscriptionEnvironmentalVariation? variation = CreateVariation(
+            presentation,
+            baselineRegions,
+            currentRegions,
+            revealedLightingState,
+            revealedSoundState);
+        return TryApply(currentRegions, variation);
+    }
+
+    /// <summary>Prepares one exact variation without changing scene-owned state.</summary>
+    public OpeningRegionLayeredInscriptionEnvironmentalVariation? CreateVariation(
+        OpeningRegionLayeredInscriptionPresentation? presentation,
+        OpeningRegionEnvironmentalRegionSet? baselineRegions,
+        OpeningRegionEnvironmentalRegionSet? currentRegions,
+        EnvironmentalState? revealedLightingState,
+        EnvironmentalState? revealedSoundState)
+    {
         if (presentation is null
             || baselineRegions is null
             || currentRegions is null
@@ -63,7 +80,7 @@ public partial class OpeningRegionLayeredInscriptionEnvironmentalVariationCoordi
             || !ReferenceEquals(RevealedLightingState, revealedLightingState)
             || !ReferenceEquals(RevealedSoundState, revealedSoundState))
         {
-            return false;
+            return null;
         }
 
         try
@@ -74,21 +91,50 @@ public partial class OpeningRegionLayeredInscriptionEnvironmentalVariationCoordi
                     presentation,
                     revealedLightingState,
                     revealedSoundState);
-            if (!EnvironmentalSource.TryInstallVariation(
-                    baselineRegions,
-                    currentRegions,
-                    presentation,
-                    variation))
-            {
-                return false;
-            }
-
-            CurrentVariation = variation;
-            return true;
+            return OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy
+                .CanInstall(baselineRegions, currentRegions, presentation, variation)
+                    ? variation
+                    : null;
         }
         catch (ArgumentException)
         {
+            return null;
+        }
+    }
+
+    /// <summary>Installs one exact prepared variation against the expected current snapshot.</summary>
+    public bool TryApply(
+        OpeningRegionEnvironmentalRegionSet? expectedCurrent,
+        OpeningRegionLayeredInscriptionEnvironmentalVariation? variation)
+    {
+        if (expectedCurrent is null
+            || variation is null
+            || CurrentVariation is not null
+            || !ReferenceEquals(EnvironmentalSource.BaselineRegions, variation.BaselineRegions)
+            || !ReferenceEquals(EnvironmentalSource.CurrentRegions, expectedCurrent)
+            || !ReferenceEquals(ShrineSource.Presentation, variation.Presentation)
+            || !ReferenceEquals(RevealedLightingState, variation.RevealedLightingState)
+            || !ReferenceEquals(RevealedSoundState, variation.RevealedSoundState)
+            || !OpeningRegionLayeredInscriptionEnvironmentalVariationInstallationPolicy.CanInstall(
+                variation.BaselineRegions,
+                expectedCurrent,
+                variation.Presentation,
+                variation))
+        {
             return false;
         }
+
+        if (!EnvironmentalSource.TryInstallVariation(
+                variation.BaselineRegions,
+                expectedCurrent,
+                variation.Presentation,
+                variation))
+        {
+            throw new InvalidOperationException(
+                "A preflighted inscription environmental variation must install exactly once.");
+        }
+
+        CurrentVariation = variation;
+        return true;
     }
 }
