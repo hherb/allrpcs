@@ -51,6 +51,10 @@ release, and distribution work remain untouched.
   graphical Compatibility launch.
 - Review keeps every new C# file below 500 lines. The 120-character and whitespace checks are
   clean. No wagon discovery state, input, evidence, or broader Phase 8 behavior was introduced.
+- Draft PR #381 targets `main` from implementation commit `05ecec9`. Credential-free CI run
+  `36213617312` ended with all five jobs failed before any step was instantiated (`steps: []`), so
+  those hosted results are Actions/account infrastructure and provide no product-test evidence;
+  the complete host-local validation above remains the executed evidence.
 
 ## Exact next bounded slice
 
