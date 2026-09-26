@@ -4,7 +4,7 @@
 
 `main` includes merged PR #389 at `b4c7788`. Branch
 `codex/phase-8-apothecary-traveller-access` completes the open Phase 8 background-route roadmap
-item through three bounded slices.
+item through three bounded slices. Draft PR #390 targets `main`.
 
 The existing healer-garden remedy-preparation scene now owns one nullable
 `OpeningRegionRemedyPreparationAccess`. Exact compare-and-swap preflight and installation retain
@@ -46,6 +46,9 @@ The Phase 8 route-variation roadmap item is complete.
   preparation and road/wagon inertness, public API documentation, 120-character limits,
   sub-500-line C# files, formatting, and whitespace. Review replaced the one duplicated Apothecary
   key literal in the coordinator with a named constant; no further issues remain.
+- Draft PR #390's credential-free CI run `36229065373` at implementation commit `82b161c` failed
+  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
+  infrastructure and not product-test evidence.
 
 ## Exact next bounded slice
 
