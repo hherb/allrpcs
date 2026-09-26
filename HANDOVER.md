@@ -4,7 +4,7 @@
 
 `main` includes merged PR #388 at `bf09347`. Branch
 `codex/phase-8-scribe-inspection-access` continues the open Phase 8 background-route roadmap item
-through three bounded slices.
+through three bounded slices. Draft PR #389 targets `main`.
 
 Application now owns `OpeningRegionOldShrineInspectionAccess`. Its pure policy accepts only the
 exact current Scribe route access, exact authoritative old-shrine binding, and exact authoritative
