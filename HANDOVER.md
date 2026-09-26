@@ -5,7 +5,8 @@
 `main` includes merged PR #396 at `9d7e025`. Branch
 `codex/phase-8-journal-selection` continues the Phase 8 journal item through exact section
 selection plus content-safe UI-free projection and explicit refresh. The roadmap journal checkbox
-remains open because no journal panel, input/opening flow, or persistence exists.
+remains open because no journal panel, input/opening flow, or persistence exists. Draft PR #397
+targets `main`.
 
 `JournalSectionSelectionController` starts null and accepts only the exact journal retained by
 `JournalController` plus one exact canonical definition from that journal. It permits explicit
@@ -42,6 +43,9 @@ exposure, model invocation, provider call, or credential access was added.
   validation, every credential-free Godot smoke, and the graphical Compatibility launch.
 - The restricted quality run passed every pure check before the known Godot `user://logs`
   restriction; the identical host run supplied complete Godot evidence.
+- Draft PR #397's credential-free CI run `36242186152` at implementation commit `e7f90ad` failed
+  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
+  infrastructure and not product-test evidence.
 - Session review covered all new Application values and tests, scene controllers and smokes,
   `Main.tscn`, `scripts/smoke-godot.sh`, `README.md`, and this handover. Exact ownership,
   fail-closed replacement, immutable safe surfaces, source isolation, null and repeated paths,
