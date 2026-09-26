@@ -277,7 +277,10 @@ that navigation surface at a named 180-pixel-per-second speed only while outside
 healer stops without overlapping the Seeker and can route through the bridge after separation.
 
 The small **TEMP** panel shows the current controls, healer mode, interaction focus, and last
-explicit focused-search attempt. Press F to start a focused search only when the current valid
+explicit focused-search attempt. Press U to open the one-shot Seeker customization menu. The menu
+suspends Seeker movement while open, requires a name, all five pronoun forms, and exact authored
+appearance/background choices, then resumes movement after successful selection. Press F to start
+a focused search only when the current valid
 interaction focus resolves to an existing world object, C to cancel the Seeker's active search, E
 to complete it, or R to resolve the first retained Seeker outcome; these temporary search controls
 are detailed below. At the old shrine, press I while inside the shrine and within the fixed
@@ -539,9 +542,14 @@ The Seeker customization foundation retains one exact canonical Seeker identity,
 custom pronoun forms, one asset-neutral appearance choice, and one public background choice.
 Representative options author three greybox appearance labels and the Forester, Scribe,
 Apothecary's Assistant, and Traveller backgrounds in stable order. Pure composition accepts only
-the exact retained appearance and background instances. These contracts do not replace the live
-Seeker, grant capabilities or route effects, select defaults, render a menu or asset, persist a
-profile, or expose provider behavior.
+the exact retained appearance and background instances. One immutable selection state retains its
+exact predecessor, options, and optional profile so the main-scene source can compare-and-swap one
+exact transition result and reject rebuilt, stale, foreign, or repeated installation. The hidden
+startup menu opens only on U, presents no default choice, validates complete authored input, and
+installs that exact state once while preserving the Seeker's prior movement-processing state.
+Selection still does not replace the live `Character`, project pronouns into dialogue, render an
+appearance asset, grant background capabilities or route effects, persist a profile, or expose
+provider behavior.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
