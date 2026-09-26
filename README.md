@@ -615,15 +615,29 @@ no editable journal state, scene, UI, input, persistence, gameplay mutation, or 
 The safe journal snapshot retains that exact observations snapshot with its exact catalogue and
 Seeker while copying the remaining testimony, hypotheses, experiments, and open-questions
 definitions into an independent read-only pending sequence. Composition requires the exact
-catalogue observations definition; rebuilt value-equal and foreign definitions fail closed.
+catalogue observations definition; rebuilt value-equal and foreign definitions fail closed. An
+exact testimony installation projection returns a fresh journal retaining the same catalogue,
+observations, and Seeker while replacing only the canonical pending testimony definition with one
+exact safe testimony snapshot. Rebuilt sections, distinct value-equal Seeker identifiers, and
+repeated installation fail closed; hypotheses, experiments, and open questions remain pending.
 
 The testimony-section projection binds the exact canonical testimony definition only to dialogue
 events whose recorded audience contains the journal Seeker. It copies the selected exact events in
 stable source order, accepts value-equal listener identifiers, and leaves unrelated dialogue and
 the Seeker's own speech outside the result. A separate authored-copy projection creates fresh
 audience-free values containing only the exact speaker identifier, utterance text, and
-provider-neutral delivery mode. These types do not yet install testimony into the journal snapshot,
-resolve speaker display names, edit or interpret statements, own scene state, present UI, handle
+provider-neutral delivery mode. An immutable testimony-section snapshot composes that binding and
+fresh copy projection into one safe value retaining only the exact canonical section, exact Seeker,
+and independent read-only authored copies. It exposes no journal, dialogue event, audience, or
+listener identity.
+
+The hypotheses-section projection binds only a post-testimony journal whose exact next pending
+definition is the canonical hypotheses section to one exact existing immutable investigation-
+hypothesis snapshot. A separate authored-copy projection returns fresh read-only values containing
+only each exact hypothesis and question identifier plus exact authored question and statement text
+in stable order. It does not expose question or hypothesis aggregates; rank, summarize, edit,
+deduplicate, interpret, test, or validate the authored content; or install hypotheses into the
+journal. Journal work still does not resolve display names, own scene state, present UI, handle
 input, persist, mutate authoritative gameplay state, or call a provider.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
