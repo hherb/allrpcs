@@ -445,6 +445,7 @@
 [ext_resource type="Script" path="res://SeekerCustomizationSelectionSceneSmokeCheck.cs" id="333_seeker_customization_check"]
 [ext_resource type="Script" path="res://SeekerCustomizationMenuController.cs" id="334_seeker_customization_menu"]
 [ext_resource type="Script" path="res://SeekerCustomizationMenuSmokeCheck.cs" id="335_seeker_customization_menu_check"]
+[ext_resource type="Script" path="res://SeekerCustomizationApplicationCoordinator.cs" id="336_seeker_customization_application"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2834,6 +2835,9 @@ SearcherCharacterIdText = "seeker"
 
 [node name="TemporarySeekerCharacterSource" type="Node" parent="."]
 script = ExtResource("30_seeker_character_source")
+
+[node name="SeekerCustomizationApplicationCoordinator" type="Node" parent="."]
+script = ExtResource("336_seeker_customization_application")
 
 [node name="TemporaryCharacterTargetSabotageInvestigationSource" type="Node" parent="."]
 script = ExtResource("291aq_target_sabotage_investigation_source")

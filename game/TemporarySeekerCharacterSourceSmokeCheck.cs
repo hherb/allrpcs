@@ -66,6 +66,7 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
         Character second = source.Character;
 
         if (!HasExpectedPropertySurface()
+            || source.CustomizationApplication is not null
             || !ReferenceEquals(first, second)
             || !ReferenceEquals(first.Identity.Id, controller.SearcherCharacterId)
             || !ReferenceEquals(
@@ -81,6 +82,35 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
                 StringComparison.Ordinal))
         {
             Fail("Temporary Seeker character source failed exact character retention.");
+            return;
+        }
+
+        SeekerCustomizationSelectionState selected = SelectedState(first.Identity.Id);
+        SeekerCustomizedCharacterApplication application =
+            SeekerCustomizedCharacterProjection.Project(selected, first);
+        Character foreignCurrent = CreateCharacter(first.Identity.Id);
+        SeekerCustomizedCharacterApplication foreignApplication =
+            SeekerCustomizedCharacterProjection.Project(selected, foreignCurrent);
+        CharacterId rebuiltCharacterId = new(first.Identity.Id.Value);
+        SeekerCustomizedCharacterApplication rebuiltApplication =
+            SeekerCustomizedCharacterProjection.Project(
+                SelectedState(rebuiltCharacterId),
+                CreateCharacter(rebuiltCharacterId));
+
+        if (source.TryApplyCustomization(null)
+            || source.TryApplyCustomization(foreignApplication)
+            || source.TryApplyCustomization(rebuiltApplication)
+            || !ReferenceEquals(source.Character, first)
+            || source.CustomizationApplication is not null
+            || !source.TryApplyCustomization(application)
+            || !ReferenceEquals(source.CustomizationApplication, application)
+            || !ReferenceEquals(source.Character, application.CustomizedCharacter)
+            || source.TryApplyCustomization(application)
+            || source.TryApplyCustomization(foreignApplication)
+            || !ReferenceEquals(source.CustomizationApplication, application)
+            || !ReferenceEquals(source.Character, application.CustomizedCharacter))
+        {
+            Fail("Temporary Seeker character source failed atomic customization application.");
             return;
         }
 
@@ -147,9 +177,24 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
             "Temporary Seeker character source smoke passed: one stable complete character; "
             + "exact controller-owned identifier retention in identity and human assignment; "
             + "one explicit trigger-knowledge reference; otherwise minimal authored components; "
-            + "independent construction; and unchanged "
+            + "independent construction; one exact atomic customization application with "
+            + "null/foreign/rebuilt/repeated rejection; and unchanged "
             + "focused-search, perception, movement, and presentation state were correct.");
         GetTree().Quit();
+    }
+
+    private static SeekerCustomizationSelectionState SelectedState(CharacterId characterId)
+    {
+        SeekerCustomizationOptions options =
+            RepresentativeSeekerCustomizationOptionsSource.Create();
+        SeekerCustomizationSelectionState initial =
+            SeekerCustomizationSelectionStateTransition.Initialize(options);
+        return SeekerCustomizationSelectionStateTransition.Select(
+            initial,
+            new CharacterIdentity(characterId, "Mara"),
+            new SeekerPronouns("they", "them", "their", "theirs", "themself"),
+            options.AppearanceChoices[1],
+            options.BackgroundChoices[2]);
     }
 
     private Character CreateCharacter(CharacterId characterId)
@@ -177,12 +222,19 @@ public partial class TemporarySeekerCharacterSourceSmokeCheck : Node
                     | System.Reflection.BindingFlags.Instance
                     | System.Reflection.BindingFlags.DeclaredOnly);
 
-        return properties.Length == 1
-            && string.Equals(properties[0].Name, "Character", StringComparison.Ordinal)
-            && properties[0].PropertyType == typeof(Character)
-            && properties[0].CanRead
-            && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate;
+        return properties.Length == 2
+            && properties.All(property => property.CanRead
+                && property.SetMethod is not null
+                && property.SetMethod.IsPrivate)
+            && properties.Any(property =>
+                string.Equals(property.Name, "Character", StringComparison.Ordinal)
+                && property.PropertyType == typeof(Character))
+            && properties.Any(property =>
+                string.Equals(
+                    property.Name,
+                    "CustomizationApplication",
+                    StringComparison.Ordinal)
+                && property.PropertyType == typeof(SeekerCustomizedCharacterApplication));
     }
 
     private void Fail(string message)

@@ -19,6 +19,7 @@ public partial class SeekerCustomizationMenuController : Control
 
     private SeekerCustomizationSelectionSceneSource source = null!;
     private TemporarySeekerCharacterSource characterSource = null!;
+    private SeekerCustomizationApplicationCoordinator applicationCoordinator = null!;
     private Seeker seeker = null!;
     private LineEdit displayName = null!;
     private LineEdit subject = null!;
@@ -38,6 +39,8 @@ public partial class SeekerCustomizationMenuController : Control
             "../../SeekerCustomizationSelectionSceneSource");
         characterSource = GetNode<TemporarySeekerCharacterSource>(
             "../../TemporarySeekerCharacterSource");
+        applicationCoordinator = GetNode<SeekerCustomizationApplicationCoordinator>(
+            "../../SeekerCustomizationApplicationCoordinator");
         seeker = GetNode<Seeker>("../../Seeker");
         displayName = GetNode<LineEdit>("DisplayName");
         subject = GetNode<LineEdit>("Subject");
@@ -127,7 +130,7 @@ public partial class SeekerCustomizationMenuController : Control
                     pronouns,
                     source.Options.AppearanceChoices[appearanceIndex],
                     source.Options.BackgroundChoices[backgroundIndex]);
-            if (!source.TryInstallSelection(current, selected))
+            if (!applicationCoordinator.TryApply(current, selected))
             {
                 status.Text = RejectedStatusText;
                 return;

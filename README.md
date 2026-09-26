@@ -279,7 +279,8 @@ healer stops without overlapping the Seeker and can route through the bridge aft
 The small **TEMP** panel shows the current controls, healer mode, interaction focus, and last
 explicit focused-search attempt. Press U to open the one-shot Seeker customization menu. The menu
 suspends Seeker movement while open, requires a name, all five pronoun forms, and exact authored
-appearance/background choices, then resumes movement after successful selection. Press F to start
+appearance/background choices, atomically installs the customized live character, then resumes
+movement after successful selection. Press F to start
 a focused search only when the current valid
 interaction focus resolves to an existing world object, C to cancel the Seeker's active search, E
 to complete it, or R to resolve the first retained Seeker outcome; these temporary search controls
@@ -546,10 +547,16 @@ the exact retained appearance and background instances. One immutable selection 
 exact predecessor, options, and optional profile so the main-scene source can compare-and-swap one
 exact transition result and reject rebuilt, stale, foreign, or repeated installation. The hidden
 startup menu opens only on U, presents no default choice, validates complete authored input, and
-installs that exact state once while preserving the Seeker's prior movement-processing state.
-Selection still does not replace the live `Character`, project pronouns into dialogue, render an
-appearance asset, grant background capabilities or route effects, persist a profile, or expose
-provider behavior.
+installs that exact state once while preserving the Seeker's prior movement-processing state. A
+pure projection creates one fresh customized `Character` with the selected exact identity and
+public background while retaining the current character's exact private background, capabilities,
+limitations, controller assignment, conditions, inventory, knowledge, beliefs, relationships, and
+goals. Its immutable application token retains the exact selected state, prior character, and
+projected character. One synchronous scene coordinator compare-and-swaps both the selected state
+and live temporary character, rejecting null, empty, rebuilt, foreign, stale, repeated, and
+already-applied paths without partial mutation. Pronouns are retained but not yet projected into
+dialogue; appearance assets, background capabilities and route effects, persistence, and provider
+behavior remain deferred.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

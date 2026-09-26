@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Characters;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -36,7 +37,11 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         Seeker seeker = GetNode<Seeker>("../Seeker");
         TemporarySeekerCharacterSource characterSource =
             GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
+        SeekerCustomizationApplicationCoordinator applicationCoordinator =
+            GetNode<SeekerCustomizationApplicationCoordinator>(
+                "../SeekerCustomizationApplicationCoordinator");
         SeekerCustomizationSelectionState initial = source.CurrentState;
+        Character initialCharacter = characterSource.Character;
         LineEdit displayName = menu.GetNode<LineEdit>("DisplayName");
         LineEdit subject = menu.GetNode<LineEdit>("Subject");
         LineEdit objective = menu.GetNode<LineEdit>("Objective");
@@ -47,6 +52,33 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         OptionButton background = menu.GetNode<OptionButton>("Background");
         Button confirm = menu.GetNode<Button>("Confirm");
         Label status = menu.GetNode<Label>("Status");
+
+        SeekerCustomizationSelectionState rebuiltInitial =
+            SeekerCustomizationSelectionStateTransition.Initialize(source.Options);
+        SeekerCustomizationSelectionState rebuiltSelected = Select(
+            rebuiltInitial,
+            initialCharacter.Identity.Id,
+            source.Options);
+        SeekerCustomizationOptions foreignOptions =
+            RepresentativeSeekerCustomizationOptionsSource.Create();
+        SeekerCustomizationSelectionState foreignInitial =
+            SeekerCustomizationSelectionStateTransition.Initialize(foreignOptions);
+        SeekerCustomizationSelectionState foreignSelected = Select(
+            foreignInitial,
+            initialCharacter.Identity.Id,
+            foreignOptions);
+
+        if (applicationCoordinator.TryApply(null, null)
+            || applicationCoordinator.TryApply(rebuiltInitial, rebuiltSelected)
+            || applicationCoordinator.TryApply(initial, rebuiltSelected)
+            || applicationCoordinator.TryApply(initial, foreignSelected)
+            || !ReferenceEquals(source.CurrentState, initial)
+            || !ReferenceEquals(characterSource.Character, initialCharacter)
+            || characterSource.CustomizationApplication is not null)
+        {
+            Fail("Rejected customization applications changed scene state.");
+            return;
+        }
 
         menu._UnhandledInput(Action(UnrelatedAction, pressed: true));
         menu._UnhandledInput(Action(OpenAction, pressed: false));
@@ -86,11 +118,18 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         confirm.EmitSignal(BaseButton.SignalName.Pressed);
 
         SeekerCustomizationProfile? selected = source.CurrentState.SelectedProfile;
+        SeekerCustomizedCharacterApplication? application =
+            characterSource.CustomizationApplication;
         if (menu.Visible
             || !seeker.IsPhysicsProcessing()
             || status.Text != SeekerCustomizationMenuController.SelectedStatusText
             || selected is null
+            || application is null
             || selected.Identity.DisplayName != "Mara"
+            || !ReferenceEquals(application.SelectedState, source.CurrentState)
+            || !ReferenceEquals(application.CurrentCharacter, initialCharacter)
+            || !ReferenceEquals(application.CustomizedCharacter, characterSource.Character)
+            || !ReferenceEquals(selected.Identity, characterSource.Character.Identity)
             || !ReferenceEquals(
                 selected.Identity.Id,
                 characterSource.Character.Identity.Id)
@@ -103,10 +142,13 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         }
 
         SeekerCustomizationSelectionState installed = source.CurrentState;
+        Character installedCharacter = characterSource.Character;
         menu._UnhandledInput(Action(OpenAction, pressed: true));
         confirm.EmitSignal(BaseButton.SignalName.Pressed);
         if (menu.Visible
             || !ReferenceEquals(source.CurrentState, installed)
+            || !ReferenceEquals(characterSource.Character, installedCharacter)
+            || !ReferenceEquals(characterSource.CustomizationApplication, application)
             || !seeker.IsPhysicsProcessing())
         {
             Fail("Repeated menu input changed the installed selection or movement gate.");
@@ -116,10 +158,21 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         GD.Print(
             "Seeker customization menu smoke passed: inert hidden startup, released/unrelated "
             + "input rejection, explicit modal opening with movement suspension, complete-field "
-            + "validation, exact appearance/background submission, one-shot closure, movement "
-            + "resumption, and repeated-input preservation.");
+            + "validation, exact appearance/background submission, atomic customized-character "
+            + "application, one-shot closure, movement resumption, and repeated-input preservation.");
         GetTree().Quit();
     }
+
+    private static SeekerCustomizationSelectionState Select(
+        SeekerCustomizationSelectionState initial,
+        CharacterId characterId,
+        SeekerCustomizationOptions options) =>
+        SeekerCustomizationSelectionStateTransition.Select(
+            initial,
+            new CharacterIdentity(characterId, "Mara"),
+            new SeekerPronouns("they", "them", "their", "theirs", "themself"),
+            options.AppearanceChoices[1],
+            options.BackgroundChoices[2]);
 
     private static InputEventAction Action(string action, bool pressed) => new()
     {
