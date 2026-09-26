@@ -43,6 +43,9 @@ navigation reachability, persistence, or provider behavior.
   formatting, and whitespace. Review found and fixed one exactness gap: the Scribe policy now
   separately requires authoritative and requested shrine/inscription identities, rejecting a
   fully rebuilt internally consistent pair.
+- Draft PR #389's credential-free CI run `36228043377` at handover commit `3dc7bcb` failed all five
+  jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure and
+  not product-test evidence.
 
 ## Exact next bounded slice
 
