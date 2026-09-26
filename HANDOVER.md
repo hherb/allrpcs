@@ -46,6 +46,10 @@ distribution remain untouched.
 - The identical host-local `./scripts/quality.sh` passed workflow validation, formatting, the
   zero-warning build, all four test suites and scenario validation above, every credential-free
   Godot smoke, and the graphical Compatibility launch.
+- Draft PR #384 targets `main`. Credential-free CI run `36217830240` ended with all five jobs
+  failed before any step was instantiated (`steps: []`), so those hosted results are Actions/account
+  infrastructure and provide no product-test evidence; the complete host-local validation above is
+  the executed evidence.
 - Session review added the missing possessive-pronoun/reflexive forms, moved canonical Seeker-ID
   enforcement into the profile invariant, named smoke action constants, and found no remaining
   correctness issue. New C# files remain below 500 lines; 120-character and whitespace checks pass.
