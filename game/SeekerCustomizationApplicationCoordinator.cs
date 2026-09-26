@@ -12,6 +12,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
     private SeekerBackgroundRouteVariationSceneSource routeSource = null!;
     private SeekerBackgroundRouteAccessSceneSource routeAccessSource = null!;
     private OpeningRegionClosedForestPathSceneSource closedForestPathSource = null!;
+    private OpeningRegionOldShrineSceneSource oldShrineSource = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -26,6 +27,8 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             "../SeekerBackgroundRouteAccessSceneSource");
         closedForestPathSource = GetNode<OpeningRegionClosedForestPathSceneSource>(
             "../OpeningRegionClosedForestPathSceneSource");
+        oldShrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
     }
 
     /// <summary>Installs exact preflighted selection and character states in one scene call.</summary>
@@ -97,6 +100,28 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             }
         }
 
+        OpeningRegionOldShrineInspectionAccess? inspectionAccess = null;
+        if (ReferenceEquals(
+                routeAccess.DestinationAnchor,
+                oldShrineSource.Binding.OldShrineAnchor))
+        {
+            inspectionAccess = OpeningRegionOldShrineInspectionAccessPolicy.Authorize(
+                routeAccess,
+                routeAccess,
+                oldShrineSource.Binding,
+                oldShrineSource.Binding,
+                oldShrineSource.InscriptionBinding,
+                oldShrineSource.InscriptionBinding,
+                oldShrineSource.CurrentInspectionAccess);
+            if (inspectionAccess is null
+                || !oldShrineSource.CanInstallInspectionAccess(
+                    selectedRoutes,
+                    inspectionAccess))
+            {
+                return false;
+            }
+        }
+
         if (!selectionSource.TryInstallSelection(expectedCurrent, selectedState))
         {
             return false;
@@ -109,7 +134,13 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             return false;
         }
 
-        return closedPathAccess is null
-            || closedForestPathSource.TryInstallAccess(selectedRoutes, closedPathAccess);
+        if (closedPathAccess is not null
+            && !closedForestPathSource.TryInstallAccess(selectedRoutes, closedPathAccess))
+        {
+            return false;
+        }
+
+        return inspectionAccess is null
+            || oldShrineSource.TryInstallInspectionAccess(selectedRoutes, inspectionAccess);
     }
 }
