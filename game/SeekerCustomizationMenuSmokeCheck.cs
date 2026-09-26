@@ -1,3 +1,4 @@
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Identifiers;
 using Godot;
@@ -40,7 +41,11 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         SeekerCustomizationApplicationCoordinator applicationCoordinator =
             GetNode<SeekerCustomizationApplicationCoordinator>(
                 "../SeekerCustomizationApplicationCoordinator");
+        SeekerBackgroundRouteVariationSceneSource routeSource =
+            GetNode<SeekerBackgroundRouteVariationSceneSource>(
+                "../SeekerBackgroundRouteVariationSceneSource");
         SeekerCustomizationSelectionState initial = source.CurrentState;
+        SeekerBackgroundRouteVariationState initialRoutes = routeSource.CurrentState;
         Character initialCharacter = characterSource.Character;
         LineEdit displayName = menu.GetNode<LineEdit>("DisplayName");
         LineEdit subject = menu.GetNode<LineEdit>("Subject");
@@ -73,6 +78,7 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             || applicationCoordinator.TryApply(initial, rebuiltSelected)
             || applicationCoordinator.TryApply(initial, foreignSelected)
             || !ReferenceEquals(source.CurrentState, initial)
+            || !ReferenceEquals(routeSource.CurrentState, initialRoutes)
             || !ReferenceEquals(characterSource.Character, initialCharacter)
             || characterSource.CustomizationApplication is not null)
         {
@@ -85,6 +91,7 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         if (menu.Visible
             || initial.SelectedProfile is not null
             || !ReferenceEquals(source.CurrentState, initial)
+            || !ReferenceEquals(routeSource.CurrentState, initialRoutes)
             || !seeker.IsPhysicsProcessing()
             || appearance.ItemCount != source.Options.AppearanceChoices.Count + 1
             || background.ItemCount != source.Options.BackgroundChoices.Count + 1
@@ -135,18 +142,24 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
                 characterSource.Character.Identity.Id)
             || selected.Pronouns.Subject != "they"
             || !ReferenceEquals(selected.Appearance, source.Options.AppearanceChoices[1])
-            || !ReferenceEquals(selected.Background, source.Options.BackgroundChoices[2]))
+            || !ReferenceEquals(selected.Background, source.Options.BackgroundChoices[2])
+            || !ReferenceEquals(routeSource.CurrentState.PreviousState, initialRoutes)
+            || !ReferenceEquals(
+                routeSource.CurrentState.SelectedVariation,
+                initialRoutes.Variations[2]))
         {
             Fail("The complete modal selection did not retain and install exact input.");
             return;
         }
 
         SeekerCustomizationSelectionState installed = source.CurrentState;
+        SeekerBackgroundRouteVariationState installedRoutes = routeSource.CurrentState;
         Character installedCharacter = characterSource.Character;
         menu._UnhandledInput(Action(OpenAction, pressed: true));
         confirm.EmitSignal(BaseButton.SignalName.Pressed);
         if (menu.Visible
             || !ReferenceEquals(source.CurrentState, installed)
+            || !ReferenceEquals(routeSource.CurrentState, installedRoutes)
             || !ReferenceEquals(characterSource.Character, installedCharacter)
             || !ReferenceEquals(characterSource.CustomizationApplication, application)
             || !seeker.IsPhysicsProcessing())
@@ -159,7 +172,8 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             "Seeker customization menu smoke passed: inert hidden startup, released/unrelated "
             + "input rejection, explicit modal opening with movement suspension, complete-field "
             + "validation, exact appearance/background submission, atomic customized-character "
-            + "application, one-shot closure, movement resumption, and repeated-input preservation.");
+            + "and route-definition application, one-shot closure, movement resumption, and "
+            + "repeated-input preservation.");
         GetTree().Quit();
     }
 

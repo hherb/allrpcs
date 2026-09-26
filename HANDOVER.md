@@ -2,76 +2,68 @@
 
 ## Current state
 
-`main` includes merged PR #385 at `76753ec`. Branch
-`codex/phase-8-customized-character-projection` continues Phase 8 through three bounded
-customization-application slices. Draft PR #386 targets `main`.
+`main` includes merged PR #386 at `5f424f0`. Branch
+`codex/phase-8-background-route-variations` continues the open Phase 8 background-route roadmap
+item through two bounded slices.
 
-The Domain now owns a pure `SeekerCustomizedCharacterProjection` and immutable
-`SeekerCustomizedCharacterApplication` token. Projection requires a selected profile whose exact
-`CharacterId` is the current temporary Seeker's identifier and rejects null, empty, rebuilt,
-wrong-character, and already-projected inputs. It creates one fresh `Character` with the profile's
-exact identity and public background while retaining the current character's exact private
-background, capabilities, limitations, controller assignment, conditions, inventory, knowledge,
-beliefs, relationships, and goals. The token retains the exact selected state, prior character,
-and projected character.
+Application now owns four immutable representative `SeekerBackgroundRouteVariation` definitions.
+They retain exact background-choice and opening-region anchor instances in representative order:
+Forester to the closed deeper-forest path, Scribe to the old shrine, Apothecary's Assistant to the
+healer's garden, and Traveller to the southern road. The pure projection accepts only the exact
+current selection state, its applied customization token, the exact opening-region projection, and
+one complete exact-choice catalogue. Empty, unapplied, rebuilt, foreign, missing-anchor, duplicate,
+and null inputs fail closed.
 
-`TemporarySeekerCharacterSource` starts with no application and compare-and-swaps one token bound
-to its exact current character. Null, rebuilt, foreign, stale, and repeated applications leave both
-owned properties unchanged. `SeekerCustomizationApplicationCoordinator` preflights the exact empty
-selection state, representative options, selected predecessor, current character, and empty
-application slot before synchronously installing the exact selected state and projected character.
+An immutable `SeekerBackgroundRouteVariationState` starts empty over that exact catalogue and
+advances once from exact applied customization provenance. The main scene owns that state in
+`SeekerBackgroundRouteVariationSceneSource`. The existing synchronous customization coordinator
+preflights the route transition, then installs the selected profile, customized live character, and
+selected route definition through exact compare-and-swap owners. The real U-key menu path proves the
+Apothecary's Assistant definition is installed with its exact healer-garden anchor; a separate smoke
+proves the Forester/closed-path mapping and one-shot preservation.
 
-The U-key customization menu now uses only that coordinator. A complete valid submission atomically
-installs the selected profile and live customized temporary Seeker, closes the menu, and restores
-the Seeker's prior physics-processing state. Rejected and repeated paths preserve selection,
-character, application, movement, and presentation state. The Phase 8 Seeker name, pronouns,
-appearance-choice, and background-selection roadmap item is complete at this boundary.
-
-Pronouns are retained but are not projected into dialogue. No appearance asset is rendered. The
-four backgrounds do not yet grant capabilities or route variations. Customization is not persisted.
-Provider/model behavior and all unrelated discovery, environment, movement, journal, map, signing,
-release, and distribution behavior remain untouched.
+This work defines and selects an optional route only. It does not open the forest gate, change
+collision or navigation, hide or remove any baseline route, grant capabilities, alter discovery,
+render appearance, project pronouns into dialogue, persist customization, or add provider behavior.
+The Phase 8 route-variation roadmap item therefore remains open.
 
 ## Validation and review
 
-- Focused Domain coverage passes three projection tests for exact token/component provenance and
-  null, empty, rebuilt-identifier, wrong-character, and already-projected rejection.
-- The temporary-character-source smoke passes inert startup, one exact application, and
-  null/foreign/rebuilt/repeated rejection without changing focused-search, perception, movement,
-  or presentation state.
-- The menu smoke passes exact coordinator rejection, complete-field submission, atomic selected
-  state and live-character installation, movement restoration, and repeated-input preservation.
-- Host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning build,
-  2,811 Domain, 660 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
+- Focused Application coverage passes seven tests for ordered exact definitions, all four exact
+  selections, immutable state transition, and null, empty, unapplied, rebuilt, foreign-projection,
+  missing-anchor, duplicate-catalogue, repeated, and malformed rejection.
+- The new main-scene smoke passes inert exact four-route startup, one exact Forester selection,
+  closed-path definition retention, and repeated-input preservation without navigation or
+  presentation changes.
+- The existing menu smoke passes the real modal flow with atomic exact customized-character and
+  Apothecary's Assistant route-definition installation.
+- Final host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning
+  build, 2,811 Domain, 667 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
   validation, every credential-free Godot smoke, and the graphical Compatibility launch. The
-  sandbox-only run reached all .NET tests and scenario validation before the known Godot
-  `user://logs` restriction; the identical host run supplied the Godot evidence.
-- Draft PR #386's credential-free CI run `36221360337` at feature commit `1158d03` failed all five
-  jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure and
-  not product-test evidence.
-- Session review checked the complete diff, exact-reference rejection paths, synchronous scene
-  ordering, source consumers, public API shape, documentation claims, 120-character limits,
-  sub-500-line C# files, and whitespace. No remaining correctness issue was found.
+  restricted first-slice run reached all .NET tests and scenario validation before the known Godot
+  `user://logs` restriction; the identical host runs supplied the focused and full Godot evidence.
+- Session review checked the complete diff, exact-reference catalogue and state gates, synchronous
+  three-owner preflight/install ordering, public API shape, scene dependency order, documentation
+  claims, 120-character limits, sub-500-line C# files, formatting, and whitespace. No remaining
+  correctness issue was found.
 
 ## Exact next bounded slice
 
-Begin the next open Phase 8 roadmap item with one pure, scene-neutral representative background
-route-variation catalogue. Do not change navigation or unlock a route yet.
+Add one pure, additive route-access decision for the selected representative variation. Do not
+change a Godot scene or activate a route yet.
 
 Acceptance boundary:
 
-1. Add one immutable route-variation definition retaining an exact representative
-   `SeekerBackgroundChoice` and one exact existing opening-region destination anchor.
-2. Author four definitions in representative background order: Forester to the closed-forest-path
-   anchor, Scribe to the old-shrine anchor, Apothecary's Assistant to the healer-garden anchor, and
-   Traveller to the southern-road anchor. Every background must have one variation; none may be a
-   mandatory default or remove another existing route.
-3. Add one pure exact-choice lookup/projection that accepts only the selected background instance
-   retained by the applied customization token and the exact supplied opening-region projection.
-   Reject null, empty/unapplied, rebuilt, foreign, missing-anchor, and duplicate-catalogue inputs
-   without changing customization or navigation state.
-4. Add focused Domain/Application coverage as appropriate. Do not grant capabilities, mutate the
-   live character, open the closed gate, change collision/navigation, alter discovery visibility,
-   render appearance, project pronouns, persist customization, or add provider/UI behavior.
+1. Add one immutable access token retaining the exact selected route state, selected variation,
+   and its exact destination anchor.
+2. Add one pure policy/projection that returns that token only for the exact current selected state
+   and the exact supplied destination anchor. Reject empty, stale, rebuilt, foreign, non-destination,
+   repeated, and null inputs without changing route, customization, character, or navigation state.
+3. Treat this token as additive authorization only: it must not imply that another baseline route is
+   closed, that one background is mandatory, or that the destination is currently reachable.
+4. Add focused Application coverage. Do not open the forest gate, change collision/navigation,
+   grant capabilities, alter discovery, add presentation, persist customization, or add provider/UI
+   behavior.
 5. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
-   slice for applying a selected variation through an explicit scene-owned route state.
+   slice for a scene owner to consume the token at one representative destination without yet
+   generalizing all four effects.

@@ -446,6 +446,8 @@
 [ext_resource type="Script" path="res://SeekerCustomizationMenuController.cs" id="334_seeker_customization_menu"]
 [ext_resource type="Script" path="res://SeekerCustomizationMenuSmokeCheck.cs" id="335_seeker_customization_menu_check"]
 [ext_resource type="Script" path="res://SeekerCustomizationApplicationCoordinator.cs" id="336_seeker_customization_application"]
+[ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSource.cs" id="337_seeker_background_route_source"]
+[ext_resource type="Script" path="res://SeekerBackgroundRouteVariationSceneSmokeCheck.cs" id="338_seeker_background_route_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2144,6 +2146,12 @@ script = ExtResource("332_seeker_customization_source")
 
 [node name="SeekerCustomizationSelectionSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("333_seeker_customization_check")
+
+[node name="SeekerBackgroundRouteVariationSceneSource" type="Node" parent="."]
+script = ExtResource("337_seeker_background_route_source")
+
+[node name="SeekerBackgroundRouteVariationSceneSmokeCheck" type="Node" parent="."]
+script = ExtResource("338_seeker_background_route_check")
 
 [node name="SeekerCustomizationMenuSmokeCheck" type="Node" parent="."]
 script = ExtResource("335_seeker_customization_menu_check")

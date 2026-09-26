@@ -280,7 +280,8 @@ The small **TEMP** panel shows the current controls, healer mode, interaction fo
 explicit focused-search attempt. Press U to open the one-shot Seeker customization menu. The menu
 suspends Seeker movement while open, requires a name, all five pronoun forms, and exact authored
 appearance/background choices, atomically installs the customized live character, then resumes
-movement after successful selection. Press F to start
+movement after successful selection. The same one-shot submission retains the selected background's
+optional route definition without changing navigation, collision, or route availability. Press F to start
 a focused search only when the current valid
 interaction focus resolves to an existing world object, C to cancel the Seeker's active search, E
 to complete it, or R to resolve the first retained Seeker outcome; these temporary search controls
@@ -552,11 +553,15 @@ pure projection creates one fresh customized `Character` with the selected exact
 public background while retaining the current character's exact private background, capabilities,
 limitations, controller assignment, conditions, inventory, knowledge, beliefs, relationships, and
 goals. Its immutable application token retains the exact selected state, prior character, and
-projected character. One synchronous scene coordinator compare-and-swaps both the selected state
-and live temporary character, rejecting null, empty, rebuilt, foreign, stale, repeated, and
-already-applied paths without partial mutation. Pronouns are retained but not yet projected into
-dialogue; appearance assets, background capabilities and route effects, persistence, and provider
-behavior remain deferred.
+projected character. A representative route catalogue maps the exact Forester choice to the closed
+forest path, Scribe to the old shrine, Apothecary's Assistant to the healer's garden, and Traveller
+to the southern road. One immutable scene-owned route state retains that exact catalogue and the
+one selected definition. The synchronous scene coordinator preflights and compare-and-swaps the
+selected customization, live temporary character, and route state, rejecting null, empty, rebuilt,
+foreign, stale, repeated, and already-applied paths without partial mutation. The route selection
+does not open a gate, alter collision, remove an existing route, or grant a capability. Pronouns are
+retained but not yet projected into dialogue; appearance assets, route activation, persistence, and
+provider behavior remain deferred.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

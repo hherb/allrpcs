@@ -1,3 +1,4 @@
+using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Godot;
 
@@ -8,6 +9,7 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
 {
     private SeekerCustomizationSelectionSceneSource selectionSource = null!;
     private TemporarySeekerCharacterSource characterSource = null!;
+    private SeekerBackgroundRouteVariationSceneSource routeSource = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -16,6 +18,8 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
             "../SeekerCustomizationSelectionSceneSource");
         characterSource = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
+        routeSource = GetNode<SeekerBackgroundRouteVariationSceneSource>(
+            "../SeekerBackgroundRouteVariationSceneSource");
     }
 
     /// <summary>Installs exact preflighted selection and character states in one scene call.</summary>
@@ -40,18 +44,31 @@ public partial class SeekerCustomizationApplicationCoordinator : Node
                 currentCharacter.Identity.Id)
             || ReferenceEquals(
                 selectedState.SelectedProfile.Identity,
-                currentCharacter.Identity))
+                currentCharacter.Identity)
+            || routeSource.CurrentState.SelectedVariation is not null)
         {
             return false;
         }
 
         SeekerCustomizedCharacterApplication application =
             SeekerCustomizedCharacterProjection.Project(selectedState, currentCharacter);
+        SeekerBackgroundRouteVariationState currentRoutes = routeSource.CurrentState;
+        SeekerBackgroundRouteVariationState selectedRoutes =
+            SeekerBackgroundRouteVariationStateTransition.Select(
+                currentRoutes,
+                selectedState,
+                application);
+        if (!routeSource.CanInstallSelection(currentRoutes, selectedRoutes))
+        {
+            return false;
+        }
+
         if (!selectionSource.TryInstallSelection(expectedCurrent, selectedState))
         {
             return false;
         }
 
-        return characterSource.TryApplyCustomization(application);
+        return characterSource.TryApplyCustomization(application)
+            && routeSource.TryInstallSelection(currentRoutes, selectedRoutes);
     }
 }
