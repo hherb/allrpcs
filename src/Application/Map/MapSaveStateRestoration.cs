@@ -16,4 +16,12 @@ public sealed class MapSaveStateRestoration
 
     /// <summary>Gets the fresh safe player-authored map-note snapshot.</summary>
     public SeekerMapNoteSnapshot Notes { get; }
+
+    /// <summary>Installs this exact preflighted composition into one trusted runtime target.</summary>
+    public void InstallInto(IMapSaveStateRestorationTarget target)
+    {
+        ArgumentNullException.ThrowIfNull(target);
+
+        target.InstallRestored(Map.Catalogue, Map, Notes);
+    }
 }

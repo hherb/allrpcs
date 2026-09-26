@@ -1,4 +1,5 @@
 using Allrpcs.Application.Journal;
+using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
@@ -26,6 +27,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
     private CharacterMemoryController memoryController = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
+    private SeekerMapController mapController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -54,6 +56,7 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
+        mapController = GetNode<SeekerMapController>("../SeekerMapController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -89,22 +92,26 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         FirstPatientSaveState firstPatient = CreateFirstPatientState(
             firstPatientContextSource.Context);
         JournalSaveState journal = CreateJournalState(owner);
+        MapSaveState map = CreateMapState(owner);
         SaveSnapshot snapshot = new(
-            SaveSchemaVersion.Journal,
+            SaveSchemaVersion.Map,
             discovery,
             eventState,
             memory,
             firstPatient,
-            journal);
+            journal,
+            map);
 
         if (!controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !HasRestoredFirstPatient(firstPatientContextSource.Context, firstPatient)
             || !HasRestoredJournal(journal)
+            || !HasRestoredMap(map)
             || !activityIndicator.Visible
             || !controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
-            || !HasRestoredJournal(journal))
+            || !HasRestoredJournal(journal)
+            || !HasRestoredMap(map))
         {
             Fail("Save restoration controller smoke failed exact or repeated root restoration.");
             return;
@@ -118,6 +125,9 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         ExperimentJournalSnapshot restoredExperiments = firstPatientController.Experiments!;
         JournalSnapshot restoredJournal = journalController.Journal!;
         JournalSectionDefinition restoredSelection = journalSelection.Selection!;
+        OpeningRegionMapLocationCatalogue restoredMapCatalogue = mapController.Catalogue!;
+        SeekerMapSnapshot restoredMap = mapController.Map!;
+        SeekerMapNoteSnapshot restoredMapNotes = mapController.Notes!;
 
         SaveSnapshot futureVersion = new(new SaveSchemaVersion(27), discovery, eventState);
         SaveSnapshot missingTarget = new(
@@ -146,6 +156,19 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             memory,
             firstPatient,
             duplicateJournal);
+        MapSaveState hiddenNoteMap = new(
+            owner,
+            [new LocationId("stream")],
+            [],
+            [new MapNoteSaveEntry(new LocationId("old-shrine"), "Still hidden.")]);
+        SaveSnapshot invalidMap = new(
+            SaveSchemaVersion.Map,
+            discovery,
+            eventState,
+            memory,
+            firstPatient,
+            journal,
+            hiddenNoteMap);
 
         if (controller.TryRestore(futureVersion)
             || !HasExactState(snapshot, worldObjects, worldEvents)
@@ -154,6 +177,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             || controller.TryRestore(missingEvent)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || controller.TryRestore(invalidJournal)
+            || !HasExactState(snapshot, worldObjects, worldEvents)
+            || controller.TryRestore(invalidMap)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !ThrowsArgumentNull(() => controller.TryRestore(null!))
             || !HasExactState(snapshot, worldObjects, worldEvents)
@@ -181,6 +206,14 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             return;
         }
 
+        if (!ReferenceEquals(mapController.Catalogue, restoredMapCatalogue)
+            || !ReferenceEquals(mapController.Map, restoredMap)
+            || !ReferenceEquals(mapController.Notes, restoredMapNotes))
+        {
+            Fail("Save restoration changed map state after rejected root input.");
+            return;
+        }
+
         if (seeker.Position != expectedPosition
             || seeker.Velocity != expectedVelocity
             || !string.Equals(focusStatus.Text, expectedFocusStatus, StringComparison.Ordinal)
@@ -196,9 +229,10 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         GD.Print(
             "Save restoration controller smoke passed: complete versioned-root preflight, exact "
             + "atomic discovery, world-event, character-memory, and rebound first-patient state "
-            + "installation plus fresh safe journal and exact selection installation, repeated "
+            + "installation plus fresh safe journal, exact selection, and populated map with fresh "
+            + "canonical definitions, repeated "
             + "restoration, fail-closed future version, missing target, missing event, duplicate "
-            + "journal, and null handling, and "
+            + "journal, hidden-note map, and null handling, and "
             + "unchanged authoritative definitions, movement, input, and other presentation state "
             + "were correct.");
         GetTree().Quit();
@@ -241,6 +275,25 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             && journal.OpenQuestions?.Entries.Count == 0
             && selected is not null
             && ReferenceEquals(selected, journal.Catalogue.Sections[2]);
+    }
+
+    private bool HasRestoredMap(MapSaveState saved)
+    {
+        OpeningRegionMapLocationCatalogue? catalogue = mapController.Catalogue;
+        SeekerMapSnapshot? map = mapController.Map;
+        SeekerMapNoteSnapshot? notes = mapController.Notes;
+        return catalogue is not null
+            && map is not null
+            && notes is not null
+            && map.SeekerId == saved.SeekerId
+            && map.ReportedLocations.Single().Id == saved.ReportedLocationIds.Single()
+            && map.VerifiedLocations.Single().Id == saved.VerifiedLocationIds.Single()
+            && notes.Notes.Single().Location.Id == saved.Notes.Single().LocationId
+            && notes.Notes.Single().Text == saved.Notes.Single().Text
+            && ReferenceEquals(
+                map.VerifiedLocations[0],
+                catalogue.Locations.Single(location => location.Id.Value == "old-shrine"))
+            && ReferenceEquals(notes.Notes[0].Location, map.VerifiedLocations[0]);
     }
 
     private bool HasRestoredFirstPatient(
@@ -333,6 +386,12 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         [],
         [],
         "hypotheses");
+
+    private static MapSaveState CreateMapState(CharacterId owner) => new(
+        owner,
+        [new LocationId("stream")],
+        [new LocationId("old-shrine")],
+        [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
 
     private static bool ThrowsArgumentNull(Action action)
     {

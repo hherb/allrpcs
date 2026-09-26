@@ -1,4 +1,5 @@
 using Allrpcs.Application.Journal;
+using Allrpcs.Application.Map;
 using Allrpcs.Application.Persistence;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
@@ -21,6 +22,7 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
     private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
+    private SeekerMapController mapController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -49,6 +51,7 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
+        mapController = GetNode<SeekerMapController>("../SeekerMapController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -90,6 +93,7 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
             Fail("Save-document storage smoke could not initialize journal state.");
             return;
         }
+        MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
         string initial = jsonController.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
         Vector2 expectedPosition = seeker.Position;
@@ -153,7 +157,8 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         GD.Print(
             "Save-document storage controller smoke passed: isolated local persistence, exact "
             + "serialized restoration, malformed and invalid UTF-8 failure, replacement "
-            + "recovery, safe journal and exact selection round trip, missing document, and "
+            + "recovery, safe journal, exact selection, and populated map round trip, missing "
+            + "document, and "
             + "unchanged authored world, movement, input, and unrelated presentation were "
             + "correct.");
         GetTree().Quit();
@@ -182,6 +187,12 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
                 new WorldEventLogSnapshot([firstEvent]),
                 new WorldTimeSnapshot(null)));
     }
+
+    private static MapSaveState PopulatedMapState() => new(
+        new CharacterId("seeker"),
+        [new LocationId("stream")],
+        [new LocationId("old-shrine")],
+        [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
 
     private static string StoragePath() =>
         SaveDocumentStorageController.CurrentFilePath();

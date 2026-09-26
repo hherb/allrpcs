@@ -14,6 +14,7 @@ public static class SaveSchemaVersionSupportPolicy
             || version == SaveSchemaVersion.CharacterMemory
             || version == SaveSchemaVersion.FirstPatient
             || version == SaveSchemaVersion.DialogueDelivery
-            || version == SaveSchemaVersion.Journal;
+            || version == SaveSchemaVersion.Journal
+            || version == SaveSchemaVersion.Map;
     }
 }

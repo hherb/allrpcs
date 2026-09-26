@@ -1,4 +1,5 @@
 using Allrpcs.Application.Journal;
+using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
@@ -27,6 +28,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
     private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
+    private SeekerMapController mapController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -56,6 +58,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
+        mapController = GetNode<SeekerMapController>("../SeekerMapController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -102,6 +105,9 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             return;
         }
 
+        MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
+        OpeningRegionMapLocationCatalogue initialMapCatalogue = mapController.Catalogue!;
+
         string initial = controller.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
         SaveSnapshot initialSnapshot = SaveSnapshotJsonDeserializer.Deserialize(initial);
@@ -112,13 +118,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         SaveSnapshot migrated = SaveSnapshotJsonDeserializer.DeserializeCurrent(
             legacy,
             InitialFirstPatientState(firstPatientContext));
-        string expectedMigratedCapture = SaveSnapshotJsonSerializer.Serialize(new SaveSnapshot(
-            SaveSchemaVersion.Journal,
-            migrated.Discovery,
-            migrated.WorldEvents,
-            migrated.CharacterMemory,
-            migrated.FirstPatient,
-            migrated.Journal));
+        string expectedMigratedCapture = SaveSnapshotJsonSerializer.Serialize(migrated);
         SaveSnapshot alternate = CreateAlternateState(worldObjects, definitions);
         if (!restorationController.TryRestore(alternate))
         {
@@ -133,8 +133,16 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":5",
+            "\"schemaVersion\":6",
             "\"schemaVersion\":27",
+            StringComparison.Ordinal);
+        string unknownMapLocation = initial.Replace(
+            "\"reportedLocationIds\":[\"stream\"]",
+            "\"reportedLocationIds\":[\"missing-location\"]",
+            StringComparison.Ordinal);
+        string hiddenMapNote = initial.Replace(
+            "\"locationId\":\"old-shrine\",\"text\":\"Inspect the layered marks.\"",
+            "\"locationId\":\"village-square\",\"text\":\"Inspect the layered marks.\"",
             StringComparison.Ordinal);
 
         if (controller.TryRestoreSerialized("{")
@@ -142,6 +150,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             || controller.TryRestoreSerialized(futureVersion)
             || !HasSerializedState(alternateSerialized)
             || controller.TryRestoreSerialized(missingEvent)
+            || !HasSerializedState(alternateSerialized)
+            || controller.TryRestoreSerialized(unknownMapLocation)
+            || !HasSerializedState(alternateSerialized)
+            || controller.TryRestoreSerialized(hiddenMapNote)
             || !HasSerializedState(alternateSerialized)
             || !ThrowsArgumentNull(() => controller.TryRestoreSerialized(null!)))
         {
@@ -160,7 +172,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             || journalController.Journal.Hypotheses?.Entries.Count != 0
             || journalController.Journal.Experiments?.Entries.Count != 0
             || journalController.Journal.OpenQuestions?.Entries.Count != 0
-            || journalSelection.Selection is not null)
+            || journalSelection.Selection is not null
+            || mapController.Map?.ReportedLocations.Count != 0
+            || mapController.Map.VerifiedLocations.Count != 0
+            || mapController.Notes?.Notes.Count != 0)
         {
             Fail("Serialized save smoke failed legacy migration to explicit empty memory.");
             return;
@@ -174,6 +189,14 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             || firstPatientController.Experiments?.Records.Count != 1
             || journalController.Journal?.PendingSections.Count != 0
             || journalSelection.Selection?.Key != "open-questions"
+            || mapController.Map?.ReportedLocations.Single().Id.Value != "stream"
+            || mapController.Map.VerifiedLocations.Single().Id.Value != "old-shrine"
+            || mapController.Notes?.Notes.Single().Text != "Inspect the layered marks."
+            || ReferenceEquals(mapController.Catalogue, initialMapCatalogue)
+            || !ReferenceEquals(
+                mapController.Map.VerifiedLocations[0],
+                mapController.Catalogue!.Locations.Single(location =>
+                    location.Id.Value == "old-shrine"))
             || !ReferenceEquals(
                 firstPatientController.AdministrationExperiments!.Records[0]
                     .Administration.WorldEvent,
@@ -198,9 +221,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         GD.Print(
             "Serialized save controller smoke passed: canonical populated-memory capture, "
             + "complete prepared-batch and dual-journal first-patient restoration, materially "
-            + "different live state, safe journal and exact selection round trip, current-schema "
-            + "restoration, version-1 migration to explicit empty memory, patient, and journal "
-            + "state, fail-closed malformed, future version, unknown scenario event, and null "
+            + "different live state, safe journal, selection, and populated map round trip with "
+            + "fresh canonical definitions, version-1 migration to explicit empty memory, patient, "
+            + "journal, and map state, fail-closed malformed, future version, unknown scenario "
+            + "event, unknown map location, hidden map note, and null "
             + "input, and unchanged authored world, movement, input, and unrelated presentation "
             + "were correct.");
         GetTree().Quit();
@@ -229,6 +253,12 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
                 new WorldEventLogSnapshot([firstEvent]),
                 new WorldTimeSnapshot(null)));
     }
+
+    private static MapSaveState PopulatedMapState() => new(
+        new CharacterId("seeker"),
+        [new LocationId("stream")],
+        [new LocationId("old-shrine")],
+        [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
 
     private static FirstPatientSaveState InitialFirstPatientState(
         FirstPatientTreatmentContext context) => new(

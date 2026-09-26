@@ -147,6 +147,24 @@ public sealed class MapSaveStateRestorationProjectionTests
             typeof(MapSaveStateRestoration).GetProperty("Notes")!.PropertyType);
     }
 
+    [Fact]
+    public void InstallsTheExactFreshCompositionOnlyThroughAnExplicitTarget()
+    {
+        MapSaveStateRestoration restored =
+            MapSaveStateRestorationProjection.Restore(PopulatedState());
+        RecordingTarget target = new();
+
+        restored.InstallInto(target);
+
+        Assert.Same(restored.Map, target.Map);
+        Assert.Same(restored.Notes, target.Notes);
+        Assert.NotNull(target.Catalogue);
+        Assert.Contains(
+            target.Catalogue.Locations,
+            location => ReferenceEquals(location, restored.Map.ReportedLocations[0]));
+        Assert.Throws<ArgumentNullException>(() => restored.InstallInto(null!));
+    }
+
     private static MapSaveState PopulatedState() => new(
         new CharacterId("seeker"),
         [new LocationId("village-square"), new LocationId("sickhouse")],
@@ -182,4 +200,23 @@ public sealed class MapSaveStateRestorationProjectionTests
 
     private static string[] Values(IEnumerable<SeekerMapNote> notes) =>
         notes.Select(note => note.Location.Id.Value).ToArray();
+
+    private sealed class RecordingTarget : IMapSaveStateRestorationTarget
+    {
+        public OpeningRegionMapLocationCatalogue? Catalogue { get; private set; }
+
+        public SeekerMapSnapshot? Map { get; private set; }
+
+        public SeekerMapNoteSnapshot? Notes { get; private set; }
+
+        public void InstallRestored(
+            OpeningRegionMapLocationCatalogue catalogue,
+            SeekerMapSnapshot map,
+            SeekerMapNoteSnapshot notes)
+        {
+            Catalogue = catalogue;
+            Map = map;
+            Notes = notes;
+        }
+    }
 }

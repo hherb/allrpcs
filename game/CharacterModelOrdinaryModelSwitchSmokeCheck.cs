@@ -3,6 +3,7 @@ using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Identifiers;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -31,6 +32,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
+    private SeekerMapController mapController = null!;
     private DialogueInputController dialogueInputController = null!;
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
@@ -110,6 +112,7 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
+        mapController = GetNode<SeekerMapController>("../SeekerMapController");
         saveController = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
         inputControl = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
@@ -154,7 +157,8 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         if (!journalComposition.TryComposeAndInitialize()
             || !journalSelection.TrySelect(
                 journalController.Journal!,
-                journalController.Journal!.Catalogue.Sections[0]))
+                journalController.Journal!.Catalogue.Sections[0])
+            || !mapController.TryInitialize(new CharacterId("seeker")))
         {
             Fail("The model-switch smoke could not initialize its safe journal.");
             return;

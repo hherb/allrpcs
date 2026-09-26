@@ -143,7 +143,7 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
   making any one background mandatory.
 - [x] Implement the journal sections for observations, testimony, hypotheses, experiments, and
   open questions.
-- [ ] Implement the incomplete map, reported locations, verified locations, and player notes.
+- [x] Implement the incomplete map, reported locations, verified locations, and player notes.
 - [ ] Author multiple investigation routes through the region.
 - [ ] Author the first stabilization and subsequent testimony.
 - [ ] Author the sage consultation recovery path.
