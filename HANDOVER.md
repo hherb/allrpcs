@@ -6,7 +6,7 @@
 `codex/phase-8-journal-observation-entries` advances the open Phase 8 journal roadmap item through
 three bounded, scene-neutral Application slices. The roadmap item remains open because testimony,
 hypotheses, experiments, open questions, scene ownership, UI, input, and persistence do not exist
-yet.
+yet. Draft PR #392 targets `main`.
 
 The existing exact filtered-perception and authoritative-world binding now projects to fresh
 structural `JournalObservationEntry` values in perception order. Each entry retains one exact
@@ -42,6 +42,9 @@ behavior.
   order, caller isolation, public API documentation, 120-character limits, sub-500-line C# files,
   formatting, and whitespace. Review replaced one null-forgiving invariant with an explicit failure
   and expanded safety coverage to every admissible non-identified state; no review issues remain.
+- Draft PR #392's credential-free CI run `36231764074` at implementation commit `a7c1122` failed all
+  five jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure
+  and not product-test evidence.
 
 ## Exact next bounded slice
 
