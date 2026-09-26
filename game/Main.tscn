@@ -1,4 +1,4 @@
-[gd_scene load_steps=265 format=3]
+[gd_scene load_steps=269 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -425,6 +425,8 @@
 [ext_resource type="Script" path="res://OpeningRegionVillageTransitionSmokeCheck.cs" id="313_opening_region_village_transition_check"]
 [ext_resource type="Script" path="res://AdaptiveDisplay.cs" id="314_adaptive_display"]
 [ext_resource type="Script" path="res://AdaptiveDisplaySmokeCheck.cs" id="315_adaptive_display_check"]
+[ext_resource type="Script" path="res://OpeningRegionStreamLaundrySceneSource.cs" id="316_opening_region_stream_laundry_scene"]
+[ext_resource type="Script" path="res://OpeningRegionStreamLaundrySmokeCheck.cs" id="317_opening_region_stream_laundry_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -469,6 +471,12 @@ size = Vector2(8, 48)
 size = Vector2(120, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_village_square_bottom_left"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laundry_horizontal"]
+size = Vector2(128, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laundry_side_section"]
 size = Vector2(8, 8)
 
 [node name="Main" type="Node2D"]
@@ -1833,6 +1841,74 @@ shape = SubResource("RectangleShape2D_village_transition_vertical_section")
 
 [node name="OpeningRegionVillageTransitionSmokeCheck" type="Node" parent="."]
 script = ExtResource("313_opening_region_village_transition_check")
+
+[node name="OpeningRegionStreamLaundrySceneSource" type="Node2D" parent="."]
+script = ExtResource("316_opening_region_stream_laundry_scene")
+
+[node name="StreamCrossingArea" type="Polygon2D" parent="OpeningRegionStreamLaundrySceneSource"]
+polygon = PackedVector2Array(752, 80, 864, 80, 864, 286, 752, 286)
+color = Color(0.62, 0.49, 0.31, 0.32)
+
+[node name="LaundryArea" type="Polygon2D" parent="OpeningRegionStreamLaundrySceneSource"]
+polygon = PackedVector2Array(620, 24, 748, 24, 748, 104, 620, 104)
+color = Color(0.49, 0.455, 0.392, 1)
+
+[node name="LaundryWoodlandOpening" type="Polygon2D" parent="OpeningRegionStreamLaundrySceneSource"]
+polygon = PackedVector2Array(612, 52, 628, 52, 628, 76, 612, 76)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="LaundryStreamOpening" type="Polygon2D" parent="OpeningRegionStreamLaundrySceneSource"]
+polygon = PackedVector2Array(740, 52, 756, 52, 756, 76, 740, 76)
+color = Color(0.918, 0.733, 0.31, 1)
+
+[node name="LaundryLabel" type="Label" parent="OpeningRegionStreamLaundrySceneSource"]
+offset_left = 620.0
+offset_top = 40.0
+offset_right = 748.0
+offset_bottom = 63.0
+text = "ABANDONED LAUNDRY"
+horizontal_alignment = 1
+
+[node name="LaundryBoundaries" type="Node2D" parent="OpeningRegionStreamLaundrySceneSource"]
+
+[node name="LaundryTop" type="StaticBody2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries"]
+position = Vector2(684, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryTop"]
+shape = SubResource("RectangleShape2D_laundry_horizontal")
+
+[node name="LaundryBottom" type="StaticBody2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries"]
+position = Vector2(684, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryBottom"]
+shape = SubResource("RectangleShape2D_laundry_horizontal")
+
+[node name="LaundryLeftTop" type="StaticBody2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries"]
+position = Vector2(620, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryLeftTop"]
+shape = SubResource("RectangleShape2D_laundry_side_section")
+
+[node name="LaundryLeftBottom" type="StaticBody2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries"]
+position = Vector2(620, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryLeftBottom"]
+shape = SubResource("RectangleShape2D_laundry_side_section")
+
+[node name="LaundryRightTop" type="StaticBody2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries"]
+position = Vector2(748, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryRightTop"]
+shape = SubResource("RectangleShape2D_laundry_side_section")
+
+[node name="LaundryRightBottom" type="StaticBody2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries"]
+position = Vector2(748, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionStreamLaundrySceneSource/LaundryBoundaries/LaundryRightBottom"]
+shape = SubResource("RectangleShape2D_laundry_side_section")
+
+[node name="OpeningRegionStreamLaundrySmokeCheck" type="Node" parent="."]
+script = ExtResource("317_opening_region_stream_laundry_check")
 
 [node name="FirstPatientPreparationController" type="Node" parent="."]
 script = ExtResource("130_first_patient_preparation_controller")
