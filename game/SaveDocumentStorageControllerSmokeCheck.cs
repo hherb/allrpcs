@@ -1,3 +1,4 @@
+using Allrpcs.Application.Journal;
 using Allrpcs.Application.Persistence;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
@@ -17,6 +18,9 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
     private SaveDocumentStorageController controller = null!;
     private SaveSnapshotJsonController jsonController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
+    private RepresentativeJournalCompositionCoordinator journalComposition = null!;
+    private JournalController journalController = null!;
+    private JournalSectionSelectionController journalSelection = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -40,6 +44,11 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         jsonController = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
+        journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
+            "../RepresentativeJournalCompositionCoordinator");
+        journalController = GetNode<JournalController>("../JournalController");
+        journalSelection = GetNode<JournalSectionSelectionController>(
+            "../JournalSectionSelectionController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -73,6 +82,14 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
             ?? throw new InvalidOperationException("World objects were not initialized.");
         WorldEventSnapshot definitions = worldEventController.WorldEvents
             ?? throw new InvalidOperationException("World events were not initialized.");
+        if (!journalComposition.TryComposeAndInitialize()
+            || !journalSelection.TrySelect(
+                journalController.Journal!,
+                journalController.Journal!.Catalogue.Sections[1]))
+        {
+            Fail("Save-document storage smoke could not initialize journal state.");
+            return;
+        }
         string initial = jsonController.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
         Vector2 expectedPosition = seeker.Position;
@@ -136,8 +153,9 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         GD.Print(
             "Save-document storage controller smoke passed: isolated local persistence, exact "
             + "serialized restoration, malformed and invalid UTF-8 failure, replacement "
-            + "recovery, missing document, and unchanged authored world, movement, input, and "
-            + "unrelated presentation were correct.");
+            + "recovery, safe journal and exact selection round trip, missing document, and "
+            + "unchanged authored world, movement, input, and unrelated presentation were "
+            + "correct.");
         GetTree().Quit();
     }
 

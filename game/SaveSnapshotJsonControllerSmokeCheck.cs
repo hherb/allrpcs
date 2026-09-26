@@ -1,3 +1,4 @@
+using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
@@ -23,6 +24,9 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
     private FirstPatientStateController firstPatientController = null!;
     private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
     private CharacterMemoryController memoryController = null!;
+    private RepresentativeJournalCompositionCoordinator journalComposition = null!;
+    private JournalController journalController = null!;
+    private JournalSectionSelectionController journalSelection = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -47,6 +51,11 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
             "../TemporaryFirstPatientTreatmentContextSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
+            "../RepresentativeJournalCompositionCoordinator");
+        journalController = GetNode<JournalController>("../JournalController");
+        journalSelection = GetNode<JournalSectionSelectionController>(
+            "../JournalSectionSelectionController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -84,6 +93,14 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             Fail("Serialized save smoke could not install populated first-patient state.");
             return;
         }
+        if (!journalComposition.TryComposeAndInitialize()
+            || !journalSelection.TrySelect(
+                journalController.Journal!,
+                journalController.Journal!.Catalogue.Sections[4]))
+        {
+            Fail("Serialized save smoke could not install populated journal state.");
+            return;
+        }
 
         string initial = controller.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
@@ -96,11 +113,12 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             legacy,
             InitialFirstPatientState(firstPatientContext));
         string expectedMigratedCapture = SaveSnapshotJsonSerializer.Serialize(new SaveSnapshot(
-            SaveSchemaVersion.DialogueDelivery,
+            SaveSchemaVersion.Journal,
             migrated.Discovery,
             migrated.WorldEvents,
             migrated.CharacterMemory,
-            migrated.FirstPatient));
+            migrated.FirstPatient,
+            migrated.Journal));
         SaveSnapshot alternate = CreateAlternateState(worldObjects, definitions);
         if (!restorationController.TryRestore(alternate))
         {
@@ -115,7 +133,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":4",
+            "\"schemaVersion\":5",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
 
@@ -136,7 +154,13 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             || memoryController.Memory.Characters.Count != 0
             || firstPatientController.PreparedBatches?.Batches.Count != 0
             || firstPatientController.AdministrationExperiments?.Records.Count != 0
-            || firstPatientController.Experiments?.Records.Count != 0)
+            || firstPatientController.Experiments?.Records.Count != 0
+            || journalController.Journal?.Observations.Entries.Count != 0
+            || journalController.Journal.Testimony?.Entries.Count != 0
+            || journalController.Journal.Hypotheses?.Entries.Count != 0
+            || journalController.Journal.Experiments?.Entries.Count != 0
+            || journalController.Journal.OpenQuestions?.Entries.Count != 0
+            || journalSelection.Selection is not null)
         {
             Fail("Serialized save smoke failed legacy migration to explicit empty memory.");
             return;
@@ -148,6 +172,8 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             || firstPatientController.PreparedBatches?.Batches.Count != 1
             || firstPatientController.AdministrationExperiments?.Records.Count != 1
             || firstPatientController.Experiments?.Records.Count != 1
+            || journalController.Journal?.PendingSections.Count != 0
+            || journalSelection.Selection?.Key != "open-questions"
             || !ReferenceEquals(
                 firstPatientController.AdministrationExperiments!.Records[0]
                     .Administration.WorldEvent,
@@ -172,10 +198,11 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         GD.Print(
             "Serialized save controller smoke passed: canonical populated-memory capture, "
             + "complete prepared-batch and dual-journal first-patient restoration, materially "
-            + "different live state, current-schema restoration, version-1 migration to explicit "
-            + "empty memory and initial patient state, fail-closed malformed, future version, "
-            + "unknown scenario event, and null input, and unchanged authored world, movement, "
-            + "input, and unrelated presentation were correct.");
+            + "different live state, safe journal and exact selection round trip, current-schema "
+            + "restoration, version-1 migration to explicit empty memory, patient, and journal "
+            + "state, fail-closed malformed, future version, unknown scenario event, and null "
+            + "input, and unchanged authored world, movement, input, and unrelated presentation "
+            + "were correct.");
         GetTree().Quit();
     }
 

@@ -1,3 +1,4 @@
+using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Perception;
@@ -13,6 +14,8 @@ public partial class SaveSnapshotCaptureController : Node
     private FocusedSearchActivityController discoveryController = null!;
     private FirstPatientStateController firstPatientController = null!;
     private CharacterMemoryController memoryController = null!;
+    private JournalController journalController = null!;
+    private JournalSectionSelectionController journalSelection = null!;
     private WorldEventController worldEventController = null!;
 
     /// <inheritdoc />
@@ -22,6 +25,9 @@ public partial class SaveSnapshotCaptureController : Node
             "../Seeker/FocusedSearchActivityController");
         firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        journalController = GetNode<JournalController>("../JournalController");
+        journalSelection = GetNode<JournalSectionSelectionController>(
+            "../JournalSectionSelectionController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
     }
 
@@ -36,11 +42,26 @@ public partial class SaveSnapshotCaptureController : Node
         WorldEventLogSnapshot? eventLog = worldEventController.EventLog;
         WorldTimeSnapshot? worldTime = worldEventController.WorldTime;
         FirstPatientSaveState? firstPatient = firstPatientController.Capture();
+        JournalSnapshot? journal = journalController.Journal;
         if (perception is null
             || worldEvents is null
             || eventLog is null
             || worldTime is null
-            || firstPatient is null)
+            || firstPatient is null
+            || journal is null
+            || journal.SeekerId != perception.CharacterId)
+        {
+            return null;
+        }
+
+        JournalSaveState journalState;
+        try
+        {
+            journalState = JournalSaveStateCaptureProjection.Capture(
+                journal,
+                journalSelection.Selection);
+        }
+        catch (ArgumentException)
         {
             return null;
         }
@@ -53,10 +74,11 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
         return new SaveSnapshot(
-            SaveSchemaVersion.DialogueDelivery,
+            SaveSchemaVersion.Journal,
             discovery,
             eventState,
             memory,
-            firstPatient);
+            firstPatient,
+            journalState);
     }
 }

@@ -1,3 +1,4 @@
+using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Diseases;
@@ -18,6 +19,9 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
     private SaveSnapshotCaptureController controller = null!;
     private FirstPatientStateController firstPatientController = null!;
     private CharacterMemoryController memoryController = null!;
+    private RepresentativeJournalCompositionCoordinator journalComposition = null!;
+    private JournalController journalController = null!;
+    private JournalSectionSelectionController journalSelection = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -39,6 +43,11 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         controller = GetNode<SaveSnapshotCaptureController>("../SaveSnapshotCaptureController");
         firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
+        journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
+            "../RepresentativeJournalCompositionCoordinator");
+        journalController = GetNode<JournalController>("../JournalController");
+        journalSelection = GetNode<JournalSectionSelectionController>(
+            "../JournalSectionSelectionController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -79,6 +88,14 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         CharacterMemorySnapshot memory =
             CharacterMemoryControllerSmokeCheck.CreateMemory("healer");
         memoryController.Install(memory);
+        if (!journalComposition.TryComposeAndInitialize()
+            || !journalSelection.TrySelect(
+                journalController.Journal!,
+                journalController.Journal!.Catalogue.Sections[2]))
+        {
+            Fail("Save capture smoke could not initialize exact journal state.");
+            return;
+        }
 
         SaveSnapshot first = controller.Capture()
             ?? throw new InvalidOperationException("Initialized state was not captured.");
@@ -88,9 +105,10 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.DialogueDelivery)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.DialogueDelivery)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.Journal)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.Journal)
             || ReferenceEquals(first.FirstPatient, second.FirstPatient)
+            || ReferenceEquals(first.Journal, second.Journal)
             || !HasExactNestedState(first)
             || !HasExactNestedState(second))
         {
@@ -141,15 +159,24 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         GD.Print(
             "Save capture controller smoke passed: exact live discovery, world-event, and character-"
             + "memory snapshots, fresh repeated current-schema roots, fail-closed uninitialized "
-            + "discovery perception, authored events, event log, and qualitative time, restoration "
-            + "through the existing coordinator, and unchanged controllers, movement, input, and "
-            + "presentation were correct.");
+            + "discovery perception, authored events, event log, qualitative time, and journal, "
+            + "safe journal and exact selection capture, restoration through the existing "
+            + "coordinator, and unchanged controllers, movement, input, and presentation were "
+            + "correct.");
         GetTree().Quit();
     }
 
     private bool HasExactNestedState(SaveSnapshot snapshot) =>
         HasExactNonFirstPatientState(snapshot)
         && snapshot.FirstPatient is not null
+        && snapshot.Journal is not null
+        && snapshot.Journal.SeekerId == snapshot.Discovery.Perception.CharacterId
+        && string.Equals(snapshot.Journal.SelectedSectionKey, "hypotheses", StringComparison.Ordinal)
+        && snapshot.Journal.Observations.Count == journalController.Journal!.Observations.Entries.Count
+        && snapshot.Journal.Testimony.Count == journalController.Journal.Testimony!.Entries.Count
+        && snapshot.Journal.Hypotheses.Count == journalController.Journal.Hypotheses!.Entries.Count
+        && snapshot.Journal.Experiments.Count == journalController.Journal.Experiments!.Entries.Count
+        && snapshot.Journal.OpenQuestions.Count == journalController.Journal.OpenQuestions!.Entries.Count
         && ReferenceEquals(snapshot.FirstPatient.DiseaseTruth, firstPatientController.DiseaseTruth)
         && ReferenceEquals(snapshot.FirstPatient.PreparedBatches, firstPatientController.PreparedBatches)
         && ReferenceEquals(
@@ -213,53 +240,77 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             eventLog,
             worldTime: null);
         FirstPatientStateController missingFirstPatient = new();
+        JournalController missingJournal = new();
+        JournalSectionSelectionController noSelection = new();
         SaveSnapshotCaptureController discoveryCapture =
             CreateCaptureController(
                 missingPerception,
                 worldEventController,
                 memoryController,
-                firstPatientController);
+                firstPatientController,
+                journalController,
+                journalSelection);
         SaveSnapshotCaptureController definitionsCapture =
             CreateCaptureController(
                 discoveryController,
                 missingDefinitions,
                 memoryController,
-                firstPatientController);
+                firstPatientController,
+                journalController,
+                journalSelection);
         SaveSnapshotCaptureController eventLogCapture =
             CreateCaptureController(
                 discoveryController,
                 missingEventLog,
                 memoryController,
-                firstPatientController);
+                firstPatientController,
+                journalController,
+                journalSelection);
         SaveSnapshotCaptureController worldTimeCapture =
             CreateCaptureController(
                 discoveryController,
                 missingWorldTime,
                 memoryController,
-                firstPatientController);
+                firstPatientController,
+                journalController,
+                journalSelection);
         SaveSnapshotCaptureController firstPatientCapture =
             CreateCaptureController(
                 discoveryController,
                 worldEventController,
                 memoryController,
-                missingFirstPatient);
+                missingFirstPatient,
+                journalController,
+                journalSelection);
+        SaveSnapshotCaptureController journalCapture =
+            CreateCaptureController(
+                discoveryController,
+                worldEventController,
+                memoryController,
+                firstPatientController,
+                missingJournal,
+                noSelection);
 
         bool rejected = discoveryCapture.Capture() is null
             && definitionsCapture.Capture() is null
             && eventLogCapture.Capture() is null
             && worldTimeCapture.Capture() is null
-            && firstPatientCapture.Capture() is null;
+            && firstPatientCapture.Capture() is null
+            && journalCapture.Capture() is null;
 
         discoveryCapture.Free();
         definitionsCapture.Free();
         eventLogCapture.Free();
         worldTimeCapture.Free();
         firstPatientCapture.Free();
+        journalCapture.Free();
         missingPerception.Free();
         missingDefinitions.Free();
         missingEventLog.Free();
         missingWorldTime.Free();
         missingFirstPatient.Free();
+        missingJournal.Free();
+        noSelection.Free();
         return rejected;
     }
 
@@ -267,13 +318,17 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         FocusedSearchActivityController discovery,
         WorldEventController worldEvents,
         CharacterMemoryController memory,
-        FirstPatientStateController firstPatient)
+        FirstPatientStateController firstPatient,
+        JournalController journal,
+        JournalSectionSelectionController selection)
     {
         SaveSnapshotCaptureController captureController = new();
         SetField(captureController, "discoveryController", discovery);
         SetField(captureController, "worldEventController", worldEvents);
         SetField(captureController, "memoryController", memory);
         SetField(captureController, "firstPatientController", firstPatient);
+        SetField(captureController, "journalController", journal);
+        SetField(captureController, "journalSelection", selection);
         return captureController;
     }
 
