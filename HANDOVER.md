@@ -2,74 +2,75 @@
 
 ## Current state
 
-`main` includes merged PR #395 at `13997f1`. Branch
-`codex/phase-8-journal-controller` continues the Phase 8 journal work through exact scene ownership
-and one explicit representative composition from existing scene sources. The roadmap journal item
-remains open because section selection, presentation, input, refresh, and persistence do not exist.
-Draft PR #396 targets `main`.
+`main` includes merged PR #396 at `9d7e025`. Branch
+`codex/phase-8-journal-selection` continues the Phase 8 journal item through exact section
+selection plus content-safe UI-free projection and explicit refresh. The roadmap journal checkbox
+remains open because no journal panel, input/opening flow, or persistence exists.
 
-`JournalController` starts with a null journal and retains one caller-supplied exact
-`JournalSnapshot` only when testimony, hypotheses, experiments, and open questions are installed and
-the pending-section sequence is empty. Incomplete, repeated, replacement, and null initialization
-cannot replace scene state. `Main.tscn` owns the controller in dependency order but ordinary startup
-never initializes it.
+`JournalSectionSelectionController` starts null and accepts only the exact journal retained by
+`JournalController` plus one exact canonical definition from that journal. It permits explicit
+replacement by a different exact canonical section while uninitialized, stale, foreign, rebuilt,
+value-equal, repeated, and null inputs cannot change the current selection.
 
-`RepresentativeJournalCompositionCoordinator` is an explicitly invoked, provider-neutral scene
-boundary. It reads the current exact filtered Seeker perception, initialized world objects, latest
-dialogue event when present, first-patient investigation plans and confirmed conclusions, and the
-universal experiment journal. It runs the existing safe section projections in canonical order,
-keeps confirmed questions out of open questions, and initializes `JournalController` once. Missing,
-unsafe, or repeated composition fails closed without changing any source or presentation state.
+`JournalSectionPresentationProjection` accepts only a complete exact journal and one of its exact
+canonical sections. Its immutable `JournalSectionPresentationSnapshot` exposes that definition and
+exactly one already-safe observation, testimony, hypothesis, experiment, or open-question snapshot.
+It does not expose the complete journal, catalogue, perception, world objects, dialogue audiences,
+investigation aggregates, authoritative experiment events, or confirmed conclusions.
 
-The installed journal contains only safe authored copies: identified observation text, audience-free
-heard testimony, authored hypothesis text, experiment procedure and observed-outcome text without
-authoritative events, and unconfirmed authored questions. It does not retain perception, world
-objects, dialogue events or audiences, investigation aggregates, authoritative experiment events,
-or confirmed conclusions through its public surface.
+`JournalSectionPresentationController` starts null and explicitly owns one projection of the current
+exact selection. A later exact selection replacement remains stale until `TryRefresh` is explicitly
+called; unchanged, unprojected, repeated, or invalid refreshes preserve the prior immutable value.
+`Main.tscn` owns both new controllers in dependency order. Ordinary startup still does not compose a
+journal, select a section, project content, or change any existing UI or source state.
 
-Ordinary startup remains content-neutral and UI-free. No new facts, dialogue, hypotheses,
-experiments, or questions are authored; no journal action is mapped to input; and no display-name
-lookup, section selection, presentation, refresh/update transition, save schema, authoritative
-mutation, model invocation, provider call, or credential access was added.
+No journal label or panel, input action, automatic opening, display-name lookup, editable note,
+map, source-content refresh, persistence or save schema, gameplay mutation, authoritative source
+exposure, model invocation, provider call, or credential access was added.
 
 ## Validation and review
 
-- The focused game build passed with zero warnings, and both switch-gated journal smokes passed:
-  exact complete one-shot ownership plus explicit representative composition from live scene sources.
+- Test-first checks observed the missing selection controller, presentation value/projection, and
+  refresh operation before their implementations were added.
+- Focused Application tests cover all five safe content arms plus incomplete, foreign, rebuilt, and
+  null rejection and the closed immutable public surface. All 7 focused cases passed.
+- The three switch-gated Godot smokes passed exact selection/replacement, safe one-arm projection,
+  explicit refresh, immutable prior values, every rejection path, closed controller surfaces, inert
+  startup, and journal/source/UI isolation.
 - Final host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning
-  build, 2,811 Domain, 795 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
+  build, 2,811 Domain, 802 Application, 1,220 Infrastructure, and 8 architecture tests, scenario
   validation, every credential-free Godot smoke, and the graphical Compatibility launch.
 - The restricted quality run passed every pure check before the known Godot `user://logs`
   restriction; the identical host run supplied complete Godot evidence.
-- Draft PR #396's credential-free CI run `36240638678` at implementation commit `0746a29` failed
-  all five jobs before any step was instantiated (`steps: []`), so it is Actions/account
-  infrastructure and not product-test evidence.
-- Session review covered all new controllers and smokes, `Main.tscn`, `scripts/smoke-godot.sh`,
-  `README.md`, and this handover. Exact ownership, canonical order, safe-copy surfaces, source
-  isolation, null/incomplete/repeated paths, inert startup, public API documentation, 120-character
-  limits, sub-500-line C# files, formatting, and whitespace were checked. No review issue remains.
-- The Phase 8 journal roadmap checkbox remains open because this branch adds safe scene state and
-  composition only, not a player-usable journal.
+- Session review covered all new Application values and tests, scene controllers and smokes,
+  `Main.tscn`, `scripts/smoke-godot.sh`, `README.md`, and this handover. Exact ownership,
+  fail-closed replacement, immutable safe surfaces, source isolation, null and repeated paths,
+  inert startup, documentation, formatting, whitespace, 120-character limits, and sub-500-line C#
+  files were checked. A reflective content-arm invariant was replaced with direct typed checks; no
+  review issue remains.
 
 ## Exact next bounded slice
 
-Add one scene-owned exact journal-section selection boundary without presenting section content yet.
+Add one read-only journal-section panel that explicitly renders the current exact content-safe
+presentation snapshot, without adding an opening input flow yet.
 
 Acceptance boundary:
 
-1. Add one `JournalSectionSelectionController` whose selection is initially null and whose only
-   selection operation requires the exact journal retained by `JournalController` plus one exact
-   canonical `JournalSectionDefinition` from that journal's catalogue.
-2. Permit explicit replacement with another exact canonical section while rejecting an
-   uninitialized journal, stale or foreign journals, rebuilt or foreign value-equal sections,
-   repeated selection, and null without changing the current selection.
-3. Wire the controller into `Main.tscn` in dependency order while leaving ordinary startup with no
-   journal and no selected section.
-4. Add one switch-gated credential-free smoke that explicitly composes the representative journal,
-   selects exact sections, proves replacement and all rejection paths, checks a closed public
-   surface, and preserves journal/source/UI state.
-5. Do not add a section content union or view model, label/panel presentation, journal input action,
-   automatic opening, refresh/update transition, display-name lookup, editable notes, persistence or
-   save schema, gameplay mutation, authoritative source exposure, or provider work.
-6. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
-   slice to project the selected exact section into a content-safe presentation value without UI.
+1. Add one hidden-by-default panel whose explicit presentation operation requires the exact snapshot
+   currently retained by `JournalSectionPresentationController`.
+2. Render the exact canonical section label and stable safe content for all five arms: observation
+   names/descriptions, audience-free testimony, authored hypothesis question/statements, experiment
+   procedure/observed outcomes, and open-question prompts. Present an explicit neutral empty state.
+3. Permit explicit replacement only after the presentation controller has explicitly refreshed to a
+   different exact snapshot. Reject stale, rebuilt, foreign, repeated, and null values without
+   changing the currently rendered panel.
+4. Wire the panel into `Main.tscn` without automatic composition, selection, projection, visibility,
+   focus capture, movement suspension, or input mapping.
+5. Add one switch-gated credential-free smoke that explicitly composes the representative journal,
+   visits all five exact sections through selection/projection/refresh, verifies safe stable text and
+   replacement/rejection behavior, and preserves journal, source, gameplay, and unrelated UI state.
+6. Do not add a journal open/close action, automatic refresh from changed sources, display-name
+   lookup, editable notes, the map, persistence/save schema, gameplay mutation, authoritative source
+   exposure, or provider work.
+7. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
+   slice for explicit journal open/close input with focus and movement suspension.

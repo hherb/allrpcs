@@ -649,9 +649,7 @@ journal without inferring experiment efficacy, question answers, confidence, tru
 completion. One scene-owned controller can retain an already-complete exact safe journal once. It
 starts null, accepts only a journal with every section installed and no pending definitions, and
 rejects incomplete, repeated, replacement, and null initialization without replacing retained
-state. Ordinary startup leaves it uninitialized and inert. Journal work still does not compose an
-ordinary source, refresh content, resolve display names, select or present sections, handle UI or
-input, persist, mutate authoritative gameplay state, or call a provider.
+state. Ordinary startup leaves it uninitialized and inert.
 
 An explicitly invoked scene coordinator can compose that journal from existing exact ordinary
 state: current filtered Seeker perception and world objects, the latest heard dialogue event when
@@ -661,6 +659,23 @@ confirmed questions out of the open-question section, and initializes the journa
 Missing, unsafe, or repeated inputs fail closed. Ordinary startup never invokes this path, authors
 no replacement facts, and leaves journal UI, input, refresh, persistence, gameplay mutation, and
 providers absent.
+
+One scene-owned section-selection controller starts null and accepts only the exact retained journal
+plus one exact canonical section definition from that journal. It permits explicit replacement by a
+different exact canonical section while rejecting uninitialized, stale, foreign, rebuilt,
+value-equal, repeated, and null inputs without changing the current selection. Ordinary startup
+does not initialize the journal or select a section.
+
+A pure selected-section presentation projection accepts only one complete exact journal and one of
+its exact canonical sections. Its immutable result exposes the exact selected definition plus
+exactly one of the journal's already-safe observation, testimony, hypothesis, experiment, or
+open-question snapshots; it exposes no complete journal, catalogue, authoritative source, dialogue
+audience, or world event. A scene controller owns one explicitly requested projection and can
+explicitly replace it only after the exact selection changes. Unprojected, unchanged, repeated,
+foreign, rebuilt, incomplete, and null paths fail closed without changing prior presentation state.
+Ordinary startup, journal composition, and section selection do not project automatically. No
+label, panel, input action, automatic opening, display-name lookup, editable note, persistence,
+save schema, gameplay mutation, authoritative source exposure, or provider work is present.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
