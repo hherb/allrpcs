@@ -4,7 +4,8 @@
 
 `main` includes merged PR #406 at `1362836`. Branch
 `codex/phase-8-investigation-route-catalogue` adds two bounded Phase 8 slices: the representative
-opening-region investigation-route catalogue and inert explicit scene-owned route progress.
+opening-region investigation-route catalogue and inert explicit scene-owned route progress. Draft
+PR #407 targets `main` from this branch.
 
 `OpeningRegionInvestigationRoute` retains one canonical key plus nonempty ordered location and
 evidence identifier lists. It copies caller collections, retains exact identifier instances, and
@@ -53,6 +54,8 @@ be exercised through ordinary play.
   partial shapes and enforces all three canonical keys in order; progress snapshots no longer retain
   an unbounded predecessor chain. Focused build, tests, formatting, whitespace, and Godot smoke pass
   after those fixes.
+- Hosted Actions run `36279881619` failed all five jobs before execution with `steps: []`; treat this
+  as Actions/account infrastructure, not product-validation evidence. No hosted job ran code.
 - All changed C# files are below 500 lines, changed C# lines are at most 120 characters, and
   `git diff --check` passes.
 
