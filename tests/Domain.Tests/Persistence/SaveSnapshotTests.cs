@@ -28,6 +28,7 @@ public sealed class SaveSnapshotTests
         Assert.Empty(snapshot.CharacterMemory.Characters);
         Assert.Null(snapshot.FirstPatient);
         Assert.Null(snapshot.Journal);
+        Assert.Null(snapshot.Map);
     }
 
     [Fact]
@@ -49,6 +50,7 @@ public sealed class SaveSnapshotTests
         Assert.Same(memory, snapshot.CharacterMemory);
         Assert.Null(snapshot.FirstPatient);
         Assert.Null(snapshot.Journal);
+        Assert.Null(snapshot.Map);
     }
 
     [Fact]
@@ -72,6 +74,7 @@ public sealed class SaveSnapshotTests
         Assert.Same(memory, snapshot.CharacterMemory);
         Assert.Same(firstPatient, snapshot.FirstPatient);
         Assert.Null(snapshot.Journal);
+        Assert.Null(snapshot.Map);
     }
 
     [Fact]
@@ -95,6 +98,7 @@ public sealed class SaveSnapshotTests
         Assert.Same(memory, snapshot.CharacterMemory);
         Assert.Same(firstPatient, snapshot.FirstPatient);
         Assert.Null(snapshot.Journal);
+        Assert.Null(snapshot.Map);
     }
 
     [Fact]
@@ -120,7 +124,36 @@ public sealed class SaveSnapshotTests
         Assert.Same(memory, snapshot.CharacterMemory);
         Assert.Same(firstPatient, snapshot.FirstPatient);
         Assert.Same(journal, snapshot.Journal);
+        Assert.Null(snapshot.Map);
         Assert.NotSame(discovery.Perception.CharacterId, journal.SeekerId);
+    }
+
+    [Fact]
+    public void MapVersionRetainsExactExistingJournalAndMapState()
+    {
+        DiscoverySaveState discovery = CreateDiscoveryState();
+        WorldEventSaveState worldEvents = CreateWorldEventState();
+        CharacterMemorySnapshot memory = new([]);
+        FirstPatientSaveState firstPatient = CreateFirstPatientState();
+        JournalSaveState journal = EmptyJournal(discovery.Perception.CharacterId);
+        MapSaveState map = EmptyMap(discovery.Perception.CharacterId);
+
+        SaveSnapshot snapshot = new(
+            SaveSchemaVersion.Map,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient,
+            journal,
+            map);
+
+        Assert.Same(SaveSchemaVersion.Map, snapshot.SchemaVersion);
+        Assert.Same(discovery, snapshot.Discovery);
+        Assert.Same(worldEvents, snapshot.WorldEvents);
+        Assert.Same(memory, snapshot.CharacterMemory);
+        Assert.Same(firstPatient, snapshot.FirstPatient);
+        Assert.Same(journal, snapshot.Journal);
+        Assert.Same(map, snapshot.Map);
     }
 
     [Fact]
@@ -158,7 +191,7 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient));
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(
-            new SaveSchemaVersion(6),
+            new SaveSchemaVersion(7),
             discovery,
             worldEvents,
             memory,
@@ -194,6 +227,30 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient,
             EmptyJournal(new CharacterId("foreigner"))));
+        Assert.Throws<ArgumentNullException>(() => new SaveSnapshot(
+            SaveSchemaVersion.Map,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient,
+            EmptyJournal(discovery.Perception.CharacterId),
+            null));
+        Assert.Throws<ArgumentException>(() => new SaveSnapshot(
+            SaveSchemaVersion.Map,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient,
+            EmptyJournal(discovery.Perception.CharacterId),
+            EmptyMap(new CharacterId("foreigner"))));
+        Assert.Throws<ArgumentException>(() => new SaveSnapshot(
+            SaveSchemaVersion.Map,
+            discovery,
+            worldEvents,
+            memory,
+            firstPatient,
+            EmptyJournal(new CharacterId("journal-owner")),
+            EmptyMap(discovery.Perception.CharacterId)));
 
         Assert.Same(diseaseTruth, firstPatient.DiseaseTruth);
         Assert.Empty(memory.Characters);
@@ -251,6 +308,7 @@ public sealed class SaveSnapshotTests
             ("Discovery", typeof(DiscoverySaveState)),
             ("FirstPatient", typeof(FirstPatientSaveState)),
             ("Journal", typeof(JournalSaveState)),
+            ("Map", typeof(MapSaveState)),
             ("SchemaVersion", typeof(SaveSchemaVersion)),
             ("WorldEvents", typeof(WorldEventSaveState)),
         ];
@@ -292,4 +350,10 @@ public sealed class SaveSnapshotTests
         [],
         [],
         null);
+
+    private static MapSaveState EmptyMap(CharacterId seekerId) => new(
+        seekerId,
+        [],
+        [],
+        []);
 }

@@ -767,8 +767,24 @@ not classify testimony text, delivery mode, or speaker, and it does not infer a 
 and visit verification preserve source snapshots, promote reported locations when visited, add
 hidden verified locations, and retain canonical location order. There is still no automatic
 testimony reporting or visit capture, player-visible reporting choice, coordinate or topology
-exposure, map persistence/schema change, provider call, or credential access, so the Phase 8 map
-roadmap item remains open.
+exposure, provider call, or credential access.
+
+The map now has a closed visibility-safe persistence boundary without root save-schema wiring. A
+pure capture accepts only an exact same-Seeker map and note pair backed by one exact catalogue, then
+copies only the owner identifier, reported and verified location identifiers, and bounded
+location/text note pairs in canonical order. A pure restoration projection rejects unknown,
+duplicate, overlapping, hidden-note, duplicate-note, invalid-text, and inconsistent-provenance
+state before creating fresh map and note snapshots bound to exact definitions from one fresh
+representative catalogue. Empty and populated state round trip without exposing hidden catalogue
+locations, labels for hidden locations, coordinates, topology, testimony, scene objects,
+controllers, or UI state.
+
+Schema version 6 extends the immutable root with one required map state alongside the existing
+journal, and rejects any map whose owner differs from either discovery or journal ownership. A pure
+version-5-to-6 migration preserves every existing root component by exact reference and adds fresh
+empty same-Seeker map collections. Version 6 intentionally remains outside the supported load
+policy until its strict JSON, current-loading chain, storage, and scene capture/restoration wiring
+are added, so ordinary startup and the Phase 8 map roadmap item remain unchanged.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text

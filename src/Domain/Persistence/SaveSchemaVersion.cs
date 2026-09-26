@@ -12,6 +12,7 @@ public sealed record SaveSchemaVersion
     private const int FirstPatientValue = 3;
     private const int DialogueDeliveryValue = 4;
     private const int JournalValue = 5;
+    private const int MapValue = 6;
 
     /// <summary>Gets the first save-schema version supported by the game.</summary>
     public static SaveSchemaVersion FirstSupported { get; } = new(FirstSupportedValue);
@@ -27,6 +28,9 @@ public sealed record SaveSchemaVersion
 
     /// <summary>Gets the schema version that first retains the safe journal.</summary>
     public static SaveSchemaVersion Journal { get; } = new(JournalValue);
+
+    /// <summary>Gets the schema version that first retains the visibility-safe map.</summary>
+    public static SaveSchemaVersion Map { get; } = new(MapValue);
 
     /// <summary>Creates a save-schema version from a positive integer.</summary>
     public SaveSchemaVersion(int value)
