@@ -5,7 +5,7 @@
 `main` includes merged PR #390 at `dc932b1`. Branch
 `codex/phase-8-journal-foundation` advances the open Phase 8 journal roadmap item through three
 bounded, asset-neutral Application slices. The roadmap item remains open because no journal entries,
-scene ownership, UI, input, or persistence exists yet.
+scene ownership, UI, input, or persistence exists yet. Draft PR #391 targets `main`.
 
 Application now defines one immutable five-section catalogue containing `observations`, `testimony`,
 `hypotheses`, `experiments`, and `open-questions` in stable canonical order. Definitions retain exact
@@ -37,6 +37,9 @@ UI, handles input, persists, or calls a provider.
 - Session review covered the complete diff, immutable and exact-reference boundaries, hidden-state
   filtering, authoritative world coverage, caller isolation, stable order, public API documentation,
   120-character limits, sub-500-line C# files, formatting, and whitespace. No review issues remain.
+- Draft PR #391's credential-free CI run `36230445214` at implementation commit `ad2b4a2` failed all
+  five jobs before any step was instantiated (`steps: []`), so it is Actions/account infrastructure
+  and not product-test evidence.
 
 ## Exact next bounded slice
 
