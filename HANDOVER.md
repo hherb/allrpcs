@@ -2,70 +2,66 @@
 
 ## Current state
 
-`main` includes merged PR #400 at `a631fdd`. Branch `codex/phase-8-opening-map` advances the open
-Phase 8 map roadmap item through four bounded, pure Application slices: canonical map locations,
-reported testimony locations, visit-backed verified locations, and player-authored notes.
+`main` includes merged PR #401 at `cc25d93`. Branch `codex/phase-8-map-controller` advances
+the open Phase 8 map roadmap item through four bounded slices: exact scene ownership, safe
+presentation projection, explicit presentation refresh, and a read-only panel.
 
-`RepresentativeOpeningRegionMapLocationSource` derives a fresh asset-neutral catalogue from all
-eleven already-authored representative landmarks. Definitions expose only their exact canonical
-location identifier and bounded player-facing label in stable authored order. `SeekerMapSnapshot`
-exposes only one exact Seeker plus independent canonical-order reported and verified definitions;
-its complete catalogue stays internal so hidden locations are not exposed. Composition rejects
-null, rebuilt, foreign, duplicate, overlapping, and cross-owner state. Explicit report and verify
-transitions return fresh snapshots, and verification promotes a reported location when necessary.
+`SeekerMapController` owns one fresh exact opening-region catalogue, current
+`SeekerMapSnapshot`, and current `SeekerMapNoteSnapshot`. Ordinary startup leaves all three null.
+Explicit initialization creates an empty map and empty notes atomically for one exact Seeker.
+Testimony reporting, coordinate-free visit verification, note set or replacement, and note removal
+delegate to the existing pure boundaries and replace only exact expected current state. Null,
+uninitialized, stale, rebuilt, foreign, cross-owner, repeated, hidden-location, and failed
+downstream paths do not partially mutate state.
 
-`SeekerMapTestimonyReportProjection` accepts only an exact audience-free authored copy already in
-the exact Seeker's safe testimony snapshot, then reports the exact canonical location explicitly
-supplied by the caller. It never interprets text, speaker, or delivery mode. The visit route accepts
-one exact retained opening-region anchor, finite Seeker position, and a positive radius strictly
-below half the projection's minimum landmark separation. It emits a coordinate-free owner/location
-token, and only exact token, projection, owner, catalogue, and location provenance can verify the
-map.
+`SeekerMapPresentationProjection` exposes only known locations in canonical order with their
+reported or verified status and optional bounded note text. It does not expose the hidden catalogue,
+coordinates, anchors, or topology. Its plain-text projection has one neutral empty state.
+`SeekerMapPresentationController` projects or refreshes only the map controller's exact current
+map and notes. `SeekerMapPanel` starts hidden and empty, then renders only that controller's exact
+safe presentation through explicit calls; it has no ordinary input path yet.
 
-Player notes remain a separate immutable `SeekerMapNoteSnapshot`. Set/replace accepts bounded
-nonblank text only for an exact reported or verified location, remove accepts only an existing exact
-note, and results retain canonical location order. Every retained note is revalidated against the
-complete supplied map before another transition, preventing same-owner cross-lineage state from
-preserving a note for a now-hidden location.
-
-No scene controller, automatic testimony refresh or visit capture, map presentation/panel/input,
-editable widget, persistence/schema change, gameplay mutation, provider call, credential access,
-release, or signing work was added. The Phase 8 map roadmap item remains open.
+No automatic testimony refresh or visit capture, map input action, editable note widget,
+persistence/schema change, gameplay mutation, provider call, credential access, release, or signing
+work was added. The Phase 8 map roadmap item remains open.
 
 ## Validation and review
 
-- Test-first Application work observed each missing map boundary before implementation. Thirty-two
-  focused tests pass canonical catalogue/label/order, empty/reported/verified snapshots, promotion,
-  testimony reporting without interpretation, bounded visit tokens, note set/replace/remove,
-  immutability, public-surface closure, null/bounds, and exact-reference rejection.
-- Session review covered every production/test/doc path, public data exposure, owner/catalogue/source
-  provenance, stable ordering, immutable inputs, bounded text and visit distance, sub-500-line C#
-  files, 120-character lines, formatting, and whitespace. It found and fixed ambiguous oversized
-  visit radii and cross-lineage notes retained for hidden locations.
+- Test-first work observed each missing controller, presentation, text, and panel boundary before
+  implementation. The focused map suite passes 38 tests covering safe projection, canonical order,
+  status, notes, neutral empty text, immutability, closed surfaces, and null, hidden, foreign,
+  cross-owner, stale, rebuilt, repeated, and invalid rejection.
+- Three switch-gated main-scene smokes pass exact controller mutation, presentation refresh, and
+  hidden read-only panel rendering while ordinary startup and unrelated state remain inert.
+- Session review covered every production, test, scene, script, and documentation path; exact
+  reference authorization; atomic replacement; safe public data; canonical ordering; immutable
+  prior values; ordinary-startup inertness; sub-500-line C# files; 120-character lines; formatting;
+  and whitespace. The only focused-test correction was an assertion that initially expected caller
+  order instead of the existing canonical map order.
 - Final host-local `./scripts/quality.sh` passed workflow validation, formatting, a zero-warning
-  build, 2,817 Domain, 858 Application, 1,227 Infrastructure, and 8 architecture tests, scenario
-  validation, every credential-free Godot smoke, and the graphical Compatibility launch. The
-  restricted pre-review run passed every pure check before the known Godot `user://logs`
-  restriction.
+  build, 2,817 Domain, 864 Application, 1,227 Infrastructure, and 8 architecture tests, scenario
+  validation, every credential-free Godot smoke, and the graphical Compatibility launch. The first
+  focused Godot run in the restricted sandbox hit only the known `user://logs` restriction; the
+  identical host run passed.
 
 ## Exact next bounded slice
 
-Add one scene-owned, in-memory map-state controller without presentation, input, or persistence.
+Add one explicit map open/close input boundary without note editing or persistence.
 
 Acceptance boundary:
 
-1. Own one exact opening-region map catalogue, current `SeekerMapSnapshot`, and current
-   `SeekerMapNoteSnapshot`; ordinary startup leaves all three uninitialized and inert.
-2. Initialize all three atomically once for one exact Seeker, with an empty map and empty notes.
-3. Add explicit compare-and-swap operations that delegate exact safe testimony reporting,
-   coordinate-free visit verification, note set/replace, and note removal to the existing pure
-   projections/transitions before atomically replacing only current state.
-4. Reject null, uninitialized, stale, rebuilt, foreign, cross-owner, repeated, hidden-location, and
-   failed downstream inputs without partial mutation.
-5. Add the controller to `Main.tscn` in dependency order, but do not initialize or invoke it during
-   ordinary startup. Prove inert startup and one switch-gated exact flow with a credential-free smoke.
-6. Do not add a map panel, input actions, automatic testimony refresh, automatic visit capture,
-   coordinate/topology presentation, persistence/schema changes, gameplay mutation, providers, or
-   credentials.
-7. Run `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one exact next
-   slice for a safe map presentation snapshot over already-owned in-memory state.
+1. Add one `map_toggle` action mapped to physical M plus one map-panel Close control. Ordinary
+   startup remains hidden, uninitialized, unfocused, and movement-neutral.
+2. On first explicit open, initialize `SeekerMapController` once from the exact current scene
+   Seeker, project its empty current state, and present it. Never initialize from rebuilt identity.
+3. On later explicit opens, refresh only when the presentation controller's exact source map or
+   notes changed; otherwise reopen the exact retained presentation.
+4. Capture focus inside the panel, suspend Seeker movement, prevent overlap with the journal panel,
+   and restore the exact prior movement-processing and focus state on Close or M.
+5. Reject released, unrelated, stale, rebuilt, unavailable, repeated, and null paths without
+   changing map, notes, presentation, panel, focus, movement, journal, or gameplay state.
+6. Do not add automatic testimony reporting, automatic visit capture, note editing, coordinate or
+   topology presentation, persistence/schema changes, gameplay mutation, providers, or credentials.
+7. Prove the exact input flow with a credential-free switch-gated smoke, run
+   `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one next slice for
+   explicit bounded note editing over already-known locations.
