@@ -50,12 +50,12 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
         CharacterObjectSabotageMovePresentationCoordinator presentationCoordinator =
             GetNode<CharacterObjectSabotageMovePresentationCoordinator>(
                 "../CharacterObjectSabotageMovePresentationCoordinator");
-        WorldObject target = worldSource.WorldObjects.Entries[^1];
+        WorldObject target = worldSource.WorldObjects.Entries[2];
         WorldObjectPlacement placement = source.Placements.Entries.Single();
         ICharacterObjectSabotageMoveDecisionModel offline = modelSource.TakeModel();
 
         if (!ReferenceEquals(source.WorldObjects, worldSource.WorldObjects)
-            || worldSource.WorldObjects.Entries.Count != 3
+            || worldSource.WorldObjects.Entries.Count != 4
             || !ReferenceEquals(source.Candidate.Destination.Occurrence.Target, target)
             || target.Identity.Id.Value != WaterCaskObjectId
             || !ReferenceEquals(placement.WorldObject, target)
@@ -86,7 +86,7 @@ public partial class TemporaryCharacterObjectSabotageMoveMainSceneSmokeCheck : N
         }
 
         GD.Print(
-            "Temporary move sabotage main-scene smoke passed: exact tail water-cask source, "
+            "Temporary move sabotage main-scene smoke passed: exact water-cask source, "
             + "eligible move and aligned recovery, exact empty scene-owned state, stable offline "
             + "decision source, idle task, explicit consideration and presentation flow, and no "
             + "automatic effect.");

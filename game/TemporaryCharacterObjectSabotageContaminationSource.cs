@@ -10,6 +10,7 @@ namespace Allrpcs.Game;
 /// <summary>Authors one exact temporary eligible enemy contamination candidate and initial state.</summary>
 public partial class TemporaryCharacterObjectSabotageContaminationSource : Node
 {
+    private const int WaterCaskWorldObjectIndex = 2;
     private const string RequiredCapabilityKey = "assess-local-influence";
     private const string EvidenceIdText = "bitter-cask-residue";
 
@@ -37,7 +38,7 @@ public partial class TemporaryCharacterObjectSabotageContaminationSource : Node
         Character = RepresentativeEnemyAgentCharacterSource.Create();
         WorldObjects = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").WorldObjects;
-        WorldObject target = WorldObjects.Entries[^1];
+        WorldObject target = WorldObjects.Entries[WaterCaskWorldObjectIndex];
         PhysicalAccess = new CharacterPhysicalAccessSnapshot(
             Character.Identity.Id,
             [target.Identity.Id]);

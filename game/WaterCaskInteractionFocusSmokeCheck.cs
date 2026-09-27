@@ -56,7 +56,7 @@ public partial class WaterCaskInteractionFocusSmokeCheck : Node
         Label focusStatus = GetNode<Label>("../CommandOverlay/Panel/FocusStatus");
 
         WorldObjectSnapshot expectedWorldObjects = worldSource.WorldObjects;
-        WorldObject waterCask = expectedWorldObjects.Entries[^1];
+        WorldObject waterCask = expectedWorldObjects.Entries[WaterCaskTargetIndex];
         GreyboxInteractionTarget waterCaskTarget = focus.GetTarget(WaterCaskTargetIndex);
         GreyboxInteractionTarget[] expectedTargets = Enumerable.Range(0, focus.TargetCount)
             .Select(focus.GetTarget)
@@ -114,7 +114,7 @@ public partial class WaterCaskInteractionFocusSmokeCheck : Node
         }
 
         focus.RefreshFocusFrom(inRangePosition);
-        if (focus.TargetCount != 5
+        if (focus.TargetCount != 6
             || !string.Equals(
                 waterCaskTarget.ObjectId.Value,
                 WaterCaskObjectIdText,
@@ -144,7 +144,7 @@ public partial class WaterCaskInteractionFocusSmokeCheck : Node
         }
 
         GD.Print(
-            "Water-cask interaction-focus smoke passed: the stable eligible tail target retained "
+            "Water-cask interaction-focus smoke passed: the stable eligible target retained "
             + "an independently parsed value-equal identifier, focus presented the exact "
             + "authoritative object identity and display name, its exact appended investigation "
             + "condition was retained, out-of-range refresh cleared focus, and no actor, sabotage, "
@@ -210,7 +210,7 @@ public partial class WaterCaskInteractionFocusSmokeCheck : Node
         CharacterInventory inventory)
     {
         if (conditions.CapabilityRequirements.Entries.Count != 2
-            || conditions.ToolRequirements.Entries.Count != 1
+            || conditions.ToolRequirements.Entries.Count != 2
             || capabilities.Entries.Count != 2
             || inventory.ObjectReferences.Count != 1)
         {

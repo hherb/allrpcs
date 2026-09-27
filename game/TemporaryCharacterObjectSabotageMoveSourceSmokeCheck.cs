@@ -54,8 +54,8 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
                 cycleCandidate,
                 continuationCandidate,
                 successorCandidate)
-            || source.WorldObjects.Entries.Count != 3
-            || !ReferenceEquals(source.WorldObjects.Entries[^1], target)
+            || source.WorldObjects.Entries.Count != 4
+            || !ReferenceEquals(source.WorldObjects.Entries[2], target)
             || target.Identity.Id.Value != WaterCaskObjectId
             || !ReferenceEquals(sourcePlacement.WorldObject, target)
             || !ReferenceEquals(sourcePlacement.Location, source.SourceLocation)
@@ -165,7 +165,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSourceSmokeCheck : Node
         }
 
         GD.Print(
-            "Temporary move sabotage source smoke passed: exact enemy, tail water cask, access, "
+            "Temporary move sabotage source smoke passed: exact enemy, water cask, access, "
             + "source and destination, empty then distinct evidence, eligible initial, follow-up, "
             + "next-cycle, continuation, and successor moves, aligned recovery, inert startup, and closed "
             + "output.");

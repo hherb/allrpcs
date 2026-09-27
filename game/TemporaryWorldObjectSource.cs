@@ -1,3 +1,4 @@
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.WorldObjects;
 using Godot;
@@ -5,7 +6,7 @@ using Godot;
 namespace Allrpcs.Game;
 
 /// <summary>
-/// Authors the temporary scene world objects in one retained snapshot.
+/// Authors the temporary scene world objects plus the exact representative wagon clue.
 /// </summary>
 public partial class TemporaryWorldObjectSource : Node
 {
@@ -24,9 +25,15 @@ public partial class TemporaryWorldObjectSource : Node
     /// <summary>Gets the single retained temporary world-object snapshot.</summary>
     public WorldObjectSnapshot WorldObjects { get; private set; } = null!;
 
+    /// <summary>Gets the single representative discovery scenario shared by scene owners.</summary>
+    public DiscoveryScenario RepresentativeDiscoveryScenario { get; private set; } = null!;
+
     /// <inheritdoc />
     public override void _Ready()
     {
+        RepresentativeDiscoveryScenario = RepresentativeDiscoveryScenarioSource.Create();
+        WorldObject wagonClue = RepresentativeDiscoveryScenario.WorldObjects.Entries.Single(
+            candidate => candidate.Identity.Id.Value == "wagon-clue");
         WorldObjects = new WorldObjectSnapshot(
             [
                 CreateWorldObject(
@@ -41,6 +48,7 @@ public partial class TemporaryWorldObjectSource : Node
                     WaterCaskObjectIdText,
                     WaterCaskDisplayName,
                     WaterCaskDescription),
+                wagonClue,
             ]);
     }
 

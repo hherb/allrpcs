@@ -28,8 +28,8 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionSourceSmokeChec
         DiscoveryEvidence discoverableEvidence = candidate.Evidence.Evidence;
 
         if (!HasStableExactOutput(source, candidate)
-            || source.WorldObjects.Entries.Count != 3
-            || !ReferenceEquals(source.WorldObjects.Entries[^1], target)
+            || source.WorldObjects.Entries.Count != 4
+            || !ReferenceEquals(source.WorldObjects.Entries[2], target)
             || target.Identity.Id.Value != WaterCaskObjectId
             || replacement.Identity.Id.Value != ReplacementObjectId
             || ReferenceEquals(target, replacement)
@@ -65,7 +65,7 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionSourceSmokeChec
         }
 
         GD.Print(
-            "Temporary substitution sabotage source smoke passed: exact enemy, tail water cask, "
+            "Temporary substitution sabotage source smoke passed: exact enemy, water cask, "
             + "complete access, distinct replacement, empty immutable state, eligible evidence-bound "
             + "candidate, inert startup, and closed output.");
         GetTree().Quit();

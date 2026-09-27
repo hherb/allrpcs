@@ -134,7 +134,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             return;
         }
 
-        if (!ReferenceEquals(first, second) || first.Entries.Count != 3)
+        if (!ReferenceEquals(first, second) || first.Entries.Count != 4)
         {
             Fail("Temporary world-object source smoke failed stable ordered snapshot retention.");
             return;
@@ -305,7 +305,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         params string[] descriptions)
     {
         if (conditions.CapabilityRequirements.Entries.Count != 2
-            || conditions.ToolRequirements.Entries.Count != 1
+            || conditions.ToolRequirements.Entries.Count != 2
             || capabilities.Entries.Count != 2
             || inventory.ObjectReferences.Count != 1
             || !ReferenceEquals(
@@ -349,6 +349,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
             HerbPatchDisplayName,
             StoneMarkerDisplayName,
             WaterCaskDisplayName,
+            "Tool-gated clue",
             null,
             string.Empty,
         ];
@@ -411,12 +412,20 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                     | System.Reflection.BindingFlags.Instance
                     | System.Reflection.BindingFlags.DeclaredOnly);
 
-        return properties.Length == 1
+        return properties.Length == 2
             && string.Equals(properties[0].Name, "WorldObjects", StringComparison.Ordinal)
             && properties[0].PropertyType == typeof(WorldObjectSnapshot)
             && properties[0].CanRead
             && properties[0].SetMethod is not null
-            && properties[0].SetMethod!.IsPrivate;
+            && properties[0].SetMethod!.IsPrivate
+            && string.Equals(
+                properties[1].Name,
+                "RepresentativeDiscoveryScenario",
+                StringComparison.Ordinal)
+            && properties[1].PropertyType == typeof(DiscoveryScenario)
+            && properties[1].CanRead
+            && properties[1].SetMethod is not null
+            && properties[1].SetMethod!.IsPrivate;
     }
 
     private void Fail(string message)

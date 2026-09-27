@@ -75,11 +75,15 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
         ExperimentJournalSnapshot experiments)
     {
         JournalSectionCatalogue catalogue = RepresentativeJournalSectionSource.Create();
+        CharacterPerceptionSnapshot visiblePerception = new(
+            perception.CharacterId,
+            perception.Entries.Where(entry =>
+                !ReferenceEquals(entry.VisibilityState, VisibilityState.Unnoticed)));
         JournalObservationSectionBinding observationBinding =
             JournalObservationSectionProjection.Bind(
                 catalogue,
                 perception.CharacterId,
-                perception);
+                visiblePerception);
         JournalObservationWorldBinding observationWorld = JournalObservationWorldProjection.Bind(
             observationBinding,
             worldObjects);

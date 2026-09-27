@@ -43,9 +43,9 @@ public partial class TemporaryCharacterObjectSabotageMainSceneSmokeCheck : Node
                 "../CharacterObjectSabotageConcealmentPresentationController");
         Node2D waterCaskBody = GetNode<Node2D>("../InteractionCandidates/WaterCask");
         WorldObjectSnapshot worldObjects = worldSource.WorldObjects;
-        WorldObject waterCask = worldObjects.Entries[^1];
+        WorldObject waterCask = worldObjects.Entries[2];
 
-        if (worldObjects.Entries.Count != 3
+        if (worldObjects.Entries.Count != 4
             || !string.Equals(
                 worldObjects.Entries[0].Identity.Id.Value,
                 HerbPatchObjectId,
@@ -93,7 +93,7 @@ public partial class TemporaryCharacterObjectSabotageMainSceneSmokeCheck : Node
 
         GD.Print(
             "Temporary object sabotage main-scene smoke passed: existing objects retained stable "
-            + "identity and order, the exact tail water cask is eligible and visible, exact empty "
+            + "identity and order, the exact water cask is eligible and visible, exact empty "
             + "source state was initialized, and no effect occurred automatically.");
         GetTree().Quit();
     }

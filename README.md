@@ -836,9 +836,19 @@ exact successfully verified location through that path when route progress is ac
 old-shrine discovery atomically commits its exact identified presentation and filtered evidence
 exposure, it likewise submits only that exposure's exact `partial-inscription` identity and exact
 filtered Seeker view. Missing route progress preserves the successful discovery without initializing
-routes; repeated discovery does not route twice. Focused search, passive noticing, testimony, and
-every other evidence source still has no ordinary-play route submission. Observed completion tokens
-remain unconsumed and do not trigger another gameplay effect.
+routes; repeated discovery does not route twice.
+
+The same representative discovery scenario is now shared with the live world-object composition.
+Its exact stream-residue candidate resolves once through the established passive-noticing sequence,
+advances only the exact residue object from unnoticed to noticed, filters the resulting evidence view
+to the exact `residue` identity, and submits it only when route progress is already active. The exact
+representative wagon clue is retained by the live world-object controller and one focus target at the
+authored abandoned-wagon anchor. The existing F/E/R focused-search lifecycle applies the scenario's
+exact field-lens requirement, advances only that object to identified, filters the view to exact
+`tool-gated-clue` evidence, and then performs the same optional route submission. Missing progress
+preserves both successful discoveries without initializing routes; stale, rebuilt, foreign,
+unresolved, repeated, unseen, and nonmember paths remain inert. Testimony is still unwired, and
+observed completion tokens remain unconsumed and do not trigger another gameplay effect.
 
 A separate pure completion policy returns an immutable provenance token only when one exact route
 entry contains every exact authored location and evidence member. It accepts any observation order,
@@ -2653,7 +2663,7 @@ not append a transcript, correct or consume evidence, judge truth, persist state
 or change characters, world objects, perception, navigation, movement, or general dialogue flow.
 
 `TemporaryCharacterObjectSabotageSubstitutionSource` retains the exact scene world-object snapshot
-and its tail water cask, one representative enemy with complete target access, empty substitution
+and its stable water cask, one representative enemy with complete target access, empty substitution
 and evidence state, one distinct authored replacement, and one exact eligible evidence-bound
 candidate. Its flow initializes the scene controller without effect and applies only on explicit
 request. Recovery projects retained authoritative evidence through supplied perception and removes
@@ -2714,7 +2724,7 @@ not wired into `Main.tscn`, selects no sabotage behavior or timing, and adds no 
 navigation, presentation, provider, event, time, transcript, or input behavior.
 
 `TemporaryCharacterObjectSabotageMoveSource` retains the existing exact world-object snapshot and
-its tail water cask, authors exact source and destination locations, and exposes one representative
+its stable water cask, authors exact source and destination locations, and exposes one representative
 enemy, complete physical access, the exact initial placement, empty evidence, one currently eligible
 move candidate, and its exact aligned recovery candidate. Its isolated smoke proves stable bounded
 read-only output and inert startup. It initializes no scene-owned state, applies or recovers nothing,
@@ -2729,7 +2739,7 @@ Repeat application, unseen evidence, and repeated recovery fail closed; recovery
 and source snapshots remain unchanged. The flow adds no automatic timing or choice, physical scene
 movement, persistence, UI, provider, or presentation.
 The main scene now composes the exact source, move controller, and explicit flow in dependency order.
-An opt-in smoke proves that ordinary startup retains the exact tail water cask, authored source
+An opt-in smoke proves that ordinary startup retains the exact water cask, authored source
 placement, eligible move, aligned recovery, and empty scene-owned evidence without invoking either
 operation. No ordinary scene flow calls the move or recovery seams.
 
@@ -2818,7 +2828,7 @@ and install both fresh explicit or first-eligible apply results, or only the fre
 concealment while retaining the exact evidence snapshot. Stale, value-equal expected snapshots and
 ineligible operations fail without partial installation. First-eligible application does not choose
 when to run or retain a candidate schedule. `TemporaryCharacterObjectSabotageSource` retains the
-exact tail water-cask object and complete snapshot from the existing scene world-object source,
+exact water-cask object and complete snapshot from the existing scene world-object source,
 then authors one exact enemy concealment candidate with explicit access and empty initial state. It
 also retains one stable read-only bounded collection whose sole entry is that exact candidate. The
 temporary flow routes its explicit apply request through first-eligible collection selection while
@@ -4663,15 +4673,16 @@ search, poll focus, own lifecycle state, grant discovery, or make temporary scen
 authoritative.
 
 `Allrpcs.Game.TemporaryWorldObjectSource` independently authors the herb patch, stone marker, and
-village water cask into one retained `WorldObjectSnapshot` in that stable order when the scene
-becomes ready. It creates one distinct world object per identity, retaining exact identifier values,
-display names, and non-empty descriptions. All three source identifiers remain distinct instances
-that are value-equal to their greybox targets' independently parsed `ObjectIdText` references. Their
-descriptions are not focused-search inputs or copied into focus presentation; the first two existing
-resolved-perception indicators receive one only when their matching perception entry is
-`Identified`. The exact tail water-cask instance also supplies the temporary sabotage seam. The
-source does not mutate or replace targets, become authoritative, filter or rank objects, call
-controllers, grant discovery, or select ordinary-play behavior.
+village water cask, then appends the exact representative scenario's wagon clue into one retained
+`WorldObjectSnapshot` in that stable order when the scene becomes ready. It retains one distinct
+world object per identity, exact identifier values, display names, and non-empty descriptions. The
+source identifiers remain distinct instances that are value-equal to their greybox targets'
+independently parsed `ObjectIdText` references. Their descriptions are not focused-search inputs or
+copied into focus presentation; the first two existing resolved-perception indicators receive one
+only when their matching perception entry is `Identified`. The exact water-cask instance continues
+to supply the temporary sabotage seam, while the exact shared wagon instance supplies its
+field-lens-gated discovery seam. The source does not mutate or replace targets, become authoritative,
+filter or rank objects, call controllers, grant discovery, or select ordinary-play behavior.
 
 `Allrpcs.Game.WorldObjectController` is the separate scene owner of one optional immutable
 world-object snapshot. Its one-time initialization boundary rejects null, retains the exact first

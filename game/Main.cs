@@ -86,6 +86,10 @@ public partial class Main : Node
         layeredInscriptionDiscoveryCoordinator = null!;
     private OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator
         layeredInscriptionEnvironmentalFlowCoordinator = null!;
+    private OpeningRegionStreamResiduePassiveNoticingCoordinator
+        streamResiduePassiveNoticingCoordinator = null!;
+    private OpeningRegionWagonClueFocusedSearchRoutingCoordinator
+        wagonClueFocusedSearchRoutingCoordinator = null!;
     private TemporaryResolvedPerceptionIndicator[] resolvedPerceptionIndicators = [];
     private GreyboxInteractionTarget[] resolvedPerceptionTargets = [];
     private TemporaryFocusedSearchContextSource focusedSearchContextSource = null!;
@@ -195,6 +199,12 @@ public partial class Main : Node
         layeredInscriptionEnvironmentalFlowCoordinator =
             GetNode<OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator>(
                 "OpeningRegionLayeredInscriptionEnvironmentalFlowCoordinator");
+        streamResiduePassiveNoticingCoordinator =
+            GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
+                "OpeningRegionStreamResiduePassiveNoticingCoordinator");
+        wagonClueFocusedSearchRoutingCoordinator =
+            GetNode<OpeningRegionWagonClueFocusedSearchRoutingCoordinator>(
+                "OpeningRegionWagonClueFocusedSearchRoutingCoordinator");
         resolvedPerceptionIndicators =
         [
             GetNode<TemporaryResolvedPerceptionIndicator>(
@@ -296,6 +306,7 @@ public partial class Main : Node
 
         ProduceInitialPassiveNoticingCandidate();
         ResolveInitialPassiveNoticingCandidate();
+        ResolveOpeningRegionStreamResiduePassiveNoticing();
         ProduceInitialObservationReinterpretationCandidate();
         ResolveInitialObservationReinterpretationCandidate();
 
@@ -444,6 +455,18 @@ public partial class Main : Node
         {
             throw new InvalidOperationException(
                 "The initial passive-noticing candidate could not be resolved for the Seeker.");
+        }
+    }
+
+    private void ResolveOpeningRegionStreamResiduePassiveNoticing()
+    {
+        if (!streamResiduePassiveNoticingCoordinator.TryResolve(
+                streamResiduePassiveNoticingCoordinator.Perception,
+                streamResiduePassiveNoticingCoordinator.Candidates,
+                streamResiduePassiveNoticingCoordinator.Candidate))
+        {
+            throw new InvalidOperationException(
+                "The opening-region stream residue could not be passively noticed.");
         }
     }
 
@@ -932,7 +955,18 @@ public partial class Main : Node
         if (!ReferenceEquals(worldObject, herbPatch)
             || !ReferenceEquals(outcome.ResultingVisibilityState, VisibilityState.Identified))
         {
-            return focusedSearchController.TryResolveOutcome(outcome, worldObject);
+            bool resolved = focusedSearchController.TryResolveOutcome(outcome, worldObject);
+            if (resolved && ReferenceEquals(
+                    worldObject,
+                    wagonClueFocusedSearchRoutingCoordinator.WagonClue))
+            {
+                _ = wagonClueFocusedSearchRoutingCoordinator.TryRouteResolvedOutcome(
+                    outcome,
+                    worldObject,
+                    focusedSearchController.Perception!);
+            }
+
+            return resolved;
         }
 
         WorldEvent advancingEvent = worldEventSource.HerbPatchIdentifiedWorldEvent;
