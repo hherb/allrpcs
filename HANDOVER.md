@@ -2,80 +2,79 @@
 
 ## Current state
 
-`main` includes merged PR #407 at `d87c51a`. Branch
-`codex/phase-8-investigation-route-authority` adds three bounded Phase 8 slices over the existing
-opening-region investigation-route catalogue and progress state. Draft PR #408 targets `main` from
-this branch:
+`main` includes merged PR #408 at `cc50c7c`. Branch
+`codex/phase-8-investigation-route-completion-observation` adds two bounded Phase 8 scene slices in
+draft PR #409:
 
-- `OpeningRegionInvestigationRouteAuthorityTransition` records an exact route location only when
-  its exact `MapLocationDefinition` is retained by the supplied `SeekerMapSnapshot` verified view,
-  and records an exact route evidence identifier only when retained by the supplied filtered
-  `CharacterEvidenceViewSnapshot`.
-- `OpeningRegionInvestigationRouteAuthorityCoordinator` requires the exact current scene-owned map
-  for location progress, validates both authority paths through that pure transition, and installs
-  them through the existing route controller's expected-progress compare-and-swap.
-- `OpeningRegionInvestigationRouteCompletionPolicy` returns an immutable exact-provenance token only
-  when one exact route entry contains every exact authored location and evidence member. It accepts
-  any observation order, never pools partial progress across routes, and exposes no completion
-  Boolean.
+- `OpeningRegionInvestigationRouteCompletionCoordinator` explicitly calls the existing pure
+  completion policy only for the route controller's exact current progress snapshot. It retains one
+  exact token per exact route in observation order and never replaces an earlier token.
+- `OpeningRegionInvestigationRouteCompletionConsumptionCoordinator` explicitly consumes one exact
+  token already retained by that scene owner. It retains the exact token once without removing it
+  from the accepted list or causing any gameplay effect.
 
-The coordinator and completion policy are explicit only. Ordinary startup still does not initialize
-or advance route progress, capture visits or discovery automatically, observe completion, present
-progress, or trigger gameplay effects. `README.md` documents the new boundaries. The multiple-route
-roadmap item remains unticked because routes are not yet exercised through ordinary play.
+Both owners are inert during ordinary startup. Nothing initializes or advances route progress,
+observes or consumes completion automatically, selects a preferred route, presents or persists
+completion, or triggers testimony, stabilization, or another gameplay effect. `README.md` documents
+the boundary. The multiple-route roadmap item remains unticked because the routes are not yet driven
+through ordinary play.
 
 ## Validation and review
 
-- Test-first focused runs failed at each absent authority/completion contract, then passed after the
-  implementation. Nine focused Application tests cover exact success, arbitrary observation order,
-  stable unrelated entries, immutable authority inputs, exact completion provenance, and null,
-  stale/repeated, partial, pooled, rebuilt, foreign, unverified/unseen, nonmember, and mismatched
-  rejection.
-- The new switch-gated Godot smoke proves inert startup, exact current-map and progress CAS,
-  verified-location and visible-evidence recording, stale/rebuilt/unseen/repeated rejection, a closed
-  coordinator surface, and map/journal isolation.
-- The restricted `./scripts/quality.sh` run passed the zero-warning build, all managed tests, and
-  scenario validation, then stopped only at Godot's known `user://logs` sandbox boundary. The
-  identical host-local suite passed formatting, a zero-warning build, 2,824 Domain, 898 Application,
+- Both slices were written test-first: each focused game build first failed on its absent scene
+  coordinator, then passed after the minimum implementation.
+- The completion-observation smoke proves inert startup, exact current-snapshot authorization,
+  one-shot per-route observation, ordered retention across later routes, and null, partial, stale,
+  rebuilt, foreign, and repeated rejection without changing route progress, map, or journal state.
+- The completion-consumption smoke proves inert startup, exact accepted-token binding, one-shot
+  retention, and null, unaccepted, rebuilt-token, repeated, and later-route rejection without
+  changing progress, accepted completions, map, or journal state.
+- Both focused smokes passed host-local. The restricted complete suite passed all managed checks and
+  then stopped only at Godot's known `user://logs` sandbox boundary; the identical host-local
+  `./scripts/quality.sh` passed formatting, a zero-warning build, 2,824 Domain, 898 Application,
   1,249 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
   smoke, and the graphical Compatibility launch.
-- Session-wide review found and fixed two test-coverage gaps: every evidence-authority null parameter
-  is now explicit, and the completion token's complete read-only/no-behavior surface is checked.
-  All changed C# files are below 500 lines, changed C# lines are at most 120 characters, and
-  `git diff --check` passes.
+- Session-wide review checked the complete API and scene diff, exact-reference ownership, unchanged
+  inputs, closed coordinator surfaces, changed-file size and 120-character limits, and whitespace.
+- Initial hosted PR run `36283232621` failed all five jobs before execution with `steps: []`. This is
+  Actions/account infrastructure evidence, not hosted product validation; the complete host-local
+  suite above remains the current product evidence.
 
 ## Preserved boundaries
 
-- Authority inputs are observed only; no map, discovery, journal, first-patient, provider,
-  presentation, or UI state is changed.
-- No automatic visit/discovery capture, route selection, clue order, objective arrow, route-progress
-  presentation, testimony, stabilization, or completion gameplay effect was added.
-- The completion token is a pure exact-provenance value. No scene owner observes or persists it.
-- Save schema 6 remains unchanged; route definitions, progress, and completion are not persisted.
+- The accepted and consumed tokens retain exact existing completion provenance only. They expose no
+  completion Boolean and do not rebuild routes, progress, or tokens.
+- No automatic visit/discovery capture, route choice, clue order, objective arrow, progress or
+  completion presentation, testimony, stabilization, or completion gameplay effect was added.
+- Save schema 6 remains unchanged; routes, route progress, accepted completions, and consumption are
+  not persisted.
+- Map, discovery, journal, first-patient, provider, input, and UI owners remain unchanged.
 - Do not tick the multiple-investigation-routes roadmap item until routes are authoritatively
-  exercisable through ordinary play and its acceptance is actually met.
+  exercised through ordinary play and its acceptance is actually met.
 - Do not merge, release, sign, notarize, publish, or run credential-backed provider activity without
   separate authorization.
 
 ## Exact next bounded slice
 
-Add explicit scene-owned observation of current route-completion tokens. Do not connect completion to
-testimony, stabilization, presentation, persistence, or automatic ordinary-play capture yet.
+Add explicit catalogue-ordered routing of one authoritative observation to every exact route that
+contains it, without connecting that routing to ordinary play yet.
 
 Acceptance boundary:
 
-1. Add one inert scene completion coordinator with an initially empty read-only list of accepted
-   `OpeningRegionInvestigationRouteCompletion` tokens.
-2. Accept one token only by calling the existing pure completion policy for an exact route and the
-   exact current snapshot owned by `OpeningRegionInvestigationRouteProgressController`. Retain the
-   returned exact token once and preserve accepted tokens in observation order.
-3. Reject null, partial, stale-snapshot, rebuilt-route, foreign-route, and repeated-route inputs
-   without changing either owner. An unrelated later route observation must not replace or rebuild a
-   previously accepted token.
-4. Keep ordinary startup inert and do not call the coordinator automatically. Do not infer a preferred
-   route or clue order, pool progress across routes, or expose a completion Boolean.
-5. Do not change save schema, map/discovery/journal owners, route-authority operations, input, UI,
-   providers, first-patient state, testimony, stabilization, or the roadmap checkbox in this slice.
+1. Add one inert scene coordinator that receives the exact current route-progress snapshot plus one
+   already-authorized exact location or evidence observation. It must derive matching routes only
+   from the exact catalogue owned by `OpeningRegionInvestigationRouteProgressController`.
+2. Record the observation into each exact matching route in authored catalogue order through the
+   existing progress controller's compare-and-swap operations. Do not pick a preferred route, stop at
+   the first match, or pool partial progress across routes.
+3. After each successful record, explicitly ask the existing completion coordinator to observe that
+   exact resulting current snapshot and route. Preserve already accepted tokens and their observation
+   order; incomplete and already accepted routes remain inert.
+4. Reject null, stale, rebuilt, foreign, unverified/unseen, nonmember, and repeated inputs without
+   changing progress, accepted/consumed completion, map, discovery, or journal owners.
+5. Keep ordinary startup inert. Do not wire map visits or evidence discovery to this coordinator yet,
+   infer a clue order, consume a completion, present or persist progress/completion, or trigger
+   testimony, stabilization, or other gameplay effects.
 6. Work test-first, add one focused switch-gated Godot smoke, run focused tests and
    `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one next slice for
-   explicit consumption of one exact accepted completion token without gameplay effects.
+   the first ordinary-play call site to submit one already-authorized observation.

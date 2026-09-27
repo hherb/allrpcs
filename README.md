@@ -819,7 +819,12 @@ at ordinary startup; it still does not capture visits or discoveries automatical
 completion, write any authority source, or present progress. A separate pure completion policy now
 returns an immutable provenance token only when one exact route entry contains every exact authored
 location and evidence member. It accepts any observation order, never pools partial progress across
-routes, and exposes no completion Boolean. Nothing observes or presents that token in the scene yet.
+routes, and exposes no completion Boolean. An inert scene owner can explicitly observe those tokens
+from the route controller's exact current snapshot, retain one token per exact route in observation
+order, and preserve previously accepted tokens when another route completes. A second inert scene
+owner can explicitly consume one exact accepted token once without removing or rebuilding it. Neither
+owner runs automatically, changes route progress or any authority source, selects a preferred route,
+presents completion, persists it, or triggers testimony, stabilization, or another gameplay effect.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
