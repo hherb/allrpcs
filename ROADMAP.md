@@ -147,7 +147,7 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 - [x] Author multiple investigation routes through the region.
 - [x] Author the first stabilization and subsequent testimony.
 - [x] Author the sage consultation recovery path.
-- [ ] Playtest for dead ends, clue visibility, pacing, dialogue overload, and disease pressure.
+- [x] Playtest for dead ends, clue visibility, pacing, dialogue overload, and disease pressure.
 
 Acceptance:
 

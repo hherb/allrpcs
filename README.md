@@ -1781,7 +1781,12 @@ never used as authority. Live capture appends missing exact heard recovery token
 content-safe persisted journal copy, retaining all existing entries, order, and section selection.
 Versions 1 through 7 migrate to not-heard. Switch-gated scene coverage captures all five boundaries
 from live controller state and proves one-shot continuation plus fail-closed incompatible progress
-without claiming a manual playtest.
+without substituting for direct play evidence. One uninterrupted fresh graphical checkpoint has now
+completed and acknowledged the Stream/laundry route, prepared and administered the full remedy, heard
+the patient testimony, consulted the sage, saved schema version 8, fully closed, reopened, and loaded.
+The restored UI reported `LOADED` and showed exactly one patient and one sage entry in the Testimony
+section. This closes the bounded Phase 8 playtest item without claiming the separate
+independent-new-player acceptance criterion.
 
 The second Phase 8 landmark scene is a temporary greybox healer's garden and preparation station.
 `OpeningRegionRemedyPreparationSceneBinding` accepts only the projection's exact retained
