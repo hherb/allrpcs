@@ -2,60 +2,40 @@
 
 ## Current state
 
-`main` now has direct graphical evidence for one uninterrupted Phase 8 opening-scenario checkpoint.
-The run used ordinary mapped input only, with character-model composition disabled, and completed
-the Stream/laundry investigation route before the first-patient recovery loop:
+Phase 8 implementation and repository-informed playtesting are complete on `main`. One acceptance
+gate remains open in `ROADMAP.md`: a genuinely new player must complete the opening scenario without
+developer intervention, objective arrows, a prescribed clue order, or unavailable character
+knowledge.
 
-- The first explicit M open initialized the safe map and route state; a second M closed the panel.
-  Visiting the Stream and abandoned laundry completed the route, and Return acknowledged it.
-- P started the remedy and advanced all four authored steps, completion, and batch installation. T
-  administered the batch after entering the sickhouse, and the patient testimony occurred in range.
-- The Seeker left the sickhouse, reached the labelled village sage, and K completed the
-  consultation. Q then reported `SAVED` with the full-close/reopen/L instruction.
-- The schema-8 `save-v1.json` retained stabilized disease state, recovery stage `sage-consulted`,
-  the consumed `stream-laundry` completion, and exactly two testimony entries in patient-then-sage
-  order.
-- After fully closing and reopening the game, L reported `LOADED`, restored the sage-consulted
-  status, and the visible Testimony section showed exactly one patient entry and one sage entry.
+The latest uninterrupted graphical checkpoint used ordinary mapped input and no character model.
+It completed the Stream/laundry investigation route, prepared and administered the remedy, heard
+the patient testimony, consulted the sage, saved, fully closed and reopened the game, and loaded the
+same state. The schema-8 save retained stabilized care, `sage-consulted`, consumed route progress,
+and patient-then-sage testimony; the reopened journal showed those two entries. This proves the flow
+works, but its repository-informed operator does not satisfy the independent-new-player gate.
 
-The Phase 8 playtest roadmap item is complete. The separate new-player acceptance item remains open:
-this checkpoint's operator knew the authored route and mapped controls, so it is not independent
-evidence that a genuinely new player can discover the complete flow unaided.
+## Current evidence and boundaries
 
-## Validation and review
-
-- The checkpoint ran graphically on Godot 4.6.3 Mono using the Compatibility renderer.
-- Direct screenshots captured route completion, batch readiness, heard testimony, sage consultation,
-  `SAVED`, `LOADED`, and the restored two-entry Testimony section.
-- The saved JSON independently confirmed schema 8, stabilized care, `sage-consulted`, complete and
-  consumed Stream/laundry progress, and the two ordered testimony records.
-- Final host-local `./scripts/quality.sh` passed the current tree with a zero-warning build, 2,839
-  Domain, 924 Application, 1,261 Infrastructure, and 8 architecture tests, the scenario validator,
-  every credential-free Godot smoke, and a graphical Compatibility launch.
-- Restricted Godot execution still fails at the known `user://logs` sandbox boundary; only an
-  identical authorized host-local retry is valid evidence.
-
-## Preserved boundaries
-
-- There is no autosave, multiple slot, file selection, path/content display, settings/provider-state
-  persistence, provider call, credential behavior, hidden disease exposure, conclusion inference,
-  prescribed clue order, production art/audio, broad tuning, Phase 9 implementation, release, or
-  signing.
-- Route progress retains only canonical location/evidence identities. Map and journal persistence
-  remains visibility-safe and exposes no coordinates, topology, authoritative hidden state, or
-  provider transcript.
-- Do not treat this repository-informed checkpoint as independent-new-player acceptance evidence.
+- Godot 4.6.3 Mono Compatibility screenshots cover route completion, remedy readiness, testimony,
+  sage consultation, `SAVED`, `LOADED`, and the restored journal.
+- Host-local `./scripts/quality.sh` passed a zero-warning build, 2,839 Domain, 924 Application,
+  1,261 Infrastructure, and 8 architecture tests, the scenario validator, every credential-free
+  Godot smoke, and a graphical launch. Restricted Godot still hits the known `user://logs` boundary.
+- Persistence remains visibility-safe: it stores canonical identities, not coordinates, topology,
+  hidden authoritative state, or provider transcripts.
+- Autosave, multiple slots, file selection, provider/settings persistence, credentials, provider
+  calls, production art/audio, Phase 9 implementation, release, and signing remain out of scope.
 
 ## Exact next bounded slice
 
-Run one independent-new-player fresh graphical acceptance checkpoint using only information visible
-in the game. Do not coach the route, reveal hidden state, prescribe clue order, edit state, or use
-developer controls. Ask the tester to complete any investigation route, the P/T/patient/K recovery
-loop, and the M/Q/full-close/reopen/L save checkpoint. Record route choice, false starts, requested
-help, clue and control discoverability, pacing, dialogue load, disease-pressure interpretation,
-completion, and exact save/load outcomes.
+Recruit one tester who has not used the repository or been taught the route. From a fresh graphical
+start, ask only that they complete any investigation route, the recovery loop, and a save/full
+close/reopen/load checkpoint using information visible in the game. Do not coach controls or route
+order, reveal hidden state, edit state, or use developer controls. Record route choice, false
+starts, help requested, clue/control discoverability, pacing, dialogue load, disease-pressure
+interpretation, completion, and exact save/load outcomes.
 
-If the tester completes the scenario without intervention or unavailable character knowledge,
-check the remaining Phase 8 acceptance item and leave one precise Phase 9.1 preview-only
-art-direction slice. If blocked, fix only the concrete observed blocker with focused switch-gated
-coverage and the complete quality spine, then repeat the independent checkpoint.
+If they finish without intervention or unavailable knowledge, check the final Phase 8 acceptance
+item and hand over one Phase 9.1 preview-only art-direction slice. If they are blocked, implement
+only the concrete observed blocker with focused switch-gated coverage plus `./scripts/quality.sh`,
+then repeat the independent checkpoint.
