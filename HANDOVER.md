@@ -41,6 +41,9 @@ completion is consumed or presented, and the multiple-route roadmap item remains
 - Final review checked the complete diff, exact-reference ownership, missing-progress behavior,
   one-shot routing/initialization, rejected-input preservation, closed public surfaces, file-size
   and 120-character limits, formatting, and whitespace. No issue remained.
+- Initial hosted PR run `36286879474` failed all five jobs before execution with `steps: []`. This is
+  Actions/account infrastructure evidence, not hosted product validation; the complete host-local
+  suite above remains the current product evidence.
 
 ## Preserved boundaries
 
