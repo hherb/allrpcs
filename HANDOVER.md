@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #411 at `bd26a25`. Branch
-`codex/phase-8-route-lifecycle-persistence` adds the bounded Phase 8 save-schema 7 slice:
+`codex/phase-8-route-lifecycle-persistence` is published as draft PR #412 and adds the bounded
+Phase 8 save-schema 7 slice:
 
 - Schema 7 retains only canonical route keys, ordered recorded location/evidence IDs, ordered
   accepted-completion route keys, and one optional consumed-completion route key. Labels,
@@ -37,6 +38,9 @@ stabilization, provider behavior, and the roadmap checkbox remain unchanged.
   zero-warning build, formatting verification, whitespace check, and all .NET suites passed at
   2,827 Domain, 906 Application, 1,255 Infrastructure, and 8 architecture tests. Product source was
   unchanged from the complete host-local Godot run except for smoke success-message wording.
+- Hosted run `36288528994` failed all five jobs before execution with `steps: []`. This is
+  Actions/account infrastructure evidence, not hosted product validation; the complete host-local
+  suite above remains the current product evidence.
 - Session review checked the complete diff, exact-reference ownership, atomic preflight/install,
   migration freshness, closed JSON shapes, ID-only data, file-size/120-character limits,
   formatting, and whitespace. It found and fixed divergent completion-lineage admission by
