@@ -34,6 +34,49 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
         seeker = GetNode<Seeker>("../Seeker");
     }
 
+    /// <inheritdoc />
+    public override void _PhysicsProcess(double delta)
+    {
+        _ = delta;
+        _ = TryVerifyCurrentVisit();
+    }
+
+    /// <summary>Verifies the first not-yet-verified anchor containing the live Seeker.</summary>
+    internal bool TryVerifyCurrentVisit()
+    {
+        if (map.Map is not { } currentMap
+            || map.Catalogue is not { } catalogue)
+        {
+            return false;
+        }
+
+        NumericsVector2 seekerPosition = ToNumerics(seeker.Position);
+        foreach (OpeningRegionAnchor anchor in projectionSource.Projection.Anchors)
+        {
+            MapLocationDefinition? location = catalogue.Locations.SingleOrDefault(candidate =>
+                string.Equals(
+                    candidate.Id.Value,
+                    anchor.Location.Identity.Id.Value,
+                    StringComparison.Ordinal));
+            if (location is null
+                || currentMap.VerifiedLocations.Any(candidate => ReferenceEquals(candidate, location))
+                || NumericsVector2.Distance(seekerPosition, anchor.Position) > VisitRadiusPixels)
+            {
+                continue;
+            }
+
+            return TryVerifyVisit(
+                currentMap,
+                seekerCharacter.Character.Identity.Id,
+                seekerPosition,
+                projectionSource.Projection,
+                anchor,
+                location);
+        }
+
+        return false;
+    }
+
     /// <summary>Verifies one explicitly supplied exact current anchor visit.</summary>
     public bool TryVerifyVisit(
         SeekerMapSnapshot expectedMap,

@@ -14,9 +14,11 @@ public partial class SeekerMapOpenCloseInputController : Node
     private SeekerMapPanel panel = null!;
     private SeekerMapNoteEditingController noteEditing = null!;
     private SeekerMapPresentationController presentations = null!;
+    private OpeningRegionInvestigationRouteObservationRoutingCoordinator routing = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
     private OpeningRegionOldShrineSceneSource shrineSource = null!;
     private SeekerMapController state = null!;
+    private OpeningRegionStreamResiduePassiveNoticingCoordinator streamResidue = null!;
     private TemporarySeekerCharacterSource seekerCharacter = null!;
     private Seeker seeker = null!;
     private Control? priorFocusOwner;
@@ -35,11 +37,15 @@ public partial class SeekerMapOpenCloseInputController : Node
             "../SeekerMapNoteEditingController");
         presentations = GetNode<SeekerMapPresentationController>(
             "../SeekerMapPresentationController");
+        routing = GetNode<OpeningRegionInvestigationRouteObservationRoutingCoordinator>(
+            "../OpeningRegionInvestigationRouteObservationRoutingCoordinator");
         routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
             "../OpeningRegionInvestigationRouteProgressController");
         shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
             "../OpeningRegionOldShrineSceneSource");
         state = GetNode<SeekerMapController>("../SeekerMapController");
+        streamResidue = GetNode<OpeningRegionStreamResiduePassiveNoticingCoordinator>(
+            "../OpeningRegionStreamResiduePassiveNoticingCoordinator");
         seekerCharacter = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
         seeker = GetNode<Seeker>("../Seeker");
@@ -152,13 +158,26 @@ public partial class SeekerMapOpenCloseInputController : Node
             currentPresentation = presentations.Presentation;
         }
 
-        if (currentPresentation is null
-            || routesToInitialize is not null
-                && !routeProgress.TryInitialize(
-                    routesToInitialize,
-                    locationCatalogue,
-                    shrineSource.DiscoveryScenario)
-            || !noteEditing.TryPresent(map, notes, currentPresentation)
+        if (currentPresentation is null)
+        {
+            return false;
+        }
+
+        if (routesToInitialize is not null
+            && !routeProgress.TryInitialize(
+                routesToInitialize,
+                locationCatalogue,
+                shrineSource.DiscoveryScenario))
+        {
+            return false;
+        }
+
+        if (!TryEnsureRetainedStreamResidueIsRouted())
+        {
+            return false;
+        }
+
+        if (!noteEditing.TryPresent(map, notes, currentPresentation)
             || !panel.TryPresent(currentPresentation))
         {
             return false;
@@ -173,6 +192,21 @@ public partial class SeekerMapOpenCloseInputController : Node
         presentedNotes = notes;
         isOpen = true;
         return true;
+    }
+
+    private bool TryEnsureRetainedStreamResidueIsRouted()
+    {
+        if (routeProgress.Progress is not { } progress
+            || streamResidue.EvidenceView is not { } evidenceView)
+        {
+            return false;
+        }
+
+        Allrpcs.Domain.Identifiers.EvidenceId residueId =
+            streamResidue.ResidueEvidence.EvidenceId;
+        return progress.Entries.Any(entry => entry.RecordedEvidenceIds.Any(candidate =>
+                ReferenceEquals(candidate, residueId)))
+            || routing.TryRouteVisibleEvidence(progress, evidenceView, residueId);
     }
 
     private bool TryClose()

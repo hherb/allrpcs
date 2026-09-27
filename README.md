@@ -767,12 +767,12 @@ existing note, then synchronously refresh the safe presentation while retaining 
 location. Empty, whitespace, stale, hidden, released, unrelated, repeated, rebuilt-owner, and null
 paths do not change map, note, presentation, panel, focus, movement, journal, or gameplay state.
 
-One explicit scene coordinator can verify one exact live opening-region visit without retaining or
-presenting coordinates. It requires the controller's exact current map, the current scene Seeker's
-exact identifier and position, the scene source's exact projection, one exact retained anchor, and
-the matching canonical map location. It delegates proximity to the existing pure visit projection
-with a named 24-pixel radius, then delegates only its coordinate-free token to the map controller.
-It does not scan anchors or run during ordinary movement; switch-gated validation is its only caller.
+One scene coordinator can verify one exact live opening-region visit without retaining or presenting
+coordinates. It requires the controller's exact current map, the current scene Seeker's exact
+identifier and position, the scene source's exact projection, one exact retained anchor, and the
+matching canonical map location. After map initialization, ordinary physics processing scans the
+authored anchors in projection order, submits only the first not-yet-verified anchor within the named
+24-pixel radius, and delegates only its coordinate-free visit token to the map controller.
 
 A separate explicit scene coordinator can report one canonical map location only from the exact
 current complete safe journal, its exact testimony section and retained authored copy, the exact
@@ -780,8 +780,8 @@ current Seeker, and the controller's exact current map. The pairing remains call
 not classify testimony text, delivery mode, or speaker, and it does not infer a location. Reporting
 and visit verification preserve source snapshots, promote reported locations when visited, add
 hidden verified locations, and retain canonical location order. There is still no automatic
-testimony reporting or visit capture, player-visible reporting choice, coordinate or topology
-exposure, provider call, or credential access.
+testimony reporting, player-visible reporting choice, coordinate or topology exposure, provider
+call, or credential access.
 
 The map has a closed visibility-safe persistence boundary. Pure capture accepts only an exact
 same-Seeker map and note pair backed by one exact catalogue, then retains only the Seeker identifier,
@@ -802,9 +802,11 @@ installing discovery, world events, memory, first-patient state, journal selecti
 fresh map composition. Serialized and isolated-storage checks cover populated report, verification,
 and note round trips, legacy empty-map migration, canonical rebinding, and unchanged controller state
 after malformed, unknown-location, or hidden-note rejection. Ordinary startup remains inert. The
-first explicit M-key map open initializes both the empty safe map and the three empty investigation
-routes from that exact map catalogue and the old-shrine discovery scenario; it does not advance a
-route. There is still no automatic visit/report behavior or coordinate/topology exposure.
+first explicit M-key map open initializes both the empty safe map and the three investigation routes
+from that exact map catalogue and the old-shrine discovery scenario. It also routes the exact
+already-noticed stream-residue evidence retained before route progress existed. Later physical
+anchor visits verify their safe map locations automatically. There is still no automatic testimony
+reporting or coordinate/topology exposure.
 
 The opening region now has three asset-neutral, provider-neutral investigation routes. The
 stream/laundry route retains only `stream`, `abandoned-laundry`, and `residue`; the shrine route
@@ -821,10 +823,11 @@ only explicitly supplied exact member locations or evidence identities. Each suc
 returns a fresh bounded snapshot, preserves every unrelated entry, and does not infer or expose
 route completion. An inert scene controller can initialize this validated catalogue once and install
 those explicit operations through expected-state compare-and-swap. Ordinary startup does not
-initialize or advance it. The first successful explicit map open performs the one-shot initialization
-from the map's exact catalogue and the old-shrine scene's exact discovery scenario; later map opens
-retain the exact current progress. Initialization does not start discovery, reveal evidence, change
-first-patient state, write the journal, call a provider, or present route progress.
+initialize it. The first successful explicit map open performs the one-shot initialization from the
+map's exact catalogue and the old-shrine scene's exact discovery scenario, then records only the
+exact retained stream-residue evidence view; later map opens retain the exact current progress.
+Initialization does not start discovery, reveal new evidence, change first-patient state, write the
+journal, call a provider, or present route progress.
 
 A separate pure authority transition accepts a route location only when the exact supplied map
 definition is in the exact supplied `SeekerMapSnapshot` verified-location view and its identifier is
@@ -846,15 +849,16 @@ routes; repeated discovery does not route twice.
 
 The same representative discovery scenario is now shared with the live world-object composition.
 Its exact stream-residue candidate resolves once through the established passive-noticing sequence,
-advances only the exact residue object from unnoticed to noticed, filters the resulting evidence view
-to the exact `residue` identity, and submits it only when route progress is already active. The exact
-representative wagon clue is retained by the live world-object controller and one focus target at the
+advances only the exact residue object from unnoticed to noticed, and filters the resulting evidence
+view to the exact `residue` identity. It submits immediately when route progress is active; otherwise
+the first successful map open routes that same retained exact view after initializing progress. The
+exact representative wagon clue is retained by the live world-object controller and one focus target at the
 authored abandoned-wagon anchor. The existing F/E/R focused-search lifecycle applies the scenario's
 exact field-lens requirement, advances only that object to identified, filters the view to exact
 `tool-gated-clue` evidence, and then performs the same optional route submission. Missing progress
-preserves both successful discoveries without initializing routes; stale, rebuilt, foreign,
+preserves successful discoveries without implicitly initializing routes; stale, rebuilt, foreign,
 unresolved, repeated, unseen, and nonmember paths remain inert. Testimony is still unwired, and
-observed completion tokens remain unconsumed and do not trigger another gameplay effect.
+observed completion tokens remain unconsumed until the explicit acknowledgement control is used.
 
 A separate pure completion policy returns an immutable provenance token only when one exact route
 entry contains every exact authored location and evidence member. It accepts any observation order,

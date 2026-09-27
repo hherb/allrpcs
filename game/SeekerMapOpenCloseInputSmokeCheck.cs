@@ -121,7 +121,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             ?? throw new InvalidOperationException("Map input did not initialize notes.");
         SeekerMapPresentationSnapshot emptyPresentation = presentations.Presentation
             ?? throw new InvalidOperationException("Map input did not project empty state.");
-        OpeningRegionInvestigationRouteProgressSnapshot emptyRouteProgress =
+        OpeningRegionInvestigationRouteProgressSnapshot initialRouteProgress =
             routeProgress.Progress
             ?? throw new InvalidOperationException("Map input did not initialize route progress.");
         if (!ReferenceEquals(emptyMap.SeekerId, seekerSource.Character.Identity.Id)
@@ -130,8 +130,8 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             || emptyMap.VerifiedLocations.Count != 0
             || emptyNotes.Notes.Count != 0
             || emptyPresentation.Locations.Count != 0
-            || !HasExactEmptyRoutes(
-                emptyRouteProgress,
+            || !HasExactInitialRoutes(
+                initialRouteProgress,
                 state.Catalogue!,
                 shrineSource.DiscoveryScenario)
             || routeCompletions.AcceptedCompletions.Count != 0
@@ -153,7 +153,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         if (!panel.Visible
             || !ReferenceEquals(state.Map, emptyMap)
             || !ReferenceEquals(state.Notes, emptyNotes)
-            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress)
+            || !ReferenceEquals(routeProgress.Progress, initialRouteProgress)
             || !ReferenceEquals(presentations.Presentation, emptyPresentation)
             || !ReferenceEquals(panel.Presentation, emptyPresentation)
             || !close.HasFocus()
@@ -223,7 +223,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             || !ReferenceEquals(journal.Journal, openedJournal)
             || !ReferenceEquals(state.Map, reportedMap)
             || !ReferenceEquals(state.Notes, notes)
-            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress)
+            || !ReferenceEquals(routeProgress.Progress, initialRouteProgress)
             || !ReferenceEquals(presentations.Presentation, changedPresentation))
         {
             Fail("Journal input changed state while the map owned modal interaction.");
@@ -244,7 +244,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             || !ReferenceEquals(state.Notes, notes)
             || !ReferenceEquals(presentations.Presentation, changedPresentation)
             || !ReferenceEquals(panel.Presentation, changedPresentation)
-            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress)
+            || !ReferenceEquals(routeProgress.Progress, initialRouteProgress)
             || routeCompletions.AcceptedCompletions.Count != 0
             || !ReferenceEquals(focusedSearch.Perception, perception)
             || !ReferenceEquals(worldObjects.WorldObjects, objects)
@@ -295,13 +295,18 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         Pressed = pressed,
     };
 
-    private static bool HasExactEmptyRoutes(
+    private static bool HasExactInitialRoutes(
         OpeningRegionInvestigationRouteProgressSnapshot progress,
         OpeningRegionMapLocationCatalogue locations,
         Allrpcs.Domain.Discovery.DiscoveryScenario scenario) =>
         progress.Entries.Count == 3
+        && progress.Entries[0].RecordedEvidenceIds.Count == 1
+        && ReferenceEquals(
+            progress.Entries[0].RecordedEvidenceIds[0],
+            scenario.Evidence.Entries.Single(evidence =>
+                evidence.EvidenceId.Value == "residue").EvidenceId)
+        && progress.Entries.Skip(1).All(entry => entry.RecordedEvidenceIds.Count == 0)
         && progress.Entries.All(entry => entry.RecordedLocationIds.Count == 0
-            && entry.RecordedEvidenceIds.Count == 0
             && entry.Route.LocationIds.All(locationId => locations.Locations.Any(location =>
                 ReferenceEquals(location.Id, locationId)))
             && entry.Route.EvidenceIds.All(evidenceId => scenario.Evidence.Entries.Any(evidence =>

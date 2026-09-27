@@ -183,13 +183,7 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
         }
 
         seeker.Position = ToGodot(streamAnchor.Position);
-        if (!coordinator.TryVerifyVisit(
-                reportedMap,
-                seekerId,
-                streamPosition,
-                projection,
-                streamAnchor,
-                stream)
+        if (!coordinator.TryVerifyCurrentVisit()
             || !ReferenceEquals(map.Notes, emptyNotes)
             || map.Map is null)
         {
@@ -229,13 +223,7 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
 
         seeker.Position = ToGodot(laundryAnchor.Position);
         NumericsVector2 laundryPosition = ToNumerics(seeker.Position);
-        if (!coordinator.TryVerifyVisit(
-                streamVerified,
-                seekerId,
-                laundryPosition,
-                projection,
-                laundryAnchor,
-                laundry)
+        if (!coordinator.TryVerifyCurrentVisit()
             || !ReferenceEquals(map.Notes, emptyNotes)
             || map.Map is null)
         {
@@ -327,7 +315,7 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
             .Select(method => method.Name)
             .Order(StringComparer.Ordinal)
             .ToArray();
-        return methods.SequenceEqual(["TryVerifyVisit", "_Ready"])
+        return methods.SequenceEqual(["TryVerifyVisit", "_PhysicsProcess", "_Ready"])
             && type.GetProperties(
                 System.Reflection.BindingFlags.Public
                 | System.Reflection.BindingFlags.Instance
