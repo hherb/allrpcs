@@ -16,6 +16,8 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
     private FirstPatientStateController firstPatient = null!;
     private FocusedSearchActivityController focusedSearch = null!;
     private JournalController journal = null!;
+    private OpeningRegionFirstPatientStabilizationTestimonyCoordinator patientTestimony = null!;
+    private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
     private TemporaryFirstPatientTreatmentContextSource treatmentContext = null!;
     private WorldObjectController worldObjects = null!;
 
@@ -27,6 +29,11 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
         focusedSearch = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         journal = GetNode<JournalController>("../JournalController");
+        patientTestimony =
+            GetNode<OpeningRegionFirstPatientStabilizationTestimonyCoordinator>(
+                "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
+        sageConsultation = GetNode<OpeningRegionSageConsultationInputCoordinator>(
+            "../OpeningRegionSageConsultationInputCoordinator");
         treatmentContext = GetNode<TemporaryFirstPatientTreatmentContextSource>(
             "../TemporaryFirstPatientTreatmentContextSource");
         worldObjects = GetNode<WorldObjectController>("../WorldObjectController");
@@ -52,7 +59,7 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
             JournalSnapshot snapshot = Compose(
                 perception,
                 objects,
-                dialogue.LastOccurredEvent,
+                GetTestimonyEvents(),
                 context,
                 experiments);
             return journal.TryInitialize(snapshot);
@@ -70,7 +77,7 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
     private static JournalSnapshot Compose(
         CharacterPerceptionSnapshot perception,
         WorldObjectSnapshot worldObjects,
-        DialogueEvent? lastDialogueEvent,
+        IReadOnlyList<DialogueEvent> dialogueEvents,
         FirstPatientTreatmentContext treatmentContext,
         ExperimentJournalSnapshot experiments)
     {
@@ -90,12 +97,9 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
         JournalSnapshot snapshot = JournalSnapshotProjection.Compose(
             catalogue,
             JournalObservationSectionSnapshotProjection.Project(observationWorld));
-        IEnumerable<DialogueEvent> testimony = lastDialogueEvent is null
-            ? []
-            : [lastDialogueEvent];
         JournalTestimonySectionSnapshot testimonySection =
             JournalTestimonySectionSnapshotProjection.Project(
-                JournalTestimonySectionProjection.Bind(snapshot, testimony));
+                JournalTestimonySectionProjection.Bind(snapshot, dialogueEvents));
         snapshot = JournalTestimonySnapshotProjection.Compose(snapshot, testimonySection);
 
         IReadOnlyList<InvestigationConclusionEvidencePlan> plans =
@@ -121,5 +125,23 @@ public partial class RepresentativeJournalCompositionCoordinator : Node
             JournalOpenQuestionSectionSnapshotProjection.Project(
                 JournalOpenQuestionSectionProjection.Bind(snapshot, openQuestions));
         return JournalOpenQuestionSnapshotProjection.Compose(snapshot, questionSection);
+    }
+
+    private DialogueEvent[] GetTestimonyEvents()
+    {
+        List<DialogueEvent> events = [];
+        AddDistinct(events, patientTestimony.Testimony);
+        AddDistinct(events, sageConsultation.Consultation);
+        AddDistinct(events, dialogue.LastOccurredEvent);
+        return [.. events];
+    }
+
+    private static void AddDistinct(List<DialogueEvent> events, DialogueEvent? candidate)
+    {
+        if (candidate is not null
+            && !events.Any(existing => ReferenceEquals(existing, candidate)))
+        {
+            events.Add(candidate);
+        }
     }
 }

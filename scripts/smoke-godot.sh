@@ -16,8 +16,16 @@ ALLRPCS_OPENING_REGION_FIRST_PATIENT_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_SICKHOUSE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_OPENING_REGION_FIRST_PATIENT_ADMINISTRATION_INPUT_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OPENING_REGION_FIRST_PATIENT_STABILIZATION_TESTIMONY_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OPENING_REGION_SAGE_CONSULTATION_INPUT_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OPENING_REGION_REMEDY_PREPARATION_SCENE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_OPENING_REGION_REMEDY_PREPARATION_INPUT_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OPENING_REGION_VILLAGE_TRANSITION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_STREAM_LAUNDRY_CHECK=1 \

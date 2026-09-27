@@ -1,4 +1,4 @@
-[gd_scene load_steps=310 format=3]
+[gd_scene load_steps=318 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -496,6 +496,14 @@
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionPresentationCoordinator.cs" id="384_route_completion_presentation"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionPanel.cs" id="385_route_completion_panel"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionPresentationSmokeCheck.cs" id="386_route_completion_presentation_check"]
+[ext_resource type="Script" path="res://OpeningRegionRemedyPreparationInputCoordinator.cs" id="387_remedy_preparation_input"]
+[ext_resource type="Script" path="res://OpeningRegionRemedyPreparationInputSmokeCheck.cs" id="388_remedy_preparation_input_check"]
+[ext_resource type="Script" path="res://OpeningRegionFirstPatientAdministrationInputCoordinator.cs" id="389_patient_administration_input"]
+[ext_resource type="Script" path="res://OpeningRegionFirstPatientAdministrationInputSmokeCheck.cs" id="390_patient_administration_input_check"]
+[ext_resource type="Script" path="res://OpeningRegionFirstPatientStabilizationTestimonyCoordinator.cs" id="391_patient_testimony"]
+[ext_resource type="Script" path="res://OpeningRegionFirstPatientStabilizationTestimonySmokeCheck.cs" id="392_patient_testimony_check"]
+[ext_resource type="Script" path="res://OpeningRegionSageConsultationInputCoordinator.cs" id="393_sage_consultation"]
+[ext_resource type="Script" path="res://OpeningRegionSageConsultationInputSmokeCheck.cs" id="394_sage_consultation_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2065,6 +2073,30 @@ horizontal_alignment = 1
 
 [node name="OpeningRegionRemedyPreparationSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("311_opening_region_remedy_preparation_scene_check")
+
+[node name="OpeningRegionRemedyPreparationInputCoordinator" type="Node" parent="."]
+script = ExtResource("387_remedy_preparation_input")
+
+[node name="OpeningRegionRemedyPreparationInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("388_remedy_preparation_input_check")
+
+[node name="OpeningRegionFirstPatientAdministrationInputCoordinator" type="Node" parent="."]
+script = ExtResource("389_patient_administration_input")
+
+[node name="OpeningRegionFirstPatientAdministrationInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("390_patient_administration_input_check")
+
+[node name="OpeningRegionFirstPatientStabilizationTestimonyCoordinator" type="Node" parent="."]
+script = ExtResource("391_patient_testimony")
+
+[node name="OpeningRegionFirstPatientStabilizationTestimonySmokeCheck" type="Node" parent="."]
+script = ExtResource("392_patient_testimony_check")
+
+[node name="OpeningRegionSageConsultationInputCoordinator" type="Node" parent="."]
+script = ExtResource("393_sage_consultation")
+
+[node name="OpeningRegionSageConsultationInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("394_sage_consultation_check")
 
 [node name="OpeningRegionVillageTransitionSceneSource" type="Node2D" parent="."]
 script = ExtResource("312_opening_region_village_transition_scene")

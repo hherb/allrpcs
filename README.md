@@ -1714,16 +1714,36 @@ entrance at least twice the 24-pixel route clearance, and the exact sickhouse an
 approach. Five collision-backed wall sections replace the former rectangle. The synchronized navigation
 surface admits the entrance corridor and room interior while excluding wall clearance, and the pure
 route policy rejects wall-crossing or out-of-bounds paths. A main-scene proof routes the Seeker into the
-room, to the patient approach, and back out. Disease and treatment state remain unchanged; interaction,
-dialogue, focus, discovery, production art, weather, sound, and story-state variations remain deferred.
+room, to the patient approach, and back out. After the exact remedy batch is prepared, the mapped T
+action can administer its full remaining quantity only while the Seeker is within 48 pixels of the exact
+current patient and the scene retains the exact binding, treatment context, batch, disease truth, and
+authored administration event. That one provider-neutral operation atomically consumes the batch,
+stabilizes the deep-sleep infection, advances the exact world event, and records both administration and
+universal experiments. Far, stale, rebuilt, wrong-context, repeated, released, and unrelated inputs are
+inert. The exact stabilized administration then authorizes one fixed provider-neutral patient testimony
+heard only by the in-range Seeker: it exposes ordinary authored copy, not disease truth or provider
+content, and remains one-shot. Focus, discovery, persistence changes, and production art remain
+deferred. Once that exact testimony has been heard, the mapped K action can consult
+the existing village sage only within 64 pixels of the sage marker. One fixed provider-neutral reply
+preserves the redundant stream, shrine, and wagon investigation routes instead of prescribing a clue
+order; exact stabilized disease state, administration record, retained testimony, sage, Seeker, and
+positions are all required. The consultation is one-shot and does not invoke a model, mutate truth,
+choose evidence, or change persistence. Explicit journal composition retains the exact patient
+testimony followed by the exact sage consultation, deduplicates the current last event by reference,
+and uses the existing visibility-safe journal persistence shape without a schema change.
 
 The second Phase 8 landmark scene is a temporary greybox healer's garden and preparation station.
 `OpeningRegionRemedyPreparationSceneBinding` accepts only the projection's exact retained
 `healer-garden` anchor, the structurally valid first-patient context and its exact remedy recipe, and a
 station position within 72 pixels. The reachable scene shows garden beds, a bench, and mortar without
-starting or advancing preparation. The switch-gated proof retains the ordinary controller's exact recipe
-while its activity and outcome remain absent; ingredient interaction, preparation input, discovery,
-dialogue, treatment, production art, and state variation remain deferred.
+starting or advancing preparation. The mapped P action now advances one provider-neutral ordinary flow
+only while the Seeker is within 48 pixels of the exact current station and the scene retains the exact
+current binding, treatment context, recipe, ingredient state, and complete first-patient state. Each
+press starts the recipe, advances exactly one next authored grinding, heating, steeping, or cooling step,
+completes the exact activity, or installs its exact full prepared batch. Far, stale, rebuilt,
+wrong-context, repeated, released, and unrelated inputs are inert. Apothecary access remains optional
+and additive; this flow does not administer a dose, stabilize the patient, write journals, persist new
+state, call a provider, or add production presentation.
 
 The village-square and village-edge transition scene binds only the projection's exact retained anchors
 to separate bounded areas with 24-pixel endpoint clearance. Thirteen collision-backed boundary sections
