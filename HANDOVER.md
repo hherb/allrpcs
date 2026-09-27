@@ -2,70 +2,66 @@
 
 ## Current state
 
-This direct-main continuation completes the representative ordinary first-patient recovery loop after
-the investigation-route completion work that was already on `main` at `dbdc63f`:
+This direct-main continuation closes automated save/reopen continuity for the representative
+ordinary first-patient recovery loop:
 
-- Physical `P` input at the exact healer-garden station advances one authored preparation transition
-  per press and installs the single full first-remedy batch. Apothecary access remains optional.
-- Physical `T` input beside the exact patient administers that batch once through the existing
-  application controller, records the authored administration event and experiment, and atomically
-  stabilizes the patient.
-- Exact stabilization emits one fixed provider-neutral ordinary patient testimony to the in-range
-  Seeker. Physical `K` input beside the sage then emits one fixed provider-neutral recovery hint from
-  the exact heard testimony and latest exact administration.
-- The representative journal copies the patient testimony and sage consultation in order without
-  duplicating the dialogue controller's latest event. It retains only safe authored content.
-- `ROADMAP.md` now marks the first-patient stabilization/testimony and non-blocking sage-consultation
-  objectives complete. The final Phase 8 playtest/tuning objective remains open.
+- Save schema 8 retains one closed recovery stage: `not-heard`,
+  `patient-testimony-heard`, or `sage-consulted`. Versions 1-7 migrate to the inert not-heard stage.
+- Saves captured before preparation reset the transient activity to exact authored initial
+  ingredients. A restored full batch retains its rebound exact completed preparation and can be
+  administered once; a preparation already used by an administration cannot be installed again.
+- Restoring untouched disease state reuses the exact authored initial snapshot only when every
+  disease-state field matches. Progressed disease truth remains freshly rebound.
+- Post-stabilization restore leaves testimony pending. Post-testimony and post-consultation restores
+  rebuild exact one-shot runtime tokens only from the closed stage plus canonical treatment,
+  administration-event, patient, sage, and Seeker provenance.
+- Capture appends the exact heard runtime recovery events to fresh content-safe journal save state,
+  preserving existing entries and selection without using journal text as recovery authority.
+- The switch-gated main-scene proof captures and restores all five boundaries: before preparation,
+  full prepared batch, immediately after stabilization, after testimony, and after consultation.
+  Each state continues once or stays complete; an incompatible stage fails before scene mutation.
 
 ## Validation and review
 
-- Post-review host-local `./scripts/quality.sh` passed formatting, a zero-warning build, 2,827 Domain,
-  916 Application, 1,255 Infrastructure, and 8 architecture tests, the five-evidence scenario
+- Post-review host-local `./scripts/quality.sh` passed formatting, a zero-warning build, 2,839 Domain,
+  924 Application, 1,261 Infrastructure, and 8 architecture tests, the five-evidence scenario
   validator, every credential-free Godot smoke, and the graphical Compatibility launch.
-- The four new ordinary-scene smokes cover preparation, administration, testimony, and consultation
-  startup, exact provenance/range, one-shot behavior, rejection paths, and unrelated-state isolation.
-- Session review checked the complete diff, scene order, mapped input, fixed-copy/provider boundary,
-  exact-reference authority, journal order, documentation, whitespace, 120-character limits, and
-  practical file sizes. It fixed ambiguous multi-batch input, tied testimony to the exact treatment
-  context, accepted the latest exact administration after earlier experiments, and preserved both
-  treatment dialogue entries in the journal. No known issue remains inside this session's boundary.
-- Restricted direct Godot execution still hits the known `user://logs` sandbox boundary; identical
-  host-local smokes and the full host-local quality run passed.
+- Focused schema, migration, strict JSON, journal-copy, canonical-token restoration, authored initial
+  disease reuse, capture, restoration, and serialized-save regression coverage passed.
+- Session review inspected the complete diff, strict schema shapes and migrations, exact-reference
+  authority, atomic rejection, safe journal ordering, scene dependency order, line lengths, file
+  sizes, documentation, and whitespace. It fixed authored initial disease identity after restore and
+  stale already-open journal capture. No known issue remains inside this automated boundary.
+- Restricted direct Godot execution still hits the known `user://logs` sandbox boundary; the
+  identical host-local smoke and full quality run passed.
 
-## Preserved boundaries and known continuation gap
+## Preserved boundaries
 
-- No provider, hidden disease truth, conclusion inference, route choice, clue ordering, background
-  requirement, production UI, or save schema was added. No manual playtest or release claim is made.
-- Preparation activity and the scene coordinators' one-shot testimony/consultation tokens are not new
-  persistence fields. Existing safe journal content still persists through the current schema.
-- Save restoration rebuilds first-patient state while ordinary treatment input intentionally uses
-  exact live provenance. Save/reopen continuity at the new preparation, administration, testimony,
-  and consultation boundaries has not been proven and must not be inferred from the automated fresh
-  scene smokes.
-- Do not release, sign, notarize, publish a build, invoke credential-backed providers, change remote
-  services, or make other remote changes without separate authorization.
+- No provider, hidden disease truth, conclusion inference, clue-order prescription, production UI,
+  tuning change, release, signing, or remote-service behavior was added.
+- Schema 8 retains only the closed recovery stage. It does not serialize dialogue text as authority,
+  runtime dialogue graphs, preparation activities, positions, UI, providers, or credentials.
+- Automated smokes do not prove a new player's end-to-end experience, pacing, clue visibility,
+  dialogue load, disease pressure, signing, release readiness, or provider-backed behavior.
+- Do not release, sign, notarize, publish a build, invoke credential-backed providers, or change
+  remote services without separate authorization.
 
 ## Exact next bounded slice
 
-Prove and, only where required, close save/reopen continuity for the new ordinary first-patient
-recovery loop. Stop before general Phase 8 tuning, new UI, additional dialogue, or provider work.
+Run the first instrumented fresh-save manual end-to-end Phase 8 playtest. Stop before Phase 9,
+production art/audio, provider work, broad tuning, or release activity.
 
 Acceptance boundary:
 
-1. Add switch-gated restore-path coverage for saves captured before preparation, with a full prepared
-   batch before administration, immediately after stabilization, after patient testimony, and after
-   sage consultation. Each restored state must either continue the exact remaining steps once or
-   remain correctly complete without replaying an already persisted safe journal entry.
-2. Rebind restored state to the current authored treatment context through existing canonical
-   definitions. Do not weaken exact-reference checks, compare by free text, or let a rebuilt/foreign
-   recipe, patient, disease, batch, event, testimony, or consultation acquire authority.
-3. Prefer the existing schema when it already contains enough durable truth. Add only the minimum
-   explicit durable marker if an exact one-shot boundary cannot otherwise be reconstructed safely;
-   migrate older versions to the inert/default meaning and cover serialization and atomic restore.
-4. Rejected malformed, stale, rebuilt, foreign, repeated, and incompatible restores must preserve
-   disease truth, batches, both experiment journals, world events, safe journal order, map and route
-   state, dialogue, movement, and unrelated presentation.
-5. Update the handover with the observed restore behavior and leave the first instrumented manual
-   end-to-end Phase 8 playtest as the next slice. Do not mark the remaining roadmap playtest complete
-   from automated evidence alone.
+1. Launch the current graphical Compatibility build with ordinary startup settings and create one
+   fresh customized Seeker. Record the chosen background and route decisions.
+2. Without developer-only state injection, objective arrows, a prescribed clue order, or knowledge
+   unavailable to the Seeker, complete one valid investigation route, prepare and administer the
+   remedy, hear the patient testimony, and complete the optional sage consultation.
+3. Exercise one real save/close/reopen boundary during that run and confirm the remaining ordinary
+   steps continue once without duplicate safe journal testimony or replayed completed dialogue.
+4. Record concrete observations for dead ends, clue visibility, pacing, dialogue overload, and
+   disease pressure. Distinguish observed manual evidence from automated coverage.
+5. If the run exposes a blocker, document the smallest reproducible next fix instead of broadening
+   into general tuning. Mark the remaining Phase 8 roadmap playtest and acceptance items complete
+   only if the manual evidence actually satisfies them.

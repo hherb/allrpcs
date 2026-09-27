@@ -68,7 +68,8 @@ public sealed class MapSaveStateJsonPersistenceTests
             SaveSnapshotJsonSerializer.Serialize(source),
             InitialFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.InvestigationRoutes, first.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.FirstPatientRecovery, first.SchemaVersion);
+        Assert.Same(FirstPatientRecoveryStage.NotHeard, first.FirstPatientRecovery);
         Assert.Equal(source.Discovery.Perception.CharacterId, first.Map!.SeekerId);
         Assert.Empty(first.Map.ReportedLocationIds);
         Assert.Empty(first.Map.VerifiedLocationIds);

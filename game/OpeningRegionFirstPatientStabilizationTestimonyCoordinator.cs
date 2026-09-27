@@ -146,4 +146,9 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
+
+    internal void InstallRestored(DialogueEvent? testimony)
+    {
+        Testimony = testimony;
+    }
 }

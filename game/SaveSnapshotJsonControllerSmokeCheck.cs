@@ -148,7 +148,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":7",
+            "\"schemaVersion\":8",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
         string unknownMapLocation = initial.Replace(

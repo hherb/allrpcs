@@ -106,7 +106,14 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                 : preparation.TryComplete();
         }
 
-        return state.TryAddPreparedBatch(requestedContext, preparation.Outcome);
+        IngredientPreparationOutcome outcome = preparation.Outcome;
+        if (state.AdministrationExperiments?.Records.Any(record =>
+                ReferenceEquals(record.Administration.Dosage.Preparation, outcome)) == true)
+        {
+            return false;
+        }
+
+        return state.TryAddPreparedBatch(requestedContext, outcome);
     }
 
     private bool RetainsExactFirstPatientState(FirstPatientSaveState requested) =>

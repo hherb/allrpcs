@@ -1,3 +1,4 @@
+using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
@@ -14,6 +15,8 @@ namespace Allrpcs.Game;
 public partial class SaveSnapshotCaptureController : Node
 {
     private FocusedSearchActivityController discoveryController = null!;
+    private OpeningRegionFirstPatientStabilizationTestimonyCoordinator patientTestimony = null!;
+    private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
     private FirstPatientStateController firstPatientController = null!;
     private CharacterMemoryController memoryController = null!;
     private JournalController journalController = null!;
@@ -30,6 +33,10 @@ public partial class SaveSnapshotCaptureController : Node
     {
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
+        patientTestimony = GetNode<OpeningRegionFirstPatientStabilizationTestimonyCoordinator>(
+            "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
+        sageConsultation = GetNode<OpeningRegionSageConsultationInputCoordinator>(
+            "../OpeningRegionSageConsultationInputCoordinator");
         firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         journalController = GetNode<JournalController>("../JournalController");
@@ -88,16 +95,22 @@ public partial class SaveSnapshotCaptureController : Node
         JournalSaveState journalState;
         MapSaveState mapState;
         InvestigationRouteSaveState routeState;
+        FirstPatientRecoveryStage recoveryStage;
         try
         {
             journalState = JournalSaveStateCaptureProjection.Capture(
                 journal,
                 journalSelection.Selection);
+            journalState = FirstPatientRecoveryJournalSaveStateProjection.Project(
+                journalState,
+                patientTestimony.Testimony,
+                sageConsultation.Consultation);
             mapState = MapSaveStateCaptureProjection.Capture(map, mapNotes);
             routeState = InvestigationRouteSaveStateCaptureProjection.Capture(
                 routes,
                 routeCompletions.AcceptedCompletions,
                 routeConsumption.ConsumedCompletion);
+            recoveryStage = CaptureRecoveryStage();
         }
         catch (ArgumentException)
         {
@@ -112,13 +125,32 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
         return new SaveSnapshot(
-            SaveSchemaVersion.InvestigationRoutes,
+            SaveSchemaVersion.FirstPatientRecovery,
             discovery,
             eventState,
             memory,
             firstPatient,
             journalState,
             mapState,
-            routeState);
+            routeState,
+            recoveryStage);
+    }
+
+    private FirstPatientRecoveryStage CaptureRecoveryStage()
+    {
+        if (sageConsultation.Consultation is not null)
+        {
+            if (patientTestimony.Testimony is null)
+            {
+                throw new InvalidOperationException(
+                    "Sage consultation cannot precede the patient testimony.");
+            }
+
+            return FirstPatientRecoveryStage.SageConsulted;
+        }
+
+        return patientTestimony.Testimony is null
+            ? FirstPatientRecoveryStage.NotHeard
+            : FirstPatientRecoveryStage.PatientTestimonyHeard;
     }
 }

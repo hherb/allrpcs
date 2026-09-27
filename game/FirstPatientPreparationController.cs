@@ -1,4 +1,5 @@
 using Allrpcs.Domain.Ingredients;
+using Allrpcs.Domain.Persistence;
 using Godot;
 
 namespace Allrpcs.Game;
@@ -6,6 +7,8 @@ namespace Allrpcs.Game;
 /// <summary>Owns one bounded first-patient ingredient-preparation lifecycle.</summary>
 public partial class FirstPatientPreparationController : Node
 {
+    private IngredientStateSnapshot? initialIngredients;
+
     /// <summary>Gets the exact authored recipe, if initialized.</summary>
     public IngredientPreparationRecipe? Recipe { get; private set; }
 
@@ -36,6 +39,7 @@ public partial class FirstPatientPreparationController : Node
 
         Recipe = recipe;
         Ingredients = ingredients;
+        initialIngredients = ingredients;
         return true;
     }
 
@@ -110,5 +114,46 @@ public partial class FirstPatientPreparationController : Node
         {
             return false;
         }
+    }
+
+    /// <summary>Reconstructs transient preparation state from durable first-patient state.</summary>
+    internal void InstallRestored(FirstPatientSaveState state)
+    {
+        ArgumentNullException.ThrowIfNull(state);
+
+        IngredientPreparationRecipe? recipe = Recipe;
+        IngredientStateSnapshot? initial = initialIngredients;
+        if (recipe is null || initial is null)
+        {
+            throw new InvalidOperationException(
+                "Preparation restoration requires initialized authored ingredients.");
+        }
+
+        IngredientPreparationOutcome? retainedPreparation =
+            state.AdministrationExperiments.Records.Count > 0
+                ? state.AdministrationExperiments.Records[^1].Administration.Dosage.Preparation
+                : state.PreparedBatches.Batches.Count == 0
+                    ? null
+                    : state.PreparedBatches.Batches[0].Preparation;
+        if (retainedPreparation is null)
+        {
+            Ingredients = initial;
+            Activity = null;
+            Outcome = null;
+            return;
+        }
+
+        if (!ReferenceEquals(retainedPreparation.Activity.Recipe, recipe))
+        {
+            throw new InvalidOperationException(
+                "Restored preparation must retain the exact authored recipe.");
+        }
+
+        IngredientPreparationStartResult started = IngredientPreparationStartTransition.Start(
+            recipe,
+            initial);
+        Ingredients = started.Ingredients;
+        Activity = retainedPreparation.Activity;
+        Outcome = retainedPreparation;
     }
 }

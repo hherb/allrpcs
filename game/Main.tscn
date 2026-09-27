@@ -504,6 +504,7 @@
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientStabilizationTestimonySmokeCheck.cs" id="392_patient_testimony_check"]
 [ext_resource type="Script" path="res://OpeningRegionSageConsultationInputCoordinator.cs" id="393_sage_consultation"]
 [ext_resource type="Script" path="res://OpeningRegionSageConsultationInputSmokeCheck.cs" id="394_sage_consultation_check"]
+[ext_resource type="Script" path="res://OpeningRegionFirstPatientRecoveryRestorationSmokeCheck.cs" id="395_recovery_restoration_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -2097,6 +2098,9 @@ script = ExtResource("393_sage_consultation")
 
 [node name="OpeningRegionSageConsultationInputSmokeCheck" type="Node" parent="."]
 script = ExtResource("394_sage_consultation_check")
+
+[node name="OpeningRegionFirstPatientRecoveryRestorationSmokeCheck" type="Node" parent="."]
+script = ExtResource("395_recovery_restoration_check")
 
 [node name="OpeningRegionVillageTransitionSceneSource" type="Node2D" parent="."]
 script = ExtResource("312_opening_region_village_transition_scene")

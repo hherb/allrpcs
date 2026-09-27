@@ -14,6 +14,7 @@ public sealed class SaveSchemaVersionTests
         Assert.Equal(5, SaveSchemaVersion.Journal.Value);
         Assert.Equal(6, SaveSchemaVersion.Map.Value);
         Assert.Equal(7, SaveSchemaVersion.InvestigationRoutes.Value);
+        Assert.Equal(8, SaveSchemaVersion.FirstPatientRecovery.Value);
         Assert.Same(SaveSchemaVersion.FirstSupported, SaveSchemaVersion.FirstSupported);
         Assert.Same(SaveSchemaVersion.CharacterMemory, SaveSchemaVersion.CharacterMemory);
         Assert.Same(SaveSchemaVersion.FirstPatient, SaveSchemaVersion.FirstPatient);
@@ -21,6 +22,7 @@ public sealed class SaveSchemaVersionTests
         Assert.Same(SaveSchemaVersion.Journal, SaveSchemaVersion.Journal);
         Assert.Same(SaveSchemaVersion.Map, SaveSchemaVersion.Map);
         Assert.Same(SaveSchemaVersion.InvestigationRoutes, SaveSchemaVersion.InvestigationRoutes);
+        Assert.Same(SaveSchemaVersion.FirstPatientRecovery, SaveSchemaVersion.FirstPatientRecovery);
     }
 
     [Theory]
@@ -136,6 +138,13 @@ public sealed class SaveSchemaVersionTests
             property =>
             {
                 Assert.Equal("FirstPatient", property.Name);
+                Assert.Equal(typeof(SaveSchemaVersion), property.PropertyType);
+                Assert.False(property.CanWrite);
+                Assert.True(property.GetMethod?.IsStatic);
+            },
+            property =>
+            {
+                Assert.Equal("FirstPatientRecovery", property.Name);
                 Assert.Equal(typeof(SaveSchemaVersion), property.PropertyType);
                 Assert.False(property.CanWrite);
                 Assert.True(property.GetMethod?.IsStatic);

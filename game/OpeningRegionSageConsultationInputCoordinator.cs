@@ -179,4 +179,9 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
+
+    internal void InstallRestored(DialogueEvent? consultation)
+    {
+        Consultation = consultation;
+    }
 }

@@ -14,6 +14,7 @@ public sealed record SaveSchemaVersion
     private const int JournalValue = 5;
     private const int MapValue = 6;
     private const int InvestigationRoutesValue = 7;
+    private const int FirstPatientRecoveryValue = 8;
 
     /// <summary>Gets the first save-schema version supported by the game.</summary>
     public static SaveSchemaVersion FirstSupported { get; } = new(FirstSupportedValue);
@@ -35,6 +36,9 @@ public sealed record SaveSchemaVersion
 
     /// <summary>Gets the schema version that first retains investigation-route lifecycle state.</summary>
     public static SaveSchemaVersion InvestigationRoutes { get; } = new(InvestigationRoutesValue);
+
+    /// <summary>Gets the schema version that retains first-patient recovery dialogue progress.</summary>
+    public static SaveSchemaVersion FirstPatientRecovery { get; } = new(FirstPatientRecoveryValue);
 
     /// <summary>Creates a save-schema version from a positive integer.</summary>
     public SaveSchemaVersion(int value)

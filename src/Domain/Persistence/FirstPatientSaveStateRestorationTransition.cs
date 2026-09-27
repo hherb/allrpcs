@@ -96,7 +96,18 @@ public static class FirstPatientSaveStateRestorationTransition
                 savedInfection.CareState));
         }
 
-        return new DiseaseTruthSnapshot(new DiseaseDefinitionSnapshot(definitions), infections);
+        bool matchesAuthoredState = authored.Infections.All(authoredInfection =>
+            infections.Any(rebound =>
+                ReferenceEquals(rebound.CharacterId, authoredInfection.CharacterId)
+                && ReferenceEquals(rebound.Disease, authoredInfection.Disease)
+                && ReferenceEquals(rebound.Stage, authoredInfection.Stage)
+                && ReferenceEquals(
+                    rebound.LastProgressionEventId,
+                    authoredInfection.LastProgressionEventId)
+                && ReferenceEquals(rebound.CareState, authoredInfection.CareState)));
+        return matchesAuthoredState
+            ? authored
+            : new DiseaseTruthSnapshot(new DiseaseDefinitionSnapshot(definitions), infections);
     }
 
     private static PreparedIngredientBatchSnapshot RebindBatches(

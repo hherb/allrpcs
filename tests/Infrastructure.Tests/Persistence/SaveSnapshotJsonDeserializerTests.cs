@@ -97,7 +97,8 @@ public sealed class SaveSnapshotJsonDeserializerTests
             EmptyVersionOneJson,
             initialFirstPatient);
 
-        Assert.Same(SaveSchemaVersion.InvestigationRoutes, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.FirstPatientRecovery, result.SchemaVersion);
+        Assert.Same(FirstPatientRecoveryStage.NotHeard, result.FirstPatientRecovery);
         Assert.Empty(result.CharacterMemory.Characters);
         Assert.Empty(result.Discovery.Perception.Entries);
         Assert.Empty(result.WorldEvents.EventLog.Entries);
@@ -115,7 +116,8 @@ public sealed class SaveSnapshotJsonDeserializerTests
             SaveSnapshotJsonSerializerTests.CompleteCharacterMemoryJson,
             initialFirstPatient);
 
-        Assert.Same(SaveSchemaVersion.InvestigationRoutes, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.FirstPatientRecovery, result.SchemaVersion);
+        Assert.Same(FirstPatientRecoveryStage.NotHeard, result.FirstPatientRecovery);
         Assert.Single(result.CharacterMemory.Characters);
         Assert.Same(initialFirstPatient, result.FirstPatient);
         Assert.NotNull(result.Journal);

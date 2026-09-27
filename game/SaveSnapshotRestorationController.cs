@@ -1,3 +1,4 @@
+using Allrpcs.Application.Dialogue;
 using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
@@ -13,7 +14,11 @@ public partial class SaveSnapshotRestorationController : Node
 {
     private FocusedSearchActivityController discoveryController = null!;
     private FirstPatientStateController firstPatientController = null!;
+    private FirstPatientPreparationController firstPatientPreparation = null!;
     private TemporaryFirstPatientTreatmentContextSource firstPatientContextSource = null!;
+    private OpeningRegionFirstPatientStabilizationTestimonyCoordinator patientTestimony = null!;
+    private OpeningRegionSageConsultationInputCoordinator sageConsultation = null!;
+    private TemporaryOrdinaryCharacterParticipantSource participants = null!;
     private CharacterMemoryController memoryController = null!;
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
@@ -31,8 +36,16 @@ public partial class SaveSnapshotRestorationController : Node
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         firstPatientController = GetNode<FirstPatientStateController>("../FirstPatientStateController");
+        firstPatientPreparation = GetNode<FirstPatientPreparationController>(
+            "../FirstPatientPreparationController");
         firstPatientContextSource = GetNode<TemporaryFirstPatientTreatmentContextSource>(
             "../TemporaryFirstPatientTreatmentContextSource");
+        patientTestimony = GetNode<OpeningRegionFirstPatientStabilizationTestimonyCoordinator>(
+            "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
+        sageConsultation = GetNode<OpeningRegionSageConsultationInputCoordinator>(
+            "../OpeningRegionSageConsultationInputCoordinator");
+        participants = GetNode<TemporaryOrdinaryCharacterParticipantSource>(
+            "../TemporaryOrdinaryCharacterParticipantSource");
         memoryController = GetNode<CharacterMemoryController>("../CharacterMemoryController");
         journalController = GetNode<JournalController>("../JournalController");
         journalSelection = GetNode<JournalSectionSelectionController>(
@@ -70,6 +83,7 @@ public partial class SaveSnapshotRestorationController : Node
         }
 
         FirstPatientSaveState? reboundFirstPatient = null;
+        FirstPatientRecoveryRestoration? restoredRecovery = null;
         JournalSaveStateRestoration? restoredJournal = null;
         MapSaveStateRestoration? restoredMap = null;
         InvestigationRouteSaveStateRestoration? restoredRoutes = null;
@@ -81,6 +95,30 @@ public partial class SaveSnapshotRestorationController : Node
                     snapshot.FirstPatient,
                     firstPatientContextSource.Context,
                     worldEvents);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+
+            try
+            {
+                restoredRecovery = FirstPatientRecoveryRestorationProjection.Restore(
+                    snapshot.FirstPatientRecovery ?? FirstPatientRecoveryStage.NotHeard,
+                    firstPatientContextSource.Context,
+                    reboundFirstPatient.DiseaseTruth,
+                    reboundFirstPatient.AdministrationExperiments,
+                    reboundFirstPatient.AdministrationExperiments.Records.Count == 0
+                        ? null
+                        : reboundFirstPatient.AdministrationExperiments.Records[^1]
+                            .Administration.WorldEvent,
+                    snapshot.WorldEvents.EventLog,
+                    participants.Participants[1],
+                    discoveryController.SearcherCharacterId);
             }
             catch (ArgumentException)
             {
@@ -149,6 +187,9 @@ public partial class SaveSnapshotRestorationController : Node
         if (reboundFirstPatient is not null)
         {
             firstPatientController.Install(reboundFirstPatient);
+            firstPatientPreparation.InstallRestored(reboundFirstPatient);
+            patientTestimony.InstallRestored(restoredRecovery?.PatientTestimony);
+            sageConsultation.InstallRestored(restoredRecovery?.SageConsultation);
         }
         if (restoredJournal is not null)
         {

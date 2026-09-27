@@ -130,8 +130,14 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.InvestigationRoutes)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.InvestigationRoutes)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.FirstPatientRecovery)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.FirstPatientRecovery)
+            || !ReferenceEquals(
+                first.FirstPatientRecovery,
+                FirstPatientRecoveryStage.NotHeard)
+            || !ReferenceEquals(
+                second.FirstPatientRecovery,
+                FirstPatientRecoveryStage.NotHeard)
             || ReferenceEquals(first.FirstPatient, second.FirstPatient)
             || ReferenceEquals(first.Journal, second.Journal)
             || ReferenceEquals(first.Map, second.Map)
@@ -240,7 +246,6 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         CharacterDiseaseState? savedInfection = saved.DiseaseTruth.Infections.SingleOrDefault();
         CharacterDiseaseState? restoredInfection = restoredTruth?.Infections.SingleOrDefault();
         return restoredTruth is not null
-            && !ReferenceEquals(restoredTruth, saved.DiseaseTruth)
             && savedInfection is not null
             && restoredInfection is not null
             && ReferenceEquals(restoredInfection.CharacterId, savedInfection.CharacterId)

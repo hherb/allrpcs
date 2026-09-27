@@ -111,7 +111,8 @@ public sealed class FirstPatientJsonPersistenceTests
             serialized,
             initialFirstPatient);
 
-        Assert.Same(SaveSchemaVersion.InvestigationRoutes, result.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.FirstPatientRecovery, result.SchemaVersion);
+        Assert.Same(FirstPatientRecoveryStage.NotHeard, result.FirstPatientRecovery);
         Assert.NotSame(initialFirstPatient, result.FirstPatient);
         Assert.NotNull(result.Journal);
         Assert.NotNull(result.Map);

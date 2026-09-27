@@ -11,6 +11,25 @@ namespace Allrpcs.Domain.Tests.Persistence;
 public sealed class FirstPatientSaveStateRestorationTransitionTests
 {
     [Fact]
+    public void ReusesExactAuthoredDiseaseTruthWhenSavedStateIsStillInitial()
+    {
+        RestorationInput input = Input();
+        FirstPatientSaveState saved = new(
+            input.Context.Scenario.DiseaseTruth,
+            new PreparedIngredientBatchSnapshot([]),
+            new IngredientExperimentJournalSnapshot([]),
+            new ExperimentJournalSnapshot([]));
+
+        FirstPatientSaveState result = FirstPatientSaveStateRestorationTransition.Rebind(
+            saved,
+            input.Context,
+            input.WorldEvents);
+
+        Assert.Same(input.Context.Scenario.DiseaseTruth, result.DiseaseTruth);
+        Assert.NotSame(saved, result);
+    }
+
+    [Fact]
     public void RebindsCompleteSavedStateToExactAuthoredDefinitionsWithoutChangingInputs()
     {
         RestorationInput input = Input();
