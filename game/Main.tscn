@@ -3459,7 +3459,7 @@ offset_left = 24.0
 offset_top = 340.0
 offset_right = 696.0
 offset_bottom = 365.0
-text = "Selection is one-shot. Background route effects are not active yet."
+text = "Selection is one-shot. Each background unlocks one optional route advantage."
 horizontal_alignment = 1
 
 [node name="Confirm" type="Button" parent="SeekerCustomizationOverlay/Panel"]

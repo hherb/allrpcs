@@ -574,6 +574,8 @@ exact predecessor, options, and optional profile so the main-scene source can co
 exact transition result and reject rebuilt, stale, foreign, or repeated installation. The hidden
 startup menu opens only on U, presents no default choice, validates complete authored input, and
 installs that exact state once while preserving the Seeker's prior movement-processing state. A
+current one-shot hint states that each background unlocks one optional route advantage; it no
+longer describes the already-wired route effects as inactive. A
 pure projection creates one fresh customized `Character` with the selected exact identity and
 public background while retaining the current character's exact private background, capabilities,
 limitations, controller assignment, conditions, inventory, knowledge, beliefs, relationships, and
@@ -880,7 +882,9 @@ been consumed. A pure projection selects one fixed title/body pair through the c
 authored route mapping; the presentation exposes no progress snapshot, route object, evidence text,
 provider content, or hidden state. The greybox panel renders only its coordinator's exact safe
 snapshot. Its explicit Acknowledge control must consume the same bound accepted token before the
-panel clears, while failed consumption leaves the presentation visible and state intact. Rebuilt,
+panel clears. The panel gives that sole action keyboard focus while visible and releases focus when
+it clears, so Return completes the same exact acknowledgement without a pointer; failed consumption
+leaves the presentation visible, focused, and state intact. Rebuilt,
 unaccepted, stale, later, repeated, null, and restored-consumed paths remain inert. Successful
 acknowledgement retains all accepted tokens, route progress, discovery, map, journal, perception,
 world objects, and save schema 7. This closes the representative multiple-route flow without adding

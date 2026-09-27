@@ -63,6 +63,7 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
         OptionButton appearance = menu.GetNode<OptionButton>("Appearance");
         OptionButton background = menu.GetNode<OptionButton>("Background");
         Button confirm = menu.GetNode<Button>("Confirm");
+        Label hint = menu.GetNode<Label>("Hint");
         Label status = menu.GetNode<Label>("Status");
 
         SeekerCustomizationSelectionState rebuiltInitial =
@@ -105,7 +106,9 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             || appearance.ItemCount != source.Options.AppearanceChoices.Count + 1
             || background.ItemCount != source.Options.BackgroundChoices.Count + 1
             || appearance.Selected != -1
-            || background.Selected != -1)
+            || background.Selected != -1
+            || hint.Text
+                != "Selection is one-shot. Each background unlocks one optional route advantage.")
         {
             Fail("Ordinary startup or released/unrelated input changed customization state.");
             return;
@@ -196,8 +199,8 @@ public partial class SeekerCustomizationMenuSmokeCheck : Node
             "Seeker customization menu smoke passed: inert hidden startup, released/unrelated "
             + "input rejection, explicit modal opening with movement suspension, complete-field "
             + "validation, exact appearance/background submission, atomic customized-character "
-            + "and route-definition application, unchanged non-Forester gate, one-shot closure, "
-            + "movement resumption, and repeated-input preservation.");
+            + "and route-definition application, current route guidance, unchanged non-Forester "
+            + "gate, one-shot closure, movement resumption, and repeated-input preservation.");
         GetTree().Quit();
     }
 

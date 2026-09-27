@@ -2,59 +2,40 @@
 
 ## Current state
 
-`main` contains the ordinary single-document save/load boundary needed to resume the fresh Phase 8
-manual playtest:
+`main` includes the ordinary schema-8 Q-save/L-load boundary and the representative Phase 8
+opening-region route flow. The latest bounded playtest correction is ready to publish:
 
-- Physical Q and the visible `Q SAVE` button delegate only to
-  `SaveDocumentStorageController.SaveCurrent()`. Physical L and the visible `L LOAD` button delegate
-  only to `LoadCurrent()`.
-- The panel exposes only `SAVE / LOAD READY`, `SAVED`, `SAVE FAILED`, `LOADED`, `NO SAVE FOUND`, or
-  `LOAD FAILED`; it never exposes the fixed path or serialized content.
-- Save still requires the existing complete schema-8 capture. Load still uses the existing strict
-  deserialize/migration and complete atomic restoration path. Missing, malformed, incompatible, and
-  failed documents do not change live state.
-- Both storage smokes use a process-specific system-temporary file and delete it, so validation
-  cannot overwrite the ordinary `user://save-v1.json` document.
-- The top key guide now wraps at 960x540, lists M map, H healer move, and the P/T/K treatment flow,
-  and leaves the Save/Load panel fully visible.
-
-The existing automated continuity still covers schema-8 saves before preparation, with a complete
-batch, after stabilization, after testimony, and after sage consultation. The first M-key map open
-initializes route progress and routes retained stream-residue evidence; ordinary anchor visits record
-exact verified locations.
+- The route-completion panel gives its sole Acknowledge button keyboard focus while visible and
+  releases that focus when the presentation clears. Return now uses the existing exact-token
+  acknowledgement path; failed consumption remains visible and focused.
+- The one-shot customization hint now says that each background unlocks one optional route
+  advantage instead of incorrectly saying that route effects are inactive.
+- No route, gameplay, save-schema, persistence, provider, or credential behavior changed.
 
 ## Validation and review
 
 - Final host-local `./scripts/quality.sh` passed formatting, a zero-warning build, 2,839 Domain, 924
   Application, 1,261 Infrastructure, and 8 architecture tests, the five-evidence scenario validator,
-  every credential-free Godot smoke, and graphical Compatibility launch.
-- The new switch-gated main-scene smoke covers incomplete save, missing load, visible button paths,
-  physical Q/L mappings, exact complete save, materially changed live state, successful load,
-  malformed and future-version rejection, released/unrelated input, process-isolated storage, and
-  unrelated scene-state isolation.
-- A 960x540 two-frame graphical render confirmed that the wrapped instructions, both buttons, and
-  bounded status are visible without clipping. A normal graphical Compatibility run also launched
-  without runtime errors.
-- Session review checked strict delegation, failure-state preservation, path/content non-exposure,
-  input mapping, UI layout, smoke isolation, file sizes, line lengths, formatting, and the full diff.
-  It found and fixed one stale interaction-focus assertion that still expected the old key guide. No
-  known issue remains inside the save/load implementation.
+  every credential-free Godot smoke, and a graphical Compatibility launch.
+- Focused route-presentation coverage checks focus acquisition, release after successful or restored
+  consumption, and retention after failed consumption. The customization smoke checks the exact
+  current hint.
+- A fresh graphical run reproduced the old keyboard failure, then verified the corrected build:
+  ordinary movement completed the Stream and abandoned laundry route, the completion panel showed
+  focused Acknowledge state, and Return dismissed it without pointer input.
+- Session review checked the full diff, exact-token consumption path, focus lifetime, copy accuracy,
+  smoke isolation, formatting, and whitespace. No known issue remains in this slice.
 - Restricted Godot execution still crashes at the known `user://logs` sandbox boundary; use only an
   identical authorized host-local retry.
 
-## Manual evidence still required
+## Direct manual evidence still required
 
-- The preceding fresh profile was Aster, they/them, Travelling cloak, Apothecary's Assistant. Aster
-  opened the empty map, crossed the stream, entered the laundry through its east opening, verified
-  Stream and Abandoned Laundry, and reached the safe route-completion panel without developer state
-  injection.
-- This session had no native-app input surface, so it did not claim keyboard/button interaction or a
-  real save/close/reopen checkpoint. Preparation, administration, testimony, sage consultation,
-  duplicate-journal behavior, pacing, dialogue load, and disease pressure remain unproven manually.
-- The route-completion panel's keyboard focus remains unproven. The customization panel also still
-  says background route effects are inactive even though they are wired.
-- Keep the Phase 8 playtest and acceptance roadmap items open until direct manual evidence satisfies
-  them.
+The fresh updated run used Aster with they/them pronouns, a travelling cloak, and the Traveller
+background. It initialized the map with M and completed the stream/laundry route using ordinary
+controls. It did not complete preparation, administration, testimony, sage consultation, or a real
+save/close/reopen/load checkpoint. Do not infer those hands-on results from automated coverage.
+
+Keep the Phase 8 playtest and acceptance roadmap items open until that direct evidence is complete.
 
 ## Preserved boundaries
 
@@ -67,14 +48,14 @@ exact verified locations.
 
 ## Exact next bounded slice
 
-Repeat the fresh graphical Phase 8 playtest using only ordinary controls. Complete one investigation
-route, prepare and administer the remedy, hear the patient testimony, consult the sage, press Q to
-save, fully close the game, reopen it, press L to load, and finish the loop. Stop before adding new
-features unless a concrete playtest blocker prevents completion.
+Resume the fresh graphical Phase 8 playtest using only ordinary controls. Complete an investigation
+route, move to the garden and use P through the complete preparation batch, administer it at the
+sickhouse with T, hear the patient testimony, consult the sage with K, press Q to save, fully close
+the game, reopen it, press L to load, and finish the loop. The route-completion keyboard path and
+customization copy are already verified; repeat them only if a regression appears.
 
 Record route choices, dead ends, clue visibility, pacing, dialogue load, disease pressure, Save/Load
 status, restored treatment/recovery state, and whether safe journal/dialogue entries occur exactly
-once. Check keyboard-only route-completion acknowledgement and the stale customization copy. If a
-blocker is found, fix only that smallest ordinary-play boundary, add focused switch-gated coverage,
-rerun the complete quality spine, and repeat the failed manual step. Mark Phase 8 playtest or
-acceptance complete only if the direct evidence actually supports it.
+once. Fix only a concrete blocker with focused switch-gated coverage and the complete quality spine;
+otherwise add no feature. Mark Phase 8 playtest or acceptance complete only when direct evidence
+supports it.

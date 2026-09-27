@@ -62,6 +62,7 @@ public partial class OpeningRegionInvestigationRouteCompletionPanel : CanvasLaye
         title.Text = expectedPresentation.Title;
         content.Text = expectedPresentation.Content;
         Show();
+        acknowledge.GrabFocus();
         return true;
     }
 
@@ -78,6 +79,7 @@ public partial class OpeningRegionInvestigationRouteCompletionPanel : CanvasLaye
 
     private void ClearPresentation()
     {
+        acknowledge?.ReleaseFocus();
         presentation = null;
         title.Text = string.Empty;
         content.Text = string.Empty;

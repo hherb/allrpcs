@@ -148,6 +148,7 @@ public partial class OpeningRegionInvestigationRouteCompletionPresentationSmokeC
             || !panel.Visible
             || panel.GetNode<Label>("Panel/Title").Text != presentation.Title
             || panel.GetNode<Label>("Panel/Content").Text != presentation.Content
+            || !panel.GetNode<Button>("Panel/Acknowledge").HasFocus()
             || presentation.Title
                 != OpeningRegionInvestigationRouteCompletionPresentationProjection.Title
             || presentation.Content != "Stream and abandoned laundry route complete.")
@@ -194,6 +195,7 @@ public partial class OpeningRegionInvestigationRouteCompletionPresentationSmokeC
             || coordinator.Presentation is not null
             || panel.Presentation is not null
             || panel.Visible
+            || acknowledge.HasFocus()
             || panel.GetNode<Label>("Panel/Title").Text.Length != 0
             || panel.GetNode<Label>("Panel/Content").Text.Length != 0
             || coordinator.TryAcknowledge(presentation)
@@ -221,6 +223,7 @@ public partial class OpeningRegionInvestigationRouteCompletionPresentationSmokeC
             || !ReferenceEquals(coordinator.Presentation, presentation)
             || !ReferenceEquals(panel.Presentation, presentation)
             || !panel.Visible
+            || !panel.GetNode<Button>("Panel/Acknowledge").HasFocus()
             || !HasRetainedState())
         {
             Fail("Failed route-completion consumption did not retain the visible presentation.");
@@ -236,6 +239,7 @@ public partial class OpeningRegionInvestigationRouteCompletionPresentationSmokeC
             || coordinator.Presentation is not null
             || panel.Presentation is not null
             || panel.Visible
+            || panel.GetNode<Button>("Panel/Acknowledge").HasFocus()
             || coordinator.TryPresent(firstCompletion!)
             || coordinator.TryPresent(secondCompletion!)
             || !HasRetainedState())
@@ -335,7 +339,8 @@ public partial class OpeningRegionInvestigationRouteCompletionPresentationSmokeC
             "Opening-region route-completion presentation smoke passed: inert startup, "
             + detail
             + ", first-over-later ordering, unaccepted, distinct, repeated and null rejection, "
-            + "fixed copy, closed surfaces, and unrelated-state isolation were correct.");
+            + "fixed copy, keyboard focus, closed surfaces, and unrelated-state isolation were "
+            + "correct.");
         GetTree().Quit();
     }
 
