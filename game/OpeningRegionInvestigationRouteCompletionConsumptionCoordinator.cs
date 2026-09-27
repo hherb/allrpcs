@@ -33,4 +33,19 @@ public partial class OpeningRegionInvestigationRouteCompletionConsumptionCoordin
         ConsumedCompletion = completion;
         return true;
     }
+
+    /// <summary>Installs one preflighted exact restored consumed token, or clears consumption.</summary>
+    internal void InstallRestored(OpeningRegionInvestigationRouteCompletion? restored)
+    {
+        if (restored is not null
+            && !completions.AcceptedCompletions.Any(accepted =>
+                ReferenceEquals(accepted, restored)))
+        {
+            throw new ArgumentException(
+                "Restored consumption must be one exact accepted completion.",
+                nameof(restored));
+        }
+
+        ConsumedCompletion = restored;
+    }
 }

@@ -349,13 +349,13 @@ authored scene; they do not move Godot physics or presentation policy into `Appl
 ## Save-schema version boundary
 
 `Allrpcs.Domain.Persistence.SaveSchemaVersion` is the engine-independent immutable root version
-discriminator for versioned saves. It defines canonical versions `1` through `5`; construction
+discriminator for versioned saves. It defines canonical versions `1` through `7`; construction
 still accepts any positive integer, while `Parse` accepts only invariant canonical decimal text.
 Whitespace, signs, leading zeroes, zero, negative values, overflow, and non-numeric text are rejected
 rather than normalized. `Value`, `ToString()`, parsing, and record equality remain stable round-trip
 boundaries.
 
-`SaveSchemaVersionSupportPolicy.CanLoad` separately accepts only the five known versions, including
+`SaveSchemaVersionSupportPolicy.CanLoad` separately accepts only the seven known versions, including
 distinct value-equal instances. Later positive versions remain valid version values but fail closed.
 The policy leaves its input unchanged and does not parse, migrate, serialize, or load anything.
 
@@ -377,14 +377,15 @@ serialization, restoration, or controller behavior.
 
 `SaveSnapshot` is the immutable in-memory root. It retains one exact schema version, discovery
 save state, world-event save state, canonical all-character memory, the version-3-or-later
-first-patient composition, and version-5 safe journal state through get-only properties and rejects
-invalid version/component combinations. Its
+first-patient composition, version-5 safe journal state, version-6 visibility-safe map, and
+version-7 ID-only investigation-route lifecycle through get-only properties and rejects invalid
+version/component combinations. Its
 legacy version-`1` constructor supplies one shared immutable empty-memory snapshot, and version `1`
 rejects populated memory. Record equality continues to use the version value and retained state
 instances.
 
 `SaveSnapshotLoadPolicy.CanLoad` is the pure root-level version gate. It delegates to
-`SaveSchemaVersionSupportPolicy`, accepts versions 1 through 5, preserves the root and every nested
+`SaveSchemaVersionSupportPolicy`, accepts versions 1 through 7, preserves the root and every nested
 instance, and does not inspect state contents, migrate, deserialize, or restore.
 
 `WorldEventSaveStateRestorationPolicy.CanRestore` is the pure event-state restoration gate. Every
@@ -429,35 +430,40 @@ startup loading.
 
 `SaveSnapshotRestorationController.TryRestore` coordinates all live boundaries for one
 already-materialized `SaveSnapshot`. It completes root preflight and constructs the rebound
-first-patient graph plus a fresh complete safe journal and exact optional selection before changing
-any controller. Success atomically installs discovery, world-event, memory, first-patient, journal,
-and journal-selection state while retaining authored definitions and presenting only the restored
-focused-search activity. Rejected roots do not partially alter any controller. This remains an
-in-memory seam: it does not parse JSON, choose a file or path, autosave, replay events, or run
-automatically during startup.
+first-patient graph, a fresh complete safe journal and exact optional selection, a fresh canonical
+map, and the complete reconstructed investigation-route lifecycle before changing any controller.
+Success atomically installs discovery, world-event, memory, first-patient, journal, map, route
+progress, ordered accepted completions, and optional exact consumed completion while retaining
+authored definitions and presenting only the restored focused-search activity. Rejected roots do
+not partially alter any controller. This remains an in-memory seam: it does not parse JSON, choose a
+file or path, autosave, replay events, or run automatically during startup.
 
 `SaveSnapshotCaptureController.Capture` is the matching scene-owned in-memory capture seam. It
 returns no snapshot until discovery perception, authored world events, the event log, qualitative
-time, all first-patient state, and a complete same-Seeker safe journal are initialized. Each
-successful call creates fresh `DiscoverySaveState`, `WorldEventSaveState`, `FirstPatientSaveState`,
-`JournalSaveState`, and version-5 `SaveSnapshot` compositions. Journal content is copied into closed
-persistence values with the optional exact canonical selection; the other controllers' exact
-current nested snapshots remain retained. Capture does not mutate or present controller state and
-does not serialize, choose a file or path, access storage, migrate, replay, autosave, or orchestrate
-startup loading.
+time, all first-patient state, a complete same-Seeker safe journal and map, and internally
+consistent initialized route progress are available. Each successful call creates fresh discovery,
+world-event, first-patient, journal, map, ID-only route-lifecycle, and version-7 root compositions.
+Capture accepts only exact current-catalogue progress in authored order, unique exact route-member
+observations, exact complete accepted tokens, and optional consumption of one exact accepted token.
+It fails closed before producing a document and does not mutate or present controller state,
+serialize, choose a file or path, access storage, migrate, replay, autosave, or orchestrate startup
+loading.
 
 `Allrpcs.Infrastructure.Persistence.SaveSnapshotJsonSerializer` writes compact canonical JSON for
-versions 1 through 5 while preserving the exact legacy documents. Version 2 adds canonical
+versions 1 through 7 while preserving the exact legacy documents. Version 2 adds canonical
 all-character memory; version 3 adds complete disease truth, completed preparations, remaining
 batches, administration observations, and universal experiment records; version 4 adds the exact
 delivery mode to each heard event and optional response in recent conversation. Version 5 adds the
-safe journal owner, all five ordered content arms, and optional selected-section key. Stable
+safe journal owner, all five ordered content arms, and optional selected-section key. Version 6 adds
+only safe map visibility and player-authored notes. Version 7 adds only ordered route keys, recorded
+location/evidence identifiers, accepted completion keys, and the optional consumed key; labels,
+descriptions, coordinates, discovery text, and runtime object graphs remain absent. Stable
 document-local references reconnect shared memories, preparations, and events without serializing
 runtime object references. Provider identifiers, credentials, provider state, hidden reasoning, and
 an additional authoritative transcript are absent. Serialization preserves every input and does not
 write a file, choose a path, validate a scenario, migrate, encrypt, or restore runtime state.
 
-`SaveSnapshotJsonDeserializer` is the strict inverse for all five known JSON versions. It accepts only
+`SaveSnapshotJsonDeserializer` is the strict inverse for all seven known JSON versions. It accepts only
 each version's complete closed object shape and exact JSON value kinds, rejecting malformed JSON,
 comments, trailing commas, duplicate, missing, or unknown properties, non-canonical versions and
 identifiers, unknown closed values, invalid collections, and unresolved memory references.
@@ -466,8 +472,10 @@ document-local shared identities. `DeserializeCurrent` migrates versions 1 throu
 using the caller-owned exact initial first-patient composition when required and creating an empty
 unselected journal owned by the saved discovery character. Versions 1 through 3 historically lacked
 delivery metadata, so their heard dialogue and non-null response speech migrate as explicit ordinary
-speech; versions 4 and 5 retain their exact ordinary or whisper modes. Scenario eligibility and
-controller mutation remain separate; neither entry point accesses storage.
+speech; versions 4 through 7 retain their exact ordinary or whisper modes. Scenario eligibility and
+controller mutation remain separate. `DeserializeCurrent` migrates versions 1 through 6 to version
+7, adding a canonical empty same-Seeker map where needed and three canonical empty route entries
+with no accepted or consumed completion. Neither entry point accesses storage.
 
 `SaveSnapshotJsonController` is the scene composition seam for serialized in-memory round trips.
 `CaptureSerialized` delegates exact live capture to `SaveSnapshotCaptureController` before canonical

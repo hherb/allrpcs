@@ -19,7 +19,8 @@ public sealed record SaveSnapshot
             EmptyCharacterMemory,
             firstPatient: null,
             journal: null,
-            map: null)
+            map: null,
+            investigationRoutes: null)
     {
     }
 
@@ -36,7 +37,8 @@ public sealed record SaveSnapshot
             characterMemory,
             firstPatient: null,
             journal: null,
-            map: null)
+            map: null,
+            investigationRoutes: null)
     {
     }
 
@@ -54,7 +56,8 @@ public sealed record SaveSnapshot
             characterMemory,
             firstPatient,
             journal: null,
-            map: null)
+            map: null,
+            investigationRoutes: null)
     {
     }
 
@@ -73,7 +76,8 @@ public sealed record SaveSnapshot
             characterMemory,
             firstPatient,
             journal,
-            map: null)
+            map: null,
+            investigationRoutes: null)
     {
     }
 
@@ -86,6 +90,28 @@ public sealed record SaveSnapshot
         FirstPatientSaveState? firstPatient,
         JournalSaveState? journal,
         MapSaveState? map)
+        : this(
+            schemaVersion,
+            discovery,
+            worldEvents,
+            characterMemory,
+            firstPatient,
+            journal,
+            map,
+            investigationRoutes: null)
+    {
+    }
+
+    /// <summary>Creates a save root retaining exact map and ID-only route lifecycle state.</summary>
+    public SaveSnapshot(
+        SaveSchemaVersion schemaVersion,
+        DiscoverySaveState discovery,
+        WorldEventSaveState worldEvents,
+        CharacterMemorySnapshot characterMemory,
+        FirstPatientSaveState? firstPatient,
+        JournalSaveState? journal,
+        MapSaveState? map,
+        InvestigationRouteSaveState? investigationRoutes)
     {
         ArgumentNullException.ThrowIfNull(schemaVersion);
         ArgumentNullException.ThrowIfNull(discovery);
@@ -95,7 +121,8 @@ public sealed record SaveSnapshot
         bool retainsFirstPatient = schemaVersion == SaveSchemaVersion.FirstPatient
             || schemaVersion == SaveSchemaVersion.DialogueDelivery
             || schemaVersion == SaveSchemaVersion.Journal
-            || schemaVersion == SaveSchemaVersion.Map;
+            || schemaVersion == SaveSchemaVersion.Map
+            || schemaVersion == SaveSchemaVersion.InvestigationRoutes;
         if (retainsFirstPatient && firstPatient is null)
         {
             throw new ArgumentNullException(nameof(firstPatient));
@@ -117,7 +144,8 @@ public sealed record SaveSnapshot
         }
 
         bool retainsJournal = schemaVersion == SaveSchemaVersion.Journal
-            || schemaVersion == SaveSchemaVersion.Map;
+            || schemaVersion == SaveSchemaVersion.Map
+            || schemaVersion == SaveSchemaVersion.InvestigationRoutes;
         if (retainsJournal && journal is null)
         {
             throw new ArgumentNullException(nameof(journal));
@@ -138,12 +166,14 @@ public sealed record SaveSnapshot
                 nameof(journal));
         }
 
-        if (schemaVersion == SaveSchemaVersion.Map && map is null)
+        bool retainsMap = schemaVersion == SaveSchemaVersion.Map
+            || schemaVersion == SaveSchemaVersion.InvestigationRoutes;
+        if (retainsMap && map is null)
         {
             throw new ArgumentNullException(nameof(map));
         }
 
-        if (schemaVersion != SaveSchemaVersion.Map && map is not null)
+        if (!retainsMap && map is not null)
         {
             throw new ArgumentException(
                 "Only the map save schema can retain map state.",
@@ -159,6 +189,20 @@ public sealed record SaveSnapshot
                 nameof(map));
         }
 
+        if (schemaVersion == SaveSchemaVersion.InvestigationRoutes
+            && investigationRoutes is null)
+        {
+            throw new ArgumentNullException(nameof(investigationRoutes));
+        }
+
+        if (schemaVersion != SaveSchemaVersion.InvestigationRoutes
+            && investigationRoutes is not null)
+        {
+            throw new ArgumentException(
+                "Only the investigation-route schema can retain route state.",
+                nameof(investigationRoutes));
+        }
+
         SchemaVersion = schemaVersion;
         Discovery = discovery;
         WorldEvents = worldEvents;
@@ -166,6 +210,7 @@ public sealed record SaveSnapshot
         FirstPatient = firstPatient;
         Journal = journal;
         Map = map;
+        InvestigationRoutes = investigationRoutes;
     }
 
     /// <summary>Gets the exact retained root schema-version discriminator.</summary>
@@ -188,4 +233,7 @@ public sealed record SaveSnapshot
 
     /// <summary>Gets exact visibility-safe map state when retained by the schema version.</summary>
     public MapSaveState? Map { get; }
+
+    /// <summary>Gets exact ID-only investigation-route lifecycle state when retained.</summary>
+    public InvestigationRouteSaveState? InvestigationRoutes { get; }
 }

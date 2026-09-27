@@ -29,6 +29,7 @@ public sealed class SaveSnapshotTests
         Assert.Null(snapshot.FirstPatient);
         Assert.Null(snapshot.Journal);
         Assert.Null(snapshot.Map);
+        Assert.Null(snapshot.InvestigationRoutes);
     }
 
     [Fact]
@@ -191,7 +192,7 @@ public sealed class SaveSnapshotTests
             memory,
             firstPatient));
         Assert.Throws<ArgumentException>(() => new SaveSnapshot(
-            new SaveSchemaVersion(7),
+            new SaveSchemaVersion(8),
             discovery,
             worldEvents,
             memory,
@@ -307,6 +308,7 @@ public sealed class SaveSnapshotTests
             ("CharacterMemory", typeof(CharacterMemorySnapshot)),
             ("Discovery", typeof(DiscoverySaveState)),
             ("FirstPatient", typeof(FirstPatientSaveState)),
+            ("InvestigationRoutes", typeof(InvestigationRouteSaveState)),
             ("Journal", typeof(JournalSaveState)),
             ("Map", typeof(MapSaveState)),
             ("SchemaVersion", typeof(SaveSchemaVersion)),

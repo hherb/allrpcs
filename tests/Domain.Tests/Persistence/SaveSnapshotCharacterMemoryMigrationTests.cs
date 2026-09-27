@@ -35,7 +35,7 @@ public sealed class SaveSnapshotCharacterMemoryMigrationTests
             FirstVersion().WorldEvents,
             new CharacterMemorySnapshot([]));
         SaveSnapshot future = new(
-            new SaveSchemaVersion(7),
+            new SaveSchemaVersion(8),
             FirstVersion().Discovery,
             FirstVersion().WorldEvents,
             new CharacterMemorySnapshot([]));
@@ -47,7 +47,7 @@ public sealed class SaveSnapshotCharacterMemoryMigrationTests
         Assert.Throws<ArgumentNullException>(() =>
             SaveSnapshotCharacterMemoryMigration.Migrate(null!));
         Assert.Same(SaveSchemaVersion.CharacterMemory, versionTwo.SchemaVersion);
-        Assert.Equal(7, future.SchemaVersion.Value);
+        Assert.Equal(8, future.SchemaVersion.Value);
     }
 
     [Fact]

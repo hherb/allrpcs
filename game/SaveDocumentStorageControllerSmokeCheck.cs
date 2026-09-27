@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Application.Persistence;
@@ -23,6 +24,8 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -52,6 +55,10 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -94,6 +101,14 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
             return;
         }
         MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
+        if (!SaveRouteLifecycleSmokeArrangement.TryInitializeEmpty(
+                routeProgress,
+                mapController,
+                shrineSource))
+        {
+            Fail("Save-document storage smoke could not initialize exact route state.");
+            return;
+        }
         string initial = jsonController.CaptureSerialized()
             ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
         Vector2 expectedPosition = seeker.Position;
@@ -157,7 +172,8 @@ public partial class SaveDocumentStorageControllerSmokeCheck : Node
         GD.Print(
             "Save-document storage controller smoke passed: isolated local persistence, exact "
             + "serialized restoration, malformed and invalid UTF-8 failure, replacement "
-            + "recovery, safe journal, exact selection, and populated map round trip, missing "
+            + "recovery, safe journal, exact selection, populated map, and route-lifecycle round "
+            + "trip, missing "
             + "document, and "
             + "unchanged authored world, movement, input, and unrelated presentation were "
             + "correct.");

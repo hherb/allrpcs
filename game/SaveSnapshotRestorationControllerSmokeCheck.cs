@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
@@ -28,6 +29,9 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
+    private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
@@ -57,6 +61,12 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        routeCompletions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         discoveryController = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
@@ -94,24 +104,27 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         JournalSaveState journal = CreateJournalState(owner);
         MapSaveState map = CreateMapState(owner);
         SaveSnapshot snapshot = new(
-            SaveSchemaVersion.Map,
+            SaveSchemaVersion.InvestigationRoutes,
             discovery,
             eventState,
             memory,
             firstPatient,
             journal,
-            map);
+            map,
+            CreateRouteState());
 
         if (!controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !HasRestoredFirstPatient(firstPatientContextSource.Context, firstPatient)
             || !HasRestoredJournal(journal)
             || !HasRestoredMap(map)
+            || !HasRestoredRoutes()
             || !activityIndicator.Visible
             || !controller.TryRestore(snapshot)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !HasRestoredJournal(journal)
-            || !HasRestoredMap(map))
+            || !HasRestoredMap(map)
+            || !HasRestoredRoutes())
         {
             Fail("Save restoration controller smoke failed exact or repeated root restoration.");
             return;
@@ -128,6 +141,10 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         OpeningRegionMapLocationCatalogue restoredMapCatalogue = mapController.Catalogue!;
         SeekerMapSnapshot restoredMap = mapController.Map!;
         SeekerMapNoteSnapshot restoredMapNotes = mapController.Notes!;
+        OpeningRegionInvestigationRouteProgressSnapshot restoredRouteProgress =
+            routeProgress.Progress!;
+        OpeningRegionInvestigationRouteCompletion restoredCompletion =
+            routeCompletions.AcceptedCompletions.Single();
 
         SaveSnapshot futureVersion = new(new SaveSchemaVersion(27), discovery, eventState);
         SaveSnapshot missingTarget = new(
@@ -169,6 +186,23 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             firstPatient,
             journal,
             hiddenNoteMap);
+        InvestigationRouteSaveState unknownRouteState = new(
+            [
+                new InvestigationRouteProgressSaveEntry("unknown", [], []),
+                new InvestigationRouteProgressSaveEntry("shrine", [], []),
+                new InvestigationRouteProgressSaveEntry("road-wagon", [], []),
+            ],
+            [],
+            null);
+        SaveSnapshot invalidRoutes = new(
+            SaveSchemaVersion.InvestigationRoutes,
+            discovery,
+            eventState,
+            memory,
+            firstPatient,
+            journal,
+            map,
+            unknownRouteState);
 
         if (controller.TryRestore(futureVersion)
             || !HasExactState(snapshot, worldObjects, worldEvents)
@@ -179,6 +213,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             || controller.TryRestore(invalidJournal)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || controller.TryRestore(invalidMap)
+            || !HasExactState(snapshot, worldObjects, worldEvents)
+            || controller.TryRestore(invalidRoutes)
             || !HasExactState(snapshot, worldObjects, worldEvents)
             || !ThrowsArgumentNull(() => controller.TryRestore(null!))
             || !HasExactState(snapshot, worldObjects, worldEvents)
@@ -214,6 +250,14 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
             return;
         }
 
+        if (!ReferenceEquals(routeProgress.Progress, restoredRouteProgress)
+            || !ReferenceEquals(routeCompletions.AcceptedCompletions.Single(), restoredCompletion)
+            || !ReferenceEquals(routeConsumption.ConsumedCompletion, restoredCompletion))
+        {
+            Fail("Save restoration changed route lifecycle after rejected root input.");
+            return;
+        }
+
         if (seeker.Position != expectedPosition
             || seeker.Velocity != expectedVelocity
             || !string.Equals(focusStatus.Text, expectedFocusStatus, StringComparison.Ordinal)
@@ -229,8 +273,8 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         GD.Print(
             "Save restoration controller smoke passed: complete versioned-root preflight, exact "
             + "atomic discovery, world-event, character-memory, and rebound first-patient state "
-            + "installation plus fresh safe journal, exact selection, and populated map with fresh "
-            + "canonical definitions, repeated "
+            + "installation plus fresh safe journal, exact selection, populated map, and route "
+            + "lifecycle with fresh canonical definitions, repeated "
             + "restoration, fail-closed future version, missing target, missing event, duplicate "
             + "journal, hidden-note map, and null handling, and "
             + "unchanged authoritative definitions, movement, input, and other presentation state "
@@ -294,6 +338,25 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
                 map.VerifiedLocations[0],
                 catalogue.Locations.Single(location => location.Id.Value == "old-shrine"))
             && ReferenceEquals(notes.Notes[0].Location, map.VerifiedLocations[0]);
+    }
+
+    private bool HasRestoredRoutes()
+    {
+        OpeningRegionInvestigationRouteProgressSnapshot? progress = routeProgress.Progress;
+        OpeningRegionInvestigationRouteCompletion? completion =
+            routeCompletions.AcceptedCompletions.SingleOrDefault();
+        return progress is not null
+            && ReferenceEquals(routeProgress.Catalogue, progress.Catalogue)
+            && progress.Entries[0].RecordedLocationIds.Count == 2
+            && progress.Entries[0].RecordedEvidenceIds.Count == 1
+            && progress.Entries[1].RecordedLocationIds.Count == 1
+            && progress.Entries[1].RecordedEvidenceIds.Count == 0
+            && progress.Entries[2].RecordedLocationIds.Count == 0
+            && progress.Entries[2].RecordedEvidenceIds.Count == 0
+            && completion is not null
+            && ReferenceEquals(completion.ProgressSnapshot, progress)
+            && ReferenceEquals(completion.Route, progress.Catalogue.Routes[0])
+            && ReferenceEquals(routeConsumption.ConsumedCompletion, completion);
     }
 
     private bool HasRestoredFirstPatient(
@@ -392,6 +455,21 @@ public partial class SaveSnapshotRestorationControllerSmokeCheck : Node
         [new LocationId("stream")],
         [new LocationId("old-shrine")],
         [new MapNoteSaveEntry(new LocationId("old-shrine"), "Inspect the layered marks.")]);
+
+    private static InvestigationRouteSaveState CreateRouteState() => new(
+        [
+            new InvestigationRouteProgressSaveEntry(
+                "stream-laundry",
+                [new LocationId("stream"), new LocationId("abandoned-laundry")],
+                [new EvidenceId("residue")]),
+            new InvestigationRouteProgressSaveEntry(
+                "shrine",
+                [new LocationId("old-shrine")],
+                []),
+            new InvestigationRouteProgressSaveEntry("road-wagon", [], []),
+        ],
+        ["stream-laundry"],
+        "stream-laundry");
 
     private static bool ThrowsArgumentNull(Action action)
     {

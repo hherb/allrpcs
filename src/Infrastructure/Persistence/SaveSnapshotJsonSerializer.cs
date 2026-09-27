@@ -20,11 +20,13 @@ public static class SaveSnapshotJsonSerializer
             || snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
             || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
             || snapshot.SchemaVersion == SaveSchemaVersion.Journal
-            || snapshot.SchemaVersion == SaveSchemaVersion.Map;
+            || snapshot.SchemaVersion == SaveSchemaVersion.Map
+            || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes;
         bool hasFirstPatient = snapshot.SchemaVersion == SaveSchemaVersion.FirstPatient
             || snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
             || snapshot.SchemaVersion == SaveSchemaVersion.Journal
-            || snapshot.SchemaVersion == SaveSchemaVersion.Map;
+            || snapshot.SchemaVersion == SaveSchemaVersion.Map
+            || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes;
         if (!isVersionOne && !hasCharacterMemory)
         {
             throw new ArgumentException(
@@ -46,7 +48,8 @@ public static class SaveSnapshotJsonSerializer
                     snapshot.CharacterMemory,
                     snapshot.SchemaVersion == SaveSchemaVersion.DialogueDelivery
                         || snapshot.SchemaVersion == SaveSchemaVersion.Journal
-                        || snapshot.SchemaVersion == SaveSchemaVersion.Map);
+                        || snapshot.SchemaVersion == SaveSchemaVersion.Map
+                        || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes);
             }
 
             if (hasFirstPatient)
@@ -55,14 +58,21 @@ public static class SaveSnapshotJsonSerializer
             }
 
             if (snapshot.SchemaVersion == SaveSchemaVersion.Journal
-                || snapshot.SchemaVersion == SaveSchemaVersion.Map)
+                || snapshot.SchemaVersion == SaveSchemaVersion.Map
+                || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes)
             {
                 JournalSaveStateJsonWriter.Write(writer, snapshot.Journal!);
             }
 
-            if (snapshot.SchemaVersion == SaveSchemaVersion.Map)
+            if (snapshot.SchemaVersion == SaveSchemaVersion.Map
+                || snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes)
             {
                 MapSaveStateJsonWriter.Write(writer, snapshot.Map!);
+            }
+
+            if (snapshot.SchemaVersion == SaveSchemaVersion.InvestigationRoutes)
+            {
+                InvestigationRouteSaveStateJsonWriter.Write(writer, snapshot.InvestigationRoutes!);
             }
 
             writer.WriteEndObject();

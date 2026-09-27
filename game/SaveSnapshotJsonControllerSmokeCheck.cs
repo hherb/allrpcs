@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
@@ -29,6 +30,8 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -59,6 +62,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -106,6 +113,14 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         }
 
         MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
+        if (!SaveRouteLifecycleSmokeArrangement.TryInitializeEmpty(
+                routeProgress,
+                mapController,
+                shrineSource))
+        {
+            Fail("Serialized save smoke could not initialize exact route state.");
+            return;
+        }
         OpeningRegionMapLocationCatalogue initialMapCatalogue = mapController.Catalogue!;
 
         string initial = controller.CaptureSerialized()
@@ -133,7 +148,7 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
             "missing-event",
             StringComparison.Ordinal);
         string futureVersion = initial.Replace(
-            "\"schemaVersion\":6",
+            "\"schemaVersion\":7",
             "\"schemaVersion\":27",
             StringComparison.Ordinal);
         string unknownMapLocation = initial.Replace(
@@ -221,9 +236,10 @@ public partial class SaveSnapshotJsonControllerSmokeCheck : Node
         GD.Print(
             "Serialized save controller smoke passed: canonical populated-memory capture, "
             + "complete prepared-batch and dual-journal first-patient restoration, materially "
-            + "different live state, safe journal, selection, and populated map round trip with "
-            + "fresh canonical definitions, version-1 migration to explicit empty memory, patient, "
-            + "journal, and map state, fail-closed malformed, future version, unknown scenario "
+            + "different live state, safe journal, selection, populated map, and route-lifecycle "
+            + "round trip with fresh canonical definitions, version-1 migration to explicit empty "
+            + "memory, patient, journal, map, and route state, fail-closed malformed, future version, "
+            + "unknown scenario "
             + "event, unknown map location, hidden map note, and null "
             + "input, and unchanged authored world, movement, input, and unrelated presentation "
             + "were correct.");
