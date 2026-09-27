@@ -815,16 +815,24 @@ identifier retained by the supplied filtered `CharacterEvidenceViewSnapshot`. A 
 requires the exact current scene-owned map for location progress and installs both operations through
 the route controller's expected-progress compare-and-swap. Rebuilt, foreign, unverified, unseen,
 nonmember, repeated, mismatched, and stale inputs remain inert. The coordinator is explicit and inert
-at ordinary startup; it still does not capture visits or discoveries automatically, infer route
-completion, write any authority source, or present progress. A separate pure completion policy now
-returns an immutable provenance token only when one exact route entry contains every exact authored
-location and evidence member. It accepts any observation order, never pools partial progress across
-routes, and exposes no completion Boolean. An inert scene owner can explicitly observe those tokens
-from the route controller's exact current snapshot, retain one token per exact route in observation
-order, and preserve previously accepted tokens when another route completes. A second inert scene
-owner can explicitly consume one exact accepted token once without removing or rebuilding it. Neither
-owner runs automatically, changes route progress or any authority source, selects a preferred route,
-presents completion, persists it, or triggers testimony, stabilization, or another gameplay effect.
+at ordinary startup; it still does not infer route completion, write any authority source, or present
+progress. A catalogue-routing coordinator can take one exact already-verified map location or visible
+evidence identity, preflight every exact matching route, record it into all matches in authored
+catalogue order, and ask the completion owner to observe each exact resulting snapshot. It never
+chooses one preferred route or pools partial progress. The live map-visit coordinator now submits its
+exact successfully verified location through that path when route progress has already been
+explicitly initialized. Route initialization remains inert and evidence discovery has no
+ordinary-play submission yet.
+
+A separate pure completion policy returns an immutable provenance token only when one exact route
+entry contains every exact authored location and evidence member. It accepts any observation order,
+never pools partial progress across routes, and exposes no completion Boolean. An inert scene owner
+can explicitly observe those tokens from the route controller's exact current snapshot, retain one
+token per exact route in observation order, and preserve previously accepted tokens when another
+route completes. A second inert scene owner can explicitly consume one exact accepted token once
+without removing or rebuilding it. Neither owner runs automatically, changes route progress or any
+authority source, selects a preferred route, presents completion, persists it, or triggers testimony,
+stabilization, or another gameplay effect.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
