@@ -25,6 +25,10 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
+    private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
     private SaveSnapshotRestorationController restorationController = null!;
     private FocusedSearchActivityController discoveryController = null!;
     private WorldEventController worldEventController = null!;
@@ -52,6 +56,14 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        routeCompletions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
         discoveryController = GetNode<FocusedSearchActivityController>(
@@ -101,6 +113,14 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             return;
         }
         MapSaveStateRestorationProjection.Restore(PopulatedMapState()).InstallInto(mapController);
+        if (!SaveRouteLifecycleSmokeArrangement.TryInitializeEmpty(
+                routeProgress,
+                mapController,
+                shrineSource))
+        {
+            Fail("Save capture smoke could not initialize exact route state.");
+            return;
+        }
 
         SaveSnapshot first = controller.Capture()
             ?? throw new InvalidOperationException("Initialized state was not captured.");
@@ -110,8 +130,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         if (ReferenceEquals(first, second)
             || ReferenceEquals(first.Discovery, second.Discovery)
             || ReferenceEquals(first.WorldEvents, second.WorldEvents)
-            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.Map)
-            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.Map)
+            || !ReferenceEquals(first.SchemaVersion, SaveSchemaVersion.InvestigationRoutes)
+            || !ReferenceEquals(second.SchemaVersion, SaveSchemaVersion.InvestigationRoutes)
             || ReferenceEquals(first.FirstPatient, second.FirstPatient)
             || ReferenceEquals(first.Journal, second.Journal)
             || ReferenceEquals(first.Map, second.Map)
@@ -166,7 +186,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             "Save capture controller smoke passed: exact live discovery, world-event, and character-"
             + "memory snapshots, fresh repeated current-schema roots, fail-closed uninitialized "
             + "discovery perception, authored events, event log, qualitative time, journal, and "
-            + "map state, safe journal, exact selection, and populated map capture, restoration "
+            + "map and route state, safe journal, exact selection, populated map, and exact empty "
+            + "route-lifecycle capture, restoration "
             + "through the existing "
             + "coordinator, and unchanged controllers, movement, input, and presentation were "
             + "correct.");
@@ -178,6 +199,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         && snapshot.FirstPatient is not null
         && snapshot.Journal is not null
         && snapshot.Map is not null
+        && snapshot.InvestigationRoutes is not null
         && snapshot.Journal.SeekerId == snapshot.Discovery.Perception.CharacterId
         && string.Equals(snapshot.Journal.SelectedSectionKey, "hypotheses", StringComparison.Ordinal)
         && snapshot.Journal.Observations.Count == journalController.Journal!.Observations.Entries.Count
@@ -318,6 +340,17 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
                 journalController,
                 journalSelection,
                 missingMap);
+        OpeningRegionInvestigationRouteProgressController missingRoutes = new();
+        SaveSnapshotCaptureController routeCapture =
+            CreateCaptureController(
+                discoveryController,
+                worldEventController,
+                memoryController,
+                firstPatientController,
+                journalController,
+                journalSelection,
+                mapController);
+        SetField(routeCapture, "routeProgress", missingRoutes);
 
         bool rejected = discoveryCapture.Capture() is null
             && definitionsCapture.Capture() is null
@@ -325,7 +358,8 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
             && worldTimeCapture.Capture() is null
             && firstPatientCapture.Capture() is null
             && journalCapture.Capture() is null
-            && mapCapture.Capture() is null;
+            && mapCapture.Capture() is null
+            && routeCapture.Capture() is null;
 
         discoveryCapture.Free();
         definitionsCapture.Free();
@@ -334,6 +368,7 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         firstPatientCapture.Free();
         journalCapture.Free();
         mapCapture.Free();
+        routeCapture.Free();
         missingPerception.Free();
         missingDefinitions.Free();
         missingEventLog.Free();
@@ -342,10 +377,11 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         missingJournal.Free();
         noSelection.Free();
         missingMap.Free();
+        missingRoutes.Free();
         return rejected;
     }
 
-    private static SaveSnapshotCaptureController CreateCaptureController(
+    private SaveSnapshotCaptureController CreateCaptureController(
         FocusedSearchActivityController discovery,
         WorldEventController worldEvents,
         CharacterMemoryController memory,
@@ -362,6 +398,10 @@ public partial class SaveSnapshotCaptureControllerSmokeCheck : Node
         SetField(captureController, "journalController", journal);
         SetField(captureController, "journalSelection", selection);
         SetField(captureController, "mapController", map);
+        SetField(captureController, "shrineSource", shrineSource);
+        SetField(captureController, "routeProgress", routeProgress);
+        SetField(captureController, "routeCompletions", routeCompletions);
+        SetField(captureController, "routeConsumption", routeConsumption);
         return captureController;
     }
 

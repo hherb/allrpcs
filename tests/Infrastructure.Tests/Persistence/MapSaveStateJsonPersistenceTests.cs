@@ -68,11 +68,21 @@ public sealed class MapSaveStateJsonPersistenceTests
             SaveSnapshotJsonSerializer.Serialize(source),
             InitialFirstPatient());
 
-        Assert.Same(SaveSchemaVersion.Map, first.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.InvestigationRoutes, first.SchemaVersion);
         Assert.Equal(source.Discovery.Perception.CharacterId, first.Map!.SeekerId);
         Assert.Empty(first.Map.ReportedLocationIds);
         Assert.Empty(first.Map.VerifiedLocationIds);
         Assert.Empty(first.Map.Notes);
+        Assert.Equal(
+            ["stream-laundry", "shrine", "road-wagon"],
+            first.InvestigationRoutes!.Progress.Select(entry => entry.RouteKey));
+        Assert.All(first.InvestigationRoutes.Progress, entry =>
+        {
+            Assert.Empty(entry.RecordedLocationIds);
+            Assert.Empty(entry.RecordedEvidenceIds);
+        });
+        Assert.Empty(first.InvestigationRoutes.AcceptedCompletionRouteKeys);
+        Assert.Null(first.InvestigationRoutes.ConsumedCompletionRouteKey);
         Assert.NotSame(first.Map, second.Map);
         Assert.NotSame(first.Map.ReportedLocationIds, second.Map!.ReportedLocationIds);
     }

@@ -14,6 +14,9 @@ public sealed class MapSaveStateRestoration
     /// <summary>Gets the fresh safe Seeker-owned map snapshot.</summary>
     public SeekerMapSnapshot Map { get; }
 
+    /// <summary>Gets the fresh canonical map catalogue used by the restored snapshots.</summary>
+    public OpeningRegionMapLocationCatalogue Catalogue => Map.Catalogue;
+
     /// <summary>Gets the fresh safe player-authored map-note snapshot.</summary>
     public SeekerMapNoteSnapshot Notes { get; }
 

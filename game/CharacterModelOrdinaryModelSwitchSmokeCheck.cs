@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using Allrpcs.Application.Dialogue;
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Dialogue;
@@ -33,6 +34,8 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
     private DialogueInputController dialogueInputController = null!;
     private CharacterTurnActivityController turnController = null!;
     private CharacterTurnTranscriptController transcriptController = null!;
@@ -113,6 +116,10 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
         saveController = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
         inputControl = GetNode<LineEdit>("../DialogueOverlay/Panel/Input");
     }
@@ -161,6 +168,14 @@ public partial class CharacterModelOrdinaryModelSwitchSmokeCheck : Node
             || !mapController.TryInitialize(new CharacterId("seeker")))
         {
             Fail("The model-switch smoke could not initialize its safe journal.");
+            return;
+        }
+        if (!SaveRouteLifecycleSmokeArrangement.TryInitializeEmpty(
+                routeProgress,
+                mapController,
+                shrineSource))
+        {
+            Fail("The model-switch smoke could not initialize its route state.");
             return;
         }
         string? serialized = saveController.CaptureSerialized();

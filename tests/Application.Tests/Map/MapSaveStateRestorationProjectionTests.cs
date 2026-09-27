@@ -131,7 +131,7 @@ public sealed class MapSaveStateRestorationProjectionTests
     public void ExposesOnlyTheFreshSafeMapAndNotes()
     {
         Assert.Equal(
-            ["Map", "Notes"],
+            ["Catalogue", "Map", "Notes"],
             typeof(MapSaveStateRestoration)
                 .GetProperties()
                 .Select(property => property.Name)
@@ -139,6 +139,9 @@ public sealed class MapSaveStateRestorationProjectionTests
         Assert.All(
             typeof(MapSaveStateRestoration).GetProperties(),
             property => Assert.False(property.CanWrite));
+        Assert.Equal(
+            typeof(OpeningRegionMapLocationCatalogue),
+            typeof(MapSaveStateRestoration).GetProperty("Catalogue")!.PropertyType);
         Assert.Equal(
             typeof(SeekerMapSnapshot),
             typeof(MapSaveStateRestoration).GetProperty("Map")!.PropertyType);

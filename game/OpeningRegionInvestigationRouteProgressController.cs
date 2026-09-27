@@ -42,6 +42,15 @@ public partial class OpeningRegionInvestigationRouteProgressController : Node
         return true;
     }
 
+    /// <summary>Installs one completely preflighted fresh restored route-progress graph.</summary>
+    internal void InstallRestored(OpeningRegionInvestigationRouteProgressSnapshot restored)
+    {
+        ArgumentNullException.ThrowIfNull(restored);
+        _ = InvestigationRouteSaveStateCaptureProjection.Capture(restored, [], null);
+        Catalogue = restored.Catalogue;
+        Progress = restored;
+    }
+
     /// <summary>Records one exact route location through compare-and-swap.</summary>
     public bool TryRecordLocation(
         OpeningRegionInvestigationRouteProgressSnapshot expectedProgress,

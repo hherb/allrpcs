@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Domain.Characters;
@@ -18,6 +19,10 @@ public partial class SaveSnapshotCaptureController : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
+    private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
     private WorldEventController worldEventController = null!;
 
     /// <inheritdoc />
@@ -31,6 +36,14 @@ public partial class SaveSnapshotCaptureController : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        routeCompletions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
     }
 
@@ -48,6 +61,8 @@ public partial class SaveSnapshotCaptureController : Node
         JournalSnapshot? journal = journalController.Journal;
         SeekerMapSnapshot? map = mapController.Map;
         SeekerMapNoteSnapshot? mapNotes = mapController.Notes;
+        OpeningRegionMapLocationCatalogue? mapCatalogue = mapController.Catalogue;
+        OpeningRegionInvestigationRouteProgressSnapshot? routes = routeProgress.Progress;
         if (perception is null
             || worldEvents is null
             || eventLog is null
@@ -57,6 +72,13 @@ public partial class SaveSnapshotCaptureController : Node
             || journal.SeekerId != perception.CharacterId
             || map is null
             || mapNotes is null
+            || mapCatalogue is null
+            || routes is null
+            || !ReferenceEquals(routeProgress.Catalogue, routes.Catalogue)
+            || !OpeningRegionInvestigationRouteValidationPolicy.IsValid(
+                routes.Catalogue,
+                mapCatalogue,
+                shrineSource.DiscoveryScenario)
             || map.SeekerId != perception.CharacterId
             || mapNotes.SeekerId != perception.CharacterId)
         {
@@ -65,12 +87,17 @@ public partial class SaveSnapshotCaptureController : Node
 
         JournalSaveState journalState;
         MapSaveState mapState;
+        InvestigationRouteSaveState routeState;
         try
         {
             journalState = JournalSaveStateCaptureProjection.Capture(
                 journal,
                 journalSelection.Selection);
             mapState = MapSaveStateCaptureProjection.Capture(map, mapNotes);
+            routeState = InvestigationRouteSaveStateCaptureProjection.Capture(
+                routes,
+                routeCompletions.AcceptedCompletions,
+                routeConsumption.ConsumedCompletion);
         }
         catch (ArgumentException)
         {
@@ -85,12 +112,13 @@ public partial class SaveSnapshotCaptureController : Node
             discoveryController.ObservationReinterpretationCandidates);
         WorldEventSaveState eventState = new(eventLog, worldTime);
         return new SaveSnapshot(
-            SaveSchemaVersion.Map,
+            SaveSchemaVersion.InvestigationRoutes,
             discovery,
             eventState,
             memory,
             firstPatient,
             journalState,
-            mapState);
+            mapState,
+            routeState);
     }
 }

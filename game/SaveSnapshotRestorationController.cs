@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Domain.Persistence;
@@ -17,6 +18,10 @@ public partial class SaveSnapshotRestorationController : Node
     private JournalController journalController = null!;
     private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = null!;
+    private OpeningRegionInvestigationRouteCompletionConsumptionCoordinator routeConsumption = null!;
     private WorldEventController worldEventController = null!;
     private WorldObjectController worldObjectController = null!;
 
@@ -33,6 +38,14 @@ public partial class SaveSnapshotRestorationController : Node
         journalSelection = GetNode<JournalSectionSelectionController>(
             "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        routeCompletions = GetNode<OpeningRegionInvestigationRouteCompletionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        routeConsumption = GetNode<OpeningRegionInvestigationRouteCompletionConsumptionCoordinator>(
+            "../OpeningRegionInvestigationRouteCompletionConsumptionCoordinator");
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         worldObjectController = GetNode<WorldObjectController>("../WorldObjectController");
     }
@@ -59,6 +72,7 @@ public partial class SaveSnapshotRestorationController : Node
         FirstPatientSaveState? reboundFirstPatient = null;
         JournalSaveStateRestoration? restoredJournal = null;
         MapSaveStateRestoration? restoredMap = null;
+        InvestigationRouteSaveStateRestoration? restoredRoutes = null;
         if (snapshot.FirstPatient is not null)
         {
             try
@@ -102,6 +116,30 @@ public partial class SaveSnapshotRestorationController : Node
             }
         }
 
+        if (snapshot.InvestigationRoutes is not null)
+        {
+            if (restoredMap is null)
+            {
+                return false;
+            }
+
+            try
+            {
+                restoredRoutes = InvestigationRouteSaveStateRestorationProjection.Restore(
+                    snapshot.InvestigationRoutes,
+                    restoredMap.Catalogue,
+                    shrineSource.DiscoveryScenario);
+            }
+            catch (ArgumentException)
+            {
+                return false;
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+        }
+
         bool discoveryRestored = discoveryController.TryRestoreDiscoveryState(
             snapshot.Discovery,
             worldObjects);
@@ -120,6 +158,14 @@ public partial class SaveSnapshotRestorationController : Node
         if (restoredMap is not null)
         {
             restoredMap.InstallInto(mapController);
+        }
+        if (restoredRoutes is not null)
+        {
+            routeProgress.InstallRestored(restoredRoutes.Progress);
+            routeCompletions.InstallRestored(
+                restoredRoutes.Progress,
+                restoredRoutes.AcceptedCompletions);
+            routeConsumption.InstallRestored(restoredRoutes.ConsumedCompletion);
         }
         if (!discoveryRestored || !worldEventsRestored)
         {

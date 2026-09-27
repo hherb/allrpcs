@@ -49,4 +49,15 @@ public partial class OpeningRegionInvestigationRouteCompletionCoordinator : Node
             .AsReadOnly();
         return true;
     }
+
+    /// <summary>Installs preflighted fresh restored completion tokens atomically.</summary>
+    internal void InstallRestored(
+        OpeningRegionInvestigationRouteProgressSnapshot restoredProgress,
+        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> restored)
+    {
+        ArgumentNullException.ThrowIfNull(restoredProgress);
+        ArgumentNullException.ThrowIfNull(restored);
+        _ = InvestigationRouteSaveStateCaptureProjection.Capture(restoredProgress, restored, null);
+        AcceptedCompletions = restored;
+    }
 }

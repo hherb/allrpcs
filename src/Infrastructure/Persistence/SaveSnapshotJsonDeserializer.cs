@@ -76,8 +76,13 @@ public static class SaveSnapshotJsonDeserializer
             snapshot = SaveSnapshotJournalMigration.Migrate(snapshot);
         }
 
-        return snapshot.SchemaVersion == SaveSchemaVersion.Journal
-            ? SaveSnapshotMapMigration.Migrate(snapshot)
+        if (snapshot.SchemaVersion == SaveSchemaVersion.Journal)
+        {
+            snapshot = SaveSnapshotMapMigration.Migrate(snapshot);
+        }
+
+        return snapshot.SchemaVersion == SaveSchemaVersion.Map
+            ? SaveSnapshotInvestigationRoutesMigration.Migrate(snapshot)
             : snapshot;
     }
 
@@ -93,6 +98,19 @@ public static class SaveSnapshotJsonDeserializer
         if (version == SaveSchemaVersion.FirstSupported)
         {
             RequireObject(element, "schemaVersion", "discovery", "worldEvents");
+        }
+        else if (version == SaveSchemaVersion.InvestigationRoutes)
+        {
+            RequireObject(
+                element,
+                "schemaVersion",
+                "discovery",
+                "worldEvents",
+                "characterMemory",
+                "firstPatient",
+                "journal",
+                "map",
+                "investigationRoutes");
         }
         else if (version == SaveSchemaVersion.Map)
         {
@@ -145,7 +163,22 @@ public static class SaveSnapshotJsonDeserializer
                 element.GetProperty("characterMemory"),
                 version == SaveSchemaVersion.DialogueDelivery
                     || version == SaveSchemaVersion.Journal
-                    || version == SaveSchemaVersion.Map);
+                    || version == SaveSchemaVersion.Map
+                    || version == SaveSchemaVersion.InvestigationRoutes);
+        if (version == SaveSchemaVersion.InvestigationRoutes)
+        {
+            return new SaveSnapshot(
+                version,
+                discovery,
+                worldEvents,
+                characterMemory,
+                FirstPatientJsonReader.Read(element.GetProperty("firstPatient")),
+                JournalSaveStateJsonReader.Read(element.GetProperty("journal")),
+                MapSaveStateJsonReader.Read(element.GetProperty("map")),
+                InvestigationRouteSaveStateJsonReader.Read(
+                    element.GetProperty("investigationRoutes")));
+        }
+
         if (version == SaveSchemaVersion.Map)
         {
             return new SaveSnapshot(
@@ -200,6 +233,7 @@ public static class SaveSnapshotJsonDeserializer
             4 => SaveSchemaVersion.DialogueDelivery,
             5 => SaveSchemaVersion.Journal,
             6 => SaveSchemaVersion.Map,
+            7 => SaveSchemaVersion.InvestigationRoutes,
             _ => throw InvalidDocument(),
         };
     }

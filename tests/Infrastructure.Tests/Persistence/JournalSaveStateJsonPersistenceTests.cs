@@ -85,7 +85,7 @@ public sealed class JournalSaveStateJsonPersistenceTests
             SaveSnapshotJsonSerializer.Serialize(versionFour),
             versionFour.FirstPatient!);
 
-        Assert.Same(SaveSchemaVersion.Map, current.SchemaVersion);
+        Assert.Same(SaveSchemaVersion.InvestigationRoutes, current.SchemaVersion);
         Assert.NotNull(current.Journal);
         Assert.Equal("seeker", current.Journal.SeekerId.Value);
         Assert.Empty(current.Journal.Observations);
