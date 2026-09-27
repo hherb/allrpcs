@@ -35,8 +35,8 @@ public partial class InteractionFocusSmokeCheck : Node
     private const string ResolveChangedText = "Focused search RESOLVE: CHANGED";
     private const string ResolveUnchangedText = "Focused search RESOLVE: UNCHANGED";
     private const string TemporaryInstructionsText =
-        "TEMP · U CUSTOMIZE · J JOURNAL · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE "
-        + "· V CANCEL TURN · X WAIT · M MOVE";
+        "TEMP · U CUSTOMIZE · J JOURNAL · M MAP · I SHRINE · P PREPARE · T TREAT · K SAGE "
+        + "· F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · H MOVE";
     private const string UnrelatedAction = "interaction_focus_smoke_unrelated";
     private static readonly string[] ExpectedObjectIdValues =
     [

@@ -59,6 +59,8 @@
 [ext_resource type="Script" path="res://SaveSnapshotJsonControllerSmokeCheck.cs" id="57_save_json_controller_check"]
 [ext_resource type="Script" path="res://SaveDocumentStorageController.cs" id="58_save_storage_controller"]
 [ext_resource type="Script" path="res://SaveDocumentStorageControllerSmokeCheck.cs" id="59_save_storage_controller_check"]
+[ext_resource type="Script" path="res://SaveLoadInputController.cs" id="396_save_load_input"]
+[ext_resource type="Script" path="res://SaveLoadInputSmokeCheck.cs" id="397_save_load_input_check"]
 [ext_resource type="Script" path="res://CharacterTurnActivityController.cs" id="60_character_turn_controller"]
 [ext_resource type="Script" path="res://CharacterTurnActivityControllerSmokeCheck.cs" id="61_character_turn_controller_check"]
 [ext_resource type="Script" path="res://TemporaryCharacterTurnSource.cs" id="62_character_turn_source"]
@@ -2663,6 +2665,9 @@ script = ExtResource("56_save_json_controller")
 [node name="SaveDocumentStorageController" type="Node" parent="."]
 script = ExtResource("58_save_storage_controller")
 
+[node name="SaveLoadInputController" type="Node" parent="."]
+script = ExtResource("396_save_load_input")
+
 [node name="CharacterTurnActivityController" type="Node" parent="."]
 script = ExtResource("60_character_turn_controller")
 
@@ -2908,6 +2913,9 @@ script = ExtResource("57_save_json_controller_check")
 
 [node name="SaveDocumentStorageControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("59_save_storage_controller_check")
+
+[node name="SaveLoadInputSmokeCheck" type="Node" parent="."]
+script = ExtResource("397_save_load_input_check")
 
 [node name="CharacterTurnActivityControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("61_character_turn_controller_check")
@@ -3474,7 +3482,7 @@ horizontal_alignment = 1
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 760.0
-offset_bottom = 132.0
+offset_bottom = 152.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 mouse_filter = 2
 
@@ -3482,29 +3490,59 @@ mouse_filter = 2
 offset_left = 12.0
 offset_top = 7.0
 offset_right = 736.0
-offset_bottom = 30.0
-text = "TEMP · U CUSTOMIZE · J JOURNAL · I SHRINE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · M MOVE"
+offset_bottom = 48.0
+text = "TEMP · U CUSTOMIZE · J JOURNAL · M MAP · I SHRINE · P PREPARE · T TREAT · K SAGE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · H MOVE"
+autowrap_mode = 2
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
-offset_top = 36.0
+offset_top = 56.0
 offset_right = 604.0
-offset_bottom = 59.0
+offset_bottom = 79.0
 text = "Current healer mode: FOLLOW"
 
 [node name="FocusStatus" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
-offset_top = 62.0
+offset_top = 82.0
 offset_right = 604.0
-offset_bottom = 85.0
+offset_bottom = 105.0
 text = "Interaction focus: NONE"
 
 [node name="FocusedSearchResult" type="Label" parent="CommandOverlay/Panel"]
 offset_left = 12.0
-offset_top = 88.0
+offset_top = 108.0
 offset_right = 604.0
-offset_bottom = 111.0
+offset_bottom = 131.0
 text = "Focused search: NO ATTEMPT"
+
+[node name="SaveLoadPanel" type="ColorRect" parent="CommandOverlay"]
+offset_left = 772.0
+offset_top = 12.0
+offset_right = 948.0
+offset_bottom = 152.0
+color = Color(0.055, 0.067, 0.082, 0.88)
+
+[node name="Save" type="Button" parent="CommandOverlay/SaveLoadPanel"]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 164.0
+offset_bottom = 44.0
+text = "Q  SAVE"
+
+[node name="Load" type="Button" parent="CommandOverlay/SaveLoadPanel"]
+offset_left = 12.0
+offset_top = 52.0
+offset_right = 164.0
+offset_bottom = 84.0
+text = "L  LOAD"
+
+[node name="Status" type="Label" parent="CommandOverlay/SaveLoadPanel"]
+offset_left = 12.0
+offset_top = 96.0
+offset_right = 164.0
+offset_bottom = 124.0
+text = "SAVE / LOAD READY"
+horizontal_alignment = 1
 
 [node name="SettingsOverlay" type="CanvasLayer" parent="."]
 

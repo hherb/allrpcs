@@ -49,9 +49,14 @@ public partial class SaveDocumentStorageController : Node
     }
 
     internal static string CurrentFilePath() =>
-        OS.GetEnvironment(SmokeCheckEnvironmentVariable) == EnabledEnvironmentValue
+        IsIsolatedSmokeCheck()
             ? Path.Combine(
                 Path.GetTempPath(),
                 $"allrpcs-save-v1-smoke-{OS.GetProcessId()}.json")
             : ProjectSettings.GlobalizePath(SaveDocumentVirtualPath);
+
+    private static bool IsIsolatedSmokeCheck() =>
+        OS.GetEnvironment(SmokeCheckEnvironmentVariable) == EnabledEnvironmentValue
+        || OS.GetEnvironment(SaveLoadInputController.SmokeCheckEnvironmentVariable)
+            == EnabledEnvironmentValue;
 }

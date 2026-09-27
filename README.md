@@ -500,10 +500,16 @@ writes strict UTF-8 without a byte-order mark to a unique sibling temporary file
 same-directory replacement, and reports expected I/O, access, encoding, and platform failures
 without treating empty or invalid UTF-8 data as a loaded save. `SaveDocumentStorageController`
 composes that adapter at the fixed Godot `user://save-v1.json` path with exact capture and complete
-preflighted restoration. It exposes callable save/load operations but does not invoke them from
-startup or input, add slots or user-selected paths, migrate, encrypt, compress, sync, replay, handle
-credentials, or provide final save UI. Its smoke uses a process-specific system-temporary file and
-deletes it after the check, so validation cannot overwrite an ordinary user save.
+preflighted restoration. The ordinary `SaveLoadInputController` delegates only to those operations:
+physical Q or the visible Save button reports `SAVED` or `SAVE FAILED`, while physical L or the
+visible Load button reports `LOADED`, `NO SAVE FOUND`, or `LOAD FAILED`. It never exposes the fixed
+path or serialized content. Startup remains inert, and there is still no autosave, multiple slots,
+user-selected path, settings or provider-state persistence, encryption, compression, sync, replay,
+or credential behavior. Both storage and input smokes use a process-specific system-temporary file
+and delete it after the check, so validation cannot overwrite an ordinary user save. The input
+smoke covers incomplete capture, missing storage, exact save/change/load restoration, malformed and
+future-version rejection without live-state mutation, released and unrelated input, and unrelated
+scene-state isolation.
 
 ## Discovery-scenario validation vocabulary
 
