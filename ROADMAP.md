@@ -129,6 +129,9 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 
 ## Phase 8 — Authored opening vertical slice
 
+Complete. The authored opening region, player/background setup, investigation routes, recovery,
+journal/map state, persistence checkpoint, and human acceptance checkpoint are complete.
+
 - [x] Establish the continuous validated opening region through the sickhouse, healer's garden,
   village transitions, stream, abandoned laundry, woodland clearing, and old-shrine greyboxes,
   including the inert rare-specimen and layered-inscription markers.
@@ -151,7 +154,7 @@ recoverable evidence. `PHASE_7_ACCEPTANCE_AUDIT.md` retains the detailed traceab
 
 Acceptance:
 
-- [ ] A new player can complete the opening scenario without developer intervention, objective
+- [x] A new player can complete the opening scenario without developer intervention, objective
   arrows, a prescribed clue order, or knowledge unavailable to their characters.
 
 ## Phase 9 — Art direction, production art, and audio
