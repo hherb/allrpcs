@@ -787,8 +787,10 @@ emitting version 6. Scene restoration preflights first-patient, journal, and map
 installing discovery, world events, memory, first-patient state, journal selection, and the exact
 fresh map composition. Serialized and isolated-storage checks cover populated report, verification,
 and note round trips, legacy empty-map migration, canonical rebinding, and unchanged controller state
-after malformed, unknown-location, or hidden-note rejection. Ordinary startup remains inert; there
-is still no automatic visit/report behavior, new map UI, or coordinate/topology exposure.
+after malformed, unknown-location, or hidden-note rejection. Ordinary startup remains inert. The
+first explicit M-key map open initializes both the empty safe map and the three empty investigation
+routes from that exact map catalogue and the old-shrine discovery scenario; it does not advance a
+route. There is still no automatic visit/report behavior or coordinate/topology exposure.
 
 The opening region now has three asset-neutral, provider-neutral investigation routes. The
 stream/laundry route retains only `stream`, `abandoned-laundry`, and `residue`; the shrine route
@@ -803,10 +805,12 @@ catalogue.
 Separate immutable route-progress state starts with one empty entry per exact route and records
 only explicitly supplied exact member locations or evidence identities. Each successful operation
 returns a fresh bounded snapshot, preserves every unrelated entry, and does not infer or expose
-route completion. An inert scene controller can initialize this validated
-catalogue once and install those explicit operations through expected-state compare-and-swap.
-Ordinary startup does not initialize or advance it, and it does not start discovery, reveal
-evidence, change first-patient state, write the journal or map, call a provider, or present UI.
+route completion. An inert scene controller can initialize this validated catalogue once and install
+those explicit operations through expected-state compare-and-swap. Ordinary startup does not
+initialize or advance it. The first successful explicit map open performs the one-shot initialization
+from the map's exact catalogue and the old-shrine scene's exact discovery scenario; later map opens
+retain the exact current progress. Initialization does not start discovery, reveal evidence, change
+first-patient state, write the journal, call a provider, or present route progress.
 
 A separate pure authority transition accepts a route location only when the exact supplied map
 definition is in the exact supplied `SeekerMapSnapshot` verified-location view and its identifier is
@@ -819,10 +823,14 @@ at ordinary startup; it still does not infer route completion, write any authori
 progress. A catalogue-routing coordinator can take one exact already-verified map location or visible
 evidence identity, preflight every exact matching route, record it into all matches in authored
 catalogue order, and ask the completion owner to observe each exact resulting snapshot. It never
-chooses one preferred route or pools partial progress. The live map-visit coordinator now submits its
-exact successfully verified location through that path when route progress has already been
-explicitly initialized. Route initialization remains inert and evidence discovery has no
-ordinary-play submission yet.
+chooses one preferred route or pools partial progress. The live map-visit coordinator submits its
+exact successfully verified location through that path when route progress is active. After the
+old-shrine discovery atomically commits its exact identified presentation and filtered evidence
+exposure, it likewise submits only that exposure's exact `partial-inscription` identity and exact
+filtered Seeker view. Missing route progress preserves the successful discovery without initializing
+routes; repeated discovery does not route twice. Focused search, passive noticing, testimony, and
+every other evidence source still has no ordinary-play route submission. Observed completion tokens
+remain unconsumed and do not trigger another gameplay effect.
 
 A separate pure completion policy returns an immutable provenance token only when one exact route
 entry contains every exact authored location and evidence member. It accepts any observation order,

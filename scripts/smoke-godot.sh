@@ -26,6 +26,8 @@ ALLRPCS_OPENING_REGION_WOODLAND_CLEARING_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
+ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK=route \
+    godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_ENVIRONMENTAL_STATE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_SEEKER_CUSTOMIZATION_SELECTION_CHECK=1 \

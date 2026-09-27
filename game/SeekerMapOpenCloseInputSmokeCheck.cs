@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Domain.Dialogue;
@@ -30,6 +31,14 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         SeekerMapOpenCloseInputController input =
             GetNode<SeekerMapOpenCloseInputController>("../SeekerMapOpenCloseInputController");
         SeekerMapController state = GetNode<SeekerMapController>("../SeekerMapController");
+        OpeningRegionInvestigationRouteProgressController routeProgress = GetNode<
+            OpeningRegionInvestigationRouteProgressController>(
+                "../OpeningRegionInvestigationRouteProgressController");
+        OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = GetNode<
+            OpeningRegionInvestigationRouteCompletionCoordinator>(
+                "../OpeningRegionInvestigationRouteCompletionCoordinator");
+        OpeningRegionOldShrineSceneSource shrineSource = GetNode<
+            OpeningRegionOldShrineSceneSource>("../OpeningRegionOldShrineSceneSource");
         SeekerMapPresentationController presentations =
             GetNode<SeekerMapPresentationController>("../SeekerMapPresentationController");
         SeekerMapPanel panel = GetNode<SeekerMapPanel>("../SeekerMapPanel");
@@ -63,6 +72,9 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         if (state.Catalogue is not null
             || state.Map is not null
             || state.Notes is not null
+            || routeProgress.Catalogue is not null
+            || routeProgress.Progress is not null
+            || routeCompletions.AcceptedCompletions.Count != 0
             || presentations.Presentation is not null
             || panel.Presentation is not null
             || panel.Visible
@@ -84,6 +96,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             || !journalClose.HasFocus()
             || state.Map is not null
             || state.Notes is not null
+            || routeProgress.Progress is not null
             || presentations.Presentation is not null
             || panel.Visible
             || seeker.IsPhysicsProcessing())
@@ -108,12 +121,20 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             ?? throw new InvalidOperationException("Map input did not initialize notes.");
         SeekerMapPresentationSnapshot emptyPresentation = presentations.Presentation
             ?? throw new InvalidOperationException("Map input did not project empty state.");
+        OpeningRegionInvestigationRouteProgressSnapshot emptyRouteProgress =
+            routeProgress.Progress
+            ?? throw new InvalidOperationException("Map input did not initialize route progress.");
         if (!ReferenceEquals(emptyMap.SeekerId, seekerSource.Character.Identity.Id)
             || !ReferenceEquals(emptyNotes.SeekerId, seekerSource.Character.Identity.Id)
             || emptyMap.ReportedLocations.Count != 0
             || emptyMap.VerifiedLocations.Count != 0
             || emptyNotes.Notes.Count != 0
             || emptyPresentation.Locations.Count != 0
+            || !HasExactEmptyRoutes(
+                emptyRouteProgress,
+                state.Catalogue!,
+                shrineSource.DiscoveryScenario)
+            || routeCompletions.AcceptedCompletions.Count != 0
             || !ReferenceEquals(panel.Presentation, emptyPresentation)
             || !panel.Visible
             || title.Text != SeekerMapPresentationTextProjection.Title
@@ -132,6 +153,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         if (!panel.Visible
             || !ReferenceEquals(state.Map, emptyMap)
             || !ReferenceEquals(state.Notes, emptyNotes)
+            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress)
             || !ReferenceEquals(presentations.Presentation, emptyPresentation)
             || !ReferenceEquals(panel.Presentation, emptyPresentation)
             || !close.HasFocus()
@@ -201,6 +223,7 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             || !ReferenceEquals(journal.Journal, openedJournal)
             || !ReferenceEquals(state.Map, reportedMap)
             || !ReferenceEquals(state.Notes, notes)
+            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress)
             || !ReferenceEquals(presentations.Presentation, changedPresentation))
         {
             Fail("Journal input changed state while the map owned modal interaction.");
@@ -221,6 +244,8 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
             || !ReferenceEquals(state.Notes, notes)
             || !ReferenceEquals(presentations.Presentation, changedPresentation)
             || !ReferenceEquals(panel.Presentation, changedPresentation)
+            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress)
+            || routeCompletions.AcceptedCompletions.Count != 0
             || !ReferenceEquals(focusedSearch.Perception, perception)
             || !ReferenceEquals(worldObjects.WorldObjects, objects)
             || !ReferenceEquals(dialogue.LastOccurredEvent, lastDialogue)
@@ -232,7 +257,8 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
 
         GD.Print(
             "Seeker map open-close input smoke passed: inert startup, exact current-Seeker "
-            + "initialization, changed-source refresh, unchanged retained reopen, physical M, "
+            + "map and investigation-route initialization, changed-source refresh, unchanged "
+            + "retained reopen, physical M, "
             + "focus and movement ownership, close and toggle paths, journal exclusion, released "
             + "and unrelated rejection, closed surface, and gameplay isolation were correct.");
         GetTree().Quit();
@@ -268,6 +294,18 @@ public partial class SeekerMapOpenCloseInputSmokeCheck : Node
         Action = action,
         Pressed = pressed,
     };
+
+    private static bool HasExactEmptyRoutes(
+        OpeningRegionInvestigationRouteProgressSnapshot progress,
+        OpeningRegionMapLocationCatalogue locations,
+        Allrpcs.Domain.Discovery.DiscoveryScenario scenario) =>
+        progress.Entries.Count == 3
+        && progress.Entries.All(entry => entry.RecordedLocationIds.Count == 0
+            && entry.RecordedEvidenceIds.Count == 0
+            && entry.Route.LocationIds.All(locationId => locations.Locations.Any(location =>
+                ReferenceEquals(location.Id, locationId)))
+            && entry.Route.EvidenceIds.All(evidenceId => scenario.Evidence.Entries.Any(evidence =>
+                ReferenceEquals(evidence.EvidenceId, evidenceId))));
 
     private static bool HasOnlyPhysicalKey(string actionName, Key expectedKey)
     {

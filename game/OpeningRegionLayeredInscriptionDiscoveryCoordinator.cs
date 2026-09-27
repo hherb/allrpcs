@@ -1,4 +1,5 @@
 using Allrpcs.Application.Discovery;
+using Allrpcs.Application.Investigations;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Discovery;
 using Godot;
@@ -9,6 +10,9 @@ namespace Allrpcs.Game;
 /// <summary>Preflights and atomically commits one exact old-shrine inscription discovery.</summary>
 public partial class OpeningRegionLayeredInscriptionDiscoveryCoordinator : Node
 {
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteObservationRoutingCoordinator routing = null!;
+
     /// <summary>Gets the exact current old-shrine source retained by this scene coordinator.</summary>
     public OpeningRegionOldShrineSceneSource SceneSource { get; private set; } = null!;
 
@@ -20,6 +24,10 @@ public partial class OpeningRegionLayeredInscriptionDiscoveryCoordinator : Node
     {
         SceneSource = GetNode<OpeningRegionOldShrineSceneSource>(
             "../OpeningRegionOldShrineSceneSource");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        routing = GetNode<OpeningRegionInvestigationRouteObservationRoutingCoordinator>(
+            "../OpeningRegionInvestigationRouteObservationRoutingCoordinator");
         CompletedExposure = null;
     }
 
@@ -74,6 +82,14 @@ public partial class OpeningRegionLayeredInscriptionDiscoveryCoordinator : Node
             }
 
             CompletedExposure = evidenceExposure;
+            if (routeProgress.Progress is { } currentRouteProgress)
+            {
+                _ = routing.TryRouteVisibleEvidence(
+                    currentRouteProgress,
+                    evidenceExposure.EvidenceView,
+                    evidenceExposure.Evidence.EvidenceId);
+            }
+
             return true;
         }
         catch (ArgumentException)
