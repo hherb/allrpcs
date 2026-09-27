@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #409 at `0c4d4ad`. Branch
-`codex/phase-8-investigation-route-observation-routing` adds two bounded Phase 8 slices:
+`codex/phase-8-investigation-route-observation-routing` adds two bounded Phase 8 slices in draft
+PR #410:
 
 - `OpeningRegionInvestigationRouteObservationRoutingCoordinator` receives one exact current route
   snapshot plus one already-verified map location or visible evidence identity. It preflights every
@@ -40,6 +41,9 @@ ordinary play.
 - Session-wide review checked the complete diff, exact-reference ownership, authored catalogue
   ordering, full preflight before multi-route mutation, unchanged rejected inputs, closed public
   surfaces, file-size and 120-character limits, formatting, and whitespace. No issue remained.
+- Initial hosted PR run `36285087597` failed all five jobs before execution with `steps: []`. This is
+  Actions/account infrastructure evidence, not hosted product validation; the complete host-local
+  suite above remains the current product evidence.
 
 ## Preserved boundaries
 
