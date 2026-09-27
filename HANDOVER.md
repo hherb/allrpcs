@@ -2,36 +2,42 @@
 
 ## Current state
 
-Phase 8 is complete on `main`. The authored opening region, background variants, journal, map,
-investigation routes, first-patient recovery, sage consultation, and schema-8 persistence have
-automated and graphical evidence. On 2026-09-27, a human tester used the ordinary graphical game,
-saved, fully closed and reopened it, loaded, and confirmed that the expected state restored
-correctly. After the acceptance follow-up, the tester explicitly directed that Phase 8 be marked
-complete.
+Phase 8 remains complete on `main`. Phase 9.1 now has four preview-only representative-scene visual
+directions: storybook gouache, ink and wash, low-poly diorama, and pixel art. The same-project
+greybox reference, full-size PNG files, exact prompts, provenance, integrity hashes, comparison
+sheet, and neutral tradeoff review are under `art-direction/representative-scene/`. No direction has
+been selected and no generated image has entered the runtime.
 
 ## Current evidence and boundaries
 
-- The final human checkpoint verified the ordinary save/full-close/reopen/load path. Detailed route,
-  false-start, and qualitative usability observations were not recorded, so do not present it as a
-  granular usability study.
-- Earlier Godot 4.6.3 Mono Compatibility evidence covers route completion, remedy readiness,
-  testimony, sage consultation, `SAVED`, `LOADED`, and the restored journal.
+- The comparison keeps one building, two characters, plants, one interactable preparation table,
+  the existing 16:9 gameplay scale, and status/dialogue UI layering visible in every direction.
+- Every interactable treatment combines geometry or a marker with value contrast rather than using
+  colour alone. The review notes compare perspective, proposed resolution, palette, lighting,
+  texture, outlines, atmosphere, character proportions, legibility, and likely production cost.
 - Host-local `./scripts/quality.sh` passed a zero-warning build, 2,839 Domain, 924 Application,
-  1,261 Infrastructure, and 8 architecture tests, the scenario validator, every credential-free
-  Godot smoke, and a graphical launch. Restricted Godot still hits the known `user://logs` boundary.
-- Persistence remains visibility-safe: it stores canonical identities, not coordinates, topology,
-  hidden authoritative state, or provider transcripts.
-- Autosave, multiple slots, file selection, provider/settings persistence, credentials, provider
-  calls, production art/audio, release, and signing remain out of scope.
+  1,261 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
+  smoke, formatting, and the Compatibility graphical launch. The restricted run first reached only
+  the known `user://logs` boundary; no product change was made for that environment failure.
+- Codex's built-in image-generation tool created the previews independently from only the project's
+  own cropped Phase 8 checkpoint. No third-party reference or asset was used. The tool did not
+  expose a model/version identifier, and the previews remain concept evidence rather than licensed
+  production assets.
+- Phase 8's final human checkpoint remains only ordinary save/full-close/reopen/load evidence; do
+  not expand it into a granular usability claim.
+- Production art, runtime import or replacement, gameplay/UI changes, audio, provider/credential
+  work, release, and signing remain out of scope.
 
 ## Exact next bounded slice
 
-Create several preview-only visual directions for the same small representative scene containing
-terrain, one building, two characters, plants, one interactable object, and dialogue UI. Keep the
-existing greybox scale and camera framing visible enough to compare perspective, base resolution,
-palette, lighting, texture, outlines, atmosphere, character proportions, and non-colour-only object
-legibility. Record source files, prompts where applicable, provenance, and a concise comparison.
+Conduct a human review of the four full-size previews and comparison notes. Record either one chosen
+direction or one explicitly bounded hybrid/refinement, together with decisions for perspective,
+projection, camera framing, base asset resolution, palette, lighting language, texture treatment,
+outline policy, atmosphere, character proportions, animation needs, and non-colour-only rules for
+ordinary, noticeable, hidden, identified, and dangerous objects.
 
-Do not import previews into Godot, replace greybox/runtime assets, modify gameplay or UI behavior,
-produce a final asset set, select the final direction without review, use untracked third-party
-assets, or begin production art, audio, release, or signing work.
+Do not infer a winner from the comparison, generate a second round before review, import previews
+into Godot, replace runtime assets, modify gameplay or UI behavior, begin the production asset set,
+use untracked third-party assets, or start audio, release, or signing work. After the human decision,
+the following implementation slice should be only one refined representative scene and the first
+bounded art-bible draft for that selected direction.

@@ -161,14 +161,14 @@ Acceptance:
 
 ### 9.1 Art-direction selection
 
-- [ ] Generate or draw several preview-only visual directions after greybox scale is stable.
+- [x] Generate or draw several preview-only visual directions after greybox scale is stable.
 - [ ] Select the perspective, projection, camera framing, and base asset resolution.
 - [ ] Select a palette, lighting language, texture treatment, outline policy, and atmosphere.
 - [ ] Establish character proportions and animation requirements.
 - [ ] Establish visual rules for ordinary, noticeable, hidden, identified, and dangerous
   objects without relying on colour alone.
 - [ ] Create an art bible with reference images, constraints, and exclusions.
-- [ ] Track asset provenance, source files, prompts where applicable, licences, and edits.
+- [x] Track asset provenance, source files, prompts where applicable, licences, and edits.
 
 Acceptance:
 

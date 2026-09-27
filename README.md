@@ -6,6 +6,11 @@ navigation-request, follow-target, command-selection, and focus-selection rules 
 authoritative rules in engine-independent C# projects while Godot owns input mapping, physics
 presentation, camera behavior, collision, navigation topology, and scene authoring.
 
+Phase 9.1 begins with four preview-only representative-scene visual directions. The comparison,
+full-size images, exact generation prompts, provenance, and review tradeoffs are recorded in
+[`art-direction/representative-scene`](art-direction/representative-scene/README.md). None of these
+previews is imported into Godot or selected as the production direction.
+
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure
 deterministic character behavior selects fixed accept, refuse, clarify, or conditionally-accept
