@@ -21,9 +21,7 @@ public partial class SaveLoadInputSmokeCheck : Node
     private SaveLoadInputController input = null!;
     private SaveSnapshotJsonController jsonController = null!;
     private SaveSnapshotRestorationController restorationController = null!;
-    private RepresentativeJournalCompositionCoordinator journalComposition = null!;
     private JournalController journalController = null!;
-    private JournalSectionSelectionController journalSelection = null!;
     private SeekerMapController mapController = null!;
     private OpeningRegionOldShrineSceneSource shrineSource = null!;
     private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
@@ -49,11 +47,7 @@ public partial class SaveLoadInputSmokeCheck : Node
         jsonController = GetNode<SaveSnapshotJsonController>("../SaveSnapshotJsonController");
         restorationController = GetNode<SaveSnapshotRestorationController>(
             "../SaveSnapshotRestorationController");
-        journalComposition = GetNode<RepresentativeJournalCompositionCoordinator>(
-            "../RepresentativeJournalCompositionCoordinator");
         journalController = GetNode<JournalController>("../JournalController");
-        journalSelection = GetNode<JournalSectionSelectionController>(
-            "../JournalSectionSelectionController");
         mapController = GetNode<SeekerMapController>("../SeekerMapController");
         shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
             "../OpeningRegionOldShrineSceneSource");
@@ -106,10 +100,13 @@ public partial class SaveLoadInputSmokeCheck : Node
         }
 
         input._UnhandledInput(Action(SaveAction, pressed: true));
-        if (status.Text != SaveLoadInputController.SaveFailedStatusText
-            || File.Exists(StoragePath()))
+        Label recoveryStatus = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
+        if (status.Text != SaveLoadInputController.MapRequiredStatusText
+            || recoveryStatus.Text != SaveLoadInputController.MapRequiredRecoveryText
+            || File.Exists(StoragePath())
+            || journalController.Journal is not null)
         {
-            Fail("Save-load input did not expose bounded incomplete-state save failure.");
+            Fail("Save-load input did not explain the missing map initialization prerequisite.");
             return;
         }
 
@@ -117,15 +114,6 @@ public partial class SaveLoadInputSmokeCheck : Node
         if (status.Text != SaveLoadInputController.MissingStatusText)
         {
             Fail("Save-load input did not expose the missing-document result.");
-            return;
-        }
-
-        if (!journalComposition.TryComposeAndInitialize()
-            || !journalSelection.TrySelect(
-                journalController.Journal!,
-                journalController.Journal!.Catalogue.Sections[1]))
-        {
-            Fail("Save-load input smoke could not initialize safe journal state.");
             return;
         }
 
@@ -139,10 +127,12 @@ public partial class SaveLoadInputSmokeCheck : Node
             return;
         }
 
-        string initial = jsonController.CaptureSerialized()
-            ?? throw new InvalidOperationException("Initialized scene state was not serialized.");
         save.EmitSignal(BaseButton.SignalName.Pressed);
-        if (status.Text != SaveLoadInputController.SavedStatusText
+        string initial = jsonController.CaptureSerialized()
+            ?? throw new InvalidOperationException("Explicit save did not initialize safe journal state.");
+        if (journalController.Journal is null
+            || status.Text != SaveLoadInputController.SavedStatusText
+            || recoveryStatus.Text != SaveLoadInputController.SavedRecoveryText
             || !string.Equals(File.ReadAllText(StoragePath()), initial, StringComparison.Ordinal))
         {
             Fail("Visible save control did not persist the exact complete capture.");
@@ -204,8 +194,10 @@ public partial class SaveLoadInputSmokeCheck : Node
 
         GD.Print(
             "Save-load input smoke passed: visible Q-save and L-load controls, released and "
-            + "unrelated input, bounded save, load, missing, and failure status, exact complete "
-            + "capture, changed-state restoration, malformed and incompatible rejection, "
+            + "unrelated input, explicit map prerequisite guidance and safe journal initialization, "
+            + "bounded save, load, missing, and failure status, exact complete capture, changed-state "
+            + "restoration, malformed and "
+            + "incompatible rejection, "
             + "process-isolated storage, and unrelated scene isolation were correct.");
         GetTree().Quit();
     }

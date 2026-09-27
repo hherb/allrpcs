@@ -13,6 +13,9 @@ namespace Allrpcs.Game;
 /// <summary>Occurs one fixed heard testimony after exact first-patient stabilization.</summary>
 public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator : Node
 {
+    internal const string HeardStatusText =
+        "Patient testimony heard. Go to the village sage and press K.";
+
     private const float OrdinaryHearingRangePixels = 64.0f;
     private const float WhisperHearingRangePixels = 24.0f;
 
@@ -21,6 +24,7 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
     private CharacterBody2D seekerBody = null!;
     private TemporarySeekerCharacterSource seekerSource = null!;
     private FirstPatientStateController state = null!;
+    private Label status = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
 
     /// <summary>Gets the exact one-shot testimony occurrence, if completed.</summary>
@@ -36,6 +40,7 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
         seekerSource = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
+        status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
     }
 
@@ -132,6 +137,7 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
             }
 
             Testimony = occurred;
+            status.Text = HeardStatusText;
             return true;
         }
         catch (ArgumentException)
@@ -150,5 +156,9 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonyCoordinator 
     internal void InstallRestored(DialogueEvent? testimony)
     {
         Testimony = testimony;
+        if (testimony is not null)
+        {
+            status.Text = HeardStatusText;
+        }
     }
 }

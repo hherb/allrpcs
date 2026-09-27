@@ -51,6 +51,7 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
         FirstPatientStateController state =
             GetNode<FirstPatientStateController>("../FirstPatientStateController");
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
+        Label status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         FirstPatientTreatmentContext context = binding.TreatmentContext;
         IngredientPreparationRecipe recipe = binding.Recipe;
         IngredientStateSnapshot initialIngredients = preparation.Ingredients!;
@@ -61,7 +62,8 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
             || preparation.Outcome is not null
             || initialState.PreparedBatches.Batches.Count != 0
             || !HasMappedInput()
-            || !HasClosedSurface(coordinator))
+            || !HasClosedSurface(coordinator)
+            || status.Text != OpeningRegionRemedyPreparationInputCoordinator.ReadyStatusText)
         {
             Fail("Ordinary remedy preparation was not inert, mapped, and closed at startup.");
             return;
@@ -103,6 +105,8 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
                 binding.StationPosition)
             || preparation.Activity is not null
             || !ReferenceEquals(preparation.Ingredients, initialIngredients)
+            || status.Text
+                != OpeningRegionRemedyPreparationInputCoordinator.MoveCloserStatusText
             || !HasUnrelatedState(unrelated))
         {
             Fail("Far, released, unrelated, rebuilt, wrong-context, or null input changed state.");
@@ -116,6 +120,8 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
         if (started is null
             || started.Progress.NextStepIndex != 0
             || ReferenceEquals(remainingIngredients, initialIngredients)
+            || status.Text
+                != OpeningRegionRemedyPreparationInputCoordinator.StartedStatusText
             || coordinator.TryProgress(
                 binding,
                 context,
@@ -138,13 +144,25 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
                 Fail("Mapped preparation did not advance exactly one authored next step.");
                 return;
             }
+
+            string expectedStatus =
+                OpeningRegionRemedyPreparationInputCoordinator.StepStatusText(
+                    expectedIndex + 1,
+                    recipe.Plan.Steps.Count);
+            if (status.Text != expectedStatus)
+            {
+                Fail("Mapped preparation did not present exact authored step progress.");
+                return;
+            }
         }
 
         Press(coordinator);
         IngredientPreparationOutcome outcome = preparation.Outcome!;
         if (outcome is null
             || !ReferenceEquals(outcome.Activity, preparation.Activity)
-            || state.PreparedBatches!.Batches.Count != 0)
+            || state.PreparedBatches!.Batches.Count != 0
+            || status.Text
+                != OpeningRegionRemedyPreparationInputCoordinator.CompletedStatusText)
         {
             Fail("Mapped preparation did not complete exactly once before installation.");
             return;
@@ -154,7 +172,9 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
         PreparedIngredientBatchSnapshot installed = state.PreparedBatches!;
         if (installed.Batches.Count != 1
             || !ReferenceEquals(installed.Batches[0].Preparation, outcome)
-            || !ReferenceEquals(installed.Batches[0].RemainingQuantity, outcome.Quantity))
+            || !ReferenceEquals(installed.Batches[0].RemainingQuantity, outcome.Quantity)
+            || status.Text
+                != OpeningRegionRemedyPreparationInputCoordinator.BatchReadyStatusText)
         {
             Fail("Mapped preparation did not install one exact full prepared batch.");
             return;
@@ -179,7 +199,8 @@ public partial class OpeningRegionRemedyPreparationInputSmokeCheck : Node
         GD.Print(
             "Opening-region remedy-preparation input smoke passed: inert startup, P mapping, "
             + "exact station range and provenance, one-step authored progression, full-batch "
-            + "installation, rejection paths, and unrelated-state isolation were correct.");
+            + "installation, visible proximity and progress feedback, rejection paths, and "
+            + "unrelated-state isolation were correct.");
         GetTree().Quit();
     }
 

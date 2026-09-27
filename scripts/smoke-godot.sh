@@ -9,6 +9,8 @@ export ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1
 export ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1
 
 ALLRPCS_ADAPTIVE_DISPLAY_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_NAVIGATION_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_PROJECTION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 120

@@ -18,6 +18,7 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
     private const string CheckEnvironmentVariable =
         "ALLRPCS_OPENING_REGION_SAGE_CONSULTATION_INPUT_CHECK";
     private const string ConsultationAction = "sage_consult";
+    private const string SageLabelText = "VILLAGE SAGE · K";
     private const string EnabledEnvironmentValue = "1";
     private const string PreparationAction = "remedy_prepare";
     private static readonly string[] ExpectedCoordinatorMethods =
@@ -92,11 +93,23 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
             GetNode<TemporarySeekerCharacterSource>("../TemporarySeekerCharacterSource");
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         Marker2D sageMarker = GetNode<Marker2D>("../SageHearingPosition");
+        Polygon2D sageBody = GetNode<Polygon2D>("../SageHearingPosition/Body");
+        Label sageLabel = GetNode<Label>("../SageHearingPosition/Label");
+        Label status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         RetainedUnrelatedState unrelated = CaptureUnrelatedState();
         DialogueEvent? previousDialogue = GetNode<DialogueEventController>(
             "../DialogueEventController").LastOccurredEvent;
         Character rebuiltSage = RepresentativeSageCharacterSource.Create();
         DialogueEvent rebuiltTestimony = new(testimony.Delivery, testimony.Audience);
+
+        if (!sageBody.Visible
+            || !sageLabel.Visible
+            || sageLabel.Text != SageLabelText
+            || sageMarker.Position != new Vector2(920.0f, 450.0f))
+        {
+            Fail("Sage consultation target was not visibly identified at the village square.");
+            return;
+        }
 
         seeker.GlobalPosition = sageMarker.Position + new Vector2(65.0f, 0.0f);
         coordinator._UnhandledInput(Action(ConsultationAction, pressed: false));
@@ -134,6 +147,7 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
             || !ReferenceEquals(
                 GetNode<DialogueEventController>("../DialogueEventController").LastOccurredEvent,
                 previousDialogue)
+            || status.Text != OpeningRegionSageConsultationInputCoordinator.MoveCloserStatusText
             || !HasClosedSurface())
         {
             Fail("Consultation accepted far, released, unrelated, rebuilt, or null provenance.");
@@ -153,7 +167,8 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
                 seekerSource.Character.Identity.Id)
             || !ReferenceEquals(
                 GetNode<DialogueEventController>("../DialogueEventController").LastOccurredEvent,
-                consultation))
+                consultation)
+            || status.Text != OpeningRegionSageConsultationInputCoordinator.ConsultedStatusText)
         {
             Fail("Exact mapped sage consultation did not occur as fixed heard guidance.");
             return;
@@ -187,8 +202,8 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
         GD.Print(
             "Opening-region sage consultation input smoke passed: inert gating, K mapping, exact "
             + "stabilization and heard-testimony provenance, fixed provider-neutral recovery "
-            + "guidance, ordered safe journal testimony, one-shot Seeker audience, rejection "
-            + "paths, and isolation were correct.");
+            + "guidance, visible proximity and completion status, ordered safe journal testimony, "
+            + "one-shot Seeker audience, rejection paths, and isolation were correct.");
         GetTree().Quit();
     }
 

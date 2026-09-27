@@ -2,40 +2,50 @@
 
 ## Current state
 
-`main` includes the ordinary schema-8 Q-save/L-load boundary and the representative Phase 8
-opening-region route flow. The latest bounded playtest correction is ready to publish:
+`main` contains the Phase 8 opening-region playtest corrections found during the hands-on recovery
+loop:
 
-- The route-completion panel gives its sole Acknowledge button keyboard focus while visible and
-  releases that focus when the presentation clears. Return now uses the existing exact-token
-  acknowledgement path; failed consumption remains visible and focused.
-- The one-shot customization hint now says that each background unlocks one optional route
-  advantage instead of incorrectly saying that route effects are inactive.
-- No route, gameplay, save-schema, persistence, provider, or credential behavior changed.
+- P now reports station proximity, preparation start, every authored step, completion, and the ready
+  batch. T accepts the authored 60-pixel sickhouse approach through its 64-pixel gate and reports
+  missing batch, proximity, and successful administration.
+- Patient testimony points to the sage; K reports missing testimony, proximity, and successful
+  consultation. The previously invisible sage is now a labelled purple `VILLAGE SAGE · K` figure.
+- The Seeker and following healer mutually ignore body collision, so the healer cannot pin the Seeker
+  against the sickhouse walls. The existing 72-pixel follow stop remains unchanged.
+- The large provider/settings and dialogue overlays start hidden behind physical Tab and release UI
+  focus when hidden. The compact command, recovery, and save/load HUD remains visible.
+- Explicit Q initializes the safe journal when map/route state already exists. If M has not initialized
+  that state, Q now reports `PRESS M FIRST` and gives the exact M/M/Q recovery instruction instead of
+  only `SAVE FAILED`. A successful save gives the close/reopen/L instruction.
 
 ## Validation and review
 
 - Final host-local `./scripts/quality.sh` passed formatting, a zero-warning build, 2,839 Domain, 924
   Application, 1,261 Infrastructure, and 8 architecture tests, the five-evidence scenario validator,
   every credential-free Godot smoke, and a graphical Compatibility launch.
-- Focused route-presentation coverage checks focus acquisition, release after successful or restored
-  consumption, and retention after failed consumption. The customization smoke checks the exact
-  current hint.
-- A fresh graphical run reproduced the old keyboard failure, then verified the corrected build:
-  ordinary movement completed the Stream and abandoned laundry route, the completion panel showed
-  focused Acknowledge state, and Return dismissed it without pointer input.
-- Session review checked the full diff, exact-token consumption path, focus lifetime, copy accuracy,
-  smoke isolation, formatting, and whitespace. No known issue remains in this slice.
+- Focused coverage proves the authored T approach, visible P/T/testimony/K guidance, visible sage,
+  healer/Seeker pass-through with retained follow separation, default-hidden Tab overlays and focus
+  release, explicit missing-M save guidance, safe journal initialization, exact save, and restoration.
+- Session review checked the full diff, scene ownership and ready order, input mappings, collision and
+  focus lifetime, save preflight, restoration status order, public surfaces, documentation, formatting,
+  and whitespace. No known code issue remains in this slice.
 - Restricted Godot execution still crashes at the known `user://logs` sandbox boundary; use only an
   identical authorized host-local retry.
 
-## Direct manual evidence still required
+## Direct manual evidence
 
-The fresh updated run used Aster with they/them pronouns, a travelling cloak, and the Traveller
-background. It initialized the map with M and completed the stream/laundry route using ordinary
-controls. It did not complete preparation, administration, testimony, sage consultation, or a real
-save/close/reopen/load checkpoint. Do not infer those hands-on results from automated coverage.
+- At full width, the old build reproduced silent P, an unreachable T range, healer pinning in the
+  sickhouse, obscuring optional overlays, an invisible sage, and generic Q failure.
+- With the corrections, the user completed preparation, administered the remedy, heard the patient
+  testimony, left the sickhouse, found the labelled sage, consulted with K, and reached Q.
+- That run's Q failed because the fresh process had not initialized map/route state with M. No
+  `save-v1.json` existed when checked. Do not claim that Q, close/reopen/L, restored treatment state,
+  or exactly-once restored journal entries have manual evidence yet.
+- Earlier retained evidence covers ordinary Stream/laundry route completion and the keyboard-focused
+  route acknowledgement, but not one uninterrupted route-through-recovery-and-reload run.
 
-Keep the Phase 8 playtest and acceptance roadmap items open until that direct evidence is complete.
+Keep the Phase 8 playtest and acceptance roadmap items open until the remaining direct evidence is
+complete.
 
 ## Preserved boundaries
 
@@ -48,14 +58,13 @@ Keep the Phase 8 playtest and acceptance roadmap items open until that direct ev
 
 ## Exact next bounded slice
 
-Resume the fresh graphical Phase 8 playtest using only ordinary controls. Complete an investigation
-route, move to the garden and use P through the complete preparation batch, administer it at the
-sickhouse with T, hear the patient testimony, consult the sage with K, press Q to save, fully close
-the game, reopen it, press L to load, and finish the loop. The route-completion keyboard path and
-customization copy are already verified; repeat them only if a regression appears.
+Run one uninterrupted fresh graphical checkpoint on the current code. Complete one investigation
+route, prepare with P, administer with T, hear testimony, leave the sickhouse, consult the labelled
+sage with K, then press M twice to initialize and close the map before Q. Verify `SAVED` and the
+close/reopen/L instruction, confirm `save-v1.json` exists, fully close, reopen, press L, and verify
+`LOADED`, restored treatment/recovery state, and exactly one patient and sage journal entry.
 
-Record route choices, dead ends, clue visibility, pacing, dialogue load, disease pressure, Save/Load
-status, restored treatment/recovery state, and whether safe journal/dialogue entries occur exactly
-once. Fix only a concrete blocker with focused switch-gated coverage and the complete quality spine;
-otherwise add no feature. Mark Phase 8 playtest or acceptance complete only when direct evidence
-supports it.
+Record route choices, dead ends, clue visibility, pacing, dialogue load, disease pressure, and the
+checkpoint results. Fix only a concrete blocker with focused switch-gated coverage and the complete
+quality spine. If the uninterrupted run passes, update the Phase 8 playtest and acceptance checkboxes
+only to the extent the direct evidence supports, then leave one precise Phase 9 art-direction slice.

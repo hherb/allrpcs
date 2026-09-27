@@ -21,7 +21,7 @@ public partial class Healer : CharacterBody2D
     private HealerCommandSelection activeCommand = HealerCommandSelector.SelectFollow();
     private NavigationAgent2D navigationAgent = null!;
     private NavigationRegion2D navigationRegion = null!;
-    private Node2D followedTarget = null!;
+    private CharacterBody2D followedTarget = null!;
 
     /// <summary>
     /// Gets or sets the healer's maximum movement speed in world pixels per second.
@@ -51,7 +51,9 @@ public partial class Healer : CharacterBody2D
     {
         navigationAgent = GetNode<NavigationAgent2D>("NavigationAgent2D");
         navigationRegion = GetNode<NavigationRegion2D>("../GreyboxNavigation");
-        followedTarget = GetNode<Node2D>("../Seeker");
+        followedTarget = GetNode<CharacterBody2D>("../Seeker");
+        AddCollisionExceptionWith(followedTarget);
+        followedTarget.AddCollisionExceptionWith(this);
         navigationAgent.TargetDesiredDistance = StopDistancePixels;
     }
 

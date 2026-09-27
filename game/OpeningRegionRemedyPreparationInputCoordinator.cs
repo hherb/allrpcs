@@ -10,6 +10,14 @@ namespace Allrpcs.Game;
 /// <summary>Advances the exact ordinary healer-garden preparation one input at a time.</summary>
 public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
 {
+    internal const string ReadyStatusText = "Preparation: go to the station and press P.";
+    internal const string MoveCloserStatusText = "Preparation: move closer to the station.";
+    internal const string StartedStatusText = "Preparation: started. Press P for step 1.";
+    internal const string CompletedStatusText =
+        "Preparation: complete. Press P to prepare the batch.";
+    internal const string BatchReadyStatusText =
+        "Preparation: batch ready. Go to the sickhouse and press T.";
+
     private const float MaximumInteractionDistancePixels = 48.0f;
     private static readonly StringName PreparationAction = new("remedy_prepare");
 
@@ -17,6 +25,7 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
     private OpeningRegionRemedyPreparationSceneSource scene = null!;
     private CharacterBody2D seeker = null!;
     private FirstPatientStateController state = null!;
+    private Label status = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -27,6 +36,8 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             "../OpeningRegionRemedyPreparationSceneSource");
         seeker = GetNode<CharacterBody2D>("../Seeker");
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
+        status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
+        status.Text = ReadyStatusText;
     }
 
     /// <inheritdoc />
@@ -44,6 +55,7 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         IngredientPreparationRecipe? recipe = preparation.Recipe;
         IngredientStateSnapshot? ingredients = preparation.Ingredients;
         FirstPatientSaveState? firstPatientState = state.Capture();
+        NumericsVector2 seekerPosition = ToNumerics(seeker.GlobalPosition);
         if (binding is not null
             && context is not null
             && recipe is not null
@@ -55,10 +67,22 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
                 recipe,
                 ingredients,
                 firstPatientState,
-                ToNumerics(seeker.GlobalPosition)))
+                seekerPosition))
         {
-            GetViewport().SetInputAsHandled();
+            status.Text = CurrentStatusText(recipe);
         }
+        else if (binding is not null
+            && NumericsVector2.Distance(seekerPosition, binding.StationPosition)
+                > MaximumInteractionDistancePixels)
+        {
+            status.Text = MoveCloserStatusText;
+        }
+        else if (recipe is not null)
+        {
+            status.Text = CurrentStatusText(recipe);
+        }
+
+        GetViewport().SetInputAsHandled();
     }
 
     /// <summary>Performs only the exact next preparation operation from exact current state.</summary>
@@ -123,6 +147,38 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
             state.AdministrationExperiments,
             requested.AdministrationExperiments)
         && ReferenceEquals(state.Experiments, requested.Experiments);
+
+    internal static string StepStatusText(int completedStepCount, int totalStepCount) =>
+        completedStepCount == totalStepCount
+            ? $"Preparation: step {completedStepCount}/{totalStepCount} complete. Press P to finish."
+            : $"Preparation: step {completedStepCount}/{totalStepCount} complete. Press P for the next step.";
+
+    private string CurrentStatusText(IngredientPreparationRecipe recipe)
+    {
+        IngredientPreparationOutcome? outcome = preparation.Outcome;
+        if (outcome is not null
+            && state.PreparedBatches?.Batches.Any(batch =>
+                ReferenceEquals(batch.Preparation, outcome)) == true)
+        {
+            return BatchReadyStatusText;
+        }
+
+        if (outcome is not null)
+        {
+            return CompletedStatusText;
+        }
+
+        IngredientPreparationActivity? activity = preparation.Activity;
+        if (activity is null)
+        {
+            return ReadyStatusText;
+        }
+
+        int completedStepCount = activity.Progress.NextStepIndex;
+        return completedStepCount == 0
+            ? StartedStatusText
+            : StepStatusText(completedStepCount, recipe.Plan.Steps.Count);
+    }
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);

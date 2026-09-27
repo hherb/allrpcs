@@ -13,6 +13,12 @@ namespace Allrpcs.Game;
 /// <summary>Occurs one fixed provider-neutral sage consultation from mapped player input.</summary>
 public partial class OpeningRegionSageConsultationInputCoordinator : Node
 {
+    internal const string TestimonyRequiredStatusText =
+        "Consultation: hear the patient testimony first.";
+    internal const string MoveCloserStatusText =
+        "Consultation: move closer to the village sage.";
+    internal const string ConsultedStatusText = "Sage consulted. Press Q to save.";
+
     private const float ConsultationRangePixels = 64.0f;
     private const float WhisperHearingRangePixels = 24.0f;
     private static readonly StringName ConsultationAction = new("sage_consult");
@@ -24,6 +30,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
     private Marker2D sagePosition = null!;
     private CharacterBody2D seekerBody = null!;
     private TemporarySeekerCharacterSource seekerSource = null!;
+    private Label status = null!;
     private OpeningRegionFirstPatientStabilizationTestimonyCoordinator testimony = null!;
 
     /// <summary>Gets the exact one-shot sage consultation occurrence, if completed.</summary>
@@ -43,6 +50,7 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
         seekerBody = GetNode<CharacterBody2D>("../Seeker");
         seekerSource = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
+        status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         testimony = GetNode<OpeningRegionFirstPatientStabilizationTestimonyCoordinator>(
             "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
     }
@@ -52,11 +60,17 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
     {
         ArgumentNullException.ThrowIfNull(@event);
 
-        if (!@event.IsActionPressed(ConsultationAction)
-            || testimony.Testimony is not { } patientTestimony
+        if (!@event.IsActionPressed(ConsultationAction))
+        {
+            return;
+        }
+
+        if (testimony.Testimony is not { } patientTestimony
             || firstPatientState.DiseaseTruth is not { } diseaseTruth
             || firstPatientState.AdministrationExperiments is not { } administrationExperiments)
         {
+            status.Text = TestimonyRequiredStatusText;
+            GetViewport().SetInputAsHandled();
             return;
         }
 
@@ -65,21 +79,32 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
         FirstPatientTreatmentContext? context = patientScene.Binding?.TreatmentContext;
         if (context is null)
         {
+            status.Text = TestimonyRequiredStatusText;
+            GetViewport().SetInputAsHandled();
             return;
         }
 
-        if (TryConsult(
+        NumericsVector2 seekerPosition = ToNumerics(seekerBody.GlobalPosition);
+        NumericsVector2 currentSagePosition = ToNumerics(sagePosition.Position);
+        if (NumericsVector2.Distance(seekerPosition, currentSagePosition)
+            > ConsultationRangePixels)
+        {
+            status.Text = MoveCloserStatusText;
+        }
+        else if (TryConsult(
                 sage,
                 context,
                 patientTestimony,
                 seekerId,
                 diseaseTruth,
                 administrationExperiments,
-                ToNumerics(seekerBody.GlobalPosition),
-                ToNumerics(sagePosition.Position)))
+                seekerPosition,
+                currentSagePosition))
         {
-            GetViewport().SetInputAsHandled();
+            status.Text = ConsultedStatusText;
         }
+
+        GetViewport().SetInputAsHandled();
     }
 
     /// <summary>Occurs fixed guidance only from exact current stabilization and testimony.</summary>
@@ -183,5 +208,9 @@ public partial class OpeningRegionSageConsultationInputCoordinator : Node
     internal void InstallRestored(DialogueEvent? consultation)
     {
         Consultation = consultation;
+        if (consultation is not null)
+        {
+            status.Text = ConsultedStatusText;
+        }
     }
 }

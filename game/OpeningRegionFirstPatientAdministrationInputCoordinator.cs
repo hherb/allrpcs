@@ -12,7 +12,13 @@ namespace Allrpcs.Game;
 /// <summary>Administers the exact prepared first-patient remedy from one mapped input.</summary>
 public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : Node
 {
-    private const float MaximumInteractionDistancePixels = 48.0f;
+    internal const string BatchRequiredStatusText =
+        "Treatment: prepare the remedy batch first.";
+    internal const string MoveCloserStatusText = "Treatment: move closer to the patient.";
+    internal const string AdministeredStatusText =
+        "Treatment: administered. Stay near the patient for testimony.";
+
+    private const float MaximumInteractionDistancePixels = 64.0f;
     private const string ObservedOutcome =
         "The patient's breathing becomes quieter and steadier.";
     private const string Procedure = "Administer the complete cooled remedy batch.";
@@ -25,6 +31,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
     private OpeningRegionFirstPatientSceneSource scene = null!;
     private CharacterBody2D seeker = null!;
     private FirstPatientStateController state = null!;
+    private Label status = null!;
     private TemporaryWorldEventSource worldEventSource = null!;
 
     /// <inheritdoc />
@@ -41,6 +48,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
             "../OpeningRegionFirstPatientSceneSource");
         seeker = GetNode<CharacterBody2D>("../Seeker");
         state = GetNode<FirstPatientStateController>("../FirstPatientStateController");
+        status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         worldEventSource = GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
     }
 
@@ -57,17 +65,31 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         OpeningRegionFirstPatientSceneBinding? binding = scene.Binding;
         IReadOnlyList<PreparedIngredientBatch>? batches = state.PreparedBatches?.Batches;
         PreparedIngredientBatch? batch = batches is { Count: 1 } ? batches[0] : null;
-        if (binding is not null
-            && batch is not null
+        NumericsVector2 seekerPosition = ToNumerics(seeker.GlobalPosition);
+        if (batch is null)
+        {
+            status.Text = state.AdministrationExperiments?.Records.Count > 0
+                ? AdministeredStatusText
+                : BatchRequiredStatusText;
+        }
+        else if (binding is not null
+            && NumericsVector2.Distance(seekerPosition, binding.PatientPosition)
+                > MaximumInteractionDistancePixels)
+        {
+            status.Text = MoveCloserStatusText;
+        }
+        else if (binding is not null
             && TryAdminister(
                 binding,
                 binding.TreatmentContext,
                 batch,
                 worldEventSource.FirstPatientRemedyAdministeredWorldEvent,
-                ToNumerics(seeker.GlobalPosition)))
+                seekerPosition))
         {
-            GetViewport().SetInputAsHandled();
+            status.Text = AdministeredStatusText;
         }
+
+        GetViewport().SetInputAsHandled();
     }
 
     /// <summary>Atomically administers and stabilizes from exact current authored state.</summary>

@@ -1,4 +1,4 @@
-[gd_scene load_steps=318 format=3]
+[gd_scene load_steps=320 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -507,6 +507,8 @@
 [ext_resource type="Script" path="res://OpeningRegionSageConsultationInputCoordinator.cs" id="393_sage_consultation"]
 [ext_resource type="Script" path="res://OpeningRegionSageConsultationInputSmokeCheck.cs" id="394_sage_consultation_check"]
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientRecoveryRestorationSmokeCheck.cs" id="395_recovery_restoration_check"]
+[ext_resource type="Script" path="res://OptionalOverlayVisibilityController.cs" id="398_optional_overlay_visibility"]
+[ext_resource type="Script" path="res://OptionalOverlayVisibilitySmokeCheck.cs" id="399_optional_overlay_visibility_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -600,6 +602,12 @@ script = ExtResource("314_adaptive_display")
 
 [node name="AdaptiveDisplaySmokeCheck" type="Node" parent="."]
 script = ExtResource("315_adaptive_display_check")
+
+[node name="OptionalOverlayVisibilityController" type="Node" parent="."]
+script = ExtResource("398_optional_overlay_visibility")
+
+[node name="OptionalOverlayVisibilitySmokeCheck" type="Node" parent="."]
+script = ExtResource("399_optional_overlay_visibility_check")
 
 [node name="Ground" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900)
@@ -776,6 +784,19 @@ position = Vector2(960, 360)
 
 [node name="SageHearingPosition" type="Marker2D" parent="."]
 position = Vector2(920, 450)
+
+[node name="Body" type="Polygon2D" parent="SageHearingPosition"]
+polygon = PackedVector2Array(0, -20, 15, -9, 12, 18, -12, 18, -15, -9)
+color = Color(0.706, 0.498, 0.831, 1)
+
+[node name="Label" type="Label" parent="SageHearingPosition"]
+z_index = 2
+offset_left = -84.0
+offset_top = 24.0
+offset_right = 84.0
+offset_bottom = 47.0
+text = "VILLAGE SAGE · K"
+horizontal_alignment = 1
 
 [node name="Ring" type="Line2D" parent="HealerCommandDestination"]
 points = PackedVector2Array(24, 0, 16.971, 16.971, 0, 24, -16.971, 16.971, -24, 0, -16.971, -16.971, 0, -24, 16.971, -16.971, 24, 0)
@@ -3482,7 +3503,7 @@ horizontal_alignment = 1
 offset_left = 12.0
 offset_top = 12.0
 offset_right = 760.0
-offset_bottom = 152.0
+offset_bottom = 178.0
 color = Color(0.055, 0.067, 0.082, 0.88)
 mouse_filter = 2
 
@@ -3491,7 +3512,7 @@ offset_left = 12.0
 offset_top = 7.0
 offset_right = 736.0
 offset_bottom = 48.0
-text = "TEMP · U CUSTOMIZE · J JOURNAL · M MAP · I SHRINE · P PREPARE · T TREAT · K SAGE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · H MOVE"
+text = "TEMP · TAB PANELS · U CUSTOMIZE · J JOURNAL · M MAP · I SHRINE · P PREPARE · T TREAT · K SAGE · F START · C CANCEL · E COMPLETE · R RESOLVE · V CANCEL TURN · X WAIT · H MOVE"
 autowrap_mode = 2
 
 [node name="ModeStatus" type="Label" parent="CommandOverlay/Panel"]
@@ -3514,6 +3535,13 @@ offset_top = 108.0
 offset_right = 604.0
 offset_bottom = 131.0
 text = "Focused search: NO ATTEMPT"
+
+[node name="RecoveryStatus" type="Label" parent="CommandOverlay/Panel"]
+offset_left = 12.0
+offset_top = 134.0
+offset_right = 736.0
+offset_bottom = 157.0
+text = "Preparation: go to the station and press P."
 
 [node name="SaveLoadPanel" type="ColorRect" parent="CommandOverlay"]
 offset_left = 772.0
@@ -3545,6 +3573,7 @@ text = "SAVE / LOAD READY"
 horizontal_alignment = 1
 
 [node name="SettingsOverlay" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="ColorRect" parent="SettingsOverlay"]
 offset_left = 960.0
@@ -3667,6 +3696,7 @@ offset_bottom = 243.0
 text = "Connection: NOT TESTED"
 
 [node name="DialogueOverlay" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Panel" type="ColorRect" parent="DialogueOverlay"]
 offset_left = 12.0

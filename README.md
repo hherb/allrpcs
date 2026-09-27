@@ -276,8 +276,11 @@ that navigation surface at a named 180-pixel-per-second speed only while outside
 72-pixel stop distance. Its circular collision matches its 36-pixel visible footprint, so the
 healer stops without overlapping the Seeker and can route through the bridge after separation.
 
-The small **TEMP** panel shows the current controls, healer mode, interaction focus, and last
-explicit focused-search attempt. Press U to open the one-shot Seeker customization menu. The menu
+The small **TEMP** panel shows the current controls, healer mode, interaction focus, last
+explicit focused-search attempt, and current opening-region recovery guidance. The much larger
+temporary provider-settings and dialogue panels start hidden so they do not obscure the playfield;
+press Tab to show both and Tab again to hide both and release their keyboard focus. Press U to open
+the one-shot Seeker customization menu. The menu
 suspends Seeker movement while open, requires a name, all five pronoun forms, and exact authored
 appearance/background choices, atomically installs the customized live character, then resumes
 movement after successful selection. The same one-shot submission retains the selected background's
@@ -291,7 +294,10 @@ discovery coordinator. Press X to
 toggle between follow and wait. Press M to move the
 healer to the obvious pink ring; the healer uses the existing navigation surface, stops within a
 validated 12-pixel distance, then changes to wait. Press X again to resume follow. Off-world and
-obstacle-excluded destinations are rejected without changing the active command. These keys, the
+obstacle-excluded destinations are rejected without changing the active command. The Seeker and
+healer mutually ignore body collision so a following healer cannot pin the Seeker against authored
+walls; the validated 72-pixel follow stop still keeps their ordinary movement visually separated.
+These keys, the
 ring, and the status panel are temporary behavior-test controls, not final command or dialogue UX.
 
 Three temporary authored objects exercise interaction focus: the two nearby discovery markers and
@@ -500,8 +506,13 @@ writes strict UTF-8 without a byte-order mark to a unique sibling temporary file
 same-directory replacement, and reports expected I/O, access, encoding, and platform failures
 without treating empty or invalid UTF-8 data as a loaded save. `SaveDocumentStorageController`
 composes that adapter at the fixed Godot `user://save-v1.json` path with exact capture and complete
-preflighted restoration. The ordinary `SaveLoadInputController` delegates only to those operations:
-physical Q or the visible Save button reports `SAVED` or `SAVE FAILED`, while physical L or the
+preflighted restoration. The ordinary `SaveLoadInputController` delegates only to those operations.
+Once explicit map and route state exists, an explicit Q or Save-button action may initialize the same
+safe journal that J would compose, so saving does not depend on an undocumented journal-open step;
+incomplete map or route state remains inert without initializing the journal and now explicitly asks
+the player to initialize that state with M instead of reporting only a generic failure. A successful
+save also gives the close, reopen, and L instruction needed for the manual checkpoint. Physical Q or
+the visible Save button reports `SAVED`, `PRESS M FIRST`, or `SAVE FAILED`, while physical L or the
 visible Load button reports `LOADED`, `NO SAVE FOUND`, or `LOAD FAILED`. It never exposes the fixed
 path or serialized content. Startup remains inert, and there is still no autosave, multiple slots,
 user-selected path, settings or provider-state persistence, encryption, compression, sync, replay,
@@ -1735,20 +1746,26 @@ approach. Five collision-backed wall sections replace the former rectangle. The 
 surface admits the entrance corridor and room interior while excluding wall clearance, and the pure
 route policy rejects wall-crossing or out-of-bounds paths. A main-scene proof routes the Seeker into the
 room, to the patient approach, and back out. After the exact remedy batch is prepared, the mapped T
-action can administer its full remaining quantity only while the Seeker is within 48 pixels of the exact
-current patient and the scene retains the exact binding, treatment context, batch, disease truth, and
-authored administration event. That one provider-neutral operation atomically consumes the batch,
+action can administer its full remaining quantity while the Seeker is within 64 pixels of the exact
+current patient, including the authored patient approach, and the scene retains the exact binding,
+treatment context, batch, disease truth, and authored administration event. The command overlay reports
+when the Seeker must move closer and confirms administration while asking the player to remain for
+testimony. That one provider-neutral operation atomically consumes the batch,
 stabilizes the deep-sleep infection, advances the exact world event, and records both administration and
 universal experiments. Far, stale, rebuilt, wrong-context, repeated, released, and unrelated inputs are
 inert. The exact stabilized administration then authorizes one fixed provider-neutral patient testimony
 heard only by the in-range Seeker: it exposes ordinary authored copy, not disease truth or provider
-content, and remains one-shot. Focus, discovery, persistence changes, and production art remain
-deferred. Once that exact testimony has been heard, the mapped K action can consult
-the existing village sage only within 64 pixels of the sage marker. One fixed provider-neutral reply
+content, remains one-shot, and updates the recovery status with the next sage step. Focus, discovery,
+persistence changes, and production art remain deferred. Once that exact testimony has been heard,
+the mapped K action can consult
+the existing village sage only within 64 pixels of the visibly labelled purple sage at the village
+square. One fixed provider-neutral reply
 preserves the redundant stream, shrine, and wagon investigation routes instead of prescribing a clue
 order; exact stabilized disease state, administration record, retained testimony, sage, Seeker, and
-positions are all required. The consultation is one-shot and does not invoke a model, mutate truth,
-choose evidence, or change persistence. Explicit journal composition retains the exact patient
+positions are all required. Rejected K input reports the missing testimony or required proximity, and
+accepted input reports that the sage was consulted and prompts Q. The consultation is one-shot and does
+not invoke a model, mutate truth, choose evidence, or change persistence. Explicit journal composition
+retains the exact patient
 testimony followed by the exact sage consultation, deduplicates the current last event by reference,
 and uses the existing visibility-safe journal persistence shape without a schema change.
 
@@ -1776,8 +1793,10 @@ current binding, treatment context, recipe, ingredient state, and complete first
 press starts the recipe, advances exactly one next authored grinding, heating, steeping, or cooling step,
 completes the exact activity, or installs its exact full prepared batch. Far, stale, rebuilt,
 wrong-context, repeated, released, and unrelated inputs are inert. Apothecary access remains optional
-and additive; this flow does not administer a dose, stabilize the patient, write journals, persist
-partial preparation activity, call a provider, or add production presentation.
+and additive. The temporary command overlay reports when the Seeker must move closer to the station,
+then reports preparation start, each of the four completed steps, completion, and the installed batch
+ready for treatment. This flow does not administer a dose, stabilize the patient, write journals,
+persist partial preparation activity, call a provider, or add production presentation.
 
 The village-square and village-edge transition scene binds only the projection's exact retained anchors
 to separate bounded areas with 24-pixel endpoint clearance. Thirteen collision-backed boundary sections

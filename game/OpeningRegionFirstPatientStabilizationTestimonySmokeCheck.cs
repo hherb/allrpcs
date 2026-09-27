@@ -124,6 +124,7 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonySmokeCheck :
             GetNode<OpeningRegionFirstPatientStabilizationTestimonyCoordinator>(
                 "../OpeningRegionFirstPatientStabilizationTestimonyCoordinator");
         DialogueEvent? testimony = coordinator.Testimony;
+        Label status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         CharacterId seekerId = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource").Character.Identity.Id;
         FirstPatientTreatmentContext context = GetNode<OpeningRegionFirstPatientSceneSource>(
@@ -140,7 +141,9 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonySmokeCheck :
             || !ReferenceEquals(testimony.Audience.ListenerCharacterIds[0], seekerId)
             || !ReferenceEquals(
                 GetNode<DialogueEventController>("../DialogueEventController").LastOccurredEvent,
-                testimony))
+                testimony)
+            || status.Text
+                != OpeningRegionFirstPatientStabilizationTestimonyCoordinator.HeardStatusText)
         {
             Fail("Exact stabilized patient testimony was not safely heard by the Seeker.");
             return;
@@ -160,7 +163,8 @@ public partial class OpeningRegionFirstPatientStabilizationTestimonySmokeCheck :
         GD.Print(
             "Opening-region first-patient stabilization testimony smoke passed: unstabilized and "
             + "null rejection, exact administration provenance, fixed provider-neutral copy, "
-            + "one-shot ordinary delivery, exact Seeker audience, and isolation were correct.");
+            + "one-shot ordinary delivery, visible sage guidance, exact Seeker audience, and "
+            + "isolation were correct.");
         GetTree().Quit();
     }
 

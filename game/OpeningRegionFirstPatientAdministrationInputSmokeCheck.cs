@@ -63,6 +63,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputSmokeCheck : No
         TemporaryWorldEventSource eventSource =
             GetNode<TemporaryWorldEventSource>("../TemporaryWorldEventSource");
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
+        Label status = GetNode<Label>("../CommandOverlay/Panel/RecoveryStatus");
         RetainedUnrelatedState unrelated = CaptureUnrelatedState();
 
         if (!HasMappedInput()
@@ -102,7 +103,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputSmokeCheck : No
             administrationEvent.TimeEffect);
         PreparedIngredientBatch rebuiltBatch = new(batch.Preparation);
 
-        seeker.GlobalPosition = ToGodot(patientBinding.PatientPosition) + new Vector2(49.0f, 0.0f);
+        seeker.GlobalPosition = ToGodot(patientBinding.PatientPosition) + new Vector2(65.0f, 0.0f);
         coordinator._UnhandledInput(Action(AdministrationAction, pressed: false));
         coordinator._UnhandledInput(Action("administration_unrelated", pressed: true));
         coordinator._UnhandledInput(Action(AdministrationAction, pressed: true));
@@ -139,13 +140,15 @@ public partial class OpeningRegionFirstPatientAdministrationInputSmokeCheck : No
                 patientBinding.PatientPosition)
             || !ReferenceEquals(worldEvents.EventLog, initialEventLog)
             || !ReferenceEquals(worldEvents.WorldTime, initialWorldTime)
+            || status.Text
+                != OpeningRegionFirstPatientAdministrationInputCoordinator.MoveCloserStatusText
             || state.DiseaseTruth!.Infections.Single().CareState != DiseaseCareState.Unassisted)
         {
             Fail("Far, released, unrelated, rebuilt, stale, wrong-context, or null input changed state.");
             return;
         }
 
-        seeker.GlobalPosition = ToGodot(patientBinding.PatientPosition);
+        seeker.GlobalPosition = ToGodot(patientBinding.SickhouseAnchor.Position);
         coordinator._UnhandledInput(Action(AdministrationAction, pressed: true));
         WorldEventLogSnapshot resultingEventLog = worldEvents.EventLog!;
         WorldTimeSnapshot resultingWorldTime = worldEvents.WorldTime!;
@@ -170,7 +173,9 @@ public partial class OpeningRegionFirstPatientAdministrationInputSmokeCheck : No
                 administrationRecord.Administration.Dosage.Preparation,
                 batch.Preparation)
             || !ReferenceEquals(administrationRecord.Administration.WorldEvent, administrationEvent)
-            || !ReferenceEquals(experimentRecord.WorldEvent, administrationEvent))
+            || !ReferenceEquals(experimentRecord.WorldEvent, administrationEvent)
+            || status.Text
+                != OpeningRegionFirstPatientAdministrationInputCoordinator.AdministeredStatusText)
         {
             Fail("Mapped administration did not install the exact atomic stabilization result.");
             return;
@@ -193,8 +198,9 @@ public partial class OpeningRegionFirstPatientAdministrationInputSmokeCheck : No
 
         GD.Print(
             "Opening-region first-patient administration input smoke passed: inert startup, T "
-            + "mapping, exact patient range and provenance, one full dose, atomic stabilization, "
-            + "world-event and experiment recording, rejection paths, and isolation were correct.");
+            + "mapping, authored patient-approach range and provenance, visible proximity and "
+            + "administration feedback, one full dose, atomic stabilization, world-event and "
+            + "experiment recording, rejection paths, and isolation were correct.");
         GetTree().Quit();
     }
 

@@ -35,6 +35,7 @@ public partial class HealerCommandSmokeCheck : Node
     private int stagePhysicsFrames;
     private Healer healer = null!;
     private CharacterBody2D seeker = null!;
+    private bool collisionPassThroughChecked;
     private Vector2 moveStart;
     private Vector2 stationaryPosition;
     private float minimumObservedSeparation = float.PositiveInfinity;
@@ -84,6 +85,17 @@ public partial class HealerCommandSmokeCheck : Node
 
     private void CheckSynchronization()
     {
+        if (!collisionPassThroughChecked)
+        {
+            collisionPassThroughChecked = true;
+            if (!healer.GetCollisionExceptions().Contains(seeker)
+                || !seeker.GetCollisionExceptions().Contains(healer))
+            {
+                Fail("Healer and Seeker did not mutually ignore body collision.");
+                return;
+            }
+        }
+
         NavigationRegion2D region = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         Rid navigationMap = NavigationServer2D.RegionGetMap(region.GetRid());
         bool isSynchronized = NavigationServer2D.RegionGetIterationId(region.GetRid()) > 0
@@ -226,7 +238,8 @@ public partial class HealerCommandSmokeCheck : Node
             && separation <= healer.StopDistancePixels + ArrivalTolerancePixels)
         {
             GD.Print(
-                "Healer command smoke passed: follow transitioned to stable wait, invalid and "
+                "Healer command smoke passed: mutual body pass-through was configured, follow "
+                + "transitioned to stable wait, invalid and "
                 + "excluded destinations were rejected, a valid move completed, and follow "
                 + $"resumed through the bridge. Final separation={separation}; "
                 + $"minimum separation={minimumObservedSeparation}.");
