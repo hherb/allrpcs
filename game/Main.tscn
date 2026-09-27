@@ -483,6 +483,10 @@
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteProgressControllerSmokeCheck.cs" id="371_route_progress_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteAuthorityCoordinator.cs" id="372_route_authority"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteAuthorityCoordinatorSmokeCheck.cs" id="373_route_authority_check"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionCoordinator.cs" id="374_route_completion"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionCoordinatorSmokeCheck.cs" id="375_route_completion_check"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinator.cs" id="376_route_completion_consumption"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck.cs" id="377_route_completion_consumption_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1690,6 +1694,12 @@ script = ExtResource("370_route_progress_controller")
 [node name="OpeningRegionInvestigationRouteAuthorityCoordinator" type="Node" parent="."]
 script = ExtResource("372_route_authority")
 
+[node name="OpeningRegionInvestigationRouteCompletionCoordinator" type="Node" parent="."]
+script = ExtResource("374_route_completion")
+
+[node name="OpeningRegionInvestigationRouteCompletionConsumptionCoordinator" type="Node" parent="."]
+script = ExtResource("376_route_completion_consumption")
+
 [node name="OpeningRegionMapVisitVerificationCoordinator" type="Node" parent="."]
 script = ExtResource("366_map_visit_verification")
 
@@ -2686,6 +2696,12 @@ script = ExtResource("371_route_progress_check")
 
 [node name="OpeningRegionInvestigationRouteAuthorityCoordinatorSmokeCheck" type="Node" parent="."]
 script = ExtResource("373_route_authority_check")
+
+[node name="OpeningRegionInvestigationRouteCompletionCoordinatorSmokeCheck" type="Node" parent="."]
+script = ExtResource("375_route_completion_check")
+
+[node name="OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck" type="Node" parent="."]
+script = ExtResource("377_route_completion_consumption_check")
 
 [node name="SeekerMapPresentationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("359_seeker_map_presentation_check")
