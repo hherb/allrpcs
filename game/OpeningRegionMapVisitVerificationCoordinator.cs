@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Map;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Identifiers;
@@ -12,6 +13,8 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
     private const float VisitRadiusPixels = 24.0f;
 
     private SeekerMapController map = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionInvestigationRouteObservationRoutingCoordinator routing = null!;
     private OpeningRegionProjectionSource projectionSource = null!;
     private TemporarySeekerCharacterSource seekerCharacter = null!;
     private Seeker seeker = null!;
@@ -20,6 +23,10 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
     public override void _Ready()
     {
         map = GetNode<SeekerMapController>("../SeekerMapController");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        routing = GetNode<OpeningRegionInvestigationRouteObservationRoutingCoordinator>(
+            "../OpeningRegionInvestigationRouteObservationRoutingCoordinator");
         projectionSource = GetNode<OpeningRegionProjectionSource>(
             "../OpeningRegionProjectionSource");
         seekerCharacter = GetNode<TemporarySeekerCharacterSource>(
@@ -65,8 +72,21 @@ public partial class OpeningRegionMapVisitVerificationCoordinator : Node
             return false;
         }
 
-        return visit is not null
-            && map.TryVerifyVisit(expectedMap, projection, visit, location);
+        if (visit is null || !map.TryVerifyVisit(expectedMap, projection, visit, location))
+        {
+            return false;
+        }
+
+        if (routeProgress.Progress is { } expectedRouteProgress
+            && map.Map is { } verifiedMap)
+        {
+            _ = routing.TryRouteVerifiedLocation(
+                expectedRouteProgress,
+                verifiedMap,
+                location);
+        }
+
+        return true;
     }
 
     private static NumericsVector2 ToNumerics(Godot.Vector2 position) =>

@@ -487,6 +487,8 @@
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionCoordinatorSmokeCheck.cs" id="375_route_completion_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinator.cs" id="376_route_completion_consumption"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck.cs" id="377_route_completion_consumption_check"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteObservationRoutingCoordinator.cs" id="378_route_observation_routing"]
+[ext_resource type="Script" path="res://OpeningRegionInvestigationRouteObservationRoutingCoordinatorSmokeCheck.cs" id="379_route_observation_routing_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -1700,6 +1702,9 @@ script = ExtResource("374_route_completion")
 [node name="OpeningRegionInvestigationRouteCompletionConsumptionCoordinator" type="Node" parent="."]
 script = ExtResource("376_route_completion_consumption")
 
+[node name="OpeningRegionInvestigationRouteObservationRoutingCoordinator" type="Node" parent="."]
+script = ExtResource("378_route_observation_routing")
+
 [node name="OpeningRegionMapVisitVerificationCoordinator" type="Node" parent="."]
 script = ExtResource("366_map_visit_verification")
 
@@ -2702,6 +2707,9 @@ script = ExtResource("375_route_completion_check")
 
 [node name="OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck" type="Node" parent="."]
 script = ExtResource("377_route_completion_consumption_check")
+
+[node name="OpeningRegionInvestigationRouteObservationRoutingCoordinatorSmokeCheck" type="Node" parent="."]
+script = ExtResource("379_route_observation_routing_check")
 
 [node name="SeekerMapPresentationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("359_seeker_map_presentation_check")

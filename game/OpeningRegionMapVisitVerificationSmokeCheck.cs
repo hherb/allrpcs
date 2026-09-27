@@ -1,7 +1,9 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Journal;
 using Allrpcs.Application.Map;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Dialogue;
+using Allrpcs.Domain.Discovery;
 using Allrpcs.Domain.Identifiers;
 using Allrpcs.Domain.Perception;
 using Allrpcs.Domain.WorldObjects;
@@ -42,6 +44,12 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
             GetNode<SeekerMapPresentationController>("../SeekerMapPresentationController");
         SeekerMapPanel panel = GetNode<SeekerMapPanel>("../SeekerMapPanel");
         JournalController journal = GetNode<JournalController>("../JournalController");
+        OpeningRegionInvestigationRouteProgressController routeProgress = GetNode<
+            OpeningRegionInvestigationRouteProgressController>(
+                "../OpeningRegionInvestigationRouteProgressController");
+        OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = GetNode<
+            OpeningRegionInvestigationRouteCompletionCoordinator>(
+                "../OpeningRegionInvestigationRouteCompletionCoordinator");
         CharacterPerceptionSnapshot? perception = GetNode<FocusedSearchActivityController>(
             "../Seeker/FocusedSearchActivityController").Perception;
         WorldObjectSnapshot? objects = GetNode<WorldObjectController>(
@@ -54,6 +62,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
         if (map.Map is not null
             || map.Catalogue is not null
             || map.Notes is not null
+            || routeProgress.Progress is not null
+            || routeCompletions.AcceptedCompletions.Count != 0
             || initialPresentation is not null
             || initialPanelPresentation is not null
             || panel.Visible)
@@ -68,6 +78,16 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
             || map.Notes is not { } emptyNotes)
         {
             Fail("Map visit verification smoke could not arrange exact map state.");
+            return;
+        }
+
+        DiscoveryScenario scenario = RepresentativeDiscoveryScenarioSource.Create();
+        OpeningRegionInvestigationRouteCatalogue routes =
+            RepresentativeOpeningRegionInvestigationRouteSource.Create(catalogue, scenario);
+        if (!routeProgress.TryInitialize(routes, catalogue, scenario)
+            || routeProgress.Progress is not { } emptyRouteProgress)
+        {
+            Fail("Map visit verification smoke could not arrange route progress.");
             return;
         }
 
@@ -139,7 +159,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
                 projection,
                 streamAnchor,
                 stream)
-            || !Unchanged(map, reportedMap, emptyNotes))
+            || !Unchanged(map, reportedMap, emptyNotes)
+            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress))
         {
             Fail("Map visit verification accepted invalid live provenance or range.");
             return;
@@ -154,7 +175,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
                 projection,
                 streamAnchor,
                 stream)
-            || !Unchanged(map, reportedMap, emptyNotes))
+            || !Unchanged(map, reportedMap, emptyNotes)
+            || !ReferenceEquals(routeProgress.Progress, emptyRouteProgress))
         {
             Fail("Map visit verification accepted the exact current out-of-range position.");
             return;
@@ -176,9 +198,14 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
         }
 
         SeekerMapSnapshot streamVerified = map.Map;
+        OpeningRegionInvestigationRouteProgressSnapshot streamRouteProgress =
+            routeProgress.Progress!;
         if (streamVerified.ReportedLocations.Count != 0
             || streamVerified.VerifiedLocations.Count != 1
             || !ReferenceEquals(streamVerified.VerifiedLocations[0], stream)
+            || streamRouteProgress.Entries[0].RecordedLocationIds.Count != 1
+            || !ReferenceEquals(streamRouteProgress.Entries[0].RecordedLocationIds[0], stream.Id)
+            || routeCompletions.AcceptedCompletions.Count != 0
             || ReferenceEquals(streamVerified, reportedMap)
             || coordinator.TryVerifyVisit(
                 reportedMap,
@@ -193,7 +220,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
                 streamPosition,
                 projection,
                 streamAnchor,
-                stream))
+                stream)
+            || !ReferenceEquals(routeProgress.Progress, streamRouteProgress))
         {
             Fail("Map visit verification accepted stale or repeated visit state.");
             return;
@@ -216,10 +244,16 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
         }
 
         SeekerMapSnapshot bothVerified = map.Map;
+        OpeningRegionInvestigationRouteProgressSnapshot bothRouteProgress =
+            routeProgress.Progress!;
         if (bothVerified.ReportedLocations.Count != 0
             || bothVerified.VerifiedLocations.Count != 2
             || !ReferenceEquals(bothVerified.VerifiedLocations[0], stream)
             || !ReferenceEquals(bothVerified.VerifiedLocations[1], laundry)
+            || bothRouteProgress.Entries[0].RecordedLocationIds.Count != 2
+            || !ReferenceEquals(bothRouteProgress.Entries[0].RecordedLocationIds[0], stream.Id)
+            || !ReferenceEquals(bothRouteProgress.Entries[0].RecordedLocationIds[1], laundry.Id)
+            || routeCompletions.AcceptedCompletions.Count != 0
             || !ReferenceEquals(reportedMap.ReportedLocations[0], stream)
             || streamVerified.VerifiedLocations.Count != 1
             || !ReferenceEquals(streamVerified.VerifiedLocations[0], stream)
@@ -250,8 +284,8 @@ public partial class OpeningRegionMapVisitVerificationSmokeCheck : Node
         GD.Print(
             "Opening-region map visit verification smoke passed: inert startup, exact live "
             + "provenance, reported promotion, hidden addition, canonical order, immutable "
-            + "sources, invalid and repeated rejection, closed surface, and unrelated isolation "
-            + "were correct.");
+            + "sources, explicit route-observation submission, invalid and repeated rejection, "
+            + "closed surface, and unrelated isolation were correct.");
         GetTree().Quit();
     }
 
