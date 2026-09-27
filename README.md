@@ -856,9 +856,20 @@ never pools partial progress across routes, and exposes no completion Boolean. A
 can explicitly observe those tokens from the route controller's exact current snapshot, retain one
 token per exact route in observation order, and preserve previously accepted tokens when another
 route completes. A second inert scene owner can explicitly consume one exact accepted token once
-without removing or rebuilding it. Neither owner runs automatically, changes route progress or any
-authority source, selects a preferred route, presents completion, persists it, or triggers testimony,
-stabilization, or another gameplay effect.
+without removing or rebuilding it. Neither owner changes route progress, any authority source, or
+the ordered accepted-token list.
+
+The ordinary scene now presents the first exact accepted completion only while no completion has
+been consumed. A pure projection selects one fixed title/body pair through the closed three-key
+authored route mapping; the presentation exposes no progress snapshot, route object, evidence text,
+provider content, or hidden state. The greybox panel renders only its coordinator's exact safe
+snapshot. Its explicit Acknowledge control must consume the same bound accepted token before the
+panel clears, while failed consumption leaves the presentation visible and state intact. Rebuilt,
+unaccepted, stale, later, repeated, null, and restored-consumed paths remain inert. Successful
+acknowledgement retains all accepted tokens, route progress, discovery, map, journal, perception,
+world objects, and save schema 7. This closes the representative multiple-route flow without adding
+testimony, stabilization, sage recovery, objectives, clue ordering, disease pressure, or another
+evidence source.
 
 `CharacterCapability` and `CharacterLimitation` are structurally distinct immutable authored
 values. Each has a stable key using the existing 1-to-64-character canonical identifier-text
