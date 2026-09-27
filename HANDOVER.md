@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #408 at `cc50c7c`. Branch
-`codex/phase-8-investigation-route-completion-observation` adds two bounded Phase 8 scene slices:
+`codex/phase-8-investigation-route-completion-observation` adds two bounded Phase 8 scene slices in
+draft PR #409:
 
 - `OpeningRegionInvestigationRouteCompletionCoordinator` explicitly calls the existing pure
   completion policy only for the route controller's exact current progress snapshot. It retains one
@@ -35,6 +36,9 @@ through ordinary play.
   smoke, and the graphical Compatibility launch.
 - Session-wide review checked the complete API and scene diff, exact-reference ownership, unchanged
   inputs, closed coordinator surfaces, changed-file size and 120-character limits, and whitespace.
+- Initial hosted PR run `36283232621` failed all five jobs before execution with `steps: []`. This is
+  Actions/account infrastructure evidence, not hosted product validation; the complete host-local
+  suite above remains the current product evidence.
 
 ## Preserved boundaries
 
