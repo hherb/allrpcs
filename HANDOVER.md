@@ -3,7 +3,8 @@
 ## Current state
 
 `main` includes merged PR #412 at `c96c9b0`. Branch
-`codex/phase-8-route-evidence-paths` adds two bounded Phase 8 ordinary evidence paths:
+`codex/phase-8-route-evidence-paths` is published as draft PR #413 and adds two bounded Phase 8
+ordinary evidence paths:
 
 - The representative scenario's exact `stream-residue` passive-noticing candidate resolves once
   from unnoticed to noticed, exposes only exact `residue`, and optionally submits it to already
@@ -29,6 +30,9 @@ tokens are still neither presented nor consumed in ordinary play.
 - The restricted run passed all managed tests and scenario validation, then reached the known Godot
   `user://logs` sandbox boundary; the identical host-local run above is the complete product evidence.
 - Focused missing-progress and active-route smokes pass for both stream residue and wagon clue.
+- Hosted run `36291354747` reported four jobs failed before execution with `steps: []`; its remaining
+  managed job was still queued with no steps at the final query. Treat this as Actions/account
+  infrastructure, not product validation, and re-query the live draft before relying on its state.
 - Session review checked the complete diff, exact shared scenario/object/evidence provenance,
   stale/rebuilt/repeated rejection, optional routing, world-object ordering, journal visibility,
   documentation, formatting, 120-character limits, and whitespace. It fixed scene-node ordering,
