@@ -37,10 +37,10 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionMainSceneSmokeC
         TemporaryCharacterObjectSabotageSubstitutionFlowController flow =
             GetNode<TemporaryCharacterObjectSabotageSubstitutionFlowController>(
                 "../TemporaryCharacterObjectSabotageSubstitutionFlowController");
-        WorldObject target = worldSource.WorldObjects.Entries[^1];
+        WorldObject target = worldSource.WorldObjects.Entries[2];
 
         if (!ReferenceEquals(source.WorldObjects, worldSource.WorldObjects)
-            || worldSource.WorldObjects.Entries.Count != 3
+            || worldSource.WorldObjects.Entries.Count != 4
             || !ReferenceEquals(source.Candidate.Substitution.Occurrence.Target, target)
             || target.Identity.Id.Value != WaterCaskObjectId
             || ReferenceEquals(source.Candidate.Substitution.Replacement, target)
@@ -63,7 +63,7 @@ public partial class TemporaryCharacterObjectSabotageSubstitutionMainSceneSmokeC
         }
 
         GD.Print(
-            "Temporary substitution sabotage main-scene smoke passed: exact tail water-cask "
+            "Temporary substitution sabotage main-scene smoke passed: exact water-cask "
             + "source, distinct replacement, exact empty scene-owned state, explicit flow, and "
             + "no automatic substitution.");
         GetTree().Quit();

@@ -89,7 +89,7 @@ public partial class TemporarySeekerPerceptionSourceSmokeCheck : Node
             return;
         }
 
-        if (first.Entries.Count != 3
+        if (first.Entries.Count != 4
             || !ReferenceEquals(first.Entries[0].ObjectId, sourceHerbPatch.Identity.Id)
             || !ReferenceEquals(first.Entries[0].ObjectId, candidate.TargetObjectId)
             || !ReferenceEquals(first.Entries[0].VisibilityState, VisibilityState.Unnoticed)

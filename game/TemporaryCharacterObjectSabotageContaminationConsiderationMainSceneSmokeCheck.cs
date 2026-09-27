@@ -104,8 +104,8 @@ public partial class TemporaryCharacterObjectSabotageContaminationConsiderationM
 
         bool unchangedBeforeRequest = ReferenceEquals(state.Contamination, initialContamination)
             && ReferenceEquals(state.Evidence, initialEvidence)
-            && source.WorldObjects.Entries.Count == 3
-            && ReferenceEquals(source.Candidate.Occurrence.Target, source.WorldObjects.Entries[^1])
+            && source.WorldObjects.Entries.Count == 4
+            && ReferenceEquals(source.Candidate.Occurrence.Target, source.WorldObjects.Entries[2])
             && source.Candidate.Occurrence.Target.Identity.Id.Value == "village-water-cask"
             && CharacterObjectSabotageContaminationPolicy.CanApply(
                 source.Character,

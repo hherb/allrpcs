@@ -33,8 +33,8 @@ public partial class TemporaryCharacterObjectSabotageSourceSmokeCheck : Node
             || !ReferenceEquals(
                 candidate.Occurrence.Proposal.AccessRequirement.RequiredKnowledgeId,
                 source.Character.Knowledge.KnowledgeReferences.Single())
-            || source.WorldObjects.Entries.Count != 3
-            || !ReferenceEquals(source.WorldObjects.Entries[^1], candidate.Occurrence.Target)
+            || source.WorldObjects.Entries.Count != 4
+            || !ReferenceEquals(source.WorldObjects.Entries[2], candidate.Occurrence.Target)
             || !ReferenceEquals(
                 source.PhysicalAccess.AccessibleObjectIds.Single(),
                 candidate.Occurrence.Target.Identity.Id)

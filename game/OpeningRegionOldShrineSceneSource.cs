@@ -67,7 +67,8 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
             WallThicknessPixels,
             OpeningRegionOldShrineGeometry.SouthernRoadOpening);
 
-        DiscoveryScenario = RepresentativeDiscoveryScenarioSource.Create();
+        DiscoveryScenario = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").RepresentativeDiscoveryScenario;
         KnowledgeableSeeker = CreateKnowledgeableSeeker(DiscoveryScenario);
         WorldObject inscription = DiscoveryScenario.WorldObjects.Entries.Single(candidate =>
             candidate.Identity.Id.Value == "shrine-inscription");

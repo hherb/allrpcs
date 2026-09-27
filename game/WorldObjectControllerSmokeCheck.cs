@@ -57,7 +57,7 @@ public partial class WorldObjectControllerSmokeCheck : Node
         WorldObjectSnapshot? initializedSnapshot = controller.WorldObjects;
         if (initializedSnapshot is null
             || !ReferenceEquals(initializedSnapshot, sourceSnapshot)
-            || sourceSnapshot.Entries.Count != 3
+            || sourceSnapshot.Entries.Count != 4
             || !HasExpectedControllerSurface())
         {
             Fail(

@@ -101,11 +101,16 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         WorldObject valueEqualWaterCaskWorldObject = new(
             new WorldObjectIdentity(valueEqualWaterCaskObjectId, "Value-equal water cask"),
             new WorldObjectDescription("Independent value-equal water cask."));
-        ObjectId valueEqualHiddenObjectId = new(expectedTargetObjectIds[3].Value);
+        WorldObject wagonClueWorldObject = expectedSourceObjects[3];
+        ObjectId valueEqualWagonClueObjectId = new(wagonClueWorldObject.Identity.Id.Value);
+        WorldObject valueEqualWagonClueWorldObject = new(
+            new WorldObjectIdentity(valueEqualWagonClueObjectId, "Value-equal wagon clue"),
+            new WorldObjectDescription("Independent value-equal wagon clue."));
+        ObjectId valueEqualHiddenObjectId = new(expectedTargetObjectIds[4].Value);
         WorldObject valueEqualHiddenWorldObject = new(
             new WorldObjectIdentity(valueEqualHiddenObjectId, "Value-equal hidden object"),
             new WorldObjectDescription("Independent value-equal hidden object."));
-        ObjectId valueEqualDisabledObjectId = new(expectedTargetObjectIds[4].Value);
+        ObjectId valueEqualDisabledObjectId = new(expectedTargetObjectIds[5].Value);
         WorldObject valueEqualDisabledWorldObject = new(
             new WorldObjectIdentity(valueEqualDisabledObjectId, "Value-equal disabled object"),
             new WorldObjectDescription("Independent value-equal disabled object."));
@@ -114,6 +119,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                 valueEqualFirstWorldObject,
                 valueEqualSecondWorldObject,
                 valueEqualWaterCaskWorldObject,
+                valueEqualWagonClueWorldObject,
                 valueEqualHiddenWorldObject,
                 valueEqualDisabledWorldObject,
             ]);
@@ -136,6 +142,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                     firstWorldObject.Identity.DisplayName,
                     secondWorldObject.Identity.DisplayName,
                     waterCaskWorldObject.Identity.DisplayName,
+                    wagonClueWorldObject.Identity.DisplayName,
                     null,
                     string.Empty,
                 ],
@@ -160,6 +167,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                     valueEqualFirstWorldObject.Identity.DisplayName,
                     valueEqualSecondWorldObject.Identity.DisplayName,
                     valueEqualWaterCaskWorldObject.Identity.DisplayName,
+                    valueEqualWagonClueWorldObject.Identity.DisplayName,
                     null,
                     valueEqualDisabledWorldObject.Identity.DisplayName,
                 ],
@@ -185,6 +193,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                     string.Empty,
                     valueEqualSecondWorldObject.Identity.DisplayName,
                     string.Empty,
+                    string.Empty,
                     null,
                     string.Empty,
                 ],
@@ -201,7 +210,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         }
 
         if (!AssertMarkerLabels(
-                [string.Empty, string.Empty, string.Empty, null, string.Empty],
+                [string.Empty, string.Empty, string.Empty, string.Empty, null, string.Empty],
                 "all-missing label clearing"))
         {
             return;
@@ -237,6 +246,7 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
                     firstWorldObject.Identity.DisplayName,
                     secondWorldObject.Identity.DisplayName,
                     waterCaskWorldObject.Identity.DisplayName,
+                    wagonClueWorldObject.Identity.DisplayName,
                     null,
                     string.Empty,
                 ],

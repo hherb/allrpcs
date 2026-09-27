@@ -74,6 +74,14 @@ ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_COMPLETION_CONSUMPTION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OPENING_REGION_INVESTIGATION_ROUTE_OBSERVATION_ROUTING_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=missing \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_STREAM_RESIDUE_ROUTE_CHECK=route \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_WAGON_CLUE_ROUTE_CHECK=missing \
+    godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_WAGON_CLUE_ROUTE_CHECK=route \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_MAP_PRESENTATION_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_MAP_PANEL_CHECK=1 \

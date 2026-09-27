@@ -10,6 +10,7 @@ namespace Allrpcs.Game;
 /// </summary>
 public partial class TemporarySeekerPerceptionSource : Node
 {
+    private const string WagonClueObjectId = "wagon-clue";
     private readonly VisibilityState initialVisibilityState = VisibilityState.Noticed;
 
     /// <summary>Gets the single retained temporary Seeker perception snapshot.</summary>
@@ -21,10 +22,20 @@ public partial class TemporarySeekerPerceptionSource : Node
         PassiveNoticingCandidate candidate =
             GetNode<TemporaryPassiveNoticingCandidateSource>(
                 "../TemporaryPassiveNoticingCandidateSource").Candidate;
-        WorldObjectSnapshot worldObjects = GetNode<TemporaryWorldObjectSource>(
-            "../TemporaryWorldObjectSource").WorldObjects;
+        TemporaryWorldObjectSource worldObjectSource = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource");
+        WorldObjectSnapshot worldObjects = worldObjectSource.WorldObjects;
 
-        Perception = CreatePerception(candidate, worldObjects);
+        CharacterPerceptionSnapshot temporary = CreatePerception(candidate, worldObjects);
+        WorldObjectVisibility exactWagonVisibility = worldObjectSource
+            .RepresentativeDiscoveryScenario.InitialPerception.Entries.Single(entry =>
+                entry.ObjectId.Value == WagonClueObjectId);
+        Perception = new CharacterPerceptionSnapshot(
+            temporary.CharacterId,
+            temporary.Entries.Select(entry =>
+                ReferenceEquals(entry.ObjectId, exactWagonVisibility.ObjectId)
+                    ? exactWagonVisibility
+                    : entry));
     }
 
     private CharacterPerceptionSnapshot CreatePerception(

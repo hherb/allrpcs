@@ -60,7 +60,7 @@ public partial class WaterCaskContaminationSabotageInvestigationFlowSmokeCheck :
 
         WorldObjectSnapshot expectedWorldObjects = worldSource.WorldObjects;
         WorldObject herbPatch = expectedWorldObjects.Entries[0];
-        WorldObject waterCask = expectedWorldObjects.Entries[^1];
+        WorldObject waterCask = expectedWorldObjects.Entries[2];
         GreyboxInteractionTarget herbTarget = focus.GetTarget(HerbPatchTargetIndex);
         GreyboxInteractionTarget waterCaskTarget = focus.GetTarget(WaterCaskTargetIndex);
         Vector2 expectedWaterCaskPosition = waterCaskTarget.Position;

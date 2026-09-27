@@ -2,87 +2,77 @@
 
 ## Current state
 
-`main` includes merged PR #411 at `bd26a25`. Branch
-`codex/phase-8-route-lifecycle-persistence` is published as draft PR #412 and adds the bounded
-Phase 8 save-schema 7 slice:
+`main` includes merged PR #412 at `c96c9b0`. Branch
+`codex/phase-8-route-evidence-paths` is published as draft PR #413 and adds two bounded Phase 8
+ordinary evidence paths:
 
-- Schema 7 retains only canonical route keys, ordered recorded location/evidence IDs, ordered
-  accepted-completion route keys, and one optional consumed-completion route key. Labels,
-  descriptions, coordinates, discovery text, and runtime object graphs remain absent.
-- Capture requires complete exact current-catalogue progress in authored order, unique exact route
-  members, monotonic exact completion provenance, and optional consumption of one exact accepted
-  token. It also binds the route graph to the exact live map catalogue and shrine discovery scenario.
-- Restoration first rebuilds the canonical routes from the freshly restored map catalogue and exact
-  shrine scenario, then rebinds progress, accepted completions, and optional consumption before any
-  controller mutation. Rejection leaves every controller unchanged.
-- Schemas 1-6 migrate to three canonical empty route entries with no accepted or consumed
-  completion, while retaining all existing discovery, event, memory, patient, journal, and map
-  migrations.
+- The representative scenario's exact `stream-residue` passive-noticing candidate resolves once
+  from unnoticed to noticed, exposes only exact `residue`, and optionally submits it to already
+  initialized route progress without initializing routes or consuming a completion.
+- The exact representative `wagon-clue` now joins the live world-object, perception, focused-search,
+  and greybox focus graphs at the authored abandoned-wagon anchor. Ordinary F/E/R requires the
+  scenario's exact field lens, identifies only that object, exposes only exact `tool-gated-clue`, and
+  optionally submits it to already initialized route progress without consuming a completion.
+- `TemporaryWorldObjectSource` owns the shared representative scenario once; the old-shrine source
+  reuses it. Existing water-cask sabotage keeps its stable exact target at index 2, while the wagon
+  is appended at index 3. Journal composition now filters unnoticed entries before its existing safe
+  identified-only copy projection.
 
-The complete initialized investigation-route lifecycle now survives JSON and isolated-storage
-round trips. Ordinary startup, evidence sources, completion presentation/consumption, testimony,
-stabilization, provider behavior, and the roadmap checkbox remain unchanged.
+Together with the merged old-shrine path, every representative route evidence identity now has one
+ordinary provider-neutral source. The roadmap checkbox remains unticked because accepted completion
+tokens are still neither presented nor consumed in ordinary play.
 
 ## Validation and review
 
-- Tests cover schema-7 construction/support, schema-6 migration, complete and partial progress,
-  accepted-but-unconsumed and consumed state, fresh canonical reconstruction, JSON round trips,
-  malformed/unknown/duplicate/divergent provenance rejection, and exact controller preservation.
-- The restricted `./scripts/quality.sh` passed workflow validation, formatting, zero-warning build,
-  2,827 Domain, 905 Application, 1,255 Infrastructure, and 8 architecture tests plus scenario
-  validation, then stopped at Godot's known `user://logs` sandbox boundary.
-- The identical host-local `./scripts/quality.sh` passed those checks, every credential-free Godot
-  smoke (including route persistence, local storage, and provider-switch save/restore), and the
-  graphical Compatibility launch.
-- After adding the explicit accepted-but-unconsumed case and pruning this handover, the final
-  zero-warning build, formatting verification, whitespace check, and all .NET suites passed at
-  2,827 Domain, 906 Application, 1,255 Infrastructure, and 8 architecture tests. Product source was
-  unchanged from the complete host-local Godot run except for smoke success-message wording.
-- Hosted run `36288528994` failed all five jobs before execution with `steps: []`. This is
-  Actions/account infrastructure evidence, not hosted product validation; the complete host-local
-  suite above remains the current product evidence.
-- Session review checked the complete diff, exact-reference ownership, atomic preflight/install,
-  migration freshness, closed JSON shapes, ID-only data, file-size/120-character limits,
-  formatting, and whitespace. It found and fixed divergent completion-lineage admission by
-  requiring every accepted completion snapshot to be an exact monotonic prefix of the next/current
-  snapshot. No issue remained.
+- Host-local `./scripts/quality.sh` passed formatting, zero-warning build, 2,827 Domain, 906
+  Application, 1,255 Infrastructure, and 8 architecture tests, the five-evidence scenario validator,
+  every credential-free Godot smoke, and the graphical Compatibility launch.
+- The restricted run passed all managed tests and scenario validation, then reached the known Godot
+  `user://logs` sandbox boundary; the identical host-local run above is the complete product evidence.
+- Focused missing-progress and active-route smokes pass for both stream residue and wagon clue.
+- Hosted run `36291354747` reported four jobs failed before execution with `steps: []`; its remaining
+  managed job was still queued with no steps at the final query. Treat this as Actions/account
+  infrastructure, not product validation, and re-query the live draft before relying on its state.
+- Session review checked the complete diff, exact shared scenario/object/evidence provenance,
+  stale/rebuilt/repeated rejection, optional routing, world-object ordering, journal visibility,
+  documentation, formatting, 120-character limits, and whitespace. It fixed scene-node ordering,
+  unnoticed journal filtering, the fourth-object focus fixtures, exact wagon-visibility replacement,
+  and stale water-cask “tail” wording. No review issue remains.
 
 ## Preserved boundaries
 
-- Route initialization still occurs only after explicit map open or save restoration. Ordinary
-  startup remains inert.
-- No new evidence source is routed. Existing old-shrine routing remains the only ordinary-play
-  evidence submission path.
-- No completion is newly consumed or presented, and no testimony, stabilization, clue-order,
-  objective, UI, provider, or gameplay effect is added.
-- Save files remain local, strict, credential-free, and fail closed. No provider state, credentials,
-  hidden reasoning, labels, narrative text, coordinates, or object graph is serialized.
-- Do not tick the multiple-investigation-routes roadmap item yet.
+- Route progress is still initialized only by explicit map open or save restoration. Missing progress
+  never rolls back discovery and is not initialized or backfilled by either evidence path.
+- Accepted completion tokens remain unconsumed and have no presentation or gameplay effect.
+- No testimony, stabilization, objective, clue-order, disease-pressure, provider, persistence-schema,
+  credential, or roadmap-checkbox change is included.
+- Save schema 7 and existing local ID-only route lifecycle persistence remain unchanged.
 - Do not merge, release, sign, notarize, publish, or run credential-backed provider activity without
   separate authorization.
 
 ## Exact next bounded slice
 
-Submit the canonical stream `residue` evidence through the existing ordinary passive-noticing path
-to the existing investigation-route observation-routing coordinator. Do not add focused-search,
-testimony, wagon-clue, completion presentation, or stabilization behavior in the same slice.
+Present and explicitly consume the first exact accepted investigation-route completion through one
+provider-neutral greybox acknowledgement flow. Do not add testimony, stabilization, sage recovery,
+objectives, clue ordering, disease pressure, or another evidence source in the same slice.
 
 Acceptance boundary:
 
-1. Bind the existing representative discovery scenario's exact `stream-residue` world object,
-   exact `residue` evidence identity, exact Seeker passive-noticing candidate, and exact filtered
-   Seeker evidence view; do not author duplicate evidence or rebuild identifiers.
-2. Route only after the existing passive-noticing resolution has atomically advanced that exact
-   object from unnoticed to noticed and the evidence projection confirms visibility. Missing route
-   progress must preserve the successful noticing without initializing routes.
-3. When routes are initialized, submit the exact current progress, filtered view, and evidence ID to
-   `OpeningRegionInvestigationRouteObservationRoutingCoordinator` once. Let its existing authored
-   catalogue order update every matching route and observe any exact resulting completion.
-4. Repeated, stale, rebuilt, foreign, unseen, wrong-character, unresolved, and non-member inputs
-   remain inert without rolling back noticing, changing unrelated routes, consuming a completion,
-   or adding another presentation/effect.
-5. Keep ordinary startup inert and preserve save schema 7, map-open initialization, old-shrine
-   routing, journal/map state, providers, UI, testimony, stabilization, and clue-order neutrality.
-6. Work test-first, add a switch-gated ordinary-scene smoke for missing-progress and active-route
-   modes, run focused checks and `./scripts/quality.sh`, review the complete diff, update `README.md`,
-   and leave one exact next slice for the canonical wagon tool-gated-clue submission path.
+1. Bind only the first exact token in
+   `OpeningRegionInvestigationRouteCompletionCoordinator.AcceptedCompletions` when
+   `OpeningRegionInvestigationRouteCompletionConsumptionCoordinator.ConsumedCompletion` is null.
+   Rebuilt, unaccepted, stale, later, repeated, restored-consumed, and null tokens remain inert.
+2. Project a bounded safe presentation from the exact canonical route key through a closed authored
+   key-to-copy mapping. Do not expose progress snapshots, runtime objects, evidence text, provider
+   content, or hidden state to UI.
+3. Show the presentation only after exact completion observation. Explicit player acknowledgement
+   must first consume that same accepted token through the existing consumption coordinator, then
+   close the presentation. Failed consumption must leave the presentation visible and state intact.
+4. Preserve the accepted token list, progress, map, journal, discovery, perception, world objects,
+   save schema 7, and all unrelated UI. Later accepted completions remain retained but cannot replace
+   the one-shot consumed completion.
+5. Add a switch-gated ordinary-scene smoke covering inert startup, exact presentation and input,
+   successful one-shot consumption, rejection paths, restored-consumed behavior, and unrelated-state
+   isolation. Update `README.md`, run focused checks and `./scripts/quality.sh`, review the full diff,
+   and leave one exact next slice. Do not tick the roadmap checkbox until this ordinary completion
+   acknowledgement is implemented and reviewed.

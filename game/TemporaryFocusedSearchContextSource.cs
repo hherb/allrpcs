@@ -40,9 +40,21 @@ public partial class TemporaryFocusedSearchContextSource : Node
             CharacterCapabilitySet capabilities,
             CharacterInventory inventory) = CreateContext(worldObjects);
 
-        Conditions = conditions;
+        DiscoveryScenario scenario = GetNode<TemporaryWorldObjectSource>(
+            "../TemporaryWorldObjectSource").RepresentativeDiscoveryScenario;
+        DiscoveryToolRequirement wagonRequirement = scenario.Conditions.ToolRequirements.Entries
+            .Single(requirement => requirement.ObjectId.Value == "wagon-clue");
+        ObjectId exactFieldLens = scenario.AvailableInventory.ObjectReferences.Single();
+        DiscoveryToolRequirement temporaryRequirement = new(
+            conditions.ToolRequirements.Entries.Single().ObjectId,
+            exactFieldLens);
+
+        Conditions = new DiscoveryConditionSet(
+            conditions.CapabilityRequirements,
+            new DiscoveryToolRequirementSet(
+                [temporaryRequirement, wagonRequirement]));
         Capabilities = capabilities;
-        Inventory = inventory;
+        Inventory = scenario.AvailableInventory;
     }
 
     /// <summary>

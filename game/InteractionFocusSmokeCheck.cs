@@ -43,6 +43,7 @@ public partial class InteractionFocusSmokeCheck : Node
         "herb-patch",
         "stone-marker",
         "village-water-cask",
+        "wagon-clue",
         "hidden-marker",
         "excluded-marker",
     ];
@@ -257,7 +258,7 @@ public partial class InteractionFocusSmokeCheck : Node
             return;
         }
 
-        GreyboxInteractionTarget hiddenTarget = controller.GetTarget(3);
+        GreyboxInteractionTarget hiddenTarget = controller.GetTarget(4);
         if (hiddenTarget.Visible)
         {
             Fail("The hidden interaction target remained visible in the scene.");
@@ -1792,19 +1793,20 @@ public partial class InteractionFocusSmokeCheck : Node
         WorldObject sourceHerbPatch = sourceWorldObjects.Entries[0];
         WorldObject sourceStoneMarker = sourceWorldObjects.Entries[1];
         WorldObject sourceWaterCask = sourceWorldObjects.Entries[2];
+        WorldObject sourceWagonClue = sourceWorldObjects.Entries[3];
         authoredConditions = focusedSearchContextSource.Conditions;
         authoredCapabilities = focusedSearchContextSource.Capabilities;
         authoredInventory = focusedSearchContextSource.Inventory;
         authoredCapabilityRequirements = authoredConditions.CapabilityRequirements;
         authoredToolRequirements = authoredConditions.ToolRequirements;
         if (authoredCapabilityRequirements.Entries.Count != 2
-            || authoredToolRequirements.Entries.Count != 1
+            || authoredToolRequirements.Entries.Count != 2
             || authoredCapabilities.Entries.Count != 2
             || authoredInventory.ObjectReferences.Count != 1)
         {
             Fail(
                 "Interaction-focus smoke failed focused-search context authoring: expected two "
-                + "capability requirements and capabilities plus one tool requirement and tool.");
+                + "capability requirements and capabilities plus two tool requirements and tool.");
             return false;
         }
 
@@ -1848,6 +1850,12 @@ public partial class InteractionFocusSmokeCheck : Node
             && ReferenceEquals(authoredToolRequirement.ObjectId, sourceStoneMarker.Identity.Id)
             && ReferenceEquals(
                 authoredToolRequirement.RequiredToolObjectId,
+                authoredToolObjectId)
+            && ReferenceEquals(
+                authoredToolRequirements.Entries[1].ObjectId,
+                sourceWagonClue.Identity.Id)
+            && ReferenceEquals(
+                authoredToolRequirements.Entries[1].RequiredToolObjectId,
                 authoredToolObjectId)
             && string.Equals(authoredToolObjectId.Value, "field-lens", StringComparison.Ordinal);
         if (!isStable)
@@ -2044,10 +2052,13 @@ public partial class InteractionFocusSmokeCheck : Node
             && ReferenceEquals(
                 conditions.CapabilityRequirements.Entries[1],
                 authoredWaterCaskCapabilityRequirement)
-            && conditions.ToolRequirements.Entries.Count == 1
+            && conditions.ToolRequirements.Entries.Count == 2
             && ReferenceEquals(
                 conditions.ToolRequirements.Entries[0],
                 authoredToolRequirement)
+            && ReferenceEquals(
+                conditions.ToolRequirements.Entries[1],
+                authoredToolRequirements.Entries[1])
             && capabilities.Entries.Count == 2
             && ReferenceEquals(capabilities.Entries[0], authoredCapability)
             && ReferenceEquals(capabilities.Entries[1], authoredWaterCaskCapability)
@@ -2060,6 +2071,12 @@ public partial class InteractionFocusSmokeCheck : Node
             && ReferenceEquals(authoredToolRequirement.ObjectId, sourceObjectIds[1])
             && ReferenceEquals(
                 authoredToolRequirement.RequiredToolObjectId,
+                authoredToolObjectId)
+            && ReferenceEquals(
+                authoredToolRequirements.Entries[1].ObjectId,
+                worldObjectSource.WorldObjects.Entries[3].Identity.Id)
+            && ReferenceEquals(
+                authoredToolRequirements.Entries[1].RequiredToolObjectId,
                 authoredToolObjectId);
         if (!isUnchanged)
         {

@@ -489,6 +489,10 @@
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteCompletionConsumptionCoordinatorSmokeCheck.cs" id="377_route_completion_consumption_check"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteObservationRoutingCoordinator.cs" id="378_route_observation_routing"]
 [ext_resource type="Script" path="res://OpeningRegionInvestigationRouteObservationRoutingCoordinatorSmokeCheck.cs" id="379_route_observation_routing_check"]
+[ext_resource type="Script" path="res://OpeningRegionStreamResiduePassiveNoticingCoordinator.cs" id="380_stream_residue_route"]
+[ext_resource type="Script" path="res://OpeningRegionStreamResiduePassiveNoticingSmokeCheck.cs" id="381_stream_residue_route_check"]
+[ext_resource type="Script" path="res://OpeningRegionWagonClueFocusedSearchRouteSmokeCheck.cs" id="383_wagon_clue_route_check"]
+[ext_resource type="Script" path="res://OpeningRegionWagonClueFocusedSearchRoutingCoordinator.cs" id="382_wagon_clue_route"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(1632, 32)
@@ -894,6 +898,30 @@ text = "VILLAGE WATER CASK"
 horizontal_alignment = 1
 
 [node name="FocusIndicator" type="Line2D" parent="InteractionCandidates/WaterCask"]
+visible = false
+points = PackedVector2Array(38, 0, 26.87, 26.87, 0, 38, -26.87, 26.87, -38, 0, -26.87, -26.87, 0, -38, 26.87, -26.87, 38, 0)
+width = 6.0
+default_color = Color(1, 0.827, 0.227, 1)
+antialiased = true
+
+[node name="WagonClue" type="Node2D" parent="InteractionCandidates"]
+position = Vector2(720, 820)
+script = ExtResource("8_interaction_target")
+ObjectIdText = "wagon-clue"
+
+[node name="Marker" type="Polygon2D" parent="InteractionCandidates/WagonClue"]
+polygon = PackedVector2Array(-14, -10, 16, -8, 12, 12, -16, 10)
+color = Color(0.588, 0.502, 0.353, 1)
+
+[node name="Label" type="Label" parent="InteractionCandidates/WagonClue"]
+offset_left = -64.0
+offset_top = 20.0
+offset_right = 64.0
+offset_bottom = 43.0
+text = "TOOL-GATED CLUE"
+horizontal_alignment = 1
+
+[node name="FocusIndicator" type="Line2D" parent="InteractionCandidates/WagonClue"]
 visible = false
 points = PackedVector2Array(38, 0, 26.87, 26.87, 0, 38, -26.87, 26.87, -38, 0, -26.87, -26.87, 0, -38, 26.87, -26.87, 38, 0)
 width = 6.0
@@ -2351,6 +2379,9 @@ shape = SubResource("RectangleShape2D_shrine_bottom_left")
 [node name="OpeningRegionLayeredInscriptionDiscoveryCoordinator" type="Node" parent="."]
 script = ExtResource("321_opening_region_inscription_coordinator")
 
+[node name="OpeningRegionStreamResiduePassiveNoticingCoordinator" type="Node" parent="."]
+script = ExtResource("380_stream_residue_route")
+
 [node name="OpeningRegionEnvironmentalStateSource" type="Node" parent="."]
 script = ExtResource("327_opening_region_environment_source")
 
@@ -2484,6 +2515,9 @@ default_color = Color(0.18, 0.137, 0.09, 1)
 
 [node name="Line2D" type="Line2D" parent="OpeningRegionSouthernRoadWagonSceneSource/WagonBoundaries/WagonBoundary5"]
 default_color = Color(0.18, 0.137, 0.09, 1)
+
+[node name="OpeningRegionWagonClueFocusedSearchRoutingCoordinator" type="Node" parent="."]
+script = ExtResource("382_wagon_clue_route")
 
 [node name="OpeningRegionSouthernRoadWagonSmokeCheck" type="Node" parent="."]
 script = ExtResource("324_opening_region_road_wagon_check")
@@ -2710,6 +2744,12 @@ script = ExtResource("377_route_completion_consumption_check")
 
 [node name="OpeningRegionInvestigationRouteObservationRoutingCoordinatorSmokeCheck" type="Node" parent="."]
 script = ExtResource("379_route_observation_routing_check")
+
+[node name="OpeningRegionStreamResiduePassiveNoticingSmokeCheck" type="Node" parent="."]
+script = ExtResource("381_stream_residue_route_check")
+
+[node name="OpeningRegionWagonClueFocusedSearchRouteSmokeCheck" type="Node" parent="."]
+script = ExtResource("383_wagon_clue_route_check")
 
 [node name="SeekerMapPresentationControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("359_seeker_map_presentation_check")

@@ -200,7 +200,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
             && knowledge[0].Text == AuthoredKnowledgeText
             && memory.Length == 1
             && memory[0].Text == ProjectedCommitmentText
-            && input.WorldObjects.Entries.Count == 3
+            && input.WorldObjects.Entries.Count == 4
             && input.WorldObjects.Entries.Any(
                 entry => entry.Description.Text == VisibleWorldObjectDescription)
             && input.WorldObjects.Entries.All(
@@ -299,7 +299,7 @@ public partial class TemporaryCharacterModelGenerationInputSourceSmokeCheck : No
                 activity.Request.DialogueEvent.Utterance.Text)
             && Entries(request, CharacterModelContextEntryKind.ValidAffordance).Length == 0
             && input.Affordances.Entries.Count == 0
-            && input.WorldObjects.Entries.Count == 3;
+            && input.WorldObjects.Entries.Count == 4;
     }
 
     private static bool ProvesClosedActivityGate(

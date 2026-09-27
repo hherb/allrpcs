@@ -11,6 +11,7 @@ namespace Allrpcs.Game;
 /// <summary>Authors exact temporary initial and follow-up enemy move candidates.</summary>
 public partial class TemporaryCharacterObjectSabotageMoveSource : Node
 {
+    private const int WaterCaskWorldObjectIndex = 2;
     private const string RequiredCapabilityKey = "assess-local-influence";
     private const string EvidenceIdText = "cask-drag-marks";
     private const string FollowUpEvidenceIdText = "cask-wheel-ruts";
@@ -69,7 +70,7 @@ public partial class TemporaryCharacterObjectSabotageMoveSource : Node
     {
         Character = RepresentativeEnemyAgentCharacterSource.Create();
         WorldObjects = GetNode<TemporaryWorldObjectSource>("../TemporaryWorldObjectSource").WorldObjects;
-        WorldObject target = WorldObjects.Entries[^1];
+        WorldObject target = WorldObjects.Entries[WaterCaskWorldObjectIndex];
         PhysicalAccess = new CharacterPhysicalAccessSnapshot(
             Character.Identity.Id,
             [target.Identity.Id]);
