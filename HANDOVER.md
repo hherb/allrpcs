@@ -2,89 +2,94 @@
 
 ## Current state
 
-`main` includes merged PR #409 at `0c4d4ad`. Branch
-`codex/phase-8-investigation-route-observation-routing` adds two bounded Phase 8 slices in draft
-PR #410:
+`main` includes merged PR #410 at `29d4026`. Branch
+`codex/phase-8-old-shrine-route-evidence` adds two bounded Phase 8 slices:
 
-- `OpeningRegionInvestigationRouteObservationRoutingCoordinator` receives one exact current route
-  snapshot plus one already-verified map location or visible evidence identity. It preflights every
-  exact matching catalogue route, records the observation through the existing compare-and-swap
-  authority owner in authored order, and asks the existing completion owner to observe each exact
-  resulting snapshot.
-- `OpeningRegionMapVisitVerificationCoordinator` now submits one successfully verified exact live
-  location through that routing path when route progress was already explicitly initialized. Map
-  verification remains authoritative even when no route state is active.
+- The ordinary old-shrine I-key discovery submits only its exact committed
+  `partial-inscription` evidence identity and exact filtered Seeker evidence view to the existing
+  catalogue-routing coordinator when route progress is already active. Missing progress preserves
+  the successful discovery without initializing routes, and repeated discovery cannot route twice.
+- The first successful explicit M-key map open initializes the three representative investigation
+  routes once from the map controller's exact catalogue and the old-shrine scene's exact discovery
+  scenario. Startup, blocked modal input, released/unrelated input, and later map opens remain inert.
 
-Ordinary startup still does not initialize or advance route progress. No evidence-discovery caller,
-preferred route, clue order, completion consumption, presentation, persistence, testimony,
-stabilization, or other gameplay effect was added. `README.md` documents the boundary. The
-multiple-route roadmap item remains unticked because a complete route is not yet driven through
-ordinary play.
+The exact old-shrine route can now complete through ordinary map verification plus discovery after
+the player has opened the map. Other evidence sources still do not submit route observations, no
+completion is consumed or presented, and the multiple-route roadmap item remains unticked.
 
 ## Validation and review
 
-- Both slices were test-first. The routing smoke first failed to compile because the coordinator was
-  absent; the map-visit smoke then failed because successful visits did not submit route progress.
-  Both passed after the minimum implementations.
-- The routing smoke proves catalogue-ordered multi-route location and evidence recording, ordered
-  completion observation, inert startup, and null, stale, rebuilt, foreign, unverified, unseen,
-  nonmember, and repeated rejection without changing completion consumption, map, discovery, or
-  journal state.
-- The updated map-visit smoke proves exact successful live visits submit canonical locations when
-  route progress is explicitly active; invalid, out-of-range, stale, and repeated visits preserve
-  route state, and ordinary startup remains inert.
-- The restricted complete suite passed all managed checks and then stopped only at Godot's known
+- Both slices were test-first. The new active-route old-shrine mode failed before the discovery
+  coordinator was wired; the map-input smoke then failed because explicit map opening did not
+  initialize route progress. Both passed after the minimum implementations.
+- The old-shrine smoke now runs in two fresh processes. One proves the existing discovery remains
+  successful with missing progress. The other pre-records the exact shrine location, proves the
+  exact filtered evidence is recorded once, retains unrelated routes empty, and observes one exact
+  completion token without consuming it.
+- The map-input smoke proves inert startup and modal rejection, exact one-shot route creation from
+  the live map/discovery sources, empty authored route order, exact identifier provenance, retained
+  progress across map edits and reopens, and no accepted completion.
+- Session review found and fixed a rejected-map-open ordering issue by delaying route mutation until
+  the existing map and presentation preflights pass. It also strengthened repeated shrine discovery
+  checks to retain exact post-success route and completion references, and extracted a focused smoke
+  verifier so the main old-shrine smoke remains below 500 lines.
+- The restricted complete suite passed all managed checks and stopped only at Godot's known
   `user://logs` sandbox boundary. The identical host-local `./scripts/quality.sh` passed formatting,
   a zero-warning build, 2,824 Domain, 898 Application, 1,249 Infrastructure, and 8 architecture
   tests, scenario validation, every credential-free Godot smoke, and the graphical Compatibility
   launch.
-- Session-wide review checked the complete diff, exact-reference ownership, authored catalogue
-  ordering, full preflight before multi-route mutation, unchanged rejected inputs, closed public
-  surfaces, file-size and 120-character limits, formatting, and whitespace. No issue remained.
-- Initial hosted PR run `36285087597` failed all five jobs before execution with `steps: []`. This is
+- Final review checked the complete diff, exact-reference ownership, missing-progress behavior,
+  one-shot routing/initialization, rejected-input preservation, closed public surfaces, file-size
+  and 120-character limits, formatting, and whitespace. No issue remained.
+- Initial hosted PR run `36286879474` failed all five jobs before execution with `steps: []`. This is
   Actions/account infrastructure evidence, not hosted product validation; the complete host-local
   suite above remains the current product evidence.
 
 ## Preserved boundaries
 
-- Routing derives matches only from the exact catalogue retained by the exact current progress
-  snapshot. It does not rebuild observations or routes, choose a preferred route, stop after the
-  first match, or pool progress across routes.
-- Live map verification submits only its exact successfully installed verified location and does
-  not initialize route state. Evidence discovery still has no ordinary-play route submission.
-- Accepted and consumed completion tokens remain exact existing provenance. The new routing path
-  observes but never consumes a completion or triggers an effect.
-- Save schema 6 remains unchanged; routes, progress, accepted completions, and consumption are not
-  persisted.
-- Discovery, journal, first-patient, provider, input, and UI owners remain unchanged. The map owner
-  changes only through its pre-existing visit-verification operation.
-- Do not tick the multiple-investigation-routes roadmap item until routes are authoritatively
-  exercised through ordinary play and its acceptance is actually met.
+- Route initialization happens only after the first successful explicit map-open input. Ordinary
+  startup does not initialize or advance routes, and opening the map does not itself record a clue.
+- The initialized routes use the exact live map catalogue and the exact discovery scenario retained
+  by the old-shrine scene. Rebuilt or foreign route graphs are not substituted.
+- Old-shrine routing occurs only after its existing discovery graph, identified presentation, and
+  filtered evidence exposure commit atomically. Routing failure never rolls back or fabricates that
+  already-successful discovery.
+- Focused search, passive noticing, testimony, and every evidence source except the old-shrine
+  layered inscription remain unwired. No preferred route or clue order is inferred.
+- Accepted completion tokens remain exact existing provenance. This branch does not consume or
+  present them, trigger testimony/stabilization, or add another gameplay effect.
+- Save schema 6 remains unchanged. Route catalogue/progress, accepted completions, and consumed
+  completion are not persisted and must not be described as surviving save/restore.
+- Discovery, journal, first-patient, provider, environmental, and background-route owners remain
+  unchanged. Do not tick the multiple-investigation-routes roadmap item yet.
 - Do not merge, release, sign, notarize, publish, or run credential-backed provider activity without
   separate authorization.
 
 ## Exact next bounded slice
 
-Submit one already-authorized exact visible evidence observation from the ordinary old-shrine
-layered-inscription discovery flow to the existing catalogue-routing coordinator. Do not add another
-evidence source yet.
+Persist the complete initialized investigation-route lifecycle through a new save schema 7. Do not
+add another evidence source or gameplay effect in the same slice.
 
 Acceptance boundary:
 
-1. After the existing old-shrine flow atomically commits its exact discovery and filtered evidence
-   exposure, submit only that exact visible `partial-inscription` identity with the exact current
-   route-progress snapshot and an exact filtered Seeker evidence view.
-2. Require route progress to have been explicitly initialized already. If it is absent, preserve the
-   existing successful discovery behavior without initializing routes or fabricating progress.
-3. Prove one active exact shrine route records the evidence once, asks the existing completion owner
-   to observe the exact resulting snapshot, and leaves unrelated routes unchanged. The route may
-   remain incomplete until its exact location is recorded.
-4. Reject stale, rebuilt, foreign, unseen, missing-progress, and repeated routing inputs without
-   changing discovery, route progress, accepted/consumed completion, map, journal, presentation, or
-   environmental state.
-5. Keep ordinary startup inert. Do not wire focused-search, passive-noticing, testimony, or any other
-   evidence source; initialize or persist routes; infer clue order; consume or present completion; or
-   trigger testimony, stabilization, or another gameplay effect.
-6. Work test-first, extend the focused switch-gated old-shrine smoke, run focused tests and
-   `./scripts/quality.sh`, review the complete diff, update `README.md`, and leave one next slice for
-   explicit ordinary-play route initialization.
+1. Add bounded ID-only save state for the exact initialized route progress, ordered accepted
+   completion route keys, and optional consumed completion route key. Do not serialize labels,
+   descriptions, map coordinates, discovery text, or object graphs.
+2. Capture only a complete internally consistent lifecycle: every progress entry belongs to the
+   exact current catalogue in authored order; every recorded location/evidence identity is an exact
+   route member; accepted completions bind exact complete current/earlier snapshots; and consumption
+   binds one exact accepted token. Fail closed before producing a document.
+3. During restoration, create the canonical route catalogue from the restored map catalogue and the
+   exact scene discovery scenario, rebind every saved identifier/key exactly once, rebuild progress,
+   accepted completions, and optional consumption, and preflight the whole graph before mutating any
+   scene controller.
+4. Migrate schemas 1-6 to canonical empty route progress with no accepted or consumed completion.
+   Preserve all existing discovery, event, memory, patient, journal, and map migrations.
+5. Prove JSON and isolated-storage round trips, malformed/unknown/duplicate/stale route rejection,
+   complete and partial progress, accepted-but-unconsumed and consumed states, repeated restoration,
+   and unchanged controllers after rejection.
+6. Keep ordinary startup and all evidence sources unchanged. Do not consume/present a completion,
+   add testimony or stabilization, infer clue order, expose route UI, or add provider activity.
+7. Work test-first, run focused persistence/controller tests and `./scripts/quality.sh`, review the
+   complete diff, update `README.md`, and leave one next slice for the canonical stream-residue
+   passive-noticing submission path.

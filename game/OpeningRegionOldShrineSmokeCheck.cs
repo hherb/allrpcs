@@ -1,4 +1,6 @@
 using Allrpcs.Application.Discovery;
+using Allrpcs.Application.Investigations;
+using Allrpcs.Application.Map;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Characters;
 using Allrpcs.Domain.Controllers;
@@ -15,6 +17,7 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_OPENING_REGION_OLD_SHRINE_CHECK";
     private const string EnabledEnvironmentValue = "1";
+    private const string RouteProgressEnvironmentValue = "route";
     private const int MaximumSynchronizationPhysicsFrames = 60;
     private const int ExpectedBoundarySectionCount = 5;
     private const int ExpectedInscriptionLayerCount = 2;
@@ -28,7 +31,8 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
     /// <inheritdoc />
     public override void _Ready()
     {
-        bool enabled = OS.GetEnvironment(CheckEnvironmentVariable) == EnabledEnvironmentValue;
+        string checkMode = OS.GetEnvironment(CheckEnvironmentVariable);
+        bool enabled = checkMode is EnabledEnvironmentValue or RouteProgressEnvironmentValue;
         SetPhysicsProcess(enabled);
         if (!enabled)
         {
@@ -67,10 +71,16 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
             return;
         }
 
-        RunChecks(layout, navigationMap);
+        RunChecks(
+            layout,
+            navigationMap,
+            OS.GetEnvironment(CheckEnvironmentVariable) == RouteProgressEnvironmentValue);
     }
 
-    private void RunChecks(OpeningRegionOldShrineLayout layout, Rid navigationMap)
+    private void RunChecks(
+        OpeningRegionOldShrineLayout layout,
+        Rid navigationMap,
+        bool routeProgressEnabled)
     {
         OpeningRegionOldShrineSceneSource source =
             GetNode<OpeningRegionOldShrineSceneSource>("../OpeningRegionOldShrineSceneSource");
@@ -82,6 +92,12 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
             "../OpeningRegionOldShrineSceneSource/LayeredInscription");
         CharacterBody2D seekerBody = GetNode<CharacterBody2D>("../Seeker");
         Main main = GetNode<Main>("..");
+        OpeningRegionInvestigationRouteProgressController routeProgress = GetNode<
+            OpeningRegionInvestigationRouteProgressController>(
+                "../OpeningRegionInvestigationRouteProgressController");
+        OpeningRegionInvestigationRouteCompletionCoordinator routeCompletions = GetNode<
+            OpeningRegionInvestigationRouteCompletionCoordinator>(
+                "../OpeningRegionInvestigationRouteCompletionCoordinator");
         OpeningRegionLayeredInscriptionDiscoveryState initialDiscoveryState =
             source.DiscoveryState;
         DiscoveryScenario scenario = source.DiscoveryScenario;
@@ -94,6 +110,31 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
         Character missingKnowledgeSeeker = CreateSeeker(
             scenario.ObserverCharacterId,
             new CharacterKnowledge([]));
+        OpeningRegionInvestigationRoute? shrineRoute = null;
+        OpeningRegionInvestigationRouteProgressSnapshot? beforeDiscoveryRouteProgress = null;
+        if (routeProgressEnabled)
+        {
+            OpeningRegionMapLocationCatalogue locations =
+                RepresentativeOpeningRegionMapLocationSource.Create();
+            OpeningRegionInvestigationRouteCatalogue routes =
+                RepresentativeOpeningRegionInvestigationRouteSource.Create(locations, scenario);
+            shrineRoute = routes.Routes.Single(route => route.EvidenceIds.Any(evidenceId =>
+                evidenceId.Value == "partial-inscription"));
+            LocationId shrineLocationId = shrineRoute.LocationIds.Single();
+            if (!routeProgress.TryInitialize(routes, locations, scenario)
+                || routeProgress.Progress is not { } emptyRouteProgress
+                || !routeProgress.TryRecordLocation(
+                    emptyRouteProgress,
+                    shrineRoute,
+                    shrineLocationId))
+            {
+                Fail("The old-shrine smoke could not arrange explicit route progress.");
+                return;
+            }
+
+            beforeDiscoveryRouteProgress = routeProgress.Progress;
+        }
+
         bool initialInscriptionVisibility = inscription.Visible;
         bool nullDiscovery = coordinator.TryDiscover(null);
         bool rebuiltAuthorityDiscovery = coordinator.TryDiscover(rebuiltSeeker);
@@ -126,7 +167,9 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
                 initialDiscoveryState)
             && source.Presentation is null
             && source.EvidenceExposure is null
-            && coordinator.CompletedExposure is null;
+            && coordinator.CompletedExposure is null
+            && ReferenceEquals(routeProgress.Progress, beforeDiscoveryRouteProgress)
+            && routeCompletions.AcceptedCompletions.Count == 0;
         PressDiscovery(main);
         bool discovered = !ReferenceEquals(source.DiscoveryState, initialDiscoveryState);
         OpeningRegionLayeredInscriptionDiscoveryState completedDiscoveryState =
@@ -135,12 +178,20 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
             source.Presentation;
         OpeningRegionLayeredInscriptionEvidenceExposure? completedEvidenceExposure =
             source.EvidenceExposure;
+        OpeningRegionInvestigationRouteProgressSnapshot? routeProgressAfterDiscovery =
+            routeProgress.Progress;
+        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> completionsAfterDiscovery =
+            routeCompletions.AcceptedCompletions;
         PressDiscovery(main);
         bool repeatedDiscoveryPreservedState = ReferenceEquals(
                 source.DiscoveryState,
                 completedDiscoveryState)
             && ReferenceEquals(source.Presentation, completedPresentation)
-            && ReferenceEquals(source.EvidenceExposure, completedEvidenceExposure);
+            && ReferenceEquals(source.EvidenceExposure, completedEvidenceExposure)
+            && ReferenceEquals(routeProgress.Progress, routeProgressAfterDiscovery)
+            && ReferenceEquals(
+                routeCompletions.AcceptedCompletions,
+                completionsAfterDiscovery);
         OpeningRegionLayeredInscriptionResolution? resolution =
             source.DiscoveryState.Resolution;
         OpeningRegionLayeredInscriptionCandidateBinding? candidateBinding =
@@ -149,6 +200,10 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
         OpeningRegionLayeredInscriptionPresentation? presentation = source.Presentation;
         OpeningRegionLayeredInscriptionEvidenceExposure? evidenceExposure =
             source.EvidenceExposure;
+        OpeningRegionInvestigationRouteProgressSnapshot? completedRouteProgress =
+            routeProgress.Progress;
+        IReadOnlyList<OpeningRegionInvestigationRouteCompletion> acceptedCompletions =
+            routeCompletions.AcceptedCompletions;
         WorldObjectVisibility? resolvedVisibility = resolution?.Result.Perception.Entries.Single(
             entry => ReferenceEquals(entry.ObjectId, candidateBinding?.Candidate.TargetObjectId));
         if (!HasCollisionShapes(boundaries)
@@ -239,6 +294,13 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
             || !ReferenceEquals(
                 source.DiscoveryScenario.ReinterpretationCandidates,
                 scenario.ReinterpretationCandidates)
+            || !OpeningRegionOldShrineRouteSmokeVerifier.HasExpectedOutcome(
+                routeProgressEnabled,
+                shrineRoute,
+                beforeDiscoveryRouteProgress,
+                completedRouteProgress,
+                acceptedCompletions,
+                evidenceExposure)
             || !ReferenceEquals(
                 layout.SceneBinding.Projection,
                 GetNode<OpeningRegionProjectionSource>("../OpeningRegionProjectionSource").Projection))
@@ -270,7 +332,8 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
             + "inscription binding, complete preflight before one atomic exact-candidate "
             + "reinterpretation, rejected null/foreign/rebuilt/missing-knowledge/far/moved/visible "
             + "and repeated paths, released/unrelated input inertness, one ordinary I-key reveal, "
-            + "one exact filtered evidence exposure, and synchronized clearing round trip.");
+            + "one exact filtered evidence exposure, explicit optional route recording and exact "
+            + "completion observation, and synchronized clearing round trip.");
         GetTree().Quit();
     }
 

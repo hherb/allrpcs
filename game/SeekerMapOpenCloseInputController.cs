@@ -1,3 +1,4 @@
+using Allrpcs.Application.Investigations;
 using Allrpcs.Application.Map;
 using Godot;
 
@@ -13,6 +14,8 @@ public partial class SeekerMapOpenCloseInputController : Node
     private SeekerMapPanel panel = null!;
     private SeekerMapNoteEditingController noteEditing = null!;
     private SeekerMapPresentationController presentations = null!;
+    private OpeningRegionInvestigationRouteProgressController routeProgress = null!;
+    private OpeningRegionOldShrineSceneSource shrineSource = null!;
     private SeekerMapController state = null!;
     private TemporarySeekerCharacterSource seekerCharacter = null!;
     private Seeker seeker = null!;
@@ -32,6 +35,10 @@ public partial class SeekerMapOpenCloseInputController : Node
             "../SeekerMapNoteEditingController");
         presentations = GetNode<SeekerMapPresentationController>(
             "../SeekerMapPresentationController");
+        routeProgress = GetNode<OpeningRegionInvestigationRouteProgressController>(
+            "../OpeningRegionInvestigationRouteProgressController");
+        shrineSource = GetNode<OpeningRegionOldShrineSceneSource>(
+            "../OpeningRegionOldShrineSceneSource");
         state = GetNode<SeekerMapController>("../SeekerMapController");
         seekerCharacter = GetNode<TemporarySeekerCharacterSource>(
             "../TemporarySeekerCharacterSource");
@@ -84,9 +91,32 @@ public partial class SeekerMapOpenCloseInputController : Node
 
         if (state.Map is not { } map
             || state.Notes is not { } notes
-            || state.Catalogue is null
+            || state.Catalogue is not { } locationCatalogue
             || !ReferenceEquals(map.SeekerId, seekerId)
             || !ReferenceEquals(notes.SeekerId, seekerId))
+        {
+            return false;
+        }
+
+        OpeningRegionInvestigationRouteCatalogue? routesToInitialize = null;
+        if (routeProgress.Progress is null)
+        {
+            if (routeProgress.Catalogue is not null)
+            {
+                return false;
+            }
+
+            routesToInitialize =
+                RepresentativeOpeningRegionInvestigationRouteSource.Create(
+                    locationCatalogue,
+                    shrineSource.DiscoveryScenario);
+        }
+        else if (routeProgress.Catalogue is not { } routes
+            || !ReferenceEquals(routeProgress.Progress.Catalogue, routes)
+            || !OpeningRegionInvestigationRouteValidationPolicy.IsValid(
+                routes,
+                locationCatalogue,
+                shrineSource.DiscoveryScenario))
         {
             return false;
         }
@@ -123,6 +153,11 @@ public partial class SeekerMapOpenCloseInputController : Node
         }
 
         if (currentPresentation is null
+            || routesToInitialize is not null
+                && !routeProgress.TryInitialize(
+                    routesToInitialize,
+                    locationCatalogue,
+                    shrineSource.DiscoveryScenario)
             || !noteEditing.TryPresent(map, notes, currentPresentation)
             || !panel.TryPresent(currentPresentation))
         {
