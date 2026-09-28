@@ -45,6 +45,7 @@ class Asset:
     baseline_master: int
     image_master: Image.Image
     source: str
+    godot_import_proof: bool = True
 
 
 def alpha_clean(image: Image.Image, cutoff: int = ALPHA_CUTOFF) -> Image.Image:
@@ -265,6 +266,50 @@ def make_path_cross_junction(path_master: Image.Image) -> Image.Image:
     junction = ImageOps.fit(source, (512, 512), method=RESAMPLE, centering=(0.5, 0.5))
     junction = alpha_clean(junction, cutoff=24)
     return enforce_path_cross_junction_ports(junction, path_master)
+
+
+def enforce_path_end_cap_port(
+    end_cap: Image.Image, straight_path: Image.Image
+) -> Image.Image:
+    """Install one exact top port and keep the lower half fully transparent."""
+
+    end_cap = end_cap.copy().convert("RGBA")
+    port_width = straight_path.width
+    port_offset = (end_cap.width - port_width) // 2
+    port_depth = straight_path.height // 8
+    straight_entry = straight_path.crop((0, 0, port_width, port_depth))
+    end_cap.paste(straight_entry, (port_offset, 0))
+
+    top_edge = Image.new("RGBA", (end_cap.width, 1), (0, 0, 0, 0))
+    top_edge.paste(straight_path.crop((0, 0, port_width, 1)), (port_offset, 0))
+    end_cap.paste(top_edge, (0, 0))
+    end_cap.paste(
+        Image.new("RGBA", (end_cap.width, end_cap.height // 2), (0, 0, 0, 0)),
+        (0, end_cap.height // 2),
+    )
+    end_cap.paste(Image.new("RGBA", (1, end_cap.height), (0, 0, 0, 0)), (0, 0))
+    end_cap.paste(
+        Image.new("RGBA", (1, end_cap.height), (0, 0, 0, 0)),
+        (end_cap.width - 1, 0),
+    )
+    return end_cap
+
+
+def make_path_end_cap(path_master: Image.Image) -> Image.Image:
+    """Create one 512px end-cap with an exact top port and rounded terminus."""
+
+    source = crop_alpha(
+        alpha_clean(Image.open(RAW / "path-end-cap-overlay.png"), cutoff=24)
+    )
+    terminus_source = source.crop(
+        (0, round(source.height * 0.42), source.width, source.height)
+    )
+    terminus = terminus_source.resize((224, 164), RESAMPLE)
+    terminus = alpha_clean(terminus, cutoff=24)
+    end_cap = Image.new("RGBA", (512, 512), (0, 0, 0, 0))
+    end_cap.alpha_composite(path_master.crop((0, 0, path_master.width, 120)), (160, 0))
+    end_cap.alpha_composite(terminus, (144, 76))
+    return enforce_path_end_cap_port(end_cap, path_master)
 
 
 def make_cues() -> dict[str, Image.Image]:
@@ -696,6 +741,49 @@ def make_path_cross_junction_review(assets: dict[str, Image.Image]) -> Image.Ima
     return scene
 
 
+def make_path_end_cap_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Compose the external end-cap below one exact straight connector."""
+
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    ground = assets["terrain.quiet_moss"]
+    for y in range(0, scene.height, ground.height):
+        for x in range(0, scene.width, ground.width):
+            scene.alpha_composite(ground, (x, y))
+
+    scene.alpha_composite(assets["terrain.straight_path"], (336, 0))
+    scene.alpha_composite(assets["terrain.path_end_cap"], (256, 256))
+    return scene
+
+
+def make_path_module_topology_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Compose every path topology into one connected external review network."""
+
+    scene = Image.new("RGBA", (1024, 768), (0, 0, 0, 0))
+    ground = assets["terrain.quiet_moss"]
+    for y in range(0, scene.height, ground.height):
+        for x in range(0, scene.width, ground.width):
+            scene.alpha_composite(ground, (x, y))
+
+    straight = assets["terrain.straight_path"]
+    horizontal = straight.transpose(Image.Transpose.ROTATE_90)
+    scene.alpha_composite(
+        assets["terrain.path_t_junction"].transpose(Image.Transpose.ROTATE_270),
+        (0, 256),
+    )
+    scene.alpha_composite(straight, (80, 0))
+    scene.alpha_composite(straight, (80, 512))
+    scene.alpha_composite(horizontal, (256, 336))
+    scene.alpha_composite(assets["terrain.path_cross_junction"], (512, 256))
+    scene.alpha_composite(straight, (592, 0))
+    scene.alpha_composite(straight, (592, 512))
+    scene.alpha_composite(
+        assets["terrain.path_bend"].transpose(Image.Transpose.ROTATE_180),
+        (768, 256),
+    )
+    scene.alpha_composite(assets["terrain.path_end_cap"], (768, 512))
+    return scene
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -726,6 +814,7 @@ def main() -> None:
     path_bend_master = make_path_bend(path_master)
     path_t_junction_master = make_path_t_junction(path_master)
     path_cross_junction_master = make_path_cross_junction(path_master)
+    path_end_cap_master = make_path_end_cap(path_master)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -790,6 +879,16 @@ def main() -> None:
             512,
             path_cross_junction_master,
             "sources/imagegen/path-cross-junction-overlay.png",
+        ),
+        Asset(
+            "terrain.path_end_cap",
+            "terrain",
+            Path("exports/terrain/path-end-cap.png"),
+            (512, 512),
+            (256, 256),
+            512,
+            path_end_cap_master,
+            "sources/imagegen/path-end-cap-overlay.png",
         ),
         Asset(
             "plants.herb_bed_empty",
@@ -911,6 +1010,11 @@ def main() -> None:
                 alpha_clean(export, cutoff=8),
                 export_images["terrain.straight_path"],
             )
+        elif asset.asset_id == "terrain.path_end_cap":
+            export = enforce_path_end_cap_port(
+                alpha_clean(export, cutoff=8),
+                export_images["terrain.straight_path"],
+            )
         save_png(export, ROOT / asset.export_path)
         export_images[asset.asset_id] = export
 
@@ -936,6 +1040,11 @@ def main() -> None:
         MASTERS / "terrain-path-cross-junction.ora",
         path_cross_junction_master.size,
         [("packed-earth path cross-junction", path_cross_junction_master, 0, 0, True)],
+    )
+    create_ora(
+        MASTERS / "terrain-path-end-cap.ora",
+        path_end_cap_master.size,
+        [("packed-earth path end-cap", path_end_cap_master, 0, 0, True)],
     )
     create_ora(
         MASTERS / "planted-herb-bed.ora",
@@ -1045,6 +1154,14 @@ def main() -> None:
         make_path_cross_junction_review(export_images),
         REVIEW / "path-cross-junction-review.png",
     )
+    save_png(
+        make_path_end_cap_review(export_images),
+        REVIEW / "path-end-cap-review.png",
+    )
+    save_png(
+        make_path_module_topology_review(export_images),
+        REVIEW / "path-module-topology-review.png",
+    )
 
     manifest_assets = []
     for asset in assets:
@@ -1079,7 +1196,7 @@ def main() -> None:
                     "x": asset.pivot_master[0] // MASTER_SCALE,
                     "y": asset.pivot_master[1] // MASTER_SCALE,
                 },
-                "godot_import_proof": True,
+                "godot_import_proof": asset.godot_import_proof,
                 "sha256": hash_file(export_path),
             }
         )

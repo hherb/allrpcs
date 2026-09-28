@@ -139,6 +139,29 @@ references. The deterministic builder owns the exact 512x512 master, 256x256 exp
 ports, clean alpha, and digest. The tool exposed no model or version identifier, so none is
 asserted.
 
+## Packed-earth path end-cap
+
+Inputs: `exports/terrain/quiet-moss.png`, `exports/terrain/straight-path.png`,
+`exports/terrain/path-bend.png`, `exports/terrain/path-t-junction.png`, and
+`exports/terrain/path-cross-junction.png`
+
+```text
+Use case: stylized-concept
+Asset type: external transparent 2D game path-overlay source for a deterministic modular pipeline
+Primary request: Create one single worn packed-earth path end-cap. The path enters vertically through the exact center of the top edge, continues downward, and ends in one soft rounded naturally worn-earth terminus before the lower half of the square module.
+Input images: Image 1 is the repository-owned quiet-moss palette and painterly texture reference only; Image 2 is the repository-owned straight packed-earth path reference for path palette, width, texture, sparse stone flecks, soft irregular edge treatment, and visual scale; Image 3 is the repository-owned 90-degree bend reference for curve language and clean transparent treatment; Image 4 is the repository-owned T-junction reference for shoulder language and clean transparent treatment; Image 5 is the repository-owned cross-junction reference for surface continuity and clean transparent treatment. Use no other visual references.
+Scene/backdrop: genuinely transparent outside the path; do not paint moss or any other background.
+Style/medium: painterly storybook gouache, broad low-frequency packed-earth shapes, warm ochre and weathered brown, restrained grain, sparse muted stone flecks matching the path references.
+Composition/framing: one complete square module; one centered top entry has the same consistent width as the straight-path reference; it descends less than halfway into the square, then resolves into a smooth softly rounded worn terminus; generous transparent regions occupy both sides, the lower half, and the entire bottom edge.
+Constraints: one end-cap only; preserve genuine transparent alpha outside the path; exactly one centered top entry; no bottom, left, or right exit; no junction; no colored environmental haze; no moss fill; no plants; no rocks beyond restrained embedded flecks already characteristic of the path; no props; no border; no text; no logo; no trademark; no watermark; no extra modules; no grid; no shadow outside the path; no cropped terminus.
+```
+
+This output came from Codex's built-in image tool on 2026-09-28 with transparent-background output
+requested. The quiet-moss, straight-path, path-bend, path-T-junction, and path-cross-junction
+exports were the only references. The deterministic builder owns the exact 512x512 master,
+256x256 export, one 96-pixel top port, clean alpha, transparent lower half, and digest. The tool
+exposed no model or version identifier, so none is asserted.
+
 ## Seeker idle/breathe frames
 
 Input for all four calls: `../../sources/seeker-four-direction-walk.png`

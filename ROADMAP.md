@@ -205,6 +205,12 @@ Acceptance:
   composition without runtime authority.
 - [x] Import only that exact manifest-bound cross-junction into the isolated proof with lossless
   source parity and no ordinary-scene connection.
+- [x] Establish one modular packed-earth path end-cap with a 256x256 clean-alpha export, exact
+  512x512 editable master, one 96-pixel top port, rounded terminus above a transparent lower half,
+  and an external review composition.
+- [x] Import only that exact manifest-bound end-cap into the isolated proof, then prove the
+  straight, bend, T-junction, cross-junction, and end-cap compose as one deterministic connected
+  topology without ordinary-scene authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

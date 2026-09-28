@@ -349,6 +349,36 @@
       "sha256": "9e3923d85a6f24d1716f401e535d3b011eda5033c9520420e4d3e78b34b42027"
     },
     {
+      "id": "terrain.path_end_cap",
+      "category": "terrain",
+      "source": "sources/imagegen/path-end-cap-overlay.png",
+      "export": "exports/terrain/path-end-cap.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3"
+    },
+    {
       "id": "plants.herb_bed_empty",
       "category": "plants",
       "source": "sources/imagegen/herb-bed-empty.png",

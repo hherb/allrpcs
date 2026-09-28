@@ -137,7 +137,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 59, f"expected 59 assets, got {len(assets)}")
+    require(len(assets) == 60, f"expected 60 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -402,6 +402,41 @@ def main() -> None:
             f"path cross-junction {label} is not transparent",
         )
 
+    end_cap_asset = assets["terrain.path_end_cap"]
+    require(
+        end_cap_asset["source"] == "sources/imagegen/path-end-cap-overlay.png"
+        and end_cap_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and end_cap_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and end_cap_asset["godot_import_proof"] is True,
+        "path end-cap manifest geometry, provenance, or import status drifted",
+    )
+    end_cap = Image.open(ROOT / end_cap_asset["export"]).convert("RGBA")
+    require(
+        ImageChops.difference(
+            end_cap.crop((port_offset, 0, port_offset + path.width, port_depth)),
+            straight_entry,
+        ).getbbox()
+        is None,
+        "path end-cap top entry differs from the straight-path connector",
+    )
+    end_cap_alpha = end_cap.getchannel("A")
+    require(
+        end_cap_alpha.getbbox() is not None and end_cap_alpha.getbbox()[3] <= 128,
+        "path end-cap terminus does not finish before the lower half",
+    )
+    for label, box in [
+        ("left edge", (0, 0, 1, end_cap.height)),
+        ("right edge", (end_cap.width - 1, 0, end_cap.width, end_cap.height)),
+        ("bottom edge", (0, end_cap.height - 1, end_cap.width, end_cap.height)),
+        ("lower 64-pixel band", (0, 192, end_cap.width, end_cap.height)),
+    ]:
+        require(
+            end_cap_alpha.crop(box).getbbox() is None,
+            f"path end-cap {label} is not transparent",
+        )
+
     animations = {animation["id"]: animation for animation in manifest["animations"]}
     expected_walk_ids = {
         f"characters.seeker.{direction}.walk"
@@ -557,6 +592,16 @@ def main() -> None:
         cross_review.size == (768, 768),
         "path cross-junction review dimensions drifted",
     )
+    end_cap_review = Image.open(ROOT / "review" / "path-end-cap-review.png")
+    require(
+        end_cap_review.size == (768, 768),
+        "path end-cap review dimensions drifted",
+    )
+    topology_review = Image.open(ROOT / "review" / "path-module-topology-review.png")
+    require(
+        topology_review.size == (1024, 768),
+        "path module topology review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -564,6 +609,7 @@ def main() -> None:
         "terrain-path-bend.ora",
         "terrain-path-t-junction.ora",
         "terrain-path-cross-junction.ora",
+        "terrain-path-end-cap.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -584,7 +630,9 @@ def main() -> None:
     print("path bend: exact 96px top/right ports with transparent outer regions")
     print("path T-junction: exact 96px top/left/right ports with transparent lower regions")
     print("path cross-junction: exact 96px four-way ports with transparent corners")
-    print("editable masters: 10 valid OpenRaster archives")
+    print("path end-cap: exact 96px top port with terminus above a transparent lower half")
+    print("path topology: straight, bend, T, cross, and end-cap compose as one network")
+    print("editable masters: 11 valid OpenRaster archives")
 
 
 if __name__ == "__main__":
