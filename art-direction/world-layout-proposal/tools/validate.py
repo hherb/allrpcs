@@ -120,24 +120,41 @@ def validate_source(data: dict) -> None:
     }
     if endpoint_sets != EXPECTED_CONNECTIONS or len(connections) != len(EXPECTED_CONNECTIONS):
         fail("Connections must exactly preserve the current twelve-edge route topology.")
-    if any(connection["first"] not in ids or connection["second"] not in ids for connection in connections):
+    if any(
+        connection["first"] not in ids or connection["second"] not in ids
+        for connection in connections
+    ):
         fail("Every connection endpoint must name one exact retained anchor.")
     anchors_by_id = {anchor["id"]: anchor for anchor in anchors}
+    minimum_independent_route_separation = world["path_width"]
     for index, first_connection in enumerate(connections):
         first_endpoints = {first_connection["first"], first_connection["second"]}
         for second_connection in connections[index + 1 :]:
             second_endpoints = {second_connection["first"], second_connection["second"]}
             if first_endpoints & second_endpoints:
                 continue
-            if segments_intersect(
-                anchors_by_id[first_connection["first"]],
-                anchors_by_id[first_connection["second"]],
-                anchors_by_id[second_connection["first"]],
-                anchors_by_id[second_connection["second"]],
+            first_start = anchors_by_id[first_connection["first"]]
+            first_end = anchors_by_id[first_connection["second"]]
+            second_start = anchors_by_id[second_connection["first"]]
+            second_end = anchors_by_id[second_connection["second"]]
+            separation = segment_distance(
+                first_start,
+                first_end,
+                second_start,
+                second_end,
+            )
+            if route_bands_overlap(
+                first_start,
+                first_end,
+                second_start,
+                second_end,
+                minimum_independent_route_separation,
             ):
                 fail(
                     f'{first_connection["id"]} and {second_connection["id"]} create an '
-                    "unauthorized route crossing."
+                    "unauthorized route-band overlap "
+                    f"({separation:.3f}px separation for "
+                    f"{minimum_independent_route_separation}px bands)."
                 )
 
     zones = data["content_zones"]
@@ -218,14 +235,109 @@ def segments_intersect(first: dict, second: dict, third: dict, fourth: dict) -> 
     )
 
 
+def segment_distance(first: dict, second: dict, third: dict, fourth: dict) -> float:
+    if segments_intersect(first, second, third, fourth):
+        return 0.0
+
+    return min(
+        point_to_segment_distance(first, third, fourth),
+        point_to_segment_distance(second, third, fourth),
+        point_to_segment_distance(third, first, second),
+        point_to_segment_distance(fourth, first, second),
+    )
+
+
+def route_bands_overlap(
+    first: dict,
+    second: dict,
+    third: dict,
+    fourth: dict,
+    route_width: float,
+) -> bool:
+    return segment_distance(first, second, third, fourth) < route_width
+
+
+def point_to_segment_distance(point: dict, start: dict, end: dict) -> float:
+    delta_x = end["x"] - start["x"]
+    delta_y = end["y"] - start["y"]
+    length_squared = delta_x * delta_x + delta_y * delta_y
+    if length_squared == 0:
+        return math.hypot(point["x"] - start["x"], point["y"] - start["y"])
+
+    projection = (
+        (point["x"] - start["x"]) * delta_x
+        + (point["y"] - start["y"]) * delta_y
+    ) / length_squared
+    clamped_projection = max(0.0, min(1.0, projection))
+    closest_x = start["x"] + clamped_projection * delta_x
+    closest_y = start["y"] + clamped_projection * delta_y
+    return math.hypot(point["x"] - closest_x, point["y"] - closest_y)
+
+
+def validate_geometry_regressions() -> None:
+    horizontal_start = {"x": 0, "y": 0}
+    horizontal_end = {"x": 100, "y": 0}
+    cases = (
+        (
+            "ordinary crossing",
+            {"x": 50, "y": -50},
+            {"x": 50, "y": 50},
+            0.0,
+            True,
+        ),
+        (
+            "collinear overlap",
+            {"x": 50, "y": 0},
+            {"x": 150, "y": 0},
+            0.0,
+            True,
+        ),
+        (
+            "non-intersecting route-band overlap",
+            {"x": 0, "y": 95},
+            {"x": 100, "y": 95},
+            95.0,
+            True,
+        ),
+        (
+            "separated parallel routes",
+            {"x": 0, "y": 97},
+            {"x": 100, "y": 97},
+            97.0,
+            False,
+        ),
+    )
+    for description, third, fourth, expected_distance, expected_overlap in cases:
+        actual = segment_distance(horizontal_start, horizontal_end, third, fourth)
+        if not math.isclose(actual, expected_distance, abs_tol=1e-9):
+            fail(
+                f"Segment-distance regression failed for {description}: "
+                f"expected {expected_distance}, received {actual}."
+            )
+        overlap = route_bands_overlap(
+            horizontal_start,
+            horizontal_end,
+            third,
+            fourth,
+            route_width=96.0,
+        )
+        if overlap != expected_overlap:
+            fail(
+                f"Route-band regression failed for {description}: "
+                f"expected overlap={expected_overlap}, received overlap={overlap}."
+            )
+
+
 def main() -> None:
+    validate_geometry_regressions()
     with SOURCE.open(encoding="utf-8") as source_file:
         data = json.load(source_file)
     validate_source(data)
     validate_outputs()
     print(
         "Opening-region proposal validation passed: 11 anchors, 12 topology edges, "
-        "5 content zones, 2 camera frames, deterministic SVG output."
+        "96px independent-route separation, 5 content zones, 2 camera frames, "
+        "deterministic SVG output."
     )
 
 

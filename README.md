@@ -33,8 +33,11 @@ The external [`world-layout-proposal`](art-direction/world-layout-proposal/READM
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path
 language, and existing zoom tuning; documents route and screen-span distances, camera limits,
 navigation consequences, and five empty-area content budgets; and includes labelled full-region,
-1280x720, and 1280x827 diagrams. It is pending explicit layout approval and changes no ordinary
-scene, collision, navigation, discovery, dialogue, clue, or gameplay authority.
+1280x720, and 1280x827 diagrams. Its validator now proves full 96-pixel separation between every
+independent route band, including focused near-miss regressions. A repository-level technical review
+recommends it as the candidate for greybox implementation, but it is still pending explicit layout
+approval and changes no ordinary scene, collision, navigation, discovery, dialogue, clue, or
+gameplay authority.
 
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure

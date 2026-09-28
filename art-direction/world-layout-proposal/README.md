@@ -20,10 +20,12 @@ unintended intersections.
 
 `layout-proposal.json` is the single source for the diagrams. `tools/build.py` generates the SVGs;
 `tools/validate.py` verifies exact identities, coordinates, topology, endpoint and landmark
-clearance, absence of unauthorized route crossings, camera containment, content-zone bounds,
-well-formed SVGs, and byte-deterministic rebuilding. The proposal was derived entirely from the
-repository's current topology, scene anchors, camera rules, and handover; no external or generated
-visual source was used.
+clearance, at least 96 pixels between independent route centrelines, camera containment,
+content-zone bounds, well-formed SVGs, and byte-deterministic rebuilding. Focused geometry
+regressions cover ordinary crossings, collinear overlap, non-intersecting route-band overlap, and
+separated parallel routes. The proposal was derived entirely from the repository's current
+topology, scene anchors, camera rules, and handover; no external or generated visual source was
+used.
 
 ## Proposed anchors
 
@@ -148,6 +150,20 @@ Filling these areas would be a later production-art task. This proposal adds no 
 dialogue, interactable, evidence, or scenario step to make empty space appear meaningful.
 
 ## Review gate
+
+### Technical review recommendation — 2026-09-28
+
+The repository-level technical review recommends accepting this proposal as the candidate for one
+coordinated greybox implementation. The retained arrangement has no independent 96-pixel route-band
+overlap; the closest independent centrelines remain about 290.6 pixels apart. The north-west closed
+path avoids the prior false crossing, the 6.5-second shrine-to-road link is an explicit greybox
+hypothesis rather than an asserted pacing success, both representative camera frames stay inside
+the world at the retained zoom range, and the five content budgets remain non-authoritative.
+
+This recommendation is not product-owner approval, human pacing or route-usability evidence, or
+human accessibility acceptance. The implementation gate below remains closed until an explicit
+approval accepts the coordinates, closed-path relocation, route-distance budget, camera framing,
+and content budgets.
 
 Approval should decide whether the anchor coordinates, closed-path relocation, route-distance
 budget, camera framing, and five empty-area budgets are acceptable. Until that explicit decision,
