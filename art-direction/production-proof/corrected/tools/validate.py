@@ -137,7 +137,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 56, f"expected 56 assets, got {len(assets)}")
+    require(len(assets) == 57, f"expected 57 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -205,6 +205,64 @@ def main() -> None:
         == 0,
         "path top/bottom seam differs",
     )
+    bend_asset = assets["terrain.path_bend"]
+    require(
+        bend_asset["source"] == "sources/imagegen/path-bend-overlay.png"
+        and bend_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and bend_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and bend_asset["godot_import_proof"] is True,
+        "path bend manifest geometry, provenance, or import status drifted",
+    )
+    bend = Image.open(ROOT / bend_asset["export"]).convert("RGBA")
+    port_offset = (bend.width - path.width) // 2
+    port_depth = path.height // 8
+    straight_entry = path.crop((0, 0, path.width, port_depth))
+    require(
+        ImageChops.difference(
+            bend.crop(
+                (port_offset, 0, port_offset + path.width, port_depth)
+            ),
+            straight_entry,
+        ).getbbox()
+        is None,
+        "path bend top entry differs from the straight-path connector",
+    )
+    horizontal_path = path.transpose(Image.Transpose.ROTATE_90)
+    expected_right_entry = horizontal_path.crop(
+        (0, 0, port_depth, path.width)
+    ).transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    require(
+        ImageChops.difference(
+            bend.crop(
+                (
+                    bend.width - port_depth,
+                    port_offset,
+                    bend.width,
+                    port_offset + path.width,
+                )
+            ),
+            expected_right_entry,
+        ).getbbox()
+        is None,
+        "path bend right exit differs from the straight-path connector",
+    )
+    alpha = bend.getchannel("A")
+    for label, box in [
+        ("top-left edge", (0, 0, port_offset, 1)),
+        ("top-right edge", (port_offset + path.width, 0, bend.width, 1)),
+        ("right-upper edge", (bend.width - 1, 0, bend.width, port_offset)),
+        (
+            "right-lower edge",
+            (bend.width - 1, port_offset + path.width, bend.width, bend.height),
+        ),
+        ("left edge", (0, 0, 1, bend.height)),
+        ("bottom edge", (0, bend.height - 1, bend.width, bend.height)),
+        ("top-right outer region", (192, 0, 256, 64)),
+        ("bottom-left outer region", (0, 192, 64, 256)),
+    ]:
+        require(alpha.crop(box).getbbox() is None, f"path bend {label} is not transparent")
 
     animations = {animation["id"]: animation for animation in manifest["animations"]}
     expected_walk_ids = {
@@ -349,10 +407,13 @@ def main() -> None:
         interaction_review.size == (256, 224),
         "four-direction interaction review dimensions drifted",
     )
+    bend_review = Image.open(ROOT / "review" / "path-bend-review.png")
+    require(bend_review.size == (768, 768), "path-bend review dimensions drifted")
     validate_cue_grayscale()
 
     for filename in [
         "terrain-straight-path.ora",
+        "terrain-path-bend.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -370,7 +431,8 @@ def main() -> None:
     print("four-direction interaction: 16 unique frames, fixed origins, 160 ms gestures")
     print("grayscale cues: ordinary, noticeable, identified, dangerous remain distinct")
     print("navigation clearance: fixed obstacles remain outside 96x540 path corridor")
-    print("editable masters: 7 valid OpenRaster archives")
+    print("path bend: exact 96px top/right ports with transparent outer regions")
+    print("editable masters: 8 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

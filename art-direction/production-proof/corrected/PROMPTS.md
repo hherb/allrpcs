@@ -75,6 +75,27 @@ Composition: a vertical straight path of consistent width crossing the entire sq
 Constraints: genuinely transparent outside the path with no colored environmental haze; top and bottom path edges align exactly for repetition; no moss background, plants, rocks, props, text, border, logo, trademark, or watermark.
 ```
 
+## Packed-earth path bend
+
+Inputs: `sources/imagegen/quiet-moss-ground.png` and
+`sources/imagegen/straight-path-overlay.png`
+
+```text
+Use case: stylized-concept
+Asset type: external transparent 2D game path-overlay source for a deterministic modular pipeline
+Primary request: Create one single 90-degree worn packed-earth path bend. The path enters vertically through the exact center of the top edge, curves smoothly clockwise, and leaves horizontally through the exact center of the right edge.
+Input images: Image 1 is the repository-owned quiet-moss palette and painterly texture reference only; Image 2 is the repository-owned straight packed-earth path reference for path palette, width, texture, stone flecks, soft irregular edge treatment, and visual scale.
+Scene/backdrop: genuinely transparent outside the path; do not paint moss or any other background.
+Style/medium: painterly storybook gouache, broad low-frequency packed-earth shapes, warm ochre and weathered brown, restrained grain, sparse muted stone flecks matching Image 2.
+Composition/framing: one complete square module; centered top entry and centered right exit have the same consistent width as the straight-path reference; the inside and outside curve remain smooth and readable; generous transparent outer regions occupy the top-right and bottom-left corners away from the path.
+Constraints: one path bend only; preserve transparent alpha outside the path; no colored environmental haze; no moss fill; no plants; no rocks beyond the restrained embedded flecks already characteristic of the path; no props; no border; no text; no logo; no trademark; no watermark; no extra modules; no grid; no shadow outside the path; no cropped curve.
+```
+
+This output came from Codex's built-in image tool on 2026-09-28 with transparent-background output
+requested. The quiet-moss and straight-path images were the only references. The deterministic
+builder owns the exact 512x512 master, 256x256 export, 96-pixel ports, clean alpha, and digest. The
+tool exposed no model or version identifier, so none is asserted.
+
 ## Seeker idle/breathe frames
 
 Input for all four calls: `../../sources/seeker-four-direction-walk.png`

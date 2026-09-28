@@ -192,6 +192,9 @@ Acceptance:
 - [x] Establish and import a generic four-frame reach-and-inspect proof for all four Seeker
   directions with clean alpha, fixed origins, 160 ms non-looping timing, retained prompts and
   provenance, and no gameplay authority.
+- [x] Establish one modular 90-degree packed-earth path bend with a 256x256 clean-alpha export,
+  exact 512x512 editable master, 96-pixel straight-path-compatible ports, external review
+  composition, and isolated lossless source-parity import without gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

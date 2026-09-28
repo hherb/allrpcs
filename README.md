@@ -16,10 +16,11 @@ The first bounded Phase 9.2 source-sheet proof decomposes that direction into te
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
 seam, pivot, baseline, and editable-master gaps led to a corrected individual-asset pipeline. The
-corrected proof now has 56 manifest-bound exports, seven layered masters, exact seam and grayscale
+corrected proof now has 57 manifest-bound exports, eight layered masters, exact seam and grayscale
 checks, four normalized six-frame walks, four two-frame idle/breathe loops, and four four-frame
-reach-and-inspect gestures. All 56 exports have an isolated source-parity Godot import scene with
-12 named animations. None is referenced by `Main.tscn` or ordinary gameplay.
+reach-and-inspect gestures. The terrain set includes one exact 96-pixel straight module and one
+90-degree bend with matching ports. All 57 exports have an isolated source-parity Godot import
+scene with 12 named animations. None is referenced by `Main.tscn` or ordinary gameplay.
 
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure

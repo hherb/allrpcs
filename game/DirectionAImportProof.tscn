@@ -1,8 +1,9 @@
-[gd_scene load_steps=59 format=3]
+[gd_scene load_steps=60 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/straight-path.png" id="3_path"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/path-bend.png" id="56_path_bend"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/plants/herb-bed-empty.png" id="4_bed"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/plants/foliage-broadleaf.png" id="5_foliage"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/objects/preparation-table.png" id="6_table"]
@@ -197,6 +198,11 @@ centered = false
 [node name="Path02" type="Sprite2D" parent="Terrain"]
 position = Vector2(432, 512)
 texture = ExtResource("3_path")
+centered = false
+
+[node name="PathBendProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(0, 512)
+texture = ExtResource("56_path_bend")
 centered = false
 
 [node name="Props" type="Node2D" parent="."]

@@ -259,6 +259,36 @@
       "sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
     },
     {
+      "id": "terrain.path_bend",
+      "category": "terrain",
+      "source": "sources/imagegen/path-bend-overlay.png",
+      "export": "exports/terrain/path-bend.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "8ac6919e5dac8881232a75cbfcb58945085fd59e11ebfd53beea952135512438"
+    },
+    {
       "id": "plants.herb_bed_empty",
       "category": "plants",
       "source": "sources/imagegen/herb-bed-empty.png",

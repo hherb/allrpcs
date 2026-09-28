@@ -133,6 +133,47 @@ def make_path() -> Image.Image:
     return enforce_opposite_edges(resized, horizontal=False, vertical=True)
 
 
+def enforce_path_bend_ports(
+    bend: Image.Image, straight_path: Image.Image
+) -> Image.Image:
+    """Install exact top/right ports and transparent unused outer edges."""
+
+    bend = bend.copy().convert("RGBA")
+    port_width = straight_path.width
+    port_offset = (bend.width - port_width) // 2
+    port_depth = straight_path.height // 8
+    straight_entry = straight_path.crop((0, 0, port_width, port_depth))
+    bend.paste(straight_entry, (port_offset, 0))
+    horizontal_path = straight_path.transpose(Image.Transpose.ROTATE_90)
+    right_entry = horizontal_path.crop(
+        (0, 0, port_depth, port_width)
+    ).transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    bend.paste(right_entry, (bend.width - port_depth, port_offset))
+    straight_edge = straight_path.crop((0, 0, port_width, 1))
+
+    top_edge = Image.new("RGBA", (bend.width, 1), (0, 0, 0, 0))
+    top_edge.paste(straight_edge, (port_offset, 0))
+    bend.paste(top_edge, (0, 0))
+
+    right_edge = Image.new("RGBA", (1, bend.height), (0, 0, 0, 0))
+    right_edge.paste(
+        straight_edge.transpose(Image.Transpose.ROTATE_90), (0, port_offset)
+    )
+    bend.paste(right_edge, (bend.width - 1, 0))
+    bend.paste(Image.new("RGBA", (1, bend.height), (0, 0, 0, 0)), (0, 0))
+    bend.paste(Image.new("RGBA", (bend.width, 1), (0, 0, 0, 0)), (0, bend.height - 1))
+    return bend
+
+
+def make_path_bend(path_master: Image.Image) -> Image.Image:
+    """Create one 512px bend with exact straight-path top and right ports."""
+
+    source = Image.open(RAW / "path-bend-overlay.png").convert("RGBA")
+    bend = ImageOps.fit(source, (512, 512), method=RESAMPLE, centering=(0.5, 0.5))
+    bend = alpha_clean(bend, cutoff=24)
+    return enforce_path_bend_ports(bend, path_master)
+
+
 def make_cues() -> dict[str, Image.Image]:
     """Create geometry-only state cues on the exact 160x160 table canvas."""
 
@@ -507,6 +548,23 @@ def make_review_scene(
     return scene, layers
 
 
+def make_path_bend_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Compose the external bend between exact straight-path connectors."""
+
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    ground = assets["terrain.quiet_moss"]
+    for y in range(0, scene.height, ground.height):
+        for x in range(0, scene.width, ground.width):
+            scene.alpha_composite(ground, (x, y))
+
+    straight = assets["terrain.straight_path"]
+    bend = assets["terrain.path_bend"]
+    scene.alpha_composite(straight, (336, 0))
+    scene.alpha_composite(bend, (256, 256))
+    scene.alpha_composite(straight.transpose(Image.Transpose.ROTATE_90), (512, 336))
+    return scene
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -534,6 +592,7 @@ def main() -> None:
 
     ground_master = make_ground()
     path_master = make_path()
+    path_bend_master = make_path_bend(path_master)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -568,6 +627,16 @@ def main() -> None:
             512,
             path_master,
             "sources/imagegen/straight-path-overlay.png",
+        ),
+        Asset(
+            "terrain.path_bend",
+            "terrain",
+            Path("exports/terrain/path-bend.png"),
+            (512, 512),
+            (256, 256),
+            512,
+            path_bend_master,
+            "sources/imagegen/path-bend-overlay.png",
         ),
         Asset(
             "plants.herb_bed_empty",
@@ -674,6 +743,11 @@ def main() -> None:
                 enforce_opposite_edges(export, horizontal=False, vertical=True),
                 cutoff=8,
             )
+        elif asset.asset_id == "terrain.path_bend":
+            export = enforce_path_bend_ports(
+                alpha_clean(export, cutoff=8),
+                export_images["terrain.straight_path"],
+            )
         save_png(export, ROOT / asset.export_path)
         export_images[asset.asset_id] = export
 
@@ -684,6 +758,11 @@ def main() -> None:
             ("quiet moss ground", ground_master, 0, 0, True),
             ("straight path", path_master, 160, 0, True),
         ],
+    )
+    create_ora(
+        MASTERS / "terrain-path-bend.ora",
+        path_bend_master.size,
+        [("packed-earth path bend", path_bend_master, 0, 0, True)],
     )
     create_ora(
         MASTERS / "planted-herb-bed.ora",
@@ -784,6 +863,7 @@ def main() -> None:
     )
     create_ora(MASTERS / "module-review-scene.ora", scene.size, scene_layers)
     save_png(state_cue_check(export_images), REVIEW / "state-cues-grayscale.png")
+    save_png(make_path_bend_review(export_images), REVIEW / "path-bend-review.png")
 
     manifest_assets = []
     for asset in assets:
