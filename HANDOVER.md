@@ -32,9 +32,9 @@ Godot import proof; `Main.tscn` and ordinary gameplay reference none of this art
   924 Application, 1,261 Infrastructure, and 8 architecture tests, scenario validation, the full
   credential-free Godot smoke sequence, and Compatibility graphical launch. The restricted run
   first hit the known `user://logs` crash; only the identical host-local command was retried.
-- The latest hosted workflow before this change failed before product validation with all five jobs
-  reporting `steps: []`; treat that as Actions/account infrastructure and re-query the final head,
-  not as contradictory product evidence.
+- Push-triggered final-head workflow run `36376557743` failed before product validation with all
+  five jobs reporting `steps: []`; treat that as Actions/account infrastructure, not as
+  contradictory product evidence.
 - These remain proof assets, not final production quality or evidence of runtime terrain assembly,
   animation selection, gameplay, collision, navigation, UI, accessibility, complete-region art,
   audio, release, or signing readiness.
