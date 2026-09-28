@@ -7,7 +7,7 @@ namespace Allrpcs.Game;
 /// <summary>Coordinates explicit move state transitions with exact scene presentation.</summary>
 public partial class TemporaryCharacterObjectSabotageMovePresentationFlowController : Node
 {
-    private static readonly Vector2 DestinationScenePosition = new(1056.0f, 720.0f);
+    private static readonly Vector2 DestinationScenePosition = new(1900.0f, 1640.0f);
     private TemporaryCharacterObjectSabotageMoveFlowController flow = null!;
     private CharacterObjectSabotageMoveController state = null!;
     private CharacterObjectSabotageMovePresentationController presentation = null!;

@@ -59,6 +59,11 @@ public sealed class OpeningRegionClosedForestPathLayout
         Vector2 secondStart = approachStart - (perpendicular * approachHalfWidthPixels);
         Vector2 gateLeft = gateCenter - (Vector2.UnitX * approachHalfWidthPixels);
         Vector2 gateRight = gateCenter + (Vector2.UnitX * approachHalfWidthPixels);
+        bool firstSideEndsAtRight = Vector2.Dot(
+            gateRight - gateCenter,
+            perpendicular) >= 0.0f;
+        Vector2 firstGateEnd = firstSideEndsAtRight ? gateRight : gateLeft;
+        Vector2 secondGateEnd = firstSideEndsAtRight ? gateLeft : gateRight;
         NavigationWorldBounds bounds = clearing.SceneBinding.WoodlandClearingBounds;
         if (!Inside(bounds, approachStart)
             || !Inside(bounds, firstStart)
@@ -76,11 +81,12 @@ public sealed class OpeningRegionClosedForestPathLayout
         ApproachLengthPixels = approachLengthPixels;
         GateCenter = gateCenter;
         ApproachStart = approachStart;
-        GateApproachPosition = gateCenter - (direction * clearance);
+        GateApproachPosition = gateCenter
+            - (direction * (clearance / MathF.Abs(direction.Y)));
         ApproachBoundarySegments = Array.AsReadOnly(
         [
-            new OpeningRegionBoundarySegment(firstStart, gateLeft),
-            new OpeningRegionBoundarySegment(secondStart, gateRight),
+            new OpeningRegionBoundarySegment(firstStart, firstGateEnd),
+            new OpeningRegionBoundarySegment(secondStart, secondGateEnd),
         ]);
         GateBoundary = new OpeningRegionBoundarySegment(gateLeft, gateRight);
     }

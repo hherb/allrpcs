@@ -12,7 +12,7 @@ public partial class OpeningRegionFirstPatientSceneSource : Node2D
     public const float MaximumPatientDistancePixels = 96.0f;
 
     /// <summary>Gets half the sickhouse width in pixels.</summary>
-    public const float RoomHalfWidthPixels = 96.0f;
+    public const float RoomHalfWidthPixels = 160.0f;
 
     /// <summary>Gets the room's north-wall offset from the sickhouse anchor.</summary>
     public const float RoomTopOffsetPixels = 140.0f;
@@ -65,7 +65,12 @@ public partial class OpeningRegionFirstPatientSceneSource : Node2D
             anchorPosition.Y - RoomTopOffsetPixels,
             anchorPosition.X + RoomHalfWidthPixels,
             anchorPosition.Y + RoomBottomOffsetPixels);
-        NumericsVector2 entranceCenter = new(anchorPosition.X, roomBounds.Top);
+        NumericsVector2 villageSquarePosition = ToNumerics(
+            OpeningRegionLayoutGeometry.Anchors["village-square"]);
+        NumericsVector2 entranceCenter = PointOnRouteAtY(
+            villageSquarePosition,
+            anchorPosition,
+            roomBounds.Top);
         Layout = new OpeningRegionSickhouseLayout(
             Binding,
             roomBounds,
@@ -78,4 +83,13 @@ public partial class OpeningRegionFirstPatientSceneSource : Node2D
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
+
+    private static NumericsVector2 PointOnRouteAtY(
+        NumericsVector2 start,
+        NumericsVector2 end,
+        float y)
+    {
+        float progress = (y - start.Y) / (end.Y - start.Y);
+        return start + ((end - start) * progress);
+    }
 }

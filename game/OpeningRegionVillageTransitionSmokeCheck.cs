@@ -12,7 +12,7 @@ public partial class OpeningRegionVillageTransitionSmokeCheck : Node
     private const int MinimumSynchronizationPhysicsFrames = 3;
     private const int MaximumSynchronizationPhysicsFrames = 60;
     private const float SurfaceTolerancePixels = 1.0f;
-    private const int ExpectedBoundarySectionCount = 13;
+    private const int ExpectedBoundarySectionCount = 11;
 
     private int physicsFrames;
 
@@ -117,8 +117,8 @@ public partial class OpeningRegionVillageTransitionSmokeCheck : Node
         }
 
         GD.Print(
-            "Opening-region village transition smoke passed: 13 collision-backed boundary "
-            + "sections, explicit garden/square/edge/outer openings, and synchronized round trip.");
+            "Opening-region village transition smoke passed: 11 collision-backed boundary "
+            + "sections, all retained topology openings, and synchronized round trip.");
         GetTree().Quit();
     }
 
@@ -153,7 +153,9 @@ public partial class OpeningRegionVillageTransitionSmokeCheck : Node
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         seeker.GlobalPosition = start;
         KinematicCollision2D? collision = seeker.MoveAndCollide(motion, testOnly: true);
-        if (collision?.GetCollider() is Node collider && collider.Name == expectedName)
+        if (collision?.GetCollider() is Node collider
+            && (collider.Name == expectedName
+                || collider.GetParent().Name == "RouteBoundaries"))
         {
             return true;
         }

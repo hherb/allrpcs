@@ -46,10 +46,31 @@ public sealed class OpeningRegionVillageTransitionLayoutTests
         Assert.Equal(WallThicknessPixels, layout.WallThicknessPixels);
         Assert.Equal(GardenApproach, layout.GardenApproach);
         Assert.Equal(new Vector2(880.0f, 480.0f), layout.SquareGardenOpening);
+        Assert.Equal(887.619f, layout.SquareSickhouseOpening.X, precision: 3);
+        Assert.Equal(480.0f, layout.SquareSickhouseOpening.Y);
         Assert.Equal(new Vector2(840.0f, 400.0f), layout.SquareEdgeOpening);
+        Assert.Equal(840.0f, layout.SquareSouthernRoadOpening.X);
+        Assert.Equal(433.846f, layout.SquareSouthernRoadOpening.Y, precision: 3);
         Assert.Equal(new Vector2(730.0f, 400.0f), layout.EdgeSquareOpening);
         Assert.Equal(new Vector2(650.0f, 320.0f), layout.EdgeStreamOpening);
         Assert.Equal(new Vector2(570.0f, 400.0f), layout.EdgeWoodlandOpening);
+    }
+
+    [Fact]
+    public void RoutePolicyAcceptsSickhouseSquareSouthernRoadRoute()
+    {
+        OpeningRegionVillageTransitionLayout layout = Layout();
+        Vector2 square = layout.SceneBinding.VillageSquareAnchor.Position;
+
+        Assert.True(OpeningRegionVillageTransitionRoutePolicy.IsAcceptable(
+            layout,
+            [
+                Positions[0],
+                layout.SquareSickhouseOpening,
+                square,
+                layout.SquareSouthernRoadOpening,
+                Positions[8],
+            ]));
     }
 
     [Fact]

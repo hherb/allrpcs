@@ -49,14 +49,16 @@ public static class OpeningRegionStreamLaundryRoutePolicy
     {
         NavigationWorldBounds bounds = layout.SceneBinding.AbandonedLaundryBounds;
         float halfOpening = layout.OpeningWidthPixels / 2.0f;
-        float openingTop = layout.LaundryStreamOpening.Y - halfOpening;
-        float openingBottom = layout.LaundryStreamOpening.Y + halfOpening;
+        float westOpeningTop = layout.LaundryWoodlandOpening.Y - halfOpening;
+        float westOpeningBottom = layout.LaundryWoodlandOpening.Y + halfOpening;
+        float eastOpeningTop = layout.LaundryStreamOpening.Y - halfOpening;
+        float eastOpeningBottom = layout.LaundryStreamOpening.Y + halfOpening;
         return CrossesHorizontalWall(start, end, bounds.Top, bounds.Left, bounds.Right)
             || CrossesHorizontalWall(start, end, bounds.Bottom, bounds.Left, bounds.Right)
-            || CrossesVerticalWall(start, end, bounds.Left, bounds.Top, openingTop)
-            || CrossesVerticalWall(start, end, bounds.Left, openingBottom, bounds.Bottom)
-            || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, openingTop)
-            || CrossesVerticalWall(start, end, bounds.Right, openingBottom, bounds.Bottom);
+            || CrossesVerticalWall(start, end, bounds.Left, bounds.Top, westOpeningTop)
+            || CrossesVerticalWall(start, end, bounds.Left, westOpeningBottom, bounds.Bottom)
+            || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, eastOpeningTop)
+            || CrossesVerticalWall(start, end, bounds.Right, eastOpeningBottom, bounds.Bottom);
     }
 
     private static bool CrossesPolygonInterior(

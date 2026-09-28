@@ -9,7 +9,7 @@ namespace Allrpcs.Game;
 public partial class TemporaryCharacterIndependentTaskTravelSource : Node
 {
     private static readonly NavigationWorldBounds WorldBounds =
-        new(0.0f, 0.0f, 1600.0f, 900.0f);
+        new(0.0f, 0.0f, 3200.0f, 1800.0f);
 
     private CharacterIndependentTaskAssignment assignment = null!;
     private NumericsVector2 destination;

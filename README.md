@@ -28,16 +28,16 @@ grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive lumin
 measurements. None is referenced by `Main.tscn` or ordinary gameplay, and the simulation evidence is
 not human accessibility acceptance.
 
-The external [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now tests a
-3200x1800 authored-region reflow before any runtime geometry or bulk-art work. It retains all eleven
+The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
+the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path
 language, and existing zoom tuning; documents route and screen-span distances, camera limits,
 navigation consequences, and five empty-area content budgets; and includes labelled full-region,
 1280x720, and 1280x827 diagrams. Its validator now proves full 96-pixel separation between every
-independent route band, including focused near-miss regressions. A repository-level technical review
-recommends it as the candidate for greybox implementation, but it is still pending explicit layout
-approval and changes no ordinary scene, collision, navigation, discovery, dialogue, clue, or
-gameplay authority.
+independent route band, including focused near-miss regressions. The runtime binds the proposal's
+exact SHA-256, world bounds, anchors, straight route network, camera limits, collision-backed
+landmark openings, and intentionally closed north-west forest gate. The five content budgets remain
+non-authoritative, and no location, topology edge, scenario, dialogue, clue, or gameplay rule changed.
 
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure

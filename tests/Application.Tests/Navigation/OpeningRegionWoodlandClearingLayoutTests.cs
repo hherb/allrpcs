@@ -44,7 +44,7 @@ public sealed class OpeningRegionWoodlandClearingLayoutTests
         Assert.Same(binding, layout.SceneBinding);
         Assert.Equal(OpeningWidthPixels, layout.OpeningWidthPixels);
         Assert.Equal(WallThicknessPixels, layout.WallThicknessPixels);
-        Assert.Equal(new Vector2(536.0f, 70.0f), layout.LaundryOpening);
+        Assert.Equal(new Vector2(536.0f, 67.13043f), layout.LaundryOpening);
         Assert.Equal(new Vector2(240.0f, 70.0f), layout.ShrineOpening);
         Assert.Equal(VillageOpening, layout.VillageEdgeOpening);
         Assert.Equal(ClosedPathOpening, layout.ClosedForestPathOpening);

@@ -16,7 +16,7 @@ public partial class Healer : CharacterBody2D
     private const float PathPointTolerancePixels = 1.0f;
     private const float NavigationSurfaceTolerancePixels = 1.0f;
     private static readonly NavigationWorldBounds WorldBounds =
-        new(0.0f, 0.0f, 1600.0f, 900.0f);
+        new(0.0f, 0.0f, 3200.0f, 1800.0f);
 
     private HealerCommandSelection activeCommand = HealerCommandSelector.SelectFollow();
     private NavigationAgent2D navigationAgent = null!;
@@ -54,6 +54,8 @@ public partial class Healer : CharacterBody2D
         followedTarget = GetNode<CharacterBody2D>("../Seeker");
         AddCollisionExceptionWith(followedTarget);
         followedTarget.AddCollisionExceptionWith(this);
+        navigationAgent.PathPostprocessing =
+            NavigationPathQueryParameters2D.PathPostProcessing.Edgecentered;
         navigationAgent.TargetDesiredDistance = StopDistancePixels;
     }
 

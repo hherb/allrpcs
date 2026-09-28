@@ -24,7 +24,7 @@ public partial class OpeningRegionOldShrineSmokeCheck : Node
     private const string LayeredInscriptionDiscoverAction = "layered_inscription_discover";
     private const string UnrelatedAction = "old_shrine_smoke_unrelated";
     private const float SurfaceTolerancePixels = 1.0f;
-    private static readonly NumericsVector2 InscriptionAccessPosition = new(110.0f, 128.0f);
+    private static readonly NumericsVector2 InscriptionAccessPosition = new(380.0f, 338.0f);
 
     private int physicsFrames;
 

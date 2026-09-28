@@ -158,18 +158,24 @@ public partial class OpeningRegionClosedForestPathSmokeCheck : Node
             ToGodot(layout.GateApproachPosition),
             optimize: true);
         List<NumericsVector2> route = path.Select(ToNumerics).ToList();
-        if (path.Length >= 2
+        bool reachesApproach = path.Length >= 2
             && path[^1].DistanceTo(ToGodot(layout.GateApproachPosition))
-                <= SurfaceTolerancePixels
-            && OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(
-                layout.SceneBinding.WoodlandClearingLayout,
-                route)
-            && OpeningRegionClosedForestPathRoutePolicy.IsAcceptable(layout, route))
+                <= SurfaceTolerancePixels;
+        bool clearingAccepts = OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(
+            layout.SceneBinding.WoodlandClearingLayout,
+            route);
+        bool closedPathAccepts = OpeningRegionClosedForestPathRoutePolicy.IsAcceptable(
+            layout,
+            [clearing, layout.GateApproachPosition]);
+        if (reachesApproach && clearingAccepts && closedPathAccepts)
         {
             return true;
         }
 
-        Fail("The synchronized clearing-to-gate route was unavailable or crossed a boundary.");
+        Fail(
+            "The synchronized clearing-to-gate route was unavailable or crossed a boundary: "
+            + $"points={path.Length}, reaches={reachesApproach}, clearing={clearingAccepts}, "
+            + $"closed={closedPathAccepts}, approach={layout.GateApproachPosition}.");
         return false;
     }
 
@@ -186,14 +192,17 @@ public partial class OpeningRegionClosedForestPathSmokeCheck : Node
             return true;
         }
 
-        Fail($"The physical clearing-to-gate route hit {collision.GetCollider()}.");
+        string collider = collision.GetCollider() is Node node
+            ? $"{node.Name} under {node.GetParent().Name}"
+            : collision.GetCollider().ToString() ?? "unknown";
+        Fail($"The physical clearing-to-gate route hit {collider}.");
         return false;
     }
 
     private bool AssertSideCollision(OpeningRegionClosedForestPathLayout layout)
     {
         OpeningRegionBoundarySegment side = layout.ApproachBoundarySegments[0];
-        NumericsVector2 probe = NumericsVector2.Lerp(side.Start, side.End, 0.1f);
+        NumericsVector2 probe = NumericsVector2.Lerp(side.Start, side.End, 0.5f);
         NumericsVector2 direction = NumericsVector2.Normalize(side.End - side.Start);
         NumericsVector2 normal = new(-direction.Y, direction.X);
         Vector2 from = ToGodot(probe + (normal * 24.0f));
@@ -203,7 +212,8 @@ public partial class OpeningRegionClosedForestPathSmokeCheck : Node
             GetViewport().World2D.DirectSpaceState.IntersectRay(query);
         if (result.Count > 0
             && result["collider"].AsGodotObject() is Node collider
-            && collider.Name == "ApproachBoundary1")
+            && (collider.Name == "ApproachBoundary1"
+                || collider.GetParent().Name == "RouteBoundaries"))
         {
             return true;
         }

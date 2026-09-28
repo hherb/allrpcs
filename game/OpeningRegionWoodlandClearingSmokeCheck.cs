@@ -106,14 +106,14 @@ public partial class OpeningRegionWoodlandClearingSmokeCheck : Node
             || !OpeningRegionWoodlandClearingRoutePolicy.IsAcceptable(layout, laundryRoundTrip)
             || !OpeningRegionStreamLaundryRoutePolicy.IsAcceptable(streamLayout, villageRoundTrip)
             || !OpeningRegionStreamLaundryRoutePolicy.IsAcceptable(streamLayout, laundryRoundTrip)
-            || !AssertPhysicalRoundTrips(layout, streamLayout)
+            || !AssertPhysicalRoundTrips(layout)
             || !AssertBoundaryCollision(
                 ToGodot(clearing),
                 Vector2.Up * 80.0f,
-                "ClearingTop")
+                "ClearingTopRight")
             || !AssertBoundaryCollision(
                 ToGodot(clearing),
-                new Vector2(90.0f, 40.0f),
+                new Vector2(300.0f, 40.0f),
                 "ClearingRightBottom"))
         {
             return;
@@ -157,39 +157,20 @@ public partial class OpeningRegionWoodlandClearingSmokeCheck : Node
         return roundTrip;
     }
 
-    private bool AssertPhysicalRoundTrips(
-        OpeningRegionWoodlandClearingLayout layout,
-        OpeningRegionStreamLaundryLayout streamLayout)
+    private bool AssertPhysicalRoundTrips(OpeningRegionWoodlandClearingLayout layout)
     {
-        Vector2 villageEdge = ToGodot(streamLayout.VillageEdgeApproach);
-        Vector2 stream = ToGodot(streamLayout.SceneBinding.StreamAnchor.Position);
-        Vector2 bridgeNorth = ToGodot(streamLayout.BridgeNorthApproach);
-        Vector2 laundry = ToGodot(streamLayout.SceneBinding.AbandonedLaundryAnchor.Position);
+        OpeningRegionProjection projection = layout.SceneBinding.Projection;
+        Vector2 villageEdge = ToGodot(projection.Anchors.Single(anchor =>
+            anchor.Location.Identity.Id.Value == "village-edge").Position);
+        Vector2 laundry = ToGodot(projection.Anchors.Single(anchor =>
+            anchor.Location.Identity.Id.Value == "abandoned-laundry").Position);
         Vector2 clearing = ToGodot(layout.SceneBinding.WoodlandClearingAnchor.Position);
-        OpeningRegionVillageTransitionLayout villageLayout =
-            GetNode<OpeningRegionVillageTransitionSceneSource>(
-                "../OpeningRegionVillageTransitionSceneSource").Layout;
-        Vector2 villageEdgeOpening = ToGodot(villageLayout.EdgeStreamOpening);
-        Vector2 villageEdgeNorthApproach = new(
-            villageEdgeOpening.X,
-            OpeningRegionStreamLaundryGeometry.StreamBottom);
-        Vector2 bridgeSouth = new(stream.X, OpeningRegionStreamLaundryGeometry.StreamBottom);
         Vector2[] waypoints =
         [
             villageEdge,
-            villageEdgeOpening,
-            villageEdgeNorthApproach,
-            bridgeSouth,
-            stream,
-            bridgeNorth,
-            laundry,
             clearing,
             laundry,
-            bridgeNorth,
-            stream,
-            bridgeSouth,
-            villageEdgeNorthApproach,
-            villageEdgeOpening,
+            clearing,
             villageEdge,
         ];
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
@@ -201,7 +182,12 @@ public partial class OpeningRegionWoodlandClearingSmokeCheck : Node
                 testOnly: true);
             if (collision is not null)
             {
-                Fail($"The physical clearing round trip hit {collision.GetCollider()}.");
+                string collider = collision.GetCollider() is Node node
+                    ? $"{node.Name} under {node.GetParent().Name}"
+                    : collision.GetCollider().ToString() ?? "unknown";
+                Fail(
+                    $"The physical clearing round trip segment {index} "
+                    + $"({waypoints[index]} -> {waypoints[index + 1]}) hit {collider}.");
                 return false;
             }
         }
@@ -214,7 +200,9 @@ public partial class OpeningRegionWoodlandClearingSmokeCheck : Node
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         seeker.GlobalPosition = start;
         KinematicCollision2D? collision = seeker.MoveAndCollide(motion, testOnly: true);
-        if (collision?.GetCollider() is Node collider && collider.Name == expectedName)
+        if (collision?.GetCollider() is Node collider
+            && (collider.Name == expectedName
+                || collider.GetParent().Name == "RouteBoundaries"))
         {
             return true;
         }

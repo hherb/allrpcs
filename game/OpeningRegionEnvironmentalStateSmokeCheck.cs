@@ -13,7 +13,7 @@ public partial class OpeningRegionEnvironmentalStateSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
     private const string LayeredInscriptionDiscoverAction = "layered_inscription_discover";
     private const string UnrelatedAction = "opening_region_environment_unrelated";
-    private static readonly Vector2 InscriptionAccessPosition = new(110.0f, 128.0f);
+    private static readonly Vector2 InscriptionAccessPosition = new(380.0f, 338.0f);
 
     /// <inheritdoc />
     public override void _Ready()

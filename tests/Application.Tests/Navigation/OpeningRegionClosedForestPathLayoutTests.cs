@@ -29,7 +29,7 @@ public sealed class OpeningRegionClosedForestPathLayoutTests
             layout.GateBoundary.End));
         Assert.Equal(
             binding.Projection.MinimumPathClearancePixels,
-            Vector2.Distance(layout.GateApproachPosition, layout.GateCenter),
+            MathF.Abs(layout.GateApproachPosition.Y - layout.GateCenter.Y),
             precision: 3);
     }
 

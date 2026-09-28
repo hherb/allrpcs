@@ -38,26 +38,55 @@ public static class OpeningRegionWoodlandClearingRoutePolicy
         float halfOpening = layout.OpeningWidthPixels / 2.0f;
         float sideTop = layout.LaundryOpening.Y - halfOpening;
         float sideBottom = layout.LaundryOpening.Y + halfOpening;
-        float westernRight = layout.ClosedForestPathOpening.X + halfOpening;
-        float easternLeft = layout.VillageEdgeOpening.X - halfOpening;
-        return CrossesHorizontalWall(start, end, bounds.Top, bounds.Left, bounds.Right)
-            || CrossesVerticalWall(start, end, bounds.Left, bounds.Top, sideTop)
-            || CrossesVerticalWall(start, end, bounds.Left, sideBottom, bounds.Bottom)
-            || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, sideTop)
-            || CrossesVerticalWall(start, end, bounds.Right, sideBottom, bounds.Bottom)
-            || CrossesHorizontalWall(
+        bool closedPathIsNorth = layout.ClosedForestPathOpening.Y == bounds.Top;
+        float villageOpeningLeft = layout.VillageEdgeOpening.X - halfOpening;
+        float villageOpeningRight = layout.VillageEdgeOpening.X + halfOpening;
+        bool crossesTop = closedPathIsNorth
+            ? CrossesHorizontalWall(
+                start,
+                end,
+                bounds.Top,
+                bounds.Left,
+                layout.ClosedForestPathOpening.X - halfOpening)
+                || CrossesHorizontalWall(
+                    start,
+                    end,
+                    bounds.Top,
+                    layout.ClosedForestPathOpening.X + halfOpening,
+                    bounds.Right)
+            : CrossesHorizontalWall(start, end, bounds.Top, bounds.Left, bounds.Right);
+        bool crossesBottom = closedPathIsNorth
+            ? CrossesHorizontalWall(start, end, bounds.Bottom, bounds.Left, villageOpeningLeft)
+                || CrossesHorizontalWall(
+                    start,
+                    end,
+                    bounds.Bottom,
+                    villageOpeningRight,
+                    bounds.Right)
+            : CrossesHorizontalWall(
                 start,
                 end,
                 bounds.Bottom,
                 bounds.Left,
                 layout.ClosedForestPathOpening.X - halfOpening)
-            || CrossesHorizontalWall(start, end, bounds.Bottom, westernRight, easternLeft)
-            || CrossesHorizontalWall(
-                start,
-                end,
-                bounds.Bottom,
-                layout.VillageEdgeOpening.X + halfOpening,
-                bounds.Right);
+                || CrossesHorizontalWall(
+                    start,
+                    end,
+                    bounds.Bottom,
+                    layout.ClosedForestPathOpening.X + halfOpening,
+                    villageOpeningLeft)
+                || CrossesHorizontalWall(
+                    start,
+                    end,
+                    bounds.Bottom,
+                    villageOpeningRight,
+                    bounds.Right);
+        return crossesTop
+            || CrossesVerticalWall(start, end, bounds.Left, bounds.Top, sideTop)
+            || CrossesVerticalWall(start, end, bounds.Left, sideBottom, bounds.Bottom)
+            || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, sideTop)
+            || CrossesVerticalWall(start, end, bounds.Right, sideBottom, bounds.Bottom)
+            || crossesBottom;
     }
 
     private static bool IsInside(NavigationWorldBounds bounds, Vector2 point) =>

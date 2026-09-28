@@ -6,20 +6,19 @@ namespace Allrpcs.Game;
 /// <summary>Names the authored village-transition geometry shared by scene and navigation owners.</summary>
 internal static class OpeningRegionVillageTransitionGeometry
 {
-    internal const float OpeningWidthPixels = 64.0f;
+    internal const float OpeningWidthPixels = 96.0f;
     internal const float WallThicknessPixels = 8.0f;
-    internal const float VillageEdgeLeft = 570.0f;
-    internal const float VillageEdgeTop = 320.0f;
-    internal const float VillageEdgeRight = 730.0f;
-    internal const float VillageEdgeBottom = 480.0f;
-    internal const float VillageEdgeAnchorX = 650.0f;
-    internal const float VillageSquareLeft = 840.0f;
-    internal const float VillageSquareTop = 320.0f;
-    internal const float VillageSquareRight = 960.0f;
-    internal const float VillageSquareBottom = 480.0f;
-    internal const float VillageSquareAnchorX = 880.0f;
-    internal const float TransitionAnchorY = 400.0f;
-    internal const float GardenApproachY = 520.0f;
+    internal const float VillageEdgeLeft = 1580.0f;
+    internal const float VillageEdgeTop = 700.0f;
+    internal const float VillageEdgeRight = 1820.0f;
+    internal const float VillageEdgeBottom = 1020.0f;
+    internal const float VillageEdgeAnchorX = 1700.0f;
+    internal const float VillageSquareLeft = 2080.0f;
+    internal const float VillageSquareTop = 780.0f;
+    internal const float VillageSquareRight = 2320.0f;
+    internal const float VillageSquareBottom = 1020.0f;
+    internal const float VillageSquareAnchorX = 2200.0f;
+    internal const float TransitionAnchorY = 900.0f;
 
     private const float RouteClearancePixels =
         OpeningRegionProjectionSource.MinimumPathClearancePixels;
@@ -63,5 +62,5 @@ internal static class OpeningRegionVillageTransitionGeometry
         VillageEdgeRight,
         VillageEdgeBottom);
 
-    internal static NumericsVector2 GardenApproach => new(VillageSquareAnchorX, GardenApproachY);
+    internal static NumericsVector2 GardenApproach => new(2300.0f, 1300.0f);
 }

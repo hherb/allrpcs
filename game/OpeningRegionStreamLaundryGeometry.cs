@@ -6,17 +6,17 @@ namespace Allrpcs.Game;
 /// <summary>Names the authored stream/laundry geometry shared by scene and route owners.</summary>
 internal static class OpeningRegionStreamLaundryGeometry
 {
-    internal const float OpeningWidthPixels = 64.0f;
+    internal const float OpeningWidthPixels = 96.0f;
     internal const float WallThicknessPixels = 8.0f;
-    internal const float StreamLeft = 752.0f;
-    internal const float StreamTop = 80.0f;
-    internal const float StreamRight = 864.0f;
-    internal const float StreamBottom = 286.0f;
-    internal const float LaundryLeft = 620.0f;
-    internal const float LaundryTop = 24.0f;
-    internal const float LaundryRight = 748.0f;
-    internal const float LaundryBottom = 104.0f;
-    internal const float LaundryOpeningY = 64.0f;
+    internal const float StreamLeft = 1736.0f;
+    internal const float StreamTop = 452.0f;
+    internal const float StreamRight = 1864.0f;
+    internal const float StreamBottom = 548.0f;
+    internal const float LaundryLeft = 1420.0f;
+    internal const float LaundryTop = 120.0f;
+    internal const float LaundryRight = 1580.0f;
+    internal const float LaundryBottom = 360.0f;
+    internal const float LaundryOpeningY = 220.0f;
 
     internal static NavigationWorldBounds StreamBounds => new(
         StreamLeft,
@@ -30,31 +30,23 @@ internal static class OpeningRegionStreamLaundryGeometry
         LaundryRight,
         LaundryBottom);
 
-    internal static NumericsVector2 VillageEdgeApproach => new(650.0f, 400.0f);
+    internal static NumericsVector2 VillageEdgeApproach => new(1700.0f, 900.0f);
 
-    internal static NumericsVector2 BridgeNorthApproach => new(808.0f, LaundryOpeningY);
+    internal static NumericsVector2 BridgeNorthApproach => new(1748.5714f, StreamTop);
 
     internal static IReadOnlyList<NumericsVector2> WestStreamBank { get; } =
     [
-        new(0.0f, 148.0f),
-        new(320.0f, 180.0f),
-        new(624.0f, 100.0f),
-        new(StreamLeft, 117.3f),
-        new(StreamLeft, 189.3f),
-        new(624.0f, 172.0f),
-        new(320.0f, 252.0f),
-        new(0.0f, 220.0f),
+        new(1600.0f, StreamTop),
+        new(1700.0f, StreamTop),
+        new(1700.0f, StreamBottom),
+        new(1600.0f, StreamBottom),
     ];
 
     internal static IReadOnlyList<NumericsVector2> EastStreamBank { get; } =
     [
-        new(StreamRight, 132.4f),
-        new(920.0f, 140.0f),
-        new(1248.0f, 76.0f),
-        new(1600.0f, 108.0f),
-        new(1600.0f, 180.0f),
-        new(1248.0f, 148.0f),
-        new(920.0f, 212.0f),
-        new(StreamRight, 204.4f),
+        new(1900.0f, StreamTop),
+        new(2000.0f, StreamTop),
+        new(2000.0f, StreamBottom),
+        new(1900.0f, StreamBottom),
     ];
 }

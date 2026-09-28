@@ -40,10 +40,28 @@ public sealed class OpeningRegionStreamLaundryLayout
         }
 
         ValidateVillageEdgeApproach(sceneBinding, villageEdgeApproach);
-        ValidateBridgeNorthApproach(sceneBinding, bridgeNorthApproach);
+        bool usesCardinalBridge = ValidateBridgeNorthApproach(sceneBinding, bridgeNorthApproach);
+        Vector2 laundryStreamOpening = usesCardinalBridge
+            ? new Vector2(sceneBinding.AbandonedLaundryBounds.Right, bridgeNorthApproach.Y)
+            : VerticalIntersection(
+                sceneBinding.StreamAnchor.Position,
+                sceneBinding.AbandonedLaundryAnchor.Position,
+                sceneBinding.AbandonedLaundryBounds.Right);
+        OpeningRegionAnchor clearing = ConnectedAnchor(sceneBinding, "woodland-clearing");
+        Vector2 laundryWoodlandOpening = usesCardinalBridge
+            ? new Vector2(sceneBinding.AbandonedLaundryBounds.Left, bridgeNorthApproach.Y)
+            : VerticalIntersection(
+                sceneBinding.AbandonedLaundryAnchor.Position,
+                clearing.Position,
+                sceneBinding.AbandonedLaundryBounds.Left);
         ValidateOpeningFits(
             sceneBinding.AbandonedLaundryBounds,
-            bridgeNorthApproach.Y,
+            laundryStreamOpening.Y,
+            openingWidthPixels,
+            wallThicknessPixels);
+        ValidateOpeningFits(
+            sceneBinding.AbandonedLaundryBounds,
+            laundryWoodlandOpening.Y,
             openingWidthPixels,
             wallThicknessPixels);
         List<Vector2> westBank = ValidateBank(
@@ -60,12 +78,8 @@ public sealed class OpeningRegionStreamLaundryLayout
         WallThicknessPixels = wallThicknessPixels;
         VillageEdgeApproach = villageEdgeApproach;
         BridgeNorthApproach = bridgeNorthApproach;
-        LaundryWoodlandOpening = new Vector2(
-            sceneBinding.AbandonedLaundryBounds.Left,
-            bridgeNorthApproach.Y);
-        LaundryStreamOpening = new Vector2(
-            sceneBinding.AbandonedLaundryBounds.Right,
-            bridgeNorthApproach.Y);
+        LaundryWoodlandOpening = laundryWoodlandOpening;
+        LaundryStreamOpening = laundryStreamOpening;
         WestStreamBank = westBank.AsReadOnly();
         EastStreamBank = eastBank.AsReadOnly();
     }
@@ -123,7 +137,7 @@ public sealed class OpeningRegionStreamLaundryLayout
         }
     }
 
-    private static void ValidateBridgeNorthApproach(
+    private static bool ValidateBridgeNorthApproach(
         OpeningRegionStreamLaundrySceneBinding binding,
         Vector2 approach)
     {
@@ -131,13 +145,48 @@ public sealed class OpeningRegionStreamLaundryLayout
             binding.Projection.WorldBounds,
             binding.StreamAnchor.Position,
             approach);
-        if (approach.X != binding.StreamAnchor.Position.X
-            || approach.Y >= binding.StreamBounds.Top)
+        bool usesCardinalBridge = approach.X == binding.StreamAnchor.Position.X
+            && approach.Y < binding.StreamBounds.Top;
+        bool usesProjectedBridge = approach.Y == binding.StreamBounds.Top
+            && DistanceFromLine(
+                approach,
+                binding.StreamAnchor.Position,
+                binding.AbandonedLaundryAnchor.Position) <= 0.01f;
+        if (!usesCardinalBridge && !usesProjectedBridge)
         {
             throw new ArgumentException(
-                "The north bridge approach must align above the exact stream anchor.",
+                "The north bridge approach must align with the retained stream route.",
                 nameof(approach));
         }
+
+        return usesCardinalBridge;
+    }
+
+    private static OpeningRegionAnchor ConnectedAnchor(
+        OpeningRegionStreamLaundrySceneBinding binding,
+        string locationId)
+    {
+        OpeningRegionProjectedConnection connection = binding.Projection.Connections.Single(
+            candidate => (ReferenceEquals(candidate.FirstAnchor, binding.AbandonedLaundryAnchor)
+                    && candidate.SecondAnchor.Location.Identity.Id.Value == locationId)
+                || (ReferenceEquals(candidate.SecondAnchor, binding.AbandonedLaundryAnchor)
+                    && candidate.FirstAnchor.Location.Identity.Id.Value == locationId));
+        return ReferenceEquals(connection.FirstAnchor, binding.AbandonedLaundryAnchor)
+            ? connection.SecondAnchor
+            : connection.FirstAnchor;
+    }
+
+    private static Vector2 VerticalIntersection(Vector2 start, Vector2 end, float x)
+    {
+        float progress = (x - start.X) / (end.X - start.X);
+        return new Vector2(x, start.Y + ((end.Y - start.Y) * progress));
+    }
+
+    private static float DistanceFromLine(Vector2 point, Vector2 start, Vector2 end)
+    {
+        Vector2 segment = end - start;
+        float progress = Vector2.Dot(point - start, segment) / segment.LengthSquared();
+        return Vector2.Distance(point, start + (segment * progress));
     }
 
     private static void ValidateOpeningFits(

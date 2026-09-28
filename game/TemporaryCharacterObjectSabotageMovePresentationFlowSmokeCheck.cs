@@ -11,8 +11,8 @@ public partial class TemporaryCharacterObjectSabotageMovePresentationFlowSmokeCh
     private const string CheckEnvironmentVariable =
         "ALLRPCS_OBJECT_SABOTAGE_MOVE_PRESENTATION_FLOW_CHECK";
     private const string EnabledEnvironmentValue = "1";
-    private static readonly Vector2 SourcePosition = new(1216.0f, 656.0f);
-    private static readonly Vector2 DestinationPosition = new(1056.0f, 720.0f);
+    private static readonly Vector2 SourcePosition = new(2200.0f, 900.0f);
+    private static readonly Vector2 DestinationPosition = new(1900.0f, 1640.0f);
 
     /// <inheritdoc />
     public override void _Ready()

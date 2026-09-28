@@ -105,7 +105,7 @@ public partial class OpeningRegionSageConsultationInputSmokeCheck : Node
         if (!sageBody.Visible
             || !sageLabel.Visible
             || sageLabel.Text != SageLabelText
-            || sageMarker.Position != new Vector2(920.0f, 450.0f))
+            || sageMarker.Position != new Vector2(2240.0f, 950.0f))
         {
             Fail("Sage consultation target was not visibly identified at the village square.");
             return;

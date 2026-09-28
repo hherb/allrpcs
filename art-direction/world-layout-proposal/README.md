@@ -2,9 +2,10 @@
 
 ## Status and boundary
 
-This is an external planning proposal for review, not an accepted runtime layout. It changes no
-file under `game/`, does not move a runtime node, and grants no collision, navigation, discovery,
-dialogue, clue, or gameplay authority. The proposal preserves the eleven current opening-region
+This proposal was explicitly approved on 2026-09-29 and is now the exact source geometry for the
+runtime greybox layout. The implementation binds its SHA-256, world bounds, anchors, routes, camera,
+collision, and navigation while granting no new discovery, dialogue, clue, or gameplay authority.
+The proposal preserves the eleven opening-region
 locations, all twelve existing topology edges, the scenario graph, the 240-pixel-per-second Seeker
 speed, 96-pixel path width, and 0.8/1.0/2.0 camera zoom tuning.
 
@@ -151,7 +152,7 @@ dialogue, interactable, evidence, or scenario step to make empty space appear me
 
 ## Review gate
 
-### Technical review recommendation — 2026-09-28
+### Approval and implementation — 2026-09-29
 
 The repository-level technical review recommends accepting this proposal as the candidate for one
 coordinated greybox implementation. The retained arrangement has no independent 96-pixel route-band
@@ -160,19 +161,14 @@ path avoids the prior false crossing, the 6.5-second shrine-to-road link is an e
 hypothesis rather than an asserted pacing success, both representative camera frames stay inside
 the world at the retained zoom range, and the five content budgets remain non-authoritative.
 
-This recommendation is not product-owner approval, human pacing or route-usability evidence, or
-human accessibility acceptance. The implementation gate below remains closed until an explicit
-approval accepts the coordinates, closed-path relocation, route-distance budget, camera framing,
-and content budgets.
+The product owner explicitly approved the anchor coordinates, north-west Closed Forest Path,
+route-distance budget including the 6.5-second shrine-road hypothesis, camera framing, and five
+empty-area budgets. The coordinated runtime implementation retains the proposal's exact SHA-256,
+eleven anchors, twelve straight corridors, 96-pixel path language, camera tuning, and closed gate.
 
-Approval should decide whether the anchor coordinates, closed-path relocation, route-distance
-budget, camera framing, and five empty-area budgets are acceptable. Until that explicit decision,
-do not update world bounds, camera constants, projection anchors, navigation polygons, collision,
-terrain, or ordinary presentation in `game/`.
-
-After approval, the next bounded slice is one coordinated greybox-only implementation of the
-accepted world bounds, camera tuning, anchor moves, collision/navigation geometry, provenance,
-tests, and Godot smokes. Bulk Direction A art remains later work.
+Approval and automated validation are not human pacing, route-usability, or accessibility evidence.
+A later manual greybox checkpoint must assess those qualities before bulk Direction A art is wired
+into ordinary gameplay.
 
 ## Rebuild and validate
 

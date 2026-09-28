@@ -15,7 +15,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
     private const string CheckEnvironmentVariable = "ALLRPCS_WORLD_OBJECT_SOURCE_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const string FocusedSearchResultText = "Focused search: NO ATTEMPT";
-    private const string FocusStatusText = "Interaction focus: HERB PATCH";
+    private const string FocusStatusText = "Interaction focus: Village water cask";
     private const string HerbPatchObjectId = "herb-patch";
     private const string HerbPatchDisplayName = "HERB PATCH";
     private const string HerbPatchDescription =

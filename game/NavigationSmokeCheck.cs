@@ -14,15 +14,15 @@ public partial class NavigationSmokeCheck : Node
     private const int MinimumSynchronizationPhysicsFrames = 3;
     private const int MaximumSynchronizationPhysicsFrames = 60;
     private const float DestinationTolerancePixels = 1.0f;
-    private const float WorldRight = 1600.0f;
-    private const float WorldBottom = 900.0f;
+    private const float WorldRight = 3200.0f;
+    private const float WorldBottom = 1800.0f;
     private static readonly NavigationWorldBounds WorldBounds =
         new(0.0f, 0.0f, WorldRight, WorldBottom);
-    private static readonly Vector2 ReachableOrigin = new(800.0f, 450.0f);
-    private static readonly Vector2 ReachableDestination = new(808.0f, 64.0f);
-    private static readonly Vector2 StreamObstacleDestination = new(500.0f, 150.0f);
-    private static readonly Vector2 TreeObstacleDestination = new(312.0f, 400.0f);
-    private static readonly Vector2 VillageObstacleDestination = new(1248.0f, 640.0f);
+    private static readonly Vector2 ReachableOrigin = new(2200.0f, 900.0f);
+    private static readonly Vector2 ReachableDestination = new(1800.0f, 500.0f);
+    private static readonly Vector2 StreamObstacleDestination = new(3000.0f, 300.0f);
+    private static readonly Vector2 TreeObstacleDestination = new(300.0f, 1000.0f);
+    private static readonly Vector2 VillageObstacleDestination = new(2700.0f, 600.0f);
 
     private int physicsFrames;
 
@@ -101,7 +101,9 @@ public partial class NavigationSmokeCheck : Node
             return;
         }
 
-        GD.Print("Navigation smoke passed: map synchronized, bridge reachable, obstacles excluded.");
+        GD.Print(
+            "Navigation smoke passed: map synchronized, retained route reachable, "
+            + "empty-area budgets excluded.");
         GetTree().Quit();
     }
 

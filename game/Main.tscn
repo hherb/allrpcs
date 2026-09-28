@@ -511,10 +511,10 @@
 [ext_resource type="Script" path="res://OptionalOverlayVisibilitySmokeCheck.cs" id="399_optional_overlay_visibility_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
-size = Vector2(1632, 32)
+size = Vector2(3232, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vertical"]
-size = Vector2(32, 900)
+size = Vector2(32, 1800)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_seeker"]
 radius = 18.0
@@ -522,20 +522,17 @@ radius = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_healer"]
 radius = 18.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_village"]
-size = Vector2(416, 272)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_top_left"]
+size = Vector2(16, 8)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tree"]
-radius = 34.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_top"]
-size = Vector2(64, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_top_right"]
+size = Vector2(240, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_side"]
 size = Vector2(8, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sickhouse_bottom"]
-size = Vector2(192, 8)
+size = Vector2(320, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_village_transition_horizontal"]
 size = Vector2(160, 8)
@@ -610,94 +607,17 @@ script = ExtResource("398_optional_overlay_visibility")
 script = ExtResource("399_optional_overlay_visibility_check")
 
 [node name="Ground" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900)
+polygon = PackedVector2Array(0, 0, 3200, 0, 3200, 1800, 0, 1800)
 color = Color(0.188, 0.278, 0.251, 1)
-
-[node name="Path" type="Line2D" parent="."]
-points = PackedVector2Array(112, 672, 424, 552, 768, 576, 1096, 400, 1488, 288)
-width = 96.0
-default_color = Color(0.447, 0.392, 0.302, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-antialiased = true
-
-[node name="Stream" type="Line2D" parent="."]
-points = PackedVector2Array(0, 184, 320, 216, 624, 136, 920, 176, 1248, 112, 1600, 144)
-width = 72.0
-default_color = Color(0.196, 0.459, 0.561, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-antialiased = true
-
-[node name="TemporaryBridge" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(752, 80, 864, 80, 864, 228, 752, 228)
-color = Color(0.62, 0.49, 0.31, 1)
-
-[node name="BridgeOutline" type="Line2D" parent="TemporaryBridge"]
-position = Vector2(752, 80)
-points = PackedVector2Array(0, 0, 112, 0, 112, 148, 0, 148, 0, 0)
-width = 6.0
-default_color = Color(0.294, 0.235, 0.165, 1)
-antialiased = true
 
 [node name="StreamCollision" type="StaticBody2D" parent="."]
 
 [node name="WestCollision" type="CollisionPolygon2D" parent="StreamCollision"]
-polygon = PackedVector2Array(0, 148, 320, 180, 624, 100, 752, 117.3, 752, 189.3, 624, 172, 320, 252, 0, 220)
 
 [node name="EastCollision" type="CollisionPolygon2D" parent="StreamCollision"]
-polygon = PackedVector2Array(864, 132.4, 920, 140, 1248, 76, 1600, 108, 1600, 180, 1248, 148, 920, 212, 864, 204.4)
-
-[node name="VillageGreybox" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(1040, 504, 1456, 504, 1456, 776, 1040, 776)
-color = Color(0.333, 0.345, 0.337, 1)
-
-[node name="VillageCourt" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(1112, 560, 1384, 560, 1384, 720, 1112, 720)
-color = Color(0.506, 0.471, 0.384, 1)
-
-[node name="VillageCollision" type="StaticBody2D" parent="."]
-position = Vector2(1248, 640)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VillageCollision"]
-shape = SubResource("RectangleShape2D_village")
-
-[node name="TreeCluster" type="Node2D" parent="."]
-
-[node name="TreeWest" type="StaticBody2D" parent="TreeCluster"]
-position = Vector2(248, 400)
-
-[node name="Canopy" type="Polygon2D" parent="TreeCluster/TreeWest"]
-polygon = PackedVector2Array(0, -40, 28, -28, 40, 0, 28, 28, 0, 40, -28, 28, -40, 0, -28, -28)
-color = Color(0.251, 0.376, 0.29, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCluster/TreeWest"]
-shape = SubResource("CircleShape2D_tree")
-
-[node name="TreeNorth" type="StaticBody2D" parent="TreeCluster"]
-position = Vector2(312, 344)
-
-[node name="Canopy" type="Polygon2D" parent="TreeCluster/TreeNorth"]
-polygon = PackedVector2Array(0, -40, 28, -28, 40, 0, 28, 28, 0, 40, -28, 28, -40, 0, -28, -28)
-color = Color(0.29, 0.416, 0.314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCluster/TreeNorth"]
-shape = SubResource("CircleShape2D_tree")
-
-[node name="TreeEast" type="StaticBody2D" parent="TreeCluster"]
-position = Vector2(376, 408)
-
-[node name="Canopy" type="Polygon2D" parent="TreeCluster/TreeEast"]
-polygon = PackedVector2Array(0, -40, 28, -28, 40, 0, 28, 28, 0, 40, -28, 28, -40, 0, -28, -28)
-color = Color(0.224, 0.353, 0.267, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TreeCluster/TreeEast"]
-shape = SubResource("CircleShape2D_tree")
 
 [node name="RegionOutline" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 1600, 0, 1600, 900, 0, 900, 0, 0)
+points = PackedVector2Array(0, 0, 3200, 0, 3200, 1800, 0, 1800, 0, 0)
 width = 8.0
 default_color = Color(0.682, 0.714, 0.588, 1)
 antialiased = true
@@ -705,25 +625,25 @@ antialiased = true
 [node name="Boundaries" type="Node2D" parent="."]
 
 [node name="Top" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(800, -16)
+position = Vector2(1600, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Top"]
 shape = SubResource("RectangleShape2D_horizontal")
 
 [node name="Bottom" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(800, 916)
+position = Vector2(1600, 1816)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Bottom"]
 shape = SubResource("RectangleShape2D_horizontal")
 
 [node name="Left" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(-16, 450)
+position = Vector2(-16, 900)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Left"]
 shape = SubResource("RectangleShape2D_vertical")
 
 [node name="Right" type="StaticBody2D" parent="Boundaries"]
-position = Vector2(1616, 450)
+position = Vector2(3216, 900)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries/Right"]
 shape = SubResource("RectangleShape2D_vertical")
@@ -738,37 +658,37 @@ script = ExtResource("5_navigation_check")
 script = ExtResource("305_opening_region_projection_source")
 
 [node name="sickhouse" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(920, 820)
+position = Vector2(2640, 1450)
 
 [node name="healer-garden" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(880, 620)
+position = Vector2(2300, 1300)
 
 [node name="village-square" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(880, 400)
+position = Vector2(2200, 900)
 
 [node name="village-edge" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(650, 400)
+position = Vector2(1700, 900)
 
 [node name="stream" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(808, 260)
+position = Vector2(1800, 500)
 
 [node name="abandoned-laundry" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(700, 60)
+position = Vector2(1500, 220)
 
 [node name="woodland-clearing" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(470, 70)
+position = Vector2(1000, 350)
 
 [node name="old-shrine" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(160, 70)
+position = Vector2(380, 300)
 
 [node name="southern-road" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(620, 620)
+position = Vector2(1500, 1400)
 
 [node name="abandoned-wagon" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(720, 820)
+position = Vector2(1900, 1640)
 
 [node name="closed-deeper-forest-path" type="Marker2D" parent="OpeningRegionProjectionSource"]
-position = Vector2(120, 620)
+position = Vector2(650, 150)
 
 [node name="OpeningRegionProjectionSmokeCheck" type="Node" parent="."]
 script = ExtResource("306_opening_region_projection_check")
@@ -777,13 +697,13 @@ script = ExtResource("306_opening_region_projection_check")
 script = ExtResource("7_healer_check")
 
 [node name="HealerStart" type="Marker2D" parent="."]
-position = Vector2(680, 450)
+position = Vector2(2000, 950)
 
 [node name="HealerCommandDestination" type="Marker2D" parent="."]
-position = Vector2(960, 360)
+position = Vector2(1800, 500)
 
 [node name="SageHearingPosition" type="Marker2D" parent="."]
-position = Vector2(920, 450)
+position = Vector2(2240, 950)
 
 [node name="Body" type="Polygon2D" parent="SageHearingPosition"]
 polygon = PackedVector2Array(0, -20, 15, -9, 12, 18, -12, 18, -15, -9)
@@ -815,7 +735,7 @@ horizontal_alignment = 1
 [node name="InteractionCandidates" type="Node2D" parent="."]
 
 [node name="HerbPatch" type="Node2D" parent="InteractionCandidates"]
-position = Vector2(720, 520)
+position = Vector2(920, 350)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "herb-patch"
 
@@ -860,7 +780,7 @@ text = "FOCUS"
 horizontal_alignment = 1
 
 [node name="StoneMarker" type="Node2D" parent="InteractionCandidates"]
-position = Vector2(880, 520)
+position = Vector2(1080, 350)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "stone-marker"
 
@@ -905,7 +825,7 @@ text = "FOCUS"
 horizontal_alignment = 1
 
 [node name="WaterCask" type="Node2D" parent="InteractionCandidates"]
-position = Vector2(1216, 656)
+position = Vector2(2200, 900)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "village-water-cask"
 
@@ -940,7 +860,7 @@ default_color = Color(1, 0.827, 0.227, 1)
 antialiased = true
 
 [node name="WagonClue" type="Node2D" parent="InteractionCandidates"]
-position = Vector2(720, 820)
+position = Vector2(1900, 1640)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "wagon-clue"
 
@@ -965,7 +885,7 @@ antialiased = true
 
 [node name="HiddenMarker" type="Node2D" parent="InteractionCandidates"]
 visible = false
-position = Vector2(800, 280)
+position = Vector2(1000, 150)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "hidden-marker"
 IsInteractionVisible = false
@@ -981,7 +901,7 @@ width = 6.0
 default_color = Color(1, 0.827, 0.227, 1)
 
 [node name="ExcludedMarker" type="Node2D" parent="InteractionCandidates"]
-position = Vector2(1040, 440)
+position = Vector2(1000, 550)
 script = ExtResource("8_interaction_target")
 ObjectIdText = "excluded-marker"
 IsInteractionEnabled = false
@@ -1982,57 +1902,57 @@ script = ExtResource("128_first_patient_context_source")
 script = ExtResource("345_journal_composition")
 
 [node name="OpeningRegionFirstPatientSceneSource" type="Node2D" parent="."]
-position = Vector2(920, 760)
+position = Vector2(2640, 1390)
 script = ExtResource("307_opening_region_first_patient_scene")
 
 [node name="Floor" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
-polygon = PackedVector2Array(-96, -80, 96, -80, 96, 112, -96, 112)
+polygon = PackedVector2Array(-160, -80, 160, -80, 160, 112, -160, 112)
 color = Color(0.365, 0.337, 0.29, 1)
 
 [node name="OuterWallOutline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Floor"]
-points = PackedVector2Array(-96, -80, -96, 112, 96, 112, 96, -80)
+points = PackedVector2Array(-160, -80, -160, 112, 160, 112, 160, -80)
 width = 6.0
 default_color = Color(0.204, 0.188, 0.157, 1)
 antialiased = true
 
 [node name="NorthWallLeftOutline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Floor"]
-points = PackedVector2Array(-96, -80, -32, -80)
+points = PackedVector2Array(-160, -80, -144, -80)
 width = 6.0
 default_color = Color(0.204, 0.188, 0.157, 1)
 antialiased = true
 
 [node name="NorthWallRightOutline" type="Line2D" parent="OpeningRegionFirstPatientSceneSource/Floor"]
-points = PackedVector2Array(32, -80, 96, -80)
+points = PackedVector2Array(-80, -80, 160, -80)
 width = 6.0
 default_color = Color(0.204, 0.188, 0.157, 1)
 antialiased = true
 
 [node name="Entrance" type="Polygon2D" parent="OpeningRegionFirstPatientSceneSource"]
-polygon = PackedVector2Array(-12, -86, 12, -86, 0, -70)
+polygon = PackedVector2Array(-124, -86, -100, -86, -112, -70)
 color = Color(0.918, 0.733, 0.31, 1)
 
 [node name="Walls" type="Node2D" parent="OpeningRegionFirstPatientSceneSource"]
 
 [node name="TopLeft" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
-position = Vector2(-64, -80)
+position = Vector2(-152, -80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/TopLeft"]
-shape = SubResource("RectangleShape2D_sickhouse_top")
+shape = SubResource("RectangleShape2D_sickhouse_top_left")
 
 [node name="TopRight" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
-position = Vector2(64, -80)
+position = Vector2(40, -80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/TopRight"]
-shape = SubResource("RectangleShape2D_sickhouse_top")
+shape = SubResource("RectangleShape2D_sickhouse_top_right")
 
 [node name="Left" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
-position = Vector2(-96, 16)
+position = Vector2(-160, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/Left"]
 shape = SubResource("RectangleShape2D_sickhouse_side")
 
 [node name="Right" type="StaticBody2D" parent="OpeningRegionFirstPatientSceneSource/Walls"]
-position = Vector2(96, 16)
+position = Vector2(160, 16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionFirstPatientSceneSource/Walls/Right"]
 shape = SubResource("RectangleShape2D_sickhouse_side")
@@ -2066,7 +1986,7 @@ script = ExtResource("308_opening_region_first_patient_scene_check")
 script = ExtResource("309_opening_region_sickhouse_check")
 
 [node name="OpeningRegionRemedyPreparationSceneSource" type="Node2D" parent="."]
-position = Vector2(920, 620)
+position = Vector2(2300, 1300)
 script = ExtResource("310_opening_region_remedy_preparation_scene")
 
 [node name="GardenPlot" type="Polygon2D" parent="OpeningRegionRemedyPreparationSceneSource"]
@@ -2192,22 +2112,10 @@ position = Vector2(844, 480)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries/SquareBottomLeft"]
 shape = SubResource("RectangleShape2D_village_square_bottom_left")
 
-[node name="SquareBottomRight" type="StaticBody2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries"]
-position = Vector2(936, 480)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries/SquareBottomRight"]
-shape = SubResource("RectangleShape2D_village_transition_horizontal_section")
-
 [node name="SquareLeftTop" type="StaticBody2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries"]
 position = Vector2(840, 344)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries/SquareLeftTop"]
-shape = SubResource("RectangleShape2D_village_transition_vertical_section")
-
-[node name="SquareLeftBottom" type="StaticBody2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries"]
-position = Vector2(840, 456)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries/SquareLeftBottom"]
 shape = SubResource("RectangleShape2D_village_transition_vertical_section")
 
 [node name="EdgeTopLeft" type="StaticBody2D" parent="OpeningRegionVillageTransitionSceneSource/Boundaries"]
@@ -2356,7 +2264,7 @@ horizontal_alignment = 1
 
 [node name="ConcealedRareSpecimen" type="Marker2D" parent="OpeningRegionWoodlandClearingSceneSource"]
 visible = false
-position = Vector2(450, 90)
+position = Vector2(1050, 350)
 
 [node name="TreeBoundaries" type="Node2D" parent="OpeningRegionWoodlandClearingSceneSource"]
 
@@ -2436,7 +2344,7 @@ horizontal_alignment = 1
 
 [node name="LayeredInscription" type="Node2D" parent="OpeningRegionOldShrineSceneSource"]
 visible = false
-position = Vector2(110, 90)
+position = Vector2(380, 300)
 
 [node name="WeatheredSurface" type="Marker2D" parent="OpeningRegionOldShrineSceneSource/LayeredInscription"]
 
@@ -2537,16 +2445,16 @@ script = ExtResource("322_opening_region_old_shrine_check")
 script = ExtResource("323_opening_region_road_wagon_scene")
 
 [node name="RoadArea" type="Line2D" parent="OpeningRegionSouthernRoadWagonSceneSource"]
-points = PackedVector2Array(620, 620, 690, 744, 720, 820)
-width = 48.0
+points = PackedVector2Array(572, 460, 1500, 1400, 1820, 1580, 1900, 1640)
+width = 96.0
 default_color = Color(0.486, 0.38, 0.255, 0.72)
 
 [node name="WagonShell" type="Polygon2D" parent="OpeningRegionSouthernRoadWagonSceneSource"]
-polygon = PackedVector2Array(648, 744, 776, 744, 776, 876, 648, 876)
+polygon = PackedVector2Array(1760, 1580, 2040, 1580, 2040, 1768, 1760, 1768)
 color = Color(0.357, 0.278, 0.176, 0.78)
 
 [node name="WagonOpening" type="Line2D" parent="OpeningRegionSouthernRoadWagonSceneSource"]
-points = PackedVector2Array(666, 744, 714, 744)
+points = PackedVector2Array(1772, 1580, 1868, 1580)
 width = 12.0
 default_color = Color(0.918, 0.733, 0.31, 1)
 
@@ -2567,7 +2475,7 @@ text = "ABANDONED WAGON"
 horizontal_alignment = 1
 
 [node name="AbandonedWagonMarker" type="Marker2D" parent="OpeningRegionSouthernRoadWagonSceneSource"]
-position = Vector2(720, 820)
+position = Vector2(1900, 1640)
 
 [node name="RoadBoundaries" type="Node2D" parent="OpeningRegionSouthernRoadWagonSceneSource"]
 
@@ -2655,7 +2563,7 @@ default_color = Color(0.145, 0.239, 0.157, 1)
 default_color = Color(0.58, 0.18, 0.12, 1)
 
 [node name="ClosedGateMarker" type="Marker2D" parent="OpeningRegionClosedForestPathSceneSource"]
-position = Vector2(438, 120)
+position = Vector2(744, 200)
 
 [node name="ClosedGateLabel" type="Label" parent="OpeningRegionClosedForestPathSceneSource"]
 offset_left = 372.0
@@ -3239,7 +3147,7 @@ script = ExtResource("122_model_connection_panel_check")
 script = ExtResource("29_world_object_interaction_focus_check")
 
 [node name="Healer" type="CharacterBody2D" parent="."]
-position = Vector2(680, 450)
+position = Vector2(2000, 950)
 script = ExtResource("6_healer")
 
 [node name="Body" type="Polygon2D" parent="Healer"]
@@ -3259,7 +3167,7 @@ target_desired_distance = 72.0
 radius = 18.0
 
 [node name="Seeker" type="CharacterBody2D" parent="."]
-position = Vector2(800, 450)
+position = Vector2(2120, 950)
 script = ExtResource("2_seeker")
 
 [node name="Body" type="Polygon2D" parent="Seeker"]

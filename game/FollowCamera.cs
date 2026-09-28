@@ -12,8 +12,8 @@ public partial class FollowCamera : Camera2D
     private const float DefaultFollowSmoothingSpeed = 6.0f;
     private const int DefaultWorldLeftLimitPixels = 0;
     private const int DefaultWorldTopLimitPixels = 0;
-    private const int DefaultWorldRightLimitPixels = 1600;
-    private const int DefaultWorldBottomLimitPixels = 900;
+    private const int DefaultWorldRightLimitPixels = 3200;
+    private const int DefaultWorldBottomLimitPixels = 1800;
     private const float DefaultMinimumZoom = 0.8f;
     private const float DefaultStartingZoom = 1.0f;
     private const float DefaultMaximumZoom = 2.0f;

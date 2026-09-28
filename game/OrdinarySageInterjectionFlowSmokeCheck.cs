@@ -14,7 +14,8 @@ public partial class OrdinarySageInterjectionFlowSmokeCheck : Node
     private const string PlayerText = "Can either of you challenge my conclusion?";
     private const string SageText = "Which observation would disprove it?";
     private const int MaximumProcessFrames = 300;
-    private static readonly Vector2 ShiftedSeekerPosition = new(1080.0f, 450.0f);
+    private static readonly Vector2 DialogueSeekerPosition = new(2120.0f, 950.0f);
+    private static readonly Vector2 ShiftedSeekerPosition = new(2400.0f, 950.0f);
 
     private readonly SageInterjectionParticipationModel participationModel = new();
     private readonly SageSpeechCharacterModel characterModel = new();
@@ -83,6 +84,7 @@ public partial class OrdinarySageInterjectionFlowSmokeCheck : Node
             initialPerception = GetNode<FocusedSearchActivityController>(
                 "../Seeker/FocusedSearchActivityController").Perception;
             initialSeekerPosition = seeker.Position;
+            seeker.Position = DialogueSeekerPosition;
             input.Text = PlayerText;
             input.EmitSignal(LineEdit.SignalName.TextSubmitted, PlayerText);
             submitted = true;

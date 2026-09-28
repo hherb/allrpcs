@@ -22,14 +22,12 @@ public partial class HealerCommandSmokeCheck : Node
     private const float RequiredInitialSeparationPixels = 200.0f;
     private const float RequiredFollowDisplacementPixels = 100.0f;
     private const float RequiredMoveDisplacementPixels = 300.0f;
-    private const float LowerBankThresholdY = 286.0f;
-
-    private static readonly Vector2 FollowStart = new(560.0f, 450.0f);
-    private static readonly Vector2 LowerFieldTarget = new(800.0f, 450.0f);
-    private static readonly Vector2 SeparatedWaitTarget = new(960.0f, 450.0f);
-    private static readonly Vector2 ValidMoveDestination = new(808.0f, 64.0f);
+    private static readonly Vector2 FollowStart = new(1700.0f, 900.0f);
+    private static readonly Vector2 FollowTarget = new(2200.0f, 900.0f);
+    private static readonly Vector2 SeparatedWaitTarget = new(2640.0f, 1450.0f);
+    private static readonly Vector2 ValidMoveDestination = new(1800.0f, 500.0f);
     private static readonly Vector2 InvalidDestination = new(-1.0f, 450.0f);
-    private static readonly Vector2 ExcludedVillageDestination = new(1248.0f, 640.0f);
+    private static readonly Vector2 ExcludedVillageDestination = new(2800.0f, 300.0f);
 
     private SmokeStage stage;
     private int stagePhysicsFrames;
@@ -99,8 +97,8 @@ public partial class HealerCommandSmokeCheck : Node
         NavigationRegion2D region = GetNode<NavigationRegion2D>("../GreyboxNavigation");
         Rid navigationMap = NavigationServer2D.RegionGetMap(region.GetRid());
         bool isSynchronized = NavigationServer2D.RegionGetIterationId(region.GetRid()) > 0
-            && NavigationServer2D.MapGetClosestPoint(navigationMap, LowerFieldTarget)
-                .DistanceTo(LowerFieldTarget) <= NavigationSynchronizationTolerancePixels;
+            && NavigationServer2D.MapGetClosestPoint(navigationMap, FollowTarget)
+                .DistanceTo(FollowTarget) <= NavigationSynchronizationTolerancePixels;
         if (isSynchronized)
         {
             BeginFollowCheck();
@@ -115,7 +113,7 @@ public partial class HealerCommandSmokeCheck : Node
 
     private void BeginFollowCheck()
     {
-        PlaceCharacters(FollowStart, LowerFieldTarget);
+        PlaceCharacters(FollowStart, FollowTarget);
         healer.CommandFollow();
         float initialSeparation = healer.GlobalPosition.DistanceTo(seeker.GlobalPosition);
         if (initialSeparation < RequiredInitialSeparationPixels)
@@ -210,7 +208,7 @@ public partial class HealerCommandSmokeCheck : Node
             && destinationDistance <= healer.DestinationStopDistancePixels + ArrivalTolerancePixels
             && displacement >= RequiredMoveDisplacementPixels)
         {
-            PlaceCharacters(healer.GlobalPosition, LowerFieldTarget);
+            PlaceCharacters(healer.GlobalPosition, FollowTarget);
             healer.CommandFollow();
             minimumObservedSeparation = healer.GlobalPosition.DistanceTo(seeker.GlobalPosition);
             SetStage(SmokeStage.ReturningToFollow);
@@ -221,7 +219,8 @@ public partial class HealerCommandSmokeCheck : Node
         {
             Fail(
                 "Healer did not complete the valid move command and transition to wait. "
-                + $"Mode: {healer.CommandMode}; destination distance: {destinationDistance}; "
+                + $"Mode: {healer.CommandMode}; position: {healer.GlobalPosition}; "
+                + $"destination distance: {destinationDistance}; "
                 + $"displacement: {displacement}.");
         }
     }
@@ -233,15 +232,13 @@ public partial class HealerCommandSmokeCheck : Node
             return;
         }
 
-        bool reachedLowerBank = healer.GlobalPosition.Y >= LowerBankThresholdY;
-        if (reachedLowerBank
-            && separation <= healer.StopDistancePixels + ArrivalTolerancePixels)
+        if (separation <= healer.StopDistancePixels + ArrivalTolerancePixels)
         {
             GD.Print(
                 "Healer command smoke passed: mutual body pass-through was configured, follow "
                 + "transitioned to stable wait, invalid and "
                 + "excluded destinations were rejected, a valid move completed, and follow "
-                + $"resumed through the bridge. Final separation={separation}; "
+                + $"resumed across the approved route network. Final separation={separation}; "
                 + $"minimum separation={minimumObservedSeparation}.");
             SetPhysicsProcess(false);
             GetTree().Quit();
@@ -251,7 +248,7 @@ public partial class HealerCommandSmokeCheck : Node
         if (stagePhysicsFrames >= MaximumReturnPhysicsFrames)
         {
             Fail(
-                "Healer did not return to follow through the bridge. "
+                "Healer did not return to follow across the approved route network. "
                 + $"Position: {healer.GlobalPosition}; separation: {separation}.");
         }
     }

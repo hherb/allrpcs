@@ -1,468 +1,254 @@
 using Godot;
-using static Allrpcs.Game.OpeningRegionVillageTransitionGeometry;
 
 namespace Allrpcs.Game;
 
-/// <summary>
-/// Authors the deterministic navigation surface for the temporary greybox region.
-/// </summary>
+/// <summary>Authors navigation and collision for the approved 96-pixel route network.</summary>
 public partial class GreyboxNavigation : NavigationRegion2D
 {
-    private const float WorldInset = 24.0f;
-    private const float WorldRight = 1576.0f;
-    private const float WorldBottom = 876.0f;
-    private const float BridgeLeft = 776.0f;
-    private const float BridgeRight = 840.0f;
-    private const float WestStreamCollisionEnd = 752.0f;
-    private const float EastStreamCollisionStart = 864.0f;
-    private const float LowerFieldTop = 286.0f;
-    private const float TreeClearanceLeft = 190.0f;
-    private const float TreeClearanceRight = 434.0f;
-    private const float TreeClearanceBottom = 466.0f;
-    private const float VillageClearanceLeft = 1016.0f;
-    private const float VillageClearanceRight = 1480.0f;
-    private const float VillageClearanceTop = 480.0f;
-    private const float VillageClearanceBottom = 800.0f;
-    private const float SickhouseClearanceLeft = 800.0f;
-    private const float SickhouseInteriorLeft = 848.0f;
-    private const float SickhouseEntranceLeft = 896.0f;
-    private const float SickhouseEntranceSubdivisionLeft = 904.0f;
-    private const float SickhouseEntranceSubdivisionRight = 936.0f;
-    private const float SickhouseEntranceRight = 944.0f;
-    private const float SickhouseInteriorRight = 992.0f;
-    private const float SickhouseClearanceRight = 1040.0f;
-    private const float SickhouseClearanceTop = 656.0f;
-    private const float SickhouseInteriorTop = 704.0f;
-    private const float SickhouseInteriorBottom = 848.0f;
-    private static readonly Vector2[] UpperBank =
-    [
-        new(WorldInset, 128.0f),
-        new(320.0f, 158.0f),
-        new(624.0f, 78.0f),
-        new(BridgeLeft, 95.0f),
-        new(BridgeRight, 105.0f),
-        new(920.0f, 118.0f),
-        new(1248.0f, 54.0f),
-        new(WorldRight, 84.0f),
-    ];
-
-    private static readonly Vector2[] LowerBankWest =
-    [
-        new(WorldInset, 244.0f),
-        new(TreeClearanceLeft, 261.0f),
-        new(320.0f, 274.0f),
-        new(TreeClearanceRight, 244.0f),
-        new(624.0f, 194.0f),
-        new(WestStreamCollisionEnd, 211.0f),
-    ];
-
-    private static readonly Vector2[] LowerBankEast =
-    [
-        new(EastStreamCollisionStart, 226.0f),
-        new(SickhouseEntranceLeft, 230.57143f),
-        new(920.0f, 234.0f),
-        new(SickhouseEntranceRight, 229.25f),
-        new(SickhouseInteriorRight, 219.75f),
-        new(VillageClearanceLeft, 215.0f),
-        new(SickhouseClearanceRight, 210.34483f),
-        new(1248.0f, 170.0f),
-        new(VillageClearanceRight, 191.0f),
-        new(WorldRight, 200.0f),
-    ];
+    private const float HalfPathWidthPixels = OpeningRegionLayoutGeometry.PathWidthPixels / 2.0f;
+    private static readonly int ColumnCount = (int)(
+        OpeningRegionLayoutGeometry.WorldWidthPixels
+        / OpeningRegionLayoutGeometry.RouteCellSizePixels);
+    private static readonly int RowCount = (int)(
+        OpeningRegionLayoutGeometry.WorldHeightPixels
+        / OpeningRegionLayoutGeometry.RouteCellSizePixels);
 
     /// <inheritdoc />
     public override void _EnterTree()
     {
-        NavigationPolygon = CreateNavigationPolygon();
+        HashSet<Cell> navigationCells = CreateRouteCells(
+            HalfPathWidthPixels - OpeningRegionProjectionSource.MinimumPathClearancePixels,
+            addAnchorClearance: true);
+        HashSet<Cell> physicalRouteCells = CreateRouteCells(
+            HalfPathWidthPixels,
+            addAnchorClearance: false);
+        NavigationPolygon = CreateNavigationPolygon(navigationCells);
+        AddRoutePresentation();
+        AddCollisionBoundary(physicalRouteCells);
     }
 
-    private static NavigationPolygon CreateNavigationPolygon()
+    private void AddRoutePresentation()
     {
-        NavigationPolygonBuilder builder = new();
-        AddUpperGround(builder);
-        AddBridge(builder);
-        AddLowerBank(builder, LowerBankWest);
-        AddLowerBank(builder, LowerBankEast);
-        AddLowerField(builder);
-        AddSickhouseInterior(builder);
-        return builder.Build();
-    }
-
-    private static void AddUpperGround(NavigationPolygonBuilder builder)
-    {
-        for (int index = 0; index < UpperBank.Length - 1; index++)
+        Node2D owner = new() { Name = "RoutePresentation" };
+        AddChild(owner);
+        foreach ((string firstId, string secondId) in OpeningRegionLayoutGeometry.Connections)
         {
-            Vector2 leftBank = UpperBank[index];
-            Vector2 rightBank = UpperBank[index + 1];
-            if (index == 3)
+            owner.AddChild(new Line2D
             {
-                Vector2 splitBank = GetBridgeSplitUpperBank();
-                builder.AddQuadrilateral(
-                    new Vector2(leftBank.X, WorldInset),
-                    new Vector2(SickhouseClearanceLeft, WorldInset),
-                    splitBank,
-                    leftBank);
-                builder.AddQuadrilateral(
-                    new Vector2(SickhouseClearanceLeft, WorldInset),
-                    new Vector2(rightBank.X, WorldInset),
-                    rightBank,
-                    splitBank);
-                continue;
+                Points =
+                [
+                    OpeningRegionLayoutGeometry.Anchors[firstId],
+                    OpeningRegionLayoutGeometry.Anchors[secondId],
+                ],
+                Width = OpeningRegionLayoutGeometry.PathWidthPixels,
+                DefaultColor = new Color(0.447f, 0.392f, 0.302f),
+                Antialiased = true,
+            });
+        }
+    }
+
+    private static HashSet<Cell> CreateRouteCells(
+        float halfWidthPixels,
+        bool addAnchorClearance)
+    {
+        HashSet<Cell> cells = [];
+        foreach ((string firstId, string secondId) in OpeningRegionLayoutGeometry.Connections)
+        {
+            AddRouteCells(
+                cells,
+                OpeningRegionLayoutGeometry.Anchors[firstId],
+                OpeningRegionLayoutGeometry.Anchors[secondId],
+                halfWidthPixels);
+        }
+
+        if (addAnchorClearance)
+        {
+            foreach (Vector2 anchor in OpeningRegionLayoutGeometry.Anchors.Values)
+            {
+                AddAnchorClearanceCells(cells, anchor, halfWidthPixels);
             }
-
-            builder.AddQuadrilateral(
-                new Vector2(leftBank.X, WorldInset),
-                new Vector2(rightBank.X, WorldInset),
-                rightBank,
-                leftBank);
         }
+
+        return cells;
     }
 
-    private static void AddBridge(NavigationPolygonBuilder builder)
+    private static void AddAnchorClearanceCells(
+        HashSet<Cell> cells,
+        Vector2 anchor,
+        float clearancePixels)
     {
-        Vector2 splitUpperBank = GetBridgeSplitUpperBank();
-        builder.AddQuadrilateral(
-            UpperBank[3],
-            splitUpperBank,
-            new Vector2(SickhouseClearanceLeft, LowerFieldTop),
-            new Vector2(BridgeLeft, LowerFieldTop));
-        builder.AddQuadrilateral(
-            splitUpperBank,
-            UpperBank[4],
-            new Vector2(BridgeRight, LowerFieldTop),
-            new Vector2(SickhouseClearanceLeft, LowerFieldTop));
-    }
-
-    private static Vector2 GetBridgeSplitUpperBank() => UpperBank[3].Lerp(
-        UpperBank[4],
-        (SickhouseClearanceLeft - BridgeLeft) / (BridgeRight - BridgeLeft));
-
-    private static void AddLowerBank(NavigationPolygonBuilder builder, Vector2[] bank)
-    {
-        for (int index = 0; index < bank.Length - 1; index++)
+        float cellSize = OpeningRegionLayoutGeometry.RouteCellSizePixels;
+        float coveringRadius = clearancePixels + (cellSize * MathF.Sqrt(2.0f) / 2.0f);
+        int firstColumn = Math.Clamp(
+            (int)MathF.Floor((anchor.X - coveringRadius) / cellSize),
+            0,
+            ColumnCount - 1);
+        int lastColumn = Math.Clamp(
+            (int)MathF.Floor((anchor.X + coveringRadius) / cellSize),
+            0,
+            ColumnCount - 1);
+        int firstRow = Math.Clamp(
+            (int)MathF.Floor((anchor.Y - coveringRadius) / cellSize),
+            0,
+            RowCount - 1);
+        int lastRow = Math.Clamp(
+            (int)MathF.Floor((anchor.Y + coveringRadius) / cellSize),
+            0,
+            RowCount - 1);
+        for (int row = firstRow; row <= lastRow; row++)
         {
-            Vector2 leftBank = bank[index];
-            Vector2 rightBank = bank[index + 1];
-            builder.AddQuadrilateral(
-                leftBank,
-                rightBank,
-                new Vector2(rightBank.X, LowerFieldTop),
-                new Vector2(leftBank.X, LowerFieldTop));
-        }
-    }
-
-    private static void AddLowerField(NavigationPolygonBuilder builder)
-    {
-        float[] horizontalEdges =
-        [
-            WorldInset,
-            TreeClearanceLeft,
-            320.0f,
-            TreeClearanceRight,
-            VillageEdgeClearanceLeft,
-            VillageEdgeInteriorLeft,
-            624.0f,
-            VillageEdgeNorthOpeningLeft,
-            VillageEdgeNorthOpeningRight,
-            VillageEdgeInteriorRight,
-            WestStreamCollisionEnd,
-            VillageEdgeClearanceRight,
-            BridgeLeft,
-            SickhouseClearanceLeft,
-            VillageSquareClearanceLeft,
-            BridgeRight,
-            SickhouseInteriorLeft,
-            EastStreamCollisionStart,
-            VillageSquareSouthOpeningLeft,
-            VillageSquareSouthOpeningRight,
-            SickhouseEntranceLeft,
-            SickhouseEntranceSubdivisionLeft,
-            920.0f,
-            SickhouseEntranceSubdivisionRight,
-            SickhouseEntranceRight,
-            VillageSquareClearanceRight,
-            SickhouseInteriorRight,
-            VillageClearanceLeft,
-            SickhouseClearanceRight,
-            1248.0f,
-            VillageClearanceRight,
-            WorldRight,
-        ];
-        float[] verticalEdges =
-        [
-            LowerFieldTop,
-            VillageTransitionClearanceTop,
-            VillageTransitionInteriorTop,
-            VillageTransitionSideOpeningTop,
-            VillageTransitionSideOpeningBottom,
-            VillageTransitionInteriorBottom,
-            TreeClearanceBottom,
-            VillageClearanceTop,
-            VillageTransitionClearanceBottom,
-            SickhouseClearanceTop,
-            SickhouseInteriorTop,
-            VillageClearanceBottom,
-            SickhouseInteriorBottom,
-            WorldBottom,
-        ];
-
-        for (int row = 0; row < verticalEdges.Length - 1; row++)
-        {
-            for (int column = 0; column < horizontalEdges.Length - 1; column++)
+            for (int column = firstColumn; column <= lastColumn; column++)
             {
-                float left = horizontalEdges[column];
-                float top = verticalEdges[row];
-                float right = horizontalEdges[column + 1];
-                float bottom = verticalEdges[row + 1];
-                if (IsObstacleCell(left, top, right, bottom))
+                Vector2 center = new(
+                    (column + 0.5f) * cellSize,
+                    (row + 0.5f) * cellSize);
+                if (center.DistanceTo(anchor) <= coveringRadius)
                 {
-                    continue;
+                    cells.Add(new Cell(column, row));
                 }
-
-                builder.AddRectangle(left, top, right, bottom);
             }
         }
     }
 
-    private static bool IsObstacleCell(float left, float top, float right, float bottom)
+    private static void AddRouteCells(
+        HashSet<Cell> cells,
+        Vector2 start,
+        Vector2 end,
+        float halfWidthPixels)
     {
-        bool isTreeClearance = left >= TreeClearanceLeft
-            && right <= TreeClearanceRight
-            && top >= LowerFieldTop
-            && bottom <= TreeClearanceBottom;
-        bool isVillageClearance = left >= VillageClearanceLeft
-            && right <= VillageClearanceRight
-            && top >= VillageClearanceTop
-            && bottom <= VillageClearanceBottom;
-        bool isSickhouseClearance = left >= SickhouseClearanceLeft
-            && right <= SickhouseClearanceRight
-            && top >= SickhouseClearanceTop
-            && bottom <= WorldBottom;
-        bool isVillageTransitionClearance = IsVillageTransitionClearance(
-            left,
-            top,
-            right,
-            bottom);
-        return isTreeClearance
-            || isVillageClearance
-            || isSickhouseClearance
-            || isVillageTransitionClearance;
-    }
-
-    private static bool IsVillageTransitionClearance(
-        float left,
-        float top,
-        float right,
-        float bottom)
-    {
-        bool isInsideEdgeClearance = IsInside(
-            left,
-            top,
-            right,
-            bottom,
-            VillageEdgeClearanceLeft,
-            VillageTransitionClearanceTop,
-            VillageEdgeClearanceRight,
-            VillageTransitionClearanceBottom);
-        bool isInsideEdgeSurface = IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageEdgeInteriorLeft,
-                VillageTransitionInteriorTop,
-                VillageEdgeInteriorRight,
-                VillageTransitionInteriorBottom)
-            || IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageEdgeNorthOpeningLeft,
-                VillageTransitionClearanceTop,
-                VillageEdgeNorthOpeningRight,
-                VillageTransitionInteriorTop)
-            || IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageEdgeClearanceLeft,
-                VillageTransitionSideOpeningTop,
-                VillageEdgeInteriorLeft,
-                VillageTransitionSideOpeningBottom)
-            || IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageEdgeInteriorRight,
-                VillageTransitionSideOpeningTop,
-                VillageEdgeClearanceRight,
-                VillageTransitionSideOpeningBottom);
-        bool isInsideSquareClearance = IsInside(
-            left,
-            top,
-            right,
-            bottom,
-            VillageSquareClearanceLeft,
-            VillageTransitionClearanceTop,
-            VillageSquareClearanceRight,
-            VillageTransitionClearanceBottom);
-        bool isInsideSquareSurface = IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageSquareInteriorLeft,
-                VillageTransitionInteriorTop,
-                VillageSquareInteriorRight,
-                VillageTransitionInteriorBottom)
-            || IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageSquareClearanceLeft,
-                VillageTransitionSideOpeningTop,
-                VillageSquareInteriorLeft,
-                VillageTransitionSideOpeningBottom)
-            || IsInside(
-                left,
-                top,
-                right,
-                bottom,
-                VillageSquareSouthOpeningLeft,
-                VillageTransitionInteriorBottom,
-                VillageSquareSouthOpeningRight,
-                VillageTransitionClearanceBottom);
-        return (isInsideEdgeClearance && !isInsideEdgeSurface)
-            || (isInsideSquareClearance && !isInsideSquareSurface);
-    }
-
-    private static bool IsInside(
-        float left,
-        float top,
-        float right,
-        float bottom,
-        float areaLeft,
-        float areaTop,
-        float areaRight,
-        float areaBottom) =>
-        left >= areaLeft
-        && right <= areaRight
-        && top >= areaTop
-        && bottom <= areaBottom;
-
-    private static void AddSickhouseInterior(NavigationPolygonBuilder builder)
-    {
-        builder.AddRectangle(
-            SickhouseInteriorLeft,
-            SickhouseInteriorTop,
-            SickhouseEntranceLeft,
-            SickhouseInteriorBottom);
-        builder.AddRectangle(
-            SickhouseEntranceLeft,
-            SickhouseInteriorTop,
-            SickhouseEntranceSubdivisionLeft,
-            SickhouseInteriorBottom);
-        builder.AddRectangle(
-            SickhouseEntranceSubdivisionLeft,
-            SickhouseInteriorTop,
-            920.0f,
-            SickhouseInteriorBottom);
-        builder.AddRectangle(
-            920.0f,
-            SickhouseInteriorTop,
-            SickhouseEntranceSubdivisionRight,
-            SickhouseInteriorBottom);
-        builder.AddRectangle(
-            SickhouseEntranceSubdivisionRight,
-            SickhouseInteriorTop,
-            SickhouseEntranceRight,
-            SickhouseInteriorBottom);
-        builder.AddRectangle(
-            SickhouseEntranceRight,
-            SickhouseInteriorTop,
-            SickhouseInteriorRight,
-            SickhouseInteriorBottom);
-        builder.AddRectangle(
-            SickhouseEntranceLeft,
-            SickhouseClearanceTop,
-            SickhouseEntranceSubdivisionLeft,
-            SickhouseInteriorTop);
-        builder.AddRectangle(
-            SickhouseEntranceSubdivisionLeft,
-            SickhouseClearanceTop,
-            920.0f,
-            SickhouseInteriorTop);
-        builder.AddRectangle(
-            920.0f,
-            SickhouseClearanceTop,
-            SickhouseEntranceSubdivisionRight,
-            SickhouseInteriorTop);
-        builder.AddRectangle(
-            SickhouseEntranceSubdivisionRight,
-            SickhouseClearanceTop,
-            SickhouseEntranceRight,
-            SickhouseInteriorTop);
-    }
-
-    private sealed class NavigationPolygonBuilder
-    {
-        private readonly Dictionary<Vector2, int> vertexIndices = [];
-        private readonly List<Vector2> vertices = [];
-        private readonly List<int[]> polygons = [];
-
-        public void AddRectangle(float left, float top, float right, float bottom)
+        float cellSize = OpeningRegionLayoutGeometry.RouteCellSizePixels;
+        float minimumX = MathF.Max(0.0f, MathF.Min(start.X, end.X) - halfWidthPixels);
+        float maximumX = MathF.Min(
+            OpeningRegionLayoutGeometry.WorldWidthPixels,
+            MathF.Max(start.X, end.X) + halfWidthPixels);
+        float minimumY = MathF.Max(0.0f, MathF.Min(start.Y, end.Y) - halfWidthPixels);
+        float maximumY = MathF.Min(
+            OpeningRegionLayoutGeometry.WorldHeightPixels,
+            MathF.Max(start.Y, end.Y) + halfWidthPixels);
+        int firstColumn = Math.Clamp((int)MathF.Floor(minimumX / cellSize), 0, ColumnCount - 1);
+        int lastColumn = Math.Clamp((int)MathF.Floor(maximumX / cellSize), 0, ColumnCount - 1);
+        int firstRow = Math.Clamp((int)MathF.Floor(minimumY / cellSize), 0, RowCount - 1);
+        int lastRow = Math.Clamp((int)MathF.Floor(maximumY / cellSize), 0, RowCount - 1);
+        for (int row = firstRow; row <= lastRow; row++)
         {
-            AddQuadrilateral(
-                new Vector2(left, top),
-                new Vector2(right, top),
-                new Vector2(right, bottom),
-                new Vector2(left, bottom));
+            for (int column = firstColumn; column <= lastColumn; column++)
+            {
+                Vector2 center = new(
+                    (column + 0.5f) * cellSize,
+                    (row + 0.5f) * cellSize);
+                if (DistanceToSegment(center, start, end) <= halfWidthPixels)
+                {
+                    cells.Add(new Cell(column, row));
+                }
+            }
         }
+    }
 
-        public void AddQuadrilateral(
-            Vector2 topLeft,
-            Vector2 topRight,
-            Vector2 bottomRight,
-            Vector2 bottomLeft)
+    private static float DistanceToSegment(Vector2 point, Vector2 start, Vector2 end)
+    {
+        Vector2 segment = end - start;
+        float lengthSquared = segment.LengthSquared();
+        float progress = lengthSquared == 0.0f
+            ? 0.0f
+            : Math.Clamp((point - start).Dot(segment) / lengthSquared, 0.0f, 1.0f);
+        return point.DistanceTo(start + (segment * progress));
+    }
+
+    private static NavigationPolygon CreateNavigationPolygon(HashSet<Cell> cells)
+    {
+        float cellSize = OpeningRegionLayoutGeometry.RouteCellSizePixels;
+        Dictionary<Vector2, int> vertexIndices = [];
+        List<Vector2> vertices = [];
+        List<int[]> polygons = [];
+        foreach (Cell cell in cells.OrderBy(cell => cell.Row).ThenBy(cell => cell.Column))
         {
-            polygons.Add(
+            float left = cell.Column * cellSize;
+            float top = cell.Row * cellSize;
+            Vector2[] corners =
             [
-                GetVertexIndex(topLeft),
-                GetVertexIndex(topRight),
-                GetVertexIndex(bottomRight),
-                GetVertexIndex(bottomLeft),
-            ]);
+                new(left, top),
+                new(left + cellSize, top),
+                new(left + cellSize, top + cellSize),
+                new(left, top + cellSize),
+            ];
+            polygons.Add(corners.Select(corner => VertexIndex(
+                corner,
+                vertexIndices,
+                vertices)).ToArray());
         }
 
-        public NavigationPolygon Build()
+        NavigationPolygon polygon = new() { Vertices = [.. vertices] };
+        foreach (int[] indices in polygons)
         {
-            NavigationPolygon navigationPolygon = new()
-            {
-                Vertices = [.. vertices],
-            };
-            foreach (int[] polygon in polygons)
-            {
-                navigationPolygon.AddPolygon(polygon);
-            }
-
-            return navigationPolygon;
+            polygon.AddPolygon(indices);
         }
 
-        private int GetVertexIndex(Vector2 vertex)
-        {
-            if (vertexIndices.TryGetValue(vertex, out int index))
-            {
-                return index;
-            }
+        return polygon;
+    }
 
-            int newIndex = vertices.Count;
-            vertices.Add(vertex);
-            vertexIndices.Add(vertex, newIndex);
-            return newIndex;
+    private static int VertexIndex(
+        Vector2 vertex,
+        Dictionary<Vector2, int> indices,
+        List<Vector2> vertices)
+    {
+        if (indices.TryGetValue(vertex, out int existing))
+        {
+            return existing;
+        }
+
+        int index = vertices.Count;
+        vertices.Add(vertex);
+        indices.Add(vertex, index);
+        return index;
+    }
+
+    private void AddCollisionBoundary(HashSet<Cell> cells)
+    {
+        Node2D owner = new() { Name = "RouteBoundaries" };
+        AddChild(owner);
+        foreach ((Vector2 start, Vector2 end) in CreateBoundarySegments(cells))
+        {
+            StaticBody2D body = new();
+            body.AddChild(new CollisionShape2D
+            {
+                Shape = new SegmentShape2D { A = start, B = end },
+            });
+            owner.AddChild(body);
         }
     }
+
+    private static List<(Vector2 Start, Vector2 End)> CreateBoundarySegments(
+        HashSet<Cell> cells)
+    {
+        float size = OpeningRegionLayoutGeometry.RouteCellSizePixels;
+        List<(Vector2 Start, Vector2 End)> segments = [];
+        foreach (Cell cell in cells)
+        {
+            float left = cell.Column * size;
+            float top = cell.Row * size;
+            if (!cells.Contains(new Cell(cell.Column, cell.Row - 1)))
+            {
+                segments.Add((new(left, top), new(left + size, top)));
+            }
+
+            if (!cells.Contains(new Cell(cell.Column + 1, cell.Row)))
+            {
+                segments.Add((new(left + size, top), new(left + size, top + size)));
+            }
+
+            if (!cells.Contains(new Cell(cell.Column, cell.Row + 1)))
+            {
+                segments.Add((new(left + size, top + size), new(left, top + size)));
+            }
+
+            if (!cells.Contains(new Cell(cell.Column - 1, cell.Row)))
+            {
+                segments.Add((new(left, top + size), new(left, top)));
+            }
+        }
+
+        return segments;
+    }
+
+    private readonly record struct Cell(int Column, int Row);
 }

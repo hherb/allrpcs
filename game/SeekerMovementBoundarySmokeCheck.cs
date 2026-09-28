@@ -13,56 +13,56 @@ public partial class SeekerMovementBoundarySmokeCheck : Node
     private static readonly BlockedMotion[] BlockedMotions =
     [
         new(
-            new Vector2(800.0f, 50.0f),
+            new Vector2(1600.0f, 50.0f),
             new Vector2(0.0f, -100.0f),
             "../Boundaries/Top",
             "top outer border"),
         new(
-            new Vector2(800.0f, 850.0f),
+            new Vector2(1600.0f, 1750.0f),
             new Vector2(0.0f, 100.0f),
             "../Boundaries/Bottom",
             "bottom outer border"),
         new(
-            new Vector2(50.0f, 500.0f),
+            new Vector2(50.0f, 900.0f),
             new Vector2(-100.0f, 0.0f),
             "../Boundaries/Left",
             "left outer border"),
         new(
-            new Vector2(1550.0f, 500.0f),
+            new Vector2(3150.0f, 900.0f),
             new Vector2(100.0f, 0.0f),
             "../Boundaries/Right",
             "right outer border"),
         new(
-            new Vector2(500.0f, 300.0f),
+            new Vector2(1650.0f, 650.0f),
             new Vector2(0.0f, -250.0f),
             "../StreamCollision",
             "stream outside the bridge"),
         new(
-            new Vector2(900.0f, 640.0f),
-            new Vector2(300.0f, 0.0f),
-            "../VillageCollision",
-            "village block"),
+            new Vector2(2250.0f, 850.0f),
+            new Vector2(0.0f, -100.0f),
+            "../OpeningRegionVillageTransitionSceneSource/Boundaries/SquareTop",
+            "village-square wall"),
         new(
-            new Vector2(150.0f, 400.0f),
-            new Vector2(200.0f, 0.0f),
-            "../TreeCluster/TreeWest",
-            "tree cluster"),
+            new Vector2(1180.0f, 222.0f),
+            new Vector2(0.0f, -40.0f),
+            "../OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingTopRight",
+            "clearing tree boundary"),
     ];
 
     private static readonly ClearMotion[] ClearMotions =
     [
         new(
-            new Vector2(808.0f, 320.0f),
-            new Vector2(0.0f, -280.0f),
-            "south-to-north bridge traversal"),
+            new Vector2(1800.0f, 500.0f),
+            new Vector2(-300.0f, -280.0f),
+            "stream-to-laundry route"),
         new(
-            new Vector2(808.0f, 40.0f),
-            new Vector2(0.0f, 280.0f),
-            "north-to-south bridge traversal"),
+            new Vector2(1500.0f, 220.0f),
+            new Vector2(300.0f, 280.0f),
+            "laundry-to-stream route"),
         new(
-            new Vector2(620.0f, 620.0f),
-            new Vector2(70.0f, 124.0f),
-            "representative open lower terrain"),
+            new Vector2(1700.0f, 900.0f),
+            new Vector2(500.0f, 0.0f),
+            "village-edge-to-square route"),
     ];
 
     private CharacterBody2D seeker = null!;
@@ -108,9 +108,9 @@ public partial class SeekerMovementBoundarySmokeCheck : Node
         }
 
         GD.Print(
-            "Seeker movement-boundary smoke passed: all outer borders, representative stream, "
-            + "village, and tree collisions blocked movement while both bridge directions and "
-            + "open lower terrain remained traversable.");
+            "Seeker movement-boundary smoke passed: all outer borders and representative stream, "
+            + "village, and clearing collisions blocked movement while exact stream/laundry and "
+            + "village routes remained traversable.");
         GetTree().Quit();
     }
 
@@ -129,9 +129,12 @@ public partial class SeekerMovementBoundarySmokeCheck : Node
         Node2D expectedCollider = GetNode<Node2D>(scenario.ExpectedColliderPath);
         if (collision.GetCollider() != expectedCollider)
         {
+            string actual = collision.GetCollider() is Node node
+                ? $"{node.Name} under {node.GetParent().Name}"
+                : collision.GetCollider().ToString() ?? "unknown";
             Fail(
                 $"Expected the {scenario.Description} collision from "
-                + $"{expectedCollider.GetPath()}, received {collision.GetCollider()}.");
+                + $"{expectedCollider.GetPath()}, received {actual}.");
             return false;
         }
 

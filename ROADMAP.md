@@ -234,6 +234,10 @@ Acceptance:
 - [x] Create one external 3200x1800 opening-region layout proposal with all eleven retained
   locations, exact route topology, quantified travel and camera framing, explicit empty-area
   content budgets, and no runtime authority; keep implementation gated on explicit review.
+- [x] After explicit product-owner approval, implement that exact proposal as one coordinated
+  greybox reflow with proposal-hash provenance, 3200x1800 world and camera bounds, eleven anchors,
+  twelve physically clear route corridors, collision-aligned landmark openings, and the retained
+  closed north-west forest gate without changing scenario or gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

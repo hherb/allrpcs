@@ -46,30 +46,42 @@ public static class OpeningRegionVillageTransitionRoutePolicy
     {
         NavigationWorldBounds bounds = layout.SceneBinding.VillageSquareBounds;
         float halfOpening = layout.OpeningWidthPixels / 2.0f;
+        float bottomOpeningLeft = MathF.Min(
+            layout.SquareGardenOpening.X,
+            layout.SquareSickhouseOpening.X) - halfOpening;
+        float bottomOpeningRight = MathF.Max(
+            layout.SquareGardenOpening.X,
+            layout.SquareSickhouseOpening.X) + halfOpening;
+        float leftOpeningTop = MathF.Min(
+            layout.SquareEdgeOpening.Y,
+            layout.SquareSouthernRoadOpening.Y) - halfOpening;
+        float leftOpeningBottom = MathF.Max(
+            layout.SquareEdgeOpening.Y,
+            layout.SquareSouthernRoadOpening.Y) + halfOpening;
         return CrossesHorizontalWall(start, end, bounds.Top, bounds.Left, bounds.Right)
             || CrossesHorizontalWall(
                 start,
                 end,
                 bounds.Bottom,
                 bounds.Left,
-                layout.SquareGardenOpening.X - halfOpening)
+                bottomOpeningLeft)
             || CrossesHorizontalWall(
                 start,
                 end,
                 bounds.Bottom,
-                layout.SquareGardenOpening.X + halfOpening,
+                bottomOpeningRight,
                 bounds.Right)
             || CrossesVerticalWall(
                 start,
                 end,
                 bounds.Left,
                 bounds.Top,
-                layout.SquareEdgeOpening.Y - halfOpening)
+                leftOpeningTop)
             || CrossesVerticalWall(
                 start,
                 end,
                 bounds.Left,
-                layout.SquareEdgeOpening.Y + halfOpening,
+                leftOpeningBottom,
                 bounds.Bottom)
             || CrossesVerticalWall(start, end, bounds.Right, bounds.Top, bounds.Bottom);
     }

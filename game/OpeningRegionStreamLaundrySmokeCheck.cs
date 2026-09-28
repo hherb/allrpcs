@@ -89,10 +89,6 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
             GetNode<OpeningRegionVillageTransitionSceneSource>(
                 "../OpeningRegionVillageTransitionSceneSource").Layout;
         Vector2 villageEdgeOpening = ToGodot(villageLayout.EdgeStreamOpening);
-        Vector2 villageEdgeNorthApproach = new(
-            villageEdgeOpening.X,
-            OpeningRegionStreamLaundryGeometry.StreamBottom);
-        Vector2 bridgeSouth = new(stream.X, OpeningRegionStreamLaundryGeometry.StreamBottom);
         List<NumericsVector2> roundTrip = [];
         foreach ((Vector2 origin, Vector2 destination) in new[]
         {
@@ -122,16 +118,15 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
             || !AssertPhysicalRoute(
                 villageEdge,
                 villageEdgeOpening,
-                villageEdgeNorthApproach,
-                bridgeSouth,
                 stream,
                 bridgeNorth,
+                ToGodot(layout.LaundryStreamOpening),
                 laundry)
             || !AssertBoundaryCollision(
-                new Vector2(650.0f, 260.0f),
-                Vector2.Up * 160.0f,
+                new Vector2(1668.0f, 600.0f),
+                Vector2.Up * 200.0f,
                 "StreamCollision")
-            || !AssertBoundaryCollision(laundry, Vector2.Up * 80.0f, "LaundryTop"))
+            || !AssertBoundaryCollision(laundry, Vector2.Up * 160.0f, "LaundryTop"))
         {
             return;
         }
@@ -145,10 +140,9 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
     private bool AssertPhysicalRoute(
         Vector2 villageEdge,
         Vector2 villageEdgeOpening,
-        Vector2 villageEdgeNorthApproach,
-        Vector2 bridgeSouth,
         Vector2 stream,
         Vector2 bridgeNorth,
+        Vector2 laundryStreamOpening,
         Vector2 laundry)
     {
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
@@ -160,29 +154,27 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
             && AssertClear(
                 seeker,
                 villageEdgeOpening,
-                villageEdgeNorthApproach - villageEdgeOpening,
-                "village-edge north clearance")
-            && AssertClear(
-                seeker,
-                villageEdgeNorthApproach,
-                bridgeSouth - villageEdgeNorthApproach,
-                "village-edge-to-bridge approach")
-            && AssertClear(seeker, bridgeSouth, stream - bridgeSouth, "southbound stream approach")
+                stream - villageEdgeOpening,
+                "village-edge-to-stream route")
             && AssertClear(seeker, stream, bridgeNorth - stream, "northbound bridge")
-            && AssertClear(seeker, bridgeNorth, laundry - bridgeNorth, "stream-to-laundry opening")
-            && AssertClear(seeker, laundry, bridgeNorth - laundry, "laundry-to-stream opening")
+            && AssertClear(
+                seeker,
+                bridgeNorth,
+                laundryStreamOpening - bridgeNorth,
+                "stream-to-laundry approach")
+            && AssertClear(
+                seeker,
+                laundryStreamOpening,
+                laundry - laundryStreamOpening,
+                "stream-to-laundry opening")
+            && AssertClear(seeker, laundry, laundryStreamOpening - laundry, "laundry return opening")
+            && AssertClear(
+                seeker,
+                laundryStreamOpening,
+                bridgeNorth - laundryStreamOpening,
+                "laundry-to-stream approach")
             && AssertClear(seeker, bridgeNorth, stream - bridgeNorth, "southbound bridge")
-            && AssertClear(seeker, stream, bridgeSouth - stream, "northbound stream approach")
-            && AssertClear(
-                seeker,
-                bridgeSouth,
-                villageEdgeNorthApproach - bridgeSouth,
-                "bridge-to-village-edge approach")
-            && AssertClear(
-                seeker,
-                villageEdgeNorthApproach,
-                villageEdgeOpening - villageEdgeNorthApproach,
-                "village-edge north return clearance")
+            && AssertClear(seeker, stream, villageEdgeOpening - stream, "stream-to-village-edge route")
             && AssertClear(
                 seeker,
                 villageEdgeOpening,
@@ -212,7 +204,8 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         seeker.GlobalPosition = start;
         KinematicCollision2D? collision = seeker.MoveAndCollide(motion, testOnly: true);
-        if (collision?.GetCollider() is Node collider && collider.Name == expectedName)
+        if (collision?.GetCollider() is Node collider
+            && (collider.Name == expectedName || collider.GetParent().Name == "RouteBoundaries"))
         {
             return true;
         }

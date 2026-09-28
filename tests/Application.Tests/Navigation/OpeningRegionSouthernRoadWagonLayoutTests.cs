@@ -78,9 +78,15 @@ public sealed class OpeningRegionSouthernRoadWagonLayoutTests
         Assert.True(OpeningRegionSouthernRoadWagonRoutePolicy.IsAcceptable(
             layout,
             [new Vector2(800.0f, 876.0f), new Vector2(900.0f, 876.0f)]));
+        Vector2 roadDirection = Vector2.Normalize(
+            layout.RouteCenterline[1] - layout.RouteCenterline[0]);
         Assert.False(OpeningRegionSouthernRoadWagonRoutePolicy.IsAcceptable(
             layout,
-            [layout.SceneBinding.SouthernRoadAnchor.Position, new Vector2(500.0f, 760.0f)]));
+            [
+                layout.SceneBinding.SouthernRoadAnchor.Position
+                    + (roadDirection * layout.RoadHalfWidthPixels),
+                new Vector2(500.0f, 760.0f),
+            ]));
         Assert.False(OpeningRegionSouthernRoadWagonRoutePolicy.IsAcceptable(
             layout,
             [layout.SceneBinding.AbandonedWagonAnchor.Position, new Vector2(800.0f, 820.0f)]));

@@ -16,8 +16,8 @@ public partial class WorldObjectBoundInteractionFocusSmokeCheck : Node
         "ALLRPCS_WORLD_OBJECT_INTERACTION_FOCUS_CHECK";
     private const string EnabledEnvironmentValue = "1";
     private const string NoFocusText = "Interaction focus: NONE";
-    private static readonly Vector2 EqualDistancePosition = new(800.0f, 520.0f);
-    private static readonly Vector2 FirstTargetPosition = new(720.0f, 520.0f);
+    private static readonly Vector2 EqualDistancePosition = new(1000.0f, 350.0f);
+    private static readonly Vector2 FirstTargetPosition = new(920.0f, 350.0f);
 
     private InteractionFocusController focusController = null!;
     private FocusedSearchActivityController focusedSearchController = null!;

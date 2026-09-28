@@ -12,6 +12,8 @@ public partial class OpeningRegionProjectionSmokeCheck : Node
     private const int MinimumSynchronizationPhysicsFrames = 3;
     private const int MaximumSynchronizationPhysicsFrames = 60;
     private const float SurfaceTolerancePixels = 1.0f;
+    private const string ExpectedApprovedProposalSha256 =
+        "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1";
 
     private int physicsFrames;
 
@@ -53,6 +55,13 @@ public partial class OpeningRegionProjectionSmokeCheck : Node
     {
         try
         {
+            if (OpeningRegionProjectionSource.ApprovedProposalSha256
+                != ExpectedApprovedProposalSha256)
+            {
+                throw new InvalidOperationException(
+                    "The opening-region projection lost its approved proposal provenance.");
+            }
+
             foreach (OpeningRegionAnchor anchor in projection.Anchors)
             {
                 AssertEndpointClearance(projection, navigationMap, anchor);
@@ -76,6 +85,11 @@ public partial class OpeningRegionProjectionSmokeCheck : Node
                 }
 
                 AssertTraversable(navigationMap, connection);
+                if (connection.SecondAnchor.Location.Identity.Id.Value
+                    != "closed-deeper-forest-path")
+                {
+                    AssertPhysicallyTraversable(connection);
+                }
             }
         }
         catch (InvalidOperationException exception)
@@ -137,6 +151,29 @@ public partial class OpeningRegionProjectionSmokeCheck : Node
                 + $"{connection.TopologyConnection.First.Identity.Id.Value} -> "
                 + $"{connection.TopologyConnection.Second.Identity.Id.Value}.");
         }
+    }
+
+    private void AssertPhysicallyTraversable(OpeningRegionProjectedConnection connection)
+    {
+        CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
+        Vector2 origin = ToGodot(connection.FirstAnchor.Position);
+        Vector2 destination = ToGodot(connection.SecondAnchor.Position);
+        seeker.GlobalPosition = origin;
+        KinematicCollision2D? collision = seeker.MoveAndCollide(
+            destination - origin,
+            testOnly: true);
+        if (collision is null)
+        {
+            return;
+        }
+
+        string collider = collision.GetCollider() is Node node
+            ? node.Name.ToString()
+            : "unknown";
+        throw new InvalidOperationException(
+            "Expected a physically clear opening-region connection, but "
+            + $"{connection.TopologyConnection.First.Identity.Id.Value} -> "
+            + $"{connection.TopologyConnection.Second.Identity.Id.Value} hit {collider}.");
     }
 
     private static Vector2 ToGodot(NumericsVector2 position) => new(position.X, position.Y);

@@ -136,9 +136,11 @@ public sealed class OpeningRegionSouthernRoadWagonLayout
         float wagonOpeningWidth)
     {
         Vector2 firstOffset = Perpendicular(centerline[0], centerline[1]) * roadHalfWidth;
+        Vector2 firstCenter = centerline[0]
+            + (Vector2.Normalize(centerline[1] - centerline[0]) * roadHalfWidth);
         Vector2 horizontalOpeningOffset = Vector2.UnitX * (wagonOpeningWidth / 2.0f);
-        Vector2 firstLeft = centerline[0] + firstOffset;
-        Vector2 firstRight = centerline[0] - firstOffset;
+        Vector2 firstLeft = firstCenter + firstOffset;
+        Vector2 firstRight = firstCenter - firstOffset;
         Vector2 lastLeft = centerline[1] - horizontalOpeningOffset;
         Vector2 lastRight = centerline[1] + horizontalOpeningOffset;
         return

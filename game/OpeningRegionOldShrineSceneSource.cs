@@ -66,6 +66,8 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
             OpeningWidthPixels,
             WallThicknessPixels,
             OpeningRegionOldShrineGeometry.SouthernRoadOpening);
+        ConfigurePresentation();
+        ConfigureBoundaries();
 
         DiscoveryScenario = GetNode<TemporaryWorldObjectSource>(
             "../TemporaryWorldObjectSource").RepresentativeDiscoveryScenario;
@@ -165,6 +167,84 @@ public partial class OpeningRegionOldShrineSceneSource : Node2D
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>
         new(position.X, position.Y);
+
+    private void ConfigurePresentation()
+    {
+        GetNode<Polygon2D>("ShrineArea").Polygon = Rectangle(Binding.OldShrineBounds);
+        GetNode<Polygon2D>("WoodlandClearingOpening").Polygon = VerticalOpening(
+            Layout.WoodlandClearingOpening);
+        GetNode<Polygon2D>("SouthernRoadOpening").Polygon = HorizontalOpening(
+            Layout.SouthernRoadOpening);
+        GetNode<Label>("ShrineLabel").Position = new Vector2(
+            Binding.OldShrineBounds.Left + 12.0f,
+            Binding.OldShrineBounds.Top + 12.0f);
+    }
+
+    private void ConfigureBoundaries()
+    {
+        float half = Layout.OpeningWidthPixels / 2.0f;
+        NavigationWorldBounds bounds = Binding.OldShrineBounds;
+        List<OpeningRegionBoundarySegment> segments =
+        [
+            new(new(bounds.Left, bounds.Top), new(bounds.Right, bounds.Top)),
+            new(new(bounds.Left, bounds.Top), new(bounds.Left, bounds.Bottom)),
+            new(new(bounds.Right, bounds.Top), new(bounds.Right, Layout.WoodlandClearingOpening.Y - half)),
+            new(new(bounds.Right, Layout.WoodlandClearingOpening.Y + half), new(bounds.Right, bounds.Bottom)),
+            new(new(bounds.Left, bounds.Bottom), new(Layout.SouthernRoadOpening.X - half, bounds.Bottom)),
+        ];
+        Node2D owner = GetNode<Node2D>("ShrineBoundaries");
+        if (owner.GetChildCount() != segments.Count)
+        {
+            throw new InvalidOperationException(
+                "The authored shrine-boundary count must match the derived layout.");
+        }
+
+        for (int index = 0; index < segments.Count; index++)
+        {
+            StaticBody2D body = owner.GetChild<StaticBody2D>(index);
+            body.Position = Vector2.Zero;
+            body.GetChild<CollisionShape2D>(0).Shape = new SegmentShape2D
+            {
+                A = ToGodot(segments[index].Start),
+                B = ToGodot(segments[index].End),
+            };
+        }
+    }
+
+    private static Vector2 ToGodot(NumericsVector2 position) =>
+        new(position.X, position.Y);
+
+    private static Vector2[] Rectangle(NavigationWorldBounds bounds) =>
+    [
+        new(bounds.Left, bounds.Top),
+        new(bounds.Right, bounds.Top),
+        new(bounds.Right, bounds.Bottom),
+        new(bounds.Left, bounds.Bottom),
+    ];
+
+    private static Vector2[] HorizontalOpening(NumericsVector2 center)
+    {
+        float half = OpeningWidthPixels / 2.0f;
+        return
+        [
+            new(center.X - half, center.Y - WallThicknessPixels),
+            new(center.X + half, center.Y - WallThicknessPixels),
+            new(center.X + half, center.Y + WallThicknessPixels),
+            new(center.X - half, center.Y + WallThicknessPixels),
+        ];
+    }
+
+    private static Vector2[] VerticalOpening(NumericsVector2 center)
+    {
+        float half = OpeningWidthPixels / 2.0f;
+        return
+        [
+            new(center.X - WallThicknessPixels, center.Y - half),
+            new(center.X + WallThicknessPixels, center.Y - half),
+            new(center.X + WallThicknessPixels, center.Y + half),
+            new(center.X - WallThicknessPixels, center.Y + half),
+        ];
+    }
 
     private static Character CreateKnowledgeableSeeker(DiscoveryScenario scenario)
     {

@@ -2,60 +2,50 @@
 
 ## Current state
 
-Phase 8 and Phase 9.1 remain complete. Direction A, painterly storybook gouache, remains selected;
-Direction D is only the documented contingency. The deterministic 66-asset corrected proof,
-seventeen editable OpenRaster masters, isolated `DirectionAImportProof.tscn`, 1280x720 base design
-viewport, accepted Seeker scale, unchanged terrain pixels, and 0.8/1.0/2.0 camera tuning remain as
-previously recorded. `Main.tscn` still references none of the proof art.
+Phase 8 and Phase 9.1 remain complete. The explicitly approved 3200x1800 opening-region proposal is
+now the live greybox layout. Runtime provenance retains proposal SHA-256
+`a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1`; all eleven exact anchors,
+twelve topology edges, 96-pixel route corridors, 24-pixel navigation clearance, camera bounds and
+0.8/1.0/2.0 tuning are implemented together. The Closed Forest Path is the retained north-west
+terminal branch and remains physically gated until its existing Forester access removes the gate.
 
-The external [`art-direction/world-layout-proposal`](art-direction/world-layout-proposal/README.md)
-is the current candidate for the opening-region reflow. It proposes a 3200x1800 authored world,
-all eleven retained locations, all twelve existing topology edges, the unchanged 240-pixel-per-second
-movement speed and 96-pixel path language, exact route budgets, 1280x720 and 1280x827 camera frames,
-and five non-authoritative empty-area content budgets. `layout-proposal.json` remains the single
-source for the three deterministic SVG review diagrams.
+Direction A remains selected and Direction D remains only the contingency. The 66 proof exports,
+seventeen editable OpenRaster masters, and isolated `DirectionAImportProof.tscn` remain proof-only;
+`Main.tscn` references none of that production-proof art. The proposal's five empty-area budgets
+remain non-authoritative.
 
-## This session
+## Completed slice
 
-- Technical review recommends the proposal as the candidate for one coordinated greybox
-  implementation. The north-west Closed Forest Path removes the prior false crossing; the
-  6.5-second shrine-to-road connection remains an explicit pacing hypothesis; both representative
-  camera frames are contained at the retained zoom range; and the five content budgets add no
-  gameplay authority.
-- The proposal validator now checks complete 96-pixel route-band separation, not only centreline
-  intersection. The closest independent centrelines are about 290.6 pixels apart.
-- Focused geometry regressions cover ordinary crossing, collinear overlap, a non-intersecting
-  95-pixel route-band overlap, and separated 97-pixel parallel routes through the same predicate
-  used by proposal validation.
-- No `game/` file, runtime node, navigation polygon, collision shape, location, clue, dialogue,
-  gameplay rule, or ordinary art reference changed.
+- Reflowed the world, camera, party, interactables, eleven location anchors, and all existing
+  landmark greyboxes without changing location identity, topology, scenario, dialogue, clue, or
+  gameplay rules.
+- Replaced the old broad navigation surface with the approved twelve-corridor raster, exact
+  endpoint clearance, visible route presentation, and collision-backed outer boundaries.
+- Derived village, stream/laundry, clearing, shrine, sickhouse, road/wagon, and closed-path openings
+  from the approved diagonal routes. Cumulative review added a physical traversal check for every
+  open topology edge and retained the intentional closed-gate exception.
+- Corrected the sickhouse entrance, village four-way shell, shrine-road opening, southern-road hub,
+  and wagon opening after the stronger physical-route review exposed their old-map assumptions.
 
 ## Verified evidence and limits
 
-- `python3 art-direction/world-layout-proposal/tools/validate.py` passes 11 anchors, 12 exact edges,
-  96-pixel independent-route separation, 5 bounded content zones, 2 exact camera frames,
-  accessible SVG structure, deterministic geometry regressions, and byte-deterministic output.
-- Host-local `./scripts/quality.sh` passes all art/import/layout validators, zero-warning build,
-  2,839 Domain, 924 Application, 1,261 Infrastructure, and 8 architecture tests, scenario
-  validation, every credential-free Godot smoke, formatting, and the Compatibility graphical
-  launch. The restricted run passed every non-Godot stage before the known `user://logs` sandbox
-  crash; the identical full command passed on the host.
-- The post-push `Credential-free CI` workflow reports failure, but all five hosted jobs contain
-  `steps: []`; no product command ran. Treat that as Actions/account infrastructure state, not
-  product-test evidence. The complete host-local validation above is the current product evidence.
-- The technical recommendation is not product-owner approval, human pacing or route-usability
-  evidence, human accessibility acceptance, or accepted runtime geometry.
+- `python3 art-direction/world-layout-proposal/tools/validate.py` passes the exact 11 anchors,
+  12 edges, route-band separation, 5 bounded content zones, 2 camera frames, SVG structure,
+  geometry regressions, and deterministic rebuilding.
+- Host-local `./scripts/quality.sh` passes the zero-warning build, 2,839 Domain, 925 Application,
+  1,261 Infrastructure, and 8 architecture tests, every credential-free Godot smoke, formatting,
+  and the Compatibility graphical launch.
+- Automated graphical launch and smoke coverage are not human pacing, route-usability, or
+  accessibility acceptance. No independent human playtest evidence was supplied in this slice.
 
 ## Exact next bounded slice
 
-Obtain an explicit product-owner decision on the proposed anchor coordinates, north-west Closed
-Forest Path relocation, route-distance budget, camera framing, and five empty-area content budgets.
-If changes are requested, revise only the external proposal and rerun its validator plus
-`./scripts/quality.sh`.
+Run one explicit product-owner graphical greybox checkpoint over the approved layout: traverse all
+eleven anchors and every open connection, confirm the north-west closed gate reads correctly, assess
+the 6.5-second shrine-road pacing hypothesis, and inspect camera framing at 0.8/1.0/2.0 zoom in both
+representative viewport shapes. Record only observations the human reviewer actually supplies.
 
-Do not implement the layout from a generic continuation request: the explicit approval gate remains
-closed. After approval, make one coordinated greybox-only change covering the accepted 3200x1800
-world bounds, camera limits/tuning, eleven anchor moves, collision and navigation geometry,
-provenance, focused tests, and Godot smokes. Preserve all topology, scenario, dialogue, clue, and
-gameplay rules. Bulk Direction A production art, audio, release, signing, and independent human
-playtesting remain later work.
+If corrections are requested, change only the accepted greybox geometry and its focused tests, then
+rerun the proposal validator and `./scripts/quality.sh`. Do not wire proof art into `Main.tscn`, add
+locations or topology, change scenario/dialogue/clue/gameplay authority, fill the five content
+budgets, or begin bulk art, audio, release, signing, or distribution work in that slice.

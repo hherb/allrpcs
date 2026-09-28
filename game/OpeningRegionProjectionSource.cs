@@ -8,11 +8,14 @@ namespace Allrpcs.Game;
 /// <summary>Projects the exact opening topology through scene-owned gameplay-scale anchors.</summary>
 public partial class OpeningRegionProjectionSource : Node2D
 {
+    /// <summary>Gets the SHA-256 of the exact approved proposal implemented by this scene.</summary>
+    public const string ApprovedProposalSha256 = OpeningRegionLayoutGeometry.ProposalSha256;
+
     /// <summary>Gets the authored gameplay-scale world width in pixels.</summary>
-    public const float WorldWidthPixels = 1600.0f;
+    public const float WorldWidthPixels = OpeningRegionLayoutGeometry.WorldWidthPixels;
 
     /// <summary>Gets the authored gameplay-scale world height in pixels.</summary>
-    public const float WorldHeightPixels = 900.0f;
+    public const float WorldHeightPixels = OpeningRegionLayoutGeometry.WorldHeightPixels;
 
     /// <summary>Gets the free-space radius required around each route endpoint.</summary>
     public const float MinimumPathClearancePixels = 24.0f;
@@ -41,6 +44,15 @@ public partial class OpeningRegionProjectionSource : Node2D
             {
                 throw new InvalidOperationException(
                     "Opening-region scene anchors must be markers named for exact topology locations.");
+            }
+
+            if (!OpeningRegionLayoutGeometry.Anchors.TryGetValue(
+                    marker.Name.ToString(),
+                    out Vector2 expectedPosition)
+                || marker.Position != expectedPosition)
+            {
+                throw new InvalidOperationException(
+                    "Opening-region scene anchors must match the explicitly approved proposal.");
             }
 
             anchors.Add(new OpeningRegionAnchor(location, ToNumerics(marker.Position)));

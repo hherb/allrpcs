@@ -47,12 +47,12 @@ public partial class InteractionFocusSmokeCheck : Node
         "hidden-marker",
         "excluded-marker",
     ];
-    private static readonly Vector2 FirstTargetPosition = new(720.0f, 520.0f);
-    private static readonly Vector2 EqualDistancePosition = new(800.0f, 520.0f);
-    private static readonly Vector2 SecondTargetPosition = new(880.0f, 520.0f);
-    private static readonly Vector2 OutOfRangePosition = new(500.0f, 800.0f);
-    private static readonly Vector2 HiddenTargetPosition = new(800.0f, 280.0f);
-    private static readonly Vector2 DisabledTargetPosition = new(1040.0f, 440.0f);
+    private static readonly Vector2 FirstTargetPosition = new(920.0f, 350.0f);
+    private static readonly Vector2 EqualDistancePosition = new(1000.0f, 350.0f);
+    private static readonly Vector2 SecondTargetPosition = new(1080.0f, 350.0f);
+    private static readonly Vector2 OutOfRangePosition = new(1400.0f, 1000.0f);
+    private static readonly Vector2 HiddenTargetPosition = new(1000.0f, 150.0f);
+    private static readonly Vector2 DisabledTargetPosition = new(1000.0f, 550.0f);
 
     private InteractionFocusController controller = null!;
     private FocusedSearchActivityController focusedSearchController = null!;

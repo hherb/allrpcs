@@ -15,7 +15,7 @@ public partial class OrdinaryBoundedConversationLoopSmokeCheck : Node
     private const string SageText = "Name the evidence that could change your mind.";
     private const string HealerText = "Then we can compare it with what we observed.";
     private const int MaximumProcessFrames = 500;
-    private static readonly Vector2 CloseSagePosition = new(840.0f, 450.0f);
+    private static readonly Vector2 CloseSagePosition = new(2120.0f, 950.0f);
 
     private readonly LoopParticipationModel participationModel = new();
     private readonly LoopCharacterModel characterModel = new();
@@ -76,7 +76,12 @@ public partial class OrdinaryBoundedConversationLoopSmokeCheck : Node
         processFrames++;
         if (processFrames > MaximumProcessFrames)
         {
-            Fail("The ordinary autonomous chain exceeded its bounded smoke duration.");
+            Fail(
+                "The ordinary autonomous chain exceeded its bounded smoke duration: "
+                + $"participation requests={participationModel.Requests.Count}, "
+                + $"character requests={characterModel.Requests.Count}, "
+                + $"turn state={turnController.Activity?.State.Value ?? "none"}, "
+                + $"completed turns={budgetController.Budget?.CompletedTurnCount ?? 0}.");
             return;
         }
 

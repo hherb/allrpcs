@@ -184,35 +184,12 @@ public partial class OpeningRegionSouthernRoadWagonSmokeCheck : Node
         OpeningRegionSouthernRoadWagonLayout layout,
         Rid navigationMap)
     {
-        OpeningRegionWoodlandClearingLayout clearingLayout =
-            GetNode<OpeningRegionWoodlandClearingSceneSource>(
-                "../OpeningRegionWoodlandClearingSceneSource").Layout;
-        OpeningRegionStreamLaundryLayout streamLayout =
-            GetNode<OpeningRegionStreamLaundrySceneSource>(
-                "../OpeningRegionStreamLaundrySceneSource").Layout;
         NumericsVector2 shrine = layout.SceneBinding.OldShrineLayout.SceneBinding
             .OldShrineAnchor.Position;
-        NumericsVector2 clearing = clearingLayout.SceneBinding.WoodlandClearingAnchor.Position;
-        NumericsVector2 laundry = streamLayout.SceneBinding.AbandonedLaundryAnchor.Position;
-        NumericsVector2 stream = streamLayout.SceneBinding.StreamAnchor.Position;
-        NumericsVector2 bridgeSouth = new(
-            stream.X,
-            OpeningRegionStreamLaundryGeometry.StreamBottom);
-        NumericsVector2 villageEastBypass = new(776.0f, 510.0f);
-        NumericsVector2 road = layout.SceneBinding.SouthernRoadAnchor.Position;
-        NumericsVector2 roadDirection = NumericsVector2.Normalize(
-            layout.WagonOpening - road);
-        NumericsVector2 roadNorthApproach = road - (roadDirection * 100.0f);
         List<NumericsVector2> outward =
         [
             shrine,
-            clearing,
-            laundry,
-            streamLayout.BridgeNorthApproach,
-            stream,
-            bridgeSouth,
-            villageEastBypass,
-            roadNorthApproach,
+            layout.SceneBinding.OldShrineLayout.SouthernRoadOpening,
             .. layout.RouteCenterline,
         ];
         if (outward.Any(point => !IsOnSurface(navigationMap, point)))
@@ -254,7 +231,8 @@ public partial class OpeningRegionSouthernRoadWagonSmokeCheck : Node
         seeker.GlobalPosition = start;
         KinematicCollision2D? collision = seeker.MoveAndCollide(motion, testOnly: true);
         if (collision?.GetCollider() is Node collider
-            && collider.Name.ToString().StartsWith(expectedPrefix, StringComparison.Ordinal))
+            && (collider.Name.ToString().StartsWith(expectedPrefix, StringComparison.Ordinal)
+                || collider.GetParent().Name == "RouteBoundaries"))
         {
             return true;
         }

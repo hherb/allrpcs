@@ -43,8 +43,9 @@ public sealed class OpeningRegionWoodlandClearingLayout
         OpeningRegionAnchor villageEdge = ConnectedAnchor(sceneBinding, VillageEdgeLocationId);
         OpeningRegionAnchor closedPath = ConnectedAnchor(sceneBinding, ClosedPathLocationId);
         NavigationWorldBounds bounds = sceneBinding.WoodlandClearingBounds;
-        Vector2 laundryOpening = new(bounds.Right, sceneBinding.WoodlandClearingAnchor.Position.Y);
-        Vector2 shrineOpening = new(bounds.Left, sceneBinding.WoodlandClearingAnchor.Position.Y);
+        Vector2 clearing = sceneBinding.WoodlandClearingAnchor.Position;
+        Vector2 laundryOpening = VerticalIntersection(clearing, laundry.Position, bounds.Right);
+        Vector2 shrineOpening = VerticalIntersection(clearing, shrine.Position, bounds.Left);
         ValidateSideOpening(bounds, laundryOpening, openingWidthPixels, wallThicknessPixels);
         ValidateSideOpening(bounds, shrineOpening, openingWidthPixels, wallThicknessPixels);
         ValidateBottomOpening(
@@ -54,17 +55,18 @@ public sealed class OpeningRegionWoodlandClearingLayout
             openingWidthPixels,
             wallThicknessPixels,
             nameof(villageEdgeOpening));
-        ValidateBottomOpening(
+        ValidateVerticalOpening(
             sceneBinding,
             closedPath,
             closedForestPathOpening,
             openingWidthPixels,
             wallThicknessPixels,
             nameof(closedForestPathOpening));
-        if (MathF.Abs(villageEdgeOpening.X - closedForestPathOpening.X) < openingWidthPixels)
+        if (villageEdgeOpening.Y == closedForestPathOpening.Y
+            && MathF.Abs(villageEdgeOpening.X - closedForestPathOpening.X) < openingWidthPixels)
         {
             throw new ArgumentException(
-                "The two southern clearing openings must remain distinct and non-overlapping.",
+            "The clearing route openings must remain distinct and non-overlapping.",
                 nameof(closedForestPathOpening));
         }
 
@@ -95,7 +97,7 @@ public sealed class OpeningRegionWoodlandClearingLayout
     /// <summary>Gets the southeast opening toward the village edge.</summary>
     public Vector2 VillageEdgeOpening { get; }
 
-    /// <summary>Gets the southwest opening toward the closed deeper-forest path.</summary>
+    /// <summary>Gets the northwest opening toward the closed deeper-forest path.</summary>
     public Vector2 ClosedForestPathOpening { get; }
 
     private static OpeningRegionAnchor ConnectedAnchor(
@@ -125,6 +127,12 @@ public sealed class OpeningRegionWoodlandClearingLayout
             && connection.SecondAnchor.Location.Identity.Id.Value == otherLocationId)
         || (ReferenceEquals(connection.SecondAnchor, clearing)
             && connection.FirstAnchor.Location.Identity.Id.Value == otherLocationId);
+
+    private static Vector2 VerticalIntersection(Vector2 start, Vector2 end, float x)
+    {
+        float progress = (x - start.X) / (end.X - start.X);
+        return new Vector2(x, start.Y + ((end.Y - start.Y) * progress));
+    }
 
     private static void ValidatePositiveFinite(float value, string parameterName)
     {
@@ -182,6 +190,39 @@ public sealed class OpeningRegionWoodlandClearingLayout
         {
             throw new ArgumentException(
                 "Southern openings must retain the projected topology route.",
+                parameterName);
+        }
+    }
+
+    private static void ValidateVerticalOpening(
+        OpeningRegionWoodlandClearingSceneBinding binding,
+        OpeningRegionAnchor connectedAnchor,
+        Vector2 opening,
+        float width,
+        float wallThickness,
+        string parameterName)
+    {
+        NavigationWorldBounds bounds = binding.WoodlandClearingBounds;
+        float halfWidth = width / 2.0f;
+        if (!float.IsFinite(opening.X)
+            || (opening.Y != bounds.Top && opening.Y != bounds.Bottom)
+            || opening.X - halfWidth < bounds.Left + wallThickness
+            || opening.X + halfWidth > bounds.Right - wallThickness)
+        {
+            throw new ArgumentException(
+                "Vertical openings must fit completely on the clearing boundary.",
+                parameterName);
+        }
+
+        Vector2 clearing = binding.WoodlandClearingAnchor.Position;
+        float progress = (opening.Y - connectedAnchor.Position.Y)
+            / (clearing.Y - connectedAnchor.Position.Y);
+        float crossingX = connectedAnchor.Position.X
+            + ((clearing.X - connectedAnchor.Position.X) * progress);
+        if (!float.IsFinite(crossingX) || MathF.Abs(crossingX - opening.X) > halfWidth)
+        {
+            throw new ArgumentException(
+                "Vertical openings must retain the projected topology route.",
                 parameterName);
         }
     }
