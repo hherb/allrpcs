@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="827" viewBox="1360 586.5 1280 827" role="img">
+  <title>1280x827 representative fullscreen view</title>
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#233d35"/>
+      <stop offset="1" stop-color="#152b29"/>
+    </linearGradient>
+    <pattern id="grid" width="160" height="160" patternUnits="userSpaceOnUse">
+      <path d="M 160 0 L 0 0 0 160" fill="none" stroke="#d8ead8" stroke-opacity="0.08" stroke-width="3"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#07100e" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="3200" height="1800" fill="url(#ground)"/>
+  <rect x="0" y="0" width="3200" height="1800" fill="url(#grid)"/>
+  <rect x="16" y="16" width="3168" height="1768" fill="none" stroke="#d7c791" stroke-width="12"/>
+  <rect x="1940" y="80" width="1180" height="390" rx="32" fill="#d7c791" fill-opacity="0.045" stroke="#d7c791" stroke-opacity="0.38" stroke-width="8" stroke-dasharray="26 20"/>
+  <text x="1968" y="128" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#d7c791" fill-opacity="0.78">A  Upstream bank</text>
+  <rect x="2440" y="560" width="680" height="1000" rx="32" fill="#d7c791" fill-opacity="0.045" stroke="#d7c791" stroke-opacity="0.38" stroke-width="8" stroke-dasharray="26 20"/>
+  <text x="2468" y="608" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#d7c791" fill-opacity="0.78">B  Village fabric</text>
+  <rect x="1240" y="620" width="360" height="600" rx="32" fill="#d7c791" fill-opacity="0.045" stroke="#d7c791" stroke-opacity="0.38" stroke-width="8" stroke-dasharray="26 20"/>
+  <text x="1268" y="668" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#d7c791" fill-opacity="0.78">C  Central transition</text>
+  <rect x="80" y="520" width="1040" height="1120" rx="32" fill="#d7c791" fill-opacity="0.045" stroke="#d7c791" stroke-opacity="0.38" stroke-width="8" stroke-dasharray="26 20"/>
+  <text x="108" y="568" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#d7c791" fill-opacity="0.78">D  Forest boundary</text>
+  <rect x="1140" y="1510" width="710" height="170" rx="32" fill="#d7c791" fill-opacity="0.045" stroke="#d7c791" stroke-opacity="0.38" stroke-width="8" stroke-dasharray="26 20"/>
+  <text x="1168" y="1558" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#d7c791" fill-opacity="0.78">E  Southern verges</text>
+  <line x1="2200" y1="900" x2="2640" y2="1450" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="2200" y1="900" x2="2640" y2="1450" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="2348" y="1152" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="2420" y="1186" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">704px / 2.9s</text>
+  <line x1="2200" y1="900" x2="2300" y2="1300" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="2200" y1="900" x2="2300" y2="1300" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="2178" y="1077" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="2250" y="1111" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">412px / 1.7s</text>
+  <line x1="2200" y1="900" x2="1700" y2="900" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="2200" y1="900" x2="1700" y2="900" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1878" y="877" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1950" y="911" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">500px / 2.1s</text>
+  <line x1="2200" y1="900" x2="1500" y2="1400" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="2200" y1="900" x2="1500" y2="1400" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1778" y="1127" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1850" y="1161" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">860px / 3.6s</text>
+  <line x1="1700" y1="900" x2="1800" y2="500" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1700" y1="900" x2="1800" y2="500" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1678" y="677" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1750" y="711" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">412px / 1.7s</text>
+  <line x1="1800" y1="500" x2="1500" y2="220" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1800" y1="500" x2="1500" y2="220" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1578" y="337" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1650" y="371" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">410px / 1.7s</text>
+  <line x1="1700" y1="900" x2="1000" y2="350" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1700" y1="900" x2="1000" y2="350" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1278" y="602" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1350" y="636" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">890px / 3.7s</text>
+  <line x1="1500" y1="220" x2="1000" y2="350" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1500" y1="220" x2="1000" y2="350" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1178" y="262" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1250" y="296" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">517px / 2.2s</text>
+  <line x1="1000" y1="350" x2="380" y2="300" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1000" y1="350" x2="380" y2="300" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="618" y="302" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="690" y="336" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">622px / 2.6s</text>
+  <line x1="380" y1="300" x2="1500" y2="1400" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="380" y1="300" x2="1500" y2="1400" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="868" y="827" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="940" y="861" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">1570px / 6.5s</text>
+  <line x1="1500" y1="1400" x2="1900" y2="1640" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1500" y1="1400" x2="1900" y2="1640" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="1628" y="1497" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="1700" y="1531" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">466px / 1.9s</text>
+  <line x1="1000" y1="350" x2="650" y2="150" stroke="#b78b55" stroke-opacity="0.28" stroke-width="96" stroke-linecap="round"/>
+  <line x1="1000" y1="350" x2="650" y2="150" stroke="#efcf8f" stroke-width="12" stroke-linecap="round"/>
+  <rect x="753" y="227" width="144" height="46" rx="23" fill="#102420" stroke="#efcf8f" stroke-opacity="0.55" stroke-width="3"/>
+  <text x="825" y="261" text-anchor="middle" font-family="Arial, sans-serif" font-size="27" font-weight="700" fill="#f8e7bd">403px / 1.7s</text>
+  <circle cx="2640" cy="1450" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="2640" y="1460" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">1</text>
+  <text x="2676" y="1502" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Sickhouse</text>
+  <text x="2676" y="1536" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(2640, 1450)</text>
+  <circle cx="2300" cy="1300" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="2300" y="1310" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">2</text>
+  <text x="2336" y="1352" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Healer&#x27;s Garden</text>
+  <text x="2336" y="1386" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(2300, 1300)</text>
+  <circle cx="2200" cy="900" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="2200" y="910" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">3</text>
+  <text x="2236" y="866" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Village Square</text>
+  <text x="2236" y="900" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(2200, 900)</text>
+  <circle cx="1700" cy="900" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="1700" y="910" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">4</text>
+  <text x="1450" y="866" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Village Edge</text>
+  <text x="1450" y="900" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(1700, 900)</text>
+  <circle cx="1800" cy="500" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="1800" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">5</text>
+  <text x="1836" y="470" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Stream</text>
+  <text x="1836" y="504" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(1800, 500)</text>
+  <circle cx="1500" cy="220" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="1500" y="230" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">6</text>
+  <text x="1536" y="274" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Abandoned Laundry</text>
+  <text x="1536" y="308" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(1500, 220)</text>
+  <circle cx="1000" cy="350" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="1000" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">7</text>
+  <text x="670" y="368" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Woodland Clearing</text>
+  <text x="670" y="402" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(1000, 350)</text>
+  <circle cx="380" cy="300" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="380" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">8</text>
+  <text x="416" y="354" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Old Shrine</text>
+  <text x="416" y="388" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(380, 300)</text>
+  <circle cx="1500" cy="1400" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="1500" y="1410" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">9</text>
+  <text x="1230" y="1456" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Southern Road</text>
+  <text x="1230" y="1490" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(1500, 1400)</text>
+  <circle cx="1900" cy="1640" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="1900" y="1650" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">10</text>
+  <text x="1936" y="1692" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Abandoned Wagon</text>
+  <text x="1936" y="1726" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(1900, 1640)</text>
+  <circle cx="650" cy="150" r="29" fill="#f3cf76" stroke="#102420" stroke-width="10" filter="url(#shadow)"/>
+  <text x="650" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="800" fill="#102420">11</text>
+  <text x="250" y="194" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#f6f0d8">Closed Forest Path</text>
+  <text x="250" y="228" font-family="Arial, sans-serif" font-size="25" fill="#b8d4c3">(650, 150)</text>
+</svg>

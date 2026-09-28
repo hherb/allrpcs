@@ -231,6 +231,9 @@ Acceptance:
   idle/breathe, and reach-and-inspect proofs from retained high-resolution sources at a minimum
   144-pixel visible height, exact 2x masters, and a fixed 156-pixel planted-foot baseline without
   changing terrain pixels or ordinary gameplay art references.
+- [x] Create one external 3200x1800 opening-region layout proposal with all eleven retained
+  locations, exact route topology, quantified travel and camera framing, explicit empty-area
+  content budgets, and no runtime authority; keep implementation gated on explicit review.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "title": "Opening region 3200x1800 layout proposal",
+  "world": {
+    "width": 3200,
+    "height": 1800,
+    "movement_speed_pixels_per_second": 240,
+    "path_width": 96,
+    "camera": {
+      "minimum_zoom": 0.8,
+      "starting_zoom": 1.0,
+      "maximum_zoom": 2.0
+    }
+  },
+  "anchors": [
+    {"id": "sickhouse", "label": "Sickhouse", "x": 2640, "y": 1450, "label_dx": 36, "label_dy": 52},
+    {"id": "healer-garden", "label": "Healer's Garden", "x": 2300, "y": 1300, "label_dx": 36, "label_dy": 52},
+    {"id": "village-square", "label": "Village Square", "x": 2200, "y": 900, "label_dx": 36, "label_dy": -34},
+    {"id": "village-edge", "label": "Village Edge", "x": 1700, "y": 900, "label_dx": -250, "label_dy": -34},
+    {"id": "stream", "label": "Stream", "x": 1800, "y": 500, "label_dx": 36, "label_dy": -30},
+    {"id": "abandoned-laundry", "label": "Abandoned Laundry", "x": 1500, "y": 220, "label_dx": 36, "label_dy": 54},
+    {"id": "woodland-clearing", "label": "Woodland Clearing", "x": 1000, "y": 350, "label_dx": -330, "label_dy": 18},
+    {"id": "old-shrine", "label": "Old Shrine", "x": 380, "y": 300, "label_dx": 36, "label_dy": 54},
+    {"id": "southern-road", "label": "Southern Road", "x": 1500, "y": 1400, "label_dx": -270, "label_dy": 56},
+    {"id": "abandoned-wagon", "label": "Abandoned Wagon", "x": 1900, "y": 1640, "label_dx": 36, "label_dy": 52},
+    {"id": "closed-deeper-forest-path", "label": "Closed Forest Path", "x": 650, "y": 150, "label_dx": -400, "label_dy": 44}
+  ],
+  "connections": [
+    {"id": "square-sickhouse", "first": "village-square", "second": "sickhouse"},
+    {"id": "square-garden", "first": "village-square", "second": "healer-garden"},
+    {"id": "square-edge", "first": "village-square", "second": "village-edge"},
+    {"id": "square-road", "first": "village-square", "second": "southern-road"},
+    {"id": "edge-stream", "first": "village-edge", "second": "stream"},
+    {"id": "stream-laundry", "first": "stream", "second": "abandoned-laundry"},
+    {"id": "edge-clearing", "first": "village-edge", "second": "woodland-clearing"},
+    {"id": "laundry-clearing", "first": "abandoned-laundry", "second": "woodland-clearing"},
+    {"id": "clearing-shrine", "first": "woodland-clearing", "second": "old-shrine"},
+    {"id": "shrine-road", "first": "old-shrine", "second": "southern-road"},
+    {"id": "road-wagon", "first": "southern-road", "second": "abandoned-wagon"},
+    {"id": "clearing-closed-path", "first": "woodland-clearing", "second": "closed-deeper-forest-path"}
+  ],
+  "content_zones": [
+    {"id": "upstream-bank", "label": "A  Upstream bank", "x": 1940, "y": 80, "width": 1180, "height": 390},
+    {"id": "village-fabric", "label": "B  Village fabric", "x": 2440, "y": 560, "width": 680, "height": 1000},
+    {"id": "central-transition", "label": "C  Central transition", "x": 1240, "y": 620, "width": 360, "height": 600},
+    {"id": "forest-boundary", "label": "D  Forest boundary", "x": 80, "y": 520, "width": 1040, "height": 1120},
+    {"id": "southern-verges", "label": "E  Southern verges", "x": 1140, "y": 1510, "width": 710, "height": 170}
+  ],
+  "camera_frames": [
+    {"id": "base", "label": "1280x720 base view", "width": 1280, "height": 720, "center_x": 2000, "center_y": 1000},
+    {"id": "tall", "label": "1280x827 representative fullscreen view", "width": 1280, "height": 827, "center_x": 2000, "center_y": 1000}
+  ]
+}
