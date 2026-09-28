@@ -89,6 +89,41 @@ def rectangles_overlap(first: dict[str, int], second: dict[str, int]) -> bool:
     )
 
 
+def mean_rgb(image: Image.Image) -> tuple[float, float, float]:
+    """Return the mean visible color for one opaque terrain proof."""
+
+    return tuple(ImageStat.Stat(image.convert("RGB")).mean)
+
+
+def color_distance(
+    first: tuple[float, float, float], second: tuple[float, float, float]
+) -> float:
+    """Return Euclidean distance between two mean RGB colors."""
+
+    return sum((left - right) ** 2 for left, right in zip(first, second)) ** 0.5
+
+
+def maximum_corridor_contrast(image: Image.Image, width: int) -> float:
+    """Measure the strongest full-span band against its surrounding ground."""
+
+    grayscale = ImageOps.grayscale(image)
+    pixels = list(grayscale.getdata())
+    image_mean = sum(pixels) / len(pixels)
+    strongest = 0.0
+    for transpose in (False, True):
+        candidate = grayscale.transpose(Image.Transpose.TRANSPOSE) if transpose else grayscale
+        for offset in range(0, candidate.width - width + 1, 8):
+            band_mean = ImageStat.Stat(
+                candidate.crop((offset, 0, offset + width, candidate.height))
+            ).mean[0]
+            outside_count = candidate.width - width
+            outside_mean = (
+                image_mean * candidate.width - band_mean * width
+            ) / outside_count
+            strongest = max(strongest, abs(band_mean - outside_mean))
+    return strongest
+
+
 def validate_ora(path: Path) -> None:
     """Require a minimally valid editable OpenRaster archive."""
 
@@ -137,7 +172,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 60, f"expected 60 assets, got {len(assets)}")
+    require(len(assets) == 62, f"expected 62 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -197,7 +232,116 @@ def main() -> None:
         == 0,
         "ground top/bottom seam differs",
     )
+    leaf_asset = assets["terrain.woodland_leaf_litter"]
+    require(
+        leaf_asset["source"]
+        == "sources/imagegen/woodland-leaf-litter-ground.png"
+        and leaf_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and leaf_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and leaf_asset["godot_import_proof"] is True,
+        "leaf-litter manifest geometry, provenance, or import status drifted",
+    )
+    leaf_litter = Image.open(ROOT / leaf_asset["export"]).convert("RGBA")
+    leaf_alpha = leaf_litter.getchannel("A")
+    require(
+        leaf_alpha.getextrema() == (255, 255),
+        "leaf-litter tile is not fully opaque",
+    )
+    require(
+        edge_delta(
+            leaf_litter,
+            (0, 0, 1, leaf_litter.height),
+            (leaf_litter.width - 1, 0, leaf_litter.width, leaf_litter.height),
+        )
+        == 0,
+        "leaf-litter left/right seam differs",
+    )
+    require(
+        edge_delta(
+            leaf_litter,
+            (0, 0, leaf_litter.width, 1),
+            (0, leaf_litter.height - 1, leaf_litter.width, leaf_litter.height),
+        )
+        == 0,
+        "leaf-litter top/bottom seam differs",
+    )
+    require(
+        ImageStat.Stat(ImageOps.grayscale(leaf_litter)).stddev[0] >= 18,
+        "leaf-litter tile lacks useful tonal texture",
+    )
+    require(
+        maximum_corridor_contrast(leaf_litter, 96) < 18,
+        "leaf-litter tile contains a path-like full-span corridor",
+    )
     path = Image.open(ROOT / assets["terrain.straight_path"]["export"]).convert("RGBA")
+    path_on_ground = ground.copy()
+    path_on_ground.alpha_composite(path, ((ground.width - path.width) // 2, 0))
+    leaf_mean = mean_rgb(leaf_litter)
+    require(
+        color_distance(leaf_mean, mean_rgb(ground)) >= 35,
+        "leaf litter is not distinct enough from quiet moss",
+    )
+    require(
+        color_distance(leaf_mean, mean_rgb(path_on_ground)) >= 25,
+        "leaf litter is not distinct enough from the packed-earth path treatment",
+    )
+    transition_asset = assets["terrain.woodland_leaf_litter_transition"]
+    require(
+        transition_asset["source"] == "tools/build.py"
+        and transition_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and transition_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and transition_asset["godot_import_proof"] is True,
+        "ground-transition geometry, provenance, or import status drifted",
+    )
+    transition = Image.open(ROOT / transition_asset["export"]).convert("RGBA")
+    require(
+        transition.getchannel("A").getextrema() == (255, 255),
+        "ground transition is not fully opaque",
+    )
+    connector_depth = 32
+    require(
+        ImageChops.difference(
+            transition.crop((0, 0, connector_depth, transition.height)),
+            ground.crop((0, 0, connector_depth, ground.height)),
+        ).getbbox()
+        is None,
+        "ground transition lost its exact quiet-moss connector",
+    )
+    require(
+        ImageChops.difference(
+            transition.crop(
+                (
+                    transition.width - connector_depth,
+                    0,
+                    transition.width,
+                    transition.height,
+                )
+            ),
+            leaf_litter.crop(
+                (
+                    leaf_litter.width - connector_depth,
+                    0,
+                    leaf_litter.width,
+                    leaf_litter.height,
+                )
+            ),
+        ).getbbox()
+        is None,
+        "ground transition lost its exact leaf-litter connector",
+    )
+    require(
+        edge_delta(
+            transition,
+            (0, 0, transition.width, 1),
+            (0, transition.height - 1, transition.width, transition.height),
+        )
+        == 0,
+        "ground-transition top/bottom seam differs",
+    )
     require(
         edge_delta(
             path, (0, 0, path.width, 1), (0, path.height - 1, path.width, path.height)
@@ -602,6 +746,18 @@ def main() -> None:
         topology_review.size == (1024, 768),
         "path module topology review dimensions drifted",
     )
+    leaf_review = Image.open(ROOT / "review" / "woodland-leaf-litter-review.png")
+    require(
+        leaf_review.size == (1024, 512),
+        "leaf-litter seam and contrast review dimensions drifted",
+    )
+    transition_review = Image.open(
+        ROOT / "review" / "woodland-leaf-litter-transition-review.png"
+    )
+    require(
+        transition_review.size == (768, 512),
+        "ground-transition review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -610,6 +766,8 @@ def main() -> None:
         "terrain-path-t-junction.ora",
         "terrain-path-cross-junction.ora",
         "terrain-path-end-cap.ora",
+        "terrain-woodland-leaf-litter.ora",
+        "terrain-woodland-leaf-litter-transition.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -632,7 +790,9 @@ def main() -> None:
     print("path cross-junction: exact 96px four-way ports with transparent corners")
     print("path end-cap: exact 96px top port with terminus above a transparent lower half")
     print("path topology: straight, bend, T, cross, and end-cap compose as one network")
-    print("editable masters: 11 valid OpenRaster archives")
+    print("leaf litter: opaque, exact seams, useful texture and palette contrast, no corridor")
+    print("ground transition: exact moss/leaf connectors and repeatable top/bottom seam")
+    print("editable masters: 13 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

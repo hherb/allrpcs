@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import tempfile
 import zipfile
 from dataclasses import dataclass
@@ -123,6 +124,41 @@ def make_ground() -> Image.Image:
     source = Image.open(RAW / "quiet-moss-ground.png").convert("RGBA")
     square = ImageOps.fit(source, (512, 512), method=RESAMPLE, centering=(0.5, 0.5))
     return enforce_opposite_edges(square, horizontal=True, vertical=True)
+
+
+def make_leaf_litter() -> tuple[Image.Image, Image.Image]:
+    """Create the generated reference and repeatable 512px leaf-litter master."""
+
+    source = Image.open(RAW / "woodland-leaf-litter-ground.png").convert("RGBA")
+    reference = ImageOps.fit(source, (512, 512), method=RESAMPLE, centering=(0.5, 0.5))
+    repeatable = enforce_opposite_edges(reference, horizontal=True, vertical=True)
+    return reference, repeatable
+
+
+def make_leaf_litter_transition(
+    quiet_moss: Image.Image, leaf_litter: Image.Image
+) -> Image.Image:
+    """Blend exact ground masters across one repeatable irregular vertical edge."""
+
+    if quiet_moss.size != leaf_litter.size:
+        raise ValueError("ground-transition sources must share exact master geometry")
+    mask = Image.new("L", quiet_moss.size, 0)
+    pixels = []
+    feather = 48.0
+    for y in range(mask.height):
+        phase = y / (mask.height - 1)
+        boundary = (
+            mask.width / 2
+            + 24 * math.sin(2 * math.pi * phase)
+            + 10 * math.sin(6 * math.pi * phase)
+        )
+        for x in range(mask.width):
+            blend = (x - (boundary - feather / 2)) / feather
+            blend = max(0.0, min(1.0, blend))
+            smooth = blend * blend * (3.0 - 2.0 * blend)
+            pixels.append(round(smooth * 255))
+    mask.putdata(pixels)
+    return Image.composite(leaf_litter, quiet_moss, mask).convert("RGBA")
 
 
 def make_path() -> Image.Image:
@@ -784,6 +820,45 @@ def make_path_module_topology_review(assets: dict[str, Image.Image]) -> Image.Im
     return scene
 
 
+def make_leaf_litter_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Show four exact leaf-litter seams beside quiet moss and packed earth."""
+
+    scene = Image.new("RGBA", (1024, 512), (0, 0, 0, 0))
+    leaf_litter = assets["terrain.woodland_leaf_litter"]
+    for y in (0, leaf_litter.height):
+        for x in (0, leaf_litter.width):
+            scene.alpha_composite(leaf_litter, (x, y))
+
+    ground = assets["terrain.quiet_moss"]
+    for y in (0, ground.height):
+        for x in (512, 512 + ground.width):
+            scene.alpha_composite(ground, (x, y))
+
+    straight = assets["terrain.straight_path"]
+    horizontal = straight.transpose(Image.Transpose.ROTATE_90)
+    scene.alpha_composite(straight, (720, 0))
+    scene.alpha_composite(horizontal, (512, 208))
+    scene.alpha_composite(assets["terrain.path_cross_junction"], (640, 128))
+    scene.alpha_composite(horizontal, (768, 208))
+    scene.alpha_composite(straight, (720, 256))
+    return scene
+
+
+def make_leaf_litter_transition_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Repeat the exact moss-to-leaf transition in two connected rows."""
+
+    scene = Image.new("RGBA", (768, 512), (0, 0, 0, 0))
+    modules = [
+        assets["terrain.quiet_moss"],
+        assets["terrain.woodland_leaf_litter_transition"],
+        assets["terrain.woodland_leaf_litter"],
+    ]
+    for y in (0, 256):
+        for index, module in enumerate(modules):
+            scene.alpha_composite(module, (index * 256, y))
+    return scene
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -810,6 +885,10 @@ def main() -> None:
         directory.mkdir(parents=True, exist_ok=True)
 
     ground_master = make_ground()
+    leaf_litter_reference_master, leaf_litter_master = make_leaf_litter()
+    leaf_litter_transition_master = make_leaf_litter_transition(
+        ground_master, leaf_litter_master
+    )
     path_master = make_path()
     path_bend_master = make_path_bend(path_master)
     path_t_junction_master = make_path_t_junction(path_master)
@@ -839,6 +918,26 @@ def main() -> None:
             512,
             ground_master,
             "sources/imagegen/quiet-moss-ground.png",
+        ),
+        Asset(
+            "terrain.woodland_leaf_litter",
+            "terrain",
+            Path("exports/terrain/woodland-leaf-litter.png"),
+            (512, 512),
+            (256, 512),
+            512,
+            leaf_litter_master,
+            "sources/imagegen/woodland-leaf-litter-ground.png",
+        ),
+        Asset(
+            "terrain.woodland_leaf_litter_transition",
+            "terrain",
+            Path("exports/terrain/woodland-leaf-litter-transition.png"),
+            (512, 512),
+            (256, 512),
+            512,
+            leaf_litter_transition_master,
+            "tools/build.py",
         ),
         Asset(
             "terrain.straight_path",
@@ -988,7 +1087,11 @@ def main() -> None:
         export = downsample(asset.image_master)
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
-        if asset.asset_id == "terrain.quiet_moss":
+        if asset.asset_id in {
+            "terrain.quiet_moss",
+            "terrain.woodland_leaf_litter",
+            "terrain.woodland_leaf_litter_transition",
+        }:
             export = enforce_opposite_edges(export, horizontal=True, vertical=True)
         elif asset.asset_id == "terrain.straight_path":
             export = alpha_clean(
@@ -1024,6 +1127,29 @@ def main() -> None:
         [
             ("quiet moss ground", ground_master, 0, 0, True),
             ("straight path", path_master, 160, 0, True),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-woodland-leaf-litter.ora",
+        leaf_litter_master.size,
+        [
+            ("generated reference", leaf_litter_reference_master, 0, 0, False),
+            ("repeatable woodland leaf litter", leaf_litter_master, 0, 0, True),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-woodland-leaf-litter-transition.ora",
+        leaf_litter_transition_master.size,
+        [
+            ("quiet moss source", ground_master, 0, 0, False),
+            ("woodland leaf-litter source", leaf_litter_master, 0, 0, False),
+            (
+                "repeatable quiet-moss to leaf-litter transition",
+                leaf_litter_transition_master,
+                0,
+                0,
+                True,
+            ),
         ],
     )
     create_ora(
@@ -1161,6 +1287,14 @@ def main() -> None:
     save_png(
         make_path_module_topology_review(export_images),
         REVIEW / "path-module-topology-review.png",
+    )
+    save_png(
+        make_leaf_litter_review(export_images),
+        REVIEW / "woodland-leaf-litter-review.png",
+    )
+    save_png(
+        make_leaf_litter_transition_review(export_images),
+        REVIEW / "woodland-leaf-litter-transition-review.png",
     )
 
     manifest_assets = []

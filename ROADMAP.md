@@ -211,6 +211,12 @@ Acceptance:
 - [x] Import only that exact manifest-bound end-cap into the isolated proof, then prove the
   straight, bend, T-junction, cross-junction, and end-cap compose as one deterministic connected
   topology without ordinary-scene authority.
+- [x] Establish and import one repeatable woodland leaf-litter ground tile with a 256x256 opaque
+  export, exact 512x512 editable master, opposing-edge parity, 2x2 seam proof, useful texture and
+  contrast gates, and no path-like corridor or ordinary-scene authority.
+- [x] Establish and import one deterministic quiet-moss-to-leaf-litter edge transition with exact
+  source connector regions, repeatable top/bottom edges, a two-row external review, source parity,
+  and no ordinary-scene authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -162,6 +162,28 @@ exports were the only references. The deterministic builder owns the exact 512x5
 256x256 export, one 96-pixel top port, clean alpha, transparent lower half, and digest. The tool
 exposed no model or version identifier, so none is asserted.
 
+## Woodland leaf-litter ground
+
+Inputs: `exports/terrain/quiet-moss.png` and
+`review/path-module-topology-review.png`
+
+```text
+Use case: style-transfer
+Asset type: external opaque 2D game ground-texture source for a deterministic modular pipeline
+Input images: Image 1 is the edit target and repository-owned quiet-moss tile; Image 2 is a repository-owned packed-earth path-set reference only for palette compatibility, visual scale, restrained gouache grain, and contrast.
+Primary request: Transform the ground material in Image 1 into woodland leaf litter while preserving its top-down/high-oblique game-texture projection, scale, painterly storybook gouache rendering, broad low-frequency texture rhythm, and full square coverage. Replace the green moss clusters with muted brown woodland leaf litter: weathered oak-brown and umber leaves over subdued earth, with restrained olive remnants and sparse softly painted leaf silhouettes. It must read clearly as leaf litter beside the quiet moss and remain darker and less path-like than the warm ochre packed earth in Image 2.
+Style/medium: painterly storybook gouache; broad low-frequency shapes; restrained grain; softly simplified leaf forms; no photorealism.
+Composition/framing: one full square ground texture with useful detail distributed across the entire canvas; no single focal leaf cluster, no directional flow, no central clearing, no corridor, no trail.
+Constraints: change only the ground material; keep the projection, scale, full coverage, and painterly treatment; opaque edge-to-edge visual content; no transparency; no path; no corridor; no bare-earth stripe; no border; no grid; no scene framing; no rocks; no logs; no plants taller than flat ground cover; no props; no animals; no text; no logo; no trademark; no watermark.
+Avoid: obvious repeated stamps, strong diagonal bands, radial composition, bright orange path colors, high-frequency photographic noise, sharp isolated hero leaves, lighting gradients, shadows that imply raised objects.
+```
+
+This output came from Codex's built-in image tool on 2026-09-28 with opaque output requested. The
+quiet-moss export was the edit target, and the repository-owned packed-earth topology review was the
+only other reference. The deterministic builder owns the exact 512x512 master, 256x256 export,
+opposing-edge parity, opacity, review composition, digest, and derived quiet-moss transition. The
+tool exposed no model or version identifier, so none is asserted.
+
 ## Seeker idle/breathe frames
 
 Input for all four calls: `../../sources/seeker-four-direction-walk.png`

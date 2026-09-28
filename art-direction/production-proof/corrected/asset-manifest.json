@@ -229,6 +229,66 @@
       "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
     },
     {
+      "id": "terrain.woodland_leaf_litter",
+      "category": "terrain",
+      "source": "sources/imagegen/woodland-leaf-litter-ground.png",
+      "export": "exports/terrain/woodland-leaf-litter.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "5d5aa68c33b18089c2bb39f85e690c4d0e47ff3ed05acbc13f8bfb0e61c1e2d9"
+    },
+    {
       "id": "terrain.straight_path",
       "category": "terrain",
       "source": "sources/imagegen/straight-path-overlay.png",
