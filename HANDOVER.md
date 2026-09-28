@@ -40,6 +40,9 @@ source for the three deterministic SVG review diagrams.
   validation, every credential-free Godot smoke, formatting, and the Compatibility graphical
   launch. The restricted run passed every non-Godot stage before the known `user://logs` sandbox
   crash; the identical full command passed on the host.
+- The post-push `Credential-free CI` workflow reports failure, but all five hosted jobs contain
+  `steps: []`; no product command ran. Treat that as Actions/account infrastructure state, not
+  product-test evidence. The complete host-local validation above is the current product evidence.
 - The technical recommendation is not product-owner approval, human pacing or route-usability
   evidence, human accessibility acceptance, or accepted runtime geometry.
 
