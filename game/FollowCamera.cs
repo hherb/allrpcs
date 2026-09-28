@@ -14,7 +14,7 @@ public partial class FollowCamera : Camera2D
     private const int DefaultWorldTopLimitPixels = 0;
     private const int DefaultWorldRightLimitPixels = 1600;
     private const int DefaultWorldBottomLimitPixels = 900;
-    private const float DefaultMinimumZoom = 0.75f;
+    private const float DefaultMinimumZoom = 0.8f;
     private const float DefaultStartingZoom = 1.0f;
     private const float DefaultMaximumZoom = 2.0f;
 

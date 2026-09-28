@@ -1,65 +1,70 @@
 {
-  "schema_version": 1,
-  "status": "corrected production-pipeline proof with isolated Godot import parity",
+  "schema_version": 2,
+  "status": "scale-rebaselined production-pipeline proof with isolated Godot import parity",
   "logical_viewport": {
-    "width": 960,
-    "height": 540
+    "width": 1280,
+    "height": 720
   },
+  "fullscreen_reference_logical_viewport": {
+    "width": 1280,
+    "height": 827
+  },
+  "minimum_visible_character_height": 144,
   "master_scale": 2,
   "navigation_clearance": {
     "scene": "review/module-review-scene.png",
-    "x": 432,
+    "x": 592,
     "y": 0,
     "width": 96,
-    "height": 540
+    "height": 720
   },
   "review_composition": [
     {
       "asset": "plants.herb_bed_empty",
-      "x": 102,
-      "y": 128,
+      "x": 146,
+      "y": 170,
       "fixed_obstacle": true
     },
     {
       "asset": "plants.herb_bed_empty",
-      "x": 706,
-      "y": 128,
+      "x": 980,
+      "y": 170,
       "fixed_obstacle": true
     },
     {
       "asset": "plants.foliage_broadleaf",
-      "x": 718,
-      "y": 126,
+      "x": 990,
+      "y": 168,
       "fixed_obstacle": true
     },
     {
       "asset": "plants.foliage_broadleaf",
-      "x": 128,
-      "y": 348,
+      "x": 180,
+      "y": 480,
       "fixed_obstacle": true
     },
     {
       "asset": "plants.foliage_broadleaf",
-      "x": 742,
-      "y": 350,
+      "x": 1050,
+      "y": 490,
       "fixed_obstacle": true
     },
     {
       "asset": "objects.preparation_table",
-      "x": 650,
-      "y": 330,
+      "x": 930,
+      "y": 450,
       "fixed_obstacle": true
     },
     {
       "asset": "cues.preparation_table_identified",
-      "x": 650,
-      "y": 330,
+      "x": 930,
+      "y": 450,
       "fixed_obstacle": false
     },
     {
       "asset": "characters.seeker.south.walk_01",
-      "x": 462,
-      "y": 250,
+      "x": 586,
+      "y": 276,
       "fixed_obstacle": false
     }
   ],
@@ -746,27 +751,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "dac5ea77340a0d783fe6e7c4e50181a7a0c877d81f8918d8fb8115f2575bb103"
+      "sha256": "0daf3568d465825979a73ca996cc98f2edf0db0e0cf132b773771e24c283dd35"
     },
     {
       "id": "characters.seeker.south.walk_02",
@@ -776,27 +781,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "b0a8432d848ac40a5ad0380d6cff79aa33e6cb058973c34c0b7614e77fd22773"
+      "sha256": "45ebe57ee386902455c7d16b87bb2fbd45ba7a1f668a22d15bbad6e764fbd739"
     },
     {
       "id": "characters.seeker.south.walk_03",
@@ -806,27 +811,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "f0c35bd9ec12079d577a4d04227ba3754c6ddab388e8100079ae234e8c009154"
+      "sha256": "6913be1fcca0d50e6567d0d1265a451480a45bc7dcdb87ce70299910b6fa2604"
     },
     {
       "id": "characters.seeker.south.walk_04",
@@ -836,27 +841,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "4ebf5c629ae1aaa9d22410378dbaf6b97e6ac60abcd5e1b943a5958b70e2c518"
+      "sha256": "be544c7d3aae662189137d91ebd3cf658b235c0a2596c599f9c4af46f98f0e9a"
     },
     {
       "id": "characters.seeker.south.walk_05",
@@ -866,27 +871,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "bf92d0e42039cd34e3f237cf3dc07e5a7396b04e7245e05af691d6a0ca78a692"
+      "sha256": "4d94ff37f5eba2d44cc537020f8798a5ac62f2d34d3e6db2d98b9697a2882d39"
     },
     {
       "id": "characters.seeker.south.walk_06",
@@ -896,27 +901,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "3140ff796ed804244b9679d9a30b5d74805da11391fcba61eea815e53ad731be"
+      "sha256": "fbc95b2400993d43fe9c6a0a7347684ebac0e81adabae9137e2c43a1cddf014e"
     },
     {
       "id": "characters.seeker.west.walk_01",
@@ -926,27 +931,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "fe707a9f44fb75ceb81a02dfa8ff8ab15fc62d99808d4c33cbc631845b5a10a8"
+      "sha256": "12526165318b823437d458be74ba94ab630989642820ed0d82a82d1e7f750e73"
     },
     {
       "id": "characters.seeker.west.walk_02",
@@ -956,27 +961,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "e7d2cac80acaf7186af098949d1bbedcbd39d1c3d5134744a872837fc21c2716"
+      "sha256": "a6e8dfa3643e4cb01f4308194e09a359c20b6974096ac07e95b33734dba31c56"
     },
     {
       "id": "characters.seeker.west.walk_03",
@@ -986,27 +991,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "c0557117a89c056c34741daaf5bc3a54e747f7c1a602c83929c5f5a12d364c89"
+      "sha256": "63f52faa8acbf493daecccabf1cfe402894e89c93c76a7813118a8ed5cd002d9"
     },
     {
       "id": "characters.seeker.west.walk_04",
@@ -1016,27 +1021,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "97b7019c43e2f08a173009dc9625bcecbf613e48c8c71abd07afa01c620c1169"
+      "sha256": "76c16d93104d0d47470757608697faeea608fe6f901bff8351e73fff7dd32b27"
     },
     {
       "id": "characters.seeker.west.walk_05",
@@ -1046,27 +1051,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "d1526781ca2c6578c81f503e90fe04d55a4a2761e89ee4925def1106060c10f4"
+      "sha256": "e063afe978690183df05e1dc2d727b1eb570fd342fe6281e2d49a76730502bc4"
     },
     {
       "id": "characters.seeker.west.walk_06",
@@ -1076,27 +1081,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "d9b14b1499acfb7e60a8060747488a73c84691e48b9510a3813c410b2a29fba5"
+      "sha256": "7c52f875410504ca685b0094ab65989b95f83a9883228b6d19d98de1bd93d73c"
     },
     {
       "id": "characters.seeker.east.walk_01",
@@ -1106,27 +1111,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "f249d77ac72057856ad0d4722d310c97b65bfb580f358f73afcf1196cb2f0ea5"
+      "sha256": "68d9cc35a0bb2c1cecb692c556dc127676237f22bd6a0a4585c8d93812b9aa65"
     },
     {
       "id": "characters.seeker.east.walk_02",
@@ -1136,27 +1141,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "377c1ad1ff3c498342061e39c89b5826ebc4927495f9770fb144a971e3087289"
+      "sha256": "4a3e7b2feb7634ec1c5e9a856acb067309e70134cb0f5ce24c53fe1747cea670"
     },
     {
       "id": "characters.seeker.east.walk_03",
@@ -1166,27 +1171,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "641aa76b9746986df0ef9de0fd49fe9f0ba854311ccb0525e27a40ca3fb5cdd9"
+      "sha256": "12c5295e1191c4bb448fab653cef3314bdc195d6e573ad3f6afc4b0768fc60cf"
     },
     {
       "id": "characters.seeker.east.walk_04",
@@ -1196,27 +1201,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "e3966e32591523b0f91230141b60605b10c3b3d97311cac7e4da00d639868956"
+      "sha256": "967599e36c3f42d39811efeb301a3280d48b6457145eacd076dec8669af8415f"
     },
     {
       "id": "characters.seeker.east.walk_05",
@@ -1226,27 +1231,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "8fa26047804e126f89074906a40788df57f492a79b7d16f4c6cad5c744806329"
+      "sha256": "9b1c9108ae1be31c9f22c6a7a3a23b4c386d9955abaeb0a4064cb6ecf2cded45"
     },
     {
       "id": "characters.seeker.east.walk_06",
@@ -1256,27 +1261,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "95e10001939f4c29b178d80fdce052d588cd6aee5818194c738429823ff09407"
+      "sha256": "777be2f0da026cd56d5afcf11007fcfd5ad6ed336dfd7fd13481a709a473edc7"
     },
     {
       "id": "characters.seeker.north.walk_01",
@@ -1286,27 +1291,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "5767252b72bd4c408179c0429100e95f39b1168b389bc1e7840269a1821bb28a"
+      "sha256": "e4c7c5905d0ee4b18f2ba52d3054dd9a3d26c2aa2e51ca78e3d53cc265d14fb2"
     },
     {
       "id": "characters.seeker.north.walk_02",
@@ -1316,27 +1321,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "79b1634dcd5882ae81c4be56f1bdf3145c60c2ab75e0e1190f980bf90c6f9514"
+      "sha256": "d044572a1c4b2e97bf9cb4faa41b2b353f46834be3b7de97302850caae309c7b"
     },
     {
       "id": "characters.seeker.north.walk_03",
@@ -1346,27 +1351,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "aee8f8be176e8c32fe40992efcff93d431f5fd8facd405c995f53a43d28fcc97"
+      "sha256": "c655370caa323f878db81958a53108c146222391f0f996f2defb47f901aac88f"
     },
     {
       "id": "characters.seeker.north.walk_04",
@@ -1376,27 +1381,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "b92265185b589ed5dda082d12e5f5ae0e6d1117c57517a5fb9bccbf2f21c38b4"
+      "sha256": "4e2d31ddac12769a03f1f485ff0ef787a8928dafcb1892af7beea9ab7973292c"
     },
     {
       "id": "characters.seeker.north.walk_05",
@@ -1406,27 +1411,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "7bdbd341ee7cf20faac109a37fb908badf77e3b948035e5d539610545e68fa1f"
+      "sha256": "8e9e6ef1aeb7a54460d0c6c7f7ba925e2e3986eb5f3ba0413278de8c50704855"
     },
     {
       "id": "characters.seeker.north.walk_06",
@@ -1436,27 +1441,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "26f4a1961bb3ddcc166e6ce3eb37ffb4d668d3ed0d2df206f9ba86202420d390"
+      "sha256": "0ad28d56104a4ded83198f6ca6e6500e61e21c1c3a4980719af00e3f2787d2cf"
     },
     {
       "id": "characters.seeker.south.idle_breathe_01",
@@ -1466,27 +1471,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "8b08c495896124ab77b4792aa12b66d995d640960da7e2ca54346a13ee4929fb"
+      "sha256": "0d9e888e0e4f287e9dd8b09c278c0ced8d7aa8046e7bbb49b2425d65e45aae80"
     },
     {
       "id": "characters.seeker.south.idle_breathe_02",
@@ -1496,27 +1501,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "a79645bf10a3c6883339449534105cbcd552ea153b4c05ed06e9d33c73ee6fae"
+      "sha256": "608e1c135963782fd8701fbb48d7c47171409968b042ec1943a2ef09ebac2257"
     },
     {
       "id": "characters.seeker.west.idle_breathe_01",
@@ -1526,27 +1531,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "10c57750dbb310defa92c590321543c281d21010161ee05f68f4a9a4f93cffd4"
+      "sha256": "8979abb85735205b78a8b309d2cd051bec0009136269055c9a2b4c637680d9da"
     },
     {
       "id": "characters.seeker.west.idle_breathe_02",
@@ -1556,27 +1561,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "6b3ad1b2785eec2c7e298f2752c564e4335e15353f64c84f3e1c3a091f254a61"
+      "sha256": "802a42cbc85cb50a22f4fc800564d98899704df0335e7858ad72d865373c5dae"
     },
     {
       "id": "characters.seeker.east.idle_breathe_01",
@@ -1586,27 +1591,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "49c143004c4dd1643b1f5e40288f23459ef1bfc38c389bbed59a34fef9c07284"
+      "sha256": "bd86c9111b1323869f76e95cb3e771663f1bc3162af0dced9d4747dd7c6fad9e"
     },
     {
       "id": "characters.seeker.east.idle_breathe_02",
@@ -1616,27 +1621,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 48,
-        "height": 56
+        "width": 144,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 96,
-        "height": 112,
+        "width": 288,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 24,
-        "y": 52
+        "x": 72,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "aedac22a8ece9db3fa14cfb1337380e9c45c1ff3d4c1497422b34e404666ab6c"
+      "sha256": "348fd5a4632131d106b76036f671971294486a1e0b0c7392ac8e88087f4e6161"
     },
     {
       "id": "characters.seeker.north.idle_breathe_01",
@@ -1646,27 +1651,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "5c18aa657ba9ecb4771d1b024374cddc1a1192ec9b7c2ea94d84e1cf7981ee37"
+      "sha256": "61cf2952f38692c248229a833f43e043ea4895d4c8e4610d762b9ecfc32e88b8"
     },
     {
       "id": "characters.seeker.north.idle_breathe_02",
@@ -1676,27 +1681,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 36,
-        "height": 56
+        "width": 108,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 72,
-        "height": 112,
+        "width": 216,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 18,
-        "y": 52
+        "x": 54,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "219086b9581b5e4f08b14a23a298a628dc20f377db221b85df5d3e84614be276"
+      "sha256": "8496b9dd78c6a94412bd44b3c11a07aaf882b534bcd9e9c4936142d7bc9bd032"
     },
     {
       "id": "characters.seeker.south.interact_reach_01",
@@ -1706,27 +1711,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "f7ffc3a840bfbf313710ed7572ac4b5a397fb95623d42c5d2f3e8f11dbfc208c"
+      "sha256": "bf7d1a1d5116bfcb6f2ea6dbd89cba9f499dc20c974e2add26225f46c73a62d5"
     },
     {
       "id": "characters.seeker.south.interact_reach_02",
@@ -1736,27 +1741,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "383c93fa47c9fa54baf3ad1cc8a96902b26acf7fa1a1bc077d7241fcd9868fe1"
+      "sha256": "0c459f40dd09c2fc8d894888a946d4c2306647a2f2b0649f0b2bf2f7a9e9ca4a"
     },
     {
       "id": "characters.seeker.south.interact_reach_03",
@@ -1766,27 +1771,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "ba79863df06b6bad28b9ae582d5439d0f6fadc4dc0aebb02837c874aca0c1866"
+      "sha256": "37533b24a3f6049f7db4c06dfa11b915d0e0070a537ecb7b96bfdba8f17e2254"
     },
     {
       "id": "characters.seeker.south.interact_reach_04",
@@ -1796,27 +1801,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "cfaebb9f5c77cfd03ee05f1fc1274f8b3cb824b632d0272527c3ce5dd4868e02"
+      "sha256": "15729b0df90cfb33f46f5af3fbe9db4776a9b4342837552987c6cbf450d48737"
     },
     {
       "id": "characters.seeker.west.interact_reach_01",
@@ -1826,27 +1831,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "a417141b44f37012bb201f817f8f8f8b58c7359ca4cbd112f06ffb1f3cc1993d"
+      "sha256": "9b41a19ac802d9a9861722b371deb20bb604fea88e4a63223310e9107d759aed"
     },
     {
       "id": "characters.seeker.west.interact_reach_02",
@@ -1856,27 +1861,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "93f5b0e63d08353650eecdeda7b80d9fd0c482485d28d03f2655d694b4351fec"
+      "sha256": "5a3c53f3b0c2efbca663fa3ca0aa98ffcb3a3dded4381ac1bde7b06504e8b8c9"
     },
     {
       "id": "characters.seeker.west.interact_reach_03",
@@ -1886,27 +1891,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "f807d673955bf4f7166f8d8db143305c6da9f44dcf329286c77bf44c466b1953"
+      "sha256": "a671ee0b6d1e4c68ef1edc76cbff5231810765f04adf478717302545fbd38174"
     },
     {
       "id": "characters.seeker.west.interact_reach_04",
@@ -1916,27 +1921,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "30f57325812180cc99fd1d3943e0ef3981a83611ae8be35e312a48d440d97f64"
+      "sha256": "bd7d06549beb95f1951276996b1d1ed29879a55e56b669b2fbb1185d3be37717"
     },
     {
       "id": "characters.seeker.east.interact_reach_01",
@@ -1946,27 +1951,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "31dd4e43da6e82e04302426feb86247750191a656a03dbb360c0d0a5f70fcc42"
+      "sha256": "fca1fcafec4c636ed41288b7747e074f82a8d17a80fd2ddfb6ce29a8f9208886"
     },
     {
       "id": "characters.seeker.east.interact_reach_02",
@@ -1976,27 +1981,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "da7552a6b0c18a2355d542475000a69217218f4ab6e2b8a3dcab015eac23f3d6"
+      "sha256": "c92bbbbdc0be0b69864f7cc397c735c1c6dea33773deacd9c929bb8e9b3de36f"
     },
     {
       "id": "characters.seeker.east.interact_reach_03",
@@ -2006,27 +2011,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "8fabfe7ed51c49325d6b49279caba6721bd949b67304c5c590f30590db200235"
+      "sha256": "8dddc0e368b3838fac168ae1b6f004f6912fcc2349158864a61c8dde6f3607d1"
     },
     {
       "id": "characters.seeker.east.interact_reach_04",
@@ -2036,27 +2041,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "8f10c8ad52aa0cc93e70e081e0168a16a04d5d4e9cb2c20f450ebb32d50c24ba"
+      "sha256": "27e79ccb5d917eb85e8a18bb2c1c32c2bb21e2a717f1b582d7385888160bacfb"
     },
     {
       "id": "characters.seeker.north.interact_reach_01",
@@ -2066,27 +2071,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "eea5db91320603eaed31a22fc47b1eaf0d336db00009c2832ea2876cec752cf5"
+      "sha256": "c0a1bf60f18c72611dd0c2a47a560b9c47d52831d730d3ac8bccc115cf3a5156"
     },
     {
       "id": "characters.seeker.north.interact_reach_02",
@@ -2096,27 +2101,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "8644aac7d6a91552f15b78d3e4f0d807db388f1c72be28e7a74166dd6535d74c"
+      "sha256": "67ca6bb7568006cc91f3fea767ec80e6dd2ff30848f584318c45561936b97d0b"
     },
     {
       "id": "characters.seeker.north.interact_reach_03",
@@ -2126,27 +2131,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "e0ee9942d230e94acbb225722b034cef2572b730d0377eda94e08fa9b9365a12"
+      "sha256": "e8fdd2b31b1a89ba7e3901608752280babc422945085edac3f6cd5283b2252ea"
     },
     {
       "id": "characters.seeker.north.interact_reach_04",
@@ -2156,27 +2161,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 64,
-        "height": 56
+        "width": 192,
+        "height": 168
       },
       "master_dimensions_pixels": {
-        "width": 128,
-        "height": 112,
+        "width": 384,
+        "height": 336,
         "scale": 2
       },
-      "contact_baseline": 52,
+      "contact_baseline": 156,
       "pivot": {
-        "x": 32,
-        "y": 52
+        "x": 96,
+        "y": 156
       },
       "godot_import_proof": true,
-      "sha256": "f4f8e528e48481f9549f9eafe1dde84476d5c938b9b6b3f793799d656b55c186"
+      "sha256": "10ca3501c9ea78c9d2d4f80e95c0569a84eae55ae94d6091922e69e69310127b"
     }
   ]
 }

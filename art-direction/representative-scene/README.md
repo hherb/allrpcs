@@ -42,15 +42,16 @@ details.
 
 | Direction | Perspective and resolution question | Palette, light, texture, outline, atmosphere | Characters and object legibility | Main tradeoff to review |
 | --- | --- | --- | --- | --- |
-| A — storybook gouache | High oblique three-quarter; inspect the 1672x941 preview at the current 960x540 viewport before selecting a base | Warm moss/ochre/cream/teal; late-afternoon side light; visible brush grain; gentle uneven outlines; leaf and dust motes | Naturalistic, about five heads tall; golden polygonal ring plus diamond makes the table readable by shape and value | Warm and approachable, but hand-painted asset volume and lighting consistency may be expensive |
-| B — ink and wash | Near-top-down oblique; inspect the 1672x941 preview at the current 960x540 viewport before selecting a base | Charcoal/parchment/sage/iron-blue/rust; diffuse overcast light; paper grain and hatching; strongest dark contours; low ground mist | Compact, slightly exaggerated heads and hands; heavy double contour plus white diamond is the strongest non-colour cue | Excellent silhouette discipline, but dense hatching may become noisy in motion or at smaller scales |
-| C — low-poly diorama | Clean isometric three-quarter; inspect the 1672x941 preview at the current 960x540 viewport before selecting a base | Pine/clay/limestone/ochre/teal; cool morning plus low warm sun; faceted materials; no drawn outlines; distant valley haze | Four-head-tall faceted figures; octagonal plinth, cast silhouette, and outlined diamond separate the table | Clearest spatial depth and reusable geometry, but isometric staging may constrain the existing authored camera and navigation presentation |
+| A — storybook gouache | High oblique three-quarter; the 1672x941 preview was judged against the then-current 960x540 reference | Warm moss/ochre/cream/teal; late-afternoon side light; visible brush grain; gentle uneven outlines; leaf and dust motes | Naturalistic, about five heads tall; golden polygonal ring plus diamond makes the table readable by shape and value | Warm and approachable, but hand-painted asset volume and lighting consistency may be expensive |
+| B — ink and wash | Near-top-down oblique; the 1672x941 preview was judged against the then-current 960x540 reference | Charcoal/parchment/sage/iron-blue/rust; diffuse overcast light; paper grain and hatching; strongest dark contours; low ground mist | Compact, slightly exaggerated heads and hands; heavy double contour plus white diamond is the strongest non-colour cue | Excellent silhouette discipline, but dense hatching may become noisy in motion or at smaller scales |
+| C — low-poly diorama | Clean isometric three-quarter; the 1672x941 preview was judged against the then-current 960x540 reference | Pine/clay/limestone/ochre/teal; cool morning plus low warm sun; faceted materials; no drawn outlines; distant valley haze | Four-head-tall faceted figures; octagonal plinth, cast silhouette, and outlined diamond separate the table | Clearest spatial depth and reusable geometry, but isometric staging may constrain the existing authored camera and navigation presentation |
 | D — pixel art | High three-quarter top-down; preview is 1672x941, with a proposed 320x180 authored base and integer scaling | Limited navy/blue-green/violet/amber/cream; blue-hour dusk; clustered pixels and selective outlines; edge fog | Sprites about 28 proposed-base pixels tall; paired brackets plus diamond remain readable without hue | Strongest explicit resolution discipline and atmosphere, but animation and environment coverage require substantial authored pixel work |
 
 The original four-way comparison remains evidence for the selection rather than a source of runtime
 assets. Direction A prioritizes painterly warmth while the art bible constrains its higher production
 cost through reusable modules, a fixed logical viewport, quiet traversal surfaces, and explicit
-readability gates.
+readability gates. Its 960x540 reference records the selection context; the current production proof
+and game design viewport are 1280x720.
 
 ## Provenance
 

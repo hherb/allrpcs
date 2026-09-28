@@ -181,7 +181,7 @@ Acceptance:
   preparation-table state cues, and a Seeker four-direction walk sample; keep its recorded alpha,
   seam, pivot, baseline, and editable-master failures outside the runtime.
 - [x] Correct that proof into individual clean-alpha exports with one manifest, exact 2x geometry,
-  layered masters, seam and grayscale checks, and a clear 960x540 review composition.
+  layered masters, seam and grayscale checks, and a clear review composition.
 - [x] Normalize all four six-frame Seeker walk directions after the first direction passed, then
   prove exact source parity and lossless smooth-filtered import in an isolated Godot scene without
   changing ordinary presentation or gameplay authority.
@@ -227,6 +227,10 @@ Acceptance:
   woodland leaf litter, packed earth, and all five existing ground transitions using documented
   full-severity simulations and descriptive luminance/texture measurements without claiming human
   accessibility acceptance.
+- [x] Rebaseline the base viewport to 1280x720 with aspect expansion and regenerate all Seeker walk,
+  idle/breathe, and reach-and-inspect proofs from retained high-resolution sources at a minimum
+  144-pixel visible height, exact 2x masters, and a fixed 156-pixel planted-foot baseline without
+  changing terrain pixels or ordinary gameplay art references.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

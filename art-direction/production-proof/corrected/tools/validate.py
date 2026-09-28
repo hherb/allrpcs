@@ -175,10 +175,19 @@ def main() -> None:
     """Validate manifest geometry, exports, masters, seams, animation, and review evidence."""
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    require(manifest["schema_version"] == 1, "unsupported manifest schema")
+    require(manifest["schema_version"] == 2, "unsupported manifest schema")
     require(
-        manifest["logical_viewport"] == {"width": 960, "height": 540},
+        manifest["logical_viewport"] == {"width": 1280, "height": 720},
         "logical viewport changed",
+    )
+    require(
+        manifest["fullscreen_reference_logical_viewport"]
+        == {"width": 1280, "height": 827},
+        "fullscreen reference viewport changed",
+    )
+    require(
+        manifest["minimum_visible_character_height"] == 144,
+        "minimum visible character height changed",
     )
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
@@ -189,7 +198,9 @@ def main() -> None:
         for asset_id, asset in assets.items()
         if asset["godot_import_proof"]
     }
-    interaction_widths = {direction: 64 for direction in ["south", "west", "east", "north"]}
+    interaction_widths = {
+        direction: 192 for direction in ["south", "west", "east", "north"]
+    }
     corner_id = "terrain.woodland_leaf_litter_corner_transition"
     opposite_corner_id = "terrain.woodland_leaf_litter_corner_transition_left"
     inset_corner_id = "terrain.woodland_leaf_litter_inset_corner_transition"
@@ -903,7 +914,14 @@ def main() -> None:
         set(animations) == expected_walk_ids | expected_idle_ids | interaction_ids,
         "animation set drifted",
     )
-    for animation_id in expected_walk_ids:
+    expected_direction_widths = {
+        "south": 108,
+        "west": 144,
+        "east": 144,
+        "north": 108,
+    }
+    for direction, width in expected_direction_widths.items():
+        animation_id = f"characters.seeker.{direction}.walk"
         animation = animations[animation_id]
         require(
             len(animation["frame_order"]) == 6,
@@ -917,15 +935,23 @@ def main() -> None:
         for frame_id in animation["frame_order"]:
             asset = assets[frame_id]
             frame = Image.open(ROOT / asset["export"]).convert("RGBA")
+            alpha_bbox = frame.getchannel("A").getbbox()
             require(
-                frame.getchannel("A").getbbox()[3] == asset["contact_baseline"],
+                alpha_bbox is not None
+                and alpha_bbox[3] == asset["contact_baseline"]
+                and alpha_bbox[3] - alpha_bbox[1] >= 144,
                 f"{frame_id}: foot baseline drifted",
+            )
+            require(
+                asset["contact_baseline"] == 156
+                and asset["pivot"] == {"x": width // 2, "y": 156}
+                and frame.size == (width, 168),
+                f"{frame_id}: fixed walk origin drifted",
             )
             frame_hashes.add(asset["sha256"])
         require(len(frame_hashes) == 6, f"{animation['id']}: contains duplicate frames")
 
-    expected_idle_widths = {"south": 36, "west": 48, "east": 48, "north": 36}
-    for direction, width in expected_idle_widths.items():
+    for direction, width in expected_direction_widths.items():
         idle = animations[f"characters.seeker.{direction}.idle_breathe"]
         require(
             len(idle["frame_order"]) == 2,
@@ -939,11 +965,14 @@ def main() -> None:
         for frame_id in idle["frame_order"]:
             asset = assets[frame_id]
             frame = Image.open(ROOT / asset["export"]).convert("RGBA")
+            alpha_bbox = frame.getchannel("A").getbbox()
             require(
-                asset["contact_baseline"] == 52
-                and asset["pivot"] == {"x": width // 2, "y": 52}
-                and frame.size == (width, 56)
-                and frame.getchannel("A").getbbox()[3] == 52,
+                asset["contact_baseline"] == 156
+                and asset["pivot"] == {"x": width // 2, "y": 156}
+                and frame.size == (width, 168)
+                and alpha_bbox is not None
+                and alpha_bbox[3] == 156
+                and alpha_bbox[3] - alpha_bbox[1] >= 144,
                 f"{frame_id}: fixed idle origin drifted",
             )
             idle_frames.append(frame)
@@ -967,12 +996,14 @@ def main() -> None:
         for frame_id in interaction["frame_order"]:
             asset = assets[frame_id]
             frame = Image.open(ROOT / asset["export"]).convert("RGBA")
-            foot_bbox = frame.getchannel("A").crop((0, 42, width, 56)).getbbox()
+            alpha_bbox = frame.getchannel("A").getbbox()
+            foot_bbox = frame.getchannel("A").crop((0, 126, width, 168)).getbbox()
             require(
-                asset["contact_baseline"] == 52
-                and asset["pivot"] == {"x": width // 2, "y": 52}
-                and frame.size == (width, 56)
-                and frame.getchannel("A").getbbox()[3] == 52,
+                asset["contact_baseline"] == 156
+                and asset["pivot"] == {"x": width // 2, "y": 156}
+                and frame.size == (width, 168)
+                and alpha_bbox is not None
+                and alpha_bbox[3] == 156,
                 f"{frame_id}: fixed interaction origin drifted",
             )
             require(
@@ -1008,24 +1039,24 @@ def main() -> None:
         )
 
     review = Image.open(ROOT / manifest["navigation_clearance"]["scene"])
-    require(review.size == (960, 540), "review scene is not 960x540")
+    require(review.size == (1280, 720), "review scene is not 1280x720")
     grayscale = Image.open(ROOT / "review" / "module-review-scene-grayscale.png")
     require(grayscale.size == review.size, "grayscale review dimensions drifted")
     seeker_review = Image.open(ROOT / "review" / "seeker-four-direction-walk.png")
     require(
-        seeker_review.size == (288, 224),
+        seeker_review.size == (864, 672),
         "four-direction Seeker review dimensions drifted",
     )
     idle_review = Image.open(ROOT / "review" / "seeker-four-direction-idle-breathe.png")
     require(
-        idle_review.size == (96, 224),
+        idle_review.size == (288, 672),
         "four-direction idle/breathe review dimensions drifted",
     )
     interaction_review = Image.open(
         ROOT / "review" / "seeker-four-direction-interact-reach.png"
     )
     require(
-        interaction_review.size == (256, 224),
+        interaction_review.size == (768, 672),
         "four-direction interaction review dimensions drifted",
     )
     bend_review = Image.open(ROOT / "review" / "path-bend-review.png")
@@ -1141,11 +1172,11 @@ def main() -> None:
     print("corrected proof validation passed")
     print(f"assets: {len(assets)}")
     print("terrain seams: exact opposite-edge match")
-    print("four-direction walk: 24 frames, baseline 52, 120 ms loops")
-    print("four-direction idle/breathe: 8 frames, fixed origins, 600 ms loops")
+    print("four-direction walk: 24 frames, at least 144px visible, baseline 156, 120 ms loops")
+    print("four-direction idle/breathe: 8 frames, at least 144px visible, 600 ms loops")
     print("four-direction interaction: 16 unique frames, fixed origins, 160 ms gestures")
     print("grayscale cues: ordinary, noticeable, identified, dangerous remain distinct")
-    print("navigation clearance: fixed obstacles remain outside 96x540 path corridor")
+    print("navigation clearance: fixed obstacles remain outside 96x720 path corridor")
     print("path bend: exact 96px top/right ports with transparent outer regions")
     print("path T-junction: exact 96px top/left/right ports with transparent lower regions")
     print("path cross-junction: exact 96px four-way ports with transparent corners")

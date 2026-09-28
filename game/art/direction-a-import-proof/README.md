@@ -10,11 +10,12 @@ deterministic cache path, and unique UID. The proof scene inherits linear filter
 includes the exact 256x256 repeatable woodland leaf-litter tile, its straight, two outer-corner, and
 two inset-corner quiet-moss transitions, and the 90-degree path-bend, T-junction, cross-junction,
 and end-cap modules, shows the same
-960x540 composition, and exposes 12
+1280x720 composition, and exposes 12
 named Seeker animations: four six-frame `walk_*` loops, four two-frame `idle_*` loops, and four
 four-frame non-looping `interact_*` gestures. They retain the
 manifest's exact frame order, 120 ms walk, 600 ms idle, and 160 ms interaction timing,
-direction-specific dimensions, fixed contact origin, and 48 unique texture resources. The scene
+direction-specific dimensions, at least 144 visible logical pixels in every walk and idle frame,
+the fixed 156-pixel contact origin on a 168-pixel canvas, and 48 unique texture resources. The scene
 contains no collision, navigation, input, gameplay state, or UI authority.
 
 Run the source/import metadata check and isolated engine smoke from the repository root:

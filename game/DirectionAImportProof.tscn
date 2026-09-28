@@ -154,6 +154,11 @@ position = Vector2(768, 0)
 texture = ExtResource("2_ground")
 centered = false
 
+[node name="Ground40" type="Sprite2D" parent="Terrain"]
+position = Vector2(1024, 0)
+texture = ExtResource("2_ground")
+centered = false
+
 [node name="Ground01" type="Sprite2D" parent="Terrain"]
 position = Vector2(0, 256)
 texture = ExtResource("2_ground")
@@ -171,6 +176,11 @@ centered = false
 
 [node name="Ground31" type="Sprite2D" parent="Terrain"]
 position = Vector2(768, 256)
+texture = ExtResource("2_ground")
+centered = false
+
+[node name="Ground41" type="Sprite2D" parent="Terrain"]
+position = Vector2(1024, 256)
 texture = ExtResource("2_ground")
 centered = false
 
@@ -194,113 +204,118 @@ position = Vector2(768, 512)
 texture = ExtResource("2_ground")
 centered = false
 
+[node name="Ground42" type="Sprite2D" parent="Terrain"]
+position = Vector2(1024, 512)
+texture = ExtResource("2_ground")
+centered = false
+
 [node name="Path00" type="Sprite2D" parent="Terrain"]
-position = Vector2(432, 0)
+position = Vector2(592, 0)
 texture = ExtResource("3_path")
 centered = false
 
 [node name="Path01" type="Sprite2D" parent="Terrain"]
-position = Vector2(432, 256)
+position = Vector2(592, 256)
 texture = ExtResource("3_path")
 centered = false
 
 [node name="Path02" type="Sprite2D" parent="Terrain"]
-position = Vector2(432, 512)
+position = Vector2(592, 512)
 texture = ExtResource("3_path")
 centered = false
 
 [node name="PathBendProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(0, 512)
+position = Vector2(0, 768)
 texture = ExtResource("56_path_bend")
 centered = false
 
 [node name="PathTJunctionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(256, 512)
+position = Vector2(256, 768)
 texture = ExtResource("57_path_t_junction")
 centered = false
 
 [node name="PathCrossJunctionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(512, 512)
+position = Vector2(512, 768)
 texture = ExtResource("58_path_cross_junction")
 centered = false
 
 [node name="PathEndCapProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(768, 512)
+position = Vector2(768, 768)
 texture = ExtResource("59_path_end_cap")
 centered = false
 
 [node name="WoodlandLeafLitterProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(1024, 0)
+position = Vector2(1280, 0)
 texture = ExtResource("60_leaf_litter")
 centered = false
 
 [node name="WoodlandLeafLitterTransitionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(1024, 256)
+position = Vector2(1280, 256)
 texture = ExtResource("61_leaf_transition")
 centered = false
 
 [node name="WoodlandLeafLitterCornerTransitionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(1280, 0)
+position = Vector2(1536, 0)
 texture = ExtResource("62_leaf_corner_transition")
 centered = false
 
 [node name="WoodlandLeafLitterLeftCornerTransitionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(1280, 256)
+position = Vector2(1536, 256)
 texture = ExtResource("63_leaf_left_corner_transition")
 centered = false
 
 [node name="WoodlandLeafLitterInsetCornerTransitionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(1536, 0)
+position = Vector2(1792, 0)
 texture = ExtResource("64_leaf_inset_corner_transition")
 centered = false
 
 [node name="WoodlandLeafLitterLeftInsetCornerTransitionProof" type="Sprite2D" parent="Terrain"]
-position = Vector2(1536, 256)
+position = Vector2(1792, 256)
 texture = ExtResource("65_leaf_left_inset_corner_transition")
 centered = false
 
 [node name="Props" type="Node2D" parent="."]
 
 [node name="EmptyBed" type="Sprite2D" parent="Props"]
-position = Vector2(102, 128)
+position = Vector2(146, 170)
 texture = ExtResource("4_bed")
 centered = false
 
 [node name="PlantedBed" type="Sprite2D" parent="Props"]
-position = Vector2(706, 128)
+position = Vector2(980, 170)
 texture = ExtResource("4_bed")
 centered = false
 
 [node name="PlantedBedFoliage" type="Sprite2D" parent="Props"]
-position = Vector2(718, 126)
+position = Vector2(990, 168)
 texture = ExtResource("5_foliage")
 centered = false
 
 [node name="LeftFoliage" type="Sprite2D" parent="Props"]
-position = Vector2(128, 348)
+position = Vector2(180, 480)
 texture = ExtResource("5_foliage")
 centered = false
 
 [node name="RightFoliage" type="Sprite2D" parent="Props"]
-position = Vector2(742, 350)
+position = Vector2(1050, 490)
 texture = ExtResource("5_foliage")
 centered = false
 
 [node name="PreparationTable" type="Sprite2D" parent="Props"]
-position = Vector2(650, 330)
+position = Vector2(930, 450)
 texture = ExtResource("6_table")
 centered = false
 
 [node name="PreparationTableIdentifiedCue" type="Sprite2D" parent="Props"]
 z_index = 1
-position = Vector2(650, 330)
+position = Vector2(930, 450)
 texture = ExtResource("7_identified")
 centered = false
 
 [node name="Characters" type="Node2D" parent="."]
 
 [node name="Seeker" type="AnimatedSprite2D" parent="Characters"]
-position = Vector2(462, 250)
+position = Vector2(586, 276)
 sprite_frames = SubResource("SpriteFrames_walk_south")
 animation = &"walk_south"
 autoplay = "walk_south"

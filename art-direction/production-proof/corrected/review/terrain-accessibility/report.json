@@ -3,8 +3,8 @@
   "status": "descriptive external review; not human accessibility acceptance",
   "manifest": {
     "path": "asset-manifest.json",
-    "sha256": "fc0cea02d20621afb5e64e521ec32cb890e45be231dcff31611bd43dc05be908",
-    "schema_version": 1
+    "sha256": "8915e21c9fe3888ef6c6347ee5cecfc2b173bb3e679da177934825b2b3c0bd57",
+    "schema_version": 2
   },
   "method": {
     "name": "Machado-Oliveira-Fernandes 2009 full-severity simulation",

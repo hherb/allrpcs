@@ -6,10 +6,10 @@ namespace Allrpcs.Game;
 public partial class AdaptiveDisplay : Node
 {
     /// <summary>Gets the minimum supported physical window width.</summary>
-    public const int MinimumWindowWidthPixels = 960;
+    public const int MinimumWindowWidthPixels = 1280;
 
     /// <summary>Gets the minimum supported physical window height.</summary>
-    public const int MinimumWindowHeightPixels = 540;
+    public const int MinimumWindowHeightPixels = 720;
 
     /// <inheritdoc />
     public override void _Ready()

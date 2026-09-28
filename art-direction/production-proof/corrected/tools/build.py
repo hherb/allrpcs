@@ -35,6 +35,31 @@ GROUND_CONNECTOR_DEPTH = 32
 GROUND_CORNER_FEATHER_MASTER = 48.0
 GROUND_CORNER_IRREGULARITY_MASTER = 14.0
 RESAMPLE = Image.Resampling.LANCZOS
+LOGICAL_VIEWPORT_SIZE = (1280, 720)
+FULLSCREEN_REFERENCE_LOGICAL_SIZE = (1280, 827)
+SEEKER_MINIMUM_VISIBLE_HEIGHT = 144
+SEEKER_MASTER_CANVAS_HEIGHT = 336
+SEEKER_MASTER_BASELINE = 312
+SEEKER_MASTER_CONTENT_HEIGHT = 300
+SEEKER_MASTER_IDLE_CONTENT_HEIGHT = 304
+SEEKER_MASTER_DIRECTION_WIDTHS = {
+    "south": 216,
+    "west": 288,
+    "east": 288,
+    "north": 216,
+}
+SEEKER_MASTER_REVIEW_CELL_WIDTH = 288
+SEEKER_MASTER_INTERACTION_WIDTH = 384
+REVIEW_PATH_X = (LOGICAL_VIEWPORT_SIZE[0] - 96) // 2
+REVIEW_POSITIONS = {
+    "left_bed": (146, 170),
+    "right_bed": (980, 170),
+    "right_bed_foliage": (990, 168),
+    "left_foliage": (180, 480),
+    "right_foliage": (1050, 490),
+    "preparation_table": (930, 450),
+    "seeker": (586, 276),
+}
 
 
 @dataclass(frozen=True)
@@ -639,7 +664,12 @@ def make_cues() -> dict[str, Image.Image]:
 def seeker_frame_sets() -> dict[str, list[Image.Image]]:
     """Extract and normalize the four approved six-frame direction rows."""
 
-    directions = [("south", 0, 72), ("west", 1, 96), ("east", 2, 96), ("north", 3, 72)]
+    directions = [
+        ("south", 0, SEEKER_MASTER_DIRECTION_WIDTHS["south"]),
+        ("west", 1, SEEKER_MASTER_DIRECTION_WIDTHS["west"]),
+        ("east", 2, SEEKER_MASTER_DIRECTION_WIDTHS["east"]),
+        ("north", 3, SEEKER_MASTER_DIRECTION_WIDTHS["north"]),
+    ]
     sheet = Image.open(LEGACY_SEEKER).convert("RGBA")
     row_height = sheet.height / 4
     frame_sets: dict[str, list[Image.Image]] = {}
@@ -654,8 +684,8 @@ def seeker_frame_sets() -> dict[str, list[Image.Image]]:
             cells.append(crop_alpha(alpha_clean(cell, cutoff=24)))
 
         common_scale = min(
-            (canvas_width - 8) / max(cell.width for cell in cells),
-            100 / max(cell.height for cell in cells),
+            (canvas_width - 24) / max(cell.width for cell in cells),
+            SEEKER_MASTER_CONTENT_HEIGHT / max(cell.height for cell in cells),
         )
         frames: list[Image.Image] = []
         for cell in cells:
@@ -667,10 +697,15 @@ def seeker_frame_sets() -> dict[str, list[Image.Image]]:
                 RESAMPLE,
             )
             resized = alpha_clean(resized, cutoff=16)
-            frame = Image.new("RGBA", (canvas_width, 112), (0, 0, 0, 0))
+            frame = Image.new(
+                "RGBA", (canvas_width, SEEKER_MASTER_CANVAS_HEIGHT), (0, 0, 0, 0)
+            )
             frame.alpha_composite(
                 resized,
-                ((canvas_width - resized.width) // 2, 104 - resized.height),
+                (
+                    (canvas_width - resized.width) // 2,
+                    SEEKER_MASTER_BASELINE - resized.height,
+                ),
             )
             frames.append(frame)
         frame_sets[direction] = frames
@@ -681,12 +716,7 @@ def seeker_idle_frame_sets() -> dict[str, list[Image.Image]]:
     """Normalize each generated direction's neutral and inhale proof frames."""
 
     frame_sets = {}
-    for direction, canvas_width in [
-        ("south", 72),
-        ("west", 96),
-        ("east", 96),
-        ("north", 72),
-    ]:
+    for direction, canvas_width in SEEKER_MASTER_DIRECTION_WIDTHS.items():
         sheet = Image.open(RAW / f"seeker-{direction}-idle-breathe.png").convert(
             "RGBA"
         )
@@ -699,8 +729,8 @@ def seeker_idle_frame_sets() -> dict[str, list[Image.Image]]:
             )
 
         common_scale = min(
-            (canvas_width - 12) / max(cell.width for cell in cells),
-            94 / max(cell.height for cell in cells),
+            (canvas_width - 32) / max(cell.width for cell in cells),
+            SEEKER_MASTER_IDLE_CONTENT_HEIGHT / max(cell.height for cell in cells),
         )
         frames = []
         for cell in cells:
@@ -712,10 +742,15 @@ def seeker_idle_frame_sets() -> dict[str, list[Image.Image]]:
                 RESAMPLE,
             )
             resized = alpha_clean(resized, cutoff=16)
-            frame = Image.new("RGBA", (canvas_width, 112), (0, 0, 0, 0))
+            frame = Image.new(
+                "RGBA", (canvas_width, SEEKER_MASTER_CANVAS_HEIGHT), (0, 0, 0, 0)
+            )
             frame.alpha_composite(
                 resized,
-                ((canvas_width - resized.width) // 2, 104 - resized.height),
+                (
+                    (canvas_width - resized.width) // 2,
+                    SEEKER_MASTER_BASELINE - resized.height,
+                ),
             )
             frames.append(frame)
         frame_sets[direction] = frames
@@ -726,12 +761,8 @@ def seeker_interaction_frame_sets() -> dict[str, list[Image.Image]]:
     """Normalize each generated direction's four-frame reach-and-inspect proof."""
 
     frame_sets = {}
-    for direction, canvas_width in [
-        ("south", 128),
-        ("west", 128),
-        ("east", 128),
-        ("north", 128),
-    ]:
+    for direction in SEEKER_MASTER_DIRECTION_WIDTHS:
+        canvas_width = SEEKER_MASTER_INTERACTION_WIDTH
         sheet = Image.open(RAW / f"seeker-{direction}-interact-reach.png").convert(
             "RGBA"
         )
@@ -744,8 +775,8 @@ def seeker_interaction_frame_sets() -> dict[str, list[Image.Image]]:
             )
 
         common_scale = min(
-            84 / max(cell.width for cell in cells),
-            94 / max(cell.height for cell in cells),
+            252 / max(cell.width for cell in cells),
+            SEEKER_MASTER_CONTENT_HEIGHT / max(cell.height for cell in cells),
         )
         frames = []
         for cell in cells:
@@ -757,8 +788,10 @@ def seeker_interaction_frame_sets() -> dict[str, list[Image.Image]]:
                 RESAMPLE,
             )
             resized = alpha_clean(resized, cutoff=16)
-            frame = Image.new("RGBA", (canvas_width, 112), (0, 0, 0, 0))
-            foot_band_top = max(0, resized.height - 20)
+            frame = Image.new(
+                "RGBA", (canvas_width, SEEKER_MASTER_CANVAS_HEIGHT), (0, 0, 0, 0)
+            )
+            foot_band_top = max(0, resized.height - 60)
             foot_bbox = resized.getchannel("A").crop(
                 (0, foot_band_top, resized.width, resized.height)
             ).getbbox()
@@ -768,7 +801,7 @@ def seeker_interaction_frame_sets() -> dict[str, list[Image.Image]]:
             anchored_x = max(0, min(anchored_x, canvas_width - resized.width))
             frame.alpha_composite(
                 resized,
-                (anchored_x, 104 - resized.height),
+                (anchored_x, SEEKER_MASTER_BASELINE - resized.height),
             )
             frames.append(frame)
         frame_sets[direction] = frames
@@ -905,9 +938,9 @@ def hash_file(path: Path) -> str:
 def make_review_scene(
     assets: dict[str, Image.Image],
 ) -> tuple[Image.Image, list[tuple[str, Image.Image, int, int, bool]]]:
-    """Recompose one 960x540 review scene exclusively from corrected exports."""
+    """Recompose one 1280x720 review scene exclusively from corrected exports."""
 
-    scene_size = (960, 540)
+    scene_size = LOGICAL_VIEWPORT_SIZE
     ground = assets["terrain.quiet_moss"]
     ground_layer = Image.new("RGBA", scene_size, (0, 0, 0, 0))
     for y in range(0, scene_size[1], ground.height):
@@ -916,7 +949,7 @@ def make_review_scene(
 
     path = assets["terrain.straight_path"]
     path_layer = Image.new("RGBA", scene_size, (0, 0, 0, 0))
-    path_x = (scene_size[0] - path.width) // 2
+    path_x = REVIEW_PATH_X
     for y in range(0, scene_size[1], path.height):
         path_layer.alpha_composite(path, (path_x, y))
 
@@ -924,19 +957,22 @@ def make_review_scene(
     bed = assets["plants.herb_bed_empty"]
     foliage = assets["plants.foliage_broadleaf"]
     table = assets["objects.preparation_table"]
-    props_layer.alpha_composite(bed, (102, 128))
-    props_layer.alpha_composite(bed, (706, 128))
-    props_layer.alpha_composite(foliage, (718, 126))
-    props_layer.alpha_composite(foliage, (128, 348))
-    props_layer.alpha_composite(foliage, (742, 350))
-    props_layer.alpha_composite(table, (650, 330))
+    props_layer.alpha_composite(bed, REVIEW_POSITIONS["left_bed"])
+    props_layer.alpha_composite(bed, REVIEW_POSITIONS["right_bed"])
+    props_layer.alpha_composite(foliage, REVIEW_POSITIONS["right_bed_foliage"])
+    props_layer.alpha_composite(foliage, REVIEW_POSITIONS["left_foliage"])
+    props_layer.alpha_composite(foliage, REVIEW_POSITIONS["right_foliage"])
+    props_layer.alpha_composite(table, REVIEW_POSITIONS["preparation_table"])
 
     cue_layer = Image.new("RGBA", scene_size, (0, 0, 0, 0))
-    cue_layer.alpha_composite(assets["cues.preparation_table_identified"], (650, 330))
+    cue_layer.alpha_composite(
+        assets["cues.preparation_table_identified"],
+        REVIEW_POSITIONS["preparation_table"],
+    )
 
     character_layer = Image.new("RGBA", scene_size, (0, 0, 0, 0))
     character_layer.alpha_composite(
-        assets["characters.seeker.south.walk_01"], (462, 250)
+        assets["characters.seeker.south.walk_01"], REVIEW_POSITIONS["seeker"]
     )
 
     layers = [
@@ -1425,8 +1461,8 @@ def main() -> None:
                     "characters",
                     Path(f"exports/characters/seeker/{direction}/walk-{index:02d}.png"),
                     frame.size,
-                    (frame.width // 2, 104),
-                    104,
+                    (frame.width // 2, SEEKER_MASTER_BASELINE),
+                    SEEKER_MASTER_BASELINE,
                     frame,
                     "../sources/seeker-four-direction-walk.png",
                 )
@@ -1442,8 +1478,8 @@ def main() -> None:
                         f"{direction}/idle-breathe-{index:02d}.png"
                     ),
                     frame.size,
-                    (frame.width // 2, 104),
-                    104,
+                    (frame.width // 2, SEEKER_MASTER_BASELINE),
+                    SEEKER_MASTER_BASELINE,
                     frame,
                     f"sources/imagegen/seeker-{direction}-idle-breathe.png",
                 )
@@ -1459,8 +1495,8 @@ def main() -> None:
                         f"{direction}/interact-reach-{index:02d}.png"
                     ),
                     frame.size,
-                    (frame.width // 2, 104),
-                    104,
+                    (frame.width // 2, SEEKER_MASTER_BASELINE),
+                    SEEKER_MASTER_BASELINE,
                     frame,
                     f"sources/imagegen/seeker-{direction}-interact-reach.png",
                 )
@@ -1677,14 +1713,34 @@ def main() -> None:
     direction_order = ["south", "west", "east", "north"]
     for row, direction in enumerate(direction_order):
         for index, frame in enumerate(frame_sets[direction], start=1):
-            x = (index - 1) * 96 + (96 - frame.width) // 2
+            x = (index - 1) * SEEKER_MASTER_REVIEW_CELL_WIDTH + (
+                SEEKER_MASTER_REVIEW_CELL_WIDTH - frame.width
+            ) // 2
             seeker_layers.append(
-                (f"{direction} walk {index:02d}", frame, x, row * 112, True)
+                (
+                    f"{direction} walk {index:02d}",
+                    frame,
+                    x,
+                    row * SEEKER_MASTER_CANVAS_HEIGHT,
+                    True,
+                )
             )
     create_ora(
-        MASTERS / "seeker-four-direction-walk.ora", (6 * 96, 4 * 112), seeker_layers
+        MASTERS / "seeker-four-direction-walk.ora",
+        (
+            6 * SEEKER_MASTER_REVIEW_CELL_WIDTH,
+            4 * SEEKER_MASTER_CANVAS_HEIGHT,
+        ),
+        seeker_layers,
     )
-    seeker_review = Image.new("RGBA", (6 * 96, 4 * 112), (0, 0, 0, 0))
+    seeker_review = Image.new(
+        "RGBA",
+        (
+            6 * SEEKER_MASTER_REVIEW_CELL_WIDTH,
+            4 * SEEKER_MASTER_CANVAS_HEIGHT,
+        ),
+        (0, 0, 0, 0),
+    )
     for _, frame, x, y, _ in seeker_layers:
         seeker_review.alpha_composite(frame, (x, y))
     save_png(downsample(seeker_review), REVIEW / "seeker-four-direction-walk.png")
@@ -1698,16 +1754,34 @@ def main() -> None:
     idle_layers = []
     for row, direction in enumerate(direction_order):
         for index, frame in enumerate(idle_frame_sets[direction], start=1):
-            x = (index - 1) * 96 + (96 - frame.width) // 2
+            x = (index - 1) * SEEKER_MASTER_REVIEW_CELL_WIDTH + (
+                SEEKER_MASTER_REVIEW_CELL_WIDTH - frame.width
+            ) // 2
             idle_layers.append(
-                (f"{direction} idle breathe {index:02d}", frame, x, row * 112, True)
+                (
+                    f"{direction} idle breathe {index:02d}",
+                    frame,
+                    x,
+                    row * SEEKER_MASTER_CANVAS_HEIGHT,
+                    True,
+                )
             )
     create_ora(
         MASTERS / "seeker-four-direction-idle-breathe.ora",
-        (2 * 96, 4 * 112),
+        (
+            2 * SEEKER_MASTER_REVIEW_CELL_WIDTH,
+            4 * SEEKER_MASTER_CANVAS_HEIGHT,
+        ),
         idle_layers,
     )
-    idle_review = Image.new("RGBA", (2 * 96, 4 * 112), (0, 0, 0, 0))
+    idle_review = Image.new(
+        "RGBA",
+        (
+            2 * SEEKER_MASTER_REVIEW_CELL_WIDTH,
+            4 * SEEKER_MASTER_CANVAS_HEIGHT,
+        ),
+        (0, 0, 0, 0),
+    )
     for _, frame, x, y, _ in idle_layers:
         idle_review.alpha_composite(frame, (x, y))
     save_png(downsample(idle_review), REVIEW / "seeker-four-direction-idle-breathe.png")
@@ -1718,7 +1792,7 @@ def main() -> None:
     obsolete_interaction_review = REVIEW / "seeker-south-interact-reach.png"
     if obsolete_interaction_review.exists():
         obsolete_interaction_review.unlink()
-    interaction_cell_width = 128
+    interaction_cell_width = SEEKER_MASTER_INTERACTION_WIDTH
     interaction_layers = []
     for row, direction in enumerate(direction_order):
         for index, frame in enumerate(interaction_frame_sets[direction], start=1):
@@ -1726,15 +1800,23 @@ def main() -> None:
                 interaction_cell_width - frame.width
             ) // 2
             interaction_layers.append(
-                (f"{direction} interact reach {index:02d}", frame, x, row * 112, True)
+                (
+                    f"{direction} interact reach {index:02d}",
+                    frame,
+                    x,
+                    row * SEEKER_MASTER_CANVAS_HEIGHT,
+                    True,
+                )
             )
     create_ora(
         MASTERS / "seeker-four-direction-interact-reach.ora",
-        (4 * interaction_cell_width, 4 * 112),
+        (4 * interaction_cell_width, 4 * SEEKER_MASTER_CANVAS_HEIGHT),
         interaction_layers,
     )
     interaction_review = Image.new(
-        "RGBA", (4 * interaction_cell_width, 4 * 112), (0, 0, 0, 0)
+        "RGBA",
+        (4 * interaction_cell_width, 4 * SEEKER_MASTER_CANVAS_HEIGHT),
+        (0, 0, 0, 0),
     )
     for _, frame, x, y, _ in interaction_layers:
         interaction_review.alpha_composite(frame, (x, y))
@@ -1832,64 +1914,72 @@ def main() -> None:
         )
 
     manifest = {
-        "schema_version": 1,
-        "status": "corrected production-pipeline proof with isolated Godot import parity",
-        "logical_viewport": {"width": 960, "height": 540},
+        "schema_version": 2,
+        "status": "scale-rebaselined production-pipeline proof with isolated Godot import parity",
+        "logical_viewport": {
+            "width": LOGICAL_VIEWPORT_SIZE[0],
+            "height": LOGICAL_VIEWPORT_SIZE[1],
+        },
+        "fullscreen_reference_logical_viewport": {
+            "width": FULLSCREEN_REFERENCE_LOGICAL_SIZE[0],
+            "height": FULLSCREEN_REFERENCE_LOGICAL_SIZE[1],
+        },
+        "minimum_visible_character_height": SEEKER_MINIMUM_VISIBLE_HEIGHT,
         "master_scale": MASTER_SCALE,
         "navigation_clearance": {
             "scene": "review/module-review-scene.png",
-            "x": 432,
+            "x": REVIEW_PATH_X,
             "y": 0,
             "width": 96,
-            "height": 540,
+            "height": LOGICAL_VIEWPORT_SIZE[1],
         },
         "review_composition": [
             {
                 "asset": "plants.herb_bed_empty",
-                "x": 102,
-                "y": 128,
+                "x": REVIEW_POSITIONS["left_bed"][0],
+                "y": REVIEW_POSITIONS["left_bed"][1],
                 "fixed_obstacle": True,
             },
             {
                 "asset": "plants.herb_bed_empty",
-                "x": 706,
-                "y": 128,
+                "x": REVIEW_POSITIONS["right_bed"][0],
+                "y": REVIEW_POSITIONS["right_bed"][1],
                 "fixed_obstacle": True,
             },
             {
                 "asset": "plants.foliage_broadleaf",
-                "x": 718,
-                "y": 126,
+                "x": REVIEW_POSITIONS["right_bed_foliage"][0],
+                "y": REVIEW_POSITIONS["right_bed_foliage"][1],
                 "fixed_obstacle": True,
             },
             {
                 "asset": "plants.foliage_broadleaf",
-                "x": 128,
-                "y": 348,
+                "x": REVIEW_POSITIONS["left_foliage"][0],
+                "y": REVIEW_POSITIONS["left_foliage"][1],
                 "fixed_obstacle": True,
             },
             {
                 "asset": "plants.foliage_broadleaf",
-                "x": 742,
-                "y": 350,
+                "x": REVIEW_POSITIONS["right_foliage"][0],
+                "y": REVIEW_POSITIONS["right_foliage"][1],
                 "fixed_obstacle": True,
             },
             {
                 "asset": "objects.preparation_table",
-                "x": 650,
-                "y": 330,
+                "x": REVIEW_POSITIONS["preparation_table"][0],
+                "y": REVIEW_POSITIONS["preparation_table"][1],
                 "fixed_obstacle": True,
             },
             {
                 "asset": "cues.preparation_table_identified",
-                "x": 650,
-                "y": 330,
+                "x": REVIEW_POSITIONS["preparation_table"][0],
+                "y": REVIEW_POSITIONS["preparation_table"][1],
                 "fixed_obstacle": False,
             },
             {
                 "asset": "characters.seeker.south.walk_01",
-                "x": 462,
-                "y": 250,
+                "x": REVIEW_POSITIONS["seeker"][0],
+                "y": REVIEW_POSITIONS["seeker"][1],
                 "fixed_obstacle": False,
             },
         ],

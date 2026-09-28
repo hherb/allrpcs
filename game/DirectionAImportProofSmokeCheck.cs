@@ -8,6 +8,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
     private const int ExpectedWalkFrameCount = 6;
     private const int ExpectedIdleFrameCount = 2;
     private const int ExpectedInteractionFrameCount = 4;
+    private const int ExpectedCharacterFrameHeight = 168;
     private const float ExpectedWalkFramesPerSecond = 1000.0f / 120.0f;
     private const float ExpectedIdleFramesPerSecond = 1000.0f / 600.0f;
     private const float ExpectedInteractionFramesPerSecond = 1000.0f / 160.0f;
@@ -21,35 +22,35 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         bool Loop)[]
         ExpectedAnimations =
     [
-        ("walk_south", 36, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
-        ("walk_west", 48, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
-        ("walk_east", 48, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
-        ("walk_north", 36, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
-        ("idle_south", 36, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
-        ("idle_west", 48, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
-        ("idle_east", 48, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
-        ("idle_north", 36, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
+        ("walk_south", 108, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
+        ("walk_west", 144, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
+        ("walk_east", 144, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
+        ("walk_north", 108, ExpectedWalkFrameCount, ExpectedWalkFramesPerSecond, true),
+        ("idle_south", 108, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
+        ("idle_west", 144, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
+        ("idle_east", 144, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
+        ("idle_north", 108, ExpectedIdleFrameCount, ExpectedIdleFramesPerSecond, true),
         (
             "interact_south",
-            64,
+            192,
             ExpectedInteractionFrameCount,
             ExpectedInteractionFramesPerSecond,
             false),
         (
             "interact_west",
-            64,
+            192,
             ExpectedInteractionFrameCount,
             ExpectedInteractionFramesPerSecond,
             false),
         (
             "interact_east",
-            64,
+            192,
             ExpectedInteractionFrameCount,
             ExpectedInteractionFramesPerSecond,
             false),
         (
             "interact_north",
-            64,
+            192,
             ExpectedInteractionFrameCount,
             ExpectedInteractionFramesPerSecond,
             false),
@@ -94,7 +95,8 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
             + "repeatable woodland leaf litter and its straight, outer-corner, and two inset-corner "
             + "quiet-moss transitions, "
             + "separate table cue, "
-            + "four six-frame 120 ms walks, four two-frame 600 ms idle loops, "
+            + "144px-minimum visible Seeker, four six-frame 120 ms walks, "
+            + "four two-frame 600 ms idle loops, "
             + "four four-frame 160 ms non-looping interactions, 48 unique character textures, "
             + "and no gameplay authority.");
         GetTree().Quit();
@@ -116,7 +118,9 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
 
         Sprite2D table = GetNode<Sprite2D>("Props/PreparationTable");
         Sprite2D cue = GetNode<Sprite2D>("Props/PreparationTableIdentifiedCue");
-        return table.Position == cue.Position
+        Sprite2D pathSprite = GetNode<Sprite2D>("Terrain/Path00");
+        return pathSprite.Position == new Vector2(592, 0)
+            && table.Position == cue.Position
             && table.Texture != cue.Texture
             && cue.ZIndex > table.ZIndex;
     }
@@ -127,7 +131,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         SpriteFrames frames = seeker.SpriteFrames;
         if (seeker.Centered
             || seeker.Offset != Vector2.Zero
-            || seeker.Position != new Vector2(462, 250)
+            || seeker.Position != new Vector2(586, 276)
             || frames.GetAnimationNames().Length != ExpectedAnimations.Length)
         {
             return false;
@@ -153,7 +157,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
             {
                 Texture2D texture = frames.GetFrameTexture(animation, index);
                 if (texture.GetWidth() != width
-                    || texture.GetHeight() != 56
+                    || texture.GetHeight() != ExpectedCharacterFrameHeight
                     || Mathf.Abs(frames.GetFrameDuration(animation, index) - 1.0f)
                         > TimingTolerance
                     || !textureRids.Add(texture.GetRid()))

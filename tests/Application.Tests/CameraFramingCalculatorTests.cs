@@ -6,7 +6,7 @@ namespace Allrpcs.Application.Tests;
 public sealed class CameraFramingCalculatorTests
 {
     private static readonly CameraWorldBounds TestWorldBounds = new(0.0f, 0.0f, 1600.0f, 900.0f);
-    private static readonly Vector2 TestViewportSize = new(960.0f, 540.0f);
+    private static readonly Vector2 TestViewportSize = new(1280.0f, 720.0f);
 
     [Fact]
     public void CreatesValidatedFramingPlan()
@@ -14,12 +14,12 @@ public sealed class CameraFramingCalculatorTests
         CameraFramingPlan plan = CameraFramingCalculator.Create(
             TestWorldBounds,
             TestViewportSize,
-            minimumZoom: 0.75f,
+            minimumZoom: 0.8f,
             defaultZoom: 1.0f,
             maximumZoom: 2.0f);
 
         Assert.Equal(TestWorldBounds, plan.WorldBounds);
-        Assert.Equal(0.75f, plan.MinimumZoom);
+        Assert.Equal(0.8f, plan.MinimumZoom);
         Assert.Equal(1.0f, plan.DefaultZoom);
         Assert.Equal(2.0f, plan.MaximumZoom);
     }
@@ -30,11 +30,11 @@ public sealed class CameraFramingCalculatorTests
         CameraFramingPlan plan = CameraFramingCalculator.Create(
             TestWorldBounds,
             TestViewportSize,
-            minimumZoom: 0.6f,
+            minimumZoom: 0.8f,
             defaultZoom: 1.0f,
             maximumZoom: 2.0f);
 
-        Assert.Equal(0.6f, plan.MinimumZoom);
+        Assert.Equal(0.8f, plan.MinimumZoom);
     }
 
     [Theory]
@@ -48,21 +48,21 @@ public sealed class CameraFramingCalculatorTests
         CameraWorldBounds bounds = new(left, top, right, bottom);
 
         Assert.Throws<ArgumentOutOfRangeException>(() =>
-            CameraFramingCalculator.Create(bounds, TestViewportSize, 0.75f, 1.0f, 2.0f));
+            CameraFramingCalculator.Create(bounds, TestViewportSize, 0.8f, 1.0f, 2.0f));
     }
 
     [Theory]
-    [InlineData(0.0f, 540.0f)]
-    [InlineData(960.0f, 0.0f)]
-    [InlineData(float.NaN, 540.0f)]
-    [InlineData(960.0f, float.NegativeInfinity)]
+    [InlineData(0.0f, 720.0f)]
+    [InlineData(1280.0f, 0.0f)]
+    [InlineData(float.NaN, 720.0f)]
+    [InlineData(1280.0f, float.NegativeInfinity)]
     public void RejectsInvalidViewportSize(float width, float height)
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
             CameraFramingCalculator.Create(
                 TestWorldBounds,
                 new Vector2(width, height),
-                0.75f,
+                0.8f,
                 1.0f,
                 2.0f));
     }
@@ -70,9 +70,9 @@ public sealed class CameraFramingCalculatorTests
     [Theory]
     [InlineData(0.0f, 1.0f, 2.0f)]
     [InlineData(1.25f, 1.0f, 2.0f)]
-    [InlineData(0.75f, 2.5f, 2.0f)]
-    [InlineData(0.75f, float.NaN, 2.0f)]
-    [InlineData(0.75f, 1.0f, float.PositiveInfinity)]
+    [InlineData(0.8f, 2.5f, 2.0f)]
+    [InlineData(0.8f, float.NaN, 2.0f)]
+    [InlineData(0.8f, 1.0f, float.PositiveInfinity)]
     public void RejectsInvalidZoomTuning(float minimumZoom, float defaultZoom, float maximumZoom)
     {
         Assert.Throws<ArgumentOutOfRangeException>(() =>
@@ -91,7 +91,7 @@ public sealed class CameraFramingCalculatorTests
             CameraFramingCalculator.Create(
                 TestWorldBounds,
                 TestViewportSize,
-                minimumZoom: 0.5f,
+                minimumZoom: 0.75f,
                 defaultZoom: 1.0f,
                 maximumZoom: 2.0f));
     }

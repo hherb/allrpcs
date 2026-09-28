@@ -34,7 +34,7 @@ public partial class AdaptiveDisplaySmokeCheck : Node
         }
 
         GD.Print(
-            "Adaptive display smoke passed: 960x540 minimum, resizable window, canvas-item "
+            "Adaptive display smoke passed: 1280x720 minimum, resizable window, canvas-item "
             + "scaling, and aspect expansion support larger and fullscreen displays.");
         GetTree().Quit();
     }

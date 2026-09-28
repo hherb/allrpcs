@@ -1,10 +1,11 @@
 # Allrpcs art bible — selected Direction A
 
-Status: approved Phase 9.1 direction and bounded art bible 0.1, 2026-09-28.
+Status: approved Phase 9.1 direction and scale-rebaselined art bible 0.2, 2026-09-28.
 
 Direction A, painterly storybook gouache, is selected. The user preferred A if feasible and D
-otherwise. A is feasible with the constraints below: it uses the existing 2D renderer, 960x540
-logical viewport, and `Camera2D`; it requires no renderer, navigation, gameplay, or UI-behaviour
+otherwise. A is feasible with the constraints below: it uses the existing 2D renderer, 1280x720
+base logical viewport, aspect-expanding fullscreen framing, and `Camera2D`; it requires no renderer,
+navigation, gameplay, or UI-behaviour
 change. Direction D remains a contingency only if the representative production proof fails the
 explicit feasibility gates near the end of this document.
 
@@ -18,10 +19,14 @@ preserve this direction or pass the documented Direction D contingency gate.
 
 ## Camera, projection, and resolution
 
-- Preserve the current 960x540 logical viewport and continuous `Camera2D` framing.
+- Use a 1280x720 base logical viewport and continuous `Camera2D` framing. Preserve canvas-item
+  scaling with aspect expansion so wider screens reveal more horizontal world and taller screens
+  reveal more vertical world without stretching either axis.
 - Use an orthographic-like high-oblique three-quarter projection with no horizon and negligible
   perspective convergence. World objects retain comparable scale across the screen.
-- Judge all assets and UI at 960x540 before approving higher-resolution captures.
+- Judge all assets and UI at 1280x720 and at representative expanded fullscreen aspect ratios before
+  approving higher-resolution captures. The 16-inch 3456x2234 reference display exposes about
+  1280x827 logical pixels in fullscreen.
 - Author raster masters at 2x their intended logical dimensions and retain those editable masters.
   Exported runtime dimensions follow the object's required on-screen footprint; do not assemble one
   monolithic painting of the opening region.
@@ -78,7 +83,7 @@ The palette is a role-based starting set, not a ban on intermediate painted colo
 
 - Use matte gouache-like brush grain and simplified hand-painted forms. Texture frequency decreases
   with gameplay importance: quiet ground is broad; focal props may carry finer accents.
-- Use selective warm-dark outlines, normally one to two logical pixels at 960x540. Strengthen the
+- Use selective warm-dark outlines, normally two to four logical pixels at 1280x720. Strengthen the
   lower/contact edge and separation between overlapping gameplay silhouettes; omit unnecessary
   interior contouring.
 - Do not outline every grass blade or stone. Dense detail, universal black outlines, photorealistic
@@ -86,7 +91,9 @@ The palette is a role-based starting set, not a ban on intermediate painted colo
 
 ## Character proportions and animation requirements
 
-- Gameplay characters target 48–56 logical pixels in height at 960x540 and roughly 4.5–5 heads tall.
+- Gameplay characters must remain at least 144 visible logical pixels high at the 1280-wide base
+  scale and roughly 4.5–5 heads tall. Author exports on a 168-pixel-high logical canvas with a fixed
+  156-pixel planted-foot baseline unless a reviewed action requires a wider canvas.
 - Preserve a distinct head/hair shape, torso mass, cloak/apron shape, feet, and facing cue in each
   silhouette. Clothing colour supports identity but does not define it alone.
 - Initial production proof requires four directional facings, a two-frame idle/breathe treatment,
@@ -111,7 +118,7 @@ State cues layer on top of stable authored silhouettes and never change game aut
 
 - Markers remain outside the object's core silhouette and do not obscure text, characters, routes,
   or evidence details.
-- At 960x540, the diamond or hazard marker targets 12–16 logical pixels and must remain recognizable
+- At 1280x720, the diamond or hazard marker targets 16–24 logical pixels and must remain recognizable
   in grayscale.
 - Do not use hidden-object sparkle, hue-only rarity, tiny cursor changes, or ambient VFX as the sole
   carrier of gameplay state.
@@ -120,7 +127,7 @@ State cues layer on top of stable authored silhouettes and never change game aut
 
 - UI remains engine-rendered, not baked into world art.
 - Use flat translucent charcoal panels, restrained cream sans-serif text, generous padding, and one
-  clear focus treatment. The dialogue panel occupies at most the bottom quarter of 960x540.
+  clear focus treatment. The dialogue panel occupies at most the bottom quarter of 1280x720.
 - Preserve keyboard focus, scaling, and existing content behaviour. This art direction does not
   authorize a layout or interaction redesign.
 
@@ -128,12 +135,13 @@ State cues layer on top of stable authored silhouettes and never change game aut
 
 Direction A remains selected if one representative production proof can satisfy all of these:
 
-1. At 960x540, both characters, the doorway, walkable ground, and the preparation table read without
+1. At 1280x720 and the representative expanded fullscreen frame, both characters, the doorway,
+   walkable ground, and the preparation table read without
    zooming or relying on hue.
 2. A small modular kit can recompose the cottage edge, path, two herb beds, fences, and foliage
    without visible seams or a monolithic background painting.
-3. One four-direction character walk proof keeps silhouettes and foot placement stable at 48–56
-   logical pixels.
+3. One four-direction character walk proof keeps silhouettes and foot placement stable at a minimum
+   visible height of 144 logical pixels.
 4. Editable 2x masters can be revised and exported without destructive flattening or untracked
    third-party content.
 5. The measured production estimate for the opening region is accepted before bulk asset creation.

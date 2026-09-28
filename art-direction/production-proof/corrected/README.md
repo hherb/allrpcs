@@ -1,16 +1,18 @@
 # Direction A corrected production-pipeline proof
 
-Status: bounded corrected proof, 2026-09-28. This directory remains outside `game/`; exact copies
+Status: bounded scale-rebaselined proof, 2026-09-28. This directory remains outside `game/`; exact copies
 are imported only by the isolated proof scene and none is runtime-authoritative.
 
-This pass corrects the sheet-dependent failures recorded by the first Phase 9.2 proof. Eighteen
-individual painterly inputs are retained under `sources/imagegen`; deterministic Python tooling
-turns them and the earlier Seeker source sheet into individual exports, exact geometry, editable
-OpenRaster masters, and review evidence.
+This proof corrects the sheet-dependent failures recorded by the first Phase 9.2 proof. Eighteen
+individual painterly inputs remain under `sources/imagegen`; deterministic Python tooling turns them
+and the earlier high-resolution Seeker source sheet into individual exports, exact geometry,
+editable OpenRaster masters, and review evidence. The scale rebaseline reused those retained sources;
+it did not enlarge the previous 48–56-pixel exports or generate a new character design.
 
 ## Result
 
-- `asset-manifest.json` contains all 66 asset IDs, logical/export rectangles, exact 2x master
+- `asset-manifest.json` schema 2 contains all 66 asset IDs, the 1280x720 base and 1280x827 expanded
+  fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
 - `exports` contains one file per module: quiet moss, opaque woodland leaf litter, one deterministic
@@ -26,7 +28,7 @@ OpenRaster masters, and review evidence.
   path T-junction, the path cross-junction, the path end-cap, planted herb bed,
   preparation-table states, walk,
   idle/breathe, interaction strips, and the composed review scene.
-- `review/module-review-scene.png` is a 960x540 composition made only from corrected exports. Its
+- `review/module-review-scene.png` is a 1280x720 composition made only from corrected exports. Its
   grayscale companion preserves the path, character, props, and identified-state cue hierarchy.
 - `review/state-cues-grayscale.png` shows ordinary, noticeable, identified, and dangerous table
   treatments without relying on hue.
@@ -88,23 +90,27 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
   lower 64-pixel band;
 - one 1024x768 topology composition connects every path shape using only exact exports and
   deterministic rotations, without introducing another terrain asset;
-- all six frames in each of the four directional walks are unique, share a 52-pixel contact
-  baseline, and use one documented 120 ms loop timing;
+- all six frames in each of the four directional walks are unique, remain at least 144 visible
+  logical pixels high, share a 156-pixel contact baseline on a 168-pixel export canvas, and use one
+  documented 120 ms loop timing;
 - both idle/breathe frames in each direction are distinct, preserve the direction-specific fixed
-  origin and 52-pixel baseline, and use one documented 600 ms loop timing;
+  origin, remain at least 144 visible logical pixels high, preserve the 156-pixel baseline, and use
+  one documented 600 ms loop timing;
 - all four reach-and-inspect frames in each direction are distinct, all 16 are unique, preserve the
-  direction-specific fixed origin and 52-pixel baseline, and use 160 ms non-looping timing;
+  direction-specific fixed origin and 156-pixel baseline, and use 160 ms non-looping timing;
 - the four table states remain measurably distinct in grayscale;
 - the external terrain accessibility review exactly reproduces 40 simulation views from the current
   manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
-- no fixed review-scene obstacle overlaps the 96x540 path corridor; and
+- no fixed review-scene obstacle overlaps the 96x720 path corridor; and
 - all seventeen `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
   editable PNG layers.
 
 ## Review conclusion and boundaries
 
 The corrected proof passes the art bible's alpha, seam, pivot, editable-master, grayscale-cue,
-four-direction walk, idle/breathe, and interaction gates. The terrain-only colour-vision review is
+four-direction walk, idle/breathe, interaction, and 144-pixel character-scale gates. The unchanged
+96-pixel path and 80–96-pixel props remain readable and proportionate in the 1280x720 composition,
+so the rebaseline did not require regenerating them. The terrain-only colour-vision review is
 reproducible external evidence, not human accessibility acceptance. Direction A remains feasible,
 so the Direction D contingency does not activate.
 

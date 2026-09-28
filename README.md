@@ -268,11 +268,11 @@ Use W, A, S, and D to move the gold placeholder Seeker around the 1600-by-900 te
 Seeker's named default speed is 240 pixels per second. Diagonal input is normalized so it does
 not move faster than a cardinal direction. The camera follows with a named smoothing speed of
 6 and world limits matching the region, so ordinary movement cannot reveal space beyond it.
-Its named minimum, default, and maximum zoom tuning values are 0.75, 1.0, and 2.0. Zoom and
+Its named minimum, default, and maximum zoom tuning values are 0.8, 1.0, and 2.0. Zoom and
 camera-pan input are intentionally not mapped yet.
 
 The 1600-by-900 region is authored world space, not a required display resolution. The window uses
-960-by-540 only as its minimum supported physical size and 16:9 design viewport. It remains resizable,
+1280-by-720 as its minimum supported physical size and 16:9 design viewport. It remains resizable,
 uses canvas-item scaling with aspect expansion, and can occupy larger or fullscreen displays without
 changing world coordinates or stretching one axis independently. Wider screens reveal more horizontal
 camera space and taller screens reveal more vertical camera space within the same bounded world.
