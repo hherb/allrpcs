@@ -162,20 +162,24 @@ Acceptance:
 ### 9.1 Art-direction selection
 
 - [x] Generate or draw several preview-only visual directions after greybox scale is stable.
-- [ ] Select the perspective, projection, camera framing, and base asset resolution.
-- [ ] Select a palette, lighting language, texture treatment, outline policy, and atmosphere.
-- [ ] Establish character proportions and animation requirements.
-- [ ] Establish visual rules for ordinary, noticeable, hidden, identified, and dangerous
+- [x] Select the perspective, projection, camera framing, and base asset resolution.
+- [x] Select a palette, lighting language, texture treatment, outline policy, and atmosphere.
+- [x] Establish character proportions and animation requirements.
+- [x] Establish visual rules for ordinary, noticeable, hidden, identified, and dangerous
   objects without relying on colour alone.
-- [ ] Create an art bible with reference images, constraints, and exclusions.
+- [x] Create an art bible with reference images, constraints, and exclusions.
 - [x] Track asset provenance, source files, prompts where applicable, licences, and edits.
 
 Acceptance:
 
-- [ ] One small representative scene containing terrain, a building, two characters, plants,
+- [x] One small representative scene containing terrain, a building, two characters, plants,
   an interactable object, and dialogue UI is coherent and readable at gameplay scale.
 
 ### 9.2 Production assets
+
+- [x] Complete one bounded source-sheet pipeline proof for modular terrain/path, herb-bed/foliage,
+  preparation-table state cues, and a Seeker four-direction walk sample; keep its recorded alpha,
+  seam, pivot, baseline, and editable-master failures outside the runtime.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

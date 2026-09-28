@@ -6,10 +6,16 @@ navigation-request, follow-target, command-selection, and focus-selection rules 
 authoritative rules in engine-independent C# projects while Godot owns input mapping, physics
 presentation, camera behavior, collision, navigation topology, and scene authoring.
 
-Phase 9.1 begins with four preview-only representative-scene visual directions. The comparison,
-full-size images, exact generation prompts, provenance, and review tradeoffs are recorded in
-[`art-direction/representative-scene`](art-direction/representative-scene/README.md). None of these
-previews is imported into Godot or selected as the production direction.
+Phase 9.1 completed human approval of the painterly storybook Direction A after a four-way preview
+comparison, with Direction D retained only as a feasibility fallback. The comparison, approved
+refinement, bounded art bible, exact generation prompts, provenance, and review tradeoffs are
+recorded in [`art-direction/representative-scene`](art-direction/representative-scene/README.md).
+None of these previews is imported into Godot or treated as production art.
+
+The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
+object-state cues, and a four-direction Seeker walk sample under
+[`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
+seam, pivot, baseline, and editable-master gaps keep every sheet outside the runtime.
 
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure

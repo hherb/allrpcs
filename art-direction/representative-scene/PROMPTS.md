@@ -79,3 +79,24 @@ Text (verbatim): dialogue panel labels "SAY AS SEEKER", "HEALER", and "SUBMIT"; 
 Constraints: preview only; exactly one building, exactly two characters, plants, exactly one interactable object; keep all subjects unobscured; practical pixel UI; preserve navigation clarity; no logos, trademarks, watermark, map, inventory, extra props, extra characters, combat, cinematic close-up, or production-asset sheet.
 Avoid: blurry upscaling, anti-aliased vector art, pseudo-pixel noise, colour-only interaction cues, illegible decorative text.
 ```
+
+## Selected Direction A refinement
+
+This edit used `previews/direction-a-storybook-gouache.png` as Image 1, the edit target, and
+`reference/greybox-camera-reference.png` as Image 2, the scale/framing reference.
+
+```text
+Use case: stylized-concept
+Asset type: refined preview-only representative gameplay scene and art-bible reference
+Primary request: Refine Direction A into a production-feasibility checkpoint for Allrpcs while preserving its warm painterly storybook identity.
+Input images: Image 1 is the edit target and chosen storybook-gouache direction. Image 2 is the same-project greybox reference for logical 960x540 camera scale and UI layering only.
+Change only: make the camera orthographic-like high-oblique with consistent gameplay scale and no horizon; simplify the scene into visibly reusable painterly modules; reduce decorative foliage/noise by about 30 percent; strengthen walkable-ground and doorway clearance; make the non-colour interaction cue unmistakable.
+Preserve: the 16:9 framing, one small timber-and-plaster healer's cottage, exactly two full-body characters, exactly two herb beds, exactly one waist-high stone preparation table, the curved dirt path, warm late-afternoon lighting, moss/ochre/cream/weathered-brown/teal palette, matte gouache texture, selective warm-dark outlines, upper-left status panel, and bottom dialogue panel.
+Scene/backdrop: compact village-edge clearing; cottage and herb beds read as modular reusable pieces rather than one continuous bespoke painting; vegetation is grouped into a few repeatable clusters; no distant panorama.
+Characters: Seeker in a teal travel cloak and Healer in an ochre apron, about four-and-a-half to five heads tall; size them to read at roughly 48 to 56 logical pixels high when viewed at 960x540; keep silhouettes, feet, and facing unobscured.
+Interactable: the preparation table must use a warm-ivory double contour plus a separate solid diamond marker and slight value lift; the cue must remain readable in grayscale and must not rely on hue, glow, sparkle, or tiny detail.
+UI: practical flat translucent charcoal panels with restrained cream sans-serif type and generous padding; bottom panel occupies no more than the bottom quarter.
+Text (verbatim): upper-left lines "Current healer mode: FOLLOW", "Interaction focus: HERB PATCH", "Focused search: NO ATTEMPT"; bottom labels "SAY AS SEEKER", "HEALER", and "SUBMIT"; no other readable text.
+Constraints: preview only; preserve the edit target's visual identity; exactly one building, two characters, two herb beds, and one interactable; clear navigation corridor; readable at the current 960x540 logical viewport; no runtime-asset sheet, no map, no inventory, no extra character, no combat, no logo, no trademark, no watermark.
+Avoid: perspective convergence, cinematic depth of field, dense one-off foliage, excessive brush noise, colour-only cues, bloom, generic fantasy spectacle, extra props, or illegible decorative text.
+```

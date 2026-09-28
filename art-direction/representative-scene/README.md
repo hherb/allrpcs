@@ -15,6 +15,16 @@ sources before judging fine texture or pixel treatment:
 - [Direction C — low-poly diorama](previews/direction-c-low-poly-diorama.png)
 - [Direction D — pixel art](previews/direction-d-pixel-art.png)
 
+## Selected direction
+
+Direction A is approved after human review, subject to explicit production-feasibility gates;
+Direction D is the fallback only if an A production proof fails those gates after one bounded
+correction pass. The first refinement reduces bespoke detail, preserves navigation clearance, and
+strengthens the non-colour interaction cue:
+
+- [Selected Direction A refinement](previews/selected-direction-a-refinement.png)
+- [Bounded approved art bible](ART_BIBLE.md)
+
 ## Locked comparison content
 
 - 16:9 gameplay view with approximately the existing greybox camera scale.
@@ -37,10 +47,10 @@ details.
 | C — low-poly diorama | Clean isometric three-quarter; inspect the 1672x941 preview at the current 960x540 viewport before selecting a base | Pine/clay/limestone/ochre/teal; cool morning plus low warm sun; faceted materials; no drawn outlines; distant valley haze | Four-head-tall faceted figures; octagonal plinth, cast silhouette, and outlined diamond separate the table | Clearest spatial depth and reusable geometry, but isometric staging may constrain the existing authored camera and navigation presentation |
 | D — pixel art | High three-quarter top-down; preview is 1672x941, with a proposed 320x180 authored base and integer scaling | Limited navy/blue-green/violet/amber/cream; blue-hour dusk; clustered pixels and selective outlines; edge fog | Sprites about 28 proposed-base pixels tall; paired brackets plus diamond remain readable without hue | Strongest explicit resolution discipline and atmosphere, but animation and environment coverage require substantial authored pixel work |
 
-No direction is selected. Review should first decide whether the project values painterly warmth,
-graphic contour clarity, 3D spatial readability, or strict low-resolution authorship most strongly.
-That decision can then bound a single representative-scene refinement instead of starting production
-assets.
+The original four-way comparison remains evidence for the selection rather than a source of runtime
+assets. Direction A prioritizes painterly warmth while the art bible constrains its higher production
+cost through reusable modules, a fixed logical viewport, quiet traversal surfaces, and explicit
+readability gates.
 
 ## Provenance
 
@@ -54,6 +64,8 @@ assets.
   `magick INPUT -crop 2800x1575+240+260 +repage -resize 960x540 OUTPUT`.
 - Each direction was generated independently from that same reference and its recorded prompt. No
   third-party image, asset, logo, trademark, or style-reference image was used.
+- The selected refinement was generated from Direction A as its edit target and the same greybox as
+  a scale/framing reference. Its prompt and invariants are also recorded.
 - The comparison sheet is a deterministic 2x2 montage of the four unedited generated PNG files.
 - Generated pixels have not been imported into Godot or treated as shippable assets.
 
@@ -68,4 +80,5 @@ Exact generation prompts are preserved in [PROMPTS.md](PROMPTS.md).
 | `previews/direction-b-ink-wash.png` | 1672x941 | `9f3b22fef8bf37e12ee6d86ffc46baca6cd7b8d099fe9f8f565629f9a6820bbb` |
 | `previews/direction-c-low-poly-diorama.png` | 1672x941 | `e11caed8c1bac08cd4a0d07ca4cfe85f13051f98bd5ad37f057c0b301ec5e3d2` |
 | `previews/direction-d-pixel-art.png` | 1672x941 | `b3d639980b8c9c30a8f809f9492505be3c787621ec388da7728a85a64e64c7c9` |
+| `previews/selected-direction-a-refinement.png` | 1672x941 | `21077033ac87fc2606f8e3407413501b38198246f4861f899d8b6ab73fb6d296` |
 | `comparison-sheet.png` | 1584x912 | `25f55defa50b815385256c9faee4c85ba6d3b20e5e0bc6ac197e57666a0a8d3a` |

@@ -2,19 +2,28 @@
 
 ## Current state
 
-Phase 8 remains complete on `main`. Phase 9.1 now has four preview-only representative-scene visual
-directions: storybook gouache, ink and wash, low-poly diorama, and pixel art. The same-project
-greybox reference, full-size PNG files, exact prompts, provenance, integrity hashes, comparison
-sheet, and neutral tradeoff review are under `art-direction/representative-scene/`. No direction has
-been selected and no generated image has entered the runtime.
+Phase 8 remains complete on `main`. Human review approved Phase 9.1 Direction A, painterly storybook
+gouache, and the refined representative scene; Phase 9.1 is complete. Direction D remains only the
+documented contingency. The first bounded Phase 9.2 production-pipeline proof created four
+transparent source sheets outside `game/`; none is runtime-ready or imported.
 
 ## Current evidence and boundaries
 
-- The comparison keeps one building, two characters, plants, one interactable preparation table,
-  the existing 16:9 gameplay scale, and status/dialogue UI layering visible in every direction.
-- Every interactable treatment combines geometry or a marker with value contrast rather than using
-  colour alone. The review notes compare perspective, proposed resolution, palette, lighting,
-  texture, outlines, atmosphere, character proportions, legibility, and likely production cost.
+- The selected direction retains the existing 960x540 logical viewport and `Camera2D`, uses an
+  orthographic-like high-oblique projection, 2x editable raster masters, modular painterly layers,
+  warm late-afternoon light, selective warm-dark outlines, and 48–56-pixel gameplay characters.
+- The refined scene keeps one cottage, two characters, two herb beds, clear walkable ground, and one
+  preparation table with a double contour plus separate diamond marker rather than a colour-only cue.
+- The art bible defines palette roles, texture and outline policy, four-direction animation proof,
+  UI boundaries, ordinary/noticeable/hidden/identified/dangerous object rules, five feasibility
+  gates, explicit exclusions, and the narrow condition under which Direction D can replace A.
+- The production proof contains six terrain/path concepts, six herb-bed/foliage concepts, four
+  preparation-table state treatments, and exactly 24 Seeker frames in four six-frame direction rows.
+- Every proof PNG has alpha, but terrain/plants retain coloured low-alpha gutter haze and never
+  reach fully opaque alpha; all sheets still lack deterministic export rectangles and pivots; table
+  cues are baked rather than overlays; and the Seeker foot baselines and loop timing are not
+  mechanically normalized. The flattened PNGs also fail the editable-master gate. These are
+  explicit pipeline failures, not runtime assets.
 - Host-local `./scripts/quality.sh` passed a zero-warning build, 2,839 Domain, 924 Application,
   1,261 Infrastructure, and 8 architecture tests, scenario validation, every credential-free Godot
   smoke, formatting, and the Compatibility graphical launch. The restricted run first reached only
@@ -30,14 +39,12 @@ been selected and no generated image has entered the runtime.
 
 ## Exact next bounded slice
 
-Conduct a human review of the four full-size previews and comparison notes. Record either one chosen
-direction or one explicitly bounded hybrid/refinement, together with decisions for perspective,
-projection, camera framing, base asset resolution, palette, lighting language, texture treatment,
-outline policy, atmosphere, character proportions, animation needs, and non-colour-only rules for
-ordinary, noticeable, hidden, identified, and dangerous objects.
+Perform the one bounded Direction A pipeline correction pass. Replace sheet-dependent gutters with
+individual clean-alpha modules, retain or create editable layered masters, and define one manifest
+containing each asset's logical/export rectangles, 2x master dimensions, contact baseline, and pivot.
+Recompose one external 960x540 review scene from only those modules, verify path seams and grayscale
+state cues, and normalize only one six-frame Seeker direction before extending animation further.
 
-Do not infer a winner from the comparison, generate a second round before review, import previews
-into Godot, replace runtime assets, modify gameplay or UI behavior, begin the production asset set,
-use untracked third-party assets, or start audio, release, or signing work. After the human decision,
-the following implementation slice should be only one refined representative scene and the first
-bounded art-bible draft for that selected direction.
+Do not import into Godot until the corrected proof passes, switch to Direction D unless an art-bible
+feasibility gate still fails after this correction, bulk-produce the opening region, modify gameplay
+or UI behaviour, use untracked third-party content, or start audio, release, or signing work.
