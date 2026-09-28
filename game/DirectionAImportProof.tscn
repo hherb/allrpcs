@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3]
+[gd_scene load_steps=69 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-corner-transition.png" id="62_leaf_corner_transition"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-corner-transition-left.png" id="63_leaf_left_corner_transition"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-inset-corner-transition.png" id="64_leaf_inset_corner_transition"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-inset-corner-transition-left.png" id="65_leaf_left_inset_corner_transition"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/plants/herb-bed-empty.png" id="4_bed"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/plants/foliage-broadleaf.png" id="5_foliage"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/objects/preparation-table.png" id="6_table"]
@@ -251,6 +252,11 @@ centered = false
 [node name="WoodlandLeafLitterInsetCornerTransitionProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(1536, 0)
 texture = ExtResource("64_leaf_inset_corner_transition")
+centered = false
+
+[node name="WoodlandLeafLitterLeftInsetCornerTransitionProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1536, 256)
+texture = ExtResource("65_leaf_left_inset_corner_transition")
 centered = false
 
 [node name="Props" type="Node2D" parent="."]

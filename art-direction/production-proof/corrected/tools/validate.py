@@ -183,7 +183,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 65, f"expected 65 assets, got {len(assets)}")
+    require(len(assets) == 66, f"expected 66 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -193,6 +193,9 @@ def main() -> None:
     corner_id = "terrain.woodland_leaf_litter_corner_transition"
     opposite_corner_id = "terrain.woodland_leaf_litter_corner_transition_left"
     inset_corner_id = "terrain.woodland_leaf_litter_inset_corner_transition"
+    left_inset_corner_id = (
+        "terrain.woodland_leaf_litter_inset_corner_transition_left"
+    )
     require(
         import_proof_ids == set(assets),
         "not every corrected proof asset is included in the isolated Godot import set",
@@ -569,6 +572,86 @@ def main() -> None:
         and color_distance(inset_leaf_mean, leaf_mean)
         < color_distance(inset_leaf_mean, ground_mean),
         "inset ground corner materials are not moss upper-right and leaf lower-left",
+    )
+    left_inset_corner_asset = assets[left_inset_corner_id]
+    require(
+        left_inset_corner_asset["source"] == "tools/build.py"
+        and left_inset_corner_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and left_inset_corner_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and left_inset_corner_asset["godot_import_proof"] is True,
+        "left inset ground-corner geometry, provenance, or import status drifted",
+    )
+    left_inset_corner = Image.open(
+        ROOT / left_inset_corner_asset["export"]
+    ).convert("RGBA")
+    left_inset_transition = transition.transpose(Image.Transpose.ROTATE_270)
+    require(
+        left_inset_corner.getchannel("A").getextrema() == (255, 255),
+        "left inset ground corner is not fully opaque",
+    )
+    require(
+        images_equal(
+            left_inset_corner.crop((0, 0, left_inset_corner.width, 1)),
+            transition.crop(
+                (0, transition.height - 1, transition.width, transition.height)
+            ),
+        ),
+        "left inset ground corner lost its exact top transition connector",
+    )
+    require(
+        images_equal(
+            left_inset_corner.crop((0, 0, 1, left_inset_corner.height)),
+            left_inset_transition.crop(
+                (
+                    left_inset_transition.width - 1,
+                    0,
+                    left_inset_transition.width,
+                    left_inset_transition.height,
+                )
+            ),
+        ),
+        "left inset ground corner lost its rotated left transition connector",
+    )
+    require(
+        images_equal(
+            left_inset_corner.crop(
+                (
+                    left_inset_corner.width - 1,
+                    0,
+                    left_inset_corner.width,
+                    left_inset_corner.height,
+                )
+            ),
+            leaf_litter.crop((0, 0, 1, leaf_litter.height)),
+        ),
+        "left inset ground corner lost leaf litter on its unused right edge",
+    )
+    require(
+        images_equal(
+            left_inset_corner.crop(
+                (
+                    0,
+                    left_inset_corner.height - 1,
+                    left_inset_corner.width,
+                    left_inset_corner.height,
+                )
+            ),
+            leaf_litter.crop((0, 0, leaf_litter.width, 1)),
+        ),
+        "left inset ground corner lost leaf litter on its unused bottom edge",
+    )
+    left_inset_moss_mean = mean_rgb(left_inset_corner.crop((0, 0, 64, 64)))
+    left_inset_leaf_mean = mean_rgb(
+        left_inset_corner.crop((192, 192, 256, 256))
+    )
+    require(
+        color_distance(left_inset_moss_mean, ground_mean)
+        < color_distance(left_inset_moss_mean, leaf_mean)
+        and color_distance(left_inset_leaf_mean, leaf_mean)
+        < color_distance(left_inset_leaf_mean, ground_mean),
+        "left inset ground corner materials are not moss upper-left and leaf lower-right",
     )
     require(
         edge_delta(
@@ -1000,6 +1083,38 @@ def main() -> None:
         inset_corner_review.size == (768, 768),
         "inset ground-corner repeatability review dimensions drifted",
     )
+    left_inset_corner_review = Image.open(
+        ROOT
+        / "review"
+        / "woodland-leaf-litter-inset-corner-transition-left-review.png"
+    )
+    require(
+        left_inset_corner_review.size == (768, 768),
+        "left inset ground-corner repeatability review dimensions drifted",
+    )
+    require(
+        images_equal(
+            left_inset_corner_review.crop((256, 0, 512, 256)),
+            transition,
+        )
+        and images_equal(
+            left_inset_corner_review.crop((0, 256, 256, 512)),
+            left_inset_transition,
+        )
+        and images_equal(
+            left_inset_corner_review.crop((256, 256, 512, 512)),
+            left_inset_corner,
+        )
+        and images_equal(
+            left_inset_corner_review.crop((512, 256, 768, 512)),
+            leaf_litter,
+        )
+        and images_equal(
+            left_inset_corner_review.crop((256, 512, 512, 768)),
+            leaf_litter,
+        ),
+        "left inset ground-corner review lost exact connected source tiles",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -1013,6 +1128,7 @@ def main() -> None:
         "terrain-woodland-leaf-litter-corner-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition-left.ora",
         "terrain-woodland-leaf-litter-inset-corner-transition.ora",
+        "terrain-woodland-leaf-litter-inset-corner-transition-left.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -1040,7 +1156,8 @@ def main() -> None:
     print("ground corner: exact top/right transition and unused moss edge connectors")
     print("left ground corner: exact top/left transition and unused moss edge connectors")
     print("inset ground corner: exact top/right transition and unused leaf edge connectors")
-    print("editable masters: 16 valid OpenRaster archives")
+    print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
+    print("editable masters: 17 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

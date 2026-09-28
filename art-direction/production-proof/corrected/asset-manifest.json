@@ -379,6 +379,36 @@
       "sha256": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a"
     },
     {
+      "id": "terrain.woodland_leaf_litter_inset_corner_transition_left",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-inset-corner-transition-left.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7"
+    },
+    {
       "id": "terrain.straight_path",
       "category": "terrain",
       "source": "sources/imagegen/straight-path-overlay.png",

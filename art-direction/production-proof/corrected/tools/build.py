@@ -344,6 +344,54 @@ def enforce_inset_ground_corner_connectors(
     return result
 
 
+def make_leaf_litter_left_inset_corner_transition(
+    quiet_moss: Image.Image,
+    leaf_litter: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Place quiet moss inside one leaf-litter top-left inset corner."""
+
+    if quiet_moss.size != leaf_litter.size or quiet_moss.size != straight_transition.size:
+        raise ValueError("left inset ground-corner sources must share exact master geometry")
+    mask = make_ground_corner_mask(quiet_moss.size, turns_left=True)
+    corner = Image.composite(quiet_moss, leaf_litter, mask).convert("RGBA")
+    return enforce_left_inset_ground_corner_connectors(
+        corner, leaf_litter, straight_transition
+    )
+
+
+def enforce_left_inset_ground_corner_connectors(
+    corner: Image.Image,
+    leaf_litter: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Restore exact top/left transition and unused leaf-litter edges."""
+
+    result = corner.copy().convert("RGBA")
+    left_transition = straight_transition.transpose(Image.Transpose.ROTATE_270)
+    result.paste(
+        straight_transition.crop(
+            (0, straight_transition.height - 1, result.width, straight_transition.height)
+        ),
+        (0, 0),
+    )
+    result.paste(
+        left_transition.crop(
+            (left_transition.width - 1, 0, left_transition.width, result.height)
+        ),
+        (0, 0),
+    )
+    result.paste(
+        leaf_litter.crop((0, 0, 1, result.height)),
+        (result.width - 1, 0),
+    )
+    result.paste(
+        leaf_litter.crop((0, 0, result.width, 1)),
+        (0, result.height - 1),
+    )
+    return result
+
+
 def make_path() -> Image.Image:
     """Create the 192x512 2x straight-path overlay with repeatable vertical edges."""
 
@@ -1110,6 +1158,30 @@ def make_leaf_litter_inset_corner_transition_review(
     return scene
 
 
+def make_leaf_litter_left_inset_corner_transition_review(
+    assets: dict[str, Image.Image],
+) -> Image.Image:
+    """Connect the complementary moss inset to exact leaf and transition neighbours."""
+
+    moss = assets["terrain.quiet_moss"]
+    leaf = assets["terrain.woodland_leaf_litter"]
+    transition = assets["terrain.woodland_leaf_litter_transition"]
+    corner = assets[
+        "terrain.woodland_leaf_litter_inset_corner_transition_left"
+    ]
+    left_transition = transition.transpose(Image.Transpose.ROTATE_270)
+    modules = [
+        [moss, transition, leaf],
+        [left_transition, corner, leaf],
+        [leaf, leaf, leaf],
+    ]
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    for row, row_modules in enumerate(modules):
+        for column, module in enumerate(row_modules):
+            scene.alpha_composite(module, (column * 256, row * 256))
+    return scene
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -1150,6 +1222,11 @@ def main() -> None:
     )
     leaf_litter_inset_corner_transition_master = (
         make_leaf_litter_inset_corner_transition(
+            ground_master, leaf_litter_master, leaf_litter_transition_master
+        )
+    )
+    leaf_litter_left_inset_corner_transition_master = (
+        make_leaf_litter_left_inset_corner_transition(
             ground_master, leaf_litter_master, leaf_litter_transition_master
         )
     )
@@ -1231,6 +1308,19 @@ def main() -> None:
             (256, 512),
             512,
             leaf_litter_inset_corner_transition_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.woodland_leaf_litter_inset_corner_transition_left",
+            "terrain",
+            Path(
+                "exports/terrain/"
+                "woodland-leaf-litter-inset-corner-transition-left.png"
+            ),
+            (512, 512),
+            (256, 512),
+            512,
+            leaf_litter_left_inset_corner_transition_master,
             "tools/build.py",
         ),
         Asset(
@@ -1410,6 +1500,15 @@ def main() -> None:
                 export_images["terrain.woodland_leaf_litter"],
                 export_images["terrain.woodland_leaf_litter_transition"],
             )
+        elif (
+            asset.asset_id
+            == "terrain.woodland_leaf_litter_inset_corner_transition_left"
+        ):
+            export = enforce_left_inset_ground_corner_connectors(
+                export,
+                export_images["terrain.woodland_leaf_litter"],
+                export_images["terrain.woodland_leaf_litter_transition"],
+            )
         elif asset.asset_id == "terrain.straight_path":
             export = alpha_clean(
                 enforce_opposite_edges(export, horizontal=False, vertical=True),
@@ -1511,6 +1610,22 @@ def main() -> None:
             (
                 "quiet-moss inset corner in woodland leaf litter",
                 leaf_litter_inset_corner_transition_master,
+                0,
+                0,
+                True,
+            ),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-woodland-leaf-litter-inset-corner-transition-left.ora",
+        leaf_litter_left_inset_corner_transition_master.size,
+        [
+            ("quiet moss source", ground_master, 0, 0, False),
+            ("woodland leaf-litter source", leaf_litter_master, 0, 0, False),
+            ("straight transition source", leaf_litter_transition_master, 0, 0, False),
+            (
+                "quiet-moss left inset corner in woodland leaf litter",
+                leaf_litter_left_inset_corner_transition_master,
                 0,
                 0,
                 True,
@@ -1672,6 +1787,10 @@ def main() -> None:
     save_png(
         make_leaf_litter_inset_corner_transition_review(export_images),
         REVIEW / "woodland-leaf-litter-inset-corner-transition-review.png",
+    )
+    save_png(
+        make_leaf_litter_left_inset_corner_transition_review(export_images),
+        REVIEW / "woodland-leaf-litter-inset-corner-transition-left-review.png",
     )
 
     manifest_assets = []
