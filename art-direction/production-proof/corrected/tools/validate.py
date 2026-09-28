@@ -78,6 +78,17 @@ def edge_delta(
     return max(channel[1] for channel in extrema)
 
 
+def images_equal(first: Image.Image, second: Image.Image) -> bool:
+    """Return whether two equal-sized images match in every channel."""
+
+    if first.size != second.size or first.mode != second.mode:
+        return False
+    extrema = ImageChops.difference(first, second).getextrema()
+    if isinstance(extrema[0], tuple):
+        return all(channel_max == 0 for _, channel_max in extrema)
+    return extrema[1] == 0
+
+
 def rectangles_overlap(first: dict[str, int], second: dict[str, int]) -> bool:
     """Return whether two axis-aligned logical rectangles overlap."""
 
@@ -172,13 +183,16 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 62, f"expected 62 assets, got {len(assets)}")
+    require(len(assets) == 65, f"expected 65 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
         if asset["godot_import_proof"]
     }
     interaction_widths = {direction: 64 for direction in ["south", "west", "east", "north"]}
+    corner_id = "terrain.woodland_leaf_litter_corner_transition"
+    opposite_corner_id = "terrain.woodland_leaf_litter_corner_transition_left"
+    inset_corner_id = "terrain.woodland_leaf_litter_inset_corner_transition"
     require(
         import_proof_ids == set(assets),
         "not every corrected proof asset is included in the isolated Godot import set",
@@ -279,8 +293,9 @@ def main() -> None:
     path_on_ground = ground.copy()
     path_on_ground.alpha_composite(path, ((ground.width - path.width) // 2, 0))
     leaf_mean = mean_rgb(leaf_litter)
+    ground_mean = mean_rgb(ground)
     require(
-        color_distance(leaf_mean, mean_rgb(ground)) >= 35,
+        color_distance(leaf_mean, ground_mean) >= 35,
         "leaf litter is not distinct enough from quiet moss",
     )
     require(
@@ -304,15 +319,14 @@ def main() -> None:
     )
     connector_depth = 32
     require(
-        ImageChops.difference(
+        images_equal(
             transition.crop((0, 0, connector_depth, transition.height)),
             ground.crop((0, 0, connector_depth, ground.height)),
-        ).getbbox()
-        is None,
+        ),
         "ground transition lost its exact quiet-moss connector",
     )
     require(
-        ImageChops.difference(
+        images_equal(
             transition.crop(
                 (
                     transition.width - connector_depth,
@@ -329,8 +343,7 @@ def main() -> None:
                     leaf_litter.height,
                 )
             ),
-        ).getbbox()
-        is None,
+        ),
         "ground transition lost its exact leaf-litter connector",
     )
     require(
@@ -341,6 +354,221 @@ def main() -> None:
         )
         == 0,
         "ground-transition top/bottom seam differs",
+    )
+    corner_asset = assets[corner_id]
+    require(
+        corner_asset["source"] == "tools/build.py"
+        and corner_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and corner_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and corner_asset["godot_import_proof"] is True,
+        "ground-corner geometry, provenance, or import status drifted",
+    )
+    corner = Image.open(ROOT / corner_asset["export"]).convert("RGBA")
+    rotated_transition = transition.transpose(Image.Transpose.ROTATE_90)
+    require(
+        corner.getchannel("A").getextrema() == (255, 255),
+        "ground corner is not fully opaque",
+    )
+    require(
+        images_equal(
+            corner.crop((0, 0, corner.width, 1)),
+            transition.crop(
+                (0, transition.height - 1, transition.width, transition.height)
+            ),
+        ),
+        "ground corner lost its exact top transition connector",
+    )
+    require(
+        images_equal(
+            corner.crop((corner.width - 1, 0, corner.width, corner.height)),
+            rotated_transition.crop(
+                (
+                    0,
+                    0,
+                    1,
+                    rotated_transition.height,
+                )
+            ),
+        ),
+        "ground corner lost its rotated right transition connector",
+    )
+    require(
+        images_equal(
+            corner.crop((0, 0, 1, corner.height)),
+            ground.crop((ground.width - 1, 0, ground.width, ground.height)),
+        ),
+        "ground corner lost quiet moss on its unused left edge",
+    )
+    require(
+        images_equal(
+            corner.crop((0, corner.height - 1, corner.width, corner.height)),
+            ground.crop((0, 0, ground.width, 1)),
+        ),
+        "ground corner lost quiet moss on its unused bottom edge",
+    )
+    corner_leaf_mean = mean_rgb(corner.crop((192, 0, 256, 64)))
+    corner_moss_mean = mean_rgb(corner.crop((0, 192, 64, 256)))
+    require(
+        color_distance(corner_leaf_mean, leaf_mean)
+        < color_distance(corner_leaf_mean, ground_mean)
+        and color_distance(corner_moss_mean, ground_mean)
+        < color_distance(corner_moss_mean, leaf_mean),
+        "ground corner materials are not leaf upper-right and moss lower-left",
+    )
+    opposite_corner_asset = assets[opposite_corner_id]
+    require(
+        opposite_corner_asset["source"] == "tools/build.py"
+        and opposite_corner_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and opposite_corner_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and opposite_corner_asset["godot_import_proof"] is True,
+        "left ground-corner geometry, provenance, or import status drifted",
+    )
+    opposite_corner = Image.open(ROOT / opposite_corner_asset["export"]).convert(
+        "RGBA"
+    )
+    flipped_transition = transition.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    left_transition = transition.transpose(Image.Transpose.ROTATE_90)
+    require(
+        opposite_corner.getchannel("A").getextrema() == (255, 255),
+        "left ground corner is not fully opaque",
+    )
+    require(
+        images_equal(
+            opposite_corner.crop((0, 0, opposite_corner.width, 1)),
+            flipped_transition.crop(
+                (
+                    0,
+                    flipped_transition.height - 1,
+                    flipped_transition.width,
+                    flipped_transition.height,
+                )
+            ),
+        ),
+        "left ground corner lost its exact top transition connector",
+    )
+    require(
+        images_equal(
+            opposite_corner.crop((0, 0, 1, opposite_corner.height)),
+            left_transition.crop(
+                (
+                    left_transition.width - 1,
+                    0,
+                    left_transition.width,
+                    left_transition.height,
+                )
+            ),
+        ),
+        "left ground corner lost its rotated left transition connector",
+    )
+    require(
+        images_equal(
+            opposite_corner.crop(
+                (
+                    opposite_corner.width - 1,
+                    0,
+                    opposite_corner.width,
+                    opposite_corner.height,
+                )
+            ),
+            ground.crop((0, 0, 1, ground.height)),
+        ),
+        "left ground corner lost quiet moss on its unused right edge",
+    )
+    require(
+        images_equal(
+            opposite_corner.crop(
+                (0, opposite_corner.height - 1, opposite_corner.width, opposite_corner.height)
+            ),
+            ground.crop((0, 0, ground.width, 1)),
+        ),
+        "left ground corner lost quiet moss on its unused bottom edge",
+    )
+    opposite_leaf_mean = mean_rgb(opposite_corner.crop((0, 0, 64, 64)))
+    opposite_moss_mean = mean_rgb(opposite_corner.crop((192, 192, 256, 256)))
+    require(
+        color_distance(opposite_leaf_mean, leaf_mean)
+        < color_distance(opposite_leaf_mean, ground_mean)
+        and color_distance(opposite_moss_mean, ground_mean)
+        < color_distance(opposite_moss_mean, leaf_mean),
+        "left ground corner materials are not leaf upper-left and moss lower-right",
+    )
+    inset_corner_asset = assets[inset_corner_id]
+    require(
+        inset_corner_asset["source"] == "tools/build.py"
+        and inset_corner_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and inset_corner_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and inset_corner_asset["godot_import_proof"] is True,
+        "inset ground-corner geometry, provenance, or import status drifted",
+    )
+    inset_corner = Image.open(ROOT / inset_corner_asset["export"]).convert("RGBA")
+    inset_top_transition = transition.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    inset_right_transition = transition.transpose(Image.Transpose.ROTATE_270)
+    require(
+        inset_corner.getchannel("A").getextrema() == (255, 255),
+        "inset ground corner is not fully opaque",
+    )
+    require(
+        images_equal(
+            inset_corner.crop((0, 0, inset_corner.width, 1)),
+            inset_top_transition.crop(
+                (
+                    0,
+                    inset_top_transition.height - 1,
+                    inset_top_transition.width,
+                    inset_top_transition.height,
+                )
+            ),
+        ),
+        "inset ground corner lost its exact top transition connector",
+    )
+    require(
+        images_equal(
+            inset_corner.crop(
+                (inset_corner.width - 1, 0, inset_corner.width, inset_corner.height)
+            ),
+            inset_right_transition.crop(
+                (
+                    0,
+                    0,
+                    1,
+                    inset_right_transition.height,
+                )
+            ),
+        ),
+        "inset ground corner lost its rotated right transition connector",
+    )
+    require(
+        images_equal(
+            inset_corner.crop((0, 0, 1, inset_corner.height)),
+            leaf_litter.crop(
+                (leaf_litter.width - 1, 0, leaf_litter.width, leaf_litter.height)
+            ),
+        ),
+        "inset ground corner lost leaf litter on its unused left edge",
+    )
+    require(
+        images_equal(
+            inset_corner.crop(
+                (0, inset_corner.height - 1, inset_corner.width, inset_corner.height)
+            ),
+            leaf_litter.crop((0, 0, leaf_litter.width, 1)),
+        ),
+        "inset ground corner lost leaf litter on its unused bottom edge",
+    )
+    inset_moss_mean = mean_rgb(inset_corner.crop((192, 0, 256, 64)))
+    inset_leaf_mean = mean_rgb(inset_corner.crop((0, 192, 64, 256)))
+    require(
+        color_distance(inset_moss_mean, ground_mean)
+        < color_distance(inset_moss_mean, leaf_mean)
+        and color_distance(inset_leaf_mean, leaf_mean)
+        < color_distance(inset_leaf_mean, ground_mean),
+        "inset ground corner materials are not moss upper-right and leaf lower-left",
     )
     require(
         edge_delta(
@@ -364,13 +592,12 @@ def main() -> None:
     port_depth = path.height // 8
     straight_entry = path.crop((0, 0, path.width, port_depth))
     require(
-        ImageChops.difference(
+        images_equal(
             bend.crop(
                 (port_offset, 0, port_offset + path.width, port_depth)
             ),
             straight_entry,
-        ).getbbox()
-        is None,
+        ),
         "path bend top entry differs from the straight-path connector",
     )
     horizontal_path = path.transpose(Image.Transpose.ROTATE_90)
@@ -378,7 +605,7 @@ def main() -> None:
         (0, 0, port_depth, path.width)
     ).transpose(Image.Transpose.FLIP_LEFT_RIGHT)
     require(
-        ImageChops.difference(
+        images_equal(
             bend.crop(
                 (
                     bend.width - port_depth,
@@ -388,8 +615,7 @@ def main() -> None:
                 )
             ),
             expected_right_entry,
-        ).getbbox()
-        is None,
+        ),
         "path bend right exit differs from the straight-path connector",
     )
     alpha = bend.getchannel("A")
@@ -421,11 +647,10 @@ def main() -> None:
     )
     junction = Image.open(ROOT / junction_asset["export"]).convert("RGBA")
     require(
-        ImageChops.difference(
+        images_equal(
             junction.crop((port_offset, 0, port_offset + path.width, port_depth)),
             straight_entry,
-        ).getbbox()
-        is None,
+        ),
         "path T-junction top entry differs from the straight-path connector",
     )
     expected_left_entry = horizontal_path.crop((0, 0, port_depth, path.width))
@@ -433,15 +658,14 @@ def main() -> None:
         Image.Transpose.FLIP_LEFT_RIGHT
     )
     require(
-        ImageChops.difference(
+        images_equal(
             junction.crop((0, port_offset, port_depth, port_offset + path.width)),
             expected_left_entry,
-        ).getbbox()
-        is None,
+        ),
         "path T-junction left exit differs from the straight-path connector",
     )
     require(
-        ImageChops.difference(
+        images_equal(
             junction.crop(
                 (
                     junction.width - port_depth,
@@ -451,8 +675,7 @@ def main() -> None:
                 )
             ),
             expected_right_entry,
-        ).getbbox()
-        is None,
+        ),
         "path T-junction right exit differs from the straight-path connector",
     )
     junction_alpha = junction.getchannel("A")
@@ -531,7 +754,7 @@ def main() -> None:
         ),
     ]:
         require(
-            ImageChops.difference(actual, expected).getbbox() is None,
+            images_equal(actual, expected),
             f"path cross-junction {label} port differs from the straight path",
         )
     cross_alpha = cross.getchannel("A")
@@ -558,11 +781,10 @@ def main() -> None:
     )
     end_cap = Image.open(ROOT / end_cap_asset["export"]).convert("RGBA")
     require(
-        ImageChops.difference(
+        images_equal(
             end_cap.crop((port_offset, 0, port_offset + path.width, port_depth)),
             straight_entry,
-        ).getbbox()
-        is None,
+        ),
         "path end-cap top entry differs from the straight-path connector",
     )
     end_cap_alpha = end_cap.getchannel("A")
@@ -642,9 +864,8 @@ def main() -> None:
                 f"{frame_id}: fixed idle origin drifted",
             )
             idle_frames.append(frame)
-        idle_difference = ImageChops.difference(idle_frames[0], idle_frames[1])
         require(
-            idle_difference.getbbox() is not None,
+            not images_equal(idle_frames[0], idle_frames[1]),
             f"{direction} idle/breathe frames are duplicates",
         )
 
@@ -758,6 +979,27 @@ def main() -> None:
         transition_review.size == (768, 512),
         "ground-transition review dimensions drifted",
     )
+    corner_review = Image.open(
+        ROOT / "review" / "woodland-leaf-litter-corner-transition-review.png"
+    )
+    require(
+        corner_review.size == (768, 768),
+        "ground-corner repeatability review dimensions drifted",
+    )
+    opposite_corner_review = Image.open(
+        ROOT / "review" / "woodland-leaf-litter-corner-transition-left-review.png"
+    )
+    require(
+        opposite_corner_review.size == (768, 768),
+        "left ground-corner repeatability review dimensions drifted",
+    )
+    inset_corner_review = Image.open(
+        ROOT / "review" / "woodland-leaf-litter-inset-corner-transition-review.png"
+    )
+    require(
+        inset_corner_review.size == (768, 768),
+        "inset ground-corner repeatability review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -768,6 +1010,9 @@ def main() -> None:
         "terrain-path-end-cap.ora",
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
+        "terrain-woodland-leaf-litter-corner-transition.ora",
+        "terrain-woodland-leaf-litter-corner-transition-left.ora",
+        "terrain-woodland-leaf-litter-inset-corner-transition.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -792,7 +1037,10 @@ def main() -> None:
     print("path topology: straight, bend, T, cross, and end-cap compose as one network")
     print("leaf litter: opaque, exact seams, useful texture and palette contrast, no corridor")
     print("ground transition: exact moss/leaf connectors and repeatable top/bottom seam")
-    print("editable masters: 13 valid OpenRaster archives")
+    print("ground corner: exact top/right transition and unused moss edge connectors")
+    print("left ground corner: exact top/left transition and unused moss edge connectors")
+    print("inset ground corner: exact top/right transition and unused leaf edge connectors")
+    print("editable masters: 16 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

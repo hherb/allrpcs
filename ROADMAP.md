@@ -217,6 +217,12 @@ Acceptance:
 - [x] Establish and import one deterministic quiet-moss-to-leaf-litter edge transition with exact
   source connector regions, repeatable top/bottom edges, a two-row external review, source parity,
   and no ordinary-scene authority.
+- [x] Establish and import two complementary quiet-moss/leaf-litter outer corners with exact
+  straight-transition seams, exact unused moss edges, editable masters, connected reviews, source
+  parity, and no ordinary-scene authority.
+- [x] Establish and import one quiet-moss inset corner in leaf litter with exact transition seams,
+  exact unused leaf-litter edges, an editable master, connected review, source parity, and no
+  ordinary-scene authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

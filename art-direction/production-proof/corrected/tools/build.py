@@ -31,6 +31,9 @@ LEGACY_SEEKER = (
 
 MASTER_SCALE = 2
 ALPHA_CUTOFF = 96
+GROUND_CONNECTOR_DEPTH = 32
+GROUND_CORNER_FEATHER_MASTER = 48.0
+GROUND_CORNER_IRREGULARITY_MASTER = 14.0
 RESAMPLE = Image.Resampling.LANCZOS
 
 
@@ -159,6 +162,186 @@ def make_leaf_litter_transition(
             pixels.append(round(smooth * 255))
     mask.putdata(pixels)
     return Image.composite(leaf_litter, quiet_moss, mask).convert("RGBA")
+
+
+def enforce_ground_transition_connectors(
+    transition: Image.Image,
+    quiet_moss: Image.Image,
+    leaf_litter: Image.Image,
+) -> Image.Image:
+    """Install exact 32px ground connectors after 1x resampling."""
+
+    result = enforce_opposite_edges(transition, horizontal=False, vertical=True)
+    result.paste(
+        quiet_moss.crop((0, 0, GROUND_CONNECTOR_DEPTH, quiet_moss.height)),
+        (0, 0),
+    )
+    result.paste(
+        leaf_litter.crop(
+            (
+                leaf_litter.width - GROUND_CONNECTOR_DEPTH,
+                0,
+                leaf_litter.width,
+                leaf_litter.height,
+            )
+        ),
+        (result.width - GROUND_CONNECTOR_DEPTH, 0),
+    )
+    return result
+
+
+def make_ground_corner_mask(
+    size: tuple[int, int], turns_left: bool
+) -> Image.Image:
+    """Create one deterministic feathered diagonal mask for a ground corner."""
+
+    if size[0] != size[1]:
+        raise ValueError("ground-corner masks require square geometry")
+    mask = Image.new("L", size, 0)
+    pixels = []
+    for y in range(mask.height):
+        for x in range(mask.width):
+            if turns_left:
+                progress = (x - y + mask.width / 2) / mask.width
+                distance = mask.width / 2 - x - y
+            else:
+                progress = (x + y - mask.width / 2) / mask.width
+                distance = x - y - mask.width / 2
+            irregularity = GROUND_CORNER_IRREGULARITY_MASTER * math.sin(
+                2 * math.pi * progress
+            )
+            blend = (
+                distance
+                + irregularity
+                + GROUND_CORNER_FEATHER_MASTER / 2
+            ) / GROUND_CORNER_FEATHER_MASTER
+            blend = max(0.0, min(1.0, blend))
+            smooth = blend * blend * (3.0 - 2.0 * blend)
+            pixels.append(round(smooth * 255))
+    mask.putdata(pixels)
+    return mask
+
+
+def make_leaf_litter_corner_transition(
+    quiet_moss: Image.Image,
+    leaf_litter: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Turn the straight moss/leaf boundary through one deterministic 90-degree corner."""
+
+    if quiet_moss.size != leaf_litter.size or quiet_moss.size != straight_transition.size:
+        raise ValueError("ground-corner sources must share exact master geometry")
+    mask = make_ground_corner_mask(quiet_moss.size, turns_left=False)
+    corner = Image.composite(leaf_litter, quiet_moss, mask).convert("RGBA")
+    return enforce_ground_corner_connectors(
+        corner, quiet_moss, straight_transition
+    )
+
+
+def enforce_ground_corner_connectors(
+    corner: Image.Image,
+    quiet_moss: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Restore exact 1x top/right transition and unused moss edge connectors."""
+
+    result = corner.copy().convert("RGBA")
+    rotated_transition = straight_transition.transpose(Image.Transpose.ROTATE_90)
+    result.paste(straight_transition.crop((0, 0, result.width, 1)), (0, 0))
+    result.paste(
+        rotated_transition.crop(
+            (rotated_transition.width - 1, 0, rotated_transition.width, result.height)
+        ),
+        (result.width - 1, 0),
+    )
+    result.paste(quiet_moss.crop((0, 0, 1, result.height)), (0, 0))
+    result.paste(
+        quiet_moss.crop((0, quiet_moss.height - 1, result.width, quiet_moss.height)),
+        (0, result.height - 1),
+    )
+    return result
+
+
+def make_leaf_litter_left_corner_transition(
+    quiet_moss: Image.Image,
+    leaf_litter: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Turn the straight moss/leaf boundary toward the left in one corner."""
+
+    if quiet_moss.size != leaf_litter.size or quiet_moss.size != straight_transition.size:
+        raise ValueError("left ground-corner sources must share exact master geometry")
+    mask = make_ground_corner_mask(quiet_moss.size, turns_left=True)
+    corner = Image.composite(leaf_litter, quiet_moss, mask).convert("RGBA")
+    return enforce_left_ground_corner_connectors(
+        corner, quiet_moss, straight_transition
+    )
+
+
+def enforce_left_ground_corner_connectors(
+    corner: Image.Image,
+    quiet_moss: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Restore exact top/left transition and unused moss edge connectors."""
+
+    result = corner.copy().convert("RGBA")
+    flipped_transition = straight_transition.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    left_transition = straight_transition.transpose(Image.Transpose.ROTATE_90)
+    result.paste(flipped_transition.crop((0, 0, result.width, 1)), (0, 0))
+    result.paste(left_transition.crop((0, 0, 1, result.height)), (0, 0))
+    result.paste(
+        quiet_moss.crop((quiet_moss.width - 1, 0, quiet_moss.width, result.height)),
+        (result.width - 1, 0),
+    )
+    result.paste(
+        quiet_moss.crop((0, quiet_moss.height - 1, result.width, quiet_moss.height)),
+        (0, result.height - 1),
+    )
+    return result
+
+
+def make_leaf_litter_inset_corner_transition(
+    quiet_moss: Image.Image,
+    leaf_litter: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Place quiet moss inside one leaf-litter top-right inset corner."""
+
+    if quiet_moss.size != leaf_litter.size or quiet_moss.size != straight_transition.size:
+        raise ValueError("inset ground-corner sources must share exact master geometry")
+    mask = make_ground_corner_mask(quiet_moss.size, turns_left=False)
+    corner = Image.composite(quiet_moss, leaf_litter, mask).convert("RGBA")
+    return enforce_inset_ground_corner_connectors(
+        corner, leaf_litter, straight_transition
+    )
+
+
+def enforce_inset_ground_corner_connectors(
+    corner: Image.Image,
+    leaf_litter: Image.Image,
+    straight_transition: Image.Image,
+) -> Image.Image:
+    """Restore exact top/right transition and unused leaf-litter edges."""
+
+    result = corner.copy().convert("RGBA")
+    top_transition = straight_transition.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    right_transition = straight_transition.transpose(Image.Transpose.ROTATE_270)
+    result.paste(top_transition.crop((0, 0, result.width, 1)), (0, 0))
+    result.paste(
+        right_transition.crop(
+            (right_transition.width - 1, 0, right_transition.width, result.height)
+        ),
+        (result.width - 1, 0),
+    )
+    result.paste(leaf_litter.crop((0, 0, 1, result.height)), (0, 0))
+    result.paste(
+        leaf_litter.crop(
+            (0, leaf_litter.height - 1, result.width, leaf_litter.height)
+        ),
+        (0, result.height - 1),
+    )
+    return result
 
 
 def make_path() -> Image.Image:
@@ -859,6 +1042,74 @@ def make_leaf_litter_transition_review(assets: dict[str, Image.Image]) -> Image.
     return scene
 
 
+def make_leaf_litter_corner_transition_review(
+    assets: dict[str, Image.Image],
+) -> Image.Image:
+    """Connect the corner to exact ground and straight-transition neighbours."""
+
+    moss = assets["terrain.quiet_moss"]
+    leaf = assets["terrain.woodland_leaf_litter"]
+    transition = assets["terrain.woodland_leaf_litter_transition"]
+    corner = assets["terrain.woodland_leaf_litter_corner_transition"]
+    rotated_transition = transition.transpose(Image.Transpose.ROTATE_90)
+    modules = [
+        [moss, transition, leaf],
+        [moss, corner, rotated_transition],
+        [moss, moss, moss],
+    ]
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    for row, row_modules in enumerate(modules):
+        for column, module in enumerate(row_modules):
+            scene.alpha_composite(module, (column * 256, row * 256))
+    return scene
+
+
+def make_leaf_litter_left_corner_transition_review(
+    assets: dict[str, Image.Image],
+) -> Image.Image:
+    """Connect the left corner to exact ground and transition neighbours."""
+
+    moss = assets["terrain.quiet_moss"]
+    leaf = assets["terrain.woodland_leaf_litter"]
+    transition = assets["terrain.woodland_leaf_litter_transition"]
+    corner = assets["terrain.woodland_leaf_litter_corner_transition_left"]
+    flipped_transition = transition.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    left_transition = transition.transpose(Image.Transpose.ROTATE_90)
+    modules = [
+        [leaf, flipped_transition, moss],
+        [left_transition, corner, moss],
+        [moss, moss, moss],
+    ]
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    for row, row_modules in enumerate(modules):
+        for column, module in enumerate(row_modules):
+            scene.alpha_composite(module, (column * 256, row * 256))
+    return scene
+
+
+def make_leaf_litter_inset_corner_transition_review(
+    assets: dict[str, Image.Image],
+) -> Image.Image:
+    """Connect one moss inset corner to exact leaf and transition neighbours."""
+
+    moss = assets["terrain.quiet_moss"]
+    leaf = assets["terrain.woodland_leaf_litter"]
+    transition = assets["terrain.woodland_leaf_litter_transition"]
+    corner = assets["terrain.woodland_leaf_litter_inset_corner_transition"]
+    top_transition = transition.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    right_transition = transition.transpose(Image.Transpose.ROTATE_270)
+    modules = [
+        [leaf, top_transition, moss],
+        [leaf, corner, right_transition],
+        [leaf, leaf, leaf],
+    ]
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    for row, row_modules in enumerate(modules):
+        for column, module in enumerate(row_modules):
+            scene.alpha_composite(module, (column * 256, row * 256))
+    return scene
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -888,6 +1139,19 @@ def main() -> None:
     leaf_litter_reference_master, leaf_litter_master = make_leaf_litter()
     leaf_litter_transition_master = make_leaf_litter_transition(
         ground_master, leaf_litter_master
+    )
+    leaf_litter_corner_transition_master = make_leaf_litter_corner_transition(
+        ground_master, leaf_litter_master, leaf_litter_transition_master
+    )
+    leaf_litter_left_corner_transition_master = (
+        make_leaf_litter_left_corner_transition(
+            ground_master, leaf_litter_master, leaf_litter_transition_master
+        )
+    )
+    leaf_litter_inset_corner_transition_master = (
+        make_leaf_litter_inset_corner_transition(
+            ground_master, leaf_litter_master, leaf_litter_transition_master
+        )
     )
     path_master = make_path()
     path_bend_master = make_path_bend(path_master)
@@ -937,6 +1201,36 @@ def main() -> None:
             (256, 512),
             512,
             leaf_litter_transition_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.woodland_leaf_litter_corner_transition",
+            "terrain",
+            Path("exports/terrain/woodland-leaf-litter-corner-transition.png"),
+            (512, 512),
+            (256, 512),
+            512,
+            leaf_litter_corner_transition_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.woodland_leaf_litter_corner_transition_left",
+            "terrain",
+            Path("exports/terrain/woodland-leaf-litter-corner-transition-left.png"),
+            (512, 512),
+            (256, 512),
+            512,
+            leaf_litter_left_corner_transition_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.woodland_leaf_litter_inset_corner_transition",
+            "terrain",
+            Path("exports/terrain/woodland-leaf-litter-inset-corner-transition.png"),
+            (512, 512),
+            (256, 512),
+            512,
+            leaf_litter_inset_corner_transition_master,
             "tools/build.py",
         ),
         Asset(
@@ -1090,9 +1384,32 @@ def main() -> None:
         if asset.asset_id in {
             "terrain.quiet_moss",
             "terrain.woodland_leaf_litter",
-            "terrain.woodland_leaf_litter_transition",
         }:
             export = enforce_opposite_edges(export, horizontal=True, vertical=True)
+        elif asset.asset_id == "terrain.woodland_leaf_litter_transition":
+            export = enforce_ground_transition_connectors(
+                export,
+                export_images["terrain.quiet_moss"],
+                export_images["terrain.woodland_leaf_litter"],
+            )
+        elif asset.asset_id == "terrain.woodland_leaf_litter_corner_transition":
+            export = enforce_ground_corner_connectors(
+                export,
+                export_images["terrain.quiet_moss"],
+                export_images["terrain.woodland_leaf_litter_transition"],
+            )
+        elif asset.asset_id == "terrain.woodland_leaf_litter_corner_transition_left":
+            export = enforce_left_ground_corner_connectors(
+                export,
+                export_images["terrain.quiet_moss"],
+                export_images["terrain.woodland_leaf_litter_transition"],
+            )
+        elif asset.asset_id == "terrain.woodland_leaf_litter_inset_corner_transition":
+            export = enforce_inset_ground_corner_connectors(
+                export,
+                export_images["terrain.woodland_leaf_litter"],
+                export_images["terrain.woodland_leaf_litter_transition"],
+            )
         elif asset.asset_id == "terrain.straight_path":
             export = alpha_clean(
                 enforce_opposite_edges(export, horizontal=False, vertical=True),
@@ -1146,6 +1463,54 @@ def main() -> None:
             (
                 "repeatable quiet-moss to leaf-litter transition",
                 leaf_litter_transition_master,
+                0,
+                0,
+                True,
+            ),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-woodland-leaf-litter-corner-transition.ora",
+        leaf_litter_corner_transition_master.size,
+        [
+            ("quiet moss source", ground_master, 0, 0, False),
+            ("woodland leaf-litter source", leaf_litter_master, 0, 0, False),
+            ("straight transition source", leaf_litter_transition_master, 0, 0, False),
+            (
+                "quiet-moss to leaf-litter corner transition",
+                leaf_litter_corner_transition_master,
+                0,
+                0,
+                True,
+            ),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-woodland-leaf-litter-corner-transition-left.ora",
+        leaf_litter_left_corner_transition_master.size,
+        [
+            ("quiet moss source", ground_master, 0, 0, False),
+            ("woodland leaf-litter source", leaf_litter_master, 0, 0, False),
+            ("straight transition source", leaf_litter_transition_master, 0, 0, False),
+            (
+                "quiet-moss to leaf-litter left corner transition",
+                leaf_litter_left_corner_transition_master,
+                0,
+                0,
+                True,
+            ),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-woodland-leaf-litter-inset-corner-transition.ora",
+        leaf_litter_inset_corner_transition_master.size,
+        [
+            ("quiet moss source", ground_master, 0, 0, False),
+            ("woodland leaf-litter source", leaf_litter_master, 0, 0, False),
+            ("straight transition source", leaf_litter_transition_master, 0, 0, False),
+            (
+                "quiet-moss inset corner in woodland leaf litter",
+                leaf_litter_inset_corner_transition_master,
                 0,
                 0,
                 True,
@@ -1295,6 +1660,18 @@ def main() -> None:
     save_png(
         make_leaf_litter_transition_review(export_images),
         REVIEW / "woodland-leaf-litter-transition-review.png",
+    )
+    save_png(
+        make_leaf_litter_corner_transition_review(export_images),
+        REVIEW / "woodland-leaf-litter-corner-transition-review.png",
+    )
+    save_png(
+        make_leaf_litter_left_corner_transition_review(export_images),
+        REVIEW / "woodland-leaf-litter-corner-transition-left-review.png",
+    )
+    save_png(
+        make_leaf_litter_inset_corner_transition_review(export_images),
+        REVIEW / "woodland-leaf-litter-inset-corner-transition-review.png",
     )
 
     manifest_assets = []

@@ -1,13 +1,15 @@
 # Direction A Godot import proof
 
-These 62 PNG files are exact byte-for-byte copies of the corrected external proof exports in
+These 65 PNG files are exact byte-for-byte copies of the corrected external proof exports in
 `art-direction/production-proof/corrected`. They are intentionally used only by
 `DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them.
 
 Godot imports them as lossless 2D textures with mipmaps disabled, alpha-border correction enabled,
-and premultiplied alpha disabled. The proof scene inherits linear filtering from its root, includes
-the exact 256x256 repeatable woodland leaf-litter tile, its quiet-moss transition, and the 90-degree
-path-bend, T-junction, cross-junction, and end-cap modules, shows the same
+and premultiplied alpha disabled. Validation also binds every sidecar to its exact resource path,
+deterministic cache path, and unique UID. The proof scene inherits linear filtering from its root,
+includes the exact 256x256 repeatable woodland leaf-litter tile, its straight, two outer-corner, and
+one inset-corner quiet-moss transitions, and the 90-degree path-bend, T-junction, cross-junction,
+and end-cap modules, shows the same
 960x540 composition, and exposes 12
 named Seeker animations: four six-frame `walk_*` loops, four two-frame `idle_*` loops, and four
 four-frame non-looping `interact_*` gestures. They retain the

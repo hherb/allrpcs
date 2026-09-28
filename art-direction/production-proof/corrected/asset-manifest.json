@@ -286,7 +286,97 @@
         "y": 256
       },
       "godot_import_proof": true,
-      "sha256": "5d5aa68c33b18089c2bb39f85e690c4d0e47ff3ed05acbc13f8bfb0e61c1e2d9"
+      "sha256": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_corner_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-corner-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_corner_transition_left",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-corner-transition-left.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_inset_corner_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-inset-corner-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a"
     },
     {
       "id": "terrain.straight_path",

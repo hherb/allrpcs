@@ -65,6 +65,9 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         ("Terrain/PathEndCapProof", 256, 256),
         ("Terrain/WoodlandLeafLitterProof", 256, 256),
         ("Terrain/WoodlandLeafLitterTransitionProof", 256, 256),
+        ("Terrain/WoodlandLeafLitterCornerTransitionProof", 256, 256),
+        ("Terrain/WoodlandLeafLitterLeftCornerTransitionProof", 256, 256),
+        ("Terrain/WoodlandLeafLitterInsetCornerTransitionProof", 256, 256),
         ("Props/EmptyBed", 96, 80),
         ("Props/PlantedBed", 96, 80),
         ("Props/PlantedBedFoliage", 72, 56),
@@ -87,7 +90,9 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         GD.Print(
             "Direction A import proof passed: lossless source-parity textures, linear filtering, "
             + "straight, 90-degree, T-junction, cross-junction, and end-cap path modules, "
-            + "repeatable woodland leaf litter and its quiet-moss transition, separate table cue, "
+            + "repeatable woodland leaf litter and its straight, outer-corner, and inset-corner "
+            + "quiet-moss transitions, "
+            + "separate table cue, "
             + "four six-frame 120 ms walks, four two-frame 600 ms idle loops, "
             + "four four-frame 160 ms non-looping interactions, 48 unique character textures, "
             + "and no gameplay authority.");

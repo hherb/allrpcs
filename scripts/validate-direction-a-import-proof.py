@@ -40,6 +40,20 @@ def game_path(export_path: str) -> Path:
     return GAME_ROOT / export_path[len(prefix) :]
 
 
+def resource_path(path: Path) -> str:
+    """Return one game file's canonical Godot resource path."""
+
+    return f"res://{path.relative_to(ROOT / 'game').as_posix()}"
+
+
+def imported_cache_path(path: Path) -> str:
+    """Return Godot's deterministic imported texture cache path."""
+
+    source = resource_path(path)
+    source_hash = hashlib.md5(source.encode("utf-8"), usedforsecurity=False).hexdigest()
+    return f"res://.godot/imported/{path.name}-{source_hash}.ctex"
+
+
 def read_import_options(path: Path) -> dict[tuple[str, str], str]:
     """Read scalar values from one Godot .import sidecar."""
 
@@ -66,6 +80,14 @@ def main() -> None:
         actual_pngs == expected_pngs,
         "Godot import-proof PNG set diverged from the manifest",
     )
+    expected_sidecars = {
+        path.with_suffix(path.suffix + ".import") for path in expected_pngs
+    }
+    actual_sidecars = set(GAME_ROOT.rglob("*.png.import"))
+    require(
+        actual_sidecars == expected_sidecars,
+        "Godot import-proof sidecar set diverged from the manifest",
+    )
     main_scene = MAIN_SCENE.read_text(encoding="utf-8")
     require(
         "direction-a-import-proof" not in main_scene
@@ -73,6 +95,7 @@ def main() -> None:
         "ordinary Main.tscn references the isolated import proof",
     )
 
+    import_uids = set()
     for asset in assets:
         source = SOURCE_ROOT / asset["export"]
         imported = game_path(asset["export"])
@@ -86,6 +109,27 @@ def main() -> None:
         sidecar = imported.with_suffix(imported.suffix + ".import")
         require(sidecar.exists(), f"missing Godot import sidecar: {sidecar}")
         options = read_import_options(sidecar)
+        expected_source = resource_path(imported)
+        expected_cache = imported_cache_path(imported)
+        require(
+            options.get(("deps", "source_file")) == f'"{expected_source}"',
+            f"{sidecar}: source resource path drifted",
+        )
+        require(
+            options.get(("remap", "path")) == f'"{expected_cache}"',
+            f"{sidecar}: imported cache path drifted",
+        )
+        require(
+            options.get(("deps", "dest_files")) == f'["{expected_cache}"]',
+            f"{sidecar}: imported destination list drifted",
+        )
+        uid = options.get(("remap", "uid"))
+        require(
+            uid is not None and uid.startswith('"uid://') and uid.endswith('"'),
+            f"{sidecar}: missing Godot resource UID",
+        )
+        require(uid not in import_uids, f"{sidecar}: duplicate Godot resource UID")
+        import_uids.add(uid)
         require(
             options.get(("remap", "importer")) == '"texture"',
             f"{sidecar}: not a texture import",
@@ -109,6 +153,7 @@ def main() -> None:
 
     print("Direction A Godot import-proof validation passed")
     print(f"assets: {len(assets)} exact source-hash matches")
+    print("sidecars: exact resource/cache paths and unique UIDs")
     print("imports: lossless, no mipmaps, alpha-border fix, no premultiplied alpha")
 
 
