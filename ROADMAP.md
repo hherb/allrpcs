@@ -180,6 +180,11 @@ Acceptance:
 - [x] Complete one bounded source-sheet pipeline proof for modular terrain/path, herb-bed/foliage,
   preparation-table state cues, and a Seeker four-direction walk sample; keep its recorded alpha,
   seam, pivot, baseline, and editable-master failures outside the runtime.
+- [x] Correct that proof into individual clean-alpha exports with one manifest, exact 2x geometry,
+  layered masters, seam and grayscale checks, and a clear 960x540 review composition.
+- [x] Normalize all four six-frame Seeker walk directions after the first direction passed, then
+  prove exact source parity and lossless smooth-filtered import in an isolated Godot scene without
+  changing ordinary presentation or gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

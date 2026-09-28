@@ -8,6 +8,8 @@ repository_root=$(dirname -- "$script_dir")
 cd "$repository_root"
 
 ./scripts/validate-workflows.sh
+python3 art-direction/production-proof/corrected/tools/validate.py
+python3 scripts/validate-direction-a-import-proof.py
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes
 dotnet build Allrpcs.sln --no-restore -m:1 /nr:false

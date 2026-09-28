@@ -1,0 +1,1050 @@
+{
+  "schema_version": 1,
+  "status": "external production-pipeline proof; not imported into Godot",
+  "logical_viewport": {
+    "width": 960,
+    "height": 540
+  },
+  "master_scale": 2,
+  "navigation_clearance": {
+    "scene": "review/module-review-scene.png",
+    "x": 432,
+    "y": 0,
+    "width": 96,
+    "height": 540
+  },
+  "review_composition": [
+    {
+      "asset": "plants.herb_bed_empty",
+      "x": 102,
+      "y": 128,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.herb_bed_empty",
+      "x": 706,
+      "y": 128,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.foliage_broadleaf",
+      "x": 718,
+      "y": 126,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.foliage_broadleaf",
+      "x": 128,
+      "y": 348,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.foliage_broadleaf",
+      "x": 742,
+      "y": 350,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "objects.preparation_table",
+      "x": 650,
+      "y": 330,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "cues.preparation_table_identified",
+      "x": 650,
+      "y": 330,
+      "fixed_obstacle": false
+    },
+    {
+      "asset": "characters.seeker.south.walk_01",
+      "x": 462,
+      "y": 250,
+      "fixed_obstacle": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "characters.seeker.south.walk",
+      "frame_order": [
+        "characters.seeker.south.walk_01",
+        "characters.seeker.south.walk_02",
+        "characters.seeker.south.walk_03",
+        "characters.seeker.south.walk_04",
+        "characters.seeker.south.walk_05",
+        "characters.seeker.south.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.west.walk",
+      "frame_order": [
+        "characters.seeker.west.walk_01",
+        "characters.seeker.west.walk_02",
+        "characters.seeker.west.walk_03",
+        "characters.seeker.west.walk_04",
+        "characters.seeker.west.walk_05",
+        "characters.seeker.west.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.east.walk",
+      "frame_order": [
+        "characters.seeker.east.walk_01",
+        "characters.seeker.east.walk_02",
+        "characters.seeker.east.walk_03",
+        "characters.seeker.east.walk_04",
+        "characters.seeker.east.walk_05",
+        "characters.seeker.east.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.north.walk",
+      "frame_order": [
+        "characters.seeker.north.walk_01",
+        "characters.seeker.north.walk_02",
+        "characters.seeker.north.walk_03",
+        "characters.seeker.north.walk_04",
+        "characters.seeker.north.walk_05",
+        "characters.seeker.north.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    }
+  ],
+  "assets": [
+    {
+      "id": "terrain.quiet_moss",
+      "category": "terrain",
+      "source": "sources/imagegen/quiet-moss-ground.png",
+      "export": "exports/terrain/quiet-moss.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
+    },
+    {
+      "id": "terrain.straight_path",
+      "category": "terrain",
+      "source": "sources/imagegen/straight-path-overlay.png",
+      "export": "exports/terrain/straight-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 48,
+        "y": 256
+      },
+      "sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
+    },
+    {
+      "id": "plants.herb_bed_empty",
+      "category": "plants",
+      "source": "sources/imagegen/herb-bed-empty.png",
+      "export": "exports/plants/herb-bed-empty.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 80
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 160,
+        "scale": 2
+      },
+      "contact_baseline": 77,
+      "pivot": {
+        "x": 48,
+        "y": 77
+      },
+      "sha256": "8ced13faba2ac9240977df0c62686939ffcd24a09d278006485c866b0a11f2fa"
+    },
+    {
+      "id": "plants.foliage_broadleaf",
+      "category": "plants",
+      "source": "sources/imagegen/foliage-broadleaf.png",
+      "export": "exports/plants/foliage-broadleaf.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 72,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 72,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 144,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 53,
+      "pivot": {
+        "x": 36,
+        "y": 53
+      },
+      "sha256": "e4b607c4cbfaef13cd3949492e903883dab289f882addbb2c38511aabecd6277"
+    },
+    {
+      "id": "objects.preparation_table",
+      "category": "objects",
+      "source": "sources/imagegen/preparation-table.png",
+      "export": "exports/objects/preparation-table.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "master_dimensions_pixels": {
+        "width": 160,
+        "height": 160,
+        "scale": 2
+      },
+      "contact_baseline": 77,
+      "pivot": {
+        "x": 40,
+        "y": 77
+      },
+      "sha256": "7a005d79c17f3ed33cdf6859bc83f5c5a7f1e9f203ca55b89abd08ef4dc4762e"
+    },
+    {
+      "id": "cues.preparation_table_noticeable",
+      "category": "cues",
+      "source": "tools/build.py",
+      "export": "exports/cues/preparation-table-noticeable.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "master_dimensions_pixels": {
+        "width": 160,
+        "height": 160,
+        "scale": 2
+      },
+      "contact_baseline": 77,
+      "pivot": {
+        "x": 40,
+        "y": 77
+      },
+      "sha256": "31b2d0355873e52da0179be0b4ec742fb02003aaac625a93d32cca703a75d5c1"
+    },
+    {
+      "id": "cues.preparation_table_identified",
+      "category": "cues",
+      "source": "tools/build.py",
+      "export": "exports/cues/preparation-table-identified.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "master_dimensions_pixels": {
+        "width": 160,
+        "height": 160,
+        "scale": 2
+      },
+      "contact_baseline": 77,
+      "pivot": {
+        "x": 40,
+        "y": 77
+      },
+      "sha256": "134623184ab2d810d5347c4cfe3f8c8226d79c72becf16ab4812f5c5e40af7a6"
+    },
+    {
+      "id": "cues.preparation_table_dangerous",
+      "category": "cues",
+      "source": "tools/build.py",
+      "export": "exports/cues/preparation-table-dangerous.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 80,
+        "height": 80
+      },
+      "master_dimensions_pixels": {
+        "width": 160,
+        "height": 160,
+        "scale": 2
+      },
+      "contact_baseline": 77,
+      "pivot": {
+        "x": 40,
+        "y": 77
+      },
+      "sha256": "4d811b10392d7590ca3bee8fb62b25c18c0378629ec7bbad89f0d925cdd98762"
+    },
+    {
+      "id": "characters.seeker.south.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "dac5ea77340a0d783fe6e7c4e50181a7a0c877d81f8918d8fb8115f2575bb103"
+    },
+    {
+      "id": "characters.seeker.south.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "b0a8432d848ac40a5ad0380d6cff79aa33e6cb058973c34c0b7614e77fd22773"
+    },
+    {
+      "id": "characters.seeker.south.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "f0c35bd9ec12079d577a4d04227ba3754c6ddab388e8100079ae234e8c009154"
+    },
+    {
+      "id": "characters.seeker.south.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "4ebf5c629ae1aaa9d22410378dbaf6b97e6ac60abcd5e1b943a5958b70e2c518"
+    },
+    {
+      "id": "characters.seeker.south.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "bf92d0e42039cd34e3f237cf3dc07e5a7396b04e7245e05af691d6a0ca78a692"
+    },
+    {
+      "id": "characters.seeker.south.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "3140ff796ed804244b9679d9a30b5d74805da11391fcba61eea815e53ad731be"
+    },
+    {
+      "id": "characters.seeker.west.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "fe707a9f44fb75ceb81a02dfa8ff8ab15fc62d99808d4c33cbc631845b5a10a8"
+    },
+    {
+      "id": "characters.seeker.west.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "e7d2cac80acaf7186af098949d1bbedcbd39d1c3d5134744a872837fc21c2716"
+    },
+    {
+      "id": "characters.seeker.west.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "c0557117a89c056c34741daaf5bc3a54e747f7c1a602c83929c5f5a12d364c89"
+    },
+    {
+      "id": "characters.seeker.west.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "97b7019c43e2f08a173009dc9625bcecbf613e48c8c71abd07afa01c620c1169"
+    },
+    {
+      "id": "characters.seeker.west.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "d1526781ca2c6578c81f503e90fe04d55a4a2761e89ee4925def1106060c10f4"
+    },
+    {
+      "id": "characters.seeker.west.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "d9b14b1499acfb7e60a8060747488a73c84691e48b9510a3813c410b2a29fba5"
+    },
+    {
+      "id": "characters.seeker.east.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "f249d77ac72057856ad0d4722d310c97b65bfb580f358f73afcf1196cb2f0ea5"
+    },
+    {
+      "id": "characters.seeker.east.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "377c1ad1ff3c498342061e39c89b5826ebc4927495f9770fb144a971e3087289"
+    },
+    {
+      "id": "characters.seeker.east.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "641aa76b9746986df0ef9de0fd49fe9f0ba854311ccb0525e27a40ca3fb5cdd9"
+    },
+    {
+      "id": "characters.seeker.east.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "e3966e32591523b0f91230141b60605b10c3b3d97311cac7e4da00d639868956"
+    },
+    {
+      "id": "characters.seeker.east.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "8fa26047804e126f89074906a40788df57f492a79b7d16f4c6cad5c744806329"
+    },
+    {
+      "id": "characters.seeker.east.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "sha256": "95e10001939f4c29b178d80fdce052d588cd6aee5818194c738429823ff09407"
+    },
+    {
+      "id": "characters.seeker.north.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "5767252b72bd4c408179c0429100e95f39b1168b389bc1e7840269a1821bb28a"
+    },
+    {
+      "id": "characters.seeker.north.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "79b1634dcd5882ae81c4be56f1bdf3145c60c2ab75e0e1190f980bf90c6f9514"
+    },
+    {
+      "id": "characters.seeker.north.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "aee8f8be176e8c32fe40992efcff93d431f5fd8facd405c995f53a43d28fcc97"
+    },
+    {
+      "id": "characters.seeker.north.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "b92265185b589ed5dda082d12e5f5ae0e6d1117c57517a5fb9bccbf2f21c38b4"
+    },
+    {
+      "id": "characters.seeker.north.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "7bdbd341ee7cf20faac109a37fb908badf77e3b948035e5d539610545e68fa1f"
+    },
+    {
+      "id": "characters.seeker.north.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "sha256": "26f4a1961bb3ddcc166e6ce3eb37ffb4d668d3ed0d2df206f9ba86202420d390"
+    }
+  ]
+}

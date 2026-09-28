@@ -1,6 +1,7 @@
 # Godot-generated state
 .godot/
 .mono/
+*.cs.uid
 
 # .NET build and test output
 bin/

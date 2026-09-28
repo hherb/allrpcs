@@ -3,6 +3,11 @@
 Status: bounded pre-production source-sheet proof, 2026-09-28. These files are stored outside
 `game/`, are not imported, and are not runtime-ready assets.
 
+The recorded failures below are historical evidence from the first sheet workflow. The bounded
+[corrected pipeline proof](corrected/README.md) now passes clean-alpha, seam, manifest, layered-master,
+grayscale-cue, navigation-clearance, and four-direction baseline/timing checks. Its exact exports also
+have an isolated Godot import proof; neither proof is referenced by ordinary gameplay.
+
 Phase 9.1's approved painterly storybook direction was decomposed into four deliberately small
 source sheets:
 
@@ -37,9 +42,9 @@ pass the art bible's editable-master, seam, alpha, pivot, or animation-baseline 
 The problem is the flattened sheet workflow, not the selected art language. No generated sheet may
 be copied into `game/` or described as production-ready.
 
-## Required bounded correction pass
+## Completed bounded correction pass
 
-The next slice should correct the pipeline rather than generate more scene art:
+The correction pass completed these pipeline tasks rather than generating more scene art:
 
 1. Produce individual clean-alpha source files for the minimum terrain/path, herb-bed/foliage,
    preparation-table, and cue-overlay modules instead of relying on sheet gutters.
@@ -48,11 +53,12 @@ The next slice should correct the pipeline rather than generate more scene art:
    asset manifest.
 4. Recompose one 960x540 external review scene from only those modules and check seams, grayscale
    cues, and navigation clearance.
-5. Normalize one six-frame direction first; extend it to four directions only if the loop and foot
-   position pass.
+5. Normalize one six-frame direction first, then extend the same measured baseline and timing to all
+   four directions only after the first loop passed.
 
-Do not import into Godot until that correction passes. Do not bulk-produce the opening region,
-change gameplay/UI behaviour, or begin audio, release, or signing work.
+The corrected exports passed before their isolated import proof was added. Do not connect them to
+ordinary gameplay, bulk-produce the opening region, change gameplay/UI behaviour, or begin audio,
+release, or signing work.
 
 ## Provenance and integrity
 
