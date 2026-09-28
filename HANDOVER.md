@@ -40,6 +40,9 @@ ordinary gameplay reference none of this art.
   scenario validation, every credential-free Godot smoke, formatting, and the Compatibility
   graphical launch. The restricted full run reached the known `user://logs` crash only after all
   non-Godot stages passed; the identical full command was retried on the host.
+- Hosted `Credential-free CI` run `36395942633` at asset head `65faacf` failed before executing any
+  product command: all five jobs reported `steps: []`. This is Actions/account infrastructure state,
+  not contradictory product validation or development-build evidence.
 - These remain pipeline proofs, not final production quality or evidence of runtime terrain
   assembly, animation selection, collision, navigation, gameplay/UI, accessibility, complete-region
   art, audio, release, or signing readiness.
