@@ -32,6 +32,10 @@ none of this art.
   Application, 1,261 Infrastructure, and 8 architecture tests, scenario validation, the complete
   credential-free Godot smoke sequence, and Compatibility graphical launch. The restricted run
   first hit the known `user://logs` crash; only the identical host-local command was retried.
+- The push-triggered hosted workflow failed before product validation: all five jobs reported
+  `steps: []`, with no runner steps or failed logs. Treat this as Actions/account infrastructure,
+  not contradictory product evidence; the complete host-local quality evidence above remains the
+  validation result for this handover.
 - These remain proof assets, not final production quality or evidence of runtime animation
   selection, gameplay, collision, navigation, UI, accessibility, complete-region art, audio,
   release, or signing readiness.
