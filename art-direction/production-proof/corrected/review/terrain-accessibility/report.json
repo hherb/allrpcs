@@ -1,0 +1,912 @@
+{
+  "schema_version": 1,
+  "status": "descriptive external review; not human accessibility acceptance",
+  "manifest": {
+    "path": "asset-manifest.json",
+    "sha256": "fc0cea02d20621afb5e64e521ec32cb890e45be231dcff31611bd43dc05be908",
+    "schema_version": 1
+  },
+  "method": {
+    "name": "Machado-Oliveira-Fernandes 2009 full-severity simulation",
+    "colour_space": "sRGB IEC 61966-2-1 decoded to linear light",
+    "severity": 1.0,
+    "channel_handling": "matrix multiply in linear RGB; clip; encode to 8-bit sRGB",
+    "alpha_handling": "preserved unchanged",
+    "grayscale": "linear relative luminance Y = 0.2126 R + 0.7152 G + 0.0722 B",
+    "matrices": {
+      "protanopia": [
+        [
+          0.152286,
+          1.052583,
+          -0.204868
+        ],
+        [
+          0.114503,
+          0.786281,
+          0.099216
+        ],
+        [
+          -0.003882,
+          -0.048116,
+          1.051998
+        ]
+      ],
+      "deuteranopia": [
+        [
+          0.367322,
+          0.860646,
+          -0.227968
+        ],
+        [
+          0.280085,
+          0.672501,
+          0.047413
+        ],
+        [
+          -0.01182,
+          0.04294,
+          0.968881
+        ]
+      ],
+      "tritanopia": [
+        [
+          1.255528,
+          -0.076749,
+          -0.178779
+        ],
+        [
+          -0.078411,
+          0.930809,
+          0.147602
+        ],
+        [
+          0.004733,
+          0.691367,
+          0.3039
+        ]
+      ]
+    }
+  },
+  "render": {
+    "sample_size_pixels": {
+      "width": 256,
+      "height": 256
+    },
+    "view_order": [
+      "original",
+      "grayscale",
+      "protanopia",
+      "deuteranopia",
+      "tritanopia"
+    ],
+    "packed_earth_composition": {
+      "background": "terrain.quiet_moss",
+      "foreground": "terrain.straight_path",
+      "foreground_x": 80,
+      "foreground_y": 0
+    }
+  },
+  "samples": [
+    {
+      "id": "quiet_moss",
+      "label": "Quiet moss",
+      "inputs": [
+        {
+          "asset_id": "terrain.quiet_moss",
+          "export": "exports/terrain/quiet-moss.png",
+          "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/quiet_moss/original.png",
+          "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.189055,
+            "luminance_standard_deviation": 0.063538,
+            "luminance_p10_p90_span": 0.163376,
+            "neighbor_rms_luminance_delta": 0.038748
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/quiet_moss/grayscale.png",
+          "sha256": "fbc43fff1e5b825164d77ff2eae6ee5346c7c08fcc256f2193965d85ff9c7bb7",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.189081,
+            "luminance_standard_deviation": 0.063559,
+            "luminance_p10_p90_span": 0.16361,
+            "neighbor_rms_luminance_delta": 0.038791
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/quiet_moss/protanopia.png",
+          "sha256": "77089597c0dad9e7df7eb09f77c3d9d95127367aec37393f9330005a818bb325",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.187521,
+            "luminance_standard_deviation": 0.060389,
+            "luminance_p10_p90_span": 0.156015,
+            "neighbor_rms_luminance_delta": 0.03696
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/quiet_moss/deuteranopia.png",
+          "sha256": "c1e6950a067984eecf1599aac480b708e481d0fc7760c3e41d9edadc85635211",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.189304,
+            "luminance_standard_deviation": 0.065413,
+            "luminance_p10_p90_span": 0.167052,
+            "neighbor_rms_luminance_delta": 0.039838
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/quiet_moss/tritanopia.png",
+          "sha256": "1667b6d131ad56a39e493db5db360db5d805ddeb3a01b70acf42806ecf5fd9cd",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.185968,
+            "luminance_standard_deviation": 0.062377,
+            "luminance_p10_p90_span": 0.161234,
+            "neighbor_rms_luminance_delta": 0.038078
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/quiet_moss.png",
+        "sha256": "6d036d63e6b483c14d4a52ff1982b7de87e07a930828407514c26f886970ad58",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "woodland_leaf_litter",
+      "label": "Woodland leaf litter",
+      "inputs": [
+        {
+          "asset_id": "terrain.woodland_leaf_litter",
+          "export": "exports/terrain/woodland-leaf-litter.png",
+          "sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter/original.png",
+          "sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.091599,
+            "luminance_standard_deviation": 0.047319,
+            "luminance_p10_p90_span": 0.1183,
+            "neighbor_rms_luminance_delta": 0.029185
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter/grayscale.png",
+          "sha256": "a70350a2fb7526c6dc77fccc3340bed17324853d46ace78d52db6bca83ef372b",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.091597,
+            "luminance_standard_deviation": 0.047318,
+            "luminance_p10_p90_span": 0.116843,
+            "neighbor_rms_luminance_delta": 0.029196
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter/protanopia.png",
+          "sha256": "334c5e5cd3f975cec02a5907a7513813bb8e78691fc1d613d3d4ba6e10a82748",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.079254,
+            "luminance_standard_deviation": 0.040444,
+            "luminance_p10_p90_span": 0.100842,
+            "neighbor_rms_luminance_delta": 0.025255
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter/deuteranopia.png",
+          "sha256": "b74cb5e5239aa7d4661dce82cf97716e760d60b9c5f41cc77a3abdca01e938b2",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.099562,
+            "luminance_standard_deviation": 0.051776,
+            "luminance_p10_p90_span": 0.131339,
+            "neighbor_rms_luminance_delta": 0.031746
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter/tritanopia.png",
+          "sha256": "05c1f285ee165673e253410a6ecde42042e4e4af10a3e8619b30270e6e914d67",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.090654,
+            "luminance_standard_deviation": 0.046762,
+            "luminance_p10_p90_span": 0.116722,
+            "neighbor_rms_luminance_delta": 0.02885
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/woodland_leaf_litter.png",
+        "sha256": "1af568ef1ecd0fc8e8ff05041f0d52bced34bef54ef6630e1fe9ad58bf19c735",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "packed_earth_on_quiet_moss",
+      "label": "Packed earth on quiet moss",
+      "inputs": [
+        {
+          "asset_id": "terrain.quiet_moss",
+          "export": "exports/terrain/quiet-moss.png",
+          "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
+        },
+        {
+          "asset_id": "terrain.straight_path",
+          "export": "exports/terrain/straight-path.png",
+          "sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
+        }
+      ],
+      "measurement_region": "visible straight-path pixels after exact alpha composition",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/packed_earth_on_quiet_moss/original.png",
+          "sha256": "c11340dd85ed085228f6b992074a751c56f8ad7518eb68c542f714d56b8f441d",
+          "measurements": {
+            "pixel_count": 21444,
+            "mean_relative_luminance": 0.41537,
+            "luminance_standard_deviation": 0.082355,
+            "luminance_p10_p90_span": 0.205699,
+            "neighbor_rms_luminance_delta": 0.038769
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/packed_earth_on_quiet_moss/grayscale.png",
+          "sha256": "b1ec4a582f85e7f4c427c0ee95b064cde161d550dfd8558931dc6d8d6d32959a",
+          "measurements": {
+            "pixel_count": 21444,
+            "mean_relative_luminance": 0.41541,
+            "luminance_standard_deviation": 0.082387,
+            "luminance_p10_p90_span": 0.203894,
+            "neighbor_rms_luminance_delta": 0.038832
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/packed_earth_on_quiet_moss/protanopia.png",
+          "sha256": "3134137f8ead8143e4b8a48b0bada84f71b9f937452d797ac5f87c7e8a5484f2",
+          "measurements": {
+            "pixel_count": 21444,
+            "mean_relative_luminance": 0.373097,
+            "luminance_standard_deviation": 0.073828,
+            "luminance_p10_p90_span": 0.187132,
+            "neighbor_rms_luminance_delta": 0.035765
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/packed_earth_on_quiet_moss/deuteranopia.png",
+          "sha256": "8444336ede9067139dd4ae83d660759d65d40c78797382ffcd91ce33d860452d",
+          "measurements": {
+            "pixel_count": 21444,
+            "mean_relative_luminance": 0.442305,
+            "luminance_standard_deviation": 0.088,
+            "luminance_p10_p90_span": 0.216845,
+            "neighbor_rms_luminance_delta": 0.040866
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/packed_earth_on_quiet_moss/tritanopia.png",
+          "sha256": "9623c53e3e78633ee9e0f75641410ff0e3cc2ac33a3d6ead8b58b52677b300c2",
+          "measurements": {
+            "pixel_count": 21444,
+            "mean_relative_luminance": 0.410094,
+            "luminance_standard_deviation": 0.080869,
+            "luminance_p10_p90_span": 0.20254,
+            "neighbor_rms_luminance_delta": 0.038012
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/packed_earth_on_quiet_moss.png",
+        "sha256": "ce6d81ce8ae7b7f2f9938feea62c424a3b7cc1d4041c42ab1e3f123c67df2fa8",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "woodland_leaf_litter_transition",
+      "label": "Straight transition",
+      "inputs": [
+        {
+          "asset_id": "terrain.woodland_leaf_litter_transition",
+          "export": "exports/terrain/woodland-leaf-litter-transition.png",
+          "sha256": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_transition/original.png",
+          "sha256": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.139904,
+            "luminance_standard_deviation": 0.073514,
+            "luminance_p10_p90_span": 0.186202,
+            "neighbor_rms_luminance_delta": 0.033977
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_transition/grayscale.png",
+          "sha256": "f512232e5d0e124c4195dc948eb96948ff78cccad6e2234af8524cfdd584f6c7",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.139917,
+            "luminance_standard_deviation": 0.073536,
+            "luminance_p10_p90_span": 0.187801,
+            "neighbor_rms_luminance_delta": 0.034004
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_transition/protanopia.png",
+          "sha256": "80815ac214c3519aca8495981014501869f40ef0afde4c8072f68e6578d4d806",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.132971,
+            "luminance_standard_deviation": 0.07381,
+            "luminance_p10_p90_span": 0.185397,
+            "neighbor_rms_luminance_delta": 0.031348
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_transition/deuteranopia.png",
+          "sha256": "6664532114151ff21cffbfe02a43bc4685541b59e3f4d4300c9809645c9620ba",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.144016,
+            "luminance_standard_deviation": 0.073447,
+            "luminance_p10_p90_span": 0.188622,
+            "neighbor_rms_luminance_delta": 0.035686
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_transition/tritanopia.png",
+          "sha256": "fa4d7eefe64c1d98ba3399079b5333bf7d5b5c9850bb660e75f2a82604fa738d",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.137897,
+            "luminance_standard_deviation": 0.072153,
+            "luminance_p10_p90_span": 0.183471,
+            "neighbor_rms_luminance_delta": 0.033456
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/woodland_leaf_litter_transition.png",
+        "sha256": "5b38b4851ca2ad00d6c1aa387a696e3722ded5555e44eface86f1f47813dff23",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "woodland_leaf_litter_corner_transition",
+      "label": "Outer corner right",
+      "inputs": [
+        {
+          "asset_id": "terrain.woodland_leaf_litter_corner_transition",
+          "export": "exports/terrain/woodland-leaf-litter-corner-transition.png",
+          "sha256": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition/original.png",
+          "sha256": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.176536,
+            "luminance_standard_deviation": 0.069365,
+            "luminance_p10_p90_span": 0.175493,
+            "neighbor_rms_luminance_delta": 0.037573
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition/grayscale.png",
+          "sha256": "b9a99e804ad2a8171069e76f2499611fcd044a03e45ec81f59bfed8847467efe",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.176554,
+            "luminance_standard_deviation": 0.069386,
+            "luminance_p10_p90_span": 0.174779,
+            "neighbor_rms_luminance_delta": 0.037613
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition/protanopia.png",
+          "sha256": "dc98099ac99a54180a701716b3e37694ae6e88f1d3f30dff06b2da81343c845e",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.173638,
+            "luminance_standard_deviation": 0.068048,
+            "luminance_p10_p90_span": 0.174091,
+            "neighbor_rms_luminance_delta": 0.035601
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition/deuteranopia.png",
+          "sha256": "64617b2c11de68a160caad625eb6b76e7bb47bbd875fb09821748e945758ce08",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.177761,
+            "luminance_standard_deviation": 0.070164,
+            "luminance_p10_p90_span": 0.175817,
+            "neighbor_rms_luminance_delta": 0.038798
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition/tritanopia.png",
+          "sha256": "8cab7efef56bd744f60ff9dcfeac2eef10ba292dc2527df5037510e03d25e052",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.173722,
+            "luminance_standard_deviation": 0.068067,
+            "luminance_p10_p90_span": 0.172233,
+            "neighbor_rms_luminance_delta": 0.036935
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/woodland_leaf_litter_corner_transition.png",
+        "sha256": "9816b60cfd5081dca272a55e4f56a0423975d9d820db0288ab9058d7149e2520",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "woodland_leaf_litter_corner_transition_left",
+      "label": "Outer corner left",
+      "inputs": [
+        {
+          "asset_id": "terrain.woodland_leaf_litter_corner_transition_left",
+          "export": "exports/terrain/woodland-leaf-litter-corner-transition-left.png",
+          "sha256": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition_left/original.png",
+          "sha256": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.176462,
+            "luminance_standard_deviation": 0.069197,
+            "luminance_p10_p90_span": 0.175607,
+            "neighbor_rms_luminance_delta": 0.037726
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition_left/grayscale.png",
+          "sha256": "f6f99b6522b32dcdabdac23b44a6e2f1c4adb7fdef2386469d83778f6060f862",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.176477,
+            "luminance_standard_deviation": 0.069218,
+            "luminance_p10_p90_span": 0.174779,
+            "neighbor_rms_luminance_delta": 0.037764
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition_left/protanopia.png",
+          "sha256": "769936224774598e97c22177c6caded1fd1d19cac0966000df53ef11ccbc7828",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.173536,
+            "luminance_standard_deviation": 0.067823,
+            "luminance_p10_p90_span": 0.172253,
+            "neighbor_rms_luminance_delta": 0.03574
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition_left/deuteranopia.png",
+          "sha256": "58f10d9ad3b558b1a0b413c75b50a9fb856bd5c5fc78aa42bd7eadd4d2d9fd5b",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.177699,
+            "luminance_standard_deviation": 0.070038,
+            "luminance_p10_p90_span": 0.175834,
+            "neighbor_rms_luminance_delta": 0.038958
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_corner_transition_left/tritanopia.png",
+          "sha256": "fe60f7089328a04fa8eeb84259beec429d31aba062306cd78795440430f867d8",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.17365,
+            "luminance_standard_deviation": 0.067909,
+            "luminance_p10_p90_span": 0.172592,
+            "neighbor_rms_luminance_delta": 0.037092
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/woodland_leaf_litter_corner_transition_left.png",
+        "sha256": "c8b6e2aa3f409b5d1d512abc5407b47339ce748258d1cf619b7edd2c6fe9a7d6",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "woodland_leaf_litter_inset_corner_transition",
+      "label": "Inset corner right",
+      "inputs": [
+        {
+          "asset_id": "terrain.woodland_leaf_litter_inset_corner_transition",
+          "export": "exports/terrain/woodland-leaf-litter-inset-corner-transition.png",
+          "sha256": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition/original.png",
+          "sha256": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.10368,
+            "luminance_standard_deviation": 0.05848,
+            "luminance_p10_p90_span": 0.140185,
+            "neighbor_rms_luminance_delta": 0.030757
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition/grayscale.png",
+          "sha256": "6e98cf93de08dcafd872748b2db9d3514820ebdb676fb125c47119b2abd3c48a",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.103683,
+            "luminance_standard_deviation": 0.05849,
+            "luminance_p10_p90_span": 0.141156,
+            "neighbor_rms_luminance_delta": 0.030773
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition/protanopia.png",
+          "sha256": "86e1711c23a88c84146e4c42c6b2ad6ef61084eec0766faa480d77a544a7e7d3",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.092675,
+            "luminance_standard_deviation": 0.055386,
+            "luminance_p10_p90_span": 0.130252,
+            "neighbor_rms_luminance_delta": 0.027201
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition/deuteranopia.png",
+          "sha256": "82d24039f56c941dfbb077bfc9db46cf34647b70bb5722ea3890846ebd4cbae6",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.11069,
+            "luminance_standard_deviation": 0.060764,
+            "luminance_p10_p90_span": 0.147519,
+            "neighbor_rms_luminance_delta": 0.033085
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition/tritanopia.png",
+          "sha256": "1e04eefab4448fed7d68fdaee55a717cefee27bd8a14d040e1125bbb7ea087b1",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.102471,
+            "luminance_standard_deviation": 0.057574,
+            "luminance_p10_p90_span": 0.138044,
+            "neighbor_rms_luminance_delta": 0.030369
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/woodland_leaf_litter_inset_corner_transition.png",
+        "sha256": "339684f9de6ee6adc272e18a507b3882851f072cb7e0f5001721b2c723af7a85",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    },
+    {
+      "id": "woodland_leaf_litter_inset_corner_transition_left",
+      "label": "Inset corner left",
+      "inputs": [
+        {
+          "asset_id": "terrain.woodland_leaf_litter_inset_corner_transition_left",
+          "export": "exports/terrain/woodland-leaf-litter-inset-corner-transition-left.png",
+          "sha256": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7"
+        }
+      ],
+      "measurement_region": "all 256x256 pixels",
+      "views": [
+        {
+          "name": "original",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition_left/original.png",
+          "sha256": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.103713,
+            "luminance_standard_deviation": 0.058353,
+            "luminance_p10_p90_span": 0.140941,
+            "neighbor_rms_luminance_delta": 0.030485
+          }
+        },
+        {
+          "name": "grayscale",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition_left/grayscale.png",
+          "sha256": "30b87032f005fd00ed9cd71782f37165f5e1715867e2641e9af92f14c0b08d10",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.103719,
+            "luminance_standard_deviation": 0.058364,
+            "luminance_p10_p90_span": 0.141156,
+            "neighbor_rms_luminance_delta": 0.030496
+          }
+        },
+        {
+          "name": "protanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition_left/protanopia.png",
+          "sha256": "c5c2675c000edbb4d82c307b0df8d306038e4839ebee70c04d6573732234e253",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.092725,
+            "luminance_standard_deviation": 0.055301,
+            "luminance_p10_p90_span": 0.132207,
+            "neighbor_rms_luminance_delta": 0.026933
+          }
+        },
+        {
+          "name": "deuteranopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition_left/deuteranopia.png",
+          "sha256": "acf16a2722666ff2e177cd2676b1bba64d41d394f6067ff5d41ddf17fa8ddd6f",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.110712,
+            "luminance_standard_deviation": 0.060607,
+            "luminance_p10_p90_span": 0.146608,
+            "neighbor_rms_luminance_delta": 0.032807
+          }
+        },
+        {
+          "name": "tritanopia",
+          "path": "review/terrain-accessibility/views/woodland_leaf_litter_inset_corner_transition_left/tritanopia.png",
+          "sha256": "a1d0d35ecf1b57005dabe6bb3cd21d75907c67766980c3af74e26690a5468872",
+          "measurements": {
+            "pixel_count": 65536,
+            "mean_relative_luminance": 0.102504,
+            "luminance_standard_deviation": 0.057448,
+            "luminance_p10_p90_span": 0.138944,
+            "neighbor_rms_luminance_delta": 0.0301
+          }
+        }
+      ],
+      "side_by_side_sheet": {
+        "path": "review/terrain-accessibility/sheets/woodland_leaf_litter_inset_corner_transition_left.png",
+        "sha256": "0aa28b1884fe1de39522c41fbde1275ef094c4d6d8b5c292f78be7aa6a316927",
+        "view_order": [
+          "original",
+          "grayscale",
+          "protanopia",
+          "deuteranopia",
+          "tritanopia"
+        ]
+      }
+    }
+  ],
+  "material_separation": {
+    "original": [
+      {
+        "first": "quiet_moss",
+        "second": "woodland_leaf_litter",
+        "absolute_mean_luminance_difference": 0.097456,
+        "absolute_texture_standard_deviation_difference": 0.016219,
+        "absolute_p10_p90_span_difference": 0.045076,
+        "absolute_neighbor_rms_texture_difference": 0.009563
+      },
+      {
+        "first": "quiet_moss",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.226315,
+        "absolute_texture_standard_deviation_difference": 0.018817,
+        "absolute_p10_p90_span_difference": 0.042323,
+        "absolute_neighbor_rms_texture_difference": 2.1e-05
+      },
+      {
+        "first": "woodland_leaf_litter",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.323771,
+        "absolute_texture_standard_deviation_difference": 0.035036,
+        "absolute_p10_p90_span_difference": 0.087399,
+        "absolute_neighbor_rms_texture_difference": 0.009584
+      }
+    ],
+    "grayscale": [
+      {
+        "first": "quiet_moss",
+        "second": "woodland_leaf_litter",
+        "absolute_mean_luminance_difference": 0.097484,
+        "absolute_texture_standard_deviation_difference": 0.016241,
+        "absolute_p10_p90_span_difference": 0.046767,
+        "absolute_neighbor_rms_texture_difference": 0.009595
+      },
+      {
+        "first": "quiet_moss",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.226329,
+        "absolute_texture_standard_deviation_difference": 0.018828,
+        "absolute_p10_p90_span_difference": 0.040284,
+        "absolute_neighbor_rms_texture_difference": 4.1e-05
+      },
+      {
+        "first": "woodland_leaf_litter",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.323813,
+        "absolute_texture_standard_deviation_difference": 0.035069,
+        "absolute_p10_p90_span_difference": 0.087051,
+        "absolute_neighbor_rms_texture_difference": 0.009636
+      }
+    ],
+    "protanopia": [
+      {
+        "first": "quiet_moss",
+        "second": "woodland_leaf_litter",
+        "absolute_mean_luminance_difference": 0.108267,
+        "absolute_texture_standard_deviation_difference": 0.019945,
+        "absolute_p10_p90_span_difference": 0.055173,
+        "absolute_neighbor_rms_texture_difference": 0.011705
+      },
+      {
+        "first": "quiet_moss",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.185576,
+        "absolute_texture_standard_deviation_difference": 0.013439,
+        "absolute_p10_p90_span_difference": 0.031117,
+        "absolute_neighbor_rms_texture_difference": 0.001195
+      },
+      {
+        "first": "woodland_leaf_litter",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.293843,
+        "absolute_texture_standard_deviation_difference": 0.033384,
+        "absolute_p10_p90_span_difference": 0.08629,
+        "absolute_neighbor_rms_texture_difference": 0.01051
+      }
+    ],
+    "deuteranopia": [
+      {
+        "first": "quiet_moss",
+        "second": "woodland_leaf_litter",
+        "absolute_mean_luminance_difference": 0.089742,
+        "absolute_texture_standard_deviation_difference": 0.013637,
+        "absolute_p10_p90_span_difference": 0.035713,
+        "absolute_neighbor_rms_texture_difference": 0.008092
+      },
+      {
+        "first": "quiet_moss",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.253001,
+        "absolute_texture_standard_deviation_difference": 0.022587,
+        "absolute_p10_p90_span_difference": 0.049793,
+        "absolute_neighbor_rms_texture_difference": 0.001028
+      },
+      {
+        "first": "woodland_leaf_litter",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.342743,
+        "absolute_texture_standard_deviation_difference": 0.036224,
+        "absolute_p10_p90_span_difference": 0.085506,
+        "absolute_neighbor_rms_texture_difference": 0.00912
+      }
+    ],
+    "tritanopia": [
+      {
+        "first": "quiet_moss",
+        "second": "woodland_leaf_litter",
+        "absolute_mean_luminance_difference": 0.095314,
+        "absolute_texture_standard_deviation_difference": 0.015615,
+        "absolute_p10_p90_span_difference": 0.044512,
+        "absolute_neighbor_rms_texture_difference": 0.009228
+      },
+      {
+        "first": "quiet_moss",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.224126,
+        "absolute_texture_standard_deviation_difference": 0.018492,
+        "absolute_p10_p90_span_difference": 0.041306,
+        "absolute_neighbor_rms_texture_difference": 6.6e-05
+      },
+      {
+        "first": "woodland_leaf_litter",
+        "second": "packed_earth_on_quiet_moss",
+        "absolute_mean_luminance_difference": 0.31944,
+        "absolute_texture_standard_deviation_difference": 0.034107,
+        "absolute_p10_p90_span_difference": 0.085818,
+        "absolute_neighbor_rms_texture_difference": 0.009162
+      }
+    ]
+  },
+  "interpretation": {
+    "measurements_are": "descriptive exact-pixel luminance and texture statistics",
+    "measurements_are_not": "thresholds, a pass/fail gate, or human accessibility acceptance"
+  }
+}

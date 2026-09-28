@@ -22,8 +22,11 @@ four-frame reach-and-inspect gestures. The terrain set includes one exact 96-pix
 90-degree bend, T-junction, cross-junction, and rounded end-cap with matching ports, plus one
 deterministic connected-topology review, one repeatable woodland leaf-litter tile, and exact
 quiet-moss-to-leaf straight, two outer-corner, and two inset-corner transitions. All 66 exports have
-an isolated source-parity Godot
-import scene with 12 named animations. None is referenced by `Main.tscn` or ordinary gameplay.
+an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
+review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
+grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
+measurements. None is referenced by `Main.tscn` or ordinary gameplay, and the simulation evidence is
+not human accessibility acceptance.
 
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure

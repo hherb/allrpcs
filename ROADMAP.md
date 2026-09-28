@@ -223,6 +223,10 @@ Acceptance:
 - [x] Establish and import two complementary quiet-moss inset corners in leaf litter with exact
   transition seams, exact unused leaf-litter edges, editable masters, connected reviews, source
   parity, and no ordinary-scene authority.
+- [x] Establish one manifest-bound external colour-vision and contrast review for quiet moss,
+  woodland leaf litter, packed earth, and all five existing ground transitions using documented
+  full-severity simulations and descriptive luminance/texture measurements without claiming human
+  accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

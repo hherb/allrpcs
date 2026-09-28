@@ -3,55 +3,52 @@
 ## Current state
 
 Phase 8 and Phase 9.1 remain complete on `main`. Direction A, painterly storybook gouache, remains
-selected; Direction D is only the documented contingency. Phase 9.2 now has a deterministic
-66-asset corrected pipeline with seventeen editable OpenRaster masters. The terrain proof includes
-quiet moss, repeatable woodland leaf litter, the straight, two outer-corner, and two inset-corner
-quiet-moss/leaf-litter transitions, and the complete straight/bend/T/cross/end-cap packed-earth
-set. Exact copies of all 66 exports exist only in the isolated Godot import proof; `Main.tscn` and
-ordinary gameplay reference none of this art.
+selected; Direction D is only the documented contingency. Phase 9.2 has a deterministic 66-asset
+corrected pipeline with seventeen editable OpenRaster masters. Its terrain proof covers quiet moss,
+woodland leaf litter, all five transitions between them, and the complete straight/bend/T/cross/end
+packed-earth set. Exact copies exist only in the isolated Godot import proof; ordinary gameplay
+references none of this art.
+
+The existing terrain family now also has a deterministic external colour-vision and contrast review.
+It changes no manifest asset, master, export, import copy, or runtime reference.
 
 ## Evidence and boundaries to retain
 
-- `asset-manifest.json` owns all 66 exports with source provenance, exact 2x geometry, pivots,
-  baselines, digests, animation timing, and isolated-import status. `tools/build.py` reproducibly
-  creates seventeen `.ora` masters and all review evidence from eighteen retained image-tool
-  sources plus the earlier repository-owned walk sheet.
-- `terrain.woodland_leaf_litter_inset_corner_transition_left` is derived deterministically from the
-  exact quiet-moss, leaf-litter, and straight-transition masters. Its opaque 256x256 export and
-  512x512 master place quiet moss in the upper-left, retain exact top/left transition connectors,
-  and retain exact leaf-litter right/lower edges. The layered master keeps all three sources hidden
-  and editable.
-- Its 768x768 review uses only exact source and transition tiles. Focused validation checks the
-  material orientation, all four edge contracts, exact connected review placements, master layers,
-  manifest provenance and digest, and full opacity. The connected review was also inspected
-  visually; no independent human art or accessibility judgement was supplied.
-- `game/art/direction-a-import-proof` contains exact byte copies of all 66 exports with lossless
-  imports, exact resource/cache sidecar paths, unique UIDs, mipmaps off, alpha-border correction on,
-  and premultiplied alpha off. The proof scene checks both inset corners as uncentred 256x256 sprites
-  with linear filtering and no collision, navigation, input, gameplay, or UI authority.
-- Host-local `./scripts/quality.sh` passes both asset validators, all 66 exact import hashes,
+- `review/terrain-accessibility` contains eight side-by-side sheets and 40 individual views in fixed
+  original, grayscale, protanopia, deuteranopia, and tritanopia order. The inputs are exact current
+  manifest exports for quiet moss, leaf litter, packed earth, and all five ground transitions.
+- `tools/terrain_accessibility_review.py` uses the documented Machado–Oliveira–Fernandes 2009
+  full-severity matrices in linear sRGB, preserves alpha, and records its exact matrices and
+  parameters in `report.json`. Packed earth is the exact straight-path export alpha-composited over
+  exact quiet moss; only visible path pixels contribute to its measurements.
+- The report binds the manifest, every input, every view, and every sheet to SHA-256 digests. It
+  records mean relative luminance, luminance standard deviation, 10th-to-90th-percentile span,
+  neighbouring-pixel RMS luminance delta, and pairwise material differences.
+- `validate_terrain_accessibility_review.py` independently reloads manifest exports, verifies source
+  hashes, recomputes every transformed RGBA pixel and metric, checks the exact PNG set and sheet
+  order, and compares the complete report. `scripts/quality.sh` runs it before import validation.
+- Host-local `./scripts/quality.sh` passes both art validators, all 66 exact import hashes,
   zero-warning build, 2,839 Domain, 924 Application, 1,261 Infrastructure, and 8 architecture tests,
   scenario validation, every credential-free Godot smoke, formatting, and the Compatibility
-  graphical launch. The restricted full run reached the known `user://logs` crash only after all
+  graphical launch. The restricted run reached the known `user://logs` crash only after all
   non-Godot stages passed; the identical full command was retried on the host.
-- These remain pipeline proofs, not final production quality or evidence of runtime terrain
-  assembly, animation selection, collision, navigation, gameplay/UI, complete-region art,
-  accessibility, audio, release, or signing readiness.
+- The simulations and numeric measurements are descriptive exact-pixel evidence, not thresholds,
+  a pass/fail result, or human accessibility acceptance. No independent human art or accessibility
+  judgement was supplied.
 
 ## Exact next bounded slice
 
-Add one deterministic external-only colour-vision and contrast review for the existing terrain
-family: quiet moss, woodland leaf litter, packed earth, and all five quiet-moss/leaf-litter
-transitions. Document one named, reproducible simulation method and its parameters; render
-side-by-side original, grayscale, protanopia, deuteranopia, and tritanopia views; and add focused
-validation that binds every view to the exact current manifest exports and records measurable
-luminance/texture separation without treating numeric thresholds as human acceptance. Keep the
-review outside `game/`; do not add or alter asset IDs, masters, exports, import copies, or runtime
-scene references.
+Extend the same documented external-only simulation method to the existing preparation-table states
+and Seeker samples. Render ordinary, noticeable, identified, and dangerous table states plus all
+current Seeker walk, idle/breathe, and reach-and-inspect samples in the same five fixed views. Bind
+every composed sample to its exact current manifest inputs, retain shape/pattern and silhouette
+evidence separately from hue, and record descriptive foreground/background and state-difference
+measurements without introducing accessibility thresholds or claiming human acceptance. Keep all
+review files outside `game/`; do not change asset IDs, masters, exports, import copies, animation
+timing, runtime scenes, gameplay, or UI behavior.
 
-Do not add new ground types, transition shapes, paths, banks, water, structures, props, character
-art, ordinary Seeker replacement, runtime terrain assembly or animation selection,
-gameplay/UI/collision/navigation authority, audio, release, or signing work. After the external
-review passes, the following slice may extend the same documented simulation method only to the
-existing object-state cues and Seeker samples; it must still avoid claiming complete-region or human
-accessibility acceptance.
+Do not add new terrain, objects, characters, animation frames, UI assets, runtime selection,
+collision/navigation authority, audio, release, or signing work. After that review passes, the next
+slice may define a bounded human accessibility review protocol for these exact external sheets; it
+must not claim complete-region acceptance or modify production assets in response without a separate
+reviewed slice.

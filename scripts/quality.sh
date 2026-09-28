@@ -9,6 +9,7 @@ cd "$repository_root"
 
 ./scripts/validate-workflows.sh
 python3 art-direction/production-proof/corrected/tools/validate.py
+python3 art-direction/production-proof/corrected/tools/validate_terrain_accessibility_review.py
 python3 scripts/validate-direction-a-import-proof.py
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes

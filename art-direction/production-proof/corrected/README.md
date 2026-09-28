@@ -46,6 +46,10 @@ OpenRaster masters, and review evidence.
   edge transition, and leaf-litter sequence in two connected rows.
 - The four corner-transition review files connect each outer or inset corner to exact source-ground
   and rotated straight-transition neighbours in a 3x3 composition.
+- `review/terrain-accessibility` contains exact original, grayscale, protanopia, deuteranopia, and
+  tritanopia views for quiet moss, leaf litter, packed earth, and all five ground transitions. Its
+  report binds every view to the current manifest hashes and records descriptive luminance and
+  neighbouring-pixel texture measurements without making an accessibility acceptance claim.
 
 ![Corrected module review scene](review/module-review-scene.png)
 
@@ -56,6 +60,8 @@ Run from the repository root:
 ```sh
 python3 art-direction/production-proof/corrected/tools/build.py
 python3 art-direction/production-proof/corrected/tools/validate.py
+python3 art-direction/production-proof/corrected/tools/terrain_accessibility_review.py
+python3 art-direction/production-proof/corrected/tools/validate_terrain_accessibility_review.py
 ```
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
@@ -89,15 +95,18 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - all four reach-and-inspect frames in each direction are distinct, all 16 are unique, preserve the
   direction-specific fixed origin and 52-pixel baseline, and use 160 ms non-looping timing;
 - the four table states remain measurably distinct in grayscale;
+- the external terrain accessibility review exactly reproduces 40 simulation views from the current
+  manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
 - no fixed review-scene obstacle overlaps the 96x540 path corridor; and
-- all sixteen `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and editable
-  PNG layers.
+- all seventeen `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
+  editable PNG layers.
 
 ## Review conclusion and boundaries
 
 The corrected proof passes the art bible's alpha, seam, pivot, editable-master, grayscale-cue,
-four-direction walk, idle/breathe, and interaction gates. Direction A remains feasible, so the
-Direction D contingency does not activate.
+four-direction walk, idle/breathe, and interaction gates. The terrain-only colour-vision review is
+reproducible external evidence, not human accessibility acceptance. Direction A remains feasible,
+so the Direction D contingency does not activate.
 
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
