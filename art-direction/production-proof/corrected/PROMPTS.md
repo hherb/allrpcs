@@ -101,3 +101,31 @@ Constraints: genuinely transparent background; same character identity and costu
 The south call used the same prompt with `south-facing view` and ended the style line after
 `detail`, without the semicolon/costume-clause suffix. All four outputs came from Codex's built-in
 image tool on 2026-09-28. The tool exposed no model or version identifier, so none is asserted.
+
+## Seeker reach-and-inspect interaction frames
+
+Input for all four calls: `review/seeker-four-direction-walk.png`
+
+Each call used the following exact shared structure. The direction-specific clauses are retained in
+the table below; no other image reference was supplied.
+
+```text
+Use case: stylized-concept
+Asset type: external four-frame 2D game interaction-animation source sheet
+Primary request: Derive exactly four [direction]-facing frames of one reusable reach-and-inspect interaction gesture for the same Seeker shown in the supplied walk sheet. Frame order from left to right: 1) brief anticipation with torso settling and [start clause]; 2) reach forward and slightly downward toward an imaginary object directly [target]; 3) clear inspect/contact pose with [contact clause] and the head inclined toward the imaginary object; 4) partial recovery toward neutral with the hand withdrawing. Keep every frame visibly distinct.[readability clause]
+Input image: the supplied Seeker walk sheet is a reference only for identity, costume, palette, projection, scale, painterly style, proportions, and [direction]-facing design; do not edit or reproduce the full sheet.
+Style/medium: [style clause]
+Composition: exactly four complete full-body frames in one horizontal four-cell sheet, ordered left to right, each centered separately with generous transparent gutters and the same ground-contact baseline. The imaginary interaction origin [origin clause].
+Constraints: genuinely transparent background; same character identity, costume, handedness, scale, pivot, [placement clause] in all four cells; both boots remain planted in exactly the same place; upper-body and arm gesture only; no held prop and no depicted target object; no locomotion, turn, attack, harvesting, casting, speech bubble, state marker, contact shadow haze, labels, text, grid, border, logo, trademark, watermark, extra frame, duplicate character within a cell, or cropped edge.
+Avoid: [avoid clause]
+```
+
+| Direction | Start/contact and readability clauses | Exact remaining substitutions |
+| --- | --- | --- |
+| south | `hands beginning to move`; `the right hand lowest`; no added readability clause | target `in front of the character`; style `preserve the painterly storybook gouache character rendering, high-oblique south-facing view, brown hair, cream shirt, dark trousers, brown boots and satchel, teal cloak, warm lighting direction, roughly 4.5-to-5-head proportions, and simplified readable silhouette`; origin `remains centered directly in front of the Seeker`; placement `and contact-foot position`; avoid `walking stride, kneeling, tool use, weapon use, dramatic pose, costume drift, changing satchel side, changing cloak length, moving feet, camera changes, perspective convergence, environmental backdrop, blurry edges, or duplicated frames.` |
+| west | `the forward hand beginning to move`; `the forward hand farthest left and lowest`; no added readability clause | target `west/left of the character`; style `preserve the painterly storybook gouache character rendering, high-oblique west-facing left side profile, brown hair, cream shirt, dark trousers, brown boots, satchel visible on the near side, teal cloak trailing behind the torso, warm lighting direction, roughly 4.5-to-5-head proportions, and simplified readable silhouette`; origin `remains directly west/left in front of the Seeker`; placement `satchel side, and contact-foot position`; avoid `walking stride, kneeling, tool use, weapon use, dramatic pose, costume drift, mechanical mirroring, changing satchel side, changing cloak length, moving feet, camera changes, perspective convergence, environmental backdrop, blurry edges, or duplicated frames.` |
+| east | `the forward hand beginning to move`; `the forward hand farthest right and lowest`; no added readability clause | target `east/right of the character`; style `preserve the painterly storybook gouache character rendering, high-oblique east-facing right side profile, brown hair, cream shirt, dark trousers, brown boots, satchel and cloak placement consistent with the supplied east-facing walk row without mechanically mirroring story details, warm lighting direction, roughly 4.5-to-5-head proportions, and simplified readable silhouette`; origin `remains directly east/right in front of the Seeker`; placement `satchel side, and contact-foot position`; avoid `walking stride, kneeling, tool use, weapon use, dramatic pose, costume drift, mechanical mirroring, changing satchel side, changing cloak length, moving feet, camera changes, perspective convergence, environmental backdrop, blurry edges, or duplicated frames.` |
+| north | `the forward hand beginning to move`; `the forward hand farthest north`; `, using shoulder, elbow, cloak, and head silhouette changes that remain readable from behind` | target `north/above the character`; style `preserve the painterly storybook gouache character rendering, high-oblique north-facing back view, brown hair, cream shirt accents, dark trousers, brown boots, teal cloak and rear satchel silhouette matching the supplied north-facing walk row, warm lighting direction, roughly 4.5-to-5-head proportions, and simplified readable silhouette`; origin `remains directly north/above in front of the Seeker`; placement `satchel side, and contact-foot position`; avoid `walking stride, kneeling, tool use, weapon use, dramatic pose, costume drift, front-facing turn, changing satchel side, changing cloak length, moving feet, camera changes, perspective convergence, environmental backdrop, blurry edges, or duplicated frames.` |
+
+All four outputs came from Codex's built-in image tool on 2026-09-28 with transparent-background
+output requested. The tool exposed no model or version identifier, so none is asserted.

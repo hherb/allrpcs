@@ -137,16 +137,16 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 40, f"expected 40 assets, got {len(assets)}")
+    require(len(assets) == 56, f"expected 56 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
         if asset["godot_import_proof"]
     }
+    interaction_widths = {direction: 64 for direction in ["south", "west", "east", "north"]}
     require(
-        len(import_proof_ids) == 32
-        and not any(".idle_breathe_" in asset_id for asset_id in import_proof_ids),
-        "external idle proof leaked into the Godot import set",
+        import_proof_ids == set(assets),
+        "not every corrected proof asset is included in the isolated Godot import set",
     )
     for asset_id, asset in assets.items():
         path = ROOT / asset["export"]
@@ -215,7 +215,14 @@ def main() -> None:
         f"characters.seeker.{direction}.idle_breathe"
         for direction in ["south", "west", "east", "north"]
     }
-    require(set(animations) == expected_walk_ids | expected_idle_ids, "animation set drifted")
+    interaction_ids = {
+        f"characters.seeker.{direction}.interact_reach"
+        for direction in interaction_widths
+    }
+    require(
+        set(animations) == expected_walk_ids | expected_idle_ids | interaction_ids,
+        "animation set drifted",
+    )
     for animation_id in expected_walk_ids:
         animation = animations[animation_id]
         require(
@@ -266,6 +273,45 @@ def main() -> None:
             f"{direction} idle/breathe frames are duplicates",
         )
 
+    interaction_hashes = set()
+    for direction, width in interaction_widths.items():
+        interaction = animations[f"characters.seeker.{direction}.interact_reach"]
+        require(
+            len(interaction["frame_order"]) == 4,
+            f"{direction} interaction proof must contain exactly four frames",
+        )
+        require(
+            interaction["loop"] is False and interaction["frame_duration_ms"] == 160,
+            f"{direction} interaction timing drifted",
+        )
+        direction_hashes = set()
+        for frame_id in interaction["frame_order"]:
+            asset = assets[frame_id]
+            frame = Image.open(ROOT / asset["export"]).convert("RGBA")
+            foot_bbox = frame.getchannel("A").crop((0, 42, width, 56)).getbbox()
+            require(
+                asset["contact_baseline"] == 52
+                and asset["pivot"] == {"x": width // 2, "y": 52}
+                and frame.size == (width, 56)
+                and frame.getchannel("A").getbbox()[3] == 52,
+                f"{frame_id}: fixed interaction origin drifted",
+            )
+            require(
+                foot_bbox is not None
+                and abs((foot_bbox[0] + foot_bbox[2]) / 2 - width / 2) <= 1,
+                f"{frame_id}: horizontal foot origin drifted",
+            )
+            direction_hashes.add(asset["sha256"])
+            interaction_hashes.add(asset["sha256"])
+        require(
+            len(direction_hashes) == 4,
+            f"{direction} interaction proof contains duplicate frames",
+        )
+    require(
+        len(interaction_hashes) == 16,
+        "four-direction interaction proof contains duplicate frames",
+    )
+
     clearance = manifest["navigation_clearance"]
     for placement in manifest["review_composition"]:
         if not placement["fixed_obstacle"]:
@@ -296,6 +342,13 @@ def main() -> None:
         idle_review.size == (96, 224),
         "four-direction idle/breathe review dimensions drifted",
     )
+    interaction_review = Image.open(
+        ROOT / "review" / "seeker-four-direction-interact-reach.png"
+    )
+    require(
+        interaction_review.size == (256, 224),
+        "four-direction interaction review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -304,6 +357,7 @@ def main() -> None:
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
         "seeker-four-direction-idle-breathe.ora",
+        "seeker-four-direction-interact-reach.ora",
         "module-review-scene.ora",
     ]:
         validate_ora(ROOT / "masters" / filename)
@@ -313,9 +367,10 @@ def main() -> None:
     print("terrain seams: exact opposite-edge match")
     print("four-direction walk: 24 frames, baseline 52, 120 ms loops")
     print("four-direction idle/breathe: 8 frames, fixed origins, 600 ms loops")
+    print("four-direction interaction: 16 unique frames, fixed origins, 160 ms gestures")
     print("grayscale cues: ordinary, noticeable, identified, dangerous remain distinct")
     print("navigation clearance: fixed obstacles remain outside 96x540 path corridor")
-    print("editable masters: 6 valid OpenRaster archives")
+    print("editable masters: 7 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

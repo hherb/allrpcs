@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "external production-pipeline proof; not imported into Godot",
+  "status": "corrected production-pipeline proof with isolated Godot import parity",
   "logical_viewport": {
     "width": 960,
     "height": 540
@@ -151,6 +151,50 @@
       ],
       "frame_duration_ms": 600,
       "loop": true
+    },
+    {
+      "id": "characters.seeker.south.interact_reach",
+      "frame_order": [
+        "characters.seeker.south.interact_reach_01",
+        "characters.seeker.south.interact_reach_02",
+        "characters.seeker.south.interact_reach_03",
+        "characters.seeker.south.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    },
+    {
+      "id": "characters.seeker.west.interact_reach",
+      "frame_order": [
+        "characters.seeker.west.interact_reach_01",
+        "characters.seeker.west.interact_reach_02",
+        "characters.seeker.west.interact_reach_03",
+        "characters.seeker.west.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    },
+    {
+      "id": "characters.seeker.east.interact_reach",
+      "frame_order": [
+        "characters.seeker.east.interact_reach_01",
+        "characters.seeker.east.interact_reach_02",
+        "characters.seeker.east.interact_reach_03",
+        "characters.seeker.east.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    },
+    {
+      "id": "characters.seeker.north.interact_reach",
+      "frame_order": [
+        "characters.seeker.north.interact_reach_01",
+        "characters.seeker.north.interact_reach_02",
+        "characters.seeker.north.interact_reach_03",
+        "characters.seeker.north.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
     }
   ],
   "assets": [
@@ -1141,7 +1185,7 @@
         "x": 18,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "8b08c495896124ab77b4792aa12b66d995d640960da7e2ca54346a13ee4929fb"
     },
     {
@@ -1171,7 +1215,7 @@
         "x": 18,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "a79645bf10a3c6883339449534105cbcd552ea153b4c05ed06e9d33c73ee6fae"
     },
     {
@@ -1201,7 +1245,7 @@
         "x": 24,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "10c57750dbb310defa92c590321543c281d21010161ee05f68f4a9a4f93cffd4"
     },
     {
@@ -1231,7 +1275,7 @@
         "x": 24,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "6b3ad1b2785eec2c7e298f2752c564e4335e15353f64c84f3e1c3a091f254a61"
     },
     {
@@ -1261,7 +1305,7 @@
         "x": 24,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "49c143004c4dd1643b1f5e40288f23459ef1bfc38c389bbed59a34fef9c07284"
     },
     {
@@ -1291,7 +1335,7 @@
         "x": 24,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "aedac22a8ece9db3fa14cfb1337380e9c45c1ff3d4c1497422b34e404666ab6c"
     },
     {
@@ -1321,7 +1365,7 @@
         "x": 18,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "5c18aa657ba9ecb4771d1b024374cddc1a1192ec9b7c2ea94d84e1cf7981ee37"
     },
     {
@@ -1351,8 +1395,488 @@
         "x": 18,
         "y": 52
       },
-      "godot_import_proof": false,
+      "godot_import_proof": true,
       "sha256": "219086b9581b5e4f08b14a23a298a628dc20f377db221b85df5d3e84614be276"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "f7ffc3a840bfbf313710ed7572ac4b5a397fb95623d42c5d2f3e8f11dbfc208c"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "383c93fa47c9fa54baf3ad1cc8a96902b26acf7fa1a1bc077d7241fcd9868fe1"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "ba79863df06b6bad28b9ae582d5439d0f6fadc4dc0aebb02837c874aca0c1866"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "cfaebb9f5c77cfd03ee05f1fc1274f8b3cb824b632d0272527c3ce5dd4868e02"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "a417141b44f37012bb201f817f8f8f8b58c7359ca4cbd112f06ffb1f3cc1993d"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "93f5b0e63d08353650eecdeda7b80d9fd0c482485d28d03f2655d694b4351fec"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "f807d673955bf4f7166f8d8db143305c6da9f44dcf329286c77bf44c466b1953"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "30f57325812180cc99fd1d3943e0ef3981a83611ae8be35e312a48d440d97f64"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "31dd4e43da6e82e04302426feb86247750191a656a03dbb360c0d0a5f70fcc42"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "da7552a6b0c18a2355d542475000a69217218f4ab6e2b8a3dcab015eac23f3d6"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "8fabfe7ed51c49325d6b49279caba6721bd949b67304c5c590f30590db200235"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "8f10c8ad52aa0cc93e70e081e0168a16a04d5d4e9cb2c20f450ebb32d50c24ba"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "eea5db91320603eaed31a22fc47b1eaf0d336db00009c2832ea2876cec752cf5"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "8644aac7d6a91552f15b78d3e4f0d807db388f1c72be28e7a74166dd6535d74c"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "e0ee9942d230e94acbb225722b034cef2572b730d0377eda94e08fa9b9365a12"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 128,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 32,
+        "y": 52
+      },
+      "godot_import_proof": true,
+      "sha256": "f4f8e528e48481f9549f9eafe1dde84476d5c938b9b6b3f793799d656b55c186"
     }
   ]
 }

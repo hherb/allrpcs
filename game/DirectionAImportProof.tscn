@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3]
+[gd_scene load_steps=59 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -31,9 +31,73 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-04.png" id="29_north_04"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-05.png" id="30_north_05"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-06.png" id="31_north_06"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/idle-breathe-01.png" id="32_south_idle_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/idle-breathe-02.png" id="33_south_idle_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/idle-breathe-01.png" id="34_west_idle_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/idle-breathe-02.png" id="35_west_idle_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/idle-breathe-01.png" id="36_east_idle_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/idle-breathe-02.png" id="37_east_idle_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/idle-breathe-01.png" id="38_north_idle_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/idle-breathe-02.png" id="39_north_idle_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/interact-reach-01.png" id="40_south_interact_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/interact-reach-02.png" id="41_south_interact_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/interact-reach-03.png" id="42_south_interact_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/interact-reach-04.png" id="43_south_interact_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/interact-reach-01.png" id="44_west_interact_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/interact-reach-02.png" id="45_west_interact_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/interact-reach-03.png" id="46_west_interact_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/interact-reach-04.png" id="47_west_interact_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/interact-reach-01.png" id="48_east_interact_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/interact-reach-02.png" id="49_east_interact_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/interact-reach-03.png" id="50_east_interact_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/interact-reach-04.png" id="51_east_interact_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/interact-reach-01.png" id="52_north_interact_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/interact-reach-02.png" id="53_north_interact_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/interact-reach-03.png" id="54_north_interact_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/interact-reach-04.png" id="55_north_interact_04"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("36_east_idle_01")}, {"duration": 1.0, "texture": ExtResource("37_east_idle_02")}],
+"loop": true,
+"name": &"idle_east",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("38_north_idle_01")}, {"duration": 1.0, "texture": ExtResource("39_north_idle_02")}],
+"loop": true,
+"name": &"idle_north",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("32_south_idle_01")}, {"duration": 1.0, "texture": ExtResource("33_south_idle_02")}],
+"loop": true,
+"name": &"idle_south",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("34_west_idle_01")}, {"duration": 1.0, "texture": ExtResource("35_west_idle_02")}],
+"loop": true,
+"name": &"idle_west",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("48_east_interact_01")}, {"duration": 1.0, "texture": ExtResource("49_east_interact_02")}, {"duration": 1.0, "texture": ExtResource("50_east_interact_03")}, {"duration": 1.0, "texture": ExtResource("51_east_interact_04")}],
+"loop": false,
+"name": &"interact_east",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("52_north_interact_01")}, {"duration": 1.0, "texture": ExtResource("53_north_interact_02")}, {"duration": 1.0, "texture": ExtResource("54_north_interact_03")}, {"duration": 1.0, "texture": ExtResource("55_north_interact_04")}],
+"loop": false,
+"name": &"interact_north",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("40_south_interact_01")}, {"duration": 1.0, "texture": ExtResource("41_south_interact_02")}, {"duration": 1.0, "texture": ExtResource("42_south_interact_03")}, {"duration": 1.0, "texture": ExtResource("43_south_interact_04")}],
+"loop": false,
+"name": &"interact_south",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("44_west_interact_01")}, {"duration": 1.0, "texture": ExtResource("45_west_interact_02")}, {"duration": 1.0, "texture": ExtResource("46_west_interact_03")}, {"duration": 1.0, "texture": ExtResource("47_west_interact_04")}],
+"loop": false,
+"name": &"interact_west",
+"speed": 6.25
+}, {
 "frames": [{"duration": 1.0, "texture": ExtResource("20_east_01")}, {"duration": 1.0, "texture": ExtResource("21_east_02")}, {"duration": 1.0, "texture": ExtResource("22_east_03")}, {"duration": 1.0, "texture": ExtResource("23_east_04")}, {"duration": 1.0, "texture": ExtResource("24_east_05")}, {"duration": 1.0, "texture": ExtResource("25_east_06")}],
 "loop": true,
 "name": &"walk_east",

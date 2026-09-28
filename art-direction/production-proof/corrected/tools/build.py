@@ -276,6 +276,59 @@ def seeker_idle_frame_sets() -> dict[str, list[Image.Image]]:
     return frame_sets
 
 
+def seeker_interaction_frame_sets() -> dict[str, list[Image.Image]]:
+    """Normalize each generated direction's four-frame reach-and-inspect proof."""
+
+    frame_sets = {}
+    for direction, canvas_width in [
+        ("south", 128),
+        ("west", 128),
+        ("east", 128),
+        ("north", 128),
+    ]:
+        sheet = Image.open(RAW / f"seeker-{direction}-interact-reach.png").convert(
+            "RGBA"
+        )
+        cells = []
+        for index in range(4):
+            left = round(index * sheet.width / 4)
+            right = round((index + 1) * sheet.width / 4)
+            cells.append(
+                crop_alpha(alpha_clean(sheet.crop((left, 0, right, sheet.height))))
+            )
+
+        common_scale = min(
+            84 / max(cell.width for cell in cells),
+            94 / max(cell.height for cell in cells),
+        )
+        frames = []
+        for cell in cells:
+            resized = cell.resize(
+                (
+                    max(1, round(cell.width * common_scale)),
+                    max(1, round(cell.height * common_scale)),
+                ),
+                RESAMPLE,
+            )
+            resized = alpha_clean(resized, cutoff=16)
+            frame = Image.new("RGBA", (canvas_width, 112), (0, 0, 0, 0))
+            foot_band_top = max(0, resized.height - 20)
+            foot_bbox = resized.getchannel("A").crop(
+                (0, foot_band_top, resized.width, resized.height)
+            ).getbbox()
+            if foot_bbox is None:
+                raise ValueError(f"{direction} interaction frame has no visible feet")
+            anchored_x = round((canvas_width - foot_bbox[0] - foot_bbox[2]) / 2)
+            anchored_x = max(0, min(anchored_x, canvas_width - resized.width))
+            frame.alpha_composite(
+                resized,
+                (anchored_x, 104 - resized.height),
+            )
+            frames.append(frame)
+        frame_sets[direction] = frames
+    return frame_sets
+
+
 def downsample(master: Image.Image) -> Image.Image:
     """Export one exact half-scale PNG from a 2x master."""
 
@@ -493,6 +546,7 @@ def main() -> None:
     cues = make_cues()
     frame_sets = seeker_frame_sets()
     idle_frame_sets = seeker_idle_frame_sets()
+    interaction_frame_sets = seeker_interaction_frame_sets()
 
     assets = [
         Asset(
@@ -590,6 +644,23 @@ def main() -> None:
                     f"sources/imagegen/seeker-{direction}-idle-breathe.png",
                 )
             )
+    for direction, direction_frames in interaction_frame_sets.items():
+        for index, frame in enumerate(direction_frames, start=1):
+            assets.append(
+                Asset(
+                    f"characters.seeker.{direction}.interact_reach_{index:02d}",
+                    "characters",
+                    Path(
+                        "exports/characters/seeker/"
+                        f"{direction}/interact-reach-{index:02d}.png"
+                    ),
+                    frame.size,
+                    (frame.width // 2, 104),
+                    104,
+                    frame,
+                    f"sources/imagegen/seeker-{direction}-interact-reach.png",
+                )
+            )
 
     export_images: dict[str, Image.Image] = {}
     for asset in assets:
@@ -674,6 +745,37 @@ def main() -> None:
         idle_review.alpha_composite(frame, (x, y))
     save_png(downsample(idle_review), REVIEW / "seeker-four-direction-idle-breathe.png")
 
+    obsolete_interaction_master = MASTERS / "seeker-south-interact-reach.ora"
+    if obsolete_interaction_master.exists():
+        obsolete_interaction_master.unlink()
+    obsolete_interaction_review = REVIEW / "seeker-south-interact-reach.png"
+    if obsolete_interaction_review.exists():
+        obsolete_interaction_review.unlink()
+    interaction_cell_width = 128
+    interaction_layers = []
+    for row, direction in enumerate(direction_order):
+        for index, frame in enumerate(interaction_frame_sets[direction], start=1):
+            x = (index - 1) * interaction_cell_width + (
+                interaction_cell_width - frame.width
+            ) // 2
+            interaction_layers.append(
+                (f"{direction} interact reach {index:02d}", frame, x, row * 112, True)
+            )
+    create_ora(
+        MASTERS / "seeker-four-direction-interact-reach.ora",
+        (4 * interaction_cell_width, 4 * 112),
+        interaction_layers,
+    )
+    interaction_review = Image.new(
+        "RGBA", (4 * interaction_cell_width, 4 * 112), (0, 0, 0, 0)
+    )
+    for _, frame, x, y, _ in interaction_layers:
+        interaction_review.alpha_composite(frame, (x, y))
+    save_png(
+        downsample(interaction_review),
+        REVIEW / "seeker-four-direction-interact-reach.png",
+    )
+
     scene, scene_layers = make_review_scene(export_images)
     save_png(scene, REVIEW / "module-review-scene.png")
     save_png(
@@ -716,14 +818,14 @@ def main() -> None:
                     "x": asset.pivot_master[0] // MASTER_SCALE,
                     "y": asset.pivot_master[1] // MASTER_SCALE,
                 },
-                "godot_import_proof": ".idle_breathe_" not in asset.asset_id,
+                "godot_import_proof": True,
                 "sha256": hash_file(export_path),
             }
         )
 
     manifest = {
         "schema_version": 1,
-        "status": "external production-pipeline proof; not imported into Godot",
+        "status": "corrected production-pipeline proof with isolated Godot import parity",
         "logical_viewport": {"width": 960, "height": 540},
         "master_scale": MASTER_SCALE,
         "navigation_clearance": {
@@ -804,6 +906,18 @@ def main() -> None:
                 ],
                 "frame_duration_ms": 600,
                 "loop": True,
+            }
+            for direction in direction_order
+        ]
+        + [
+            {
+                "id": f"characters.seeker.{direction}.interact_reach",
+                "frame_order": [
+                    f"characters.seeker.{direction}.interact_reach_{index:02d}"
+                    for index in range(1, 5)
+                ],
+                "frame_duration_ms": 160,
+                "loop": False,
             }
             for direction in direction_order
         ],

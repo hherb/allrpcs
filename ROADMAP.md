@@ -187,6 +187,11 @@ Acceptance:
   changing ordinary presentation or gameplay authority.
 - [x] Establish an external two-frame idle/breathe proof for all four Seeker directions with clean
   alpha, fixed pivots and contact baselines, explicit timing, layered source, and no runtime import.
+- [x] Import the four idle/breathe loops into the isolated proof with exact byte parity, fixed
+  origins, 600 ms timing, and no ordinary-scene connection.
+- [x] Establish and import a generic four-frame reach-and-inspect proof for all four Seeker
+  directions with clean alpha, fixed origins, 160 ms non-looping timing, retained prompts and
+  provenance, and no gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
