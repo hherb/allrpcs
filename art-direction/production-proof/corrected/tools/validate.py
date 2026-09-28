@@ -137,7 +137,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 57, f"expected 57 assets, got {len(assets)}")
+    require(len(assets) == 58, f"expected 58 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -263,6 +263,79 @@ def main() -> None:
         ("bottom-left outer region", (0, 192, 64, 256)),
     ]:
         require(alpha.crop(box).getbbox() is None, f"path bend {label} is not transparent")
+
+    junction_asset = assets["terrain.path_t_junction"]
+    require(
+        junction_asset["source"]
+        == "sources/imagegen/path-t-junction-overlay.png"
+        and junction_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and junction_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and junction_asset["godot_import_proof"] is True,
+        "path T-junction manifest geometry, provenance, or import status drifted",
+    )
+    junction = Image.open(ROOT / junction_asset["export"]).convert("RGBA")
+    require(
+        ImageChops.difference(
+            junction.crop((port_offset, 0, port_offset + path.width, port_depth)),
+            straight_entry,
+        ).getbbox()
+        is None,
+        "path T-junction top entry differs from the straight-path connector",
+    )
+    expected_left_entry = horizontal_path.crop((0, 0, port_depth, path.width))
+    expected_right_entry = expected_left_entry.transpose(
+        Image.Transpose.FLIP_LEFT_RIGHT
+    )
+    require(
+        ImageChops.difference(
+            junction.crop((0, port_offset, port_depth, port_offset + path.width)),
+            expected_left_entry,
+        ).getbbox()
+        is None,
+        "path T-junction left exit differs from the straight-path connector",
+    )
+    require(
+        ImageChops.difference(
+            junction.crop(
+                (
+                    junction.width - port_depth,
+                    port_offset,
+                    junction.width,
+                    port_offset + path.width,
+                )
+            ),
+            expected_right_entry,
+        ).getbbox()
+        is None,
+        "path T-junction right exit differs from the straight-path connector",
+    )
+    junction_alpha = junction.getchannel("A")
+    for label, box in [
+        ("top-left edge", (0, 0, port_offset, 1)),
+        ("top-right edge", (port_offset + path.width, 0, junction.width, 1)),
+        ("left-upper edge", (0, 0, 1, port_offset)),
+        ("left-lower edge", (0, port_offset + path.width, 1, junction.height)),
+        ("right-upper edge", (junction.width - 1, 0, junction.width, port_offset)),
+        (
+            "right-lower edge",
+            (
+                junction.width - 1,
+                port_offset + path.width,
+                junction.width,
+                junction.height,
+            ),
+        ),
+        ("bottom edge", (0, junction.height - 1, junction.width, junction.height)),
+        ("lower band", (0, 192, 256, 256)),
+        ("lower-left outer region", (0, 192, 64, 256)),
+        ("lower-right outer region", (192, 192, 256, 256)),
+    ]:
+        require(
+            junction_alpha.crop(box).getbbox() is None,
+            f"path T-junction {label} is not transparent",
+        )
 
     animations = {animation["id"]: animation for animation in manifest["animations"]}
     expected_walk_ids = {
@@ -409,11 +482,17 @@ def main() -> None:
     )
     bend_review = Image.open(ROOT / "review" / "path-bend-review.png")
     require(bend_review.size == (768, 768), "path-bend review dimensions drifted")
+    junction_review = Image.open(ROOT / "review" / "path-t-junction-review.png")
+    require(
+        junction_review.size == (768, 768),
+        "path-T-junction review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
         "terrain-straight-path.ora",
         "terrain-path-bend.ora",
+        "terrain-path-t-junction.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -432,7 +511,8 @@ def main() -> None:
     print("grayscale cues: ordinary, noticeable, identified, dangerous remain distinct")
     print("navigation clearance: fixed obstacles remain outside 96x540 path corridor")
     print("path bend: exact 96px top/right ports with transparent outer regions")
-    print("editable masters: 8 valid OpenRaster archives")
+    print("path T-junction: exact 96px top/left/right ports with transparent lower regions")
+    print("editable masters: 9 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

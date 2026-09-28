@@ -1,12 +1,13 @@
 # Direction A Godot import proof
 
-These 57 PNG files are exact byte-for-byte copies of the corrected external proof exports in
+These 58 PNG files are exact byte-for-byte copies of the corrected external proof exports in
 `art-direction/production-proof/corrected`. They are intentionally used only by
 `DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them.
 
 Godot imports them as lossless 2D textures with mipmaps disabled, alpha-border correction enabled,
 and premultiplied alpha disabled. The proof scene inherits linear filtering from its root, includes
-the exact 256x256 90-degree path-bend module, shows the same 960x540 composition, and exposes 12
+the exact 256x256 90-degree path-bend and T-junction modules, shows the same 960x540 composition,
+and exposes 12
 named Seeker animations: four six-frame `walk_*` loops, four two-frame `idle_*` loops, and four
 four-frame non-looping `interact_*` gestures. They retain the
 manifest's exact frame order, 120 ms walk, 600 ms idle, and 160 ms interaction timing,

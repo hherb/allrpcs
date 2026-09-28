@@ -96,6 +96,27 @@ requested. The quiet-moss and straight-path images were the only references. The
 builder owns the exact 512x512 master, 256x256 export, 96-pixel ports, clean alpha, and digest. The
 tool exposed no model or version identifier, so none is asserted.
 
+## Packed-earth path T-junction
+
+Inputs: `exports/terrain/quiet-moss.png`, `exports/terrain/straight-path.png`, and
+`exports/terrain/path-bend.png`
+
+```text
+Use case: stylized-concept
+Asset type: external transparent 2D game path-overlay source for a deterministic modular pipeline
+Primary request: Create one single T-shaped worn packed-earth path junction. The path enters vertically through the exact center of the top edge, reaches one smooth junction, and leaves horizontally through the exact centers of both the left and right edges.
+Input images: Image 1 is the repository-owned quiet-moss palette and painterly texture reference only; Image 2 is the repository-owned straight packed-earth path reference for path palette, width, texture, sparse stone flecks, soft irregular edge treatment, and visual scale; Image 3 is the repository-owned 90-degree bend reference for curve language and clean transparent treatment. Use no other visual references.
+Scene/backdrop: genuinely transparent outside the path; do not paint moss or any other background.
+Style/medium: painterly storybook gouache, broad low-frequency packed-earth shapes, warm ochre and weathered brown, restrained grain, sparse muted stone flecks matching the path references.
+Composition/framing: one complete square module; centered top entry and centered left and right exits each have the same consistent width as the straight-path reference; the junction shoulders are smooth and readable; generous transparent outer regions occupy both lower corners and the full bottom edge away from the path.
+Constraints: one T-junction only; preserve genuine transparent alpha outside the path; no bottom exit; no cross-junction; no colored environmental haze; no moss fill; no plants; no rocks beyond restrained embedded flecks already characteristic of the path; no props; no border; no text; no logo; no trademark; no watermark; no extra modules; no grid; no shadow outside the path; no cropped junction shoulders.
+```
+
+This output came from Codex's built-in image tool on 2026-09-28 with transparent-background output
+requested. The quiet-moss, straight-path, and path-bend exports were the only references. The
+deterministic builder owns the exact 512x512 master, 256x256 export, three 96-pixel ports, clean
+alpha, and digest. The tool exposed no model or version identifier, so none is asserted.
+
 ## Seeker idle/breathe frames
 
 Input for all four calls: `../../sources/seeker-four-direction-walk.png`

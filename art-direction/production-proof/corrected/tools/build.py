@@ -174,6 +174,52 @@ def make_path_bend(path_master: Image.Image) -> Image.Image:
     return enforce_path_bend_ports(bend, path_master)
 
 
+def enforce_path_t_junction_ports(
+    junction: Image.Image, straight_path: Image.Image
+) -> Image.Image:
+    """Install exact top/left/right ports and transparent lower outer edges."""
+
+    junction = junction.copy().convert("RGBA")
+    port_width = straight_path.width
+    port_offset = (junction.width - port_width) // 2
+    port_depth = straight_path.height // 8
+    straight_entry = straight_path.crop((0, 0, port_width, port_depth))
+    junction.paste(straight_entry, (port_offset, 0))
+
+    horizontal_path = straight_path.transpose(Image.Transpose.ROTATE_90)
+    left_entry = horizontal_path.crop((0, 0, port_depth, port_width))
+    right_entry = left_entry.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    junction.paste(left_entry, (0, port_offset))
+    junction.paste(right_entry, (junction.width - port_depth, port_offset))
+
+    straight_edge = straight_path.crop((0, 0, port_width, 1))
+    top_edge = Image.new("RGBA", (junction.width, 1), (0, 0, 0, 0))
+    top_edge.paste(straight_edge, (port_offset, 0))
+    junction.paste(top_edge, (0, 0))
+
+    horizontal_edge = straight_edge.transpose(Image.Transpose.ROTATE_90)
+    left_edge = Image.new("RGBA", (1, junction.height), (0, 0, 0, 0))
+    left_edge.paste(horizontal_edge, (0, port_offset))
+    junction.paste(left_edge, (0, 0))
+    right_edge = Image.new("RGBA", (1, junction.height), (0, 0, 0, 0))
+    right_edge.paste(horizontal_edge, (0, port_offset))
+    junction.paste(right_edge, (junction.width - 1, 0))
+    junction.paste(
+        Image.new("RGBA", (junction.width, 1), (0, 0, 0, 0)),
+        (0, junction.height - 1),
+    )
+    return junction
+
+
+def make_path_t_junction(path_master: Image.Image) -> Image.Image:
+    """Create one 512px T-junction with exact straight-path ports."""
+
+    source = Image.open(RAW / "path-t-junction-overlay.png").convert("RGBA")
+    junction = ImageOps.fit(source, (512, 512), method=RESAMPLE, centering=(0.5, 0.5))
+    junction = alpha_clean(junction, cutoff=24)
+    return enforce_path_t_junction_ports(junction, path_master)
+
+
 def make_cues() -> dict[str, Image.Image]:
     """Create geometry-only state cues on the exact 160x160 table canvas."""
 
@@ -565,6 +611,24 @@ def make_path_bend_review(assets: dict[str, Image.Image]) -> Image.Image:
     return scene
 
 
+def make_path_t_junction_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Compose the external T-junction between exact straight connectors."""
+
+    scene = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    ground = assets["terrain.quiet_moss"]
+    for y in range(0, scene.height, ground.height):
+        for x in range(0, scene.width, ground.width):
+            scene.alpha_composite(ground, (x, y))
+
+    straight = assets["terrain.straight_path"]
+    junction = assets["terrain.path_t_junction"]
+    scene.alpha_composite(straight, (336, 0))
+    scene.alpha_composite(straight.transpose(Image.Transpose.ROTATE_90), (0, 336))
+    scene.alpha_composite(junction, (256, 256))
+    scene.alpha_composite(straight.transpose(Image.Transpose.ROTATE_90), (512, 336))
+    return scene
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -593,6 +657,7 @@ def main() -> None:
     ground_master = make_ground()
     path_master = make_path()
     path_bend_master = make_path_bend(path_master)
+    path_t_junction_master = make_path_t_junction(path_master)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -637,6 +702,16 @@ def main() -> None:
             512,
             path_bend_master,
             "sources/imagegen/path-bend-overlay.png",
+        ),
+        Asset(
+            "terrain.path_t_junction",
+            "terrain",
+            Path("exports/terrain/path-t-junction.png"),
+            (512, 512),
+            (256, 256),
+            512,
+            path_t_junction_master,
+            "sources/imagegen/path-t-junction-overlay.png",
         ),
         Asset(
             "plants.herb_bed_empty",
@@ -748,6 +823,11 @@ def main() -> None:
                 alpha_clean(export, cutoff=8),
                 export_images["terrain.straight_path"],
             )
+        elif asset.asset_id == "terrain.path_t_junction":
+            export = enforce_path_t_junction_ports(
+                alpha_clean(export, cutoff=8),
+                export_images["terrain.straight_path"],
+            )
         save_png(export, ROOT / asset.export_path)
         export_images[asset.asset_id] = export
 
@@ -763,6 +843,11 @@ def main() -> None:
         MASTERS / "terrain-path-bend.ora",
         path_bend_master.size,
         [("packed-earth path bend", path_bend_master, 0, 0, True)],
+    )
+    create_ora(
+        MASTERS / "terrain-path-t-junction.ora",
+        path_t_junction_master.size,
+        [("packed-earth path T-junction", path_t_junction_master, 0, 0, True)],
     )
     create_ora(
         MASTERS / "planted-herb-bed.ora",
@@ -864,6 +949,10 @@ def main() -> None:
     create_ora(MASTERS / "module-review-scene.ora", scene.size, scene_layers)
     save_png(state_cue_check(export_images), REVIEW / "state-cues-grayscale.png")
     save_png(make_path_bend_review(export_images), REVIEW / "path-bend-review.png")
+    save_png(
+        make_path_t_junction_review(export_images),
+        REVIEW / "path-t-junction-review.png",
+    )
 
     manifest_assets = []
     for asset in assets:

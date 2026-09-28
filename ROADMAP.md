@@ -195,6 +195,11 @@ Acceptance:
 - [x] Establish one modular 90-degree packed-earth path bend with a 256x256 clean-alpha export,
   exact 512x512 editable master, 96-pixel straight-path-compatible ports, external review
   composition, and isolated lossless source-parity import without gameplay authority.
+- [x] Establish one modular packed-earth T-junction with a 256x256 clean-alpha export, exact
+  512x512 editable master, three 96-pixel straight-path-compatible ports, and an external review
+  composition without runtime authority.
+- [x] Import only that exact manifest-bound T-junction into the isolated proof with lossless source
+  parity and no ordinary-scene connection.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

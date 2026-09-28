@@ -289,6 +289,36 @@
       "sha256": "8ac6919e5dac8881232a75cbfcb58945085fd59e11ebfd53beea952135512438"
     },
     {
+      "id": "terrain.path_t_junction",
+      "category": "terrain",
+      "source": "sources/imagegen/path-t-junction-overlay.png",
+      "export": "exports/terrain/path-t-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "822e6efa3031cc8b76cfaed7b53bd9ece8b389550d89bb0e9d899a83bba50d54"
+    },
+    {
       "id": "plants.herb_bed_empty",
       "category": "plants",
       "source": "sources/imagegen/herb-bed-empty.png",
