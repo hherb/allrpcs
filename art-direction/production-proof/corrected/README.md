@@ -3,24 +3,25 @@
 Status: bounded corrected proof, 2026-09-28. This directory remains outside `game/`; exact copies
 are imported only by the isolated proof scene and none is runtime-authoritative.
 
-This pass corrects the sheet-dependent failures recorded by the first Phase 9.2 proof. Fifteen
+This pass corrects the sheet-dependent failures recorded by the first Phase 9.2 proof. Sixteen
 individual painterly inputs are retained under `sources/imagegen`; deterministic Python tooling
 turns them and the earlier Seeker source sheet into individual exports, exact geometry, editable
 OpenRaster masters, and review evidence.
 
 ## Result
 
-- `asset-manifest.json` contains all 58 asset IDs, logical/export rectangles, exact 2x master
+- `asset-manifest.json` contains all 59 asset IDs, logical/export rectangles, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
 - `exports` contains one clean-alpha file per module: quiet moss, straight path, one 90-degree path
-  bend, one T-junction, empty herb bed, broadleaf foliage, ordinary preparation table, three
+  bend, one T-junction, one cross-junction, empty herb bed, broadleaf foliage, ordinary preparation
+  table, three
   separate cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
-- `masters` contains nine editable layered OpenRaster files for terrain/path, the path bend, the
-  path T-junction, planted herb bed, preparation-table states, walk, idle/breathe, interaction
-  strips, and the composed review scene.
+- `masters` contains ten editable layered OpenRaster files for terrain/path, the path bend, the path
+  T-junction, the path cross-junction, planted herb bed, preparation-table states, walk,
+  idle/breathe, interaction strips, and the composed review scene.
 - `review/module-review-scene.png` is a 960x540 composition made only from corrected exports. Its
   grayscale companion preserves the path, character, props, and identified-state cue hierarchy.
 - `review/state-cues-grayscale.png` shows ordinary, noticeable, identified, and dangerous table
@@ -29,6 +30,8 @@ OpenRaster masters, and review evidence.
   module over quiet moss without adding another terrain asset.
 - `review/path-t-junction-review.png` joins the junction to vertical and two horizontal copies of
   the straight module over quiet moss without adding another terrain asset.
+- `review/path-cross-junction-review.png` joins the cross-junction to two vertical and two
+  horizontal copies of the straight module over quiet moss without adding another terrain asset.
 
 ![Corrected module review scene](review/module-review-scene.png)
 
@@ -43,7 +46,7 @@ python3 art-direction/production-proof/corrected/tools/validate.py
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 58 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
+- all 59 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
   fully transparent pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -52,6 +55,8 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
   straight-path parity at its centered top entry and compatible centered right exit;
 - the 256x256 path T-junction has transparent lower outer regions and bottom edge, plus exact
   96-pixel straight-path parity at its centered top, left, and right ports;
+- the 256x256 path cross-junction has transparent outer corners and exact 96-pixel straight-path
+  parity at its centered top, bottom, left, and right ports;
 - all six frames in each of the four directional walks are unique, share a 52-pixel contact
   baseline, and use one documented 120 ms loop timing;
 - both idle/breathe frames in each direction are distinct, preserve the direction-specific fixed
@@ -60,7 +65,7 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
   direction-specific fixed origin and 52-pixel baseline, and use 160 ms non-looping timing;
 - the four table states remain measurably distinct in grayscale;
 - no fixed review-scene obstacle overlaps the 96x540 path corridor; and
-- all nine `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and editable
+- all ten `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and editable
   PNG layers.
 
 ## Review conclusion and boundaries
@@ -72,13 +77,13 @@ Direction D contingency does not activate.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 58 exports have a separate isolated Godot import proof, and `Main.tscn` references neither
+All 59 exports have a separate isolated Godot import proof, and `Main.tscn` references neither
 proof. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
 ## Provenance
 
-- The fifteen image-generation inputs were created with Codex's built-in image tool using only
+- The sixteen image-generation inputs were created with Codex's built-in image tool using only
   repository-owned proof images as references. Exact prompts are in [PROMPTS.md](PROMPTS.md).
 - The 24 walk frames are derived from the earlier repository-owned source sheet; the eight idle
   frames and 16 interaction frames come from the eight retained character image-tool sources.

@@ -61,6 +61,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         ("Terrain/Path00", 96, 256),
         ("Terrain/PathBendProof", 256, 256),
         ("Terrain/PathTJunctionProof", 256, 256),
+        ("Terrain/PathCrossJunctionProof", 256, 256),
         ("Props/EmptyBed", 96, 80),
         ("Props/PlantedBed", 96, 80),
         ("Props/PlantedBedFoliage", 72, 56),
@@ -82,7 +83,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
 
         GD.Print(
             "Direction A import proof passed: lossless source-parity textures, linear filtering, "
-            + "straight, 90-degree, and T-junction path modules, separate table cue, "
+            + "straight, 90-degree, T-junction, and cross-junction path modules, separate table cue, "
             + "four six-frame 120 ms walks, four two-frame 600 ms idle loops, "
             + "four four-frame 160 ms non-looping interactions, 48 unique character textures, "
             + "and no gameplay authority.");

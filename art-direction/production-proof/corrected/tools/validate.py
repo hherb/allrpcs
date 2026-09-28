@@ -137,7 +137,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 58, f"expected 58 assets, got {len(assets)}")
+    require(len(assets) == 59, f"expected 59 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -337,6 +337,71 @@ def main() -> None:
             f"path T-junction {label} is not transparent",
         )
 
+    cross_asset = assets["terrain.path_cross_junction"]
+    require(
+        cross_asset["source"]
+        == "sources/imagegen/path-cross-junction-overlay.png"
+        and cross_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 256, "height": 256}
+        and cross_asset["master_dimensions_pixels"]
+        == {"width": 512, "height": 512, "scale": 2}
+        and cross_asset["godot_import_proof"] is True,
+        "path cross-junction manifest geometry, provenance, or import status drifted",
+    )
+    cross = Image.open(ROOT / cross_asset["export"]).convert("RGBA")
+    expected_bottom_entry = straight_entry.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+    for label, actual, expected in [
+        (
+            "top",
+            cross.crop((port_offset, 0, port_offset + path.width, port_depth)),
+            straight_entry,
+        ),
+        (
+            "bottom",
+            cross.crop(
+                (
+                    port_offset,
+                    cross.height - port_depth,
+                    port_offset + path.width,
+                    cross.height,
+                )
+            ),
+            expected_bottom_entry,
+        ),
+        (
+            "left",
+            cross.crop((0, port_offset, port_depth, port_offset + path.width)),
+            expected_left_entry,
+        ),
+        (
+            "right",
+            cross.crop(
+                (
+                    cross.width - port_depth,
+                    port_offset,
+                    cross.width,
+                    port_offset + path.width,
+                )
+            ),
+            expected_right_entry,
+        ),
+    ]:
+        require(
+            ImageChops.difference(actual, expected).getbbox() is None,
+            f"path cross-junction {label} port differs from the straight path",
+        )
+    cross_alpha = cross.getchannel("A")
+    for label, box in [
+        ("top-left corner", (0, 0, 64, 64)),
+        ("top-right corner", (192, 0, 256, 64)),
+        ("bottom-left corner", (0, 192, 64, 256)),
+        ("bottom-right corner", (192, 192, 256, 256)),
+    ]:
+        require(
+            cross_alpha.crop(box).getbbox() is None,
+            f"path cross-junction {label} is not transparent",
+        )
+
     animations = {animation["id"]: animation for animation in manifest["animations"]}
     expected_walk_ids = {
         f"characters.seeker.{direction}.walk"
@@ -487,12 +552,18 @@ def main() -> None:
         junction_review.size == (768, 768),
         "path-T-junction review dimensions drifted",
     )
+    cross_review = Image.open(ROOT / "review" / "path-cross-junction-review.png")
+    require(
+        cross_review.size == (768, 768),
+        "path cross-junction review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
         "terrain-straight-path.ora",
         "terrain-path-bend.ora",
         "terrain-path-t-junction.ora",
+        "terrain-path-cross-junction.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -512,7 +583,8 @@ def main() -> None:
     print("navigation clearance: fixed obstacles remain outside 96x540 path corridor")
     print("path bend: exact 96px top/right ports with transparent outer regions")
     print("path T-junction: exact 96px top/left/right ports with transparent lower regions")
-    print("editable masters: 9 valid OpenRaster archives")
+    print("path cross-junction: exact 96px four-way ports with transparent corners")
+    print("editable masters: 10 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

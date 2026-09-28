@@ -200,6 +200,11 @@ Acceptance:
   composition without runtime authority.
 - [x] Import only that exact manifest-bound T-junction into the isolated proof with lossless source
   parity and no ordinary-scene connection.
+- [x] Establish one modular packed-earth cross-junction with a 256x256 clean-alpha export, exact
+  512x512 editable master, four 96-pixel straight-path-compatible ports, and an external review
+  composition without runtime authority.
+- [x] Import only that exact manifest-bound cross-junction into the isolated proof with lossless
+  source parity and no ordinary-scene connection.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
