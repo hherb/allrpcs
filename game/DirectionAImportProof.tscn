@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=35 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -7,18 +7,51 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/plants/foliage-broadleaf.png" id="5_foliage"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/objects/preparation-table.png" id="6_table"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/cues/preparation-table-identified.png" id="7_identified"]
-[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-01.png" id="8_walk_01"]
-[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-02.png" id="9_walk_02"]
-[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-03.png" id="10_walk_03"]
-[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-04.png" id="11_walk_04"]
-[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-05.png" id="12_walk_05"]
-[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-06.png" id="13_walk_06"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-01.png" id="8_south_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-02.png" id="9_south_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-03.png" id="10_south_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-04.png" id="11_south_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-05.png" id="12_south_05"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/south/walk-06.png" id="13_south_06"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/walk-01.png" id="14_west_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/walk-02.png" id="15_west_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/walk-03.png" id="16_west_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/walk-04.png" id="17_west_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/walk-05.png" id="18_west_05"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/west/walk-06.png" id="19_west_06"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/walk-01.png" id="20_east_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/walk-02.png" id="21_east_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/walk-03.png" id="22_east_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/walk-04.png" id="23_east_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/walk-05.png" id="24_east_05"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/east/walk-06.png" id="25_east_06"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-01.png" id="26_north_01"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-02.png" id="27_north_02"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-03.png" id="28_north_03"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-04.png" id="29_north_04"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-05.png" id="30_north_05"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/walk-06.png" id="31_north_06"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
-"frames": [{"duration": 1.0, "texture": ExtResource("8_walk_01")}, {"duration": 1.0, "texture": ExtResource("9_walk_02")}, {"duration": 1.0, "texture": ExtResource("10_walk_03")}, {"duration": 1.0, "texture": ExtResource("11_walk_04")}, {"duration": 1.0, "texture": ExtResource("12_walk_05")}, {"duration": 1.0, "texture": ExtResource("13_walk_06")}],
+"frames": [{"duration": 1.0, "texture": ExtResource("20_east_01")}, {"duration": 1.0, "texture": ExtResource("21_east_02")}, {"duration": 1.0, "texture": ExtResource("22_east_03")}, {"duration": 1.0, "texture": ExtResource("23_east_04")}, {"duration": 1.0, "texture": ExtResource("24_east_05")}, {"duration": 1.0, "texture": ExtResource("25_east_06")}],
+"loop": true,
+"name": &"walk_east",
+"speed": 8.333333
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("26_north_01")}, {"duration": 1.0, "texture": ExtResource("27_north_02")}, {"duration": 1.0, "texture": ExtResource("28_north_03")}, {"duration": 1.0, "texture": ExtResource("29_north_04")}, {"duration": 1.0, "texture": ExtResource("30_north_05")}, {"duration": 1.0, "texture": ExtResource("31_north_06")}],
+"loop": true,
+"name": &"walk_north",
+"speed": 8.333333
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("8_south_01")}, {"duration": 1.0, "texture": ExtResource("9_south_02")}, {"duration": 1.0, "texture": ExtResource("10_south_03")}, {"duration": 1.0, "texture": ExtResource("11_south_04")}, {"duration": 1.0, "texture": ExtResource("12_south_05")}, {"duration": 1.0, "texture": ExtResource("13_south_06")}],
 "loop": true,
 "name": &"walk_south",
+"speed": 8.333333
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("14_west_01")}, {"duration": 1.0, "texture": ExtResource("15_west_02")}, {"duration": 1.0, "texture": ExtResource("16_west_03")}, {"duration": 1.0, "texture": ExtResource("17_west_04")}, {"duration": 1.0, "texture": ExtResource("18_west_05")}, {"duration": 1.0, "texture": ExtResource("19_west_06")}],
+"loop": true,
+"name": &"walk_west",
 "speed": 8.333333
 }]
 

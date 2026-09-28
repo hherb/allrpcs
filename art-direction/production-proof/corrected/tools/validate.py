@@ -137,7 +137,17 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 32, f"expected 32 assets, got {len(assets)}")
+    require(len(assets) == 40, f"expected 40 assets, got {len(assets)}")
+    import_proof_ids = {
+        asset_id
+        for asset_id, asset in assets.items()
+        if asset["godot_import_proof"]
+    }
+    require(
+        len(import_proof_ids) == 32
+        and not any(".idle_breathe_" in asset_id for asset_id in import_proof_ids),
+        "external idle proof leaked into the Godot import set",
+    )
     for asset_id, asset in assets.items():
         path = ROOT / asset["export"]
         require(path.exists(), f"{asset_id}: missing export {path}")
@@ -196,12 +206,18 @@ def main() -> None:
         "path top/bottom seam differs",
     )
 
-    animations = manifest["animations"]
-    require(len(animations) == 4, "expected south, west, east, and north walk loops")
-    expected_directions = {"south", "west", "east", "north"}
-    actual_directions = {animation["id"].split(".")[-2] for animation in animations}
-    require(actual_directions == expected_directions, "four-direction walk set drifted")
-    for animation in animations:
+    animations = {animation["id"]: animation for animation in manifest["animations"]}
+    expected_walk_ids = {
+        f"characters.seeker.{direction}.walk"
+        for direction in ["south", "west", "east", "north"]
+    }
+    expected_idle_ids = {
+        f"characters.seeker.{direction}.idle_breathe"
+        for direction in ["south", "west", "east", "north"]
+    }
+    require(set(animations) == expected_walk_ids | expected_idle_ids, "animation set drifted")
+    for animation_id in expected_walk_ids:
+        animation = animations[animation_id]
         require(
             len(animation["frame_order"]) == 6,
             f"{animation['id']}: expected six frames",
@@ -220,6 +236,35 @@ def main() -> None:
             )
             frame_hashes.add(asset["sha256"])
         require(len(frame_hashes) == 6, f"{animation['id']}: contains duplicate frames")
+
+    expected_idle_widths = {"south": 36, "west": 48, "east": 48, "north": 36}
+    for direction, width in expected_idle_widths.items():
+        idle = animations[f"characters.seeker.{direction}.idle_breathe"]
+        require(
+            len(idle["frame_order"]) == 2,
+            f"{direction} idle/breathe proof must contain exactly two frames",
+        )
+        require(
+            idle["loop"] is True and idle["frame_duration_ms"] == 600,
+            f"{direction} idle/breathe timing drifted",
+        )
+        idle_frames = []
+        for frame_id in idle["frame_order"]:
+            asset = assets[frame_id]
+            frame = Image.open(ROOT / asset["export"]).convert("RGBA")
+            require(
+                asset["contact_baseline"] == 52
+                and asset["pivot"] == {"x": width // 2, "y": 52}
+                and frame.size == (width, 56)
+                and frame.getchannel("A").getbbox()[3] == 52,
+                f"{frame_id}: fixed idle origin drifted",
+            )
+            idle_frames.append(frame)
+        idle_difference = ImageChops.difference(idle_frames[0], idle_frames[1])
+        require(
+            idle_difference.getbbox() is not None,
+            f"{direction} idle/breathe frames are duplicates",
+        )
 
     clearance = manifest["navigation_clearance"]
     for placement in manifest["review_composition"]:
@@ -246,6 +291,11 @@ def main() -> None:
         seeker_review.size == (288, 224),
         "four-direction Seeker review dimensions drifted",
     )
+    idle_review = Image.open(ROOT / "review" / "seeker-four-direction-idle-breathe.png")
+    require(
+        idle_review.size == (96, 224),
+        "four-direction idle/breathe review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -253,6 +303,7 @@ def main() -> None:
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
+        "seeker-four-direction-idle-breathe.ora",
         "module-review-scene.ora",
     ]:
         validate_ora(ROOT / "masters" / filename)
@@ -261,9 +312,10 @@ def main() -> None:
     print(f"assets: {len(assets)}")
     print("terrain seams: exact opposite-edge match")
     print("four-direction walk: 24 frames, baseline 52, 120 ms loops")
+    print("four-direction idle/breathe: 8 frames, fixed origins, 600 ms loops")
     print("grayscale cues: ordinary, noticeable, identified, dangerous remain distinct")
     print("navigation clearance: fixed obstacles remain outside 96x540 path corridor")
-    print("editable masters: 5 valid OpenRaster archives")
+    print("editable masters: 6 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

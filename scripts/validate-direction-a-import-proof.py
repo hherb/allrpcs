@@ -59,7 +59,7 @@ def main() -> None:
     """Check the bounded import set, byte parity, and painterly texture import options."""
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assets = manifest["assets"]
+    assets = [asset for asset in manifest["assets"] if asset["godot_import_proof"]]
     expected_pngs = {game_path(asset["export"]) for asset in assets}
     actual_pngs = set(GAME_ROOT.rglob("*.png"))
     require(

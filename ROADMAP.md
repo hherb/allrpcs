@@ -185,6 +185,8 @@ Acceptance:
 - [x] Normalize all four six-frame Seeker walk directions after the first direction passed, then
   prove exact source parity and lossless smooth-filtered import in an isolated Godot scene without
   changing ordinary presentation or gameplay authority.
+- [x] Establish an external two-frame idle/breathe proof for all four Seeker directions with clean
+  alpha, fixed pivots and contact baselines, explicit timing, layered source, and no runtime import.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

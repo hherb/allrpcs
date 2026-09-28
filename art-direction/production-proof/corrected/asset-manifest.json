@@ -115,6 +115,42 @@
       ],
       "frame_duration_ms": 120,
       "loop": true
+    },
+    {
+      "id": "characters.seeker.south.idle_breathe",
+      "frame_order": [
+        "characters.seeker.south.idle_breathe_01",
+        "characters.seeker.south.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.west.idle_breathe",
+      "frame_order": [
+        "characters.seeker.west.idle_breathe_01",
+        "characters.seeker.west.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.east.idle_breathe",
+      "frame_order": [
+        "characters.seeker.east.idle_breathe_01",
+        "characters.seeker.east.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.north.idle_breathe",
+      "frame_order": [
+        "characters.seeker.north.idle_breathe_01",
+        "characters.seeker.north.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
     }
   ],
   "assets": [
@@ -145,6 +181,7 @@
         "x": 128,
         "y": 256
       },
+      "godot_import_proof": true,
       "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
     },
     {
@@ -174,6 +211,7 @@
         "x": 48,
         "y": 256
       },
+      "godot_import_proof": true,
       "sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
     },
     {
@@ -203,6 +241,7 @@
         "x": 48,
         "y": 77
       },
+      "godot_import_proof": true,
       "sha256": "8ced13faba2ac9240977df0c62686939ffcd24a09d278006485c866b0a11f2fa"
     },
     {
@@ -232,6 +271,7 @@
         "x": 36,
         "y": 53
       },
+      "godot_import_proof": true,
       "sha256": "e4b607c4cbfaef13cd3949492e903883dab289f882addbb2c38511aabecd6277"
     },
     {
@@ -261,6 +301,7 @@
         "x": 40,
         "y": 77
       },
+      "godot_import_proof": true,
       "sha256": "7a005d79c17f3ed33cdf6859bc83f5c5a7f1e9f203ca55b89abd08ef4dc4762e"
     },
     {
@@ -290,6 +331,7 @@
         "x": 40,
         "y": 77
       },
+      "godot_import_proof": true,
       "sha256": "31b2d0355873e52da0179be0b4ec742fb02003aaac625a93d32cca703a75d5c1"
     },
     {
@@ -319,6 +361,7 @@
         "x": 40,
         "y": 77
       },
+      "godot_import_proof": true,
       "sha256": "134623184ab2d810d5347c4cfe3f8c8226d79c72becf16ab4812f5c5e40af7a6"
     },
     {
@@ -348,6 +391,7 @@
         "x": 40,
         "y": 77
       },
+      "godot_import_proof": true,
       "sha256": "4d811b10392d7590ca3bee8fb62b25c18c0378629ec7bbad89f0d925cdd98762"
     },
     {
@@ -377,6 +421,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "dac5ea77340a0d783fe6e7c4e50181a7a0c877d81f8918d8fb8115f2575bb103"
     },
     {
@@ -406,6 +451,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "b0a8432d848ac40a5ad0380d6cff79aa33e6cb058973c34c0b7614e77fd22773"
     },
     {
@@ -435,6 +481,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "f0c35bd9ec12079d577a4d04227ba3754c6ddab388e8100079ae234e8c009154"
     },
     {
@@ -464,6 +511,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "4ebf5c629ae1aaa9d22410378dbaf6b97e6ac60abcd5e1b943a5958b70e2c518"
     },
     {
@@ -493,6 +541,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "bf92d0e42039cd34e3f237cf3dc07e5a7396b04e7245e05af691d6a0ca78a692"
     },
     {
@@ -522,6 +571,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "3140ff796ed804244b9679d9a30b5d74805da11391fcba61eea815e53ad731be"
     },
     {
@@ -551,6 +601,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "fe707a9f44fb75ceb81a02dfa8ff8ab15fc62d99808d4c33cbc631845b5a10a8"
     },
     {
@@ -580,6 +631,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "e7d2cac80acaf7186af098949d1bbedcbd39d1c3d5134744a872837fc21c2716"
     },
     {
@@ -609,6 +661,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "c0557117a89c056c34741daaf5bc3a54e747f7c1a602c83929c5f5a12d364c89"
     },
     {
@@ -638,6 +691,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "97b7019c43e2f08a173009dc9625bcecbf613e48c8c71abd07afa01c620c1169"
     },
     {
@@ -667,6 +721,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "d1526781ca2c6578c81f503e90fe04d55a4a2761e89ee4925def1106060c10f4"
     },
     {
@@ -696,6 +751,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "d9b14b1499acfb7e60a8060747488a73c84691e48b9510a3813c410b2a29fba5"
     },
     {
@@ -725,6 +781,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "f249d77ac72057856ad0d4722d310c97b65bfb580f358f73afcf1196cb2f0ea5"
     },
     {
@@ -754,6 +811,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "377c1ad1ff3c498342061e39c89b5826ebc4927495f9770fb144a971e3087289"
     },
     {
@@ -783,6 +841,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "641aa76b9746986df0ef9de0fd49fe9f0ba854311ccb0525e27a40ca3fb5cdd9"
     },
     {
@@ -812,6 +871,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "e3966e32591523b0f91230141b60605b10c3b3d97311cac7e4da00d639868956"
     },
     {
@@ -841,6 +901,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "8fa26047804e126f89074906a40788df57f492a79b7d16f4c6cad5c744806329"
     },
     {
@@ -870,6 +931,7 @@
         "x": 24,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "95e10001939f4c29b178d80fdce052d588cd6aee5818194c738429823ff09407"
     },
     {
@@ -899,6 +961,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "5767252b72bd4c408179c0429100e95f39b1168b389bc1e7840269a1821bb28a"
     },
     {
@@ -928,6 +991,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "79b1634dcd5882ae81c4be56f1bdf3145c60c2ab75e0e1190f980bf90c6f9514"
     },
     {
@@ -957,6 +1021,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "aee8f8be176e8c32fe40992efcff93d431f5fd8facd405c995f53a43d28fcc97"
     },
     {
@@ -986,6 +1051,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "b92265185b589ed5dda082d12e5f5ae0e6d1117c57517a5fb9bccbf2f21c38b4"
     },
     {
@@ -1015,6 +1081,7 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "7bdbd341ee7cf20faac109a37fb908badf77e3b948035e5d539610545e68fa1f"
     },
     {
@@ -1044,7 +1111,248 @@
         "x": 18,
         "y": 52
       },
+      "godot_import_proof": true,
       "sha256": "26f4a1961bb3ddcc166e6ce3eb37ffb4d668d3ed0d2df206f9ba86202420d390"
+    },
+    {
+      "id": "characters.seeker.south.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-idle-breathe.png",
+      "export": "exports/characters/seeker/south/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "8b08c495896124ab77b4792aa12b66d995d640960da7e2ca54346a13ee4929fb"
+    },
+    {
+      "id": "characters.seeker.south.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-idle-breathe.png",
+      "export": "exports/characters/seeker/south/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "a79645bf10a3c6883339449534105cbcd552ea153b4c05ed06e9d33c73ee6fae"
+    },
+    {
+      "id": "characters.seeker.west.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-idle-breathe.png",
+      "export": "exports/characters/seeker/west/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "10c57750dbb310defa92c590321543c281d21010161ee05f68f4a9a4f93cffd4"
+    },
+    {
+      "id": "characters.seeker.west.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-idle-breathe.png",
+      "export": "exports/characters/seeker/west/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "6b3ad1b2785eec2c7e298f2752c564e4335e15353f64c84f3e1c3a091f254a61"
+    },
+    {
+      "id": "characters.seeker.east.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-idle-breathe.png",
+      "export": "exports/characters/seeker/east/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "49c143004c4dd1643b1f5e40288f23459ef1bfc38c389bbed59a34fef9c07284"
+    },
+    {
+      "id": "characters.seeker.east.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-idle-breathe.png",
+      "export": "exports/characters/seeker/east/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 96,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 24,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "aedac22a8ece9db3fa14cfb1337380e9c45c1ff3d4c1497422b34e404666ab6c"
+    },
+    {
+      "id": "characters.seeker.north.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-idle-breathe.png",
+      "export": "exports/characters/seeker/north/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "5c18aa657ba9ecb4771d1b024374cddc1a1192ec9b7c2ea94d84e1cf7981ee37"
+    },
+    {
+      "id": "characters.seeker.north.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-idle-breathe.png",
+      "export": "exports/characters/seeker/north/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 36,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 72,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 52,
+      "pivot": {
+        "x": 18,
+        "y": 52
+      },
+      "godot_import_proof": false,
+      "sha256": "219086b9581b5e4f08b14a23a298a628dc20f377db221b85df5d3e84614be276"
     }
   ]
 }

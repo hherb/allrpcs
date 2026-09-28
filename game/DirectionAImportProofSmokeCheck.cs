@@ -5,10 +5,17 @@ namespace Allrpcs.Game;
 /// <summary>Checks the isolated Direction A import proof without touching the ordinary scene.</summary>
 public partial class DirectionAImportProofSmokeCheck : Node2D
 {
-    private const string WalkAnimation = "walk_south";
     private const int ExpectedFrameCount = 6;
     private const float ExpectedFramesPerSecond = 1000.0f / 120.0f;
     private const float TimingTolerance = 0.001f;
+
+    private static readonly (string Name, int Width)[] ExpectedWalkAnimations =
+    [
+        ("walk_south", 36),
+        ("walk_west", 48),
+        ("walk_east", 48),
+        ("walk_north", 36),
+    ];
 
     private static readonly (string Path, int Width, int Height)[] ExpectedSprites =
     [
@@ -35,7 +42,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
 
         GD.Print(
             "Direction A import proof passed: lossless source-parity textures, linear filtering, "
-            + "separate table cue, six 120 ms south-walk frames, and no gameplay authority.");
+            + "separate table cue, four unique six-frame 120 ms walks, and no gameplay authority.");
         GetTree().Quit();
     }
 
@@ -64,31 +71,41 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
     {
         AnimatedSprite2D seeker = GetNode<AnimatedSprite2D>("Characters/Seeker");
         SpriteFrames frames = seeker.SpriteFrames;
-        StringName animation = WalkAnimation;
         if (seeker.Centered
-            || seeker.Animation != animation
-            || !frames.HasAnimation(animation)
-            || frames.GetFrameCount(animation) != ExpectedFrameCount
-            || !frames.GetAnimationLoop(animation)
-            || Mathf.Abs((float)frames.GetAnimationSpeed(animation) - ExpectedFramesPerSecond)
-                > TimingTolerance)
+            || seeker.Offset != Vector2.Zero
+            || frames.GetAnimationNames().Length != ExpectedWalkAnimations.Length)
         {
             return false;
         }
 
         HashSet<Rid> textureRids = [];
-        for (int index = 0; index < ExpectedFrameCount; index++)
+        foreach ((string name, int width) in ExpectedWalkAnimations)
         {
-            Texture2D texture = frames.GetFrameTexture(animation, index);
-            if (texture.GetWidth() != 36
-                || texture.GetHeight() != 56
-                || !textureRids.Add(texture.GetRid()))
+            StringName animation = name;
+            seeker.Play(animation);
+            if (seeker.Animation != animation
+                || !frames.HasAnimation(animation)
+                || frames.GetFrameCount(animation) != ExpectedFrameCount
+                || !frames.GetAnimationLoop(animation)
+                || Mathf.Abs((float)frames.GetAnimationSpeed(animation) - ExpectedFramesPerSecond)
+                    > TimingTolerance)
             {
                 return false;
             }
+
+            for (int index = 0; index < ExpectedFrameCount; index++)
+            {
+                Texture2D texture = frames.GetFrameTexture(animation, index);
+                if (texture.GetWidth() != width
+                    || texture.GetHeight() != 56
+                    || !textureRids.Add(texture.GetRid()))
+                {
+                    return false;
+                }
+            }
         }
 
-        return true;
+        return seeker.IsPlaying();
     }
 
     private bool KeepsPresentationInert()

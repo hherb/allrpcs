@@ -231,6 +231,51 @@ def seeker_frame_sets() -> dict[str, list[Image.Image]]:
     return frame_sets
 
 
+def seeker_idle_frame_sets() -> dict[str, list[Image.Image]]:
+    """Normalize each generated direction's neutral and inhale proof frames."""
+
+    frame_sets = {}
+    for direction, canvas_width in [
+        ("south", 72),
+        ("west", 96),
+        ("east", 96),
+        ("north", 72),
+    ]:
+        sheet = Image.open(RAW / f"seeker-{direction}-idle-breathe.png").convert(
+            "RGBA"
+        )
+        cells = []
+        for index in range(2):
+            left = round(index * sheet.width / 2)
+            right = round((index + 1) * sheet.width / 2)
+            cells.append(
+                crop_alpha(alpha_clean(sheet.crop((left, 0, right, sheet.height))))
+            )
+
+        common_scale = min(
+            (canvas_width - 12) / max(cell.width for cell in cells),
+            94 / max(cell.height for cell in cells),
+        )
+        frames = []
+        for cell in cells:
+            resized = cell.resize(
+                (
+                    max(1, round(cell.width * common_scale)),
+                    max(1, round(cell.height * common_scale)),
+                ),
+                RESAMPLE,
+            )
+            resized = alpha_clean(resized, cutoff=16)
+            frame = Image.new("RGBA", (canvas_width, 112), (0, 0, 0, 0))
+            frame.alpha_composite(
+                resized,
+                ((canvas_width - resized.width) // 2, 104 - resized.height),
+            )
+            frames.append(frame)
+        frame_sets[direction] = frames
+    return frame_sets
+
+
 def downsample(master: Image.Image) -> Image.Image:
     """Export one exact half-scale PNG from a 2x master."""
 
@@ -447,6 +492,7 @@ def main() -> None:
     )
     cues = make_cues()
     frame_sets = seeker_frame_sets()
+    idle_frame_sets = seeker_idle_frame_sets()
 
     assets = [
         Asset(
@@ -527,6 +573,23 @@ def main() -> None:
                     "../sources/seeker-four-direction-walk.png",
                 )
             )
+    for direction, direction_frames in idle_frame_sets.items():
+        for index, frame in enumerate(direction_frames, start=1):
+            assets.append(
+                Asset(
+                    f"characters.seeker.{direction}.idle_breathe_{index:02d}",
+                    "characters",
+                    Path(
+                        "exports/characters/seeker/"
+                        f"{direction}/idle-breathe-{index:02d}.png"
+                    ),
+                    frame.size,
+                    (frame.width // 2, 104),
+                    104,
+                    frame,
+                    f"sources/imagegen/seeker-{direction}-idle-breathe.png",
+                )
+            )
 
     export_images: dict[str, Image.Image] = {}
     for asset in assets:
@@ -588,6 +651,29 @@ def main() -> None:
         seeker_review.alpha_composite(frame, (x, y))
     save_png(downsample(seeker_review), REVIEW / "seeker-four-direction-walk.png")
 
+    obsolete_idle_master = MASTERS / "seeker-south-idle-breathe.ora"
+    if obsolete_idle_master.exists():
+        obsolete_idle_master.unlink()
+    obsolete_idle_review = REVIEW / "seeker-south-idle-breathe.png"
+    if obsolete_idle_review.exists():
+        obsolete_idle_review.unlink()
+    idle_layers = []
+    for row, direction in enumerate(direction_order):
+        for index, frame in enumerate(idle_frame_sets[direction], start=1):
+            x = (index - 1) * 96 + (96 - frame.width) // 2
+            idle_layers.append(
+                (f"{direction} idle breathe {index:02d}", frame, x, row * 112, True)
+            )
+    create_ora(
+        MASTERS / "seeker-four-direction-idle-breathe.ora",
+        (2 * 96, 4 * 112),
+        idle_layers,
+    )
+    idle_review = Image.new("RGBA", (2 * 96, 4 * 112), (0, 0, 0, 0))
+    for _, frame, x, y, _ in idle_layers:
+        idle_review.alpha_composite(frame, (x, y))
+    save_png(downsample(idle_review), REVIEW / "seeker-four-direction-idle-breathe.png")
+
     scene, scene_layers = make_review_scene(export_images)
     save_png(scene, REVIEW / "module-review-scene.png")
     save_png(
@@ -630,6 +716,7 @@ def main() -> None:
                     "x": asset.pivot_master[0] // MASTER_SCALE,
                     "y": asset.pivot_master[1] // MASTER_SCALE,
                 },
+                "godot_import_proof": ".idle_breathe_" not in asset.asset_id,
                 "sha256": hash_file(export_path),
             }
         )
@@ -704,6 +791,18 @@ def main() -> None:
                     for index in range(1, 7)
                 ],
                 "frame_duration_ms": 120,
+                "loop": True,
+            }
+            for direction in direction_order
+        ]
+        + [
+            {
+                "id": f"characters.seeker.{direction}.idle_breathe",
+                "frame_order": [
+                    f"characters.seeker.{direction}.idle_breathe_{index:02d}"
+                    for index in range(1, 3)
+                ],
+                "frame_duration_ms": 600,
                 "loop": True,
             }
             for direction in direction_order
