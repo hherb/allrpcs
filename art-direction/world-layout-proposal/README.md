@@ -28,12 +28,12 @@ separated parallel routes. The proposal was derived entirely from the repository
 topology, scene anchors, camera rules, and handover; no external or generated visual source was
 used.
 
-## Proposed anchors
+## Implemented anchors
 
-Coordinates name planning endpoints, not final interaction bounds or visual centres. All runtime
-geometry remains unchanged until a separately approved implementation slice.
+Coordinates name route endpoints, not final interaction bounds or visual centres. The approved
+values in the `Live` column are now the runtime projection anchors.
 
-| # | Location | Current | Proposed | Planning intent |
+| # | Location | Prior | Live | Planning intent |
 | ---: | --- | ---: | ---: | --- |
 | 1 | Sickhouse | (920, 820) | (2640, 1450) | Entry and patient destination inside the expanded village side. |
 | 2 | Healer's Garden | (880, 620) | (2300, 1300) | Retains the short square branch and stays near the sickhouse. |
@@ -122,17 +122,18 @@ Healer's Garden endpoints more completely without changing scale or horizontal f
 
 - The exact twelve-edge topology is unchanged. Straight proposal corridors have no intersection
   unless they share an authored endpoint, so the diagram introduces no accidental route.
-- The 96-pixel bands are planning corridors, not final navigation polygons. The implementation
-  slice must author navigable clearance, banks, boundaries, openings, collision silhouettes, and
-  companion routes together, then verify that every intended edge is reachable and every absent
-  edge remains blocked.
-- The stream route still needs one explicit traversable crossing aligned with the retained
-  Village Edge–Stream–Laundry chain. It must not create a shortcut to another branch.
+- The 96-pixel bands define the live route presentation and its rasterized navigation/collision
+  envelope. The implementation retains 24 pixels of companion clearance, aligns landmark openings,
+  and verifies that every intended edge is physically traversable while the closed forest gate
+  remains blocked.
+- The stream route retains one explicit traversable crossing aligned with the
+  Village Edge–Stream–Laundry chain without creating a shortcut to another branch.
 - The old-shrine to southern-road link is long enough to leave a base view. Camera bounds and
-  navigation tests must cover the whole connection rather than sampling only its endpoints.
-- The expanded world permits the retained 24-pixel route-endpoint and 120-pixel landmark
-  clearances, but final collision geometry must provide materially larger playable clearance for
-  the 36-pixel character footprints and 96-pixel path language.
+  navigation and physical-traversal checks cover the whole connection rather than sampling only
+  its endpoints.
+- The expanded world retains the 24-pixel route-endpoint and 120-pixel landmark clearances. The
+  live 96-pixel collision envelope provides additional playable clearance for the 36-pixel
+  character footprints.
 
 ## Empty-area content budget
 

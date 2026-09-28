@@ -14,27 +14,25 @@ seventeen editable OpenRaster masters, and isolated `DirectionAImportProof.tscn`
 `Main.tscn` references none of that production-proof art. The proposal's five empty-area budgets
 remain non-authoritative.
 
-## Completed slice
+## This session's review
 
-- Reflowed the world, camera, party, interactables, eleven location anchors, and all existing
-  landmark greyboxes without changing location identity, topology, scenario, dialogue, clue, or
-  gameplay rules.
-- Replaced the old broad navigation surface with the approved twelve-corridor raster, exact
-  endpoint clearance, visible route presentation, and collision-backed outer boundaries.
-- Derived village, stream/laundry, clearing, shrine, sickhouse, road/wagon, and closed-path openings
-  from the approved diagonal routes. Cumulative review added a physical traversal check for every
-  open topology edge and retained the intentional closed-gate exception.
-- Corrected the sickhouse entrance, village four-way shell, shrine-road opening, southern-road hub,
-  and wagon opening after the stronger physical-route review exposed their old-map assumptions.
+- Reviewed the complete reflow, its focused geometry/navigation checks, and the live documentation.
+  No new runtime correctness defect was found.
+- Corrected stale `README.md` references to the former 1600x900 world, broad navigation surface,
+  bridge, village block, and tree cluster. The launch and validation descriptions now match the live
+  3200x1800 twelve-corridor network.
+- Updated the proposal record so its approved anchors, stream crossing, collision envelope, and
+  route coverage are described as implemented rather than pending. No runtime file changed.
 
 ## Verified evidence and limits
 
 - `python3 art-direction/world-layout-proposal/tools/validate.py` passes the exact 11 anchors,
   12 edges, route-band separation, 5 bounded content zones, 2 camera frames, SVG structure,
   geometry regressions, and deterministic rebuilding.
-- Host-local `./scripts/quality.sh` passes the zero-warning build, 2,839 Domain, 925 Application,
-  1,261 Infrastructure, and 8 architecture tests, every credential-free Godot smoke, formatting,
-  and the Compatibility graphical launch.
+- Host-local `./scripts/quality.sh` passes the zero-warning build, all 5,033 .NET tests, scenario
+  validation, every credential-free Godot smoke, formatting, and the Compatibility graphical
+  launch. The restricted run reached the known Godot `user://logs` crash; the identical host run
+  passed after dismissing macOS's resulting crash-recovery modal.
 - Automated graphical launch and smoke coverage are not human pacing, route-usability, or
   accessibility acceptance. No independent human playtest evidence was supplied in this slice.
 
@@ -43,7 +41,9 @@ remain non-authoritative.
 Run one explicit product-owner graphical greybox checkpoint over the approved layout: traverse all
 eleven anchors and every open connection, confirm the north-west closed gate reads correctly, assess
 the 6.5-second shrine-road pacing hypothesis, and inspect camera framing at 0.8/1.0/2.0 zoom in both
-representative viewport shapes. Record only observations the human reviewer actually supplies.
+representative 1280x720 and 1280x827 viewport shapes. Ordinary zoom input remains intentionally
+unmapped; use the Godot editor's Remote inspector for the three camera zoom values rather than adding
+gameplay controls. Record only observations the human reviewer actually supplies.
 
 If corrections are requested, change only the accepted greybox geometry and its focused tests, then
 rerun the proposal validator and `./scripts/quality.sh`. Do not wire proof art into `Main.tscn`, add

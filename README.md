@@ -126,10 +126,10 @@ infrastructure, and architecture tests, then exercises both headless and 60-fram
 launches. The headless launches wait for the navigation map to synchronize; the interaction-focus
 check also
 requires the authored healer move destination to resolve onto that map before exercising input.
-They prove a route through the bridge, reject representative stream, tree, and village targets, and
-exercise healer follow, wait,
-move completion, invalid and excluded command rejection, separation, and cross-bridge return to
-follow. A separate interaction-focus launch proves nearest selection, authored-order
+They prove a retained route through the stream crossing, reject representative empty-area targets,
+and exercise healer follow, wait, move completion, invalid and excluded command rejection,
+separation, and return to follow across the approved route network. A separate interaction-focus
+launch proves nearest selection, authored-order
 tie-breaking, focus changes, out-of-range clearing, hidden and disabled exclusions, distinct
 authored object identifiers, exact focused identifier-instance retention, null and mismatched
 world-object request rejection, and eligible focused-search starts through exact or distinct
@@ -183,8 +183,8 @@ qualitative time. Repeated or newly completed but ineligible resolution preserve
 focused-search, world-event, world-time, and presentation state. The world-time controller launch
 retains its focused boundary checks.
 The movement-boundary launch uses the existing Seeker body and authored collision shapes to prove
-all four outer borders plus representative stream, village, and tree collisions, then proves the
-bridge in both directions and open lower terrain remain clear. The sequence first runs
+all four outer borders plus representative stream, village, and clearing collisions, then proves
+the exact stream/laundry and village routes remain clear. The sequence first runs
 `actionlint` against every hosted workflow. A focused-search presentation launch proves the one
 temporary Seeker indicator is hidden by default, follows empty, unrelated, one-match, multi-match,
 and hide-again decisions, and leaves supplied inputs intact. A separate controller launch proves
@@ -275,23 +275,22 @@ evidence only; they do not package, sign, notarize, publish, or distribute the g
 godot --path game
 ```
 
-Use W, A, S, and D to move the gold placeholder Seeker around the 1600-by-900 test region. The
+Use W, A, S, and D to move the gold placeholder Seeker around the 3200-by-1800 test region. The
 Seeker's named default speed is 240 pixels per second. Diagonal input is normalized so it does
 not move faster than a cardinal direction. The camera follows with a named smoothing speed of
 6 and world limits matching the region, so ordinary movement cannot reveal space beyond it.
 Its named minimum, default, and maximum zoom tuning values are 0.8, 1.0, and 2.0. Zoom and
 camera-pan input are intentionally not mapped yet.
 
-The 1600-by-900 region is authored world space, not a required display resolution. The window uses
+The 3200-by-1800 region is authored world space, not a required display resolution. The window uses
 1280-by-720 as its minimum supported physical size and 16:9 design viewport. It remains resizable,
 uses canvas-item scaling with aspect expansion, and can occupy larger or fullscreen displays without
 changing world coordinates or stretching one axis independently. Wider screens reveal more horizontal
 camera space and taller screens reveal more vertical camera space within the same bounded world.
 
-Four thin collision walls keep the Seeker inside the temporary outer border. Simple collision
-geometry also blocks the blue stream outside the obvious brown temporary bridge, the complete
-grey village block, and a representative three-tree cluster. The bridge is traversable in both
-directions and the rest of the path remains open.
+Collision-backed route boundaries keep the Seeker inside the approved twelve-corridor network.
+The stream banks, village and landmark shells, clearing tree boundary, and closed forest gate block
+their exact non-route silhouettes while the authored openings retain every open topology edge.
 
 The credential-free movement-boundary smoke exercises those authored shapes with deterministic,
 test-only Godot physics motions from the existing Seeker body. It verifies collision sweeps and
@@ -301,13 +300,13 @@ clear paths without synthesizing keyboard input or claiming final input UX cover
 ALLRPCS_SEEKER_BOUNDARY_CHECK=1 godot --headless --path game --quit-after 30
 ```
 
-A deterministically authored `NavigationRegion2D` describes future companion-pathfinding space
-inside the same 1600-by-900 region. Its conservative clearance excludes the outer walls, stream
-outside the bridge, village block, and tree cluster. The obvious cyan placeholder healer starts
-at the named `HealerStart` position on the Seeker's side of the stream. It follows the Seeker over
-that navigation surface at a named 180-pixel-per-second speed only while outside a validated
+A deterministically authored `NavigationRegion2D` covers the approved twelve-corridor opening-region
+network inside the same 3200-by-1800 region. It retains 24 pixels of companion clearance inside the
+96-pixel route language and excludes collision-backed route boundaries and landmark shells. The
+obvious cyan placeholder healer starts at the named `HealerStart` position and follows the Seeker
+over that navigation surface at a named 180-pixel-per-second speed only while outside a validated
 72-pixel stop distance. Its circular collision matches its 36-pixel visible footprint, so the
-healer stops without overlapping the Seeker and can route through the bridge after separation.
+healer stops without overlapping the Seeker and can traverse every open connection after separation.
 
 The small **TEMP** panel shows the current controls, healer mode, interaction focus, last
 explicit focused-search attempt, and current opening-region recovery guidance. The much larger
@@ -1763,7 +1762,7 @@ non-retained entry; the pure continuity policy proves every landmark reachable f
 entry.
 
 `OpeningRegionProjection` now binds one exact retained anchor to every topology location inside an
-explicit 1600-by-900-pixel gameplay region. Every anchor retains at least 24 pixels of route-endpoint
+explicit 3200-by-1800-pixel gameplay region. Every anchor retains at least 24 pixels of route-endpoint
 clearance and 120 pixels of landmark separation. Missing, duplicate, foreign, rebuilt, non-finite,
 out-of-bounds, and insufficiently separated inputs fail before a projection is published. Projected
 connections retain their exact authored topology edge and exact endpoint anchors. The main-scene proof
@@ -1849,7 +1848,7 @@ The stream and abandoned-laundry scene binds only those two exact retained proje
 distinct bounded areas with 24-pixel endpoint clearance. The layout copies and validates the two
 authored stream-bank collision polygons and adds an inert laundry shell whose east and west openings
 retain the water and later woodland routes. Its pure route policy rejects paths through either bank,
-the laundry top/bottom or closed side sections, and the 1600-by-900 world bound. The switch-gated
+the laundry top/bottom or closed side sections, and the 3200-by-1800 world bound. The switch-gated
 main-scene proof checks that the collision polygons still match the named geometry, then drives the
 Seeker village edge -> stream -> abandoned laundry and back over synchronized navigation and physical
 openings. Missing, rebuilt, foreign, swapped, overlapping, out-of-bounds, insufficient-clearance,
@@ -1863,7 +1862,7 @@ explicit openings toward the abandoned laundry, village edge, old shrine, and cl
 path without overlapping the stream bank. Its pure route policy rejects wall-crossing and
 out-of-world paths. The switch-gated proof retains exact projection provenance, a hidden inert
 rare-specimen marker, synchronized village/laundry round trips, and physical travel through the
-existing bridge, laundry, and clearing openings. The marker is not an interaction candidate, world
+stream crossing, laundry, and clearing openings. The marker is not an interaction candidate, world
 object, discovery, collectible, identified specimen, or authoritative evidence.
 
 The old-shrine scene similarly binds only its exact retained projection anchor to one bounded area.
