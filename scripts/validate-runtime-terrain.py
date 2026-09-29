@@ -18,6 +18,10 @@ EXPECTED_DIMENSIONS = (256, 256)
 RUNTIME_ASSETS = (
     ("terrain.quiet_moss", RUNTIME_ROOT / "quiet-moss.png"),
     ("terrain.woodland_leaf_litter", RUNTIME_ROOT / "woodland-leaf-litter.png"),
+    (
+        "terrain.woodland_leaf_litter_transition",
+        RUNTIME_ROOT / "woodland-leaf-litter-transition.png",
+    ),
 )
 
 
@@ -164,7 +168,7 @@ def main() -> None:
     print("Runtime terrain validation passed")
     for asset_id, _ in RUNTIME_ASSETS:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
-    print("geometry: two 256x256 assets; imports: lossless, mipmap-free, runtime-owned UIDs")
+    print("geometry: three 256x256 assets; imports: lossless, mipmap-free, runtime-owned UIDs")
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")
 
 

@@ -251,6 +251,12 @@ Acceptance:
 - [x] Promote only the manifest-bound woodland leaf-litter tile into separate runtime ownership with
   exact source/hash parity and repeat it across the existing 648x250 Woodland Clearing bounds behind
   all retained greybox presentation, without adding transitions or changing physical authority.
+- [x] Complete the leaf-litter product-owner review at 0.8x, 1.0x, and 2.0x in supplied 1280x720 and
+  1280x827 views, accepting its repetition, seams, scale/readability, contrast, intentionally hard
+  edge, and corrected stone-marker description placement.
+- [x] Promote only the manifest-bound straight moss-to-leaf transition into separate runtime
+  ownership and repeat one exact quarter-turn across the Woodland Clearing's north edge behind the
+  retained greybox presentation, leaving the other three edges and every corner unchanged.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

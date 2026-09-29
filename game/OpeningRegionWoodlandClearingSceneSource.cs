@@ -55,6 +55,25 @@ public partial class OpeningRegionWoodlandClearingSceneSource : Node2D
         GetNode<Label>("ClearingLabel").Position = new Vector2(
             Binding.WoodlandClearingBounds.Left + 12.0f,
             Binding.WoodlandClearingBounds.Top + 12.0f);
+        ConfigureNorthTransition();
+    }
+
+    private void ConfigureNorthTransition()
+    {
+        Sprite2D transition = GetNode<Sprite2D>("NorthTransition");
+        Texture2D texture = transition.Texture
+            ?? throw new InvalidOperationException("The woodland transition texture is required.");
+        float boundaryLength =
+            Binding.WoodlandClearingBounds.Right - Binding.WoodlandClearingBounds.Left;
+        transition.Position = new Vector2(
+            Binding.WoodlandClearingBounds.Left + (boundaryLength / 2.0f),
+            Binding.WoodlandClearingBounds.Top);
+        transition.Rotation = Mathf.Pi / 2.0f;
+        transition.RegionRect = new Rect2(
+            0.0f,
+            0.0f,
+            texture.GetWidth(),
+            boundaryLength);
     }
 
     private void ConfigureBoundaries()

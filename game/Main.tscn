@@ -1,4 +1,4 @@
-[gd_scene load_steps=323 format=3]
+[gd_scene load_steps=324 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -512,6 +512,7 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/quiet-moss.png" id="400_runtime_quiet_moss"]
 [ext_resource type="Script" path="res://RuntimeTerrainGroundSmokeCheck.cs" id="401_runtime_terrain_ground_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter.png" id="402_runtime_leaf_litter"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-transition.png" id="403_runtime_leaf_transition"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -2261,6 +2262,12 @@ z_index = -90
 texture_repeat = 2
 polygon = PackedVector2Array(240, 24, 536, 24, 536, 120, 240, 120)
 texture = ExtResource("402_runtime_leaf_litter")
+
+[node name="NorthTransition" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -80
+texture_repeat = 2
+texture = ExtResource("403_runtime_leaf_transition")
+region_enabled = true
 
 [node name="LaundryOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
 polygon = PackedVector2Array(528, 46, 544, 46, 544, 94, 528, 94)
