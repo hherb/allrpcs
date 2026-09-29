@@ -25,16 +25,21 @@ quiet-moss-to-leaf straight, two outer-corner, and two inset-corner transitions.
 an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
 review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
-measurements. None is referenced by `Main.tscn` or ordinary gameplay, and the simulation evidence is
-not human accessibility acceptance.
+measurements. No proof-directory path is referenced by `Main.tscn` or ordinary gameplay, and the
+simulation evidence is not human accessibility acceptance.
 
-The first bounded runtime terrain promotion copies only the manifest-bound `terrain.quiet_moss`
-export into `game/art/runtime/terrain` with exact SHA-256 parity and its own lossless, mipmap-free
-Godot import identity. `Main.tscn` repeats that 256-by-256 tile across the full 3200-by-1800 world
-behind every retained greybox element. A static validator and credential-free engine smoke bind the
-source hash, runtime resource path, geometry, coverage, repeat mode, draw order, and continued
-isolation from the proof-only directory. Paths, transitions, water, structures, props, characters,
-UI, and gameplay authority remain unchanged pending a product-owner graphical review of the ground.
+The first two bounded runtime terrain promotions copy only the manifest-bound `terrain.quiet_moss`
+and `terrain.woodland_leaf_litter` exports into `game/art/runtime/terrain`, each with exact SHA-256
+parity and its own lossless, mipmap-free Godot import identity. `Main.tscn` repeats quiet moss across
+the full 3200-by-1800 world at `z_index = -100`, then repeats leaf litter only across the existing
+648-by-250 Woodland Clearing bounds at `z_index = -90`; both remain behind every retained greybox
+route, opening, label, and interaction marker. Static and credential-free engine checks bind both
+source hashes, runtime paths, geometry, coverage, repeat mode, draw order, and continued isolation
+from the proof-only directory. The product owner accepted the quiet-moss appearance in supplied
+1.0x and 2.0x views. That review also exposed one pre-existing 2.0x overlap between the identified
+stone-marker description and a yellow opening marker; the description now occupies a checked
+non-overlapping rectangle. Transitions, paths, water, structures, props, characters, UI systems,
+and gameplay authority remain unchanged pending a graphical review of the leaf-litter promotion.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven

@@ -28,6 +28,11 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
     private const string WaterCaskDisplayName = "Village water cask";
     private const string WaterCaskDescription = "A covered cask beside the village well.";
     private const string InitialResolvedDescriptionText = "";
+    private static readonly Rect2 ExpectedStoneMarkerDescriptionRect = new(
+        1184.0f,
+        402.0f,
+        144.0f,
+        69.0f);
 
     private TemporaryWorldObjectSource source = null!;
     private InteractionFocusController focusController = null!;
@@ -184,6 +189,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         }
 
         if (!HasExpectedMarkerLabelTexts(expectedMarkerLabelTexts)
+            || !HasReadableStoneMarkerDescriptionLayout()
             || !string.Equals(
                 expectedHerbPatchIndicatorText,
                 InitialResolvedDescriptionText,
@@ -210,7 +216,7 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
         {
             Fail(
                 "Temporary world-object source smoke copied a description into focused-search "
-                + "inputs or failed exact reinterpretation presentation.");
+                + "inputs or failed the exact non-overlapping reinterpretation presentation.");
             return;
         }
 
@@ -361,6 +367,30 @@ public partial class TemporaryWorldObjectSourceSmokeCheck : Node
                         expectedTexts[index],
                         StringComparison.Ordinal))
                 .All(isExpected => isExpected);
+    }
+
+    private bool HasReadableStoneMarkerDescriptionLayout()
+    {
+        Rect2 descriptionRect = new(
+            stoneMarker.Position
+                + new Vector2(
+                    stoneMarkerResolvedIndicator.OffsetLeft,
+                    stoneMarkerResolvedIndicator.OffsetTop),
+            new Vector2(
+                stoneMarkerResolvedIndicator.OffsetRight
+                    - stoneMarkerResolvedIndicator.OffsetLeft,
+                stoneMarkerResolvedIndicator.OffsetBottom
+                    - stoneMarkerResolvedIndicator.OffsetTop));
+        Polygon2D opening = GetNode<Polygon2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/VillageEdgeOpening");
+        Vector2 minimum = opening.Polygon.Aggregate(
+            (current, candidate) => current.Min(candidate));
+        Vector2 maximum = opening.Polygon.Aggregate(
+            (current, candidate) => current.Max(candidate));
+        Rect2 openingRect = new(minimum, maximum - minimum);
+
+        return descriptionRect == ExpectedStoneMarkerDescriptionRect
+            && !descriptionRect.Intersects(openingRect, includeBorders: true);
     }
 
     private static bool HasExpectedMarkerPropertySurface()

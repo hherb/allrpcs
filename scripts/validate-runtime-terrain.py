@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the bounded quiet-moss runtime terrain promotion."""
+"""Validate the bounded manifest-owned runtime terrain promotions."""
 
 from __future__ import annotations
 
@@ -13,10 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 PROOF_ROOT = ROOT / "art-direction" / "production-proof" / "corrected"
 MANIFEST = PROOF_ROOT / "asset-manifest.json"
 RUNTIME_ROOT = ROOT / "game" / "art" / "runtime" / "terrain"
-RUNTIME_TEXTURE = RUNTIME_ROOT / "quiet-moss.png"
 MAIN_SCENE = ROOT / "game" / "Main.tscn"
-ASSET_ID = "terrain.quiet_moss"
 EXPECTED_DIMENSIONS = (256, 256)
+RUNTIME_ASSETS = (
+    ("terrain.quiet_moss", RUNTIME_ROOT / "quiet-moss.png"),
+    ("terrain.woodland_leaf_litter", RUNTIME_ROOT / "woodland-leaf-litter.png"),
+)
 
 
 def require(condition: bool, message: str) -> None:
@@ -81,64 +83,78 @@ def main() -> None:
     """Check exact provenance, geometry, import settings, and runtime isolation."""
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    assets = [asset for asset in manifest["assets"] if asset["id"] == ASSET_ID]
-    require(len(assets) == 1, f"expected one {ASSET_ID} manifest entry")
-    asset = assets[0]
-    source = PROOF_ROOT / asset["export"]
+    manifest_assets = {asset["id"]: asset for asset in manifest["assets"]}
+    proof_import_root = ROOT / "game" / "art" / "direction-a-import-proof" / "terrain"
+    proof_uids = {
+        read_import_options(sidecar).get(("remap", "uid"))
+        for sidecar in proof_import_root.glob("*.png.import")
+    }
     require(
-        tuple(asset["export_rect_pixels"][key] for key in ("width", "height"))
-        == EXPECTED_DIMENSIONS,
-        f"{ASSET_ID} manifest geometry drifted",
-    )
-    require(RUNTIME_TEXTURE.is_file(), "missing runtime quiet-moss texture")
-    require(not RUNTIME_TEXTURE.is_symlink(), "runtime quiet-moss texture must be owned, not linked")
-    require(
-        set(RUNTIME_ROOT.glob("*.png")) == {RUNTIME_TEXTURE},
-        "runtime terrain contains an asset outside the bounded quiet-moss promotion",
-    )
-    require(
-        sha256(source) == asset["sha256"] == sha256(RUNTIME_TEXTURE),
-        "runtime quiet-moss texture lost exact manifest/source parity",
-    )
-    require(
-        png_dimensions(RUNTIME_TEXTURE) == EXPECTED_DIMENSIONS,
-        "runtime quiet-moss texture is not 256x256",
-    )
-
-    sidecar = RUNTIME_TEXTURE.with_suffix(".png.import")
-    require(sidecar.is_file(), "missing runtime quiet-moss import sidecar")
-    options = read_import_options(sidecar)
-    expected_source = resource_path(RUNTIME_TEXTURE)
-    expected_cache = imported_cache_path(RUNTIME_TEXTURE)
-    require(
-        options.get(("deps", "source_file")) == f'"{expected_source}"',
-        "runtime quiet-moss import source path drifted",
-    )
-    require(
-        options.get(("remap", "path")) == f'"{expected_cache}"'
-        and options.get(("deps", "dest_files")) == f'["{expected_cache}"]',
-        "runtime quiet-moss import cache path drifted",
-    )
-    require(
-        options.get(("remap", "importer")) == '"texture"'
-        and options.get(("params", "compress/mode")) == "0"
-        and options.get(("params", "mipmaps/generate")) == "false",
-        "runtime quiet-moss import is not lossless and mipmap-free",
-    )
-
-    proof_sidecar = ROOT / "game" / "art" / "direction-a-import-proof" / "terrain" / "quiet-moss.png.import"
-    proof_options = read_import_options(proof_sidecar)
-    runtime_uid = options.get(("remap", "uid"))
-    require(
-        runtime_uid is not None
-        and runtime_uid.startswith('"uid://')
-        and runtime_uid.endswith('"')
-        and runtime_uid != proof_options.get(("remap", "uid")),
-        "runtime quiet-moss import needs its own resource UID",
+        set(RUNTIME_ROOT.glob("*.png")) == {path for _, path in RUNTIME_ASSETS},
+        "runtime terrain differs from the bounded manifest-owned asset set",
     )
 
     main_scene = MAIN_SCENE.read_text(encoding="utf-8")
-    require(expected_source in main_scene, "Main.tscn does not reference runtime quiet moss")
+    runtime_uids: set[str] = set()
+    for asset_id, runtime_texture in RUNTIME_ASSETS:
+        asset = manifest_assets.get(asset_id)
+        require(asset is not None, f"expected one {asset_id} manifest entry")
+        source = PROOF_ROOT / asset["export"]
+        require(
+            tuple(asset["export_rect_pixels"][key] for key in ("width", "height"))
+            == EXPECTED_DIMENSIONS,
+            f"{asset_id} manifest geometry drifted",
+        )
+        require(runtime_texture.is_file(), f"missing runtime texture for {asset_id}")
+        require(
+            not runtime_texture.is_symlink(),
+            f"runtime texture for {asset_id} must be owned, not linked",
+        )
+        require(
+            sha256(source) == asset["sha256"] == sha256(runtime_texture),
+            f"runtime texture for {asset_id} lost exact manifest/source parity",
+        )
+        require(
+            png_dimensions(runtime_texture) == EXPECTED_DIMENSIONS,
+            f"runtime texture for {asset_id} is not 256x256",
+        )
+
+        sidecar = runtime_texture.with_suffix(".png.import")
+        require(sidecar.is_file(), f"missing runtime import sidecar for {asset_id}")
+        options = read_import_options(sidecar)
+        expected_source = resource_path(runtime_texture)
+        expected_cache = imported_cache_path(runtime_texture)
+        require(
+            options.get(("deps", "source_file")) == f'"{expected_source}"',
+            f"runtime import source path drifted for {asset_id}",
+        )
+        require(
+            options.get(("remap", "path")) == f'"{expected_cache}"'
+            and options.get(("deps", "dest_files")) == f'["{expected_cache}"]',
+            f"runtime import cache path drifted for {asset_id}",
+        )
+        require(
+            options.get(("remap", "importer")) == '"texture"'
+            and options.get(("params", "compress/mode")) == "0"
+            and options.get(("params", "mipmaps/generate")) == "false",
+            f"runtime import is not lossless and mipmap-free for {asset_id}",
+        )
+
+        runtime_uid = options.get(("remap", "uid"))
+        require(
+            runtime_uid is not None
+            and runtime_uid.startswith('"uid://')
+            and runtime_uid.endswith('"')
+            and runtime_uid not in proof_uids
+            and runtime_uid not in runtime_uids,
+            f"runtime import for {asset_id} needs its own unique resource UID",
+        )
+        runtime_uids.add(runtime_uid)
+        require(
+            expected_source in main_scene,
+            f"Main.tscn does not reference runtime texture for {asset_id}",
+        )
+
     require(
         "direction-a-import-proof" not in main_scene
         and "DirectionAImportProof" not in main_scene,
@@ -146,8 +162,9 @@ def main() -> None:
     )
 
     print("Runtime terrain validation passed")
-    print(f"asset: {ASSET_ID}, exact SHA-256 {asset['sha256']}")
-    print("geometry: 256x256; import: lossless, mipmap-free, runtime-owned UID")
+    for asset_id, _ in RUNTIME_ASSETS:
+        print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
+    print("geometry: two 256x256 assets; imports: lossless, mipmap-free, runtime-owned UIDs")
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")
 
 

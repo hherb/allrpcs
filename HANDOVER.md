@@ -2,47 +2,54 @@
 
 ## Current state
 
-Phase 8 and Phase 9.1 remain complete. The approved 3200x1800 opening-region greybox retains all
-eleven anchors, twelve topology edges, collision/navigation authority, the closed north-west forest
-gate, and accepted 0.8/1.0/2.0 camera tuning. Direction A remains selected; Direction D is only the
-contingency. The isolated 66-export proof and its seventeen OpenRaster masters remain proof-only.
+Phase 8 and Phase 9.1 remain complete. The approved 3200x1800 opening-region layout, eleven anchors,
+twelve topology edges, collision/navigation authority, closed north-west forest gate, and accepted
+camera tuning remain unchanged. Direction A remains selected; Direction D is only the contingency.
+The 66-export proof and seventeen OpenRaster masters remain proof-only.
 
-The first bounded production promotion is complete. Only manifest asset `terrain.quiet_moss`, exact
-SHA-256 `3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db`, now has a separate
-runtime-owned copy at `game/art/runtime/terrain/quiet-moss.png`. Its own lossless, mipmap-free Godot
-import is repeated from the exact 256x256 source across the full 3200x1800 `Ground` region at
-`z_index = -100`. `Main.tscn` references no proof-only path. All existing greybox presentation,
-collision, navigation, locations, topology, scenario, dialogue, discovery, save, provider, and
-gameplay authority remain unchanged.
+Two exact manifest assets now have separate runtime-owned copies. `terrain.quiet_moss`, SHA-256
+`3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db`, repeats across the full
+3200x1800 world at `z_index = -100`. `terrain.woodland_leaf_litter`, SHA-256
+`f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a`, repeats only across the
+existing Woodland Clearing bounds `(600, 200)` through `(1248, 450)` at `z_index = -90`. Both sit
+behind every retained greybox route, opening, label, and interaction marker. No proof-only path is
+referenced by `Main.tscn`.
 
 ## Review, evidence, and limits
 
-- `scripts/validate-runtime-terrain.py` proves the exact manifest/source/runtime hash, 256x256 PNG
-  geometry, independent runtime UID/cache path, lossless mipmap-free import, bounded runtime asset
-  set, ordinary-scene reference, and proof-directory isolation.
-- `RuntimeTerrainGroundSmokeCheck` proves the exact runtime texture resource, repeat-enabled full
-  world region, origin, and draw order. It is part of `scripts/smoke-godot.sh` and the quality spine.
-- Final host-local `./scripts/quality.sh` passed the art/proposal/import validators, zero-warning
-  build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure, 8 architecture),
-  scenario validation, every credential-free Godot smoke, formatting, and Compatibility launch.
-- Cumulative review found the fixed-frame closed-forest smoke could outrun navigation readiness
-  after the new texture import. Normal timing passed; increasing only its bounded synchronization
-  allowance from 60 to 240 frames made the exact fixed-frame retry and final complete suite pass,
-  matching the existing southern-road allowance without changing assertions or product behavior.
-- No product-owner graphical observation was supplied for the runtime ground in this session.
-  Automated checks prove mechanics and import invariants, not visual acceptance or accessibility.
+- The product owner said the quiet moss looked all right and that the supplied 1.0x and 2.0x views
+  otherwise worked as intended. No separate 0.8x or wider/taller observation was supplied.
+- The 2.0x view exposed one pre-existing overlap between the identified stone-marker description and
+  the yellow Village Edge opening marker. Only that world-space label moved, from x offsets
+  `-72..72` to `104..248`; its exact `(1184, 402, 144, 69)` rectangle now has an 8-pixel gap from
+  the opening. A focused smoke failed before the scene edit and passes afterward. Camera, routes,
+  opening markers, collision, navigation, focus, discovery, and gameplay behavior did not change.
+- `scripts/validate-runtime-terrain.py` proves the two exact manifest/source/runtime hashes, 256x256
+  PNG geometry, separate runtime UIDs/cache paths, lossless mipmap-free imports, bounded runtime
+  asset set, ordinary-scene references, and proof-directory isolation.
+- `RuntimeTerrainGroundSmokeCheck` proves repeat-enabled exact world and clearing coverage plus draw
+  order. It now waits one process frame so every scene source has completed `_Ready` before checking
+  its runtime-authored polygon; this changes only the explicit smoke path.
+- Final host-local `./scripts/quality.sh` passed the art/proposal/import/runtime validators,
+  zero-warning build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure,
+  8 architecture), scenario validation, every credential-free Godot smoke, formatting, and
+  Compatibility launch.
+- Automated checks prove provenance, geometry, import, and mechanical isolation. No product-owner
+  graphical observation has yet been supplied for the leaf-litter clearing, and no human
+  accessibility acceptance is claimed.
 
 ## Exact next bounded slice
 
-Run one product-owner graphical review of the repeated quiet-moss ground throughout the opening
-region at 0.8, 1.0, and 2.0 zoom and representative wider/taller window shapes. Check for obvious
-repetition, seams, scale/readability problems, greybox contrast, and framing, and record only the
-observations the product owner actually supplies. Correct only ground tiling, import, or draw-order
-defects exposed by that review, then rerun `./scripts/quality.sh`.
+Run one product-owner graphical review of the leaf-litter Woodland Clearing at 0.8, 1.0, and 2.0
+zoom and representative wider/taller window shapes. Check repetition, seams, scale/readability,
+route/opening/label contrast, the intentionally hard rectangular edge pending transition art, and
+the corrected stone-marker description placement. Record only observations the product owner
+actually supplies and correct only leaf-litter import/coverage/draw-order or the observed label
+placement defect, then rerun `./scripts/quality.sh`.
 
-Do not promote another asset before explicit product-owner acceptance of this ground. Do not add
-leaf litter, transitions, paths, banks, water, structures, foliage, props, characters, animation,
-UI, effects, audio, or content-budget fills. Do not change collision, navigation, locations,
+Do not promote a moss-to-leaf transition or another asset before explicit product-owner acceptance
+of this clearing. Do not add paths, banks, water, structures, foliage, props, characters, animation,
+UI systems, effects, audio, or content-budget fills. Do not change collision, navigation, locations,
 topology, camera tuning, scenario, dialogue, clue, discovery, treatment, save, provider, or gameplay
-authority. After acceptance, leave one new bounded production-asset slice rather than broadening the
-review slice.
+authority. After acceptance, choose one coherent transition-boundary slice rather than bulk terrain
+integration.
