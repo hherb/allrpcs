@@ -31,6 +31,9 @@ camera, scenario, or gameplay rule changed.
 - Final host-local `./scripts/quality.sh` passed all art/layout/import/runtime validators, formatting,
   a zero-warning build, 2,839 Domain, 925 Application, 1,261 Infrastructure, and 8 architecture
   tests, scenario validation, every credential-free Godot smoke, and the Compatibility launch.
+- Exact-head hosted run `36633260367` is Actions/account infrastructure state: all five jobs failed
+  with `steps: []` and ran no checkout or product command. It is neither product-test evidence nor a
+  product failure; the host-local suite above is the executed validation evidence.
 
 ## Exact next bounded slice
 
