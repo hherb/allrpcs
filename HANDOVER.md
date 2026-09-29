@@ -44,9 +44,10 @@ interaction marker. Collision, navigation, routes, topology, and gameplay author
 - Six Compatibility-rendered repository-backed views exist at 0.8x, 1.0x, and 2.0x in both 1280x720
   and 1280x827 shapes. Automated and session review found a continuous rounded boundary with routes
   and labels still above it; this is not product-owner acceptance.
-- Hosted Credential-free CI run `36553429332` reported failure with `steps: []` for all five jobs;
-  it ran no checkout, build, test, Godot, or export step. Treat that as Actions/account
-  infrastructure state, not hosted product-validation evidence or a product failure.
+- Hosted Credential-free CI run `36560348765` for implementation commit `9920ef0` reported failure
+  with `steps: []` for all five jobs; it ran no checkout, build, test, Godot, or export step. Treat
+  that as Actions/account infrastructure state, not hosted product-validation evidence or a product
+  failure.
 - Automated checks prove provenance, geometry, import, placement, and mechanical isolation. No
   product-owner observation has yet accepted the rounded correction, and no human accessibility
   acceptance is claimed.
