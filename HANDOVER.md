@@ -26,24 +26,23 @@ camera, scenario, or gameplay rule changed.
   presentation ownership. The initial sandbox run reached Godot but could not write `user://logs`;
   the identical host run passed.
 - Six Compatibility-rendered runtime views were supplied at 0.8x, 1.0x, and 2.0x in 1280x720 and
-  1280x827. Ordinary-scene visual acceptance remains pending product-owner review. Automated checks
-  do not establish curve/texture acceptance, pacing, usability, or human accessibility acceptance.
+  1280x827. The product owner accepted the ordinary-scene curve, texture continuity, apparent width,
+  seams into both retained route presentations, and nearby label/marker readability. That bounded
+  review does not establish pacing, usability, or human accessibility acceptance.
 - Final host-local `./scripts/quality.sh` passed all art/layout/import/runtime validators, formatting,
   a zero-warning build, 2,839 Domain, 925 Application, 1,261 Infrastructure, and 8 architecture
   tests, scenario validation, every credential-free Godot smoke, and the Compatibility launch.
-- Hosted implementation run `36633260367` and documentation run `36633394504` are Actions/account
-  infrastructure state: all five jobs in each failed with `steps: []` and ran no checkout or product
-  command. They are neither product-test evidence nor product failures; the host-local suite above
-  is the executed validation evidence.
+- Hosted implementation run `36633260367`, documentation run `36633394504`, and final-wording run
+  `36633517154` are Actions/account infrastructure state: all five jobs in each failed with
+  `steps: []` and ran no checkout or product command. They are neither product-test evidence nor
+  product failures; the host-local suite above is the executed validation evidence.
 
 ## Exact next bounded slice
 
-Complete only the product-owner graphical review of the supplied six ordinary-scene junction views.
-Check the curve, texture continuity, width, seams into the retained Stream greybox leg and approved
-Laundry-to-Clearing path, and nearby labels/markers. If accepted, record only that bounded runtime
-visual acceptance. If correction is requested, change only this junction's runtime transform/draw
-order or the exact accepted junction asset through its deterministic proof pipeline, then regenerate
-the six views and rerun `./scripts/quality.sh`.
+Stop at the next asset-selection authorization gate. Before editing, propose one exact bounded Phase
+9.2 art slice, name its proof or runtime destination, intended live placement if any, acceptance
+views, and exclusions, then obtain explicit product-owner approval. Do not treat the remaining broad
+ROADMAP production checkboxes or this junction acceptance as approval for another asset.
 
 Do not promote another route or asset. Do not change terrain outside this junction, banks, water,
 structures, foliage, props, characters, animation, UI systems, effects, audio, content-budget fills,

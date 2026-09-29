@@ -62,8 +62,9 @@ corrections, the owner approved the supplied 0.8x, 1.0x, and 2.0x wide and tall 
 isolated Stream–Laundry–Woodland junction review subsequently replaced its hard composited elbow
 with an alpha-aware, tangent-continuous 96-pixel curve and clipped preview continuations at the
 module boundary. The product owner accepted the corrected proof's curve and texture continuity,
-then separately authorized this exact runtime promotion. Ordinary-scene acceptance remains pending
-review of the supplied 0.8x, 1.0x, and 2.0x wide and tall runtime views. Inset
+then separately authorized this exact runtime promotion. The owner accepted the resulting
+ordinary-scene curve, texture continuity, apparent width, seams, and nearby label/marker readability
+in supplied 0.8x, 1.0x, and 2.0x wide and tall runtime views. Inset
 corners, bends, junctions, other paths, water, structures, props, characters, UI systems, and
 gameplay authority remain unchanged. The Stream–Laundry–Woodland junction follows the exact live
 57.599282-degree turn and retains both 96-pixel connector seams and curved physical-route

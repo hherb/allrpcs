@@ -283,7 +283,7 @@ Acceptance:
   opening junction at the live Stream–Laundry–Woodland turn with exact source/hash/import parity,
   `(224, 224)` pivot placement, rigid `133.025066°` rotation, retained greybox route presentation,
   and unchanged collision, navigation, topology, camera, and gameplay authority.
-- [ ] Complete the ordinary-scene opening-junction review across the supplied 0.8x, 1.0x, and 2.0x
+- [x] Complete the ordinary-scene opening-junction review across the supplied 0.8x, 1.0x, and 2.0x
   1280x720 and 1280x827 views before recording runtime visual acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
