@@ -29,6 +29,9 @@ copy and `Main.tscn` does not reference it.
   validators, formatting, zero-warning build, all 5,033 .NET tests, scenario validation, every
   credential-free Godot smoke, and the Compatibility launch. The sandbox run reached Godot but
   could not write `user://` settings/logs; the identical host run passed.
+- Exact-head hosted CI run `36572631551` reported failure with `steps: []` in all five jobs and ran
+  no checkout or product command. It is Actions/account infrastructure state, not product-test
+  evidence or a product failure.
 - Automated checks do not establish visual acceptance, pacing, usability, or human accessibility
   acceptance.
 
