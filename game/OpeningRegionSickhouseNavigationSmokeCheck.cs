@@ -69,6 +69,23 @@ public partial class OpeningRegionSickhouseNavigationSmokeCheck : Node
 
         Vector2 seekerStart = GetNode<CharacterBody2D>("../Seeker").GlobalPosition;
         Vector2 patientApproach = ToGodot(layout.PatientApproach);
+        Vector2 representedRoomInterior = patientApproach + new Vector2(100.0f, 20.0f);
+        if (NavigationServer2D.MapGetClosestPoint(navigationMap, representedRoomInterior)
+                .DistanceTo(representedRoomInterior) > SurfaceTolerancePixels)
+        {
+            Fail("The represented sickhouse interior was excluded from navigation.");
+            return;
+        }
+
+        if (!AssertClear(
+                GetNode<CharacterBody2D>("../Seeker"),
+                patientApproach,
+                representedRoomInterior - patientApproach,
+                "represented sickhouse interior"))
+        {
+            return;
+        }
+
         Vector2[] inbound = NavigationServer2D.MapGetPath(
             navigationMap,
             seekerStart,
@@ -97,6 +114,23 @@ public partial class OpeningRegionSickhouseNavigationSmokeCheck : Node
             + "sections retained one entrance, and the Seeker can enter, reach the exact "
             + "patient approach, and leave over bounded synchronized navigation.");
         GetTree().Quit();
+    }
+
+    private bool AssertClear(
+        CharacterBody2D seeker,
+        Vector2 start,
+        Vector2 motion,
+        string description)
+    {
+        seeker.GlobalPosition = start;
+        KinematicCollision2D? collision = seeker.MoveAndCollide(motion, testOnly: true);
+        if (collision is null)
+        {
+            return true;
+        }
+
+        Fail($"Expected a clear {description}, but the Seeker hit {collision.GetCollider()}.");
+        return false;
     }
 
     private static bool IsCompleteRoute(

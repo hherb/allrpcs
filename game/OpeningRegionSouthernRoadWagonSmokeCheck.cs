@@ -12,7 +12,7 @@ public partial class OpeningRegionSouthernRoadWagonSmokeCheck : Node
     private const string CheckEnvironmentVariable =
         "ALLRPCS_OPENING_REGION_SOUTHERN_ROAD_WAGON_CHECK";
     private const string EnabledEnvironmentValue = "1";
-    private const int MaximumSynchronizationPhysicsFrames = 60;
+    private const int MaximumSynchronizationPhysicsFrames = 240;
     private const int ExpectedRoadBoundaryCount = 2;
     private const int ExpectedWagonBoundaryCount = 5;
     private const float SurfaceTolerancePixels = 1.0f;

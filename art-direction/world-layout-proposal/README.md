@@ -167,9 +167,12 @@ route-distance budget including the 6.5-second shrine-road hypothesis, camera fr
 empty-area budgets. The coordinated runtime implementation retains the proposal's exact SHA-256,
 eleven anchors, twelve straight corridors, 96-pixel path language, camera tuning, and closed gate.
 
-Approval and automated validation are not human pacing, route-usability, or accessibility evidence.
-A later manual greybox checkpoint must assess those qualities before bulk Direction A art is wired
-into ordinary gameplay.
+The 2026-09-29 product-owner graphical checkpoint traversed all eleven anchors and every open
+connection, accepted the closed gate's readability, found the 6.5-second Shrine-to-Southern-Road
+connection not too long, and found framing acceptable across 0.8/1.0/2.0 zoom and varied window
+shapes. It exposed route-mask-restricted Village Edge and Sickhouse interiors plus an undiscoverable
+Stream presentation; the accepted greybox corrections were then verified in the same checkpoint.
+This is product-owner greybox evidence, not independent-new-player or final accessibility acceptance.
 
 ## Rebuild and validate
 

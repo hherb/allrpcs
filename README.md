@@ -38,6 +38,11 @@ independent route band, including focused near-miss regressions. The runtime bin
 exact SHA-256, world bounds, anchors, straight route network, camera limits, collision-backed
 landmark openings, and intentionally closed north-west forest gate. The five content budgets remain
 non-authoritative, and no location, topology edge, scenario, dialogue, clue, or gameplay rule changed.
+The product-owner graphical checkpoint traversed every open connection, accepted the closed-gate
+readability, Shrine-to-Southern-Road pacing, and camera framing across 0.8/1.0/2.0 zoom and varied
+window shapes. It also exposed and verified corrections for route-mask-restricted Village Edge and
+Sickhouse interiors plus a physically reachable but visually undiscoverable Stream; the authored
+scene and runtime now share one visible stream band, crossing, and label.
 
 The provider-neutral dialogue foundation retains exact in-world speech, audiences, declared act
 types, requests, responses, intentions, commitments, and bounded state proposals. Its first pure

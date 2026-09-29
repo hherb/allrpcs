@@ -67,17 +67,27 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
     {
         Node laundryBoundaries = GetNode(
             "../OpeningRegionStreamLaundrySceneSource/LaundryBoundaries");
+        Polygon2D streamWater = GetNode<Polygon2D>(
+            "../OpeningRegionStreamLaundrySceneSource/StreamWater");
+        Label streamLabel = GetNode<Label>(
+            "../OpeningRegionStreamLaundrySceneSource/StreamLabel");
         StaticBody2D streamBanks = GetNode<StaticBody2D>("../StreamCollision");
         if (!HasCollisionShapes(laundryBoundaries, ExpectedLaundryBoundarySectionCount)
             || streamBanks.GetChildCount() != ExpectedStreamBankCount
             || streamBanks.GetChildren().Any(child =>
                 child is not CollisionPolygon2D polygon || polygon.Polygon.Length < 3)
+            || !MatchesPolygon(
+                streamWater.Polygon,
+                OpeningRegionStreamLaundryGeometry.StreamWater)
+            || streamLabel.Text != "STREAM"
             || !MatchesBankGeometry(streamBanks, layout)
             || !ReferenceEquals(
                 layout.SceneBinding.Projection,
                 GetNode<OpeningRegionProjectionSource>("../OpeningRegionProjectionSource").Projection))
         {
-            Fail("The stream/laundry scene lost collision geometry or exact projection provenance.");
+            Fail(
+                "The stream/laundry scene lost presentation, collision geometry, "
+                + "or exact projection provenance.");
             return;
         }
 

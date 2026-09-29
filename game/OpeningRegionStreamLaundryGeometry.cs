@@ -34,6 +34,14 @@ internal static class OpeningRegionStreamLaundryGeometry
 
     internal static NumericsVector2 BridgeNorthApproach => new(1748.5714f, StreamTop);
 
+    internal static IReadOnlyList<NumericsVector2> StreamWater { get; } =
+    [
+        new(1600.0f, StreamTop),
+        new(2000.0f, StreamTop),
+        new(2000.0f, StreamBottom),
+        new(1600.0f, StreamBottom),
+    ];
+
     internal static IReadOnlyList<NumericsVector2> WestStreamBank { get; } =
     [
         new(1600.0f, StreamTop),

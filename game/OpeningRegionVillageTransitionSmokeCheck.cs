@@ -85,6 +85,13 @@ public partial class OpeningRegionVillageTransitionSmokeCheck : Node
         Vector2 garden = ToGodot(layout.GardenApproach);
         Vector2 square = ToGodot(layout.SceneBinding.VillageSquareAnchor.Position);
         Vector2 edge = ToGodot(layout.SceneBinding.VillageEdgeAnchor.Position);
+        Vector2 representedEdgeInterior = edge + new Vector2(70.0f, 80.0f);
+        if (!IsOnNavigationSurface(navigationMap, representedEdgeInterior))
+        {
+            Fail("The represented village-edge interior was excluded from navigation.");
+            return;
+        }
+
         List<NumericsVector2> roundTrip = [];
         foreach ((Vector2 origin, Vector2 destination) in new[]
         {
@@ -110,6 +117,11 @@ public partial class OpeningRegionVillageTransitionSmokeCheck : Node
 
         if (!OpeningRegionVillageTransitionRoutePolicy.IsAcceptable(layout, roundTrip)
             || !AssertPhysicalOpenings(garden, square, edge)
+            || !AssertClear(
+                GetNode<CharacterBody2D>("../Seeker"),
+                edge,
+                representedEdgeInterior - edge,
+                "village-edge represented interior")
             || !AssertBoundaryCollision(square, Vector2.Up * 120.0f, "SquareTop")
             || !AssertBoundaryCollision(edge, Vector2.Down * 120.0f, "EdgeBottom"))
         {
@@ -121,6 +133,10 @@ public partial class OpeningRegionVillageTransitionSmokeCheck : Node
             + "sections, all retained topology openings, and synchronized round trip.");
         GetTree().Quit();
     }
+
+    private static bool IsOnNavigationSurface(Rid navigationMap, Vector2 position) =>
+        NavigationServer2D.MapGetClosestPoint(navigationMap, position)
+            .DistanceTo(position) <= SurfaceTolerancePixels;
 
     private bool AssertPhysicalOpenings(Vector2 garden, Vector2 square, Vector2 edge)
     {

@@ -47,7 +47,12 @@ public partial class OpeningRegionStreamLaundrySceneSource : Node2D
 
     private void ConfigurePresentation()
     {
+        GetNode<Polygon2D>("StreamWater").Polygon =
+            [.. OpeningRegionStreamLaundryGeometry.StreamWater.Select(ToGodot)];
         GetNode<Polygon2D>("StreamCrossingArea").Polygon = Rectangle(Binding.StreamBounds);
+        GetNode<Label>("StreamLabel").Position = new Vector2(
+            Binding.StreamAnchor.Position.X - 64.0f,
+            Binding.StreamBounds.Bottom + 12.0f);
         GetNode<Polygon2D>("LaundryArea").Polygon = Rectangle(
             Binding.AbandonedLaundryBounds);
         GetNode<Polygon2D>("LaundryWoodlandOpening").Polygon = VerticalOpening(

@@ -61,6 +61,9 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 halfWidthPixels);
         }
 
+        AddVillageEdgeAreaCells(cells, addAnchorClearance);
+        AddSickhouseAreaCells(cells, addAnchorClearance);
+
         if (addAnchorClearance)
         {
             foreach (Vector2 anchor in OpeningRegionLayoutGeometry.Anchors.Values)
@@ -70,6 +73,67 @@ public partial class GreyboxNavigation : NavigationRegion2D
         }
 
         return cells;
+    }
+
+    private static void AddVillageEdgeAreaCells(
+        HashSet<Cell> cells,
+        bool retainNavigationClearance)
+    {
+        float clearance = retainNavigationClearance
+            ? OpeningRegionProjectionSource.MinimumPathClearancePixels
+            : 0.0f;
+        AddAreaCells(
+            cells,
+            OpeningRegionVillageTransitionGeometry.VillageEdgeLeft + clearance,
+            OpeningRegionVillageTransitionGeometry.VillageEdgeTop + clearance,
+            OpeningRegionVillageTransitionGeometry.VillageEdgeRight - clearance,
+            OpeningRegionVillageTransitionGeometry.VillageEdgeBottom - clearance);
+    }
+
+    private static void AddSickhouseAreaCells(
+        HashSet<Cell> cells,
+        bool retainNavigationClearance)
+    {
+        float clearance = retainNavigationClearance
+            ? OpeningRegionProjectionSource.MinimumPathClearancePixels
+            : 0.0f;
+        Vector2 anchor = OpeningRegionLayoutGeometry.Anchors["sickhouse"];
+        AddAreaCells(
+            cells,
+            anchor.X - OpeningRegionFirstPatientSceneSource.RoomHalfWidthPixels + clearance,
+            anchor.Y - OpeningRegionFirstPatientSceneSource.RoomTopOffsetPixels + clearance,
+            anchor.X + OpeningRegionFirstPatientSceneSource.RoomHalfWidthPixels - clearance,
+            anchor.Y + OpeningRegionFirstPatientSceneSource.RoomBottomOffsetPixels - clearance);
+    }
+
+    private static void AddAreaCells(
+        HashSet<Cell> cells,
+        float left,
+        float top,
+        float right,
+        float bottom)
+    {
+        float cellSize = OpeningRegionLayoutGeometry.RouteCellSizePixels;
+        int firstColumn = Math.Clamp((int)MathF.Floor(left / cellSize), 0, ColumnCount - 1);
+        int lastColumn = Math.Clamp((int)MathF.Floor(right / cellSize), 0, ColumnCount - 1);
+        int firstRow = Math.Clamp((int)MathF.Floor(top / cellSize), 0, RowCount - 1);
+        int lastRow = Math.Clamp((int)MathF.Floor(bottom / cellSize), 0, RowCount - 1);
+        for (int row = firstRow; row <= lastRow; row++)
+        {
+            for (int column = firstColumn; column <= lastColumn; column++)
+            {
+                Vector2 center = new(
+                    (column + 0.5f) * cellSize,
+                    (row + 0.5f) * cellSize);
+                if (center.X >= left
+                    && center.X <= right
+                    && center.Y >= top
+                    && center.Y <= bottom)
+                {
+                    cells.Add(new Cell(column, row));
+                }
+            }
+        }
     }
 
     private static void AddAnchorClearanceCells(
