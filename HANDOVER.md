@@ -2,61 +2,47 @@
 
 ## Current state
 
-Phase 8 and Phase 9.1 remain complete. The approved 3200x1800 opening-region proposal is the live
-greybox layout with proposal SHA-256
-`a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1`, eleven exact anchors,
-twelve topology edges, 96-pixel route corridors, 24-pixel navigation clearance, bounded camera
-framing, and 0.8/1.0/2.0 zoom tuning. The north-west Closed Forest Path remains physically gated
-until the existing Forester access removes its gate.
+Phase 8 and Phase 9.1 remain complete. The approved 3200x1800 opening-region greybox retains all
+eleven anchors, twelve topology edges, collision/navigation authority, the closed north-west forest
+gate, and accepted 0.8/1.0/2.0 camera tuning. Direction A remains selected; Direction D is only the
+contingency. The isolated 66-export proof and its seventeen OpenRaster masters remain proof-only.
 
-Direction A remains selected and Direction D is only the contingency. The 66 proof exports,
-seventeen editable OpenRaster masters, and isolated `DirectionAImportProof.tscn` remain proof-only;
-`Main.tscn` still references none of that art. The proposal's five empty-area budgets remain
-non-authoritative.
-
-## Completed product-owner checkpoint and corrections
-
-- The product owner traversed all eleven anchors and every open connection. Square-to-Sickhouse,
-  Square-to-Garden, Stream/Laundry/Woodland, Southern Road/Wagon, and the remaining connections
-  were clear after the corrections below. The Closed Forest Path read as intentionally closed and
-  the roughly 6.5-second Shrine-to-Southern-Road connection did not feel too long.
-- Camera framing remained acceptable at 0.8, 1.0, and 2.0 zoom in the 1280x720 window and while the
-  window was resized through representative taller and other shapes.
-- The checkpoint exposed a generated-route-mask defect: the visually filled Village Edge and
-  Sickhouse interiors admitted only narrow route-centreline movement. Both represented interiors
-  now participate in physical and navigation masks while their existing walls, approved exits,
-  Sickhouse doorway, anchors, topology, collision authority, and gameplay rules remain unchanged.
-- The Stream was physically reachable but not discoverable. The authored scene and runtime now
-  show the same blue stream band, brown crossing, and `STREAM` label; stale pre-reflow Stream and
-  Laundry editor placeholders were corrected. The product owner then reached and crossed it.
+The first bounded production promotion is complete. Only manifest asset `terrain.quiet_moss`, exact
+SHA-256 `3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db`, now has a separate
+runtime-owned copy at `game/art/runtime/terrain/quiet-moss.png`. Its own lossless, mipmap-free Godot
+import is repeated from the exact 256x256 source across the full 3200x1800 `Ground` region at
+`z_index = -100`. `Main.tscn` references no proof-only path. All existing greybox presentation,
+collision, navigation, locations, topology, scenario, dialogue, discovery, save, provider, and
+gameplay authority remain unchanged.
 
 ## Review, evidence, and limits
 
-- Focused regressions prove off-centre Village Edge and Sickhouse movement on both navigation and
-  physical surfaces, retain the Sickhouse doorway and patient route, retain all village openings,
-  and bind the visible Stream presentation to its exact geometry. Adjacent Stream/Laundry and
-  movement-boundary checks pass.
-- `python3 art-direction/world-layout-proposal/tools/validate.py` and host-local
-  `./scripts/quality.sh` pass the proposal checks, zero-warning build, all 5,033 .NET tests,
+- `scripts/validate-runtime-terrain.py` proves the exact manifest/source/runtime hash, 256x256 PNG
+  geometry, independent runtime UID/cache path, lossless mipmap-free import, bounded runtime asset
+  set, ordinary-scene reference, and proof-directory isolation.
+- `RuntimeTerrainGroundSmokeCheck` proves the exact runtime texture resource, repeat-enabled full
+  world region, origin, and draw order. It is part of `scripts/smoke-godot.sh` and the quality spine.
+- Final host-local `./scripts/quality.sh` passed the art/proposal/import validators, zero-warning
+  build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure, 8 architecture),
   scenario validation, every credential-free Godot smoke, formatting, and Compatibility launch.
-- Cumulative review removed Godot editor-generated UID/layout normalization from `Main.tscn` and
-  `project.godot`; only the scoped runtime, smoke, documentation, and authored Stream changes remain.
-  It also increased the Southern Road smoke's bounded synchronization allowance after one cold full
-  run timed out; the exact retry and the subsequent complete cold run passed without assertion changes.
-- This checkpoint supplies product-owner greybox traversal, pacing, gate-readability, and framing
-  evidence. It is not independent-new-player or final accessibility acceptance.
+- Cumulative review found the fixed-frame closed-forest smoke could outrun navigation readiness
+  after the new texture import. Normal timing passed; increasing only its bounded synchronization
+  allowance from 60 to 240 frames made the exact fixed-frame retry and final complete suite pass,
+  matching the existing southern-road allowance without changing assertions or product behavior.
+- No product-owner graphical observation was supplied for the runtime ground in this session.
+  Automated checks prove mechanics and import invariants, not visual acceptance or accessibility.
 
 ## Exact next bounded slice
 
-Promote only the existing manifest-bound `terrain.quiet_moss` tile into a runtime-owned terrain
-directory with exact source/hash parity and repeat-enabled lossless import. Replace only the flat
-3200x1800 `Ground` polygon with that repeating tile behind all existing greybox presentation, then
-add a credential-free smoke proving exact texture identity, 256x256 source geometry, full world
-coverage, draw ordering, and no reference to the proof-only directory.
+Run one product-owner graphical review of the repeated quiet-moss ground throughout the opening
+region at 0.8, 1.0, and 2.0 zoom and representative wider/taller window shapes. Check for obvious
+repetition, seams, scale/readability problems, greybox contrast, and framing, and record only the
+observations the product owner actually supplies. Correct only ground tiling, import, or draw-order
+defects exposed by that review, then rerun `./scripts/quality.sh`.
 
-Do not integrate leaf litter, transitions, packed-earth path modules, water art, structures,
-foliage, props, characters, animation, UI, effects, or audio in that slice. Do not change collision,
-navigation, locations, topology, scenario, dialogue, clue, discovery, treatment, save, provider, or
-gameplay authority; do not fill the five non-authoritative content budgets. Keep the proof imports
-isolated and request one graphical product-owner review of the runtime ground at 0.8/1.0/2.0 before
-continuing to another production asset.
+Do not promote another asset before explicit product-owner acceptance of this ground. Do not add
+leaf litter, transitions, paths, banks, water, structures, foliage, props, characters, animation,
+UI, effects, audio, or content-budget fills. Do not change collision, navigation, locations,
+topology, camera tuning, scenario, dialogue, clue, discovery, treatment, save, provider, or gameplay
+authority. After acceptance, leave one new bounded production-asset slice rather than broadening the
+review slice.

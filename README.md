@@ -28,6 +28,14 @@ grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive lumin
 measurements. None is referenced by `Main.tscn` or ordinary gameplay, and the simulation evidence is
 not human accessibility acceptance.
 
+The first bounded runtime terrain promotion copies only the manifest-bound `terrain.quiet_moss`
+export into `game/art/runtime/terrain` with exact SHA-256 parity and its own lossless, mipmap-free
+Godot import identity. `Main.tscn` repeats that 256-by-256 tile across the full 3200-by-1800 world
+behind every retained greybox element. A static validator and credential-free engine smoke bind the
+source hash, runtime resource path, geometry, coverage, repeat mode, draw order, and continued
+isolation from the proof-only directory. Paths, transitions, water, structures, props, characters,
+UI, and gameplay authority remain unchanged pending a product-owner graphical review of the ground.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path
@@ -280,12 +288,13 @@ evidence only; they do not package, sign, notarize, publish, or distribute the g
 godot --path game
 ```
 
-Use W, A, S, and D to move the gold placeholder Seeker around the 3200-by-1800 test region. The
-Seeker's named default speed is 240 pixels per second. Diagonal input is normalized so it does
-not move faster than a cardinal direction. The camera follows with a named smoothing speed of
-6 and world limits matching the region, so ordinary movement cannot reveal space beyond it.
-Its named minimum, default, and maximum zoom tuning values are 0.8, 1.0, and 2.0. Zoom and
-camera-pan input are intentionally not mapped yet.
+Use W, A, S, and D to move the gold placeholder Seeker around the 3200-by-1800 test region. Its
+ground is the repeated production quiet-moss tile; every route, landmark, stream, character, label,
+and boundary above it remains greybox presentation. The Seeker's named default speed is 240 pixels
+per second. Diagonal input is normalized so it does not move faster than a cardinal direction. The
+camera follows with a named smoothing speed of 6 and world limits matching the region, so ordinary
+movement cannot reveal space beyond it. Its named minimum, default, and maximum zoom tuning values
+are 0.8, 1.0, and 2.0. Zoom and camera-pan input are intentionally not mapped yet.
 
 The 3200-by-1800 region is authored world space, not a required display resolution. The window uses
 1280-by-720 as its minimum supported physical size and 16:9 design viewport. It remains resizable,

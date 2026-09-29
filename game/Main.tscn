@@ -1,4 +1,4 @@
-[gd_scene load_steps=320 format=3]
+[gd_scene load_steps=322 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -509,6 +509,8 @@
 [ext_resource type="Script" path="res://OpeningRegionFirstPatientRecoveryRestorationSmokeCheck.cs" id="395_recovery_restoration_check"]
 [ext_resource type="Script" path="res://OptionalOverlayVisibilityController.cs" id="398_optional_overlay_visibility"]
 [ext_resource type="Script" path="res://OptionalOverlayVisibilitySmokeCheck.cs" id="399_optional_overlay_visibility_check"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/quiet-moss.png" id="400_runtime_quiet_moss"]
+[ext_resource type="Script" path="res://RuntimeTerrainGroundSmokeCheck.cs" id="401_runtime_terrain_ground_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -606,9 +608,16 @@ script = ExtResource("398_optional_overlay_visibility")
 [node name="OptionalOverlayVisibilitySmokeCheck" type="Node" parent="."]
 script = ExtResource("399_optional_overlay_visibility_check")
 
-[node name="Ground" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 3200, 0, 3200, 1800, 0, 1800)
-color = Color(0.188, 0.278, 0.251, 1)
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -100
+texture_repeat = 2
+texture = ExtResource("400_runtime_quiet_moss")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 3200, 1800)
+
+[node name="RuntimeTerrainGroundSmokeCheck" type="Node" parent="."]
+script = ExtResource("401_runtime_terrain_ground_check")
 
 [node name="StreamCollision" type="StaticBody2D" parent="."]
 

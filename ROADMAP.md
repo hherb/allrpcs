@@ -242,6 +242,9 @@ Acceptance:
   the closed gate, Shrine-to-Southern-Road pacing, and 0.8/1.0/2.0 framing in representative window
   shapes; correct the exposed Village Edge, Sickhouse, and Stream readability defects without
   changing topology or gameplay authority.
+- [x] Promote only the manifest-bound quiet-moss tile into runtime ownership with exact source/hash
+  parity, a repeat-enabled lossless import, full 3200x1800 coverage behind the retained greybox, and
+  credential-free static and engine checks without importing another production asset.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

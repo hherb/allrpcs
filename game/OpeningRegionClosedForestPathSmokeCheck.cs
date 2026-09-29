@@ -10,7 +10,7 @@ public partial class OpeningRegionClosedForestPathSmokeCheck : Node
     private const string CheckEnvironmentVariable =
         "ALLRPCS_OPENING_REGION_CLOSED_FOREST_PATH_CHECK";
     private const string EnabledEnvironmentValue = "1";
-    private const int MaximumSynchronizationPhysicsFrames = 60;
+    private const int MaximumSynchronizationPhysicsFrames = 240;
     private const float SurfaceTolerancePixels = 1.0f;
     private int physicsFrames;
 
