@@ -22,6 +22,14 @@ RUNTIME_ASSETS = (
         "terrain.woodland_leaf_litter_transition",
         RUNTIME_ROOT / "woodland-leaf-litter-transition.png",
     ),
+    (
+        "terrain.woodland_leaf_litter_corner_transition",
+        RUNTIME_ROOT / "woodland-leaf-litter-corner-transition.png",
+    ),
+    (
+        "terrain.woodland_leaf_litter_corner_transition_left",
+        RUNTIME_ROOT / "woodland-leaf-litter-corner-transition-left.png",
+    ),
 )
 
 
@@ -168,7 +176,7 @@ def main() -> None:
     print("Runtime terrain validation passed")
     for asset_id, _ in RUNTIME_ASSETS:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
-    print("geometry: three 256x256 assets; imports: lossless, mipmap-free, runtime-owned UIDs")
+    print("geometry: five 256x256 assets; imports: lossless, mipmap-free, runtime-owned UIDs")
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")
 
 

@@ -55,25 +55,87 @@ public partial class OpeningRegionWoodlandClearingSceneSource : Node2D
         GetNode<Label>("ClearingLabel").Position = new Vector2(
             Binding.WoodlandClearingBounds.Left + 12.0f,
             Binding.WoodlandClearingBounds.Top + 12.0f);
-        ConfigureNorthTransition();
+        ConfigureTransitionPerimeter();
     }
 
-    private void ConfigureNorthTransition()
+    private void ConfigureTransitionPerimeter()
     {
-        Sprite2D transition = GetNode<Sprite2D>("NorthTransition");
-        Texture2D texture = transition.Texture
-            ?? throw new InvalidOperationException("The woodland transition texture is required.");
-        float boundaryLength =
-            Binding.WoodlandClearingBounds.Right - Binding.WoodlandClearingBounds.Left;
-        transition.Position = new Vector2(
-            Binding.WoodlandClearingBounds.Left + (boundaryLength / 2.0f),
-            Binding.WoodlandClearingBounds.Top);
-        transition.Rotation = Mathf.Pi / 2.0f;
-        transition.RegionRect = new Rect2(
-            0.0f,
-            0.0f,
-            texture.GetWidth(),
-            boundaryLength);
+        Sprite2D northTransition = GetNode<Sprite2D>("NorthTransition");
+        Sprite2D southTransition = GetNode<Sprite2D>("SouthTransition");
+        Sprite2D topLeftCorner = GetNode<Sprite2D>("TopLeftTransitionCorner");
+        Sprite2D topRightCorner = GetNode<Sprite2D>("TopRightTransitionCorner");
+        Sprite2D bottomLeftCorner = GetNode<Sprite2D>("BottomLeftTransitionCorner");
+        Sprite2D bottomRightCorner = GetNode<Sprite2D>("BottomRightTransitionCorner");
+        Texture2D[] perimeterTextures =
+        [
+            RequiredTexture(northTransition),
+            RequiredTexture(southTransition),
+            RequiredTexture(topLeftCorner),
+            RequiredTexture(topRightCorner),
+            RequiredTexture(bottomLeftCorner),
+            RequiredTexture(bottomRightCorner),
+        ];
+        float diameter = perimeterTextures[0].GetWidth();
+        if (perimeterTextures.Any(texture =>
+            texture.GetWidth() != diameter || texture.GetHeight() != diameter))
+        {
+            throw new InvalidOperationException(
+                "The woodland perimeter requires matching square transition textures.");
+        }
+
+        NavigationWorldBounds bounds = Binding.WoodlandClearingBounds;
+        float boundaryWidth = bounds.Right - bounds.Left;
+        float boundaryHeight = bounds.Bottom - bounds.Top;
+        float straightSpan = boundaryWidth - diameter;
+        if (straightSpan <= 0.0f || boundaryHeight > diameter)
+        {
+            throw new InvalidOperationException(
+                "The woodland clearing must fit one horizontal rounded transition perimeter.");
+        }
+
+        float verticalOverhang = (diameter - boundaryHeight) / 2.0f;
+        float top = bounds.Top - verticalOverhang;
+        float bottom = bounds.Bottom + verticalOverhang;
+        float centerX = bounds.Left + (boundaryWidth / 2.0f);
+        ConfigureStraightTransition(
+            northTransition,
+            new Vector2(centerX, top),
+            Mathf.Pi / 2.0f,
+            diameter,
+            straightSpan);
+        ConfigureStraightTransition(
+            southTransition,
+            new Vector2(centerX, bottom),
+            -Mathf.Pi / 2.0f,
+            diameter,
+            straightSpan);
+        ConfigureCorner(topLeftCorner, new Vector2(bounds.Left, top), Mathf.Pi / 2.0f);
+        ConfigureCorner(topRightCorner, new Vector2(bounds.Right, top), -Mathf.Pi / 2.0f);
+        ConfigureCorner(bottomLeftCorner, new Vector2(bounds.Left, bottom), 0.0f);
+        ConfigureCorner(bottomRightCorner, new Vector2(bounds.Right, bottom), 0.0f);
+    }
+
+    private static Texture2D RequiredTexture(Sprite2D sprite) =>
+        sprite.Texture
+        ?? throw new InvalidOperationException(
+            $"The woodland perimeter texture on {sprite.Name} is required.");
+
+    private static void ConfigureStraightTransition(
+        Sprite2D transition,
+        Vector2 position,
+        float rotation,
+        float textureSize,
+        float span)
+    {
+        transition.Position = position;
+        transition.Rotation = rotation;
+        transition.RegionRect = new Rect2(0.0f, 0.0f, textureSize, span);
+    }
+
+    private static void ConfigureCorner(Sprite2D corner, Vector2 position, float rotation)
+    {
+        corner.Position = position;
+        corner.Rotation = rotation;
     }
 
     private void ConfigureBoundaries()

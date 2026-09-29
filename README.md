@@ -28,24 +28,28 @@ grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive lumin
 measurements. No proof-directory path is referenced by `Main.tscn` or ordinary gameplay, and the
 simulation evidence is not human accessibility acceptance.
 
-The first three bounded runtime terrain promotions copy only the manifest-bound
-`terrain.quiet_moss`, `terrain.woodland_leaf_litter`, and straight
-`terrain.woodland_leaf_litter_transition` exports into `game/art/runtime/terrain`, each with exact
-SHA-256 parity and its own lossless, mipmap-free Godot import identity. `Main.tscn` repeats quiet
-moss across the full 3200-by-1800 world at `z_index = -100`, repeats leaf litter only across the
-existing 648-by-250 Woodland Clearing bounds at `z_index = -90`, and rotates the straight transition
-one exact quarter-turn across only the clearing's 648-pixel north edge at `y = 200` and
-`z_index = -80`. All remain behind every retained greybox route, opening, label, and interaction
-marker. Static and credential-free engine checks bind all three source hashes, runtime paths,
+The first five bounded runtime terrain promotions copy only the manifest-bound
+`terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
+`terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into
+`game/art/runtime/terrain`, each with exact SHA-256 parity and its own lossless, mipmap-free Godot
+import identity. `Main.tscn` repeats quiet moss across the full 3200-by-1800 world at
+`z_index = -100` and leaf litter only across the existing 648-by-250 Woodland Clearing bounds at
+`z_index = -90`. At `z_index = -80`, two 392-pixel rotated straight spans and four 256-pixel outer
+corners form one rounded visual perimeter derived from those unchanged bounds. Its three-pixel
+vertical overhang centers the corner diameter without changing collision, navigation, or leaf-tile
+coverage. All terrain remains behind every retained greybox route, opening, label, and interaction
+marker. Static and credential-free engine checks bind all five source hashes, runtime paths,
 geometry, coverage, repeat mode, draw order, and continued isolation from the proof-only directory.
 The product owner accepted the quiet-moss appearance in supplied 1.0x and 2.0x views. That review
 also exposed one pre-existing 2.0x overlap between the identified stone-marker description and a
 yellow opening marker; the description now occupies a checked non-overlapping rectangle. The product
 owner subsequently accepted the leaf-litter clearing's repetition, seams, scale/readability,
-contrast, intentionally rectangular edge, and corrected label placement in supplied 0.8x, 1.0x,
-and 2.0x wide and tall views. The other three clearing edges, corner transitions, paths, water,
-structures, props, characters, UI systems, and gameplay authority remain unchanged pending a
-graphical review of the north-edge transition.
+contrast, initial rectangular edge, and corrected label placement in supplied 0.8x, 1.0x, and 2.0x
+wide and tall views. During the following north-transition review, the owner found the remaining
+hard edges unnatural. The bounded correction reused the straight transition and promoted only the
+two already manifest-bound outer corners to complete the rounded perimeter; it remains pending
+graphical review. Inset corners, paths, water, structures, props, characters, UI systems, and
+gameplay authority remain unchanged.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven

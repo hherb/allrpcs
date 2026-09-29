@@ -7,54 +7,61 @@ twelve topology edges, collision/navigation authority, closed north-west forest 
 scenario, and gameplay authority remain unchanged. Direction A remains selected; Direction D is only
 the contingency. The 66-export proof and seventeen OpenRaster masters remain proof-only.
 
-Three exact manifest assets now have separate runtime-owned copies. `terrain.quiet_moss`, SHA-256
+Five exact manifest assets now have separate runtime-owned copies. `terrain.quiet_moss`, SHA-256
 `3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db`, repeats across the full
 world at `z_index = -100`. `terrain.woodland_leaf_litter`, SHA-256
 `f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a`, repeats across only the
-Woodland Clearing bounds `(600, 200)` through `(1248, 450)` at `z_index = -90`. The straight
+unchanged Woodland Clearing bounds `(600, 200)` through `(1248, 450)` at `z_index = -90`.
 `terrain.woodland_leaf_litter_transition`, SHA-256
-`8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334`, is rotated exactly 90
-degrees and repeats across only that clearing's 648-pixel north edge at `y = 200` and
-`z_index = -80`. All three remain behind retained routes, openings, labels, and interaction markers.
+`8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334`, supplies the north and
+south straight spans. `terrain.woodland_leaf_litter_corner_transition`, SHA-256
+`53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf`, and its complementary
+`_left` asset, SHA-256 `c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24`,
+supply four outer corners. The source derives two 392-pixel spans, corner centers, and a three-pixel
+vertical visual overhang from the authoritative 648x250 clearing bounds and 256-pixel textures. The
+rounded perimeter remains at `z_index = -80`, behind every retained route, opening, label, and
+interaction marker. Collision, navigation, routes, topology, and gameplay authority did not change.
 
 ## Review, evidence, and limits
 
-- The product owner accepted the supplied leaf-litter views at 0.8x, 1.0x, and 2.0x in 1280x720 and
-  1280x827 shapes, including repetition, seams, scale/readability, contrast, the intentionally hard
-  rectangular edge, and the corrected stone-marker description placement.
-- The north-edge slice imports only the exact manifest straight transition. Its original repeatable
-  top/bottom seam becomes the horizontal runtime repeat axis; no corner asset or other edge is used.
-- The failure-first runtime validator rejected the missing third runtime asset. After implementation,
-  `scripts/validate-runtime-terrain.py` proves all three exact manifest/source/runtime hashes,
+- The product owner accepted the leaf tile's repetition, seams, scale/readability, contrast, initial
+  rectangular presentation, and corrected stone-marker text placement. During the later north-edge
+  review, the owner said the remaining hard edges looked unnatural; the north-only presentation was
+  therefore not accepted.
+- The correction promotes only the two existing manifest-bound outer corners and reuses the already
+  promoted straight transition. No inset corner or unrelated production asset entered `Main.tscn`.
+- The failure-first runtime validator rejected the missing five-asset runtime set. After implementation,
+  `scripts/validate-runtime-terrain.py` proves all five exact manifest/source/runtime hashes,
   256x256 geometry, separate runtime UIDs/cache paths, lossless mipmap-free imports, the bounded
   runtime asset set, ordinary-scene references, and proof-directory isolation.
-- `RuntimeTerrainGroundSmokeCheck` proves exact transition texture identity, quarter-turn, repeated
-  648-pixel north-edge placement, and `-100 < -90 < -80` draw order. Session review removed fixed
-  duplicate scene coordinates: the source now derives the center, north edge, quarter-turn, and
-  repeat span from the same authoritative clearing binding used by the leaf-litter rectangle.
+- `RuntimeTerrainGroundSmokeCheck` proves exact texture identities, two quarter-turned 392-pixel
+  spans at `(924, 197)` and `(924, 453)`, the four exact corner positions and rotations, and
+  `-100 < -90 < -80` draw order. The focused host-local smoke passed.
 - Final host-local `./scripts/quality.sh` passed the art/proposal/import/runtime validators,
   zero-warning build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure,
   8 architecture), scenario validation, every credential-free Godot smoke, formatting, and the
   Compatibility launch.
+- Six Compatibility-rendered repository-backed views exist at 0.8x, 1.0x, and 2.0x in both 1280x720
+  and 1280x827 shapes. Automated and session review found a continuous rounded boundary with routes
+  and labels still above it; this is not product-owner acceptance.
 - Hosted Credential-free CI run `36553429332` reported failure with `steps: []` for all five jobs;
   it ran no checkout, build, test, Godot, or export step. Treat that as Actions/account
   infrastructure state, not hosted product-validation evidence or a product failure.
 - Automated checks prove provenance, geometry, import, placement, and mechanical isolation. No
-  product-owner graphical observation has yet been supplied for the north-edge transition, and no
-  human accessibility acceptance is claimed.
+  product-owner observation has yet accepted the rounded correction, and no human accessibility
+  acceptance is claimed.
 
 ## Exact next bounded slice
 
-Run one product-owner graphical review of the Woodland Clearing north-edge transition at 0.8, 1.0,
-and 2.0 zoom in the supplied 1280x720 and 1280x827 shapes. Check horizontal repetition/seams,
-transition softness and scale, route/opening/label contrast, its endpoints against the intentionally
-hard west/east edges, and continued readability of the closed forest opening. Record only
-observations the product owner actually supplies and correct only this transition's import,
-placement, repeat span, rotation, or draw order, then rerun `./scripts/quality.sh`.
+Run one product-owner graphical review of the rounded Woodland Clearing perimeter at 0.8x, 1.0x,
+and 2.0x in the supplied 1280x720 and 1280x827 shapes. Check all six joins for seams, boundary
+naturalness and scale, route/opening/label contrast, and continued readability of the closed forest
+opening. Record only observations the product owner actually supplies. If correction is required,
+change only these two outer-corner imports or the perimeter's derived positions, spans, rotations,
+or draw order, then rerun `./scripts/quality.sh`.
 
-Do not promote either outer corner, either inset corner, another clearing edge, path art, banks,
-water, structures, foliage, props, characters, animation, UI systems, effects, audio, or
-content-budget fills before explicit acceptance. Do not change collision, navigation, locations,
-topology, camera tuning, scenario, dialogue, clue, discovery, treatment, save, provider, or gameplay
-authority. After acceptance, choose one exact endpoint/corner slice rather than completing the whole
-perimeter at once.
+Do not promote either inset corner, path art, banks, water, structures, foliage, props, characters,
+animation, UI systems, effects, audio, or content-budget fills. Do not change the exact leaf-tile
+bounds, collision, navigation, locations, topology, camera tuning, scenario, dialogue, clue,
+discovery, treatment, save, provider, or gameplay authority. Do not claim rounded-perimeter or human
+accessibility acceptance until the product owner explicitly supplies it.

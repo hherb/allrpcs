@@ -12,11 +12,16 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         "res://art/runtime/terrain/woodland-leaf-litter.png";
     private const string ExpectedWoodlandTransitionTexturePath =
         "res://art/runtime/terrain/woodland-leaf-litter-transition.png";
+    private const string ExpectedWoodlandCornerTexturePath =
+        "res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png";
+    private const string ExpectedWoodlandLeftCornerTexturePath =
+        "res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png";
     private static readonly Rect2 ExpectedWorldRegion = new(0.0f, 0.0f, 3200.0f, 1800.0f);
     private static readonly Rect2 ExpectedWoodlandRegion = new(600.0f, 200.0f, 648.0f, 250.0f);
-    private static readonly Rect2 ExpectedNorthTransitionRegion =
-        new(0.0f, 0.0f, 256.0f, 648.0f);
-    private static readonly Vector2 ExpectedNorthTransitionPosition = new(924.0f, 200.0f);
+    private static readonly Rect2 ExpectedStraightTransitionRegion =
+        new(0.0f, 0.0f, 256.0f, 392.0f);
+    private static readonly Vector2 ExpectedNorthTransitionPosition = new(924.0f, 197.0f);
+    private static readonly Vector2 ExpectedSouthTransitionPosition = new(924.0f, 453.0f);
 
     /// <inheritdoc />
     public override void _Ready()
@@ -39,6 +44,16 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             "../OpeningRegionWoodlandClearingSceneSource/ClearingArea");
         Sprite2D northTransition = GetNode<Sprite2D>(
             "../OpeningRegionWoodlandClearingSceneSource/NorthTransition");
+        Sprite2D southTransition = GetNode<Sprite2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/SouthTransition");
+        Sprite2D topLeftCorner = GetNode<Sprite2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/TopLeftTransitionCorner");
+        Sprite2D topRightCorner = GetNode<Sprite2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/TopRightTransitionCorner");
+        Sprite2D bottomLeftCorner = GetNode<Sprite2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/BottomLeftTransitionCorner");
+        Sprite2D bottomRightCorner = GetNode<Sprite2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/BottomRightTransitionCorner");
         Polygon2D laundryOpening = GetNode<Polygon2D>(
             "../OpeningRegionWoodlandClearingSceneSource/LaundryOpening");
         Line2D regionOutline = GetNode<Line2D>("../RegionOutline");
@@ -85,51 +100,115 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             return;
         }
 
-        Texture2D? northTransitionTexture = northTransition.Texture;
-        if (northTransitionTexture is null
-            || northTransitionTexture.ResourcePath != ExpectedWoodlandTransitionTexturePath
-            || northTransitionTexture.GetWidth() != 256
-            || northTransitionTexture.GetHeight() != 256)
+        if (!HasExactTexture(northTransition, ExpectedWoodlandTransitionTexturePath)
+            || !HasExactTexture(southTransition, ExpectedWoodlandTransitionTexturePath))
         {
-            Fail("Runtime woodland north edge lost its exact 256x256 transition identity.");
+            Fail("Runtime woodland straight edges lost their exact 256x256 transition identity.");
             return;
         }
 
         if (!northTransition.RegionEnabled
-            || northTransition.RegionRect != ExpectedNorthTransitionRegion
+            || northTransition.RegionRect != ExpectedStraightTransitionRegion
             || northTransition.Position != ExpectedNorthTransitionPosition
             || !northTransition.Centered
             || northTransition.Offset != Vector2.Zero
             || northTransition.TextureRepeat != CanvasItem.TextureRepeatEnum.Enabled
             || !Mathf.IsEqualApprox(northTransition.Rotation, Mathf.Pi / 2.0f)
-            || northTransition.Scale != Vector2.One)
+            || northTransition.Scale != Vector2.One
+            || !southTransition.RegionEnabled
+            || southTransition.RegionRect != ExpectedStraightTransitionRegion
+            || southTransition.Position != ExpectedSouthTransitionPosition
+            || !southTransition.Centered
+            || southTransition.Offset != Vector2.Zero
+            || southTransition.TextureRepeat != CanvasItem.TextureRepeatEnum.Enabled
+            || !Mathf.IsEqualApprox(southTransition.Rotation, -Mathf.Pi / 2.0f)
+            || southTransition.Scale != Vector2.One)
         {
-            Fail("Runtime woodland transition lost its repeated exact north-edge placement.");
+            Fail("Runtime woodland straight transitions lost their derived perimeter placement.");
+            return;
+        }
+
+        if (!HasExactCornerPresentation(
+                topLeftCorner,
+                ExpectedWoodlandCornerTexturePath,
+                new Vector2(600.0f, 197.0f),
+                Mathf.Pi / 2.0f)
+            || !HasExactCornerPresentation(
+                topRightCorner,
+                ExpectedWoodlandLeftCornerTexturePath,
+                new Vector2(1248.0f, 197.0f),
+                -Mathf.Pi / 2.0f)
+            || !HasExactCornerPresentation(
+                bottomLeftCorner,
+                ExpectedWoodlandCornerTexturePath,
+                new Vector2(600.0f, 453.0f),
+                0.0f)
+            || !HasExactCornerPresentation(
+                bottomRightCorner,
+                ExpectedWoodlandLeftCornerTexturePath,
+                new Vector2(1248.0f, 453.0f),
+                0.0f))
+        {
+            Fail("Runtime woodland corners lost their exact rounded-perimeter placement.");
             return;
         }
 
         if (ground.ZIndex != -100
             || woodland.ZIndex != -90
             || northTransition.ZIndex != -80
+            || southTransition.ZIndex != -80
+            || topLeftCorner.ZIndex != -80
+            || topRightCorner.ZIndex != -80
+            || bottomLeftCorner.ZIndex != -80
+            || bottomRightCorner.ZIndex != -80
             || ground.ZIndex >= woodland.ZIndex
             || woodland.ZIndex >= northTransition.ZIndex
             || ground.GetIndex() >= regionOutline.GetIndex()
             || woodland.GetIndex() >= northTransition.GetIndex()
-            || northTransition.GetIndex() >= laundryOpening.GetIndex()
+            || northTransition.GetIndex() >= southTransition.GetIndex()
+            || southTransition.GetIndex() >= topLeftCorner.GetIndex()
+            || topLeftCorner.GetIndex() >= topRightCorner.GetIndex()
+            || topRightCorner.GetIndex() >= bottomLeftCorner.GetIndex()
+            || bottomLeftCorner.GetIndex() >= bottomRightCorner.GetIndex()
+            || bottomRightCorner.GetIndex() >= laundryOpening.GetIndex()
             || ground.ShowBehindParent
             || woodland.ShowBehindParent
-            || northTransition.ShowBehindParent)
+            || northTransition.ShowBehindParent
+            || southTransition.ShowBehindParent
+            || topLeftCorner.ShowBehindParent
+            || topRightCorner.ShowBehindParent
+            || bottomLeftCorner.ShowBehindParent
+            || bottomRightCorner.ShowBehindParent)
         {
             Fail("Runtime terrain no longer draws behind the retained greybox presentation.");
             return;
         }
 
         GD.Print(
-            "Runtime terrain ground smoke passed: exact 256x256 quiet moss, leaf litter, and "
-            + "north-edge transition repeat across bounded regions behind the retained greybox "
-            + "presentation.");
+            "Runtime terrain ground smoke passed: exact 256x256 quiet moss, leaf litter, straight "
+            + "transitions, and complementary outer corners form one derived rounded perimeter "
+            + "behind the retained greybox presentation.");
         GetTree().Quit();
     }
+
+    private static bool HasExactTexture(Sprite2D sprite, string expectedPath) =>
+        sprite.Texture is Texture2D texture
+        && texture.ResourcePath == expectedPath
+        && texture.GetWidth() == 256
+        && texture.GetHeight() == 256;
+
+    private static bool HasExactCornerPresentation(
+        Sprite2D corner,
+        string expectedTexturePath,
+        Vector2 expectedPosition,
+        float expectedRotation) =>
+        HasExactTexture(corner, expectedTexturePath)
+        && !corner.RegionEnabled
+        && corner.Position == expectedPosition
+        && corner.Centered
+        && corner.Offset == Vector2.Zero
+        && Mathf.IsEqualApprox(corner.Rotation, expectedRotation)
+        && corner.Scale == Vector2.One;
 
     private static bool IsRectangle(Vector2[] polygon, Rect2 bounds) =>
         polygon.Length == 4

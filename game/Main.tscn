@@ -1,4 +1,4 @@
-[gd_scene load_steps=324 format=3]
+[gd_scene load_steps=326 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -513,6 +513,8 @@
 [ext_resource type="Script" path="res://RuntimeTerrainGroundSmokeCheck.cs" id="401_runtime_terrain_ground_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter.png" id="402_runtime_leaf_litter"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-transition.png" id="403_runtime_leaf_transition"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png" id="404_runtime_leaf_corner"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png" id="405_runtime_leaf_left_corner"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -2268,6 +2270,28 @@ z_index = -80
 texture_repeat = 2
 texture = ExtResource("403_runtime_leaf_transition")
 region_enabled = true
+
+[node name="SouthTransition" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -80
+texture_repeat = 2
+texture = ExtResource("403_runtime_leaf_transition")
+region_enabled = true
+
+[node name="TopLeftTransitionCorner" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -80
+texture = ExtResource("404_runtime_leaf_corner")
+
+[node name="TopRightTransitionCorner" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -80
+texture = ExtResource("405_runtime_leaf_left_corner")
+
+[node name="BottomLeftTransitionCorner" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -80
+texture = ExtResource("404_runtime_leaf_corner")
+
+[node name="BottomRightTransitionCorner" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -80
+texture = ExtResource("405_runtime_leaf_left_corner")
 
 [node name="LaundryOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
 polygon = PackedVector2Array(528, 46, 544, 46, 544, 94, 528, 94)

@@ -257,6 +257,9 @@ Acceptance:
 - [x] Promote only the manifest-bound straight moss-to-leaf transition into separate runtime
   ownership and repeat one exact quarter-turn across the Woodland Clearing's north edge behind the
   retained greybox presentation, leaving the other three edges and every corner unchanged.
+- [x] Correct the product-owner-rejected hard clearing edges by promoting only the two manifest-bound
+  outer corners and reusing the straight transition across a derived rounded visual perimeter,
+  without changing the exact leaf-tile bounds, collision, navigation, routes, or gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
