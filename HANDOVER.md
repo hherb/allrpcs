@@ -42,8 +42,8 @@ above terrain and below all ordinary landmarks, openings, labels, and interactio
   zero-warning build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure,
   8 architecture), scenario validation, every credential-free Godot smoke, formatting, and the
   Compatibility launch.
-- Hosted Credential-free CI run `36560348765` for earlier implementation commit `9920ef0` had
-  `steps: []` for all five jobs. It ran no product command and remains Actions/account infrastructure
+- Hosted Credential-free CI run `36566160795` for implementation commit `f99bdd6` had `steps: []`
+  for all five jobs. It ran no checkout or product command and remains Actions/account infrastructure
   state, not product-validation evidence or a product failure.
 - Automated checks do not establish pacing, usability, path-art acceptance, or human accessibility
   acceptance. Record only observations the product owner actually supplies.
