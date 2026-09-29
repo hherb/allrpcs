@@ -28,6 +28,9 @@ Stream–Laundry–Woodland turn. It has no runtime copy, and `Main.tscn` does n
   architecture tests, scenario validation, every credential-free Godot smoke, and the Compatibility
   launch. The sandbox run reached Godot but could not write `user://` settings/logs; the identical
   host run passed.
+- Final-head hosted run `36583132141` is Actions/account infrastructure state: all five jobs failed
+  with `steps: []` and ran no checkout or product command. It is neither product-test evidence nor a
+  product failure.
 - Product-owner acceptance covers curve shape, texture continuity, apparent width, seams, and the
   removed preview triangle. Automated checks do not establish pacing, usability, or human
   accessibility acceptance.
