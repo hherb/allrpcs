@@ -36,6 +36,9 @@ degrees and repeats across only that clearing's 648-pixel north edge at `y = 200
   zero-warning build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure,
   8 architecture), scenario validation, every credential-free Godot smoke, formatting, and the
   Compatibility launch.
+- Hosted Credential-free CI run `36553429332` reported failure with `steps: []` for all five jobs;
+  it ran no checkout, build, test, Godot, or export step. Treat that as Actions/account
+  infrastructure state, not hosted product-validation evidence or a product failure.
 - Automated checks prove provenance, geometry, import, placement, and mechanical isolation. No
   product-owner graphical observation has yet been supplied for the north-edge transition, and no
   human accessibility acceptance is claimed.
