@@ -29,12 +29,13 @@ grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive lumin
 measurements. No proof-directory path is referenced by `Main.tscn` or ordinary gameplay, and the
 simulation evidence is not human accessibility acceptance.
 
-The first seven bounded runtime terrain promotions copy only the manifest-bound
+The first eight bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into
 `game/art/runtime/terrain`, followed by one `terrain.straight_path` and its matching
-`terrain.path_end_cap`. Each has exact SHA-256 parity and its own lossless, mipmap-free Godot import
-identity. `Main.tscn` repeats quiet moss across the full 3200-by-1800 world at
+`terrain.path_end_cap`, then the exact `terrain.opening_junction`. Each has exact SHA-256 parity and
+its own lossless, mipmap-free Godot import identity. `Main.tscn` repeats quiet moss across the full
+3200-by-1800 world at
 `z_index = -100` and leaf litter only across the existing 648-by-250 Woodland Clearing bounds at
 `z_index = -90`. At `z_index = -80`, two 392-pixel rotated straight spans and four 256-pixel outer
 corners form one rounded visual perimeter derived from those unchanged bounds. Its three-pixel
@@ -42,9 +43,11 @@ vertical overhang centers the corner diameter without changing collision, naviga
 coverage. The 96x256 straight module repeats across only the exact Abandoned Laundry-to-Woodland
 Clearing connection and meets its rounded 256x256 end cap at the clearing anchor. It and the end cap
 draw at `z_index = -70`, above the retained eleven greybox routes at `-75` and below every opening,
-label, and interaction marker. Static and credential-free engine checks bind all seven source
-hashes, runtime paths, geometry, coverage, repeat mode, draw order, and continued isolation from the
-proof-only directory.
+label, and interaction marker. The junction uses its exact `(224, 224)` pivot at the Abandoned
+Laundry anchor and a rigid `133.025066°` rotation to join the retained Stream leg to that approved
+straight path without scaling, shearing, collision, navigation, or topology changes. Static and
+credential-free engine checks bind all eight source hashes, runtime paths, geometry, coverage,
+repeat mode, draw order, and continued isolation from the proof-only directory.
 The product owner accepted the quiet-moss appearance in supplied 1.0x and 2.0x views. That review
 also exposed one pre-existing 2.0x overlap between the identified stone-marker description and a
 yellow opening marker; the description now occupies a checked non-overlapping rectangle. The product
@@ -58,11 +61,13 @@ module and matching rounded end cap on the Laundry-to-Clearing connection; after
 corrections, the owner approved the supplied 0.8x, 1.0x, and 2.0x wide and tall final views. The
 isolated Stream–Laundry–Woodland junction review subsequently replaced its hard composited elbow
 with an alpha-aware, tangent-continuous 96-pixel curve and clipped preview continuations at the
-module boundary. The product owner accepted the corrected curve and texture continuity. Inset
+module boundary. The product owner accepted the corrected proof's curve and texture continuity,
+then separately authorized this exact runtime promotion. Ordinary-scene acceptance remains pending
+review of the supplied 0.8x, 1.0x, and 2.0x wide and tall runtime views. Inset
 corners, bends, junctions, other paths, water, structures, props, characters, UI systems, and
-gameplay authority remain unchanged. The separately approved Stream–Laundry–Woodland junction proof
-follows the exact live 57.599282-degree turn, proves both 96-pixel connector seams and curved
-physical-route containment, and remains isolated from `Main.tscn` pending separate runtime approval.
+gameplay authority remain unchanged. The Stream–Laundry–Woodland junction follows the exact live
+57.599282-degree turn and retains both 96-pixel connector seams and curved physical-route
+containment; its editable master and isolated import proof remain outside ordinary runtime paths.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven

@@ -20,6 +20,9 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         "res://art/runtime/terrain/straight-path.png";
     private const string ExpectedPathEndCapTexturePath =
         "res://art/runtime/terrain/path-end-cap.png";
+    private const string ExpectedOpeningJunctionTexturePath =
+        "res://art/runtime/terrain/opening-junction.png";
+    private const float ExpectedOpeningJunctionRotationDegrees = 133.025066f;
     private static readonly Rect2 ExpectedWorldRegion = new(0.0f, 0.0f, 3200.0f, 1800.0f);
     private static readonly Rect2 ExpectedWoodlandRegion = new(600.0f, 200.0f, 648.0f, 250.0f);
     private static readonly Rect2 ExpectedStraightTransitionRegion =
@@ -66,6 +69,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Node2D routePresentation = GetNode<Node2D>("../GreyboxNavigation/RoutePresentation");
         Sprite2D straightPath = routePresentation.GetNode<Sprite2D>("LaundryClearingPath");
         Sprite2D pathEndCap = routePresentation.GetNode<Sprite2D>("LaundryClearingPathEndCap");
+        Sprite2D openingJunction = routePresentation.GetNode<Sprite2D>("OpeningJunction");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -183,15 +187,25 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || !pathEndCap.Centered
             || pathEndCap.Offset != Vector2.Zero
             || pathEndCap.Scale != Vector2.One
-            || routePresentation.GetChildCount() != 13
+            || !HasExactTexture(openingJunction, ExpectedOpeningJunctionTexturePath, 512, 512)
+            || openingJunction.RegionEnabled
+            || openingJunction.Position != ExpectedStraightPathStart
+            || !Mathf.IsEqualApprox(
+                openingJunction.RotationDegrees,
+                ExpectedOpeningJunctionRotationDegrees)
+            || !openingJunction.Centered
+            || openingJunction.Offset != new Vector2(32.0f, 32.0f)
+            || openingJunction.Scale != Vector2.One
+            || routePresentation.GetChildCount() != 14
             || routePresentation.GetChildren().Count(child => child is Line2D) != 11
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 2
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 3
             || straightPath.GetIndex() >= pathEndCap.GetIndex()
+            || pathEndCap.GetIndex() >= openingJunction.GetIndex()
             || routePresentation.GetChildren()
                 .Where(child => child is Line2D)
                 .Any(child => ((Line2D)child).ZIndex != -75))
         {
-            Fail("Runtime straight path lost its exact laundry-clearing presentation.");
+            Fail("Runtime path art lost its exact bounded opening-region presentation.");
             return;
         }
 
@@ -205,6 +219,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || bottomRightCorner.ZIndex != -80
             || straightPath.ZIndex != -70
             || pathEndCap.ZIndex != -70
+            || openingJunction.ZIndex != -70
             || ground.ZIndex >= woodland.ZIndex
             || woodland.ZIndex >= northTransition.ZIndex
             || bottomRightCorner.ZIndex >= straightPath.ZIndex
@@ -225,7 +240,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || bottomLeftCorner.ShowBehindParent
             || bottomRightCorner.ShowBehindParent
             || straightPath.ShowBehindParent
-            || pathEndCap.ShowBehindParent)
+            || pathEndCap.ShowBehindParent
+            || openingJunction.ShowBehindParent)
         {
             Fail("Runtime terrain no longer draws behind the retained greybox presentation.");
             return;
@@ -234,7 +250,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         GD.Print(
             "Runtime terrain ground smoke passed: exact 256x256 quiet moss, leaf litter, straight "
             + "transitions, complementary outer corners, and one straight path with its rounded "
-            + "end cap form exact bounded presentation behind the retained greybox.");
+            + "end cap plus the exact live-angle opening junction form bounded presentation behind "
+            + "the retained greybox.");
         GetTree().Quit();
     }
 

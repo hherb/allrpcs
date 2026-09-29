@@ -38,6 +38,11 @@ RUNTIME_ASSETS = (
     ),
     ("terrain.straight_path", RUNTIME_ROOT / "straight-path.png", (96, 256)),
     ("terrain.path_end_cap", RUNTIME_ROOT / "path-end-cap.png", (256, 256)),
+    (
+        "terrain.opening_junction",
+        RUNTIME_ROOT / "opening-junction.png",
+        (512, 512),
+    ),
 )
 
 
@@ -185,7 +190,7 @@ def main() -> None:
     for asset_id, _, _ in RUNTIME_ASSETS:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
     print(
-        "geometry: six 256x256 assets and one 96x256 path; "
+        "geometry: six 256x256 assets, one 96x256 path, and one 512x512 junction; "
         "imports: lossless, mipmap-free, runtime-owned UIDs"
     )
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")

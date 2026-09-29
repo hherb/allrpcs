@@ -279,6 +279,12 @@ Acceptance:
 - [x] Complete the isolated opening-junction product-owner review, replacing the rejected hard
   texture overlap with an alpha-aware tangent-continuous curve and removing the preview-only elbow
   triangle before recording acceptance; do not treat that acceptance as runtime-promotion approval.
+- [x] After separate explicit product-owner approval, promote only that exact manifest-bound
+  opening junction at the live Stream–Laundry–Woodland turn with exact source/hash/import parity,
+  `(224, 224)` pivot placement, rigid `133.025066°` rotation, retained greybox route presentation,
+  and unchanged collision, navigation, topology, camera, and gameplay authority.
+- [ ] Complete the ordinary-scene opening-junction review across the supplied 0.8x, 1.0x, and 2.0x
+  1280x720 and 1280x827 views before recording runtime visual acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

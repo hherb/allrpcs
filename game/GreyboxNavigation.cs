@@ -9,7 +9,15 @@ public partial class GreyboxNavigation : NavigationRegion2D
     private const string StraightPathSecondId = "woodland-clearing";
     private const string StraightPathNodeName = "LaundryClearingPath";
     private const string PathEndCapNodeName = "LaundryClearingPathEndCap";
+    private const string OpeningJunctionNodeName = "OpeningJunction";
+    private const string OpeningJunctionAnchorId = "abandoned-laundry";
     private const int StraightPathModuleLengthPixels = 256;
+    private const int OpeningJunctionSizePixels = 512;
+    private const int OpeningJunctionPivotPixels = 224;
+    private const float OpeningJunctionRotationDegrees = 133.025066f;
+    private static readonly Vector2 OpeningJunctionPivotOffset = new(
+        (OpeningJunctionSizePixels / 2.0f) - OpeningJunctionPivotPixels,
+        (OpeningJunctionSizePixels / 2.0f) - OpeningJunctionPivotPixels);
     private const float HalfPathWidthPixels = OpeningRegionLayoutGeometry.PathWidthPixels / 2.0f;
     private static readonly int ColumnCount = (int)(
         OpeningRegionLayoutGeometry.WorldWidthPixels
@@ -25,6 +33,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     /// <summary>Gets or sets the matching rounded endpoint for the bounded path.</summary>
     [Export]
     public Texture2D? PathEndCapTexture { get; set; }
+
+    /// <summary>Gets or sets the exact live-angle Stream-Laundry-Woodland junction.</summary>
+    [Export]
+    public Texture2D? OpeningJunctionTexture { get; set; }
 
     /// <inheritdoc />
     public override void _EnterTree()
@@ -70,6 +82,8 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 ZIndex = -75,
             });
         }
+
+        owner.AddChild(CreateOpeningJunctionPresentation());
     }
 
     private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
@@ -114,6 +128,28 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Texture = texture,
             Position = position,
             Rotation = rotation,
+            ZIndex = -70,
+        };
+    }
+
+    private Sprite2D CreateOpeningJunctionPresentation()
+    {
+        Texture2D texture = OpeningJunctionTexture
+            ?? throw new InvalidOperationException("The bounded opening-junction texture is required.");
+        if (texture.GetWidth() != OpeningJunctionSizePixels
+            || texture.GetHeight() != OpeningJunctionSizePixels)
+        {
+            throw new InvalidOperationException(
+                "The bounded opening-junction texture must retain its exact 512x512 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = OpeningJunctionNodeName,
+            Texture = texture,
+            Position = OpeningRegionLayoutGeometry.Anchors[OpeningJunctionAnchorId],
+            RotationDegrees = OpeningJunctionRotationDegrees,
+            Offset = OpeningJunctionPivotOffset,
             ZIndex = -70,
         };
     }

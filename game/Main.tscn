@@ -1,4 +1,4 @@
-[gd_scene load_steps=328 format=3]
+[gd_scene load_steps=329 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -517,6 +517,7 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png" id="405_runtime_leaf_left_corner"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/straight-path.png" id="406_runtime_straight_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/path-end-cap.png" id="407_runtime_path_end_cap"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/opening-junction.png" id="408_runtime_opening_junction"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -667,6 +668,7 @@ shape = SubResource("RectangleShape2D_vertical")
 script = ExtResource("4_navigation")
 StraightPathTexture = ExtResource("406_runtime_straight_path")
 PathEndCapTexture = ExtResource("407_runtime_path_end_cap")
+OpeningJunctionTexture = ExtResource("408_runtime_opening_junction")
 
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")
