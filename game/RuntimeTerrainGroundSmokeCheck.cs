@@ -16,12 +16,18 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         "res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png";
     private const string ExpectedWoodlandLeftCornerTexturePath =
         "res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png";
+    private const string ExpectedStraightPathTexturePath =
+        "res://art/runtime/terrain/straight-path.png";
+    private const string ExpectedPathEndCapTexturePath =
+        "res://art/runtime/terrain/path-end-cap.png";
     private static readonly Rect2 ExpectedWorldRegion = new(0.0f, 0.0f, 3200.0f, 1800.0f);
     private static readonly Rect2 ExpectedWoodlandRegion = new(600.0f, 200.0f, 648.0f, 250.0f);
     private static readonly Rect2 ExpectedStraightTransitionRegion =
         new(0.0f, 0.0f, 256.0f, 392.0f);
     private static readonly Vector2 ExpectedNorthTransitionPosition = new(924.0f, 197.0f);
     private static readonly Vector2 ExpectedSouthTransitionPosition = new(924.0f, 453.0f);
+    private static readonly Vector2 ExpectedStraightPathStart = new(1500.0f, 220.0f);
+    private static readonly Vector2 ExpectedStraightPathEnd = new(1000.0f, 350.0f);
 
     /// <inheritdoc />
     public override void _Ready()
@@ -57,6 +63,9 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Polygon2D laundryOpening = GetNode<Polygon2D>(
             "../OpeningRegionWoodlandClearingSceneSource/LaundryOpening");
         Line2D regionOutline = GetNode<Line2D>("../RegionOutline");
+        Node2D routePresentation = GetNode<Node2D>("../GreyboxNavigation/RoutePresentation");
+        Sprite2D straightPath = routePresentation.GetNode<Sprite2D>("LaundryClearingPath");
+        Sprite2D pathEndCap = routePresentation.GetNode<Sprite2D>("LaundryClearingPathEndCap");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -153,6 +162,39 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             return;
         }
 
+        Vector2 pathDelta = ExpectedStraightPathEnd - ExpectedStraightPathStart;
+        float pathLength = pathDelta.Length();
+        if (!HasExactTexture(straightPath, ExpectedStraightPathTexturePath, 96, 256)
+            || !straightPath.RegionEnabled
+            || straightPath.RegionRect != new Rect2(0.0f, 0.0f, 96.0f, pathLength)
+            || straightPath.Position
+                != ExpectedStraightPathStart.Lerp(ExpectedStraightPathEnd, 0.5f)
+            || !Mathf.IsEqualApprox(
+                straightPath.Rotation,
+                pathDelta.Angle() - (Mathf.Pi / 2.0f))
+            || straightPath.TextureRepeat != CanvasItem.TextureRepeatEnum.Enabled
+            || !straightPath.Centered
+            || straightPath.Offset != Vector2.Zero
+            || straightPath.Scale != Vector2.One
+            || !HasExactTexture(pathEndCap, ExpectedPathEndCapTexturePath)
+            || pathEndCap.RegionEnabled
+            || pathEndCap.Position != ExpectedStraightPathEnd
+            || !Mathf.IsEqualApprox(pathEndCap.Rotation, straightPath.Rotation)
+            || !pathEndCap.Centered
+            || pathEndCap.Offset != Vector2.Zero
+            || pathEndCap.Scale != Vector2.One
+            || routePresentation.GetChildCount() != 13
+            || routePresentation.GetChildren().Count(child => child is Line2D) != 11
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 2
+            || straightPath.GetIndex() >= pathEndCap.GetIndex()
+            || routePresentation.GetChildren()
+                .Where(child => child is Line2D)
+                .Any(child => ((Line2D)child).ZIndex != -75))
+        {
+            Fail("Runtime straight path lost its exact laundry-clearing presentation.");
+            return;
+        }
+
         if (ground.ZIndex != -100
             || woodland.ZIndex != -90
             || northTransition.ZIndex != -80
@@ -161,8 +203,11 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || topRightCorner.ZIndex != -80
             || bottomLeftCorner.ZIndex != -80
             || bottomRightCorner.ZIndex != -80
+            || straightPath.ZIndex != -70
+            || pathEndCap.ZIndex != -70
             || ground.ZIndex >= woodland.ZIndex
             || woodland.ZIndex >= northTransition.ZIndex
+            || bottomRightCorner.ZIndex >= straightPath.ZIndex
             || ground.GetIndex() >= regionOutline.GetIndex()
             || woodland.GetIndex() >= northTransition.GetIndex()
             || northTransition.GetIndex() >= southTransition.GetIndex()
@@ -178,7 +223,9 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || topLeftCorner.ShowBehindParent
             || topRightCorner.ShowBehindParent
             || bottomLeftCorner.ShowBehindParent
-            || bottomRightCorner.ShowBehindParent)
+            || bottomRightCorner.ShowBehindParent
+            || straightPath.ShowBehindParent
+            || pathEndCap.ShowBehindParent)
         {
             Fail("Runtime terrain no longer draws behind the retained greybox presentation.");
             return;
@@ -186,16 +233,20 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
 
         GD.Print(
             "Runtime terrain ground smoke passed: exact 256x256 quiet moss, leaf litter, straight "
-            + "transitions, and complementary outer corners form one derived rounded perimeter "
-            + "behind the retained greybox presentation.");
+            + "transitions, complementary outer corners, and one straight path with its rounded "
+            + "end cap form exact bounded presentation behind the retained greybox.");
         GetTree().Quit();
     }
 
-    private static bool HasExactTexture(Sprite2D sprite, string expectedPath) =>
+    private static bool HasExactTexture(
+        Sprite2D sprite,
+        string expectedPath,
+        int expectedWidth = 256,
+        int expectedHeight = 256) =>
         sprite.Texture is Texture2D texture
         && texture.ResourcePath == expectedPath
-        && texture.GetWidth() == 256
-        && texture.GetHeight() == 256;
+        && texture.GetWidth() == expectedWidth
+        && texture.GetHeight() == expectedHeight;
 
     private static bool HasExactCornerPresentation(
         Sprite2D corner,

@@ -260,6 +260,12 @@ Acceptance:
 - [x] Correct the product-owner-rejected hard clearing edges by promoting only the two manifest-bound
   outer corners and reusing the straight transition across a derived rounded visual perimeter,
   without changing the exact leaf-tile bounds, collision, navigation, routes, or gameplay authority.
+- [x] Complete the rounded-perimeter product-owner review across the supplied 0.8x, 1.0x, and 2.0x
+  wide and tall views, recording the accepted correction as "much better" without claiming human
+  accessibility acceptance.
+- [x] Promote only the manifest-bound straight path and its matching rounded end cap across the
+  exact Abandoned Laundry-to-Woodland Clearing connection, preserving the other eleven greybox
+  routes and all collision, navigation, topology, landmark, and gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

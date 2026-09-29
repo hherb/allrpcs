@@ -14,22 +14,30 @@ PROOF_ROOT = ROOT / "art-direction" / "production-proof" / "corrected"
 MANIFEST = PROOF_ROOT / "asset-manifest.json"
 RUNTIME_ROOT = ROOT / "game" / "art" / "runtime" / "terrain"
 MAIN_SCENE = ROOT / "game" / "Main.tscn"
-EXPECTED_DIMENSIONS = (256, 256)
 RUNTIME_ASSETS = (
-    ("terrain.quiet_moss", RUNTIME_ROOT / "quiet-moss.png"),
-    ("terrain.woodland_leaf_litter", RUNTIME_ROOT / "woodland-leaf-litter.png"),
+    ("terrain.quiet_moss", RUNTIME_ROOT / "quiet-moss.png", (256, 256)),
+    (
+        "terrain.woodland_leaf_litter",
+        RUNTIME_ROOT / "woodland-leaf-litter.png",
+        (256, 256),
+    ),
     (
         "terrain.woodland_leaf_litter_transition",
         RUNTIME_ROOT / "woodland-leaf-litter-transition.png",
+        (256, 256),
     ),
     (
         "terrain.woodland_leaf_litter_corner_transition",
         RUNTIME_ROOT / "woodland-leaf-litter-corner-transition.png",
+        (256, 256),
     ),
     (
         "terrain.woodland_leaf_litter_corner_transition_left",
         RUNTIME_ROOT / "woodland-leaf-litter-corner-transition-left.png",
+        (256, 256),
     ),
+    ("terrain.straight_path", RUNTIME_ROOT / "straight-path.png", (96, 256)),
+    ("terrain.path_end_cap", RUNTIME_ROOT / "path-end-cap.png", (256, 256)),
 )
 
 
@@ -102,19 +110,19 @@ def main() -> None:
         for sidecar in proof_import_root.glob("*.png.import")
     }
     require(
-        set(RUNTIME_ROOT.glob("*.png")) == {path for _, path in RUNTIME_ASSETS},
+        set(RUNTIME_ROOT.glob("*.png")) == {path for _, path, _ in RUNTIME_ASSETS},
         "runtime terrain differs from the bounded manifest-owned asset set",
     )
 
     main_scene = MAIN_SCENE.read_text(encoding="utf-8")
     runtime_uids: set[str] = set()
-    for asset_id, runtime_texture in RUNTIME_ASSETS:
+    for asset_id, runtime_texture, expected_dimensions in RUNTIME_ASSETS:
         asset = manifest_assets.get(asset_id)
         require(asset is not None, f"expected one {asset_id} manifest entry")
         source = PROOF_ROOT / asset["export"]
         require(
             tuple(asset["export_rect_pixels"][key] for key in ("width", "height"))
-            == EXPECTED_DIMENSIONS,
+            == expected_dimensions,
             f"{asset_id} manifest geometry drifted",
         )
         require(runtime_texture.is_file(), f"missing runtime texture for {asset_id}")
@@ -127,8 +135,8 @@ def main() -> None:
             f"runtime texture for {asset_id} lost exact manifest/source parity",
         )
         require(
-            png_dimensions(runtime_texture) == EXPECTED_DIMENSIONS,
-            f"runtime texture for {asset_id} is not 256x256",
+            png_dimensions(runtime_texture) == expected_dimensions,
+            f"runtime texture for {asset_id} has unexpected dimensions",
         )
 
         sidecar = runtime_texture.with_suffix(".png.import")
@@ -174,9 +182,12 @@ def main() -> None:
     )
 
     print("Runtime terrain validation passed")
-    for asset_id, _ in RUNTIME_ASSETS:
+    for asset_id, _, _ in RUNTIME_ASSETS:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
-    print("geometry: five 256x256 assets; imports: lossless, mipmap-free, runtime-owned UIDs")
+    print(
+        "geometry: six 256x256 assets and one 96x256 path; "
+        "imports: lossless, mipmap-free, runtime-owned UIDs"
+    )
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")
 
 

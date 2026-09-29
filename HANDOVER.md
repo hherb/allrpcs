@@ -4,65 +4,61 @@
 
 Phase 8 and Phase 9.1 remain complete. The approved 3200x1800 opening-region layout, eleven anchors,
 twelve topology edges, collision/navigation authority, closed north-west forest gate, camera tuning,
-scenario, and gameplay authority remain unchanged. Direction A remains selected; Direction D is only
-the contingency. The 66-export proof and seventeen OpenRaster masters remain proof-only.
+scenario, and gameplay authority remain unchanged. Direction A remains selected; its 66 exports and
+seventeen OpenRaster masters remain proof-only unless explicitly promoted below.
 
-Five exact manifest assets now have separate runtime-owned copies. `terrain.quiet_moss`, SHA-256
-`3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db`, repeats across the full
-world at `z_index = -100`. `terrain.woodland_leaf_litter`, SHA-256
-`f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a`, repeats across only the
-unchanged Woodland Clearing bounds `(600, 200)` through `(1248, 450)` at `z_index = -90`.
-`terrain.woodland_leaf_litter_transition`, SHA-256
-`8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334`, supplies the north and
-south straight spans. `terrain.woodland_leaf_litter_corner_transition`, SHA-256
-`53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf`, and its complementary
-`_left` asset, SHA-256 `c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24`,
-supply four outer corners. The source derives two 392-pixel spans, corner centers, and a three-pixel
-vertical visual overhang from the authoritative 648x250 clearing bounds and 256-pixel textures. The
-rounded perimeter remains at `z_index = -80`, behind every retained route, opening, label, and
-interaction marker. Collision, navigation, routes, topology, and gameplay authority did not change.
+Seven exact manifest assets now have separate runtime-owned copies. Quiet moss remains at
+`z_index = -100`; leaf litter remains inside only the unchanged Woodland Clearing bounds
+`(600, 200)` through `(1248, 450)` at `-90`; the straight leaf transition and two complementary
+outer corners form the derived rounded perimeter at `-80`. The product owner accepted the supplied
+0.8x, 1.0x, and 2.0x wide/tall rounded-perimeter correction as "much better." Collision, navigation,
+routes, topology, labels, openings, and gameplay authority did not change.
+
+The next two runtime assets are `terrain.straight_path`, SHA-256
+`3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd`, and
+`terrain.path_end_cap`, SHA-256
+`9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3`. The 96x256 straight module
+repeats only from the exact Abandoned Laundry anchor `(1500, 220)` to the Woodland Clearing anchor
+`(1000, 350)`. Its exact 256x256 rounded cap terminates at the clearing anchor with the same derived
+rotation. Both draw at `z_index = -70`; the other eleven retained greybox route lines draw at `-75`,
+above terrain and below all ordinary landmarks, openings, labels, and interaction markers.
 
 ## Review, evidence, and limits
 
-- The product owner accepted the leaf tile's repetition, seams, scale/readability, contrast, initial
-  rectangular presentation, and corrected stone-marker text placement. During the later north-edge
-  review, the owner said the remaining hard edges looked unnatural; the north-only presentation was
-  therefore not accepted.
-- The correction promotes only the two existing manifest-bound outer corners and reuses the already
-  promoted straight transition. No inset corner or unrelated production asset entered `Main.tscn`.
-- The failure-first runtime validator rejected the missing five-asset runtime set. After implementation,
-  `scripts/validate-runtime-terrain.py` proves all five exact manifest/source/runtime hashes,
-  256x256 geometry, separate runtime UIDs/cache paths, lossless mipmap-free imports, the bounded
-  runtime asset set, ordinary-scene references, and proof-directory isolation.
-- `RuntimeTerrainGroundSmokeCheck` proves exact texture identities, two quarter-turned 392-pixel
-  spans at `(924, 197)` and `(924, 453)`, the four exact corner positions and rotations, and
-  `-100 < -90 < -80` draw order. The focused host-local smoke passed.
+- Failure-first static validation rejected the absent sixth and seventh bounded runtime assets.
+  `scripts/validate-runtime-terrain.py` now proves all seven exact manifest/source/runtime hashes,
+  expected 256x256 or 96x256 geometry, separate runtime UIDs/cache paths, lossless mipmap-free
+  imports, the exact runtime asset set, ordinary-scene references, and proof-directory isolation.
+- The focused engine check proves twelve unchanged topology presentations: eleven `Line2D` greybox
+  routes and one exact repeated path plus its cap. It binds anchor-derived position, length, rotation,
+  repeat mode, `-90 < -80 < -75 < -70` terrain/route draw order, and landmark-safe layering.
+- The first engine run exposed that presentation creation preceded exported-resource binding; it now
+  remains separate from navigation/collision creation and runs at `_Ready`. A second run exposed the
+  scene's required PascalCase C# export name. Both corrections are covered by the passing smoke.
+- Session visual review rejected a pointed underlap and then a hard straight-path termination. The
+  corrected route layering plus the exact matching end cap remove both defects in six final
+  Compatibility-rendered 0.8x, 1.0x, and 2.0x wide/tall views. This is not product-owner acceptance.
 - Final host-local `./scripts/quality.sh` passed the art/proposal/import/runtime validators,
   zero-warning build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure,
   8 architecture), scenario validation, every credential-free Godot smoke, formatting, and the
   Compatibility launch.
-- Six Compatibility-rendered repository-backed views exist at 0.8x, 1.0x, and 2.0x in both 1280x720
-  and 1280x827 shapes. Automated and session review found a continuous rounded boundary with routes
-  and labels still above it; this is not product-owner acceptance.
-- Hosted Credential-free CI run `36560348765` for implementation commit `9920ef0` reported failure
-  with `steps: []` for all five jobs; it ran no checkout, build, test, Godot, or export step. Treat
-  that as Actions/account infrastructure state, not hosted product-validation evidence or a product
-  failure.
-- Automated checks prove provenance, geometry, import, placement, and mechanical isolation. No
-  product-owner observation has yet accepted the rounded correction, and no human accessibility
-  acceptance is claimed.
+- Hosted Credential-free CI run `36560348765` for earlier implementation commit `9920ef0` had
+  `steps: []` for all five jobs. It ran no product command and remains Actions/account infrastructure
+  state, not product-validation evidence or a product failure.
+- Automated checks do not establish pacing, usability, path-art acceptance, or human accessibility
+  acceptance. Record only observations the product owner actually supplies.
 
 ## Exact next bounded slice
 
-Run one product-owner graphical review of the rounded Woodland Clearing perimeter at 0.8x, 1.0x,
-and 2.0x in the supplied 1280x720 and 1280x827 shapes. Check all six joins for seams, boundary
-naturalness and scale, route/opening/label contrast, and continued readability of the closed forest
-opening. Record only observations the product owner actually supplies. If correction is required,
-change only these two outer-corner imports or the perimeter's derived positions, spans, rotations,
-or draw order, then rerun `./scripts/quality.sh`.
+Run one product-owner graphical review of the Abandoned Laundry-to-Woodland Clearing straight path
+and rounded clearing endpoint at 0.8x, 1.0x, and 2.0x in the supplied 1280x720 and 1280x827 shapes.
+Check repeat seams, width/scale, edge softness, the rounded termination, moss/leaf contrast, and
+continued readability of the focus, stone marker, opening markers, labels, and accepted perimeter.
+If correction is required, change only these two path imports, anchor-derived path/cap geometry, or
+route-presentation draw order, then rerun `./scripts/quality.sh`.
 
-Do not promote either inset corner, path art, banks, water, structures, foliage, props, characters,
-animation, UI systems, effects, audio, or content-budget fills. Do not change the exact leaf-tile
-bounds, collision, navigation, locations, topology, camera tuning, scenario, dialogue, clue,
-discovery, treatment, save, provider, or gameplay authority. Do not claim rounded-perimeter or human
-accessibility acceptance until the product owner explicitly supplies it.
+Do not promote the path bend, T-junction, cross-junction, another end cap, either inset ground corner,
+another route, banks, water, structures, foliage, props, characters, animation, UI systems, effects,
+audio, or content-budget fills. Do not change collision, navigation, locations, topology, camera
+tuning, scenario, dialogue, clue, discovery, treatment, save, provider, or gameplay authority. Do
+not claim path-art or human accessibility acceptance until the product owner explicitly supplies it.

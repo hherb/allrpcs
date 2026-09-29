@@ -5,6 +5,11 @@ namespace Allrpcs.Game;
 /// <summary>Authors navigation and collision for the approved 96-pixel route network.</summary>
 public partial class GreyboxNavigation : NavigationRegion2D
 {
+    private const string StraightPathFirstId = "abandoned-laundry";
+    private const string StraightPathSecondId = "woodland-clearing";
+    private const string StraightPathNodeName = "LaundryClearingPath";
+    private const string PathEndCapNodeName = "LaundryClearingPathEndCap";
+    private const int StraightPathModuleLengthPixels = 256;
     private const float HalfPathWidthPixels = OpeningRegionLayoutGeometry.PathWidthPixels / 2.0f;
     private static readonly int ColumnCount = (int)(
         OpeningRegionLayoutGeometry.WorldWidthPixels
@@ -12,6 +17,14 @@ public partial class GreyboxNavigation : NavigationRegion2D
     private static readonly int RowCount = (int)(
         OpeningRegionLayoutGeometry.WorldHeightPixels
         / OpeningRegionLayoutGeometry.RouteCellSizePixels);
+
+    /// <summary>Gets or sets the one bounded runtime straight-path texture.</summary>
+    [Export]
+    public Texture2D? StraightPathTexture { get; set; }
+
+    /// <summary>Gets or sets the matching rounded endpoint for the bounded path.</summary>
+    [Export]
+    public Texture2D? PathEndCapTexture { get; set; }
 
     /// <inheritdoc />
     public override void _EnterTree()
@@ -23,8 +36,13 @@ public partial class GreyboxNavigation : NavigationRegion2D
             HalfPathWidthPixels,
             addAnchorClearance: false);
         NavigationPolygon = CreateNavigationPolygon(navigationCells);
-        AddRoutePresentation();
         AddCollisionBoundary(physicalRouteCells);
+    }
+
+    /// <inheritdoc />
+    public override void _Ready()
+    {
+        AddRoutePresentation();
     }
 
     private void AddRoutePresentation()
@@ -33,18 +51,71 @@ public partial class GreyboxNavigation : NavigationRegion2D
         AddChild(owner);
         foreach ((string firstId, string secondId) in OpeningRegionLayoutGeometry.Connections)
         {
+            Vector2 start = OpeningRegionLayoutGeometry.Anchors[firstId];
+            Vector2 end = OpeningRegionLayoutGeometry.Anchors[secondId];
+            if (firstId == StraightPathFirstId && secondId == StraightPathSecondId)
+            {
+                Sprite2D path = CreateStraightPathPresentation(start, end);
+                owner.AddChild(path);
+                owner.AddChild(CreatePathEndCapPresentation(end, path.Rotation));
+                continue;
+            }
+
             owner.AddChild(new Line2D
             {
-                Points =
-                [
-                    OpeningRegionLayoutGeometry.Anchors[firstId],
-                    OpeningRegionLayoutGeometry.Anchors[secondId],
-                ],
+                Points = [start, end],
                 Width = OpeningRegionLayoutGeometry.PathWidthPixels,
                 DefaultColor = new Color(0.447f, 0.392f, 0.302f),
                 Antialiased = true,
+                ZIndex = -75,
             });
         }
+    }
+
+    private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
+    {
+        Texture2D texture = StraightPathTexture
+            ?? throw new InvalidOperationException("The bounded straight-path texture is required.");
+        if (texture.GetWidth() != OpeningRegionLayoutGeometry.PathWidthPixels
+            || texture.GetHeight() != StraightPathModuleLengthPixels)
+        {
+            throw new InvalidOperationException(
+                "The bounded straight-path texture must retain its exact 96x256 geometry.");
+        }
+
+        Vector2 delta = end - start;
+        return new Sprite2D
+        {
+            Name = StraightPathNodeName,
+            Texture = texture,
+            TextureRepeat = TextureRepeatEnum.Enabled,
+            RegionEnabled = true,
+            RegionRect = new Rect2(0.0f, 0.0f, texture.GetWidth(), delta.Length()),
+            Position = start.Lerp(end, 0.5f),
+            Rotation = delta.Angle() - (Mathf.Pi / 2.0f),
+            ZIndex = -70,
+        };
+    }
+
+    private Sprite2D CreatePathEndCapPresentation(Vector2 position, float rotation)
+    {
+        Texture2D texture = PathEndCapTexture
+            ?? throw new InvalidOperationException("The bounded path end-cap texture is required.");
+        if (texture.GetWidth() != StraightPathModuleLengthPixels
+            || texture.GetHeight() != StraightPathModuleLengthPixels)
+        {
+            throw new InvalidOperationException(
+                "The bounded path end-cap texture must retain its exact 256x256 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = PathEndCapNodeName,
+            Texture = texture,
+            Position = position,
+            Rotation = rotation,
+            ZIndex = -70,
+        };
     }
 
     private static HashSet<Cell> CreateRouteCells(
