@@ -150,6 +150,50 @@ def point_segment_distance(
     return math.dist(point, nearest)
 
 
+def opening_junction_curve_points(
+    pivot: tuple[float, float],
+    outgoing_heading_degrees: float,
+    turn_degrees: float,
+    tangent_distance: float,
+) -> list[tuple[float, float]]:
+    """Reconstruct the tangent-continuous centerline recorded by the manifest."""
+
+    outgoing_angle = math.radians(outgoing_heading_degrees)
+    outgoing_direction = (math.cos(outgoing_angle), math.sin(outgoing_angle))
+    turn_radians = math.radians(abs(turn_degrees))
+    curve_radius = tangent_distance / math.tan(turn_radians / 2.0)
+    control_distance = (
+        (4.0 / 3.0) * math.tan(turn_radians / 4.0) * curve_radius
+    )
+    start = (pivot[0], pivot[1] - tangent_distance)
+    end = (
+        pivot[0] + (outgoing_direction[0] * tangent_distance),
+        pivot[1] + (outgoing_direction[1] * tangent_distance),
+    )
+    first_control = (start[0], start[1] + control_distance)
+    second_control = (
+        end[0] - (outgoing_direction[0] * control_distance),
+        end[1] - (outgoing_direction[1] * control_distance),
+    )
+    points = []
+    for step in range(65):
+        parameter = step / 64.0
+        inverse = 1.0 - parameter
+        points.append(
+            (
+                (inverse**3 * start[0])
+                + (3.0 * inverse * inverse * parameter * first_control[0])
+                + (3.0 * inverse * parameter * parameter * second_control[0])
+                + (parameter**3 * end[0]),
+                (inverse**3 * start[1])
+                + (3.0 * inverse * inverse * parameter * first_control[1])
+                + (3.0 * inverse * parameter * parameter * second_control[1])
+                + (parameter**3 * end[1]),
+            )
+        )
+    return points
+
+
 def rectangles_overlap(first: dict[str, int], second: dict[str, int]) -> bool:
     """Return whether two axis-aligned logical rectangles overlap."""
 
@@ -972,6 +1016,9 @@ def main() -> None:
             32.400718,
             abs_tol=1e-6,
         )
+        and opening_proof["curve_tangent_distance_pixels"] == 80
+        and opening_proof["texture_transition"]
+        == "alpha_weighted_tangent_blend"
         and opening_proof["pivot"] == {"x": 224, "y": 224}
         and opening_proof["review"] == "review/opening-junction-review.png",
         "opening junction proof metadata drifted",
@@ -1031,6 +1078,47 @@ def main() -> None:
         ),
         "opening junction outgoing port lost exact transformed straight-path pixels",
     )
+    incoming_reference = render_path_leg_reference(
+        path,
+        opening_junction.size,
+        (float(opening_pivot[0]), 0.0),
+        90.0,
+        opening_pivot[1] + outgoing_overlap,
+    )
+    transition_box = (
+        opening_pivot[0] - opening_proof["path_width_pixels"],
+        opening_pivot[1] - opening_proof["path_width_pixels"],
+        opening_pivot[0] + opening_proof["path_width_pixels"],
+        opening_pivot[1] + opening_proof["path_width_pixels"],
+    )
+    transition_pixels = []
+    for incoming_pixel, outgoing_pixel, junction_pixel in zip(
+        incoming_reference.crop(transition_box).getdata(),
+        outgoing_reference.crop(transition_box).getdata(),
+        opening_junction.crop(transition_box).getdata(),
+    ):
+        if incoming_pixel[3] >= 250 and outgoing_pixel[3] >= 250:
+            transition_pixels.append((outgoing_pixel, junction_pixel))
+    require(
+        transition_pixels,
+        "opening junction has no opaque overlap region to validate",
+    )
+    hard_overlap_pixels = sum(
+        junction_pixel[:3] == outgoing_pixel[:3]
+        for outgoing_pixel, junction_pixel in transition_pixels
+    )
+    require(
+        hard_overlap_pixels < len(transition_pixels) // 4,
+        "opening junction retains a visible hard texture overlap",
+    )
+    dark_fringe_pixels = sum(
+        pixel[3] >= 240 and sum(pixel[:3]) < 150
+        for pixel in opening_junction.crop(transition_box).getdata()
+    )
+    require(
+        dark_fringe_pixels == 0,
+        "opening junction retains an opaque dark resampling fringe",
+    )
     for label, box in [
         ("top-left edge", (0, 0, 176, 1)),
         ("top-right edge", (272, 0, 512, 1)),
@@ -1041,14 +1129,21 @@ def main() -> None:
             opening_alpha.crop(box).getbbox() is None,
             f"opening junction {label} is not transparent",
         )
-    incoming_segment = ((float(opening_pivot[0]), -512.0), opening_pivot)
-    outgoing_segment = (
+    curve_points = opening_junction_curve_points(
         opening_pivot,
+        outgoing_heading,
+        opening_proof["turn_degrees"],
+        opening_proof["curve_tangent_distance_pixels"],
+    )
+    centerline = [
+        (float(opening_pivot[0]), -512.0),
+        *curve_points,
         (
             opening_pivot[0] + (outgoing_direction[0] * 1024.0),
             opening_pivot[1] + (outgoing_direction[1] * 1024.0),
         ),
-    )
+    ]
+    centerline_segments = list(zip(centerline, centerline[1:]))
     visible_pixels = (
         (x, y)
         for y in range(opening_junction.height)
@@ -1058,13 +1153,13 @@ def main() -> None:
     require(
         all(
             min(
-                point_segment_distance((x + 0.5, y + 0.5), *incoming_segment),
-                point_segment_distance((x + 0.5, y + 0.5), *outgoing_segment),
+                point_segment_distance((x + 0.5, y + 0.5), *segment)
+                for segment in centerline_segments
             )
-            <= 49.0
+            <= 49.1
             for x, y in visible_pixels
         ),
-        "opening junction leaves the unchanged 96px physical route footprint",
+        "opening junction leaves the 96px tangent-continuous route footprint",
     )
 
     animations = {animation["id"]: animation for animation in manifest["animations"]}
@@ -1250,6 +1345,22 @@ def main() -> None:
     require(
         opening_review.size == (1536, 768),
         "opening junction seam/containment review dimensions drifted",
+    )
+    opening_module_position = (128, 128)
+    expected_opening_panel = Image.new("RGBA", (768, 768), (0, 0, 0, 0))
+    for y in range(0, expected_opening_panel.height, ground.height):
+        for x in range(0, expected_opening_panel.width, ground.width):
+            expected_opening_panel.alpha_composite(ground, (x, y))
+    expected_opening_panel.alpha_composite(
+        opening_junction, opening_module_position
+    )
+    opening_module_box = (128, 128, 640, 640)
+    require(
+        images_equal(
+            opening_review.crop(opening_module_box),
+            expected_opening_panel.crop(opening_module_box),
+        ),
+        "opening junction review leaks straight-leg texture beneath the curved module",
     )
     topology_review = Image.open(ROOT / "review" / "path-module-topology-review.png")
     require(

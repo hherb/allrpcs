@@ -274,8 +274,11 @@ Acceptance:
   turn; retain the greybox junction and gate one junction-specific proof module on approval.
 - [x] After explicit product-owner approval, establish and import one isolated 512x512
   Stream–Laundry–Woodland junction proof with a 1024x1024 editable master, exact live-angle
-  96-pixel ports, a bound 336x458 visible footprint, exact seam reconstruction, and unchanged
+  96-pixel ports, a bound 335x458 visible footprint, exact seam reconstruction, and curved
   physical-route containment without changing `Main.tscn` or runtime authority.
+- [x] Complete the isolated opening-junction product-owner review, replacing the rejected hard
+  texture overlap with an alpha-aware tangent-continuous curve and removing the preview-only elbow
+  triangle before recording acceptance; do not treat that acceptance as runtime-promotion approval.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

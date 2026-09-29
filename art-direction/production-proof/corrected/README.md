@@ -1,6 +1,6 @@
 # Direction A corrected production-pipeline proof
 
-Status: bounded scale-rebaselined proof, 2026-09-29. This directory remains outside `game/`; exact copies
+Status: bounded scale-rebaselined proof, 2026-09-30. This directory remains outside `game/`; exact copies
 are imported only by the isolated proof scene and none is runtime-authoritative.
 
 This proof corrects the sheet-dependent failures recorded by the first Phase 9.2 proof. Eighteen
@@ -38,9 +38,9 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   horizontal copies of the straight module over quiet moss without adding another terrain asset.
 - `review/path-end-cap-review.png` joins the end-cap below one exact vertical copy of the straight
   module over quiet moss without adding another terrain asset.
-- `review/opening-junction-review.png` places the exact live-angle junction between continuous
-  straight-path samples and pairs that composition with its unchanged 96-pixel route-band
-  containment mask.
+- `review/opening-junction-review.png` places the exact live-angle junction between clipped external
+  straight-path continuations and pairs that composition with its tangent-continuous 96-pixel
+  route-band containment mask.
 - `review/path-module-topology-review.png` connects rotated T-junction and bend modules with the
   straight, cross-junction, and end-cap exports as one deterministic network over quiet moss.
 - `review/woodland-leaf-litter-review.png` shows the opaque leaf-litter tile in an exact 2x2 seam
@@ -91,8 +91,9 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
   rounded terminus before the lower half, transparent side and bottom edges, and a transparent
   lower 64-pixel band;
 - the 512x512 opening junction retains exact incoming and transformed outgoing 96-pixel port
-  pixels for the live 57.599282-degree turn, records its 336x458 visible footprint, and keeps every
-  visible pixel inside the unchanged physical route bands;
+  pixels for the live 57.599282-degree turn, records its 335x458 visible footprint, blends its path
+  texture through an 80-pixel tangent-continuous curve, rejects hard texture overlaps and dark
+  resampling fringes, and keeps every visible pixel inside that curved physical-route band;
 - one 1024x768 topology composition connects every path shape using only exact exports and
   deterministic rotations, without introducing another terrain asset;
 - all six frames in each of the four directional walks are unique, remain at least 144 visible
@@ -118,6 +119,11 @@ four-direction walk, idle/breathe, interaction, and 144-pixel character-scale ga
 so the rebaseline did not require regenerating them. The terrain-only colour-vision review is
 reproducible external evidence, not human accessibility acceptance. Direction A remains feasible,
 so the Direction D contingency does not activate.
+
+The product owner accepted the corrected opening-junction curve and texture continuity after two
+bounded review corrections removed the hard leg overlap and the preview-only triangle at the elbow.
+That acceptance applies only to the isolated proof; it does not authorize a runtime copy or an
+ordinary-scene presentation change.
 
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary

@@ -40,6 +40,9 @@ OPENING_JUNCTION_PATH_WIDTH = 96
 OPENING_JUNCTION_PORT_DEPTH = 32
 OPENING_JUNCTION_TURN_DEGREES = -57.599282
 OPENING_JUNCTION_OUTGOING_HEADING_DEGREES = 90.0 + OPENING_JUNCTION_TURN_DEGREES
+OPENING_JUNCTION_TEXTURE_BLEND_LENGTH = 72
+OPENING_JUNCTION_CURVE_TANGENT_DISTANCE = 80
+OPENING_JUNCTION_CURVE_EDGE_INSET = 2
 RESAMPLE = Image.Resampling.LANCZOS
 LOGICAL_VIEWPORT_SIZE = (1280, 720)
 FULLSCREEN_REFERENCE_LOGICAL_SIZE = (1280, 827)
@@ -466,6 +469,345 @@ def render_path_leg(
     )
 
 
+def blend_opening_junction_legs(
+    incoming: Image.Image,
+    outgoing: Image.Image,
+    pivot: tuple[float, float],
+    path_width: int,
+) -> Image.Image:
+    """Blend two opaque legs through the turn without a hard texture overlap."""
+
+    incoming_pixels = incoming.convert("RGBA").load()
+    outgoing_pixels = outgoing.convert("RGBA").load()
+    result = Image.new("RGBA", incoming.size, (0, 0, 0, 0))
+    result_pixels = result.load()
+    outgoing_angle = math.radians(OPENING_JUNCTION_OUTGOING_HEADING_DEGREES)
+    outgoing_direction = (math.cos(outgoing_angle), math.sin(outgoing_angle))
+    transition_direction = (
+        outgoing_direction[0],
+        1.0 + outgoing_direction[1],
+    )
+    transition_length = math.hypot(*transition_direction)
+    transition_direction = (
+        transition_direction[0] / transition_length,
+        transition_direction[1] / transition_length,
+    )
+    blend_extent = OPENING_JUNCTION_TEXTURE_BLEND_LENGTH * (
+        path_width / OPENING_JUNCTION_PATH_WIDTH
+    )
+
+    for y in range(result.height):
+        for x in range(result.width):
+            incoming_pixel = incoming_pixels[x, y]
+            outgoing_pixel = outgoing_pixels[x, y]
+            if incoming_pixel[3] == 0:
+                result_pixels[x, y] = outgoing_pixel
+                continue
+            if outgoing_pixel[3] == 0:
+                result_pixels[x, y] = incoming_pixel
+                continue
+
+            projection = (
+                ((x + 0.5) - pivot[0]) * transition_direction[0]
+                + ((y + 0.5) - pivot[1]) * transition_direction[1]
+            )
+            outgoing_weight = min(
+                1.0,
+                max(0.0, (projection + blend_extent) / (2.0 * blend_extent)),
+            )
+            outgoing_weight = outgoing_weight * outgoing_weight * (
+                3.0 - (2.0 * outgoing_weight)
+            )
+            incoming_weight = (1.0 - outgoing_weight) * incoming_pixel[3]
+            outgoing_weight *= outgoing_pixel[3]
+            weight_sum = incoming_weight + outgoing_weight
+            result_pixels[x, y] = (
+                round(
+                    (
+                        incoming_pixel[0] * incoming_weight
+                        + outgoing_pixel[0] * outgoing_weight
+                    )
+                    / weight_sum
+                ),
+                round(
+                    (
+                        incoming_pixel[1] * incoming_weight
+                        + outgoing_pixel[1] * outgoing_weight
+                    )
+                    / weight_sum
+                ),
+                round(
+                    (
+                        incoming_pixel[2] * incoming_weight
+                        + outgoing_pixel[2] * outgoing_weight
+                    )
+                    / weight_sum
+                ),
+                max(incoming_pixel[3], outgoing_pixel[3]),
+            )
+
+    return result
+
+
+def opening_junction_curve_points(
+    pivot: tuple[float, float], scale: float
+) -> list[tuple[float, float]]:
+    """Return a tangent-continuous centerline through the exact opening turn."""
+
+    incoming_direction = (0.0, 1.0)
+    outgoing_angle = math.radians(OPENING_JUNCTION_OUTGOING_HEADING_DEGREES)
+    outgoing_direction = (math.cos(outgoing_angle), math.sin(outgoing_angle))
+    turn_radians = math.radians(abs(OPENING_JUNCTION_TURN_DEGREES))
+    tangent_distance = OPENING_JUNCTION_CURVE_TANGENT_DISTANCE * scale
+    curve_radius = tangent_distance / math.tan(turn_radians / 2.0)
+    control_distance = (
+        (4.0 / 3.0) * math.tan(turn_radians / 4.0) * curve_radius
+    )
+    start = (
+        pivot[0] - (incoming_direction[0] * tangent_distance),
+        pivot[1] - (incoming_direction[1] * tangent_distance),
+    )
+    end = (
+        pivot[0] + (outgoing_direction[0] * tangent_distance),
+        pivot[1] + (outgoing_direction[1] * tangent_distance),
+    )
+    first_control = (
+        start[0] + (incoming_direction[0] * control_distance),
+        start[1] + (incoming_direction[1] * control_distance),
+    )
+    second_control = (
+        end[0] - (outgoing_direction[0] * control_distance),
+        end[1] - (outgoing_direction[1] * control_distance),
+    )
+
+    points = []
+    for step in range(65):
+        parameter = step / 64.0
+        inverse = 1.0 - parameter
+        points.append(
+            (
+                (inverse**3 * start[0])
+                + (3.0 * inverse * inverse * parameter * first_control[0])
+                + (3.0 * inverse * parameter * parameter * second_control[0])
+                + (parameter**3 * end[0]),
+                (inverse**3 * start[1])
+                + (3.0 * inverse * inverse * parameter * first_control[1])
+                + (3.0 * inverse * parameter * parameter * second_control[1])
+                + (parameter**3 * end[1]),
+            )
+        )
+    return points
+
+
+def sample_wrapped_path(path: Image.Image, x: float, y: float) -> tuple[int, int, int, int]:
+    """Bilinearly sample a path strip with vertical repetition."""
+
+    if x < 0.0 or x > path.width - 1:
+        return (0, 0, 0, 0)
+    left = math.floor(x)
+    right = min(path.width - 1, left + 1)
+    top = math.floor(y) % path.height
+    bottom = (top + 1) % path.height
+    horizontal = x - left
+    vertical = y - math.floor(y)
+    pixels = path.load()
+    samples = (
+        (pixels[left, top], (1.0 - horizontal) * (1.0 - vertical)),
+        (pixels[right, top], horizontal * (1.0 - vertical)),
+        (pixels[left, bottom], (1.0 - horizontal) * vertical),
+        (pixels[right, bottom], horizontal * vertical),
+    )
+    return tuple(
+        round(sum(pixel[channel] * weight for pixel, weight in samples))
+        for channel in range(4)
+    )
+
+
+def render_opening_junction_curve(
+    path: Image.Image,
+    canvas_size: tuple[int, int],
+    curve_points: list[tuple[float, float]],
+) -> tuple[Image.Image, Image.Image]:
+    """Warp the repeatable path texture along the tangent-continuous turn."""
+
+    arc_lengths = [0.0]
+    for first, second in zip(curve_points, curve_points[1:]):
+        arc_lengths.append(
+            arc_lengths[-1] + math.hypot(second[0] - first[0], second[1] - first[1])
+        )
+    tangents = []
+    for index, point in enumerate(curve_points):
+        before = curve_points[max(0, index - 1)]
+        after = curve_points[min(len(curve_points) - 1, index + 1)]
+        tangent = (after[0] - before[0], after[1] - before[1])
+        tangent_length = math.hypot(*tangent)
+        tangents.append((tangent[0] / tangent_length, tangent[1] / tangent_length))
+
+    radius = path.width / 2.0
+    bounds = (
+        max(0, math.floor(min(point[0] for point in curve_points) - radius - 1)),
+        max(0, math.floor(min(point[1] for point in curve_points) - radius - 1)),
+        min(
+            canvas_size[0],
+            math.ceil(max(point[0] for point in curve_points) + radius + 1),
+        ),
+        min(
+            canvas_size[1],
+            math.ceil(max(point[1] for point in curve_points) + radius + 1),
+        ),
+    )
+    result = Image.new("RGBA", canvas_size, (0, 0, 0, 0))
+    weights = Image.new("L", canvas_size, 0)
+    result_pixels = result.load()
+    weight_pixels = weights.load()
+    phase = curve_points[0][1]
+    last_index = len(curve_points) - 1
+
+    for y in range(bounds[1], bounds[3]):
+        for x in range(bounds[0], bounds[2]):
+            sample = (x + 0.5, y + 0.5)
+            nearest = min(
+                range(len(curve_points)),
+                key=lambda index: (
+                    (sample[0] - curve_points[index][0]) ** 2
+                    + (sample[1] - curve_points[index][1]) ** 2
+                ),
+            )
+            point = curve_points[nearest]
+            tangent = tangents[nearest]
+            right = (tangent[1], -tangent[0])
+            lateral = (
+                (sample[0] - point[0]) * right[0]
+                + (sample[1] - point[1]) * right[1]
+            )
+            source_x = (path.width / 2.0) + lateral
+            if source_x < 0.0 or source_x > path.width - 1:
+                continue
+            result_pixels[x, y] = sample_wrapped_path(
+                path,
+                source_x,
+                phase + arc_lengths[nearest],
+            )
+            if (
+                abs(lateral)
+                <= radius
+                - OPENING_JUNCTION_CURVE_EDGE_INSET
+                * (path.width / OPENING_JUNCTION_PATH_WIDTH)
+                and result_pixels[x, y][3] < 255
+            ):
+                interior_x = min(
+                    path.width
+                    - 1
+                    - OPENING_JUNCTION_CURVE_EDGE_INSET
+                    * (path.width / OPENING_JUNCTION_PATH_WIDTH),
+                    max(
+                        OPENING_JUNCTION_CURVE_EDGE_INSET
+                        * (path.width / OPENING_JUNCTION_PATH_WIDTH),
+                        source_x,
+                    ),
+                )
+                interior = sample_wrapped_path(
+                    path,
+                    interior_x,
+                    phase + arc_lengths[nearest],
+                )
+                result_pixels[x, y] = (*interior[:3], 255)
+            parameter = nearest / last_index
+            weight_pixels[x, y] = round(255.0 * math.sin(math.pi * parameter))
+
+    return result, weights
+
+
+def blend_rgba_with_mask(
+    base: Image.Image, overlay: Image.Image, mask: Image.Image
+) -> Image.Image:
+    """Blend RGBA texture while retaining the strongest contributing alpha."""
+
+    result = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    result_pixels = []
+    for base_pixel, overlay_pixel, weight in zip(
+        base.convert("RGBA").getdata(),
+        overlay.convert("RGBA").getdata(),
+        mask.convert("L").getdata(),
+    ):
+        if overlay_pixel[3] == 0 or weight == 0:
+            result_pixels.append(base_pixel)
+            continue
+        if base_pixel[3] == 0:
+            result_pixels.append(overlay_pixel)
+            continue
+        overlay_weight = weight * overlay_pixel[3]
+        base_weight = (255 - weight) * base_pixel[3]
+        weight_sum = base_weight + overlay_weight
+        result_pixels.append(
+            (
+                round(
+                    (base_pixel[0] * base_weight + overlay_pixel[0] * overlay_weight)
+                    / weight_sum
+                ),
+                round(
+                    (base_pixel[1] * base_weight + overlay_pixel[1] * overlay_weight)
+                    / weight_sum
+                ),
+                round(
+                    (base_pixel[2] * base_weight + overlay_pixel[2] * overlay_weight)
+                    / weight_sum
+                ),
+                max(base_pixel[3], overlay_pixel[3]),
+            )
+        )
+    result.putdata(result_pixels)
+    return result
+
+
+def remove_opening_junction_dark_fringe(
+    junction: Image.Image, curve_points: list[tuple[float, float]], path_width: int
+) -> Image.Image:
+    """Replace opaque resampling fringe pixels without touching either exact port."""
+
+    result = junction.copy().convert("RGBA")
+    source = result.copy()
+    result_pixels = result.load()
+    source_pixels = source.load()
+    radius = path_width / 2.0
+    bounds = (
+        max(0, math.floor(min(point[0] for point in curve_points) - radius)),
+        max(0, math.floor(min(point[1] for point in curve_points) - radius)),
+        min(result.width, math.ceil(max(point[0] for point in curve_points) + radius)),
+        min(result.height, math.ceil(max(point[1] for point in curve_points) + radius)),
+    )
+    for y in range(bounds[1], bounds[3]):
+        for x in range(bounds[0], bounds[2]):
+            pixel = source_pixels[x, y]
+            if pixel[3] < 240 or sum(pixel[:3]) >= 150:
+                continue
+            replacement = None
+            for search_radius in range(1, 13):
+                candidates = []
+                for candidate_y in range(
+                    max(bounds[1], y - search_radius),
+                    min(bounds[3], y + search_radius + 1),
+                ):
+                    for candidate_x in range(
+                        max(bounds[0], x - search_radius),
+                        min(bounds[2], x + search_radius + 1),
+                    ):
+                        if (
+                            abs(candidate_x - x) != search_radius
+                            and abs(candidate_y - y) != search_radius
+                        ):
+                            continue
+                        candidate = source_pixels[candidate_x, candidate_y]
+                        if candidate[3] >= 240 and sum(candidate[:3]) >= 300:
+                            candidates.append(candidate)
+                if candidates:
+                    replacement = candidates[0]
+                    break
+            if replacement is not None:
+                result_pixels[x, y] = (*replacement[:3], pixel[3])
+    return result
+
+
 def make_opening_junction(path: Image.Image) -> Image.Image:
     """Create the exact Stream-Laundry-Woodland junction at the path's scale."""
 
@@ -493,35 +835,45 @@ def make_opening_junction(path: Image.Image) -> Image.Image:
         OPENING_JUNCTION_OUTGOING_HEADING_DEGREES,
         canvas_size * 1.5,
     )
-    junction = Image.alpha_composite(incoming, outgoing)
-    containment = Image.new("L", junction.size, 0)
-    draw = ImageDraw.Draw(containment)
-    radius = path.width / 2.0
+    junction = blend_opening_junction_legs(incoming, outgoing, pivot, path.width)
     outgoing_end = (
         pivot[0] + (outgoing_direction[0] * canvas_size * 1.5),
         pivot[1] + (outgoing_direction[1] * canvas_size * 1.5),
     )
-    draw.line(
-        [(pivot[0], -path.height), pivot],
+    curve_points = opening_junction_curve_points(pivot, scale)
+    curved_route = Image.new("L", junction.size, 0)
+    curved_draw = ImageDraw.Draw(curved_route)
+    curved_draw.line(
+        [(pivot[0], -path.height), curve_points[0]],
         fill=255,
         width=path.width,
     )
-    draw.line(
-        [pivot, outgoing_end],
+    curved_draw.line(curve_points, fill=255, width=path.width, joint="curve")
+    curve_radius = path.width / 2.0
+    for point in curve_points:
+        curved_draw.ellipse(
+            (
+                point[0] - curve_radius,
+                point[1] - curve_radius,
+                point[0] + curve_radius,
+                point[1] + curve_radius,
+            ),
+            fill=255,
+        )
+    curved_draw.line(
+        [curve_points[-1], outgoing_end],
         fill=255,
         width=path.width,
     )
-    draw.ellipse(
-        (
-            pivot[0] - radius,
-            pivot[1] - radius,
-            pivot[0] + radius,
-            pivot[1] + radius,
-        ),
-        fill=255,
+    curve_texture, curve_weights = render_opening_junction_curve(
+        path, junction.size, curve_points
     )
-    junction.putalpha(ImageChops.multiply(junction.getchannel("A"), containment))
+    junction = blend_rgba_with_mask(junction, curve_texture, curve_weights)
+    junction.putalpha(ImageChops.multiply(junction.getchannel("A"), curved_route))
     junction = alpha_clean(junction, cutoff=0)
+    junction = remove_opening_junction_dark_fringe(
+        junction, curve_points, path.width
+    )
     port_depth = path.height // 8
     port_offset = round(pivot[0] - (path.width / 2.0))
     junction.paste(path.crop((0, 0, path.width, port_depth)), (port_offset, 0))
@@ -1202,15 +1554,26 @@ def make_opening_junction_review(assets: dict[str, Image.Image]) -> Image.Image:
         OPENING_JUNCTION_OUTGOING_HEADING_DEGREES,
         768.0,
     )
-    scene.alpha_composite(incoming)
-    scene.alpha_composite(outgoing)
+    continuations = Image.alpha_composite(incoming, outgoing)
+    continuation_draw = ImageDraw.Draw(continuations)
+    continuation_draw.rectangle(
+        (
+            module_position[0],
+            module_position[1],
+            module_position[0] + module.width - 1,
+            module_position[1] + module.height - 1,
+        ),
+        fill=(0, 0, 0, 0),
+    )
+    scene.alpha_composite(continuations)
     scene.alpha_composite(module, module_position)
 
     containment = Image.new("RGBA", panel_size, (30, 35, 31, 255))
     route_mask = Image.new("L", panel_size, 0)
     route_draw = ImageDraw.Draw(route_mask)
+    curve_points = opening_junction_curve_points(pivot, 1.0)
     route_draw.line(
-        [(pivot[0], 0), pivot],
+        [(pivot[0], 0), curve_points[0]],
         fill=180,
         width=OPENING_JUNCTION_PATH_WIDTH,
     )
@@ -1219,18 +1582,25 @@ def make_opening_junction_review(assets: dict[str, Image.Image]) -> Image.Image:
         pivot[1] + (outgoing_direction[1] * 768.0),
     )
     route_draw.line(
-        [pivot, outgoing_end],
+        curve_points,
         fill=180,
         width=OPENING_JUNCTION_PATH_WIDTH,
+        joint="curve",
     )
-    route_draw.ellipse(
-        (
-            pivot[0] - overlap,
-            pivot[1] - overlap,
-            pivot[0] + overlap,
-            pivot[1] + overlap,
-        ),
+    for point in curve_points:
+        route_draw.ellipse(
+            (
+                point[0] - overlap,
+                point[1] - overlap,
+                point[0] + overlap,
+                point[1] + overlap,
+            ),
+            fill=180,
+        )
+    route_draw.line(
+        [curve_points[-1], outgoing_end],
         fill=180,
+        width=OPENING_JUNCTION_PATH_WIDTH,
     )
     route_tint = Image.new("RGBA", panel_size, (70, 139, 88, 0))
     route_tint.putalpha(route_mask)
@@ -2172,6 +2542,10 @@ def main() -> None:
             "canonical_outgoing_heading_degrees": (
                 OPENING_JUNCTION_OUTGOING_HEADING_DEGREES
             ),
+            "curve_tangent_distance_pixels": (
+                OPENING_JUNCTION_CURVE_TANGENT_DISTANCE
+            ),
+            "texture_transition": "alpha_weighted_tangent_blend",
             "pivot": {"x": OPENING_JUNCTION_PIVOT[0], "y": OPENING_JUNCTION_PIVOT[1]},
             "visible_bounds": {
                 "x": opening_junction_bounds[0],

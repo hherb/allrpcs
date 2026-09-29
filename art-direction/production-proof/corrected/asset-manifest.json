@@ -23,14 +23,16 @@
     "turn_degrees": -57.599282,
     "canonical_incoming_heading_degrees": 90.0,
     "canonical_outgoing_heading_degrees": 32.400718,
+    "curve_tangent_distance_pixels": 80,
+    "texture_transition": "alpha_weighted_tangent_blend",
     "pivot": {
       "x": 224,
       "y": 224
     },
     "visible_bounds": {
-      "x": 176,
+      "x": 177,
       "y": 0,
-      "width": 336,
+      "width": 335,
       "height": 458
     },
     "review": "review/opening-junction-review.png"
@@ -615,7 +617,7 @@
         "y": 224
       },
       "godot_import_proof": true,
-      "sha256": "10fa7b38789eea75342c8eb26024e922e30dc9c7773642afc1222aa89b5e52c2"
+      "sha256": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68"
     },
     {
       "id": "plants.herb_bed_empty",

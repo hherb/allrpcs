@@ -55,11 +55,14 @@ hard edges unnatural. The bounded correction reused the straight transition and 
 two already manifest-bound outer corners to complete the rounded perimeter; the owner accepted the
 supplied correction as "much better." The following bounded path slice promotes only the straight
 module and matching rounded end cap on the Laundry-to-Clearing connection; after two bounded visual
-corrections, the owner approved the supplied 0.8x, 1.0x, and 2.0x wide and tall final views. Inset
+corrections, the owner approved the supplied 0.8x, 1.0x, and 2.0x wide and tall final views. The
+isolated Stream–Laundry–Woodland junction review subsequently replaced its hard composited elbow
+with an alpha-aware, tangent-continuous 96-pixel curve and clipped preview continuations at the
+module boundary. The product owner accepted the corrected curve and texture continuity. Inset
 corners, bends, junctions, other paths, water, structures, props, characters, UI systems, and
 gameplay authority remain unchanged. The separately approved Stream–Laundry–Woodland junction proof
-follows the exact live 57.599282-degree turn, proves both 96-pixel connector seams and unchanged
-physical-route containment, and remains isolated from `Main.tscn` pending visual and runtime approval.
+follows the exact live 57.599282-degree turn, proves both 96-pixel connector seams and curved
+physical-route containment, and remains isolated from `Main.tscn` pending separate runtime approval.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
