@@ -266,6 +266,9 @@ Acceptance:
 - [x] Promote only the manifest-bound straight path and its matching rounded end cap across the
   exact Abandoned Laundry-to-Woodland Clearing connection, preserving the other eleven greybox
   routes and all collision, navigation, topology, landmark, and gameplay authority.
+- [x] Complete the straight-path product-owner review across the supplied 0.8x, 1.0x, and 2.0x wide
+  and tall views, recording approval only for the final Laundry-to-Clearing presentation without
+  claiming pacing, usability, or human accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

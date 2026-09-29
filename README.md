@@ -53,9 +53,10 @@ wide and tall views. During the following north-transition review, the owner fou
 hard edges unnatural. The bounded correction reused the straight transition and promoted only the
 two already manifest-bound outer corners to complete the rounded perimeter; the owner accepted the
 supplied correction as "much better." The following bounded path slice promotes only the straight
-module and matching rounded end cap on the Laundry-to-Clearing connection and remains pending
-graphical review. Inset corners, bends, junctions, other paths, water, structures, props, characters,
-UI systems, and gameplay authority remain unchanged.
+module and matching rounded end cap on the Laundry-to-Clearing connection; after two bounded visual
+corrections, the owner approved the supplied 0.8x, 1.0x, and 2.0x wide and tall final views. Inset
+corners, bends, junctions, other paths, water, structures, props, characters, UI systems, and
+gameplay authority remain unchanged.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven

@@ -21,7 +21,8 @@ The next two runtime assets are `terrain.straight_path`, SHA-256
 repeats only from the exact Abandoned Laundry anchor `(1500, 220)` to the Woodland Clearing anchor
 `(1000, 350)`. Its exact 256x256 rounded cap terminates at the clearing anchor with the same derived
 rotation. Both draw at `z_index = -70`; the other eleven retained greybox route lines draw at `-75`,
-above terrain and below all ordinary landmarks, openings, labels, and interaction markers.
+above terrain and below all ordinary landmarks, openings, labels, and interaction markers. The
+product owner approved the supplied 0.8x, 1.0x, and 2.0x wide/tall final presentation.
 
 ## Review, evidence, and limits
 
@@ -37,7 +38,8 @@ above terrain and below all ordinary landmarks, openings, labels, and interactio
   scene's required PascalCase C# export name. Both corrections are covered by the passing smoke.
 - Session visual review rejected a pointed underlap and then a hard straight-path termination. The
   corrected route layering plus the exact matching end cap remove both defects in six final
-  Compatibility-rendered 0.8x, 1.0x, and 2.0x wide/tall views. This is not product-owner acceptance.
+  Compatibility-rendered 0.8x, 1.0x, and 2.0x wide/tall views; the product owner approved that final
+  presentation without requesting another correction.
 - Final host-local `./scripts/quality.sh` passed the art/proposal/import/runtime validators,
   zero-warning build, all 5,033 .NET tests (2,839 Domain, 925 Application, 1,261 Infrastructure,
   8 architecture), scenario validation, every credential-free Godot smoke, formatting, and the
@@ -45,20 +47,20 @@ above terrain and below all ordinary landmarks, openings, labels, and interactio
 - Hosted Credential-free CI run `36566160795` for implementation commit `f99bdd6` had `steps: []`
   for all five jobs. It ran no checkout or product command and remains Actions/account infrastructure
   state, not product-validation evidence or a product failure.
-- Automated checks do not establish pacing, usability, path-art acceptance, or human accessibility
-  acceptance. Record only observations the product owner actually supplies.
+- Automated checks do not establish pacing, usability, or human accessibility acceptance. The path
+  approval applies only to the supplied final views and does not authorize another route or module.
 
 ## Exact next bounded slice
 
-Run one product-owner graphical review of the Abandoned Laundry-to-Woodland Clearing straight path
-and rounded clearing endpoint at 0.8x, 1.0x, and 2.0x in the supplied 1280x720 and 1280x827 shapes.
-Check repeat seams, width/scale, edge softness, the rounded termination, moss/leaf contrast, and
-continued readability of the focus, stone marker, opening markers, labels, and accepted perimeter.
-If correction is required, change only these two path imports, anchor-derived path/cap geometry, or
-route-presentation draw order, then rerun `./scripts/quality.sh`.
+Perform one proof-only geometry feasibility check for the existing straight and 90-degree bend path
+modules at the approved non-orthogonal Stream-to-Abandoned-Laundry-to-Woodland-Clearing junction.
+Derive both live route headings from the existing anchors and test whether exact, unscaled 96-pixel
+ports can join without seams, width distortion, or presentation drift outside the existing physical
+route. Do not change `Main.tscn`. If the existing bend cannot fit exactly, stop with evidence and
+propose only one junction-specific proof module; do not promote or generate it without approval.
 
 Do not promote the path bend, T-junction, cross-junction, another end cap, either inset ground corner,
 another route, banks, water, structures, foliage, props, characters, animation, UI systems, effects,
 audio, or content-budget fills. Do not change collision, navigation, locations, topology, camera
 tuning, scenario, dialogue, clue, discovery, treatment, save, provider, or gameplay authority. Do
-not claim path-art or human accessibility acceptance until the product owner explicitly supplies it.
+not claim pacing, usability, or human accessibility acceptance.
