@@ -162,6 +162,18 @@ exports were the only references. The deterministic builder owns the exact 512x5
 256x256 export, one 96-pixel top port, clean alpha, transparent lower half, and digest. The tool
 exposed no model or version identifier, so none is asserted.
 
+## Stream–Laundry–Woodland opening junction
+
+Inputs: `exports/terrain/straight-path.png` and the approved live anchor geometry in
+`game/OpeningRegionLayoutGeometry.cs`
+
+No image-generation prompt was used. The deterministic builder composes the repository-owned
+straight-path texture into a 512x512 junction export and 1024x1024 editable master. Its exact
+96-pixel incoming port follows canonical heading `90°`; its outgoing port follows `32.400718°`,
+which preserves the live `-57.599282°` turn under rigid placement. The builder also records the
+336x458 visible footprint and generates the seam/containment review. No external visual source was
+introduced.
+
 ## Woodland leaf-litter ground
 
 Inputs: `exports/terrain/quiet-moss.png` and

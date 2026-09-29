@@ -272,6 +272,10 @@ Acceptance:
 - [x] Check the existing straight and 90-degree bend modules against the approved
   Stream–Laundry–Woodland junction geometry. The exact ports cannot follow its 57.599282-degree
   turn; retain the greybox junction and gate one junction-specific proof module on approval.
+- [x] After explicit product-owner approval, establish and import one isolated 512x512
+  Stream–Laundry–Woodland junction proof with a 1024x1024 editable master, exact live-angle
+  96-pixel ports, a bound 336x458 visible footprint, exact seam reconstruction, and unchanged
+  physical-route containment without changing `Main.tscn` or runtime authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

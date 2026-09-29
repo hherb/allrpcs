@@ -23,7 +23,15 @@ its exact 96-pixel connectors and texture.
 The existing straight module likewise preserves one heading and cannot resolve the turn.
 
 The existing 90° bend is therefore infeasible at this junction under exact, unscaled placement.
-The one proposed follow-up is a junction-specific proof module whose two 96-pixel ports follow the
-live `57.599282°` turn. Its footprint, seam pixels, and coverage within the existing physical route
-must be demonstrated before any runtime use. No new asset or ordinary-scene change is authorized
-by this check.
+The product owner subsequently approved one junction-specific isolated proof. The deterministic
+`terrain.opening_junction` export is a 512×512 canvas with a 1024×1024 editable OpenRaster master.
+Its canonical incoming port follows `90°`; its outgoing port follows `32.400718°`. Rotating the
+module by `133.025066°` aligns those ports to the live `-136.974934°` incoming and `165.425784°`
+outgoing headings without scaling or shearing.
+
+The manifest records a 336×458 visible footprint inside that canvas. The corrected proof validator
+checks the exact 96×32 incoming connector pixels, reconstructs and compares the transformed
+outgoing connector pixels, rejects any visible pixel beyond the unchanged 96-pixel physical-route
+bands, and binds the side-by-side seam/containment review. The asset is imported only by
+`DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay remain unchanged. Runtime use still
+requires separate product-owner approval.

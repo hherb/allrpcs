@@ -12,7 +12,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from xml.etree.ElementTree import Element, SubElement, tostring
 
-from PIL import Image, ImageDraw, ImageOps
+from PIL import Image, ImageChops, ImageDraw, ImageOps
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +34,12 @@ ALPHA_CUTOFF = 96
 GROUND_CONNECTOR_DEPTH = 32
 GROUND_CORNER_FEATHER_MASTER = 48.0
 GROUND_CORNER_IRREGULARITY_MASTER = 14.0
+OPENING_JUNCTION_CANVAS_SIZE = 512
+OPENING_JUNCTION_PIVOT = (224, 224)
+OPENING_JUNCTION_PATH_WIDTH = 96
+OPENING_JUNCTION_PORT_DEPTH = 32
+OPENING_JUNCTION_TURN_DEGREES = -57.599282
+OPENING_JUNCTION_OUTGOING_HEADING_DEGREES = 90.0 + OPENING_JUNCTION_TURN_DEGREES
 RESAMPLE = Image.Resampling.LANCZOS
 LOGICAL_VIEWPORT_SIZE = (1280, 720)
 FULLSCREEN_REFERENCE_LOGICAL_SIZE = (1280, 827)
@@ -424,6 +430,105 @@ def make_path() -> Image.Image:
     resized = ImageOps.fit(source, (192, 512), method=RESAMPLE, centering=(0.5, 0.5))
     resized = alpha_clean(resized, cutoff=24)
     return enforce_opposite_edges(resized, horizontal=False, vertical=True)
+
+
+def render_path_leg(
+    path: Image.Image,
+    canvas_size: tuple[int, int],
+    start: tuple[float, float],
+    heading_degrees: float,
+    length: float,
+) -> Image.Image:
+    """Render one finite repeatable path leg into a shared pixel coordinate system."""
+
+    source_height = max(1, math.ceil(length) + 2)
+    source = Image.new("RGBA", (path.width, source_height), (0, 0, 0, 0))
+    for y in range(0, source_height, path.height):
+        source.alpha_composite(path, (0, y))
+
+    angle = math.radians(heading_degrees)
+    direction = (math.cos(angle), math.sin(angle))
+    right = (math.sin(angle), -math.cos(angle))
+    offset_x = (path.width / 2.0) - (right[0] * start[0]) - (right[1] * start[1])
+    offset_y = -(direction[0] * start[0]) - (direction[1] * start[1])
+    return source.transform(
+        canvas_size,
+        Image.Transform.AFFINE,
+        (
+            right[0],
+            right[1],
+            offset_x,
+            direction[0],
+            direction[1],
+            offset_y,
+        ),
+        resample=Image.Resampling.BICUBIC,
+    )
+
+
+def make_opening_junction(path: Image.Image) -> Image.Image:
+    """Create the exact Stream-Laundry-Woodland junction at the path's scale."""
+
+    scale = path.width / OPENING_JUNCTION_PATH_WIDTH
+    canvas_size = round(OPENING_JUNCTION_CANVAS_SIZE * scale)
+    pivot = tuple(coordinate * scale for coordinate in OPENING_JUNCTION_PIVOT)
+    overlap = (OPENING_JUNCTION_PATH_WIDTH / 2.0) * scale
+    incoming = render_path_leg(
+        path,
+        (canvas_size, canvas_size),
+        (pivot[0], 0.0),
+        90.0,
+        pivot[1] + overlap,
+    )
+    outgoing_angle = math.radians(OPENING_JUNCTION_OUTGOING_HEADING_DEGREES)
+    outgoing_direction = (math.cos(outgoing_angle), math.sin(outgoing_angle))
+    outgoing_start = (
+        pivot[0] - (outgoing_direction[0] * overlap),
+        pivot[1] - (outgoing_direction[1] * overlap),
+    )
+    outgoing = render_path_leg(
+        path,
+        (canvas_size, canvas_size),
+        outgoing_start,
+        OPENING_JUNCTION_OUTGOING_HEADING_DEGREES,
+        canvas_size * 1.5,
+    )
+    junction = Image.alpha_composite(incoming, outgoing)
+    containment = Image.new("L", junction.size, 0)
+    draw = ImageDraw.Draw(containment)
+    radius = path.width / 2.0
+    outgoing_end = (
+        pivot[0] + (outgoing_direction[0] * canvas_size * 1.5),
+        pivot[1] + (outgoing_direction[1] * canvas_size * 1.5),
+    )
+    draw.line(
+        [(pivot[0], -path.height), pivot],
+        fill=255,
+        width=path.width,
+    )
+    draw.line(
+        [pivot, outgoing_end],
+        fill=255,
+        width=path.width,
+    )
+    draw.ellipse(
+        (
+            pivot[0] - radius,
+            pivot[1] - radius,
+            pivot[0] + radius,
+            pivot[1] + radius,
+        ),
+        fill=255,
+    )
+    junction.putalpha(ImageChops.multiply(junction.getchannel("A"), containment))
+    junction = alpha_clean(junction, cutoff=0)
+    port_depth = path.height // 8
+    port_offset = round(pivot[0] - (path.width / 2.0))
+    junction.paste(path.crop((0, 0, path.width, port_depth)), (port_offset, 0))
+    top_edge = Image.new("RGBA", (canvas_size, 1), (0, 0, 0, 0))
+    top_edge.paste(path.crop((0, 0, path.width, 1)), (port_offset, 0))
+    junction.paste(top_edge, (0, 0))
+    return junction
 
 
 def enforce_path_bend_ports(
@@ -1058,6 +1163,101 @@ def make_path_end_cap_review(assets: dict[str, Image.Image]) -> Image.Image:
     return scene
 
 
+def make_opening_junction_review(assets: dict[str, Image.Image]) -> Image.Image:
+    """Show exact live-angle continuations and the module's route-band containment."""
+
+    panel_size = (768, 768)
+    scene = Image.new("RGBA", panel_size, (0, 0, 0, 0))
+    ground = assets["terrain.quiet_moss"]
+    for y in range(0, scene.height, ground.height):
+        for x in range(0, scene.width, ground.width):
+            scene.alpha_composite(ground, (x, y))
+
+    straight = assets["terrain.straight_path"]
+    module = assets["terrain.opening_junction"]
+    module_position = (128, 128)
+    pivot = (
+        module_position[0] + OPENING_JUNCTION_PIVOT[0],
+        module_position[1] + OPENING_JUNCTION_PIVOT[1],
+    )
+    overlap = OPENING_JUNCTION_PATH_WIDTH / 2.0
+    incoming_start = (pivot[0], module_position[1] - straight.height)
+    incoming = render_path_leg(
+        straight,
+        panel_size,
+        incoming_start,
+        90.0,
+        pivot[1] - incoming_start[1],
+    )
+    outgoing_angle = math.radians(OPENING_JUNCTION_OUTGOING_HEADING_DEGREES)
+    outgoing_direction = (math.cos(outgoing_angle), math.sin(outgoing_angle))
+    outgoing_start = (
+        pivot[0] - (outgoing_direction[0] * overlap),
+        pivot[1] - (outgoing_direction[1] * overlap),
+    )
+    outgoing = render_path_leg(
+        straight,
+        panel_size,
+        outgoing_start,
+        OPENING_JUNCTION_OUTGOING_HEADING_DEGREES,
+        768.0,
+    )
+    scene.alpha_composite(incoming)
+    scene.alpha_composite(outgoing)
+    scene.alpha_composite(module, module_position)
+
+    containment = Image.new("RGBA", panel_size, (30, 35, 31, 255))
+    route_mask = Image.new("L", panel_size, 0)
+    route_draw = ImageDraw.Draw(route_mask)
+    route_draw.line(
+        [(pivot[0], 0), pivot],
+        fill=180,
+        width=OPENING_JUNCTION_PATH_WIDTH,
+    )
+    outgoing_end = (
+        pivot[0] + (outgoing_direction[0] * 768.0),
+        pivot[1] + (outgoing_direction[1] * 768.0),
+    )
+    route_draw.line(
+        [pivot, outgoing_end],
+        fill=180,
+        width=OPENING_JUNCTION_PATH_WIDTH,
+    )
+    route_draw.ellipse(
+        (
+            pivot[0] - overlap,
+            pivot[1] - overlap,
+            pivot[0] + overlap,
+            pivot[1] + overlap,
+        ),
+        fill=180,
+    )
+    route_tint = Image.new("RGBA", panel_size, (70, 139, 88, 0))
+    route_tint.putalpha(route_mask)
+    containment.alpha_composite(route_tint)
+    module_layer = Image.new("RGBA", panel_size, (0, 0, 0, 0))
+    module_layer.alpha_composite(module, module_position)
+    module_alpha = module_layer.getchannel("A")
+    module_tint = Image.new("RGBA", panel_size, (245, 215, 132, 0))
+    module_tint.putalpha(module_alpha)
+    containment.alpha_composite(module_tint)
+    overflow = Image.new("L", panel_size, 0)
+    overflow.putdata(
+        [
+            alpha if alpha > 0 and route == 0 else 0
+            for alpha, route in zip(module_alpha.getdata(), route_mask.getdata())
+        ]
+    )
+    overflow_tint = Image.new("RGBA", panel_size, (220, 60, 50, 0))
+    overflow_tint.putalpha(overflow)
+    containment.alpha_composite(overflow_tint)
+
+    review = Image.new("RGBA", (1536, 768), (0, 0, 0, 0))
+    review.alpha_composite(scene, (0, 0))
+    review.alpha_composite(containment, (768, 0))
+    return review
+
+
 def make_path_module_topology_review(assets: dict[str, Image.Image]) -> Image.Image:
     """Compose every path topology into one connected external review network."""
 
@@ -1271,6 +1471,7 @@ def main() -> None:
     path_t_junction_master = make_path_t_junction(path_master)
     path_cross_junction_master = make_path_cross_junction(path_master)
     path_end_cap_master = make_path_end_cap(path_master)
+    opening_junction_master = make_opening_junction(path_master)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -1408,6 +1609,16 @@ def main() -> None:
             512,
             path_end_cap_master,
             "sources/imagegen/path-end-cap-overlay.png",
+        ),
+        Asset(
+            "terrain.opening_junction",
+            "terrain",
+            Path("exports/terrain/opening-junction.png"),
+            (1024, 1024),
+            (448, 448),
+            1024,
+            opening_junction_master,
+            "tools/build.py",
         ),
         Asset(
             "plants.herb_bed_empty",
@@ -1570,6 +1781,8 @@ def main() -> None:
                 alpha_clean(export, cutoff=8),
                 export_images["terrain.straight_path"],
             )
+        elif asset.asset_id == "terrain.opening_junction":
+            export = make_opening_junction(export_images["terrain.straight_path"])
         save_png(export, ROOT / asset.export_path)
         export_images[asset.asset_id] = export
 
@@ -1687,6 +1900,20 @@ def main() -> None:
         MASTERS / "terrain-path-end-cap.ora",
         path_end_cap_master.size,
         [("packed-earth path end-cap", path_end_cap_master, 0, 0, True)],
+    )
+    create_ora(
+        MASTERS / "terrain-opening-junction.ora",
+        opening_junction_master.size,
+        [
+            ("straight packed-earth source", path_master, 0, 0, False),
+            (
+                "Stream-Laundry-Woodland junction",
+                opening_junction_master,
+                0,
+                0,
+                True,
+            ),
+        ],
     )
     create_ora(
         MASTERS / "planted-herb-bed.ora",
@@ -1847,6 +2074,10 @@ def main() -> None:
         REVIEW / "path-end-cap-review.png",
     )
     save_png(
+        make_opening_junction_review(export_images),
+        REVIEW / "opening-junction-review.png",
+    )
+    save_png(
         make_path_module_topology_review(export_images),
         REVIEW / "path-module-topology-review.png",
     )
@@ -1913,6 +2144,11 @@ def main() -> None:
             }
         )
 
+    opening_junction_bounds = (
+        export_images["terrain.opening_junction"].getchannel("A").getbbox()
+    )
+    if opening_junction_bounds is None:
+        raise ValueError("opening junction export unexpectedly has no visible footprint")
     manifest = {
         "schema_version": 2,
         "status": "scale-rebaselined production-pipeline proof with isolated Godot import parity",
@@ -1926,6 +2162,25 @@ def main() -> None:
         },
         "minimum_visible_character_height": SEEKER_MINIMUM_VISIBLE_HEIGHT,
         "master_scale": MASTER_SCALE,
+        "opening_junction_proof": {
+            "asset": "terrain.opening_junction",
+            "anchor_ids": ["stream", "abandoned-laundry", "woodland-clearing"],
+            "path_width_pixels": OPENING_JUNCTION_PATH_WIDTH,
+            "port_depth_pixels": OPENING_JUNCTION_PORT_DEPTH,
+            "turn_degrees": OPENING_JUNCTION_TURN_DEGREES,
+            "canonical_incoming_heading_degrees": 90.0,
+            "canonical_outgoing_heading_degrees": (
+                OPENING_JUNCTION_OUTGOING_HEADING_DEGREES
+            ),
+            "pivot": {"x": OPENING_JUNCTION_PIVOT[0], "y": OPENING_JUNCTION_PIVOT[1]},
+            "visible_bounds": {
+                "x": opening_junction_bounds[0],
+                "y": opening_junction_bounds[1],
+                "width": opening_junction_bounds[2] - opening_junction_bounds[0],
+                "height": opening_junction_bounds[3] - opening_junction_bounds[1],
+            },
+            "review": "review/opening-junction-review.png",
+        },
         "navigation_clearance": {
             "scene": "review/module-review-scene.png",
             "x": REVIEW_PATH_X,

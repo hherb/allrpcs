@@ -95,12 +95,64 @@ def main() -> None:
     require(mismatch > 1e-6, "the existing bend now fits; reassess the handover")
     half_bend = 128.0
     lateral_drift = half_bend * math.sin(math.radians(mismatch))
+
+    proof = manifest["opening_junction_proof"]
+    proof_asset = assets[proof["asset"]]
+    proof_path = PROOF / proof_asset["export"]
+    require(proof["anchor_ids"] == list(ANCHOR_IDS), "junction proof anchors drifted")
+    require(
+        proof["path_width_pixels"] == 96
+        and proof["port_depth_pixels"] == 32,
+        "junction proof port geometry drifted",
+    )
+    require(
+        math.isclose(proof["turn_degrees"], turn, abs_tol=1e-6),
+        "junction proof turn no longer matches the live routes",
+    )
+    canonical_outgoing = 90.0 + turn
+    require(
+        math.isclose(
+            proof["canonical_outgoing_heading_degrees"],
+            canonical_outgoing,
+            abs_tol=1e-6,
+        ),
+        "junction proof outgoing heading drifted",
+    )
+    world_rotation = (incoming - 90.0 + 180.0) % 360.0 - 180.0
+    projected_outgoing = (
+        proof["canonical_outgoing_heading_degrees"] + world_rotation + 180.0
+    ) % 360.0 - 180.0
+    require(
+        math.isclose(projected_outgoing, outgoing, abs_tol=1e-6),
+        "junction proof cannot align both live route headings by rigid rotation",
+    )
+    require(
+        png_size(proof_path) == (512, 512),
+        "junction proof export dimensions changed",
+    )
+    require(
+        hashlib.sha256(proof_path.read_bytes()).hexdigest() == proof_asset["sha256"],
+        "junction proof export digest changed",
+    )
     print(f"Stream -> Laundry heading: {incoming:.6f} degrees")
     print(f"Laundry -> Woodland heading: {outgoing:.6f} degrees")
     print(f"Required turn: {turn:.6f} degrees; exact bend turn: 90.000000 degrees")
     print(f"Port mismatch: {mismatch:.6f} degrees")
     print(f"Lateral drift over {half_bend:.0f} pixels: {lateral_drift:.3f} pixels")
     print("Result: the exact unscaled 90-degree bend cannot join both route headings.")
+    print(
+        "Approved proof: terrain.opening_junction has exact 96px ports at "
+        f"90.000000 and {canonical_outgoing:.6f} degrees on a 512x512 canvas."
+    )
+    print(
+        f"Rigid world rotation: {world_rotation:.6f} degrees; projected outgoing heading: "
+        f"{projected_outgoing:.6f} degrees."
+    )
+    print(
+        "Footprint: "
+        f"{proof['visible_bounds']['width']}x{proof['visible_bounds']['height']} visible pixels; "
+        "the corrected proof validator checks exact port pixels and 96px route containment."
+    )
 
 
 if __name__ == "__main__":

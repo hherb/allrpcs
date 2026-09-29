@@ -11,6 +11,30 @@
   },
   "minimum_visible_character_height": 144,
   "master_scale": 2,
+  "opening_junction_proof": {
+    "asset": "terrain.opening_junction",
+    "anchor_ids": [
+      "stream",
+      "abandoned-laundry",
+      "woodland-clearing"
+    ],
+    "path_width_pixels": 96,
+    "port_depth_pixels": 32,
+    "turn_degrees": -57.599282,
+    "canonical_incoming_heading_degrees": 90.0,
+    "canonical_outgoing_heading_degrees": 32.400718,
+    "pivot": {
+      "x": 224,
+      "y": 224
+    },
+    "visible_bounds": {
+      "x": 176,
+      "y": 0,
+      "width": 336,
+      "height": 458
+    },
+    "review": "review/opening-junction-review.png"
+  },
   "navigation_clearance": {
     "scene": "review/module-review-scene.png",
     "x": 592,
@@ -562,6 +586,36 @@
       },
       "godot_import_proof": true,
       "sha256": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3"
+    },
+    {
+      "id": "terrain.opening_junction",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/opening-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 1024,
+        "scale": 2
+      },
+      "contact_baseline": 512,
+      "pivot": {
+        "x": 224,
+        "y": 224
+      },
+      "godot_import_proof": true,
+      "sha256": "10fa7b38789eea75342c8eb26024e922e30dc9c7773642afc1222aa89b5e52c2"
     },
     {
       "id": "plants.herb_bed_empty",

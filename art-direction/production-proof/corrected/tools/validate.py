@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import zipfile
 from pathlib import Path
 
@@ -87,6 +88,66 @@ def images_equal(first: Image.Image, second: Image.Image) -> bool:
     if isinstance(extrema[0], tuple):
         return all(channel_max == 0 for _, channel_max in extrema)
     return extrema[1] == 0
+
+
+def render_path_leg_reference(
+    path: Image.Image,
+    canvas_size: tuple[int, int],
+    start: tuple[float, float],
+    heading_degrees: float,
+    length: float,
+) -> Image.Image:
+    """Independently reconstruct one angled straight-path connector."""
+
+    source_height = max(1, math.ceil(length) + 2)
+    source = Image.new("RGBA", (path.width, source_height), (0, 0, 0, 0))
+    for y in range(0, source_height, path.height):
+        source.alpha_composite(path, (0, y))
+    angle = math.radians(heading_degrees)
+    direction = (math.cos(angle), math.sin(angle))
+    right = (math.sin(angle), -math.cos(angle))
+    offset_x = (path.width / 2.0) - (right[0] * start[0]) - (right[1] * start[1])
+    offset_y = -(direction[0] * start[0]) - (direction[1] * start[1])
+    return source.transform(
+        canvas_size,
+        Image.Transform.AFFINE,
+        (
+            right[0],
+            right[1],
+            offset_x,
+            direction[0],
+            direction[1],
+            offset_y,
+        ),
+        resample=Image.Resampling.BICUBIC,
+    )
+
+
+def point_segment_distance(
+    point: tuple[float, float],
+    start: tuple[float, float],
+    end: tuple[float, float],
+) -> float:
+    """Return the shortest Euclidean distance from a point to a segment."""
+
+    segment = (end[0] - start[0], end[1] - start[1])
+    length_squared = (segment[0] * segment[0]) + (segment[1] * segment[1])
+    progress = max(
+        0.0,
+        min(
+            1.0,
+            (
+                ((point[0] - start[0]) * segment[0])
+                + ((point[1] - start[1]) * segment[1])
+            )
+            / length_squared,
+        ),
+    )
+    nearest = (
+        start[0] + (segment[0] * progress),
+        start[1] + (segment[1] * progress),
+    )
+    return math.dist(point, nearest)
 
 
 def rectangles_overlap(first: dict[str, int], second: dict[str, int]) -> bool:
@@ -192,7 +253,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 66, f"expected 66 assets, got {len(assets)}")
+    require(len(assets) == 67, f"expected 67 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -897,6 +958,115 @@ def main() -> None:
             f"path end-cap {label} is not transparent",
         )
 
+    opening_proof = manifest["opening_junction_proof"]
+    require(
+        opening_proof["asset"] == "terrain.opening_junction"
+        and opening_proof["anchor_ids"]
+        == ["stream", "abandoned-laundry", "woodland-clearing"]
+        and opening_proof["path_width_pixels"] == 96
+        and opening_proof["port_depth_pixels"] == 32
+        and math.isclose(opening_proof["turn_degrees"], -57.599282, abs_tol=1e-6)
+        and opening_proof["canonical_incoming_heading_degrees"] == 90.0
+        and math.isclose(
+            opening_proof["canonical_outgoing_heading_degrees"],
+            32.400718,
+            abs_tol=1e-6,
+        )
+        and opening_proof["pivot"] == {"x": 224, "y": 224}
+        and opening_proof["review"] == "review/opening-junction-review.png",
+        "opening junction proof metadata drifted",
+    )
+    opening_asset = assets[opening_proof["asset"]]
+    require(
+        opening_asset["source"] == "tools/build.py"
+        and opening_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 512, "height": 512}
+        and opening_asset["master_dimensions_pixels"]
+        == {"width": 1024, "height": 1024, "scale": 2}
+        and opening_asset["pivot"] == opening_proof["pivot"]
+        and opening_asset["godot_import_proof"] is True,
+        "opening junction manifest geometry, provenance, or import status drifted",
+    )
+    opening_junction = Image.open(ROOT / opening_asset["export"]).convert("RGBA")
+    opening_alpha = opening_junction.getchannel("A")
+    opening_bounds = opening_alpha.getbbox()
+    require(opening_bounds is not None, "opening junction has no visible footprint")
+    require(
+        opening_proof["visible_bounds"]
+        == {
+            "x": opening_bounds[0],
+            "y": opening_bounds[1],
+            "width": opening_bounds[2] - opening_bounds[0],
+            "height": opening_bounds[3] - opening_bounds[1],
+        },
+        "opening junction visible footprint metadata drifted",
+    )
+    opening_pivot = (opening_proof["pivot"]["x"], opening_proof["pivot"]["y"])
+    require(
+        images_equal(
+            opening_junction.crop((176, 0, 272, 32)),
+            straight_entry,
+        ),
+        "opening junction incoming port differs from the exact 96px straight connector",
+    )
+    outgoing_heading = opening_proof["canonical_outgoing_heading_degrees"]
+    outgoing_angle = math.radians(outgoing_heading)
+    outgoing_direction = (math.cos(outgoing_angle), math.sin(outgoing_angle))
+    outgoing_overlap = opening_proof["path_width_pixels"] / 2.0
+    outgoing_start = (
+        opening_pivot[0] - (outgoing_direction[0] * outgoing_overlap),
+        opening_pivot[1] - (outgoing_direction[1] * outgoing_overlap),
+    )
+    outgoing_reference = render_path_leg_reference(
+        path,
+        opening_junction.size,
+        outgoing_start,
+        outgoing_heading,
+        opening_junction.width * 1.5,
+    )
+    require(
+        images_equal(
+            opening_junction.crop((480, 0, 512, 512)),
+            outgoing_reference.crop((480, 0, 512, 512)),
+        ),
+        "opening junction outgoing port lost exact transformed straight-path pixels",
+    )
+    for label, box in [
+        ("top-left edge", (0, 0, 176, 1)),
+        ("top-right edge", (272, 0, 512, 1)),
+        ("left edge", (0, 0, 1, 512)),
+        ("bottom edge", (0, 511, 512, 512)),
+    ]:
+        require(
+            opening_alpha.crop(box).getbbox() is None,
+            f"opening junction {label} is not transparent",
+        )
+    incoming_segment = ((float(opening_pivot[0]), -512.0), opening_pivot)
+    outgoing_segment = (
+        opening_pivot,
+        (
+            opening_pivot[0] + (outgoing_direction[0] * 1024.0),
+            opening_pivot[1] + (outgoing_direction[1] * 1024.0),
+        ),
+    )
+    visible_pixels = (
+        (x, y)
+        for y in range(opening_junction.height)
+        for x in range(opening_junction.width)
+        if opening_alpha.getpixel((x, y)) > 0
+    )
+    require(
+        all(
+            min(
+                point_segment_distance((x + 0.5, y + 0.5), *incoming_segment),
+                point_segment_distance((x + 0.5, y + 0.5), *outgoing_segment),
+            )
+            <= 49.0
+            for x, y in visible_pixels
+        ),
+        "opening junction leaves the unchanged 96px physical route footprint",
+    )
+
     animations = {animation["id"]: animation for animation in manifest["animations"]}
     expected_walk_ids = {
         f"characters.seeker.{direction}.walk"
@@ -1076,6 +1246,11 @@ def main() -> None:
         end_cap_review.size == (768, 768),
         "path end-cap review dimensions drifted",
     )
+    opening_review = Image.open(ROOT / opening_proof["review"])
+    require(
+        opening_review.size == (1536, 768),
+        "opening junction seam/containment review dimensions drifted",
+    )
     topology_review = Image.open(ROOT / "review" / "path-module-topology-review.png")
     require(
         topology_review.size == (1024, 768),
@@ -1154,6 +1329,7 @@ def main() -> None:
         "terrain-path-t-junction.ora",
         "terrain-path-cross-junction.ora",
         "terrain-path-end-cap.ora",
+        "terrain-opening-junction.ora",
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition.ora",
@@ -1181,6 +1357,7 @@ def main() -> None:
     print("path T-junction: exact 96px top/left/right ports with transparent lower regions")
     print("path cross-junction: exact 96px four-way ports with transparent corners")
     print("path end-cap: exact 96px top port with terminus above a transparent lower half")
+    print("opening junction: exact live-angle 96px ports within the retained route footprint")
     print("path topology: straight, bend, T, cross, and end-cap compose as one network")
     print("leaf litter: opaque, exact seams, useful texture and palette contrast, no corridor")
     print("ground transition: exact moss/leaf connectors and repeatable top/bottom seam")
@@ -1188,7 +1365,7 @@ def main() -> None:
     print("left ground corner: exact top/left transition and unused moss edge connectors")
     print("inset ground corner: exact top/right transition and unused leaf edge connectors")
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
-    print("editable masters: 17 valid OpenRaster archives")
+    print("editable masters: 18 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

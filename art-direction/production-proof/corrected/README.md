@@ -1,6 +1,6 @@
 # Direction A corrected production-pipeline proof
 
-Status: bounded scale-rebaselined proof, 2026-09-28. This directory remains outside `game/`; exact copies
+Status: bounded scale-rebaselined proof, 2026-09-29. This directory remains outside `game/`; exact copies
 are imported only by the isolated proof scene and none is runtime-authoritative.
 
 This proof corrects the sheet-dependent failures recorded by the first Phase 9.2 proof. Eighteen
@@ -11,22 +11,20 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 66 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 67 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
 - `exports` contains one file per module: quiet moss, opaque woodland leaf litter, one deterministic
   moss-to-leaf straight transition, two outer-corner transitions, two inset-corner transitions,
-  straight path, one 90-degree path bend, one T-junction, one
-  cross-junction, one end-cap, empty herb bed, broadleaf foliage, ordinary preparation
-  table, three
-  separate cue overlays, and 24 normalized
+  straight path, one 90-degree path bend, one T-junction, one cross-junction, one end-cap, and the
+  exact live-angle Stream–Laundry–Woodland junction, plus empty herb bed, broadleaf foliage,
+  ordinary preparation table, three separate cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
-- `masters` contains seventeen editable layered OpenRaster files for terrain/path, the leaf-litter
-  ground and five transitions, the path bend, the
-  path T-junction, the path cross-junction, the path end-cap, planted herb bed,
-  preparation-table states, walk,
+- `masters` contains eighteen editable layered OpenRaster files for terrain/path, the leaf-litter
+  ground and five transitions, the path bend, the path T-junction, the path cross-junction, the path
+  end-cap, the live-angle opening junction, planted herb bed, preparation-table states, walk,
   idle/breathe, interaction strips, and the composed review scene.
 - `review/module-review-scene.png` is a 1280x720 composition made only from corrected exports. Its
   grayscale companion preserves the path, character, props, and identified-state cue hierarchy.
@@ -40,6 +38,9 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   horizontal copies of the straight module over quiet moss without adding another terrain asset.
 - `review/path-end-cap-review.png` joins the end-cap below one exact vertical copy of the straight
   module over quiet moss without adding another terrain asset.
+- `review/opening-junction-review.png` places the exact live-angle junction between continuous
+  straight-path samples and pairs that composition with its unchanged 96-pixel route-band
+  containment mask.
 - `review/path-module-topology-review.png` connects rotated T-junction and bend modules with the
   straight, cross-junction, and end-cap exports as one deterministic network over quiet moss.
 - `review/woodland-leaf-litter-review.png` shows the opaque leaf-litter tile in an exact 2x2 seam
@@ -62,13 +63,14 @@ Run from the repository root:
 ```sh
 python3 art-direction/production-proof/corrected/tools/build.py
 python3 art-direction/production-proof/corrected/tools/validate.py
+python3 art-direction/production-proof/corrected/tools/check_opening_junction_feasibility.py
 python3 art-direction/production-proof/corrected/tools/terrain_accessibility_review.py
 python3 art-direction/production-proof/corrected/tools/validate_terrain_accessibility_review.py
 ```
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 66 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
+- all 67 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
   fully transparent pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -88,6 +90,9 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - the 256x256 path end-cap has exact 96-pixel straight-path parity at its centered top port, a
   rounded terminus before the lower half, transparent side and bottom edges, and a transparent
   lower 64-pixel band;
+- the 512x512 opening junction retains exact incoming and transformed outgoing 96-pixel port
+  pixels for the live 57.599282-degree turn, records its 336x458 visible footprint, and keeps every
+  visible pixel inside the unchanged physical route bands;
 - one 1024x768 topology composition connects every path shape using only exact exports and
   deterministic rotations, without introducing another terrain asset;
 - all six frames in each of the four directional walks are unique, remain at least 144 visible
@@ -102,7 +107,7 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - the external terrain accessibility review exactly reproduces 40 simulation views from the current
   manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
 - no fixed review-scene obstacle overlaps the 96x720 path corridor; and
-- all seventeen `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
+- all eighteen `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
   editable PNG layers.
 
 ## Review conclusion and boundaries
@@ -117,7 +122,7 @@ so the Direction D contingency does not activate.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 66 exports have a separate isolated Godot import proof, and `Main.tscn` references neither
+All 67 exports have a separate isolated Godot import proof, and `Main.tscn` references neither
 proof. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 

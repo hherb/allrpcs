@@ -16,12 +16,13 @@ The first bounded Phase 9.2 source-sheet proof decomposes that direction into te
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
 seam, pivot, baseline, and editable-master gaps led to a corrected individual-asset pipeline. The
-corrected proof now has 66 manifest-bound exports, seventeen layered masters, exact seam and
+corrected proof now has 67 manifest-bound exports, eighteen layered masters, exact seam and
 grayscale checks, four normalized six-frame walks, four two-frame idle/breathe loops, and four
 four-frame reach-and-inspect gestures. The terrain set includes one exact 96-pixel straight module and one
-90-degree bend, T-junction, cross-junction, and rounded end-cap with matching ports, plus one
+90-degree bend, T-junction, cross-junction, rounded end-cap, and one 512-pixel live-angle opening
+junction with matching ports, plus one
 deterministic connected-topology review, one repeatable woodland leaf-litter tile, and exact
-quiet-moss-to-leaf straight, two outer-corner, and two inset-corner transitions. All 66 exports have
+quiet-moss-to-leaf straight, two outer-corner, and two inset-corner transitions. All 67 exports have
 an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
 review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
@@ -56,7 +57,9 @@ supplied correction as "much better." The following bounded path slice promotes 
 module and matching rounded end cap on the Laundry-to-Clearing connection; after two bounded visual
 corrections, the owner approved the supplied 0.8x, 1.0x, and 2.0x wide and tall final views. Inset
 corners, bends, junctions, other paths, water, structures, props, characters, UI systems, and
-gameplay authority remain unchanged.
+gameplay authority remain unchanged. The separately approved Stream–Laundry–Woodland junction proof
+follows the exact live 57.599282-degree turn, proves both 96-pixel connector seams and unchanged
+physical-route containment, and remains isolated from `Main.tscn` pending visual and runtime approval.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven

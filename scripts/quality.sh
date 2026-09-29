@@ -9,6 +9,7 @@ cd "$repository_root"
 
 ./scripts/validate-workflows.sh
 python3 art-direction/production-proof/corrected/tools/validate.py
+python3 art-direction/production-proof/corrected/tools/check_opening_junction_feasibility.py
 python3 art-direction/production-proof/corrected/tools/validate_terrain_accessibility_review.py
 python3 art-direction/world-layout-proposal/tools/validate.py
 python3 scripts/validate-direction-a-import-proof.py

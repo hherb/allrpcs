@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3]
+[gd_scene load_steps=70 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/path-t-junction.png" id="57_path_t_junction"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/path-cross-junction.png" id="58_path_cross_junction"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/path-end-cap.png" id="59_path_end_cap"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/opening-junction.png" id="66_opening_junction"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter.png" id="60_leaf_litter"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-transition.png" id="61_leaf_transition"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-corner-transition.png" id="62_leaf_corner_transition"]
@@ -242,6 +243,11 @@ centered = false
 [node name="PathEndCapProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(768, 768)
 texture = ExtResource("59_path_end_cap")
+centered = false
+
+[node name="OpeningJunctionProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1024, 768)
+texture = ExtResource("66_opening_junction")
 centered = false
 
 [node name="WoodlandLeafLitterProof" type="Sprite2D" parent="Terrain"]

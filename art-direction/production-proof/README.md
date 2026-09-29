@@ -6,8 +6,8 @@ Status: bounded pre-production source-sheet proof, 2026-09-28. These files are s
 The recorded failures below are historical evidence from the first sheet workflow. The bounded
 [corrected pipeline proof](corrected/README.md) now passes clean-alpha, seam, manifest, layered-master,
 grayscale-cue, navigation-clearance, and four-direction walk, idle, and interaction checks. Its exact
-exports now include one manifest-bound 90-degree path bend and all have an isolated Godot import
-proof; neither proof is referenced by ordinary gameplay.
+exports now include manifest-bound 90-degree and live-angle opening-junction path modules, and all
+have an isolated Godot import proof; neither proof is referenced by ordinary gameplay.
 
 Phase 9.1's approved painterly storybook direction was decomposed into four deliberately small
 source sheets:

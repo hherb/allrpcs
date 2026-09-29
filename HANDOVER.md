@@ -2,36 +2,46 @@
 
 ## Current state
 
-Phase 8 and Phase 9.1 are complete. Direction A is selected. The approved 3200x1800 opening
-region retains eleven anchors, twelve topology edges, the closed forest gate, and unchanged
-collision, navigation, camera, scenario, and gameplay authority. Seven manifest-bound terrain/path
-assets have separate runtime copies; the other Direction A assets remain isolated proofs. The
-product owner approved the rounded Woodland Clearing perimeter and final Laundry-to-Clearing
-straight path/end-cap presentation in the supplied 0.8x, 1.0x, and 2.0x wide/tall views.
+Phase 8 and Phase 9.1 are complete. Direction A is selected. The approved 3200x1800 opening region,
+eleven anchors, twelve topology edges, closed forest gate, collision, navigation, camera, scenario,
+and gameplay authority remain unchanged. Seven manifest-bound terrain/path assets have separate
+runtime copies. The corrected external proof now has 67 exports and eighteen editable OpenRaster
+masters; every export has an exact isolated Godot import copy.
+
+After explicit product-owner approval, `terrain.opening_junction` was generated for the live
+Stream–Laundry–Woodland turn. It remains isolated in `DirectionAImportProof.tscn`; it has no runtime
+copy and `Main.tscn` does not reference it.
 
 ## Review, evidence, and limits
 
-- The proof-only junction check derives `-136.974934°` for Stream-to-Laundry and `165.425784°`
-  for Laundry-to-Clearing from live anchors. The required `-57.599282°` turn differs from the
-  exact bend's 90° ports by `32.400718°`. No rigid placement of the existing straight and bend
-  modules can join both 96-pixel route headings without a seam or presentation drift. See
-  `art-direction/production-proof/corrected/review/opening-junction-feasibility.md` and rerun
-  `python3 art-direction/production-proof/corrected/tools/check_opening_junction_feasibility.py`.
-- The corrected 66-asset proof validator passed its export hashes and exact 96-pixel bend port
-  checks. Host-local `./scripts/quality.sh` passed the art/proposal/import/runtime validators,
-  zero-warning build, all 5,033 .NET tests, scenario validation, credential-free Godot smokes,
-  formatting, and the Compatibility launch. Its sandbox run reached Godot but could not write
-  `user://` settings/logs; the identical host run passed.
-- Hosted CI run `36566160795` had `steps: []` in all five jobs and ran no product validation.
-  Automated checks and supplied visual approvals do not establish pacing, usability, or human
-  accessibility acceptance.
+- Live headings remain `-136.974934°` and `165.425784°`, requiring the exact `-57.599282°` turn.
+  The new 512x512 export uses canonical `90°` and `32.400718°` headings; a rigid `133.025066°`
+  world rotation aligns both live routes without scaling or shearing.
+- The manifest records exact 96-pixel ports, 32-pixel connector depth, a `(224, 224)` pivot, a
+  336x458 visible footprint, and SHA-256
+  `10fa7b38789eea75342c8eb26024e922e30dc9c7773642afc1222aa89b5e52c2`. Validation reconstructs
+  both connector pixels and rejects any visible pixel beyond the unchanged 96-pixel physical-route
+  bands. Rebuilds preserve the export, master, review, and manifest hashes.
+- `review/opening-junction-review.png` shows exact textured continuation on the left and the route
+  containment mask on the right. It has been mechanically and session-reviewed, but the product
+  owner has not yet accepted its visual curve or texture continuity.
+- Host-local `./scripts/quality.sh` passed the 67-asset proof/live-geometry/proposal/import/runtime
+  validators, formatting, zero-warning build, all 5,033 .NET tests, scenario validation, every
+  credential-free Godot smoke, and the Compatibility launch. The sandbox run reached Godot but
+  could not write `user://` settings/logs; the identical host run passed.
+- Automated checks do not establish visual acceptance, pacing, usability, or human accessibility
+  acceptance.
 
 ## Exact next bounded slice
 
-Stop at the junction proof gate and obtain product-owner approval before generating one
-junction-specific proof module with two exact 96-pixel ports following the live 57.599282° turn.
-If approved, first demonstrate its footprint, pixel seams, and containment in the unchanged
-physical route outside `Main.tscn`; keep it isolated until separately authorized for runtime use.
+Stop at the isolated-proof review gate. Present
+`art-direction/production-proof/corrected/review/opening-junction-review.png` and obtain explicit
+product-owner acceptance or one bounded correction for the curve, texture continuity, apparent
+96-pixel width, and lack of visible seams. The right panel is mechanical containment evidence, not
+a proposed game presentation.
+
+Even after visual acceptance, obtain separate explicit approval before creating a runtime copy or
+changing ordinary presentation. Do not change `Main.tscn` in the review slice.
 
 Do not promote the path bend, T-junction, cross-junction, another end cap, either inset ground corner,
 another route, banks, water, structures, foliage, props, characters, animation, UI systems, effects,

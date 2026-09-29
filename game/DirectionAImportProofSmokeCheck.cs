@@ -64,6 +64,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         ("Terrain/PathTJunctionProof", 256, 256),
         ("Terrain/PathCrossJunctionProof", 256, 256),
         ("Terrain/PathEndCapProof", 256, 256),
+        ("Terrain/OpeningJunctionProof", 512, 512),
         ("Terrain/WoodlandLeafLitterProof", 256, 256),
         ("Terrain/WoodlandLeafLitterTransitionProof", 256, 256),
         ("Terrain/WoodlandLeafLitterCornerTransitionProof", 256, 256),
@@ -91,7 +92,8 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
 
         GD.Print(
             "Direction A import proof passed: lossless source-parity textures, linear filtering, "
-            + "straight, 90-degree, T-junction, cross-junction, and end-cap path modules, "
+            + "straight, 90-degree, T-junction, cross-junction, end-cap, and exact live-angle "
+            + "opening-junction path modules, "
             + "repeatable woodland leaf litter and its straight, outer-corner, and two inset-corner "
             + "quiet-moss transitions, "
             + "separate table cue, "
