@@ -38,6 +38,10 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   the straight module over quiet moss without adding another terrain asset.
 - `review/path-cross-junction-review.png` joins the cross-junction to two vertical and two
   horizontal copies of the straight module over quiet moss without adding another terrain asset.
+- `review/village-square-cross-junction-feasibility.md` binds six deterministic 0.8x, 1.0x, and
+  2.0x wide/tall planning views to the live Village Square geometry. It proves that no rigid
+  placement of the existing cross-junction can align its four 90-degree ports with the four
+  retained route headings; it grants no runtime authority.
 - `review/path-end-cap-review.png` joins the end-cap below one exact vertical copy of the straight
   module over quiet moss without adding another terrain asset.
 - `review/opening-junction-review.png` places the exact live-angle junction between clipped external

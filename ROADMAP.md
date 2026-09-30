@@ -337,6 +337,9 @@ Acceptance:
 - [x] Complete the Seeker reach/inspect product-owner review across all four frames and directions at
   0.8x, 1.0x, and 2.0x in supplied wide and tall Compatibility views; record visual acceptance
   without claiming pacing, usability, or human accessibility acceptance.
+- [x] Check the existing manifest-bound cross-junction against the four live Village Square route
+  headings in deterministic 0.8x, 1.0x, and 2.0x wide and tall external views; retain the greybox
+  junction after proving that exact rigid placement leaves a minimum 70.670096-degree port mismatch.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -146,6 +146,17 @@ product owner reviewed all four frames in all four directions at 0.8x, 1.0x, and
 tall Compatibility views and accepted the presentation. That acceptance does not establish pacing,
 usability, human accessibility, or acceptance of another asset.
 
+The following approved feasibility-only slice checks the existing manifest-bound 256x256
+packed-earth cross-junction against the four retained Village Square routes without importing it
+into ordinary gameplay. Its exact 90-degree ports cannot match the live `51.340192`, `75.963757`,
+`144.462322`, and `180` degree headings under any rigid placement: the minimax rotation still
+leaves a `70.670096` degree worst mismatch. Six deterministic 0.8x, 1.0x, and 2.0x wide and tall
+planning views make the mismatch visible while the validator binds the live and approved
+coordinates, 96-pixel route width, manifest hash, dimensions, pivot, and exact review bytes.
+`Main.tscn`, the greybox junction, collision, navigation, topology, camera behavior, and gameplay
+authority remain unchanged. Any tailored Village Square junction proof requires separate
+product-owner approval.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path
