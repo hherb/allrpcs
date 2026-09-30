@@ -87,7 +87,7 @@ public partial class RuntimeHerbBedSmokeCheck : Node
 
         GD.Print(
             "Runtime herb-bed smoke passed: two placements of one exact manifest-bound 96x80 "
-            + "raised-bed sprite retain their planted-foot pivots beneath the six accepted "
+            + "raised-bed sprite retain their planted-foot pivots beneath the six manifest-bound "
             + "broadleaf plantings and add no collision or gameplay authority.");
         GetTree().Quit();
     }

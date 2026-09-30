@@ -22,16 +22,17 @@ only the greybox garden plot and bed-line visuals; all physical and gameplay aut
   build, 2,839 Domain, 925 Application, 1,261 Infrastructure, and 8 architecture tests, scenario
   validation, every credential-free Godot smoke, and the Compatibility launch.
 - Six Compatibility-rendered runtime views cover 0.8x, 1.0x, and 2.0x at 1280x720 and 1280x827.
-  Agent review found coherent bed separation, planting, hierarchy, and nearby readability; this is
-  not product-owner visual acceptance.
+  The product owner found the north-left and north-right foliage crowns outside the bed rails. The
+  bounded correction moved the complete north row from local `y=1` to `y=28`; corrected views retain
+  bed separation, planting, table hierarchy, and nearby readability. Final acceptance remains open.
 - The approved implementation scope establishes only these two presentation-only beds. It does not
   establish pacing, usability, human accessibility, or acceptance of another asset.
 
 ## Exact next bounded slice
 
 Stop at the herb-bed visual checkpoint. Present the six prepared 0.8x, 1.0x, and 2.0x wide and tall
-Compatibility views to the product owner. Record acceptance or make only the specifically requested
-herb-bed presentation correction. After acceptance, stop at a new asset-selection gate: propose one
+corrected Compatibility views to the product owner. Record acceptance or make only a specifically
+requested herb-bed presentation correction. After acceptance, stop at a new asset-selection gate: propose one
 exact bounded Phase 9.2 slice with destination, intended placement, views, and exclusions, then
 obtain explicit product-owner approval before editing.
 

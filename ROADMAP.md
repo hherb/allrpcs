@@ -310,6 +310,9 @@ Acceptance:
   separate runtime ownership and place two exact planted-foot-pivot instances beneath the accepted
   Healer's Garden foliage and table, replacing only the greybox plot and bed-line visuals without
   changing collision, navigation, interaction, remedy preparation, treatment, or gameplay authority.
+- [x] Correct the first herb-bed review's out-of-bed north-left and north-right foliage by moving
+  only the complete north row south into the retained bed interiors, without changing assets,
+  pivots, table placement, physical authority, or gameplay authority.
 - [ ] Complete the herb-bed product-owner review across the supplied 0.8x, 1.0x, and 2.0x wide and
   tall Compatibility views before recording visual acceptance or authorizing another asset.
 

@@ -2028,19 +2028,19 @@ centered = false
 offset = Vector2(-48, -77)
 
 [node name="BroadleafFoliageTopLeft" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
-position = Vector2(-68, 1)
+position = Vector2(-68, 28)
 texture = ExtResource("410_runtime_broadleaf_foliage")
 centered = false
 offset = Vector2(-36, -53)
 
 [node name="BroadleafFoliageTopMiddle" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
-position = Vector2(-16, 1)
+position = Vector2(-16, 28)
 texture = ExtResource("410_runtime_broadleaf_foliage")
 centered = false
 offset = Vector2(-36, -53)
 
 [node name="BroadleafFoliageTopRight" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
-position = Vector2(36, 1)
+position = Vector2(36, 28)
 texture = ExtResource("410_runtime_broadleaf_foliage")
 centered = false
 offset = Vector2(-36, -53)

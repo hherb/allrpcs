@@ -12,9 +12,9 @@ public partial class RuntimeGardenFoliageSmokeCheck : Node
     private static readonly Vector2 ExpectedPivotOffset = new(-36.0f, -53.0f);
     private static readonly (string Name, Vector2 LocalPosition)[] ExpectedPlantings =
     [
-        ("BroadleafFoliageTopLeft", new Vector2(-68.0f, 1.0f)),
-        ("BroadleafFoliageTopMiddle", new Vector2(-16.0f, 1.0f)),
-        ("BroadleafFoliageTopRight", new Vector2(36.0f, 1.0f)),
+        ("BroadleafFoliageTopLeft", new Vector2(-68.0f, 28.0f)),
+        ("BroadleafFoliageTopMiddle", new Vector2(-16.0f, 28.0f)),
+        ("BroadleafFoliageTopRight", new Vector2(36.0f, 28.0f)),
         ("BroadleafFoliageBottomLeft", new Vector2(-68.0f, 49.0f)),
         ("BroadleafFoliageBottomMiddle", new Vector2(-16.0f, 49.0f)),
         ("BroadleafFoliageBottomRight", new Vector2(36.0f, 49.0f)),
