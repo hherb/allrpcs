@@ -293,6 +293,12 @@ Acceptance:
   the rejected hard straight edges, extend the correction across the north/northeast intersection,
   and record final visual acceptance without claiming pacing, usability, or human accessibility
   acceptance.
+- [x] After explicit product-owner approval, promote only the manifest-bound broadleaf foliage into
+  separate runtime ownership and repeat six exact planted-foot-pivot instances across the existing
+  Healer's Garden plot without adding collision, navigation, interaction, or gameplay authority.
+- [x] Complete the garden-foliage review across supplied 0.8x, 1.0x, and 2.0x wide and tall views;
+  replace the rejected single clump with full-plot coverage beneath the retained preparation bench,
+  and record visual acceptance without claiming pacing, usability, or accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

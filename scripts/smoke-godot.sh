@@ -13,6 +13,8 @@ godot --headless --path "$repository_root/game" \
     res://DirectionAImportProof.tscn --quit-after 30
 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_ADAPTIVE_DISPLAY_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30

@@ -80,6 +80,16 @@ gameplay authority remain unchanged. The Stream–Laundry–Woodland junction fo
 57.599282-degree turn and retains both 96-pixel connector seams and curved physical-route
 containment; its editable master and isolated import proof remain outside ordinary runtime paths.
 
+The first bounded runtime plant promotion separately copies only the manifest-bound
+`plants.foliage_broadleaf` export into `game/art/runtime/plants`, preserving its exact 72x56 pixels,
+SHA-256, lossless mipmap-free import, and authored `(36, 53)` planted-foot pivot. Six unscaled,
+unrotated placements form two overlapping rows across the existing 176x104 Healer's Garden plot;
+the retained preparation bench draws above them. They are presentation only and add no collision,
+navigation, interaction, preparation, treatment, or gameplay authority. The product owner rejected
+the first single-clump placement as insufficient coverage, then accepted the full-plot correction
+in supplied 0.8x, 1.0x, and 2.0x wide and tall Compatibility views. That review establishes only
+this garden-foliage presentation, not pacing, usability, or human accessibility acceptance.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path

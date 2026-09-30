@@ -1,4 +1,4 @@
-[gd_scene load_steps=330 format=3]
+[gd_scene load_steps=332 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -519,6 +519,8 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/path-end-cap.png" id="407_runtime_path_end_cap"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/opening-junction.png" id="408_runtime_opening_junction"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-village-edge-transition.png" id="409_runtime_village_edge_transition"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/foliage-broadleaf.png" id="410_runtime_broadleaf_foliage"]
+[ext_resource type="Script" path="res://RuntimeGardenFoliageSmokeCheck.cs" id="411_runtime_garden_foliage_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -2019,6 +2021,42 @@ width = 5.0
 default_color = Color(0.494, 0.62, 0.322, 1)
 antialiased = true
 
+[node name="BroadleafFoliageTopLeft" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(-68, 1)
+texture = ExtResource("410_runtime_broadleaf_foliage")
+centered = false
+offset = Vector2(-36, -53)
+
+[node name="BroadleafFoliageTopMiddle" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(-16, 1)
+texture = ExtResource("410_runtime_broadleaf_foliage")
+centered = false
+offset = Vector2(-36, -53)
+
+[node name="BroadleafFoliageTopRight" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(36, 1)
+texture = ExtResource("410_runtime_broadleaf_foliage")
+centered = false
+offset = Vector2(-36, -53)
+
+[node name="BroadleafFoliageBottomLeft" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(-68, 49)
+texture = ExtResource("410_runtime_broadleaf_foliage")
+centered = false
+offset = Vector2(-36, -53)
+
+[node name="BroadleafFoliageBottomMiddle" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(-16, 49)
+texture = ExtResource("410_runtime_broadleaf_foliage")
+centered = false
+offset = Vector2(-36, -53)
+
+[node name="BroadleafFoliageBottomRight" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(36, 49)
+texture = ExtResource("410_runtime_broadleaf_foliage")
+centered = false
+offset = Vector2(-36, -53)
+
 [node name="PreparationBench" type="Polygon2D" parent="OpeningRegionRemedyPreparationSceneSource"]
 polygon = PackedVector2Array(-22, -18, 22, -18, 22, 18, -22, 18)
 color = Color(0.498, 0.42, 0.314, 1)
@@ -2037,6 +2075,9 @@ horizontal_alignment = 1
 
 [node name="OpeningRegionRemedyPreparationSceneSmokeCheck" type="Node" parent="."]
 script = ExtResource("311_opening_region_remedy_preparation_scene_check")
+
+[node name="RuntimeGardenFoliageSmokeCheck" type="Node" parent="."]
+script = ExtResource("411_runtime_garden_foliage_check")
 
 [node name="OpeningRegionRemedyPreparationInputCoordinator" type="Node" parent="."]
 script = ExtResource("387_remedy_preparation_input")

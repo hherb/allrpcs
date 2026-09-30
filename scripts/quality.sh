@@ -14,6 +14,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 python3 art-direction/world-layout-proposal/tools/validate.py
 python3 scripts/validate-direction-a-import-proof.py
 python3 scripts/validate-runtime-terrain.py
+python3 scripts/validate-runtime-plants.py
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes
 dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
