@@ -3297,7 +3297,7 @@ script = ExtResource("2_seeker")
 [node name="WalkAnimation" type="AnimatedSprite2D" parent="Seeker"]
 offset = Vector2(0, -72)
 sprite_frames = ExtResource("416_runtime_seeker_walk")
-animation = &"walk_south"
+animation = &"idle_south"
 script = ExtResource("417_seeker_walk_presenter")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Seeker"]

@@ -124,6 +124,17 @@ enjoyable on the reviewed screen. That screen-specific evidence does not change 
 default or establish broader pacing, usability, or human-accessibility acceptance. Idle/breathe and
 reach/inspect frames remain isolated proof resources.
 
+The next separately approved character promotion copies only the eight manifest-bound Seeker
+idle/breathe frames into the same runtime-owned directional set. Four two-frame 600 ms loops retain
+their exact 108x168 south/north and 144x168 west/east geometry, contact-foot pivots, source hashes,
+and lossless mipmap-free imports. While stationary, the Seeker now breathes in the last movement
+direction; starting presentation remains south-facing. The accepted walk loops and all movement,
+collision, navigation, camera, controls, interaction, and gameplay authority remain unchanged. The
+product owner reviewed both frames in all four directions at 0.8x, 1.0x, and 2.0x in wide and tall
+Compatibility views and found the presentation looked good. That acceptance does not establish
+pacing, usability, human accessibility, or acceptance of another asset. Reach/inspect frames remain
+isolated proof resources.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path

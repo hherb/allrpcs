@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=25 format=3]
+[gd_resource type="SpriteFrames" load_steps=33 format=3]
 
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-01.png" id="1_s1"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-02.png" id="2_s2"]
@@ -24,9 +24,37 @@
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-04.png" id="22_n4"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-05.png" id="23_n5"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/walk-06.png" id="24_n6"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/idle-breathe-01.png" id="25_si1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/idle-breathe-02.png" id="26_si2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/idle-breathe-01.png" id="27_wi1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/idle-breathe-02.png" id="28_wi2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/idle-breathe-01.png" id="29_ei1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/idle-breathe-02.png" id="30_ei2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/idle-breathe-01.png" id="31_ni1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/idle-breathe-02.png" id="32_ni2"]
 
 [resource]
 animations = [{
+"frames": [{"duration": 1.0, "texture": ExtResource("29_ei1")}, {"duration": 1.0, "texture": ExtResource("30_ei2")}],
+"loop": true,
+"name": &"idle_east",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("31_ni1")}, {"duration": 1.0, "texture": ExtResource("32_ni2")}],
+"loop": true,
+"name": &"idle_north",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("25_si1")}, {"duration": 1.0, "texture": ExtResource("26_si2")}],
+"loop": true,
+"name": &"idle_south",
+"speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("27_wi1")}, {"duration": 1.0, "texture": ExtResource("28_wi2")}],
+"loop": true,
+"name": &"idle_west",
+"speed": 1.666667
+}, {
 "frames": [{"duration": 1.0, "texture": ExtResource("13_e1")}, {"duration": 1.0, "texture": ExtResource("14_e2")}, {"duration": 1.0, "texture": ExtResource("15_e3")}, {"duration": 1.0, "texture": ExtResource("16_e4")}, {"duration": 1.0, "texture": ExtResource("17_e5")}, {"duration": 1.0, "texture": ExtResource("18_e6")}],
 "loop": true,
 "name": &"walk_east",

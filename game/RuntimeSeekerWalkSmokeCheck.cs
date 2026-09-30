@@ -2,19 +2,21 @@ using Godot;
 
 namespace Allrpcs.Game;
 
-/// <summary>Proves the bounded manifest-owned Seeker walk presentation.</summary>
+/// <summary>Proves the bounded manifest-owned Seeker walk and idle presentation.</summary>
 public partial class RuntimeSeekerWalkSmokeCheck : Node
 {
     private const string CheckEnvironmentVariable = "ALLRPCS_RUNTIME_SEEKER_WALK_CHECK";
     private const string EnabledEnvironmentValue = "1";
-    private const float ExpectedFramesPerSecond = 1000.0f / 120.0f;
+    private const float ExpectedWalkFramesPerSecond = 1000.0f / 120.0f;
+    private const float ExpectedIdleFramesPerSecond = 1000.0f / 600.0f;
     private const float TimingTolerance = 0.001f;
-    private static readonly (Vector2 Movement, string Animation, int Width)[] ExpectedDirections =
+    private static readonly (Vector2 Movement, string Walk, string Idle, int Width)[]
+        ExpectedDirections =
     [
-        (Vector2.Down, "walk_south", 108),
-        (Vector2.Left, "walk_west", 144),
-        (Vector2.Right, "walk_east", 144),
-        (Vector2.Up, "walk_north", 108),
+        (Vector2.Down, "walk_south", "idle_south", 108),
+        (Vector2.Left, "walk_west", "idle_west", 144),
+        (Vector2.Right, "walk_east", "idle_east", 144),
+        (Vector2.Up, "walk_north", "idle_north", 108),
     ];
 
     /// <inheritdoc />
@@ -43,23 +45,37 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
             || presenter.Scale != Vector2.One
             || presenter.Rotation != 0.0f
             || presenter.ZIndex != 0
-            || presenter.GetChildCount() != 0
-            || frames.GetAnimationNames().Length != ExpectedDirections.Length)
+            || presenter.GetChildCount() != 0)
         {
-            Fail("Runtime Seeker walk lost its exact non-authoritative presentation.");
+            Fail("Runtime Seeker animation lost its exact non-authoritative presentation.");
+            return;
+        }
+
+        if (frames.GetAnimationNames().Length != ExpectedDirections.Length * 2)
+        {
+            Fail(
+                "Runtime Seeker animation resource must contain exactly four walk and four idle "
+                + $"loops, but contained {frames.GetAnimationNames().Length} animations.");
             return;
         }
 
         HashSet<Rid> textureRids = [];
-        foreach ((Vector2 movement, string animationName, int width) in ExpectedDirections)
+        presenter.PresentMovement(Vector2.Zero);
+        if (presenter.Animation != "idle_south" || !presenter.IsPlaying())
         {
-            StringName animation = animationName;
+            Fail("Stationary Seeker did not start with the south-facing idle loop.");
+            return;
+        }
+
+        foreach ((Vector2 movement, string walkName, string idleName, int width) in ExpectedDirections)
+        {
+            StringName walk = walkName;
             presenter.PresentMovement(movement);
-            if (presenter.Animation != animation
+            if (presenter.Animation != walk
                 || !presenter.IsPlaying()
-                || frames.GetFrameCount(animation) != 6
-                || !frames.GetAnimationLoop(animation)
-                || Mathf.Abs((float)frames.GetAnimationSpeed(animation) - ExpectedFramesPerSecond)
+                || frames.GetFrameCount(walk) != 6
+                || !frames.GetAnimationLoop(walk)
+                || Mathf.Abs((float)frames.GetAnimationSpeed(walk) - ExpectedWalkFramesPerSecond)
                     > TimingTolerance)
             {
                 Fail("Runtime Seeker walk lost its four exact 120 ms loops.");
@@ -68,7 +84,7 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
 
             for (int index = 0; index < 6; index++)
             {
-                Texture2D texture = frames.GetFrameTexture(animation, index);
+                Texture2D texture = frames.GetFrameTexture(walk, index);
                 if (texture.GetWidth() != width
                     || texture.GetHeight() != 168
                     || !texture.ResourcePath.StartsWith(
@@ -80,13 +96,34 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
                     return;
                 }
             }
-        }
 
-        presenter.PresentMovement(Vector2.Zero);
-        if (presenter.IsPlaying() || presenter.Frame != 0 || presenter.Animation != "walk_north")
-        {
-            Fail("Stationary Seeker did not retain the first frame of the last facing direction.");
-            return;
+            StringName idle = idleName;
+            presenter.PresentMovement(Vector2.Zero);
+            if (presenter.Animation != idle
+                || !presenter.IsPlaying()
+                || frames.GetFrameCount(idle) != 2
+                || !frames.GetAnimationLoop(idle)
+                || Mathf.Abs((float)frames.GetAnimationSpeed(idle) - ExpectedIdleFramesPerSecond)
+                    > TimingTolerance)
+            {
+                Fail("Stationary Seeker did not play the matching two-frame 600 ms idle loop.");
+                return;
+            }
+
+            for (int index = 0; index < 2; index++)
+            {
+                Texture2D texture = frames.GetFrameTexture(idle, index);
+                if (texture.GetWidth() != width
+                    || texture.GetHeight() != 168
+                    || !texture.ResourcePath.StartsWith(
+                        "res://art/runtime/characters/seeker/",
+                        StringComparison.Ordinal)
+                    || !textureRids.Add(texture.GetRid()))
+                {
+                    Fail("Runtime Seeker idle lost its eight unique runtime textures.");
+                    return;
+                }
+            }
         }
 
         if (seeker.GetNode<CollisionShape2D>("CollisionShape2D").Shape is not CircleShape2D
@@ -97,9 +134,9 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
         }
 
         GD.Print(
-            "Runtime Seeker walk smoke passed: 24 manifest-bound frames form four six-frame "
-            + "120 ms loops, retain exact foot pivots, replace only greybox visuals, and leave "
-            + "movement and collision authority unchanged.");
+            "Runtime Seeker animation smoke passed: 24 walk frames and eight idle/breathe frames "
+            + "form four direction-matched 120 ms walk and 600 ms idle loops, retain exact foot "
+            + "pivots, and leave movement and collision authority unchanged.");
         GetTree().Quit();
     }
 

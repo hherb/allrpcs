@@ -323,6 +323,13 @@ Acceptance:
   tall Compatibility views; record the product owner's presentation approval and screen-specific
   finding that 2.0x felt playable and enjoyable without changing the camera default or claiming
   broader pacing, usability, or accessibility acceptance.
+- [x] After explicit product-owner approval, promote only the eight manifest-bound Seeker
+  idle/breathe frames into separate runtime ownership and play exact four-direction two-frame 600 ms
+  loops while stationary, retaining the last movement facing and leaving walk, movement, collision,
+  navigation, camera, interaction, and gameplay authority unchanged.
+- [x] Complete the Seeker idle/breathe product-owner review across both frames in all four directions
+  at 0.8x, 1.0x, and 2.0x in supplied wide and tall Compatibility views; record only that the
+  presentation looked good without claiming pacing, usability, or human accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

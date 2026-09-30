@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the bounded manifest-owned runtime Seeker walk asset set."""
+"""Validate the bounded manifest-owned runtime Seeker walk and idle asset set."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ MANIFEST = PROOF_ROOT / "asset-manifest.json"
 RUNTIME_ROOT = ROOT / "game" / "art" / "runtime" / "characters" / "seeker"
 MAIN_SCENE = ROOT / "game" / "Main.tscn"
 DIRECTIONS = {"south": 108, "west": 144, "east": 144, "north": 108}
-FRAME_COUNT = 6
+ANIMATIONS = {"walk": 6, "idle-breathe": 2}
 
 
 def require(condition: bool, message: str) -> None:
@@ -69,66 +69,77 @@ def main() -> None:
     runtime_uids: set[str] = set()
 
     for direction, width in DIRECTIONS.items():
-        for frame in range(1, FRAME_COUNT + 1):
-            asset_id = f"characters.seeker.{direction}.walk_{frame:02d}"
-            asset = assets.get(asset_id)
-            require(asset is not None, f"missing manifest asset {asset_id}")
-            runtime = RUNTIME_ROOT / direction / f"walk-{frame:02d}.png"
-            source = PROOF_ROOT / asset["export"]
-            expected_pngs.add(runtime)
-            require(runtime.is_file(), f"missing runtime texture {runtime}")
-            require(not runtime.is_symlink(), f"runtime texture must be owned: {runtime}")
-            require(
-                sha256(source) == asset["sha256"] == sha256(runtime),
-                f"runtime texture lost manifest/source parity: {asset_id}",
-            )
-            require(png_dimensions(runtime) == (width, 168), f"geometry drifted: {asset_id}")
-            require(
-                asset["pivot"] == {"x": width // 2, "y": 156}
-                and asset["contact_baseline"] == 156,
-                f"pivot or contact baseline drifted: {asset_id}",
-            )
+        for animation, frame_count in ANIMATIONS.items():
+            manifest_animation = animation.replace("-", "_")
+            for frame in range(1, frame_count + 1):
+                asset_id = f"characters.seeker.{direction}.{manifest_animation}_{frame:02d}"
+                asset = assets.get(asset_id)
+                require(asset is not None, f"missing manifest asset {asset_id}")
+                runtime = RUNTIME_ROOT / direction / f"{animation}-{frame:02d}.png"
+                source = PROOF_ROOT / asset["export"]
+                expected_pngs.add(runtime)
+                require(runtime.is_file(), f"missing runtime texture {runtime}")
+                require(not runtime.is_symlink(), f"runtime texture must be owned: {runtime}")
+                require(
+                    sha256(source) == asset["sha256"] == sha256(runtime),
+                    f"runtime texture lost manifest/source parity: {asset_id}",
+                )
+                require(png_dimensions(runtime) == (width, 168), f"geometry drifted: {asset_id}")
+                require(
+                    asset["pivot"] == {"x": width // 2, "y": 156}
+                    and asset["contact_baseline"] == 156,
+                    f"pivot or contact baseline drifted: {asset_id}",
+                )
 
-            sidecar = runtime.with_suffix(".png.import")
-            require(sidecar.is_file(), f"missing runtime import sidecar: {sidecar}")
-            options = read_import_options(sidecar)
-            expected_source = resource_path(runtime)
-            cache = imported_cache_path(runtime)
-            require(
-                options.get(("deps", "source_file")) == f'"{expected_source}"'
-                and options.get(("remap", "path")) == f'"{cache}"'
-                and options.get(("deps", "dest_files")) == f'["{cache}"]',
-                f"runtime import paths drifted: {asset_id}",
-            )
-            require(
-                options.get(("remap", "importer")) == '"texture"'
-                and options.get(("params", "compress/mode")) == "0"
-                and options.get(("params", "mipmaps/generate")) == "false"
-                and options.get(("params", "process/fix_alpha_border")) == "true"
-                and options.get(("params", "process/premult_alpha")) == "false",
-                f"runtime import settings drifted: {asset_id}",
-            )
-            uid = options.get(("remap", "uid"))
-            require(uid is not None and uid not in runtime_uids, f"runtime UID reused: {asset_id}")
-            runtime_uids.add(uid)
+                sidecar = runtime.with_suffix(".png.import")
+                require(sidecar.is_file(), f"missing runtime import sidecar: {sidecar}")
+                options = read_import_options(sidecar)
+                expected_source = resource_path(runtime)
+                cache = imported_cache_path(runtime)
+                require(
+                    options.get(("deps", "source_file")) == f'"{expected_source}"'
+                    and options.get(("remap", "path")) == f'"{cache}"'
+                    and options.get(("deps", "dest_files")) == f'["{cache}"]',
+                    f"runtime import paths drifted: {asset_id}",
+                )
+                require(
+                    options.get(("remap", "importer")) == '"texture"'
+                    and options.get(("params", "compress/mode")) == "0"
+                    and options.get(("params", "mipmaps/generate")) == "false"
+                    and options.get(("params", "process/fix_alpha_border")) == "true"
+                    and options.get(("params", "process/premult_alpha")) == "false",
+                    f"runtime import settings drifted: {asset_id}",
+                )
+                uid = options.get(("remap", "uid"))
+                require(
+                    uid is not None and uid not in runtime_uids,
+                    f"runtime UID reused: {asset_id}",
+                )
+                runtime_uids.add(uid)
 
-    require(set(RUNTIME_ROOT.rglob("*.png")) == expected_pngs, "runtime walk set is not exact")
+    require(
+        set(RUNTIME_ROOT.rglob("*.png")) == expected_pngs,
+        "runtime Seeker animation set is not exact",
+    )
     require(
         set(RUNTIME_ROOT.rglob("*.png.import"))
         == {path.with_suffix(".png.import") for path in expected_pngs},
-        "runtime walk sidecar set is not exact",
+        "runtime Seeker animation sidecar set is not exact",
     )
     proof_uids = {
         read_import_options(path).get(("remap", "uid"))
         for path in (ROOT / "game" / "art" / "direction-a-import-proof").rglob("*.png.import")
     }
-    require(runtime_uids.isdisjoint(proof_uids), "runtime walk reuses proof resource UIDs")
+    require(runtime_uids.isdisjoint(proof_uids), "runtime animation reuses proof resource UIDs")
     other_runtime_uids = {
         read_import_options(path).get(("remap", "uid"))
         for path in (ROOT / "game" / "art" / "runtime").rglob("*.png.import")
         if not path.is_relative_to(RUNTIME_ROOT)
     }
-    require(runtime_uids.isdisjoint(other_runtime_uids), "runtime walk reuses another runtime UID")
+    require(
+        runtime_uids.isdisjoint(other_runtime_uids),
+        "runtime animation reuses another runtime UID",
+    )
 
     main_scene = MAIN_SCENE.read_text(encoding="utf-8")
     require(
@@ -139,10 +150,10 @@ def main() -> None:
     require('name="Body" type="Polygon2D" parent="Seeker"' not in main_scene, "greybox body remains")
     require('name="Facing" type="Polygon2D" parent="Seeker"' not in main_scene, "greybox facing remains")
 
-    print("Runtime Seeker walk validation passed")
-    print("assets: 24 exact manifest/source/runtime SHA-256 matches")
-    print("geometry: four six-frame 120 ms loops with exact planted-foot pivots")
-    print("isolation: ordinary scene references runtime-owned walk art only")
+    print("Runtime Seeker animation validation passed")
+    print("assets: 32 exact manifest/source/runtime SHA-256 matches")
+    print("geometry: four 120 ms walk loops and four 600 ms idle loops with exact pivots")
+    print("isolation: ordinary scene references runtime-owned Seeker art only")
 
 
 if __name__ == "__main__":
