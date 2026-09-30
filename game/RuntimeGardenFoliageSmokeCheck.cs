@@ -37,7 +37,7 @@ public partial class RuntimeGardenFoliageSmokeCheck : Node
     private void RunChecks()
     {
         Node2D garden = GetNode<Node2D>("../OpeningRegionRemedyPreparationSceneSource");
-        Polygon2D bench = garden.GetNode<Polygon2D>("PreparationBench");
+        Sprite2D table = garden.GetNode<Sprite2D>("PreparationTable");
         foreach ((string name, Vector2 localPosition) in ExpectedPlantings)
         {
             Sprite2D foliage = garden.GetNode<Sprite2D>(name);
@@ -61,7 +61,7 @@ public partial class RuntimeGardenFoliageSmokeCheck : Node
                 || foliage.ZIndex != 0
                 || foliage.ShowBehindParent
                 || foliage.GetChildCount() != 0
-                || foliage.GetIndex() >= bench.GetIndex())
+                || foliage.GetIndex() >= table.GetIndex())
             {
                 Fail("Runtime garden foliage lost its exact non-authoritative presentation.");
                 return;
@@ -71,7 +71,7 @@ public partial class RuntimeGardenFoliageSmokeCheck : Node
         GD.Print(
             "Runtime garden foliage smoke passed: six placements of one exact manifest-bound "
             + "72x56 broadleaf sprite retain their planted-foot pivots, cover the existing "
-            + "Healer's Garden beneath its preparation bench, and add no collision or gameplay "
+            + "Healer's Garden beneath its preparation table, and add no collision or gameplay "
             + "authority.");
         GetTree().Quit();
     }

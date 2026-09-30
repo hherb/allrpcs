@@ -299,6 +299,13 @@ Acceptance:
 - [x] Complete the garden-foliage review across supplied 0.8x, 1.0x, and 2.0x wide and tall views;
   replace the rejected single clump with full-plot coverage beneath the retained preparation bench,
   and record visual acceptance without claiming pacing, usability, or accessibility acceptance.
+- [x] After explicit product-owner approval and scale feedback, regenerate the ordinary preparation
+  table and its proof-only cue canvases at exact 96x96 logical and 192x192 master geometry, then
+  promote only the ordinary table into separate runtime ownership at the existing Healer's Garden
+  station without changing preparation, interaction, collision, navigation, or gameplay authority.
+- [x] Complete the preparation-table review across supplied 0.8x, 1.0x, and 2.0x wide and tall
+  Compatibility views and record visual acceptance without treating the proof-only cues as runtime
+  assets or claiming pacing, usability, or accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -21,7 +21,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   straight path, one 90-degree path bend, one T-junction, one cross-junction, one end-cap, and the
   exact live-angle Stream–Laundry–Woodland junction, one 1024x512 world-aligned full-clearing
   feather overlay, plus empty herb bed, broadleaf foliage,
-  ordinary preparation table, three separate cue overlays, and 24 normalized
+  one 96x96 ordinary preparation table, three matching 96x96 cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
 - `masters` contains nineteen editable layered OpenRaster files for terrain/path, the leaf-litter
@@ -112,7 +112,8 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
   one documented 600 ms loop timing;
 - all four reach-and-inspect frames in each direction are distinct, all 16 are unique, preserve the
   direction-specific fixed origin and 156-pixel baseline, and use 160 ms non-looping timing;
-- the four table states remain measurably distinct in grayscale;
+- the four 96x96 table states share exact 192x192 editable-master geometry and remain measurably
+  distinct in grayscale;
 - the external terrain accessibility review exactly reproduces 40 simulation views from the current
   manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
 - no fixed review-scene obstacle overlaps the 96x720 path corridor; and
@@ -123,8 +124,10 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 
 The corrected proof passes the art bible's alpha, seam, pivot, editable-master, grayscale-cue,
 four-direction walk, idle/breathe, interaction, and 144-pixel character-scale gates. The unchanged
-96-pixel path and 80–96-pixel props remain readable and proportionate in the 1280x720 composition,
-so the rebaseline did not require regenerating them. The terrain-only colour-vision review is
+96-pixel path and 72–96-pixel props remain readable and proportionate in the 1280x720 composition.
+The preparation table and its cue canvases were later regenerated from their retained source at
+96x96 logical pixels after product-owner scale feedback; their 192x192 master, `(48, 92)` pivot,
+and grayscale hierarchy remain deterministic. The terrain-only colour-vision review is
 reproducible external evidence, not human accessibility acceptance. Direction A remains feasible,
 so the Direction D contingency does not activate.
 
@@ -138,6 +141,14 @@ the initial Village Edge presentation. The replacement uses one tailored full-cl
 second correction extended its feather across the north and northeast edge. The owner accepted the
 final unobstructed and ordinary-scene views. This is visual acceptance of that blend only, not human
 accessibility, pacing, or usability acceptance.
+
+After separate preparation-table authorization, the product owner rejected the proposed 80x80
+runtime scale as too small. The retained source and cue geometry were deterministically regenerated
+at 96x96 with exact 192x192 masters. One separate runtime-owned ordinary table replaced only the
+garden's greybox bench and mortar at the same station footprint. The owner accepted its scale and
+placement in 0.8x, 1.0x, and 2.0x wide and tall Compatibility views. The cue overlays remain
+proof-only, and that acceptance grants no preparation, interaction, collision, navigation, or
+other gameplay authority.
 
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary

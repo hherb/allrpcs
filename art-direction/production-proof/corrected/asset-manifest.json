@@ -738,27 +738,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "master_dimensions_pixels": {
-        "width": 160,
-        "height": 160,
+        "width": 192,
+        "height": 192,
         "scale": 2
       },
-      "contact_baseline": 77,
+      "contact_baseline": 92,
       "pivot": {
-        "x": 40,
-        "y": 77
+        "x": 48,
+        "y": 92
       },
       "godot_import_proof": true,
-      "sha256": "7a005d79c17f3ed33cdf6859bc83f5c5a7f1e9f203ca55b89abd08ef4dc4762e"
+      "sha256": "d36d2f9d5341edd64f9eadac7053bf3847b63990523400698d78e90d246a3a35"
     },
     {
       "id": "cues.preparation_table_noticeable",
@@ -768,27 +768,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "master_dimensions_pixels": {
-        "width": 160,
-        "height": 160,
+        "width": 192,
+        "height": 192,
         "scale": 2
       },
-      "contact_baseline": 77,
+      "contact_baseline": 92,
       "pivot": {
-        "x": 40,
-        "y": 77
+        "x": 48,
+        "y": 92
       },
       "godot_import_proof": true,
-      "sha256": "31b2d0355873e52da0179be0b4ec742fb02003aaac625a93d32cca703a75d5c1"
+      "sha256": "3bcf4fa596f2a9efa95e0b2f34bebf25db67a26d1c46a3d0e246e20162fc4fe5"
     },
     {
       "id": "cues.preparation_table_identified",
@@ -798,27 +798,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "master_dimensions_pixels": {
-        "width": 160,
-        "height": 160,
+        "width": 192,
+        "height": 192,
         "scale": 2
       },
-      "contact_baseline": 77,
+      "contact_baseline": 92,
       "pivot": {
-        "x": 40,
-        "y": 77
+        "x": 48,
+        "y": 92
       },
       "godot_import_proof": true,
-      "sha256": "134623184ab2d810d5347c4cfe3f8c8226d79c72becf16ab4812f5c5e40af7a6"
+      "sha256": "bb5c135087c78ca10acf0b231c1356c1355d51aa55ecfe312e5fbaff02a08a2a"
     },
     {
       "id": "cues.preparation_table_dangerous",
@@ -828,27 +828,27 @@
       "logical_rect": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "export_rect_pixels": {
         "x": 0,
         "y": 0,
-        "width": 80,
-        "height": 80
+        "width": 96,
+        "height": 96
       },
       "master_dimensions_pixels": {
-        "width": 160,
-        "height": 160,
+        "width": 192,
+        "height": 192,
         "scale": 2
       },
-      "contact_baseline": 77,
+      "contact_baseline": 92,
       "pivot": {
-        "x": 40,
-        "y": 77
+        "x": 48,
+        "y": 92
       },
       "godot_import_proof": true,
-      "sha256": "4d811b10392d7590ca3bee8fb62b25c18c0378629ec7bbad89f0d925cdd98762"
+      "sha256": "b675492a5d903c511bfd7d71a52e17cd1b27844c46b6b97ca9efe53ec0b2ebd1"
     },
     {
       "id": "characters.seeker.south.walk_01",

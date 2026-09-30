@@ -90,6 +90,17 @@ the first single-clump placement as insufficient coverage, then accepted the ful
 in supplied 0.8x, 1.0x, and 2.0x wide and tall Compatibility views. That review establishes only
 this garden-foliage presentation, not pacing, usability, or human accessibility acceptance.
 
+The next bounded runtime promotion regenerates the retained ordinary preparation-table source and
+its proof-only cue canvases at 96x96 logical pixels with exact 192x192 editable masters after the
+product owner found the proposed 80x80 scale too small. Only the ordinary table is separately copied
+to `game/art/runtime/objects`, preserving SHA-256
+`d36d2f9d5341edd64f9eadac7053bf3847b63990523400698d78e90d246a3a35`, the `(48, 92)` planted-foot
+pivot, and lossless mipmap-free import. It replaces the Healer's Garden greybox bench and mortar at
+the same station footprint, above the accepted foliage, without changing preparation, interaction,
+collision, navigation, or other gameplay authority. The owner accepted its scale and placement in
+supplied 0.8x, 1.0x, and 2.0x wide and tall Compatibility views; that review does not establish
+pacing, usability, or human accessibility acceptance.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path

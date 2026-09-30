@@ -75,8 +75,8 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         ("Props/EmptyBed", 96, 80),
         ("Props/PlantedBed", 96, 80),
         ("Props/PlantedBedFoliage", 72, 56),
-        ("Props/PreparationTable", 80, 80),
-        ("Props/PreparationTableIdentifiedCue", 80, 80),
+        ("Props/PreparationTable", 96, 96),
+        ("Props/PreparationTableIdentifiedCue", 96, 96),
     ];
 
     /// <inheritdoc />

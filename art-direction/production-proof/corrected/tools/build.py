@@ -30,6 +30,10 @@ LEGACY_SEEKER = (
 )
 
 MASTER_SCALE = 2
+TABLE_MASTER_SIZE = (192, 192)
+TABLE_MASTER_PIVOT = (96, 184)
+TABLE_MASTER_BASELINE = 184
+TABLE_MASTER_CONTENT_SIZE = (176, 176)
 ALPHA_CUTOFF = 96
 GROUND_CONNECTOR_DEPTH = 32
 GROUND_CORNER_FEATHER_MASTER = 48.0
@@ -1145,7 +1149,7 @@ def make_path_end_cap(path_master: Image.Image) -> Image.Image:
 
 
 def make_cues() -> dict[str, Image.Image]:
-    """Create geometry-only state cues on the exact 160x160 table canvas."""
+    """Scale the retained geometry-only cues onto the exact 192x192 table canvas."""
 
     size = (160, 160)
     noticeable = Image.new("RGBA", size, (0, 0, 0, 0))
@@ -1198,7 +1202,14 @@ def make_cues() -> dict[str, Image.Image]:
         hatch_draw.line((offset, 145, offset + 100, 45), fill=brick, width=7)
         hatch_draw.line((offset + 5, 145, offset + 105, 45), fill=dark, width=2)
     dangerous.alpha_composite(Image.composite(hatch, Image.new("RGBA", size), mask))
-    return {"noticeable": noticeable, "identified": identified, "dangerous": dangerous}
+    return {
+        name: alpha_clean(cue.resize(TABLE_MASTER_SIZE, RESAMPLE), cutoff=8)
+        for name, cue in {
+            "noticeable": noticeable,
+            "identified": identified,
+            "dangerous": dangerous,
+        }.items()
+    }
 
 
 def seeker_frame_sets() -> dict[str, list[Image.Image]]:
@@ -1955,7 +1966,10 @@ def main() -> None:
         Image.open(RAW / "foliage-broadleaf.png"), (144, 112), (136, 100), 106
     )
     table_master = contain_on_canvas(
-        Image.open(RAW / "preparation-table.png"), (160, 160), (146, 146), 154
+        Image.open(RAW / "preparation-table.png"),
+        TABLE_MASTER_SIZE,
+        TABLE_MASTER_CONTENT_SIZE,
+        TABLE_MASTER_BASELINE,
     )
     cues = make_cues()
     frame_sets = seeker_frame_sets()
@@ -2130,9 +2144,9 @@ def main() -> None:
             "objects.preparation_table",
             "objects",
             Path("exports/objects/preparation-table.png"),
-            (160, 160),
-            (80, 154),
-            154,
+            TABLE_MASTER_SIZE,
+            TABLE_MASTER_PIVOT,
+            TABLE_MASTER_BASELINE,
             table_master,
             "sources/imagegen/preparation-table.png",
         ),
@@ -2143,9 +2157,9 @@ def main() -> None:
                 f"cues.preparation_table_{cue_name}",
                 "cues",
                 Path(f"exports/cues/preparation-table-{cue_name}.png"),
-                (160, 160),
-                (80, 154),
-                154,
+                TABLE_MASTER_SIZE,
+                TABLE_MASTER_PIVOT,
+                TABLE_MASTER_BASELINE,
                 cue,
                 "tools/build.py",
             )
