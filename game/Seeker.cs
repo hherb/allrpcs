@@ -14,6 +14,13 @@ public partial class Seeker : CharacterBody2D
     private static readonly StringName MoveRightAction = new("move_right");
     private static readonly StringName MoveUpAction = new("move_up");
     private static readonly StringName MoveDownAction = new("move_down");
+    private SeekerWalkAnimationPresenter? walkAnimationPresenter;
+
+    /// <inheritdoc />
+    public override void _Ready()
+    {
+        walkAnimationPresenter = GetNode<SeekerWalkAnimationPresenter>("WalkAnimation");
+    }
 
     /// <summary>
     /// Gets or sets the Seeker's maximum movement speed in world pixels per second.
@@ -36,6 +43,7 @@ public partial class Seeker : CharacterBody2D
             MovementSpeedPixelsPerSecond);
 
         Velocity = new Vector2(velocity.X, velocity.Y);
+        walkAnimationPresenter?.PresentMovement(Velocity);
         MoveAndSlide();
     }
 }

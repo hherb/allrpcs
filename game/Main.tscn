@@ -1,4 +1,4 @@
-[gd_scene load_steps=336 format=3]
+[gd_scene load_steps=339 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -525,6 +525,9 @@
 [ext_resource type="Script" path="res://RuntimePreparationTableSmokeCheck.cs" id="413_runtime_preparation_table_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/herb-bed-empty.png" id="414_runtime_herb_bed"]
 [ext_resource type="Script" path="res://RuntimeHerbBedSmokeCheck.cs" id="415_runtime_herb_bed_check"]
+[ext_resource type="SpriteFrames" path="res://art/runtime/characters/seeker/walk-animations.tres" id="416_runtime_seeker_walk"]
+[ext_resource type="Script" path="res://SeekerWalkAnimationPresenter.cs" id="417_seeker_walk_presenter"]
+[ext_resource type="Script" path="res://RuntimeSeekerWalkSmokeCheck.cs" id="418_runtime_seeker_walk_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -2089,6 +2092,9 @@ script = ExtResource("413_runtime_preparation_table_check")
 [node name="RuntimeHerbBedSmokeCheck" type="Node" parent="."]
 script = ExtResource("415_runtime_herb_bed_check")
 
+[node name="RuntimeSeekerWalkSmokeCheck" type="Node" parent="."]
+script = ExtResource("418_runtime_seeker_walk_check")
+
 [node name="OpeningRegionRemedyPreparationInputCoordinator" type="Node" parent="."]
 script = ExtResource("387_remedy_preparation_input")
 
@@ -3288,13 +3294,11 @@ radius = 18.0
 position = Vector2(2120, 950)
 script = ExtResource("2_seeker")
 
-[node name="Body" type="Polygon2D" parent="Seeker"]
-polygon = PackedVector2Array(0, -24, 20, 0, 0, 24, -20, 0)
-color = Color(0.918, 0.733, 0.31, 1)
-
-[node name="Facing" type="Polygon2D" parent="Seeker"]
-polygon = PackedVector2Array(-6, -12, 6, -12, 0, -22)
-color = Color(0.161, 0.184, 0.169, 1)
+[node name="WalkAnimation" type="AnimatedSprite2D" parent="Seeker"]
+offset = Vector2(0, -72)
+sprite_frames = ExtResource("416_runtime_seeker_walk")
+animation = &"walk_south"
+script = ExtResource("417_seeker_walk_presenter")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Seeker"]
 shape = SubResource("CircleShape2D_seeker")

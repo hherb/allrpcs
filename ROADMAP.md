@@ -315,6 +315,14 @@ Acceptance:
   pivots, table placement, physical authority, or gameplay authority.
 - [x] Complete the herb-bed product-owner review across the supplied 0.8x, 1.0x, and 2.0x wide and
   tall Compatibility views before recording visual acceptance or authorizing another asset.
+- [x] After explicit product-owner approval, promote only the 24 manifest-bound Seeker walk frames
+  into separate runtime ownership and replace only the greybox body/facing presentation with exact
+  four-direction six-frame 120 ms loops, retaining movement, collision, navigation, camera,
+  interaction, and gameplay authority unchanged.
+- [x] Complete the Seeker-walk product-owner review across supplied 0.8x, 1.0x, and 2.0x wide and
+  tall Compatibility views; record the product owner's presentation approval and screen-specific
+  finding that 2.0x felt playable and enjoyable without changing the camera default or claiming
+  broader pacing, usability, or accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

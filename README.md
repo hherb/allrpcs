@@ -113,6 +113,17 @@ crowns outside the bed rails; moving the complete north row 27 pixels south corr
 presentation without changing any asset or authority. The product owner accepted the corrected
 wide and tall views; that acceptance does not establish pacing, usability, or human accessibility.
 
+The next separately approved character promotion copies only the 24 manifest-bound Seeker walk
+frames into `game/art/runtime/characters/seeker`. Four six-frame loops retain their exact 108x168
+south/north and 144x168 west/east geometry, 120 ms timing, contact-foot pivots, source hashes, and
+lossless mipmap-free imports. They replace only the Seeker's greybox body and facing marker; the
+existing movement speed, collision, navigation, camera, controls, interaction, and gameplay
+authority remain unchanged. Compatibility-rendered 0.8x, 1.0x, and 2.0x wide and tall views cover
+all four directions. The product owner approved the presentation and found 2.0x playable and
+enjoyable on the reviewed screen. That screen-specific evidence does not change the 1.0x camera
+default or establish broader pacing, usability, or human-accessibility acceptance. Idle/breathe and
+reach/inspect frames remain isolated proof resources.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path
