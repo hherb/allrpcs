@@ -110,7 +110,8 @@ and preparation table. They add no collision, navigation, interaction, remedy-pr
 treatment, or gameplay authority. Six 0.8x, 1.0x, and 2.0x wide and tall Compatibility views are
 available for product-owner review. The first review found the north-left and north-right foliage
 crowns outside the bed rails; moving the complete north row 27 pixels south corrected that bounded
-presentation without changing any asset or authority. Final visual acceptance remains open.
+presentation without changing any asset or authority. The product owner accepted the corrected
+wide and tall views; that acceptance does not establish pacing, usability, or human accessibility.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven

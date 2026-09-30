@@ -156,8 +156,9 @@ and table. Their `(48, 77)` planted-foot pivots replace only the remaining greyb
 visuals. Static and engine checks retain exact manifest parity and presentation-only ownership. Six
 wide and tall Compatibility views at 0.8x, 1.0x, and 2.0x are prepared for product-owner review;
 the first review found the north-left and north-right foliage crowns outside the bed rails. Moving
-the complete north row 27 pixels south corrected only that presentation. Visual acceptance is not
-yet recorded.
+the complete north row 27 pixels south corrected only that presentation. The product owner accepted
+the corrected wide and tall views without granting physical, gameplay, pacing, usability, or human
+accessibility authority.
 
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary

@@ -24,17 +24,17 @@ only the greybox garden plot and bed-line visuals; all physical and gameplay aut
 - Six Compatibility-rendered runtime views cover 0.8x, 1.0x, and 2.0x at 1280x720 and 1280x827.
   The product owner found the north-left and north-right foliage crowns outside the bed rails. The
   bounded correction moved the complete north row from local `y=1` to `y=28`; corrected views retain
-  bed separation, planting, table hierarchy, and nearby readability. Final acceptance remains open.
-- The approved implementation scope establishes only these two presentation-only beds. It does not
-  establish pacing, usability, human accessibility, or acceptance of another asset.
+  bed separation, planting, table hierarchy, and nearby readability. The product owner accepted the
+  corrected presentation as "Very good".
+- That acceptance establishes only the corrected presentation-only beds and plant placement. It
+  does not establish pacing, usability, human accessibility, or acceptance of another asset.
 
 ## Exact next bounded slice
 
-Stop at the herb-bed visual checkpoint. Present the six prepared 0.8x, 1.0x, and 2.0x wide and tall
-corrected Compatibility views to the product owner. Record acceptance or make only a specifically
-requested herb-bed presentation correction. After acceptance, stop at a new asset-selection gate: propose one
-exact bounded Phase 9.2 slice with destination, intended placement, views, and exclusions, then
-obtain explicit product-owner approval before editing.
+Stop at the next asset-selection authorization gate. Before editing, propose one exact bounded Phase
+9.2 art slice, name its proof or runtime destination, intended live placement if any, acceptance
+views, and exclusions, then obtain explicit product-owner approval. Do not treat the remaining broad
+ROADMAP production checkboxes or the herb-bed acceptance as approval for another asset.
 
 Do not promote another asset. Do not change the accepted foliage or table, terrain, banks, water,
 structures, props, characters, animation, UI systems, effects, audio, content-budget fills,
