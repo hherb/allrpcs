@@ -17,6 +17,8 @@ ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_RUNTIME_PREPARATION_TABLE_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
+ALLRPCS_RUNTIME_HERB_BED_CHECK=1 \
+    godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_ADAPTIVE_DISPLAY_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_OPTIONAL_OVERLAY_VISIBILITY_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30

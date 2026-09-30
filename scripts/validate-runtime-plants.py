@@ -16,6 +16,7 @@ RUNTIME_ROOT = ROOT / "game" / "art" / "runtime" / "plants"
 MAIN_SCENE = ROOT / "game" / "Main.tscn"
 ASSET_ID = "plants.foliage_broadleaf"
 RUNTIME_TEXTURE = RUNTIME_ROOT / "foliage-broadleaf.png"
+HERB_BED_TEXTURE = RUNTIME_ROOT / "herb-bed-empty.png"
 EXPECTED_DIMENSIONS = (72, 56)
 
 
@@ -90,13 +91,16 @@ def main() -> None:
         f"{ASSET_ID} manifest geometry drifted",
     )
     require(
-        set(RUNTIME_ROOT.glob("*.png")) == {RUNTIME_TEXTURE},
-        "runtime plants differ from the bounded one-asset promotion",
+        set(RUNTIME_ROOT.glob("*.png")) == {RUNTIME_TEXTURE, HERB_BED_TEXTURE},
+        "runtime plants differ from the two separately bounded promotions",
     )
     require(
         set(RUNTIME_ROOT.glob("*.png.import"))
-        == {RUNTIME_TEXTURE.with_suffix(".png.import")},
-        "runtime plant sidecars differ from the bounded one-asset promotion",
+        == {
+            RUNTIME_TEXTURE.with_suffix(".png.import"),
+            HERB_BED_TEXTURE.with_suffix(".png.import"),
+        },
+        "runtime plant sidecars differ from the two separately bounded promotions",
     )
     require(RUNTIME_TEXTURE.is_file(), f"missing runtime texture for {ASSET_ID}")
     require(not RUNTIME_TEXTURE.is_symlink(), "runtime foliage must be owned, not linked")

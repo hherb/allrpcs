@@ -306,6 +306,12 @@ Acceptance:
 - [x] Complete the preparation-table review across supplied 0.8x, 1.0x, and 2.0x wide and tall
   Compatibility views and record visual acceptance without treating the proof-only cues as runtime
   assets or claiming pacing, usability, or accessibility acceptance.
+- [x] After explicit product-owner approval, promote only the manifest-bound empty herb bed into
+  separate runtime ownership and place two exact planted-foot-pivot instances beneath the accepted
+  Healer's Garden foliage and table, replacing only the greybox plot and bed-line visuals without
+  changing collision, navigation, interaction, remedy preparation, treatment, or gameplay authority.
+- [ ] Complete the herb-bed product-owner review across the supplied 0.8x, 1.0x, and 2.0x wide and
+  tall Compatibility views before recording visual acceptance or authorizing another asset.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

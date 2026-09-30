@@ -101,6 +101,15 @@ collision, navigation, or other gameplay authority. The owner accepted its scale
 supplied 0.8x, 1.0x, and 2.0x wide and tall Compatibility views; that review does not establish
 pacing, usability, or human accessibility acceptance.
 
+The following separately approved plant promotion copies only the manifest-bound
+`plants.herb_bed_empty` export into `game/art/runtime/plants`, preserving its exact 96x80 pixels,
+SHA-256 `8ced13faba2ac9240977df0c62686939ffcd24a09d278006485c866b0a11f2fa`, the `(48, 77)`
+planted-foot pivot, and lossless mipmap-free import. Two unscaled, unrotated instances replace only
+the Healer's Garden greybox plot and bed-line visuals beneath the six accepted broadleaf plantings
+and preparation table. They add no collision, navigation, interaction, remedy-preparation,
+treatment, or gameplay authority. Six 0.8x, 1.0x, and 2.0x wide and tall Compatibility views are
+available for product-owner review; visual acceptance remains open.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path

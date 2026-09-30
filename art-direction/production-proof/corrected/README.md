@@ -150,6 +150,13 @@ placement in 0.8x, 1.0x, and 2.0x wide and tall Compatibility views. The cue ove
 proof-only, and that acceptance grants no preparation, interaction, collision, navigation, or
 other gameplay authority.
 
+After separate herb-bed authorization, one exact runtime-owned copy of
+`plants.herb_bed_empty` supplies two unscaled 96x80 raised beds beneath the accepted garden foliage
+and table. Their `(48, 77)` planted-foot pivots replace only the remaining greybox plot and bed-line
+visuals. Static and engine checks retain exact manifest parity and presentation-only ownership. Six
+wide and tall Compatibility views at 0.8x, 1.0x, and 2.0x are prepared for product-owner review;
+visual acceptance is not yet recorded.
+
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.

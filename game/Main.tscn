@@ -1,4 +1,4 @@
-[gd_scene load_steps=334 format=3]
+[gd_scene load_steps=336 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -523,6 +523,8 @@
 [ext_resource type="Script" path="res://RuntimeGardenFoliageSmokeCheck.cs" id="411_runtime_garden_foliage_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/preparation-table.png" id="412_runtime_preparation_table"]
 [ext_resource type="Script" path="res://RuntimePreparationTableSmokeCheck.cs" id="413_runtime_preparation_table_check"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/herb-bed-empty.png" id="414_runtime_herb_bed"]
+[ext_resource type="Script" path="res://RuntimeHerbBedSmokeCheck.cs" id="415_runtime_herb_bed_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -2013,15 +2015,17 @@ script = ExtResource("309_opening_region_sickhouse_check")
 position = Vector2(2300, 1300)
 script = ExtResource("310_opening_region_remedy_preparation_scene")
 
-[node name="GardenPlot" type="Polygon2D" parent="OpeningRegionRemedyPreparationSceneSource"]
-polygon = PackedVector2Array(-104, -52, 72, -52, 72, 52, -104, 52)
-color = Color(0.286, 0.443, 0.247, 1)
+[node name="HerbBedLeft" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(-56, 52)
+texture = ExtResource("414_runtime_herb_bed")
+centered = false
+offset = Vector2(-48, -77)
 
-[node name="Beds" type="Line2D" parent="OpeningRegionRemedyPreparationSceneSource/GardenPlot"]
-points = PackedVector2Array(-88, -34, 56, -34, -88, -10, 56, -10, -88, 14, 56, 14, -88, 38, 56, 38)
-width = 5.0
-default_color = Color(0.494, 0.62, 0.322, 1)
-antialiased = true
+[node name="HerbBedRight" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
+position = Vector2(36, 52)
+texture = ExtResource("414_runtime_herb_bed")
+centered = false
+offset = Vector2(-48, -77)
 
 [node name="BroadleafFoliageTopLeft" type="Sprite2D" parent="OpeningRegionRemedyPreparationSceneSource"]
 position = Vector2(-68, 1)
@@ -2081,6 +2085,9 @@ script = ExtResource("411_runtime_garden_foliage_check")
 
 [node name="RuntimePreparationTableSmokeCheck" type="Node" parent="."]
 script = ExtResource("413_runtime_preparation_table_check")
+
+[node name="RuntimeHerbBedSmokeCheck" type="Node" parent="."]
+script = ExtResource("415_runtime_herb_bed_check")
 
 [node name="OpeningRegionRemedyPreparationInputCoordinator" type="Node" parent="."]
 script = ExtResource("387_remedy_preparation_input")
