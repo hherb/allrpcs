@@ -9,14 +9,15 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
     private const string EnabledEnvironmentValue = "1";
     private const float ExpectedWalkFramesPerSecond = 1000.0f / 120.0f;
     private const float ExpectedIdleFramesPerSecond = 1000.0f / 600.0f;
+    private const float ExpectedInteractionFramesPerSecond = 1000.0f / 160.0f;
     private const float TimingTolerance = 0.001f;
-    private static readonly (Vector2 Movement, string Walk, string Idle, int Width)[]
+    private static readonly (Vector2 Movement, string Walk, string Idle, string Interaction, int Width)[]
         ExpectedDirections =
     [
-        (Vector2.Down, "walk_south", "idle_south", 108),
-        (Vector2.Left, "walk_west", "idle_west", 144),
-        (Vector2.Right, "walk_east", "idle_east", 144),
-        (Vector2.Up, "walk_north", "idle_north", 108),
+        (Vector2.Down, "walk_south", "idle_south", "interact_south", 108),
+        (Vector2.Left, "walk_west", "idle_west", "interact_west", 144),
+        (Vector2.Right, "walk_east", "idle_east", "interact_east", 144),
+        (Vector2.Up, "walk_north", "idle_north", "interact_north", 108),
     ];
 
     /// <inheritdoc />
@@ -27,11 +28,12 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
             return;
         }
 
-        RunChecks();
+        GetTree().ProcessFrame += RunChecks;
     }
 
     private void RunChecks()
     {
+        GetTree().ProcessFrame -= RunChecks;
         CharacterBody2D seeker = GetNode<CharacterBody2D>("../Seeker");
         SeekerWalkAnimationPresenter presenter =
             seeker.GetNode<SeekerWalkAnimationPresenter>("WalkAnimation");
@@ -51,11 +53,12 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
             return;
         }
 
-        if (frames.GetAnimationNames().Length != ExpectedDirections.Length * 2)
+        if (frames.GetAnimationNames().Length != ExpectedDirections.Length * 3)
         {
             Fail(
-                "Runtime Seeker animation resource must contain exactly four walk and four idle "
-                + $"loops, but contained {frames.GetAnimationNames().Length} animations.");
+                "Runtime Seeker animation resource must contain exactly four walk, idle, and "
+                + "interaction animations, but contained "
+                + $"{frames.GetAnimationNames().Length} animations.");
             return;
         }
 
@@ -67,7 +70,9 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
             return;
         }
 
-        foreach ((Vector2 movement, string walkName, string idleName, int width) in ExpectedDirections)
+        foreach (
+            (Vector2 movement, string walkName, string idleName, string interactionName, int width)
+            in ExpectedDirections)
         {
             StringName walk = walkName;
             presenter.PresentMovement(movement);
@@ -124,6 +129,50 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
                     return;
                 }
             }
+
+            StringName interaction = interactionName;
+            presenter.PresentSuccessfulInteraction();
+            if (presenter.Animation != interaction
+                || !presenter.IsPlaying()
+                || frames.GetFrameCount(interaction) != 4
+                || frames.GetAnimationLoop(interaction)
+                || Mathf.Abs(
+                    (float)frames.GetAnimationSpeed(interaction)
+                    - ExpectedInteractionFramesPerSecond) > TimingTolerance)
+            {
+                Fail("Seeker did not play the matching four-frame 160 ms interaction gesture.");
+                return;
+            }
+
+            for (int index = 0; index < 4; index++)
+            {
+                Texture2D texture = frames.GetFrameTexture(interaction, index);
+                if (texture.GetWidth() != 192
+                    || texture.GetHeight() != 168
+                    || !texture.ResourcePath.StartsWith(
+                        "res://art/runtime/characters/seeker/",
+                        StringComparison.Ordinal)
+                    || !textureRids.Add(texture.GetRid()))
+                {
+                    Fail("Runtime Seeker interaction lost its 16 unique runtime textures.");
+                    return;
+                }
+            }
+
+            presenter.EmitSignal(AnimatedSprite2D.SignalName.AnimationFinished);
+            if (presenter.Animation != idle || !presenter.IsPlaying())
+            {
+                Fail("Completed Seeker interaction did not return to its matching idle loop.");
+                return;
+            }
+
+            presenter.PresentSuccessfulInteraction();
+            presenter.PresentMovement(movement);
+            if (presenter.Animation != walk || !presenter.IsPlaying())
+            {
+                Fail("Seeker movement did not interrupt the interaction gesture.");
+                return;
+            }
         }
 
         if (seeker.GetNode<CollisionShape2D>("CollisionShape2D").Shape is not CircleShape2D
@@ -134,9 +183,10 @@ public partial class RuntimeSeekerWalkSmokeCheck : Node
         }
 
         GD.Print(
-            "Runtime Seeker animation smoke passed: 24 walk frames and eight idle/breathe frames "
-            + "form four direction-matched 120 ms walk and 600 ms idle loops, retain exact foot "
-            + "pivots, and leave movement and collision authority unchanged.");
+            "Runtime Seeker animation smoke passed: 24 walk, eight idle/breathe, and 16 interaction "
+            + "frames form direction-matched 120 ms walk, 600 ms idle, and interruptible 160 ms "
+            + "non-looping interaction animations while leaving movement and collision authority "
+            + "unchanged.");
         GetTree().Quit();
     }
 

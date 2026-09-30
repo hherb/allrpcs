@@ -135,6 +135,17 @@ Compatibility views and found the presentation looked good. That acceptance does
 pacing, usability, human accessibility, or acceptance of another asset. Reach/inspect frames remain
 isolated proof resources.
 
+The next separately approved character promotion copies only the 16 manifest-bound Seeker
+reach/inspect frames into the same runtime-owned directional set. Four non-looping four-frame
+gestures retain exact 192x168 geometry, 160 ms timing, contact-foot pivots, source hashes, and
+lossless mipmap-free imports. A gesture starts only after an ordinary focused-search resolution
+successfully changes authoritative state, uses the retained facing, yields immediately to movement,
+and returns to the matching idle after completion. Repeated, stale, rejected, and unchanged
+resolutions remain visually inert; the presentation neither gates nor delays resolution. The
+product owner reviewed all four frames in all four directions at 0.8x, 1.0x, and 2.0x in wide and
+tall Compatibility views and accepted the presentation. That acceptance does not establish pacing,
+usability, human accessibility, or acceptance of another asset.
+
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
 opening locations, all twelve topology edges, the 240-pixel-per-second movement speed, 96-pixel path

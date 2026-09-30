@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the bounded manifest-owned runtime Seeker walk and idle asset set."""
+"""Validate the bounded manifest-owned runtime Seeker animation asset set."""
 
 from __future__ import annotations
 
@@ -14,8 +14,8 @@ PROOF_ROOT = ROOT / "art-direction" / "production-proof" / "corrected"
 MANIFEST = PROOF_ROOT / "asset-manifest.json"
 RUNTIME_ROOT = ROOT / "game" / "art" / "runtime" / "characters" / "seeker"
 MAIN_SCENE = ROOT / "game" / "Main.tscn"
-DIRECTIONS = {"south": 108, "west": 144, "east": 144, "north": 108}
-ANIMATIONS = {"walk": 6, "idle-breathe": 2}
+DIRECTION_WIDTHS = {"south": 108, "west": 144, "east": 144, "north": 108}
+ANIMATIONS = {"walk": 6, "idle-breathe": 2, "interact-reach": 4}
 
 
 def require(condition: bool, message: str) -> None:
@@ -68,8 +68,9 @@ def main() -> None:
     expected_pngs: set[Path] = set()
     runtime_uids: set[str] = set()
 
-    for direction, width in DIRECTIONS.items():
+    for direction, direction_width in DIRECTION_WIDTHS.items():
         for animation, frame_count in ANIMATIONS.items():
+            width = 192 if animation == "interact-reach" else direction_width
             manifest_animation = animation.replace("-", "_")
             for frame in range(1, frame_count + 1):
                 asset_id = f"characters.seeker.{direction}.{manifest_animation}_{frame:02d}"
@@ -151,8 +152,8 @@ def main() -> None:
     require('name="Facing" type="Polygon2D" parent="Seeker"' not in main_scene, "greybox facing remains")
 
     print("Runtime Seeker animation validation passed")
-    print("assets: 32 exact manifest/source/runtime SHA-256 matches")
-    print("geometry: four 120 ms walk loops and four 600 ms idle loops with exact pivots")
+    print("assets: 48 exact manifest/source/runtime SHA-256 matches")
+    print("geometry: four 120 ms walk, 600 ms idle, and 160 ms interaction animations")
     print("isolation: ordinary scene references runtime-owned Seeker art only")
 
 

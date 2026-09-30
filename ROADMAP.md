@@ -330,6 +330,13 @@ Acceptance:
 - [x] Complete the Seeker idle/breathe product-owner review across both frames in all four directions
   at 0.8x, 1.0x, and 2.0x in supplied wide and tall Compatibility views; record only that the
   presentation looked good without claiming pacing, usability, or human accessibility acceptance.
+- [x] After explicit product-owner approval, promote only the 16 manifest-bound Seeker
+  reach/inspect frames into separate runtime ownership and play exact four-direction non-looping
+  four-frame 160 ms gestures only after changed focused-search resolution, with movement
+  interruption and no input, timing-gate, physical, or gameplay-authority change.
+- [x] Complete the Seeker reach/inspect product-owner review across all four frames and directions at
+  0.8x, 1.0x, and 2.0x in supplied wide and tall Compatibility views; record visual acceptance
+  without claiming pacing, usability, or human accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

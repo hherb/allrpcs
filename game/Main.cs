@@ -40,6 +40,7 @@ public partial class Main : Node
         new("layered_inscription_discover");
 
     private Healer healer = null!;
+    private SeekerWalkAnimationPresenter seekerAnimationPresenter = null!;
     private AutonomousConversationBudgetController autonomousConversationBudgetController = null!;
     private OrdinaryPlayerDialogueParticipationCoordinator participationCoordinator = null!;
     private CharacterTurnParticipationRoundTaskController participationRoundController = null!;
@@ -115,6 +116,8 @@ public partial class Main : Node
     public override void _Ready()
     {
         healer = GetNode<Healer>("Healer");
+        seekerAnimationPresenter = GetNode<SeekerWalkAnimationPresenter>(
+            "Seeker/WalkAnimation");
         autonomousConversationBudgetController = GetNode<AutonomousConversationBudgetController>(
             "AutonomousConversationBudgetController");
         participationCoordinator = GetNode<OrdinaryPlayerDialogueParticipationCoordinator>(
@@ -870,6 +873,7 @@ public partial class Main : Node
             {
                 RefreshResolvedPerceptionPresentation();
                 TryRecoverObjectSabotagesForResolvedOutcome(outcome!);
+                seekerAnimationPresenter.PresentSuccessfulInteraction();
             }
 
             PresentFocusedSearchResult("RESOLVE", changed);

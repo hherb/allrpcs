@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=33 format=3]
+[gd_resource type="SpriteFrames" load_steps=49 format=3]
 
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-01.png" id="1_s1"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/walk-02.png" id="2_s2"]
@@ -32,6 +32,22 @@
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/idle-breathe-02.png" id="30_ei2"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/idle-breathe-01.png" id="31_ni1"]
 [ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/idle-breathe-02.png" id="32_ni2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/interact-reach-01.png" id="33_sr1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/interact-reach-02.png" id="34_sr2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/interact-reach-03.png" id="35_sr3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/south/interact-reach-04.png" id="36_sr4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/interact-reach-01.png" id="37_wr1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/interact-reach-02.png" id="38_wr2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/interact-reach-03.png" id="39_wr3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/west/interact-reach-04.png" id="40_wr4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/interact-reach-01.png" id="41_er1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/interact-reach-02.png" id="42_er2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/interact-reach-03.png" id="43_er3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/east/interact-reach-04.png" id="44_er4"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/interact-reach-01.png" id="45_nr1"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/interact-reach-02.png" id="46_nr2"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/interact-reach-03.png" id="47_nr3"]
+[ext_resource type="Texture2D" path="res://art/runtime/characters/seeker/north/interact-reach-04.png" id="48_nr4"]
 
 [resource]
 animations = [{
@@ -54,6 +70,26 @@ animations = [{
 "loop": true,
 "name": &"idle_west",
 "speed": 1.666667
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("41_er1")}, {"duration": 1.0, "texture": ExtResource("42_er2")}, {"duration": 1.0, "texture": ExtResource("43_er3")}, {"duration": 1.0, "texture": ExtResource("44_er4")}],
+"loop": false,
+"name": &"interact_east",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("45_nr1")}, {"duration": 1.0, "texture": ExtResource("46_nr2")}, {"duration": 1.0, "texture": ExtResource("47_nr3")}, {"duration": 1.0, "texture": ExtResource("48_nr4")}],
+"loop": false,
+"name": &"interact_north",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("33_sr1")}, {"duration": 1.0, "texture": ExtResource("34_sr2")}, {"duration": 1.0, "texture": ExtResource("35_sr3")}, {"duration": 1.0, "texture": ExtResource("36_sr4")}],
+"loop": false,
+"name": &"interact_south",
+"speed": 6.25
+}, {
+"frames": [{"duration": 1.0, "texture": ExtResource("37_wr1")}, {"duration": 1.0, "texture": ExtResource("38_wr2")}, {"duration": 1.0, "texture": ExtResource("39_wr3")}, {"duration": 1.0, "texture": ExtResource("40_wr4")}],
+"loop": false,
+"name": &"interact_west",
+"speed": 6.25
 }, {
 "frames": [{"duration": 1.0, "texture": ExtResource("13_e1")}, {"duration": 1.0, "texture": ExtResource("14_e2")}, {"duration": 1.0, "texture": ExtResource("15_e3")}, {"duration": 1.0, "texture": ExtResource("16_e4")}, {"duration": 1.0, "texture": ExtResource("17_e5")}, {"duration": 1.0, "texture": ExtResource("18_e6")}],
 "loop": true,

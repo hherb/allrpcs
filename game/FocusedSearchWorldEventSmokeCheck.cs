@@ -28,6 +28,7 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
     private WorldEventController worldEventController = null!;
     private Label focusedSearchResult = null!;
     private CharacterBody2D seeker = null!;
+    private SeekerWalkAnimationPresenter seekerAnimationPresenter = null!;
 
     /// <inheritdoc />
     public override void _Ready()
@@ -51,6 +52,8 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
         worldEventController = GetNode<WorldEventController>("../WorldEventController");
         focusedSearchResult = GetNode<Label>("../CommandOverlay/Panel/FocusedSearchResult");
         seeker = GetNode<CharacterBody2D>("../Seeker");
+        seekerAnimationPresenter =
+            seeker.GetNode<SeekerWalkAnimationPresenter>("WalkAnimation");
     }
 
     /// <inheritdoc />
@@ -159,6 +162,8 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
             || ReferenceEquals(resolvedTime, startupTime)
             || !ReferenceEquals(resolvedTime.CurrentEventId, advancingEvent.EventId)
             || !AssertResultText(ResolveChangedText)
+            || seekerAnimationPresenter.Animation != "interact_south"
+            || !seekerAnimationPresenter.IsPlaying()
             || !resolvedPerceptionIndicator.IsIndicatorVisible
             || !string.Equals(
                 resolvedPerceptionIndicator.GetNode<Label>("Indicator").Text,
@@ -169,6 +174,8 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
             return;
         }
 
+        seekerAnimationPresenter.Stop();
+        seekerAnimationPresenter.PresentMovement(Vector2.Zero);
         PressAction(FocusedSearchResolveAction);
         if (!ReferenceEquals(focusedSearchController.Activities, completedActivities)
             || !ReferenceEquals(focusedSearchController.Outcomes, resolvedOutcomes)
@@ -183,6 +190,8 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
                 initialPerception.Entries[0].VisibilityState,
                 VisibilityState.Noticed)
             || !AssertResultText(ResolveUnchangedText)
+            || seekerAnimationPresenter.Animation != "idle_south"
+            || !seekerAnimationPresenter.IsPlaying()
             || !resolvedPerceptionIndicator.IsIndicatorVisible
             || !string.Equals(
                 resolvedPerceptionIndicator.GetNode<Label>("Indicator").Text,
@@ -252,8 +261,8 @@ public partial class FocusedSearchWorldEventSmokeCheck : Node
             "Focused-search world-event smoke passed: ordinary start, complete, and resolve input "
             + "preserved event and time state until exact herb-patch resolution, then consumed "
             + "the outcome, identified and presented the herb, recorded the exact advancing "
-            + "event, advanced qualitative time, and preserved all state on repeated or "
-            + "ineligible resolution.");
+            + "event, advanced qualitative time, presented one success-only Seeker gesture, and "
+            + "preserved all state and idle presentation on repeated or ineligible resolution.");
         GetTree().Quit();
     }
 
