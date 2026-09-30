@@ -8,6 +8,7 @@ public partial class OpeningRegionWoodlandClearingSceneSource : Node2D
 {
     /// <summary>Gets the shared width of all authored clearing openings.</summary>
     public const float OpeningWidthPixels = OpeningRegionWoodlandClearingGeometry.OpeningWidthPixels;
+    private const float VillageEdgeTransitionFeatherPixels = 64.0f;
 
     /// <summary>Gets the thickness of each collision-backed tree boundary.</summary>
     public const float WallThicknessPixels =
@@ -66,6 +67,7 @@ public partial class OpeningRegionWoodlandClearingSceneSource : Node2D
         Sprite2D topRightCorner = GetNode<Sprite2D>("TopRightTransitionCorner");
         Sprite2D bottomLeftCorner = GetNode<Sprite2D>("BottomLeftTransitionCorner");
         Sprite2D bottomRightCorner = GetNode<Sprite2D>("BottomRightTransitionCorner");
+        Sprite2D villageEdgeTransition = GetNode<Sprite2D>("VillageEdgeTransition");
         Texture2D[] perimeterTextures =
         [
             RequiredTexture(northTransition),
@@ -113,6 +115,7 @@ public partial class OpeningRegionWoodlandClearingSceneSource : Node2D
         ConfigureCorner(topRightCorner, new Vector2(bounds.Right, top), -Mathf.Pi / 2.0f);
         ConfigureCorner(bottomLeftCorner, new Vector2(bounds.Left, bottom), 0.0f);
         ConfigureCorner(bottomRightCorner, new Vector2(bounds.Right, bottom), 0.0f);
+        ConfigureVillageEdgeTransition(villageEdgeTransition, bounds);
     }
 
     private static Texture2D RequiredTexture(Sprite2D sprite) =>
@@ -136,6 +139,27 @@ public partial class OpeningRegionWoodlandClearingSceneSource : Node2D
     {
         corner.Position = position;
         corner.Rotation = rotation;
+    }
+
+    private static void ConfigureVillageEdgeTransition(
+        Sprite2D transition,
+        NavigationWorldBounds clearingBounds)
+    {
+        Texture2D texture = RequiredTexture(transition);
+        if (texture.GetWidth() != 1024 || texture.GetHeight() != 512)
+        {
+            throw new InvalidOperationException(
+                "The Village Edge transition texture must remain exactly 1024x512 pixels.");
+        }
+
+        transition.Position = new Vector2(
+            clearingBounds.Left - VillageEdgeTransitionFeatherPixels,
+            clearingBounds.Top - VillageEdgeTransitionFeatherPixels);
+        transition.Centered = false;
+        transition.Offset = Vector2.Zero;
+        transition.RegionEnabled = false;
+        transition.Rotation = 0.0f;
+        transition.Scale = Vector2.One;
     }
 
     private void ConfigureBoundaries()

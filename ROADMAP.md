@@ -285,6 +285,14 @@ Acceptance:
   and unchanged collision, navigation, topology, camera, and gameplay authority.
 - [x] Complete the ordinary-scene opening-junction review across the supplied 0.8x, 1.0x, and 2.0x
   1280x720 and 1280x827 views before recording runtime visual acceptance.
+- [x] After explicit product-owner approval, establish, import, and promote one deterministic
+  1024x512 world-aligned Woodland Clearing/Village Edge overlay with a 2048x1024 editable master,
+  exact clearing/opening geometry, and a 64-pixel alpha feather without changing collision,
+  navigation, routes, layout, camera, scenario, or gameplay authority.
+- [x] Complete the overlay review across supplied 0.8x, 1.0x, and 2.0x wide and tall views; replace
+  the rejected hard straight edges, extend the correction across the north/northeast intersection,
+  and record final visual acceptance without claiming pacing, usability, or human accessibility
+  acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

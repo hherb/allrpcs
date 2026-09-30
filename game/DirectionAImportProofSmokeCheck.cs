@@ -71,6 +71,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         ("Terrain/WoodlandLeafLitterLeftCornerTransitionProof", 256, 256),
         ("Terrain/WoodlandLeafLitterInsetCornerTransitionProof", 256, 256),
         ("Terrain/WoodlandLeafLitterLeftInsetCornerTransitionProof", 256, 256),
+        ("Terrain/WoodlandVillageEdgeTransitionProof", 1024, 512),
         ("Props/EmptyBed", 96, 80),
         ("Props/PlantedBed", 96, 80),
         ("Props/PlantedBedFoliage", 72, 56),
@@ -95,7 +96,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
             + "straight, 90-degree, T-junction, cross-junction, end-cap, and exact live-angle "
             + "opening-junction path modules, "
             + "repeatable woodland leaf litter and its straight, outer-corner, and two inset-corner "
-            + "quiet-moss transitions, "
+            + "quiet-moss transitions plus the softly feathered Village Edge overlay, "
             + "separate table cue, "
             + "144px-minimum visible Seeker, four six-frame 120 ms walks, "
             + "four two-frame 600 ms idle loops, "

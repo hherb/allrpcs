@@ -37,6 +37,27 @@
     },
     "review": "review/opening-junction-review.png"
   },
+  "village_edge_transition_proof": {
+    "asset": "terrain.woodland_village_edge_transition",
+    "opening": {
+      "x": 592,
+      "y": 314
+    },
+    "world_origin": {
+      "x": 536,
+      "y": 136
+    },
+    "clearing_bounds": {
+      "left": 64,
+      "top": 64,
+      "right": 712,
+      "bottom": 314
+    },
+    "path_width_pixels": 96,
+    "feather_pixels": 64,
+    "route_length_pixels": 180,
+    "review": "review/woodland-village-edge-transition-review.png"
+  },
   "navigation_clearance": {
     "scene": "review/module-review-scene.png",
     "x": 592,
@@ -438,6 +459,36 @@
       },
       "godot_import_proof": true,
       "sha256": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7"
+    },
+    {
+      "id": "terrain.woodland_village_edge_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-village-edge-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 512
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 512
+      },
+      "master_dimensions_pixels": {
+        "width": 2048,
+        "height": 1024,
+        "scale": 2
+      },
+      "contact_baseline": 512,
+      "pivot": {
+        "x": 592,
+        "y": 314
+      },
+      "godot_import_proof": true,
+      "sha256": "283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21"
     },
     {
       "id": "terrain.straight_path",

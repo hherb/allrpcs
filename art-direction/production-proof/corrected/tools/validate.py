@@ -297,7 +297,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 67, f"expected 67 assets, got {len(assets)}")
+    require(len(assets) == 68, f"expected 68 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -312,6 +312,7 @@ def main() -> None:
     left_inset_corner_id = (
         "terrain.woodland_leaf_litter_inset_corner_transition_left"
     )
+    village_edge_transition_id = "terrain.woodland_village_edge_transition"
     require(
         import_proof_ids == set(assets),
         "not every corrected proof asset is included in the isolated Godot import set",
@@ -768,6 +769,49 @@ def main() -> None:
         and color_distance(left_inset_leaf_mean, leaf_mean)
         < color_distance(left_inset_leaf_mean, ground_mean),
         "left inset ground corner materials are not moss upper-left and leaf lower-right",
+    )
+    village_edge_transition_asset = assets[village_edge_transition_id]
+    require(
+        village_edge_transition_asset["source"] == "tools/build.py"
+        and village_edge_transition_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 1024, "height": 512}
+        and village_edge_transition_asset["master_dimensions_pixels"]
+        == {"width": 2048, "height": 1024, "scale": 2}
+        and village_edge_transition_asset["pivot"] == {"x": 592, "y": 314}
+        and village_edge_transition_asset["godot_import_proof"] is True,
+        "Village Edge transition geometry, provenance, pivot, or import status drifted",
+    )
+    village_edge_transition = Image.open(
+        ROOT / village_edge_transition_asset["export"]
+    ).convert("RGBA")
+    village_edge_alpha = village_edge_transition.getchannel("A")
+    village_edge_alpha_values = set(village_edge_alpha.getdata())
+    require(
+        0 in village_edge_alpha_values
+        and 255 in village_edge_alpha_values
+        and len(village_edge_alpha_values - {0, 255}) >= 128,
+        "Village Edge transition lost its opaque coverage or broad soft feather",
+    )
+    village_edge_proof = manifest["village_edge_transition_proof"]
+    require(
+        village_edge_proof
+        == {
+            "asset": village_edge_transition_id,
+            "opening": {"x": 592, "y": 314},
+            "world_origin": {"x": 536, "y": 136},
+            "clearing_bounds": {"left": 64, "top": 64, "right": 712, "bottom": 314},
+            "path_width_pixels": 96,
+            "feather_pixels": 64,
+            "route_length_pixels": 180,
+            "review": "review/woodland-village-edge-transition-review.png",
+        },
+        "Village Edge transition proof geometry or review contract drifted",
+    )
+    require(
+        village_edge_alpha.getpixel((592, 314)) == 255
+        and village_edge_alpha.getpixel((0, 0)) == 0
+        and village_edge_alpha.getpixel((1023, 511)) == 0,
+        "Village Edge transition lost opening coverage or transparent outer corners",
     )
     require(
         edge_delta(
@@ -1432,6 +1476,11 @@ def main() -> None:
         ),
         "left inset ground-corner review lost exact connected source tiles",
     )
+    village_edge_review = Image.open(ROOT / village_edge_proof["review"])
+    require(
+        village_edge_review.size == (2048, 512),
+        "Village Edge transition review dimensions drifted",
+    )
     validate_cue_grayscale()
 
     for filename in [
@@ -1447,6 +1496,7 @@ def main() -> None:
         "terrain-woodland-leaf-litter-corner-transition-left.ora",
         "terrain-woodland-leaf-litter-inset-corner-transition.ora",
         "terrain-woodland-leaf-litter-inset-corner-transition-left.ora",
+        "terrain-woodland-village-edge-transition.ora",
         "planted-herb-bed.ora",
         "preparation-table-states.ora",
         "seeker-four-direction-walk.ora",
@@ -1476,7 +1526,8 @@ def main() -> None:
     print("left ground corner: exact top/left transition and unused moss edge connectors")
     print("inset ground corner: exact top/right transition and unused leaf edge connectors")
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
-    print("editable masters: 18 valid OpenRaster archives")
+    print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
+    print("editable masters: 19 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

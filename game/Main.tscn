@@ -1,4 +1,4 @@
-[gd_scene load_steps=329 format=3]
+[gd_scene load_steps=330 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -518,6 +518,7 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/straight-path.png" id="406_runtime_straight_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/path-end-cap.png" id="407_runtime_path_end_cap"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/opening-junction.png" id="408_runtime_opening_junction"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-village-edge-transition.png" id="409_runtime_village_edge_transition"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -2299,6 +2300,10 @@ texture = ExtResource("404_runtime_leaf_corner")
 z_index = -80
 texture = ExtResource("405_runtime_leaf_left_corner")
 
+[node name="VillageEdgeTransition" type="Sprite2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+z_index = -79
+texture = ExtResource("409_runtime_village_edge_transition")
+
 [node name="LaundryOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
 polygon = PackedVector2Array(528, 46, 544, 46, 544, 94, 528, 94)
 color = Color(0.918, 0.733, 0.31, 1)
@@ -2308,6 +2313,7 @@ polygon = PackedVector2Array(232, 46, 248, 46, 248, 94, 232, 94)
 color = Color(0.918, 0.733, 0.31, 1)
 
 [node name="VillageEdgeOpening" type="Polygon2D" parent="OpeningRegionWoodlandClearingSceneSource"]
+visible = false
 polygon = PackedVector2Array(473, 112, 521, 112, 521, 128, 473, 128)
 color = Color(0.918, 0.733, 0.31, 1)
 

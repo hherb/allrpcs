@@ -43,6 +43,13 @@ OPENING_JUNCTION_OUTGOING_HEADING_DEGREES = 90.0 + OPENING_JUNCTION_TURN_DEGREES
 OPENING_JUNCTION_TEXTURE_BLEND_LENGTH = 72
 OPENING_JUNCTION_CURVE_TANGENT_DISTANCE = 80
 OPENING_JUNCTION_CURVE_EDGE_INSET = 2
+VILLAGE_EDGE_TRANSITION_CANVAS_SIZE = (1024, 512)
+VILLAGE_EDGE_TRANSITION_WORLD_ORIGIN = (536, 136)
+VILLAGE_EDGE_TRANSITION_OPENING = (592, 314)
+VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS = (64, 64, 712, 314)
+VILLAGE_EDGE_TRANSITION_FEATHER = 64
+VILLAGE_EDGE_TRANSITION_ROUTE_LENGTH = 180
+VILLAGE_EDGE_TRANSITION_PATH_WIDTH = 96
 RESAMPLE = Image.Resampling.LANCZOS
 LOGICAL_VIEWPORT_SIZE = (1280, 720)
 FULLSCREEN_REFERENCE_LOGICAL_SIZE = (1280, 827)
@@ -424,6 +431,82 @@ def enforce_left_inset_ground_corner_connectors(
         (0, result.height - 1),
     )
     return result
+
+
+def make_village_edge_transition(
+    leaf_litter: Image.Image,
+) -> tuple[Image.Image, Image.Image]:
+    """Create one world-aligned leaf overlay that feathers the clearing and Village route."""
+
+    canvas_width = VILLAGE_EDGE_TRANSITION_CANVAS_SIZE[0] * MASTER_SCALE
+    canvas_height = VILLAGE_EDGE_TRANSITION_CANVAS_SIZE[1] * MASTER_SCALE
+    origin_x = VILLAGE_EDGE_TRANSITION_WORLD_ORIGIN[0] * MASTER_SCALE
+    origin_y = VILLAGE_EDGE_TRANSITION_WORLD_ORIGIN[1] * MASTER_SCALE
+    left, top, right, bottom = (
+        coordinate * MASTER_SCALE
+        for coordinate in VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS
+    )
+    feather = VILLAGE_EDGE_TRANSITION_FEATHER * MASTER_SCALE
+    opening_x = VILLAGE_EDGE_TRANSITION_OPENING[0] * MASTER_SCALE
+    opening_y = VILLAGE_EDGE_TRANSITION_OPENING[1] * MASTER_SCALE
+    route_length = VILLAGE_EDGE_TRANSITION_ROUTE_LENGTH * MASTER_SCALE
+    half_path = VILLAGE_EDGE_TRANSITION_PATH_WIDTH * MASTER_SCALE / 2.0
+    direction_length = math.hypot(572.0, 450.0)
+    direction_x = 572.0 / direction_length
+    direction_y = 450.0 / direction_length
+    route_end_x = opening_x + direction_x * route_length
+    route_end_y = opening_y + direction_y * route_length
+
+    overlay = Image.new("RGBA", (canvas_width, canvas_height), (0, 0, 0, 0))
+    mask = Image.new("L", (canvas_width, canvas_height), 0)
+    overlay_pixels = []
+    mask_pixels = []
+    for y in range(canvas_height):
+        for x in range(canvas_width):
+            outside_x = max(left - x, 0.0, x - right)
+            outside_y = max(top - y, 0.0, y - bottom)
+            rectangle_distance = math.hypot(outside_x, outside_y)
+            irregularity = 12.0 * MASTER_SCALE * math.sin(
+                (x + (0.73 * y)) * math.pi / (96.0 * MASTER_SCALE)
+            )
+            rectangle_blend = max(
+                0.0,
+                min(
+                    1.0,
+                    1.0
+                    - (max(0.0, rectangle_distance + irregularity) / feather),
+                ),
+            )
+            rectangle_blend = rectangle_blend * rectangle_blend * (
+                3.0 - (2.0 * rectangle_blend)
+            )
+            segment_x = route_end_x - opening_x
+            segment_y = route_end_y - opening_y
+            segment_squared = (segment_x * segment_x) + (segment_y * segment_y)
+            projection = (
+                ((x - opening_x) * segment_x) + ((y - opening_y) * segment_y)
+            ) / segment_squared
+            projection = max(0.0, min(1.0, projection))
+            closest_x = opening_x + projection * segment_x
+            closest_y = opening_y + projection * segment_y
+            route_distance = math.hypot(x - closest_x, y - closest_y) - half_path
+            route_blend = max(
+                0.0,
+                min(1.0, 1.0 - (max(0.0, route_distance) / feather)),
+            )
+            route_blend = route_blend * route_blend * (3.0 - (2.0 * route_blend))
+            alpha = round(max(rectangle_blend, route_blend) * 255)
+            mask_pixels.append(alpha)
+            if alpha == 0:
+                overlay_pixels.append((0, 0, 0, 0))
+                continue
+            source = leaf_litter.getpixel(
+                ((origin_x + x) % leaf_litter.width, (origin_y + y) % leaf_litter.height)
+            )
+            overlay_pixels.append((source[0], source[1], source[2], alpha))
+    overlay.putdata(overlay_pixels)
+    mask.putdata(mask_pixels)
+    return overlay, Image.merge("RGBA", (mask, mask, mask, Image.new("L", mask.size, 255)))
 
 
 def make_path() -> Image.Image:
@@ -1788,6 +1871,26 @@ def make_leaf_litter_left_inset_corner_transition_review(
     return scene
 
 
+def make_village_edge_transition_review(
+    assets: dict[str, Image.Image],
+) -> Image.Image:
+    """Show the exact feather overlay over quiet moss beside its alpha coverage."""
+
+    moss = assets["terrain.quiet_moss"]
+    overlay = assets["terrain.woodland_village_edge_transition"]
+    composite = Image.new("RGBA", overlay.size, (0, 0, 0, 0))
+    for y in range(0, composite.height, moss.height):
+        for x in range(0, composite.width, moss.width):
+            composite.alpha_composite(moss, (x, y))
+    composite.alpha_composite(overlay)
+    alpha = overlay.getchannel("A")
+    alpha_view = Image.merge("RGBA", (alpha, alpha, alpha, Image.new("L", alpha.size, 255)))
+    review = Image.new("RGBA", (overlay.width * 2, overlay.height), (0, 0, 0, 255))
+    review.alpha_composite(composite, (0, 0))
+    review.alpha_composite(alpha_view, (overlay.width, 0))
+    return review
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -1835,6 +1938,9 @@ def main() -> None:
         make_leaf_litter_left_inset_corner_transition(
             ground_master, leaf_litter_master, leaf_litter_transition_master
         )
+    )
+    village_edge_transition_master, village_edge_transition_mask_master = (
+        make_village_edge_transition(leaf_litter_master)
     )
     path_master = make_path()
     path_bend_master = make_path_bend(path_master)
@@ -1928,6 +2034,16 @@ def main() -> None:
             (256, 512),
             512,
             leaf_litter_left_inset_corner_transition_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.woodland_village_edge_transition",
+            "terrain",
+            Path("exports/terrain/woodland-village-edge-transition.png"),
+            (2048, 1024),
+            (1184, 628),
+            1024,
+            village_edge_transition_master,
             "tools/build.py",
         ),
         Asset(
@@ -2252,6 +2368,21 @@ def main() -> None:
         ],
     )
     create_ora(
+        MASTERS / "terrain-woodland-village-edge-transition.ora",
+        village_edge_transition_master.size,
+        [
+            ("woodland leaf-litter source", leaf_litter_master, 0, 0, False),
+            ("feather coverage mask", village_edge_transition_mask_master, 0, 0, False),
+            (
+                "world-aligned Village Edge feather overlay",
+                village_edge_transition_master,
+                0,
+                0,
+                True,
+            ),
+        ],
+    )
+    create_ora(
         MASTERS / "terrain-path-bend.ora",
         path_bend_master.size,
         [("packed-earth path bend", path_bend_master, 0, 0, True)],
@@ -2475,6 +2606,10 @@ def main() -> None:
         make_leaf_litter_left_inset_corner_transition_review(export_images),
         REVIEW / "woodland-leaf-litter-inset-corner-transition-left-review.png",
     )
+    save_png(
+        make_village_edge_transition_review(export_images),
+        REVIEW / "woodland-village-edge-transition-review.png",
+    )
 
     manifest_assets = []
     for asset in assets:
@@ -2554,6 +2689,27 @@ def main() -> None:
                 "height": opening_junction_bounds[3] - opening_junction_bounds[1],
             },
             "review": "review/opening-junction-review.png",
+        },
+        "village_edge_transition_proof": {
+            "asset": "terrain.woodland_village_edge_transition",
+            "opening": {
+                "x": VILLAGE_EDGE_TRANSITION_OPENING[0],
+                "y": VILLAGE_EDGE_TRANSITION_OPENING[1],
+            },
+            "world_origin": {
+                "x": VILLAGE_EDGE_TRANSITION_WORLD_ORIGIN[0],
+                "y": VILLAGE_EDGE_TRANSITION_WORLD_ORIGIN[1],
+            },
+            "clearing_bounds": {
+                "left": VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS[0],
+                "top": VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS[1],
+                "right": VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS[2],
+                "bottom": VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS[3],
+            },
+            "path_width_pixels": VILLAGE_EDGE_TRANSITION_PATH_WIDTH,
+            "feather_pixels": VILLAGE_EDGE_TRANSITION_FEATHER,
+            "route_length_pixels": VILLAGE_EDGE_TRANSITION_ROUTE_LENGTH,
+            "review": "review/woodland-village-edge-transition-review.png",
         },
         "navigation_clearance": {
             "scene": "review/module-review-scene.png",

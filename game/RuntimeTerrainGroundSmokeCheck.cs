@@ -16,6 +16,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         "res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png";
     private const string ExpectedWoodlandLeftCornerTexturePath =
         "res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png";
+    private const string ExpectedVillageEdgeTransitionTexturePath =
+        "res://art/runtime/terrain/woodland-village-edge-transition.png";
     private const string ExpectedStraightPathTexturePath =
         "res://art/runtime/terrain/straight-path.png";
     private const string ExpectedPathEndCapTexturePath =
@@ -63,8 +65,16 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             "../OpeningRegionWoodlandClearingSceneSource/BottomLeftTransitionCorner");
         Sprite2D bottomRightCorner = GetNode<Sprite2D>(
             "../OpeningRegionWoodlandClearingSceneSource/BottomRightTransitionCorner");
+        Sprite2D villageEdgeTransition = GetNode<Sprite2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/VillageEdgeTransition");
         Polygon2D laundryOpening = GetNode<Polygon2D>(
             "../OpeningRegionWoodlandClearingSceneSource/LaundryOpening");
+        Polygon2D shrineOpening = GetNode<Polygon2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/ShrineOpening");
+        Polygon2D villageOpening = GetNode<Polygon2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/VillageEdgeOpening");
+        Polygon2D forestOpening = GetNode<Polygon2D>(
+            "../OpeningRegionWoodlandClearingSceneSource/ClosedForestPathOpening");
         Line2D regionOutline = GetNode<Line2D>("../RegionOutline");
         Node2D routePresentation = GetNode<Node2D>("../GreyboxNavigation/RoutePresentation");
         Sprite2D straightPath = routePresentation.GetNode<Sprite2D>("LaundryClearingPath");
@@ -166,6 +176,26 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             return;
         }
 
+        if (!HasExactTexture(
+                villageEdgeTransition,
+                ExpectedVillageEdgeTransitionTexturePath,
+                1024,
+                512)
+            || villageEdgeTransition.RegionEnabled
+            || villageEdgeTransition.Position != new Vector2(536.0f, 136.0f)
+            || villageEdgeTransition.Centered
+            || villageEdgeTransition.Offset != Vector2.Zero
+            || !Mathf.IsZeroApprox(villageEdgeTransition.Rotation)
+            || villageEdgeTransition.Scale != Vector2.One
+            || villageOpening.Visible
+            || !laundryOpening.Visible
+            || !shrineOpening.Visible
+            || !forestOpening.Visible)
+        {
+            Fail("Runtime Village Edge transition lost its exact full-clearing feather presentation.");
+            return;
+        }
+
         Vector2 pathDelta = ExpectedStraightPathEnd - ExpectedStraightPathStart;
         float pathLength = pathDelta.Length();
         if (!HasExactTexture(straightPath, ExpectedStraightPathTexturePath, 96, 256)
@@ -217,11 +247,14 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || topRightCorner.ZIndex != -80
             || bottomLeftCorner.ZIndex != -80
             || bottomRightCorner.ZIndex != -80
+            || villageEdgeTransition.ZIndex != -79
             || straightPath.ZIndex != -70
             || pathEndCap.ZIndex != -70
             || openingJunction.ZIndex != -70
             || ground.ZIndex >= woodland.ZIndex
             || woodland.ZIndex >= northTransition.ZIndex
+            || bottomRightCorner.ZIndex >= villageEdgeTransition.ZIndex
+            || villageEdgeTransition.ZIndex >= straightPath.ZIndex
             || bottomRightCorner.ZIndex >= straightPath.ZIndex
             || ground.GetIndex() >= regionOutline.GetIndex()
             || woodland.GetIndex() >= northTransition.GetIndex()
@@ -230,7 +263,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || topLeftCorner.GetIndex() >= topRightCorner.GetIndex()
             || topRightCorner.GetIndex() >= bottomLeftCorner.GetIndex()
             || bottomLeftCorner.GetIndex() >= bottomRightCorner.GetIndex()
-            || bottomRightCorner.GetIndex() >= laundryOpening.GetIndex()
+            || bottomRightCorner.GetIndex() >= villageEdgeTransition.GetIndex()
+            || villageEdgeTransition.GetIndex() >= laundryOpening.GetIndex()
             || ground.ShowBehindParent
             || woodland.ShowBehindParent
             || northTransition.ShowBehindParent
@@ -239,6 +273,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || topRightCorner.ShowBehindParent
             || bottomLeftCorner.ShowBehindParent
             || bottomRightCorner.ShowBehindParent
+            || villageEdgeTransition.ShowBehindParent
             || straightPath.ShowBehindParent
             || pathEndCap.ShowBehindParent
             || openingJunction.ShowBehindParent)
@@ -249,9 +284,10 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
 
         GD.Print(
             "Runtime terrain ground smoke passed: exact 256x256 quiet moss, leaf litter, straight "
-            + "transitions, complementary outer corners, and one straight path with its rounded "
-            + "end cap plus the exact live-angle opening junction form bounded presentation behind "
-            + "the retained greybox.");
+            + "transitions, complementary outer corners, one softly feathered Village Edge "
+            + "transition, and one "
+            + "straight path with its rounded end cap plus the exact live-angle opening junction "
+            + "form bounded presentation behind the retained greybox.");
         GetTree().Quit();
     }
 

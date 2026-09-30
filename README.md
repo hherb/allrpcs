@@ -16,24 +16,26 @@ The first bounded Phase 9.2 source-sheet proof decomposes that direction into te
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
 seam, pivot, baseline, and editable-master gaps led to a corrected individual-asset pipeline. The
-corrected proof now has 67 manifest-bound exports, eighteen layered masters, exact seam and
+corrected proof now has 68 manifest-bound exports, nineteen layered masters, exact seam and
 grayscale checks, four normalized six-frame walks, four two-frame idle/breathe loops, and four
 four-frame reach-and-inspect gestures. The terrain set includes one exact 96-pixel straight module and one
 90-degree bend, T-junction, cross-junction, rounded end-cap, and one 512-pixel live-angle opening
 junction with matching ports, plus one
 deterministic connected-topology review, one repeatable woodland leaf-litter tile, and exact
-quiet-moss-to-leaf straight, two outer-corner, and two inset-corner transitions. All 67 exports have
+quiet-moss-to-leaf straight, two outer-corner, two inset-corner transitions, and one world-aligned
+1024x512 full-clearing feather overlay. All 68 exports have
 an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
 review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
 measurements. No proof-directory path is referenced by `Main.tscn` or ordinary gameplay, and the
 simulation evidence is not human accessibility acceptance.
 
-The first eight bounded runtime terrain promotions copy only the manifest-bound
+The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into
 `game/art/runtime/terrain`, followed by one `terrain.straight_path` and its matching
-`terrain.path_end_cap`, then the exact `terrain.opening_junction`. Each has exact SHA-256 parity and
+`terrain.path_end_cap`, the exact `terrain.opening_junction`, then the tailored
+`terrain.woodland_village_edge_transition`. Each has exact SHA-256 parity and
 its own lossless, mipmap-free Godot import identity. `Main.tscn` repeats quiet moss across the full
 3200-by-1800 world at
 `z_index = -100` and leaf litter only across the existing 648-by-250 Woodland Clearing bounds at
@@ -45,8 +47,12 @@ Clearing connection and meets its rounded 256x256 end cap at the clearing anchor
 draw at `z_index = -70`, above the retained eleven greybox routes at `-75` and below every opening,
 label, and interaction marker. The junction uses its exact `(224, 224)` pivot at the Abandoned
 Laundry anchor and a rigid `133.025066°` rotation to join the retained Stream leg to that approved
-straight path without scaling, shearing, collision, navigation, or topology changes. Static and
-credential-free engine checks bind all eight source hashes, runtime paths, geometry, coverage,
+straight path without scaling, shearing, collision, navigation, or topology changes. The feather
+overlay is world-aligned at `(536, 136)`, covers the exact clearing rectangle and 180-pixel Village
+route continuation, and uses a deterministic irregular 64-pixel alpha feather to remove hard
+moss/leaf intersections on every exposed side. It draws at `z_index = -79`, above the retained
+perimeter and below route art, without changing the leaf-tile bounds. Static and credential-free
+engine checks bind all nine source hashes, runtime paths, geometry, coverage,
 repeat mode, draw order, and continued isolation from the proof-only directory.
 The product owner accepted the quiet-moss appearance in supplied 1.0x and 2.0x views. That review
 also exposed one pre-existing 2.0x overlap between the identified stone-marker description and a
@@ -64,7 +70,11 @@ with an alpha-aware, tangent-continuous 96-pixel curve and clipped preview conti
 module boundary. The product owner accepted the corrected proof's curve and texture continuity,
 then separately authorized this exact runtime promotion. The owner accepted the resulting
 ordinary-scene curve, texture continuity, apparent width, seams, and nearby label/marker readability
-in supplied 0.8x, 1.0x, and 2.0x wide and tall runtime views. Inset
+in supplied 0.8x, 1.0x, and 2.0x wide and tall runtime views. The next separately approved slice
+added the tailored clearing feather after the owner rejected hard straight moss/leaf intersections;
+the owner then identified and verified a second correction for the north/northeast edge before
+accepting the final unobstructed and ordinary-scene views. That acceptance is limited to the visible
+blend and does not establish pacing, usability, or human accessibility acceptance. Inset
 corners, bends, junctions, other paths, water, structures, props, characters, UI systems, and
 gameplay authority remain unchanged. The Stream–Laundry–Woodland junction follows the exact live
 57.599282-degree turn and retains both 96-pixel connector seams and curved physical-route
