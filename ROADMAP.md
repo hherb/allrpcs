@@ -362,8 +362,9 @@ Acceptance:
 - [x] After separate explicit product-owner approval, promote only the three manifest-bound Stream
   modules into runtime ownership at the retained 400x96 band, leave the centered 128x96 crossing
   above the water, and mirror clipped banks and caps only over the two retained collision polygons.
-- [ ] Complete product-owner visual review of the six ordinary-scene Stream views at 0.8x, 1.0x,
-  and 2.0x in wide and tall Compatibility frames; record only observations actually supplied.
+- [x] Complete product-owner visual review of the six ordinary-scene Stream views at 0.8x, 1.0x,
+  and 2.0x in wide and tall Compatibility frames; the owner said they look right without
+  requesting a correction. This records only bounded visual acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

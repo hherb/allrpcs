@@ -176,9 +176,9 @@ copy. `Main.tscn` now uses runtime-owned water, bank, and opening-cap textures a
 hashes, with the centered greybox crossing and retained physical opening. The six ordinary-scene
 wide and tall Compatibility views at 0.8x, 1.0x, and 2.0x are saved as `review/stream-runtime-*`;
 [`scripts/capture-stream-runtime.gd`](../../../scripts/capture-stream-runtime.gd) regenerates them
-from the ordinary scene. Those views await
-separate product-owner visual review and do not establish pacing, usability, or human-accessibility
-acceptance.
+from the ordinary scene. The product owner said the six supplied ordinary-scene views look right
+without requesting a correction. That is visual acceptance of this bounded Stream presentation;
+it does not establish pacing, usability, or human-accessibility acceptance.
 
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a

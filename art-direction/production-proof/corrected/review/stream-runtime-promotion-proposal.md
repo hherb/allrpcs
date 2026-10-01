@@ -2,6 +2,8 @@
 
 Status: separately approved and implemented. The six external feasibility views were approved
 first; the product owner then explicitly approved this exact runtime promotion.
+After viewing the six ordinary-scene Compatibility frames, the product owner said they look right
+and requested no correction. That review is limited to the visible Stream presentation.
 
 ## Exact change
 

@@ -32,11 +32,11 @@ acceptance applied only to the external water, bank, opening-cap, crossing, and 
 presentation. The owner then separately approved the exact bounded runtime promotion. Three
 runtime-owned copies now cover the retained 400x96 band and banks at their original hashes; the
 centered 128x96 crossing remains above the water, and the 200-pixel collision opening stays clear.
-Six ordinary-scene 0.8x, 1.0x, and 2.0x wide/tall Compatibility views are prepared for separate
-visual review. Neither automated evidence nor the earlier external review establishes pacing,
-usability, or human accessibility acceptance. All 72 exports have an isolated source-parity Godot
-import scene with 12 named animations. A separate external terrain
-review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
+The product owner said the supplied six ordinary-scene 0.8x, 1.0x, and 2.0x wide/tall Compatibility
+views look right and requested no correction. This is bounded visual acceptance; it does not
+establish pacing, usability, or human accessibility acceptance. All 72 exports have an isolated
+source-parity Godot import scene with 12 named animations. A separate external terrain review
+binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
 measurements. No proof-directory path is referenced by `Main.tscn` or ordinary gameplay, and the
 simulation evidence is not human accessibility acceptance.

@@ -23,12 +23,17 @@ all 5,033 .NET tests, scenario validation, Godot smokes, formatting, and Compati
 The sandbox run passed through the .NET tests but hit the known Godot `user://logs` permission crash;
 the identical host-local run passed.
 
+The product owner reviewed the six supplied ordinary-scene views and said they look right, with no
+correction requested. This is bounded visual acceptance of the Stream presentation only; it does
+not establish pacing, usability, or human accessibility acceptance.
+
 ## Exact next bounded slice
 
-Ask the product owner to review the six ordinary-scene Stream views. Record only the visual
-observations supplied, including any correction requested, in `HANDOVER.md` and relevant art docs.
-Do not infer pacing, usability, or human accessibility acceptance from automated checks or visual
-inspection. Do not change accepted terrain, paths, junctions, clearing perimeter, foliage, table,
-beds, Seeker art or animation, structures, props, other character art, UI systems, effects, audio,
-collision, navigation, locations, topology, camera tuning, scenario, dialogue, clue, discovery,
-treatment, save, provider, or gameplay authority without a separately approved bounded slice.
+Stop at the next Phase 9.2 selection gate. Inspect the remaining terrain candidates against the
+current opening-region geometry and propose one exact bounded external proof or runtime promotion
+with named asset, placement, acceptance checks, and exclusions before editing. Obtain separate
+product-owner approval for that slice. Preserve the accepted Stream presentation and do not change
+other accepted terrain, paths, junctions, clearing perimeter, foliage, table, beds, Seeker art or
+animation, structures, props, other character art, UI systems, effects, audio, collision,
+navigation, locations, topology, camera tuning, scenario, dialogue, clue, discovery, treatment,
+save, provider, or gameplay authority without approval.
