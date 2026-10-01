@@ -2,33 +2,36 @@
 
 ## Current state
 
-Phase 8 and Phase 9.1 are complete; Direction A is selected. Phase 9.2 has 74 manifest-bound
-exports and 25 editable OpenRaster masters. The owner accepted the six corrected external
-Square–Garden views and separately approved their named production/runtime promotion on 2026-10-02.
+Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 74 manifest-bound
+exports and 25 editable OpenRaster masters. Square–Garden production/runtime promotion
+and its six runtime views are owner-accepted.
 
-One exact 200x220 accepted export now owns the Square–Garden presentation at `(2300,1250)`,
-`z=-71`, with a 400x440 layered master and independent proof/runtime lossless imports. Only its
-matching greybox presentation line is replaced. Physical/navigation authority remains unchanged.
-All six ordinary-scene PNGs are byte-identical to the accepted external correction; after display,
-the owner replied "ok" on 2026-10-02, completing bounded runtime visual acceptance.
+The 2026-10-02 Square–Sickhouse slice is external-only; owner review is pending.
+See the [feasibility result](art-direction/production-proof/corrected/review/square-sickhouse-path-feasibility.md)
+for six failed strip views, six corrected 0.8x/1.0x/2.0x wide/tall views, recipes, and hashes.
+The 380x360 overlay from `(2320,1140)` sits at `(2510,1320)`, `z=-71`, matches 1,713 visible
+junction-overlap pixels, and clips at Sickhouse `(2640,1450)`. Runtime/production is unchanged.
+The disposable capture hides the Seeker, screen overlays, and only the corrected route line;
+world markers/labels retain layering. The Sickhouse obscures the far terminus. Existing
+Garden-label overlap at high zoom and partial Sickhouse-label cropping at 2.0x wide remain
+recorded limitations; the tall view shows the full Sickhouse label.
 
-See [runtime result](art-direction/production-proof/corrected/review/square-garden-path-runtime-result.md)
-for all views, provenance, review findings, and commands. Rebuild determinism, preservation of
-100 prior asset/master files, focused scope/capture checks, Python lint, and negative layer/import
-corruption checks passed. Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here).
-Review has no unresolved findings. Quality passed all validators, formatting, zero-warning build,
-5,033 tests, scenario validation, full host Godot smokes, and Compatibility launch. The initial
-isolated-proof centering error was corrected; sandbox Godot log restrictions required host retry.
-The optional promotion-scope check freezes this slice's scene/code baseline; regular quality
-omits it. Older proof scene hashes are intentionally superseded by this promotion.
+Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here). Regular quality validates the
+archived proof; the new feasibility check's `--check-live-baseline` additionally verifies this
+slice's frozen ordinary scene/code hashes. Review fixed screen-panel obstruction; no unresolved
+code finding remains. All validators, lint, negative evidence checks, formatting, zero-warning
+build, 5,033 tests, scenario validation, and the full host Godot smoke suite passed.
+Sandbox Godot log access required host retry. Compatibility launch passed.
 
 ## Exact next bounded slice
 
-Test the existing straight-path texture on the retained Square–Sickhouse continuation in an
-external-only feasibility proof: exact live anchors/footprint exit, 96-pixel width, junction seam,
-Sickhouse endpoint, marker/label layering, and six 0.8x/1.0x/2.0x wide/tall views. Retain any failed
-candidate and show the final proof for owner review. Change no runtime files or physical authority.
-No additional production asset or runtime promotion is authorized. Preserve
-physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue, clues,
-discovery, treatment, save, provider, UI, audio, release, and signing. Do not infer pacing, usability,
-or accessibility acceptance. Existing direct-main commit/push authorization covers reviewed work.
+Obtain owner review of all six corrected Square–Sickhouse external views: junction seam,
+texture repetition, apparent width, Sickhouse entrance, and marker/label layering. Correct and
+redisplay only this external proof if requested. If accepted, prepare one exact named promotion
+proposal and obtain separate approval before changing production assets, masters, manifest,
+imports, or runtime. No promotion is authorized; automated evidence is not visual acceptance.
+
+Preserve physical/gameplay authority, topology, collision, navigation, camera, scenario,
+dialogue, clues, discovery, treatment, save, provider, UI, audio, release, and signing.
+Do not infer pacing, usability, or accessibility acceptance. Direct-main commit/push is
+authorized for reviewed work only.

@@ -390,8 +390,11 @@ Acceptance:
   greybox presentation line with the unscaled world-aligned sprite at `(2300,1250)`, `z=-71`.
 - [x] Obtain the separate ordinary-scene visual checkpoint for the six Square–Garden runtime
   views, which exactly match the accepted external correction; the owner replied "ok" on 2026-10-02.
-- [ ] Test the existing straight-path texture on the retained Square–Sickhouse continuation
-  in six external-only wide/tall views; preserve runtime and physical/gameplay authority.
+- [x] Test the existing straight-path texture on the retained Square–Sickhouse continuation
+  in six external-only wide/tall views; retain the failed strip and phase-continuous correction
+  with 1,713 exact overlap pixels, preserving runtime and physical/gameplay authority.
+- [ ] Obtain owner review of the six corrected Square–Sickhouse external views before proposing
+  a separately authorized named production/runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

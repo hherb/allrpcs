@@ -17,6 +17,7 @@ python3 scripts/validate-direction-a-import-proof.py
 python3 scripts/validate-runtime-terrain.py
 python3 art-direction/production-proof/corrected/tools/validate_village_edge_square_connector.py --check-captures
 python3 art-direction/production-proof/corrected/tools/check_square_garden_path_feasibility.py
+python3 art-direction/production-proof/corrected/tools/check_square_sickhouse_path_feasibility.py
 python3 art-direction/production-proof/corrected/tools/validate_square_garden_path.py --check-captures
 python3 scripts/validate-runtime-plants.py
 python3 scripts/validate-runtime-preparation-table.py

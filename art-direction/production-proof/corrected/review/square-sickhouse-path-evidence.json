@@ -1,0 +1,29 @@
+{
+  "baseline": {
+    "game/Main.tscn": "78c7a1f34cd874b83773847152be9f10234e03b11ab8161a3b81bdf35df287c6",
+    "game/GreyboxNavigation.cs": "7580df0e4b478142b23cb432c88abf7bba1e42de024a4ce7bb93f60503632e2c",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/OpeningRegionVillageTransitionGeometry.cs": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f",
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "art-direction/production-proof/corrected/tools/build.py": "791863e3a16ad4c60efc9693e4e59093aec0903d22546f3041b8bf8d82109806",
+    "art-direction/production-proof/corrected/tools/build_square_sickhouse_path_correction.py": "e49574cbc75c54c4d8761d085d7f473661811c2ed3475c12e4ed0ded68aa7de9",
+    "scripts/capture-square-sickhouse-path-proof.gd": "312ed43c7f298c16cbe6aafb6adca28b3fc546ccf0a66dd8ac5e9b30701f3eb1"
+  },
+  "images": {
+    "square-sickhouse-path-correction-0.8x-tall.png": "c077dd1531a55b6d0ed32fb0e801df1069cb464477a7fa07790e523257e82200",
+    "square-sickhouse-path-correction-0.8x-wide.png": "9926dd9b358ebe268d10fee0f3717e82ae0557c9dc7b12918fb4820a91370ce3",
+    "square-sickhouse-path-correction-1.0x-tall.png": "79d37526444c038d053e52921b224fa65df9919143869d65fb5f6393ee43ed8e",
+    "square-sickhouse-path-correction-1.0x-wide.png": "45d315a2a625ab1aefbf227356798185247e2b185dd81a248988e8851d013f6f",
+    "square-sickhouse-path-correction-2.0x-tall.png": "1cc87d49c76563818681f25c053c80e6669a5471244c48aa321a37380e944565",
+    "square-sickhouse-path-correction-2.0x-wide.png": "f4d0640996cb836ef3be7b51ada6629096ae69937fe2f1efed2a17e4f57338f8",
+    "square-sickhouse-path-correction-overlay.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "square-sickhouse-path-proof-0.8x-tall.png": "27c448a6b2d527acba638d2ef8023a42f1728d64e21f59d724e2a060ad83ff19",
+    "square-sickhouse-path-proof-0.8x-wide.png": "cb52ba85c37f427b9aeae245e526ca40d6ee240b38baa45b0b2012fa2eefe22b",
+    "square-sickhouse-path-proof-1.0x-tall.png": "cd9e336c082e1f5406b7751d18d5d249f9bf722c3697763268f3d53566ebc6b7",
+    "square-sickhouse-path-proof-1.0x-wide.png": "bbf3ee56e2140e55ea3c8090cd5a627e5893cd05e0859f01e60ad5871794fff2",
+    "square-sickhouse-path-proof-2.0x-tall.png": "3bbd7c883a0c6722fe7fadf2b84a801656c30c920306bc9da0eda9fa394a4cb4",
+    "square-sickhouse-path-proof-2.0x-wide.png": "dbe5b56bb75d3159984e231cdf26fc87d90fd22891c7e277261c048bd002ee39"
+  }
+}

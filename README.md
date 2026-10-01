@@ -48,6 +48,12 @@ Its layered master and independent imports preserve exact accepted pixels and al
 authority. The owner accepted six ordinary-scene views matching the external correction;
 see the [runtime result](art-direction/production-proof/corrected/review/square-garden-path-runtime-result.md).
 
+An external-only [Square–Sickhouse feasibility proof](art-direction/production-proof/corrected/review/square-sickhouse-path-feasibility.md)
+retains six failed straight-strip views and six world-aligned correction views. The correction
+uses only the existing straight-path pixels, matches 1,713 junction-overlap pixels exactly, and
+preserves the Sickhouse endpoint and world-marker layering. Owner review is pending; runtime
+assets, imports, scenes, and physical/gameplay authority remain unchanged by this proof.
+
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into
