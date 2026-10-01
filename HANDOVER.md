@@ -2,27 +2,33 @@
 
 ## Current state
 
-Phase 8 and Phase 9.1 are complete; Direction A is selected. Phase 9.2 has 73 manifest-bound
-exports and 24 editable OpenRaster masters. Village Edge–Square runtime visual acceptance is
-complete. On 2026-10-02 the owner accepted the six corrected external Square–Healer Garden
-views with "ok, go ahead". This is external acceptance only; production/runtime approval is pending.
+Phase 8 and Phase 9.1 are complete; Direction A is selected. Phase 9.2 has 74 manifest-bound
+exports and 25 editable OpenRaster masters. The owner accepted the six corrected external
+Square–Garden views and separately approved their named production/runtime promotion on 2026-10-02.
 
-See [external result](art-direction/production-proof/corrected/review/square-garden-path-feasibility.md)
-for accepted views, archived failures, exact geometry, hashes, and reproduction commands.
-The correction matches 1,400 visible junction-overlap pixels and retains the Garden endpoint.
-No production asset, master, manifest, import, ordinary scene, or gameplay change has been made.
-The proof session passed review, validators, formatting, zero-warning build, 5,033 tests, scenario
-checks, host Godot smokes, and Compatibility launch. The acceptance/proposal update changed
-only documentation and reran the focused validator with `--check-live-baseline` successfully.
-Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here; default `python3` lacks Pillow).
+One exact 200x220 accepted export now owns the Square–Garden presentation at `(2300,1250)`,
+`z=-71`, with a 400x440 layered master and independent proof/runtime lossless imports. Only its
+matching greybox presentation line is replaced. Physical/navigation authority remains unchanged.
+All six ordinary-scene PNGs are byte-identical to the accepted external correction; after display,
+the owner replied "ok" on 2026-10-02, completing bounded runtime visual acceptance.
+
+See [runtime result](art-direction/production-proof/corrected/review/square-garden-path-runtime-result.md)
+for all views, provenance, review findings, and commands. Rebuild determinism, preservation of
+100 prior asset/master files, focused scope/capture checks, Python lint, and negative layer/import
+corruption checks passed. Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here).
+Review has no unresolved findings. Quality passed all validators, formatting, zero-warning build,
+5,033 tests, scenario validation, full host Godot smokes, and Compatibility launch. The initial
+isolated-proof centering error was corrected; sandbox Godot log restrictions required host retry.
+The optional promotion-scope check freezes this slice's scene/code baseline; regular quality
+omits it. Older proof scene hashes are intentionally superseded by this promotion.
 
 ## Exact next bounded slice
 
-Obtain explicit approval of the [named Square–Garden production/runtime promotion proposal](art-direction/production-proof/corrected/review/square-garden-path-promotion-proposal.md).
-It specifies the exact 200x220 accepted export, 400x440 editable master, manifest/provenance,
-isolated and runtime imports, one sprite at `(2300,1250)` at `z=-71`, and replacement of only
-the corresponding greybox presentation line. Do not implement it before approval.
-Preserve physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue,
-clues, discovery, treatment, save, provider, UI, audio, release, and signing. After approved
-implementation, validate/review and obtain a separate ordinary-scene visual checkpoint.
-Existing direct-main commit/push authorization covers reviewed work.
+Test the existing straight-path texture on the retained Square–Sickhouse continuation in an
+external-only feasibility proof: exact live anchors/footprint exit, 96-pixel width, junction seam,
+Sickhouse endpoint, marker/label layering, and six 0.8x/1.0x/2.0x wide/tall views. Retain any failed
+candidate and show the final proof for owner review. Change no runtime files or physical authority.
+No additional production asset or runtime promotion is authorized. Preserve
+physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue, clues,
+discovery, treatment, save, provider, UI, audio, release, and signing. Do not infer pacing, usability,
+or accessibility acceptance. Existing direct-main commit/push authorization covers reviewed work.

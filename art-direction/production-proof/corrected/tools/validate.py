@@ -299,7 +299,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 73, f"expected 73 assets, got {len(assets)}")
+    require(len(assets) == 74, f"expected 74 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -1589,6 +1589,7 @@ def main() -> None:
         "terrain-opening-junction.ora",
         "terrain-village-square-junction.ora",
         "terrain-village-edge-square-connector.ora",
+        "terrain-square-garden-path.ora",
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition.ora",
@@ -1628,7 +1629,7 @@ def main() -> None:
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
     print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
     print("stream feasibility: repeatable water, mirrored banks/caps, exact crossing and views")
-    print("editable masters: 24 valid OpenRaster archives")
+    print("editable masters: 25 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

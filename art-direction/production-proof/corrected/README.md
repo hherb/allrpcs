@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 73 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 74 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -20,13 +20,14 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   moss-to-leaf straight transition, two outer-corner transitions, two inset-corner transitions,
   straight path, one 90-degree path bend, one T-junction, one cross-junction, one end-cap, and the
   exact live-angle Stream–Laundry–Woodland junction, the exact four-heading Village Square
-  junction, one 124x96 Village Edge–Square connector, one repeatable Stream-water fill, one mirrored bank edge, one reusable bank-opening
+  junction, one 124x96 Village Edge–Square connector, one 200x220 Square–Garden continuation,
+  one repeatable Stream-water fill, one mirrored bank edge, one reusable bank-opening
   cap, one 1024x512 world-aligned full-clearing
   feather overlay, plus empty herb bed, broadleaf foliage,
   one 96x96 ordinary preparation table, three matching 96x96 cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
-- `masters` contains twenty-four editable layered OpenRaster files for terrain/path, Stream water
+- `masters` contains twenty-five editable layered OpenRaster files for terrain/path, Stream water
   and banks, the leaf-litter
   ground and five transitions, the path bend, the path T-junction, the path cross-junction, the path
   end-cap, the live-angle opening junction, the Village Square junction, planted herb bed,
@@ -94,7 +95,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 73 exports are RGBA with visible and fully opaque pixels; the original 72 retain no RGB
+- all 74 exports are RGBA with visible and fully opaque pixels; 73 retain no RGB
   beneath zero alpha. Only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -142,7 +143,7 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - the external terrain accessibility review exactly reproduces 40 simulation views from the current
   manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
 - no fixed review-scene obstacle overlaps the 96x720 path corridor; and
-- all twenty-four `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
+- all twenty-five `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
   editable PNG layers.
 
 ## Review conclusion and boundaries
@@ -209,10 +210,14 @@ retains the failed flat-ended strip and six corrected world-aligned views. The c
 continues the existing junction texture phase with 1,400 exact overlapping pixels and removes
 only the matching greybox line in a disposable proof instance. It introduces no production
 asset, master, manifest entry, import, or runtime change. The owner accepted the corrected external
-views on 2026-10-02; the [named promotion proposal](review/square-garden-path-promotion-proposal.md)
-awaits separate approval. Validate with
+views on 2026-10-02 and then approved the
+[named promotion](review/square-garden-path-promotion-proposal.md). One exact `200x220` export,
+`400x440` layered master, and independent proof/runtime imports now present this path at
+`(2300,1250)`, `z=-71`. Only its greybox presentation line is replaced; physical authority is
+unchanged. See [runtime result](review/square-garden-path-runtime-result.md) for the six
+ordinary-scene views and verification commands. Validate archived external evidence with
 `python3 tools/check_square_garden_path_feasibility.py` from this directory, optionally adding
-`--check-live-baseline` for this proof's frozen scene/code hashes.
+`--check-live-baseline` only against the pre-promotion `ce8f5a7` scene/code baseline.
 
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a
@@ -241,7 +246,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 73 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 74 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 

@@ -1,8 +1,8 @@
 # Village Square–Healer Garden external feasibility
 
-The 2026-10-01 continuation tests only the existing straight-path texture on the retained
-Square–Garden route. No production asset, editable master, manifest entry, import, ordinary scene,
-physical/navigation geometry, or gameplay file is changed. The connector's earlier ordinary-scene
+The 2026-10-01 external proof slice tested only the existing straight-path texture on the retained
+Square–Garden route. That slice changed no production asset, editable master, manifest entry,
+import, ordinary scene, physical/navigation geometry, or gameplay file. The connector's earlier ordinary-scene
 checkpoint is separately accepted. On 2026-10-02, the owner accepted this proof's six corrected
 external views with "ok, go ahead" after their display. This is external visual acceptance only.
 
@@ -28,7 +28,9 @@ retain their ordinary-scene ownership and draw order.
 | 1.0x | [view](square-garden-path-proof-1.0x-wide.png) | [view](square-garden-path-proof-1.0x-tall.png) | [view](square-garden-path-correction-1.0x-wide.png) | [view](square-garden-path-correction-1.0x-tall.png) |
 | 2.0x | [view](square-garden-path-proof-2.0x-wide.png) | [view](square-garden-path-proof-2.0x-tall.png) | [view](square-garden-path-correction-2.0x-wide.png) | [view](square-garden-path-correction-2.0x-tall.png) |
 
-Reproduce with Pillow-enabled Python and the configured Godot .NET Compatibility wrapper:
+Reproduce the external captures from pre-promotion `ce8f5a7` with Pillow-enabled Python and the
+configured Godot .NET Compatibility wrapper. The approved promotion supersedes the optional live
+scene/code baseline and the capture recipe's retained-line guard; archived evidence still validates:
 
 ```sh
 /opt/homebrew/bin/python3 art-direction/production-proof/corrected/tools/build_square_garden_path_correction.py
@@ -52,5 +54,6 @@ the initial Godot smoke run. No product workaround was introduced.
 
 The owner checkpoint covers the junction handoff, path edges, Garden endpoint, and
 preparation-table/herb-bed/label layering. It establishes no runtime, pacing, usability, or
-accessibility acceptance. Next: approve the separate
-[named production and runtime scope](square-garden-path-promotion-proposal.md).
+accessibility acceptance. The separate
+[named production and runtime scope](square-garden-path-promotion-proposal.md) was subsequently
+approved with "approved" on 2026-10-02. See the [runtime result](square-garden-path-runtime-result.md).

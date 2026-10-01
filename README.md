@@ -16,12 +16,12 @@ The first bounded Phase 9.2 source-sheet proof decomposes that direction into te
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
 seam, pivot, baseline, and editable-master gaps led to a corrected individual-asset pipeline. The
-corrected proof now has 73 manifest-bound exports, twenty-four layered masters, exact seam and
+corrected proof now has 74 manifest-bound exports, twenty-five layered masters, exact seam and
 grayscale checks, four normalized six-frame walks, four two-frame idle/breathe loops, and four
 four-frame reach-and-inspect gestures. The terrain set includes one exact 96-pixel straight module and one
 90-degree bend, T-junction, cross-junction, rounded end-cap, one 512-pixel live-angle opening
 junction, one tailored 512-pixel Village Square junction with matching ports, and one exact
-124x96 Village Edge–Square connector, plus one
+124x96 Village Edge–Square connector, one accepted 200x220 Square–Garden continuation, plus one
 deterministic connected-topology review, one repeatable woodland leaf-litter tile, and exact
 quiet-moss-to-leaf straight, two outer-corner, two inset-corner transitions, and one world-aligned
 1024x512 full-clearing feather overlay. Three additional feasibility-only modules provide one
@@ -35,12 +35,18 @@ runtime-owned copies now cover the retained 400x96 band and banks at their origi
 centered 128x96 crossing remains above the water, and the 200-pixel collision opening stays clear.
 The product owner said the supplied six ordinary-scene 0.8x, 1.0x, and 2.0x wide/tall Compatibility
 views look right and requested no correction. This is bounded visual acceptance; it does not
-establish pacing, usability, or human accessibility acceptance. All 73 exports have an isolated
+establish pacing, usability, or human accessibility acceptance. All 74 exports have an isolated
 source-parity Godot import scene with 12 named animations. A separate external terrain review
 binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
 measurements. No proof-directory path is referenced by `Main.tscn` or ordinary gameplay, and the
 simulation evidence is not human accessibility acceptance.
+
+The separately approved Square–Garden path promotion presents the accepted world-aligned
+200x220 continuation at `(2300,1250)`, `z=-71`, replacing only its greybox presentation line.
+Its layered master and independent imports preserve exact accepted pixels and all physical
+authority. The owner accepted six ordinary-scene views matching the external correction;
+see the [runtime result](art-direction/production-proof/corrected/review/square-garden-path-runtime-result.md).
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

@@ -48,6 +48,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? VillageEdgeSquareConnectorTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Square–Garden path presentation.</summary>
+    [Export]
+    public Texture2D? SquareGardenPathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -85,6 +89,13 @@ public partial class GreyboxNavigation : NavigationRegion2D
 
             if (firstId == VillageSquareJunctionAnchorId)
             {
+                if (secondId == "healer-garden")
+                {
+                    // Replace only presentation; physical routes retain their original anchors.
+                    owner.AddChild(CreateSquareGardenPathPresentation());
+                    continue;
+                }
+
                 start = FindSquareBoundaryExit(start, end, JunctionSizePixels / 2.0f);
                 if (secondId == "village-edge")
                 {
@@ -212,6 +223,24 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Texture = texture,
             Position = new Vector2(1882.0f, 900.0f),
             ZIndex = -70,
+        };
+    }
+
+    private Sprite2D CreateSquareGardenPathPresentation()
+    {
+        Texture2D texture = SquareGardenPathTexture
+            ?? throw new InvalidOperationException("The Square–Garden path is required.");
+        if (texture.GetWidth() != 200 || texture.GetHeight() != 220)
+        {
+            throw new InvalidOperationException("The path must retain its exact 200x220 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "SquareGardenPath",
+            Texture = texture,
+            Position = new Vector2(2300.0f, 1250.0f),
+            ZIndex = -71,
         };
     }
 

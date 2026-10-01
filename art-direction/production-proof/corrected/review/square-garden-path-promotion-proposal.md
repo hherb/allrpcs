@@ -2,7 +2,7 @@
 
 On 2026-10-02, the owner accepted the six corrected external views with "ok, go ahead" after
 their display. That completes external visual acceptance. This proposal names the separate
-production and runtime scope; it has not yet been approved.
+production and runtime scope. The owner separately replied "approved" on 2026-10-02.
 
 ## Exact proposed scope
 
@@ -41,5 +41,5 @@ publication instruction. Any manifest-digest reference refresh must preserve its
 The [external proof result](square-garden-path-feasibility.md) contains all accepted views,
 geometry, reproducible capture commands, pinned evidence, and archived failed candidates.
 
-Next: obtain explicit approval of this named promotion scope before creating the production
-asset/master/imports or changing runtime presentation.
+This named scope is approved and implemented. The owner also accepted the six ordinary-scene
+views with "ok" on 2026-10-02; see the [runtime result](square-garden-path-runtime-result.md).

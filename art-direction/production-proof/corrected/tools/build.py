@@ -2296,6 +2296,16 @@ def main() -> None:
         if connector_export.tobytes() != accepted.convert("RGBA").tobytes():
             raise ValueError("connector recipe no longer matches the accepted proof")
     connector_master = connector_export.resize((248, 192), Image.Resampling.NEAREST)
+    accepted_garden_path = REVIEW / "square-garden-path-correction-overlay.png"
+    if hash_file(accepted_garden_path) != "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de":
+        raise ValueError("accepted Square–Garden proof changed")
+    from build_square_garden_path_correction import compose as compose_garden
+
+    garden_export = compose_garden()
+    with Image.open(accepted_garden_path) as accepted:
+        if garden_export.tobytes() != accepted.convert("RGBA").tobytes():
+            raise ValueError("Square–Garden recipe no longer matches accepted pixels")
+    garden_master = garden_export.resize((400, 440), Image.Resampling.NEAREST)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2508,6 +2518,16 @@ def main() -> None:
             "tools/build_village_edge_square_connector_alpha.py",
         ),
         Asset(
+            "terrain.square_garden_path",
+            "terrain",
+            Path("exports/terrain/square-garden-path.png"),
+            (400, 440),
+            (200, 220),
+            440,
+            garden_master,
+            "tools/build_square_garden_path_correction.py",
+        ),
+        Asset(
             "plants.herb_bed_empty",
             "plants",
             Path("exports/plants/herb-bed-empty.png"),
@@ -2606,6 +2626,8 @@ def main() -> None:
         if asset.asset_id == "terrain.village_edge_square_connector":
             # The approved 1x pixels are authoritative, including 84 hidden RGB pixels.
             export = connector_export.copy()
+        if asset.asset_id == "terrain.square_garden_path":
+            export = garden_export.copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2686,6 +2708,9 @@ def main() -> None:
                 village_square_generated_source,
             )
         save_png(export, ROOT / asset.export_path)
+        if asset.asset_id == "terrain.square_garden_path":
+            # Preserve the exact accepted PNG bytes as well as decoded pixels.
+            (ROOT / asset.export_path).write_bytes(accepted_garden_path.read_bytes())
         export_images[asset.asset_id] = export
 
     create_ora(
@@ -2905,6 +2930,19 @@ def main() -> None:
             ("exact east-port blend", connector_master.crop((184, 0, 248, 192)), 184, 0, True),
         ],
         exact_merged_image=connector_master,
+    )
+    garden_reference = render_path_leg(
+        export_images["terrain.straight_path"], (200, 220), (0, -240),
+        75.963757, math.hypot(100, 400),
+    ).resize((400, 440), Image.Resampling.NEAREST)
+    create_ora(
+        MASTERS / "terrain-square-garden-path.ora",
+        (400, 440),
+        [
+            ("unclipped junction-relative continuation reference", garden_reference, 0, 0, False),
+            ("exact junction overlap", garden_master.crop((0, 0, 400, 32)), 0, 0, True),
+            ("continuation clipped at Garden endpoint", garden_master.crop((0, 32, 400, 440)), 0, 32, True),
+        ],
     )
     create_ora(
         MASTERS / "planted-herb-bed.ora",
@@ -3399,6 +3437,20 @@ def main() -> None:
             }
             for direction in direction_order
         ],
+        "square_garden_path_provenance": {
+            "accepted_proof": "review/square-garden-path-correction-overlay.png",
+            "accepted_proof_sha256": hash_file(accepted_garden_path),
+            "master": "masters/terrain-square-garden-path.ora",
+            "source_asset": "terrain.straight_path",
+            "source_sha256": hash_file(REPOSITORY_ROOT / "game/art/runtime/terrain/straight-path.png"),
+            "world_origin": [2200, 1140],
+            "world_position": [2300, 1250],
+            "heading_degrees": 75.963757,
+            "endpoint": [2300, 1300],
+            "overlap_rows": 16,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        },
         "village_edge_square_connector_provenance": {
             "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
             "accepted_proof_sha256": hash_file(accepted_connector_path),

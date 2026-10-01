@@ -384,8 +384,14 @@ Acceptance:
   phase-continuous correction with exact junction overlap, without changing runtime authority.
 - [x] Obtain owner review of the six corrected Square–Garden external views; the owner replied
   "ok, go ahead" after display on 2026-10-02. This is external visual acceptance only.
-- [ ] Obtain explicit approval of the named Square–Garden path production/runtime promotion
-  proposal before creating its asset/master/imports or changing ordinary-scene presentation.
+- [x] Obtain explicit approval of the named Square–Garden path production/runtime promotion;
+  the owner replied "approved" on 2026-10-02. Promote only its exact 200x220 accepted export,
+  400x440 editable master, manifest/provenance and independent imports, replacing only its
+  greybox presentation line with the unscaled world-aligned sprite at `(2300,1250)`, `z=-71`.
+- [x] Obtain the separate ordinary-scene visual checkpoint for the six Square–Garden runtime
+  views, which exactly match the accepted external correction; the owner replied "ok" on 2026-10-02.
+- [ ] Test the existing straight-path texture on the retained Square–Sickhouse continuation
+  in six external-only wide/tall views; preserve runtime and physical/gameplay authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

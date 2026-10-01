@@ -416,6 +416,29 @@
       "loop": false
     }
   ],
+  "square_garden_path_provenance": {
+    "accepted_proof": "review/square-garden-path-correction-overlay.png",
+    "accepted_proof_sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "master": "masters/terrain-square-garden-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "world_origin": [
+      2200,
+      1140
+    ],
+    "world_position": [
+      2300,
+      1250
+    ],
+    "heading_degrees": 75.963757,
+    "endpoint": [
+      2300,
+      1300
+    ],
+    "overlap_rows": 16,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "village_edge_square_connector_provenance": {
     "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
     "accepted_proof_sha256": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
@@ -1002,6 +1025,36 @@
       },
       "godot_import_proof": true,
       "sha256": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854"
+    },
+    {
+      "id": "terrain.square_garden_path",
+      "category": "terrain",
+      "source": "tools/build_square_garden_path_correction.py",
+      "export": "exports/terrain/square-garden-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 220
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 220
+      },
+      "master_dimensions_pixels": {
+        "width": 400,
+        "height": 440,
+        "scale": 2
+      },
+      "contact_baseline": 220,
+      "pivot": {
+        "x": 100,
+        "y": 110
+      },
+      "godot_import_proof": true,
+      "sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de"
     },
     {
       "id": "plants.herb_bed_empty",
