@@ -182,10 +182,17 @@ it does not establish pacing, usability, or human-accessibility acceptance.
 
 The separately approved external Village Edge–Village Square connector proof failed: the unchanged
 straight-path crop exposes retained greybox fringes and does not exactly match the junction port.
-Six repeat-run-identical Compatibility views and the bounded correction approval gate are recorded
+Six repeat-run-identical Compatibility views and the original diagnosis are recorded
 in [`review/village-edge-square-connector-feasibility.md`](review/village-edge-square-connector-feasibility.md).
 `tools/check_village_edge_square_connector_feasibility.py` validates that failed-proof evidence;
-no runtime or source asset changed.
+no runtime or source asset changed. The subsequent opaque endpoint correction matched both seams
+but failed west appearance. The recommended
+[`alpha comparison`](review/village-edge-square-connector-alpha-result.md) preserves west source
+alpha, limits west RGB blending to eight columns, retains original columns 8..91 and the exact
+corrected east blend, and supplies six repeat-run-identical views. Validate all three retained
+proof sets with `python3 tools/check_village_edge_square_connector_alpha.py --check-live-baseline`
+from this directory. Owner visual acceptance and explicit authorization are still required for
+the [bounded runtime proposal](review/village-edge-square-connector-runtime-promotion-proposal.md).
 
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a

@@ -367,8 +367,14 @@ Acceptance:
   requesting a correction. This records only bounded visual acceptance.
 - [x] After separate owner approval, test the unchanged straight-path module as an external-only
   124x96 Village Edge–Village Square connector in six deterministic wide/tall views. Record its
-  failed greybox/port feasibility without changing runtime; stop at the endpoint-blend correction
-  proposal's separate approval gate.
+  failed greybox/port feasibility without changing runtime.
+- [x] Complete the prescribed external endpoint-blend correction and record its exact seams but
+  conspicuous opaque west fade. Retain the original failed proof and all runtime assets unchanged.
+- [x] Establish the external source-alpha/eight-column west RGB comparison in six deterministic
+  0.8x/1.0x/2.0x wide/tall views, retaining original columns 8..91 and the exact corrected east
+  blend. Recommend it for owner review without inferring visual acceptance or promotion authority.
+- [ ] Complete the alpha connector's owner visual checkpoint, then promote only the documented
+  124x96 connector and one presentation-line shortening with explicit runtime authorization.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
