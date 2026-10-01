@@ -1,7 +1,8 @@
 # Village Edge–Village Square connector feasibility proposal
 
-Status: proposed. Obtain separate product-owner approval before building this proof. This proposal
-does not authorize an ordinary-scene change.
+Status: product-owner approved and built. The exact unchanged-module feasibility proof failed;
+see [`village-edge-square-connector-feasibility.md`](village-edge-square-connector-feasibility.md).
+This approval did not authorize an ordinary-scene change or a corrected derivative.
 
 ## Exact bounded proof
 

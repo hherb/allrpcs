@@ -180,6 +180,13 @@ from the ordinary scene. The product owner said the six supplied ordinary-scene 
 without requesting a correction. That is visual acceptance of this bounded Stream presentation;
 it does not establish pacing, usability, or human-accessibility acceptance.
 
+The separately approved external Village Edge–Village Square connector proof failed: the unchanged
+straight-path crop exposes retained greybox fringes and does not exactly match the junction port.
+Six repeat-run-identical Compatibility views and the bounded correction approval gate are recorded
+in [`review/village-edge-square-connector-feasibility.md`](review/village-edge-square-connector-feasibility.md).
+`tools/check_village_edge_square_connector_feasibility.py` validates that failed-proof evidence;
+no runtime or source asset changed.
+
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a
 second correction extended its feather across the north and northeast edge. The owner accepted the

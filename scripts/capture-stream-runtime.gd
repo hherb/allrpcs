@@ -1,5 +1,6 @@
 extends SceneTree
 
+# Capture the accepted ordinary-scene Stream presentation at exact review frame sizes.
 
 func _initialize() -> void:
 	call_deferred("_capture")
@@ -31,8 +32,7 @@ func _capture() -> void:
 			await RenderingServer.frame_post_draw
 			var image := viewport.get_texture().get_image()
 			var path := "%s/stream-runtime-%.1fx-%s.png" % [output, zoom, frame[0]]
-			var error := image.save_png(path)
-			if error != OK:
+			if image == null or image.get_size() != viewport.size or image.save_png(path) != OK:
 				push_error("Stream capture failed: %s" % path)
 				quit(1)
 				return

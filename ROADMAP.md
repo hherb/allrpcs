@@ -365,6 +365,10 @@ Acceptance:
 - [x] Complete product-owner visual review of the six ordinary-scene Stream views at 0.8x, 1.0x,
   and 2.0x in wide and tall Compatibility frames; the owner said they look right without
   requesting a correction. This records only bounded visual acceptance.
+- [x] After separate owner approval, test the unchanged straight-path module as an external-only
+  124x96 Village Edge–Village Square connector in six deterministic wide/tall views. Record its
+  failed greybox/port feasibility without changing runtime; stop at the endpoint-blend correction
+  proposal's separate approval gate.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
