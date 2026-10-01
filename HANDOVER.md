@@ -29,11 +29,12 @@ not establish pacing, usability, or human accessibility acceptance.
 
 ## Exact next bounded slice
 
-Stop at the next Phase 9.2 selection gate. Inspect the remaining terrain candidates against the
-current opening-region geometry and propose one exact bounded external proof or runtime promotion
-with named asset, placement, acceptance checks, and exclusions before editing. Obtain separate
-product-owner approval for that slice. Preserve the accepted Stream presentation and do not change
-other accepted terrain, paths, junctions, clearing perimeter, foliage, table, beds, Seeker art or
-animation, structures, props, other character art, UI systems, effects, audio, collision,
-navigation, locations, topology, camera tuning, scenario, dialogue, clue, discovery, treatment,
-save, provider, or gameplay authority without approval.
+Stop at the approval gate for the
+[`Village Edge–Village Square connector proposal`](art-direction/production-proof/corrected/review/village-edge-square-connector-proposal.md).
+It tests only the existing manifest-bound `terrain.straight_path` as a `124x96` external
+feasibility composition across `x=1820..1944`, `y=852..948`, joining the accepted Village Square
+west port at `y=900`. Obtain separate product-owner approval before building that proof. If
+approved, validate the exact crop and connector seam, the Village Edge greybox handoff, unchanged
+physical opening and route, and six deterministic wide/tall views. Keep `Main.tscn`, the accepted
+Stream and junction art, other runtime art, collision, navigation, topology, camera, scenario,
+dialogue, clue, discovery, treatment, save, provider, and gameplay authority unchanged.
