@@ -49,4 +49,4 @@ Approval of this proposal authorizes only this named implementation. Runtime vis
 requires the later ordinary-scene checkpoint.
 
 The named scope is implemented; see the [runtime result](square-sickhouse-path-runtime-result.md).
-Its separate ordinary-scene owner checkpoint is pending.
+The owner approved all six ordinary-scene views on 2026-10-02.

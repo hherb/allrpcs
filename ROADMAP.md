@@ -399,8 +399,14 @@ Acceptance:
   the owner replied "yes" on 2026-10-02. Promote only the exact accepted 380x360 export,
   760x720 master, independent imports, and one sprite at `(2510,1320)`, `z=-71`, replacing
   only its presentation line while preserving physical/gameplay authority.
-- [ ] Obtain the separate ordinary-scene visual checkpoint for the six Square–Sickhouse runtime
-  views, which exactly match the accepted external correction.
+- [x] Obtain the separate ordinary-scene visual checkpoint for the six Square–Sickhouse runtime
+  views, which exactly match the accepted external correction; the owner replied "approved"
+  after display on 2026-10-02.
+- [x] Test the existing straight-path texture on the retained Square–Southern Road continuation
+  in six external-only wide/tall views; retain the failed strip and phase-continuous correction
+  with 1,662 exact overlap pixels and the visible flat road-end limitation, preserving runtime.
+- [ ] Obtain owner review of all six corrected Square–Southern Road external views before
+  proposing a separately authorized named production/runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

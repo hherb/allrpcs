@@ -265,5 +265,5 @@ promotion on 2026-10-02. One exact 380x360 export, a 760x720 layered master, ind
 lossless proof/runtime imports, and one sprite at `(2510,1320)`, `z=-71`, replace only the
 matching presentation line. All previous assets/masters and physical authority are retained.
 The [runtime result](review/square-sickhouse-path-runtime-result.md) records the six matching
-ordinary-scene views; their owner checkpoint is pending. The proof now has 75 exports and
+ordinary-scene views; their owner checkpoint was approved on 2026-10-02. The proof now has 75 exports and
 26 layered masters.

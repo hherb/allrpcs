@@ -55,8 +55,14 @@ uses only the existing straight-path pixels, matches 1,713 junction-overlap pixe
 preserves the Sickhouse endpoint and world-marker layering. The owner accepted all six corrected
 external views on 2026-10-02. The owner approved its named promotion scope on 2026-10-02. One exact runtime-owned
 380x360 sprite now replaces only its presentation line at `(2510,1320)`, `z=-71`. All six runtime
-views exactly match the accepted external images; the runtime visual checkpoint is pending.
+views exactly match the accepted external images; the owner approved the runtime views on 2026-10-02.
 See the [runtime result](art-direction/production-proof/corrected/review/square-sickhouse-path-runtime-result.md).
+
+An external-only [Square–Southern Road feasibility proof](art-direction/production-proof/corrected/review/square-southern-road-path-feasibility.md)
+retains six failed strip views and six world-aligned correction views. The correction matches
+1,662 junction-overlap pixels exactly; its flat endpoint across the untextured road remains a
+visible limitation. External owner review is pending. This proof changes no runtime assets,
+ordinary scene, or physical/gameplay authority.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

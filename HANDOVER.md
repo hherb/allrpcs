@@ -2,38 +2,39 @@
 
 ## Current state
 
-Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 75 manifest-bound
-exports and 26 editable OpenRaster masters. Square–Garden is owner-accepted in runtime.
-On 2026-10-02 the owner accepted six Square–Sickhouse external views, then approved its
-[named promotion](art-direction/production-proof/corrected/review/square-sickhouse-path-promotion-proposal.md)
-with "yes". That exact scope is implemented; runtime visual acceptance is pending.
+Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 75 manifest-bound exports
+and 26 editable OpenRaster masters. Square–Garden and Square–Sickhouse runtime views are
+owner-accepted; the owner replied "approved" after the Sickhouse views on 2026-10-02.
+Its exact named promotion remains complete and validated; see the
+[runtime result](art-direction/production-proof/corrected/review/square-sickhouse-path-runtime-result.md).
 
-The Sickhouse sprite uses the exact 380x360 export at `(2510,1320)`, `z=-71`, with a 760x720
-layered master and independent lossless proof/runtime imports. Only its matching presentation
-line is replaced. Physical/navigation authority is unchanged. All six ordinary-scene PNGs
-are byte-identical to the accepted external correction; see the
-[runtime result](art-direction/production-proof/corrected/review/square-sickhouse-path-runtime-result.md)
-for images, geometry, commands, hashes, review findings, and retained framing limitations.
+The following Square–Southern Road slice is external-only; owner review is pending.
+See the [feasibility result](art-direction/production-proof/corrected/review/square-southern-road-path-feasibility.md)
+for six failed strip views, six final 0.8x/1.0x/2.0x wide/tall views, recipes, and hashes.
+The world-aligned 520x416 overlay starts at `(1440,1024)` and draws at `(1700,1232)`, `z=-71`.
+It matches all 1,662 visible junction-intersection pixels and clips at Southern Road `(1500,1400)`.
+The canvas was expanded to preserve an exposed shoulder; no runtime/production file changed.
+Only the matching route line is hidden in the disposable corrected proof. The Seeker/screen
+panels are hidden and the camera reframed; world markers/labels retain ownership and layering.
+The far end remains a flat textured patch across the untextured road junction, partly covered
+by the road presentation. High-zoom labels largely fall outside frame; overview views provide
+context. This limitation is for owner review; automated checks are not visual acceptance.
 
-Rebuild determinism covers all 102 exports/masters/manifest files; all 99 prior assets/masters
-are unchanged. Focused scope/capture checks, Python lint, and negative layer/import checks passed.
-Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here). Review fixed repeat sampling to
-match accepted pixels and the isolated-proof top-left alignment; no unresolved finding remains.
-All validators, formatting, zero-warning build, 5,033 tests, scenario validation, and the full
-host Godot smoke suite passed. Sandbox editor-settings/log access required host retry.
-Compatibility launch passed.
-Regular quality omits the optional promotion-scope baseline; original external scene/code hashes
-are superseded, while archived proof evidence remains valid.
+Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here). The new feasibility validator is
+in regular quality; `--check-live-baseline` additionally verifies this slice's frozen runtime
+inputs. Lint, deterministic pixels, baseline, and negative evidence/sampler checks passed.
+Review fixed the cropped shoulder; no unresolved code finding remains. All validators, formatting, zero-warning build, 5,033 tests, scenario validation, and the full
+host Godot smoke suite passed. Sandbox Godot user-log restrictions required the identical host
+retry; no product workaround was introduced. Compatibility launch passed.
 
 ## Exact next bounded slice
 
-Obtain owner review of the six Square–Sickhouse ordinary-scene views. If accepted, test the
-existing straight-path texture on the retained Square–Southern Road continuation in an
-external-only feasibility proof: exact live anchors/footprint exit, 96-pixel width, junction seam,
-endpoint, marker/label layering, and six 0.8x/1.0x/2.0x wide/tall views. Retain failed candidates
-and show the final proof. Change no runtime files or physical/gameplay authority.
+Obtain owner review of all six final Square–Southern Road external views: junction seam,
+repetition/width, visible flat endpoint, and marker/label layering. Correct only this external
+proof and redisplay if requested. If accepted, prepare one exact named promotion proposal and
+obtain separate approval before changing production assets, masters, manifest/imports, or runtime.
+No Southern Road promotion is authorized.
 
-No further production asset/runtime promotion is authorized. Preserve topology, collision,
-navigation, camera, scenario, dialogue, clues, discovery, treatment, save, provider, UI, audio,
-release, and signing. Do not infer pacing, usability, or accessibility acceptance.
-Direct-main commit/push authorization covers reviewed work only.
+Preserve physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue,
+clues, discovery, treatment, save, provider, UI, audio, release, and signing. Do not infer pacing,
+usability, or accessibility acceptance. Direct-main commit/push covers reviewed work only.

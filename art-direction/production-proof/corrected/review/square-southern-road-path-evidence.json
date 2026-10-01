@@ -1,0 +1,30 @@
+{
+  "baseline": {
+    "game/Main.tscn": "28ce71db623e7d85caf3e9717d577d869c886854f837e00594db9082b0b09180",
+    "game/GreyboxNavigation.cs": "5a12eda3b3e84885ec2da56d2c3ab751c5a2e86bc71be3a84da8a5e65ab088dc",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/OpeningRegionVillageTransitionGeometry.cs": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f",
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "game/art/runtime/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "art-direction/production-proof/corrected/tools/build.py": "bd63c0117799dcb0ca834780f22af57509c096f4a6b006e997061a915a0b42a8",
+    "art-direction/production-proof/corrected/tools/build_square_southern_road_path_correction.py": "af710d06b9e264fbf72c4e174d470642e03363e0af760109e23fe179303713b3",
+    "scripts/capture-square-southern-road-path-proof.gd": "541308727a3cdea2e01a46c339974bdaa72cbd624f2e4477431ef90cf299dcb5"
+  },
+  "images": {
+    "square-southern-road-path-correction-0.8x-tall.png": "aad951b8966520125b2847fc527ebcb7ae2765e9d6f662a4ec95970d42debf09",
+    "square-southern-road-path-correction-0.8x-wide.png": "15c945cee3b35be47cb11ae9e3312391f8ee2b427ea8186abbf46806e3d9fa84",
+    "square-southern-road-path-correction-1.0x-tall.png": "1364f68b522847930d9d5f2b2487d89a4aa3b38e44b45b8045ccc920431017bc",
+    "square-southern-road-path-correction-1.0x-wide.png": "dd11f5dc04f57b16613416fba99b4e8d9a2e583940bbeab865464a45d5511a4f",
+    "square-southern-road-path-correction-2.0x-tall.png": "da775045456c12355e22b17521efe2b1c9175b29c5bf9907579ebf4952768732",
+    "square-southern-road-path-correction-2.0x-wide.png": "02b957f6594e8338f9b12076a57b93025f258f7bcf44c17f18f0b07a761aa073",
+    "square-southern-road-path-correction-overlay.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "square-southern-road-path-proof-0.8x-tall.png": "cd3760ecdabe5ede3987be83716b4569361f95ace4d66f4f09b0a368b3222549",
+    "square-southern-road-path-proof-0.8x-wide.png": "541b37ca2ef91874d5fc587661667b6bcf7e28b01dd5151f408c9fb867d18598",
+    "square-southern-road-path-proof-1.0x-tall.png": "4f698a5a9c4da228f6d45bbda8a5731ec9faaf2add521475c5581c7b47e1f8b5",
+    "square-southern-road-path-proof-1.0x-wide.png": "798d7d2af01970a9e743dfa053bbe68e4ed2c271016c539962e8d0e4d32b2d3f",
+    "square-southern-road-path-proof-2.0x-tall.png": "f6312915dadffe0fb08cfe7185ec755b22cb2db37d2ad46de794390ce9f4f9d4",
+    "square-southern-road-path-proof-2.0x-wide.png": "61e06449595144c5214eb3ffa85fff4c2ee894a86b7549fda7d1429419d87760"
+  }
+}

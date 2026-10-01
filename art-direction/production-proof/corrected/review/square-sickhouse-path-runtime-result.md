@@ -2,7 +2,7 @@
 
 The owner accepted all six corrected external views with "accepted", then approved the separate
 named promotion with "yes" on 2026-10-02. The bounded implementation is complete. Its separate
-ordinary-scene visual checkpoint is pending.
+ordinary-scene visual checkpoint was approved with "approved" on 2026-10-02.
 
 One exact accepted `380x360` export now owns the presentation at `(2510,1320)`, `z=-71`, with
 pivot `(190,180)` and a `760x720` layered OpenRaster master. Its SHA-256 is
@@ -62,7 +62,7 @@ alpha-import corruption checks passed. All quality validators, formatting, zero-
 restrictions required identical host retries; no product workaround was introduced.
 Compatibility launch passed.
 
-Next: obtain owner review of the six ordinary-scene views. After acceptance, test the existing
-straight-path texture on the retained Square–Southern Road continuation in an external-only
-feasibility proof, preserving all runtime and physical/gameplay authority. No further production
-asset or runtime promotion is authorized by the Sickhouse approval.
+The owner approved all six ordinary-scene views after their display. The following
+[Square–Southern Road proof](square-southern-road-path-feasibility.md) is external-only and
+retains all runtime and physical/gameplay authority. No further production asset or runtime
+promotion is authorized by the Sickhouse approval.
