@@ -48,6 +48,11 @@ RUNTIME_ASSETS = (
         RUNTIME_ROOT / "opening-junction.png",
         (512, 512),
     ),
+    (
+        "terrain.village_square_junction",
+        RUNTIME_ROOT / "village-square-junction.png",
+        (512, 512),
+    ),
 )
 
 
@@ -195,7 +200,7 @@ def main() -> None:
     for asset_id, _, _ in RUNTIME_ASSETS:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
     print(
-        "geometry: six 256x256 assets, one 96x256 path, one 512x512 junction, and one "
+        "geometry: six 256x256 assets, one 96x256 path, two 512x512 junctions, and one "
         "1024x512 feather overlay; "
         "imports: lossless, mipmap-free, runtime-owned UIDs"
     )

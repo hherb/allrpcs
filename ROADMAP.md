@@ -346,6 +346,12 @@ Acceptance:
 - [x] Complete product-owner visual review of the tailored Village Square junction; record approval
   of the corrected four-path alignment only, retain the greybox junction and all physical/gameplay
   authority, and require separate approval before any runtime promotion.
+- [x] After separate explicit product-owner approval, promote only the exact manifest-bound
+  tailored Village Square junction into runtime ownership at its `(256, 256)` pivot, replace only
+  the four greybox route portions beneath its 512x512 footprint, and retain all four exact
+  96-pixel centrelines and continuations without changing physical or gameplay authority.
+- [x] Complete the ordinary-scene Village Square junction review across supplied 0.8x, 1.0x, and
+  2.0x wide and tall Compatibility views and record only the bounded runtime visual acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

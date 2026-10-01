@@ -24,6 +24,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         "res://art/runtime/terrain/path-end-cap.png";
     private const string ExpectedOpeningJunctionTexturePath =
         "res://art/runtime/terrain/opening-junction.png";
+    private const string ExpectedVillageSquareJunctionTexturePath =
+        "res://art/runtime/terrain/village-square-junction.png";
     private const float ExpectedOpeningJunctionRotationDegrees = 133.025066f;
     private static readonly Rect2 ExpectedWorldRegion = new(0.0f, 0.0f, 3200.0f, 1800.0f);
     private static readonly Rect2 ExpectedWoodlandRegion = new(600.0f, 200.0f, 648.0f, 250.0f);
@@ -80,6 +82,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Sprite2D straightPath = routePresentation.GetNode<Sprite2D>("LaundryClearingPath");
         Sprite2D pathEndCap = routePresentation.GetNode<Sprite2D>("LaundryClearingPathEndCap");
         Sprite2D openingJunction = routePresentation.GetNode<Sprite2D>("OpeningJunction");
+        Sprite2D villageSquareJunction =
+            routePresentation.GetNode<Sprite2D>("VillageSquareJunction");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -226,14 +230,27 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || !openingJunction.Centered
             || openingJunction.Offset != new Vector2(32.0f, 32.0f)
             || openingJunction.Scale != Vector2.One
-            || routePresentation.GetChildCount() != 14
+            || !HasExactTexture(
+                villageSquareJunction,
+                ExpectedVillageSquareJunctionTexturePath,
+                512,
+                512)
+            || villageSquareJunction.RegionEnabled
+            || villageSquareJunction.Position != new Vector2(2200.0f, 900.0f)
+            || !Mathf.IsZeroApprox(villageSquareJunction.Rotation)
+            || !villageSquareJunction.Centered
+            || villageSquareJunction.Offset != Vector2.Zero
+            || villageSquareJunction.Scale != Vector2.One
+            || routePresentation.GetChildCount() != 15
             || routePresentation.GetChildren().Count(child => child is Line2D) != 11
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 3
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 4
             || straightPath.GetIndex() >= pathEndCap.GetIndex()
             || pathEndCap.GetIndex() >= openingJunction.GetIndex()
+            || openingJunction.GetIndex() >= villageSquareJunction.GetIndex()
             || routePresentation.GetChildren()
                 .Where(child => child is Line2D)
-                .Any(child => ((Line2D)child).ZIndex != -75))
+                .Any(child => ((Line2D)child).ZIndex != -75)
+            || !HasExactVillageSquareRouteContinuations(routePresentation))
         {
             Fail("Runtime path art lost its exact bounded opening-region presentation.");
             return;
@@ -251,6 +268,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || straightPath.ZIndex != -70
             || pathEndCap.ZIndex != -70
             || openingJunction.ZIndex != -70
+            || villageSquareJunction.ZIndex != -70
             || ground.ZIndex >= woodland.ZIndex
             || woodland.ZIndex >= northTransition.ZIndex
             || bottomRightCorner.ZIndex >= villageEdgeTransition.ZIndex
@@ -276,7 +294,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || villageEdgeTransition.ShowBehindParent
             || straightPath.ShowBehindParent
             || pathEndCap.ShowBehindParent
-            || openingJunction.ShowBehindParent)
+            || openingJunction.ShowBehindParent
+            || villageSquareJunction.ShowBehindParent)
         {
             Fail("Runtime terrain no longer draws behind the retained greybox presentation.");
             return;
@@ -287,7 +306,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             + "transitions, complementary outer corners, one softly feathered Village Edge "
             + "transition, and one "
             + "straight path with its rounded end cap plus the exact live-angle opening junction "
-            + "form bounded presentation behind the retained greybox.");
+            + "and tailored Village Square junction form bounded presentation behind the retained "
+            + "greybox.");
         GetTree().Quit();
     }
 
@@ -313,6 +333,55 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         && corner.Offset == Vector2.Zero
         && Mathf.IsEqualApprox(corner.Rotation, expectedRotation)
         && corner.Scale == Vector2.One;
+
+    private static bool HasExactVillageSquareRouteContinuations(Node2D routePresentation)
+    {
+        Vector2 square = new(2200.0f, 900.0f);
+        Vector2[] destinations =
+        [
+            new(2640.0f, 1450.0f),
+            new(2300.0f, 1300.0f),
+            new(1700.0f, 900.0f),
+            new(1500.0f, 1400.0f),
+        ];
+        Line2D[] routes = routePresentation.GetChildren()
+            .OfType<Line2D>()
+            .Where(line =>
+                line.Points.Length == 2
+                && destinations.Contains(line.Points[1])
+                && Mathf.IsEqualApprox(
+                    Mathf.Max(
+                        Mathf.Abs(line.Points[0].X - square.X),
+                        Mathf.Abs(line.Points[0].Y - square.Y)),
+                    256.0f))
+            .ToArray();
+        if (routes.Length != destinations.Length)
+        {
+            return false;
+        }
+
+        if (!routes.Select(route => route.Points[1]).ToHashSet().SetEquals(destinations))
+        {
+            return false;
+        }
+
+        foreach (Line2D route in routes)
+        {
+            Vector2 start = route.Points[0];
+            Vector2 end = route.Points[1];
+            Vector2 expectedDirection = (end - square).Normalized();
+            Vector2 retainedDirection = (end - start).Normalized();
+            Vector2 offset = start - square;
+            if (route.Width != 96.0f
+                || !expectedDirection.IsEqualApprox(retainedDirection)
+                || !Mathf.IsEqualApprox(Mathf.Max(Mathf.Abs(offset.X), Mathf.Abs(offset.Y)), 256.0f))
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     private static bool IsRectangle(Vector2[] polygon, Rect2 bounds) =>
         polygon.Length == 4

@@ -11,13 +11,15 @@ public partial class GreyboxNavigation : NavigationRegion2D
     private const string PathEndCapNodeName = "LaundryClearingPathEndCap";
     private const string OpeningJunctionNodeName = "OpeningJunction";
     private const string OpeningJunctionAnchorId = "abandoned-laundry";
+    private const string VillageSquareJunctionNodeName = "VillageSquareJunction";
+    private const string VillageSquareJunctionAnchorId = "village-square";
     private const int StraightPathModuleLengthPixels = 256;
-    private const int OpeningJunctionSizePixels = 512;
+    private const int JunctionSizePixels = 512;
     private const int OpeningJunctionPivotPixels = 224;
     private const float OpeningJunctionRotationDegrees = 133.025066f;
     private static readonly Vector2 OpeningJunctionPivotOffset = new(
-        (OpeningJunctionSizePixels / 2.0f) - OpeningJunctionPivotPixels,
-        (OpeningJunctionSizePixels / 2.0f) - OpeningJunctionPivotPixels);
+        (JunctionSizePixels / 2.0f) - OpeningJunctionPivotPixels,
+        (JunctionSizePixels / 2.0f) - OpeningJunctionPivotPixels);
     private const float HalfPathWidthPixels = OpeningRegionLayoutGeometry.PathWidthPixels / 2.0f;
     private static readonly int ColumnCount = (int)(
         OpeningRegionLayoutGeometry.WorldWidthPixels
@@ -37,6 +39,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     /// <summary>Gets or sets the exact live-angle Stream-Laundry-Woodland junction.</summary>
     [Export]
     public Texture2D? OpeningJunctionTexture { get; set; }
+
+    /// <summary>Gets or sets the exact live-angle Village Square junction.</summary>
+    [Export]
+    public Texture2D? VillageSquareJunctionTexture { get; set; }
 
     /// <inheritdoc />
     public override void _EnterTree()
@@ -73,6 +79,11 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 continue;
             }
 
+            if (firstId == VillageSquareJunctionAnchorId)
+            {
+                start = FindSquareBoundaryExit(start, end, JunctionSizePixels / 2.0f);
+            }
+
             owner.AddChild(new Line2D
             {
                 Points = [start, end],
@@ -84,6 +95,7 @@ public partial class GreyboxNavigation : NavigationRegion2D
         }
 
         owner.AddChild(CreateOpeningJunctionPresentation());
+        owner.AddChild(CreateVillageSquareJunctionPresentation());
     }
 
     private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
@@ -136,8 +148,8 @@ public partial class GreyboxNavigation : NavigationRegion2D
     {
         Texture2D texture = OpeningJunctionTexture
             ?? throw new InvalidOperationException("The bounded opening-junction texture is required.");
-        if (texture.GetWidth() != OpeningJunctionSizePixels
-            || texture.GetHeight() != OpeningJunctionSizePixels)
+        if (texture.GetWidth() != JunctionSizePixels
+            || texture.GetHeight() != JunctionSizePixels)
         {
             throw new InvalidOperationException(
                 "The bounded opening-junction texture must retain its exact 512x512 geometry.");
@@ -152,6 +164,38 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Offset = OpeningJunctionPivotOffset,
             ZIndex = -70,
         };
+    }
+
+    private Sprite2D CreateVillageSquareJunctionPresentation()
+    {
+        Texture2D texture = VillageSquareJunctionTexture
+            ?? throw new InvalidOperationException(
+                "The bounded Village Square junction texture is required.");
+        if (texture.GetWidth() != JunctionSizePixels
+            || texture.GetHeight() != JunctionSizePixels)
+        {
+            throw new InvalidOperationException(
+                "The bounded Village Square junction texture must retain its exact 512x512 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = VillageSquareJunctionNodeName,
+            Texture = texture,
+            Position = OpeningRegionLayoutGeometry.Anchors[VillageSquareJunctionAnchorId],
+            ZIndex = -70,
+        };
+    }
+
+    private static Vector2 FindSquareBoundaryExit(
+        Vector2 start,
+        Vector2 end,
+        float halfSizePixels)
+    {
+        Vector2 direction = (end - start).Normalized();
+        float distance = halfSizePixels
+            / Mathf.Max(Mathf.Abs(direction.X), Mathf.Abs(direction.Y));
+        return start + (direction * distance);
     }
 
     private static HashSet<Cell> CreateRouteCells(

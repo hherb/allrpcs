@@ -159,7 +159,14 @@ authority remain unchanged. After separate product-owner approval to create one 
 editable master, deterministic route-band containment, and six external review views. After the
 first review exposed visibly misaligned guide-only paths, the corrected views used exact textured
 continuations and the product owner approved their alignment. The proof remains isolated and grants
-no runtime or ordinary-scene authority.
+no runtime or ordinary-scene authority. After separate approval, the exact manifest-bound 512x512
+junction was copied into runtime ownership with its `(256, 256)` pivot centered at the live Village
+Square anchor. It draws at `z_index = -70`; the four exact 96-pixel greybox centrelines now begin at
+the module boundary and continue unchanged to Sickhouse, Healer's Garden, Village Edge, and Southern
+Road. Collision, navigation, topology, camera, scenario, and gameplay authority remain unchanged.
+The product owner accepted the resulting ordinary-scene presentation in supplied 0.8x, 1.0x, and
+2.0x wide and tall Compatibility views. That acceptance does not establish pacing, usability, human
+accessibility, or acceptance of another asset.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
