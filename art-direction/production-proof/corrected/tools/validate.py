@@ -297,7 +297,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 69, f"expected 69 assets, got {len(assets)}")
+    require(len(assets) == 72, f"expected 72 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -346,6 +346,95 @@ def main() -> None:
         )
         require(sha256(path) == asset["sha256"], f"{asset_id}: hash mismatch")
         validate_alpha(path, image.convert("RGBA"), asset["category"])
+
+    stream_proof = manifest["stream_water_bank_feasibility"]
+    require(
+        stream_proof["assets"]
+        == ["terrain.stream_water", "terrain.stream_bank", "terrain.stream_bank_opening_cap"]
+        and stream_proof["stream_bounds"]
+        == {"left": 1600, "top": 452, "right": 2000, "bottom": 548}
+        and stream_proof["crossing_bounds"]
+        == {"left": 1736, "top": 452, "right": 1864, "bottom": 548}
+        and stream_proof["collision_polygons"]
+        == [
+            [[1600, 452], [1700, 452], [1700, 548], [1600, 548]],
+            [[1900, 452], [2000, 452], [2000, 548], [1900, 548]],
+        ]
+        and stream_proof["collision_opening_bounds"]
+        == {"left": 1700, "top": 452, "right": 1900, "bottom": 548}
+        and stream_proof["route_anchor_ids"]
+        == ["village-edge", "stream", "abandoned-laundry"]
+        and stream_proof["runtime_authority"] is False,
+        "stream feasibility geometry, route provenance, or authority drifted",
+    )
+
+    water_asset = assets["terrain.stream_water"]
+    bank_asset = assets["terrain.stream_bank"]
+    cap_asset = assets["terrain.stream_bank_opening_cap"]
+    require(
+        water_asset["source"] == "tools/build.py"
+        and water_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 128, "height": 96}
+        and bank_asset["source"] == "tools/build.py"
+        and bank_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 128, "height": 32}
+        and cap_asset["source"] == "tools/build.py"
+        and cap_asset["logical_rect"]
+        == {"x": 0, "y": 0, "width": 32, "height": 32},
+        "stream feasibility asset geometry or provenance drifted",
+    )
+    require(
+        [
+            (review["zoom"], review["view"], review["width"], review["height"])
+            for review in stream_proof["reviews"]
+        ]
+        == [
+            (zoom, view, 1280, height)
+            for zoom in (0.8, 1.0, 2.0)
+            for view, height in (("wide", 720), ("tall", 827))
+        ],
+        "stream feasibility review framing drifted",
+    )
+    water = Image.open(ROOT / water_asset["export"]).convert("RGBA")
+    bank = Image.open(ROOT / bank_asset["export"]).convert("RGBA")
+    cap = Image.open(ROOT / cap_asset["export"]).convert("RGBA")
+    require(
+        water.getchannel("A").getextrema() == (255, 255),
+        "stream-water tile is not fully opaque",
+    )
+    require(
+        edge_delta(water, (0, 0, 1, water.height), (water.width - 1, 0, water.width, water.height))
+        == 0
+        and edge_delta(water, (0, 0, water.width, 1), (0, water.height - 1, water.width, water.height))
+        == 0,
+        "stream-water tile is not repeatable on both axes",
+    )
+    require(
+        edge_delta(bank, (0, 0, 1, bank.height), (bank.width - 1, 0, bank.width, bank.height))
+        == 0,
+        "stream-bank module does not repeat horizontally",
+    )
+    require(
+        images_equal(cap.crop((0, 0, 1, cap.height)), bank.crop((0, 0, 1, bank.height))),
+        "stream-bank opening cap lost its exact bank connector",
+    )
+    require(
+        cap.getchannel("A").crop((cap.width - 1, 0, cap.width, cap.height)).getextrema()
+        == (0, 0),
+        "stream-bank opening cap does not end transparently",
+    )
+    for review in stream_proof["reviews"]:
+        review_path = ROOT / review["path"]
+        require(review_path.exists(), f"missing stream feasibility review: {review_path}")
+        review_image = Image.open(review_path)
+        require(
+            review_image.size == (review["width"], review["height"]),
+            f"stream feasibility review dimensions drifted: {review_path}",
+        )
+        require(
+            sha256(review_path) == review["sha256"],
+            f"stream feasibility review hash drifted: {review_path}",
+        )
 
     ground = Image.open(ROOT / assets["terrain.quiet_moss"]["export"]).convert("RGBA")
     require(
@@ -1485,6 +1574,9 @@ def main() -> None:
 
     for filename in [
         "terrain-straight-path.ora",
+        "terrain-stream-water.ora",
+        "terrain-stream-bank.ora",
+        "terrain-stream-bank-opening-cap.ora",
         "terrain-path-bend.ora",
         "terrain-path-t-junction.ora",
         "terrain-path-cross-junction.ora",
@@ -1529,7 +1621,8 @@ def main() -> None:
     print("inset ground corner: exact top/right transition and unused leaf edge connectors")
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
     print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
-    print("editable masters: 20 valid OpenRaster archives")
+    print("stream feasibility: repeatable water, mirrored banks/caps, exact crossing and views")
+    print("editable masters: 23 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

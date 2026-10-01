@@ -94,6 +94,137 @@
     "route_length_pixels": 180,
     "review": "review/woodland-village-edge-transition-review.png"
   },
+  "stream_water_bank_feasibility": {
+    "assets": [
+      "terrain.stream_water",
+      "terrain.stream_bank",
+      "terrain.stream_bank_opening_cap"
+    ],
+    "stream_bounds": {
+      "left": 1600,
+      "top": 452,
+      "right": 2000,
+      "bottom": 548
+    },
+    "crossing_bounds": {
+      "left": 1736,
+      "top": 452,
+      "right": 1864,
+      "bottom": 548
+    },
+    "collision_polygons": [
+      [
+        [
+          1600,
+          452
+        ],
+        [
+          1700,
+          452
+        ],
+        [
+          1700,
+          548
+        ],
+        [
+          1600,
+          548
+        ]
+      ],
+      [
+        [
+          1900,
+          452
+        ],
+        [
+          2000,
+          452
+        ],
+        [
+          2000,
+          548
+        ],
+        [
+          1900,
+          548
+        ]
+      ]
+    ],
+    "collision_opening_bounds": {
+      "left": 1700,
+      "top": 452,
+      "right": 1900,
+      "bottom": 548
+    },
+    "route_anchor_ids": [
+      "village-edge",
+      "stream",
+      "abandoned-laundry"
+    ],
+    "water_repeat_size": {
+      "width": 128,
+      "height": 96
+    },
+    "bank_repeat_size": {
+      "width": 128,
+      "height": 32
+    },
+    "bank_opening_cap_size": {
+      "width": 32,
+      "height": 32
+    },
+    "reviews": [
+      {
+        "path": "review/stream-water-bank-0.8x-wide.png",
+        "zoom": 0.8,
+        "view": "wide",
+        "width": 1280,
+        "height": 720,
+        "sha256": "456df2a928c9ab936684f8b9fc774d488424a45bf20fdeb18afa2be98c614ee5"
+      },
+      {
+        "path": "review/stream-water-bank-0.8x-tall.png",
+        "zoom": 0.8,
+        "view": "tall",
+        "width": 1280,
+        "height": 827,
+        "sha256": "dff0dca23b923d1704d3e36b7bcb8d70ad98e3a82b5aec607124a50ae6646332"
+      },
+      {
+        "path": "review/stream-water-bank-1.0x-wide.png",
+        "zoom": 1.0,
+        "view": "wide",
+        "width": 1280,
+        "height": 720,
+        "sha256": "94d73e376d2ce59c0ac9e83eaa28e9ab0f3ea9ce60013c681130440932832601"
+      },
+      {
+        "path": "review/stream-water-bank-1.0x-tall.png",
+        "zoom": 1.0,
+        "view": "tall",
+        "width": 1280,
+        "height": 827,
+        "sha256": "8bd6ceecac2c2f598e46b480b676398bffd66b5b791e88c742583c1df5b110a4"
+      },
+      {
+        "path": "review/stream-water-bank-2.0x-wide.png",
+        "zoom": 2.0,
+        "view": "wide",
+        "width": 1280,
+        "height": 720,
+        "sha256": "66938b7c77fd5c96cab18a9f6a9d006c666aa3baf2e28f640ffd470d5957237d"
+      },
+      {
+        "path": "review/stream-water-bank-2.0x-tall.png",
+        "zoom": 2.0,
+        "view": "tall",
+        "width": 1280,
+        "height": 827,
+        "sha256": "303fea4768a09f48b44d05342c0a6cb186e72ba39496eb19a8201d092b7ffb2c"
+      }
+    ],
+    "runtime_authority": false
+  },
   "navigation_clearance": {
     "scene": "review/module-review-scene.png",
     "x": 592,
@@ -315,6 +446,96 @@
       },
       "godot_import_proof": true,
       "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
+    },
+    {
+      "id": "terrain.stream_water",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/stream-water.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 256,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 96,
+      "pivot": {
+        "x": 64,
+        "y": 48
+      },
+      "godot_import_proof": true,
+      "sha256": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c"
+    },
+    {
+      "id": "terrain.stream_bank",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/stream-bank.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 32
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 32
+      },
+      "master_dimensions_pixels": {
+        "width": 256,
+        "height": 64,
+        "scale": 2
+      },
+      "contact_baseline": 32,
+      "pivot": {
+        "x": 64,
+        "y": 16
+      },
+      "godot_import_proof": true,
+      "sha256": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e"
+    },
+    {
+      "id": "terrain.stream_bank_opening_cap",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/stream-bank-opening-cap.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 32,
+        "height": 32
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 32,
+        "height": 32
+      },
+      "master_dimensions_pixels": {
+        "width": 64,
+        "height": 64,
+        "scale": 2
+      },
+      "contact_baseline": 32,
+      "pivot": {
+        "x": 16,
+        "y": 16
+      },
+      "godot_import_proof": true,
+      "sha256": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1"
     },
     {
       "id": "terrain.woodland_leaf_litter",

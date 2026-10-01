@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3]
+[gd_scene load_steps=75 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/path-end-cap.png" id="59_path_end_cap"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/opening-junction.png" id="66_opening_junction"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/village-square-junction.png" id="68_village_square_junction"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/stream-water.png" id="69_stream_water"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/stream-bank.png" id="70_stream_bank"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/stream-bank-opening-cap.png" id="71_stream_bank_cap"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter.png" id="60_leaf_litter"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-transition.png" id="61_leaf_transition"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-corner-transition.png" id="62_leaf_corner_transition"]
@@ -255,6 +258,21 @@ centered = false
 [node name="VillageSquareJunctionProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(1536, 768)
 texture = ExtResource("68_village_square_junction")
+centered = false
+
+[node name="StreamWaterProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(3072, 0)
+texture = ExtResource("69_stream_water")
+centered = false
+
+[node name="StreamBankProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(3072, 96)
+texture = ExtResource("70_stream_bank")
+centered = false
+
+[node name="StreamBankOpeningCapProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(3200, 96)
+texture = ExtResource("71_stream_bank_cap")
 centered = false
 
 [node name="WoodlandLeafLitterProof" type="Sprite2D" parent="Terrain"]

@@ -3,43 +3,46 @@
 ## Current state
 
 Phase 8 and Phase 9.1 are complete, and Direction A remains selected. The latest bounded Phase 9.2
-slice promotes only the approved manifest-bound `terrain.village_square_junction` into runtime
-ownership. Its exact 512x512 export, SHA-256
-`0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3`, and `(256, 256)` pivot are
-centered at the retained Village Square anchor `(2200, 900)` at unit scale and `z_index = -70`.
+slice creates only an external feasibility proof for the retained Stream water band and banks. It
+adds three manifest-bound assets outside ordinary gameplay: `terrain.stream_water` (`128x96`,
+SHA-256 `c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c`),
+`terrain.stream_bank` (`128x32`, SHA-256
+`b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e`), and
+`terrain.stream_bank_opening_cap` (`32x32`, SHA-256
+`11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1`).
 
-The four exact 96-pixel greybox route centrelines now begin at the module boundary and continue
-unchanged to Sickhouse, Healer's Garden, Village Edge, and Southern Road. The product owner accepted
-the resulting ordinary-scene presentation in six 0.8x, 1.0x, and 2.0x wide and tall Compatibility
-views.
+The proof binds the exact `(1600,452)-(2000,548)` water band, centered
+`(1736,452)-(1864,548)` crossing, two retained collision polygons, and the 200-pixel clear collision
+opening. Bank coverage ends at those collision polygons instead of visually narrowing the physical
+opening. Six deterministic 0.8x, 1.0x, and 2.0x wide/tall views retain the Village Edge-Stream-
+Laundry route approaches.
 
 ## Evidence and limits
 
-- Failure-first static validation rejected the absent runtime asset. It now binds exact manifest,
-  source, runtime hash, 512x512 geometry, independent UID/cache path, lossless mipmap-free import,
-  ordinary-scene reference, and proof-directory isolation.
-- The focused engine smoke binds the exact pivot placement, zero rotation, unit scale, draw order,
-  four distinct 96-pixel route continuations at the square boundary, eleven retained route lines,
-  and four bounded path sprites.
-- The sandbox quality run passed static validation, the zero-warning build, and all 5,033 .NET
-  tests before the known Godot `user://logs` permission crash. The identical host-local quality run
-  then passed every validator, all tests, scenario validation, every credential-free Godot smoke,
-  formatting, and the Compatibility launch.
-- Collision, navigation, topology, camera behavior, scenario, and gameplay authority are unchanged.
-  Acceptance is limited to the reviewed runtime presentation; it does not establish pacing,
-  usability, human accessibility, or acceptance of another asset.
+- Failure-first validation rejected the former 69-asset manifest. The corrected pipeline now binds
+  72 exact exports, 23 valid layered OpenRaster masters, water/bank seams, exact cap connectors,
+  proof geometry, all six review hashes, and unchanged proof-only authority.
+- All 72 exports have exact lossless, mipmap-free, unique-UID copies in the isolated
+  `DirectionAImportProof.tscn`; its host-local smoke passed after the sandbox hit the known
+  `user://logs` permission crash.
+- The sandbox quality run passed every validator, the zero-warning build, all 5,033 .NET tests,
+  and scenario validation before that known Godot crash. The identical host-local quality run then
+  passed every validator, build/test/scenario gate, credential-free Godot smoke, formatting check,
+  and Compatibility launch.
+- `Main.tscn` has no proof-directory reference. Runtime art, collision, navigation, topology,
+  camera behavior, scenario, and gameplay are unchanged.
+- The images are deterministic feasibility evidence only. They do not establish product-owner
+  visual acceptance, pacing, usability, human accessibility, or runtime-promotion authority.
 
 ## Exact next bounded slice
 
-Stop at the next production-asset authorization gate. Before editing, propose one exact bounded
-feasibility-only slice for the retained Stream water and banks: bind the existing authored stream
-band, crossing, route openings, collision, and representative 0.8x/1.0x/2.0 wide/tall framing;
-identify the minimum repeatable water and bank module set; and keep all proof art outside
-`Main.tscn`. Obtain explicit product-owner approval before creating that feasibility proof.
+Stop for product-owner review of the six `review/stream-water-bank-*` views. Check water repetition
+and seams, bank mirroring/readability, the cap taper at both edges of the 200-pixel clear collision
+opening, the centered 128-pixel crossing, and both route approaches at 0.8x, 1.0x, and 2.0x in wide
+and tall framing. Record only direct product-owner observations.
 
-Do not create or promote water or bank assets without that approval. Do not change accepted terrain,
-paths, junctions, clearing perimeter, foliage, table, beds, Seeker art or animation, structures,
-props, other character art, UI systems, effects, audio, collision, navigation, locations, topology,
-camera tuning, scenario, dialogue, clue, discovery, treatment, save, provider, or gameplay authority.
-Do not claim visual, pacing, usability, or human accessibility acceptance without direct
-product-owner evidence.
+Do not copy these assets into runtime ownership or change `Main.tscn` without separate explicit
+approval after that review. Do not change accepted terrain, paths, junctions, clearing perimeter,
+foliage, table, beds, Seeker art or animation, structures, props, other character art, UI systems,
+effects, audio, collision, navigation, locations, topology, camera tuning, scenario, dialogue,
+clue, discovery, treatment, save, provider, or gameplay authority.

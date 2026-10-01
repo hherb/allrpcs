@@ -60,6 +60,18 @@ VILLAGE_EDGE_TRANSITION_CLEARING_BOUNDS = (64, 64, 712, 314)
 VILLAGE_EDGE_TRANSITION_FEATHER = 64
 VILLAGE_EDGE_TRANSITION_ROUTE_LENGTH = 180
 VILLAGE_EDGE_TRANSITION_PATH_WIDTH = 96
+STREAM_BOUNDS = (1600, 452, 2000, 548)
+STREAM_CROSSING_BOUNDS = (1736, 452, 1864, 548)
+STREAM_COLLISION_POLYGONS = (
+    ((1600, 452), (1700, 452), (1700, 548), (1600, 548)),
+    ((1900, 452), (2000, 452), (2000, 548), (1900, 548)),
+)
+STREAM_WATER_MASTER_SIZE = (256, 192)
+STREAM_BANK_MASTER_SIZE = (256, 64)
+STREAM_BANK_CAP_MASTER_SIZE = (64, 64)
+STREAM_BANK_DEPTH = 32
+STREAM_REVIEW_WORLD_SIZE = (3200, 1800)
+STREAM_REVIEW_CENTER = (1800, 500)
 RESAMPLE = Image.Resampling.LANCZOS
 LOGICAL_VIEWPORT_SIZE = (1280, 720)
 FULLSCREEN_REFERENCE_LOGICAL_SIZE = (1280, 827)
@@ -178,6 +190,72 @@ def make_ground() -> Image.Image:
     source = Image.open(RAW / "quiet-moss-ground.png").convert("RGBA")
     square = ImageOps.fit(source, (512, 512), method=RESAMPLE, centering=(0.5, 0.5))
     return enforce_opposite_edges(square, horizontal=True, vertical=True)
+
+
+def make_stream_water() -> Image.Image:
+    """Create one opaque, two-axis-repeatable painterly stream-water master."""
+
+    width, height = STREAM_WATER_MASTER_SIZE
+    image = Image.new("RGBA", (width, height), (0, 0, 0, 255))
+    pixels = []
+    for y in range(height):
+        for x in range(width):
+            wave = (
+                10.0 * math.sin((2.0 * math.pi * x / 64.0) + (y / 19.0))
+                + 6.0 * math.sin((2.0 * math.pi * y / 48.0) - (x / 31.0))
+                + 3.0 * math.sin(2.0 * math.pi * (x + y) / 29.0)
+            )
+            pixels.append(
+                (
+                    max(0, min(255, round(55 + wave * 0.45))),
+                    max(0, min(255, round(116 + wave * 0.75))),
+                    max(0, min(255, round(139 + wave))),
+                    255,
+                )
+            )
+    image.putdata(pixels)
+    return enforce_opposite_edges(image, horizontal=True, vertical=True)
+
+
+def make_stream_bank(quiet_moss: Image.Image) -> Image.Image:
+    """Create one horizontally repeatable moss-and-earth stream-bank edge master."""
+
+    width, height = STREAM_BANK_MASTER_SIZE
+    bank = quiet_moss.crop((0, quiet_moss.height - height, width, quiet_moss.height))
+    draw = ImageDraw.Draw(bank, "RGBA")
+    for y in range(height):
+        phase = y / max(1, height - 1)
+        if phase < 0.42:
+            continue
+        earth = round(120 + 48 * (1.0 - phase))
+        green = round(91 + 34 * (1.0 - phase))
+        blue = round(57 + 25 * (1.0 - phase))
+        alpha = round(210 * min(1.0, (phase - 0.42) / 0.28))
+        draw.line((0, y, width, y), fill=(earth, green, blue, alpha))
+    for x in range(0, width, 19):
+        y = height - 9 - round(4 * math.sin(2 * math.pi * x / 57.0))
+        draw.ellipse((x, y, x + 6, y + 3), fill=(189, 164, 112, 115))
+    return enforce_opposite_edges(bank, horizontal=True, vertical=False)
+
+
+def make_stream_bank_opening_cap(bank: Image.Image) -> Image.Image:
+    """Taper one exact bank connector into a transparent route-opening edge."""
+
+    width, height = STREAM_BANK_CAP_MASTER_SIZE
+    cap = bank.crop((0, 0, width, height)).convert("RGBA")
+    alpha = cap.getchannel("A")
+    mask = Image.new("L", cap.size, 0)
+    mask_pixels = []
+    for y in range(height):
+        for x in range(width):
+            blend = max(0.0, min(1.0, (width - 1 - x) / (width * 0.72)))
+            smooth = blend * blend * (3.0 - 2.0 * blend)
+            mask_pixels.append(round(smooth * alpha.getpixel((x, y))))
+    mask.putdata(mask_pixels)
+    cap.putalpha(mask)
+    cap.paste(bank.crop((0, 0, 1, height)), (0, 0))
+    cap.paste((0, 0, 0, 0), (width - 1, 0, width, height))
+    return cap
 
 
 def make_leaf_litter() -> tuple[Image.Image, Image.Image]:
@@ -2020,6 +2098,116 @@ def make_village_edge_transition_review(
     return review
 
 
+def repeat_into_region(
+    scene: Image.Image,
+    tile: Image.Image,
+    bounds: tuple[int, int, int, int],
+) -> None:
+    """Repeat and clip one tile into exact scene-space bounds."""
+
+    left, top, right, bottom = bounds
+    region = Image.new("RGBA", (right - left, bottom - top), (0, 0, 0, 0))
+    for y in range(0, region.height, tile.height):
+        for x in range(0, region.width, tile.width):
+            region.alpha_composite(tile, (x, y))
+    scene.alpha_composite(region, (left, top))
+
+
+def make_stream_feasibility_world(assets: dict[str, Image.Image]) -> Image.Image:
+    """Compose the proof modules over the exact live stream and route geometry."""
+
+    world = Image.new("RGBA", STREAM_REVIEW_WORLD_SIZE, (0, 0, 0, 0))
+    moss = assets["terrain.quiet_moss"]
+    repeat_into_region(world, moss, (0, 0, world.width, world.height))
+
+    route_layer = Image.new("RGBA", world.size, (0, 0, 0, 0))
+    route_draw = ImageDraw.Draw(route_layer, "RGBA")
+    route_color = (142, 111, 76, 255)
+    route_draw.line(((1700, 900), (1800, 500)), fill=route_color, width=96)
+    route_draw.line(((1800, 500), (1500, 220)), fill=route_color, width=96)
+    world.alpha_composite(route_layer)
+
+    repeat_into_region(world, assets["terrain.stream_water"], STREAM_BOUNDS)
+    crossing = Image.new(
+        "RGBA",
+        (
+            STREAM_CROSSING_BOUNDS[2] - STREAM_CROSSING_BOUNDS[0],
+            STREAM_CROSSING_BOUNDS[3] - STREAM_CROSSING_BOUNDS[1],
+        ),
+        (158, 125, 79, 255),
+    )
+    crossing_draw = ImageDraw.Draw(crossing, "RGBA")
+    for y in range(8, crossing.height, 18):
+        crossing_draw.line((0, y, crossing.width, y + 3), fill=(184, 151, 101, 80), width=2)
+    world.alpha_composite(crossing, STREAM_CROSSING_BOUNDS[:2])
+
+    bank = assets["terrain.stream_bank"]
+    cap = assets["terrain.stream_bank_opening_cap"]
+    left_collision_right = STREAM_COLLISION_POLYGONS[0][1][0]
+    right_collision_left = STREAM_COLLISION_POLYGONS[1][0][0]
+    left_cap_x = left_collision_right - cap.width
+    right_bank_start = right_collision_left + cap.width
+    top = STREAM_BOUNDS[1]
+    bottom = STREAM_BOUNDS[3] - STREAM_BANK_DEPTH
+    left_bank_width = left_cap_x - STREAM_BOUNDS[0]
+    right_bank_width = STREAM_BOUNDS[2] - right_bank_start
+    world.alpha_composite(
+        bank.crop((bank.width - left_bank_width, 0, bank.width, bank.height)),
+        (STREAM_BOUNDS[0], top),
+    )
+    world.alpha_composite(
+        bank.crop((0, 0, right_bank_width, bank.height)),
+        (right_bank_start, top),
+    )
+    world.alpha_composite(cap, (left_cap_x, top))
+    world.alpha_composite(
+        cap.transpose(Image.Transpose.FLIP_LEFT_RIGHT),
+        (right_collision_left, top),
+    )
+
+    lower_bank = bank.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+    lower_cap = cap.transpose(Image.Transpose.FLIP_TOP_BOTTOM)
+    world.alpha_composite(
+        lower_bank.crop(
+            (lower_bank.width - left_bank_width, 0, lower_bank.width, lower_bank.height)
+        ),
+        (STREAM_BOUNDS[0], bottom),
+    )
+    world.alpha_composite(
+        lower_bank.crop((0, 0, right_bank_width, lower_bank.height)),
+        (right_bank_start, bottom),
+    )
+    world.alpha_composite(lower_cap, (left_cap_x, bottom))
+    world.alpha_composite(
+        lower_cap.transpose(Image.Transpose.FLIP_LEFT_RIGHT),
+        (right_collision_left, bottom),
+    )
+    return world
+
+
+def make_stream_feasibility_review(
+    world: Image.Image,
+    zoom: float,
+    viewport_size: tuple[int, int],
+) -> Image.Image:
+    """Render one deterministic camera frame around the retained Stream anchor."""
+
+    visible_width = round(viewport_size[0] / zoom)
+    visible_height = round(viewport_size[1] / zoom)
+    center_x = min(
+        max(STREAM_REVIEW_CENTER[0], visible_width // 2),
+        world.width - visible_width // 2,
+    )
+    center_y = min(
+        max(STREAM_REVIEW_CENTER[1], visible_height // 2),
+        world.height - visible_height // 2,
+    )
+    left = center_x - visible_width // 2
+    top = center_y - visible_height // 2
+    crop = world.crop((left, top, left + visible_width, top + visible_height))
+    return crop.resize(viewport_size, RESAMPLE)
+
+
 def state_cue_check(assets: dict[str, Image.Image]) -> Image.Image:
     """Render ordinary, noticeable, identified, and dangerous variants in grayscale."""
 
@@ -2046,6 +2234,9 @@ def main() -> None:
         directory.mkdir(parents=True, exist_ok=True)
 
     ground_master = make_ground()
+    stream_water_master = make_stream_water()
+    stream_bank_master = make_stream_bank(ground_master)
+    stream_bank_cap_master = make_stream_bank_opening_cap(stream_bank_master)
     leaf_litter_reference_master, leaf_litter_master = make_leaf_litter()
     leaf_litter_transition_master = make_leaf_litter_transition(
         ground_master, leaf_litter_master
@@ -2111,6 +2302,36 @@ def main() -> None:
             512,
             ground_master,
             "sources/imagegen/quiet-moss-ground.png",
+        ),
+        Asset(
+            "terrain.stream_water",
+            "terrain",
+            Path("exports/terrain/stream-water.png"),
+            STREAM_WATER_MASTER_SIZE,
+            (128, 96),
+            192,
+            stream_water_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.stream_bank",
+            "terrain",
+            Path("exports/terrain/stream-bank.png"),
+            STREAM_BANK_MASTER_SIZE,
+            (128, 32),
+            64,
+            stream_bank_master,
+            "tools/build.py",
+        ),
+        Asset(
+            "terrain.stream_bank_opening_cap",
+            "terrain",
+            Path("exports/terrain/stream-bank-opening-cap.png"),
+            STREAM_BANK_CAP_MASTER_SIZE,
+            (32, 32),
+            64,
+            stream_bank_cap_master,
+            "tools/build.py",
         ),
         Asset(
             "terrain.woodland_leaf_litter",
@@ -2356,8 +2577,15 @@ def main() -> None:
         if asset.asset_id in {
             "terrain.quiet_moss",
             "terrain.woodland_leaf_litter",
+            "terrain.stream_water",
         }:
             export = enforce_opposite_edges(export, horizontal=True, vertical=True)
+        elif asset.asset_id == "terrain.stream_bank":
+            export = enforce_opposite_edges(export, horizontal=True, vertical=False)
+        elif asset.asset_id == "terrain.stream_bank_opening_cap":
+            bank_export = export_images["terrain.stream_bank"]
+            export.paste(bank_export.crop((0, 0, 1, bank_export.height)), (0, 0))
+            export.paste((0, 0, 0, 0), (export.width - 1, 0, export.width, export.height))
         elif asset.asset_id == "terrain.woodland_leaf_litter_transition":
             export = enforce_ground_transition_connectors(
                 export,
@@ -2432,6 +2660,39 @@ def main() -> None:
         [
             ("quiet moss ground", ground_master, 0, 0, True),
             ("straight path", path_master, 160, 0, True),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-stream-water.ora",
+        stream_water_master.size,
+        [("repeatable stream water", stream_water_master, 0, 0, True)],
+    )
+    create_ora(
+        MASTERS / "terrain-stream-bank.ora",
+        stream_bank_master.size,
+        [
+            (
+                "quiet moss source",
+                ground_master.crop((0, ground_master.height - 64, 256, ground_master.height)),
+                0,
+                0,
+                False,
+            ),
+            ("repeatable moss and earth bank", stream_bank_master, 0, 0, True),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-stream-bank-opening-cap.ora",
+        stream_bank_cap_master.size,
+        [
+            (
+                "stream bank source",
+                stream_bank_master.crop((0, 0, 64, 64)),
+                0,
+                0,
+                False,
+            ),
+            ("transparent opening cap", stream_bank_cap_master, 0, 0, True),
         ],
     )
     create_ora(
@@ -2790,6 +3051,28 @@ def main() -> None:
         make_village_edge_transition_review(export_images),
         REVIEW / "woodland-village-edge-transition-review.png",
     )
+    stream_world = make_stream_feasibility_world(export_images)
+    stream_reviews: list[dict[str, object]] = []
+    for zoom in (0.8, 1.0, 2.0):
+        for view_name, viewport in (
+            ("wide", LOGICAL_VIEWPORT_SIZE),
+            ("tall", FULLSCREEN_REFERENCE_LOGICAL_SIZE),
+        ):
+            review_path = REVIEW / f"stream-water-bank-{zoom:.1f}x-{view_name}.png"
+            save_png(
+                make_stream_feasibility_review(stream_world, zoom, viewport),
+                review_path,
+            )
+            stream_reviews.append(
+                {
+                    "path": review_path.relative_to(ROOT).as_posix(),
+                    "zoom": zoom,
+                    "view": view_name,
+                    "width": viewport[0],
+                    "height": viewport[1],
+                    "sha256": hash_file(review_path),
+                }
+            )
 
     manifest_assets = []
     for asset in assets:
@@ -2929,6 +3212,50 @@ def main() -> None:
             "feather_pixels": VILLAGE_EDGE_TRANSITION_FEATHER,
             "route_length_pixels": VILLAGE_EDGE_TRANSITION_ROUTE_LENGTH,
             "review": "review/woodland-village-edge-transition-review.png",
+        },
+        "stream_water_bank_feasibility": {
+            "assets": [
+                "terrain.stream_water",
+                "terrain.stream_bank",
+                "terrain.stream_bank_opening_cap",
+            ],
+            "stream_bounds": {
+                "left": STREAM_BOUNDS[0],
+                "top": STREAM_BOUNDS[1],
+                "right": STREAM_BOUNDS[2],
+                "bottom": STREAM_BOUNDS[3],
+            },
+            "crossing_bounds": {
+                "left": STREAM_CROSSING_BOUNDS[0],
+                "top": STREAM_CROSSING_BOUNDS[1],
+                "right": STREAM_CROSSING_BOUNDS[2],
+                "bottom": STREAM_CROSSING_BOUNDS[3],
+            },
+            "collision_polygons": [
+                [[x, y] for x, y in polygon]
+                for polygon in STREAM_COLLISION_POLYGONS
+            ],
+            "collision_opening_bounds": {
+                "left": STREAM_COLLISION_POLYGONS[0][1][0],
+                "top": STREAM_BOUNDS[1],
+                "right": STREAM_COLLISION_POLYGONS[1][0][0],
+                "bottom": STREAM_BOUNDS[3],
+            },
+            "route_anchor_ids": ["village-edge", "stream", "abandoned-laundry"],
+            "water_repeat_size": {
+                "width": STREAM_WATER_MASTER_SIZE[0] // MASTER_SCALE,
+                "height": STREAM_WATER_MASTER_SIZE[1] // MASTER_SCALE,
+            },
+            "bank_repeat_size": {
+                "width": STREAM_BANK_MASTER_SIZE[0] // MASTER_SCALE,
+                "height": STREAM_BANK_MASTER_SIZE[1] // MASTER_SCALE,
+            },
+            "bank_opening_cap_size": {
+                "width": STREAM_BANK_CAP_MASTER_SIZE[0] // MASTER_SCALE,
+                "height": STREAM_BANK_CAP_MASTER_SIZE[1] // MASTER_SCALE,
+            },
+            "reviews": stream_reviews,
+            "runtime_authority": False,
         },
         "navigation_clearance": {
             "scene": "review/module-review-scene.png",

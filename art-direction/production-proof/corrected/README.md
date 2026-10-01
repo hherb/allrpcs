@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 69 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 72 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -20,12 +20,14 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   moss-to-leaf straight transition, two outer-corner transitions, two inset-corner transitions,
   straight path, one 90-degree path bend, one T-junction, one cross-junction, one end-cap, and the
   exact live-angle Stream–Laundry–Woodland junction, the exact four-heading Village Square
-  junction, one 1024x512 world-aligned full-clearing
+  junction, one repeatable Stream-water fill, one mirrored bank edge, one reusable bank-opening
+  cap, one 1024x512 world-aligned full-clearing
   feather overlay, plus empty herb bed, broadleaf foliage,
   one 96x96 ordinary preparation table, three matching 96x96 cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
-- `masters` contains twenty editable layered OpenRaster files for terrain/path, the leaf-litter
+- `masters` contains twenty-three editable layered OpenRaster files for terrain/path, Stream water
+  and banks, the leaf-litter
   ground and five transitions, the path bend, the path T-junction, the path cross-junction, the path
   end-cap, the live-angle opening junction, the Village Square junction, planted herb bed,
   preparation-table states, walk,
@@ -64,6 +66,10 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 - `review/woodland-village-edge-transition-review.png` pairs the full-clearing leaf overlay over
   quiet moss with its exact alpha mask, including the irregular 64-pixel perimeter and Village-route
   feather.
+- The six `review/stream-water-bank-*` views bind the three minimum repeatable Stream modules to the
+  exact `(1600,452)–(2000,548)` water band and `(1736,452)–(1864,548)` crossing in 0.8x, 1.0x,
+  and 2.0x wide/tall camera frames. They retain both collision polygons and the Village Edge–Stream–
+  Laundry route chain as planning geometry only; no asset has ordinary-scene authority.
 - `review/terrain-accessibility` contains exact original, grayscale, protanopia, deuteranopia, and
   tritanopia views for quiet moss, leaf litter, packed earth, and all five ground transitions. Its
   report binds every view to the current manifest hashes and records descriptive luminance and
@@ -86,7 +92,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 69 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
+- all 72 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
   fully transparent pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -100,6 +106,9 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - the 1024x512 Village Edge overlay retains exact world origin, clearing bounds, opening anchor,
   96-pixel route width, 180-pixel route continuation, transparent outer corners, and at least 128
   distinct partial-alpha levels across its 64-pixel feather;
+- the 128x96 Stream-water module is opaque and repeatable on both axes, the 128x32 bank repeats
+  horizontally and can be mirrored for the opposite bank, and the 32x32 cap preserves one exact
+  bank connector before tapering to transparent at the retained crossing opening;
 - the 256x256 path bend has transparent unused edges and outer corners, plus exact 96-pixel
   straight-path parity at its centered top entry and compatible centered right exit;
 - the 256x256 path T-junction has transparent lower outer regions and bottom edge, plus exact
@@ -131,7 +140,7 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - the external terrain accessibility review exactly reproduces 40 simulation views from the current
   manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
 - no fixed review-scene obstacle overlaps the 96x720 path corridor; and
-- all twenty `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
+- all twenty-three `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
   editable PNG layers.
 
 ## Review conclusion and boundaries
@@ -184,7 +193,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 69 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 72 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 

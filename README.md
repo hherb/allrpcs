@@ -16,14 +16,18 @@ The first bounded Phase 9.2 source-sheet proof decomposes that direction into te
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
 seam, pivot, baseline, and editable-master gaps led to a corrected individual-asset pipeline. The
-corrected proof now has 69 manifest-bound exports, twenty layered masters, exact seam and
+corrected proof now has 72 manifest-bound exports, twenty-three layered masters, exact seam and
 grayscale checks, four normalized six-frame walks, four two-frame idle/breathe loops, and four
 four-frame reach-and-inspect gestures. The terrain set includes one exact 96-pixel straight module and one
 90-degree bend, T-junction, cross-junction, rounded end-cap, one 512-pixel live-angle opening
 junction, and one tailored 512-pixel Village Square junction with matching ports, plus one
 deterministic connected-topology review, one repeatable woodland leaf-litter tile, and exact
 quiet-moss-to-leaf straight, two outer-corner, two inset-corner transitions, and one world-aligned
-1024x512 full-clearing feather overlay. All 69 exports have
+1024x512 full-clearing feather overlay. Three additional feasibility-only modules provide one
+repeatable 128x96 Stream-water fill, one mirrorable 128x32 bank edge, and one reusable 32x32
+bank-opening cap. Six external views bind them to the exact retained 400x96 water band and 128x96
+crossing at 0.8x, 1.0x, and 2.0x without changing `Main.tscn`, runtime art, or physical authority.
+All 72 exports have
 an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
 review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture

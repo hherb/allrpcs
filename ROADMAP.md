@@ -352,6 +352,10 @@ Acceptance:
   96-pixel centrelines and continuations without changing physical or gameplay authority.
 - [x] Complete the ordinary-scene Village Square junction review across supplied 0.8x, 1.0x, and
   2.0x wide and tall Compatibility views and record only the bounded runtime visual acceptance.
+- [x] After explicit product-owner approval, establish one external feasibility-only Stream proof
+  with repeatable water, a mirrored bank edge, one reusable opening cap, exact authored band,
+  crossing, collision and route geometry, six deterministic 0.8x/1.0x/2.0 wide/tall views, and
+  isolated Godot import parity without changing `Main.tscn` or runtime authority.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

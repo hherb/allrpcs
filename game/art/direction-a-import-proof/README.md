@@ -2,7 +2,10 @@
 
 These 66 PNG files are exact byte-for-byte copies of the corrected external proof exports in
 `art-direction/production-proof/corrected`. They are intentionally used only by
-`DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them.
+`DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them. The isolated
+set now also contains the three feasibility-only Stream modules: repeatable water, a mirrored bank
+edge, and one reusable bank-opening cap. They have no runtime, collision, navigation, topology,
+camera, or gameplay authority.
 
 Godot imports them as lossless 2D textures with mipmaps disabled, alpha-border correction enabled,
 and premultiplied alpha disabled. Validation also binds every sidecar to its exact resource path,
