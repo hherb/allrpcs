@@ -382,8 +382,10 @@ Acceptance:
 - [x] Test the unchanged straight-path module on the Square–Healer Garden continuation in six
   external-only views; retain the flat-end gap/greybox-fringe failure and a world-aligned,
   phase-continuous correction with exact junction overlap, without changing runtime authority.
-- [ ] Obtain owner review of the six corrected Square–Garden external views. Any subsequent
-  asset/master creation or runtime promotion requires its own named scope.
+- [x] Obtain owner review of the six corrected Square–Garden external views; the owner replied
+  "ok, go ahead" after display on 2026-10-02. This is external visual acceptance only.
+- [ ] Obtain explicit approval of the named Square–Garden path production/runtime promotion
+  proposal before creating its asset/master/imports or changing ordinary-scene presentation.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

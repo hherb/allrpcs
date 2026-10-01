@@ -3,7 +3,8 @@
 The 2026-10-01 continuation tests only the existing straight-path texture on the retained
 Square–Garden route. No production asset, editable master, manifest entry, import, ordinary scene,
 physical/navigation geometry, or gameplay file is changed. The connector's earlier ordinary-scene
-checkpoint is separately accepted; this new proof has no owner visual acceptance yet.
+checkpoint is separately accepted. On 2026-10-02, the owner accepted this proof's six corrected
+external views with "ok, go ahead" after their display. This is external visual acceptance only.
 
 The Square anchor is `(2200,900)`, Garden anchor `(2300,1300)`, and Square footprint exit
 `(2264,1156)`. The remaining route is `148.431803` pixels along heading `75.963757°`, retaining
@@ -49,6 +50,7 @@ zero-warning build, 5,033 tests, and scenario checks passed. The full Godot smok
 Compatibility launch passed on the host after sandbox editor-settings/log restrictions prevented
 the initial Godot smoke run. No product workaround was introduced.
 
-Next: owner review of the six corrected external views, covering the junction handoff, path edges,
-Garden endpoint, and preparation-table/herb-bed/label layering. Record bounded feedback or
-acceptance only. Any production asset/master or runtime promotion needs a separate named scope.
+The owner checkpoint covers the junction handoff, path edges, Garden endpoint, and
+preparation-table/herb-bed/label layering. It establishes no runtime, pacing, usability, or
+accessibility acceptance. Next: approve the separate
+[named production and runtime scope](square-garden-path-promotion-proposal.md).

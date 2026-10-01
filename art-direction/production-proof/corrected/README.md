@@ -208,7 +208,9 @@ The owner accepted those six ordinary-scene connector views on 2026-10-01. The f
 retains the failed flat-ended strip and six corrected world-aligned views. The correction
 continues the existing junction texture phase with 1,400 exact overlapping pixels and removes
 only the matching greybox line in a disposable proof instance. It introduces no production
-asset, master, manifest entry, import, or runtime change. Owner review is pending; validate with
+asset, master, manifest entry, import, or runtime change. The owner accepted the corrected external
+views on 2026-10-02; the [named promotion proposal](review/square-garden-path-promotion-proposal.md)
+awaits separate approval. Validate with
 `python3 tools/check_square_garden_path_feasibility.py` from this directory, optionally adding
 `--check-live-baseline` for this proof's frozen scene/code hashes.
 
