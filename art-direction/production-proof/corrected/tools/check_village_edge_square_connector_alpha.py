@@ -36,7 +36,7 @@ def validate(check_live_baseline: bool = False) -> None:
             with Image.open(REVIEW / f'village-edge-square-connector-alpha-{zoom}x-{frame}.png') as image:
                 require(image.size == (1280, height), 'alpha review frame size changed')
     print('Alpha proof valid: west alpha retained, original columns 8..91, exact east blend, six views.')
-    print('Owner visual acceptance and runtime promotion remain unrecorded.')
+    print('Owner acceptance and promotion decisions are recorded separately from these pixel checks.')
 
 
 if __name__ == '__main__':

@@ -373,8 +373,11 @@ Acceptance:
 - [x] Establish the external source-alpha/eight-column west RGB comparison in six deterministic
   0.8x/1.0x/2.0x wide/tall views, retaining original columns 8..91 and the exact corrected east
   blend. Recommend it for owner review without inferring visual acceptance or promotion authority.
-- [ ] Complete the alpha connector's owner visual checkpoint, then promote only the documented
-  124x96 connector and one presentation-line shortening with explicit runtime authorization.
+- [x] Complete the alpha connector's owner visual checkpoint and authorized promotion: one
+  manifest-bound 124x96 connector, one 248x192 editable master, and one presentation-line
+  shortening. Preserve exact accepted RGBA pixels and all physical/navigation authority.
+- [ ] Complete the ordinary-scene owner checkpoint for the connector's six runtime views,
+  which match the accepted external previews pixel-for-pixel.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

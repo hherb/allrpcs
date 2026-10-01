@@ -1603,6 +1603,7 @@ def create_ora(
     path: Path,
     size: tuple[int, int],
     layers: list[tuple[str, Image.Image, int, int, bool]],
+    exact_merged_image: Image.Image | None = None,
 ) -> None:
     """Write a minimal standards-based editable OpenRaster master."""
 
@@ -1611,6 +1612,16 @@ def create_ora(
     for _, layer, x, y, visible in layers:
         if visible:
             merged.alpha_composite(layer, (x, y))
+    if exact_merged_image is not None:
+        if exact_merged_image.size != size or exact_merged_image.mode != "RGBA":
+            raise ValueError("exact merged image must retain the master's RGBA geometry")
+        if any(
+            actual[3] != expected[3] or (actual[3] != 0 and actual[:3] != expected[:3])
+            for actual, expected in zip(merged.getdata(), exact_merged_image.getdata())
+        ):
+            raise ValueError("exact merged image may change only RGB beneath zero alpha")
+        # Preserve accepted RGB beneath zero alpha; source-over clears those invisible bytes.
+        merged = exact_merged_image.copy()
 
     with tempfile.TemporaryDirectory() as temporary:
         temporary_root = Path(temporary)
@@ -2275,6 +2286,16 @@ def main() -> None:
         path_master,
         village_square_generated_source,
     )
+    from build_village_edge_square_connector_alpha import compose as compose_connector
+
+    connector_export = compose_connector()
+    accepted_connector_path = REVIEW / "village-edge-square-connector-alpha-strip.png"
+    if hash_file(accepted_connector_path) != "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899":
+        raise ValueError("accepted Village Edge–Square connector proof changed")
+    with Image.open(accepted_connector_path) as accepted:
+        if connector_export.tobytes() != accepted.convert("RGBA").tobytes():
+            raise ValueError("connector recipe no longer matches the accepted proof")
+    connector_master = connector_export.resize((248, 192), Image.Resampling.NEAREST)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2477,6 +2498,16 @@ def main() -> None:
             "sources/imagegen/village-square-junction-source.png",
         ),
         Asset(
+            "terrain.village_edge_square_connector",
+            "terrain",
+            Path("exports/terrain/village-edge-square-connector.png"),
+            (248, 192),
+            (124, 96),
+            192,
+            connector_master,
+            "tools/build_village_edge_square_connector_alpha.py",
+        ),
+        Asset(
             "plants.herb_bed_empty",
             "plants",
             Path("exports/plants/herb-bed-empty.png"),
@@ -2572,6 +2603,9 @@ def main() -> None:
     export_images: dict[str, Image.Image] = {}
     for asset in assets:
         export = downsample(asset.image_master)
+        if asset.asset_id == "terrain.village_edge_square_connector":
+            # The approved 1x pixels are authoritative, including 84 hidden RGB pixels.
+            export = connector_export.copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2856,6 +2890,21 @@ def main() -> None:
                 True,
             ),
         ],
+    )
+    with Image.open(REPOSITORY_ROOT / "game/art/runtime/terrain/straight-path.png") as source:
+        connector_source = source.convert("RGBA").crop((0, 0, 96, 124)).transpose(
+            Image.Transpose.ROTATE_270
+        ).resize((248, 192), Image.Resampling.NEAREST)
+    create_ora(
+        MASTERS / "terrain-village-edge-square-connector.ora",
+        (248, 192),
+        [
+            ("approved straight crop reference", connector_source, 0, 0, False),
+            ("original columns 8..91", connector_master.crop((16, 0, 184, 192)), 16, 0, True),
+            ("source-alpha eight-column west RGB blend", connector_master.crop((0, 0, 16, 192)), 0, 0, True),
+            ("exact east-port blend", connector_master.crop((184, 0, 248, 192)), 184, 0, True),
+        ],
+        exact_merged_image=connector_master,
     )
     create_ora(
         MASTERS / "planted-herb-bed.ora",
@@ -3350,6 +3399,19 @@ def main() -> None:
             }
             for direction in direction_order
         ],
+        "village_edge_square_connector_provenance": {
+            "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
+            "accepted_proof_sha256": hash_file(accepted_connector_path),
+            "master": "masters/terrain-village-edge-square-connector.ora",
+            "source_assets": ["terrain.straight_path", "terrain.village_square_junction"],
+            "source_sha256": [
+                hash_file(REPOSITORY_ROOT / "game/art/runtime/terrain/straight-path.png"),
+                hash_file(REPOSITORY_ROOT / "game/art/runtime/terrain/village-square-junction.png"),
+            ],
+            "hidden_rgb_pixels": 84,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        },
         "assets": manifest_assets,
     }
     (ROOT / "asset-manifest.json").write_text(

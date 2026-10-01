@@ -37,7 +37,7 @@ def validate(check_live_baseline: bool = False) -> None:
             with Image.open(REVIEW / f'village-edge-square-connector-corrected-{zoom}x-{frame}.png') as image:
                 require(image.size == (1280, height), 'review frame size changed')
     print('Correction evidence valid: central pixels retained, exact seams, six captures.')
-    print('Visual limitation: west fade remains conspicuous; no runtime promotion.')
+    print('Opaque-fade limitation: west fade remains conspicuous; this candidate stays unpromoted.')
 
 
 if __name__ == '__main__':

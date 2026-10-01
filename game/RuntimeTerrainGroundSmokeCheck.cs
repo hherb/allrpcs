@@ -27,6 +27,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
     private const string ExpectedVillageSquareJunctionTexturePath =
         "res://art/runtime/terrain/village-square-junction.png";
     private const float ExpectedOpeningJunctionRotationDegrees = 133.025066f;
+    private const string ExpectedVillageEdgeSquareConnectorTexturePath =
+        "res://art/runtime/terrain/village-edge-square-connector.png";
     private static readonly Rect2 ExpectedWorldRegion = new(0.0f, 0.0f, 3200.0f, 1800.0f);
     private static readonly Rect2 ExpectedWoodlandRegion = new(600.0f, 200.0f, 648.0f, 250.0f);
     private static readonly Rect2 ExpectedStraightTransitionRegion =
@@ -84,6 +86,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Sprite2D openingJunction = routePresentation.GetNode<Sprite2D>("OpeningJunction");
         Sprite2D villageSquareJunction =
             routePresentation.GetNode<Sprite2D>("VillageSquareJunction");
+        Sprite2D connector = routePresentation.GetNode<Sprite2D>("VillageEdgeSquareConnector");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -241,12 +244,21 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || !villageSquareJunction.Centered
             || villageSquareJunction.Offset != Vector2.Zero
             || villageSquareJunction.Scale != Vector2.One
-            || routePresentation.GetChildCount() != 15
+            || !HasExactTexture(connector, ExpectedVillageEdgeSquareConnectorTexturePath, 124, 96)
+            || connector.Position != new Vector2(1882.0f, 900.0f)
+            || connector.Scale != Vector2.One
+            || !Mathf.IsZeroApprox(connector.Rotation)
+            || !connector.Centered
+            || connector.Offset != Vector2.Zero
+            || connector.RegionEnabled
+            || connector.GetChildCount() != 0
+            || routePresentation.GetChildCount() != 16
             || routePresentation.GetChildren().Count(child => child is Line2D) != 11
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 4
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 5
             || straightPath.GetIndex() >= pathEndCap.GetIndex()
             || pathEndCap.GetIndex() >= openingJunction.GetIndex()
             || openingJunction.GetIndex() >= villageSquareJunction.GetIndex()
+            || villageSquareJunction.GetIndex() >= connector.GetIndex()
             || routePresentation.GetChildren()
                 .Where(child => child is Line2D)
                 .Any(child => ((Line2D)child).ZIndex != -75)
@@ -269,6 +281,15 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || pathEndCap.ZIndex != -70
             || openingJunction.ZIndex != -70
             || villageSquareJunction.ZIndex != -70
+            || connector.ZIndex != -70
+            || connector.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionVillageTransitionSceneSource/SquareEdgeOpening").ZIndex
+            || connector.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionVillageTransitionSceneSource/EdgeSquareOpening").ZIndex
+            || connector.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionVillageTransitionSceneSource/VillageEdgeLabel").ZIndex
+            || connector.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionVillageTransitionSceneSource/VillageSquareLabel").ZIndex
             || ground.ZIndex >= woodland.ZIndex
             || woodland.ZIndex >= northTransition.ZIndex
             || bottomRightCorner.ZIndex >= villageEdgeTransition.ZIndex
@@ -295,7 +316,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || straightPath.ShowBehindParent
             || pathEndCap.ShowBehindParent
             || openingJunction.ShowBehindParent
-            || villageSquareJunction.ShowBehindParent)
+            || villageSquareJunction.ShowBehindParent
+            || connector.ShowBehindParent)
         {
             Fail("Runtime terrain no longer draws behind the retained greybox presentation.");
             return;
@@ -306,7 +328,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             + "transitions, complementary outer corners, one softly feathered Village Edge "
             + "transition, and one "
             + "straight path with its rounded end cap plus the exact live-angle opening junction "
-            + "and tailored Village Square junction form bounded presentation behind the retained "
+            + "and tailored Village Square junction with its 124x96 Village Edge connector "
+            + "form bounded presentation behind the retained "
             + "greybox.");
         GetTree().Quit();
     }
@@ -353,7 +376,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
                     Mathf.Max(
                         Mathf.Abs(line.Points[0].X - square.X),
                         Mathf.Abs(line.Points[0].Y - square.Y)),
-                    256.0f))
+                    line.Points[1] == new Vector2(1700.0f, 900.0f) ? 380.0f : 256.0f))
             .ToArray();
         if (routes.Length != destinations.Length)
         {
@@ -372,9 +395,13 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             Vector2 expectedDirection = (end - square).Normalized();
             Vector2 retainedDirection = (end - start).Normalized();
             Vector2 offset = start - square;
+            float expectedBoundaryDistance = end == new Vector2(1700.0f, 900.0f)
+                ? 380.0f
+                : 256.0f;
             if (route.Width != 96.0f
                 || !expectedDirection.IsEqualApprox(retainedDirection)
-                || !Mathf.IsEqualApprox(Mathf.Max(Mathf.Abs(offset.X), Mathf.Abs(offset.Y)), 256.0f))
+                || !Mathf.IsEqualApprox(
+                    Mathf.Max(Mathf.Abs(offset.X), Mathf.Abs(offset.Y)), expectedBoundaryDistance))
             {
                 return false;
             }

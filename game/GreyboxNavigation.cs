@@ -44,6 +44,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? VillageSquareJunctionTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Village Edge–Square connector presentation.</summary>
+    [Export]
+    public Texture2D? VillageEdgeSquareConnectorTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -82,6 +86,11 @@ public partial class GreyboxNavigation : NavigationRegion2D
             if (firstId == VillageSquareJunctionAnchorId)
             {
                 start = FindSquareBoundaryExit(start, end, JunctionSizePixels / 2.0f);
+                if (secondId == "village-edge")
+                {
+                    // Presentation only: the physical route still uses the original anchors.
+                    start = new Vector2(1820.0f, 900.0f);
+                }
             }
 
             owner.AddChild(new Line2D
@@ -96,6 +105,7 @@ public partial class GreyboxNavigation : NavigationRegion2D
 
         owner.AddChild(CreateOpeningJunctionPresentation());
         owner.AddChild(CreateVillageSquareJunctionPresentation());
+        owner.AddChild(CreateVillageEdgeSquareConnectorPresentation());
     }
 
     private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
@@ -183,6 +193,24 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Name = VillageSquareJunctionNodeName,
             Texture = texture,
             Position = OpeningRegionLayoutGeometry.Anchors[VillageSquareJunctionAnchorId],
+            ZIndex = -70,
+        };
+    }
+
+    private Sprite2D CreateVillageEdgeSquareConnectorPresentation()
+    {
+        Texture2D texture = VillageEdgeSquareConnectorTexture
+            ?? throw new InvalidOperationException("The Village Edge–Square connector is required.");
+        if (texture.GetWidth() != 124 || texture.GetHeight() != 96)
+        {
+            throw new InvalidOperationException("The connector must retain its exact 124x96 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "VillageEdgeSquareConnector",
+            Texture = texture,
+            Position = new Vector2(1882.0f, 900.0f),
             ZIndex = -70,
         };
     }

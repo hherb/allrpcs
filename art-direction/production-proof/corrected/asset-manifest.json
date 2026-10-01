@@ -416,6 +416,22 @@
       "loop": false
     }
   ],
+  "village_edge_square_connector_provenance": {
+    "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
+    "accepted_proof_sha256": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
+    "master": "masters/terrain-village-edge-square-connector.ora",
+    "source_assets": [
+      "terrain.straight_path",
+      "terrain.village_square_junction"
+    ],
+    "source_sha256": [
+      "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+      "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+    ],
+    "hidden_rgb_pixels": 84,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "assets": [
     {
       "id": "terrain.quiet_moss",
@@ -956,6 +972,36 @@
       },
       "godot_import_proof": true,
       "sha256": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+    },
+    {
+      "id": "terrain.village_edge_square_connector",
+      "category": "terrain",
+      "source": "tools/build_village_edge_square_connector_alpha.py",
+      "export": "exports/terrain/village-edge-square-connector.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 124,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 124,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 248,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 96,
+      "pivot": {
+        "x": 62,
+        "y": 48
+      },
+      "godot_import_proof": true,
+      "sha256": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854"
     },
     {
       "id": "plants.herb_bed_empty",

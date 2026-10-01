@@ -1,4 +1,4 @@
-[gd_scene load_steps=340 format=3]
+[gd_scene load_steps=341 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -523,6 +523,7 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/stream-water.png" id="421_runtime_stream_water"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/stream-bank.png" id="422_runtime_stream_bank"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/stream-bank-opening-cap.png" id="423_runtime_stream_bank_cap"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/village-edge-square-connector.png" id="424_runtime_village_edge_square_connector"]
 [ext_resource type="Texture2D" path="res://art/runtime/plants/foliage-broadleaf.png" id="410_runtime_broadleaf_foliage"]
 [ext_resource type="Script" path="res://RuntimeGardenFoliageSmokeCheck.cs" id="411_runtime_garden_foliage_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/objects/preparation-table.png" id="412_runtime_preparation_table"]
@@ -684,6 +685,7 @@ StraightPathTexture = ExtResource("406_runtime_straight_path")
 PathEndCapTexture = ExtResource("407_runtime_path_end_cap")
 OpeningJunctionTexture = ExtResource("408_runtime_opening_junction")
 VillageSquareJunctionTexture = ExtResource("420_runtime_village_square_junction")
+VillageEdgeSquareConnectorTexture = ExtResource("424_runtime_village_edge_square_connector")
 
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")

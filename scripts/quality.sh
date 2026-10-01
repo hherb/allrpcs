@@ -15,6 +15,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 python3 art-direction/world-layout-proposal/tools/validate.py
 python3 scripts/validate-direction-a-import-proof.py
 python3 scripts/validate-runtime-terrain.py
+python3 art-direction/production-proof/corrected/tools/validate_village_edge_square_connector.py --check-captures
 python3 scripts/validate-runtime-plants.py
 python3 scripts/validate-runtime-preparation-table.py
 python3 scripts/validate-runtime-herb-beds.py

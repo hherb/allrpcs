@@ -33,8 +33,10 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def validate_alpha(path: Path, image: Image.Image, category: str) -> None:
-    """Require an RGBA export with no hidden RGB and useful alpha coverage."""
+def validate_alpha(
+    path: Path, image: Image.Image, category: str, expected_hidden_rgb_pixels: int = 0
+) -> None:
+    """Require useful alpha coverage and only the explicitly allowed hidden RGB count."""
 
     require(image.mode == "RGBA", f"{path}: expected RGBA, got {image.mode}")
     alpha = image.getchannel("A")
@@ -48,8 +50,8 @@ def validate_alpha(path: Path, image: Image.Image, category: str) -> None:
     hidden_rgb = ImageChops.lighter(ImageChops.lighter(red, green), blue)
     hidden_rgb = ImageChops.multiply(hidden_rgb, fully_hidden)
     require(
-        hidden_rgb.getbbox() is None,
-        f"{path}: RGB data remains beneath fully transparent pixels",
+        sum(hidden_rgb.histogram()[1:]) == expected_hidden_rgb_pixels,
+        f"{path}: unexpected RGB data beneath fully transparent pixels",
     )
 
     if category not in {"terrain"}:
@@ -297,7 +299,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 72, f"expected 72 assets, got {len(assets)}")
+    require(len(assets) == 73, f"expected 73 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -345,7 +347,10 @@ def main() -> None:
             f"{asset_id}: baseline outside export",
         )
         require(sha256(path) == asset["sha256"], f"{asset_id}: hash mismatch")
-        validate_alpha(path, image.convert("RGBA"), asset["category"])
+        validate_alpha(
+            path, image.convert("RGBA"), asset["category"],
+            expected_hidden_rgb_pixels=84 if asset_id == "terrain.village_edge_square_connector" else 0,
+        )
 
     stream_proof = manifest["stream_water_bank_feasibility"]
     require(
@@ -1583,6 +1588,7 @@ def main() -> None:
         "terrain-path-end-cap.ora",
         "terrain-opening-junction.ora",
         "terrain-village-square-junction.ora",
+        "terrain-village-edge-square-connector.ora",
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition.ora",
@@ -1622,7 +1628,7 @@ def main() -> None:
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
     print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
     print("stream feasibility: repeatable water, mirrored banks/caps, exact crossing and views")
-    print("editable masters: 23 valid OpenRaster archives")
+    print("editable masters: 24 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

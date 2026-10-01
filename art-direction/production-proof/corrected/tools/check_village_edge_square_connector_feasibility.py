@@ -80,7 +80,7 @@ def validate(check_live_baseline: bool = False) -> None:
             actual = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
             require(actual == digest, f"original runtime baseline changed: {relative}")
     print("Connector evidence valid: six captures; exact 124x96 crop; 83/96 port pixels differ.")
-    print("Feasibility FAILED: retained greybox fringes and unmatched port; runtime promotion not authorized.")
+    print("Original feasibility FAILED: retained greybox fringes and unmatched port; this crop stays unpromoted.")
 
 
 def main() -> None:

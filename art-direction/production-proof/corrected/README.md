@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 72 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 73 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -20,13 +20,13 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   moss-to-leaf straight transition, two outer-corner transitions, two inset-corner transitions,
   straight path, one 90-degree path bend, one T-junction, one cross-junction, one end-cap, and the
   exact live-angle Stream–Laundry–Woodland junction, the exact four-heading Village Square
-  junction, one repeatable Stream-water fill, one mirrored bank edge, one reusable bank-opening
+  junction, one 124x96 Village Edge–Square connector, one repeatable Stream-water fill, one mirrored bank edge, one reusable bank-opening
   cap, one 1024x512 world-aligned full-clearing
   feather overlay, plus empty herb bed, broadleaf foliage,
   one 96x96 ordinary preparation table, three matching 96x96 cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
-- `masters` contains twenty-three editable layered OpenRaster files for terrain/path, Stream water
+- `masters` contains twenty-four editable layered OpenRaster files for terrain/path, Stream water
   and banks, the leaf-litter
   ground and five transitions, the path bend, the path T-junction, the path cross-junction, the path
   end-cap, the live-angle opening junction, the Village Square junction, planted herb bed,
@@ -94,8 +94,8 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 72 exports are RGBA, have visible and fully opaque pixels, and retain no RGB data beneath
-  fully transparent pixels;
+- all 73 exports are RGBA with visible and fully opaque pixels; the original 72 retain no RGB
+  beneath zero alpha. Only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
   match exactly;
@@ -142,12 +142,12 @@ The scripts require Python 3 and Pillow. The current run passed all of these gat
 - the external terrain accessibility review exactly reproduces 40 simulation views from the current
   manifest exports, preserves fixed sheet order, and reproduces every recorded descriptive metric;
 - no fixed review-scene obstacle overlaps the 96x720 path corridor; and
-- all twenty-three `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
+- all twenty-four `.ora` files expose a valid OpenRaster mimetype, layer stack, merged image, and
   editable PNG layers.
 
 ## Review conclusion and boundaries
 
-The corrected proof passes the art bible's alpha, seam, pivot, editable-master, grayscale-cue,
+The original corrected set passes the art bible's alpha, seam, pivot, editable-master, grayscale-cue,
 four-direction walk, idle/breathe, interaction, and 144-pixel character-scale gates. The unchanged
 96-pixel path and 72–96-pixel props remain readable and proportionate in the 1280x720 composition.
 The preparation table and its cue canvases were later regenerated from their retained source at
@@ -155,6 +155,8 @@ The preparation table and its cue canvases were later regenerated from their ret
 and grayscale hierarchy remain deterministic. The terrain-only colour-vision review is
 reproducible external evidence, not human accessibility acceptance. Direction A remains feasible,
 so the Direction D contingency does not activate.
+The separately accepted connector preserves 84 invisible RGB pixels and disables alpha-border
+processing only for its two imports so the runtime exactly matches the accepted preview.
 
 The product owner accepted the corrected opening-junction curve and texture continuity after two
 bounded review corrections removed the hard leg overlap and the preview-only triangle at the elbow.
@@ -190,9 +192,16 @@ but failed west appearance. The recommended
 [`alpha comparison`](review/village-edge-square-connector-alpha-result.md) preserves west source
 alpha, limits west RGB blending to eight columns, retains original columns 8..91 and the exact
 corrected east blend, and supplies six repeat-run-identical views. Validate all three retained
-proof sets with `python3 tools/check_village_edge_square_connector_alpha.py --check-live-baseline`
-from this directory. Owner visual acceptance and explicit authorization are still required for
-the [bounded runtime proposal](review/village-edge-square-connector-runtime-promotion-proposal.md).
+proof sets with `python3 tools/check_village_edge_square_connector_alpha.py` from this directory.
+The optional original `--check-live-baseline` scene baseline is intentionally superseded by
+promotion. The owner accepted all six previews and approved the
+[bounded runtime promotion](review/village-edge-square-connector-runtime-promotion-proposal.md).
+One new export, a 248x192 layered master, isolated import, and runtime copy now present the exact
+accepted pixels at `(1882,900)`. Only the matching greybox presentation line is shortened to
+`(1820,900)`. Collision/navigation remain unchanged. The connector alone disables alpha-border
+processing to preserve the accepted fringe pixels; all other imports retain their existing settings.
+See the [runtime result](review/village-edge-square-connector-runtime-result.md) for six ordinary-scene
+views and verification commands.
 
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a
@@ -221,7 +230,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 72 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 73 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 

@@ -74,7 +74,7 @@ def main() -> None:
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assets = [asset for asset in manifest["assets"] if asset["godot_import_proof"]]
-    require(len(assets) == 72, f"expected 72 import-proof assets, got {len(assets)}")
+    require(len(assets) == 73, f"expected 73 import-proof assets, got {len(assets)}")
     expected_pngs = {game_path(asset["export"]) for asset in assets}
     actual_pngs = set(GAME_ROOT.rglob("*.png"))
     require(
@@ -144,8 +144,9 @@ def main() -> None:
             f"{sidecar}: mipmaps unexpectedly enabled",
         )
         require(
-            options.get(("params", "process/fix_alpha_border")) == "true",
-            f"{sidecar}: alpha-border fix disabled",
+            options.get(("params", "process/fix_alpha_border"))
+            == ("false" if asset["id"] == "terrain.village_edge_square_connector" else "true"),
+            f"{sidecar}: alpha-border processing changed",
         )
         require(
             options.get(("params", "process/premult_alpha")) == "false",
@@ -155,7 +156,7 @@ def main() -> None:
     print("Direction A Godot import-proof validation passed")
     print(f"assets: {len(assets)} exact source-hash matches")
     print("sidecars: exact resource/cache paths and unique UIDs")
-    print("imports: lossless, no mipmaps, alpha-border fix, no premultiplied alpha")
+    print("imports: lossless, no mipmaps, alpha-border fix except exact accepted connector, no premultiplied alpha")
 
 
 if __name__ == "__main__":
