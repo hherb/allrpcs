@@ -1,35 +1,43 @@
 # Allrpcs Handover
 
-## Current state
+## Current state and authority
 
 Phase 8 and Phase 9.1 are complete; Direction A is selected. Phase 9.2 retains 72 manifest-bound
-exports and 23 layered OpenRaster masters. The accepted runtime Village Square junction and
-Stream presentation are unchanged. Stream promotion and the owner's bounded visual acceptance
-are documented in `art-direction/production-proof/corrected/review/stream-runtime-promotion-proposal.md`;
-six `stream-runtime-*` views and `scripts/capture-stream-runtime.gd` retain its review evidence.
-The latest host-local `./scripts/quality.sh` passed validators, zero-warning build, 5,033 tests,
-scenario, Godot smokes, formatting, and Compatibility launch after this proof. No human pacing,
-usability, or accessibility acceptance is inferred.
+exports and 23 OpenRaster masters. Accepted runtime Village Square junction and Stream art are
+unchanged. The owner removed separate pre-start approval gates for prescribed next slices.
+This does not grant new runtime-promotion authority or establish human visual acceptance.
 
-The owner subsequently approved the external-only Village Edge–Village Square connector proof.
-It was built without changing game/runtime files, but the unchanged straight-path module fails:
-greybox fringes remain visible, the west greybox handoff is abrupt, and 83/96 east port pixels
-differ. No valid crop phase exactly matches the junction. Six inspected, repeat-run-identical
-wide/tall views and details are in
-[`village-edge-square-connector-feasibility.md`](art-direction/production-proof/corrected/review/village-edge-square-connector-feasibility.md).
-Regenerate with `scripts/capture-village-edge-square-connector-proof.gd`; validate using
-`python3 art-direction/production-proof/corrected/tools/check_village_edge_square_connector_feasibility.py`.
-The optional `--check-live-baseline` confirms the original unchanged geometry/scene files.
-Validator success means intact failed-proof evidence, not visual acceptance.
+The Village Edge–Square external sequence now retains three independent proof sets:
+unchanged crop (failed fringe/east seam), 32-column opaque endpoint fades (exact seams but failed
+west appearance), and the recommended source-alpha/eight-column west RGB comparison. Diagnosis
+found the opaque fade raised alpha in 2,613 west-band pixels, including 381 originally transparent
+pixels. The alpha comparison preserves west source alpha, original columns `8..91`, and the
+exact corrected east blend within the same `124x96` footprint. It shortens exactly one greybox
+presentation line only in a temporary preview instance. Every game/runtime file and original
+production master/export/import remains unchanged.
+
+Start with [alpha comparison result](art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-result.md)
+for six inspected, repeat-run-identical 0.8x/1.0x/2.0x wide/tall views and reproduction commands.
+Its validator also retains both earlier failed proof sets. Run:
+
+```sh
+python3 art-direction/production-proof/corrected/tools/check_village_edge_square_connector_alpha.py --check-live-baseline
+```
+
+Focused validators, diagnostic regeneration, and negative pixel-corruption checks pass. Session
+review added approved-source guards; no unresolved implementation finding remains. Host-local
+`./scripts/quality.sh` passed validators, formatting, zero-warning build, 5,033 tests, scenario,
+Godot smokes, and Compatibility launch after the known sandbox log-access crash. No human
+visual, pacing, usability, or accessibility acceptance is inferred.
 
 ## Exact next bounded slice
 
-Stop for separate owner approval of
-[`village-edge-square-connector-correction-proposal.md`](art-direction/production-proof/corrected/review/village-edge-square-connector-correction-proposal.md).
-It proposes only a `124x96` external connector with bounded 32-column endpoint blends, unchanged
-central/source pixels, and removal of the underlying greybox fringe in the temporary preview.
-Do not implement it under the earlier unchanged-module approval. Keep `Main.tscn`, all runtime
-assets, masters/exports/imports, physical/gameplay authority, topology, collision, navigation,
-camera, scenario, dialogue, clue, discovery, treatment, save, provider, UI, audio, release, and
-signing unchanged. After approval, follow the proposal's exact checks and six-view review gate;
-do not infer runtime-promotion authority.
+Conduct the alpha comparison's bounded owner visual checkpoint: west handoff, absence of
+rectangular fringes, exact east seam, and retained marker/label layering. The reviewable scope
+for possible promotion is in
+[village-edge-square-connector-runtime-promotion-proposal.md](art-direction/production-proof/corrected/review/village-edge-square-connector-runtime-promotion-proposal.md).
+Do not promote merely because the external validators pass or because general continuation is
+authorized. With recorded visual acceptance and explicit runtime-promotion authorization,
+implement only that proposal; otherwise retain the external proof and record bounded feedback.
+Keep physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue,
+clue, discovery, treatment, save, provider, UI, audio, release, and signing unchanged.

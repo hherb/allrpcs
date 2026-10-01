@@ -1,9 +1,11 @@
 # Village Edge–Village Square external connector correction proposal
 
-Status: proposed; obtain separate product-owner approval before implementation. The previous
-approval covered only the unchanged straight-path feasibility proof, which failed.
+Status: implemented as an external proof under owner authorization. See
+[village-edge-square-connector-correction-result.md](village-edge-square-connector-correction-result.md).
+The owner removed separate pre-start approval gates for prescribed next slices; visual acceptance
+and runtime-promotion authorization remain separate. The previous unchanged-strip proof failed.
 
-## Exact next bounded slice
+## Implemented bounded slice
 
 Create one external-only `124x96` connector composition in the same world footprint
 `x=1820..1944`, `y=852..948`. Keep the middle 60 columns (`32..91`) of the rotated straight-path

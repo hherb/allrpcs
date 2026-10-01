@@ -1,0 +1,56 @@
+{
+  "footprint": [
+    124,
+    96
+  ],
+  "bands": [
+    {
+      "west_columns": 1,
+      "alpha_raised_pixels": 96,
+      "transparent_source_made_visible": 13,
+      "source_mean_raw_rgb_luma": 146.675,
+      "corrected_mean_raw_rgb_luma": 101.316
+    },
+    {
+      "west_columns": 8,
+      "alpha_raised_pixels": 766,
+      "transparent_source_made_visible": 97,
+      "source_mean_raw_rgb_luma": 148.226,
+      "corrected_mean_raw_rgb_luma": 106.688
+    },
+    {
+      "west_columns": 16,
+      "alpha_raised_pixels": 1533,
+      "transparent_source_made_visible": 208,
+      "source_mean_raw_rgb_luma": 146.793,
+      "corrected_mean_raw_rgb_luma": 112.104
+    },
+    {
+      "west_columns": 32,
+      "alpha_raised_pixels": 2613,
+      "transparent_source_made_visible": 381,
+      "source_mean_raw_rgb_luma": 148.84,
+      "corrected_mean_raw_rgb_luma": 125.485
+    }
+  ],
+  "top_bottom_transparent_source_made_visible": {
+    "0": 31,
+    "1": 31,
+    "94": 30,
+    "95": 31
+  },
+  "west_source_alpha_values": [
+    0,
+    24,
+    43,
+    168,
+    171,
+    237,
+    246,
+    248,
+    249,
+    250,
+    251,
+    252
+  ]
+}

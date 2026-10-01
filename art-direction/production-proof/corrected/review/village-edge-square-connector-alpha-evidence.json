@@ -1,0 +1,11 @@
+{
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-0.8x-tall.png": "f22595716b7df165795e394940e1521ebfee3fcf253475318f9253aa8311dc49",
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-0.8x-wide.png": "c6a18b3a84db65a914bd1b6e696e53a0c336c702f1e01deccbdb172d556b7fc9",
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-1.0x-tall.png": "9b6913a3f6a9585f10954b823845110ce3477b80ec78805e05b83560f4a73082",
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-1.0x-wide.png": "1f3ca92c683e5a7478049ac4237b9a85f547cf6ff5ddcfb892ee50081b37dec3",
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-2.0x-tall.png": "3bacb67c7ba18fdb1e8ac5ebd447a01c2760438479a73d69658a29ac7402942c",
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-2.0x-wide.png": "22217f63819fc4933a0c0300ba4cc7a291841ea69154846459b27fc9e6b680a1",
+  "art-direction/production-proof/corrected/review/village-edge-square-connector-alpha-strip.png": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
+  "art-direction/production-proof/corrected/tools/build_village_edge_square_connector_alpha.py": "f3a276d9bbafb3331c1f4dd0a266a92501bdcdb2a5c6be5a9772e512b9cdef46",
+  "scripts/capture-village-edge-square-connector-alpha.gd": "b842af6fb7d0580a5035b16ca401b1bcbfb1a53bc646cf1bbdc0ae3dd74d276d"
+}

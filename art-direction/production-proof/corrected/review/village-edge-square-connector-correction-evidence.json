@@ -1,0 +1,31 @@
+{
+  "baseline": {
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "game/art/runtime/terrain/straight-path.png.import": "23a5e859087c4d1038c2283a799e07f03d849fd77d4258b0a8ac60e085d8052b",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "game/art/runtime/terrain/village-square-junction.png.import": "23b44b4904e3edebc763d70590a680c20ef0c7e797e0b131226170e3e70e9dd0",
+    "game/art/direction-a-import-proof/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "game/art/direction-a-import-proof/terrain/straight-path.png.import": "ff83fd81aa2cbfd960e1032e222a7ecf86a0a3de28da56f42039ae01436820f1",
+    "game/art/direction-a-import-proof/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "game/art/direction-a-import-proof/terrain/village-square-junction.png.import": "42003758bbb0969bd80ad0fea9d16a8f095b8f510e4c348d4bf2a1c5f59ef265",
+    "art-direction/production-proof/corrected/exports/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "art-direction/production-proof/corrected/exports/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "art-direction/production-proof/corrected/masters/terrain-straight-path.ora": "90bb6c7889924acd49fe041bb9f36de09f7e2a51ac12612e7608938eb0c4ebd5",
+    "art-direction/production-proof/corrected/masters/terrain-village-square-junction.ora": "3c42afbeb6187d1d13a9f4457b910f09d4e4ab03df8ba202314d824551d3085a",
+    "game/Main.tscn": "ab322e2a91acbadf029831893836c4e14e316235cdcbfce0494176f6262c5127",
+    "game/GreyboxNavigation.cs": "169bd2b2d47f67c05bb312caf39d93fa20cc0957604d624140d18e3d24f1f4f0",
+    "game/OpeningRegionVillageTransitionGeometry.cs": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+  },
+  "evidence": {
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-0.8x-tall.png": "d90eb3e6b9ffef3e82e970de26acb7038a5c7c248996670f7b54d9f044efe850",
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-0.8x-wide.png": "ebbab7027bd0bcdada10e478c5e710af1917458d892a17b0d81e9e9363a35030",
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-1.0x-tall.png": "b6c3e0d68bef15bd4cffe350073665a99946a889bc2ee6c135fae9cf702fefbb",
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-1.0x-wide.png": "03f9d2b33a83781331d534a2755d648e7cc23ebd6a5593978ac7364b636a71af",
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-2.0x-tall.png": "6c3ea0438dfe97d6158cb02ce17c210c5fb60242ceeb41ccaa5f78a2da0246a7",
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-2.0x-wide.png": "a34dae0a32cad5fc1ca9d0013711e28cb75005740e7dc7920692f20640b7a042",
+    "art-direction/production-proof/corrected/review/village-edge-square-connector-corrected-strip.png": "3161af17ec1151ca45b25254969d4539af6d8227622d51d75d4cb3cc31a56445",
+    "art-direction/production-proof/corrected/tools/build_village_edge_square_connector_correction.py": "4a006f2bbcc61b41da5cfe39459602658a06fe81742c6d9e016ebc056843e9db",
+    "scripts/capture-village-edge-square-connector-correction.gd": "1981bd6bea7084a06e40f2faa8a4c8fb3b2a680d002e590349e7791561b3d8e6"
+  }
+}
