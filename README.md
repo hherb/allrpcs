@@ -51,7 +51,8 @@ see the [runtime result](art-direction/production-proof/corrected/review/square-
 An external-only [Square–Sickhouse feasibility proof](art-direction/production-proof/corrected/review/square-sickhouse-path-feasibility.md)
 retains six failed straight-strip views and six world-aligned correction views. The correction
 uses only the existing straight-path pixels, matches 1,713 junction-overlap pixels exactly, and
-preserves the Sickhouse endpoint and world-marker layering. Owner review is pending; runtime
+preserves the Sickhouse endpoint and world-marker layering. The owner accepted all six corrected
+external views on 2026-10-02. Separate approval of the named promotion scope is pending; runtime
 assets, imports, scenes, and physical/gameplay authority remain unchanged by this proof.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound

@@ -393,8 +393,10 @@ Acceptance:
 - [x] Test the existing straight-path texture on the retained Square–Sickhouse continuation
   in six external-only wide/tall views; retain the failed strip and phase-continuous correction
   with 1,713 exact overlap pixels, preserving runtime and physical/gameplay authority.
-- [ ] Obtain owner review of the six corrected Square–Sickhouse external views before proposing
-  a separately authorized named production/runtime promotion.
+- [x] Obtain owner review of the six corrected Square–Sickhouse external views; the owner replied
+  "accepted" after display on 2026-10-02. This is external visual acceptance only.
+- [ ] Obtain separate approval of the named Square–Sickhouse production/runtime promotion scope
+  before implementing it, then obtain the ordinary-scene visual checkpoint.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

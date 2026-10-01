@@ -2,7 +2,8 @@
 
 The 2026-10-02 proof tests the existing straight-path texture on the retained Square–Sickhouse
 continuation. It changes no production export, editable master, manifest, import, runtime scene,
-or physical/gameplay authority. Owner visual review is pending; no promotion is authorized.
+or physical/gameplay authority. The owner accepted all six corrected external views with "accepted" on 2026-10-02 after
+their display. This is external visual acceptance; no promotion is authorized.
 
 The Square anchor is `(2200,900)`, Sickhouse anchor `(2640,1450)`, and the 512-pixel junction
 footprint exit is `(2404.8,1156)`. The retained continuation is `376.503705` pixels long along
@@ -55,9 +56,9 @@ PNG bytes are renderer-specific: these use Godot 4.6.3 .NET Compatibility on thi
 The validator rebuilds pixels and checks the entire junction intersection, clean alpha,
 unclipped canvas, exact image inventory/dimensions/hashes, and endpoint containment.
 
-Next: obtain owner review of all six corrected views for the seam, repeated texture, apparent
-width, Sickhouse entrance, and marker/label layering. If accepted, prepare one exact named
-promotion proposal and obtain separate approval before changing production assets or runtime.
+Next: obtain separate approval of the [named promotion proposal](square-sickhouse-path-promotion-proposal.md)
+before changing production assets or runtime. The external checkpoint covers the seam, repeated
+texture, apparent width, Sickhouse entrance, and marker/label layering only.
 
 Session code review inspected the sampling, capture, validator, all six corrected views, and
 complete change scope. Screen-overlay obstruction was fixed before final captures; no unresolved
