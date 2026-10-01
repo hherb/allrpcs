@@ -69,7 +69,9 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 - The six `review/stream-water-bank-*` views bind the three minimum repeatable Stream modules to the
   exact `(1600,452)–(2000,548)` water band and `(1736,452)–(1864,548)` crossing in 0.8x, 1.0x,
   and 2.0x wide/tall camera frames. They retain both collision polygons and the Village Edge–Stream–
-  Laundry route chain as planning geometry only; no asset has ordinary-scene authority.
+  Laundry route chain as planning geometry only; no asset has ordinary-scene authority. The product
+  owner approved all six supplied feasibility views without requesting changes. That acceptance is
+  limited to the external presentation and grants no runtime-promotion authority.
 - `review/terrain-accessibility` contains exact original, grayscale, protanopia, deuteranopia, and
   tritanopia views for quiet moss, leaf litter, packed earth, and all five ground transitions. Its
   report binds every view to the current manifest hashes and records descriptive luminance and
@@ -165,6 +167,12 @@ first review exposed guide-only paths that did not line up; corrected views exte
 straight-path texture through every module edge. The product owner approved that corrected
 alignment. The proof remains isolated and grants no authority to change `Main.tscn`, runtime
 terrain, collision, navigation, topology, camera, or gameplay.
+
+After separate approval to create the Stream feasibility proof, the three minimum modules bind the
+exact water band, collision opening, centered crossing, and route framing in six deterministic
+views. The product owner approved those supplied views without requesting changes. This remains
+external visual acceptance only; it does not authorize a runtime copy or establish pacing,
+usability, or human-accessibility acceptance.
 
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a

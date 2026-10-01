@@ -356,6 +356,9 @@ Acceptance:
   with repeatable water, a mirrored bank edge, one reusable opening cap, exact authored band,
   crossing, collision and route geometry, six deterministic 0.8x/1.0x/2.0 wide/tall views, and
   isolated Godot import parity without changing `Main.tscn` or runtime authority.
+- [x] Complete product-owner review of the six Stream water-and-bank feasibility views and record
+  only the approved external presentation without inferring runtime-promotion, pacing, usability,
+  or human-accessibility acceptance.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -31,18 +31,22 @@ Laundry route approaches.
   and Compatibility launch.
 - `Main.tscn` has no proof-directory reference. Runtime art, collision, navigation, topology,
   camera behavior, scenario, and gameplay are unchanged.
-- The images are deterministic feasibility evidence only. They do not establish product-owner
-  visual acceptance, pacing, usability, human accessibility, or runtime-promotion authority.
+- The product owner approved all six supplied feasibility views without requesting changes. This is
+  external visual acceptance only; it does not establish pacing, usability, human accessibility,
+  or runtime-promotion authority.
 
 ## Exact next bounded slice
 
-Stop for product-owner review of the six `review/stream-water-bank-*` views. Check water repetition
-and seams, bank mirroring/readability, the cap taper at both edges of the 200-pixel clear collision
-opening, the centered 128-pixel crossing, and both route approaches at 0.8x, 1.0x, and 2.0x in wide
-and tall framing. Record only direct product-owner observations.
+Stop at the runtime-promotion authorization gate. Before editing, propose one exact bounded slice
+that copies only the three approved manifest-bound Stream assets into runtime ownership, repeats
+water across the existing `400x96` band, mirrors bank edges and caps only across the two retained
+collision polygons, keeps the existing centered `128x96` crossing above them, and validates exact
+hash/import parity, draw order, coverage, collision-opening alignment, route approaches, and six
+ordinary-scene 0.8x/1.0x/2.0 wide/tall Compatibility views. Obtain separate explicit product-owner
+approval before making that runtime change.
 
-Do not copy these assets into runtime ownership or change `Main.tscn` without separate explicit
-approval after that review. Do not change accepted terrain, paths, junctions, clearing perimeter,
+Do not copy these assets into runtime ownership or change `Main.tscn` without that approval. Do not
+change accepted terrain, paths, junctions, clearing perimeter,
 foliage, table, beds, Seeker art or animation, structures, props, other character art, UI systems,
 effects, audio, collision, navigation, locations, topology, camera tuning, scenario, dialogue,
 clue, discovery, treatment, save, provider, or gameplay authority.

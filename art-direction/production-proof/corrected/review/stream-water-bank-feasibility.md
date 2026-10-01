@@ -32,3 +32,6 @@ crossing or obscuring the retained route approaches. The assets remain external 
 `Main.tscn`, runtime art, collision, navigation, topology, camera behavior, scenario, and gameplay
 are unchanged. Visual review does not authorize runtime promotion and does not establish pacing,
 usability, or human accessibility acceptance.
+
+The product owner approved the six supplied feasibility views without requesting changes. That
+approval is limited to the external presentation described here and does not authorize promotion.

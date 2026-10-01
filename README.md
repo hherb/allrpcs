@@ -27,6 +27,10 @@ quiet-moss-to-leaf straight, two outer-corner, two inset-corner transitions, and
 repeatable 128x96 Stream-water fill, one mirrorable 128x32 bank edge, and one reusable 32x32
 bank-opening cap. Six external views bind them to the exact retained 400x96 water band and 128x96
 crossing at 0.8x, 1.0x, and 2.0x without changing `Main.tscn`, runtime art, or physical authority.
+The product owner approved the six supplied feasibility views without requesting changes. That
+acceptance applies only to the external water, bank, opening-cap, crossing, and route-framing
+presentation; it does not authorize runtime promotion or establish pacing, usability, or human
+accessibility acceptance.
 All 72 exports have
 an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
 review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
