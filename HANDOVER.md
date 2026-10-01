@@ -3,30 +3,31 @@
 ## Current state
 
 Phase 8 and Phase 9.1 are complete; Direction A is selected. Phase 9.2 has 73 manifest-bound
-exports and 24 editable OpenRaster masters. `main` at `1eb3897` contains the owner-approved
-Village Edge–Square connector promotion (acceptance of the six external alpha previews).
+exports and 24 editable OpenRaster masters. The Village Edge–Square connector is promoted;
+on 2026-10-01 the owner accepted its six ordinary-scene views with "OK, go ahead".
+See [runtime result](art-direction/production-proof/corrected/review/village-edge-square-connector-runtime-result.md).
 
-See [runtime result](art-direction/production-proof/corrected/review/village-edge-square-connector-runtime-result.md)
-for geometry, the six views, provenance, scope, prior review, and reproduction commands. On 2026-10-01,
-the continuation displayed all six archived runtime views and revalidated captures and promotion
-scope successfully. A separate human runtime response is still pending. Run with a Pillow-enabled
-Python; this host's default `python3` lacks Pillow, while `/opt/homebrew/bin/python3` works:
+The next external-only Square–Healer Garden path proof retains six failed flat-strip views and
+six corrected world-aligned views. The correction uses the existing texture's junction-relative
+phase, matches 1,400 visible overlap pixels exactly, hides only the corresponding presentation
+line in a disposable scene instance, and retains the Garden endpoint. No runtime asset, manifest,
+master, scene, physical/navigation geometry, or gameplay file changed.
+See [proof result](art-direction/production-proof/corrected/review/square-garden-path-feasibility.md)
+for all views, exact geometry, hashes, limitations, and reproduction commands. The six corrected
+external views were displayed for owner review; no response is recorded yet.
 
-```sh
-/opt/homebrew/bin/python3 art-direction/production-proof/corrected/tools/validate_village_edge_square_connector.py --check-captures --check-promotion-scope
-```
-
-The optional scope check freezes the promotion's scene/code baseline; regular quality omits it.
-Earlier proofs' `--check-live-baseline` hashes are superseded. The promotion session passed review,
-negative corruption checks, and host-local `./scripts/quality.sh` (5,033 tests, zero-warning build,
-all validators and Godot smokes, Compatibility launch). This continuation changed documentation
-only and reran the focused validator; it did not rerun full quality or regenerate captures.
+Session review has no unresolved findings. Focused baseline validation and Python lint passed.
+Quality passed all validators, formatting, zero-warning build, 5,033 tests, and scenario checks;
+Godot smokes and Compatibility launch passed on the host after sandbox settings/log restrictions.
+Regular quality omits frozen scene/code hashes. Use Pillow-enabled Python (this host's
+`/opt/homebrew/bin/python3`; default `python3` lacks Pillow).
 
 ## Exact next bounded slice
 
-Obtain the owner's ordinary-scene visual checkpoint for the six runtime views: west handoff,
-fringe removal, east seam, and marker/label layering. Record only bounded acceptance or feedback;
-do not advance past this pending checkpoint or infer acceptance from generic continuation.
-No additional runtime promotion is authorized. Preserve physical/gameplay authority,
-topology, collision, navigation, camera, scenario, dialogue, clue, discovery, treatment, save,
-provider, UI, audio, release, and signing. Do not infer pacing, usability, or accessibility acceptance.
+Obtain owner review of the six corrected external Square–Garden views: junction handoff, path
+edges, Garden endpoint, and preparation-table/herb-bed/label layering. Record bounded acceptance
+or feedback only. No production asset/master creation or runtime promotion is authorized by
+this checkpoint. Propose any subsequent named scope separately. Preserve physical/gameplay
+authority, topology, collision, navigation, camera, scenario, dialogue, clue, discovery, treatment,
+save, provider, UI, audio, release, and signing. Do not infer pacing, usability, or accessibility
+acceptance.

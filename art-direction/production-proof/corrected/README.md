@@ -203,6 +203,15 @@ processing to preserve the accepted fringe pixels; all other imports retain thei
 See the [runtime result](review/village-edge-square-connector-runtime-result.md) for six ordinary-scene
 views and verification commands.
 
+The owner accepted those six ordinary-scene connector views on 2026-10-01. The following
+[external Square–Healer Garden feasibility proof](review/square-garden-path-feasibility.md)
+retains the failed flat-ended strip and six corrected world-aligned views. The correction
+continues the existing junction texture phase with 1,400 exact overlapping pixels and removes
+only the matching greybox line in a disposable proof instance. It introduces no production
+asset, master, manifest entry, import, or runtime change. Owner review is pending; validate with
+`python3 tools/check_square_garden_path_feasibility.py` from this directory, optionally adding
+`--check-live-baseline` for this proof's frozen scene/code hashes.
+
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a
 second correction extended its feather across the north and northeast edge. The owner accepted the

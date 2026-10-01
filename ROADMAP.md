@@ -376,8 +376,14 @@ Acceptance:
 - [x] Complete the alpha connector's owner visual checkpoint and authorized promotion: one
   manifest-bound 124x96 connector, one 248x192 editable master, and one presentation-line
   shortening. Preserve exact accepted RGBA pixels and all physical/navigation authority.
-- [ ] Complete the ordinary-scene owner checkpoint for the connector's six runtime views,
-  which match the accepted external previews pixel-for-pixel.
+- [x] Complete the ordinary-scene owner checkpoint for the connector's six runtime views,
+  which match the accepted external previews pixel-for-pixel; the owner replied "OK, go ahead"
+  after their display. This is bounded visual acceptance only.
+- [x] Test the unchanged straight-path module on the Square–Healer Garden continuation in six
+  external-only views; retain the flat-end gap/greybox-fringe failure and a world-aligned,
+  phase-continuous correction with exact junction overlap, without changing runtime authority.
+- [ ] Obtain owner review of the six corrected Square–Garden external views. Any subsequent
+  asset/master creation or runtime promotion requires its own named scope.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

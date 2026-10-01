@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "game/Main.tscn": "7b65792c0ba787d971ceb5c7f0491a5df9c1ea6aee14c86918537da0ad0a3a4d",
+    "game/GreyboxNavigation.cs": "8ee45c1316c48eb288ea91f240c7b0c330a48054be387e983224235bfc13c922",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/OpeningRegionVillageTransitionGeometry.cs": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f",
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "scripts/capture-square-garden-path-proof.gd": "3c2a1b1716fe5e19bedf2fc94e8c6369eb8f3b04c1b918ce0c4a100a80e187a8",
+    "art-direction/production-proof/corrected/tools/build_square_garden_path_correction.py": "fd66f6540636ab120c1cda00ba2f927ad57a84bd1c156a925a89359f4d3791cc"
+  },
+  "images": {
+    "square-garden-path-correction-0.8x-tall.png": "e0a479128d12aeb86cb675ee0fb404ae7ee52dc64de29d2426727c7c10c3c1ad",
+    "square-garden-path-correction-0.8x-wide.png": "de78fc03857d6163a62ae8cc73c399d7740b7da7b3d70016fea23c40b96b5ae9",
+    "square-garden-path-correction-1.0x-tall.png": "f49f2200f9cd36aae24edfcc504321f02ea3e1ea9438212c824884dc0738c1f5",
+    "square-garden-path-correction-1.0x-wide.png": "96e0ebb5450fdcb65850bc2efdc51a2c62bf527e6681ec8f62716a039fad3c5e",
+    "square-garden-path-correction-2.0x-tall.png": "a58858be0698fefc9c34645d6aa0a0e20b17bcacf3f9501f4463da64fd1fff81",
+    "square-garden-path-correction-2.0x-wide.png": "eaf74f8b1639957b096205321d44357887e3ce642de4433e2b6addb3d94d4dfa",
+    "square-garden-path-correction-overlay.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "square-garden-path-proof-0.8x-tall.png": "c2deea52e6a8a10b36ee51d1d0fa4626d55029a542ea7a795ccaa3cce34536d2",
+    "square-garden-path-proof-0.8x-wide.png": "3f9cba7358d5e2aac3d4898133015096b43424c9e118be683235e43d03fb561e",
+    "square-garden-path-proof-1.0x-tall.png": "ad8e5a51283f910e54c7c30c100aa3234018fc893cd81d77e43c04e7845afc02",
+    "square-garden-path-proof-1.0x-wide.png": "2c9d264ec764d04b9c385eb0f49080a4b1fe9112f2675859478f386b683f3067",
+    "square-garden-path-proof-2.0x-tall.png": "2e8eea660236795606e701147597274a9828c4d6e93a1ee8bbd0ea95171853b5",
+    "square-garden-path-proof-2.0x-wide.png": "608b20cf5bf737f5fe22f801564af4b4aa4bf5802119ebb0e46dc53ff25f7b94"
+  }
+}
