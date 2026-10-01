@@ -174,6 +174,29 @@ which preserves the live `-57.599282°` turn under rigid placement. The builder 
 336x458 visible footprint and generates the seam/containment review. No external visual source was
 introduced.
 
+## Village Square four-route junction
+
+Inputs: `exports/terrain/straight-path.png` and
+`exports/terrain/path-cross-junction.png`
+
+```text
+Use case: stylized-concept
+Asset type: transparent 2D game path-junction texture source for a deterministic asset pipeline
+Primary request: Create one painterly packed-earth junction where four branches merge naturally at a shared center. The branches form a fan rather than a cardinal cross: from the center they travel toward approximately 51 degrees, 76 degrees, 144 degrees, and 180 degrees in screen coordinates (positive angles clockwise/downward from the right). Image 1 is the exact straight-path style, palette, width, sparse stone flecks, and irregular soft edge reference. Image 2 is the existing junction merge and painterly continuity reference only.
+Input images: Image 1: style and texture reference; Image 2: junction-center style reference
+Scene/backdrop: genuinely transparent outside the packed-earth path
+Style/medium: painterly storybook gouache, warm ochre and weathered brown earth, broad low-frequency shapes, restrained grain, sparse muted stone flecks matching the references
+Composition/framing: square canvas, shared junction pivot exactly centered, four complete branches extending from the center to the canvas boundary in the stated directions; generous transparent space outside the branches
+Constraints: one junction only; preserve genuine transparency; no moss or colored environmental haze; no plants; no large rocks; no props; no text; no border; no logo; no trademark; no watermark; no shadows outside the path. Keep surface texture continuous through the center. This is a source texture; deterministic post-processing will enforce exact 96-pixel ports and containment.
+```
+
+This output came from Codex's built-in image tool on 2026-10-01 with transparent-background output
+requested. The straight-path and cross-junction exports were the only references. The generated
+source contributes centre texture only: the deterministic builder owns the exact 1024x1024 editable
+master, 512x512 export, `(256, 256)` export pivot, four 96-pixel ports at the exact live headings
+`51.340192°`, `75.963757°`, `144.462322°`, and `180°`, route-band containment, six review
+compositions, and digests. The tool exposed no model or version identifier, so none is asserted.
+
 ## Woodland leaf-litter ground
 
 Inputs: `exports/terrain/quiet-moss.png` and

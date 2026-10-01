@@ -47,6 +47,12 @@ OPENING_JUNCTION_OUTGOING_HEADING_DEGREES = 90.0 + OPENING_JUNCTION_TURN_DEGREES
 OPENING_JUNCTION_TEXTURE_BLEND_LENGTH = 72
 OPENING_JUNCTION_CURVE_TANGENT_DISTANCE = 80
 OPENING_JUNCTION_CURVE_EDGE_INSET = 2
+VILLAGE_SQUARE_JUNCTION_CANVAS_SIZE = 512
+VILLAGE_SQUARE_JUNCTION_PIVOT = (256, 256)
+VILLAGE_SQUARE_JUNCTION_PATH_WIDTH = 96
+VILLAGE_SQUARE_JUNCTION_PORT_DEPTH = 32
+VILLAGE_SQUARE_JUNCTION_HEADINGS = (51.340192, 75.963757, 144.462322, 180.0)
+VILLAGE_SQUARE_JUNCTION_CENTER_BLEND_RADIUS = 112
 VILLAGE_EDGE_TRANSITION_CANVAS_SIZE = (1024, 512)
 VILLAGE_EDGE_TRANSITION_WORLD_ORIGIN = (536, 136)
 VILLAGE_EDGE_TRANSITION_OPENING = (592, 314)
@@ -968,6 +974,118 @@ def make_opening_junction(path: Image.Image) -> Image.Image:
     top_edge.paste(path.crop((0, 0, path.width, 1)), (port_offset, 0))
     junction.paste(top_edge, (0, 0))
     return junction
+
+
+def blend_path_legs(legs: list[Image.Image]) -> Image.Image:
+    """Average overlapping path texture without accumulating alpha or dark seams."""
+
+    if not legs or any(leg.size != legs[0].size for leg in legs):
+        raise ValueError("path legs must share one non-empty canvas")
+    result = Image.new("RGBA", legs[0].size, (0, 0, 0, 0))
+    leg_pixels = [leg.convert("RGBA").load() for leg in legs]
+    result_pixels = result.load()
+    for y in range(result.height):
+        for x in range(result.width):
+            visible = [pixels[x, y] for pixels in leg_pixels if pixels[x, y][3] > 0]
+            if not visible:
+                continue
+            weight = sum(pixel[3] for pixel in visible)
+            result_pixels[x, y] = (
+                round(sum(pixel[0] * pixel[3] for pixel in visible) / weight),
+                round(sum(pixel[1] * pixel[3] for pixel in visible) / weight),
+                round(sum(pixel[2] * pixel[3] for pixel in visible) / weight),
+                max(pixel[3] for pixel in visible),
+            )
+    return result
+
+
+def visible_rgb_mean(image: Image.Image) -> tuple[float, float, float]:
+    """Return alpha-weighted mean RGB for one non-empty transparent texture."""
+
+    pixels = [pixel for pixel in image.convert("RGBA").getdata() if pixel[3] > 0]
+    if not pixels:
+        raise ValueError("texture source contains no visible pixels")
+    weight = sum(pixel[3] for pixel in pixels)
+    return tuple(
+        sum(pixel[channel] * pixel[3] for pixel in pixels) / weight
+        for channel in range(3)
+    )
+
+
+def blend_generated_junction_center(
+    junction: Image.Image,
+    generated_source: Image.Image,
+    path: Image.Image,
+    pivot: tuple[float, float],
+    blend_radius: float,
+) -> Image.Image:
+    """Use the generated painterly center while retaining deterministic path alpha."""
+
+    generated = ImageOps.fit(
+        alpha_clean(generated_source, cutoff=24),
+        junction.size,
+        method=RESAMPLE,
+        centering=(0.5, 0.5),
+    )
+    generated_mean = visible_rgb_mean(generated)
+    path_mean = visible_rgb_mean(path)
+    channel_offsets = tuple(
+        path_mean[channel] - generated_mean[channel] for channel in range(3)
+    )
+    result = junction.copy().convert("RGBA")
+    result_pixels = result.load()
+    generated_pixels = generated.load()
+    for y in range(result.height):
+        for x in range(result.width):
+            base = result_pixels[x, y]
+            source = generated_pixels[x, y]
+            if base[3] == 0 or source[3] == 0:
+                continue
+            distance = math.hypot((x + 0.5) - pivot[0], (y + 0.5) - pivot[1])
+            progress = max(0.0, min(1.0, 1.0 - (distance / blend_radius)))
+            weight = 0.45 * progress * progress * (3.0 - (2.0 * progress))
+            if weight <= 0.0:
+                continue
+            normalized = tuple(
+                max(0, min(255, round(source[channel] + channel_offsets[channel])))
+                for channel in range(3)
+            )
+            result_pixels[x, y] = (
+                *(round(base[channel] * (1.0 - weight) + normalized[channel] * weight)
+                  for channel in range(3)),
+                base[3],
+            )
+    return result
+
+
+def make_village_square_junction(
+    path: Image.Image, generated_source: Image.Image
+) -> Image.Image:
+    """Create one four-port junction matching the exact live Village Square headings."""
+
+    scale = path.width / VILLAGE_SQUARE_JUNCTION_PATH_WIDTH
+    canvas_size = round(VILLAGE_SQUARE_JUNCTION_CANVAS_SIZE * scale)
+    pivot = tuple(coordinate * scale for coordinate in VILLAGE_SQUARE_JUNCTION_PIVOT)
+    headings = VILLAGE_SQUARE_JUNCTION_HEADINGS
+    legs = [
+        render_path_leg(
+            path,
+            (canvas_size, canvas_size),
+            pivot,
+            heading_degrees,
+            canvas_size * 1.5,
+        )
+        for heading_degrees in headings
+    ]
+    junction = blend_path_legs(legs)
+    junction = blend_generated_junction_center(
+        junction,
+        generated_source,
+        path,
+        pivot,
+        VILLAGE_SQUARE_JUNCTION_CENTER_BLEND_RADIUS * scale,
+    )
+    return alpha_clean(junction, cutoff=0)
 
 
 def enforce_path_bend_ports(
@@ -1959,6 +2077,13 @@ def main() -> None:
     path_cross_junction_master = make_path_cross_junction(path_master)
     path_end_cap_master = make_path_end_cap(path_master)
     opening_junction_master = make_opening_junction(path_master)
+    village_square_generated_source = Image.open(
+        RAW / "village-square-junction-source.png"
+    ).convert("RGBA")
+    village_square_junction_master = make_village_square_junction(
+        path_master,
+        village_square_generated_source,
+    )
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2119,6 +2244,16 @@ def main() -> None:
             1024,
             opening_junction_master,
             "tools/build.py",
+        ),
+        Asset(
+            "terrain.village_square_junction",
+            "terrain",
+            Path("exports/terrain/village-square-junction.png"),
+            (1024, 1024),
+            (512, 512),
+            1024,
+            village_square_junction_master,
+            "sources/imagegen/village-square-junction-source.png",
         ),
         Asset(
             "plants.herb_bed_empty",
@@ -2283,6 +2418,11 @@ def main() -> None:
             )
         elif asset.asset_id == "terrain.opening_junction":
             export = make_opening_junction(export_images["terrain.straight_path"])
+        elif asset.asset_id == "terrain.village_square_junction":
+            export = make_village_square_junction(
+                export_images["terrain.straight_path"],
+                village_square_generated_source,
+            )
         save_png(export, ROOT / asset.export_path)
         export_images[asset.asset_id] = export
 
@@ -2424,6 +2564,32 @@ def main() -> None:
             (
                 "Stream-Laundry-Woodland junction",
                 opening_junction_master,
+                0,
+                0,
+                True,
+            ),
+        ],
+    )
+    create_ora(
+        MASTERS / "terrain-village-square-junction.ora",
+        village_square_junction_master.size,
+        [
+            (
+                "generated painterly source",
+                ImageOps.fit(
+                    alpha_clean(village_square_generated_source, cutoff=24),
+                    village_square_junction_master.size,
+                    method=RESAMPLE,
+                    centering=(0.5, 0.5),
+                ),
+                0,
+                0,
+                False,
+            ),
+            ("straight packed-earth source", path_master, 0, 0, False),
+            (
+                "Village Square four-route junction",
+                village_square_junction_master,
                 0,
                 0,
                 True,
@@ -2668,6 +2834,11 @@ def main() -> None:
     )
     if opening_junction_bounds is None:
         raise ValueError("opening junction export unexpectedly has no visible footprint")
+    village_square_junction_bounds = (
+        export_images["terrain.village_square_junction"].getchannel("A").getbbox()
+    )
+    if village_square_junction_bounds is None:
+        raise ValueError("Village Square junction export has no visible footprint")
     manifest = {
         "schema_version": 2,
         "status": "scale-rebaselined production-pipeline proof with isolated Godot import parity",
@@ -2703,6 +2874,40 @@ def main() -> None:
                 "height": opening_junction_bounds[3] - opening_junction_bounds[1],
             },
             "review": "review/opening-junction-review.png",
+        },
+        "village_square_junction_proof": {
+            "asset": "terrain.village_square_junction",
+            "anchor_ids": [
+                "village-square",
+                "sickhouse",
+                "healer-garden",
+                "southern-road",
+                "village-edge",
+            ],
+            "path_width_pixels": VILLAGE_SQUARE_JUNCTION_PATH_WIDTH,
+            "port_depth_pixels": VILLAGE_SQUARE_JUNCTION_PORT_DEPTH,
+            "headings_degrees": list(VILLAGE_SQUARE_JUNCTION_HEADINGS),
+            "pivot": {
+                "x": VILLAGE_SQUARE_JUNCTION_PIVOT[0],
+                "y": VILLAGE_SQUARE_JUNCTION_PIVOT[1],
+            },
+            "visible_bounds": {
+                "x": village_square_junction_bounds[0],
+                "y": village_square_junction_bounds[1],
+                "width": (
+                    village_square_junction_bounds[2]
+                    - village_square_junction_bounds[0]
+                ),
+                "height": (
+                    village_square_junction_bounds[3]
+                    - village_square_junction_bounds[1]
+                ),
+            },
+            "reviews": [
+                f"review/village-square-junction-{zoom:.1f}x-{view}.png"
+                for zoom in (0.8, 1.0, 2.0)
+                for view in ("wide", "tall")
+            ],
         },
         "village_edge_transition_proof": {
             "asset": "terrain.woodland_village_edge_transition",

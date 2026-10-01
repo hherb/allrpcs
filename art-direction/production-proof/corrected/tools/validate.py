@@ -297,7 +297,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 68, f"expected 68 assets, got {len(assets)}")
+    require(len(assets) == 69, f"expected 69 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -1490,6 +1490,7 @@ def main() -> None:
         "terrain-path-cross-junction.ora",
         "terrain-path-end-cap.ora",
         "terrain-opening-junction.ora",
+        "terrain-village-square-junction.ora",
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition.ora",
@@ -1519,6 +1520,7 @@ def main() -> None:
     print("path cross-junction: exact 96px four-way ports with transparent corners")
     print("path end-cap: exact 96px top port with terminus above a transparent lower half")
     print("opening junction: exact live-angle 96px ports within the retained route footprint")
+    print("Village Square junction: four exact live-heading ports within retained route bands")
     print("path topology: straight, bend, T, cross, and end-cap compose as one network")
     print("leaf litter: opaque, exact seams, useful texture and palette contrast, no corridor")
     print("ground transition: exact moss/leaf connectors and repeatable top/bottom seam")
@@ -1527,7 +1529,7 @@ def main() -> None:
     print("inset ground corner: exact top/right transition and unused leaf edge connectors")
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
     print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
-    print("editable masters: 19 valid OpenRaster archives")
+    print("editable masters: 20 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

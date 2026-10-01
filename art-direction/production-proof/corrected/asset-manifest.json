@@ -37,6 +37,42 @@
     },
     "review": "review/opening-junction-review.png"
   },
+  "village_square_junction_proof": {
+    "asset": "terrain.village_square_junction",
+    "anchor_ids": [
+      "village-square",
+      "sickhouse",
+      "healer-garden",
+      "southern-road",
+      "village-edge"
+    ],
+    "path_width_pixels": 96,
+    "port_depth_pixels": 32,
+    "headings_degrees": [
+      51.340192,
+      75.963757,
+      144.462322,
+      180.0
+    ],
+    "pivot": {
+      "x": 256,
+      "y": 256
+    },
+    "visible_bounds": {
+      "x": 0,
+      "y": 209,
+      "width": 512,
+      "height": 303
+    },
+    "reviews": [
+      "review/village-square-junction-0.8x-wide.png",
+      "review/village-square-junction-0.8x-tall.png",
+      "review/village-square-junction-1.0x-wide.png",
+      "review/village-square-junction-1.0x-tall.png",
+      "review/village-square-junction-2.0x-wide.png",
+      "review/village-square-junction-2.0x-tall.png"
+    ]
+  },
   "village_edge_transition_proof": {
     "asset": "terrain.woodland_village_edge_transition",
     "opening": {
@@ -669,6 +705,36 @@
       },
       "godot_import_proof": true,
       "sha256": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68"
+    },
+    {
+      "id": "terrain.village_square_junction",
+      "category": "terrain",
+      "source": "sources/imagegen/village-square-junction-source.png",
+      "export": "exports/terrain/village-square-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 1024,
+        "scale": 2
+      },
+      "contact_baseline": 512,
+      "pivot": {
+        "x": 256,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
     },
     {
       "id": "plants.herb_bed_empty",

@@ -340,6 +340,12 @@ Acceptance:
 - [x] Check the existing manifest-bound cross-junction against the four live Village Square route
   headings in deterministic 0.8x, 1.0x, and 2.0x wide and tall external views; retain the greybox
   junction after proving that exact rigid placement leaves a minimum 70.670096-degree port mismatch.
+- [x] After explicit product-owner approval, establish one isolated tailored 512x512 Village Square
+  junction with a 1024x1024 editable master, four exact 96-pixel live-heading ports, route-band
+  containment, six deterministic external review views, and isolated Godot import parity.
+- [x] Complete product-owner visual review of the tailored Village Square junction; record approval
+  of the corrected four-path alignment only, retain the greybox junction and all physical/gameplay
+  authority, and require separate approval before any runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

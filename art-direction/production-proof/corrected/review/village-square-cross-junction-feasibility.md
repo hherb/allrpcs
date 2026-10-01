@@ -33,5 +33,11 @@ runtime captures or acceptance evidence. The export remains isolated to
 `DirectionAImportProof.tscn`; `Main.tscn`, collision, navigation, topology, camera behavior, and
 gameplay authority are unchanged.
 
-A tailored Village Square junction asset would require a separate proof proposal and explicit
-product-owner approval.
+After separate explicit product-owner approval, one tailored Village Square junction proof now
+exists at `exports/terrain/village-square-junction.png`. It has four exact 96-pixel straight-path
+connectors at the live headings, route-band containment, a 1024×1024 editable master, isolated
+Godot import parity, and six deterministic external review views named
+`village-square-junction-{0.8,1.0,2.0}x-{wide,tall}.png`. After rejecting the earlier guide-only
+mismatch views, the product owner approved the corrected four-path alignment shown with exact
+textured straight-path continuations. The greybox junction and all ordinary runtime, physical,
+camera, and gameplay authority remain unchanged.

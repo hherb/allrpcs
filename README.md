@@ -16,14 +16,14 @@ The first bounded Phase 9.2 source-sheet proof decomposes that direction into te
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,
 seam, pivot, baseline, and editable-master gaps led to a corrected individual-asset pipeline. The
-corrected proof now has 68 manifest-bound exports, nineteen layered masters, exact seam and
+corrected proof now has 69 manifest-bound exports, twenty layered masters, exact seam and
 grayscale checks, four normalized six-frame walks, four two-frame idle/breathe loops, and four
 four-frame reach-and-inspect gestures. The terrain set includes one exact 96-pixel straight module and one
-90-degree bend, T-junction, cross-junction, rounded end-cap, and one 512-pixel live-angle opening
-junction with matching ports, plus one
+90-degree bend, T-junction, cross-junction, rounded end-cap, one 512-pixel live-angle opening
+junction, and one tailored 512-pixel Village Square junction with matching ports, plus one
 deterministic connected-topology review, one repeatable woodland leaf-litter tile, and exact
 quiet-moss-to-leaf straight, two outer-corner, two inset-corner transitions, and one world-aligned
-1024x512 full-clearing feather overlay. All 68 exports have
+1024x512 full-clearing feather overlay. All 69 exports have
 an isolated source-parity Godot import scene with 12 named animations. A separate external terrain
 review binds quiet moss, leaf litter, packed earth, and all five transitions to exact original,
 grayscale, protanopia, deuteranopia, and tritanopia views plus descriptive luminance and local-texture
@@ -154,8 +154,12 @@ leaves a `70.670096` degree worst mismatch. Six deterministic 0.8x, 1.0x, and 2.
 planning views make the mismatch visible while the validator binds the live and approved
 coordinates, 96-pixel route width, manifest hash, dimensions, pivot, and exact review bytes.
 `Main.tscn`, the greybox junction, collision, navigation, topology, camera behavior, and gameplay
-authority remain unchanged. Any tailored Village Square junction proof requires separate
-product-owner approval.
+authority remain unchanged. After separate product-owner approval to create one proof, a tailored
+512x512 junction now provides exact 96-pixel connectors at all four live headings, a 1024x1024
+editable master, deterministic route-band containment, and six external review views. After the
+first review exposed visibly misaligned guide-only paths, the corrected views used exact textured
+continuations and the product owner approved their alignment. The proof remains isolated and grants
+no runtime or ordinary-scene authority.
 
 The approved [`world-layout-proposal`](art-direction/world-layout-proposal/README.md) now defines
 the live 3200x1800 authored-region greybox reflow. It retains all eleven
