@@ -53,6 +53,13 @@ RUNTIME_ASSETS = (
         RUNTIME_ROOT / "village-square-junction.png",
         (512, 512),
     ),
+    ("terrain.stream_water", RUNTIME_ROOT / "stream-water.png", (128, 96)),
+    ("terrain.stream_bank", RUNTIME_ROOT / "stream-bank.png", (128, 32)),
+    (
+        "terrain.stream_bank_opening_cap",
+        RUNTIME_ROOT / "stream-bank-opening-cap.png",
+        (32, 32),
+    ),
 )
 
 
@@ -200,8 +207,8 @@ def main() -> None:
     for asset_id, _, _ in RUNTIME_ASSETS:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
     print(
-        "geometry: six 256x256 assets, one 96x256 path, two 512x512 junctions, and one "
-        "1024x512 feather overlay; "
+        "geometry: six 256x256 assets, one 96x256 path, two 512x512 junctions, one "
+        "1024x512 feather overlay, and three Stream modules; "
         "imports: lossless, mipmap-free, runtime-owned UIDs"
     )
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")

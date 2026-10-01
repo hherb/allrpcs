@@ -13,6 +13,10 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
     private const float SurfaceTolerancePixels = 1.0f;
     private const int ExpectedLaundryBoundarySectionCount = 6;
     private const int ExpectedStreamBankCount = 2;
+    private const string WaterTexturePath = "res://art/runtime/terrain/stream-water.png";
+    private const string BankTexturePath = "res://art/runtime/terrain/stream-bank.png";
+    private const string CapTexturePath =
+        "res://art/runtime/terrain/stream-bank-opening-cap.png";
 
     private int physicsFrames;
 
@@ -79,6 +83,7 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
             || !MatchesPolygon(
                 streamWater.Polygon,
                 OpeningRegionStreamLaundryGeometry.StreamWater)
+            || !MatchesStreamArt(streamWater)
             || streamLabel.Text != "STREAM"
             || !MatchesBankGeometry(streamBanks, layout)
             || !ReferenceEquals(
@@ -242,6 +247,85 @@ public partial class OpeningRegionStreamLaundrySmokeCheck : Node
         CollisionPolygon2D east = streamBanks.GetNode<CollisionPolygon2D>("EastCollision");
         return MatchesPolygon(west.Polygon, layout.WestStreamBank)
             && MatchesPolygon(east.Polygon, layout.EastStreamBank);
+    }
+
+    private bool MatchesStreamArt(Polygon2D water)
+    {
+        Node2D scene = GetNode<Node2D>("../OpeningRegionStreamLaundrySceneSource");
+        Polygon2D crossing = scene.GetNode<Polygon2D>("StreamCrossingArea");
+        Label label = scene.GetNode<Label>("StreamLabel");
+        if (water.Texture?.ResourcePath != WaterTexturePath
+            || water.Texture.GetSize() != new Vector2(128.0f, 96.0f)
+            || water.TextureRepeat != CanvasItem.TextureRepeatEnum.Enabled
+            || water.Color != Colors.White
+            || water.Position != Vector2.Zero
+            || water.Scale != Vector2.One
+            || !Mathf.IsZeroApprox(water.Rotation)
+            || water.ZIndex != 0
+            || !water.Visible
+            || water.UV.Length != 4
+            || water.UV[0] != Vector2.Zero
+            || water.UV[1] != new Vector2(400.0f, 0.0f)
+            || water.UV[2] != new Vector2(400.0f, 96.0f)
+            || water.UV[3] != new Vector2(0.0f, 96.0f)
+            || crossing.GetIndex() <= water.GetIndex()
+            || crossing.ZIndex != 0
+            || !crossing.Visible
+            || crossing.Position != Vector2.Zero
+            || crossing.Scale != Vector2.One
+            || !Mathf.IsZeroApprox(crossing.Rotation)
+            || label.ZIndex != 0
+            || !label.Visible
+            || !crossing.Polygon.SequenceEqual(new[]
+            {
+                new Vector2(1736.0f, 452.0f),
+                new Vector2(1864.0f, 452.0f),
+                new Vector2(1864.0f, 548.0f),
+                new Vector2(1736.0f, 548.0f),
+            })
+            || crossing.Color != new Color(0.62f, 0.49f, 0.31f, 0.82f))
+        {
+            return false;
+        }
+
+        (string name, string texture, Vector2 position, Rect2 region, bool flipH, bool flipV)[]
+            expected =
+            [
+                ("NorthWestBank", BankTexturePath, new(1600, 452), new(60, 0, 68, 32), false, false),
+                ("NorthWestCap", CapTexturePath, new(1668, 452), new(), false, false),
+                ("NorthEastCap", CapTexturePath, new(1900, 452), new(), true, false),
+                ("NorthEastBank", BankTexturePath, new(1932, 452), new(0, 0, 68, 32), false, false),
+                ("SouthWestBank", BankTexturePath, new(1600, 516), new(60, 0, 68, 32), false, true),
+                ("SouthWestCap", CapTexturePath, new(1668, 516), new(), false, true),
+                ("SouthEastCap", CapTexturePath, new(1900, 516), new(), true, true),
+                ("SouthEastBank", BankTexturePath, new(1932, 516), new(0, 0, 68, 32), false, true),
+            ];
+        foreach (var spec in expected)
+        {
+            Sprite2D sprite = scene.GetNode<Sprite2D>(spec.name);
+            if (sprite.Texture?.ResourcePath != spec.texture
+                || sprite.Texture.GetSize() != (spec.texture == BankTexturePath
+                    ? new Vector2(128.0f, 32.0f)
+                    : new Vector2(32.0f, 32.0f))
+                || sprite.Position != spec.position
+                || sprite.RegionEnabled != (spec.texture == BankTexturePath)
+                || (sprite.RegionEnabled && sprite.RegionRect != spec.region)
+                || sprite.FlipH != spec.flipH
+                || sprite.FlipV != spec.flipV
+                || sprite.Centered
+                || sprite.Offset != Vector2.Zero
+                || sprite.Scale != Vector2.One
+                || !Mathf.IsZeroApprox(sprite.Rotation)
+                || sprite.ZIndex != 0
+                || !sprite.Visible
+                || sprite.GetIndex() <= crossing.GetIndex()
+                || sprite.GetIndex() >= label.GetIndex())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private static bool MatchesPolygon(

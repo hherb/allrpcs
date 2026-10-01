@@ -171,8 +171,14 @@ terrain, collision, navigation, topology, camera, or gameplay.
 After separate approval to create the Stream feasibility proof, the three minimum modules bind the
 exact water band, collision opening, centered crossing, and route framing in six deterministic
 views. The product owner approved those supplied views without requesting changes. This remains
-external visual acceptance only; it does not authorize a runtime copy or establish pacing,
-usability, or human-accessibility acceptance.
+external visual acceptance only. The owner then separately approved the exact bounded runtime
+copy. `Main.tscn` now uses runtime-owned water, bank, and opening-cap textures at the original
+hashes, with the centered greybox crossing and retained physical opening. The six ordinary-scene
+wide and tall Compatibility views at 0.8x, 1.0x, and 2.0x are saved as `review/stream-runtime-*`;
+[`scripts/capture-stream-runtime.gd`](../../../scripts/capture-stream-runtime.gd) regenerates them
+from the ordinary scene. Those views await
+separate product-owner visual review and do not establish pacing, usability, or human-accessibility
+acceptance.
 
 After separate runtime authorization, the product owner rejected hard straight moss/leaf edges in
 the initial Village Edge presentation. The replacement uses one tailored full-clearing overlay; a

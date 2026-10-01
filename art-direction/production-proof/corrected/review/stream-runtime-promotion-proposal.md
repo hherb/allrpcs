@@ -1,7 +1,7 @@
-# Proposed bounded Stream runtime promotion
+# Bounded Stream runtime promotion
 
-Status: proposed; product-owner approval is required before implementation. The six external
-feasibility views were approved, but that approval did not include ordinary gameplay.
+Status: separately approved and implemented. The six external feasibility views were approved
+first; the product owner then explicitly approved this exact runtime promotion.
 
 ## Exact change
 
