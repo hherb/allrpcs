@@ -11,7 +11,7 @@ from PIL import Image
 from build_square_sickhouse_path_correction import ORIGIN, SIZE, compose
 from check_village_edge_square_connector_feasibility import ROOT, REVIEW, require
 
-EVIDENCE_HASH = "cf67f183e85d303f89362a7cb6f49f421c86d0c9bfd06af901f1ac8d99584a57"
+EVIDENCE_HASH = "ad100f0da810c8e5e19dc81d2623f073528333adcda8504a26b160c7cb105002"
 
 
 def digest(path):

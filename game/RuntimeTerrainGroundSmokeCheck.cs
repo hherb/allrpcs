@@ -88,6 +88,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             routePresentation.GetNode<Sprite2D>("VillageSquareJunction");
         Sprite2D connector = routePresentation.GetNode<Sprite2D>("VillageEdgeSquareConnector");
         Sprite2D gardenPath = routePresentation.GetNode<Sprite2D>("SquareGardenPath");
+        Sprite2D sickhousePath = routePresentation.GetNode<Sprite2D>("SquareSickhousePath");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -262,10 +263,20 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || gardenPath.Offset != Vector2.Zero
             || gardenPath.RegionEnabled
             || gardenPath.GetChildCount() != 0
-            || routePresentation.GetChildren().Count(child => child is Line2D) != 10
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 6
+            || !HasExactTexture(sickhousePath, "res://art/runtime/terrain/square-sickhouse-path.png", 380, 360)
+            || sickhousePath.Position != new Vector2(2510.0f, 1320.0f)
+            || sickhousePath.Scale != Vector2.One
+            || !Mathf.IsZeroApprox(sickhousePath.Rotation)
+            || !sickhousePath.Centered
+            || sickhousePath.Offset != Vector2.Zero
+            || sickhousePath.TextureRepeat != CanvasItem.TextureRepeatEnum.Enabled
+            || sickhousePath.RegionEnabled
+            || sickhousePath.GetChildCount() != 0
+            || routePresentation.GetChildren().Count(child => child is Line2D) != 9
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 7
             || routePresentation.GetChildren().OfType<Line2D>()
-                .Any(line => line.Points.Contains(new Vector2(2300.0f, 1300.0f)))
+                .Any(line => line.Points.Contains(new Vector2(2300.0f, 1300.0f))
+                    || line.Points.Contains(new Vector2(2640.0f, 1450.0f)))
             || straightPath.GetIndex() >= pathEndCap.GetIndex()
             || pathEndCap.GetIndex() >= openingJunction.GetIndex()
             || openingJunction.GetIndex() >= villageSquareJunction.GetIndex()
@@ -304,6 +315,17 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || gardenPath.ZIndex >= GetNode<CanvasItem>(
                 "../OpeningRegionRemedyPreparationSceneSource/Label").ZIndex
             || gardenPath.ShowBehindParent
+            || sickhousePath.ZIndex != -71
+            || sickhousePath.ZIndex >= villageSquareJunction.ZIndex
+            || sickhousePath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionFirstPatientSceneSource/Floor").ZIndex
+            || sickhousePath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionFirstPatientSceneSource/Entrance").ZIndex
+            || sickhousePath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionFirstPatientSceneSource/Patient").ZIndex
+            || sickhousePath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionFirstPatientSceneSource/Label").ZIndex
+            || sickhousePath.ShowBehindParent
             || connector.ZIndex >= GetNode<CanvasItem>(
                 "../OpeningRegionVillageTransitionSceneSource/SquareEdgeOpening").ZIndex
             || connector.ZIndex >= GetNode<CanvasItem>(
@@ -384,7 +406,6 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Vector2 square = new(2200.0f, 900.0f);
         Vector2[] destinations =
         [
-            new(2640.0f, 1450.0f),
             new(1700.0f, 900.0f),
             new(1500.0f, 1400.0f),
         ];

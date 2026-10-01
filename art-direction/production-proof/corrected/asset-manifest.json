@@ -439,6 +439,29 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "square_sickhouse_path_provenance": {
+    "accepted_proof": "review/square-sickhouse-path-correction-overlay.png",
+    "accepted_proof_sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "master": "masters/terrain-square-sickhouse-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "world_origin": [
+      2320,
+      1140
+    ],
+    "world_position": [
+      2510,
+      1320
+    ],
+    "heading_degrees": 51.340192,
+    "endpoint": [
+      2640,
+      1450
+    ],
+    "overlap_rows": 16,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "village_edge_square_connector_provenance": {
     "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
     "accepted_proof_sha256": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
@@ -1055,6 +1078,36 @@
       },
       "godot_import_proof": true,
       "sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de"
+    },
+    {
+      "id": "terrain.square_sickhouse_path",
+      "category": "terrain",
+      "source": "tools/build_square_sickhouse_path_correction.py",
+      "export": "exports/terrain/square-sickhouse-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 380,
+        "height": 360
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 380,
+        "height": 360
+      },
+      "master_dimensions_pixels": {
+        "width": 760,
+        "height": 720,
+        "scale": 2
+      },
+      "contact_baseline": 360,
+      "pivot": {
+        "x": 190,
+        "y": 180
+      },
+      "godot_import_proof": true,
+      "sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7"
     },
     {
       "id": "plants.herb_bed_empty",

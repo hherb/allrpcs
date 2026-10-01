@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 74 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 75 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -95,7 +95,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 74 exports are RGBA with visible and fully opaque pixels; 73 retain no RGB
+- all 75 exports are RGBA with visible and fully opaque pixels; 74 retain no RGB
   beneath zero alpha. Only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -246,7 +246,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 74 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 75 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -259,3 +259,11 @@ starting audio, or performing release or signing work.
 - Cue overlays, cleanup, geometry, manifests, composites, hashes, and `.ora` files are produced by
   [tools/build.py](tools/build.py); no third-party content is used.
 - The image tool did not expose a model/version identifier, so none is claimed.
+
+The owner accepted the six corrected Square–Sickhouse external views and approved the named
+promotion on 2026-10-02. One exact 380x360 export, a 760x720 layered master, independent
+lossless proof/runtime imports, and one sprite at `(2510,1320)`, `z=-71`, replace only the
+matching presentation line. All previous assets/masters and physical authority are retained.
+The [runtime result](review/square-sickhouse-path-runtime-result.md) records the six matching
+ordinary-scene views; their owner checkpoint is pending. The proof now has 75 exports and
+26 layered masters.

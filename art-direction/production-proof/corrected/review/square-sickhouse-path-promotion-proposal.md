@@ -2,7 +2,7 @@
 
 On 2026-10-02, the owner replied "accepted" after display of all six corrected external views.
 That completes external visual acceptance. This proposal names the separate production/runtime
-scope; its approval is pending.
+scope. The owner separately replied "yes" on 2026-10-02; this named scope is approved.
 
 ## Exact proposed scope
 
@@ -47,3 +47,6 @@ contains all six views, geometry, capture commands, hashes, and retained failed 
 
 Approval of this proposal authorizes only this named implementation. Runtime visual acceptance
 requires the later ordinary-scene checkpoint.
+
+The named scope is implemented; see the [runtime result](square-sickhouse-path-runtime-result.md).
+Its separate ordinary-scene owner checkpoint is pending.

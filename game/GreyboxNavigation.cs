@@ -52,6 +52,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? SquareGardenPathTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Square–Sickhouse path presentation.</summary>
+    [Export]
+    public Texture2D? SquareSickhousePathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -93,6 +97,12 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 {
                     // Replace only presentation; physical routes retain their original anchors.
                     owner.AddChild(CreateSquareGardenPathPresentation());
+                    continue;
+                }
+
+                if (secondId == "sickhouse")
+                {
+                    owner.AddChild(CreateSquareSickhousePathPresentation());
                     continue;
                 }
 
@@ -240,6 +250,25 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Name = "SquareGardenPath",
             Texture = texture,
             Position = new Vector2(2300.0f, 1250.0f),
+            ZIndex = -71,
+        };
+    }
+
+    private Sprite2D CreateSquareSickhousePathPresentation()
+    {
+        Texture2D texture = SquareSickhousePathTexture
+            ?? throw new InvalidOperationException("The Square–Sickhouse path is required.");
+        if (texture.GetWidth() != 380 || texture.GetHeight() != 360)
+        {
+            throw new InvalidOperationException("The path must retain its exact 380x360 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "SquareSickhousePath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Enabled,
+            Position = new Vector2(2510.0f, 1320.0f),
             ZIndex = -71,
         };
     }

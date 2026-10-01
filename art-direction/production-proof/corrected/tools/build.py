@@ -2306,6 +2306,16 @@ def main() -> None:
         if garden_export.tobytes() != accepted.convert("RGBA").tobytes():
             raise ValueError("Square–Garden recipe no longer matches accepted pixels")
     garden_master = garden_export.resize((400, 440), Image.Resampling.NEAREST)
+    accepted_sickhouse_path = REVIEW / "square-sickhouse-path-correction-overlay.png"
+    if hash_file(accepted_sickhouse_path) != "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7":
+        raise ValueError("accepted Square–Sickhouse proof changed")
+    from build_square_sickhouse_path_correction import compose as compose_sickhouse
+
+    sickhouse_export = compose_sickhouse()
+    with Image.open(accepted_sickhouse_path) as accepted:
+        if sickhouse_export.tobytes() != accepted.convert("RGBA").tobytes():
+            raise ValueError("Square–Sickhouse recipe no longer matches accepted pixels")
+    sickhouse_master = sickhouse_export.resize((760, 720), Image.Resampling.NEAREST)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2528,6 +2538,16 @@ def main() -> None:
             "tools/build_square_garden_path_correction.py",
         ),
         Asset(
+            "terrain.square_sickhouse_path",
+            "terrain",
+            Path("exports/terrain/square-sickhouse-path.png"),
+            (760, 720),
+            (380, 360),
+            720,
+            sickhouse_master,
+            "tools/build_square_sickhouse_path_correction.py",
+        ),
+        Asset(
             "plants.herb_bed_empty",
             "plants",
             Path("exports/plants/herb-bed-empty.png"),
@@ -2628,6 +2648,8 @@ def main() -> None:
             export = connector_export.copy()
         if asset.asset_id == "terrain.square_garden_path":
             export = garden_export.copy()
+        if asset.asset_id == "terrain.square_sickhouse_path":
+            export = sickhouse_export.copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2711,6 +2733,8 @@ def main() -> None:
         if asset.asset_id == "terrain.square_garden_path":
             # Preserve the exact accepted PNG bytes as well as decoded pixels.
             (ROOT / asset.export_path).write_bytes(accepted_garden_path.read_bytes())
+        if asset.asset_id == "terrain.square_sickhouse_path":
+            (ROOT / asset.export_path).write_bytes(accepted_sickhouse_path.read_bytes())
         export_images[asset.asset_id] = export
 
     create_ora(
@@ -2942,6 +2966,19 @@ def main() -> None:
             ("unclipped junction-relative continuation reference", garden_reference, 0, 0, False),
             ("exact junction overlap", garden_master.crop((0, 0, 400, 32)), 0, 0, True),
             ("continuation clipped at Garden endpoint", garden_master.crop((0, 32, 400, 440)), 0, 32, True),
+        ],
+    )
+    sickhouse_reference = render_path_leg(
+        export_images["terrain.straight_path"], (380, 360), (-120, -240),
+        51.340192, math.hypot(440, 550),
+    ).resize((760, 720), Image.Resampling.NEAREST)
+    create_ora(
+        MASTERS / "terrain-square-sickhouse-path.ora",
+        (760, 720),
+        [
+            ("unclipped junction-relative continuation reference", sickhouse_reference, 0, 0, False),
+            ("exact junction overlap", sickhouse_master.crop((0, 0, 760, 32)), 0, 0, True),
+            ("continuation clipped at Sickhouse endpoint", sickhouse_master.crop((0, 32, 760, 720)), 0, 32, True),
         ],
     )
     create_ora(
@@ -3447,6 +3484,20 @@ def main() -> None:
             "world_position": [2300, 1250],
             "heading_degrees": 75.963757,
             "endpoint": [2300, 1300],
+            "overlap_rows": 16,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        },
+        "square_sickhouse_path_provenance": {
+            "accepted_proof": "review/square-sickhouse-path-correction-overlay.png",
+            "accepted_proof_sha256": hash_file(accepted_sickhouse_path),
+            "master": "masters/terrain-square-sickhouse-path.ora",
+            "source_asset": "terrain.straight_path",
+            "source_sha256": hash_file(REPOSITORY_ROOT / "game/art/runtime/terrain/straight-path.png"),
+            "world_origin": [2320, 1140],
+            "world_position": [2510, 1320],
+            "heading_degrees": 51.340192,
+            "endpoint": [2640, 1450],
             "overlap_rows": 16,
             "import_fix_alpha_border": False,
             "master_scaling": "nearest-neighbour 2x of exact accepted export",

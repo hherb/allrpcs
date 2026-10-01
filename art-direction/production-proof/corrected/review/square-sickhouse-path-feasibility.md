@@ -3,7 +3,8 @@
 The 2026-10-02 proof tests the existing straight-path texture on the retained Square–Sickhouse
 continuation. It changes no production export, editable master, manifest, import, runtime scene,
 or physical/gameplay authority. The owner accepted all six corrected external views with "accepted" on 2026-10-02 after
-their display. This is external visual acceptance; no promotion is authorized.
+their display. This is external visual acceptance. The owner separately approved the named promotion
+with "yes" on 2026-10-02; see the [runtime result](square-sickhouse-path-runtime-result.md).
 
 The Square anchor is `(2200,900)`, Sickhouse anchor `(2640,1450)`, and the 512-pixel junction
 footprint exit is `(2404.8,1156)`. The retained continuation is `376.503705` pixels long along
@@ -39,7 +40,7 @@ usability, UI, or human accessibility acceptance.
 | 1.0x | [view](square-sickhouse-path-proof-1.0x-wide.png) | [view](square-sickhouse-path-proof-1.0x-tall.png) | [view](square-sickhouse-path-correction-1.0x-wide.png) | [view](square-sickhouse-path-correction-1.0x-tall.png) |
 | 2.0x | [view](square-sickhouse-path-proof-2.0x-wide.png) | [view](square-sickhouse-path-proof-2.0x-tall.png) | [view](square-sickhouse-path-correction-2.0x-wide.png) | [view](square-sickhouse-path-correction-2.0x-tall.png) |
 
-Reproduce from `bf54cd5` plus this proof's recipes, using Pillow-enabled Python and the configured
+Reproduce from pre-promotion `367fa97` with this proof's recipes, using Pillow-enabled Python and the configured
 Godot .NET Compatibility wrapper:
 
 ```sh
@@ -56,9 +57,11 @@ PNG bytes are renderer-specific: these use Godot 4.6.3 .NET Compatibility on thi
 The validator rebuilds pixels and checks the entire junction intersection, clean alpha,
 unclipped canvas, exact image inventory/dimensions/hashes, and endpoint containment.
 
-Next: obtain separate approval of the [named promotion proposal](square-sickhouse-path-promotion-proposal.md)
-before changing production assets or runtime. The external checkpoint covers the seam, repeated
-texture, apparent width, Sickhouse entrance, and marker/label layering only.
+The [named promotion proposal](square-sickhouse-path-promotion-proposal.md) is separately approved
+and implemented. The external checkpoint covers the seam, repeated texture, apparent width,
+Sickhouse entrance, and marker/label layering only. Its original scene/code baseline and retained-line
+capture guard are superseded by this promotion. Regular archived validation remains valid; the
+full-build recipe digest was refreshed with its sampling helper and all evidence unchanged.
 
 Session code review inspected the sampling, capture, validator, all six corrected views, and
 complete change scope. Screen-overlay obstruction was fixed before final captures; no unresolved

@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3]
+[gd_scene load_steps=78 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/stream-bank-opening-cap.png" id="71_stream_bank_cap"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/village-edge-square-connector.png" id="72_village_edge_square_connector"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/square-garden-path.png" id="74_square_garden_path"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/square-sickhouse-path.png" id="75_square_sickhouse_path"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter.png" id="60_leaf_litter"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-transition.png" id="61_leaf_transition"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/woodland-leaf-litter-corner-transition.png" id="62_leaf_corner_transition"]
@@ -367,4 +368,9 @@ position = Vector2(586, 276)
 sprite_frames = SubResource("SpriteFrames_walk_south")
 animation = &"walk_south"
 autoplay = "walk_south"
+centered = false
+
+[node name="SquareSickhousePathProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(2360, 1200)
+texture = ExtResource("75_square_sickhouse_path")
 centered = false

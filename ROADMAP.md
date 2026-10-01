@@ -395,8 +395,12 @@ Acceptance:
   with 1,713 exact overlap pixels, preserving runtime and physical/gameplay authority.
 - [x] Obtain owner review of the six corrected Square–Sickhouse external views; the owner replied
   "accepted" after display on 2026-10-02. This is external visual acceptance only.
-- [ ] Obtain separate approval of the named Square–Sickhouse production/runtime promotion scope
-  before implementing it, then obtain the ordinary-scene visual checkpoint.
+- [x] Obtain separate approval of the named Square–Sickhouse production/runtime promotion;
+  the owner replied "yes" on 2026-10-02. Promote only the exact accepted 380x360 export,
+  760x720 master, independent imports, and one sprite at `(2510,1320)`, `z=-71`, replacing
+  only its presentation line while preserving physical/gameplay authority.
+- [ ] Obtain the separate ordinary-scene visual checkpoint for the six Square–Sickhouse runtime
+  views, which exactly match the accepted external correction.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
