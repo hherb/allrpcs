@@ -1,4 +1,4 @@
-[gd_scene load_steps=345 format=3]
+[gd_scene load_steps=347 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -537,6 +537,8 @@
 [ext_resource type="Script" path="res://RuntimeSeekerWalkSmokeCheck.cs" id="418_runtime_seeker_walk_check"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/square-southern-road-path.png" id="427_runtime_square_southern_road_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/southern-road-wagon-path.png" id="428_runtime_southern_road_wagon_path"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-southern-road-path.png" id="429_runtime_shrine_southern_road_path"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-southern-road-endpoint-blend.png" id="430_runtime_shrine_southern_road_endpoint_blend"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -694,6 +696,8 @@ SquareGardenPathTexture = ExtResource("425_runtime_square_garden_path")
 SquareSickhousePathTexture = ExtResource("426_runtime_square_sickhouse_path")
 SquareSouthernRoadPathTexture = ExtResource("427_runtime_square_southern_road_path")
 SouthernRoadWagonPathTexture = ExtResource("428_runtime_southern_road_wagon_path")
+ShrineSouthernRoadPathTexture = ExtResource("429_runtime_shrine_southern_road_path")
+ShrineSouthernRoadEndpointBlendTexture = ExtResource("430_runtime_shrine_southern_road_endpoint_blend")
 
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")
@@ -2640,6 +2644,7 @@ script = ExtResource("322_opening_region_old_shrine_check")
 script = ExtResource("323_opening_region_road_wagon_scene")
 
 [node name="RoadArea" type="Line2D" parent="OpeningRegionSouthernRoadWagonSceneSource"]
+visible = false
 points = PackedVector2Array(572, 460, 1500, 1400)
 width = 96.0
 default_color = Color(0.486, 0.38, 0.255, 0.72)

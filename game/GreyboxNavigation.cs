@@ -64,6 +64,14 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? SouthernRoadWagonPathTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted incoming Shrine–Southern Road texture.</summary>
+    [Export]
+    public Texture2D? ShrineSouthernRoadPathTexture { get; set; }
+
+    /// <summary>Gets or sets the accepted local Shrine–Road endpoint blend.</summary>
+    [Export]
+    public Texture2D? ShrineSouthernRoadEndpointBlendTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -96,6 +104,12 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 Sprite2D path = CreateStraightPathPresentation(start, end);
                 owner.AddChild(path);
                 owner.AddChild(CreatePathEndCapPresentation(end, path.Rotation));
+                continue;
+            }
+
+            if (firstId == "old-shrine" && secondId == "southern-road")
+            {
+                owner.AddChild(CreateShrineSouthernRoadPathPresentation(start, end));
                 continue;
             }
 
@@ -330,6 +344,44 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Position = new Vector2(1680.0f, 1496.0f),
             ZIndex = -70,
         };
+    }
+
+    private Node2D CreateShrineSouthernRoadPathPresentation(Vector2 start, Vector2 end)
+    {
+        if (start != new Vector2(380.0f, 300.0f) || end != new Vector2(1500.0f, 1400.0f)
+            || OpeningRegionLayoutGeometry.PathWidthPixels != 96)
+        {
+            throw new InvalidOperationException("The Shrine path requires its exact retained 96px route.");
+        }
+
+        Texture2D incoming = ShrineSouthernRoadPathTexture
+            ?? throw new InvalidOperationException("The incoming Shrine path is required.");
+        Texture2D blend = ShrineSouthernRoadEndpointBlendTexture
+            ?? throw new InvalidOperationException("The Shrine endpoint blend is required.");
+        if (incoming.GetWidth() != 1152 || incoming.GetHeight() != 1080
+            || blend.GetWidth() != 160 || blend.GetHeight() != 160)
+        {
+            throw new InvalidOperationException("The Shrine path textures require their exact accepted geometry.");
+        }
+
+        Node2D owner = new() { Name = "ShrineSouthernRoadPath" };
+        owner.AddChild(new Sprite2D
+        {
+            Name = "IncomingPath",
+            Texture = incoming,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(1008.0f, 940.0f),
+            ZIndex = -72,
+        });
+        owner.AddChild(new Sprite2D
+        {
+            Name = "EndpointBlend",
+            Texture = blend,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(1480.0f, 1360.0f),
+            ZIndex = -69,
+        });
+        return owner;
     }
 
     private static Vector2 FindSquareBoundaryExit(

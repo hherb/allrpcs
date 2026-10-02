@@ -58,6 +58,8 @@ RUNTIME_ASSETS = (
     ("terrain.square_sickhouse_path", RUNTIME_ROOT / "square-sickhouse-path.png", (380, 360)),
     ("terrain.square_southern_road_path", RUNTIME_ROOT / "square-southern-road-path.png", (520, 416)),
     ("terrain.southern_road_wagon_path", RUNTIME_ROOT / "southern-road-wagon-path.png", (560, 432)),
+    ("terrain.shrine_southern_road_path", RUNTIME_ROOT / "shrine-southern-road-path.png", (1152, 1080)),
+    ("terrain.shrine_southern_road_endpoint_blend", RUNTIME_ROOT / "shrine-southern-road-endpoint-blend.png", (160, 160)),
     (
         "terrain.village_edge_square_connector",
         RUNTIME_ROOT / "village-edge-square-connector.png",
@@ -217,7 +219,7 @@ def main() -> None:
         print(f"asset: {asset_id}, exact SHA-256 {manifest_assets[asset_id]['sha256']}")
     print(
         "geometry: six 256x256 assets, one 96x256 path, two 512x512 junctions, one "
-        "1024x512 feather overlay, one 124x96 connector, one 200x220 Garden path and one 380x360 Sickhouse path, one 520x416 Southern Road path, one 560x432 Road–Wagon path, and three Stream modules; "
+        "1024x512 feather overlay, one 124x96 connector, one 200x220 Garden path and one 380x360 Sickhouse path, one 520x416 Southern Road path, one 560x432 Road–Wagon path, two Shrine layers (1152x1080 and 160x160), and three Stream modules; "
         "imports: lossless, mipmap-free, runtime-owned UIDs"
     )
     print("isolation: Main.tscn references runtime terrain and no proof-only resource")

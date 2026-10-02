@@ -2336,6 +2336,29 @@ def main() -> None:
         if wagon_export.tobytes() != accepted.convert("RGBA").tobytes():
             raise ValueError("Southern Road–Wagon recipe no longer matches accepted pixels")
     wagon_master = wagon_export.resize((1120, 864), Image.Resampling.NEAREST)
+    from build_shrine_southern_road_path_correction import compose as compose_shrine
+    from build_shrine_southern_road_path_blend import compose as compose_shrine_blend
+
+    shrine_assets = [
+        ("shrine_southern_road_path", "shrine-southern-road-path",
+         "shrine-southern-road-path-correction-overlay.png", compose_shrine,
+         "build_shrine_southern_road_path_correction.py", (432, 400), (1008, 940), -72,
+         "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e"),
+        ("shrine_southern_road_endpoint_blend", "shrine-southern-road-endpoint-blend",
+         "shrine-southern-road-path-blend-overlay.png", compose_shrine_blend,
+         "build_shrine_southern_road_path_blend.py", (1400, 1280), (1480, 1360), -69,
+         "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720"),
+    ]
+    shrine_exports = {}
+    for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in shrine_assets:
+        accepted_path = REVIEW / proof_name
+        if hash_file(accepted_path) != sha:
+            raise ValueError("accepted Shrine path proof changed")
+        export = compose_asset()
+        with Image.open(accepted_path) as accepted:
+            if export.tobytes() != accepted.convert("RGBA").tobytes():
+                raise ValueError("Shrine path recipe no longer matches accepted pixels")
+        shrine_exports[f"terrain.{asset_id}"] = export
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2680,6 +2703,18 @@ def main() -> None:
                 )
             )
 
+    for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in shrine_assets:
+        export = shrine_exports[f"terrain.{asset_id}"]
+        master = export.resize((export.width * 2, export.height * 2), Image.Resampling.NEAREST)
+        assets.append(Asset(
+            f"terrain.{asset_id}", "terrain", Path(f"exports/terrain/{filename}.png"),
+            master.size, export.size, master.height, master, f"tools/{recipe}",
+        ))
+        half = master.height // 2
+        create_ora(MASTERS / f"terrain-{filename}.ora", master.size, [
+            ("accepted upper path", master.crop((0, 0, master.width, half)), 0, 0, True),
+            ("accepted lower path", master.crop((0, half, master.width, master.height)), 0, half, True),
+        ])
     export_images: dict[str, Image.Image] = {}
     for asset in assets:
         export = downsample(asset.image_master)
@@ -2694,6 +2729,8 @@ def main() -> None:
             export = southern_export.copy()
         if asset.asset_id == "terrain.southern_road_wagon_path":
             export = wagon_export.copy()
+        if asset.asset_id in shrine_exports:
+            export = shrine_exports[asset.asset_id].copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2783,6 +2820,9 @@ def main() -> None:
             (ROOT / asset.export_path).write_bytes(accepted_southern_path.read_bytes())
         if asset.asset_id == "terrain.southern_road_wagon_path":
             (ROOT / asset.export_path).write_bytes(accepted_wagon_path.read_bytes())
+        for asset_id, filename, proof_name, *_ in shrine_assets:
+            if asset.asset_id == f"terrain.{asset_id}":
+                (ROOT / asset.export_path).write_bytes((REVIEW / proof_name).read_bytes())
         export_images[asset.asset_id] = export
 
     create_ora(
@@ -3588,6 +3628,14 @@ def main() -> None:
             "import_fix_alpha_border": False,
             "master_scaling": "nearest-neighbour 2x of exact accepted export",
         },
+        **{f"{asset_id}_provenance": {
+            "accepted_proof": f"review/{proof_name}", "accepted_proof_sha256": sha,
+            "master": f"masters/terrain-{filename}.ora",
+            "recipe_sha256": hash_file(ROOT / "tools" / recipe),
+            "world_origin": list(origin), "world_position": list(center), "z_index": z,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        } for asset_id, filename, proof_name, _, recipe, origin, center, z, sha in shrine_assets},
         "southern_road_wagon_path_provenance": {
             "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
             "accepted_proof_sha256": hash_file(accepted_wagon_path),

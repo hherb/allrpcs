@@ -1,8 +1,8 @@
 # Proposed Shrine–Southern Road production/runtime promotion
 
-Status: proposed on 2026-10-02; separate owner approval is pending. The accepted
+Status: owner-approved on 2026-10-02 ("Approved"); runtime views were separately accepted ("approved") on 2026-10-02. The accepted
 [endpoint blend](shrine-southern-road-path-blend.md) supplies the exact presentation.
-Approval of this scope would authorize only the two assets and wiring described below.
+The approval authorizes only the two assets and wiring described below.
 
 ## Exact assets and placement
 

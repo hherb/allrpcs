@@ -96,8 +96,10 @@ adds only a local 48px blend band in the disposable scene. The owner accepted th
 on 2026-10-02, including a slight triangle at the left side of the intersection. Capture
 differences are confined to the projected patch; the original correction/failed-strip evidence
 and accepted runtime assets remain unchanged. The [named promotion scope](art-direction/production-proof/corrected/review/shrine-southern-road-path-promotion-scope.md)
-now specifies two independent textures under one presentation owner at z=-72/-69, preserving
-the exact accepted pixels. Production/runtime work still needs separate approval.
+was separately approved on 2026-10-02. Two independent textures now retain the exact accepted
+pixels under one runtime presentation owner at z=-72/-69. All 18 [runtime views](art-direction/production-proof/corrected/review/shrine-southern-road-path-runtime-result.md)
+match the accepted external blend PNG bytes; the owner accepted the runtime views on
+2026-10-02 ("approved").
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

@@ -2,40 +2,40 @@
 
 ## Current state
 
-Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 77 manifest-bound exports
-and 28 editable OpenRaster masters. Square–Garden, Square–Sickhouse, Square–Southern Road
-and Southern Road–Wagon ordinary runtime views are owner-accepted.
+Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 79 manifest-bound
+exports and 30 editable OpenRaster masters. Square–Garden, Square–Sickhouse,
+Square–Southern Road, Southern Road–Wagon and Shrine–Southern Road runtime views are
+owner-accepted. The latest [18 Shrine runtime views](art-direction/production-proof/corrected/review/shrine-southern-road-path-runtime-result.md)
+were accepted on 2026-10-02 ("approved") after separate named promotion approval.
 
-The external [Shrine–Southern Road endpoint blend](art-direction/production-proof/corrected/review/shrine-southern-road-path-blend.md)
-is visually accepted on 2026-10-02, including the slight triangle at the left intersection
-edge ("it is acceptable as is"). Preserve those exact pixels; the triangle's cause remains
-unconfirmed. The original correction, blend and failed-strip evidence remain immutable.
+The Shrine presentation owns two independent lossless textures/editable 2x masters under
+one identity owner: incoming at z=-72, and a 160x160 endpoint patch centered at (1480,1360),
+z=-69. All 18 runtime PNGs match the accepted external blend bytes. Preserve the accepted
+slight triangle; its cause remains unconfirmed. Accepted Square/Road–Wagon assets, shrine
+shell/opening, labels, outlines/collisions and physical routes remain intact. Only the exact
+Shrine–Road visual route and upstream brown RoadArea fill are replaced/hidden.
 
-The [exact named promotion proposal](art-direction/production-proof/corrected/review/shrine-southern-road-path-promotion-scope.md)
-is now recorded: two independent textures under one presentation owner, incoming correction
-at z=-72 and local 160x160 endpoint patch at (1480,1360), z=-69. This session changes only
-documentation. Separate production/runtime approval is still pending.
+Full host `./scripts/quality.sh` passed asset validators, formatting, zero-warning build,
+all 5,033 tests, scenario validation, complete credential-free Godot smokes and Compatibility
+launch. Second production build reproduced all 110 asset/master/manifest hashes. Cumulative
+review and focused scope/capture checks passed; all 414 retained hashes match. Sandbox Godot
+log/settings writes and graphical capture required identical host retries, which passed.
 
-Session review found no code changes or remaining scope issue. The recursive Shrine blend
-validator passed with `--check-live-baseline` (all 417 pinned files unchanged); proposal
-links, both accepted texture hashes, dimensions and placement were verified. Full quality
-was not rerun for this documentation-only slice; the prior full result is in the blend report.
+Archived failed-strip/correction/blend recipes, captures and evidence remain immutable.
+Their optional 417-file live-baseline checks intentionally reject the approved promotion;
+never rewrite those baselines. Use Pillow-enabled `/opt/homebrew/bin/python3` with
+`validate_shrine_southern_road_path.py --check-captures --check-promotion-scope` from the
+corrected tools directory for the promotion's exact asset/master/import and authority checks.
+Regular quality includes its validator and live decoded-texture/layer smoke.
 
 ## Exact next bounded slice
 
-Obtain owner approval of the linked proposal before any production/runtime work. After
-approval, implement only its two named assets, editable masters/exports, independent lossless
-imports and presentation wiring. Preserve existing Square/Road–Wagon sprites and textures,
-shrine shell/opening, labels, outlines/collisions and physical routes. Never promote the
-proof's hidden Seeker/HUD or camera framing into ordinary startup.
-
-Validate master/export/runtime parity and presentation authority; capture all 18 runtime
-midpoint/shrine-exit/junction views at 0.8x/1.0x/2.0x in both established frame sizes. Obtain
-runtime visual confirmation before publishing the promoted slice. Keep archived proof
-validators intact; their optional 417-file live baseline intentionally becomes obsolete
-after an approved promotion. Before promotion, use Pillow-enabled `/opt/homebrew/bin/python3`
-with `check_shrine_southern_road_path_blend.py --check-live-baseline`.
+Propose one named external-only Woodland Clearing–Shrine path feasibility scope for the
+retained 96px route `(1000,350)` → `(380,300)`. Inspect the woodland/shrine openings and
+adjacent accepted path layers before specifying source texture, footprint and review views.
+Obtain that scope's approval before generating another asset/proof; no next-asset approval
+is inferred. Keep all proof framing and Seeker/HUD hiding external to ordinary startup.
 
 Preserve navigation, camera, scenario, dialogue, clues, discovery, treatment, save, provider,
 UI, audio, release and signing. Visual acceptance establishes no pacing, usability,
-accessibility, gameplay or next-asset acceptance. Direct-main commit/push covers reviewed work.
+accessibility or gameplay acceptance. Direct-main commit/push covers reviewed work only.

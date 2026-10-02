@@ -295,10 +295,12 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || wagonPath.GetChildCount() != 0
             || !roadFill.Points.SequenceEqual([new Vector2(572.0f, 460.0f), new Vector2(1500.0f, 1400.0f)])
             || roadFill.Width != 96.0f
+            || roadFill.Visible
             || routePresentation.GetChildren().OfType<Line2D>().Any(line =>
                 line.Points.SequenceEqual([new Vector2(1500.0f, 1400.0f), new Vector2(1900.0f, 1640.0f)]))
-            || routePresentation.GetChildren().Count(child => child is Line2D) != 7
+            || routePresentation.GetChildren().Count(child => child is Line2D) != 6
             || routePresentation.GetChildren().Count(child => child is Sprite2D) != 9
+            || routePresentation.GetNode<Node2D>("ShrineSouthernRoadPath").GetChildCount() != 2
             || routePresentation.GetChildren().OfType<Line2D>()
                 .Any(line => line.Points.Contains(new Vector2(2300.0f, 1300.0f))
                     || line.Points.Contains(new Vector2(2640.0f, 1450.0f))

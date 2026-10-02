@@ -34,7 +34,8 @@ def sha256(path: Path) -> str:
 
 
 def validate_alpha(
-    path: Path, image: Image.Image, category: str, expected_hidden_rgb_pixels: int = 0
+    path: Path, image: Image.Image, category: str, expected_hidden_rgb_pixels: int = 0,
+    require_opaque: bool = True
 ) -> None:
     """Require useful alpha coverage and only the explicitly allowed hidden RGB count."""
 
@@ -42,7 +43,8 @@ def validate_alpha(
     alpha = image.getchannel("A")
     histogram = alpha.histogram()
     require(sum(histogram[1:]) > 0, f"{path}: no visible pixels")
-    require(histogram[255] > 0, f"{path}: no fully opaque pixels")
+    if require_opaque:
+        require(histogram[255] > 0, f"{path}: no fully opaque pixels")
 
     red, green, blue, _ = image.split()
     hidden = ImageOps.invert(alpha)
@@ -299,7 +301,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 77, f"expected 77 assets, got {len(assets)}")
+    require(len(assets) == 79, f"expected 79 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -350,6 +352,7 @@ def main() -> None:
         validate_alpha(
             path, image.convert("RGBA"), asset["category"],
             expected_hidden_rgb_pixels=84 if asset_id == "terrain.village_edge_square_connector" else 0,
+            require_opaque=asset_id != "terrain.shrine_southern_road_endpoint_blend",
         )
 
     stream_proof = manifest["stream_water_bank_feasibility"]
@@ -1593,6 +1596,8 @@ def main() -> None:
         "terrain-square-sickhouse-path.ora",
         "terrain-square-southern-road-path.ora",
         "terrain-southern-road-wagon-path.ora",
+        "terrain-shrine-southern-road-path.ora",
+        "terrain-shrine-southern-road-endpoint-blend.ora",
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition.ora",
@@ -1632,7 +1637,7 @@ def main() -> None:
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
     print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
     print("stream feasibility: repeatable water, mirrored banks/caps, exact crossing and views")
-    print("editable masters: 28 valid OpenRaster archives")
+    print("editable masters: 30 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

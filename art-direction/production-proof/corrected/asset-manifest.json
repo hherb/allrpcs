@@ -485,6 +485,40 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "shrine_southern_road_path_provenance": {
+    "accepted_proof": "review/shrine-southern-road-path-correction-overlay.png",
+    "accepted_proof_sha256": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e",
+    "master": "masters/terrain-shrine-southern-road-path.ora",
+    "recipe_sha256": "c70f7da32a446eed0d3f267436c9aac34cbfdf2ec371e966bb17dc01e216857a",
+    "world_origin": [
+      432,
+      400
+    ],
+    "world_position": [
+      1008,
+      940
+    ],
+    "z_index": -72,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "shrine_southern_road_endpoint_blend_provenance": {
+    "accepted_proof": "review/shrine-southern-road-path-blend-overlay.png",
+    "accepted_proof_sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720",
+    "master": "masters/terrain-shrine-southern-road-endpoint-blend.ora",
+    "recipe_sha256": "57fbeab8ad58e24fa93888b30ca4e65961d89a3ed69fc4f46365f479bf715ce2",
+    "world_origin": [
+      1400,
+      1280
+    ],
+    "world_position": [
+      1480,
+      1360
+    ],
+    "z_index": -69,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "southern_road_wagon_path_provenance": {
     "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
     "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
@@ -2846,6 +2880,66 @@
       },
       "godot_import_proof": true,
       "sha256": "10ca3501c9ea78c9d2d4f80e95c0569a84eae55ae94d6091922e69e69310127b"
+    },
+    {
+      "id": "terrain.shrine_southern_road_path",
+      "category": "terrain",
+      "source": "tools/build_shrine_southern_road_path_correction.py",
+      "export": "exports/terrain/shrine-southern-road-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1152,
+        "height": 1080
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 1152,
+        "height": 1080
+      },
+      "master_dimensions_pixels": {
+        "width": 2304,
+        "height": 2160,
+        "scale": 2
+      },
+      "contact_baseline": 1080,
+      "pivot": {
+        "x": 576,
+        "y": 540
+      },
+      "godot_import_proof": true,
+      "sha256": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e"
+    },
+    {
+      "id": "terrain.shrine_southern_road_endpoint_blend",
+      "category": "terrain",
+      "source": "tools/build_shrine_southern_road_path_blend.py",
+      "export": "exports/terrain/shrine-southern-road-endpoint-blend.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 160
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 160
+      },
+      "master_dimensions_pixels": {
+        "width": 320,
+        "height": 320,
+        "scale": 2
+      },
+      "contact_baseline": 160,
+      "pivot": {
+        "x": 80,
+        "y": 80
+      },
+      "godot_import_proof": true,
+      "sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720"
     }
   ]
 }

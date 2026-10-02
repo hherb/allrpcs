@@ -439,8 +439,10 @@ Acceptance:
   slight triangle at the left side of the intersection ("it is acceptable as is").
 - [x] Propose the [exact named Shrine–Southern Road promotion](art-direction/production-proof/corrected/review/shrine-southern-road-path-promotion-scope.md),
   retaining accepted pixels and the incoming/endpoint layer ordering under one presentation owner.
-- [ ] Obtain separate approval for that scope before production/runtime work, then validate
-  both independent assets and obtain owner visual confirmation of all 18 runtime views.
+- [x] Obtain separate approval for that scope on 2026-10-02; implement two exact assets,
+  editable masters and independent lossless imports with retained z=-72/-69 runtime layers.
+- [x] Validate asset/master/import parity and all 18 runtime captures against accepted blend bytes.
+- [x] Obtain owner visual confirmation of all 18 Shrine–Southern Road runtime views on 2026-10-02 ("approved").
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

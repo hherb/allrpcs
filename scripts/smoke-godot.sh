@@ -11,6 +11,8 @@ export ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1
 godot --headless --editor --path "$repository_root/game" --quit-after 120
 godot --headless --path "$repository_root/game" \
     res://DirectionAImportProof.tscn --quit-after 30
+godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-shrine-southern-road-runtime.gd"
 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK=1 \
