@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "scripts/capture-southern-road-wagon-path-trim.gd": "20e9b4cdc74a1b1ca8427639dbb47d238d97589f4c5dafc11201f15444875d4e",
+    "art-direction/production-proof/corrected/tools/build_southern_road_wagon_path_trim.py": "b1ceeff545529512f6116cfb1c4c4b23903a9d43730879352e91430319dc45f5"
+  },
+  "images": {
+    "southern-road-wagon-path-trim-0.8x-tall.png": "d864c3096b71ad22cfc55e201d915fe3e8519bff2eea1de85628532218e41cdf",
+    "southern-road-wagon-path-trim-0.8x-wide.png": "0c8f4887865b28ec3efde2b4c6047f394edfd099a1c85bbdeba8fdb880170655",
+    "southern-road-wagon-path-trim-1.0x-tall.png": "f7266dc71d4c6646f2ccde8b42aa00379e284b6392068385b2e7c0f80610549b",
+    "southern-road-wagon-path-trim-1.0x-wide.png": "021062751a9e44cd1dcf4075ed346c7dea680b3627506c55a0f8bbe9f883f163",
+    "southern-road-wagon-path-trim-2.0x-tall.png": "062c727498ca99756bd6ba9e0c48ecf7e5d7b3b64365a1dbf02f7a4b4de245ae",
+    "southern-road-wagon-path-trim-2.0x-wide.png": "bcb2d1be722b79a7f9f4f335a1ab4cc720d2510bc8b10bf4e5634745a29bc90d",
+    "southern-road-wagon-path-trim-overlay.png": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799"
+  }
+}

@@ -418,8 +418,11 @@ Acceptance:
   views; retain the failed strip and document the bent road presentation versus straight physical route.
 - [x] Develop one external-only world-aligned Southern Road–Wagon correction with six views,
   bent-road coverage, and explicitly documented disposable road-fill substitution.
-- [ ] Obtain owner review of all six corrected Southern Road–Wagon views, including retained
-  upstream brown fill and straight outlines, before proposing any named runtime promotion.
+- [x] Obtain owner review of the Southern Road–Wagon correction: visually approved except
+  for a left/east overshoot; retain this bounded acceptance and no promotion authority.
+- [x] Produce one external-only incoming-tip trim from 48 to 16 pixels, retaining prior evidence.
+- [ ] Confirm the intended overshoot side and owner acceptance of the adjusted junction tip
+  before proposing any separately approved named runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
