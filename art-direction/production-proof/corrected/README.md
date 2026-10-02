@@ -316,3 +316,9 @@ accepted correction export and a 1632x1376 editable master, bringing totals to 8
 and 32 masters. Its sprite at `(1352,632)`, z=-75, is the final route presentation child,
 matching proof ordering against remaining greybox lines. All 18 [runtime views](review/woodland-village-edge-path-runtime-result.md)
 match accepted external PNG bytes. The owner confirmed runtime views on 2026-10-03 ("confirmed").
+
+The next [Village Edge–Stream external proof](review/village-edge-stream-path-feasibility.md)
+and [Village-only correction](review/village-edge-stream-path-correction.md) retain all 451
+runtime/production/physical files. The correction clips 17,406 source samples hidden by the
+Village floor while preserving every bridge-underlay pixel; all 18 rendered views are exact.
+External visual acceptance and separate named promotion approval remain pending.

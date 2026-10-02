@@ -1,0 +1,36 @@
+{
+  "status": "external Village-only clip; visual acceptance pending; no runtime authority",
+  "clipping": {
+    "village_top": 700,
+    "opening_center_x": 1750,
+    "opening_half_width": 48,
+    "marker_half_depth": 8
+  },
+  "removed_visible_pixels": 17406,
+  "changed_views": 0,
+  "inputs": {
+    "art-direction/production-proof/corrected/tools/build_village_edge_stream_path_correction.py": "56aa2bdecc398692537ac5e53bb8eb77b6990e033d77ffbf4cdced2d9fd11a77",
+    "scripts/capture-village-edge-stream-path-correction.gd": "26dd0d61a6d926194b5f90633f0de25204623cf9ada60508e4775e5f23949573"
+  },
+  "images": {
+    "village-edge-stream-path-correction-midpoint-0.8x-tall.png": "146660acb2f538767a98e76149dddee9cdc39ec335e24cba84c49e85ce44b8f1",
+    "village-edge-stream-path-correction-midpoint-0.8x-wide.png": "f03edc8e5443ab4abee16a470a53b65163b8e6d5469c0c2895a47eea72082539",
+    "village-edge-stream-path-correction-midpoint-1.0x-tall.png": "368c5b1a8664fefb9ca659e82d8fa9301406afd9270d931fdda12a8c2d6900dc",
+    "village-edge-stream-path-correction-midpoint-1.0x-wide.png": "b2685dd7df5a774ed3399e98e7d10b2d28769c2800f29dbcb0d5e67ceb5f9f29",
+    "village-edge-stream-path-correction-midpoint-2.0x-tall.png": "a51319bd8789903bec32afb9e58102bd5a79f3c38f88c555285161b51eea9442",
+    "village-edge-stream-path-correction-midpoint-2.0x-wide.png": "9fee32630cfc347bce71926cf2ad69f1146dfa06e5de59314363a906d5ffcef4",
+    "village-edge-stream-path-correction-overlay.png": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f",
+    "village-edge-stream-path-correction-stream-entry-0.8x-tall.png": "6d50d29d5a4278c4ff6f2ff73af2bfa432f3825461534996527f188582a24f55",
+    "village-edge-stream-path-correction-stream-entry-0.8x-wide.png": "611a311e759876fd97a128c39f63944e529d06ac7f4dbed7eb62176c77a45625",
+    "village-edge-stream-path-correction-stream-entry-1.0x-tall.png": "370ca05df818d8299b7a9926b39eeee408c7bfbeeb4ae67d11b9e29b4f3d4922",
+    "village-edge-stream-path-correction-stream-entry-1.0x-wide.png": "8f0b7f417c004b9bf67df5e8da0be226599a8d2ea003c617a256b8d94d4caf91",
+    "village-edge-stream-path-correction-stream-entry-2.0x-tall.png": "26d13b59277203551b0f9afdb7ed93dc7add2eef209f19b6e8cea162938eb4b4",
+    "village-edge-stream-path-correction-stream-entry-2.0x-wide.png": "b3f8d0f7f7dfd3ad7871352ddfda948f710f32a3bf577352c32c0a3ac87c9004",
+    "village-edge-stream-path-correction-village-entry-0.8x-tall.png": "94cdea81d45eeb8620706ddf2a3245a6b2913f17571224a1e3951cd30a3e0a05",
+    "village-edge-stream-path-correction-village-entry-0.8x-wide.png": "babce35f2750c83e3b11fa98f5dc2aaaa53b26ee48be1fc04e6fe0e8c7891602",
+    "village-edge-stream-path-correction-village-entry-1.0x-tall.png": "aa85923a5fabc19a462885488c140fabd4d363d4c4933b4753cbdd7badc36a1a",
+    "village-edge-stream-path-correction-village-entry-1.0x-wide.png": "a80e850d0971429226b5aed98d366d78af8554874be3559324ae603998035bcc",
+    "village-edge-stream-path-correction-village-entry-2.0x-tall.png": "7e5ff7130e931670177d86643988132e7f22e7158a312184616cf94eacacb6bd",
+    "village-edge-stream-path-correction-village-entry-2.0x-wide.png": "90194f99a006013958790cc5cfc9f0024eb9db3d5afddcbf3e7ffd0b656b431a"
+  }
+}

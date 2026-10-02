@@ -129,6 +129,12 @@ the visual route at `(1352,632)`, z=-75, as the final route presentation child. 
 [runtime views](art-direction/production-proof/corrected/review/woodland-village-edge-path-runtime-result.md)
 match the accepted correction PNG bytes; the owner confirmed runtime views on 2026-10-03 ("confirmed").
 
+The next [external Village Edge–Stream proof](art-direction/production-proof/corrected/review/village-edge-stream-path-feasibility.md)
+and [Village-only source clip](art-direction/production-proof/corrected/review/village-edge-stream-path-correction.md)
+retain 18 identical views and all 451 runtime/production/physical baseline files. The clip removes
+unused coverage behind the Village floor while preserving the existing Stream bridge underlay.
+External visual acceptance and separate named promotion approval are pending.
+
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into
