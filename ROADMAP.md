@@ -452,7 +452,9 @@ Acceptance:
 - [x] Retain 18 failed Woodland–Shrine unchanged-source views, opening-fringe and interior-tint evidence.
 - [x] Develop one bounded external shrine-entry clip under standing proof authorization; preserve
   failed evidence and all 432 runtime/production/import/physical baseline files.
-- [ ] Obtain owner visual review of the 18 corrected Woodland–Shrine views before considering
+- [x] Cover the reported Herb Patch–Stone Marker gap with a bounded external 24px junction
+  extension; retain both earlier proofs and the 432-file baseline.
+- [ ] Obtain owner visual review of the 18 [junction-corrected Woodland–Shrine views](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md) before considering
   a separately approved named production/runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.

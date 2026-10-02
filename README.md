@@ -109,8 +109,10 @@ bounded external proof slices; named runtime promotions retain separate approval
 The [Woodland–Shrine strip test](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility.md)
 now retains 18 failed views showing the opening fringe and tinted shrine-interior strip.
 A [bounded external correction](art-direction/production-proof/corrected/review/woodland-shrine-path-correction.md)
-clips only the shrine shell/opening region and supplies 18 views for visual review. All runtime,
-production, import and physical files remain unchanged. No named promotion is approved.
+clips only the shrine shell/opening region. The subsequent [Clearing-junction correction](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md)
+extends the proof 24px beneath the accepted end cap to cover the reported gap between Herb
+Patch and Stone Marker, supplying 18 new views for visual review. All runtime, production,
+import and physical files remain unchanged. No named promotion is approved.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

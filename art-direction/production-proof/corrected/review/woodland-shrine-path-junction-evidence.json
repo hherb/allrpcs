@@ -1,0 +1,36 @@
+{
+  "inputs": {
+    "art-direction/production-proof/corrected/tools/build_woodland_shrine_path_junction.py": "23c38fc61ae17d84398cc3b678ed80b19565338b84f273ebc233990d79610c9b",
+    "scripts/capture-woodland-shrine-path-junction.gd": "ea67e6d4c8be9eccb453193cb6f495749bf6ee6bdc8425c16fe924a299cee118",
+    "art-direction/production-proof/corrected/review/woodland-shrine-path-correction-evidence.json": "3a0ce3f2909b6a6b3c897c33914f1000a33d078db0e86adfe98414aeec5ca277"
+  },
+  "images": {
+    "woodland-shrine-path-junction-clearing-junction-0.8x-tall.png": "d027dd34532a75b89db94c3098650db0973a516c11a840d42acc0cf1f1da8edc",
+    "woodland-shrine-path-junction-clearing-junction-0.8x-wide.png": "45584a67ede16fd048a3276c8c2ca9f0b4dd27c0f1843dca2d1623291ba9df64",
+    "woodland-shrine-path-junction-clearing-junction-1.0x-tall.png": "944db9797a3f35b213d4365973c0a287b441c9e2c6d0d0b8da8862dafceba8c9",
+    "woodland-shrine-path-junction-clearing-junction-1.0x-wide.png": "912407fec8f2bc27b9f3c133479eb7baf5523a121641f63b8d7090bb8a33b46a",
+    "woodland-shrine-path-junction-clearing-junction-2.0x-tall.png": "57f8385fec88aaafd35f8c0b25b11cfc23b6632bd49403e03f097cd7767c0eac",
+    "woodland-shrine-path-junction-clearing-junction-2.0x-wide.png": "36da8b079158770fda2169c4a73fce8cd0f6c928c47c6f844115b4d48c1027b2",
+    "woodland-shrine-path-junction-midpoint-0.8x-tall.png": "4d8959c47c99b0010fbde21a2b0e4529352bbaf97087fdb2ade92f798adfa512",
+    "woodland-shrine-path-junction-midpoint-0.8x-wide.png": "d4525b1248d59fdc86d00f91119a26596d5bf597f078eebcc23fa62549abebe6",
+    "woodland-shrine-path-junction-midpoint-1.0x-tall.png": "5b52a140497eeff72f9ad558f368dbe9b189e346729cc393f8179949d53ca02a",
+    "woodland-shrine-path-junction-midpoint-1.0x-wide.png": "5f9466f3a47d64548e3fc5c5597f43fad440250ddac017f6770e4893536e13ef",
+    "woodland-shrine-path-junction-midpoint-2.0x-tall.png": "7739abf24e481a3c4e215c4f10faf4281ef06bdbf6b5e6eace7804af2a30a00e",
+    "woodland-shrine-path-junction-midpoint-2.0x-wide.png": "f1bd37f7db02d3ec29267b8ed934477f07696a59d565962cee988060f36fd284",
+    "woodland-shrine-path-junction-overlay.png": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c",
+    "woodland-shrine-path-junction-shrine-entry-0.8x-tall.png": "4d8959c47c99b0010fbde21a2b0e4529352bbaf97087fdb2ade92f798adfa512",
+    "woodland-shrine-path-junction-shrine-entry-0.8x-wide.png": "d4525b1248d59fdc86d00f91119a26596d5bf597f078eebcc23fa62549abebe6",
+    "woodland-shrine-path-junction-shrine-entry-1.0x-tall.png": "5036905d221f29950e3b01e914665ae00b62e60cdc4905f0252ac6b7ee390b76",
+    "woodland-shrine-path-junction-shrine-entry-1.0x-wide.png": "253dbf44a92a8be3cadbfdedc857a0cd8a580472da6b6f490fdb0e7a7ffc65ae",
+    "woodland-shrine-path-junction-shrine-entry-2.0x-tall.png": "e1586e128d8b360782eba8c447f5683835177bfd0e423996213fd0ee61c17896",
+    "woodland-shrine-path-junction-shrine-entry-2.0x-wide.png": "0f34aceea66834023e10b33c95b70548fe7903169933b943e62ddeed43ca5f56"
+  },
+  "extension": 24,
+  "bounds": [
+    994,
+    300,
+    1028,
+    402
+  ],
+  "changed_overlay_pixels": 2241
+}
