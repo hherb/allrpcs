@@ -75,8 +75,9 @@ production file changed. A [world-aligned correction](art-direction/production-p
 now provides six external views with bent-road coverage and documented disposable fill
 substitution. The owner visually approved these views except for a left-side overshoot. An
 [external tip trim](art-direction/production-proof/corrected/review/southern-road-wagon-path-trim.md)
-shortens the junction extension from 48 to 16 pixels; confirmation of the intended side and
-adjustment is pending. No runtime promotion is authorized.
+shortens the junction extension from 48 to 16 pixels. The owner visually accepted the trim
+on 2026-10-02. The exact named promotion is proposed in `HANDOVER.md`; separate runtime
+promotion approval is pending.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

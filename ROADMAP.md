@@ -421,8 +421,10 @@ Acceptance:
 - [x] Obtain owner review of the Southern Road–Wagon correction: visually approved except
   for a left/east overshoot; retain this bounded acceptance and no promotion authority.
 - [x] Produce one external-only incoming-tip trim from 48 to 16 pixels, retaining prior evidence.
-- [ ] Confirm the intended overshoot side and owner acceptance of the adjusted junction tip
-  before proposing any separately approved named runtime promotion.
+- [x] Confirm the intended overshoot side and owner acceptance of the adjusted junction tip
+  on 2026-10-02 ("Looks good").
+- [ ] Obtain separate approval of the named `terrain.southern_road_wagon_path` production/runtime
+  promotion proposed in `HANDOVER.md`, then implement and obtain ordinary-runtime visual review.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
