@@ -460,6 +460,10 @@ Acceptance:
 - [x] Implement the exact accepted asset/master/imports and runtime visual wiring; preserve physical authority.
 - [x] Obtain owner visual confirmation of all 18 [Woodland–Shrine runtime views](art-direction/production-proof/corrected/review/woodland-shrine-path-runtime-result.md) on 2026-10-02 ("accepted").
 
+- [x] Retain the Woodland Clearing–Village Edge unchanged-source external proof and its 205-sample Village marker fringe.
+- [x] Develop the bounded external Village shell/opening clip under standing authorization; preserve all 438 baseline files.
+- [ ] Obtain owner visual review of the [18 corrected external views](art-direction/production-proof/corrected/review/woodland-village-edge-path-correction.md) before a separately approved named promotion.
+
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
 - [ ] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.

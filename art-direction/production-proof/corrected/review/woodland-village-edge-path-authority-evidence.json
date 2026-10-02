@@ -1,0 +1,7 @@
+{
+  "retained_port_owners": {
+    "game/OpeningRegionVillageTransitionGeometry.cs": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f",
+    "game/OpeningRegionVillageTransitionSceneSource.cs": "2af4b187f414ade23ec1fc8e49952fc59d67d3b0f6c9361f0a1aacb072eab72b",
+    "src/Application/Navigation/OpeningRegionVillageTransitionLayout.cs": "70f6cf6087d609ebd1ff7d4e2f128e9d4907619592ad190d619587c27ad55b66"
+  }
+}

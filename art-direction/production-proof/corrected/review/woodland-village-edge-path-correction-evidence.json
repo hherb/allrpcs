@@ -1,0 +1,35 @@
+{
+  "inputs": {
+    "art-direction/production-proof/corrected/tools/build_woodland_village_edge_path_correction.py": "d66cb6361e1a68433723e949110a4e96632b523a4ed717c604a9df5ffecd61dd",
+    "scripts/capture-woodland-village-edge-path-correction.gd": "b03669d856a58e6b5594c498701a43bf4f0efb33e935b217fe5971681ac1a522",
+    "art-direction/production-proof/corrected/review/woodland-village-edge-path-feasibility-evidence.json": "a0165397bf3bb453f396ca8036beba5b2f6b8d5b4926602c4fa790facac4c770"
+  },
+  "images": {
+    "woodland-village-edge-path-correction-clearing-junction-0.8x-tall.png": "bc8b6104ebb60b229c460e99b600debcd0beda0c329c279b247732f880607714",
+    "woodland-village-edge-path-correction-clearing-junction-0.8x-wide.png": "a6be0707af274c94b8dc00882b2e758fa26fe1013f8d8b7d02d6944b41b79bf1",
+    "woodland-village-edge-path-correction-clearing-junction-1.0x-tall.png": "4009f8959b0b38f14a1208183cf5a1dc52d5fd8e516ac460b0abe5fbc894ab1e",
+    "woodland-village-edge-path-correction-clearing-junction-1.0x-wide.png": "d5e60e794216d68e8a793dd0d9c5240d50711c84a9431d1fa3da4e72b9f4abb9",
+    "woodland-village-edge-path-correction-clearing-junction-2.0x-tall.png": "206cf77e3fd3d58715cdec3e654b583c6d96ea7c612334e30fe25a4c839b66f3",
+    "woodland-village-edge-path-correction-clearing-junction-2.0x-wide.png": "b3bf04882f6a3f09330bf8846b848b2ad2087e74f787b62861b359a00db56c43",
+    "woodland-village-edge-path-correction-midpoint-0.8x-tall.png": "ac858892ae99b4e4f0432ef2840cecbf87c61aa2941498d2fa7f86cae689578d",
+    "woodland-village-edge-path-correction-midpoint-0.8x-wide.png": "6a4ba4832c4c679a34cc5e0cd316b0fcb15b2f61c50e8a0053ef9e0b1e243be6",
+    "woodland-village-edge-path-correction-midpoint-1.0x-tall.png": "49c8d20275a08b4b02d643f67cbf788625dfa66a75fad9cb5ae19bf1b11ac999",
+    "woodland-village-edge-path-correction-midpoint-1.0x-wide.png": "26b8bd718deedbb5150278f25fb7bb688eb2896cb4e628a00a37b4a3405692c8",
+    "woodland-village-edge-path-correction-midpoint-2.0x-tall.png": "1f29a0f13a67796d02bfda149533e7c735756418b427eacce3bb0c4238ccb8e1",
+    "woodland-village-edge-path-correction-midpoint-2.0x-wide.png": "8328dc178f62730dcf2e00c96e84d4c44da39523f6813cf0ea47410597318bf9",
+    "woodland-village-edge-path-correction-overlay.png": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "woodland-village-edge-path-correction-village-entry-0.8x-tall.png": "bc8581ea9d5e5995b0d22dd748776e46b8bd239933daf5322ca1c09c95b717bc",
+    "woodland-village-edge-path-correction-village-entry-0.8x-wide.png": "df89e0243977861f86aba79b793d35103cea07ec4458c381f040af15d3372f0e",
+    "woodland-village-edge-path-correction-village-entry-1.0x-tall.png": "4fb66f88ecf18ebc38707435de377b15b40c38e1ab91c57eec379a576fdafce5",
+    "woodland-village-edge-path-correction-village-entry-1.0x-wide.png": "1cd4961e9d7e04af679042b17931fbb32b79ef4ae5372418486101ef27ddeb1c",
+    "woodland-village-edge-path-correction-village-entry-2.0x-tall.png": "f718f1c2dde5919ea32b93818bc0e0b57d5b7c94d6b08e527d00fdf53a1620ce",
+    "woodland-village-edge-path-correction-village-entry-2.0x-wide.png": "df3900a23254774e4ae03ea7d044e443802d90deb0491c181f3c01e878b2456b"
+  },
+  "clipping": {
+    "edge_left": 1580,
+    "opening_center_y": 805.7142857142857,
+    "opening_half_height": 48,
+    "marker_half_depth": 8
+  },
+  "removed_visible_pixels": 12960
+}

@@ -118,6 +118,13 @@ now replaces its visual route at `(704,328)`, z=-74; all 18 [runtime views](art-
 match accepted proof PNG bytes. Physical/navigation authority remains unchanged. The owner accepted the runtime views on
 2026-10-02 ("accepted").
 
+The following [Woodland Clearing–Village Edge external proof](art-direction/production-proof/corrected/review/woodland-village-edge-path-feasibility.md)
+retains 18 unchanged-source views and a Village opening-fringe measurement. Its
+[external Village-entry correction](art-direction/production-proof/corrected/review/woodland-village-edge-path-correction.md)
+clips only the shell/opening, preserves every surviving pixel and all 438 runtime/production/
+import/physical baseline files, and supplies 18 new views for owner review. No named promotion
+for this route is approved.
+
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into
