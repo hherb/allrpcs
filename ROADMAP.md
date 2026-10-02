@@ -463,7 +463,9 @@ Acceptance:
 - [x] Retain the Woodland Clearing–Village Edge unchanged-source external proof and its 205-sample Village marker fringe.
 - [x] Develop the bounded external Village shell/opening clip under standing authorization; preserve all 438 baseline files.
 - [x] Obtain owner visual acceptance of the [18 corrected external views](art-direction/production-proof/corrected/review/woodland-village-edge-path-correction.md) on 2026-10-03 ("approved").
-- [ ] Obtain separate approval for the [named Woodland Clearing–Village Edge production/runtime promotion](art-direction/production-proof/corrected/review/woodland-village-edge-path-promotion-scope.md).
+- [x] Obtain separate approval for the [named Woodland Clearing–Village Edge production/runtime promotion](art-direction/production-proof/corrected/review/woodland-village-edge-path-promotion-scope.md) on 2026-10-03 ("approved").
+- [x] Implement exact accepted asset/master/imports and final-sibling runtime wiring; preserve physical authority.
+- [x] Obtain owner visual confirmation of the [18 runtime views](art-direction/production-proof/corrected/review/woodland-village-edge-path-runtime-result.md) on 2026-10-03 ("confirmed") before direct-main publication.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

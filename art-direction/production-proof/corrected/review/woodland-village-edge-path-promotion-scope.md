@@ -1,6 +1,6 @@
 # Proposed Woodland Clearing–Village Edge production/runtime promotion
 
-Status: awaiting named promotion approval. The owner accepted the
+Status: owner-approved on 2026-10-03 ("approved"); runtime views owner-confirmed on 2026-10-03 ("confirmed"). The owner accepted the
 [18 corrected external views](woodland-village-edge-path-correction.md) on 2026-10-03
 ("approved"). Routine external-proof approval is waived; the standing authorization retains
 separate approval for this named production/runtime boundary.

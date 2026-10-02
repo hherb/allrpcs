@@ -1,4 +1,4 @@
-[gd_scene load_steps=348 format=3]
+[gd_scene load_steps=349 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -540,6 +540,7 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-southern-road-path.png" id="429_runtime_shrine_southern_road_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-southern-road-endpoint-blend.png" id="430_runtime_shrine_southern_road_endpoint_blend"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-shrine-path.png" id="431_runtime_woodland_shrine_path"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/woodland-village-edge-path.png" id="432_runtime_woodland_village_edge_path"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -700,6 +701,7 @@ SouthernRoadWagonPathTexture = ExtResource("428_runtime_southern_road_wagon_path
 ShrineSouthernRoadPathTexture = ExtResource("429_runtime_shrine_southern_road_path")
 ShrineSouthernRoadEndpointBlendTexture = ExtResource("430_runtime_shrine_southern_road_endpoint_blend")
 WoodlandShrinePathTexture = ExtResource("431_runtime_woodland_shrine_path")
+WoodlandVillageEdgePathTexture = ExtResource("432_runtime_woodland_village_edge_path")
 
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")

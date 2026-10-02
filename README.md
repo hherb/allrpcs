@@ -123,7 +123,11 @@ retains 18 unchanged-source views and a Village opening-fringe measurement. Its
 [external Village-entry correction](art-direction/production-proof/corrected/review/woodland-village-edge-path-correction.md)
 clips only the shell/opening, preserves every surviving pixel and all 438 runtime/production/
 import/physical baseline files. The owner accepted its 18 views on 2026-10-03 ("approved").
-The [named promotion proposal](art-direction/production-proof/corrected/review/woodland-village-edge-path-promotion-scope.md) awaits separate approval.
+The [named promotion](art-direction/production-proof/corrected/review/woodland-village-edge-path-promotion-scope.md)
+was separately approved on 2026-10-03 ("approved"). Its exact 816x688 texture now replaces only
+the visual route at `(1352,632)`, z=-75, as the final route presentation child. All 18
+[runtime views](art-direction/production-proof/corrected/review/woodland-village-edge-path-runtime-result.md)
+match the accepted correction PNG bytes; the owner confirmed runtime views on 2026-10-03 ("confirmed").
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

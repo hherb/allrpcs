@@ -536,6 +536,23 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "woodland_village_edge_path_provenance": {
+    "accepted_proof": "review/woodland-village-edge-path-correction-overlay.png",
+    "accepted_proof_sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "master": "masters/terrain-woodland-village-edge-path.ora",
+    "recipe_sha256": "d66cb6361e1a68433723e949110a4e96632b523a4ed717c604a9df5ffecd61dd",
+    "world_origin": [
+      944,
+      288
+    ],
+    "world_position": [
+      1352,
+      632
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "southern_road_wagon_path_provenance": {
     "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
     "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
@@ -2987,6 +3004,36 @@
       },
       "godot_import_proof": true,
       "sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"
+    },
+    {
+      "id": "terrain.woodland_village_edge_path",
+      "category": "terrain",
+      "source": "tools/build_woodland_village_edge_path_correction.py",
+      "export": "exports/terrain/woodland-village-edge-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 816,
+        "height": 688
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 816,
+        "height": 688
+      },
+      "master_dimensions_pixels": {
+        "width": 1632,
+        "height": 1376,
+        "scale": 2
+      },
+      "contact_baseline": 688,
+      "pivot": {
+        "x": 408,
+        "y": 344
+      },
+      "godot_import_proof": true,
+      "sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c"
     }
   ]
 }

@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 80 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 81 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -95,8 +95,8 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 80 exports are RGBA with visible pixels; 79 have fully opaque pixels. The exact accepted
-  Shrine endpoint blend intentionally remains translucent. 78 exports retain no RGB beneath
+- all 81 exports are RGBA with visible pixels; 80 have fully opaque pixels. The exact accepted
+  Shrine endpoint blend intentionally remains translucent. 80 exports retain no RGB beneath
   zero alpha; only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -247,7 +247,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 80 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 81 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -307,6 +307,12 @@ Shrine recipes, captures and evidence remain intact; their frozen live baseline 
 The owner separately approved Woodland–Shrine production/runtime promotion on 2026-10-02.
 `terrain.woodland_shrine_path` retains the exact accepted 704x208 junction-corrected PNG,
 an editable 1408x416 master and independent lossless proof/runtime imports. One sprite at
-`(704,328)`, z=-74, replaces only the retained visual line. Totals are now 80 exports and
+`(704,328)`, z=-74, replaces only the retained visual line. Totals at that checkpoint were 80 exports and
 31 masters. All 18 [runtime views](review/woodland-shrine-path-runtime-result.md) match accepted
 external proof PNG bytes; the owner accepted the runtime views on 2026-10-02 ("accepted").
+
+The separately approved Woodland Clearing–Village Edge promotion adds one exact 816x688
+accepted correction export and a 1632x1376 editable master, bringing totals to 81 exports
+and 32 masters. Its sprite at `(1352,632)`, z=-75, is the final route presentation child,
+matching proof ordering against remaining greybox lines. All 18 [runtime views](review/woodland-village-edge-path-runtime-result.md)
+match accepted external PNG bytes. The owner confirmed runtime views on 2026-10-03 ("confirmed").

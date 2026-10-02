@@ -15,6 +15,8 @@ godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-shrine-southern-road-runtime.gd"
 godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-woodland-shrine-runtime.gd"
+godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-woodland-village-edge-runtime.gd"
 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK=1 \

@@ -28,6 +28,7 @@ python3 art-direction/production-proof/corrected/tools/check_woodland_shrine_pat
 python3 art-direction/production-proof/corrected/tools/check_woodland_shrine_path_junction.py
 python3 art-direction/production-proof/corrected/tools/validate_woodland_shrine_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/check_woodland_village_edge_path.py
+python3 art-direction/production-proof/corrected/tools/validate_woodland_village_edge_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_shrine_southern_road_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_southern_road_wagon_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_square_southern_road_path.py --check-captures

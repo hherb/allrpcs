@@ -2341,6 +2341,8 @@ def main() -> None:
 
     from build_woodland_shrine_path_junction import compose as compose_woodland
 
+    from build_woodland_village_edge_path_correction import compose as compose_village_edge
+
     accepted_path_assets = [
         ("shrine_southern_road_path", "shrine-southern-road-path",
          "shrine-southern-road-path-correction-overlay.png", compose_shrine,
@@ -2354,6 +2356,10 @@ def main() -> None:
          "woodland-shrine-path-junction-overlay.png", compose_woodland,
          "build_woodland_shrine_path_junction.py", (352, 224), (704, 328), -74,
          "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"),
+        ("woodland_village_edge_path", "woodland-village-edge-path",
+         "woodland-village-edge-path-correction-overlay.png", compose_village_edge,
+         "build_woodland_village_edge_path_correction.py", (944, 288), (1352, 632), -75,
+         "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c"),
     ]
     accepted_path_exports = {}
     for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in accepted_path_assets:
