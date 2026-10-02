@@ -72,6 +72,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? ShrineSouthernRoadEndpointBlendTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Woodland–Shrine path presentation.</summary>
+    [Export]
+    public Texture2D? WoodlandShrinePathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -104,6 +108,12 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 Sprite2D path = CreateStraightPathPresentation(start, end);
                 owner.AddChild(path);
                 owner.AddChild(CreatePathEndCapPresentation(end, path.Rotation));
+                continue;
+            }
+
+            if (firstId == "woodland-clearing" && secondId == "old-shrine")
+            {
+                owner.AddChild(CreateWoodlandShrinePathPresentation(start, end));
                 continue;
             }
 
@@ -382,6 +392,31 @@ public partial class GreyboxNavigation : NavigationRegion2D
             ZIndex = -69,
         });
         return owner;
+    }
+
+    private Sprite2D CreateWoodlandShrinePathPresentation(Vector2 start, Vector2 end)
+    {
+        if (start != new Vector2(1000.0f, 350.0f) || end != new Vector2(380.0f, 300.0f)
+            || OpeningRegionLayoutGeometry.PathWidthPixels != 96)
+        {
+            throw new InvalidOperationException("The Woodland–Shrine path requires its exact retained 96px route.");
+        }
+
+        Texture2D texture = WoodlandShrinePathTexture
+            ?? throw new InvalidOperationException("The Woodland–Shrine path texture is required.");
+        if (texture.GetWidth() != 704 || texture.GetHeight() != 208)
+        {
+            throw new InvalidOperationException("The Woodland–Shrine path requires its exact 704x208 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "WoodlandShrinePath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(704.0f, 328.0f),
+            ZIndex = -74,
+        };
     }
 
     private static Vector2 FindSquareBoundaryExit(

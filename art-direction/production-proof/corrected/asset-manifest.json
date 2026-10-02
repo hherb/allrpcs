@@ -519,6 +519,23 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "woodland_shrine_path_provenance": {
+    "accepted_proof": "review/woodland-shrine-path-junction-overlay.png",
+    "accepted_proof_sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c",
+    "master": "masters/terrain-woodland-shrine-path.ora",
+    "recipe_sha256": "23c38fc61ae17d84398cc3b678ed80b19565338b84f273ebc233990d79610c9b",
+    "world_origin": [
+      352,
+      224
+    ],
+    "world_position": [
+      704,
+      328
+    ],
+    "z_index": -74,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "southern_road_wagon_path_provenance": {
     "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
     "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
@@ -2940,6 +2957,36 @@
       },
       "godot_import_proof": true,
       "sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720"
+    },
+    {
+      "id": "terrain.woodland_shrine_path",
+      "category": "terrain",
+      "source": "tools/build_woodland_shrine_path_junction.py",
+      "export": "exports/terrain/woodland-shrine-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 704,
+        "height": 208
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 704,
+        "height": 208
+      },
+      "master_dimensions_pixels": {
+        "width": 1408,
+        "height": 416,
+        "scale": 2
+      },
+      "contact_baseline": 208,
+      "pivot": {
+        "x": 352,
+        "y": 104
+      },
+      "godot_import_proof": true,
+      "sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"
     }
   ]
 }

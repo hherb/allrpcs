@@ -2339,7 +2339,9 @@ def main() -> None:
     from build_shrine_southern_road_path_correction import compose as compose_shrine
     from build_shrine_southern_road_path_blend import compose as compose_shrine_blend
 
-    shrine_assets = [
+    from build_woodland_shrine_path_junction import compose as compose_woodland
+
+    accepted_path_assets = [
         ("shrine_southern_road_path", "shrine-southern-road-path",
          "shrine-southern-road-path-correction-overlay.png", compose_shrine,
          "build_shrine_southern_road_path_correction.py", (432, 400), (1008, 940), -72,
@@ -2348,17 +2350,21 @@ def main() -> None:
          "shrine-southern-road-path-blend-overlay.png", compose_shrine_blend,
          "build_shrine_southern_road_path_blend.py", (1400, 1280), (1480, 1360), -69,
          "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720"),
+        ("woodland_shrine_path", "woodland-shrine-path",
+         "woodland-shrine-path-junction-overlay.png", compose_woodland,
+         "build_woodland_shrine_path_junction.py", (352, 224), (704, 328), -74,
+         "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"),
     ]
-    shrine_exports = {}
-    for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in shrine_assets:
+    accepted_path_exports = {}
+    for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in accepted_path_assets:
         accepted_path = REVIEW / proof_name
         if hash_file(accepted_path) != sha:
-            raise ValueError("accepted Shrine path proof changed")
+            raise ValueError("accepted path proof changed")
         export = compose_asset()
         with Image.open(accepted_path) as accepted:
             if export.tobytes() != accepted.convert("RGBA").tobytes():
-                raise ValueError("Shrine path recipe no longer matches accepted pixels")
-        shrine_exports[f"terrain.{asset_id}"] = export
+                raise ValueError("path recipe no longer matches accepted pixels")
+        accepted_path_exports[f"terrain.{asset_id}"] = export
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2703,8 +2709,8 @@ def main() -> None:
                 )
             )
 
-    for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in shrine_assets:
-        export = shrine_exports[f"terrain.{asset_id}"]
+    for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in accepted_path_assets:
+        export = accepted_path_exports[f"terrain.{asset_id}"]
         master = export.resize((export.width * 2, export.height * 2), Image.Resampling.NEAREST)
         assets.append(Asset(
             f"terrain.{asset_id}", "terrain", Path(f"exports/terrain/{filename}.png"),
@@ -2729,8 +2735,8 @@ def main() -> None:
             export = southern_export.copy()
         if asset.asset_id == "terrain.southern_road_wagon_path":
             export = wagon_export.copy()
-        if asset.asset_id in shrine_exports:
-            export = shrine_exports[asset.asset_id].copy()
+        if asset.asset_id in accepted_path_exports:
+            export = accepted_path_exports[asset.asset_id].copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2820,7 +2826,7 @@ def main() -> None:
             (ROOT / asset.export_path).write_bytes(accepted_southern_path.read_bytes())
         if asset.asset_id == "terrain.southern_road_wagon_path":
             (ROOT / asset.export_path).write_bytes(accepted_wagon_path.read_bytes())
-        for asset_id, filename, proof_name, *_ in shrine_assets:
+        for asset_id, filename, proof_name, *_ in accepted_path_assets:
             if asset.asset_id == f"terrain.{asset_id}":
                 (ROOT / asset.export_path).write_bytes((REVIEW / proof_name).read_bytes())
         export_images[asset.asset_id] = export
@@ -3635,7 +3641,7 @@ def main() -> None:
             "world_origin": list(origin), "world_position": list(center), "z_index": z,
             "import_fix_alpha_border": False,
             "master_scaling": "nearest-neighbour 2x of exact accepted export",
-        } for asset_id, filename, proof_name, _, recipe, origin, center, z, sha in shrine_assets},
+        } for asset_id, filename, proof_name, _, recipe, origin, center, z, sha in accepted_path_assets},
         "southern_road_wagon_path_provenance": {
             "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
             "accepted_proof_sha256": hash_file(accepted_wagon_path),

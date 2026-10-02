@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 79 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 80 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -95,7 +95,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 79 exports are RGBA with visible pixels; 78 have fully opaque pixels. The exact accepted
+- all 80 exports are RGBA with visible pixels; 79 have fully opaque pixels. The exact accepted
   Shrine endpoint blend intentionally remains translucent. 78 exports retain no RGB beneath
   zero alpha; only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
@@ -247,7 +247,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 79 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 80 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -296,9 +296,17 @@ checks the original live inputs and therefore intentionally rejects the promoted
 
 
 The separately approved Shrine–Southern Road promotion adds two independent assets and
-editable 2x masters, bringing the current total to 79 exports and 30 masters. Its incoming
+editable 2x masters, bringing the then-current total to 79 exports and 30 masters. Its incoming
 path and translucent local endpoint patch retain the exact accepted bytes at z=-72/-69
 under one runtime presentation owner. All 18 [ordinary runtime views](review/shrine-southern-road-path-runtime-result.md)
 match the accepted blend PNG bytes. The owner accepted the runtime views on 2026-10-02
 ("approved"). All archived
 Shrine recipes, captures and evidence remain intact; their frozen live baseline is superseded.
+
+
+The owner separately approved Woodland–Shrine production/runtime promotion on 2026-10-02.
+`terrain.woodland_shrine_path` retains the exact accepted 704x208 junction-corrected PNG,
+an editable 1408x416 master and independent lossless proof/runtime imports. One sprite at
+`(704,328)`, z=-74, replaces only the retained visual line. Totals are now 80 exports and
+31 masters. All 18 [runtime views](review/woodland-shrine-path-runtime-result.md) match accepted
+external proof PNG bytes; the owner accepted the runtime views on 2026-10-02 ("accepted").

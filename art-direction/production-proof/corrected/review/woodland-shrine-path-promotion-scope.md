@@ -1,6 +1,6 @@
 # Proposed Woodland–Shrine production/runtime promotion
 
-Status: awaiting named promotion approval. The owner accepted the
+Status: owner-approved on 2026-10-02 ("approved"); runtime views were separately accepted on 2026-10-02 ("accepted"). The owner accepted the
 [junction-corrected external views](woodland-shrine-path-junction.md) on 2026-10-02
 ("Acceptable"). Routine external-proof scope approval is waived; this proposal covers the
 separate production/runtime boundary retained in the standing authorization.

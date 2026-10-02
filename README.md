@@ -112,8 +112,11 @@ A [bounded external correction](art-direction/production-proof/corrected/review/
 clips only the shrine shell/opening region. The subsequent [Clearing-junction correction](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md)
 extends the proof 24px beneath the accepted end cap to cover the reported gap between Herb
 Patch and Stone Marker. The owner accepted its 18 external views on 2026-10-02 ("Acceptable").
-The [named promotion proposal](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md) awaits separate approval. All runtime, production,
-import and physical files remain unchanged. No named promotion is approved.
+The [named promotion](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md)
+was separately approved on 2026-10-02 ("approved"). One exact 704x208 manifest-bound texture
+now replaces its visual route at `(704,328)`, z=-74; all 18 [runtime views](art-direction/production-proof/corrected/review/woodland-shrine-path-runtime-result.md)
+match accepted proof PNG bytes. Physical/navigation authority remains unchanged. The owner accepted the runtime views on
+2026-10-02 ("accepted").
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

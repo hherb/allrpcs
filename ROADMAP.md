@@ -456,7 +456,9 @@ Acceptance:
   extension; retain both earlier proofs and the 432-file baseline.
 - [x] Obtain owner visual acceptance of the 18 [junction-corrected Woodland–Shrine views](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md)
   on 2026-10-02 ("Acceptable").
-- [ ] Obtain separate approval for the [named Woodland–Shrine production/runtime promotion](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md).
+- [x] Obtain separate approval for the [named Woodland–Shrine production/runtime promotion](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md) on 2026-10-02 ("approved").
+- [x] Implement the exact accepted asset/master/imports and runtime visual wiring; preserve physical authority.
+- [x] Obtain owner visual confirmation of all 18 [Woodland–Shrine runtime views](art-direction/production-proof/corrected/review/woodland-shrine-path-runtime-result.md) on 2026-10-02 ("accepted").
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

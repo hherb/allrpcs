@@ -60,6 +60,7 @@ RUNTIME_ASSETS = (
     ("terrain.southern_road_wagon_path", RUNTIME_ROOT / "southern-road-wagon-path.png", (560, 432)),
     ("terrain.shrine_southern_road_path", RUNTIME_ROOT / "shrine-southern-road-path.png", (1152, 1080)),
     ("terrain.shrine_southern_road_endpoint_blend", RUNTIME_ROOT / "shrine-southern-road-endpoint-blend.png", (160, 160)),
+    ("terrain.woodland_shrine_path", RUNTIME_ROOT / "woodland-shrine-path.png", (704, 208)),
     (
         "terrain.village_edge_square_connector",
         RUNTIME_ROOT / "village-edge-square-connector.png",
