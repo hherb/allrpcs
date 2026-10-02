@@ -89,6 +89,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Sprite2D connector = routePresentation.GetNode<Sprite2D>("VillageEdgeSquareConnector");
         Sprite2D gardenPath = routePresentation.GetNode<Sprite2D>("SquareGardenPath");
         Sprite2D sickhousePath = routePresentation.GetNode<Sprite2D>("SquareSickhousePath");
+        Sprite2D southernPath = routePresentation.GetNode<Sprite2D>("SquareSouthernRoadPath");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -272,11 +273,23 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || sickhousePath.TextureRepeat != CanvasItem.TextureRepeatEnum.Enabled
             || sickhousePath.RegionEnabled
             || sickhousePath.GetChildCount() != 0
-            || routePresentation.GetChildren().Count(child => child is Line2D) != 9
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 7
+            || !HasExactTexture(southernPath, "res://art/runtime/terrain/square-southern-road-path.png", 520, 416)
+            || southernPath.Position != new Vector2(1700.0f, 1232.0f)
+            || southernPath.Scale != Vector2.One
+            || !Mathf.IsZeroApprox(southernPath.Rotation)
+            || !southernPath.Centered
+            || southernPath.Offset != Vector2.Zero
+            || southernPath.TextureRepeat != CanvasItem.TextureRepeatEnum.Disabled
+            || southernPath.RegionEnabled
+            || southernPath.GetChildCount() != 0
+            || routePresentation.GetChildren().Count(child => child is Line2D) != 8
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 8
             || routePresentation.GetChildren().OfType<Line2D>()
                 .Any(line => line.Points.Contains(new Vector2(2300.0f, 1300.0f))
-                    || line.Points.Contains(new Vector2(2640.0f, 1450.0f)))
+                    || line.Points.Contains(new Vector2(2640.0f, 1450.0f))
+                    || (line.Points.Length == 2
+                        && line.Points[0].IsEqualApprox(new Vector2(1944.0f, 1082.857143f))
+                        && line.Points[1] == new Vector2(1500.0f, 1400.0f)))
             || straightPath.GetIndex() >= pathEndCap.GetIndex()
             || pathEndCap.GetIndex() >= openingJunction.GetIndex()
             || openingJunction.GetIndex() >= villageSquareJunction.GetIndex()
@@ -326,6 +339,14 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || sickhousePath.ZIndex >= GetNode<CanvasItem>(
                 "../OpeningRegionFirstPatientSceneSource/Label").ZIndex
             || sickhousePath.ShowBehindParent
+            || southernPath.ZIndex != -71
+            || southernPath.ZIndex >= villageSquareJunction.ZIndex
+            || southernPath.ShowBehindParent
+            || southernPath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionSouthernRoadWagonSceneSource/RoadArea").ZIndex
+            || southernPath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionSouthernRoadWagonSceneSource/RoadLabel").ZIndex
+            || southernPath.ZIndex >= regionOutline.ZIndex
             || connector.ZIndex >= GetNode<CanvasItem>(
                 "../OpeningRegionVillageTransitionSceneSource/SquareEdgeOpening").ZIndex
             || connector.ZIndex >= GetNode<CanvasItem>(
@@ -407,7 +428,6 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Vector2[] destinations =
         [
             new(1700.0f, 900.0f),
-            new(1500.0f, 1400.0f),
         ];
         Line2D[] routes = routePresentation.GetChildren()
             .OfType<Line2D>()
@@ -418,7 +438,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
                     Mathf.Max(
                         Mathf.Abs(line.Points[0].X - square.X),
                         Mathf.Abs(line.Points[0].Y - square.Y)),
-                    line.Points[1] == new Vector2(1700.0f, 900.0f) ? 380.0f : 256.0f))
+                    380.0f))
             .ToArray();
         if (routes.Length != destinations.Length)
         {
@@ -437,9 +457,7 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             Vector2 expectedDirection = (end - square).Normalized();
             Vector2 retainedDirection = (end - start).Normalized();
             Vector2 offset = start - square;
-            float expectedBoundaryDistance = end == new Vector2(1700.0f, 900.0f)
-                ? 380.0f
-                : 256.0f;
+            const float expectedBoundaryDistance = 380.0f;
             if (route.Width != 96.0f
                 || !expectedDirection.IsEqualApprox(retainedDirection)
                 || !Mathf.IsEqualApprox(

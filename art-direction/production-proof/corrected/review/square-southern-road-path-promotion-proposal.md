@@ -3,7 +3,8 @@
 The owner replied "approved" after display of all six corrected external views on 2026-10-02.
 That completes external visual acceptance, including the recorded flat endpoint across the
 unfinished road junction. This proposal names the separate production/runtime scope; approval
-of that scope is pending.
+of that scope was granted with "approved" on 2026-10-02. The named implementation is now
+complete; the ordinary-scene visual checkpoint remains pending.
 
 ## Exact proposed scope
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=343 format=3]
+[gd_scene load_steps=344 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -535,6 +535,7 @@
 [ext_resource type="SpriteFrames" path="res://art/runtime/characters/seeker/walk-animations.tres" id="416_runtime_seeker_walk"]
 [ext_resource type="Script" path="res://SeekerWalkAnimationPresenter.cs" id="417_seeker_walk_presenter"]
 [ext_resource type="Script" path="res://RuntimeSeekerWalkSmokeCheck.cs" id="418_runtime_seeker_walk_check"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/square-southern-road-path.png" id="427_runtime_square_southern_road_path"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -690,6 +691,7 @@ VillageSquareJunctionTexture = ExtResource("420_runtime_village_square_junction"
 VillageEdgeSquareConnectorTexture = ExtResource("424_runtime_village_edge_square_connector")
 SquareGardenPathTexture = ExtResource("425_runtime_square_garden_path")
 SquareSickhousePathTexture = ExtResource("426_runtime_square_sickhouse_path")
+SquareSouthernRoadPathTexture = ExtResource("427_runtime_square_southern_road_path")
 
 [node name="NavigationSmokeCheck" type="Node" parent="."]
 script = ExtResource("5_navigation_check")

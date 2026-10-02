@@ -74,7 +74,7 @@ def main() -> None:
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assets = [asset for asset in manifest["assets"] if asset["godot_import_proof"]]
-    require(len(assets) == 75, f"expected 75 import-proof assets, got {len(assets)}")
+    require(len(assets) == 76, f"expected 76 import-proof assets, got {len(assets)}")
     expected_pngs = {game_path(asset["export"]) for asset in assets}
     actual_pngs = set(GAME_ROOT.rglob("*.png"))
     require(
@@ -146,7 +146,7 @@ def main() -> None:
         require(
             options.get(("params", "process/fix_alpha_border"))
             == ("false" if asset["id"] in {
-                "terrain.village_edge_square_connector", "terrain.square_garden_path", "terrain.square_sickhouse_path",
+                "terrain.village_edge_square_connector", "terrain.square_garden_path", "terrain.square_sickhouse_path", "terrain.square_southern_road_path",
             } else "true"),
             f"{sidecar}: alpha-border processing changed",
         )

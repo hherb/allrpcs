@@ -462,6 +462,29 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "square_southern_road_path_provenance": {
+    "accepted_proof": "review/square-southern-road-path-correction-overlay.png",
+    "accepted_proof_sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "master": "masters/terrain-square-southern-road-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "world_origin": [
+      1440,
+      1024
+    ],
+    "world_position": [
+      1700,
+      1232
+    ],
+    "heading_degrees": 144.462322,
+    "endpoint": [
+      1500,
+      1400
+    ],
+    "overlap_columns": 16,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "village_edge_square_connector_provenance": {
     "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
     "accepted_proof_sha256": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
@@ -1108,6 +1131,36 @@
       },
       "godot_import_proof": true,
       "sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7"
+    },
+    {
+      "id": "terrain.square_southern_road_path",
+      "category": "terrain",
+      "source": "tools/build_square_southern_road_path_correction.py",
+      "export": "exports/terrain/square-southern-road-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 416
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 416
+      },
+      "master_dimensions_pixels": {
+        "width": 1040,
+        "height": 832,
+        "scale": 2
+      },
+      "contact_baseline": 416,
+      "pivot": {
+        "x": 260,
+        "y": 208
+      },
+      "godot_import_proof": true,
+      "sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5"
     },
     {
       "id": "plants.herb_bed_empty",

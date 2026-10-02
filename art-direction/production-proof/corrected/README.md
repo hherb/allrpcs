@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 75 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 76 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -27,7 +27,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
   one 96x96 ordinary preparation table, three matching 96x96 cue overlays, and 24 normalized
   south-, west-, east-, and north-facing Seeker walk frames, eight two-frame idle/breathe frames,
   and 16 four-frame generic reach-and-inspect frames.
-- `masters` contains twenty-five editable layered OpenRaster files for terrain/path, Stream water
+- `masters` contains twenty-seven editable layered OpenRaster files for terrain/path, Stream water
   and banks, the leaf-litter
   ground and five transitions, the path bend, the path T-junction, the path cross-junction, the path
   end-cap, the live-angle opening junction, the Village Square junction, planted herb bed,
@@ -95,7 +95,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 75 exports are RGBA with visible and fully opaque pixels; 74 retain no RGB
+- all 76 exports are RGBA with visible and fully opaque pixels; 75 retain no RGB
   beneath zero alpha. Only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -246,7 +246,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 75 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 76 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -267,3 +267,11 @@ matching presentation line. All previous assets/masters and physical authority a
 The [runtime result](review/square-sickhouse-path-runtime-result.md) records the six matching
 ordinary-scene views; their owner checkpoint was approved on 2026-10-02. The proof now has 75 exports and
 26 layered masters.
+
+The owner accepted the six corrected Square–Southern Road external views and approved its
+named promotion on 2026-10-02. One exact 520x416 export, 1040x832 layered master,
+independent lossless imports, and one sprite at `(1700,1232)`, `z=-71`, with repeat disabled,
+replace only its presentation line. The six ordinary-scene views match the accepted PNG bytes.
+Their separate owner checkpoint remains pending; see the
+[runtime result](review/square-southern-road-path-runtime-result.md). The proof now has 76
+exports and 27 editable masters; previous assets and physical/gameplay authority are unchanged.

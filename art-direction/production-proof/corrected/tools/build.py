@@ -2316,6 +2316,16 @@ def main() -> None:
         if sickhouse_export.tobytes() != accepted.convert("RGBA").tobytes():
             raise ValueError("Square–Sickhouse recipe no longer matches accepted pixels")
     sickhouse_master = sickhouse_export.resize((760, 720), Image.Resampling.NEAREST)
+    accepted_southern_path = REVIEW / "square-southern-road-path-correction-overlay.png"
+    if hash_file(accepted_southern_path) != "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5":
+        raise ValueError("accepted Square–Southern Road proof changed")
+    from build_square_southern_road_path_correction import compose as compose_southern
+
+    southern_export = compose_southern()
+    with Image.open(accepted_southern_path) as accepted:
+        if southern_export.tobytes() != accepted.convert("RGBA").tobytes():
+            raise ValueError("Square–Southern Road recipe no longer matches accepted pixels")
+    southern_master = southern_export.resize((1040, 832), Image.Resampling.NEAREST)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2548,6 +2558,16 @@ def main() -> None:
             "tools/build_square_sickhouse_path_correction.py",
         ),
         Asset(
+            "terrain.square_southern_road_path",
+            "terrain",
+            Path("exports/terrain/square-southern-road-path.png"),
+            (1040, 832),
+            (520, 416),
+            832,
+            southern_master,
+            "tools/build_square_southern_road_path_correction.py",
+        ),
+        Asset(
             "plants.herb_bed_empty",
             "plants",
             Path("exports/plants/herb-bed-empty.png"),
@@ -2650,6 +2670,8 @@ def main() -> None:
             export = garden_export.copy()
         if asset.asset_id == "terrain.square_sickhouse_path":
             export = sickhouse_export.copy()
+        if asset.asset_id == "terrain.square_southern_road_path":
+            export = southern_export.copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2735,6 +2757,8 @@ def main() -> None:
             (ROOT / asset.export_path).write_bytes(accepted_garden_path.read_bytes())
         if asset.asset_id == "terrain.square_sickhouse_path":
             (ROOT / asset.export_path).write_bytes(accepted_sickhouse_path.read_bytes())
+        if asset.asset_id == "terrain.square_southern_road_path":
+            (ROOT / asset.export_path).write_bytes(accepted_southern_path.read_bytes())
         export_images[asset.asset_id] = export
 
     create_ora(
@@ -2979,6 +3003,19 @@ def main() -> None:
             ("unclipped junction-relative continuation reference", sickhouse_reference, 0, 0, False),
             ("exact junction overlap", sickhouse_master.crop((0, 0, 760, 32)), 0, 0, True),
             ("continuation clipped at Sickhouse endpoint", sickhouse_master.crop((0, 32, 760, 720)), 0, 32, True),
+        ],
+    )
+    southern_reference = render_path_leg(
+        export_images["terrain.straight_path"], (520, 416), (760, -124),
+        144.462322, math.hypot(700, 500),
+    ).resize((1040, 832), Image.Resampling.NEAREST)
+    create_ora(
+        MASTERS / "terrain-square-southern-road-path.ora",
+        (1040, 832),
+        [
+            ("unclipped junction-relative continuation reference", southern_reference, 0, 0, False),
+            ("exact junction overlap columns", southern_master.crop((1008, 0, 1040, 832)), 1008, 0, True),
+            ("continuation clipped at Southern Road endpoint", southern_master.crop((0, 0, 1008, 832)), 0, 0, True),
         ],
     )
     create_ora(
@@ -3499,6 +3536,20 @@ def main() -> None:
             "heading_degrees": 51.340192,
             "endpoint": [2640, 1450],
             "overlap_rows": 16,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        },
+        "square_southern_road_path_provenance": {
+            "accepted_proof": "review/square-southern-road-path-correction-overlay.png",
+            "accepted_proof_sha256": hash_file(accepted_southern_path),
+            "master": "masters/terrain-square-southern-road-path.ora",
+            "source_asset": "terrain.straight_path",
+            "source_sha256": hash_file(REPOSITORY_ROOT / "game/art/runtime/terrain/straight-path.png"),
+            "world_origin": [1440, 1024],
+            "world_position": [1700, 1232],
+            "heading_degrees": 144.462322,
+            "endpoint": [1500, 1400],
+            "overlap_columns": 16,
             "import_fix_alpha_border": False,
             "master_scaling": "nearest-neighbour 2x of exact accepted export",
         },

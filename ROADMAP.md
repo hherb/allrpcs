@@ -407,8 +407,12 @@ Acceptance:
   with 1,662 exact overlap pixels and the visible flat road-end limitation, preserving runtime.
 - [x] Obtain owner review of all six corrected Square–Southern Road external views; the owner
   replied "approved" after display on 2026-10-02. This is external visual acceptance only.
-- [ ] Obtain separate approval of the named Square–Southern Road production/runtime promotion
-  before implementing it, then obtain the ordinary-scene visual checkpoint.
+- [x] Obtain separate approval of the named Square–Southern Road production/runtime promotion;
+  the owner replied "approved" on 2026-10-02. Promote only the exact 520x416 export,
+  1040x832 master, independent imports, and one sprite at `(1700,1232)`, `z=-71`, with
+  repeat disabled, replacing only its presentation line and preserving physical/gameplay authority.
+- [ ] Obtain the separate ordinary-scene visual checkpoint for six Square–Southern Road runtime
+  views, which exactly match the accepted external correction.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

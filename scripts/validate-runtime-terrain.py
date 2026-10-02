@@ -56,6 +56,7 @@ RUNTIME_ASSETS = (
     ("terrain.stream_water", RUNTIME_ROOT / "stream-water.png", (128, 96)),
     ("terrain.square_garden_path", RUNTIME_ROOT / "square-garden-path.png", (200, 220)),
     ("terrain.square_sickhouse_path", RUNTIME_ROOT / "square-sickhouse-path.png", (380, 360)),
+    ("terrain.square_southern_road_path", RUNTIME_ROOT / "square-southern-road-path.png", (520, 416)),
     (
         "terrain.village_edge_square_connector",
         RUNTIME_ROOT / "village-edge-square-connector.png",

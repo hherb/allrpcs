@@ -56,6 +56,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? SquareSickhousePathTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Square–Southern Road path presentation.</summary>
+    [Export]
+    public Texture2D? SquareSouthernRoadPathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -103,6 +107,12 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 if (secondId == "sickhouse")
                 {
                     owner.AddChild(CreateSquareSickhousePathPresentation());
+                    continue;
+                }
+
+                if (secondId == "southern-road")
+                {
+                    owner.AddChild(CreateSquareSouthernRoadPathPresentation());
                     continue;
                 }
 
@@ -269,6 +279,25 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Texture = texture,
             TextureRepeat = CanvasItem.TextureRepeatEnum.Enabled,
             Position = new Vector2(2510.0f, 1320.0f),
+            ZIndex = -71,
+        };
+    }
+
+    private Sprite2D CreateSquareSouthernRoadPathPresentation()
+    {
+        Texture2D texture = SquareSouthernRoadPathTexture
+            ?? throw new InvalidOperationException("The Square–Southern Road path is required.");
+        if (texture.GetWidth() != 520 || texture.GetHeight() != 416)
+        {
+            throw new InvalidOperationException("The path must retain its exact 520x416 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "SquareSouthernRoadPath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(1700.0f, 1232.0f),
             ZIndex = -71,
         };
     }

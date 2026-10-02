@@ -8,7 +8,7 @@
     "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
     "game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
     "game/art/runtime/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
-    "art-direction/production-proof/corrected/tools/build.py": "bd63c0117799dcb0ca834780f22af57509c096f4a6b006e997061a915a0b42a8",
+    "art-direction/production-proof/corrected/tools/build.py": "4d0936ce3fc9049cee817e0d3e5fc2b14fa13fcea0bf5841eb0ab957122a850c",
     "art-direction/production-proof/corrected/tools/build_square_southern_road_path_correction.py": "af710d06b9e264fbf72c4e174d470642e03363e0af760109e23fe179303713b3",
     "scripts/capture-square-southern-road-path-proof.gd": "541308727a3cdea2e01a46c339974bdaa72cbd624f2e4477431ef90cf299dcb5"
   },

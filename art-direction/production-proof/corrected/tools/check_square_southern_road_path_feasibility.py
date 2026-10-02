@@ -11,7 +11,7 @@ from PIL import Image
 from build_square_southern_road_path_correction import ORIGIN, SIZE, compose
 from check_village_edge_square_connector_feasibility import ROOT, REVIEW, require
 
-EVIDENCE_HASH = "4e24aa43341245c6c582e9ec1cd1de0e1c8708a11b2f2aa48daf102732ede365"
+EVIDENCE_HASH = "29194fa38715bc113cac35e3a2e6577b6479dd453e1d389b568d4e0d1bc46834"
 
 
 def digest(path):

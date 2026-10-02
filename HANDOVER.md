@@ -2,39 +2,33 @@
 
 ## Current state
 
-Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 75 manifest-bound exports
-and 26 editable OpenRaster masters. Square–Garden and Square–Sickhouse runtime views are
-owner-accepted; the owner replied "approved" after the Sickhouse views on 2026-10-02.
-Its exact named promotion remains complete and validated; see the
-[runtime result](art-direction/production-proof/corrected/review/square-sickhouse-path-runtime-result.md).
+Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 now has 76 manifest-bound
+exports and 27 editable OpenRaster masters. Square–Garden and Square–Sickhouse runtime
+views are owner-accepted. The owner approved the six Square–Southern Road external views
+and its separate named promotion with "approved" on 2026-10-02.
 
-The Square–Southern Road slice is external-only; the owner approved all six final external
-views with "approved" after display on 2026-10-02. Named promotion approval is pending.
-See the [feasibility result](art-direction/production-proof/corrected/review/square-southern-road-path-feasibility.md)
-for six failed strip views, six final 0.8x/1.0x/2.0x wide/tall views, recipes, and hashes.
-The world-aligned 520x416 overlay starts at `(1440,1024)` and draws at `(1700,1232)`, `z=-71`.
-It matches all 1,662 visible junction-intersection pixels and clips at Southern Road `(1500,1400)`.
-The canvas was expanded to preserve an exposed shoulder; no runtime/production file changed.
-Only the matching route line is hidden in the disposable corrected proof. The Seeker/screen
-panels are hidden and the camera reframed; world markers/labels retain ownership and layering.
-The far end remains a flat textured patch across the untextured road junction, partly covered
-by the road presentation. High-zoom labels largely fall outside frame; overview views provide
-context. The owner accepted this external presentation, including the recorded flat endpoint limitation.
+The Southern Road implementation is complete. One exact 520x416 export, 1040x832 master,
+independent lossless imports, and one sprite at `(1700,1232)`, `z=-71`, with repeat disabled,
+replace only its presentation line. All 1,662 visible junction-intersection pixels match;
+physical/navigation `(2200,900)`–`(1500,1400)`, width 96, and all other authority remain unchanged.
+See the [runtime result](art-direction/production-proof/corrected/review/square-southern-road-path-runtime-result.md)
+for six ordinary-scene views, exact hashes, recipes, and retained limitations. The runtime PNGs
+are byte-identical to the accepted external views. The flat road endpoint and covering by road
+presentation remain as accepted; high-zoom labels largely lie outside the frame.
 
-Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here). The new feasibility validator is
-in regular quality; `--check-live-baseline` additionally verifies this slice's frozen runtime
-inputs. Lint, deterministic pixels, baseline, and negative evidence/sampler checks passed.
-Review fixed the cropped shoulder; no unresolved code finding remains. All validators, formatting, zero-warning build, 5,033 tests, scenario validation, and the full
-host Godot smoke suite passed. Sandbox Godot user-log restrictions required the identical host
-retry; no product workaround was introduced. Compatibility launch passed.
+All 101 prior exports/masters remain unchanged; all 104 export/master/manifest files reproduce
+exactly. Review fixed an overbroad endpoint assertion that rejected the retained shrine/wagon routes;
+no unresolved issue remains. Focused scope/capture checks, validators, formatting,
+zero-warning build, 5,033 tests, and scenario validation passed. All 281 host Godot smokes and the Compatibility launch passed after the identical retry
+for sandbox user-log restrictions. Use Pillow-enabled Python (`/opt/homebrew/bin/python3`).
 
 ## Exact next bounded slice
 
-Obtain separate approval of the [named Southern Road promotion proposal](art-direction/production-proof/corrected/review/square-southern-road-path-promotion-proposal.md).
-It names one exact 520x416 export, one 1040x832 editable master, independent imports, and
-one sprite at `(1700,1232)`, `z=-71`, with repeat disabled, replacing only the matched line.
-After approval, implement only that scope, validate/review it, and obtain the separate
-ordinary-scene visual checkpoint. No Southern Road promotion is authorized yet.
+Obtain the owner visual checkpoint on all six ordinary-scene Southern Road views: junction
+seam, repetition/width, visible flat endpoint, and marker/label layering. Correct only the named
+scope and redisplay if requested. After acceptance, follow ROADMAP.md with a concrete next
+external-only terrain proof; prepare a named proposal and obtain separate approval before
+any further production/runtime promotion. No following asset promotion is authorized.
 
 Preserve physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue,
 clues, discovery, treatment, save, provider, UI, audio, release, and signing. Do not infer pacing,
