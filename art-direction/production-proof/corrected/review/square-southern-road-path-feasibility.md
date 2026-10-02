@@ -69,4 +69,4 @@ retry; no product workaround was introduced. Compatibility launch passed.
 The owner subsequently approved the [named promotion proposal](square-southern-road-path-promotion-proposal.md).
 Its implementation retains these archived external views and their physical/gameplay baseline.
 The [runtime result](square-southern-road-path-runtime-result.md) records six matching ordinary-scene views;
-the separate runtime visual checkpoint remains pending.
+the separate runtime visual checkpoint was approved after display on 2026-10-02.

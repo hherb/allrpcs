@@ -411,8 +411,13 @@ Acceptance:
   the owner replied "approved" on 2026-10-02. Promote only the exact 520x416 export,
   1040x832 master, independent imports, and one sprite at `(1700,1232)`, `z=-71`, with
   repeat disabled, replacing only its presentation line and preserving physical/gameplay authority.
-- [ ] Obtain the separate ordinary-scene visual checkpoint for six Square–Southern Road runtime
-  views, which exactly match the accepted external correction.
+- [x] Obtain the separate ordinary-scene visual checkpoint for six Square–Southern Road runtime
+  views, which exactly match the accepted external correction; the owner replied "approved"
+  after display on 2026-10-02.
+- [x] Test the unchanged straight-path texture on Southern Road–Wagon in six external-only
+  views; retain the failed strip and document the bent road presentation versus straight physical route.
+- [ ] Correct only the external Southern Road–Wagon proof to address the bent-road shoulders
+  and junction coverage; obtain owner review before proposing any named runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

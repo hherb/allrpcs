@@ -1,0 +1,22 @@
+{
+  "baseline": {
+    "game/Main.tscn": "9e6db17fd63d751b0d6f8b5bb0b314b2d0eba9f313cc19ecb24abe56ed3ff186",
+    "game/GreyboxNavigation.cs": "eee7c10fb05cef98201e94dc76b648ef150ebff14f3f8ede9b6a46159a7d4695",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/OpeningRegionVillageTransitionGeometry.cs": "ce235645a5c33c60809e74ec4f3d9b705bef09d1f8114d4cc7e0cc7ab876299f",
+    "game/project.godot": "0ce582324fb3bde4781052556f934f5c9bf7d3dc8ff58ad6b070ccf3db459c77",
+    "art-direction/production-proof/corrected/asset-manifest.json": "f695d93546ba5b1b2c8339ba9cd133587a4f7dc46aecd88ce529a7aa5936fbf7"
+  },
+  "inputs": {
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "scripts/capture-southern-road-wagon-path-proof.gd": "a7852c3fdb3da83d3809094ef2dc24124e303ae8c811476b28451c984c5bb92f"
+  },
+  "images": {
+    "southern-road-wagon-path-proof-0.8x-tall.png": "db9cd7bec69ee34f532b4221bc789b0645ebcc76fd357f41bf3755c1941f0498",
+    "southern-road-wagon-path-proof-0.8x-wide.png": "689fc2ff69fb1ed5e19a16a9cc8289edbd91034bb472af7a1be96d2df1d17d59",
+    "southern-road-wagon-path-proof-1.0x-tall.png": "e984b3b8f8c819ea1af3decea00c897be5633af78179d3b9df7fff9181291338",
+    "southern-road-wagon-path-proof-1.0x-wide.png": "b8da013a393f594fc1c9a1be745c5ab6769cd214f243098583f67d653ea26543",
+    "southern-road-wagon-path-proof-2.0x-tall.png": "e655c70e1aaf9e0d6807634776462c8c1bb17670af354be95cb8e0453c1df531",
+    "southern-road-wagon-path-proof-2.0x-wide.png": "2a79f15f1cf56eb76a95e8c591f084466645c42a8781b8b3ff099fa9cfb3c34a"
+  }
+}

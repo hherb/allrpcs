@@ -272,6 +272,6 @@ The owner accepted the six corrected Square–Southern Road external views and a
 named promotion on 2026-10-02. One exact 520x416 export, 1040x832 layered master,
 independent lossless imports, and one sprite at `(1700,1232)`, `z=-71`, with repeat disabled,
 replace only its presentation line. The six ordinary-scene views match the accepted PNG bytes.
-Their separate owner checkpoint remains pending; see the
+The owner approved their separate checkpoint after display on 2026-10-02; see the
 [runtime result](review/square-southern-road-path-runtime-result.md). The proof now has 76
 exports and 27 editable masters; previous assets and physical/gameplay authority are unchanged.

@@ -2,7 +2,7 @@
 
 The owner approved all six corrected external views, then approved the separate named
 promotion with "approved" on 2026-10-02. The implementation is complete; the separate
-ordinary-scene visual checkpoint remains pending.
+ordinary-scene visual checkpoint was approved after display on 2026-10-02.
 
 One exact accepted `520x416` export presents the route at `(1700,1232)`, `z=-71`, pivot
 `(260,208)`, with a `1040x832` layered OpenRaster master. Its SHA-256 is
@@ -56,4 +56,5 @@ assertion that rejected the retained shrine/wagon connections. No unresolved fin
 Focused scope/capture and negative alpha-import corruption checks passed. All quality validators,
 formatting, zero-warning build, 5,033 tests, and scenario validation passed. The sandbox blocked Godot user-log writes; the identical host retry passed all 281 smoke
 checks. Compatibility launch passed; no product workaround was introduced.
-The owner runtime checkpoint remains pending; no following asset promotion is authorized.
+The owner approved all six runtime views after display on 2026-10-02. No following asset
+promotion is authorized by that acceptance.

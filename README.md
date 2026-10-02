@@ -64,8 +64,14 @@ retains six failed strip views and six world-aligned correction views. The corre
 visible limitation. The owner approved all six external views and the separate named promotion
 on 2026-10-02. One exact 520x416 runtime-owned sprite now replaces only its presentation line
 at `(1700,1232)`, `z=-71`, with repeat disabled. All six runtime views match the accepted images;
-the ordinary-scene visual checkpoint remains pending. Physical/gameplay authority is unchanged.
+the owner approved the ordinary-scene views after display on 2026-10-02. Physical/gameplay
+authority is unchanged.
 See the [runtime result](art-direction/production-proof/corrected/review/square-southern-road-path-runtime-result.md).
+
+The following [Southern Road–Wagon feasibility proof](art-direction/production-proof/corrected/review/southern-road-wagon-path-feasibility.md)
+retains six external-only failed strip views. The straight physical route differs from the bent
+road presentation, leaving exposed shoulders and unresolved junction coverage. No runtime or
+production file changed; the next slice is one external-only world-aligned correction.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
