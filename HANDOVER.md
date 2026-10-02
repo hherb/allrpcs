@@ -18,7 +18,7 @@ junction sprites. Fifteen views change inside independently projected clip bound
 production, import and physical files remain unchanged. Clearing marker-band width is
 unchanged and descriptive; its marker remains hidden beneath the accepted feather overlay.
 Three supplementary Village geometry/layout/presentation owners are also pinned.
-External visual acceptance is pending; no named promotion of this route is approved.
+The owner accepted the 18 external views on 2026-10-03 ("approved"); named promotion remains unapproved.
 
 Focused reproduction, archive, clean-alpha, exact clipping, projected-bounds and frozen-baseline
 checks pass. Repeated Compatibility capture reproduces all 36 PNG hashes. Full host quality
@@ -37,11 +37,12 @@ approval and runtime visual-acceptance checkpoints.
 
 ## Exact next slice
 
-Obtain owner visual review of the linked 18 corrected external views, especially the Village
-port and continuous Clearing join. Further feedback permits bounded external correction under
-standing authorization. After acceptance, propose the exact named Woodland Clearing–Village Edge
-production/runtime promotion with accepted pixels and unchanged physical authority; obtain its
-separate approval before promotion work.
+Obtain separate approval for the [named Woodland Clearing–Village Edge promotion](art-direction/production-proof/corrected/review/woodland-village-edge-path-promotion-scope.md):
+one exact accepted 816x688 asset at `(1352,632)`, z=-75, with a 1632x1376 editable master.
+Replace only the visual 96px Village Edge–Clearing line; append the sprite as the final route
+presentation child to preserve the proof's ordering against other z=-75 lines. After approval,
+implement/validate/review and capture all 18 runtime views for visual confirmation before
+reviewed direct-main publication.
 
 Use Pillow-enabled `/opt/homebrew/bin/python3` and
 `art-direction/production-proof/corrected/tools/check_woodland_village_edge_path.py --check-live-baseline`.

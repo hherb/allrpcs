@@ -5,7 +5,7 @@ standing external-proof authorization. Both stages preserve 438 post-promotion r
 production, import and physical files, plus three supplemental Village port owners. The first proof's overlay, recipe, harness, images
 and evidence are immutable. No saved Main instance or ordinary-startup change is made.
 
-**Result: ready for owner visual review.** The correction removes 12,960 visible pixels at
+**Result: owner accepted the 18 corrected external views on 2026-10-03 ("approved").** The correction removes 12,960 visible pixels at
 the Village shell/opening and changes no surviving sampled pixel. Fifteen of 18 views change
 only inside the independently projected clip region, with 2 screen pixels allowed for filtering.
 Both 2.0x Clearing-junction views and the 1.0x wide Clearing view remain byte-identical to the
@@ -47,11 +47,11 @@ The Clearing cross-section and hidden marker remain as documented in the initial
 ## Evidence and reproduction
 
 ```sh
-/opt/homebrew/bin/python 3 art-direction/production-proof/corrected/tools/build_woodland_village_edge_path_feasibility.py
-/opt/homebrew/bin/python 3 art-direction/production-proof/corrected/tools/build_woodland_village_edge_path_correction.py
+/opt/homebrew/bin/python3 art-direction/production-proof/corrected/tools/build_woodland_village_edge_path_feasibility.py
+/opt/homebrew/bin/python3 art-direction/production-proof/corrected/tools/build_woodland_village_edge_path_correction.py
 godot --path game --script "$PWD/scripts/capture-woodland-village-edge-path-feasibility.gd"
 godot --path game --script "$PWD/scripts/capture-woodland-village-edge-path-correction.gd"
-/opt/homebrew/bin/python 3 art-direction/production-proof/corrected/tools/check_woodland_village_edge_path.py --check-live-baseline
+/opt/homebrew/bin/python3 art-direction/production-proof/corrected/tools/check_woodland_village_edge_path.py --check-live-baseline
 ```
 
 Evidence pins inputs, shared-renderer bytes, exact geometry and 19 images per stage. The
@@ -66,6 +66,5 @@ supplemental Village port owners and corrected review-link formatting; all links
 no further implementation issue remains. The final focused archive/clip/screen/baseline check
 passes and the diff is whitespace-clean. No runtime or production file changed in this slice.
 
-Next slice: owner visual review of the corrected 18 external views. Further bounded external
-feedback corrections use standing authorization. A named production/runtime promotion needs
-separate approval after acceptance. Preserve all physical, gameplay, UI and provider authority.
+Next slice: obtain separate approval for the [named Woodland Clearing–Village Edge promotion](woodland-village-edge-path-promotion-scope.md).
+External visual acceptance is recorded; routine external feedback corrections retain standing authorization. Preserve all physical, gameplay, UI and provider authority.

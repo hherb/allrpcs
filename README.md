@@ -122,8 +122,8 @@ The following [Woodland Clearing–Village Edge external proof](art-direction/pr
 retains 18 unchanged-source views and a Village opening-fringe measurement. Its
 [external Village-entry correction](art-direction/production-proof/corrected/review/woodland-village-edge-path-correction.md)
 clips only the shell/opening, preserves every surviving pixel and all 438 runtime/production/
-import/physical baseline files, and supplies 18 new views for owner review. No named promotion
-for this route is approved.
+import/physical baseline files. The owner accepted its 18 views on 2026-10-03 ("approved").
+The [named promotion proposal](art-direction/production-proof/corrected/review/woodland-village-edge-path-promotion-scope.md) awaits separate approval.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
