@@ -46,5 +46,6 @@ host smoke/capture/launch retries succeeded. Negative promotion checks rejected 
 and alpha-border processing. The sandbox editor imported the textures but could not save its
 external editor settings; no product workaround was introduced.
 
-Runtime owner visual acceptance is pending. Review these six views before selecting the next
-bounded asset; do not infer pacing, usability, accessibility, gameplay, or another promotion.
+The owner visually accepted these six ordinary runtime views on 2026-10-02 ("yes").
+This is bounded visual acceptance only; no pacing, usability, accessibility, gameplay, or
+next-asset promotion acceptance is inferred.

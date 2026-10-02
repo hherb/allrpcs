@@ -426,8 +426,13 @@ Acceptance:
 - [x] Obtain separate approval and implement `terrain.southern_road_wagon_path`: exact 560x432
   export, 1120x864 editable master, independent lossless imports, one presentation sprite, and
   the accepted upstream-only road fill; preserve physical/gameplay authority.
-- [ ] Obtain owner visual acceptance of all six ordinary Southern Road–Wagon runtime views,
-  which match the accepted external trim PNG bytes.
+- [x] Obtain owner visual acceptance of all six ordinary Southern Road–Wagon runtime views,
+  which match the accepted external trim PNG bytes; the owner replied "yes" on 2026-10-02.
+
+- [x] Test the unchanged straight-path texture on Shrine–Southern Road in six external-only
+  views; retain the failed fringe/darkening proof and 20.384-pixel shrine-exit centerline offset.
+- [ ] Develop one external-only Shrine–Southern Road presentation correction, retaining failed
+  evidence and all physical authority, with explicit shrine-exit/junction and midpoint views.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

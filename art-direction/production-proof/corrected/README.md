@@ -285,7 +285,8 @@ imports with alpha-border processing disabled. One unscaled sprite at `(1680,149
 replaces the straight presentation route; only the presentation road fill is shortened to its
 upstream segment. Physical routes, boundaries, and wagon authority are unchanged.
 See the [ordinary runtime views](review/southern-road-wagon-path-runtime-result.md).
-There are now 77 exports and 28 editable masters. Runtime visual acceptance is pending.
+There are now 77 exports and 28 editable masters. The owner accepted the ordinary runtime
+views on 2026-10-02.
 
 The archived path-proof evidence records remain intact. Their exact original `build.py` bytes
 are retained in `review/path-proof-build-source.py.gz`; regular validators verify the archived

@@ -1,0 +1,44 @@
+{
+  "baseline": {
+    "game/Main.tscn": "97cf77135bb56519e719ed8f7c9cbfb5e14913b22998df2a1468721ba0af2634",
+    "game/GreyboxNavigation.cs": "c686ce47d3c093a0acf465f56649aaf5df6f6ea96e28f65333335b390d46f2e3",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/OpeningRegionSouthernRoadWagonGeometry.cs": "ce7a4508af1c9fac446b34f35e8d93ea67a5a8257dfad7a3a3574b7f639f3bdc",
+    "game/OpeningRegionSouthernRoadWagonSceneSource.cs": "a0d8e4952163f54a76d01232511526ad6688975dd0186545404de1ffa7b71bb8",
+    "game/OpeningRegionOldShrineGeometry.cs": "8a88fa9374c996c87539590b8953e9b7de73190f5703a51d04f9831dccf13570",
+    "game/OpeningRegionOldShrineSceneSource.cs": "d1703f28a3e27ef6d88e23b4a1e6a94202eaac1ba9e846824f268651b491726a",
+    "game/project.godot": "0ce582324fb3bde4781052556f934f5c9bf7d3dc8ff58ad6b070ccf3db459c77",
+    "art-direction/production-proof/corrected/asset-manifest.json": "1ab8435c757151e8f41a4cf26a40d5c5325af008c7f095ac95a96ef6aa728c48"
+  },
+  "inputs": {
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "scripts/capture-shrine-southern-road-path-proof.gd": "1b46b8c79c9e13985467b4da5ac8605cdd56e8157654e3fe1303e5d2cefe9d65"
+  },
+  "images": {
+    "shrine-southern-road-path-proof-0.8x-tall.png": "482c9298bf48ec49d179325bee261d0a05bc57ab666e4531a710da66ca78fb1a",
+    "shrine-southern-road-path-proof-0.8x-wide.png": "7767f8808980424cb29ceef3b785b45016987b0ebde95aa679019f9ffafd57b5",
+    "shrine-southern-road-path-proof-1.0x-tall.png": "8f2ba590f75ad3955ef8df8d0b3913f1acf56e8b6500bda1423b1a29fcfb8265",
+    "shrine-southern-road-path-proof-1.0x-wide.png": "343125ffecd323d5f761e04ac6968d999740a0d6c87f351fa149340805f9db72",
+    "shrine-southern-road-path-proof-2.0x-tall.png": "30bb1eeda3f954da2698324e28956829c3d0c40b20add4f36fb80bcddf1e9d55",
+    "shrine-southern-road-path-proof-2.0x-wide.png": "40a262728d8942ffa8a7804dca918f5f3d5ae1941b3c997be89c62df3b7fa8f3"
+  },
+  "geometry": {
+    "route_start": [
+      380,
+      300
+    ],
+    "route_end": [
+      1500,
+      1400
+    ],
+    "route_width": 96,
+    "upstream_fill_start": [
+      572,
+      460
+    ],
+    "upstream_fill_end": [
+      1500,
+      1400
+    ]
+  }
+}

@@ -20,6 +20,7 @@ python3 art-direction/production-proof/corrected/tools/check_square_garden_path_
 python3 art-direction/production-proof/corrected/tools/check_square_sickhouse_path_feasibility.py
 python3 art-direction/production-proof/corrected/tools/check_square_southern_road_path_feasibility.py
 python3 art-direction/production-proof/corrected/tools/check_southern_road_wagon_path_trim.py
+python3 art-direction/production-proof/corrected/tools/check_shrine_southern_road_path_feasibility.py
 python3 art-direction/production-proof/corrected/tools/validate_southern_road_wagon_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_square_southern_road_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_square_sickhouse_path.py --check-captures

@@ -80,7 +80,13 @@ on 2026-10-02 and separately approved the named `terrain.southern_road_wagon_pat
 The exact accepted overlay is now manifest-bound with a layered master and independent
 lossless imports. Ordinary startup uses the same bounded presentation substitutions;
 [all six runtime views](art-direction/production-proof/corrected/review/southern-road-wagon-path-runtime-result.md)
-match the accepted external PNG bytes. Runtime visual review remains pending.
+match the accepted external PNG bytes. The owner accepted the ordinary runtime views
+on 2026-10-02.
+
+An external-only [Shrine–Southern Road strip proof](art-direction/production-proof/corrected/review/shrine-southern-road-path-feasibility.md)
+now retains six failed feasibility views. Greybox fringes, brown-fill darkening, and a
+20.384-pixel shrine-exit centerline offset prevent promotion. No runtime or production file
+changed; the next slice is an external correction with endpoint-specific review coverage.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
