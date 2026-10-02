@@ -570,6 +570,23 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "stream_laundry_path_provenance": {
+    "accepted_proof": "review/stream-laundry-path-correction-overlay.png",
+    "accepted_proof_sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185",
+    "master": "masters/terrain-stream-laundry-path.ora",
+    "recipe_sha256": "c07769eca6dd3387124fc38e4c699d3d5ed1155f5eee969f4aacb05d5a242a30",
+    "world_origin": [
+      1424,
+      152
+    ],
+    "world_position": [
+      1640,
+      360
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "southern_road_wagon_path_provenance": {
     "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
     "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
@@ -3081,6 +3098,36 @@
       },
       "godot_import_proof": true,
       "sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f"
+    },
+    {
+      "id": "terrain.stream_laundry_path",
+      "category": "terrain",
+      "source": "tools/build_stream_laundry_path_correction.py",
+      "export": "exports/terrain/stream-laundry-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 432,
+        "height": 416
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 432,
+        "height": 416
+      },
+      "master_dimensions_pixels": {
+        "width": 864,
+        "height": 832,
+        "scale": 2
+      },
+      "contact_baseline": 416,
+      "pivot": {
+        "x": 216,
+        "y": 208
+      },
+      "godot_import_proof": true,
+      "sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185"
     }
   ]
 }

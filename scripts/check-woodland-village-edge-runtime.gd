@@ -27,10 +27,11 @@ func _check() -> void:
 			or sprite.texture_repeat != CanvasItem.TEXTURE_REPEAT_DISABLED:
 		_fail("Woodland–Village Edge placement, draw order or source ownership changed")
 		return
-	if not routes.has_node("VillageEdgeStreamPath") \
-			or sprite.get_index() != routes.get_child_count() - 2 \
-			or routes.get_node("VillageEdgeStreamPath").get_index() != routes.get_child_count() - 1:
-		_fail("Woodland–Village Edge must immediately precede the final Stream path")
+	if not routes.has_node("VillageEdgeStreamPath") or not routes.has_node("StreamLaundryPath") \
+			or sprite.get_index() != routes.get_child_count() - 3 \
+			or routes.get_node("VillageEdgeStreamPath").get_index() != sprite.get_index() + 1 \
+			or routes.get_node("StreamLaundryPath").get_index() != routes.get_child_count() - 1:
+		_fail("Woodland–Village Edge must precede the consecutive Stream paths")
 		return
 	var shrine: Sprite2D = routes.get_node("WoodlandShrinePath")
 	if not shrine.visible or shrine.position != Vector2(704, 328) or shrine.z_index != -74:

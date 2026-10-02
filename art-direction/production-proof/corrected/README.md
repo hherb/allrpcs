@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 82 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 83 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -95,8 +95,8 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 82 exports are RGBA with visible pixels; 81 have fully opaque pixels. The exact accepted
-  Shrine endpoint blend intentionally remains translucent. 81 exports retain no RGB beneath
+- all 83 exports are RGBA with visible pixels; 82 have fully opaque pixels. The exact accepted
+  Shrine endpoint blend intentionally remains translucent. 82 exports retain no RGB beneath
   zero alpha; only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -247,7 +247,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 82 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 83 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -330,5 +330,10 @@ bytes; the owner approved runtime views on 2026-10-03 ("approved").
 
 The next [Stream–Laundry external proof and correction](review/stream-laundry-path-correction.md)
 clip only Laundry support, retain all Stream-overlap source pixels and preserve 450 authored
-baseline files. Runtime/production remain unchanged; visual acceptance and promotion approval
-are pending, including assessment of the retained diagonal bridge approach.
+baseline files. The owner confirmed external views, retained bridge fit and the named promotion on
+2026-10-03 ("confirmed"). The production/runtime promotion adds one exact 432x416 export,
+an 864x832 editable master and independent lossless imports: totals 83 exports/34 masters.
+Its sprite `(1640,360)`, z=-75, follows Woodland–Village Edge and Village Edge–Stream as the
+final route child. All 18 [runtime views](review/stream-laundry-path-runtime-result.md) match
+accepted external PNGs. The owner accepted runtime views in principle and explicitly authorized publication on
+2026-10-03; western watercourse continuity remains separate work.

@@ -473,7 +473,9 @@ Acceptance:
 - [x] Obtain owner visual confirmation of the [18 runtime views](art-direction/production-proof/corrected/review/village-edge-stream-path-runtime-result.md) on 2026-10-03 ("approved") before publication.
 
 - [x] Retain the bounded [Stream–Laundry external proof and Laundry-only correction](art-direction/production-proof/corrected/review/stream-laundry-path-correction.md), preserving 450 authored baseline files.
-- [ ] Obtain external visual acceptance, including retained bridge fit, then approval of the [named Stream–Laundry promotion](art-direction/production-proof/corrected/review/stream-laundry-path-promotion-scope.md).
+- [x] Obtain external visual acceptance, including bridge fit, and approval of the [named Stream–Laundry promotion](art-direction/production-proof/corrected/review/stream-laundry-path-promotion-scope.md) on 2026-10-03 ("confirmed").
+- [x] Implement exact asset/master/imports and consecutive three-sprite runtime order; preserve physical authority.
+- [x] Obtain owner acceptance in principle of the [18 runtime views](art-direction/production-proof/corrected/review/stream-laundry-path-runtime-result.md) and explicit publication authorization on 2026-10-03; western watercourse continuity is separate work.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -26,8 +26,10 @@ is exact. All 18 rendered views change only inside independently projected Laund
 bounds. All 6,029 Stream-overlap source samples are untouched. Both overlays retain clean
 zero-alpha RGB and transparent canvas gutters.
 
-Visual acceptance is pending; the [named promotion scope](stream-laundry-path-promotion-scope.md)
-is unapproved. These external stages do not authorize runtime promotion.
+The owner confirmed these external views, including bridge fit, and the separate
+[named promotion scope](stream-laundry-path-promotion-scope.md) on 2026-10-03 ("confirmed").
+The [ordinary runtime views](stream-laundry-path-runtime-result.md) were accepted in principle, with publication explicitly authorized on 2026-10-03.
+Western watercourse continuity is separate; archived external evidence remains intact.
 
 ## Laundry Entry
 

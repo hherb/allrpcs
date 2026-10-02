@@ -1,7 +1,10 @@
 # Proposed Stream–Laundry production/runtime promotion
 
-Status: unapproved. [External correction views](stream-laundry-path-correction.md) await owner
-visual acceptance, including the retained bridge approach. Routine external-proof scope
+Status: owner-approved on 2026-10-03 ("confirmed"). The owner also confirmed the
+[external correction views](stream-laundry-path-correction.md), including retained bridge fit.
+The owner accepted the runtime path in principle and explicitly authorized publication on
+2026-10-03, separately from western watercourse continuity. This approval does not authorize
+extending the watercourse or adding path crossings. Routine external-proof scope
 approval is waived; separate approval for this named runtime boundary remains required.
 
 Promote only `terrain.stream_laundry_path`: exact accepted 432x416 correction PNG as

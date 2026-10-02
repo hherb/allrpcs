@@ -141,7 +141,10 @@ The next [external Stream–Laundry proof](art-direction/production-proof/correc
 and [Laundry-only correction](art-direction/production-proof/corrected/review/stream-laundry-path-correction.md)
 retain all 450 authored baseline files. The correction removes the Laundry opening fringe
 while preserving all surviving pixels and the retained diagonal Stream approach. External
-visual acceptance and separate named promotion approval remain pending.
+views and the separate named promotion were confirmed on 2026-10-03 ("confirmed").
+One exact asset now replaces only its visual route, with all 18 [runtime views](art-direction/production-proof/corrected/review/stream-laundry-path-runtime-result.md)
+matching accepted proof bytes. The owner accepted this runtime path in principle and explicitly authorized publication on
+2026-10-03; western watercourse continuity remains separate work.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

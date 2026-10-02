@@ -84,6 +84,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? VillageEdgeStreamPathTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Stream–Laundry path presentation.</summary>
+    [Export]
+    public Texture2D? StreamLaundryPathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -109,10 +113,22 @@ public partial class GreyboxNavigation : NavigationRegion2D
         AddChild(owner);
         Sprite2D? woodlandVillageEdgePath = null;
         Sprite2D? villageEdgeStreamPath = null;
+        Sprite2D? streamLaundryPath = null;
         foreach ((string firstId, string secondId) in OpeningRegionLayoutGeometry.Connections)
         {
             Vector2 start = OpeningRegionLayoutGeometry.Anchors[firstId];
             Vector2 end = OpeningRegionLayoutGeometry.Anchors[secondId];
+            if (firstId == "stream" && secondId == "abandoned-laundry")
+            {
+                if (streamLaundryPath is not null)
+                {
+                    throw new InvalidOperationException("The Stream–Laundry route must occur exactly once.");
+                }
+
+                streamLaundryPath = CreateStreamLaundryPathPresentation(start, end);
+                continue;
+            }
+
             if (firstId == "village-edge" && secondId == "stream")
             {
                 if (villageEdgeStreamPath is not null)
@@ -209,6 +225,8 @@ public partial class GreyboxNavigation : NavigationRegion2D
             ?? throw new InvalidOperationException("The Woodland–Village Edge route is required."));
         owner.AddChild(villageEdgeStreamPath
             ?? throw new InvalidOperationException("The Village Edge–Stream route is required."));
+        owner.AddChild(streamLaundryPath
+            ?? throw new InvalidOperationException("The Stream–Laundry route is required."));
     }
 
     private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
@@ -502,6 +520,31 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Texture = texture,
             TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
             Position = new Vector2(1752.0f, 704.0f),
+            ZIndex = -75,
+        };
+    }
+
+    private Sprite2D CreateStreamLaundryPathPresentation(Vector2 start, Vector2 end)
+    {
+        if (start != new Vector2(1800.0f, 500.0f) || end != new Vector2(1500.0f, 220.0f)
+            || OpeningRegionLayoutGeometry.PathWidthPixels != 96)
+        {
+            throw new InvalidOperationException("The Stream–Laundry path requires its retained 96px route.");
+        }
+
+        Texture2D texture = StreamLaundryPathTexture
+            ?? throw new InvalidOperationException("The Stream–Laundry path texture is required.");
+        if (texture.GetWidth() != 432 || texture.GetHeight() != 416)
+        {
+            throw new InvalidOperationException("The Stream–Laundry path requires its exact 432x416 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "StreamLaundryPath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(1640.0f, 360.0f),
             ZIndex = -75,
         };
     }

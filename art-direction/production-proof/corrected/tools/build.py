@@ -2345,6 +2345,8 @@ def main() -> None:
 
     from build_village_edge_stream_path_correction import compose as compose_stream_approach
 
+    from build_stream_laundry_path_correction import compose as compose_stream_laundry
+
     accepted_path_assets = [
         ("shrine_southern_road_path", "shrine-southern-road-path",
          "shrine-southern-road-path-correction-overlay.png", compose_shrine,
@@ -2366,6 +2368,10 @@ def main() -> None:
          "village-edge-stream-path-correction-overlay.png", compose_stream_approach,
          "build_village_edge_stream_path_correction.py", (1640, 440), (1752, 704), -75,
          "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f"),
+        ("stream_laundry_path", "stream-laundry-path",
+         "stream-laundry-path-correction-overlay.png", compose_stream_laundry,
+         "build_stream_laundry_path_correction.py", (1424, 152), (1640, 360), -75,
+         "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185"),
     ]
     accepted_path_exports = {}
     for asset_id, filename, proof_name, compose_asset, recipe, origin, center, z, sha in accepted_path_assets:
