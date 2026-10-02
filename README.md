@@ -86,7 +86,11 @@ on 2026-10-02.
 An external-only [Shrine–Southern Road strip proof](art-direction/production-proof/corrected/review/shrine-southern-road-path-feasibility.md)
 now retains six failed feasibility views. Greybox fringes, brown-fill darkening, and a
 20.384-pixel shrine-exit centerline offset prevent promotion. No runtime or production file
-changed; the next slice is an external correction with endpoint-specific review coverage.
+changed. A subsequent [external correction](art-direction/production-proof/corrected/review/shrine-southern-road-path-correction.md)
+now provides 18 midpoint, shrine-exit, and junction views. It removes the route fringe and
+brown-fill darkening, aligns the entry with the physical route/opening, and preserves accepted
+overlays and all authority. A thin junction seam remains visible at 2.0x; owner review and any
+required external seam correction precede a separately approved named promotion.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

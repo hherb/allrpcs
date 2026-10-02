@@ -431,8 +431,10 @@ Acceptance:
 
 - [x] Test the unchanged straight-path texture on Shrine–Southern Road in six external-only
   views; retain the failed fringe/darkening proof and 20.384-pixel shrine-exit centerline offset.
-- [ ] Develop one external-only Shrine–Southern Road presentation correction, retaining failed
-  evidence and all physical authority, with explicit shrine-exit/junction and midpoint views.
+- [x] Develop one external-only Shrine–Southern Road presentation correction, retaining failed
+  evidence and all physical authority, with 18 shrine-exit/junction and midpoint views.
+- [ ] Obtain owner review of the external correction, including the thin 2.0x junction seam;
+  address any required seam correction externally before proposing a named promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
