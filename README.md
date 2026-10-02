@@ -92,9 +92,10 @@ brown-fill darkening, aligns the entry with the physical route/opening, and pres
 overlays and all authority. That correction retained a thin junction seam at 2.0x; owner review and any
 required external seam correction precede a separately approved named promotion.
 The subsequent [endpoint blend proof](art-direction/production-proof/corrected/review/shrine-southern-road-path-blend.md)
-adds only a local 48px blend band in the disposable scene. All 18 views remain available for
-owner review; capture differences are confined to the projected patch, and the original
-correction/failed-strip evidence and accepted runtime assets remain unchanged.
+adds only a local 48px blend band in the disposable scene. The owner accepted the presentation
+on 2026-10-02, including a slight triangle at the left side of the intersection. Capture
+differences are confined to the projected patch; the original correction/failed-strip evidence
+and accepted runtime assets remain unchanged. Named runtime promotion still needs separate approval.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

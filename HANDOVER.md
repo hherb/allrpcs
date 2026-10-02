@@ -11,7 +11,9 @@ The external Shrine–Southern Road endpoint blend now has 18 midpoint/shrine-ex
 views at 0.8x, 1.0x, 2.0x in both 1280x720 and 1280x827 frames. It retains the original incoming
 correction at z=-72 and adds only a local 160x160 patch at `(1480,1360)`, z=-69. Its 3,354 visible
 pixels stay in a 48px band at the Road–Wagon leading edge. The long diagonal seam is softened;
-the close texture transition/edges still require owner review. No named promotion is approved.
+the owner accepted the presentation on 2026-10-02, including the slight triangle at the left
+side of the intersection ("it is acceptable as is"). Its cause is unconfirmed. Preserve this
+accepted detail; no additional trim is requested. No named promotion is approved.
 See the [blend views and recipe](art-direction/production-proof/corrected/review/shrine-southern-road-path-blend.md).
 
 The original correction's 18 views and six failed-strip views/evidence remain immutable.
@@ -26,15 +28,16 @@ rejects its promoted baseline by design; its runtime validator applies instead.
 Session review tightened capture alpha validation; no code issue remains. Repeated Compatibility
 captures matched all 18 hashes, and live baseline checks passed. Full host `./scripts/quality.sh`
 passed asset validators, formatting, zero-warning build, all 5,033 tests, scenario validation,
-complete credential-free Godot smokes and Compatibility launch. Visual acceptance remains pending.
+complete credential-free Godot smokes and Compatibility launch. The subsequent owner acceptance
+is visual only; pacing, usability, accessibility and gameplay remain outside that acceptance.
 
 ## Exact next bounded slice
 
-Obtain owner visual review of all 18 blend views, including the 2.0x junction transition and
-ragged edges. If accepted, propose the exact named Shrine–Southern Road promotion scope,
-including the incoming correction and local patch, editable master/export, imports and one
-presentation owner. Obtain separate approval before production/runtime work. If correction
-is requested, keep it external and bounded to the endpoint; preserve all prior evidence.
+Propose the exact named Shrine–Southern Road promotion scope from the accepted incoming
+correction and local patch. Retain their distinct z=-72 / z=-69 layers under one presentation
+owner, exact accepted pixels (including the small triangle), editable masters/exports and
+independent lossless imports. Obtain separate approval before production/runtime work.
+Preserve all existing proof evidence and accepted Square/Road–Wagon sprites.
 
 Preserve navigation, camera, scenario, dialogue, clues, discovery, treatment, save, provider,
 UI, audio, release, and signing. Do not infer pacing, usability, accessibility, gameplay or

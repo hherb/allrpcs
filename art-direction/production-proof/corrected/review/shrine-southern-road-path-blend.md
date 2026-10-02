@@ -74,9 +74,16 @@ alpha validation. Repeated host Compatibility capture reproduced all 18 hashes; 
 baseline checks passed. Full host `./scripts/quality.sh` passed asset validators, formatting,
 zero-warning build, all 5,033 tests, scenario validation, complete credential-free Godot smokes
 and Compatibility launch. Initial graphical capture stalled before the junction views; the
-restarted and repeated captures completed and matched. Owner visual acceptance remains pending.
+restarted and repeated captures completed and matched.
 
-Next bounded slice: obtain owner visual review of the blend, including its close texture
-transition and ragged edges. After acceptance, propose an exact named promotion scope;
-production assets, editable master, imports and runtime wiring need separate approval.
+## Owner visual acceptance — 2026-10-02
+
+The owner noted a slight triangle at the left side of the intersection, possibly the west
+edge of the south-west road, and accepted the presentation: "it is acceptable as is".
+The origin of that detail has not been confirmed. Retain the accepted pixels; no further
+triangle trim is requested. This is bounded visual acceptance of this external proof.
+
+Next bounded slice: propose an exact named promotion scope retaining the incoming correction
+and local patch in their distinct layers under one presentation owner. Production assets,
+editable masters, imports and runtime wiring need separate approval.
 No pacing, usability, accessibility, gameplay, next-asset, release or signing acceptance is inferred.

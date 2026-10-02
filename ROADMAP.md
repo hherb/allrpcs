@@ -435,8 +435,10 @@ Acceptance:
   evidence and all physical authority, with 18 shrine-exit/junction and midpoint views.
 - [x] Develop an external-only local Shrine–Road endpoint blend with all 18 views and
   independently checked capture differences confined to the projected patch.
-- [ ] Obtain owner review of the endpoint blend and texture transition before proposing a
-  separately approved named promotion.
+- [x] Obtain owner visual acceptance of the endpoint blend on 2026-10-02, including the
+  slight triangle at the left side of the intersection ("it is acceptable as is").
+- [ ] Propose and obtain separate approval for the exact named Shrine–Southern Road promotion,
+  retaining accepted pixels and the incoming/endpoint layer ordering.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
