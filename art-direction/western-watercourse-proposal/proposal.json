@@ -1,0 +1,20 @@
+{
+  "status": "external proposal; no layout or runtime approval",
+  "baseline_commit": "ebe5dcc",
+  "flow": "east to west; proposed only, not scenario authority",
+  "source": {"kind": "spring basin", "center": [2032, 500], "radius": 64},
+  "outlet": {"kind": "water continues beyond west world boundary", "point": [0, 600]},
+  "retained_water": [1600, 452, 2000, 548],
+  "western_water_polygon": [[0, 552], [1400, 552], [1600, 452], [1600, 548], [1400, 648], [0, 648]],
+  "western_centerline": [[0, 600], [1400, 600], [1600, 500]],
+  "planning_bank_allowance": 16,
+  "abutment_allowance": 16,
+  "crossings": [
+    {"id": "B1", "route": "edge-clearing", "type": "bridge", "deck_width": 96, "deck_length": 336,
+     "texture": "game/art/runtime/terrain/woodland-village-edge-path.png", "origin": [944, 288]},
+    {"id": "B2", "route": "shrine-road", "type": "bridge", "deck_width": 96, "deck_length": 288,
+     "texture": "game/art/runtime/terrain/shrine-southern-road-path.png", "origin": [432, 400]}
+  ],
+  "rejected_straight_west_band": [0, 452, 1600, 548],
+  "closed_forest_proof": "deferred until watercourse direction is settled"
+}

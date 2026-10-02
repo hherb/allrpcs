@@ -1,0 +1,92 @@
+{
+  "status": "external proposal; no layout or runtime approval",
+  "baseline_commit": "ebe5dcc",
+  "preserved_file_count": 3912,
+  "crossings": [
+    {
+      "id": "B1",
+      "route": "edge-clearing",
+      "type": "bridge",
+      "deck_width": 96,
+      "deck_length": 336,
+      "texture": "game/art/runtime/terrain/woodland-village-edge-path.png",
+      "origin": [
+        944,
+        288
+      ],
+      "center": [
+        1318.1818181818182,
+        600.0
+      ],
+      "deck_polygon": [
+        [
+          1420.627864611254,
+          741.5373009880361
+        ],
+        [
+          1156.42490276692,
+          533.9492595389165
+        ],
+        [
+          1215.7357717523826,
+          458.46269901196393
+        ],
+        [
+          1479.9387335967165,
+          666.0507404610835
+        ]
+      ],
+      "minimum_deck_length": 239.17956438999107,
+      "maximum_visible_half_width": 46.5331959795984,
+      "water_alpha_pixels": 12739,
+      "bank_envelope_alpha_pixels": 16805,
+      "exposed_route_cells": 225
+    },
+    {
+      "id": "B2",
+      "route": "shrine-road",
+      "type": "bridge",
+      "deck_width": 96,
+      "deck_length": 288,
+      "texture": "game/art/runtime/terrain/shrine-southern-road-path.png",
+      "origin": [
+        432,
+        400
+      ],
+      "center": [
+        685.4545454545455,
+        600.0
+      ],
+      "deck_polygon": [
+        [
+          616.3519950412328,
+          464.8525341474151
+        ],
+        [
+          821.8250652967465,
+          666.6564424340803
+        ],
+        [
+          754.5570958678582,
+          735.1474658525848
+        ],
+        [
+          549.0840256123445,
+          533.3435575659197
+        ]
+      ],
+      "minimum_deck_length": 214.67237890969977,
+      "maximum_visible_half_width": 47.157649401710266,
+      "water_alpha_pixels": 11572,
+      "bank_envelope_alpha_pixels": 15377,
+      "exposed_route_cells": 204
+    }
+  ],
+  "clearing_bottom": 450,
+  "western_horizontal_water_top": 552,
+  "clearing_water_gap": 102,
+  "rejected_straight_band_clearing_gap": 2,
+  "physical_owner": "GreyboxNavigation: 96px route strips, 8px cell grid",
+  "stream_owner": "OpeningRegionStreamLaundrySceneSource / StreamCollision",
+  "new_crossings_currently_have_no_water_collision": true
+}
