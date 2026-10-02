@@ -1,0 +1,18 @@
+{
+  "inputs": {
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "scripts/capture-southern-road-wagon-path-correction.gd": "0431808ee4a7351264109df155a2adc4ef466f161d2862127c7b3b9727d724d0",
+    "art-direction/production-proof/corrected/tools/build_southern_road_wagon_path_correction.py": "38081b6c7cbc8a90c3e155751b0ee8e4aa30fb66a588122ad48aa117ae78209a",
+    "art-direction/production-proof/corrected/tools/build.py": "4d0936ce3fc9049cee817e0d3e5fc2b14fa13fcea0bf5841eb0ab957122a850c",
+    "game/art/runtime/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5"
+  },
+  "images": {
+    "southern-road-wagon-path-correction-0.8x-tall.png": "1f2a93dd1265dc2c76870155bf6328c48f100d8912ecede5f9a63c471458f646",
+    "southern-road-wagon-path-correction-0.8x-wide.png": "ee3c5bc82b195ea04d3f431e87eb50f5bb8d12dcd5d321c55538e5e8a6a64e80",
+    "southern-road-wagon-path-correction-1.0x-tall.png": "601e630151a8801e348810da7fac5494d46c9a7143f1cff232b6d7fc85a61ce6",
+    "southern-road-wagon-path-correction-1.0x-wide.png": "6eb18b1e582da9616e23d01c66bb7f19247a8f19e72dd98d5b023098ccd70dcc",
+    "southern-road-wagon-path-correction-2.0x-tall.png": "d31ae0a8f45d191275c3bdee7a818fce715c00f174000a0e9e507f7dcf79efc1",
+    "southern-road-wagon-path-correction-2.0x-wide.png": "0de3a9f28b66014f58a06e2efb62dc5c32f967beda5c962c475be670bec3f902",
+    "southern-road-wagon-path-correction-overlay.png": "2de4c845216e555515f6328b2c059ecdb0bab91cab64705a935cec0c3f8e9224"
+  }
+}

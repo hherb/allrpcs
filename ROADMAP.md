@@ -416,8 +416,10 @@ Acceptance:
   after display on 2026-10-02.
 - [x] Test the unchanged straight-path texture on Southern Road–Wagon in six external-only
   views; retain the failed strip and document the bent road presentation versus straight physical route.
-- [ ] Correct only the external Southern Road–Wagon proof to address the bent-road shoulders
-  and junction coverage; obtain owner review before proposing any named runtime promotion.
+- [x] Develop one external-only world-aligned Southern Road–Wagon correction with six views,
+  bent-road coverage, and explicitly documented disposable road-fill substitution.
+- [ ] Obtain owner review of all six corrected Southern Road–Wagon views, including retained
+  upstream brown fill and straight outlines, before proposing any named runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

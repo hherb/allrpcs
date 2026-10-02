@@ -71,7 +71,10 @@ See the [runtime result](art-direction/production-proof/corrected/review/square-
 The following [Southern Road–Wagon feasibility proof](art-direction/production-proof/corrected/review/southern-road-wagon-path-feasibility.md)
 retains six external-only failed strip views. The straight physical route differs from the bent
 road presentation, leaving exposed shoulders and unresolved junction coverage. No runtime or
-production file changed; the next slice is one external-only world-aligned correction.
+production file changed. A [world-aligned correction](art-direction/production-proof/corrected/review/southern-road-wagon-path-correction.md)
+now provides six external views with bent-road coverage and documented disposable fill
+substitution. Owner review is pending, including the retained upstream brown end and straight
+boundary outlines; no promotion is authorized.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
