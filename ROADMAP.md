@@ -446,7 +446,14 @@ Acceptance:
 
 - [x] Propose the [Woodland Clearing–Shrine external feasibility scope](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-scope.md)
   after inspecting the exact route, offset shrine opening and overlapping area bounds.
-- [ ] Obtain its named scope approval before generating the external unchanged-source test.
+- [x] Obtain its named scope approval on 2026-10-02; repeated routine external-proof proposal
+  approvals are no longer required under the owner's standing authorization.
+
+- [x] Retain 18 failed Woodland–Shrine unchanged-source views, opening-fringe and interior-tint evidence.
+- [x] Develop one bounded external shrine-entry clip under standing proof authorization; preserve
+  failed evidence and all 432 runtime/production/import/physical baseline files.
+- [ ] Obtain owner visual review of the 18 corrected Woodland–Shrine views before considering
+  a separately approved named production/runtime promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

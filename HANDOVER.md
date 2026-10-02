@@ -2,46 +2,52 @@
 
 ## Current state
 
-Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 has 79 manifest-bound
+Phase 8 and 9.1 are complete; Direction A is selected. Phase 9.2 retains 79 manifest-bound
 exports and 30 editable OpenRaster masters. Square–Garden, Square–Sickhouse,
 Square–Southern Road, Southern Road–Wagon and Shrine–Southern Road runtime views are
-owner-accepted. The latest [18 Shrine runtime views](art-direction/production-proof/corrected/review/shrine-southern-road-path-runtime-result.md)
-were accepted on 2026-10-02 ("approved") after separate named promotion approval.
+owner-accepted. Preserve the accepted Shrine junction triangle; its cause is unconfirmed.
 
-The Shrine presentation owns two independent lossless textures/editable 2x masters under
-one identity owner: incoming at z=-72, and a 160x160 endpoint patch centered at (1480,1360),
-z=-69. All 18 runtime PNGs match the accepted external blend bytes. Preserve the accepted
-slight triangle; its cause remains unconfirmed. Accepted Square/Road–Wagon assets, shrine
-shell/opening, labels, outlines/collisions and physical routes remain intact. Only the exact
-Shrine–Road visual route and upstream brown RoadArea fill are replaced/hidden.
+The approved Woodland–Shrine unchanged-source test retained [18 failed views](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility.md):
+19.354839px shrine-opening offset, 229 samples beyond the opening in its marker band, and a
+tinted shrine-interior strip. Its overlay, recipe, capture harness and evidence are immutable.
+The following [external correction](art-direction/production-proof/corrected/review/woodland-shrine-path-correction.md)
+keeps the 704x208 canvas at `(352,224)`, center `(704,328)`, z=-74, and removes 20,672 visible
+pixels at the shrine shell/opening. All surviving texture pixels match the failed strip.
+Sixteen of 18 views change only inside the projected clip region; the two 2.0x clearing-junction
+views are exact. The 432-file runtime/production/import/physical baseline remains unchanged.
+A small brown notch remains at the Clearing join's lower edge; its cause is unconfirmed.
+No production/runtime promotion is approved; corrected external visual acceptance is pending.
 
+Repeated host Compatibility capture reproduced all 36 feasibility/correction PNG hashes.
 Full host `./scripts/quality.sh` passed asset validators, formatting, zero-warning build,
 all 5,033 tests, scenario validation, complete credential-free Godot smokes and Compatibility
-launch. Second production build reproduced all 110 asset/master/manifest hashes. Cumulative
-review and focused scope/capture checks passed; all 414 retained hashes match. Sandbox Godot
-log/settings writes and graphical capture required identical host retries, which passed.
+launch. Cumulative review found no further code issue; the Clearing notch is a visual detail
+for review. Focused reproduction, clip projection and frozen-baseline checks passed.
 
-Archived failed-strip/correction/blend recipes, captures and evidence remain immutable.
-Their optional 417-file live-baseline checks intentionally reject the approved promotion;
-never rewrite those baselines. Use Pillow-enabled `/opt/homebrew/bin/python3` with
-`validate_shrine_southern_road_path.py --check-captures --check-promotion-scope` from the
-corrected tools directory for the promotion's exact asset/master/import and authority checks.
-Regular quality includes its validator and live decoded-texture/layer smoke.
+## Standing authorization for external proofs
 
-The documentation-only Woodland–Shrine proposal was reviewed against live geometry; source
-hash, route/opening calculations and links passed. Shrine promotion scope/capture validation
-was rechecked. No production/runtime/proof asset was generated or changed in that follow-up.
+On 2026-10-02 the owner removed repeated proposal/scope-approval gates because this process
+is established. Continue routine bounded external feasibility tests and corrective proof passes
+from the handover without asking for proposal approval. State/document the exact scope,
+preserve failed evidence and accepted assets, validate/review, and publish reviewed work
+under the existing direct-main authorization. Separate named production/runtime promotion
+approval and visual-acceptance checkpoints remain required.
 
 ## Exact next bounded slice
 
-The [named Woodland Clearing–Shrine external feasibility scope](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-scope.md)
-is proposed; obtain owner approval before generating its asset/proof. It tests the existing
-96x256 straight-path texture on the exact `(1000,350)` → `(380,300)` route with one external
-704x208 overlay at world origin `(352,224)`, z=-74, and 18 midpoint/clearing-junction/shrine-entry
-views. The shrine opening is 19.354839px off the centerline; area bounds overlap by 20px.
-Preserve both openings and expose mismatch in the first test. No correction or promotion is
-approved. Keep all proof framing and Seeker/HUD hiding external to ordinary startup.
+Obtain owner visual review of the linked 18 corrected external views, including the retained
+Clearing-junction notch. If a further correction
+is needed, keep it external and bounded to that feedback under the standing authorization.
+After external acceptance, propose the exact named Woodland–Shrine promotion with unchanged
+pixels/physical authority; obtain its separate approval before production/runtime work.
+
+Use Pillow-enabled `/opt/homebrew/bin/python3` with corrected tools
+`check_woodland_shrine_path_correction.py --check-live-baseline`. It recursively validates
+failed evidence, exact clipping, independent projected capture bounds and the 432-file baseline.
+Both new validators run in regular quality; archived older path proofs/import/runtime assets
+remain intact. Older Shrine live-baseline checks intentionally reject its approved promotion.
 
 Preserve navigation, camera, scenario, dialogue, clues, discovery, treatment, save, provider,
-UI, audio, release and signing. Visual acceptance establishes no pacing, usability,
-accessibility or gameplay acceptance. Direct-main commit/push covers reviewed work only.
+UI, audio, release and signing. Keep proof framing/Seeker/HUD hiding external to ordinary
+startup. Visual acceptance establishes no pacing, usability, accessibility, gameplay or
+next-asset acceptance. Direct-main commit/push covers reviewed work only.

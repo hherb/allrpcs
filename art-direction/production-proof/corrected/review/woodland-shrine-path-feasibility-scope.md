@@ -1,9 +1,10 @@
 # Proposed Woodland Clearing–Shrine external path feasibility
 
-Status: proposed on 2026-10-02; named scope approval is pending. This first test answers
+Status: approved on 2026-10-02 ("approved"). The owner also removed repeated proposal-approval
+gates for routine bounded external proof work. This first test answers
 whether the existing straight-path texture can present the retained route while preserving
-both physical openings and every accepted adjacent asset. It does not authorize a correction
-or production/runtime promotion.
+both physical openings and every accepted adjacent asset. The initial test leaves correction to a separately documented bounded external pass under
+the standing authorization. It does not authorize production/runtime promotion.
 
 ## Retained geometry and known risk
 
@@ -63,10 +64,11 @@ physical, import, production and manifest baseline; all must remain unchanged. R
 archived proof validation in regular quality without freezing future approved promotions.
 Run focused validation and `./scripts/quality.sh`, review the cumulative diff, and present
 all views with an honest feasibility verdict. Retain failed evidence if the strip fails.
-Any correction needs its own bounded scope; named promotion needs accepted external views
+Document any correction as its own bounded external slice under the standing authorization;
+named promotion needs accepted external views
 and separate approval. Direct-main publication covers reviewed, authorized proof work.
 
 Preserve navigation, camera, scenario, dialogue, clues, discovery, treatment, save, provider,
 UI, audio, release and signing. No pacing, usability, accessibility, gameplay or next-asset
-acceptance is inferred. This proposal changes documentation only; generating this proof
-requires owner approval of this exact named scope.
+acceptance is inferred. The proof scope is approved. Repeated routine external-proof proposal approvals are no longer
+required; production/runtime promotion and visual checkpoints retain their separate gates.

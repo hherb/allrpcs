@@ -1,0 +1,34 @@
+{
+  "inputs": {
+    "art-direction/production-proof/corrected/tools/build_woodland_shrine_path_correction.py": "a9eb08d2e80476c47f151be0ed36721be12ea13191b192baf5d6e99dbb383819",
+    "scripts/capture-woodland-shrine-path-correction.gd": "307e7e5587a380af57c4cf87aa2b4663a053ad7a556f65d6f5c73527e63854e7",
+    "art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-evidence.json": "e7bf9b06198a74b490e0b9c06e6d3da82c2791423de3034e326eeb5496a1a6d0"
+  },
+  "images": {
+    "woodland-shrine-path-correction-clearing-junction-0.8x-tall.png": "3f8e211628daeb1545218787a7a7770970a3805e8af38029197528fd5c1bd758",
+    "woodland-shrine-path-correction-clearing-junction-0.8x-wide.png": "fcaecdf2c908a2a30e6d8c1798f9a5af54233483d4c14df9c0ebd7bbf73123a5",
+    "woodland-shrine-path-correction-clearing-junction-1.0x-tall.png": "a9958d5ce9324f89eadc5a2fcb131a7fb0277fe40f597fa0b152a7dd188681fa",
+    "woodland-shrine-path-correction-clearing-junction-1.0x-wide.png": "d8f3fea978208f913f2823f640eea0376c6fcc0938a24229a87a0162bcba4193",
+    "woodland-shrine-path-correction-clearing-junction-2.0x-tall.png": "2b0c20449d338289b20a460ec0cde6064e63c4e451d6e8e0aeda6d16bf916514",
+    "woodland-shrine-path-correction-clearing-junction-2.0x-wide.png": "9e6de809174c704704d097bc09f9bc6892ad5975c6fdd6ebb72d38ab926a2a5b",
+    "woodland-shrine-path-correction-midpoint-0.8x-tall.png": "4ce9ad9520a5d46c5b489260192aaab28f520f61069fff75be254b451d528ce6",
+    "woodland-shrine-path-correction-midpoint-0.8x-wide.png": "d8e9d88a33a9599dbd9f4cc261f5077e80b31f3569aad781a02e9dcafaf6816e",
+    "woodland-shrine-path-correction-midpoint-1.0x-tall.png": "0236bc438b2fd48ce373f1d2cac207016a8dea08a75f5f93f15391adb9a70d72",
+    "woodland-shrine-path-correction-midpoint-1.0x-wide.png": "6b5e1d8b25020d10bb4d3f679f451e5cdee0e7cbd3258f91196828fb62a22d41",
+    "woodland-shrine-path-correction-midpoint-2.0x-tall.png": "ca406e5a6d839389ad4516dec7d606e0896377c7a2e85c7305322e565d6e3224",
+    "woodland-shrine-path-correction-midpoint-2.0x-wide.png": "cfc0ff94bd97dc99e5768637f126679bad6075c7d589994191f9e355c31796b2",
+    "woodland-shrine-path-correction-overlay.png": "3b02845c3205ffa4371d6251ec059f5d825869c3f62adf88a8ffb9a44367f673",
+    "woodland-shrine-path-correction-shrine-entry-0.8x-tall.png": "4ce9ad9520a5d46c5b489260192aaab28f520f61069fff75be254b451d528ce6",
+    "woodland-shrine-path-correction-shrine-entry-0.8x-wide.png": "d8e9d88a33a9599dbd9f4cc261f5077e80b31f3569aad781a02e9dcafaf6816e",
+    "woodland-shrine-path-correction-shrine-entry-1.0x-tall.png": "241b787accde8dcc70e77f7793032b7b94218bc651acbcd2f3dab16aecc554bd",
+    "woodland-shrine-path-correction-shrine-entry-1.0x-wide.png": "a2bbc2d862e30cdf15a0417fe1ed09f9820cf8973daa226049d33b19cf2255f9",
+    "woodland-shrine-path-correction-shrine-entry-2.0x-tall.png": "e1586e128d8b360782eba8c447f5683835177bfd0e423996213fd0ee61c17896",
+    "woodland-shrine-path-correction-shrine-entry-2.0x-wide.png": "0f34aceea66834023e10b33c95b70548fe7903169933b943e62ddeed43ca5f56"
+  },
+  "clipping": {
+    "shrine_right": 620,
+    "opening_center_y": 300,
+    "opening_half_height": 48,
+    "marker_half_depth": 8
+  }
+}

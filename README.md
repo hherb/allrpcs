@@ -102,8 +102,15 @@ match the accepted external blend PNG bytes; the owner accepted the runtime view
 2026-10-02 ("approved").
 
 The next [Woodland Clearing–Shrine feasibility scope](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-scope.md)
-proposes an external unchanged-source test, preserving the offset shrine opening and overlapping
-area bounds. Its exact named scope needs approval before any proof is generated.
+was approved on 2026-10-02 for an external unchanged-source test, preserving the offset shrine
+opening and overlapping area bounds. The owner removed repeated approval gates for routine
+bounded external proof slices; named runtime promotions retain separate approval.
+
+The [Woodland–Shrine strip test](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility.md)
+now retains 18 failed views showing the opening fringe and tinted shrine-interior strip.
+A [bounded external correction](art-direction/production-proof/corrected/review/woodland-shrine-path-correction.md)
+clips only the shrine shell/opening region and supplies 18 views for visual review. All runtime,
+production, import and physical files remain unchanged. No named promotion is approved.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
