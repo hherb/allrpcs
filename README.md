@@ -89,8 +89,12 @@ now retains six failed feasibility views. Greybox fringes, brown-fill darkening,
 changed. A subsequent [external correction](art-direction/production-proof/corrected/review/shrine-southern-road-path-correction.md)
 now provides 18 midpoint, shrine-exit, and junction views. It removes the route fringe and
 brown-fill darkening, aligns the entry with the physical route/opening, and preserves accepted
-overlays and all authority. A thin junction seam remains visible at 2.0x; owner review and any
+overlays and all authority. That correction retained a thin junction seam at 2.0x; owner review and any
 required external seam correction precede a separately approved named promotion.
+The subsequent [endpoint blend proof](art-direction/production-proof/corrected/review/shrine-southern-road-path-blend.md)
+adds only a local 48px blend band in the disposable scene. All 18 views remain available for
+owner review; capture differences are confined to the projected patch, and the original
+correction/failed-strip evidence and accepted runtime assets remain unchanged.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

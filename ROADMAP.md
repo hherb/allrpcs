@@ -433,8 +433,10 @@ Acceptance:
   views; retain the failed fringe/darkening proof and 20.384-pixel shrine-exit centerline offset.
 - [x] Develop one external-only Shrine–Southern Road presentation correction, retaining failed
   evidence and all physical authority, with 18 shrine-exit/junction and midpoint views.
-- [ ] Obtain owner review of the external correction, including the thin 2.0x junction seam;
-  address any required seam correction externally before proposing a named promotion.
+- [x] Develop an external-only local Shrine–Road endpoint blend with all 18 views and
+  independently checked capture differences confined to the projected patch.
+- [ ] Obtain owner review of the endpoint blend and texture transition before proposing a
+  separately approved named promotion.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

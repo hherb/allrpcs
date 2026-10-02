@@ -1,0 +1,31 @@
+{
+  "inputs": {
+    "art-direction/production-proof/corrected/tools/build_shrine_southern_road_path_blend.py": "57fbeab8ad58e24fa93888b30ca4e65961d89a3ed69fc4f46365f479bf715ce2",
+    "scripts/capture-shrine-southern-road-path-blend.gd": "dbef4cf3957e316f077025318a65a2ae99a607ff73d517569fe840ad3febe938",
+    "art-direction/production-proof/corrected/review/shrine-southern-road-path-correction-evidence.json": "574c49f626023075188949db5a5628cc935b29fc92bd3dc9a5d7eb6cc082dffb",
+    "game/art/runtime/terrain/southern-road-wagon-path.png": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+    "game/art/runtime/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5"
+  },
+  "images": {
+    "shrine-southern-road-path-blend-junction-0.8x-tall.png": "9ca957735c5db05758410c78d20b3e3fa8603523519a9e6b2228247891a2f64c",
+    "shrine-southern-road-path-blend-junction-0.8x-wide.png": "502874160da354236d77231e2d9774d24148101394f5f6030a676819dbc98ce1",
+    "shrine-southern-road-path-blend-junction-1.0x-tall.png": "ee7135c04c5484b908d14611e8ba7240092351e7ba16f4fd8f0ce69b00b090d3",
+    "shrine-southern-road-path-blend-junction-1.0x-wide.png": "8dd7878a154e7b56c6cdb8e3d6c6dcc97142057dcbfa7886000201790b717c5f",
+    "shrine-southern-road-path-blend-junction-2.0x-tall.png": "fe1246493e4ca132d0cb7751a18a95e2868a2327e1128987f1b7466e98a7d7bd",
+    "shrine-southern-road-path-blend-junction-2.0x-wide.png": "9adfac8b9e7829fc16bee7a3d7275078a79723355be4d8aeebacd8ec408f4ebe",
+    "shrine-southern-road-path-blend-midpoint-0.8x-tall.png": "36123f81bb5859d530ac95979a6d4801eb14fbb73c266d0fa7fcd53dbce2db9e",
+    "shrine-southern-road-path-blend-midpoint-0.8x-wide.png": "8535a986c40993d0ed13f35688a1f167261378745c7d090e412bb8b832efc14b",
+    "shrine-southern-road-path-blend-midpoint-1.0x-tall.png": "be49da217e4f28e48de93c7307c02534cb4204ae05d38a9e9c6872fc60d050dd",
+    "shrine-southern-road-path-blend-midpoint-1.0x-wide.png": "d9ff2b0cdc2f5b2b32957ec2b5f5fec0d34d2781f1394fb7d335f58aa3a11563",
+    "shrine-southern-road-path-blend-midpoint-2.0x-tall.png": "676f2128027c3afebb56ec28ee0d7d3c8fde5e0d323cc4d8b30e90b1b77dc7b8",
+    "shrine-southern-road-path-blend-midpoint-2.0x-wide.png": "b55c2777517b7681595dc325a7efdfd14c6f9fd9155480713cd45df945c2dcdf",
+    "shrine-southern-road-path-blend-overlay.png": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720",
+    "shrine-southern-road-path-blend-shrine-exit-0.8x-tall.png": "5c3bd9dc58ea1bce93bf3468feb4a65a3f2e95c0db7b6766c206c915261ad419",
+    "shrine-southern-road-path-blend-shrine-exit-0.8x-wide.png": "bf4059f6b926f6c294e472c7d40222bc8e29ffc40e697f4d3af52467e761c5fd",
+    "shrine-southern-road-path-blend-shrine-exit-1.0x-tall.png": "9a8ab595bfe6bc5fa9d324e8ddcab685b3171029f93d1d95b05ccf1f2aab7414",
+    "shrine-southern-road-path-blend-shrine-exit-1.0x-wide.png": "e84fa17837d9bf929190a014540a311e5aba4467b2f7ba1bc10d052a0a8e519e",
+    "shrine-southern-road-path-blend-shrine-exit-2.0x-tall.png": "f344698f6ab979e699a86d7259d3eaa6e6cac0b850b87da232afd4d59f196061",
+    "shrine-southern-road-path-blend-shrine-exit-2.0x-wide.png": "33567517e9d1e9c9992ef8d1eecf2bb3523a22e077db5a86644e321bfac58147"
+  },
+  "visible_patch_pixels": 3354
+}
