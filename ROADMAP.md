@@ -405,8 +405,10 @@ Acceptance:
 - [x] Test the existing straight-path texture on the retained Square–Southern Road continuation
   in six external-only wide/tall views; retain the failed strip and phase-continuous correction
   with 1,662 exact overlap pixels and the visible flat road-end limitation, preserving runtime.
-- [ ] Obtain owner review of all six corrected Square–Southern Road external views before
-  proposing a separately authorized named production/runtime promotion.
+- [x] Obtain owner review of all six corrected Square–Southern Road external views; the owner
+  replied "approved" after display on 2026-10-02. This is external visual acceptance only.
+- [ ] Obtain separate approval of the named Square–Southern Road production/runtime promotion
+  before implementing it, then obtain the ordinary-scene visual checkpoint.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

@@ -3,8 +3,8 @@
 The owner approved all six Square–Sickhouse runtime views with "approved" on 2026-10-02 after
 display. The following slice tests only the existing straight-path texture on the retained
 Square–Southern Road continuation. It changes no runtime/production asset, master, manifest,
-import, ordinary scene, or physical/gameplay authority. External owner review is pending;
-no Southern Road promotion is authorized.
+import, ordinary scene, or physical/gameplay authority. The owner approved all six corrected external views with "approved" after display on
+2026-10-02. This is external visual acceptance only; no Southern Road promotion is authorized.
 
 Square is anchored at `(2200,900)`, Southern Road at `(1500,1400)`, and the 512-pixel junction
 footprint exit is `(1944,1082.857143)`. The remaining route is `545.633203` pixels along heading
@@ -65,7 +65,7 @@ All validators, formatting, zero-warning build, 5,033 tests, scenario validation
 host Godot smoke suite passed. Sandbox Godot user-log restrictions required the identical host
 retry; no product workaround was introduced. Compatibility launch passed.
 
-Next: review all six corrected views for junction seam, repetition/width, Southern Road endpoint,
-and marker/label layering. Correct only this external proof if requested. After acceptance,
-prepare one exact named promotion proposal and obtain separate approval before modifying
-production assets or runtime. Preserve all physical/gameplay authority and every other route.
+Next: obtain separate approval of the [named promotion proposal](square-southern-road-path-promotion-proposal.md)
+before changing production assets or runtime. The external acceptance covers junction seam,
+repetition/width, the visible flat endpoint, and marker/label layering. Preserve all physical/gameplay
+authority and every other route.

@@ -8,7 +8,8 @@ owner-accepted; the owner replied "approved" after the Sickhouse views on 2026-1
 Its exact named promotion remains complete and validated; see the
 [runtime result](art-direction/production-proof/corrected/review/square-sickhouse-path-runtime-result.md).
 
-The following Square–Southern Road slice is external-only; owner review is pending.
+The Square–Southern Road slice is external-only; the owner approved all six final external
+views with "approved" after display on 2026-10-02. Named promotion approval is pending.
 See the [feasibility result](art-direction/production-proof/corrected/review/square-southern-road-path-feasibility.md)
 for six failed strip views, six final 0.8x/1.0x/2.0x wide/tall views, recipes, and hashes.
 The world-aligned 520x416 overlay starts at `(1440,1024)` and draws at `(1700,1232)`, `z=-71`.
@@ -18,7 +19,7 @@ Only the matching route line is hidden in the disposable corrected proof. The Se
 panels are hidden and the camera reframed; world markers/labels retain ownership and layering.
 The far end remains a flat textured patch across the untextured road junction, partly covered
 by the road presentation. High-zoom labels largely fall outside frame; overview views provide
-context. This limitation is for owner review; automated checks are not visual acceptance.
+context. The owner accepted this external presentation, including the recorded flat endpoint limitation.
 
 Use Pillow-enabled Python (`/opt/homebrew/bin/python3` here). The new feasibility validator is
 in regular quality; `--check-live-baseline` additionally verifies this slice's frozen runtime
@@ -29,11 +30,11 @@ retry; no product workaround was introduced. Compatibility launch passed.
 
 ## Exact next bounded slice
 
-Obtain owner review of all six final Square–Southern Road external views: junction seam,
-repetition/width, visible flat endpoint, and marker/label layering. Correct only this external
-proof and redisplay if requested. If accepted, prepare one exact named promotion proposal and
-obtain separate approval before changing production assets, masters, manifest/imports, or runtime.
-No Southern Road promotion is authorized.
+Obtain separate approval of the [named Southern Road promotion proposal](art-direction/production-proof/corrected/review/square-southern-road-path-promotion-proposal.md).
+It names one exact 520x416 export, one 1040x832 editable master, independent imports, and
+one sprite at `(1700,1232)`, `z=-71`, with repeat disabled, replacing only the matched line.
+After approval, implement only that scope, validate/review it, and obtain the separate
+ordinary-scene visual checkpoint. No Southern Road promotion is authorized yet.
 
 Preserve physical/gameplay authority, topology, collision, navigation, camera, scenario, dialogue,
 clues, discovery, treatment, save, provider, UI, audio, release, and signing. Do not infer pacing,
