@@ -14,7 +14,7 @@ world rectangle `(994,300)..(1028,402)`. The canvas remains 704x208 at `(352,224
 short addition comes from the source's first rows; no recoloring or asset editing is involved.
 The shrine-entry clipping remains exact. Neither accepted Laundry texture nor end cap changes.
 
-**Result: gap covered in the external proof; owner visual review pending.** Three samples
+**Result: gap covered; owner accepted the external views on 2026-10-02 ("Acceptable").** Three samples
 inside the reported wedge previously matched the greybox road exactly; they now show opaque
 packed earth. All six Clearing-junction views show the local correction. Sixteen of 18 views
 change only within the independently projected rectangle, allowing two screen pixels for
@@ -64,9 +64,8 @@ all 18 view hashes. Focused validation and the frozen baseline passed again afte
 Full host `./scripts/quality.sh` passed all asset validators, formatting, a zero-warning build,
 all 5,033 tests, scenario validation, the complete credential-free Godot smoke suite and
 Compatibility graphical launch. Cumulative code/visual review found no further implementation
-issue; owner visual acceptance remains pending. The staged diff is whitespace-clean.
+issue; owner subsequently accepted the external views on 2026-10-02 ("Acceptable"). The staged diff is whitespace-clean.
 
-Next slice: obtain owner visual review of these 18 views. Further bounded external corrections
-use standing authorization. After acceptance, propose the exact named Woodland–Shrine
-production/runtime promotion and obtain its separate approval. Preserve navigation, camera,
+Next slice: obtain separate approval for the [exact named Woodland–Shrine promotion](woodland-shrine-path-promotion-scope.md).
+External visual acceptance is recorded; routine external corrections retain standing authorization. Preserve navigation, camera,
 scenario, dialogue, clues, discovery, treatment, save, provider, UI, audio, release and signing.

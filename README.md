@@ -111,7 +111,8 @@ now retains 18 failed views showing the opening fringe and tinted shrine-interio
 A [bounded external correction](art-direction/production-proof/corrected/review/woodland-shrine-path-correction.md)
 clips only the shrine shell/opening region. The subsequent [Clearing-junction correction](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md)
 extends the proof 24px beneath the accepted end cap to cover the reported gap between Herb
-Patch and Stone Marker, supplying 18 new views for visual review. All runtime, production,
+Patch and Stone Marker. The owner accepted its 18 external views on 2026-10-02 ("Acceptable").
+The [named promotion proposal](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md) awaits separate approval. All runtime, production,
 import and physical files remain unchanged. No named promotion is approved.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound

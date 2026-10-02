@@ -454,8 +454,9 @@ Acceptance:
   failed evidence and all 432 runtime/production/import/physical baseline files.
 - [x] Cover the reported Herb Patch–Stone Marker gap with a bounded external 24px junction
   extension; retain both earlier proofs and the 432-file baseline.
-- [ ] Obtain owner visual review of the 18 [junction-corrected Woodland–Shrine views](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md) before considering
-  a separately approved named production/runtime promotion.
+- [x] Obtain owner visual acceptance of the 18 [junction-corrected Woodland–Shrine views](art-direction/production-proof/corrected/review/woodland-shrine-path-junction.md)
+  on 2026-10-02 ("Acceptable").
+- [ ] Obtain separate approval for the [named Woodland–Shrine production/runtime promotion](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md).
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

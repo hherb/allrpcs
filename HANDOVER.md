@@ -16,13 +16,13 @@ beneath that cap changes 2,241 pixels only inside `(994,300)..(1028,402)`; all o
 pixels and the shrine-entry clipping remain intact. Canvas 704x208 at `(352,224)`, center
 `(704,328)`, z=-74 stays unchanged. Sixteen views change inside independently projected local
 bounds; both 2.0x shrine-entry views are exact. All 432 frozen runtime/production/import/physical
-files remain unchanged. External visual acceptance is pending; no named promotion is approved.
+files remain unchanged. The owner accepted these external views on 2026-10-02 ("Acceptable"); named promotion remains unapproved.
 
 Repeated host Compatibility captures reproduce all 18 junction-view hashes. Focused
 reproduction, coverage, archived evidence, projected bounds and live-baseline checks pass.
 Full host `./scripts/quality.sh` passed asset validators, formatting, zero-warning build,
 all 5,033 tests, scenario validation, complete credential-free Godot smokes and Compatibility
-launch. Cumulative review found no further implementation issue; visual acceptance is pending.
+launch. Cumulative review found no further implementation issue; external visual acceptance is recorded.
 
 ## Standing authorization
 
@@ -34,10 +34,10 @@ and visual-acceptance checkpoints remain required.
 
 ## Exact next slice
 
-Obtain owner visual review of the linked 18 junction-corrected views. Further feedback permits
-bounded external correction under standing authorization. After acceptance, propose the exact
-named Woodland–Shrine production/runtime promotion with accepted pixels and unchanged physical
-authority; obtain its separate approval before promotion work.
+Obtain separate approval for the [named Woodland–Shrine production/runtime promotion](art-direction/production-proof/corrected/review/woodland-shrine-path-promotion-scope.md):
+one exact accepted 704x208 asset at center `(704,328)`, z=-74; 1408x416 editable master;
+replace only the visual 96px Woodland–Shrine line. After approval, implement/validate/review
+and capture all 18 runtime views for visual confirmation before direct-main publication.
 
 Use Pillow-enabled `/opt/homebrew/bin/python3` and
 `art-direction/production-proof/corrected/tools/check_woodland_shrine_path_junction.py --check-live-baseline`.
