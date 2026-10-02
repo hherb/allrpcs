@@ -437,8 +437,10 @@ Acceptance:
   independently checked capture differences confined to the projected patch.
 - [x] Obtain owner visual acceptance of the endpoint blend on 2026-10-02, including the
   slight triangle at the left side of the intersection ("it is acceptable as is").
-- [ ] Propose and obtain separate approval for the exact named Shrine–Southern Road promotion,
-  retaining accepted pixels and the incoming/endpoint layer ordering.
+- [x] Propose the [exact named Shrine–Southern Road promotion](art-direction/production-proof/corrected/review/shrine-southern-road-path-promotion-scope.md),
+  retaining accepted pixels and the incoming/endpoint layer ordering under one presentation owner.
+- [ ] Obtain separate approval for that scope before production/runtime work, then validate
+  both independent assets and obtain owner visual confirmation of all 18 runtime views.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
