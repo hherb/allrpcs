@@ -101,6 +101,10 @@ pixels under one runtime presentation owner at z=-72/-69. All 18 [runtime views]
 match the accepted external blend PNG bytes; the owner accepted the runtime views on
 2026-10-02 ("approved").
 
+The next [Woodland Clearing–Shrine feasibility scope](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-scope.md)
+proposes an external unchanged-source test, preserving the offset shrine opening and overlapping
+area bounds. Its exact named scope needs approval before any proof is generated.
+
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into

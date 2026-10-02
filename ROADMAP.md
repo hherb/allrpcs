@@ -444,6 +444,10 @@ Acceptance:
 - [x] Validate asset/master/import parity and all 18 runtime captures against accepted blend bytes.
 - [x] Obtain owner visual confirmation of all 18 Shrine–Southern Road runtime views on 2026-10-02 ("approved").
 
+- [x] Propose the [Woodland Clearing–Shrine external feasibility scope](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-scope.md)
+  after inspecting the exact route, offset shrine opening and overlapping area bounds.
+- [ ] Obtain its named scope approval before generating the external unchanged-source test.
+
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
 - [ ] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.

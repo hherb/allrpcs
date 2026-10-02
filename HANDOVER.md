@@ -28,13 +28,19 @@ never rewrite those baselines. Use Pillow-enabled `/opt/homebrew/bin/python3` wi
 corrected tools directory for the promotion's exact asset/master/import and authority checks.
 Regular quality includes its validator and live decoded-texture/layer smoke.
 
+The documentation-only Woodland–Shrine proposal was reviewed against live geometry; source
+hash, route/opening calculations and links passed. Shrine promotion scope/capture validation
+was rechecked. No production/runtime/proof asset was generated or changed in that follow-up.
+
 ## Exact next bounded slice
 
-Propose one named external-only Woodland Clearing–Shrine path feasibility scope for the
-retained 96px route `(1000,350)` → `(380,300)`. Inspect the woodland/shrine openings and
-adjacent accepted path layers before specifying source texture, footprint and review views.
-Obtain that scope's approval before generating another asset/proof; no next-asset approval
-is inferred. Keep all proof framing and Seeker/HUD hiding external to ordinary startup.
+The [named Woodland Clearing–Shrine external feasibility scope](art-direction/production-proof/corrected/review/woodland-shrine-path-feasibility-scope.md)
+is proposed; obtain owner approval before generating its asset/proof. It tests the existing
+96x256 straight-path texture on the exact `(1000,350)` → `(380,300)` route with one external
+704x208 overlay at world origin `(352,224)`, z=-74, and 18 midpoint/clearing-junction/shrine-entry
+views. The shrine opening is 19.354839px off the centerline; area bounds overlap by 20px.
+Preserve both openings and expose mismatch in the first test. No correction or promotion is
+approved. Keep all proof framing and Seeker/HUD hiding external to ordinary startup.
 
 Preserve navigation, camera, scenario, dialogue, clues, discovery, treatment, save, provider,
 UI, audio, release and signing. Visual acceptance establishes no pacing, usability,
