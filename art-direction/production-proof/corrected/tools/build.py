@@ -2326,6 +2326,16 @@ def main() -> None:
         if southern_export.tobytes() != accepted.convert("RGBA").tobytes():
             raise ValueError("Square–Southern Road recipe no longer matches accepted pixels")
     southern_master = southern_export.resize((1040, 832), Image.Resampling.NEAREST)
+    accepted_wagon_path = REVIEW / "southern-road-wagon-path-trim-overlay.png"
+    if hash_file(accepted_wagon_path) != "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799":
+        raise ValueError("accepted Southern Road–Wagon proof changed")
+    from build_southern_road_wagon_path_trim import compose as compose_wagon
+
+    wagon_export = compose_wagon()
+    with Image.open(accepted_wagon_path) as accepted:
+        if wagon_export.tobytes() != accepted.convert("RGBA").tobytes():
+            raise ValueError("Southern Road–Wagon recipe no longer matches accepted pixels")
+    wagon_master = wagon_export.resize((1120, 864), Image.Resampling.NEAREST)
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2568,6 +2578,16 @@ def main() -> None:
             "tools/build_square_southern_road_path_correction.py",
         ),
         Asset(
+            "terrain.southern_road_wagon_path",
+            "terrain",
+            Path("exports/terrain/southern-road-wagon-path.png"),
+            (1120, 864),
+            (560, 432),
+            864,
+            wagon_master,
+            "tools/build_southern_road_wagon_path_trim.py",
+        ),
+        Asset(
             "plants.herb_bed_empty",
             "plants",
             Path("exports/plants/herb-bed-empty.png"),
@@ -2672,6 +2692,8 @@ def main() -> None:
             export = sickhouse_export.copy()
         if asset.asset_id == "terrain.square_southern_road_path":
             export = southern_export.copy()
+        if asset.asset_id == "terrain.southern_road_wagon_path":
+            export = wagon_export.copy()
         if asset.category == "characters":
             export = align_alpha_baseline(export, asset.baseline_master // MASTER_SCALE)
         if asset.asset_id in {
@@ -2759,6 +2781,8 @@ def main() -> None:
             (ROOT / asset.export_path).write_bytes(accepted_sickhouse_path.read_bytes())
         if asset.asset_id == "terrain.square_southern_road_path":
             (ROOT / asset.export_path).write_bytes(accepted_southern_path.read_bytes())
+        if asset.asset_id == "terrain.southern_road_wagon_path":
+            (ROOT / asset.export_path).write_bytes(accepted_wagon_path.read_bytes())
         export_images[asset.asset_id] = export
 
     create_ora(
@@ -3016,6 +3040,17 @@ def main() -> None:
             ("unclipped junction-relative continuation reference", southern_reference, 0, 0, False),
             ("exact junction overlap columns", southern_master.crop((1008, 0, 1040, 832)), 1008, 0, True),
             ("continuation clipped at Southern Road endpoint", southern_master.crop((0, 0, 1008, 832)), 0, 0, True),
+        ],
+    )
+    with Image.open(REVIEW / "southern-road-wagon-path-correction-overlay.png") as reference:
+        wagon_reference = reference.convert("RGBA").resize((1120, 864), Image.Resampling.NEAREST)
+    create_ora(
+        MASTERS / "terrain-southern-road-wagon-path.ora",
+        (1120, 864),
+        [
+            ("untrimmed external correction reference", wagon_reference, 0, 0, False),
+            ("accepted junction and incoming tip", wagon_master.crop((0, 0, 360, 864)), 0, 0, True),
+            ("accepted bent road continuation", wagon_master.crop((360, 0, 1120, 864)), 360, 0, True),
         ],
     )
     create_ora(
@@ -3550,6 +3585,22 @@ def main() -> None:
             "heading_degrees": 144.462322,
             "endpoint": [1500, 1400],
             "overlap_columns": 16,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        },
+        "southern_road_wagon_path_provenance": {
+            "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
+            "accepted_proof_sha256": hash_file(accepted_wagon_path),
+            "master": "masters/terrain-southern-road-wagon-path.ora",
+            "source_asset": "terrain.straight_path",
+            "source_sha256": hash_file(REPOSITORY_ROOT / "game/art/runtime/terrain/straight-path.png"),
+            "recipe_sha256": hash_file(ROOT / "tools/build_southern_road_wagon_path_trim.py"),
+            "world_origin": [1400, 1280],
+            "world_position": [1680, 1496],
+            "road_points": [[1500, 1400], [1820, 1580], [1900, 1640]],
+            "backward_overlap_pixels": 48,
+            "incoming_extension_pixels": 16,
+            "master_partition_column": 360,
             "import_fix_alpha_border": False,
             "master_scaling": "nearest-neighbour 2x of exact accepted export",
         },

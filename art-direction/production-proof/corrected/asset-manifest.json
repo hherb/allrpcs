@@ -485,6 +485,41 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "southern_road_wagon_path_provenance": {
+    "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
+    "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+    "master": "masters/terrain-southern-road-wagon-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "recipe_sha256": "b1ceeff545529512f6116cfb1c4c4b23903a9d43730879352e91430319dc45f5",
+    "world_origin": [
+      1400,
+      1280
+    ],
+    "world_position": [
+      1680,
+      1496
+    ],
+    "road_points": [
+      [
+        1500,
+        1400
+      ],
+      [
+        1820,
+        1580
+      ],
+      [
+        1900,
+        1640
+      ]
+    ],
+    "backward_overlap_pixels": 48,
+    "incoming_extension_pixels": 16,
+    "master_partition_column": 360,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "village_edge_square_connector_provenance": {
     "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
     "accepted_proof_sha256": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
@@ -1161,6 +1196,36 @@
       },
       "godot_import_proof": true,
       "sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5"
+    },
+    {
+      "id": "terrain.southern_road_wagon_path",
+      "category": "terrain",
+      "source": "tools/build_southern_road_wagon_path_trim.py",
+      "export": "exports/terrain/southern-road-wagon-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 432
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 432
+      },
+      "master_dimensions_pixels": {
+        "width": 1120,
+        "height": 864,
+        "scale": 2
+      },
+      "contact_baseline": 432,
+      "pivot": {
+        "x": 280,
+        "y": 216
+      },
+      "godot_import_proof": true,
+      "sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799"
     },
     {
       "id": "plants.herb_bed_empty",

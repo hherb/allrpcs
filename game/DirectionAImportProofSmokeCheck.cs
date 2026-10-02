@@ -70,6 +70,7 @@ public partial class DirectionAImportProofSmokeCheck : Node2D
         ("Terrain/SquareGardenPathProof", 200, 220),
         ("Terrain/SquareSickhousePathProof", 380, 360),
         ("Terrain/SquareSouthernRoadPathProof", 520, 416),
+        ("Terrain/SouthernRoadWagonPathProof", 560, 432),
         ("Terrain/StreamWaterProof", 128, 96),
         ("Terrain/StreamBankProof", 128, 32),
         ("Terrain/StreamBankOpeningCapProof", 32, 32),

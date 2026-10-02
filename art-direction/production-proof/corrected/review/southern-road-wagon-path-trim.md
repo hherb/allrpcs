@@ -33,7 +33,7 @@ reproduces all six PNG hashes. Code and six-view review found no unresolved impl
 issue. Full product tests/smokes passed in the preceding slice; this external-only adjustment
 was checked with the focused evidence validator and actual Compatibility captures.
 
-Next: obtain separate approval of the exact named production/runtime promotion proposed in
-`HANDOVER.md`. The retained
+The owner separately approved the named production/runtime promotion on 2026-10-02.
+Next: review the [ordinary runtime views](southern-road-wagon-path-runtime-result.md). The retained
 upstream brown fill, straight outlines, wagon occlusion, and other views keep their bounded
 visual acceptance; no pacing, usability, accessibility, gameplay, or promotion acceptance is inferred.

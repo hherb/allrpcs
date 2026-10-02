@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 76 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 77 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -95,7 +95,7 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 76 exports are RGBA with visible and fully opaque pixels; 75 retain no RGB
+- all 77 exports are RGBA with visible and fully opaque pixels; 76 retain no RGB
   beneath zero alpha. Only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -246,7 +246,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 76 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 77 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -273,5 +273,21 @@ named promotion on 2026-10-02. One exact 520x416 export, 1040x832 layered master
 independent lossless imports, and one sprite at `(1700,1232)`, `z=-71`, with repeat disabled,
 replace only its presentation line. The six ordinary-scene views match the accepted PNG bytes.
 The owner approved their separate checkpoint after display on 2026-10-02; see the
-[runtime result](review/square-southern-road-path-runtime-result.md). The proof now has 76
+[runtime result](review/square-southern-road-path-runtime-result.md). That slice brought the proof to 76
 exports and 27 editable masters; previous assets and physical/gameplay authority are unchanged.
+
+
+The owner visually accepted the Southern Road–Wagon tip trim and separately approved its
+named production/runtime promotion on 2026-10-02. `terrain.southern_road_wagon_path`
+retains the exact 560x432 accepted PNG bytes, a 1120x864 master with two disjoint editable
+junction/road layers and a hidden untrimmed reference, and independent lossless proof/runtime
+imports with alpha-border processing disabled. One unscaled sprite at `(1680,1496)`, `z=-70`,
+replaces the straight presentation route; only the presentation road fill is shortened to its
+upstream segment. Physical routes, boundaries, and wagon authority are unchanged.
+See the [ordinary runtime views](review/southern-road-wagon-path-runtime-result.md).
+There are now 77 exports and 28 editable masters. Runtime visual acceptance is pending.
+
+The archived path-proof evidence records remain intact. Their exact original `build.py` bytes
+are retained in `review/path-proof-build-source.py.gz`; regular validators verify the archived
+digest and byte-exact live `render_path_leg` implementation. `--check-live-baseline` still
+checks the original live inputs and therefore intentionally rejects the promoted baseline.

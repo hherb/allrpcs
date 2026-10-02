@@ -423,8 +423,11 @@ Acceptance:
 - [x] Produce one external-only incoming-tip trim from 48 to 16 pixels, retaining prior evidence.
 - [x] Confirm the intended overshoot side and owner acceptance of the adjusted junction tip
   on 2026-10-02 ("Looks good").
-- [ ] Obtain separate approval of the named `terrain.southern_road_wagon_path` production/runtime
-  promotion proposed in `HANDOVER.md`, then implement and obtain ordinary-runtime visual review.
+- [x] Obtain separate approval and implement `terrain.southern_road_wagon_path`: exact 560x432
+  export, 1120x864 editable master, independent lossless imports, one presentation sprite, and
+  the accepted upstream-only road fill; preserve physical/gameplay authority.
+- [ ] Obtain owner visual acceptance of all six ordinary Southern Road–Wagon runtime views,
+  which match the accepted external trim PNG bytes.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

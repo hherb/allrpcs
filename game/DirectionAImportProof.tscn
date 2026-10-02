@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3]
+[gd_scene load_steps=80 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -75,6 +75,7 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/interact-reach-03.png" id="54_north_interact_03"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/characters/seeker/north/interact-reach-04.png" id="55_north_interact_04"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/square-southern-road-path.png" id="76_square_southern_road_path"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/southern-road-wagon-path.png" id="77_southern_road_wagon_path"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
@@ -379,4 +380,9 @@ centered = false
 [node name="SquareSouthernRoadPathProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(2760, 1200)
 texture = ExtResource("76_square_southern_road_path")
+centered = false
+
+[node name="SouthernRoadWagonPathProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(3360, 1200)
+texture = ExtResource("77_southern_road_wagon_path")
 centered = false

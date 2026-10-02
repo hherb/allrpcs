@@ -76,8 +76,11 @@ now provides six external views with bent-road coverage and documented disposabl
 substitution. The owner visually approved these views except for a left-side overshoot. An
 [external tip trim](art-direction/production-proof/corrected/review/southern-road-wagon-path-trim.md)
 shortens the junction extension from 48 to 16 pixels. The owner visually accepted the trim
-on 2026-10-02. The exact named promotion is proposed in `HANDOVER.md`; separate runtime
-promotion approval is pending.
+on 2026-10-02 and separately approved the named `terrain.southern_road_wagon_path` promotion.
+The exact accepted overlay is now manifest-bound with a layered master and independent
+lossless imports. Ordinary startup uses the same bounded presentation substitutions;
+[all six runtime views](art-direction/production-proof/corrected/review/southern-road-wagon-path-runtime-result.md)
+match the accepted external PNG bytes. Runtime visual review remains pending.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

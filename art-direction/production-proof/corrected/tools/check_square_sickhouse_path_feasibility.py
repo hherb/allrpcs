@@ -9,6 +9,7 @@ import math
 from PIL import Image
 
 from build_square_sickhouse_path_correction import ORIGIN, SIZE, compose
+from check_archived_path_builder import validate_input
 from check_village_edge_square_connector_feasibility import ROOT, REVIEW, require
 
 EVIDENCE_HASH = "c4f233a8f18b6a11610c0c2c024ffc2aaddaf75f6b64d83b2ea33e081bf183f3"
@@ -24,7 +25,7 @@ def validate(check_live_baseline=False):
     evidence = json.loads(evidence_path.read_text())
     for relative, expected in evidence["baseline"].items():
         if check_live_baseline or not relative.endswith((".cs", ".tscn")):
-            require(digest(ROOT / relative) == expected, f"proof input changed: {relative}")
+            validate_input(relative, expected, check_live_baseline)
     expected_names = {
         f"square-sickhouse-path-{mode}-{zoom:.1f}x-{frame}.png"
         for mode in ("proof", "correction")

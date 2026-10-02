@@ -60,6 +60,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? SquareSouthernRoadPathTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Southern Road–Wagon bent-road presentation.</summary>
+    [Export]
+    public Texture2D? SouthernRoadWagonPathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -92,6 +96,13 @@ public partial class GreyboxNavigation : NavigationRegion2D
                 Sprite2D path = CreateStraightPathPresentation(start, end);
                 owner.AddChild(path);
                 owner.AddChild(CreatePathEndCapPresentation(end, path.Rotation));
+                continue;
+            }
+
+            if (firstId == "southern-road" && secondId == "abandoned-wagon")
+            {
+                // Replace only the route line; navigation and collisions retain the straight route.
+                owner.AddChild(CreateSouthernRoadWagonPathPresentation());
                 continue;
             }
 
@@ -299,6 +310,25 @@ public partial class GreyboxNavigation : NavigationRegion2D
             TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
             Position = new Vector2(1700.0f, 1232.0f),
             ZIndex = -71,
+        };
+    }
+
+    private Sprite2D CreateSouthernRoadWagonPathPresentation()
+    {
+        Texture2D texture = SouthernRoadWagonPathTexture
+            ?? throw new InvalidOperationException("The Southern Road–Wagon path is required.");
+        if (texture.GetWidth() != 560 || texture.GetHeight() != 432)
+        {
+            throw new InvalidOperationException("The path must retain its exact 560x432 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "SouthernRoadWagonPath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(1680.0f, 1496.0f),
+            ZIndex = -70,
         };
     }
 

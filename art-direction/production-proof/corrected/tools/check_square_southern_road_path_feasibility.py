@@ -9,6 +9,7 @@ import math
 from PIL import Image
 
 from build_square_southern_road_path_correction import ORIGIN, SIZE, compose
+from check_archived_path_builder import validate_input
 from check_village_edge_square_connector_feasibility import ROOT, REVIEW, require
 
 EVIDENCE_HASH = "29194fa38715bc113cac35e3a2e6577b6479dd453e1d389b568d4e0d1bc46834"
@@ -24,7 +25,7 @@ def validate(check_live_baseline=False):
     evidence = json.loads(evidence_path.read_text())
     for relative, expected in evidence["baseline"].items():
         if check_live_baseline or not relative.endswith((".cs", ".tscn")):
-            require(digest(ROOT / relative) == expected, f"proof input changed: {relative}")
+            validate_input(relative, expected, check_live_baseline)
     expected_names = {
         f"square-southern-road-path-{mode}-{zoom:.1f}x-{frame}.png"
         for mode in ("proof", "correction")

@@ -8,6 +8,7 @@ from PIL import Image
 
 from build_southern_road_wagon_path_correction import SIZE, compose
 from check_southern_road_wagon_path_feasibility import digest, validate as validate_strip
+from check_archived_path_builder import validate_input
 from check_village_edge_square_connector_feasibility import ROOT, REVIEW, require
 
 EVIDENCE_HASH = "c829b0f56af8be4a3629cbbbd84195424b3f6f5be3487e6a0cedef43ed5f4a0a"
@@ -19,7 +20,7 @@ def validate(check_live_baseline=False):
     require(digest(record) == EVIDENCE_HASH, "correction evidence record changed")
     evidence = json.loads(record.read_text())
     for relative, expected in evidence["inputs"].items():
-        require(digest(ROOT / relative) == expected, f"correction input changed: {relative}")
+        validate_input(relative, expected, check_live_baseline)
     names = {f"southern-road-wagon-path-correction-{zoom}x-{frame}.png"
              for zoom in ("0.8", "1.0", "2.0") for frame in ("wide", "tall")}
     names.add("southern-road-wagon-path-correction-overlay.png")

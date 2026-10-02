@@ -90,6 +90,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
         Sprite2D gardenPath = routePresentation.GetNode<Sprite2D>("SquareGardenPath");
         Sprite2D sickhousePath = routePresentation.GetNode<Sprite2D>("SquareSickhousePath");
         Sprite2D southernPath = routePresentation.GetNode<Sprite2D>("SquareSouthernRoadPath");
+        Sprite2D wagonPath = routePresentation.GetNode<Sprite2D>("SouthernRoadWagonPath");
+        Line2D roadFill = GetNode<Line2D>("../OpeningRegionSouthernRoadWagonSceneSource/RoadArea");
         Texture2D? texture = ground.Texture;
         if (texture is null
             || texture.ResourcePath != ExpectedGroundTexturePath
@@ -282,8 +284,21 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || southernPath.TextureRepeat != CanvasItem.TextureRepeatEnum.Disabled
             || southernPath.RegionEnabled
             || southernPath.GetChildCount() != 0
-            || routePresentation.GetChildren().Count(child => child is Line2D) != 8
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 8
+            || !HasExactTexture(wagonPath, "res://art/runtime/terrain/southern-road-wagon-path.png", 560, 432)
+            || wagonPath.Position != new Vector2(1680.0f, 1496.0f)
+            || wagonPath.Scale != Vector2.One
+            || !Mathf.IsZeroApprox(wagonPath.Rotation)
+            || !wagonPath.Centered
+            || wagonPath.Offset != Vector2.Zero
+            || wagonPath.TextureRepeat != CanvasItem.TextureRepeatEnum.Disabled
+            || wagonPath.RegionEnabled
+            || wagonPath.GetChildCount() != 0
+            || !roadFill.Points.SequenceEqual([new Vector2(572.0f, 460.0f), new Vector2(1500.0f, 1400.0f)])
+            || roadFill.Width != 96.0f
+            || routePresentation.GetChildren().OfType<Line2D>().Any(line =>
+                line.Points.SequenceEqual([new Vector2(1500.0f, 1400.0f), new Vector2(1900.0f, 1640.0f)]))
+            || routePresentation.GetChildren().Count(child => child is Line2D) != 7
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 9
             || routePresentation.GetChildren().OfType<Line2D>()
                 .Any(line => line.Points.Contains(new Vector2(2300.0f, 1300.0f))
                     || line.Points.Contains(new Vector2(2640.0f, 1450.0f))
@@ -339,6 +354,11 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || sickhousePath.ZIndex >= GetNode<CanvasItem>(
                 "../OpeningRegionFirstPatientSceneSource/Label").ZIndex
             || sickhousePath.ShowBehindParent
+            || wagonPath.ZIndex != -70
+            || wagonPath.ShowBehindParent
+            || wagonPath.ZIndex >= roadFill.ZIndex
+            || wagonPath.ZIndex >= GetNode<CanvasItem>(
+                "../OpeningRegionSouthernRoadWagonSceneSource/WagonShell").ZIndex
             || southernPath.ZIndex != -71
             || southernPath.ZIndex >= villageSquareJunction.ZIndex
             || southernPath.ShowBehindParent
