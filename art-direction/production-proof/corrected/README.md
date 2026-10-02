@@ -327,3 +327,8 @@ independent lossless imports, bringing totals to 82 exports and 33 masters. Its 
 `(1752,704)`, z=-75, is the final route child, immediately after Woodland–Village Edge.
 All 18 [runtime views](review/village-edge-stream-path-runtime-result.md) match accepted proof
 bytes; the owner approved runtime views on 2026-10-03 ("approved").
+
+The next [Stream–Laundry external proof and correction](review/stream-laundry-path-correction.md)
+clip only Laundry support, retain all Stream-overlap source pixels and preserve 450 authored
+baseline files. Runtime/production remain unchanged; visual acceptance and promotion approval
+are pending, including assessment of the retained diagonal bridge approach.

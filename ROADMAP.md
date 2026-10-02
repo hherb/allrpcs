@@ -472,6 +472,9 @@ Acceptance:
 - [x] Implement exact asset/master/imports and final-sibling runtime wiring with retained bridge and physical authority.
 - [x] Obtain owner visual confirmation of the [18 runtime views](art-direction/production-proof/corrected/review/village-edge-stream-path-runtime-result.md) on 2026-10-03 ("approved") before publication.
 
+- [x] Retain the bounded [Stream–Laundry external proof and Laundry-only correction](art-direction/production-proof/corrected/review/stream-laundry-path-correction.md), preserving 450 authored baseline files.
+- [ ] Obtain external visual acceptance, including retained bridge fit, then approval of the [named Stream–Laundry promotion](art-direction/production-proof/corrected/review/stream-laundry-path-promotion-scope.md).
+
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
 - [ ] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.

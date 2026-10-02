@@ -29,6 +29,7 @@ python3 art-direction/production-proof/corrected/tools/check_woodland_shrine_pat
 python3 art-direction/production-proof/corrected/tools/validate_woodland_shrine_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/check_woodland_village_edge_path.py
 python3 art-direction/production-proof/corrected/tools/check_village_edge_stream_path.py
+python3 art-direction/production-proof/corrected/tools/check_stream_laundry_path.py
 python3 art-direction/production-proof/corrected/tools/validate_village_edge_stream_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_woodland_village_edge_path.py --check-captures
 python3 art-direction/production-proof/corrected/tools/validate_shrine_southern_road_path.py --check-captures

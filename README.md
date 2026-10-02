@@ -137,6 +137,12 @@ The owner confirmed the external views and named promotion on 2026-10-03 ("confi
 Its exact asset now replaces only the visual route. All 18 [runtime views](art-direction/production-proof/corrected/review/village-edge-stream-path-runtime-result.md)
 match accepted proof bytes; the owner approved runtime views on 2026-10-03 ("approved").
 
+The next [external Stream–Laundry proof](art-direction/production-proof/corrected/review/stream-laundry-path-feasibility.md)
+and [Laundry-only correction](art-direction/production-proof/corrected/review/stream-laundry-path-correction.md)
+retain all 450 authored baseline files. The correction removes the Laundry opening fringe
+while preserving all surviving pixels and the retained diagonal Stream approach. External
+visual acceptance and separate named promotion approval remain pending.
+
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into

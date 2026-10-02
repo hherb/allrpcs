@@ -1,0 +1,36 @@
+{
+  "status": "external Laundry-only correction; visual acceptance pending; no runtime authority",
+  "clipping": {
+    "laundry_right": 1580,
+    "opening_center_y": 294.6666666666667,
+    "opening_half_height": 48,
+    "marker_half_depth": 8
+  },
+  "removed_visible_pixels": 9680,
+  "changed_views": 18,
+  "inputs": {
+    "art-direction/production-proof/corrected/tools/build_stream_laundry_path_correction.py": "c07769eca6dd3387124fc38e4c699d3d5ed1155f5eee969f4aacb05d5a242a30",
+    "scripts/capture-stream-laundry-path-correction.gd": "f0a51b84e067b19476504a5fc8d627a15de35a0cde400337fd2b16e2c8c15949"
+  },
+  "images": {
+    "stream-laundry-path-correction-laundry-entry-0.8x-tall.png": "b5a46a54e079b3116538f7ca5d1e41087b314a6b9a166504441723eb0148a72c",
+    "stream-laundry-path-correction-laundry-entry-0.8x-wide.png": "071003bb4bf69eabc0bc561a650c145282d87d99abfb7ba272861c4d96ba2e23",
+    "stream-laundry-path-correction-laundry-entry-1.0x-tall.png": "6345286354aeb65af3d637d6cd315238819839b630846fa3047b2c0dea3ccf11",
+    "stream-laundry-path-correction-laundry-entry-1.0x-wide.png": "b001b94c22bafb957de327ab089a7b2f7e42dd53df56051960478d8716f4d8d0",
+    "stream-laundry-path-correction-laundry-entry-2.0x-tall.png": "3170a1d8758a9ed1b2763dcf190c07437e39e627d366052e4ff678f87a0d72c3",
+    "stream-laundry-path-correction-laundry-entry-2.0x-wide.png": "468fe4703970cc0139552263e845ca8a37cf7b91890561584b81f44bf42fb567",
+    "stream-laundry-path-correction-midpoint-0.8x-tall.png": "260a28acbf7afa503f48de02ae6e4a281b1e809ebcadeccc9a1b73375dcee1f4",
+    "stream-laundry-path-correction-midpoint-0.8x-wide.png": "63cf8a1fc5718346abcb2c7b18bb63dcd9e90df3c1a1a0dfc3faf09f07d84e87",
+    "stream-laundry-path-correction-midpoint-1.0x-tall.png": "3ba526d8d8002b6064ccdb24662c71fe74e80f5893881f367fa964db97a5da50",
+    "stream-laundry-path-correction-midpoint-1.0x-wide.png": "e85553a5cd77c6145aa19a38694329b304af873419a239fb7e1a04ccbfe56141",
+    "stream-laundry-path-correction-midpoint-2.0x-tall.png": "50b668a2b0ea5c7fdaaac2be4ad2971eb357abf79195ce0d49ea0f6b97a23930",
+    "stream-laundry-path-correction-midpoint-2.0x-wide.png": "bd4fc278c0dc81b4efbcc868cfa084308feedcc959a707d4b3a8b96e258b3778",
+    "stream-laundry-path-correction-overlay.png": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185",
+    "stream-laundry-path-correction-stream-entry-0.8x-tall.png": "8f93ab2ac8ee216583f85632ab12c7b3a2b406a30eadcde623d5f1ad61fe0483",
+    "stream-laundry-path-correction-stream-entry-0.8x-wide.png": "6201dd55f12dbb3b895e0148685bd844a338959046e89c169ed0eb99f8e82774",
+    "stream-laundry-path-correction-stream-entry-1.0x-tall.png": "33d575052566daadaaf0d8fbf9c188a9f46d54e0ecd4746d058747f2a19770db",
+    "stream-laundry-path-correction-stream-entry-1.0x-wide.png": "7bfdb6cb3a358710d74908d74b0e2809347d43226f54e278cb494004b93dcf29",
+    "stream-laundry-path-correction-stream-entry-2.0x-tall.png": "ae7ee17a8107cf161bf44dbac92bfa4b193e746d05689f748126aa314b27d381",
+    "stream-laundry-path-correction-stream-entry-2.0x-wide.png": "269c5f1546b3f290f239fd301366d9332daa04ed14b78ec4d8179defa7ae862d"
+  }
+}
