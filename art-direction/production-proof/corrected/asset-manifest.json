@@ -553,6 +553,23 @@
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact accepted export"
   },
+  "village_edge_stream_path_provenance": {
+    "accepted_proof": "review/village-edge-stream-path-correction-overlay.png",
+    "accepted_proof_sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f",
+    "master": "masters/terrain-village-edge-stream-path.ora",
+    "recipe_sha256": "56aa2bdecc398692537ac5e53bb8eb77b6990e033d77ffbf4cdced2d9fd11a77",
+    "world_origin": [
+      1640,
+      440
+    ],
+    "world_position": [
+      1752,
+      704
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "southern_road_wagon_path_provenance": {
     "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
     "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
@@ -3034,6 +3051,36 @@
       },
       "godot_import_proof": true,
       "sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c"
+    },
+    {
+      "id": "terrain.village_edge_stream_path",
+      "category": "terrain",
+      "source": "tools/build_village_edge_stream_path_correction.py",
+      "export": "exports/terrain/village-edge-stream-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 528
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 528
+      },
+      "master_dimensions_pixels": {
+        "width": 448,
+        "height": 1056,
+        "scale": 2
+      },
+      "contact_baseline": 528,
+      "pivot": {
+        "x": 112,
+        "y": 264
+      },
+      "godot_import_proof": true,
+      "sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f"
     }
   ]
 }

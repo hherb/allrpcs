@@ -298,8 +298,8 @@ public partial class RuntimeTerrainGroundSmokeCheck : Node
             || roadFill.Visible
             || routePresentation.GetChildren().OfType<Line2D>().Any(line =>
                 line.Points.SequenceEqual([new Vector2(1500.0f, 1400.0f), new Vector2(1900.0f, 1640.0f)]))
-            || routePresentation.GetChildren().Count(child => child is Line2D) != 4
-            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 11
+            || routePresentation.GetChildren().Count(child => child is Line2D) != 3
+            || routePresentation.GetChildren().Count(child => child is Sprite2D) != 12
             || routePresentation.GetNode<Node2D>("ShrineSouthernRoadPath").GetChildCount() != 2
             || routePresentation.GetChildren().OfType<Line2D>()
                 .Any(line => line.Points.Contains(new Vector2(2300.0f, 1300.0f))

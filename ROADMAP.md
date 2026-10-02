@@ -468,7 +468,9 @@ Acceptance:
 - [x] Obtain owner visual confirmation of the [18 runtime views](art-direction/production-proof/corrected/review/woodland-village-edge-path-runtime-result.md) on 2026-10-03 ("confirmed") before direct-main publication.
 
 - [x] Retain the bounded [Village Edge–Stream external strip and source clip](art-direction/production-proof/corrected/review/village-edge-stream-path-correction.md), with exact 18-view parity and 451-file baseline.
-- [ ] Obtain owner visual acceptance, then separate approval of the [named Village Edge–Stream promotion](art-direction/production-proof/corrected/review/village-edge-stream-path-promotion-scope.md).
+- [x] Obtain owner visual acceptance and approval of the [named Village Edge–Stream promotion](art-direction/production-proof/corrected/review/village-edge-stream-path-promotion-scope.md) on 2026-10-03 ("confirmed").
+- [x] Implement exact asset/master/imports and final-sibling runtime wiring with retained bridge and physical authority.
+- [x] Obtain owner visual confirmation of the [18 runtime views](art-direction/production-proof/corrected/review/village-edge-stream-path-runtime-result.md) on 2026-10-03 ("approved") before publication.
 
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.

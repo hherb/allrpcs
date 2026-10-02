@@ -80,6 +80,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? WoodlandVillageEdgePathTexture { get; set; }
 
+    /// <summary>Gets or sets the accepted Village Edge–Stream path presentation.</summary>
+    [Export]
+    public Texture2D? VillageEdgeStreamPathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -104,10 +108,22 @@ public partial class GreyboxNavigation : NavigationRegion2D
         Node2D owner = new() { Name = "RoutePresentation" };
         AddChild(owner);
         Sprite2D? woodlandVillageEdgePath = null;
+        Sprite2D? villageEdgeStreamPath = null;
         foreach ((string firstId, string secondId) in OpeningRegionLayoutGeometry.Connections)
         {
             Vector2 start = OpeningRegionLayoutGeometry.Anchors[firstId];
             Vector2 end = OpeningRegionLayoutGeometry.Anchors[secondId];
+            if (firstId == "village-edge" && secondId == "stream")
+            {
+                if (villageEdgeStreamPath is not null)
+                {
+                    throw new InvalidOperationException("The Village Edge–Stream route must occur exactly once.");
+                }
+
+                villageEdgeStreamPath = CreateVillageEdgeStreamPathPresentation(start, end);
+                continue;
+            }
+
             if (firstId == "village-edge" && secondId == "woodland-clearing")
             {
                 if (woodlandVillageEdgePath is not null)
@@ -188,9 +204,11 @@ public partial class GreyboxNavigation : NavigationRegion2D
         owner.AddChild(CreateOpeningJunctionPresentation());
         owner.AddChild(CreateVillageSquareJunctionPresentation());
         owner.AddChild(CreateVillageEdgeSquareConnectorPresentation());
-        // Preserve the accepted proof's final sibling order against other z=-75 lines.
+        // Preserve the accepted proofs' relative sibling order against other z=-75 lines.
         owner.AddChild(woodlandVillageEdgePath
             ?? throw new InvalidOperationException("The Woodland–Village Edge route is required."));
+        owner.AddChild(villageEdgeStreamPath
+            ?? throw new InvalidOperationException("The Village Edge–Stream route is required."));
     }
 
     private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
@@ -459,6 +477,31 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Texture = texture,
             TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
             Position = new Vector2(1352.0f, 632.0f),
+            ZIndex = -75,
+        };
+    }
+
+    private Sprite2D CreateVillageEdgeStreamPathPresentation(Vector2 start, Vector2 end)
+    {
+        if (start != new Vector2(1700.0f, 900.0f) || end != new Vector2(1800.0f, 500.0f)
+            || OpeningRegionLayoutGeometry.PathWidthPixels != 96)
+        {
+            throw new InvalidOperationException("The Village Edge–Stream path requires its retained 96px route.");
+        }
+
+        Texture2D texture = VillageEdgeStreamPathTexture
+            ?? throw new InvalidOperationException("The Village Edge–Stream path texture is required.");
+        if (texture.GetWidth() != 224 || texture.GetHeight() != 528)
+        {
+            throw new InvalidOperationException("The Village Edge–Stream path requires its exact 224x528 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "VillageEdgeStreamPath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(1752.0f, 704.0f),
             ZIndex = -75,
         };
     }

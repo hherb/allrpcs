@@ -21,8 +21,10 @@ including the entire bridge underlay. **All 18 correction PNGs exactly match the
 feasibility PNGs.** This is a source-containment correction with no visible difference in the
 tested views. Both stages retain clean zero-alpha RGB and transparent canvas gutters.
 
-Visual acceptance is pending. This evidence does not authorize production/runtime promotion.
-The [named promotion scope](village-edge-stream-path-promotion-scope.md) remains unapproved.
+The owner confirmed these external views and the separate
+[named promotion scope](village-edge-stream-path-promotion-scope.md) on 2026-10-03 ("confirmed").
+The [ordinary runtime views](village-edge-stream-path-runtime-result.md) were owner-approved
+on 2026-10-03 ("approved"). The immutable external evidence remains unchanged.
 
 ## Village Entry
 

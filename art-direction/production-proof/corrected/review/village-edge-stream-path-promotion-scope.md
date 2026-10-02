@@ -1,7 +1,7 @@
 # Proposed Village Edge–Stream production/runtime promotion
 
-Status: unapproved. [External correction views](village-edge-stream-path-correction.md) await
-owner visual acceptance. Routine external proof scope approval is waived; this separate named
+Status: owner-approved on 2026-10-03 ("confirmed"). The owner also confirmed the
+[external correction views](village-edge-stream-path-correction.md). Runtime views were owner-approved on 2026-10-03 ("approved"). Routine external proof scope approval is waived; this separate named
 production/runtime boundary remains subject to owner approval.
 
 Promote only `terrain.village_edge_stream_path`, using the exact 224x528 correction PNG as

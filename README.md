@@ -133,7 +133,9 @@ The next [external Village Edge–Stream proof](art-direction/production-proof/c
 and [Village-only source clip](art-direction/production-proof/corrected/review/village-edge-stream-path-correction.md)
 retain 18 identical views and all 451 runtime/production/physical baseline files. The clip removes
 unused coverage behind the Village floor while preserving the existing Stream bridge underlay.
-External visual acceptance and separate named promotion approval are pending.
+The owner confirmed the external views and named promotion on 2026-10-03 ("confirmed").
+Its exact asset now replaces only the visual route. All 18 [runtime views](art-direction/production-proof/corrected/review/village-edge-stream-path-runtime-result.md)
+match accepted proof bytes; the owner approved runtime views on 2026-10-03 ("approved").
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

@@ -12,7 +12,7 @@ it did not enlarge the previous 48–56-pixel exports or generate a new characte
 
 ## Result
 
-- `asset-manifest.json` schema 2 contains all 81 asset IDs, the 1280x720 base and 1280x827 expanded
+- `asset-manifest.json` schema 2 contains all 82 asset IDs, the 1280x720 base and 1280x827 expanded
   fullscreen reference viewports, the 144-pixel minimum visible character height, exact 2x master
   dimensions, contact baselines, pivots, hashes, animation order/timing, review placements, and the
   96-pixel navigation-clearance corridor. Every entry is included in the isolated import proof.
@@ -95,8 +95,8 @@ python3 art-direction/production-proof/corrected/tools/validate_terrain_accessib
 
 The scripts require Python 3 and Pillow. The current run passed all of these gates:
 
-- all 81 exports are RGBA with visible pixels; 80 have fully opaque pixels. The exact accepted
-  Shrine endpoint blend intentionally remains translucent. 80 exports retain no RGB beneath
+- all 82 exports are RGBA with visible pixels; 81 have fully opaque pixels. The exact accepted
+  Shrine endpoint blend intentionally remains translucent. 81 exports retain no RGB beneath
   zero alpha; only the accepted connector preserves its exact 84 hidden RGB pixels;
 - non-terrain cutouts have transparent export borders;
 - ground left/right and top/bottom edges match exactly, and the straight path's top/bottom edges
@@ -247,7 +247,7 @@ accessibility authority.
 This is still a deliberately small pipeline proof. It does not prove gameplay-triggered interaction,
 a complete terrain transition set, production estimates for the whole opening region, ordinary
 runtime animation selection, collision or navigation behavior, UI, or final production quality.
-All 81 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
+All 82 exports have a separate isolated Godot import proof, and `Main.tscn` references no path in
 this proof directory. This does not authorize bulk-producing the opening region, changing gameplay/UI behavior,
 starting audio, or performing release or signing work.
 
@@ -321,4 +321,9 @@ The next [Village Edge–Stream external proof](review/village-edge-stream-path-
 and [Village-only correction](review/village-edge-stream-path-correction.md) retain all 451
 runtime/production/physical files. The correction clips 17,406 source samples hidden by the
 Village floor while preserving every bridge-underlay pixel; all 18 rendered views are exact.
-External visual acceptance and separate named promotion approval remain pending.
+The owner confirmed external views and the named promotion on 2026-10-03 ("confirmed").
+The production/runtime promotion adds one exact 224x528 export, a 448x1056 editable master and
+independent lossless imports, bringing totals to 82 exports and 33 masters. Its sprite at
+`(1752,704)`, z=-75, is the final route child, immediately after Woodland–Village Edge.
+All 18 [runtime views](review/village-edge-stream-path-runtime-result.md) match accepted proof
+bytes; the owner approved runtime views on 2026-10-03 ("approved").
