@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-03",
+  "owner_statement": "approved",
+  "context": "Response to the explicit request to approve the proposal Stage 1 disposable runtime preview",
+  "scope_path": "art-direction/whole-channel-runtime-scope/README.md",
+  "scope_sha256": "7d6e3dde8b1fd8376b368b6fdc68c519702ae8383ae3b5face165b94985693a8",
+  "baseline_commit": "0c0d8330b287e4ea551f108202eeb4ee1fb47bd9",
+  "baseline_sha256": "0bd712bc64529730dbef5d0b086fd3703934cf10d0f8104b3e86902002f38469",
+  "stage_1_disposable_preview_authorized": true,
+  "stage_2_production_runtime_authorized": false,
+  "physical_layout_navigation_authorized": false
+}

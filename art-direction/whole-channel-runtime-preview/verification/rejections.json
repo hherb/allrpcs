@@ -1,0 +1,23 @@
+{
+  "extra_mutation_rejections": [
+    {
+      "mutation": "stale manifest",
+      "rejected_by": "stale capture manifest"
+    },
+    {
+      "mutation": "stale capture recipe",
+      "rejected_by": "stale capture script"
+    },
+    {
+      "mutation": "rewritten predecessor inventory",
+      "rejected_by": "predecessor inventory bytes changed"
+    },
+    {
+      "mutation": "changed protected water source via disposable file redirect",
+      "rejected_by": "protected predecessor changed: game/art/runtime/terrain/stream-water.png"
+    }
+  ],
+  "unique_pairs": 37,
+  "preview_uids_distinct_from_existing_game_art": true,
+  "pixel_mutations_passed": 5
+}

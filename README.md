@@ -155,8 +155,9 @@ untextured. The [runtime review](art-direction/forest-path-runtime-promotion/REA
 retains 18 imported views matching accepted external RGBA pixels. The owner confirmed
 the runtime views on 2026-10-03 ("confirmed") before direct-main publication;
 whole-channel promotion is separate. The [whole-channel scope proposal](art-direction/whole-channel-runtime-scope/README.md)
-requires named approval for a disposable runtime preview, followed by a separately approved
-production packet; its source index binds the accepted composition and current live owners.
+received Stage 1 approval ("approved"). The [disposable runtime preview](art-direction/whole-channel-runtime-preview/README.md)
+now retains five exact transparent atlases/2x masters and 74 paired GPU captures. Its
+[Stage 2 production scope](art-direction/whole-channel-runtime-preview/stage-2-scope.md) awaits separate approval.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

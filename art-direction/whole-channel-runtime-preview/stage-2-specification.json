@@ -1,0 +1,153 @@
+{
+  "status": "proposed Stage 2; owner implementation approval absent",
+  "assets": [
+    {
+      "asset_id": "terrain.whole_channel_water",
+      "export_filename": "channel-water.png",
+      "master_filename": "terrain-whole-channel-water.ora",
+      "size": [
+        2604,
+        620
+      ],
+      "master_size": [
+        5208,
+        1240
+      ],
+      "world_origin": [
+        -64,
+        212
+      ],
+      "sprite_center": [
+        1238,
+        522
+      ],
+      "sprite_z_index": -68,
+      "export_sha256": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+      "master_sha256": "ac44234459ad5e468996805015d28d3930b8f34fd6d4a93699c2753fc1fe5501"
+    },
+    {
+      "asset_id": "terrain.whole_channel_banks",
+      "export_filename": "channel-banks.png",
+      "master_filename": "terrain-whole-channel-banks.ora",
+      "size": [
+        2604,
+        620
+      ],
+      "master_size": [
+        5208,
+        1240
+      ],
+      "world_origin": [
+        -64,
+        212
+      ],
+      "sprite_center": [
+        1238,
+        522
+      ],
+      "sprite_z_index": -67,
+      "export_sha256": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+      "master_sha256": "a28d3cfe418b3fabea8808e1f16308647c5713b4c7f3ae548c2a69da6bd70b5e"
+    },
+    {
+      "asset_id": "terrain.whole_channel_decks",
+      "export_filename": "channel-decks.png",
+      "master_filename": "terrain-whole-channel-decks.ora",
+      "size": [
+        2604,
+        620
+      ],
+      "master_size": [
+        5208,
+        1240
+      ],
+      "world_origin": [
+        -64,
+        212
+      ],
+      "sprite_center": [
+        1238,
+        522
+      ],
+      "sprite_z_index": -66,
+      "export_sha256": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+      "master_sha256": "8b495f72db43a51829e3d8a887505fc004f02e4dabdc74417c008d47fcc7eae5"
+    },
+    {
+      "asset_id": "terrain.whole_channel_detail",
+      "export_filename": "channel-detail.png",
+      "master_filename": "terrain-whole-channel-detail.ora",
+      "size": [
+        2604,
+        620
+      ],
+      "master_size": [
+        5208,
+        1240
+      ],
+      "world_origin": [
+        -64,
+        212
+      ],
+      "sprite_center": [
+        1238,
+        522
+      ],
+      "sprite_z_index": -66,
+      "export_sha256": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+      "master_sha256": "83054fffea111393d24bddbb276873d6a24f69ac584cab2ee83b85d845f3ff6d"
+    },
+    {
+      "asset_id": "terrain.whole_channel_fringe",
+      "export_filename": "channel-fringe.png",
+      "master_filename": "terrain-whole-channel-fringe.ora",
+      "size": [
+        2604,
+        620
+      ],
+      "master_size": [
+        5208,
+        1240
+      ],
+      "world_origin": [
+        -64,
+        212
+      ],
+      "sprite_center": [
+        1238,
+        522
+      ],
+      "sprite_z_index": -65,
+      "export_sha256": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+      "master_sha256": "e9d1580b8f86c8c51861237887de0f27c5e62fad439563aac0dcfb0dc12eb0b7"
+    }
+  ],
+  "totals_before": {
+    "exports": 84,
+    "masters": 35
+  },
+  "totals_after": {
+    "exports": 89,
+    "masters": 40
+  },
+  "overlap_shader": {
+    "path": "exports/channel-retained-overlap.gdshader",
+    "sha256": "2a0bd9d784b069bfeb61f10cd5687174471b50ba8eb2012fd153383dacbebc2a",
+    "targets": [
+      "OpeningRegionStreamLaundrySceneSource/StreamWater",
+      "OpeningRegionStreamLaundrySceneSource/NorthWestBank",
+      "OpeningRegionStreamLaundrySceneSource/SouthWestBank"
+    ],
+    "mask": "discard fragments at world x<1664; preserve polygon/UV/region geometry"
+  },
+  "evidence_sha256": {
+    "manifest.json": "aa6f98220eff845647c17caa752d0a7ea8537dea26d65136254aa7cd78d5c4ce",
+    "capture-context.json": "101c7dd5ba1ee5db27ebd0b5465bd76150df3594f3e49e51219e700af2ee3faa",
+    "capture-evidence.json": "9a656fb0f877c62aa6f1cc747e01e2a2357acfd35ab704ca86fc745fd2b5b09d",
+    "stage-1-authorization.json": "fd62531f4abadb9769031d6f87589e64c5a199052580c42954f81a542240f09d",
+    "verification/results.json": "0b669df636478aa398b51a668cf4c83ab68e7e6ba0568b7c0b615362e7f45818",
+    "verification/rejections.json": "1beb129c208d6d4806b2ba323e84e008b5f44157dbf9a9a62c2ddb8dd6c85576"
+  },
+  "implementation_authorized": false,
+  "physical_authority": false
+}

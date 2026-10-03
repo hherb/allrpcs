@@ -1,0 +1,19 @@
+{
+  "runtime_source_commit": "e976ea00e1e4e121dc726807b8531e455c42d664",
+  "documentation_proposal_commit": "0c0d8330b287e4ea551f108202eeb4ee1fb47bd9",
+  "command": "GIT_INDEX_FILE=<disposable pinned index> PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh",
+  "execution": "host retry after sandbox NuGet CookieContainer/GetDomainName failure; pinned unchanged runtime tree, separate index, no historical inventories rewritten",
+  "exit_code": 0,
+  "build_warnings": 0,
+  "build_errors": 0,
+  "tests": {
+    "domain": 2839,
+    "application": 925,
+    "infrastructure": 1261,
+    "architecture": 8
+  },
+  "quality_log_sha256": "e88d15adc517c8e029c0bf5f2bed7b02ddee0b916f637fabf120a5eb8b7851b1",
+  "capture_log_sha256": "76f4d62ba887311b81964b7def08f483df0c8dd1488a590e194b28fa6fc3631e",
+  "overlap_shader_sha256": "2a0bd9d784b069bfeb61f10cd5687174471b50ba8eb2012fd153383dacbebc2a",
+  "log_normalization": "Only extra trailing blank lines removed from retained quality stdout."
+}

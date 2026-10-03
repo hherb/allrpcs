@@ -119,8 +119,9 @@ navigation; the near side inside the Clearing remains untextured.
 The [whole-channel composition](art-direction/approved-external-compositions/README.md)
 and western watercourse corrections have external visual acceptance only. Whole-channel
 runtime promotion requires its own named scope. The [prepared proposal](art-direction/whole-channel-runtime-scope/README.md)
-is awaiting Stage 1 approval for a disposable runtime preview; exact production assets and
-wiring require the later Stage 2 packet and approval. Preserve accepted sources and the accepted
+received Stage 1 approval; the [completed disposable preview](art-direction/whole-channel-runtime-preview/README.md)
+binds exact transparent assets and actual GPU views. The [Stage 2 packet](art-direction/whole-channel-runtime-preview/stage-2-scope.md)
+awaits separate production approval. Preserve accepted sources and the accepted
 Shrine intersection triangle. Routine bounded external proof approvals remain waived;
 named runtime/layout/physical promotion and runtime visual checkpoints remain separate.
 Visual acceptance does not establish gameplay, pacing, usability, or accessibility acceptance.
