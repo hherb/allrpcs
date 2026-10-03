@@ -16,7 +16,9 @@ owner's odd cut-off forest section with a retained rounded end-cap and gate alph
 These READMEs retain geometry, failed evidence, inventories and capture limits. Channel
 banks resume at x=1664 after the accepted fringe join; crossing reconstruction is CPU-only.
 Forest proof is closed-side only; disposable captures hide the route line while retaining
-physical approach/gate owners. Scope approval is not visual acceptance.
+physical approach/gate owners. On 2026-10-03 the owner said “both approved” after the
+rounded forest and whole-channel views were displayed again. The exact image hashes and
+bounded acceptance are recorded in [owner-acceptance.json](art-direction/forest-path-ending-correction/owner-acceptance.json).
 
 Routine bounded external proof approvals remain waived; review, validation and direct-main
 publication remain authorized. Named runtime/layout/physical promotion needs separate
@@ -27,12 +29,11 @@ grants no gameplay, pacing, usability or accessibility acceptance.
 
 ## Exact next slice
 
-Obtain owner assessment of the [rounded forest view](art-direction/forest-path-ending-correction/result/captures/corrected-gate-2.0x-wide.png)
-and [whole-channel view](art-direction/approved-external-compositions/channel/review/overview.png).
-Both assessments remain pending. Implement only a requested named external correction,
-preserving predecessors and accepted local views. If both are accepted, record bounded
-acceptance and obtain the next named scope. Continuation alone grants no further art scope
-or production, runtime, layout or physical promotion.
+Both displayed views are visually accepted; both approved external implementation scopes
+are complete. Obtain the next named implementation scope before further art work or
+production/runtime/layout/physical promotion. Preserve all predecessors and accepted local
+views. Historical pending/rejected records remain unchanged; the new acceptance record
+supersedes pending assessment only for its two hash-bound views.
 
 ## Verification
 

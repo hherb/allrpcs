@@ -1,0 +1,18 @@
+{
+  "owner_statement": "both approved",
+  "date": "2026-10-03",
+  "context": "Owner acceptance after both exact views were displayed again in this chat",
+  "views": [
+    {
+      "path": "art-direction/forest-path-ending-correction/result/captures/corrected-gate-2.0x-wide.png",
+      "sha256": "cc9edd41f0c656b7865d19198a351ba3aa71d420d0e543ecae56d77f23e83d31"
+    },
+    {
+      "path": "art-direction/approved-external-compositions/channel/review/overview.png",
+      "sha256": "c9bf16c3c532caa22e1bd119ffdaf891ac8419ac64dd73b620b14bc6a1a5f857"
+    }
+  ],
+  "scope": "Visual acceptance of the two displayed external proof views only",
+  "layout_runtime_physical_promotion_authorized": false,
+  "gameplay_pacing_usability_accessibility_acceptance": false
+}

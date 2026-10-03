@@ -3,7 +3,10 @@
 The owner reported “teh forest path sectiom looks odd with a cut-off path section”
 after the exact bounded 2x forest view was shown. [owner-request.json](owner-request.json)
 binds the statement and its image digest. The original candidate remains intact as
-failed visual evidence; this successor is external only and awaits its own assessment.
+failed visual evidence; this successor is external only. On 2026-10-03 the owner said
+“both approved” after the corrected forest and whole-channel views were displayed again.
+[owner-acceptance.json](owner-acceptance.json) binds those two exact images and records
+visual acceptance only, without runtime, layout or physical promotion authority.
 
 ![Rounded forest end and eased gate edge](result/captures/corrected-gate-2.0x-wide.png)
 
@@ -61,7 +64,7 @@ established workaround for sandbox-restricted Godot log rotation.
 
 ## Next checkpoint
 
-Assess this exact new forest view. Whole-channel visual assessment remains pending.
-Further corrections must preserve both predecessors and accepted local views. No
+Both displayed views are visually accepted. Obtain the next named implementation scope;
+further corrections must preserve both predecessors and accepted local views. No
 runtime/import, layout, physical, scenario, UI, audio, release or signing promotion
 is authorized by this request.
