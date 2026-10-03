@@ -8,17 +8,15 @@ has direct-main publication authority; do not restore its gate. Preserve accepte
 and the accepted Shrine triangle, whose cause remains unconfirmed.
 
 The western-watercourse overview, B1, B2 and [curved spring](art-direction/spring-curved-bank-proof/README.md)
-have bounded external visual acceptance. The spring's exact shown-view digest and owner
-statement remain in its acceptance record. Its 384px basin envelope, centre `(2192,500)`,
-retained x<2000 pixels and exact 32px inlet remain unchanged. These proofs grant no
-runtime/layout/physical authority; earlier candidates and failed evidence stay frozen.
+have bounded external visual acceptance only. Preserve their acceptance records and all
+earlier candidates/failed evidence. Spring invariants: 384px basin, centre `(2192,500)`,
+retained x<2000 pixels, exact 32px inlet.
 
-The new [western outlet proof](art-direction/western-outlet-proof/README.md) covers
-x=0..320, water y=552..648 and 16px banks. Five 320×192 exports at `(0,504)`, a four-layer
-640×384 editable master and local views reproduce B2's world-aligned tiling phase.
-Water and both banks continue uncapped across x=0. The engineering view's 64px western
-strip is an off-map reference only. Its visual assessment is pending. All 4,023 predecessor
-files are preserved; conservative retained-route clearance is 162.416px.
+The [western outlet proof](art-direction/western-outlet-proof/README.md) covers
+x=0..320, water y=552..648 and 16px banks, with B2's world-aligned phase. Water and
+banks continue uncapped across x=0; the engineering view's 64px western strip is an
+off-map reference only. Visual assessment is pending. Its README/manifest bind the
+exports, editable master and 4,023-file preservation inventory.
 
 Routine bounded external-proof scope approvals remain waived. Continue external
 corrections, review, validation and direct-main publication under standing authority.
@@ -30,7 +28,11 @@ switches outside ordinary startup. Exclude Finder `.DS_Store`.
 
 ## Exact next slice
 
-Resolve owner visual assessment of the shown [outlet engineering view](art-direction/western-outlet-proof/review/engineering.png).
+Resolve owner visual assessment of the shown [outlet engineering view](art-direction/western-outlet-proof/review/engineering.png)
+from `a748b1126a70ea60b8030e90aa85b82b4bea237b`, SHA-256
+`14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe`.
+Shown again on 2026-10-03; assessment remains pending. Generic continuation/publication
+authority does not establish visual acceptance.
 If correction is requested, create one bounded external successor within the same outlet
 envelope, preserving this candidate and all predecessors. Bind any acceptance to the exact
 shown image and statement. Whole-channel art and Clearing–Closed Deeper Forest Path remain
@@ -47,12 +49,12 @@ deferred. Continuation grants no promotion authority.
 PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh
 ```
 
-Outlet reproduction, full masks/UVs, exact B2 export comparisons, eleven outlet mutations,
-spring reproduction, nine spring mutations and Stream–Laundry checks pass. Historical
-inventories intentionally reject successors: use the new 4,023-file baseline and the
-predecessor wrapper, which substitutes only the verified scope superset. Never rewrite
-historical evidence. Archive scope results before any separately approved promotion.
+All five Python commands above passed again on 2026-10-03. Review of the outlet generator,
+mutation checks and predecessor wrapper found no actionable issue. This continuation
+changes only this handover. Historical inventories intentionally reject successors:
+use the outlet baseline and predecessor wrapper (verified scope superset only).
+Never rewrite historical evidence; archive scope results before approved promotion.
 
-Full host quality passed: zero-warning build, 5,033 tests, asset/scenario validation,
-all Godot smokes and Compatibility launch. The initial sandbox run passed build/tests
-but failed at Godot log rotation; the identical host retry passed.
+Prior outlet-session full host quality passed: zero-warning build, 5,033 tests,
+asset/scenario validation, Godot smokes and Compatibility launch after an identical
+host retry for sandbox log-rotation failure. Not rerun for this documentation-only session.
