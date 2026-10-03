@@ -2383,6 +2383,16 @@ def main() -> None:
             if export.tobytes() != accepted.convert("RGBA").tobytes():
                 raise ValueError("path recipe no longer matches accepted pixels")
         accepted_path_exports[f"terrain.{asset_id}"] = export
+    from build_closed_forest_path import compose as compose_closed_forest
+
+    accepted_closed_forest = REPOSITORY_ROOT / "art-direction/forest-path-ending-correction/result/exports/corrected.png"
+    if hash_file(accepted_closed_forest) != "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451":
+        raise ValueError("accepted closed-forest proof changed")
+    closed_forest_export = compose_closed_forest()
+    with Image.open(accepted_closed_forest) as accepted:
+        if closed_forest_export.tobytes() != accepted.convert("RGBA").tobytes():
+            raise ValueError("closed-forest recipe no longer matches accepted pixels")
+    accepted_path_exports["terrain.clearing_closed_forest_path"] = closed_forest_export
     bed_master = contain_on_canvas(
         Image.open(RAW / "herb-bed-empty.png"), (192, 160), (180, 148), 154
     )
@@ -2739,6 +2749,15 @@ def main() -> None:
             ("accepted upper path", master.crop((0, 0, master.width, half)), 0, 0, True),
             ("accepted lower path", master.crop((0, half, master.width, master.height)), 0, half, True),
         ])
+    closed_forest_master = closed_forest_export.resize((1104, 768), Image.Resampling.NEAREST)
+    assets.append(Asset(
+        "terrain.clearing_closed_forest_path", "terrain",
+        Path("exports/terrain/clearing-closed-forest-path.png"), (1104, 768), (552, 384),
+        768, closed_forest_master, "tools/build_closed_forest_path.py",
+    ))
+    create_ora(MASTERS / "terrain-clearing-closed-forest-path.ora", (1104, 768), [
+        ("accepted rounded closed-side path", closed_forest_master, 0, 0, True),
+    ])
     export_images: dict[str, Image.Image] = {}
     for asset in assets:
         export = downsample(asset.image_master)
@@ -2835,6 +2854,8 @@ def main() -> None:
                 village_square_generated_source,
             )
         save_png(export, ROOT / asset.export_path)
+        if asset.asset_id == "terrain.clearing_closed_forest_path":
+            (ROOT / asset.export_path).write_bytes(accepted_closed_forest.read_bytes())
         if asset.asset_id == "terrain.square_garden_path":
             # Preserve the exact accepted PNG bytes as well as decoded pixels.
             (ROOT / asset.export_path).write_bytes(accepted_garden_path.read_bytes())
@@ -3610,6 +3631,16 @@ def main() -> None:
             }
             for direction in direction_order
         ],
+        "clearing_closed_forest_path_provenance": {
+            "accepted_proof": "art-direction/forest-path-ending-correction/result/exports/corrected.png",
+            "accepted_proof_sha256": hash_file(accepted_closed_forest),
+            "master": "masters/terrain-clearing-closed-forest-path.ora",
+            "recipe_sha256": hash_file(ROOT / "tools/build_closed_forest_path.py"),
+            "retained_recipe_sha256": hash_file(REPOSITORY_ROOT / "art-direction/forest-path-ending-correction/tools/proof.py"),
+            "world_origin": [520, 32], "world_position": [796, 224], "z_index": -75,
+            "import_fix_alpha_border": False,
+            "master_scaling": "nearest-neighbour 2x of exact accepted export",
+        },
         "square_garden_path_provenance": {
             "accepted_proof": "review/square-garden-path-correction-overlay.png",
             "accepted_proof_sha256": hash_file(accepted_garden_path),

@@ -1,0 +1,20 @@
+{
+  "owner_statement": "confirmed",
+  "date": "2026-10-03",
+  "context": "Owner response to the completed runtime review, two displayed runtime views and the linked 18-view review package",
+  "displayed_views": [
+    {
+      "path": "art-direction/forest-path-runtime-promotion/captures/runtime-gate-2.0x-wide.png",
+      "sha256": "cc9edd41f0c656b7865d19198a351ba3aa71d420d0e543ecae56d77f23e83d31"
+    },
+    {
+      "path": "art-direction/forest-path-runtime-promotion/captures/runtime-closed-end-1.0x-wide.png",
+      "sha256": "098a7d00ec0cc328ce4de0b33c67e07d1e933e94d0379162364247dea8070bfd"
+    }
+  ],
+  "capture_evidence_sha256": "aee8333c85e46307ba61e5b43ea14ad47923ce5cdca39e5aa37fc11a9c5f115d",
+  "runtime_view_count": 18,
+  "scope": "Visual confirmation of the named rounded closed-forest runtime promotion; direct-main publication already authorized",
+  "whole_channel_promotion_authorized": false,
+  "gameplay_pacing_usability_accessibility_acceptance": false
+}

@@ -28,9 +28,11 @@ func _check() -> void:
 		_fail("Village Edge–Stream placement, draw order or source ownership changed")
 		return
 	if not routes.has_node("StreamLaundryPath") \
-			or sprite.get_index() != routes.get_child_count() - 2 \
-			or routes.get_node("StreamLaundryPath").get_index() != routes.get_child_count() - 1:
-		_fail("Village Edge–Stream must immediately precede final Stream–Laundry")
+			or sprite.get_index() != routes.get_child_count() - 3 \
+			or routes.get_node("StreamLaundryPath").get_index() != routes.get_child_count() - 2 \
+			or not routes.has_node("ClosedForestPath") \
+			or routes.get_node("ClosedForestPath").get_index() != routes.get_child_count() - 1:
+		_fail("Village Edge–Stream must immediately precede Stream–Laundry and final closed-forest path")
 		return
 	var previous: Sprite2D = routes.get_node("WoodlandVillageEdgePath")
 	if previous.get_index() != sprite.get_index() - 1 or previous.position != Vector2(1352, 632) \

@@ -88,6 +88,10 @@ public partial class GreyboxNavigation : NavigationRegion2D
     [Export]
     public Texture2D? StreamLaundryPathTexture { get; set; }
 
+    /// <summary>Gets or sets the exact accepted closed-side forest path texture.</summary>
+    [Export]
+    public Texture2D? ClosedForestPathTexture { get; set; }
+
     /// <inheritdoc />
     public override void _EnterTree()
     {
@@ -114,10 +118,22 @@ public partial class GreyboxNavigation : NavigationRegion2D
         Sprite2D? woodlandVillageEdgePath = null;
         Sprite2D? villageEdgeStreamPath = null;
         Sprite2D? streamLaundryPath = null;
+        Sprite2D? closedForestPath = null;
         foreach ((string firstId, string secondId) in OpeningRegionLayoutGeometry.Connections)
         {
             Vector2 start = OpeningRegionLayoutGeometry.Anchors[firstId];
             Vector2 end = OpeningRegionLayoutGeometry.Anchors[secondId];
+            if (firstId == "woodland-clearing" && secondId == "closed-deeper-forest-path")
+            {
+                if (closedForestPath is not null)
+                {
+                    throw new InvalidOperationException("The closed-forest route must occur exactly once.");
+                }
+
+                closedForestPath = CreateClosedForestPathPresentation(start, end);
+                continue;
+            }
+
             if (firstId == "stream" && secondId == "abandoned-laundry")
             {
                 if (streamLaundryPath is not null)
@@ -227,6 +243,8 @@ public partial class GreyboxNavigation : NavigationRegion2D
             ?? throw new InvalidOperationException("The Village Edge–Stream route is required."));
         owner.AddChild(streamLaundryPath
             ?? throw new InvalidOperationException("The Stream–Laundry route is required."));
+        owner.AddChild(closedForestPath
+            ?? throw new InvalidOperationException("The closed-forest route is required."));
     }
 
     private Sprite2D CreateStraightPathPresentation(Vector2 start, Vector2 end)
@@ -545,6 +563,31 @@ public partial class GreyboxNavigation : NavigationRegion2D
             Texture = texture,
             TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
             Position = new Vector2(1640.0f, 360.0f),
+            ZIndex = -75,
+        };
+    }
+
+    private Sprite2D CreateClosedForestPathPresentation(Vector2 start, Vector2 end)
+    {
+        if (start != new Vector2(1000.0f, 350.0f) || end != new Vector2(650.0f, 150.0f)
+            || OpeningRegionLayoutGeometry.PathWidthPixels != 96)
+        {
+            throw new InvalidOperationException("The closed-forest path requires its retained 96px route.");
+        }
+
+        Texture2D texture = ClosedForestPathTexture
+            ?? throw new InvalidOperationException("The closed-forest path texture is required.");
+        if (texture.GetWidth() != 552 || texture.GetHeight() != 384)
+        {
+            throw new InvalidOperationException("The closed-forest path requires its exact 552x384 geometry.");
+        }
+
+        return new Sprite2D
+        {
+            Name = "ClosedForestPath",
+            Texture = texture,
+            TextureRepeat = CanvasItem.TextureRepeatEnum.Disabled,
+            Position = new Vector2(796.0f, 224.0f),
             ZIndex = -75,
         };
     }

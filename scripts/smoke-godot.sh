@@ -21,6 +21,8 @@ godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-village-edge-stream-runtime.gd"
 godot --headless --path "$repository_root/game" \
     --script "$repository_root/scripts/check-stream-laundry-runtime.gd"
+godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-closed-forest-runtime.gd"
 ALLRPCS_RUNTIME_TERRAIN_GROUND_CHECK=1 \
     godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_RUNTIME_GARDEN_FOLIAGE_CHECK=1 \

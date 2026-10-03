@@ -27,8 +27,10 @@ func _check() -> void:
 			or sprite.texture_repeat != CanvasItem.TEXTURE_REPEAT_DISABLED:
 		_fail("Stream–Laundry placement, draw order or source ownership changed")
 		return
-	if sprite.get_index() != routes.get_child_count() - 1:
-		_fail("Stream–Laundry must retain final sibling order")
+	if sprite.get_index() != routes.get_child_count() - 2 \
+			or not routes.has_node("ClosedForestPath") \
+			or routes.get_node("ClosedForestPath").get_index() != sprite.get_index() + 1:
+		_fail("Stream–Laundry must immediately precede final closed-forest path")
 		return
 	var previous: Sprite2D = routes.get_node("VillageEdgeStreamPath")
 	if previous.get_index() != sprite.get_index() - 1 or previous.position != Vector2(1752, 704) \

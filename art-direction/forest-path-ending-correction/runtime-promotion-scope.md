@@ -1,8 +1,10 @@
 # Proposed rounded closed-forest path runtime promotion
 
-Status: proposed, awaiting named runtime-promotion approval. The owner's 2026-10-03
+Status: owner-approved on 2026-10-03 ("approved") after this named proposal was presented. The owner's 2026-10-03
 “both approved” accepts the two images in [owner-acceptance.json](owner-acceptance.json).
-It does not grant runtime authority. This proposal changes documentation only.
+That earlier visual acceptance did not grant runtime authority; the later named approval
+authorizes implementation of this scope. The owner confirmed the resulting runtime views
+on 2026-10-03 ("confirmed") before direct-main publication.
 
 ## Exact asset
 

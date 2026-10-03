@@ -1,0 +1,7 @@
+{
+  "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+  "game/Main.tscn": "08b71901f09d890ad7bf3d4452cf429af0906110ec5c7a416263c6188d17fe3a",
+  "game/art/runtime/terrain/clearing-closed-forest-path.png": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+  "game/art/runtime/terrain/clearing-closed-forest-path.png.import": "cb65bb999e296c465c4a2bd7dd3425f96e197e7459d0ac0eec8d0affce0b615d",
+  "scripts/capture-closed-forest-path-runtime.gd": "1fdafd8b3212acde39747b2e45eb803c7e82638b081a08e9d4301fba6c3cf87d"
+}

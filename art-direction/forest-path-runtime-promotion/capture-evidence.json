@@ -1,0 +1,20 @@
+{
+  "runtime-gate-0.8x-wide.png": "4c571ca60b270a95420e76467a762011377c78aa1e42869010a98969d30068a3",
+  "runtime-gate-0.8x-tall.png": "82686dd2992e48eafd9523630bfb0c2075d8281c8d6c05448c842bf3d33ac994",
+  "runtime-gate-1.0x-wide.png": "d4fa418f4c973f053d6e16d2e850fe82670e807aea075c4703ff537f526a6846",
+  "runtime-gate-1.0x-tall.png": "1893ab912e4209574e8774a3aa814dfbd6d4efde5ac839fbc043daf46ae6df56",
+  "runtime-gate-2.0x-wide.png": "cc9edd41f0c656b7865d19198a351ba3aa71d420d0e543ecae56d77f23e83d31",
+  "runtime-gate-2.0x-tall.png": "6f1f5e698fccaaef8156d980f0c6d8df3f6c4c77fef99e5d8b6705206174aa8c",
+  "runtime-midpoint-0.8x-wide.png": "25b75616f1aee481b171b83b3682a3997d77bb8d1eeea817a9619b2433d99194",
+  "runtime-midpoint-0.8x-tall.png": "dcc6a448fed5c8670a7f5ddac3b87b6fdb08279d7d7224b8a50d3e6dd521e1f7",
+  "runtime-midpoint-1.0x-wide.png": "5e54e1e4ba9552b8774b6bc4a5de24f33b52f4ff95a3b716f0e63ea32273070b",
+  "runtime-midpoint-1.0x-tall.png": "65bb5ba938b4c8a917cb8ccf5b1d45702c6b944e140ce559955b6ecbbdb64072",
+  "runtime-midpoint-2.0x-wide.png": "d48e7108da89930fd10f8467d82f18392e7ad81c72eb688df22c83211c5afee2",
+  "runtime-midpoint-2.0x-tall.png": "68a90ca79a53c05e6a011c6665a0f1f0f8bfd768e8698fb1916acb44000864d9",
+  "runtime-closed-end-0.8x-wide.png": "4c571ca60b270a95420e76467a762011377c78aa1e42869010a98969d30068a3",
+  "runtime-closed-end-0.8x-tall.png": "82686dd2992e48eafd9523630bfb0c2075d8281c8d6c05448c842bf3d33ac994",
+  "runtime-closed-end-1.0x-wide.png": "098a7d00ec0cc328ce4de0b33c67e07d1e933e94d0379162364247dea8070bfd",
+  "runtime-closed-end-1.0x-tall.png": "0b3cdc3fae174a1b10339cb239e3f3e3fc1e4a7a5be94f86ae48fc6d4b9624e0",
+  "runtime-closed-end-2.0x-wide.png": "0af0ae57c0432a91bbbb3ccf51146a7990895dd842316323507ced1284a35ca2",
+  "runtime-closed-end-2.0x-tall.png": "bda3c7db939dc761e5ea67232ee4db2062c4682305532b133fdf1024f0873eb6"
+}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3]
+[gd_scene load_steps=83 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -79,6 +79,8 @@
 
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/shrine-southern-road-path.png" id="78_shrine_southern_road_path"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/shrine-southern-road-endpoint-blend.png" id="79_shrine_southern_road_endpoint_blend"]
+
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/clearing-closed-forest-path.png" id="81_closed_forest_path"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
@@ -398,4 +400,9 @@ centered = false
 [node name="ShrineSouthernRoadEndpointBlendProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(5200, 1200)
 texture = ExtResource("79_shrine_southern_road_endpoint_blend")
+centered = false
+
+[node name="ClosedForestPathProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(2900, 1300)
+texture = ExtResource("81_closed_forest_path")
 centered = false

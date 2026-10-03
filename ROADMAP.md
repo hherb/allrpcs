@@ -107,13 +107,14 @@ Preserve failed candidates and historical inventories; reproduce old proofs on t
 source tree rather than changing evidence to accommodate successors.
 
 The [rounded closed-forest path scope](art-direction/forest-path-ending-correction/runtime-promotion-scope.md)
-is separately approved and implemented locally, including asset/master/imports and 18 runtime
+is separately approved and implemented, including asset/master/imports and 18 runtime
 captures matching accepted external pixels. Its
-[runtime package](art-direction/forest-path-runtime-promotion/README.md) records the pending
+[runtime package](art-direction/forest-path-runtime-promotion/README.md) records the confirmed
 checkpoint and verification. Preserve closed-side-only coverage and the existing gate and
 navigation; the near side inside the Clearing remains untextured.
 
-- [ ] Obtain owner runtime visual confirmation before publishing this forest-path promotion.
+- [x] Obtain owner runtime visual confirmation before publishing this forest-path promotion
+  on 2026-10-03 ("confirmed").
 
 The [whole-channel composition](art-direction/approved-external-compositions/README.md)
 and western watercourse corrections have external visual acceptance only. Whole-channel

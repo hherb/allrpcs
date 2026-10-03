@@ -146,6 +146,16 @@ One exact asset now replaces only its visual route, with all 18 [runtime views](
 matching accepted proof bytes. The owner accepted this runtime path in principle and explicitly authorized publication on
 2026-10-03; western watercourse continuity remains separate work.
 
+The owner visually accepted the [rounded closed-forest proof and whole-channel view](art-direction/forest-path-ending-correction/owner-acceptance.json)
+on 2026-10-03, then separately approved the [named forest-path runtime scope](art-direction/forest-path-ending-correction/runtime-promotion-scope.md).
+The single `terrain.clearing_closed_forest_path` asset now replaces only that route's
+visual line, with exact rounded-end/alpha-easing pixels and retained gate/collision owners.
+Its texture covers the closed side only; the near side inside the Clearing remains
+untextured. The [runtime review](art-direction/forest-path-runtime-promotion/README.md)
+retains 18 imported views matching accepted external RGBA pixels. The owner confirmed
+the runtime views on 2026-10-03 ("confirmed") before direct-main publication;
+whole-channel promotion is separate.
+
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
 `terrain.woodland_leaf_litter_transition`, and two complementary outer-corner exports into

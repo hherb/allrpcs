@@ -416,6 +416,24 @@
       "loop": false
     }
   ],
+  "clearing_closed_forest_path_provenance": {
+    "accepted_proof": "art-direction/forest-path-ending-correction/result/exports/corrected.png",
+    "accepted_proof_sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+    "master": "masters/terrain-clearing-closed-forest-path.ora",
+    "recipe_sha256": "7a6703b2b02708f63cfbc4721704334208f45b2371121c8c190a3957ebdb143c",
+    "retained_recipe_sha256": "1e26e6695d23999dedf4a98d88e9002351b265a31b07e984a8b7f7afe2a377a4",
+    "world_origin": [
+      520,
+      32
+    ],
+    "world_position": [
+      796,
+      224
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
   "square_garden_path_provenance": {
     "accepted_proof": "review/square-garden-path-correction-overlay.png",
     "accepted_proof_sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
@@ -3128,6 +3146,36 @@
       },
       "godot_import_proof": true,
       "sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185"
+    },
+    {
+      "id": "terrain.clearing_closed_forest_path",
+      "category": "terrain",
+      "source": "tools/build_closed_forest_path.py",
+      "export": "exports/terrain/clearing-closed-forest-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 552,
+        "height": 384
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 552,
+        "height": 384
+      },
+      "master_dimensions_pixels": {
+        "width": 1104,
+        "height": 768,
+        "scale": 2
+      },
+      "contact_baseline": 384,
+      "pivot": {
+        "x": 276,
+        "y": 192
+      },
+      "godot_import_proof": true,
+      "sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451"
     }
   ]
 }

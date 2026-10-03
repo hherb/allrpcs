@@ -63,6 +63,7 @@ RUNTIME_ASSETS = (
     ("terrain.woodland_shrine_path", RUNTIME_ROOT / "woodland-shrine-path.png", (704, 208)),
     ("terrain.woodland_village_edge_path", RUNTIME_ROOT / "woodland-village-edge-path.png", (816, 688)),
     ("terrain.village_edge_stream_path", RUNTIME_ROOT / "village-edge-stream-path.png", (224, 528)),
+    ("terrain.clearing_closed_forest_path", RUNTIME_ROOT / "clearing-closed-forest-path.png", (552, 384)),
     ("terrain.stream_laundry_path", RUNTIME_ROOT / "stream-laundry-path.png", (432, 416)),
     (
         "terrain.village_edge_square_connector",
