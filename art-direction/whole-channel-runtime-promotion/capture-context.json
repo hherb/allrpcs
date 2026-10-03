@@ -1,0 +1,618 @@
+{
+  "capture_only_hidden": [
+    "Seeker",
+    "root CanvasLayer children"
+  ],
+  "inputs": {
+    "game/Main.tscn": "86a1d9fb9c11a2fad498cb33d1acc22f1e7396f42068d233499ce338e58ea09e",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/runtime/terrain/channel-banks.png.import": "621d221eed6a93f223f4e5e1ebf62f1f2aa5da2e14242af51829f78c39638a0e",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/runtime/terrain/channel-decks.png.import": "515726db5763aa813470bdd9cd08c652841e079cf3675a7d9d884884b50f04b5",
+    "game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/runtime/terrain/channel-detail.png.import": "6312c99077b7792e7c2cf1c8b7541a5663061f3ffdd82226ccf3913adbe6c653",
+    "game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/runtime/terrain/channel-fringe.png.import": "5c548c84c17a7f73cf566dc229d5c43e25173db07f937856c48e328db7b5c287",
+    "game/art/runtime/terrain/channel-retained-overlap.gdshader": "2a0bd9d784b069bfeb61f10cd5687174471b50ba8eb2012fd153383dacbebc2a",
+    "game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/runtime/terrain/channel-water.png.import": "5076e2f3aacd35d05ac78cc1ca5a4e107d2c84752f058a541440e496f2258ce0",
+    "scripts/capture-whole-channel-runtime.gd": "e624e3d82568375a743e95bd5e55e2706ee017f18d4d5e550778d19675b368fb"
+  },
+  "physical_nodes_unchanged": true,
+  "scene_processing": "frozen after initialization",
+  "views": [
+    {
+      "camera_center": [
+        800.0,
+        600.0
+      ],
+      "name": "outlet-0.8x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        0.0,
+        600.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        800.0,
+        600.0
+      ],
+      "name": "outlet-0.8x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        0.0,
+        600.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        640.0,
+        600.0
+      ],
+      "name": "outlet-1.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        0.0,
+        600.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        640.0,
+        600.0
+      ],
+      "name": "outlet-1.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        0.0,
+        600.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        320.0,
+        600.0
+      ],
+      "name": "outlet-2.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        0.0,
+        600.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        320.0,
+        600.0
+      ],
+      "name": "outlet-2.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        0.0,
+        600.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        800.0,
+        600.0
+      ],
+      "name": "B2-0.8x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        685.454528808594,
+        600.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        800.0,
+        600.0
+      ],
+      "name": "B2-0.8x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        685.454528808594,
+        600.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        685.454528808594,
+        600.0
+      ],
+      "name": "B2-1.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        685.454528808594,
+        600.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        685.454528808594,
+        600.0
+      ],
+      "name": "B2-1.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        685.454528808594,
+        600.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        685.454528808594,
+        600.0
+      ],
+      "name": "B2-2.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        685.454528808594,
+        600.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        685.454528808594,
+        600.0
+      ],
+      "name": "B2-2.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        685.454528808594,
+        600.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1318.18176269531,
+        600.0
+      ],
+      "name": "B1-0.8x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1318.18176269531,
+        600.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        1318.18176269531,
+        600.0
+      ],
+      "name": "B1-0.8x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1318.18176269531,
+        600.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        1318.18176269531,
+        600.0
+      ],
+      "name": "B1-1.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1318.18176269531,
+        600.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        1318.18176269531,
+        600.0
+      ],
+      "name": "B1-1.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1318.18176269531,
+        600.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        1318.18176269531,
+        600.0
+      ],
+      "name": "B1-2.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1318.18176269531,
+        600.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1318.18176269531,
+        600.0
+      ],
+      "name": "B1-2.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1318.18176269531,
+        600.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1664.0,
+        500.0
+      ],
+      "name": "interface-0.8x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1664.0,
+        500.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        1664.0,
+        516.875
+      ],
+      "name": "interface-0.8x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1664.0,
+        500.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        1664.0,
+        500.0
+      ],
+      "name": "interface-1.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1664.0,
+        500.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        1664.0,
+        500.0
+      ],
+      "name": "interface-1.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1664.0,
+        500.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        1664.0,
+        500.0
+      ],
+      "name": "interface-2.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1664.0,
+        500.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1664.0,
+        500.0
+      ],
+      "name": "interface-2.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1664.0,
+        500.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1800.0,
+        500.0
+      ],
+      "name": "crossing-0.8x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1800.0,
+        500.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        1800.0,
+        516.875
+      ],
+      "name": "crossing-0.8x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1800.0,
+        500.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        1800.0,
+        500.0
+      ],
+      "name": "crossing-1.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1800.0,
+        500.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        1800.0,
+        500.0
+      ],
+      "name": "crossing-1.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1800.0,
+        500.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        1800.0,
+        500.0
+      ],
+      "name": "crossing-2.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1800.0,
+        500.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1800.0,
+        500.0
+      ],
+      "name": "crossing-2.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        1800.0,
+        500.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        2192.0,
+        500.0
+      ],
+      "name": "spring-0.8x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        2192.0,
+        500.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        2192.0,
+        516.875
+      ],
+      "name": "spring-0.8x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        2192.0,
+        500.0
+      ],
+      "zoom": 0.8
+    },
+    {
+      "camera_center": [
+        2192.0,
+        500.0
+      ],
+      "name": "spring-1.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        2192.0,
+        500.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        2192.0,
+        500.0
+      ],
+      "name": "spring-1.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        2192.0,
+        500.0
+      ],
+      "zoom": 1.0
+    },
+    {
+      "camera_center": [
+        2192.0,
+        500.0
+      ],
+      "name": "spring-2.0x-wide",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        2192.0,
+        500.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        2192.0,
+        500.0
+      ],
+      "name": "spring-2.0x-tall",
+      "size": [
+        1280,
+        827
+      ],
+      "target": [
+        2192.0,
+        500.0
+      ],
+      "zoom": 2.0
+    },
+    {
+      "camera_center": [
+        1422.22229003906,
+        800.000061035156
+      ],
+      "name": "overview",
+      "size": [
+        1280,
+        720
+      ],
+      "target": [
+        1238.0,
+        522.0
+      ],
+      "zoom": 0.45
+    }
+  ]
+}

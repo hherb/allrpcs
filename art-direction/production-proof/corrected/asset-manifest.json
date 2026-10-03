@@ -3176,6 +3176,172 @@
       },
       "godot_import_proof": true,
       "sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451"
+    },
+    {
+      "id": "terrain.whole_channel_water",
+      "category": "terrain",
+      "export": "exports/terrain/channel-water.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_banks",
+      "category": "terrain",
+      "export": "exports/terrain/channel-banks.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_decks",
+      "category": "terrain",
+      "export": "exports/terrain/channel-decks.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_detail",
+      "category": "terrain",
+      "export": "exports/terrain/channel-detail.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_fringe",
+      "category": "terrain",
+      "export": "exports/terrain/channel-fringe.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+      "godot_import_proof": true
     }
-  ]
+  ],
+  "whole_channel_provenance": {
+    "specification": "art-direction/whole-channel-runtime-preview/stage-2-specification.json",
+    "specification_sha256": "cdea9451b0cc2370fb715505d8abca623c51678b062eb2db5b128601d4a60711",
+    "recipe_sha256": "d1b5467aae3d00e48e7cfbc6dd646cf465d049d166ebdac4738b76363037f2c9",
+    "retained_recipe_sha256": "63e8e8e6f44e880664d000a432b19ec247b6ef63a05201d5bc81e77ebc77d492",
+    "world_origin": [
+      -64,
+      212
+    ],
+    "world_position": [
+      1238,
+      522
+    ],
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact approved export"
+  }
 }

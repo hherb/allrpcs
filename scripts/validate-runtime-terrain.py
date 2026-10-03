@@ -15,6 +15,8 @@ MANIFEST = PROOF_ROOT / "asset-manifest.json"
 RUNTIME_ROOT = ROOT / "game" / "art" / "runtime" / "terrain"
 MAIN_SCENE = ROOT / "game" / "Main.tscn"
 RUNTIME_ASSETS = (
+    *((f"terrain.whole_channel_{name}", RUNTIME_ROOT / f"channel-{name}.png", (2604, 620))
+      for name in ("water", "banks", "decks", "detail", "fringe")),
     ("terrain.quiet_moss", RUNTIME_ROOT / "quiet-moss.png", (256, 256)),
     (
         "terrain.woodland_leaf_litter",

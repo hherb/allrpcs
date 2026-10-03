@@ -1,4 +1,4 @@
-[gd_scene load_steps=352 format=3]
+[gd_scene load_steps=359 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -544,6 +544,14 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/village-edge-stream-path.png" id="433_runtime_village_edge_stream_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/stream-laundry-path.png" id="434_runtime_stream_laundry_path"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/clearing-closed-forest-path.png" id="435_runtime_closed_forest_path"]
+
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/channel-water.png" id="436_channel_water"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/channel-banks.png" id="437_channel_banks"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/channel-decks.png" id="438_channel_decks"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/channel-detail.png" id="439_channel_detail"]
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/channel-fringe.png" id="440_channel_fringe"]
+[ext_resource type="Script" path="res://WholeChannelPresentation.cs" id="441_channel_owner"]
+[ext_resource type="Shader" path="res://art/runtime/terrain/channel-retained-overlap.gdshader" id="442_channel_clip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3896,3 +3904,12 @@ script = ExtResource("291b_sabotage_ordinary_authoring_check")
 
 [node name="CharacterSabotageTurnOpportunityControllerSmokeCheck" type="Node" parent="."]
 script = ExtResource("291c_sabotage_turn_opportunity_check")
+
+[node name="WholeChannelPresentation" type="Node2D" parent="."]
+script = ExtResource("441_channel_owner")
+WaterTexture = ExtResource("436_channel_water")
+BanksTexture = ExtResource("437_channel_banks")
+DecksTexture = ExtResource("438_channel_decks")
+DetailTexture = ExtResource("439_channel_detail")
+FringeTexture = ExtResource("440_channel_fringe")
+OverlapClipShader = ExtResource("442_channel_clip")

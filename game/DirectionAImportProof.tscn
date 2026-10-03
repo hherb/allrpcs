@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3]
+[gd_scene load_steps=88 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -81,6 +81,12 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/shrine-southern-road-endpoint-blend.png" id="79_shrine_southern_road_endpoint_blend"]
 
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/clearing-closed-forest-path.png" id="81_closed_forest_path"]
+
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-water.png" id="84_channel_water"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-banks.png" id="85_channel_banks"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-decks.png" id="86_channel_decks"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-detail.png" id="87_channel_detail"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-fringe.png" id="88_channel_fringe"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
@@ -405,4 +411,29 @@ centered = false
 [node name="ClosedForestPathProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(2900, 1300)
 texture = ExtResource("81_closed_forest_path")
+centered = false
+
+[node name="ChannelWaterProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1800, 0)
+texture = ExtResource("84_channel_water")
+centered = false
+
+[node name="ChannelBanksProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1800, 700)
+texture = ExtResource("85_channel_banks")
+centered = false
+
+[node name="ChannelDecksProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1800, 1400)
+texture = ExtResource("86_channel_decks")
+centered = false
+
+[node name="ChannelDetailProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1800, 2100)
+texture = ExtResource("87_channel_detail")
+centered = false
+
+[node name="ChannelFringeProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(1800, 2800)
+texture = ExtResource("88_channel_fringe")
 centered = false

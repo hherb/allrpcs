@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-03",
+  "baseline_commit": "476a569d28ffdf2562157ea8af552b7be92ae28f",
+  "quality": {
+    "command": "PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh",
+    "execution": "host retry of identical sandbox command",
+    "exit_code": 0,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "tests": {
+      "Domain": 2839,
+      "Application": 925,
+      "Infrastructure": 1261,
+      "Architecture": 8
+    },
+    "total_tests": 5033,
+    "godot_import_runtime_navigation_gameplay_smokes": "passed",
+    "compatibility_launch": "passed"
+  },
+  "sandbox_limitation": "Godot user-log directory denied; tests/format/build/scenario and asset checks passed before engine startup abort. Identical host retry passed.",
+  "rebuild": {
+    "command": "/opt/homebrew/bin/python3 art-direction/whole-channel-runtime-promotion/tools/check_rebuild.py",
+    "exit_code": 0,
+    "exact_output_files": 713,
+    "manifest": "equal"
+  },
+  "focused": {
+    "command": "/opt/homebrew/bin/python3 art-direction/whole-channel-runtime-promotion/tools/validate.py --check-captures --check-rejections --check-archived",
+    "ordinary_runtime_views": 37,
+    "candidate_rgba_parity": "exact for all 37 views",
+    "new_rejection_mutations": 6,
+    "historical_checks": "passed in pinned disposable trees",
+    "protected_predecessors": 4323,
+    "production_exports": 89,
+    "editable_masters": 40,
+    "new_independent_lossless_imports": 10
+  },
+  "review": {
+    "status": "complete; no remaining actionable issues",
+    "fixes": [
+      "Corrected the new C# owner formatting; rebuilt and refreshed source-bound runtime captures."
+    ],
+    "assessed": [
+      "Full changed source/scene/manifest/validator/wiring diff and new owner/tool sources.",
+      "Translucent joins and both full-width B1/B2 deck ends; all 37 views have exact candidate RGBA parity.",
+      "Existing routes/forest/Stream physical owners and immutable predecessor evidence retained."
+    ],
+    "limits": [
+      "x=1664/x=2000 sampler transitions retained under the approved implementation scope.",
+      "New water/decks are visual only; no physical/navigation/layout or gameplay acceptance."
+    ]
+  },
+  "runtime_visual_confirmation": "pending; required before publication",
+  "source_sha256": {
+    "art-direction/production-proof/corrected/asset-manifest.json": "7e5cf3ebaccaef3695ec729f7c9bb4bcda45aa7553b6df715c2c110a76b84a3a",
+    "art-direction/production-proof/corrected/exports/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "art-direction/production-proof/corrected/exports/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "art-direction/production-proof/corrected/exports/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "art-direction/production-proof/corrected/exports/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "art-direction/production-proof/corrected/exports/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "art-direction/production-proof/corrected/masters/terrain-whole-channel-banks.ora": "a28d3cfe418b3fabea8808e1f16308647c5713b4c7f3ae548c2a69da6bd70b5e",
+    "art-direction/production-proof/corrected/masters/terrain-whole-channel-decks.ora": "8b495f72db43a51829e3d8a887505fc004f02e4dabdc74417c008d47fcc7eae5",
+    "art-direction/production-proof/corrected/masters/terrain-whole-channel-detail.ora": "83054fffea111393d24bddbb276873d6a24f69ac584cab2ee83b85d845f3ff6d",
+    "art-direction/production-proof/corrected/masters/terrain-whole-channel-fringe.ora": "e9d1580b8f86c8c51861237887de0f27c5e62fad439563aac0dcfb0dc12eb0b7",
+    "art-direction/production-proof/corrected/masters/terrain-whole-channel-water.ora": "ac44234459ad5e468996805015d28d3930b8f34fd6d4a93699c2753fc1fe5501",
+    "art-direction/production-proof/corrected/tools/build.py": "85c2692b608bfaac9e4c05b6b51b1619d5cd434cba3e550f33316d226f4d7983",
+    "art-direction/production-proof/corrected/tools/build_whole_channel.py": "d1b5467aae3d00e48e7cfbc6dd646cf465d049d166ebdac4738b76363037f2c9",
+    "art-direction/production-proof/corrected/tools/validate.py": "1bfa774e4fbb6a7e0f1910996f31d4dca7ad8fdce20e1cb2db04995fb7f3c65a",
+    "art-direction/production-proof/corrected/tools/validate_terrain_accessibility_review.py": "09498e0d9a9c193a8c378e2916b136dd48db04a5e6f8ebccf8922b2f90518a04",
+    "art-direction/whole-channel-runtime-promotion/baseline.json": "6ad4de580a6739258eee35227c9bd0529cccebd69aed1627fc46c3e2f706948f",
+    "art-direction/whole-channel-runtime-promotion/capture-context.json": "b63d989a0dd7390863bcc919be750ccfa2210f3fafa3f7eb125df4644ee3a7b1",
+    "art-direction/whole-channel-runtime-promotion/capture-evidence.json": "dce33c47f1813e05c28b0fc56cb69721c638557308aabd28c2c4d4c8e19152f1",
+    "art-direction/whole-channel-runtime-promotion/tools/check_rebuild.py": "f8a19ac8e6233bdbcdfe24ddb9cb11e93be0601ee1cece0c5e5e9b5fbd137eb1",
+    "art-direction/whole-channel-runtime-promotion/tools/validate.py": "6738e5ebedac50cab2f376f7aa7c15faa084d7c20b85431ea59e93bd0eb5cce2",
+    "game/DirectionAImportProof.tscn": "68dd2755c382f2e8bdaf7adc164e2fc5d241b86196dd677e4362b83ab469383a",
+    "game/DirectionAImportProofSmokeCheck.cs": "cda6ba875453ac8fc3e7ef302fed8e77c062f02e2c911165b1a6de11f764073b",
+    "game/Main.tscn": "86a1d9fb9c11a2fad498cb33d1acc22f1e7396f42068d233499ce338e58ea09e",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/art/direction-a-import-proof/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/direction-a-import-proof/terrain/channel-banks.png.import": "96a1da17167324b7b557eda3e3a39bce78f6690589f402cde2b20d5c845ac348",
+    "game/art/direction-a-import-proof/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/direction-a-import-proof/terrain/channel-decks.png.import": "c857e8941b5f664e1db51328cc50ec3499a4bef58dda9f61a657919f0aff3955",
+    "game/art/direction-a-import-proof/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/direction-a-import-proof/terrain/channel-detail.png.import": "ddd2e5fad098aec9fbe4896ad215e1bb7f99e2d1abfea6a73d411ce7a7a8165f",
+    "game/art/direction-a-import-proof/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/direction-a-import-proof/terrain/channel-fringe.png.import": "2a2c6554704b7138c727a9ec45e2e7afb5ce5286e6a1b4a7d99457ad3a9330ee",
+    "game/art/direction-a-import-proof/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/direction-a-import-proof/terrain/channel-water.png.import": "5df4c1fb8c9b062ca3d59eff5e739bd787737ada5a19f9b172e1cca1ba3a3aab",
+    "game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/runtime/terrain/channel-banks.png.import": "621d221eed6a93f223f4e5e1ebf62f1f2aa5da2e14242af51829f78c39638a0e",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/runtime/terrain/channel-decks.png.import": "515726db5763aa813470bdd9cd08c652841e079cf3675a7d9d884884b50f04b5",
+    "game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/runtime/terrain/channel-detail.png.import": "6312c99077b7792e7c2cf1c8b7541a5663061f3ffdd82226ccf3913adbe6c653",
+    "game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/runtime/terrain/channel-fringe.png.import": "5c548c84c17a7f73cf566dc229d5c43e25173db07f937856c48e328db7b5c287",
+    "game/art/runtime/terrain/channel-retained-overlap.gdshader": "2a0bd9d784b069bfeb61f10cd5687174471b50ba8eb2012fd153383dacbebc2a",
+    "game/art/runtime/terrain/channel-retained-overlap.gdshader.uid": "1d69c42a04b08f7d1e050564b0d2a77ed52962fc225b8852758af76f2cda062d",
+    "game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/runtime/terrain/channel-water.png.import": "5076e2f3aacd35d05ac78cc1ca5a4e107d2c84752f058a541440e496f2258ce0",
+    "scripts/capture-whole-channel-runtime.gd": "e624e3d82568375a743e95bd5e55e2706ee017f18d4d5e550778d19675b368fb",
+    "scripts/check-whole-channel-runtime.gd": "db9913a8bd2cdb4b4da53342eb359172087a011b5e13b9207436237277fcb8fa",
+    "scripts/quality.sh": "b3158f3fd02a7368482ba19f38cad3411aeb21d49b41c49b607eba93c09e30ad",
+    "scripts/smoke-godot.sh": "07207259c572bdc2546f2b707290136e9a6441a9e7a5a68ba06dc4ceb501f69f",
+    "scripts/validate-direction-a-import-proof.py": "f5859760197c732c4dd7af2e8ef44fa6d35ad5b61f14895f9d82bf6a90b586a4",
+    "scripts/validate-runtime-terrain.py": "7e36e7040aabd981a888db4bfa65ac2b6f72e6cac35a97955ce56e6bed901f77"
+  },
+  "log_sha256": {
+    "quality.log": "30aa345854485bcb21e3630e376ab66080f218c1a1db2055a528dbdea9f0fa50",
+    "quality-sandbox.log": "c842631c2f789874eb93028443dc490470baa11a5bb4b611a76f5a7558f53b35",
+    "rebuild.log": "22d9d6ecead33bdb110aa3d17fe0e0542d3857fd52bf8fccc34d3693615d1d0e",
+    "focused.log": "441dacc61513745ad7ab50170a7e3cfcabb2a154127f2c72349c2ef96e72abc0",
+    "runtime-capture.log": "79d55c816e61f61ffbbe862b1c2499da0fbbc460fd113ba0539ae4525d157063"
+  }
+}

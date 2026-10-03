@@ -1,0 +1,15 @@
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:124: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  for red, green, blue, alpha in rgba.getdata():
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:900: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  base.convert("RGBA").getdata(),
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:901: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  overlay.convert("RGBA").getdata(),
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:902: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  mask.convert("L").getdata(),
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:1083: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  pixels = [pixel for pixel in image.convert("RGBA").getdata() if pixel[3] > 0]
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:1620: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  for actual, expected in zip(merged.getdata(), exact_merged_image.getdata())
+/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/channel-rebuild-qlti4bvw/art-direction/production-proof/corrected/tools/build.py:1919: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  for alpha, route in zip(module_alpha.getdata(), route_mask.getdata())
+PASS: full production builder reproduces all 713 exports, masters and review files plus exact manifest

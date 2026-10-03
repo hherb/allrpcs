@@ -1,0 +1,4 @@
+PASS: 4323 unchanged protected predecessors; physical/navigation/route owners unchanged
+PASS: five exact PNGs/2x masters and ten independent lossless imports; accepted shader unchanged
+PASS: all 37 ordinary runtime views match approved Stage 1 candidate RGBA exactly
+PASS: six disposable mutations rejected stale inputs, missing views, camera/physics drift, pixels and inventory rewrite

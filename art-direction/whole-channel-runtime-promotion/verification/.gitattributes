@@ -1,0 +1,2 @@
+# Preserve the hash-bound raw engine log, including its final blank line.
+quality.log -whitespace

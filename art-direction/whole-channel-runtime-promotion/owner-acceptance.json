@@ -1,0 +1,24 @@
+{
+  "owner_statement": "confirmed and approved",
+  "date": "2026-10-03",
+  "context": "Direct response to the final ordinary runtime visual review and request to confirm before committing and pushing to main",
+  "review_request": "runtime-review-request.json",
+  "review_request_sha256": "5ca9d2f4d77c2af2e20bbac0c0ab8fcbac773daffb699d0ef91228bde89e18ea",
+  "scope_sha256": "b478f88a616db52b7933a30e65ee3a0201e9d29afc525a43cd550257030e5106",
+  "capture_context_sha256": "b63d989a0dd7390863bcc919be750ccfa2210f3fafa3f7eb125df4644ee3a7b1",
+  "capture_evidence_sha256": "dce33c47f1813e05c28b0fc56cb69721c638557308aabd28c2c4d4c8e19152f1",
+  "verification_results_sha256": "962162d5c7c26b785de92bb0432ed69bb5c7e934faac35bec1346219c59dd015",
+  "ordinary_runtime_views": 37,
+  "runtime_presentation_visually_confirmed": true,
+  "retained_limits": [
+    "x=1664/x=2000 sampling transitions retained",
+    "New water/decks visual only; walking beneath water and bridge fringe actor-clearance limits unchanged"
+  ],
+  "physical_layout_navigation_authorized": false,
+  "publication": {
+    "authorized": true,
+    "branch": "main",
+    "method": "reviewed commit and direct push under existing user authorization"
+  },
+  "does_not_grant": "Gameplay, navigation, collision, layout, accessibility, pacing, release/signing or next-asset authority"
+}

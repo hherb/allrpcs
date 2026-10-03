@@ -301,7 +301,7 @@ def main() -> None:
     require(manifest["master_scale"] == 2, "masters must remain exactly 2x")
 
     assets = {asset["id"]: asset for asset in manifest["assets"]}
-    require(len(assets) == 84, f"expected 84 assets, got {len(assets)}")
+    require(len(assets) == 89, f"expected 89 assets, got {len(assets)}")
     import_proof_ids = {
         asset_id
         for asset_id, asset in assets.items()
@@ -352,7 +352,8 @@ def main() -> None:
         validate_alpha(
             path, image.convert("RGBA"), asset["category"],
             expected_hidden_rgb_pixels=84 if asset_id == "terrain.village_edge_square_connector" else 0,
-            require_opaque=asset_id != "terrain.shrine_southern_road_endpoint_blend",
+            require_opaque=asset_id != "terrain.shrine_southern_road_endpoint_blend"
+            and not asset_id.startswith("terrain.whole_channel_"),
         )
 
     stream_proof = manifest["stream_water_bank_feasibility"]
@@ -1603,6 +1604,12 @@ def main() -> None:
         "terrain-village-edge-stream-path.ora",
         "terrain-stream-laundry-path.ora",
         "terrain-clearing-closed-forest-path.ora",
+        "terrain-whole-channel-water.ora",
+        "terrain-whole-channel-banks.ora",
+        "terrain-whole-channel-decks.ora",
+        "terrain-whole-channel-detail.ora",
+        "terrain-whole-channel-fringe.ora",
+
         "terrain-woodland-leaf-litter.ora",
         "terrain-woodland-leaf-litter-transition.ora",
         "terrain-woodland-leaf-litter-corner-transition.ora",
@@ -1642,7 +1649,7 @@ def main() -> None:
     print("left inset ground corner: exact top/left transition and unused leaf edge connectors")
     print("Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather")
     print("stream feasibility: repeatable water, mirrored banks/caps, exact crossing and views")
-    print("editable masters: 35 valid OpenRaster archives")
+    print("editable masters: 40 valid OpenRaster archives")
 
 
 if __name__ == "__main__":

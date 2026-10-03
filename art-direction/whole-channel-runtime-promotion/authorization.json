@@ -1,0 +1,16 @@
+{
+  "owner_statement": "approved",
+  "date": "2026-10-03",
+  "context": "Response to the explicit request to approve the exact Stage 2 scope, including retained x=1664/x=2000 sampling transitions",
+  "scope": "art-direction/whole-channel-runtime-preview/stage-2-scope.md",
+  "scope_sha256": "b478f88a616db52b7933a30e65ee3a0201e9d29afc525a43cd550257030e5106",
+  "specification": "art-direction/whole-channel-runtime-preview/stage-2-specification.json",
+  "specification_sha256": "cdea9451b0cc2370fb715505d8abca623c51678b062eb2db5b128601d4a60711",
+  "baseline_commit": "476a569d28ffdf2562157ea8af552b7be92ae28f",
+  "baseline_sha256": "6ad4de580a6739258eee35227c9bd0529cccebd69aed1627fc46c3e2f706948f",
+  "production_runtime_implementation_authorized": true,
+  "physical_layout_navigation_authorized": false,
+  "runtime_visual_confirmation": "confirmed and approved; see owner-acceptance.json",
+  "runtime_visual_confirmation_record": "art-direction/whole-channel-runtime-promotion/owner-acceptance.json",
+  "runtime_visual_confirmation_sha256": "feb169c9102ef0c86ac3b8c14836d9df98bae9d689cfd8a70fb587b7ae3bb3a9"
+}

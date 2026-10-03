@@ -3726,6 +3726,9 @@ def main() -> None:
         json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
     )
 
+    from build_whole_channel import install as install_whole_channel
+    install_whole_channel()
+
 
 if __name__ == "__main__":
     main()

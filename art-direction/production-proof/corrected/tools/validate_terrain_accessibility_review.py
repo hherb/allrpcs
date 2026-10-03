@@ -61,9 +61,10 @@ def main() -> None:
     # Keep its report bytes and verify its complete original manifest binding.
     if "terrain.clearing_closed_forest_path" in assets:
         retained = {key: value for key, value in manifest.items()
-                    if key != "clearing_closed_forest_path_provenance"}
+                    if key not in {"clearing_closed_forest_path_provenance", "whole_channel_provenance"}}
         retained["assets"] = [asset for asset in manifest["assets"]
-                              if asset["id"] != "terrain.clearing_closed_forest_path"]
+                              if asset["id"] != "terrain.clearing_closed_forest_path"
+                              and not asset["id"].startswith("terrain.whole_channel_")]
         expected_report["manifest"]["sha256"] = hashlib.sha256(
             (json.dumps(retained, indent=2) + "\n").encode()
         ).hexdigest()

@@ -157,7 +157,11 @@ the runtime views on 2026-10-03 ("confirmed") before direct-main publication;
 whole-channel promotion is separate. The [whole-channel scope proposal](art-direction/whole-channel-runtime-scope/README.md)
 received Stage 1 approval ("approved"). The [disposable runtime preview](art-direction/whole-channel-runtime-preview/README.md)
 now retains five exact transparent atlases/2x masters and 74 paired GPU captures. Its
-[Stage 2 production scope](art-direction/whole-channel-runtime-preview/stage-2-scope.md) awaits separate approval.
+[Stage 2 production scope](art-direction/whole-channel-runtime-preview/stage-2-scope.md) received named approval.
+The [implemented runtime promotion](art-direction/whole-channel-runtime-promotion/README.md)
+contains 89 exports/40 masters and 37 exact runtime views. The owner confirmed these views
+on 2026-10-03 ("confirmed and approved"); [acceptance](art-direction/whole-channel-runtime-promotion/owner-acceptance.json)
+binds the exact evidence and clears the authorized direct-main publication checkpoint.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight

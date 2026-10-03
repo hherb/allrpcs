@@ -83,6 +83,8 @@ ALLRPCS_OPENING_REGION_SOUTHERN_ROAD_WAGON_CHECK=1 \
     godot --headless --fixed-fps 60 --path "$repository_root/game" --quit-after 120
 ALLRPCS_OPENING_REGION_CLOSED_FOREST_PATH_CHECK=1 \
     godot --headless --fixed-fps 60 --path "$repository_root/game" --quit-after 120
+godot --headless --path "$repository_root/game" \
+    --script "$repository_root/scripts/check-whole-channel-runtime.gd"
 ALLRPCS_HEALER_COMMAND_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 1500
 ALLRPCS_INTERACTION_FOCUS_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
 ALLRPCS_SEEKER_BOUNDARY_CHECK=1 godot --headless --path "$repository_root/game" --quit-after 30
