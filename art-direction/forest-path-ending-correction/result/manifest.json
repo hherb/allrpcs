@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "external proof; owner visual assessment pending",
+  "baseline_commit": "cfba0ce63e98f6c4a4f738ddebb0f17ddcafaf1a",
+  "world_origin": [
+    520,
+    32
+  ],
+  "export_size": [
+    552,
+    384
+  ],
+  "master_scale": 2,
+  "master_note": "exact nearest enlargement; no invented painted detail",
+  "draw_order": [
+    "rounded_and_eased_path"
+  ],
+  "source_sha256": {
+    "art-direction/approved-external-compositions/forest/captures/bounded-gate-2.0x-wide.png": "92270ac91a796c4e45a913c9e77cc0e26957c6aa2428bd0cea49bad3a5d035cd",
+    "art-direction/approved-external-compositions/tools/common.py": "6c771a517bec0379f1ea14357ffaed194585d7a00832f8ae8978e9c4db2d5abe",
+    "art-direction/forest-path-ending-correction/owner-request.json": "a7718af920a1720c6ce8f5140a7442851b47f19864ae35f8290faa65535ab9ca",
+    "art-direction/forest-path-ending-correction/tools/capture.gd": "366178e7126b5961c929621ed89bdff43642bd67d693575bbd2393455780e255",
+    "art-direction/forest-path-ending-correction/tools/proof.py": "1e26e6695d23999dedf4a98d88e9002351b265a31b07e984a8b7f7afe2a377a4",
+    "art-direction/production-proof/corrected/tools/build.py": "70a1bc327e5084c1246b10c557e0e9c958519796991367ed4976963946a2a756",
+    "game/Main.tscn": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "game/OpeningRegionClosedForestPathGeometry.cs": "41fb154c661c6fd39edd8df6fde4f3de17ef5123b3e5d8d85759260d2662e41c",
+    "game/OpeningRegionWoodlandClearingGeometry.cs": "4f93183cb68fe2c1c892c0c9a444257b7e53a394656e1e65c7e0de5e140bcb37",
+    "game/art/runtime/terrain/path-end-cap.png": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3",
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
+  },
+  "artifact_sha256": {
+    "exports/rounded-reference.png": "d5ff48560bff96efe4727d4f99d5397ae431c5035cc9be0b3c03f9c388083c12",
+    "exports/corrected.png": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+    "review/overlay-2x.png": "b72c4fbde7a20e0bc38aa10bcfeaccaaa6b45ce35161d183115bce550c8113cd",
+    "masters/composition.ora": "ea21210cc6d57fdf198695e1bb4578373c5eef200f5e25340e1e359351468023"
+  },
+  "layout_runtime_physical_promotion_authorized": false
+}

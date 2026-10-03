@@ -1,0 +1,12 @@
+{
+  "protected_file_count": 4155,
+  "runtime_files_changed": 0,
+  "retained_gate_top": 196,
+  "gate_fade_start": 168,
+  "faded_visible_pixels": 4601,
+  "cap_source_entry_before_old_endpoint": 88,
+  "cap_blend_end_before_old_endpoint": 72,
+  "cap_blend": 16,
+  "status": "external forest ending correction; owner visual assessment pending",
+  "limit": "source-derived rounded cap and gate alpha easing only; no physical/layout promotion"
+}
