@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "status": "external B1 proof; visual assessment pending; no physical or runtime approval",
+  "master_scale": 2,
+  "world_origin": [
+    1088,
+    384
+  ],
+  "export_size": [
+    512,
+    448
+  ],
+  "source_sha256": {
+    "road": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "layout": "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1"
+  },
+  "master": {
+    "path": "masters/b1-joined.ora",
+    "sha256": "9838086f6bca17311eef094b373a8f9da9dc7b79f10f2b06bf78041c8e699823"
+  },
+  "exports": [
+    {
+      "path": "exports/ground.png",
+      "sha256": "27232f3eaee321ffd9f4e252170673bd3d42f90e85337935ee3735a48f4f62e6",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "exports/road.png",
+      "sha256": "7d51e69b860bdc3bf1762e959170a37c8977cd1ea2531a8e8d333fb844b5efdd",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "exports/water.png",
+      "sha256": "7087a0bd53b391b6832e61bcd10682518a6d9e4db38e58203ca855cf328cbdc2",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "exports/bank.png",
+      "sha256": "8ef9afd80be1bd6898dff85477e8e90f1d47a46e8381ae46f1ab4e24741d5253",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "exports/deck.png",
+      "sha256": "42b95f72bf1fdc889c2746f3e730ee59ec89ef651e9ec794aa6d993594809269",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "exports/joined.png",
+      "sha256": "5e8aac230fbeb113b6b7f03ce2f6b7ba989f22fccc6818cd01ee820c858a8b86",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "review/joined-0.8x.png",
+      "sha256": "5cb6f7636bf434727340fe818ff569e42cbf7f5633a4fd536fc924e2ce6f95c6",
+      "size": [
+        410,
+        358
+      ]
+    },
+    {
+      "path": "review/joined-1.0x.png",
+      "sha256": "5e8aac230fbeb113b6b7f03ce2f6b7ba989f22fccc6818cd01ee820c858a8b86",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "review/joined-2.0x.png",
+      "sha256": "47664b354f2507503d7171c950dd2ff7e679aed4a68445f29895f0c464e6e193",
+      "size": [
+        1024,
+        896
+      ]
+    },
+    {
+      "path": "review/engineering.png",
+      "sha256": "3ccda1c2ee5f404189930cc5a7cd9cf23f6c6b9f5730fde9c5d029e780cfa933",
+      "size": [
+        512,
+        448
+      ]
+    },
+    {
+      "path": "review/retained-road.png",
+      "sha256": "49af99514b86a022099f269861d86d0fd94cba67d8c5913f945060044efe5dcc",
+      "size": [
+        512,
+        448
+      ]
+    }
+  ]
+}

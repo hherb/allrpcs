@@ -1,0 +1,56 @@
+{
+  "status": "external B1 proof; visual assessment pending; no physical or runtime approval",
+  "baseline_commit": "d3b04355a3c0308c46d6ae1f588f8c64ff1e10f0",
+  "protected_file_count": 3920,
+  "center": [
+    1318.1818181818182,
+    600.0
+  ],
+  "deck_width": 96,
+  "deck_length": 336,
+  "deck_polygon": [
+    [
+      1420.627864611254,
+      741.5373009880361
+    ],
+    [
+      1156.42490276692,
+      533.9492595389165
+    ],
+    [
+      1215.7357717523826,
+      458.46269901196393
+    ],
+    [
+      1479.9387335967165,
+      666.0507404610835
+    ]
+  ],
+  "bank_depth": 16,
+  "affected_water_route_cells": 225,
+  "affected_water_and_bank_route_cells": 295,
+  "covered_accepted_road_bank_envelope_pixels": 16805,
+  "affected_route_cells_with_corners_outside_deck": 31,
+  "maximum_route_cell_corner_transverse_protrusion": 5.244984657404082,
+  "minimum_full_width_dry_abutment_y_margin": 2.0507404610834783,
+  "deck_to_clearing_south_wall_y_gap": 4.4626990119639345,
+  "horizontal_north_bank_to_clearing_wall_y_gap": 82,
+  "draw_order_back_to_front": [
+    "ground",
+    "road",
+    "water",
+    "bank",
+    "deck"
+  ],
+  "rails_posts_side_shadows": false,
+  "new_collision_or_navigation_authored": false,
+  "physical_limit": "cell-centre feasibility only; fringe cell corners extend outside deck; actor clearance and live bank exclusions require named approval",
+  "source_sha256": {
+    "road": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "layout": "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1"
+  }
+}
