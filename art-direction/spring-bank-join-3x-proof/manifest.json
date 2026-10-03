@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "status": "external spring join; visual assessment pending; no runtime/layout/physical approval",
+  "master_scale": 2,
+  "world_origin": [
+    1900,
+    212
+  ],
+  "export_size": [
+    512,
+    576
+  ],
+  "source_sha256": {
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "cap": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "scene": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "geometry": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72",
+    "helpers": "880c89ae980308d55d0db933bfd6556bcb7aeb46ccca19f8c0b4fdaeb23643f2",
+    "original_view": "e35b85368ee76b7e186af2ac87644b6bab5d2e3a03865e52c8038bf2c3106e0f"
+  },
+  "b2_visual_acceptance_sha256": "d23c6c54f4244dadb7a05cb6cafea11f1f5b61d78fbd48d3368f8c6e2bd65416",
+  "enlargement_request_sha256": "ee1c6e65c2a0892929c519e656adc22c0e412f03b0311964883200c1ddc7564b",
+  "master": {
+    "path": "masters/spring-join.ora",
+    "sha256": "5aca832c5db4000b634115a9f91a1f6c6422803e7ebfcb83d10c7ddc5cf1b812"
+  },
+  "exports": [
+    {
+      "path": "exports/ground.png",
+      "sha256": "feb2cb5a20d51cfc730405c4a66775dba9ff5fbde12251ef7ee5e2f3893237de",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "exports/retained_water.png",
+      "sha256": "d745e4f73a57e7e062e592aaec8e2a2c8533b55a8f42af48e0240541e29a3605",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "exports/retained_banks.png",
+      "sha256": "408023915607a045a1da3e051a7eeb4aa4055193808e44ce58f10f023d89c1c3",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "exports/new_water.png",
+      "sha256": "dafd7c9f1fa486c58d38bc93c037d30b1b9af59a43064918a59b52b13f82b2a5",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "exports/new_banks.png",
+      "sha256": "200e27e442796d620c85ec5d80f2ff7eea548d96375322d2d94bed200c2df933",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "exports/spring_detail.png",
+      "sha256": "c7f39f7388921ba4f0385d34b326c55766b422a9403ec530e5133501aaea0b09",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "exports/joined.png",
+      "sha256": "9f16268dc675f1b4e67e08198c87a8759b33d2b269c4beb1f35bc5bad9ebbf57",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "review/joined-0.8x.png",
+      "sha256": "8d842921aab83b2ee46e28e7ef8fa3fbe1d5fe17d757a19f6f31664aa35b32fd",
+      "size": [
+        410,
+        461
+      ]
+    },
+    {
+      "path": "review/joined-1.0x.png",
+      "sha256": "9f16268dc675f1b4e67e08198c87a8759b33d2b269c4beb1f35bc5bad9ebbf57",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "review/joined-2.0x.png",
+      "sha256": "a735baccb94a7ca23dae375fec9ee4844128b2e884874bdc7b76e08ac8d59060",
+      "size": [
+        1024,
+        1152
+      ]
+    },
+    {
+      "path": "review/engineering.png",
+      "sha256": "eddbfe092b93da1cabab40bdaebdeba7d2693ab5f9ec692216c4da556a0fb365",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "review/retained-stream.png",
+      "sha256": "2336d553bf877925cf62611562bdcfbdd46800824f237bd70517293b41b730ca",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "review/rejected-circle-overlay.png",
+      "sha256": "d6a25785c82a55d334d7230e402a294a0cf789cb418a1be5c1580b9a9d9e5409",
+      "size": [
+        512,
+        576
+      ]
+    },
+    {
+      "path": "review/original-common-scale.png",
+      "sha256": "4fd849c819660c4d92ad98f9145b66745dec080f41d38502ff32ca935e05821e",
+      "size": [
+        512,
+        576
+      ]
+    }
+  ]
+}

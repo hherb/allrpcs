@@ -1,0 +1,9 @@
+{
+  "owner_statement": "looks good - perhaps make it three times as large, would look even better",
+  "date": "2026-10-03",
+  "linear_scale": 3,
+  "interpretation": "three times basin diameter; fixed centre and retained inlet; bank thickness remains 16px",
+  "review_path": "art-direction/spring-bank-join-proof/review/joined-1.0x.png",
+  "review_sha256": "e35b85368ee76b7e186af2ac87644b6bab5d2e3a03865e52c8038bf2c3106e0f",
+  "layout_runtime_physical_promotion_authorized": false
+}

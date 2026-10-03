@@ -1,0 +1,55 @@
+{
+  "status": "external spring join; visual assessment pending; no runtime/layout/physical approval",
+  "baseline_commit": "2cfce8af460da05a95da4a1e69bfa81ccb4ea9c5",
+  "protected_file_count": 3978,
+  "source_center": [
+    2032,
+    500
+  ],
+  "water_radius_envelope": 192,
+  "bank_radius_envelope": 208,
+  "inlet": {
+    "x": 2000,
+    "visible_water_top": 484,
+    "visible_water_bottom": 516,
+    "width": 32,
+    "bank_depth_at_join": 32,
+    "bank_depth_at_basin_center": 16
+  },
+  "retained_territory": "all x < 2000 within review, including accepted bank/cap pixels",
+  "retained_composite_pixels_changed_by_candidate": 0,
+  "naive_circle_retained_bank_pixels_covered": 5994,
+  "naive_circle_retained_composite_pixels_changed": 30590,
+  "minimum_center_to_route_distance": 232.0,
+  "raster_halo_to_route_corridor_clearance_lower_bound": 143.79289321881345,
+  "full_unclipped_circle_clearance": -24.0,
+  "linear_scale_relative_to_original": 3,
+  "new_halo_retained_route_cell_centres": 0,
+  "draw_order_back_to_front": [
+    "ground",
+    "retained_water",
+    "retained_banks",
+    "new_water",
+    "new_banks",
+    "spring_detail"
+  ],
+  "water_uv_origin": [
+    1600,
+    452
+  ],
+  "bank_continuation_source_column": 68,
+  "new_bank_recipe": "existing bank RGBA composited over continuing water UV phase",
+  "spring_detail": "static proposed emergence highlight; no scenario fact or interaction",
+  "physical_limit": "existing Stream collision remains; new basin/banks have no collision or navigation authority",
+  "source_sha256": {
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "cap": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "scene": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "geometry": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72",
+    "helpers": "880c89ae980308d55d0db933bfd6556bcb7aeb46ccca19f8c0b4fdaeb23643f2",
+    "original_view": "e35b85368ee76b7e186af2ac87644b6bab5d2e3a03865e52c8038bf2c3106e0f"
+  }
+}
