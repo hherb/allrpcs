@@ -29,11 +29,13 @@ grants no gameplay, pacing, usability or accessibility acceptance.
 
 ## Exact next slice
 
-Both displayed views are visually accepted; both approved external implementation scopes
-are complete. Obtain the next named implementation scope before further art work or
-production/runtime/layout/physical promotion. Preserve all predecessors and accepted local
-views. Historical pending/rejected records remain unchanged; the new acceptance record
-supersedes pending assessment only for its two hash-bound views.
+Both displayed views are visually accepted; both external implementation scopes are complete.
+The next proposed slice is [rounded closed-forest path runtime promotion](art-direction/forest-path-ending-correction/runtime-promotion-scope.md).
+Obtain approval of that named scope, then implement only its single hash-bound asset and
+presentation wiring. Preserve its closed-side-only limitation and physical owners; require
+runtime visual confirmation before publishing. Whole-channel promotion remains separate.
+Historical pending/rejected records remain unchanged; acceptance supersedes pending
+assessment only for its two hash-bound views.
 
 ## Verification
 
