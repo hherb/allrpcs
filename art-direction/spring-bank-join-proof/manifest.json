@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "status": "external spring join; visual assessment pending; no runtime/layout/physical approval",
+  "master_scale": 2,
+  "world_origin": [
+    1900,
+    340
+  ],
+  "export_size": [
+    384,
+    320
+  ],
+  "source_sha256": {
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "cap": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "scene": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "geometry": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72",
+    "helpers": "880c89ae980308d55d0db933bfd6556bcb7aeb46ccca19f8c0b4fdaeb23643f2"
+  },
+  "b2_visual_acceptance_sha256": "d23c6c54f4244dadb7a05cb6cafea11f1f5b61d78fbd48d3368f8c6e2bd65416",
+  "master": {
+    "path": "masters/spring-join.ora",
+    "sha256": "818ea61324b6c3b6e67b52a4f01e9a160ab5d8a061786711046308a57cf011ed"
+  },
+  "exports": [
+    {
+      "path": "exports/ground.png",
+      "sha256": "172dbbb21fc574198e86c822e4453eee0d276eae64d62e6e459a22c0707a5050",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "exports/retained_water.png",
+      "sha256": "d5f84de34eb6e13f9778a702c4595effc92cf1409cbe6ddc7f03b064b40b13ca",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "exports/retained_banks.png",
+      "sha256": "6b561e9efd1f720afa2c1aaba8cfb3df67d6e05943bbe6506c734ef59c29f56d",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "exports/new_water.png",
+      "sha256": "2a4b2afeacf54ea1410d45980952e7ee89805316267294ce7d99088a070b88b7",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "exports/new_banks.png",
+      "sha256": "f00dbe8816f26d1128c2cba9b1c835460447559e5a29044fab758a3cc5eb876a",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "exports/spring_detail.png",
+      "sha256": "8fb5ed1bdc2ffb52348097240c9c532b8ce4419656754a85d5c55fbe7cb8f307",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "exports/joined.png",
+      "sha256": "e35b85368ee76b7e186af2ac87644b6bab5d2e3a03865e52c8038bf2c3106e0f",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "review/joined-0.8x.png",
+      "sha256": "9cb540c8c702d80e212925e6991ce611e5cb13f35e6fcc2e1f4e1ec485d93568",
+      "size": [
+        307,
+        256
+      ]
+    },
+    {
+      "path": "review/joined-1.0x.png",
+      "sha256": "e35b85368ee76b7e186af2ac87644b6bab5d2e3a03865e52c8038bf2c3106e0f",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "review/joined-2.0x.png",
+      "sha256": "0882d9a180cf1255742db6385d50bc1cedec6353679eb326c962bca81b1eedf7",
+      "size": [
+        768,
+        640
+      ]
+    },
+    {
+      "path": "review/engineering.png",
+      "sha256": "5a2a2d9d2ed0fe4aa02241cd04459697052fe5a43d45430b4a80614f7777b699",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "review/retained-stream.png",
+      "sha256": "a5ab3d03361b6b77e3a292c1349f9863692628d16cc1049ee4c145eb98f02738",
+      "size": [
+        384,
+        320
+      ]
+    },
+    {
+      "path": "review/rejected-circle-overlay.png",
+      "sha256": "082855b8f80cc9091f01494e243786813f6bddcd7a9e836386f20097b70cbb8d",
+      "size": [
+        384,
+        320
+      ]
+    }
+  ]
+}
