@@ -1,0 +1,10 @@
+{
+  "owner_statement": "proceed",
+  "date": "2026-10-03",
+  "review_path": "art-direction/western-outlet-proof/review/engineering.png",
+  "review_sha256": "14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe",
+  "review_commit": "a748b1126a70ea60b8030e90aa85b82b4bea237b",
+  "context": "response after the exact engineering view and request for owner visual assessment",
+  "scope": "bounded visual acceptance of the shown external outlet engineering view only",
+  "layout_runtime_physical_promotion_authorized": false
+}

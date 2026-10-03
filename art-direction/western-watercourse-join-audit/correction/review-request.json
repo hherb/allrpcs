@@ -1,0 +1,11 @@
+{
+  "owner_statement": "Needs correction — describe the change",
+  "date": "2026-10-03",
+  "review_path": "art-direction/western-watercourse-join-audit/correction/review/joined-2x.png",
+  "review_sha256": "1dd67a6ebc1ce5ac8ea2d44026a5b63c4d8ab801716a0a997c3805db03b6644c",
+  "scope": "shown external B1–retained Stream join correction at 2x",
+  "visual_acceptance": false,
+  "correction_details": "there is a small blue (water) line between the brown bank and the green grass",
+  "clarification": "Make an external successor removing the blue fringe; preserve this rejected candidate and runtime files.",
+  "layout_runtime_physical_promotion_authorized": false
+}

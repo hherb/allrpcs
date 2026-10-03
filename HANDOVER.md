@@ -2,59 +2,51 @@
 
 ## Current state and authority
 
-Phase 8 and 9.1 are complete. Direction A has 83 production exports and 34 masters.
-Accepted [Stream–Laundry runtime presentation](art-direction/production-proof/corrected/review/stream-laundry-path-runtime-result.md)
-has direct-main publication authority; do not restore its gate. Preserve accepted assets
-and the accepted Shrine triangle, whose cause remains unconfirmed.
+Phase 8 and 9.1 complete; Direction A has 83 production exports and 34 masters.
+Preserve accepted runtime assets, Stream–Laundry's existing direct-main authority,
+and the accepted Shrine triangle (cause unconfirmed). Western overview, B1, B2,
+curved spring, outlet and local B1–Stream fringe successor have external visual acceptance
+only. Spring invariants: 384px basin, centre `(2192,500)`, retained x<2000 pixels,
+exact 32px inlet. All 4,041 predecessor files remain unchanged.
 
-The western-watercourse overview, B1, B2 and [curved spring](art-direction/spring-curved-bank-proof/README.md)
-have bounded external visual acceptance only. Preserve their acceptance records and all
-earlier candidates/failed evidence. Spring invariants: 384px basin, centre `(2192,500)`,
-retained x<2000 pixels, exact 32px inlet.
+This session's [join audit](art-direction/western-watercourse-join-audit/README.md) records
+outlet acceptance, the B1/retained Stream UV/bank mismatch, a rejected 64px join, and
+its accepted blue-fringe successor. The owner accepted the exact shown 2x successor:
+“Yes, visually acceptable as shown”. Its [acceptance record](art-direction/western-watercourse-join-audit/fringe-correction/visual-acceptance.json)
+binds SHA-256 `4beca5b13d17f803477a62d4442690fe25e78530cafdbe7e4bf196678ea8d284`.
+Preserve the first candidate and owner correction request as failed evidence. The
+successor changes 2,149 external bank-fringe pixels, including reconstructed retained
+reference pixels at the owner's request; no accepted source or runtime file changed.
 
-The [western outlet proof](art-direction/western-outlet-proof/README.md) covers
-x=0..320, water y=552..648 and 16px banks, with B2's world-aligned phase. Water and
-banks continue uncapped across x=0; the engineering view's 64px western strip is an
-off-map reference only. Visual assessment is pending. Its README/manifest bind the
-exports, editable master and 4,023-file preservation inventory.
-
-Routine bounded external-proof scope approvals remain waived. Continue external
-corrections, review, validation and direct-main publication under standing authority.
-Named runtime/layout/physical changes require separate authorization and visual checkpoints.
-Preserve production assets, navigation, collision, camera, scenario, dialogue, clues,
-discovery, treatment, saves, providers, UI, audio, release and signing. Visual acceptance
-grants no gameplay, pacing, usability or human accessibility acceptance. Keep capture/HUD
-switches outside ordinary startup. Exclude Finder `.DS_Store`.
+Routine bounded external proof approvals remain waived; review, validation and
+direct-main publication remain authorized. Named runtime/layout/physical changes need
+separate authorization and visual checkpoints. Preserve navigation, collision, camera,
+scenario, dialogue, clues, discovery, treatment, saves, providers, UI, audio, release
+and signing. Keep capture/HUD switches outside ordinary startup; exclude `.DS_Store`.
+Visual acceptance grants no gameplay, pacing, usability or accessibility acceptance.
 
 ## Exact next slice
 
-Resolve owner visual assessment of the shown [outlet engineering view](art-direction/western-outlet-proof/review/engineering.png)
-from `a748b1126a70ea60b8030e90aa85b82b4bea237b`, SHA-256
-`14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe`.
-Shown again on 2026-10-03; assessment remains pending. Generic continuation/publication
-authority does not establish visual acceptance.
-If correction is requested, create one bounded external successor within the same outlet
-envelope, preserving this candidate and all predecessors. Bind any acceptance to the exact
-shown image and statement. Whole-channel art and Clearing–Closed Deeper Forest Path remain
-deferred. Continuation grants no promotion authority.
+Resolve the owner's next named scope: the outlet/interface assessment sequence is
+complete. Whole-channel art and Clearing–Closed Deeper Forest Path remain deferred;
+do not infer either from generic continuation. Any further external composition must
+preserve the accepted local views and show its own result. Any named promotion needs
+separate authorization; do not import these proof assets or alter physical owners.
 
 ## Verification
 
 ```sh
-/opt/homebrew/bin/python3 art-direction/western-outlet-proof/tools/proof.py
-/opt/homebrew/bin/python3 art-direction/western-outlet-proof/tools/check_rejections.py
-/opt/homebrew/bin/python3 art-direction/western-outlet-proof/tools/check_predecessor.py
-/opt/homebrew/bin/python3 art-direction/spring-curved-bank-proof/tools/check_rejections.py
-/opt/homebrew/bin/python3 art-direction/production-proof/corrected/tools/validate_stream_laundry_path.py --check-captures --check-promotion-scope
+/opt/homebrew/bin/python3 art-direction/western-watercourse-join-audit/tools/audit.py
+/opt/homebrew/bin/python3 art-direction/western-watercourse-join-audit/tools/join.py
+/opt/homebrew/bin/python3 art-direction/western-watercourse-join-audit/tools/fringe.py
 PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh
 ```
 
-All five Python commands above passed again on 2026-10-03. Review of the outlet generator,
-mutation checks and predecessor wrapper found no actionable issue. This continuation
-changes only this handover. Historical inventories intentionally reject successors:
-use the outlet baseline and predecessor wrapper (verified scope superset only).
-Never rewrite historical evidence; archive scope results before approved promotion.
-
-Prior outlet-session full host quality passed: zero-warning build, 5,033 tests,
-asset/scenario validation, Godot smokes and Compatibility launch after an identical
-host retry for sandbox log-rotation failure. Not rerun for this documentation-only session.
+All proof checks pass: exact reproduction, full masks/banks, seven join mutations,
+endpoint parity, accepted image digest, bounded fringe changes and source preservation.
+Use this successor's baseline/wrapper; historical inventories intentionally reject new
+tracked proofs. Never rewrite historical evidence to accommodate successors.
+Full host quality passed: zero-warning build, 5,033 tests, asset/scenario validation,
+all Godot smokes and Compatibility launch. Initial sandbox run passed build/tests but
+failed at Godot log rotation; the identical host retry passed. Cumulative review fixed
+alpha endpoint/interpolation issues and added independent endpoint, halo and scope checks.

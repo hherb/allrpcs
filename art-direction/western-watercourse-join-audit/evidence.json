@@ -1,0 +1,88 @@
+{
+  "status": "read-only source audit; no new art or visual seam acceptance",
+  "baseline_commit": "8691d7ce50e9b3284f5ecb7c6c6cf68622b12e6b",
+  "protected_file_count": 4041,
+  "source_sha256": {
+    "art-direction/western-outlet-proof/review/engineering.png": "14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe",
+    "art-direction/b1-bridge-proof/tools/proof.py": "5dd5a819eb4ff3e141869be391bb0bd0723093310155874ec70981a3aec7d6c7",
+    "art-direction/b1-bridge-proof/exports/water.png": "7087a0bd53b391b6832e61bcd10682518a6d9e4db38e58203ca855cf328cbdc2",
+    "art-direction/b1-bridge-proof/exports/bank.png": "8ef9afd80be1bd6898dff85477e8e90f1d47a46e8381ae46f1ab4e24741d5253",
+    "art-direction/western-watercourse-proposal/proposal.json": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "game/Main.tscn": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "game/art/runtime/terrain/stream-water.png": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "game/art/runtime/terrain/stream-bank.png": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "art-direction/b1-bridge-proof/exports/joined.png": "5e8aac230fbeb113b6b7f03ce2f6b7ba989f22fccc6818cd01ee820c858a8b86",
+    "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "art-direction/b1-bridge-proof/masters/b1-joined.ora": "9838086f6bca17311eef094b373a8f9da9dc7b79f10f2b06bf78041c8e699823"
+  },
+  "interface": {
+    "interface_x": 1600,
+    "western_water_edge_limit": [
+      452,
+      548
+    ],
+    "retained_water_edges": [
+      452,
+      548
+    ],
+    "geometric_water_envelopes_meet": true,
+    "western_water_uv_origin": [
+      0,
+      0
+    ],
+    "retained_water_uv_origin": [
+      1600,
+      452
+    ],
+    "phase_offset_mod_tile": [
+      64,
+      68
+    ],
+    "comparison_kind": "same-coordinate recipe comparison; not authored overlap or seam acceptance",
+    "comparison_rectangle": [
+      1600,
+      452,
+      1728,
+      548
+    ],
+    "compared_texels": 12288,
+    "different_texels": 12167,
+    "western_bank_limit_north": [
+      436,
+      452
+    ],
+    "western_bank_limit_south": [
+      548,
+      564
+    ],
+    "retained_bank_north": [
+      452,
+      484
+    ],
+    "retained_bank_south": [
+      516,
+      548
+    ],
+    "bank_convention_matches": false,
+    "conclusion": "geometry meets; water phase and inside/outside bank conventions need a bounded join proof",
+    "runtime_layout_physical_promotion_authorized": false
+  },
+  "diagnostic": {
+    "world_origin": [
+      1536,
+      400
+    ],
+    "size": [
+      128,
+      192
+    ],
+    "left": "exact frozen B1 joined crop",
+    "right": "retained scene west water/bank recipe; no caps/deck in this crop",
+    "limitation": "external pixel reconstruction, not a Godot capture or approved correction",
+    "artifacts_sha256": {
+      "review/interface-1x.png": "f980aacf7f1327ef90d509a779ebf4e7fb4ce0cd7550df907174856d0f6ae76f",
+      "review/interface-2x.png": "d6ba0541860439bece7cff998925add6cc777d2ad20b50fb081c3b24ce02987b",
+      "review/engineering.png": "5f9e2b5d3fbd2d9793d38ffc093512b835e416ddfedee3f2989d2b4ea6ed9e54"
+    }
+  }
+}

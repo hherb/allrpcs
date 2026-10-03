@@ -1,0 +1,46 @@
+{
+  "status": "external successor join candidate; owner visual assessment pending",
+  "origin": [
+    1536,
+    384
+  ],
+  "size": [
+    64,
+    256
+  ],
+  "master_scale": 2,
+  "draw_order": [
+    "ground",
+    "water_underlay",
+    "banks"
+  ],
+  "protected_file_count": 4041,
+  "B1_deck_horizontal_clearance": 56.061266403283526,
+  "endpoint_exact_recipe_width": 4,
+  "retained_pixels_changed": 0,
+  "recipe": "Hermite wet edges; smooth source UV and bank-underlay interpolation; 16-to-32px banks",
+  "source_sha256": {
+    "art-direction/western-outlet-proof/review/engineering.png": "14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe",
+    "art-direction/b1-bridge-proof/tools/proof.py": "5dd5a819eb4ff3e141869be391bb0bd0723093310155874ec70981a3aec7d6c7",
+    "art-direction/b1-bridge-proof/exports/water.png": "7087a0bd53b391b6832e61bcd10682518a6d9e4db38e58203ca855cf328cbdc2",
+    "art-direction/b1-bridge-proof/exports/bank.png": "8ef9afd80be1bd6898dff85477e8e90f1d47a46e8381ae46f1ab4e24741d5253",
+    "art-direction/western-watercourse-proposal/proposal.json": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "game/Main.tscn": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "game/art/runtime/terrain/stream-water.png": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "game/art/runtime/terrain/stream-bank.png": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "art-direction/b1-bridge-proof/exports/joined.png": "5e8aac230fbeb113b6b7f03ce2f6b7ba989f22fccc6818cd01ee820c858a8b86",
+    "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "art-direction/b1-bridge-proof/masters/b1-joined.ora": "9838086f6bca17311eef094b373a8f9da9dc7b79f10f2b06bf78041c8e699823"
+  },
+  "artifacts_sha256": {
+    "correction/exports/ground.png": "de483d4ab4d69a33a184e1991b9803f591763c4712ef86c147dfa6d00ed64e2d",
+    "correction/exports/water_underlay.png": "46bcac177b2bbfbda1bef78905c3961cc27c8d6a319452de7e5fc0de0b9fed63",
+    "correction/exports/banks.png": "e1dd042718ee3d682b675401ed4a6d999598df8d4298ce9b8a1639ecc80c5592",
+    "correction/exports/joined.png": "f8dde7530ee05299524d4b46513802cbd6066c4880a9e66eb455de7cc074afe2",
+    "correction/review/joined-1x.png": "2124c67d611e8df1283366581a15c2d27e19a98cd83e7d896928f4bd9dbe92cf",
+    "correction/review/joined-2x.png": "1dd67a6ebc1ce5ac8ea2d44026a5b63c4d8ab801716a0a997c3805db03b6644c",
+    "correction/review/before-1x.png": "c433835a8c1710aef90c1da7ea9f7597fca5ee55d6dbc55daf766a7854833902",
+    "correction/masters/join.ora": "3b98ae11aa26b40df2f8d9d8d62b33d34db1f9d19d2b66d96b24af8f77e3af8a"
+  },
+  "layout_runtime_physical_promotion_authorized": false
+}

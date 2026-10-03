@@ -1,0 +1,45 @@
+{
+  "status": "external blue-fringe successor; owner visual assessment pending",
+  "origin": [
+    1536,
+    384
+  ],
+  "size": [
+    128,
+    256
+  ],
+  "master_scale": 2,
+  "master_note": "2x nearest exact reference and source-derived correction layers; not newly painted detail",
+  "request_sha256": "442d562cc1a49d474da2cf847da78247daf201c9e9dfc3653306ae5471be9fb7",
+  "rejected_reference_sha256": "1dd67a6ebc1ce5ac8ea2d44026a5b63c4d8ab801716a0a997c3805db03b6644c",
+  "source_sha256": {
+    "art-direction/western-outlet-proof/review/engineering.png": "14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe",
+    "art-direction/b1-bridge-proof/tools/proof.py": "5dd5a819eb4ff3e141869be391bb0bd0723093310155874ec70981a3aec7d6c7",
+    "art-direction/b1-bridge-proof/exports/water.png": "7087a0bd53b391b6832e61bcd10682518a6d9e4db38e58203ca855cf328cbdc2",
+    "art-direction/b1-bridge-proof/exports/bank.png": "8ef9afd80be1bd6898dff85477e8e90f1d47a46e8381ae46f1ab4e24741d5253",
+    "art-direction/western-watercourse-proposal/proposal.json": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "game/Main.tscn": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "game/art/runtime/terrain/stream-water.png": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "game/art/runtime/terrain/stream-bank.png": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "art-direction/b1-bridge-proof/exports/joined.png": "5e8aac230fbeb113b6b7f03ce2f6b7ba989f22fccc6818cd01ee820c858a8b86",
+    "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "art-direction/b1-bridge-proof/masters/b1-joined.ora": "9838086f6bca17311eef094b373a8f9da9dc7b79f10f2b06bf78041c8e699823"
+  },
+  "protected_file_count": 4041,
+  "changed_pixels": 2149,
+  "changed_retained_reference_pixels": 1277,
+  "change_limit": "bank source rows 11..21 only; west first four columns, water interior and all other pixels preserved",
+  "runtime_files_changed": 0,
+  "layout_runtime_physical_promotion_authorized": false,
+  "draw_order": [
+    "rejected_reference",
+    "ground_under_bank_fringe"
+  ],
+  "artifacts_sha256": {
+    "fringe-correction/exports/ground-under-bank-fringe.png": "44c47f809cc6047989473f0520212c9c51b3751df30f47b56267283655d8026d",
+    "fringe-correction/exports/joined.png": "2352631e9588829745b655e658ea56af9b8e743570a2eb2561f2da86e9434e15",
+    "fringe-correction/review/joined-1x.png": "2352631e9588829745b655e658ea56af9b8e743570a2eb2561f2da86e9434e15",
+    "fringe-correction/review/joined-2x.png": "4beca5b13d17f803477a62d4442690fe25e78530cafdbe7e4bf196678ea8d284",
+    "fringe-correction/masters/join.ora": "f94a1299572771dd9f254178d688d3ed9d8ed096dd471030a5192df8a449ef19"
+  }
+}
