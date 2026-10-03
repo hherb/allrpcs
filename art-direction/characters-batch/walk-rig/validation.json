@@ -1,0 +1,18 @@
+{
+  "status": "authoring checks passed; owner visual acceptance pending",
+  "date": "2026-10-04",
+  "new_frames": 288,
+  "exact_2x_masters": 288,
+  "directions": 36,
+  "phases": 8,
+  "full_loop_gifs": 10,
+  "unchanged_source_paint": true,
+  "alternating_anatomical_ownership": true,
+  "unique_phase_images": true,
+  "computed_loop_endpoint_pixels_equal": true,
+  "script_syntax": "passed",
+  "review_embeds": "all exist",
+  "runtime_product_inputs": "unchanged",
+  "full_product_suite": "preceding 5033-test evidence retained; not rerun for external art",
+  "limitations": "Simple lower-limb cutout gait; connector texture, knee/arm articulation, timing and pivots need visual review."
+}

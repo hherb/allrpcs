@@ -140,9 +140,11 @@ see `art-direction/characters-batch/README.md`. It includes eight designs, eight
 288 new directional frames, eight sleeping/recovery poses, three Seeker appearance choices,
 and references to the 48 approved Seeker cloak frames. Facial shapes, noses and hairstyles
 were revised following owner feedback. Animation registration, timing and runtime use remain
-provisional. Walking previews repeat the same leading foot and require full-cycle correction;
-code-based cutout rigging permission is pending. Finish that correction, character artwork
-review and scoped validation before the next objects batch.
+provisional. Original walk previews repeat the same leading foot and remain retained as
+incomplete lineage. The owner authorized mechanical rigging; `characters-batch/walk-rig/`
+contains 288 replacement eight-phase frames with alternating anatomical leg ownership.
+Review and polish the cutout gait, then obtain character artwork approval and scoped
+validation before the next objects batch.
 The terrain category remains open for residual work.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining

@@ -13,26 +13,32 @@ final placement/pivots, architectural fit and physical authority remain separate
 
 ## Exact next slice
 
-Correct the walking cycles in the
-[characters batch](art-direction/characters-batch/README.md). **The category is incomplete.**
-The owner requested varied face shapes, noses and hairstyles; the replacement cast,
-portraits and directional sheets incorporate those differences. Superseded candidates
-remain in `rejected/`. There are 312 new exports/2x masters, fourteen labelled boards
-and compositions, 27 cycle GIFs, and 48 hash-referenced approved Seeker cloak frames.
-`review-manifest.json` binds the candidate snapshot, not owner acceptance.
+Collectively review and polish the [mechanical walking candidates](art-direction/characters-batch/walk-rig/README.md)
+within the [characters batch](art-direction/characters-batch/README.md). Artwork acceptance
+is pending. The owner requested distinct face shapes, noses and hairstyles; the revised
+cast, portraits and directional sources incorporate them. The 312 initial exports/2x
+masters, fourteen boards/compositions and 27 original GIFs remain as lineage, alongside
+48 unchanged hash-referenced approved Seeker cloak frames. Original four-frame walks
+repeat one leading foot and must not be treated as complete; three unsuccessful generated
+replacement attempts remain in `rejected/incomplete-walk/`.
 
-The owner praised the revised artwork but correctly noticed the same foot remains in front.
-The four-frame walking previews are now labelled incomplete stride studies; do not promote
-them. Three generated replacement attempts failed leg-ownership checks and remain in
-`rejected/incomplete-walk/`. A pose diagram demonstrates the desired alternating motion.
-Explicit permission for code-based cutout rigging was requested and is pending; do not
-infer it from praise or the commit/push request. If granted, rig the painted limbs with
-stable left/right identity and verify contacts, passing phases and full loop continuity
-for all nine new character/outfit families. Then review the complete corrected series,
-obtain approval for the exact artwork and run scoped package validation.
-Animation timing, foot registration, camera/accessory continuity and reach semantics remain
-provisional. Once this category is approved and validated, the next category is the full
-herbs/remedies/tools/scrolls/inscriptions/containers/clue-object artwork series.
+The owner explicitly authorized: “Yes, rig and render the walk cycles mechanically.”
+`rig_walk.py` now renders 288 replacement frames/2x masters: nine families, four directions,
+eight phases. `walk-rig/review/` contains nine boards, nine full-loop GIFs and a red/blue
+Healer leg-ownership diagnostic. Anatomical left/right stays consistent across directions;
+contact/swing alternates and the computed 360-degree endpoint matches frame zero exactly.
+Replacing the original 144 walking studies gives 456 active new character candidates.
+`inspect_walk_rig.py` passes coverage, hashes, exact 2x parity, unique poses and stride checks.
+
+These are simple lower-limb cutouts: rigid painted boots, textured connectors and modest
+torso bob; arms retain their neutral pose, and occluded side-leg paint is reused with a
+slightly darker value. Owner visual feedback on this method is pending. Inspect the full
+series for stiff motion, leg/hem seams, proportions and staff/accessory continuity; revise
+as requested before freezing exact owner acceptance and consolidated scoped validation.
+Both manifests bind review snapshots, not acceptance. Do not rebuild approved packages.
+Registration, camera consistency and timing remain provisional; no runtime promotion.
+After character artwork approval/validation, produce the complete herbs/remedies/tools/
+scrolls/inscriptions/containers/clue-object artwork series.
 
 ## Required artwork workflow
 

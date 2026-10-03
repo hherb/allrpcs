@@ -1,8 +1,8 @@
 # Characters artwork batch 01
 
 Initial Phase 9.2 character artwork series for collective review, produced on
-2026-10-04 (Australia/Brisbane) with the built-in image_gen tool. **Full walk cycles
-remain unresolved; the category is not complete.** The initial similar faces were revised following owner feedback; the
+2026-10-04 (Australia/Brisbane) with the built-in image_gen tool, followed by
+owner-authorized code-based cutout rigging. **Artwork acceptance remains pending.** The initial similar faces were revised following owner feedback; the
 first pass remains in `rejected/`.
 
 The eight authored roles are Seeker, Healer, Elian, Sera, Orin, Vale, Rowan and Mira.
@@ -23,7 +23,7 @@ Costumes retain Direction A's cream, ochre, moss, teal, indigo and russet gouach
 These are visual proposals; they do not change domain identity or customization rules.
 Vale retains an ordinary courier appearance, without exposing the private enemy role.
 
-## Complete directional series
+## Initial directional source series
 
 Each board has south, west, east and north rows. Each row contains two idle, four
 incomplete walking studies and two inspection frames. The owner correctly identified that
@@ -31,26 +31,31 @@ the walking previews keep the same foot leading: these are **not full alternatin
 The walk GIFs are labelled incomplete; filenames retain `walk` for provenance only.
 Do not approve or promote them as complete animations. Three replacement generation attempts,
 including an explicit pose guide and colored-boot diagnostic, also failed and are retained.
-Reliable cutout rigging is proposed, with explicit code-based image-editing permission pending.
+The owner then explicitly authorized mechanical rigging and rendering.
+[Replacement walk series](walk-rig/README.md) contains 288 eight-phase cutout frames
+for all nine families in four directions. The 312 initial assets remain unchanged as
+lineage; substituting the replacement walks gives 456 active new candidates. The new
+loops alternate anatomical left/right contact and swing, with exact loop endpoints.
+Their simple cutout style, restrained upper-body motion and timing still need visual review.
 
 ![Healer](review/healer.png)
-![Healer walk](review/healer-walk.gif)
+![Healer walk](walk-rig/review/healer-walk.gif)
 ![Elian](review/elian.png)
-![Elian walk](review/elian-walk.gif)
+![Elian walk](walk-rig/review/elian-walk.gif)
 ![Sera](review/sera.png)
-![Sera walk](review/sera-walk.gif)
+![Sera walk](walk-rig/review/sera-walk.gif)
 ![Orin](review/orin.png)
-![Orin walk](review/orin-walk.gif)
+![Orin walk](walk-rig/review/orin-walk.gif)
 ![Vale](review/vale.png)
-![Vale walk](review/vale-walk.gif)
+![Vale walk](walk-rig/review/vale-walk.gif)
 ![Rowan](review/rowan.png)
-![Rowan walk](review/rowan-walk.gif)
+![Rowan walk](walk-rig/review/rowan-walk.gif)
 ![Mira](review/mira.png)
-![Mira walk](review/mira-walk.gif)
+![Mira walk](walk-rig/review/mira-walk.gif)
 ![Seeker plain tunic](review/seeker-plain.png)
-![Seeker plain tunic walk](review/seeker-plain-walk.gif)
+![Seeker plain tunic walk](walk-rig/review/seeker-plain-walk.gif)
 ![Seeker work apron](review/seeker-apron.png)
-![Seeker work apron walk](review/seeker-apron-walk.gif)
+![Seeker work apron walk](walk-rig/review/seeker-apron-walk.gif)
 
 Each role also has `<role>-idle.gif` and `<role>-inspect.gif` in `review/`.
 The unchanged approved cloak frames remain in
@@ -93,7 +98,8 @@ create a separate candidate package for further approved-artwork revisions.
 `inspect_package.py` runs only authoring checks: completeness, alpha integrity, crop-edge
 warnings, image integrity, hashes, exact 2x parity and unchanged inherited Seeker bytes.
 `review-manifest.json` records the candidate snapshot; it is **not owner acceptance**.
-The next slice is the full walk-cycle correction, followed by review of the revised cycle series.
+The next slice is collective review and requested polishing of the mechanically alternating
+walk series. `rig_walk.py` reproduces it; `inspect_walk_rig.py` checks its 36 complete loops.
 Consolidated validation follows artwork review and requested revisions. When product/runtime/CI
 inputs remain unchanged, retain and verify the preceding full-suite evidence instead of
 replaying unchanged Godot smokes. Runtime promotion requires named scope approval and visual
