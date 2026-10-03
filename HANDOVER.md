@@ -8,19 +8,15 @@ Shrine triangle (cause unconfirmed). Western overview, B1, B2, curved spring, ou
 local B1–Stream fringe successor have external visual acceptance only. Spring invariants:
 384px basin, centre `(2192,500)`, retained x<2000 pixels, exact 32px inlet.
 
-On 2026-10-03 the owner approved both external art scopes with “the art scopes are
-approved”. The [new proof package](art-direction/approved-external-compositions/README.md)
-completes whole-channel composition and Clearing–Closed Deeper Forest Path feasibility.
-Its authorization record grants scope only; whole-channel assessment remains pending.
-The owner found the forest view odd because of its cut-off section. The separate
-[ending correction](art-direction/forest-path-ending-correction/README.md) retains that
-candidate, adds the existing rounded end-cap and eases the gate-facing alpha. All 4,155
-predecessor files remain unchanged. The new forest view awaits visual assessment.
-
-The channel preserves the exact local fringe join; original retained banks resume at
-x=1664. The crossing is a CPU reconstruction. The forest proof is closed-side only;
-its disposable captures hide the route line and retain physical approach/gate owners.
-The packages record both failed strips and the rounded successor with precise limits.
+Both external art scopes approved on 2026-10-03 are complete in the
+[proof package](art-direction/approved-external-compositions/README.md): whole-channel
+composition and Clearing–Closed Deeper Forest Path feasibility. The separate
+[ending correction](art-direction/forest-path-ending-correction/README.md) addresses the
+owner's odd cut-off forest section with a retained rounded end-cap and gate alpha easing.
+These READMEs retain geometry, failed evidence, inventories and capture limits. Channel
+banks resume at x=1664 after the accepted fringe join; crossing reconstruction is CPU-only.
+Forest proof is closed-side only; disposable captures hide the route line while retaining
+physical approach/gate owners. Scope approval is not visual acceptance.
 
 Routine bounded external proof approvals remain waived; review, validation and direct-main
 publication remain authorized. Named runtime/layout/physical promotion needs separate
@@ -31,10 +27,12 @@ grants no gameplay, pacing, usability or accessibility acceptance.
 
 ## Exact next slice
 
-Owner assessment of the rounded forest successor; whole-channel assessment is pending. If a
-correction is requested, create only a named external successor preserving these
-references and accepted local views. Both approved implementation scopes are complete;
-do not infer production imports, runtime/layout/physical promotion or another art scope.
+Obtain owner assessment of the [rounded forest view](art-direction/forest-path-ending-correction/result/captures/corrected-gate-2.0x-wide.png)
+and [whole-channel view](art-direction/approved-external-compositions/channel/review/overview.png).
+Both assessments remain pending. Implement only a requested named external correction,
+preserving predecessors and accepted local views. If both are accepted, record bounded
+acceptance and obtain the next named scope. Continuation alone grants no further art scope
+or production, runtime, layout or physical promotion.
 
 ## Verification
 
@@ -44,9 +42,9 @@ do not infer production imports, runtime/layout/physical promotion or another ar
 PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh
 ```
 
-The rounded correction reproduces exactly with master/source parity, five rejection
-checks, 18 stamped captures and independently confined differences. Its predecessor
-wrapper reproduces the prior proofs and captures; historical inventories intentionally
-reject successors and must never be rewritten. This correction's full host quality passed:
-zero-warning build, 5,033 tests, asset/scenario validation, all Godot smokes and Compatibility
-launch. Host execution uses the established sandbox Godot log-rotation workaround.
+Both proof commands passed again on 2026-10-03: master/source parity, five rejection cases,
+18 stamped captures, confined differences, 4,155 unchanged predecessors and reproduced
+earlier proofs/captures. Never rewrite historical inventories to accommodate successors.
+At `c2b4b29`, full host quality passed: zero-warning build, 5,033 tests, asset/scenario
+validation, all Godot smokes and Compatibility launch. Host execution used the established
+sandbox Godot log-rotation workaround; this is prior implementation evidence.
