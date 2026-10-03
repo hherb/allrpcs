@@ -1,0 +1,13 @@
+{
+  "owner_statement": "avoid the unnatiral straight edges onn the west side - or, create a dam like man made rock structure on that sde, as often found at springs that humans use",
+  "date": "2026-10-03",
+  "linear_scale": 3,
+  "chosen_option": "curved natural western bank",
+  "centre_adjustment": [
+    160,
+    0
+  ],
+  "review_path": "art-direction/spring-bank-join-3x-proof/review/joined-1.0x.png",
+  "review_sha256": "9f16268dc675f1b4e67e08198c87a8759b33d2b269c4beb1f35bc5bad9ebbf57",
+  "layout_runtime_physical_promotion_authorized": false
+}
