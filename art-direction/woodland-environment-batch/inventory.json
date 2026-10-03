@@ -1,0 +1,1227 @@
+{
+  "status": "owner-approved artwork",
+  "generator": "built-in image_gen",
+  "asset_count": 42,
+  "validation": "See validation.json for consolidated checks; runtime imports remain out of scope.",
+  "notes": "Source paint retained; ORA correction layers blank; scale and pivots provisional.",
+  "assets": [
+    {
+      "id": "trees-01",
+      "name": "Mature oak",
+      "source": "sources/trees.png",
+      "source_cell": [
+        20,
+        0,
+        650,
+        584
+      ],
+      "source_alpha_bounds_in_cell": [
+        27,
+        11,
+        609,
+        584
+      ],
+      "master": "masters/trees-01.ora",
+      "export": "exports/trees-01.png",
+      "size": [
+        427,
+        420
+      ],
+      "proposed_pivot": [
+        213,
+        419
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bbfc648a6306ce91a994e457fa0f637d4d720d98355f402763a5f90c03f85dd5"
+    },
+    {
+      "id": "trees-02",
+      "name": "Birch",
+      "source": "sources/trees.png",
+      "source_cell": [
+        640,
+        0,
+        1030,
+        584
+      ],
+      "source_alpha_bounds_in_cell": [
+        15,
+        0,
+        373,
+        582
+      ],
+      "master": "masters/trees-02.ora",
+      "export": "exports/trees-02.png",
+      "size": [
+        246,
+        400
+      ],
+      "proposed_pivot": [
+        123,
+        399
+      ],
+      "pivot_status": "provisional",
+      "sha256": "292d05e778edb6c5a0bd66ccbbc1639851529be5173bca890054858d0c058a38"
+    },
+    {
+      "id": "trees-03",
+      "name": "Upright beech",
+      "source": "sources/trees.png",
+      "source_cell": [
+        1056,
+        0,
+        1536,
+        584
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        371,
+        584
+      ],
+      "master": "masters/trees-03.ora",
+      "export": "exports/trees-03.png",
+      "size": [
+        280,
+        440
+      ],
+      "proposed_pivot": [
+        140,
+        439
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bedf57dc2cee187fd186b0b1fba3c9bf4d596c8942d75adf7ef5cb991bfcaf3b"
+    },
+    {
+      "id": "trees-04",
+      "name": "Young oak",
+      "source": "sources/trees.png",
+      "source_cell": [
+        80,
+        584,
+        550,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        33,
+        0,
+        422,
+        413
+      ],
+      "master": "masters/trees-04.ora",
+      "export": "exports/trees-04.png",
+      "size": [
+        264,
+        280
+      ],
+      "proposed_pivot": [
+        132,
+        279
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d654dce4f15f94e9203c689c1ff879ffea7214066150329d514cba038c1ee7cf"
+    },
+    {
+      "id": "trees-05",
+      "name": "Weathered tree",
+      "source": "sources/trees.png",
+      "source_cell": [
+        580,
+        584,
+        1056,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        21,
+        3,
+        443,
+        413
+      ],
+      "master": "masters/trees-05.ora",
+      "export": "exports/trees-05.png",
+      "size": [
+        319,
+        310
+      ],
+      "proposed_pivot": [
+        159,
+        309
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b99681b403d6fe8c524e414ea153d5859487e75c0b4c79625efc02d2d66d8765"
+    },
+    {
+      "id": "trees-06",
+      "name": "Sapling",
+      "source": "sources/trees.png",
+      "source_cell": [
+        1100,
+        584,
+        1536,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        23,
+        0,
+        263,
+        420
+      ],
+      "master": "masters/trees-06.ora",
+      "export": "exports/trees-06.png",
+      "size": [
+        149,
+        260
+      ],
+      "proposed_pivot": [
+        74,
+        259
+      ],
+      "pivot_status": "provisional",
+      "sha256": "98bd85281835fe82f405fccf7132361ee956e2e9ea873aa2f08cd4e7d48557c2"
+    },
+    {
+      "id": "shrubs-01",
+      "name": "Rounded shrub",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        0,
+        0,
+        475,
+        365
+      ],
+      "source_alpha_bounds_in_cell": [
+        24,
+        48,
+        466,
+        358
+      ],
+      "master": "masters/shrubs-01.ora",
+      "export": "exports/shrubs-01.png",
+      "size": [
+        125,
+        88
+      ],
+      "proposed_pivot": [
+        62,
+        87
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8"
+    },
+    {
+      "id": "shrubs-02",
+      "name": "Hazel bush",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        475,
+        0,
+        950,
+        367
+      ],
+      "source_alpha_bounds_in_cell": [
+        20,
+        4,
+        471,
+        367
+      ],
+      "master": "masters/shrubs-02.ora",
+      "export": "exports/shrubs-02.png",
+      "size": [
+        174,
+        140
+      ],
+      "proposed_pivot": [
+        87,
+        139
+      ],
+      "pivot_status": "provisional",
+      "sha256": "1261b01636004531a99f64c7983f72ff68ddbd2c0b50f441074a54bf0ed3d0c0"
+    },
+    {
+      "id": "shrubs-03",
+      "name": "Spreading bramble",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        940,
+        0,
+        1536,
+        365
+      ],
+      "source_alpha_bounds_in_cell": [
+        5,
+        46,
+        582,
+        365
+      ],
+      "master": "masters/shrubs-03.ora",
+      "export": "exports/shrubs-03.png",
+      "size": [
+        145,
+        80
+      ],
+      "proposed_pivot": [
+        72,
+        79
+      ],
+      "pivot_status": "provisional",
+      "sha256": "4c6d7ed16380fa6e36c674b58e2dae6792f527e2cd5facf43838e8f1c307cacf"
+    },
+    {
+      "id": "shrubs-04",
+      "name": "Dark shrub",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        0,
+        365,
+        475,
+        690
+      ],
+      "source_alpha_bounds_in_cell": [
+        60,
+        0,
+        430,
+        325
+      ],
+      "master": "masters/shrubs-04.ora",
+      "export": "exports/shrubs-04.png",
+      "size": [
+        102,
+        90
+      ],
+      "proposed_pivot": [
+        51,
+        89
+      ],
+      "pivot_status": "provisional",
+      "sha256": "94b923ad06dac168a89bfaaae97ae5181d9d16816a5a24c0a9f02ab1d9d58fe3"
+    },
+    {
+      "id": "shrubs-05",
+      "name": "Twiggy shrub",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        475,
+        367,
+        950,
+        690
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        0,
+        456,
+        323
+      ],
+      "master": "masters/shrubs-05.ora",
+      "export": "exports/shrubs-05.png",
+      "size": [
+        149,
+        110
+      ],
+      "proposed_pivot": [
+        74,
+        109
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c0d6265a98442e87714b18c0a993eb6942991e453273a133f35fd8a42214f507"
+    },
+    {
+      "id": "shrubs-06",
+      "name": "Leaning bush",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        960,
+        365,
+        1536,
+        700
+      ],
+      "source_alpha_bounds_in_cell": [
+        15,
+        2,
+        514,
+        335
+      ],
+      "master": "masters/shrubs-06.ora",
+      "export": "exports/shrubs-06.png",
+      "size": [
+        195,
+        130
+      ],
+      "proposed_pivot": [
+        97,
+        129
+      ],
+      "pivot_status": "provisional",
+      "sha256": "1518ed76cd5d944cea3c4b4c9243f6d14e771b40b0a01e4fa2de0e2a0f497d11"
+    },
+    {
+      "id": "shrubs-07",
+      "name": "Young shoots",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        0,
+        690,
+        475,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        62,
+        0,
+        387,
+        306
+      ],
+      "master": "masters/shrubs-07.ora",
+      "export": "exports/shrubs-07.png",
+      "size": [
+        76,
+        72
+      ],
+      "proposed_pivot": [
+        38,
+        71
+      ],
+      "pivot_status": "provisional",
+      "sha256": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d"
+    },
+    {
+      "id": "shrubs-08",
+      "name": "Shade bush",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        475,
+        695,
+        950,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        4,
+        0,
+        438,
+        303
+      ],
+      "master": "masters/shrubs-08.ora",
+      "export": "exports/shrubs-08.png",
+      "size": [
+        115,
+        80
+      ],
+      "proposed_pivot": [
+        57,
+        79
+      ],
+      "pivot_status": "provisional",
+      "sha256": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6"
+    },
+    {
+      "id": "shrubs-09",
+      "name": "Sparse scrub",
+      "source": "sources/shrubs.png",
+      "source_cell": [
+        960,
+        705,
+        1536,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        17,
+        11,
+        528,
+        291
+      ],
+      "master": "masters/shrubs-09.ora",
+      "export": "exports/shrubs-09.png",
+      "size": [
+        102,
+        56
+      ],
+      "proposed_pivot": [
+        51,
+        55
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5545d0d83ddfc423e08aac33f4ccf01abb675cf64fb6e8a7af4fadc42d1dc1cf"
+    },
+    {
+      "id": "fallen-wood-01",
+      "name": "Broken log",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        0,
+        0,
+        555,
+        370
+      ],
+      "source_alpha_bounds_in_cell": [
+        31,
+        37,
+        547,
+        370
+      ],
+      "master": "masters/fallen-wood-01.ora",
+      "export": "exports/fallen-wood-01.png",
+      "size": [
+        143,
+        92
+      ],
+      "proposed_pivot": [
+        71,
+        91
+      ],
+      "pivot_status": "provisional",
+      "sha256": "87446e80bdf28b89a3dc5a48039c99e12b11933437f05b1ff131963f0960d5e4"
+    },
+    {
+      "id": "fallen-wood-02",
+      "name": "End-grain log",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        570,
+        0,
+        1068,
+        360
+      ],
+      "source_alpha_bounds_in_cell": [
+        10,
+        12,
+        473,
+        356
+      ],
+      "master": "masters/fallen-wood-02.ora",
+      "export": "exports/fallen-wood-02.png",
+      "size": [
+        135,
+        100
+      ],
+      "proposed_pivot": [
+        67,
+        99
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3444624b2d4435d4d51785b1b1d080b9531678e383cd89e4aaf47e29dde9dea5"
+    },
+    {
+      "id": "fallen-wood-03",
+      "name": "Hollow log",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        1090,
+        0,
+        1536,
+        370
+      ],
+      "source_alpha_bounds_in_cell": [
+        13,
+        127,
+        380,
+        368
+      ],
+      "master": "masters/fallen-wood-03.ora",
+      "export": "exports/fallen-wood-03.png",
+      "size": [
+        110,
+        72
+      ],
+      "proposed_pivot": [
+        55,
+        71
+      ],
+      "pivot_status": "provisional",
+      "sha256": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887"
+    },
+    {
+      "id": "fallen-wood-04",
+      "name": "Broad stump",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        0,
+        380,
+        535,
+        700
+      ],
+      "source_alpha_bounds_in_cell": [
+        25,
+        35,
+        514,
+        298
+      ],
+      "master": "masters/fallen-wood-04.ora",
+      "export": "exports/fallen-wood-04.png",
+      "size": [
+        167,
+        90
+      ],
+      "proposed_pivot": [
+        83,
+        89
+      ],
+      "pivot_status": "provisional",
+      "sha256": "69a6e9319a18137c8b29946bf3c0a41ea66dd7b32d802d48132995e15fdb8381"
+    },
+    {
+      "id": "fallen-wood-05",
+      "name": "Jagged stump",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        550,
+        330,
+        1030,
+        704
+      ],
+      "source_alpha_bounds_in_cell": [
+        17,
+        4,
+        433,
+        363
+      ],
+      "master": "masters/fallen-wood-05.ora",
+      "export": "exports/fallen-wood-05.png",
+      "size": [
+        174,
+        150
+      ],
+      "proposed_pivot": [
+        87,
+        149
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b2210e70ca1fef4ff1b69cc252b7b3af9cac5836b2b01c54f959435daf32f9d9"
+    },
+    {
+      "id": "fallen-wood-06",
+      "name": "Root snag",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        1040,
+        380,
+        1536,
+        704
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        18,
+        464,
+        322
+      ],
+      "master": "masters/fallen-wood-06.ora",
+      "export": "exports/fallen-wood-06.png",
+      "size": [
+        137,
+        90
+      ],
+      "proposed_pivot": [
+        68,
+        89
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e67d6fea6647be15e01f01332ade722ad3ae9f8653864f40c2c11fc071694517"
+    },
+    {
+      "id": "fallen-wood-07",
+      "name": "Forked branch",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        0,
+        710,
+        520,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        25,
+        0,
+        477,
+        297
+      ],
+      "master": "masters/fallen-wood-07.ora",
+      "export": "exports/fallen-wood-07.png",
+      "size": [
+        97,
+        64
+      ],
+      "proposed_pivot": [
+        48,
+        63
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e"
+    },
+    {
+      "id": "fallen-wood-08",
+      "name": "Curved branch",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        530,
+        710,
+        1060,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        23,
+        512,
+        284
+      ],
+      "master": "masters/fallen-wood-08.ora",
+      "export": "exports/fallen-wood-08.png",
+      "size": [
+        126,
+        64
+      ],
+      "proposed_pivot": [
+        63,
+        63
+      ],
+      "pivot_status": "provisional",
+      "sha256": "31f126f37daf9bddb8f025514d96ad767b71f4929699075694b1801c95a4603c"
+    },
+    {
+      "id": "fallen-wood-09",
+      "name": "Stick cluster",
+      "source": "sources/fallen-wood.png",
+      "source_cell": [
+        1080,
+        710,
+        1536,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        10,
+        25,
+        410,
+        238
+      ],
+      "master": "masters/fallen-wood-09.ora",
+      "export": "exports/fallen-wood-09.png",
+      "size": [
+        75,
+        40
+      ],
+      "proposed_pivot": [
+        37,
+        39
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861"
+    },
+    {
+      "id": "rocks-01",
+      "name": "Mossy boulder",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        370
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        500,
+        370
+      ],
+      "master": "masters/rocks-01.ora",
+      "export": "exports/rocks-01.png",
+      "size": [
+        189,
+        140
+      ],
+      "proposed_pivot": [
+        94,
+        139
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e871446a46034868d3eeb475afda60304830ca1c18850c0959b31dddf00cb84c"
+    },
+    {
+      "id": "rocks-02",
+      "name": "Angular boulder",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        370
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        13,
+        490,
+        370
+      ],
+      "master": "masters/rocks-02.ora",
+      "export": "exports/rocks-02.png",
+      "size": [
+        219,
+        160
+      ],
+      "proposed_pivot": [
+        109,
+        159
+      ],
+      "pivot_status": "provisional",
+      "sha256": "0604558baf633801cfc1e146cff04850369200b3ca500ab84e3a6a02d43eb96f"
+    },
+    {
+      "id": "rocks-03",
+      "name": "Flat stone",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        370
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        9,
+        490,
+        368
+      ],
+      "master": "masters/rocks-03.ora",
+      "export": "exports/rocks-03.png",
+      "size": [
+        98,
+        72
+      ],
+      "proposed_pivot": [
+        49,
+        71
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae"
+    },
+    {
+      "id": "rocks-04",
+      "name": "Split rock",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        0,
+        375,
+        512,
+        715
+      ],
+      "source_alpha_bounds_in_cell": [
+        25,
+        0,
+        512,
+        340
+      ],
+      "master": "masters/rocks-04.ora",
+      "export": "exports/rocks-04.png",
+      "size": [
+        172,
+        120
+      ],
+      "proposed_pivot": [
+        86,
+        119
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e6b833210d9eb479698ebd750789217ecbdea57d3d6d31e140a51ab4b7c0d9bc"
+    },
+    {
+      "id": "rocks-05",
+      "name": "Smooth stone",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        512,
+        375,
+        1024,
+        715
+      ],
+      "source_alpha_bounds_in_cell": [
+        5,
+        0,
+        512,
+        340
+      ],
+      "master": "masters/rocks-05.ora",
+      "export": "exports/rocks-05.png",
+      "size": [
+        149,
+        100
+      ],
+      "proposed_pivot": [
+        74,
+        99
+      ],
+      "pivot_status": "provisional",
+      "sha256": "45a1a3074ea99a536692931c8d3f7467321facfc8da36d653c5ce2f34a0b0476"
+    },
+    {
+      "id": "rocks-06",
+      "name": "Rock pair",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        1024,
+        375,
+        1536,
+        715
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        4,
+        500,
+        340
+      ],
+      "master": "masters/rocks-06.ora",
+      "export": "exports/rocks-06.png",
+      "size": [
+        134,
+        90
+      ],
+      "proposed_pivot": [
+        67,
+        89
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5cc2c9a8ee630c89f9208864fe4a1d9453258e506d039d2629da950a7eb75f21"
+    },
+    {
+      "id": "rocks-07",
+      "name": "Stone cluster",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        0,
+        730,
+        512,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        41,
+        0,
+        510,
+        294
+      ],
+      "master": "masters/rocks-07.ora",
+      "export": "exports/rocks-07.png",
+      "size": [
+        115,
+        72
+      ],
+      "proposed_pivot": [
+        57,
+        71
+      ],
+      "pivot_status": "provisional",
+      "sha256": "a1218e4353d71e782a7f46a169c162c9f48b5dbba68dda140e936fe7f829fad9"
+    },
+    {
+      "id": "rocks-08",
+      "name": "Pebble scatter",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        512,
+        730,
+        1024,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        5,
+        508,
+        268
+      ],
+      "master": "masters/rocks-08.ora",
+      "export": "exports/rocks-08.png",
+      "size": [
+        77,
+        40
+      ],
+      "proposed_pivot": [
+        38,
+        39
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7"
+    },
+    {
+      "id": "rocks-09",
+      "name": "Small crag",
+      "source": "sources/rocks.png",
+      "source_cell": [
+        1024,
+        730,
+        1536,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        3,
+        496,
+        294
+      ],
+      "master": "masters/rocks-09.ora",
+      "export": "exports/rocks-09.png",
+      "size": [
+        109,
+        64
+      ],
+      "proposed_pivot": [
+        54,
+        63
+      ],
+      "pivot_status": "provisional",
+      "sha256": "520e0f60d12b956482a3efe33517ada00eaec92b9cacf635841c12e48395a1fd"
+    },
+    {
+      "id": "environmental-details-01",
+      "name": "Small fern",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        375
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        7,
+        512,
+        375
+      ],
+      "master": "masters/environmental-details-01.ora",
+      "export": "exports/environmental-details-01.png",
+      "size": [
+        78,
+        56
+      ],
+      "proposed_pivot": [
+        39,
+        55
+      ],
+      "pivot_status": "provisional",
+      "sha256": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e"
+    },
+    {
+      "id": "environmental-details-02",
+      "name": "Broad fern",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        520,
+        0,
+        1050,
+        375
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        0,
+        530,
+        375
+      ],
+      "master": "masters/environmental-details-02.ora",
+      "export": "exports/environmental-details-02.png",
+      "size": [
+        102,
+        72
+      ],
+      "proposed_pivot": [
+        51,
+        71
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d"
+    },
+    {
+      "id": "environmental-details-03",
+      "name": "Dry grass",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        1090,
+        0,
+        1536,
+        375
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        19,
+        432,
+        375
+      ],
+      "master": "masters/environmental-details-03.ora",
+      "export": "exports/environmental-details-03.png",
+      "size": [
+        58,
+        48
+      ],
+      "proposed_pivot": [
+        29,
+        47
+      ],
+      "pivot_status": "provisional",
+      "sha256": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf"
+    },
+    {
+      "id": "environmental-details-04",
+      "name": "Fresh grass",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        0,
+        400,
+        512,
+        700
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        512,
+        300
+      ],
+      "master": "masters/environmental-details-04.ora",
+      "export": "exports/environmental-details-04.png",
+      "size": [
+        75,
+        44
+      ],
+      "proposed_pivot": [
+        37,
+        43
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e5253564d5f44d8ea2eeb342c341262277e4a11ede17821351bb0f3b2622c553"
+    },
+    {
+      "id": "environmental-details-05",
+      "name": "Leaf cluster",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        520,
+        400,
+        1024,
+        700
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        0,
+        504,
+        300
+      ],
+      "master": "masters/environmental-details-05.ora",
+      "export": "exports/environmental-details-05.png",
+      "size": [
+        37,
+        22
+      ],
+      "proposed_pivot": [
+        18,
+        21
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92"
+    },
+    {
+      "id": "environmental-details-06",
+      "name": "Leaf scatter",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        1024,
+        400,
+        1536,
+        700
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        496,
+        300
+      ],
+      "master": "masters/environmental-details-06.ora",
+      "export": "exports/environmental-details-06.png",
+      "size": [
+        40,
+        24
+      ],
+      "proposed_pivot": [
+        20,
+        23
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a"
+    },
+    {
+      "id": "environmental-details-07",
+      "name": "Moss cushion",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        0,
+        695,
+        512,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        512,
+        329
+      ],
+      "master": "masters/environmental-details-07.ora",
+      "export": "exports/environmental-details-07.png",
+      "size": [
+        50,
+        32
+      ],
+      "proposed_pivot": [
+        25,
+        31
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2"
+    },
+    {
+      "id": "environmental-details-08",
+      "name": "Mushrooms",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        512,
+        710,
+        1024,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        512,
+        314
+      ],
+      "master": "masters/environmental-details-08.ora",
+      "export": "exports/environmental-details-08.png",
+      "size": [
+        59,
+        36
+      ],
+      "proposed_pivot": [
+        29,
+        35
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76"
+    },
+    {
+      "id": "environmental-details-09",
+      "name": "Groundcover",
+      "source": "sources/environmental-details.png",
+      "source_cell": [
+        1024,
+        710,
+        1536,
+        1024
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        0,
+        496,
+        314
+      ],
+      "master": "masters/environmental-details-09.ora",
+      "export": "exports/environmental-details-09.png",
+      "size": [
+        44,
+        28
+      ],
+      "proposed_pivot": [
+        22,
+        27
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e"
+    }
+  ]
+}

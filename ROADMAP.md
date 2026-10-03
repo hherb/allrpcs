@@ -131,9 +131,37 @@ Visual acceptance does not establish gameplay, pacing, usability, or accessibili
 
 ### 9.2 Remaining production assets
 
+Approved artwork batch (2026-10-04): **Reusable trees, shrubs, fallen wood, rocks, and
+environmental details** — 42 modules; see `art-direction/woodland-environment-batch/README.md`.
+Approved structures batch (2026-10-04): **Village, sickhouse, garden, shrine, laundry, wagon,
+and woodland structures** — 42 modules; see `art-direction/structures-batch/README.md`.
+Characters batch (2026-10-04): initial artwork series remains incomplete;
+see `art-direction/characters-batch/README.md`. It includes eight designs, eight portraits,
+288 new directional frames, eight sleeping/recovery poses, three Seeker appearance choices,
+and references to the 48 approved Seeker cloak frames. Facial shapes, noses and hairstyles
+were revised following owner feedback. Animation registration, timing and runtime use remain
+provisional. Walking previews repeat the same leading foot and require full-cycle correction;
+code-based cutout rigging permission is pending. Finish that correction, character artwork
+review and scoped validation before the next objects batch.
+The terrain category remains open for residual work.
+
+Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
+9.2 art slice): produce the entire selected category's
+artwork series first, keeping editable 2x masters and separate review exports. Present all
+asset families together as a labelled series of images, including scale references and
+representative grouped compositions. Discuss and revise the artwork with the owner before
+running full tests or CI. Do not repeat full code CI, Godot smokes or historical validation
+suites for individual artwork candidates. During authoring, use only lightweight checks
+needed to create and visually inspect the images. Once artwork revisions are agreed, run
+scoped asset validation and required full tests/CI for the consolidated batch. Repeat checks
+only as justified by subsequent changes or failures. Named runtime promotion approval and
+runtime visual confirmation remain separate checkpoints.
+When product code, runtime assets and CI inputs are verified unchanged, retain the preceding
+passing full-suite evidence and run fresh scoped validation for the newly approved artwork.
+
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
-- [ ] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
-- [ ] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.
+- [x] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
+- [x] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.
 - [ ] Produce character designs, portraits, directional sprites, and required animation frames.
 - [ ] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
 - [ ] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.

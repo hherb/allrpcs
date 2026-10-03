@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "consolidated local checks passed with documented execution adaptations",
+  "artwork_package": "42 RGBA exports, exact 2x OpenRaster parity, 5 sources, 7 review images and acceptance hashes passed",
+  "workflow_lint": "passed",
+  "formatting": "passed",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "tests": {
+    "passed": 5033,
+    "failed": 0,
+    "skipped": 0
+  },
+  "scenario": "passed: five evidence definitions",
+  "godot": "full smoke suite and Compatibility launch passed on host retry",
+  "historical_promotion": "passed captures, rejection mutations and archived checks on unchanged HEAD snapshot",
+  "historical_baseline_commit": "2fcc8492328a3a497d4e9ddee25c944ed1dd07b6",
+  "execution_notes": [
+    "Original quality.sh stopped at the historical promotion validator because it rejects all new files outside its frozen scope. Remaining quality.sh steps ran separately; that historical validator passed separately against unchanged HEAD in a disposable snapshot. Historical validator code was not weakened.",
+    "Sandbox Godot settings/log writes were denied. Only the Godot suite and final Compatibility launch were retried with host permissions, successfully.",
+    "Hosted GitHub CI was not dispatched; no commit or push was requested. These are local CI-equivalent checks, not hosted development exports.",
+    "Runtime imports, placement/pivots, collision/navigation authority and runtime accessibility review are outside this approved external artwork scope."
+  ],
+  "evidence": {
+    "verification/godot-host-retry.log": "04b94c8895202a96daf5070b77fa54253bcc33ed30081aea642cb9d44f94c9c2",
+    "verification/historical-head-snapshot.log": "e60457835327dd84975afa4f60becf2270f90c423625ef66016a1ffe9712bfdc",
+    "verification/quality-continuation.log": "55b579ca92c4e8dae724ca9f26fd4fb779f03881936f5568ff6e5860a5a2dc68",
+    "verification/quality-initial.log": "c2d4eb68ca1fb439c247394cd45346dee111f12968014aa9a824d9cb41eab53a"
+  }
+}

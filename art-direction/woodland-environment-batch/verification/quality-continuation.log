@@ -1,0 +1,161 @@
+Connector evidence valid: six captures; exact 124x96 crop; 83/96 port pixels differ.
+Original feasibility FAILED: retained greybox fringes and unmatched port; this crop stays unpromoted.
+Correction evidence valid: central pixels retained, exact seams, six captures.
+Opaque-fade limitation: west fade remains conspicuous; this candidate stays unpromoted.
+Alpha proof valid: west alpha retained, original columns 8..91, exact east blend, six views.
+Owner acceptance and promotion decisions are recorded separately from these pixel checks.
+Village Edge–Square runtime connector valid: accepted pixels, layered 2x master, owned imports.
+Square–Garden external evidence valid: twelve views, reproducible overlay, 1,400 exact overlap pixels, retained endpoint.
+Square–Sickhouse external evidence valid: twelve views, reproducible overlay, 1,713 exact overlap pixels, retained endpoint.
+Square–Southern Road external evidence valid: twelve views, reproducible overlay, 1,662 exact overlap pixels, retained endpoint.
+Road–Wagon external evidence valid: six retained failed-strip views and exact inputs.
+Road–Wagon correction valid: six views, reproducible overlay, retained failed strip.
+Road–Wagon trim valid: six views; 2789 pixels confined to the incoming tip.
+Shrine–Road evidence valid: six failed strip views; 20.384px exit centerline offset.
+Shrine–Road evidence valid: six failed strip views; 20.384px exit centerline offset.
+Shrine–Road correction valid: 18 views; junction seam awaits owner review.
+Shrine–Road evidence valid: six failed strip views; 20.384px exit centerline offset.
+Shrine–Road correction valid: 18 views; junction seam awaits owner review.
+Shrine–Road endpoint blend valid: 3354 local pixels, 7/18 views changed only within patch.
+Woodland–Shrine failed strip valid: 18 views; 19.355px offset, 229 samples outside opening.
+Woodland–Shrine failed strip valid: 18 views; 19.355px offset, 229 samples outside opening.
+Woodland–Shrine correction valid: 20672 removed pixels; 16/18 views changed inside clip.
+Woodland–Shrine failed strip valid: 18 views; 19.355px offset, 229 samples outside opening.
+Woodland–Shrine correction valid: 20672 removed pixels; 16/18 views changed inside clip.
+Woodland–Shrine junction valid: 2241 local pixels; 16/18 bounded views; gap covered.
+Woodland–Shrine failed strip valid: 18 views; 19.355px offset, 229 samples outside opening.
+Woodland–Shrine correction valid: 20672 removed pixels; 16/18 views changed inside clip.
+Woodland–Shrine junction valid: 2241 local pixels; 16/18 bounded views; gap covered.
+Woodland–Shrine promotion valid: exact accepted asset, editable master and independent imports.
+Woodland–Village Edge proof valid: 205 marker fringe samples; 12960 pixels clipped; 15/18 independently bounded views changed.
+Village Edge–Stream proof valid: 17406 shell samples clipped; bridge underlay retained; 18 views exact.
+Stream–Laundry proof valid: 9680 Laundry samples clipped; bridge underlay retained; 18 bounded views changed.
+Stream–Laundry proof valid: 9680 Laundry samples clipped; bridge underlay retained; 18 bounded views changed.
+Stream–Laundry promotion valid: exact accepted asset, editable master and independent imports.
+Village Edge–Stream proof valid: 17406 shell samples clipped; bridge underlay retained; 18 views exact.
+Village Edge–Stream promotion valid: exact accepted asset, editable master and independent imports.
+Woodland–Village Edge proof valid: 205 marker fringe samples; 12960 pixels clipped; 15/18 independently bounded views changed.
+Woodland–Village Edge promotion valid: exact accepted asset, editable master and independent imports.
+Shrine–Road evidence valid: six failed strip views; 20.384px exit centerline offset.
+Shrine–Road correction valid: 18 views; junction seam awaits owner review.
+Shrine–Road endpoint blend valid: 3354 local pixels, 7/18 views changed only within patch.
+Shrine–Road promotion valid: exact two-layer assets, editable masters and independent imports.
+Road–Wagon external evidence valid: six retained failed-strip views and exact inputs.
+Road–Wagon correction valid: six views, reproducible overlay, retained failed strip.
+Road–Wagon trim valid: six views; 2789 pixels confined to the incoming tip.
+Southern Road–Wagon promotion valid: exact approved export/master/imports and scene ownership.
+Square–Southern Road external evidence valid: twelve views, reproducible overlay, 1,662 exact overlap pixels, retained endpoint.
+Square–Southern Road promotion valid: exact approved export/master/imports and scene ownership.
+Square–Sickhouse external evidence valid: twelve views, reproducible overlay, 1,713 exact overlap pixels, retained endpoint.
+Square–Sickhouse promotion valid: exact approved export/master/imports and scene ownership.
+Square–Garden external evidence valid: twelve views, reproducible overlay, 1,400 exact overlap pixels, retained endpoint.
+Square–Garden promotion valid: exact approved export/master/imports and scene ownership.
+Runtime plant validation passed
+asset: plants.foliage_broadleaf, exact SHA-256 e4b607c4cbfaef13cd3949492e903883dab289f882addbb2c38511aabecd6277
+geometry: one 72x56 broadleaf sprite; import: lossless and mipmap-free
+isolation: Main.tscn references one runtime-owned copy and no proof resource
+Runtime preparation-table validation passed
+asset: objects.preparation_table, exact SHA-256 d36d2f9d5341edd64f9eadac7053bf3847b63990523400698d78e90d246a3a35
+geometry: one 96x96 table with (48, 92) pivot; lossless import
+isolation: Main.tscn references one runtime-owned copy and no proof resource
+Runtime herb-bed validation passed
+asset: plants.herb_bed_empty, exact SHA-256 8ced13faba2ac9240977df0c62686939ffcd24a09d278006485c866b0a11f2fa
+geometry: two 96x80 beds with (48, 77) pivots; lossless import
+isolation: Main.tscn references one runtime-owned copy and no proof resource
+Runtime Seeker animation validation passed
+assets: 48 exact manifest/source/runtime SHA-256 matches
+geometry: four 120 ms walk, 600 ms idle, and 160 ms interaction animations
+isolation: ordinary scene references runtime-owned Seeker art only
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+MSBuild version 17.8.49+7806cbf7b for .NET
+  Allrpcs.Domain -> /Users/hherb/src/allrpcs/src/Domain/bin/Debug/net8.0/Allrpcs.Domain.dll
+  Allrpcs.Application -> /Users/hherb/src/allrpcs/src/Application/bin/Debug/net8.0/Allrpcs.Application.dll
+  Allrpcs.Infrastructure -> /Users/hherb/src/allrpcs/src/Infrastructure/bin/Debug/net8.0/Allrpcs.Infrastructure.dll
+  Allrpcs.Domain.Tests -> /Users/hherb/src/allrpcs/tests/Domain.Tests/bin/Debug/net8.0/Allrpcs.Domain.Tests.dll
+  Allrpcs.Architecture.Tests -> /Users/hherb/src/allrpcs/tests/Architecture.Tests/bin/Debug/net8.0/Allrpcs.Architecture.Tests.dll
+  Allrpcs.Application.Tests -> /Users/hherb/src/allrpcs/tests/Application.Tests/bin/Debug/net8.0/Allrpcs.Application.Tests.dll
+  Allrpcs.Infrastructure.Tests -> /Users/hherb/src/allrpcs/tests/Infrastructure.Tests/bin/Debug/net8.0/Allrpcs.Infrastructure.Tests.dll
+  Allrpcs.Game -> /Users/hherb/src/allrpcs/game/.godot/mono/temp/bin/Debug/Allrpcs.Game.dll
+  Allrpcs.ScenarioValidator -> /Users/hherb/src/allrpcs/tools/ScenarioValidator/bin/Debug/net8.0/Allrpcs.ScenarioValidator.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:16.13
+Test run for /Users/hherb/src/allrpcs/tests/Domain.Tests/bin/Debug/net8.0/Allrpcs.Domain.Tests.dll (.NETCoreApp,Version=v8.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.8.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:  2839, Skipped:     0, Total:  2839, Duration: 159 ms - Allrpcs.Domain.Tests.dll (net8.0)
+Test run for /Users/hherb/src/allrpcs/tests/Application.Tests/bin/Debug/net8.0/Allrpcs.Application.Tests.dll (.NETCoreApp,Version=v8.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.8.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:   925, Skipped:     0, Total:   925, Duration: 93 ms - Allrpcs.Application.Tests.dll (net8.0)
+Test run for /Users/hherb/src/allrpcs/tests/Infrastructure.Tests/bin/Debug/net8.0/Allrpcs.Infrastructure.Tests.dll (.NETCoreApp,Version=v8.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.8.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:  1261, Skipped:     0, Total:  1261, Duration: 114 ms - Allrpcs.Infrastructure.Tests.dll (net8.0)
+Test run for /Users/hherb/src/allrpcs/tests/Architecture.Tests/bin/Debug/net8.0/Allrpcs.Architecture.Tests.dll (.NETCoreApp,Version=v8.0)
+Microsoft (R) Test Execution Command Line Tool Version 17.8.0 (arm64)
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     8, Skipped:     0, Total:     8, Duration: 1 ms - Allrpcs.Architecture.Tests.dll (net8.0)
+Representative discovery scenario valid: 5 evidence definitions.
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | Reopening scenes...[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | Loading central editor layout...[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | Loading plugin window layout...[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | Editor layout ready.[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+ERROR: Cannot save file '/Users/hherb/Library/Application Support/Godot/editor_settings-4.6.tres'.
+   at: save (scene/resources/resource_format_text.cpp:1756)
+ERROR: Error saving editor settings to /Users/hherb/Library/Application Support/Godot/editor_settings-4.6.tres
+   at: save (editor/settings/editor_settings.cpp:1404)
+ERROR: Failed to open 'user://logs/godot2026-10-04T00.17.18.log'.
+   at: copy (core/io/dir_access.cpp:423)
+
+================================================================
+handle_crash: Program crashed with signal 11
+Engine version: Godot Engine v4.6.3.stable.mono.official (7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3)
+Dumping the backtrace. Please include this when reporting the bug on: https://github.com/godotengine/godot/issues
+[1] 1   libsystem_platform.dylib            0x0000000188ea4144 _sigtramp + 56
+[2] RotatedFileLogger::rotate_file() (in Godot) + 1160
+[3] RotatedFileLogger::rotate_file() (in Godot) + 1160
+[4] RotatedFileLogger::RotatedFileLogger(String const&, int) (in Godot) + 80
+[5] Main::setup(char const*, int, char**, bool) (in Godot) + 18880
+[6] OS_MacOS_Headless::run() (in Godot) + 68
+[7] main (in Godot) + 924
+[8] 8   dyld                                0x0000000188ac3e80 start + 6688
+-- END OF C++ BACKTRACE --
+================================================================
+./scripts/smoke-godot.sh: line 13: 58346 Abort trap: 6           godot --headless --path "$repository_root/game" res://DirectionAImportProof.tscn --quit-after 30

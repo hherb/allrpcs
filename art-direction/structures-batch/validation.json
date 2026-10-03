@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "approved artwork package passed; unchanged product regression evidence retained",
+  "artwork_package": "42 RGBA exports, exact 2x OpenRaster parity, seven sources, nine review images and acceptance hashes passed",
+  "fresh_checks": [
+    "Approved file hashes",
+    "Export RGBA, dimensions, nonempty alpha and transparent pixels",
+    "Provisional pivot coordinate bounds",
+    "OpenRaster integrity and exact 2x master-to-export pixel parity",
+    "Review image integrity",
+    "Unchanged product baseline and no additional untracked product files",
+    "Prior regression evidence log hashes"
+  ],
+  "regression_evidence": {
+    "method": "Retained preceding consolidated results; not rerun for this artwork-only batch.",
+    "reference": "../woodland-environment-batch/validation.json",
+    "sha256": "f5c5f8d8f5fe40c041cd35e4bc8993b6fb0b0fafa4e5384d04e52bae7a60e633",
+    "baseline_commit": "2fcc8492328a3a497d4e9ddee25c944ed1dd07b6",
+    "tracked_changes_only": [
+      "HANDOVER.md",
+      "ROADMAP.md"
+    ],
+    "untracked_changes_only": [
+      "art-direction/structures-batch/",
+      "art-direction/woodland-environment-batch/"
+    ],
+    "tests": {
+      "passed": 5033,
+      "failed": 0,
+      "skipped": 0
+    },
+    "build": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "godot": "full smoke suite and Compatibility launch passed on host retry",
+    "historical_promotion": "passed captures, rejection mutations and archived checks on unchanged HEAD snapshot"
+  },
+  "hosted_ci": "Not dispatched; no commit/push requested.",
+  "runtime_scope": "Final placement/pivots, architectural module fit, imports, collision/navigation and accessibility remain separate integration checks."
+}

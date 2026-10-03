@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "session code review complete; full walk-cycle correction awaits code-based rigging permission",
+  "scope": [
+    "Previously approved woodland and structures packages",
+    "Revised character candidate series with incomplete walking cycles",
+    "ROADMAP.md and pruned HANDOVER.md"
+  ],
+  "review_fixes": [
+    "Distinct facial silhouettes, nose sizes, hairlines, haircuts and beard shapes following owner feedback",
+    "Measured portrait crop gutters exclude neighboring fragments and retain complete portrait widths",
+    "Whole animation figure detection prevents nominal grid dividers cutting heads, hands or feet; one shared scale per role",
+    "Rowan side-view rows mapped to their actual east/west facing without mirroring",
+    "Two Seeker apron inspection poses corrected to their intended side facing",
+    "Sleeping poses respaced and cropped using measured gutters",
+    "Sera design fringe retained by moving its crop divider into the measured empty gutter",
+    "Authoring checks detect incomplete/orphan sources, exports and masters; approved packages protected from accidental rebuild",
+    "Two Healer inspection poses corrected to their intended side facing"
+  ],
+  "authoring_checks": {
+    "new_exports": 312,
+    "exact_2x_masters": 312,
+    "inherited_seeker_frames": 48,
+    "labelled_png_review_images": 14,
+    "animated_gif_reviews": 27,
+    "substantial_source_crop_edge_warnings": 1,
+    "all_review_embeds_exist": true,
+    "script_syntax": "passed",
+    "source_crop_edge_review": "Healer east inspect 02 reaches the original sheet right edge; inspected against the source. Figure and herb silhouette retained; generated translucent background fringe remains provisional."
+  },
+  "approved_package_rechecks": {
+    "woodland": "passed 42 approved export/master pairs and acceptance hashes",
+    "structures": "passed 42 approved export/master pairs and acceptance hashes"
+  },
+  "baseline": {
+    "commit": "2fcc8492328a3a497d4e9ddee25c944ed1dd07b6",
+    "tracked_baseline_changes_only": [
+      "HANDOVER.md",
+      "ROADMAP.md"
+    ],
+    "additions_only": [
+      "art-direction/characters-batch/",
+      "art-direction/structures-batch/",
+      "art-direction/woodland-environment-batch/"
+    ],
+    "product_runtime_ci_inputs": "verified unchanged",
+    "regression_evidence": "../woodland-environment-batch/validation.json",
+    "evidence_logs": "all four recorded SHA256 digests verified",
+    "retained_tests": 5033,
+    "retained_build_warnings": 0,
+    "retained_build_errors": 0,
+    "retained_godot": "full smoke suite and Compatibility launch passed on preceding host retry",
+    "full_suite_rerun": false
+  },
+  "limitations": [
+    "Known artwork defect: the nine new walk sequences keep the same foot leading and are not full gait cycles",
+    "Character owner acceptance has not been supplied",
+    "Character animation cadence, registration, camera/accessory continuity and reach semantics remain provisional",
+    "No runtime assets promoted"
+  ],
+  "hosted_ci": "Not manually dispatched; publication may trigger configured push workflows.",
+  "whitespace": "Authored files pass; one terminal empty line retained in the SHA-bound original Godot log. That exact log passes with only blank-at-eof disabled.",
+  "walk_cycle_review": {
+    "owner_feedback": "Once again -excellent. One question: the animation with the walking cycle - is it supposed to show a full cycle? Because the fron foot always remains at the from during the animated cycle shown",
+    "finding": "Owner is correct. Four-frame previews repeat part of a stride.",
+    "replacement_attempts": "Unguided six-frame, explicit pose-guide and colored-boot sheets failed; retained as rejected evidence.",
+    "proposal": "Code-based cutout rigging with stable anatomical left/right identity.",
+    "permission": "Explicit method permission requested; pending.",
+    "publication": "External review checkpoint only; incomplete GIFs clearly labelled; no runtime promotion."
+  }
+}

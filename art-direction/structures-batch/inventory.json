@@ -1,0 +1,1227 @@
+{
+  "status": "owner-approved artwork",
+  "generator": "built-in image_gen",
+  "asset_count": 42,
+  "validation": "See validation.json; runtime integration remains separate.",
+  "notes": "Original source paint retained; raster ORA correction layers blank; scale/pivots and module fit provisional.",
+  "assets": [
+    {
+      "id": "village-01",
+      "name": "Village cottage",
+      "source": "sources/village.png",
+      "source_cell": [
+        0,
+        0,
+        500,
+        550
+      ],
+      "source_alpha_bounds_in_cell": [
+        16,
+        37,
+        489,
+        542
+      ],
+      "master": "masters/village-01.ora",
+      "export": "exports/village-01.png",
+      "size": [
+        468,
+        500
+      ],
+      "proposed_pivot": [
+        234,
+        499
+      ],
+      "pivot_status": "provisional",
+      "sha256": "12c8143f92ecece6aeb7f74c64b763387fdd53a827e0f7f805e38e51dc60a6b4"
+    },
+    {
+      "id": "village-02",
+      "name": "Meeting/store cottage",
+      "source": "sources/village.png",
+      "source_cell": [
+        480,
+        0,
+        1110,
+        550
+      ],
+      "source_alpha_bounds_in_cell": [
+        7,
+        35,
+        614,
+        534
+      ],
+      "master": "masters/village-02.ora",
+      "export": "exports/village-02.png",
+      "size": [
+        633,
+        520
+      ],
+      "proposed_pivot": [
+        316,
+        519
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ce73ce0b9e34ce0742e38ea81ef9e2e1d682e352806cf64a1edb4324abc433df"
+    },
+    {
+      "id": "village-03",
+      "name": "Market stall",
+      "source": "sources/village.png",
+      "source_cell": [
+        1110,
+        0,
+        1536,
+        550
+      ],
+      "source_alpha_bounds_in_cell": [
+        3,
+        114,
+        413,
+        530
+      ],
+      "master": "masters/village-03.ora",
+      "export": "exports/village-03.png",
+      "size": [
+        276,
+        280
+      ],
+      "proposed_pivot": [
+        138,
+        279
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d27fce9b2a53b51bea115c3cf21534fec49333e8efc4c55d6f5de57295733951"
+    },
+    {
+      "id": "village-04",
+      "name": "Plaster wall",
+      "source": "sources/village.png",
+      "source_cell": [
+        20,
+        570,
+        510,
+        990
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        21,
+        480,
+        385
+      ],
+      "master": "masters/village-04.ora",
+      "export": "exports/village-04.png",
+      "size": [
+        253,
+        200
+      ],
+      "proposed_pivot": [
+        126,
+        199
+      ],
+      "pivot_status": "provisional",
+      "sha256": "16c585ee660cc18fabf1d604852d6475c2823622c2d11c4a568d11b2151f5013"
+    },
+    {
+      "id": "village-05",
+      "name": "Door and doorstep",
+      "source": "sources/village.png",
+      "source_cell": [
+        560,
+        550,
+        970,
+        990
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        11,
+        385,
+        414
+      ],
+      "master": "masters/village-05.ora",
+      "export": "exports/village-05.png",
+      "size": [
+        182,
+        200
+      ],
+      "proposed_pivot": [
+        91,
+        199
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9ff6898e5afa1b1d5ee87afd357bd577efd863a8565751fd8d3a7fe87192df39"
+    },
+    {
+      "id": "village-06",
+      "name": "Fence and gate",
+      "source": "sources/village.png",
+      "source_cell": [
+        980,
+        620,
+        1536,
+        990
+      ],
+      "source_alpha_bounds_in_cell": [
+        8,
+        22,
+        527,
+        341
+      ],
+      "master": "masters/village-06.ora",
+      "export": "exports/village-06.png",
+      "size": [
+        228,
+        140
+      ],
+      "proposed_pivot": [
+        114,
+        139
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f4a6dd2bc2ddbfdb595310b97a5b6edf4169c5d0d3683252b6ae6ebb5bb48a29"
+    },
+    {
+      "id": "sickhouse-01",
+      "name": "Sickhouse exterior",
+      "source": "sources/sickhouse.png",
+      "source_cell": [
+        0,
+        0,
+        525,
+        548
+      ],
+      "source_alpha_bounds_in_cell": [
+        12,
+        30,
+        525,
+        544
+      ],
+      "master": "masters/sickhouse-01.ora",
+      "export": "exports/sickhouse-01.png",
+      "size": [
+        559,
+        560
+      ],
+      "proposed_pivot": [
+        279,
+        559
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9919821c8d7dfaffc9e05d3ac2185bcb3aff1da88f04936227d5f1fb7dad438e"
+    },
+    {
+      "id": "sickhouse-02",
+      "name": "Roofless sickhouse shell",
+      "source": "sources/sickhouse.png",
+      "source_cell": [
+        525,
+        0,
+        1048,
+        548
+      ],
+      "source_alpha_bounds_in_cell": [
+        0,
+        69,
+        517,
+        531
+      ],
+      "master": "masters/sickhouse-02.ora",
+      "export": "exports/sickhouse-02.png",
+      "size": [
+        336,
+        300
+      ],
+      "proposed_pivot": [
+        168,
+        299
+      ],
+      "pivot_status": "provisional",
+      "sha256": "076492036baa7bcb223cd1732b0a90f4e5b3f0031b574267b9b28c819b6e9af2"
+    },
+    {
+      "id": "sickhouse-03",
+      "name": "Detached roof",
+      "source": "sources/sickhouse.png",
+      "source_cell": [
+        1048,
+        90,
+        1536,
+        480
+      ],
+      "source_alpha_bounds_in_cell": [
+        3,
+        23,
+        478,
+        370
+      ],
+      "master": "masters/sickhouse-03.ora",
+      "export": "exports/sickhouse-03.png",
+      "size": [
+        342,
+        250
+      ],
+      "proposed_pivot": [
+        171,
+        249
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f4df1f227d3291de3f280936ef0fd460ddc91bb21a35e3a788d30136010c42c7"
+    },
+    {
+      "id": "sickhouse-04",
+      "name": "Window wall",
+      "source": "sources/sickhouse.png",
+      "source_cell": [
+        40,
+        549,
+        515,
+        1000
+      ],
+      "source_alpha_bounds_in_cell": [
+        27,
+        0,
+        462,
+        427
+      ],
+      "master": "masters/sickhouse-04.ora",
+      "export": "exports/sickhouse-04.png",
+      "size": [
+        224,
+        220
+      ],
+      "proposed_pivot": [
+        112,
+        219
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c31fdee4966d9e3f1d6017b28c650ee1cbfc04b3ba3db02af300850d542b951c"
+    },
+    {
+      "id": "sickhouse-05",
+      "name": "Open entrance",
+      "source": "sources/sickhouse.png",
+      "source_cell": [
+        550,
+        549,
+        1020,
+        1000
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        9,
+        448,
+        414
+      ],
+      "master": "masters/sickhouse-05.ora",
+      "export": "exports/sickhouse-05.png",
+      "size": [
+        222,
+        210
+      ],
+      "proposed_pivot": [
+        111,
+        209
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b15b983c0d1febf56a2c194e2161f3da3c240e4c962e6529d1e18d3782d0652f"
+    },
+    {
+      "id": "sickhouse-06",
+      "name": "Shuttered window",
+      "source": "sources/sickhouse.png",
+      "source_cell": [
+        1050,
+        560,
+        1536,
+        1000
+      ],
+      "source_alpha_bounds_in_cell": [
+        20,
+        21,
+        444,
+        416
+      ],
+      "master": "masters/sickhouse-06.ora",
+      "export": "exports/sickhouse-06.png",
+      "size": [
+        140,
+        130
+      ],
+      "proposed_pivot": [
+        70,
+        129
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7d8ed0537b74f4dcbe5f02455bd037e820cf1ce2ed1d74dbe319d340aa35405f"
+    },
+    {
+      "id": "garden-01",
+      "name": "Apothecary hut",
+      "source": "sources/garden.png",
+      "source_cell": [
+        0,
+        0,
+        525,
+        590
+      ],
+      "source_alpha_bounds_in_cell": [
+        17,
+        20,
+        513,
+        578
+      ],
+      "master": "masters/garden-01.ora",
+      "export": "exports/garden-01.png",
+      "size": [
+        400,
+        450
+      ],
+      "proposed_pivot": [
+        200,
+        449
+      ],
+      "pivot_status": "provisional",
+      "sha256": "4ea04e5aa4c7c2a10c579345ede2dd79f28de686505de4a5f6a19bd28737a1a2"
+    },
+    {
+      "id": "garden-02",
+      "name": "Potting shed",
+      "source": "sources/garden.png",
+      "source_cell": [
+        530,
+        100,
+        1020,
+        580
+      ],
+      "source_alpha_bounds_in_cell": [
+        10,
+        40,
+        480,
+        462
+      ],
+      "master": "masters/garden-02.ora",
+      "export": "exports/garden-02.png",
+      "size": [
+        379,
+        340
+      ],
+      "proposed_pivot": [
+        189,
+        339
+      ],
+      "pivot_status": "provisional",
+      "sha256": "14163dc1b60999fbf530fb11012430415ca3fc9f4631a4c400c88baab26f58ef"
+    },
+    {
+      "id": "garden-03",
+      "name": "Pergola",
+      "source": "sources/garden.png",
+      "source_cell": [
+        1030,
+        0,
+        1536,
+        554
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        48,
+        496,
+        551
+      ],
+      "master": "masters/garden-03.ora",
+      "export": "exports/garden-03.png",
+      "size": [
+        309,
+        320
+      ],
+      "proposed_pivot": [
+        154,
+        319
+      ],
+      "pivot_status": "provisional",
+      "sha256": "a72d98eb5428dae6d119d03008f0503c2bd8c0c119ad540e9f4091c6ae4e08e7"
+    },
+    {
+      "id": "garden-04",
+      "name": "Empty raised bed",
+      "source": "sources/garden.png",
+      "source_cell": [
+        20,
+        630,
+        510,
+        1010
+      ],
+      "source_alpha_bounds_in_cell": [
+        26,
+        26,
+        462,
+        346
+      ],
+      "master": "masters/garden-04.ora",
+      "export": "exports/garden-04.png",
+      "size": [
+        102,
+        75
+      ],
+      "proposed_pivot": [
+        51,
+        74
+      ],
+      "pivot_status": "provisional",
+      "sha256": "194170ceb0d95a040b62c92ddfb8ac0565d1838839ea6eb1e05c7ac3508e229b"
+    },
+    {
+      "id": "garden-05",
+      "name": "Garden fence and gate",
+      "source": "sources/garden.png",
+      "source_cell": [
+        520,
+        640,
+        1060,
+        1010
+      ],
+      "source_alpha_bounds_in_cell": [
+        1,
+        0,
+        536,
+        365
+      ],
+      "master": "masters/garden-05.ora",
+      "export": "exports/garden-05.png",
+      "size": [
+        235,
+        160
+      ],
+      "proposed_pivot": [
+        117,
+        159
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bd9c7b6f9f00160e0726987ae240eb8b572144239ec622e581109b4ea4d8ec0e"
+    },
+    {
+      "id": "garden-06",
+      "name": "Well",
+      "source": "sources/garden.png",
+      "source_cell": [
+        1100,
+        558,
+        1480,
+        1010
+      ],
+      "source_alpha_bounds_in_cell": [
+        27,
+        3,
+        355,
+        434
+      ],
+      "master": "masters/garden-06.ora",
+      "export": "exports/garden-06.png",
+      "size": [
+        137,
+        180
+      ],
+      "proposed_pivot": [
+        68,
+        179
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b185ee85999395a13edf002a299e6da553eca15022f849623d464d84811475af"
+    },
+    {
+      "id": "shrine-01",
+      "name": "Sheltered shrine",
+      "source": "sources/shrine.png",
+      "source_cell": [
+        20,
+        20,
+        510,
+        560
+      ],
+      "source_alpha_bounds_in_cell": [
+        28,
+        37,
+        462,
+        524
+      ],
+      "master": "masters/shrine-01.ora",
+      "export": "exports/shrine-01.png",
+      "size": [
+        356,
+        400
+      ],
+      "proposed_pivot": [
+        178,
+        399
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7180aeed80f1ccaf41df4725f848d5e9e89fe0e74657fe5cbac965beb8e5e53c"
+    },
+    {
+      "id": "shrine-02",
+      "name": "Open shrine shelter",
+      "source": "sources/shrine.png",
+      "source_cell": [
+        520,
+        20,
+        1030,
+        555
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        46,
+        487,
+        512
+      ],
+      "master": "masters/shrine-02.ora",
+      "export": "exports/shrine-02.png",
+      "size": [
+        382,
+        380
+      ],
+      "proposed_pivot": [
+        191,
+        379
+      ],
+      "pivot_status": "provisional",
+      "sha256": "64f5ce618a5b291316eaf72848e4e24bcd4f2db42d5f6263b00d7081a27662db"
+    },
+    {
+      "id": "shrine-03",
+      "name": "Stone altar",
+      "source": "sources/shrine.png",
+      "source_cell": [
+        1040,
+        190,
+        1520,
+        550
+      ],
+      "source_alpha_bounds_in_cell": [
+        15,
+        26,
+        455,
+        340
+      ],
+      "master": "masters/shrine-03.ora",
+      "export": "exports/shrine-03.png",
+      "size": [
+        140,
+        100
+      ],
+      "proposed_pivot": [
+        70,
+        99
+      ],
+      "pivot_status": "provisional",
+      "sha256": "66ef65be1129a55349edf72924805329955a031eb7916c17f1e42f35e42a883c"
+    },
+    {
+      "id": "shrine-04",
+      "name": "Steps and landing",
+      "source": "sources/shrine.png",
+      "source_cell": [
+        20,
+        590,
+        550,
+        990
+      ],
+      "source_alpha_bounds_in_cell": [
+        25,
+        27,
+        511,
+        360
+      ],
+      "master": "masters/shrine-04.ora",
+      "export": "exports/shrine-04.png",
+      "size": [
+        117,
+        80
+      ],
+      "proposed_pivot": [
+        58,
+        79
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e2454530f2e3f28bf7a79d74adb9e00a64421684983103f238dd7836f8b03191"
+    },
+    {
+      "id": "shrine-05",
+      "name": "Standing stone",
+      "source": "sources/shrine.png",
+      "source_cell": [
+        580,
+        550,
+        980,
+        1000
+      ],
+      "source_alpha_bounds_in_cell": [
+        29,
+        25,
+        363,
+        411
+      ],
+      "master": "masters/shrine-05.ora",
+      "export": "exports/shrine-05.png",
+      "size": [
+        225,
+        260
+      ],
+      "proposed_pivot": [
+        112,
+        259
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9ba312aa0a45576a3c6b9039d495f8099d83db433cfc87a6edbfe5f1d72e51f6"
+    },
+    {
+      "id": "shrine-06",
+      "name": "Enclosure entrance",
+      "source": "sources/shrine.png",
+      "source_cell": [
+        995,
+        560,
+        1536,
+        990
+      ],
+      "source_alpha_bounds_in_cell": [
+        12,
+        19,
+        514,
+        393
+      ],
+      "master": "masters/shrine-06.ora",
+      "export": "exports/shrine-06.png",
+      "size": [
+        161,
+        120
+      ],
+      "proposed_pivot": [
+        80,
+        119
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5be083de01dd47cb8f47fea09ca7a15c43f72cd11f923e93eea0205292dccf83"
+    },
+    {
+      "id": "laundry-01",
+      "name": "Laundry shelter",
+      "source": "sources/laundry.png",
+      "source_cell": [
+        0,
+        0,
+        558,
+        547
+      ],
+      "source_alpha_bounds_in_cell": [
+        14,
+        15,
+        548,
+        541
+      ],
+      "master": "masters/laundry-01.ora",
+      "export": "exports/laundry-01.png",
+      "size": [
+        345,
+        340
+      ],
+      "proposed_pivot": [
+        172,
+        339
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9e8fae6c2e20f64a587878cee875efb710c11fc24019f53bb59b4f5ef02301ef"
+    },
+    {
+      "id": "laundry-02",
+      "name": "Stone washing trough",
+      "source": "sources/laundry.png",
+      "source_cell": [
+        560,
+        110,
+        1060,
+        500
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        32,
+        483,
+        372
+      ],
+      "master": "masters/laundry-02.ora",
+      "export": "exports/laundry-02.png",
+      "size": [
+        139,
+        100
+      ],
+      "proposed_pivot": [
+        69,
+        99
+      ],
+      "pivot_status": "provisional",
+      "sha256": "13f262f43bec617f595d8609e61a09a829180180dc00fe3e243b30888a8498ce"
+    },
+    {
+      "id": "laundry-03",
+      "name": "Drying rack",
+      "source": "sources/laundry.png",
+      "source_cell": [
+        1080,
+        40,
+        1536,
+        520
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        24,
+        430,
+        460
+      ],
+      "master": "masters/laundry-03.ora",
+      "export": "exports/laundry-03.png",
+      "size": [
+        221,
+        230
+      ],
+      "proposed_pivot": [
+        110,
+        229
+      ],
+      "pivot_status": "provisional",
+      "sha256": "0b6cd32709154d02b29075b3b9c68d79d3d97d0b97bb11ca7ca8e40b05db412c"
+    },
+    {
+      "id": "laundry-04",
+      "name": "Washing line",
+      "source": "sources/laundry.png",
+      "source_cell": [
+        0,
+        526,
+        560,
+        965
+      ],
+      "source_alpha_bounds_in_cell": [
+        23,
+        6,
+        552,
+        408
+      ],
+      "master": "masters/laundry-04.ora",
+      "export": "exports/laundry-04.png",
+      "size": [
+        329,
+        250
+      ],
+      "proposed_pivot": [
+        164,
+        249
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d0333648374319a29e9eaf74014a778483084c886a46d2108f8987eacd9aff25"
+    },
+    {
+      "id": "laundry-05",
+      "name": "Wash tub and board",
+      "source": "sources/laundry.png",
+      "source_cell": [
+        600,
+        560,
+        990,
+        960
+      ],
+      "source_alpha_bounds_in_cell": [
+        22,
+        27,
+        361,
+        356
+      ],
+      "master": "masters/laundry-05.ora",
+      "export": "exports/laundry-05.png",
+      "size": [
+        98,
+        95
+      ],
+      "proposed_pivot": [
+        49,
+        94
+      ],
+      "pivot_status": "provisional",
+      "sha256": "4190151effb03ba10cd99da6d325782aef1cb3272a6032b4a1348a15528bebca"
+    },
+    {
+      "id": "laundry-06",
+      "name": "Timber landing",
+      "source": "sources/laundry.png",
+      "source_cell": [
+        1040,
+        550,
+        1536,
+        970
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        26,
+        482,
+        384
+      ],
+      "master": "masters/laundry-06.ora",
+      "export": "exports/laundry-06.png",
+      "size": [
+        72,
+        55
+      ],
+      "proposed_pivot": [
+        36,
+        54
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e19a70164ce22e59df48c5ded107b0b2bdba4fe8cd7bbc51c82e0fcddd08ce48"
+    },
+    {
+      "id": "wagon-01",
+      "name": "Covered wagon",
+      "source": "sources/wagon.png",
+      "source_cell": [
+        0,
+        0,
+        535,
+        540
+      ],
+      "source_alpha_bounds_in_cell": [
+        25,
+        46,
+        528,
+        525
+      ],
+      "master": "masters/wagon-01.ora",
+      "export": "exports/wagon-01.png",
+      "size": [
+        273,
+        260
+      ],
+      "proposed_pivot": [
+        136,
+        259
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b70080e25c1e2a4fbc9e800914a8e8cb294896af7a890007578056a42652fc52"
+    },
+    {
+      "id": "wagon-02",
+      "name": "Abandoned wagon",
+      "source": "sources/wagon.png",
+      "source_cell": [
+        530,
+        80,
+        1040,
+        515
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        35,
+        494,
+        420
+      ],
+      "master": "masters/wagon-02.ora",
+      "export": "exports/wagon-02.png",
+      "size": [
+        289,
+        230
+      ],
+      "proposed_pivot": [
+        144,
+        229
+      ],
+      "pivot_status": "provisional",
+      "sha256": "09f5a164226f09f3a2f166f0dd9e732bdad06af7edaed6ff9092bd701c5e9771"
+    },
+    {
+      "id": "wagon-03",
+      "name": "Detached canopy",
+      "source": "sources/wagon.png",
+      "source_cell": [
+        1045,
+        80,
+        1536,
+        515
+      ],
+      "source_alpha_bounds_in_cell": [
+        9,
+        23,
+        456,
+        416
+      ],
+      "master": "masters/wagon-03.ora",
+      "export": "exports/wagon-03.png",
+      "size": [
+        182,
+        160
+      ],
+      "proposed_pivot": [
+        91,
+        159
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c9c2ed78f4ededb34e465c29199318b6f28ef718b4f151bd31595f2814a0f344"
+    },
+    {
+      "id": "wagon-04",
+      "name": "Wagon wheel",
+      "source": "sources/wagon.png",
+      "source_cell": [
+        60,
+        545,
+        460,
+        990
+      ],
+      "source_alpha_bounds_in_cell": [
+        35,
+        20,
+        367,
+        415
+      ],
+      "master": "masters/wagon-04.ora",
+      "export": "exports/wagon-04.png",
+      "size": [
+        118,
+        140
+      ],
+      "proposed_pivot": [
+        59,
+        139
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bc29424851b8f69a7d958126ece3d8016bd3eb4de34b072dfab8178b47b756fa"
+    },
+    {
+      "id": "wagon-05",
+      "name": "Broken side panel",
+      "source": "sources/wagon.png",
+      "source_cell": [
+        540,
+        550,
+        995,
+        1000
+      ],
+      "source_alpha_bounds_in_cell": [
+        19,
+        27,
+        436,
+        418
+      ],
+      "master": "masters/wagon-05.ora",
+      "export": "exports/wagon-05.png",
+      "size": [
+        117,
+        110
+      ],
+      "proposed_pivot": [
+        58,
+        109
+      ],
+      "pivot_status": "provisional",
+      "sha256": "79d0abe30e9adaef6ecf7cc436a16b9736ac006f7bd21ce99bf6d000df7b6b8a"
+    },
+    {
+      "id": "wagon-06",
+      "name": "Roadside shelter",
+      "source": "sources/wagon.png",
+      "source_cell": [
+        1000,
+        525,
+        1536,
+        1000
+      ],
+      "source_alpha_bounds_in_cell": [
+        18,
+        12,
+        512,
+        437
+      ],
+      "master": "masters/wagon-06.ora",
+      "export": "exports/wagon-06.png",
+      "size": [
+        395,
+        340
+      ],
+      "proposed_pivot": [
+        197,
+        339
+      ],
+      "pivot_status": "provisional",
+      "sha256": "2db25b53e3e9160871887b66cc046d72f1f11d7ad101dbc5257c8f5bdc3d74c9"
+    },
+    {
+      "id": "woodland-01",
+      "name": "Forester cabin",
+      "source": "sources/woodland.png",
+      "source_cell": [
+        0,
+        30,
+        575,
+        585
+      ],
+      "source_alpha_bounds_in_cell": [
+        15,
+        31,
+        560,
+        550
+      ],
+      "master": "masters/woodland-01.ora",
+      "export": "exports/woodland-01.png",
+      "size": [
+        473,
+        450
+      ],
+      "proposed_pivot": [
+        236,
+        449
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ca9a1ffe7c8f5199a5848a20ed493f559f6305f57287def1b55d27713a22ca4f"
+    },
+    {
+      "id": "woodland-02",
+      "name": "Woodland lean-to",
+      "source": "sources/woodland.png",
+      "source_cell": [
+        580,
+        140,
+        1080,
+        582
+      ],
+      "source_alpha_bounds_in_cell": [
+        9,
+        33,
+        491,
+        422
+      ],
+      "master": "masters/woodland-02.ora",
+      "export": "exports/woodland-02.png",
+      "size": [
+        409,
+        330
+      ],
+      "proposed_pivot": [
+        204,
+        329
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e0969a1f3572a1dab01b957b622a1b618c5a8e936cb6cc344cd800eb4df5c1c1"
+    },
+    {
+      "id": "woodland-03",
+      "name": "Lookout platform",
+      "source": "sources/woodland.png",
+      "source_cell": [
+        1060,
+        10,
+        1536,
+        600
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        33,
+        459,
+        578
+      ],
+      "master": "masters/woodland-03.ora",
+      "export": "exports/woodland-03.png",
+      "size": [
+        395,
+        480
+      ],
+      "proposed_pivot": [
+        197,
+        479
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5fb4bec1f00774581095a676a348d9914f921a39b5fe4175adad3aeb7d9c180e"
+    },
+    {
+      "id": "woodland-04",
+      "name": "Forest gate",
+      "source": "sources/woodland.png",
+      "source_cell": [
+        10,
+        586,
+        530,
+        970
+      ],
+      "source_alpha_bounds_in_cell": [
+        21,
+        3,
+        506,
+        356
+      ],
+      "master": "masters/woodland-04.ora",
+      "export": "exports/woodland-04.png",
+      "size": [
+        330,
+        240
+      ],
+      "proposed_pivot": [
+        165,
+        239
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e79e3e3155e6ba7e1b54df7359021377ab2a3360952052e10653550ee709476f"
+    },
+    {
+      "id": "woodland-05",
+      "name": "Timber fence",
+      "source": "sources/woodland.png",
+      "source_cell": [
+        525,
+        600,
+        1020,
+        980
+      ],
+      "source_alpha_bounds_in_cell": [
+        13,
+        24,
+        486,
+        348
+      ],
+      "master": "masters/woodland-05.ora",
+      "export": "exports/woodland-05.png",
+      "size": [
+        292,
+        200
+      ],
+      "proposed_pivot": [
+        146,
+        199
+      ],
+      "pivot_status": "provisional",
+      "sha256": "41785002d0c9e18b72d11ee92b9bbbb70e0d4830d0527bfa0ae2e532536a8870"
+    },
+    {
+      "id": "woodland-06",
+      "name": "Plank footbridge",
+      "source": "sources/woodland.png",
+      "source_cell": [
+        1030,
+        600,
+        1536,
+        1010
+      ],
+      "source_alpha_bounds_in_cell": [
+        11,
+        13,
+        491,
+        380
+      ],
+      "master": "masters/woodland-06.ora",
+      "export": "exports/woodland-06.png",
+      "size": [
+        144,
+        110
+      ],
+      "proposed_pivot": [
+        72,
+        109
+      ],
+      "pivot_status": "provisional",
+      "sha256": "94deed9677651c0a758e12a8b392af8afcae62855e060a2c11d69ae95153a5e6"
+    }
+  ]
+}
