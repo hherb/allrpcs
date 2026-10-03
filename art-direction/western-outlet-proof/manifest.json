@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "status": "external western outlet; visual assessment pending; no runtime/layout/physical approval",
+  "master_scale": 2,
+  "world_origin": [
+    0,
+    504
+  ],
+  "export_size": [
+    320,
+    192
+  ],
+  "source_paths": {
+    "ground": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+    "water": "art-direction/production-proof/corrected/exports/terrain/stream-water.png",
+    "bank": "art-direction/production-proof/corrected/exports/terrain/stream-bank.png",
+    "proposal": "art-direction/western-watercourse-proposal/proposal.json",
+    "helpers": "art-direction/b2-bridge-proof/tools/proof.py",
+    "builder": "art-direction/production-proof/corrected/tools/build.py",
+    "geometry_helpers": "art-direction/western-watercourse-proposal/tools/proposal.py",
+    "layout": "art-direction/world-layout-proposal/layout-proposal.json",
+    "b2_view": "art-direction/b2-bridge-proof/review/joined-1.0x.png",
+    "b2_water": "art-direction/b2-bridge-proof/exports/water.png",
+    "b2_bank": "art-direction/b2-bridge-proof/exports/bank.png",
+    "spring_acceptance": "art-direction/spring-curved-bank-proof/visual-acceptance.json"
+  },
+  "source_sha256": {
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "helpers": "880c89ae980308d55d0db933bfd6556bcb7aeb46ccca19f8c0b4fdaeb23643f2",
+    "builder": "70a1bc327e5084c1246b10c557e0e9c958519796991367ed4976963946a2a756",
+    "geometry_helpers": "98eda5137033478dfe52105a871af4aad278bc6384f78d5c93c9ac6e7bf77693",
+    "layout": "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1",
+    "b2_view": "b3af40c6a7e8adf8102169b52f6f07d78651b4f74eab902e3b168f403bb81e3d",
+    "b2_water": "057dbc3f3728acd12dbe9059f0b960e9fdd4e8a545fcb2cfcf87160fb331f824",
+    "b2_bank": "5fc6f19f142a9b5bb6e266d8793bb7363d77fae39961aa7a922a081e9ebc6a41",
+    "spring_acceptance": "c964b9e3bf9549117979a7327727c0f797550ff016d5ce812dc3d9653255fa15"
+  },
+  "draw_order_back_to_front": [
+    "ground",
+    "water",
+    "north_bank",
+    "south_bank"
+  ],
+  "master": {
+    "path": "masters/outlet.ora",
+    "sha256": "af92e20fcbbbf7f8819d399d7b74e7b6b1d02c330bf1b7958f2bd8e605515db9"
+  },
+  "exports": [
+    {
+      "path": "exports/ground.png",
+      "sha256": "9570874342e9ed3171754c888f97972070b6ac4581986db33a19cdd67653df51",
+      "size": [
+        320,
+        192
+      ]
+    },
+    {
+      "path": "exports/water.png",
+      "sha256": "23a87585251309ce976268f7e91b66d4e9cf5d54c96416e530177b98516400ec",
+      "size": [
+        320,
+        192
+      ]
+    },
+    {
+      "path": "exports/north_bank.png",
+      "sha256": "8fd03d18e3fa33b1d54bda07eef2500db4edd3b1ee02b47271a6557963ccb6aa",
+      "size": [
+        320,
+        192
+      ]
+    },
+    {
+      "path": "exports/south_bank.png",
+      "sha256": "3169c5e7eccb1301a61db72881fdcca1ee6ec300b1036bb4563a77802f7ade3a",
+      "size": [
+        320,
+        192
+      ]
+    },
+    {
+      "path": "exports/joined.png",
+      "sha256": "0eb052421add47e108e9913b983a2b1e28b2c4d697f1bae3fde40076715a9c92",
+      "size": [
+        320,
+        192
+      ]
+    },
+    {
+      "path": "review/joined-0.8x.png",
+      "sha256": "ec6230b448ca4018acc82ebb37712a03dbc425e03b5983d59bb423e320a50082",
+      "size": [
+        256,
+        154
+      ]
+    },
+    {
+      "path": "review/joined-1.0x.png",
+      "sha256": "0eb052421add47e108e9913b983a2b1e28b2c4d697f1bae3fde40076715a9c92",
+      "size": [
+        320,
+        192
+      ]
+    },
+    {
+      "path": "review/joined-2.0x.png",
+      "sha256": "dac9596417b48b2c7f8f41bc768e0b7356a12a6e11887ca9be5d345373d83321",
+      "size": [
+        640,
+        384
+      ]
+    },
+    {
+      "path": "review/off-map-reference.png",
+      "sha256": "cc0e7b7fda119902b89723333dde312a11e550214b04edaf302844d42ad9e5b4",
+      "size": [
+        384,
+        192
+      ]
+    },
+    {
+      "path": "review/engineering.png",
+      "sha256": "14a1397d3b1c9d2aa9da85fd266373a183528bd3c7497daf5a6f870668407bfe",
+      "size": [
+        384,
+        192
+      ]
+    }
+  ]
+}

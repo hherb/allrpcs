@@ -1,0 +1,66 @@
+{
+  "status": "external western outlet; visual assessment pending; no runtime/layout/physical approval",
+  "baseline_commit": "f25c173c0a6c3868441e233964222508c6490099",
+  "protected_file_count": 4023,
+  "world_origin": [
+    0,
+    504
+  ],
+  "export_size": [
+    320,
+    192
+  ],
+  "water_bounds": [
+    0,
+    552,
+    320,
+    648
+  ],
+  "bank_halo_corners": [
+    [
+      0,
+      536
+    ],
+    [
+      320,
+      536
+    ],
+    [
+      320,
+      664
+    ],
+    [
+      0,
+      664
+    ]
+  ],
+  "water_uv_origin": [
+    0,
+    0
+  ],
+  "bank_uv_origin_x": 0,
+  "tiling_recipe": "exact B2 absolute-world UVs; 128px horizontal period; 32-to-16px BOX bank depth",
+  "off_map_reference_width": 64,
+  "draw_order_back_to_front": [
+    "ground",
+    "water",
+    "north_bank",
+    "south_bank"
+  ],
+  "raster_halo_to_route_corridor_clearance_lower_bound": 162.41621810343918,
+  "physical_limit": "water-only off-map reference; world boundary remains closed to actors; no physical changes",
+  "source_sha256": {
+    "ground": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "water": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "bank": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "proposal": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "helpers": "880c89ae980308d55d0db933bfd6556bcb7aeb46ccca19f8c0b4fdaeb23643f2",
+    "builder": "70a1bc327e5084c1246b10c557e0e9c958519796991367ed4976963946a2a756",
+    "geometry_helpers": "98eda5137033478dfe52105a871af4aad278bc6384f78d5c93c9ac6e7bf77693",
+    "layout": "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1",
+    "b2_view": "b3af40c6a7e8adf8102169b52f6f07d78651b4f74eab902e3b168f403bb81e3d",
+    "b2_water": "057dbc3f3728acd12dbe9059f0b960e9fdd4e8a545fcb2cfcf87160fb331f824",
+    "b2_bank": "5fc6f19f142a9b5bb6e266d8793bb7363d77fae39961aa7a922a081e9ebc6a41",
+    "spring_acceptance": "c964b9e3bf9549117979a7327727c0f797550ff016d5ce812dc3d9653255fa15"
+  }
+}
