@@ -1,53 +1,48 @@
 # Allrpcs Handover
 
-## Current state and authority
+## Current state
 
-Phase 8 and 9.1 complete. The owner approved both displayed external forest/channel views
-on 2026-10-03 ("both approved"), then the [named forest runtime scope](art-direction/forest-path-ending-correction/runtime-promotion-scope.md)
-("approved"). [External acceptance](art-direction/forest-path-ending-correction/owner-acceptance.json)
-is hash-bound; whole-channel promotion remains separate and unauthorized.
+Phase 8 and 9.1 complete. [Forest runtime review and acceptance](art-direction/forest-path-runtime-promotion/README.md)
+record the confirmed `e976ea0` promotion, 84 exports, 35 masters and 18 captures. Preserve
+its final RoutePresentation sibling, closed-side-only texture and untextured Clearing near
+side, existing gate/collisions/Forester access, and roadmap pruning at `96fa5c6`.
 
-The owner confirmed the forest runtime views on 2026-10-03 ("confirmed"). The
-[acceptance record](art-direction/forest-path-runtime-promotion/owner-runtime-acceptance.json)
-binds the displayed views and all 18 capture hashes. Production has 84 exports, 35 masters, one
-exact 552×384 texture and independent proof/runtime imports. The final `ClosedForestPath`
-sprite at `(796,224)`, z=-75 replaces only its visual line. Gate, navigation, collisions
-and existing Forester access remain unchanged. The accepted texture is closed-side only;
-y≥196 is transparent and the Clearing's near side remains untextured.
-[Runtime review](art-direction/forest-path-runtime-promotion/README.md) contains all 18
-views, source/master/import provenance, the frozen 4,190-file predecessor inventory and limits.
+The [whole-channel scope proposal](art-direction/whole-channel-runtime-scope/README.md)
+is prepared and reviewed; [86 source bindings](art-direction/whole-channel-runtime-scope/source-bindings.json)
+pin accepted sources and live owners at `e976ea0`. No implementation approval is recorded.
+The accepted channel canvas is opaque; its crossing is a CPU reconstruction. Do not
+import it as a full-scene sprite or claim GPU parity. Historical proof records stay immutable.
 
-Preserve accepted runtime assets, Stream–Laundry publication authority and accepted Shrine
-triangle (cause unconfirmed). Western overview, B1, B2, curved spring, outlet, local fringe
-join and whole channel have external visual acceptance only. Spring: 384px basin centred
-`(2192,500)`, unchanged x<2000 pixels and exact 32px inlet. Channel retains the accepted
-fringe join, original banks resume at x=1664, and crossing reconstruction is CPU-only.
-Routine external proof approvals remain waived. Further runtime/layout/physical promotion
-needs named approval. Preserve scenarios, dialogue, clues, discovery, treatment, saves,
-providers, UI, audio, release and signing. Keep capture/HUD switches out of startup;
-exclude `.DS_Store`. Visual acceptance establishes no gameplay/accessibility acceptance.
+## Exact next slice and stop gates
 
-## Exact next slice
+Obtain named **Stage 1 approval** of the linked whole-channel proposal, then implement
+only its disposable runtime preview, transparent source-derived layers, masters, validators
+and paired captures. Use a disposable project copy for imports and scene edits; change no
+tracked game file, production asset or ordinary startup. Freeze a complete new predecessor
+inventory at the approved starting head. Follow the proposal’s rendering and validation contracts.
 
-Prepare the next named whole-channel production/runtime promotion scope from the accepted
-external composition and live scene. Preserve accepted local sources and CPU/GPU parity
-limits; obtain separate approval before implementation. Do not import the external
-composition by inference. Historical pending/rejected records stay immutable.
+End Stage 1 with the displayed runtime evidence and an exact **Stage 2 production packet**
+(asset IDs, hashes, placements, counts and allowed code changes). Obtain separate Stage 2
+approval before production wiring and owner runtime visual confirmation before publishing
+that promotion. Generic continuation or external visual acceptance does not clear these gates.
 
-## Verification
+Preserve all accepted local sources, forest runtime, Stream–Laundry authority and accepted
+Shrine triangle. Fringe correction ends at x=1664; original retained banks/caps resume there.
+Spring basin is 384px at `(2192,500)`, exact 32px inlet, accepted x<2000 pixels unchanged.
+Routine bounded external proof approvals remain waived; named runtime promotion still needs approval.
+No physical/navigation/collision/layout, scenario, dialogue, clues, discovery, treatment,
+saves, providers, UI, audio, release or signing changes. Keep capture/HUD/framing switches
+out of startup; exclude `.DS_Store`. Visual acceptance grants no gameplay/accessibility scope.
 
-```sh
-/opt/homebrew/bin/python3 art-direction/forest-path-runtime-promotion/tools/validate.py --check-captures --check-archived
-PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh
-```
+## Verification and continuation
 
-Asset/master/import parity, 18 exact runtime RGBA comparisons, 4,170 unchanged protected
-files and pinned historical proof reproduction passed. Host quality completed: zero-warning
-build, 5,033 tests, asset/scenario validation, remaining Godot smokes and Compatibility
-launch. Review fixed isolated proof resource ordering/origin; its explicit engine rerun
-passed. Three disposable mutations rejected stale captures, changed pixels and inventory
-rewrites. Host execution used the established sandbox Godot log-rotation workaround.
-The concurrent roadmap pruning was separately published at `96fa5c6`; preserve it.
-No unresolved review findings remain.
-Historical live-source validators intentionally reject promotion; never rewrite their
-inventories or pinned source hashes. The successor's archived mode verifies their pinned tree.
+Clean `e976ea0` forest validation passed asset/import/master parity, 18 runtime pixel
+comparisons, 4,170 protected files and historical/channel reproduction. Prior host quality
+passed 5,033 tests, zero-warning build and Godot smokes/Compatibility launch. This proposal
+changes documentation only; no fresh full quality run or runtime capture is claimed.
+
+Historical live-source validators intentionally reject successors’ new files or promoted
+scene hashes. Reproduce them on pinned Git trees; never rewrite their inventories/hashes.
+For the next implementation run `PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh` and
+all new focused validators; preserve historical evidence and distinguish CPU/source checks
+from live GPU captures. Review the cumulative diff and leave one exact next slice.

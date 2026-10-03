@@ -154,7 +154,9 @@ Its texture covers the closed side only; the near side inside the Clearing remai
 untextured. The [runtime review](art-direction/forest-path-runtime-promotion/README.md)
 retains 18 imported views matching accepted external RGBA pixels. The owner confirmed
 the runtime views on 2026-10-03 ("confirmed") before direct-main publication;
-whole-channel promotion is separate.
+whole-channel promotion is separate. The [whole-channel scope proposal](art-direction/whole-channel-runtime-scope/README.md)
+requires named approval for a disposable runtime preview, followed by a separately approved
+production packet; its source index binds the accepted composition and current live owners.
 
 The first nine bounded runtime terrain promotions copy only the manifest-bound
 `terrain.quiet_moss`, `terrain.woodland_leaf_litter`, straight
