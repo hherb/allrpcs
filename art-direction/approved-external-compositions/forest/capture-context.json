@@ -1,0 +1,7 @@
+{
+  "manifest_sha256": "5f676152b795a4084fb1c36ead2181c05e977698170f7beb82e329094c2acfaa",
+  "overlay_sha256": {
+    "bounded-strip.png": "af912b140ab1f56b491e5a236718564a7921e6e0d8a42feb4f020048849a6470",
+    "raw-strip.png": "d28b0dafbd64e454c82a42764ba84baf0bf054675addddaeb71a6e83d524f8e4"
+  }
+}

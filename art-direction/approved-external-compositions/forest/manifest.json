@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "status": "external proof; owner visual assessment pending",
+  "baseline_commit": "18894f81d836a380a3642ec481b264baaccba6aa",
+  "world_origin": [
+    584,
+    80
+  ],
+  "export_size": [
+    488,
+    336
+  ],
+  "master_scale": 2,
+  "master_note": "exact nearest enlargement; no invented painted detail",
+  "draw_order": [
+    "bounded_source_strip"
+  ],
+  "source_sha256": {
+    "art-direction/approved-external-compositions/scope-authorization.json": "78f896c7a6fea7f35c96669ca95496c5f89a6d616681b58bac4e20af2e1745a7",
+    "art-direction/approved-external-compositions/tools/capture_forest.gd": "fe16e8f36180e9efeaff97e09cfc439b3475c5ed13cb40564c3ad40faef9ff24",
+    "art-direction/approved-external-compositions/tools/common.py": "6c771a517bec0379f1ea14357ffaed194585d7a00832f8ae8978e9c4db2d5abe",
+    "art-direction/approved-external-compositions/tools/forest.py": "64c52f818627e39657b7546f377ced984f2a59637aedb5ce86294b4db4ca9f9b",
+    "art-direction/production-proof/corrected/tools/build.py": "70a1bc327e5084c1246b10c557e0e9c958519796991367ed4976963946a2a756",
+    "art-direction/world-layout-proposal/layout-proposal.json": "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1",
+    "game/Main.tscn": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "game/OpeningRegionClosedForestPathGeometry.cs": "41fb154c661c6fd39edd8df6fde4f3de17ef5123b3e5d8d85759260d2662e41c",
+    "game/OpeningRegionClosedForestPathSceneSource.cs": "ec6753560eacfced5fda5e47a16d6d4166ac25d3fa693835b5fa6012d722dab4",
+    "game/OpeningRegionWoodlandClearingGeometry.cs": "4f93183cb68fe2c1c892c0c9a444257b7e53a394656e1e65c7e0de5e140bcb37",
+    "game/art/runtime/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "src/Application/Navigation/OpeningRegionClosedForestPathLayout.cs": "21bbecb02d9c8abb94b61251fe74f214fd9137626f869bcdd8b9c947754a74ee"
+  },
+  "artifact_sha256": {
+    "exports/raw-strip.png": "d28b0dafbd64e454c82a42764ba84baf0bf054675addddaeb71a6e83d524f8e4",
+    "exports/bounded-strip.png": "af912b140ab1f56b491e5a236718564a7921e6e0d8a42feb4f020048849a6470",
+    "review/raw-2x.png": "c3c473c7f3a89d1e71c64e86d1f2c584cb1862dfabc994bd519c51b4b34b33af",
+    "review/bounded-2x.png": "2b0d6485d60b2f81fa711b1ecc3cf1807e8cb3b3656e141f9b2dda823ed19b47",
+    "masters/composition.ora": "48ac78464ce90b5f9d390e136458e994a362a34785e0c2f1c09890857dfad3cc"
+  },
+  "layout_runtime_physical_promotion_authorized": false
+}

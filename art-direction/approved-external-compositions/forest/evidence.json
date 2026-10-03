@@ -1,0 +1,27 @@
+{
+  "protected_file_count": 4068,
+  "route_start": [
+    1000,
+    350
+  ],
+  "route_end": [
+    650,
+    150
+  ],
+  "route_width": 96,
+  "physical_gate_center": [
+    744,
+    200
+  ],
+  "gate_boundary_width": 8,
+  "route_crossing_at_clearing_top": [
+    737.5,
+    200
+  ],
+  "centerline_gate_offset_pixels": 6.5,
+  "removed_visible_pixels": 26578,
+  "retained_clearing_pixels_changed_by_bounded_overlay": 0,
+  "physical_owners_changed": 0,
+  "status": "external presentation proof; visual assessment pending",
+  "limitations": "closed-side strip only; disposable views hide the route line; physical approach/gate remain intact"
+}

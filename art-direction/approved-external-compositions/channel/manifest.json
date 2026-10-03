@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "external proof; owner visual assessment pending",
+  "baseline_commit": "18894f81d836a380a3642ec481b264baaccba6aa",
+  "world_origin": [
+    -64,
+    212
+  ],
+  "export_size": [
+    2604,
+    620
+  ],
+  "master_scale": 2,
+  "master_note": "exact nearest enlargement; no invented painted detail",
+  "draw_order": [
+    "ground",
+    "western_continuation",
+    "retained_Stream_reference",
+    "outlet",
+    "B2",
+    "B1",
+    "curved_spring",
+    "accepted_fringe_join"
+  ],
+  "source_sha256": {
+    "art-direction/approved-external-compositions/scope-authorization.json": "78f896c7a6fea7f35c96669ca95496c5f89a6d616681b58bac4e20af2e1745a7",
+    "art-direction/approved-external-compositions/tools/channel.py": "274b6ee7984d97b7d0f44e218b0cc8df55482b9ea571c47eb0c04dad945fca6b",
+    "art-direction/approved-external-compositions/tools/common.py": "6c771a517bec0379f1ea14357ffaed194585d7a00832f8ae8978e9c4db2d5abe",
+    "art-direction/b1-bridge-proof/exports/joined.png": "5e8aac230fbeb113b6b7f03ce2f6b7ba989f22fccc6818cd01ee820c858a8b86",
+    "art-direction/b2-bridge-proof/b1-visual-acceptance.json": "bfb68a3797b72a44c35e9a6dc513009f82c795c2f114d664e43fd47b9c965caa",
+    "art-direction/b2-bridge-proof/exports/joined.png": "b3af40c6a7e8adf8102169b52f6f07d78651b4f74eab902e3b168f403bb81e3d",
+    "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "art-direction/spring-bank-join-proof/b2-visual-acceptance.json": "d23c6c54f4244dadb7a05cb6cafea11f1f5b61d78fbd48d3368f8c6e2bd65416",
+    "art-direction/spring-curved-bank-proof/exports/joined.png": "dd9981bd29a6b31f1eeaf7fa53b1d4608980aab788b0b5b434d5d241998e64fd",
+    "art-direction/spring-curved-bank-proof/visual-acceptance.json": "c964b9e3bf9549117979a7327727c0f797550ff016d5ce812dc3d9653255fa15",
+    "art-direction/western-outlet-proof/exports/joined.png": "0eb052421add47e108e9913b983a2b1e28b2c4d697f1bae3fde40076715a9c92",
+    "art-direction/western-watercourse-join-audit/fringe-correction/exports/joined.png": "2352631e9588829745b655e658ea56af9b8e743570a2eb2561f2da86e9434e15",
+    "art-direction/western-watercourse-join-audit/fringe-correction/visual-acceptance.json": "9d71a188effa3bc399dd240bd143f280a7099b4f520de53120632c2794f4ae42",
+    "art-direction/western-watercourse-join-audit/outlet-visual-acceptance.json": "82a6fe9847b4d6c7686207ff5fe1a17769dcf9fd594db4c00b689a4b1d533270",
+    "art-direction/western-watercourse-proposal/proposal.json": "0329194c43b65bd82174eb1c38785346727b193b6e9525372d585abdf4bf174a",
+    "game/Main.tscn": "fdb3ebd361496817980f8d614080cd85235ee8be673379883949802c08cff5ae",
+    "game/art/runtime/terrain/stream-bank-opening-cap.png": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+    "game/art/runtime/terrain/stream-bank.png": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "game/art/runtime/terrain/stream-water.png": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c"
+  },
+  "artifact_sha256": {
+    "exports/joined.png": "ffcbd8cefe50621d752ae3b2739480e93f3d410bba6d107d2468e3813d679735",
+    "review/full-1x.png": "ffcbd8cefe50621d752ae3b2739480e93f3d410bba6d107d2468e3813d679735",
+    "review/overview.png": "c9bf16c3c532caa22e1bd119ffdaf891ac8419ac64dd73b620b14bc6a1a5f857",
+    "review/B2-1x.png": "b3af40c6a7e8adf8102169b52f6f07d78651b4f74eab902e3b168f403bb81e3d",
+    "review/B2-2x.png": "4cc78a9a146a98a71975841b5bee7a9b42f7dbdb5ff2c87c137e905e70f919db",
+    "review/B1-1x.png": "1888b6cb294e33643953ad09bfdcfd9c1d18ea1e1d874d8110c8d5043158b756",
+    "review/B1-2x.png": "d4e7751f8b5da9aaf6dcd2d93b729a2553f45993e520844c01ffe990f031c0fd",
+    "review/retained-crossing-1x.png": "4c743c7e53454f24435900671484740e9b54ff457d6078d123556695a0af89fc",
+    "review/retained-crossing-2x.png": "91a4ce6f52aea3c5b86c42ade129178996746d3d90bebe545c90fa6f062c5142",
+    "review/spring-1x.png": "dd9981bd29a6b31f1eeaf7fa53b1d4608980aab788b0b5b434d5d241998e64fd",
+    "review/spring-2x.png": "e9786842ebf067cf3757c2a70893df67a8608d30df9d5390ae029b40de66e292",
+    "review/engineering.png": "c9b54a7f771ef9c973cd6ea0b09ae23a82ab997592672dda300c45a63f1b031b",
+    "masters/composition.ora": "8b6049d92c75506768b964f0d0f23865147b8f34ca641b057675ce6c4024c9b4"
+  },
+  "layout_runtime_physical_promotion_authorized": false
+}

@@ -2,50 +2,51 @@
 
 ## Current state and authority
 
-Phase 8 and 9.1 complete; Direction A has 83 production exports and 34 masters.
-Preserve accepted runtime assets, Stream–Laundry's existing direct-main authority,
-and the accepted Shrine triangle (cause unconfirmed). Western overview, B1, B2,
-curved spring, outlet and local B1–Stream fringe successor have external visual acceptance
-only. Spring invariants: 384px basin, centre `(2192,500)`, retained x<2000 pixels,
-exact 32px inlet. All 4,041 predecessor files remain unchanged.
+Phase 8 and 9.1 complete; production remains at 83 exports and 34 masters.
+Preserve accepted runtime assets, Stream–Laundry direct-main authority, and the accepted
+Shrine triangle (cause unconfirmed). Western overview, B1, B2, curved spring, outlet and
+local B1–Stream fringe successor have external visual acceptance only. Spring invariants:
+384px basin, centre `(2192,500)`, retained x<2000 pixels, exact 32px inlet.
 
-The [join audit](art-direction/western-watercourse-join-audit/README.md) contains the
-outlet acceptance, B1/retained Stream UV/bank mismatch, rejected 64px join and accepted
-blue-fringe successor. Its [acceptance record](art-direction/western-watercourse-join-audit/fringe-correction/visual-acceptance.json)
-binds the exact shown 2x image and owner statement. Preserve the rejected candidate and
-correction request. The successor changes 2,149 external bank-fringe pixels, including
-reconstructed retained-reference pixels; no accepted source or runtime file changed.
+On 2026-10-03 the owner approved both external art scopes with “the art scopes are
+approved”. The [new proof package](art-direction/approved-external-compositions/README.md)
+completes whole-channel composition and Clearing–Closed Deeper Forest Path feasibility.
+Its authorization record grants scope only; both new results await visual assessment.
+All 4,068 predecessor files remain unchanged, including accepted views and failed evidence.
 
-Routine bounded external proof approvals remain waived; review, validation and
-direct-main publication remain authorized. Named runtime/layout/physical changes need
-separate authorization and visual checkpoints. Preserve navigation, collision, camera,
-scenario, dialogue, clues, discovery, treatment, saves, providers, UI, audio, release
-and signing. Keep capture/HUD switches outside ordinary startup; exclude `.DS_Store`.
-Visual acceptance grants no gameplay, pacing, usability or accessibility acceptance.
+The channel preserves the exact local fringe join; original retained banks resume at
+x=1664. The crossing is a CPU reconstruction. The forest proof is closed-side only;
+its disposable captures hide the route line and retain physical approach/gate owners.
+The package records the raw-strip failure, bounded candidate and precise limits.
+
+Routine bounded external proof approvals remain waived; review, validation and direct-main
+publication remain authorized. Named runtime/layout/physical promotion needs separate
+approval and visual checkpoints. Preserve navigation, collision, camera, scenarios,
+dialogue, clues, discovery, treatment, saves, providers, UI, audio, release and signing.
+Keep capture/HUD switches outside ordinary startup; exclude `.DS_Store`. Visual acceptance
+grants no gameplay, pacing, usability or accessibility acceptance.
 
 ## Exact next slice
 
-Await the owner's next named scope; no next implementation slice is selected.
-The outlet/interface assessment sequence is complete. Whole-channel art and
-Clearing–Closed Deeper Forest Path remain deferred; generic continuation selects
-neither. Further external composition must preserve accepted local views and show its
-own result. Named promotion needs separate authorization; do not import these proof
-assets or alter physical owners.
+Owner assessment of the supplied whole-channel view, then bounded forest view. If a
+correction is requested, create only a named external successor preserving these
+references and accepted local views. Both approved implementation scopes are complete;
+do not infer production imports, runtime/layout/physical promotion or another art scope.
 
 ## Verification
 
 ```sh
-/opt/homebrew/bin/python3 art-direction/western-watercourse-join-audit/tools/audit.py
-/opt/homebrew/bin/python3 art-direction/western-watercourse-join-audit/tools/join.py
-/opt/homebrew/bin/python3 art-direction/western-watercourse-join-audit/tools/fringe.py
+/opt/homebrew/bin/python3 art-direction/approved-external-compositions/tools/channel.py
+/opt/homebrew/bin/python3 art-direction/approved-external-compositions/tools/forest.py --check-captures
+/opt/homebrew/bin/python3 art-direction/approved-external-compositions/tools/check_rejections.py
+/opt/homebrew/bin/python3 art-direction/approved-external-compositions/tools/check_capture_differences.py
 PATH=/opt/homebrew/bin:$PATH ./scripts/quality.sh
 ```
 
-Use this successor's baseline/wrapper; historical inventories intentionally reject new
-tracked proofs. Never rewrite historical evidence to accommodate successors.
-At `1cc9f4a`, all proof checks and full host quality passed: zero-warning build, 5,033
-tests, asset/scenario validation, all Godot smokes and Compatibility launch. Sandbox
-Godot log rotation required the identical host retry. The join audit README records
-the prior review fixes and detailed evidence; these results do not authorize promotion.
-2026-10-03 continuation: audit and fringe checks (including join checks) passed again;
-only this handover changed. Full product quality was not rerun for this documentation edit.
+Both deterministic proofs, exact master/source parity, 13 rejection checks, 54 bound
+captures and 18 independently confined capture differences pass. The package README
+includes the verified predecessor wrapper; historical inventories intentionally reject
+successors and must never be rewritten. Full host quality passed: zero-warning build,
+5,033 tests, asset/scenario validation, all Godot smokes and Compatibility launch. The
+sandbox Godot log-rotation crash required the identical host retry. Review fixed capture
+line treatment, vacuous opacity checks and stale-input binding; owner acceptance is pending.

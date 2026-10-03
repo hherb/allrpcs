@@ -1,0 +1,28 @@
+{
+  "protected_file_count": 4068,
+  "accepted_source_files_changed": 0,
+  "runtime_files_changed": 0,
+  "origin": [
+    -64,
+    212
+  ],
+  "size": [
+    2604,
+    620
+  ],
+  "accepted_local_view_overrides": "only the already accepted 128x256 fringe join at (1536,384)",
+  "spring": {
+    "center": [
+      2192,
+      500
+    ],
+    "basin_diameter": 384,
+    "inlet_width": 32
+  },
+  "limitations": [
+    "external source composition, not a Godot capture or physical promotion",
+    "retained crossing colour is an authored CPU reconstruction, not GPU capture parity",
+    "accepted local fringe correction ends at x=1664; original retained cap/bank recipe resumes",
+    "complete composition still requires its own visual assessment"
+  ]
+}
