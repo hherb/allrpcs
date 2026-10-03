@@ -20,7 +20,9 @@ The exact 32px inlet at x=2000, y=484..516, both bank connectors and all x<2000 
 pixels are preserved. Western bank depth tapers from 32px to 16px; the circular rim has
 16px radial depth and 208px outer radius. Raster halo clearance from retained route
 corridors is at least 143.79px; zero retained route-cell centres are covered. This variant
-awaits visual assessment and remains external, with no collision/navigation authority.
+has owner visual acceptance (“approved”, 2026-10-03), bound to the exact shown 1x
+image in [its acceptance record](art-direction/spring-curved-bank-proof/visual-acceptance.json).
+It remains external, with no collision/navigation authority.
 
 Routine bounded external-proof scope approvals were waived on 2026-10-02. Continue
 external corrections, review, validate and publish under direct-main authority. Named
@@ -32,12 +34,14 @@ switches outside ordinary startup. Exclude Finder `.DS_Store`.
 
 ## Exact next slice
 
-Assess [the curved spring at 1x](art-direction/spring-curved-bank-proof/review/joined-1.0x.png):
-western shoreline, enlarged basin scale and inlet. The
-[previous enlarged candidate at the same scale](art-direction/spring-curved-bank-proof/review/original-common-scale.png)
-is supplied. If corrected, preserve all candidates and change only the external spring.
-Defer western-outlet/whole-channel art and Clearing–Closed Deeper Forest Path until this
-join is assessed. Continuation or visual acceptance grants no promotion authority.
+Prepare one external western outlet proof at `(0,600)`, limited to world x=0..320,
+water y=552..648 and the proposed 16px bank allowance, from the frozen
+[western-watercourse proposal](art-direction/western-watercourse-proposal/proposal.json).
+Show the channel and both banks continuing off the western world edge, preserving
+alignment and tiling phase. Supply source-bound exports, an editable 2x master, local
+review views and complete predecessor preservation checks. Preserve the accepted spring,
+B1/B2, all other assets and runtime/physical owners. Defer whole-channel art and
+Clearing–Closed Deeper Forest Path. Continuation grants no promotion authority.
 
 ## Verification
 
@@ -51,3 +55,6 @@ pass. Full host quality passed: zero-warning build, 5,033 tests, asset/scenario 
 Godot smokes and Compatibility launch, using the established sandbox log workaround.
 Frozen predecessor inventories intentionally reject successors. Use the new 4,000-file
 baseline; never rewrite historical evidence. Archive scope results before a separately approved promotion.
+
+Latest update records visual acceptance only. Approval digest and documentation links
+were verified; prior full quality results remain applicable to the unchanged proof/code.

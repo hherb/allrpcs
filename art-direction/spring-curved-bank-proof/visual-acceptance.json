@@ -1,0 +1,9 @@
+{
+  "owner_statement": "approved",
+  "date": "2026-10-03",
+  "review_path": "art-direction/spring-curved-bank-proof/review/joined-1.0x.png",
+  "review_sha256": "dd9981bd29a6b31f1eeaf7fa53b1d4608980aab788b0b5b434d5d241998e64fd",
+  "review_commit": "4955fc4566d82fc19e3d1bcd7a8752e78fb47a26",
+  "scope": "bounded visual acceptance of the shown external curved spring at 1x",
+  "layout_runtime_physical_promotion_authorized": false
+}

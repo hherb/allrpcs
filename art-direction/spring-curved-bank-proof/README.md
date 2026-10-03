@@ -4,7 +4,10 @@ The owner requested removal of the enlarged spring's unnatural straight western 
 or a deliberately man-made rock structure. This variant takes the natural shoreline
 option. [shoreline-request.json](shoreline-request.json) records the exact feedback and
 previous shown-view digest. The small spring, steep enlarged candidate and earlier failed
-circle evidence remain frozen. This candidate awaits visual assessment.
+circle evidence remain frozen. The owner approved the shown 1x curved candidate on
+2026-10-03; [visual-acceptance.json](visual-acceptance.json) binds the exact view digest.
+Generated manifest/evidence status strings retain their historical build-time assessment
+status. This acceptance grants no runtime/layout/physical promotion authority.
 
 ![Curved western shoreline at 1x](review/joined-1.0x.png)
 
@@ -84,7 +87,9 @@ Final proof reproduction and all 4,000 predecessor hashes passed after review.
 
 ## Exact next slice
 
-Assess the curved western shoreline, basin scale and retained inlet. If corrected, preserve
-all candidates and change only the external spring. Defer western-outlet/whole-channel art
-and Clearing–Closed Deeper Forest Path until assessment. Obtain separate named approval
-for runtime/layout/physical promotion; this proof grants no gameplay or accessibility acceptance.
+Prepare one external western outlet proof at `(0,600)`, limited to world x=0..320,
+water y=552..648 and the proposed 16px bank allowance. Show water and both banks
+continuing off the west edge, preserving channel alignment and tiling phase. Include
+an editable 2x master, source-bound exports, review composition and preservation checks.
+Keep the accepted spring, B1/B2, all runtime assets/layout and collision/navigation owners
+unchanged. Defer whole-channel art, Clearing–Closed Deeper Forest Path and promotions.
