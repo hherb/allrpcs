@@ -1,8 +1,10 @@
 # Objects artwork batch 01
 
 Complete initial external Phase 9.2 object series, produced on 2026-10-04
-(Australia/Brisbane) with the built-in image_gen tool. **Awaiting collective owner
-artwork review.** No runtime promotion or scenario-content approval is implied.
+(Australia/Brisbane) with the built-in image_gen tool. The owner approved the complete
+series: "Brilliant! This i beautiful artwork and will improve the game's value a lot. Approved".
+`owner-acceptance.json` binds the exact approved package hashes. Runtime promotion and
+scenario-content authority remain separate.
 
 42 candidates: six each for herbs, remedies, tools, scrolls, inscriptions,
 containers and clue objects. The approved Direction A representative scene supplied
@@ -41,7 +43,8 @@ They are review arrangements, not runtime screenshots or opening-region layouts.
 - `inventory.json`: identities, source crop bounds, dimensions, provisional pivots,
   scale reference and export/master hashes.
 - `review-manifest.json`: exact source/master/export/board and authoring-input hashes
-  for this review candidate. It records no owner acceptance.
+  for the original review candidate. Retained unchanged as historical review evidence;
+  `owner-acceptance.json` binds the current package and that historical manifest.
 
 Reproduce with `/opt/homebrew/bin/python3 art-direction/objects-batch/build_review.py`.
 Run lightweight checks with
@@ -59,8 +62,6 @@ ownership or narrative facts. The bottle uses an amber finish rather than establ
 a material requirement. Paint, proportions, tiny-object readability, contact shadows,
 pivots, occlusion and actual runtime scale/imports remain subject to review.
 
-Only lightweight authoring checks and session code review are appropriate before
-owner feedback. Product code, runtime assets, imports, scenes, CI, collision,
+Scoped approval checks are recorded in `validation.json`. Product code, runtime assets, imports, scenes, CI, collision,
 navigation, dialogue, clues, saves and gameplay remain unchanged. Retain the prior
-full-suite evidence referenced by `HANDOVER.md`; consolidate scoped approval checks
-after artwork feedback, without replaying unchanged product suites.
+full-suite evidence referenced by `HANDOVER.md`, without replaying unchanged product suites.

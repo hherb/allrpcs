@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "passed",
+  "scope": "Owner-approved external object artwork only",
+  "acceptance_sha256": "9debfe58bdcad924ce5e279981288442b437195461574e9b4fe51fb8330b95d1",
+  "checks": [
+    "PASS: 42 candidate exports, exact 2x editable masters, seven sources and nine review images.",
+    "PASS: review hashes, source/correction layers, scale reference, alpha and provisional pivot bounds.",
+    "PASS: exact owner-approved package hashes.",
+    "Runtime scale/imports and scenario semantics remain separate."
+  ],
+  "artwork_change_since_review": "none; all sources, masters, exports and review PNGs unchanged from be1d827",
+  "historical_review_manifest": "preserved unchanged and bound by acceptance hash",
+  "product_runtime_ci_change_since_2fcc849": "none",
+  "full_product_validation": "Retained prior full-suite evidence at art-direction/woodland-environment-batch/validation.json; unchanged suites not replayed",
+  "runtime_authority": "No runtime promotion or scenario-content authority"
+}

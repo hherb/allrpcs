@@ -152,11 +152,11 @@ The owner also confirmed full-batch approval, including the 168 retained non-wal
 assets. Complete active character acceptance is hash-bound; the next category is objects.
 The terrain category remains open for residual work.
 
-Complete initial objects candidate batch (2026-10-04): 42 assets across all seven
+Approved complete objects artwork batch (2026-10-04): 42 assets across all seven
 families, editable 2x masters, seven labelled detail boards and two actual-export-scale
 compositions; see `art-direction/objects-batch/README.md`. Lightweight authoring checks
-and session review are recorded with the package. Collective owner artwork review is
-pending; the category checkbox remains open. No runtime or scenario content changed.
+and session review are recorded with the package. Exact owner acceptance and scoped
+approval checks are recorded. No runtime or scenario content changed.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -176,7 +176,7 @@ passing full-suite evidence and run fresh scoped validation for the newly approv
 - [x] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
 - [x] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.
 - [ ] Produce character designs, portraits, directional sprites, and required animation frames.
-- [ ] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
+- [x] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
 - [ ] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.
 - [ ] Produce weather, lighting, discovery, treatment, and disease-state effects.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.

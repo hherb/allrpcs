@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lightweight object authoring checks; does not grant owner or runtime approval."""
+"""Check object package integrity and, when present, exact owner acceptance hashes."""
 
 from io import BytesIO
 import json
@@ -21,6 +21,13 @@ def main():
     """Check exact series coverage, hashes, alpha and editable master/export parity."""
     inventory = json.loads((ROOT / 'inventory.json').read_text())
     manifest = json.loads((ROOT / 'review-manifest.json').read_text())
+    approved = (ROOT / 'owner-acceptance.json').exists()
+    if approved:
+        acceptance = json.loads((ROOT / 'owner-acceptance.json').read_text())
+        require(acceptance['status'] == 'approved', 'Invalid acceptance status')
+        require(digest(ROOT / 'review-manifest.json') == acceptance['review_manifest_sha256'],
+                'Changed historical review manifest')
+        manifest = {'files': acceptance['approved_files']}
     expected = {f'{family}-{index:02}' for family in FAMILIES for index in range(1, 7)}
     assets = inventory['assets']
     require(len(assets) == inventory['asset_count'] == len(expected) == 42, 'Incorrect object count')
@@ -82,7 +89,8 @@ def main():
                 image.verify()
     print('PASS: 42 candidate exports, exact 2x editable masters, seven sources and nine review images.')
     print('PASS: review hashes, source/correction layers, scale reference, alpha and provisional pivot bounds.')
-    print('Authoring evidence only. Owner review, runtime scale/imports and scenario semantics remain separate.')
+    print('PASS: exact owner-approved package hashes.' if approved else 'Authoring evidence only; owner review pending.')
+    print('Runtime scale/imports and scenario semantics remain separate.')
 
 
 if __name__ == '__main__':

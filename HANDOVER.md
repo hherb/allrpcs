@@ -15,19 +15,17 @@ lineage; never sum both walking snapshots into the active count. Timing/pivots r
 
 ## Exact next slice
 
-The complete initial [objects series](art-direction/objects-batch/README.md) is produced:
+The complete [objects series](art-direction/objects-batch/README.md) is owner-approved:
 42 candidates across herbs, remedies, tools, scrolls, inscription surfaces, containers
 and clue props, editable 2x OpenRaster masters, seven labelled family boards and two
-actual-export-scale compositions. `review-manifest.json` binds exact candidate hashes.
-It is **awaiting collective owner artwork review**, not approved or runtime-promoted.
+actual-export-scale compositions. `owner-acceptance.json` binds exact approved hashes;
+`validation.json` records scoped checks. No runtime promotion. Do not rebuild it.
 
-Present the complete nine-image review series and take owner feedback. Revise only
-requested artwork, preserving source and rejected evidence. After collective approval,
-record exact accepted hashes and run consolidated scoped asset checks. Inscription and
-writing areas are deliberately blank; props establish no species/efficacy, scenario,
+The exact next slice is the complete journal/map/inventory/dialogue/settings/provider-state
+UI artwork series, editable 2x masters, labelled boards and representative scale compositions
+before collective owner review. Do not turn UI artwork into functional UI work. Inscription and
+writing areas in the approved objects are deliberately blank; props establish no species/efficacy, scenario,
 discovery or clue facts. Small-object readability, proportions and scale are provisional.
-Only after that checkpoint, proceed to the complete journal/map/inventory/dialogue/
-settings/provider-state UI artwork series. Do not turn UI artwork into functional UI work.
 
 ## Workflow and boundaries
 
@@ -49,7 +47,8 @@ out of startup; exclude `.DS_Store`. Artwork does not establish usability/access
 
 Objects: `inspect_package.py` passes 42 candidate exports/masters, all nine review images,
 hash coverage, alpha, layers, pivots and exact 2x parity. `session-review.json` records
-code/visual review, fixes and byte reproduction. This is authoring evidence, not approval.
+code/visual review, fixes and byte reproduction before approval. `validation.json` records
+fresh exact-hash acceptance checks; `review-manifest.json` remains historical candidate evidence.
 Product/runtime/CI inputs remain unchanged from `2fcc849`; retain the
 [full-suite evidence](art-direction/woodland-environment-batch/validation.json): zero-warning/
 error build, 5,033 passing tests, Godot/Compatibility checks and four verified log hashes.
