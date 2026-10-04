@@ -24,7 +24,11 @@ presentation, with editable 2x masters and labelled light/dark scale boards. The
 approved the five displayed source sheets; derived packaging is technically checked.
 No animation, runtime wiring, diagnosis, knowledge grant or efficacy semantics are added.
 The [residual terrain inventory](art-direction/residual-terrain-plan/README.md) records
-35 unchanged terrain exports and specifies the next 18-candidate external ground series.
+35 unchanged terrain exports. The complete [residual ground series](art-direction/residual-ground-batch/README.md)
+adds 18 owner-approved external material, variation and transition studies, editable 2x
+masters and six review boards. The [readiness audit](art-direction/residual-ground-readiness/README.md)
+identifies the next twelve-module repeatability/connector feasibility slice; padded
+studies are not seamless production tiles. Runtime remains unchanged.
 
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
 object-state cues, and a four-direction Seeker walk sample under

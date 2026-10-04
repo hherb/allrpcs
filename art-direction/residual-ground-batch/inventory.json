@@ -1,0 +1,875 @@
+{
+  "status": "external candidate package; collective owner review pending",
+  "generator": "built-in image_gen",
+  "asset_count": 18,
+  "assets": [
+    {
+      "id": "ground-surfaces-01",
+      "name": "Packed earth",
+      "source": "sources/ground-surfaces.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        94,
+        81,
+        483,
+        467
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1422,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-surfaces-01.ora",
+      "export": "exports/ground-surfaces-01.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b5cfd9aaad047c842ab2fa9cac308e00c7b673fe5f8f0d12222823f57bcba3a1",
+      "master_sha256": "2121045dada711c8cc7c45cba13846d2a1d145bf047d159caf40bae7b459b4d0"
+    },
+    {
+      "id": "ground-surfaces-02",
+      "name": "Pale gravel",
+      "source": "sources/ground-surfaces.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        64,
+        81,
+        452,
+        467
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 2454,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-surfaces-02.ora",
+      "export": "exports/ground-surfaces-02.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "456f15678755f2f165934b30ae3a4df93ed3bd229a7c6d1f2c1d2f9058114b9f",
+      "master_sha256": "cf3015e2ba239a53a2124b657e7dd40883d73d0c89658ca3f898c9890e9a88eb"
+    },
+    {
+      "id": "ground-surfaces-03",
+      "name": "Mixed meadow",
+      "source": "sources/ground-surfaces.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        32,
+        81,
+        421,
+        469
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 700,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-surfaces-03.ora",
+      "export": "exports/ground-surfaces-03.png",
+      "size": [
+        136,
+        136
+      ],
+      "master_size": [
+        272,
+        272
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "6b5478e3498a36ebfbad90274da9b5b305c6f8d378023fc6b2fdd421324a6978",
+      "master_sha256": "4508d1993864fd55cc50569204fb50716982d12b315d0878ea9b99ee4fb2db16"
+    },
+    {
+      "id": "ground-surfaces-04",
+      "name": "Sparse dry grass",
+      "source": "sources/ground-surfaces.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        93,
+        43,
+        483,
+        431
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1353,
+        "max_alpha": 2
+      },
+      "master": "masters/ground-surfaces-04.ora",
+      "export": "exports/ground-surfaces-04.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d3ad671d92f7775989e0e2ce5ba3f378753c56d29d4857fb54d0055759abab2e",
+      "master_sha256": "358c00086ac0ca04e215386938ccbad658cf354bf41626053669291ba198894d"
+    },
+    {
+      "id": "ground-surfaces-05",
+      "name": "Dark garden soil",
+      "source": "sources/ground-surfaces.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        63,
+        44,
+        450,
+        431
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1200,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-surfaces-05.ora",
+      "export": "exports/ground-surfaces-05.png",
+      "size": [
+        136,
+        136
+      ],
+      "master_size": [
+        272,
+        272
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "792ef809e8dc671ece27228d469d23c4da513475964037ba635bdcfe574e5601",
+      "master_sha256": "1977befcb8b3dab49e7c977edb59d4d4e199a92afe9145d04cedbb4d82cde019"
+    },
+    {
+      "id": "ground-surfaces-06",
+      "name": "Damp mud",
+      "source": "sources/ground-surfaces.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        32,
+        44,
+        421,
+        431
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1216,
+        "max_alpha": 2
+      },
+      "master": "masters/ground-surfaces-06.ora",
+      "export": "exports/ground-surfaces-06.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d69b4cf278b10d65a4bf24f67fcff51216cad89df476084de398e146c5474460",
+      "master_sha256": "cc0faa0e650242daf6cb9361149d250178fa688f294c20decc0091e456cd1b77"
+    },
+    {
+      "id": "ground-variation-01",
+      "name": "Pebble scatter",
+      "source": "sources/ground-variation.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        94,
+        129,
+        444,
+        444
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1200,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-variation-01.ora",
+      "export": "exports/ground-variation-01.png",
+      "size": [
+        136,
+        123
+      ],
+      "master_size": [
+        272,
+        246
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ac6bf9877d0945389cc041a6d4304c9d73154b91d1a263d591636ffe004d6f03",
+      "master_sha256": "a4b1929d5475034105a0e0516ca064c083751995ddb1d171094dbe978cbb69bb"
+    },
+    {
+      "id": "ground-variation-02",
+      "name": "Gravel scatter",
+      "source": "sources/ground-variation.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        80,
+        120,
+        433,
+        436
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 3865,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-variation-02.ora",
+      "export": "exports/ground-variation-02.png",
+      "size": [
+        136,
+        123
+      ],
+      "master_size": [
+        272,
+        246
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3d2dcef0b8788478e74477fa843b9b08766d0825b979dcc52b82edf22a5595a4",
+      "master_sha256": "fd6efde632bb3908b17de627278bedbb8f837b2326464bc4be4c5c6b670eea68"
+    },
+    {
+      "id": "ground-variation-03",
+      "name": "Damp soil patch",
+      "source": "sources/ground-variation.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        60,
+        110,
+        431,
+        461
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 6768,
+        "max_alpha": 2
+      },
+      "master": "masters/ground-variation-03.ora",
+      "export": "exports/ground-variation-03.png",
+      "size": [
+        136,
+        129
+      ],
+      "master_size": [
+        272,
+        258
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "689de678d321ed2e7b509cd86f0e1a23d13f06622c10054d5a4eac8ea8932e38",
+      "master_sha256": "70d2a87bd43de41821d3f2397d92c4f289f727d17be64e99261373b1607a1b22"
+    },
+    {
+      "id": "ground-variation-04",
+      "name": "Sparse grass patch",
+      "source": "sources/ground-variation.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        90,
+        89,
+        437,
+        424
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 8427,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-variation-04.ora",
+      "export": "exports/ground-variation-04.png",
+      "size": [
+        136,
+        132
+      ],
+      "master_size": [
+        272,
+        264
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e4f5cd9588b6dc4c8d8162bdde7196be4fb47c79f626ee680806f2d979ac5647",
+      "master_sha256": "1c43169e3f42aa8e2a33259d23297d2f23dc58537f3b4e4194a15adf0f6468bd"
+    },
+    {
+      "id": "ground-variation-05",
+      "name": "Worn earth patch",
+      "source": "sources/ground-variation.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        67,
+        90,
+        444,
+        430
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4470,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-variation-05.ora",
+      "export": "exports/ground-variation-05.png",
+      "size": [
+        136,
+        123
+      ],
+      "master_size": [
+        272,
+        246
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e4e73dae41f8aede1c2a15c9dc6ecf7eac0fa54ba06cd83326719e762236a64c",
+      "master_sha256": "b336b6d5d9698eb44e959d55c04e7be812218840fe7a8407d2e14197156d6f88"
+    },
+    {
+      "id": "ground-variation-06",
+      "name": "Moss flecks",
+      "source": "sources/ground-variation.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        75,
+        95,
+        429,
+        414
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 10198,
+        "max_alpha": 1
+      },
+      "master": "masters/ground-variation-06.ora",
+      "export": "exports/ground-variation-06.png",
+      "size": [
+        136,
+        123
+      ],
+      "master_size": [
+        272,
+        246
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "8821b67c091f9a947d8bd65dfc6f30d2a74b85f238cb955c5c9ee71b20e386f0",
+      "master_sha256": "ca03d83bb485888a1c5640bf6eead4ec81b46dfd159fd7d6dc4cbe8d6e0fdec6"
+    },
+    {
+      "id": "surface-transitions-01",
+      "name": "Earth/gravel straight",
+      "source": "sources/surface-transitions.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        94,
+        67,
+        485,
+        455
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 75,
+        "max_alpha": 1
+      },
+      "master": "masters/surface-transitions-01.ora",
+      "export": "exports/surface-transitions-01.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "39ed5e49758eda1906f02b73e7231f76b289464cdaea91908be72e6e54ef99ea",
+      "master_sha256": "547e06d96aa660a01d9770de0c5a5c4fdff043231e31da702eddd324f10c0018"
+    },
+    {
+      "id": "surface-transitions-02",
+      "name": "Earth/gravel outer corner",
+      "source": "sources/surface-transitions.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        60,
+        67,
+        453,
+        455
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 328,
+        "max_alpha": 1
+      },
+      "master": "masters/surface-transitions-02.ora",
+      "export": "exports/surface-transitions-02.png",
+      "size": [
+        136,
+        134
+      ],
+      "master_size": [
+        272,
+        268
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "a2f5c1435f8b87d23eefc5fc07d91ab51a2035669dca7758a9e10afc8842aa77",
+      "master_sha256": "75f7fb9898b2c61a4374b2c7aa1e3835e28c02a90ccbc27555a5a9d7965a9951"
+    },
+    {
+      "id": "surface-transitions-03",
+      "name": "Earth/gravel inset corner",
+      "source": "sources/surface-transitions.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        29,
+        68,
+        419,
+        455
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 190,
+        "max_alpha": 1
+      },
+      "master": "masters/surface-transitions-03.ora",
+      "export": "exports/surface-transitions-03.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "530f0d84f3a8ae47bc134dea24db1b8577d8e2a1b447839e178f5122e785d699",
+      "master_sha256": "45f22608282bc7f8ec59aa20f318f8b5bdddf8f83f194c15d5c2a9ff702fad09"
+    },
+    {
+      "id": "surface-transitions-04",
+      "name": "Grass/soil straight",
+      "source": "sources/surface-transitions.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        94,
+        29,
+        485,
+        416
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 94,
+        "max_alpha": 1
+      },
+      "master": "masters/surface-transitions-04.ora",
+      "export": "exports/surface-transitions-04.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "10cb5432825f519a4effd35c5832bdea2e2e8301e1920c5226fe9acf1bdbde21",
+      "master_sha256": "fc6a3cf20f07b89cc09bb6f94f22691d7041fcf32d4315415ffcaacb89776a58"
+    },
+    {
+      "id": "surface-transitions-05",
+      "name": "Grass/soil outer corner",
+      "source": "sources/surface-transitions.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        61,
+        29,
+        453,
+        416
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 186,
+        "max_alpha": 1
+      },
+      "master": "masters/surface-transitions-05.ora",
+      "export": "exports/surface-transitions-05.png",
+      "size": [
+        136,
+        134
+      ],
+      "master_size": [
+        272,
+        268
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "366f1a905c1e5b5b8f5a0e2eefc4fbb8d9ad3aa706f67d58ca00b703d651642d",
+      "master_sha256": "abe75116f28cb10696a6e021197cb92a045d8c79243acc7b7b837a28ecd0fb05"
+    },
+    {
+      "id": "surface-transitions-06",
+      "name": "Grass/soil inset corner",
+      "source": "sources/surface-transitions.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        29,
+        29,
+        420,
+        416
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 70,
+        "max_alpha": 1
+      },
+      "master": "masters/surface-transitions-06.ora",
+      "export": "exports/surface-transitions-06.png",
+      "size": [
+        136,
+        135
+      ],
+      "master_size": [
+        272,
+        270
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c08552c97ee6991678acb975c174873e71aaed294990c5cdfc3c3578d5b82a28",
+      "master_sha256": "16175f45cadce253e0f435ad94fe9a1d815c42959a3f9801504e551f1d9e5f7e"
+    }
+  ],
+  "scale_reference": {
+    "canvases": {
+      "light-scale": [
+        1500,
+        680
+      ],
+      "dark-scale": [
+        1500,
+        680
+      ],
+      "grouped-scale": [
+        1280,
+        720
+      ]
+    },
+    "placements": {
+      "ground-surfaces-01": [
+        300,
+        78
+      ],
+      "ground-surfaces-02": [
+        490,
+        78
+      ],
+      "ground-surfaces-03": [
+        680,
+        78
+      ],
+      "ground-surfaces-04": [
+        870,
+        78
+      ],
+      "ground-surfaces-05": [
+        1060,
+        78
+      ],
+      "ground-surfaces-06": [
+        1250,
+        78
+      ],
+      "ground-variation-01": [
+        300,
+        268
+      ],
+      "ground-variation-02": [
+        490,
+        268
+      ],
+      "ground-variation-03": [
+        680,
+        268
+      ],
+      "ground-variation-04": [
+        870,
+        268
+      ],
+      "ground-variation-05": [
+        1060,
+        268
+      ],
+      "ground-variation-06": [
+        1250,
+        268
+      ],
+      "surface-transitions-01": [
+        300,
+        458
+      ],
+      "surface-transitions-02": [
+        490,
+        458
+      ],
+      "surface-transitions-03": [
+        680,
+        458
+      ],
+      "surface-transitions-04": [
+        870,
+        458
+      ],
+      "surface-transitions-05": [
+        1060,
+        458
+      ],
+      "surface-transitions-06": [
+        1250,
+        458
+      ]
+    },
+    "grouped_placements": [
+      {
+        "id": "ground-surfaces-01",
+        "position": [
+          46,
+          170
+        ]
+      },
+      {
+        "id": "ground-surfaces-02",
+        "position": [
+          231,
+          170
+        ]
+      },
+      {
+        "id": "ground-variation-01",
+        "position": [
+          416,
+          170
+        ]
+      },
+      {
+        "id": "ground-surfaces-03",
+        "position": [
+          676,
+          170
+        ]
+      },
+      {
+        "id": "ground-surfaces-05",
+        "position": [
+          861,
+          170
+        ]
+      },
+      {
+        "id": "ground-variation-04",
+        "position": [
+          1046,
+          170
+        ]
+      },
+      {
+        "id": "surface-transitions-01",
+        "position": [
+          46,
+          470
+        ]
+      },
+      {
+        "id": "surface-transitions-02",
+        "position": [
+          231,
+          470
+        ]
+      },
+      {
+        "id": "surface-transitions-03",
+        "position": [
+          416,
+          470
+        ]
+      },
+      {
+        "id": "surface-transitions-04",
+        "position": [
+          676,
+          470
+        ]
+      },
+      {
+        "id": "surface-transitions-05",
+        "position": [
+          861,
+          470
+        ]
+      },
+      {
+        "id": "surface-transitions-06",
+        "position": [
+          1046,
+          470
+        ]
+      }
+    ],
+    "units": "pixels at 1:1 export scale",
+    "status": "proposed only; ground candidate seams, tileability and anchors untested"
+  },
+  "crop_policy": {
+    "alpha_threshold": 8,
+    "margin_pixels": 8,
+    "original_sources_preserved": true
+  },
+  "notes": "Generic ground material candidates only; seams, tileability and runtime suitability unverified."
+}

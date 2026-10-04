@@ -171,10 +171,17 @@ See `art-direction/effects-batch/README.md` for exact source acceptance, scoped 
 and derivative reproduction evidence. Animation, anchors, runtime integration and
 effects semantics remain separate.
 
-The next bounded series is the 18-candidate residual ground artwork inventory in
-`art-direction/residual-terrain-plan/README.md`: ground surfaces, variation and transitions.
-Its read-only audit verifies all 35 existing manifest terrain exports; no predecessor
-artwork or runtime inputs changed. The overall terrain category remains open.
+Approved complete residual-ground artwork series (2026-10-04): 18 material, variation
+and transition studies, editable 2x masters, three labelled family boards, both 1:1 scale
+boards and representative groups. Exact acceptance binds all 45 artwork files; scoped
+checks and byte reproduction pass. See `art-direction/residual-ground-batch/README.md`.
+The original read-only terrain inventory verifies all 35 predecessor terrain exports.
+The subsequent `art-direction/residual-ground-readiness/README.md` repeats all twelve
+material/transition exports and exposes transparent perimeter gaps and unverified
+connector geometry. The next bounded series is a separate twelve-module external tiling
+feasibility proof: six repeatable surfaces plus six matching transitions. Preserve the
+approved studies and existing terrain. Overall terrain production suitability and
+runtime integration remain open.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's

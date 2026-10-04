@@ -1,0 +1,295 @@
+{
+  "date": "2026-10-04",
+  "scope": "Read-only external material readiness audit",
+  "acceptance_sha256": "96d530018e0fb110cec0a97a22110802e944601e67826f099286130090e0f36b",
+  "assets": [
+    {
+      "id": "ground-surfaces-01",
+      "export": "art-direction/residual-ground-batch/exports/ground-surfaces-01.png",
+      "sha256": "b5cfd9aaad047c842ab2fa9cac308e00c7b673fe5f8f0d12222823f57bcba3a1",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        6,
+        6,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "ground-surfaces-02",
+      "export": "art-direction/residual-ground-batch/exports/ground-surfaces-02.png",
+      "sha256": "456f15678755f2f165934b30ae3a4df93ed3bd229a7c6d1f2c1d2f9058114b9f",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        6,
+        6,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "ground-surfaces-03",
+      "export": "art-direction/residual-ground-batch/exports/ground-surfaces-03.png",
+      "sha256": "6b5478e3498a36ebfbad90274da9b5b305c6f8d378023fc6b2fdd421324a6978",
+      "export_size": [
+        136,
+        136
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        6,
+        6,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "ground-surfaces-04",
+      "export": "art-direction/residual-ground-batch/exports/ground-surfaces-04.png",
+      "sha256": "d3ad671d92f7775989e0e2ce5ba3f378753c56d29d4857fb54d0055759abab2e",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        7,
+        7,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "ground-surfaces-05",
+      "export": "art-direction/residual-ground-batch/exports/ground-surfaces-05.png",
+      "sha256": "792ef809e8dc671ece27228d469d23c4da513475964037ba635bdcfe574e5601",
+      "export_size": [
+        136,
+        136
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        7,
+        7,
+        130,
+        130
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "ground-surfaces-06",
+      "export": "art-direction/residual-ground-batch/exports/ground-surfaces-06.png",
+      "sha256": "d69b4cf278b10d65a4bf24f67fcff51216cad89df476084de398e146c5474460",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        6,
+        7,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "surface-transitions-01",
+      "export": "art-direction/residual-ground-batch/exports/surface-transitions-01.png",
+      "sha256": "39ed5e49758eda1906f02b73e7231f76b289464cdaea91908be72e6e54ef99ea",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        6,
+        7,
+        129,
+        128
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "surface-transitions-02",
+      "export": "art-direction/residual-ground-batch/exports/surface-transitions-02.png",
+      "sha256": "a2f5c1435f8b87d23eefc5fc07d91ab51a2035669dca7758a9e10afc8842aa77",
+      "export_size": [
+        136,
+        134
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        7,
+        7,
+        129,
+        127
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "surface-transitions-03",
+      "export": "art-direction/residual-ground-batch/exports/surface-transitions-03.png",
+      "sha256": "530f0d84f3a8ae47bc134dea24db1b8577d8e2a1b447839e178f5122e785d699",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        7,
+        6,
+        130,
+        128
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "surface-transitions-04",
+      "export": "art-direction/residual-ground-batch/exports/surface-transitions-04.png",
+      "sha256": "10cb5432825f519a4effd35c5832bdea2e2e8301e1920c5226fe9acf1bdbde21",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        6,
+        7,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "surface-transitions-05",
+      "export": "art-direction/residual-ground-batch/exports/surface-transitions-05.png",
+      "sha256": "366f1a905c1e5b5b8f5a0e2eefc4fbb8d9ad3aa706f67d58ca00b703d651642d",
+      "export_size": [
+        136,
+        134
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        7,
+        7,
+        129,
+        128
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    },
+    {
+      "id": "surface-transitions-06",
+      "export": "art-direction/residual-ground-batch/exports/surface-transitions-06.png",
+      "sha256": "c08552c97ee6991678acb975c174873e71aaed294990c5cdfc3c3578d5b82a28",
+      "export_size": [
+        136,
+        135
+      ],
+      "border_max_alpha_top_bottom_left_right": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "alpha_ge_8_bounds": [
+        7,
+        7,
+        129,
+        129
+      ],
+      "transparent_outer_edges": true,
+      "repeatability_status": "padded presentation candidate; opaque connected material tiling not established"
+    }
+  ],
+  "review_images": {
+    "ground-surfaces-repeat.png": "3f006e9e1175ee0dfe0d183fe4e760b7b7df7386f7dae89212a87e0b70fa3e2e",
+    "surface-transitions-repeat.png": "c0349e290f5d08a15bd669ffa036f683b4ea6a96c2be18fd260702b6705b33c7"
+  },
+  "findings": [
+    "All twelve exports have fully transparent outer rows and columns; adjacent padded copies leave background gutters",
+    "Matching transparent border values is not evidence of seamless material paint",
+    "Generated transition corners have no verified shared endpoints, fixed material coverage or connectors",
+    "Six variation overlays retain their intended isolated alpha; no new variation candidates are required by this audit"
+  ],
+  "next_slice": "Separate complete external production-feasibility package of six repeatable surface modules and six source-matched straight/outer/inset transition modules; preserve approved material studies and existing terrain",
+  "authority": "No runtime, collision, navigation, topology or terrain-completeness acceptance"
+}

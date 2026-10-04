@@ -11,8 +11,9 @@ Stream water/banks/cap and the five whole-channel atlases. Keep those packages f
 The packed-earth material mentioned in historical reviews is not a standalone terrain
 export in the current manifest. That distinction motivates the reusable material series.
 
-The next bounded artwork slice is the entire proposed **18-candidate residual ground
-series**, six candidates in each family, with unchanged sources, editable 2x masters,
+The **18-candidate residual ground series**, now
+[owner-approved](../residual-ground-batch/README.md), contains six candidates in each
+family, with unchanged sources, editable 2x masters,
 labelled family boards, actual-scale compositions and collective owner review:
 
 | Family | Complete proposed series |
@@ -30,5 +31,7 @@ placement. No new water or bank assets are needed for this slice.
 During artwork production use lightweight source/crop/scale checks only. Candidate
 tileability, connector dimensions, seam handling, anchors and import settings remain
 provisional until scoped review. This is a proposed residual inventory, not owner
-acceptance or a claim that the complete terrain category is finished. After this series
-is reviewed, reassess any remaining category gaps before checking the terrain task off.
+acceptance or a claim that the complete terrain category is finished. The
+[readiness audit](../residual-ground-readiness/README.md) now identifies remaining
+repeatability and connector gaps. The next slice is its separate twelve-module tiling
+feasibility series; keep the terrain task open.

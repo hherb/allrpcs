@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "base_commit": "4fcdcd9",
+  "scope": "Complete external residual-ground artwork series; inherited effects review fixes are preserved in predecessor 4fcdcd9",
+  "review": {
+    "method": "Primary-agent cumulative code review and visual inspection of all three source sheets and all six review boards",
+    "fixes": [
+      "Inspector independently verifies 1:1 composited pixels and placements for every export on both scale boards and 12 grouped placements",
+      "Checked transition material-reference hash and recorded full prompt coverage",
+      "Builder handles an absent optional evidence directory in a fresh checkout",
+      "Clarified generated transition reinterpretation and slightly translucent material edges; no seam or tileability claim",
+      "Exact acceptance covers all 45 artwork files and freezes the technical review manifest"
+    ],
+    "remaining_code_findings": [],
+    "limitations": [
+      "Only external artwork is approved",
+      "All ground surfaces and transitions are material studies with padded, slightly translucent edges",
+      "Seams, repeatability, corner geometry, anchors, accessibility and runtime imports remain unverified"
+    ]
+  },
+  "checks": {
+    "command": "/opt/homebrew/bin/python3 art-direction/residual-ground-batch/inspect_package.py",
+    "result": [
+      "PASS: 18 ground candidates, 18 exact 2x masters, three sources and six review images.",
+      "PASS: candidate hashes, RGBA, OpenRaster layers and master/export parity.",
+      "PASS: all 18 exports on both 1:1 scale boards and 12 grouped placements.",
+      "PASS: exact complete-series owner artwork acceptance.",
+      "Seams, tileability and runtime suitability remain unverified."
+    ],
+    "byte_reproduction": "51 manifested files and manifest byte-identical after final rebuild"
+  },
+  "regression": {
+    "product_runtime_ci_change_since_2fcc849": "none",
+    "full_product_suites": "Not replayed for unchanged product inputs; retain art-direction/woodland-environment-batch/validation.json"
+  }
+}

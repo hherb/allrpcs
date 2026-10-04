@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "passed",
+  "scope": "Owner-approved external residual-ground artwork only",
+  "acceptance_sha256": "96d530018e0fb110cec0a97a22110802e944601e67826f099286130090e0f36b",
+  "checks": [
+    "PASS: 18 ground candidates, 18 exact 2x masters, three sources and six review images.",
+    "PASS: candidate hashes, RGBA, OpenRaster layers and master/export parity.",
+    "PASS: all 18 exports on both 1:1 scale boards and 12 grouped placements.",
+    "PASS: exact complete-series owner artwork acceptance.",
+    "Seams, tileability and runtime suitability remain unverified."
+  ],
+  "artwork_change_since_owner_review": "none",
+  "byte_reproduction": "51 manifested files and manifest byte-identical after final rebuild",
+  "product_runtime_ci_change_since_2fcc849": "none",
+  "retained_full_suite": "art-direction/woodland-environment-batch/validation.json",
+  "runtime_authority": "none"
+}

@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-04",
+  "transparent_background": true,
+  "prompt_file": "prompts.json",
+  "sources": {
+    "ground-surfaces": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a10510-4590-7293-b84c-695caf8f693c/exec-baafd486-7c90-4a5e-a809-6293c2006d38.png",
+      "sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+    },
+    "ground-variation": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a10510-4590-7293-b84c-695caf8f693c/exec-2bce4c04-0a2c-49e6-bfeb-a5d62f79a20d.png",
+      "sha256": "a3ca0177772fa182ebb33676653177ed441e90e7b23f94b2b382fac5191669e0"
+    },
+    "surface-transitions": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a10510-4590-7293-b84c-695caf8f693c/exec-43e0cc02-b9f0-40d9-9df6-fea11ad1f1a5.png",
+      "sha256": "ebf4eccac5cc19897722a2516b806874d6336cb83d7b5c743017c61b114c02c6"
+    }
+  },
+  "transition_material_reference": {
+    "path": "sources/ground-surfaces.png",
+    "sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24",
+    "role": "Generated paint reinterpretation; no exact shared-pixel seam claim"
+  }
+}
