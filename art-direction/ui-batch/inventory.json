@@ -1,0 +1,1389 @@
+{
+  "status": "awaiting collective owner artwork review",
+  "generator": "built-in image_gen",
+  "asset_count": 36,
+  "assets": [
+    {
+      "id": "journal-01",
+      "name": "Open journal",
+      "source": "sources/journal.png",
+      "source_cell": [
+        0,
+        0,
+        720,
+        520
+      ],
+      "source_crop_in_cell": [
+        49,
+        51,
+        685,
+        514
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 21,
+        "max_alpha": 1
+      },
+      "master": "masters/journal-01.ora",
+      "export": "exports/journal-01.png",
+      "size": [
+        379,
+        278
+      ],
+      "master_size": [
+        758,
+        556
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3145bca118329bcc847a920cbfeeb05f33d1919a588d3b181d5956b699f9a083",
+      "master_sha256": "94d7ead445d33f34ab70cb1134498fc81f33e9c0d0c6dfdcce6109ee5dfac7cb"
+    },
+    {
+      "id": "journal-02",
+      "name": "Entry card",
+      "source": "sources/journal.png",
+      "source_cell": [
+        720,
+        0,
+        1160,
+        520
+      ],
+      "source_crop_in_cell": [
+        19,
+        38,
+        381,
+        507
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 117,
+        "max_alpha": 1
+      },
+      "master": "masters/journal-02.ora",
+      "export": "exports/journal-02.png",
+      "size": [
+        128,
+        163
+      ],
+      "master_size": [
+        256,
+        326
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "6a3f4f0b05ee22f908d51bcca3524b7d58e510cd4917730948dee7fef93de9e6",
+      "master_sha256": "ab09022d7a8dd9f95a4db60d3ab0c04098a32a69c30147a1be0fbd752461706b"
+    },
+    {
+      "id": "journal-03",
+      "name": "Moss bookmark",
+      "source": "sources/journal.png",
+      "source_cell": [
+        1160,
+        0,
+        1536,
+        520
+      ],
+      "source_crop_in_cell": [
+        89,
+        51,
+        273,
+        494
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 101,
+        "max_alpha": 1
+      },
+      "master": "masters/journal-03.ora",
+      "export": "exports/journal-03.png",
+      "size": [
+        35,
+        72
+      ],
+      "master_size": [
+        70,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c7583bdd4d3e5e39a1fab2426278434569a52345ccb9f485fbe6210dd598062a",
+      "master_sha256": "4dc15c0d46d4c152f6d033d76a4d8112874f623bf139cc8b69d3736abc3588b5"
+    },
+    {
+      "id": "journal-04",
+      "name": "Ochre bookmark",
+      "source": "sources/journal.png",
+      "source_cell": [
+        0,
+        520,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        187,
+        8,
+        373,
+        458
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 135,
+        "max_alpha": 1
+      },
+      "master": "masters/journal-04.ora",
+      "export": "exports/journal-04.png",
+      "size": [
+        34,
+        72
+      ],
+      "master_size": [
+        68,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "402ee5819120ed7af7ecc329aca3b319d251f0f0d4dcf80b5190bf638d21e1ca",
+      "master_sha256": "789c9efe6b52f18be9ce89101419bea57c03d2236720c6f2e113324aa1658ed9"
+    },
+    {
+      "id": "journal-05",
+      "name": "Previous page",
+      "source": "sources/journal.png",
+      "source_cell": [
+        512,
+        520,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        95,
+        71,
+        418,
+        369
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 627,
+        "max_alpha": 1
+      },
+      "master": "masters/journal-05.ora",
+      "export": "exports/journal-05.png",
+      "size": [
+        52,
+        49
+      ],
+      "master_size": [
+        104,
+        98
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ceb0f9ebd9b7092c2f6ca98dddd1ac95303d2657cdfac27e40bf97762861f545",
+      "master_sha256": "75e908898d4213bdd4257bc1e478f5f02de58ae28eef2f575f247eadc0e41406"
+    },
+    {
+      "id": "journal-06",
+      "name": "Next page",
+      "source": "sources/journal.png",
+      "source_cell": [
+        1024,
+        520,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        108,
+        69,
+        424,
+        369
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 195,
+        "max_alpha": 1
+      },
+      "master": "masters/journal-06.ora",
+      "export": "exports/journal-06.png",
+      "size": [
+        52,
+        50
+      ],
+      "master_size": [
+        104,
+        100
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "79a8e12da61ba16c860f6ce7a4af49ae22e8a942f8ae599c2d841c1c25de9cd5",
+      "master_sha256": "814c62bc5436e8c0f5a3ac281c8eb32a255de4074817575327a1fe761da25d92"
+    },
+    {
+      "id": "map-01",
+      "name": "Blank map panel",
+      "source": "sources/map.png",
+      "source_cell": [
+        0,
+        0,
+        740,
+        560
+      ],
+      "source_crop_in_cell": [
+        23,
+        43,
+        727,
+        550
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 2,
+        "max_alpha": 1
+      },
+      "master": "masters/map-01.ora",
+      "export": "exports/map-01.png",
+      "size": [
+        383,
+        278
+      ],
+      "master_size": [
+        766,
+        556
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "4beddec34fb063ea7eb6c233673c1aef749eb70ad46402a41f99dcf2c4532c55",
+      "master_sha256": "083553dcb5c9e1e2c87f62d433fbe1e371a1b95aef52d8c7a2c34e70484f8319"
+    },
+    {
+      "id": "map-02",
+      "name": "Legend card",
+      "source": "sources/map.png",
+      "source_cell": [
+        740,
+        0,
+        1110,
+        560
+      ],
+      "source_crop_in_cell": [
+        28,
+        89,
+        337,
+        519
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4,
+        "max_alpha": 1
+      },
+      "master": "masters/map-02.ora",
+      "export": "exports/map-02.png",
+      "size": [
+        123,
+        168
+      ],
+      "master_size": [
+        246,
+        336
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "28a0fd6c5a2e6266ec5d5b4ae0c6cbb7c900c4ea9051e213bd6d53000a03d455",
+      "master_sha256": "59ecfcd92b10d91d2853245f0671c2e742d428e19e0a8dac81647518eaf64e2a"
+    },
+    {
+      "id": "map-03",
+      "name": "Compass",
+      "source": "sources/map.png",
+      "source_cell": [
+        1110,
+        0,
+        1536,
+        560
+      ],
+      "source_crop_in_cell": [
+        3,
+        89,
+        411,
+        517
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 23,
+        "max_alpha": 1
+      },
+      "master": "masters/map-03.ora",
+      "export": "exports/map-03.png",
+      "size": [
+        69,
+        72
+      ],
+      "master_size": [
+        138,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "1761bd5f9cdca9ed3b767d93863f627b5d533e34ab73ffb680245a391fc199f5",
+      "master_sha256": "e4e710848fb2d08d60ed47f2bff12108c0010e15038296f2b59597bb01a5cad3"
+    },
+    {
+      "id": "map-04",
+      "name": "Location pin",
+      "source": "sources/map.png",
+      "source_cell": [
+        0,
+        560,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        137,
+        26,
+        408,
+        392
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 404,
+        "max_alpha": 1
+      },
+      "master": "masters/map-04.ora",
+      "export": "exports/map-04.png",
+      "size": [
+        52,
+        67
+      ],
+      "master_size": [
+        104,
+        134
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "91ee83a612cfec2889295d074d4f720fb8c6d822771041cab8c093aa6fa6505e",
+      "master_sha256": "5ba3ff1e514b21dfe537ba2d19c63d9736b92271a380f74cb990ad85fd3d6e62"
+    },
+    {
+      "id": "map-05",
+      "name": "Zoom in",
+      "source": "sources/map.png",
+      "source_cell": [
+        512,
+        560,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        95,
+        47,
+        415,
+        369
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 165,
+        "max_alpha": 1
+      },
+      "master": "masters/map-05.ora",
+      "export": "exports/map-05.png",
+      "size": [
+        52,
+        52
+      ],
+      "master_size": [
+        104,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "6f769d06aebea46e1ed12f87751b076fd08df8763f93f71a468396afa31f6495",
+      "master_sha256": "6717a2eee39cafcdaf3ff9e51d74fb4bed22ddc1b024e08d8da42c0215a362b3"
+    },
+    {
+      "id": "map-06",
+      "name": "Zoom out",
+      "source": "sources/map.png",
+      "source_cell": [
+        1024,
+        560,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        97,
+        47,
+        419,
+        370
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 342,
+        "max_alpha": 1
+      },
+      "master": "masters/map-06.ora",
+      "export": "exports/map-06.png",
+      "size": [
+        52,
+        52
+      ],
+      "master_size": [
+        104,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "0073f2cda10e1c605b8c2b7c935627ef6565bd4a0b2940d0210c9fff67cad9ad",
+      "master_sha256": "f5d9684167ea782c4c1906df8cbf69d7061daf651839b6c26604befb2a62b0e2"
+    },
+    {
+      "id": "inventory-01",
+      "name": "Inventory panel",
+      "source": "sources/inventory.png",
+      "source_cell": [
+        0,
+        0,
+        715,
+        550
+      ],
+      "source_crop_in_cell": [
+        43,
+        125,
+        665,
+        513
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1705,
+        "max_alpha": 1
+      },
+      "master": "masters/inventory-01.ora",
+      "export": "exports/inventory-01.png",
+      "size": [
+        388,
+        245
+      ],
+      "master_size": [
+        776,
+        490
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "bfcbed92c6a38de5921b407f64d7415b08c9ae9d4b05f86e64bad82629728aa9",
+      "master_sha256": "5706869ea7cc0eafcc64c31940d406c3c0c6528783f78447a2343794e3529e13"
+    },
+    {
+      "id": "inventory-02",
+      "name": "Empty slot",
+      "source": "sources/inventory.png",
+      "source_cell": [
+        715,
+        0,
+        1120,
+        550
+      ],
+      "source_crop_in_cell": [
+        39,
+        169,
+        371,
+        486
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1422,
+        "max_alpha": 1
+      },
+      "master": "masters/inventory-02.ora",
+      "export": "exports/inventory-02.png",
+      "size": [
+        68,
+        65
+      ],
+      "master_size": [
+        136,
+        130
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "671ef8bcb2408f261ebccf670e48d3069f20afb6d4dbdeddf6e0e0ca58c3569e",
+      "master_sha256": "019b944848d86d283e7022f13c628b28fc1c6058f77a78f0b2570fab45ab6d21"
+    },
+    {
+      "id": "inventory-03",
+      "name": "Selected slot",
+      "source": "sources/inventory.png",
+      "source_cell": [
+        1120,
+        0,
+        1536,
+        550
+      ],
+      "source_crop_in_cell": [
+        36,
+        168,
+        374,
+        484
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 436,
+        "max_alpha": 1
+      },
+      "master": "masters/inventory-03.ora",
+      "export": "exports/inventory-03.png",
+      "size": [
+        68,
+        64
+      ],
+      "master_size": [
+        136,
+        128
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "639f797df687c374ababce0f4c68dd2a72efd5748fda7e7f348e6ab969ef5d71",
+      "master_sha256": "46762f93b7a2c7343798fbeb16106ec5b7b7c333f9eeff2f7e3a0a1a4daa4c5b"
+    },
+    {
+      "id": "inventory-04",
+      "name": "Description card",
+      "source": "sources/inventory.png",
+      "source_cell": [
+        0,
+        550,
+        640,
+        1024
+      ],
+      "source_crop_in_cell": [
+        40,
+        62,
+        625,
+        310
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1664,
+        "max_alpha": 1
+      },
+      "master": "masters/inventory-04.ora",
+      "export": "exports/inventory-04.png",
+      "size": [
+        220,
+        98
+      ],
+      "master_size": [
+        440,
+        196
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3ef2b1509ed0e42d9b5baaa19209da331bea017509438c568eb325169bc7b007",
+      "master_sha256": "d7f7bea991eda4d8cfc930fc11550b0b3046e2bed8b9fb211c4b239e4bd891ba"
+    },
+    {
+      "id": "inventory-05",
+      "name": "Category tab",
+      "source": "sources/inventory.png",
+      "source_cell": [
+        640,
+        550,
+        1200,
+        1024
+      ],
+      "source_crop_in_cell": [
+        16,
+        118,
+        548,
+        273
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 3824,
+        "max_alpha": 1
+      },
+      "master": "masters/inventory-05.ora",
+      "export": "exports/inventory-05.png",
+      "size": [
+        145,
+        48
+      ],
+      "master_size": [
+        290,
+        96
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "29afd6120ac867aee64fbad8946b1fc53b0fea0fbac17de732f7084c2530257d",
+      "master_sha256": "71b54630a367137f276085d4caabf8196b898acf3c01707dadd54d815aee73b2"
+    },
+    {
+      "id": "inventory-06",
+      "name": "Close",
+      "source": "sources/inventory.png",
+      "source_cell": [
+        1200,
+        550,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        20,
+        48,
+        298,
+        327
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 140,
+        "max_alpha": 1
+      },
+      "master": "masters/inventory-06.ora",
+      "export": "exports/inventory-06.png",
+      "size": [
+        52,
+        52
+      ],
+      "master_size": [
+        104,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "4195a7164d8193c7c0bfa6d0259e73180c72b9df0a7fdb01a5c6d144cb3772a8",
+      "master_sha256": "b4cd15ab5aea0ca2f66e78888a30db6912b60a60282cb11a60d835b78e9889d0"
+    },
+    {
+      "id": "dialogue-01",
+      "name": "Dialogue panel",
+      "source": "sources/dialogue.png",
+      "source_cell": [
+        0,
+        0,
+        570,
+        580
+      ],
+      "source_crop_in_cell": [
+        15,
+        153,
+        566,
+        466
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 840,
+        "max_alpha": 1
+      },
+      "master": "masters/dialogue-01.ora",
+      "export": "exports/dialogue-01.png",
+      "size": [
+        290,
+        168
+      ],
+      "master_size": [
+        580,
+        336
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f4f96ca4dbf158d007b17c3109230461f6f21e5fd83b8e879e23561a4b21e83f",
+      "master_sha256": "1eeb62a3f60ae2c9d7ec6fd2bb5f273a8c3bb0b0ad47b67e3f5d126ae6eca399"
+    },
+    {
+      "id": "dialogue-02",
+      "name": "Entry field",
+      "source": "sources/dialogue.png",
+      "source_cell": [
+        570,
+        0,
+        1140,
+        580
+      ],
+      "source_crop_in_cell": [
+        0,
+        255,
+        570,
+        380
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 2294,
+        "max_alpha": 1
+      },
+      "master": "masters/dialogue-02.ora",
+      "export": "exports/dialogue-02.png",
+      "size": [
+        209,
+        52
+      ],
+      "master_size": [
+        418,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "1461f42ed7ec5aa99f34c5f1eedd22c7d758a4569e17a3bcceb575a4817643a5",
+      "master_sha256": "607747ffd31248dacc139d0be140d1645076cb02b0b4123e1419e855c53b7e82"
+    },
+    {
+      "id": "dialogue-03",
+      "name": "Portrait surround",
+      "source": "sources/dialogue.png",
+      "source_cell": [
+        1140,
+        0,
+        1536,
+        580
+      ],
+      "source_crop_in_cell": [
+        0,
+        69,
+        381,
+        506
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 9,
+        "max_alpha": 1
+      },
+      "master": "masters/dialogue-03.ora",
+      "export": "exports/dialogue-03.png",
+      "size": [
+        85,
+        96
+      ],
+      "master_size": [
+        170,
+        192
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c825624771b408bd3e790c36483c669624542a3d18a12dfdaa64fd5d4d77aed6",
+      "master_sha256": "8508a52659f6053a63feffb4bb9652d3c38444173b53cb87b61b2a424b6e77d4"
+    },
+    {
+      "id": "dialogue-04",
+      "name": "Response",
+      "source": "sources/dialogue.png",
+      "source_cell": [
+        0,
+        580,
+        580,
+        1024
+      ],
+      "source_crop_in_cell": [
+        20,
+        110,
+        575,
+        273
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 5272,
+        "max_alpha": 1
+      },
+      "master": "masters/dialogue-04.ora",
+      "export": "exports/dialogue-04.png",
+      "size": [
+        158,
+        52
+      ],
+      "master_size": [
+        316,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c3ba4b4feaefbb4f7a8a5dce8a4268493b8fbbc1d58881495cf1565cbab3df41",
+      "master_sha256": "7661f9a47e60bd0f07f95e67596faadf7c3cf029144ad612ea2e8096537cd08b"
+    },
+    {
+      "id": "dialogue-05",
+      "name": "Focused response",
+      "source": "sources/dialogue.png",
+      "source_cell": [
+        580,
+        580,
+        1170,
+        1024
+      ],
+      "source_crop_in_cell": [
+        5,
+        91,
+        579,
+        284
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1687,
+        "max_alpha": 1
+      },
+      "master": "masters/dialogue-05.ora",
+      "export": "exports/dialogue-05.png",
+      "size": [
+        139,
+        52
+      ],
+      "master_size": [
+        278,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "a294ad091854328326e68750db2c1dbe5f8f97efd66dbc9e53ae86f7550a5d22",
+      "master_sha256": "7bcbf55ec845c5c4fb7d03aaf7411f1ab27ea47987a29e3538ab6684351a58b3"
+    },
+    {
+      "id": "dialogue-06",
+      "name": "Waiting dots",
+      "source": "sources/dialogue.png",
+      "source_cell": [
+        1170,
+        580,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        69,
+        99,
+        326,
+        283
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 39,
+        "max_alpha": 1
+      },
+      "master": "masters/dialogue-06.ora",
+      "export": "exports/dialogue-06.png",
+      "size": [
+        53,
+        40
+      ],
+      "master_size": [
+        106,
+        80
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "26ac1c104ec3c21c488306722fbe599927b444165c4b564694f640ecf001f850",
+      "master_sha256": "c313f33eeca2589bef5a1c28a4500aa06e35a88c6fac4ef590f8b68a6591db22"
+    },
+    {
+      "id": "settings-01",
+      "name": "Settings panel",
+      "source": "sources/settings.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        28,
+        73,
+        512,
+        492
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 16,
+        "max_alpha": 1
+      },
+      "master": "masters/settings-01.ora",
+      "export": "exports/settings-01.png",
+      "size": [
+        320,
+        278
+      ],
+      "master_size": [
+        640,
+        556
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7a0f189a739923c2c0feac2be7924162cdfcd7a6ca8bef86e9983c325ee865d4",
+      "master_sha256": "a47d07078ac4b3c64c5a1710fa839d21f1f4bac960f61e24b2d1226d777db160"
+    },
+    {
+      "id": "settings-02",
+      "name": "Neutral button",
+      "source": "sources/settings.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        28,
+        226,
+        486,
+        365
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 2862,
+        "max_alpha": 1
+      },
+      "master": "masters/settings-02.ora",
+      "export": "exports/settings-02.png",
+      "size": [
+        153,
+        52
+      ],
+      "master_size": [
+        306,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "33213d96951bcfb3070ee082c726b6250e5ab0ae8f127a1ba3b21f650382a6ad",
+      "master_sha256": "49f652b174988340b99eeb020b71be6830530c2d833eb291067c70266a8986e4"
+    },
+    {
+      "id": "settings-03",
+      "name": "Focused button",
+      "source": "sources/settings.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        12,
+        226,
+        487,
+        368
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1879,
+        "max_alpha": 1
+      },
+      "master": "masters/settings-03.ora",
+      "export": "exports/settings-03.png",
+      "size": [
+        155,
+        52
+      ],
+      "master_size": [
+        310,
+        104
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "97e4ab79c6d8ab99cee9c827ec8e4c2de77c12ef8debf5a397e2647b0ee6939c",
+      "master_sha256": "75f14ee3410b801719230278ebf246fb3f3ecc0ae1dd1c4ac1cc85ccc606c04d"
+    },
+    {
+      "id": "settings-04",
+      "name": "Slider",
+      "source": "sources/settings.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        36,
+        180,
+        503,
+        285
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 465,
+        "max_alpha": 1
+      },
+      "master": "masters/settings-04.ora",
+      "export": "exports/settings-04.png",
+      "size": [
+        133,
+        36
+      ],
+      "master_size": [
+        266,
+        72
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c16f97c8bab196e3c56846981e3adb2fee39f518cfdf9cf94ca0d58563475961",
+      "master_sha256": "2d1a2093220b8df2254304d82c02d8b967751d2d729c9af93cdb810bbf060bef"
+    },
+    {
+      "id": "settings-05",
+      "name": "Unchecked",
+      "source": "sources/settings.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        160,
+        131,
+        348,
+        325
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1347,
+        "max_alpha": 1
+      },
+      "master": "masters/settings-05.ora",
+      "export": "exports/settings-05.png",
+      "size": [
+        43,
+        44
+      ],
+      "master_size": [
+        86,
+        88
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "dc1894be7be87d76eb60523633fddd441f1006fb04a12c7c5b602a53784e3581",
+      "master_sha256": "80987b5ad28819482d19c286300a397ee5797560f095a954f886d3dde41b2003"
+    },
+    {
+      "id": "settings-06",
+      "name": "Checked",
+      "source": "sources/settings.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        153,
+        131,
+        341,
+        324
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 954,
+        "max_alpha": 1
+      },
+      "master": "masters/settings-06.ora",
+      "export": "exports/settings-06.png",
+      "size": [
+        43,
+        44
+      ],
+      "master_size": [
+        86,
+        88
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9956ea5bf785a4dcd03afac5b877f235c59dd22ca5995f5176aeddb3404c64a2",
+      "master_sha256": "22bdcdfe0880992a9505c81e1860d34ec85b550ae04f54942a3a6eb8ad4f00ea"
+    },
+    {
+      "id": "provider-state-01",
+      "name": "Disconnected",
+      "source": "sources/provider-state.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        5,
+        167,
+        512,
+        446
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 145,
+        "max_alpha": 1
+      },
+      "master": "masters/provider-state-01.ora",
+      "export": "exports/provider-state-01.png",
+      "size": [
+        124,
+        72
+      ],
+      "master_size": [
+        248,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7df15b7c4c2fae4b8f8a6a30feb1ada715ebe006bb5ccbf5557c773f0947fa9e",
+      "master_sha256": "c31692bfc43d0e8fb915d2e5eb4451fcbdca8a4f73577ad96410215300111578"
+    },
+    {
+      "id": "provider-state-02",
+      "name": "Connecting",
+      "source": "sources/provider-state.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        7,
+        171,
+        510,
+        443
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 241,
+        "max_alpha": 3
+      },
+      "master": "masters/provider-state-02.ora",
+      "export": "exports/provider-state-02.png",
+      "size": [
+        126,
+        72
+      ],
+      "master_size": [
+        252,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "2691bf972155e4f9306652b941d7ec6e48799b0d97bbd4655e91f81c01977bb3",
+      "master_sha256": "b5e98bfaa296c0a16ec82fce2046fefbc3d5ff49c64eb03dbf986fa14318792b"
+    },
+    {
+      "id": "provider-state-03",
+      "name": "Ready",
+      "source": "sources/provider-state.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        0,
+        169,
+        505,
+        443
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 63,
+        "max_alpha": 1
+      },
+      "master": "masters/provider-state-03.ora",
+      "export": "exports/provider-state-03.png",
+      "size": [
+        126,
+        72
+      ],
+      "master_size": [
+        252,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "9b15962d116e6b8f5c1c57675e146df1fda1c848763484e712309b9435dd937d",
+      "master_sha256": "9fdb996d8ea462bbe0427e5c5614189b5c629d59d05be56ec35f4feaa20211bd"
+    },
+    {
+      "id": "provider-state-04",
+      "name": "Waiting",
+      "source": "sources/provider-state.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        12,
+        71,
+        512,
+        347
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 217,
+        "max_alpha": 1
+      },
+      "master": "masters/provider-state-04.ora",
+      "export": "exports/provider-state-04.png",
+      "size": [
+        124,
+        72
+      ],
+      "master_size": [
+        248,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c39e1bc47d64520b490418178d51477bf07efdc9c1a4df994c625e3f4513589c",
+      "master_sha256": "5c3362903f2c6233e3b5d65144178b660e5665d918ef1eb890fc36a10ada3b81"
+    },
+    {
+      "id": "provider-state-05",
+      "name": "Failed",
+      "source": "sources/provider-state.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        0,
+        74,
+        511,
+        346
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 349,
+        "max_alpha": 1
+      },
+      "master": "masters/provider-state-05.ora",
+      "export": "exports/provider-state-05.png",
+      "size": [
+        128,
+        72
+      ],
+      "master_size": [
+        256,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "c7a23ff3e689180831919626a0f2d367a1b6f71e89feac3d0858e3a0956699ee",
+      "master_sha256": "42ddd9de1a762a67cbcd275d653a81677b4e2eed5c11f4b7b85cd7b5c4dd069b"
+    },
+    {
+      "id": "provider-state-06",
+      "name": "Locked",
+      "source": "sources/provider-state.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        0,
+        72,
+        505,
+        347
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 1168,
+        "max_alpha": 1
+      },
+      "master": "masters/provider-state-06.ora",
+      "export": "exports/provider-state-06.png",
+      "size": [
+        126,
+        72
+      ],
+      "master_size": [
+        252,
+        144
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "abcf320d53dbb9cb5be77990089581d5187f437e89c7905869f99dc7322dd520",
+      "master_sha256": "040be837748387a811187f553a5061185dec8d73de754ca5acc7739e4ef198fd"
+    }
+  ],
+  "scale_reference": {
+    "canvas": [
+      1280,
+      720
+    ],
+    "units": "pixels at 1:1 export scale",
+    "status": "proposed only; responsive layout and accessibility untested"
+  },
+  "crop_policy": {
+    "alpha_threshold": 8,
+    "margin_pixels": 8,
+    "original_sources_preserved": true
+  },
+  "notes": "Blank content fields; no functional UI, scenario facts or runtime authority."
+}

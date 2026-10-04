@@ -149,7 +149,7 @@ shaft-aligned connectors, restrained knee flex and removal of a moving staff fra
 Original artwork and the first rig snapshot remain as lineage. The owner approved
 the complete polished walking series; exact hashes and scoped validation are frozen.
 The owner also confirmed full-batch approval, including the 168 retained non-walking
-assets. Complete active character acceptance is hash-bound; the next category is objects.
+assets. Complete active character acceptance is hash-bound.
 The terrain category remains open for residual work.
 
 Approved complete objects artwork batch (2026-10-04): 42 assets across all seven
@@ -157,6 +157,13 @@ families, editable 2x masters, seven labelled detail boards and two actual-expor
 compositions; see `art-direction/objects-batch/README.md`. Lightweight authoring checks
 and session review are recorded with the package. Exact owner acceptance and scoped
 approval checks are recorded. No runtime or scenario content changed.
+
+Complete UI artwork candidate batch (2026-10-04): 36 components across journal, map,
+inventory, dialogue, settings and provider-state; editable 2x masters, six labelled boards
+and two export-scale compositions. See `art-direction/ui-batch/README.md` for collective
+owner review. Approval is pending; production remains external and no functional UI changed.
+Review fixes, source crop accounting and byte reproduction are recorded with the package.
+After owner revisions and exact-hash acceptance, the next complete category is effects.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's

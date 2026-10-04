@@ -1,0 +1,32 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-04",
+  "transparent_background": true,
+  "prompt_file": "prompts.json",
+  "sources": {
+    "journal": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104a5-375e-7882-8f86-1e775c5f1cbf/exec-e67186ff-f661-4c9d-820d-050108450da1.png",
+      "sha256": "84ec7ff1d1d9c3f6538920dd48113ac00ccb1578495f64bf7939bc58b4e9b0da"
+    },
+    "map": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104a5-375e-7882-8f86-1e775c5f1cbf/exec-436a87fa-d82e-4e8d-81ee-d01704266b6c.png",
+      "sha256": "fb1628875b62105ecd2bf862847be23aa6014be19906ca74492a46cca297e921"
+    },
+    "inventory": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104a5-375e-7882-8f86-1e775c5f1cbf/exec-96fc7ff6-0788-4f42-84ff-54b076010d75.png",
+      "sha256": "dff78a380ac9990e16fef57376dd6548483d758bd5196901be91e83a0d7de129"
+    },
+    "dialogue": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104a5-375e-7882-8f86-1e775c5f1cbf/exec-137b77b0-987d-4184-8151-ed57691f9e55.png",
+      "sha256": "3d13d0a1a6905298ad9e58f5045755be1c6b811734590650b72a8a37dabf53a7"
+    },
+    "settings": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104a5-375e-7882-8f86-1e775c5f1cbf/exec-6f62d22f-bafd-4ac8-80a1-8f6720dad0a2.png",
+      "sha256": "b35e404a4bfc09db159d1ab43399e9ba0150a6d5ed79bd48e4c977d10fa2661d"
+    },
+    "provider-state": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104a5-375e-7882-8f86-1e775c5f1cbf/exec-b9d19f8b-99ba-4321-a332-58c85828886f.png",
+      "sha256": "f104228307862bd1390e5ef3bfa71a0a192732f7c75eb4194e81968bf3955700"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "base_commit": "b2e07a5e738bd83d746934162721604e494f7bfc",
+  "status": "reviewed candidate package; collective owner artwork approval pending",
+  "scope": "External UI artwork, authoring scripts and continuation documentation only",
+  "review": {
+    "method": "Primary-agent cumulative code review plus visual inspection of all six source sheets, six labelled boards and two scale compositions",
+    "fixes": [
+      "Measured source cell gutters isolate all six generated families",
+      "Initial all-alpha crops included distant faint pixels and shrank exports; recorded alpha>=8 bounds with an eight-pixel margin retain visible paint and source sheets; initial scale compositions retained in evidence",
+      "Adjusted portrait card sizes and moved overlapping map/journal components; builder rejects clipping and overlapping component rectangles",
+      "Builder refuses to overwrite owner-approved packages and uses deterministic OpenRaster ZIP timestamps",
+      "Inspector checks source provenance, crop accounting, transparent export borders, layer composition and exact source/master/export pixel parity"
+    ],
+    "remaining_code_findings": [],
+    "artwork_limits": [
+      "Owner artwork approval pending",
+      "Scale, anchors, readability, text fitting, contrast, localization, nine-slice suitability and interaction remain provisional",
+      "Masters are raster paint with a separate empty Corrections layer, not reconstructed semantic layers",
+      "Slider is a fixed illustrative state; no functional UI or scenario facts"
+    ]
+  },
+  "authoring_checks": {
+    "command": "/opt/homebrew/bin/python3 art-direction/ui-batch/inspect_package.py",
+    "result": "PASS: 36 RGBA exports, 36 exact 2x masters, six sources, eight review images, hashes, crop accounting, layer metadata and source/master/export parity",
+    "byte_reproduction": "PASS: 95 manifested files and manifest byte-identical after final rebuild",
+    "whitespace": "git diff --check passed"
+  },
+  "regression": {
+    "comparison": "git diff --name-only 2fcc849 HEAD -- game src tests scripts .github returned no changes",
+    "session_paths": "Only art-direction/ui-batch, HANDOVER.md and ROADMAP.md changed",
+    "full_product_suites": "Not replayed for external artwork, as directed by the live handover",
+    "retained_evidence": "art-direction/woodland-environment-batch/validation.json"
+  },
+  "next_checkpoint": "Collective owner review of the entire eight-image UI series, revisions, exact-hash acceptance and consolidated scoped checks"
+}
