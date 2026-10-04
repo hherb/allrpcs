@@ -158,12 +158,12 @@ compositions; see `art-direction/objects-batch/README.md`. Lightweight authoring
 and session review are recorded with the package. Exact owner acceptance and scoped
 approval checks are recorded. No runtime or scenario content changed.
 
-Complete UI artwork candidate batch (2026-10-04): 36 components across journal, map,
+Approved complete UI artwork batch (2026-10-04): 36 components across journal, map,
 inventory, dialogue, settings and provider-state; editable 2x masters, six labelled boards
-and two export-scale compositions. See `art-direction/ui-batch/README.md` for collective
-owner review. Approval is pending; production remains external and no functional UI changed.
+and two export-scale compositions. See `art-direction/ui-batch/README.md` for exact-hash
+owner acceptance and scoped validation; production remains external and no functional UI changed.
 Review fixes, source crop accounting and byte reproduction are recorded with the package.
-After owner revisions and exact-hash acceptance, the next complete category is effects.
+The next complete category is effects.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -184,7 +184,7 @@ passing full-suite evidence and run fresh scoped validation for the newly approv
 - [x] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.
 - [ ] Produce character designs, portraits, directional sprites, and required animation frames.
 - [x] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
-- [ ] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.
+- [x] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.
 - [ ] Produce weather, lighting, discovery, treatment, and disease-state effects.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.

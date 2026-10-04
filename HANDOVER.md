@@ -7,21 +7,23 @@ Continue from live `main`. Phase 8 and 9.1 are complete. Approved frozen package
 (89 exports/40 masters, 37 runtime views), [woodland](art-direction/woodland-environment-batch/README.md)
 and [structures](art-direction/structures-batch/README.md) (42 each),
 [characters](art-direction/characters-batch/owner-acceptance.json) (456 active new pairs,
-48 inherited cloak frames, including 288 polished walks), and
-[objects](art-direction/objects-batch/owner-acceptance.json) (42). Do not rebuild these.
+48 inherited cloak frames, including 288 polished walks),
+[objects](art-direction/objects-batch/owner-acceptance.json) (42), and
+[UI](art-direction/ui-batch/owner-acceptance.json) (36). Do not rebuild these.
 Preserve original/failed character and walking snapshots as lineage; do not sum them
 into active counts. Except whole-channel, runtime integration remains separate.
 
 ## Exact next slice
 
-Collectively review the complete [UI artwork series](art-direction/ui-batch/README.md):
-36 candidates across journal/map/inventory/dialogue/settings/provider-state, editable
-2x OpenRaster masters, six labelled boards and two 1280x720 export-scale compositions.
-**Owner approval is pending.** Revise from feedback while retaining superseded evidence,
-then record exact-hash owner acceptance and consolidated scoped approval checks.
-Do not infer approval from publication. After acceptance, the next category is the entire
-weather/lighting/discovery/treatment/disease-state effects series, following the same
-whole-category artwork/review workflow. Residual terrain work remains open.
+The complete [UI artwork series](art-direction/ui-batch/README.md) is owner-approved:
+36 candidates, editable 2x masters, six labelled boards and two scale compositions.
+`owner-acceptance.json` binds exact approved hashes; `validation.json` records scoped checks.
+The exact next slice is the entire weather/lighting/discovery/treatment/disease-state
+effects artwork series, editable 2x masters, labelled family boards and representative
+scale compositions before collective owner review. Keep effects presentation-only;
+do not establish disease, treatment or discovery semantics or wire runtime behavior.
+Use lightweight authoring checks during production; consolidate validation after approval.
+Residual terrain work remains open.
 
 ## Boundaries
 
@@ -38,8 +40,8 @@ remain visual only; walking-under-water and fringe-clearance limitations remain.
 
 ## Evidence for continuation
 
-UI `inspect_package.py` passes source/hash coverage, crop accounting, transparent padding,
-OpenRaster layers and exact source/master/export parity. `session-review.json` records
+UI `inspect_package.py` passes exact owner acceptance, source/hash coverage, crop
+accounting, transparent padding, OpenRaster layers and exact source/master/export parity. `session-review.json` records
 review fixes and byte reproduction. Faint distant pixels below alpha 8 can be excluded
 by recorded crops with an eight-source-pixel margin; unchanged sources are retained.
 Product/runtime/CI inputs remain unchanged from `2fcc849`; retain

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Inspect candidate UI artwork integrity without making usability or runtime claims."""
+"""Inspect UI artwork integrity and exact owner acceptance without runtime claims."""
 from io import BytesIO
 import json
 import zipfile
@@ -18,6 +18,17 @@ def main():
     """Check complete coverage, review hashes and exact editable master/export parity."""
     inventory = json.loads((ROOT / 'inventory.json').read_text())
     manifest = json.loads((ROOT / 'review-manifest.json').read_text())
+    approved = (ROOT / 'owner-acceptance.json').exists()
+    if approved:
+        acceptance = json.loads((ROOT / 'owner-acceptance.json').read_text())
+        require(acceptance['status'] == 'approved', 'Invalid acceptance status')
+        require(digest(ROOT / 'review-manifest.json') == acceptance['review_manifest_sha256'],
+                'Changed historical review manifest')
+        require(set(acceptance['approved_files']) == set(manifest['files']), 'Acceptance coverage')
+        for relative, sha256 in manifest['files'].items():
+            if relative.startswith(('sources/', 'exports/', 'masters/', 'review/', 'evidence/')):
+                require(acceptance['approved_files'][relative] == sha256, 'Artwork changed since review')
+        manifest = {'files': acceptance['approved_files']}
     expected = {f'{family}-{index:02}' for family in FAMILIES for index in range(1, 7)}
     assets = inventory['assets']
     require(len(assets) == inventory['asset_count'] == len(expected) == 36, 'Incorrect count')
@@ -104,7 +115,8 @@ def main():
                 image.verify()
     print('PASS: 36 UI candidates, 36 exact 2x masters, six sources and eight review images.')
     print('PASS: candidate hashes, RGBA, OpenRaster layers and master/export parity.')
-    print('Owner review pending; runtime and usability remain unverified.')
+    print('PASS: exact owner-approved package hashes.' if approved else 'Owner review pending.')
+    print('Runtime and usability remain unverified.')
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 # UI artwork batch 01
 
 Complete initial external Phase 9.2 UI artwork series, authored 2026-10-04
-(Australia/Brisbane) with built-in image_gen. **Awaiting collective owner review.**
+(Australia/Brisbane) with built-in image_gen. **Owner-approved 2026-10-04.**
 36 reusable painted candidates, six each for journal, map, inventory, dialogue,
 settings and provider-state presentation. No functional UI or runtime promotion.
 
@@ -54,7 +54,10 @@ failed and locked; they contain no credentials, provider identities or diagnosti
 Icon shapes and border accents offer alternatives to colour, without establishing
 contrast compliance, keyboard focus, localization, text fitting, hit targets,
 nine-slice suitability or usability. The painted slider is one fixed illustrative
-position, not a runtime control. All remain subject to owner and later UI review.
+position, not a runtime control. Artwork is approved; all interaction and runtime use
+remain subject to later UI review.
 
 Product/runtime/CI inputs remain unchanged. Retain the existing full-suite evidence
-referenced by HANDOVER.md. Run scoped approval checks after collective owner review.
+referenced by HANDOVER.md. `owner-acceptance.json` binds the exact approved bytes;
+`validation.json` records fresh
+scoped acceptance checks. The historical candidate manifest and session review are retained.
