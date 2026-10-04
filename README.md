@@ -39,8 +39,10 @@ placement is selected by the existing scene evidence; a specific use or placemen
 proposal request is needed before connector work. The owner subsequently selected the
 [external Garden meadow-apron proof](art-direction/garden-ground-feasibility/README.md);
 its native compositions, editable masters and disposable Godot previews are packaged.
-Named runtime scope remains separate. Terrain completeness remains open.
-Runtime remains unchanged.
+The [named Garden runtime scope proposal](art-direction/garden-ground-runtime-scope/README.md)
+binds both selected underlays, independent ownership, source hashes, imports and
+later validation/visual gates. It awaits named approval. Terrain completeness remains
+open; runtime remains unchanged.
 
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
 object-state cues, and a four-direction Seeker walk sample under

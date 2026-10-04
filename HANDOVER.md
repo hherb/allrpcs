@@ -1,51 +1,45 @@
 # Allrpcs Handover
 
-## Current state
+## Current state and next gate
 
-Continue from live `main`. Phases 8 and 9.1 are complete. Accepted artwork and named
-terrain promotions remain frozen; source packages hold exact hashes/scope. Preserve
-failed character walks, transparent gutters and unwrapped repeats. New ground work
-remains external. The [compatibility audit](art-direction/residual-ground-compatibility/README.md)
-retains all 102 accepted ground artwork files and 35 production terrain exports.
+Continue from live `main`. The [Garden runtime scope proposal](art-direction/garden-ground-runtime-scope/README.md)
+is complete/reviewed; its [bindings](art-direction/garden-ground-runtime-scope/source-bindings.json)
+pin 207 files at `bc64aac`. The external meadow-apron selection includes tight soil,
+but **named runtime scope and ordinary runtime views remain unapproved**.
+No ordinary scene, manifest, import or runtime copy changes before exact scope
+approval. Generic continuation does not cross this gate. Record approval against
+README/binding digests; source drift requires a revised proposal.
 
-The owner selected the [Garden meadow-apron proof](art-direction/garden-ground-feasibility/README.md)
-("definitely better with the meadiw apron"). `owner-selection.json` binds the displayed
-CPU variant and its master/coverage inputs; it grants no named runtime promotion.
-The soil mask follows the exact two retained bed alpha silhouettes. The optional
-32px apron surrounds their 188x80 source envelope using world-aligned meadow paint.
-The initial dark crop-frame mats remain in `evidence/`. Two editable 2x composition
-masters, three CPU variants and six disposable Godot previews are packaged. Final
-Godot views are separate evidence, not owner runtime visual acceptance.
+## Next slice after named approval
 
-## Exact next slice
+Freeze the predecessor inventory at the actual starting head. Promote only the
+proposal's two `terrain.garden_ground_*` assets and exact 512x384 PNG bytes;
+follow its allowed paths, two isolated 2x masters and independent lossless imports.
+One `GardenGroundPresentation` owner sits at `(2048,1120)`, phase `(0,0)`, meadow
+z=-90 / soil z=-89. Keep both layers. Retain the independent Garden station owner
+at `(2300,1300)` and all existing route/Garden nodes and relative sibling order.
 
-Prepare a **named Garden presentation-only runtime scope proposal** for the selected
-exact two underlays, with one independent owner below retained paths and Garden
-sprites. Bind runtime paths/import settings, master/source hashes, world origin
-(2048,1120), absolute phase, z=-90/-89 and unchanged Garden/physical ownership.
-The tight soil layer adds little visually but belongs to the selected composite;
-address it explicitly rather than silently dropping it. No ordinary scene, manifest,
-imports or runtime copies change before approval of that exact named scope.
-Full product validation and owner runtime visual confirmation remain later gates.
+Run `./scripts/quality.sh`, bounded checks/rejections and the six paired runtime
+views specified in the proposal. Inspect translucent/path/bed edges and external
+GPU parity. Obtain **separate owner runtime visual confirmation before runtime
+acceptance/publication**. Leave evidence and one next slice.
 
-## Boundaries and verification
+## Constraints and current verification
 
-No collision/navigation/layout/scenario/gameplay/dialogue/clue/discovery/treatment/
-save/provider/functional-UI/audio/release/signing changes. Preserve Direction A and
-editable masters. Blank fields establish no facts; accessibility, anchors, imports,
-text fitting, effects timing and interaction remain provisional. Routine external
-proof approval is waived; artwork, named runtime and runtime visual gates remain.
+Preserve completed phases, accepted terrain, Direction A, editable masters,
+rejected walks/dark Garden mats, gutters, repeats and historical validators.
+No physical/layout/scenario/gameplay/dialogue/clue/discovery/treatment/save/provider/
+functional-UI/audio/release/signing changes. Capture controls stay out of startup;
+exclude `.DS_Store`. No terrain-completeness or human accessibility claim.
 
-Preserve five-sprite channel ownership; shader only on three native Stream nodes at
-x<1664; native UVs/polygons/regions/caps/crossing; route sibling order; untextured Clearing
-near side; gate/Forester; Shrine triangle; x=1664/x=2000 transitions. Water/decks remain
-visual only; actor-clearance limits remain. Turn coverage only, not source paint.
-Keep capture controls out of startup and exclude `.DS_Store`.
+Preserve five-sprite channel ownership, the shader on only three native Stream
+nodes at x<1664, native UVs/polygons/regions/caps/crossing, route sibling order,
+untextured Clearing near side, gate/Forester, Shrine triangle and x=1664/x=2000
+transitions. Water/decks remain visual only; actor-clearance limits remain. Blank
+fields establish no facts. Routine external proof approval is waived; artwork,
+named runtime and runtime visual gates remain. Other provisional limits are in the proposal.
 
-Run the Garden `build.py --check` and `inspect_package.py`; its validation/review
-records bind three independently composited native views, 31 editable master layers,
-17 byte-reproduced outputs and six source-bound GPU previews. The accepted tiling
-inspector and compatibility review also pass. Product/runtime/CI inputs remain
-unchanged from `2fcc849`; retain the [full-suite evidence](art-direction/woodland-environment-batch/validation.json)
-(zero-warning/error build, 5,033 tests and Godot/Compatibility checks). Do not replay
-unchanged product suites for external proofs or weaken frozen validators.
+Garden build/inspector, tiling inspector and compatibility review pass; see the
+[session review](art-direction/garden-ground-runtime-scope/session-review.json).
+Product/runtime/CI remain unchanged from `2fcc849`; retain its [full-suite evidence](art-direction/woodland-environment-batch/validation.json).
+Do not replay unchanged product suites for external proposals or weaken validators.

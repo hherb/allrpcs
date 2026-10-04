@@ -199,8 +199,10 @@ The owner selected the [Garden meadow-apron composition](art-direction/garden-gr
 after the external soil/apron comparison. Its tight soil mask follows the retained bed
 alpha silhouettes; rejected dark crop-frame mats remain as evidence. Native source
 composition, editable masters and six bounded disposable Godot previews pass scoped
-checks. Next prepare the exact named Garden runtime scope proposal; no production
-placement or runtime acceptance is inferred from the external variant preference.
+checks. The [named Garden runtime scope proposal](art-direction/garden-ground-runtime-scope/README.md)
+is prepared and awaits exact scope approval before production placement. Separate
+owner runtime visual confirmation follows implementation; neither gate is inferred
+from the external variant preference.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.
