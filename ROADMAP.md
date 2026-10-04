@@ -178,9 +178,19 @@ checks and byte reproduction pass. See `art-direction/residual-ground-batch/READ
 The original read-only terrain inventory verifies all 35 predecessor terrain exports.
 The subsequent `art-direction/residual-ground-readiness/README.md` repeats all twelve
 material/transition exports and exposes transparent perimeter gaps and unverified
-connector geometry. The next bounded series is a separate twelve-module external tiling
-feasibility proof: six repeatable surfaces plus six matching transitions. Preserve the
-approved studies and existing terrain. Overall terrain production suitability and
+connector geometry. The separate
+[twelve-module external tiling feasibility series](art-direction/residual-ground-tiling-proof/README.md)
+now contains six opaque repeatable 128x128 surfaces, six matching transitions, editable
+2x masters, labelled detail boards and 1:1 repeat/connected compositions. Lightweight
+authoring checks verify filled perimeters, exact opposite painted edges and 160 connected
+joins. The owner approved the complete series ("Looks good - all approved"); acceptance
+binds all 57 artwork files and the technical review manifest. Consolidated scoped checks
+also pass all sixteen oriented curved ports. A read-only readiness audit measures twelve
+new/legacy direct edge comparisons; these different materials have no shared exact paint
+ports. The next slice is external 1:1 compatibility compositions for the six accepted
+variation overlays on all six new fields and those fields beside both legacy grounds.
+Orientation samples turn coverage while retaining world-aligned source paint. Preserve
+the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining

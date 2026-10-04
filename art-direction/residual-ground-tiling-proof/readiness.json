@@ -1,0 +1,245 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "scope": "Read-only terrain-readiness measurements after accepted tiling proof",
+  "owner_acceptance_sha256": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+  "production_manifest_sha256": "7e5cf3ebaccaef3695ec729f7c9bb4bcda45aa7553b6df715c2c110a76b84a3a",
+  "comparisons": [
+    {
+      "retained": "terrain.quiet_moss",
+      "candidate": "packed-earth",
+      "retained_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "candidate_sha256": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 112,
+      "vertical_join_rgb_mean_delta": 39.44,
+      "horizontal_join_rgb_max_delta": 123,
+      "horizontal_join_rgb_mean_delta": 40.31,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.quiet_moss",
+      "candidate": "pale-gravel",
+      "retained_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "candidate_sha256": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 124,
+      "vertical_join_rgb_mean_delta": 71.69,
+      "horizontal_join_rgb_max_delta": 139,
+      "horizontal_join_rgb_mean_delta": 76.14,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.quiet_moss",
+      "candidate": "mixed-meadow",
+      "retained_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "candidate_sha256": "d419f0e5497957aac4907994520e11fbc892bd2e6ed1b687087fc506de1208f6",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 56,
+      "vertical_join_rgb_mean_delta": 15.98,
+      "horizontal_join_rgb_max_delta": 64,
+      "horizontal_join_rgb_mean_delta": 15.92,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.quiet_moss",
+      "candidate": "dry-grass",
+      "retained_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "candidate_sha256": "9893995653cc82dd38e2b449985f7d067af234b6f13c0c1cc3de2c611bf908ae",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 80,
+      "vertical_join_rgb_mean_delta": 26.85,
+      "horizontal_join_rgb_max_delta": 87,
+      "horizontal_join_rgb_mean_delta": 26.04,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.quiet_moss",
+      "candidate": "garden-soil",
+      "retained_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "candidate_sha256": "178d0417bf7339ee8120cd9822cb3620262c3a5415e42b434c2fe3adbc41b94d",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 99,
+      "vertical_join_rgb_mean_delta": 31.39,
+      "horizontal_join_rgb_max_delta": 97,
+      "horizontal_join_rgb_mean_delta": 30.49,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.quiet_moss",
+      "candidate": "damp-mud",
+      "retained_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "candidate_sha256": "db14c376d34a328d11c2d804e0f58f36dffd6361c4da05e06e530fe89222420d",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 78,
+      "vertical_join_rgb_mean_delta": 23.42,
+      "horizontal_join_rgb_max_delta": 81,
+      "horizontal_join_rgb_mean_delta": 23.32,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.woodland_leaf_litter",
+      "candidate": "packed-earth",
+      "retained_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "candidate_sha256": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 126,
+      "vertical_join_rgb_mean_delta": 58.57,
+      "horizontal_join_rgb_max_delta": 122,
+      "horizontal_join_rgb_mean_delta": 59.35,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.woodland_leaf_litter",
+      "candidate": "pale-gravel",
+      "retained_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "candidate_sha256": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 136,
+      "vertical_join_rgb_mean_delta": 91.7,
+      "horizontal_join_rgb_max_delta": 147,
+      "horizontal_join_rgb_mean_delta": 96.21,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.woodland_leaf_litter",
+      "candidate": "mixed-meadow",
+      "retained_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "candidate_sha256": "d419f0e5497957aac4907994520e11fbc892bd2e6ed1b687087fc506de1208f6",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 85,
+      "vertical_join_rgb_mean_delta": 26.43,
+      "horizontal_join_rgb_max_delta": 82,
+      "horizontal_join_rgb_mean_delta": 25.5,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.woodland_leaf_litter",
+      "candidate": "dry-grass",
+      "retained_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "candidate_sha256": "9893995653cc82dd38e2b449985f7d067af234b6f13c0c1cc3de2c611bf908ae",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 84,
+      "vertical_join_rgb_mean_delta": 42.71,
+      "horizontal_join_rgb_max_delta": 88,
+      "horizontal_join_rgb_mean_delta": 42.35,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.woodland_leaf_litter",
+      "candidate": "garden-soil",
+      "retained_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "candidate_sha256": "178d0417bf7339ee8120cd9822cb3620262c3a5415e42b434c2fe3adbc41b94d",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 79,
+      "vertical_join_rgb_mean_delta": 13.71,
+      "horizontal_join_rgb_max_delta": 80,
+      "horizontal_join_rgb_mean_delta": 13.46,
+      "exact_shared_paint_port": false
+    },
+    {
+      "retained": "terrain.woodland_leaf_litter",
+      "candidate": "damp-mud",
+      "retained_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "candidate_sha256": "db14c376d34a328d11c2d804e0f58f36dffd6361c4da05e06e530fe89222420d",
+      "retained_export_size": [
+        256,
+        256
+      ],
+      "candidate_export_size": [
+        128,
+        128
+      ],
+      "vertical_join_rgb_max_delta": 53,
+      "vertical_join_rgb_mean_delta": 19.35,
+      "horizontal_join_rgb_max_delta": 66,
+      "horizontal_join_rgb_mean_delta": 20.49,
+      "exact_shared_paint_port": false
+    }
+  ],
+  "interpretation": "Different materials are expected to differ. These direct joins are not source-matched transitions; measurements neither require every pairing nor establish visible failure.",
+  "remaining": [
+    "Accepted variation overlays have not been composited against all new repeatable fields at 1:1",
+    "New 128px fields and legacy 256px grounds do not share exact direct edge paint",
+    "Required mixed-material connectors need external composition evidence before a new artwork scope",
+    "Runtime import settings, placement and visual acceptance remain separate named gates"
+  ],
+  "next_slice": "Separate read-only external compatibility boards: all six accepted variation overlays on all six new fields, plus new/legacy material adjacency at 1:1; preserve all accepted artwork and do not invent transition requirements or runtime placement."
+}

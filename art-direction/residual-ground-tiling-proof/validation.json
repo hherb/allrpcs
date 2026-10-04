@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "scope": "Consolidated accepted external artwork checks; no product/runtime/CI input changes",
+  "checks": {
+    "status": "accepted external tiling feasibility package passes scoped checks",
+    "modules": 12,
+    "editable_2x_masters": 12,
+    "connected_exact_joins": 160,
+    "predecessor_files_preserved": 96,
+    "surface_texture_diagnostics": {
+      "packed-earth": {
+        "interior_rgb_step_p95": 17.0,
+        "rgb_stddev": 9.94,
+        "opposite_edge_max_delta": 0
+      },
+      "pale-gravel": {
+        "interior_rgb_step_p95": 37.0,
+        "rgb_stddev": 19.2,
+        "opposite_edge_max_delta": 0
+      },
+      "mixed-meadow": {
+        "interior_rgb_step_p95": 31.0,
+        "rgb_stddev": 15.71,
+        "opposite_edge_max_delta": 0
+      },
+      "dry-grass": {
+        "interior_rgb_step_p95": 34.0,
+        "rgb_stddev": 16.26,
+        "opposite_edge_max_delta": 0
+      },
+      "garden-soil": {
+        "interior_rgb_step_p95": 23.0,
+        "rgb_stddev": 11.92,
+        "opposite_edge_max_delta": 0
+      },
+      "damp-mud": {
+        "interior_rgb_step_p95": 19.0,
+        "rgb_stddev": 13.22,
+        "opposite_edge_max_delta": 0
+      }
+    },
+    "approved_artwork_files": 57,
+    "oriented_corner_port_checks": 16,
+    "owner_acceptance_sha256": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "review_manifest_sha256": "100ff730d560037bfe3efcbcdddbb6c2a9390834093a3c73668f83ddfffba1b3",
+    "runtime_promotion": "not authorized by artwork acceptance"
+  },
+  "product_validation": "Retained unchanged woodland-environment-batch/validation.json evidence"
+}

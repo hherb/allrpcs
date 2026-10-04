@@ -27,8 +27,13 @@ The [residual terrain inventory](art-direction/residual-terrain-plan/README.md) 
 35 unchanged terrain exports. The complete [residual ground series](art-direction/residual-ground-batch/README.md)
 adds 18 owner-approved external material, variation and transition studies, editable 2x
 masters and six review boards. The [readiness audit](art-direction/residual-ground-readiness/README.md)
-identifies the next twelve-module repeatability/connector feasibility slice; padded
-studies are not seamless production tiles. Runtime remains unchanged.
+identifies transparent gutters in the padded studies. The separate
+[ground tiling feasibility series](art-direction/residual-ground-tiling-proof/README.md)
+contains twelve filled surface/transition candidates, editable 2x masters and exact
+1:1 repeat/connected boards. It derives shared paint from the approved sources;
+the owner approved the complete series, and consolidated scoped checks pass.
+Its read-only readiness audit identifies the next compatibility-composition slice.
+Runtime remains unchanged.
 
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
 object-state cues, and a four-direction Seeker walk sample under

@@ -1,0 +1,3184 @@
+{
+  "status": "complete external feasibility candidates; collective owner review pending",
+  "authoring": "native OpenRaster material compilation from approved image_gen paint; no new generation",
+  "count": 12,
+  "assets": [
+    {
+      "id": "packed-earth",
+      "family": "surfaces",
+      "provenance": {
+        "approved_asset": "ground-surfaces-01",
+        "source": "sources/ground-surfaces.png",
+        "cell": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "interior_crop_in_cell": [
+          118,
+          105,
+          459,
+          443
+        ],
+        "retained_alpha_min": 250,
+        "opaque_underpaint_rgb": [
+          189,
+          139,
+          76
+        ],
+        "source_sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+      },
+      "master": "masters/packed-earth.ora",
+      "export": "exports/packed-earth.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "3e9f1cde01f11d14e8ba6eea66c670f3c0fa3b3d56662466128d815f14ef31f3",
+      "export_sha256": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32"
+    },
+    {
+      "id": "pale-gravel",
+      "family": "surfaces",
+      "provenance": {
+        "approved_asset": "ground-surfaces-02",
+        "source": "sources/ground-surfaces.png",
+        "cell": [
+          512,
+          0,
+          1024,
+          512
+        ],
+        "interior_crop_in_cell": [
+          88,
+          105,
+          428,
+          443
+        ],
+        "retained_alpha_min": 248,
+        "opaque_underpaint_rgb": [
+          188,
+          171,
+          147
+        ],
+        "source_sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+      },
+      "master": "masters/pale-gravel.ora",
+      "export": "exports/pale-gravel.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "c90fdaf9ed648425ee5857778460a0c82dc5e252066ffab0c30b0c72a9ce445e",
+      "export_sha256": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a"
+    },
+    {
+      "id": "mixed-meadow",
+      "family": "surfaces",
+      "provenance": {
+        "approved_asset": "ground-surfaces-03",
+        "source": "sources/ground-surfaces.png",
+        "cell": [
+          1024,
+          0,
+          1536,
+          512
+        ],
+        "interior_crop_in_cell": [
+          56,
+          105,
+          397,
+          445
+        ],
+        "retained_alpha_min": 249,
+        "opaque_underpaint_rgb": [
+          117,
+          108,
+          59
+        ],
+        "source_sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+      },
+      "master": "masters/mixed-meadow.ora",
+      "export": "exports/mixed-meadow.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "f434d4dcaca1f4698c4a5eab67de7355168cf0982b39f437a806a07a7195e4ba",
+      "export_sha256": "d419f0e5497957aac4907994520e11fbc892bd2e6ed1b687087fc506de1208f6"
+    },
+    {
+      "id": "dry-grass",
+      "family": "surfaces",
+      "provenance": {
+        "approved_asset": "ground-surfaces-04",
+        "source": "sources/ground-surfaces.png",
+        "cell": [
+          0,
+          512,
+          512,
+          1024
+        ],
+        "interior_crop_in_cell": [
+          117,
+          67,
+          459,
+          407
+        ],
+        "retained_alpha_min": 249,
+        "opaque_underpaint_rgb": [
+          148,
+          121,
+          75
+        ],
+        "source_sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+      },
+      "master": "masters/dry-grass.ora",
+      "export": "exports/dry-grass.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "9f3fcb99b928704e30c3c9c2e4a63d6ea2e3178bde323ad635ef8a1801d1654b",
+      "export_sha256": "9893995653cc82dd38e2b449985f7d067af234b6f13c0c1cc3de2c611bf908ae"
+    },
+    {
+      "id": "garden-soil",
+      "family": "surfaces",
+      "provenance": {
+        "approved_asset": "ground-surfaces-05",
+        "source": "sources/ground-surfaces.png",
+        "cell": [
+          512,
+          512,
+          1024,
+          1024
+        ],
+        "interior_crop_in_cell": [
+          87,
+          68,
+          426,
+          407
+        ],
+        "retained_alpha_min": 251,
+        "opaque_underpaint_rgb": [
+          81,
+          58,
+          42
+        ],
+        "source_sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+      },
+      "master": "masters/garden-soil.ora",
+      "export": "exports/garden-soil.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "0c0500e820bb0357a9e360fa5e86e554cc079a73f05121cc6c139da4f3eed938",
+      "export_sha256": "178d0417bf7339ee8120cd9822cb3620262c3a5415e42b434c2fe3adbc41b94d"
+    },
+    {
+      "id": "damp-mud",
+      "family": "surfaces",
+      "provenance": {
+        "approved_asset": "ground-surfaces-06",
+        "source": "sources/ground-surfaces.png",
+        "cell": [
+          1024,
+          512,
+          1536,
+          1024
+        ],
+        "interior_crop_in_cell": [
+          56,
+          68,
+          397,
+          407
+        ],
+        "retained_alpha_min": 251,
+        "opaque_underpaint_rgb": [
+          106,
+          87,
+          70
+        ],
+        "source_sha256": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24"
+      },
+      "master": "masters/damp-mud.ora",
+      "export": "exports/damp-mud.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "d4023d8296e4515bed2703e6d5bf24a6702d5e6e5eb43a125d3c0751187b6645",
+      "export_sha256": "db14c376d34a328d11c2d804e0f58f36dffd6361c4da05e06e530fe89222420d"
+    },
+    {
+      "id": "earth-gravel-straight",
+      "family": "earth-gravel",
+      "materials": [
+        "packed-earth",
+        "pale-gravel"
+      ],
+      "mask": "sources/straight-mask.png",
+      "master": "masters/earth-gravel-straight.ora",
+      "export": "exports/earth-gravel-straight.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "c9eb7e121ed2b11ee62c054803b21ef85a4c7b9ba79530f0035c707c1a4dee63",
+      "export_sha256": "d18da88d4e453b1de6e06f5da0411dc9904801a949671d078c6e205d6fc891b1"
+    },
+    {
+      "id": "earth-gravel-outer",
+      "family": "earth-gravel",
+      "materials": [
+        "packed-earth",
+        "pale-gravel"
+      ],
+      "mask": "sources/outer-mask.png",
+      "master": "masters/earth-gravel-outer.ora",
+      "export": "exports/earth-gravel-outer.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "19de95844d366efb0aba180d9a8bbd83236b03384634faef4a87f4d594351ab4",
+      "export_sha256": "a39c450ff2b955a73507be8668ec840127f1792af76f2d90ab8de54b6ad98674"
+    },
+    {
+      "id": "earth-gravel-inset",
+      "family": "earth-gravel",
+      "materials": [
+        "packed-earth",
+        "pale-gravel"
+      ],
+      "mask": "sources/inset-mask.png",
+      "master": "masters/earth-gravel-inset.ora",
+      "export": "exports/earth-gravel-inset.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "8d7878c41c106c806240b2b5f28c9af47bf780f380f813164c235ef85cd365c7",
+      "export_sha256": "203a965a9d6024cf52675e22c2ae1ee299e266000dc98933fb9d2b2e177994ab"
+    },
+    {
+      "id": "meadow-soil-straight",
+      "family": "meadow-soil",
+      "materials": [
+        "mixed-meadow",
+        "garden-soil"
+      ],
+      "mask": "sources/straight-mask.png",
+      "master": "masters/meadow-soil-straight.ora",
+      "export": "exports/meadow-soil-straight.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "fb04f403653ce4fcd12d55064aa9042f573b50729838cb3b2b5cf7b9138b9910",
+      "export_sha256": "29306944049f774e12ca8f30a147b0e7d937944cde486bf15e9a28206f7cb69e"
+    },
+    {
+      "id": "meadow-soil-outer",
+      "family": "meadow-soil",
+      "materials": [
+        "mixed-meadow",
+        "garden-soil"
+      ],
+      "mask": "sources/outer-mask.png",
+      "master": "masters/meadow-soil-outer.ora",
+      "export": "exports/meadow-soil-outer.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "c8fa01c79f8b89808c7abfe00f396fa1552d54a5324399796754bb835e2b263b",
+      "export_sha256": "696dbc12edc5db4689a89a8d9657bca0a6689d5cfe1e4bee5b41e57fae57839c"
+    },
+    {
+      "id": "meadow-soil-inset",
+      "family": "meadow-soil",
+      "materials": [
+        "mixed-meadow",
+        "garden-soil"
+      ],
+      "mask": "sources/inset-mask.png",
+      "master": "masters/meadow-soil-inset.ora",
+      "export": "exports/meadow-soil-inset.png",
+      "master_size": [
+        256,
+        256
+      ],
+      "export_size": [
+        128,
+        128
+      ],
+      "master_sha256": "c393364d9a1741f0657300a0aefd0dcf95f09978c11aad16a7c7f3551fd78411",
+      "export_sha256": "c447b84268445a570c66ccc1efe225d84ff36e0dd62298e23645779c06be7f32"
+    }
+  ],
+  "review_placements": {
+    "review/surfaces-detail.png": [
+      {
+        "id": "packed-earth",
+        "position": [
+          36,
+          94
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          406,
+          94
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          776,
+          94
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          36,
+          414
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          406,
+          414
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          776,
+          414
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      }
+    ],
+    "review/transitions-detail.png": [
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          36,
+          94
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "earth-gravel-outer",
+        "position": [
+          406,
+          94
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "earth-gravel-inset",
+        "position": [
+          776,
+          94
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          36,
+          414
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "meadow-soil-outer",
+        "position": [
+          406,
+          414
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      },
+      {
+        "id": "meadow-soil-inset",
+        "position": [
+          776,
+          414
+        ],
+        "size": [
+          256,
+          256
+        ],
+        "scale": 2
+      }
+    ],
+    "review/surfaces-repeat-1x.png": [
+      {
+        "id": "packed-earth",
+        "position": [
+          24,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          152,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          280,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          24,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          152,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          280,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          24,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          152,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          280,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          444,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          572,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          700,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          444,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          572,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          700,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          444,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          572,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          700,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          864,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          992,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1120,
+          90
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          864,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          992,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1120,
+          218
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          864,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          992,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1120,
+          346
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          24,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          152,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          280,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          24,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          152,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          280,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          24,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          152,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "dry-grass",
+        "position": [
+          280,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          444,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          572,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          700,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          444,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          572,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          700,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          444,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          572,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          700,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          864,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          992,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          1120,
+          530
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          864,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          992,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          1120,
+          658
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          864,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          992,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      },
+      {
+        "id": "damp-mud",
+        "position": [
+          1120,
+          786
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1
+      }
+    ],
+    "review/earth-gravel-connected-1x.png": [
+      {
+        "id": "pale-gravel",
+        "position": [
+          24,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          152,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          1,
+          0
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          280,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          2,
+          0
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          408,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          3,
+          0
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          536,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          4,
+          0
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          24,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "earth-gravel-outer",
+        "position": [
+          152,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 2,
+        "image": "review/earth-gravel-outer-orientation-2.png",
+        "panel": 0,
+        "grid": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          280,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 1,
+        "image": "review/earth-gravel-straight-orientation-1.png",
+        "panel": 0,
+        "grid": [
+          2,
+          1
+        ]
+      },
+      {
+        "id": "earth-gravel-outer",
+        "position": [
+          408,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 1,
+        "image": "review/earth-gravel-outer-orientation-1.png",
+        "panel": 0,
+        "grid": [
+          3,
+          1
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          536,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          4,
+          1
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          24,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          0,
+          2
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          152,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 2,
+        "image": "review/earth-gravel-straight-orientation-2.png",
+        "panel": 0,
+        "grid": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          280,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 0,
+        "grid": [
+          2,
+          2
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          408,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/earth-gravel-straight.png",
+        "panel": 0,
+        "grid": [
+          3,
+          2
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          536,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          4,
+          2
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          24,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          0,
+          3
+        ]
+      },
+      {
+        "id": "earth-gravel-outer",
+        "position": [
+          152,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/earth-gravel-outer-orientation-3.png",
+        "panel": 0,
+        "grid": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          280,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/earth-gravel-straight-orientation-3.png",
+        "panel": 0,
+        "grid": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "earth-gravel-outer",
+        "position": [
+          408,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/earth-gravel-outer.png",
+        "panel": 0,
+        "grid": [
+          3,
+          3
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          536,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          4,
+          3
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          24,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          0,
+          4
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          152,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          1,
+          4
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          280,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          2,
+          4
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          408,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          536,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 0,
+        "grid": [
+          4,
+          4
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          704,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          832,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          1,
+          0
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          960,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          2,
+          0
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          1088,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          3,
+          0
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          1216,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          4,
+          0
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          704,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          832,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          960,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          2,
+          1
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          1088,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          3,
+          1
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          1216,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          4,
+          1
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          704,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          0,
+          2
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          832,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "earth-gravel-inset",
+        "position": [
+          960,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/earth-gravel-inset.png",
+        "panel": 1,
+        "grid": [
+          2,
+          2
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          1088,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/earth-gravel-straight-orientation-3.png",
+        "panel": 1,
+        "grid": [
+          3,
+          2
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          1216,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/earth-gravel-straight-orientation-3.png",
+        "panel": 1,
+        "grid": [
+          4,
+          2
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          704,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          0,
+          3
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          832,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          960,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/earth-gravel-straight.png",
+        "panel": 1,
+        "grid": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          1088,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 1,
+        "grid": [
+          3,
+          3
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          1216,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 1,
+        "grid": [
+          4,
+          3
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          704,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          0,
+          4
+        ]
+      },
+      {
+        "id": "packed-earth",
+        "position": [
+          832,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/packed-earth.png",
+        "panel": 1,
+        "grid": [
+          1,
+          4
+        ]
+      },
+      {
+        "id": "earth-gravel-straight",
+        "position": [
+          960,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/earth-gravel-straight.png",
+        "panel": 1,
+        "grid": [
+          2,
+          4
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          1088,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 1,
+        "grid": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "pale-gravel",
+        "position": [
+          1216,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/pale-gravel.png",
+        "panel": 1,
+        "grid": [
+          4,
+          4
+        ]
+      }
+    ],
+    "review/meadow-soil-connected-1x.png": [
+      {
+        "id": "garden-soil",
+        "position": [
+          24,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          152,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          1,
+          0
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          280,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          2,
+          0
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          408,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          3,
+          0
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          536,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          4,
+          0
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          24,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "meadow-soil-outer",
+        "position": [
+          152,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 2,
+        "image": "review/meadow-soil-outer-orientation-2.png",
+        "panel": 0,
+        "grid": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          280,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 1,
+        "image": "review/meadow-soil-straight-orientation-1.png",
+        "panel": 0,
+        "grid": [
+          2,
+          1
+        ]
+      },
+      {
+        "id": "meadow-soil-outer",
+        "position": [
+          408,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 1,
+        "image": "review/meadow-soil-outer-orientation-1.png",
+        "panel": 0,
+        "grid": [
+          3,
+          1
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          536,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          4,
+          1
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          24,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          0,
+          2
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          152,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 2,
+        "image": "review/meadow-soil-straight-orientation-2.png",
+        "panel": 0,
+        "grid": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          280,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 0,
+        "grid": [
+          2,
+          2
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          408,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/meadow-soil-straight.png",
+        "panel": 0,
+        "grid": [
+          3,
+          2
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          536,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          4,
+          2
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          24,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          0,
+          3
+        ]
+      },
+      {
+        "id": "meadow-soil-outer",
+        "position": [
+          152,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/meadow-soil-outer-orientation-3.png",
+        "panel": 0,
+        "grid": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          280,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/meadow-soil-straight-orientation-3.png",
+        "panel": 0,
+        "grid": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "meadow-soil-outer",
+        "position": [
+          408,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/meadow-soil-outer.png",
+        "panel": 0,
+        "grid": [
+          3,
+          3
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          536,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          4,
+          3
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          24,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          0,
+          4
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          152,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          1,
+          4
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          280,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          2,
+          4
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          408,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          536,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 0,
+        "grid": [
+          4,
+          4
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          704,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          832,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          1,
+          0
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          960,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          2,
+          0
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1088,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          3,
+          0
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1216,
+          106
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          4,
+          0
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          704,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          832,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          960,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          2,
+          1
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1088,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          3,
+          1
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          1216,
+          234
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          4,
+          1
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          704,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          0,
+          2
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          832,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "meadow-soil-inset",
+        "position": [
+          960,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/meadow-soil-inset.png",
+        "panel": 1,
+        "grid": [
+          2,
+          2
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          1088,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/meadow-soil-straight-orientation-3.png",
+        "panel": 1,
+        "grid": [
+          3,
+          2
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          1216,
+          362
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 3,
+        "image": "review/meadow-soil-straight-orientation-3.png",
+        "panel": 1,
+        "grid": [
+          4,
+          2
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          704,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          0,
+          3
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          832,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          1,
+          3
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          960,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/meadow-soil-straight.png",
+        "panel": 1,
+        "grid": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          1088,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 1,
+        "grid": [
+          3,
+          3
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          1216,
+          490
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 1,
+        "grid": [
+          4,
+          3
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          704,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          0,
+          4
+        ]
+      },
+      {
+        "id": "mixed-meadow",
+        "position": [
+          832,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/mixed-meadow.png",
+        "panel": 1,
+        "grid": [
+          1,
+          4
+        ]
+      },
+      {
+        "id": "meadow-soil-straight",
+        "position": [
+          960,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/meadow-soil-straight.png",
+        "panel": 1,
+        "grid": [
+          2,
+          4
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          1088,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 1,
+        "grid": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "garden-soil",
+        "position": [
+          1216,
+          618
+        ],
+        "size": [
+          128,
+          128
+        ],
+        "scale": 1,
+        "orientation": 0,
+        "image": "exports/garden-soil.png",
+        "panel": 1,
+        "grid": [
+          4,
+          4
+        ]
+      }
+    ]
+  },
+  "geometry": {
+    "master_size": 256,
+    "export_size": 128,
+    "overlap_master_pixels": 64,
+    "feather_master_pixels": 12,
+    "connector_band_master_pixels": 2,
+    "export_filter": "BOX",
+    "orientation": "A left; outer A upper-left; inset B lower-right"
+  },
+  "limitations": [
+    "Owner review pending",
+    "Orientation samples rotate coverage, never material paint",
+    "Finite 128px repeat remains visible; no variation overlays in scope",
+    "No runtime imports, physical authority, geography or accessibility acceptance"
+  ],
+  "predecessors": {
+    "art-direction/production-proof/corrected/asset-manifest.json": "7e5cf3ebaccaef3695ec729f7c9bb4bcda45aa7553b6df715c2c110a76b84a3a",
+    "art-direction/production-proof/corrected/exports/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "art-direction/production-proof/corrected/exports/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "art-direction/production-proof/corrected/exports/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "art-direction/production-proof/corrected/exports/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "art-direction/production-proof/corrected/exports/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "art-direction/production-proof/corrected/exports/terrain/clearing-closed-forest-path.png": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+    "art-direction/production-proof/corrected/exports/terrain/opening-junction.png": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68",
+    "art-direction/production-proof/corrected/exports/terrain/path-bend.png": "8ac6919e5dac8881232a75cbfcb58945085fd59e11ebfd53beea952135512438",
+    "art-direction/production-proof/corrected/exports/terrain/path-cross-junction.png": "9e3923d85a6f24d1716f401e535d3b011eda5033c9520420e4d3e78b34b42027",
+    "art-direction/production-proof/corrected/exports/terrain/path-end-cap.png": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3",
+    "art-direction/production-proof/corrected/exports/terrain/path-t-junction.png": "822e6efa3031cc8b76cfaed7b53bd9ece8b389550d89bb0e9d899a83bba50d54",
+    "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "art-direction/production-proof/corrected/exports/terrain/shrine-southern-road-endpoint-blend.png": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720",
+    "art-direction/production-proof/corrected/exports/terrain/shrine-southern-road-path.png": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e",
+    "art-direction/production-proof/corrected/exports/terrain/southern-road-wagon-path.png": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+    "art-direction/production-proof/corrected/exports/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "art-direction/production-proof/corrected/exports/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "art-direction/production-proof/corrected/exports/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "art-direction/production-proof/corrected/exports/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "art-direction/production-proof/corrected/exports/terrain/stream-bank-opening-cap.png": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+    "art-direction/production-proof/corrected/exports/terrain/stream-bank.png": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "art-direction/production-proof/corrected/exports/terrain/stream-laundry-path.png": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185",
+    "art-direction/production-proof/corrected/exports/terrain/stream-water.png": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "art-direction/production-proof/corrected/exports/terrain/village-edge-square-connector.png": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+    "art-direction/production-proof/corrected/exports/terrain/village-edge-stream-path.png": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f",
+    "art-direction/production-proof/corrected/exports/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-corner-transition-left.png": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-corner-transition.png": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-inset-corner-transition-left.png": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-inset-corner-transition.png": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-transition.png": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-shrine-path.png": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-village-edge-path.png": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-village-edge-transition.png": "283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21",
+    "art-direction/residual-ground-batch/README.md": "2f27fdf18804dd08d5f77c231819f6e68602e7df9e3a122a5f9768dcb0e9fae8",
+    "art-direction/residual-ground-batch/build_review.py": "d663a576f664500d21df076f3cc29295808de1474bbafe84062e3ac94c687061",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-01.png": "b5cfd9aaad047c842ab2fa9cac308e00c7b673fe5f8f0d12222823f57bcba3a1",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-02.png": "456f15678755f2f165934b30ae3a4df93ed3bd229a7c6d1f2c1d2f9058114b9f",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-03.png": "6b5478e3498a36ebfbad90274da9b5b305c6f8d378023fc6b2fdd421324a6978",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-04.png": "d3ad671d92f7775989e0e2ce5ba3f378753c56d29d4857fb54d0055759abab2e",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-05.png": "792ef809e8dc671ece27228d469d23c4da513475964037ba635bdcfe574e5601",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-06.png": "d69b4cf278b10d65a4bf24f67fcff51216cad89df476084de398e146c5474460",
+    "art-direction/residual-ground-batch/exports/ground-variation-01.png": "ac6bf9877d0945389cc041a6d4304c9d73154b91d1a263d591636ffe004d6f03",
+    "art-direction/residual-ground-batch/exports/ground-variation-02.png": "3d2dcef0b8788478e74477fa843b9b08766d0825b979dcc52b82edf22a5595a4",
+    "art-direction/residual-ground-batch/exports/ground-variation-03.png": "689de678d321ed2e7b509cd86f0e1a23d13f06622c10054d5a4eac8ea8932e38",
+    "art-direction/residual-ground-batch/exports/ground-variation-04.png": "e4f5cd9588b6dc4c8d8162bdde7196be4fb47c79f626ee680806f2d979ac5647",
+    "art-direction/residual-ground-batch/exports/ground-variation-05.png": "e4e73dae41f8aede1c2a15c9dc6ecf7eac0fa54ba06cd83326719e762236a64c",
+    "art-direction/residual-ground-batch/exports/ground-variation-06.png": "8821b67c091f9a947d8bd65dfc6f30d2a74b85f238cb955c5c9ee71b20e386f0",
+    "art-direction/residual-ground-batch/exports/surface-transitions-01.png": "39ed5e49758eda1906f02b73e7231f76b289464cdaea91908be72e6e54ef99ea",
+    "art-direction/residual-ground-batch/exports/surface-transitions-02.png": "a2f5c1435f8b87d23eefc5fc07d91ab51a2035669dca7758a9e10afc8842aa77",
+    "art-direction/residual-ground-batch/exports/surface-transitions-03.png": "530f0d84f3a8ae47bc134dea24db1b8577d8e2a1b447839e178f5122e785d699",
+    "art-direction/residual-ground-batch/exports/surface-transitions-04.png": "10cb5432825f519a4effd35c5832bdea2e2e8301e1920c5226fe9acf1bdbde21",
+    "art-direction/residual-ground-batch/exports/surface-transitions-05.png": "366f1a905c1e5b5b8f5a0e2eefc4fbb8d9ad3aa706f67d58ca00b703d651642d",
+    "art-direction/residual-ground-batch/exports/surface-transitions-06.png": "c08552c97ee6991678acb975c174873e71aaed294990c5cdfc3c3578d5b82a28",
+    "art-direction/residual-ground-batch/inspect_package.py": "9d29eae5e694cf278b4d6a85c9ea8480b6f59a819ffaeab6ce5dde8b243ace81",
+    "art-direction/residual-ground-batch/inventory.json": "a32df883b471733810d7fb449ba093ae893b0b28185120cca157202afc9369df",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-01.ora": "2121045dada711c8cc7c45cba13846d2a1d145bf047d159caf40bae7b459b4d0",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-02.ora": "cf3015e2ba239a53a2124b657e7dd40883d73d0c89658ca3f898c9890e9a88eb",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-03.ora": "4508d1993864fd55cc50569204fb50716982d12b315d0878ea9b99ee4fb2db16",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-04.ora": "358c00086ac0ca04e215386938ccbad658cf354bf41626053669291ba198894d",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-05.ora": "1977befcb8b3dab49e7c977edb59d4d4e199a92afe9145d04cedbb4d82cde019",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-06.ora": "cc0faa0e650242daf6cb9361149d250178fa688f294c20decc0091e456cd1b77",
+    "art-direction/residual-ground-batch/masters/ground-variation-01.ora": "a4b1929d5475034105a0e0516ca064c083751995ddb1d171094dbe978cbb69bb",
+    "art-direction/residual-ground-batch/masters/ground-variation-02.ora": "fd6efde632bb3908b17de627278bedbb8f837b2326464bc4be4c5c6b670eea68",
+    "art-direction/residual-ground-batch/masters/ground-variation-03.ora": "70d2a87bd43de41821d3f2397d92c4f289f727d17be64e99261373b1607a1b22",
+    "art-direction/residual-ground-batch/masters/ground-variation-04.ora": "1c43169e3f42aa8e2a33259d23297d2f23dc58537f3b4e4194a15adf0f6468bd",
+    "art-direction/residual-ground-batch/masters/ground-variation-05.ora": "b336b6d5d9698eb44e959d55c04e7be812218840fe7a8407d2e14197156d6f88",
+    "art-direction/residual-ground-batch/masters/ground-variation-06.ora": "ca03d83bb485888a1c5640bf6eead4ec81b46dfd159fd7d6dc4cbe8d6e0fdec6",
+    "art-direction/residual-ground-batch/masters/surface-transitions-01.ora": "547e06d96aa660a01d9770de0c5a5c4fdff043231e31da702eddd324f10c0018",
+    "art-direction/residual-ground-batch/masters/surface-transitions-02.ora": "75f7fb9898b2c61a4374b2c7aa1e3835e28c02a90ccbc27555a5a9d7965a9951",
+    "art-direction/residual-ground-batch/masters/surface-transitions-03.ora": "45f22608282bc7f8ec59aa20f318f8b5bdddf8f83f194c15d5c2a9ff702fad09",
+    "art-direction/residual-ground-batch/masters/surface-transitions-04.ora": "fc6a3cf20f07b89cc09bb6f94f22691d7041fcf32d4315415ffcaacb89776a58",
+    "art-direction/residual-ground-batch/masters/surface-transitions-05.ora": "abe75116f28cb10696a6e021197cb92a045d8c79243acc7b7b837a28ecd0fb05",
+    "art-direction/residual-ground-batch/masters/surface-transitions-06.ora": "16175f45cadce253e0f435ad94fe9a1d815c42959a3f9801504e551f1d9e5f7e",
+    "art-direction/residual-ground-batch/owner-acceptance.json": "96d530018e0fb110cec0a97a22110802e944601e67826f099286130090e0f36b",
+    "art-direction/residual-ground-batch/prompts.json": "5e8137a6c7f54b2a3215529883a2bd427cd2a3702261436b803e53eb78bd1f62",
+    "art-direction/residual-ground-batch/review/dark-scale.png": "5b8d209866d283044c3cc2ef21fd4609a15cd2d60fce7e432ccb698306a65db1",
+    "art-direction/residual-ground-batch/review/ground-surfaces.png": "46da67d6d9a06fa99b031ed23f4a02fe4d349bad097149bd1d07ee5f4b8cff8c",
+    "art-direction/residual-ground-batch/review/ground-variation.png": "b8b7ff767ccc30f72d77d012172cd78c2a947d164a3d8972a8ba7199d0326708",
+    "art-direction/residual-ground-batch/review/grouped-scale.png": "7e2d0b9ee744dbc07fd3ddee1e5af974e1a4e2948b3fdd6e3851fac6bec30e34",
+    "art-direction/residual-ground-batch/review/light-scale.png": "c1b77981c63916de0c537a9ccd8c61ee89d42bbc9908d0a5d7027c217352839f",
+    "art-direction/residual-ground-batch/review/surface-transitions.png": "24b2d0bfbcb38198a57e7b566fd64d64ab9f9d81698f1bf7926ae880a9f5fbea",
+    "art-direction/residual-ground-batch/review-manifest.json": "73e2166ad61f20a7482136224d7a90f0cf2b3b37b378fc5f01ceb90b267e7f30",
+    "art-direction/residual-ground-batch/session-review.json": "fbeb55d74a2afdea20ee4381605869178f4949e3a25793b137c5585975951286",
+    "art-direction/residual-ground-batch/sources/ground-surfaces.png": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24",
+    "art-direction/residual-ground-batch/sources/ground-variation.png": "a3ca0177772fa182ebb33676653177ed441e90e7b23f94b2b382fac5191669e0",
+    "art-direction/residual-ground-batch/sources/provenance.json": "42638ee8b7889a87bee349525992f384947d30fb68ad3026bc1f1247e371a517",
+    "art-direction/residual-ground-batch/sources/surface-transitions.png": "ebf4eccac5cc19897722a2516b806874d6336cb83d7b5c743017c61b114c02c6",
+    "art-direction/residual-ground-batch/validation.json": "d83164e8d834266e62d53454fb9b5d67356cec81f5a3065bdb419b46fb82c321",
+    "art-direction/residual-ground-readiness/README.md": "117e648b37ddaa1edffccfa9ab2a3ca056a36d073a7019adeddb9a076d9f954a",
+    "art-direction/residual-ground-readiness/ground-surfaces-repeat.png": "3f006e9e1175ee0dfe0d183fe4e760b7b7df7386f7dae89212a87e0b70fa3e2e",
+    "art-direction/residual-ground-readiness/inspect_readiness.py": "a4019373c71948d051c7c86375fd662dad6bc8c87ff8aea0e469a1e995f8fcaa",
+    "art-direction/residual-ground-readiness/readiness.json": "46d24b0ed13ea5d899ef8b1f3b839c941c30bacf79bb5e12ff41092b8030f499",
+    "art-direction/residual-ground-readiness/surface-transitions-repeat.png": "c0349e290f5d08a15bd669ffa036f683b4ea6a96c2be18fd260702b6705b33c7"
+  }
+}

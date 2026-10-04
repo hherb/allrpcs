@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "session reviewed; complete series owner-approved; scoped validation passes",
+  "scope": "Twelve external tiling-feasibility candidates only; no runtime/product/CI changes",
+  "reviewed_code": [
+    "build.py",
+    "boards.py",
+    "authoring_check.py",
+    "inspect_package.py",
+    "audit_readiness.py"
+  ],
+  "reviewed_images": [
+    "review/surfaces-detail.png",
+    "review/transitions-detail.png",
+    "review/surfaces-repeat-1x.png",
+    "review/earth-gravel-connected-1x.png",
+    "review/meadow-soil-connected-1x.png",
+    "evidence/unwrapped-repeat-1x.png"
+  ],
+  "review_fixes": [
+    "Resolved board metadata keyword collision",
+    "Builder checks approved source/crop and artwork hashes before deriving candidates",
+    "Exclude OS metadata from predecessor evidence",
+    "Verify oriented coverage retains exact world-aligned material pixels",
+    "Close candidate image handles",
+    "Consolidated checks cover all sixteen oriented curved ports, including inset turns absent from the displayed panels",
+    "Read-only readiness audit verifies frozen inventory and production manifest before measuring interfaces"
+  ],
+  "visual_findings": [
+    "No transparent background gutters in final repetitions",
+    "Distinct convex and inset coverage with connected material paint",
+    "Finite repeated motifs remain visible and require owner review",
+    "Original unwrapped crops retain incompatible painted edges"
+  ],
+  "authoring_checks": {
+    "status": "accepted external tiling feasibility package passes scoped checks",
+    "modules": 12,
+    "editable_2x_masters": 12,
+    "connected_exact_joins": 160,
+    "predecessor_files_preserved": 96,
+    "surface_texture_diagnostics": {
+      "packed-earth": {
+        "interior_rgb_step_p95": 17.0,
+        "rgb_stddev": 9.94,
+        "opposite_edge_max_delta": 0
+      },
+      "pale-gravel": {
+        "interior_rgb_step_p95": 37.0,
+        "rgb_stddev": 19.2,
+        "opposite_edge_max_delta": 0
+      },
+      "mixed-meadow": {
+        "interior_rgb_step_p95": 31.0,
+        "rgb_stddev": 15.71,
+        "opposite_edge_max_delta": 0
+      },
+      "dry-grass": {
+        "interior_rgb_step_p95": 34.0,
+        "rgb_stddev": 16.26,
+        "opposite_edge_max_delta": 0
+      },
+      "garden-soil": {
+        "interior_rgb_step_p95": 23.0,
+        "rgb_stddev": 11.92,
+        "opposite_edge_max_delta": 0
+      },
+      "damp-mud": {
+        "interior_rgb_step_p95": 19.0,
+        "rgb_stddev": 13.22,
+        "opposite_edge_max_delta": 0
+      }
+    },
+    "approved_artwork_files": 57,
+    "oriented_corner_port_checks": 16,
+    "owner_acceptance_sha256": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "review_manifest_sha256": "100ff730d560037bfe3efcbcdddbb6c2a9390834093a3c73668f83ddfffba1b3",
+    "runtime_promotion": "not authorized by artwork acceptance"
+  },
+  "byte_reproduction": {
+    "files": 65,
+    "all_identical": true
+  },
+  "guard_checks": {
+    "accepted_package_overwrite_refused": true,
+    "master_export_drift_rejected": true,
+    "incomplete_connected_board_rejected": true
+  },
+  "review_manifest_sha256": "100ff730d560037bfe3efcbcdddbb6c2a9390834093a3c73668f83ddfffba1b3",
+  "product_validation": "Product/runtime/CI inputs verified unchanged from 2fcc849; retained full-suite evidence; fresh accepted-artwork scoped validation passes",
+  "owner_statement": "Looks good - all approved",
+  "readiness_audit": {
+    "comparisons": 12,
+    "all_exact_shared_paint_ports": false,
+    "all_accepted_artwork_preserved": true,
+    "byte_reproduction": true,
+    "report_sha256": "4fbf7c2bda4138618a114dc523aa6405e4c20ba851addbfb3b216a9ea0f39f28",
+    "audit_code_sha256": "8c529d84ce5abd3bdd9411cba13cfc4977f23d11668e30fb6c80f780eb88d3e6"
+  }
+}
