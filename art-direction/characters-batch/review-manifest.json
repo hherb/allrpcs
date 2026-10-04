@@ -3,7 +3,7 @@
   "date": "2026-10-04",
   "timezone": "Australia/Brisbane",
   "files": {
-    "README.md": "2b5a8fc154456eb9e7aa7311586e2bd186586842ad20f64ce9aebc7cea8ac4e3",
+    "README.md": "e119f07179edb93d38f8a601f909eeaef325bbef8fd111b06da254881e6080ce",
     "build_review.py": "b0a4bbbb2ff66f92a322b25d5f11a200c63fe5624bdf17d62db4d6ca6f9c0de7",
     "exports/elian-cast.png": "080266dd342697ce3b1f283205365015aa82552bc1a2aeb8171b7103a49c8159",
     "exports/elian-east-idle-01.png": "107ab581582e33e24fc1d6d4e4c6fadb4cb6b3082ee4be71856842204ea88b71",
@@ -321,7 +321,7 @@
     "guides/walk-pose-guide.png": "af03360c063ac3e618437ea03a319a5fe1899a427a4220de1330a665a26528b2",
     "guides/walk-rig-method.gif": "d1218bec7e691f678696b7f1310ec41778f0979a9fafa9d92182fc4fdda03183",
     "inspect_package.py": "868f96669aa4fb63a9f55f17625a0dfaf9a89e7f7c8e036be02ee3c62f730168",
-    "inspect_walk_rig.py": "3c4b593277c1b038991b139a2190789eb232882d3aae52affb3871c95e6ab049",
+    "inspect_walk_rig.py": "6013cfd13cb9d7939b751d04d06a2493a5a2338a7784be9ee44314623b32ffa0",
     "inventory.json": "6b586788053bc8e73d6d8167018413f52aa75cf8b1492262aeb28f7d48d7774e",
     "masters/elian-cast.ora": "ab5e01239a914d459bca925497c2728670461fbb8cb0b921c801ac13cfba734e",
     "masters/elian-east-idle-01.ora": "716f34f85e1626ddac4978bb5a390488b596f88fbd258bb5aac737f1eb0ce322",
@@ -677,7 +677,7 @@
     "review/vale-inspect.gif": "b62c9831418dd19ed4783f2a85ca8249ca65fc527357abbb6fa5ea3049e6354b",
     "review/vale-walk.gif": "720c8e2672cf951acb7368d651143e76fe7f91595a4b6cadc483f14ce8565a14",
     "review/vale.png": "4dbb54aec4db6494056190cab989c56a34f8e209c404a41c7bc58676f0c744bf",
-    "rig_walk.py": "e3e1ffd9c216dd7b338bd77c48caf56cad5b38b5ae6d6896bfb3fcd377320125",
+    "rig_walk.py": "db6c17865d80bfe6fe942819b9ff06d8b11d86dda24719d9d474c7939bcf5db9",
     "session-review.json": "48a5d1a1114156b7d8960cce5c19c2d756086b3fbb1a245279c4d31c5034c7e2",
     "sources/cast.png": "04d2e35f0c71e1ef76091f0dc73aab0cc1a774d6703beffc93503e6c414e4f41",
     "sources/dormant.png": "58583226a71c1afcbb4678058faceee8837fa1c04f10dab607b80435082f8f05",
@@ -1290,5 +1290,6 @@
     "walk-rig/review/vale.png": "9521a10ae9a3c1f4a69bfe63f08eb53e700713db800543f4a7ba07d92cf4fdf6",
     "walk-rig/review-manifest.json": "6e07762c0dcc309842f0b418276ced085c771ee5c53e29c7a39db8516756ba41",
     "walk-rig/validation.json": "e500373f2bfaecd5eb396ab1bd1917cb0c3c0f9a79a29ffbb368d971b759a172"
-  }
+  },
+  "scope": "Initial characters and first mechanical rig snapshot; seam-polish candidates have a separate manifest"
 }

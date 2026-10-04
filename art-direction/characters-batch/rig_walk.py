@@ -196,17 +196,17 @@ def render(role, direction, diagnostic=False):
     return frames[:-1], metadata[:-1], sources
 
 
-def main():
-    """Keep rig candidates separate from the immutable initial review checkpoint."""
-    if (OUT / 'owner-acceptance.json').exists():
+def render_package(out=OUT, renderer=render, label="cutout", limitations=None, preview_label="mechanical"):
+    """Write a complete candidate package without overwriting owner-approved artwork."""
+    if (out / 'owner-acceptance.json').exists():
         raise ValueError('Approved rig package; author a separate revision')
     for folder in ['exports', 'masters', 'review']:
-        (OUT / folder).mkdir(parents=True, exist_ok=True)
+        (out / folder).mkdir(parents=True, exist_ok=True)
     assets, rigs = [], []
     for role in ANIMATED:
         by_direction = []
         for direction in DIRECTIONS:
-            frames, phases, sources = render(role, direction)
+            frames, phases, sources = renderer(role, direction)
             source_hashes = {asset_id: digest(ROOT / 'masters' / f'{asset_id}.ora') for asset_id in sources}
             rigs.append({'role': role, 'direction': direction, 'sources': source_hashes,
                          'hem_export_y': HEMS[role][DIRECTIONS.index(direction)],
@@ -214,39 +214,44 @@ def main():
             exports = []
             for index, frame in enumerate(frames):
                 asset_id = f'{role}-{direction}-walk-{index + 1:02}'
-                master_path = OUT / 'masters' / f'{asset_id}.ora'
-                export_path = OUT / 'exports' / f'{asset_id}.png'
+                master_path = out / 'masters' / f'{asset_id}.ora'
+                export_path = out / 'exports' / f'{asset_id}.png'
                 write_master(frame, master_path, asset_id)
                 export = frame.resize((128, 192), Image.Resampling.LANCZOS)
                 export.save(export_path)
-                assets.append({'id': asset_id, 'master': str(master_path.relative_to(OUT)),
-                               'export': str(export_path.relative_to(OUT)),
+                assets.append({'id': asset_id, 'master': str(master_path.relative_to(out)),
+                               'export': str(export_path.relative_to(out)),
                                'master_sha256': digest(master_path), 'sha256': digest(export_path)})
                 exports.append(export)
             by_direction.append(exports)
         all_frames = [frame for row in by_direction for frame in row]
         labels = [f'{direction} {index * 45} deg' for direction in DIRECTIONS for index in range(STEPS)]
-        board(f'{role.upper()} / cutout full gait candidate', all_frames, labels,
-              STEPS, (160, 228)).save(OUT / 'review' / f'{role}.png')
-        previews = [board(f'{role.upper()} / mechanical full gait candidate',
+        board(f'{role.upper()} / {label} full gait candidate', all_frames, labels,
+              STEPS, (160, 228)).save(out / 'review' / f'{role}.png')
+        previews = [board(f'{role.upper()} / {preview_label} full gait candidate',
                           [row[index] for row in by_direction], DIRECTIONS, 4, (192, 248))
                     for index in range(STEPS)]
-        previews[0].save(OUT / 'review' / f'{role}-walk.gif', save_all=True,
+        previews[0].save(out / 'review' / f'{role}-walk.gif', save_all=True,
                          append_images=previews[1:], duration=100, loop=0, disposal=2)
-    diagnostic = [render('healer', direction, diagnostic=True)[0] for direction in DIRECTIONS]
+    diagnostic = [renderer('healer', direction, diagnostic=True)[0] for direction in DIRECTIONS]
     pictures = [board('HEALER / ownership diagnostic: A red, B blue',
                       [row[index].resize((128, 192), Image.Resampling.LANCZOS) for row in diagnostic],
                       DIRECTIONS, 4, (192, 248)) for index in range(STEPS)]
-    pictures[0].save(OUT / 'review' / 'healer-leg-ownership.gif', save_all=True,
+    pictures[0].save(out / 'review' / 'healer-leg-ownership.gif', save_all=True,
                      append_images=pictures[1:], duration=180, loop=0, disposal=2)
     result = {'status': 'mechanically alternating cutout candidates; owner visual review pending',
               'permission': 'Owner explicitly authorized mechanical rigging and rendering on 2026-10-04',
               'frames_per_direction': STEPS, 'asset_count': len(assets), 'assets': assets, 'rigs': rigs,
-              'limitations': ['Lower-limb cutout rig, with modest torso bob; arms retain the neutral pose',
+              'limitations': limitations or ['Lower-limb cutout rig, with modest torso bob; arms retain the neutral pose',
                               'Occluded side limb reuses visible-side paint with a darker value',
                               'No runtime promotion; gait quality, pivots and timing need owner review']}
-    (OUT / 'inventory.json').write_text(json.dumps(result, indent=2) + '\n')
+    (out / 'inventory.json').write_text(json.dumps(result, indent=2) + '\n')
     print(f'Rendered {len(assets)} cutout gait candidates, {len(rigs)} directional rigs.')
+
+
+def main():
+    """Reproduce the original mechanical candidate package."""
+    render_package()
 
 
 if __name__ == '__main__':

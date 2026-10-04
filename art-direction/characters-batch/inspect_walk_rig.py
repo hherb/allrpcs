@@ -2,6 +2,7 @@
 """Check external rig coverage, paint ownership, both stride halves and package integrity."""
 
 from io import BytesIO
+import hashlib
 import json
 import math
 import zipfile
@@ -13,31 +14,33 @@ from inspect_package import require
 from rig_walk import OUT, STEPS
 
 
-def main():
-    inventory = json.loads((OUT / 'inventory.json').read_text())
+def inspect(out=OUT):
+    """Check either mechanical candidate package without granting visual acceptance."""
+    inventory = json.loads((out / 'inventory.json').read_text())
     expected = {f'{role}-{direction}-walk-{step:02}' for role in ANIMATED
                 for direction in DIRECTIONS for step in range(1, STEPS + 1)}
     require(inventory['asset_count'] == len(inventory['assets']) == len(expected) == 288, 'Wrong rig count')
     require({asset['id'] for asset in inventory['assets']} == expected, 'Incomplete rig assets')
     for folder, extension in [('exports', '*.png'), ('masters', '*.ora')]:
-        require({path.stem for path in (OUT / folder).glob(extension)} == expected, f'Orphan {folder}')
+        require({path.stem for path in (out / folder).glob(extension)} == expected, f'Orphan {folder}')
     pixel_hashes = {}
     for asset in inventory['assets']:
-        require(digest(OUT / asset['export']) == asset['sha256'], 'Changed rig export')
-        require(digest(OUT / asset['master']) == asset['master_sha256'], 'Changed rig master')
-        with Image.open(OUT / asset['export']) as export:
+        require(digest(out / asset['export']) == asset['sha256'], 'Changed rig export')
+        require(digest(out / asset['master']) == asset['master_sha256'], 'Changed rig master')
+        with Image.open(out / asset['export']) as export:
             export.load()
             require(export.mode == 'RGBA' and export.size == (128, 192), 'Wrong export format')
             require(export.getchannel('A').getextrema()[0] == 0, 'No transparency')
             require(export.getchannel('A').getbbox(), 'Empty rig')
-            with zipfile.ZipFile(OUT / asset['master']) as archive:
+            pixel_hash = hashlib.sha256(export.tobytes()).hexdigest()
+            with zipfile.ZipFile(out / asset['master']) as archive:
                 require(archive.testzip() is None, 'Damaged OpenRaster master')
                 with Image.open(BytesIO(archive.read('mergedimage.png'))) as merged:
                     require(merged.size == (256, 384), 'Wrong master size')
                     require(merged.resize(export.size, Image.Resampling.LANCZOS).tobytes() == export.tobytes(),
                             'Master/export pixel mismatch')
         key = asset['id'].rsplit('-walk-', 1)[0]
-        pixel_hashes.setdefault(key, set()).add(asset['sha256'])
+        pixel_hashes.setdefault(key, set()).add(pixel_hash)
     require(all(len(hashes) == STEPS for hashes in pixel_hashes.values()), 'Repeated gait pose')
     require({(rig['role'], rig['direction']) for rig in inventory['rigs']} ==
             {(role, direction) for role in ANIMATED for direction in DIRECTIONS}, 'Incomplete directions')
@@ -61,13 +64,18 @@ def main():
         require(phases[1]['legs'][0]['stance'] and not phases[1]['legs'][1]['stance'] and
                 not phases[5]['legs'][0]['stance'] and phases[5]['legs'][1]['stance'], 'Swing does not alternate')
     for role in ANIMATED:
-        with Image.open(OUT / 'review' / f'{role}-walk.gif') as preview:
+        with Image.open(out / 'review' / f'{role}-walk.gif') as preview:
             require(preview.n_frames == STEPS and preview.info['loop'] == 0, 'Incomplete GIF loop')
-    with Image.open(OUT / 'review' / 'healer-leg-ownership.gif') as diagnostic:
+    with Image.open(out / 'review' / 'healer-leg-ownership.gif') as diagnostic:
         require(diagnostic.n_frames == STEPS, 'Incomplete ownership diagnostic')
     print('PASS: 288 RGBA cutout frames, exact 2x masters and unchanged source-paint hashes.')
     print('PASS: 36 eight-phase loops, alternating contact/swing ownership, unique poses and 10 full-loop GIFs.')
     print('Authoring checks only: knee/arm articulation, cutout style, timing and owner acceptance remain review concerns.')
+
+
+def main():
+    """Inspect the original mechanical candidate checkpoint."""
+    inspect()
 
 
 if __name__ == '__main__':

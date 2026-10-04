@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "Scoped walking-artwork validation passed; exact owner approval recorded; no runtime promotion",
+  "new_frames": 288,
+  "exact_2x_masters": 288,
+  "directional_loops": 36,
+  "phases": 8,
+  "review_pngs": 9,
+  "review_gifs": 10,
+  "runtime_product_ci_inputs": "unchanged",
+  "full_product_suite": "Not rerun for external artwork; preceding 5033-test evidence retained",
+  "owner_acceptance": true,
+  "authoring_checks": {
+    "coverage_hashes_rgba_master_export_parity": "passed",
+    "distinct_decoded_pose_images": "passed",
+    "anatomical_stance_swing_and_actual_endpoint_closure": "passed",
+    "stored_masters_match_rendered_pixels": 288,
+    "hip_boot_continuity_poses": 576,
+    "torso_socket_overlap": "passed",
+    "predecessor_artwork_hashes": "unchanged",
+    "initial_character_package": "passed; existing healer-east-inspect-02 source-edge warning remains provisional",
+    "first_mechanical_package": "passed"
+  },
+  "predecessor_writer_reproduction": {
+    "generated_files_byte_identical": 596,
+    "destination": "disposable directory outside repository"
+  },
+  "negative_checks": [
+    "detached hip/boot paint rejected",
+    "owner-approved package overwrite rejected"
+  ],
+  "approved_package_rechecks": {
+    "woodland": "42 pairs and acceptance hashes passed",
+    "structures": "42 pairs and acceptance hashes passed"
+  },
+  "retained_product_evidence": {
+    "baseline": "2fcc8492328a3a497d4e9ddee25c944ed1dd07b6",
+    "reference": "../../woodland-environment-batch/validation.json",
+    "evidence_log_hashes_verified": 4,
+    "passing_tests": 5033,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "godot": "prior full suite and Compatibility evidence retained",
+    "rerun": false
+  },
+  "session_review": {
+    "starting_head": "3426553cb1311ab09097fe3e8a158d5ff573c746",
+    "reviewed": [
+      "shared package writer and checker refactors",
+      "polished renderer and pixel replay/continuity checks",
+      "nine complete family boards",
+      "preserved predecessor sources/masters/exports/reviews",
+      "candidate documentation, manifests and handover"
+    ],
+    "fixes": [
+      "Connector endpoint aligned to boot shaft rather than toe-centered crop",
+      "Hip overlap and two rounded connector segments replace abrupt sheared triangles",
+      "Measured mask removes staff strip touching Elian west toe",
+      "Repeated swatch texture rejected; representative reconstructed boards retained",
+      "Pose uniqueness checks decoded RGBA bytes rather than PNG file hashes",
+      "Phase replay normalizes tuples to JSON arrays before comparing stored metadata",
+      "Original GIF labels retained so predecessor writer output stays byte-identical",
+      "Historical predecessor script hashes distinguished from unchanged artwork; current scripts bound separately"
+    ],
+    "unresolved_code_findings": 0
+  },
+  "script_syntax": "passed",
+  "review_embeds": "all exist",
+  "hosted_ci": "Not manually dispatched; direct-main publication may trigger configured push workflows",
+  "limitations": [
+    "Simple cutout motion, neutral arms and rigid accessories remain visual-review concerns",
+    "Registration, camera, timing, staff usage and clothing seams remain provisional",
+    "No runtime promotion; approval is limited to the polished walking artwork"
+  ],
+  "owner_approval": {
+    "quote": "Looks good! Approved",
+    "date": "2026-10-04",
+    "scope": "Complete polished walking series: 288 frames/masters and collective reviews",
+    "runtime_promotion": false
+  }
+}

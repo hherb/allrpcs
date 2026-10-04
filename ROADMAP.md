@@ -143,8 +143,12 @@ were revised following owner feedback. Animation registration, timing and runtim
 provisional. Original walk previews repeat the same leading foot and remain retained as
 incomplete lineage. The owner authorized mechanical rigging; `characters-batch/walk-rig/`
 contains 288 replacement eight-phase frames with alternating anatomical leg ownership.
-Review and polish the cutout gait, then obtain character artwork approval and scoped
-validation before the next objects batch.
+The separate `characters-batch/walk-rig-polish/` adds 288 revised candidate frames,
+shaft-aligned connectors, restrained knee flex and removal of a moving staff fragment.
+Original artwork and the first rig snapshot remain as lineage. The owner approved
+the complete polished walking series; exact hashes and scoped validation are frozen.
+Clarify whether approval also covers the retained non-walking character collection
+before freezing complete character acceptance and proceeding to the objects batch.
 The terrain category remains open for residual work.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining

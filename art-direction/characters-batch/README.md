@@ -5,6 +5,11 @@ Initial Phase 9.2 character artwork series for collective review, produced on
 owner-authorized code-based cutout rigging. **Artwork acceptance remains pending.** The initial similar faces were revised following owner feedback; the
 first pass remains in `rejected/`.
 
+The latest [walk seam-polish review](walk-rig-polish/README.md) contains a separate
+288-frame candidate series. It fixes shaft/connector gaps and removes an accidentally
+extracted Elian staff fragment from the moving foot. The original mechanical snapshot
+below remains preserved for comparison; the polished walking series now has exact owner approval; the first rig remains lineage.
+
 The eight authored roles are Seeker, Healer, Elian, Sera, Orin, Vale, Rowan and Mira.
 New art includes eight full-body designs, eight portraits, 32 directional frames each
 for seven companion/encountered roles and the Seeker plain-tunic/work-apron choices,
@@ -98,8 +103,12 @@ create a separate candidate package for further approved-artwork revisions.
 `inspect_package.py` runs only authoring checks: completeness, alpha integrity, crop-edge
 warnings, image integrity, hashes, exact 2x parity and unchanged inherited Seeker bytes.
 `review-manifest.json` records the candidate snapshot; it is **not owner acceptance**.
-The next slice is collective review and requested polishing of the mechanically alternating
-walk series. `rig_walk.py` reproduces it; `inspect_walk_rig.py` checks its 36 complete loops.
+The polished walking series is owner-approved with frozen hashes. Clarify whether
+that approval also covers the retained non-walking character collection before
+complete character acceptance and the next objects batch.
+`polish_walk.py` reproduces it; `inspect_walk_polish.py` checks its 36 complete loops,
+replayed master pixels and unchanged predecessor artwork. `rig_walk.py` and
+`inspect_walk_rig.py` still reproduce/check the first mechanical snapshot.
 Consolidated validation follows artwork review and requested revisions. When product/runtime/CI
 inputs remain unchanged, retain and verify the preceding full-suite evidence instead of
 replaying unchanged Godot smokes. Runtime promotion requires named scope approval and visual
