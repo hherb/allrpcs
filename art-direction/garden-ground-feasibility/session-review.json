@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Sydney",
+  "status": "session code and visual review complete",
+  "reviewed_files": {
+    "build.py": "4ce32293436929cbee3594056028bb9d50fa2562f95a7eb5b1f8885e4c17ba08",
+    "inspect_package.py": "bbe7942ae837cc0366db2db09e9430a35e52b4d9b8fc8c91d8045b4e28fba9ca",
+    "capture.gd": "736482d41bd904766d2da224ad4690979de64c468efb8ee0e53a25c5e781b73d",
+    "README.md": "443e941763a2ab53b65df31f085eda315bcf81ce282d2a46a99a7aa617b6fc97"
+  },
+  "inventory_sha256": "7a9d9090ea899924e3815686e56ef6fca8983f06eae90807cbea0f90fe5bfb3e",
+  "owner_selection_sha256": "74d108bbe981b5a842384bc1500af7509aae6662d1e715849fc9491473efdbc5",
+  "capture_evidence_sha256": "4c92f7efc1b0c0505dd21580ce8c3053f41cab819ceceda70c18d15221fd8675",
+  "checks": {
+    "status": "scoped Garden proof checks pass",
+    "native_views_independently_verified": 3,
+    "source_layers_per_view": 12,
+    "editable_2x_masters": 2,
+    "master_layers_verified": 31,
+    "byte_reproduced_outputs": 17,
+    "source_bound_inputs": 169,
+    "measurements": {
+      "soil-only": {
+        "visible_changed_pixels": 886,
+        "coverage_pixels": 7298,
+        "unchanged_fraction_inside_coverage": 0.8786
+      },
+      "meadow-apron": {
+        "visible_changed_pixels": 22750,
+        "coverage_pixels": 34508,
+        "unchanged_fraction_inside_coverage": 0.3407
+      }
+    },
+    "scope": "CPU composition, immutable source paint and bounded disposable GPU previews; no named runtime promotion",
+    "godot_preview_captures": 6,
+    "gpu_change_scope": [
+      {
+        "variant": "soil-only",
+        "zoom": 1.0,
+        "changed_pixels": 861
+      },
+      {
+        "variant": "meadow-apron",
+        "zoom": 1.0,
+        "changed_pixels": 22215
+      },
+      {
+        "variant": "soil-only",
+        "zoom": 2.0,
+        "changed_pixels": 4821
+      },
+      {
+        "variant": "meadow-apron",
+        "zoom": 2.0,
+        "changed_pixels": 92900
+      }
+    ]
+  },
+  "rejection_probes": [
+    "Modified paint-plane bytes rejected",
+    "Incomplete owner selection binding rejected",
+    "Expanded soil envelope metadata rejected",
+    "Changed GPU capture bytes rejected"
+  ],
+  "review_fixes": [
+    "Replaced the soil crop-frame mat with exact retained bed alpha coverage; preserved sharp and rounded failures",
+    "Derived route/resource/anchor placements from live sources and rejected unsupported transforms",
+    "Preserved complete selection bindings and exact paint output bytes",
+    "Used standard viewport for final GPU review and bound capture inputs/outputs"
+  ],
+  "visual_review": {
+    "CPU": "Inspected baseline, both corrected variants and sharp/rounded diagnostics at native/detail scales",
+    "GPU": "Selected apron inspected in actual Godot at 1x and 2x; all six captures pass bounded pixel-difference checks",
+    "limits": "Owner selected the displayed CPU apron; later GPU previews are separate evidence and not owner runtime acceptance"
+  },
+  "product_validation": "No product/runtime/CI files changed; frozen tiling inspector and compatibility review pass; full unchanged product suites not replayed",
+  "sandbox": "Initial sandbox Godot exit 134 before capture; identical host retry and standard-viewport capture succeeded without product changes"
+}

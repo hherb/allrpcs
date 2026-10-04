@@ -195,6 +195,12 @@ binds 39 terrain-texture assignments and 828 source files; no explicit new-field
 is selected. Select a field and intended interface/composition, or request a placement
 proposal, before a separate source-matched external feasibility slice. No new legacy
 connector family or material geography follows from generic edge colour differences.
+The owner selected the [Garden meadow-apron composition](art-direction/garden-ground-feasibility/README.md)
+after the external soil/apron comparison. Its tight soil mask follows the retained bed
+alpha silhouettes; rejected dark crop-frame mats remain as evidence. Native source
+composition, editable masters and six bounded disposable Godot previews pass scoped
+checks. Next prepare the exact named Garden runtime scope proposal; no production
+placement or runtime acceptance is inferred from the external variant preference.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.

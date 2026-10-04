@@ -1,0 +1,45 @@
+{
+  "status": "scoped Garden proof checks pass",
+  "native_views_independently_verified": 3,
+  "source_layers_per_view": 12,
+  "editable_2x_masters": 2,
+  "master_layers_verified": 31,
+  "byte_reproduced_outputs": 17,
+  "source_bound_inputs": 169,
+  "measurements": {
+    "soil-only": {
+      "visible_changed_pixels": 886,
+      "coverage_pixels": 7298,
+      "unchanged_fraction_inside_coverage": 0.8786
+    },
+    "meadow-apron": {
+      "visible_changed_pixels": 22750,
+      "coverage_pixels": 34508,
+      "unchanged_fraction_inside_coverage": 0.3407
+    }
+  },
+  "scope": "CPU composition, immutable source paint and bounded disposable GPU previews; no named runtime promotion",
+  "godot_preview_captures": 6,
+  "gpu_change_scope": [
+    {
+      "variant": "soil-only",
+      "zoom": 1.0,
+      "changed_pixels": 861
+    },
+    {
+      "variant": "meadow-apron",
+      "zoom": 1.0,
+      "changed_pixels": 22215
+    },
+    {
+      "variant": "soil-only",
+      "zoom": 2.0,
+      "changed_pixels": 4821
+    },
+    {
+      "variant": "meadow-apron",
+      "zoom": 2.0,
+      "changed_pixels": 92900
+    }
+  ]
+}

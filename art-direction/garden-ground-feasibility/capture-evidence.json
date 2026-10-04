@@ -1,0 +1,30 @@
+{
+	"camera_center": [
+		2300.0,
+		1300.0
+	],
+	"captures": {
+		"review/godot-baseline-1.0x.png": "09466a73fdea4ebd5eb009a30c6be7442ceb8b3e6a2537ce8acaf7723c1c6000",
+		"review/godot-baseline-2.0x.png": "435751562e6acdab353f08561b516a78ffb8fe0bfcab37733786fb1ddcc55dfe",
+		"review/godot-meadow-apron-1.0x.png": "d15598c3399205df3198d36a5ee1e9b3fa5f0dc7fab8e40fa6c3ef89fee784d9",
+		"review/godot-meadow-apron-2.0x.png": "b4aad16b29c375ed20137d62acba276f5fd9594d0039c0d6f6e0b5868c7b91b7",
+		"review/godot-soil-only-1.0x.png": "ee1312b8fa9cd7e5ac571c359ccd975fa1221a5418ac16e4927992a0b57a45b0",
+		"review/godot-soil-only-2.0x.png": "2d19802ad719353cca25a6100c2cdc52746d83f0b0f6524c0063178090749c6f"
+	},
+	"engine": "4.6.3-stable (official)",
+	"inventory_sha256": "7a9d9090ea899924e3815686e56ef6fca8983f06eae90807cbea0f90fe5bfb3e",
+	"meadow_layer_sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+	"paint_origin": [
+		2048.0,
+		1120.0
+	],
+	"scene_sha256": "86a1d9fb9c11a2fad498cb33d1acc22f1e7396f42068d233499ce338e58ea09e",
+	"schema_version": 1,
+	"scope": "Disposable external Garden preview; no saved scene or runtime promotion",
+	"script_sha256": "736482d41bd904766d2da224ad4690979de64c468efb8ee0e53a25c5e781b73d",
+	"soil_layer_sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+	"viewport": [
+		1280,
+		720
+	]
+}

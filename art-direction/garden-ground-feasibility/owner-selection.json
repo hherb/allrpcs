@@ -1,0 +1,17 @@
+{
+  "status": "meadow-apron variant selected",
+  "date": "2026-10-04",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "definitely better with the meadiw apron",
+  "scope": "Preference for the displayed external meadow-apron CPU composition, including the tight retained-bed silhouette soil underlay",
+  "selected_files": {
+    "review/meadow-apron-1x.png": "a73b057e8963c2921fc52df53f8ae49d1502185c392520312515f83ee3696b5b",
+    "review/meadow-apron-detail-2x.png": "4f316d96755ba95d6fbba0602e510710071e25f9f376824d7b3379252b95c9d6",
+    "masters/meadow-apron.ora": "b39e956140f47d8f899ce0d067308b54f5793e26d989199b3d73775cd0c3a09c",
+    "proof-inputs/soil-layer.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+    "proof-inputs/meadow-layer.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+    "proof-inputs/soil-coverage.png": "be7cf802cd5ee375937dbabb9cd8d7b6ef0440343e56a43763352cf8b25dc990",
+    "proof-inputs/apron-coverage.png": "c8fb99a88a506bdd5e1e85bd4eacbd103f4b30b2c1ee80f091f55b8b54b4bfa6"
+  },
+  "limits": "No ordinary scene, imports, physical layout, gameplay, terrain completeness or named runtime promotion authorized. Later Godot preview views are separate evidence, not included in this owner statement."
+}
