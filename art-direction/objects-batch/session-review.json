@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "base_commit": "08d82a649e140faf1bbd6b62e8bab730b1278e33",
+  "status": "reviewed candidate package; collective owner artwork approval pending",
+  "scope": "External object art and its authoring scripts/documentation only",
+  "review": {
+    "method": "Primary-agent cumulative code review and visual inspection of all seven sources, seven labelled boards and two scale compositions",
+    "fixes": [
+      "Measured herb row and scroll column gutters preserve whole objects and prevent neighboring paint intrusion",
+      "Scale-board family labels moved clear of the standing tablet",
+      "Builder refuses to overwrite a package with owner-acceptance.json",
+      "Deterministic OpenRaster ZIP timestamps allow byte reproduction",
+      "Inspection verifies exact object and review coverage, master layers, reference hashes and all review-manifest inputs"
+    ],
+    "remaining_code_findings": [],
+    "artwork_limits": [
+      "Owner feedback and collective artwork approval pending",
+      "Small-object readability, scale, paint proportions, pivots and occlusion remain provisional",
+      "Blank writing fields and ambiguous props establish no scenario or treatment facts",
+      "Editable masters contain raster paint and a blank correction layer, not semantic reconstructed layers"
+    ]
+  },
+  "authoring_checks": {
+    "command": "/opt/homebrew/bin/python3 art-direction/objects-batch/inspect_package.py",
+    "result": "PASS: 42 candidate RGBA exports, 42 exact 2x editable masters, seven source sheets, nine review images, hash coverage, layers, references, alpha and pivot bounds",
+    "byte_reproduction": "PASS: 102 source/export/master/review/inventory/review-manifest files unchanged after a second build",
+    "whitespace": "git diff --check passed"
+  },
+  "regression": {
+    "comparison": "git diff --name-only 2fcc849 HEAD -- game src tests scripts .github produced no changed inputs before publication",
+    "session_paths": "Only objects-batch and HANDOVER.md, README.md, ROADMAP.md changed",
+    "full_product_suites": "Not replayed for external artwork, as directed by the live handover",
+    "retained_evidence": "art-direction/woodland-environment-batch/validation.json"
+  },
+  "next_checkpoint": "Collective owner review of the complete nine-image series; revisions then exact-hash acceptance and consolidated scoped checks"
+}

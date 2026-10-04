@@ -152,6 +152,12 @@ The owner also confirmed full-batch approval, including the 168 retained non-wal
 assets. Complete active character acceptance is hash-bound; the next category is objects.
 The terrain category remains open for residual work.
 
+Complete initial objects candidate batch (2026-10-04): 42 assets across all seven
+families, editable 2x masters, seven labelled detail boards and two actual-export-scale
+compositions; see `art-direction/objects-batch/README.md`. Lightweight authoring checks
+and session review are recorded with the package. Collective owner artwork review is
+pending; the category checkbox remains open. No runtime or scenario content changed.
+
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
 artwork series first, keeping editable 2x masters and separate review exports. Present all

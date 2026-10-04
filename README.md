@@ -12,6 +12,12 @@ refinement, bounded art bible, exact generation prompts, provenance, and review 
 recorded in [`art-direction/representative-scene`](art-direction/representative-scene/README.md).
 None of these previews is imported into Godot or treated as production art.
 
+The complete initial [objects artwork series](art-direction/objects-batch/README.md)
+contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
+containers and clue props, with editable 2x masters, seven labelled family boards and two
+scale compositions. It awaits collective owner artwork review; writing fields are blank
+and no runtime placement or scenario content is introduced.
+
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,

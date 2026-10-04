@@ -2,65 +2,57 @@
 
 ## Current state
 
-Continue from live `main`. Phase 8 and 9.1 are complete. The owner-confirmed
-[whole-channel runtime promotion](art-direction/whole-channel-runtime-promotion/owner-acceptance.json)
+Continue from live `main`. Phase 8 and 9.1 are complete. The approved
+[whole-channel runtime package](art-direction/whole-channel-runtime-promotion/owner-acceptance.json)
 retains 89 exports/40 masters and parity across 37 approved runtime views.
-The [woodland](art-direction/woodland-environment-batch/README.md) and
-[structures](art-direction/structures-batch/README.md) batches are approved, 42 modules
-and editable 2x masters each. Runtime integration/placement/physical authority is separate.
+[Woodland](art-direction/woodland-environment-batch/README.md) and
+[structures](art-direction/structures-batch/README.md) are approved: 42 modules/2x masters each.
+[Character acceptance](art-direction/characters-batch/owner-acceptance.json) binds 456 active
+new export/master pairs and 48 inherited Seeker cloak frames, including the approved
+288-frame polished walks. Do not rebuild approved packages. Runtime integration is separate.
+Preserve original character assets, first rig, generated failures and rejected boards as
+lineage; never sum both walking snapshots into the active count. Timing/pivots remain provisional.
 
 ## Exact next slice
 
-The complete [polished walking series](art-direction/characters-batch/walk-rig-polish/README.md)
-is owner-approved: “Looks good! Approved” (2026-10-04). Exact hashes and scoped
-validation are frozen in that package; no runtime promotion. Do not rebuild it.
-The approval covers 288 frames/2x masters across nine families/four directions/eight
-phases, plus the complete review series. Boot-shaft connections and an exposed Elian
-staff strip are corrected; arms/accessories stay rigid, timing/pivots provisional.
+The complete initial [objects series](art-direction/objects-batch/README.md) is produced:
+42 candidates across herbs, remedies, tools, scrolls, inscription surfaces, containers
+and clue props, editable 2x OpenRaster masters, seven labelled family boards and two
+actual-export-scale compositions. `review-manifest.json` binds exact candidate hashes.
+It is **awaiting collective owner artwork review**, not approved or runtime-promoted.
 
-The owner confirmed full character-batch approval: “You have my approval already now
-for the full batch”. [Complete acceptance](art-direction/characters-batch/owner-acceptance.json)
-binds all 456 active new export/master pairs and 48 inherited Seeker cloak frames.
-[Combined scoped validation](art-direction/characters-batch/validation.json) records the checks.
-The exact next slice is to produce the complete herbs/remedies/tools/scrolls/inscriptions/
-containers/clue-object artwork series, with editable 2x masters, labelled family boards
-and scale compositions before collective owner review. Character approval is complete.
+Present the complete nine-image review series and take owner feedback. Revise only
+requested artwork, preserving source and rejected evidence. After collective approval,
+record exact accepted hashes and run consolidated scoped asset checks. Inscription and
+writing areas are deliberately blank; props establish no species/efficacy, scenario,
+discovery or clue facts. Small-object readability, proportions and scale are provisional.
+Only after that checkpoint, proceed to the complete journal/map/inventory/dialogue/
+settings/provider-state UI artwork series. Do not turn UI artwork into functional UI work.
 
-Preserve 312 initial assets, the first 288-frame mechanical snapshot, generated failures
-and rejected texture boards as lineage. Each walking snapshot replaces the same 144
-incomplete studies: 456 active new candidates plus 48 unchanged approved Seeker cloak
-frames. Never sum both rig snapshots into the active count. For any later runtime
-proposal, review clothing seams, proportions, sliding and staff/accessory continuity.
+## Workflow and boundaries
 
-## Artwork workflow and boundaries
-
-For each remaining Phase 9.2 category, produce the complete image series, editable 2x
-masters, labelled family boards and scale compositions before collective owner review.
-Preserve Direction A gouache detail and failed evidence. During production use lightweight
-creation/inspection checks; consolidate validation after owner approval. Do not rebuild
-approved packages. Routine bounded external proof approvals remain waived; named runtime
-scope approval and runtime visual confirmation remain separate gates.
+Produce each entire remaining Phase 9.2 category, editable 2x masters, labelled family
+boards and scale compositions before collective owner review. Preserve Direction A
+gouache detail. Use lightweight authoring/inspection checks during production; consolidate
+validation after owner approval. Routine bounded external proof approvals are waived;
+named runtime scope approval and runtime visual confirmation remain separate gates.
 
 No runtime/collision/navigation/layout/scenario/gameplay/dialogue/clue/discovery/treatment/
-save/provider/UI/audio/release/signing scope. Retain the channel's five-sprite owner;
+save/provider/UI/audio/release/signing changes. Retain five-sprite channel ownership;
 x<1664 shader only on three native Stream nodes; native UVs/polygons/regions/caps/crossing;
 route siblings including final ClosedForestPath; untextured Clearing near side; gate/Forester;
 accepted Shrine triangle; x=1664/x=2000 transitions. Water/decks remain visual only;
 walking-under-water and bridge fringe-clearance limitations remain. Keep capture controls
 out of startup; exclude `.DS_Store`. Artwork does not establish usability/accessibility.
 
-## Verification to retain
+## Verification
 
-[Polish checks/session review](art-direction/characters-batch/walk-rig-polish/validation.json)
-records fresh authoring checks, preserved predecessor artwork, original-writer reproduction,
-approved-package rechecks and review fixes. The first rig's parent-script hashes remain
-historical; the polished manifest binds the current shared scripts. Its refactored writer
-reproduced all 596 original generated files byte-for-byte in a disposable directory.
-
-Product/runtime/CI inputs are unchanged from `2fcc849`. Retain the
+Objects: `inspect_package.py` passes 42 candidate exports/masters, all nine review images,
+hash coverage, alpha, layers, pivots and exact 2x parity. `session-review.json` records
+code/visual review, fixes and byte reproduction. This is authoring evidence, not approval.
+Product/runtime/CI inputs remain unchanged from `2fcc849`; retain the
 [full-suite evidence](art-direction/woodland-environment-batch/validation.json): zero-warning/
-error build, 5,033 passing tests, full Godot/Compatibility checks and four verified log hashes.
-Do not replay unchanged product suites for external artwork. The whole-channel validator's
-frozen scope rejects later artwork folders; retain its evidence at unchanged `2fcc849`.
-Do not weaken it. If channel/runtime inputs change, use its exact promotion scope and run
-required full product validation.
+error build, 5,033 passing tests, Godot/Compatibility checks and four verified log hashes.
+Do not replay unchanged product suites for external artwork. The whole-channel validator
+rejects later artwork folders by frozen scope; retain its evidence at unchanged `2fcc849`
+and never weaken it. If runtime inputs change, use exact promotion scope and full validation.
