@@ -1,0 +1,286 @@
+{
+  "date": "2026-10-04",
+  "status": "existing-terrain inventory plus proposed external residual series; no artwork acceptance",
+  "manifest": "art-direction/production-proof/corrected/asset-manifest.json",
+  "manifest_sha256": "7e5cf3ebaccaef3695ec729f7c9bb4bcda45aa7553b6df715c2c110a76b84a3a",
+  "manifest_terrain_count": 35,
+  "existing_terrain": [
+    {
+      "id": "terrain.quiet_moss",
+      "export": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
+    },
+    {
+      "id": "terrain.stream_water",
+      "export": "art-direction/production-proof/corrected/exports/terrain/stream-water.png",
+      "sha256": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c"
+    },
+    {
+      "id": "terrain.stream_bank",
+      "export": "art-direction/production-proof/corrected/exports/terrain/stream-bank.png",
+      "sha256": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e"
+    },
+    {
+      "id": "terrain.stream_bank_opening_cap",
+      "export": "art-direction/production-proof/corrected/exports/terrain/stream-bank-opening-cap.png",
+      "sha256": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_transition",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-transition.png",
+      "sha256": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_corner_transition",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-corner-transition.png",
+      "sha256": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_corner_transition_left",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-corner-transition-left.png",
+      "sha256": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_inset_corner_transition",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-inset-corner-transition.png",
+      "sha256": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a",
+      "runtime_copy_present": false,
+      "runtime_copy_sha256": null
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_inset_corner_transition_left",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-inset-corner-transition-left.png",
+      "sha256": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7",
+      "runtime_copy_present": false,
+      "runtime_copy_sha256": null
+    },
+    {
+      "id": "terrain.woodland_village_edge_transition",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-village-edge-transition.png",
+      "sha256": "283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21"
+    },
+    {
+      "id": "terrain.straight_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/straight-path.png",
+      "sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
+    },
+    {
+      "id": "terrain.path_bend",
+      "export": "art-direction/production-proof/corrected/exports/terrain/path-bend.png",
+      "sha256": "8ac6919e5dac8881232a75cbfcb58945085fd59e11ebfd53beea952135512438",
+      "runtime_copy_present": false,
+      "runtime_copy_sha256": null
+    },
+    {
+      "id": "terrain.path_t_junction",
+      "export": "art-direction/production-proof/corrected/exports/terrain/path-t-junction.png",
+      "sha256": "822e6efa3031cc8b76cfaed7b53bd9ece8b389550d89bb0e9d899a83bba50d54",
+      "runtime_copy_present": false,
+      "runtime_copy_sha256": null
+    },
+    {
+      "id": "terrain.path_cross_junction",
+      "export": "art-direction/production-proof/corrected/exports/terrain/path-cross-junction.png",
+      "sha256": "9e3923d85a6f24d1716f401e535d3b011eda5033c9520420e4d3e78b34b42027",
+      "runtime_copy_present": false,
+      "runtime_copy_sha256": null
+    },
+    {
+      "id": "terrain.path_end_cap",
+      "export": "art-direction/production-proof/corrected/exports/terrain/path-end-cap.png",
+      "sha256": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3"
+    },
+    {
+      "id": "terrain.opening_junction",
+      "export": "art-direction/production-proof/corrected/exports/terrain/opening-junction.png",
+      "sha256": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68"
+    },
+    {
+      "id": "terrain.village_square_junction",
+      "export": "art-direction/production-proof/corrected/exports/terrain/village-square-junction.png",
+      "sha256": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+    },
+    {
+      "id": "terrain.village_edge_square_connector",
+      "export": "art-direction/production-proof/corrected/exports/terrain/village-edge-square-connector.png",
+      "sha256": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854"
+    },
+    {
+      "id": "terrain.square_garden_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/square-garden-path.png",
+      "sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de"
+    },
+    {
+      "id": "terrain.square_sickhouse_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/square-sickhouse-path.png",
+      "sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7"
+    },
+    {
+      "id": "terrain.square_southern_road_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/square-southern-road-path.png",
+      "sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5"
+    },
+    {
+      "id": "terrain.southern_road_wagon_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/southern-road-wagon-path.png",
+      "sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799"
+    },
+    {
+      "id": "terrain.shrine_southern_road_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/shrine-southern-road-path.png",
+      "sha256": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e"
+    },
+    {
+      "id": "terrain.shrine_southern_road_endpoint_blend",
+      "export": "art-direction/production-proof/corrected/exports/terrain/shrine-southern-road-endpoint-blend.png",
+      "sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720"
+    },
+    {
+      "id": "terrain.woodland_shrine_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-shrine-path.png",
+      "sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"
+    },
+    {
+      "id": "terrain.woodland_village_edge_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/woodland-village-edge-path.png",
+      "sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c"
+    },
+    {
+      "id": "terrain.village_edge_stream_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/village-edge-stream-path.png",
+      "sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f"
+    },
+    {
+      "id": "terrain.stream_laundry_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/stream-laundry-path.png",
+      "sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185"
+    },
+    {
+      "id": "terrain.clearing_closed_forest_path",
+      "export": "art-direction/production-proof/corrected/exports/terrain/clearing-closed-forest-path.png",
+      "sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451"
+    },
+    {
+      "id": "terrain.whole_channel_water",
+      "export": "art-direction/production-proof/corrected/exports/terrain/channel-water.png",
+      "sha256": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1"
+    },
+    {
+      "id": "terrain.whole_channel_banks",
+      "export": "art-direction/production-proof/corrected/exports/terrain/channel-banks.png",
+      "sha256": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb"
+    },
+    {
+      "id": "terrain.whole_channel_decks",
+      "export": "art-direction/production-proof/corrected/exports/terrain/channel-decks.png",
+      "sha256": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb"
+    },
+    {
+      "id": "terrain.whole_channel_detail",
+      "export": "art-direction/production-proof/corrected/exports/terrain/channel-detail.png",
+      "sha256": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10"
+    },
+    {
+      "id": "terrain.whole_channel_fringe",
+      "export": "art-direction/production-proof/corrected/exports/terrain/channel-fringe.png",
+      "sha256": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+      "runtime_copy_present": true,
+      "runtime_copy_sha256": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349"
+    }
+  ],
+  "proposed_families": {
+    "ground-surfaces": [
+      "Packed earth",
+      "Pale gravel",
+      "Mixed meadow ground",
+      "Sparse dry grass ground",
+      "Dark garden soil",
+      "Damp mud"
+    ],
+    "ground-variation": [
+      "Pebble scatter",
+      "Gravel scatter",
+      "Damp soil patch",
+      "Sparse grass patch",
+      "Worn earth patch",
+      "Moss fleck patch"
+    ],
+    "surface-transitions": [
+      "Earth to gravel straight",
+      "Earth to gravel outer corner",
+      "Earth to gravel inset corner",
+      "Grass to soil straight",
+      "Grass to soil outer corner",
+      "Grass to soil inset corner"
+    ]
+  },
+  "notes": [
+    "Proposal fills generic reusable material gaps; no claim that the complete terrain category is finished.",
+    "Keep existing paths, moss/leaf tiles, Stream and whole-channel packages unchanged.",
+    "Candidate textures and transitions must be reviewed before seam or runtime suitability claims.",
+    "Author entire 18-candidate series before collective owner review."
+  ]
+}

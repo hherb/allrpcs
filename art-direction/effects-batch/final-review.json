@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "final cumulative review and frozen-snapshot checks passed",
+  "review_manifest_sha256": "4cf12366c1b35c5ac8ba3af08407549dc226e974d2b08490c6fce3d9ff3f3e0c",
+  "review_fixes": [
+    "Moved weather/lighting/treatment gutters to preserve visible paint and the complete eight-source-pixel margin.",
+    "Rejected crop-margin clipping and verified complete source partition coverage.",
+    "Preserved independently checked 1:1 scale-board compositing and exact source-only acceptance."
+  ],
+  "exact_reproduction": {
+    "manifested_files": 80,
+    "all_hashes_equal": true,
+    "review_manifest_equal": true,
+    "method": "Disposable copy; approval removed only in that copy; resolved temporary path used for reproduction."
+  },
+  "frozen_build_guard": "Live rebuild rejected before writing; manifest unchanged.",
+  "inspection_output": [
+    "PASS: 30 effects candidates, 30 exact 2x masters, five sources and eight review images.",
+    "PASS: candidate hashes, RGBA, OpenRaster layers and master/export parity.",
+    "PASS: all 30 exports on both 1:1 scale boards and 12 grouped placements.",
+    "PASS: exact owner-approved source hashes and frozen technical derivatives.",
+    "Runtime, animation, pivots and semantics remain unverified."
+  ],
+  "product_runtime_ci": "No changes against 2fcc849 outside art-direction and README/ROADMAP/HANDOVER.",
+  "concurrent_work": "Preserved concurrent package review metadata; residual-ground-batch remains outside this publication scope."
+}

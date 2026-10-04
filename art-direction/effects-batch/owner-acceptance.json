@@ -1,0 +1,21 @@
+{
+  "status": "approved",
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "owner_statement": "Accepted and approved",
+  "evidence": {
+    "thread_id": "01a104cd-5f3c-7a00-9f11-c49007e01a2c",
+    "user_message_id": "01a10503-b3f7-7f92-9dc7-256c0a0c030e"
+  },
+  "approval_scope": "five displayed source sheets only",
+  "approved_sources": {
+    "sources/weather.png": "7e9102798fba6de5ca7b05d639bc30e4ca0c87b1b1c2e0ed97fb3f274f68121f",
+    "sources/lighting.png": "f7480a87ccbd640a6da337a8065fa58884b40fa48c7e0038f2333a3059eaaae7",
+    "sources/discovery.png": "1074c13dd77d765b63a01cdfbe79e3a1ab95e88687001289d3a5ae8c7d2d45bb",
+    "sources/treatment.png": "be6a39e91cf1279b312570a9ed2f49c6f8e35386fb39a4b606f89871c6ef76f6",
+    "sources/disease-state.png": "ae4ee57d6a8c33bbb1afbbc815dd82bd2796cbd3b7aeca2d2e6f72f6fc6cc5b7"
+  },
+  "packaged_review_manifest_sha256": "4cf12366c1b35c5ac8ba3af08407549dc226e974d2b08490c6fce3d9ff3f3e0c",
+  "derivative_status": "30 exports, 30 masters and eight review boards packaged after source approval; technical hash binding only, collective derivative artwork review pending",
+  "authority": "External static source artwork only; no runtime, animation, state semantics, diagnosis, discovery content or treatment efficacy approval"
+}

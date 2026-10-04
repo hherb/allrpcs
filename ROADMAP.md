@@ -163,7 +163,18 @@ inventory, dialogue, settings and provider-state; editable 2x masters, six label
 and two export-scale compositions. See `art-direction/ui-batch/README.md` for exact-hash
 owner acceptance and scoped validation; production remains external and no functional UI changed.
 Review fixes, source crop accounting and byte reproduction are recorded with the package.
-The next complete category is effects.
+Approved effects source series (2026-10-04): 30 static candidates across weather,
+lighting, discovery, treatment and disease-state presentation. The owner approved
+the five displayed source sheets; editable 2x masters, five labelled family boards,
+two full-series export-scale boards and representative groups were packaged afterwards.
+See `art-direction/effects-batch/README.md` for exact source acceptance, scoped checks
+and derivative reproduction evidence. Animation, anchors, runtime integration and
+effects semantics remain separate.
+
+The next bounded series is the 18-candidate residual ground artwork inventory in
+`art-direction/residual-terrain-plan/README.md`: ground surfaces, variation and transitions.
+Its read-only audit verifies all 35 existing manifest terrain exports; no predecessor
+artwork or runtime inputs changed. The overall terrain category remains open.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -185,7 +196,7 @@ passing full-suite evidence and run fresh scoped validation for the newly approv
 - [ ] Produce character designs, portraits, directional sprites, and required animation frames.
 - [x] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
 - [x] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.
-- [ ] Produce weather, lighting, discovery, treatment, and disease-state effects.
+- [x] Produce weather, lighting, discovery, treatment, and disease-state effects.
 - [ ] Validate alpha, seams, scale, pivots, collision silhouettes, and texture import settings.
 - [ ] Test important visuals under colour-vision and contrast simulations.
 - [ ] Keep editable source assets separate from exported runtime assets.

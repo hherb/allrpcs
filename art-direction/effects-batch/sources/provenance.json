@@ -1,0 +1,28 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-04",
+  "transparent_background": true,
+  "prompt_file": "prompts.json",
+  "sources": {
+    "weather": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104cd-5f3c-7a00-9f11-c49007e01a2c/exec-61dbbec9-d540-46aa-aff1-b1249a0daa1b.png",
+      "sha256": "7e9102798fba6de5ca7b05d639bc30e4ca0c87b1b1c2e0ed97fb3f274f68121f"
+    },
+    "lighting": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104cd-5f3c-7a00-9f11-c49007e01a2c/exec-1fd7d3fa-13d7-4363-b45e-6860f49b632f.png",
+      "sha256": "f7480a87ccbd640a6da337a8065fa58884b40fa48c7e0038f2333a3059eaaae7"
+    },
+    "discovery": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104cd-5f3c-7a00-9f11-c49007e01a2c/exec-5d5598c8-a303-4daa-a6a2-93f499dc06d3.png",
+      "sha256": "1074c13dd77d765b63a01cdfbe79e3a1ab95e88687001289d3a5ae8c7d2d45bb"
+    },
+    "treatment": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104cd-5f3c-7a00-9f11-c49007e01a2c/exec-c1d769bd-fd1a-4ca2-83a3-24c6e0daa26e.png",
+      "sha256": "be6a39e91cf1279b312570a9ed2f49c6f8e35386fb39a4b606f89871c6ef76f6"
+    },
+    "disease-state": {
+      "original_tool_file": "/Users/hherb/.codex/generated_images/01a104cd-5f3c-7a00-9f11-c49007e01a2c/exec-29158873-f222-4847-b4e0-d83187bec013.png",
+      "sha256": "ae4ee57d6a8c33bbb1afbbc815dd82bd2796cbd3b7aeca2d2e6f72f6fc6cc5b7"
+    }
+  }
+}

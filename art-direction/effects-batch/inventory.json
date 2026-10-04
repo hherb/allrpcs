@@ -1,0 +1,1379 @@
+{
+  "status": "owner-approved source sheets; derivative review packaging",
+  "generator": "built-in image_gen",
+  "asset_count": 30,
+  "assets": [
+    {
+      "id": "weather-01",
+      "name": "Light rain",
+      "source": "sources/weather.png",
+      "source_cell": [
+        0,
+        0,
+        514,
+        518
+      ],
+      "source_crop_in_cell": [
+        74,
+        39,
+        471,
+        477
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 8617,
+        "max_alpha": 2
+      },
+      "master": "masters/weather-01.ora",
+      "export": "exports/weather-01.png",
+      "size": [
+        139,
+        152
+      ],
+      "master_size": [
+        278,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5cfdb72f9eb160b8814ff0211b9b4665b20aa24d235ea1759748524bf45dbbbf",
+      "master_sha256": "db92b412aee8390c30845188a011c2d0c41f214c9f26b973cceb3bb2a5bb82d8"
+    },
+    {
+      "id": "weather-02",
+      "name": "Dense rain",
+      "source": "sources/weather.png",
+      "source_cell": [
+        514,
+        0,
+        1004,
+        518
+      ],
+      "source_crop_in_cell": [
+        46,
+        25,
+        458,
+        481
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 10712,
+        "max_alpha": 2
+      },
+      "master": "masters/weather-02.ora",
+      "export": "exports/weather-02.png",
+      "size": [
+        138,
+        152
+      ],
+      "master_size": [
+        276,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f3a4cc16b60f09bdbc6240a2f4a37dffd5b2711fa4d2e6b1dd35f3b6f3ecdbd7",
+      "master_sha256": "fbf07581d0e95376d7183b05c7f867c974844e7ace25b8234e311487ea2a4e5e"
+    },
+    {
+      "id": "weather-03",
+      "name": "Puddle ripple",
+      "source": "sources/weather.png",
+      "source_cell": [
+        1004,
+        0,
+        1536,
+        518
+      ],
+      "source_crop_in_cell": [
+        32,
+        158,
+        506,
+        416
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 10760,
+        "max_alpha": 2
+      },
+      "master": "masters/weather-03.ora",
+      "export": "exports/weather-03.png",
+      "size": [
+        152,
+        86
+      ],
+      "master_size": [
+        304,
+        172
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "0d0e23cc68e0e74a28d4e5b0af614d354eb57e2f6cae7a88f863ef020aca835f",
+      "master_sha256": "3529e91e33691b0318d0e6353ac171fc85cf238748b1679bbbc71f5d1a13974c"
+    },
+    {
+      "id": "weather-04",
+      "name": "Low mist",
+      "source": "sources/weather.png",
+      "source_cell": [
+        0,
+        518,
+        528,
+        1024
+      ],
+      "source_crop_in_cell": [
+        12,
+        114,
+        524,
+        394
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 12174,
+        "max_alpha": 3
+      },
+      "master": "masters/weather-04.ora",
+      "export": "exports/weather-04.png",
+      "size": [
+        152,
+        87
+      ],
+      "master_size": [
+        304,
+        174
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e4cc474ea6ee6c15f8038cae209eed44b25e83253e0c4e74eaf0ef71235d898f",
+      "master_sha256": "7bcf15aeaa8a67754673941dc748cf9cc297cd8a1dcc2a4d69941bccbf061545"
+    },
+    {
+      "id": "weather-05",
+      "name": "Leaf gust",
+      "source": "sources/weather.png",
+      "source_cell": [
+        528,
+        518,
+        1038,
+        1024
+      ],
+      "source_crop_in_cell": [
+        5,
+        75,
+        478,
+        423
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 17979,
+        "max_alpha": 2
+      },
+      "master": "masters/weather-05.ora",
+      "export": "exports/weather-05.png",
+      "size": [
+        152,
+        114
+      ],
+      "master_size": [
+        304,
+        228
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3e1871b31b3567547cddcc1e8fa70c44bc904397cc8317f339ee1502efdae4da",
+      "master_sha256": "884bb6e25bbef39f4e8eb309803c99c3cb011584e2de77bade97fac2110512d6"
+    },
+    {
+      "id": "weather-06",
+      "name": "Snow flurry",
+      "source": "sources/weather.png",
+      "source_cell": [
+        1038,
+        518,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        34,
+        37,
+        452,
+        448
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 14187,
+        "max_alpha": 2
+      },
+      "master": "masters/weather-06.ora",
+      "export": "exports/weather-06.png",
+      "size": [
+        152,
+        150
+      ],
+      "master_size": [
+        304,
+        300
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d2814bde1cbd20c6cd0e3cce88df4692f628111944fa50f5e581450af3ea77dc",
+      "master_sha256": "f013fb5ae910dbf3424ade7747258ce9bfb82198808f286c77117d81972c4ea0"
+    },
+    {
+      "id": "lighting-01",
+      "name": "Sunlight shaft",
+      "source": "sources/lighting.png",
+      "source_cell": [
+        0,
+        0,
+        554,
+        533
+      ],
+      "source_crop_in_cell": [
+        81,
+        61,
+        500,
+        509
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 55623,
+        "max_alpha": 4
+      },
+      "master": "masters/lighting-01.ora",
+      "export": "exports/lighting-01.png",
+      "size": [
+        143,
+        152
+      ],
+      "master_size": [
+        286,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "af0210303ce9b2e4d42c12e444c45e966de11565f30804b93a426ab8dcc93ad1",
+      "master_sha256": "057b879e9bb13eee7d644e3abdbbbe59832753dfa1b39041455c4e1f37c9de23"
+    },
+    {
+      "id": "lighting-02",
+      "name": "Moonlight shaft",
+      "source": "sources/lighting.png",
+      "source_cell": [
+        554,
+        0,
+        1043,
+        533
+      ],
+      "source_crop_in_cell": [
+        55,
+        74,
+        459,
+        500
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 40568,
+        "max_alpha": 3
+      },
+      "master": "masters/lighting-02.ora",
+      "export": "exports/lighting-02.png",
+      "size": [
+        145,
+        152
+      ],
+      "master_size": [
+        290,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7060166d5d7af7c9e0d099f24e89c99a70c6be7bd4a44fdc22b881506199a4cd",
+      "master_sha256": "35617201d16eea9826b0b2d34ecec24753851e4908e3523ecb6b9fd136c1f1ff"
+    },
+    {
+      "id": "lighting-03",
+      "name": "Amber light pool",
+      "source": "sources/lighting.png",
+      "source_cell": [
+        1043,
+        0,
+        1536,
+        533
+      ],
+      "source_crop_in_cell": [
+        31,
+        147,
+        448,
+        470
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 62474,
+        "max_alpha": 3
+      },
+      "master": "masters/lighting-03.ora",
+      "export": "exports/lighting-03.png",
+      "size": [
+        152,
+        120
+      ],
+      "master_size": [
+        304,
+        240
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "51dff8a14891dcd4bd56c190e0c860911da479a44cfc79ca43d4bf8b126a3326",
+      "master_sha256": "3394a9a803d6f6dd9f86197a694f527bc90db92595fe1b3db683f80ae3212723"
+    },
+    {
+      "id": "lighting-04",
+      "name": "Dappled light",
+      "source": "sources/lighting.png",
+      "source_cell": [
+        0,
+        533,
+        531,
+        1024
+      ],
+      "source_crop_in_cell": [
+        52,
+        26,
+        486,
+        432
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 41488,
+        "max_alpha": 2
+      },
+      "master": "masters/lighting-04.ora",
+      "export": "exports/lighting-04.png",
+      "size": [
+        152,
+        143
+      ],
+      "master_size": [
+        304,
+        286
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "11f821107984ac657423c135a1856856e3d4d7df3534ecb7b4b5925a98d74f3b",
+      "master_sha256": "f3e1635aefa3dfe723284e25a1c15da5f755bf9b08b0e3b43063c42ce274da9d"
+    },
+    {
+      "id": "lighting-05",
+      "name": "Dappled shade",
+      "source": "sources/lighting.png",
+      "source_cell": [
+        531,
+        533,
+        1061,
+        1024
+      ],
+      "source_crop_in_cell": [
+        46,
+        31,
+        480,
+        427
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 33897,
+        "max_alpha": 3
+      },
+      "master": "masters/lighting-05.ora",
+      "export": "exports/lighting-05.png",
+      "size": [
+        152,
+        139
+      ],
+      "master_size": [
+        304,
+        278
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "13b17c1abc948e1a3c37dda55c2f289e3593db9ae893ac2934981acf5b0a02b0",
+      "master_sha256": "69a5f0de6e737a082c4bda3c136e7069f2dca0ac97e2173f68bfcc7ea321f903"
+    },
+    {
+      "id": "lighting-06",
+      "name": "Warm bloom",
+      "source": "sources/lighting.png",
+      "source_cell": [
+        1061,
+        533,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        83,
+        43,
+        404,
+        399
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 46981,
+        "max_alpha": 5
+      },
+      "master": "masters/lighting-06.ora",
+      "export": "exports/lighting-06.png",
+      "size": [
+        138,
+        152
+      ],
+      "master_size": [
+        276,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "7b9d9b0bbae15acf06ddd33f461a519441f82e48161772a4bc23ef1e21416cb6",
+      "master_sha256": "e246016aa83f155f14b62737767d38c6f6a54a78a768706ab1f57a66a0d72b0a"
+    },
+    {
+      "id": "discovery-01",
+      "name": "Single glint",
+      "source": "sources/discovery.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        169,
+        133,
+        369,
+        386
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 3416,
+        "max_alpha": 4
+      },
+      "master": "masters/discovery-01.ora",
+      "export": "exports/discovery-01.png",
+      "size": [
+        122,
+        152
+      ],
+      "master_size": [
+        244,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "cc6586b69dd62907b046c339edc0434c7d759842b2acd58c034f5228e34f7585",
+      "master_sha256": "68fe2fa6f09afcd3d4a9286bcd143d352c0d55de946c11be31a92ee47c26eb11"
+    },
+    {
+      "id": "discovery-02",
+      "name": "Glint cluster",
+      "source": "sources/discovery.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        119,
+        119,
+        407,
+        410
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4308,
+        "max_alpha": 3
+      },
+      "master": "masters/discovery-02.ora",
+      "export": "exports/discovery-02.png",
+      "size": [
+        151,
+        152
+      ],
+      "master_size": [
+        302,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "fa1b685f9d357dea68d5913c509235a90ee4fbc77126d23464000454ae927d1f",
+      "master_sha256": "d49347a1d8009e78fd18f9238ff9b1c01feddf3f88633ba8294ed7acfa9cd316"
+    },
+    {
+      "id": "discovery-03",
+      "name": "Inspection ring",
+      "source": "sources/discovery.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        74,
+        84,
+        434,
+        438
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 2560,
+        "max_alpha": 4
+      },
+      "master": "masters/discovery-03.ora",
+      "export": "exports/discovery-03.png",
+      "size": [
+        152,
+        150
+      ],
+      "master_size": [
+        304,
+        300
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "3e69a52aba9735a0d3d3e2f2f159bc7a7858add58a7a32113b9c93999e770d96",
+      "master_sha256": "0c0d278cc3aa9074e6ffc351f9d37c7575afcf783e09653691ec6e7e67b64f16"
+    },
+    {
+      "id": "discovery-04",
+      "name": "Dust motes",
+      "source": "sources/discovery.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        160,
+        58,
+        360,
+        421
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4248,
+        "max_alpha": 4
+      },
+      "master": "masters/discovery-04.ora",
+      "export": "exports/discovery-04.png",
+      "size": [
+        87,
+        152
+      ],
+      "master_size": [
+        174,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d270a3c77ddd4388648d42915582e1120fccbab6349937cc5260cbde27c67771",
+      "master_sha256": "dbf58ea1318a774db23fedfbc17cbda1176db04cf40f9cee1addc254dd37183a"
+    },
+    {
+      "id": "discovery-05",
+      "name": "Ripple ring",
+      "source": "sources/discovery.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        29,
+        69,
+        482,
+        392
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4983,
+        "max_alpha": 4
+      },
+      "master": "masters/discovery-05.ora",
+      "export": "exports/discovery-05.png",
+      "size": [
+        152,
+        111
+      ],
+      "master_size": [
+        304,
+        222
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "e8e7ddf815a2e4df6feaa8c3fb6d38676156b788da1ea3657b834797cbc37f5d",
+      "master_sha256": "086d7c2785b11ef9ca38d1c44523ec6c055d4086414ae9d17723570bfc00d068"
+    },
+    {
+      "id": "discovery-06",
+      "name": "Attention arc",
+      "source": "sources/discovery.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        65,
+        47,
+        450,
+        406
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 3137,
+        "max_alpha": 4
+      },
+      "master": "masters/discovery-06.ora",
+      "export": "exports/discovery-06.png",
+      "size": [
+        152,
+        142
+      ],
+      "master_size": [
+        304,
+        284
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f5336246143a9f7944172d633099aa5fe5ec5dc1b86c54079181ee012b9df98d",
+      "master_sha256": "a5bde8d44f0d33329c5ecf095b9388f95275e83cc644f137dbe109e19a58c898"
+    },
+    {
+      "id": "treatment-01",
+      "name": "Vapor wisp",
+      "source": "sources/treatment.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        509
+      ],
+      "source_crop_in_cell": [
+        124,
+        66,
+        413,
+        487
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4567,
+        "max_alpha": 3
+      },
+      "master": "masters/treatment-01.ora",
+      "export": "exports/treatment-01.png",
+      "size": [
+        107,
+        152
+      ],
+      "master_size": [
+        214,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b60da3fa93bcbf0327aab2e094bdfce69ad88de883c1d1154728759d62904e38",
+      "master_sha256": "6a9d325aed30aba5af8af06512b27e1a898cfc91feb2f5443fc1a798f4b6efaf"
+    },
+    {
+      "id": "treatment-02",
+      "name": "Leaf motes",
+      "source": "sources/treatment.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        509
+      ],
+      "source_crop_in_cell": [
+        96,
+        79,
+        442,
+        456
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 7558,
+        "max_alpha": 1
+      },
+      "master": "masters/treatment-02.ora",
+      "export": "exports/treatment-02.png",
+      "size": [
+        140,
+        152
+      ],
+      "master_size": [
+        280,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "f88aa4fddfadfdf9a4411b8472360b7ab2d3a6287b5f4db373b7d9bdc18349d0",
+      "master_sha256": "950f28b018ac35553ca23c8d69e958fb3c02e524f3568ac3efe10a3b1b2c37e7"
+    },
+    {
+      "id": "treatment-03",
+      "name": "Warm glow",
+      "source": "sources/treatment.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        509
+      ],
+      "source_crop_in_cell": [
+        93,
+        123,
+        410,
+        442
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 4223,
+        "max_alpha": 3
+      },
+      "master": "masters/treatment-03.ora",
+      "export": "exports/treatment-03.png",
+      "size": [
+        151,
+        152
+      ],
+      "master_size": [
+        302,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "30c306f240c78492955ed717a09f6bd8984c272c1e4fef06eaa07dd91cd377f8",
+      "master_sha256": "334c8a5f4e44b28ceecc9cba80e30641bcb95e7d7a0c0d2aa23f1237a33bcb34"
+    },
+    {
+      "id": "treatment-04",
+      "name": "Cream ripple",
+      "source": "sources/treatment.png",
+      "source_cell": [
+        0,
+        509,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        53,
+        163,
+        492,
+        354
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 10092,
+        "max_alpha": 4
+      },
+      "master": "masters/treatment-04.ora",
+      "export": "exports/treatment-04.png",
+      "size": [
+        152,
+        71
+      ],
+      "master_size": [
+        304,
+        142
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "4935d52a4ae28b67a5930522a5192ee99d1a42797734a4a6ad70f0a4be28eaed",
+      "master_sha256": "d5db456ebce01b8107b827c40a97b640eda986c7a172ff934943d5fc33b94413"
+    },
+    {
+      "id": "treatment-05",
+      "name": "Rising motes",
+      "source": "sources/treatment.png",
+      "source_cell": [
+        512,
+        509,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        146,
+        24,
+        391,
+        433
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 9508,
+        "max_alpha": 3
+      },
+      "master": "masters/treatment-05.ora",
+      "export": "exports/treatment-05.png",
+      "size": [
+        94,
+        152
+      ],
+      "master_size": [
+        188,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "de9e3770db7cc30f1b86e3535bbe2887f1fe43bcaf19d87c4a277c1bf094135b",
+      "master_sha256": "7163a4318dac8a661acc4ebe080fe2d31726d03e3d3bc8c71216b9cc98cc4f2e"
+    },
+    {
+      "id": "treatment-06",
+      "name": "Particle arc",
+      "source": "sources/treatment.png",
+      "source_cell": [
+        1024,
+        509,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        61,
+        54,
+        449,
+        421
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 2713,
+        "max_alpha": 2
+      },
+      "master": "masters/treatment-06.ora",
+      "export": "exports/treatment-06.png",
+      "size": [
+        152,
+        144
+      ],
+      "master_size": [
+        304,
+        288
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b8012cde60e8a9ecff222c2f65f1636ad0a30f04e4b871b33105641919a0d6a5",
+      "master_sha256": "8f610978e0d83134d36cb1b5d0a48421ed99fa2f2bc8cf8b052e30220ac3779d"
+    },
+    {
+      "id": "disease-state-01",
+      "name": "Grey haze",
+      "source": "sources/disease-state.png",
+      "source_cell": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "source_crop_in_cell": [
+        74,
+        89,
+        483,
+        454
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 15568,
+        "max_alpha": 2
+      },
+      "master": "masters/disease-state-01.ora",
+      "export": "exports/disease-state-01.png",
+      "size": [
+        152,
+        137
+      ],
+      "master_size": [
+        304,
+        274
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b453491aaf473d50a8aae5b36b15ee7148daeec4e99bc5f894aa4c90354ae4f7",
+      "master_sha256": "e6ecb5e5ea7779e7001f634bbd4d1cc3eb8c833b812d57ef6677ea72f00ebfe2"
+    },
+    {
+      "id": "disease-state-02",
+      "name": "Ochre pulse",
+      "source": "sources/disease-state.png",
+      "source_cell": [
+        512,
+        0,
+        1024,
+        512
+      ],
+      "source_crop_in_cell": [
+        91,
+        91,
+        458,
+        444
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 10094,
+        "max_alpha": 2
+      },
+      "master": "masters/disease-state-02.ora",
+      "export": "exports/disease-state-02.png",
+      "size": [
+        152,
+        147
+      ],
+      "master_size": [
+        304,
+        294
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "ea9905b56348b1a2c736f48766215946d37830f3a41ce77d4e2df68b4d692f23",
+      "master_sha256": "7a784c874edcb5a77d4c641d3669f0efb56e1843dcaa7fcd3288d6b71f34f300"
+    },
+    {
+      "id": "disease-state-03",
+      "name": "Mauve motes",
+      "source": "sources/disease-state.png",
+      "source_cell": [
+        1024,
+        0,
+        1536,
+        512
+      ],
+      "source_crop_in_cell": [
+        74,
+        81,
+        407,
+        438
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 8108,
+        "max_alpha": 1
+      },
+      "master": "masters/disease-state-03.ora",
+      "export": "exports/disease-state-03.png",
+      "size": [
+        142,
+        152
+      ],
+      "master_size": [
+        284,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "5e4f9a8665fccb2c8833a2f1cd00ada806a867c4355ee9c49c416c5852acca21",
+      "master_sha256": "572c7c6e0ec97c1a349852e71b3f5a655d339a19ee64fabc5732c838fa9a560a"
+    },
+    {
+      "id": "disease-state-04",
+      "name": "Chill wisp",
+      "source": "sources/disease-state.png",
+      "source_cell": [
+        0,
+        512,
+        512,
+        1024
+      ],
+      "source_crop_in_cell": [
+        169,
+        54,
+        434,
+        422
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 18361,
+        "max_alpha": 2
+      },
+      "master": "masters/disease-state-04.ora",
+      "export": "exports/disease-state-04.png",
+      "size": [
+        112,
+        152
+      ],
+      "master_size": [
+        224,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "d1050be93c65ba1d2aaf3cd6989c120804a703344e065d5af2f9cac9d227ad19",
+      "master_sha256": "7551f102739f69c5756a64495cd4442cb7a698316fc61433912063104c00f5eb"
+    },
+    {
+      "id": "disease-state-05",
+      "name": "Heat shimmer",
+      "source": "sources/disease-state.png",
+      "source_cell": [
+        512,
+        512,
+        1024,
+        1024
+      ],
+      "source_crop_in_cell": [
+        119,
+        23,
+        408,
+        443
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 10664,
+        "max_alpha": 3
+      },
+      "master": "masters/disease-state-05.ora",
+      "export": "exports/disease-state-05.png",
+      "size": [
+        107,
+        152
+      ],
+      "master_size": [
+        214,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "53bedf7e12927e5e943b399130a68e0ebc3c0c5b5ba7ca66b4217e7bd1400ea9",
+      "master_sha256": "dc05e05f608e7ad3607c096411dc58fa804389c472981dd3f9a9436a9302a2c6"
+    },
+    {
+      "id": "disease-state-06",
+      "name": "Falling particles",
+      "source": "sources/disease-state.png",
+      "source_cell": [
+        1024,
+        512,
+        1536,
+        1024
+      ],
+      "source_crop_in_cell": [
+        163,
+        20,
+        343,
+        432
+      ],
+      "excluded_faint_pixels": {
+        "pixel_count": 8022,
+        "max_alpha": 4
+      },
+      "master": "masters/disease-state-06.ora",
+      "export": "exports/disease-state-06.png",
+      "size": [
+        71,
+        152
+      ],
+      "master_size": [
+        142,
+        304
+      ],
+      "proposed_pivot": [
+        0,
+        0
+      ],
+      "pivot_status": "provisional",
+      "sha256": "b75f108b35267ee269ded9b74770acc8fb02d53c6fc21d877a1a213ad58261ce",
+      "master_sha256": "6ba9014c0a9450950af18fcdbee734139c3056b3c10f340183bd1b448a938d33"
+    }
+  ],
+  "scale_reference": {
+    "canvases": {
+      "light-scale": [
+        1280,
+        1000
+      ],
+      "dark-scale": [
+        1280,
+        1000
+      ],
+      "grouped-scale": [
+        1280,
+        720
+      ]
+    },
+    "placements": {
+      "weather-01": [
+        185,
+        78
+      ],
+      "weather-02": [
+        365,
+        78
+      ],
+      "weather-03": [
+        545,
+        78
+      ],
+      "weather-04": [
+        725,
+        78
+      ],
+      "weather-05": [
+        905,
+        78
+      ],
+      "weather-06": [
+        1085,
+        78
+      ],
+      "lighting-01": [
+        185,
+        258
+      ],
+      "lighting-02": [
+        365,
+        258
+      ],
+      "lighting-03": [
+        545,
+        258
+      ],
+      "lighting-04": [
+        725,
+        258
+      ],
+      "lighting-05": [
+        905,
+        258
+      ],
+      "lighting-06": [
+        1085,
+        258
+      ],
+      "discovery-01": [
+        185,
+        438
+      ],
+      "discovery-02": [
+        365,
+        438
+      ],
+      "discovery-03": [
+        545,
+        438
+      ],
+      "discovery-04": [
+        725,
+        438
+      ],
+      "discovery-05": [
+        905,
+        438
+      ],
+      "discovery-06": [
+        1085,
+        438
+      ],
+      "treatment-01": [
+        185,
+        618
+      ],
+      "treatment-02": [
+        365,
+        618
+      ],
+      "treatment-03": [
+        545,
+        618
+      ],
+      "treatment-04": [
+        725,
+        618
+      ],
+      "treatment-05": [
+        905,
+        618
+      ],
+      "treatment-06": [
+        1085,
+        618
+      ],
+      "disease-state-01": [
+        185,
+        798
+      ],
+      "disease-state-02": [
+        365,
+        798
+      ],
+      "disease-state-03": [
+        545,
+        798
+      ],
+      "disease-state-04": [
+        725,
+        798
+      ],
+      "disease-state-05": [
+        905,
+        798
+      ],
+      "disease-state-06": [
+        1085,
+        798
+      ]
+    },
+    "grouped_placements": [
+      {
+        "id": "weather-01",
+        "position": [
+          46,
+          170
+        ]
+      },
+      {
+        "id": "weather-03",
+        "position": [
+          231,
+          170
+        ]
+      },
+      {
+        "id": "lighting-02",
+        "position": [
+          416,
+          170
+        ]
+      },
+      {
+        "id": "weather-04",
+        "position": [
+          676,
+          170
+        ]
+      },
+      {
+        "id": "discovery-01",
+        "position": [
+          861,
+          170
+        ]
+      },
+      {
+        "id": "discovery-03",
+        "position": [
+          1046,
+          170
+        ]
+      },
+      {
+        "id": "treatment-01",
+        "position": [
+          46,
+          470
+        ]
+      },
+      {
+        "id": "treatment-05",
+        "position": [
+          231,
+          470
+        ]
+      },
+      {
+        "id": "lighting-03",
+        "position": [
+          416,
+          470
+        ]
+      },
+      {
+        "id": "disease-state-01",
+        "position": [
+          676,
+          470
+        ]
+      },
+      {
+        "id": "disease-state-04",
+        "position": [
+          861,
+          470
+        ]
+      },
+      {
+        "id": "lighting-05",
+        "position": [
+          1046,
+          470
+        ]
+      }
+    ],
+    "units": "pixels at 1:1 export scale",
+    "status": "proposed only; static effects, timing and anchors untested"
+  },
+  "crop_policy": {
+    "alpha_threshold": 8,
+    "margin_pixels": 8,
+    "original_sources_preserved": true
+  },
+  "notes": "No state semantics, animation, scenario facts or runtime authority."
+}

@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "passed",
+  "scope": "External effects source acceptance and derivative technical integrity only",
+  "acceptance_sha256": "9a5534956e944dd20f8ce340713b9e66d45c1e6d8f9a4303458be6bac591716c",
+  "checks": [
+    "30 candidates, 30 exact 2x masters, five source sheets, eight review images",
+    "Hash/provenance and source cell coverage, crop accounting, transparent padding, layer metadata and source/master/export parity",
+    "Both 30-export scale boards and 12 grouped placements independently checked at 1:1",
+    "80 manifested files and manifest byte-identical after rebuild",
+    "Owner approval binds five source sheets only; derivative collective review pending"
+  ],
+  "product_runtime_ci_change_since_2fcc849": "none",
+  "full_product_validation": "Retain art-direction/woodland-environment-batch/validation.json; unchanged suites not replayed",
+  "runtime_authority": "none"
+}

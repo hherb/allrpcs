@@ -18,6 +18,14 @@ containers and clue props, with editable 2x masters, seven labelled family board
 scale compositions. The owner approved the complete series; writing fields are blank
 and no runtime placement or scenario content is introduced.
 
+The complete [effects artwork series](art-direction/effects-batch/README.md) contains
+30 static candidates across weather, lighting, discovery, treatment and disease-state
+presentation, with editable 2x masters and labelled light/dark scale boards. The owner
+approved the five displayed source sheets; derived packaging is technically checked.
+No animation, runtime wiring, diagnosis, knowledge grant or efficacy semantics are added.
+The [residual terrain inventory](art-direction/residual-terrain-plan/README.md) records
+35 unchanged terrain exports and specifies the next 18-candidate external ground series.
+
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
 object-state cues, and a four-direction Seeker walk sample under
 [`art-direction/production-proof`](art-direction/production-proof/README.md). Its documented alpha,

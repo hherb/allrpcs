@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "base_commit": "b61f3716a0a76718a1ed5cbd6a9173a2522150db",
+  "scope": "Completed inherited effects artwork package, exact source acceptance record and residual-terrain inventory; external only",
+  "review": {
+    "method": "Primary-agent cumulative script review and visual inspection of five labelled boards, two scale boards and grouped composition",
+    "fixes": [
+      "Added independent 1:1 composited pixel checks for all 30 exports on both scale boards and all 12 grouped placements",
+      "Recovered direct owner approval from source chat and bound its five exact unchanged source hashes without extending approval to derivative boards"
+    ],
+    "remaining_code_findings": [],
+    "limitations": [
+      "Collective derivative board review pending",
+      "Masters contain source paint and an empty correction layer",
+      "Animation, timing, anchors, blending, colour vision and all runtime semantics remain provisional"
+    ]
+  },
+  "authoring_checks": {
+    "command": "/opt/homebrew/bin/python3 art-direction/effects-batch/inspect_package.py",
+    "result": "Passed source/hash coverage, complete crop accounting, RGBA padding, OpenRaster layer metadata, exact source/master/export parity and 1:1 scale-board pixel checks",
+    "byte_reproduction": "80 manifested files and review manifest byte-identical after final rebuild"
+  },
+  "regression": {
+    "product_runtime_ci_change_since_2fcc849": "none",
+    "full_suites": "Not replayed for external artwork, as directed by HANDOVER.md",
+    "retained_evidence": "art-direction/woodland-environment-batch/validation.json"
+  },
+  "residual_inventory": "35 corrected terrain exports and runtime-copy metadata freshly verified; three proposed families of six candidates"
+}
