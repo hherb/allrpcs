@@ -2,7 +2,7 @@
 
 Initial Phase 9.2 character artwork series for collective review, produced on
 2026-10-04 (Australia/Brisbane) with the built-in image_gen tool, followed by
-owner-authorized code-based cutout rigging. **Artwork acceptance remains pending.** The initial similar faces were revised following owner feedback; the
+owner-authorized code-based cutout rigging. **The full active character artwork batch is owner-approved (2026-10-04).** The initial similar faces were revised following owner feedback; the
 first pass remains in `rejected/`.
 
 The latest [walk seam-polish review](walk-rig-polish/README.md) contains a separate
@@ -103,13 +103,14 @@ create a separate candidate package for further approved-artwork revisions.
 `inspect_package.py` runs only authoring checks: completeness, alpha integrity, crop-edge
 warnings, image integrity, hashes, exact 2x parity and unchanged inherited Seeker bytes.
 `review-manifest.json` records the candidate snapshot; it is **not owner acceptance**.
-The polished walking series is owner-approved with frozen hashes. Clarify whether
-that approval also covers the retained non-walking character collection before
-complete character acceptance and the next objects batch.
+The owner confirmed full-batch approval: “You have my approval already now for the full batch”.
+`owner-acceptance.json` freezes 456 active export/master pairs and 48 inherited
+Seeker frames. Run `validate_approved.py` for combined scoped validation. The next
+slice is the complete herbs/remedies/tools/scrolls/inscriptions/containers/clue-object series.
 `polish_walk.py` reproduces it; `inspect_walk_polish.py` checks its 36 complete loops,
 replayed master pixels and unchanged predecessor artwork. `rig_walk.py` and
 `inspect_walk_rig.py` still reproduce/check the first mechanical snapshot.
-Consolidated validation follows artwork review and requested revisions. When product/runtime/CI
+Consolidated scoped validation now covers the approved active batch. When product/runtime/CI
 inputs remain unchanged, retain and verify the preceding full-suite evidence instead of
 replaying unchanged Godot smokes. Runtime promotion requires named scope approval and visual
 confirmation. No product code, runtime manifests/imports, scenes, collision, navigation,

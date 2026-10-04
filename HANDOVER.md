@@ -18,12 +18,13 @@ The approval covers 288 frames/2x masters across nine families/four directions/e
 phases, plus the complete review series. Boot-shaft connections and an exposed Elian
 staff strip are corrected; arms/accessories stay rigid, timing/pivots provisional.
 
-An approval-scope clarification is pending: whether this also covers the retained
-168 non-walking character candidates (designs, portraits, idle/inspection and recovery
-poses). If yes, freeze the complete active [characters batch](art-direction/characters-batch/README.md)
-acceptance and consolidate scoped validation, then produce the complete herbs/remedies/
-tools/scrolls/inscriptions/containers/clue-object series. If walks only, obtain collective
-owner review of those retained candidates before the objects category.
+The owner confirmed full character-batch approval: “You have my approval already now
+for the full batch”. [Complete acceptance](art-direction/characters-batch/owner-acceptance.json)
+binds all 456 active new export/master pairs and 48 inherited Seeker cloak frames.
+[Combined scoped validation](art-direction/characters-batch/validation.json) records the checks.
+The exact next slice is to produce the complete herbs/remedies/tools/scrolls/inscriptions/
+containers/clue-object artwork series, with editable 2x masters, labelled family boards
+and scale compositions before collective owner review. Character approval is complete.
 
 Preserve 312 initial assets, the first 288-frame mechanical snapshot, generated failures
 and rejected texture boards as lineage. Each walking snapshot replaces the same 144

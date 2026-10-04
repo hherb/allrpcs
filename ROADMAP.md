@@ -135,9 +135,10 @@ Approved artwork batch (2026-10-04): **Reusable trees, shrubs, fallen wood, rock
 environmental details** — 42 modules; see `art-direction/woodland-environment-batch/README.md`.
 Approved structures batch (2026-10-04): **Village, sickhouse, garden, shrine, laundry, wagon,
 and woodland structures** — 42 modules; see `art-direction/structures-batch/README.md`.
-Characters batch (2026-10-04): initial artwork series remains incomplete;
+Approved characters batch (2026-10-04): 456 active new assets and 48 inherited frames;
 see `art-direction/characters-batch/README.md`. It includes eight designs, eight portraits,
-288 new directional frames, eight sleeping/recovery poses, three Seeker appearance choices,
+432 active directional frames (144 idle/inspection plus 288 polished walks), eight
+sleeping/recovery poses, three Seeker appearance choices,
 and references to the 48 approved Seeker cloak frames. Facial shapes, noses and hairstyles
 were revised following owner feedback. Animation registration, timing and runtime use remain
 provisional. Original walk previews repeat the same leading foot and remain retained as
@@ -147,8 +148,8 @@ The separate `characters-batch/walk-rig-polish/` adds 288 revised candidate fram
 shaft-aligned connectors, restrained knee flex and removal of a moving staff fragment.
 Original artwork and the first rig snapshot remain as lineage. The owner approved
 the complete polished walking series; exact hashes and scoped validation are frozen.
-Clarify whether approval also covers the retained non-walking character collection
-before freezing complete character acceptance and proceeding to the objects batch.
+The owner also confirmed full-batch approval, including the 168 retained non-walking
+assets. Complete active character acceptance is hash-bound; the next category is objects.
 The terrain category remains open for residual work.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining

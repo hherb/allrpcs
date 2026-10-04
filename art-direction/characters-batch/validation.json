@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Brisbane",
+  "status": "Full character artwork approved; consolidated scoped validation passed",
+  "owner_quote": "You have my approval already now for the full batch",
+  "active_new_export_master_pairs": 456,
+  "retained_nonwalking_pairs": 168,
+  "polished_walk_pairs": 288,
+  "inherited_approved_seeker_frames": 48,
+  "checks": [
+    "Initial character RGBA/hashes/2x parity and inherited-frame checks passed",
+    "Polished walking coverage, parity, decoded pose uniqueness, ownership and actual loop closure passed",
+    "All 288 walking masters match replayed pixels; all 576 hip-to-boot poses connect",
+    "Combined approved active inventory and artwork hashes passed",
+    "Source/review and unchanged walking-approval hashes passed",
+    "Approved initial builder and polished writer refuse package overwrites"
+  ],
+  "known_lineage": [
+    "Original 144 walking studies are incomplete and excluded from active acceptance",
+    "Existing healer-east-inspect-02 source-edge warning remains documented; artwork approved as reviewed"
+  ],
+  "runtime_promotion": false,
+  "product_runtime_ci_inputs": "Unchanged from 2fcc849",
+  "retained_full_suite": {
+    "reference": "../woodland-environment-batch/validation.json",
+    "passing_tests": 5033,
+    "warnings": 0,
+    "errors": 0,
+    "godot": "Prior full smoke suite and Compatibility evidence retained",
+    "rerun": false
+  },
+  "validator_sha256": "45bad25323672b7c4c210d9f40c071b10def6e11347a4815afa3bb81263728af",
+  "review": "No unresolved code findings; current artwork counts, hashes, approval boundaries and exact next slice reviewed"
+}
