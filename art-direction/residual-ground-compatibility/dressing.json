@@ -1,0 +1,821 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-04",
+  "timezone": "Australia/Sydney",
+  "scope": "Read-only external large-area repeat/dressing diagnostic; no new artwork",
+  "compatibility_audit_sha256": "b87e4171a02adafa045770101d3eff84dfe85224a3592b300ede06bb7bdc9098",
+  "samples": [
+    {
+      "field": "packed-earth",
+      "board": "review/dressing-packed-earth-1x.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "patch_size": [
+        512,
+        512
+      ],
+      "tile_repeat": [
+        4,
+        4
+      ],
+      "plain_origin": [
+        20,
+        90
+      ],
+      "dressed_origin": [
+        560,
+        90
+      ],
+      "overlay_order": [
+        {
+          "overlay": "ground-variation-01",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+          "patch_origin": [
+            18,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            18,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-02",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+          "patch_origin": [
+            188,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-03",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+          "patch_origin": [
+            358,
+            92
+          ],
+          "size": [
+            136,
+            129
+          ],
+          "tile_phase": [
+            102,
+            92
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-04",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+          "patch_origin": [
+            18,
+            290
+          ],
+          "size": [
+            136,
+            132
+          ],
+          "tile_phase": [
+            18,
+            34
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-05",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+          "patch_origin": [
+            188,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-06",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+          "patch_origin": [
+            358,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            102,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        }
+      ],
+      "changed_pixel_count": 63764,
+      "unchanged_pixel_fraction": 0.7568
+    },
+    {
+      "field": "pale-gravel",
+      "board": "review/dressing-pale-gravel-1x.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "patch_size": [
+        512,
+        512
+      ],
+      "tile_repeat": [
+        4,
+        4
+      ],
+      "plain_origin": [
+        20,
+        90
+      ],
+      "dressed_origin": [
+        560,
+        90
+      ],
+      "overlay_order": [
+        {
+          "overlay": "ground-variation-01",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+          "patch_origin": [
+            18,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            18,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-02",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+          "patch_origin": [
+            188,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-03",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+          "patch_origin": [
+            358,
+            92
+          ],
+          "size": [
+            136,
+            129
+          ],
+          "tile_phase": [
+            102,
+            92
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-04",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+          "patch_origin": [
+            18,
+            290
+          ],
+          "size": [
+            136,
+            132
+          ],
+          "tile_phase": [
+            18,
+            34
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-05",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+          "patch_origin": [
+            188,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-06",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+          "patch_origin": [
+            358,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            102,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        }
+      ],
+      "changed_pixel_count": 63437,
+      "unchanged_pixel_fraction": 0.758
+    },
+    {
+      "field": "mixed-meadow",
+      "board": "review/dressing-mixed-meadow-1x.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "patch_size": [
+        512,
+        512
+      ],
+      "tile_repeat": [
+        4,
+        4
+      ],
+      "plain_origin": [
+        20,
+        90
+      ],
+      "dressed_origin": [
+        560,
+        90
+      ],
+      "overlay_order": [
+        {
+          "overlay": "ground-variation-01",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+          "patch_origin": [
+            18,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            18,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-02",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+          "patch_origin": [
+            188,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-03",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+          "patch_origin": [
+            358,
+            92
+          ],
+          "size": [
+            136,
+            129
+          ],
+          "tile_phase": [
+            102,
+            92
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-04",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+          "patch_origin": [
+            18,
+            290
+          ],
+          "size": [
+            136,
+            132
+          ],
+          "tile_phase": [
+            18,
+            34
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-05",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+          "patch_origin": [
+            188,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-06",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+          "patch_origin": [
+            358,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            102,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        }
+      ],
+      "changed_pixel_count": 57299,
+      "unchanged_pixel_fraction": 0.7814
+    },
+    {
+      "field": "dry-grass",
+      "board": "review/dressing-dry-grass-1x.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "patch_size": [
+        512,
+        512
+      ],
+      "tile_repeat": [
+        4,
+        4
+      ],
+      "plain_origin": [
+        20,
+        90
+      ],
+      "dressed_origin": [
+        560,
+        90
+      ],
+      "overlay_order": [
+        {
+          "overlay": "ground-variation-01",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+          "patch_origin": [
+            18,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            18,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-02",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+          "patch_origin": [
+            188,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-03",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+          "patch_origin": [
+            358,
+            92
+          ],
+          "size": [
+            136,
+            129
+          ],
+          "tile_phase": [
+            102,
+            92
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-04",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+          "patch_origin": [
+            18,
+            290
+          ],
+          "size": [
+            136,
+            132
+          ],
+          "tile_phase": [
+            18,
+            34
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-05",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+          "patch_origin": [
+            188,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-06",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+          "patch_origin": [
+            358,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            102,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        }
+      ],
+      "changed_pixel_count": 60577,
+      "unchanged_pixel_fraction": 0.7689
+    },
+    {
+      "field": "garden-soil",
+      "board": "review/dressing-garden-soil-1x.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "patch_size": [
+        512,
+        512
+      ],
+      "tile_repeat": [
+        4,
+        4
+      ],
+      "plain_origin": [
+        20,
+        90
+      ],
+      "dressed_origin": [
+        560,
+        90
+      ],
+      "overlay_order": [
+        {
+          "overlay": "ground-variation-01",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+          "patch_origin": [
+            18,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            18,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-02",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+          "patch_origin": [
+            188,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-03",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+          "patch_origin": [
+            358,
+            92
+          ],
+          "size": [
+            136,
+            129
+          ],
+          "tile_phase": [
+            102,
+            92
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-04",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+          "patch_origin": [
+            18,
+            290
+          ],
+          "size": [
+            136,
+            132
+          ],
+          "tile_phase": [
+            18,
+            34
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-05",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+          "patch_origin": [
+            188,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-06",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+          "patch_origin": [
+            358,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            102,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        }
+      ],
+      "changed_pixel_count": 57965,
+      "unchanged_pixel_fraction": 0.7789
+    },
+    {
+      "field": "damp-mud",
+      "board": "review/dressing-damp-mud-1x.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "patch_size": [
+        512,
+        512
+      ],
+      "tile_repeat": [
+        4,
+        4
+      ],
+      "plain_origin": [
+        20,
+        90
+      ],
+      "dressed_origin": [
+        560,
+        90
+      ],
+      "overlay_order": [
+        {
+          "overlay": "ground-variation-01",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+          "patch_origin": [
+            18,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            18,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-02",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+          "patch_origin": [
+            188,
+            95
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            95
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-03",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+          "patch_origin": [
+            358,
+            92
+          ],
+          "size": [
+            136,
+            129
+          ],
+          "tile_phase": [
+            102,
+            92
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-04",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+          "patch_origin": [
+            18,
+            290
+          ],
+          "size": [
+            136,
+            132
+          ],
+          "tile_phase": [
+            18,
+            34
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-05",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+          "patch_origin": [
+            188,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            60,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        },
+        {
+          "overlay": "ground-variation-06",
+          "source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+          "patch_origin": [
+            358,
+            295
+          ],
+          "size": [
+            136,
+            123
+          ],
+          "tile_phase": [
+            102,
+            39
+          ],
+          "scale": 1,
+          "rotation_degrees": 0
+        }
+      ],
+      "changed_pixel_count": 55665,
+      "unchanged_pixel_fraction": 0.7877
+    }
+  ],
+  "counts": {
+    "boards": 6,
+    "overlay_placements": 36,
+    "surface_tiles_per_board": 32
+  },
+  "limitations": "One sparse layout per field. Repeated base motifs remain; no world geography, terrain completion, preferred placement density or runtime acceptance established.",
+  "boards": {
+    "review/dressing-packed-earth-1x.png": "191097f99c1e03dd20c92393d077b640673dc3d4018d762e4f8bd80c79c912e7",
+    "review/dressing-pale-gravel-1x.png": "f30a20900048b29bec23c112422424b33921e23d27ca11cf3bf95f3ec37f525e",
+    "review/dressing-mixed-meadow-1x.png": "3089cf5575e233dd4bf29c5c1ed4a6a441fceb737924123eb3d4a3a06bc410ac",
+    "review/dressing-dry-grass-1x.png": "5a71b048f11efbba171511d6b0d58f6e1002ca1b080034f6f2e910e830a7434f",
+    "review/dressing-garden-soil-1x.png": "7274f5913a49576fd1560e1016117ada1372928fc5e181aaffda05bd658c3852",
+    "review/dressing-damp-mud-1x.png": "28c0a40024a41791a542d347ff028016c54770120f56a8d297c7403e7b1d886b"
+  }
+}

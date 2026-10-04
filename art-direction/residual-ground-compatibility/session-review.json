@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Sydney",
+  "status": "session code and visual review complete",
+  "independent_exact_pixel_checks": 96,
+  "independent_method": "NumPy integer source-over formula over opaque tiled backgrounds; source pixels/crops verified from saved placement records without using renderer helpers",
+  "byte_reproduction_files": 19,
+  "reproduction_method": "All three builders rerun into a temporary output directory; every PNG and audit JSON byte equals the saved package",
+  "rejection_probes": [
+    "Changed placement metadata rejected",
+    "Changed PNG bytes rejected even when decoded pixels match",
+    "Frozen accepted-artwork digest mismatch rejected before output writes"
+  ],
+  "review_fixes": [
+    "Increased horizontal-board row spacing to preserve labels outside sampled artwork",
+    "Made interface conclusion conditional on actual source-reference scan results",
+    "Independent verification remains active under optimized Python and preserves the historical human visual-review record"
+  ],
+  "visual_review": {
+    "boards_inspected": 16,
+    "corrected_horizontal_boards_reinspected": 2,
+    "observations": [
+      "Native scale and complete series coverage preserved",
+      "Partial-alpha overlay edges show no rectangular padding in sampled compositions",
+      "All direct legacy joins retain hard material boundaries and nonmatching ports",
+      "Sparse overlays add local variation while finite base repeats remain visible"
+    ],
+    "limits": "No new owner artwork, terrain-completeness or runtime acceptance inferred"
+  },
+  "reviewed_files": {
+    "audit.py": "78ad4fe27f48811189d7d694808bd57273d5a82378dea68c77be4b496f6a2d10",
+    "dressing.py": "52cc1f6ec5850b71f0ed7e6ce503066863fb0f1dd75904573f39d63785f6cb0e",
+    "interfaces.py": "44f06e31963510ed9e19dc0a57c3176bdd605c9f94eed4903f126ccaab53a39c",
+    "review_check.py": "f171fd4fd4b59a0a36411e702a942432bf6e7866edaa038b6e37b3ddde6c4e54",
+    "README.md": "86dfe0fc441389aa0142e1bf5516d747db2fc1b4415f405cc87947da0cf5bbb1",
+    "interfaces.md": "18ee2cd9ec816002829948a8f2becdb9ab368f71e7f0b70cfc929d0bc5f0aa16"
+  },
+  "outputs": {
+    "audit.json": "b87e4171a02adafa045770101d3eff84dfe85224a3592b300ede06bb7bdc9098",
+    "dressing.json": "2abfeba9a8201a440e2c34d8729caebb1b158b2b31c29cbfd553ce594430055b",
+    "interfaces.json": "2f3325256d4cfdfda0634a891d296f3d6e8a40c3b56ddb47ae91c71e6fa2eace",
+    "review/dressing-damp-mud-1x.png": "28c0a40024a41791a542d347ff028016c54770120f56a8d297c7403e7b1d886b",
+    "review/dressing-dry-grass-1x.png": "5a71b048f11efbba171511d6b0d58f6e1002ca1b080034f6f2e910e830a7434f",
+    "review/dressing-garden-soil-1x.png": "7274f5913a49576fd1560e1016117ada1372928fc5e181aaffda05bd658c3852",
+    "review/dressing-mixed-meadow-1x.png": "3089cf5575e233dd4bf29c5c1ed4a6a441fceb737924123eb3d4a3a06bc410ac",
+    "review/dressing-packed-earth-1x.png": "191097f99c1e03dd20c92393d077b640673dc3d4018d762e4f8bd80c79c912e7",
+    "review/dressing-pale-gravel-1x.png": "f30a20900048b29bec23c112422424b33921e23d27ca11cf3bf95f3ec37f525e",
+    "review/overlays-damp-mud-1x.png": "62757df7dccfa9053de9f66559123522bec2705b390e80f8255d8f3ad31336e9",
+    "review/overlays-dry-grass-1x.png": "a7974359f2d51ee8fbbe3935a87350737db21cf9a9eff45855125f8d1f239b17",
+    "review/overlays-garden-soil-1x.png": "57518ac3ed0034d3ea7eb08569d389e3fbf5097a85238ba8d30095ce173dbff3",
+    "review/overlays-mixed-meadow-1x.png": "0d7d01f0967a13cb30048cb9397d60c0f82a520ec6359bd0b2a3e4c2a495a96b",
+    "review/overlays-packed-earth-1x.png": "106d170a922ce8542a8777e75f247856c56245ccb5aa4257e134f6fe2c4bc034",
+    "review/overlays-pale-gravel-1x.png": "49a9544bb6bc7af2766fac6e888f95f2fb685e4a83e65f0b582a12d9991dc6bc",
+    "review/quiet_moss-horizontal-1x.png": "50de5e9212ba28218a87cb7fdc1c43fd72f0fb157b0b37290b856736c1ef6be9",
+    "review/quiet_moss-vertical-1x.png": "f8795a094d714460349ab694de137ea6a45055e0e19fbb3ed21016e5ead230d3",
+    "review/woodland_leaf_litter-horizontal-1x.png": "9e84b7624516783fc836e31e0258a767b05c62c78a2a613f38367a93a6982966",
+    "review/woodland_leaf_litter-vertical-1x.png": "2231624d97227a1cbc229b8913f627927b3a76cf60f9a922d00fba2a7616a4dd"
+  },
+  "product_validation": "Product/runtime/CI inputs unchanged; retain prior full-suite evidence rather than replaying product checks"
+}

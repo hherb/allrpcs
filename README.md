@@ -32,7 +32,11 @@ identifies transparent gutters in the padded studies. The separate
 contains twelve filled surface/transition candidates, editable 2x masters and exact
 1:1 repeat/connected boards. It derives shared paint from the approved sources;
 the owner approved the complete series, and consolidated scoped checks pass.
-Its read-only readiness audit identifies the next compatibility-composition slice.
+The [read-only ground compatibility package](art-direction/residual-ground-compatibility/README.md)
+now covers all 36 overlay/field combinations, twelve legacy pairings in both directions,
+six larger plain/dressed comparisons and the authored interface scope. No new-field
+placement is selected by the existing scene evidence; a specific use or placement
+proposal request is needed before connector work. Terrain completeness remains open.
 Runtime remains unchanged.
 
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,

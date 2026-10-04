@@ -1,0 +1,2528 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-04",
+  "timezone": "Australia/Sydney",
+  "scope": "Read-only external ground compatibility; no artwork or runtime changes",
+  "inputs": {
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "art-direction/production-proof/corrected/asset-manifest.json": "7e5cf3ebaccaef3695ec729f7c9bb4bcda45aa7553b6df715c2c110a76b84a3a",
+    "art-direction/production-proof/corrected/exports/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "art-direction/production-proof/corrected/exports/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "art-direction/production-proof/corrected/exports/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "art-direction/production-proof/corrected/exports/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "art-direction/production-proof/corrected/exports/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "art-direction/production-proof/corrected/exports/terrain/clearing-closed-forest-path.png": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+    "art-direction/production-proof/corrected/exports/terrain/opening-junction.png": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68",
+    "art-direction/production-proof/corrected/exports/terrain/path-bend.png": "8ac6919e5dac8881232a75cbfcb58945085fd59e11ebfd53beea952135512438",
+    "art-direction/production-proof/corrected/exports/terrain/path-cross-junction.png": "9e3923d85a6f24d1716f401e535d3b011eda5033c9520420e4d3e78b34b42027",
+    "art-direction/production-proof/corrected/exports/terrain/path-end-cap.png": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3",
+    "art-direction/production-proof/corrected/exports/terrain/path-t-junction.png": "822e6efa3031cc8b76cfaed7b53bd9ece8b389550d89bb0e9d899a83bba50d54",
+    "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "art-direction/production-proof/corrected/exports/terrain/shrine-southern-road-endpoint-blend.png": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720",
+    "art-direction/production-proof/corrected/exports/terrain/shrine-southern-road-path.png": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e",
+    "art-direction/production-proof/corrected/exports/terrain/southern-road-wagon-path.png": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+    "art-direction/production-proof/corrected/exports/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "art-direction/production-proof/corrected/exports/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "art-direction/production-proof/corrected/exports/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "art-direction/production-proof/corrected/exports/terrain/straight-path.png": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "art-direction/production-proof/corrected/exports/terrain/stream-bank-opening-cap.png": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1",
+    "art-direction/production-proof/corrected/exports/terrain/stream-bank.png": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e",
+    "art-direction/production-proof/corrected/exports/terrain/stream-laundry-path.png": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185",
+    "art-direction/production-proof/corrected/exports/terrain/stream-water.png": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c",
+    "art-direction/production-proof/corrected/exports/terrain/village-edge-square-connector.png": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+    "art-direction/production-proof/corrected/exports/terrain/village-edge-stream-path.png": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f",
+    "art-direction/production-proof/corrected/exports/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-corner-transition-left.png": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-corner-transition.png": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-inset-corner-transition-left.png": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-inset-corner-transition.png": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter-transition.png": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-shrine-path.png": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-village-edge-path.png": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "art-direction/production-proof/corrected/exports/terrain/woodland-village-edge-transition.png": "283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21",
+    "art-direction/residual-ground-batch/README.md": "2f27fdf18804dd08d5f77c231819f6e68602e7df9e3a122a5f9768dcb0e9fae8",
+    "art-direction/residual-ground-batch/build_review.py": "d663a576f664500d21df076f3cc29295808de1474bbafe84062e3ac94c687061",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-01.png": "b5cfd9aaad047c842ab2fa9cac308e00c7b673fe5f8f0d12222823f57bcba3a1",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-02.png": "456f15678755f2f165934b30ae3a4df93ed3bd229a7c6d1f2c1d2f9058114b9f",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-03.png": "6b5478e3498a36ebfbad90274da9b5b305c6f8d378023fc6b2fdd421324a6978",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-04.png": "d3ad671d92f7775989e0e2ce5ba3f378753c56d29d4857fb54d0055759abab2e",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-05.png": "792ef809e8dc671ece27228d469d23c4da513475964037ba635bdcfe574e5601",
+    "art-direction/residual-ground-batch/exports/ground-surfaces-06.png": "d69b4cf278b10d65a4bf24f67fcff51216cad89df476084de398e146c5474460",
+    "art-direction/residual-ground-batch/exports/ground-variation-01.png": "ac6bf9877d0945389cc041a6d4304c9d73154b91d1a263d591636ffe004d6f03",
+    "art-direction/residual-ground-batch/exports/ground-variation-02.png": "3d2dcef0b8788478e74477fa843b9b08766d0825b979dcc52b82edf22a5595a4",
+    "art-direction/residual-ground-batch/exports/ground-variation-03.png": "689de678d321ed2e7b509cd86f0e1a23d13f06622c10054d5a4eac8ea8932e38",
+    "art-direction/residual-ground-batch/exports/ground-variation-04.png": "e4f5cd9588b6dc4c8d8162bdde7196be4fb47c79f626ee680806f2d979ac5647",
+    "art-direction/residual-ground-batch/exports/ground-variation-05.png": "e4e73dae41f8aede1c2a15c9dc6ecf7eac0fa54ba06cd83326719e762236a64c",
+    "art-direction/residual-ground-batch/exports/ground-variation-06.png": "8821b67c091f9a947d8bd65dfc6f30d2a74b85f238cb955c5c9ee71b20e386f0",
+    "art-direction/residual-ground-batch/exports/surface-transitions-01.png": "39ed5e49758eda1906f02b73e7231f76b289464cdaea91908be72e6e54ef99ea",
+    "art-direction/residual-ground-batch/exports/surface-transitions-02.png": "a2f5c1435f8b87d23eefc5fc07d91ab51a2035669dca7758a9e10afc8842aa77",
+    "art-direction/residual-ground-batch/exports/surface-transitions-03.png": "530f0d84f3a8ae47bc134dea24db1b8577d8e2a1b447839e178f5122e785d699",
+    "art-direction/residual-ground-batch/exports/surface-transitions-04.png": "10cb5432825f519a4effd35c5832bdea2e2e8301e1920c5226fe9acf1bdbde21",
+    "art-direction/residual-ground-batch/exports/surface-transitions-05.png": "366f1a905c1e5b5b8f5a0e2eefc4fbb8d9ad3aa706f67d58ca00b703d651642d",
+    "art-direction/residual-ground-batch/exports/surface-transitions-06.png": "c08552c97ee6991678acb975c174873e71aaed294990c5cdfc3c3578d5b82a28",
+    "art-direction/residual-ground-batch/inspect_package.py": "9d29eae5e694cf278b4d6a85c9ea8480b6f59a819ffaeab6ce5dde8b243ace81",
+    "art-direction/residual-ground-batch/inventory.json": "a32df883b471733810d7fb449ba093ae893b0b28185120cca157202afc9369df",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-01.ora": "2121045dada711c8cc7c45cba13846d2a1d145bf047d159caf40bae7b459b4d0",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-02.ora": "cf3015e2ba239a53a2124b657e7dd40883d73d0c89658ca3f898c9890e9a88eb",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-03.ora": "4508d1993864fd55cc50569204fb50716982d12b315d0878ea9b99ee4fb2db16",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-04.ora": "358c00086ac0ca04e215386938ccbad658cf354bf41626053669291ba198894d",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-05.ora": "1977befcb8b3dab49e7c977edb59d4d4e199a92afe9145d04cedbb4d82cde019",
+    "art-direction/residual-ground-batch/masters/ground-surfaces-06.ora": "cc0faa0e650242daf6cb9361149d250178fa688f294c20decc0091e456cd1b77",
+    "art-direction/residual-ground-batch/masters/ground-variation-01.ora": "a4b1929d5475034105a0e0516ca064c083751995ddb1d171094dbe978cbb69bb",
+    "art-direction/residual-ground-batch/masters/ground-variation-02.ora": "fd6efde632bb3908b17de627278bedbb8f837b2326464bc4be4c5c6b670eea68",
+    "art-direction/residual-ground-batch/masters/ground-variation-03.ora": "70d2a87bd43de41821d3f2397d92c4f289f727d17be64e99261373b1607a1b22",
+    "art-direction/residual-ground-batch/masters/ground-variation-04.ora": "1c43169e3f42aa8e2a33259d23297d2f23dc58537f3b4e4194a15adf0f6468bd",
+    "art-direction/residual-ground-batch/masters/ground-variation-05.ora": "b336b6d5d9698eb44e959d55c04e7be812218840fe7a8407d2e14197156d6f88",
+    "art-direction/residual-ground-batch/masters/ground-variation-06.ora": "ca03d83bb485888a1c5640bf6eead4ec81b46dfd159fd7d6dc4cbe8d6e0fdec6",
+    "art-direction/residual-ground-batch/masters/surface-transitions-01.ora": "547e06d96aa660a01d9770de0c5a5c4fdff043231e31da702eddd324f10c0018",
+    "art-direction/residual-ground-batch/masters/surface-transitions-02.ora": "75f7fb9898b2c61a4374b2c7aa1e3835e28c02a90ccbc27555a5a9d7965a9951",
+    "art-direction/residual-ground-batch/masters/surface-transitions-03.ora": "45f22608282bc7f8ec59aa20f318f8b5bdddf8f83f194c15d5c2a9ff702fad09",
+    "art-direction/residual-ground-batch/masters/surface-transitions-04.ora": "fc6a3cf20f07b89cc09bb6f94f22691d7041fcf32d4315415ffcaacb89776a58",
+    "art-direction/residual-ground-batch/masters/surface-transitions-05.ora": "abe75116f28cb10696a6e021197cb92a045d8c79243acc7b7b837a28ecd0fb05",
+    "art-direction/residual-ground-batch/masters/surface-transitions-06.ora": "16175f45cadce253e0f435ad94fe9a1d815c42959a3f9801504e551f1d9e5f7e",
+    "art-direction/residual-ground-batch/owner-acceptance.json": "96d530018e0fb110cec0a97a22110802e944601e67826f099286130090e0f36b",
+    "art-direction/residual-ground-batch/prompts.json": "5e8137a6c7f54b2a3215529883a2bd427cd2a3702261436b803e53eb78bd1f62",
+    "art-direction/residual-ground-batch/review-manifest.json": "73e2166ad61f20a7482136224d7a90f0cf2b3b37b378fc5f01ceb90b267e7f30",
+    "art-direction/residual-ground-batch/review/dark-scale.png": "5b8d209866d283044c3cc2ef21fd4609a15cd2d60fce7e432ccb698306a65db1",
+    "art-direction/residual-ground-batch/review/ground-surfaces.png": "46da67d6d9a06fa99b031ed23f4a02fe4d349bad097149bd1d07ee5f4b8cff8c",
+    "art-direction/residual-ground-batch/review/ground-variation.png": "b8b7ff767ccc30f72d77d012172cd78c2a947d164a3d8972a8ba7199d0326708",
+    "art-direction/residual-ground-batch/review/grouped-scale.png": "7e2d0b9ee744dbc07fd3ddee1e5af974e1a4e2948b3fdd6e3851fac6bec30e34",
+    "art-direction/residual-ground-batch/review/light-scale.png": "c1b77981c63916de0c537a9ccd8c61ee89d42bbc9908d0a5d7027c217352839f",
+    "art-direction/residual-ground-batch/review/surface-transitions.png": "24b2d0bfbcb38198a57e7b566fd64d64ab9f9d81698f1bf7926ae880a9f5fbea",
+    "art-direction/residual-ground-batch/sources/ground-surfaces.png": "032e4c325b1d6912302cfb5454edc06baa829c9da408110c75c1201e93a91a24",
+    "art-direction/residual-ground-batch/sources/ground-variation.png": "a3ca0177772fa182ebb33676653177ed441e90e7b23f94b2b382fac5191669e0",
+    "art-direction/residual-ground-batch/sources/provenance.json": "42638ee8b7889a87bee349525992f384947d30fb68ad3026bc1f1247e371a517",
+    "art-direction/residual-ground-batch/sources/surface-transitions.png": "ebf4eccac5cc19897722a2516b806874d6336cb83d7b5c743017c61b114c02c6",
+    "art-direction/residual-ground-tiling-proof/README.md": "9d7efe6498d1782b39688a9e73e111a489e22b17fbd5c61b9d3f7d90d8af13d2",
+    "art-direction/residual-ground-tiling-proof/authoring_check.py": "ebdebf12d52ef9f9602cbbf33c47d95feeffa18bb91d54ba79d702380fc9b6bc",
+    "art-direction/residual-ground-tiling-proof/boards.py": "897930173d412585c28ad781078407c431f3a8550460d89c8279363df791bc61",
+    "art-direction/residual-ground-tiling-proof/build.py": "62b4a05c792f8f0adb4f70a9a989e333660212463ca2a4f5bfd3ee8eada75e3a",
+    "art-direction/residual-ground-tiling-proof/evidence/unwrapped-repeat-1x.png": "56009ffc7050f9d4cf68abc4edfccc6626a8db785df643554bb21018e23ff0aa",
+    "art-direction/residual-ground-tiling-proof/exports/damp-mud.png": "db14c376d34a328d11c2d804e0f58f36dffd6361c4da05e06e530fe89222420d",
+    "art-direction/residual-ground-tiling-proof/exports/dry-grass.png": "9893995653cc82dd38e2b449985f7d067af234b6f13c0c1cc3de2c611bf908ae",
+    "art-direction/residual-ground-tiling-proof/exports/earth-gravel-inset.png": "203a965a9d6024cf52675e22c2ae1ee299e266000dc98933fb9d2b2e177994ab",
+    "art-direction/residual-ground-tiling-proof/exports/earth-gravel-outer.png": "a39c450ff2b955a73507be8668ec840127f1792af76f2d90ab8de54b6ad98674",
+    "art-direction/residual-ground-tiling-proof/exports/earth-gravel-straight.png": "d18da88d4e453b1de6e06f5da0411dc9904801a949671d078c6e205d6fc891b1",
+    "art-direction/residual-ground-tiling-proof/exports/garden-soil.png": "178d0417bf7339ee8120cd9822cb3620262c3a5415e42b434c2fe3adbc41b94d",
+    "art-direction/residual-ground-tiling-proof/exports/meadow-soil-inset.png": "c447b84268445a570c66ccc1efe225d84ff36e0dd62298e23645779c06be7f32",
+    "art-direction/residual-ground-tiling-proof/exports/meadow-soil-outer.png": "696dbc12edc5db4689a89a8d9657bca0a6689d5cfe1e4bee5b41e57fae57839c",
+    "art-direction/residual-ground-tiling-proof/exports/meadow-soil-straight.png": "29306944049f774e12ca8f30a147b0e7d937944cde486bf15e9a28206f7cb69e",
+    "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png": "d419f0e5497957aac4907994520e11fbc892bd2e6ed1b687087fc506de1208f6",
+    "art-direction/residual-ground-tiling-proof/exports/packed-earth.png": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32",
+    "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+    "art-direction/residual-ground-tiling-proof/inspect_package.py": "4281a2d05f5371b076e110584f4ae635bf7d383642a5d6ebfb971f93bf2b60a1",
+    "art-direction/residual-ground-tiling-proof/inventory.json": "a045fbe001f3a204a974e4b06c643e4c358f73b5f7d4897e3d05af168234a5a1",
+    "art-direction/residual-ground-tiling-proof/masters/damp-mud.ora": "d4023d8296e4515bed2703e6d5bf24a6702d5e6e5eb43a125d3c0751187b6645",
+    "art-direction/residual-ground-tiling-proof/masters/dry-grass.ora": "9f3fcb99b928704e30c3c9c2e4a63d6ea2e3178bde323ad635ef8a1801d1654b",
+    "art-direction/residual-ground-tiling-proof/masters/earth-gravel-inset.ora": "8d7878c41c106c806240b2b5f28c9af47bf780f380f813164c235ef85cd365c7",
+    "art-direction/residual-ground-tiling-proof/masters/earth-gravel-outer.ora": "19de95844d366efb0aba180d9a8bbd83236b03384634faef4a87f4d594351ab4",
+    "art-direction/residual-ground-tiling-proof/masters/earth-gravel-straight.ora": "c9eb7e121ed2b11ee62c054803b21ef85a4c7b9ba79530f0035c707c1a4dee63",
+    "art-direction/residual-ground-tiling-proof/masters/garden-soil.ora": "0c0500e820bb0357a9e360fa5e86e554cc079a73f05121cc6c139da4f3eed938",
+    "art-direction/residual-ground-tiling-proof/masters/meadow-soil-inset.ora": "c393364d9a1741f0657300a0aefd0dcf95f09978c11aad16a7c7f3551fd78411",
+    "art-direction/residual-ground-tiling-proof/masters/meadow-soil-outer.ora": "c8fa01c79f8b89808c7abfe00f396fa1552d54a5324399796754bb835e2b263b",
+    "art-direction/residual-ground-tiling-proof/masters/meadow-soil-straight.ora": "fb04f403653ce4fcd12d55064aa9042f573b50729838cb3b2b5cf7b9138b9910",
+    "art-direction/residual-ground-tiling-proof/masters/mixed-meadow.ora": "f434d4dcaca1f4698c4a5eab67de7355168cf0982b39f437a806a07a7195e4ba",
+    "art-direction/residual-ground-tiling-proof/masters/packed-earth.ora": "3e9f1cde01f11d14e8ba6eea66c670f3c0fa3b3d56662466128d815f14ef31f3",
+    "art-direction/residual-ground-tiling-proof/masters/pale-gravel.ora": "c90fdaf9ed648425ee5857778460a0c82dc5e252066ffab0c30b0c72a9ce445e",
+    "art-direction/residual-ground-tiling-proof/owner-acceptance.json": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "art-direction/residual-ground-tiling-proof/review-manifest.json": "100ff730d560037bfe3efcbcdddbb6c2a9390834093a3c73668f83ddfffba1b3",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-connected-1x.png": "930e497af2a992c0f5e133aeb0f0530795d7a951e05fa3cdfc83fcbdde2c209e",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-inset-orientation-1.png": "503e0559f4122da28fcdda2ad9bf832a7e02cf7a36b3f73b75dbef51bcc7c4d7",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-inset-orientation-2.png": "8cfce3fe49fb587c3d4da15da251462ae17b0acc0d7c6568bb6efe4e5de3fcbe",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-inset-orientation-3.png": "272d4bad3b51d5ca433606bd5c2546e948fd1119da9e16c228a1408f10ec0224",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-outer-orientation-1.png": "7cb19db9c97aa689890ddf793b20bfd280b19eb2770087a6cdc7605a01618e0f",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-outer-orientation-2.png": "8851031e7c35c49650866a02f0d3f2aa55c5d543bfea6247b6c6bc65c5c445dd",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-outer-orientation-3.png": "39a18e9ab4681cb1b708a5aab5f778ebb5b541e444fddf32a87959c907f06166",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-straight-orientation-1.png": "4cce39a168f3285edb0a9f48c751597e55ccec75103bc34725ef7f1388b82895",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-straight-orientation-2.png": "d9a1e424ed053a67664e21074a0bca8dedd7e6a8342b1bae22b58c91181f247f",
+    "art-direction/residual-ground-tiling-proof/review/earth-gravel-straight-orientation-3.png": "d21743aaa9edfe4302e737fa6c32fe4775c8c9ccb28b9ab6a685055bd834d717",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-connected-1x.png": "cac91cc4e8a6054917cc65a138253979cff9e7bff3185a2fa439b0c51a7f09bd",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-inset-orientation-1.png": "62e7e0853986157493a0724886ea331176e5eb3150692ec6d9f71adbaa8b2b58",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-inset-orientation-2.png": "eae2695a8122b04c50adb265976497c459576f3e39c421acc041fd0f12b4dcce",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-inset-orientation-3.png": "8e5400f17e5c5f100d1c28d350207417823d1f38be339610f442e102cfea9e2f",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-outer-orientation-1.png": "bd356b7dd39eb967b66e5504dd7266df9ea6f02b4ddcb3e1701284ebc0c5e1e6",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-outer-orientation-2.png": "02a789ac1a19610645330d623f1719b01ff6d8ddd27a9816f623655fba75f3c6",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-outer-orientation-3.png": "aa619dba208963db39456e133ddc15139741a32695e8e2a5d24e31ff8b6154e0",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-straight-orientation-1.png": "1de947d88148f3141b8eb178884be08495c27a11f9f079559749952f26cea558",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-straight-orientation-2.png": "fbe4336b620626b4e0f7545cf95414c6870acf6019afd2608467f31315cb1fca",
+    "art-direction/residual-ground-tiling-proof/review/meadow-soil-straight-orientation-3.png": "cd940349e2c8a4e51812a575df7c89dd35535246a6c79649ff1d20f8b98620a5",
+    "art-direction/residual-ground-tiling-proof/review/surfaces-detail.png": "323e83e15be9cff153aceb5f442b95ebc6b4d4e6bc685edfd9c7d20290a709ca",
+    "art-direction/residual-ground-tiling-proof/review/surfaces-repeat-1x.png": "3bf5a9bec42779fb7abbb8e5bf4da6117e6bc2c1c3cd499313b04269949beb89",
+    "art-direction/residual-ground-tiling-proof/review/transitions-detail.png": "f63c98af5d62bd574c16b16b63b5ba355fa990cf505afc358f2e7d71f4c966d4",
+    "art-direction/residual-ground-tiling-proof/sources/damp-mud-interior.png": "5e592b0e47c86b7c3f8c4fc32859b2fbdadea645522d70e2eda5c4fb7fd7eb90",
+    "art-direction/residual-ground-tiling-proof/sources/dry-grass-interior.png": "9a26c87b3d1c7e818dfb0e912acb16c8bb804bfd51b3803a5b713c2bc7d936e5",
+    "art-direction/residual-ground-tiling-proof/sources/garden-soil-interior.png": "6b7d2cd1a48f34e67eab75ad9898598b2dd7bbe757c41bcb2cf45b607fa4c249",
+    "art-direction/residual-ground-tiling-proof/sources/inset-mask.png": "b7377015bb23b8d16f7a45a16f10159f85be5a31237a575b6d2a565c497ab296",
+    "art-direction/residual-ground-tiling-proof/sources/mixed-meadow-interior.png": "f0cf01a9e6ee4bce60f383f204e2ad976bfc66cf001c573c2167405b6edc9ce5",
+    "art-direction/residual-ground-tiling-proof/sources/outer-mask.png": "fc2e7a7b4c8e07b0a9a6a7a2351648b939e9407a5158ef24591d8f15eb3bd773",
+    "art-direction/residual-ground-tiling-proof/sources/packed-earth-interior.png": "0650a164ae50d96b2bbf525100c4a74b3508476852b41edd16d67acf511b9bc9",
+    "art-direction/residual-ground-tiling-proof/sources/pale-gravel-interior.png": "1e96bdf652207e598ef68529b3b2923ddf6c4cfd29ffe17fd4b318536c441298",
+    "art-direction/residual-ground-tiling-proof/sources/straight-mask.png": "f8f198fcc69e32045a74fecc372192b8531f7d8e2b8d6c760b5831a5af1dcd41"
+  },
+  "overlay_combinations": [
+    {
+      "field": "packed-earth",
+      "overlay": "ground-variation-01",
+      "board": "review/overlays-packed-earth-1x.png",
+      "field_rect": [
+        20,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "field_tile_origins": [
+        [
+          20,
+          90
+        ],
+        [
+          148,
+          90
+        ],
+        [
+          20,
+          218
+        ],
+        [
+          148,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+      "overlay_origin": [
+        80,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 9024
+    },
+    {
+      "field": "packed-earth",
+      "overlay": "ground-variation-02",
+      "board": "review/overlays-packed-earth-1x.png",
+      "field_rect": [
+        314,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "field_tile_origins": [
+        [
+          314,
+          90
+        ],
+        [
+          442,
+          90
+        ],
+        [
+          314,
+          218
+        ],
+        [
+          442,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+      "overlay_origin": [
+        374,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11028
+    },
+    {
+      "field": "packed-earth",
+      "overlay": "ground-variation-03",
+      "board": "review/overlays-packed-earth-1x.png",
+      "field_rect": [
+        608,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "field_tile_origins": [
+        [
+          608,
+          90
+        ],
+        [
+          736,
+          90
+        ],
+        [
+          608,
+          218
+        ],
+        [
+          736,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+      "overlay_origin": [
+        668,
+        153
+      ],
+      "overlay_size": [
+        136,
+        129
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12072
+    },
+    {
+      "field": "packed-earth",
+      "overlay": "ground-variation-04",
+      "board": "review/overlays-packed-earth-1x.png",
+      "field_rect": [
+        20,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "field_tile_origins": [
+        [
+          20,
+          395
+        ],
+        [
+          148,
+          395
+        ],
+        [
+          20,
+          523
+        ],
+        [
+          148,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+      "overlay_origin": [
+        80,
+        457
+      ],
+      "overlay_size": [
+        136,
+        132
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12162
+    },
+    {
+      "field": "packed-earth",
+      "overlay": "ground-variation-05",
+      "board": "review/overlays-packed-earth-1x.png",
+      "field_rect": [
+        314,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "field_tile_origins": [
+        [
+          314,
+          395
+        ],
+        [
+          442,
+          395
+        ],
+        [
+          314,
+          523
+        ],
+        [
+          442,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+      "overlay_origin": [
+        374,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11361
+    },
+    {
+      "field": "packed-earth",
+      "overlay": "ground-variation-06",
+      "board": "review/overlays-packed-earth-1x.png",
+      "field_rect": [
+        608,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "field_tile_origins": [
+        [
+          608,
+          395
+        ],
+        [
+          736,
+          395
+        ],
+        [
+          608,
+          523
+        ],
+        [
+          736,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+      "overlay_origin": [
+        668,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 10520
+    },
+    {
+      "field": "pale-gravel",
+      "overlay": "ground-variation-01",
+      "board": "review/overlays-pale-gravel-1x.png",
+      "field_rect": [
+        20,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "field_tile_origins": [
+        [
+          20,
+          90
+        ],
+        [
+          148,
+          90
+        ],
+        [
+          20,
+          218
+        ],
+        [
+          148,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+      "overlay_origin": [
+        80,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 9024
+    },
+    {
+      "field": "pale-gravel",
+      "overlay": "ground-variation-02",
+      "board": "review/overlays-pale-gravel-1x.png",
+      "field_rect": [
+        314,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "field_tile_origins": [
+        [
+          314,
+          90
+        ],
+        [
+          442,
+          90
+        ],
+        [
+          314,
+          218
+        ],
+        [
+          442,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+      "overlay_origin": [
+        374,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11028
+    },
+    {
+      "field": "pale-gravel",
+      "overlay": "ground-variation-03",
+      "board": "review/overlays-pale-gravel-1x.png",
+      "field_rect": [
+        608,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "field_tile_origins": [
+        [
+          608,
+          90
+        ],
+        [
+          736,
+          90
+        ],
+        [
+          608,
+          218
+        ],
+        [
+          736,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+      "overlay_origin": [
+        668,
+        153
+      ],
+      "overlay_size": [
+        136,
+        129
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12072
+    },
+    {
+      "field": "pale-gravel",
+      "overlay": "ground-variation-04",
+      "board": "review/overlays-pale-gravel-1x.png",
+      "field_rect": [
+        20,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "field_tile_origins": [
+        [
+          20,
+          395
+        ],
+        [
+          148,
+          395
+        ],
+        [
+          20,
+          523
+        ],
+        [
+          148,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+      "overlay_origin": [
+        80,
+        457
+      ],
+      "overlay_size": [
+        136,
+        132
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12162
+    },
+    {
+      "field": "pale-gravel",
+      "overlay": "ground-variation-05",
+      "board": "review/overlays-pale-gravel-1x.png",
+      "field_rect": [
+        314,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "field_tile_origins": [
+        [
+          314,
+          395
+        ],
+        [
+          442,
+          395
+        ],
+        [
+          314,
+          523
+        ],
+        [
+          442,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+      "overlay_origin": [
+        374,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11361
+    },
+    {
+      "field": "pale-gravel",
+      "overlay": "ground-variation-06",
+      "board": "review/overlays-pale-gravel-1x.png",
+      "field_rect": [
+        608,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "field_tile_origins": [
+        [
+          608,
+          395
+        ],
+        [
+          736,
+          395
+        ],
+        [
+          608,
+          523
+        ],
+        [
+          736,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+      "overlay_origin": [
+        668,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 10520
+    },
+    {
+      "field": "mixed-meadow",
+      "overlay": "ground-variation-01",
+      "board": "review/overlays-mixed-meadow-1x.png",
+      "field_rect": [
+        20,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "field_tile_origins": [
+        [
+          20,
+          90
+        ],
+        [
+          148,
+          90
+        ],
+        [
+          20,
+          218
+        ],
+        [
+          148,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+      "overlay_origin": [
+        80,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 9024
+    },
+    {
+      "field": "mixed-meadow",
+      "overlay": "ground-variation-02",
+      "board": "review/overlays-mixed-meadow-1x.png",
+      "field_rect": [
+        314,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "field_tile_origins": [
+        [
+          314,
+          90
+        ],
+        [
+          442,
+          90
+        ],
+        [
+          314,
+          218
+        ],
+        [
+          442,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+      "overlay_origin": [
+        374,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11028
+    },
+    {
+      "field": "mixed-meadow",
+      "overlay": "ground-variation-03",
+      "board": "review/overlays-mixed-meadow-1x.png",
+      "field_rect": [
+        608,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "field_tile_origins": [
+        [
+          608,
+          90
+        ],
+        [
+          736,
+          90
+        ],
+        [
+          608,
+          218
+        ],
+        [
+          736,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+      "overlay_origin": [
+        668,
+        153
+      ],
+      "overlay_size": [
+        136,
+        129
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12072
+    },
+    {
+      "field": "mixed-meadow",
+      "overlay": "ground-variation-04",
+      "board": "review/overlays-mixed-meadow-1x.png",
+      "field_rect": [
+        20,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "field_tile_origins": [
+        [
+          20,
+          395
+        ],
+        [
+          148,
+          395
+        ],
+        [
+          20,
+          523
+        ],
+        [
+          148,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+      "overlay_origin": [
+        80,
+        457
+      ],
+      "overlay_size": [
+        136,
+        132
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12162
+    },
+    {
+      "field": "mixed-meadow",
+      "overlay": "ground-variation-05",
+      "board": "review/overlays-mixed-meadow-1x.png",
+      "field_rect": [
+        314,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "field_tile_origins": [
+        [
+          314,
+          395
+        ],
+        [
+          442,
+          395
+        ],
+        [
+          314,
+          523
+        ],
+        [
+          442,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+      "overlay_origin": [
+        374,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11361
+    },
+    {
+      "field": "mixed-meadow",
+      "overlay": "ground-variation-06",
+      "board": "review/overlays-mixed-meadow-1x.png",
+      "field_rect": [
+        608,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "field_tile_origins": [
+        [
+          608,
+          395
+        ],
+        [
+          736,
+          395
+        ],
+        [
+          608,
+          523
+        ],
+        [
+          736,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+      "overlay_origin": [
+        668,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 10520
+    },
+    {
+      "field": "dry-grass",
+      "overlay": "ground-variation-01",
+      "board": "review/overlays-dry-grass-1x.png",
+      "field_rect": [
+        20,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "field_tile_origins": [
+        [
+          20,
+          90
+        ],
+        [
+          148,
+          90
+        ],
+        [
+          20,
+          218
+        ],
+        [
+          148,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+      "overlay_origin": [
+        80,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 9024
+    },
+    {
+      "field": "dry-grass",
+      "overlay": "ground-variation-02",
+      "board": "review/overlays-dry-grass-1x.png",
+      "field_rect": [
+        314,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "field_tile_origins": [
+        [
+          314,
+          90
+        ],
+        [
+          442,
+          90
+        ],
+        [
+          314,
+          218
+        ],
+        [
+          442,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+      "overlay_origin": [
+        374,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11028
+    },
+    {
+      "field": "dry-grass",
+      "overlay": "ground-variation-03",
+      "board": "review/overlays-dry-grass-1x.png",
+      "field_rect": [
+        608,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "field_tile_origins": [
+        [
+          608,
+          90
+        ],
+        [
+          736,
+          90
+        ],
+        [
+          608,
+          218
+        ],
+        [
+          736,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+      "overlay_origin": [
+        668,
+        153
+      ],
+      "overlay_size": [
+        136,
+        129
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12072
+    },
+    {
+      "field": "dry-grass",
+      "overlay": "ground-variation-04",
+      "board": "review/overlays-dry-grass-1x.png",
+      "field_rect": [
+        20,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "field_tile_origins": [
+        [
+          20,
+          395
+        ],
+        [
+          148,
+          395
+        ],
+        [
+          20,
+          523
+        ],
+        [
+          148,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+      "overlay_origin": [
+        80,
+        457
+      ],
+      "overlay_size": [
+        136,
+        132
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12162
+    },
+    {
+      "field": "dry-grass",
+      "overlay": "ground-variation-05",
+      "board": "review/overlays-dry-grass-1x.png",
+      "field_rect": [
+        314,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "field_tile_origins": [
+        [
+          314,
+          395
+        ],
+        [
+          442,
+          395
+        ],
+        [
+          314,
+          523
+        ],
+        [
+          442,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+      "overlay_origin": [
+        374,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11361
+    },
+    {
+      "field": "dry-grass",
+      "overlay": "ground-variation-06",
+      "board": "review/overlays-dry-grass-1x.png",
+      "field_rect": [
+        608,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "field_tile_origins": [
+        [
+          608,
+          395
+        ],
+        [
+          736,
+          395
+        ],
+        [
+          608,
+          523
+        ],
+        [
+          736,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+      "overlay_origin": [
+        668,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 10520
+    },
+    {
+      "field": "garden-soil",
+      "overlay": "ground-variation-01",
+      "board": "review/overlays-garden-soil-1x.png",
+      "field_rect": [
+        20,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "field_tile_origins": [
+        [
+          20,
+          90
+        ],
+        [
+          148,
+          90
+        ],
+        [
+          20,
+          218
+        ],
+        [
+          148,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+      "overlay_origin": [
+        80,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 9024
+    },
+    {
+      "field": "garden-soil",
+      "overlay": "ground-variation-02",
+      "board": "review/overlays-garden-soil-1x.png",
+      "field_rect": [
+        314,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "field_tile_origins": [
+        [
+          314,
+          90
+        ],
+        [
+          442,
+          90
+        ],
+        [
+          314,
+          218
+        ],
+        [
+          442,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+      "overlay_origin": [
+        374,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11028
+    },
+    {
+      "field": "garden-soil",
+      "overlay": "ground-variation-03",
+      "board": "review/overlays-garden-soil-1x.png",
+      "field_rect": [
+        608,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "field_tile_origins": [
+        [
+          608,
+          90
+        ],
+        [
+          736,
+          90
+        ],
+        [
+          608,
+          218
+        ],
+        [
+          736,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+      "overlay_origin": [
+        668,
+        153
+      ],
+      "overlay_size": [
+        136,
+        129
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12072
+    },
+    {
+      "field": "garden-soil",
+      "overlay": "ground-variation-04",
+      "board": "review/overlays-garden-soil-1x.png",
+      "field_rect": [
+        20,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "field_tile_origins": [
+        [
+          20,
+          395
+        ],
+        [
+          148,
+          395
+        ],
+        [
+          20,
+          523
+        ],
+        [
+          148,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+      "overlay_origin": [
+        80,
+        457
+      ],
+      "overlay_size": [
+        136,
+        132
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12162
+    },
+    {
+      "field": "garden-soil",
+      "overlay": "ground-variation-05",
+      "board": "review/overlays-garden-soil-1x.png",
+      "field_rect": [
+        314,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "field_tile_origins": [
+        [
+          314,
+          395
+        ],
+        [
+          442,
+          395
+        ],
+        [
+          314,
+          523
+        ],
+        [
+          442,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+      "overlay_origin": [
+        374,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11361
+    },
+    {
+      "field": "garden-soil",
+      "overlay": "ground-variation-06",
+      "board": "review/overlays-garden-soil-1x.png",
+      "field_rect": [
+        608,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "field_tile_origins": [
+        [
+          608,
+          395
+        ],
+        [
+          736,
+          395
+        ],
+        [
+          608,
+          523
+        ],
+        [
+          736,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+      "overlay_origin": [
+        668,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 10520
+    },
+    {
+      "field": "damp-mud",
+      "overlay": "ground-variation-01",
+      "board": "review/overlays-damp-mud-1x.png",
+      "field_rect": [
+        20,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "field_tile_origins": [
+        [
+          20,
+          90
+        ],
+        [
+          148,
+          90
+        ],
+        [
+          20,
+          218
+        ],
+        [
+          148,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-01.png",
+      "overlay_origin": [
+        80,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 9024
+    },
+    {
+      "field": "damp-mud",
+      "overlay": "ground-variation-02",
+      "board": "review/overlays-damp-mud-1x.png",
+      "field_rect": [
+        314,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "field_tile_origins": [
+        [
+          314,
+          90
+        ],
+        [
+          442,
+          90
+        ],
+        [
+          314,
+          218
+        ],
+        [
+          442,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-02.png",
+      "overlay_origin": [
+        374,
+        156
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11028
+    },
+    {
+      "field": "damp-mud",
+      "overlay": "ground-variation-03",
+      "board": "review/overlays-damp-mud-1x.png",
+      "field_rect": [
+        608,
+        90,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "field_tile_origins": [
+        [
+          608,
+          90
+        ],
+        [
+          736,
+          90
+        ],
+        [
+          608,
+          218
+        ],
+        [
+          736,
+          218
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-03.png",
+      "overlay_origin": [
+        668,
+        153
+      ],
+      "overlay_size": [
+        136,
+        129
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12072
+    },
+    {
+      "field": "damp-mud",
+      "overlay": "ground-variation-04",
+      "board": "review/overlays-damp-mud-1x.png",
+      "field_rect": [
+        20,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "field_tile_origins": [
+        [
+          20,
+          395
+        ],
+        [
+          148,
+          395
+        ],
+        [
+          20,
+          523
+        ],
+        [
+          148,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-04.png",
+      "overlay_origin": [
+        80,
+        457
+      ],
+      "overlay_size": [
+        136,
+        132
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 12162
+    },
+    {
+      "field": "damp-mud",
+      "overlay": "ground-variation-05",
+      "board": "review/overlays-damp-mud-1x.png",
+      "field_rect": [
+        314,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "field_tile_origins": [
+        [
+          314,
+          395
+        ],
+        [
+          442,
+          395
+        ],
+        [
+          314,
+          523
+        ],
+        [
+          442,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-05.png",
+      "overlay_origin": [
+        374,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 11361
+    },
+    {
+      "field": "damp-mud",
+      "overlay": "ground-variation-06",
+      "board": "review/overlays-damp-mud-1x.png",
+      "field_rect": [
+        608,
+        395,
+        256,
+        256
+      ],
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "field_tile_origins": [
+        [
+          608,
+          395
+        ],
+        [
+          736,
+          395
+        ],
+        [
+          608,
+          523
+        ],
+        [
+          736,
+          523
+        ]
+      ],
+      "overlay_source": "art-direction/residual-ground-batch/exports/ground-variation-06.png",
+      "overlay_origin": [
+        668,
+        461
+      ],
+      "overlay_size": [
+        136,
+        123
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "compositing": "Pillow RGBA alpha_composite",
+      "partial_alpha_pixels": 10520
+    }
+  ],
+  "direct_joins": [
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "packed-earth",
+      "direction": "vertical",
+      "board": "review/quiet_moss-vertical-1x.png",
+      "legacy_origin": [
+        20,
+        90
+      ],
+      "field_origin": [
+        276,
+        90
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 112,
+      "rgb_mean_delta": 39.44,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "pale-gravel",
+      "direction": "vertical",
+      "board": "review/quiet_moss-vertical-1x.png",
+      "legacy_origin": [
+        560,
+        90
+      ],
+      "field_origin": [
+        816,
+        90
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 124,
+      "rgb_mean_delta": 71.69,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "mixed-meadow",
+      "direction": "vertical",
+      "board": "review/quiet_moss-vertical-1x.png",
+      "legacy_origin": [
+        20,
+        400
+      ],
+      "field_origin": [
+        276,
+        400
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 56,
+      "rgb_mean_delta": 15.98,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "dry-grass",
+      "direction": "vertical",
+      "board": "review/quiet_moss-vertical-1x.png",
+      "legacy_origin": [
+        560,
+        400
+      ],
+      "field_origin": [
+        816,
+        400
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 80,
+      "rgb_mean_delta": 26.85,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "garden-soil",
+      "direction": "vertical",
+      "board": "review/quiet_moss-vertical-1x.png",
+      "legacy_origin": [
+        20,
+        710
+      ],
+      "field_origin": [
+        276,
+        710
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 99,
+      "rgb_mean_delta": 31.39,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "damp-mud",
+      "direction": "vertical",
+      "board": "review/quiet_moss-vertical-1x.png",
+      "legacy_origin": [
+        560,
+        710
+      ],
+      "field_origin": [
+        816,
+        710
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 78,
+      "rgb_mean_delta": 23.42,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "packed-earth",
+      "direction": "horizontal",
+      "board": "review/quiet_moss-horizontal-1x.png",
+      "legacy_origin": [
+        20,
+        90
+      ],
+      "field_origin": [
+        20,
+        346
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 123,
+      "rgb_mean_delta": 40.31,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "pale-gravel",
+      "direction": "horizontal",
+      "board": "review/quiet_moss-horizontal-1x.png",
+      "legacy_origin": [
+        314,
+        90
+      ],
+      "field_origin": [
+        314,
+        346
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 139,
+      "rgb_mean_delta": 76.14,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "mixed-meadow",
+      "direction": "horizontal",
+      "board": "review/quiet_moss-horizontal-1x.png",
+      "legacy_origin": [
+        608,
+        90
+      ],
+      "field_origin": [
+        608,
+        346
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 64,
+      "rgb_mean_delta": 15.92,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "dry-grass",
+      "direction": "horizontal",
+      "board": "review/quiet_moss-horizontal-1x.png",
+      "legacy_origin": [
+        20,
+        670
+      ],
+      "field_origin": [
+        20,
+        926
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 87,
+      "rgb_mean_delta": 26.04,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "garden-soil",
+      "direction": "horizontal",
+      "board": "review/quiet_moss-horizontal-1x.png",
+      "legacy_origin": [
+        314,
+        670
+      ],
+      "field_origin": [
+        314,
+        926
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 97,
+      "rgb_mean_delta": 30.49,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.quiet_moss",
+      "field": "damp-mud",
+      "direction": "horizontal",
+      "board": "review/quiet_moss-horizontal-1x.png",
+      "legacy_origin": [
+        608,
+        670
+      ],
+      "field_origin": [
+        608,
+        926
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/quiet-moss.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 81,
+      "rgb_mean_delta": 23.32,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "packed-earth",
+      "direction": "vertical",
+      "board": "review/woodland_leaf_litter-vertical-1x.png",
+      "legacy_origin": [
+        20,
+        90
+      ],
+      "field_origin": [
+        276,
+        90
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 126,
+      "rgb_mean_delta": 58.57,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "pale-gravel",
+      "direction": "vertical",
+      "board": "review/woodland_leaf_litter-vertical-1x.png",
+      "legacy_origin": [
+        560,
+        90
+      ],
+      "field_origin": [
+        816,
+        90
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 136,
+      "rgb_mean_delta": 91.7,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "mixed-meadow",
+      "direction": "vertical",
+      "board": "review/woodland_leaf_litter-vertical-1x.png",
+      "legacy_origin": [
+        20,
+        400
+      ],
+      "field_origin": [
+        276,
+        400
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 85,
+      "rgb_mean_delta": 26.43,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "dry-grass",
+      "direction": "vertical",
+      "board": "review/woodland_leaf_litter-vertical-1x.png",
+      "legacy_origin": [
+        560,
+        400
+      ],
+      "field_origin": [
+        816,
+        400
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 84,
+      "rgb_mean_delta": 42.71,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "garden-soil",
+      "direction": "vertical",
+      "board": "review/woodland_leaf_litter-vertical-1x.png",
+      "legacy_origin": [
+        20,
+        710
+      ],
+      "field_origin": [
+        276,
+        710
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 79,
+      "rgb_mean_delta": 13.71,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "damp-mud",
+      "direction": "vertical",
+      "board": "review/woodland_leaf_litter-vertical-1x.png",
+      "legacy_origin": [
+        560,
+        710
+      ],
+      "field_origin": [
+        816,
+        710
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 53,
+      "rgb_mean_delta": 19.35,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "packed-earth",
+      "direction": "horizontal",
+      "board": "review/woodland_leaf_litter-horizontal-1x.png",
+      "legacy_origin": [
+        20,
+        90
+      ],
+      "field_origin": [
+        20,
+        346
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 122,
+      "rgb_mean_delta": 59.35,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "pale-gravel",
+      "direction": "horizontal",
+      "board": "review/woodland_leaf_litter-horizontal-1x.png",
+      "legacy_origin": [
+        314,
+        90
+      ],
+      "field_origin": [
+        314,
+        346
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 147,
+      "rgb_mean_delta": 96.21,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "mixed-meadow",
+      "direction": "horizontal",
+      "board": "review/woodland_leaf_litter-horizontal-1x.png",
+      "legacy_origin": [
+        608,
+        90
+      ],
+      "field_origin": [
+        608,
+        346
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/mixed-meadow.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 82,
+      "rgb_mean_delta": 25.5,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "dry-grass",
+      "direction": "horizontal",
+      "board": "review/woodland_leaf_litter-horizontal-1x.png",
+      "legacy_origin": [
+        20,
+        670
+      ],
+      "field_origin": [
+        20,
+        926
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/dry-grass.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 88,
+      "rgb_mean_delta": 42.35,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "garden-soil",
+      "direction": "horizontal",
+      "board": "review/woodland_leaf_litter-horizontal-1x.png",
+      "legacy_origin": [
+        314,
+        670
+      ],
+      "field_origin": [
+        314,
+        926
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/garden-soil.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 80,
+      "rgb_mean_delta": 13.46,
+      "exact_rgba_port": false
+    },
+    {
+      "legacy": "terrain.woodland_leaf_litter",
+      "field": "damp-mud",
+      "direction": "horizontal",
+      "board": "review/woodland_leaf_litter-horizontal-1x.png",
+      "legacy_origin": [
+        608,
+        670
+      ],
+      "field_origin": [
+        608,
+        926
+      ],
+      "legacy_source": "art-direction/production-proof/corrected/exports/terrain/woodland-leaf-litter.png",
+      "field_tile": "art-direction/residual-ground-tiling-proof/exports/damp-mud.png",
+      "legacy_size": [
+        256,
+        256
+      ],
+      "field_size": [
+        256,
+        256
+      ],
+      "field_repeat": [
+        2,
+        2
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "rgb_max_delta": 66,
+      "rgb_mean_delta": 20.49,
+      "exact_rgba_port": false
+    }
+  ],
+  "counts": {
+    "overlay_combinations": 36,
+    "legacy_pairs": 12,
+    "join_directions": 24,
+    "boards": 10,
+    "preserved_accepted_artwork": 102,
+    "preserved_terrain_exports": 35
+  },
+  "interpretation": "Direct edge inequality is retained evidence, not automatic visual failure or a requirement for every material pairing. Centred overlays sample one phase only.",
+  "boards": {
+    "review/overlays-packed-earth-1x.png": "106d170a922ce8542a8777e75f247856c56245ccb5aa4257e134f6fe2c4bc034",
+    "review/overlays-pale-gravel-1x.png": "49a9544bb6bc7af2766fac6e888f95f2fb685e4a83e65f0b582a12d9991dc6bc",
+    "review/overlays-mixed-meadow-1x.png": "0d7d01f0967a13cb30048cb9397d60c0f82a520ec6359bd0b2a3e4c2a495a96b",
+    "review/overlays-dry-grass-1x.png": "a7974359f2d51ee8fbbe3935a87350737db21cf9a9eff45855125f8d1f239b17",
+    "review/overlays-garden-soil-1x.png": "57518ac3ed0034d3ea7eb08569d389e3fbf5097a85238ba8d30095ce173dbff3",
+    "review/overlays-damp-mud-1x.png": "62757df7dccfa9053de9f66559123522bec2705b390e80f8255d8f3ad31336e9",
+    "review/quiet_moss-vertical-1x.png": "f8795a094d714460349ab694de137ea6a45055e0e19fbb3ed21016e5ead230d3",
+    "review/quiet_moss-horizontal-1x.png": "50de5e9212ba28218a87cb7fdc1c43fd72f0fb157b0b37290b856736c1ef6be9",
+    "review/woodland_leaf_litter-vertical-1x.png": "2231624d97227a1cbc229b8913f627927b3a76cf60f9a922d00fba2a7616a4dd",
+    "review/woodland_leaf_litter-horizontal-1x.png": "9e84b7624516783fc836e31e0258a767b05c62c78a2a613f38367a93a6982966"
+  }
+}

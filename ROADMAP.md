@@ -187,8 +187,14 @@ joins. The owner approved the complete series ("Looks good - all approved"); acc
 binds all 57 artwork files and the technical review manifest. Consolidated scoped checks
 also pass all sixteen oriented curved ports. A read-only readiness audit measures twelve
 new/legacy direct edge comparisons; these different materials have no shared exact paint
-ports. The next slice is external 1:1 compatibility compositions for the six accepted
-variation overlays on all six new fields and those fields beside both legacy grounds.
+ports. The [read-only compatibility audit](art-direction/residual-ground-compatibility/README.md)
+now shows all 36 overlay/field combinations and twelve legacy pairings in both join
+directions. Six further 512px plain/dressed comparisons retain visible finite repeats.
+The [authored interface audit](art-direction/residual-ground-compatibility/interfaces.md)
+binds 39 terrain-texture assignments and 828 source files; no explicit new-field use
+is selected. Select a field and intended interface/composition, or request a placement
+proposal, before a separate source-matched external feasibility slice. No new legacy
+connector family or material geography follows from generic edge colour differences.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.
