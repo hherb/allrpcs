@@ -200,9 +200,10 @@ after the external soil/apron comparison. Its tight soil mask follows the retain
 alpha silhouettes; rejected dark crop-frame mats remain as evidence. Native source
 composition, editable masters and six bounded disposable Godot previews pass scoped
 checks. The [named Garden runtime scope proposal](art-direction/garden-ground-runtime-scope/README.md)
-is prepared and awaits exact scope approval before production placement. Separate
-owner runtime visual confirmation follows implementation; neither gate is inferred
-from the external variant preference.
+was explicitly approved. Both exact underlays are installed; the
+[runtime checkpoint](art-direction/garden-ground-runtime-promotion/README.md)
+has separate owner approval of all six runtime views and is cleared for reviewed
+direct-main publication. No broader terrain placement is inferred from this promotion.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.

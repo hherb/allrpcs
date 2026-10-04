@@ -41,8 +41,11 @@ proposal request is needed before connector work. The owner subsequently selecte
 its native compositions, editable masters and disposable Godot previews are packaged.
 The [named Garden runtime scope proposal](art-direction/garden-ground-runtime-scope/README.md)
 binds both selected underlays, independent ownership, source hashes, imports and
-later validation/visual gates. It awaits named approval. Terrain completeness remains
-open; runtime remains unchanged.
+later validation/visual gates. The owner approved that exact scope; both unchanged
+underlays are now installed under independent presentation ownership. The
+[ordinary-scene checkpoint](art-direction/garden-ground-runtime-promotion/README.md)
+has received separate owner approval of all six runtime views. Terrain completeness
+remains open; this acceptance covers only the exact Garden underlays.
 
 The first bounded Phase 9.2 source-sheet proof decomposes that direction into terrain/path, plants,
 object-state cues, and a four-direction Seeker walk sample under

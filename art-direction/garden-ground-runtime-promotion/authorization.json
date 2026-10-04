@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-04",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Scope approved",
+  "scope": "art-direction/garden-ground-runtime-scope/README.md",
+  "scope_sha256": "14e8dc327d8986e9714155dc3f0275bfaee28353445b65a6bf620c5ca40a24fb",
+  "bindings": "art-direction/garden-ground-runtime-scope/source-bindings.json",
+  "bindings_sha256": "792a9da034f36c6b7625301a17271b98e1a8bd9ee6fe7a290af016fcb306d400",
+  "baseline_commit": "00322238e2a447401fb0c7430d4365a96a725534",
+  "baseline_sha256": "e22a66d99864dea22695a1d38526585aec0ca1cf1b8b319770ab94f6be8fe1f6",
+  "limits": "Named two-underlay runtime implementation only; ordinary runtime visual confirmation remains separate and publication follows that confirmation."
+}

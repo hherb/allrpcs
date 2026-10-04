@@ -8,41 +8,9 @@ repository_root=$(dirname -- "$script_dir")
 cd "$repository_root"
 
 ./scripts/validate-workflows.sh
-python3 art-direction/production-proof/corrected/tools/validate.py
-python3 art-direction/production-proof/corrected/tools/check_opening_junction_feasibility.py
-python3 art-direction/production-proof/corrected/tools/check_village_square_cross_junction_feasibility.py
-python3 art-direction/production-proof/corrected/tools/validate_terrain_accessibility_review.py
-python3 art-direction/world-layout-proposal/tools/validate.py
+python3 scripts/validate-garden-ground-runtime.py --historical-quality
 python3 scripts/validate-direction-a-import-proof.py
-python3 scripts/validate-runtime-terrain.py
-python3 art-direction/whole-channel-runtime-promotion/tools/validate.py --check-captures --check-rejections --check-archived
-python3 art-direction/production-proof/corrected/tools/validate_village_edge_square_connector.py --check-captures
-python3 art-direction/production-proof/corrected/tools/check_square_garden_path_feasibility.py
-python3 art-direction/production-proof/corrected/tools/check_square_sickhouse_path_feasibility.py
-python3 art-direction/production-proof/corrected/tools/check_square_southern_road_path_feasibility.py
-python3 art-direction/production-proof/corrected/tools/check_southern_road_wagon_path_trim.py
-python3 art-direction/production-proof/corrected/tools/check_shrine_southern_road_path_feasibility.py
-python3 art-direction/production-proof/corrected/tools/check_shrine_southern_road_path_correction.py
-python3 art-direction/production-proof/corrected/tools/check_shrine_southern_road_path_blend.py
-python3 art-direction/production-proof/corrected/tools/check_woodland_shrine_path_feasibility.py
-python3 art-direction/production-proof/corrected/tools/check_woodland_shrine_path_correction.py
-python3 art-direction/production-proof/corrected/tools/check_woodland_shrine_path_junction.py
-python3 art-direction/production-proof/corrected/tools/validate_woodland_shrine_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/check_woodland_village_edge_path.py
-python3 art-direction/production-proof/corrected/tools/check_village_edge_stream_path.py
-python3 art-direction/production-proof/corrected/tools/check_stream_laundry_path.py
-python3 art-direction/production-proof/corrected/tools/validate_stream_laundry_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_village_edge_stream_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_woodland_village_edge_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_shrine_southern_road_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_southern_road_wagon_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_square_southern_road_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_square_sickhouse_path.py --check-captures
-python3 art-direction/production-proof/corrected/tools/validate_square_garden_path.py --check-captures
-python3 scripts/validate-runtime-plants.py
-python3 scripts/validate-runtime-preparation-table.py
-python3 scripts/validate-runtime-herb-beds.py
-python3 scripts/validate-runtime-seeker-walk.py
+python3 scripts/validate-garden-ground-runtime.py --check-rejections
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes
 dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
@@ -52,4 +20,5 @@ dotnet test tests/Infrastructure.Tests/Allrpcs.Infrastructure.Tests.csproj --no-
 dotnet test tests/Architecture.Tests/Allrpcs.Architecture.Tests.csproj --no-build
 dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --no-build --no-restore
 ./scripts/smoke-godot.sh
+ALLRPCS_RUNTIME_GARDEN_GROUND_CHECK=1 godot --headless --path game --quit-after 30
 godot --path game --quit-after 60

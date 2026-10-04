@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+WARNING: Loaded resource as image file, this will not work on export: 'res://art/runtime/terrain/garden-ground-meadow.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2766)
+     GDScript backtrace (most recent call first):
+         [0] _initialize (/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-fresh-import-ajrmz3td/check.gd:6)
+WARNING: Loaded resource as image file, this will not work on export: 'res://art/runtime/terrain/garden-ground-soil.png'. Instead, import the image file as an Image resource and load it normally as a resource.
+     at: load_from_file (core/io/image.cpp:2766)
+     GDScript backtrace (most recent call first):
+         [0] _initialize (/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-fresh-import-ajrmz3td/check.gd:6)
+PASS: empty-cache runtime RGBA parity with independently regenerated proof UIDs

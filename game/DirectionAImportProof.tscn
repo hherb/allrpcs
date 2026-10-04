@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3]
+[gd_scene load_steps=90 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -87,6 +87,9 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-decks.png" id="86_channel_decks"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-detail.png" id="87_channel_detail"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/channel-fringe.png" id="88_channel_fringe"]
+
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/garden-ground-meadow.png" id="89_garden_meadow"]
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/garden-ground-soil.png" id="90_garden_soil"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
@@ -436,4 +439,18 @@ centered = false
 [node name="ChannelFringeProof" type="Sprite2D" parent="Terrain"]
 position = Vector2(1800, 2800)
 texture = ExtResource("88_channel_fringe")
+centered = false
+
+[node name="GardenGroundMeadowProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(4600, 2000)
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("89_garden_meadow")
+centered = false
+
+[node name="GardenGroundSoilProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(4600, 2450)
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("90_garden_soil")
 centered = false

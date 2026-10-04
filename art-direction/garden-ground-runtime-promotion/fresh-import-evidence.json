@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "fresh empty-cache runtime RGBA parity passes with regenerated independent proof UIDs",
+  "engine": "Godot 4.6.3 .NET headless",
+  "method": "Created a disposable project with no .godot directory. Copied four PNGs and only the two runtime sidecars; Godot generated fresh proof imports/UIDs. Loaded runtime resources by their runtime paths and compared decoded RGBA with source pixels. No product/cache/UID workaround applied.",
+  "assets": [
+    {
+      "source": "game/art/runtime/terrain/garden-ground-meadow.png",
+      "source_sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+      "fresh_png_sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+      "original_import_sha256": "6c55b4d3f56425f81366c5dfdb76b7f660f091288c609cbfbd072ffe684f8732",
+      "fresh_import_sha256": "6c55b4d3f56425f81366c5dfdb76b7f660f091288c609cbfbd072ffe684f8732",
+      "original_uid": "uid=\"uid://gcb102bbaf6\"",
+      "fresh_uid": "uid=\"uid://gcb102bbaf6\""
+    },
+    {
+      "source": "game/art/runtime/terrain/garden-ground-soil.png",
+      "source_sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+      "fresh_png_sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+      "original_import_sha256": "2524503d92d70ced6267454fe17cbdf3c1bac0a9b54301f48f573c757cca0fe0",
+      "fresh_import_sha256": "2524503d92d70ced6267454fe17cbdf3c1bac0a9b54301f48f573c757cca0fe0",
+      "original_uid": "uid=\"uid://g238e56b47b\"",
+      "fresh_uid": "uid=\"uid://g238e56b47b\""
+    },
+    {
+      "source": "game/art/direction-a-import-proof/terrain/garden-ground-meadow.png",
+      "source_sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+      "fresh_png_sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+      "original_import_sha256": "378ce34703d6fdee8d69110ebc24201c0d02c30b53eaf9185df9872eaaa7a1a7",
+      "fresh_import_sha256": "2b65bb8d34706ece70d56d7997079b190f2713de9294d38506e21365f3adde7f",
+      "original_uid": "uid=\"uid://ged533aafad\"",
+      "fresh_uid": "uid=\"uid://cdl3dohnfiagj\""
+    },
+    {
+      "source": "game/art/direction-a-import-proof/terrain/garden-ground-soil.png",
+      "source_sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+      "fresh_png_sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+      "original_import_sha256": "21058ffb8bf86997c5d7b9b95bd6a2ca486dfef2317bb75bb8b33a535c47b0e6",
+      "fresh_import_sha256": "0960183c43a2f3cf60c3c929d8fb840c2b2576b7a6f95d662cb8c6915eba91fb",
+      "original_uid": "uid=\"uid://g245a704a8e\"",
+      "fresh_uid": "uid=\"uid://gcvcg1lb62yw\""
+    }
+  ],
+  "script_sha256": "7bf069c5c822afb1a28b65a51c8cc8fff4a14797708f174d39e4c8df0c8dcfb7",
+  "project_sha256": "0a7a239ec2e862b9d4c12f95c6757cc4f954a7d583261ae014c3437caf78e567",
+  "smoke_log_sha256": "d0402ccf8765e7d9f526c290936f82d328e8a96be31a21636498d58962b565e7",
+  "scope": "Cold import/source parity only; no release/export or owner visual acceptance."
+}

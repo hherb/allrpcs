@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "all required technical checks pass; owner runtime visual confirmation pending",
+  "full_quality": {
+    "command": "PATH=\"/opt/homebrew/bin:$PATH\" ./scripts/quality.sh",
+    "execution": "host retry after sandbox Godot startup exit 134",
+    "exit_code": 0,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "domain_tests": 2839,
+    "application_tests": 925,
+    "infrastructure_tests": 1261,
+    "architecture_tests": 8,
+    "total_tests": 5033,
+    "format": "pass",
+    "scenario_validation": "pass",
+    "frozen_python_validators": 35,
+    "pinned_artwork_head": "2fcc8492328a3a497d4e9ddee25c944ed1dd07b6",
+    "godot": "complete inherited smoke script, new Garden smoke and Compatibility startup pass",
+    "nonfatal_editor_diagnostic": "EditorSettings not instantiated yet while reading export/android/android_sdk_path; editor and complete quality command exited successfully."
+  },
+  "preservation": {
+    "baseline_files": 7054,
+    "protected_files": 7045,
+    "old_manifest": "exact after only two named assets/provenance removed",
+    "old_scenes": "byte-exact after only approved resources/blocks removed; WholeChannelPresentation remains final root child",
+    "accepted_proof": "all selected bytes/masters/masks and retained preview evidence unchanged"
+  },
+  "successor": "exact source/export/proof/runtime PNGs, 2x master pixels/bytes, imports, 91 assets and 42 masters pass",
+  "rejections": [
+    "paint",
+    "mask",
+    "phase",
+    "dropped soil",
+    "depth",
+    "duplicate owner",
+    "import processing",
+    "physical scope"
+  ],
+  "runtime_views": [
+    {
+      "zoom": 0.8,
+      "frame": "wide",
+      "changed_pixels": 14850
+    },
+    {
+      "zoom": 0.8,
+      "frame": "tall",
+      "changed_pixels": 14850
+    },
+    {
+      "zoom": 1.0,
+      "frame": "wide",
+      "changed_pixels": 22215,
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0
+    },
+    {
+      "zoom": 1.0,
+      "frame": "tall",
+      "changed_pixels": 23058
+    },
+    {
+      "zoom": 2.0,
+      "frame": "wide",
+      "changed_pixels": 92900,
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0
+    },
+    {
+      "zoom": 2.0,
+      "frame": "tall",
+      "changed_pixels": 92454
+    }
+  ],
+  "fresh_import_evidence_sha256": "cb47e4ca1df908aeb212298b821dea1ac00d681601ebfbc105b446778c615cf4",
+  "capture_evidence_sha256": "4dcc940873460ef4450a7c8dee2394a5a02a106cb416260d167b0c7df148d0fa",
+  "session_review_sha256": "a096c85c89c22506efc268ddc76511d34bf237d0bccc1af4292ff29bb3ee242a",
+  "logs": {
+    "evidence/capture.log": "a4222a5fc112682ac94e734346a48f1e2a19980c8381cbe5620fe92f4931201c",
+    "evidence/channel-smoke.log": "4d7ddff97fbae25400fa1f7d1255ec4d358f00af6448162e98512c5257a9983c",
+    "evidence/fresh-import-smoke.log": "d0402ccf8765e7d9f526c290936f82d328e8a96be31a21636498d58962b565e7",
+    "evidence/garden-smoke.log": "c9af51f4973919490926b929ae4b3671f1e87dcaac71e2ae9659b8225e5fd227",
+    "evidence/quality.log": "917f718b56205ba6e4b132ccdb99c8d37b36e90566bf7fda12fe0b968117f8f1",
+    "evidence/sandbox-quality-attempt.log": "4463f7bff080f56962a78bfe095b5857f397485cc73fbab9f490f5c0439a8733",
+    "evidence/successor.log": "db801251a03bdf76b8863c13e355d7bb59dc061a17dc3fe0d40538a56edc78d7"
+  },
+  "publication": "pending separate owner visual confirmation; no commit/push performed for this runtime change"
+}

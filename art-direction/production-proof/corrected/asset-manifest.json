@@ -3326,6 +3326,66 @@
       "source": "tools/build_whole_channel.py",
       "sha256": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.garden_ground_meadow",
+      "category": "terrain",
+      "export": "exports/terrain/garden-ground-meadow.png",
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 768,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 384,
+      "source": "tools/build_garden_ground.py",
+      "sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.garden_ground_soil",
+      "category": "terrain",
+      "export": "exports/terrain/garden-ground-soil.png",
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 768,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 384,
+      "source": "tools/build_garden_ground.py",
+      "sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3343,5 +3403,20 @@
     ],
     "import_fix_alpha_border": false,
     "master_scaling": "nearest-neighbour 2x of exact approved export"
+  },
+  "garden_ground_provenance": {
+    "authorization": "art-direction/garden-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "d6c9e2f9f9e58454a1c2c214467c375b03f64dd83e27f65b0431a8a0ee1bd65a",
+    "specification_sha256": "792a9da034f36c6b7625301a17271b98e1a8bd9ee6fe7a290af016fcb306d400",
+    "recipe_sha256": "6c1e0c4bf227673aea19c52ac5b1a7c4c124c09d2aa7a69b20b5be5472431c14",
+    "world_origin": [
+      2048,
+      1120
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "nearest 2x masked paint; hidden independent coverage reference; empty Corrections"
   }
 }

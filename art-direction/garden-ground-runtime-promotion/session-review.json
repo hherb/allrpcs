@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-05",
+  "status": "session code and native capture review complete",
+  "reviewed_files": {
+    "HANDOVER.md": "30d3a67c8f0727dd830691649301dbc337fd784b337437186e9a820329b1f5c6",
+    "README.md": "fea57f58418ac424e775c2f65961cdb4b69f1a0d1e940079718a633722ccbf80",
+    "ROADMAP.md": "d1935be86b80b132b0c8d3c2788e9638c417dc1dd21aa7da6ef6c29ed95c4abc",
+    "art-direction/production-proof/corrected/asset-manifest.json": "19b933e52e8d8ae32e107b70354f8625b4420def0a0e5e42930e5aaafb62e23b",
+    "art-direction/production-proof/corrected/exports/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+    "art-direction/production-proof/corrected/exports/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+    "art-direction/production-proof/corrected/masters/garden-ground-meadow.ora": "47ec2a935a883ddd4e3a76aaf985594e4a383c1a13f6ffb189cbaaa891abb9fe",
+    "art-direction/production-proof/corrected/masters/garden-ground-soil.ora": "d22c6eaeed35eb102847e1aec2c953bb6a4576abdf7e75ff7fb2750750fdb39e",
+    "art-direction/production-proof/corrected/tools/build_garden_ground.py": "6c1e0c4bf227673aea19c52ac5b1a7c4c124c09d2aa7a69b20b5be5472431c14",
+    "game/DirectionAImportProof.tscn": "a7e390b27079800102ce85450a35985df01b854bb6d2e54460e44b7671a7909d",
+    "game/Main.tscn": "bcc89f91e26b2fbc06ad103d76efeb94ae15f2442c5f86f52925b9adc1978842",
+    "game/RuntimeGardenGroundSmokeCheck.cs": "867617c42cced4a0a6b0386b15f28604d5b9a30297b7dd6893c10768686e22a1",
+    "game/RuntimeGardenGroundSmokeCheck.cs.uid": "fc366189144f954bf46eacec1f568eab3bcef3dd9bbd9d1bacc3ca79ba9e6aba",
+    "game/art/direction-a-import-proof/README.md": "9e5bbc68c87e63046a8fe1c91e9d86b7193af743c7dde5f75bb72c3845f158df",
+    "game/art/direction-a-import-proof/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+    "game/art/direction-a-import-proof/terrain/garden-ground-meadow.png.import": "378ce34703d6fdee8d69110ebc24201c0d02c30b53eaf9185df9872eaaa7a1a7",
+    "game/art/direction-a-import-proof/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+    "game/art/direction-a-import-proof/terrain/garden-ground-soil.png.import": "21058ffb8bf86997c5d7b9b95bd6a2ca486dfef2317bb75bb8b33a535c47b0e6",
+    "game/art/runtime/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+    "game/art/runtime/terrain/garden-ground-meadow.png.import": "6c55b4d3f56425f81366c5dfdb76b7f660f091288c609cbfbd072ffe684f8732",
+    "game/art/runtime/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+    "game/art/runtime/terrain/garden-ground-soil.png.import": "2524503d92d70ced6267454fe17cbdf3c1bac0a9b54301f48f573c757cca0fe0",
+    "scripts/capture-garden-ground-runtime.gd": "5edd095638d54327b6591c941b5090a97c3cd7c64ca73e97f198b11443b6543a",
+    "scripts/capture-garden-ground-runtime.gd.uid": "b4856dcb102817aac38f393641ade8e6dd7e015cb5b35160598b9f8eb20c73f2",
+    "scripts/quality.sh": "e673eeab53f0342470efb35958012a2bf5179dc0064d5f299a0f3e20210ebb3e",
+    "scripts/validate-direction-a-import-proof.py": "04b78508d605087fbb34d677560bce8b173b627126e6c838a36f805ce748b213",
+    "scripts/validate-garden-ground-runtime.py": "10651b21258070c6aacb07bc9c64f6af9d4b0ea44202f757d5c7e49300d75d50"
+  },
+  "review_fixes": [
+    "Preserved WholeChannelPresentation as final root child by inserting Garden/smoke before it",
+    "Bound effective camera transforms so existing 0.8x tall clamp remains intact",
+    "Made capture-source paths portable and required complete source/frame sets",
+    "Bound immutable authorization and predecessor digests in the successor validator",
+    "Required texture importer/type and independent UID/import cache settings"
+  ],
+  "visual_review": "Inspected all six native runtime views, including translucent path/bed/apron edges and wider placement. Retained original labels/greybox objects; no source correction or physical change. All twelve capture PNG bytes unchanged after scene-order and portable-source fixes.",
+  "rejection_probes": [
+    "paint",
+    "mask",
+    "phase",
+    "dropped soil",
+    "depth",
+    "duplicate owner",
+    "import processing",
+    "physical scope"
+  ],
+  "remaining_findings": [],
+  "limit": "Technical/code/agent visual review only; owner ordinary-runtime visual confirmation remains pending."
+}

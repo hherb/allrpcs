@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "awaiting owner ordinary-runtime visual confirmation",
+  "request": "Confirm these six exact ordinary-scene Garden presentation views at 0.8x/1x/2x in wide/tall frames, preserving both selected underlays and existing Garden/physical ownership.",
+  "authorization_sha256": "d6c9e2f9f9e58454a1c2c214467c375b03f64dd83e27f65b0431a8a0ee1bd65a",
+  "verification_sha256": "0f424daf73a8bc3c3358a4fd50b75ece40a961062218a2afeedbd8d3a0624018",
+  "session_review_sha256": "a096c85c89c22506efc268ddc76511d34bf237d0bccc1af4292ff29bb3ee242a",
+  "capture_evidence_sha256": "4dcc940873460ef4450a7c8dee2394a5a02a106cb416260d167b0c7df148d0fa",
+  "runtime_views": {
+    "captures/runtime-0.8x-tall.png": "7755a04ebad7015bf54ab746c58dde3c61b10189e60325f94481960adc8311a8",
+    "captures/runtime-0.8x-wide.png": "59b33a2ccb3f58b390cd9dcfe77b59bc3229b0ff24296a07b294ff7c9b58eb07",
+    "captures/runtime-1.0x-tall.png": "84bde661bdd84f482e8517c7a3ec2afed3489e67d163d0ba7c64dedda41f49ed",
+    "captures/runtime-1.0x-wide.png": "d15598c3399205df3198d36a5ee1e9b3fa5f0dc7fab8e40fa6c3ef89fee784d9",
+    "captures/runtime-2.0x-tall.png": "ea724b2ed2445c879cc9bea95a5f63fd8e2008fa7036cfe922145d10623e7663",
+    "captures/runtime-2.0x-wide.png": "b4aad16b29c375ed20137d62acba276f5fd9594d0039c0d6f6e0b5868c7b91b7"
+  },
+  "paired_baselines": {
+    "captures/baseline-0.8x-tall.png": "68451b4b4279ec3f4c81cddae20b2adebedff8f6152198129ae45e9ba53018c4",
+    "captures/baseline-0.8x-wide.png": "e0c9324c3a429fa7b40b5f2b5b9cbe6b3e66dfc6709ca9b289bd1d6570f45251",
+    "captures/baseline-1.0x-tall.png": "91c0dcf7afc75a165dff2c25ce7041118589e9b1d75fea2d0df4b0f0881b5ee5",
+    "captures/baseline-1.0x-wide.png": "09466a73fdea4ebd5eb009a30c6be7442ceb8b3e6a2537ce8acaf7723c1c6000",
+    "captures/baseline-2.0x-tall.png": "979b9d98d0c9cef60785ead6a97408293e15a8d76bccf552505ca5cca7d14750",
+    "captures/baseline-2.0x-wide.png": "435751562e6acdab353f08561b516a78ffb8fe0bfcab37733786fb1ddcc55dfe"
+  },
+  "next_action": "After confirmation, bind the exact statement to this unchanged request/captures; stage only reviewed paths including the explicitly approved generated C# UID, commit and push directly to main under existing authorization, verify remote parity. No further artwork or physical scope follows."
+}

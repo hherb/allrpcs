@@ -1,0 +1,262 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "68451b4b4279ec3f4c81cddae20b2adebedff8f6152198129ae45e9ba53018c4",
+		"captures/baseline-0.8x-wide.png": "e0c9324c3a429fa7b40b5f2b5b9cbe6b3e66dfc6709ca9b289bd1d6570f45251",
+		"captures/baseline-1.0x-tall.png": "91c0dcf7afc75a165dff2c25ce7041118589e9b1d75fea2d0df4b0f0881b5ee5",
+		"captures/baseline-1.0x-wide.png": "09466a73fdea4ebd5eb009a30c6be7442ceb8b3e6a2537ce8acaf7723c1c6000",
+		"captures/baseline-2.0x-tall.png": "979b9d98d0c9cef60785ead6a97408293e15a8d76bccf552505ca5cca7d14750",
+		"captures/baseline-2.0x-wide.png": "435751562e6acdab353f08561b516a78ffb8fe0bfcab37733786fb1ddcc55dfe",
+		"captures/runtime-0.8x-tall.png": "7755a04ebad7015bf54ab746c58dde3c61b10189e60325f94481960adc8311a8",
+		"captures/runtime-0.8x-wide.png": "59b33a2ccb3f58b390cd9dcfe77b59bc3229b0ff24296a07b294ff7c9b58eb07",
+		"captures/runtime-1.0x-tall.png": "84bde661bdd84f482e8517c7a3ec2afed3489e67d163d0ba7c64dedda41f49ed",
+		"captures/runtime-1.0x-wide.png": "d15598c3399205df3198d36a5ee1e9b3fa5f0dc7fab8e40fa6c3ef89fee784d9",
+		"captures/runtime-2.0x-tall.png": "ea724b2ed2445c879cc9bea95a5f63fd8e2008fa7036cfe922145d10623e7663",
+		"captures/runtime-2.0x-wide.png": "b4aad16b29c375ed20137d62acba276f5fd9594d0039c0d6f6e0b5868c7b91b7"
+	},
+	"center": [
+		2300,
+		1300
+	],
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				2300.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1199.99987792969,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1199.99987792969,
+				-679.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1660.0,
+				-886.5
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1660.0,
+				-940.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3960.0,
+				-2186.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3960.0,
+				-2240.0
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-0.8x-tall.png": {
+			"screen_center": [
+				2300.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1199.99987792969,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-0.8x-wide.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1199.99987792969,
+				-679.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-1.0x-tall.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1660.0,
+				-886.5
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-1.0x-wide.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1660.0,
+				-940.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-2.0x-tall.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3960.0,
+				-2186.5
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-2.0x-wide.png": {
+			"screen_center": [
+				2300.0,
+				1300.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3960.0,
+				-2240.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"inputs": {
+		"res://Main.tscn": "bcc89f91e26b2fbc06ad103d76efeb94ae15f2442c5f86f52925b9adc1978842",
+		"res://RuntimeGardenGroundSmokeCheck.cs": "867617c42cced4a0a6b0386b15f28604d5b9a30297b7dd6893c10768686e22a1",
+		"res://art/runtime/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+		"res://art/runtime/terrain/garden-ground-meadow.png.import": "6c55b4d3f56425f81366c5dfdb76b7f660f091288c609cbfbd072ffe684f8732",
+		"res://art/runtime/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+		"res://art/runtime/terrain/garden-ground-soil.png.import": "2524503d92d70ced6267454fe17cbdf3c1bac0a9b54301f48f573c757cca0fe0",
+		"scripts/capture-garden-ground-runtime.gd": "5edd095638d54327b6591c941b5090a97c3cd7c64ca73e97f198b11443b6543a"
+	},
+	"schema_version": 1,
+	"scope": "Ordinary scene sprites; paired ground-disabled baselines; pending owner visual confirmation"
+}
