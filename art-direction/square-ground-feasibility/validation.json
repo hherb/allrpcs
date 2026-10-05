@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "consolidated scoped validation passes; exact feathered external composition approved",
+  "owner_acceptance_sha256": "7dfbecb21fcf854db38f0d5ed3372bd8193dcebb58064a6fca4af912f449f1ff",
+  "checks": {
+    "status": "pass",
+    "preserved_predecessor_files": 7106,
+    "editable_master_layers": 20,
+    "capture_measurements": [
+      {
+        "variant": "hard-support",
+        "zoom": 0.8,
+        "frame": "wide",
+        "changed_pixels": 57352,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "feathered",
+        "zoom": 0.8,
+        "frame": "wide",
+        "changed_pixels": 55102,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "hard-support",
+        "zoom": 0.8,
+        "frame": "tall",
+        "changed_pixels": 57247,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "feathered",
+        "zoom": 0.8,
+        "frame": "tall",
+        "changed_pixels": 55166,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "hard-support",
+        "zoom": 1.0,
+        "frame": "wide",
+        "changed_pixels": 90616,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "feathered",
+        "zoom": 1.0,
+        "frame": "wide",
+        "changed_pixels": 87165,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "hard-support",
+        "zoom": 1.0,
+        "frame": "tall",
+        "changed_pixels": 89507,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "feathered",
+        "zoom": 1.0,
+        "frame": "tall",
+        "changed_pixels": 86637,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "hard-support",
+        "zoom": 2.0,
+        "frame": "wide",
+        "changed_pixels": 226256,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "feathered",
+        "zoom": 2.0,
+        "frame": "wide",
+        "changed_pixels": 220471,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "hard-support",
+        "zoom": 2.0,
+        "frame": "tall",
+        "changed_pixels": 268605,
+        "outside_support_with_filter_guard": 0
+      },
+      {
+        "variant": "feathered",
+        "zoom": 2.0,
+        "frame": "tall",
+        "changed_pixels": 262203,
+        "outside_support_with_filter_guard": 0
+      }
+    ]
+  },
+  "rejection_checks": {
+    "status": "pass",
+    "fixtures": "disposable copies only; original inputs untouched",
+    "results": [
+      {
+        "mutation": "world phase",
+        "status": "rejected",
+        "reason": "World paint phase drift"
+      },
+      {
+        "mutation": "coverage",
+        "status": "rejected",
+        "reason": "Mask recipe drift: feathered"
+      },
+      {
+        "mutation": "covered paint",
+        "status": "rejected",
+        "reason": "Covered source RGB changed"
+      },
+      {
+        "mutation": "unpaired camera",
+        "status": "rejected",
+        "reason": "Unpaired camera transforms"
+      }
+    ]
+  },
+  "scripts_sha256": {
+    "build.py": "30b87560efd14e528ca8552203569ed9c7e38183e0258fae2c08c691e3a55279",
+    "boards.py": "88ff269f6c5bee5bcb3fb0866b291cd342a0398284c30ea60a87dbce699348ed",
+    "inspect_package.py": "26ea4cf501daf2af9a99b7a4238ee0b6d527a2e964985cb51fc1aef42580e2c9",
+    "capture.gd": "c3f927a0b63a2f522e9f0666389c81a548aea2517aed497059bdd1eaf0450800"
+  },
+  "logs_sha256": {
+    "evidence/consolidated-validation.json": "96b966592d1e360a9c6edd04d5a6f136d4739d022a11a966b0d77b235e86b1a5",
+    "evidence/rejection-checks.json": "801ece7137cad0529f0fbf1fd2d698d93215ab378365592a82faade5937d7ee0",
+    "evidence/build-check.log": "9a987f87745c58b3ef60f4de3cd68b78f7073c67eac22cfdf62dfcc160cb9fb9",
+    "evidence/boards-check.log": "6378398f744c18baa965a6f947f906d887165803e7436be3356d26f131cefd7c",
+    "evidence/capture.log": "dfbdc68bcd0869ddf8b2dc1daabfb95ec534187222358f60cc2751e83ebbe6cf",
+    "evidence/sandbox-capture-attempt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "full_quality": {
+    "execution": "not replayed; product/runtime/CI inputs unchanged",
+    "retained_record": "art-direction/garden-ground-runtime-promotion/verification.json",
+    "retained_record_sha256": "0f424daf73a8bc3c3358a4fd50b75ece40a961062218a2afeedbd8d3a0624018",
+    "tests": 5033,
+    "execution_boundary": "retained full quality and fresh captures used authorized host retries after sandbox Godot startup exit134"
+  },
+  "review": {
+    "outcome": "no outstanding issues",
+    "fix": "product preservation rejects all changed predecessor bytes; allows independent later external packets without invalidating this read-only check",
+    "historical_records": "pending inventory and authoring-review fields remain unchanged; this validation supersedes their checkpoint"
+  }
+}

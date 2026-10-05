@@ -4,8 +4,11 @@ The owner selected the [placement proposal](../ground-placement-proposal/README.
 on 2026-10-05: “OK - I select this proposal. Please continue”.
 [Selection](owner-selection.json) binds the exact proposal and boards;
 [baseline](baseline.json) freezes all 7,109 tracked predecessor files at `9f3949b`.
-This package implements only the selected external composition. **Feathered
-candidate visual review is pending; runtime promotion is not selected.**
+This package implements only the selected external composition. The owner said
+“feathered composition approved”. [Acceptance](owner-acceptance.json) binds exact
+selected bytes; [validation](validation.json) records passing consolidated checks.
+**Runtime promotion is not selected.** Historical pending inventory/authoring
+fields remain unchanged and are superseded by these separate records.
 
 ## Complete series
 
@@ -65,8 +68,11 @@ are hidden; station labels and square/cask presentation remain inherited.
 
 ## Review and next boundary
 
-The whole series has been presented for owner review. Consolidated scoped
-validation follows agreement of artwork revisions. Product/runtime/CI inputs
+The owner approved the displayed feathered series. Consolidated scoped validation
+passes exact byte reproduction, independent coverage/phase/RGB/master checks,
+protected predecessor preservation, channel/Garden separation and all eighteen
+paired GPU views. Four disposable phase/coverage/paint/camera mutations are
+rejected. Product/runtime/CI inputs
 remain unchanged; retain the prior 5,033-test full-quality evidence in
 `garden-ground-runtime-promotion/verification.json` rather than replaying it for
 individual candidates. Sandbox capture exited 134 at startup; the identical host
@@ -75,9 +81,9 @@ The final capture script also refuses to overwrite an accepted packet. Adding
 that protection and recapturing left all eighteen PNG hashes unchanged; the initial
 script, capture metadata and log are retained separately as authoring lineage.
 
-After external composition selection and scoped validation, the next bounded
-slice may prepare a **named runtime scope proposal** for the selected exact
-underlay. Do not install it from external acceptance. Any different mask, paint,
+The separate [named runtime scope proposal](../square-ground-runtime-scope/README.md)
+is now prepared for the selected exact underlay and awaits approval. Do not install
+it from external acceptance. Any different mask, paint,
 phase, depth or extent needs a separate revision; retain this candidate and all
 diagnostic views as evidence. No new general connector family is established.
 

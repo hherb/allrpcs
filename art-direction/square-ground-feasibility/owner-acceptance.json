@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "feathered composition approved",
+  "status": "feathered external composition approved",
+  "selected_files": {
+    "review/feathered-1x.png": "e616308e20b2e3b1a08900b80fe8043788c3ff12c7ad73b95b8513352ac4663e",
+    "masters/feathered.ora": "3eab4ca70fd35916295b55cebf1b72ab81a13e1051ae282d41d2713c2948edf1",
+    "proof-inputs/feathered-layer.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "proof-inputs/feathered-coverage.png": "967704740321dc6b5456a51f116ec9a201907ff56ef604fcac0f04757b6f5f2c",
+    "proof-inputs/world-paint.png": "1c042c1d21cc67ff88c7a01f501ec76c5e845032530bba9fd56c934db77cf1ce",
+    "captures/baseline-0.8x-wide.png": "b9923b5b7e2025b9c29f710d8333c0a923282d1ca49759d841b4dd0a67393a0e",
+    "captures/baseline-0.8x-tall.png": "c33a7c88686ad4ae49329aa22b478c253c02d568cc43c8383169a381cdb889b8",
+    "captures/baseline-1.0x-wide.png": "ee92ccc1f1e12e5661b7aabbf22686c79161aab812217c3bb9eaef7ea1702ff9",
+    "captures/baseline-1.0x-tall.png": "25c9f55daabeae8fb57a66a0cc822c0bb02aa3097574d0e59385187f76c7bb55",
+    "captures/baseline-2.0x-wide.png": "79998c37f877729019fb55cfdd1fac46524689a7c86c3437c50d0bdd8e34f47b",
+    "captures/baseline-2.0x-tall.png": "a84f16995178a684ea05f5513d3a1dd8e1fcef9dfd698aba0e790b103ce54cfb",
+    "captures/feathered-0.8x-wide.png": "49ee0268c41b07dfd36d7edc4a9363a7a14d0a02629e91447fde77934549b39e",
+    "captures/feathered-0.8x-tall.png": "f07b3dcf7af6e43a12a7c3d325bfa3562aefcc7dedffd8801f68417e41ac2277",
+    "captures/feathered-1.0x-wide.png": "0ff0df5cf9fc66f0012f989a987abc34c459d669557afc3f7bf02970a08158ae",
+    "captures/feathered-1.0x-tall.png": "fffafba3d27566efae7599d7dd905bf557f333d03801d5503314c7bf3510525b",
+    "captures/feathered-2.0x-wide.png": "3b0f0c91b9dfd301b9965afabf1fce62c6b85f75bd94d7e4fe8438f2d4967f68",
+    "captures/feathered-2.0x-tall.png": "87fb9ae8c7edd3cbf339f26547fcd8ce5bde0f34654a36627a67062fb9826ff6"
+  },
+  "evidence_sha256": {
+    "owner-selection.json": "6b511a18825d70bbbb6aeb5b937f30f15042e3ba0fcb40685575e751e8c71c0b",
+    "inventory.json": "188062ec81dcf756b392051b0d9036dba4c1b5b89cef1a6cb7e47e86b0e96a39",
+    "capture-evidence.json": "e6e31b6a7b368e41c3a3c265fd307ebf3643cf4dd3bfda8ffa8dcec7d6b2292b",
+    "review-board-manifest.json": "b35648104195e9ee903278000881924be58eeeca1fbcd85d887c4b157be0d770"
+  },
+  "scope": "Exact selected feathered external paint/mask/master/native view and all six feathered GPU views with paired baselines. Hard support is retained diagnostic evidence. No named runtime promotion or runtime visual acceptance."
+}

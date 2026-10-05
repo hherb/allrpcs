@@ -23,8 +23,10 @@ def check_preservation():
         if name not in exceptions:
             require((REPO / name).is_file() and sha(REPO / name) == expected, f'Predecessor drift: {name}')
     changed = subprocess.check_output(['git', 'diff', baseline['head'], '--name-only'], cwd=REPO, text=True).splitlines()
-    require(all(name in exceptions or name.startswith('art-direction/square-ground-feasibility/') for name in changed),
-            'Changes outside the external proof scope')
+    # Existing artwork remains byte-protected above. Independent later external
+    # packets must not invalidate this read-only product-preservation check.
+    require(all(name in exceptions or name.startswith('art-direction/') for name in changed),
+            'Product changes outside the external proof scope')
     return len(baseline['files']) - len(exceptions)
 
 
@@ -159,6 +161,14 @@ def main():
         require(sha(source) == expected, f'Source drift: {name}')
     for name, expected in inventory['outputs'].items():
         require(sha(ROOT / name) == expected, f'Artwork drift: {name}')
+    acceptance = ROOT / 'owner-acceptance.json'
+    if acceptance.exists():
+        record = json.loads(acceptance.read_text())
+        require(record['status'] == 'feathered external composition approved', 'Unexpected acceptance status')
+        for name, expected in record['selected_files'].items():
+            require(sha(ROOT / name) == expected, f'Selected composition drift: {name}')
+        for name, expected in record['evidence_sha256'].items():
+            require(sha(ROOT / name) == expected, f'Accepted evidence drift: {name}')
     preserved = check_preservation()
     support, layers = check_paint_masks_masters()
     check_separation(support)

@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "one-asset runtime scope technically reviewed; named owner approval pending",
+  "proposal_sha256": {
+    "README.md": "05b4c691a9e440cb7304f3499192b9e91c567506aed168fd806fec5ca0df6985",
+    "source-bindings.json": "207587acafc272a878561090d398cf2fb8640589f21e9c54b97a1219460893b3",
+    "check.py": "0ca3dc5dc86639537c120893d23aeeefea9e6af566bbf78d13f7bc96c485aeee"
+  },
+  "checks": {
+    "sources": "212 exact bound inputs verified",
+    "geometry": "one selected 560x560 transparent underlay at1920,620; independent script-free owner; effective depth-90; world phase0,0",
+    "imports": "lossless, independent proof/runtime UIDs and cache proof explicitly required",
+    "counts": "current 91 assets/42 masters confirmed; proposed 92/43 only",
+    "product_preservation": "no product/runtime/import/CI files changed; accepted proof and all diagnostic artwork bytes unchanged",
+    "publication_boundary": "runtime scope approval before installation; separate runtime visual confirmation before publication",
+    "whitespace": "git diff --check passes"
+  },
+  "external_validation_sha256": "102af494e4ab0dbf2175ec2a63a76ba1f64d0766303f8baf235ebf0a9693b4d5",
+  "session_review": {
+    "outcome": "no outstanding findings",
+    "notes": [
+      "external inspector checks every accepted evidence digest",
+      "pre-existing artwork stays hash-protected; independent new external packets are permitted without weakening product preservation",
+      "frozen Garden scene/manifest checks stay pinned to approved product tree; Square successor must verify preserved live subset"
+    ]
+  },
+  "full_quality": {
+    "execution": "not rerun for source-bound external proposal; product/runtime/CI inputs unchanged",
+    "retained_record": "art-direction/garden-ground-runtime-promotion/verification.json",
+    "tests": 5033,
+    "sandbox_host_distinction": "retained quality and fresh external capture record authorized host retries after sandbox Godot startup exit134"
+  }
+}

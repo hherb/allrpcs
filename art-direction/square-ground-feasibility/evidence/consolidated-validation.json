@@ -1,0 +1,91 @@
+{
+  "status": "pass",
+  "preserved_predecessor_files": 7106,
+  "editable_master_layers": 20,
+  "capture_measurements": [
+    {
+      "variant": "hard-support",
+      "zoom": 0.8,
+      "frame": "wide",
+      "changed_pixels": 57352,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "feathered",
+      "zoom": 0.8,
+      "frame": "wide",
+      "changed_pixels": 55102,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "hard-support",
+      "zoom": 0.8,
+      "frame": "tall",
+      "changed_pixels": 57247,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "feathered",
+      "zoom": 0.8,
+      "frame": "tall",
+      "changed_pixels": 55166,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "hard-support",
+      "zoom": 1.0,
+      "frame": "wide",
+      "changed_pixels": 90616,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "feathered",
+      "zoom": 1.0,
+      "frame": "wide",
+      "changed_pixels": 87165,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "hard-support",
+      "zoom": 1.0,
+      "frame": "tall",
+      "changed_pixels": 89507,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "feathered",
+      "zoom": 1.0,
+      "frame": "tall",
+      "changed_pixels": 86637,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "hard-support",
+      "zoom": 2.0,
+      "frame": "wide",
+      "changed_pixels": 226256,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "feathered",
+      "zoom": 2.0,
+      "frame": "wide",
+      "changed_pixels": 220471,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "hard-support",
+      "zoom": 2.0,
+      "frame": "tall",
+      "changed_pixels": 268605,
+      "outside_support_with_filter_guard": 0
+    },
+    {
+      "variant": "feathered",
+      "zoom": 2.0,
+      "frame": "tall",
+      "changed_pixels": 262203,
+      "outside_support_with_filter_guard": 0
+    }
+  ]
+}

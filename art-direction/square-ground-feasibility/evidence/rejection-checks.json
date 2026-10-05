@@ -1,0 +1,26 @@
+{
+  "status": "pass",
+  "fixtures": "disposable copies only; original inputs untouched",
+  "results": [
+    {
+      "mutation": "world phase",
+      "status": "rejected",
+      "reason": "World paint phase drift"
+    },
+    {
+      "mutation": "coverage",
+      "status": "rejected",
+      "reason": "Mask recipe drift: feathered"
+    },
+    {
+      "mutation": "covered paint",
+      "status": "rejected",
+      "reason": "Covered source RGB changed"
+    },
+    {
+      "mutation": "unpaired camera",
+      "status": "rejected",
+      "reason": "Unpaired camera transforms"
+    }
+  ]
+}
