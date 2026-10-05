@@ -38,3 +38,8 @@ godot --headless --path game res://DirectionAImportProof.tscn --quit-after 30
 
 This import proof does not authorize replacement of greybox presentation, runtime direction
 switching, bulk art production, gameplay/UI changes, audio, release, or signing work.
+
+The named Wagon entrance scope adds one isolated 285x92 packed-earth sample at
+`(5000,3500)`, with exact selected PNG/master parity and an independent lossless UID.
+The manifest now has 94 assets / 45 masters. The owner confirmed all six exact
+ordinary-scene runtime views on 2026-10-05 before reviewed publication.

@@ -2,50 +2,43 @@
 
 ## Current state
 
-Live predecessor `bbcc14b1` retains accepted Garden, Square and Sickhouse ground,
-93 assets / 44 masters, and all confirmed ordinary-scene views. The new
-[Wagon entrance external series](art-direction/wagon-ground-feasibility/README.md)
-contains baseline/hard support/16px/24px comparisons, three editable 2x masters
-and 24 disposable GPU views. The owner selected **feather-24** on 2026-10-05:
-[exact selection](art-direction/wagon-ground-feasibility/owner-selection.json).
-No production/runtime assets, imports, scenes or product code changed.
+Approved Wagon scope is implemented from `b7048d2e`: 94 assets / 45 masters,
+script-free `WagonGroundPresentation` at `(1633,1512)` with one 285x92 packed-earth
+child, phase `(0,0)`, effective z=-90. The [runtime checkpoint](art-direction/wagon-ground-runtime-promotion/README.md)
+retains scope, 7,471-file predecessor, actual captures and final review/verification.
+All six actual runtime views and six baselines equal selected external GPU pixels.
+Full host quality passed 5,033 tests, zero build warnings/errors, every inherited
+Godot smoke, the new Wagon smoke and Compatibility startup. Cold imports,
+ten rejection probes and native UID checks pass. The owner confirmed these exact
+six runtime views on 2026-10-05; [acceptance](art-direction/wagon-ground-runtime-promotion/owner-runtime-acceptance.json)
+clears reviewed direct-main publication.
 
 ## Next bounded slice
 
-The [named Wagon runtime scope proposal](art-direction/wagon-ground-runtime-scope/README.md)
-is prepared and **awaits explicit named approval**. Its checker binds the exact
-selected external packet. Obtain approval of that README and source-binding digest;
-then freeze the live implementation head and install only `terrain.wagon_entrance_ground`
-from the unchanged feather-24 PNG/master. Proposed independent root
-`WagonGroundPresentation` at `(1633,1512)` has one 285x92 `PackedEarth` child,
-effective z=-90, phase `(0,0)`; 93/44 becomes 94/45. Follow the exact scope for
-imports, smoke/validator tooling, preservation, cold decoding and six actual
-runtime captures. Actual runtime confirmation is a separate later owner gate.
-Do not infer either gate from the external feather preference or continuation request.
-
-## Constraints and verification
-
-Preserve accepted paint/masks/masters, rejected evidence, Direction A, route/Garden
-sibling order, all physical owners and final `WholeChannelPresentation` root child.
-Preserve its five sprites, native three-node x<1664 shader scope, UVs/caps/crossing,
-Shrine triangle, Clearing near side, gate/Forester and x=1664/x=2000 limits.
-No physics/navigation/layout/scenario/gameplay/dialogue/clue/discovery/treatment/
-save/provider/functional-UI/audio/release/signing changes. Exclude `.DS_Store`.
+Start from live main and prepare one bounded next external placement proposal under
+the continuing slice request. Choose one location/material, freeze predecessor
+inputs, and specify exact coverage/depth/phase and exclusions. Produce the complete
+external comparison series and editable masters together for owner review before
+consolidated validation. No further runtime placement is selected; named runtime
+scope and actual-view confirmation remain separate checkpoints.
 Accessibility/pacing/terrain completeness remain open.
 
-Run external `build.py --check`, `boards.py --check`, `inspect_package.py`,
-`rejection_probes.py`, and `wagon-ground-runtime-scope/check.py` from their packages.
-See [session review](art-direction/wagon-ground-feasibility/session-review.json)
-for consolidated outcomes and the initial CPU-route omission/correction evidence.
-The successor checks 7,355 preserved predecessor files, twelve master layers,
-nine protected alpha planes and eighteen bounded GPU comparisons; four rejection
-probes pass. Builders/captures/boards refuse overwriting existing final packets.
+## Constraints and validation
 
-Frozen artwork validators stay at `2fcc849`, Garden at `7942e7d`, Square at
-`06f0dab4`, Sickhouse at `bbcc14b1`; never rewrite inventories or weaken validators.
-The frozen Sickhouse validator rejects successor files in a live whole-tree run.
-Full quality therefore uses a clean isolated `bbcc14b1` checkout, with the external
-successor proving every protected live byte is unchanged. Live Sickhouse asset,
-paired capture and rejection checks run unchanged with its whole-tree membership
-check delegated to the successor. After runtime approval implement the named
-successor dispatch and run `PATH="/opt/homebrew/bin:$PATH" ./scripts/quality.sh`.
+Preserve accepted paint/masks/masters, rejected evidence, Direction A, route/Garden
+sibling order and all physical owners. Garden soil/meadow remain `(2048,1120)`,
+z=-90/-89; Square `(1920,620)` z=-90; Sickhouse `(2408,1248)` z=-90.
+`WholeChannelPresentation` stays final with five sprites, native three-node x<1664
+shader scope, UVs/caps/crossing, Shrine triangle, Clearing near side, gate/Forester
+and x=1664/x=2000 limits. No physics/navigation/layout/scenario/gameplay/dialogue/
+clue/discovery/treatment/save/provider/functional-UI/audio/release/signing changes.
+Exclude `.DS_Store`.
+
+Run `PATH="/opt/homebrew/bin:$PATH" ./scripts/quality.sh` and
+`scripts/validate-wagon-ground-runtime.py --check-captures --check-rejections`.
+The checkpoint records sandbox failures and identical host retries. Frozen artwork
+validators stay at `2fcc849`, Garden at `7942e7d`, Square at `06f0dab4`, Sickhouse
+at `bbcc14b1`; the successor must prove preserved live inputs and exact additions.
+Never rewrite frozen inventories or weaken validators. Keep the initial capture/
+validation evidence and camera-clamp erratum: actual external transforms are correct,
+0.8x/1x south-clamped, both 2x views at `(1800,1530)`.

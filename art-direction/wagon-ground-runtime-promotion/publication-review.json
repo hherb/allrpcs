@@ -1,0 +1,35 @@
+{
+  "status": "reviewed for direct-main publication",
+  "date": "2026-10-05",
+  "owner_runtime_acceptance_sha256": "6b6e50bce0d4c1b9b3489043deac648089a7e7898706f5dd1a0df73c562ec806",
+  "prior_implementation_review_sha256": "921e41c287f923d3aee45630c559ac8426fdaf997cae29d263c790a3b5b29438",
+  "unchanged_implementation_paths_sha256": {
+    "game/Main.tscn": "605b18c568eeead89daf02620d45826dc28bd754d0d97220d8de44b60b753d61",
+    "game/DirectionAImportProof.tscn": "3642aca5abeb2f1680a6b3d70318654df538c7f40dcabc1606b90b6604befe05",
+    "scripts/quality.sh": "f7e013ff6786eb7f13727b76be48ee583f43328c77e51e92cfc87f374efc9694",
+    "scripts/validate-direction-a-import-proof.py": "99da67442267072b83fa7355755d333f4b5dbe509e62c0b92e7cdd80626b22a5",
+    "art-direction/production-proof/corrected/asset-manifest.json": "035a93e25898f4ae389e7f7e124af8cfac1b298d694a781afe74b879326dac10",
+    "game/RuntimeWagonGroundSmokeCheck.cs": "07f136e3c0d993ba9f0cc75810024407a4e6a0f23df67c461a2a5c89b4f16dcb",
+    "game/RuntimeWagonGroundSmokeCheck.cs.uid": "0332850f259bfe70f8d780fe810bc3778cb87df549a2850a4b586d7ebd08e631",
+    "scripts/capture-wagon-ground-runtime.gd": "29fe5895bf61fce20f43e5d03f471ff2de3f7fd910111fe0e162ca98370a5c05",
+    "scripts/capture-wagon-ground-runtime.gd.uid": "6dc0e6a59a9347fbef50c42aaf2e6366a3a8eada6c40ba8a9eedfc007d776ba3",
+    "scripts/validate-wagon-ground-runtime.py": "90d667627796fc505f30e43359654d6db39c9a196a8f5cbbf1ad529e2c04aada",
+    "art-direction/production-proof/corrected/tools/build_wagon_ground.py": "e5c51e8333d49dbf262060e8f25ce3235cc1a1c5b9c9ec41e439152291232bb3",
+    "game/art/runtime/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+    "game/art/runtime/terrain/wagon-entrance-ground.png.import": "2e4f16f4327d598d7580b17cd352596739944e5e309a1529ef6afd2f02b48172",
+    "game/art/direction-a-import-proof/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+    "game/art/direction-a-import-proof/terrain/wagon-entrance-ground.png.import": "23c0910f589f13723ddb18ade78b98df861485a942b2c9e51c9a86d71e63619e",
+    "art-direction/production-proof/corrected/masters/wagon-entrance-ground.ora": "76258e3cceecb4f995fd8f8dc53c2e9cb01fc4409fe6e99794aed5dee75827d3",
+    "art-direction/production-proof/corrected/exports/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae"
+  },
+  "final_documentation_sha256": {
+    "HANDOVER.md": "873c17f3bb5f00a7f94218eb4900c88b33159bcce611949a2aaa075968bee41c",
+    "README.md": "2fc2eb240dbc5c1dd9dc3daa8f8428b0b5de0b18e0a6b02fb9da8b27f8fc57e7",
+    "ROADMAP.md": "90434a307c1d5d2ea0efbc50e0990fd10c1c1c7f0b8186166424486a34dba5b5",
+    "game/art/direction-a-import-proof/README.md": "4cceaae3edcfd2e30beff33cece7736b7bde44f6e6be7083b6b5c1c8e7b0c1a0",
+    "art-direction/wagon-ground-runtime-promotion/README.md": "db8794705157e137fbd186cd09bd7e4c457b138af5b5931484c06549b002046f"
+  },
+  "review": "Only exact owner acceptance and documentation changed after full quality. Every captured/runtime/source/tool input remains identical. Historical pending records preserved; acceptance supersedes them. Handover pruned to evidence, constraints and one next external slice.",
+  "outstanding_code_issues": [],
+  "checks": "Passed: exact owner acceptance, capture/request/implementation/tool/documentation bindings; scoped source/import/scene/capture checks, ten rejection probes, board parity and staged whitespace/scope review."
+}

@@ -3446,6 +3446,36 @@
       "source": "tools/build_sickhouse_ground.py",
       "sha256": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.wagon_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/wagon-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 570,
+        "height": 184,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 285,
+        "height": 92
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 285,
+        "height": 92
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 92,
+      "source": "tools/build_wagon_ground.py",
+      "sha256": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3502,6 +3532,21 @@
     "world_origin": [
       2408,
       1248
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "wagon_ground_provenance": {
+    "authorization": "art-direction/wagon-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "4a4ec0eb31c1c14aa40ab4a0494e7c7cc7afc898f89cc9ab9f4e448b6c810501",
+    "specification_sha256": "00d35190a50e135576da87e166f40c9a0eaaab0e78d9b7ebc7961172b189ce06",
+    "recipe_sha256": "e5c51e8333d49dbf262060e8f25ce3235cc1a1c5b9c9ec41e439152291232bb3",
+    "world_origin": [
+      1633,
+      1512
     ],
     "paint_phase": [
       0,

@@ -28,8 +28,12 @@ confirmed these exact runtime views on 2026-10-05, clearing reviewed direct-main
 
 The next [external Wagon entrance proposal](art-direction/wagon-ground-feasibility/README.md)
 compares hard support and two inward packed-earth feathers using unchanged approved
-paint, three editable masters and 24 disposable scene views. The owner selected feather-24; its separate named runtime scope
-awaits approval. Runtime assets, imports, physical owners and ordinary scenes are unchanged.
+paint, three editable masters and 24 disposable scene views. The owner selected
+feather-24 and approved its exact named runtime scope. Its
+[ordinary-scene checkpoint](art-direction/wagon-ground-runtime-promotion/README.md)
+installs one unchanged 285x92 underlay; all six actual runtime views and paired
+baselines equal selected external pixels. The owner confirmed these exact actual
+views on 2026-10-05, clearing reviewed direct-main publication.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

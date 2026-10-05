@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "review complete; no remaining findings; separate owner runtime confirmation required before publication",
+  "reviewed_scope": "Exactly the approved feather-24 Wagon ground, independent imports/owner, inactive smoke and named successor tooling",
+  "findings_fixed": [
+    "Portable script-input key normalization corrected; initial twelve images, metadata and boards retained. Final capture pixels equal initial pixels.",
+    "New support validator used inherited absolute origins; corrected to scope-derived (1633,1512) without changing captured pixels or permitted guard.",
+    "Documented camera-clamp erratum while preserving frozen external evidence; only 0.8x/1x clamp, both 2x views use the target.",
+    "Final series board overwrites are refused and a disposable overwrite check preserves all final board bytes.",
+    "Trailing blank lines normalized in new diagnostic text logs."
+  ],
+  "remaining_findings": [],
+  "visual_review": [
+    "All six actual runtime and paired baseline views inspected as a complete series.",
+    "Source paint/mask/master unchanged and runtime/baseline RGBA equals selected external pixels exactly.",
+    "Inherited Wagon shell transparency, black physical boundaries, yellow opening marker and clue label retained."
+  ],
+  "preservation": "7462 protected files unchanged; all old scene resource/node blocks and order byte-exact after removing additions; WholeChannel root remains final. No gameplay/physical/audio/provider/release changes.",
+  "validation_sha256": "ebfec4e786bde9a9e5fa2068dd4a6defc194fafcd5e93e9d21b83a2836f7ee16",
+  "runtime_review_request_sha256": "410d191ed60be7bb4e4c3ae9da8d117c5d1febea934ca89e9b3640684eb749bf",
+  "reviewed_implementation_sha256": {
+    "game/Main.tscn": "605b18c568eeead89daf02620d45826dc28bd754d0d97220d8de44b60b753d61",
+    "game/DirectionAImportProof.tscn": "3642aca5abeb2f1680a6b3d70318654df538c7f40dcabc1606b90b6604befe05",
+    "scripts/quality.sh": "f7e013ff6786eb7f13727b76be48ee583f43328c77e51e92cfc87f374efc9694",
+    "scripts/validate-direction-a-import-proof.py": "99da67442267072b83fa7355755d333f4b5dbe509e62c0b92e7cdd80626b22a5",
+    "art-direction/production-proof/corrected/asset-manifest.json": "035a93e25898f4ae389e7f7e124af8cfac1b298d694a781afe74b879326dac10",
+    "game/RuntimeWagonGroundSmokeCheck.cs": "07f136e3c0d993ba9f0cc75810024407a4e6a0f23df67c461a2a5c89b4f16dcb",
+    "game/RuntimeWagonGroundSmokeCheck.cs.uid": "0332850f259bfe70f8d780fe810bc3778cb87df549a2850a4b586d7ebd08e631",
+    "scripts/capture-wagon-ground-runtime.gd": "29fe5895bf61fce20f43e5d03f471ff2de3f7fd910111fe0e162ca98370a5c05",
+    "scripts/capture-wagon-ground-runtime.gd.uid": "6dc0e6a59a9347fbef50c42aaf2e6366a3a8eada6c40ba8a9eedfc007d776ba3",
+    "scripts/validate-wagon-ground-runtime.py": "90d667627796fc505f30e43359654d6db39c9a196a8f5cbbf1ad529e2c04aada",
+    "art-direction/production-proof/corrected/tools/build_wagon_ground.py": "e5c51e8333d49dbf262060e8f25ce3235cc1a1c5b9c9ec41e439152291232bb3",
+    "game/art/runtime/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+    "game/art/runtime/terrain/wagon-entrance-ground.png.import": "2e4f16f4327d598d7580b17cd352596739944e5e309a1529ef6afd2f02b48172",
+    "game/art/direction-a-import-proof/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+    "game/art/direction-a-import-proof/terrain/wagon-entrance-ground.png.import": "23c0910f589f13723ddb18ade78b98df861485a942b2c9e51c9a86d71e63619e",
+    "art-direction/production-proof/corrected/masters/wagon-entrance-ground.ora": "76258e3cceecb4f995fd8f8dc53c2e9cb01fc4409fe6e99794aed5dee75827d3",
+    "art-direction/production-proof/corrected/exports/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae"
+  },
+  "reviewed_tool_sha256": {
+    "art-direction/wagon-ground-runtime-promotion/cold_import.py": "586e6b418e70e43c1241ec6683b0aca52843fb1a7e218bd253d60c93c2576550",
+    "art-direction/wagon-ground-runtime-promotion/fresh-import-check.gd": "9118c33aa72a1fbe2c4f8a4a234c4bd2ed12fab727d35bf3e89b84ade92b35e9",
+    "art-direction/wagon-ground-runtime-promotion/check-uids.gd": "5aebdc23823cae55eadc2135cbaae15a1f0543674ae779898f8fa525b8a2bc30",
+    "art-direction/wagon-ground-runtime-promotion/generate-capture-uid.gd": "568d3fc8624b9a4ec6d87dadf3ee1774936f556767ad6b03235caa2eaee5e50a",
+    "art-direction/wagon-ground-runtime-promotion/review_boards.py": "59b2f999248494c3e3c59dc6141f64ad17bd2939d874ead0974e78c23faf4519"
+  },
+  "documentation_sha256": {
+    "HANDOVER.md": "1e6cda0702d359ef6c4f0d3a38b0df5da0fefbf9b842d6dc7c501a40977b73c3",
+    "README.md": "5f1d70dca4e170d2da1650c770d8ce397fd3a9b14bf31a3cafa0fe82cb2841d9",
+    "ROADMAP.md": "30ea8d89d7c1a823d3c152cd22dd225ccf3370674b8c7c1caee86730940ff89a",
+    "game/art/direction-a-import-proof/README.md": "15e11048a120358a25a6f88c19a64f2f6edb3e6348dfd33c29e760b0b4d8b905",
+    "art-direction/wagon-ground-runtime-promotion/README.md": "6633dd28a9f428a513503f9f1b012e813b205d2ea43db9f368b9fdc6bff66653"
+  },
+  "publication_hold": "Approved scope explicitly requires separate confirmation of these exact six actual runtime views before runtime publication. Existing direct-main instruction remains pending that gate."
+}

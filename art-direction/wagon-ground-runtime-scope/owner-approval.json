@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "scope approved",
+  "status": "named one-asset Wagon runtime scope approved",
+  "scope_sha256": "1d4c7fe78c5fe8318472f4675fdc84ee7c13cc50547799b815e0294e1ba2f81f",
+  "bindings_sha256": "00d35190a50e135576da87e166f40c9a0eaaab0e78d9b7ebc7961172b189ce06",
+  "review_sha256": "44ec81238645f3119251e103a4ed8e4ae63365b55170f9a441b67aa2b3e3b5f9",
+  "scope": "Exact selected feather-24 independent Wagon underlay described in approved README and bindings. Separate actual runtime confirmation required before publishing."
+}

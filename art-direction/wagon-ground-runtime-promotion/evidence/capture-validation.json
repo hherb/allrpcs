@@ -1,0 +1,15 @@
+PASS: one exact Wagon underlay, isolated editable master and append-only manifest
+PASS: exact Wagon source/master/imports, 94 assets/45 masters, normalized scenes and preserved predecessor
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/scripts/validate-wagon-ground-runtime.py", line 339, in <module>
+    main()
+    ~~~~^^
+  File "/Users/hherb/src/allrpcs/scripts/validate-wagon-ground-runtime.py", line 335, in main
+    captures()
+    ~~~~~~~~^^
+  File "/Users/hherb/src/allrpcs/scripts/validate-wagon-ground-runtime.py", line 266, in captures
+    require(set(evidence['inputs']) == expected_inputs, 'Runtime capture input set drift')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hherb/src/allrpcs/scripts/validate-wagon-ground-runtime.py", line 39, in require
+    raise ValueError(message)
+ValueError: Runtime capture input set drift

@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "passed; separate runtime confirmation pending",
+  "baseline_commit": "b7048d2edd54a845fd288a7f8b3b64cd607a3445",
+  "predecessor_files": 7471,
+  "protected_files": 7462,
+  "scoped_validation": "Exact source/master/import/append-only-manifest/normalized-scenes and complete predecessor preservation passed",
+  "rejection_probes": 10,
+  "cold_import": "Empty-cache runtime RGBA equals source; proof UID regenerated; runtime sidecar unchanged",
+  "native_uids": "Four canonical new UIDs distinct and absent from predecessor",
+  "runtime_external_pairs": [
+    {
+      "zoom": 0.8,
+      "frame": "wide",
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0,
+      "changed_pixels": 9597
+    },
+    {
+      "zoom": 0.8,
+      "frame": "tall",
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0,
+      "changed_pixels": 9597
+    },
+    {
+      "zoom": 1.0,
+      "frame": "wide",
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0,
+      "changed_pixels": 15386
+    },
+    {
+      "zoom": 1.0,
+      "frame": "tall",
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0,
+      "changed_pixels": 15386
+    },
+    {
+      "zoom": 2.0,
+      "frame": "wide",
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0,
+      "changed_pixels": 60162
+    },
+    {
+      "zoom": 2.0,
+      "frame": "tall",
+      "baseline_external_changed_pixels": 0,
+      "runtime_external_changed_pixels": 0,
+      "changed_pixels": 59903
+    }
+  ],
+  "quality": {
+    "sandbox_exit": 134,
+    "sandbox_result": "Restore/format/build/tests passed; Godot import-proof startup failed at user logs",
+    "host_retry_exit": 0,
+    "warnings": 0,
+    "errors": 0,
+    "tests": {
+      "Domain": 2839,
+      "Application": 925,
+      "Infrastructure": 1261,
+      "Architecture": 8,
+      "total": 5033
+    },
+    "godot": "All inherited smokes, Garden/Square/Sickhouse/Wagon ground checks and Compatibility startup passed"
+  },
+  "execution": {
+    "uid_sandbox_exit": 134,
+    "uid_host_exit": 0,
+    "import_sandbox_exit": 0,
+    "import_limitation": "Editor settings write outside sandbox blocked; texture imports verified independently",
+    "capture_sandbox_exit": 134,
+    "capture_host_exit": 0,
+    "final_capture_host_exit": 0,
+    "cold_sandbox_exit": 1,
+    "cold_godot_exit": -6,
+    "cold_host_exit": 0,
+    "native_uid_sandbox_exit": 134,
+    "native_uid_host_exit": 0
+  },
+  "evidence_sha256": {
+    "evidence/build.log": "b602b6faae11a87934e2e56bfd62f917bc92675e2be69dae7bd70b8bc4f37da5",
+    "evidence/capture-host-final.log": "5d1850602f9ad7ba0d633256a8e343906fc359502680b3831cf692ed65e90dba",
+    "evidence/capture-host.log": "5d1850602f9ad7ba0d633256a8e343906fc359502680b3831cf692ed65e90dba",
+    "evidence/capture-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/capture-validation-final.log": "d47d04160a873cce3e65ae2e03035f21ecd94bc458b6123d4efd2505b198e19a",
+    "evidence/capture-validation-passed.log": "dc0f563c1114118d95cbc8f5634d47d8c04ef53525a83bae8d1f02525ebb3fa3",
+    "evidence/cold-import-host.log": "6a9da5a3f686b5f52afdfa2f023621bf0f0b6f46e20ee46e57d44fb6ab68c858",
+    "evidence/cold-import-sandbox.log": "1e931d0e366945c5d8eb301a03480ef67358821fc79338c5cfb6c4e3cdf02c73",
+    "evidence/final-rejections.log": "1932d93a9a5ebdc7b01d36c150c49b77e1227541bc3cf94615e42844ec97acbd",
+    "evidence/import-sandbox.log": "7e3bcdad4fcf92e1e3f260173c4dcc98d9e235d7b23b967a52120672b7e8d10e",
+    "evidence/initial-validation.log": "1932d93a9a5ebdc7b01d36c150c49b77e1227541bc3cf94615e42844ec97acbd",
+    "evidence/native-uids-host.log": "b92316d8c36ac10005198feefb14d21e242b2499598b620e8a195ea403e6aff1",
+    "evidence/native-uids-sandbox.log": "9bfa7b4ca96d4321d574077c55d6c8e292d2ed61261d35e40b4771d6a913d0c1",
+    "evidence/quality-host.log": "8d66ad5c75f1407f9c30f4b5f3828311cb8b705af103452241f1443619baa534",
+    "evidence/quality-sandbox.log": "6668ab3747281da8763fc417e2ecaea8961a105ff7a340e98193766ea0a081ea",
+    "evidence/uid-host.log": "f70a6f9d6cd8919fe7509257c013f713bda83524864c07f8912859006ea961b8",
+    "evidence/uid-sandbox.log": "ed2e0f7f421e4e049a616e62f9c3f0fa567bf42cb1af67e1be29492f76542678"
+  },
+  "frozen_revisions": {
+    "artwork": "2fcc849",
+    "Garden": "7942e7d",
+    "Square": "06f0dab4",
+    "Sickhouse": "bbcc14b1"
+  }
+}

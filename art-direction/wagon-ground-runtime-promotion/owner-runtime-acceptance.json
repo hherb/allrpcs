@@ -1,0 +1,37 @@
+{
+  "status": "accepted exact six actual runtime views; reviewed direct-main publication authorized",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "confirmed",
+  "scope": "Exact Wagon entrance ordinary-scene views at 0.8x/1x/2x in wide1280x720 and tall1280x827; unchanged paired baselines and selected feather-24 packed-earth source. No broader terrain or physical/gameplay acceptance.",
+  "runtime_review_request_sha256": "410d191ed60be7bb4e4c3ae9da8d117c5d1febea934ca89e9b3640684eb749bf",
+  "bound_files_sha256": {
+    "authorization.json": "4a4ec0eb31c1c14aa40ab4a0494e7c7cc7afc898f89cc9ab9f4e448b6c810501",
+    "capture-evidence.json": "267b3e648dc6612e4e04366a3c14b338c3d453b20606195c02b1945fb0282f0e",
+    "runtime-series.png": "d2c21af45ad1ce553d17c4d8108eb8e2e222fb9388a0e483a4b3cae2e4f55447",
+    "baseline-series.png": "1626f7c67d0e9732ef9e2fcafe64948fd67aa0e71b7606253de06026e16cab7e",
+    "series-bindings.json": "8ffb93dc05ffd0d380d1cc9ff86de1638594aa8e87f3ee864c9216a002382af9",
+    "verification.json": "ebfec4e786bde9a9e5fa2068dd4a6defc194fafcd5e93e9d21b83a2836f7ee16",
+    "session-review.json": "921e41c287f923d3aee45630c559ac8426fdaf997cae29d263c790a3b5b29438",
+    "fresh-import-evidence.json": "b9b4352647df1a9345b3c51289033bbe5c1f2122c1363b7d14b7820429c59baa",
+    "uid-inputs.json": "557f2f66b3475c6ac5f97a3b88b35c50d3d39ef431a86bd65fee4a4183e6addd",
+    "check-uids.gd": "5aebdc23823cae55eadc2135cbaae15a1f0543674ae779898f8fa525b8a2bc30"
+  },
+  "captures_sha256": {
+    "captures/baseline-0.8x-tall.png": "04301621c3fb525aa7ab8f2728b4ec929fa9630b6d3320719931b5991f464655",
+    "captures/baseline-0.8x-wide.png": "40239ad62bbb8068b016c4c6e98f3f32d8a51850f1343868ba224f168117e284",
+    "captures/baseline-1.0x-tall.png": "2dc12f404481bba19a614e9d2c6eb789b7374c0e08d331a8111360fdb6e57b8c",
+    "captures/baseline-1.0x-wide.png": "d8fd089d70c84ab7ff6607b164ced8ade80974679ddb71e6ea8bd67e4df2418c",
+    "captures/baseline-2.0x-tall.png": "59273da20ac3ec6fb05c17b3faf609966a8b23afed1ed3e50f99eab2da11d73b",
+    "captures/baseline-2.0x-wide.png": "d71e802e6eddb807b745bd5cb311a07747ec1090327f26e7ff08fb0b354c4b52",
+    "captures/runtime-0.8x-tall.png": "b595426b7b762a34a7b82f622644392c88dd78d28c8158545858fb52b7f09461",
+    "captures/runtime-0.8x-wide.png": "eaf883d8f067e6f51b3e07f03c96617e7198d4f5fb04089cc242b69163cdd4ea",
+    "captures/runtime-1.0x-tall.png": "eed087320d58c363ba029f1eadf7d457fcd31568d54a9be11cdbe49f015546ff",
+    "captures/runtime-1.0x-wide.png": "eb78368002f519e474a268572c6ae4765cff92b857c6c60f34731253e295f3bf",
+    "captures/runtime-2.0x-tall.png": "fb588b45033f4ce8db20c9a20189271b1876805ecdee32fddc5d29835ced0a7e",
+    "captures/runtime-2.0x-wide.png": "e432f9fb2c344fb717f254dc54e33a3a417e954c8ca2122bda04684194aacf79"
+  },
+  "source_sha256": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+  "publication_authority": "Existing explicit request to commit and push reviewed work directly onto main.",
+  "historical_records": "Pending request, verification and session-review statuses retained as pre-confirmation evidence; this record supersedes their visual boundary."
+}

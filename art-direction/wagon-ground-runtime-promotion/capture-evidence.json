@@ -1,0 +1,260 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "04301621c3fb525aa7ab8f2728b4ec929fa9630b6d3320719931b5991f464655",
+		"captures/baseline-0.8x-wide.png": "40239ad62bbb8068b016c4c6e98f3f32d8a51850f1343868ba224f168117e284",
+		"captures/baseline-1.0x-tall.png": "2dc12f404481bba19a614e9d2c6eb789b7374c0e08d331a8111360fdb6e57b8c",
+		"captures/baseline-1.0x-wide.png": "d8fd089d70c84ab7ff6607b164ced8ade80974679ddb71e6ea8bd67e4df2418c",
+		"captures/baseline-2.0x-tall.png": "59273da20ac3ec6fb05c17b3faf609966a8b23afed1ed3e50f99eab2da11d73b",
+		"captures/baseline-2.0x-wide.png": "d71e802e6eddb807b745bd5cb311a07747ec1090327f26e7ff08fb0b354c4b52",
+		"captures/runtime-0.8x-tall.png": "b595426b7b762a34a7b82f622644392c88dd78d28c8158545858fb52b7f09461",
+		"captures/runtime-0.8x-wide.png": "eaf883d8f067e6f51b3e07f03c96617e7198d4f5fb04089cc242b69163cdd4ea",
+		"captures/runtime-1.0x-tall.png": "eed087320d58c363ba029f1eadf7d457fcd31568d54a9be11cdbe49f015546ff",
+		"captures/runtime-1.0x-wide.png": "eb78368002f519e474a268572c6ae4765cff92b857c6c60f34731253e295f3bf",
+		"captures/runtime-2.0x-tall.png": "fb588b45033f4ce8db20c9a20189271b1876805ecdee32fddc5d29835ced0a7e",
+		"captures/runtime-2.0x-wide.png": "e432f9fb2c344fb717f254dc54e33a3a417e954c8ca2122bda04684194aacf79"
+	},
+	"center": [
+		1800,
+		1530
+	],
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-719.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1386.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-973.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-1080.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2646.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2700.0
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-0.8x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-0.8x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-719.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-1.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1386.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-973.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-1.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-1080.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-2.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2646.5
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-2.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2700.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"inputs": {
+		"res://Main.tscn": "605b18c568eeead89daf02620d45826dc28bd754d0d97220d8de44b60b753d61",
+		"res://RuntimeWagonGroundSmokeCheck.cs": "07f136e3c0d993ba9f0cc75810024407a4e6a0f23df67c461a2a5c89b4f16dcb",
+		"res://art/runtime/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+		"res://art/runtime/terrain/wagon-entrance-ground.png.import": "2e4f16f4327d598d7580b17cd352596739944e5e309a1529ef6afd2f02b48172",
+		"scripts/capture-wagon-ground-runtime.gd": "29fe5895bf61fce20f43e5d03f471ff2de3f7fd910111fe0e162ca98370a5c05"
+	},
+	"schema_version": 1,
+	"scope": "Ordinary scene sprites; paired ground-disabled baselines; pending owner visual confirmation"
+}

@@ -231,8 +231,11 @@ No further placement or terrain-completeness acceptance follows from this scope.
 The continuing request produced one [external Wagon entrance packed-earth proposal](art-direction/wagon-ground-feasibility/README.md):
 complete four-variant comparisons, three layered masters and 24 disposable GPU views.
 The owner selected feather-24; its [named runtime scope](art-direction/wagon-ground-runtime-scope/README.md)
-awaits separate approval. Accepted physical/presentation owners are preserved.
-No runtime placement is authorized by this proposal.
+received named approval. One unchanged 285x92 underlay is installed in its
+[ordinary-scene checkpoint](art-direction/wagon-ground-runtime-promotion/README.md).
+Six actual views and baselines match the selected external pixels. The owner
+confirmed these exact actual views on 2026-10-05; reviewed direct-main publication
+is cleared. Accepted physical/presentation owners are preserved.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.
