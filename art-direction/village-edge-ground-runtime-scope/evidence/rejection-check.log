@@ -1,0 +1,2 @@
+PASS: exact feather-16 scope; 7996 unchanged published predecessors
+PASS: seven wrong-variant/phase/depth/transform/sampling/owner probes rejected

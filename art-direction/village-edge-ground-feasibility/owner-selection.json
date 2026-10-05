@@ -1,0 +1,48 @@
+{
+  "status": "owner selected feather-16 for all three Village Edge entrances",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "feather-16 approved all around",
+  "selected_variant": "feather-16",
+  "entrances": [
+    "woodland",
+    "stream",
+    "square"
+  ],
+  "approval_scope": "Exact displayed external feather-16 composition at all three entrances; artwork selection complete. Separate named runtime scope and actual-runtime confirmation remain pending.",
+  "selected_files": {
+    "masters/feather-16.ora": "59d3efb049f78dc54caeb74d1f40c36c3f0dfcbd45f22cc7d9b01104099c88ca",
+    "proof-inputs/feather-16-layer.png": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
+    "proof-inputs/feather-16-coverage.png": "4024ceaf37ded57fe3f3c92ff2a9525e6392b4e9b2e72d53e15238fe00f6b333",
+    "proof-inputs/world-paint.png": "fdcfbee98f92c6468fab1c158cced502aafc897cfcde4c8ad3f0d6a008616f71",
+    "captures/baseline-0.8x-wide.png": "076f11f0f96cbb2a5628ddc15d01add9ad52e72214c8f558dfda3c84aa4df1a6",
+    "captures/baseline-0.8x-tall.png": "d445d6ca3b08f3f5370e9f131f7ba175c4f562c0b5e6d829ca361e8bec519e97",
+    "captures/baseline-1.0x-wide.png": "f7f1dd0d8e33a79964c55ff7be8e16f45e952c9ef193c83cd4c6cc882d2d09ae",
+    "captures/baseline-1.0x-tall.png": "0932b5d190a2ff9f0146aeb038a84c6ac6dd902506f4485a1422fbaa23946e84",
+    "captures/baseline-2.0x-wide.png": "73f8e4a621c86b6ae1d44b65c139e1cf4805f72e24fbf6a11ceee3bd02efa89d",
+    "captures/baseline-2.0x-tall.png": "ea46bd3749de91468cf749893711a10a71970d21b34721175fe68c4b517cb0db",
+    "captures/feather-16-0.8x-wide.png": "893a3e529d6598f9a84b9a4fcba074b569f0736c458c8e5f504ff371eb4c19b0",
+    "captures/feather-16-0.8x-tall.png": "ce2b2ae440c5a8f302c5b108b1067fa38a66b06e2a8a0ac9d65e46670e87032b",
+    "captures/feather-16-1.0x-wide.png": "c9562634f2e76c9b429f09e5021d4ad4f0dbc8cf80a5237f57b5d9ceabe34927",
+    "captures/feather-16-1.0x-tall.png": "d29d7e1f2afe0e788898a95c6d35aea43178e99afe49d9bc183121533dd76e83",
+    "captures/feather-16-2.0x-wide.png": "06b85ac90eb9f38315252a8fea7672e6c0930d04fa9b47125ae6fb20b278249e",
+    "captures/feather-16-2.0x-tall.png": "691c112ec823ffdd5edb015931d293ef437c9b90516a308942aadb6d6cdff3e3",
+    "details/captures/baseline-2.0x-woodland.png": "4bd085c9485194263b13e3286878b65fa2e7c3bbb36603e9455ba258ca66d8c3",
+    "details/captures/baseline-2.0x-stream.png": "27e8734fe4e881b215441778ff583e176294374b8d4ff0f50dd59e2b77b390fb",
+    "details/captures/baseline-2.0x-square.png": "be037a6d122a6f4a7640c35ed9ed0c5072bff4c3d710942655dd362f20457f17",
+    "details/captures/feather-16-2.0x-woodland.png": "5749ffc802ea7b3e65b1090f127596fb5ae3d8ae5a395d38425728dcc9d23201",
+    "details/captures/feather-16-2.0x-stream.png": "5e17c7414c6d23f8733138a44611ee8233bce2c9442c5bb4439a398123fd0d86",
+    "details/captures/feather-16-2.0x-square.png": "26a26cb54013090fba1044ea0c131ab0b3c4e5d7ce6fb6d9f8d8780aebc18c24"
+  },
+  "displayed_series": {
+    "review/gpu-series-wide.png": "17866779bfe6be0e6d2cadcf35329d197207dea4d6a1e0a30431daeb172177ed",
+    "review/gpu-series-tall.png": "6ec5bc3a6b5e6b742208a9951186a6068ace9288aeb56ace05ffcf08c967776e",
+    "review/complete-edge-series-2x.png": "e174e4902013eaf6f74bff183c247fcef2ead7098feae4ec97005c7c7c2c4fad"
+  },
+  "evidence_sha256": {
+    "inventory.json": "efbb13d47cfc015d856f20ccdf46ebc23adec151899b8b58f56802823628ff52",
+    "capture-evidence.json": "99a5b37537ce6a9b86fc2921891762ac9db89bfbfdd54b27761f57be62adf201",
+    "details/capture-evidence.json": "877287166421e0cd0323cca4d598e014b4bf5b744f3ca93569d0afd945b8ebd6",
+    "review-board-manifest.json": "2629fa8d9acf82c4fe4cf15d13572784b7f1a897d1bc7e37bf2786d03594fa32"
+  }
+}

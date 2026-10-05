@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "status": "selected artwork validated; named runtime proposal ready",
+  "selected_variant": "feather-16",
+  "entrances": [
+    "woodland",
+    "stream",
+    "square"
+  ],
+  "unchanged_published_predecessor_files": 7996,
+  "product_and_ci_inputs": "unchanged; retained passing zero-warning/5033-test evidence",
+  "fresh_full_suite": "not run; no product or CI input changed",
+  "rejection_probes": 7,
+  "scope_binding_sha256": "b9291062c771cb1d17eeb7a3fc368526c34645432b61e67ff5e0c882a3a1e058",
+  "evidence_sha256": {
+    "evidence/artwork-validation.json": "0968b7d6be19f21e90d5046c2b4b459a5a150779c91a1d43f909f611dc6a12da",
+    "evidence/rejection-check.log": "2b2756d5507d84d434ef3bb2e23a8d16d859ef086c6969f5227edd652db51522",
+    "evidence/scope-check.log": "e1e428129fb22f67de2c2b45c122fb4b8ea831e8c534e65c99dc14c5baa3468c"
+  },
+  "session_review_sha256": "d1f62b4bb7a6b9052c77c8599a22e166d1ae0d51a65143b87fbc0e4bd268d9b5"
+}

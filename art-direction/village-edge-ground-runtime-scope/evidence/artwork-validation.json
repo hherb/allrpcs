@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "commands": [
+    {
+      "command": "python3 art-direction/village-edge-ground-coverage/build.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 art-direction/village-edge-ground-coverage/verify.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 art-direction/village-edge-ground-feasibility/build.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 art-direction/village-edge-ground-feasibility/boards.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 art-direction/village-edge-ground-feasibility/inspect_authoring.py",
+      "exit_code": 0
+    }
+  ],
+  "execution": "Fresh checks completed before creating successor-only selection/scope files; their immutable source bindings are preserved by the successor checker.",
+  "result": "Complete audit and artwork byte reproduction; editable master integrity; 36 full/detail views; baseline/support parity; original predecessor preservation passed."
+}

@@ -269,9 +269,11 @@ The [Village Edge external coverage audit](art-direction/village-edge-ground-cov
 finds continuous opaque moss coverage at all three entrances. Its bounded apron recipe
 has a [complete external comparison](art-direction/village-edge-ground-feasibility/README.md):
 baseline/hard-support/feather-16/feather-24, three editable 2x masters, 24 full views
-and twelve dedicated detail views. New owner preference is pending; no ordinary-scene
-change or broader terrain-completeness claim is made. Lightweight authoring checks
-preserve 7,883 predecessor files and inherited passing 5,033-test evidence.
+and twelve dedicated detail views. The owner approved feather-16 at all three
+entrances on 2026-10-06. Fresh consolidated scoped checks pass; the separate
+[named runtime scope proposal](art-direction/village-edge-ground-runtime-scope/README.md)
+is prepared. No ordinary-scene change or broader terrain-completeness claim is made.
+All product/CI inputs and preceding passing 5,033-test evidence are preserved.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's

@@ -62,8 +62,10 @@ binds the live accepted scene and six baseline views. Quiet moss provides contin
 ground coverage, while all three entrance routes have exposed moss shoulders.
 The subsequent [complete external apron comparison](art-direction/village-edge-ground-feasibility/README.md)
 compares baseline, hard support and inward 16/24px feathers using approved packed-earth
-paint, three editable masters, 24 full views and 12 dedicated edge views. Agent preference
-is feather-24; new owner selection is pending. All production/CI inputs remain unchanged.
+paint, three editable masters, 24 full views and 12 dedicated edge views. The owner
+approved feather-16 at all three entrances on 2026-10-06; exact selection hashes and
+consolidated scoped checks pass. The [named runtime scope proposal](art-direction/village-edge-ground-runtime-scope/README.md)
+is ready for its separate approval. All production/CI inputs remain unchanged.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
