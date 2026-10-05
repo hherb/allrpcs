@@ -249,6 +249,14 @@ The [named runtime scope](art-direction/shrine-ground-runtime-scope/README.md) i
 approved. The [ordinary-scene checkpoint](art-direction/shrine-ground-runtime-promotion/README.md)
 installs the unchanged selected underlay; all six actual views and six baselines
 equal selected external pixels exactly. The owner confirmed these exact actual views on 2026-10-05; the Shrine-ground slice is complete.
+
+The [Laundry east-entrance packed-earth comparison](art-direction/laundry-ground-feasibility/README.md)
+is produced as one complete external series: baseline, hard support and two
+inward feathers, three editable 2x masters, 24 actual-scene views and edge crops.
+Owner preference/revisions are pending; consolidate validation afterward, then
+prepare only the selected named runtime scope. Existing runtime acceptance is
+carried forward and no Laundry runtime promotion is selected.
+
 Completeness/accessibility/pacing remain open.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining

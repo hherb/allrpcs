@@ -1,0 +1,29 @@
+{
+  "status": "code and visual review completed; owner comparison response pending",
+  "findings": [
+    "Actual-scene captures retain Laundry shell, openings, woodland transitions and channel.",
+    "All four variants are presented together; hard support is an intentional diagnostic comparison.",
+    "Route-derived support is bounded to 92x210 at (1564,219), z=-78; no saved runtime edits.",
+    "Independent inspector adapted for current route origin/dimensions and camera limits.",
+    "Build and board generation reject existing output overwrite; source hashes checked during capture."
+  ],
+  "validation_policy": "Only lightweight image/export checks so far; consolidated validation follows agreed revisions.",
+  "host_capture": "Sandbox exited 134 with no output; identical host command completed 24 captures.",
+  "preserved_predecessor_files": 7742,
+  "syntax_check": "Python AST parse passed for build.py, boards.py and inspect_package.py",
+  "whitespace_check": "git diff --check passed",
+  "reviewed_implementation_sha256": {
+    "build.py": "bd7d1f077d588282e0a485711895db4f83ed8fa101c1ea710e3f5ae2a794de46",
+    "capture.gd": "1982ad5d80c72c04c32242c4ac7db86003fd25c6c5edcb84454da8a6952bf3f5",
+    "boards.py": "711c55ebc7569b1128c2f41546b7bcd1f282a40ad375d13a1564cda1cd168a3c",
+    "inspect_package.py": "000bf502c726f44d3c1ef9b8dece9808a510bbf834a8f3a6fb1a2f3f946c97b1",
+    "README.md": "550788bfbd03d10e2039119879f5f7f3ed0d3ad05b1a1b65634a295993c718aa"
+  },
+  "reviewed_evidence_sha256": {
+    "baseline.json": "ba1997ba05454876056c7b9776d16ba6a6b73ceaf4fd920cde67ec809d704ef2",
+    "selection.json": "20784b26fa861f9592020c68a95e49d401cbecce5d6848cf9358db2005eb5f60",
+    "inventory.json": "2ea0ecc147d683bad9b6c333b71c3f757b635580d6e9e0b9c991b4dd0c5f6bee",
+    "capture-evidence.json": "7c317cb8cd50b609712d271cc207fba3a53e77ea45c5b4e566c76ce571c14ae7",
+    "review-board-manifest.json": "869c89afd2028d1f701591ff2f402c06fc5de69ce7a43ff2d5bc1900fa04cb62"
+  }
+}

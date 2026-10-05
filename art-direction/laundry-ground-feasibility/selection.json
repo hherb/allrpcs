@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "agent-selected external feasibility; owner visual review pending",
+  "owner_statement": "Please continue with slices",
+  "authorization_scope": "Continuing slice request and live HANDOVER.md authorize choosing one external placement proposal. Owner recipe selection and runtime promotion remain pending.",
+  "selected_use": "Packed-earth apron at Laundry east entrance beneath retained Stream-Laundry route",
+  "source_material": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+  "segment_right_bottom_exclusive": true,
+  "dilation_radius": 24,
+  "feather_widths": [
+    16,
+    24
+  ],
+  "origin": [
+    1564,
+    219
+  ],
+  "size": [
+    92,
+    210
+  ],
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "z": -78,
+  "baseline_head": "5e5e3cab5a45a6461f6d804c871d09fee5f423b9",
+  "exclusions": [
+    "runtime assets/imports/scenes",
+    "source repainting",
+    "physical/navigation/layout",
+    "scenario/gameplay/UI/audio/providers",
+    "release/signing"
+  ],
+  "route_alpha_segment_world_x": [
+    1588,
+    1632
+  ],
+  "revision_reason": "Initial external proposal; z=-78 above woodland -80/-79 and below retained route -75."
+}

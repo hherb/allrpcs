@@ -45,6 +45,12 @@ has owner approval. Its [ordinary-scene checkpoint](art-direction/shrine-ground-
 installs the unchanged underlay; six actual runtime views and six baselines equal
 selected external pixels exactly. The owner confirmed these exact actual views on 2026-10-05; the Shrine-ground slice is complete.
 
+The [Laundry east-entrance external packed-earth study](art-direction/laundry-ground-feasibility/README.md)
+compares baseline, hard support, feather-16 and feather-24 with three editable
+2x masters, 24 retained actual-scene views and complete edge crops. Owner
+preference/revisions and consolidated validation are pending; no Laundry runtime
+promotion is selected.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two
