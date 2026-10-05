@@ -1,0 +1,40 @@
+{
+  "empty_cache_before_import": true,
+  "inputs": {
+    "game/art/direction-a-import-proof/terrain/laundry-entrance-ground.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "game/art/direction-a-import-proof/terrain/laundry-entrance-ground.png.import": "9aaab4c14907b558d180c88df31f1c9f839e57aefad0dc8d8833d6c9cc70c6ca",
+    "game/art/runtime/terrain/laundry-entrance-ground.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "game/art/runtime/terrain/laundry-entrance-ground.png.import": "b247be62f7a9ac6d814c1b1bfccb4e817b3a2167f7277919e125962f9860690a",
+    "art-direction/laundry-ground-runtime-promotion/fresh-project.godot": "4d700a6eb7f83c6cf5e9ea4a50277d74fee80354b9624ef1be3e2ce6c9f04686",
+    "art-direction/laundry-ground-runtime-promotion/fresh-import-check.gd": "e4f1144031160a1ecffe92a0e7604532620668dc794c23e941ff410877a0960c",
+    "art-direction/laundry-ground-runtime-promotion/cold_import.py": "c2f306cf232203b96ce210aacb265291de19209a83ff9baca0c09bbed1322b33"
+  },
+  "commands": [
+    {
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-laundry-cold-c5gtxftr",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "output": "Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org\n\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | Started Scanning actions... (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | laundry-entrance-ground.png\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | laundry-entrance-ground.png\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1m_update_scan_actions\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | laundry-entrance-ground.png\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mreimport\u001b[22m | laundry-entrance-ground.png\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\n\u001b[0m\n"
+    },
+    {
+      "arguments": [
+        "--headless",
+        "--path",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-laundry-cold-c5gtxftr",
+        "--script",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-laundry-cold-c5gtxftr/check.gd"
+      ],
+      "exit_code": 0,
+      "output": "Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org\n\nWARNING: Loaded resource as image file, this will not work on export: 'res://art/runtime/terrain/laundry-entrance-ground.png'. Instead, import the image file as an Image resource and load it normally as a resource.\n     at: load_from_file (core/io/image.cpp:2766)\n     GDScript backtrace (most recent call first):\n         [0] _initialize (/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-laundry-cold-c5gtxftr/check.gd:7)\nPASS: empty-cache actual runtime RGBA equals source; proof UID regenerated independently\n"
+    }
+  ],
+  "status": "passed",
+  "original_proof_uid": "uid://dlcpmh15efykp",
+  "regenerated_proof_uid": "uid://bwecuchli57on",
+  "decoded_runtime_rgba": "exact source pixels"
+}

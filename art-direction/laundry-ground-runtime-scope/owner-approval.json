@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "status": "named one-asset Laundry runtime scope approved",
+  "scope_sha256": "8019569bd2f3ec2a4c9f4261ba13902d153d58b2d81cfb52845b39a2d3208432",
+  "bindings_sha256": "53d3ac0e237f729fa85d0f3fba34d1453f782aaadf43af27f4c7d0176f05b688",
+  "review_sha256": "1a7f39324d5375c0b1a0442750b71ba4a1d896cd93093dd0cdc8dfb395d9caa7",
+  "scope": "Exact feather-24 Laundry east-entrance packed-earth independent underlay under the approved README and bindings. Separate actual-runtime confirmation is required before publication."
+}

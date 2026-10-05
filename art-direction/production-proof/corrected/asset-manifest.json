@@ -3506,6 +3506,36 @@
       "source": "tools/build_shrine_ground.py",
       "sha256": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.laundry_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/laundry-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 184,
+        "height": 420,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 210
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 210
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 210,
+      "source": "tools/build_laundry_ground.py",
+      "sha256": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3592,6 +3622,21 @@
     "world_origin": [
       596,
       250
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "laundry_ground_provenance": {
+    "authorization": "art-direction/laundry-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "9070a6a8a1ba8f560457f42f5d2945b52b0f1715f0d819fbf2f26a5f7a6232b7",
+    "specification_sha256": "53d3ac0e237f729fa85d0f3fba34d1453f782aaadf43af27f4c7d0176f05b688",
+    "recipe_sha256": "70678dbf27afe6537e35e4d15af6d6dfed139bfe651b264148ea2b3e83a5ac8d",
+    "world_origin": [
+      1564,
+      219
     ],
     "paint_phase": [
       0,

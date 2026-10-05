@@ -2,48 +2,41 @@
 
 ## Current checkpoint
 
-Laundry feather-24 is selected for the external east-entrance packed-earth study
-(owner: “ok, continue”, agreeing with the preceding recommendation).
-[Selection](art-direction/laundry-ground-feasibility/owner-selection.json) binds
-the displayed series, chosen paint/coverage/master and six views plus baselines.
-[Artwork validation](art-direction/laundry-ground-feasibility/evidence/validation.json)
-passes byte reproduction, 12 editable master layers, 11 protected paint planes
-and 18 bounded GPU comparisons. The original review packet remains unchanged.
+Laundry feather-24 is owner-confirmed and complete. [Terminal acceptance](art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json)
+binds the unchanged implementation and all six actual runtime views. No further
+Laundry selection, named-scope or actual-view approval is needed. Existing owner
+approval persists across turns; terminal acceptance supersedes historical pending
+metadata. Reconcile direct instructions and acceptance before asking anything;
+never reopen an unchanged slice for bookkeeping or a verification retry.
+[Loop review](art-direction/laundry-ground-runtime-promotion/approval-loop-review.json)
+records the correction.
 
-The [exact one-asset runtime scope](art-direction/laundry-ground-runtime-scope/README.md)
-and [bindings](art-direction/laundry-ground-runtime-scope/source-bindings.json)
-are prepared; named runtime approval is pending. No runtime changes installed.
-Recipe: 92x210 at (1564,219), phase (0,0), z=-78; independent script-free
-`LaundryGroundPresentation/PackedEarth`; selected feather-24 bytes unchanged.
-Inventory would become 96 assets / 47 masters from accepted 95 / 46.
+96 assets / 47 masters. [Verification](art-direction/laundry-ground-runtime-promotion/verification.json):
+5,033 tests, zero-warning build, scenario and Godot checks passed across sandbox
+quality and exact host retries. Eleven rejection probes, native UIDs, cold-import
+RGBA, twelve exact image comparisons and 7,811 unchanged predecessor files passed.
+[Code review](art-direction/laundry-ground-runtime-promotion/session-review.json)
+fixed proof resource order; rejected and corrected evidence are retained.
 
 ## Next bounded slice
 
-Obtain named approval of the prepared Laundry scope and binding digest. Then
-freeze the live implementation baseline, install only that selected one-asset
-scope, run append-only/source/import/UID/scene/preservation/rejection/full-quality
-checks, and capture six actual imported-runtime views plus paired baselines
-matching the selected external pixels exactly. Present all six together for
-separate owner runtime confirmation before publishing the runtime promotion.
-Do not regenerate the accepted artwork or repeat earlier ground approvals.
+Prepare one external-only ground-coverage audit of the live Village Edge entrance.
+Bind the accepted shell, route alpha/transforms, channel and ground owners at the
+actual starting main head. Produce the whole labelled baseline series at
+0.8x/1x/2x wide/tall, native/2x edge crops and one concrete feasibility recipe for
+any uncovered entrance ground (material, support, inward feather, world phase,
+depth and exclusions). If coverage is already complete, record that finding.
+Keep this audit in a new external packet; do not modify production assets, ordinary
+scenes, masks or physical owners. Routine bounded external proof preparation is
+already authorized. Use lightweight authoring checks; retain passing full-suite
+evidence while product/CI inputs are unchanged. No repeated Laundry review.
 
-## Verification and boundaries
+## Preserved boundaries
 
-Scope checker: 43 bound inputs and ten rejection probes. Successor checker
-preserves 7,801 published predecessor files; frozen validators remain unchanged.
-[Verification](art-direction/laundry-ground-runtime-scope/verification.json): all
-quality commands passed cumulatively at accepted head `5e5e3cab` (interruption
-resumed at format), zero-warning build, 5,033 tests, scenario and all Godot smokes/
-Compatibility launch; live product bytes are identical. Direct live quality stops
-at frozen Shrine membership; preserve its validator. Shutdown leak diagnostics
-are retained in logs. Scope review is complete; named approval remains pending.
-
-Shrine-ground is complete and owner-confirmed on 2026-10-05:
-[acceptance](art-direction/shrine-ground-runtime-promotion/owner-runtime-acceptance.json).
-Carry all prior ground/channel approvals forward. Preserve accepted paint/masks/
-masters, rejected evidence, Direction A, route/Garden sibling order and physical
-owners. Ground: Garden (2048,1120) z=-90/-89, Square (1920,620) z=-90,
-Sickhouse (2408,1248) z=-90, Wagon (1633,1512) z=-90, Shrine (596,250) z=-78.
+Carry all accepted ground/channel approvals forward. Preserve paint/masks/masters,
+rejected evidence, Direction A, route/Garden sibling order and physical owners.
+Garden (2048,1120) z=-90/-89, Square (1920,620) z=-90, Sickhouse (2408,1248) z=-90,
+Wagon (1633,1512) z=-90, Shrine (596,250) z=-78, Laundry (1564,219) z=-78.
 WholeChannel remains final: five sprites, native three-node x<1664 shader scope,
 UVs/caps/crossing, Shrine triangle, Clearing near side, gate/Forester and
 x=1664/x=2000 limits. No physics/navigation/layout/scenario/gameplay/dialogue/clue/

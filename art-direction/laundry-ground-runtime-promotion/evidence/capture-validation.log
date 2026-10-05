@@ -1,0 +1,46 @@
+PASS: one exact Laundry underlay, isolated editable master and append-only manifest
+PASS: exact Laundry source/master/imports, 96 assets/47 masters, normalized scenes and preserved predecessor
+[
+  {
+    "zoom": 0.8,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 4529
+  },
+  {
+    "zoom": 0.8,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 4529
+  },
+  {
+    "zoom": 1.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 7106
+  },
+  {
+    "zoom": 1.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 7106
+  },
+  {
+    "zoom": 2.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 28378
+  },
+  {
+    "zoom": 2.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 28332
+  }
+]

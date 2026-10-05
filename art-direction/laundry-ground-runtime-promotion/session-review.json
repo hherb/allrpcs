@@ -1,0 +1,37 @@
+{
+  "status": "cumulative code and visual review complete; issues fixed",
+  "fixed": [
+    "Moved proof ext_resource into declaration block before all subresources.",
+    "Added proof resource-order rejection because Godot parse errors can return exit zero."
+  ],
+  "approved_scope": "one byte-exact independent Laundry underlay and master; no physical/navigation/gameplay changes",
+  "reviewed_implementation_sha256": {
+    "art-direction/laundry-ground-runtime-scope/owner-approval.json": "d5478f3613e765429b811a306e7fe96e8586b7cbf2fcd7a8528cfef4ec9513a9",
+    "art-direction/production-proof/corrected/asset-manifest.json": "88650b81a0712781685d84d2dcc1a63e8fa84d242ea4e6f17bceee442a26e75c",
+    "art-direction/production-proof/corrected/exports/terrain/laundry-entrance-ground.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "art-direction/production-proof/corrected/masters/laundry-entrance-ground.ora": "443de0376994318e3429c0a8410bb4fb7d614ae6bb1bc8a717ade33504ab9116",
+    "art-direction/production-proof/corrected/tools/build_laundry_ground.py": "70678dbf27afe6537e35e4d15af6d6dfed139bfe651b264148ea2b3e83a5ac8d",
+    "game/DirectionAImportProof.tscn": "0beffc0d40c5786eebbc50e801bf06806f4476b62fd0975e235681a889187b82",
+    "game/Main.tscn": "6eaa9304328a18ece4a13eefe8c647c6267d657a38ab91f3e977280257596893",
+    "game/RuntimeLaundryGroundSmokeCheck.cs": "c73db434bab8a3852cfbbb94819b6ec1746448c0c64d3cb2b90ed17c88f32ae8",
+    "game/RuntimeLaundryGroundSmokeCheck.cs.uid": "999c9991ca6a2957f64e43b4f8961ba7fec17de9973bc5f55365090afad0efd6",
+    "game/art/direction-a-import-proof/terrain/laundry-entrance-ground.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "game/art/direction-a-import-proof/terrain/laundry-entrance-ground.png.import": "9aaab4c14907b558d180c88df31f1c9f839e57aefad0dc8d8833d6c9cc70c6ca",
+    "game/art/runtime/terrain/laundry-entrance-ground.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "game/art/runtime/terrain/laundry-entrance-ground.png.import": "b247be62f7a9ac6d814c1b1bfccb4e817b3a2167f7277919e125962f9860690a",
+    "scripts/capture-laundry-ground-runtime.gd": "3788c88e3d346f2e28ff2581f315aedff0cb5d12b5a4ec00d54999165dedf54d",
+    "scripts/capture-laundry-ground-runtime.gd.uid": "3f111d06423bb38e4438c5350b5341ccc90bd345ab0b6ee10bcefecbaeb2721c",
+    "scripts/quality.sh": "fcfd8c128c7b2677c19565c681064bf9911690378e39557009ed59bf068cafb6",
+    "scripts/validate-direction-a-import-proof.py": "7265c081b96d00a97d00d85c79329935d65fef83aa1f7c29c19c4f5b807b5377",
+    "scripts/validate-laundry-ground-runtime.py": "1aa720a3fe22568e0b602d65cb6184bbf03d54163ca9277b648ddfb67d91b419"
+  },
+  "verification_sha256": "c51081606ffa15ead0362b86e7efccd0a5f7ab1de16bfb40b53c49561b16dc8c",
+  "images": "all six actual imported runtime views and paired baselines inspected and equal selected external pixels",
+  "publication": "wait for separate owner actual-view confirmation",
+  "continuation_documents_sha256": {
+    "HANDOVER.md": "0a33794df5318677ef309c3e462b8efc0d9beaa4229635b96ea7875fda57ded0",
+    "README.md": "6a2640f6827691678397286b36b9343059b1f8c4dfb566c47b9f684269e8c19c",
+    "ROADMAP.md": "1f96e7ab29d139b60855fce5c9b2543007425d974b99b495431054df49a439ad",
+    "game/art/direction-a-import-proof/README.md": "d2a3b71c1864a16f681e071a47b16382f80dfd3c1602da7b478be061a75b8b86"
+  }
+}

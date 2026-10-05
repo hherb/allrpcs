@@ -1,0 +1,260 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "fba4ee6ac947f75d009691ddb826248a2af8f5c058052e1a076aa57eda045fb4",
+		"captures/baseline-0.8x-wide.png": "420064952d453c3313b59b4f596e5265a6ddd88f3b9aea547469abddf87672f1",
+		"captures/baseline-1.0x-tall.png": "cf704acca0ffe871390c8917ab73138ba69476f8f56a17e938555f9c5eb4cc13",
+		"captures/baseline-1.0x-wide.png": "a836853ee99e2d21b842cd5766166937a1922ebfed851bbbd0b3d710a98716a5",
+		"captures/baseline-2.0x-tall.png": "1e3e430cf96fe28ac053b30f5371d4354c85bcd4f0d266fbaa7d458bc01f524c",
+		"captures/baseline-2.0x-wide.png": "8e29caadbf598b8667dbef44d5c5d95e21610e5867e2939c13948e3fd18be74b",
+		"captures/runtime-0.8x-tall.png": "13c8a97c2078d84361743a41c496bd833825ace53e354ed47e0d8add1e55ef4c",
+		"captures/runtime-0.8x-wide.png": "9e65ae8f90d979451792267df74efab5e1e337130bbf0fa77dd61b15dd666235",
+		"captures/runtime-1.0x-tall.png": "3dec375bf5d50b014b59498a841292d2c7c03750864c72b416754c48a5633217",
+		"captures/runtime-1.0x-wide.png": "544fe28092b77f5f1741448e2fb39c1bc3ccc68451c491717e311f5a360f2b04",
+		"captures/runtime-2.0x-tall.png": "f980a47d0065efd26058997904f0811c4c50e1d29c4a7427b2c445396419abeb",
+		"captures/runtime-2.0x-wide.png": "3743950221735a4619f278c5a0b89b410d23bade6e0f839448291cdc58df2843"
+	},
+	"center": [
+		1620,
+		320
+	],
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				1620.0,
+				516.875
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-655.999938964844,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				1620.0,
+				450.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-655.999938964844,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				1620.0,
+				413.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-980.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				1620.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-980.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				1620.0,
+				320.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2600.0,
+				-226.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				1620.0,
+				320.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2600.0,
+				-280.0
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-0.8x-tall.png": {
+			"screen_center": [
+				1620.0,
+				516.875
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-655.999938964844,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-0.8x-wide.png": {
+			"screen_center": [
+				1620.0,
+				450.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-655.999938964844,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-1.0x-tall.png": {
+			"screen_center": [
+				1620.0,
+				413.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-980.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-1.0x-wide.png": {
+			"screen_center": [
+				1620.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-980.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-2.0x-tall.png": {
+			"screen_center": [
+				1620.0,
+				320.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2600.0,
+				-226.5
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-2.0x-wide.png": {
+			"screen_center": [
+				1620.0,
+				320.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2600.0,
+				-280.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"inputs": {
+		"res://Main.tscn": "6eaa9304328a18ece4a13eefe8c647c6267d657a38ab91f3e977280257596893",
+		"res://RuntimeLaundryGroundSmokeCheck.cs": "c73db434bab8a3852cfbbb94819b6ec1746448c0c64d3cb2b90ed17c88f32ae8",
+		"res://art/runtime/terrain/laundry-entrance-ground.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+		"res://art/runtime/terrain/laundry-entrance-ground.png.import": "b247be62f7a9ac6d814c1b1bfccb4e817b3a2167f7277919e125962f9860690a",
+		"scripts/capture-laundry-ground-runtime.gd": "3788c88e3d346f2e28ff2581f315aedff0cb5d12b5a4ec00d54999165dedf54d"
+	},
+	"schema_version": 1,
+	"scope": "Ordinary scene sprites; paired ground-disabled baselines; pending owner visual confirmation"
+}

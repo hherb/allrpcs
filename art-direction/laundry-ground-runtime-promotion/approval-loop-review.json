@@ -1,0 +1,18 @@
+{
+  "status": "redundant approval loop reviewed and continuation instructions corrected",
+  "date": "2026-10-05",
+  "cause": "Repeatedly split the owner continuing authorization into another question; stale pending evidence and handover text reopened an already approved slice. A previous Shrine warning was not applied consistently.",
+  "correction": [
+    "Reconcile direct user instructions and existing scope/acceptance records before considering any approval question.",
+    "A matching terminal owner acceptance supersedes historical pending metadata. Continue authorized review and publication without another question.",
+    "Never reopen unchanged selection, named scope or displayed runtime views because of a new turn, handover, capture bookkeeping or verification retry.",
+    "Only a materially changed reviewed asset or genuinely new scope can create a new decision; do all already authorized work first."
+  ],
+  "owner_acceptance_sha256": "7891efaba3f861950bebd542594b695949dc436ac2d0c1d3c25244128aef70ac",
+  "implemented_in": [
+    "HANDOVER.md",
+    "ROADMAP.md",
+    "art-direction/laundry-ground-runtime-promotion/README.md"
+  ],
+  "verification": "Exact approved implementation and all capture/evidence hashes checked; only acceptance records and continuation documentation changed after completed code review."
+}

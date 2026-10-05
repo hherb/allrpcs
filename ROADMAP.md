@@ -256,8 +256,12 @@ inward feathers, three editable 2x masters, 24 actual-scene views and edge crops
 The owner agreed to continue with recommended feather-24. Exact selection
 hashes, independent masks/master/capture checks and successor preservation are
 recorded. The [named runtime scope](art-direction/laundry-ground-runtime-scope/README.md)
-is prepared for approval; no Laundry runtime asset or scene change is installed.
-Existing runtime acceptance is carried forward.
+has named approval and is implemented in the
+[runtime checkpoint](art-direction/laundry-ground-runtime-promotion/README.md).
+All six actual views and baselines exactly match selected external pixels;
+the owner confirmed these exact actual views on 2026-10-05. The
+[terminal acceptance](art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json)
+closes the Laundry slice. Existing ground/channel acceptance is carried forward.
 
 Completeness/accessibility/pacing remain open.
 
@@ -271,7 +275,12 @@ suites for individual artwork candidates. During authoring, use only lightweight
 needed to create and visually inspect the images. Once artwork revisions are agreed, run
 scoped asset validation and required full tests/CI for the consolidated batch. Repeat checks
 only as justified by subsequent changes or failures. Named runtime promotion approval and
-runtime visual confirmation remain separate checkpoints.
+runtime visual confirmation remain separate checkpoints. Carry existing owner approval
+forward: reconcile direct instructions and terminal acceptance records before asking
+anything. Matching acceptance supersedes historical pending metadata; never reopen
+unchanged artwork, scope or displayed views after a new turn, documentation update
+or verification retry. A genuinely new scope or materially changed asset is a new
+decision; finish already authorized work without another approval request.
 When product code, runtime assets and CI inputs are verified unchanged, retain the preceding
 passing full-suite evidence and run fresh scoped validation for the newly approved artwork.
 

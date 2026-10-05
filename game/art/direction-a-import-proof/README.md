@@ -50,3 +50,9 @@ editable master. Proof and runtime imports have distinct lossless UIDs and disab
 alpha-border processing. The manifest now has 95 assets / 46 masters.
 Six actual ordinary-scene views and their baselines equal the selected external
 pixels exactly; the owner confirmed these exact views on 2026-10-05.
+
+The named Laundry ground scope adds one exact feather-24 packed-earth sample
+(92x210, editable 184x420 master), bringing the inventory to 96 assets / 47 masters.
+The proof copy has independent lossless import ownership; its pixel-identical
+runtime copy belongs to `LaundryGroundPresentation/PackedEarth`. The owner confirmed all six actual runtime views on
+2026-10-05; the Laundry slice is complete.
