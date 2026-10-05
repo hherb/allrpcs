@@ -17,6 +17,12 @@ installs one exact feathered packed-earth underlay under independent presentatio
 ownership. Six ordinary-scene views match the approved external pixels exactly;
 the owner confirmed all six runtime views on 2026-10-05 before direct-main publication.
 
+The owner selected the 16px-feather [Sickhouse entrance pale-gravel series](art-direction/sickhouse-ground-feasibility/README.md)
+after reviewing four comparisons, three editable masters and 24 disposable GPU views.
+Consolidated checks preserve the accepted ground owners and exact predecessor inputs.
+The [separate one-asset runtime scope](art-direction/sickhouse-ground-runtime-scope/README.md)
+is prepared; named runtime approval remains pending.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two

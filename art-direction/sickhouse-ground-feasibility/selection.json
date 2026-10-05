@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "agent-selected external feasibility; owner visual review pending",
+  "owner_statement": "i authorize you to choose",
+  "authorization_scope": "Choose the next field/interface or placement proposal and continue external slices under the preceding continuation request. No runtime promotion or visual acceptance inferred.",
+  "selected_use": "Pale gravel apron at the Sickhouse north entrance, beneath the existing Square-Sickhouse route and room floor",
+  "source_material": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+  "route_alpha_segment_world_y": [
+    1272,
+    1310
+  ],
+  "segment_right_bottom_exclusive": true,
+  "dilation_radius": 24,
+  "feather_widths": [
+    16,
+    24
+  ],
+  "origin": [
+    2408,
+    1248
+  ],
+  "size": [
+    208,
+    86
+  ],
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "z": -90,
+  "baseline_head": "5900b5a07a5f6dda8e5119d24eef7c099a932eea",
+  "exclusions": [
+    "runtime assets/imports/scenes",
+    "source repainting",
+    "physical/navigation/layout",
+    "scenario/gameplay/UI/audio/providers",
+    "release/signing"
+  ]
+}

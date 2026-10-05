@@ -1,0 +1,15 @@
+{
+  "sandbox_capture": {
+    "exit_code": 134,
+    "log": "sandbox-startup.log",
+    "diagnostic": "No output; startup failed under sandbox."
+  },
+  "host_capture": {
+    "exit_code": 0,
+    "log": "host-capture.log",
+    "captures": 24
+  },
+  "consolidated_validation": "passed after collective 16px feather selection",
+  "rejection_probes": 4,
+  "full_quality": "Retained predecessor Square verification: 5,033 tests; product/runtime/CI inputs unchanged."
+}

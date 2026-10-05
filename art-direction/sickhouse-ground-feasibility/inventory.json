@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "external comparison; owner visual review pending",
+  "origin": [
+    2408,
+    1248
+  ],
+  "size": [
+    208,
+    86
+  ],
+  "context_origin": [
+    2280,
+    1120
+  ],
+  "context_size": [
+    560,
+    400
+  ],
+  "variants": [
+    "baseline",
+    "hard-support",
+    "feather-16",
+    "feather-24"
+  ],
+  "sources": {
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "art-direction/garden-ground-runtime-promotion/owner-runtime-acceptance.json": "718d0ce5161f381768569825b4cb0c88250e1c4f3e912a7ab4dd19ea6d6ab2fd",
+    "art-direction/production-proof/corrected/asset-manifest.json": "e41cc2994f965729ae7d05ff9ad388854bb6b91ebe80ef0f28aafbaa4ac84de3",
+    "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+    "art-direction/residual-ground-tiling-proof/owner-acceptance.json": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "art-direction/sickhouse-ground-feasibility/baseline.json": "b71ce1600ff78c62303761acbf91e0445e391ce3fcb79fb994fdd4867b008261",
+    "art-direction/sickhouse-ground-feasibility/selection.json": "b970b982b15ed039dd2c81c25d20266d25048774639f0de51b95b18314186462",
+    "art-direction/square-ground-feasibility/build.py": "30b87560efd14e528ca8552203569ed9c7e38183e0258fae2c08c691e3a55279",
+    "art-direction/square-ground-runtime-promotion/owner-runtime-acceptance.json": "4403181a8fa1a442058c63079b0e26bd45300eb6d8c490714e515b966e72070b",
+    "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+    "game/Main.tscn": "7e1b149dc0edae84075cd6ae61b56ade5f6220b07ec9dcce805e655cd45cdb2e",
+    "game/OpeningRegionFirstPatientSceneSource.cs": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/runtime/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+    "game/art/runtime/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+    "game/art/runtime/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "game/art/runtime/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "game/art/runtime/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "game/art/runtime/terrain/village-edge-square-connector.png": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+    "game/art/runtime/terrain/village-square-ground.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+  },
+  "mask_recipe": "route alpha > 0 in world y [1272,1310); square dilation radius 24; zero-padded inward smoothstep 16/24px",
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "z": -90,
+  "measurements": {
+    "hard-support": {
+      "nonzero_coverage_pixels": 14797,
+      "opaque_pixels": 14797
+    },
+    "feather-16": {
+      "nonzero_coverage_pixels": 14797,
+      "opaque_pixels": 7181
+    },
+    "feather-24": {
+      "nonzero_coverage_pixels": 14261,
+      "opaque_pixels": 4493
+    }
+  },
+  "outputs": {
+    "proof-inputs/world-paint.png": "25868afbd31e063e6a209f760d14a85ccc4b0bc8be979d44d4a987ec651f1dd3",
+    "proof-inputs/hard-support-layer.png": "8fe204fe4f48c05897b4552bd9b09af3d1e95aca801a62ac443a78d014a974a9",
+    "proof-inputs/hard-support-coverage.png": "47bc9937cc1a82aa352481678732fd2fe697eaa4e63cca9e7ddee26072ab63dd",
+    "masters/hard-support.ora": "ecf022851e32d2273eecf73db7c15d9b5e1fb0bdd2d14350ae9629646b784701",
+    "proof-inputs/feather-16-layer.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "proof-inputs/feather-16-coverage.png": "90c50cd877f883e5595932d9ed2efbe006cb2fb69b0c1143f743410229c110e8",
+    "masters/feather-16.ora": "cbc7afa40eb14bf929fdbf20968e72a6701dfdb88aa87a40ac0ded48f260119d",
+    "proof-inputs/feather-24-layer.png": "8db6877b5fcf74add896aaa021009be3c8f4a40f01852047a16189f61d44a1d2",
+    "proof-inputs/feather-24-coverage.png": "955a77f20a173b8c5dd7de4c6093d023d8b15fb52663c4125c48e69579ee6106",
+    "masters/feather-24.ora": "eae34fa2fd6e5a22e63f55491cfd7ad66eea378bb260344ced04ddbcc0a80c65",
+    "review/baseline-1x.png": "aff6335258118a2c05d1991733ffb1c8828267c2c3f15d54c52d3cc69a657068",
+    "review/hard-support-1x.png": "b4190f73bc7a1be675243da6f12cb040203e23cd4c8e1e7d0c1c8174111f5c41",
+    "review/feather-16-1x.png": "45964034c40181459d7a2b1abe135d0aabbc1f1f796e1aa5519d4431b71b9cc6",
+    "review/feather-24-1x.png": "f998ac32b80c93693a283dc76c16b2375f41bb8d1d5799859341b0c655954928",
+    "review/comparison-1x.png": "139c5dc068cb49e80240939d480cc16529ae5e285218e4ea0b30c16902053be6",
+    "review/approach-top-2x.png": "00deabeb59691e699ccc89494584f0e4ef80edeaaa1428be152c38fc49d8bd98",
+    "review/entrance-2x.png": "39a931c319b97cfc56d34a2ff0ccac68d205c9f2a4395f82b4a46e63440f6d98",
+    "review/garden-gap-2x.png": "f7008f342feef3232a0dd40370234feeff6cc356186ad3d524698d995c09e125"
+  }
+}

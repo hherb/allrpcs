@@ -216,6 +216,15 @@ has separate named approval in its owner record. The exact one-asset runtime
 implementation is accepted in the [ordinary-scene checkpoint](art-direction/square-ground-runtime-promotion/README.md);
 all six runtime views and paired baselines match the approved external pixels.
 The owner separately confirmed all six runtime views on 2026-10-05; full quality and reviewed direct-main publication are cleared.
+The owner authorized choosing the next placement and selected the **16px-feather
+Sickhouse entrance pale-gravel composition** from the
+[external four-variant series](art-direction/sickhouse-ground-feasibility/README.md).
+Three editable underlay masters, native edge boards and all 24 disposable GPU
+views are retained. Consolidated checks prove source/mask/master parity, protected
+predecessor bytes and bounded GPU changes; four disposable mutations are rejected.
+The [separate named runtime scope](art-direction/sickhouse-ground-runtime-scope/README.md)
+proposes one unchanged 208x86 underlay; named approval is pending. No further
+runtime placement or terrain-completeness acceptance follows from external selection.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.

@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Approve the 16px feather (recommended)",
+  "status": "16px feather external composition approved",
+  "selected_variant": "feather-16",
+  "selected_files": {
+    "review/feather-16-1x.png": "45964034c40181459d7a2b1abe135d0aabbc1f1f796e1aa5519d4431b71b9cc6",
+    "masters/feather-16.ora": "cbc7afa40eb14bf929fdbf20968e72a6701dfdb88aa87a40ac0ded48f260119d",
+    "proof-inputs/feather-16-layer.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "proof-inputs/feather-16-coverage.png": "90c50cd877f883e5595932d9ed2efbe006cb2fb69b0c1143f743410229c110e8",
+    "proof-inputs/world-paint.png": "25868afbd31e063e6a209f760d14a85ccc4b0bc8be979d44d4a987ec651f1dd3",
+    "captures/baseline-0.8x-wide.png": "688a9ef8bd0e80f7a4bd36800c8d92fff0b48700cb360ac1081e525a4737cb15",
+    "captures/baseline-0.8x-tall.png": "9109ba83b87beb618a01a049c8747e00d76c4ae3596f88abef8b8dee6dcbe868",
+    "captures/baseline-1.0x-wide.png": "c4c375b121d7d200383a4bd810dd9dc35c0ffb5a523a118562751eb4050bdd17",
+    "captures/baseline-1.0x-tall.png": "1bdb24399de6e087adeade0f74229efcef68e22516bfbd6dd75ffd1e8471a79f",
+    "captures/baseline-2.0x-wide.png": "97a93f472851ba54ce58a5a8c13433ab45de063125f5f57c66195e0d58fa3268",
+    "captures/baseline-2.0x-tall.png": "7c8198d602a117d1d0725574f6f607eeb3fa1cced51b04bf97a6177bed7f362d",
+    "captures/feather-16-0.8x-wide.png": "4d1e4978dfa8821ad03095242e93eef9128395e174ff1636d972876fc931885c",
+    "captures/feather-16-0.8x-tall.png": "7a9a3950ba24580bfe6fe551dca726e51fce4328312f3c8d5525348f0c2af91e",
+    "captures/feather-16-1.0x-wide.png": "b7ec78ff47ffa8c66b63b974bb33c4c9a31f2fc9090035a67092678f0f61f01a",
+    "captures/feather-16-1.0x-tall.png": "f7ae934b9363fe293cd9b510ee559a89abdc3900068f925fc337432c4802ff4c",
+    "captures/feather-16-2.0x-wide.png": "0af728d01b289b8988fdb64c0de7f3422ffc338af00bcfc07faf4552b15fa6dd",
+    "captures/feather-16-2.0x-tall.png": "526f4051a9096a555dba8d163f370effff8e63d06ad44d331f19a930aeeb0951"
+  },
+  "displayed_series": {
+    "review/comparison-1x.png": "139c5dc068cb49e80240939d480cc16529ae5e285218e4ea0b30c16902053be6",
+    "review/gpu-series-wide.png": "4774d0ad8044dd8e18929d2315f02eb86d4f8e4c3dabd720d2f593bc2c285ca0",
+    "review/gpu-series-tall.png": "f34734c22fca44d93265e1585bcd9b60825121374865cec680db8b8e5c4e18b5",
+    "review/complete-edge-series-2x.png": "e7eb1ef1c23c3588637d3e4e28740259c05e070eba730a9dc98990f95456d997"
+  },
+  "evidence_sha256": {
+    "selection.json": "b970b982b15ed039dd2c81c25d20266d25048774639f0de51b95b18314186462",
+    "inventory.json": "39b53a80e2145aed1af25472b727de4c82be978fd4fc769e24d838917c1b5a7c",
+    "capture-evidence.json": "f39b910e07c54901ccbb134dbb381b5342fc3720a31d413509d591aaa0817f0a",
+    "review-board-manifest.json": "0e8ad397f58c7777f9ff807c6d46b6264157565702d3de762fc1432be87b2e55"
+  },
+  "scope": "Exact selected external source/mask/master/native composition and six actual injected GPU views with paired baselines. Hard support and 24px feather remain comparison evidence. No named runtime promotion or runtime visual confirmation."
+}

@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-05",
+  "result": "Reviewed one-asset proposal; named runtime approval absent",
+  "proposal_sha256": {
+    "README.md": "cc55fd1e3b0c63edf3cbad45aefffc6c6a7d790396baa57b4405459d5f2bb450",
+    "source-bindings.json": "7b5b3448eed8768680abfac05b7d1a83d0f0170f354c4856a0a977033bdcbbbc",
+    "check.py": "e8416054c8db2e17aa65bd294f4cd3313842a11e1c99f9a5c14d8e637e97fe0b"
+  },
+  "checks": "Exact selected external acceptance/source, 208x86 geometry, phase/depth/owner, import settings, 92/43 predecessor counts, intended 93/44 successor and no premature installation",
+  "limitations": "Proposal and external selection do not establish runtime confirmation or terrain completeness."
+}

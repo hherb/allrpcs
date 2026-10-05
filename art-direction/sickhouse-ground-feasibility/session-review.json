@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-05",
+  "scope": "Cumulative review of agent-selected external Sickhouse apron and separate pending runtime proposal",
+  "result": "Reviewed; fixes applied; consolidated checks passed",
+  "fixes": [
+    "Resolved Square runtime source filename before rendering",
+    "Corrected validator south-edge clamp in tall 0.8x views; capture pixels/metadata unchanged",
+    "Required exact selected/displayed/source approval file sets",
+    "Corrected review-board edge count to three",
+    "Enforced explicit source/installation paths in runtime scope checker"
+  ],
+  "checks": [
+    "Deterministic source PNG and ORA byte reproduction",
+    "All twenty-four captured hashes and review-board byte reproduction",
+    "Independent world-phase/source RGB/mask/master checks",
+    "7,219 protected predecessor bytes unchanged",
+    "Eight protected alpha planes separated with two-pixel guard",
+    "Eighteen paired GPU changes bounded to guarded support",
+    "Valid disposable fixture and four rejected mutations",
+    "Python syntax and documentation links/whitespace"
+  ],
+  "validation_limit": "No full-quality rerun: product/runtime/CI inputs match predecessor. Retain prior accepted Square verification with 5,033 tests.",
+  "bound_files": {
+    "build.py": "0e73926dd3798bb9b9cccf92941d915a07c32f2f9c9faafacfa4bb5034486d36",
+    "boards.py": "c513b8b941c68728516888e99818305be738c2c868f3a958a0a1bb08b52c3ba7",
+    "capture.gd": "4981dde3e34ab9037514d342a3a4714e2b3a7486e2ef0d695323f0c875c7f882",
+    "inspect_package.py": "0fef83529293eb5067c0681938216a5bd2bece584b64c1a2f08cca907359e38a",
+    "rejection_probes.py": "74e132467bd6749e123174a29d51c1052d8d11f2728cad2880dd56514dab9ca4",
+    "README.md": "02a3ad4ea3fd7fec397de7851681caeb60e33f3efb6aba33d3762d2feb1a86bd",
+    "owner-acceptance.json": "b148f24dda1b67f31904a60ff238e5c3f3bf8636174081a765b9311560183258",
+    "validation.json": "3f1296893f9aa1cad3aa96268677f862cc81fc4e13c35ce826ff9ca535113c56",
+    "evidence/rejection-checks.json": "c30e7f3b1ac2c904b9cd4413d04de6705a4f6c4d43a36af720878b99e3e02441"
+  }
+}

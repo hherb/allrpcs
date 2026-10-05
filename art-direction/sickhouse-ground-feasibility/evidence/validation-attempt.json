@@ -1,0 +1,6 @@
+{
+  "status": "failed authoring validator expectation",
+  "error": "Camera centre drift",
+  "cause": "Initial expected centre omitted south-edge clamping in tall 0.8x views. Capture pixels and metadata were correct and unchanged.",
+  "fix": "Apply native 3200x1800 bounds to both axes; check every paired actual canvas transform."
+}
