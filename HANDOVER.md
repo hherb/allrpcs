@@ -2,15 +2,13 @@
 
 ## Current state
 
-This main revision contains the accepted Village Square runtime ground promotion,
-based on `fc5d38a0`: 92 assets / 43 masters, script-free `SquareGroundPresentation`
-at `(1920,620)`, one native 560x560 `PackedEarth` child, phase `(0,0)`, z=-90.
+Accepted Square promotion: 92 assets / 43 masters; script-free
+`SquareGroundPresentation` at `(1920,620)`, z=0, with one native 560x560
+`PackedEarth` child at effective z=-90 and phase `(0,0)`.
 [Runtime acceptance](art-direction/square-ground-runtime-promotion/owner-runtime-acceptance.json)
-binds the owner's 2026-10-05 “confirmed” statement to all six actual runtime views,
-paired baselines and completed review/verification. All twelve views equal the
-approved external GPU pixels. Full host quality passed: 5,033 tests, zero build
-warnings/errors, all inherited Godot smokes, Garden/Square checks and Compatibility
-startup. Review fixes, cold-import parity and eight rejection probes passed.
+records the owner's 2026-10-05 confirmation; the checkpoint below retains captures,
+review and verification. Prior full host quality passed 5,033 tests with zero build
+warnings/errors. This documentation-only update does not refresh product validation.
 
 ## Next bounded slice
 
