@@ -1,0 +1,33 @@
+{
+  "empty_cache_before_import": true,
+  "inputs": {
+    "game/art/direction-a-import-proof/terrain/shrine-entrance-ground.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "game/art/direction-a-import-proof/terrain/shrine-entrance-ground.png.import": "3e4c425de44c24ed8200ff571cdcad409f0ef579ef34fab95590022b008437dc",
+    "game/art/runtime/terrain/shrine-entrance-ground.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "game/art/runtime/terrain/shrine-entrance-ground.png.import": "a9e74569346924c5f20bdb41c9e6e2cbf6a3e230a7b0d36780d1bc69f20d9c8d"
+  },
+  "commands": [
+    {
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-shrine-cold-xi8jtyvt",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "output": "ERROR: Could not create directory: '/Users/hherb/Library/Application Support/Godot/app_userdata/Shrine cold import proof'.\n   at: make_dir_recursive (core/io/dir_access.cpp:178)\nERROR: Error attempting to create data dir: /Users/hherb/Library/Application Support/Godot/app_userdata/Shrine cold import proof.\n   at: ensure_user_data_dir (core/os/os.cpp:437)\nGodot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org\n\nERROR: Could not open 'user://' directory: 'user://'.\n   at: _get_and_create_snapshot_storage_dir (modules/objectdb_profiler/editor/objectdb_profiler_panel.cpp:154)\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | Started Scanning actions... (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | shrine-entrance-ground.png\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | shrine-entrance-ground.png\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1m_update_scan_actions\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | shrine-entrance-ground.png\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mreimport\u001b[22m | shrine-entrance-ground.png\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\n\u001b[0m\nERROR: Cannot save file '/Users/hherb/Library/Application Support/Godot/editor_settings-4.6.tres'.\n   at: save (scene/resources/resource_format_text.cpp:1756)\nERROR: Error saving editor settings to /Users/hherb/Library/Application Support/Godot/editor_settings-4.6.tres\n   at: save (editor/settings/editor_settings.cpp:1404)\n"
+    },
+    {
+      "arguments": [
+        "--headless",
+        "--path",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-shrine-cold-xi8jtyvt",
+        "--script",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-shrine-cold-xi8jtyvt/check.gd"
+      ],
+      "exit_code": -6,
+      "output": "ERROR: Could not create directory: '/Users/hherb/Library/Application Support/Godot/app_userdata/Shrine cold import proof'.\n   at: make_dir_recursive (core/io/dir_access.cpp:178)\nERROR: Error attempting to create data dir: /Users/hherb/Library/Application Support/Godot/app_userdata/Shrine cold import proof.\n   at: ensure_user_data_dir (core/os/os.cpp:437)\nERROR: Could not create directory: 'user://logs'.\n   at: make_dir_recursive (core/io/dir_access.cpp:178)\n\n================================================================\nhandle_crash: Program crashed with signal 11\nEngine version: Godot Engine v4.6.3.stable.mono.official (7d41c59c457bd5a245092b4e7eb2d833e3b3f8c3)\nDumping the backtrace. Please include this when reporting the bug on: https://github.com/godotengine/godot/issues\n[1] 1   libsystem_platform.dylib            0x0000000188ea4144 _sigtramp + 56\n[2] RotatedFileLogger::rotate_file() (in Godot) + 1160\n[3] RotatedFileLogger::rotate_file() (in Godot) + 1160\n[4] RotatedFileLogger::RotatedFileLogger(String const&, int) (in Godot) + 80\n[5] Main::setup(char const*, int, char**, bool) (in Godot) + 18880\n[6] OS_MacOS_Headless::run() (in Godot) + 68\n[7] main (in Godot) + 924\n[8] 8   dyld                                0x0000000188ac3e80 start + 6688\n-- END OF C++ BACKTRACE --\n================================================================\n"
+    }
+  ]
+}

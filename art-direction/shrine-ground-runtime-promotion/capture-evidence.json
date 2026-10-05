@@ -1,0 +1,260 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+		"captures/baseline-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+		"captures/baseline-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+		"captures/baseline-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+		"captures/baseline-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+		"captures/baseline-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+		"captures/runtime-0.8x-tall.png": "7beb92df670da93e6743e9433be1af2983c08d6c2edddbb5364421656328951f",
+		"captures/runtime-0.8x-wide.png": "a258b6f320ca23185f75254b2c439c3a57912fcc93fac3f922495f0f03cbb437",
+		"captures/runtime-1.0x-tall.png": "e9de14d284b853ab933595a1dc249a2f3f359dcc108545569f3868c104be46d7",
+		"captures/runtime-1.0x-wide.png": "836251b6400914d7a5b866471681c4f045dd0e277e51e0be2f3d960ea0ca1b7d",
+		"captures/runtime-2.0x-tall.png": "74f61fd29c0a8e704680f6167dd59c8bf2abcf368d36de50bc38f18e68aad160",
+		"captures/runtime-2.0x-wide.png": "958a8b5a329b1328ada9e70cb2faa40711c757b2e86463254b393f90a6309af2"
+	},
+	"center": [
+		650,
+		340
+	],
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				800.0,
+				516.875
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				0.0,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				800.0,
+				450.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				0.0,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				650.0,
+				413.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-10.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				650.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-10.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				650.0,
+				340.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-660.0,
+				-266.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				650.0,
+				340.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-660.0,
+				-320.0
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-0.8x-tall.png": {
+			"screen_center": [
+				800.0,
+				516.875
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				0.0,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-0.8x-wide.png": {
+			"screen_center": [
+				800.0,
+				450.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				0.0,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/runtime-1.0x-tall.png": {
+			"screen_center": [
+				650.0,
+				413.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-10.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-1.0x-wide.png": {
+			"screen_center": [
+				650.0,
+				360.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-10.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/runtime-2.0x-tall.png": {
+			"screen_center": [
+				650.0,
+				340.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-660.0,
+				-266.5
+			],
+			"zoom": 2.0
+		},
+		"captures/runtime-2.0x-wide.png": {
+			"screen_center": [
+				650.0,
+				340.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-660.0,
+				-320.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"inputs": {
+		"res://Main.tscn": "190a57c369108bcbd82b925ab24955fbb6cd614c85ed590edb02098b2aa40a89",
+		"res://RuntimeShrineGroundSmokeCheck.cs": "6d310408440ef84a948e20ed0ad0d71535fa34f82e9686e1a328920c9fb1295e",
+		"res://art/runtime/terrain/shrine-entrance-ground.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+		"res://art/runtime/terrain/shrine-entrance-ground.png.import": "a9e74569346924c5f20bdb41c9e6e2cbf6a3e230a7b0d36780d1bc69f20d9c8d",
+		"scripts/capture-shrine-ground-runtime.gd": "85a14cc06ef1ff3b8c5aa2dd1b7375ac1d2ae62e03e15c996f83eeb9813f95a5"
+	},
+	"schema_version": 1,
+	"scope": "Ordinary scene sprites; paired ground-disabled baselines; pending owner visual confirmation"
+}

@@ -41,7 +41,9 @@ masters, 24 actual-scene views and exact GPU edge crops. The proposed z=-78 apro
 sits above retained woodland transitions and below the route. The initial occluded
 z=-90 series is retained. The owner selected feather-16; consolidated artwork and
 preservation checks pass. The [named runtime scope](art-direction/shrine-ground-runtime-scope/README.md)
-is prepared; scope approval and actual-view confirmation remain separate checkpoints.
+has owner approval. Its [ordinary-scene checkpoint](art-direction/shrine-ground-runtime-promotion/README.md)
+installs the unchanged underlay; six actual runtime views and six baselines equal
+selected external pixels exactly. The owner confirmed these exact actual views on 2026-10-05; the Shrine-ground slice is complete.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

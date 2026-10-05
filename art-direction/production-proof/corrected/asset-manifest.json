@@ -3476,6 +3476,36 @@
       "source": "tools/build_wagon_ground.py",
       "sha256": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.shrine_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/shrine-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 184,
+        "height": 286,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 143
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 143
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 143,
+      "source": "tools/build_shrine_ground.py",
+      "sha256": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3547,6 +3577,21 @@
     "world_origin": [
       1633,
       1512
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "shrine_ground_provenance": {
+    "authorization": "art-direction/shrine-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "c9a58d4293798125add4ce853fdb7f54809b8ff892d025e610d1cd163db98b99",
+    "specification_sha256": "c0d6764d26efa2b5e3b5072564dc19d7c6fdab9e9b9037745760b170e1c06520",
+    "recipe_sha256": "5343f73338ff816c3b54270d374f28e09f4cc2684cb9c509fb33357e9908b8c6",
+    "world_origin": [
+      596,
+      250
     ],
     "paint_phase": [
       0,

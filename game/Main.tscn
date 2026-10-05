@@ -1,4 +1,4 @@
-[gd_scene load_steps=368 format=3]
+[gd_scene load_steps=370 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -565,6 +565,9 @@
 
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/wagon-entrance-ground.png" id="450_wagon_ground"]
 [ext_resource type="Script" path="res://RuntimeWagonGroundSmokeCheck.cs" id="451_wagon_ground_check"]
+
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/shrine-entrance-ground.png" id="452_shrine_ground"]
+[ext_resource type="Script" path="res://RuntimeShrineGroundSmokeCheck.cs" id="453_shrine_ground_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3976,6 +3979,19 @@ centered = false
 
 [node name="RuntimeWagonGroundSmokeCheck" type="Node" parent="."]
 script = ExtResource("451_wagon_ground_check")
+
+[node name="ShrineGroundPresentation" type="Node2D" parent="."]
+position = Vector2(596, 250)
+
+[node name="PaleGravel" type="Sprite2D" parent="ShrineGroundPresentation"]
+z_index = -78
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("452_shrine_ground")
+centered = false
+
+[node name="RuntimeShrineGroundSmokeCheck" type="Node" parent="."]
+script = ExtResource("453_shrine_ground_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

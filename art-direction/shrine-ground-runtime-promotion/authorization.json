@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "status": "named one-asset Shrine runtime scope approved",
+  "scope_sha256": "30e20ba59f2128914247fd409acb24ad69d0553fef684156f8dfb0e639fcdad1",
+  "bindings_sha256": "c0d6764d26efa2b5e3b5072564dc19d7c6fdab9e9b9037745760b170e1c06520",
+  "review_sha256": "e9a01d1b39a49e6829f3dbe78a6aa0c84b3ad03a02318d073d155b208340b727",
+  "scope": "Exact selected feather-16 independent Shrine east-entrance gravel underlay described in approved README and bindings. Separate actual runtime confirmation required before publication.",
+  "baseline_commit": "e7a2f81227e3070586b899dc1f1b2e9a842e95c6",
+  "baseline_sha256": "a02e88e36fb9fd168163d73c6df4b62660a2f9acba858166ffea0380db0daee9",
+  "owner_approval_sha256": "e994c4eb9f9b857dbb7995225a90cedbb169a5723c7ab476c4fb311c81d0f5d4"
+}

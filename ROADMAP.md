@@ -246,7 +246,9 @@ The proposed 92x143 apron at `(596,250)` uses z=-78 above unchanged woodland
 transitions and below the route. Initial occluded z=-90 evidence is retained.
 The owner selected feather-16; consolidated validation/preservation checks pass.
 The [named runtime scope](art-direction/shrine-ground-runtime-scope/README.md) is
-prepared; its approval and later actual-view confirmation remain pending.
+approved. The [ordinary-scene checkpoint](art-direction/shrine-ground-runtime-promotion/README.md)
+installs the unchanged selected underlay; all six actual views and six baselines
+equal selected external pixels exactly. The owner confirmed these exact actual views on 2026-10-05; the Shrine-ground slice is complete.
 Completeness/accessibility/pacing remain open.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "reviewed and validated; six exact actual runtime views pending separate owner confirmation",
+  "findings_fixed": [
+    "Isolated proof texture resource placed before subresources, preserving byte-exact predecessor after removing additions.",
+    "Scoped rejection fixtures include every new authorized tool and script.",
+    "New scene/import/master validator constants match exact 92x143 window, 184x286 master, -78 depth and 95/46 manifest inventory.",
+    "Inherited import-proof README stale header corrected to current 95 PNG count.",
+    "UID generation host retry originally overwrote sandbox diagnostic redirection; host output renamed and explicit tool-recorded exit 134 retained as metadata. No original crash diagnostic is claimed.",
+    "All new diagnostic log trailing blanks normalized."
+  ],
+  "remaining_findings": [],
+  "visual_review": [
+    "Inspected complete six-view runtime board; shell/woodland/opening/forest gate are retained.",
+    "All twelve actual runtime/baseline images equal selected external RGBA pixels exactly.",
+    "No paint, mask, master, source phase, route, shader, physical or discovery owner altered outside scope."
+  ],
+  "preservation": "7673 protected predecessor files unchanged; normalized scenes byte-exact; WholeChannel remains final.",
+  "validation_sha256": "56304c102cd5d1f00160fe36e0e2087975d4d8bad5d51c021acb3347d420fdc8",
+  "runtime_review_request_sha256": "7201d6d887c8e94e3304cc4f56970783eccc53a6686d2ec1c03468b8a7183d74",
+  "reviewed_implementation_sha256": {
+    "game/Main.tscn": "190a57c369108bcbd82b925ab24955fbb6cd614c85ed590edb02098b2aa40a89",
+    "game/DirectionAImportProof.tscn": "ebee9ec191acf54f81d7f2ec2b26bb20ec8dd3638392edefcccb357734932b51",
+    "scripts/quality.sh": "7d1bf32bd97e4e561e184cfbbc3999670b13e0d52614344200668307b8076822",
+    "scripts/validate-direction-a-import-proof.py": "d2769e5519e2a26cf32c110f7e483cab12c6d1b16e7fa5d95edf6c419b51d1d7",
+    "art-direction/production-proof/corrected/asset-manifest.json": "57e8987d8181824e8b1fdc4e3430e9ffd40e56be092c0d80e1e8c3f7c946fc3f",
+    "game/RuntimeShrineGroundSmokeCheck.cs": "6d310408440ef84a948e20ed0ad0d71535fa34f82e9686e1a328920c9fb1295e",
+    "game/RuntimeShrineGroundSmokeCheck.cs.uid": "c3193af9c3cc4e082d261fe343f775d38e67dab33ca3b1710d5bf22647502aff",
+    "scripts/capture-shrine-ground-runtime.gd": "85a14cc06ef1ff3b8c5aa2dd1b7375ac1d2ae62e03e15c996f83eeb9813f95a5",
+    "scripts/capture-shrine-ground-runtime.gd.uid": "cb514a42b440f4841028c15780b735dc492a3e3fd218b9b541d8b087907c4c27",
+    "scripts/validate-shrine-ground-runtime.py": "b22a5e05b1f23c32f40ff31827932386385b1a307a2fa432fb4c6889f807f052",
+    "art-direction/production-proof/corrected/tools/build_shrine_ground.py": "5343f73338ff816c3b54270d374f28e09f4cc2684cb9c509fb33357e9908b8c6",
+    "game/art/runtime/terrain/shrine-entrance-ground.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "game/art/runtime/terrain/shrine-entrance-ground.png.import": "a9e74569346924c5f20bdb41c9e6e2cbf6a3e230a7b0d36780d1bc69f20d9c8d",
+    "game/art/direction-a-import-proof/terrain/shrine-entrance-ground.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "game/art/direction-a-import-proof/terrain/shrine-entrance-ground.png.import": "3e4c425de44c24ed8200ff571cdcad409f0ef579ef34fab95590022b008437dc",
+    "art-direction/production-proof/corrected/masters/shrine-entrance-ground.ora": "8aa678adbe6ed31696c992a89c8fb4de3525384ac5cf9ee9a2ed58bbcaf53203",
+    "art-direction/production-proof/corrected/exports/terrain/shrine-entrance-ground.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b"
+  },
+  "reviewed_tool_sha256": {
+    "art-direction/shrine-ground-runtime-promotion/cold_import.py": "66bf33e4cfb5c2a491a5b6c5273fb897cae02359eb0b8f475746784f93556e1d",
+    "art-direction/shrine-ground-runtime-promotion/check-uids.gd": "5aebdc23823cae55eadc2135cbaae15a1f0543674ae779898f8fa525b8a2bc30",
+    "art-direction/shrine-ground-runtime-promotion/generate-capture-uid.gd": "9590f0977d9ac7ddd735371c107fb4fd5bb1e951fdf5541347100e24653e63d0",
+    "art-direction/shrine-ground-runtime-promotion/review_boards.py": "8ad567b1b4ea5396aa6d9c778fea7f04de20b16e23c16a074712a43efd7857c8",
+    "art-direction/shrine-ground-runtime-promotion/fresh-import-check.gd": "a9b4ee2133678b81daa451660df4e652871d7fe21e990e6081576a0855a46f62"
+  },
+  "documentation_sha256": {
+    "HANDOVER.md": "8940c2d2e9f2ac16b818db7a957ea2cc25ec3742ab28e40e805abf40fb1d25bf",
+    "README.md": "1c18f4cc9db7ac0faacf8d900ea79432337b173e6ace64e49d87f9bd3b25872c",
+    "ROADMAP.md": "a339143cd13b83862a73f523f191437144a0516b4a28f4fb65dda2db744197b1",
+    "game/art/direction-a-import-proof/README.md": "218120f172f030e6cc1c428485fe6965d3f1e7338a2aea410c7f2947bd200605",
+    "art-direction/shrine-ground-runtime-promotion/README.md": "25607ac48810ab31f9e8da253e6d5e9cbe60ece08a985f2ed634e94c7667bc04"
+  },
+  "publication_hold": "Approved scope explicitly requires separate owner confirmation of these exact actual runtime views before publishing the promotion. Standing reviewed direct-main instruction remains pending this gate."
+}

@@ -1,0 +1,37 @@
+{
+  "status": "accepted exact six actual runtime views; reviewed direct-main publication authorized",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "confirmed ... but isn't this the second time already for this slice???",
+  "scope": "Shrine east-entrance feather-16 pale gravel: exact six actual runtime views at 0.8x/1x/2x, wide 1280x720 and tall 1280x827, with paired baselines. No broader placement or terrain-completeness acceptance.",
+  "runtime_review_request_sha256": "7201d6d887c8e94e3304cc4f56970783eccc53a6686d2ec1c03468b8a7183d74",
+  "bound_files_sha256": {
+    "authorization.json": "c9a58d4293798125add4ce853fdb7f54809b8ff892d025e610d1cd163db98b99",
+    "capture-evidence.json": "b0f4f1261134b54aa3aab2c962641b4ac601fc6138834e35e393d046f356d294",
+    "runtime-series.png": "d78525c1a75528d8ff864864985b40d5c97f1179e256ec447ae27810bc921cd2",
+    "baseline-series.png": "1d8b2ccd492c21707df843453017726041b235d72ed9c3aad78da435943d5c8e",
+    "series-bindings.json": "2fade35dda08c744a78d12b69389a867a895fb556ac5df0b3cc1345203c241fe",
+    "verification.json": "56304c102cd5d1f00160fe36e0e2087975d4d8bad5d51c021acb3347d420fdc8",
+    "session-review.json": "ab6344355c494d2bbc3496e6880a8a4166ac08e5ff8ad0ba14f2c6917d102c81",
+    "fresh-import-evidence.json": "3c74dd537bf91fd076967b20e58ed8d431eeb17ce655733e20c95bf6cd2e6454",
+    "uid-inputs.json": "2b8a286f5c7c4f5291e4e1936f2476e73e3bef51709df4d2c864bcb71632eb71",
+    "check-uids.gd": "5aebdc23823cae55eadc2135cbaae15a1f0543674ae779898f8fa525b8a2bc30"
+  },
+  "captures_sha256": {
+    "captures/baseline-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "captures/baseline-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "captures/baseline-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "captures/baseline-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "captures/baseline-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "captures/baseline-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "captures/runtime-0.8x-tall.png": "7beb92df670da93e6743e9433be1af2983c08d6c2edddbb5364421656328951f",
+    "captures/runtime-0.8x-wide.png": "a258b6f320ca23185f75254b2c439c3a57912fcc93fac3f922495f0f03cbb437",
+    "captures/runtime-1.0x-tall.png": "e9de14d284b853ab933595a1dc249a2f3f359dcc108545569f3868c104be46d7",
+    "captures/runtime-1.0x-wide.png": "836251b6400914d7a5b866471681c4f045dd0e277e51e0be2f3d960ea0ca1b7d",
+    "captures/runtime-2.0x-tall.png": "74f61fd29c0a8e704680f6167dd59c8bf2abcf368d36de50bc38f18e68aad160",
+    "captures/runtime-2.0x-wide.png": "958a8b5a329b1328ada9e70cb2faa40711c757b2e86463254b393f90a6309af2"
+  },
+  "source_sha256": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+  "publication_authority": "Existing explicit request to commit and push reviewed work directly onto main.",
+  "historical_records": "Pending review-request, verification and session-review statuses are retained as pre-confirmation evidence. This acceptance supersedes their visual boundary."
+}

@@ -1,6 +1,6 @@
 # Direction A Godot import proof
 
-These 93 PNG files are exact byte-for-byte copies of the corrected production exports in
+These 95 PNG files are exact byte-for-byte copies of the corrected production exports in
 `art-direction/production-proof/corrected`. They are intentionally used only by
 `DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them. The isolated
 set now also contains the three feasibility-only Stream modules: repeatable water, a mirrored bank
@@ -9,7 +9,7 @@ camera, or gameplay authority.
 
 Godot imports them as lossless 2D textures with mipmaps and premultiplied alpha disabled.
 Alpha-border correction remains enabled for original sprites and disabled for accepted
-path/channel overlays, both Garden underlays and the Square/Sickhouse underlays, preserving their exact translucent pixels.
+path/channel overlays, both Garden underlays and the Square/Sickhouse/Wagon/Shrine underlays, preserving their exact translucent pixels.
 The two Garden samples retain native 512x384 geometry, linear filtering and no repeat;
 their ordinary-scene counterparts are independently owned runtime copies. The selected
 Square sample retains native 560x560 geometry, linear filtering and no repeat, with
@@ -41,5 +41,12 @@ switching, bulk art production, gameplay/UI changes, audio, release, or signing 
 
 The named Wagon entrance scope adds one isolated 285x92 packed-earth sample at
 `(5000,3500)`, with exact selected PNG/master parity and an independent lossless UID.
-The manifest now has 94 assets / 45 masters. The owner confirmed all six exact
+That checkpoint had 94 assets / 45 masters. The owner confirmed all six exact
 ordinary-scene runtime views on 2026-10-05 before reviewed publication.
+
+The approved named Shrine entrance scope adds one isolated 92x143 pale-gravel
+sample at `(5200,3500)`, with the selected feather-16 PNG and unchanged 184x286
+editable master. Proof and runtime imports have distinct lossless UIDs and disable
+alpha-border processing. The manifest now has 95 assets / 46 masters.
+Six actual ordinary-scene views and their baselines equal the selected external
+pixels exactly; the owner confirmed these exact views on 2026-10-05.

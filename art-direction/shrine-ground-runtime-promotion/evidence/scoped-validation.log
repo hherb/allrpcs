@@ -1,0 +1,13 @@
+PASS: one exact Shrine underlay, isolated editable master and append-only manifest
+PASS: exact Shrine source/master/imports, 95 assets/46 masters, normalized scenes and preserved predecessor
+PASS: exact Shrine source/master/imports, 95 assets/46 masters, normalized scenes and preserved predecessor
+PASS: rejects phase
+PASS: rejects depth
+PASS: rejects duplicate owner
+PASS: rejects dropped owner
+PASS: rejects transform
+PASS: rejects extent
+PASS: rejects physical scope
+PASS: rejects paint
+PASS: rejects mask/source
+PASS: rejects import processing

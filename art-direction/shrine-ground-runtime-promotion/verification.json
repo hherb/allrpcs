@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "passed; separate owner runtime confirmation pending",
+  "implementation_baseline": "e7a2f81227e3070586b899dc1f1b2e9a842e95c6",
+  "protected_predecessor_files": 7673,
+  "manifest_assets": 95,
+  "editable_masters": 46,
+  "checks": {
+    "scoped_source_master_scene_import_validation": "passed",
+    "rejection_probes": 10,
+    "cold_import": "passed; exact actual runtime RGBA; runtime sidecar retained; disposable proof UID regenerated",
+    "new_native_uids": 4,
+    "runtime_external_image_pairs": 6,
+    "baseline_external_image_pairs": 6,
+    "all_image_differences": 0,
+    "full_quality": {
+      "final_exit_code": 0,
+      "tests": 5033,
+      "test_counts": {
+        "Domain": 2839,
+        "Application": 925,
+        "Infrastructure": 1261,
+        "Architecture": 8
+      },
+      "warnings": 0,
+      "errors": 0,
+      "godot_smokes": "all inherited checks and new Shrine smoke completed",
+      "startup": "Compatibility passed"
+    }
+  },
+  "attempts": [
+    {
+      "operation": "full quality sandbox",
+      "exit_code": 134,
+      "reason": "Godot failed opening user://logs at isolated proof smoke; build and tests passed"
+    },
+    {
+      "operation": "initial full quality host",
+      "exit_code": 134,
+      "reason": "native mutex lock failed during inherited healer-command smoke"
+    },
+    {
+      "operation": "exact healer-command host retry",
+      "exit_code": 0
+    },
+    {
+      "operation": "fixed-60-FPS healer diagnostic",
+      "exit_code": 0,
+      "explicit_completion_marker": true
+    },
+    {
+      "operation": "final identical full quality host retry",
+      "exit_code": 0
+    },
+    {
+      "operation": "runtime captures sandbox",
+      "exit_code": 134
+    },
+    {
+      "operation": "identical runtime captures host retry",
+      "exit_code": 0
+    },
+    {
+      "operation": "native UID generation/check sandbox",
+      "exit_code": 134
+    },
+    {
+      "operation": "identical native UID generation/check host retries",
+      "exit_code": 0
+    },
+    {
+      "operation": "cold import sandbox",
+      "exit_code": 1,
+      "nested_godot_exit_code": -6
+    },
+    {
+      "operation": "identical cold import host retry",
+      "exit_code": 0
+    }
+  ],
+  "log_sha256": {
+    "quality-sandbox.log": "bd136a0b408bc7dc2ab0bb80617b0fcc795f2b4f1279c3b1dbbd3c20fcb9ffe5",
+    "quality-host.log": "4b21e66ddb4af9db39087cfceafe0e441e2d617f8783bf9a173ec40328371c48",
+    "quality-host-final.log": "e1dfd44ba58a227e3c727eb71f31957597349b314f6400ee0a4361d71c6fa377",
+    "scoped-validation.log": "0da915844dd1b9a1c9959fde29edd99b6b240567280d3acd92e60b81e5b26ec8",
+    "capture-validation.log": "f8f7dba32e61875e04d43de7dfe3e6f84f0842f329f6e899eae301ffd64a97f2",
+    "capture-sandbox.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "capture-host.log": "67e60bdaf73eb2a199b506a361fa3d9df64b5bffc686c7ea91209eac0570bbd9",
+    "uid-generation-sandbox.log": "680c2327f2e95df5aa9546cf3898616d10060f3e94cae31fd295a457213b713d",
+    "uid-generation-host.log": "f70a6f9d6cd8919fe7509257c013f713bda83524864c07f8912859006ea961b8",
+    "uid-check-sandbox.log": "62c73afcca75a49af134e49e7631fbb151f7680c95f3298beed5554e13ebb017",
+    "uid-check-host.log": "b92316d8c36ac10005198feefb14d21e242b2499598b620e8a195ea403e6aff1",
+    "cold-import-sandbox.log": "69ae4a04918ebd86a9ececad12f4b73dc0a0a319e8c1165641729a554c3c3c45",
+    "cold-import-host.log": "6a9da5a3f686b5f52afdfa2f023621bf0f0b6f46e20ee46e57d44fb6ab68c858",
+    "healer-command-host-retry.log": "efc3923cf9b30336a54f87bf3012d7c4fd174a2599261e7ae80382fee162b615",
+    "healer-command-fixed-fps-diagnostic.log": "b5888e1b6db2807fd9602d4652ac397072df0ae441fdf406b3edd62c20afcbdf"
+  },
+  "evidence_sha256": {
+    "authorization.json": "c9a58d4293798125add4ce853fdb7f54809b8ff892d025e610d1cd163db98b99",
+    "baseline.json": "a02e88e36fb9fd168163d73c6df4b62660a2f9acba858166ffea0380db0daee9",
+    "capture-evidence.json": "b0f4f1261134b54aa3aab2c962641b4ac601fc6138834e35e393d046f356d294",
+    "capture-comparison.json": "f75a33b21f220e0dbf3c9a8ea19d04b8abff52a163609b3ec5893b9fc1facd8f",
+    "fresh-import-evidence.json": "3c74dd537bf91fd076967b20e58ed8d431eeb17ce655733e20c95bf6cd2e6454",
+    "runtime-review-request.json": "7201d6d887c8e94e3304cc4f56970783eccc53a6686d2ec1c03468b8a7183d74",
+    "series-bindings.json": "2fade35dda08c744a78d12b69389a867a895fb556ac5df0b3cc1345203c241fe"
+  }
+}

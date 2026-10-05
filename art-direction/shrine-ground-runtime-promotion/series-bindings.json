@@ -1,0 +1,8 @@
+{
+  "capture_evidence_sha256": "b0f4f1261134b54aa3aab2c962641b4ac601fc6138834e35e393d046f356d294",
+  "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+  "outputs": {
+    "baseline-series.png": "1d8b2ccd492c21707df843453017726041b235d72ed9c3aad78da435943d5c8e",
+    "runtime-series.png": "d78525c1a75528d8ff864864985b40d5c97f1179e256ec447ae27810bc921cd2"
+  }
+}

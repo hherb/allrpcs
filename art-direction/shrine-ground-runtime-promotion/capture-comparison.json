@@ -1,0 +1,44 @@
+[
+  {
+    "zoom": 0.8,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 6222
+  },
+  {
+    "zoom": 0.8,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 6222
+  },
+  {
+    "zoom": 1.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 9495
+  },
+  {
+    "zoom": 1.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 9495
+  },
+  {
+    "zoom": 2.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 38542
+  },
+  {
+    "zoom": 2.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 38477
+  }
+]

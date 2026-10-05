@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/art-direction/shrine-ground-runtime-promotion/cold_import.py", line 75, in <module>
+    main()
+    ~~~~^^
+  File "/Users/hherb/src/allrpcs/art-direction/shrine-ground-runtime-promotion/cold_import.py", line 56, in main
+    raise ValueError('Cold Godot command failed or omitted its explicit pass marker: ' + str(result.returncode))
+ValueError: Cold Godot command failed or omitted its explicit pass marker: -6
