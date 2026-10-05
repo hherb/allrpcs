@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "reviewer": "primary agent cumulative code and visual review; no independent subagent review claimed",
+  "scope": "External Village Edge audit and complete optional packed-earth comparison only",
+  "findings": [
+    {
+      "issue": "Audit final tall-view label clipped by board height",
+      "resolution": "Increased board height from 1394 to 1420. Retained rejected board, manifest and exact original script.",
+      "status": "fixed"
+    },
+    {
+      "issue": "Initial comparison entrance crops omitted outer candidate shoulders, especially north apron beyond overview framing",
+      "resolution": "Added twelve dedicated 2x entrance views, expanded crops to contain entire guarded support, and added native crop series. Retained initial crop boards, manifest and exact original script.",
+      "status": "fixed"
+    }
+  ],
+  "remaining_actionable_code_issues": [],
+  "reviewed": [
+    "Preservation of every tracked predecessor outside README/ROADMAP/HANDOVER",
+    "All capture source hashes and complete frame matrices",
+    "Refusal to overwrite capture evidence; disposable scene with no save/pack/import",
+    "Actual shell openings and route alpha/transforms, all accepted ground/channel owners",
+    "Approved world-phase paint, transparent texels, editable layer/composite parity",
+    "Complete whole-series visual inspection with translucent route and apron edges",
+    "Exact audited baseline parity and comparison GPU deltas restricted to guarded support"
+  ],
+  "visual_preference": "feather-24 is agent preference; baseline remains valid; no owner selection recorded",
+  "limitations": [
+    "New owner artwork review pending",
+    "No production or CI changes; previous passing 5033-test evidence retained",
+    "No ordinary-scene runtime scope, promotion, release or signing authority inferred"
+  ]
+}

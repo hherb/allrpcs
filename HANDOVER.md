@@ -2,44 +2,44 @@
 
 ## Current checkpoint
 
-Laundry feather-24 is owner-confirmed and complete. [Terminal acceptance](art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json)
-binds the unchanged implementation and all six actual runtime views. No further
-Laundry selection, named-scope or actual-view approval is needed. Existing owner
-approval persists across turns; terminal acceptance supersedes historical pending
-metadata. Reconcile direct instructions and acceptance before asking anything;
-never reopen an unchanged slice for bookkeeping or a verification retry.
-[Loop review](art-direction/laundry-ground-runtime-promotion/approval-loop-review.json)
-records the correction.
+Village Edge external [coverage audit](art-direction/village-edge-ground-coverage/README.md)
+and [complete apron comparison](art-direction/village-edge-ground-feasibility/README.md)
+are ready. Starting main: `0b4d5884e0f90a341688a52ba0922c6ff2df3476`.
+Opaque quiet moss already covers all three entrances; apron need is aesthetic.
+Baseline/hard-support/feather-16/feather-24 use unchanged approved paint at world
+phase (0,0), three editable 2x masters, 24 full views and 12 dedicated detail views.
+Agent preference is feather-24; new owner preference is pending.
 
-96 assets / 47 masters. [Verification](art-direction/laundry-ground-runtime-promotion/verification.json):
-5,033 tests, zero-warning build, scenario and Godot checks passed across sandbox
-quality and exact host retries. Eleven rejection probes, native UIDs, cold-import
-RGBA, twelve exact image comparisons and 7,811 unchanged predecessor files passed.
-[Code review](art-direction/laundry-ground-runtime-promotion/session-review.json)
-fixed proof resource order; rejected and corrected evidence are retained.
+Lightweight authoring checks pass: exact paint/masters, six exact audit baselines,
+all comparison deltas within guarded support, zero overlap with accepted channel
+and ground. Review fixed clipped labels and incomplete edge framing; initial
+evidence is retained. All 7,883 predecessor files outside the three continuation
+documents remain unchanged. Product/CI inputs retain passing zero-warning/5,033-test
+[quality evidence](art-direction/laundry-ground-runtime-promotion/verification.json).
+No fresh full-suite run is claimed. Runtime inventory remains 96 assets/47 masters.
 
 ## Next bounded slice
 
-Prepare one external-only ground-coverage audit of the live Village Edge entrance.
-Bind the accepted shell, route alpha/transforms, channel and ground owners at the
-actual starting main head. Produce the whole labelled baseline series at
-0.8x/1x/2x wide/tall, native/2x edge crops and one concrete feasibility recipe for
-any uncovered entrance ground (material, support, inward feather, world phase,
-depth and exclusions). If coverage is already complete, record that finding.
-Keep this audit in a new external packet; do not modify production assets, ordinary
-scenes, masks or physical owners. Routine bounded external proof preparation is
-already authorized. Use lightweight authoring checks; retain passing full-suite
-evidence while product/CI inputs are unchanged. No repeated Laundry review.
+Discuss the whole new Village Edge series: wide/tall boards and complete entrance
+edge board linked in its README. Record the owner's exact selected variant
+(or baseline/no new apron) and hashes; retain revisions in a separate packet.
+After agreement, run the consolidated scoped checks listed there. With unchanged
+product/CI inputs, retain preceding full-suite evidence. If an apron is selected,
+prepare only its separate named runtime scope proposal; no ordinary-scene promotion
+is authorized by artwork selection. If baseline is selected, close this location
+without a new underlay and prepare one next external entrance-coverage audit.
 
 ## Preserved boundaries
 
-Carry all accepted ground/channel approvals forward. Preserve paint/masks/masters,
-rejected evidence, Direction A, route/Garden sibling order and physical owners.
-Garden (2048,1120) z=-90/-89, Square (1920,620) z=-90, Sickhouse (2408,1248) z=-90,
-Wagon (1633,1512) z=-90, Shrine (596,250) z=-78, Laundry (1564,219) z=-78.
-WholeChannel remains final: five sprites, native three-node x<1664 shader scope,
-UVs/caps/crossing, Shrine triangle, Clearing near side, gate/Forester and
-x=1664/x=2000 limits. No physics/navigation/layout/scenario/gameplay/dialogue/clue/
-discovery/treatment/save/provider/functional-UI/audio/release/signing changes.
-Exclude `.DS_Store`; never rewrite frozen inventories or weaken validators.
-Accessibility, pacing and terrain completeness remain open.
+All accepted ground/channel approvals persist. Laundry is terminally accepted:
+[acceptance](art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json).
+Never reopen unchanged selections, scopes or actual views for bookkeeping/retries.
+Preserve paint/masks/masters/rejected evidence, Direction A, route/Garden sibling
+order and physical owners. Garden (2048,1120) z=-90/-89, Square (1920,620) z=-90,
+Sickhouse (2408,1248) z=-90, Wagon (1633,1512) z=-90, Shrine (596,250) z=-78,
+Laundry (1564,219) z=-78. WholeChannel stays final: five sprites, native three-node
+x<1664 shader scope, UVs/caps/crossing, Shrine triangle, Clearing near side,
+gate/Forester and x=1664/x=2000 limits. No physics/navigation/layout/scenario/
+gameplay/dialogue/clue/discovery/treatment/save/provider/functional-UI/audio/
+release/signing changes. Exclude `.DS_Store`; never rewrite frozen inventories
+or weaken validators. Accessibility, pacing and terrain completeness remain open.

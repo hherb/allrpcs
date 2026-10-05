@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "external authoring and session review complete; new artwork preference pending",
+  "product_quality": "Inherited verified 5033-test evidence; every product/CI predecessor input unchanged; no fresh full-suite run claimed",
+  "predecessor_files_preserved": 7883,
+  "capture_execution": "Sandbox Godot exit 134 without output; identical authorized host retries exit 0 with complete matrices and no parse errors",
+  "evidence_sha256": {
+    "evidence/capture-host.log": "c5b9e30765c5525abc933c2fd05407d5a0e9191241258f5d6b3fcf3b41ada349",
+    "evidence/capture-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/details-host.log": "506b681ac7eeb26f94c4d4c7426269760e002f097e97fb365186381e1830acab",
+    "evidence/details-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/final-authoring-check.log": "b393dab8fe1bbcd6c8907c45ff84fbd03c5ae3a9d711e6dfa7b41d55178288cf",
+    "evidence/final-board-check.log": "10c369d91288c539a26dfd6d8204de81060874db8262eafe9f12b5b15a68a6a0",
+    "evidence/final-build-check.log": "43470cd320ba2847353aa2c404dfcb9165d9ab6b1ba718160812328fbc9071e1",
+    "evidence/initial-crop-review/boards.py": "e6d4739dca53e983bc2752cc04b862b18336c8ff7dab7662dd4cd87987b5f908",
+    "evidence/initial-crop-review/complete-edge-series-2x.png": "f119291541d4451bf924021ee48d4da1712dfd35f37112802e94b76ccab64e60",
+    "evidence/initial-crop-review/gpu-square-2x.png": "792b002b9fb608ff7517b4f961f176c5f979e684dbfada37771bc648d9a63bcc",
+    "evidence/initial-crop-review/gpu-stream-2x.png": "8085f80e74e7b6f5b2e21d8ccc0e40202e3677f387203e3f4fe5383d21c05dd6",
+    "evidence/initial-crop-review/gpu-woodland-2x.png": "600a6bbecaf15af7d617b033d4d704271c9391951c27c52ed4efae72c314a23c",
+    "evidence/initial-crop-review/review-board-manifest.json": "35ab59e56a4a452b89180fdc9dc8a8d794bab3640ececb6f3488f2086202bcda"
+  },
+  "session_review_sha256": "82a72d400ab944dd018082c69eb10cb4a47ae5f8049246f9132a27332fbfff8a"
+}

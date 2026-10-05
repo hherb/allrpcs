@@ -265,6 +265,14 @@ closes the Laundry slice. Existing ground/channel acceptance is carried forward.
 
 Completeness/accessibility/pacing remain open.
 
+The [Village Edge external coverage audit](art-direction/village-edge-ground-coverage/README.md)
+finds continuous opaque moss coverage at all three entrances. Its bounded apron recipe
+has a [complete external comparison](art-direction/village-edge-ground-feasibility/README.md):
+baseline/hard-support/feather-16/feather-24, three editable 2x masters, 24 full views
+and twelve dedicated detail views. New owner preference is pending; no ordinary-scene
+change or broader terrain-completeness claim is made. Lightweight authoring checks
+preserve 7,883 predecessor files and inherited passing 5,033-test evidence.
+
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
 artwork series first, keeping editable 2x masters and separate review exports. Present all

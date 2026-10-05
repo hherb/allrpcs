@@ -1,0 +1,218 @@
+{
+  "status": "external coverage audit complete; optional apron comparison recipe only",
+  "baseline_head": "0b4d5884e0f90a341688a52ba0922c6ff2df3476",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "finding": "No unpainted alpha holes. All three exterior route shoulders use opaque quiet moss; no independent packed-earth apron.",
+  "scope_limit": "Coverage is not terrain-art completion. Retained opaque greybox shell occludes interior paint. An apron may soften route shoulders; necessity and preference require the external comparison.",
+  "ground_alpha_extrema": [
+    255,
+    255
+  ],
+  "entrances": {
+    "woodland": {
+      "route_node": "WoodlandVillageEdgePath",
+      "segment_world_bounds": [
+        1532,
+        730,
+        1580,
+        880
+      ],
+      "route_nonzero_texels": 4917,
+      "route_translucent_texels": 4895,
+      "support_world_bounds": [
+        1508,
+        706,
+        1604,
+        880
+      ],
+      "route_owner": {
+        "centered": true,
+        "class": "Sprite2D",
+        "filter": 0,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "repeat": 1,
+        "size": [
+          816,
+          688
+        ],
+        "texture": "res://art/runtime/terrain/woodland-village-edge-path.png",
+        "visible": true,
+        "world_transform": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1352.0,
+          632.0
+        ],
+        "z_as_relative": true,
+        "z_index": -75
+      }
+    },
+    "stream": {
+      "route_node": "VillageEdgeStreamPath",
+      "segment_world_bounds": [
+        1678,
+        652,
+        1822,
+        700
+      ],
+      "route_nonzero_texels": 4161,
+      "route_translucent_texels": 4144,
+      "support_world_bounds": [
+        1682,
+        628,
+        1831,
+        724
+      ],
+      "route_owner": {
+        "centered": true,
+        "class": "Sprite2D",
+        "filter": 0,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "repeat": 1,
+        "size": [
+          224,
+          528
+        ],
+        "texture": "res://art/runtime/terrain/village-edge-stream-path.png",
+        "visible": true,
+        "world_transform": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1752.0,
+          704.0
+        ],
+        "z_as_relative": true,
+        "z_index": -75
+      }
+    },
+    "square": {
+      "route_node": "VillageEdgeSquareConnector",
+      "segment_world_bounds": [
+        1820,
+        828,
+        1868,
+        972
+      ],
+      "route_nonzero_texels": 4016,
+      "route_translucent_texels": 4011,
+      "support_world_bounds": [
+        1796,
+        832,
+        1892,
+        971
+      ],
+      "route_owner": {
+        "centered": true,
+        "class": "Sprite2D",
+        "filter": 0,
+        "offset": [
+          0.0,
+          0.0
+        ],
+        "repeat": 0,
+        "size": [
+          124,
+          96
+        ],
+        "texture": "res://art/runtime/terrain/village-edge-square-connector.png",
+        "visible": true,
+        "world_transform": [
+          1.0,
+          0.0,
+          0.0,
+          1.0,
+          1882.0,
+          900.0
+        ],
+        "z_as_relative": true,
+        "z_index": -70
+      }
+    }
+  },
+  "candidate_recipe": {
+    "material": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+    "origin": [
+      1480,
+      620
+    ],
+    "analysis_size": [
+      500,
+      390
+    ],
+    "support": "Union of nonzero native route alpha inside the three exterior segments; square dilation radius 24",
+    "inward_feathers": [
+      16,
+      24
+    ],
+    "feather_rule": "Zero-pad by width+1, erode with 3x3 min filter; smoothstep coverage strictly inside support",
+    "world_phase": [
+      0,
+      0
+    ],
+    "period": 128,
+    "z_index": -78,
+    "filter": "linear",
+    "repeat": "disabled",
+    "scale": [
+      1,
+      1
+    ],
+    "variants": [
+      "baseline",
+      "hard-support",
+      "feather-16",
+      "feather-24"
+    ],
+    "exclusions": "Retain shell/openings, routes, channel, accepted ground and every physical owner; no route repaint, masking or runtime change"
+  },
+  "guard_overlap_texels": {
+    "GardenGroundPresentation/Meadow": 0,
+    "GardenGroundPresentation/Soil": 0,
+    "LaundryGroundPresentation/PackedEarth": 0,
+    "ShrineGroundPresentation/PaleGravel": 0,
+    "SickhouseGroundPresentation/PaleGravel": 0,
+    "SquareGroundPresentation/PackedEarth": 0,
+    "WagonGroundPresentation/PackedEarth": 0,
+    "WholeChannelPresentation/banks": 0,
+    "WholeChannelPresentation/decks": 0,
+    "WholeChannelPresentation/detail": 0,
+    "WholeChannelPresentation/fringe": 0,
+    "WholeChannelPresentation/water": 0
+  },
+  "verification_policy": "Lightweight external checks; retain predecessor 5033-test quality evidence because every tracked product and CI input is unchanged",
+  "sources": {
+    "capture-evidence.json": "e2bb20ab97051d7b8944c3d3e8085a0cf51898983cc540bdef318856b821acc6",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "build.py": "cc6785d49fae08311bb9bdac56d251cee0e153ef8b6f9e4386f3b8840954f937",
+    "inputs.json": "2772888c900b5817e2f193eb56d4171b12f54fc0005e6dae84a8bd944499fbcc",
+    "captures/baseline-0.8x-tall.png": "d445d6ca3b08f3f5370e9f131f7ba175c4f562c0b5e6d829ca361e8bec519e97",
+    "captures/baseline-0.8x-wide.png": "076f11f0f96cbb2a5628ddc15d01add9ad52e72214c8f558dfda3c84aa4df1a6",
+    "captures/baseline-1.0x-tall.png": "0932b5d190a2ff9f0146aeb038a84c6ac6dd902506f4485a1422fbaa23946e84",
+    "captures/baseline-1.0x-wide.png": "f7f1dd0d8e33a79964c55ff7be8e16f45e952c9ef193c83cd4c6cc882d2d09ae",
+    "captures/baseline-2.0x-tall.png": "ea46bd3749de91468cf749893711a10a71970d21b34721175fe68c4b517cb0db",
+    "captures/baseline-2.0x-wide.png": "73f8e4a621c86b6ae1d44b65c139e1cf4805f72e24fbf6a11ceee3bd02efa89d"
+  },
+  "outputs": {
+    "review/baseline-series.png": "7d0faf97ab81fb853be496c7d1a755f8fa83ab43c49ccbad70df1e2ecd5a6db7",
+    "review/woodland-1x.png": "36bff245d5864fe8581505437e4f49c46ad89b0a2dc5dab8373fc9058c630133",
+    "review/stream-1x.png": "e53d6110c21e8a7573c7cf69dbb7a04688291ce3f95b41f3e0ccb3de5990173b",
+    "review/square-1x.png": "0315b7f73777bcc5a751ab82c1c1a4c65dbfff5aa147807e219b0b06dc4db763",
+    "review/entrances-1x.png": "a9b85ebfc74c04dc0157ca05c91c9c21e84246cdda4024fd968c967b7166f211",
+    "review/woodland-2x.png": "b7db790d87d881c3c3250ec4438de21ad828c6065b83e9d4630ccb3da77f02ee",
+    "review/stream-2x.png": "c198925fe6981f12a7a549247bec3a95826a3d3d693f098230e85c3e73294a60",
+    "review/square-2x.png": "5442d42f2209734dd8ea1a4e07a4a75088aa068a80b134c3caa379e129196032",
+    "review/entrances-2x.png": "c1d4b039bda08da4bc21322ea0bbd6797b287803ec98a82e7e905df0df735420",
+    "review/support-diagram.png": "79a0508f34e006675ecd69d129a11ba2618a8862869f12d2ded8574d1ecbb220"
+  }
+}

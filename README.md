@@ -57,6 +57,14 @@ baselines exactly match selected external pixels. The owner confirmed these exac
 the [terminal acceptance](art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json)
 closes the Laundry slice.
 
+The [Village Edge entrance coverage audit](art-direction/village-edge-ground-coverage/README.md)
+binds the live accepted scene and six baseline views. Quiet moss provides continuous
+ground coverage, while all three entrance routes have exposed moss shoulders.
+The subsequent [complete external apron comparison](art-direction/village-edge-ground-feasibility/README.md)
+compares baseline, hard support and inward 16/24px feathers using approved packed-earth
+paint, three editable masters, 24 full views and 12 dedicated edge views. Agent preference
+is feather-24; new owner selection is pending. All production/CI inputs remain unchanged.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two
