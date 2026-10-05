@@ -12,9 +12,16 @@ and the Garden station/physical owners. Historical pending records remain immuta
 
 ## Next bounded boundary
 
-No next new-field use or interface is selected. Obtain a named selection/interface
-or an explicit request for an external placement proposal before further ground work.
-Do not infer another runtime promotion or terrain completeness from Garden acceptance.
+The owner requested an external placement proposal. The prepared
+[Village Square proposal](art-direction/ground-placement-proposal/README.md)
+recommends unchanged packed earth beneath the accepted junction, with a 24px
+alpha-derived apron, inward 16px feather, phase `(0,0)` and proposed z=-90.
+[Bindings/boards](art-direction/ground-placement-proposal/proposal.json) pin the
+560x560 maximum window `(1920,620)`–`(2480,1180)` and native samples.
+**Owner selection is pending.** Obtain selection of this use and mask/interface
+recipe, or a named revision. Then prepare one separate external source-matched
+feasibility composition using the proposal's exact next-slice checklist. Do not
+implement runtime changes from this proposal or infer terrain completeness.
 
 ## Constraints and checks
 
@@ -31,3 +38,8 @@ Run `PATH="/opt/homebrew/bin:$PATH" ./scripts/quality.sh`; scoped Garden checks 
 Frozen artwork validators run unchanged on pinned `2fcc849`; the successor verifies
 the live preserved subset and exact additions. Never rewrite frozen inventories or
 weaken their validators. Retain the documented sandbox/host distinction in verification.
+The placement proposal is checked read-only with
+`/opt/homebrew/bin/python3 art-direction/ground-placement-proposal/build.py --check`;
+its [session review](art-direction/ground-placement-proposal/session-review.json)
+records scoped checks. Product code/runtime/CI inputs are unchanged by the proposal;
+retain the preceding full-quality evidence rather than replaying it.

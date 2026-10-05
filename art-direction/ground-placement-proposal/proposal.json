@@ -1,0 +1,57 @@
+{
+  "status": "external placement proposal; owner selection pending",
+  "baseline_head": "7942e7da578fc459345576e1d267a58f949382eb",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "recommended_material": "packed-earth",
+  "anchor": [
+    2200,
+    900
+  ],
+  "maximum_envelope": [
+    1920,
+    620,
+    2480,
+    1180
+  ],
+  "mask_recipe": "junction alpha > 0; square-neighbourhood dilation radius 24; inward smoothstep feather 16",
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "proposed_depth": -90,
+  "channel_overlap_pixels_with_two_pixel_support_guard": {
+    "water": 0,
+    "banks": 0,
+    "decks": 0,
+    "detail": 0,
+    "fringe": 0
+  },
+  "sources": {
+    "art-direction/garden-ground-runtime-promotion/owner-runtime-acceptance.json": "718d0ce5161f381768569825b4cb0c88250e1c4f3e912a7ab4dd19ea6d6ab2fd",
+    "art-direction/production-proof/corrected/asset-manifest.json": "19b933e52e8d8ae32e107b70354f8625b4420def0a0e5e42930e5aaafb62e23b",
+    "art-direction/production-proof/corrected/exports/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "art-direction/residual-ground-compatibility/interfaces.md": "18ee2cd9ec816002829948a8f2becdb9ab368f71e7f0b70cfc929d0bc5f0aa16",
+    "art-direction/residual-ground-tiling-proof/exports/dry-grass.png": "9893995653cc82dd38e2b449985f7d067af234b6f13c0c1cc3de2c611bf908ae",
+    "art-direction/residual-ground-tiling-proof/exports/packed-earth.png": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32",
+    "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+    "art-direction/residual-ground-tiling-proof/owner-acceptance.json": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+    "game/Main.tscn": "bcc89f91e26b2fbc06ad103d76efeb94ae15f2442c5f86f52925b9adc1978842",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+  },
+  "outputs": {
+    "review/location-plan.png": "1dec890fdb5f7a593e730466695b9df160e93e1271ac65ca92e6f07baa8b1f19",
+    "review/geometry-materials.png": "4be30650abf961f0e93f76564774622d875382fe19e7efbd4834e0ea709eefe1"
+  },
+  "limitations": "Map is topology only; mask is schematic; tiles are separate native swatches; no composed/GPU preview."
+}

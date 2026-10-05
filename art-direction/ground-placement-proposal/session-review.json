@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "proposal technically reviewed; owner placement selection pending",
+  "package_sha256": {
+    ".DS_Store": "7d47c61ea93ac9b8becd86ccd244642015860f0a55edf005d4a27f55291c989c",
+    "README.md": "c86fb6144e402b8ee682f51b4e7a372f3dc708e5e28e288715751663402827f2",
+    "build.py": "72541b51742b9b814930a0d4b6353c2f9f114f11a70938bb23a515108b59a4b2",
+    "proposal.json": "2652b39d4c65e09d983a00938a9f8ddcf2d4581e7886e5c3c6bf7ba648506ea2",
+    "review/geometry-materials.png": "4be30650abf961f0e93f76564774622d875382fe19e7efbd4834e0ea709eefe1",
+    "review/location-plan.png": "1dec890fdb5f7a593e730466695b9df160e93e1271ac65ca92e6f07baa8b1f19"
+  },
+  "checks": {
+    "builder_check": "all bound input hashes and byte reproduction of both PNGs and JSON pass",
+    "rejection_probes": "disposable copies reject output tampering and source-binding drift in both check/write modes",
+    "channel_guard": "zero overlap across all five channel layers; guard padded two pixels beyond maximum window",
+    "garden_runtime": "fresh --check-captures --check-rejections passed; all eight mutations rejected",
+    "git_diff_check": "pass",
+    "product_preservation": "tracked modifications limited to HANDOVER.md and ROADMAP.md; new files limited to this external proposal package"
+  },
+  "session_code_review": {
+    "outcome": "no outstanding findings",
+    "fixes": [
+      "checked actual scene texture assignment and channel dimensions/placement recipe",
+      "padded channel separation guard beyond proof window to avoid clipping the check",
+      "removed deprecated Pillow pixel iteration"
+    ],
+    "visual_review": "both complete boards inspected; labels fit and material swatches remain native scale; topology and mask diagram clearly distinguished from scene/paint composition"
+  },
+  "full_quality": {
+    "execution": "not rerun for this proposal; game, tests, scripts, imports, CI and approved artwork unchanged",
+    "retained_evidence": "art-direction/garden-ground-runtime-promotion/verification.json",
+    "retained_evidence_sha256": "0f424daf73a8bc3c3358a4fd50b75ece40a961062218a2afeedbd8d3a0624018",
+    "recorded_tests": 5033,
+    "recorded_execution": "host retry after sandbox Godot startup exit 134"
+  },
+  "next_boundary": "owner selection of Village Square packed-earth use and mask/interface recipe, then one external feasibility package; runtime approval remains separate"
+}

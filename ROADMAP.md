@@ -204,6 +204,10 @@ was explicitly approved. Both exact underlays are installed; the
 [runtime checkpoint](art-direction/garden-ground-runtime-promotion/README.md)
 has separate owner approval of all six runtime views and is cleared for reviewed
 direct-main publication. No broader terrain placement is inferred from this promotion.
+The owner requested a [next placement proposal](art-direction/ground-placement-proposal/README.md):
+unchanged packed earth around the Village Square junction, using a bounded
+alpha-derived apron. Its location/material boards and exact recipe await owner
+selection before one external feasibility composition; no runtime scope is selected.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.
