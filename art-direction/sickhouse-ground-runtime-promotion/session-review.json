@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-05",
+  "status": "reviewed; fixes applied; all required verification passed",
+  "scope": "One approved Sickhouse underlay, exact master, independent imports, new gated smoke/capture and bounded validation orchestration",
+  "findings_fixed": [
+    "Initial manifest export filename corrected before scene installation; retained evidence",
+    "Rectangular mask dimensions kept distinct from viewport dimensions",
+    "Exact master bytes and complete new manifest metadata checked",
+    "Quality/import validator modifications constrained to exact named additions",
+    "Transform/extent mutation probes added",
+    "Native UID helper type repaired and noncanonical capture UID replaced by Godot-generated UID",
+    "Cold decode requires explicit success marker as well as zero exit",
+    "Trailing blank terminal-log lines normalized; exact raw host log retained in deterministic gzip"
+  ],
+  "implementation_sha256": {
+    "art-direction/production-proof/corrected/tools/build_sickhouse_ground.py": "8361213f67be6b689c1211fd35e10ef1d7252f794cf832a99c0c384142bfb45c",
+    "art-direction/production-proof/corrected/asset-manifest.json": "ac5ddbc02ded2a69ceff9e3b4ffd4e1be7e5b2b4f8260fdff775f384aa25fe28",
+    "art-direction/production-proof/corrected/exports/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "art-direction/production-proof/corrected/masters/sickhouse-entrance-ground.ora": "cbc7afa40eb14bf929fdbf20968e72a6701dfdb88aa87a40ac0ded48f260119d",
+    "game/RuntimeSickhouseGroundSmokeCheck.cs": "186fd7e94cf2e33ad64c4f4cf1241cdabfd6529aaacf51d1d330efefe41b4654",
+    "game/RuntimeSickhouseGroundSmokeCheck.cs.uid": "0218394ba4e7eb95657a3c1c4c76f9c506ab699a3c00451ca3e29f7019543f69",
+    "game/Main.tscn": "efa13c7cbedd8179965a17ff3a74ee1dc366f8d8923c413ba42b964e6236e212",
+    "game/DirectionAImportProof.tscn": "dcb53e753d55ac69881c417d026297282fa36b17320592a5bdd455acb6d44356",
+    "scripts/quality.sh": "e470ac2511b84671a3eab203f5a650b160de22211d3a95c1c04d096595ce5cfd",
+    "scripts/validate-direction-a-import-proof.py": "047fa08f8b0b451a20ad105469587d3116682fbd27cedeaae3d11f0cd69d7c60",
+    "scripts/validate-sickhouse-ground-runtime.py": "180ceb07756fc67a674b9e9e07d812da06a249debe37f3e771ffc49f945c4df5",
+    "scripts/capture-sickhouse-ground-runtime.gd": "ec7a3a0baef10ca3d2b9b2ee633b77af3a0ddfc59d96ae79db0ab27e8ab3e770",
+    "scripts/capture-sickhouse-ground-runtime.gd.uid": "517710a420fcc025571999cf3a8244febe6c4bb74c9fc434770c7c71033fae44",
+    "game/art/runtime/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "game/art/runtime/terrain/sickhouse-entrance-ground.png.import": "15bec67d38925d3d9ae7ed40f4a51b4d10bb9cab15428f065ed11061ca13bcde",
+    "game/art/direction-a-import-proof/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "game/art/direction-a-import-proof/terrain/sickhouse-entrance-ground.png.import": "4ba23e8e1da6179ff2d7341362a788c6fffe43b43c01c731c4ff78ce6954e29c"
+  },
+  "verification_sha256": "b13af7afd811ed9f5bbb593020b330e8c294dad2494fbc63735bf8a073e88d6a",
+  "remaining": "Exact six-view runtime visual confirmation before publication"
+}

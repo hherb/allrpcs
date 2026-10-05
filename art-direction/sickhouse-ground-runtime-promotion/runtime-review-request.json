@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-05",
+  "status": "pending separate owner runtime visual confirmation",
+  "scope": "Exact six actual imported-runtime views at 0.8x/1x/2x, wide/tall, and all paired baselines. Publication is already authorized once this checkpoint is confirmed. No other geography/physical scope.",
+  "captures": {
+    "captures/baseline-0.8x-tall.png": "9109ba83b87beb618a01a049c8747e00d76c4ae3596f88abef8b8dee6dcbe868",
+    "captures/baseline-0.8x-wide.png": "688a9ef8bd0e80f7a4bd36800c8d92fff0b48700cb360ac1081e525a4737cb15",
+    "captures/baseline-1.0x-tall.png": "1bdb24399de6e087adeade0f74229efcef68e22516bfbd6dd75ffd1e8471a79f",
+    "captures/baseline-1.0x-wide.png": "c4c375b121d7d200383a4bd810dd9dc35c0ffb5a523a118562751eb4050bdd17",
+    "captures/baseline-2.0x-tall.png": "7c8198d602a117d1d0725574f6f607eeb3fa1cced51b04bf97a6177bed7f362d",
+    "captures/baseline-2.0x-wide.png": "97a93f472851ba54ce58a5a8c13433ab45de063125f5f57c66195e0d58fa3268",
+    "captures/runtime-0.8x-tall.png": "7a9a3950ba24580bfe6fe551dca726e51fce4328312f3c8d5525348f0c2af91e",
+    "captures/runtime-0.8x-wide.png": "4d1e4978dfa8821ad03095242e93eef9128395e174ff1636d972876fc931885c",
+    "captures/runtime-1.0x-tall.png": "f7ae934b9363fe293cd9b510ee559a89abdc3900068f925fc337432c4802ff4c",
+    "captures/runtime-1.0x-wide.png": "b7ec78ff47ffa8c66b63b974bb33c4c9a31f2fc9090035a67092678f0f61f01a",
+    "captures/runtime-2.0x-tall.png": "526f4051a9096a555dba8d163f370effff8e63d06ad44d331f19a930aeeb0951",
+    "captures/runtime-2.0x-wide.png": "0af728d01b289b8988fdb64c0de7f3422ffc338af00bcfc07faf4552b15fa6dd"
+  },
+  "bindings": {
+    "capture-evidence.json": "d3547c0d40a3bc98c4a2ffbcac81a64ef1486a5576f474f6515acf7edede4c7b",
+    "runtime-series.png": "95257891adadd09c49ee2795f5f1ddd75329691eb4a18ef0f3a0916e13efadb7",
+    "baseline-series.png": "f3a0fbbfaa0c5d5ede41604fcd4677a82227f6fb997cefeb7c5d95cb2079c9d3",
+    "series-bindings.json": "881b4a7a908961f47a2b861e2d5f866624fc0b5c03d3bcbd6658b7feee003156",
+    "verification.json": "b13af7afd811ed9f5bbb593020b330e8c294dad2494fbc63735bf8a073e88d6a",
+    "session-review.json": "7f3f8966412be36ad231e2ec3a7456812f5f5780ac64ff372fd38eca1330b8a2",
+    "fresh-import-evidence.json": "600dc38eea1df201a3d04a89a8e3f11c72737c46c7f4bd83dc289151a37c33e1",
+    "uid-inputs.json": "fcf20352c3a47322c3ddd06bafc768104837806697664b00bed326ac5eb17667",
+    "check-uids.gd": "5aebdc23823cae55eadc2135cbaae15a1f0543674ae779898f8fa525b8a2bc30"
+  }
+}

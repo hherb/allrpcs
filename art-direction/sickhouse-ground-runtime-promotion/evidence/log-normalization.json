@@ -1,0 +1,7 @@
+{
+  "scope": "Trailing blank lines at EOF only; exact raw host quality output retained compressed",
+  "raw_sha256": "07764eb81b4d96563125026fe1c8bce9b43b069ae3caaf73647806861ecb49aa",
+  "raw_file": "quality-raw.log.gz",
+  "normalized_file": "quality.log",
+  "normalized_sha256": "e2cba2a6ef108df7ee98f100f8c144c6bd5f210ae35b0077ea547850ce99fda5"
+}

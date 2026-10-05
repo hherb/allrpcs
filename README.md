@@ -21,7 +21,10 @@ The owner selected the 16px-feather [Sickhouse entrance pale-gravel series](art-
 after reviewing four comparisons, three editable masters and 24 disposable GPU views.
 Consolidated checks preserve the accepted ground owners and exact predecessor inputs.
 The [separate one-asset runtime scope](art-direction/sickhouse-ground-runtime-scope/README.md)
-is prepared; named runtime approval remains pending.
+has named approval. The exact 208x86 underlay is installed beneath the existing route
+in the [runtime checkpoint](art-direction/sickhouse-ground-runtime-promotion/README.md);
+six actual views and paired baselines equal approved external pixels. The owner
+confirmed these exact runtime views on 2026-10-05, clearing reviewed direct-main publication.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

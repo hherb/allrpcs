@@ -3416,6 +3416,36 @@
       "source": "tools/build_square_ground.py",
       "sha256": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.sickhouse_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/sickhouse-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 416,
+        "height": 172,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 208,
+        "height": 86
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 208,
+        "height": 86
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 86,
+      "source": "tools/build_sickhouse_ground.py",
+      "sha256": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3457,6 +3487,21 @@
     "world_origin": [
       1920,
       620
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "sickhouse_ground_provenance": {
+    "authorization": "art-direction/sickhouse-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "3557ce4deb13d0f976eb339bb5f467dc8b984103bfdf80bdbb2fc881bde4fa75",
+    "specification_sha256": "7b5b3448eed8768680abfac05b7d1a83d0f0170f354c4856a0a977033bdcbbbc",
+    "recipe_sha256": "8361213f67be6b689c1211fd35e10ef1d7252f794cf832a99c0c384142bfb45c",
+    "world_origin": [
+      2408,
+      1248
     ],
     "paint_phase": [
       0,

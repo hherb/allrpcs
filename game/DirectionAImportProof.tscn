@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3]
+[gd_scene load_steps=92 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -92,6 +92,8 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/garden-ground-soil.png" id="90_garden_soil"]
 
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/village-square-ground.png" id="91_square_ground"]
+
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/sickhouse-entrance-ground.png" id="92_sickhouse_ground"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
@@ -462,4 +464,11 @@ position = Vector2(4600, 2900)
 texture_filter = 2
 texture_repeat = 1
 texture = ExtResource("91_square_ground")
+centered = false
+
+[node name="SickhouseGroundProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(4600, 3500)
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("92_sickhouse_ground")
 centered = false

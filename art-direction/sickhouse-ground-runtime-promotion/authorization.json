@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "status": "named one-asset Sickhouse runtime scope approved",
+  "scope_sha256": "cc55fd1e3b0c63edf3cbad45aefffc6c6a7d790396baa57b4405459d5f2bb450",
+  "bindings_sha256": "7b5b3448eed8768680abfac05b7d1a83d0f0170f354c4856a0a977033bdcbbbc",
+  "review_sha256": "c60ead440a0bcbcbdce8a088ad3885090766c8677a9df82af9b73e9734114b75",
+  "scope": "Exact one-asset independent Sickhouse runtime underlay described in the approved README/specification. Separate runtime visual confirmation remains required before publishing.",
+  "baseline_commit": "4d1bcf0b259d3a58dd0c50b078ff7529fc7e2f77",
+  "baseline_sha256": "af5e83a4ceb521900d706864e2aa259f10c9a0315bdc859dbdc724d986faee3c",
+  "owner_approval_sha256": "14c18ff5f77f1d668a504e78c19a5f928b8517d904b4a90c2c3ff7892afc7383"
+}

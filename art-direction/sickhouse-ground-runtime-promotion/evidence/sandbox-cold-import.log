@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/art-direction/sickhouse-ground-runtime-promotion/cold_import.py", line 74, in <module>
+    main()
+    ~~~~^^
+  File "/Users/hherb/src/allrpcs/art-direction/sickhouse-ground-runtime-promotion/cold_import.py", line 55, in main
+    raise ValueError('Cold Godot command failed: ' + str(result.returncode))
+ValueError: Cold Godot command failed: -6

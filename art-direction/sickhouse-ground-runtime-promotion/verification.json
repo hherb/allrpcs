@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "quality": {
+    "command": "PATH=\"/opt/homebrew/bin:$PATH\" ./scripts/quality.sh",
+    "host_exit_code": 0,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "tests": {
+      "Domain": 2839,
+      "Application": 925,
+      "Infrastructure": 1261,
+      "Architecture": 8,
+      "total": 5033
+    },
+    "restore": "passed",
+    "format": "passed",
+    "scenario_validator": "passed",
+    "inherited_godot_smokes": "passed",
+    "garden_square_sickhouse_smokes": "passed",
+    "compatibility_startup": "passed"
+  },
+  "scope": {
+    "baseline_commit": "4d1bcf0b259d3a58dd0c50b078ff7529fc7e2f77",
+    "predecessor_files": 7290,
+    "assets": 93,
+    "masters": 44,
+    "old_scene_blocks": "byte-exact after removing named additions",
+    "selected_master": "exact unchanged copy",
+    "rejection_probes": 10,
+    "cold_import": "empty-cache exact RGBA with regenerated proof UID",
+    "native_uids": "four canonical distinct new IDs absent from predecessor",
+    "captures": [
+      {
+        "zoom": 0.8,
+        "frame": "wide",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 6979
+      },
+      {
+        "zoom": 0.8,
+        "frame": "tall",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 6979
+      },
+      {
+        "zoom": 1.0,
+        "frame": "wide",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 10725
+      },
+      {
+        "zoom": 1.0,
+        "frame": "tall",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 10817
+      },
+      {
+        "zoom": 2.0,
+        "frame": "wide",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 43468
+      },
+      {
+        "zoom": 2.0,
+        "frame": "tall",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 43231
+      }
+    ]
+  },
+  "historical_checks": {
+    "artwork": "35 unchanged checks at 2fcc849",
+    "garden": "7942e7d",
+    "square": "06f0dab4"
+  },
+  "sandbox_host": {
+    "sandbox_quality_exit_code": 134,
+    "sandbox_quality": "5033 tests passed before Godot logger startup failure",
+    "host_quality_exit_code": 0,
+    "sandbox_capture_exit_code": 134,
+    "host_capture_exit_code": 0,
+    "cold_import": "identical host retry after sandbox decoder exit -6",
+    "native_uid_audit": "sandbox startup blocked; host helper parse error and noncanonical capture UID corrected before final success"
+  },
+  "limitations": [
+    "Separate runtime visual confirmation pending before publication",
+    "No accessibility, pacing, terrain-completeness or release acceptance"
+  ],
+  "evidence_sha256": {
+    "evidence/capture-build.log": "56bc336933bad915d3d1a7e94113d5c323f37ed35c95e8211a43c01d00e4aea5",
+    "evidence/capture-validation.log": "dd361d5dbda768f6df4c97b6ca1a28fbe4553c077b9fed874744b9748a99b2d1",
+    "evidence/capture.log": "b9014f2d5dda35a7248b807f1a7ac92198dc78cc7c9c5b9140bab09e1937677a",
+    "evidence/cold-import.log": "6a9da5a3f686b5f52afdfa2f023621bf0f0b6f46e20ee46e57d44fb6ab68c858",
+    "evidence/failed-native-uids.log": "9a6e9f676d575ba7e5ea87c67d0d3d56843b9004a2d621c15fa81f545ad62919",
+    "evidence/final-scoped.log": "d1c26c846400e9bdc3d4ce1024e1b63b8bf4caa58caa842879a36ff07fcb183f",
+    "evidence/generate-capture-uid.log": "be683bac4feebf4ae4758bed7651b7db8f18b6dc23b70e61903025fb8436012f",
+    "evidence/import.log": "dbcd7a5b9183c762e733519be5edd9f77372c39bbbb363a9a49eeff742a651c2",
+    "evidence/initial-host-cold-import.log": "6a9da5a3f686b5f52afdfa2f023621bf0f0b6f46e20ee46e57d44fb6ab68c858",
+    "evidence/initial-host-fresh-import-evidence.json": "421de6446cd8ac583b260e216c2b26b291c0e7b3ec2a892b74210b4d27e890a8",
+    "evidence/initial-manifest.json": "2f276ef54a10cb6bff6d346b09c43a0fc3dededcc7f6b8b2eece0d692c4c60ab",
+    "evidence/log-normalization.json": "5e911085f294de741ee9f7b421ada2c695fd950f0884b9c468ca95d982e10fe9",
+    "evidence/native-uids.log": "b92316d8c36ac10005198feefb14d21e242b2499598b620e8a195ea403e6aff1",
+    "evidence/noncanonical-capture-uid.log": "c96dc04a62f46b07bd0288f7a96f8ed6ff4ee025b9cf7d629ae284d3e3180c4d",
+    "evidence/quality-raw.log.gz": "affab0b12aeec07c8b40631b2e6b490ed48071f69454b1535d4e39bd389592f6",
+    "evidence/quality.log": "e2cba2a6ef108df7ee98f100f8c144c6bd5f210ae35b0077ea547850ce99fda5",
+    "evidence/sandbox-capture.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/sandbox-cold-import.log": "23cca06dd69854a3dfa4b1dda0d8866f955531de48c8b691b08d91d5d91d9d7e",
+    "evidence/sandbox-fresh-import-evidence.json": "10fb0b61f11e512e5f29aba4c906e3178918c489be4e1a8ac0df2d6bc3c3d3a1",
+    "evidence/sandbox-generate-capture-uid.log": "65fc595ca5c858c07b788c180414d06db764a0644ea2b632eb99fd551c04d230",
+    "evidence/sandbox-native-uids.log": "0bd2b418eb8c34ef86408b75aeab428709b8ba50a714fd4c888a5e6063dc5d5e",
+    "evidence/sandbox-quality.log": "edf3dcb439d672e782944245f6c0025faefb91e87e6fd1878643cb21fff54f4b",
+    "evidence/scoped.log": "1db357a85d3da4adc20288b527d9dfb2de305bbeccb47a866d471d572d97b107"
+  },
+  "capture_evidence_sha256": "d3547c0d40a3bc98c4a2ffbcac81a64ef1486a5576f474f6515acf7edede4c7b",
+  "cold_import_evidence_sha256": "600dc38eea1df201a3d04a89a8e3f11c72737c46c7f4bd83dc289151a37c33e1"
+}

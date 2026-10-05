@@ -1,0 +1,46 @@
+PASS: one exact Sickhouse underlay, isolated editable master and append-only manifest
+PASS: exact Sickhouse source/master/imports, 93 assets/44 masters, normalized scenes and preserved predecessor
+[
+  {
+    "zoom": 0.8,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 6979
+  },
+  {
+    "zoom": 0.8,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 6979
+  },
+  {
+    "zoom": 1.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 10725
+  },
+  {
+    "zoom": 1.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 10817
+  },
+  {
+    "zoom": 2.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 43468
+  },
+  {
+    "zoom": 2.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 43231
+  }
+]

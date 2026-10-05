@@ -1,0 +1,40 @@
+{
+  "empty_cache_before_import": true,
+  "inputs": {
+    "game/art/direction-a-import-proof/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "game/art/direction-a-import-proof/terrain/sickhouse-entrance-ground.png.import": "4ba23e8e1da6179ff2d7341362a788c6fffe43b43c01c731c4ff78ce6954e29c",
+    "game/art/runtime/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "game/art/runtime/terrain/sickhouse-entrance-ground.png.import": "15bec67d38925d3d9ae7ed40f4a51b4d10bb9cab15428f065ed11061ca13bcde",
+    "art-direction/sickhouse-ground-runtime-promotion/fresh-project.godot": "4cbb0b745c279ff3ef148b37269ef259ad5069abbc12c051e7195b37dd5714e7",
+    "art-direction/sickhouse-ground-runtime-promotion/fresh-import-check.gd": "37b26e046d0b1b98dc36c2296a5a6b1c182a0c559ba10608cb3cae4ebf5aa41b",
+    "art-direction/sickhouse-ground-runtime-promotion/cold_import.py": "f2a1a3d1538249acf9aed1262584f44adae9dc4a2b0cb8c8966b657fafefb427"
+  },
+  "commands": [
+    {
+      "arguments": [
+        "--headless",
+        "--editor",
+        "--path",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-sickhouse-cold-ud4gy84z",
+        "--quit"
+      ],
+      "exit_code": 0,
+      "output": "Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org\n\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Started Project initialization (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Scanning file structure...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Loading global class names...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Verifying GDExtensions...\u001b[39m\u001b[0m\n[  50% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Creating autoload scripts...\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Initializing plugins...\u001b[39m\u001b[0m\n[  83% ] \u001b[90m\u001b[1mfirst_scan_filesystem\u001b[22m | Starting file scan...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mfirst_scan_filesystem\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | Started Scanning actions... (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | sickhouse-entrance-ground.png\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1m_update_scan_actions\u001b[22m | sickhouse-entrance-ground.png\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1m_update_scan_actions\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mreimport\u001b[22m | Preparing files to reimport...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing pre-reimport operations...\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | sickhouse-entrance-ground.png\u001b[39m\u001b[0m\n[  33% ] \u001b[90m\u001b[1mreimport\u001b[22m | sickhouse-entrance-ground.png\u001b[39m\u001b[0m\n[  66% ] \u001b[90m\u001b[1mreimport\u001b[22m | Finalizing Asset Import...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Started (Re)Importing Assets (2 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mreimport\u001b[22m | Executing post-reimport operations...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mreimport\u001b[22m\n\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Started Loading editor (5 steps)\u001b[39m\u001b[0m\n[   0% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading editor layout...\u001b[39m\u001b[0m\n[  16% ] \u001b[90m\u001b[1mloading_editor_layout\u001b[22m | Loading docks...\u001b[39m\u001b[0m\n\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m\n\u001b[0m\n"
+    },
+    {
+      "arguments": [
+        "--headless",
+        "--path",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-sickhouse-cold-ud4gy84z",
+        "--script",
+        "/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-sickhouse-cold-ud4gy84z/check.gd"
+      ],
+      "exit_code": 0,
+      "output": "Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org\n\nWARNING: Loaded resource as image file, this will not work on export: 'res://art/runtime/terrain/sickhouse-entrance-ground.png'. Instead, import the image file as an Image resource and load it normally as a resource.\n     at: load_from_file (core/io/image.cpp:2766)\n     GDScript backtrace (most recent call first):\n         [0] _initialize (/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/allrpcs-sickhouse-cold-ud4gy84z/check.gd:7)\nPASS: empty-cache actual runtime RGBA equals source; proof UID regenerated independently\n"
+    }
+  ],
+  "status": "passed",
+  "original_proof_uid": "uid://3upblth3frh1",
+  "regenerated_proof_uid": "uid://ddd21qwvsj7ee",
+  "decoded_runtime_rgba": "exact source pixels"
+}

@@ -11,7 +11,8 @@ cd "$repository_root"
 python3 scripts/validate-garden-ground-runtime.py --historical-quality
 python3 scripts/validate-direction-a-import-proof.py
 python3 scripts/validate-square-ground-runtime.py --historical-garden
-python3 scripts/validate-square-ground-runtime.py --check-rejections
+python3 scripts/validate-sickhouse-ground-runtime.py --historical-square
+python3 scripts/validate-sickhouse-ground-runtime.py --check-rejections
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes
 dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
@@ -23,4 +24,5 @@ dotnet run --project tools/ScenarioValidator/Allrpcs.ScenarioValidator.csproj --
 ./scripts/smoke-godot.sh
 ALLRPCS_RUNTIME_GARDEN_GROUND_CHECK=1 godot --headless --path game --quit-after 30
 ALLRPCS_RUNTIME_SQUARE_GROUND_CHECK=1 godot --headless --path game --quit-after 30
+ALLRPCS_RUNTIME_SICKHOUSE_GROUND_CHECK=1 godot --headless --path game --quit-after 30
 godot --path game --quit-after 60

@@ -223,8 +223,11 @@ Three editable underlay masters, native edge boards and all 24 disposable GPU
 views are retained. Consolidated checks prove source/mask/master parity, protected
 predecessor bytes and bounded GPU changes; four disposable mutations are rejected.
 The [separate named runtime scope](art-direction/sickhouse-ground-runtime-scope/README.md)
-proposes one unchanged 208x86 underlay; named approval is pending. No further
-runtime placement or terrain-completeness acceptance follows from external selection.
+was approved and its one unchanged 208x86 underlay is installed in the
+[runtime checkpoint](art-direction/sickhouse-ground-runtime-promotion/README.md).
+Six actual runtime views and paired baselines equal approved external GPU pixels.
+The owner separately confirmed these exact views on 2026-10-05; full quality and reviewed direct-main publication are cleared.
+No further placement or terrain-completeness acceptance follows from this scope.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.

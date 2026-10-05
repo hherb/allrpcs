@@ -1,4 +1,4 @@
-[gd_scene load_steps=364 format=3]
+[gd_scene load_steps=366 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -559,6 +559,9 @@
 
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/village-square-ground.png" id="446_square_ground"]
 [ext_resource type="Script" path="res://RuntimeSquareGroundSmokeCheck.cs" id="447_square_ground_check"]
+
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/sickhouse-entrance-ground.png" id="448_sickhouse_ground"]
+[ext_resource type="Script" path="res://RuntimeSickhouseGroundSmokeCheck.cs" id="449_sickhouse_ground_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3944,6 +3947,19 @@ centered = false
 
 [node name="RuntimeSquareGroundSmokeCheck" type="Node" parent="."]
 script = ExtResource("447_square_ground_check")
+
+[node name="SickhouseGroundPresentation" type="Node2D" parent="."]
+position = Vector2(2408, 1248)
+
+[node name="PaleGravel" type="Sprite2D" parent="SickhouseGroundPresentation"]
+z_index = -90
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("448_sickhouse_ground")
+centered = false
+
+[node name="RuntimeSickhouseGroundSmokeCheck" type="Node" parent="."]
+script = ExtResource("449_sickhouse_ground_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")
