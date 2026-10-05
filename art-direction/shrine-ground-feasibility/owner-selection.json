@@ -1,0 +1,39 @@
+{
+  "status": "owner selected feather-16 external composition",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "feather-16 seems best here",
+  "selected_variant": "feather-16",
+  "approval_scope": "External Shrine east-entrance pale-gravel feather-16 composition at z=-78; no named runtime scope or runtime visual confirmation",
+  "selected_files": {
+    "review/feather-16-1x.png": "929496887e5c9222502dd0f526d3ee52d183463ce59b1057f1bb099917ecb283",
+    "masters/feather-16.ora": "8aa678adbe6ed31696c992a89c8fb4de3525384ac5cf9ee9a2ed58bbcaf53203",
+    "proof-inputs/feather-16-layer.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "proof-inputs/feather-16-coverage.png": "ee1dd551c06dc9846264e11a94c75ff97750d5494f013011c4963a30ccaf9a56",
+    "proof-inputs/world-paint.png": "9d0213fba6a592966c6fc359ac719990feb69d8ff60f3f5b0b6ab7edf743ae2e",
+    "captures/baseline-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "captures/baseline-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "captures/baseline-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "captures/baseline-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "captures/baseline-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "captures/baseline-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "captures/feather-16-0.8x-wide.png": "a258b6f320ca23185f75254b2c439c3a57912fcc93fac3f922495f0f03cbb437",
+    "captures/feather-16-0.8x-tall.png": "7beb92df670da93e6743e9433be1af2983c08d6c2edddbb5364421656328951f",
+    "captures/feather-16-1.0x-wide.png": "836251b6400914d7a5b866471681c4f045dd0e277e51e0be2f3d960ea0ca1b7d",
+    "captures/feather-16-1.0x-tall.png": "e9de14d284b853ab933595a1dc249a2f3f359dcc108545569f3868c104be46d7",
+    "captures/feather-16-2.0x-wide.png": "958a8b5a329b1328ada9e70cb2faa40711c757b2e86463254b393f90a6309af2",
+    "captures/feather-16-2.0x-tall.png": "74f61fd29c0a8e704680f6167dd59c8bf2abcf368d36de50bc38f18e68aad160"
+  },
+  "displayed_series": {
+    "review/comparison-1x.png": "b92ffae33c4f5daf56979dc2492355fdee5d070d8d46f504ba3da7c2191a6b06",
+    "review/gpu-series-wide.png": "1da698e6b24cdea26974cbb61b28eb8612a71d738b74da054c5e4c3b48a3a73d",
+    "review/gpu-series-tall.png": "4f56c2be6c972d536e2a2047109a9368578c45ca9d781bba30557cc3cbaf543e",
+    "review/complete-edge-series-2x.png": "517bb63d27c0da938438708b7167d3ef25e6b7334d98e664ffd6e846ae47c5f0"
+  },
+  "evidence_sha256": {
+    "selection.json": "4901e09d12009c3c0bff285c08b448598696caddc7104b72b7c5b15da4606d32",
+    "inventory.json": "bfbdbde97278347db84e98fc1ca7d174e2af5df4b00f3e0914ec636c527991f0",
+    "capture-evidence.json": "6b26047b5efc35ca1a0e299bba9c4a5ec8a802cdaafbb8ef0c05e282a6c62b49",
+    "review-board-manifest.json": "2a7345db92d24b9ee56c34ece41f53e7910868c7dc3c457fe8e1a66e5b15ef2d"
+  }
+}

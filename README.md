@@ -35,6 +35,14 @@ installs one unchanged 285x92 underlay; all six actual runtime views and paired
 baselines equal selected external pixels. The owner confirmed these exact actual
 views on 2026-10-05, clearing reviewed direct-main publication.
 
+The next [Shrine east-entrance pale-gravel external series](art-direction/shrine-ground-feasibility/README.md)
+compares baseline, hard support and two inward feathers with three editable 2x
+masters, 24 actual-scene views and exact GPU edge crops. The proposed z=-78 apron
+sits above retained woodland transitions and below the route. The initial occluded
+z=-90 series is retained. The owner selected feather-16; consolidated artwork and
+preservation checks pass. The [named runtime scope](art-direction/shrine-ground-runtime-scope/README.md)
+is prepared; scope approval and actual-view confirmation remain separate checkpoints.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two

@@ -2,43 +2,41 @@
 
 ## Current state
 
-Approved Wagon scope is implemented from `b7048d2e`: 94 assets / 45 masters,
-script-free `WagonGroundPresentation` at `(1633,1512)` with one 285x92 packed-earth
-child, phase `(0,0)`, effective z=-90. The [runtime checkpoint](art-direction/wagon-ground-runtime-promotion/README.md)
-retains scope, 7,471-file predecessor, actual captures and final review/verification.
-All six actual runtime views and six baselines equal selected external GPU pixels.
-Full host quality passed 5,033 tests, zero build warnings/errors, every inherited
-Godot smoke, the new Wagon smoke and Compatibility startup. Cold imports,
-ten rejection probes and native UID checks pass. The owner confirmed these exact
-six runtime views on 2026-10-05; [acceptance](art-direction/wagon-ground-runtime-promotion/owner-runtime-acceptance.json)
-clears reviewed direct-main publication.
+Runtime remains the owner-confirmed [Wagon checkpoint](art-direction/wagon-ground-runtime-promotion/README.md)
+at `90dd8ccf`: 94 assets / 45 masters, all six accepted actual views.
+The owner selected **feather-16** from the [Shrine east-entrance pale-gravel series](art-direction/shrine-ground-feasibility/README.md).
+[Selection](art-direction/shrine-ground-feasibility/owner-selection.json) binds all
+selected artwork/views. Three editable 2x masters, 24 GPU comparisons and actual
+2x crops are retained, including the initial occluded z=-90 evidence.
 
-## Next bounded slice
+## Exact next slice
 
-Start from live main and prepare one bounded next external placement proposal under
-the continuing slice request. Choose one location/material, freeze predecessor
-inputs, and specify exact coverage/depth/phase and exclusions. Produce the complete
-external comparison series and editable masters together for owner review before
-consolidated validation. No further runtime placement is selected; named runtime
-scope and actual-view confirmation remain separate checkpoints.
-Accessibility/pacing/terrain completeness remain open.
+Obtain explicit approval of the [named Shrine runtime scope](art-direction/shrine-ground-runtime-scope/README.md)
+and its [bindings](art-direction/shrine-ground-runtime-scope/source-bindings.json).
+Only after approval, freeze the live implementation baseline and install the exact
+feather-16 92x143 pale-gravel underlay at `(596,250)`, phase `(0,0)`, z=-78 under
+independent `ShrineGroundPresentation`. Follow that scope's append-only 94/45 to
+95/46 manifest, imports/UIDs, independent owners, cold decoding and full quality
+requirements. Present six actual imported-runtime views matching selected external
+pixels, then obtain separate owner runtime confirmation before publishing promotion.
+No runtime installation is authorized by the external feather selection alone.
 
-## Constraints and validation
+## Verification and constraints
 
-Preserve accepted paint/masks/masters, rejected evidence, Direction A, route/Garden
-sibling order and all physical owners. Garden soil/meadow remain `(2048,1120)`,
-z=-90/-89; Square `(1920,620)` z=-90; Sickhouse `(2408,1248)` z=-90.
-`WholeChannelPresentation` stays final with five sprites, native three-node x<1664
-shader scope, UVs/caps/crossing, Shrine triangle, Clearing near side, gate/Forester
-and x=1664/x=2000 limits. No physics/navigation/layout/scenario/gameplay/dialogue/
+Fresh consolidated external checks pass: all 7,552 protected predecessor bytes,
+12 master layers, 10 protected alpha planes, 18 GPU comparisons, five rejection
+probes and unchanged Wagon checks. The named proposal check passes; no runtime asset
+is installed. [Session review](art-direction/shrine-ground-feasibility/session-review.json)
+records review fixes and evidence. Product/runtime/CI inputs are unchanged; retain
+[Wagon quality evidence](art-direction/wagon-ground-runtime-promotion/verification.json)
+(5,033 tests, all smokes, Compatibility startup). New captures needed identical
+host retries after sandbox exit 134. Do not repeat full CI for this external-only slice.
+
+Preserve Direction A, all accepted paint/masks/masters and rejected evidence,
+route/Garden sibling order, physical owners and final WholeChannel child/native
+shader/UV/caps/crossing/triangle/gate limits. Existing ground: Garden `(2048,1120)`
+z=-90/-89, Square `(1920,620)` z=-90, Sickhouse `(2408,1248)` z=-90,
+Wagon `(1633,1512)` z=-90. No physics/navigation/layout/scenario/gameplay/dialogue/
 clue/discovery/treatment/save/provider/functional-UI/audio/release/signing changes.
-Exclude `.DS_Store`.
-
-Run `PATH="/opt/homebrew/bin:$PATH" ./scripts/quality.sh` and
-`scripts/validate-wagon-ground-runtime.py --check-captures --check-rejections`.
-The checkpoint records sandbox failures and identical host retries. Frozen artwork
-validators stay at `2fcc849`, Garden at `7942e7d`, Square at `06f0dab4`, Sickhouse
-at `bbcc14b1`; the successor must prove preserved live inputs and exact additions.
-Never rewrite frozen inventories or weaken validators. Keep the initial capture/
-validation evidence and camera-clamp erratum: actual external transforms are correct,
-0.8x/1x south-clamped, both 2x views at `(1800,1530)`.
+Exclude `.DS_Store`; never rewrite frozen inventories or weaken validators.
+Accessibility, pacing and terrain completeness remain open.

@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "external comparison; owner visual review pending",
+  "origin": [
+    596,
+    250
+  ],
+  "size": [
+    92,
+    143
+  ],
+  "context_origin": [
+    460,
+    220
+  ],
+  "context_size": [
+    420,
+    290
+  ],
+  "variants": [
+    "baseline",
+    "hard-support",
+    "feather-16",
+    "feather-24"
+  ],
+  "sources": {
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "art-direction/garden-ground-runtime-promotion/owner-runtime-acceptance.json": "718d0ce5161f381768569825b4cb0c88250e1c4f3e912a7ab4dd19ea6d6ab2fd",
+    "art-direction/production-proof/corrected/asset-manifest.json": "035a93e25898f4ae389e7f7e124af8cfac1b298d694a781afe74b879326dac10",
+    "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+    "art-direction/residual-ground-tiling-proof/owner-acceptance.json": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "art-direction/shrine-ground-feasibility/baseline.json": "162d774e1068e5cee05a64677f90a4dca5478399d6c2ec2fcb4ff9af6c867e16",
+    "art-direction/shrine-ground-feasibility/selection.json": "d57685d41cff4624183d428572b76c18507c7a05df131af56229c0fa4de0bd1b",
+    "art-direction/sickhouse-ground-runtime-promotion/owner-runtime-acceptance.json": "0b440db7ed04b963d39c8beb3f856f82c132cc1b44e52499f3de93e7157f0c89",
+    "art-direction/square-ground-feasibility/build.py": "30b87560efd14e528ca8552203569ed9c7e38183e0258fae2c08c691e3a55279",
+    "art-direction/square-ground-runtime-promotion/owner-runtime-acceptance.json": "4403181a8fa1a442058c63079b0e26bd45300eb6d8c490714e515b966e72070b",
+    "art-direction/wagon-ground-runtime-promotion/owner-runtime-acceptance.json": "6b6e50bce0d4c1b9b3489043deac648089a7e7898706f5dd1a0df73c562ec806",
+    "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+    "game/Main.tscn": "605b18c568eeead89daf02620d45826dc28bd754d0d97220d8de44b60b753d61",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/OpeningRegionOldShrineGeometry.cs": "8a88fa9374c996c87539590b8953e9b7de73190f5703a51d04f9831dccf13570",
+    "game/OpeningRegionOldShrineSceneSource.cs": "d1703f28a3e27ef6d88e23b4a1e6a94202eaac1ba9e846824f268651b491726a",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/runtime/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+    "game/art/runtime/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+    "game/art/runtime/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "game/art/runtime/terrain/shrine-southern-road-path.png": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e",
+    "game/art/runtime/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+    "game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "game/art/runtime/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "game/art/runtime/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "game/art/runtime/terrain/village-edge-square-connector.png": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+    "game/art/runtime/terrain/village-square-ground.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "game/art/runtime/terrain/wagon-entrance-ground.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+    "game/art/runtime/terrain/woodland-shrine-path.png": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"
+  },
+  "mask_recipe": "route alpha > 0 in world x [620,664); square dilation radius 24; zero-padded inward smoothstep 16/24px",
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "z": -90,
+  "measurements": {
+    "hard-support": {
+      "nonzero_coverage_pixels": 12793,
+      "opaque_pixels": 12793
+    },
+    "feather-16": {
+      "nonzero_coverage_pixels": 12793,
+      "opaque_pixels": 6297
+    },
+    "feather-24": {
+      "nonzero_coverage_pixels": 12327,
+      "opaque_pixels": 4099
+    }
+  },
+  "outputs": {
+    "proof-inputs/world-paint.png": "9d0213fba6a592966c6fc359ac719990feb69d8ff60f3f5b0b6ab7edf743ae2e",
+    "proof-inputs/hard-support-layer.png": "f0a7a2d63cbf96b636f75fcbd8bfcba4c7b7f382cf27e26fb8fbf76c6861df57",
+    "proof-inputs/hard-support-coverage.png": "5f668768cb5f6e8bcd418b534431a4784ec12f2df8e7677c437815e09603b651",
+    "masters/hard-support.ora": "799ea9845af5967271587f06445dea2ff8db593f4da96f4d122b3ed135312432",
+    "proof-inputs/feather-16-layer.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "proof-inputs/feather-16-coverage.png": "ee1dd551c06dc9846264e11a94c75ff97750d5494f013011c4963a30ccaf9a56",
+    "masters/feather-16.ora": "8aa678adbe6ed31696c992a89c8fb4de3525384ac5cf9ee9a2ed58bbcaf53203",
+    "proof-inputs/feather-24-layer.png": "a5e21eac80397a0c0724af3a61423a4c48e1fb4d22757fac02a4e43c20986a75",
+    "proof-inputs/feather-24-coverage.png": "ddab9877690186051bb539958a123a756fef3064adde03bd34049d98f4ebd2ee",
+    "masters/feather-24.ora": "f9949a9def07ce5c75519e16b24a16cf4f718ecd35af6361be108268b031e889",
+    "review/baseline-1x.png": "f862f6da4cb03c4608fcb9a2ad9c4eeabb764f61b9d94ee7a655fa8a1a10b64d",
+    "review/hard-support-1x.png": "c9d108f17ec75d22859c40b4a4779bebdfe04c572bf82ebc6f84f205ec015c3b",
+    "review/feather-16-1x.png": "929496887e5c9222502dd0f526d3ee52d183463ce59b1057f1bb099917ecb283",
+    "review/feather-24-1x.png": "f70b2cda3b45ae86f21559ef9611199b31193da764096530cca5c55ea95ddee5",
+    "review/comparison-1x.png": "c2ab3cb88cd6a8462888fbd7852dc33c316bbf30144d4b8cc37fc0d3c5efff66",
+    "review/north-edge-2x.png": "860ad1952407f3e98ac33c49a33a3db18377ab3a438322e59e748297197edc7c",
+    "review/entrance-2x.png": "99ae73c682f1036cf4bfca5dec21ff4c4a4dc1bd9023207ae3cfe9b2f9be2bb4",
+    "review/south-edge-2x.png": "c1b1d04cb019476ebd5922af9f950ab5e1cafac556b169d007eb544cfd554922"
+  }
+}

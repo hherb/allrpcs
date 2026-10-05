@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "agent-selected external feasibility; owner visual review pending",
+  "owner_statement": "Please continue with slices",
+  "authorization_scope": "Continuing slice request and live HANDOVER.md authorize choosing one external placement proposal. Owner recipe selection and runtime promotion remain pending.",
+  "selected_use": "Pale-gravel apron at the Shrine east entrance beneath the retained Woodland\u2013Shrine route",
+  "source_material": "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png",
+  "segment_right_bottom_exclusive": true,
+  "dilation_radius": 24,
+  "feather_widths": [
+    16,
+    24
+  ],
+  "origin": [
+    596,
+    250
+  ],
+  "size": [
+    92,
+    143
+  ],
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "z": -78,
+  "baseline_head": "90dd8ccf990b308eb0d5c264f075f0cce8fb73f6",
+  "exclusions": [
+    "runtime assets/imports/scenes",
+    "source repainting",
+    "physical/navigation/layout",
+    "scenario/gameplay/UI/audio/providers",
+    "release/signing"
+  ],
+  "route_alpha_segment_world_x": [
+    620,
+    664
+  ],
+  "revision_reason": "Retained woodland perimeter at -80/-79 occludes the initial -90 proposal; -78 remains below retained route at -74."
+}

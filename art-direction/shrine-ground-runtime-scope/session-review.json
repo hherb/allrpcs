@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-05",
+  "status": "reviewed proposal; named approval pending",
+  "source_check": "passed; 38 bound files; no installation",
+  "proposal_sha256": {
+    "README.md": "30e20ba59f2128914247fd409acb24ad69d0553fef684156f8dfb0e639fcdad1",
+    "source-bindings.json": "c0d6764d26efa2b5e3b5072564dc19d7c6fdab9e9b9037745760b170e1c06520",
+    "check.py": "4d512085ca4c1cc9b0f03549ab2208a610492c282698605038d13f21404231f6"
+  },
+  "external_owner_selection_sha256": "2ac585a2176e433c7f737eef4b64d5122d4a7ea98af631aee4faf8e0a20c6d00",
+  "review_findings_fixed": [
+    "Depth is -78 above unchanged woodland transitions, below unchanged route -74; source/mask/master remain selected bytes.",
+    "Explicit Shrine inscription/discovery owners preserved; before/after manifest counts are 94/45 and 95/46."
+  ],
+  "remaining_findings": []
+}

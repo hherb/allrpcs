@@ -1,0 +1,38 @@
+{
+  "sources": {
+    "capture-evidence.json": "a38036e003db07576ec80a8cef9b4c3944f72674fa3ce4b81a5b23405447e50c",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "captures/baseline-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "captures/hard-support-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "captures/feather-16-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "captures/feather-24-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "captures/baseline-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "captures/hard-support-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "captures/feather-16-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "captures/feather-24-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "captures/baseline-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "captures/hard-support-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "captures/feather-16-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "captures/feather-24-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "captures/baseline-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "captures/hard-support-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "captures/feather-16-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "captures/feather-24-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "captures/baseline-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "captures/hard-support-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "captures/feather-16-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "captures/feather-24-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "captures/baseline-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "captures/hard-support-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "captures/feather-16-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "captures/feather-24-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "review/north-edge-2x.png": "860ad1952407f3e98ac33c49a33a3db18377ab3a438322e59e748297197edc7c",
+    "review/entrance-2x.png": "99ae73c682f1036cf4bfca5dec21ff4c4a4dc1bd9023207ae3cfe9b2f9be2bb4",
+    "review/south-edge-2x.png": "c1b1d04cb019476ebd5922af9f950ab5e1cafac556b169d007eb544cfd554922"
+  },
+  "outputs": {
+    "review/gpu-series-wide.png": "ce40138727fe214fbc144e2f97e85425bb4a0c4c73fc744d5c6c2d966a10e0ea",
+    "review/gpu-series-tall.png": "2289773e7385254cc49ce1b94245b31c5e166a8de01f167dbb2a1db37ed438a2",
+    "review/complete-edge-series-2x.png": "66348b3ad89fcc1c2780c80f8318f1afba195143ece7453f9bb723d7b42433a0"
+  }
+}

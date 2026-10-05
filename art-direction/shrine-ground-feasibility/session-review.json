@@ -1,0 +1,166 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "session reviewed; owner selected feather-16 external artwork; named runtime scope approval pending",
+  "baseline": "90dd8ccf990b308eb0d5c264f075f0cce8fb73f6",
+  "reviewed_slices": [
+    "Complete Shrine east-entrance external pale-gravel series",
+    "Exact selected feather-16 one-asset runtime scope proposal"
+  ],
+  "findings_fixed": [
+    "Initial z=-90 apron substantially occluded by retained woodland transitions. Retained complete initial series and revised proposed depth to -78, below route -74; paint/masks/masters unchanged.",
+    "CPU detail boards omitted actual woodland substrate; final detail boards now crop exact GPU 2x pixels, with CPU substrate limitation labelled.",
+    "Added independent selected-depth, recipe and owner-selection bindings to the new checker.",
+    "Added complete predecessor delegation for unchanged Wagon asset/rejection/capture checks; historical validators remain frozen.",
+    "Normalized new diagnostic log trailing blanks before publication."
+  ],
+  "remaining_findings": [],
+  "owner_statement": "feather-16 seems best here",
+  "validation": {
+    "status": "passed",
+    "preserved_predecessor_files": 7552,
+    "master_layers_checked": 12,
+    "protected_alpha_planes": 10,
+    "gpu_comparisons": [
+      {
+        "capture": "captures/hard-support-0.8x-wide.png",
+        "changed_pixels": 6535
+      },
+      {
+        "capture": "captures/feather-16-0.8x-wide.png",
+        "changed_pixels": 6222
+      },
+      {
+        "capture": "captures/feather-24-0.8x-wide.png",
+        "changed_pixels": 6000
+      },
+      {
+        "capture": "captures/hard-support-0.8x-tall.png",
+        "changed_pixels": 6535
+      },
+      {
+        "capture": "captures/feather-16-0.8x-tall.png",
+        "changed_pixels": 6222
+      },
+      {
+        "capture": "captures/feather-24-0.8x-tall.png",
+        "changed_pixels": 6000
+      },
+      {
+        "capture": "captures/hard-support-1.0x-wide.png",
+        "changed_pixels": 10030
+      },
+      {
+        "capture": "captures/feather-16-1.0x-wide.png",
+        "changed_pixels": 9495
+      },
+      {
+        "capture": "captures/feather-24-1.0x-wide.png",
+        "changed_pixels": 9249
+      },
+      {
+        "capture": "captures/hard-support-1.0x-tall.png",
+        "changed_pixels": 10030
+      },
+      {
+        "capture": "captures/feather-16-1.0x-tall.png",
+        "changed_pixels": 9495
+      },
+      {
+        "capture": "captures/feather-24-1.0x-tall.png",
+        "changed_pixels": 9249
+      },
+      {
+        "capture": "captures/hard-support-2.0x-wide.png",
+        "changed_pixels": 40597
+      },
+      {
+        "capture": "captures/feather-16-2.0x-wide.png",
+        "changed_pixels": 38542
+      },
+      {
+        "capture": "captures/feather-24-2.0x-wide.png",
+        "changed_pixels": 36942
+      },
+      {
+        "capture": "captures/hard-support-2.0x-tall.png",
+        "changed_pixels": 40485
+      },
+      {
+        "capture": "captures/feather-16-2.0x-tall.png",
+        "changed_pixels": 38477
+      },
+      {
+        "capture": "captures/feather-24-2.0x-tall.png",
+        "changed_pixels": 36910
+      }
+    ]
+  },
+  "rejections": {
+    "valid_fixture": "passed",
+    "probes": [
+      {
+        "probe": "world phase",
+        "status": "rejected",
+        "reason": "World paint phase drift"
+      },
+      {
+        "probe": "coverage escape",
+        "status": "rejected",
+        "reason": "Coverage recipe drift: feather-16"
+      },
+      {
+        "probe": "paint RGB",
+        "status": "rejected",
+        "reason": "Covered source RGB drift"
+      },
+      {
+        "probe": "camera translation",
+        "status": "rejected",
+        "reason": "Paired camera drift"
+      },
+      {
+        "probe": "selected depth",
+        "status": "rejected",
+        "reason": "Selected recipe drift"
+      }
+    ]
+  },
+  "overwrite_probes": {
+    "artwork_files_unchanged": 48,
+    "probes": [
+      {
+        "tool": "build.py",
+        "status": "overwrite rejected",
+        "reason": "ValueError: Existing packet is immutable; use a separate revision"
+      },
+      {
+        "tool": "boards.py",
+        "status": "overwrite rejected",
+        "reason": "ValueError: Existing review boards are immutable; use a separate revision"
+      }
+    ]
+  },
+  "scope_check": "passed: 38 bound inputs; exact one-asset proposal; no runtime installation",
+  "product_quality": {
+    "status": "retained preceding passing evidence; not rerun in this session",
+    "tests": 5033,
+    "source": "art-direction/wagon-ground-runtime-promotion/verification.json",
+    "source_sha256": "ebfec4e786bde9a9e5fa2068dd4a6defc194fafcd5e93e9d21b83a2836f7ee16",
+    "reason": "All 7552 protected predecessor files, including product/runtime/CI inputs, remain byte-identical; fresh consolidated checks cover the new external package."
+  },
+  "godot_capture": {
+    "sandbox_exit": 134,
+    "host_retry": "identical command passed for both initial and final complete 24-image series",
+    "renderer": "Compatibility",
+    "engine": "4.6.3"
+  },
+  "documentation_sha256": {
+    "HANDOVER.md": "cca73139d298d6495457ce5805d6d312d1b40bde975d97d92c3d4d4a41c8d639",
+    "README.md": "5f95c4bda0e994718d5af8afe27b0d798fffa7d0eecba36e66262ec176745521",
+    "ROADMAP.md": "13aa71e12ebd4932baa616e21fbb21660807f7c311ba78295e4b38f233da2d10",
+    "art-direction/shrine-ground-feasibility/README.md": "d56d9797d0eb965664dc7ed6e10dd77becf025384bf41c1c5a253bdb348e80d7",
+    "art-direction/shrine-ground-runtime-scope/README.md": "30e20ba59f2128914247fd409acb24ad69d0553fef684156f8dfb0e639fcdad1"
+  },
+  "next_gate": "Explicit named approval of the Shrine runtime scope; later separate confirmation of all six actual imported-runtime views before promotion publication."
+}

@@ -1,0 +1,30 @@
+{
+  "valid_fixture": "passed",
+  "probes": [
+    {
+      "probe": "world phase",
+      "status": "rejected",
+      "reason": "World paint phase drift"
+    },
+    {
+      "probe": "coverage escape",
+      "status": "rejected",
+      "reason": "Coverage recipe drift: feather-16"
+    },
+    {
+      "probe": "paint RGB",
+      "status": "rejected",
+      "reason": "Covered source RGB drift"
+    },
+    {
+      "probe": "camera translation",
+      "status": "rejected",
+      "reason": "Paired camera drift"
+    },
+    {
+      "probe": "selected depth",
+      "status": "rejected",
+      "reason": "Selected recipe drift"
+    }
+  ]
+}

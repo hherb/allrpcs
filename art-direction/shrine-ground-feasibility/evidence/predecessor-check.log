@@ -1,0 +1,57 @@
+PASS: exact Wagon source/master/imports, 94 assets/45 masters, normalized scenes and preserved predecessor
+PASS: exact Wagon source/master/imports, 94 assets/45 masters, normalized scenes and preserved predecessor
+PASS: rejects phase
+PASS: rejects depth
+PASS: rejects duplicate owner
+PASS: rejects dropped owner
+PASS: rejects transform
+PASS: rejects extent
+PASS: rejects physical scope
+PASS: rejects paint
+PASS: rejects mask/source
+PASS: rejects import processing
+[
+  {
+    "zoom": 0.8,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 9597
+  },
+  {
+    "zoom": 0.8,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 9597
+  },
+  {
+    "zoom": 1.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 15386
+  },
+  {
+    "zoom": 1.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 15386
+  },
+  {
+    "zoom": 2.0,
+    "frame": "wide",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 60162
+  },
+  {
+    "zoom": 2.0,
+    "frame": "tall",
+    "baseline_external_changed_pixels": 0,
+    "runtime_external_changed_pixels": 0,
+    "changed_pixels": 59903
+  }
+]
+PASS: 7552 preserved predecessor files and unchanged live Wagon checks

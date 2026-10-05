@@ -240,6 +240,15 @@ Orientation samples turn coverage while retaining world-aligned source paint. Pr
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.
 
+The continuing request now produced the [Shrine east-entrance pale-gravel external comparison](art-direction/shrine-ground-feasibility/README.md):
+three editable 2x masters, 24 actual-scene views and complete GPU edge crops.
+The proposed 92x143 apron at `(596,250)` uses z=-78 above unchanged woodland
+transitions and below the route. Initial occluded z=-90 evidence is retained.
+The owner selected feather-16; consolidated validation/preservation checks pass.
+The [named runtime scope](art-direction/shrine-ground-runtime-scope/README.md) is
+prepared; its approval and later actual-view confirmation remain pending.
+Completeness/accessibility/pacing remain open.
+
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
 artwork series first, keeping editable 2x masters and separate review exports. Present all

@@ -1,0 +1,135 @@
+{
+  "status": "proposal only; named runtime scope approval absent",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "prepared_against_commit": "90dd8ccf990b308eb0d5c264f075f0cce8fb73f6",
+  "owner": {
+    "name": "ShrineGroundPresentation",
+    "type": "Node2D",
+    "parent": ".",
+    "position": [
+      596,
+      250
+    ],
+    "z_index": 0,
+    "z_as_relative": true,
+    "scale": [
+      1,
+      1
+    ],
+    "rotation": 0,
+    "script": null
+  },
+  "asset": {
+    "asset_id": "terrain.shrine_entrance_ground",
+    "node_name": "PaleGravel",
+    "source": "art-direction/shrine-ground-feasibility/proof-inputs/feather-16-layer.png",
+    "source_sha256": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "coverage": "art-direction/shrine-ground-feasibility/proof-inputs/feather-16-coverage.png",
+    "world_paint": "art-direction/shrine-ground-feasibility/proof-inputs/world-paint.png",
+    "production_export": "art-direction/production-proof/corrected/exports/terrain/shrine-entrance-ground.png",
+    "production_master": "art-direction/production-proof/corrected/masters/shrine-entrance-ground.ora",
+    "proof_texture": "game/art/direction-a-import-proof/terrain/shrine-entrance-ground.png",
+    "runtime_texture": "game/art/runtime/terrain/shrine-entrance-ground.png",
+    "dimensions": [
+      92,
+      143
+    ],
+    "master_dimensions": [
+      184,
+      286
+    ],
+    "z_index": -78,
+    "local_position": [
+      0,
+      0
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "centered": false,
+    "scale": [
+      1,
+      1
+    ],
+    "rotation": 0,
+    "region_enabled": false,
+    "texture_filter": "linear",
+    "texture_repeat": "disabled",
+    "modulate": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "maximum_envelope": [
+    596,
+    250,
+    688,
+    393
+  ],
+  "manifest_counts": {
+    "before_assets": 94,
+    "before_masters": 45,
+    "after_assets": 95,
+    "after_masters": 46
+  },
+  "import_parameters": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/channel_remap/red": "0",
+    "process/channel_remap/green": "1",
+    "process/channel_remap/blue": "2",
+    "process/channel_remap/alpha": "3",
+    "process/size_limit": "0"
+  },
+  "source_sha256": {
+    "art-direction/shrine-ground-feasibility/review/feather-16-1x.png": "929496887e5c9222502dd0f526d3ee52d183463ce59b1057f1bb099917ecb283",
+    "art-direction/shrine-ground-feasibility/masters/feather-16.ora": "8aa678adbe6ed31696c992a89c8fb4de3525384ac5cf9ee9a2ed58bbcaf53203",
+    "art-direction/shrine-ground-feasibility/proof-inputs/feather-16-layer.png": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+    "art-direction/shrine-ground-feasibility/proof-inputs/feather-16-coverage.png": "ee1dd551c06dc9846264e11a94c75ff97750d5494f013011c4963a30ccaf9a56",
+    "art-direction/shrine-ground-feasibility/proof-inputs/world-paint.png": "9d0213fba6a592966c6fc359ac719990feb69d8ff60f3f5b0b6ab7edf743ae2e",
+    "art-direction/shrine-ground-feasibility/captures/baseline-0.8x-wide.png": "55a5dcdcbdc53f915af9fad0c4555a6e48ca2be6516844966be2e69dbaa27467",
+    "art-direction/shrine-ground-feasibility/captures/baseline-0.8x-tall.png": "d11544151733789674588e9a251bc2892b80f50647bc9c082d7772e17d309c31",
+    "art-direction/shrine-ground-feasibility/captures/baseline-1.0x-wide.png": "f8951a4680a31b6268ce8c8061675b4e22530ba2ba85f7aa5591b87db1565a10",
+    "art-direction/shrine-ground-feasibility/captures/baseline-1.0x-tall.png": "5484bbbb74a836bc17bc76b021bc7b3b819a32701971fd3bc748a56f7baebc56",
+    "art-direction/shrine-ground-feasibility/captures/baseline-2.0x-wide.png": "c253b119eb52c25f05b34a496e9950c30eab01291cb412d7d70cb42ce4f9b296",
+    "art-direction/shrine-ground-feasibility/captures/baseline-2.0x-tall.png": "2328668c6c315234a1a0a6c96eb395cb5202d09677e96072ec83b828ed93e280",
+    "art-direction/shrine-ground-feasibility/captures/feather-16-0.8x-wide.png": "a258b6f320ca23185f75254b2c439c3a57912fcc93fac3f922495f0f03cbb437",
+    "art-direction/shrine-ground-feasibility/captures/feather-16-0.8x-tall.png": "7beb92df670da93e6743e9433be1af2983c08d6c2edddbb5364421656328951f",
+    "art-direction/shrine-ground-feasibility/captures/feather-16-1.0x-wide.png": "836251b6400914d7a5b866471681c4f045dd0e277e51e0be2f3d960ea0ca1b7d",
+    "art-direction/shrine-ground-feasibility/captures/feather-16-1.0x-tall.png": "e9de14d284b853ab933595a1dc249a2f3f359dcc108545569f3868c104be46d7",
+    "art-direction/shrine-ground-feasibility/captures/feather-16-2.0x-wide.png": "958a8b5a329b1328ada9e70cb2faa40711c757b2e86463254b393f90a6309af2",
+    "art-direction/shrine-ground-feasibility/captures/feather-16-2.0x-tall.png": "74f61fd29c0a8e704680f6167dd59c8bf2abcf368d36de50bc38f18e68aad160",
+    "art-direction/shrine-ground-feasibility/review/comparison-1x.png": "b92ffae33c4f5daf56979dc2492355fdee5d070d8d46f504ba3da7c2191a6b06",
+    "art-direction/shrine-ground-feasibility/review/gpu-series-wide.png": "1da698e6b24cdea26974cbb61b28eb8612a71d738b74da054c5e4c3b48a3a73d",
+    "art-direction/shrine-ground-feasibility/review/gpu-series-tall.png": "4f56c2be6c972d536e2a2047109a9368578c45ca9d781bba30557cc3cbaf543e",
+    "art-direction/shrine-ground-feasibility/review/complete-edge-series-2x.png": "517bb63d27c0da938438708b7167d3ef25e6b7334d98e664ffd6e846ae47c5f0",
+    "art-direction/shrine-ground-feasibility/selection.json": "4901e09d12009c3c0bff285c08b448598696caddc7104b72b7c5b15da4606d32",
+    "art-direction/shrine-ground-feasibility/inventory.json": "bfbdbde97278347db84e98fc1ca7d174e2af5df4b00f3e0914ec636c527991f0",
+    "art-direction/shrine-ground-feasibility/capture-evidence.json": "6b26047b5efc35ca1a0e299bba9c4a5ec8a802cdaafbb8ef0c05e282a6c62b49",
+    "art-direction/shrine-ground-feasibility/review-board-manifest.json": "2a7345db92d24b9ee56c34ece41f53e7910868c7dc3c457fe8e1a66e5b15ef2d",
+    "art-direction/shrine-ground-feasibility/owner-selection.json": "2ac585a2176e433c7f737eef4b64d5122d4a7ea98af631aee4faf8e0a20c6d00",
+    "art-direction/shrine-ground-feasibility/evidence/validation.json": "dbc1ac9a98199cc82b00c8162b891acd847fcfcbbc358137a91fd97938c6a037",
+    "game/Main.tscn": "605b18c568eeead89daf02620d45826dc28bd754d0d97220d8de44b60b753d61",
+    "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/OpeningRegionOldShrineGeometry.cs": "8a88fa9374c996c87539590b8953e9b7de73190f5703a51d04f9831dccf13570",
+    "game/OpeningRegionOldShrineSceneSource.cs": "d1703f28a3e27ef6d88e23b4a1e6a94202eaac1ba9e846824f268651b491726a",
+    "game/OpeningRegionWoodlandClearingGeometry.cs": "4f93183cb68fe2c1c892c0c9a444257b7e53a394656e1e65c7e0de5e140bcb37",
+    "game/OpeningRegionWoodlandClearingSceneSource.cs": "f3e61895dfea7f10cc81049a19dd39d47c4cf593d667c9324584ea1e05a970fd",
+    "art-direction/production-proof/corrected/asset-manifest.json": "035a93e25898f4ae389e7f7e124af8cfac1b298d694a781afe74b879326dac10",
+    "art-direction/wagon-ground-runtime-promotion/owner-runtime-acceptance.json": "6b6e50bce0d4c1b9b3489043deac648089a7e7898706f5dd1a0df73c562ec806",
+    "art-direction/shrine-ground-feasibility/baseline.json": "162d774e1068e5cee05a64677f90a4dca5478399d6c2ec2fcb4ff9af6c867e16",
+    "art-direction/shrine-ground-runtime-scope/README.md": "30e20ba59f2128914247fd409acb24ad69d0553fef684156f8dfb0e639fcdad1"
+  }
+}
