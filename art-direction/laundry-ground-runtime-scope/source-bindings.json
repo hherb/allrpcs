@@ -1,0 +1,140 @@
+{
+  "status": "proposal only; named runtime scope approval absent",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "prepared_against_commit": "37c50273ef62161d6d36b789278e8e11acea12f0",
+  "owner": {
+    "name": "LaundryGroundPresentation",
+    "type": "Node2D",
+    "parent": ".",
+    "position": [
+      1564,
+      219
+    ],
+    "z_index": 0,
+    "z_as_relative": true,
+    "scale": [
+      1,
+      1
+    ],
+    "rotation": 0,
+    "script": null
+  },
+  "asset": {
+    "asset_id": "terrain.laundry_entrance_ground",
+    "node_name": "PackedEarth",
+    "source": "art-direction/laundry-ground-feasibility/proof-inputs/feather-24-layer.png",
+    "source_sha256": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "coverage": "art-direction/laundry-ground-feasibility/proof-inputs/feather-24-coverage.png",
+    "world_paint": "art-direction/laundry-ground-feasibility/proof-inputs/world-paint.png",
+    "production_export": "art-direction/production-proof/corrected/exports/terrain/laundry-entrance-ground.png",
+    "production_master": "art-direction/production-proof/corrected/masters/laundry-entrance-ground.ora",
+    "proof_texture": "game/art/direction-a-import-proof/terrain/laundry-entrance-ground.png",
+    "runtime_texture": "game/art/runtime/terrain/laundry-entrance-ground.png",
+    "dimensions": [
+      92,
+      210
+    ],
+    "master_dimensions": [
+      184,
+      420
+    ],
+    "z_index": -78,
+    "local_position": [
+      0,
+      0
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "centered": false,
+    "scale": [
+      1,
+      1
+    ],
+    "rotation": 0,
+    "region_enabled": false,
+    "texture_filter": "linear",
+    "texture_repeat": "disabled",
+    "modulate": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "maximum_envelope": [
+    1564,
+    219,
+    1656,
+    429
+  ],
+  "manifest_counts": {
+    "before_assets": 95,
+    "before_masters": 46,
+    "after_assets": 96,
+    "after_masters": 47
+  },
+  "import_parameters": {
+    "compress/mode": "0",
+    "mipmaps/generate": "false",
+    "process/fix_alpha_border": "false",
+    "process/premult_alpha": "false",
+    "process/channel_remap/red": "0",
+    "process/channel_remap/green": "1",
+    "process/channel_remap/blue": "2",
+    "process/channel_remap/alpha": "3",
+    "process/size_limit": "0"
+  },
+  "source_sha256": {
+    "art-direction/laundry-ground-feasibility/review/feather-24-1x.png": "35391e34bd77dffa9981c9761f8b39d2fa6a99737da690ae2961c47de06aeac6",
+    "art-direction/laundry-ground-feasibility/masters/feather-24.ora": "443de0376994318e3429c0a8410bb4fb7d614ae6bb1bc8a717ade33504ab9116",
+    "art-direction/laundry-ground-feasibility/proof-inputs/feather-24-layer.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "art-direction/laundry-ground-feasibility/proof-inputs/feather-24-coverage.png": "a29e1b8fc966b19b3ebf7347e1a1e8de7852565091b7e185011ff07116f10be1",
+    "art-direction/laundry-ground-feasibility/proof-inputs/world-paint.png": "3de0830395f517b084f6b5257858c1d32c7cc3b08b50a6043805827cd8089ab9",
+    "art-direction/laundry-ground-feasibility/captures/baseline-0.8x-wide.png": "420064952d453c3313b59b4f596e5265a6ddd88f3b9aea547469abddf87672f1",
+    "art-direction/laundry-ground-feasibility/captures/baseline-0.8x-tall.png": "fba4ee6ac947f75d009691ddb826248a2af8f5c058052e1a076aa57eda045fb4",
+    "art-direction/laundry-ground-feasibility/captures/baseline-1.0x-wide.png": "a836853ee99e2d21b842cd5766166937a1922ebfed851bbbd0b3d710a98716a5",
+    "art-direction/laundry-ground-feasibility/captures/baseline-1.0x-tall.png": "cf704acca0ffe871390c8917ab73138ba69476f8f56a17e938555f9c5eb4cc13",
+    "art-direction/laundry-ground-feasibility/captures/baseline-2.0x-wide.png": "8e29caadbf598b8667dbef44d5c5d95e21610e5867e2939c13948e3fd18be74b",
+    "art-direction/laundry-ground-feasibility/captures/baseline-2.0x-tall.png": "1e3e430cf96fe28ac053b30f5371d4354c85bcd4f0d266fbaa7d458bc01f524c",
+    "art-direction/laundry-ground-feasibility/captures/feather-24-0.8x-wide.png": "9e65ae8f90d979451792267df74efab5e1e337130bbf0fa77dd61b15dd666235",
+    "art-direction/laundry-ground-feasibility/captures/feather-24-0.8x-tall.png": "13c8a97c2078d84361743a41c496bd833825ace53e354ed47e0d8add1e55ef4c",
+    "art-direction/laundry-ground-feasibility/captures/feather-24-1.0x-wide.png": "544fe28092b77f5f1741448e2fb39c1bc3ccc68451c491717e311f5a360f2b04",
+    "art-direction/laundry-ground-feasibility/captures/feather-24-1.0x-tall.png": "3dec375bf5d50b014b59498a841292d2c7c03750864c72b416754c48a5633217",
+    "art-direction/laundry-ground-feasibility/captures/feather-24-2.0x-wide.png": "3743950221735a4619f278c5a0b89b410d23bade6e0f839448291cdc58df2843",
+    "art-direction/laundry-ground-feasibility/captures/feather-24-2.0x-tall.png": "f980a47d0065efd26058997904f0811c4c50e1d29c4a7427b2c445396419abeb",
+    "art-direction/laundry-ground-feasibility/review/comparison-1x.png": "045307667cdd785cf3c7368ca1a81dbddc9539e1e1fb7edc7aba9c7153334ac8",
+    "art-direction/laundry-ground-feasibility/review/gpu-series-wide.png": "a9ae131dc51051fdd9026f40056936867a51c19b45ca355434ceeb540af921bc",
+    "art-direction/laundry-ground-feasibility/review/gpu-series-tall.png": "f783ccbeefb25018b0ee2b8d28e1c4aeda1f69392f31fee5e0a598b410381bc1",
+    "art-direction/laundry-ground-feasibility/review/complete-edge-series-2x.png": "df33f69840992ffb1e3aa6295d090e33e3869d09f31cba9dae507bf1d9c8edad",
+    "art-direction/laundry-ground-feasibility/selection.json": "20784b26fa861f9592020c68a95e49d401cbecce5d6848cf9358db2005eb5f60",
+    "art-direction/laundry-ground-feasibility/inventory.json": "2ea0ecc147d683bad9b6c333b71c3f757b635580d6e9e0b9c991b4dd0c5f6bee",
+    "art-direction/laundry-ground-feasibility/capture-evidence.json": "7c317cb8cd50b609712d271cc207fba3a53e77ea45c5b4e566c76ce571c14ae7",
+    "art-direction/laundry-ground-feasibility/review-board-manifest.json": "869c89afd2028d1f701591ff2f402c06fc5de69ce7a43ff2d5bc1900fa04cb62",
+    "art-direction/laundry-ground-feasibility/owner-selection.json": "17b89e980955d9d58bbd193298a3fcf2220985d78b54ded1a3d249cfa154f805",
+    "art-direction/laundry-ground-feasibility/evidence/validation.json": "3a183d381c8cecc1a6400f0fc31511cc25e84180560c92f5ef6feed97bc91fd2",
+    "art-direction/laundry-ground-feasibility/baseline.json": "ba1997ba05454876056c7b9776d16ba6a6b73ceaf4fd920cde67ec809d704ef2",
+    "art-direction/laundry-ground-feasibility/build.py": "bd7d1f077d588282e0a485711895db4f83ed8fa101c1ea710e3f5ae2a794de46",
+    "art-direction/laundry-ground-feasibility/boards.py": "711c55ebc7569b1128c2f41546b7bcd1f282a40ad375d13a1564cda1cd168a3c",
+    "art-direction/laundry-ground-feasibility/capture.gd": "1982ad5d80c72c04c32242c4ac7db86003fd25c6c5edcb84454da8a6952bf3f5",
+    "art-direction/laundry-ground-feasibility/inspect_package.py": "000bf502c726f44d3c1ef9b8dece9808a510bbf834a8f3a6fb1a2f3f946c97b1",
+    "game/Main.tscn": "190a57c369108bcbd82b925ab24955fbb6cd614c85ed590edb02098b2aa40a89",
+    "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/OpeningRegionStreamLaundryGeometry.cs": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72",
+    "game/OpeningRegionStreamLaundrySceneSource.cs": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d",
+    "game/OpeningRegionWoodlandClearingGeometry.cs": "4f93183cb68fe2c1c892c0c9a444257b7e53a394656e1e65c7e0de5e140bcb37",
+    "game/OpeningRegionWoodlandClearingSceneSource.cs": "f3e61895dfea7f10cc81049a19dd39d47c4cf593d667c9324584ea1e05a970fd",
+    "art-direction/production-proof/corrected/asset-manifest.json": "57e8987d8181824e8b1fdc4e3430e9ffd40e56be092c0d80e1e8c3f7c946fc3f",
+    "art-direction/shrine-ground-runtime-promotion/owner-runtime-acceptance.json": "0859effe57944a958919f9409a4cc0d60200bbf8eda2b9a745e4b7c7143ce358",
+    "art-direction/laundry-ground-runtime-scope/README.md": "8019569bd2f3ec2a4c9f4261ba13902d153d58b2d81cfb52845b39a2d3208432",
+    "art-direction/laundry-ground-runtime-scope/baseline.json": "c269d7bb8d3e1c8ffa73127ba4aea4d03b476c7e622db78b03b184492cbd6006"
+  }
+}

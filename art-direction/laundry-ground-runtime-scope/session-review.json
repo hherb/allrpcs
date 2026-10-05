@@ -1,0 +1,20 @@
+{
+  "status": "review complete; issues fixed; scoped checks passed",
+  "findings_fixed": [
+    "Resolve local frozen inspector build import explicitly instead of installed Python build package.",
+    "Correct inherited Shrine triangle and Sickhouse gravel wording.",
+    "Require complete scope binding inventory and exact selected-file/board/evidence sets."
+  ],
+  "preservation": "Every initial Laundry packet byte and 7801 predecessor files unchanged; only continuation documents updated.",
+  "boundary": "External owner selection and one exact proposed runtime scope; named approval and later actual runtime confirmation still required.",
+  "proposal_sha256": {
+    "README.md": "8019569bd2f3ec2a4c9f4261ba13902d153d58b2d81cfb52845b39a2d3208432",
+    "source-bindings.json": "53d3ac0e237f729fa85d0f3fba34d1453f782aaadf43af27f4c7d0176f05b688",
+    "baseline.json": "c269d7bb8d3e1c8ffa73127ba4aea4d03b476c7e622db78b03b184492cbd6006",
+    "check.py": "3779fb16a2504ed0ab878b4b6553b8aa3cdbe5f9d6fe059afd7a7349da546017",
+    "check_predecessor.py": "9c001e14f06538ee7817f01f861e4cbf210794166a8b70c5936cf9ba543856cb",
+    "rejection_probes.py": "881a577a2a8d29a9df9ad80c9208fdc0f2116c14b1fe14e2eb735df3207d0a28",
+    "verification.json": "d11f6670bfe7a8f91c3fbda7e6bd37a008e77ae9d817cc428228380c0253b85f"
+  },
+  "owner_selection_sha256": "17b89e980955d9d58bbd193298a3fcf2220985d78b54ded1a3d249cfa154f805"
+}

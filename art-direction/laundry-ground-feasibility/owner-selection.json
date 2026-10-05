@@ -1,0 +1,40 @@
+{
+  "status": "owner selected feather-24 external composition",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "ok, continue",
+  "interpretation": "Agreement with the immediately preceding agent recommendation of feather-24; proceeding with external validation and a runtime scope proposal only.",
+  "selected_variant": "feather-24",
+  "approval_scope": "External Laundry east-entrance packed-earth feather-24 at z=-78; named runtime scope and actual runtime confirmation remain pending.",
+  "selected_files": {
+    "review/feather-24-1x.png": "35391e34bd77dffa9981c9761f8b39d2fa6a99737da690ae2961c47de06aeac6",
+    "masters/feather-24.ora": "443de0376994318e3429c0a8410bb4fb7d614ae6bb1bc8a717ade33504ab9116",
+    "proof-inputs/feather-24-layer.png": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+    "proof-inputs/feather-24-coverage.png": "a29e1b8fc966b19b3ebf7347e1a1e8de7852565091b7e185011ff07116f10be1",
+    "proof-inputs/world-paint.png": "3de0830395f517b084f6b5257858c1d32c7cc3b08b50a6043805827cd8089ab9",
+    "captures/baseline-0.8x-wide.png": "420064952d453c3313b59b4f596e5265a6ddd88f3b9aea547469abddf87672f1",
+    "captures/baseline-0.8x-tall.png": "fba4ee6ac947f75d009691ddb826248a2af8f5c058052e1a076aa57eda045fb4",
+    "captures/baseline-1.0x-wide.png": "a836853ee99e2d21b842cd5766166937a1922ebfed851bbbd0b3d710a98716a5",
+    "captures/baseline-1.0x-tall.png": "cf704acca0ffe871390c8917ab73138ba69476f8f56a17e938555f9c5eb4cc13",
+    "captures/baseline-2.0x-wide.png": "8e29caadbf598b8667dbef44d5c5d95e21610e5867e2939c13948e3fd18be74b",
+    "captures/baseline-2.0x-tall.png": "1e3e430cf96fe28ac053b30f5371d4354c85bcd4f0d266fbaa7d458bc01f524c",
+    "captures/feather-24-0.8x-wide.png": "9e65ae8f90d979451792267df74efab5e1e337130bbf0fa77dd61b15dd666235",
+    "captures/feather-24-0.8x-tall.png": "13c8a97c2078d84361743a41c496bd833825ace53e354ed47e0d8add1e55ef4c",
+    "captures/feather-24-1.0x-wide.png": "544fe28092b77f5f1741448e2fb39c1bc3ccc68451c491717e311f5a360f2b04",
+    "captures/feather-24-1.0x-tall.png": "3dec375bf5d50b014b59498a841292d2c7c03750864c72b416754c48a5633217",
+    "captures/feather-24-2.0x-wide.png": "3743950221735a4619f278c5a0b89b410d23bade6e0f839448291cdc58df2843",
+    "captures/feather-24-2.0x-tall.png": "f980a47d0065efd26058997904f0811c4c50e1d29c4a7427b2c445396419abeb"
+  },
+  "displayed_series": {
+    "review/comparison-1x.png": "045307667cdd785cf3c7368ca1a81dbddc9539e1e1fb7edc7aba9c7153334ac8",
+    "review/gpu-series-wide.png": "a9ae131dc51051fdd9026f40056936867a51c19b45ca355434ceeb540af921bc",
+    "review/gpu-series-tall.png": "f783ccbeefb25018b0ee2b8d28e1c4aeda1f69392f31fee5e0a598b410381bc1",
+    "review/complete-edge-series-2x.png": "df33f69840992ffb1e3aa6295d090e33e3869d09f31cba9dae507bf1d9c8edad"
+  },
+  "evidence_sha256": {
+    "selection.json": "20784b26fa861f9592020c68a95e49d401cbecce5d6848cf9358db2005eb5f60",
+    "inventory.json": "2ea0ecc147d683bad9b6c333b71c3f757b635580d6e9e0b9c991b4dd0c5f6bee",
+    "capture-evidence.json": "7c317cb8cd50b609712d271cc207fba3a53e77ea45c5b4e566c76ce571c14ae7",
+    "review-board-manifest.json": "869c89afd2028d1f701591ff2f402c06fc5de69ce7a43ff2d5bc1900fa04cb62"
+  }
+}

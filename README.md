@@ -47,9 +47,11 @@ selected external pixels exactly. The owner confirmed these exact actual views o
 
 The [Laundry east-entrance external packed-earth study](art-direction/laundry-ground-feasibility/README.md)
 compares baseline, hard support, feather-16 and feather-24 with three editable
-2x masters, 24 retained actual-scene views and complete edge crops. Owner
-preference/revisions and consolidated validation are pending; no Laundry runtime
-promotion is selected.
+2x masters, 24 retained actual-scene views and complete edge crops. The owner
+agreed to continue with the recommended feather-24 composition; exact selection
+hashes and independent artwork checks are recorded. The
+[one-asset runtime scope](art-direction/laundry-ground-runtime-scope/README.md)
+is prepared for named approval; no Laundry runtime asset or scene change is installed.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

@@ -253,9 +253,11 @@ equal selected external pixels exactly. The owner confirmed these exact actual v
 The [Laundry east-entrance packed-earth comparison](art-direction/laundry-ground-feasibility/README.md)
 is produced as one complete external series: baseline, hard support and two
 inward feathers, three editable 2x masters, 24 actual-scene views and edge crops.
-Owner preference/revisions are pending; consolidate validation afterward, then
-prepare only the selected named runtime scope. Existing runtime acceptance is
-carried forward and no Laundry runtime promotion is selected.
+The owner agreed to continue with recommended feather-24. Exact selection
+hashes, independent masks/master/capture checks and successor preservation are
+recorded. The [named runtime scope](art-direction/laundry-ground-runtime-scope/README.md)
+is prepared for approval; no Laundry runtime asset or scene change is installed.
+Existing runtime acceptance is carried forward.
 
 Completeness/accessibility/pacing remain open.
 

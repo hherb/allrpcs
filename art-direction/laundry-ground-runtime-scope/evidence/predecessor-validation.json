@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "preserved_predecessor_files": 7801,
+  "master_layers_checked": 12,
+  "protected_alpha_planes": 11,
+  "gpu_comparisons": [
+    {
+      "capture": "captures/hard-support-0.8x-wide.png",
+      "changed_pixels": 5012
+    },
+    {
+      "capture": "captures/feather-16-0.8x-wide.png",
+      "changed_pixels": 4711
+    },
+    {
+      "capture": "captures/feather-24-0.8x-wide.png",
+      "changed_pixels": 4529
+    },
+    {
+      "capture": "captures/hard-support-0.8x-tall.png",
+      "changed_pixels": 5012
+    },
+    {
+      "capture": "captures/feather-16-0.8x-tall.png",
+      "changed_pixels": 4711
+    },
+    {
+      "capture": "captures/feather-24-0.8x-tall.png",
+      "changed_pixels": 4529
+    },
+    {
+      "capture": "captures/hard-support-1.0x-wide.png",
+      "changed_pixels": 7730
+    },
+    {
+      "capture": "captures/feather-16-1.0x-wide.png",
+      "changed_pixels": 7203
+    },
+    {
+      "capture": "captures/feather-24-1.0x-wide.png",
+      "changed_pixels": 7106
+    },
+    {
+      "capture": "captures/hard-support-1.0x-tall.png",
+      "changed_pixels": 7730
+    },
+    {
+      "capture": "captures/feather-16-1.0x-tall.png",
+      "changed_pixels": 7203
+    },
+    {
+      "capture": "captures/feather-24-1.0x-tall.png",
+      "changed_pixels": 7106
+    },
+    {
+      "capture": "captures/hard-support-2.0x-wide.png",
+      "changed_pixels": 31296
+    },
+    {
+      "capture": "captures/feather-16-2.0x-wide.png",
+      "changed_pixels": 29516
+    },
+    {
+      "capture": "captures/feather-24-2.0x-wide.png",
+      "changed_pixels": 28378
+    },
+    {
+      "capture": "captures/hard-support-2.0x-tall.png",
+      "changed_pixels": 31128
+    },
+    {
+      "capture": "captures/feather-16-2.0x-tall.png",
+      "changed_pixels": 29425
+    },
+    {
+      "capture": "captures/feather-24-2.0x-tall.png",
+      "changed_pixels": 28332
+    }
+  ],
+  "membership_policy": "Exact live baseline plus external selection/evidence/scope additions only; frozen checker unchanged"
+}

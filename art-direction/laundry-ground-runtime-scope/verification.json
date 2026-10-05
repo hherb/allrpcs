@@ -1,0 +1,43 @@
+{
+  "status": "passed; external selection and runtime scope proposal only",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "selected_variant": "feather-24",
+  "artwork": "Complete byte reproduction, independent masks/source RGB/master layers, protected paint separation and 18 bounded GPU comparisons passed.",
+  "scope_bound_inputs": 43,
+  "rejection_probes": 10,
+  "preserved_predecessor_files": 7801,
+  "quality": {
+    "status": "all quality commands passed cumulatively on accepted product head; live successor preservation passed",
+    "head": "5e5e3cab5a45a6461f6d804c871d09fee5f423b9",
+    "initial_command": "PATH=\"/opt/homebrew/bin:$PATH\" ./scripts/quality.sh",
+    "initial_live_result": "Stopped at unchanged frozen Shrine membership gate because Laundry adds files outside that historical inventory.",
+    "accepted_head_run": "Frozen validators and restore passed; turn interruption stopped process at formatting. Confirmed no process remained before resuming.",
+    "resumed_commands": "Exact quality.sh suffix from dotnet format through final Compatibility launch; evidence/quality-resume.sh",
+    "resumed_exit_code": 0,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "test_suites": {
+      "Domain": 2839,
+      "Application": 925,
+      "Infrastructure": 1261,
+      "Architecture": 8
+    },
+    "test_total": 5033,
+    "scenario": "passed",
+    "godot": "All credential-free and accepted ground smokes plus Compatibility launch completed. Shutdown resource-leak diagnostics are retained in the resumed log; no product source was changed.",
+    "product_equivalence": "All accepted product code, scripts, assets and scene bytes are unchanged under the live predecessor snapshot. No frozen validator edited.",
+    "raw_resumed_log_sha256": "228281a0d83a94a86bd0dea113fd842548d42fd612b4d1964123d1c65c265635",
+    "log_normalization": "Removed only the final extra blank line for whitespace-clean publication; raw original digest retained."
+  },
+  "named_runtime_scope": "approval pending",
+  "runtime_installed": false,
+  "evidence_sha256": {
+    "evidence/predecessor-validation.json": "5b341db89cf0c3e3aa47f28b96ec2071a15df3fb287f6a8ddc96b1e805b007c5",
+    "evidence/quality-accepted-head-interrupted.log": "83395798aa9208fe131a818fead6459a864deaa0d64d6461f4aaf7d627f936a6",
+    "evidence/quality-accepted-head-resumed.log": "7e2373690409903768fbc398ca942c7bd68a47876e315376231fbe4c021a32b9",
+    "evidence/quality-live-membership.log": "3bccbfa89319b49e0922f9003cfbe7ab69464a33204f98a93b54c6a390d96b05",
+    "evidence/quality-resume.sh": "242142655438235ab7c1a9883d41f33de6188161a1500b940685eda06b7f5247",
+    "evidence/rejection-checks.json": "259ba24f07583316670c4011f66d31cf26e487ad635e92bdf02460b7ef62a7f7"
+  }
+}

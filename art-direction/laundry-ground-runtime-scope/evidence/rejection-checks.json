@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "rejection_probes": [
+    {
+      "probe": "wrong owner position",
+      "status": "rejected",
+      "reason": "Owner scope drift"
+    },
+    {
+      "probe": "scripted owner",
+      "status": "rejected",
+      "reason": "Owner scope drift"
+    },
+    {
+      "probe": "wrong depth",
+      "status": "rejected",
+      "reason": "Asset scope drift"
+    },
+    {
+      "probe": "wrong dimensions",
+      "status": "rejected",
+      "reason": "Asset scope drift"
+    },
+    {
+      "probe": "repeat enabled",
+      "status": "rejected",
+      "reason": "Asset scope drift"
+    },
+    {
+      "probe": "wrong phase",
+      "status": "rejected",
+      "reason": "Phase/extent scope drift"
+    },
+    {
+      "probe": "wrong manifest count",
+      "status": "rejected",
+      "reason": "Manifest scope drift"
+    },
+    {
+      "probe": "wrong selected source",
+      "status": "rejected",
+      "reason": "External source path drift"
+    },
+    {
+      "probe": "missing bound input",
+      "status": "rejected",
+      "reason": "Incomplete source binding inventory"
+    },
+    {
+      "probe": "wrong baseline head",
+      "status": "rejected",
+      "reason": "Proposal baseline head drift"
+    }
+  ]
+}
