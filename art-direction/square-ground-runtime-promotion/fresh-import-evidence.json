@@ -1,0 +1,26 @@
+{
+  "status": "pass",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "method": "Disposable empty-cache project copied both PNGs and runtime sidecar only; independently regenerated proof UID; actual compressed runtime resource RGBA equals raw selected PNG pixels. No product cache changes.",
+  "assets": [
+    {
+      "source": "game/art/runtime/terrain/village-square-ground.png",
+      "source_sha256": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+      "original_uid": "\"uid://cc08r8l4d1c8h\"",
+      "fresh_uid": "\"uid://cc08r8l4d1c8h\"",
+      "fresh_import_sha256": "b77daed64ad3bb21333538d03f7e57e10b5053a4a6082fd2b6a9e49a26c38225"
+    },
+    {
+      "source": "game/art/direction-a-import-proof/terrain/village-square-ground.png",
+      "source_sha256": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+      "original_uid": "\"uid://c0lumjt3geluo\"",
+      "fresh_uid": "\"uid://cak5ekvg1hisq\"",
+      "fresh_import_sha256": "9958d7db45d2ba76d63a42626e5762b9c82d872b2cb4e82b4445adba97f812c7"
+    }
+  ],
+  "script_sha256": "8b8ccffb32f8528eac4f65cecf85dead388b561981876ee9e608f1d412f3bf48",
+  "log_sha256": "133f434aafc76b007415f2ac84c294659065adf4d69fc82c2483f67c5956f9c3",
+  "sandbox_host": "raw import succeeded sandboxed; runtime decode check retried identically on host after startup exit134",
+  "limit": "cold-import RGBA evidence only, no release/export claim; diagnostic raw-image load warning expected for source comparison"
+}

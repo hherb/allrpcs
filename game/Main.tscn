@@ -1,4 +1,4 @@
-[gd_scene load_steps=362 format=3]
+[gd_scene load_steps=364 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -556,6 +556,9 @@
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/garden-ground-meadow.png" id="443_garden_meadow"]
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/garden-ground-soil.png" id="444_garden_soil"]
 [ext_resource type="Script" path="res://RuntimeGardenGroundSmokeCheck.cs" id="445_garden_ground_check"]
+
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/village-square-ground.png" id="446_square_ground"]
+[ext_resource type="Script" path="res://RuntimeSquareGroundSmokeCheck.cs" id="447_square_ground_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -3928,6 +3931,19 @@ centered = false
 
 [node name="RuntimeGardenGroundSmokeCheck" type="Node" parent="."]
 script = ExtResource("445_garden_ground_check")
+
+[node name="SquareGroundPresentation" type="Node2D" parent="."]
+position = Vector2(1920, 620)
+
+[node name="PackedEarth" type="Sprite2D" parent="SquareGroundPresentation"]
+z_index = -90
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("446_square_ground")
+centered = false
+
+[node name="RuntimeSquareGroundSmokeCheck" type="Node" parent="."]
+script = ExtResource("447_square_ground_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

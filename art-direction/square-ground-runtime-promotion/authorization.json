@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "status": "named one-asset Square runtime scope approved",
+  "scope_sha256": "05b4c691a9e440cb7304f3499192b9e91c567506aed168fd806fec5ca0df6985",
+  "bindings_sha256": "207587acafc272a878561090d398cf2fb8640589f21e9c54b97a1219460893b3",
+  "review_sha256": "09e0c426b4e67f854f1f433cd7a7fd6418d31da91caaea958c3b82572fb3894f",
+  "scope": "Exact one-asset independent runtime underlay described in the approved README/specification. Separate owner runtime visual confirmation remains required before runtime publication.",
+  "baseline_commit": "fc5d38a02758dc8822d1844829cfe3f85a12a4f2",
+  "baseline_sha256": "32471f192328f5967b5b83349fae56bf7d46480c190f0add13c81fd2bb414113",
+  "owner_approval_sha256": "15a34e7891bb018905ea53011d3d19601a3453a84a62e111603cb0e0f29de319",
+  "non_authored_metadata_exclusion": {
+    "path": "art-direction/square-ground-feasibility/.DS_Store",
+    "basis": "Approved handover explicitly requires excluding .DS_Store; scope registry mistakenly included ignored Finder metadata. Historical scope bytes remain immutable; authored paint/mask/source approval unchanged."
+  }
+}

@@ -3386,6 +3386,36 @@
       "source": "tools/build_garden_ground.py",
       "sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.village_square_ground",
+      "category": "terrain",
+      "export": "exports/terrain/village-square-ground.png",
+      "master_dimensions_pixels": {
+        "width": 1120,
+        "height": 1120,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 560
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 560
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 560,
+      "source": "tools/build_square_ground.py",
+      "sha256": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3418,5 +3448,20 @@
       0
     ],
     "master_policy": "nearest 2x masked paint; hidden independent coverage reference; empty Corrections"
+  },
+  "square_ground_provenance": {
+    "authorization": "art-direction/square-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "aea6648fa40fb50ad9ca9b7852b058b5f8d1b41cdd0be0f4a3fddd226c834548",
+    "specification_sha256": "207587acafc272a878561090d398cf2fb8640589f21e9c54b97a1219460893b3",
+    "recipe_sha256": "17b72c25271a24ab2339e78629a95023faca0421eb0577e61c465d0711c59dac",
+    "world_origin": [
+      1920,
+      620
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
   }
 }

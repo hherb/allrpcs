@@ -1,0 +1,10 @@
+PASS: one exact Square underlay, isolated editable master and append-only manifest
+PASS: exact Square source/master/imports, 92 assets/43 masters, normalized scenes and preserved predecessor
+PASS: rejects phase
+PASS: rejects depth
+PASS: rejects duplicate owner
+PASS: rejects dropped owner
+PASS: rejects physical scope
+PASS: rejects paint
+PASS: rejects mask/source
+PASS: rejects import processing

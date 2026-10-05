@@ -1,0 +1,45 @@
+{
+  "status": "review complete; runtime visual confirmation pending",
+  "date": "2026-10-05",
+  "baseline_commit": "fc5d38a02758dc8822d1844829cfe3f85a12a4f2",
+  "authorization_sha256": "aea6648fa40fb50ad9ca9b7852b058b5f8d1b41cdd0be0f4a3fddd226c834548",
+  "verification_sha256": "9e74b642ad123bcc397045a5fce34c11cf2c7b418feb99df6a1c49b035eca76d",
+  "reviewed_paths_sha256": {
+    "HANDOVER.md": "0887cb614236bd155af5147cf5bdb1149306a9bcc007b37a17bb398758cac64d",
+    "README.md": "ecf1046114d3b77d9be6dd935837f194f54c6440b2bac2279412366b7ac297ab",
+    "ROADMAP.md": "90e96914c274ef434849a3c58a48c1b1a13c555398c5ca42384831f856d891e0",
+    "art-direction/production-proof/corrected/asset-manifest.json": "e41cc2994f965729ae7d05ff9ad388854bb6b91ebe80ef0f28aafbaa4ac84de3",
+    "art-direction/production-proof/corrected/exports/terrain/village-square-ground.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "art-direction/production-proof/corrected/masters/village-square-ground.ora": "a9cf4070a796674562124310df47528ad63da5400ce6e2d0381e1235b7499d25",
+    "art-direction/production-proof/corrected/tools/build_square_ground.py": "17b72c25271a24ab2339e78629a95023faca0421eb0577e61c465d0711c59dac",
+    "game/DirectionAImportProof.tscn": "e77b375dc23b44a184242f1f77b35c6943d8bf075456a1d2bdd7259a328dd17f",
+    "game/Main.tscn": "7e1b149dc0edae84075cd6ae61b56ade5f6220b07ec9dcce805e655cd45cdb2e",
+    "game/RuntimeSquareGroundSmokeCheck.cs": "4d22bb0639c9ca3c55c5b2a84e2eb12858b4b55587cfbbab8c80e3acc2a3dae3",
+    "game/RuntimeSquareGroundSmokeCheck.cs.uid": "8933036fa402f469febbd0ed4c3b1332256d5d2feedf59660c87ccb0ef625662",
+    "game/art/direction-a-import-proof/README.md": "e6d2405d67d2702e6102745ef18d2b582916d3c7a6881c4bc36ff215a9ceaae4",
+    "game/art/direction-a-import-proof/terrain/village-square-ground.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "game/art/direction-a-import-proof/terrain/village-square-ground.png.import": "6870f0a3c67e5bb350d2a16f8dba24458eda5d6808e8e4e15279fe2d4bc6b970",
+    "game/art/runtime/terrain/village-square-ground.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "game/art/runtime/terrain/village-square-ground.png.import": "b77daed64ad3bb21333538d03f7e57e10b5053a4a6082fd2b6a9e49a26c38225",
+    "scripts/capture-square-ground-runtime.gd": "a676776f0f72360fc3f1c0e3818236d41739d5fa376e5a747e793c194e967aef",
+    "scripts/capture-square-ground-runtime.gd.uid": "a924586bb3d5f6f45df1e4e93d6d7680330c8a9cc24a3f39b662d332694f8f18",
+    "scripts/quality.sh": "7c59485a390c32eaa44eaaa461600481543d26a1bf9e2b530521ecc8b91bc9ad",
+    "scripts/validate-direction-a-import-proof.py": "a57a4d88313ae9ccc054b2624b32997efe5beb1c9c0bd02a5d942df99e08c2ab",
+    "scripts/validate-square-ground-runtime.py": "5819646237ecc7c2a1c077f0121e1825e75dff5f6655323a8bc7239cd7289af0"
+  },
+  "findings_fixed": [
+    "Capture directory creation and accepted-image overwrite refusal.",
+    "Positive disposable fixture required before rejection mutations.",
+    "Master layer placement, blending, dimensions and visibility bound.",
+    "Import resource/cache types and independent script UIDs checked.",
+    "Ignored non-authored Finder metadata excluded under existing handover; frozen scope bytes preserved."
+  ],
+  "review_results": [
+    "Accepted source, mask, phase and depth unchanged.",
+    "Every old scene block and physical owner preserved byte-exact after named-addition normalization.",
+    "Manifest append-only and all twelve runtime/baseline views have zero RGBA changes against approved external views.",
+    "Frozen artwork/Garden validators retained unchanged; full quality passed."
+  ],
+  "outstanding_code_issues": [],
+  "next_boundary": "Separate visual confirmation of exact six actual runtime views."
+}

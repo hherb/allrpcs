@@ -212,8 +212,10 @@ now contains native baseline/hard/feathered compositions, editable 2x masters,
 edge/port comparisons and eighteen disposable wide/tall GPU views. The owner
 approved the feathered composition; consolidated scoped checks and four mutation
 probes pass. The separate [runtime scope proposal](art-direction/square-ground-runtime-scope/README.md)
-has separate named approval in its owner record; runtime implementation and its
-separate owner visual checkpoint follow only that exact scope.
+has separate named approval in its owner record. The exact one-asset runtime
+implementation is accepted in the [ordinary-scene checkpoint](art-direction/square-ground-runtime-promotion/README.md);
+all six runtime views and paired baselines match the approved external pixels.
+The owner separately confirmed all six runtime views on 2026-10-05; full quality and reviewed direct-main publication are cleared.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.

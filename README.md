@@ -12,6 +12,11 @@ refinement, bounded art bible, exact generation prompts, provenance, and review 
 recorded in [`art-direction/representative-scene`](art-direction/representative-scene/README.md).
 None of these previews is imported into Godot or treated as production art.
 
+The accepted [Village Square ground checkpoint](art-direction/square-ground-runtime-promotion/README.md)
+installs one exact feathered packed-earth underlay under independent presentation
+ownership. Six ordinary-scene views match the approved external pixels exactly;
+the owner confirmed all six runtime views on 2026-10-05 before direct-main publication.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two

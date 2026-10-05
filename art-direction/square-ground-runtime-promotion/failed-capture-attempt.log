@@ -1,0 +1,11 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Max
+
+ERROR: Can't save PNG at path: '/Users/hherb/src/allrpcs/art-direction/square-ground-runtime-promotion/captures/baseline-0.8x-wide.png'.
+   at: save_image (drivers/png/resource_saver_png.cpp:56)
+   GDScript backtrace (most recent call first):
+       [0] _capture (/Users/hherb/src/allrpcs/scripts/capture-square-ground-runtime.gd:53)
+ERROR: Square runtime capture failed: /Users/hherb/src/allrpcs/art-direction/square-ground-runtime-promotion/captures/baseline-0.8x-wide.png
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] _capture (/Users/hherb/src/allrpcs/scripts/capture-square-ground-runtime.gd:54)

@@ -1,0 +1,129 @@
+{
+  "status": "pass",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "quality": {
+    "command": "PATH=\"/opt/homebrew/bin:$PATH\" ./scripts/quality.sh",
+    "host_exit_code": 0,
+    "restore": "pass",
+    "format": "pass",
+    "build_warnings": 0,
+    "build_errors": 0,
+    "tests": {
+      "Domain": 2839,
+      "Application": 925,
+      "Infrastructure": 1261,
+      "Architecture": 8,
+      "total": 5033
+    },
+    "scenarios": "pass",
+    "inherited_godot_smokes": "pass",
+    "garden_runtime_smoke": "pass",
+    "square_runtime_smoke": "pass",
+    "ordinary_compatibility_startup": "pass"
+  },
+  "historical_checks": {
+    "artwork": {
+      "count": 35,
+      "revision": "2fcc849"
+    },
+    "garden": {
+      "revision": "7942e7da578fc459345576e1d267a58f949382eb",
+      "captures": "pass",
+      "rejections": "pass"
+    },
+    "policy": "Frozen validators and inventories unchanged; successor proves exact preserved live predecessor."
+  },
+  "scoped_checks": {
+    "builder_byte_parity": "pass",
+    "isolated_import_proof": "pass",
+    "predecessor_files": 7172,
+    "asset_count": 92,
+    "master_count": 43,
+    "normalized_old_scene_blocks": "byte-exact",
+    "distinct_texture_and_script_uids": "pass",
+    "editable_planes_blending_dimensions_and_visibility": "pass",
+    "valid_rejection_fixture": "pass",
+    "rejection_probes": [
+      "phase",
+      "depth",
+      "duplicate owner",
+      "dropped owner",
+      "physical scope",
+      "paint",
+      "mask/source",
+      "import processing"
+    ],
+    "cold_import_decoded_rgba": "exact selected source pixels",
+    "captures": [
+      {
+        "zoom": 0.8,
+        "frame": "wide",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 55102
+      },
+      {
+        "zoom": 0.8,
+        "frame": "tall",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 55166
+      },
+      {
+        "zoom": 1.0,
+        "frame": "wide",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 87165
+      },
+      {
+        "zoom": 1.0,
+        "frame": "tall",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 86637
+      },
+      {
+        "zoom": 2.0,
+        "frame": "wide",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 220471
+      },
+      {
+        "zoom": 2.0,
+        "frame": "tall",
+        "baseline_external_changed_pixels": 0,
+        "runtime_external_changed_pixels": 0,
+        "changed_pixels": 262203
+      }
+    ]
+  },
+  "sandbox_host": {
+    "sandbox_quality_exit_code": 134,
+    "cause": "Godot startup could not use user log directory; SDK/tests/scenarios passed before startup failure.",
+    "host_retry": "Identical authorized quality command completed with exit 0.",
+    "capture": "Identical host retry after sandbox Godot startup exit134; earlier directory error fixed and retained.",
+    "cold_import": "Raw import succeeded sandboxed; decode check retried identically on host after startup exit134."
+  },
+  "limitations": [
+    "Separate owner runtime visual confirmation pending before publication.",
+    "No accessibility, pacing, terrain-completeness, release or export acceptance."
+  ],
+  "evidence_sha256": {
+    "art-direction/square-ground-runtime-promotion/capture-validation.log": "77a152f1b3af096b5e5dbf727640f1697b0737a6c02fc95898e05abcf5a794a0",
+    "art-direction/square-ground-runtime-promotion/capture.log": "5aed52c5dca43eb5dcecd070d3d01d157d2021134b7bfaf800244821c7442e6e",
+    "art-direction/square-ground-runtime-promotion/failed-capture-attempt.log": "f1378dd7c249f56977f2eedbaeb778c07a2311192422e9856abb70e7b184cbfb",
+    "art-direction/square-ground-runtime-promotion/final-scoped.log": "77a409f20d80f222d8d13b775ca97226266d0e3738a6f54e0a2e7e6c3c5524a8",
+    "art-direction/square-ground-runtime-promotion/fresh-import.log": "179648c06f77503866ab3947cdf4f0f9dc0005b09ba64961e0e1995efd80232e",
+    "art-direction/square-ground-runtime-promotion/fresh-smoke.log": "133f434aafc76b007415f2ac84c294659065adf4d69fc82c2483f67c5956f9c3",
+    "art-direction/square-ground-runtime-promotion/import.log": "306d77b9b66eafec8841f8889571eb26af46a049762ed98e451b61125ec6ccfb",
+    "art-direction/square-ground-runtime-promotion/quality.log": "509c4bdbf7563b0cae4361fa1fc2a75e4ca2a0e57a9d29333e47e56c124f777f",
+    "art-direction/square-ground-runtime-promotion/sandbox-capture-attempt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "art-direction/square-ground-runtime-promotion/sandbox-quality-attempt.log": "3db397788f8c826093bf3171ffb63a6ec41dc6c0ea4bbe14f8dfb088b112c9e9",
+    "art-direction/square-ground-runtime-promotion/scoped.log": "893689f9095960802d0c12a2e1c7f4ac3771939bab865d7355ca99357b13cb05"
+  },
+  "fresh_import_evidence_sha256": "a4da17f049074188200c17ded3cdddc4fbebd9464186a8cc905fa3e56dbea7cc",
+  "capture_evidence_sha256": "6cc7d3aa55838765a2c4ae6dcd72a7a743977ad35f9add626318adc60ede9f40"
+}

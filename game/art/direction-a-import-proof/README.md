@@ -1,6 +1,6 @@
 # Direction A Godot import proof
 
-These 91 PNG files are exact byte-for-byte copies of the corrected production exports in
+These 92 PNG files are exact byte-for-byte copies of the corrected production exports in
 `art-direction/production-proof/corrected`. They are intentionally used only by
 `DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them. The isolated
 set now also contains the three feasibility-only Stream modules: repeatable water, a mirrored bank
@@ -9,9 +9,11 @@ camera, or gameplay authority.
 
 Godot imports them as lossless 2D textures with mipmaps and premultiplied alpha disabled.
 Alpha-border correction remains enabled for original sprites and disabled for accepted
-path/channel overlays and both Garden underlays, preserving their exact translucent pixels.
+path/channel overlays, both Garden underlays and the Square underlay, preserving their exact translucent pixels.
 The two Garden samples retain native 512x384 geometry, linear filtering and no repeat;
-their ordinary-scene counterparts are independently owned runtime copies. Validation
+their ordinary-scene counterparts are independently owned runtime copies. The selected
+Square sample retains native 560x560 geometry, linear filtering and no repeat, with
+its own import UID distinct from the independent runtime counterpart. Validation
 also binds every sidecar to its exact resource path,
 deterministic cache path, and unique UID. The proof scene inherits linear filtering from its root,
 includes the exact 256x256 repeatable woodland leaf-litter tile, its straight, two outer-corner, and

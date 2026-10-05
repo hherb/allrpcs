@@ -1,0 +1,34 @@
+{
+  "status": "accepted exact six actual runtime views; reviewed direct-main publication authorized",
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "confirmed",
+  "scope": "Actual Village Square ordinary-scene views at 0.8x/1x/2x, wide1280x720 and tall1280x827; unchanged paired baselines and exact feathered source. No broader terrain or physical/gameplay acceptance.",
+  "runtime_review_request_sha256": "943de9f4ce6ede82a48c51a21ab3c64813f96d42708a6a231a1a79ef8941dc0d",
+  "bound_files_sha256": {
+    "authorization.json": "aea6648fa40fb50ad9ca9b7852b058b5f8d1b41cdd0be0f4a3fddd226c834548",
+    "verification.json": "9e74b642ad123bcc397045a5fce34c11cf2c7b418feb99df6a1c49b035eca76d",
+    "session-review.json": "2901bd91cddd0debbe3931f332419381b1f915edee3dad14a98afc8112b6b894",
+    "capture-evidence.json": "6cc7d3aa55838765a2c4ae6dcd72a7a743977ad35f9add626318adc60ede9f40",
+    "runtime-series.png": "3c55003ebc72f9ece50f9188cbeac68aa11eaf826951d958afcda16e95e4a0f9",
+    "baseline-series.png": "4eaf1394d357e300689a6047d4badc5887ef631d9621b311646e5045c482acb5",
+    "series-bindings.json": "2a39f90a5d308b9b5d212c126918b24869d45ca521d4fa985a3b1531b1c5db4c"
+  },
+  "captures_sha256": {
+    "captures/baseline-0.8x-tall.png": "c33a7c88686ad4ae49329aa22b478c253c02d568cc43c8383169a381cdb889b8",
+    "captures/baseline-0.8x-wide.png": "b9923b5b7e2025b9c29f710d8333c0a923282d1ca49759d841b4dd0a67393a0e",
+    "captures/baseline-1.0x-tall.png": "25c9f55daabeae8fb57a66a0cc822c0bb02aa3097574d0e59385187f76c7bb55",
+    "captures/baseline-1.0x-wide.png": "ee92ccc1f1e12e5661b7aabbf22686c79161aab812217c3bb9eaef7ea1702ff9",
+    "captures/baseline-2.0x-tall.png": "a84f16995178a684ea05f5513d3a1dd8e1fcef9dfd698aba0e790b103ce54cfb",
+    "captures/baseline-2.0x-wide.png": "79998c37f877729019fb55cfdd1fac46524689a7c86c3437c50d0bdd8e34f47b",
+    "captures/runtime-0.8x-tall.png": "f07b3dcf7af6e43a12a7c3d325bfa3562aefcc7dedffd8801f68417e41ac2277",
+    "captures/runtime-0.8x-wide.png": "49ee0268c41b07dfd36d7edc4a9363a7a14d0a02629e91447fde77934549b39e",
+    "captures/runtime-1.0x-tall.png": "fffafba3d27566efae7599d7dd905bf557f333d03801d5503314c7bf3510525b",
+    "captures/runtime-1.0x-wide.png": "0ff0df5cf9fc66f0012f989a987abc34c459d669557afc3f7bf02970a08158ae",
+    "captures/runtime-2.0x-tall.png": "87fb9ae8c7edd3cbf339f26547fcd8ce5bde0f34654a36627a67062fb9826ff6",
+    "captures/runtime-2.0x-wide.png": "3b0f0c91b9dfd301b9965afabf1fce62c6b85f75bd94d7e4fe8438f2d4967f68"
+  },
+  "source_sha256": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+  "publication_authority": "Existing explicit request to commit and push reviewed work directly onto main.",
+  "historical_records": "Pending request, verification and session-review statuses retained as pre-confirmation evidence; this record supersedes their pending visual boundary."
+}
