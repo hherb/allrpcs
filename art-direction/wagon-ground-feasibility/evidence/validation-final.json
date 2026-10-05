@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "preserved_predecessor_files": 7355,
+  "master_layers_checked": 12,
+  "protected_alpha_planes": 9,
+  "gpu_comparisons": [
+    {
+      "capture": "captures/hard-support-0.8x-wide.png",
+      "changed_pixels": 11126
+    },
+    {
+      "capture": "captures/feather-16-0.8x-wide.png",
+      "changed_pixels": 10141
+    },
+    {
+      "capture": "captures/feather-24-0.8x-wide.png",
+      "changed_pixels": 9597
+    },
+    {
+      "capture": "captures/hard-support-0.8x-tall.png",
+      "changed_pixels": 11126
+    },
+    {
+      "capture": "captures/feather-16-0.8x-tall.png",
+      "changed_pixels": 10141
+    },
+    {
+      "capture": "captures/feather-24-0.8x-tall.png",
+      "changed_pixels": 9597
+    },
+    {
+      "capture": "captures/hard-support-1.0x-wide.png",
+      "changed_pixels": 17799
+    },
+    {
+      "capture": "captures/feather-16-1.0x-wide.png",
+      "changed_pixels": 16061
+    },
+    {
+      "capture": "captures/feather-24-1.0x-wide.png",
+      "changed_pixels": 15386
+    },
+    {
+      "capture": "captures/hard-support-1.0x-tall.png",
+      "changed_pixels": 17799
+    },
+    {
+      "capture": "captures/feather-16-1.0x-tall.png",
+      "changed_pixels": 16061
+    },
+    {
+      "capture": "captures/feather-24-1.0x-tall.png",
+      "changed_pixels": 15386
+    },
+    {
+      "capture": "captures/hard-support-2.0x-wide.png",
+      "changed_pixels": 70274
+    },
+    {
+      "capture": "captures/feather-16-2.0x-wide.png",
+      "changed_pixels": 63590
+    },
+    {
+      "capture": "captures/feather-24-2.0x-wide.png",
+      "changed_pixels": 60162
+    },
+    {
+      "capture": "captures/hard-support-2.0x-tall.png",
+      "changed_pixels": 70082
+    },
+    {
+      "capture": "captures/feather-16-2.0x-tall.png",
+      "changed_pixels": 63408
+    },
+    {
+      "capture": "captures/feather-24-2.0x-tall.png",
+      "changed_pixels": 59903
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "checks": [
+    {
+      "tool": "build.py",
+      "status": "existing final packet rejected",
+      "exit_code": 1
+    },
+    {
+      "tool": "boards.py",
+      "status": "existing final packet rejected",
+      "exit_code": 1
+    }
+  ],
+  "unchanged_artwork_files": 45
+}

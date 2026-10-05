@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "reviewed proposal; explicit named runtime approval pending",
+  "proposal_sha256": {
+    "README.md": "1d4c7fe78c5fe8318472f4675fdc84ee7c13cc50547799b815e0294e1ba2f81f",
+    "source-bindings.json": "00d35190a50e135576da87e166f40c9a0eaaab0e78d9b7ebc7961172b189ce06",
+    "check.py": "269e61dc95a69c296af1f11f85a1d523736fa37fce4f9d5a418fa2c7712ae1db"
+  },
+  "checks": [
+    "Exact selected feather-24 source/master and all selected views bound",
+    "Independent owner, native extent/depth/phase and 93/44 to 94/45 counts checked",
+    "Production/proof/runtime installation paths absent",
+    "New builder named independently; all existing validators/builders remain unchanged",
+    "No remaining review findings"
+  ],
+  "source_inputs": 93
+}

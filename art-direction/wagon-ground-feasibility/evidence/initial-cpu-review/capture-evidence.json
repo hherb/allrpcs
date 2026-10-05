@@ -1,0 +1,533 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "04301621c3fb525aa7ab8f2728b4ec929fa9630b6d3320719931b5991f464655",
+		"captures/baseline-0.8x-wide.png": "40239ad62bbb8068b016c4c6e98f3f32d8a51850f1343868ba224f168117e284",
+		"captures/baseline-1.0x-tall.png": "2dc12f404481bba19a614e9d2c6eb789b7374c0e08d331a8111360fdb6e57b8c",
+		"captures/baseline-1.0x-wide.png": "d8fd089d70c84ab7ff6607b164ced8ade80974679ddb71e6ea8bd67e4df2418c",
+		"captures/baseline-2.0x-tall.png": "59273da20ac3ec6fb05c17b3faf609966a8b23afed1ed3e50f99eab2da11d73b",
+		"captures/baseline-2.0x-wide.png": "d71e802e6eddb807b745bd5cb311a07747ec1090327f26e7ff08fb0b354c4b52",
+		"captures/feather-16-0.8x-tall.png": "2c4686d2949e2b7015304f1b50669dcecd9a1cefdcdfc835f054c6573acb80ea",
+		"captures/feather-16-0.8x-wide.png": "64f6f7559e3c17056f136e3d152b6a63eb3008fdd46037246e0292c2167fac02",
+		"captures/feather-16-1.0x-tall.png": "192c64d203cb3865e56c2199a14a4358da2923cda5470989a53524b9760c29d0",
+		"captures/feather-16-1.0x-wide.png": "30e4f460402ec926678dd75d95f893ce4fdccb9894e8735d051ccc1ac66a010e",
+		"captures/feather-16-2.0x-tall.png": "53db91dd224cfb030ef8b3498226abf76e3a8377eb14b2d8178277918dae83c9",
+		"captures/feather-16-2.0x-wide.png": "467c792b8e181985b8630acba97818c3c81678d5e3e68f3c7ebd1417191e3a86",
+		"captures/feather-24-0.8x-tall.png": "b595426b7b762a34a7b82f622644392c88dd78d28c8158545858fb52b7f09461",
+		"captures/feather-24-0.8x-wide.png": "eaf883d8f067e6f51b3e07f03c96617e7198d4f5fb04089cc242b69163cdd4ea",
+		"captures/feather-24-1.0x-tall.png": "eed087320d58c363ba029f1eadf7d457fcd31568d54a9be11cdbe49f015546ff",
+		"captures/feather-24-1.0x-wide.png": "eb78368002f519e474a268572c6ae4765cff92b857c6c60f34731253e295f3bf",
+		"captures/feather-24-2.0x-tall.png": "fb588b45033f4ce8db20c9a20189271b1876805ecdee32fddc5d29835ced0a7e",
+		"captures/feather-24-2.0x-wide.png": "e432f9fb2c344fb717f254dc54e33a3a417e954c8ca2122bda04684194aacf79",
+		"captures/hard-support-0.8x-tall.png": "74abf8478a24df81071db3c9f4899efae61a395770308f930d6fc1f78c75c25d",
+		"captures/hard-support-0.8x-wide.png": "d4c242b8932f3f4a2663df1f6846fd7a8a7b8466e8b327c522f8406b27a0a9b7",
+		"captures/hard-support-1.0x-tall.png": "08fa01190cf6fe4d13e8932fea47cda4f7d4cf4d635fcc6562bc7d0a94e87a7d",
+		"captures/hard-support-1.0x-wide.png": "3a4441cf4f41fe541f5804ca6d97340f4ec8a9dcff8a20adcc8b8e46ce82590a",
+		"captures/hard-support-2.0x-tall.png": "4a7c7cb73c6a2f14cf23bf6b5ed5b93dc225f1c937916c9d5e250a31b7577f17",
+		"captures/hard-support-2.0x-wide.png": "462f796d6876f6d11aba2c6b59134e44665a85fd49af44ce55b857b8411f9497"
+	},
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-719.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1386.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-973.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-1080.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2646.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2700.0
+			],
+			"zoom": 2.0
+		},
+		"captures/feather-16-0.8x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/feather-16-0.8x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-719.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/feather-16-1.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1386.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-973.0
+			],
+			"zoom": 1.0
+		},
+		"captures/feather-16-1.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-1080.0
+			],
+			"zoom": 1.0
+		},
+		"captures/feather-16-2.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2646.5
+			],
+			"zoom": 2.0
+		},
+		"captures/feather-16-2.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2700.0
+			],
+			"zoom": 2.0
+		},
+		"captures/feather-24-0.8x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/feather-24-0.8x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-719.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/feather-24-1.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1386.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-973.0
+			],
+			"zoom": 1.0
+		},
+		"captures/feather-24-1.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-1080.0
+			],
+			"zoom": 1.0
+		},
+		"captures/feather-24-2.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2646.5
+			],
+			"zoom": 2.0
+		},
+		"captures/feather-24-2.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2700.0
+			],
+			"zoom": 2.0
+		},
+		"captures/hard-support-0.8x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1283.125
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-612.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/hard-support-0.8x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1350.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-799.999938964844,
+				-719.999938964844
+			],
+			"zoom": 0.8
+		},
+		"captures/hard-support-1.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1386.5
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-973.0
+			],
+			"zoom": 1.0
+		},
+		"captures/hard-support-1.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1440.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1160.0,
+				-1080.0
+			],
+			"zoom": 1.0
+		},
+		"captures/hard-support-2.0x-tall.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2646.5
+			],
+			"zoom": 2.0
+		},
+		"captures/hard-support-2.0x-wide.png": {
+			"screen_center": [
+				1800.0,
+				1530.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-2960.0,
+				-2700.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"hidden": "Root CanvasLayers/CharacterBody2Ds only; Wagon shell/opening, Garden/Square/Sickhouse/channel and labels retained",
+	"inputs": {
+		"/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+		"/Users/hherb/src/allrpcs/art-direction/garden-ground-runtime-promotion/owner-runtime-acceptance.json": "718d0ce5161f381768569825b4cb0c88250e1c4f3e912a7ab4dd19ea6d6ab2fd",
+		"/Users/hherb/src/allrpcs/art-direction/production-proof/corrected/asset-manifest.json": "ac5ddbc02ded2a69ceff9e3b4ffd4e1be7e5b2b4f8260fdff775f384aa25fe28",
+		"/Users/hherb/src/allrpcs/art-direction/residual-ground-tiling-proof/exports/packed-earth.png": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32",
+		"/Users/hherb/src/allrpcs/art-direction/residual-ground-tiling-proof/owner-acceptance.json": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+		"/Users/hherb/src/allrpcs/art-direction/sickhouse-ground-runtime-promotion/owner-runtime-acceptance.json": "0b440db7ed04b963d39c8beb3f856f82c132cc1b44e52499f3de93e7157f0c89",
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-feasibility/build.py": "30b87560efd14e528ca8552203569ed9c7e38183e0258fae2c08c691e3a55279",
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-runtime-promotion/owner-runtime-acceptance.json": "4403181a8fa1a442058c63079b0e26bd45300eb6d8c490714e515b966e72070b",
+		"/Users/hherb/src/allrpcs/art-direction/wagon-ground-feasibility/baseline.json": "d88b28eabfb823ccf3c93e9557a3aabd068d916137c0abde12bc2ef87d41598a",
+		"/Users/hherb/src/allrpcs/art-direction/wagon-ground-feasibility/inventory.json": "e654b4e9d00a8dc4675b11b88590c337b209e969595c67bacb57043231b886f0",
+		"/Users/hherb/src/allrpcs/art-direction/wagon-ground-feasibility/proof-inputs/feather-16-layer.png": "3609603ea0d9de9635e32d4df210a10b3fc980aa6d78ce9d9615daa556248180",
+		"/Users/hherb/src/allrpcs/art-direction/wagon-ground-feasibility/proof-inputs/feather-24-layer.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+		"/Users/hherb/src/allrpcs/art-direction/wagon-ground-feasibility/proof-inputs/hard-support-layer.png": "bbf020aa4a0ce498f56e60889609eb28f3714ffaf230660b803761ea87015584",
+		"/Users/hherb/src/allrpcs/art-direction/wagon-ground-feasibility/selection.json": "ad251c12845af92dc3920f4894b468b5f03aa2e95af70d747b26cb0f6e626694",
+		"/Users/hherb/src/allrpcs/game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+		"/Users/hherb/src/allrpcs/game/Main.tscn": "efa13c7cbedd8179965a17ff3a74ee1dc366f8d8923c413ba42b964e6236e212",
+		"/Users/hherb/src/allrpcs/game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+		"/Users/hherb/src/allrpcs/game/OpeningRegionSouthernRoadWagonGeometry.cs": "ce7a4508af1c9fac446b34f35e8d93ea67a5a8257dfad7a3a3574b7f639f3bdc",
+		"/Users/hherb/src/allrpcs/game/OpeningRegionSouthernRoadWagonSceneSource.cs": "a0d8e4952163f54a76d01232511526ad6688975dd0186545404de1ffa7b71bb8",
+		"/Users/hherb/src/allrpcs/game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/garden-ground-meadow.png": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/garden-ground-soil.png": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/sickhouse-entrance-ground.png": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/southern-road-wagon-path.png": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/village-edge-square-connector.png": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/village-square-ground.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+		"/Users/hherb/src/allrpcs/game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+		"res://../art-direction/wagon-ground-feasibility/capture.gd": "c194fb09054456befecab616db561e204fdf728e7159062597169f0bcd8c182c",
+		"res://Main.tscn": "efa13c7cbedd8179965a17ff3a74ee1dc366f8d8923c413ba42b964e6236e212"
+	},
+	"scope": "External Wagon apron; actual retained scene; no saved runtime changes",
+	"target_center": [
+		1800,
+		1530
+	]
+}

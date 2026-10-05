@@ -1,0 +1,190 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "session reviewed; external feather-24 selected; runtime scope approval pending",
+  "baseline": "bbcc14b12168afcf2084330ccb76241d5c9e54ec",
+  "reviewed_slices": [
+    "Complete Wagon entrance external feasibility series",
+    "Exact selected feather-24 runtime scope proposal"
+  ],
+  "findings_fixed": [
+    "Initial CPU composition omitted retained Wagon route; retained initial packet and corrected CPU series, then recaptured final inventory. Source paint and masks unchanged.",
+    "Inherited runtime scope builder filename corrected to new build_wagon_ground.py; existing builders remain frozen.",
+    "Transient Finder .DS_Store excluded from bindings and staging.",
+    "Board tool refuses an existing final manifest; builder/board overwrite probes reject with 45 final artwork files unchanged.",
+    "Normalized trailing blank lines in new diagnostic text logs before final diff check."
+  ],
+  "remaining_findings": [],
+  "visual_review": [
+    "Inspected complete native, wide/tall GPU and exact 2x edge boards.",
+    "Hard-support flat terminations retained as diagnostic; both feathers preserve paint and soften alpha edges.",
+    "Inherited boundaries, opening marker, translucent Wagon shell and clue label remain visible and unchanged.",
+    "Owner preferred feather-24 in this chat; exact selection binds 17 selected files, four displayed boards and four evidence files."
+  ],
+  "validation": {
+    "status": "passed",
+    "preserved_predecessor_files": 7355,
+    "master_layers_checked": 12,
+    "protected_alpha_planes": 9,
+    "gpu_comparisons": [
+      {
+        "capture": "captures/hard-support-0.8x-wide.png",
+        "changed_pixels": 11126
+      },
+      {
+        "capture": "captures/feather-16-0.8x-wide.png",
+        "changed_pixels": 10141
+      },
+      {
+        "capture": "captures/feather-24-0.8x-wide.png",
+        "changed_pixels": 9597
+      },
+      {
+        "capture": "captures/hard-support-0.8x-tall.png",
+        "changed_pixels": 11126
+      },
+      {
+        "capture": "captures/feather-16-0.8x-tall.png",
+        "changed_pixels": 10141
+      },
+      {
+        "capture": "captures/feather-24-0.8x-tall.png",
+        "changed_pixels": 9597
+      },
+      {
+        "capture": "captures/hard-support-1.0x-wide.png",
+        "changed_pixels": 17799
+      },
+      {
+        "capture": "captures/feather-16-1.0x-wide.png",
+        "changed_pixels": 16061
+      },
+      {
+        "capture": "captures/feather-24-1.0x-wide.png",
+        "changed_pixels": 15386
+      },
+      {
+        "capture": "captures/hard-support-1.0x-tall.png",
+        "changed_pixels": 17799
+      },
+      {
+        "capture": "captures/feather-16-1.0x-tall.png",
+        "changed_pixels": 16061
+      },
+      {
+        "capture": "captures/feather-24-1.0x-tall.png",
+        "changed_pixels": 15386
+      },
+      {
+        "capture": "captures/hard-support-2.0x-wide.png",
+        "changed_pixels": 70274
+      },
+      {
+        "capture": "captures/feather-16-2.0x-wide.png",
+        "changed_pixels": 63590
+      },
+      {
+        "capture": "captures/feather-24-2.0x-wide.png",
+        "changed_pixels": 60162
+      },
+      {
+        "capture": "captures/hard-support-2.0x-tall.png",
+        "changed_pixels": 70082
+      },
+      {
+        "capture": "captures/feather-16-2.0x-tall.png",
+        "changed_pixels": 63408
+      },
+      {
+        "capture": "captures/feather-24-2.0x-tall.png",
+        "changed_pixels": 59903
+      }
+    ]
+  },
+  "rejection_probes": {
+    "valid_fixture": "passed",
+    "probes": [
+      {
+        "probe": "world phase",
+        "status": "rejected",
+        "reason": "World paint phase drift"
+      },
+      {
+        "probe": "coverage escape",
+        "status": "rejected",
+        "reason": "Coverage recipe drift: feather-16"
+      },
+      {
+        "probe": "paint RGB",
+        "status": "rejected",
+        "reason": "Covered source RGB drift"
+      },
+      {
+        "probe": "camera translation",
+        "status": "rejected",
+        "reason": "Paired camera drift"
+      }
+    ]
+  },
+  "overwrite_checks": {
+    "checks": [
+      {
+        "tool": "build.py",
+        "status": "existing final packet rejected",
+        "exit_code": 1
+      },
+      {
+        "tool": "boards.py",
+        "status": "existing final packet rejected",
+        "exit_code": 1
+      }
+    ],
+    "unchanged_artwork_files": 45
+  },
+  "quality": {
+    "live_whole_tree_exit": 1,
+    "live_reason": "Unchanged frozen Sickhouse validator rejects external successor files as Unscoped new file.",
+    "isolated_head": "bbcc14b12168afcf2084330ccb76241d5c9e54ec",
+    "isolated_predecessor_files_unchanged": 7358,
+    "sandbox_exit": 1,
+    "sandbox_reason": "NuGet CookieContainer GetDomainName: -1",
+    "identical_host_retry_exit": 0,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "tests": {
+      "Domain": 2839,
+      "Application": 925,
+      "Infrastructure": 1261,
+      "Architecture": 8,
+      "total": 5033
+    },
+    "smokes": "Complete inherited Godot smoke sequence, Garden/Square/Sickhouse ground checks and Compatibility startup passed",
+    "live_sickhouse": "Unchanged asset, capture and rejection checks passed after successor preservation; historical membership delegated only."
+  },
+  "capture_execution": {
+    "sandbox_exit": 134,
+    "host_retry_exit": 0,
+    "final_recapture_exit": 0
+  },
+  "reviewed_sha256": {
+    "art-direction/wagon-ground-feasibility/README.md": "36ba919c8e902f723605c9881c26bb977ee299f8129d2bc92b633c1c0dde1b6b",
+    "art-direction/wagon-ground-feasibility/build.py": "2028aab194ca90a4421b1f0fd547159ced40c1e0b16fef0edd6c110b76ed7902",
+    "art-direction/wagon-ground-feasibility/boards.py": "c22e538ae595e4b9d2fe66523fb49fc42e346eecd1186273077dd571698a6ee8",
+    "art-direction/wagon-ground-feasibility/inspect_package.py": "8a783a9e2519d62383fe44e566691abe5fbf21d2d24c97c03553b2d621792a8d",
+    "art-direction/wagon-ground-feasibility/check_predecessor.py": "da24084606d48c72f700395be95e0509014f2961da683f637473c9dbb29c63a1",
+    "art-direction/wagon-ground-feasibility/rejection_probes.py": "b309b45903be583663c435d03fbc910b3194f857a35cf4b5658179ae583809ab",
+    "art-direction/wagon-ground-feasibility/capture.gd": "c194fb09054456befecab616db561e204fdf728e7159062597169f0bcd8c182c",
+    "art-direction/wagon-ground-feasibility/owner-selection.json": "831dcd2857bdc985935e765ef77a9fe8e6fb33fde50f1b60128a52d4ea6d30aa"
+  },
+  "evidence_sha256": {
+    "art-direction/wagon-ground-feasibility/capture-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "art-direction/wagon-ground-feasibility/capture-host.log": "c5c12bb55f3bfce50cc951473379b6c03bd03364ab38c1d57e564302d9d62130",
+    "art-direction/wagon-ground-feasibility/capture-host-final.log": "c5c12bb55f3bfce50cc951473379b6c03bd03364ab38c1d57e564302d9d62130",
+    "art-direction/wagon-ground-feasibility/evidence/quality-sandbox.log": "ec0ebb5436691d0bd067ba2b8e665bb56bafddfaea577f86f7bad7ef2f290d89",
+    "art-direction/wagon-ground-feasibility/evidence/quality-predecessor-sandbox.log": "c875030c78583c30d1a4083972c01ea74a74a448fbd472867ea2c200c4be4a39",
+    "art-direction/wagon-ground-feasibility/evidence/quality-predecessor-host.log": "d00a16ee5996fc4054ec64401946234e633d3b390831ae9f2d72d77c3f408fdc",
+    "art-direction/wagon-ground-feasibility/evidence/sickhouse-check.log": "3c6b567a3707065a90d19fa0c413322eb4daa38006c3138bbca8de4f9371f7f8",
+    "art-direction/wagon-ground-feasibility/evidence/sickhouse-live-successor.log": "c2b6c81529c3b193bcdb6c9851d7d0c514e896d4e8cdb6acc1dc6f2acf4849f0"
+  },
+  "preservation": "All 7355 protected live predecessor bytes unchanged; product/runtime/import/CI inputs unchanged; final WholeChannel child retained."
+}

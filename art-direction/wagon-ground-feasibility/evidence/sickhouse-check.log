@@ -1,0 +1,16 @@
+PASS: one exact Sickhouse underlay, isolated editable master and append-only manifest
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/scripts/validate-sickhouse-ground-runtime.py", line 339, in <module>
+    main()
+    ~~~~^^
+  File "/Users/hherb/src/allrpcs/scripts/validate-sickhouse-ground-runtime.py", line 331, in main
+    validate()
+    ~~~~~~~~^^
+  File "/Users/hherb/src/allrpcs/scripts/validate-sickhouse-ground-runtime.py", line 111, in validate
+    require(all(not name or name in baseline['files'] or name in added or name.startswith(PACKET) for name in names),
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            'Unscoped new file')
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hherb/src/allrpcs/scripts/validate-sickhouse-ground-runtime.py", line 39, in require
+    raise ValueError(message)
+ValueError: Unscoped new file

@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "agent-selected external feasibility; owner visual review pending",
+  "owner_statement": "Please continue with slices",
+  "authorization_scope": "Continuing slice request and live HANDOVER.md authorize choosing one external placement proposal. Owner recipe selection and runtime promotion remain pending.",
+  "selected_use": "Packed-earth apron at the Wagon north entrance beneath the retained Southern Road-Wagon route",
+  "source_material": "art-direction/residual-ground-tiling-proof/exports/packed-earth.png",
+  "route_alpha_segment_world_y": [
+    1536,
+    1580
+  ],
+  "segment_right_bottom_exclusive": true,
+  "dilation_radius": 24,
+  "feather_widths": [
+    16,
+    24
+  ],
+  "origin": [
+    1633,
+    1512
+  ],
+  "size": [
+    285,
+    92
+  ],
+  "world_phase": [
+    0,
+    0
+  ],
+  "period": 128,
+  "z": -90,
+  "baseline_head": "bbcc14b12168afcf2084330ccb76241d5c9e54ec",
+  "exclusions": [
+    "runtime assets/imports/scenes",
+    "source repainting",
+    "physical/navigation/layout",
+    "scenario/gameplay/UI/audio/providers",
+    "release/signing"
+  ]
+}

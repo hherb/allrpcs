@@ -26,6 +26,11 @@ in the [runtime checkpoint](art-direction/sickhouse-ground-runtime-promotion/REA
 six actual views and paired baselines equal approved external pixels. The owner
 confirmed these exact runtime views on 2026-10-05, clearing reviewed direct-main publication.
 
+The next [external Wagon entrance proposal](art-direction/wagon-ground-feasibility/README.md)
+compares hard support and two inward packed-earth feathers using unchanged approved
+paint, three editable masters and 24 disposable scene views. The owner selected feather-24; its separate named runtime scope
+awaits approval. Runtime assets, imports, physical owners and ordinary scenes are unchanged.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two

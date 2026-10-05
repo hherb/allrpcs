@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Here feather-24 looks best I think",
+  "status": "owner selected feather-24 external composition",
+  "selected_variant": "feather-24",
+  "selected_files": {
+    "review/feather-24-1x.png": "ba49c01bbb3597f92bb377c99db47a58f1b4c908f84853f48a11557302125fe6",
+    "masters/feather-24.ora": "76258e3cceecb4f995fd8f8dc53c2e9cb01fc4409fe6e99794aed5dee75827d3",
+    "proof-inputs/feather-24-layer.png": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+    "proof-inputs/feather-24-coverage.png": "5b060d34e07192f75fe6d2649e7878d55a2812a224868bc6511e8c6e0926c42f",
+    "proof-inputs/world-paint.png": "a4ec8564f8d7545382af4fc14d76d06240c1bd3941a13cd023e469a727b475e1",
+    "captures/baseline-0.8x-wide.png": "40239ad62bbb8068b016c4c6e98f3f32d8a51850f1343868ba224f168117e284",
+    "captures/baseline-0.8x-tall.png": "04301621c3fb525aa7ab8f2728b4ec929fa9630b6d3320719931b5991f464655",
+    "captures/baseline-1.0x-wide.png": "d8fd089d70c84ab7ff6607b164ced8ade80974679ddb71e6ea8bd67e4df2418c",
+    "captures/baseline-1.0x-tall.png": "2dc12f404481bba19a614e9d2c6eb789b7374c0e08d331a8111360fdb6e57b8c",
+    "captures/baseline-2.0x-wide.png": "d71e802e6eddb807b745bd5cb311a07747ec1090327f26e7ff08fb0b354c4b52",
+    "captures/baseline-2.0x-tall.png": "59273da20ac3ec6fb05c17b3faf609966a8b23afed1ed3e50f99eab2da11d73b",
+    "captures/feather-24-0.8x-wide.png": "eaf883d8f067e6f51b3e07f03c96617e7198d4f5fb04089cc242b69163cdd4ea",
+    "captures/feather-24-0.8x-tall.png": "b595426b7b762a34a7b82f622644392c88dd78d28c8158545858fb52b7f09461",
+    "captures/feather-24-1.0x-wide.png": "eb78368002f519e474a268572c6ae4765cff92b857c6c60f34731253e295f3bf",
+    "captures/feather-24-1.0x-tall.png": "eed087320d58c363ba029f1eadf7d457fcd31568d54a9be11cdbe49f015546ff",
+    "captures/feather-24-2.0x-wide.png": "e432f9fb2c344fb717f254dc54e33a3a417e954c8ca2122bda04684194aacf79",
+    "captures/feather-24-2.0x-tall.png": "fb588b45033f4ce8db20c9a20189271b1876805ecdee32fddc5d29835ced0a7e"
+  },
+  "displayed_series": {
+    "review/comparison-1x.png": "694caa5e105b766a7366bf1b8d06bae2f1c6e731a3f87077b09a576ad1eaaec5",
+    "review/gpu-series-wide.png": "5b19fa71006c3a5415940924ec7ddf01c028ad97ee2f7adc378e88278a2f9037",
+    "review/gpu-series-tall.png": "cd22a9d9619551d5d6116f8f0f4f24128ab3c1dc8af1d9c629eaac2b0dcf6b27",
+    "review/complete-edge-series-2x.png": "a3bf48f0c5bcf6fb76e6210807442ea3f49c80c250ff0fb753e82eebce0e9659"
+  },
+  "evidence_sha256": {
+    "selection.json": "ad251c12845af92dc3920f4894b468b5f03aa2e95af70d747b26cb0f6e626694",
+    "inventory.json": "2c6a0097cfc3487a64694b287824f5c6010687d7e1f29cd5f29c4655fe3c87d8",
+    "capture-evidence.json": "1d7a7f2b1661ded60fd87e3a893606435827a83d76df136740b19b25f4f9332c",
+    "review-board-manifest.json": "4a22cfc19eccb9c6ca1c97226e374892d1ed209b2d84cc52246dc248b57a4a99"
+  },
+  "scope": "Owner preference selects this exact external variant for the next scope proposal. No named runtime approval or actual runtime visual confirmation."
+}
