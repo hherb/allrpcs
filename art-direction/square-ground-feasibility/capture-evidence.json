@@ -1,0 +1,380 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "c33a7c88686ad4ae49329aa22b478c253c02d568cc43c8383169a381cdb889b8",
+		"captures/baseline-0.8x-wide.png": "b9923b5b7e2025b9c29f710d8333c0a923282d1ca49759d841b4dd0a67393a0e",
+		"captures/baseline-1.0x-tall.png": "25c9f55daabeae8fb57a66a0cc822c0bb02aa3097574d0e59385187f76c7bb55",
+		"captures/baseline-1.0x-wide.png": "ee92ccc1f1e12e5661b7aabbf22686c79161aab812217c3bb9eaef7ea1702ff9",
+		"captures/baseline-2.0x-tall.png": "a84f16995178a684ea05f5513d3a1dd8e1fcef9dfd698aba0e790b103ce54cfb",
+		"captures/baseline-2.0x-wide.png": "79998c37f877729019fb55cfdd1fac46524689a7c86c3437c50d0bdd8e34f47b",
+		"captures/feathered-0.8x-tall.png": "f07b3dcf7af6e43a12a7c3d325bfa3562aefcc7dedffd8801f68417e41ac2277",
+		"captures/feathered-0.8x-wide.png": "49ee0268c41b07dfd36d7edc4a9363a7a14d0a02629e91447fde77934549b39e",
+		"captures/feathered-1.0x-tall.png": "fffafba3d27566efae7599d7dd905bf557f333d03801d5503314c7bf3510525b",
+		"captures/feathered-1.0x-wide.png": "0ff0df5cf9fc66f0012f989a987abc34c459d669557afc3f7bf02970a08158ae",
+		"captures/feathered-2.0x-tall.png": "87fb9ae8c7edd3cbf339f26547fcd8ce5bde0f34654a36627a67062fb9826ff6",
+		"captures/feathered-2.0x-wide.png": "3b0f0c91b9dfd301b9965afabf1fce62c6b85f75bd94d7e4fe8438f2d4967f68",
+		"captures/hard-support-0.8x-tall.png": "419d509e1cd55053cd9e556ba63f9203266cfa0952405211eea0a1c0f31e1c3a",
+		"captures/hard-support-0.8x-wide.png": "7e403e9a39c5ee01260d12a8655401e7e0cb3d5effbdaa8dbe120cf202237a5f",
+		"captures/hard-support-1.0x-tall.png": "66fe776dc8545d2c78ff504d2de8688c61c333a13fe7a65af635b00c0469d949",
+		"captures/hard-support-1.0x-wide.png": "1fa33fd5e7ad024fe2db52c9a3d2ab2a73bf03ff76b6c482175cdbb95089ecbf",
+		"captures/hard-support-2.0x-tall.png": "a4e6e4071d0c14f59687740c8dbefe52548b173d87b2b5d9c4ba19e33e019316",
+		"captures/hard-support-2.0x-wide.png": "8862af8229881958148afeda10a52576b86adc64775569ef3f1b483ef63f6703"
+	},
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1119.99987792969,
+				-306.499969482422
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1119.99987792969,
+				-359.999969482422
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1560.0,
+				-486.5
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1560.0,
+				-540.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3760.0,
+				-1386.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3760.0,
+				-1440.0
+			],
+			"zoom": 2.0
+		},
+		"captures/feathered-0.8x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1119.99987792969,
+				-306.499969482422
+			],
+			"zoom": 0.8
+		},
+		"captures/feathered-0.8x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1119.99987792969,
+				-359.999969482422
+			],
+			"zoom": 0.8
+		},
+		"captures/feathered-1.0x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1560.0,
+				-486.5
+			],
+			"zoom": 1.0
+		},
+		"captures/feathered-1.0x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1560.0,
+				-540.0
+			],
+			"zoom": 1.0
+		},
+		"captures/feathered-2.0x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3760.0,
+				-1386.5
+			],
+			"zoom": 2.0
+		},
+		"captures/feathered-2.0x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3760.0,
+				-1440.0
+			],
+			"zoom": 2.0
+		},
+		"captures/hard-support-0.8x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1119.99987792969,
+				-306.499969482422
+			],
+			"zoom": 0.8
+		},
+		"captures/hard-support-0.8x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-1119.99987792969,
+				-359.999969482422
+			],
+			"zoom": 0.8
+		},
+		"captures/hard-support-1.0x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1560.0,
+				-486.5
+			],
+			"zoom": 1.0
+		},
+		"captures/hard-support-1.0x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-1560.0,
+				-540.0
+			],
+			"zoom": 1.0
+		},
+		"captures/hard-support-2.0x-tall.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3760.0,
+				-1386.5
+			],
+			"zoom": 2.0
+		},
+		"captures/hard-support-2.0x-wide.png": {
+			"screen_center": [
+				2200.0,
+				900.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-3760.0,
+				-1440.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"inputs": {
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-feasibility/baseline.json": "0148bd07760e7d52bfbea948ea4612bab4c3b8c37fcd04f4e319d156efac09bb",
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-feasibility/capture.gd": "c3f927a0b63a2f522e9f0666389c81a548aea2517aed497059bdd1eaf0450800",
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-feasibility/inventory.json": "188062ec81dcf756b392051b0d9036dba4c1b5b89cef1a6cb7e47e86b0e96a39",
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-feasibility/proof-inputs/feathered-layer.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+		"/Users/hherb/src/allrpcs/art-direction/square-ground-feasibility/proof-inputs/hard-support-layer.png": "3e01cf3c1ef4f118d506932bce7e34edebaf3f5e13682e565382804891e41e67",
+		"res://Main.tscn": "bcc89f91e26b2fbc06ad103d76efeb94ae15f2442c5f86f52925b9adc1978842"
+	},
+	"scope": "External Square proof; actual retained routes/objects; no saved runtime change",
+	"target_center": [
+		2200,
+		900
+	]
+}

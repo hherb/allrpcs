@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "external feasibility; visual review pending",
+  "origin": [
+    1920,
+    620
+  ],
+  "size": [
+    560,
+    560
+  ],
+  "world_phase": [
+    0,
+    0
+  ],
+  "new_period": 128,
+  "legacy_period": 256,
+  "mask_recipe": "alpha > 0; square dilation radius 24; zero-padded Chebyshev pixel-centre distance; inward 16px smoothstep",
+  "routes": [
+    {
+      "name": "SquareSickhousePath",
+      "source": "game/art/runtime/terrain/square-sickhouse-path.png",
+      "z": -71,
+      "origin": [
+        2320,
+        1140
+      ]
+    },
+    {
+      "name": "SquareGardenPath",
+      "source": "game/art/runtime/terrain/square-garden-path.png",
+      "z": -71,
+      "origin": [
+        2200,
+        1140
+      ]
+    },
+    {
+      "name": "SquareSouthernRoadPath",
+      "source": "game/art/runtime/terrain/square-southern-road-path.png",
+      "z": -71,
+      "origin": [
+        1440,
+        1024
+      ]
+    },
+    {
+      "name": "VillageEdgeSquareConnector",
+      "source": "game/art/runtime/terrain/village-edge-square-connector.png",
+      "z": -70,
+      "origin": [
+        1820,
+        852
+      ]
+    },
+    {
+      "name": "VillageSquareJunction",
+      "source": "game/art/runtime/terrain/village-square-junction.png",
+      "z": -70,
+      "origin": [
+        1944,
+        644
+      ]
+    }
+  ],
+  "sources": {
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "art-direction/garden-ground-runtime-promotion/owner-runtime-acceptance.json": "718d0ce5161f381768569825b4cb0c88250e1c4f3e912a7ab4dd19ea6d6ab2fd",
+    "art-direction/ground-placement-proposal/proposal.json": "2652b39d4c65e09d983a00938a9f8ddcf2d4581e7886e5c3c6bf7ba648506ea2",
+    "art-direction/production-proof/corrected/asset-manifest.json": "19b933e52e8d8ae32e107b70354f8625b4420def0a0e5e42930e5aaafb62e23b",
+    "art-direction/production-proof/corrected/exports/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3",
+    "art-direction/residual-ground-compatibility/interfaces.md": "18ee2cd9ec816002829948a8f2becdb9ab368f71e7f0b70cfc929d0bc5f0aa16",
+    "art-direction/residual-ground-tiling-proof/exports/dry-grass.png": "9893995653cc82dd38e2b449985f7d067af234b6f13c0c1cc3de2c611bf908ae",
+    "art-direction/residual-ground-tiling-proof/exports/packed-earth.png": "4f96f6093f475ca3d48c73c9fd9cace6a5e31a70bc39f9f645905b3ddf02dc32",
+    "art-direction/residual-ground-tiling-proof/exports/pale-gravel.png": "57cfb53e471e911f08b97e7eaf5ba3b49af642b7c3d428e96208ed9416a2ff4a",
+    "art-direction/residual-ground-tiling-proof/owner-acceptance.json": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da",
+    "art-direction/square-ground-feasibility/baseline.json": "0148bd07760e7d52bfbea948ea4612bab4c3b8c37fcd04f4e319d156efac09bb",
+    "art-direction/square-ground-feasibility/owner-selection.json": "6b511a18825d70bbbb6aeb5b937f30f15042e3ba0fcb40685575e751e8c71c0b",
+    "game/GreyboxNavigation.cs": "4d53dcd27d2a12dbf9f1fe7233d7478d53b77f58869f52bccda10dbb8d731769",
+    "game/Main.tscn": "bcc89f91e26b2fbc06ad103d76efeb94ae15f2442c5f86f52925b9adc1978842",
+    "game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+    "game/WholeChannelPresentation.cs": "6649930b31d99166861387d70886b43645ec33793798f6840c4b17986e70cdc0",
+    "game/art/runtime/terrain/channel-banks.png": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+    "game/art/runtime/terrain/channel-decks.png": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+    "game/art/runtime/terrain/channel-detail.png": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+    "game/art/runtime/terrain/channel-fringe.png": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+    "game/art/runtime/terrain/channel-water.png": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+    "game/art/runtime/terrain/quiet-moss.png": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db",
+    "game/art/runtime/terrain/square-garden-path.png": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "game/art/runtime/terrain/square-sickhouse-path.png": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "game/art/runtime/terrain/square-southern-road-path.png": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "game/art/runtime/terrain/village-edge-square-connector.png": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854",
+    "game/art/runtime/terrain/village-square-junction.png": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+  },
+  "measurements": {
+    "hard-support": {
+      "coverage_pixels": 138559,
+      "visible_changed_pixels": 131742
+    },
+    "feathered": {
+      "coverage_pixels": 138559,
+      "visible_changed_pixels": 128101
+    }
+  },
+  "outputs": {
+    "review/baseline-1x.png": "56314dd5ad2e919b6ad040e3cf44ab783f460c311a532ba45563598d1176d94a",
+    "review/hard-support-1x.png": "b0a0e6a743a029aa6284f6946bf06e1fbc5186f87d18360ccaa48d6de38afd91",
+    "masters/hard-support.ora": "06f335e947bd755756d883b84c9e0ed811bf503d4db895562dffac3a70721025",
+    "proof-inputs/hard-support-layer.png": "3e01cf3c1ef4f118d506932bce7e34edebaf3f5e13682e565382804891e41e67",
+    "proof-inputs/hard-support-coverage.png": "c3695402c139f6c5611ae192acd472896e234d326f42beae56cc9627b76a460e",
+    "review/feathered-1x.png": "e616308e20b2e3b1a08900b80fe8043788c3ff12c7ad73b95b8513352ac4663e",
+    "masters/feathered.ora": "3eab4ca70fd35916295b55cebf1b72ab81a13e1051ae282d41d2713c2948edf1",
+    "proof-inputs/feathered-layer.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "proof-inputs/feathered-coverage.png": "967704740321dc6b5456a51f116ec9a201907ff56ef604fcac0f04757b6f5f2c",
+    "proof-inputs/world-paint.png": "1c042c1d21cc67ff88c7a01f501ec76c5e845032530bba9fd56c934db77cf1ce",
+    "review/comparison-1x.png": "7bc565bbc48422269217f908b41a2274117cd5048eb55716830ffc09142957dc",
+    "review/west-port-2x.png": "eeeffd81d438cd44e9b3dd0162fb0475242614c0c8c5abbc67bfb47fc1bc789c",
+    "review/southwest-port-2x.png": "333d1872ae9f66d5991122c8c98a3cd47d6c6c758c1660fadb95b869b4413cc6",
+    "review/southeast-port-2x.png": "8b7b29f155c702468b97c3db5f0b632715b484ed8a4b6b01b6a7772ee91e2162",
+    "review/junction-edge-2x.png": "5e3092322350ea4a00e84688636f6cfa2902f46d46cde86649768cb48b331b46"
+  },
+  "limits": "CPU route-only crop; disposable GPU views retain actual scene objects/labels; no runtime promotion."
+}

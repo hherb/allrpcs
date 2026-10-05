@@ -206,8 +206,12 @@ has separate owner approval of all six runtime views and is cleared for reviewed
 direct-main publication. No broader terrain placement is inferred from this promotion.
 The owner requested a [next placement proposal](art-direction/ground-placement-proposal/README.md):
 unchanged packed earth around the Village Square junction, using a bounded
-alpha-derived apron. Its location/material boards and exact recipe await owner
-selection before one external feasibility composition; no runtime scope is selected.
+alpha-derived apron. The owner selected its exact use and recipe; the
+[external feasibility series](art-direction/square-ground-feasibility/README.md)
+now contains native baseline/hard/feathered compositions, editable 2x masters,
+edge/port comparisons and eighteen disposable wide/tall GPU views. Feathered
+composition visual review precedes consolidated scoped validation; no runtime
+scope is selected.
 Orientation samples turn coverage while retaining world-aligned source paint. Preserve
 the approved studies and existing terrain. Overall terrain production suitability and
 runtime integration remain open.

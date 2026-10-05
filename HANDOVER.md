@@ -12,16 +12,20 @@ and the Garden station/physical owners. Historical pending records remain immuta
 
 ## Next bounded boundary
 
-The owner requested an external placement proposal. The prepared
-[Village Square proposal](art-direction/ground-placement-proposal/README.md)
-recommends unchanged packed earth beneath the accepted junction, with a 24px
-alpha-derived apron, inward 16px feather, phase `(0,0)` and proposed z=-90.
-[Bindings/boards](art-direction/ground-placement-proposal/proposal.json) pin the
-560x560 maximum window `(1920,620)`–`(2480,1180)` and native samples.
-**Owner selection is pending.** Obtain selection of this use and mask/interface
-recipe, or a named revision. Then prepare one separate external source-matched
-feasibility composition using the proposal's exact next-slice checklist. Do not
-implement runtime changes from this proposal or infer terrain completeness.
+The owner selected the exact Village Square proposal. The
+[external feasibility series](art-direction/square-ground-feasibility/README.md)
+is prepared: baseline/hard-support/feathered CPU views, four edge groups, two
+editable 2x masters and all eighteen matched wide/tall GPU captures at 0.8x/1x/2x.
+[Selection](art-direction/square-ground-feasibility/owner-selection.json) binds the
+proposal; [baseline](art-direction/square-ground-feasibility/baseline.json) freezes
+7,109 predecessor files at `9f3949b`. Mask/paint window stays `(1920,620)`–`(2480,1180)`;
+phase `(0,0)`, 24px square dilation, inward zero-padded 16px feather, z=-90.
+**Feathered composition visual review is pending.** Obtain approval or a named
+revision of the displayed complete series, retaining diagnostics and failed
+candidates. Then run `build.py --check`, `boards.py --check` and
+`inspect_package.py` within that package; record consolidated validation and bind
+exact selected output hashes. Only then prepare a separate named runtime scope
+proposal. No runtime promotion or terrain completeness is authorized.
 
 ## Constraints and checks
 
@@ -38,8 +42,8 @@ Run `PATH="/opt/homebrew/bin:$PATH" ./scripts/quality.sh`; scoped Garden checks 
 Frozen artwork validators run unchanged on pinned `2fcc849`; the successor verifies
 the live preserved subset and exact additions. Never rewrite frozen inventories or
 weaken their validators. Retain the documented sandbox/host distinction in verification.
-The placement proposal is checked read-only with
-`/opt/homebrew/bin/python3 art-direction/ground-placement-proposal/build.py --check`;
-its [session review](art-direction/ground-placement-proposal/session-review.json)
-records scoped checks. Product code/runtime/CI inputs are unchanged by the proposal;
-retain the preceding full-quality evidence rather than replaying it.
+The feasibility [authoring review](art-direction/square-ground-feasibility/authoring-review.json)
+records lightweight authoring/capture evidence and pending scoped validation.
+Product/runtime/CI inputs remain unchanged; retain the preceding full-quality
+evidence. Sandbox capture exited 134; identical host retry completed. Do not replay
+full tests for an individual candidate. Frozen proposal/acceptance inputs stay immutable.

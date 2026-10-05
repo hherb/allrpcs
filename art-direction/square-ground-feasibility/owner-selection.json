@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "OK - I select this proposal. Please continue",
+  "status": "Village Square packed-earth placement and mask/interface recipe selected for external feasibility",
+  "selected_proposal": {
+    "art-direction/ground-placement-proposal/README.md": "c86fb6144e402b8ee682f51b4e7a372f3dc708e5e28e288715751663402827f2",
+    "art-direction/ground-placement-proposal/proposal.json": "2652b39d4c65e09d983a00938a9f8ddcf2d4581e7886e5c3c6bf7ba648506ea2",
+    "art-direction/ground-placement-proposal/review/location-plan.png": "1dec890fdb5f7a593e730466695b9df160e93e1271ac65ca92e6f07baa8b1f19",
+    "art-direction/ground-placement-proposal/review/geometry-materials.png": "4be30650abf961f0e93f76564774622d875382fe19e7efbd4834e0ea709eefe1"
+  },
+  "scope": "One separate external source-matched feasibility package; no named runtime promotion or runtime visual acceptance."
+}

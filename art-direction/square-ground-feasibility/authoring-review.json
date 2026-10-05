@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-05",
+  "timezone": "Australia/Sydney",
+  "status": "complete external series presented; owner visual approval and consolidated scoped validation pending",
+  "package_sha256": {
+    ".DS_Store": "05bf936ca866540ea296811ce8ac51f7fa2e4a4293062997200f0377d73dde8d",
+    "README.md": "a2a4a3a12fb2703a71291686e5ad80a5c63e310787ac9f7c44d8265fa7938535",
+    "baseline.json": "0148bd07760e7d52bfbea948ea4612bab4c3b8c37fcd04f4e319d156efac09bb",
+    "boards.py": "88ff269f6c5bee5bcb3fb0866b291cd342a0398284c30ea60a87dbce699348ed",
+    "build.py": "30b87560efd14e528ca8552203569ed9c7e38183e0258fae2c08c691e3a55279",
+    "capture-evidence.json": "e6e31b6a7b368e41c3a3c265fd307ebf3643cf4dd3bfda8ffa8dcec7d6b2292b",
+    "capture.gd": "c3f927a0b63a2f522e9f0666389c81a548aea2517aed497059bdd1eaf0450800",
+    "captures/baseline-0.8x-tall.png": "c33a7c88686ad4ae49329aa22b478c253c02d568cc43c8383169a381cdb889b8",
+    "captures/baseline-0.8x-wide.png": "b9923b5b7e2025b9c29f710d8333c0a923282d1ca49759d841b4dd0a67393a0e",
+    "captures/baseline-1.0x-tall.png": "25c9f55daabeae8fb57a66a0cc822c0bb02aa3097574d0e59385187f76c7bb55",
+    "captures/baseline-1.0x-wide.png": "ee92ccc1f1e12e5661b7aabbf22686c79161aab812217c3bb9eaef7ea1702ff9",
+    "captures/baseline-2.0x-tall.png": "a84f16995178a684ea05f5513d3a1dd8e1fcef9dfd698aba0e790b103ce54cfb",
+    "captures/baseline-2.0x-wide.png": "79998c37f877729019fb55cfdd1fac46524689a7c86c3437c50d0bdd8e34f47b",
+    "captures/feathered-0.8x-tall.png": "f07b3dcf7af6e43a12a7c3d325bfa3562aefcc7dedffd8801f68417e41ac2277",
+    "captures/feathered-0.8x-wide.png": "49ee0268c41b07dfd36d7edc4a9363a7a14d0a02629e91447fde77934549b39e",
+    "captures/feathered-1.0x-tall.png": "fffafba3d27566efae7599d7dd905bf557f333d03801d5503314c7bf3510525b",
+    "captures/feathered-1.0x-wide.png": "0ff0df5cf9fc66f0012f989a987abc34c459d669557afc3f7bf02970a08158ae",
+    "captures/feathered-2.0x-tall.png": "87fb9ae8c7edd3cbf339f26547fcd8ce5bde0f34654a36627a67062fb9826ff6",
+    "captures/feathered-2.0x-wide.png": "3b0f0c91b9dfd301b9965afabf1fce62c6b85f75bd94d7e4fe8438f2d4967f68",
+    "captures/hard-support-0.8x-tall.png": "419d509e1cd55053cd9e556ba63f9203266cfa0952405211eea0a1c0f31e1c3a",
+    "captures/hard-support-0.8x-wide.png": "7e403e9a39c5ee01260d12a8655401e7e0cb3d5effbdaa8dbe120cf202237a5f",
+    "captures/hard-support-1.0x-tall.png": "66fe776dc8545d2c78ff504d2de8688c61c333a13fe7a65af635b00c0469d949",
+    "captures/hard-support-1.0x-wide.png": "1fa33fd5e7ad024fe2db52c9a3d2ab2a73bf03ff76b6c482175cdbb95089ecbf",
+    "captures/hard-support-2.0x-tall.png": "a4e6e4071d0c14f59687740c8dbefe52548b173d87b2b5d9c4ba19e33e019316",
+    "captures/hard-support-2.0x-wide.png": "8862af8229881958148afeda10a52576b86adc64775569ef3f1b483ef63f6703",
+    "evidence/capture.log": "dfbdc68bcd0869ddf8b2dc1daabfb95ec534187222358f60cc2751e83ebbe6cf",
+    "evidence/initial-capture-evidence.json": "72051c33593174974bba35a36a89fb0cf961cc4b3baff0c360b5979f839de8ca",
+    "evidence/initial-capture.gd": "5b73cd67451d291080b9ce0bec5ebeda1e27926ee5f8ab77f2ade6e60ee92b13",
+    "evidence/initial-capture.log": "dfbdc68bcd0869ddf8b2dc1daabfb95ec534187222358f60cc2751e83ebbe6cf",
+    "evidence/sandbox-capture-attempt.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "inspect_package.py": "660ec32d4dae178b5ea85d6ed3d9bd62d68bc5f0fa60b35a11c919896782a344",
+    "inventory.json": "188062ec81dcf756b392051b0d9036dba4c1b5b89cef1a6cb7e47e86b0e96a39",
+    "masters/feathered.ora": "3eab4ca70fd35916295b55cebf1b72ab81a13e1051ae282d41d2713c2948edf1",
+    "masters/hard-support.ora": "06f335e947bd755756d883b84c9e0ed811bf503d4db895562dffac3a70721025",
+    "owner-selection.json": "6b511a18825d70bbbb6aeb5b937f30f15042e3ba0fcb40685575e751e8c71c0b",
+    "proof-inputs/feathered-coverage.png": "967704740321dc6b5456a51f116ec9a201907ff56ef604fcac0f04757b6f5f2c",
+    "proof-inputs/feathered-layer.png": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+    "proof-inputs/hard-support-coverage.png": "c3695402c139f6c5611ae192acd472896e234d326f42beae56cc9627b76a460e",
+    "proof-inputs/hard-support-layer.png": "3e01cf3c1ef4f118d506932bce7e34edebaf3f5e13682e565382804891e41e67",
+    "proof-inputs/world-paint.png": "1c042c1d21cc67ff88c7a01f501ec76c5e845032530bba9fd56c934db77cf1ce",
+    "review/baseline-1x.png": "56314dd5ad2e919b6ad040e3cf44ab783f460c311a532ba45563598d1176d94a",
+    "review/comparison-1x.png": "7bc565bbc48422269217f908b41a2274117cd5048eb55716830ffc09142957dc",
+    "review/complete-edge-series-2x.png": "7ae12bf72f7fde8048209c16ea7238a0637d68bc93f911811251ab3a4bd9bfd6",
+    "review/feathered-1x.png": "e616308e20b2e3b1a08900b80fe8043788c3ff12c7ad73b95b8513352ac4663e",
+    "review/gpu-series-tall.png": "e92da4a53cd749a4f04dfa9bb2ee62be8e63cb2398f04979fe79b90d0d7b30cb",
+    "review/gpu-series-wide.png": "cd92f892df373572ffa6c6a9a08563423059451b364444829e2bec688d239d9e",
+    "review/hard-support-1x.png": "b0a0e6a743a029aa6284f6946bf06e1fbc5186f87d18360ccaa48d6de38afd91",
+    "review/junction-edge-2x.png": "5e3092322350ea4a00e84688636f6cfa2902f46d46cde86649768cb48b331b46",
+    "review/southeast-port-2x.png": "8b7b29f155c702468b97c3db5f0b632715b484ed8a4b6b01b6a7772ee91e2162",
+    "review/southwest-port-2x.png": "333d1872ae9f66d5991122c8c98a3cd47d6c6c758c1660fadb95b869b4413cc6",
+    "review/west-port-2x.png": "eeeffd81d438cd44e9b3dd0162fb0475242614c0c8c5abbc67bfb47fc1bc789c",
+    "review-board-manifest.json": "b35648104195e9ee903278000881924be58eeeca1fbcd85d887c4b157be0d770"
+  },
+  "lightweight_authoring": {
+    "CPU_builder": "complete baseline/hard/feathered native compositions, four 2x edge groups, two editable masters generated successfully",
+    "GPU_capture": "18 matched 0.8x/1x/2x wide/tall actual-scene views, exit0 on host; initial sandbox exit134",
+    "review_boards": "complete labelled series generated; native and both GPU boards and all edge groups visually inspected",
+    "final_capture_guard": "accepted-packet overwrite guard added; all 18 recaptured PNG hashes unchanged",
+    "Python_syntax": "three package scripts parse",
+    "predecessor_preservation": "all 7,109 files inspected; only HANDOVER.md and ROADMAP.md changed",
+    "whitespace": "git diff --check passes"
+  },
+  "session_code_review": {
+    "outcome": "no outstanding authoring defects identified; independent consolidated inspector awaits visual agreement",
+    "fixes": [
+      "added accepted-packet overwrite protection to disposable capture script",
+      "documented inward zero padding at finite apron endpoints",
+      "kept actual scene square/cask occlusion in GPU views rather than replacing greybox owners"
+    ]
+  },
+  "scoped_validation": {
+    "status": "not run pending visual agreement",
+    "commands": [
+      "build.py --check",
+      "boards.py --check",
+      "inspect_package.py"
+    ],
+    "inspector_scope": "independent mask/distance reconstruction, source RGB/phase, editable master merge, entire predecessor preservation, channel/Garden separation and paired GPU pixel scope"
+  },
+  "full_quality": {
+    "execution": "not replayed; product/runtime/test/CI inputs unchanged",
+    "retained_record": "art-direction/garden-ground-runtime-promotion/verification.json",
+    "recorded_tests": 5033,
+    "recorded_execution": "host retry after sandbox Godot startup exit134"
+  },
+  "next_boundary": "owner feathered-composition approval or named revision; then consolidated validation and exact-hash external acceptance; runtime scope remains separate"
+}

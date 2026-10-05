@@ -1,0 +1,32 @@
+{
+  "sources": {
+    "capture-evidence.json": "e6e31b6a7b368e41c3a3c265fd307ebf3643cf4dd3bfda8ffa8dcec7d6b2292b",
+    "captures/baseline-0.8x-wide.png": "b9923b5b7e2025b9c29f710d8333c0a923282d1ca49759d841b4dd0a67393a0e",
+    "captures/hard-support-0.8x-wide.png": "7e403e9a39c5ee01260d12a8655401e7e0cb3d5effbdaa8dbe120cf202237a5f",
+    "captures/feathered-0.8x-wide.png": "49ee0268c41b07dfd36d7edc4a9363a7a14d0a02629e91447fde77934549b39e",
+    "captures/baseline-1.0x-wide.png": "ee92ccc1f1e12e5661b7aabbf22686c79161aab812217c3bb9eaef7ea1702ff9",
+    "captures/hard-support-1.0x-wide.png": "1fa33fd5e7ad024fe2db52c9a3d2ab2a73bf03ff76b6c482175cdbb95089ecbf",
+    "captures/feathered-1.0x-wide.png": "0ff0df5cf9fc66f0012f989a987abc34c459d669557afc3f7bf02970a08158ae",
+    "captures/baseline-2.0x-wide.png": "79998c37f877729019fb55cfdd1fac46524689a7c86c3437c50d0bdd8e34f47b",
+    "captures/hard-support-2.0x-wide.png": "8862af8229881958148afeda10a52576b86adc64775569ef3f1b483ef63f6703",
+    "captures/feathered-2.0x-wide.png": "3b0f0c91b9dfd301b9965afabf1fce62c6b85f75bd94d7e4fe8438f2d4967f68",
+    "captures/baseline-0.8x-tall.png": "c33a7c88686ad4ae49329aa22b478c253c02d568cc43c8383169a381cdb889b8",
+    "captures/hard-support-0.8x-tall.png": "419d509e1cd55053cd9e556ba63f9203266cfa0952405211eea0a1c0f31e1c3a",
+    "captures/feathered-0.8x-tall.png": "f07b3dcf7af6e43a12a7c3d325bfa3562aefcc7dedffd8801f68417e41ac2277",
+    "captures/baseline-1.0x-tall.png": "25c9f55daabeae8fb57a66a0cc822c0bb02aa3097574d0e59385187f76c7bb55",
+    "captures/hard-support-1.0x-tall.png": "66fe776dc8545d2c78ff504d2de8688c61c333a13fe7a65af635b00c0469d949",
+    "captures/feathered-1.0x-tall.png": "fffafba3d27566efae7599d7dd905bf557f333d03801d5503314c7bf3510525b",
+    "captures/baseline-2.0x-tall.png": "a84f16995178a684ea05f5513d3a1dd8e1fcef9dfd698aba0e790b103ce54cfb",
+    "captures/hard-support-2.0x-tall.png": "a4e6e4071d0c14f59687740c8dbefe52548b173d87b2b5d9c4ba19e33e019316",
+    "captures/feathered-2.0x-tall.png": "87fb9ae8c7edd3cbf339f26547fcd8ce5bde0f34654a36627a67062fb9826ff6",
+    "review/west-port-2x.png": "eeeffd81d438cd44e9b3dd0162fb0475242614c0c8c5abbc67bfb47fc1bc789c",
+    "review/southwest-port-2x.png": "333d1872ae9f66d5991122c8c98a3cd47d6c6c758c1660fadb95b869b4413cc6",
+    "review/southeast-port-2x.png": "8b7b29f155c702468b97c3db5f0b632715b484ed8a4b6b01b6a7772ee91e2162",
+    "review/junction-edge-2x.png": "5e3092322350ea4a00e84688636f6cfa2902f46d46cde86649768cb48b331b46"
+  },
+  "outputs": {
+    "review/gpu-series-wide.png": "cd92f892df373572ffa6c6a9a08563423059451b364444829e2bec688d239d9e",
+    "review/gpu-series-tall.png": "e92da4a53cd749a4f04dfa9bb2ee62be8e63cb2398f04979fe79b90d0d7b30cb",
+    "review/complete-edge-series-2x.png": "7ae12bf72f7fde8048209c16ea7238a0637d68bc93f911811251ab3a4bd9bfd6"
+  }
+}
