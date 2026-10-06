@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "authority_order": [
+    "Current direct owner instruction",
+    "Persistent closure and applicable terminal acceptance",
+    "Current active slice",
+    "Historical package prose and skill defaults"
+  ],
+  "closed_scopes": [
+    {
+      "id": "forest-path-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/forest-path-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "7512e6230a94ca26822776ac1c196fff0d70d907982b2bd9a6dee5b4f2fdd971"
+        }
+      ]
+    },
+    {
+      "id": "garden-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/garden-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "718d0ce5161f381768569825b4cb0c88250e1c4f3e912a7ab4dd19ea6d6ab2fd"
+        }
+      ]
+    },
+    {
+      "id": "square-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/square-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "4403181a8fa1a442058c63079b0e26bd45300eb6d8c490714e515b966e72070b"
+        }
+      ]
+    },
+    {
+      "id": "sickhouse-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/sickhouse-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "0b440db7ed04b963d39c8beb3f856f82c132cc1b44e52499f3de93e7157f0c89"
+        }
+      ]
+    },
+    {
+      "id": "wagon-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/wagon-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "6b6e50bce0d4c1b9b3489043deac648089a7e7898706f5dd1a0df73c562ec806"
+        }
+      ]
+    },
+    {
+      "id": "shrine-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/shrine-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "0859effe57944a958919f9409a4cc0d60200bbf8eda2b9a745e4b7c7143ce358"
+        }
+      ]
+    },
+    {
+      "id": "laundry-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "7891efaba3f861950bebd542594b695949dc436ac2d0c1d3c25244128aef70ac"
+        }
+      ]
+    },
+    {
+      "id": "village-edge-ground-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/village-edge-ground-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "65acf91fec786d3136036a20d22e1e504abd19047d1a9a24504d03b533506646"
+        }
+      ]
+    },
+    {
+      "id": "woodland-clearing-dressing-runtime",
+      "reason": "Owner-accepted runtime presentation; artwork, exact placement and displayed runtime views are closed.",
+      "evidence": [
+        {
+          "path": "art-direction/woodland-clearing-dressing-runtime-promotion/owner-runtime-acceptance.json",
+          "sha256": "f07ff3579a2b83bd7238705fe81f0c589b7a1e0b921bd87f8691ef32d208bcf9"
+        }
+      ]
+    },
+    {
+      "id": "whole-channel-runtime",
+      "reason": "Owner-accepted exact channel presentation; preserve the accepted composition.",
+      "evidence": [
+        {
+          "path": "art-direction/whole-channel-runtime-promotion/owner-acceptance.json",
+          "sha256": "feb169c9102ef0c86ac3b8c14836d9df98bae9d689cfd8a70fb587b7ae3bb3a9"
+        }
+      ]
+    },
+    {
+      "id": "woodland-environment-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/woodland-environment-batch/owner-acceptance.json",
+          "sha256": "06006653959c2c74e75b8f04a57ba767e5f652fb19a597fdf6863efa9f1b448f"
+        }
+      ]
+    },
+    {
+      "id": "structures-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/structures-batch/owner-acceptance.json",
+          "sha256": "f0409fd759766cbaa2006a5d6ab1ad4edc5aff4ae14653cf406eebc725653156"
+        }
+      ]
+    },
+    {
+      "id": "characters-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/characters-batch/owner-acceptance.json",
+          "sha256": "f416016af7b52901c31434940c095028ea8b9a2eb38ce5e375b352cfb88f40ca"
+        }
+      ]
+    },
+    {
+      "id": "objects-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/objects-batch/owner-acceptance.json",
+          "sha256": "9debfe58bdcad924ce5e279981288442b437195461574e9b4fe51fb8330b95d1"
+        }
+      ]
+    },
+    {
+      "id": "ui-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/ui-batch/owner-acceptance.json",
+          "sha256": "9ad155db47fd263b10b3512bcd5854d756269da82a52fdd8cafd005089c58353"
+        }
+      ]
+    },
+    {
+      "id": "effects-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/effects-batch/owner-acceptance.json",
+          "sha256": "9a5534956e944dd20f8ce340713b9e66d45c1e6d8f9a4303458be6bac591716c"
+        }
+      ]
+    },
+    {
+      "id": "residual-ground-artwork",
+      "reason": "Existing owner artwork approval remains valid at its recorded scope; this does not grant a new runtime installation.",
+      "evidence": [
+        {
+          "path": "art-direction/residual-ground-batch/owner-acceptance.json",
+          "sha256": "96d530018e0fb110cec0a97a22110802e944601e67826f099286130090e0f36b"
+        }
+      ]
+    },
+    {
+      "id": "residual-ground-tiling-artwork",
+      "reason": "Complete repeatable material/transition artwork is owner-approved.",
+      "evidence": [
+        {
+          "path": "art-direction/residual-ground-tiling-proof/owner-acceptance.json",
+          "sha256": "c4b3594a55221ead35997501f03f3ebe5b29d95955a6272268dcff090714e1da"
+        }
+      ]
+    },
+    {
+      "id": "closed-forest-ground-coverage",
+      "reason": "Completed audit recommends no additional apron. Do not repeat the unchanged coverage audit.",
+      "evidence": [
+        {
+          "path": "art-direction/closed-forest-ground-coverage/audit.json",
+          "sha256": "720fce84b8a7171650d67f23bc7e160ef6fffe22611de5e960049b8b6528678f"
+        }
+      ]
+    },
+    {
+      "id": "clearing-opening-ground-study",
+      "reason": "Complete external comparison and diagnostics exist; retain the recommendation and alternatives without another automatic study.",
+      "evidence": [
+        {
+          "path": "art-direction/clearing-village-edge-ground-feasibility/continuation.json",
+          "sha256": "465120c8330b4a36e73feb65d937aad84b815a5155ee0fa3fe2207dc7e4221f6"
+        }
+      ]
+    },
+    {
+      "id": "closed-forest-approach-dressing-study",
+      "reason": "Owner closed the redundant successor in the current chat on 2026-10-06. No separate runtime installation or new accepted pixels are claimed.",
+      "evidence": [
+        {
+          "path": "CONTINUATION_AUDIT.md",
+          "sha256": "fca6f4831170026f6f80559a20250ed53244e2d1a4b88340be4937c48d516871"
+        }
+      ]
+    }
+  ],
+  "closed_workstreams": [
+    {
+      "id": "opening-region-ground-studies",
+      "reason": "Park automatic additional apron/coverage/comparison studies around accepted placements. Residual terrain work is not declared complete; a new material/geography scope requires an explicit owner request.",
+      "evidence": [
+        {
+          "path": "CONTINUATION_AUDIT.md",
+          "sha256": "fca6f4831170026f6f80559a20250ed53244e2d1a4b88340be4937c48d516871"
+        }
+      ]
+    },
+    {
+      "id": "clearing-forest-dressing-studies",
+      "reason": "Grouped Clearing runtime is accepted; the owner stopped the redundant approach successor. Do not rename and restart that work.",
+      "evidence": [
+        {
+          "path": "CONTINUATION_AUDIT.md",
+          "sha256": "fca6f4831170026f6f80559a20250ed53244e2d1a4b88340be4937c48d516871"
+        }
+      ]
+    }
+  ],
+  "reopenings": [],
+  "active_slice": {
+    "id": "phase9-character-animation-import-proof",
+    "title": "Import and register the complete approved directional character set",
+    "status": "ready",
+    "workstream": "character-animation-presentation",
+    "roadmap_item": "- [ ] Import and register the complete approved directional character animation set in an isolated proof.",
+    "missing_deliverable": "The approved new character directional frames have no imported animation/registration proof. Artwork is approved; runtime registration, cadence and import behavior remain provisional.",
+    "instructions": "Use art-direction/characters-batch/owner-acceptance.json as the source ledger: 432 new approved directional frames across nine families (four directions; two idle, two inspect, eight polished walk frames per direction), plus the 48 unchanged inherited Seeker cloak frames. Build one isolated Godot animation proof and a deterministic import recipe. Retain source pixels and editable masters; define foot registration and cadence from measured frames and existing Seeker behavior. Show all families/directions together with native/2x scale and cycle comparisons. Check alpha, exact decoded pixels, registration, loop/frame order and lossless imports. Do not regenerate artwork or seek artwork approval again. Consolidate scoped validation and review; request a decision only for a genuinely changed proposal or a missing new runtime authority.",
+    "completion_condition": "Every approved directional family plays idle, inspect and complete walk loops in the isolated proof; source/import RGBA parity and measured registration pass, the complete comparison is retained, and remaining Main integration authority is stated once. Mark this proof closed and choose one genuinely unfinished roadmap deliverable.",
+    "outputs": [
+      "art-direction/character-animation-import-proof/README.md",
+      "art-direction/character-animation-import-proof/registration.json",
+      "game/CharacterAnimationImportProof.tscn"
+    ],
+    "boundary": "Isolated import/animation proof only. Main.tscn, gameplay, controllers, collision/navigation, scenarios, providers, functional UI, audio and release/signing stay unchanged. Designs, portraits and sleeping/recovery semantics stay at their existing approved/provisional scope."
+  }
+}

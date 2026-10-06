@@ -3,7 +3,8 @@
 ## Purpose
 
 Keep the remaining work, milestone acceptance criteria, and settled design constraints here.
-Use [HANDOVER.md](HANDOVER.md) for the exact next bounded slice and current verification;
+Use [CONTINUATION.json](CONTINUATION.json) for the persistent closed scopes and one active slice;
+use [HANDOVER.md](HANDOVER.md) for its handoff and current verification;
 use [README.md](README.md) for development commands. Detailed completed-work evidence stays
 in the linked audits and art packages, with earlier checklists retained in Git history.
 
@@ -11,7 +12,10 @@ When work is completed:
 
 - Change its checkbox from `[ ]` to `[x]` only after the listed acceptance condition has been
   verified.
-- Update `HANDOVER.md` with the evidence, limitations, and exact next bounded slice.
+- Keep closure evidence in `CONTINUATION.json`; choose one missing deliverable from a
+  remaining item below, then sync `HANDOVER.md` with `python3 scripts/check-continuation.py --sync`.
+- Closed scopes survive handover pruning. Do not create another audit/comparison of the
+  same accepted area as a successor; reopen it only at the owner's explicit request.
 - Keep partially completed items unticked and describe their current state in `HANDOVER.md`.
 - Do not mark platform, provider, packaging, or manual behaviour as verified without current
   evidence.
@@ -305,8 +309,12 @@ blocks, physical, discovery and gameplay state are retained. The owner
 on 2026-10-06. All eight paired baselines and grouped runtime captures match selected
 external RGBA; fresh product quality passes with 5,033 tests, all Godot smokes and
 cold import. The entire grouped runtime slice is terminally accepted; do not reopen
-historical pending records. Next is an external-only closed-forest approach dressing
-feasibility slice, preserving the retained gate/Forester and accepted grouped baseline.
+historical pending records. On 2026-10-06 the owner closed the redundant proposed
+forest-approach dressing successor. Further automatic ground/Clearing/forest studies
+are parked in the [persistent ledger](CONTINUATION.json); this is not a claim of global
+terrain, accessibility or pacing completion. Next is one isolated import/registration
+proof for the complete already-approved directional character set, addressing the
+remaining scale/pivot/import validation item without another artwork-selection cycle.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -330,7 +338,8 @@ passing full-suite evidence and run fresh scoped validation for the newly approv
 - [ ] Produce terrain tiles, transitions, paths, banks, water, and ground variation.
 - [x] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
 - [x] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.
-- [ ] Produce character designs, portraits, directional sprites, and required animation frames.
+- [x] Produce owner-approved character designs, portraits, directional sprites and animation-frame artwork.
+- [ ] Import and register the complete approved directional character animation set in an isolated proof.
 - [x] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
 - [x] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.
 - [x] Produce weather, lighting, discovery, treatment, and disease-state effects.

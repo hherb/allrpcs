@@ -99,6 +99,13 @@ external RGBA exactly. Fresh quality passes with 5,033 tests, all Godot smokes a
 cold import. The complete grouped runtime slice is closed; historical unselected
 and pending metadata is superseded by terminal acceptance.
 
+Continuation uses the [persistent ledger](CONTINUATION.json), [handover](HANDOVER.md)
+and [repository instructions](AGENTS.md). Run `python3 scripts/check-continuation.py`
+before starting a slice. Closed approvals survive handover pruning; historical package
+"pending" and "next" text does not reopen them. The [loop investigation](CONTINUATION_AUDIT.md)
+retires the redundant forest-study successor and identifies the missing approved
+character animation import/registration proof as the next deliverable.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two
