@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-06",
+  "reviewer": "primary agent cumulative code and visual review; no independent subagent review claimed",
+  "scope": "Separate external shoulder comparison and colour-vision/luminance slice only",
+  "findings": [
+    {
+      "finding": "Requested continuation was initially started as another audit",
+      "resolution": "Removed only this session's four untracked duplicate scaffold files after direct owner correction; carried prior audit approval forward and completed the next comparison."
+    },
+    {
+      "finding": "Candidate dilation reaches bridge/channel source alpha",
+      "resolution": "Excluded the union of all five retained channel alpha planes plus a four-native-pixel guard before feathering; independently verified 3786 excluded texels."
+    },
+    {
+      "finding": "Verifier needed complete recipe and measurement checks",
+      "resolution": "Added explicit recipe invariants, independent alpha bounds and support counts, plus a pure GPU-difference check exercised by rejection probes."
+    }
+  ],
+  "visual_judgment": "Retain baseline recommended; new hard support reaches toward the bridge and has a harder boundary; feathers soften it without a clear advantage over retained moss buffer.",
+  "reviewed": [
+    "All new Python and GDScript source",
+    "Frozen source phase/RGB; editable masks and merged master parity",
+    "Complete wide/tall and native 1x/2x comparison boards",
+    "Colour-vision/luminance boards and forward linear-light transform",
+    "No saved scene, import, manifest, physical or functional changes",
+    "All predecessor Git blob identities, hashes and terminal acceptance",
+    "Source-bound logs, exact matrix completeness and finite changed-pixel bounds"
+  ],
+  "remaining_actionable_code_issues": [],
+  "limitations": [
+    "No new runtime selection, promotion or terrain-completeness acceptance",
+    "Static simulations do not establish human accessibility",
+    "Previous passing full-suite evidence retained; no fresh product/hosted suite claimed"
+  ]
+}

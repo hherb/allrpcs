@@ -1,0 +1,28 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Max
+
+Clearing opening external preview: captures/baseline-0.8x-wide.png
+Clearing opening external preview: captures/hard-support-0.8x-wide.png
+Clearing opening external preview: captures/feather-16-0.8x-wide.png
+Clearing opening external preview: captures/feather-24-0.8x-wide.png
+Clearing opening external preview: captures/baseline-0.8x-tall.png
+Clearing opening external preview: captures/hard-support-0.8x-tall.png
+Clearing opening external preview: captures/feather-16-0.8x-tall.png
+Clearing opening external preview: captures/feather-24-0.8x-tall.png
+Clearing opening external preview: captures/baseline-1.0x-wide.png
+Clearing opening external preview: captures/hard-support-1.0x-wide.png
+Clearing opening external preview: captures/feather-16-1.0x-wide.png
+Clearing opening external preview: captures/feather-24-1.0x-wide.png
+Clearing opening external preview: captures/baseline-1.0x-tall.png
+Clearing opening external preview: captures/hard-support-1.0x-tall.png
+Clearing opening external preview: captures/feather-16-1.0x-tall.png
+Clearing opening external preview: captures/feather-24-1.0x-tall.png
+Clearing opening external preview: captures/baseline-2.0x-wide.png
+Clearing opening external preview: captures/hard-support-2.0x-wide.png
+Clearing opening external preview: captures/feather-16-2.0x-wide.png
+Clearing opening external preview: captures/feather-24-2.0x-wide.png
+Clearing opening external preview: captures/baseline-2.0x-tall.png
+Clearing opening external preview: captures/hard-support-2.0x-tall.png
+Clearing opening external preview: captures/feather-16-2.0x-tall.png
+Clearing opening external preview: captures/feather-24-2.0x-tall.png
+PASS: complete 24-view Clearing opening external comparison

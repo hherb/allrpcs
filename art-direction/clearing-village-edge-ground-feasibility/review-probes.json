@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-06",
+  "status": "passed",
+  "probes": [
+    "GPU mutation outside supported world pixels",
+    "Missing or invisible candidate",
+    "Changed viewport",
+    "Rotated comparison transform",
+    "World-phase paint mutation",
+    "Support outside selected segment",
+    "Four independent red-primary golden vectors; forward matrix orientation and linear-light encoding",
+    "Black, middle grey, white and alpha unchanged under every simulation"
+  ],
+  "execution": "In-memory arrays and temporary external copies only; no retained/product bytes mutated"
+}

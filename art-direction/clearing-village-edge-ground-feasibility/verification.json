@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "status": "two external slices complete; cumulative review and consolidated scoped validation pass",
+  "baseline_commit": "a6903284c2dc689364e7e186975de86ff5752bfd",
+  "unchanged_predecessor_files": 8101,
+  "product_inventory": {
+    "assets": 97,
+    "masters": 48
+  },
+  "comparison": {
+    "views": 24,
+    "editable_masters": 3,
+    "variants": [
+      "baseline",
+      "hard-support",
+      "feather-16",
+      "feather-24"
+    ],
+    "recommendation": "retain baseline; no owner runtime selection inferred"
+  },
+  "readability": {
+    "images": 40,
+    "boards": 2,
+    "scope": "native 1x and camera 2x model-based diagnostics only; human accessibility remains open"
+  },
+  "checks": [
+    "build.py --check: exact source paint, masks and master byte reproduction",
+    "boards.py --check: complete exact GPU view/detail board reproduction",
+    "readability.py --check: all diagnostic images and board byte reproduction",
+    "verify.py: committed Git/SHA-256 preservation, independently derived masks and RGB, editable 2x parity, actual owners, bounded screen changes, terminal acceptance, inherited quality",
+    "Eight independent rejection and colour-transform numerical probes",
+    "git diff --check"
+  ],
+  "capture_execution": {
+    "sandbox_exit": 134,
+    "host_retry_exit": 0,
+    "explicit_frame_markers": 24,
+    "explicit_pass_marker": true,
+    "parse_errors": 0
+  },
+  "inherited_quality": {
+    "tests": 5033,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "all_godot_smokes_and_startup": "preserved passing evidence; no fresh product suite claimed"
+  },
+  "remaining_actionable_code_issues": [],
+  "evidence_sha256": {
+    "baseline.json": "bf67f28a977e981ab342d5bce68d8c64672b59fa9fc1002f00cd4443cf8494f7",
+    "continuation.json": "465120c8330b4a36e73feb65d937aad84b815a5155ee0fa3fe2207dc7e4221f6",
+    "inventory.json": "bac71c519827b4430c9b76224930fb931bc6bdff1defa816f48aea49307be445",
+    "capture.gd": "b53c85858827dd42b4b184238df746e52ecb921b7ed946ed26065ad5975d1b23",
+    "capture-evidence.json": "3516ff01b7245f7a6e268631f61728c9db668148ef822b0e840e7faabed0dc86",
+    "capture-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "capture-host.log": "2ed298de733af645f33a8119a2fbefbf4876838393723d73b99271d0eee1de34",
+    "build.py": "9363e62bc006c6567e1f0ec1e2092e4559fa36d78a7b3e8964bc42aad4494316",
+    "boards.py": "f5a0be7b57186cbc0783aa059a7eeacbca3f4a5b7c0f187601904024a0369c2d",
+    "readability.py": "b8b9f047d4804740ff5f7a4a433735f17b1e39137fa16fa2c2ff2bc44d507a1b",
+    "verify.py": "746bb19f021599f70ec566009433fa1185df9a0dcad45df229d402907e30fe7a",
+    "review-board-manifest.json": "deb45ede574f3ab1998e95dce69ea351def1697ef120b7863d682fb64710a3d7",
+    "readability-manifest.json": "fa2ca3191f0904b61ff5d5707a5162058d7de8e38b42d0ba6a9f2ded3798443a",
+    "simulation-model.json": "615b56b75d2623e3a97a2832c8f5c1f932ad87308ac1e575549bd834b9647abf",
+    "review-probes.json": "5428f8ee4e9042d4243830ef61b538944bab6482d503bea160a3089269c11a42",
+    "session-review.json": "4764fe594513068588f9073a2862c7f20946ee7e5cf928d0a9559a3a752a8601",
+    "scoped-verification.log": "0921339267b710d003f29f6d48cbb73d33ca46f3e2a9538e42853cc6684f5783",
+    "README.md": "ff7365ced5c44d2fdaac6614cd7ec78279cb7cb24f528f1854de954fffac5ed9"
+  }
+}

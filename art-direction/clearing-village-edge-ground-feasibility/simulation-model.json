@@ -1,0 +1,67 @@
+{
+  "method": "Machado, Oliveira and Fernandes (2009), severity 100 coefficient table as published in colorspacious; forward transform in linear sRGB; clip to display gamut; sRGB encode",
+  "doi": "10.1109/TVCG.2009.113",
+  "coefficient_source_url": "https://raw.githubusercontent.com/njsmith/colorspacious/58948923b706879a54071568c7501be3f108797c/colorspacious/cvd.py",
+  "coefficient_source_sha256": "3402160c31273abb0df5efd363ac4e5b021e039fe05e86e34e99c283e679efd0",
+  "source_git_revision": "58948923b706879a54071568c7501be3f108797c",
+  "severity": 100,
+  "matrices": {
+    "protanomaly": [
+      [
+        0.152286,
+        1.052583,
+        -0.204868
+      ],
+      [
+        0.114503,
+        0.786281,
+        0.099216
+      ],
+      [
+        -0.003882,
+        -0.048116,
+        1.051998
+      ]
+    ],
+    "deuteranomaly": [
+      [
+        0.367322,
+        0.860646,
+        -0.227968
+      ],
+      [
+        0.280085,
+        0.672501,
+        0.047413
+      ],
+      [
+        -0.01182,
+        0.04294,
+        0.968881
+      ]
+    ],
+    "tritanomaly": [
+      [
+        1.255528,
+        -0.076749,
+        -0.178779
+      ],
+      [
+        -0.078411,
+        0.930809,
+        0.147602
+      ],
+      [
+        0.004733,
+        0.691367,
+        0.3039
+      ]
+    ]
+  },
+  "luminance_weights": [
+    0.2126,
+    0.7152,
+    0.0722
+  ],
+  "scope": "Static model-based diagnostics only; no human accessibility or medical assessment"
+}

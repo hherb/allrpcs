@@ -1,0 +1,142 @@
+{
+  "status": "static diagnostic series complete; human accessibility remains open",
+  "date": "2026-10-06",
+  "conditions": [
+    "normal",
+    "protanomaly",
+    "deuteranomaly",
+    "tritanomaly",
+    "luminance"
+  ],
+  "scales": [
+    1,
+    2
+  ],
+  "model": {
+    "method": "Machado, Oliveira and Fernandes (2009), severity 100 coefficient table as published in colorspacious; forward transform in linear sRGB; clip to display gamut; sRGB encode",
+    "doi": "10.1109/TVCG.2009.113",
+    "coefficient_source_url": "https://raw.githubusercontent.com/njsmith/colorspacious/58948923b706879a54071568c7501be3f108797c/colorspacious/cvd.py",
+    "coefficient_source_sha256": "3402160c31273abb0df5efd363ac4e5b021e039fe05e86e34e99c283e679efd0",
+    "source_git_revision": "58948923b706879a54071568c7501be3f108797c",
+    "severity": 100,
+    "matrices": {
+      "protanomaly": [
+        [
+          0.152286,
+          1.052583,
+          -0.204868
+        ],
+        [
+          0.114503,
+          0.786281,
+          0.099216
+        ],
+        [
+          -0.003882,
+          -0.048116,
+          1.051998
+        ]
+      ],
+      "deuteranomaly": [
+        [
+          0.367322,
+          0.860646,
+          -0.227968
+        ],
+        [
+          0.280085,
+          0.672501,
+          0.047413
+        ],
+        [
+          -0.01182,
+          0.04294,
+          0.968881
+        ]
+      ],
+      "tritanomaly": [
+        [
+          1.255528,
+          -0.076749,
+          -0.178779
+        ],
+        [
+          -0.078411,
+          0.930809,
+          0.147602
+        ],
+        [
+          0.004733,
+          0.691367,
+          0.3039
+        ]
+      ]
+    },
+    "luminance_weights": [
+      0.2126,
+      0.7152,
+      0.0722
+    ],
+    "scope": "Static model-based diagnostics only; no human accessibility or medical assessment"
+  },
+  "sources": {
+    "readability.py": "b8b9f047d4804740ff5f7a4a433735f17b1e39137fa16fa2c2ff2bc44d507a1b",
+    "boards.py": "f5a0be7b57186cbc0783aa059a7eeacbca3f4a5b7c0f187601904024a0369c2d",
+    "build.py": "9363e62bc006c6567e1f0ec1e2092e4559fa36d78a7b3e8964bc42aad4494316",
+    "simulation-model.json": "615b56b75d2623e3a97a2832c8f5c1f932ad87308ac1e575549bd834b9647abf",
+    "review-board-manifest.json": "deb45ede574f3ab1998e95dce69ea351def1697ef120b7863d682fb64710a3d7",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "review/baseline-detail-1x.png": "cfc5870f188b7841d2010ec68627f4005dea357d9235d3f2f45fc2bb72b3b6e0",
+    "review/hard-support-detail-1x.png": "c93de1c730f28af38ea24397c0cfb4a6e0ee43e645e9e5ef0f3d02d8481fad2b",
+    "review/feather-16-detail-1x.png": "67c1493c03188464a4c1043e3ad8b040b13586a83acefeb97311abf0c06af2d2",
+    "review/feather-24-detail-1x.png": "a78501608e21a31ca9da64cef70d1873bf9cc0c27f904ddcf45cb1943c991bf5",
+    "review/baseline-detail-2x.png": "38a7ff69258fef97d60c2518eb1588b9a40249831b51843808e6858439e2b470",
+    "review/hard-support-detail-2x.png": "746b96d043d2cfba3900d6abaa5a2a7204728aeb61a0d5e48a7e182295f4c4f3",
+    "review/feather-16-detail-2x.png": "b459dfb12a0f049a0134fde2a197e4f3ad40be50271cf46f99e3f56190b3652e",
+    "review/feather-24-detail-2x.png": "f35c8fb2e086a4c2e282312a9a8cdbbe4f23bbee7669d7d6eafff6e58f1cf0a5"
+  },
+  "outputs": {
+    "readability/baseline-normal-1x.png": "cfc5870f188b7841d2010ec68627f4005dea357d9235d3f2f45fc2bb72b3b6e0",
+    "readability/baseline-protanomaly-1x.png": "e6c59f3cf4894ca7ca2730b3d9de817ee7ba3b8f6f6a94544e1ae5a0d9b7c33b",
+    "readability/baseline-deuteranomaly-1x.png": "bddb89773dac14d0e75da5f6c4a048b464973137ce2ac43c202072a30e131fcf",
+    "readability/baseline-tritanomaly-1x.png": "21b616e3f52ad1f02dd380544725d2c3773eb46bbfcb7981d220fc85c94be171",
+    "readability/baseline-luminance-1x.png": "bb9992753685d926acc0c1e7cc135e05ad178eebc4c79928b8c2177d0200d955",
+    "readability/hard-support-normal-1x.png": "c93de1c730f28af38ea24397c0cfb4a6e0ee43e645e9e5ef0f3d02d8481fad2b",
+    "readability/hard-support-protanomaly-1x.png": "dbf7d5da484c19a2368869d4b1896cc702bd2e44eb05ecbe84f10099ee6b3794",
+    "readability/hard-support-deuteranomaly-1x.png": "e2ed281c8518880f13b806fe815da5501910932e32896e364c5acc3be110df56",
+    "readability/hard-support-tritanomaly-1x.png": "22f12e3a6a1631ae163e9dc3b15e228f00da41482f84656c324c217bb3d0e0e8",
+    "readability/hard-support-luminance-1x.png": "b46dc46e6f8ba9e1dadc1433cf4cee273d1c250d63c273c484eb1490531bb1b0",
+    "readability/feather-16-normal-1x.png": "67c1493c03188464a4c1043e3ad8b040b13586a83acefeb97311abf0c06af2d2",
+    "readability/feather-16-protanomaly-1x.png": "7f09ce62f068b8c807ecb4c64bc11feed28412ab299e57b1dbc1c1fa3a4463c3",
+    "readability/feather-16-deuteranomaly-1x.png": "2dcf9c2c26b51a588773a299b7cf1843ce9d2ad39614b2dbc1b8c621f456caea",
+    "readability/feather-16-tritanomaly-1x.png": "fe9628c3e64ce438b99a84e6d58a1283837df02e0f3503cb3a10e4bb1596ed83",
+    "readability/feather-16-luminance-1x.png": "941cdde24081b17ebd265e482d76ea60bce2fa6eef356fe37135c2cc8c6619d8",
+    "readability/feather-24-normal-1x.png": "a78501608e21a31ca9da64cef70d1873bf9cc0c27f904ddcf45cb1943c991bf5",
+    "readability/feather-24-protanomaly-1x.png": "c4f353dafa98de3055c43bb47d8180783c972c3ddb428317398d698fa5db94c4",
+    "readability/feather-24-deuteranomaly-1x.png": "4dbfe646453d50d1d40fd50047258f83ec80b9582918ce49d522b745cebda643",
+    "readability/feather-24-tritanomaly-1x.png": "8edf76cbca62f75e2f59f98682574022046498ba119eb6b127eca73a938a9153",
+    "readability/feather-24-luminance-1x.png": "2ffba174f7261823fa9953a8e6ec50d8d06fd9898acbcc179e52f26a2dffbf6c",
+    "readability/complete-series-1x.png": "60bef87c49319dc8fc07fb8707fabb60922523051745f6db3f7e9db8272fcc58",
+    "readability/baseline-normal-2x.png": "38a7ff69258fef97d60c2518eb1588b9a40249831b51843808e6858439e2b470",
+    "readability/baseline-protanomaly-2x.png": "d1f3a6ee4e12099d911206bf5646549b44c5715c492186b013dc6b6f90f5e621",
+    "readability/baseline-deuteranomaly-2x.png": "83825e8eaa19f2f51ac6721c0c5afd1d88b7b91b4b336cef4b5d6bfbc0ef0fad",
+    "readability/baseline-tritanomaly-2x.png": "49b56c64c1c4b3f5c965068c69214943b2df88d932a563f762a41e9cf2422933",
+    "readability/baseline-luminance-2x.png": "31a07a3d16b9eb087e76dc10a96826a42f6a174cffc8087c7f1ceb8ad3745145",
+    "readability/hard-support-normal-2x.png": "746b96d043d2cfba3900d6abaa5a2a7204728aeb61a0d5e48a7e182295f4c4f3",
+    "readability/hard-support-protanomaly-2x.png": "c3f9570dcab1cccf60eb80f09b2cf0ef8ece8d16e32c7193e0022f9248ab6f78",
+    "readability/hard-support-deuteranomaly-2x.png": "e82ba0d6cc5b924ecceed644fba1aa805d8d0fdc29ee873d14b5826a565e20d3",
+    "readability/hard-support-tritanomaly-2x.png": "0b0d7087a96da385116df9e1ad9989a067600df026a3d0cf989015b61be460ec",
+    "readability/hard-support-luminance-2x.png": "b18b262ac0945bc0cc646047eb225a52ec01fef9e882aa8e1679f7a1e8bd261e",
+    "readability/feather-16-normal-2x.png": "b459dfb12a0f049a0134fde2a197e4f3ad40be50271cf46f99e3f56190b3652e",
+    "readability/feather-16-protanomaly-2x.png": "4adfe78638f4eadde3c1db7cd819fe3ee56bcd8b3a3515225ad62718d32d38a2",
+    "readability/feather-16-deuteranomaly-2x.png": "c1200a37544fce89837d61b7969bc19236bd653fe044891ad57ac0c6f73d22cf",
+    "readability/feather-16-tritanomaly-2x.png": "37de52600daba1ac68be84a42fbb6653605ae222c641101dec0015ef74ff820b",
+    "readability/feather-16-luminance-2x.png": "cbbb64df40067b48557e3d0dc29e59144c82d5e9fcf722ccd6f7f27f374f92b2",
+    "readability/feather-24-normal-2x.png": "f35c8fb2e086a4c2e282312a9a8cdbbe4f23bbee7669d7d6eafff6e58f1cf0a5",
+    "readability/feather-24-protanomaly-2x.png": "088aae89a4c9c625f9b01688c16f144974fd5c49f837256dcaa69c5aa4037793",
+    "readability/feather-24-deuteranomaly-2x.png": "87f74c35a36bbe92e15465387cda89019ed138de9a18d9a1842ade672aa24fb7",
+    "readability/feather-24-tritanomaly-2x.png": "619a54c4e7f1f65875eb047c274a80f9509b4b7ff52703e0bffa2c364e31456f",
+    "readability/feather-24-luminance-2x.png": "3027b0e1b3494b52b8d4fdf456d79e835745656e0af2cd166dcc2b1e305a6bbd",
+    "readability/complete-series-2x.png": "63721e8667e01f42d68fb7f4a19ba64d1a9b90795053e95f4281d322c3671435"
+  }
+}

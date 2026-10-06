@@ -74,6 +74,13 @@ retains six baseline views and exact GPU gate crops. Opaque moss and the accepte
 leaf-litter route already cover this approach; no additional apron is proposed.
 Product files and accepted owners remain unchanged.
 
+The [Clearing-opening external comparison](art-direction/clearing-village-edge-ground-feasibility/README.md)
+contains 24 actual-scene views, exact native/2x details and three editable apron
+masters. Added leaf litter is bounded away from the channel; the agent recommends
+retaining the existing moss buffer. Its separate 40-image colour-vision/luminance
+series retains all alternatives. Product/CI inputs and existing approvals are
+unchanged; static diagnostics do not establish human accessibility.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two

@@ -4,25 +4,32 @@
 
 Village Edge feather-16 is installed and terminally accepted at all three entrances:
 [acceptance](art-direction/village-edge-ground-runtime-promotion/owner-runtime-acceptance.json).
-Do not reopen unchanged artwork, scope or runtime-view approvals. The runtime
-checkpoint was published as `cbc02d06`; inventory is 97 assets / 48 masters.
-Fresh product quality passed: zero-warning build, 5,033 tests, scenario and all
-Godot smokes/startup, with exact remaining host retry after sandbox log failure.
+Runtime checkpoint `cbc02d06`; production inventory 97 assets / 48 masters.
+The owner explicitly closed the audit slice on 2026-10-06 and instructed us to
+move on. Do not repeat unchanged audits or artwork/scope/runtime-view approvals.
 
-The [closed-forest approach audit](art-direction/closed-forest-ground-coverage/README.md)
-retains six actual baseline views and exact 1x/2x gate crops from that checkpoint.
-Opaque moss and the accepted leaf-litter route cover the approach; no additional
-apron is proposed. Product and CI files remain byte-exact; inherited quality applies.
+The [Clearing-opening external comparison](art-direction/clearing-village-edge-ground-feasibility/README.md)
+contains 24 actual-scene views, three editable masters, exact native/2x crops and
+40 colour-vision/luminance images. Agent recommendation: keep the existing moss
+buffer; all alternatives are retained, and no new owner runtime selection is
+recorded. No duplicate coverage-audit package remains. All 8,101 predecessor
+files outside the three maintained documents are byte-exact. Fresh scoped checks
+and eight review probes pass; inherited zero-warning/5,033-test product quality
+and all Godot smoke/startup evidence remain verified. No fresh full-suite claim.
 
 ## Next bounded slice
 
-Prepare one external-only coverage audit of the Woodland Clearing's Village Edge
-opening at (1128,450), including the immediate southbound route shoulder. Record
-six ordinary baseline views at 0.8x/1x/2x wide/tall and dedicated native 2x detail
-crops. Bind the current published head and preserve all accepted owners. Only if
-coverage evidence identifies a useful material transition, define a bounded
-external comparison recipe; do not install runtime paint or request repeat
-approval of any accepted slice.
+Compose one complete external-only Woodland Clearing environment-dressing series
+using the already approved [42-module environment batch](art-direction/woodland-environment-batch/README.md).
+Show retained baseline plus sparse and grouped arrangements of approved shrubs,
+fallen wood, small rocks and details at native scale in disposable actual-scene
+views: 0.8x/1x/2x, wide/tall, with complete native/2x placement crops. Bind the
+published head and exact artwork acceptance hashes; preserve source paint and
+proposed pivots. Keep placements outside the retained 96px route corridors,
+entrances and existing interactable footprints; preserve concealed specimens,
+clue/discovery state, labels and physical owners. Produce the whole comparison
+before consolidated scoped validation. Do not regenerate approved artwork or
+install runtime dressing. Named runtime scope remains a separate decision.
 
 ## Preserved boundaries
 

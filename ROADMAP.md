@@ -281,6 +281,14 @@ retains six baseline views and exact GPU gate crops. Opaque moss and the accepte
 leaf-litter route already cover this approach; no additional apron is proposed.
 Product files and accepted owners remain unchanged.
 
+The [Clearing-opening external comparison](art-direction/clearing-village-edge-ground-feasibility/README.md)
+retains baseline/hard-support/feather-16/feather-24 in 24 actual-scene views and
+three editable masters, with exact native/2x crops. The agent recommends retaining
+the baseline; no new runtime selection is recorded. Forty source-bound static
+colour-vision/luminance images begin the remaining visual-check work for this
+local shoulder. Human accessibility and broader contrast checks remain open.
+All predecessor product/CI inputs and accepted owners are unchanged.
+
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
 artwork series first, keeping editable 2x masters and separate review exports. Present all
