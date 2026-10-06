@@ -1,0 +1,39 @@
+{
+  "status": "reviewed external-only audit; all scoped checks pass",
+  "baseline_commit": "cbc02d06585a88b52483aa5025788ae2bd0ffded",
+  "date": "2026-10-06",
+  "unchanged_predecessor_files": 8080,
+  "product_inventory": {
+    "assets": 97,
+    "masters": 48
+  },
+  "checks": [
+    "build.py --check: exact board/crop reproduction",
+    "verify.py: predecessor preservation, source/capture/output hashes, terminal acceptance, inherited quality",
+    "Visual review of complete six-view board and exact 1x/2x gate crop board",
+    "git diff --check"
+  ],
+  "capture_execution": {
+    "sandbox_exit": 134,
+    "host_retry_exit": 0,
+    "reason": "Identical command retried after sandbox Godot user-log abort; all six explicit capture markers present"
+  },
+  "review_findings": [
+    "Retained ordinary camera limits produce different overview centers near world top; exact recorded transforms drive crops and labels.",
+    "The gate approach uses retained diagonal boundaries. No vertical-approach assumption, recipe or new paint was introduced."
+  ],
+  "remaining_actionable_issues": [],
+  "inherited_quality": {
+    "tests": 5033,
+    "build_warnings": 0,
+    "build_errors": 0,
+    "all_godot_smokes_and_startup": "passed across sandbox and exact remaining host retry"
+  },
+  "sha256": {
+    "audit.json": "720fce84b8a7171650d67f23bc7e160ef6fffe22611de5e960049b8b6528678f",
+    "build.py": "712d4bc9453f0b95c7a444bbdff055202a773677e7d11c2a3a9118059b98d8f8",
+    "verify.py": "595d102b009afcc0d5704d46520f61b85eae81299edc9c1ad19566d50f6db2b0",
+    "capture-host.log": "2e4c5cf018da157534a267ac9d56e419dc8bedd0efc4e1114da44f47c52c6937",
+    "capture-sandbox.log": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  }
+}

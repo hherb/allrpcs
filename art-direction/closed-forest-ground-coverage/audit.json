@@ -1,0 +1,92 @@
+{
+  "status": "external coverage audit complete; retain accepted approach unchanged",
+  "date": "2026-10-06",
+  "baseline_head": "cbc02d06585a88b52483aa5025788ae2bd0ffded",
+  "finding": "Opaque quiet moss prevents unpainted alpha holes. The accepted closed-forest route already carries a broad leaf-litter transition around the gate approach. No additional apron is proposed by this audit.",
+  "scope_limit": "Coverage does not establish terrain completeness or replacement of visible greybox boundaries. The native gate and diagonal approach barriers remain unchanged.",
+  "ground_alpha_extrema": [
+    255,
+    255
+  ],
+  "route_owner": {
+    "centered": true,
+    "class": "Sprite2D",
+    "filter": 0,
+    "offset": [
+      0.0,
+      0.0
+    ],
+    "repeat": 1,
+    "size": [
+      552,
+      384
+    ],
+    "texture": "res://art/runtime/terrain/clearing-closed-forest-path.png",
+    "visible": true,
+    "world_transform": [
+      1.0,
+      0.0,
+      0.0,
+      1.0,
+      796.0,
+      224.0
+    ],
+    "z_as_relative": true,
+    "z_index": -75
+  },
+  "route_alpha_bounds_local": [
+    88,
+    65,
+    294,
+    163
+  ],
+  "gate": {
+    "class": "CollisionShape2D",
+    "disabled": false,
+    "segment": [
+      [
+        696.0,
+        200.0
+      ],
+      [
+        792.0,
+        200.0
+      ]
+    ],
+    "visible": true,
+    "world_transform": [
+      1.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    "z_as_relative": true,
+    "z_index": 0
+  },
+  "detail_world_bounds": [
+    650,
+    170,
+    900,
+    350
+  ],
+  "camera_policy": "Ordinary world limits retained: wide/tall overview centers differ near world top. Crop coordinates use actual recorded transforms.",
+  "sources": {
+    "build.py": "712d4bc9453f0b95c7a444bbdff055202a773677e7d11c2a3a9118059b98d8f8",
+    "capture-evidence.json": "67ec7b78a3656e9a4bd3cba743ef63259538ebdf0f7ce798b545b131f6f5411d",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "captures/baseline-0.8x-wide.png": "423d12c7318c921ca0dc99cc92ac575057b5cd46683fd5ec4d5c4312b443bf08",
+    "captures/baseline-0.8x-tall.png": "836f5f973e2ea0bcf9708c9fb5d4ce818ffed4700664802afd9760becff903b4",
+    "captures/baseline-1.0x-wide.png": "0f9e19153820e6b066d49895a7ea65f510531261194f944edf848d1facaec540",
+    "captures/baseline-1.0x-tall.png": "50dbd156308889a7cad5a83c45e2a668d49db1fdf1cd1999b19406057b96b5dd",
+    "captures/baseline-2.0x-wide.png": "5b4f401682c9842783212feaad220b693a67b147588443818fd9e86b7e77ba16",
+    "captures/baseline-2.0x-tall.png": "5bad8cfa5a761545234e2b71a6d8b62d801700fae541e3b9d6a620fa47862e49"
+  },
+  "outputs": {
+    "review/baseline-series.png": "12400f83613bb1a9309e6484dfa260cdf18f9a9c27dceab1937aefcf7d799bb4",
+    "review/gate-1x.png": "b023889a73e4e1b8df3c713ac430a259604ec8cbe95d6e82cfaba2315e6c8347",
+    "review/gate-2x.png": "20e939eae0a8cddf12ed1d7e215e63f22132d28979fbcc0423b3cd9343982aa7",
+    "review/gate-details.png": "375ef510e5d0c354a378381af6f03d383e55933c16c5eb4b958dc997e6e78d38"
+  }
+}

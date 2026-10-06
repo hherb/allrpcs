@@ -69,6 +69,11 @@ has owner approval. Its [runtime checkpoint](art-direction/village-edge-ground-r
 installs the exact unchanged selected underlay; nine actual views and nine paired
 baselines match approved external RGBA. The owner confirmed these exact actual views on 2026-10-06; the Village Edge slice is complete.
 
+The [closed-forest approach coverage audit](art-direction/closed-forest-ground-coverage/README.md)
+retains six baseline views and exact GPU gate crops. Opaque moss and the accepted
+leaf-litter route already cover this approach; no additional apron is proposed.
+Product files and accepted owners remain unchanged.
+
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
 containers and clue props, with editable 2x masters, seven labelled family boards and two

@@ -2,42 +2,37 @@
 
 ## Current checkpoint
 
-Village Edge feather-16 artwork and named runtime scope are approved at all three
-entrances. [Named approval](art-direction/village-edge-ground-runtime-scope/owner-approval.json)
-binds the exact scope. Do not reopen those choices. The unchanged selected layer
-and master are installed; inventory is 97 assets / 48 masters. Independent root
-VillageEdgeGroundPresentation is at (1480,620), child z=-78, before final channel.
+Village Edge feather-16 is installed and terminally accepted at all three entrances:
+[acceptance](art-direction/village-edge-ground-runtime-promotion/owner-runtime-acceptance.json).
+Do not reopen unchanged artwork, scope or runtime-view approvals. The runtime
+checkpoint was published as `cbc02d06`; inventory is 97 assets / 48 masters.
+Fresh product quality passed: zero-warning build, 5,033 tests, scenario and all
+Godot smokes/startup, with exact remaining host retry after sandbox log failure.
 
-[Actual runtime checkpoint](art-direction/village-edge-ground-runtime-promotion/README.md)
-contains nine actual views and nine paired baselines, all exactly equal to selected
-external RGBA. Eleven rejection probes and empty-cache import/RGBA/proof-UID
-checks pass. Review corrected the initial provenance-key collision; rejected
-manifest/installer evidence is retained. Fresh full quality passes: zero-warning build, 5,033 tests, scenario and all
-Godot smokes/startup across sandbox and exact remaining host retry.
-[Verification](art-direction/village-edge-ground-runtime-promotion/verification.json)
-and [review request](art-direction/village-edge-ground-runtime-promotion/runtime-review-request.json)
-bind this unchanged implementation and all nine actual views.
+The [closed-forest approach audit](art-direction/closed-forest-ground-coverage/README.md)
+retains six actual baseline views and exact 1x/2x gate crops from that checkpoint.
+Opaque moss and the accepted leaf-litter route cover the approach; no additional
+apron is proposed. Product and CI files remain byte-exact; inherited quality applies.
 
 ## Next bounded slice
 
-Village Edge is terminally accepted: [acceptance](art-direction/village-edge-ground-runtime-promotion/owner-runtime-acceptance.json).
-Do not request further confirmation of unchanged artwork, scope or actual views.
-Prepare an external-only coverage audit of the Woodland Clearing closed-forest
-approach and gate, with six actual baseline views and native 2x detail crops.
-Preserve the accepted closed-forest route, gate/Forester and channel boundaries.
-Use the published Village Edge runtime checkpoint as the frozen baseline.
+Prepare one external-only coverage audit of the Woodland Clearing's Village Edge
+opening at (1128,450), including the immediate southbound route shoulder. Record
+six ordinary baseline views at 0.8x/1x/2x wide/tall and dedicated native 2x detail
+crops. Bind the current published head and preserve all accepted owners. Only if
+coverage evidence identifies a useful material transition, define a bounded
+external comparison recipe; do not install runtime paint or request repeat
+approval of any accepted slice.
 
 ## Preserved boundaries
 
-All accepted ground/channel approvals persist. Laundry is terminally accepted:
-[acceptance](art-direction/laundry-ground-runtime-promotion/owner-runtime-acceptance.json).
-Never reopen unchanged selections, scopes or actual views for bookkeeping/retries.
-Preserve paint/masks/masters/rejected evidence, Direction A, route/Garden sibling
-order and physical owners. Garden (2048,1120) z=-90/-89, Square (1920,620) z=-90,
-Sickhouse (2408,1248) z=-90, Wagon (1633,1512) z=-90, Shrine (596,250) z=-78,
-Laundry (1564,219) z=-78, Village Edge (1480,620) z=-78. WholeChannel stays final: five sprites, native three-node
-x<1664 shader scope, UVs/caps/crossing, Shrine triangle, Clearing near side,
-gate/Forester and x=1664/x=2000 limits. No physics/navigation/layout/scenario/
-gameplay/dialogue/clue/discovery/treatment/save/provider/functional-UI/audio/
-release/signing changes. Exclude `.DS_Store`; never rewrite frozen inventories
-or weaken validators. Accessibility, pacing and terrain completeness remain open.
+Preserve Direction A, paint/masks/masters/rejected evidence, route/Garden sibling
+order and physical owners. Ground origins/depths: Garden (2048,1120) -90/-89;
+Square (1920,620), Sickhouse (2408,1248), Wagon (1633,1512) -90;
+Shrine (596,250), Laundry (1564,219), Village Edge (1480,620) -78.
+WholeChannel stays final: five sprites, native three-node x<1664 shader scope,
+UVs/caps/crossing, Shrine triangle, Clearing near side, gate/Forester and
+x=1664/x=2000 limits. No physics/navigation/layout/scenario/gameplay/dialogue/
+clue/discovery/treatment/save/provider/functional-UI/audio/release/signing changes.
+Exclude `.DS_Store`; never rewrite frozen inventories or weaken validators.
+Accessibility, pacing and terrain completeness remain open.

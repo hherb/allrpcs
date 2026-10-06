@@ -276,6 +276,11 @@ has owner approval. The [runtime checkpoint](art-direction/village-edge-ground-r
 installs the unchanged feather-16 underlay; all nine actual views and paired baselines
 match selected external RGBA. The owner confirmed these exact actual views on 2026-10-06. Fresh product quality passes with 5,033 tests and all Godot smokes; terrain completeness remains open.
 
+The [closed-forest approach coverage audit](art-direction/closed-forest-ground-coverage/README.md)
+retains six baseline views and exact GPU gate crops. Opaque moss and the accepted
+leaf-litter route already cover this approach; no additional apron is proposed.
+Product files and accepted owners remain unchanged.
+
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
 artwork series first, keeping editable 2x masters and separate review exports. Present all
