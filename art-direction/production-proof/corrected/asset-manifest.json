@@ -3536,6 +3536,36 @@
       "source": "tools/build_laundry_ground.py",
       "sha256": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
       "godot_import_proof": true
+    },
+    {
+      "id": "terrain.village_edge_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/village-edge-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 1000,
+        "height": 780,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": 390
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": 390
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 390,
+      "source": "tools/build_village_edge_ground.py",
+      "sha256": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3637,6 +3667,21 @@
     "world_origin": [
       1564,
       219
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "village_edge_ground_provenance": {
+    "authorization": "art-direction/village-edge-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "5c39da49cb6d9d3c3d79170ba14fc1cb4f3c5ae2b44d218446760a3878245588",
+    "specification_sha256": "b9291062c771cb1d17eeb7a3fc368526c34645432b61e67ff5e0c882a3a1e058",
+    "recipe_sha256": "0d0765f79a0ff5714460a582377acf57ec84ccc5374de78b85a68b8efe865ab1",
+    "world_origin": [
+      1480,
+      620
     ],
     "paint_phase": [
       0,

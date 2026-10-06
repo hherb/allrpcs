@@ -1,0 +1,30 @@
+{
+  "sources": {
+    "capture-evidence.json": "9f1ef98189c2b09f8c6d7c91518eaba9e5b09b2aa5760ef31b26b158711f20ee",
+    "review_boards.py": "7c1cc09281f74928875b9d9cd552b42a2a4bff117892c59b368f985b8cef4af1",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "captures/baseline-0.8x-tall.png": "d445d6ca3b08f3f5370e9f131f7ba175c4f562c0b5e6d829ca361e8bec519e97",
+    "captures/baseline-0.8x-wide.png": "076f11f0f96cbb2a5628ddc15d01add9ad52e72214c8f558dfda3c84aa4df1a6",
+    "captures/baseline-1.0x-tall.png": "0932b5d190a2ff9f0146aeb038a84c6ac6dd902506f4485a1422fbaa23946e84",
+    "captures/baseline-1.0x-wide.png": "f7f1dd0d8e33a79964c55ff7be8e16f45e952c9ef193c83cd4c6cc882d2d09ae",
+    "captures/baseline-2.0x-square.png": "be037a6d122a6f4a7640c35ed9ed0c5072bff4c3d710942655dd362f20457f17",
+    "captures/baseline-2.0x-stream.png": "27e8734fe4e881b215441778ff583e176294374b8d4ff0f50dd59e2b77b390fb",
+    "captures/baseline-2.0x-tall.png": "ea46bd3749de91468cf749893711a10a71970d21b34721175fe68c4b517cb0db",
+    "captures/baseline-2.0x-wide.png": "73f8e4a621c86b6ae1d44b65c139e1cf4805f72e24fbf6a11ceee3bd02efa89d",
+    "captures/baseline-2.0x-woodland.png": "4bd085c9485194263b13e3286878b65fa2e7c3bbb36603e9455ba258ca66d8c3",
+    "captures/runtime-0.8x-tall.png": "ce2b2ae440c5a8f302c5b108b1067fa38a66b06e2a8a0ac9d65e46670e87032b",
+    "captures/runtime-0.8x-wide.png": "893a3e529d6598f9a84b9a4fcba074b569f0736c458c8e5f504ff371eb4c19b0",
+    "captures/runtime-1.0x-tall.png": "d29d7e1f2afe0e788898a95c6d35aea43178e99afe49d9bc183121533dd76e83",
+    "captures/runtime-1.0x-wide.png": "c9562634f2e76c9b429f09e5021d4ad4f0dbc8cf80a5237f57b5d9ceabe34927",
+    "captures/runtime-2.0x-square.png": "26a26cb54013090fba1044ea0c131ab0b3c4e5d7ce6fb6d9f8d8780aebc18c24",
+    "captures/runtime-2.0x-stream.png": "5e17c7414c6d23f8733138a44611ee8233bce2c9442c5bb4439a398123fd0d86",
+    "captures/runtime-2.0x-tall.png": "691c112ec823ffdd5edb015931d293ef437c9b90516a308942aadb6d6cdff3e3",
+    "captures/runtime-2.0x-wide.png": "06b85ac90eb9f38315252a8fea7672e6c0930d04fa9b47125ae6fb20b278249e",
+    "captures/runtime-2.0x-woodland.png": "5749ffc802ea7b3e65b1090f127596fb5ae3d8ae5a395d38425728dcc9d23201"
+  },
+  "outputs": {
+    "runtime-series.png": "51909ac8f43c80bc96ea63dd6611fa59900a75b101e56272ffa0d3e08770f919",
+    "runtime-details.png": "d827a23daf97733541cea224a4be46560bf47363868bfb5e11793a5b391af63f",
+    "runtime-edges-2x.png": "c6d4c10a33807626c9b2e1236b026fd2b39d8693fde03780a9d0b201cc81c306"
+  }
+}

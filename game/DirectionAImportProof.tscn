@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3]
+[gd_scene load_steps=96 format=3]
 
 [ext_resource type="Script" path="res://DirectionAImportProofSmokeCheck.cs" id="1_script"]
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/quiet-moss.png" id="2_ground"]
@@ -100,6 +100,8 @@
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/shrine-entrance-ground.png" id="94_shrine_ground"]
 
 [ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/laundry-entrance-ground.png" id="95_laundry_ground"]
+
+[ext_resource type="Texture2D" path="res://art/direction-a-import-proof/terrain/village-edge-entrance-ground.png" id="96_village_edge_ground"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_walk_south"]
 animations = [{
@@ -498,4 +500,11 @@ position = Vector2(5400, 3500)
 texture_filter = 2
 texture_repeat = 1
 texture = ExtResource("95_laundry_ground")
+centered = false
+
+[node name="VillageEdgeGroundProof" type="Sprite2D" parent="Terrain"]
+position = Vector2(6100, 3500)
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("96_village_edge_ground")
 centered = false

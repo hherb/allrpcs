@@ -15,7 +15,8 @@ python3 scripts/validate-sickhouse-ground-runtime.py --historical-square
 python3 scripts/validate-wagon-ground-runtime.py --historical-sickhouse
 python3 scripts/validate-shrine-ground-runtime.py --historical-wagon
 python3 scripts/validate-laundry-ground-runtime.py --historical-shrine
-python3 scripts/validate-laundry-ground-runtime.py --check-rejections
+python3 scripts/validate-village-edge-ground-runtime.py --historical-laundry
+python3 scripts/validate-village-edge-ground-runtime.py --check-rejections
 dotnet restore Allrpcs.sln --disable-parallel -m:1 /nr:false
 dotnet format Allrpcs.sln --no-restore --verify-no-changes
 dotnet build Allrpcs.sln --no-restore -m:1 /nr:false
@@ -31,4 +32,5 @@ ALLRPCS_RUNTIME_SICKHOUSE_GROUND_CHECK=1 godot --headless --path game --quit-aft
 ALLRPCS_RUNTIME_WAGON_GROUND_CHECK=1 godot --headless --path game --quit-after 30
 ALLRPCS_RUNTIME_SHRINE_GROUND_CHECK=1 godot --headless --path game --quit-after 30
 ALLRPCS_RUNTIME_LAUNDRY_GROUND_CHECK=1 godot --headless --path game --quit-after 30
+ALLRPCS_RUNTIME_VILLAGE_EDGE_GROUND_CHECK=1 godot --headless --path game --quit-after 30
 godot --path game --quit-after 60

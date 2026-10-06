@@ -1,0 +1,10 @@
+{
+  "status": "named one-asset VillageEdge runtime scope approved",
+  "scope_sha256": "da42095cc9c4a60e46dbb0eddb9b5ff8bfb06f2f72b9e4e14d3945c9fce6688d",
+  "bindings_sha256": "b9291062c771cb1d17eeb7a3fc368526c34645432b61e67ff5e0c882a3a1e058",
+  "owner_approval_sha256": "2f01a8179e098da13615fcb6fd9cbd4624d837946b8052d9cee52660c1db6ddf",
+  "baseline_sha256": "8a53f83661e428cc585e371103e0a14cbfd910542bfbb4c634f83a168f861f7d",
+  "baseline_commit": "a90211734f7a9ed6147f512e54f73744b27e5de1",
+  "date": "2026-10-06",
+  "owner_statement": "approved"
+}

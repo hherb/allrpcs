@@ -1,0 +1,14 @@
+PASS: one exact VillageEdge underlay, isolated editable master and append-only manifest
+PASS: exact VillageEdge source/master/imports, 97 assets/48 masters, normalized scenes and preserved predecessor
+PASS: exact VillageEdge source/master/imports, 97 assets/48 masters, normalized scenes and preserved predecessor
+PASS: rejects phase
+PASS: rejects depth
+PASS: rejects duplicate owner
+PASS: rejects dropped owner
+PASS: rejects transform
+PASS: rejects extent
+PASS: rejects physical scope
+PASS: rejects proof resource order
+PASS: rejects paint
+PASS: rejects mask/source
+PASS: rejects import processing

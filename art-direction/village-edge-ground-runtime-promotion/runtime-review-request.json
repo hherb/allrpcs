@@ -1,0 +1,51 @@
+{
+  "status": "nine exact actual-runtime views ready for separate owner confirmation",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "scope": "Village Edge feather-16 at Woodland, Stream and Square under exact approved named runtime scope. Artwork and named scope approval are complete.",
+  "implementation_sha256": {
+    "art-direction/production-proof/corrected/asset-manifest.json": "0f5b5ca500c62b26ee6b83c2b94ceb456c07de0194d4d5d795371e5f6e7b2c7d",
+    "art-direction/production-proof/corrected/exports/terrain/village-edge-entrance-ground.png": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
+    "art-direction/production-proof/corrected/masters/village-edge-entrance-ground.ora": "59d3efb049f78dc54caeb74d1f40c36c3f0dfcbd45f22cc7d9b01104099c88ca",
+    "art-direction/production-proof/corrected/tools/build_village_edge_ground.py": "0d0765f79a0ff5714460a582377acf57ec84ccc5374de78b85a68b8efe865ab1",
+    "game/DirectionAImportProof.tscn": "fbf6df87a58e6c295b19287c7f335e5b4d33cf5390dc9542f6b19a0f276423b9",
+    "game/Main.tscn": "6360edc454702d5a7d8389cdfd2314af7e9ca5c9f6674f929fc3696cd64b8ef3",
+    "game/RuntimeVillageEdgeGroundSmokeCheck.cs": "c5f9ea9087d3e5e722475aa61dddf4470482b627b1646dfb1e987b7f777ce51d",
+    "game/art/direction-a-import-proof/terrain/village-edge-entrance-ground.png": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
+    "game/art/direction-a-import-proof/terrain/village-edge-entrance-ground.png.import": "f26a1c9580af820380e98085f1a9a126846ba21fa40e6aaffc602ff2572e6b92",
+    "game/art/runtime/terrain/village-edge-entrance-ground.png": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
+    "game/art/runtime/terrain/village-edge-entrance-ground.png.import": "28fc85375616cab714c1ed909f3244387dacbda79ac41e4f3d5f81f0f6aed82f",
+    "scripts/capture-village-edge-ground-runtime.gd": "676b7f1a8b3e2304a488dc64d3ac7c433ad3872fce7e4dcc9c2420d017efb5e4",
+    "scripts/capture-village-edge-ground-runtime.gd.uid": "27f944178490d36cecb8722a889ad66a789c523c68997c0dee1f534ab3bb38eb",
+    "scripts/quality.sh": "5e5bccd871ae0e10be2cf2a947d5961db1e014e8059bfb6b9a1ccf376b49e7d8",
+    "scripts/validate-direction-a-import-proof.py": "81dec33771fd5cdbd9a52bfb74ef5b91ab971ba4c0b53f9b3500fae4ed16652f",
+    "scripts/validate-village-edge-ground-runtime.py": "5fb541ed029ef8d85adb952917028b9ae27622bd0a29466fb9493d1edbb0eb52",
+    "game/RuntimeVillageEdgeGroundSmokeCheck.cs.uid": "dc856d26e3747daa0b641d0dcabe560b083d29df8a1e10542f0bd3f0fe2266e2"
+  },
+  "bindings_sha256": {
+    "authorization.json": "5c39da49cb6d9d3c3d79170ba14fc1cb4f3c5ae2b44d218446760a3878245588",
+    "baseline.json": "8a53f83661e428cc585e371103e0a14cbfd910542bfbb4c634f83a168f861f7d",
+    "capture-evidence.json": "9f1ef98189c2b09f8c6d7c91518eaba9e5b09b2aa5760ef31b26b158711f20ee",
+    "fresh-import-evidence.json": "389f2b8b0cd5c434282b4b7298ed2cb34ed4b6556555829867d86c6746673e29",
+    "series-bindings.json": "73ce74d07311c954a3f61ee7878a92a7f3e6d43eba839fc778e9f52d8c85568c",
+    "verification.json": "dad9693ff969e21e75753e4ea05876cfba7bec77ecbb656b43accdce3a136307",
+    "session-review.json": "164737286d2465e3048a9b3ebd594fe90da23bc4825fcfc60a4d8c9751359fd4"
+  },
+  "displayed_series": {
+    "runtime-series.png": "51909ac8f43c80bc96ea63dd6611fa59900a75b101e56272ffa0d3e08770f919",
+    "runtime-details.png": "d827a23daf97733541cea224a4be46560bf47363868bfb5e11793a5b391af63f",
+    "runtime-edges-2x.png": "c6d4c10a33807626c9b2e1236b026fd2b39d8693fde03780a9d0b201cc81c306"
+  },
+  "actual_views": {
+    "captures/runtime-0.8x-tall.png": "ce2b2ae440c5a8f302c5b108b1067fa38a66b06e2a8a0ac9d65e46670e87032b",
+    "captures/runtime-0.8x-wide.png": "893a3e529d6598f9a84b9a4fcba074b569f0736c458c8e5f504ff371eb4c19b0",
+    "captures/runtime-1.0x-tall.png": "d29d7e1f2afe0e788898a95c6d35aea43178e99afe49d9bc183121533dd76e83",
+    "captures/runtime-1.0x-wide.png": "c9562634f2e76c9b429f09e5021d4ad4f0dbc8cf80a5237f57b5d9ceabe34927",
+    "captures/runtime-2.0x-square.png": "26a26cb54013090fba1044ea0c131ab0b3c4e5d7ce6fb6d9f8d8780aebc18c24",
+    "captures/runtime-2.0x-stream.png": "5e17c7414c6d23f8733138a44611ee8233bce2c9442c5bb4439a398123fd0d86",
+    "captures/runtime-2.0x-tall.png": "691c112ec823ffdd5edb015931d293ef437c9b90516a308942aadb6d6cdff3e3",
+    "captures/runtime-2.0x-wide.png": "06b85ac90eb9f38315252a8fea7672e6c0930d04fa9b47125ae6fb20b278249e",
+    "captures/runtime-2.0x-woodland.png": "5749ffc802ea7b3e65b1090f127596fb5ae3d8ae5a395d38425728dcc9d23201"
+  },
+  "acceptance_boundary": "Confirm these nine actual runtime views before direct-main runtime publication; no wider terrain, gameplay, accessibility, pacing, release or signing approval."
+}

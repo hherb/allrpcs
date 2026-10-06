@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "reviewer": "primary agent cumulative code and visual review",
+  "findings": [
+    {
+      "issue": "Initial cloned installer reused accepted Laundry provenance key",
+      "resolution": "Restored the baseline manifest and regenerated with independent village_edge_ground_provenance; full retained manifest equivalence passes. Rejected manifest and exact installer retained.",
+      "status": "fixed"
+    },
+    {
+      "issue": "Initial isolated sample overlapped the prior Laundry proof sample position",
+      "resolution": "Placed only the new proof sample at (6100,3500); exact old scene blocks preserved.",
+      "status": "fixed"
+    },
+    {
+      "issue": "Overview label crowded the following row",
+      "resolution": "Expanded row spacing and board height; retained initial boards, script and bindings. Runtime pixels unchanged.",
+      "status": "fixed"
+    }
+  ],
+  "remaining_actionable_code_issues": [],
+  "verified": [
+    "Exact selected source/master copies and append-only 97/48 inventory",
+    "All old scene/resource blocks and final channel sibling order preserved",
+    "Four canonical new native UIDs distinct from predecessor IDs",
+    "Empty-cache actual-runtime RGBA parity and independent regenerated proof UID",
+    "Eleven phase/depth/owner/transform/extent/physical/resource-order/paint/coverage/import rejection probes",
+    "Nine actual views and nine baselines equal selected external RGBA exactly",
+    "All three entrance edges inspected, including translucent blend rows",
+    "Full quality completed across sandbox plus identical remaining host retry"
+  ],
+  "publication": "Pending separate confirmation of nine actual runtime views; prior artwork and named scope approvals complete."
+}

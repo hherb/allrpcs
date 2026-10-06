@@ -272,8 +272,9 @@ baseline/hard-support/feather-16/feather-24, three editable 2x masters, 24 full 
 and twelve dedicated detail views. The owner approved feather-16 at all three
 entrances on 2026-10-06. Fresh consolidated scoped checks pass; the separate
 [named runtime scope proposal](art-direction/village-edge-ground-runtime-scope/README.md)
-is prepared. No ordinary-scene change or broader terrain-completeness claim is made.
-All product/CI inputs and preceding passing 5,033-test evidence are preserved.
+has owner approval. The [runtime checkpoint](art-direction/village-edge-ground-runtime-promotion/README.md)
+installs the unchanged feather-16 underlay; all nine actual views and paired baselines
+match selected external RGBA. The owner confirmed these exact actual views on 2026-10-06. Fresh product quality passes with 5,033 tests and all Godot smokes; terrain completeness remains open.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's

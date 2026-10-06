@@ -74,7 +74,7 @@ def main() -> None:
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     assets = [asset for asset in manifest["assets"] if asset["godot_import_proof"]]
-    require(len(assets) == 96, f"expected 96 import-proof assets, got {len(assets)}")
+    require(len(assets) == 97, f"expected 97 import-proof assets, got {len(assets)}")
     expected_pngs = {game_path(asset["export"]) for asset in assets}
     actual_pngs = set(GAME_ROOT.rglob("*.png"))
     require(
@@ -146,7 +146,7 @@ def main() -> None:
         require(
             options.get(("params", "process/fix_alpha_border"))
             == ("false" if asset["id"] in {
-                "terrain.garden_ground_meadow", "terrain.garden_ground_soil", "terrain.village_square_ground", "terrain.sickhouse_entrance_ground", "terrain.wagon_entrance_ground", "terrain.shrine_entrance_ground", "terrain.laundry_entrance_ground",
+                "terrain.garden_ground_meadow", "terrain.garden_ground_soil", "terrain.village_square_ground", "terrain.sickhouse_entrance_ground", "terrain.wagon_entrance_ground", "terrain.shrine_entrance_ground", "terrain.laundry_entrance_ground", "terrain.village_edge_entrance_ground",
                 "terrain.village_edge_square_connector", "terrain.square_garden_path",
                 "terrain.square_sickhouse_path", "terrain.square_southern_road_path",
                 "terrain.southern_road_wagon_path",

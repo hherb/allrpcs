@@ -1,0 +1,3 @@
+PASS: one exact VillageEdge underlay, isolated editable master and append-only manifest
+PASS: exact VillageEdge source/master/imports, 97 assets/48 masters, normalized scenes and preserved predecessor
+PASS: nine actual runtime views and nine baselines exactly equal selected external RGBA

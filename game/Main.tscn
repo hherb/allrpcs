@@ -1,4 +1,4 @@
-[gd_scene load_steps=372 format=3]
+[gd_scene load_steps=374 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -571,6 +571,9 @@
 
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/laundry-entrance-ground.png" id="454_laundry_ground"]
 [ext_resource type="Script" path="res://RuntimeLaundryGroundSmokeCheck.cs" id="455_laundry_ground_check"]
+
+[ext_resource type="Texture2D" path="res://art/runtime/terrain/village-edge-entrance-ground.png" id="456_village_edge_ground"]
+[ext_resource type="Script" path="res://RuntimeVillageEdgeGroundSmokeCheck.cs" id="457_village_edge_ground_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4008,6 +4011,19 @@ centered = false
 
 [node name="RuntimeLaundryGroundSmokeCheck" type="Node" parent="."]
 script = ExtResource("455_laundry_ground_check")
+
+[node name="VillageEdgeGroundPresentation" type="Node2D" parent="."]
+position = Vector2(1480, 620)
+
+[node name="PackedEarth" type="Sprite2D" parent="VillageEdgeGroundPresentation"]
+z_index = -78
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("456_village_edge_ground")
+centered = false
+
+[node name="RuntimeVillageEdgeGroundSmokeCheck" type="Node" parent="."]
+script = ExtResource("457_village_edge_ground_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

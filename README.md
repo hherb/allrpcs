@@ -65,7 +65,9 @@ compares baseline, hard support and inward 16/24px feathers using approved packe
 paint, three editable masters, 24 full views and 12 dedicated edge views. The owner
 approved feather-16 at all three entrances on 2026-10-06; exact selection hashes and
 consolidated scoped checks pass. The [named runtime scope proposal](art-direction/village-edge-ground-runtime-scope/README.md)
-is ready for its separate approval. All production/CI inputs remain unchanged.
+has owner approval. Its [runtime checkpoint](art-direction/village-edge-ground-runtime-promotion/README.md)
+installs the exact unchanged selected underlay; nine actual views and nine paired
+baselines match approved external RGBA. The owner confirmed these exact actual views on 2026-10-06; the Village Edge slice is complete.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,
