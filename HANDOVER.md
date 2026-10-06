@@ -14,20 +14,26 @@ approved environment artwork and proposed pivots. It contains 24 disposable actu
 scene views, complete exact native/2x crops, 30 static readability images and eight
 passing review probes. All 8,209 predecessor files outside the maintained documents
 are byte-exact; inherited zero-warning/5,033-test quality and Godot evidence remain
-verified. No fresh full-suite claim. Agent recommendation: sparse. No owner placement
-selection or runtime scope is recorded; artwork approval remains closed.
+verified. No fresh full-suite claim. The owner selected **grouped** on 2026-10-06,
+superseding sparse: [selection](art-direction/woodland-clearing-dressing/owner-selection.json).
+Artwork and arrangement selection are closed; do not request them again.
+The [named runtime scope proposal](art-direction/woodland-clearing-dressing-runtime-scope/README.md)
+binds exactly sixteen native modules and their placement order. Fresh proposal checks,
+seven rejection probes and all 8,311 published predecessor files pass. No runtime
+installation has occurred; scope approval and actual runtime confirmation are separate.
 The preceding Clearing ground comparison recommends retaining its existing moss buffer.
 
 ## Next bounded slice
 
-Carry this complete arrangement comparison forward for the owner's selection or
-bounded revision, retaining all alternatives. If selected, bind the exact arrangement,
-placement ledger and capture hashes; prepare one external named runtime-scope proposal
-for only those Woodland Clearing dressing placements. Preserve native dimensions,
-source paint, provisional pivots, layer order and full route/entrance/interaction/
-label clearance. Do not install runtime dressing before named scope approval;
-actual runtime-view confirmation remains separate. Do not regenerate approved art,
-repeat unchanged audits or infer accessibility, pacing or terrain completeness.
+After named approval of that exact grouped scope, freeze the actual starting published
+head and implement only its sixteen unchanged placements, imports, masters, manifest
+append, proof/runtime presentation and bounded tooling. Preserve native dimensions,
+paint/pivots/draw order and full route/entrance/interaction/label clearance. Require
+fresh product quality, cold import and exact parity for eight actual runtime views
+plus eight paired baselines. Do not install runtime dressing before named scope
+approval; present the complete actual runtime series for separate owner confirmation.
+Retain baseline/sparse/grouped evidence; do not regenerate approved art, repeat
+unchanged audits or infer accessibility, pacing or terrain completeness.
 
 ## Preserved boundaries
 

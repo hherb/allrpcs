@@ -86,8 +86,13 @@ uses the unchanged approved environment batch in retained baseline, sparse and g
 arrangements. Twenty-four disposable actual-scene views include complete native/2x
 placement crops; thirty static colour-vision/luminance images retain every alternative.
 Full artwork rectangles preserve route, entrance, interaction and label clearance.
-The agent recommends sparse; no owner placement selection or runtime installation is
-recorded. Product files, approved paint/pivots/masters and physical owners are unchanged.
+The owner selected grouped on 2026-10-06, superseding the earlier sparse choice:
+[exact selection](art-direction/woodland-clearing-dressing/owner-selection.json).
+The [named runtime scope](art-direction/woodland-clearing-dressing-runtime-scope/README.md)
+proposes exactly its sixteen native placements. Runtime installation approval and
+actual runtime-view confirmation remain separate. Product files, approved
+paint/pivots/masters and physical owners are unchanged; historical unselected
+comparison metadata is superseded by the exact selection record.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

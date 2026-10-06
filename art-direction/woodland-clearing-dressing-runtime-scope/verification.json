@@ -1,0 +1,21 @@
+{
+  "status": "passed; grouped selection closed; named runtime proposal prepared only",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "head": "4d47ac5a4b25db76e24ff9e8358a16dae950c0cd",
+  "selected_variant": "grouped",
+  "selected_placements": 16,
+  "preserved_predecessor_files": 8311,
+  "mutation_rejections": 7,
+  "fresh_validation": "Exact selection/proposal/source/alpha facts; all predecessor SHA256 and committed Git blobs; seven scope mutations; Python syntax and Ruff checks",
+  "runtime": "No runtime asset, import, manifest or scene edits",
+  "quality": "Previous full-suite and actual-scene comparison evidence byte-exact; no fresh full suite or repeated capture",
+  "evidence": {
+    "baseline.json": "20255b6a6cba239aa2522d282d344e638f7714ea79a089b18ca875945ddf9438",
+    "source-bindings.json": "405aeaf9a61e7bf7111399f1e645690535dd5e48a2418aa7fe45d7da0bb94587",
+    "proposal-inputs.json": "0fb861f0eb73640f920658e38297b564a91cd7f80c7f34c66ba4f92d32b13fa5",
+    "README.md": "8516fbce45faf2f6364642749233753f2adb238a092da0c539190f89026e7518",
+    "check.py": "ada41bf5711be42e1aed3682c9b8cca73ff0aac382bf6f027c59657a87042479"
+  },
+  "owner_selection_sha256": "20d51715f7876cb3417e21eff817554dec1271e166031bd1806bcff4501c1631"
+}

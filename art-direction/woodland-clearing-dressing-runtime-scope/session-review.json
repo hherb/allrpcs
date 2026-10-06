@@ -1,0 +1,30 @@
+{
+  "status": "review complete; no unresolved findings in selection/proposal slice",
+  "date": "2026-10-06",
+  "reviewed": [
+    "Latest grouped choice supersedes sparse; exact sixteen placements and original source approval retained",
+    "All world origins/pivots/sizes and native overlaps match the selected actual-scene ledger",
+    "Future asset/master/import paths unique; existing plants/objects categories and append-only counts 97/48 to 113/64",
+    "Full source-specific alpha facts bound; no hidden alteration of approved RGB/alpha, source dimensions or pivot",
+    "WholeChannel stays final; root insertion and sixteen sprite policy/depth/order explicitly frozen",
+    "No runtime/product/CI changes; frozen comparator metadata superseded only by added selection",
+    "Current documentation, scoped positive/negative validation, publication authority and future runtime-confirmation boundary"
+  ],
+  "approval_ledger": {
+    "artwork": "42-module batch previously approved; unchanged",
+    "arrangement": "grouped selected by latest direct owner instruction",
+    "named_runtime_scope": "Proposal only; no approval claimed",
+    "actual_runtime_confirmation": "Not applicable until approved installation and new actual views",
+    "publication": "Standing explicit reviewed direct-main commit/push authority"
+  },
+  "sources": {
+    "art-direction/woodland-clearing-dressing-runtime-scope/README.md": "8516fbce45faf2f6364642749233753f2adb238a092da0c539190f89026e7518",
+    "art-direction/woodland-clearing-dressing-runtime-scope/check.py": "ada41bf5711be42e1aed3682c9b8cca73ff0aac382bf6f027c59657a87042479",
+    "art-direction/woodland-clearing-dressing-runtime-scope/proposal-inputs.json": "0fb861f0eb73640f920658e38297b564a91cd7f80c7f34c66ba4f92d32b13fa5",
+    "art-direction/woodland-clearing-dressing-runtime-scope/source-bindings.json": "405aeaf9a61e7bf7111399f1e645690535dd5e48a2418aa7fe45d7da0bb94587",
+    "art-direction/woodland-clearing-dressing/owner-selection.json": "20d51715f7876cb3417e21eff817554dec1271e166031bd1806bcff4501c1631",
+    "HANDOVER.md": "ba4fdf71b54761ae7be4fa1ae70c515e10e518b50af1f4e25b9370ca87f7030e",
+    "README.md": "12a7782b43d6c7067c3b9b2a6b053be49a396d3db70458bd379d2ddc643b6e0c",
+    "ROADMAP.md": "f7bfb44c4fb332454a69381eccc23c4b1f735ac1d9852f0a4df42db3d9371a3e"
+  }
+}

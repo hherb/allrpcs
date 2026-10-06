@@ -294,8 +294,11 @@ compares retained baseline, eight sparse placements and sixteen grouped placemen
 using unchanged approved modules and proposed pivots. Twenty-four actual-scene
 captures, complete native/2x crops and thirty static readability images are retained.
 Independent route/entrance/label clearance, frozen predecessor bytes and eight review
-probes pass. The agent recommends sparse; arrangement selection and any named runtime
-scope remain open. No ordinary scene, physical, discovery or gameplay state changes.
+probes pass. The owner selected grouped on 2026-10-06, replacing the earlier sparse
+choice; the hash-bound selection is closed. Its [named runtime scope proposal](art-direction/woodland-clearing-dressing-runtime-scope/README.md)
+specifies sixteen unchanged native modules, pivots, draw order and independent
+presentation nodes. Named installation approval and actual runtime-view confirmation
+remain separate. No ordinary scene, physical, discovery or gameplay state changes.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's

@@ -1,0 +1,454 @@
+{
+  "status": "owner selected grouped external arrangement",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Actually - changed my mind - grouped",
+  "superseded_statement": "sparse is good",
+  "selected_variant": "grouped",
+  "placement_count": 16,
+  "published_comparison_head": "4d47ac5a4b25db76e24ff9e8358a16dae950c0cd",
+  "scope": "Exact displayed grouped external arrangement; source artwork approval retained. Named runtime installation and actual-runtime confirmation remain separate.",
+  "placements": [
+    {
+      "instance": "01-shrubs-01",
+      "asset": "shrubs-01",
+      "world_pivot": [
+        982,
+        219
+      ],
+      "origin": [
+        920,
+        132
+      ],
+      "size": [
+        125,
+        88
+      ],
+      "proposed_pivot": [
+        62,
+        87
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/shrubs-01.png",
+      "sha256": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+      "master": "masters/shrubs-01.ora"
+    },
+    {
+      "instance": "02-fallen-wood-07",
+      "asset": "fallen-wood-07",
+      "world_pivot": [
+        1098,
+        255
+      ],
+      "origin": [
+        1050,
+        192
+      ],
+      "size": [
+        97,
+        64
+      ],
+      "proposed_pivot": [
+        48,
+        63
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/fallen-wood-07.png",
+      "sha256": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+      "master": "masters/fallen-wood-07.ora"
+    },
+    {
+      "instance": "03-rocks-08",
+      "asset": "rocks-08",
+      "world_pivot": [
+        666,
+        421
+      ],
+      "origin": [
+        628,
+        382
+      ],
+      "size": [
+        77,
+        40
+      ],
+      "proposed_pivot": [
+        38,
+        39
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/rocks-08.png",
+      "sha256": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+      "master": "masters/rocks-08.ora"
+    },
+    {
+      "instance": "04-environmental-details-01",
+      "asset": "environmental-details-01",
+      "world_pivot": [
+        1199,
+        211
+      ],
+      "origin": [
+        1160,
+        156
+      ],
+      "size": [
+        78,
+        56
+      ],
+      "proposed_pivot": [
+        39,
+        55
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-01.png",
+      "sha256": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+      "master": "masters/environmental-details-01.ora"
+    },
+    {
+      "instance": "05-environmental-details-05",
+      "asset": "environmental-details-05",
+      "world_pivot": [
+        813,
+        416
+      ],
+      "origin": [
+        795,
+        395
+      ],
+      "size": [
+        37,
+        22
+      ],
+      "proposed_pivot": [
+        18,
+        21
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-05.png",
+      "sha256": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+      "master": "masters/environmental-details-05.ora"
+    },
+    {
+      "instance": "06-environmental-details-06",
+      "asset": "environmental-details-06",
+      "world_pivot": [
+        856,
+        193
+      ],
+      "origin": [
+        836,
+        170
+      ],
+      "size": [
+        40,
+        24
+      ],
+      "proposed_pivot": [
+        20,
+        23
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-06.png",
+      "sha256": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+      "master": "masters/environmental-details-06.ora"
+    },
+    {
+      "instance": "07-environmental-details-03",
+      "asset": "environmental-details-03",
+      "world_pivot": [
+        1169,
+        127
+      ],
+      "origin": [
+        1140,
+        80
+      ],
+      "size": [
+        58,
+        48
+      ],
+      "proposed_pivot": [
+        29,
+        47
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-03.png",
+      "sha256": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+      "master": "masters/environmental-details-03.ora"
+    },
+    {
+      "instance": "08-environmental-details-09",
+      "asset": "environmental-details-09",
+      "world_pivot": [
+        934,
+        233
+      ],
+      "origin": [
+        912,
+        206
+      ],
+      "size": [
+        44,
+        28
+      ],
+      "proposed_pivot": [
+        22,
+        27
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-09.png",
+      "sha256": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+      "master": "masters/environmental-details-09.ora"
+    },
+    {
+      "instance": "09-shrubs-08",
+      "asset": "shrubs-08",
+      "world_pivot": [
+        1111,
+        193
+      ],
+      "origin": [
+        1054,
+        114
+      ],
+      "size": [
+        115,
+        80
+      ],
+      "proposed_pivot": [
+        57,
+        79
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/shrubs-08.png",
+      "sha256": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6",
+      "master": "masters/shrubs-08.ora"
+    },
+    {
+      "instance": "10-fallen-wood-03",
+      "asset": "fallen-wood-03",
+      "world_pivot": [
+        1023,
+        257
+      ],
+      "origin": [
+        968,
+        186
+      ],
+      "size": [
+        110,
+        72
+      ],
+      "proposed_pivot": [
+        55,
+        71
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/fallen-wood-03.png",
+      "sha256": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887",
+      "master": "masters/fallen-wood-03.ora"
+    },
+    {
+      "instance": "11-rocks-03",
+      "asset": "rocks-03",
+      "world_pivot": [
+        1177,
+        165
+      ],
+      "origin": [
+        1128,
+        94
+      ],
+      "size": [
+        98,
+        72
+      ],
+      "proposed_pivot": [
+        49,
+        71
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/rocks-03.png",
+      "sha256": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae",
+      "master": "masters/rocks-03.ora"
+    },
+    {
+      "instance": "12-environmental-details-02",
+      "asset": "environmental-details-02",
+      "world_pivot": [
+        911,
+        189
+      ],
+      "origin": [
+        860,
+        118
+      ],
+      "size": [
+        102,
+        72
+      ],
+      "proposed_pivot": [
+        51,
+        71
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-02.png",
+      "sha256": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d",
+      "master": "masters/environmental-details-02.ora"
+    },
+    {
+      "instance": "13-environmental-details-07",
+      "asset": "environmental-details-07",
+      "world_pivot": [
+        979,
+        257
+      ],
+      "origin": [
+        954,
+        226
+      ],
+      "size": [
+        50,
+        32
+      ],
+      "proposed_pivot": [
+        25,
+        31
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-07.png",
+      "sha256": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2",
+      "master": "masters/environmental-details-07.ora"
+    },
+    {
+      "instance": "14-fallen-wood-09",
+      "asset": "fallen-wood-09",
+      "world_pivot": [
+        707,
+        433
+      ],
+      "origin": [
+        670,
+        394
+      ],
+      "size": [
+        75,
+        40
+      ],
+      "proposed_pivot": [
+        37,
+        39
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/fallen-wood-09.png",
+      "sha256": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861",
+      "master": "masters/fallen-wood-09.ora"
+    },
+    {
+      "instance": "15-environmental-details-08",
+      "asset": "environmental-details-08",
+      "world_pivot": [
+        801,
+        435
+      ],
+      "origin": [
+        772,
+        400
+      ],
+      "size": [
+        59,
+        36
+      ],
+      "proposed_pivot": [
+        29,
+        35
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/environmental-details-08.png",
+      "sha256": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76",
+      "master": "masters/environmental-details-08.ora"
+    },
+    {
+      "instance": "16-shrubs-07",
+      "asset": "shrubs-07",
+      "world_pivot": [
+        1058,
+        167
+      ],
+      "origin": [
+        1020,
+        96
+      ],
+      "size": [
+        76,
+        72
+      ],
+      "proposed_pivot": [
+        38,
+        71
+      ],
+      "export": "art-direction/woodland-environment-batch/exports/shrubs-07.png",
+      "sha256": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d",
+      "master": "masters/shrubs-07.ora"
+    }
+  ],
+  "bound_files": {
+    "art-direction/woodland-clearing-dressing/captures/baseline-2.0x-placement.png": "e9197905d27f1f2db2f05e1c5816696f22d1355d4c125ab8e2a4b17d59f4b2a9",
+    "art-direction/woodland-clearing-dressing/captures/grouped-1.0x-placement.png": "2c83f755a525517126fd41f4238928318192ce19f51127c1405bcfa5d36b3276",
+    "art-direction/woodland-clearing-dressing/captures/grouped-2.0x-placement.png": "ec4ae2e12458fd658f514b93b550caaeb6ee19c60466812aa551b8fb8418bc25",
+    "art-direction/woodland-clearing-dressing/captures/baseline-1.0x-wide.png": "cb9539e2caf33196b246dd02f91b4d47b0cb9bdf63dcbc2fcc9ac13d9041fcda",
+    "art-direction/woodland-clearing-dressing/captures/baseline-1.0x-placement.png": "2d1880411c58945127760b0a44abd81cebb157fc5d26edf7762148ea5753c2c3",
+    "art-direction/woodland-clearing-dressing/captures/grouped-1.0x-tall.png": "1e6fa12551b37dfe9398df5c148c187d7eaf7ef6edfb95cff14be10c79d81ada",
+    "art-direction/woodland-clearing-dressing/captures/baseline-1.0x-tall.png": "50dbd156308889a7cad5a83c45e2a668d49db1fdf1cd1999b19406057b96b5dd",
+    "art-direction/woodland-clearing-dressing/captures/grouped-1.0x-wide.png": "9b297cc97f61f83251c4dc72e4d1cf734511b24af328ced15e056adccfec730b",
+    "art-direction/woodland-clearing-dressing/captures/grouped-2.0x-wide.png": "95a7414c70511e431f58603c5155b2b21eca710e50ed73222c7bf372f1b78cd2",
+    "art-direction/woodland-clearing-dressing/captures/baseline-2.0x-tall.png": "6975afe46cd1c616a1398bbb880db2438af1c3a77d16b7007e20cb96d99594c3",
+    "art-direction/woodland-clearing-dressing/captures/grouped-0.8x-tall.png": "06849d77ecf3b017fa3269205849ed94866fce6dc4aa7525794effb16f28f1e8",
+    "art-direction/woodland-clearing-dressing/captures/baseline-0.8x-wide.png": "423d12c7318c921ca0dc99cc92ac575057b5cd46683fd5ec4d5c4312b443bf08",
+    "art-direction/woodland-clearing-dressing/captures/grouped-2.0x-tall.png": "74a99922bceb7c3065e2288d4bc17cec6ebb1fe42fd0d797e09d8669c799cf19",
+    "art-direction/woodland-clearing-dressing/captures/baseline-2.0x-wide.png": "a879a34d0cde28c4a9f7d3fd6830ec36257d1b501fb6836956be1e81d154b49e",
+    "art-direction/woodland-clearing-dressing/captures/grouped-0.8x-wide.png": "924ae1e1c94fa28c11f28c6f6be7f65a9cb86d5e8b2537a383b0c2464bcea829",
+    "art-direction/woodland-clearing-dressing/captures/baseline-0.8x-tall.png": "836f5f973e2ea0bcf9708c9fb5d4ce818ffed4700664802afd9760becff903b4",
+    "art-direction/woodland-clearing-dressing/review/complete-north-belt-1x.png": "74018884cba7b55fd8826b94d8d9a7ee2cd63d2be7b1ee60509fff4ce665b671",
+    "art-direction/woodland-clearing-dressing/review/gpu-series-wide.png": "acaf11a472a633616ec94cf8e1d0458b37e2ed4e46d2eda031dbc1a0addf8cfc",
+    "art-direction/woodland-clearing-dressing/review/complete-details-2x.png": "0be3ee3bccf0a5919b39de15df5ee09a440c6f168bd4e68235d48cb3cf95c314",
+    "art-direction/woodland-clearing-dressing/review/gpu-series-tall.png": "501d719e188cc3c5449610c4f37484cc6472df9afe4e29842e527c576404e1a7",
+    "art-direction/woodland-clearing-dressing/review/grouped-detail-1x.png": "d82b7abdbd486d45d875de1ea7c72c5c81be3c90ca679c9c11e47ecebb10619e",
+    "art-direction/woodland-clearing-dressing/review/complete-southwest-details-1x.png": "d81ff4f6666c0e88aa4a879b59d1d000bf7b0de18bc405a1bc036183f60f07f4",
+    "art-direction/woodland-clearing-dressing/review/grouped-southwest-details-2x.png": "183e728ff24a1903c962b5cc8e91b3305894907068eb06d26653589fe54b0526",
+    "art-direction/woodland-clearing-dressing/review/grouped-north-belt-1x.png": "d7cdc023ee071626e9ae60323c978fe0bdc06d7f51ad8c9757ea009910882e6d",
+    "art-direction/woodland-clearing-dressing/review/grouped-southwest-details-1x.png": "4b97c18ff34769a08734bf0c73ae3670fb39bb57379cc05f12909fe3e514110d",
+    "art-direction/woodland-clearing-dressing/review/grouped-north-belt-2x.png": "2f73a0e872048d28f1cfa1c4e95a523cfb62b4c2deb5dfff7db6125132cf2a1b",
+    "art-direction/woodland-clearing-dressing/review/complete-details-1x.png": "f47ce519a7d6c9e16dfa0403e6c18bdfa01583f656cb0223706de64a07a2a69c",
+    "art-direction/woodland-clearing-dressing/review/grouped-detail-2x.png": "dd11e6b985453a4e5b8b0fc04152956a5ba2f83b36ed67da090ba1f5e6391ff4",
+    "art-direction/woodland-clearing-dressing/review/complete-southwest-details-2x.png": "01818998e877242b6065c2480a310be109f26b406277912a1c3b9c5030fc20e0",
+    "art-direction/woodland-clearing-dressing/review/grouped-clearance.png": "54dbf26e1caae5ee095ebb9224a6f8fab688238a5ca31a09090e5c286c3e1e92",
+    "art-direction/woodland-clearing-dressing/review/complete-north-belt-2x.png": "6afbea212271074a46eb469f907a07dc25579fe696b7d403e2fb1624e86d9de9",
+    "art-direction/woodland-clearing-dressing/inventory.json": "151c3cdb0942c8c9816eafa9ad7a04603a88d17633157c613c7e8788bd69bd2e",
+    "art-direction/woodland-clearing-dressing/placements.json": "df03c6835c7b9a5c8cd95322e25332c28fe3e8d5a60c72699d39ec150ae032fd",
+    "art-direction/woodland-clearing-dressing/capture-evidence.json": "cf479bef7d669059a56545b26b2dbe4845bd0865299d5c2bf02c0a05ddd5d06e",
+    "art-direction/woodland-clearing-dressing/review-board-manifest.json": "96c83f4df8b65c899d53cf5b532acdaef7e9537b39bb433dacb44bd70b119951",
+    "art-direction/woodland-clearing-dressing/verification.json": "6fafce053f174186cac7e6f75e0ac2ced1def4669cd0d3047b8149eb1349a36e",
+    "art-direction/woodland-clearing-dressing/readability-manifest.json": "c5c50d4289b0496dfe14a0bd921f9d1e0d1a336375b752867708f26317ade331",
+    "art-direction/woodland-environment-batch/owner-acceptance.json": "06006653959c2c74e75b8f04a57ba767e5f652fb19a597fdf6863efa9f1b448f",
+    "art-direction/woodland-environment-batch/inventory.json": "bbff8ac5bb7666c3165c50c05a797452d981eb5df0bc65e5b40a7b8adc02f685",
+    "art-direction/woodland-environment-batch/exports/shrubs-01.png": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+    "art-direction/woodland-environment-batch/masters/shrubs-01.ora": "0b1ba82dd377dabc57aca8f37ae3ff616042e6070729068c78ff6169be98c9c3",
+    "art-direction/woodland-environment-batch/exports/fallen-wood-07.png": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+    "art-direction/woodland-environment-batch/masters/fallen-wood-07.ora": "c289da064a74044f858ea50dcb7e98bf34ca230041e31a10aca27ba435248076",
+    "art-direction/woodland-environment-batch/exports/rocks-08.png": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+    "art-direction/woodland-environment-batch/masters/rocks-08.ora": "80741779582e861e4a7908bdb13b9423171418e3a486dc5999cef0eddd73e18f",
+    "art-direction/woodland-environment-batch/exports/environmental-details-01.png": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+    "art-direction/woodland-environment-batch/masters/environmental-details-01.ora": "9435396007aa3d7ba1508a42471426c28a32d729c252174ca24f1e6187f921a9",
+    "art-direction/woodland-environment-batch/exports/environmental-details-05.png": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+    "art-direction/woodland-environment-batch/masters/environmental-details-05.ora": "60c25c5685bf55f876e9f19dd9d003e87f54bb79175f5fa035303d5ae8870032",
+    "art-direction/woodland-environment-batch/exports/environmental-details-06.png": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+    "art-direction/woodland-environment-batch/masters/environmental-details-06.ora": "ebb95d1221aa9ad9028c1cf4d33f5d3d5af524a85bc205273517aab7ff53f87c",
+    "art-direction/woodland-environment-batch/exports/environmental-details-03.png": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+    "art-direction/woodland-environment-batch/masters/environmental-details-03.ora": "b9f95726243bf21836db420be5a12a8bdcc91c4ebadd48f45d8b20bbb740a07e",
+    "art-direction/woodland-environment-batch/exports/environmental-details-09.png": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+    "art-direction/woodland-environment-batch/masters/environmental-details-09.ora": "e99ee30cf65efee0b4deab1d15a60a5bfca348fa12fa53b19cee78f3fa5e418d",
+    "art-direction/woodland-environment-batch/exports/shrubs-08.png": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6",
+    "art-direction/woodland-environment-batch/masters/shrubs-08.ora": "d1d4a75fbe2366d0a0985831a6e92060bd2d308ebb1571aa8abbe1701504f5d5",
+    "art-direction/woodland-environment-batch/exports/fallen-wood-03.png": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887",
+    "art-direction/woodland-environment-batch/masters/fallen-wood-03.ora": "71859f92315082f75db71cfb4ecad961d0dbd47a122d880fdde999f67ca40cea",
+    "art-direction/woodland-environment-batch/exports/rocks-03.png": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae",
+    "art-direction/woodland-environment-batch/masters/rocks-03.ora": "3adab4e828f4dec8c99aa4ffe46fa36e3836ea5fbbd9a5fc74bd29e111f1a1ea",
+    "art-direction/woodland-environment-batch/exports/environmental-details-02.png": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d",
+    "art-direction/woodland-environment-batch/masters/environmental-details-02.ora": "56b4e229964a64af0fcb1431343da1b7777a6035a0a6e9ec1630e5fd91cfd3a8",
+    "art-direction/woodland-environment-batch/exports/environmental-details-07.png": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2",
+    "art-direction/woodland-environment-batch/masters/environmental-details-07.ora": "406332b4d0a85aab6c5384b131a865fccd3905bbbe8cc4ea7603c7675578ea35",
+    "art-direction/woodland-environment-batch/exports/fallen-wood-09.png": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861",
+    "art-direction/woodland-environment-batch/masters/fallen-wood-09.ora": "65cc09057bb37aa7e18d5d6712446f7004a37cacc16d02824db90a47230d35c8",
+    "art-direction/woodland-environment-batch/exports/environmental-details-08.png": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76",
+    "art-direction/woodland-environment-batch/masters/environmental-details-08.ora": "2ae6f9512bc1d4ee663e7cedc83fb09d85f1585365ee4fc1df03f04cb5d08f64",
+    "art-direction/woodland-environment-batch/exports/shrubs-07.png": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d",
+    "art-direction/woodland-environment-batch/masters/shrubs-07.ora": "2b83d9ff9e7c3af82e574d5e95d1bbc2bb03b5fbb1b9a807e1720043541585e2"
+  }
+}
