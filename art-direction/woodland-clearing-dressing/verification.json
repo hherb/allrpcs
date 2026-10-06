@@ -1,0 +1,60 @@
+{
+  "status": "passed; external placements unselected; no runtime installation",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "published_head": "ff3259c7f6c94dd7c020584ae8ae452873cb40b2",
+  "preserved_predecessor_files": 8209,
+  "capture_count": 24,
+  "diagnostic_images": 30,
+  "placements": {
+    "baseline": 0,
+    "sparse": 8,
+    "grouped": 16
+  },
+  "minimum_continuous_clearance_beyond_96px_route": 3.3503801199323036,
+  "gpu_difference_pixels": {
+    "captures/sparse-0.8x-wide.png": 10646,
+    "captures/grouped-0.8x-wide.png": 24761,
+    "captures/sparse-0.8x-tall.png": 10646,
+    "captures/grouped-0.8x-tall.png": 24761,
+    "captures/sparse-1.0x-wide.png": 15619,
+    "captures/grouped-1.0x-wide.png": 36691,
+    "captures/sparse-1.0x-tall.png": 15619,
+    "captures/grouped-1.0x-tall.png": 36691,
+    "captures/sparse-1.0x-placement.png": 15619,
+    "captures/grouped-1.0x-placement.png": 36691,
+    "captures/sparse-2.0x-wide.png": 27685,
+    "captures/grouped-2.0x-wide.png": 53422,
+    "captures/sparse-2.0x-tall.png": 47746,
+    "captures/grouped-2.0x-tall.png": 82699,
+    "captures/sparse-2.0x-placement.png": 66887,
+    "captures/grouped-2.0x-placement.png": 155317
+  },
+  "review_probes": [
+    "missing GPU frame",
+    "altered viewport",
+    "fractional camera transform",
+    "fractional proposed pivot",
+    "route obstruction",
+    "GPU change outside footprint",
+    "missing visible dressing",
+    "independent luminance/geometry vectors"
+  ],
+  "native_crops": "complete envelope plus both clusters; exact GPU pixels",
+  "quality": "Verified inherited zero-warning/5033-test logs and successful Godot continuation; no fresh full suite or hosted run",
+  "verification_sources": {
+    "verify.py": "0aefceb9d521231d46dd998a68fe509914055d8ababa160543375877a732c1d1",
+    "build.py": "1265d67c3e4cadaad938969b6f3d9fafb7e29767ccc39de9ba48ba2cffe770a4",
+    "boards.py": "14d1cb4630824bf4ad1954183872da94b863478f6b1a2b65059c1b8e8d2357a6",
+    "readability.py": "153e0e0764cc86b0541d676090f3a037d7a7eff12a5b1cb1b4ce7cd65f122908",
+    "inventory.json": "151c3cdb0942c8c9816eafa9ad7a04603a88d17633157c613c7e8788bd69bd2e",
+    "placements.json": "df03c6835c7b9a5c8cd95322e25332c28fe3e8d5a60c72699d39ec150ae032fd",
+    "capture.gd": "7f9a8ac725ad844580071b903e4a2e49a03477029f7b2d0a7442025590af86b3",
+    "capture-evidence.json": "cf479bef7d669059a56545b26b2dbe4845bd0865299d5c2bf02c0a05ddd5d06e",
+    "capture-host.log": "00d02e8ac55b541becdf388998a891909df5e95e0970bdb557b7faea0aaf3ff2",
+    "capture-status.json": "a90a49033be96b04ef4e49ace04db34dd11dacc7c9cbdd168ab5feaf4fccdc54",
+    "review-board-manifest.json": "96c83f4df8b65c899d53cf5b532acdaef7e9537b39bb433dacb44bd70b119951",
+    "readability-manifest.json": "c5c50d4289b0496dfe14a0bd921f9d1e0d1a336375b752867708f26317ade331",
+    "baseline.json": "f218afc7ee24d0a7c0fcebf5ff7fe7938a9973ca79e16a337ddd11e5495bd4e1"
+  }
+}

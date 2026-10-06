@@ -289,6 +289,14 @@ colour-vision/luminance images begin the remaining visual-check work for this
 local shoulder. Human accessibility and broader contrast checks remain open.
 All predecessor product/CI inputs and accepted owners are unchanged.
 
+The [Woodland Clearing external dressing series](art-direction/woodland-clearing-dressing/README.md)
+compares retained baseline, eight sparse placements and sixteen grouped placements
+using unchanged approved modules and proposed pivots. Twenty-four actual-scene
+captures, complete native/2x crops and thirty static readability images are retained.
+Independent route/entrance/label clearance, frozen predecessor bytes and eight review
+probes pass. The agent recommends sparse; arrangement selection and any named runtime
+scope remain open. No ordinary scene, physical, discovery or gameplay state changes.
+
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
 artwork series first, keeping editable 2x masters and separate review exports. Present all

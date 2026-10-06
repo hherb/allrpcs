@@ -1,0 +1,8 @@
+{
+  "sandbox_exit": 134,
+  "sandbox_outputs": 0,
+  "identical_host_retry_exit": 0,
+  "pass_marker": "PASS: complete 24-view Woodland Clearing external dressing comparison",
+  "frame_markers": 24,
+  "command": "godot --path game --script res://../art-direction/woodland-clearing-dressing/capture.gd --log-file /tmp/allrpcs-woodland-dressing-sandbox.log > /tmp/allrpcs-woodland-dressing-sandbox-stdout.log 2>&1"
+}

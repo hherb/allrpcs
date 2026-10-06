@@ -1,0 +1,55 @@
+{
+  "status": "session code and visual review complete; no unresolved functional findings",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "scope": "External Woodland Clearing comparison and static readability; maintained documentation only",
+  "reviewed": [
+    "Approved source/export/master/review hashes; native paint and provisional pivots retained",
+    "Temporary script-free childless native sprites; depth/filter/repeat and proposed pivots",
+    "Full-rectangle route/entrance/interaction/specimen clearance and visible label rectangles",
+    "Equal camera transforms and complete native/2x crops; GPU differences bounded to placements",
+    "Complete overview and native cluster boards; grouped native/luminance images",
+    "Committed predecessor Git objects and source/metadata/board/readability reproducibility",
+    "Terminal Village Edge acceptance preserved; one exact next slice and explicit publication authority"
+  ],
+  "fixed_findings": [
+    {
+      "finding": "Three initial small-module rectangles touched sampled clearance guards",
+      "fix": "Moved before capture; final independent geometry and native crops pass"
+    },
+    {
+      "finding": "New verifier incorrectly expected the generic approved status in the inherited terminal record",
+      "fix": "Require its exact published terminal status; preserve the acceptance file and closed approval state"
+    }
+  ],
+  "validation": {
+    "scoped": "verification.json: all eight rejection/numerical probes pass",
+    "syntax": "python3 -m compileall -q art-direction/woodland-clearing-dressing passed",
+    "static_checks": "ruff check boards.py readability.py verify.py passed",
+    "overwrite_preflight": "Existing inventory rejected before write; bytes unchanged",
+    "links": "All local links in maintained docs and package README resolve",
+    "whitespace": "git diff --check passed",
+    "product": "Inherited zero-warning/5033-test and Godot evidence byte-exact; no fresh full suite or hosted run"
+  },
+  "acceptance_ledger": {
+    "source_art": "Previously approved 42-module batch retained byte-exact",
+    "arrangement": "Unselected; agent recommends sparse; baseline and both candidates retained",
+    "runtime_scope": "No new named runtime installation approved or performed",
+    "runtime_views": "Disposable external actual-scene views only; no runtime confirmation claimed",
+    "publication": "User explicitly authorized reviewed direct-main commit/push"
+  },
+  "next_slice": "Owner choice/revision for complete comparison; if selected, prepare its exact external runtime-scope proposal",
+  "reviewed_sources": {
+    "art-direction/woodland-clearing-dressing/build.py": "1265d67c3e4cadaad938969b6f3d9fafb7e29767ccc39de9ba48ba2cffe770a4",
+    "art-direction/woodland-clearing-dressing/boards.py": "14d1cb4630824bf4ad1954183872da94b863478f6b1a2b65059c1b8e8d2357a6",
+    "art-direction/woodland-clearing-dressing/readability.py": "153e0e0764cc86b0541d676090f3a037d7a7eff12a5b1cb1b4ce7cd65f122908",
+    "art-direction/woodland-clearing-dressing/verify.py": "0aefceb9d521231d46dd998a68fe509914055d8ababa160543375877a732c1d1",
+    "art-direction/woodland-clearing-dressing/capture.gd": "7f9a8ac725ad844580071b903e4a2e49a03477029f7b2d0a7442025590af86b3",
+    "art-direction/woodland-clearing-dressing/placements.json": "df03c6835c7b9a5c8cd95322e25332c28fe3e8d5a60c72699d39ec150ae032fd",
+    "art-direction/woodland-clearing-dressing/verification.json": "6fafce053f174186cac7e6f75e0ac2ced1def4669cd0d3047b8149eb1349a36e",
+    "art-direction/woodland-clearing-dressing/README.md": "2923921fb332e57a58643bffdf49561f9a08c212e9cda6bbba7dc520c752bd09",
+    "HANDOVER.md": "5444db686d458576f1ea90b31d29d3703f7bc3ce0cb548ab3ec4e896613eb584",
+    "README.md": "0e129d60d3d123367f0a324b081c8bf4a536a405f9e9e75ac1f75edca612bf98",
+    "ROADMAP.md": "3e7bf2e93368386947ddd09d0d3eb5ad5fcf31b27733c167ba961cbeafbcd348"
+  }
+}

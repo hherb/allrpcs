@@ -1,0 +1,211 @@
+{
+  "scope": "External comparison only; no runtime selection or installation",
+  "variants": {
+    "baseline": [],
+    "sparse": [
+      {
+        "instance": "01-shrubs-01",
+        "asset": "shrubs-01",
+        "world_pivot": [
+          982,
+          219
+        ]
+      },
+      {
+        "instance": "02-fallen-wood-07",
+        "asset": "fallen-wood-07",
+        "world_pivot": [
+          1098,
+          255
+        ]
+      },
+      {
+        "instance": "03-rocks-08",
+        "asset": "rocks-08",
+        "world_pivot": [
+          666,
+          421
+        ]
+      },
+      {
+        "instance": "04-environmental-details-01",
+        "asset": "environmental-details-01",
+        "world_pivot": [
+          1199,
+          211
+        ]
+      },
+      {
+        "instance": "05-environmental-details-05",
+        "asset": "environmental-details-05",
+        "world_pivot": [
+          813,
+          416
+        ]
+      },
+      {
+        "instance": "06-environmental-details-06",
+        "asset": "environmental-details-06",
+        "world_pivot": [
+          856,
+          193
+        ]
+      },
+      {
+        "instance": "07-environmental-details-03",
+        "asset": "environmental-details-03",
+        "world_pivot": [
+          1169,
+          127
+        ]
+      },
+      {
+        "instance": "08-environmental-details-09",
+        "asset": "environmental-details-09",
+        "world_pivot": [
+          934,
+          233
+        ]
+      }
+    ],
+    "grouped": [
+      {
+        "instance": "01-shrubs-01",
+        "asset": "shrubs-01",
+        "world_pivot": [
+          982,
+          219
+        ]
+      },
+      {
+        "instance": "02-fallen-wood-07",
+        "asset": "fallen-wood-07",
+        "world_pivot": [
+          1098,
+          255
+        ]
+      },
+      {
+        "instance": "03-rocks-08",
+        "asset": "rocks-08",
+        "world_pivot": [
+          666,
+          421
+        ]
+      },
+      {
+        "instance": "04-environmental-details-01",
+        "asset": "environmental-details-01",
+        "world_pivot": [
+          1199,
+          211
+        ]
+      },
+      {
+        "instance": "05-environmental-details-05",
+        "asset": "environmental-details-05",
+        "world_pivot": [
+          813,
+          416
+        ]
+      },
+      {
+        "instance": "06-environmental-details-06",
+        "asset": "environmental-details-06",
+        "world_pivot": [
+          856,
+          193
+        ]
+      },
+      {
+        "instance": "07-environmental-details-03",
+        "asset": "environmental-details-03",
+        "world_pivot": [
+          1169,
+          127
+        ]
+      },
+      {
+        "instance": "08-environmental-details-09",
+        "asset": "environmental-details-09",
+        "world_pivot": [
+          934,
+          233
+        ]
+      },
+      {
+        "instance": "09-shrubs-08",
+        "asset": "shrubs-08",
+        "world_pivot": [
+          1111,
+          193
+        ]
+      },
+      {
+        "instance": "10-fallen-wood-03",
+        "asset": "fallen-wood-03",
+        "world_pivot": [
+          1023,
+          257
+        ]
+      },
+      {
+        "instance": "11-rocks-03",
+        "asset": "rocks-03",
+        "world_pivot": [
+          1177,
+          165
+        ]
+      },
+      {
+        "instance": "12-environmental-details-02",
+        "asset": "environmental-details-02",
+        "world_pivot": [
+          911,
+          189
+        ]
+      },
+      {
+        "instance": "13-environmental-details-07",
+        "asset": "environmental-details-07",
+        "world_pivot": [
+          979,
+          257
+        ]
+      },
+      {
+        "instance": "14-fallen-wood-09",
+        "asset": "fallen-wood-09",
+        "world_pivot": [
+          707,
+          433
+        ]
+      },
+      {
+        "instance": "15-environmental-details-08",
+        "asset": "environmental-details-08",
+        "world_pivot": [
+          801,
+          435
+        ]
+      },
+      {
+        "instance": "16-shrubs-07",
+        "asset": "shrubs-07",
+        "world_pivot": [
+          1058,
+          167
+        ]
+      }
+    ]
+  },
+  "z_index": -60,
+  "scale": [
+    1,
+    1
+  ],
+  "rotation": 0,
+  "filter": "linear",
+  "repeat": "disabled",
+  "pivot_policy": "Exact accepted proposed pivots retained; provisional runtime status unchanged"
+}

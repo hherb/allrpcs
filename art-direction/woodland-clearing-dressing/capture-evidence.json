@@ -1,0 +1,5066 @@
+{
+	"captures": {
+		"captures/baseline-0.8x-tall.png": "836f5f973e2ea0bcf9708c9fb5d4ce818ffed4700664802afd9760becff903b4",
+		"captures/baseline-0.8x-wide.png": "423d12c7318c921ca0dc99cc92ac575057b5cd46683fd5ec4d5c4312b443bf08",
+		"captures/baseline-1.0x-placement.png": "2d1880411c58945127760b0a44abd81cebb157fc5d26edf7762148ea5753c2c3",
+		"captures/baseline-1.0x-tall.png": "50dbd156308889a7cad5a83c45e2a668d49db1fdf1cd1999b19406057b96b5dd",
+		"captures/baseline-1.0x-wide.png": "cb9539e2caf33196b246dd02f91b4d47b0cb9bdf63dcbc2fcc9ac13d9041fcda",
+		"captures/baseline-2.0x-placement.png": "e9197905d27f1f2db2f05e1c5816696f22d1355d4c125ab8e2a4b17d59f4b2a9",
+		"captures/baseline-2.0x-tall.png": "6975afe46cd1c616a1398bbb880db2438af1c3a77d16b7007e20cb96d99594c3",
+		"captures/baseline-2.0x-wide.png": "a879a34d0cde28c4a9f7d3fd6830ec36257d1b501fb6836956be1e81d154b49e",
+		"captures/grouped-0.8x-tall.png": "06849d77ecf3b017fa3269205849ed94866fce6dc4aa7525794effb16f28f1e8",
+		"captures/grouped-0.8x-wide.png": "924ae1e1c94fa28c11f28c6f6be7f65a9cb86d5e8b2537a383b0c2464bcea829",
+		"captures/grouped-1.0x-placement.png": "2c83f755a525517126fd41f4238928318192ce19f51127c1405bcfa5d36b3276",
+		"captures/grouped-1.0x-tall.png": "1e6fa12551b37dfe9398df5c148c187d7eaf7ef6edfb95cff14be10c79d81ada",
+		"captures/grouped-1.0x-wide.png": "9b297cc97f61f83251c4dc72e4d1cf734511b24af328ced15e056adccfec730b",
+		"captures/grouped-2.0x-placement.png": "ec4ae2e12458fd658f514b93b550caaeb6ee19c60466812aa551b8fb8418bc25",
+		"captures/grouped-2.0x-tall.png": "74a99922bceb7c3065e2288d4bc17cec6ebb1fe42fd0d797e09d8669c799cf19",
+		"captures/grouped-2.0x-wide.png": "95a7414c70511e431f58603c5155b2b21eca710e50ed73222c7bf372f1b78cd2",
+		"captures/sparse-0.8x-tall.png": "b85a840c43c45d55767277af92243a867ae6259c94734f6ab682a7c74299d4b8",
+		"captures/sparse-0.8x-wide.png": "336e8b85cc78024efa98b6dc72880326ddb7eaea4c7106035b8f12860dedb5ea",
+		"captures/sparse-1.0x-placement.png": "a6c42575d64660237c1fd18a77c26f6c2f74a54ac14ec9e8adfef40057c8f48f",
+		"captures/sparse-1.0x-tall.png": "e370e20cb3a0b64fa0e127753e709c8907eba88c7ce4e917abdbad215abcc8c7",
+		"captures/sparse-1.0x-wide.png": "6153b733db4831028ecb62b3d45097be4a5fdc02d5f899d848ebdd72cc568bb2",
+		"captures/sparse-2.0x-placement.png": "801ff56299ec1fb53c85a7d044bcb2720670063f1a481acc4a6623e651f2ffea",
+		"captures/sparse-2.0x-tall.png": "74082c8b9f81fcb1b50cdd8e5e82f96b4a6dd79f79a1c5d9872f1c9e24568e29",
+		"captures/sparse-2.0x-wide.png": "c1f30b978765d491a5982c393103cb22ce90bf0afe1bdef7c527d826d81ae474"
+	},
+	"engine": "4.6.3-stable (official)",
+	"frames": {
+		"captures/baseline-0.8x-tall.png": {
+			"screen_center": [
+				924.0,
+				516.875
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-99.1999969482422,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-0.8x-wide.png": {
+			"screen_center": [
+				924.0,
+				450.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-99.1999969482422,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/baseline-1.0x-placement.png": {
+			"screen_center": [
+				924.0,
+				240.0
+			],
+			"target_center": [
+				924.0,
+				240.0
+			],
+			"viewport": [
+				800,
+				480
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-524.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-tall.png": {
+			"screen_center": [
+				924.0,
+				413.5
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-284.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-1.0x-wide.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-284.0,
+				-20.0
+			],
+			"zoom": 1.0
+		},
+		"captures/baseline-2.0x-placement.png": {
+			"screen_center": [
+				924.0,
+				240.0
+			],
+			"target_center": [
+				924.0,
+				240.0
+			],
+			"viewport": [
+				1600,
+				960
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1048.0,
+				0.0
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-tall.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1208.0,
+				-346.5
+			],
+			"zoom": 2.0
+		},
+		"captures/baseline-2.0x-wide.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1208.0,
+				-400.0
+			],
+			"zoom": 2.0
+		},
+		"captures/grouped-0.8x-tall.png": {
+			"screen_center": [
+				924.0,
+				516.875
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-99.1999969482422,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/grouped-0.8x-wide.png": {
+			"screen_center": [
+				924.0,
+				450.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-99.1999969482422,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/grouped-1.0x-placement.png": {
+			"screen_center": [
+				924.0,
+				240.0
+			],
+			"target_center": [
+				924.0,
+				240.0
+			],
+			"viewport": [
+				800,
+				480
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-524.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/grouped-1.0x-tall.png": {
+			"screen_center": [
+				924.0,
+				413.5
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-284.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/grouped-1.0x-wide.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-284.0,
+				-20.0
+			],
+			"zoom": 1.0
+		},
+		"captures/grouped-2.0x-placement.png": {
+			"screen_center": [
+				924.0,
+				240.0
+			],
+			"target_center": [
+				924.0,
+				240.0
+			],
+			"viewport": [
+				1600,
+				960
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1048.0,
+				0.0
+			],
+			"zoom": 2.0
+		},
+		"captures/grouped-2.0x-tall.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1208.0,
+				-346.5
+			],
+			"zoom": 2.0
+		},
+		"captures/grouped-2.0x-wide.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1208.0,
+				-400.0
+			],
+			"zoom": 2.0
+		},
+		"captures/sparse-0.8x-tall.png": {
+			"screen_center": [
+				924.0,
+				516.875
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-99.1999969482422,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/sparse-0.8x-wide.png": {
+			"screen_center": [
+				924.0,
+				450.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				0.799999952316284,
+				0.0,
+				0.0,
+				0.799999952316284,
+				-99.1999969482422,
+				0.0
+			],
+			"zoom": 0.8
+		},
+		"captures/sparse-1.0x-placement.png": {
+			"screen_center": [
+				924.0,
+				240.0
+			],
+			"target_center": [
+				924.0,
+				240.0
+			],
+			"viewport": [
+				800,
+				480
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-524.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/sparse-1.0x-tall.png": {
+			"screen_center": [
+				924.0,
+				413.5
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-284.0,
+				0.0
+			],
+			"zoom": 1.0
+		},
+		"captures/sparse-1.0x-wide.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				-284.0,
+				-20.0
+			],
+			"zoom": 1.0
+		},
+		"captures/sparse-2.0x-placement.png": {
+			"screen_center": [
+				924.0,
+				240.0
+			],
+			"target_center": [
+				924.0,
+				240.0
+			],
+			"viewport": [
+				1600,
+				960
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1048.0,
+				0.0
+			],
+			"zoom": 2.0
+		},
+		"captures/sparse-2.0x-tall.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				827
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1208.0,
+				-346.5
+			],
+			"zoom": 2.0
+		},
+		"captures/sparse-2.0x-wide.png": {
+			"screen_center": [
+				924.0,
+				380.0
+			],
+			"target_center": [
+				924.0,
+				380.0
+			],
+			"viewport": [
+				1280,
+				720
+			],
+			"world_to_canvas": [
+				2.0,
+				0.0,
+				0.0,
+				2.0,
+				-1208.0,
+				-400.0
+			],
+			"zoom": 2.0
+		}
+	},
+	"hidden": "Root CanvasLayers and CharacterBody2Ds only; labels, shells, interactions and concealed state retained",
+	"inputs": {
+		"/Users/hherb/src/allrpcs/art-direction/clearing-village-edge-ground-feasibility/capture-evidence.json": "3516ff01b7245f7a6e268631f61728c9db668148ef822b0e840e7faabed0dc86",
+		"/Users/hherb/src/allrpcs/art-direction/clearing-village-edge-ground-feasibility/simulation-model.json": "615b56b75d2623e3a97a2832c8f5c1f932ad87308ac1e575549bd834b9647abf",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-clearing-dressing/baseline.json": "f218afc7ee24d0a7c0fcebf5ff7fe7938a9973ca79e16a337ddd11e5495bd4e1",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-clearing-dressing/build.py": "1265d67c3e4cadaad938969b6f3d9fafb7e29767ccc39de9ba48ba2cffe770a4",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-clearing-dressing/capture.gd": "7f9a8ac725ad844580071b903e4a2e49a03477029f7b2d0a7442025590af86b3",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-clearing-dressing/inventory.json": "151c3cdb0942c8c9816eafa9ad7a04603a88d17633157c613c7e8788bd69bd2e",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-clearing-dressing/placements.json": "df03c6835c7b9a5c8cd95322e25332c28fe3e8d5a60c72699d39ec150ae032fd",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-01.png": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-02.png": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-03.png": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-04.png": "e5253564d5f44d8ea2eeb342c341262277e4a11ede17821351bb0f3b2622c553",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-05.png": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-06.png": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-07.png": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-08.png": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/environmental-details-09.png": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-01.png": "87446e80bdf28b89a3dc5a48039c99e12b11933437f05b1ff131963f0960d5e4",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-02.png": "3444624b2d4435d4d51785b1b1d080b9531678e383cd89e4aaf47e29dde9dea5",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-03.png": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-04.png": "69a6e9319a18137c8b29946bf3c0a41ea66dd7b32d802d48132995e15fdb8381",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-05.png": "b2210e70ca1fef4ff1b69cc252b7b3af9cac5836b2b01c54f959435daf32f9d9",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-06.png": "e67d6fea6647be15e01f01332ade722ad3ae9f8653864f40c2c11fc071694517",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-07.png": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-08.png": "31f126f37daf9bddb8f025514d96ad767b71f4929699075694b1801c95a4603c",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/fallen-wood-09.png": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-01.png": "e871446a46034868d3eeb475afda60304830ca1c18850c0959b31dddf00cb84c",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-02.png": "0604558baf633801cfc1e146cff04850369200b3ca500ab84e3a6a02d43eb96f",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-03.png": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-04.png": "e6b833210d9eb479698ebd750789217ecbdea57d3d6d31e140a51ab4b7c0d9bc",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-05.png": "45a1a3074ea99a536692931c8d3f7467321facfc8da36d653c5ce2f34a0b0476",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-06.png": "5cc2c9a8ee630c89f9208864fe4a1d9453258e506d039d2629da950a7eb75f21",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-07.png": "a1218e4353d71e782a7f46a169c162c9f48b5dbba68dda140e936fe7f829fad9",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-08.png": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/rocks-09.png": "520e0f60d12b956482a3efe33517ada00eaec92b9cacf635841c12e48395a1fd",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-01.png": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-02.png": "1261b01636004531a99f64c7983f72ff68ddbd2c0b50f441074a54bf0ed3d0c0",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-03.png": "4c6d7ed16380fa6e36c674b58e2dae6792f527e2cd5facf43838e8f1c307cacf",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-04.png": "94b923ad06dac168a89bfaaae97ae5181d9d16816a5a24c0a9f02ab1d9d58fe3",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-05.png": "c0d6265a98442e87714b18c0a993eb6942991e453273a133f35fd8a42214f507",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-06.png": "1518ed76cd5d944cea3c4b4c9243f6d14e771b40b0a01e4fa2de0e2a0f497d11",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-07.png": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-08.png": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/shrubs-09.png": "5545d0d83ddfc423e08aac33f4ccf01abb675cf64fb6e8a7af4fadc42d1dc1cf",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/trees-01.png": "bbfc648a6306ce91a994e457fa0f637d4d720d98355f402763a5f90c03f85dd5",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/trees-02.png": "292d05e778edb6c5a0bd66ccbbc1639851529be5173bca890054858d0c058a38",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/trees-03.png": "bedf57dc2cee187fd186b0b1fba3c9bf4d596c8942d75adf7ef5cb991bfcaf3b",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/trees-04.png": "d654dce4f15f94e9203c689c1ff879ffea7214066150329d514cba038c1ee7cf",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/trees-05.png": "b99681b403d6fe8c524e414ea153d5859487e75c0b4c79625efc02d2d66d8765",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/exports/trees-06.png": "98bd85281835fe82f405fccf7132361ee956e2e9ea873aa2f08cd4e7d48557c2",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/inventory.json": "bbff8ac5bb7666c3165c50c05a797452d981eb5df0bc65e5b40a7b8adc02f685",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-01.ora": "9435396007aa3d7ba1508a42471426c28a32d729c252174ca24f1e6187f921a9",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-02.ora": "56b4e229964a64af0fcb1431343da1b7777a6035a0a6e9ec1630e5fd91cfd3a8",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-03.ora": "b9f95726243bf21836db420be5a12a8bdcc91c4ebadd48f45d8b20bbb740a07e",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-04.ora": "224b3df2a726c34e2b6ae35131b6004562a5a5ef87825efe4a22cdbaf279bcb3",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-05.ora": "60c25c5685bf55f876e9f19dd9d003e87f54bb79175f5fa035303d5ae8870032",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-06.ora": "ebb95d1221aa9ad9028c1cf4d33f5d3d5af524a85bc205273517aab7ff53f87c",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-07.ora": "406332b4d0a85aab6c5384b131a865fccd3905bbbe8cc4ea7603c7675578ea35",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-08.ora": "2ae6f9512bc1d4ee663e7cedc83fb09d85f1585365ee4fc1df03f04cb5d08f64",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/environmental-details-09.ora": "e99ee30cf65efee0b4deab1d15a60a5bfca348fa12fa53b19cee78f3fa5e418d",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-01.ora": "323899302b38e104546f409883a6ec65f89b53893e6491d0307211e13add5fd0",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-02.ora": "89f8b9133544876039a6d8d172be00051f166c18d57e2111a42caab852ee8519",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-03.ora": "71859f92315082f75db71cfb4ecad961d0dbd47a122d880fdde999f67ca40cea",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-04.ora": "adbdbca1b89e45ba368da55c027acf33857d0ce5175ebfaee74a0c530eb35a50",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-05.ora": "0a65742c830254087f3fe0b6951574d01f56e0e86141a6c2d1103192ef90d37a",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-06.ora": "217a52b789285a8e3c3f43831e418ccf4349b5ef8ed2f28941316ccc384d4ab5",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-07.ora": "c289da064a74044f858ea50dcb7e98bf34ca230041e31a10aca27ba435248076",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-08.ora": "cc7594f0eefa15f3c34b3804e9ac9b065c749ca7694309b667f000824e2b10c4",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/fallen-wood-09.ora": "65cc09057bb37aa7e18d5d6712446f7004a37cacc16d02824db90a47230d35c8",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-01.ora": "7f2ee435d939dbe120fe6c3fc40516ba36d085a1e85fb1df63433f7a58d0beb6",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-02.ora": "dfa0394058426cba6f22c8221eeceee216444e279d0a50808c5ff489a58ad82b",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-03.ora": "3adab4e828f4dec8c99aa4ffe46fa36e3836ea5fbbd9a5fc74bd29e111f1a1ea",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-04.ora": "e1184196d69951e8d5be832f841bd4e06db8261baf3803749d757b9b174f9f78",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-05.ora": "561a0c415909ccf71058a24bb21e7c5bc61ee209f7a69612a29ecbac67e5d394",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-06.ora": "0478a6d423ab1b1757884a5679d9d9b451f2e27264989fac3e98e0c58536e2f9",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-07.ora": "8f75f445bdcf2cd5e64820ae0e54752bbf499cac2344e2a84419ae84c12d2ab5",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-08.ora": "80741779582e861e4a7908bdb13b9423171418e3a486dc5999cef0eddd73e18f",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/rocks-09.ora": "a40f806f8091bb97b098371dace41548d0fb1fb88018e8b54dfb030cefaa1083",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-01.ora": "0b1ba82dd377dabc57aca8f37ae3ff616042e6070729068c78ff6169be98c9c3",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-02.ora": "24744019c7c203cb829e1449c4afd49e240448a0329eb356ecb3c49d8df677f5",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-03.ora": "0063999a3403ad38262417274a54015a6ad4ab4f99e361a0f8d4204e89659ce0",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-04.ora": "8649e25782a7fb3b61f2bb0448852ae77c195f9f37f893d5f6ba34ff62ae32f7",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-05.ora": "96af5f9b9bfd14a1430b7ff743059226e67e64fcecde649e1da22167546db2a1",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-06.ora": "05a3877fc6634d480559e6f9b28a3b60df81829a942fa96a2743ee19b51561b9",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-07.ora": "2b83d9ff9e7c3af82e574d5e95d1bbc2bb03b5fbb1b9a807e1720043541585e2",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-08.ora": "d1d4a75fbe2366d0a0985831a6e92060bd2d308ebb1571aa8abbe1701504f5d5",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/shrubs-09.ora": "e6dd51d7f0e19171da7781e8e024c454f71bfe3f5caa70fd00d30963ab087fdc",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/trees-01.ora": "e264d920ff612596634a84d397bff207bc947ee127a7bc9336d0f3697c3844d8",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/trees-02.ora": "c81580a3d475a831ae0a2106b05e32f2c7ad3a19b6eebe0ddc320280adbd69ee",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/trees-03.ora": "4287c2cb00d699548901d4921e04810fcd01feb1923e211ec73f168ff7831640",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/trees-04.ora": "a674f7da17bb7d826b5320ca71f98e5b507d27fe3c8a37ec19c5082ec44b0568",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/trees-05.ora": "80f5cf27bcd0c03990512d02be70f3f4e25d8ab7d9b277528d4d48bacb334494",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/masters/trees-06.ora": "1f681d62f2e35b84cac31431b7944a9aa1271222401aa903f02fcc124207336a",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/owner-acceptance.json": "06006653959c2c74e75b8f04a57ba767e5f652fb19a597fdf6863efa9f1b448f",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/prompts.json": "e5861dbf8cfd8a92973301a299528008b32ff0f9eae8b0efd2fb17006711dce2",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/environmental-details.png": "18ef0477caceecf5f8a5d1cb340f5cfce333ff20d913261007268a4edf603f5f",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/fallen-wood.png": "81395383428486cadd6a4fefdd5ef919a61d1c58e8f03d9db97e4fecd3d4e77e",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/quiet-understory.png": "76e88f1380c7b69f84ba9fa04a5157403f38a3d08582c8064204cca2102d89dd",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/rocks.png": "8f827f662a5f82701a484f344338c0e9a9d91edaeddbe287301113ac409e3cba",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/shrubs.png": "62471319fc8fa727c50efd87aa5ff8128a42ab9b6143eafe22e4f0ef6a0cacf7",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/trees.png": "7c0723f0260e4ff2d3afe369146e764da75cf212e404e80e7d254fbc93f8f037",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/review/woodland-edge.png": "b42aaa68904ce933179f461dedcb8c2393a43a4d633bacabfba6a8d6ad3d1981",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/sources/environmental-details.png": "90aae3d33b25d767696305101d3fb98c38019ac757e1f9b88e022f3128d5b267",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/sources/fallen-wood.png": "a47e826e3af6400d741b5ee8db6f15e3a48eb3d58575d28ca9e425ed9f82bdf1",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/sources/rocks.png": "7869432bd6065d852e2b10493e6ecc81fb66204e436a84b2fca634eeae5ccb31",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/sources/shrubs.png": "ccd9b89de5948fa14d52a1cc49b034561271827f0907ba39068a37c09547d944",
+		"/Users/hherb/src/allrpcs/art-direction/woodland-environment-batch/sources/trees.png": "a59109d62aef3722184875c8a7958561936362a568c583a1055fe72ccaf42404",
+		"/Users/hherb/src/allrpcs/art-direction/world-layout-proposal/layout-proposal.json": "a5ebd5e23b5f41a8958477c953ba2763afffcb636f3bb6f69a969c0c1d57f8f1",
+		"/Users/hherb/src/allrpcs/game/Main.tscn": "6360edc454702d5a7d8389cdfd2314af7e9ca5c9f6674f929fc3696cd64b8ef3",
+		"/Users/hherb/src/allrpcs/game/OpeningRegionLayoutGeometry.cs": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57",
+		"/Users/hherb/src/allrpcs/game/OpeningRegionWoodlandClearingGeometry.cs": "4f93183cb68fe2c1c892c0c9a444257b7e53a394656e1e65c7e0de5e140bcb37"
+	},
+	"owners": {
+		"GardenGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2048.0,
+				1120.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"GardenGroundPresentation/Meadow": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				512,
+				384
+			],
+			"texture": "res://art/runtime/terrain/garden-ground-meadow.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2048.0,
+				1120.0
+			],
+			"z_as_relative": true,
+			"z_index": -90
+		},
+		"GardenGroundPresentation/Soil": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				512,
+				384
+			],
+			"texture": "res://art/runtime/terrain/garden-ground-soil.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2048.0,
+				1120.0
+			],
+			"z_as_relative": true,
+			"z_index": -89
+		},
+		"GreyboxNavigation/RoutePresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"GreyboxNavigation/RoutePresentation/@Line2D@4689": {
+			"class": "Line2D",
+			"points": [
+				[
+					1820.0,
+					900.0
+				],
+				[
+					1700.0,
+					900.0
+				]
+			],
+			"visible": true,
+			"width": 96.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": -75
+		},
+		"GreyboxNavigation/RoutePresentation/ClosedForestPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				552,
+				384
+			],
+			"texture": "res://art/runtime/terrain/clearing-closed-forest-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				796.0,
+				224.0
+			],
+			"z_as_relative": true,
+			"z_index": -75
+		},
+		"GreyboxNavigation/RoutePresentation/LaundryClearingPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 2,
+			"size": [
+				96,
+				256
+			],
+			"texture": "res://art/runtime/terrain/straight-path.png",
+			"visible": true,
+			"world_transform": [
+				0.251633822917938,
+				0.96782249212265,
+				-0.96782249212265,
+				0.251633822917938,
+				1250.0,
+				285.0
+			],
+			"z_as_relative": true,
+			"z_index": -70
+		},
+		"GreyboxNavigation/RoutePresentation/LaundryClearingPathEndCap": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/path-end-cap.png",
+			"visible": true,
+			"world_transform": [
+				0.251633822917938,
+				0.96782249212265,
+				-0.96782249212265,
+				0.251633822917938,
+				1000.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": -70
+		},
+		"GreyboxNavigation/RoutePresentation/OpeningJunction": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				32.0,
+				32.0
+			],
+			"repeat": 0,
+			"size": [
+				512,
+				512
+			],
+			"texture": "res://art/runtime/terrain/opening-junction.png",
+			"visible": true,
+			"world_transform": [
+				-0.682318210601807,
+				0.73105525970459,
+				-0.73105525970459,
+				-0.682318210601807,
+				1500.0,
+				220.0
+			],
+			"z_as_relative": true,
+			"z_index": -70
+		},
+		"GreyboxNavigation/RoutePresentation/ShrineSouthernRoadPath": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"GreyboxNavigation/RoutePresentation/ShrineSouthernRoadPath/EndpointBlend": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				160,
+				160
+			],
+			"texture": "res://art/runtime/terrain/shrine-southern-road-endpoint-blend.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1480.0,
+				1360.0
+			],
+			"z_as_relative": true,
+			"z_index": -69
+		},
+		"GreyboxNavigation/RoutePresentation/ShrineSouthernRoadPath/IncomingPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				1152,
+				1080
+			],
+			"texture": "res://art/runtime/terrain/shrine-southern-road-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1008.0,
+				940.0
+			],
+			"z_as_relative": true,
+			"z_index": -72
+		},
+		"GreyboxNavigation/RoutePresentation/SouthernRoadWagonPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				560,
+				432
+			],
+			"texture": "res://art/runtime/terrain/southern-road-wagon-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1680.0,
+				1496.0
+			],
+			"z_as_relative": true,
+			"z_index": -70
+		},
+		"GreyboxNavigation/RoutePresentation/SquareGardenPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				200,
+				220
+			],
+			"texture": "res://art/runtime/terrain/square-garden-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2300.0,
+				1250.0
+			],
+			"z_as_relative": true,
+			"z_index": -71
+		},
+		"GreyboxNavigation/RoutePresentation/SquareSickhousePath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 2,
+			"size": [
+				380,
+				360
+			],
+			"texture": "res://art/runtime/terrain/square-sickhouse-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2510.0,
+				1320.0
+			],
+			"z_as_relative": true,
+			"z_index": -71
+		},
+		"GreyboxNavigation/RoutePresentation/SquareSouthernRoadPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				520,
+				416
+			],
+			"texture": "res://art/runtime/terrain/square-southern-road-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1700.0,
+				1232.0
+			],
+			"z_as_relative": true,
+			"z_index": -71
+		},
+		"GreyboxNavigation/RoutePresentation/StreamLaundryPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				432,
+				416
+			],
+			"texture": "res://art/runtime/terrain/stream-laundry-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1640.0,
+				360.0
+			],
+			"z_as_relative": true,
+			"z_index": -75
+		},
+		"GreyboxNavigation/RoutePresentation/VillageEdgeSquareConnector": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				124,
+				96
+			],
+			"texture": "res://art/runtime/terrain/village-edge-square-connector.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1882.0,
+				900.0
+			],
+			"z_as_relative": true,
+			"z_index": -70
+		},
+		"GreyboxNavigation/RoutePresentation/VillageEdgeStreamPath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				224,
+				528
+			],
+			"texture": "res://art/runtime/terrain/village-edge-stream-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1752.0,
+				704.0
+			],
+			"z_as_relative": true,
+			"z_index": -75
+		},
+		"GreyboxNavigation/RoutePresentation/VillageSquareJunction": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				512,
+				512
+			],
+			"texture": "res://art/runtime/terrain/village-square-junction.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2200.0,
+				900.0
+			],
+			"z_as_relative": true,
+			"z_index": -70
+		},
+		"GreyboxNavigation/RoutePresentation/WoodlandShrinePath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				704,
+				208
+			],
+			"texture": "res://art/runtime/terrain/woodland-shrine-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				704.0,
+				328.0
+			],
+			"z_as_relative": true,
+			"z_index": -74
+		},
+		"GreyboxNavigation/RoutePresentation/WoodlandVillageEdgePath": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				816,
+				688
+			],
+			"texture": "res://art/runtime/terrain/woodland-village-edge-path.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1352.0,
+				632.0
+			],
+			"z_as_relative": true,
+			"z_index": -75
+		},
+		"Ground": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 2,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/quiet-moss.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": -100
+		},
+		"InteractionCandidates": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/ExcludedMarker": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1000.0,
+				550.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/ExcludedMarker/FocusIndicator": {
+			"class": "Line2D",
+			"points": [
+				[
+					38.0,
+					0.0
+				],
+				[
+					26.8700008392334,
+					26.8700008392334
+				],
+				[
+					0.0,
+					38.0
+				],
+				[
+					-26.8700008392334,
+					26.8700008392334
+				],
+				[
+					-38.0,
+					0.0
+				],
+				[
+					-26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					0.0,
+					-38.0
+				],
+				[
+					26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					38.0,
+					0.0
+				]
+			],
+			"visible": false,
+			"width": 6.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1000.0,
+				550.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/ExcludedMarker/Label": {
+			"class": "Label",
+			"rect": [
+				924.0,
+				574.0,
+				152.0,
+				23.0
+			],
+			"text": "",
+			"visible": true
+		},
+		"InteractionCandidates/ExcludedMarker/Marker": {
+			"class": "Polygon2D",
+			"color": [
+				0.458999991416931,
+				0.42399999499321,
+				0.430999994277954,
+				1.0
+			],
+			"polygon": [
+				[
+					-18.0,
+					-18.0
+				],
+				[
+					18.0,
+					-18.0
+				],
+				[
+					18.0,
+					18.0
+				],
+				[
+					-18.0,
+					18.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1000.0,
+				550.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HerbPatch": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				920.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HerbPatch/FocusIndicator": {
+			"class": "Line2D",
+			"points": [
+				[
+					38.0,
+					0.0
+				],
+				[
+					26.8700008392334,
+					26.8700008392334
+				],
+				[
+					0.0,
+					38.0
+				],
+				[
+					-26.8700008392334,
+					26.8700008392334
+				],
+				[
+					-38.0,
+					0.0
+				],
+				[
+					-26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					0.0,
+					-38.0
+				],
+				[
+					26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					38.0,
+					0.0
+				]
+			],
+			"visible": true,
+			"width": 6.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				920.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HerbPatch/FocusIndicator/FocusLabel": {
+			"class": "Label",
+			"rect": [
+				886.0,
+				284.0,
+				68.0,
+				23.0
+			],
+			"text": "FOCUS",
+			"visible": true
+		},
+		"InteractionCandidates/HerbPatch/Label": {
+			"class": "Label",
+			"rect": [
+				868.0,
+				372.0,
+				104.0,
+				23.0
+			],
+			"text": "HERB PATCH",
+			"visible": true
+		},
+		"InteractionCandidates/HerbPatch/Marker": {
+			"class": "Polygon2D",
+			"color": [
+				0.430999994277954,
+				0.776000022888184,
+				0.352999985218048,
+				1.0
+			],
+			"polygon": [
+				[
+					0.0,
+					-18.0
+				],
+				[
+					16.0,
+					-8.0
+				],
+				[
+					12.0,
+					16.0
+				],
+				[
+					-12.0,
+					16.0
+				],
+				[
+					-16.0,
+					-8.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				920.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HerbPatch/TemporaryResolvedPerceptionIndicator": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				920.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HerbPatch/TemporaryResolvedPerceptionIndicator/Indicator": {
+			"class": "Label",
+			"rect": [
+				848.0,
+				400.0,
+				144.0,
+				69.0
+			],
+			"text": "",
+			"visible": false
+		},
+		"InteractionCandidates/HiddenMarker": {
+			"class": "Node2D",
+			"visible": false,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1000.0,
+				150.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HiddenMarker/FocusIndicator": {
+			"class": "Line2D",
+			"points": [
+				[
+					38.0,
+					0.0
+				],
+				[
+					26.8700008392334,
+					26.8700008392334
+				],
+				[
+					0.0,
+					38.0
+				],
+				[
+					-26.8700008392334,
+					26.8700008392334
+				],
+				[
+					-38.0,
+					0.0
+				],
+				[
+					-26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					0.0,
+					-38.0
+				],
+				[
+					26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					38.0,
+					0.0
+				]
+			],
+			"visible": false,
+			"width": 6.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1000.0,
+				150.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/HiddenMarker/Marker": {
+			"class": "Polygon2D",
+			"color": [
+				0.677999973297119,
+				0.379999995231628,
+				0.815999984741211,
+				1.0
+			],
+			"polygon": [
+				[
+					0.0,
+					-16.0
+				],
+				[
+					16.0,
+					0.0
+				],
+				[
+					0.0,
+					16.0
+				],
+				[
+					-16.0,
+					0.0
+				]
+			],
+			"visible": false,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1000.0,
+				150.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/StoneMarker": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1080.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/StoneMarker/FocusIndicator": {
+			"class": "Line2D",
+			"points": [
+				[
+					38.0,
+					0.0
+				],
+				[
+					26.8700008392334,
+					26.8700008392334
+				],
+				[
+					0.0,
+					38.0
+				],
+				[
+					-26.8700008392334,
+					26.8700008392334
+				],
+				[
+					-38.0,
+					0.0
+				],
+				[
+					-26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					0.0,
+					-38.0
+				],
+				[
+					26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					38.0,
+					0.0
+				]
+			],
+			"visible": false,
+			"width": 6.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1080.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/StoneMarker/FocusIndicator/FocusLabel": {
+			"class": "Label",
+			"rect": [
+				1046.0,
+				284.0,
+				68.0,
+				23.0
+			],
+			"text": "FOCUS",
+			"visible": false
+		},
+		"InteractionCandidates/StoneMarker/Label": {
+			"class": "Label",
+			"rect": [
+				1016.0,
+				374.0,
+				128.0,
+				23.0
+			],
+			"text": "STONE MARKER",
+			"visible": true
+		},
+		"InteractionCandidates/StoneMarker/Marker": {
+			"class": "Polygon2D",
+			"color": [
+				0.681999981403351,
+				0.71399998664856,
+				0.587999999523163,
+				1.0
+			],
+			"polygon": [
+				[
+					-14.0,
+					-22.0
+				],
+				[
+					14.0,
+					-22.0
+				],
+				[
+					20.0,
+					18.0
+				],
+				[
+					-20.0,
+					18.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1080.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/StoneMarker/TemporaryResolvedPerceptionIndicator": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1080.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/StoneMarker/TemporaryResolvedPerceptionIndicator/Indicator": {
+			"class": "Label",
+			"rect": [
+				1184.0,
+				402.0,
+				144.0,
+				101.0
+			],
+			"text": "Weathered carvings mark one face of the standing stone.",
+			"visible": true
+		},
+		"InteractionCandidates/WagonClue": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1900.0,
+				1640.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WagonClue/FocusIndicator": {
+			"class": "Line2D",
+			"points": [
+				[
+					38.0,
+					0.0
+				],
+				[
+					26.8700008392334,
+					26.8700008392334
+				],
+				[
+					0.0,
+					38.0
+				],
+				[
+					-26.8700008392334,
+					26.8700008392334
+				],
+				[
+					-38.0,
+					0.0
+				],
+				[
+					-26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					0.0,
+					-38.0
+				],
+				[
+					26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					38.0,
+					0.0
+				]
+			],
+			"visible": false,
+			"width": 6.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1900.0,
+				1640.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WagonClue/Label": {
+			"class": "Label",
+			"rect": [
+				1836.0,
+				1660.0,
+				128.0,
+				23.0
+			],
+			"text": "Tool-gated clue",
+			"visible": true
+		},
+		"InteractionCandidates/WagonClue/Marker": {
+			"class": "Polygon2D",
+			"color": [
+				0.587999999523163,
+				0.501999974250793,
+				0.352999985218048,
+				1.0
+			],
+			"polygon": [
+				[
+					-14.0,
+					-10.0
+				],
+				[
+					16.0,
+					-8.0
+				],
+				[
+					12.0,
+					12.0
+				],
+				[
+					-16.0,
+					10.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1900.0,
+				1640.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WaterCask": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2200.0,
+				900.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WaterCask/Body": {
+			"class": "Polygon2D",
+			"color": [
+				0.455000013113022,
+				0.301999986171722,
+				0.180000007152557,
+				1.0
+			],
+			"polygon": [
+				[
+					-22.0,
+					-24.0
+				],
+				[
+					22.0,
+					-24.0
+				],
+				[
+					28.0,
+					22.0
+				],
+				[
+					-28.0,
+					22.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2200.0,
+				900.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WaterCask/ContaminationMarker": {
+			"class": "Polygon2D",
+			"color": [
+				0.804000020027161,
+				0.28600001335144,
+				0.234999999403954,
+				1.0
+			],
+			"polygon": [
+				[
+					0.0,
+					-10.0
+				],
+				[
+					9.0,
+					6.0
+				],
+				[
+					-9.0,
+					6.0
+				]
+			],
+			"visible": false,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2200.0,
+				894.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WaterCask/FocusIndicator": {
+			"class": "Line2D",
+			"points": [
+				[
+					38.0,
+					0.0
+				],
+				[
+					26.8700008392334,
+					26.8700008392334
+				],
+				[
+					0.0,
+					38.0
+				],
+				[
+					-26.8700008392334,
+					26.8700008392334
+				],
+				[
+					-38.0,
+					0.0
+				],
+				[
+					-26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					0.0,
+					-38.0
+				],
+				[
+					26.8700008392334,
+					-26.8700008392334
+				],
+				[
+					38.0,
+					0.0
+				]
+			],
+			"visible": false,
+			"width": 6.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2200.0,
+				900.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"InteractionCandidates/WaterCask/Label": {
+			"class": "Label",
+			"rect": [
+				2124.0,
+				928.0,
+				152.0,
+				23.0
+			],
+			"text": "Village water cask",
+			"visible": true
+		},
+		"InteractionCandidates/WaterCask/SubstituteBody": {
+			"class": "Polygon2D",
+			"color": [
+				0.275000005960464,
+				0.404000014066696,
+				0.224000006914139,
+				1.0
+			],
+			"polygon": [
+				[
+					-22.0,
+					-24.0
+				],
+				[
+					22.0,
+					-24.0
+				],
+				[
+					28.0,
+					22.0
+				],
+				[
+					-28.0,
+					22.0
+				]
+			],
+			"visible": false,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2200.0,
+				900.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"LaundryGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1564.0,
+				219.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"LaundryGroundPresentation/PackedEarth": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				92,
+				210
+			],
+			"texture": "res://art/runtime/terrain/laundry-entrance-ground.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1564.0,
+				219.0
+			],
+			"z_as_relative": true,
+			"z_index": -78
+		},
+		"OpeningRegionClosedForestPathSceneSource": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary1": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary1/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					840.741394042969,
+					201.051544189453
+				],
+				[
+					792.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary1/Line2D": {
+			"class": "Line2D",
+			"points": [
+				[
+					840.741394042969,
+					201.051544189453
+				],
+				[
+					792.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"width": 8.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary2": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary2/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					792.208923339844,
+					283.880279541016
+				],
+				[
+					696.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ApproachBoundaries/ApproachBoundary2/Line2D": {
+			"class": "Line2D",
+			"points": [
+				[
+					792.208923339844,
+					283.880279541016
+				],
+				[
+					696.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"width": 8.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ClosedGate": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ClosedGate/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					696.0,
+					200.0
+				],
+				[
+					792.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ClosedGate/Line2D": {
+			"class": "Line2D",
+			"points": [
+				[
+					696.0,
+					200.0
+				],
+				[
+					792.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"width": 8.0,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionClosedForestPathSceneSource/ClosedGateLabel": {
+			"class": "Label",
+			"rect": [
+				372.0,
+				96.0,
+				207.0,
+				23.0
+			],
+			"text": "DEEPER FOREST — CLOSED",
+			"visible": true
+		},
+		"OpeningRegionClosedForestPathSceneSource/ClosedGateMarker": {
+			"class": "Marker2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				744.0,
+				200.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeBottom": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeBottom/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1580.0,
+					1020.0
+				],
+				[
+					1820.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeLeftBottom": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeLeftBottom/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1580.0,
+					853.714294433594
+				],
+				[
+					1580.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeLeftTop": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeLeftTop/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1580.0,
+					700.0
+				],
+				[
+					1580.0,
+					757.714294433594
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeRightBottom": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeRightBottom/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1820.0,
+					948.0
+				],
+				[
+					1820.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeRightTop": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeRightTop/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1820.0,
+					700.0
+				],
+				[
+					1820.0,
+					852.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeTopLeft": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeTopLeft/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1580.0,
+					700.0
+				],
+				[
+					1702.0,
+					700.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeTopRight": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/EdgeTopRight/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1798.0,
+					700.0
+				],
+				[
+					1820.0,
+					700.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareBottomLeft": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareBottomLeft/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					2080.0,
+					1020.0
+				],
+				[
+					2182.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareLeftTop": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareLeftTop/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					2080.0,
+					780.0
+				],
+				[
+					2080.0,
+					852.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareRight": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareRight/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					2320.0,
+					780.0
+				],
+				[
+					2320.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareTop": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/Boundaries/SquareTop/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					2080.0,
+					780.0
+				],
+				[
+					2320.0,
+					780.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/EdgeSquareOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					1812.0,
+					852.0
+				],
+				[
+					1828.0,
+					852.0
+				],
+				[
+					1828.0,
+					948.0
+				],
+				[
+					1812.0,
+					948.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/EdgeStreamOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					1702.0,
+					692.0
+				],
+				[
+					1798.0,
+					692.0
+				],
+				[
+					1798.0,
+					708.0
+				],
+				[
+					1702.0,
+					708.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/EdgeWoodlandOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					1572.0,
+					757.714294433594
+				],
+				[
+					1588.0,
+					757.714294433594
+				],
+				[
+					1588.0,
+					853.714294433594
+				],
+				[
+					1572.0,
+					853.714294433594
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/SquareEdgeOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					2072.0,
+					852.0
+				],
+				[
+					2088.0,
+					852.0
+				],
+				[
+					2088.0,
+					948.0
+				],
+				[
+					2072.0,
+					948.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/SquareGardenOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					2182.0,
+					1012.0
+				],
+				[
+					2278.0,
+					1012.0
+				],
+				[
+					2278.0,
+					1028.0
+				],
+				[
+					2182.0,
+					1028.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/VillageEdgeArea": {
+			"class": "Polygon2D",
+			"color": [
+				0.344999998807907,
+				0.375999987125397,
+				0.328999996185303,
+				1.0
+			],
+			"polygon": [
+				[
+					1580.0,
+					700.0
+				],
+				[
+					1820.0,
+					700.0
+				],
+				[
+					1820.0,
+					1020.0
+				],
+				[
+					1580.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/VillageEdgeLabel": {
+			"class": "Label",
+			"rect": [
+				1592.0,
+				712.0,
+				140.0,
+				23.0
+			],
+			"text": "VILLAGE EDGE",
+			"visible": true
+		},
+		"OpeningRegionVillageTransitionSceneSource/VillageSquareArea": {
+			"class": "Polygon2D",
+			"color": [
+				0.462999999523163,
+				0.430999994277954,
+				0.352999985218048,
+				1.0
+			],
+			"polygon": [
+				[
+					2080.0,
+					780.0
+				],
+				[
+					2320.0,
+					780.0
+				],
+				[
+					2320.0,
+					1020.0
+				],
+				[
+					2080.0,
+					1020.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionVillageTransitionSceneSource/VillageSquareLabel": {
+			"class": "Label",
+			"rect": [
+				2092.0,
+				792.0,
+				140.0,
+				23.0
+			],
+			"text": "VILLAGE SQUARE",
+			"visible": true
+		},
+		"OpeningRegionWoodlandClearingSceneSource": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/BottomLeftTransitionCorner": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				600.0,
+				453.0
+			],
+			"z_as_relative": true,
+			"z_index": -80
+		},
+		"OpeningRegionWoodlandClearingSceneSource/BottomRightTransitionCorner": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1248.0,
+				453.0
+			],
+			"z_as_relative": true,
+			"z_index": -80
+		},
+		"OpeningRegionWoodlandClearingSceneSource/ClearingArea": {
+			"class": "Polygon2D",
+			"color": [
+				1.0,
+				1.0,
+				1.0,
+				1.0
+			],
+			"polygon": [
+				[
+					600.0,
+					200.0
+				],
+				[
+					1248.0,
+					200.0
+				],
+				[
+					1248.0,
+					450.0
+				],
+				[
+					600.0,
+					450.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": -90
+		},
+		"OpeningRegionWoodlandClearingSceneSource/ClearingLabel": {
+			"class": "Label",
+			"rect": [
+				612.0,
+				212.0,
+				178.0,
+				23.0
+			],
+			"text": "WOODLAND CLEARING",
+			"visible": true
+		},
+		"OpeningRegionWoodlandClearingSceneSource/ClosedForestPathOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					696.0,
+					192.0
+				],
+				[
+					792.0,
+					192.0
+				],
+				[
+					792.0,
+					208.0
+				],
+				[
+					696.0,
+					208.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/ConcealedRareSpecimen": {
+			"class": "Marker2D",
+			"visible": false,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1050.0,
+				350.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/LaundryOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					1240.0,
+					237.52001953125
+				],
+				[
+					1256.0,
+					237.52001953125
+				],
+				[
+					1256.0,
+					333.52001953125
+				],
+				[
+					1240.0,
+					333.52001953125
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/NorthTransition": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 2,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/woodland-leaf-litter-transition.png",
+			"visible": true,
+			"world_transform": [
+				-0.0000000437113882867379,
+				1.0,
+				-1.0,
+				-0.0000000437113882867379,
+				924.0,
+				197.0
+			],
+			"z_as_relative": true,
+			"z_index": -80
+		},
+		"OpeningRegionWoodlandClearingSceneSource/ShrineOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					592.0,
+					269.741943359375
+				],
+				[
+					608.0,
+					269.741943359375
+				],
+				[
+					608.0,
+					365.741943359375
+				],
+				[
+					592.0,
+					365.741943359375
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/SouthTransition": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 2,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/woodland-leaf-litter-transition.png",
+			"visible": true,
+			"world_transform": [
+				-0.0000000437113882867379,
+				-1.0,
+				1.0,
+				-0.0000000437113882867379,
+				924.0,
+				453.0
+			],
+			"z_as_relative": true,
+			"z_index": -80
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TopLeftTransitionCorner": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/woodland-leaf-litter-corner-transition.png",
+			"visible": true,
+			"world_transform": [
+				-0.0000000437113882867379,
+				1.0,
+				-1.0,
+				-0.0000000437113882867379,
+				600.0,
+				197.0
+			],
+			"z_as_relative": true,
+			"z_index": -80
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TopRightTransitionCorner": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				256,
+				256
+			],
+			"texture": "res://art/runtime/terrain/woodland-leaf-litter-corner-transition-left.png",
+			"visible": true,
+			"world_transform": [
+				-0.0000000437113882867379,
+				-1.0,
+				1.0,
+				-0.0000000437113882867379,
+				1248.0,
+				197.0
+			],
+			"z_as_relative": true,
+			"z_index": -80
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomLeft": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomLeft/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					600.0,
+					450.0
+				],
+				[
+					1080.0,
+					450.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomRight": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingBottomRight/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1176.0,
+					450.0
+				],
+				[
+					1248.0,
+					450.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingLeftBottom": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingLeftBottom/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					600.0,
+					365.741943359375
+				],
+				[
+					600.0,
+					450.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingLeftTop": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingLeftTop/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					600.0,
+					200.0
+				],
+				[
+					600.0,
+					269.741943359375
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingRightBottom": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingRightBottom/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1248.0,
+					333.52001953125
+				],
+				[
+					1248.0,
+					450.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingRightTop": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingRightTop/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					1248.0,
+					200.0
+				],
+				[
+					1248.0,
+					237.52001953125
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingTopLeft": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingTopLeft/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					600.0,
+					200.0
+				],
+				[
+					696.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingTopRight": {
+			"class": "StaticBody2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/TreeBoundaries/ClearingTopRight/CollisionShape2D": {
+			"class": "CollisionShape2D",
+			"disabled": false,
+			"segment": [
+				[
+					792.0,
+					200.0
+				],
+				[
+					1248.0,
+					200.0
+				]
+			],
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/VillageEdgeOpening": {
+			"class": "Polygon2D",
+			"color": [
+				0.917999982833862,
+				0.732999980449677,
+				0.310000002384186,
+				1.0
+			],
+			"polygon": [
+				[
+					1080.0,
+					442.0
+				],
+				[
+					1176.0,
+					442.0
+				],
+				[
+					1176.0,
+					458.0
+				],
+				[
+					1080.0,
+					458.0
+				]
+			],
+			"visible": false,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"OpeningRegionWoodlandClearingSceneSource/VillageEdgeTransition": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 0,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 0,
+			"size": [
+				1024,
+				512
+			],
+			"texture": "res://art/runtime/terrain/woodland-village-edge-transition.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				536.0,
+				136.0
+			],
+			"z_as_relative": true,
+			"z_index": -79
+		},
+		"ShrineGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				596.0,
+				250.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"ShrineGroundPresentation/PaleGravel": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				92,
+				143
+			],
+			"texture": "res://art/runtime/terrain/shrine-entrance-ground.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				596.0,
+				250.0
+			],
+			"z_as_relative": true,
+			"z_index": -78
+		},
+		"SickhouseGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2408.0,
+				1248.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"SickhouseGroundPresentation/PaleGravel": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				208,
+				86
+			],
+			"texture": "res://art/runtime/terrain/sickhouse-entrance-ground.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				2408.0,
+				1248.0
+			],
+			"z_as_relative": true,
+			"z_index": -90
+		},
+		"SquareGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1920.0,
+				620.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"SquareGroundPresentation/PackedEarth": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				560,
+				560
+			],
+			"texture": "res://art/runtime/terrain/village-square-ground.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1920.0,
+				620.0
+			],
+			"z_as_relative": true,
+			"z_index": -90
+		},
+		"VillageEdgeGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1480.0,
+				620.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"VillageEdgeGroundPresentation/PackedEarth": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				500,
+				390
+			],
+			"texture": "res://art/runtime/terrain/village-edge-entrance-ground.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1480.0,
+				620.0
+			],
+			"z_as_relative": true,
+			"z_index": -78
+		},
+		"WagonGroundPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1633.0,
+				1512.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"WagonGroundPresentation/PackedEarth": {
+			"centered": false,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				285,
+				92
+			],
+			"texture": "res://art/runtime/terrain/wagon-entrance-ground.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1633.0,
+				1512.0
+			],
+			"z_as_relative": true,
+			"z_index": -90
+		},
+		"WholeChannelPresentation": {
+			"class": "Node2D",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				0.0,
+				0.0
+			],
+			"z_as_relative": true,
+			"z_index": 0
+		},
+		"WholeChannelPresentation/banks": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				2604,
+				620
+			],
+			"texture": "res://art/runtime/terrain/channel-banks.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1238.0,
+				522.0
+			],
+			"z_as_relative": true,
+			"z_index": -67
+		},
+		"WholeChannelPresentation/decks": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				2604,
+				620
+			],
+			"texture": "res://art/runtime/terrain/channel-decks.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1238.0,
+				522.0
+			],
+			"z_as_relative": true,
+			"z_index": -66
+		},
+		"WholeChannelPresentation/detail": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				2604,
+				620
+			],
+			"texture": "res://art/runtime/terrain/channel-detail.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1238.0,
+				522.0
+			],
+			"z_as_relative": true,
+			"z_index": -66
+		},
+		"WholeChannelPresentation/fringe": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				2604,
+				620
+			],
+			"texture": "res://art/runtime/terrain/channel-fringe.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1238.0,
+				522.0
+			],
+			"z_as_relative": true,
+			"z_index": -65
+		},
+		"WholeChannelPresentation/water": {
+			"centered": true,
+			"class": "Sprite2D",
+			"filter": 2,
+			"offset": [
+				0.0,
+				0.0
+			],
+			"repeat": 1,
+			"size": [
+				2604,
+				620
+			],
+			"texture": "res://art/runtime/terrain/channel-water.png",
+			"visible": true,
+			"world_transform": [
+				1.0,
+				0.0,
+				0.0,
+				1.0,
+				1238.0,
+				522.0
+			],
+			"z_as_relative": true,
+			"z_index": -68
+		}
+	},
+	"placements": {
+		"baseline": [],
+		"grouped": [
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "01-shrubs-01",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					920.0,
+					132.0
+				],
+				"proposed_pivot": [
+					62.0,
+					87.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+				"size": [
+					125.0,
+					88.0
+				],
+				"world_pivot": [
+					982.0,
+					219.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "02-fallen-wood-07",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1050.0,
+					192.0
+				],
+				"proposed_pivot": [
+					48.0,
+					63.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+				"size": [
+					97.0,
+					64.0
+				],
+				"world_pivot": [
+					1098.0,
+					255.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "03-rocks-08",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					628.0,
+					382.0
+				],
+				"proposed_pivot": [
+					38.0,
+					39.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+				"size": [
+					77.0,
+					40.0
+				],
+				"world_pivot": [
+					666.0,
+					421.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "04-environmental-details-01",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1160.0,
+					156.0
+				],
+				"proposed_pivot": [
+					39.0,
+					55.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+				"size": [
+					78.0,
+					56.0
+				],
+				"world_pivot": [
+					1199.0,
+					211.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "05-environmental-details-05",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					795.0,
+					395.0
+				],
+				"proposed_pivot": [
+					18.0,
+					21.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+				"size": [
+					37.0,
+					22.0
+				],
+				"world_pivot": [
+					813.0,
+					416.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "06-environmental-details-06",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					836.0,
+					170.0
+				],
+				"proposed_pivot": [
+					20.0,
+					23.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+				"size": [
+					40.0,
+					24.0
+				],
+				"world_pivot": [
+					856.0,
+					193.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "07-environmental-details-03",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1140.0,
+					80.0
+				],
+				"proposed_pivot": [
+					29.0,
+					47.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+				"size": [
+					58.0,
+					48.0
+				],
+				"world_pivot": [
+					1169.0,
+					127.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "08-environmental-details-09",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					912.0,
+					206.0
+				],
+				"proposed_pivot": [
+					22.0,
+					27.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+				"size": [
+					44.0,
+					28.0
+				],
+				"world_pivot": [
+					934.0,
+					233.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "09-shrubs-08",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1054.0,
+					114.0
+				],
+				"proposed_pivot": [
+					57.0,
+					79.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6",
+				"size": [
+					115.0,
+					80.0
+				],
+				"world_pivot": [
+					1111.0,
+					193.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "10-fallen-wood-03",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					968.0,
+					186.0
+				],
+				"proposed_pivot": [
+					55.0,
+					71.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887",
+				"size": [
+					110.0,
+					72.0
+				],
+				"world_pivot": [
+					1023.0,
+					257.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "11-rocks-03",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1128.0,
+					94.0
+				],
+				"proposed_pivot": [
+					49.0,
+					71.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae",
+				"size": [
+					98.0,
+					72.0
+				],
+				"world_pivot": [
+					1177.0,
+					165.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "12-environmental-details-02",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					860.0,
+					118.0
+				],
+				"proposed_pivot": [
+					51.0,
+					71.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d",
+				"size": [
+					102.0,
+					72.0
+				],
+				"world_pivot": [
+					911.0,
+					189.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "13-environmental-details-07",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					954.0,
+					226.0
+				],
+				"proposed_pivot": [
+					25.0,
+					31.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2",
+				"size": [
+					50.0,
+					32.0
+				],
+				"world_pivot": [
+					979.0,
+					257.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "14-fallen-wood-09",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					670.0,
+					394.0
+				],
+				"proposed_pivot": [
+					37.0,
+					39.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861",
+				"size": [
+					75.0,
+					40.0
+				],
+				"world_pivot": [
+					707.0,
+					433.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "15-environmental-details-08",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					772.0,
+					400.0
+				],
+				"proposed_pivot": [
+					29.0,
+					35.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76",
+				"size": [
+					59.0,
+					36.0
+				],
+				"world_pivot": [
+					801.0,
+					435.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "16-shrubs-07",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1020.0,
+					96.0
+				],
+				"proposed_pivot": [
+					38.0,
+					71.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d",
+				"size": [
+					76.0,
+					72.0
+				],
+				"world_pivot": [
+					1058.0,
+					167.0
+				],
+				"z_index": -60
+			}
+		],
+		"sparse": [
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "01-shrubs-01",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					920.0,
+					132.0
+				],
+				"proposed_pivot": [
+					62.0,
+					87.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+				"size": [
+					125.0,
+					88.0
+				],
+				"world_pivot": [
+					982.0,
+					219.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "02-fallen-wood-07",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1050.0,
+					192.0
+				],
+				"proposed_pivot": [
+					48.0,
+					63.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+				"size": [
+					97.0,
+					64.0
+				],
+				"world_pivot": [
+					1098.0,
+					255.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "03-rocks-08",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					628.0,
+					382.0
+				],
+				"proposed_pivot": [
+					38.0,
+					39.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+				"size": [
+					77.0,
+					40.0
+				],
+				"world_pivot": [
+					666.0,
+					421.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "04-environmental-details-01",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1160.0,
+					156.0
+				],
+				"proposed_pivot": [
+					39.0,
+					55.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+				"size": [
+					78.0,
+					56.0
+				],
+				"world_pivot": [
+					1199.0,
+					211.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "05-environmental-details-05",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					795.0,
+					395.0
+				],
+				"proposed_pivot": [
+					18.0,
+					21.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+				"size": [
+					37.0,
+					22.0
+				],
+				"world_pivot": [
+					813.0,
+					416.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "06-environmental-details-06",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					836.0,
+					170.0
+				],
+				"proposed_pivot": [
+					20.0,
+					23.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+				"size": [
+					40.0,
+					24.0
+				],
+				"world_pivot": [
+					856.0,
+					193.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "07-environmental-details-03",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					1140.0,
+					80.0
+				],
+				"proposed_pivot": [
+					29.0,
+					47.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+				"size": [
+					58.0,
+					48.0
+				],
+				"world_pivot": [
+					1169.0,
+					127.0
+				],
+				"z_index": -60
+			},
+			{
+				"centered": false,
+				"child_count": 0,
+				"filter": 2,
+				"instance": "08-environmental-details-09",
+				"offset": [
+					0.0,
+					0.0
+				],
+				"origin": [
+					912.0,
+					206.0
+				],
+				"proposed_pivot": [
+					22.0,
+					27.0
+				],
+				"repeat": 1,
+				"rotation": 0.0,
+				"scale": [
+					1.0,
+					1.0
+				],
+				"script_free": true,
+				"sha256": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+				"size": [
+					44.0,
+					28.0
+				],
+				"world_pivot": [
+					934.0,
+					233.0
+				],
+				"z_index": -60
+			}
+		]
+	},
+	"published_head": "ff3259c7f6c94dd7c020584ae8ae452873cb40b2",
+	"scope": "External Woodland Clearing dressing; unchanged Main in disposable viewports"
+}

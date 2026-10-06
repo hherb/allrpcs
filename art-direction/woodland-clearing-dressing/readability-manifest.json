@@ -1,0 +1,130 @@
+{
+  "status": "static diagnostic series complete; human accessibility remains open",
+  "date": "2026-10-06",
+  "timezone": "Australia/Sydney",
+  "conditions": [
+    "normal",
+    "protanomaly",
+    "deuteranomaly",
+    "tritanomaly",
+    "luminance"
+  ],
+  "scales": [
+    1,
+    2
+  ],
+  "model": {
+    "method": "Machado, Oliveira and Fernandes (2009), severity 100 coefficient table as published in colorspacious; forward transform in linear sRGB; clip to display gamut; sRGB encode",
+    "doi": "10.1109/TVCG.2009.113",
+    "coefficient_source_url": "https://raw.githubusercontent.com/njsmith/colorspacious/58948923b706879a54071568c7501be3f108797c/colorspacious/cvd.py",
+    "coefficient_source_sha256": "3402160c31273abb0df5efd363ac4e5b021e039fe05e86e34e99c283e679efd0",
+    "source_git_revision": "58948923b706879a54071568c7501be3f108797c",
+    "severity": 100,
+    "matrices": {
+      "protanomaly": [
+        [
+          0.152286,
+          1.052583,
+          -0.204868
+        ],
+        [
+          0.114503,
+          0.786281,
+          0.099216
+        ],
+        [
+          -0.003882,
+          -0.048116,
+          1.051998
+        ]
+      ],
+      "deuteranomaly": [
+        [
+          0.367322,
+          0.860646,
+          -0.227968
+        ],
+        [
+          0.280085,
+          0.672501,
+          0.047413
+        ],
+        [
+          -0.01182,
+          0.04294,
+          0.968881
+        ]
+      ],
+      "tritanomaly": [
+        [
+          1.255528,
+          -0.076749,
+          -0.178779
+        ],
+        [
+          -0.078411,
+          0.930809,
+          0.147602
+        ],
+        [
+          0.004733,
+          0.691367,
+          0.3039
+        ]
+      ]
+    },
+    "luminance_weights": [
+      0.2126,
+      0.7152,
+      0.0722
+    ],
+    "scope": "Static model-based diagnostics only; no human accessibility or medical assessment"
+  },
+  "sources": {
+    "readability.py": "153e0e0764cc86b0541d676090f3a037d7a7eff12a5b1cb1b4ce7cd65f122908",
+    "build.py": "1265d67c3e4cadaad938969b6f3d9fafb7e29767ccc39de9ba48ba2cffe770a4",
+    "review-board-manifest.json": "96c83f4df8b65c899d53cf5b532acdaef7e9537b39bb433dacb44bd70b119951",
+    "/System/Library/Fonts/Supplemental/Arial.ttf": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+    "../clearing-village-edge-ground-feasibility/simulation-model.json": "615b56b75d2623e3a97a2832c8f5c1f932ad87308ac1e575549bd834b9647abf",
+    "review/baseline-detail-1x.png": "fabab07744728fa4a9aa7478a8e9e137ee533c9bb8b499783419d345f7076be3",
+    "review/sparse-detail-1x.png": "3080a91a86375c082dd69d3192fe42ae8eca777de9911879a1cf0962cea781c1",
+    "review/grouped-detail-1x.png": "d82b7abdbd486d45d875de1ea7c72c5c81be3c90ca679c9c11e47ecebb10619e",
+    "review/baseline-detail-2x.png": "455fb626aa1fd13a5d13d6601dc13496871ca511b55c96376c40bb575a2f6a84",
+    "review/sparse-detail-2x.png": "faf2435d4a37c09d3993fc009e8769bf73b7d301ed47a793223559d002a9ad12",
+    "review/grouped-detail-2x.png": "dd11e6b985453a4e5b8b0fc04152956a5ba2f83b36ed67da090ba1f5e6391ff4"
+  },
+  "outputs": {
+    "readability/baseline-normal-1x.png": "fabab07744728fa4a9aa7478a8e9e137ee533c9bb8b499783419d345f7076be3",
+    "readability/baseline-protanomaly-1x.png": "1c758ae3b59f8e555a0479d06576e89f8c647260d547879d1ecf48e301ee9a96",
+    "readability/baseline-deuteranomaly-1x.png": "66bca52e33e8db73693e76dc93b381c4b2f48371f37a9f20149488e13458873b",
+    "readability/baseline-tritanomaly-1x.png": "6c0d6b86b858f517d146bbfe0facdf34fa171d820c7fe8ab7587a8018a74062a",
+    "readability/baseline-luminance-1x.png": "1e1d087c0299a1920e38e9a0e1afc811b9e02f62fb20bd7bb830f3fe6f6ffa6e",
+    "readability/sparse-normal-1x.png": "3080a91a86375c082dd69d3192fe42ae8eca777de9911879a1cf0962cea781c1",
+    "readability/sparse-protanomaly-1x.png": "8c41e97e9f8c11c7cc2ac239e04163d7eb0268f650bd27f7c290552fd389c329",
+    "readability/sparse-deuteranomaly-1x.png": "e7674c4eebc2f05a92e1375616839b19f80aa0059aebc06524eefd7d0abd09c5",
+    "readability/sparse-tritanomaly-1x.png": "20378e61030cc966806bffc0c1a8bbe910b4f48c0712dded2c6f7c30d15e17d3",
+    "readability/sparse-luminance-1x.png": "da64f90e6e913fd1080bfb3606626c17ea56331b1163007bf344d1945d184443",
+    "readability/grouped-normal-1x.png": "d82b7abdbd486d45d875de1ea7c72c5c81be3c90ca679c9c11e47ecebb10619e",
+    "readability/grouped-protanomaly-1x.png": "b4ad3cb84ca4d4767f01fe6389633f23b47b61980dba8373dee92167b3c60e6b",
+    "readability/grouped-deuteranomaly-1x.png": "59c0f250418ef6eaf05a3b6e33e797850021a83a8116b2bf038585631fae8a86",
+    "readability/grouped-tritanomaly-1x.png": "a33d7766385021aa9016b6d76812cbc13a4bb6dfc1fe5f630adb06245a460521",
+    "readability/grouped-luminance-1x.png": "6f1d1c2d84d0b32529e6acd6ecb2616c8353ebac1f13fc86704969c5b2fdf524",
+    "readability/complete-series-1x.png": "8e9aff1a8ad850fedb99d04c722f932ff184fb9b71c491d24fc623cc49564677",
+    "readability/baseline-normal-2x.png": "455fb626aa1fd13a5d13d6601dc13496871ca511b55c96376c40bb575a2f6a84",
+    "readability/baseline-protanomaly-2x.png": "809aa241bd2ee008cf44833f7d3eac534ec51d2fe72f6a6acd8a0e43d385ee58",
+    "readability/baseline-deuteranomaly-2x.png": "244339b2664bd511607010d240c1e9251223448efee4ae5b8414b1bbf7d84aa7",
+    "readability/baseline-tritanomaly-2x.png": "7e8ecbaa218d9a1d28d91ef462e4df354404ad646605c4c426c0572a01caf2ba",
+    "readability/baseline-luminance-2x.png": "73e43dc4c9230ec3ac4cba6b8556340d2e5b6a87255ba4783ce64a19ead63ae8",
+    "readability/sparse-normal-2x.png": "faf2435d4a37c09d3993fc009e8769bf73b7d301ed47a793223559d002a9ad12",
+    "readability/sparse-protanomaly-2x.png": "de1700a799bb55993ea72a4d881c2ccd1c464270a4e2f03f5a34855a2cf0fd96",
+    "readability/sparse-deuteranomaly-2x.png": "d4ae2803f67876d83f152e1e072821bf6f06f93c9304ceafbb34eb3aa3e2793d",
+    "readability/sparse-tritanomaly-2x.png": "ad1653081fd16fd5c0ea9d31bb8316e8e37622d5ee19be3916f8e99bee71cc5b",
+    "readability/sparse-luminance-2x.png": "e1a5e56c1968a0322a33456f842651578a9df972ffe7937bcb33935dbe025685",
+    "readability/grouped-normal-2x.png": "dd11e6b985453a4e5b8b0fc04152956a5ba2f83b36ed67da090ba1f5e6391ff4",
+    "readability/grouped-protanomaly-2x.png": "3b551d25ababf3d0a4c649604face6d6c94a8e597e17aa2235fee1eec5269c42",
+    "readability/grouped-deuteranomaly-2x.png": "918b34ef6c691a05a7fc5c6f314664e31d07d24894addce234898107b1fb7eb4",
+    "readability/grouped-tritanomaly-2x.png": "a07efce31f922cae361ba5792098f3ebe63d26ebe90a0d95404012e0e8b8f6e8",
+    "readability/grouped-luminance-2x.png": "8fce8ff8d4890f33112c2199cbe15180bee5f2c216bbeb65edfbf6799f7eccf1",
+    "readability/complete-series-2x.png": "8b95f0c2dcea3a0bf23de30c498e33248cd2f664c86df2b9f25a6f526cb832aa"
+  }
+}
