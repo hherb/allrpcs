@@ -1,0 +1,16 @@
+PASS: sixteen exact grouped modules; 113 assets/64 masters; all predecessor bytes and scene blocks retained
+PASS: sixteen exact grouped modules; 113 assets/64 masters; all predecessor bytes and scene blocks retained
+PASS: rejects omitted placement
+PASS: rejects duplicate owner
+PASS: rejects moved sprite
+PASS: rejects resized sprite
+PASS: rejects flipped sprite
+PASS: rejects reordered overlap
+PASS: rejects added authority
+PASS: rejects physical owner
+PASS: rejects changed paint
+PASS: rejects changed master
+PASS: rejects import processing
+PASS: rejects wrong variant
+PASS: rejects authorization baseline
+PASS: thirteen finite runtime-scope rejection probes

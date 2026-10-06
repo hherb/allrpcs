@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "actual_runtime_views": 8,
+  "paired_baselines": 8,
+  "external_rgba_mismatches": 0,
+  "retained_owners": 151,
+  "route_clearance_beyond_48px": 3.3503801199323036,
+  "raster_clearance": "complete native rectangles plus 2px filtering margin outside all retained masks",
+  "differences": [
+    {
+      "frame": "captures/grouped-0.8x-tall.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 24761
+    },
+    {
+      "frame": "captures/grouped-0.8x-wide.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 24761
+    },
+    {
+      "frame": "captures/grouped-1.0x-placement.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 36691
+    },
+    {
+      "frame": "captures/grouped-1.0x-tall.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 36691
+    },
+    {
+      "frame": "captures/grouped-1.0x-wide.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 36691
+    },
+    {
+      "frame": "captures/grouped-2.0x-placement.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 155317
+    },
+    {
+      "frame": "captures/grouped-2.0x-tall.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 82699
+    },
+    {
+      "frame": "captures/grouped-2.0x-wide.png",
+      "external_runtime_changed_pixels": 0,
+      "changed_pixels": 53422
+    }
+  ],
+  "capture_evidence_sha256": "56ece2e579466dff516ff3a1a51241137a36e93d52315d2ca0979ca9fc000f85"
+}
+PASS: all 16 runtime/control views match external RGBA; complete native/2x review series

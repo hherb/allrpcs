@@ -1,0 +1,11 @@
+{
+  "art-direction/production-proof/corrected/tools/build_woodland_clearing_dressing.py": "9b3dc5a4772d1a0dd7dd22424698e8b01a8bf0141cf2d2e717be3101baed3063",
+  "art-direction/woodland-clearing-dressing-runtime-promotion/cold-check.gd": "e36ac9feb76f77235dc046b012a8194804718f58814604d032da5ae38b5357dd",
+  "art-direction/woodland-clearing-dressing-runtime-promotion/cold_import.py": "19c9b0012a6e5bb499a0c8f54b7df66dfdf7cdbefa94dc7eb22f68034c748ec9",
+  "art-direction/woodland-clearing-dressing-runtime-promotion/review.py": "b167fba68c30cab55840c9f060a0e3360644b8117a1af600a034730d4b68f6ed",
+  "game/RuntimeWoodlandClearingDressingSmokeCheck.cs": "bd9725dd63e4b3961dc3b12c5f5279ee8396b7947a78f5f80901c87fbfc485a9",
+  "game/RuntimeWoodlandClearingDressingSmokeCheck.cs.uid": "0fa3a2c89d2208281401edb0d622174a6ae710e6faa3dc8150f013370c7f58cc",
+  "scripts/capture-woodland-clearing-dressing-runtime.gd": "1fd9ea20b23755ab6d28de2c0d2db6818e3fcdd0a1dcedb67a3919255c85f815",
+  "scripts/capture-woodland-clearing-dressing-runtime.gd.uid": "3aa77f82c66b92300f97f29b5f92d36320098235ab4b883f8840c69f006f49ec",
+  "scripts/validate-woodland-clearing-dressing-runtime.py": "bf94166da9afa55ecc0668e2e0b52cb7b3c1af222d363dc76b1872ad3c62a18f"
+}

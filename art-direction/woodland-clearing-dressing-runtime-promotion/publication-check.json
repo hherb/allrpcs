@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "validation_tree": "exact reviewed staged tree; unrelated local project.godot editor rewrite excluded",
+  "acceptance_bindings": "all implementation and evidence hashes match terminal owner acceptance",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "scripts/validate-woodland-clearing-dressing-runtime.py"
+      ],
+      "exit_code": 0,
+      "output": "PASS: sixteen exact grouped modules; 113 assets/64 masters; all predecessor bytes and scene blocks retained\n"
+    },
+    {
+      "command": [
+        "python3",
+        "art-direction/woodland-clearing-dressing-runtime-promotion/review.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"actual_runtime_views\": 8,\n  \"paired_baselines\": 8,\n  \"external_rgba_mismatches\": 0,\n  \"retained_owners\": 151,\n  \"route_clearance_beyond_48px\": 3.3503801199323036,\n  \"raster_clearance\": \"complete native rectangles plus 2px filtering margin outside all retained masks\",\n  \"differences\": [\n    {\n      \"frame\": \"captures/grouped-0.8x-tall.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 24761\n    },\n    {\n      \"frame\": \"captures/grouped-0.8x-wide.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 24761\n    },\n    {\n      \"frame\": \"captures/grouped-1.0x-placement.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 36691\n    },\n    {\n      \"frame\": \"captures/grouped-1.0x-tall.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 36691\n    },\n    {\n      \"frame\": \"captures/grouped-1.0x-wide.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 36691\n    },\n    {\n      \"frame\": \"captures/grouped-2.0x-placement.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 155317\n    },\n    {\n      \"frame\": \"captures/grouped-2.0x-tall.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 82699\n    },\n    {\n      \"frame\": \"captures/grouped-2.0x-wide.png\",\n      \"external_runtime_changed_pixels\": 0,\n      \"changed_pixels\": 53422\n    }\n  ],\n  \"capture_evidence_sha256\": \"56ece2e579466dff516ff3a1a51241137a36e93d52315d2ca0979ca9fc000f85\"\n}\nPASS: all 16 runtime/control views match external RGBA; complete native/2x review series\n"
+    }
+  ]
+}

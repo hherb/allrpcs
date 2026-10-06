@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-06",
+  "status": "agent code and visual review passed; actual-runtime owner confirmation pending",
+  "scope": "exact approved sixteen-placement grouped installation",
+  "reviewed": [
+    "approval/source/baseline bindings and installer preflight",
+    "append-only 113-asset manifest and exact 64 masters",
+    "all scene/resource blocks, native order/origins/depth and inactive smoke ownership",
+    "32 independent imports and native source alpha facts",
+    "capture startup/controller/camera parity, all 16 captures and 151 retained owners",
+    "complete wide/tall overview, native/2x envelope and both cluster details",
+    "bounded quality dispatch, predecessor protection and maintained documentation"
+  ],
+  "resolved_findings": [
+    {
+      "issue": "Reorder probe changed a resource ID rather than actual sibling order",
+      "fix": "Swap two complete sprite blocks in the disposable fixture"
+    },
+    {
+      "issue": "Cold import could mark success before live input verification and lacked a null-decode exit",
+      "fix": "Mark passed after all checks; fail explicitly on missing decoded image"
+    },
+    {
+      "issue": "Installer did not compare all owner approval fields and frozen baseline commit before deriving outputs",
+      "fix": "Bind exact approval fields, frozen proposal checker and baseline commit before writes; preserve initial recipe/manifest and update only recipe provenance"
+    },
+    {
+      "issue": "Capture command used a path relative to game rather than the repository",
+      "fix": "Use the absolute script path; retain failed attempt and successful complete captures"
+    }
+  ],
+  "agent_visual_review": "Grouped paint/placement equals selected series. Existing routes/entrances/labels/specimen and physical scene remain intact. No new visual correction proposed.",
+  "unresolved_code_findings": [],
+  "rejection_probes": 14,
+  "tool_bindings_sha256": "a3c379d188beef2c07473cbe05dd0ae3fcc276d4b4dd10291701168959e701e4",
+  "capture_evidence_sha256": "56ece2e579466dff516ff3a1a51241137a36e93d52315d2ca0979ca9fc000f85",
+  "publication": "standing direct-main authority retained; separate actual-view confirmation required by approved scope"
+}

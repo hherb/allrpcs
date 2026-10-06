@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-06",
+  "status": "all final checks passed; actual-runtime owner confirmation pending",
+  "baseline_commit": "6775f6730361596fcfb3e98a44be36cf355f2675",
+  "baseline_files": 8323,
+  "assets": 113,
+  "masters": 64,
+  "source_policy": "sixteen approved native PNGs and editable 2x ORAs copied byte for byte",
+  "predecessor_policy": "old scene/resource blocks byte-exact; all old files outside named additive product/tool/docs paths preserved",
+  "build_warnings": 0,
+  "build_errors": 0,
+  "test_suites": {
+    "Domain": 2839,
+    "Application": 925,
+    "Infrastructure": 1261,
+    "Architecture": 8
+  },
+  "test_total": 5033,
+  "format": "passed",
+  "scenario": "passed",
+  "rejection_probes": 14,
+  "quality": {
+    "command": "PATH=\"/opt/homebrew/bin:$PATH\" ./scripts/quality.sh",
+    "sandbox_exit": 134,
+    "sandbox_coverage": "All frozen/live validators, restore, format, build, 5033 tests and scenario passed; Godot editor reported restricted global settings and the following smoke aborted in native user-log setup",
+    "host_retry": "exact remaining quality commands beginning ./scripts/smoke-godot.sh",
+    "host_retry_exit": 0,
+    "host_godot_errors": 0,
+    "final_product_changes_since_full_suite": "Runtime PNGs, imports, scenes and C# unchanged; only reviewed installer/validator/helper guards and recipe provenance changed, all freshly scoped-verified",
+    "log_normalization": "Only trailing blank lines removed from committed text log; exact original stdout retained in quality-godot-host-raw.json"
+  },
+  "cold_import": {
+    "status": "passed",
+    "evidence": "cold-import-final.json",
+    "decoded_textures": 32,
+    "regenerated_independent_proof_uids": 16,
+    "live_sidecars": "unchanged",
+    "prior_attempts": "sandbox diagnostics and pre-review passing attempts retained with their original tool sources"
+  },
+  "capture": {
+    "status": "passed",
+    "actual_runtime_views": 8,
+    "paired_baselines": 8,
+    "external_rgba_mismatches": 0,
+    "retained_owners": 151,
+    "route_clearance_beyond_48px": 3.3503801199323036,
+    "raster_clearance": "complete native rectangles plus 2px filtering margin outside all retained masks",
+    "differences": [
+      {
+        "frame": "captures/grouped-0.8x-tall.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 24761
+      },
+      {
+        "frame": "captures/grouped-0.8x-wide.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 24761
+      },
+      {
+        "frame": "captures/grouped-1.0x-placement.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 36691
+      },
+      {
+        "frame": "captures/grouped-1.0x-tall.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 36691
+      },
+      {
+        "frame": "captures/grouped-1.0x-wide.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 36691
+      },
+      {
+        "frame": "captures/grouped-2.0x-placement.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 155317
+      },
+      {
+        "frame": "captures/grouped-2.0x-tall.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 82699
+      },
+      {
+        "frame": "captures/grouped-2.0x-wide.png",
+        "external_runtime_changed_pixels": 0,
+        "changed_pixels": 53422
+      }
+    ],
+    "capture_evidence_sha256": "56ece2e579466dff516ff3a1a51241137a36e93d52315d2ca0979ca9fc000f85"
+  },
+  "session_review_sha256": "bad31a8f26ce0cfa2db84a85149d66154c20db2d72c0fa1864c3a444bd1021f0",
+  "series_bindings_sha256": "1f8405e67213354875efc11534f466fc1f9a598e52e51763b6c97fb58d1d87dc",
+  "evidence_sha256": {
+    "evidence/builder-initial.py": "7ccaf5c808a4a35c1f3f293abaa8bfd751edca5988815c9017840f4d30da12bd",
+    "evidence/builder-review.py": "f38baa54a1bc83a5b532f98e5f5b556e67b48446c6574683b18cbfb4467c7aea",
+    "evidence/capture-absolute-host.log": "bb0abe7fe0e522780f3e521f17b67c4e2cad09d008cc98f530ceb5be347e3bad",
+    "evidence/capture-absolute-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/capture-host.log": "62b71cede1119d35cf5d471b5418efb470cc842f6dbb3cdd95e28b5e9d534e97",
+    "evidence/capture-inputs-initial.json": "55e5791c54b4a39e6fd151d60bc1d7e9c935becfd08553590c3c2cb00a00a08d",
+    "evidence/capture-inputs-review.json": "5f718775c897979e9fbbc7bc10e14089642d51550155714aa1fd6d16743d92d5",
+    "evidence/capture-review.log": "28694386340cbfe781c6f036c4b0c6c33b091140c4cbddb2fcdc6114aa96f2d3",
+    "evidence/capture-sandbox.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/cold-check-initial.gd": "88e7accc8b40963717aff7ffedcb1a9c26c5846cf6b73851843f1c43e6a04f24",
+    "evidence/cold-final.log": "92a9271e4c1764d058a145206d1de2f811cb894234e9712f20a51a4409d279ea",
+    "evidence/cold-host.log": "92a9271e4c1764d058a145206d1de2f811cb894234e9712f20a51a4409d279ea",
+    "evidence/cold-import-initial.py": "cd70fd86c69fff77513a968eeb0b7ed08c77b170f40995b705e0bd0a329a370b",
+    "evidence/cold-import-review.py": "e021a8ddf521028fa9b1a6bc50c15106a601c10b3b292b9c19202d21b937f13a",
+    "evidence/cold-review.log": "92a9271e4c1764d058a145206d1de2f811cb894234e9712f20a51a4409d279ea",
+    "evidence/cold-sandbox.log": "0ae9f4b2e44b9231d07ec6fc8bb462be08a81f51f700f74fc5b73f15a9181e9c",
+    "evidence/final-capture-review.log": "28694386340cbfe781c6f036c4b0c6c33b091140c4cbddb2fcdc6114aa96f2d3",
+    "evidence/final-contract.log": "2fec0bb3951dc860c2184090ff6e38b044bc168cbee37fa3f1c3ba95a6685dcb",
+    "evidence/final-import-parity.log": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9",
+    "evidence/final-installer.log": "e27faec7b94b5e21d023868d4aaebdb1ffd956a00d2657f7bd62959119309391",
+    "evidence/final-reviewed-rejections.log": "ed54b34895144f96d33cdc76dbc00b46535eb04f662ca530e13517ade94d7d0e",
+    "evidence/final-runtime-rejections.log": "89fd054548a97c10f78e31badf6b5c5fcf25153fa3a4193f5e3bfc95c063bcc5",
+    "evidence/manifest-initial.json": "f87372701a2fb9317655141e398b5b2498b4c21eb5a4491778ece59dbf828b56",
+    "evidence/manifest-review.json": "d534d239b8906f4e25e1e3ebbd09e3db7f2089e707ea236bb7e375b976215efe",
+    "evidence/native-uids.json": "ab570cf1e1a4ae0bf688eddb3fac6c8f57f153274ae22b4cdb3d0d2bfe9f2c90",
+    "evidence/quality-godot-host.log": "07352f7d47cf75dc344c9f122c4bc3746933e780daa82651ffb434e5f13a933a",
+    "evidence/quality-godot-retry.sh": "02890331ef49e9f5a68834c4c7ac3d321faa8a3235eab0fa16264d8356e4b6e9",
+    "evidence/quality-sandbox.log": "bf882e2e03c5bd76c961f089ac65397bda83b4657b72b087a7be37fe1c23be0e",
+    "evidence/reviewed-runtime-rejections.log": "89fd054548a97c10f78e31badf6b5c5fcf25153fa3a4193f5e3bfc95c063bcc5",
+    "evidence/runtime-rejections.log": "89fd054548a97c10f78e31badf6b5c5fcf25153fa3a4193f5e3bfc95c063bcc5",
+    "evidence/uid-generator.gd": "b832f4b006371728862432d141d126713bfce8f1ea21fe357ea4b2c1d4e7f47b",
+    "evidence/uid-native.log": "203deb7edb0a0e43d5abd89d8c0fe1f73c90c9200a682069e9a86f5159145a1c",
+    "evidence/final-preservation.log": "a806f05e9eb8284852d4c43e0d126a0cba3c5ef4ec3d81baa8945bae90752523",
+    "evidence/quality-godot-host-raw.json": "12a1554bca8d8247bd8fcdc4f7ce5c6860a4e300861c84b81624e77498ab8629"
+  }
+}

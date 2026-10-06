@@ -295,10 +295,18 @@ using unchanged approved modules and proposed pivots. Twenty-four actual-scene
 captures, complete native/2x crops and thirty static readability images are retained.
 Independent route/entrance/label clearance, frozen predecessor bytes and eight review
 probes pass. The owner selected grouped on 2026-10-06, replacing the earlier sparse
-choice; the hash-bound selection is closed. Its [named runtime scope proposal](art-direction/woodland-clearing-dressing-runtime-scope/README.md)
-specifies sixteen unchanged native modules, pivots, draw order and independent
-presentation nodes. Named installation approval and actual runtime-view confirmation
-remain separate. No ordinary scene, physical, discovery or gameplay state changes.
+choice; the hash-bound selection is closed. The owner approved the
+[named sixteen-placement scope](art-direction/woodland-clearing-dressing-runtime-scope/owner-approval.json).
+The [runtime installation](art-direction/woodland-clearing-dressing-runtime-promotion/README.md)
+keeps exact native modules, pivots and draw order, copies unchanged editable masters
+and adds independent proof/runtime imports (113 assets / 64 masters). Existing scene
+blocks, physical, discovery and gameplay state are retained. The owner
+[confirmed all eight exact actual runtime views](art-direction/woodland-clearing-dressing-runtime-promotion/owner-runtime-acceptance.json)
+on 2026-10-06. All eight paired baselines and grouped runtime captures match selected
+external RGBA; fresh product quality passes with 5,033 tests, all Godot smokes and
+cold import. The entire grouped runtime slice is terminally accepted; do not reopen
+historical pending records. Next is an external-only closed-forest approach dressing
+feasibility slice, preserving the retained gate/Forester and accepted grouped baseline.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's

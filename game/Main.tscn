@@ -1,4 +1,4 @@
-[gd_scene load_steps=374 format=3]
+[gd_scene load_steps=391 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -574,6 +574,24 @@
 
 [ext_resource type="Texture2D" path="res://art/runtime/terrain/village-edge-entrance-ground.png" id="456_village_edge_ground"]
 [ext_resource type="Script" path="res://RuntimeVillageEdgeGroundSmokeCheck.cs" id="457_village_edge_ground_check"]
+
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-01.png" id="458_woodland_shrubs_01"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-fallen-wood-07.png" id="459_woodland_fallen_wood_07"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-rocks-08.png" id="460_woodland_rocks_08"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-01.png" id="461_woodland_environmental_details_01"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-05.png" id="462_woodland_environmental_details_05"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-06.png" id="463_woodland_environmental_details_06"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-03.png" id="464_woodland_environmental_details_03"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-09.png" id="465_woodland_environmental_details_09"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-08.png" id="466_woodland_shrubs_08"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-fallen-wood-03.png" id="467_woodland_fallen_wood_03"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-rocks-03.png" id="468_woodland_rocks_03"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-02.png" id="469_woodland_environmental_details_02"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-07.png" id="470_woodland_environmental_details_07"]
+[ext_resource type="Texture2D" path="res://art/runtime/objects/woodland-fallen-wood-09.png" id="471_woodland_fallen_wood_09"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-environmental-details-08.png" id="472_woodland_environmental_details_08"]
+[ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-07.png" id="473_woodland_shrubs_07"]
+[ext_resource type="Script" path="res://RuntimeWoodlandClearingDressingSmokeCheck.cs" id="474_woodland_dressing_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4024,6 +4042,139 @@ centered = false
 
 [node name="RuntimeVillageEdgeGroundSmokeCheck" type="Node" parent="."]
 script = ExtResource("457_village_edge_ground_check")
+
+[node name="WoodlandClearingDressingPresentation" type="Node2D" parent="."]
+
+[node name="shrubs_01" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(920, 132)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("458_woodland_shrubs_01")
+centered = false
+
+[node name="fallen_wood_07" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(1050, 192)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("459_woodland_fallen_wood_07")
+centered = false
+
+[node name="rocks_08" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(628, 382)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("460_woodland_rocks_08")
+centered = false
+
+[node name="environmental_details_01" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(1160, 156)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("461_woodland_environmental_details_01")
+centered = false
+
+[node name="environmental_details_05" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(795, 395)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("462_woodland_environmental_details_05")
+centered = false
+
+[node name="environmental_details_06" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(836, 170)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("463_woodland_environmental_details_06")
+centered = false
+
+[node name="environmental_details_03" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(1140, 80)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("464_woodland_environmental_details_03")
+centered = false
+
+[node name="environmental_details_09" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(912, 206)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("465_woodland_environmental_details_09")
+centered = false
+
+[node name="shrubs_08" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(1054, 114)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("466_woodland_shrubs_08")
+centered = false
+
+[node name="fallen_wood_03" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(968, 186)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("467_woodland_fallen_wood_03")
+centered = false
+
+[node name="rocks_03" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(1128, 94)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("468_woodland_rocks_03")
+centered = false
+
+[node name="environmental_details_02" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(860, 118)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("469_woodland_environmental_details_02")
+centered = false
+
+[node name="environmental_details_07" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(954, 226)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("470_woodland_environmental_details_07")
+centered = false
+
+[node name="fallen_wood_09" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(670, 394)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("471_woodland_fallen_wood_09")
+centered = false
+
+[node name="environmental_details_08" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(772, 400)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("472_woodland_environmental_details_08")
+centered = false
+
+[node name="shrubs_07" type="Sprite2D" parent="WoodlandClearingDressingPresentation"]
+position = Vector2(1020, 96)
+z_index = -60
+texture_filter = 2
+texture_repeat = 1
+texture = ExtResource("473_woodland_shrubs_07")
+centered = false
+
+[node name="RuntimeWoodlandClearingDressingSmokeCheck" type="Node" parent="."]
+script = ExtResource("474_woodland_dressing_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

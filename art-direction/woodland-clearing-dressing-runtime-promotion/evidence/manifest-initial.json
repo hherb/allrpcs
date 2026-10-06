@@ -1,0 +1,4374 @@
+{
+  "schema_version": 2,
+  "status": "scale-rebaselined production-pipeline proof with isolated Godot import parity",
+  "logical_viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "fullscreen_reference_logical_viewport": {
+    "width": 1280,
+    "height": 827
+  },
+  "minimum_visible_character_height": 144,
+  "master_scale": 2,
+  "opening_junction_proof": {
+    "asset": "terrain.opening_junction",
+    "anchor_ids": [
+      "stream",
+      "abandoned-laundry",
+      "woodland-clearing"
+    ],
+    "path_width_pixels": 96,
+    "port_depth_pixels": 32,
+    "turn_degrees": -57.599282,
+    "canonical_incoming_heading_degrees": 90.0,
+    "canonical_outgoing_heading_degrees": 32.400718,
+    "curve_tangent_distance_pixels": 80,
+    "texture_transition": "alpha_weighted_tangent_blend",
+    "pivot": {
+      "x": 224,
+      "y": 224
+    },
+    "visible_bounds": {
+      "x": 177,
+      "y": 0,
+      "width": 335,
+      "height": 458
+    },
+    "review": "review/opening-junction-review.png"
+  },
+  "village_square_junction_proof": {
+    "asset": "terrain.village_square_junction",
+    "anchor_ids": [
+      "village-square",
+      "sickhouse",
+      "healer-garden",
+      "southern-road",
+      "village-edge"
+    ],
+    "path_width_pixels": 96,
+    "port_depth_pixels": 32,
+    "headings_degrees": [
+      51.340192,
+      75.963757,
+      144.462322,
+      180.0
+    ],
+    "pivot": {
+      "x": 256,
+      "y": 256
+    },
+    "visible_bounds": {
+      "x": 0,
+      "y": 209,
+      "width": 512,
+      "height": 303
+    },
+    "reviews": [
+      "review/village-square-junction-0.8x-wide.png",
+      "review/village-square-junction-0.8x-tall.png",
+      "review/village-square-junction-1.0x-wide.png",
+      "review/village-square-junction-1.0x-tall.png",
+      "review/village-square-junction-2.0x-wide.png",
+      "review/village-square-junction-2.0x-tall.png"
+    ]
+  },
+  "village_edge_transition_proof": {
+    "asset": "terrain.woodland_village_edge_transition",
+    "opening": {
+      "x": 592,
+      "y": 314
+    },
+    "world_origin": {
+      "x": 536,
+      "y": 136
+    },
+    "clearing_bounds": {
+      "left": 64,
+      "top": 64,
+      "right": 712,
+      "bottom": 314
+    },
+    "path_width_pixels": 96,
+    "feather_pixels": 64,
+    "route_length_pixels": 180,
+    "review": "review/woodland-village-edge-transition-review.png"
+  },
+  "stream_water_bank_feasibility": {
+    "assets": [
+      "terrain.stream_water",
+      "terrain.stream_bank",
+      "terrain.stream_bank_opening_cap"
+    ],
+    "stream_bounds": {
+      "left": 1600,
+      "top": 452,
+      "right": 2000,
+      "bottom": 548
+    },
+    "crossing_bounds": {
+      "left": 1736,
+      "top": 452,
+      "right": 1864,
+      "bottom": 548
+    },
+    "collision_polygons": [
+      [
+        [
+          1600,
+          452
+        ],
+        [
+          1700,
+          452
+        ],
+        [
+          1700,
+          548
+        ],
+        [
+          1600,
+          548
+        ]
+      ],
+      [
+        [
+          1900,
+          452
+        ],
+        [
+          2000,
+          452
+        ],
+        [
+          2000,
+          548
+        ],
+        [
+          1900,
+          548
+        ]
+      ]
+    ],
+    "collision_opening_bounds": {
+      "left": 1700,
+      "top": 452,
+      "right": 1900,
+      "bottom": 548
+    },
+    "route_anchor_ids": [
+      "village-edge",
+      "stream",
+      "abandoned-laundry"
+    ],
+    "water_repeat_size": {
+      "width": 128,
+      "height": 96
+    },
+    "bank_repeat_size": {
+      "width": 128,
+      "height": 32
+    },
+    "bank_opening_cap_size": {
+      "width": 32,
+      "height": 32
+    },
+    "reviews": [
+      {
+        "path": "review/stream-water-bank-0.8x-wide.png",
+        "zoom": 0.8,
+        "view": "wide",
+        "width": 1280,
+        "height": 720,
+        "sha256": "456df2a928c9ab936684f8b9fc774d488424a45bf20fdeb18afa2be98c614ee5"
+      },
+      {
+        "path": "review/stream-water-bank-0.8x-tall.png",
+        "zoom": 0.8,
+        "view": "tall",
+        "width": 1280,
+        "height": 827,
+        "sha256": "dff0dca23b923d1704d3e36b7bcb8d70ad98e3a82b5aec607124a50ae6646332"
+      },
+      {
+        "path": "review/stream-water-bank-1.0x-wide.png",
+        "zoom": 1.0,
+        "view": "wide",
+        "width": 1280,
+        "height": 720,
+        "sha256": "94d73e376d2ce59c0ac9e83eaa28e9ab0f3ea9ce60013c681130440932832601"
+      },
+      {
+        "path": "review/stream-water-bank-1.0x-tall.png",
+        "zoom": 1.0,
+        "view": "tall",
+        "width": 1280,
+        "height": 827,
+        "sha256": "8bd6ceecac2c2f598e46b480b676398bffd66b5b791e88c742583c1df5b110a4"
+      },
+      {
+        "path": "review/stream-water-bank-2.0x-wide.png",
+        "zoom": 2.0,
+        "view": "wide",
+        "width": 1280,
+        "height": 720,
+        "sha256": "66938b7c77fd5c96cab18a9f6a9d006c666aa3baf2e28f640ffd470d5957237d"
+      },
+      {
+        "path": "review/stream-water-bank-2.0x-tall.png",
+        "zoom": 2.0,
+        "view": "tall",
+        "width": 1280,
+        "height": 827,
+        "sha256": "303fea4768a09f48b44d05342c0a6cb186e72ba39496eb19a8201d092b7ffb2c"
+      }
+    ],
+    "runtime_authority": false
+  },
+  "navigation_clearance": {
+    "scene": "review/module-review-scene.png",
+    "x": 592,
+    "y": 0,
+    "width": 96,
+    "height": 720
+  },
+  "review_composition": [
+    {
+      "asset": "plants.herb_bed_empty",
+      "x": 146,
+      "y": 170,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.herb_bed_empty",
+      "x": 980,
+      "y": 170,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.foliage_broadleaf",
+      "x": 990,
+      "y": 168,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.foliage_broadleaf",
+      "x": 180,
+      "y": 480,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "plants.foliage_broadleaf",
+      "x": 1050,
+      "y": 490,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "objects.preparation_table",
+      "x": 930,
+      "y": 450,
+      "fixed_obstacle": true
+    },
+    {
+      "asset": "cues.preparation_table_identified",
+      "x": 930,
+      "y": 450,
+      "fixed_obstacle": false
+    },
+    {
+      "asset": "characters.seeker.south.walk_01",
+      "x": 586,
+      "y": 276,
+      "fixed_obstacle": false
+    }
+  ],
+  "animations": [
+    {
+      "id": "characters.seeker.south.walk",
+      "frame_order": [
+        "characters.seeker.south.walk_01",
+        "characters.seeker.south.walk_02",
+        "characters.seeker.south.walk_03",
+        "characters.seeker.south.walk_04",
+        "characters.seeker.south.walk_05",
+        "characters.seeker.south.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.west.walk",
+      "frame_order": [
+        "characters.seeker.west.walk_01",
+        "characters.seeker.west.walk_02",
+        "characters.seeker.west.walk_03",
+        "characters.seeker.west.walk_04",
+        "characters.seeker.west.walk_05",
+        "characters.seeker.west.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.east.walk",
+      "frame_order": [
+        "characters.seeker.east.walk_01",
+        "characters.seeker.east.walk_02",
+        "characters.seeker.east.walk_03",
+        "characters.seeker.east.walk_04",
+        "characters.seeker.east.walk_05",
+        "characters.seeker.east.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.north.walk",
+      "frame_order": [
+        "characters.seeker.north.walk_01",
+        "characters.seeker.north.walk_02",
+        "characters.seeker.north.walk_03",
+        "characters.seeker.north.walk_04",
+        "characters.seeker.north.walk_05",
+        "characters.seeker.north.walk_06"
+      ],
+      "frame_duration_ms": 120,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.south.idle_breathe",
+      "frame_order": [
+        "characters.seeker.south.idle_breathe_01",
+        "characters.seeker.south.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.west.idle_breathe",
+      "frame_order": [
+        "characters.seeker.west.idle_breathe_01",
+        "characters.seeker.west.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.east.idle_breathe",
+      "frame_order": [
+        "characters.seeker.east.idle_breathe_01",
+        "characters.seeker.east.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.north.idle_breathe",
+      "frame_order": [
+        "characters.seeker.north.idle_breathe_01",
+        "characters.seeker.north.idle_breathe_02"
+      ],
+      "frame_duration_ms": 600,
+      "loop": true
+    },
+    {
+      "id": "characters.seeker.south.interact_reach",
+      "frame_order": [
+        "characters.seeker.south.interact_reach_01",
+        "characters.seeker.south.interact_reach_02",
+        "characters.seeker.south.interact_reach_03",
+        "characters.seeker.south.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    },
+    {
+      "id": "characters.seeker.west.interact_reach",
+      "frame_order": [
+        "characters.seeker.west.interact_reach_01",
+        "characters.seeker.west.interact_reach_02",
+        "characters.seeker.west.interact_reach_03",
+        "characters.seeker.west.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    },
+    {
+      "id": "characters.seeker.east.interact_reach",
+      "frame_order": [
+        "characters.seeker.east.interact_reach_01",
+        "characters.seeker.east.interact_reach_02",
+        "characters.seeker.east.interact_reach_03",
+        "characters.seeker.east.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    },
+    {
+      "id": "characters.seeker.north.interact_reach",
+      "frame_order": [
+        "characters.seeker.north.interact_reach_01",
+        "characters.seeker.north.interact_reach_02",
+        "characters.seeker.north.interact_reach_03",
+        "characters.seeker.north.interact_reach_04"
+      ],
+      "frame_duration_ms": 160,
+      "loop": false
+    }
+  ],
+  "clearing_closed_forest_path_provenance": {
+    "accepted_proof": "art-direction/forest-path-ending-correction/result/exports/corrected.png",
+    "accepted_proof_sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451",
+    "master": "masters/terrain-clearing-closed-forest-path.ora",
+    "recipe_sha256": "7a6703b2b02708f63cfbc4721704334208f45b2371121c8c190a3957ebdb143c",
+    "retained_recipe_sha256": "1e26e6695d23999dedf4a98d88e9002351b265a31b07e984a8b7f7afe2a377a4",
+    "world_origin": [
+      520,
+      32
+    ],
+    "world_position": [
+      796,
+      224
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "square_garden_path_provenance": {
+    "accepted_proof": "review/square-garden-path-correction-overlay.png",
+    "accepted_proof_sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de",
+    "master": "masters/terrain-square-garden-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "world_origin": [
+      2200,
+      1140
+    ],
+    "world_position": [
+      2300,
+      1250
+    ],
+    "heading_degrees": 75.963757,
+    "endpoint": [
+      2300,
+      1300
+    ],
+    "overlap_rows": 16,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "square_sickhouse_path_provenance": {
+    "accepted_proof": "review/square-sickhouse-path-correction-overlay.png",
+    "accepted_proof_sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7",
+    "master": "masters/terrain-square-sickhouse-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "world_origin": [
+      2320,
+      1140
+    ],
+    "world_position": [
+      2510,
+      1320
+    ],
+    "heading_degrees": 51.340192,
+    "endpoint": [
+      2640,
+      1450
+    ],
+    "overlap_rows": 16,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "square_southern_road_path_provenance": {
+    "accepted_proof": "review/square-southern-road-path-correction-overlay.png",
+    "accepted_proof_sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5",
+    "master": "masters/terrain-square-southern-road-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "world_origin": [
+      1440,
+      1024
+    ],
+    "world_position": [
+      1700,
+      1232
+    ],
+    "heading_degrees": 144.462322,
+    "endpoint": [
+      1500,
+      1400
+    ],
+    "overlap_columns": 16,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "shrine_southern_road_path_provenance": {
+    "accepted_proof": "review/shrine-southern-road-path-correction-overlay.png",
+    "accepted_proof_sha256": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e",
+    "master": "masters/terrain-shrine-southern-road-path.ora",
+    "recipe_sha256": "c70f7da32a446eed0d3f267436c9aac34cbfdf2ec371e966bb17dc01e216857a",
+    "world_origin": [
+      432,
+      400
+    ],
+    "world_position": [
+      1008,
+      940
+    ],
+    "z_index": -72,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "shrine_southern_road_endpoint_blend_provenance": {
+    "accepted_proof": "review/shrine-southern-road-path-blend-overlay.png",
+    "accepted_proof_sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720",
+    "master": "masters/terrain-shrine-southern-road-endpoint-blend.ora",
+    "recipe_sha256": "57fbeab8ad58e24fa93888b30ca4e65961d89a3ed69fc4f46365f479bf715ce2",
+    "world_origin": [
+      1400,
+      1280
+    ],
+    "world_position": [
+      1480,
+      1360
+    ],
+    "z_index": -69,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "woodland_shrine_path_provenance": {
+    "accepted_proof": "review/woodland-shrine-path-junction-overlay.png",
+    "accepted_proof_sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c",
+    "master": "masters/terrain-woodland-shrine-path.ora",
+    "recipe_sha256": "23c38fc61ae17d84398cc3b678ed80b19565338b84f273ebc233990d79610c9b",
+    "world_origin": [
+      352,
+      224
+    ],
+    "world_position": [
+      704,
+      328
+    ],
+    "z_index": -74,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "woodland_village_edge_path_provenance": {
+    "accepted_proof": "review/woodland-village-edge-path-correction-overlay.png",
+    "accepted_proof_sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c",
+    "master": "masters/terrain-woodland-village-edge-path.ora",
+    "recipe_sha256": "d66cb6361e1a68433723e949110a4e96632b523a4ed717c604a9df5ffecd61dd",
+    "world_origin": [
+      944,
+      288
+    ],
+    "world_position": [
+      1352,
+      632
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "village_edge_stream_path_provenance": {
+    "accepted_proof": "review/village-edge-stream-path-correction-overlay.png",
+    "accepted_proof_sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f",
+    "master": "masters/terrain-village-edge-stream-path.ora",
+    "recipe_sha256": "56aa2bdecc398692537ac5e53bb8eb77b6990e033d77ffbf4cdced2d9fd11a77",
+    "world_origin": [
+      1640,
+      440
+    ],
+    "world_position": [
+      1752,
+      704
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "stream_laundry_path_provenance": {
+    "accepted_proof": "review/stream-laundry-path-correction-overlay.png",
+    "accepted_proof_sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185",
+    "master": "masters/terrain-stream-laundry-path.ora",
+    "recipe_sha256": "c07769eca6dd3387124fc38e4c699d3d5ed1155f5eee969f4aacb05d5a242a30",
+    "world_origin": [
+      1424,
+      152
+    ],
+    "world_position": [
+      1640,
+      360
+    ],
+    "z_index": -75,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "southern_road_wagon_path_provenance": {
+    "accepted_proof": "review/southern-road-wagon-path-trim-overlay.png",
+    "accepted_proof_sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799",
+    "master": "masters/terrain-southern-road-wagon-path.ora",
+    "source_asset": "terrain.straight_path",
+    "source_sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+    "recipe_sha256": "b1ceeff545529512f6116cfb1c4c4b23903a9d43730879352e91430319dc45f5",
+    "world_origin": [
+      1400,
+      1280
+    ],
+    "world_position": [
+      1680,
+      1496
+    ],
+    "road_points": [
+      [
+        1500,
+        1400
+      ],
+      [
+        1820,
+        1580
+      ],
+      [
+        1900,
+        1640
+      ]
+    ],
+    "backward_overlap_pixels": 48,
+    "incoming_extension_pixels": 16,
+    "master_partition_column": 360,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "village_edge_square_connector_provenance": {
+    "accepted_proof": "review/village-edge-square-connector-alpha-strip.png",
+    "accepted_proof_sha256": "fb517f9e360c33298ca21c4be60f22af949cb4bb0a3a58661780747b87c82899",
+    "master": "masters/terrain-village-edge-square-connector.ora",
+    "source_assets": [
+      "terrain.straight_path",
+      "terrain.village_square_junction"
+    ],
+    "source_sha256": [
+      "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd",
+      "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+    ],
+    "hidden_rgb_pixels": 84,
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact accepted export"
+  },
+  "assets": [
+    {
+      "id": "terrain.quiet_moss",
+      "category": "terrain",
+      "source": "sources/imagegen/quiet-moss-ground.png",
+      "export": "exports/terrain/quiet-moss.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db"
+    },
+    {
+      "id": "terrain.stream_water",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/stream-water.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 256,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 96,
+      "pivot": {
+        "x": 64,
+        "y": 48
+      },
+      "godot_import_proof": true,
+      "sha256": "c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c"
+    },
+    {
+      "id": "terrain.stream_bank",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/stream-bank.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 32
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 32
+      },
+      "master_dimensions_pixels": {
+        "width": 256,
+        "height": 64,
+        "scale": 2
+      },
+      "contact_baseline": 32,
+      "pivot": {
+        "x": 64,
+        "y": 16
+      },
+      "godot_import_proof": true,
+      "sha256": "b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e"
+    },
+    {
+      "id": "terrain.stream_bank_opening_cap",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/stream-bank-opening-cap.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 32,
+        "height": 32
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 32,
+        "height": 32
+      },
+      "master_dimensions_pixels": {
+        "width": 64,
+        "height": 64,
+        "scale": 2
+      },
+      "contact_baseline": 32,
+      "pivot": {
+        "x": 16,
+        "y": 16
+      },
+      "godot_import_proof": true,
+      "sha256": "11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter",
+      "category": "terrain",
+      "source": "sources/imagegen/woodland-leaf-litter-ground.png",
+      "export": "exports/terrain/woodland-leaf-litter.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_corner_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-corner-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_corner_transition_left",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-corner-transition-left.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_inset_corner_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-inset-corner-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "3f8f9255325fc9bd2d073c11e030698b7d44978f52933eb6fb78ef66b311773a"
+    },
+    {
+      "id": "terrain.woodland_leaf_litter_inset_corner_transition_left",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-leaf-litter-inset-corner-transition-left.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "74a94ed868d5ec638bfb79b8344390ea6cc0a7aa851053897d2077d7a4e753e7"
+    },
+    {
+      "id": "terrain.woodland_village_edge_transition",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/woodland-village-edge-transition.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 512
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 512
+      },
+      "master_dimensions_pixels": {
+        "width": 2048,
+        "height": 1024,
+        "scale": 2
+      },
+      "contact_baseline": 512,
+      "pivot": {
+        "x": 592,
+        "y": 314
+      },
+      "godot_import_proof": true,
+      "sha256": "283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21"
+    },
+    {
+      "id": "terrain.straight_path",
+      "category": "terrain",
+      "source": "sources/imagegen/straight-path-overlay.png",
+      "export": "exports/terrain/straight-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 48,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd"
+    },
+    {
+      "id": "terrain.path_bend",
+      "category": "terrain",
+      "source": "sources/imagegen/path-bend-overlay.png",
+      "export": "exports/terrain/path-bend.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "8ac6919e5dac8881232a75cbfcb58945085fd59e11ebfd53beea952135512438"
+    },
+    {
+      "id": "terrain.path_t_junction",
+      "category": "terrain",
+      "source": "sources/imagegen/path-t-junction-overlay.png",
+      "export": "exports/terrain/path-t-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "822e6efa3031cc8b76cfaed7b53bd9ece8b389550d89bb0e9d899a83bba50d54"
+    },
+    {
+      "id": "terrain.path_cross_junction",
+      "category": "terrain",
+      "source": "sources/imagegen/path-cross-junction-overlay.png",
+      "export": "exports/terrain/path-cross-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "9e3923d85a6f24d1716f401e535d3b011eda5033c9520420e4d3e78b34b42027"
+    },
+    {
+      "id": "terrain.path_end_cap",
+      "category": "terrain",
+      "source": "sources/imagegen/path-end-cap-overlay.png",
+      "export": "exports/terrain/path-end-cap.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 256,
+        "height": 256
+      },
+      "master_dimensions_pixels": {
+        "width": 512,
+        "height": 512,
+        "scale": 2
+      },
+      "contact_baseline": 256,
+      "pivot": {
+        "x": 128,
+        "y": 128
+      },
+      "godot_import_proof": true,
+      "sha256": "9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3"
+    },
+    {
+      "id": "terrain.opening_junction",
+      "category": "terrain",
+      "source": "tools/build.py",
+      "export": "exports/terrain/opening-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 1024,
+        "scale": 2
+      },
+      "contact_baseline": 512,
+      "pivot": {
+        "x": 224,
+        "y": 224
+      },
+      "godot_import_proof": true,
+      "sha256": "fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68"
+    },
+    {
+      "id": "terrain.village_square_junction",
+      "category": "terrain",
+      "source": "sources/imagegen/village-square-junction-source.png",
+      "export": "exports/terrain/village-square-junction.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 512
+      },
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 1024,
+        "scale": 2
+      },
+      "contact_baseline": 512,
+      "pivot": {
+        "x": 256,
+        "y": 256
+      },
+      "godot_import_proof": true,
+      "sha256": "0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3"
+    },
+    {
+      "id": "terrain.village_edge_square_connector",
+      "category": "terrain",
+      "source": "tools/build_village_edge_square_connector_alpha.py",
+      "export": "exports/terrain/village-edge-square-connector.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 124,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 124,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 248,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 96,
+      "pivot": {
+        "x": 62,
+        "y": 48
+      },
+      "godot_import_proof": true,
+      "sha256": "990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854"
+    },
+    {
+      "id": "terrain.square_garden_path",
+      "category": "terrain",
+      "source": "tools/build_square_garden_path_correction.py",
+      "export": "exports/terrain/square-garden-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 220
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 220
+      },
+      "master_dimensions_pixels": {
+        "width": 400,
+        "height": 440,
+        "scale": 2
+      },
+      "contact_baseline": 220,
+      "pivot": {
+        "x": 100,
+        "y": 110
+      },
+      "godot_import_proof": true,
+      "sha256": "04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de"
+    },
+    {
+      "id": "terrain.square_sickhouse_path",
+      "category": "terrain",
+      "source": "tools/build_square_sickhouse_path_correction.py",
+      "export": "exports/terrain/square-sickhouse-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 380,
+        "height": 360
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 380,
+        "height": 360
+      },
+      "master_dimensions_pixels": {
+        "width": 760,
+        "height": 720,
+        "scale": 2
+      },
+      "contact_baseline": 360,
+      "pivot": {
+        "x": 190,
+        "y": 180
+      },
+      "godot_import_proof": true,
+      "sha256": "0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7"
+    },
+    {
+      "id": "terrain.square_southern_road_path",
+      "category": "terrain",
+      "source": "tools/build_square_southern_road_path_correction.py",
+      "export": "exports/terrain/square-southern-road-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 416
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 520,
+        "height": 416
+      },
+      "master_dimensions_pixels": {
+        "width": 1040,
+        "height": 832,
+        "scale": 2
+      },
+      "contact_baseline": 416,
+      "pivot": {
+        "x": 260,
+        "y": 208
+      },
+      "godot_import_proof": true,
+      "sha256": "4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5"
+    },
+    {
+      "id": "terrain.southern_road_wagon_path",
+      "category": "terrain",
+      "source": "tools/build_southern_road_wagon_path_trim.py",
+      "export": "exports/terrain/southern-road-wagon-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 432
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 432
+      },
+      "master_dimensions_pixels": {
+        "width": 1120,
+        "height": 864,
+        "scale": 2
+      },
+      "contact_baseline": 432,
+      "pivot": {
+        "x": 280,
+        "y": 216
+      },
+      "godot_import_proof": true,
+      "sha256": "34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799"
+    },
+    {
+      "id": "plants.herb_bed_empty",
+      "category": "plants",
+      "source": "sources/imagegen/herb-bed-empty.png",
+      "export": "exports/plants/herb-bed-empty.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 80
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 160,
+        "scale": 2
+      },
+      "contact_baseline": 77,
+      "pivot": {
+        "x": 48,
+        "y": 77
+      },
+      "godot_import_proof": true,
+      "sha256": "8ced13faba2ac9240977df0c62686939ffcd24a09d278006485c866b0a11f2fa"
+    },
+    {
+      "id": "plants.foliage_broadleaf",
+      "category": "plants",
+      "source": "sources/imagegen/foliage-broadleaf.png",
+      "export": "exports/plants/foliage-broadleaf.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 72,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 72,
+        "height": 56
+      },
+      "master_dimensions_pixels": {
+        "width": 144,
+        "height": 112,
+        "scale": 2
+      },
+      "contact_baseline": 53,
+      "pivot": {
+        "x": 36,
+        "y": 53
+      },
+      "godot_import_proof": true,
+      "sha256": "e4b607c4cbfaef13cd3949492e903883dab289f882addbb2c38511aabecd6277"
+    },
+    {
+      "id": "objects.preparation_table",
+      "category": "objects",
+      "source": "sources/imagegen/preparation-table.png",
+      "export": "exports/objects/preparation-table.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 92,
+      "pivot": {
+        "x": 48,
+        "y": 92
+      },
+      "godot_import_proof": true,
+      "sha256": "d36d2f9d5341edd64f9eadac7053bf3847b63990523400698d78e90d246a3a35"
+    },
+    {
+      "id": "cues.preparation_table_noticeable",
+      "category": "cues",
+      "source": "tools/build.py",
+      "export": "exports/cues/preparation-table-noticeable.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 92,
+      "pivot": {
+        "x": 48,
+        "y": 92
+      },
+      "godot_import_proof": true,
+      "sha256": "3bcf4fa596f2a9efa95e0b2f34bebf25db67a26d1c46a3d0e246e20162fc4fe5"
+    },
+    {
+      "id": "cues.preparation_table_identified",
+      "category": "cues",
+      "source": "tools/build.py",
+      "export": "exports/cues/preparation-table-identified.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 92,
+      "pivot": {
+        "x": 48,
+        "y": 92
+      },
+      "godot_import_proof": true,
+      "sha256": "bb5c135087c78ca10acf0b231c1356c1355d51aa55ecfe312e5fbaff02a08a2a"
+    },
+    {
+      "id": "cues.preparation_table_dangerous",
+      "category": "cues",
+      "source": "tools/build.py",
+      "export": "exports/cues/preparation-table-dangerous.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 96,
+        "height": 96
+      },
+      "master_dimensions_pixels": {
+        "width": 192,
+        "height": 192,
+        "scale": 2
+      },
+      "contact_baseline": 92,
+      "pivot": {
+        "x": 48,
+        "y": 92
+      },
+      "godot_import_proof": true,
+      "sha256": "b675492a5d903c511bfd7d71a52e17cd1b27844c46b6b97ca9efe53ec0b2ebd1"
+    },
+    {
+      "id": "characters.seeker.south.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "0daf3568d465825979a73ca996cc98f2edf0db0e0cf132b773771e24c283dd35"
+    },
+    {
+      "id": "characters.seeker.south.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "45ebe57ee386902455c7d16b87bb2fbd45ba7a1f668a22d15bbad6e764fbd739"
+    },
+    {
+      "id": "characters.seeker.south.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "6913be1fcca0d50e6567d0d1265a451480a45bc7dcdb87ce70299910b6fa2604"
+    },
+    {
+      "id": "characters.seeker.south.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "be544c7d3aae662189137d91ebd3cf658b235c0a2596c599f9c4af46f98f0e9a"
+    },
+    {
+      "id": "characters.seeker.south.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "4d94ff37f5eba2d44cc537020f8798a5ac62f2d34d3e6db2d98b9697a2882d39"
+    },
+    {
+      "id": "characters.seeker.south.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/south/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "fbc95b2400993d43fe9c6a0a7347684ebac0e81adabae9137e2c43a1cddf014e"
+    },
+    {
+      "id": "characters.seeker.west.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "12526165318b823437d458be74ba94ab630989642820ed0d82a82d1e7f750e73"
+    },
+    {
+      "id": "characters.seeker.west.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "a6e8dfa3643e4cb01f4308194e09a359c20b6974096ac07e95b33734dba31c56"
+    },
+    {
+      "id": "characters.seeker.west.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "63f52faa8acbf493daecccabf1cfe402894e89c93c76a7813118a8ed5cd002d9"
+    },
+    {
+      "id": "characters.seeker.west.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "76c16d93104d0d47470757608697faeea608fe6f901bff8351e73fff7dd32b27"
+    },
+    {
+      "id": "characters.seeker.west.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "e063afe978690183df05e1dc2d727b1eb570fd342fe6281e2d49a76730502bc4"
+    },
+    {
+      "id": "characters.seeker.west.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/west/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "7c52f875410504ca685b0094ab65989b95f83a9883228b6d19d98de1bd93d73c"
+    },
+    {
+      "id": "characters.seeker.east.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "68d9cc35a0bb2c1cecb692c556dc127676237f22bd6a0a4585c8d93812b9aa65"
+    },
+    {
+      "id": "characters.seeker.east.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "4a3e7b2feb7634ec1c5e9a856acb067309e70134cb0f5ce24c53fe1747cea670"
+    },
+    {
+      "id": "characters.seeker.east.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "12c5295e1191c4bb448fab653cef3314bdc195d6e573ad3f6afc4b0768fc60cf"
+    },
+    {
+      "id": "characters.seeker.east.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "967599e36c3f42d39811efeb301a3280d48b6457145eacd076dec8669af8415f"
+    },
+    {
+      "id": "characters.seeker.east.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "9b1c9108ae1be31c9f22c6a7a3a23b4c386d9955abaeb0a4064cb6ecf2cded45"
+    },
+    {
+      "id": "characters.seeker.east.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/east/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "777be2f0da026cd56d5afcf11007fcfd5ad6ed336dfd7fd13481a709a473edc7"
+    },
+    {
+      "id": "characters.seeker.north.walk_01",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "e4c7c5905d0ee4b18f2ba52d3054dd9a3d26c2aa2e51ca78e3d53cc265d14fb2"
+    },
+    {
+      "id": "characters.seeker.north.walk_02",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "d044572a1c4b2e97bf9cb4faa41b2b353f46834be3b7de97302850caae309c7b"
+    },
+    {
+      "id": "characters.seeker.north.walk_03",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "c655370caa323f878db81958a53108c146222391f0f996f2defb47f901aac88f"
+    },
+    {
+      "id": "characters.seeker.north.walk_04",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "4e2d31ddac12769a03f1f485ff0ef787a8928dafcb1892af7beea9ab7973292c"
+    },
+    {
+      "id": "characters.seeker.north.walk_05",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-05.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "8e9e6ef1aeb7a54460d0c6c7f7ba925e2e3986eb5f3ba0413278de8c50704855"
+    },
+    {
+      "id": "characters.seeker.north.walk_06",
+      "category": "characters",
+      "source": "../sources/seeker-four-direction-walk.png",
+      "export": "exports/characters/seeker/north/walk-06.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "0ad28d56104a4ded83198f6ca6e6500e61e21c1c3a4980719af00e3f2787d2cf"
+    },
+    {
+      "id": "characters.seeker.south.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-idle-breathe.png",
+      "export": "exports/characters/seeker/south/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "0d9e888e0e4f287e9dd8b09c278c0ced8d7aa8046e7bbb49b2425d65e45aae80"
+    },
+    {
+      "id": "characters.seeker.south.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-idle-breathe.png",
+      "export": "exports/characters/seeker/south/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "608e1c135963782fd8701fbb48d7c47171409968b042ec1943a2ef09ebac2257"
+    },
+    {
+      "id": "characters.seeker.west.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-idle-breathe.png",
+      "export": "exports/characters/seeker/west/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "8979abb85735205b78a8b309d2cd051bec0009136269055c9a2b4c637680d9da"
+    },
+    {
+      "id": "characters.seeker.west.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-idle-breathe.png",
+      "export": "exports/characters/seeker/west/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "802a42cbc85cb50a22f4fc800564d98899704df0335e7858ad72d865373c5dae"
+    },
+    {
+      "id": "characters.seeker.east.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-idle-breathe.png",
+      "export": "exports/characters/seeker/east/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "bd86c9111b1323869f76e95cb3e771663f1bc3162af0dced9d4747dd7c6fad9e"
+    },
+    {
+      "id": "characters.seeker.east.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-idle-breathe.png",
+      "export": "exports/characters/seeker/east/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 144,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 288,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 72,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "348fd5a4632131d106b76036f671971294486a1e0b0c7392ac8e88087f4e6161"
+    },
+    {
+      "id": "characters.seeker.north.idle_breathe_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-idle-breathe.png",
+      "export": "exports/characters/seeker/north/idle-breathe-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "61cf2952f38692c248229a833f43e043ea4895d4c8e4610d762b9ecfc32e88b8"
+    },
+    {
+      "id": "characters.seeker.north.idle_breathe_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-idle-breathe.png",
+      "export": "exports/characters/seeker/north/idle-breathe-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 108,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 216,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 54,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "8496b9dd78c6a94412bd44b3c11a07aaf882b534bcd9e9c4936142d7bc9bd032"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "bf7d1a1d5116bfcb6f2ea6dbd89cba9f499dc20c974e2add26225f46c73a62d5"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "0c459f40dd09c2fc8d894888a946d4c2306647a2f2b0649f0b2bf2f7a9e9ca4a"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "37533b24a3f6049f7db4c06dfa11b915d0e0070a537ecb7b96bfdba8f17e2254"
+    },
+    {
+      "id": "characters.seeker.south.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-south-interact-reach.png",
+      "export": "exports/characters/seeker/south/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "15729b0df90cfb33f46f5af3fbe9db4776a9b4342837552987c6cbf450d48737"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "9b41a19ac802d9a9861722b371deb20bb604fea88e4a63223310e9107d759aed"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "5a3c53f3b0c2efbca663fa3ca0aa98ffcb3a3dded4381ac1bde7b06504e8b8c9"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "a671ee0b6d1e4c68ef1edc76cbff5231810765f04adf478717302545fbd38174"
+    },
+    {
+      "id": "characters.seeker.west.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-west-interact-reach.png",
+      "export": "exports/characters/seeker/west/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "bd7d06549beb95f1951276996b1d1ed29879a55e56b669b2fbb1185d3be37717"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "fca1fcafec4c636ed41288b7747e074f82a8d17a80fd2ddfb6ce29a8f9208886"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "c92bbbbdc0be0b69864f7cc397c735c1c6dea33773deacd9c929bb8e9b3de36f"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "8dddc0e368b3838fac168ae1b6f004f6912fcc2349158864a61c8dde6f3607d1"
+    },
+    {
+      "id": "characters.seeker.east.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-east-interact-reach.png",
+      "export": "exports/characters/seeker/east/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "27e79ccb5d917eb85e8a18bb2c1c32c2bb21e2a717f1b582d7385888160bacfb"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_01",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-01.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "c0a1bf60f18c72611dd0c2a47a560b9c47d52831d730d3ac8bccc115cf3a5156"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_02",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-02.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "67ca6bb7568006cc91f3fea767ec80e6dd2ff30848f584318c45561936b97d0b"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_03",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-03.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "e8fdd2b31b1a89ba7e3901608752280babc422945085edac3f6cd5283b2252ea"
+    },
+    {
+      "id": "characters.seeker.north.interact_reach_04",
+      "category": "characters",
+      "source": "sources/imagegen/seeker-north-interact-reach.png",
+      "export": "exports/characters/seeker/north/interact-reach-04.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 192,
+        "height": 168
+      },
+      "master_dimensions_pixels": {
+        "width": 384,
+        "height": 336,
+        "scale": 2
+      },
+      "contact_baseline": 156,
+      "pivot": {
+        "x": 96,
+        "y": 156
+      },
+      "godot_import_proof": true,
+      "sha256": "10ca3501c9ea78c9d2d4f80e95c0569a84eae55ae94d6091922e69e69310127b"
+    },
+    {
+      "id": "terrain.shrine_southern_road_path",
+      "category": "terrain",
+      "source": "tools/build_shrine_southern_road_path_correction.py",
+      "export": "exports/terrain/shrine-southern-road-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1152,
+        "height": 1080
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 1152,
+        "height": 1080
+      },
+      "master_dimensions_pixels": {
+        "width": 2304,
+        "height": 2160,
+        "scale": 2
+      },
+      "contact_baseline": 1080,
+      "pivot": {
+        "x": 576,
+        "y": 540
+      },
+      "godot_import_proof": true,
+      "sha256": "0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e"
+    },
+    {
+      "id": "terrain.shrine_southern_road_endpoint_blend",
+      "category": "terrain",
+      "source": "tools/build_shrine_southern_road_path_blend.py",
+      "export": "exports/terrain/shrine-southern-road-endpoint-blend.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 160
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 160
+      },
+      "master_dimensions_pixels": {
+        "width": 320,
+        "height": 320,
+        "scale": 2
+      },
+      "contact_baseline": 160,
+      "pivot": {
+        "x": 80,
+        "y": 80
+      },
+      "godot_import_proof": true,
+      "sha256": "a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720"
+    },
+    {
+      "id": "terrain.woodland_shrine_path",
+      "category": "terrain",
+      "source": "tools/build_woodland_shrine_path_junction.py",
+      "export": "exports/terrain/woodland-shrine-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 704,
+        "height": 208
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 704,
+        "height": 208
+      },
+      "master_dimensions_pixels": {
+        "width": 1408,
+        "height": 416,
+        "scale": 2
+      },
+      "contact_baseline": 208,
+      "pivot": {
+        "x": 352,
+        "y": 104
+      },
+      "godot_import_proof": true,
+      "sha256": "dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c"
+    },
+    {
+      "id": "terrain.woodland_village_edge_path",
+      "category": "terrain",
+      "source": "tools/build_woodland_village_edge_path_correction.py",
+      "export": "exports/terrain/woodland-village-edge-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 816,
+        "height": 688
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 816,
+        "height": 688
+      },
+      "master_dimensions_pixels": {
+        "width": 1632,
+        "height": 1376,
+        "scale": 2
+      },
+      "contact_baseline": 688,
+      "pivot": {
+        "x": 408,
+        "y": 344
+      },
+      "godot_import_proof": true,
+      "sha256": "ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c"
+    },
+    {
+      "id": "terrain.village_edge_stream_path",
+      "category": "terrain",
+      "source": "tools/build_village_edge_stream_path_correction.py",
+      "export": "exports/terrain/village-edge-stream-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 528
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 224,
+        "height": 528
+      },
+      "master_dimensions_pixels": {
+        "width": 448,
+        "height": 1056,
+        "scale": 2
+      },
+      "contact_baseline": 528,
+      "pivot": {
+        "x": 112,
+        "y": 264
+      },
+      "godot_import_proof": true,
+      "sha256": "b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f"
+    },
+    {
+      "id": "terrain.stream_laundry_path",
+      "category": "terrain",
+      "source": "tools/build_stream_laundry_path_correction.py",
+      "export": "exports/terrain/stream-laundry-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 432,
+        "height": 416
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 432,
+        "height": 416
+      },
+      "master_dimensions_pixels": {
+        "width": 864,
+        "height": 832,
+        "scale": 2
+      },
+      "contact_baseline": 416,
+      "pivot": {
+        "x": 216,
+        "y": 208
+      },
+      "godot_import_proof": true,
+      "sha256": "6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185"
+    },
+    {
+      "id": "terrain.clearing_closed_forest_path",
+      "category": "terrain",
+      "source": "tools/build_closed_forest_path.py",
+      "export": "exports/terrain/clearing-closed-forest-path.png",
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 552,
+        "height": 384
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 552,
+        "height": 384
+      },
+      "master_dimensions_pixels": {
+        "width": 1104,
+        "height": 768,
+        "scale": 2
+      },
+      "contact_baseline": 384,
+      "pivot": {
+        "x": 276,
+        "y": 192
+      },
+      "godot_import_proof": true,
+      "sha256": "3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451"
+    },
+    {
+      "id": "terrain.whole_channel_water",
+      "category": "terrain",
+      "export": "exports/terrain/channel-water.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_banks",
+      "category": "terrain",
+      "export": "exports/terrain/channel-banks.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_decks",
+      "category": "terrain",
+      "export": "exports/terrain/channel-decks.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_detail",
+      "category": "terrain",
+      "export": "exports/terrain/channel-detail.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.whole_channel_fringe",
+      "category": "terrain",
+      "export": "exports/terrain/channel-fringe.png",
+      "master_dimensions_pixels": {
+        "width": 5208,
+        "height": 1240,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 2604,
+        "height": 620
+      },
+      "pivot": {
+        "x": 1302,
+        "y": 310
+      },
+      "contact_baseline": 620,
+      "source": "tools/build_whole_channel.py",
+      "sha256": "1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.garden_ground_meadow",
+      "category": "terrain",
+      "export": "exports/terrain/garden-ground-meadow.png",
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 768,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 384,
+      "source": "tools/build_garden_ground.py",
+      "sha256": "a8cd9cc627c48048ec5cea9e080fff9990e37a0247f2e55f7cdc8fda848e770b",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.garden_ground_soil",
+      "category": "terrain",
+      "export": "exports/terrain/garden-ground-soil.png",
+      "master_dimensions_pixels": {
+        "width": 1024,
+        "height": 768,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 384
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 384,
+      "source": "tools/build_garden_ground.py",
+      "sha256": "8570244b7e30ade4493d58a5be495a5f9717a4d0a4393fe951ca5a5524f425fb",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.village_square_ground",
+      "category": "terrain",
+      "export": "exports/terrain/village-square-ground.png",
+      "master_dimensions_pixels": {
+        "width": 1120,
+        "height": 1120,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 560
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 560,
+        "height": 560
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 560,
+      "source": "tools/build_square_ground.py",
+      "sha256": "af2818f9a30da7f4696a42851020bd06e054633d51903649e32a4c3666db1e37",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.sickhouse_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/sickhouse-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 416,
+        "height": 172,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 208,
+        "height": 86
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 208,
+        "height": 86
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 86,
+      "source": "tools/build_sickhouse_ground.py",
+      "sha256": "216c49fbc5c3d640345b89db458414e7daec79f6204d0c7a7b63827ab2051a86",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.wagon_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/wagon-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 570,
+        "height": 184,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 285,
+        "height": 92
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 285,
+        "height": 92
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 92,
+      "source": "tools/build_wagon_ground.py",
+      "sha256": "8f2738681d3eedebfdab946ec0f67a0b71caf0bc9e06b1e962d36ea19c0393ae",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.shrine_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/shrine-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 184,
+        "height": 286,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 143
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 143
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 143,
+      "source": "tools/build_shrine_ground.py",
+      "sha256": "bfa4d01952b4b2b35da8172c5f30ca5f9566aeac5a2de507fb245c7ef6834e4b",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.laundry_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/laundry-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 184,
+        "height": 420,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 210
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 92,
+        "height": 210
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 210,
+      "source": "tools/build_laundry_ground.py",
+      "sha256": "65358c5ef294f093c993a98064e25dc5325aab877b3fec1ef76a4ee69954ed20",
+      "godot_import_proof": true
+    },
+    {
+      "id": "terrain.village_edge_entrance_ground",
+      "category": "terrain",
+      "export": "exports/terrain/village-edge-entrance-ground.png",
+      "master_dimensions_pixels": {
+        "width": 1000,
+        "height": 780,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": 390
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 500,
+        "height": 390
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0
+      },
+      "contact_baseline": 390,
+      "source": "tools/build_village_edge_ground.py",
+      "sha256": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_shrubs_01",
+      "category": "plants",
+      "export": "exports/plants/woodland-shrubs-01.png",
+      "master_dimensions_pixels": {
+        "width": 250,
+        "height": 176,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 125,
+        "height": 88
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 125,
+        "height": 88
+      },
+      "pivot": {
+        "x": 62,
+        "y": 87
+      },
+      "contact_baseline": 87,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_fallen_wood_07",
+      "category": "objects",
+      "export": "exports/objects/woodland-fallen-wood-07.png",
+      "master_dimensions_pixels": {
+        "width": 194,
+        "height": 128,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 97,
+        "height": 64
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 97,
+        "height": 64
+      },
+      "pivot": {
+        "x": 48,
+        "y": 63
+      },
+      "contact_baseline": 63,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_rocks_08",
+      "category": "objects",
+      "export": "exports/objects/woodland-rocks-08.png",
+      "master_dimensions_pixels": {
+        "width": 154,
+        "height": 80,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 77,
+        "height": 40
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 77,
+        "height": 40
+      },
+      "pivot": {
+        "x": 38,
+        "y": 39
+      },
+      "contact_baseline": 39,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_01",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-01.png",
+      "master_dimensions_pixels": {
+        "width": 156,
+        "height": 112,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 78,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 78,
+        "height": 56
+      },
+      "pivot": {
+        "x": 39,
+        "y": 55
+      },
+      "contact_baseline": 55,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_05",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-05.png",
+      "master_dimensions_pixels": {
+        "width": 74,
+        "height": 44,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 37,
+        "height": 22
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 37,
+        "height": 22
+      },
+      "pivot": {
+        "x": 18,
+        "y": 21
+      },
+      "contact_baseline": 21,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_06",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-06.png",
+      "master_dimensions_pixels": {
+        "width": 80,
+        "height": 48,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 24
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 24
+      },
+      "pivot": {
+        "x": 20,
+        "y": 23
+      },
+      "contact_baseline": 23,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_03",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-03.png",
+      "master_dimensions_pixels": {
+        "width": 116,
+        "height": 96,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 58,
+        "height": 48
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 58,
+        "height": 48
+      },
+      "pivot": {
+        "x": 29,
+        "y": 47
+      },
+      "contact_baseline": 47,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_09",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-09.png",
+      "master_dimensions_pixels": {
+        "width": 88,
+        "height": 56,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 44,
+        "height": 28
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 44,
+        "height": 28
+      },
+      "pivot": {
+        "x": 22,
+        "y": 27
+      },
+      "contact_baseline": 27,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_shrubs_08",
+      "category": "plants",
+      "export": "exports/plants/woodland-shrubs-08.png",
+      "master_dimensions_pixels": {
+        "width": 230,
+        "height": 160,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 115,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 115,
+        "height": 80
+      },
+      "pivot": {
+        "x": 57,
+        "y": 79
+      },
+      "contact_baseline": 79,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_fallen_wood_03",
+      "category": "objects",
+      "export": "exports/objects/woodland-fallen-wood-03.png",
+      "master_dimensions_pixels": {
+        "width": 220,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 110,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 110,
+        "height": 72
+      },
+      "pivot": {
+        "x": 55,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_rocks_03",
+      "category": "objects",
+      "export": "exports/objects/woodland-rocks-03.png",
+      "master_dimensions_pixels": {
+        "width": 196,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 98,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 98,
+        "height": 72
+      },
+      "pivot": {
+        "x": 49,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_02",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-02.png",
+      "master_dimensions_pixels": {
+        "width": 204,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 102,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 102,
+        "height": 72
+      },
+      "pivot": {
+        "x": 51,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_07",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-07.png",
+      "master_dimensions_pixels": {
+        "width": 100,
+        "height": 64,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 32
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 32
+      },
+      "pivot": {
+        "x": 25,
+        "y": 31
+      },
+      "contact_baseline": 31,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_fallen_wood_09",
+      "category": "objects",
+      "export": "exports/objects/woodland-fallen-wood-09.png",
+      "master_dimensions_pixels": {
+        "width": 150,
+        "height": 80,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 75,
+        "height": 40
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 75,
+        "height": 40
+      },
+      "pivot": {
+        "x": 37,
+        "y": 39
+      },
+      "contact_baseline": 39,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_08",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-08.png",
+      "master_dimensions_pixels": {
+        "width": 118,
+        "height": 72,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 59,
+        "height": 36
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 59,
+        "height": 36
+      },
+      "pivot": {
+        "x": 29,
+        "y": 35
+      },
+      "contact_baseline": 35,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_shrubs_07",
+      "category": "plants",
+      "export": "exports/plants/woodland-shrubs-07.png",
+      "master_dimensions_pixels": {
+        "width": 152,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 76,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 76,
+        "height": 72
+      },
+      "pivot": {
+        "x": 38,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d",
+      "godot_import_proof": true
+    }
+  ],
+  "whole_channel_provenance": {
+    "specification": "art-direction/whole-channel-runtime-preview/stage-2-specification.json",
+    "specification_sha256": "cdea9451b0cc2370fb715505d8abca623c51678b062eb2db5b128601d4a60711",
+    "recipe_sha256": "d1b5467aae3d00e48e7cfbc6dd646cf465d049d166ebdac4738b76363037f2c9",
+    "retained_recipe_sha256": "63e8e8e6f44e880664d000a432b19ec247b6ef63a05201d5bc81e77ebc77d492",
+    "world_origin": [
+      -64,
+      212
+    ],
+    "world_position": [
+      1238,
+      522
+    ],
+    "import_fix_alpha_border": false,
+    "master_scaling": "nearest-neighbour 2x of exact approved export"
+  },
+  "garden_ground_provenance": {
+    "authorization": "art-direction/garden-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "d6c9e2f9f9e58454a1c2c214467c375b03f64dd83e27f65b0431a8a0ee1bd65a",
+    "specification_sha256": "792a9da034f36c6b7625301a17271b98e1a8bd9ee6fe7a290af016fcb306d400",
+    "recipe_sha256": "6c1e0c4bf227673aea19c52ac5b1a7c4c124c09d2aa7a69b20b5be5472431c14",
+    "world_origin": [
+      2048,
+      1120
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "nearest 2x masked paint; hidden independent coverage reference; empty Corrections"
+  },
+  "square_ground_provenance": {
+    "authorization": "art-direction/square-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "aea6648fa40fb50ad9ca9b7852b058b5f8d1b41cdd0be0f4a3fddd226c834548",
+    "specification_sha256": "207587acafc272a878561090d398cf2fb8640589f21e9c54b97a1219460893b3",
+    "recipe_sha256": "17b72c25271a24ab2339e78629a95023faca0421eb0577e61c465d0711c59dac",
+    "world_origin": [
+      1920,
+      620
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "sickhouse_ground_provenance": {
+    "authorization": "art-direction/sickhouse-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "3557ce4deb13d0f976eb339bb5f467dc8b984103bfdf80bdbb2fc881bde4fa75",
+    "specification_sha256": "7b5b3448eed8768680abfac05b7d1a83d0f0170f354c4856a0a977033bdcbbbc",
+    "recipe_sha256": "8361213f67be6b689c1211fd35e10ef1d7252f794cf832a99c0c384142bfb45c",
+    "world_origin": [
+      2408,
+      1248
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "wagon_ground_provenance": {
+    "authorization": "art-direction/wagon-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "4a4ec0eb31c1c14aa40ab4a0494e7c7cc7afc898f89cc9ab9f4e448b6c810501",
+    "specification_sha256": "00d35190a50e135576da87e166f40c9a0eaaab0e78d9b7ebc7961172b189ce06",
+    "recipe_sha256": "e5c51e8333d49dbf262060e8f25ce3235cc1a1c5b9c9ec41e439152291232bb3",
+    "world_origin": [
+      1633,
+      1512
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "shrine_ground_provenance": {
+    "authorization": "art-direction/shrine-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "c9a58d4293798125add4ce853fdb7f54809b8ff892d025e610d1cd163db98b99",
+    "specification_sha256": "c0d6764d26efa2b5e3b5072564dc19d7c6fdab9e9b9037745760b170e1c06520",
+    "recipe_sha256": "5343f73338ff816c3b54270d374f28e09f4cc2684cb9c509fb33357e9908b8c6",
+    "world_origin": [
+      596,
+      250
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "laundry_ground_provenance": {
+    "authorization": "art-direction/laundry-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "9070a6a8a1ba8f560457f42f5d2945b52b0f1715f0d819fbf2f26a5f7a6232b7",
+    "specification_sha256": "53d3ac0e237f729fa85d0f3fba34d1453f782aaadf43af27f4c7d0176f05b688",
+    "recipe_sha256": "70678dbf27afe6537e35e4d15af6d6dfed139bfe651b264148ea2b3e83a5ac8d",
+    "world_origin": [
+      1564,
+      219
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "village_edge_ground_provenance": {
+    "authorization": "art-direction/village-edge-ground-runtime-promotion/authorization.json",
+    "authorization_sha256": "5c39da49cb6d9d3c3d79170ba14fc1cb4f3c5ae2b44d218446760a3878245588",
+    "specification_sha256": "b9291062c771cb1d17eeb7a3fc368526c34645432b61e67ff5e0c882a3a1e058",
+    "recipe_sha256": "0d0765f79a0ff5714460a582377acf57ec84ccc5374de78b85a68b8efe865ab1",
+    "world_origin": [
+      1480,
+      620
+    ],
+    "paint_phase": [
+      0,
+      0
+    ],
+    "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "woodland_clearing_dressing_provenance": {
+    "authorization": "art-direction/woodland-clearing-dressing-runtime-promotion/authorization.json",
+    "authorization_sha256": "a167a9cc2ebe51133d67fa67de5d52b8446f667d96b758a5fb2e61b9f0da8142",
+    "specification_sha256": "0fb861f0eb73640f920658e38297b564a91cd7f80c7f34c66ba4f92d32b13fa5",
+    "recipe_sha256": "7ccaf5c808a4a35c1f3f293abaa8bfd751edca5988815c9017840f4d30da12bd",
+    "selected_variant": "grouped",
+    "placements": [
+      {
+        "asset_id": "plants.woodland_shrubs_01",
+        "origin": [
+          920,
+          132
+        ],
+        "world_pivot": [
+          982,
+          219
+        ],
+        "order": 1
+      },
+      {
+        "asset_id": "objects.woodland_fallen_wood_07",
+        "origin": [
+          1050,
+          192
+        ],
+        "world_pivot": [
+          1098,
+          255
+        ],
+        "order": 2
+      },
+      {
+        "asset_id": "objects.woodland_rocks_08",
+        "origin": [
+          628,
+          382
+        ],
+        "world_pivot": [
+          666,
+          421
+        ],
+        "order": 3
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_01",
+        "origin": [
+          1160,
+          156
+        ],
+        "world_pivot": [
+          1199,
+          211
+        ],
+        "order": 4
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_05",
+        "origin": [
+          795,
+          395
+        ],
+        "world_pivot": [
+          813,
+          416
+        ],
+        "order": 5
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_06",
+        "origin": [
+          836,
+          170
+        ],
+        "world_pivot": [
+          856,
+          193
+        ],
+        "order": 6
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_03",
+        "origin": [
+          1140,
+          80
+        ],
+        "world_pivot": [
+          1169,
+          127
+        ],
+        "order": 7
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_09",
+        "origin": [
+          912,
+          206
+        ],
+        "world_pivot": [
+          934,
+          233
+        ],
+        "order": 8
+      },
+      {
+        "asset_id": "plants.woodland_shrubs_08",
+        "origin": [
+          1054,
+          114
+        ],
+        "world_pivot": [
+          1111,
+          193
+        ],
+        "order": 9
+      },
+      {
+        "asset_id": "objects.woodland_fallen_wood_03",
+        "origin": [
+          968,
+          186
+        ],
+        "world_pivot": [
+          1023,
+          257
+        ],
+        "order": 10
+      },
+      {
+        "asset_id": "objects.woodland_rocks_03",
+        "origin": [
+          1128,
+          94
+        ],
+        "world_pivot": [
+          1177,
+          165
+        ],
+        "order": 11
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_02",
+        "origin": [
+          860,
+          118
+        ],
+        "world_pivot": [
+          911,
+          189
+        ],
+        "order": 12
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_07",
+        "origin": [
+          954,
+          226
+        ],
+        "world_pivot": [
+          979,
+          257
+        ],
+        "order": 13
+      },
+      {
+        "asset_id": "objects.woodland_fallen_wood_09",
+        "origin": [
+          670,
+          394
+        ],
+        "world_pivot": [
+          707,
+          433
+        ],
+        "order": 14
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_08",
+        "origin": [
+          772,
+          400
+        ],
+        "world_pivot": [
+          801,
+          435
+        ],
+        "order": 15
+      },
+      {
+        "asset_id": "plants.woodland_shrubs_07",
+        "origin": [
+          1020,
+          96
+        ],
+        "world_pivot": [
+          1058,
+          167
+        ],
+        "order": 16
+      }
+    ],
+    "master_policy": "exact approved 2x OpenRaster bytes; all layers and merged paint retained"
+  }
+}

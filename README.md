@@ -88,11 +88,16 @@ placement crops; thirty static colour-vision/luminance images retain every alter
 Full artwork rectangles preserve route, entrance, interaction and label clearance.
 The owner selected grouped on 2026-10-06, superseding the earlier sparse choice:
 [exact selection](art-direction/woodland-clearing-dressing/owner-selection.json).
-The [named runtime scope](art-direction/woodland-clearing-dressing-runtime-scope/README.md)
-proposes exactly its sixteen native placements. Runtime installation approval and
-actual runtime-view confirmation remain separate. Product files, approved
-paint/pivots/masters and physical owners are unchanged; historical unselected
-comparison metadata is superseded by the exact selection record.
+The owner approved the [exact named runtime scope](art-direction/woodland-clearing-dressing-runtime-scope/owner-approval.json).
+Its [runtime installation](art-direction/woodland-clearing-dressing-runtime-promotion/README.md)
+adds sixteen unchanged native modules with independent proof/runtime imports and
+editable masters, bringing the inventory to 113 assets / 64 masters. Approved
+paint/pivots/draw order and every previous scene block and physical owner are
+retained. The owner [confirmed all eight actual runtime views](art-direction/woodland-clearing-dressing-runtime-promotion/owner-runtime-acceptance.json)
+on 2026-10-06; all eight paired baselines and runtime captures equal the selected
+external RGBA exactly. Fresh quality passes with 5,033 tests, all Godot smokes and
+cold import. The complete grouped runtime slice is closed; historical unselected
+and pending metadata is superseded by terminal acceptance.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

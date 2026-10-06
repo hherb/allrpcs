@@ -3566,6 +3566,486 @@
       "source": "tools/build_village_edge_ground.py",
       "sha256": "bc9f123645417a2bd43139fffc2bf33e890b9e8fe212b85d7cbb9f5a7888dd56",
       "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_shrubs_01",
+      "category": "plants",
+      "export": "exports/plants/woodland-shrubs-01.png",
+      "master_dimensions_pixels": {
+        "width": 250,
+        "height": 176,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 125,
+        "height": 88
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 125,
+        "height": 88
+      },
+      "pivot": {
+        "x": 62,
+        "y": 87
+      },
+      "contact_baseline": 87,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "bf92a829093ea02ade39269114452b30cb8d330d130c2d82b6e85ef2cbd6fea8",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_fallen_wood_07",
+      "category": "objects",
+      "export": "exports/objects/woodland-fallen-wood-07.png",
+      "master_dimensions_pixels": {
+        "width": 194,
+        "height": 128,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 97,
+        "height": 64
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 97,
+        "height": 64
+      },
+      "pivot": {
+        "x": 48,
+        "y": 63
+      },
+      "contact_baseline": 63,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "ac1da5395801e2d541f41d9bbca2fb97484e2522018e63f23c916bfc480d807e",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_rocks_08",
+      "category": "objects",
+      "export": "exports/objects/woodland-rocks-08.png",
+      "master_dimensions_pixels": {
+        "width": 154,
+        "height": 80,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 77,
+        "height": 40
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 77,
+        "height": 40
+      },
+      "pivot": {
+        "x": 38,
+        "y": 39
+      },
+      "contact_baseline": 39,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "9ded7c4ff8c1ab17475a671ec4088bc95d271c2ea01f6ff3564ac89240c5fff7",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_01",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-01.png",
+      "master_dimensions_pixels": {
+        "width": 156,
+        "height": 112,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 78,
+        "height": 56
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 78,
+        "height": 56
+      },
+      "pivot": {
+        "x": 39,
+        "y": 55
+      },
+      "contact_baseline": 55,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "03a4342048279cd2bf349585edff3653808ee0e1c1244793f878507f8eafe18e",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_05",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-05.png",
+      "master_dimensions_pixels": {
+        "width": 74,
+        "height": 44,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 37,
+        "height": 22
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 37,
+        "height": 22
+      },
+      "pivot": {
+        "x": 18,
+        "y": 21
+      },
+      "contact_baseline": 21,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "7115eb217f62fe1301577a492e4c60d6ebfb5525937aa4d2539e635049877c92",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_06",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-06.png",
+      "master_dimensions_pixels": {
+        "width": 80,
+        "height": 48,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 24
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 40,
+        "height": 24
+      },
+      "pivot": {
+        "x": 20,
+        "y": 23
+      },
+      "contact_baseline": 23,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "c78b3056157654e52bad0c16e881b866f10c78ccb0d9c556bdf9160a7427af9a",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_03",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-03.png",
+      "master_dimensions_pixels": {
+        "width": 116,
+        "height": 96,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 58,
+        "height": 48
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 58,
+        "height": 48
+      },
+      "pivot": {
+        "x": 29,
+        "y": 47
+      },
+      "contact_baseline": 47,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "cc4c9d2fc1e3e89e08c914b4968d91c10dbc80bf05b5dcbaa230ce341eab4bcf",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_09",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-09.png",
+      "master_dimensions_pixels": {
+        "width": 88,
+        "height": 56,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 44,
+        "height": 28
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 44,
+        "height": 28
+      },
+      "pivot": {
+        "x": 22,
+        "y": 27
+      },
+      "contact_baseline": 27,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "bd4f2e501263ae95af633a80bf8728bfdea6dd1e3fd0e6dd2548e2b03357ae2e",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_shrubs_08",
+      "category": "plants",
+      "export": "exports/plants/woodland-shrubs-08.png",
+      "master_dimensions_pixels": {
+        "width": 230,
+        "height": 160,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 115,
+        "height": 80
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 115,
+        "height": 80
+      },
+      "pivot": {
+        "x": 57,
+        "y": 79
+      },
+      "contact_baseline": 79,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "2cfb8c37a2c0261f6486a305b859bf5ad345ebb50016ccfc4fa328a2dd45f2c6",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_fallen_wood_03",
+      "category": "objects",
+      "export": "exports/objects/woodland-fallen-wood-03.png",
+      "master_dimensions_pixels": {
+        "width": 220,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 110,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 110,
+        "height": 72
+      },
+      "pivot": {
+        "x": 55,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "23339dcf5a37df3fd3f214e5afaf10a2c6c8e08ad20f6d0d537162d3cde44887",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_rocks_03",
+      "category": "objects",
+      "export": "exports/objects/woodland-rocks-03.png",
+      "master_dimensions_pixels": {
+        "width": 196,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 98,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 98,
+        "height": 72
+      },
+      "pivot": {
+        "x": 49,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "c9acf892ce2027df888a30f1729612b2b21697f20994d1145ed8651b1144cbae",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_02",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-02.png",
+      "master_dimensions_pixels": {
+        "width": 204,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 102,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 102,
+        "height": 72
+      },
+      "pivot": {
+        "x": 51,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "c6a9b62efce3d49853a37d9dc391188d3a9e6866d85da56cfd25330db507a95d",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_07",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-07.png",
+      "master_dimensions_pixels": {
+        "width": 100,
+        "height": 64,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 32
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 32
+      },
+      "pivot": {
+        "x": 25,
+        "y": 31
+      },
+      "contact_baseline": 31,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "ea3bb0fd8f244c72bc2d82289529bd645fd602994497e90a9eabe808c3e543c2",
+      "godot_import_proof": true
+    },
+    {
+      "id": "objects.woodland_fallen_wood_09",
+      "category": "objects",
+      "export": "exports/objects/woodland-fallen-wood-09.png",
+      "master_dimensions_pixels": {
+        "width": 150,
+        "height": 80,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 75,
+        "height": 40
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 75,
+        "height": 40
+      },
+      "pivot": {
+        "x": 37,
+        "y": 39
+      },
+      "contact_baseline": 39,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "d213bd2ae87c220aa9be097de869df435bd7d59923177e0ab1a8cd35e8b65861",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_environmental_details_08",
+      "category": "plants",
+      "export": "exports/plants/woodland-environmental-details-08.png",
+      "master_dimensions_pixels": {
+        "width": 118,
+        "height": 72,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 59,
+        "height": 36
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 59,
+        "height": 36
+      },
+      "pivot": {
+        "x": 29,
+        "y": 35
+      },
+      "contact_baseline": 35,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "3bac6c678eeb7000d4fa4f0767e6c80d1f9124479e49d3df76a2cb2f781e1b76",
+      "godot_import_proof": true
+    },
+    {
+      "id": "plants.woodland_shrubs_07",
+      "category": "plants",
+      "export": "exports/plants/woodland-shrubs-07.png",
+      "master_dimensions_pixels": {
+        "width": 152,
+        "height": 144,
+        "scale": 2
+      },
+      "logical_rect": {
+        "x": 0,
+        "y": 0,
+        "width": 76,
+        "height": 72
+      },
+      "export_rect_pixels": {
+        "x": 0,
+        "y": 0,
+        "width": 76,
+        "height": 72
+      },
+      "pivot": {
+        "x": 38,
+        "y": 71
+      },
+      "contact_baseline": 71,
+      "source": "tools/build_woodland_clearing_dressing.py",
+      "sha256": "a7e49bbc01cac88ae0890f5c9aae55092f552aef317ea0d1afab5eceac2caa3d",
+      "godot_import_proof": true
     }
   ],
   "whole_channel_provenance": {
@@ -3688,5 +4168,207 @@
       0
     ],
     "master_policy": "exact nearest2x masked paint; hidden coverage/raw paint; empty Corrections"
+  },
+  "woodland_clearing_dressing_provenance": {
+    "authorization": "art-direction/woodland-clearing-dressing-runtime-promotion/authorization.json",
+    "authorization_sha256": "a167a9cc2ebe51133d67fa67de5d52b8446f667d96b758a5fb2e61b9f0da8142",
+    "specification_sha256": "0fb861f0eb73640f920658e38297b564a91cd7f80c7f34c66ba4f92d32b13fa5",
+    "recipe_sha256": "9b3dc5a4772d1a0dd7dd22424698e8b01a8bf0141cf2d2e717be3101baed3063",
+    "selected_variant": "grouped",
+    "placements": [
+      {
+        "asset_id": "plants.woodland_shrubs_01",
+        "origin": [
+          920,
+          132
+        ],
+        "world_pivot": [
+          982,
+          219
+        ],
+        "order": 1
+      },
+      {
+        "asset_id": "objects.woodland_fallen_wood_07",
+        "origin": [
+          1050,
+          192
+        ],
+        "world_pivot": [
+          1098,
+          255
+        ],
+        "order": 2
+      },
+      {
+        "asset_id": "objects.woodland_rocks_08",
+        "origin": [
+          628,
+          382
+        ],
+        "world_pivot": [
+          666,
+          421
+        ],
+        "order": 3
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_01",
+        "origin": [
+          1160,
+          156
+        ],
+        "world_pivot": [
+          1199,
+          211
+        ],
+        "order": 4
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_05",
+        "origin": [
+          795,
+          395
+        ],
+        "world_pivot": [
+          813,
+          416
+        ],
+        "order": 5
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_06",
+        "origin": [
+          836,
+          170
+        ],
+        "world_pivot": [
+          856,
+          193
+        ],
+        "order": 6
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_03",
+        "origin": [
+          1140,
+          80
+        ],
+        "world_pivot": [
+          1169,
+          127
+        ],
+        "order": 7
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_09",
+        "origin": [
+          912,
+          206
+        ],
+        "world_pivot": [
+          934,
+          233
+        ],
+        "order": 8
+      },
+      {
+        "asset_id": "plants.woodland_shrubs_08",
+        "origin": [
+          1054,
+          114
+        ],
+        "world_pivot": [
+          1111,
+          193
+        ],
+        "order": 9
+      },
+      {
+        "asset_id": "objects.woodland_fallen_wood_03",
+        "origin": [
+          968,
+          186
+        ],
+        "world_pivot": [
+          1023,
+          257
+        ],
+        "order": 10
+      },
+      {
+        "asset_id": "objects.woodland_rocks_03",
+        "origin": [
+          1128,
+          94
+        ],
+        "world_pivot": [
+          1177,
+          165
+        ],
+        "order": 11
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_02",
+        "origin": [
+          860,
+          118
+        ],
+        "world_pivot": [
+          911,
+          189
+        ],
+        "order": 12
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_07",
+        "origin": [
+          954,
+          226
+        ],
+        "world_pivot": [
+          979,
+          257
+        ],
+        "order": 13
+      },
+      {
+        "asset_id": "objects.woodland_fallen_wood_09",
+        "origin": [
+          670,
+          394
+        ],
+        "world_pivot": [
+          707,
+          433
+        ],
+        "order": 14
+      },
+      {
+        "asset_id": "plants.woodland_environmental_details_08",
+        "origin": [
+          772,
+          400
+        ],
+        "world_pivot": [
+          801,
+          435
+        ],
+        "order": 15
+      },
+      {
+        "asset_id": "plants.woodland_shrubs_07",
+        "origin": [
+          1020,
+          96
+        ],
+        "world_pivot": [
+          1058,
+          167
+        ],
+        "order": 16
+      }
+    ],
+    "master_policy": "exact approved 2x OpenRaster bytes; all layers and merged paint retained"
   }
 }

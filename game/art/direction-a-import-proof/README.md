@@ -1,6 +1,6 @@
 # Direction A Godot import proof
 
-These 95 PNG files are exact byte-for-byte copies of the corrected production exports in
+These 113 PNG files are exact byte-for-byte copies of the corrected production exports in
 `art-direction/production-proof/corrected`. They are intentionally used only by
 `DirectionAImportProof.tscn`; `Main.tscn` and ordinary gameplay do not reference them. The isolated
 set now also contains the three feasibility-only Stream modules: repeatable water, a mirrored bank
@@ -56,3 +56,12 @@ The named Laundry ground scope adds one exact feather-24 packed-earth sample
 The proof copy has independent lossless import ownership; its pixel-identical
 runtime copy belongs to `LaundryGroundPresentation/PackedEarth`. The owner confirmed all six actual runtime views on
 2026-10-05; the Laundry slice is complete.
+
+The owner-approved grouped Woodland Clearing scope adds sixteen independent native
+samples under `WoodlandClearingDressingProof` at `(6800,3500)`. Each texture is an
+exact approved environment export with lossless import, no alpha-border processing,
+no premultiplication and a UID distinct from its actual runtime counterpart. The
+production inventory is now 113 assets / 64 unchanged editable masters. Ordinary
+Main uses only the independent `WoodlandClearingDressingPresentation` runtime copies;
+arrangement selection and named installation scope are approved, with actual runtime
+view confirmation recorded separately in the promotion packet.
