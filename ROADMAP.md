@@ -326,7 +326,8 @@ The [terminal acceptance](art-direction/seeker-cloak-reference-gait-revision/own
 binds the selected candidate and isolated proof. All sixteen accepted front/back
 poses and every predecessor remain unchanged. Use this as the reference for future
 walking animation work. Historical pending fields are superseded; the whole gait
-correction is closed and the deferred audio-policy slice is restored.
+correction and the approved audio-policy slice are closed. The audio bus/control
+implementation is now verified; material sounds and their audition remain unfinished.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -362,11 +363,26 @@ passing full-suite evidence and run fresh scoped validation for the newly approv
 
 ### 9.3 Sound and music
 
-- [ ] Establish the audio direction and dynamic range policy.
+The [audio direction and dynamic range policy](audio-direction/README.md) is owner-approved
+on 2026-10-07: quiet tactile naturalism, the existing four authored rain-based regions,
+sparse optional music, perception-bound cues/captions, independent category controls and
+explicitly provisional mix targets. [Terminal acceptance](audio-direction/owner-acceptance.json)
+binds the exact reviewed policy files and supersedes their historical proposal fields.
+The [structured policy](audio-direction/dynamic-range-policy.json) remains a design record;
+no production assets have been auditioned or installed. The
+[bus/control implementation](audio-direction/buses-controls.md) is complete under the
+[approved runtime scope](audio-direction/buses-controls-authority.json): five sibling buses
+plus Master, persistent independent gains/mutes, accessible settings, functional range/mono
+controls and disposable foreground/routing diagnostics. [Verification](audio-direction/buses-controls-verification.json)
+records 5,054 tests, the complete Godot smoke suite and 38 measured final-output probes.
+The next boundary is the finite source/licensing plan for the accepted collective audition;
+material sounds, positional emitters, music, real listening and voice remain unfinished.
+
+- [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.
 - [ ] Add restrained music that supports slow investigation without manufacturing urgency.
-- [ ] Add volume buses and independent controls for music, ambience, effects, dialogue, and
+- [x] Add volume buses and independent controls for music, ambience, effects, dialogue, and
   future speech.
 
 Acceptance:

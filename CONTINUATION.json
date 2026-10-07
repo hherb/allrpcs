@@ -252,6 +252,38 @@
           "sha256": "e7b5e543b772e7a47b233902c87e94b6b5036b9e7ef494fa1ddf86f4c32b75ad"
         }
       ]
+    },
+    {
+      "id": "phase9-audio-direction-dynamic-range-policy",
+      "reason": "Owner approved the complete retained audio policy on 2026-10-07 with the exact statement approved. Policy review is closed; numerical targets remain provisional and unmeasured. No new listening, asset, runtime or publication authority is inferred.",
+      "evidence": [
+        {
+          "path": "audio-direction/owner-acceptance.json",
+          "sha256": "a3f819bf4bcc61a3489329f6dbb38cf7dccc5dcec2bf6fee04c63756e5d5c2de"
+        },
+        {
+          "path": "audio-direction/README.md",
+          "sha256": "9f44c2c68c1b2262f467a7d662dae89be1a0690ea24910304964a87cb3ab7aba"
+        },
+        {
+          "path": "audio-direction/dynamic-range-policy.json",
+          "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+        }
+      ]
+    },
+    {
+      "id": "phase9-audio-buses-independent-controls",
+      "reason": "Owner authorized the exact runtime scope with scope approved on 2026-10-07. Five sibling buses plus Master, persistent accessible controls and disposable routing/mix proof are implemented and verified: 5,054 unit tests, 294 Godot launches and 38 rendered-output probes pass. Whole named slice is complete; production assets/listening, voice and publication are not claimed.",
+      "evidence": [
+        {
+          "path": "audio-direction/buses-controls-authority.json",
+          "sha256": "768430e5e1d7b8d62a73108966a3229b4ecd178f9cb1e23407078f7a64c8cfe4"
+        },
+        {
+          "path": "audio-direction/buses-controls-verification.json",
+          "sha256": "9a98e1f76152f05d10d17a21815895fb2aff3475dc90fafdeb870f60983598fb"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -349,19 +381,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-audio-direction-dynamic-range-policy",
-    "title": "Establish the audio direction and dynamic range policy",
+    "id": "phase9-audio-material-source-plan",
+    "title": "Prepare the source and licensing plan for the material sound audition",
     "status": "ready",
-    "workstream": "audio-direction",
-    "roadmap_item": "- [ ] Establish the audio direction and dynamic range policy.",
-    "missing_deliverable": "Phase 9.3 has no bounded audio direction or dynamic-range policy specifying cue hierarchy, quiet investigation, ambience/music roles and accessible independent controls.",
-    "instructions": "Read the settled game direction and existing audio constraints, then write one concrete Phase 9.3 policy covering sonic palette, foreground/background cue hierarchy, meaningful off-screen cues, restrained music, provisional loudness/headroom and ducking targets, future voice coexistence, accessibility and the required independent buses/controls. Keep numerical targets explicitly provisional until measured against real audio. Identify asset classes and a finite later audition/implementation boundary. Prepare the policy for owner review; record only the authority actually granted. Do not generate, purchase or install audio, add runtime buses or settings, implement footsteps/music/voice, change accepted visuals or reopen completed character/ground/dressing scopes.",
-    "completion_condition": "One coherent audio direction and dynamic-range policy, with explicit provisional targets, cue/bus responsibilities, accessibility constraints and a finite next implementation boundary, is retained and reviewed; any needed owner choice is stated once. Close the policy slice when its deliverable is complete and select one named unfinished roadmap item.",
+    "workstream": "audio-material-source-planning",
+    "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+    "missing_deliverable": "The accepted policy defines the finite 16-candidate collective audition, but a source/licensing/provenance and acquisition-method plan does not yet exist. Material audio assets and emitters remain absent.",
+    "instructions": "Prepare one concrete source and licensing plan for the accepted 16-candidate audition, beginning with the named unfinished material-sound item. Carry the approved policy and completed bus/control implementation forward unchanged. Use read-only catalogue/source/license research to identify eligible sources, rights, edit lineage, expected costs and a practical acquisition method for the four regional beds, four walking materials, six action/feedback excerpts and two optional music excerpts. Preserve the complete-series review boundary and existing authored material/world constraints. Do not download, generate, record, purchase or install audio, run a new audition, connect runtime emitters or implement voice/providers. If actual asset-acquisition authority is needed, prepare the concrete plan first and state only that missing decision once. Do not reopen policy, bus controls, gait or accepted visual scopes. The owner authorized publication of the completed policy and bus/control work on 2026-10-07; future source-plan work has no additional publication authority.",
+    "completion_condition": "One finite source/acquisition plan and structured provenance shortlist account for all sixteen candidate classes, eligibility/rights, costs and edit/measurement records, and identify the actual next acquisition authority without claiming that the material-sound roadmap item is implemented.",
     "outputs": [
-      "audio-direction/README.md",
-      "audio-direction/dynamic-range-policy.json"
+      "audio-direction/material-audition-source-plan.md",
+      "audio-direction/material-audition-source-plan.json"
     ],
-    "boundary": "Documentation and reviewable audio-policy proposal only. Main, gameplay, runtime audio/assets/buses/settings, providers, voice implementation, accepted visual scopes, release/signing and Git publication stay outside this slice."
+    "boundary": "Read-only source/license research and a reviewable acquisition plan only. Audio acquisition/generation/recording/purchase, audition, runtime sound emitters, world semantics, accepted visuals, voice/providers, release/signing and Git publication remain outside this slice."
   },
   "deferred_slices": []
 }

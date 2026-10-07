@@ -1,0 +1,33 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3]
+
+[sub_resource type="AudioEffectCompressor" id="Compressor"]
+threshold = -30.0
+ratio = 4.0
+gain = 0.0
+attack_us = 2000.0
+release_ms = 250.0
+
+[sub_resource type="AudioEffectStereoEnhance" id="Mono"]
+pan_pullout = 0.0
+
+[sub_resource type="AudioEffectHardLimiter" id="Limiter"]
+ceiling_db = -1.0
+
+[resource]
+bus/0/name = &"Master"
+bus/0/effect/0/effect = SubResource("Compressor")
+bus/0/effect/0/enabled = false
+bus/0/effect/1/effect = SubResource("Mono")
+bus/0/effect/1/enabled = false
+bus/0/effect/2/effect = SubResource("Limiter")
+bus/0/effect/2/enabled = true
+bus/1/name = &"Music"
+bus/1/send = &"Master"
+bus/2/name = &"Ambience"
+bus/2/send = &"Master"
+bus/3/name = &"Effects"
+bus/3/send = &"Master"
+bus/4/name = &"Dialogue"
+bus/4/send = &"Master"
+bus/5/name = &"Speech"
+bus/5/send = &"Master"

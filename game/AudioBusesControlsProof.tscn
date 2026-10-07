@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://AudioBusesControlsProof.cs" id="Proof"]
+[ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="Storage"]
+[ext_resource type="Script" path="res://AudioSettingsController.cs" id="Settings"]
+[ext_resource type="PackedScene" path="res://AudioSettingsPanel.tscn" id="Panel"]
+
+[node name="AudioBusesControlsProof" type="Node"]
+script = ExtResource("Proof")
+
+[node name="AudioSettingsStorageController" type="Node" parent="."]
+script = ExtResource("Storage")
+Disposable = true
+
+[node name="AudioSettingsController" type="Node" parent="."]
+script = ExtResource("Settings")
+
+[node name="AudioSettingsPanel" parent="." instance=ExtResource("Panel")]

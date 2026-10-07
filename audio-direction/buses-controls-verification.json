@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "status": "passed",
+  "scope_id": "phase9-audio-buses-independent-controls",
+  "authority": {
+    "path": "audio-direction/buses-controls-authority.json",
+    "sha256": "768430e5e1d7b8d62a73108966a3229b4ecd178f9cb1e23407078f7a64c8cfe4"
+  },
+  "baseline": {
+    "path": "audio-direction/buses-controls-baseline.json",
+    "sha256": "f84af9d35ff1b0b023e80eb8c45bbda376c0fa801e2f24c7d56ac92baf91dac4"
+  },
+  "implementation": "Five sibling category buses plus Master; persistent volume/mutes and accessible Main panel; functional range compression and mono; presentation foreground leases; disposable stopped-by-default signal proof.",
+  "product_checks": {
+    "command": "PATH=<bundled Python bin>:$PATH ./scripts/quality-audio.sh",
+    "exit_code": 0,
+    "format": "passed",
+    "build": "passed, zero warnings/errors",
+    "unit_tests": {
+      "Domain": 2839,
+      "Application": 935,
+      "Infrastructure": 1272,
+      "Architecture": 8,
+      "total": 5054,
+      "new_audio_tests": 21
+    },
+    "scenario_validator": "passed",
+    "existing_godot_launches": 293,
+    "new_audio_main_launches": 1,
+    "godot_errors": 0,
+    "import_parity": "113 exact source/import hash matches",
+    "boundary_rejection_probes": 3
+  },
+  "final_ui_check": {
+    "status": "passed",
+    "command": "ALLRPCS_AUDIO_MAIN_CHECK=1 ALLRPCS_AUDIO_PREVIEW_PATH=/tmp/allrpcs-audio-panel.png ALLRPCS_CHARACTER_MODEL_COMPOSITION_DISABLED=1 ALLRPCS_ORDINARY_PARTICIPATION_SMOKE_MODEL=1 godot --path game --rendering-method gl_compatibility --quit-after 180",
+    "checks": [
+      "six actual buses",
+      "entry does not obscure compact HUD",
+      "hidden startup",
+      "1280x720 and 1600x900 panel fit",
+      "initial and restored focus",
+      "Tab/Escape consume closure",
+      "unchanged dialogue text and exact world-time snapshot"
+    ],
+    "visual_inspection": "Settings panel capture inspected; labels, six rows, toggles and footer fit without clipping."
+  },
+  "rendered_output": {
+    "status": "passed",
+    "probe_count": 38,
+    "duration_seconds": 38.016666666666666,
+    "sample_rate": 48000,
+    "sample_width_bytes": 4,
+    "measurement_point": "Final stereo output, after Master volume/mute and effects",
+    "default_probe_contrast_db": 27.639187190294624,
+    "reduced_probe_contrast_db": 10.317464455112418,
+    "checked": [
+      "five independent category gains and zero/mute",
+      "Master zero/mute",
+      "mono normalized averaging and stereo restoration",
+      "functional compressor",
+      "speech and overlapping foreground reductions",
+      "cancelled speech and reading release",
+      "muted ducking",
+      "optional effect reduction and intact required effects"
+    ],
+    "render_command": "ALLRPCS_AUDIO_CHECK=1 ALLRPCS_AUDIO_TIMELINE=/tmp/allrpcs-audio-output/timeline.json godot --path game res://AudioBusesControlsProof.tscn --write-movie /tmp/allrpcs-audio-output/probes.png --fixed-fps 60 --resolution 1280x720 --rendering-method gl_compatibility --quit-after 2500",
+    "replay_command": "python3 scripts/check-audio-output.py --wave audio-direction/buses-controls-review/probes.wav --timeline audio-direction/buses-controls-review/timeline.json --output /tmp/allrpcs-audio-measurements.json"
+  },
+  "source_inputs": [
+    {
+      "path": "game/Main.tscn",
+      "sha256": "4658a89de6d943008a43b145bb82916091fe0829af518c8a72637b8f9dfd1c57",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/Main.tscn"
+    },
+    {
+      "path": "game/OptionalOverlayVisibilityController.cs",
+      "sha256": "346ac40d2debb13bb4a7e6f4373614599757261d3f64b3b0bad88e2eed937321",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/OptionalOverlayVisibilityController.cs"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioBusLayout.tres"
+    },
+    {
+      "path": "game/AudioBusesControlsProof.tscn",
+      "sha256": "79bb34d76adde1bc4a4d71244af812600dff22e28e70faf1d51c18a4c52e0c68",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioBusesControlsProof.tscn"
+    },
+    {
+      "path": "game/AudioSettingsPanel.tscn",
+      "sha256": "8be789258c8026bf3b1412f26e2348093ea44dcc1469d0cc66d11d8063fc80c5",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioSettingsPanel.tscn"
+    },
+    {
+      "path": "scripts/quality-audio.sh",
+      "sha256": "63f1e87c4452735e05f923580ef836ae9602a088c8825159a05f810ca3cab3d8",
+      "archived_path": "audio-direction/buses-controls-review/inputs/scripts/quality-audio.sh"
+    },
+    {
+      "path": "scripts/check-audio-output.py",
+      "sha256": "9c66975cf178284015e8d305fadba00d7c68c33b8e750521300774e8fe32ea57",
+      "archived_path": "audio-direction/buses-controls-review/inputs/scripts/check-audio-output.py"
+    },
+    {
+      "path": "scripts/validate-audio-runtime.py",
+      "sha256": "eefc0111287b7b4574930ca9e1dda5a4cfea75dde94993b1f44d74fae10533c6",
+      "archived_path": "audio-direction/buses-controls-review/inputs/scripts/validate-audio-runtime.py"
+    },
+    {
+      "path": "game/AudioBusesControlsProof.cs",
+      "sha256": "8cec0f1866d259bee1d056c398f666b557363dd3c2a9c8168fddae802af0fd57",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioBusesControlsProof.cs"
+    },
+    {
+      "path": "game/AudioDiagnosticSignal.cs",
+      "sha256": "280ebe3d930f8059a77a5f682833b8d5b31e1af9ed1f290e87267aedb6ba8c9c",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioDiagnosticSignal.cs"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioSettingsController.cs"
+    },
+    {
+      "path": "game/AudioSettingsMainSmokeCheck.cs",
+      "sha256": "f0e47be7c188025fdb41ff13f001cf0506df19d389a1fd8ca87cbffc7a08f4b5",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioSettingsMainSmokeCheck.cs"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e11975b6e60b5d3ecc923a4aa163f097c61213dc080ba67563221db05da029c3",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioSettingsPanel.cs"
+    },
+    {
+      "path": "game/AudioSettingsStorageController.cs",
+      "sha256": "e4250c020dbf986e0f440a1d017d658059eefbc24cd6aae4947f174d6b8441b8",
+      "archived_path": "audio-direction/buses-controls-review/inputs/game/AudioSettingsStorageController.cs"
+    },
+    {
+      "path": "src/Application/Audio/AudioDuckingEnvelope.cs",
+      "sha256": "d16f6d77f5baa71f119cd19d9b5a60da033ac58317936123f947625b4c2491f4",
+      "archived_path": "audio-direction/buses-controls-review/inputs/src/Application/Audio/AudioDuckingEnvelope.cs"
+    },
+    {
+      "path": "src/Application/Audio/AudioPreferences.cs",
+      "sha256": "09aebb88de6385955feeeffb80af18f195a01666deb6bc544bbfce7b28c95166",
+      "archived_path": "audio-direction/buses-controls-review/inputs/src/Application/Audio/AudioPreferences.cs"
+    },
+    {
+      "path": "src/Application/Audio/IAudioPreferencesStore.cs",
+      "sha256": "ccfe8f73f547a452446fb61f49499e28471f832264d6f9ea3e1c42495e489f64",
+      "archived_path": "audio-direction/buses-controls-review/inputs/src/Application/Audio/IAudioPreferencesStore.cs"
+    },
+    {
+      "path": "src/Infrastructure/Audio/AudioPreferencesJson.cs",
+      "sha256": "886cf41faa86944fc9e17bf8428e43a5ec96968f2535fe686503d7337a3ed28d",
+      "archived_path": "audio-direction/buses-controls-review/inputs/src/Infrastructure/Audio/AudioPreferencesJson.cs"
+    },
+    {
+      "path": "src/Infrastructure/Audio/FileAudioPreferencesStore.cs",
+      "sha256": "d93a66c46d7013cbebc370db8ea5a629b1f50b38cd82ce7a512187f0bbe0d56a",
+      "archived_path": "audio-direction/buses-controls-review/inputs/src/Infrastructure/Audio/FileAudioPreferencesStore.cs"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/AudioDuckingEnvelopeTests.cs",
+      "sha256": "850ce3c9a39503ac41ddbf2add3926673c61f7e00a15d7c7db29b5db13785b66",
+      "archived_path": "audio-direction/buses-controls-review/inputs/tests/Application.Tests/Audio/AudioDuckingEnvelopeTests.cs"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/AudioPreferencesTests.cs",
+      "sha256": "0ed940df4485d74b30d3999e0620a89c2d9f1e38f80e31b5e2ce784f81614695",
+      "archived_path": "audio-direction/buses-controls-review/inputs/tests/Application.Tests/Audio/AudioPreferencesTests.cs"
+    },
+    {
+      "path": "tests/Infrastructure.Tests/Audio/AudioPreferencesStoreTests.cs",
+      "sha256": "a7fd2c37335386311b5655c1ff733922b8a337001e9afc0a9944c8a17bb440a4",
+      "archived_path": "audio-direction/buses-controls-review/inputs/tests/Infrastructure.Tests/Audio/AudioPreferencesStoreTests.cs"
+    }
+  ],
+  "retained_evidence": [
+    {
+      "path": "audio-direction/buses-controls-review/final-build.log",
+      "sha256": "ebbc5df8b7226e109c71c6f67cee377183db2959f0c1dcc2ea4e84f0401b94a5"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/legacy-quality-limitation.log",
+      "sha256": "07f6b8ecbe6e488c1f933ffd9754f44e8383f823e63ee8b92febcbc18d88ccf6"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/main-preview.log",
+      "sha256": "5e1712710abd38221a56e6f7b35b1b3f1e106eebe28ba0f6feb2c292f3e4196b"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/measurements.json",
+      "sha256": "50e84d0137998672242e574bff09286b1aa590b111df49499a5f8b997c610c14"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/output-render.log",
+      "sha256": "8af6891871b78fb605b2c8399469284ca6c7c929e841e42238d105d017c739a4"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/probes.wav",
+      "sha256": "0f3a8b2bb5cba348af2064fa764367933a1332eced5286e526b617370a4d8d42"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/product-quality.log",
+      "sha256": "0b648a0484af4d8c9aed46de7a54a02404bfbcad622f5550f06df95b6a2cb4d6"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/settings-1280x720.png",
+      "sha256": "d16e618e7aa30124c37023228e20ef31ef17b8391e1860fea50bef289ec4ad34"
+    },
+    {
+      "path": "audio-direction/buses-controls-review/timeline.json",
+      "sha256": "9c53092d466322315e163cdd80f7cd644e68d759f967c74c52bdc5dbcbc338e7"
+    }
+  ],
+  "preservation": "The exact approved Main delta is additive. All other tracked product/art/provider predecessors are unchanged except the bounded overlay controller and documentation; the unrelated project editor rewrite matches its initial hash. Accepted policy and all frozen evidence/validators remain unchanged.",
+  "limitations": [
+    "No production sound assets or emitters, microphone, ASR/TTS, voice provider, audition or acquisition.",
+    "Sine-probe measurements establish control behavior, not production LUFS/LRA, true-peak compliance or device listening.",
+    "Legacy quality.sh stopped on an unchanged historical helper requiring newer Pillow. Its frozen live art checks predate authorized successor composition; quality-audio.sh preserves those validators and reuses retained terminal art evidence with exact predecessor/delta checks.",
+    "Godot sandbox log rotation required host retries; Movie Maker needed a graphical renderer. The retained final WAV contains the complete 38-second sequence even though unchanged video frames were skipped.",
+    "Git publication is not authorized."
+  ],
+  "completion": "Approved implementation and finite technical/UI/output deliverables are complete. The whole bus/control slice closes; no additional unchanged-policy or unchanged-visual approval gate is introduced."
+}

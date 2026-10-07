@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "status": "accepted",
+  "owner_statement": "approved",
+  "scope_id": "phase9-audio-direction-dynamic-range-policy",
+  "review_context": "Owner approved the retained complete audio policy after its review summary and file link. The review explicitly stated that acceptance covers the policy only.",
+  "accepted_scope": "Complete quiet tactile naturalism direction and dynamic-range policy, category responsibilities, perception and accessibility constraints, provisional numerical targets and finite future audition/implementation boundaries.",
+  "bindings": [
+    {
+      "path": "audio-direction/README.md",
+      "sha256": "9f44c2c68c1b2262f467a7d662dae89be1a0690ea24910304964a87cb3ab7aba"
+    },
+    {
+      "path": "audio-direction/dynamic-range-policy.json",
+      "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+    }
+  ],
+  "limitations": "No listening, acoustic/device measurements, runtime functionality or delivery-standard compliance is claimed. Numerical targets and the 16-candidate audition remain provisional.",
+  "authority": {
+    "policy_accepted": true,
+    "dependent_scope_preparation": true,
+    "runtime_buses_settings_or_ui": false,
+    "disposable_audio_demonstration_execution": false,
+    "production_audio_acquisition_generation_or_installation": false,
+    "git_publication": false
+  },
+  "historical_status": "Proposal/review fields in the bound policy files are superseded by this terminal acceptance; preserve their exact reviewed bytes.",
+  "continuation": "Close the policy slice and prepare the named unfinished volume buses and independent controls scope in the same session."
+}

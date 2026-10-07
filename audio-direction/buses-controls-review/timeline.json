@@ -1,0 +1,306 @@
+[
+  {
+    "name": "Music-normal",
+    "category": "Music",
+    "start": 0,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Music-half",
+    "category": "Music",
+    "start": 1,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Music-zero",
+    "category": "Music",
+    "start": 2,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Music-mute",
+    "category": "Music",
+    "start": 3,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Ambience-normal",
+    "category": "Ambience",
+    "start": 4,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Ambience-half",
+    "category": "Ambience",
+    "start": 5,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Ambience-zero",
+    "category": "Ambience",
+    "start": 6,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Ambience-mute",
+    "category": "Ambience",
+    "start": 7,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Effects-normal",
+    "category": "Effects",
+    "start": 8,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Effects-half",
+    "category": "Effects",
+    "start": 9,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Effects-zero",
+    "category": "Effects",
+    "start": 10,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Effects-mute",
+    "category": "Effects",
+    "start": 11,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Dialogue-normal",
+    "category": "Dialogue",
+    "start": 12,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Dialogue-half",
+    "category": "Dialogue",
+    "start": 13,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Dialogue-zero",
+    "category": "Dialogue",
+    "start": 14,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Dialogue-mute",
+    "category": "Dialogue",
+    "start": 15,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Speech-normal",
+    "category": "Speech",
+    "start": 16,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Speech-half",
+    "category": "Speech",
+    "start": 17,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Speech-zero",
+    "category": "Speech",
+    "start": 18,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "Speech-mute",
+    "category": "Speech",
+    "start": 19,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "master-zero",
+    "category": "Effects",
+    "start": 20,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "master-mute",
+    "category": "Effects",
+    "start": 21,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "stereo-left",
+    "category": "Effects",
+    "start": 22,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": true
+  },
+  {
+    "name": "mono-left",
+    "category": "Effects",
+    "start": 23,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": true
+  },
+  {
+    "name": "stereo-restored",
+    "category": "Effects",
+    "start": 24,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": true
+  },
+  {
+    "name": "default-low",
+    "category": "Effects",
+    "start": 25,
+    "duration": 1,
+    "amplitude": 0.005,
+    "leftOnly": false
+  },
+  {
+    "name": "default-high",
+    "category": "Effects",
+    "start": 26,
+    "duration": 1,
+    "amplitude": 0.12,
+    "leftOnly": false
+  },
+  {
+    "name": "reduced-low",
+    "category": "Effects",
+    "start": 27,
+    "duration": 1,
+    "amplitude": 0.005,
+    "leftOnly": false
+  },
+  {
+    "name": "reduced-high",
+    "category": "Effects",
+    "start": 28,
+    "duration": 1,
+    "amplitude": 0.12,
+    "leftOnly": false
+  },
+  {
+    "name": "duck-normal",
+    "category": "Music",
+    "start": 29,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "duck-speech",
+    "category": "Music",
+    "start": 30,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "duck-overlap",
+    "category": "Music",
+    "start": 31,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "duck-cancel-release",
+    "category": "Music",
+    "start": 32,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "duck-muted",
+    "category": "Music",
+    "start": 33,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "reading",
+    "category": "Music",
+    "start": 34,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "reading-release",
+    "category": "Music",
+    "start": 35,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "optional-effects",
+    "category": "Effects",
+    "start": 36,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  },
+  {
+    "name": "required-effects",
+    "category": "Effects",
+    "start": 37,
+    "duration": 1,
+    "amplitude": 0.01,
+    "leftOnly": false
+  }
+]

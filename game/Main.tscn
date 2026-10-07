@@ -1,4 +1,4 @@
-[gd_scene load_steps=391 format=3]
+[gd_scene load_steps=395 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -593,6 +593,12 @@
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-07.png" id="473_woodland_shrubs_07"]
 [ext_resource type="Script" path="res://RuntimeWoodlandClearingDressingSmokeCheck.cs" id="474_woodland_dressing_check"]
 
+[ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="audio_storage"]
+[ext_resource type="Script" path="res://AudioSettingsController.cs" id="audio_settings"]
+[ext_resource type="PackedScene" path="res://AudioSettingsPanel.tscn" id="audio_panel"]
+
+[ext_resource type="Script" path="res://AudioSettingsMainSmokeCheck.cs" id="audio_main_check"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
 
@@ -682,6 +688,17 @@ script = ExtResource("314_adaptive_display")
 
 [node name="AdaptiveDisplaySmokeCheck" type="Node" parent="."]
 script = ExtResource("315_adaptive_display_check")
+
+[node name="AudioSettingsStorageController" type="Node" parent="."]
+script = ExtResource("audio_storage")
+
+[node name="AudioSettingsController" type="Node" parent="."]
+script = ExtResource("audio_settings")
+
+[node name="AudioSettingsPanel" parent="." instance=ExtResource("audio_panel")]
+
+[node name="AudioSettingsMainSmokeCheck" type="Node" parent="."]
+script = ExtResource("audio_main_check")
 
 [node name="OptionalOverlayVisibilityController" type="Node" parent="."]
 script = ExtResource("398_optional_overlay_visibility")
@@ -3738,6 +3755,13 @@ horizontal_alignment = 1
 
 [node name="SettingsOverlay" type="CanvasLayer" parent="."]
 visible = false
+
+[node name="AudioEntry" type="Button" parent="SettingsOverlay"]
+offset_left = 12.0
+offset_top = 190.0
+offset_right = 160.0
+offset_bottom = 230.0
+text = "Audio settings"
 
 [node name="Panel" type="ColorRect" parent="SettingsOverlay"]
 offset_left = 960.0

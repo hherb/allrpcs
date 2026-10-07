@@ -1,87 +1,86 @@
 # Allrpcs Handover
 
-Read [AGENTS.md](AGENTS.md) and [CONTINUATION.json](CONTINUATION.json) before choosing
-work. Run `python3 scripts/check-continuation.py`. The ledger is the persistent queue;
-this document is its short handoff. Direct owner instructions take precedence.
+Read [AGENTS.md](AGENTS.md), [CONTINUATION.json](CONTINUATION.json) and the active
+roadmap item before work. Run `python3 scripts/check-continuation.py`. The ledger is
+the persistent queue; direct owner instructions take precedence.
 
 ## Closed checkpoint
 
-Grouped Clearing runtime is accepted and published in `ea63fcc4`: 113 assets / 64
-masters; [terminal acceptance](art-direction/woodland-clearing-dressing-runtime-promotion/owner-runtime-acceptance.json),
-[quality evidence](art-direction/woodland-clearing-dressing-runtime-promotion/verification.json).
-The forest approach audit is complete and recommends no additional apron. The owner
-also closed the redundant forest-dressing successor on 2026-10-06. No further automatic
-ground/approach/dressing audits, comparisons or approval requests; preserve accepted
-pixels and placements. All earlier closed scopes remain in the ledger.
+Accepted ground, channel and grouped Clearing presentation remain closed; the ground/
+approach/dressing workstreams stay parked. All terminal evidence remains in the ledger.
+The character import proof and complete cloak correction are closed and published in
+`7cb0f9ed`. The accepted [reference gait model](art-direction/reference-gait-model.md)
+governs future walking work. Historical pending fields never reopen unchanged accepted views.
 
-The [loop investigation](CONTINUATION_AUDIT.md) explains the repaired routing and
-approval failures. Historical package “pending”/“next” records are not the current queue.
-
-The [complete character import proof](art-direction/character-animation-import-proof/README.md)
-is finished locally: 480 unchanged approved frames, 120 isolated animations, measured
-fixed pivots, exact cold-import RGBA and six lossless native/2× comparisons. Its
-[verification](art-direction/character-animation-import-proof/verification.json)
-records technical import fidelity; Main integration remains outside that scope.
-The complete cloak gait correction is now owner-accepted and closed. The owner
-said on 2026-10-07: “very good - accepted. This is our reference gait model henceforth”.
-[Terminal acceptance](art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json)
-binds the exact 48-frame candidate and isolated proof. The
-[reference gait model](art-direction/reference-gait-model.md) governs future walking
-animation work. Accepted front/back and all predecessors remain unchanged.
-Historical pending fields are superseded; no more unchanged-view gait gates.
-The deferred audio-policy slice is restored below.
-The owner authorized commit and push of this accepted work on 2026-10-07.
-Publication includes the character proof, retained gait revisions, accepted
-reference model and documentation; preserve the unrelated project editor rewrite.
+The [audio policy](audio-direction/README.md) is owner-approved with “approved” on
+2026-10-07; [terminal acceptance](audio-direction/owner-acceptance.json) binds its
+unchanged files. Numerical targets remain provisional. The owner then said “scope approved”
+for the [bus/control scope](audio-direction/buses-controls-authority.json).
+[Implementation](audio-direction/buses-controls.md) is complete locally: five sibling
+buses plus Master, persistent gains/mutes, accessible settings, mono/range controls and
+disposable ducking/routing diagnostics. [Verification](audio-direction/buses-controls-verification.json)
+retains 5,054 passing tests, 294 clean Godot launches, 38 final-output probes, archived
+source inputs and the inspected Main panel capture. Both audio slices are closed.
+Production audio assets/emitters, source acquisition, listening and voice remain absent.
+The owner authorized commit/push of the completed audio work on 2026-10-07.
+[Publication authority](audio-direction/publication-authority.json) records the exact instruction
+and scoped inventory; historical publication exclusions in frozen packages are superseded.
+The unrelated project editor rewrite is excluded from publication.
 
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-audio-direction-dynamic-range-policy — Establish the audio direction and dynamic range policy** (ready).
+**phase9-audio-material-source-plan — Prepare the source and licensing plan for the material sound audition** (ready).
 
-Roadmap item: - [ ] Establish the audio direction and dynamic range policy.
+Roadmap item: - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy
+preparation.
 
-Missing deliverable: Phase 9.3 has no bounded audio direction or dynamic-range policy specifying cue
-hierarchy, quiet investigation, ambience/music roles and accessible independent controls.
+Missing deliverable: The accepted policy defines the finite 16-candidate collective audition, but a
+source/licensing/provenance and acquisition-method plan does not yet exist. Material audio assets
+and emitters remain absent.
 
-Read the settled game direction and existing audio constraints, then write one concrete Phase 9.3
-policy covering sonic palette, foreground/background cue hierarchy, meaningful off-screen cues,
-restrained music, provisional loudness/headroom and ducking targets, future voice coexistence,
-accessibility and the required independent buses/controls. Keep numerical targets explicitly
-provisional until measured against real audio. Identify asset classes and a finite later
-audition/implementation boundary. Prepare the policy for owner review; record only the authority
-actually granted. Do not generate, purchase or install audio, add runtime buses or settings,
-implement footsteps/music/voice, change accepted visuals or reopen completed
-character/ground/dressing scopes.
+Prepare one concrete source and licensing plan for the accepted 16-candidate audition, beginning
+with the named unfinished material-sound item. Carry the approved policy and completed bus/control
+implementation forward unchanged. Use read-only catalogue/source/license research to identify
+eligible sources, rights, edit lineage, expected costs and a practical acquisition method for the
+four regional beds, four walking materials, six action/feedback excerpts and two optional music
+excerpts. Preserve the complete-series review boundary and existing authored material/world
+constraints. Do not download, generate, record, purchase or install audio, run a new audition,
+connect runtime emitters or implement voice/providers. If actual asset-acquisition authority is
+needed, prepare the concrete plan first and state only that missing decision once. Do not reopen
+policy, bus controls, gait or accepted visual scopes. The owner authorized publication of the
+completed policy and bus/control work on 2026-10-07; future source-plan work has no additional
+publication authority.
 
-Done when: One coherent audio direction and dynamic-range policy, with explicit provisional targets,
-cue/bus responsibilities, accessibility constraints and a finite next implementation boundary, is
-retained and reviewed; any needed owner choice is stated once. Close the policy slice when its
-deliverable is complete and select one named unfinished roadmap item.
+Done when: One finite source/acquisition plan and structured provenance shortlist account for all
+sixteen candidate classes, eligibility/rights, costs and edit/measurement records, and identify the
+actual next acquisition authority without claiming that the material-sound roadmap item is
+implemented.
 
 Expected outputs:
 
-- `audio-direction/README.md`
-- `audio-direction/dynamic-range-policy.json`
+- `audio-direction/material-audition-source-plan.md`
+- `audio-direction/material-audition-source-plan.json`
 
-Boundary: Documentation and reviewable audio-policy proposal only. Main, gameplay, runtime
-audio/assets/buses/settings, providers, voice implementation, accepted visual scopes,
-release/signing and Git publication stay outside this slice.
+Boundary: Read-only source/license research and a reviewable acquisition plan only. Audio
+acquisition/generation/recording/purchase, audition, runtime sound emitters, world semantics,
+accepted visuals, voice/providers, release/signing and Git publication remain outside this slice.
 <!-- active-slice:end -->
 
-## Verification and local state
+## Verification and local exceptions
 
-Retain the passing original character proof and preceding 5,033-test product evidence;
-ordinary product/CI inputs remain bound to the original proof's boundary snapshot.
-Use the retained passing product and gait evidence; documentation-only maintenance
+For the retained audio snapshot, run `python3 scripts/validate-audio-publication.py --quality` and the rendered-output
+commands in [the implementation guide](audio-direction/buses-controls.md). The route
+checks exact additive Main changes, reviewed input hashes and retained predecessor bytes, leaving frozen art
+validators unchanged and reusing passing terminal art evidence. The older quality route
+requires compatible Pillow for historical helpers and predates this successor scope.
+Bundled Python: `/Users/hherb/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin`.
+Godot sandbox log rotation needs an identical authorized host retry; offline movie
+output needs the graphical renderer. Ordinary proof playback starts stopped.
+
+Reuse passing evidence for unchanged product inputs. Documentation-only maintenance
 needs `python3 scripts/check-continuation.py --self-test` and `git diff --check`.
-The accepted gait package retains exact native-master replay, contact/transfer
-checks, cold import/playback and native/2× captures; do not regenerate its bound
-files or rerun unchanged visual selections. Full product checks are needed only
-when product inputs or unresolved defects warrant them.
-
-Preserve the unrelated unstaged `game/project.godot` editor rewrite. Use the published
-project bytes in a disposable copy when frozen product checks need them. Preserve
-Direction A paint/masters, physical owners, accepted scene order, final WholeChannel,
-gate/Forester and all recorded terrain origins/depths. Do not edit frozen inventories
-or validators to accommodate successors. Exclude `.DS_Store`.
+Preserve the unrelated `game/project.godot` editor rewrite, accepted pixels/placements,
+physical owners, frozen inventories/acceptance hashes and reference gait. Exclude `.DS_Store`.
+Keep detailed evidence in linked packages and sync only the active handover section
+with `python3 scripts/check-continuation.py --sync` after queue maintenance.

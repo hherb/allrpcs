@@ -1,0 +1,115 @@
+corrected proof validation passed
+assets: 89
+terrain seams: exact opposite-edge match
+four-direction walk: 24 frames, at least 144px visible, baseline 156, 120 ms loops
+four-direction idle/breathe: 8 frames, at least 144px visible, 600 ms loops
+four-direction interaction: 16 unique frames, fixed origins, 160 ms gestures
+grayscale cues: ordinary, noticeable, identified, dangerous remain distinct
+navigation clearance: fixed obstacles remain outside 96x720 path corridor
+path bend: exact 96px top/right ports with transparent outer regions
+path T-junction: exact 96px top/left/right ports with transparent lower regions
+path cross-junction: exact 96px four-way ports with transparent corners
+path end-cap: exact 96px top port with terminus above a transparent lower half
+opening junction: exact live-angle 96px ports within the retained route footprint
+Village Square junction: four exact live-heading ports within retained route bands
+path topology: straight, bend, T, cross, and end-cap compose as one network
+leaf litter: opaque, exact seams, useful texture and palette contrast, no corridor
+ground transition: exact moss/leaf connectors and repeatable top/bottom seam
+ground corner: exact top/right transition and unused moss edge connectors
+left ground corner: exact top/left transition and unused moss edge connectors
+inset ground corner: exact top/right transition and unused leaf edge connectors
+left inset ground corner: exact top/left transition and unused leaf edge connectors
+Village Edge transition: full-clearing world-aligned overlay with a 64px soft feather
+stream feasibility: repeatable water, mirrored banks/caps, exact crossing and views
+editable masters: 40 valid OpenRaster archives
+Stream -> Laundry heading: -136.974934 degrees
+Laundry -> Woodland heading: 165.425784 degrees
+Required turn: -57.599282 degrees; exact bend turn: 90.000000 degrees
+Port mismatch: 32.400718 degrees
+Lateral drift over 128 pixels: 68.587 pixels
+Result: the exact unscaled 90-degree bend cannot join both route headings.
+Approved proof: terrain.opening_junction has exact 96px ports at 90.000000 and 32.400718 degrees on a 512x512 canvas.
+Rigid world rotation: 133.025066 degrees; projected outgoing heading: 165.425784 degrees.
+Footprint: 335x458 visible pixels; the corrected proof validator checks exact port pixels and 96px route containment.
+Village Square route headings: 51.340192, 75.963757, 144.462322, 180.000000
+Best rigid minimax rotation: -19.329904 degrees
+Port residuals: 70.670096, 5.293661, -16.207774, -70.670096
+Minimum worst port mismatch: 70.670096 degrees
+Result: the exact unscaled cross-junction cannot match the four live route headings.
+Tailored proof: four exact straight-path connectors match the live headings and remain inside the retained 96px route bands.
+terrain accessibility review validation passed
+samples: 8
+views: 40 exact recomputed images
+method: Machado-Oliveira-Fernandes 2009, full severity, linear sRGB
+measurements: descriptive luminance and texture statistics; no acceptance gate
+Opening-region proposal validation passed: 11 anchors, 12 topology edges, 96px independent-route separation, 5 content zones, 2 camera frames, deterministic SVG output.
+Direction A Godot import-proof validation passed
+assets: 89 exact source-hash matches
+sidecars: exact resource/cache paths and unique UIDs
+imports: lossless, no mipmaps, alpha-border fix except exact accepted connector and accepted path continuations, no premultiplied alpha
+Runtime terrain validation passed
+asset: terrain.whole_channel_water, exact SHA-256 6258b615d4bd926731471bfc0a2e1a524092246e93850f0f370c45789e6fa2e1
+asset: terrain.whole_channel_banks, exact SHA-256 7147f271cd0ebf492598e36307b46b0a9090e037e6060b2a410d9705ce090dfb
+asset: terrain.whole_channel_decks, exact SHA-256 dd990e26c4869a031ac894385d0e9b6bb4f55d89b04b716ed41c954e0829eefb
+asset: terrain.whole_channel_detail, exact SHA-256 334a5b2b352c7fd334d97e919de978371838e7937dccb121e5e0a2347aeebd10
+asset: terrain.whole_channel_fringe, exact SHA-256 1ab4abf5f76801711c680c7aabe85d1f79e75a2aec1a96e83c2ffa73b690f349
+asset: terrain.quiet_moss, exact SHA-256 3ef44b0912fec650bf4d40e1790e932e52083bdd3f197a5637aec75f5f1c98db
+asset: terrain.woodland_leaf_litter, exact SHA-256 f4caaf6f976f6f45cb4a0f22e9d978311422f95aa5d0d4e6233f122dafe1467a
+asset: terrain.woodland_leaf_litter_transition, exact SHA-256 8aea573d95b7fa8bc829c62e00bbaedf8fe2fef52c64019fed5054daf0b70334
+asset: terrain.woodland_leaf_litter_corner_transition, exact SHA-256 53f2dba1b4e8012aca525d6a7a8bc02624a991c64427cc6b858f7339d72440bf
+asset: terrain.woodland_leaf_litter_corner_transition_left, exact SHA-256 c88c43456d9cdc94a6bb1f09883dc6edc3b03f36eddc6521bb8e3acf143aec24
+asset: terrain.woodland_village_edge_transition, exact SHA-256 283f7231bfaa526c1dde34eb6bb709da67f998741841e53a06d17068ec1d2b21
+asset: terrain.straight_path, exact SHA-256 3d12ffdfb32fbbda2e9d0c2029803691a4eb4f8484a4ee5245a729f2fc8278bd
+asset: terrain.path_end_cap, exact SHA-256 9e600a5552dec140aafa0a6f09258cff7094f61fe3c360960936a95d993ef5f3
+asset: terrain.opening_junction, exact SHA-256 fe2ccc012f3e024ad1cc99c41cefbe90581980239ff31cf1f5d3791a9e66fe68
+asset: terrain.village_square_junction, exact SHA-256 0ba0b2cfa16466936710bb801409ac4c790058449e7d609b0df2cc96d772e2e3
+asset: terrain.stream_water, exact SHA-256 c9aaf4651f9e438fcfcae960641d8d66fbabba5db452cbbe53c39f7af17af07c
+asset: terrain.square_garden_path, exact SHA-256 04c9ea2ea7a609dadcfcff268dc445300104f3e466fc003b304252feb411c8de
+asset: terrain.square_sickhouse_path, exact SHA-256 0d7510a58d9fed28b1560b137d6c7f324a69bf3a39e3ac4a535f224de77172b7
+asset: terrain.square_southern_road_path, exact SHA-256 4225a6c49fd7a2c5fbcd2ec21b6190f537f6583df74fb80d39d885ca67b194d5
+asset: terrain.southern_road_wagon_path, exact SHA-256 34f1c1c28c5ee9f654953ba4d07ef2ac9d1fe6fe3f206fd04e68022395741799
+asset: terrain.shrine_southern_road_path, exact SHA-256 0b73ae24f5f0c985b29399e2889dd12210ec4f221bc827a4cae7da60b635b61e
+asset: terrain.shrine_southern_road_endpoint_blend, exact SHA-256 a01cb5089d67a9e9bf108a2dd18a84b0f98b11c6eb7e7f3d2b3d5844bbabc720
+asset: terrain.woodland_shrine_path, exact SHA-256 dd38db38f7a11d8d621ac938e822650c3b5a5d1be9ea190e60e39d101906d18c
+asset: terrain.woodland_village_edge_path, exact SHA-256 ce4cdb9aed6494490ebfba4efa33d38aff950856ae60e7af735e5149ddcb062c
+asset: terrain.village_edge_stream_path, exact SHA-256 b943d35576e2116a635b0d91cd2b8123f8cba90c8a1d873fcc98079223594e4f
+asset: terrain.clearing_closed_forest_path, exact SHA-256 3984916a864042f54b5ccbf0d745c150f7807d064a44f9022f96f83b7d081451
+asset: terrain.stream_laundry_path, exact SHA-256 6422441f218b6ff0062269f55583ef488a0d3c877787d0b7892a4605950b2185
+asset: terrain.village_edge_square_connector, exact SHA-256 990b5cfa76c5e75e97adeef49a84a89a7dd15ea177a40804c414742d7f66a854
+asset: terrain.stream_bank, exact SHA-256 b63faba090a8c1d3427d9f9ad64f1d7a0da36600ca61d6419500590b8d629a8e
+asset: terrain.stream_bank_opening_cap, exact SHA-256 11bcc4d8113281c23adc4785d8134c2dd1dc6d9d8f00828ce19dac2686053ed1
+geometry: six 256x256 assets, one 96x256 path, two 512x512 junctions, one 1024x512 feather overlay, one 124x96 connector, one 200x220 Garden path and one 380x360 Sickhouse path, one 520x416 Southern Road path, one 560x432 Road–Wagon path, two Shrine layers (1152x1080 and 160x160), and three Stream modules; imports: lossless, mipmap-free, runtime-owned UIDs
+isolation: Main.tscn references runtime terrain and no proof-only resource
+PASS: 4323 unchanged protected predecessors; physical/navigation/route owners unchanged
+Traceback (most recent call last):
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/whole-channel-runtime-promotion/tools/validate.py", line 319, in <module>
+    assets(spec)
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/whole-channel-runtime-promotion/tools/validate.py", line 141, in assets
+    runtime = adapter['compose']()
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/production-proof/corrected/tools/build_whole_channel.py", line 28, in compose
+    runtime, _, _ = module.derive()
+                    ^^^^^^^^^^^^^^^
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/whole-channel-runtime-preview/tools/layers.py", line 117, in derive
+    parts = sources()
+            ^^^^^^^^^
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/whole-channel-runtime-preview/tools/layers.py", line 75, in sources
+    parts = [('western', (-64, 384), western())]
+                                     ^^^^^^^^^
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/whole-channel-runtime-preview/tools/layers.py", line 69, in western
+    return {'water': clean(high[0].resize(size, Image.Resampling.BOX)),
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/var/folders/rs/hb_bpz7s0k9fdmk23xxcq8b00000gn/T/garden-predecessor-adbh4xul/tree/art-direction/whole-channel-runtime-preview/tools/layers.py", line 44, in clean
+    layer.putdata([p if p[3] else (0, 0, 0, 0) for p in layer.get_flattened_data()])
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Image' object has no attribute 'get_flattened_data'
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/scripts/validate-garden-ground-runtime.py", line 317, in <module>
+    main()
+  File "/Users/hherb/src/allrpcs/scripts/validate-garden-ground-runtime.py", line 305, in main
+    historical()
+  File "/Users/hherb/src/allrpcs/scripts/validate-garden-ground-runtime.py", line 256, in historical
+    subprocess.run([sys.executable, *command], cwd=snapshot, env=env, check=True)
+  File "/Users/hherb/.pyenv/versions/3.12.3/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/hherb/.pyenv/versions/3.12.3/bin/python3', 'art-direction/whole-channel-runtime-promotion/tools/validate.py', '--check-captures', '--check-rejections', '--check-archived']' returned non-zero exit status 1.

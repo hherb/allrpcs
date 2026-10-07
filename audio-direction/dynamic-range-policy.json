@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "policy_version": "0.1",
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "status": "proposal_for_owner_review",
+  "runtime_configuration": false,
+  "authority": {
+    "preparation": "Current instruction to follow HANDOVER.md and its active documentation slice",
+    "owner_acceptance": null,
+    "runtime_audio_or_settings": false,
+    "asset_acquisition_or_generation": false,
+    "publication": false
+  },
+  "direction": "quiet_tactile_naturalism",
+  "roles": {
+    "ambience": "Describe authored place without granting evidence or concealing foreground",
+    "effects": "Recognizable material action and authorized consequence confirmation",
+    "music": "Sparse optional support for exploration, companionship and healing",
+    "dialogue": "Optional nonverbal conversation cues",
+    "speech": "Future authorized utterance playback with text always available"
+  },
+  "regional_sound_keys": [
+    "muted-village-rain",
+    "running-water-and-rain",
+    "rain-under-trees",
+    "road-wind-and-wagon",
+    "inscription-revealed-sound"
+  ],
+  "information_rules": {
+    "sound_and_captions_require_authorized_perception": true,
+    "camera_bounds_are_not_hearing_authority": true,
+    "hidden_identity_or_clue_beacons": false,
+    "volume_changes_world_reception": false,
+    "audio_advances_disease_or_world_decisions": false,
+    "all_audio_muted_remains_playable": true
+  },
+  "priority_order": [
+    "authorized_speech_and_consequential_events_with_text",
+    "action_confirmation_and_authorized_offscreen_events",
+    "footsteps_and_local_material_movement",
+    "regional_ambience",
+    "music_and_decorative_details"
+  ],
+  "measurement": {
+    "all_numerical_targets_provisional": true,
+    "assets_auditioned": false,
+    "measured_runtime_evidence": false,
+    "reference_category_gains_db": 0,
+    "scene_sequence_minutes": 5,
+    "mix_measurement_point": "Rendered final output at reference gains before user attenuation",
+    "working_peak_measurement_point": "Master before final peak protection",
+    "speech_loudness_scope": "Representative ordinary multi-utterance passage excluding long deliberate gaps",
+    "whispers_excluded_from_ordinary_speech_target": true,
+    "short_transient_normalization_to_integrated_lufs": false,
+    "range_measurement": "Extended representative passages; not short individual cues",
+    "targets_are_not_delivery_standard_or_safety_claims": true
+  },
+  "targets": {
+    "default_mix_lufs_i": { "target": -23, "audition_min": -25, "audition_max": -21 },
+    "ordinary_speech_lufs_i": { "target": -20, "audition_min": -22, "audition_max": -18 },
+    "working_master_peak_max_dbfs": -6,
+    "delivered_master_true_peak_max_dbtp": -1,
+    "default_lra_lu": { "min": 8, "max": 12 },
+    "reduced_range_lra_lu": { "min": 4, "max": 6 },
+    "ordinary_speech_margin_over_competing_beds_db": 6
+  },
+  "ducking": {
+    "reductions_relative_to_user_gain": true,
+    "overlap": "strongest_reduction_per_bus_without_summing",
+    "hold_starts": "after_foreground_ends",
+    "release_starts": "after_all_eligible_foreground_ends_and_hold_elapses",
+    "mute_preserved": true,
+    "speech": {
+      "music_reduction_db": 6,
+      "ambience_reduction_db": 3,
+      "optional_effects_reduction_db": 3,
+      "attack_ms": 100,
+      "hold_ms": 150,
+      "release_ms": 600
+    },
+    "consequential_cue": {
+      "music_reduction_db": 3,
+      "ambience_reduction_db": 2,
+      "optional_effects": "defer_without_discarding_required_events",
+      "attack_ms": 50,
+      "hold_ms": 100,
+      "release_ms": 400
+    },
+    "typed_reading_focus": {
+      "music_reduction_db": 3,
+      "ambience_reduction_db": 2,
+      "duration": "while_dialogue_panel_is_open",
+      "attack_ms": 100,
+      "hold_ms": 150,
+      "release_ms": 600
+    },
+    "speech_failure_or_cancellation": "Release_foreground_ducking_and_complete_text_normally"
+  },
+  "routing": {
+    "master": "Master",
+    "sibling_buses": ["Music", "Ambience", "Effects", "Dialogue", "Speech"],
+    "each_category_parent": "Master",
+    "route_each_sound_once": true,
+    "speech_child_of_dialogue": false,
+    "dialogue_bus_content": "Nonverbal_conversation_start_and_end_cues",
+    "speech_bus_content": "Future_spoken_character_utterances_including_authorized_whispers",
+    "general_ui_feedback_bus": "Effects",
+    "decorative_wagon_creak_bus": "Ambience"
+  },
+  "required_future_controls": {
+    "master_and_category_sliders": true,
+    "explicit_master_and_category_mutes": true,
+    "zero_endpoint_is_silence": true,
+    "persistent_settings_and_restore_defaults": true,
+    "readable_values_and_keyboard_controller_focus": true,
+    "presets": ["Default", "Reduced range"],
+    "mono_output": true,
+    "sound_caption_settings": true,
+    "speech_reserved_until_playback_exists": true,
+    "per_letter_dialogue_sound_default": false
+  },
+  "accessibility": {
+    "full_text_and_subtitles_always_available": true,
+    "optional_meaningful_nonspeech_captions": true,
+    "captions_preserve_information_authority": true,
+    "required_events_have_accessible_history": true,
+    "stereo_or_hearing_required_for_progress": false,
+    "listening_matrix": ["stereo", "mono", "speakers", "headphones", "low_volume", "all_muted", "reduced_range"]
+  },
+  "future_voice": {
+    "text_and_speech_share_authorized_event": true,
+    "interrupt_and_cancel_playback": true,
+    "speech_failure_blocks_interaction": false,
+    "asr_push_to_talk_first": true,
+    "automatic_microphone_activation": false,
+    "provider_and_capture_implementation": "Deferred_to_Phase_10"
+  },
+  "later_audition": {
+    "candidate_count": 16,
+    "regional_bed_excerpts": 4,
+    "walking_material_excerpts": 4,
+    "action_feedback_excerpts": 6,
+    "music_excerpts": 2,
+    "renders": ["five_minute_default_mix", "reduced_range_variant", "music_free_variant"],
+    "provenance_license_edit_lineage_and_measurements_required": true,
+    "spoken_reference_requires_explicit_rights_and_scope": true,
+    "owner_reviews_complete_series_before_installation": true,
+    "authorized_now": false
+  },
+  "recommended_next_roadmap_item": "Add volume buses and independent controls for music, ambience, effects, dialogue, and future speech.",
+  "next_boundary": "Prepare_named_bus_and_controls_scope_with_disposable_routing_demonstration_before_runtime_work"
+}

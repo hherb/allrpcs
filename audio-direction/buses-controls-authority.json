@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "scope approved",
+  "scope_id": "phase9-audio-buses-independent-controls",
+  "scope_binding": {
+    "path": "audio-direction/buses-controls-scope.md",
+    "sha256": "864269bcd2b59719fdb1ecb25ebd132ff9de93dd37c23b85749523dde286a647"
+  },
+  "authorized": "Implement the prepared five sibling buses plus Master, persistent accessible settings UI, ducking, mono/reduced-range controls and disposable diagnostic signal proof; complete validation and documentation.",
+  "excluded": "Production audio acquisition/audition/installation, voice/providers, accepted artwork/world semantics, release/signing and Git publication."
+}

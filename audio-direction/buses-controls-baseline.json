@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "commit": "7cb0f9ede278e2a9098290d64081b10c76d05402",
+  "main_sha256": "08344c6bf97dedc61858e8b1705598c2bf10e41260a3dfed0c8341f7458616ce",
+  "optional_overlays_sha256": "5d9611e6afaf1a62d8b79ba0ec6e19b36ddc1bec4e97584ea217fb80714b23fd",
+  "preserved_editor_project_sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca",
+  "policy_accepted_before_runtime_scope": true
+}
