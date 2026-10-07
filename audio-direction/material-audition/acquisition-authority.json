@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-material-audio-collective-audition",
+  "owner_statement": "Approved. I will obtain the login credentials where necessary now",
+  "grant": "Approval of the concrete zero-purchase-cost acquisition, editing, qualification listening and isolated collective audition requested in this chat; sixteen excerpts and three five-minute mixes, with provenance/credits and measurements.",
+  "plan_bindings": [
+    {
+      "path": "audio-direction/material-audition-source-plan.md",
+      "sha256": "488c7ab40350aa30f812a04a220aeed052a7bc5d9d141203e91037a402f8d739"
+    },
+    {
+      "path": "audio-direction/material-audition-source-plan.json",
+      "sha256": "57008bce333b1f7cc9f34dccb02409633a0457fa56346acbb525f26a462aeb6c"
+    }
+  ],
+  "limits": {
+    "download_bytes": 500000000,
+    "working_storage_bytes": 2000000000,
+    "purchase_fee_aud": 0
+  },
+  "freesound_access": "Owner signs in directly to Freesound in the browser or supplies original downloads. Credentials are not collected in chat/files; no account creation or access bypass.",
+  "excluded": [
+    "Purchase/donation/subscription",
+    "New account or credential collection",
+    "AI generation/new recording/speech/microphone/providers",
+    "Ordinary game assets/emitters/Main/world/time/perception/art/gait changes",
+    "Release/signing/new Git publication"
+  ],
+  "owner_listening_selection": null
+}

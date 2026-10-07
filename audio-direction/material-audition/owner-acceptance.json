@@ -1,0 +1,361 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-material-audio-collective-audition",
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "Default range seems good. The shakuhachi track is suitable. All accepted",
+  "status": "whole_slice_accepted",
+  "range_preference": "default",
+  "selected_ids": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "M01",
+    "M02"
+  ],
+  "meaning": "All sixteen audition excerpts and complete audition slice are accepted, including the revised quiet shakuhachi M02. Fifteen prior candidates remain unchanged. Historical technical pending fields are superseded; no further unchanged-area selection or audit is required.",
+  "specific_device_listening": "Not inferred from general acceptance",
+  "runtime_installation_authority": "Separate named runtime scope required",
+  "new_git_publication_authority": "Not supplied by audition grant or listening acceptance",
+  "accepted_material_bindings": [
+    {
+      "path": "audio-direction/material-audition/CREDITS.txt",
+      "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+    },
+    {
+      "path": "audio-direction/material-audition/accepted-fifteen.json",
+      "sha256": "97a00d436f85d5debf415230398075fa274638c9a722753714af7d61d2ebbbde"
+    },
+    {
+      "path": "audio-direction/material-audition/candidates.json",
+      "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A01.wav",
+      "sha256": "a23db3992116b598b5dc652c95b18c51f5409691c747637ddacc5d0320f97a90"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A02.wav",
+      "sha256": "bebfae9f419359960530073a8cc2764d4b9d28b8b3844eb41a9db9addcc4278d"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A03.wav",
+      "sha256": "bae5aa7343bb41ce6b4bf35548dc551e28a43d18c1bdbeb994d5e64baefbfa26"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A06-Dialogue.wav",
+      "sha256": "6653c99b089e8061cdda6081af01ac8cbaae28765bca1947986a168bbcb62c20"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A06-Effects.wav",
+      "sha256": "d0d6cfe3a09d8baf72be713e0f0446b92175adf1f0da49aa7d4e11096230739b"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/A06.wav",
+      "sha256": "458a2103db847da7eaf8d69839b5ff785ebd04a125d1a2de653ccc8a78ce9cb9"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/M01.wav",
+      "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/M02.wav",
+      "sha256": "c706dd03b3e730227ce7ec383a237f4c8f785b1f44ecaa314f04993ff5776511"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W01.wav",
+      "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W02.wav",
+      "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W03.wav",
+      "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f"
+    },
+    {
+      "path": "audio-direction/material-audition/clips/W04.wav",
+      "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697"
+    },
+    {
+      "path": "audio-direction/material-audition/index.html",
+      "sha256": "82934bbc0df85ef34ee2d843c17d5c1e2ed032b072f70625ba276e73a3a36232"
+    },
+    {
+      "path": "audio-direction/material-audition/m02-flute-revision/owner-request.json",
+      "sha256": "115e2a2b86d112921939b20b698ac2e7be57d0783942419379979f4c1b1603b7"
+    },
+    {
+      "path": "audio-direction/material-audition/m02-flute-revision/verification.json",
+      "sha256": "9e2e4a99ed898493c3e38ec5b4b70081eaff11b52c03f51c25e69deddac69a16"
+    },
+    {
+      "path": "audio-direction/material-audition/measurements.json",
+      "sha256": "2550920552a14fb366d10215306694f9d69e36fe1176fc802161c92cdc4b24bb"
+    },
+    {
+      "path": "audio-direction/material-audition/members/interface/Audio/click_001.ogg",
+      "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9"
+    },
+    {
+      "path": "audio-direction/material-audition/members/interface/Audio/click_003.ogg",
+      "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292"
+    },
+    {
+      "path": "audio-direction/material-audition/members/interface/Audio/click_005.ogg",
+      "sha256": "a3ee7ebb036bc3cdc218ae52bb27548c4f49bcf07505274f8b61b1af8236acc2"
+    },
+    {
+      "path": "audio-direction/material-audition/members/stream/stream-waterfall/stream1.ogg",
+      "sha256": "c0b5256f20db94654493e4c32fdb3c25cffa6a8d41f6871969d0922147d28e65"
+    },
+    {
+      "path": "audio-direction/material-audition/members/water-contact/splash_01.ogg",
+      "sha256": "156f4df0fa1a552d1c4e451284a55000417ea871954dc4b5e0d4302a49e228a8"
+    },
+    {
+      "path": "audio-direction/material-audition/members/water-contact/splash_03.ogg",
+      "sha256": "ae2cff9a47934ece590dda45ff18acf89c5c98cb5497ce71c50b3a315b225a94"
+    },
+    {
+      "path": "audio-direction/material-audition/members/wood-tool/tools_02.ogg",
+      "sha256": "f38aa1f822bd1d4ba2fbf7df2a8c12ea27dbca537b81cf9032b8729fe7223822"
+    },
+    {
+      "path": "audio-direction/material-audition/members/wood-tool/wood_hammer_01.ogg",
+      "sha256": "7af2b82ed659153da6c3dd69024e15bdb3c3c5b101c4086ee2181c1f846fe28a"
+    },
+    {
+      "path": "audio-direction/material-audition/members/wood-tool/wood_hit_03.ogg",
+      "sha256": "0f78a5cbe44d2ee45dfc1709f72af87bcbe5e3a8ad369b52535cfe6dbbd626a6"
+    },
+    {
+      "path": "audio-direction/material-audition/members/wood-tool/wood_hit_05.ogg",
+      "sha256": "a6e1a4cfb65c4fc46248b3db84666275d466c2434c283028c7f0ce70035e75de"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/cloth/481075__khenshom__foley-cotton-clothes-rustling-fabric-movement-sound.wav",
+      "sha256": "89d259b33b510ab0d430e9457aea9c532e0c1180de81b140f36aa61a6023abeb"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/creak/506662__rudmer_rotteveel__wood-creak-single-v7.wav",
+      "sha256": "f210f39518e6d33d349d2a27c1213656339f7ff487c1f9af33fd2be0d42e1d89"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+      "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/exploration/sunset_plains.wav",
+      "sha256": "f3750f8eda8bf42662b12f5726404675689b50f05ccaa968c5cb2e33d9172a62"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+      "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/interface/kenney_interface-sounds.zip",
+      "sha256": "f2193d072726d6758a5f7871b2dcc54dcce0d5c35c6f0a62f92549b327c81232"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/leaf-rain/Rain-on-dry-leaves-sound.mp3",
+      "sha256": "75efab82d45c882128959ef00b647143fb3eb141698d682be9da08280dbb847e"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+      "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/mortar/749884__fwughox_official__mortar-and-pestle.wav",
+      "sha256": "80cb1bf7a858492e828f2678a3ce433aebafeccb9cb0946577e466394e9dcc79"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+      "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/rest-flute/486487__gonzooka__shakuhachi-flute-play.wav",
+      "sha256": "423332af0c54ce004fc9023e03665901576aca535012e909b7fd6d819168fbb1"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/rest/Revelation.Wav",
+      "sha256": "f020d19d69ce5b7929958c78c0943f76c900b05dee102aad90bd09365dd3a08f"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/stream/stream-waterfall.zip",
+      "sha256": "71d64573330b49de83e648ca86331d38f5b7147f75873708495e2fffb01f9ac3"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+      "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/water-contact/water-splash-slime-sfx.zip",
+      "sha256": "7cd39abb49d4362a37ba18dc0e454c7dc1d08029d4e5b683149046bc237b2eba"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/wind/wind background noise 2.wav",
+      "sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80"
+    },
+    {
+      "path": "audio-direction/material-audition/originals/wood-tool/100-CC0-wood-metal-SFX.zip",
+      "sha256": "be6eba63b03409ac0c77787a956b1503a7c186403d04aef9725c52644a4b7878"
+    },
+    {
+      "path": "audio-direction/material-audition/owner-selection.json",
+      "sha256": "28a3e4e510ce01d66bac45e2ed7023699d31d346472997f9168bb64071184daa"
+    },
+    {
+      "path": "audio-direction/material-audition/provenance.json",
+      "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+    },
+    {
+      "path": "audio-direction/material-audition/review/comparison-checks.json",
+      "sha256": "58d17050ba54f34a6bc5a28037067d0974484116e608e334440c6c90873bad10"
+    },
+    {
+      "path": "audio-direction/material-audition/review/default.wav",
+      "sha256": "99b28aaa7711621e99ceb3e4b0a7ef0a805a12c6133a940624e8e6001b9514c6"
+    },
+    {
+      "path": "audio-direction/material-audition/review/music-free.wav",
+      "sha256": "90662994ab14535f9d1b01112ee76c740ccc86c77c4d49e17404559d8a6fc80c"
+    },
+    {
+      "path": "audio-direction/material-audition/review/reduced-range.wav",
+      "sha256": "ca0e61e8751d1af2b7e8d6b641c97c313d8a267abbc85cf57071c306d6a0e748"
+    },
+    {
+      "path": "audio-direction/material-audition/review/render-record.json",
+      "sha256": "f561285bfec61c68121c8fa74368fa43c16a0ac35d309b9f891b369db5c10363"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/cloth-catalogue.html",
+      "sha256": "4c7992d381a1cae906275d6b53790fa46a541c7897bf5860a8ef93b8789206a2"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/creak-catalogue.html",
+      "sha256": "0c4d210d2c298aefc13fcc1bf1b7d2551ac7cd673a93c08fd574b80b97f8938f"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/earth-catalogue.html",
+      "sha256": "a4e0de3f537f19b89f35c0dd5ef2dd6a51595f0e585436361dad7efcd67e83b3"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/exploration-catalogue.html",
+      "sha256": "f535771d163858547c01e4706e353621e67d64ebeb69b1a4a53016654d8665f0"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/gravel-catalogue.html",
+      "sha256": "fca210ec7bfb56ccde9638c9947f873de1ecb112c2d78348d9f561ed4e37c5b6"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/interface-catalogue.html",
+      "sha256": "4bab3e1660c662504886cb82d25777fb557f81b208f55a1792b67b88a8785551"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/leaf-rain-catalogue.html",
+      "sha256": "6603b18b7221aa2e85262765f1038e58d7749f5677622632fae0835c80663c68"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/leaves-catalogue.html",
+      "sha256": "6ac8aa48654da96f47de6e873e12544a04a0e1792f3a0aea004aec68a1bd72ae"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/licenses.json",
+      "sha256": "25a5e66b40c633b953324560aae6b0f7090514309bb1b4a6c8d048fc12b1b9c5"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/mortar-catalogue.html",
+      "sha256": "23dd9bc213b8cc7c30770c2669eacd996b5c8e5426ebe0fb56af887a0a2082d7"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/rain-catalogue.html",
+      "sha256": "dd284f072c13583338e121742d07c21239c2616e7cf68eab11922def59f509f1"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/rest-catalogue.html",
+      "sha256": "013bc44e5d2e7f53d217cbb5b15cb1b156f6cc6531e6181de8803813fc6a6648"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/rest-flute-catalogue.html",
+      "sha256": "7e5dd89dc61f53cf4b933adc4a17cb17ec79d1e020e84a3db0e20d6472f7167d"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/stream-catalogue.html",
+      "sha256": "4d6f0aaa3fcf0cbcc10ea1618374080f2568f6d5a4ef1169667ddcd997d7b183"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/timber-catalogue.html",
+      "sha256": "7f6fccb6680be5092d8dfb33a3904316b37fc49c469fb0ba54288d25aa45319e"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/water-contact-catalogue.html",
+      "sha256": "166baee2a8d8c6719c2802b25dd1efe2d1c9a7452a655d183579d826b226d985"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/wind-catalogue.html",
+      "sha256": "5322a57fcc1877e4ff4c95e0eda6cabcada6b5b4de7b44de7f2f2562dc03a0a9"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/wood-tool-catalogue.html",
+      "sha256": "9aa7dc287e83e5694be6c51f5880284a7b7cd9ed79c06a6c9e41f63fa24d1c56"
+    },
+    {
+      "path": "audio-direction/material-audition/source-decoding.json",
+      "sha256": "5df310ccce40722c5af3152f485ad00d8862021a0e31c717e0530df83f9c3d1c"
+    },
+    {
+      "path": "audio-direction/material-audition/verification.json",
+      "sha256": "8ae6db340b00df17283589c9e7b98db33245ccec32d8d57e7606bd0f188f2397"
+    }
+  ]
+}

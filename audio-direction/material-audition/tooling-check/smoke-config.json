@@ -1,0 +1,11 @@
+{
+  "tracks": [
+    {
+      "bus": "Ambience",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/tooling-check/category-tracks/Ambience.wav",
+      "sha256": "037d8d0b83c5da25290839759171f891dd38ac76955574cbab11b5466aec0bac"
+    }
+  ],
+  "reduced_range": false,
+  "mono": false
+}

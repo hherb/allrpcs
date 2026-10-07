@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "actual_material_output_probe_count": 19,
+  "measurement_point": "Actual offline PCM32 after the copied accepted Master layout",
+  "script_sha256": "768eb409ddc07b9aaefd1e59fd4cdc69bc0ad837ba322fdd29158258e123614f",
+  "generated_fixture_sha256": "04e7616d70a0b359820c153b2909d3f02f9782424376e8b361b1015ffb6e35b2",
+  "category_measurements": {
+    "Ambience": {
+      "half_gain_maximum_sample_error": 4.76837158203125e-07,
+      "zero_peak": 0.0,
+      "mute_peak": 0.0
+    },
+    "Effects": {
+      "half_gain_maximum_sample_error": 4.76837158203125e-07,
+      "zero_peak": 0.0,
+      "mute_peak": 0.0
+    },
+    "Music": {
+      "half_gain_maximum_sample_error": 4.76837158203125e-07,
+      "zero_peak": 0.0,
+      "mute_peak": 0.0
+    },
+    "Dialogue": {
+      "half_gain_maximum_sample_error": 4.76837158203125e-07,
+      "zero_peak": 0.0,
+      "mute_peak": 0.0
+    }
+  },
+  "mono_channel_error": 0.0,
+  "mono_normalized_fold_error": 9.5367431640625e-07,
+  "master_zero_and_mute": "exact_silence",
+  "logs": [
+    {
+      "probe": "Ambience-normal",
+      "sha256": "575679343f092d5b13a8476e6c715383736c64cb1db3a7c9b6ca7ab5d6649481"
+    },
+    {
+      "probe": "Ambience-half",
+      "sha256": "b2ba5b933f910aeb4917de4e23608e8f9a9ac45236ed3e824d87dad9b04d780a"
+    },
+    {
+      "probe": "Ambience-zero",
+      "sha256": "9046eb73cb962629285812fda5eb9e7fcf6876582bef6fb758936800746472b6"
+    },
+    {
+      "probe": "Ambience-mute",
+      "sha256": "044efa9651d864a1f44c6a694cc475fc2a9c691eca4946e5d8ef58ad3ec41370"
+    },
+    {
+      "probe": "Effects-normal",
+      "sha256": "efec7113d23d476efa2fc7b69911cfe042a7d6eaa3702c8caa77cfd91695cc94"
+    },
+    {
+      "probe": "Effects-half",
+      "sha256": "9bfcb96b6e5ca079e468338cb9b0db6bbc0d6cdf655da4b83830273e176fbf22"
+    },
+    {
+      "probe": "Effects-zero",
+      "sha256": "21a3d876ec6ac0bdf3a966f117ca476bdf36a987d35bff05a868777dcd669ac0"
+    },
+    {
+      "probe": "Effects-mute",
+      "sha256": "fa31355afe8d8865243d53ed46b856e66b2198606b2b4cd24e51df84b189b239"
+    },
+    {
+      "probe": "Music-normal",
+      "sha256": "a9c1f37e80e307cbbdce59b0bb7a24b09cb98de5a2ea0ab094c5895645ae6743"
+    },
+    {
+      "probe": "Music-half",
+      "sha256": "f1e9e83756c7c5dd248fcee4944ad9634695a08279fa62774ca2e68580c54868"
+    },
+    {
+      "probe": "Music-zero",
+      "sha256": "dc5707052e4c70528e8cc67bf7ae86c36a5b5f5b3d2a08908a3fb3874d5203ff"
+    },
+    {
+      "probe": "Music-mute",
+      "sha256": "d7be89e51e760906a426a094057855ec1e1229b3c49a81ef1b40b8de59d20dfc"
+    },
+    {
+      "probe": "Dialogue-normal",
+      "sha256": "772e724b32ef44375edddfd71602d3586c9be292b43be7a265aa43070c27cad6"
+    },
+    {
+      "probe": "Dialogue-half",
+      "sha256": "7a59e6a5c4af950ba99284f8df2537844a51a6064c90051f81bf83cb75dceb9e"
+    },
+    {
+      "probe": "Dialogue-zero",
+      "sha256": "98051c0671935fc792f2a64285af7049c5ff1da54674933f61db80670d46f11d"
+    },
+    {
+      "probe": "Dialogue-mute",
+      "sha256": "8815235de1da03929cc58f1ed8ac829a6ee98a5aff6ffd5e87817681e659b8cb"
+    },
+    {
+      "probe": "master-zero",
+      "sha256": "dd077abe0953cf720d830545a7a1be2aa839811209d20a175da2cbb558ddc757"
+    },
+    {
+      "probe": "master-mute",
+      "sha256": "c32e40c19dd6a28789a5c57bfc410a9697151c9c8da0cf0602780fab902c0cce"
+    },
+    {
+      "probe": "mono",
+      "sha256": "479f7c1781d467872d2b0f37617c5f759ad96b590354134ad1d4305dfdb4aed2"
+    }
+  ],
+  "input_sha256": {
+    "Ambience": "f4f63e878d807bb7aefa6599ea80c2e4a44a6202be555510bbe9052f3d31bc44",
+    "Effects": "b543756e45fd4b06369b3dfecd32da0e9b86a700d1d69ec13a84844c615efca4",
+    "Music": "7fa0ae6ee6c46ab94c15fc62188cfe349ef47896145ac05e694cb1fc13adabd4",
+    "Dialogue": "f24bb5cf970baa340446b70c7b5a795436db4976260cc2432be138e4d520c239"
+  },
+  "output_sha256": {
+    "Ambience-normal": "494c65fb7694d32e8e1b8688094f5c81a5bd8aa43c6bd73dcb64e76a4e8c1fa2",
+    "Ambience-half": "0b4499f29578c974ab998af7e70e745d3d3007525e20d183a60d39930e39a1b3",
+    "Ambience-zero": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Ambience-mute": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Effects-normal": "7ee04b38f58425b70932a65629516b33bc20b26c2b0c8ce68c0012f33fa01b9a",
+    "Effects-half": "226e38687e0d1e3fde416312189b189d8ce006a52a499cb04048e64c71b99767",
+    "Effects-zero": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Effects-mute": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Music-normal": "29c69ad7637b1efec09da713ab17626f47e9e696fa0aa53f979dc4e6b2b73eb0",
+    "Music-half": "ae0b9fa788ce3b1598bdba399b1786714567b90693ae1ca65ab76afc81cc5354",
+    "Music-zero": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Music-mute": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Dialogue-normal": "9435e58151c94a402660803fa608432e1e9a902ead945640ae31affb850f1d18",
+    "Dialogue-half": "bd4fe96668d3bea4bf7f7b2100052226c767c28debe7be41257edd91cc2b81dd",
+    "Dialogue-zero": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "Dialogue-mute": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "master-zero": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "master-mute": "9ee6798c98dc37c1e39b15a4ea0b5a23f5648daff944750c0d9178953461a64e",
+    "mono": "3c6fba37aeca206e673bc400df7cc91a3a845e0740d3abbb24ce82ed03ba6528"
+  },
+  "limitations": "Actual new material import/control output only; settings persistence and optional/required ducking reuse retained unchanged product evidence. No speech or human device/listening claim."
+}

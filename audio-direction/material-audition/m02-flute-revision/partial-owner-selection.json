@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "status": "fifteen_accepted_m02_flute_revision_in_progress",
+  "owner_statement": "Sound good - except for the rest and healing motif - where something like quiet flute music (eg japanese bamboo flute) might be better",
+  "selected_ids": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "M01"
+  ],
+  "date": "2026-10-07",
+  "candidate_manifest_sha256": "685dd09b8c28c7a40836bfc5edb2c761cd970b2adff83a0200f9f11c0e6d14f9",
+  "mix_measurements_sha256": "4e029509ae661a18aaa7d498de3ddcb6e8c3f5eb3e9fbf199388c7fd3e58c874",
+  "review_html_sha256": "6e854b64f869c12268f20a1aae4788cde34e8c58d634fc46e6fd0524c25a83e6",
+  "meaning": "Fifteen exact prior candidates accepted; old M02 rejected for flute replacement. Revised M02 pending.",
+  "acceptance_record": "audio-direction/material-audition/accepted-fifteen.json",
+  "acceptance_record_sha256": "97a00d436f85d5debf415230398075fa274638c9a722753714af7d61d2ebbbde"
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "status": "technical_revision_complete_only_m02_owner_selection_pending",
+  "accepted_excerpt_count": 15,
+  "pending_revised_excerpt": "M02",
+  "original_source_count_retained_including_rejected_rest": 17,
+  "actual_material_output_control_probes_reused": 19,
+  "accepted_record_sha256": "97a00d436f85d5debf415230398075fa274638c9a722753714af7d61d2ebbbde",
+  "candidate_manifest_sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab",
+  "measurements_sha256": "2550920552a14fb366d10215306694f9d69e36fe1176fc802161c92cdc4b24bb",
+  "render_record_sha256": "f561285bfec61c68121c8fa74368fa43c16a0ac35d309b9f891b369db5c10363",
+  "comparison_checks_sha256": "58d17050ba54f34a6bc5a28037067d0974484116e608e334440c6c90873bad10",
+  "controls_sha256": "3347209ebe2476d7479a34508e5712e4567ba38aab24a8f3e188375c237f6087",
+  "working_storage_bytes": 967898757,
+  "agent_acoustic_listening": "not_assessed",
+  "runtime_installation": false,
+  "new_publication_authority": false
+}

@@ -1,0 +1,29 @@
+{
+  "tracks": [
+    {
+      "bus": "Music",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Music.wav",
+      "sha256": "181a665a2197e89dbac252dd1f33f9c0235bfbd6e7ec73eaa87a6489927cfc8b"
+    },
+    {
+      "bus": "Ambience",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Ambience.wav",
+      "sha256": "757b8bb293979e93e36c4eeb8140cadb70f1ebfe739d5f1d365d53e34b931536",
+      "reused_unchanged_track": true
+    },
+    {
+      "bus": "Effects",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Effects.wav",
+      "sha256": "b361df995532e03d0373a3b702202116a6ac06bb175be0542c17b769c06061c6",
+      "reused_unchanged_track": true
+    },
+    {
+      "bus": "Dialogue",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Dialogue.wav",
+      "sha256": "464d2e790306a020315b0ac2454cb89d9b6e09b538ba9ffc876cbc7636250df1",
+      "reused_unchanged_track": true
+    }
+  ],
+  "reduced_range": false,
+  "mono": false
+}

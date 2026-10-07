@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "status": "complete_series_owner_accepted",
+  "excerpt_count": 16,
+  "original_source_count": 17,
+  "used_decoded_file_count": 22,
+  "mix_count": 3,
+  "mix_seconds_each": 300,
+  "actual_material_output_control_probes": 19,
+  "same_nonmusic_timeline_in_music_free": true,
+  "human_acoustic_qualification": "Owner accepted the complete series; agent acoustic/device listening remains unassessed",
+  "owner_selection": "complete_series_accepted_default_range_selected",
+  "speech_device_claims": "none",
+  "evidence": {
+    "path": "audio-direction/material-audition/material-controls/measurements.json",
+    "sha256": "3347209ebe2476d7479a34508e5712e4567ba38aab24a8f3e188375c237f6087",
+    "actual_output_probes": 19
+  },
+  "comparison_evidence": {
+    "path": "audio-direction/material-audition/review/comparison-checks.json",
+    "sha256": "58d17050ba54f34a6bc5a28037067d0974484116e608e334440c6c90873bad10"
+  },
+  "working_storage_bytes_at_checkpoint": 967967072,
+  "git_publication": "not_authorized_by_this_grant",
+  "browser_check": {
+    "audio_player_count": 19,
+    "all_expected_durations_loaded": true,
+    "media_errors": 0,
+    "autoplay": false,
+    "shared_timeline_seeks_to_255_seconds": true,
+    "optional_preview_gain_toggle_and_restore": true,
+    "human_listening_claim": false,
+    "screenshot": "audio-direction/material-audition/review/accepted-page.jpg",
+    "shared_timeline_seeks_to_278_seconds": true,
+    "accepted_candidate_label_count": 16
+  },
+  "owner_review_question": "Closed by actual whole-slice owner acceptance; no pending question",
+  "revision_evidence": {
+    "path": "audio-direction/material-audition/m02-flute-revision/verification.json",
+    "sha256": "9e2e4a99ed898493c3e38ec5b4b70081eaff11b52c03f51c25e69deddac69a16"
+  }
+}

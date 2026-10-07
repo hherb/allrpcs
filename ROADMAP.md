@@ -369,14 +369,24 @@ sparse optional music, perception-bound cues/captions, independent category cont
 explicitly provisional mix targets. [Terminal acceptance](audio-direction/owner-acceptance.json)
 binds the exact reviewed policy files and supersedes their historical proposal fields.
 The [structured policy](audio-direction/dynamic-range-policy.json) remains a design record;
-no production assets have been auditioned or installed. The
+the external material audition is now owner-accepted; ordinary runtime audio remains uninstalled. The
 [bus/control implementation](audio-direction/buses-controls.md) is complete under the
 [approved runtime scope](audio-direction/buses-controls-authority.json): five sibling buses
 plus Master, persistent independent gains/mutes, accessible settings, functional range/mono
 controls and disposable foreground/routing diagnostics. [Verification](audio-direction/buses-controls-verification.json)
 records 5,054 tests, the complete Godot smoke suite and 38 measured final-output probes.
-The next boundary is the finite source/licensing plan for the accepted collective audition;
-material sounds, positional emitters, music, real listening and voice remain unfinished.
+The [finite source/licensing plan](audio-direction/material-audition-source-plan.md) now
+accounts for all sixteen audition candidates and acquisition/credit/measurement records.
+The owner approved acquisition and the isolated complete-series audition on 2026-10-07.
+The [external audition package](audio-direction/material-audition/README.md) retains all
+sixteen excerpt classes, three measured five-minute mixes, rights/credits, edit lineage
+and nineteen passing real-material output probes. The owner accepted fifteen excerpts
+and requested only a quiet flute revision for M02 rest/healing. Those fifteen remain
+frozen. The owner then accepted revised M02 and the complete series, selecting Default
+range. [Terminal acceptance](audio-direction/material-audition/owner-acceptance.json)
+closes the whole audition slice; no further listening gate remains. Seventeen source containers,
+including the rejected rest source, are retained. Material sounds, positional emitters, runtime
+music and voice remain unfinished; no ordinary runtime audio is installed.
 
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.

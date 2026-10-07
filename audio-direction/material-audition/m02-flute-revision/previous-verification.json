@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "technical_preparation_complete_human_qualification_and_selection_pending",
+  "excerpt_count": 16,
+  "original_source_count": 16,
+  "used_decoded_file_count": 22,
+  "mix_count": 3,
+  "mix_seconds_each": 300,
+  "actual_material_output_control_probes": 19,
+  "same_nonmusic_timeline_in_music_free": true,
+  "human_acoustic_qualification": "not_assessed",
+  "owner_selection": "pending",
+  "speech_device_claims": "none",
+  "evidence": {
+    "path": "audio-direction/material-audition/material-controls/measurements.json",
+    "sha256": "3347209ebe2476d7479a34508e5712e4567ba38aab24a8f3e188375c237f6087",
+    "actual_output_probes": 19
+  },
+  "comparison_evidence": {
+    "path": "audio-direction/material-audition/review/comparison-checks.json",
+    "sha256": "b00ac33e07d846d0dbbf536362b29d7349e71f3e37943e887440db1d5360b9c9"
+  },
+  "working_storage_bytes_at_checkpoint": 951617211,
+  "git_publication": "not_authorized_by_this_grant",
+  "browser_check": {
+    "audio_player_count": 19,
+    "all_expected_durations_loaded": true,
+    "media_errors": 0,
+    "autoplay": false,
+    "shared_timeline_seeks_to_255_seconds": true,
+    "optional_preview_gain_toggle_and_restore": true,
+    "human_listening_claim": false,
+    "screenshot": "audio-direction/material-audition/review/listening-page.jpg"
+  },
+  "owner_review_question": "Already pending in this chat; do not repeat"
+}

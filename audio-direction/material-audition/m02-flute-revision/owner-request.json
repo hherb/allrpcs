@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "owner_statement": "Sound good - except for the rest and healing motif - where something like quiet flute music (eg japanese bamboo flute) might be better",
+  "scope": "Replace M02 only with a zero-cost compatible flute music source, preferably Japanese bamboo flute; edit excerpt, update affected comparison mixes and review evidence. Preserve fifteen accepted excerpts and all existing closed scopes.",
+  "replacement_source_url": "https://freesound.org/people/gonzooka/sounds/486487/",
+  "source_plan_exception": "Owner request supersedes the frozen original rest source choice only for M02; original source plan remains unchanged.",
+  "new_selection": "pending for revised M02",
+  "previous_M02_sha256": "16b5e119170f5cd8897e71f40a6e9ece60c09db8a16dec81dd135b3c7c02fe79"
+}

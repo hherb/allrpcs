@@ -1,0 +1,494 @@
+{
+  "schema_version": 1,
+  "status": "complete_numerical_measurements_pending_listening_and_owner_selection",
+  "candidates_manifest_sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab",
+  "script_sha256": "207173866806cf906bd84b346df99ffb8aaed855c1a4cd464026c42890479027",
+  "tool_versions": {
+    "ffmpeg": "ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "numpy": "1.26.4",
+    "soundfile": "0.13.1"
+  },
+  "oversampled_peak_method": "scipy resample_poly four-times FIR estimate; not a certified BS.1770 true-peak meter",
+  "individual_short_transient_lufs_target": null,
+  "excerpts": [
+    {
+      "id": "B01",
+      "path": "audio-direction/material-audition/clips/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5",
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -8.922856230052506,
+      "rms_dbfs": -29.99999987368257,
+      "four_times_oversampled_peak_dbfs": -8.89732286342969,
+      "mono_fold_rms_dbfs": -30.542089839080404,
+      "mono_fold_rms_change_db": -0.5420899653978359,
+      "first_sample_absolute_max": 0.02031850814819336,
+      "last_sample_absolute_max": 0.025005221366882324,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "loop": {
+        "begin_sample": 0,
+        "end_sample_exclusive": 1440000,
+        "seam_delta_dbfs": -46.58263240538572,
+        "local_difference_p99_dbfs": -31.605161318672273,
+        "three_repeat_frames": 4320000,
+        "repeat_is_exact_copy": true,
+        "audible_seam": "not_assessed"
+      }
+    },
+    {
+      "id": "B02",
+      "path": "audio-direction/material-audition/clips/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54",
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -8.839970390340754,
+      "rms_dbfs": -26.027119130055844,
+      "four_times_oversampled_peak_dbfs": -8.834443015309684,
+      "mono_fold_rms_dbfs": -26.613528294571026,
+      "mono_fold_rms_change_db": -0.5864091645151822,
+      "first_sample_absolute_max": 0.07119226455688477,
+      "last_sample_absolute_max": 0.059471845626831055,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "loop": {
+        "begin_sample": 0,
+        "end_sample_exclusive": 1440000,
+        "seam_delta_dbfs": -38.621137295780045,
+        "local_difference_p99_dbfs": -26.236021644353464,
+        "three_repeat_frames": 4320000,
+        "repeat_is_exact_copy": true,
+        "audible_seam": "not_assessed"
+      }
+    },
+    {
+      "id": "B03",
+      "path": "audio-direction/material-audition/clips/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625",
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -6.999998967505028,
+      "rms_dbfs": -31.37096400329504,
+      "four_times_oversampled_peak_dbfs": -6.852651212473031,
+      "mono_fold_rms_dbfs": -31.966732048884523,
+      "mono_fold_rms_change_db": -0.5957680455894854,
+      "first_sample_absolute_max": 0.04812276363372803,
+      "last_sample_absolute_max": 0.040817975997924805,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "loop": {
+        "begin_sample": 0,
+        "end_sample_exclusive": 1440000,
+        "seam_delta_dbfs": -42.72784810640596,
+        "local_difference_p99_dbfs": -28.69596060039793,
+        "three_repeat_frames": 4320000,
+        "repeat_is_exact_copy": true,
+        "audible_seam": "not_assessed"
+      }
+    },
+    {
+      "id": "B04",
+      "path": "audio-direction/material-audition/clips/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286",
+      "frames": 1440000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -11.799155151063893,
+      "rms_dbfs": -28.983290864336887,
+      "four_times_oversampled_peak_dbfs": -11.775136419130734,
+      "mono_fold_rms_dbfs": -29.300456283070346,
+      "mono_fold_rms_change_db": -0.31716541873345894,
+      "first_sample_absolute_max": 0.07284891605377197,
+      "last_sample_absolute_max": 0.07370078563690186,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "loop": {
+        "begin_sample": 0,
+        "end_sample_exclusive": 1440000,
+        "seam_delta_dbfs": -55.28967533250484,
+        "local_difference_p99_dbfs": -35.18378462086665,
+        "three_repeat_frames": 4320000,
+        "repeat_is_exact_copy": true,
+        "audible_seam": "not_assessed"
+      }
+    },
+    {
+      "id": "W01",
+      "path": "audio-direction/material-audition/clips/W01.wav",
+      "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e",
+      "frames": 480000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -15.999998506140162,
+      "rms_dbfs": -51.32593360743664,
+      "four_times_oversampled_peak_dbfs": -15.898385480413772,
+      "mono_fold_rms_dbfs": -53.21066800391178,
+      "mono_fold_rms_change_db": -1.8847343964751304,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "contacts": {
+        "count": 6,
+        "silent_gap_seconds": [
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "anatomical_foot_identity_and_material_fit": "not_assessed"
+      }
+    },
+    {
+      "id": "W02",
+      "path": "audio-direction/material-audition/clips/W02.wav",
+      "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f",
+      "frames": 480000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -15.999998506140162,
+      "rms_dbfs": -48.328303709998586,
+      "four_times_oversampled_peak_dbfs": -15.524011389522647,
+      "mono_fold_rms_dbfs": -48.328303709998586,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "contacts": {
+        "count": 6,
+        "silent_gap_seconds": [
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "anatomical_foot_identity_and_material_fit": "not_assessed"
+      }
+    },
+    {
+      "id": "W03",
+      "path": "audio-direction/material-audition/clips/W03.wav",
+      "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f",
+      "frames": 480000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -15.999998506140162,
+      "rms_dbfs": -44.62251764389852,
+      "four_times_oversampled_peak_dbfs": -15.863921619899038,
+      "mono_fold_rms_dbfs": -45.04651751810243,
+      "mono_fold_rms_change_db": -0.4239998742039189,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "contacts": {
+        "count": 6,
+        "silent_gap_seconds": [
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "anatomical_foot_identity_and_material_fit": "not_assessed"
+      }
+    },
+    {
+      "id": "W04",
+      "path": "audio-direction/material-audition/clips/W04.wav",
+      "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697",
+      "frames": 480000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -16.00000503931823,
+      "rms_dbfs": -43.78999299073311,
+      "four_times_oversampled_peak_dbfs": -15.994477664287158,
+      "mono_fold_rms_dbfs": -43.78999507344482,
+      "mono_fold_rms_change_db": -2.082711714526089e-06,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "contacts": {
+        "count": 6,
+        "silent_gap_seconds": [
+          0.8,
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "anatomical_foot_identity_and_material_fit": "not_assessed"
+      }
+    },
+    {
+      "id": "A01",
+      "path": "audio-direction/material-audition/clips/A01.wav",
+      "sha256": "a23db3992116b598b5dc652c95b18c51f5409691c747637ddacc5d0320f97a90",
+      "frames": 384000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -19.000002751809028,
+      "rms_dbfs": -57.3637979637472,
+      "four_times_oversampled_peak_dbfs": -18.83529039255962,
+      "mono_fold_rms_dbfs": -57.3637979637472,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "A02",
+      "path": "audio-direction/material-audition/clips/A02.wav",
+      "sha256": "bebfae9f419359960530073a8cc2764d4b9d28b8b3844eb41a9db9addcc4278d",
+      "frames": 384000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -21.99999763333716,
+      "rms_dbfs": -44.71897619816039,
+      "four_times_oversampled_peak_dbfs": -21.572508195826558,
+      "mono_fold_rms_dbfs": -44.71897619816039,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "A03",
+      "path": "audio-direction/material-audition/clips/A03.wav",
+      "sha256": "bae5aa7343bb41ce6b4bf35548dc551e28a43d18c1bdbeb994d5e64baefbfa26",
+      "frames": 384000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -19.99999792912278,
+      "rms_dbfs": -50.134898491028245,
+      "four_times_oversampled_peak_dbfs": -19.819156160661333,
+      "mono_fold_rms_dbfs": -50.134898491028245,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "A04",
+      "path": "audio-direction/material-audition/clips/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d",
+      "frames": 384000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -18.999993523453586,
+      "rms_dbfs": -57.75888380758312,
+      "four_times_oversampled_peak_dbfs": -18.894026047380496,
+      "mono_fold_rms_dbfs": -59.389727128560885,
+      "mono_fold_rms_change_db": -1.6308433209777577,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "A05",
+      "path": "audio-direction/material-audition/clips/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5",
+      "frames": 384000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -22.71487368842793,
+      "rms_dbfs": -49.9239308967457,
+      "four_times_oversampled_peak_dbfs": -22.689186169620218,
+      "mono_fold_rms_dbfs": -49.9239308967457,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "A06",
+      "path": "audio-direction/material-audition/clips/A06.wav",
+      "sha256": "458a2103db847da7eaf8d69839b5ff785ebd04a125d1a2de653ccc8a78ce9cb9",
+      "frames": 384000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -24.000006281265822,
+      "rms_dbfs": -58.66956568997348,
+      "four_times_oversampled_peak_dbfs": -23.95691343063593,
+      "mono_fold_rms_dbfs": -58.66956568997348,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "M01",
+      "path": "audio-direction/material-audition/clips/M01.wav",
+      "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6",
+      "frames": 1200000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -13.018689010730967,
+      "rms_dbfs": -25.99999975753579,
+      "four_times_oversampled_peak_dbfs": -13.013161635699896,
+      "mono_fold_rms_dbfs": -27.07116601668742,
+      "mono_fold_rms_change_db": -1.071166259151631,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed"
+    },
+    {
+      "id": "M02",
+      "path": "audio-direction/material-audition/clips/M02.wav",
+      "sha256": "c706dd03b3e730227ce7ec383a237f4c8f785b1f44ecaa314f04993ff5776511",
+      "frames": 1200000,
+      "rate_hz": 48000,
+      "subtype": "PCM_24",
+      "sample_peak_dbfs": -12.924148810619545,
+      "rms_dbfs": -28.000000284774508,
+      "four_times_oversampled_peak_dbfs": -12.918621435588475,
+      "mono_fold_rms_dbfs": -28.000000284774508,
+      "mono_fold_rms_change_db": 0.0,
+      "first_sample_absolute_max": 0.0,
+      "last_sample_absolute_max": 0.0,
+      "audible_seam_material_contamination_device_fit": "not_assessed",
+      "measurement_script_sha256": "59298e5fd245c9b88f46afa530c271c0a0845aced5da9c1b923962beee5fa7ba"
+    }
+  ],
+  "final_mix_outputs": [
+    {
+      "name": "default",
+      "path": "audio-direction/material-audition/review/default.wav",
+      "sha256": "99b28aaa7711621e99ceb3e4b0a7ef0a805a12c6133a940624e8e6001b9514c6",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "faa9696d430138997599c4216ad981921e6ccd65ecabf421ce358f590cf71f22",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Music\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "b7c90dd05b3ca624d7a6457673b4f56fba9ffe2362df88d5325a53697016a48b",
+      "measurement_point": "Godot offline stereo output after the copied Master effects and gain",
+      "integrated_lufs": -24.99,
+      "lra_lu": 7.5,
+      "true_peak_dbtp": -6.63,
+      "sample_peak_dbfs": -6.8298753627909505,
+      "rate_hz": 48000,
+      "meter": "Installed ffmpeg loudnorm INPUT fields; measurement filter output is discarded",
+      "meter_log": "audio-direction/material-audition/review/default-meter.log",
+      "meter_log_sha256": "b118c14fc8782f8d2718ff0343a5b9aa5dfce1cd63216cb33c353331db903dd2",
+      "comparisons_to_provisional_targets": {
+        "default_loudness_band": {
+          "target": -23,
+          "audition_min": -25,
+          "audition_max": -21
+        },
+        "within_default_loudness_band": true,
+        "lra_band": {
+          "min": 8,
+          "max": 12
+        },
+        "within_lra_band": false,
+        "true_peak_ceiling_dbtp": -1,
+        "within_true_peak_ceiling": true
+      },
+      "listening_and_device_assessment": "not_assessed"
+    },
+    {
+      "name": "reduced-range",
+      "path": "audio-direction/material-audition/review/reduced-range.wav",
+      "sha256": "ca0e61e8751d1af2b7e8d6b641c97c313d8a267abbc85cf57071c306d6a0e748",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "c92f327e10a88b401656e2880d3daabec50cb2e60e9379e253c05472551c4a55",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Music\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "8369f7dc11dde4094e17fb4cc1b1b27f67879c6b0753ef20384ffdb407252f9b",
+      "measurement_point": "Godot offline stereo output after the copied Master effects and gain",
+      "integrated_lufs": -37.72,
+      "lra_lu": 4.8,
+      "true_peak_dbtp": -19.04,
+      "sample_peak_dbfs": -19.03604032836554,
+      "rate_hz": 48000,
+      "meter": "Installed ffmpeg loudnorm INPUT fields; measurement filter output is discarded",
+      "meter_log": "audio-direction/material-audition/review/reduced-range-meter.log",
+      "meter_log_sha256": "d4d0fa3914dff9b601e2c55998875b7c6239c1d8b51cd499ccf1c1b96e209644",
+      "comparisons_to_provisional_targets": {
+        "default_loudness_band": {
+          "target": -23,
+          "audition_min": -25,
+          "audition_max": -21
+        },
+        "within_default_loudness_band": false,
+        "lra_band": {
+          "min": 4,
+          "max": 6
+        },
+        "within_lra_band": true,
+        "true_peak_ceiling_dbtp": -1,
+        "within_true_peak_ceiling": true
+      },
+      "listening_and_device_assessment": "not_assessed"
+    },
+    {
+      "name": "music-free",
+      "path": "audio-direction/material-audition/review/music-free.wav",
+      "sha256": "90662994ab14535f9d1b01112ee76c740ccc86c77c4d49e17404559d8a6fc80c",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "0614a9e7f6f3378b9d2ae159336aa3f026b01c7283a25578cc23bbc7f582417e",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "7e8eee8888d7d554faa575f108fdbec7c296892253da4c25cf0f532940808d47",
+      "measurement_point": "Godot offline stereo output after the copied Master effects and gain",
+      "integrated_lufs": -25.1,
+      "lra_lu": 7.6,
+      "true_peak_dbtp": -6.63,
+      "sample_peak_dbfs": -6.8298753627909505,
+      "rate_hz": 48000,
+      "meter": "Installed ffmpeg loudnorm INPUT fields; measurement filter output is discarded",
+      "meter_log": "audio-direction/material-audition/review/music-free-meter.log",
+      "meter_log_sha256": "36a38c6e419b42bbd26deae02c9130df1bfce134a50ec9b3b33f22fb09e43371",
+      "comparisons_to_provisional_targets": {
+        "default_loudness_band": {
+          "target": -23,
+          "audition_min": -25,
+          "audition_max": -21
+        },
+        "within_default_loudness_band": false,
+        "lra_band": {
+          "min": 8,
+          "max": 12
+        },
+        "within_lra_band": false,
+        "true_peak_ceiling_dbtp": -1,
+        "within_true_peak_ceiling": true
+      },
+      "listening_and_device_assessment": "not_assessed",
+      "reused_unchanged_output": true,
+      "original_candidate_manifest_sha256": "685dd09b8c28c7a40836bfc5edb2c761cd970b2adff83a0200f9f11c0e6d14f9",
+      "reuse_reason": "Music omitted; identical nonmusic tracks, timings, layout and settings",
+      "measurement_reused_unchanged": true
+    }
+  ],
+  "listening": {
+    "stereo": "not_assessed",
+    "mono": "not_assessed",
+    "headphones": "not_assessed",
+    "speakers": "not_assessed",
+    "low_volume": "not_assessed",
+    "reduced_range": "not_assessed"
+  },
+  "speech_masking_and_intelligibility": "not_assessed_no_voice_source",
+  "owner_selected": false,
+  "mix_render_record_sha256": "f561285bfec61c68121c8fa74368fa43c16a0ac35d309b9f891b369db5c10363",
+  "mix_meter_script_sha256": "0220cfe92c53c95e81fc7ad78a898b63e790d5a3059427654bef0e7ab95a8634",
+  "policy_sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d",
+  "combined_pre_master_sample_peak_dbfs": -6.830616424376509,
+  "revision_lineage": {
+    "unchanged_fifteen_measurements": "m02-flute-revision/previous-measurements.json",
+    "predecessor_sha256": "4e029509ae661a18aaa7d498de3ddcb6e8c3f5eb3e9fbf199388c7fd3e58c874",
+    "updated_excerpt_only": "M02"
+  }
+}

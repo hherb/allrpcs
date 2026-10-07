@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "status": "captured_pending_measurements",
+  "measurement_point": "Godot offline stereo output after the copied Master effects and gain",
+  "bus_layout_path": "game/AudioBusLayout.tres",
+  "bus_layout_sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65",
+  "renderer_script_sha256": "2a78f592d8c8bd39a51a2f507cd5bc3dc8e27fa7f78022e4676b914d53d594d1",
+  "python_script_sha256": "22f770ad102da78eb4110f77a4f7434223051b0e841ab378ae9a8614480c05ba",
+  "candidates_sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab",
+  "godot_version": "4.6.3.stable.mono.official.7d41c59c4",
+  "combined_pre_master_sample_peak_dbfs": -6.830616424376509,
+  "tracks": [
+    {
+      "bus": "Music",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Music.wav",
+      "sha256": "181a665a2197e89dbac252dd1f33f9c0235bfbd6e7ec73eaa87a6489927cfc8b"
+    },
+    {
+      "bus": "Ambience",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Ambience.wav",
+      "sha256": "757b8bb293979e93e36c4eeb8140cadb70f1ebfe739d5f1d365d53e34b931536",
+      "reused_unchanged_track": true
+    },
+    {
+      "bus": "Effects",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Effects.wav",
+      "sha256": "b361df995532e03d0373a3b702202116a6ac06bb175be0542c17b769c06061c6",
+      "reused_unchanged_track": true
+    },
+    {
+      "bus": "Dialogue",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Dialogue.wav",
+      "sha256": "464d2e790306a020315b0ac2454cb89d9b6e09b538ba9ffc876cbc7636250df1",
+      "reused_unchanged_track": true
+    }
+  ],
+  "outputs": [
+    {
+      "name": "default",
+      "path": "audio-direction/material-audition/review/default.wav",
+      "sha256": "99b28aaa7711621e99ceb3e4b0a7ef0a805a12c6133a940624e8e6001b9514c6",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "faa9696d430138997599c4216ad981921e6ccd65ecabf421ce358f590cf71f22",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Music\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "b7c90dd05b3ca624d7a6457673b4f56fba9ffe2362df88d5325a53697016a48b"
+    },
+    {
+      "name": "reduced-range",
+      "path": "audio-direction/material-audition/review/reduced-range.wav",
+      "sha256": "ca0e61e8751d1af2b7e8d6b641c97c313d8a267abbc85cf57071c306d6a0e748",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "c92f327e10a88b401656e2880d3daabec50cb2e60e9379e253c05472551c4a55",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Music\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "8369f7dc11dde4094e17fb4cc1b1b27f67879c6b0753ef20384ffdb407252f9b"
+    },
+    {
+      "name": "music-free",
+      "path": "audio-direction/material-audition/review/music-free.wav",
+      "sha256": "90662994ab14535f9d1b01112ee76c740ccc86c77c4d49e17404559d8a6fc80c",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "0614a9e7f6f3378b9d2ae159336aa3f026b01c7283a25578cc23bbc7f582417e",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "7e8eee8888d7d554faa575f108fdbec7c296892253da4c25cf0f532940808d47",
+      "reused_unchanged_output": true,
+      "original_candidate_manifest_sha256": "685dd09b8c28c7a40836bfc5edb2c761cd970b2adff83a0200f9f11c0e6d14f9",
+      "reuse_reason": "Music omitted; identical nonmusic tracks, timings, layout and settings"
+    }
+  ],
+  "revision_scope": "Only M02 and dependent Music/Default/Reduced outputs changed; accepted nonmusic tracks reused",
+  "predecessor_render_record_sha256": "6a6cf08dad201c5bdaeb779f8465db55d3dcd508457f1887e766746c1fb2d272",
+  "executed_python_script_path": "audio-direction/material-audition/m02-flute-revision/executed-render-audition.py",
+  "music_prefix_before_278_seconds_encoded_pcm_identical": true
+}

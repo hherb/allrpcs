@@ -1,0 +1,963 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "owner_statement": "Sound good - except for the rest and healing motif - where something like quiet flute music (eg japanese bamboo flute) might be better",
+  "meaning": "Owner listening accepts all fifteen candidates other than M02. Exact excerpt audio, routing and source edits are frozen; no new runtime installation or publication authority. Device-specific listening is not inferred.",
+  "candidate_manifest_sha256": "685dd09b8c28c7a40836bfc5edb2c761cd970b2adff83a0200f9f11c0e6d14f9",
+  "accepted_candidates": [
+    {
+      "id": "B01",
+      "group": "regional_bed",
+      "title": "Sheltered village rain",
+      "source_ids": [
+        "rain"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "muted-village-rain",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Choose a steady segment, soften direct high-frequency rain and add gentle loop crossfade; represent shelter through the edit, without new recorded room facts.",
+      "qualification": "Measure seam/mono compatibility and keep room-tone/interior impression subordinate to rain.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5",
+      "actual_seconds": 30.0,
+      "sample_peak_dbfs": -8.922856230052506,
+      "rms_dbfs": -29.99999986732361,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+          "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 35185664,
+          "lossy_original": false,
+          "trim_begin_sample": 2880000,
+          "trim_end_sample": 4356000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 5500,
+          "applied_gain_db": -3.223585606346152
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "B02",
+      "group": "regional_bed",
+      "title": "Running water and rain",
+      "source_ids": [
+        "stream",
+        "rain"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "running-water-and-rain",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Layer a stream excerpt with the same rain source at a lower combined level; do not add wildlife or stack a second full-volume region bed.",
+      "qualification": "Retain intelligible water texture; document both source trim windows and combined gain.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54",
+      "actual_seconds": 30.0,
+      "sample_peak_dbfs": -8.839971822835265,
+      "rms_dbfs": -26.027119125400795,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "stream",
+          "member_name": "stream-waterfall/stream1.ogg",
+          "path": "audio-direction/material-audition/members/stream/stream-waterfall/stream1.ogg",
+          "sha256": "c0b5256f20db94654493e4c32fdb3c25cffa6a8d41f6871969d0922147d28e65",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1531008,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 1476000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": null,
+          "applied_gain_db": 8.532876538695582
+        },
+        {
+          "source_id": "rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+          "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 35185664,
+          "lossy_original": false,
+          "trim_begin_sample": 4800000,
+          "trim_end_sample": 6276000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 7500,
+          "applied_gain_db": -6.140357323652066
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "B03",
+      "group": "regional_bed",
+      "title": "Rain under leaves",
+      "source_ids": [
+        "leaf-rain"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "rain-under-trees",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Trim and fade the leaf-rain excerpt; test its advertised loop and soften hiss only if the material remains identifiable.",
+      "qualification": "Keep CC BY 4.0 credit and edit notice with every derivative; no insects, birds or clue beacon.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625",
+      "actual_seconds": 30.0,
+      "sample_peak_dbfs": -7.000000126534257,
+      "rms_dbfs": -31.370964001586326,
+      "final_uniform_headroom_gain_db": -1.3709642681755152,
+      "source_edits": [
+        {
+          "source_id": "leaf-rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/leaf-rain/Rain-on-dry-leaves-sound.mp3",
+          "sha256": "75efab82d45c882128959ef00b647143fb3eb141698d682be9da08280dbb847e",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 2936582,
+          "lossy_original": true,
+          "trim_begin_sample": 240000,
+          "trim_end_sample": 1716000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 8000,
+          "applied_gain_db": 2.7071879989323815
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "B04",
+      "group": "regional_bed",
+      "title": "Exposed wind/rain with inert creak",
+      "source_ids": [
+        "wind",
+        "rain",
+        "creak"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "road-wind-and-wagon",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Use a mild wind window and rain; place one soft isolated wooden creak with no periodic motion rhythm.",
+      "qualification": "Reject bag rustle or modern noise; creak is a material analogue, never hidden character evidence.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286",
+      "actual_seconds": 30.0,
+      "sample_peak_dbfs": -11.799153137097969,
+      "rms_dbfs": -28.983290852702584,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "wind",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/wind/wind background noise 2.wav",
+          "sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 2136462,
+          "lossy_original": false,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 1476000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 5000,
+          "applied_gain_db": -10.000762439884245
+        },
+        {
+          "source_id": "rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+          "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 35185664,
+          "lossy_original": false,
+          "trim_begin_sample": 7680000,
+          "trim_end_sample": 9156000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 7500,
+          "applied_gain_db": -7.715592701461692
+        },
+        {
+          "source_id": "creak",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/creak/506662__rudmer_rotteveel__wood-creak-single-v7.wav",
+          "sha256": "f210f39518e6d33d349d2a27c1213656339f7ff487c1f9af33fd2be0d42e1d89",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 76569,
+          "lossy_original": false,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 76560,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -14.119220233543238
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "W01",
+      "group": "walking_material",
+      "title": "Packed earth",
+      "source_ids": [
+        "earth"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Select three to six softer dirt contacts, trim individual tails and sequence at a calm pace with real gaps.",
+      "qualification": "Confirm soil timbre rather than gritty gravel; later terrain ownership remains unassigned.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/W01.wav",
+      "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e",
+      "actual_seconds": 10.0,
+      "sample_peak_dbfs": -16.000000139434217,
+      "rms_dbfs": -51.325933509645736,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "earth",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/earth/750796__simonjeffery13__dirt-footsteps-3.wav",
+          "sha256": "bc285529ffd6e16f2e5b80ad3e6c21613f2f4f8166bbc62c6a396d1e231c1320",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 531840,
+          "lossy_original": false,
+          "contact_windows": [
+            {
+              "begin_sample": 28800,
+              "end_sample": 52800,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 56640,
+              "end_sample": 80640,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 127680,
+              "end_sample": 151680,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 215520,
+              "end_sample": 239520,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 420480,
+              "end_sample": 444480,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 464640,
+              "end_sample": 488640,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -3.255690674306525,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "W02",
+      "group": "walking_material",
+      "title": "Gravel",
+      "source_ids": [
+        "gravel"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Select three to six distinct contacts and retain granule detail with controlled peaks.",
+      "qualification": "No running rhythm, clothing or environment bed masquerading as each step.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/W02.wav",
+      "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f",
+      "actual_seconds": 10.0,
+      "sample_peak_dbfs": -16.000000139434217,
+      "rms_dbfs": -48.32830309947659,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "gravel",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/gravel/488075__bendrain__footsteps_gravel_01.wav",
+          "sha256": "d3d67cc2070e7331091c3a726a38e22a936da1b254334b23d2cec8e02c1fd952",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1032000,
+          "lossy_original": false,
+          "contact_windows": [
+            {
+              "begin_sample": 341280,
+              "end_sample": 365280,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 393120,
+              "end_sample": 417120,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 791040,
+              "end_sample": 815040,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 892320,
+              "end_sample": 916320,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 964320,
+              "end_sample": 988320,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 999360,
+              "end_sample": 1023360,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -15.36725882652675,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "W03",
+      "group": "walking_material",
+      "title": "Leaf litter",
+      "source_ids": [
+        "leaves"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Select three to six leaf contacts and modest rustle tails; avoid artificially equal peak normalization.",
+      "qualification": "Audition against B03 so each contact remains distinct from canopy rain.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/W03.wav",
+      "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f",
+      "actual_seconds": 10.0,
+      "sample_peak_dbfs": -16.000000139434217,
+      "rms_dbfs": -44.622517677126396,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "leaves",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/leaves/398685__dominik_w__footsteps-walking-on-foliage-in-a-forest.wav",
+          "sha256": "d9f740ee4097f15022e3ec59d0e60de30b8aa9e6eabfbcd3e63931f633ec7e73",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 575125,
+          "lossy_original": false,
+          "contact_windows": [
+            {
+              "begin_sample": 4320,
+              "end_sample": 28320,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 34080,
+              "end_sample": 58080,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 70080,
+              "end_sample": 94080,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 105600,
+              "end_sample": 129600,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 136800,
+              "end_sample": 160800,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 175200,
+              "end_sample": 199200,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -2.906414930433319,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "W04",
+      "group": "walking_material",
+      "title": "Timber",
+      "source_ids": [
+        "timber"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Extract three to six walking contacts; attenuate boomy resonances and fade trim edges.",
+      "qualification": "Record MP3 ancestry; do not map hollow timber to a physical surface from visual appearance.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/W04.wav",
+      "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697",
+      "actual_seconds": 10.0,
+      "sample_peak_dbfs": -16.000000139434217,
+      "rms_dbfs": -43.78999296165293,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "timber",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/timber/459970__florianreichelt__footsteps-on-hollow-wood.mp3",
+          "sha256": "84e056d26f776c2607a0129ce2838f524ab6c3879028419ab2a40e84d5828197",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1295256,
+          "lossy_original": true,
+          "contact_windows": [
+            {
+              "begin_sample": 42240,
+              "end_sample": 66240,
+              "excerpt_start_seconds": 1.0
+            },
+            {
+              "begin_sample": 282720,
+              "end_sample": 306720,
+              "excerpt_start_seconds": 2.3
+            },
+            {
+              "begin_sample": 422880,
+              "end_sample": 446880,
+              "excerpt_start_seconds": 3.6
+            },
+            {
+              "begin_sample": 578880,
+              "end_sample": 602880,
+              "excerpt_start_seconds": 4.9
+            },
+            {
+              "begin_sample": 650400,
+              "end_sample": 674400,
+              "excerpt_start_seconds": 6.2
+            },
+            {
+              "begin_sample": 781440,
+              "end_sample": 805440,
+              "excerpt_start_seconds": 7.5
+            }
+          ],
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -2.3995917525037473,
+          "contact_detection": "10 ms RMS peaks; minimum 550 ms separation; no anatomical identity inferred"
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "A01",
+      "group": "action_feedback",
+      "title": "Water contact",
+      "source_ids": [
+        "water-contact"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Select two or three small splashes and preserve short recovery gaps.",
+      "qualification": "No sea waves, slime creature sound or unauthorized water action.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/A01.wav",
+      "sha256": "a23db3992116b598b5dc652c95b18c51f5409691c747637ddacc5d0320f97a90",
+      "actual_seconds": 8.0,
+      "sample_peak_dbfs": -18.9999998679469,
+      "rms_dbfs": -57.363797772877525,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "water-contact",
+          "member_name": "splash_01.ogg",
+          "path": "audio-direction/material-audition/members/water-contact/splash_01.ogg",
+          "sha256": "156f4df0fa1a552d1c4e451284a55000417ea871954dc4b5e0d4302a49e228a8",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 66292,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 66292,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -18.6955409887217
+        },
+        {
+          "source_id": "water-contact",
+          "member_name": "splash_03.ogg",
+          "path": "audio-direction/material-audition/members/water-contact/splash_03.ogg",
+          "sha256": "ae2cff9a47934ece590dda45ff18acf89c5c98cb5497ce71c50b3a315b225a94",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 37055,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 37055,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -19.154803619675153
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "A02",
+      "group": "action_feedback",
+      "title": "Container and cloth",
+      "source_ids": [
+        "wood-tool",
+        "cloth"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Combine one soft wooden container contact with light cotton handling; keep components identifiable.",
+      "qualification": "No claim of ceramic source; container material and actual actions remain future authored choices.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/A02.wav",
+      "sha256": "bebfae9f419359960530073a8cc2764d4b9d28b8b3844eb41a9db9addcc4278d",
+      "actual_seconds": 8.0,
+      "sample_peak_dbfs": -22.000000077474585,
+      "rms_dbfs": -44.718978561575426,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "wood-tool",
+          "member_name": "wood_hit_03.ogg",
+          "path": "audio-direction/material-audition/members/wood-tool/wood_hit_03.ogg",
+          "sha256": "0f78a5cbe44d2ee45dfc1709f72af87bcbe5e3a8ad369b52535cfe6dbbd626a6",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 19538,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 19538,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -18.356617779414407
+        },
+        {
+          "source_id": "cloth",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/cloth/481075__khenshom__foley-cotton-clothes-rustling-fabric-movement-sound.wav",
+          "sha256": "89d259b33b510ab0d430e9457aea9c532e0c1180de81b140f36aa61a6023abeb",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1845739,
+          "lossy_original": false,
+          "trim_begin_sample": 240000,
+          "trim_end_sample": 360000,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": 20.86105988505959
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "A03",
+      "group": "action_feedback",
+      "title": "Hand tool",
+      "source_ids": [
+        "wood-tool"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Select a light manual-tool contact/scrape, with brief pauses between two demonstrations.",
+      "qualification": "Reject cinematic impacts, gun/weapon sounds, powered tools or unrelated doors.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/A03.wav",
+      "sha256": "bae5aa7343bb41ce6b4bf35548dc551e28a43d18c1bdbeb994d5e64baefbfa26",
+      "actual_seconds": 8.0,
+      "sample_peak_dbfs": -19.99999987057016,
+      "rms_dbfs": -50.13489855924807,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "wood-tool",
+          "member_name": "tools_02.ogg",
+          "path": "audio-direction/material-audition/members/wood-tool/tools_02.ogg",
+          "sha256": "f38aa1f822bd1d4ba2fbf7df2a8c12ea27dbca537b81cf9032b8729fe7223822",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 21596,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 21596,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -17.552588251412796
+        },
+        {
+          "source_id": "wood-tool",
+          "member_name": "wood_hammer_01.ogg",
+          "path": "audio-direction/material-audition/members/wood-tool/wood_hammer_01.ogg",
+          "sha256": "7af2b82ed659153da6c3dd69024e15bdb3c3c5b101c4086ee2181c1f846fe28a",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 15032,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 15032,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -20.079365785934957
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "A04",
+      "group": "action_feedback",
+      "title": "Mortar and preparation",
+      "source_ids": [
+        "mortar"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Trim a quiet stone grinding passage and two soft taps; preserve source dynamics.",
+      "qualification": "No unlicensed ingredient inference, generated grinding sound or asserted remedy result.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d",
+      "actual_seconds": 8.0,
+      "sample_peak_dbfs": -18.9999998679469,
+      "rms_dbfs": -57.75888336732499,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "mortar",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/mortar/749884__fwughox_official__mortar-and-pestle.wav",
+          "sha256": "80cb1bf7a858492e828f2678a3ce433aebafeccb9cb0946577e466394e9dcc79",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1394843,
+          "lossy_original": false,
+          "trim_begin_sample": 144000,
+          "trim_end_sample": 384000,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -19.0
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "A05",
+      "group": "action_feedback",
+      "title": "Restrained treatment result",
+      "source_ids": [
+        "cloth",
+        "wood-tool"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Derive a gentle cloth-settle and soft wooden contact distinct from the handling excerpt; accompany a text slate identifying a hypothetical delivered result.",
+      "qualification": "Confirmation remains presentation only; no magic chime, disease claim or wall-clock disease advance.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5",
+      "actual_seconds": 8.0,
+      "sample_peak_dbfs": -22.71486041940221,
+      "rms_dbfs": -49.92393534198473,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "cloth",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/cloth/481075__khenshom__foley-cotton-clothes-rustling-fabric-movement-sound.wav",
+          "sha256": "89d259b33b510ab0d430e9457aea9c532e0c1180de81b140f36aa61a6023abeb",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1845739,
+          "lossy_original": false,
+          "trim_begin_sample": 720000,
+          "trim_end_sample": 777600,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": 24.105342599575287
+        },
+        {
+          "source_id": "wood-tool",
+          "member_name": "wood_hit_05.ogg",
+          "path": "audio-direction/material-audition/members/wood-tool/wood_hit_05.ogg",
+          "sha256": "a6e1a4cfb65c4fc46248b3db84666275d466c2434c283028c7f0ce70035e75de",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 14787,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 14787,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -23.51411672181497
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "A06",
+      "group": "action_feedback",
+      "title": "UI and conversation feedback",
+      "source_ids": [
+        "interface"
+      ],
+      "audition_buses": [
+        "Effects",
+        "Dialogue"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Select separate quiet interface and conversation start/end clicks; demonstrate in labelled non-overlapping subsegments.",
+      "qualification": "Each subsegment routes once; no spoken voice, per-letter sound or mandatory sound-only information.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/A06.wav",
+      "sha256": "458a2103db847da7eaf8d69839b5ff785ebd04a125d1a2de653ccc8a78ce9cb9",
+      "actual_seconds": 8.0,
+      "sample_peak_dbfs": -24.000000127289304,
+      "rms_dbfs": -58.66957104854764,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "interface",
+          "member_name": "Audio/click_001.ogg",
+          "path": "audio-direction/material-audition/members/interface/Audio/click_001.ogg",
+          "sha256": "ccfb7fa0cccdd9faec0eb16033c732b1e308d139d80f799161495d58f7adcdb9",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 4662,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 4662,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": 5.00408323852578
+        },
+        {
+          "source_id": "interface",
+          "member_name": "Audio/click_003.ogg",
+          "path": "audio-direction/material-audition/members/interface/Audio/click_003.ogg",
+          "sha256": "2fa929138bc3a0f432696588f66eac94b8f6d463905ec8808c6461ce4b054292",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 342,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 342,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -3.495610631234975
+        },
+        {
+          "source_id": "interface",
+          "member_name": "Audio/click_005.ogg",
+          "path": "audio-direction/material-audition/members/interface/Audio/click_005.ogg",
+          "sha256": "a3ee7ebb036bc3cdc218ae52bb27548c4f49bcf07505274f8b61b1af8236acc2",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 342,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 342,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -12.859827746622619
+        }
+      ],
+      "routed_components": [
+        {
+          "bus": "Effects",
+          "path": "audio-direction/material-audition/clips/A06-Effects.wav",
+          "sha256": "d0d6cfe3a09d8baf72be713e0f0446b92175adf1f0da49aa7d4e11096230739b"
+        },
+        {
+          "bus": "Dialogue",
+          "path": "audio-direction/material-audition/clips/A06-Dialogue.wav",
+          "sha256": "6653c99b089e8061cdda6081af01ac8cbaae28765bca1947986a168bbcb62c20"
+        }
+      ],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    },
+    {
+      "id": "M01",
+      "group": "music",
+      "title": "Sparse exploration texture",
+      "source_ids": [
+        "exploration"
+      ],
+      "audition_buses": [
+        "Music"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 25,
+      "edit_plan": "Choose a sparse guitar-led passage and fade with long silence around it; no new composition or stem-separation model.",
+      "qualification": "Optional audition example; reject vocals, urgency or implied hidden truth.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false,
+      "path": "audio-direction/material-audition/clips/M01.wav",
+      "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6",
+      "actual_seconds": 25.0,
+      "sample_peak_dbfs": -13.018687272569645,
+      "rms_dbfs": -25.999999758087988,
+      "final_uniform_headroom_gain_db": 0.0,
+      "source_edits": [
+        {
+          "source_id": "exploration",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/exploration/sunset_plains.wav",
+          "sha256": "f3750f8eda8bf42662b12f5726404675689b50f05ccaa968c5cb2e33d9172a62",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 15824639,
+          "lossy_original": false,
+          "trim_begin_sample": 1440000,
+          "trim_end_sample": 2640000,
+          "edge_fade_seconds": 2,
+          "applied_gain_db": -6.445426090307684
+        }
+      ],
+      "routed_components": [],
+      "qualification_status": "technical_draft_pending_human_listening",
+      "acoustic_listening": "not_assessed"
+    }
+  ],
+  "rejected_for_revision": [
+    "M02"
+  ]
+}

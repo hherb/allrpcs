@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "captured_pending_measurements",
+  "measurement_point": "Godot offline stereo output after the copied Master effects and gain",
+  "bus_layout_path": "game/AudioBusLayout.tres",
+  "bus_layout_sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65",
+  "renderer_script_sha256": "2a78f592d8c8bd39a51a2f507cd5bc3dc8e27fa7f78022e4676b914d53d594d1",
+  "python_script_sha256": "a6c6ee747d9946f6ba1f5fafa862b6ec1e5312e493036d076e7cd9d3b5ae7018",
+  "candidates_sha256": "685dd09b8c28c7a40836bfc5edb2c761cd970b2adff83a0200f9f11c0e6d14f9",
+  "godot_version": "4.6.3.stable.mono.official.7d41c59c4",
+  "combined_pre_master_sample_peak_dbfs": -6.830616424376509,
+  "tracks": [
+    {
+      "bus": "Music",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Music.wav",
+      "sha256": "8fbf2470673178095d9ac1b4e2908516af3d79277427e8106d21ee5f9023a6d2"
+    },
+    {
+      "bus": "Ambience",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Ambience.wav",
+      "sha256": "757b8bb293979e93e36c4eeb8140cadb70f1ebfe739d5f1d365d53e34b931536"
+    },
+    {
+      "bus": "Effects",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Effects.wav",
+      "sha256": "b361df995532e03d0373a3b702202116a6ac06bb175be0542c17b769c06061c6"
+    },
+    {
+      "bus": "Dialogue",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/review/category-tracks/Dialogue.wav",
+      "sha256": "464d2e790306a020315b0ac2454cb89d9b6e09b538ba9ffc876cbc7636250df1"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "default",
+      "path": "audio-direction/material-audition/review/default.wav",
+      "sha256": "5f1bbbc5d7ee4c12eb1907c772acaaecb9cabe25c21985deda3c593af2570973",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "3b76b4eaad24ef2e67e4a145a692567a879807850b4f12edfdd8dfb2ca671f1c",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Music\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "b557093bba67d681ce8158b883d14a7628409ced501225b5e829da9132bcfa49"
+    },
+    {
+      "name": "reduced-range",
+      "path": "audio-direction/material-audition/review/reduced-range.wav",
+      "sha256": "5721fb44521fd0a967d27fd84ba75c38d6309681d52fe24e6d268b973c59f58e",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "ab18b67c79286b171f375f29980f58099a9e770d32017353b1da61ccc062d27d",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Music\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "765e6a49edde935b7897cb06975aeb7689601ae0dea3be8600da5a6d2055fa94"
+    },
+    {
+      "name": "music-free",
+      "path": "audio-direction/material-audition/review/music-free.wav",
+      "sha256": "90662994ab14535f9d1b01112ee76c740ccc86c77c4d49e17404559d8a6fc80c",
+      "seconds": 300.0,
+      "subtype": "PCM_24",
+      "raw_capture_sha256": "0614a9e7f6f3378b9d2ae159336aa3f026b01c7283a25578cc23bbc7f582417e",
+      "raw_capture_subtype": "PCM_32",
+      "export_conversion": "ffmpeg PCM32 to PCM24; no gain or other processing",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Ambience\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Effects\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1},{\"bus\":\"Dialogue\",\"length\":300.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "7e8eee8888d7d554faa575f108fdbec7c296892253da4c25cf0f532940808d47"
+    }
+  ]
+}

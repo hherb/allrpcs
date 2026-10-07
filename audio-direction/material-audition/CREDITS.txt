@@ -1,0 +1,106 @@
+Allrpcs material audition - source credits and edit notice
+2026-10-07. Complete technical draft series; owner listening selection pending.
+Source catalogue pages, licence deeds and immutable originals accompany this package.
+
+AMB Rain Loop 2 by Kresiek The Furry
+Source: https://opengameart.org/content/amb-rain-loop-2
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: B01, B02, B04
+
+Stream Sounds by kurt
+Source: https://opengameart.org/content/stream-sounds
+License: CC-BY-3.0 - https://creativecommons.org/licenses/by/3.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: B02
+
+Rain On Dry Leaves Sound by Alexander
+Source: https://orangefreesounds.com/rain-on-dry-leaves-sound/
+License: CC-BY-4.0 - https://creativecommons.org/licenses/by/4.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: B03
+
+Mild Wind Background Noise by Bashar3A
+Source: https://opengameart.org/content/mild-wind-background-noise
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: B04
+Supplied credit: Bashar from Skirmish.io.
+
+40 CC0 water / splash / slime SFX by rubberduck
+Source: https://opengameart.org/content/40-cc0-water-splash-slime-sfx
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: A01
+
+100 CC0 metal and wood SFX by rubberduck
+Source: https://opengameart.org/content/100-cc0-metal-and-wood-sfx
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: A02, A03, A05
+
+Interface Sounds by Kenney
+Source: https://kenney.nl/assets/interface-sounds
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: A06
+
+Sunset Plains by Yoiyami
+Source: https://opengameart.org/content/sunset-plains
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: M01
+
+Revelation by Indieteur
+Source: https://opengameart.org/content/revelation
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: M02
+
+Footsteps_Gravel_01.wav by BenDrain
+Source: https://freesound.org/people/BenDrain/sounds/488075/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: W02
+
+Wood Creak Single V7 by Rudmer_Rotteveel
+Source: https://freesound.org/people/Rudmer_Rotteveel/sounds/506662/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: B04
+
+Dirt Footsteps 3 by simonjeffery13
+Source: https://freesound.org/people/simonjeffery13/sounds/750796/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: W01
+
+Footsteps / Walking on foliage in a forest by Dominik_W
+Source: https://freesound.org/people/Dominik_W/sounds/398685/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: W03
+
+Footsteps on hollow wood by florianreichelt
+Source: https://freesound.org/people/florianreichelt/sounds/459970/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: W04
+
+Foley - Cotton clothes rustling - Fabric movement sound.wav by khenshom
+Source: https://freesound.org/people/khenshom/sounds/481075/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: A02, A05
+
+Mortar and pestle by Fwughox_Official
+Source: https://freesound.org/people/Fwughox_Official/sounds/749884/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in candidates.json. Original authors do not endorse this audition.
+Draft excerpts: A04
+
+
+M02 replacement: Shakuhachi flute play by gonzooka
+https://freesound.org/people/gonzooka/sounds/486487/
+CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/
+Edits: 25-second excerpt, original mono centred in stereo, 48 kHz resampling, gentle two-second edge fades and uniform quiet gain. Original rest guitar source retained as rejected history.

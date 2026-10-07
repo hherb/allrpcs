@@ -1,0 +1,20 @@
+[
+  {
+    "license": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+    "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+  },
+  {
+    "license": "CC-BY-3.0",
+    "url": "https://creativecommons.org/licenses/by/3.0/",
+    "path": "audio-direction/material-audition/rights/CC-BY-3.0-deed.html",
+    "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+  },
+  {
+    "license": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "path": "audio-direction/material-audition/rights/CC-BY-4.0-deed.html",
+    "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+  }
+]

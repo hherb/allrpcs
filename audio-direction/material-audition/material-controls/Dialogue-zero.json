@@ -1,0 +1,14 @@
+{
+  "tracks": [
+    {
+      "bus": "Dialogue",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/material-controls/Dialogue-input.wav",
+      "gain_db": 0,
+      "mute": false
+    }
+  ],
+  "master_zero": false,
+  "master_mute": false,
+  "mono": false,
+  "zero_bus": "Dialogue"
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "pending_collective_owner_listening_selection",
+  "owner_statement": null,
+  "selected_ids": null,
+  "date": null,
+  "candidate_manifest_sha256": "685dd09b8c28c7a40836bfc5edb2c761cd970b2adff83a0200f9f11c0e6d14f9",
+  "mix_measurements_sha256": "4e029509ae661a18aaa7d498de3ddcb6e8c3f5eb3e9fbf199388c7fd3e58c874",
+  "review_html_sha256": "6e854b64f869c12268f20a1aae4788cde34e8c58d634fc46e6fd0524c25a83e6",
+  "meaning": "Prepared candidate series; this pending record is not acceptance or runtime authority"
+}

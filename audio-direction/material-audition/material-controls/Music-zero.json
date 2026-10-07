@@ -1,0 +1,14 @@
+{
+  "tracks": [
+    {
+      "bus": "Music",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/material-controls/Music-input.wav",
+      "gain_db": 0,
+      "mute": false
+    }
+  ],
+  "master_zero": false,
+  "master_mute": false,
+  "mono": false,
+  "zero_bus": "Music"
+}

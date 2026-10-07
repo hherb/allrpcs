@@ -284,6 +284,40 @@
           "sha256": "9a98e1f76152f05d10d17a21815895fb2aff3475dc90fafdeb870f60983598fb"
         }
       ]
+    },
+    {
+      "id": "phase9-audio-material-source-plan",
+      "reason": "Finite read-only source/licensing/acquisition plan is complete on 2026-10-07: all sixteen candidate classes, sixteen named source containers, fourteen declared CC0 sources and two attribution sources, expected zero licence fees, concrete access/edit/measurement records and one next acquisition authority. No audio was downloaded, heard, generated, recorded or installed; the material-sound roadmap item stays unfinished. Planning closes without reopening accepted policy or controls.",
+      "evidence": [
+        {
+          "path": "audio-direction/material-audition-source-plan.md",
+          "sha256": "488c7ab40350aa30f812a04a220aeed052a7bc5d9d141203e91037a402f8d739"
+        },
+        {
+          "path": "audio-direction/material-audition-source-plan.json",
+          "sha256": "57008bce333b1f7cc9f34dccb02409633a0457fa56346acbb525f26a462aeb6c"
+        }
+      ]
+    },
+    {
+      "id": "phase9-material-audio-accepted-fifteen-excerpts",
+      "reason": "Owner listening accepted all fifteen audition candidates other than M02 on 2026-10-07. Preserve their exact bytes, source edits and routing. Only the rest/healing motif is revised.",
+      "evidence": [
+        {
+          "path": "audio-direction/material-audition/accepted-fifteen.json",
+          "sha256": "97a00d436f85d5debf415230398075fa274638c9a722753714af7d61d2ebbbde"
+        }
+      ]
+    },
+    {
+      "id": "phase9-material-audio-collective-audition",
+      "reason": "Owner accepted the complete sixteen-excerpt audition on 2026-10-07, including the revised shakuhachi rest/healing motif, and selected Default range. Whole slice is closed; numerical deviations and device limits remain honest. No runtime installation or new Git publication is inferred.",
+      "evidence": [
+        {
+          "path": "audio-direction/material-audition/owner-acceptance.json",
+          "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -304,6 +338,16 @@
         {
           "path": "CONTINUATION_AUDIT.md",
           "sha256": "fca6f4831170026f6f80559a20250ed53244e2d1a4b88340be4937c48d516871"
+        }
+      ]
+    },
+    {
+      "id": "audio-material-audition",
+      "reason": "Complete audition series has terminal owner acceptance. Do not rename and reopen unchanged accepted excerpts, mixes, rights or controls. A genuinely new runtime integration scope remains separate.",
+      "evidence": [
+        {
+          "path": "audio-direction/material-audition/owner-acceptance.json",
+          "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
         }
       ]
     }
@@ -381,19 +425,23 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-audio-material-source-plan",
-    "title": "Prepare the source and licensing plan for the material sound audition",
+    "id": "phase9-material-audio-runtime-scope",
+    "title": "Prepare a concrete bounded runtime integration scope for accepted material sounds",
     "status": "ready",
-    "workstream": "audio-material-source-planning",
+    "workstream": "audio-material-runtime-integration",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "The accepted policy defines the finite 16-candidate collective audition, but a source/licensing/provenance and acquisition-method plan does not yet exist. Material audio assets and emitters remain absent.",
-    "instructions": "Prepare one concrete source and licensing plan for the accepted 16-candidate audition, beginning with the named unfinished material-sound item. Carry the approved policy and completed bus/control implementation forward unchanged. Use read-only catalogue/source/license research to identify eligible sources, rights, edit lineage, expected costs and a practical acquisition method for the four regional beds, four walking materials, six action/feedback excerpts and two optional music excerpts. Preserve the complete-series review boundary and existing authored material/world constraints. Do not download, generate, record, purchase or install audio, run a new audition, connect runtime emitters or implement voice/providers. If actual asset-acquisition authority is needed, prepare the concrete plan first and state only that missing decision once. Do not reopen policy, bus controls, gait or accepted visual scopes. The owner authorized publication of the completed policy and bus/control work on 2026-10-07; future source-plan work has no additional publication authority.",
-    "completion_condition": "One finite source/acquisition plan and structured provenance shortlist account for all sixteen candidate classes, eligibility/rights, costs and edit/measurement records, and identify the actual next acquisition authority without claiming that the material-sound roadmap item is implemented.",
+    "missing_deliverable": "A concrete runtime integration proposal mapping accepted clips to existing authored material/event owners and exact files, with finite checks and a named implementation authority. The accepted audition alone supplies no emitters or gameplay call sites.",
+    "instructions": "Prepare the new runtime proposal from actual existing code and accepted material without changing any accepted excerpt or reopening audition review. Name the smallest complete implementation boundary, source/caption/perception ownership, event triggers, rights packaging, volume behavior and required verification. Finish the concrete proposal before requesting any missing runtime scope authority; no implementation before that authority.",
+    "completion_condition": "One reviewable proposal and structured scope inventory define exact assets/call sites, behavior, exclusions, checks and the single next implementation decision. This is new runtime planning, not a repeat audit or listening gate.",
     "outputs": [
-      "audio-direction/material-audition-source-plan.md",
-      "audio-direction/material-audition-source-plan.json"
+      "audio-direction/material-runtime-scope.md",
+      "audio-direction/material-runtime-scope.json"
     ],
-    "boundary": "Read-only source/license research and a reviewable acquisition plan only. Audio acquisition/generation/recording/purchase, audition, runtime sound emitters, world semantics, accepted visuals, voice/providers, release/signing and Git publication remain outside this slice."
+    "boundary": "Read-only runtime mapping and concrete proposal only. No accepted audio edits, runtime installation, new world/material/time/perception semantics, voice, purchase or new Git publication. Preserve unrelated project editor rewrite.",
+    "authority_gate": {
+      "status": "new_runtime_implementation_scope_not_yet_defined",
+      "implementation_authority": "Prepare concrete scope first; listening acceptance closes audition only."
+    }
   },
   "deferred_slices": []
 }

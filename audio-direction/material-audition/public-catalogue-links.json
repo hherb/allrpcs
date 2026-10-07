@@ -1,0 +1,134 @@
+[
+  {
+    "source_id": "rain",
+    "catalogue_url": "https://opengameart.org/content/amb-rain-loop-2",
+    "path": "audio-direction/material-audition/rights/rain-catalogue.html",
+    "sha256": "dd284f072c13583338e121742d07c21239c2616e7cf68eab11922def59f509f1",
+    "download_links": [
+      {
+        "label": "amb_rain2.flac",
+        "url": "https://opengameart.org/sites/default/files/amb_rain2.flac"
+      },
+      {
+        "label": "amb_rain2.ogg",
+        "url": "https://opengameart.org/sites/default/files/amb_rain2.ogg"
+      },
+      {
+        "label": "amb_rain2.mp3",
+        "url": "https://opengameart.org/sites/default/files/amb_rain2_0.mp3"
+      }
+    ]
+  },
+  {
+    "source_id": "stream",
+    "catalogue_url": "https://opengameart.org/content/stream-sounds",
+    "path": "audio-direction/material-audition/rights/stream-catalogue.html",
+    "sha256": "4d6f0aaa3fcf0cbcc10ea1618374080f2568f6d5a4ef1169667ddcd997d7b183",
+    "download_links": [
+      {
+        "label": "preview",
+        "url": "http://opengameart.org/sites/default/files/stream-waterfall_0.ogg"
+      },
+      {
+        "label": "stream-waterfall.zip",
+        "url": "https://opengameart.org/sites/default/files/stream-waterfall.zip"
+      }
+    ]
+  },
+  {
+    "source_id": "leaf-rain",
+    "catalogue_url": "https://orangefreesounds.com/rain-on-dry-leaves-sound/",
+    "path": "audio-direction/material-audition/rights/leaf-rain-catalogue.html",
+    "sha256": "6603b18b7221aa2e85262765f1038e58d7749f5677622632fae0835c80663c68",
+    "download_links": [
+      {
+        "label": "https://www.orangefreesounds.com/wp-content/uploads/2016/11/Rain-on-dry-leaves-sound.mp3",
+        "url": "https://www.orangefreesounds.com/wp-content/uploads/2016/11/Rain-on-dry-leaves-sound.mp3"
+      },
+      {
+        "label": "",
+        "url": "https://www.orangefreesounds.com/wp-content/uploads/2016/11/Rain-on-dry-leaves-sound.zip"
+      }
+    ]
+  },
+  {
+    "source_id": "wind",
+    "catalogue_url": "https://opengameart.org/content/mild-wind-background-noise",
+    "path": "audio-direction/material-audition/rights/wind-catalogue.html",
+    "sha256": "5322a57fcc1877e4ff4c95e0eda6cabcada6b5b4de7b44de7f2f2562dc03a0a9",
+    "download_links": [
+      {
+        "label": "wind background noise 2.wav",
+        "url": "https://opengameart.org/sites/default/files/wind%20background%20noise%202.wav"
+      }
+    ]
+  },
+  {
+    "source_id": "water-contact",
+    "catalogue_url": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+    "path": "audio-direction/material-audition/rights/water-contact-catalogue.html",
+    "sha256": "166baee2a8d8c6719c2802b25dd1efe2d1c9a7452a655d183579d826b226d985",
+    "download_links": [
+      {
+        "label": "water-splash-slime-sfx.zip",
+        "url": "https://opengameart.org/sites/default/files/water-splash-slime-sfx.zip"
+      }
+    ]
+  },
+  {
+    "source_id": "wood-tool",
+    "catalogue_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+    "path": "audio-direction/material-audition/rights/wood-tool-catalogue.html",
+    "sha256": "9aa7dc287e83e5694be6c51f5880284a7b7cd9ed79c06a6c9e41f63fa24d1c56",
+    "download_links": [
+      {
+        "label": "100-CC0-wood-metal-SFX.zip",
+        "url": "https://opengameart.org/sites/default/files/100-CC0-wood-metal-SFX.zip"
+      }
+    ]
+  },
+  {
+    "source_id": "interface",
+    "catalogue_url": "https://kenney.nl/assets/interface-sounds",
+    "path": "audio-direction/material-audition/rights/interface-catalogue.html",
+    "sha256": "4bab3e1660c662504886cb82d25777fb557f81b208f55a1792b67b88a8785551",
+    "download_links": [
+      {
+        "label": "Download",
+        "url": "https://kenney.nl/assets/interface-sounds#inline-download"
+      },
+      {
+        "label": "Continue without donating...",
+        "url": "https://kenney.nl/media/pages/assets/interface-sounds/fa43c1dd4d-1677589452/kenney_interface-sounds.zip"
+      }
+    ]
+  },
+  {
+    "source_id": "exploration",
+    "catalogue_url": "https://opengameart.org/content/sunset-plains",
+    "path": "audio-direction/material-audition/rights/exploration-catalogue.html",
+    "sha256": "f535771d163858547c01e4706e353621e67d64ebeb69b1a4a53016654d8665f0",
+    "download_links": [
+      {
+        "label": "sunset_plains.wav",
+        "url": "https://opengameart.org/sites/default/files/sunset_plains.wav"
+      }
+    ]
+  },
+  {
+    "source_id": "rest",
+    "catalogue_url": "https://opengameart.org/content/revelation",
+    "path": "audio-direction/material-audition/rights/rest-catalogue.html",
+    "sha256": "013bc44e5d2e7f53d217cbb5b15cb1b156f6cc6531e6181de8803813fc6a6648",
+    "download_links": [
+      {
+        "label": "Revelation.Wav",
+        "url": "https://opengameart.org/sites/default/files/Revelation.Wav"
+      },
+      {
+        "label": "Revelation.mp3",
+        "url": "https://opengameart.org/sites/default/files/Revelation_0.mp3"
+      }
+    ]
+  }
+]

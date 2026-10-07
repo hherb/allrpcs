@@ -1,0 +1,13 @@
+{
+  "tracks": [
+    {
+      "bus": "Ambience",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/material-controls/Ambience-input.wav",
+      "gain_db": 0,
+      "mute": false
+    }
+  ],
+  "master_zero": false,
+  "master_mute": false,
+  "mono": false
+}

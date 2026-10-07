@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "status": "tooling_check_only",
+  "measurement_point": "Godot offline stereo output after the copied Master effects and gain",
+  "bus_layout_path": "game/AudioBusLayout.tres",
+  "bus_layout_sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65",
+  "renderer_script_sha256": "2a78f592d8c8bd39a51a2f507cd5bc3dc8e27fa7f78022e4676b914d53d594d1",
+  "python_script_sha256": "4d03187647c100d597cdb654b805e7d0145700fbaaa4257a6773e49281ef87dd",
+  "candidates_sha256": "197bfb5858c280f7d732ca879c0c00403c9bcf1dbde7f075d6939821e1a2faae",
+  "godot_version": "4.6.3.stable.mono.official.7d41c59c4",
+  "combined_pre_master_sample_peak_dbfs": -15.777593382822289,
+  "tracks": [
+    {
+      "bus": "Ambience",
+      "path": "/Users/hherb/src/allrpcs/audio-direction/material-audition/tooling-check/category-tracks/Ambience.wav",
+      "sha256": "037d8d0b83c5da25290839759171f891dd38ac76955574cbab11b5466aec0bac"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "smoke",
+      "path": "audio-direction/material-audition/tooling-check/smoke.wav",
+      "sha256": "6cb21c939dcff9c67b87a43af34e0ae9e0e5dc6c3c411719346987889ea10a9c",
+      "seconds": 4.0,
+      "subtype": "PCM_32",
+      "engine_input_formats": [
+        "AUDITION_INPUTS [{\"bus\":\"Ambience\",\"length\":4.0,\"mix_rate\":48000,\"stereo\":true,\"stream_format\":1}]"
+      ],
+      "config_sha256": "57b60c33ee6ed626ebd5a5419fe581c591689dd556b15a945f0d691cc08b0e9b"
+    }
+  ]
+}

@@ -1,0 +1,919 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-audio-material-source-plan",
+  "status": "complete_read_only_plan",
+  "baseline_commit": "1b21d223d8329ead39973cfb81a290188780e84e",
+  "policy_binding": {
+    "path": "audio-direction/dynamic-range-policy.json",
+    "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+  },
+  "authority": {
+    "read_only_research_and_plan": "Read HANDOVER.md and follow the instructions",
+    "acquisition_editing_or_listening": false,
+    "runtime_installation": false,
+    "voice_or_recording_or_generation": false,
+    "new_git_publication": false
+  },
+  "research_method": "Primary catalogue metadata and Creative Commons terms inspected on 2026-10-07. No audio link fetched, preview played, account used or source bytes inspected.",
+  "candidate_counts": {
+    "regional_bed": 4,
+    "walking_material": 4,
+    "action_feedback": 6,
+    "music": 2,
+    "total": 16
+  },
+  "licenses": {
+    "CC0-1.0": {
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "commercial_and_edits_declared": true,
+      "attribution_required": false,
+      "credit_policy": "Retain author, title, source link and edit lineage voluntarily; do not imply endorsement."
+    },
+    "CC-BY-3.0": {
+      "url": "https://creativecommons.org/licenses/by/3.0/",
+      "commercial_and_edits_declared": true,
+      "attribution_required": true,
+      "credit_policy": "Retain title, author and supplied notices; link the source and licence; describe edits and earlier modifications. No additional restrictions on the licensed work."
+    },
+    "CC-BY-4.0": {
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "commercial_and_edits_declared": true,
+      "attribution_required": true,
+      "credit_policy": "Retain author and supplied notices; link the source and licence; describe edits and earlier modifications. No additional restrictions on the licensed work."
+    }
+  },
+  "license_observation_is_not_complete_rights_clearance": true,
+  "sources": [
+    {
+      "id": "rain",
+      "title": "AMB Rain Loop 2",
+      "author": "Kresiek The Furry",
+      "catalogue_url": "https://opengameart.org/content/amb-rain-loop-2",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "amb_rain2.flac",
+      "catalogue_size_mb_approx": 75.5,
+      "catalogue_metadata": {
+        "format": "FLAC",
+        "sample_rate_hz": null,
+        "bit_depth": null,
+        "channels": null,
+        "duration_seconds": null
+      },
+      "observed_description": "Rain recorded using GoPro raw-audio settings; the page offers a FLAC original.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Qualify for steady rain without voices, birds, motors or thunder; loopability is a catalogue claim until measured.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "stream",
+      "title": "Stream Sounds",
+      "author": "kurt",
+      "catalogue_url": "https://opengameart.org/content/stream-sounds",
+      "license": "CC-BY-3.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "stream-waterfall.zip; select the stream recording, capture exact member name",
+      "catalogue_size_mb_approx": 4.8,
+      "catalogue_metadata": {
+        "format": "ZIP",
+        "member_formats": null
+      },
+      "observed_description": "Author describes camping-trip stream recordings and added waterfall sounds.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Select running stream rather than dominant waterfall; inspect archive membership and notices before use.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "leaf-rain",
+      "title": "Rain On Dry Leaves Sound",
+      "author": "Alexander",
+      "catalogue_url": "https://orangefreesounds.com/rain-on-dry-leaves-sound/",
+      "license": "CC-BY-4.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Rain-on-dry-leaves-sound.mp3",
+      "catalogue_size_mb_approx": 1.32,
+      "catalogue_metadata": {
+        "format": "MP3",
+        "bitrate_kbps": 192,
+        "sample_rate_hz": 44100,
+        "duration_seconds": 61,
+        "channels": null
+      },
+      "observed_description": "Author page describes rain striking dry leaves, declares commercial-use attribution licence and lists a loopable excerpt.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Lossy original: retain its codec history; reject if hiss or codec artefacts dominate. A WAV edit does not restore lost information.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "wind",
+      "title": "Mild Wind Background Noise",
+      "author": "Bashar3A",
+      "catalogue_url": "https://opengameart.org/content/mild-wind-background-noise",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "wind background noise 2.wav",
+      "catalogue_size_mb_approx": 15.7,
+      "catalogue_metadata": {
+        "format": "WAV"
+      },
+      "observed_description": "Page describes increasing wind with incidental bag rustle; the supplied credit names Bashar from Skirmish.io.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Only use a mild section free of bag sounds and modern surroundings; stop this component if no suitable section exists.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "creak",
+      "title": "Wood Creak Single V7",
+      "author": "Rudmer_Rotteveel",
+      "catalogue_url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/506662/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Original WAV for sound 506662; capture download filename",
+      "catalogue_size_mb_approx": 0.2748,
+      "catalogue_metadata": {
+        "format": "WAV",
+        "sample_rate_hz": 44100,
+        "bit_depth": 16,
+        "channels": 2,
+        "duration_seconds": 1.595
+      },
+      "observed_description": "Uploader describes a single floorboard creak and explicitly declares CC0.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Use only as an inert material creak analogue; never imply a moving wagon, concealed person or door action.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "earth",
+      "title": "Dirt Footsteps 3",
+      "author": "simonjeffery13",
+      "catalogue_url": "https://freesound.org/people/simonjeffery13/sounds/750796/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Original WAV for sound 750796; capture download filename",
+      "catalogue_size_mb_approx": 2.0,
+      "catalogue_metadata": {
+        "format": "WAV",
+        "sample_rate_hz": 48000,
+        "bit_depth": 16,
+        "channels": 2,
+        "duration_seconds": 11.08
+      },
+      "observed_description": "Outdoor dirt footsteps, scuffs and stomps recorded with a Zoom H6; pack also mentions gravel.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Select gentle compact-earth contacts without stony crunch; catalogue does not establish packed-earth identity for every contact.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "gravel",
+      "title": "Footsteps_Gravel_01.wav",
+      "author": "BenDrain",
+      "catalogue_url": "https://freesound.org/people/BenDrain/sounds/488075/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Footsteps_Gravel_01.wav",
+      "catalogue_size_mb_approx": 5.9,
+      "catalogue_metadata": {
+        "format": "WAV",
+        "sample_rate_hz": 48000,
+        "bit_depth": 24,
+        "channels": 2,
+        "duration_seconds": 21.5
+      },
+      "observed_description": "Uploader labels this recording gravel footsteps.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Select distinct quiet contacts without clothing, breathing, voices or environment tails.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "leaves",
+      "title": "Footsteps / Walking on foliage in a forest",
+      "author": "Dominik_W",
+      "catalogue_url": "https://freesound.org/people/Dominik_W/sounds/398685/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Original WAV for sound 398685; capture download filename",
+      "catalogue_size_mb_approx": 3.0,
+      "catalogue_metadata": {
+        "format": "WAV",
+        "sample_rate_hz": 44100,
+        "bit_depth": 24,
+        "channels": 2,
+        "duration_seconds": 11.981
+      },
+      "observed_description": "Foliage/leaf footsteps recorded using Zoom H1 internal microphones.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Distinguish leaf litter from gravel; retain several real contacts and reject added wildlife/voices.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "timber",
+      "title": "Footsteps on hollow wood",
+      "author": "florianreichelt",
+      "catalogue_url": "https://freesound.org/people/florianreichelt/sounds/459970/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Original MP3 for sound 459970; capture download filename",
+      "catalogue_size_mb_approx": 1.0,
+      "catalogue_metadata": {
+        "format": "MP3",
+        "sample_rate_hz": 44100,
+        "bitrate_kbps": 320,
+        "channels": 2,
+        "duration_seconds": 26.972
+      },
+      "observed_description": "Uploader tags hollow-wood floor walking/running and supplies the clip under CC0.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Use walking contacts without excessive hollow thump; preserve lossy-source lineage. Referral advertisements are unrelated to the download and are excluded.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "water-contact",
+      "title": "40 CC0 water / splash / slime SFX",
+      "author": "rubberduck",
+      "catalogue_url": "https://opengameart.org/content/40-cc0-water-splash-slime-sfx",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "water-splash-slime-sfx.zip; choose splash members only",
+      "catalogue_size_mb_approx": 2.3,
+      "catalogue_metadata": {
+        "format": "ZIP",
+        "member_formats": null
+      },
+      "observed_description": "Pack includes fifteen splashes alongside bubble, loop and slime sounds.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Use small natural water contact; exclude creature/slime/bubble exaggeration. Member names and encoding need acquisition inspection.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "wood-tool",
+      "title": "100 CC0 metal and wood SFX",
+      "author": "rubberduck",
+      "catalogue_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "100-CC0-wood-metal-SFX.zip; choose soft wood/hand-tool members",
+      "catalogue_size_mb_approx": 2.0,
+      "catalogue_metadata": {
+        "format": "ZIP",
+        "member_formats": null
+      },
+      "observed_description": "Pack lists wooden and metal contacts, hammer/tool sounds, keys and doors.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Select soft wooden contact and hand-tool material; omit crashes, slams, weapons, machinery and unperformed door actions.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "cloth",
+      "title": "Foley - Cotton clothes rustling - Fabric movement sound.wav",
+      "author": "khenshom",
+      "catalogue_url": "https://freesound.org/people/khenshom/sounds/481075/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Original WAV for sound 481075; capture download filename",
+      "catalogue_size_mb_approx": 14.1,
+      "catalogue_metadata": {
+        "format": "WAV",
+        "sample_rate_hz": 48000,
+        "bit_depth": 32,
+        "channels": 2,
+        "duration_seconds": 38.452
+      },
+      "observed_description": "Uploader describes cotton handling recorded with an Audio-Technica microphone and Tascam recorder.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Select a short gentle cloth handling segment; no body/voice inference. Inspect 32-bit encoding rather than assuming float.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "mortar",
+      "title": "Mortar and pestle",
+      "author": "Fwughox_Official",
+      "catalogue_url": "https://freesound.org/people/Fwughox_Official/sounds/749884/",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Original WAV for sound 749884; capture download filename",
+      "catalogue_size_mb_approx": 10.6,
+      "catalogue_metadata": {
+        "format": "WAV",
+        "sample_rate_hz": 48000,
+        "bit_depth": 32,
+        "channels": 2,
+        "duration_seconds": 29.059
+      },
+      "observed_description": "Uploader describes stone-mortar mashing and tapping, deliberately low recording levels, recorded on TASCAM DR-05.",
+      "acquisition_method": "Owner-mediated original download through an authenticated Freesound session; never use a preview or request pasted credentials.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Retain soft grinding and taps; do not normalize every peak upwards or claim ingredients or successful treatment from the sound.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "interface",
+      "title": "Interface Sounds",
+      "author": "Kenney",
+      "catalogue_url": "https://kenney.nl/assets/interface-sounds",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Interface Sounds version 1.0 free pack; capture archive/member filenames",
+      "catalogue_size_mb_approx": null,
+      "catalogue_metadata": {
+        "format": "Pack",
+        "file_count": 100,
+        "version": "1.0"
+      },
+      "observed_description": "Official asset page lists one hundred interface/click/button sounds and a free download.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Choose restrained nonverbal feedback; exact member type and timbre are uninspected. Do not buy the all-in-one bundle or donate in this scope.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "exploration",
+      "title": "Sunset Plains",
+      "author": "Yoiyami",
+      "catalogue_url": "https://opengameart.org/content/sunset-plains",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "sunset_plains.wav",
+      "catalogue_size_mb_approx": 63.3,
+      "catalogue_metadata": {
+        "format": "WAV"
+      },
+      "observed_description": "Uploader describes guitar, soft pads and ambient exploration music under CC0.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Treat palette fit as a hypothesis; inspect production/provenance notices and reject vocals, insistent pulse or dense cinematic passages.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    },
+    {
+      "id": "rest",
+      "title": "Revelation",
+      "author": "Indieteur",
+      "catalogue_url": "https://opengameart.org/content/revelation",
+      "license": "CC0-1.0",
+      "checked_on": "2026-10-07",
+      "preferred_download": "Revelation.Wav",
+      "catalogue_size_mb_approx": 15.0,
+      "catalogue_metadata": {
+        "format": "WAV"
+      },
+      "observed_description": "Uploader describes calm acoustic instrumental music and states that credit is optional.",
+      "acquisition_method": "Use the named original file/pack linked by this catalogue page; capture licence evidence at acquisition.",
+      "license_fee_aud": 0,
+      "eligibility": "Declared licence and catalogue description support shortlisting; bytes, provenance notices and acoustic suitability remain unverified.",
+      "qualification_issue": "Select a brief quiet motif with natural ending; no medical-success fanfare, voices or mandatory music.",
+      "acquired": false,
+      "source_sha256": null,
+      "actual_metadata": null
+    }
+  ],
+  "candidates": [
+    {
+      "id": "B01",
+      "group": "regional_bed",
+      "title": "Sheltered village rain",
+      "source_ids": [
+        "rain"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "muted-village-rain",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Choose a steady segment, soften direct high-frequency rain and add gentle loop crossfade; represent shelter through the edit, without new recorded room facts.",
+      "qualification": "Measure seam/mono compatibility and keep room-tone/interior impression subordinate to rain.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "B02",
+      "group": "regional_bed",
+      "title": "Running water and rain",
+      "source_ids": [
+        "stream",
+        "rain"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "running-water-and-rain",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Layer a stream excerpt with the same rain source at a lower combined level; do not add wildlife or stack a second full-volume region bed.",
+      "qualification": "Retain intelligible water texture; document both source trim windows and combined gain.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "B03",
+      "group": "regional_bed",
+      "title": "Rain under leaves",
+      "source_ids": [
+        "leaf-rain"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "rain-under-trees",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Trim and fade the leaf-rain excerpt; test its advertised loop and soften hiss only if the material remains identifiable.",
+      "qualification": "Keep CC BY 4.0 credit and edit notice with every derivative; no insects, birds or clue beacon.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "B04",
+      "group": "regional_bed",
+      "title": "Exposed wind/rain with inert creak",
+      "source_ids": [
+        "wind",
+        "rain",
+        "creak"
+      ],
+      "audition_buses": [
+        "Ambience"
+      ],
+      "authored_sound_key": "road-wind-and-wagon",
+      "excerpt_seconds_proposed": 30,
+      "edit_plan": "Use a mild wind window and rain; place one soft isolated wooden creak with no periodic motion rhythm.",
+      "qualification": "Reject bag rustle or modern noise; creak is a material analogue, never hidden character evidence.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "W01",
+      "group": "walking_material",
+      "title": "Packed earth",
+      "source_ids": [
+        "earth"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Select three to six softer dirt contacts, trim individual tails and sequence at a calm pace with real gaps.",
+      "qualification": "Confirm soil timbre rather than gritty gravel; later terrain ownership remains unassigned.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "W02",
+      "group": "walking_material",
+      "title": "Gravel",
+      "source_ids": [
+        "gravel"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Select three to six distinct contacts and retain granule detail with controlled peaks.",
+      "qualification": "No running rhythm, clothing or environment bed masquerading as each step.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "W03",
+      "group": "walking_material",
+      "title": "Leaf litter",
+      "source_ids": [
+        "leaves"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Select three to six leaf contacts and modest rustle tails; avoid artificially equal peak normalization.",
+      "qualification": "Audition against B03 so each contact remains distinct from canopy rain.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "W04",
+      "group": "walking_material",
+      "title": "Timber",
+      "source_ids": [
+        "timber"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 10,
+      "edit_plan": "Extract three to six walking contacts; attenuate boomy resonances and fade trim edges.",
+      "qualification": "Record MP3 ancestry; do not map hollow timber to a physical surface from visual appearance.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "A01",
+      "group": "action_feedback",
+      "title": "Water contact",
+      "source_ids": [
+        "water-contact"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Select two or three small splashes and preserve short recovery gaps.",
+      "qualification": "No sea waves, slime creature sound or unauthorized water action.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "A02",
+      "group": "action_feedback",
+      "title": "Container and cloth",
+      "source_ids": [
+        "wood-tool",
+        "cloth"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Combine one soft wooden container contact with light cotton handling; keep components identifiable.",
+      "qualification": "No claim of ceramic source; container material and actual actions remain future authored choices.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "A03",
+      "group": "action_feedback",
+      "title": "Hand tool",
+      "source_ids": [
+        "wood-tool"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Select a light manual-tool contact/scrape, with brief pauses between two demonstrations.",
+      "qualification": "Reject cinematic impacts, gun/weapon sounds, powered tools or unrelated doors.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "A04",
+      "group": "action_feedback",
+      "title": "Mortar and preparation",
+      "source_ids": [
+        "mortar"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Trim a quiet stone grinding passage and two soft taps; preserve source dynamics.",
+      "qualification": "No unlicensed ingredient inference, generated grinding sound or asserted remedy result.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "A05",
+      "group": "action_feedback",
+      "title": "Restrained treatment result",
+      "source_ids": [
+        "cloth",
+        "wood-tool"
+      ],
+      "audition_buses": [
+        "Effects"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Derive a gentle cloth-settle and soft wooden contact distinct from the handling excerpt; accompany a text slate identifying a hypothetical delivered result.",
+      "qualification": "Confirmation remains presentation only; no magic chime, disease claim or wall-clock disease advance.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "A06",
+      "group": "action_feedback",
+      "title": "UI and conversation feedback",
+      "source_ids": [
+        "interface"
+      ],
+      "audition_buses": [
+        "Effects",
+        "Dialogue"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 8,
+      "edit_plan": "Select separate quiet interface and conversation start/end clicks; demonstrate in labelled non-overlapping subsegments.",
+      "qualification": "Each subsegment routes once; no spoken voice, per-letter sound or mandatory sound-only information.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "M01",
+      "group": "music",
+      "title": "Sparse exploration texture",
+      "source_ids": [
+        "exploration"
+      ],
+      "audition_buses": [
+        "Music"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 25,
+      "edit_plan": "Choose a sparse guitar-led passage and fade with long silence around it; no new composition or stem-separation model.",
+      "qualification": "Optional audition example; reject vocals, urgency or implied hidden truth.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    },
+    {
+      "id": "M02",
+      "group": "music",
+      "title": "Rest and healing motif",
+      "source_ids": [
+        "rest"
+      ],
+      "audition_buses": [
+        "Music"
+      ],
+      "authored_sound_key": null,
+      "excerpt_seconds_proposed": 25,
+      "edit_plan": "Trim a short acoustic motif with a gentle end and long cooldown gap; do not assign any runtime trigger.",
+      "qualification": "Must support calm rest without claiming treatment success or disease-pause semantics.",
+      "provenance_record_required": true,
+      "measurements": null,
+      "source_windows": null,
+      "edited_sha256": null,
+      "owner_selected": false,
+      "runtime_installed": false
+    }
+  ],
+  "budget": {
+    "license_fees_aud": 0,
+    "purchase_donation_subscription_allowed": false,
+    "known_original_download_mb_approx": 216.7948,
+    "unknown_download_sizes": [
+      "interface"
+    ],
+    "download_cap_bytes_proposed": 500000000,
+    "working_storage_cap_bytes_proposed": 2000000000,
+    "cap_behavior": "Pause if exceeded; no paid substitution or account creation. Catalogue MB figures are rounded, not exact bytes. Labour/network costs are excluded."
+  },
+  "future_acquisition_sequence": [
+    "After explicit authority, use only these named source containers; retain page/licence notices and originals with SHA-256 before any edit. Download original files, never compressed preview streams.",
+    "Freesound originals require owner-mediated login/download; an existing authenticated session or owner-supplied originals may be used. If unavailable, report access need without requesting pasted credentials, creating an account, bypassing login or silently using a mirror.",
+    "Inspect each archive without executing its contents; select members by the named material class, capture exact filename and hash, preserve licence/supplied notices and reject any conflicting rights record.",
+    "Qualify catalogue descriptions by listening after authority; isolate nonvocal material without added wildlife, modern vehicles, incidental people or broadcast music. If a class cannot qualify, retain a named gap and stop before presenting an incomplete series as complete.",
+    "Prepare the complete sixteen excerpts first, with immutable originals and explicit edit lineage. Keep these external to game runtime assets; do not ask the owner to select each excerpt separately.",
+    "Render the same scripted five-minute timeline in Default, Reduced range and music-free variants; keep an isolated audition workspace, the existing approved bus layout and available local ffmpeg/ffprobe. Any derived tooling belongs only to the external audition package or disposable workspace.",
+    "Measure final rendered output and loop/contact behaviour; deliver all sixteen excerpts, three mixes, provenance/credits, measurements and one collective listening review. Record selection only from actual owner acceptance."
+  ],
+  "provenance_fields_after_acquisition": [
+    "source_id",
+    "catalogue_url",
+    "author",
+    "title",
+    "license_id_and_url",
+    "captured_rights_notices",
+    "acquisition_date_and_method",
+    "exact_container_and_member_filenames",
+    "source_sha256",
+    "original_codec_rate_depth_channels_duration",
+    "derived_from_source_ids_and_hashes",
+    "trim_windows_samples",
+    "loop_points_samples_and_crossfade",
+    "resampling_and_channel_conversion",
+    "ordered_gain_eq_dynamics_and_fades",
+    "tool_versions_and_parameters",
+    "editable_project_or_script_and_hash",
+    "export_sha256",
+    "measured_levels_and_peaks",
+    "credits_text",
+    "owner_selection_record"
+  ],
+  "working_format_proposed": {
+    "editing_rate_hz": 48000,
+    "editing_precision": "float where supported; verify source 32-bit subtype rather than assuming",
+    "review_exports": "PCM WAV, 48 kHz, 24-bit; stereo beds/music and labelled mono-compatible effects",
+    "source_codec_policy": "Preserve original FLAC/WAV/MP3 and unknown archive encodings; PCM conversion of lossy sources is not a recovered lossless recording. Runtime encoding remains deferred."
+  },
+  "planned_mix_timeline_seconds": [
+    {
+      "start": 0,
+      "end": 45,
+      "region_or_role": "Village shelter",
+      "candidates": [
+        "B01",
+        "W01"
+      ]
+    },
+    {
+      "start": 45,
+      "end": 90,
+      "region_or_role": "Waterway",
+      "candidates": [
+        "B02",
+        "W02",
+        "A01"
+      ]
+    },
+    {
+      "start": 90,
+      "end": 135,
+      "region_or_role": "Woodland",
+      "candidates": [
+        "B03",
+        "W03"
+      ]
+    },
+    {
+      "start": 135,
+      "end": 180,
+      "region_or_role": "Southern road",
+      "candidates": [
+        "B04",
+        "W04"
+      ]
+    },
+    {
+      "start": 180,
+      "end": 225,
+      "region_or_role": "Labelled action examples",
+      "candidates": [
+        "A02",
+        "A03",
+        "A04"
+      ]
+    },
+    {
+      "start": 225,
+      "end": 255,
+      "region_or_role": "Labelled feedback examples",
+      "candidates": [
+        "A05",
+        "A06"
+      ]
+    },
+    {
+      "start": 255,
+      "end": 278,
+      "region_or_role": "Optional exploration example",
+      "candidates": [
+        "M01"
+      ]
+    },
+    {
+      "start": 278,
+      "end": 300,
+      "region_or_role": "Optional rest example",
+      "candidates": [
+        "M02"
+      ]
+    }
+  ],
+  "timeline_is_not_runtime_world_material_mapping": true,
+  "measurements_after_acquisition": [
+    "Actual metadata and decoded corruption/clipping checks for each original",
+    "Each excerpt sample/true peaks, RMS and trim/fade boundaries; no LUFS-I target for individual short transients",
+    "Beds loop seam waveform and audible seam, repeat stability and mono fold-down; music edit endings",
+    "Five-minute Default, Reduced range and music-free final output LUFS-I/LRA and sample/true peaks with stated measurement point",
+    "Working mix peaks before final protection, concurrency gains and comparison to unchanged provisional policy targets",
+    "Labelled bus routing: required Effects unchanged by optional ducking, category/Master zero and mute, mono and range comparisons in isolated audition",
+    "Listening notes for stereo/mono, headphones/speakers, low volume, muted and reduced range; unavailable devices explicitly unassessed"
+  ],
+  "voice_reference": "None. No speech, microphone, TTS, human recording or generated voices; speech masking/intelligibility and future voice targets stay unassessed.",
+  "remaining_scope": "Footsteps/actions/ambience/music are still absent from ordinary runtime. Inscription uses a quieter edit of B03 only after existing authored state; no fifth candidate or pre-discovery clue cue.",
+  "next_authority_decision": {
+    "scope_id": "phase9-material-audio-collective-audition",
+    "requested_action": "Authorize the zero-purchase-cost acquisition, editing, qualification listening and isolated collective audition of this exact shortlist: sixteen excerpts and three five-minute mixes, with provenance/credits and measurements, capped at 500 MB source downloads and 2 GB working storage. Freesound originals use an existing authenticated owner session or owner-supplied files.",
+    "exclusions": [
+      "New accounts or credential collection",
+      "Purchase/donation/subscription or paid substitutions",
+      "AI generation, new recording, speech/providers or microphone",
+      "Ordinary runtime audio assets/emitters, Main/world/perception/time changes, accepted visuals or gait",
+      "Release/signing and new Git publication"
+    ],
+    "owner_response": null,
+    "status": "pending_explicit_owner_authority"
+  }
+}

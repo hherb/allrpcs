@@ -1,0 +1,19 @@
+{
+  "default_music_free_identical_nonmusic_section": true,
+  "pre_music_maximum_sample_difference": 0.0,
+  "music_free_after_255_sample_peak": 0.0,
+  "music_free_music_window_silent": true,
+  "range_output_differs": true,
+  "rate_hz": 48000,
+  "seconds_per_output": 300.0,
+  "input_hashes": {
+    "default": "99b28aaa7711621e99ceb3e4b0a7ef0a805a12c6133a940624e8e6001b9514c6",
+    "reduced-range": "ca0e61e8751d1af2b7e8d6b641c97c313d8a267abbc85cf57071c306d6a0e748",
+    "music-free": "90662994ab14535f9d1b01112ee76c740ccc86c77c4d49e17404559d8a6fc80c"
+  },
+  "fifteen_accepted_excerpts_and_routing_unchanged": true,
+  "fifteen_excerpt_measurements_reused_exactly": true,
+  "three_nonmusic_tracks_reused_exactly": true,
+  "music_free_capture_and_meter_reused_exactly": true,
+  "script_sha256": "90a2c481784ec984671a0e8d21a0fd4c6a43387c29a71b86d65db8adf009d6b5"
+}

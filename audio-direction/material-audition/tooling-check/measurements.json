@@ -1,0 +1,15 @@
+{
+  "status": "passed_tooling_only",
+  "captured_seconds": 4.0,
+  "captured_rate_hz": 48000,
+  "initial_latency_samples": 164,
+  "aligned_left_correlation": 0.9999999374334515,
+  "aligned_stereo_rms_error": 1.7562800837534717e-05,
+  "engine_input_format": "FORMAT_16_BITS (enum 1); Godot converts PCM24 input to 16-bit internally",
+  "final_capture_subtype": "PCM_32",
+  "graphical_renderer": "actual 64x64 viewport",
+  "sandbox_attempt": "SIGABRT; identical host retry succeeded",
+  "engine_exit_warning": "ObjectDB instances leaked at exit; recorded, no script or load error",
+  "wave_sha256": "6cb21c939dcff9c67b87a43af34e0ae9e0e5dc6c3c411719346987889ea10a9c",
+  "scope": "Four seconds of B01 through copied accepted buses; not a full mix, listening or owner selection"
+}

@@ -1,0 +1,43 @@
+Input #0, wav, from '/Users/hherb/src/allrpcs/audio-direction/material-audition/review/music-free.wav':
+  Metadata:
+    encoder         : Lavf63.1.101
+  Duration: 00:05:00.00, bitrate: 2304 kb/s
+  Stream #0:0: Audio: pcm_s24le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s32 (24 bit), 2304 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s24le (native) -> pcm_s16le (native))
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf63.1.101
+  Stream #0:0: Audio: pcm_s16le, 192000 Hz, stereo, s16, 6144 kb/s
+    Metadata:
+      encoder         : Lavc63.1.101 pcm_s16le
+size=N/A time=00:00:18.10 bitrate=N/A speed=35.8x elapsed=0:00:00.50    
+size=N/A time=00:00:36.90 bitrate=N/A speed=36.5x elapsed=0:00:01.01    
+size=N/A time=00:00:55.60 bitrate=N/A speed=36.8x elapsed=0:00:01.51    
+size=N/A time=00:01:14.40 bitrate=N/A speed=36.9x elapsed=0:00:02.01    
+size=N/A time=00:01:32.90 bitrate=N/A speed=36.8x elapsed=0:00:02.52    
+size=N/A time=00:01:51.00 bitrate=N/A speed=36.7x elapsed=0:00:03.02    
+size=N/A time=00:02:09.30 bitrate=N/A speed=36.6x elapsed=0:00:03.52    
+size=N/A time=00:02:28.20 bitrate=N/A speed=36.7x elapsed=0:00:04.03    
+size=N/A time=00:02:47.10 bitrate=N/A speed=36.8x elapsed=0:00:04.53    
+size=N/A time=00:03:06.00 bitrate=N/A speed=36.9x elapsed=0:00:05.03    
+size=N/A time=00:03:25.00 bitrate=N/A speed=  37x elapsed=0:00:05.54    
+size=N/A time=00:03:43.80 bitrate=N/A speed=  37x elapsed=0:00:06.04    
+size=N/A time=00:04:02.70 bitrate=N/A speed=  37x elapsed=0:00:06.55    
+size=N/A time=00:04:21.10 bitrate=N/A speed=  37x elapsed=0:00:07.05    
+size=N/A time=00:04:40.10 bitrate=N/A speed=  37x elapsed=0:00:07.56    
+[Parsed_loudnorm_0 @ 0x79bec24a80] 
+{
+	"input_i" : "-25.10",
+	"input_tp" : "-6.63",
+	"input_lra" : "7.60",
+	"input_thresh" : "-35.39",
+	"output_i" : "-23.40",
+	"output_tp" : "-5.49",
+	"output_lra" : "8.20",
+	"output_thresh" : "-33.65",
+	"normalization_type" : "dynamic",
+	"target_offset" : "0.40"
+}
+[out#0/null @ 0x79bec24240] video:0KiB audio:225000KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:05:00.00 bitrate=N/A speed=37.3x elapsed=0:00:08.05    
