@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-07",
+  "owner_statement": "commit and push then",
+  "scope": "Complete locally finished character import proof, retained Seeker cloak gait revisions, accepted reference model and associated documentation/proof resources",
+  "branch": "main",
+  "base_commit": "46d016ed5aa1dc2eb5b7b134d5879b3a2b08f5a6",
+  "reference_gait_acceptance": {
+    "path": "art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json",
+    "sha256": "88c90fa7bc441d05c887a81ba4a6b7098c44214d76c209c041d46591f51d2fe7"
+  },
+  "verification": "All bound candidate/proof files unchanged; whole gait terminal acceptance, ordinary product/CI boundary hashes, continuation checker and 11 regression probes passed. Retain prior actual Godot/playback and full product evidence; no product inputs changed.",
+  "preserved_local_exception": "Unrelated game/project.godot editor rewrite remains unstaged and uncommitted; no Main integration."
+}

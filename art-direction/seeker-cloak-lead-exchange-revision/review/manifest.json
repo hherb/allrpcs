@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "source": "24 actual imported Godot predecessor/revision comparison captures",
+  "comparison_cycle_ms": 720,
+  "sample_times_ms": [
+    0,
+    90,
+    180,
+    270,
+    360,
+    450,
+    540,
+    630
+  ],
+  "lossless_decoded_rgba": "Exact source capture matches",
+  "files": {
+    "art-direction/seeker-cloak-lead-exchange-revision/review/all-32-phases.png": "6ccd2efd1892eef649b5722c9817124d6e40e34e15bf2ca63bf70ecba2eab6b4",
+    "art-direction/seeker-cloak-lead-exchange-revision/review/knee-foot-transfer-slow-2x.webp": "ee0c7f2fb0be552d038d3ab03d7c805385bd6aed0568598f941d21b14b2cad42",
+    "art-direction/seeker-cloak-lead-exchange-revision/review/leg-ownership-2x.webp": "e3a21b145c552f4c9e1b60477cb6f572a340fae74e497b589f37337224fba6de",
+    "art-direction/seeker-cloak-lead-exchange-revision/review/old-vs-new-1x.webp": "2d8e760e4f63bfc1e038e4c7acc3a114717db902cd8f57c42ee34861478143c8",
+    "art-direction/seeker-cloak-lead-exchange-revision/review/old-vs-new-2x.webp": "cdaf60d68ab57ef837e1eb6d585301da68d0491e8ff4dbcb533a147fee865845",
+    "art-direction/seeker-cloak-lead-exchange-revision/review/pelvis-knee-hinges-2x.webp": "845707c7bf6fa8e0ab9300d4b171959a32ac8a67f1dd27a873efe13b3ba9cc6b"
+  }
+}

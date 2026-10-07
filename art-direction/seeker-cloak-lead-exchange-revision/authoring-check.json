@@ -1,0 +1,101 @@
+{
+  "status": "passed",
+  "revised_sides": [
+    {
+      "direction": "west",
+      "anatomical_pelvis_source_2x": [
+        123.0,
+        210.0
+      ],
+      "thigh_scissoring": "forward/backward exchanges around one root",
+      "signed_knee_hinge": "zero/straight to backward flexion only; no hyperextension",
+      "bone_lengths_and_support_baseline": "passed",
+      "visible_knee_foot_exchanges": [
+        {
+          "phase_degrees": 0,
+          "leading_leg": "A",
+          "knee_lead_2x": 46.63289525252202,
+          "ankle_lead_2x": 104.00765437460522,
+          "foot_paint_centroid_lead_2x": 107.41984082600274,
+          "visible_foot_tip_lead_2x": 109
+        },
+        {
+          "phase_degrees": 90,
+          "leading_leg": "B",
+          "knee_lead_2x": 25.411946900962278,
+          "ankle_lead_2x": 30.02833615100738,
+          "foot_paint_centroid_lead_2x": 30.785960162130237,
+          "visible_foot_tip_lead_2x": 32
+        },
+        {
+          "phase_degrees": 180,
+          "leading_leg": "B",
+          "knee_lead_2x": 46.63289525252202,
+          "ankle_lead_2x": 104.00765437460522,
+          "foot_paint_centroid_lead_2x": 107.41984082600274,
+          "visible_foot_tip_lead_2x": 109
+        },
+        {
+          "phase_degrees": 270,
+          "leading_leg": "A",
+          "knee_lead_2x": 25.411946900962278,
+          "ankle_lead_2x": 30.02833615100738,
+          "foot_paint_centroid_lead_2x": 30.785960162130237,
+          "visible_foot_tip_lead_2x": 32
+        }
+      ],
+      "predecessor_late_transfer_rejection_probe": "passed"
+    },
+    {
+      "direction": "east",
+      "anatomical_pelvis_source_2x": [
+        165.0,
+        210.0
+      ],
+      "thigh_scissoring": "forward/backward exchanges around one root",
+      "signed_knee_hinge": "zero/straight to backward flexion only; no hyperextension",
+      "bone_lengths_and_support_baseline": "passed",
+      "visible_knee_foot_exchanges": [
+        {
+          "phase_degrees": 0,
+          "leading_leg": "A",
+          "knee_lead_2x": 46.63289525252202,
+          "ankle_lead_2x": 104.00765437460524,
+          "foot_paint_centroid_lead_2x": 107.56760330074647,
+          "visible_foot_tip_lead_2x": 109
+        },
+        {
+          "phase_degrees": 90,
+          "leading_leg": "B",
+          "knee_lead_2x": 25.411946900962278,
+          "ankle_lead_2x": 30.02833615100738,
+          "foot_paint_centroid_lead_2x": 30.75600924424998,
+          "visible_foot_tip_lead_2x": 39
+        },
+        {
+          "phase_degrees": 180,
+          "leading_leg": "B",
+          "knee_lead_2x": 46.63289525252202,
+          "ankle_lead_2x": 104.00765437460524,
+          "foot_paint_centroid_lead_2x": 107.56760330074647,
+          "visible_foot_tip_lead_2x": 109
+        },
+        {
+          "phase_degrees": 270,
+          "leading_leg": "A",
+          "knee_lead_2x": 25.411946900962278,
+          "ankle_lead_2x": 30.02833615100738,
+          "foot_paint_centroid_lead_2x": 30.75600924424998,
+          "visible_foot_tip_lead_2x": 31
+        }
+      ],
+      "predecessor_late_transfer_rejection_probe": "passed"
+    }
+  ],
+  "accepted_front_back_frames": 16,
+  "accepted_front_back_exports_and_masters": "exact predecessor bytes",
+  "predecessor_bindings": "all unchanged",
+  "editable_replay": "32 exact native masters and exports",
+  "pelvic_front_contour": "retained source paint fills former cut edge",
+  "authority": "front/back accepted; revised sides await owner visual selection; Main unchanged"
+}

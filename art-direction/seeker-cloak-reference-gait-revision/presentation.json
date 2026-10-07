@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-07",
+  "purpose": "Clean presentation labels on a derived capture crop; frozen candidate and every bound file remain unchanged",
+  "candidate_sha256": "584518b95fc6eb2bd13a8f02f9ba83e25426b62a990a8fe0969ca1a10de20b65",
+  "source_crop": [
+    494,
+    504,
+    1198,
+    860
+  ],
+  "destination_origin": [
+    0,
+    40
+  ],
+  "canvas": [
+    704,
+    416
+  ],
+  "cycle_ms": 720,
+  "decoded_rgba_and_frame_durations": "exact crop/composite and sixteen 45ms frames",
+  "presentation_path": "art-direction/seeker-cloak-reference-gait-revision/review/production-sides-clean-2x.webp",
+  "presentation_sha256": "1c9f009ccf3e1d42331da6e0bdfa45bfd50c355ae3f30482511b732e5092a82c",
+  "source_captures": {
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-000.png": "da9b5cf95b447702c8c68b46e46ee0f3cb4d153ca4a34bb1239267e2794583c3",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-045.png": "5236eaec495a29bc1074f9dbf3232d5ff4e9ec66f6a190702c1518b79e05567c",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-090.png": "c1a9bef212012b959305d34b353a03868b860e8ec7276f9e7053bb1394fa9a71",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-135.png": "83090eed418a6340cfc97b68f78cdbf61d21d824427a7eb1612ea87c5b58e7ef",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-180.png": "b4c1e097f1cb2d9a16392bd5408b70fc98c48184f53cb8e1d12581c9b16d09ad",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-225.png": "2a7b9481c59afb0280b78972331e5770989e845c9cd65ef664abff3f83c5bb01",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-270.png": "1df03556e3e14f6a7575aff147150485da87b91fd233ccf462c0f4ad9368ad63",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-315.png": "d7e1893d9baee803557ab43ab70b771f133f09c059e0952dda2fb8c89e565385",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-360.png": "d25a139504964133c84ac5c684ea41b0a3ffdd37d510bfd2977912bf137efe4b",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-405.png": "e9ec8155877bea00f7962df8f7ac741f6b541a7eba74a0a46ce47276931230e9",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-450.png": "f055f3d2b6646c3837a6155e04fe495d334ab932eb9b7073358e1e6753c5d04f",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-495.png": "3a92f20815ddc7cd7eba3a750fe198115ab53da39dfe308e68e233e219f1a7f2",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-540.png": "55c3efe0d11363f42b6532356516105dc803efebfaecaabc05ea161326eb57c1",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-585.png": "33a1f83cb5a32c6f7f47f952038f573773274c68fdb9750743b205a32ce36207",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-630.png": "8e2085ca88f54134f258131931135ae5967bc88d0ad07ff2af9affee08108155",
+    "art-direction/seeker-cloak-reference-gait-revision/captures/comparison-2x-675.png": "55042c46d5fb2197e8c077b70c63e2c1176495b7cf9fef0e7cd0a4faeabe34a2"
+  }
+}

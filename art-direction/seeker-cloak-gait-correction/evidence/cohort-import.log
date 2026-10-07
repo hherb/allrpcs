@@ -1,0 +1,1377 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (2 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (480 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | elian-east-idle-01.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | elian-east-idle-02.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | elian-east-inspect-01.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | elian-east-inspect-02.png[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | elian-east-walk-01.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | elian-east-walk-02.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | elian-east-walk-03.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | elian-east-walk-04.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | elian-east-walk-05.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | elian-east-walk-06.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | elian-east-walk-07.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | elian-east-walk-08.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | elian-north-idle-01.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | elian-north-idle-02.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | elian-north-inspect-01.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | elian-north-inspect-02.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | elian-north-walk-01.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | elian-north-walk-02.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | elian-north-walk-03.png[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | elian-north-walk-04.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | elian-north-walk-05.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | elian-north-walk-06.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | elian-north-walk-07.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | elian-north-walk-08.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | elian-south-idle-01.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | elian-south-idle-02.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | elian-south-inspect-01.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | elian-south-inspect-02.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | elian-south-walk-01.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | elian-south-walk-02.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | elian-south-walk-03.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | elian-south-walk-04.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | elian-south-walk-05.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | elian-south-walk-06.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | elian-south-walk-07.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | elian-south-walk-08.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | elian-west-idle-01.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | elian-west-idle-02.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | elian-west-inspect-01.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | elian-west-inspect-02.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | elian-west-walk-01.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | elian-west-walk-02.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | elian-west-walk-03.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | elian-west-walk-04.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | elian-west-walk-05.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | elian-west-walk-06.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | elian-west-walk-07.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | elian-west-walk-08.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | healer-east-idle-01.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | healer-east-idle-02.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | healer-east-inspect-01.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | healer-east-inspect-02.png[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | healer-east-walk-01.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | healer-east-walk-02.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | healer-east-walk-03.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | healer-east-walk-04.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | healer-east-walk-05.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | healer-east-walk-06.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | healer-east-walk-07.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | healer-east-walk-08.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | healer-north-idle-01.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | healer-north-idle-02.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | healer-north-inspect-01.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | healer-north-inspect-02.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | healer-north-walk-01.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | healer-north-walk-02.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | healer-north-walk-03.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | healer-north-walk-04.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | healer-north-walk-05.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | healer-north-walk-06.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | healer-north-walk-07.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | healer-north-walk-08.png[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | healer-south-idle-01.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | healer-south-idle-02.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | healer-south-inspect-01.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | healer-south-inspect-02.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | healer-south-walk-01.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | healer-south-walk-02.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | healer-south-walk-03.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | healer-south-walk-04.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | healer-south-walk-05.png[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | healer-south-walk-06.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | healer-south-walk-07.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | healer-south-walk-08.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | healer-west-idle-01.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | healer-west-idle-02.png[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | healer-west-inspect-01.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | healer-west-inspect-02.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | healer-west-walk-01.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | healer-west-walk-02.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | healer-west-walk-03.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | healer-west-walk-04.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | healer-west-walk-05.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | healer-west-walk-06.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | healer-west-walk-07.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | healer-west-walk-08.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | mira-east-idle-01.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | mira-east-idle-02.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | mira-east-inspect-01.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | mira-east-inspect-02.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | mira-east-walk-01.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | mira-east-walk-02.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | mira-east-walk-03.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | mira-east-walk-04.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | mira-east-walk-05.png[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | mira-east-walk-06.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | mira-east-walk-07.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | mira-east-walk-08.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | mira-north-idle-01.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | mira-north-idle-02.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | mira-north-inspect-01.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | mira-north-inspect-02.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | mira-north-walk-01.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | mira-north-walk-02.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | mira-north-walk-03.png[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | mira-north-walk-04.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | mira-north-walk-05.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | mira-north-walk-06.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | mira-north-walk-07.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | mira-north-walk-08.png[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | mira-south-idle-01.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | mira-south-idle-02.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | mira-south-inspect-01.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | mira-south-inspect-02.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | mira-south-walk-01.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | mira-south-walk-02.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | mira-south-walk-03.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | mira-south-walk-04.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | mira-south-walk-05.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | mira-south-walk-06.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | mira-south-walk-07.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | mira-south-walk-08.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | mira-west-idle-01.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | mira-west-idle-02.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | mira-west-inspect-01.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | mira-west-inspect-02.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | mira-west-walk-01.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | mira-west-walk-02.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | mira-west-walk-03.png[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | mira-west-walk-04.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | mira-west-walk-05.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | mira-west-walk-06.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | mira-west-walk-07.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | mira-west-walk-08.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | orin-east-idle-01.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | orin-east-idle-02.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | orin-east-inspect-01.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | orin-east-inspect-02.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | orin-east-walk-01.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | orin-east-walk-02.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | orin-east-walk-03.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | orin-east-walk-04.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | orin-east-walk-05.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | orin-east-walk-06.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | orin-east-walk-07.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | orin-east-walk-08.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | orin-north-idle-01.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | orin-north-idle-02.png[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | orin-north-inspect-01.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | orin-north-inspect-02.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | orin-north-walk-01.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | orin-north-walk-02.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | orin-north-walk-03.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | orin-north-walk-04.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | orin-north-walk-05.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | orin-north-walk-06.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | orin-north-walk-07.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | orin-north-walk-08.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | orin-south-idle-01.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | orin-south-idle-02.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | orin-south-inspect-01.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | orin-south-inspect-02.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | orin-south-walk-01.png[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | orin-south-walk-02.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | orin-south-walk-03.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | orin-south-walk-04.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | orin-south-walk-05.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | orin-south-walk-06.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | orin-south-walk-07.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | orin-south-walk-08.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | orin-west-idle-01.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | orin-west-idle-02.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | orin-west-inspect-01.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | orin-west-inspect-02.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | orin-west-walk-01.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | orin-west-walk-02.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | orin-west-walk-03.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | orin-west-walk-04.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | orin-west-walk-05.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | orin-west-walk-06.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | orin-west-walk-07.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | orin-west-walk-08.png[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | rowan-east-idle-01.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | rowan-east-idle-02.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | rowan-east-inspect-01.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | rowan-east-inspect-02.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-01.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-02.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-03.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-04.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-05.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-06.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-07.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | rowan-east-walk-08.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | rowan-north-idle-01.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | rowan-north-idle-02.png[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | rowan-north-inspect-01.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | rowan-north-inspect-02.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-01.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-02.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-03.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-04.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-05.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-06.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-07.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rowan-north-walk-08.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rowan-south-idle-01.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rowan-south-idle-02.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rowan-south-inspect-01.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rowan-south-inspect-02.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-01.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-02.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-03.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-04.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-05.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-06.png[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-07.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | rowan-south-walk-08.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | rowan-west-idle-01.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | rowan-west-idle-02.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | rowan-west-inspect-01.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | rowan-west-inspect-02.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-01.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-02.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-03.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-04.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-05.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-06.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-07.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | rowan-west-walk-08.png[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-idle-01.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-idle-02.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-inspect-01.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-inspect-02.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-01.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-02.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-03.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-04.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-05.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-06.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-07.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | seeker-apron-east-walk-08.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-idle-01.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-idle-02.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-inspect-01.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-inspect-02.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-01.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-02.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-03.png[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-04.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-05.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-06.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-07.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | seeker-apron-north-walk-08.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-idle-01.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-idle-02.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-inspect-01.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-inspect-02.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-01.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-02.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-03.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-04.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-05.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-06.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-07.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | seeker-apron-south-walk-08.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-idle-01.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-idle-02.png[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-inspect-01.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-inspect-02.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-01.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-02.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-03.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-04.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-05.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-06.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-07.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | seeker-apron-west-walk-08.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-idle-01.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-idle-02.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-inspect-01.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-inspect-02.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-inspect-03.png[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-inspect-04.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-walk-01.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-walk-02.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-walk-03.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-walk-04.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-walk-05.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | seeker-cloak-east-walk-06.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-idle-01.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-idle-02.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-inspect-01.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-inspect-02.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-inspect-03.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-inspect-04.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-walk-01.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-walk-02.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-walk-03.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-walk-04.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-walk-05.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | seeker-cloak-north-walk-06.png[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-idle-01.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-idle-02.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-inspect-01.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-inspect-02.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-inspect-03.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-inspect-04.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-walk-01.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-walk-02.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-walk-03.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-walk-04.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-walk-05.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | seeker-cloak-south-walk-06.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-idle-01.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-idle-02.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-inspect-01.png[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-inspect-02.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-inspect-03.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-inspect-04.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-walk-01.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-walk-02.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-walk-03.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-walk-04.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-walk-05.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | seeker-cloak-west-walk-06.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-idle-01.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-idle-02.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-inspect-01.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-inspect-02.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-01.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-02.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-03.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-04.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-05.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-06.png[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-07.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | seeker-plain-east-walk-08.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-idle-01.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-idle-02.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-inspect-01.png[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-inspect-02.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-01.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-02.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-03.png[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-04.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-05.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-06.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-07.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | seeker-plain-north-walk-08.png[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-idle-01.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-idle-02.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-inspect-01.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-inspect-02.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-01.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-02.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-03.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-04.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-05.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-06.png[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-07.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | seeker-plain-south-walk-08.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-idle-01.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-idle-02.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-inspect-01.png[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-inspect-02.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-01.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-02.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-03.png[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-04.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-05.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-06.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-07.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | seeker-plain-west-walk-08.png[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | sera-east-idle-01.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | sera-east-idle-02.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | sera-east-inspect-01.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | sera-east-inspect-02.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | sera-east-walk-01.png[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | sera-east-walk-02.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | sera-east-walk-03.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | sera-east-walk-04.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | sera-east-walk-05.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | sera-east-walk-06.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | sera-east-walk-07.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | sera-east-walk-08.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | sera-north-idle-01.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | sera-north-idle-02.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | sera-north-inspect-01.png[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | sera-north-inspect-02.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | sera-north-walk-01.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | sera-north-walk-02.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | sera-north-walk-03.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | sera-north-walk-04.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | sera-north-walk-05.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | sera-north-walk-06.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | sera-north-walk-07.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | sera-north-walk-08.png[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | sera-south-idle-01.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | sera-south-idle-02.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | sera-south-inspect-01.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | sera-south-inspect-02.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | sera-south-walk-01.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | sera-south-walk-02.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | sera-south-walk-03.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | sera-south-walk-04.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | sera-south-walk-05.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | sera-south-walk-06.png[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | sera-south-walk-07.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | sera-south-walk-08.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | sera-west-idle-01.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | sera-west-idle-02.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | sera-west-inspect-01.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | sera-west-inspect-02.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | sera-west-walk-01.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | sera-west-walk-02.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | sera-west-walk-03.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | sera-west-walk-04.png[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | sera-west-walk-05.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | sera-west-walk-06.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | sera-west-walk-07.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | sera-west-walk-08.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | vale-east-idle-01.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | vale-east-idle-02.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | vale-east-inspect-01.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | vale-east-inspect-02.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | vale-east-walk-01.png[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | vale-east-walk-02.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | vale-east-walk-03.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | vale-east-walk-04.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | vale-east-walk-05.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | vale-east-walk-06.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | vale-east-walk-07.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | vale-east-walk-08.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | vale-north-idle-01.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | vale-north-idle-02.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | vale-north-inspect-01.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | vale-north-inspect-02.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | vale-north-walk-01.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | vale-north-walk-02.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | vale-north-walk-03.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | vale-north-walk-04.png[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | vale-north-walk-05.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | vale-north-walk-06.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | vale-north-walk-07.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | vale-north-walk-08.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | vale-south-idle-01.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | vale-south-idle-02.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | vale-south-inspect-01.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | vale-south-inspect-02.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | vale-south-walk-01.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | vale-south-walk-02.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | vale-south-walk-03.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | vale-south-walk-04.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | vale-south-walk-05.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | vale-south-walk-06.png[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | vale-south-walk-07.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | vale-south-walk-08.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | vale-west-idle-01.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | vale-west-idle-02.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | vale-west-inspect-01.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | vale-west-inspect-02.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | vale-west-walk-01.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | vale-west-walk-02.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | vale-west-walk-03.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | vale-west-walk-04.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | vale-west-walk-05.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | vale-west-walk-06.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | vale-west-walk-07.png[39m[0m
+[  99% ] [90m[1m_update_scan_actions[22m | vale-west-walk-08.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (432 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   1% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   1% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   1% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   1% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   3% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   4% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   6% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   7% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   9% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  11% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  14% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  15% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  17% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  19% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  19% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  19% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  19% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  20% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  22% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  23% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  26% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  28% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  30% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  31% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  33% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  34% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  36% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  38% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  39% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  41% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  42% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  44% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  46% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  47% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  49% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  49% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  49% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  49% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  52% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  53% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  55% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  57% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  58% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  60% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  61% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  63% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  65% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  66% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  68% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  69% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  71% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  73% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  74% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  76% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  77% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  79% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  80% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  82% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  84% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  85% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  87% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  88% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  90% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  92% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  93% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  95% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  96% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  97% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  97% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  97% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  97% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  98% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  98% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  98% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  98% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  99% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  99% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  99% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | seeker-plain-east-walk-05.png[39m[0m
+[   0% ] [90m[1mreimport[22m | seeker-plain-east-walk-04.png[39m[0m
+[   0% ] [90m[1mreimport[22m | seeker-plain-east-walk-03.png[39m[0m
+[   0% ] [90m[1mreimport[22m | seeker-plain-east-walk-02.png[39m[0m
+[   0% ] [90m[1mreimport[22m | seeker-plain-east-walk-01.png[39m[0m
+[   1% ] [90m[1mreimport[22m | seeker-plain-east-inspect-02.png[39m[0m
+[   1% ] [90m[1mreimport[22m | seeker-plain-east-inspect-01.png[39m[0m
+[   1% ] [90m[1mreimport[22m | seeker-plain-east-idle-02.png[39m[0m
+[   1% ] [90m[1mreimport[22m | seeker-plain-east-idle-01.png[39m[0m
+[   2% ] [90m[1mreimport[22m | seeker-apron-west-walk-08.png[39m[0m
+[   2% ] [90m[1mreimport[22m | seeker-apron-west-walk-07.png[39m[0m
+[   2% ] [90m[1mreimport[22m | seeker-apron-west-walk-06.png[39m[0m
+[   2% ] [90m[1mreimport[22m | seeker-apron-west-walk-05.png[39m[0m
+[   3% ] [90m[1mreimport[22m | seeker-apron-west-walk-04.png[39m[0m
+[   3% ] [90m[1mreimport[22m | seeker-apron-west-walk-03.png[39m[0m
+[   3% ] [90m[1mreimport[22m | seeker-apron-west-walk-02.png[39m[0m
+[   3% ] [90m[1mreimport[22m | seeker-apron-west-walk-01.png[39m[0m
+[   3% ] [90m[1mreimport[22m | seeker-apron-west-inspect-02.png[39m[0m
+[   4% ] [90m[1mreimport[22m | seeker-apron-west-inspect-01.png[39m[0m
+[   4% ] [90m[1mreimport[22m | seeker-apron-west-idle-02.png[39m[0m
+[   4% ] [90m[1mreimport[22m | seeker-apron-west-idle-01.png[39m[0m
+[   4% ] [90m[1mreimport[22m | seeker-apron-south-walk-08.png[39m[0m
+[   5% ] [90m[1mreimport[22m | seeker-apron-south-walk-07.png[39m[0m
+[   5% ] [90m[1mreimport[22m | seeker-apron-south-walk-06.png[39m[0m
+[   5% ] [90m[1mreimport[22m | seeker-apron-south-walk-05.png[39m[0m
+[   5% ] [90m[1mreimport[22m | seeker-apron-south-walk-04.png[39m[0m
+[   6% ] [90m[1mreimport[22m | seeker-apron-south-walk-03.png[39m[0m
+[   6% ] [90m[1mreimport[22m | seeker-plain-south-walk-08.png[39m[0m
+[   6% ] [90m[1mreimport[22m | seeker-plain-south-walk-07.png[39m[0m
+[   6% ] [90m[1mreimport[22m | seeker-plain-south-walk-06.png[39m[0m
+[   6% ] [90m[1mreimport[22m | seeker-plain-south-walk-05.png[39m[0m
+[   7% ] [90m[1mreimport[22m | seeker-plain-south-walk-04.png[39m[0m
+[   7% ] [90m[1mreimport[22m | seeker-plain-south-walk-03.png[39m[0m
+[   7% ] [90m[1mreimport[22m | seeker-plain-south-walk-02.png[39m[0m
+[   7% ] [90m[1mreimport[22m | seeker-plain-south-walk-01.png[39m[0m
+[   8% ] [90m[1mreimport[22m | seeker-plain-south-inspect-02.png[39m[0m
+[   8% ] [90m[1mreimport[22m | seeker-plain-south-inspect-01.png[39m[0m
+[   8% ] [90m[1mreimport[22m | seeker-plain-south-idle-02.png[39m[0m
+[   8% ] [90m[1mreimport[22m | seeker-plain-south-idle-01.png[39m[0m
+[   9% ] [90m[1mreimport[22m | seeker-plain-north-walk-08.png[39m[0m
+[   9% ] [90m[1mreimport[22m | seeker-plain-north-walk-07.png[39m[0m
+[   9% ] [90m[1mreimport[22m | seeker-plain-north-walk-06.png[39m[0m
+[   9% ] [90m[1mreimport[22m | seeker-plain-north-walk-05.png[39m[0m
+[   9% ] [90m[1mreimport[22m | seeker-plain-north-walk-04.png[39m[0m
+[  10% ] [90m[1mreimport[22m | seeker-plain-north-walk-03.png[39m[0m
+[  10% ] [90m[1mreimport[22m | seeker-plain-north-walk-02.png[39m[0m
+[  10% ] [90m[1mreimport[22m | seeker-plain-north-walk-01.png[39m[0m
+[  10% ] [90m[1mreimport[22m | seeker-plain-north-inspect-02.png[39m[0m
+[  11% ] [90m[1mreimport[22m | seeker-plain-north-inspect-01.png[39m[0m
+[  11% ] [90m[1mreimport[22m | seeker-plain-north-idle-02.png[39m[0m
+[  11% ] [90m[1mreimport[22m | seeker-plain-north-idle-01.png[39m[0m
+[  11% ] [90m[1mreimport[22m | seeker-plain-east-walk-08.png[39m[0m
+[  12% ] [90m[1mreimport[22m | seeker-plain-east-walk-07.png[39m[0m
+[  12% ] [90m[1mreimport[22m | seeker-plain-east-walk-06.png[39m[0m
+[  12% ] [90m[1mreimport[22m | seeker-apron-east-inspect-01.png[39m[0m
+[  12% ] [90m[1mreimport[22m | seeker-apron-east-idle-02.png[39m[0m
+[  12% ] [90m[1mreimport[22m | seeker-apron-east-idle-01.png[39m[0m
+[  13% ] [90m[1mreimport[22m | rowan-west-walk-08.png[39m[0m
+[  13% ] [90m[1mreimport[22m | rowan-west-walk-07.png[39m[0m
+[  13% ] [90m[1mreimport[22m | rowan-west-walk-06.png[39m[0m
+[  13% ] [90m[1mreimport[22m | rowan-west-walk-05.png[39m[0m
+[  14% ] [90m[1mreimport[22m | rowan-west-walk-04.png[39m[0m
+[  14% ] [90m[1mreimport[22m | rowan-west-walk-03.png[39m[0m
+[  14% ] [90m[1mreimport[22m | rowan-west-walk-02.png[39m[0m
+[  14% ] [90m[1mreimport[22m | rowan-west-walk-01.png[39m[0m
+[  15% ] [90m[1mreimport[22m | rowan-west-inspect-02.png[39m[0m
+[  15% ] [90m[1mreimport[22m | rowan-west-inspect-01.png[39m[0m
+[  15% ] [90m[1mreimport[22m | rowan-west-idle-02.png[39m[0m
+[  15% ] [90m[1mreimport[22m | rowan-west-idle-01.png[39m[0m
+[  15% ] [90m[1mreimport[22m | rowan-south-walk-08.png[39m[0m
+[  16% ] [90m[1mreimport[22m | rowan-south-walk-07.png[39m[0m
+[  16% ] [90m[1mreimport[22m | rowan-south-walk-06.png[39m[0m
+[  16% ] [90m[1mreimport[22m | rowan-south-walk-05.png[39m[0m
+[  16% ] [90m[1mreimport[22m | rowan-south-walk-04.png[39m[0m
+[  17% ] [90m[1mreimport[22m | rowan-south-walk-03.png[39m[0m
+[  17% ] [90m[1mreimport[22m | rowan-south-walk-02.png[39m[0m
+[  17% ] [90m[1mreimport[22m | rowan-south-walk-01.png[39m[0m
+[  17% ] [90m[1mreimport[22m | rowan-south-inspect-02.png[39m[0m
+[  18% ] [90m[1mreimport[22m | rowan-south-inspect-01.png[39m[0m
+[  18% ] [90m[1mreimport[22m | rowan-south-idle-02.png[39m[0m
+[  18% ] [90m[1mreimport[22m | rowan-south-idle-01.png[39m[0m
+[  18% ] [90m[1mreimport[22m | seeker-apron-south-walk-02.png[39m[0m
+[  18% ] [90m[1mreimport[22m | seeker-apron-south-walk-01.png[39m[0m
+[  19% ] [90m[1mreimport[22m | seeker-apron-south-inspect-02.png[39m[0m
+[  19% ] [90m[1mreimport[22m | seeker-apron-south-inspect-01.png[39m[0m
+[  19% ] [90m[1mreimport[22m | seeker-apron-south-idle-02.png[39m[0m
+[  19% ] [90m[1mreimport[22m | seeker-apron-south-idle-01.png[39m[0m
+[  20% ] [90m[1mreimport[22m | seeker-apron-north-walk-08.png[39m[0m
+[  20% ] [90m[1mreimport[22m | seeker-apron-north-walk-07.png[39m[0m
+[  20% ] [90m[1mreimport[22m | seeker-apron-north-walk-06.png[39m[0m
+[  20% ] [90m[1mreimport[22m | seeker-apron-north-walk-05.png[39m[0m
+[  21% ] [90m[1mreimport[22m | seeker-apron-north-walk-04.png[39m[0m
+[  21% ] [90m[1mreimport[22m | seeker-apron-north-walk-03.png[39m[0m
+[  21% ] [90m[1mreimport[22m | seeker-apron-north-walk-02.png[39m[0m
+[  21% ] [90m[1mreimport[22m | seeker-apron-north-walk-01.png[39m[0m
+[  21% ] [90m[1mreimport[22m | seeker-apron-north-inspect-02.png[39m[0m
+[  22% ] [90m[1mreimport[22m | seeker-apron-north-inspect-01.png[39m[0m
+[  22% ] [90m[1mreimport[22m | seeker-apron-north-idle-02.png[39m[0m
+[  22% ] [90m[1mreimport[22m | seeker-apron-north-idle-01.png[39m[0m
+[  22% ] [90m[1mreimport[22m | seeker-apron-east-walk-08.png[39m[0m
+[  23% ] [90m[1mreimport[22m | seeker-apron-east-walk-07.png[39m[0m
+[  23% ] [90m[1mreimport[22m | seeker-apron-east-walk-06.png[39m[0m
+[  23% ] [90m[1mreimport[22m | seeker-apron-east-walk-05.png[39m[0m
+[  23% ] [90m[1mreimport[22m | seeker-apron-east-walk-04.png[39m[0m
+[  24% ] [90m[1mreimport[22m | seeker-apron-east-walk-03.png[39m[0m
+[  24% ] [90m[1mreimport[22m | seeker-apron-east-walk-02.png[39m[0m
+[  24% ] [90m[1mreimport[22m | seeker-apron-east-walk-01.png[39m[0m
+[  24% ] [90m[1mreimport[22m | seeker-apron-east-inspect-02.png[39m[0m
+[  24% ] [90m[1mreimport[22m | vale-north-walk-05.png[39m[0m
+[  25% ] [90m[1mreimport[22m | vale-north-walk-04.png[39m[0m
+[  25% ] [90m[1mreimport[22m | vale-north-walk-03.png[39m[0m
+[  25% ] [90m[1mreimport[22m | vale-north-walk-02.png[39m[0m
+[  25% ] [90m[1mreimport[22m | vale-north-walk-01.png[39m[0m
+[  26% ] [90m[1mreimport[22m | vale-north-inspect-02.png[39m[0m
+[  26% ] [90m[1mreimport[22m | vale-north-inspect-01.png[39m[0m
+[  26% ] [90m[1mreimport[22m | vale-north-idle-02.png[39m[0m
+[  26% ] [90m[1mreimport[22m | vale-north-idle-01.png[39m[0m
+[  27% ] [90m[1mreimport[22m | vale-east-walk-08.png[39m[0m
+[  27% ] [90m[1mreimport[22m | vale-east-walk-07.png[39m[0m
+[  27% ] [90m[1mreimport[22m | vale-east-walk-06.png[39m[0m
+[  27% ] [90m[1mreimport[22m | vale-east-walk-05.png[39m[0m
+[  27% ] [90m[1mreimport[22m | vale-east-walk-04.png[39m[0m
+[  28% ] [90m[1mreimport[22m | vale-east-walk-03.png[39m[0m
+[  28% ] [90m[1mreimport[22m | vale-east-walk-02.png[39m[0m
+[  28% ] [90m[1mreimport[22m | vale-east-walk-01.png[39m[0m
+[  28% ] [90m[1mreimport[22m | vale-east-inspect-02.png[39m[0m
+[  29% ] [90m[1mreimport[22m | vale-east-inspect-01.png[39m[0m
+[  29% ] [90m[1mreimport[22m | vale-east-idle-02.png[39m[0m
+[  29% ] [90m[1mreimport[22m | vale-east-idle-01.png[39m[0m
+[  29% ] [90m[1mreimport[22m | sera-west-walk-08.png[39m[0m
+[  30% ] [90m[1mreimport[22m | sera-west-walk-07.png[39m[0m
+[  30% ] [90m[1mreimport[22m | sera-west-walk-06.png[39m[0m
+[  30% ] [90m[1mreimport[22m | sera-west-walk-05.png[39m[0m
+[  30% ] [90m[1mreimport[22m | sera-west-walk-04.png[39m[0m
+[  30% ] [90m[1mreimport[22m | sera-west-walk-03.png[39m[0m
+[  31% ] [90m[1mreimport[22m | vale-west-walk-08.png[39m[0m
+[  31% ] [90m[1mreimport[22m | vale-west-walk-07.png[39m[0m
+[  31% ] [90m[1mreimport[22m | vale-west-walk-06.png[39m[0m
+[  31% ] [90m[1mreimport[22m | vale-west-walk-05.png[39m[0m
+[  32% ] [90m[1mreimport[22m | vale-west-walk-04.png[39m[0m
+[  32% ] [90m[1mreimport[22m | vale-west-walk-03.png[39m[0m
+[  32% ] [90m[1mreimport[22m | vale-west-walk-02.png[39m[0m
+[  32% ] [90m[1mreimport[22m | vale-west-walk-01.png[39m[0m
+[  33% ] [90m[1mreimport[22m | vale-west-inspect-02.png[39m[0m
+[  33% ] [90m[1mreimport[22m | vale-west-inspect-01.png[39m[0m
+[  33% ] [90m[1mreimport[22m | vale-west-idle-02.png[39m[0m
+[  33% ] [90m[1mreimport[22m | vale-west-idle-01.png[39m[0m
+[  33% ] [90m[1mreimport[22m | vale-south-walk-08.png[39m[0m
+[  34% ] [90m[1mreimport[22m | vale-south-walk-07.png[39m[0m
+[  34% ] [90m[1mreimport[22m | vale-south-walk-06.png[39m[0m
+[  34% ] [90m[1mreimport[22m | vale-south-walk-05.png[39m[0m
+[  34% ] [90m[1mreimport[22m | vale-south-walk-04.png[39m[0m
+[  35% ] [90m[1mreimport[22m | vale-south-walk-03.png[39m[0m
+[  35% ] [90m[1mreimport[22m | vale-south-walk-02.png[39m[0m
+[  35% ] [90m[1mreimport[22m | vale-south-walk-01.png[39m[0m
+[  35% ] [90m[1mreimport[22m | vale-south-inspect-02.png[39m[0m
+[  36% ] [90m[1mreimport[22m | vale-south-inspect-01.png[39m[0m
+[  36% ] [90m[1mreimport[22m | vale-south-idle-02.png[39m[0m
+[  36% ] [90m[1mreimport[22m | vale-south-idle-01.png[39m[0m
+[  36% ] [90m[1mreimport[22m | vale-north-walk-08.png[39m[0m
+[  36% ] [90m[1mreimport[22m | vale-north-walk-07.png[39m[0m
+[  37% ] [90m[1mreimport[22m | vale-north-walk-06.png[39m[0m
+[  37% ] [90m[1mreimport[22m | sera-north-inspect-01.png[39m[0m
+[  37% ] [90m[1mreimport[22m | sera-north-idle-02.png[39m[0m
+[  37% ] [90m[1mreimport[22m | sera-north-idle-01.png[39m[0m
+[  38% ] [90m[1mreimport[22m | sera-east-walk-08.png[39m[0m
+[  38% ] [90m[1mreimport[22m | sera-east-walk-07.png[39m[0m
+[  38% ] [90m[1mreimport[22m | sera-east-walk-06.png[39m[0m
+[  38% ] [90m[1mreimport[22m | sera-east-walk-05.png[39m[0m
+[  39% ] [90m[1mreimport[22m | sera-east-walk-04.png[39m[0m
+[  39% ] [90m[1mreimport[22m | sera-east-walk-03.png[39m[0m
+[  39% ] [90m[1mreimport[22m | sera-east-walk-02.png[39m[0m
+[  39% ] [90m[1mreimport[22m | sera-east-walk-01.png[39m[0m
+[  39% ] [90m[1mreimport[22m | sera-east-inspect-02.png[39m[0m
+[  40% ] [90m[1mreimport[22m | sera-east-inspect-01.png[39m[0m
+[  40% ] [90m[1mreimport[22m | sera-east-idle-02.png[39m[0m
+[  40% ] [90m[1mreimport[22m | sera-east-idle-01.png[39m[0m
+[  40% ] [90m[1mreimport[22m | seeker-plain-west-walk-08.png[39m[0m
+[  41% ] [90m[1mreimport[22m | seeker-plain-west-walk-07.png[39m[0m
+[  41% ] [90m[1mreimport[22m | seeker-plain-west-walk-06.png[39m[0m
+[  41% ] [90m[1mreimport[22m | seeker-plain-west-walk-05.png[39m[0m
+[  41% ] [90m[1mreimport[22m | seeker-plain-west-walk-04.png[39m[0m
+[  42% ] [90m[1mreimport[22m | seeker-plain-west-walk-03.png[39m[0m
+[  42% ] [90m[1mreimport[22m | seeker-plain-west-walk-02.png[39m[0m
+[  42% ] [90m[1mreimport[22m | seeker-plain-west-walk-01.png[39m[0m
+[  42% ] [90m[1mreimport[22m | seeker-plain-west-inspect-02.png[39m[0m
+[  42% ] [90m[1mreimport[22m | seeker-plain-west-inspect-01.png[39m[0m
+[  43% ] [90m[1mreimport[22m | seeker-plain-west-idle-02.png[39m[0m
+[  43% ] [90m[1mreimport[22m | seeker-plain-west-idle-01.png[39m[0m
+[  43% ] [90m[1mreimport[22m | sera-west-walk-02.png[39m[0m
+[  43% ] [90m[1mreimport[22m | sera-west-walk-01.png[39m[0m
+[  44% ] [90m[1mreimport[22m | sera-west-inspect-02.png[39m[0m
+[  44% ] [90m[1mreimport[22m | sera-west-inspect-01.png[39m[0m
+[  44% ] [90m[1mreimport[22m | sera-west-idle-02.png[39m[0m
+[  44% ] [90m[1mreimport[22m | sera-west-idle-01.png[39m[0m
+[  45% ] [90m[1mreimport[22m | sera-south-walk-08.png[39m[0m
+[  45% ] [90m[1mreimport[22m | sera-south-walk-07.png[39m[0m
+[  45% ] [90m[1mreimport[22m | sera-south-walk-06.png[39m[0m
+[  45% ] [90m[1mreimport[22m | sera-south-walk-05.png[39m[0m
+[  45% ] [90m[1mreimport[22m | sera-south-walk-04.png[39m[0m
+[  46% ] [90m[1mreimport[22m | sera-south-walk-03.png[39m[0m
+[  46% ] [90m[1mreimport[22m | sera-south-walk-02.png[39m[0m
+[  46% ] [90m[1mreimport[22m | sera-south-walk-01.png[39m[0m
+[  46% ] [90m[1mreimport[22m | sera-south-inspect-02.png[39m[0m
+[  47% ] [90m[1mreimport[22m | sera-south-inspect-01.png[39m[0m
+[  47% ] [90m[1mreimport[22m | sera-south-idle-02.png[39m[0m
+[  47% ] [90m[1mreimport[22m | sera-south-idle-01.png[39m[0m
+[  47% ] [90m[1mreimport[22m | sera-north-walk-08.png[39m[0m
+[  48% ] [90m[1mreimport[22m | sera-north-walk-07.png[39m[0m
+[  48% ] [90m[1mreimport[22m | sera-north-walk-06.png[39m[0m
+[  48% ] [90m[1mreimport[22m | sera-north-walk-05.png[39m[0m
+[  48% ] [90m[1mreimport[22m | sera-north-walk-04.png[39m[0m
+[  48% ] [90m[1mreimport[22m | sera-north-walk-03.png[39m[0m
+[  49% ] [90m[1mreimport[22m | sera-north-walk-02.png[39m[0m
+[  49% ] [90m[1mreimport[22m | sera-north-walk-01.png[39m[0m
+[  49% ] [90m[1mreimport[22m | sera-north-inspect-02.png[39m[0m
+[  49% ] [90m[1mreimport[22m | healer-south-walk-05.png[39m[0m
+[  50% ] [90m[1mreimport[22m | healer-south-walk-04.png[39m[0m
+[  50% ] [90m[1mreimport[22m | healer-south-walk-03.png[39m[0m
+[  50% ] [90m[1mreimport[22m | healer-south-walk-02.png[39m[0m
+[  50% ] [90m[1mreimport[22m | healer-south-walk-01.png[39m[0m
+[  51% ] [90m[1mreimport[22m | healer-south-inspect-02.png[39m[0m
+[  51% ] [90m[1mreimport[22m | healer-south-inspect-01.png[39m[0m
+[  51% ] [90m[1mreimport[22m | healer-south-idle-02.png[39m[0m
+[  51% ] [90m[1mreimport[22m | healer-south-idle-01.png[39m[0m
+[  51% ] [90m[1mreimport[22m | healer-north-walk-08.png[39m[0m
+[  52% ] [90m[1mreimport[22m | healer-north-walk-07.png[39m[0m
+[  52% ] [90m[1mreimport[22m | healer-north-walk-06.png[39m[0m
+[  52% ] [90m[1mreimport[22m | healer-north-walk-05.png[39m[0m
+[  52% ] [90m[1mreimport[22m | healer-north-walk-04.png[39m[0m
+[  53% ] [90m[1mreimport[22m | healer-north-walk-03.png[39m[0m
+[  53% ] [90m[1mreimport[22m | healer-north-walk-02.png[39m[0m
+[  53% ] [90m[1mreimport[22m | healer-north-walk-01.png[39m[0m
+[  53% ] [90m[1mreimport[22m | healer-north-inspect-02.png[39m[0m
+[  54% ] [90m[1mreimport[22m | healer-north-inspect-01.png[39m[0m
+[  54% ] [90m[1mreimport[22m | healer-north-idle-02.png[39m[0m
+[  54% ] [90m[1mreimport[22m | healer-north-idle-01.png[39m[0m
+[  54% ] [90m[1mreimport[22m | healer-east-walk-08.png[39m[0m
+[  54% ] [90m[1mreimport[22m | healer-east-walk-07.png[39m[0m
+[  55% ] [90m[1mreimport[22m | healer-east-walk-06.png[39m[0m
+[  55% ] [90m[1mreimport[22m | healer-east-walk-05.png[39m[0m
+[  55% ] [90m[1mreimport[22m | healer-east-walk-04.png[39m[0m
+[  55% ] [90m[1mreimport[22m | healer-east-walk-03.png[39m[0m
+[  56% ] [90m[1mreimport[22m | mira-east-walk-08.png[39m[0m
+[  56% ] [90m[1mreimport[22m | mira-east-walk-07.png[39m[0m
+[  56% ] [90m[1mreimport[22m | mira-east-walk-06.png[39m[0m
+[  56% ] [90m[1mreimport[22m | mira-east-walk-05.png[39m[0m
+[  57% ] [90m[1mreimport[22m | mira-east-walk-04.png[39m[0m
+[  57% ] [90m[1mreimport[22m | mira-east-walk-03.png[39m[0m
+[  57% ] [90m[1mreimport[22m | mira-east-walk-02.png[39m[0m
+[  57% ] [90m[1mreimport[22m | mira-east-walk-01.png[39m[0m
+[  57% ] [90m[1mreimport[22m | mira-east-inspect-02.png[39m[0m
+[  58% ] [90m[1mreimport[22m | mira-east-inspect-01.png[39m[0m
+[  58% ] [90m[1mreimport[22m | mira-east-idle-02.png[39m[0m
+[  58% ] [90m[1mreimport[22m | mira-east-idle-01.png[39m[0m
+[  58% ] [90m[1mreimport[22m | healer-west-walk-08.png[39m[0m
+[  59% ] [90m[1mreimport[22m | healer-west-walk-07.png[39m[0m
+[  59% ] [90m[1mreimport[22m | healer-west-walk-06.png[39m[0m
+[  59% ] [90m[1mreimport[22m | healer-west-walk-05.png[39m[0m
+[  59% ] [90m[1mreimport[22m | healer-west-walk-04.png[39m[0m
+[  60% ] [90m[1mreimport[22m | healer-west-walk-03.png[39m[0m
+[  60% ] [90m[1mreimport[22m | healer-west-walk-02.png[39m[0m
+[  60% ] [90m[1mreimport[22m | healer-west-walk-01.png[39m[0m
+[  60% ] [90m[1mreimport[22m | healer-west-inspect-02.png[39m[0m
+[  60% ] [90m[1mreimport[22m | healer-west-inspect-01.png[39m[0m
+[  61% ] [90m[1mreimport[22m | healer-west-idle-02.png[39m[0m
+[  61% ] [90m[1mreimport[22m | healer-west-idle-01.png[39m[0m
+[  61% ] [90m[1mreimport[22m | healer-south-walk-08.png[39m[0m
+[  61% ] [90m[1mreimport[22m | healer-south-walk-07.png[39m[0m
+[  62% ] [90m[1mreimport[22m | healer-south-walk-06.png[39m[0m
+[  62% ] [90m[1mreimport[22m | elian-south-inspect-01.png[39m[0m
+[  62% ] [90m[1mreimport[22m | elian-south-idle-02.png[39m[0m
+[  62% ] [90m[1mreimport[22m | elian-south-idle-01.png[39m[0m
+[  63% ] [90m[1mreimport[22m | elian-north-walk-08.png[39m[0m
+[  63% ] [90m[1mreimport[22m | elian-north-walk-07.png[39m[0m
+[  63% ] [90m[1mreimport[22m | elian-north-walk-06.png[39m[0m
+[  63% ] [90m[1mreimport[22m | elian-north-walk-05.png[39m[0m
+[  63% ] [90m[1mreimport[22m | elian-north-walk-04.png[39m[0m
+[  64% ] [90m[1mreimport[22m | elian-north-walk-03.png[39m[0m
+[  64% ] [90m[1mreimport[22m | elian-north-walk-02.png[39m[0m
+[  64% ] [90m[1mreimport[22m | elian-north-walk-01.png[39m[0m
+[  64% ] [90m[1mreimport[22m | elian-north-inspect-02.png[39m[0m
+[  65% ] [90m[1mreimport[22m | elian-north-inspect-01.png[39m[0m
+[  65% ] [90m[1mreimport[22m | elian-north-idle-02.png[39m[0m
+[  65% ] [90m[1mreimport[22m | elian-north-idle-01.png[39m[0m
+[  65% ] [90m[1mreimport[22m | elian-east-walk-08.png[39m[0m
+[  66% ] [90m[1mreimport[22m | elian-east-walk-07.png[39m[0m
+[  66% ] [90m[1mreimport[22m | elian-east-walk-06.png[39m[0m
+[  66% ] [90m[1mreimport[22m | elian-east-walk-05.png[39m[0m
+[  66% ] [90m[1mreimport[22m | elian-east-walk-04.png[39m[0m
+[  66% ] [90m[1mreimport[22m | elian-east-walk-03.png[39m[0m
+[  67% ] [90m[1mreimport[22m | elian-east-walk-02.png[39m[0m
+[  67% ] [90m[1mreimport[22m | elian-east-walk-01.png[39m[0m
+[  67% ] [90m[1mreimport[22m | elian-east-inspect-02.png[39m[0m
+[  67% ] [90m[1mreimport[22m | elian-east-inspect-01.png[39m[0m
+[  68% ] [90m[1mreimport[22m | elian-east-idle-02.png[39m[0m
+[  68% ] [90m[1mreimport[22m | elian-east-idle-01.png[39m[0m
+[  68% ] [90m[1mreimport[22m | healer-east-walk-02.png[39m[0m
+[  68% ] [90m[1mreimport[22m | healer-east-walk-01.png[39m[0m
+[  69% ] [90m[1mreimport[22m | healer-east-inspect-02.png[39m[0m
+[  69% ] [90m[1mreimport[22m | healer-east-inspect-01.png[39m[0m
+[  69% ] [90m[1mreimport[22m | healer-east-idle-02.png[39m[0m
+[  69% ] [90m[1mreimport[22m | healer-east-idle-01.png[39m[0m
+[  69% ] [90m[1mreimport[22m | elian-west-walk-08.png[39m[0m
+[  70% ] [90m[1mreimport[22m | elian-west-walk-07.png[39m[0m
+[  70% ] [90m[1mreimport[22m | elian-west-walk-06.png[39m[0m
+[  70% ] [90m[1mreimport[22m | elian-west-walk-05.png[39m[0m
+[  70% ] [90m[1mreimport[22m | elian-west-walk-04.png[39m[0m
+[  71% ] [90m[1mreimport[22m | elian-west-walk-03.png[39m[0m
+[  71% ] [90m[1mreimport[22m | elian-west-walk-02.png[39m[0m
+[  71% ] [90m[1mreimport[22m | elian-west-walk-01.png[39m[0m
+[  71% ] [90m[1mreimport[22m | elian-west-inspect-02.png[39m[0m
+[  72% ] [90m[1mreimport[22m | elian-west-inspect-01.png[39m[0m
+[  72% ] [90m[1mreimport[22m | elian-west-idle-02.png[39m[0m
+[  72% ] [90m[1mreimport[22m | elian-west-idle-01.png[39m[0m
+[  72% ] [90m[1mreimport[22m | elian-south-walk-08.png[39m[0m
+[  72% ] [90m[1mreimport[22m | elian-south-walk-07.png[39m[0m
+[  73% ] [90m[1mreimport[22m | elian-south-walk-06.png[39m[0m
+[  73% ] [90m[1mreimport[22m | elian-south-walk-05.png[39m[0m
+[  73% ] [90m[1mreimport[22m | elian-south-walk-04.png[39m[0m
+[  73% ] [90m[1mreimport[22m | elian-south-walk-03.png[39m[0m
+[  74% ] [90m[1mreimport[22m | elian-south-walk-02.png[39m[0m
+[  74% ] [90m[1mreimport[22m | elian-south-walk-01.png[39m[0m
+[  74% ] [90m[1mreimport[22m | elian-south-inspect-02.png[39m[0m
+[  74% ] [90m[1mreimport[22m | orin-west-walk-05.png[39m[0m
+[  75% ] [90m[1mreimport[22m | orin-west-walk-04.png[39m[0m
+[  75% ] [90m[1mreimport[22m | orin-west-walk-03.png[39m[0m
+[  75% ] [90m[1mreimport[22m | orin-west-walk-02.png[39m[0m
+[  75% ] [90m[1mreimport[22m | orin-west-walk-01.png[39m[0m
+[  75% ] [90m[1mreimport[22m | orin-west-inspect-02.png[39m[0m
+[  76% ] [90m[1mreimport[22m | orin-west-inspect-01.png[39m[0m
+[  76% ] [90m[1mreimport[22m | orin-west-idle-02.png[39m[0m
+[  76% ] [90m[1mreimport[22m | orin-west-idle-01.png[39m[0m
+[  76% ] [90m[1mreimport[22m | orin-south-walk-08.png[39m[0m
+[  77% ] [90m[1mreimport[22m | orin-south-walk-07.png[39m[0m
+[  77% ] [90m[1mreimport[22m | orin-south-walk-06.png[39m[0m
+[  77% ] [90m[1mreimport[22m | orin-south-walk-05.png[39m[0m
+[  77% ] [90m[1mreimport[22m | orin-south-walk-04.png[39m[0m
+[  78% ] [90m[1mreimport[22m | orin-south-walk-03.png[39m[0m
+[  78% ] [90m[1mreimport[22m | orin-south-walk-02.png[39m[0m
+[  78% ] [90m[1mreimport[22m | orin-south-walk-01.png[39m[0m
+[  78% ] [90m[1mreimport[22m | orin-south-inspect-02.png[39m[0m
+[  78% ] [90m[1mreimport[22m | orin-south-inspect-01.png[39m[0m
+[  79% ] [90m[1mreimport[22m | orin-south-idle-02.png[39m[0m
+[  79% ] [90m[1mreimport[22m | orin-south-idle-01.png[39m[0m
+[  79% ] [90m[1mreimport[22m | orin-north-walk-08.png[39m[0m
+[  79% ] [90m[1mreimport[22m | orin-north-walk-07.png[39m[0m
+[  80% ] [90m[1mreimport[22m | orin-north-walk-06.png[39m[0m
+[  80% ] [90m[1mreimport[22m | orin-north-walk-05.png[39m[0m
+[  80% ] [90m[1mreimport[22m | orin-north-walk-04.png[39m[0m
+[  80% ] [90m[1mreimport[22m | orin-north-walk-03.png[39m[0m
+[  81% ] [90m[1mreimport[22m | rowan-north-walk-08.png[39m[0m
+[  81% ] [90m[1mreimport[22m | rowan-north-walk-07.png[39m[0m
+[  81% ] [90m[1mreimport[22m | rowan-north-walk-06.png[39m[0m
+[  81% ] [90m[1mreimport[22m | rowan-north-walk-05.png[39m[0m
+[  81% ] [90m[1mreimport[22m | rowan-north-walk-04.png[39m[0m
+[  82% ] [90m[1mreimport[22m | rowan-north-walk-03.png[39m[0m
+[  82% ] [90m[1mreimport[22m | rowan-north-walk-02.png[39m[0m
+[  82% ] [90m[1mreimport[22m | rowan-north-walk-01.png[39m[0m
+[  82% ] [90m[1mreimport[22m | rowan-north-inspect-02.png[39m[0m
+[  83% ] [90m[1mreimport[22m | rowan-north-inspect-01.png[39m[0m
+[  83% ] [90m[1mreimport[22m | rowan-north-idle-02.png[39m[0m
+[  83% ] [90m[1mreimport[22m | rowan-north-idle-01.png[39m[0m
+[  83% ] [90m[1mreimport[22m | rowan-east-walk-08.png[39m[0m
+[  84% ] [90m[1mreimport[22m | rowan-east-walk-07.png[39m[0m
+[  84% ] [90m[1mreimport[22m | rowan-east-walk-06.png[39m[0m
+[  84% ] [90m[1mreimport[22m | rowan-east-walk-05.png[39m[0m
+[  84% ] [90m[1mreimport[22m | rowan-east-walk-04.png[39m[0m
+[  84% ] [90m[1mreimport[22m | rowan-east-walk-03.png[39m[0m
+[  85% ] [90m[1mreimport[22m | rowan-east-walk-02.png[39m[0m
+[  85% ] [90m[1mreimport[22m | rowan-east-walk-01.png[39m[0m
+[  85% ] [90m[1mreimport[22m | rowan-east-inspect-02.png[39m[0m
+[  85% ] [90m[1mreimport[22m | rowan-east-inspect-01.png[39m[0m
+[  86% ] [90m[1mreimport[22m | rowan-east-idle-02.png[39m[0m
+[  86% ] [90m[1mreimport[22m | rowan-east-idle-01.png[39m[0m
+[  86% ] [90m[1mreimport[22m | orin-west-walk-08.png[39m[0m
+[  86% ] [90m[1mreimport[22m | orin-west-walk-07.png[39m[0m
+[  87% ] [90m[1mreimport[22m | orin-west-walk-06.png[39m[0m
+[  87% ] [90m[1mreimport[22m | mira-west-inspect-01.png[39m[0m
+[  87% ] [90m[1mreimport[22m | mira-west-idle-02.png[39m[0m
+[  87% ] [90m[1mreimport[22m | mira-west-idle-01.png[39m[0m
+[  87% ] [90m[1mreimport[22m | mira-south-walk-08.png[39m[0m
+[  88% ] [90m[1mreimport[22m | mira-south-walk-07.png[39m[0m
+[  88% ] [90m[1mreimport[22m | mira-south-walk-06.png[39m[0m
+[  88% ] [90m[1mreimport[22m | mira-south-walk-05.png[39m[0m
+[  88% ] [90m[1mreimport[22m | mira-south-walk-04.png[39m[0m
+[  89% ] [90m[1mreimport[22m | mira-south-walk-03.png[39m[0m
+[  89% ] [90m[1mreimport[22m | mira-south-walk-02.png[39m[0m
+[  89% ] [90m[1mreimport[22m | mira-south-walk-01.png[39m[0m
+[  89% ] [90m[1mreimport[22m | mira-south-inspect-02.png[39m[0m
+[  90% ] [90m[1mreimport[22m | mira-south-inspect-01.png[39m[0m
+[  90% ] [90m[1mreimport[22m | mira-south-idle-02.png[39m[0m
+[  90% ] [90m[1mreimport[22m | mira-south-idle-01.png[39m[0m
+[  90% ] [90m[1mreimport[22m | mira-north-walk-08.png[39m[0m
+[  90% ] [90m[1mreimport[22m | mira-north-walk-07.png[39m[0m
+[  91% ] [90m[1mreimport[22m | mira-north-walk-06.png[39m[0m
+[  91% ] [90m[1mreimport[22m | mira-north-walk-05.png[39m[0m
+[  91% ] [90m[1mreimport[22m | mira-north-walk-04.png[39m[0m
+[  91% ] [90m[1mreimport[22m | mira-north-walk-03.png[39m[0m
+[  92% ] [90m[1mreimport[22m | mira-north-walk-02.png[39m[0m
+[  92% ] [90m[1mreimport[22m | mira-north-walk-01.png[39m[0m
+[  92% ] [90m[1mreimport[22m | mira-north-inspect-02.png[39m[0m
+[  92% ] [90m[1mreimport[22m | mira-north-inspect-01.png[39m[0m
+[  93% ] [90m[1mreimport[22m | mira-north-idle-02.png[39m[0m
+[  93% ] [90m[1mreimport[22m | mira-north-idle-01.png[39m[0m
+[  93% ] [90m[1mreimport[22m | orin-north-walk-02.png[39m[0m
+[  93% ] [90m[1mreimport[22m | orin-north-walk-01.png[39m[0m
+[  93% ] [90m[1mreimport[22m | orin-north-inspect-02.png[39m[0m
+[  94% ] [90m[1mreimport[22m | orin-north-inspect-01.png[39m[0m
+[  94% ] [90m[1mreimport[22m | orin-north-idle-02.png[39m[0m
+[  94% ] [90m[1mreimport[22m | orin-north-idle-01.png[39m[0m
+[  94% ] [90m[1mreimport[22m | orin-east-walk-08.png[39m[0m
+[  95% ] [90m[1mreimport[22m | orin-east-walk-07.png[39m[0m
+[  95% ] [90m[1mreimport[22m | orin-east-walk-06.png[39m[0m
+[  95% ] [90m[1mreimport[22m | orin-east-walk-05.png[39m[0m
+[  95% ] [90m[1mreimport[22m | orin-east-walk-04.png[39m[0m
+[  96% ] [90m[1mreimport[22m | orin-east-walk-03.png[39m[0m
+[  96% ] [90m[1mreimport[22m | orin-east-walk-02.png[39m[0m
+[  96% ] [90m[1mreimport[22m | orin-east-walk-01.png[39m[0m
+[  96% ] [90m[1mreimport[22m | orin-east-inspect-02.png[39m[0m
+[  96% ] [90m[1mreimport[22m | orin-east-inspect-01.png[39m[0m
+[  97% ] [90m[1mreimport[22m | orin-east-idle-02.png[39m[0m
+[  97% ] [90m[1mreimport[22m | orin-east-idle-01.png[39m[0m
+[  97% ] [90m[1mreimport[22m | mira-west-walk-08.png[39m[0m
+[  97% ] [90m[1mreimport[22m | mira-west-walk-07.png[39m[0m
+[  98% ] [90m[1mreimport[22m | mira-west-walk-06.png[39m[0m
+[  98% ] [90m[1mreimport[22m | mira-west-walk-05.png[39m[0m
+[  98% ] [90m[1mreimport[22m | mira-west-walk-04.png[39m[0m
+[  98% ] [90m[1mreimport[22m | mira-west-walk-03.png[39m[0m
+[  99% ] [90m[1mreimport[22m | mira-west-walk-02.png[39m[0m
+[  99% ] [90m[1mreimport[22m | mira-west-walk-01.png[39m[0m
+[  99% ] [90m[1mreimport[22m | mira-west-inspect-02.png[39m[0m
+[  99% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (432 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

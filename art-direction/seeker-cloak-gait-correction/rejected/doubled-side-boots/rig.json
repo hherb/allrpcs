@@ -1,0 +1,2511 @@
+{
+  "date": "2026-10-06",
+  "status": "new gait candidate; owner selection not inferred",
+  "directions": [
+    "south",
+    "west",
+    "east",
+    "north"
+  ],
+  "frames_per_direction": 8,
+  "cycle_ms": 720,
+  "source_policy": "Original native 2x editable paint; rigid boot cutouts and local textured hip/knee/ankle connectors",
+  "original_walk_defect": "Six inherited poses retain one leading leg; counts/import parity cannot prove alternating gait",
+  "anatomical_ownership": "A always left, B always right; no identity swaps at passing; fixed side occlusion",
+  "limitations": [
+    "Simple cutout gait; near/far side boot reuses visible paint with restrained value difference",
+    "Rigid upper body, accessories and neutral arms; no Main installation or footstep/physical semantics"
+  ],
+  "assets": [
+    {
+      "id": "seeker-cloak-south-walk-01",
+      "direction": "south",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-01.png",
+      "sha256": "eeba8bd632416562a4a98a0f16f1dccb085ed37aa14548b60bd762824fe8098e",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-01.ora",
+      "master_sha256": "e40acbcdce04b3bceebed637a97a01b85d522aedc8971bdd3563acae71c5a87d",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-01.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-02",
+      "direction": "south",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-02.png",
+      "sha256": "249f4da9eec189cbe51f94b7487fc1ef4b8c190ba926aa06e9e2c7697f9d02f4",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-02.ora",
+      "master_sha256": "647af2a2da90c671941e157e959a324cba232b75b6bd3c18d89a5975c9af2f0c",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-02.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-03",
+      "direction": "south",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-03.png",
+      "sha256": "940e456aab10e6761f2b1349886132d5cd3dedfc9acd1ef1875c5f1714c4f398",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-03.ora",
+      "master_sha256": "112e88e5255f6832e7f514ebcf26388c4cfd704a2fedbef783babb31ffeb2e0c",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-03.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-04",
+      "direction": "south",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-04.png",
+      "sha256": "9a1b9718721c37963b20e731c257082292abccc48b0d023dbef7986bfa230fb4",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-04.ora",
+      "master_sha256": "d00cd05819328809b916d9ec7ba010ca0c533666b40d1635842de700046c5445",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-04.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-05",
+      "direction": "south",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-05.png",
+      "sha256": "c32354aa0a56c131e740b214403feaccd12b64a2222f1b39fa0e91b0a740f11b",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-05.ora",
+      "master_sha256": "eb44130e487b98cb73f81beb7c7b98d8d4bdbc6562e19656c6576b4743195f2a",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-05.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-06",
+      "direction": "south",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-06.png",
+      "sha256": "d5a7e7a40ed9faf9b598410189705f9f6bfc1ec3e594ea806e89d71d5186ad63",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-06.ora",
+      "master_sha256": "00e3362f0a7f9ae25e20b4a8c8618e4754a72c73b0b98fe1ba85f79b22f8ad47",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-06.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-07",
+      "direction": "south",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-07.png",
+      "sha256": "e36d0cd2addeb098930c2d7ea2378fd825234ed1d4d9c7da3612b898160bae47",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-07.ora",
+      "master_sha256": "51dec275b3c54c106268a628e668d4fe0a27e8278d1c2dd7a7db8fa799ff0e56",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-07.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-south-walk-08",
+      "direction": "south",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-south-walk-08.png",
+      "sha256": "64248c0f2cae5651c57fedb95bce20b1d0f03ec60b5999cfd5afd056357be921",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-south-walk-08.ora",
+      "master_sha256": "81ad40daf39a80e4d85e4656a74cc1263344a8a8a1f9f8fcd70fed12d0daaffd",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-south-walk-08.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-01",
+      "direction": "west",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-01.png",
+      "sha256": "74d4d31fb325a88adcbb8939d8eac5df988f9c214d74e785a3c98222ab6fb4c9",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-01.ora",
+      "master_sha256": "07ac37bfe55aceb0c233b174d0895410da2fba647a9223fd956d8b40df115a70",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-01.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-02",
+      "direction": "west",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-02.png",
+      "sha256": "9a43b86ceab4238cf1f3b845eea020a59773801bfc488020a2f67927e1282a33",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-02.ora",
+      "master_sha256": "9611bbbc6a931ca8c0885aba9d2fd26334d2ff741b1c4b1211ef7f8a803559f8",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-02.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-03",
+      "direction": "west",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-03.png",
+      "sha256": "921f398e920c781bf11bad9cc2e8ea097f49476745566775f9e8a2c9481ccca6",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-03.ora",
+      "master_sha256": "e9928275cafa42e2ca51e18dddd1130a00f4cff5880840628bd9bc3a7a71e85e",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-03.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-04",
+      "direction": "west",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-04.png",
+      "sha256": "898b6eb73bb516ce3bcc93420a952ebd71a89f1fc9fca5275d837b2fe59aacbb",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-04.ora",
+      "master_sha256": "20a96e708c94f2b732d11313011f3166c6403494e9c04b99ea44ebed72342c67",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-04.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-05",
+      "direction": "west",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-05.png",
+      "sha256": "478b6feaa2302a13a38f701259cf9571d37108c9762d1d93d59d47633beb265a",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-05.ora",
+      "master_sha256": "80c7b1c03b616ec5dbf7b2081d2d027567415c4c8372ecb820e9426579a422d4",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-05.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-06",
+      "direction": "west",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-06.png",
+      "sha256": "994b2eaeed6554ecc03ecd8cf769c2baa8467ef3dcf38799f312b9cac9af19b6",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-06.ora",
+      "master_sha256": "e562e0589b32f5c32cd6f4369df7b76d102c82774de2b895804141626977cd38",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-06.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-07",
+      "direction": "west",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-07.png",
+      "sha256": "2c33ad908b20c898255940f3314ea74ccdcc6ce47c8f402af532f07adb06ba38",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-07.ora",
+      "master_sha256": "b74b5a4a1aff913808a1195cd830908085dd4a2c52b11ff6fe9c96ced937ed3d",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-07.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-west-walk-08",
+      "direction": "west",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-west-walk-08.png",
+      "sha256": "15245edecfc71c241daad7390dd6bad033ce0077bc2f34d3de7fd060af7935c6",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-west-walk-08.ora",
+      "master_sha256": "cf2d72ee57001613b008d01cb49fbd8dd9b2cc03b6a3dbc1fe36ad7160703525",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-west-walk-08.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-01",
+      "direction": "east",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-01.png",
+      "sha256": "a8e7462bf5bef36fd2abe974303c728add69fa3c6e4f99fb7b17bb2fb96ad6ab",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-01.ora",
+      "master_sha256": "583c0e0c3dd5e7348d89ba7baffdd771a3ddb128cf36da97d1469bb404c1cd54",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-01.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-02",
+      "direction": "east",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-02.png",
+      "sha256": "45df1241f36f701177925dbd82f1cb4c67b25d8d2ba0a28dfe6b58c4d4aa79d9",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-02.ora",
+      "master_sha256": "05bf3fff90d08f1553ba5270e29692b13e92b4f2dc0e2094e50c52712b3322ee",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-02.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-03",
+      "direction": "east",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-03.png",
+      "sha256": "78e6a4acb4820a553f631facd2b979c806fcf7870a3b911b047ab02853b4db46",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-03.ora",
+      "master_sha256": "1cdb5baa7d8e54d557404e50430b8f52c3f1704de62a8dd55e8689492434efb8",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-03.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-04",
+      "direction": "east",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-04.png",
+      "sha256": "d5875a22b98ba80861124a592273fa2fcf710879f18864f374b7e73c6c09afab",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-04.ora",
+      "master_sha256": "56a947d9f0f9be0c73080022d35921434fceda116ab62ab0b5a6179a2a6d8a12",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-04.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-05",
+      "direction": "east",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-05.png",
+      "sha256": "bb68d089297d3dad18b5debebf6bdf770397231153c832a991bf88364f32e61f",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-05.ora",
+      "master_sha256": "158ab4706aaa7d3921a5c339083587e8c7382de5b8200f1066a3f46b3b73132b",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-05.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-06",
+      "direction": "east",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-06.png",
+      "sha256": "9e526ec0201859fb24883edee805ba053c65811fd38be5c1ed59051c7edec673",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-06.ora",
+      "master_sha256": "89e384dfc539d3fefa4f7c1d3af023d13f455a1ab818eae68eb2fabf81da1465",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-06.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-07",
+      "direction": "east",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-07.png",
+      "sha256": "c91527fb8771988ba9edf226d521de495eb7f9a2b0303a471b2dfaaa2841a906",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-07.ora",
+      "master_sha256": "47a1acf4a3b287b082e356f0c8c020824a99fef61d941b6151826baffe27f191",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-07.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-east-walk-08",
+      "direction": "east",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-east-walk-08.png",
+      "sha256": "18ec2aaf08d441142dabcea117fc20d941af21080dc4ee92df001821281ee27b",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-east-walk-08.ora",
+      "master_sha256": "f68a21190bc3e636f7ad78079a394cae4ec3a8221a1f3bf20b1083e8faf95e20",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-east-walk-08.png",
+      "size": [
+        144,
+        168
+      ],
+      "pivot": [
+        72,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-01",
+      "direction": "north",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-01.png",
+      "sha256": "8d2b3dafba9acc4d3a38c3f33820458dc6db8b2a873d180e9944292e17271121",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-01.ora",
+      "master_sha256": "602f8989673c7751ae2dc364b83f530a9cb17dc7e3c7b8b3348c694438fef181",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-01.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-02",
+      "direction": "north",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-02.png",
+      "sha256": "53a2346efb5eb02e3bc119e5e93425cde90ac2483c2178797fc71cce96ddeacc",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-02.ora",
+      "master_sha256": "e86ad309389a1823c42ba9d8f5b7474504730206ea61f10d3aa26334783cd7cd",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-02.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-03",
+      "direction": "north",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-03.png",
+      "sha256": "9582269beecdded82f23e072ea1b8fbfa948bd628c23a996f2228e09f7edbf4d",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-03.ora",
+      "master_sha256": "20313dd8948b9356c4ffdae6de5cf35dafa37df645ae4b68e26f3cfbee3eacac",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-03.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-04",
+      "direction": "north",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-04.png",
+      "sha256": "6ffaef1d3c4b448f616b74f2f0aea87079ecd31c58feac0347e5c6dd176bd589",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-04.ora",
+      "master_sha256": "ac6268a91a0349e85c700ce87544a4e5297072c0f60852117affc8dc15453608",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-04.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-05",
+      "direction": "north",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-05.png",
+      "sha256": "a8e58452c0f6d458aae12b4861e367f6ba7d6f2ead6c4ea392e87057030e4d42",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-05.ora",
+      "master_sha256": "3da782ccbf6a208e3a97616884f16bc9f17ea4d0dd70a66443d4f38fa9830e6a",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-05.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-06",
+      "direction": "north",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-06.png",
+      "sha256": "b3ee7de48bf85edfd9ac08035a5f1a313318d144f5371fd59b2316f662afb5a1",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-06.ora",
+      "master_sha256": "d23259c0fceb1c881e9bcc11618ab9119bc4461989a2c07764447fed41a268fb",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-06.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-07",
+      "direction": "north",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-07.png",
+      "sha256": "4e78793348a721acd49bc95527d583fb2d010683c3b4cbf35623b82bf59980ea",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-07.ora",
+      "master_sha256": "942e4a2c09042ed154991d73ae934b5b282170495c974ba8c271966592f14731",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-07.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    },
+    {
+      "id": "seeker-cloak-north-walk-08",
+      "direction": "north",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "export": "art-direction/seeker-cloak-gait-correction/exports/seeker-cloak-north-walk-08.png",
+      "sha256": "b25c6a032e44c16f4a40a979057cb08694936de8193d9a5b9792f078409643dd",
+      "master": "art-direction/seeker-cloak-gait-correction/masters/seeker-cloak-north-walk-08.ora",
+      "master_sha256": "3aebcc17aef39c2b50334a65529a3616d290196f0bd26f1ee32631c8b0d0f89e",
+      "texture": "game/art/seeker-cloak-gait-correction/frames/seeker-cloak-north-walk-08.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ]
+    }
+  ],
+  "rigs": [
+    {
+      "direction": "south",
+      "source_layer": "south idle breathe 01",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0,
+          "body_bob_2x": 0,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                116,
+                268,
+                148,
+                320
+              ],
+              "shaft_2x": [
+                129.5,
+                276
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                68,
+                252,
+                100,
+                304
+              ],
+              "shaft_2x": [
+                86.5,
+                260
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 45,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                116,
+                266,
+                148,
+                318
+              ],
+              "shaft_2x": [
+                129.5,
+                274
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                68,
+                249,
+                100,
+                301
+              ],
+              "shaft_2x": [
+                86.5,
+                257
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 90,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0.0,
+              "stance": true,
+              "boot_box_2x": [
+                116,
+                260,
+                148,
+                312
+              ],
+              "shaft_2x": [
+                129.5,
+                268
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": -0.0,
+              "stance": false,
+              "boot_box_2x": [
+                68,
+                252,
+                100,
+                304
+              ],
+              "shaft_2x": [
+                86.5,
+                260
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 135,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                116,
+                254,
+                148,
+                306
+              ],
+              "shaft_2x": [
+                129.5,
+                262
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                68,
+                260,
+                100,
+                312
+              ],
+              "shaft_2x": [
+                86.5,
+                268
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 180,
+          "body_bob_2x": 0,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                116,
+                252,
+                148,
+                304
+              ],
+              "shaft_2x": [
+                129.5,
+                260
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0.0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                68,
+                268,
+                100,
+                320
+              ],
+              "shaft_2x": [
+                86.5,
+                276
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 225,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                116,
+                249,
+                148,
+                301
+              ],
+              "shaft_2x": [
+                129.5,
+                257
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                68,
+                266,
+                100,
+                318
+              ],
+              "shaft_2x": [
+                86.5,
+                274
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 270,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": -0.0,
+              "stance": false,
+              "boot_box_2x": [
+                116,
+                252,
+                148,
+                304
+              ],
+              "shaft_2x": [
+                129.5,
+                260
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0.0,
+              "stance": true,
+              "boot_box_2x": [
+                68,
+                260,
+                100,
+                312
+              ],
+              "shaft_2x": [
+                86.5,
+                268
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 315,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                116,
+                260,
+                148,
+                312
+              ],
+              "shaft_2x": [
+                129.5,
+                268
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                68,
+                254,
+                100,
+                306
+              ],
+              "shaft_2x": [
+                86.5,
+                262
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "west",
+      "source_layer": "west idle breathe 01",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0,
+          "body_bob_2x": 0,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 1.0,
+              "advance_2x": -40.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                52,
+                260,
+                125,
+                312
+              ],
+              "shaft_2x": [
+                100.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -1.0,
+              "advance_2x": 40.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                140,
+                260,
+                213,
+                312
+              ],
+              "shaft_2x": [
+                188.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 45,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                63,
+                260,
+                136,
+                312
+              ],
+              "shaft_2x": [
+                111.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                128,
+                252,
+                201,
+                304
+              ],
+              "shaft_2x": [
+                176.5,
+                260
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 90,
+          "body_bob_2x": -2,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.0,
+              "advance_2x": -0.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                92,
+                260,
+                165,
+                312
+              ],
+              "shaft_2x": [
+                140.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.0,
+              "advance_2x": 0.0,
+              "swing_lift_2x": 12.0,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                100,
+                248,
+                173,
+                300
+              ],
+              "shaft_2x": [
+                148.5,
+                256
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 135,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                120,
+                260,
+                193,
+                312
+              ],
+              "shaft_2x": [
+                168.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                71,
+                252,
+                144,
+                304
+              ],
+              "shaft_2x": [
+                119.5,
+                260
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 180,
+          "body_bob_2x": 0,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -1.0,
+              "advance_2x": 40.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                132,
+                260,
+                205,
+                312
+              ],
+              "shaft_2x": [
+                180.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 1.0,
+              "advance_2x": -40.0,
+              "swing_lift_2x": 0.0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                60,
+                260,
+                133,
+                312
+              ],
+              "shaft_2x": [
+                108.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 225,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                120,
+                252,
+                193,
+                304
+              ],
+              "shaft_2x": [
+                168.5,
+                260
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                71,
+                260,
+                144,
+                312
+              ],
+              "shaft_2x": [
+                119.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 270,
+          "body_bob_2x": -2,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.0,
+              "advance_2x": 0.0,
+              "swing_lift_2x": 12.0,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                92,
+                248,
+                165,
+                300
+              ],
+              "shaft_2x": [
+                140.5,
+                256
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.0,
+              "advance_2x": -0.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                99,
+                260,
+                172,
+                312
+              ],
+              "shaft_2x": [
+                147.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 315,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                63,
+                252,
+                136,
+                304
+              ],
+              "shaft_2x": [
+                111.5,
+                260
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                128,
+                260,
+                201,
+                312
+              ],
+              "shaft_2x": [
+                176.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "east",
+      "source_layer": "east idle breathe 01",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0,
+          "body_bob_2x": 0,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 1.0,
+              "advance_2x": 40.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                156,
+                260,
+                227,
+                312
+              ],
+              "shaft_2x": [
+                179.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -1.0,
+              "advance_2x": -40.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                84,
+                260,
+                155,
+                312
+              ],
+              "shaft_2x": [
+                107.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 45,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                145,
+                260,
+                216,
+                312
+              ],
+              "shaft_2x": [
+                168.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                96,
+                252,
+                167,
+                304
+              ],
+              "shaft_2x": [
+                119.5,
+                260
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 90,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.0,
+              "advance_2x": 0.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                116,
+                260,
+                187,
+                312
+              ],
+              "shaft_2x": [
+                139.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.0,
+              "advance_2x": -0.0,
+              "swing_lift_2x": 12.0,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                124,
+                248,
+                195,
+                300
+              ],
+              "shaft_2x": [
+                147.5,
+                256
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 135,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                88,
+                260,
+                159,
+                312
+              ],
+              "shaft_2x": [
+                111.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                153,
+                252,
+                224,
+                304
+              ],
+              "shaft_2x": [
+                176.5,
+                260
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 180,
+          "body_bob_2x": 0,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -1.0,
+              "advance_2x": -40.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                76,
+                260,
+                147,
+                312
+              ],
+              "shaft_2x": [
+                99.5,
+                268
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 1.0,
+              "advance_2x": 40.0,
+              "swing_lift_2x": 0.0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                164,
+                260,
+                235,
+                312
+              ],
+              "shaft_2x": [
+                187.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 225,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                88,
+                252,
+                159,
+                304
+              ],
+              "shaft_2x": [
+                111.5,
+                260
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                153,
+                260,
+                224,
+                312
+              ],
+              "shaft_2x": [
+                176.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 270,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.0,
+              "advance_2x": -0.0,
+              "swing_lift_2x": 12.0,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                116,
+                248,
+                187,
+                300
+              ],
+              "shaft_2x": [
+                139.5,
+                256
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.0,
+              "advance_2x": 0.0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                125,
+                260,
+                196,
+                312
+              ],
+              "shaft_2x": [
+                148.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 315,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 28.284271,
+              "swing_lift_2x": 8.485281,
+              "depth_2x": 0,
+              "stance": false,
+              "boot_box_2x": [
+                145,
+                252,
+                216,
+                304
+              ],
+              "shaft_2x": [
+                168.5,
+                260
+              ],
+              "hip_2x": [
+                140.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": -28.284271,
+              "swing_lift_2x": 0,
+              "depth_2x": 0,
+              "stance": true,
+              "boot_box_2x": [
+                96,
+                260,
+                167,
+                312
+              ],
+              "shaft_2x": [
+                119.5,
+                268
+              ],
+              "hip_2x": [
+                148.0,
+                202
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "north",
+      "source_layer": "north idle breathe 01",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0,
+          "body_bob_2x": 0,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                252,
+                102,
+                304
+              ],
+              "shaft_2x": [
+                86.0,
+                260
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                115,
+                268,
+                152,
+                320
+              ],
+              "shaft_2x": [
+                130.0,
+                276
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 45,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                254,
+                102,
+                306
+              ],
+              "shaft_2x": [
+                86.0,
+                262
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                115,
+                260,
+                152,
+                312
+              ],
+              "shaft_2x": [
+                130.0,
+                268
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 90,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -0.0,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                260,
+                102,
+                312
+              ],
+              "shaft_2x": [
+                86.0,
+                268
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": 0.0,
+              "stance": false,
+              "boot_box_2x": [
+                115,
+                252,
+                152,
+                304
+              ],
+              "shaft_2x": [
+                130.0,
+                260
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 135,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                266,
+                102,
+                318
+              ],
+              "shaft_2x": [
+                86.0,
+                274
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                115,
+                249,
+                152,
+                301
+              ],
+              "shaft_2x": [
+                130.0,
+                257
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 180,
+          "body_bob_2x": 0,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                268,
+                102,
+                320
+              ],
+              "shaft_2x": [
+                86.0,
+                276
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0.0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                115,
+                252,
+                152,
+                304
+              ],
+              "shaft_2x": [
+                130.0,
+                260
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 225,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                65,
+                260,
+                102,
+                312
+              ],
+              "shaft_2x": [
+                86.0,
+                268
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                115,
+                254,
+                152,
+                306
+              ],
+              "shaft_2x": [
+                130.0,
+                262
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 270,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": 0.0,
+              "stance": false,
+              "boot_box_2x": [
+                65,
+                252,
+                102,
+                304
+              ],
+              "shaft_2x": [
+                86.0,
+                260
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -0.0,
+              "stance": true,
+              "boot_box_2x": [
+                115,
+                260,
+                152,
+                312
+              ],
+              "shaft_2x": [
+                130.0,
+                268
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 315,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                65,
+                249,
+                102,
+                301
+              ],
+              "shaft_2x": [
+                86.0,
+                257
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                115,
+                266,
+                152,
+                318
+              ],
+              "shaft_2x": [
+                130.0,
+                274
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

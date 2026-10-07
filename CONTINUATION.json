@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -218,6 +218,40 @@
           "sha256": "fca6f4831170026f6f80559a20250ed53244e2d1a4b88340be4937c48d516871"
         }
       ]
+    },
+    {
+      "id": "phase9-character-animation-import-proof",
+      "reason": "Complete approved directional set imported, measured and played in an isolated proof; exact cold RGBA, deterministic replay and complete native/2x comparisons pass. This is proof completion, without new Main runtime authority.",
+      "evidence": [
+        {
+          "path": "art-direction/character-animation-import-proof/verification.json",
+          "sha256": "08533ab192513a3979f1f641837cc7774fce80b7a8757f8fe535e50032d63e6c"
+        }
+      ]
+    },
+    {
+      "id": "seeker-cloak-front-back-gait-correction",
+      "reason": "Owner accepted the front and back candidate views on 2026-10-07. Carry all sixteen walking frames and their masters forward unchanged; only side views remain in the active correction.",
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-gait-side-revision/accepted-views.json",
+          "sha256": "d0fbc776c777c77c093420e65ac6caa91aa22f4f9b5d4bcf8e34a6add2535e02"
+        }
+      ]
+    },
+    {
+      "id": "phase9-seeker-cloak-gait-correction",
+      "reason": "Owner accepted the complete reference-based Seeker cloak gait on 2026-10-07 and designated it the reference gait model henceforth. Whole correction, exact candidate and isolated proof are closed; accepted front/back stays unchanged. No additional unchanged-view gates.",
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json",
+          "sha256": "88c90fa7bc441d05c887a81ba4a6b7098c44214d76c209c041d46591f51d2fe7"
+        },
+        {
+          "path": "art-direction/reference-gait-model.json",
+          "sha256": "e7b5e543b772e7a47b233902c87e94b6b5036b9e7ef494fa1ddf86f4c32b75ad"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -242,21 +276,92 @@
       ]
     }
   ],
-  "reopenings": [],
+  "reopenings": [
+    {
+      "id": "owner-seeker-cloak-gait-correction-2026-10-06",
+      "owner_statement": "The seeker with cloak (frist row) the animationisn't walking, jsut rocking a bit. The legs never cross",
+      "scope_ids": [
+        "phase9-character-animation-import-proof"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-gait-correction/owner-request.json",
+          "sha256": "32e1d655fb74a75f615727bbd659ac86a86ed15b83e33c243205be000a4bf672"
+        }
+      ]
+    },
+    {
+      "id": "owner-seeker-cloak-side-revision-2026-10-07",
+      "owner_statement": "front and back views are acceptable, side views are not - the straight legs  are angled backwards. Either a staight leg gait scissoring from a central pelvic point, or a true natural gait with knee flexion/extension",
+      "scope_ids": [
+        "phase9-character-animation-import-proof"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-gait-side-revision/owner-request.json",
+          "sha256": "e813171de2a41bdf16bb6727e18ac8f74d894ea6158964bb0d251a701a3d12df"
+        }
+      ]
+    },
+    {
+      "id": "owner-seeker-cloak-pelvis-hinge-revision-2026-10-07",
+      "owner_statement": "Much improved, but still a problem. The thighs are offset backwards in the pelvis, there is this sharp frontal edge where something is missing. Imagine a pivot point im the middle of the pelvis, where the thighs can move back and forth, and another pivot point in the knee, where the lower leg can only bend and straighten. Thighs back and forward, scissoring. Knees straight and bend backwards only.",
+      "scope_ids": [
+        "phase9-character-animation-import-proof"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-pelvis-hinge-revision/owner-request.json",
+          "sha256": "17168c2f989a8a12acc0df6e72cb1e9c84e49bc3535e0aa1c7c8a288661e6009"
+        }
+      ]
+    },
+    {
+      "id": "owner-seeker-cloak-lead-exchange-revision-2026-10-07",
+      "owner_statement": "Much improved again, but still a little unnatural. Important: during a gait phas, the front knee moves from well behind the former front knee to fell in fornt of it, and the former fron knee does the opposite, and the former front foot becomes the hind foot.  In your animation, one foot always stays behind.",
+      "scope_ids": [
+        "phase9-character-animation-import-proof"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-lead-exchange-revision/owner-request.json",
+          "sha256": "b591a9527c6909754d554d4261b4efce43a1bb9b1e519e70bfe390dd2b1ca8c9"
+        }
+      ]
+    },
+    {
+      "id": "owner-seeker-cloak-reference-gait-revision-2026-10-07",
+      "owner_statement": "Exactly. Please implement and show me the results",
+      "scope_ids": [
+        "phase9-character-animation-import-proof"
+      ],
+      "workstream_ids": [],
+      "evidence": [
+        {
+          "path": "art-direction/seeker-cloak-reference-gait-revision/owner-request.json",
+          "sha256": "2ac08aa7a0dfe42df59a635835194ec604447e840eb8e9b280add1837cac4ced"
+        }
+      ]
+    }
+  ],
   "active_slice": {
-    "id": "phase9-character-animation-import-proof",
-    "title": "Import and register the complete approved directional character set",
+    "id": "phase9-audio-direction-dynamic-range-policy",
+    "title": "Establish the audio direction and dynamic range policy",
     "status": "ready",
-    "workstream": "character-animation-presentation",
-    "roadmap_item": "- [ ] Import and register the complete approved directional character animation set in an isolated proof.",
-    "missing_deliverable": "The approved new character directional frames have no imported animation/registration proof. Artwork is approved; runtime registration, cadence and import behavior remain provisional.",
-    "instructions": "Use art-direction/characters-batch/owner-acceptance.json as the source ledger: 432 new approved directional frames across nine families (four directions; two idle, two inspect, eight polished walk frames per direction), plus the 48 unchanged inherited Seeker cloak frames. Build one isolated Godot animation proof and a deterministic import recipe. Retain source pixels and editable masters; define foot registration and cadence from measured frames and existing Seeker behavior. Show all families/directions together with native/2x scale and cycle comparisons. Check alpha, exact decoded pixels, registration, loop/frame order and lossless imports. Do not regenerate artwork or seek artwork approval again. Consolidate scoped validation and review; request a decision only for a genuinely changed proposal or a missing new runtime authority.",
-    "completion_condition": "Every approved directional family plays idle, inspect and complete walk loops in the isolated proof; source/import RGBA parity and measured registration pass, the complete comparison is retained, and remaining Main integration authority is stated once. Mark this proof closed and choose one genuinely unfinished roadmap deliverable.",
+    "workstream": "audio-direction",
+    "roadmap_item": "- [ ] Establish the audio direction and dynamic range policy.",
+    "missing_deliverable": "Phase 9.3 has no bounded audio direction or dynamic-range policy specifying cue hierarchy, quiet investigation, ambience/music roles and accessible independent controls.",
+    "instructions": "Read the settled game direction and existing audio constraints, then write one concrete Phase 9.3 policy covering sonic palette, foreground/background cue hierarchy, meaningful off-screen cues, restrained music, provisional loudness/headroom and ducking targets, future voice coexistence, accessibility and the required independent buses/controls. Keep numerical targets explicitly provisional until measured against real audio. Identify asset classes and a finite later audition/implementation boundary. Prepare the policy for owner review; record only the authority actually granted. Do not generate, purchase or install audio, add runtime buses or settings, implement footsteps/music/voice, change accepted visuals or reopen completed character/ground/dressing scopes.",
+    "completion_condition": "One coherent audio direction and dynamic-range policy, with explicit provisional targets, cue/bus responsibilities, accessibility constraints and a finite next implementation boundary, is retained and reviewed; any needed owner choice is stated once. Close the policy slice when its deliverable is complete and select one named unfinished roadmap item.",
     "outputs": [
-      "art-direction/character-animation-import-proof/README.md",
-      "art-direction/character-animation-import-proof/registration.json",
-      "game/CharacterAnimationImportProof.tscn"
+      "audio-direction/README.md",
+      "audio-direction/dynamic-range-policy.json"
     ],
-    "boundary": "Isolated import/animation proof only. Main.tscn, gameplay, controllers, collision/navigation, scenarios, providers, functional UI, audio and release/signing stay unchanged. Designs, portraits and sleeping/recovery semantics stay at their existing approved/provisional scope."
-  }
+    "boundary": "Documentation and reviewable audio-policy proposal only. Main, gameplay, runtime audio/assets/buses/settings, providers, voice implementation, accepted visual scopes, release/signing and Git publication stay outside this slice."
+  },
+  "deferred_slices": []
 }

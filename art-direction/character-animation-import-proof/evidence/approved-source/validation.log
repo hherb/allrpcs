@@ -1,0 +1,14 @@
+PASS: 312 candidate RGBA exports and exact 2x masters; 48 unchanged inherited Seeker frames.
+PASS: 14 labelled PNG boards/compositions and 27 animated cycle previews.
+Source cells with substantial paint on an edge (inspect visually): ['healer-east-inspect-02']
+Authoring checks only; owner artwork approval, timing/alignment and runtime integration remain pending.
+KNOWN ARTWORK DEFECT: walk frames are incomplete stride studies, not full alternating cycles.
+PASS: 288 RGBA cutout frames, exact 2x masters and unchanged source-paint hashes.
+PASS: 36 eight-phase loops, alternating contact/swing ownership, unique poses and 10 full-loop GIFs.
+Authoring checks only: knee/arm articulation, cutout style, timing and owner acceptance remain review concerns.
+PASS: exact owner-approved walking artwork and review snapshot hashes.
+PASS: all 288 stored masters match replayed pixels; phase/source metadata matches.
+PASS: all 576 limb poses connect hip to boot; sockets overlap torso paint.
+PASS: predecessor artwork unchanged; complete polish review/script hashes match.
+PASS: full approved character batch: 456 active export/master pairs and 48 inherited frames.
+Artwork only; runtime imports, registration, camera, timing and physical authority remain separate.

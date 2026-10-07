@@ -40,3 +40,14 @@ Preserve unrelated work, including the recorded `game/project.godot` editor rewr
 Do not alter frozen art evidence, acceptance hashes or validators to accommodate
 successors. Git publication requires user authorization; retain the authorization
 already provided in the current conversation.
+
+## Reference gait model
+
+The owner accepted the Seeker cloak reference gait on 2026-10-07 and designated it
+our reference gait model henceforth. Use
+[art-direction/reference-gait-model.md](art-direction/reference-gait-model.md) and its
+hash-bound metadata for future walking animation work. Preserve the accepted
+phase sequence, anatomical pelvis pivots, fixed leg identity, backward-only knee
+hinges, knee-before-foot transfer, grounded support and brief double support.
+The whole cloak correction is closed; historical pending fields in frozen proof
+packages do not require another selection or audit of these unchanged views.

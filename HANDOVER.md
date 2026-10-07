@@ -17,51 +17,68 @@ pixels and placements. All earlier closed scopes remain in the ledger.
 The [loop investigation](CONTINUATION_AUDIT.md) explains the repaired routing and
 approval failures. Historical package “pending”/“next” records are not the current queue.
 
+The [complete character import proof](art-direction/character-animation-import-proof/README.md)
+is finished locally: 480 unchanged approved frames, 120 isolated animations, measured
+fixed pivots, exact cold-import RGBA and six lossless native/2× comparisons. Its
+[verification](art-direction/character-animation-import-proof/verification.json)
+records technical import fidelity; Main integration remains outside that scope.
+The complete cloak gait correction is now owner-accepted and closed. The owner
+said on 2026-10-07: “very good - accepted. This is our reference gait model henceforth”.
+[Terminal acceptance](art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json)
+binds the exact 48-frame candidate and isolated proof. The
+[reference gait model](art-direction/reference-gait-model.md) governs future walking
+animation work. Accepted front/back and all predecessors remain unchanged.
+Historical pending fields are superseded; no more unchanged-view gait gates.
+The deferred audio-policy slice is restored below.
+The owner authorized commit and push of this accepted work on 2026-10-07.
+Publication includes the character proof, retained gait revisions, accepted
+reference model and documentation; preserve the unrelated project editor rewrite.
+
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-character-animation-import-proof — Import and register the complete approved directional character set** (ready).
+**phase9-audio-direction-dynamic-range-policy — Establish the audio direction and dynamic range policy** (ready).
 
-Roadmap item: - [ ] Import and register the complete approved directional character animation set in
-an isolated proof.
+Roadmap item: - [ ] Establish the audio direction and dynamic range policy.
 
-Missing deliverable: The approved new character directional frames have no imported
-animation/registration proof. Artwork is approved; runtime registration, cadence and import behavior
-remain provisional.
+Missing deliverable: Phase 9.3 has no bounded audio direction or dynamic-range policy specifying cue
+hierarchy, quiet investigation, ambience/music roles and accessible independent controls.
 
-Use art-direction/characters-batch/owner-acceptance.json as the source ledger: 432 new approved
-directional frames across nine families (four directions; two idle, two inspect, eight polished walk
-frames per direction), plus the 48 unchanged inherited Seeker cloak frames. Build one isolated Godot
-animation proof and a deterministic import recipe. Retain source pixels and editable masters; define
-foot registration and cadence from measured frames and existing Seeker behavior. Show all
-families/directions together with native/2x scale and cycle comparisons. Check alpha, exact decoded
-pixels, registration, loop/frame order and lossless imports. Do not regenerate artwork or seek
-artwork approval again. Consolidate scoped validation and review; request a decision only for a
-genuinely changed proposal or a missing new runtime authority.
+Read the settled game direction and existing audio constraints, then write one concrete Phase 9.3
+policy covering sonic palette, foreground/background cue hierarchy, meaningful off-screen cues,
+restrained music, provisional loudness/headroom and ducking targets, future voice coexistence,
+accessibility and the required independent buses/controls. Keep numerical targets explicitly
+provisional until measured against real audio. Identify asset classes and a finite later
+audition/implementation boundary. Prepare the policy for owner review; record only the authority
+actually granted. Do not generate, purchase or install audio, add runtime buses or settings,
+implement footsteps/music/voice, change accepted visuals or reopen completed
+character/ground/dressing scopes.
 
-Done when: Every approved directional family plays idle, inspect and complete walk loops in the
-isolated proof; source/import RGBA parity and measured registration pass, the complete comparison is
-retained, and remaining Main integration authority is stated once. Mark this proof closed and choose
-one genuinely unfinished roadmap deliverable.
+Done when: One coherent audio direction and dynamic-range policy, with explicit provisional targets,
+cue/bus responsibilities, accessibility constraints and a finite next implementation boundary, is
+retained and reviewed; any needed owner choice is stated once. Close the policy slice when its
+deliverable is complete and select one named unfinished roadmap item.
 
 Expected outputs:
 
-- `art-direction/character-animation-import-proof/README.md`
-- `art-direction/character-animation-import-proof/registration.json`
-- `game/CharacterAnimationImportProof.tscn`
+- `audio-direction/README.md`
+- `audio-direction/dynamic-range-policy.json`
 
-Boundary: Isolated import/animation proof only. Main.tscn, gameplay, controllers,
-collision/navigation, scenarios, providers, functional UI, audio and release/signing stay unchanged.
-Designs, portraits and sleeping/recovery semantics stay at their existing approved/provisional
-scope.
+Boundary: Documentation and reviewable audio-policy proposal only. Main, gameplay, runtime
+audio/assets/buses/settings, providers, voice implementation, accepted visual scopes,
+release/signing and Git publication stay outside this slice.
 <!-- active-slice:end -->
 
 ## Verification and local state
 
-This continuation repair changes documents and a standalone checker only. Run
-`python3 scripts/check-continuation.py --self-test` and `git diff --check`; retain
-existing product quality evidence. Recheck product/import commands when implementing
-the new isolated proof, according to actual changed inputs.
+Retain the passing original character proof and preceding 5,033-test product evidence;
+ordinary product/CI inputs remain bound to the original proof's boundary snapshot.
+Use the retained passing product and gait evidence; documentation-only maintenance
+needs `python3 scripts/check-continuation.py --self-test` and `git diff --check`.
+The accepted gait package retains exact native-master replay, contact/transfer
+checks, cold import/playback and native/2× captures; do not regenerate its bound
+files or rerun unchanged visual selections. Full product checks are needed only
+when product inputs or unresolved defects warrant them.
 
 Preserve the unrelated unstaged `game/project.godot` editor rewrite. Use the published
 project bytes in a disposable copy when frozen product checks need them. Preserve

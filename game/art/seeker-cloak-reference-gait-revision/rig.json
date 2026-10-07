@@ -1,0 +1,4987 @@
+{
+  "date": "2026-10-07",
+  "status": "reference-based natural side gait ready for visual selection",
+  "directions": [
+    "south",
+    "west",
+    "east",
+    "north"
+  ],
+  "frames_per_direction": {
+    "south": 8,
+    "west": 16,
+    "east": 16,
+    "north": 8
+  },
+  "cycle_ms": 720,
+  "pelvis_source_2x": {
+    "west": [
+      123.0,
+      210.0
+    ],
+    "east": [
+      165.0,
+      210.0
+    ]
+  },
+  "pelvis_contour_2x": {
+    "west": [
+      93,
+      189,
+      153,
+      238
+    ],
+    "east": [
+      135,
+      189,
+      195,
+      238
+    ]
+  },
+  "side_top_padding_2x": 24,
+  "knee_policy": "straight at zero; backward flexion only; no hyperextension",
+  "side_timing": {
+    "stance_fraction": 0.6,
+    "swing_fraction": 0.4,
+    "opposite_leg_offset": 0.5,
+    "authoring_choice": "Timing from reference sequence, not measured clinical data"
+  },
+  "animations": [
+    {
+      "name": "walk_south",
+      "frames": [
+        "seeker-cloak-south-walk-01",
+        "seeker-cloak-south-walk-02",
+        "seeker-cloak-south-walk-03",
+        "seeker-cloak-south-walk-04",
+        "seeker-cloak-south-walk-05",
+        "seeker-cloak-south-walk-06",
+        "seeker-cloak-south-walk-07",
+        "seeker-cloak-south-walk-08"
+      ],
+      "frame_ms": 90,
+      "loop": true
+    },
+    {
+      "name": "walk_west",
+      "frames": [
+        "seeker-cloak-west-walk-01",
+        "seeker-cloak-west-walk-02",
+        "seeker-cloak-west-walk-03",
+        "seeker-cloak-west-walk-04",
+        "seeker-cloak-west-walk-05",
+        "seeker-cloak-west-walk-06",
+        "seeker-cloak-west-walk-07",
+        "seeker-cloak-west-walk-08",
+        "seeker-cloak-west-walk-09",
+        "seeker-cloak-west-walk-10",
+        "seeker-cloak-west-walk-11",
+        "seeker-cloak-west-walk-12",
+        "seeker-cloak-west-walk-13",
+        "seeker-cloak-west-walk-14",
+        "seeker-cloak-west-walk-15",
+        "seeker-cloak-west-walk-16"
+      ],
+      "frame_ms": 45,
+      "loop": true
+    },
+    {
+      "name": "walk_east",
+      "frames": [
+        "seeker-cloak-east-walk-01",
+        "seeker-cloak-east-walk-02",
+        "seeker-cloak-east-walk-03",
+        "seeker-cloak-east-walk-04",
+        "seeker-cloak-east-walk-05",
+        "seeker-cloak-east-walk-06",
+        "seeker-cloak-east-walk-07",
+        "seeker-cloak-east-walk-08",
+        "seeker-cloak-east-walk-09",
+        "seeker-cloak-east-walk-10",
+        "seeker-cloak-east-walk-11",
+        "seeker-cloak-east-walk-12",
+        "seeker-cloak-east-walk-13",
+        "seeker-cloak-east-walk-14",
+        "seeker-cloak-east-walk-15",
+        "seeker-cloak-east-walk-16"
+      ],
+      "frame_ms": 45,
+      "loop": true
+    },
+    {
+      "name": "walk_north",
+      "frames": [
+        "seeker-cloak-north-walk-01",
+        "seeker-cloak-north-walk-02",
+        "seeker-cloak-north-walk-03",
+        "seeker-cloak-north-walk-04",
+        "seeker-cloak-north-walk-05",
+        "seeker-cloak-north-walk-06",
+        "seeker-cloak-north-walk-07",
+        "seeker-cloak-north-walk-08"
+      ],
+      "frame_ms": 90,
+      "loop": true
+    }
+  ],
+  "source_policy": "retained native paint, fixed-length hip/knee hinges, grounded stance and lifted swing targets",
+  "accepted_front_back_bindings": {
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-01.png": "d211ed5ed32352cee275c9e81ef77b83a036c347410b7af1bff7fab6031d15bb",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-01.ora": "ed9a354ca856c4926a972529910329bccd5a2912fd04e9489983ca621b5e44c4",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-02.png": "561611c03516be1d372d85afbf02e969bc6eae6c5c76e47f6080a288ecca67d0",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-02.ora": "014219d805887e1c6a4e06fdd45bf1c5bdca83cf3c965df4e5eb5a9a241a46dd",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-03.png": "f7b77ff2cb87c22789115fe5f00f39ef52d03824f6a2f85b6156cfd062bd3bc4",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-03.ora": "980785449dcb8fda951fea047bfd52b93a9e0599282e1c64cbaa9133239cab94",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-04.png": "5eafe729b9d3ec3bfb7b3ccaea832410097b6b1a11b4d6d8aa1cc163e6f313f2",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-04.ora": "b7d1f1b756c6aea1121ea5573b526979b728af1c5d087f41163c02630db7ca2e",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-05.png": "fd53e16b1310aa5f181fc84c5569e82ae0f7800f0a936da132da1bbc551b3bb7",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-05.ora": "38f851eaffe6cb92bf1e698e145675099d867a38b6c964cf80ea73645281448c",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-06.png": "5cdcb57bb2014802214e2883ae8d40cc50bd0567576172903b8b92d3f3facfc9",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-06.ora": "00b406ba986da5ff8eb8177e71aaa964f527105c7601e7d64ec86903eb879614",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-07.png": "de07e985a7186f6a3e67133314154950f8ad3190a612830cfaa4bf7836108e7d",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-07.ora": "6a3e98e88991902ab2f030584d76e374c0573101d8a130b535cf8023f0878934",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-south-walk-08.png": "f7f1cf4cbe318269909d0d7cd50a0e8a1238579e0a33b5e37af490786225a46a",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-south-walk-08.ora": "d928b35d6624939700cfd1af4282d538d7491f9df077924245f8e81b0c036ac2",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-01.png": "2b550ca9e56b0b495c79d0acd7360d8881b770d8773b4807f3cfbb0e70677292",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-01.ora": "947207e960c9946e50050e3dd1af69b422fc26cb48604924a3969b59feeed1a9",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-02.png": "c3c83c9767613eeb33ab6ea3d848aa78c34327ee95d10187f052c2a0b32e5bb9",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-02.ora": "40475145fc0b0eef571e743989fdd012a27662c7c5ba273a456f22fc0f38467e",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-03.png": "be8f321824fbb9002ef66007440e77c78d3ac3cd99070785cd6c36f3b3f1983e",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-03.ora": "03f8089afbcd7df0ca3d37dfb8d7b25640ba190ba0d7b0d12d498a635bd534e9",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-04.png": "2c9e90e72c6168d0208f9078c3bdaea2bdb467f76d16b82ec691e15401d64042",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-04.ora": "85fb6db74e85f774e5e62c42aaaf8638779c89b63ade97bb2243cf1909df8ca9",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-05.png": "58b86dc5d9761638e60bae36b100e0c625a4b9106a275c91e761be6bc8df5f8a",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-05.ora": "b670f6d5c4a7c5e203ca4a2c605d6c9188fc70e2c13c7abd6a0a82152cc91001",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-06.png": "6042d3bb2a0f6130578d8815573d0689c19817888d49f2b665ceb391403c20ab",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-06.ora": "c822ebaf6b5b22e89ed16b1d4a3939609b200c96e64d0c4908f1c49565893209",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-07.png": "e8c5f906dff0dd38d0b88f4965a82738acddd90d5c9ab07d3d1d2d62b14930a9",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-07.ora": "d4ed7bf852dd8af77d875fafd1a23ac4910584c884b11abce573180134ebc83e",
+    "art-direction/seeker-cloak-lead-exchange-revision/exports/seeker-cloak-north-walk-08.png": "b44abf13165d1da7ca5a7c64202d1a13ecb35087e3850454c1047c3abb49bc23",
+    "art-direction/seeker-cloak-lead-exchange-revision/masters/seeker-cloak-north-walk-08.ora": "cd3e51305770c5be5ff31e4249dd74a90629424178d8c0f0010f9161df2cc8be"
+  },
+  "source_masters": {
+    "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+    "art-direction/production-proof/corrected/masters/seeker-four-direction-walk.ora": "466a721c00d8e9070834289688354bf9fe17ed2c0968af09c8051451497bbb3e"
+  },
+  "predecessor_candidate_sha256": "86927f09839439e07577f7d6862a714838cc47736056b794e0b51bd1e121ccb9",
+  "limitations": [
+    "Cutout paint; rigid upper body/arms",
+    "Isolated candidate; no Main, speed, terrain or footsteps"
+  ],
+  "assets": [
+    {
+      "id": "seeker-cloak-south-walk-01",
+      "direction": "south",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-01.png",
+      "sha256": "d211ed5ed32352cee275c9e81ef77b83a036c347410b7af1bff7fab6031d15bb",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-01.ora",
+      "master_sha256": "ed9a354ca856c4926a972529910329bccd5a2912fd04e9489983ca621b5e44c4",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-01.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-02",
+      "direction": "south",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-02.png",
+      "sha256": "561611c03516be1d372d85afbf02e969bc6eae6c5c76e47f6080a288ecca67d0",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-02.ora",
+      "master_sha256": "014219d805887e1c6a4e06fdd45bf1c5bdca83cf3c965df4e5eb5a9a241a46dd",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-02.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-03",
+      "direction": "south",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-03.png",
+      "sha256": "f7b77ff2cb87c22789115fe5f00f39ef52d03824f6a2f85b6156cfd062bd3bc4",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-03.ora",
+      "master_sha256": "980785449dcb8fda951fea047bfd52b93a9e0599282e1c64cbaa9133239cab94",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-03.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-04",
+      "direction": "south",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-04.png",
+      "sha256": "5eafe729b9d3ec3bfb7b3ccaea832410097b6b1a11b4d6d8aa1cc163e6f313f2",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-04.ora",
+      "master_sha256": "b7d1f1b756c6aea1121ea5573b526979b728af1c5d087f41163c02630db7ca2e",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-04.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-05",
+      "direction": "south",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-05.png",
+      "sha256": "fd53e16b1310aa5f181fc84c5569e82ae0f7800f0a936da132da1bbc551b3bb7",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-05.ora",
+      "master_sha256": "38f851eaffe6cb92bf1e698e145675099d867a38b6c964cf80ea73645281448c",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-05.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-06",
+      "direction": "south",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-06.png",
+      "sha256": "5cdcb57bb2014802214e2883ae8d40cc50bd0567576172903b8b92d3f3facfc9",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-06.ora",
+      "master_sha256": "00b406ba986da5ff8eb8177e71aaa964f527105c7601e7d64ec86903eb879614",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-06.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-07",
+      "direction": "south",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-07.png",
+      "sha256": "de07e985a7186f6a3e67133314154950f8ad3190a612830cfaa4bf7836108e7d",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-07.ora",
+      "master_sha256": "6a3e98e88991902ab2f030584d76e374c0573101d8a130b535cf8023f0878934",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-07.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-south-walk-08",
+      "direction": "south",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-south-walk-08.png",
+      "sha256": "f7f1cf4cbe318269909d0d7cd50a0e8a1238579e0a33b5e37af490786225a46a",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-south-walk-08.ora",
+      "master_sha256": "d928b35d6624939700cfd1af4282d538d7491f9df077924245f8e81b0c036ac2",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-south-walk-08.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-west-walk-01",
+      "direction": "west",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-01.png",
+      "sha256": "a5622fbda0fbd739fd7fc948ab45c58a21ea341894ba2d7342e94f625da695c5",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-01.ora",
+      "master_sha256": "4b6d22992d3e5e5d814c45292aa031accd59e75d95bc0236198ceff90b1d1692",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-01.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-02",
+      "direction": "west",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-02.png",
+      "sha256": "4a034279705ba59de2f110164d374478745762f17013262b7b1f8276ac3baaa6",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-02.ora",
+      "master_sha256": "e66976446b87e3eff88898a06abf7a5e4112b8e166834995e49b0e2010e146e1",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-02.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-03",
+      "direction": "west",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-03.png",
+      "sha256": "e63ac78c1ca0c02a464e49dbb130b6908a1b36869452ce0a0ae187a9b57224ec",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-03.ora",
+      "master_sha256": "b22e712982dd729467841808730da45106c9112d8316fad0527c9345ac27fe34",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-03.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-04",
+      "direction": "west",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-04.png",
+      "sha256": "741ebc31c2b46973e32fc442a57906c99506350ffd7ff3063481e84e3d52b4b2",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-04.ora",
+      "master_sha256": "46725736e84b67edb94bd48dd48b00ff903eee0bb7efc3187d9515dc7b548e11",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-04.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-05",
+      "direction": "west",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-05.png",
+      "sha256": "07952d2256adc6757c431640de7ada45270e888d72595ac73a1d6d249d3e4b8b",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-05.ora",
+      "master_sha256": "78116a02b4a09c37c3540a6d759f560ac76a4223de76036d7aef8e30adc13e09",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-05.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-06",
+      "direction": "west",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-06.png",
+      "sha256": "efe76021a11fbdc3f17d000d0d94c72c26d020a7d20f4c78addf12e336e0929f",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-06.ora",
+      "master_sha256": "4081a664a1f5ac5e2b96f7b79997a637d1f93d985e9fd4743c6745cc68e79c64",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-06.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-07",
+      "direction": "west",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-07.png",
+      "sha256": "4b32d3f15256d698438443c920bdebf312cab4d26c7d99ff44e8d816bcb3c3b9",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-07.ora",
+      "master_sha256": "f0c36992cd3deb35e6af699285f91e71f7babfe8c0770b71bdc63c5a9801000a",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-07.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-08",
+      "direction": "west",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-08.png",
+      "sha256": "41e1f933bb13c2867e2f4e9d13612fc969f14d47cb7d97429181d8042b98b135",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-08.ora",
+      "master_sha256": "98b31f413e3861a533a8d6528aa4992595548309ac65a5384fbe2f80f3e3cbbd",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-08.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-09",
+      "direction": "west",
+      "index": 9,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-09.png",
+      "sha256": "4295d7747a416145aedfd0269a4969cf5f0c99cbdb2f932bd6aa8e73348c3ba6",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-09.ora",
+      "master_sha256": "2c93bbe4f131ce162e8040d2772f8bb3391a9ce8a0c9db4a0969170bee33cc77",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-09.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-10",
+      "direction": "west",
+      "index": 10,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-10.png",
+      "sha256": "0a410cfb740f0340c449f06b289ca3629891c14ad352d9029d9e1bc375a6d54e",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-10.ora",
+      "master_sha256": "0122e39ae374cedf106c30ddfd1864fe15ac5fe825c4bbdee3de447413ae7f57",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-10.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-11",
+      "direction": "west",
+      "index": 11,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-11.png",
+      "sha256": "5179b55f77767c6857d81c08c5a1a9321551ebca729dc61439e7d1afd230929f",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-11.ora",
+      "master_sha256": "d1466cc6730002becad3309d1f5f21c6472ae39582f89c3fec3c47883e7fef65",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-11.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-12",
+      "direction": "west",
+      "index": 12,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-12.png",
+      "sha256": "b5fb26ef3602181aaca38be3181ae9be57317939358a2bedb25823265f9e7af6",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-12.ora",
+      "master_sha256": "599e8ee06e59853290c960b68473fabe73e1de398227e26f9b9fdc704f08a1c2",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-12.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-13",
+      "direction": "west",
+      "index": 13,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-13.png",
+      "sha256": "c4b7230db1c7247c462444bffe66fc230df053a3f5e3494ac4e868eb603e6f03",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-13.ora",
+      "master_sha256": "e3d877784798c7c2a65cc35c64248e8726b11915c219301b222e52a7b22df0c8",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-13.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-14",
+      "direction": "west",
+      "index": 14,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-14.png",
+      "sha256": "c300ed23894b34ac09b4e354ff8c86f5c3a303bd5d987cb7748df4156012707e",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-14.ora",
+      "master_sha256": "3d492fa4d36e014248232dd00a97529541903683f4ae44d2aaa01fda742328ef",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-14.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-15",
+      "direction": "west",
+      "index": 15,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-15.png",
+      "sha256": "14474e0d6851f0699dc6ca8b3457e39f0028c15de2c2d1b544328629c9976a4a",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-15.ora",
+      "master_sha256": "c333e6ef2bd4ede4bddc8605f55c66bed049a9ebd5f4bea9569369100e6997a7",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-15.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-west-walk-16",
+      "direction": "west",
+      "index": 16,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-west-walk-16.png",
+      "sha256": "f64facfa368843d6a08d131d13659831ba150e071fc5be94d80757d41320ae1c",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-west-walk-16.ora",
+      "master_sha256": "ad321fd63b9ec42e59edd9df4739984cad6564af2081919cf73343b1ec1bc421",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-west-walk-16.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-01",
+      "direction": "east",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-01.png",
+      "sha256": "113b5feb4da95524c9ab7b16bc5674299a448a961a0ae9c05f60ab5dae34f2fc",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-01.ora",
+      "master_sha256": "af1b51c287e373d938ea003880ea41438eb66cf2535eb0d627a85c2f13f8a4b3",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-01.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-02",
+      "direction": "east",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-02.png",
+      "sha256": "040bfb144e6118ab414b0a507bcd2e74b964c3907772b4aa6d379393d4012a5e",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-02.ora",
+      "master_sha256": "7a531f004838ed34bddd7912a95ff42b07e85ad3169088a30e4f2dac69b79bd0",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-02.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-03",
+      "direction": "east",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-03.png",
+      "sha256": "531ca291d806281e00f4e7b1dcd297285934ebeb7180adda71ff9ac6df28771f",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-03.ora",
+      "master_sha256": "ce606b1dc917fff548877a4472296b78d9473c78942dbd744f82114ff7a6958d",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-03.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-04",
+      "direction": "east",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-04.png",
+      "sha256": "f52ba32d98d7585728780b8bdd7b1fd4feacb0e4d0682352a227114f08c94541",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-04.ora",
+      "master_sha256": "5394c51aab7a2604b5c153c2432d7cb9181f39e9d2a5929c9e8dd5f225f8c8c4",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-04.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-05",
+      "direction": "east",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-05.png",
+      "sha256": "4d745e8498aec330799b802da9306c67bd71c5b738f967f383cc79ce558db811",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-05.ora",
+      "master_sha256": "4ab2e799da08fc06371d128a0671a636499f1a815f7333c1b5bb68c47d2becbe",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-05.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-06",
+      "direction": "east",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-06.png",
+      "sha256": "6b34440f1bc673cb05ce7035573e1a7e5d52dcf7fc044dfb0576ea98c245544f",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-06.ora",
+      "master_sha256": "960724e52bfd57485925d92917632fbc1597ec187941f33625b8634b24bc5e77",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-06.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-07",
+      "direction": "east",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-07.png",
+      "sha256": "e2a1e2b436f43ba4986453c66887f72db2b9a9973dfd58db622d85e1b6b1ea03",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-07.ora",
+      "master_sha256": "1aee6d1633c3c8fbce3ff84e604c467ba3615fe50fec5a68b4603d4922951697",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-07.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-08",
+      "direction": "east",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-08.png",
+      "sha256": "9a9857c1bd7878ea6210c4b20168eab899da5bb491c6b1e36f4728878c026560",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-08.ora",
+      "master_sha256": "c22832e50de59c67828eeba55a1fa3ddd96fa42eab2d79a086fe2a0d7271eccb",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-08.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-09",
+      "direction": "east",
+      "index": 9,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-09.png",
+      "sha256": "725fae84a98e61394d9052f8b247d3352e76ecd1020f88c3fa2c026632814428",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-09.ora",
+      "master_sha256": "494f7821233b5cf4600c5b3f55369b64bf533cbeab867b8ee4b6ac7b208503f8",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-09.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-10",
+      "direction": "east",
+      "index": 10,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-10.png",
+      "sha256": "2b0a2dcd633ed82e77d8887135f3b938400d2cea1c9a1e09bfb966a7f34c63b6",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-10.ora",
+      "master_sha256": "e1c0eb87118d70d87ce26b7ab9dc486bb6830d25711b11cac22f530565ebdf66",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-10.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-11",
+      "direction": "east",
+      "index": 11,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-11.png",
+      "sha256": "f32dc1d84b11f5332cdc7c78acca07b7c9498476dfd991d339f09138191bcc36",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-11.ora",
+      "master_sha256": "486f059a207f1089cb24e077f8ee5c7c5ba98b0effe9233babee4b4f5c0d0376",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-11.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-12",
+      "direction": "east",
+      "index": 12,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-12.png",
+      "sha256": "7cba0536485405334e716522515ba879ac1de75e3c96ab0f22fe8ab1117d6623",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-12.ora",
+      "master_sha256": "af314c3fb8b768ac47e6433e6fd64c565324071734f0c99feb577a4ace661746",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-12.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-13",
+      "direction": "east",
+      "index": 13,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-13.png",
+      "sha256": "5f1fae5c77cd93315b4ce529464efb0c82b6abc64c0a09f33105102d9d62baaa",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-13.ora",
+      "master_sha256": "f4961b97124ddb4618886c1bfaf4226b2c9be211bf22c62119e3bda224496a83",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-13.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-14",
+      "direction": "east",
+      "index": 14,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-14.png",
+      "sha256": "e15f6fb51a8cb82a0749a1136cd8c2138a3e20e8e689e61a4c7e9ca218fbccf0",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-14.ora",
+      "master_sha256": "379c8262ae97d14589be3b35b65ef6d142139eaa683c97a65c61b17d94e1bee5",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-14.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-15",
+      "direction": "east",
+      "index": 15,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-15.png",
+      "sha256": "04f9d957cd87a2959234c7ee0932d2c534a5c579a0d97c55c34f6ffdce5b50b1",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-15.ora",
+      "master_sha256": "22a0ad3c3f3d977cbd98577e329de52de5546c3b0451a187c858c8ca2f0258f9",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-15.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-east-walk-16",
+      "direction": "east",
+      "index": 16,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original walk 01 single leading boot",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-east-walk-16.png",
+      "sha256": "93a88f7301ed607262906049a4b9b12951e61cf8f423a49c36f64845676c9fb5",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-east-walk-16.ora",
+      "master_sha256": "95f96d364f58f853a9ba9ca624ac3faa4fc0fc1426db773d00ac274439cfb11f",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-east-walk-16.png",
+      "size": [
+        144,
+        180
+      ],
+      "pivot": [
+        72,
+        168
+      ],
+      "retained_accepted_view": false
+    },
+    {
+      "id": "seeker-cloak-north-walk-01",
+      "direction": "north",
+      "index": 1,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-01.png",
+      "sha256": "2b550ca9e56b0b495c79d0acd7360d8881b770d8773b4807f3cfbb0e70677292",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-01.ora",
+      "master_sha256": "947207e960c9946e50050e3dd1af69b422fc26cb48604924a3969b59feeed1a9",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-01.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-02",
+      "direction": "north",
+      "index": 2,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-02.png",
+      "sha256": "c3c83c9767613eeb33ab6ea3d848aa78c34327ee95d10187f052c2a0b32e5bb9",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-02.ora",
+      "master_sha256": "40475145fc0b0eef571e743989fdd012a27662c7c5ba273a456f22fc0f38467e",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-02.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-03",
+      "direction": "north",
+      "index": 3,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-03.png",
+      "sha256": "be8f321824fbb9002ef66007440e77c78d3ac3cd99070785cd6c36f3b3f1983e",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-03.ora",
+      "master_sha256": "03f8089afbcd7df0ca3d37dfb8d7b25640ba190ba0d7b0d12d498a635bd534e9",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-03.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-04",
+      "direction": "north",
+      "index": 4,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-04.png",
+      "sha256": "2c9e90e72c6168d0208f9078c3bdaea2bdb467f76d16b82ec691e15401d64042",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-04.ora",
+      "master_sha256": "85fb6db74e85f774e5e62c42aaaf8638779c89b63ade97bb2243cf1909df8ca9",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-04.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-05",
+      "direction": "north",
+      "index": 5,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-05.png",
+      "sha256": "58b86dc5d9761638e60bae36b100e0c625a4b9106a275c91e761be6bc8df5f8a",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-05.ora",
+      "master_sha256": "b670f6d5c4a7c5e203ca4a2c605d6c9188fc70e2c13c7abd6a0a82152cc91001",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-05.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-06",
+      "direction": "north",
+      "index": 6,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-06.png",
+      "sha256": "6042d3bb2a0f6130578d8815573d0689c19817888d49f2b665ceb391403c20ab",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-06.ora",
+      "master_sha256": "c822ebaf6b5b22e89ed16b1d4a3939609b200c96e64d0c4908f1c49565893209",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-06.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-07",
+      "direction": "north",
+      "index": 7,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-07.png",
+      "sha256": "e8c5f906dff0dd38d0b88f4965a82738acddd90d5c9ab07d3d1d2d62b14930a9",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-07.ora",
+      "master_sha256": "d4ed7bf852dd8af77d875fafd1a23ac4910584c884b11abce573180134ebc83e",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-07.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    },
+    {
+      "id": "seeker-cloak-north-walk-08",
+      "direction": "north",
+      "index": 8,
+      "source_master": "art-direction/production-proof/corrected/masters/seeker-four-direction-idle-breathe.ora",
+      "source_master_sha256": "b86f1fb6837de514a5ccbbf1588eb887baaf190b436fe69b6ec74f3d8e813696",
+      "side_boot_source": "Original idle 01 separated boots",
+      "export": "art-direction/seeker-cloak-reference-gait-revision/exports/seeker-cloak-north-walk-08.png",
+      "sha256": "b44abf13165d1da7ca5a7c64202d1a13ecb35087e3850454c1047c3abb49bc23",
+      "master": "art-direction/seeker-cloak-reference-gait-revision/masters/seeker-cloak-north-walk-08.ora",
+      "master_sha256": "cd3e51305770c5be5ff31e4249dd74a90629424178d8c0f0010f9161df2cc8be",
+      "texture": "game/art/seeker-cloak-reference-gait-revision/frames/seeker-cloak-north-walk-08.png",
+      "size": [
+        108,
+        168
+      ],
+      "pivot": [
+        54,
+        156
+      ],
+      "retained_accepted_view": true
+    }
+  ],
+  "rigs": [
+    {
+      "direction": "south",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0,
+          "body_bob_2x": 0,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                110,
+                244,
+                151,
+                320
+              ],
+              "shaft_2x": [
+                130.5,
+                252
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                66,
+                228,
+                107,
+                304
+              ],
+              "shaft_2x": [
+                86.5,
+                236
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 45,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                110,
+                242,
+                151,
+                318
+              ],
+              "shaft_2x": [
+                130.5,
+                250
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                66,
+                225,
+                107,
+                301
+              ],
+              "shaft_2x": [
+                86.5,
+                233
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 90,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0.0,
+              "stance": true,
+              "boot_box_2x": [
+                110,
+                236,
+                151,
+                312
+              ],
+              "shaft_2x": [
+                130.5,
+                244
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": -0.0,
+              "stance": false,
+              "boot_box_2x": [
+                66,
+                228,
+                107,
+                304
+              ],
+              "shaft_2x": [
+                86.5,
+                236
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 135,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                110,
+                230,
+                151,
+                306
+              ],
+              "shaft_2x": [
+                130.5,
+                238
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                66,
+                236,
+                107,
+                312
+              ],
+              "shaft_2x": [
+                86.5,
+                244
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 180,
+          "body_bob_2x": 0,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                110,
+                228,
+                151,
+                304
+              ],
+              "shaft_2x": [
+                130.5,
+                236
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0.0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                66,
+                244,
+                107,
+                320
+              ],
+              "shaft_2x": [
+                86.5,
+                252
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 225,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                110,
+                225,
+                151,
+                301
+              ],
+              "shaft_2x": [
+                130.5,
+                233
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                66,
+                242,
+                107,
+                318
+              ],
+              "shaft_2x": [
+                86.5,
+                250
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 270,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": -0.0,
+              "stance": false,
+              "boot_box_2x": [
+                110,
+                228,
+                151,
+                304
+              ],
+              "shaft_2x": [
+                130.5,
+                236
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 0.0,
+              "stance": true,
+              "boot_box_2x": [
+                66,
+                236,
+                107,
+                312
+              ],
+              "shaft_2x": [
+                86.5,
+                244
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 315,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                110,
+                236,
+                151,
+                312
+              ],
+              "shaft_2x": [
+                130.5,
+                244
+              ],
+              "hip_2x": [
+                130.0,
+                202
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                66,
+                230,
+                107,
+                306
+              ],
+              "shaft_2x": [
+                86.5,
+                238
+              ],
+              "hip_2x": [
+                86.0,
+                202
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "west",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0.0,
+          "body_bob_2x": 3.360280285620263,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                102.06468233848709,
+                276.0605706516052
+              ],
+              "ankle_2x": [
+                81.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 28.411624932657713,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": 9.976676109735715,
+              "foot_rotation_degrees": -10.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                36,
+                303,
+                94,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                69.28555302668772,
+                319.7423583324156
+              ],
+              "travel": 0.777778,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                128.41906692623772,
+                281.0252973318663
+              ],
+              "ankle_2x": [
+                161.0,
+                311.0
+              ],
+              "thigh_angle_degrees": -7.074545822552555,
+              "knee_flexion_degrees": 40.31116558680504,
+              "boot_rotation_degrees": -65.8206602322796,
+              "foot_rotation_degrees": -28.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                120,
+                296,
+                177,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                151.430173514081,
+                318.9343866404258
+              ],
+              "travel": -0.703704,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 22.5,
+          "body_bob_2x": 2.9172257577771177,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                95.0694706313674,
+                270.91554232180647
+              ],
+              "ankle_2x": [
+                91.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 39.4040222262253,
+              "knee_flexion_degrees": 34.12995090699866,
+              "boot_rotation_degrees": -13.160877503695376,
+              "foot_rotation_degrees": -17.5,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                47,
+                301,
+                105,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                80.0831208160663,
+                321.1217785243128
+              ],
+              "travel": 0.592593,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                141.8605238191415,
+                276.66996957839405
+              ],
+              "ankle_2x": [
+                171.0,
+                310.0
+              ],
+              "thigh_angle_degrees": -25.3818064201187,
+              "knee_flexion_degrees": 15.780450859157412,
+              "boot_rotation_degrees": -59.59720610219816,
+              "foot_rotation_degrees": -31.750000000000004,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                131,
+                294,
+                188,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                162.05273150416463,
+                318.4840641842234
+              ],
+              "travel": -0.888889,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 45.0,
+          "body_bob_2x": -4.377753289669414,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                229.6222467103306
+              ],
+              "knee_2x": [
+                105.39522234649105,
+                269.94682735006586
+              ],
+              "ankle_2x": [
+                101.0,
+                314.0
+              ],
+              "thigh_angle_degrees": 23.58496670263061,
+              "knee_flexion_degrees": 17.88737336692515,
+              "boot_rotation_degrees": -12.73735548721656,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                58,
+                299,
+                116,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                90.63263824651895,
+                320.9221212808057
+              ],
+              "travel": 0.407407,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                229.6222467103306
+              ],
+              "knee_2x": [
+                146.02968684306452,
+                267.11402612809604
+              ],
+              "ankle_2x": [
+                175.921875,
+                299.77068069022727
+              ],
+              "thigh_angle_degrees": -31.560727079461397,
+              "knee_flexion_degrees": 10.908622653371168,
+              "boot_rotation_degrees": -60.90429855575458,
+              "foot_rotation_degrees": -33.166666666666664,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                137,
+                284,
+                193,
+                327
+              ],
+              "supporting": false,
+              "leg_phase": 0.625,
+              "swing_lift_2x": 9.229319309772752,
+              "foot_centroid_2x": [
+                167.17513966907995,
+                308.48445349210965
+              ],
+              "travel": -0.980035,
+              "swing": 0.542901
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 67.5,
+          "body_bob_2x": -7.218313405818293,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                226.7816865941817
+              ],
+              "knee_2x": [
+                113.85109473997635,
+                269.8200129155329
+              ],
+              "ankle_2x": [
+                111.0,
+                314.0
+              ],
+              "thigh_angle_degrees": 12.001052854215368,
+              "knee_flexion_degrees": 8.308668551916213,
+              "boot_rotation_degrees": -14.742564520622857,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                68,
+                299,
+                126,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.1875,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                100.63263824651895,
+                320.9221212808057
+              ],
+              "travel": 0.222222,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                226.7816865941817
+              ],
+              "knee_2x": [
+                130.28061570772965,
+                270.1751496377826
+              ],
+              "ankle_2x": [
+                165.228515625,
+                297.35316081175296
+              ],
+              "thigh_angle_degrees": -9.524453914326038,
+              "knee_flexion_degrees": 42.604330739418884,
+              "boot_rotation_degrees": -70.56373347666693,
+              "foot_rotation_degrees": -31.083333333333332,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                125,
+                281,
+                182,
+                324
+              ],
+              "supporting": false,
+              "leg_phase": 0.6875,
+              "swing_lift_2x": 12.646839188247052,
+              "foot_centroid_2x": [
+                156.17409912047341,
+                305.7364236667044
+              ],
+              "travel": -0.78201,
+              "swing": 0.743932
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 90.0,
+          "body_bob_2x": -8.249227063626137,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                225.75077293637386
+              ],
+              "knee_2x": [
+                122.00307978260565,
+                269.73947773749467
+              ],
+              "ankle_2x": [
+                121.0,
+                314.0
+              ],
+              "thigh_angle_degrees": 1.2982774807364064,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": -17.136672195959264,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                78,
+                299,
+                136,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.25,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                110.63263824651895,
+                320.9221212808057
+              ],
+              "travel": 0.037037,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                225.75077293637386
+              ],
+              "knee_2x": [
+                111.30000922277287,
+                268.16669230413953
+              ],
+              "ankle_2x": [
+                146.625,
+                294.85273784462413
+              ],
+              "thigh_angle_degrees": 15.420965660347033,
+              "knee_flexion_degrees": 68.35196845820859,
+              "boot_rotation_degrees": -71.36595162078355,
+              "foot_rotation_degrees": -28.285714285714285,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                106,
+                279,
+                163,
+                320
+              ],
+              "supporting": false,
+              "leg_phase": 0.75,
+              "swing_lift_2x": 16.14726215537588,
+              "foot_centroid_2x": [
+                137.14043327046952,
+                302.8298207156678
+              ],
+              "travel": -0.4375,
+              "swing": 0.949839
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 112.5,
+          "body_bob_2x": -7.90862345257969,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                226.0913765474203
+              ],
+              "knee_2x": [
+                126.98767922709186,
+                269.9103041287957
+              ],
+              "ankle_2x": [
+                131.0,
+                314.0
+              ],
+              "thigh_angle_degrees": -5.199798241696986,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": -23.63474791839264,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                88,
+                299,
+                146,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.3125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                120.63263824651895,
+                320.9221212808057
+              ],
+              "travel": -0.148148,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                226.0913765474203
+              ],
+              "knee_2x": [
+                96.21540286633814,
+                260.9996185024004
+              ],
+              "ankle_2x": [
+                124.505859375,
+                295.05325370529044
+              ],
+              "thigh_angle_degrees": 37.49851336678765,
+              "knee_flexion_degrees": 77.21701808328699,
+              "boot_rotation_degrees": -58.153453539421335,
+              "foot_rotation_degrees": -24.714285714285715,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                83,
+                280,
+                140,
+                319
+              ],
+              "supporting": false,
+              "leg_phase": 0.8125,
+              "swing_lift_2x": 16.946746294709527,
+              "foot_centroid_2x": [
+                114.53805073431242,
+                302.43134883208194
+              ],
+              "travel": -0.027886,
+              "swing": 0.996867
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 135.0,
+          "body_bob_2x": -6.417163094650618,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                227.58283690534938
+              ],
+              "knee_2x": [
+                131.97227899779125,
+                270.6583312099513
+              ],
+              "ankle_2x": [
+                141.0,
+                314.0
+              ],
+              "thigh_angle_degrees": -11.766016826031157,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": -30.20096564895317,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                98,
+                299,
+                156,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                130.63263824651895,
+                320.9221212808057
+              ],
+              "travel": -0.333333,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                227.58283690534938
+              ],
+              "knee_2x": [
+                91.16138664447189,
+                257.9522738378509
+              ],
+              "ankle_2x": [
+                103.265625,
+                300.5373347610498
+              ],
+              "thigh_angle_degrees": 46.35291112130059,
+              "knee_flexion_degrees": 62.22000793086776,
+              "boot_rotation_degrees": -34.302045632489175,
+              "foot_rotation_degrees": -20.71428571428571,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                60,
+                286,
+                118,
+                322
+              ],
+              "supporting": false,
+              "leg_phase": 0.875,
+              "swing_lift_2x": 13.462665238950217,
+              "foot_centroid_2x": [
+                92.75589615781465,
+                307.2409135026071
+              ],
+              "travel": 0.365451,
+              "swing": 0.791921
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 157.5,
+          "body_bob_2x": -4.713356624420726,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                229.28664337557927
+              ],
+              "knee_2x": [
+                136.9568784410086,
+                271.0143984575737
+              ],
+              "ankle_2x": [
+                151.0,
+                313.0
+              ],
+              "thigh_angle_degrees": -18.49378469654197,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": -36.92873351946401,
+              "foot_rotation_degrees": -24.25,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                109,
+                298,
+                166,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.4375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                140.92643151850535,
+                320.3198098654489
+              ],
+              "travel": -0.518519,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                229.28664337557927
+              ],
+              "knee_2x": [
+                101.10687705533762,
+                267.4532671158304
+              ],
+              "ankle_2x": [
+                87.298828125,
+                309.5167641736999
+              ],
+              "thigh_angle_degrees": 29.83942676360431,
+              "knee_flexion_degrees": 11.666136506774983,
+              "boot_rotation_degrees": -0.26165856609269195,
+              "foot_rotation_degrees": -15.357142857142858,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                43,
+                296,
+                101,
+                330
+              ],
+              "supporting": false,
+              "leg_phase": 0.9375,
+              "swing_lift_2x": 5.483235826300083,
+              "foot_centroid_2x": [
+                76.13565444176771,
+                315.25036503276874
+              ],
+              "travel": 0.661133,
+              "swing": 0.322543
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 9,
+          "phase_degrees": 180.0,
+          "body_bob_2x": 3.360280285620263,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                128.41906692623772,
+                281.0252973318663
+              ],
+              "ankle_2x": [
+                161.0,
+                311.0
+              ],
+              "thigh_angle_degrees": -7.074545822552555,
+              "knee_flexion_degrees": 40.31116558680504,
+              "boot_rotation_degrees": -65.8206602322796,
+              "foot_rotation_degrees": -28.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                120,
+                296,
+                177,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                151.430173514081,
+                318.9343866404258
+              ],
+              "travel": -0.703704,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                102.06468233848709,
+                276.0605706516052
+              ],
+              "ankle_2x": [
+                81.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 28.411624932657713,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": 9.976676109735715,
+              "foot_rotation_degrees": -10.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                36,
+                303,
+                94,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                69.28555302668772,
+                319.7423583324156
+              ],
+              "travel": 0.777778,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 10,
+          "phase_degrees": 202.5,
+          "body_bob_2x": 2.9172257577771177,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                141.8605238191415,
+                276.66996957839405
+              ],
+              "ankle_2x": [
+                171.0,
+                310.0
+              ],
+              "thigh_angle_degrees": -25.3818064201187,
+              "knee_flexion_degrees": 15.780450859157412,
+              "boot_rotation_degrees": -59.59720610219816,
+              "foot_rotation_degrees": -31.750000000000004,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                131,
+                294,
+                188,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                162.05273150416463,
+                318.4840641842234
+              ],
+              "travel": -0.888889,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                95.0694706313674,
+                270.91554232180647
+              ],
+              "ankle_2x": [
+                91.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 39.4040222262253,
+              "knee_flexion_degrees": 34.12995090699866,
+              "boot_rotation_degrees": -13.160877503695376,
+              "foot_rotation_degrees": -17.5,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                47,
+                301,
+                105,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                80.0831208160663,
+                321.1217785243128
+              ],
+              "travel": 0.592593,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 11,
+          "phase_degrees": 225.0,
+          "body_bob_2x": -4.377753289669414,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                229.6222467103306
+              ],
+              "knee_2x": [
+                146.02968684306452,
+                267.11402612809604
+              ],
+              "ankle_2x": [
+                175.921875,
+                299.77068069022727
+              ],
+              "thigh_angle_degrees": -31.560727079461397,
+              "knee_flexion_degrees": 10.908622653371168,
+              "boot_rotation_degrees": -60.90429855575458,
+              "foot_rotation_degrees": -33.166666666666664,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                137,
+                284,
+                193,
+                327
+              ],
+              "supporting": false,
+              "leg_phase": 0.625,
+              "swing_lift_2x": 9.229319309772752,
+              "foot_centroid_2x": [
+                167.17513966907995,
+                308.48445349210965
+              ],
+              "travel": -0.980035,
+              "swing": 0.542901
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                229.6222467103306
+              ],
+              "knee_2x": [
+                105.39522234649105,
+                269.94682735006586
+              ],
+              "ankle_2x": [
+                101.0,
+                314.0
+              ],
+              "thigh_angle_degrees": 23.58496670263061,
+              "knee_flexion_degrees": 17.88737336692515,
+              "boot_rotation_degrees": -12.73735548721656,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                58,
+                299,
+                116,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                90.63263824651895,
+                320.9221212808057
+              ],
+              "travel": 0.407407,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 12,
+          "phase_degrees": 247.5,
+          "body_bob_2x": -7.218313405818293,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                226.7816865941817
+              ],
+              "knee_2x": [
+                130.28061570772965,
+                270.1751496377826
+              ],
+              "ankle_2x": [
+                165.228515625,
+                297.35316081175296
+              ],
+              "thigh_angle_degrees": -9.524453914326038,
+              "knee_flexion_degrees": 42.604330739418884,
+              "boot_rotation_degrees": -70.56373347666693,
+              "foot_rotation_degrees": -31.083333333333332,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                125,
+                281,
+                182,
+                324
+              ],
+              "supporting": false,
+              "leg_phase": 0.6875,
+              "swing_lift_2x": 12.646839188247052,
+              "foot_centroid_2x": [
+                156.17409912047341,
+                305.7364236667044
+              ],
+              "travel": -0.78201,
+              "swing": 0.743932
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                226.7816865941817
+              ],
+              "knee_2x": [
+                113.85109473997635,
+                269.8200129155329
+              ],
+              "ankle_2x": [
+                111.0,
+                314.0
+              ],
+              "thigh_angle_degrees": 12.001052854215368,
+              "knee_flexion_degrees": 8.308668551916213,
+              "boot_rotation_degrees": -14.742564520622857,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                68,
+                299,
+                126,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.1875,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                100.63263824651895,
+                320.9221212808057
+              ],
+              "travel": 0.222222,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 13,
+          "phase_degrees": 270.0,
+          "body_bob_2x": -8.249227063626137,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                225.75077293637386
+              ],
+              "knee_2x": [
+                111.30000922277287,
+                268.16669230413953
+              ],
+              "ankle_2x": [
+                146.625,
+                294.85273784462413
+              ],
+              "thigh_angle_degrees": 15.420965660347033,
+              "knee_flexion_degrees": 68.35196845820859,
+              "boot_rotation_degrees": -71.36595162078355,
+              "foot_rotation_degrees": -28.285714285714285,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                106,
+                279,
+                163,
+                320
+              ],
+              "supporting": false,
+              "leg_phase": 0.75,
+              "swing_lift_2x": 16.14726215537588,
+              "foot_centroid_2x": [
+                137.14043327046952,
+                302.8298207156678
+              ],
+              "travel": -0.4375,
+              "swing": 0.949839
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                225.75077293637386
+              ],
+              "knee_2x": [
+                122.00307978260565,
+                269.73947773749467
+              ],
+              "ankle_2x": [
+                121.0,
+                314.0
+              ],
+              "thigh_angle_degrees": 1.2982774807364064,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": -17.136672195959264,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                78,
+                299,
+                136,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.25,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                110.63263824651895,
+                320.9221212808057
+              ],
+              "travel": 0.037037,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 14,
+          "phase_degrees": 292.5,
+          "body_bob_2x": -7.90862345257969,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                226.0913765474203
+              ],
+              "knee_2x": [
+                96.21540286633814,
+                260.9996185024004
+              ],
+              "ankle_2x": [
+                124.505859375,
+                295.05325370529044
+              ],
+              "thigh_angle_degrees": 37.49851336678765,
+              "knee_flexion_degrees": 77.21701808328699,
+              "boot_rotation_degrees": -58.153453539421335,
+              "foot_rotation_degrees": -24.714285714285715,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                83,
+                280,
+                140,
+                319
+              ],
+              "supporting": false,
+              "leg_phase": 0.8125,
+              "swing_lift_2x": 16.946746294709527,
+              "foot_centroid_2x": [
+                114.53805073431242,
+                302.43134883208194
+              ],
+              "travel": -0.027886,
+              "swing": 0.996867
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                226.0913765474203
+              ],
+              "knee_2x": [
+                126.98767922709186,
+                269.9103041287957
+              ],
+              "ankle_2x": [
+                131.0,
+                314.0
+              ],
+              "thigh_angle_degrees": -5.199798241696986,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": -23.63474791839264,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                88,
+                299,
+                146,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.3125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                120.63263824651895,
+                320.9221212808057
+              ],
+              "travel": -0.148148,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 15,
+          "phase_degrees": 315.0,
+          "body_bob_2x": -6.417163094650618,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                227.58283690534938
+              ],
+              "knee_2x": [
+                91.16138664447189,
+                257.9522738378509
+              ],
+              "ankle_2x": [
+                103.265625,
+                300.5373347610498
+              ],
+              "thigh_angle_degrees": 46.35291112130059,
+              "knee_flexion_degrees": 62.22000793086776,
+              "boot_rotation_degrees": -34.302045632489175,
+              "foot_rotation_degrees": -20.71428571428571,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                60,
+                286,
+                118,
+                322
+              ],
+              "supporting": false,
+              "leg_phase": 0.875,
+              "swing_lift_2x": 13.462665238950217,
+              "foot_centroid_2x": [
+                92.75589615781465,
+                307.2409135026071
+              ],
+              "travel": 0.365451,
+              "swing": 0.791921
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                227.58283690534938
+              ],
+              "knee_2x": [
+                131.97227899779125,
+                270.6583312099513
+              ],
+              "ankle_2x": [
+                141.0,
+                314.0
+              ],
+              "thigh_angle_degrees": -11.766016826031157,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": -30.20096564895317,
+              "foot_rotation_degrees": -22.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                98,
+                299,
+                156,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                130.63263824651895,
+                320.9221212808057
+              ],
+              "travel": -0.333333,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 16,
+          "phase_degrees": 337.5,
+          "body_bob_2x": -4.713356624420726,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                123.0,
+                229.28664337557927
+              ],
+              "knee_2x": [
+                101.10687705533762,
+                267.4532671158304
+              ],
+              "ankle_2x": [
+                87.298828125,
+                309.5167641736999
+              ],
+              "thigh_angle_degrees": 29.83942676360431,
+              "knee_flexion_degrees": 11.666136506774983,
+              "boot_rotation_degrees": -0.26165856609269195,
+              "foot_rotation_degrees": -15.357142857142858,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                43,
+                296,
+                101,
+                330
+              ],
+              "supporting": false,
+              "leg_phase": 0.9375,
+              "swing_lift_2x": 5.483235826300083,
+              "foot_centroid_2x": [
+                76.13565444176771,
+                315.25036503276874
+              ],
+              "travel": 0.661133,
+              "swing": 0.322543
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                123.0,
+                229.28664337557927
+              ],
+              "knee_2x": [
+                136.9568784410086,
+                271.0143984575737
+              ],
+              "ankle_2x": [
+                151.0,
+                313.0
+              ],
+              "thigh_angle_degrees": -18.49378469654197,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": -36.92873351946401,
+              "foot_rotation_degrees": -24.25,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                109,
+                298,
+                166,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.4375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                140.92643151850535,
+                320.3198098654489
+              ],
+              "travel": -0.518519,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "east",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0.0,
+          "body_bob_2x": 3.360280285620263,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                185.93531766151293,
+                276.0605706516052
+              ],
+              "ankle_2x": [
+                207.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 28.411624932657713,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": -9.976676109735703,
+              "foot_rotation_degrees": 13.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                197,
+                303,
+                255,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                220.34912986811273,
+                319.394645498072
+              ],
+              "travel": 0.777778,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                158.48399858675222,
+                280.875125173113
+              ],
+              "ankle_2x": [
+                127.0,
+                312.0
+              ],
+              "thigh_angle_degrees": -8.51630997981523,
+              "knee_flexion_degrees": 36.812334331795356,
+              "boot_rotation_degrees": 63.76359313453261,
+              "foot_rotation_degrees": 31.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                115,
+                298,
+                171,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                138.14717210827993,
+                320.43028253554945
+              ],
+              "travel": -0.703704,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 22.5,
+          "body_bob_2x": 2.9172257577771177,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                192.93052936863262,
+                270.91554232180647
+              ],
+              "ankle_2x": [
+                197.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 39.4040222262253,
+              "knee_flexion_degrees": 34.12995090699866,
+              "boot_rotation_degrees": 13.160877503695389,
+              "foot_rotation_degrees": 20.5,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                187,
+                302,
+                244,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                209.6270318414607,
+                321.1524260642497
+              ],
+              "travel": 0.592593,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                146.1394761808585,
+                276.66996957839405
+              ],
+              "ankle_2x": [
+                117.0,
+                310.0
+              ],
+              "thigh_angle_degrees": -25.3818064201187,
+              "knee_flexion_degrees": 15.780450859157412,
+              "boot_rotation_degrees": 59.59720610219814,
+              "foot_rotation_degrees": 34.75,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                104,
+                296,
+                160,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                127.54795581268745,
+                319.1792615836154
+              ],
+              "travel": -0.888889,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 45.0,
+          "body_bob_2x": -3.377753289669414,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                230.6222467103306
+              ],
+              "knee_2x": [
+                182.60477765350893,
+                270.94682735006586
+              ],
+              "ankle_2x": [
+                187.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 23.58496670263061,
+              "knee_flexion_degrees": 17.88737336692515,
+              "boot_rotation_degrees": 12.737355487216535,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                176,
+                301,
+                233,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                199.04227905863797,
+                322.1586551585844
+              ],
+              "travel": 0.407407,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                230.6222467103306
+              ],
+              "knee_2x": [
+                141.97031315693548,
+                268.11402612809604
+              ],
+              "ankle_2x": [
+                112.078125,
+                300.77068069022727
+              ],
+              "thigh_angle_degrees": -31.560727079461397,
+              "knee_flexion_degrees": 10.908622653371168,
+              "boot_rotation_degrees": 60.90429855575458,
+              "foot_rotation_degrees": 36.166666666666664,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                99,
+                286,
+                155,
+                327
+              ],
+              "supporting": false,
+              "leg_phase": 0.625,
+              "swing_lift_2x": 9.229319309772752,
+              "foot_centroid_2x": [
+                122.38751113450482,
+                310.21082678759416
+              ],
+              "travel": -0.980035,
+              "swing": 0.542901
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 67.5,
+          "body_bob_2x": -6.218313405818293,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                227.7816865941817
+              ],
+              "knee_2x": [
+                174.14890526002367,
+                270.8200129155329
+              ],
+              "ankle_2x": [
+                177.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 12.001052854215368,
+              "knee_flexion_degrees": 8.308668551916213,
+              "boot_rotation_degrees": 14.742564520622869,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                166,
+                301,
+                223,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.1875,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                189.04227905863797,
+                322.1586551585844
+              ],
+              "travel": 0.222222,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                227.7816865941817
+              ],
+              "knee_2x": [
+                157.71938429227035,
+                271.1751496377826
+              ],
+              "ankle_2x": [
+                122.771484375,
+                298.35316081175296
+              ],
+              "thigh_angle_degrees": -9.524453914326038,
+              "knee_flexion_degrees": 42.604330739418884,
+              "boot_rotation_degrees": 70.56373347666693,
+              "foot_rotation_degrees": 34.08333333333333,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                110,
+                284,
+                167,
+                324
+              ],
+              "supporting": false,
+              "leg_phase": 0.6875,
+              "swing_lift_2x": 12.646839188247052,
+              "foot_centroid_2x": [
+                133.44545405449193,
+                307.38463667539764
+              ],
+              "travel": -0.78201,
+              "swing": 0.743932
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 90.0,
+          "body_bob_2x": -7.249227063626137,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                226.75077293637386
+              ],
+              "knee_2x": [
+                165.99692021739435,
+                270.73947773749467
+              ],
+              "ankle_2x": [
+                167.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 1.2982774807364064,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": 17.136672195959253,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                156,
+                301,
+                213,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.25,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                179.04227905863797,
+                322.1586551585844
+              ],
+              "travel": 0.037037,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                226.75077293637386
+              ],
+              "knee_2x": [
+                176.69999077722713,
+                269.16669230413953
+              ],
+              "ankle_2x": [
+                141.375,
+                295.85273784462413
+              ],
+              "thigh_angle_degrees": 15.420965660347033,
+              "knee_flexion_degrees": 68.35196845820859,
+              "boot_rotation_degrees": 71.36595162078355,
+              "foot_rotation_degrees": 31.285714285714285,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                129,
+                282,
+                186,
+                320
+              ],
+              "supporting": false,
+              "leg_phase": 0.75,
+              "swing_lift_2x": 16.14726215537588,
+              "foot_centroid_2x": [
+                152.50853567483014,
+                304.3339200589203
+              ],
+              "travel": -0.4375,
+              "swing": 0.949839
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 112.5,
+          "body_bob_2x": -6.90862345257969,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                227.0913765474203
+              ],
+              "knee_2x": [
+                161.01232077290814,
+                270.9103041287957
+              ],
+              "ankle_2x": [
+                157.0,
+                315.0
+              ],
+              "thigh_angle_degrees": -5.199798241696986,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": 23.63474791839264,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                146,
+                301,
+                203,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.3125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                169.04227905863797,
+                322.1586551585844
+              ],
+              "travel": -0.148148,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                227.0913765474203
+              ],
+              "knee_2x": [
+                191.14690304860764,
+                262.4797851152934
+              ],
+              "ankle_2x": [
+                163.494140625,
+                297.05325370529044
+              ],
+              "thigh_angle_degrees": 36.459027779993484,
+              "knee_flexion_degrees": 75.11275994636517,
+              "boot_rotation_degrees": 57.08868098929371,
+              "foot_rotation_degrees": 27.714285714285715,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                152,
+                283,
+                209,
+                319
+              ],
+              "supporting": false,
+              "leg_phase": 0.8125,
+              "swing_lift_2x": 16.946746294709527,
+              "foot_centroid_2x": [
+                175.1348059713621,
+                304.7728640936132
+              ],
+              "travel": -0.027886,
+              "swing": 0.996867
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 135.0,
+          "body_bob_2x": -5.417163094650618,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                228.58283690534938
+              ],
+              "knee_2x": [
+                156.02772100220875,
+                271.6583312099513
+              ],
+              "ankle_2x": [
+                147.0,
+                315.0
+              ],
+              "thigh_angle_degrees": -11.766016826031157,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": 30.20096564895317,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                136,
+                301,
+                193,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                159.04227905863797,
+                322.1586551585844
+              ],
+              "travel": -0.333333,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                228.58283690534938
+              ],
+              "knee_2x": [
+                196.8386133555281,
+                258.9522738378509
+              ],
+              "ankle_2x": [
+                184.734375,
+                301.5373347610498
+              ],
+              "thigh_angle_degrees": 46.35291112130059,
+              "knee_flexion_degrees": 62.22000793086776,
+              "boot_rotation_degrees": 34.30204563248916,
+              "foot_rotation_degrees": 23.71428571428571,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                174,
+                288,
+                231,
+                322
+              ],
+              "supporting": false,
+              "leg_phase": 0.875,
+              "swing_lift_2x": 13.462665238950217,
+              "foot_centroid_2x": [
+                196.97411491623723,
+                308.4095764658909
+              ],
+              "travel": 0.365451,
+              "swing": 0.791921
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 157.5,
+          "body_bob_2x": -3.713356624420726,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                230.28664337557927
+              ],
+              "knee_2x": [
+                151.0431215589914,
+                272.0143984575737
+              ],
+              "ankle_2x": [
+                137.0,
+                314.0
+              ],
+              "thigh_angle_degrees": -18.49378469654197,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": 36.928733519464,
+              "foot_rotation_degrees": 27.25,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                126,
+                300,
+                182,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.4375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                148.71146807439226,
+                321.63390572879877
+              ],
+              "travel": -0.518519,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                230.28664337557927
+              ],
+              "knee_2x": [
+                187.54007998867309,
+                268.07480017244114
+              ],
+              "ankle_2x": [
+                200.701171875,
+                310.34518768379075
+              ],
+              "thigh_angle_degrees": 30.8154551713672,
+              "knee_flexion_degrees": 13.521222750280447,
+              "boot_rotation_degrees": 1.1407164018352727,
+              "foot_rotation_degrees": 18.357142857142858,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                191,
+                297,
+                248,
+                331
+              ],
+              "supporting": false,
+              "leg_phase": 0.9375,
+              "swing_lift_2x": 4.654812316209254,
+              "foot_centroid_2x": [
+                213.51904234184315,
+                316.0156197207844
+              ],
+              "travel": 0.661133,
+              "swing": 0.273812
+            }
+          ],
+          "supporting_legs": [
+            0
+          ]
+        },
+        {
+          "index": 9,
+          "phase_degrees": 180.0,
+          "body_bob_2x": 3.360280285620263,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                158.48399858675222,
+                280.875125173113
+              ],
+              "ankle_2x": [
+                127.0,
+                312.0
+              ],
+              "thigh_angle_degrees": -8.51630997981523,
+              "knee_flexion_degrees": 36.812334331795356,
+              "boot_rotation_degrees": 63.76359313453261,
+              "foot_rotation_degrees": 31.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                115,
+                298,
+                171,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                138.14717210827993,
+                320.43028253554945
+              ],
+              "travel": -0.703704,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                237.36028028562026
+              ],
+              "knee_2x": [
+                185.93531766151293,
+                276.0605706516052
+              ],
+              "ankle_2x": [
+                207.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 28.411624932657713,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": -9.976676109735703,
+              "foot_rotation_degrees": 13.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                197,
+                303,
+                255,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                220.34912986811273,
+                319.394645498072
+              ],
+              "travel": 0.777778,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 10,
+          "phase_degrees": 202.5,
+          "body_bob_2x": 2.9172257577771177,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                146.1394761808585,
+                276.66996957839405
+              ],
+              "ankle_2x": [
+                117.0,
+                310.0
+              ],
+              "thigh_angle_degrees": -25.3818064201187,
+              "knee_flexion_degrees": 15.780450859157412,
+              "boot_rotation_degrees": 59.59720610219814,
+              "foot_rotation_degrees": 34.75,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                104,
+                296,
+                160,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.5625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                127.54795581268745,
+                319.1792615836154
+              ],
+              "travel": -0.888889,
+              "swing": 0.0
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                236.91722575777712
+              ],
+              "knee_2x": [
+                192.93052936863262,
+                270.91554232180647
+              ],
+              "ankle_2x": [
+                197.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 39.4040222262253,
+              "knee_flexion_degrees": 34.12995090699866,
+              "boot_rotation_degrees": 13.160877503695389,
+              "foot_rotation_degrees": 20.5,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                187,
+                302,
+                244,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.0625,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                209.6270318414607,
+                321.1524260642497
+              ],
+              "travel": 0.592593,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            0,
+            1
+          ]
+        },
+        {
+          "index": 11,
+          "phase_degrees": 225.0,
+          "body_bob_2x": -3.377753289669414,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                230.6222467103306
+              ],
+              "knee_2x": [
+                141.97031315693548,
+                268.11402612809604
+              ],
+              "ankle_2x": [
+                112.078125,
+                300.77068069022727
+              ],
+              "thigh_angle_degrees": -31.560727079461397,
+              "knee_flexion_degrees": 10.908622653371168,
+              "boot_rotation_degrees": 60.90429855575458,
+              "foot_rotation_degrees": 36.166666666666664,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                99,
+                286,
+                155,
+                327
+              ],
+              "supporting": false,
+              "leg_phase": 0.625,
+              "swing_lift_2x": 9.229319309772752,
+              "foot_centroid_2x": [
+                122.38751113450482,
+                310.21082678759416
+              ],
+              "travel": -0.980035,
+              "swing": 0.542901
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                230.6222467103306
+              ],
+              "knee_2x": [
+                182.60477765350893,
+                270.94682735006586
+              ],
+              "ankle_2x": [
+                187.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 23.58496670263061,
+              "knee_flexion_degrees": 17.88737336692515,
+              "boot_rotation_degrees": 12.737355487216535,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                176,
+                301,
+                233,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                199.04227905863797,
+                322.1586551585844
+              ],
+              "travel": 0.407407,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 12,
+          "phase_degrees": 247.5,
+          "body_bob_2x": -6.218313405818293,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                227.7816865941817
+              ],
+              "knee_2x": [
+                157.71938429227035,
+                271.1751496377826
+              ],
+              "ankle_2x": [
+                122.771484375,
+                298.35316081175296
+              ],
+              "thigh_angle_degrees": -9.524453914326038,
+              "knee_flexion_degrees": 42.604330739418884,
+              "boot_rotation_degrees": 70.56373347666693,
+              "foot_rotation_degrees": 34.08333333333333,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                110,
+                284,
+                167,
+                324
+              ],
+              "supporting": false,
+              "leg_phase": 0.6875,
+              "swing_lift_2x": 12.646839188247052,
+              "foot_centroid_2x": [
+                133.44545405449193,
+                307.38463667539764
+              ],
+              "travel": -0.78201,
+              "swing": 0.743932
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                227.7816865941817
+              ],
+              "knee_2x": [
+                174.14890526002367,
+                270.8200129155329
+              ],
+              "ankle_2x": [
+                177.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 12.001052854215368,
+              "knee_flexion_degrees": 8.308668551916213,
+              "boot_rotation_degrees": 14.742564520622869,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                166,
+                301,
+                223,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.1875,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                189.04227905863797,
+                322.1586551585844
+              ],
+              "travel": 0.222222,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 13,
+          "phase_degrees": 270.0,
+          "body_bob_2x": -7.249227063626137,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                226.75077293637386
+              ],
+              "knee_2x": [
+                176.69999077722713,
+                269.16669230413953
+              ],
+              "ankle_2x": [
+                141.375,
+                295.85273784462413
+              ],
+              "thigh_angle_degrees": 15.420965660347033,
+              "knee_flexion_degrees": 68.35196845820859,
+              "boot_rotation_degrees": 71.36595162078355,
+              "foot_rotation_degrees": 31.285714285714285,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                129,
+                282,
+                186,
+                320
+              ],
+              "supporting": false,
+              "leg_phase": 0.75,
+              "swing_lift_2x": 16.14726215537588,
+              "foot_centroid_2x": [
+                152.50853567483014,
+                304.3339200589203
+              ],
+              "travel": -0.4375,
+              "swing": 0.949839
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                226.75077293637386
+              ],
+              "knee_2x": [
+                165.99692021739435,
+                270.73947773749467
+              ],
+              "ankle_2x": [
+                167.0,
+                315.0
+              ],
+              "thigh_angle_degrees": 1.2982774807364064,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": 17.136672195959253,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                156,
+                301,
+                213,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.25,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                179.04227905863797,
+                322.1586551585844
+              ],
+              "travel": 0.037037,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 14,
+          "phase_degrees": 292.5,
+          "body_bob_2x": -6.90862345257969,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                227.0913765474203
+              ],
+              "knee_2x": [
+                191.14690304860764,
+                262.4797851152934
+              ],
+              "ankle_2x": [
+                163.494140625,
+                297.05325370529044
+              ],
+              "thigh_angle_degrees": 36.459027779993484,
+              "knee_flexion_degrees": 75.11275994636517,
+              "boot_rotation_degrees": 57.08868098929371,
+              "foot_rotation_degrees": 27.714285714285715,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                152,
+                283,
+                209,
+                319
+              ],
+              "supporting": false,
+              "leg_phase": 0.8125,
+              "swing_lift_2x": 16.946746294709527,
+              "foot_centroid_2x": [
+                175.1348059713621,
+                304.7728640936132
+              ],
+              "travel": -0.027886,
+              "swing": 0.996867
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                227.0913765474203
+              ],
+              "knee_2x": [
+                161.01232077290814,
+                270.9103041287957
+              ],
+              "ankle_2x": [
+                157.0,
+                315.0
+              ],
+              "thigh_angle_degrees": -5.199798241696986,
+              "knee_flexion_degrees": 8.537736462515939e-07,
+              "boot_rotation_degrees": 23.63474791839264,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                146,
+                301,
+                203,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.3125,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                169.04227905863797,
+                322.1586551585844
+              ],
+              "travel": -0.148148,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 15,
+          "phase_degrees": 315.0,
+          "body_bob_2x": -5.417163094650618,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                228.58283690534938
+              ],
+              "knee_2x": [
+                196.8386133555281,
+                258.9522738378509
+              ],
+              "ankle_2x": [
+                184.734375,
+                301.5373347610498
+              ],
+              "thigh_angle_degrees": 46.35291112130059,
+              "knee_flexion_degrees": 62.22000793086776,
+              "boot_rotation_degrees": 34.30204563248916,
+              "foot_rotation_degrees": 23.71428571428571,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                174,
+                288,
+                231,
+                322
+              ],
+              "supporting": false,
+              "leg_phase": 0.875,
+              "swing_lift_2x": 13.462665238950217,
+              "foot_centroid_2x": [
+                196.97411491623723,
+                308.4095764658909
+              ],
+              "travel": 0.365451,
+              "swing": 0.791921
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                228.58283690534938
+              ],
+              "knee_2x": [
+                156.02772100220875,
+                271.6583312099513
+              ],
+              "ankle_2x": [
+                147.0,
+                315.0
+              ],
+              "thigh_angle_degrees": -11.766016826031157,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": 30.20096564895317,
+              "foot_rotation_degrees": 25.0,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                136,
+                301,
+                193,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                159.04227905863797,
+                322.1586551585844
+              ],
+              "travel": -0.333333,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        },
+        {
+          "index": 16,
+          "phase_degrees": 337.5,
+          "body_bob_2x": -3.713356624420726,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "hip_2x": [
+                165.0,
+                230.28664337557927
+              ],
+              "knee_2x": [
+                187.54007998867309,
+                268.07480017244114
+              ],
+              "ankle_2x": [
+                200.701171875,
+                310.34518768379075
+              ],
+              "thigh_angle_degrees": 30.8154551713672,
+              "knee_flexion_degrees": 13.521222750280447,
+              "boot_rotation_degrees": 1.1407164018352727,
+              "foot_rotation_degrees": 18.357142857142858,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                191,
+                297,
+                248,
+                331
+              ],
+              "supporting": false,
+              "leg_phase": 0.9375,
+              "swing_lift_2x": 4.654812316209254,
+              "foot_centroid_2x": [
+                213.51904234184315,
+                316.0156197207844
+              ],
+              "travel": 0.661133,
+              "swing": 0.273812
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "hip_2x": [
+                165.0,
+                230.28664337557927
+              ],
+              "knee_2x": [
+                151.0431215589914,
+                272.0143984575737
+              ],
+              "ankle_2x": [
+                137.0,
+                314.0
+              ],
+              "thigh_angle_degrees": -18.49378469654197,
+              "knee_flexion_degrees": 0.0,
+              "boot_rotation_degrees": 36.928733519464,
+              "foot_rotation_degrees": 27.25,
+              "thigh_length_2x": 44.0,
+              "shin_length_2x": 44.27188724235731,
+              "boot_box_2x": [
+                126,
+                300,
+                182,
+                336
+              ],
+              "supporting": true,
+              "leg_phase": 0.4375,
+              "swing_lift_2x": 0.0,
+              "foot_centroid_2x": [
+                148.71146807439226,
+                321.63390572879877
+              ],
+              "travel": -0.518519,
+              "swing": 0.0
+            }
+          ],
+          "supporting_legs": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "direction": "north",
+      "phases": [
+        {
+          "index": 1,
+          "phase_degrees": 0,
+          "body_bob_2x": 0,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                240,
+                107,
+                304
+              ],
+              "shaft_2x": [
+                86.0,
+                248
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                108,
+                256,
+                154,
+                320
+              ],
+              "shaft_2x": [
+                130.0,
+                264
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "phase_degrees": 45,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                242,
+                107,
+                306
+              ],
+              "shaft_2x": [
+                86.0,
+                250
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                108,
+                248,
+                154,
+                312
+              ],
+              "shaft_2x": [
+                130.0,
+                256
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "phase_degrees": 90,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -0.0,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                248,
+                107,
+                312
+              ],
+              "shaft_2x": [
+                86.0,
+                256
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": 0.0,
+              "stance": false,
+              "boot_box_2x": [
+                108,
+                240,
+                154,
+                304
+              ],
+              "shaft_2x": [
+                130.0,
+                248
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "phase_degrees": 135,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                254,
+                107,
+                318
+              ],
+              "shaft_2x": [
+                86.0,
+                262
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                108,
+                237,
+                154,
+                301
+              ],
+              "shaft_2x": [
+                130.0,
+                245
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "phase_degrees": 180,
+          "body_bob_2x": 0,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 8.0,
+              "stance": true,
+              "boot_box_2x": [
+                65,
+                256,
+                107,
+                320
+              ],
+              "shaft_2x": [
+                86.0,
+                264
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 1.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0.0,
+              "depth_2x": -8.0,
+              "stance": true,
+              "boot_box_2x": [
+                108,
+                240,
+                154,
+                304
+              ],
+              "shaft_2x": [
+                130.0,
+                248
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "phase_degrees": 225,
+          "body_bob_2x": -1,
+          "layer_order": [
+            1,
+            0
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": 5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                65,
+                248,
+                107,
+                312
+              ],
+              "shaft_2x": [
+                86.0,
+                256
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                108,
+                242,
+                154,
+                306
+              ],
+              "shaft_2x": [
+                130.0,
+                250
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "phase_degrees": 270,
+          "body_bob_2x": -2,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": -0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 8.0,
+              "depth_2x": 0.0,
+              "stance": false,
+              "boot_box_2x": [
+                65,
+                240,
+                107,
+                304
+              ],
+              "shaft_2x": [
+                86.0,
+                248
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": 0.0,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": -0.0,
+              "stance": true,
+              "boot_box_2x": [
+                108,
+                248,
+                154,
+                312
+              ],
+              "shaft_2x": [
+                130.0,
+                256
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "phase_degrees": 315,
+          "body_bob_2x": -1,
+          "layer_order": [
+            0,
+            1
+          ],
+          "legs": [
+            {
+              "leg": "A",
+              "anatomical_side": "left",
+              "travel": 0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 5.656854,
+              "depth_2x": -5.656854,
+              "stance": false,
+              "boot_box_2x": [
+                65,
+                237,
+                107,
+                301
+              ],
+              "shaft_2x": [
+                86.0,
+                245
+              ],
+              "hip_2x": [
+                86.0,
+                222
+              ]
+            },
+            {
+              "leg": "B",
+              "anatomical_side": "right",
+              "travel": -0.707107,
+              "advance_2x": 0,
+              "swing_lift_2x": 0,
+              "depth_2x": 5.656854,
+              "stance": true,
+              "boot_box_2x": [
+                108,
+                254,
+                154,
+                318
+              ],
+              "shaft_2x": [
+                130.0,
+                262
+              ],
+              "hip_2x": [
+                130.0,
+                222
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

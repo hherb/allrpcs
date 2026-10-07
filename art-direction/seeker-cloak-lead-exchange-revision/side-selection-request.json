@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-07",
+  "question": "Does the complete revised side gait now show the knee-and-foot lead exchange you want, as tracked through the slow preview? Front/back acceptance remains settled.",
+  "status": "pending; asked once after complete comparison and slow persistent-identity tracking were displayed",
+  "candidate_sha256": "86927f09839439e07577f7d6862a714838cc47736056b794e0b51bd1e121ccb9",
+  "scope": "complete west/east lead-exchange successor only; front/back remains closed"
+}

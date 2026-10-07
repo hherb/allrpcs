@@ -1,0 +1,21 @@
+PASS: 312 candidate RGBA exports and exact 2x masters; 48 unchanged inherited Seeker frames.
+PASS: 14 labelled PNG boards/compositions and 27 animated cycle previews.
+Source cells with substantial paint on an edge (inspect visually): ['healer-east-inspect-02']
+Authoring checks only; owner artwork approval, timing/alignment and runtime integration remain pending.
+KNOWN ARTWORK DEFECT: walk frames are incomplete stride studies, not full alternating cycles.
+PASS: 288 RGBA cutout frames, exact 2x masters and unchanged source-paint hashes.
+PASS: 36 eight-phase loops, alternating contact/swing ownership, unique poses and 10 full-loop GIFs.
+Authoring checks only: knee/arm articulation, cutout style, timing and owner acceptance remain review concerns.
+Traceback (most recent call last):
+  File "/Users/hherb/src/allrpcs/art-direction/characters-batch/validate_approved.py", line 54, in <module>
+    main()
+    ~~~~^^
+  File "/Users/hherb/src/allrpcs/art-direction/characters-batch/validate_approved.py", line 14, in main
+    inspect_polished()
+    ~~~~~~~~~~~~~~~~^^
+  File "/Users/hherb/src/allrpcs/art-direction/characters-batch/inspect_walk_polish.py", line 64, in main
+    require(set(manifest['files']) == expected, 'Incomplete polish review manifest')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hherb/src/allrpcs/art-direction/characters-batch/inspect_package.py", line 18, in require
+    raise ValueError(message)
+ValueError: Incomplete polish review manifest

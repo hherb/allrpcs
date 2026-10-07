@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "comparisons": [
+    {
+      "scale": 1,
+      "unchanged_family_rows": 9,
+      "compared_region": [
+        0,
+        338,
+        1032,
+        2606
+      ],
+      "changed_rgba_pixels": 0
+    },
+    {
+      "scale": 2,
+      "unchanged_family_rows": 9,
+      "compared_region": [
+        0,
+        530,
+        1832,
+        4526
+      ],
+      "changed_rgba_pixels": 0
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "revised_sides": [
+    {
+      "direction": "west",
+      "anatomical_pelvis_source_2x": [
+        123.0,
+        210.0
+      ],
+      "thigh_scissoring": "forward/backward exchanges around one root",
+      "signed_knee_hinge": "zero/straight to backward flexion only; no hyperextension",
+      "bone_lengths_and_support_baseline": "passed"
+    },
+    {
+      "direction": "east",
+      "anatomical_pelvis_source_2x": [
+        165.0,
+        210.0
+      ],
+      "thigh_scissoring": "forward/backward exchanges around one root",
+      "signed_knee_hinge": "zero/straight to backward flexion only; no hyperextension",
+      "bone_lengths_and_support_baseline": "passed"
+    }
+  ],
+  "accepted_front_back_frames": 16,
+  "accepted_front_back_exports_and_masters": "exact predecessor bytes",
+  "predecessor_bindings": "all unchanged",
+  "editable_replay": "32 exact native masters and exports",
+  "pelvic_front_contour": "retained source paint fills former cut edge",
+  "authority": "front/back accepted; revised sides await owner visual selection; Main unchanged"
+}

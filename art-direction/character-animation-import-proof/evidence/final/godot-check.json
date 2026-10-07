@@ -1,0 +1,645 @@
+{
+  "canonical_independent_uids": 480,
+  "captures": [
+    "captures/idle-1x-000.png",
+    "captures/idle-1x-600.png",
+    "captures/inspect-1x-000.png",
+    "captures/inspect-1x-160.png",
+    "captures/inspect-1x-320.png",
+    "captures/inspect-1x-480.png",
+    "captures/walk-1x-000.png",
+    "captures/walk-1x-090.png",
+    "captures/walk-1x-120.png",
+    "captures/walk-1x-180.png",
+    "captures/walk-1x-240.png",
+    "captures/walk-1x-270.png",
+    "captures/walk-1x-360.png",
+    "captures/walk-1x-450.png",
+    "captures/walk-1x-480.png",
+    "captures/walk-1x-540.png",
+    "captures/walk-1x-600.png",
+    "captures/walk-1x-630.png",
+    "captures/idle-2x-000.png",
+    "captures/idle-2x-600.png",
+    "captures/inspect-2x-000.png",
+    "captures/inspect-2x-160.png",
+    "captures/inspect-2x-320.png",
+    "captures/inspect-2x-480.png",
+    "captures/walk-2x-000.png",
+    "captures/walk-2x-090.png",
+    "captures/walk-2x-120.png",
+    "captures/walk-2x-180.png",
+    "captures/walk-2x-240.png",
+    "captures/walk-2x-270.png",
+    "captures/walk-2x-360.png",
+    "captures/walk-2x-450.png",
+    "captures/walk-2x-480.png",
+    "captures/walk-2x-540.png",
+    "captures/walk-2x-600.png",
+    "captures/walk-2x-630.png"
+  ],
+  "decoded_rgba_matches": 480,
+  "playback": [
+    {
+      "animation": "seeker-cloak/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-cloak/inspect_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 4
+    },
+    {
+      "animation": "seeker-cloak/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 6
+    },
+    {
+      "animation": "seeker-cloak/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-cloak/inspect_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 4
+    },
+    {
+      "animation": "seeker-cloak/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 6
+    },
+    {
+      "animation": "seeker-cloak/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-cloak/inspect_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 4
+    },
+    {
+      "animation": "seeker-cloak/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 6
+    },
+    {
+      "animation": "seeker-cloak/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-cloak/inspect_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 4
+    },
+    {
+      "animation": "seeker-cloak/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 6
+    },
+    {
+      "animation": "seeker-plain/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-plain/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-plain/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-plain/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-plain/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-apron/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-apron/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-apron/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "seeker-apron/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "seeker-apron/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "healer/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "healer/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "healer/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "healer/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "healer/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "elian/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "elian/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "elian/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "elian/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "elian/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "sera/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "sera/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "sera/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "sera/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "sera/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "orin/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "orin/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "orin/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "orin/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "orin/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "vale/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "vale/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "vale/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "vale/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "vale/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "rowan/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "rowan/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "rowan/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "rowan/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "rowan/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "mira/idle_south",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/inspect_south",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/walk_south",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "mira/idle_west",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/inspect_west",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/walk_west",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "mira/idle_east",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/inspect_east",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/walk_east",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    },
+    {
+      "animation": "mira/idle_north",
+      "completed_cycles_or_gestures": 3,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/inspect_north",
+      "completed_cycles_or_gestures": 11,
+      "seen_frames": 2
+    },
+    {
+      "animation": "mira/walk_north",
+      "completed_cycles_or_gestures": 5,
+      "seen_frames": 8
+    }
+  ],
+  "status": "passed"
+}

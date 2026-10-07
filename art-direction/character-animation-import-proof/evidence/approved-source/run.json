@@ -1,0 +1,5 @@
+{
+  "exit_code": 0,
+  "status": "passed",
+  "policy": "Unchanged validator and package bytes copied into disposable tree excluding only local .DS_Store and Python cache; live package left untouched"
+}

@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "probes": [
+    {
+      "probe": "missing frame",
+      "status": "rejected",
+      "reason": "Wrong/duplicate frame inventory"
+    },
+    {
+      "probe": "changed pivot",
+      "status": "rejected",
+      "reason": "Authority/registration drift: seeker-plain-south-idle-01"
+    },
+    {
+      "probe": "reordered animation",
+      "status": "rejected",
+      "reason": "Incomplete/reordered loop"
+    },
+    {
+      "probe": "lossy import",
+      "status": "rejected",
+      "reason": "Import processing drift: compress/mode"
+    },
+    {
+      "probe": "alpha RGB rewrite",
+      "status": "rejected",
+      "reason": "Import processing drift: process/fix_alpha_border"
+    },
+    {
+      "probe": "reused UID",
+      "status": "rejected",
+      "reason": "Import UID missing/shared"
+    },
+    {
+      "probe": "changed PNG bytes",
+      "status": "rejected",
+      "reason": "PNG byte parity failed: healer-south-idle-01"
+    }
+  ],
+  "all_original_bytes_restored": true
+}

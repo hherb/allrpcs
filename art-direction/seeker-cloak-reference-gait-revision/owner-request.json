@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-07",
+  "owner_statement": "Exactly. Please implement and show me the results",
+  "reference_statement": "Have a look at this illustration that demonstrates a natural human gait",
+  "reference": "reference/gait.jpeg",
+  "reference_sha256": "3bf8209cb14af90c642673e9c4d25334acf779db16fab2dbd441482337fae4f4",
+  "authorized_scope": "Separate west/east successor following heel strike, loading, stance, toe-off, bent-knee swing and terminal extension; persistent opposite leg half-cycle later. Carry accepted front/back unchanged.",
+  "supersedes": "Earlier side-selection request answered with natural-gait reference and explicit implementation request; no side artwork acceptance inferred."
+}

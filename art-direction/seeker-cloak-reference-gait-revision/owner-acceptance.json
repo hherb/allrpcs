@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-07",
+  "status": "accepted",
+  "owner_statement": "very good - accepted. This is our reference gait model henceforth",
+  "scope_id": "phase9-seeker-cloak-gait-correction",
+  "accepted_scope": "Complete Seeker cloak reference gait: selected west/east natural gait successor plus previously accepted unchanged south/north views, all 48 frames/masters and exact isolated proof resources. Whole correction slice is closed.",
+  "reference_role": "Canonical reference gait model for future Allrpcs walking animation work",
+  "candidate_path": "art-direction/seeker-cloak-reference-gait-revision/candidate.json",
+  "candidate_sha256": "584518b95fc6eb2bd13a8f02f9ba83e25426b62a990a8fe0969ca1a10de20b65",
+  "candidate_bindings": "All candidate bindings were verified unchanged; the bound candidate retains the complete file inventory.",
+  "prior_front_back_acceptance": {
+    "path": "art-direction/seeker-cloak-gait-side-revision/accepted-views.json",
+    "sha256": "d0fbc776c777c77c093420e65ac6caa91aa22f4f9b5d4bcf8e34a6add2535e02"
+  },
+  "bindings": {
+    "art-direction/seeker-cloak-reference-gait-revision/candidate.json": "584518b95fc6eb2bd13a8f02f9ba83e25426b62a990a8fe0969ca1a10de20b65",
+    "art-direction/seeker-cloak-reference-gait-revision/presentation.json": "4300ee43c44b5aa6cbe4c562a9e46912c89e6378b515519e048f10663a517de6",
+    "art-direction/seeker-cloak-reference-gait-revision/review/production-sides-clean-2x.webp": "1c9f009ccf3e1d42331da6e0bdfa45bfd50c355ae3f30482511b732e5092a82c",
+    "art-direction/seeker-cloak-reference-gait-revision/review/knee-foot-transfer-slow-2x.webp": "f3643969e6815da3a82c5228ae107250b86c3605cc45f4737694dc098cb462d4",
+    "art-direction/seeker-cloak-reference-gait-revision/rig.json": "38159702a6852193a1b8e872d1e593b178593a67a462f53e2b965d9bdd035377",
+    "art-direction/seeker-cloak-reference-gait-revision/verification.json": "e117379d8869f3edf422f8fc46ae6a01a1270806cf437cdf80f2dd6cba6ebe56",
+    "art-direction/seeker-cloak-reference-gait-revision/accepted-front-back-carry-forward.json": "210c118b56a7f65506e98946eb00b53ff37efda1c186e265ffd95a2186f59876",
+    "game/art/seeker-cloak-reference-gait-revision/walk.tres": "e9cc7adb25d4f66d0a5c796f766faf219d4f8163c6995ab1c54d52dda7ec0cef",
+    "game/SeekerCloakReferenceGaitProof.tscn": "3ec85fa14e78d510721a5329d1e23311b3e46b9f3ee83240beb2a47d63a4f242",
+    "game/CharacterAnimationImportProofReferenceGaitCloak.tscn": "a2c2b563e34a80875e29e6ed553be819d619e0c290a53a3824218a6e13fecc5f"
+  },
+  "authority": "Whole artwork/correction and isolated proof accepted; designation as reference model. Main integration, other character changes and Git publication require their own applicable authority.",
+  "continuation": "Close the correction without additional unchanged-view gates and restore the deferred audio policy slice.",
+  "historical_status": "Earlier pending/awaiting-selection fields inside frozen packages are superseded by this terminal acceptance; preserve their exact bytes."
+}

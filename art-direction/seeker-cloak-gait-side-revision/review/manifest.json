@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "source": "24 actual imported Godot predecessor/revision comparison captures",
+  "comparison_cycle_ms": 720,
+  "sample_times_ms": [
+    0,
+    90,
+    180,
+    270,
+    360,
+    450,
+    540,
+    630
+  ],
+  "lossless_decoded_rgba": "Exact source capture matches",
+  "files": {
+    "art-direction/seeker-cloak-gait-side-revision/review/all-32-phases.png": "a5cbaa18ae97b0a3dc58722d09aadcf69da4a817c92a4b7c00a757d3a0bb0e27",
+    "art-direction/seeker-cloak-gait-side-revision/review/leg-ownership-2x.webp": "248cb7ffadd1666feae6be1d3d375a021fc160803bbf91ed7ed4bf31a2f55530",
+    "art-direction/seeker-cloak-gait-side-revision/review/old-vs-new-1x.webp": "500f93a983ce40ff8f3c5eae1dcbe5f50f52bff79f6e41da235727b86f7efe75",
+    "art-direction/seeker-cloak-gait-side-revision/review/old-vs-new-2x.webp": "f38086d2074f549b1f2bed82c68db4b4aeb988ac063d5648a5620b1db4f9ac35"
+  }
+}

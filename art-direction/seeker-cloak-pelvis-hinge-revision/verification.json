@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-07",
+  "status": "passed",
+  "pelvis": "measured painted centre, shared leg root fixed within retained source pelvic paint; missing front contour filled",
+  "joint_policy": "explicit forward/backward hip angles; independently measured signed knee angle zero or backward, no hyperextension",
+  "bone_lengths": "fixed thigh and shin; straight leading contacts; swing flexion reaches 62 degrees",
+  "ground_and_registration": "supporting sole planted; 12 native pixels of additional side canvas/pivot padding preserve display baseline",
+  "accepted_front_back": "16 exports and native masters byte-identical to terminally accepted views",
+  "predecessors": "all bound files of both earlier candidates unchanged",
+  "godot_import": "cold disposable cache; 32 exact decoded RGBA texture matches",
+  "actual_playback": "all old/new eight-phase walks in order; at least two loops per direction; fixed pivots",
+  "comparison_captures": 24,
+  "review": "native/2x lossless eight-sample comparisons, complete 32-pose contact board, ownership and visible hinge overlays",
+  "other_families": "nine rows with zero changed pixels in full native/2x captures",
+  "ordinary_product": "all original boundary hashes including local project.godot editor rewrite still match",
+  "environment": "sandbox editor settings save blocked; resource imports completed and actual host rendering/playback passed",
+  "full_product_evidence": "preceding product suite retained; no rerun for isolated candidate",
+  "authority": "side-only candidate awaiting visual selection; accepted front/back closed; Main and publication excluded"
+}

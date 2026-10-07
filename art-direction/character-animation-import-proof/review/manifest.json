@@ -1,0 +1,137 @@
+{
+  "status": "passed",
+  "comparisons": [
+    {
+      "path": "art-direction/character-animation-import-proof/review/idle-1x.webp",
+      "sha256": "983c0cd567e42ac186c950755571a27b5317ecda6687c76dabc9230f39af477a",
+      "duration_ms": [
+        600,
+        600
+      ],
+      "cycle_ms": 1200,
+      "capture_paths": [
+        "art-direction/character-animation-import-proof/evidence/final/captures/idle-1x-000.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/idle-1x-600.png"
+      ],
+      "decoded_rgba": "exact capture matches"
+    },
+    {
+      "path": "art-direction/character-animation-import-proof/review/inspect-1x.webp",
+      "sha256": "1d02a61e47e3f97dc4a9def34aa5e97fca73723064e1ff2fd33caeaaabca57e5",
+      "duration_ms": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "cycle_ms": 640,
+      "capture_paths": [
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-1x-000.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-1x-160.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-1x-320.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-1x-480.png"
+      ],
+      "decoded_rgba": "exact capture matches"
+    },
+    {
+      "path": "art-direction/character-animation-import-proof/review/walk-1x.webp",
+      "sha256": "e97e417a2ad0f58d4274d2311e9d28e06d1db6e90819c7800ef5bc5da12f3c5b",
+      "duration_ms": [
+        90,
+        30,
+        60,
+        60,
+        30,
+        90,
+        90,
+        30,
+        60,
+        60,
+        30,
+        90
+      ],
+      "cycle_ms": 720,
+      "capture_paths": [
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-000.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-090.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-120.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-180.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-240.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-270.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-360.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-450.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-480.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-540.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-600.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-1x-630.png"
+      ],
+      "decoded_rgba": "exact capture matches"
+    },
+    {
+      "path": "art-direction/character-animation-import-proof/review/idle-2x.webp",
+      "sha256": "9d9c6bb5b83dc04bc6569d4b982563b33bc4e9406bf4f4f104d2fa0914b31ffd",
+      "duration_ms": [
+        600,
+        600
+      ],
+      "cycle_ms": 1200,
+      "capture_paths": [
+        "art-direction/character-animation-import-proof/evidence/final/captures/idle-2x-000.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/idle-2x-600.png"
+      ],
+      "decoded_rgba": "exact capture matches"
+    },
+    {
+      "path": "art-direction/character-animation-import-proof/review/inspect-2x.webp",
+      "sha256": "b363cc8f76a2e5bfdaa8d76fa3db641fdd87dd758da1ff91fa519dbe7249f89a",
+      "duration_ms": [
+        160,
+        160,
+        160,
+        160
+      ],
+      "cycle_ms": 640,
+      "capture_paths": [
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-2x-000.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-2x-160.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-2x-320.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/inspect-2x-480.png"
+      ],
+      "decoded_rgba": "exact capture matches"
+    },
+    {
+      "path": "art-direction/character-animation-import-proof/review/walk-2x.webp",
+      "sha256": "acf6024ab4e98b3115fbdd24f60d57cdb36d5ae55816613ec0c416bc10806342",
+      "duration_ms": [
+        90,
+        30,
+        60,
+        60,
+        30,
+        90,
+        90,
+        30,
+        60,
+        60,
+        30,
+        90
+      ],
+      "cycle_ms": 720,
+      "capture_paths": [
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-000.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-090.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-120.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-180.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-240.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-270.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-360.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-450.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-480.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-540.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-600.png",
+        "art-direction/character-animation-import-proof/evidence/final/captures/walk-2x-630.png"
+      ],
+      "decoded_rgba": "exact capture matches"
+    }
+  ]
+}

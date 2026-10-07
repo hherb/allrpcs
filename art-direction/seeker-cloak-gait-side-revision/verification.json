@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-07",
+  "status": "passed",
+  "authoring": "central pelvis, fixed bone lengths, alternating knee flexion and shin rotation, both contacts/passes and stance baseline",
+  "accepted_front_back": "16 exports and 16 masters match accepted predecessor files byte for byte",
+  "godot_import": "fresh disposable cache; all 32 imported textures match decoded source RGBA",
+  "godot_playback": "ordered eight-phase predecessor/revision walks in four directions, fixed pivots and at least two complete loops",
+  "comparison_captures": 24,
+  "lossless_review": "eight unique sample times, exact capture pixels and 90ms durations at native/2x",
+  "other_families": "all nine full-cohort rows have zero changed RGBA pixels at native/2x",
+  "ordinary_product": "every original proof boundary-input hash still matches, including unrelated project.godot rewrite",
+  "predecessor": "every predecessor candidate binding unchanged",
+  "import_editor_environment": "sandbox prevented saving global editor settings; imports completed and actual loaded RGBA/playback/capture checks passed with host graphics access",
+  "full_product_evidence": "retained; no ordinary product/CI input changes",
+  "authority": "front/back accepted; revised west/east awaiting visual selection; no Main installation or Git publication"
+}

@@ -1,0 +1,117 @@
+{
+  "status": "passed",
+  "revised_sides": [
+    {
+      "direction": "west",
+      "double_support_pose_indices": [
+        1,
+        2,
+        9,
+        10
+      ],
+      "knee_then_foot_transfers": [
+        {
+          "advancing_leg": "B",
+          "knee_cross_pose": 5,
+          "foot_cross_pose": 6,
+          "sequence": "bent knee passes first; foot follows with knee extension"
+        },
+        {
+          "advancing_leg": "A",
+          "knee_cross_pose": 13,
+          "foot_cross_pose": 14,
+          "sequence": "bent knee passes first; foot follows with knee extension"
+        }
+      ],
+      "painted_heel_and_toe_contact": [
+        {
+          "pose": 1,
+          "leg": "A",
+          "contact": "heel",
+          "lowest_paint_offset_from_centroid_2x": -14.714446973312278
+        },
+        {
+          "pose": 9,
+          "leg": "B",
+          "contact": "heel",
+          "lowest_paint_offset_from_centroid_2x": -14.714446973312278
+        },
+        {
+          "pose": 2,
+          "leg": "B",
+          "contact": "toe",
+          "lowest_paint_offset_from_centroid_2x": 16.552731504164626
+        },
+        {
+          "pose": 10,
+          "leg": "A",
+          "contact": "toe",
+          "lowest_paint_offset_from_centroid_2x": 16.552731504164626
+        }
+      ],
+      "actual_visible_contact_feet": "persistent A/B identity",
+      "pelvis_and_one_way_knee_hinges": "passed",
+      "grounded_support_and_clear_swing": "passed",
+      "predecessor_missing_double_support_rejection": "passed"
+    },
+    {
+      "direction": "east",
+      "double_support_pose_indices": [
+        1,
+        2,
+        9,
+        10
+      ],
+      "knee_then_foot_transfers": [
+        {
+          "advancing_leg": "B",
+          "knee_cross_pose": 5,
+          "foot_cross_pose": 6,
+          "sequence": "bent knee passes first; foot follows with knee extension"
+        },
+        {
+          "advancing_leg": "A",
+          "knee_cross_pose": 13,
+          "foot_cross_pose": 14,
+          "sequence": "bent knee passes first; foot follows with knee extension"
+        }
+      ],
+      "painted_heel_and_toe_contact": [
+        {
+          "pose": 1,
+          "leg": "A",
+          "contact": "heel",
+          "lowest_paint_offset_from_centroid_2x": -13.349129868112726
+        },
+        {
+          "pose": 9,
+          "leg": "B",
+          "contact": "heel",
+          "lowest_paint_offset_from_centroid_2x": -13.349129868112726
+        },
+        {
+          "pose": 2,
+          "leg": "B",
+          "contact": "toe",
+          "lowest_paint_offset_from_centroid_2x": 15.452044187312552
+        },
+        {
+          "pose": 10,
+          "leg": "A",
+          "contact": "toe",
+          "lowest_paint_offset_from_centroid_2x": 15.452044187312552
+        }
+      ],
+      "actual_visible_contact_feet": "persistent A/B identity",
+      "pelvis_and_one_way_knee_hinges": "passed",
+      "grounded_support_and_clear_swing": "passed",
+      "predecessor_missing_double_support_rejection": "passed"
+    }
+  ],
+  "accepted_front_back_frames": 16,
+  "accepted_front_back_exports_and_masters": "exact predecessor bytes",
+  "predecessor_bindings": "all unchanged",
+  "editable_replay": "48 exact native masters and exports",
+  "pelvic_front_contour": "retained source paint fills former cut edge",
+  "authority": "front/back accepted; revised sides await owner visual selection; Main unchanged"
+}

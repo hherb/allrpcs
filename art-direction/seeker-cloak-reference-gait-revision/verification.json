@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-07",
+  "status": "passed",
+  "reference": "owner-supplied natural gait illustration; diagram sequence implemented in separate side successor",
+  "cycle": "16 side poses at 45ms, accepted 8 front/back poses at 90ms; complete cycle 720ms",
+  "timing": "60% stance/40% swing chosen for artwork; opposite leg half-cycle later; bilateral brief double support",
+  "sequence": "each knee passes first while its bent lower leg trails; rendered foot then passes and knee extends for contact",
+  "geometry": "same painted pelvis centre, filled front contour, fixed bone lengths, true straight poses and signed backward-only knee branch; continuous pelvis height",
+  "painted_foot_evidence": "lowest substantial alpha confirms forward heel contact and trailing toe contact; grounded double support, clear swing, persistent visible A/B foot paint and alpha-weighted centroid exchange",
+  "accepted_front_back": "sixteen exports and ORA masters byte-identical to terminally accepted views",
+  "predecessors": "all four earlier bound candidates unchanged",
+  "frozen_import_proof": "all verification bindings unchanged",
+  "godot_import": "cold disposable cache; exact decoded RGBA for all 48 frames",
+  "playback": "all old/new walks complete in order, fixed pivots, at least two loops",
+  "comparison_captures": 32,
+  "review": "lossless every side pose, native/2x actual captures; half-speed authoring tracking; decoded pixels and frame durations checked",
+  "other_families": "nine full-cohort rows have zero changed RGBA pixels at native/2x",
+  "ordinary_product": "original boundary hashes unchanged including local project.godot editor rewrite",
+  "environment": "sandbox global editor-settings save blocked; asset imports completed, host Compatibility rendering passed",
+  "full_product_evidence": "prior 5033-test evidence retained; no ordinary product or CI inputs changed",
+  "authority": "side successor presented for visual review; existing front/back closed; Main and Git publication excluded"
+}

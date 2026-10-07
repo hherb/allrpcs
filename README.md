@@ -103,8 +103,21 @@ Continuation uses the [persistent ledger](CONTINUATION.json), [handover](HANDOVE
 and [repository instructions](AGENTS.md). Run `python3 scripts/check-continuation.py`
 before starting a slice. Closed approvals survive handover pruning; historical package
 "pending" and "next" text does not reopen them. The [loop investigation](CONTINUATION_AUDIT.md)
-retires the redundant forest-study successor and identifies the missing approved
-character animation import/registration proof as the next deliverable.
+retires the redundant forest-study successor. The complete
+[character animation import/registration proof](art-direction/character-animation-import-proof/README.md)
+now contains 480 accepted directional frames, 120 isolated animations, measured fixed
+pivots and lossless native/2× collective comparisons. Cold imports preserve decoded
+RGBA exactly and every animation passes actual ordered playback. Launch it with
+`godot --path game res://CharacterAnimationImportProof.tscn`; validate/reproduce it with
+`/opt/homebrew/bin/python3 scripts/validate-character-animation-import-proof.py --replay`.
+Main and ordinary character presentation remain unchanged. The owner accepted the complete [reference gait model](art-direction/reference-gait-model.md)
+on 2026-10-07 and designated it the walking reference henceforth. The
+[terminal acceptance](art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json)
+closes the whole cloak correction: sixteen natural side poses per direction plus
+sixteen unchanged accepted front/back frames, with grounded double support,
+backward-only knees and knee-first then foot exchange. Exact imported Godot
+playback and normal/half-speed previews are retained. All predecessors remain
+unchanged; the deferred audio-policy slice is restored in the continuation ledger.
 
 The complete initial [objects artwork series](art-direction/objects-batch/README.md)
 contains 42 external candidates for herbs, remedies, tools, scrolls, inscription surfaces,

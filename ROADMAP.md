@@ -312,9 +312,21 @@ cold import. The entire grouped runtime slice is terminally accepted; do not reo
 historical pending records. On 2026-10-06 the owner closed the redundant proposed
 forest-approach dressing successor. Further automatic ground/Clearing/forest studies
 are parked in the [persistent ledger](CONTINUATION.json); this is not a claim of global
-terrain, accessibility or pacing completion. Next is one isolated import/registration
-proof for the complete already-approved directional character set, addressing the
-remaining scale/pivot/import validation item without another artwork-selection cycle.
+terrain, accessibility or pacing completion. The complete
+[character import/registration proof](art-direction/character-animation-import-proof/README.md)
+now plays 480 approved directional frames across 120 isolated animations. Measured
+fixed pivots, exact decoded RGBA, independent lossless imports, ordered playback and
+native/2× collective comparisons pass. This closes the isolated character deliverable;
+ordinary character integration and the broader scale/collision/accessibility items
+remain unfinished. The owner-accepted [reference gait model](art-direction/reference-gait-model.md)
+closes the inherited cloak correction on 2026-10-07: 48 exact accepted frames/masters,
+with sixteen natural side poses, brief double support, backward-only knee hinges,
+knee-before-foot exchange and actual native/2× Godot import/playback evidence.
+The [terminal acceptance](art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json)
+binds the selected candidate and isolated proof. All sixteen accepted front/back
+poses and every predecessor remain unchanged. Use this as the reference for future
+walking animation work. Historical pending fields are superseded; the whole gait
+correction is closed and the deferred audio-policy slice is restored.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -339,7 +351,8 @@ passing full-suite evidence and run fresh scoped validation for the newly approv
 - [x] Produce reusable trees, shrubs, fallen wood, rocks, and environmental details.
 - [x] Produce village, sickhouse, garden, shrine, laundry, wagon, and woodland structures.
 - [x] Produce owner-approved character designs, portraits, directional sprites and animation-frame artwork.
-- [ ] Import and register the complete approved directional character animation set in an isolated proof.
+- [x] Import and register the complete approved directional character animation set in an isolated proof.
+- [x] Correct the inherited Seeker cloak walking gait with alternating contacts and passing poses in an isolated candidate.
 - [x] Produce herbs, remedies, tools, scrolls, inscriptions, containers, and clue objects.
 - [x] Produce journal, map, inventory, dialogue, settings, and provider-state UI assets.
 - [x] Produce weather, lighting, discovery, treatment, and disease-state effects.

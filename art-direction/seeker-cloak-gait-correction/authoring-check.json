@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "direction": "south",
+      "opposite_contact_deltas_2x": [
+        16,
+        -16
+      ],
+      "passing_phases": [
+        90,
+        270
+      ],
+      "unique_rendered_poses": 8,
+      "semantic_masters": "exact layer composition and decoded replay"
+    },
+    {
+      "direction": "west",
+      "opposite_contact_deltas_2x": [
+        -88.0,
+        72.0
+      ],
+      "passing_phases": [
+        90,
+        270
+      ],
+      "unique_rendered_poses": 8,
+      "semantic_masters": "exact layer composition and decoded replay"
+    },
+    {
+      "direction": "east",
+      "opposite_contact_deltas_2x": [
+        72.0,
+        -88.0
+      ],
+      "passing_phases": [
+        90,
+        270
+      ],
+      "unique_rendered_poses": 8,
+      "semantic_masters": "exact layer composition and decoded replay"
+    },
+    {
+      "direction": "north",
+      "opposite_contact_deltas_2x": [
+        -16,
+        16
+      ],
+      "passing_phases": [
+        90,
+        270
+      ],
+      "unique_rendered_poses": 8,
+      "semantic_masters": "exact layer composition and decoded replay"
+    }
+  ],
+  "scope": "Authoring/lineage/gait checks only; owner selection and Main integration not inferred"
+}

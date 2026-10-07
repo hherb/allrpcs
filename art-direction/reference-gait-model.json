@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "allrpcs-reference-human-walk",
+  "date": "2026-10-07",
+  "status": "owner-accepted",
+  "owner_statement": "very good - accepted. This is our reference gait model henceforth",
+  "acceptance": {
+    "path": "art-direction/seeker-cloak-reference-gait-revision/owner-acceptance.json",
+    "sha256": "88c90fa7bc441d05c887a81ba4a6b7098c44214d76c209c041d46591f51d2fe7"
+  },
+  "candidate": {
+    "path": "art-direction/seeker-cloak-reference-gait-revision/candidate.json",
+    "sha256": "584518b95fc6eb2bd13a8f02f9ba83e25426b62a990a8fe0969ca1a10de20b65"
+  },
+  "rig": {
+    "path": "art-direction/seeker-cloak-reference-gait-revision/rig.json",
+    "sha256": "38159702a6852193a1b8e872d1e593b178593a67a462f53e2b965d9bdd035377"
+  },
+  "sprite_frames": {
+    "path": "game/art/seeker-cloak-reference-gait-revision/walk.tres",
+    "sha256": "e9cc7adb25d4f66d0a5c796f766faf219d4f8163c6995ab1c54d52dda7ec0cef"
+  },
+  "cycle_ms": 720,
+  "frames_per_direction": {
+    "south": 8,
+    "west": 16,
+    "east": 16,
+    "north": 8
+  },
+  "side_frame_ms": 45,
+  "front_back_frame_ms": 90,
+  "stance_fraction": 0.6,
+  "swing_fraction": 0.4,
+  "opposite_leg_phase_offset": 0.5,
+  "timing_policy": "Accepted art timing; use as the reference. Future authored cadence/proportion adaptations must preserve the phase sequence and anatomical constraints. These are not clinical measurements.",
+  "phase_sequence": [
+    "heel contact and loading with brief double support",
+    "planted stance while the body passes over the support foot",
+    "trailing toe-off",
+    "backward knee flexion with lifted trailing foot",
+    "knee advances past the support knee before the swing foot passes",
+    "knee extension and foot advance into the next heel contact"
+  ],
+  "constraints": [
+    "thighs pivot at the painted anatomical pelvis centre",
+    "fixed anatomical left/right ownership throughout crossing and occlusion",
+    "knees straighten or flex backward only; no forward bend or hyperextension",
+    "fixed thigh/shin lengths within the authored cycle",
+    "grounded support soles and lifted swing foot",
+    "both knees and feet exchange leading/trailing roles each half-cycle",
+    "heel-to-toe contact roll and brief bilateral support handovers"
+  ],
+  "previews": {
+    "production": "art-direction/seeker-cloak-reference-gait-revision/review/production-sides-clean-2x.webp",
+    "slow_tracking": "art-direction/seeker-cloak-reference-gait-revision/review/knee-foot-transfer-slow-2x.webp",
+    "all_poses": "art-direction/seeker-cloak-reference-gait-revision/review/all-48-phases.png"
+  },
+  "scope_policy": "Reference model for future walking animation work; preserve this accepted set. Does not initiate other-family revisions or Main integration."
+}

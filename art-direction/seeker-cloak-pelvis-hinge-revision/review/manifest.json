@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "source": "24 actual imported Godot predecessor/revision comparison captures",
+  "comparison_cycle_ms": 720,
+  "sample_times_ms": [
+    0,
+    90,
+    180,
+    270,
+    360,
+    450,
+    540,
+    630
+  ],
+  "lossless_decoded_rgba": "Exact source capture matches",
+  "files": {
+    "art-direction/seeker-cloak-pelvis-hinge-revision/review/all-32-phases.png": "c8c0ac91d5a192a8afb44938d9bca0fcee7d982848cb8331033524bb5d13ef8e",
+    "art-direction/seeker-cloak-pelvis-hinge-revision/review/leg-ownership-2x.webp": "63b66a1f7bb66f005bdb6f498eae5df3c35cc8778960f6c5bcdc8c9f6a8ec3f7",
+    "art-direction/seeker-cloak-pelvis-hinge-revision/review/old-vs-new-1x.webp": "c415261c68479d184a585ef560f1c9390dd56ae64b84c3edf9bf679c06a2ecf1",
+    "art-direction/seeker-cloak-pelvis-hinge-revision/review/old-vs-new-2x.webp": "db73f545c01c2af2f1c58a4ff8e6e632f946bc34367d5bbda68f04ad92f34098",
+    "art-direction/seeker-cloak-pelvis-hinge-revision/review/pelvis-knee-hinges-2x.webp": "fa4bfaa675383b821e4dacfeeb48089b78e23c0eb79dbffd5b9141c4d65441f4"
+  }
+}

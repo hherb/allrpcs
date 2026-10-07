@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-06",
+  "status": "passed",
+  "scope": "Complete isolated character import/registration proof",
+  "resolved_findings": [
+    "Godot expands default import options; writer now emits the canonical full sidecar with exact trailing-newline parity.",
+    "Lower support can fall just beside the retained origin during authored sway; independent registration check measures a maximum three-pixel horizontal/vertical gap, without recentering accepted frames.",
+    "Sandbox editor-settings writes are restricted; final isolated Godot import and Compatibility capture ran on the host.",
+    "Original frozen artwork validator includes local .DS_Store in its inventory; unchanged validator passes in a disposable copy excluding local OS/cache files."
+  ],
+  "coverage": [
+    "All 432 approved new directional frames and 48 inherited cloak frames, exact source/master hashes and decoded imported RGBA.",
+    "All 120 actual SpriteFrames animations: every frame visited in order, at least two loops/gestures completed, fixed pivot and exact declared cadence.",
+    "All ten families and four directions, every idle/inspect/walk source frame, native and 2x exact texture scale.",
+    "36 actual imported-texture captures; six lossless WebP comparisons verified frame-for-frame against PNG captures.",
+    "Byte-exact recipe replay and independent import/registration validation; every original product/CI input and local project rewrite retained.",
+    "Seven independent rejection probes deny missing frames, changed pivots, reordered animations, lossy compression, alpha RGB rewriting, reused UIDs and changed PNG bytes; originals restored exactly."
+  ],
+  "visual_review": "Viewed complete native walk and 2x inspection boards; all families/directions fit their cells, registration crosses and labels remain readable, source scale/accessory/alpha limits remain visible.",
+  "remaining_limits": [
+    "Fixed-pivot evidence measures presentation support only, not anatomical soles, speed/sliding, collision or navigation.",
+    "720ms new-walk cadence is an isolated proposal; the approved 800ms alternative remains selectable.",
+    "No ordinary character installation, placement, appearance-controller changes, sleeping/recovery semantics, audio or Git publication."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "source": "32 actual imported Godot captures; native authoring diagnostic clearly marked",
+  "production_cycle_ms": 720,
+  "slow_cycle_ms": 1440,
+  "sample_times_ms": [
+    0,
+    45,
+    90,
+    135,
+    180,
+    225,
+    270,
+    315,
+    360,
+    405,
+    450,
+    495,
+    540,
+    585,
+    630,
+    675
+  ],
+  "decoded_rgba_and_durations": "exact source captures and authored durations",
+  "files": {
+    "art-direction/seeker-cloak-reference-gait-revision/review/all-48-phases.png": "7cdebd3edb6129e089dc9c0754297be31a4b9f7e174259bcf1ab1f5706ea9855",
+    "art-direction/seeker-cloak-reference-gait-revision/review/knee-foot-transfer-slow-2x.webp": "f3643969e6815da3a82c5228ae107250b86c3605cc45f4737694dc098cb462d4",
+    "art-direction/seeker-cloak-reference-gait-revision/review/old-vs-new-1x.webp": "d74170bab7117db81a76baac7e5e4d758f9fb213c4eb77a5a3461533eae14168",
+    "art-direction/seeker-cloak-reference-gait-revision/review/old-vs-new-2x.webp": "3bd9be8b036b7f48bf9bfd4ec2805b695f8501c61d16244497cd4169376d701a",
+    "art-direction/seeker-cloak-reference-gait-revision/review/production-sides-2x.webp": "968708bd4b28b6103f627fd3151f4e639ad8d057fe3279242e4efa00048615d2"
+  }
+}
