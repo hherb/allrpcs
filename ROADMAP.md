@@ -419,6 +419,13 @@ packaging. This named slice is complete. The B02 composite rain spatializes with
 there is no device-listening, ordinary-play loudness or executable-release claim. Wider
 positional emitters and off-screen cues remain unfinished; the broader item stays unchecked.
 
+The [restrained music proposal](audio-direction/music-runtime-scope.md) and
+[hash-bound inventory](audio-direction/music-runtime-scope.json) complete read-only
+planning for the accepted M01/M02 passages. They specify one optional Music player,
+regional-transition/live-treatment admission, quiet intervals, interruption/no-resume,
+byte-identical resources, current source credits and finite checks. The new runtime
+grant is pending; music implementation and its roadmap checkbox remain unfinished.
+
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

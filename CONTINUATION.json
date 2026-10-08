@@ -402,6 +402,20 @@
           "sha256": "f0c4a334b7236ca5af65c6dedcc8f3a0e5eeb774468ca8e2e2222856e6ae7fd4"
         }
       ]
+    },
+    {
+      "id": "phase9-restrained-music-runtime-scope",
+      "reason": "Finite read-only music planning completed on 2026-10-08: exact current M01/M02 owners, one optional player, region-transition/live-treatment admission, quiet/dwell/travel/expiry/cooldown thresholds, interruption/no-resume, accessible controls, two byte-exact WAV installations, current contributor rights and finite checks. All 82 accepted bindings and protected runtime bytes match; no new PCM or runtime change. The new music implementation grant is the single pending decision. Standing task publication authority applies to the proposal.",
+      "evidence": [
+        {
+          "path": "audio-direction/music-runtime-scope.md",
+          "sha256": "add5ded886e31d17bd59c199d24c20e18af1569310ad643c426e329c3164f8d2"
+        },
+        {
+          "path": "audio-direction/music-runtime-scope.json",
+          "sha256": "951a3467aa64897ae8be78ccfec8ffcae2f016b648f1d1f012ab78a03b09e96a"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -509,19 +523,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-restrained-music-runtime-scope",
-    "title": "Prepare the bounded restrained music runtime proposal",
-    "status": "ready",
-    "workstream": "audio-restrained-music-runtime-planning",
+    "id": "phase9-restrained-music-runtime-integration",
+    "title": "Await authority for the exact M01/M02 restrained music runtime",
+    "status": "in_progress",
+    "workstream": "audio-restrained-music-runtime-implementation",
     "roadmap_item": "- [ ] Add restrained music that supports slow investigation without manufacturing urgency.",
-    "missing_deliverable": "A concrete runtime proposal for the accepted M01/M02 optional music is absent: exact trigger/quiet-interval ownership, interruption/resumption rules, accessible controls, resource/rights inventory and finite checks are unspecified.",
-    "instructions": "Read the accepted audio policy and retained M01/M02 bindings, then inspect actual current runtime owners and prepare one bounded read-only implementation proposal. Preserve all closed audio/art scopes and accepted material unchanged. Complete planning checks and authorized task commit/push; request only the genuinely new music runtime authority after presenting the concrete proposal.",
-    "completion_condition": "One exact finite music runtime proposal and hash-bound inventory identify missing implementation, actual owners, admission/quiet timing, interruption policy, installed resources/rights, accessibility and verification; no music runtime or new PCM generation is inferred.",
+    "missing_deliverable": "The concrete music proposal is complete; the exact new music runtime grant and its implementation/verification are absent.",
+    "instructions": "Present the completed music-runtime-scope.md/json proposal and request its one genuinely new runtime authority. Await explicit owner approval; record it in music-runtime-authority.json before product changes. Then implement the exact one-player/two-unchanged-WAV schedule and finite checks, review/document and use standing task commit/push authority. Preserve all closed decisions and unrelated editor state.",
+    "completion_condition": "Recorded exact music runtime approval followed by implemented optional M01/M02 schedule, exact resources/credits, accessibility and finite product/output verification; otherwise retain this pending authority boundary without additional planning/audition successors.",
     "outputs": [
-      "audio-direction/music-runtime-scope.md",
-      "audio-direction/music-runtime-scope.json"
+      "audio-direction/music-runtime-authority.json",
+      "audio-direction/music-runtime-verification.json",
+      "audio-direction/music-runtime-review/README.md"
     ],
-    "boundary": "Read-only planning for the named remaining restrained-music roadmap item. No new music runtime, source edits, downloads, audition, voice, perception/world/save/physical changes or reopening of accepted artwork/audio/footsteps/positional implementation. Standing task publication authority applies to completed planning."
+    "boundary": "New runtime grant is pending. Only the music proposal defines the permitted next implementation. No runtime or PCM installation yet; no waveform edits, new rest/perception/world/save/physical scope, accepted-scope reopening or release. Standing publication authority already covers completed tasks."
   },
   "deferred_slices": []
 }

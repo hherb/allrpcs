@@ -29,6 +29,13 @@ named slice is complete: [review](audio-direction/positional-cue-runtime-review/
 [authority](audio-direction/positional-cue-runtime-authority.json). The broader positional
 roadmap item remains unfinished. Accepted samples and hearing gates stay unchanged.
 
+Restrained music planning is complete: [proposal](audio-direction/music-runtime-scope.md)
+and [bound inventory](audio-direction/music-runtime-scope.json). It defines one optional
+M01/M02 player, regional-transition/live-treatment triggers, twelve quiet seconds,
+three-minute cooldown, reading/action interruption, no replay/resume, two byte-exact
+WAV installations and finite verification. No runtime resources or product files changed.
+The one new music runtime grant is pending; do not restart planning or listening selection.
+
 The owner authorized footstep commit/push and gave the standing instruction on 2026-10-08:
 “ALWAYS commit and push when you finish a task.” Carry this publication authority forward
 for completed tasks without repeating the question. See the recorded
@@ -41,34 +48,34 @@ and `.DS_Store`, from task commits.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-restrained-music-runtime-scope — Prepare the bounded restrained music runtime proposal** (ready).
+**phase9-restrained-music-runtime-integration — Await authority for the exact M01/M02 restrained music runtime** (in_progress).
 
 Roadmap item: - [ ] Add restrained music that supports slow investigation without manufacturing
 urgency.
 
-Missing deliverable: A concrete runtime proposal for the accepted M01/M02 optional music is absent:
-exact trigger/quiet-interval ownership, interruption/resumption rules, accessible controls,
-resource/rights inventory and finite checks are unspecified.
+Missing deliverable: The concrete music proposal is complete; the exact new music runtime grant and
+its implementation/verification are absent.
 
-Read the accepted audio policy and retained M01/M02 bindings, then inspect actual current runtime
-owners and prepare one bounded read-only implementation proposal. Preserve all closed audio/art
-scopes and accepted material unchanged. Complete planning checks and authorized task commit/push;
-request only the genuinely new music runtime authority after presenting the concrete proposal.
+Present the completed music-runtime-scope.md/json proposal and request its one genuinely new runtime
+authority. Await explicit owner approval; record it in music-runtime-authority.json before product
+changes. Then implement the exact one-player/two-unchanged-WAV schedule and finite checks,
+review/document and use standing task commit/push authority. Preserve all closed decisions and
+unrelated editor state.
 
-Done when: One exact finite music runtime proposal and hash-bound inventory identify missing
-implementation, actual owners, admission/quiet timing, interruption policy, installed
-resources/rights, accessibility and verification; no music runtime or new PCM generation is
-inferred.
+Done when: Recorded exact music runtime approval followed by implemented optional M01/M02 schedule,
+exact resources/credits, accessibility and finite product/output verification; otherwise retain this
+pending authority boundary without additional planning/audition successors.
 
 Expected outputs:
 
-- `audio-direction/music-runtime-scope.md`
-- `audio-direction/music-runtime-scope.json`
+- `audio-direction/music-runtime-authority.json`
+- `audio-direction/music-runtime-verification.json`
+- `audio-direction/music-runtime-review/README.md`
 
-Boundary: Read-only planning for the named remaining restrained-music roadmap item. No new music
-runtime, source edits, downloads, audition, voice, perception/world/save/physical changes or
-reopening of accepted artwork/audio/footsteps/positional implementation. Standing task publication
-authority applies to completed planning.
+Boundary: New runtime grant is pending. Only the music proposal defines the permitted next
+implementation. No runtime or PCM installation yet; no waveform edits, new
+rest/perception/world/save/physical scope, accepted-scope reopening or release. Standing publication
+authority already covers completed tasks.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
@@ -79,8 +86,12 @@ PCM parity and actual 31-stream/11-notice packaging. Caption/history/credits and
 off-screen views cover both viewports. The composite B02 rain remains spatialized with
 water; device listening and ordinary-play loudness compliance are not claimed.
 
-Use `python3 scripts/check-continuation.py --self-test` and
-`python3 scripts/validate-positional-audio-runtime.py --reviewed` for this checkpoint.
+`python3 scripts/validate-positional-audio-runtime.py --reviewed` passed before the
+music proposal was added. Its frozen path allowlist excludes successors; do not rewrite
+it or treat that exclusion as a product
+regression. For completed music planning, verify the inventory hashes/protected product
+snapshot, run the continuation self-test and review authored whitespace. Reuse the
+passing product evidence while product and CI inputs remain unchanged.
 Detailed reproducible commands and limits are in the review. Historical quality and
 predecessor validators retain their frozen allowlists; equivalent product checks and
 the new bounded validator passed. Reuse product evidence for prose-only maintenance.
