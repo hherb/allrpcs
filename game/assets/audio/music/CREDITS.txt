@@ -1,0 +1,14 @@
+Optional music sources
+Runtime installation: whole accepted WAVs copied byte-identically; no further edits.
+
+M01: Sunset Plains by Yoiyami
+Source: https://opengameart.org/content/sunset-plains
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Accepted edits: contiguous 30-55s excerpt, two-second edge fades and uniform gain; see provenance.json.
+M01 retains its original stereo mapping.
+
+M02: Shakuhachi flute play by gonzooka
+Source: https://freesound.org/people/gonzooka/sounds/486487/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Accepted edits: contiguous 30-55s excerpt, two-second edge fades and uniform gain; see provenance.json.
+M02 additionally: original 16kHz mono resampled to 48kHz and centred in stereo; no restored bandwidth.

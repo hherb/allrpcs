@@ -1,0 +1,142 @@
+[
+  {
+    "name": "M01-normal",
+    "variant": "normal",
+    "treatment": false,
+    "start": 0,
+    "duration": 27
+  },
+  {
+    "name": "M01-half",
+    "variant": "half",
+    "treatment": false,
+    "start": 27,
+    "duration": 27
+  },
+  {
+    "name": "M01-master-half",
+    "variant": "master-half",
+    "treatment": false,
+    "start": 54,
+    "duration": 27
+  },
+  {
+    "name": "M01-zero",
+    "variant": "zero",
+    "treatment": false,
+    "start": 81,
+    "duration": 27
+  },
+  {
+    "name": "M01-mute",
+    "variant": "mute",
+    "treatment": false,
+    "start": 108,
+    "duration": 27
+  },
+  {
+    "name": "M01-master-zero",
+    "variant": "master-zero",
+    "treatment": false,
+    "start": 135,
+    "duration": 27
+  },
+  {
+    "name": "M01-master-mute",
+    "variant": "master-mute",
+    "treatment": false,
+    "start": 162,
+    "duration": 27
+  },
+  {
+    "name": "M01-mono",
+    "variant": "mono",
+    "treatment": false,
+    "start": 189,
+    "duration": 27
+  },
+  {
+    "name": "M01-reduced",
+    "variant": "reduced",
+    "treatment": false,
+    "start": 216,
+    "duration": 27
+  },
+  {
+    "name": "M01-missing",
+    "variant": "missing",
+    "treatment": false,
+    "start": 243,
+    "duration": 27
+  },
+  {
+    "name": "M01-missing-bus",
+    "variant": "missing-bus",
+    "treatment": false,
+    "start": 270,
+    "duration": 27
+  },
+  {
+    "name": "M01-other-bus-zero",
+    "variant": "other-bus-zero",
+    "treatment": false,
+    "start": 297,
+    "duration": 27
+  },
+  {
+    "name": "M01-interrupt",
+    "variant": "interrupt",
+    "treatment": false,
+    "start": 324,
+    "duration": 27
+  },
+  {
+    "name": "M01-cancel",
+    "variant": "cancel",
+    "treatment": false,
+    "start": 351,
+    "duration": 27
+  },
+  {
+    "name": "M01-mute-unmute",
+    "variant": "mute-unmute",
+    "treatment": false,
+    "start": 378,
+    "duration": 27
+  },
+  {
+    "name": "M01-focus",
+    "variant": "focus",
+    "treatment": false,
+    "start": 405,
+    "duration": 27
+  },
+  {
+    "name": "M01-long-frame",
+    "variant": "long-frame",
+    "treatment": false,
+    "start": 432,
+    "duration": 27
+  },
+  {
+    "name": "M02-normal",
+    "variant": "normal",
+    "treatment": true,
+    "start": 459,
+    "duration": 27
+  },
+  {
+    "name": "M02-interrupt",
+    "variant": "interrupt",
+    "treatment": true,
+    "start": 486,
+    "duration": 27
+  },
+  {
+    "name": "mixed-five-minutes",
+    "variant": "mix",
+    "treatment": false,
+    "start": 513,
+    "duration": 300
+  }
+]

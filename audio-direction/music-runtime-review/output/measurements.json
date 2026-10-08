@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "cases": 20,
+  "metrics": {
+    "M01-normal": {
+      "rms_dbfs": -28.178145444908857,
+      "peak_dbfs": -13.018777078026522
+    },
+    "M01-half": {
+      "rms_dbfs": -34.20257858493024,
+      "peak_dbfs": -19.039376991306145,
+      "ratio_to_normal": 0.4997793904140689
+    },
+    "M01-master-half": {
+      "rms_dbfs": -34.202123883489065,
+      "peak_dbfs": -19.039376991306145,
+      "ratio_to_normal": 0.49980555426911183
+    },
+    "M01-zero": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "M01-mute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "M01-master-zero": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "M01-master-mute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "M01-mono": {
+      "rms_dbfs": -29.70303162950751,
+      "peak_dbfs": -14.839120853774945
+    },
+    "M01-reduced": {
+      "rms_dbfs": -40.820405172651974,
+      "peak_dbfs": -27.890942346903813
+    },
+    "M01-missing": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "M01-missing-bus": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0
+    },
+    "M01-other-bus-zero": {
+      "rms_dbfs": -28.179035814663415,
+      "peak_dbfs": -13.018777078026522,
+      "ratio_to_normal": 0.9998974976475198
+    },
+    "M01-interrupt": {
+      "rms_dbfs": -28.178145444908857,
+      "peak_dbfs": -16.673323369836734,
+      "waveform_relative_fade_ratios": [
+        0.9665829661769415,
+        0.883955484809918,
+        0.7947257248373151,
+        0.7157941936217156,
+        0.6348317576684069,
+        0.5501937177113468,
+        0.46818931562958077,
+        0.3829537597593691,
+        0.2955573952865671,
+        0.2149903419222195,
+        0.13307874198532652
+      ]
+    },
+    "M01-cancel": {
+      "rms_dbfs": -28.180707902853218,
+      "peak_dbfs": -16.77695530755399
+    },
+    "M01-mute-unmute": {
+      "rms_dbfs": -28.180252990875605,
+      "peak_dbfs": -16.77695530755399
+    },
+    "M01-focus": {
+      "rms_dbfs": -28.179035814663415,
+      "peak_dbfs": -16.77695530755399
+    },
+    "M01-long-frame": {
+      "rms_dbfs": -28.178145444908857,
+      "peak_dbfs": -16.77695530755399
+    },
+    "M02-normal": {
+      "rms_dbfs": -27.770657955037418,
+      "peak_dbfs": -12.922017084012499
+    },
+    "M02-interrupt": {
+      "rms_dbfs": -27.769720909963755,
+      "peak_dbfs": -14.839120853774945,
+      "waveform_relative_fade_ratios": [
+        0.9815594249600573,
+        0.9036411922010343,
+        0.7897983366453698,
+        0.67765620682313,
+        0.666219115682614,
+        0.5552545495148679,
+        0.4467431937352528,
+        0.39301725098148177,
+        0.2993870536109587,
+        0.21921437806735086,
+        0.12865030805737912
+      ]
+    },
+    "mixed-five-minutes": {
+      "bed_phase_sample": 1439708,
+      "music_residual_quiet_rms": [
+        1.1876895625335083e-05,
+        1.1876895625335083e-05,
+        1.1876895625335083e-05,
+        1.1897349612609724e-05,
+        1.1919835358366709e-05
+      ],
+      "quiet_windows_seconds": [
+        [
+          40,
+          59
+        ],
+        [
+          70,
+          89
+        ],
+        [
+          100,
+          119
+        ],
+        [
+          125,
+          244
+        ],
+        [
+          275,
+          299
+        ]
+      ],
+      "first_music_residual_rms": 0.053247183728694886,
+      "second_music_residual_rms": 0.04175559281281875,
+      "two_disjoint_music_windows_seconds": [
+        [
+          12.5,
+          37.5
+        ],
+        [
+          245,
+          270
+        ]
+      ],
+      "minimum_music_free_cooldown_seconds": 180
+    }
+  },
+  "five_minute_mix_seconds": 300,
+  "wave_sha256": "9a2c5c053cf7d4d49947444e6fb9ff0aba050951832a89e4e9456c6d5c023af0",
+  "timeline_sha256": "febdef9650c799e2ec5ede22c070e2f18c75219587ff0ab22e74c8344091eb70",
+  "final_master_measurements": {
+    "input_i": "-25.17",
+    "input_tp": "-6.45",
+    "input_lra": "10.10",
+    "input_thresh": "-35.52"
+  },
+  "five_minute_master_measurements": {
+    "input_i": "-24.86",
+    "input_tp": "-6.45",
+    "input_lra": "4.00",
+    "input_thresh": "-34.86"
+  },
+  "five_minute_default_audition_band_deviation_lu": 0,
+  "meter_contract": "Only input measurements retained; no normalization output written or accepted PCM changed.",
+  "limits": [
+    "Controlled actual Master output; no device listening or ordinary-play loudness compliance.",
+    "Accepted PCM and provisional targets remain unchanged; measurements report deviations honestly."
+  ]
+}

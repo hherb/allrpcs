@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-restrained-music-runtime-integration",
+  "owner_statement": "approved",
+  "status": "exact_scope_approved",
+  "context": "Direct response to the completed and published music runtime proposal and its single implementation approval request.",
+  "bindings": [
+    {
+      "path": "audio-direction/music-runtime-scope.md",
+      "sha256": "add5ded886e31d17bd59c199d24c20e18af1569310ad643c426e329c3164f8d2"
+    },
+    {
+      "path": "audio-direction/music-runtime-scope.json",
+      "sha256": "951a3467aa64897ae8be78ccfec8ffcae2f016b648f1d1f012ab78a03b09e96a"
+    }
+  ],
+  "grant": {
+    "exact_runtime_implementation": true,
+    "two_byte_exact_WAV_installations": true,
+    "new_PCM_generation_or_extraction": false,
+    "accepted_waveform_edits": false,
+    "finite_verification": true,
+    "publication": "Standing ALWAYS commit and push instruction in footstep-runtime-review/publication/authority.json"
+  },
+  "exclusions": "No gameplay rest, disease/world/save/perception changes, wider audio/voice, accepted art/audio reopening, release/signing or local editor rewrite."
+}

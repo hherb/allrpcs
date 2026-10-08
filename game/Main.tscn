@@ -1,4 +1,4 @@
-[gd_scene load_steps=403 format=3]
+[gd_scene load_steps=405 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -593,6 +593,9 @@
 [ext_resource type="Texture2D" path="res://art/runtime/plants/woodland-shrubs-07.png" id="473_woodland_shrubs_07"]
 [ext_resource type="Script" path="res://RuntimeWoodlandClearingDressingSmokeCheck.cs" id="474_woodland_dressing_check"]
 
+[ext_resource type="Script" path="res://OpeningRegionMusicAudioController.cs" id="music_controller"]
+[ext_resource type="Script" path="res://MusicAudioRuntimeSmokeCheck.cs" id="music_check"]
+
 [ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="audio_storage"]
 [ext_resource type="Script" path="res://AudioSettingsController.cs" id="audio_settings"]
 [ext_resource type="PackedScene" path="res://AudioSettingsPanel.tscn" id="audio_panel"]
@@ -710,6 +713,12 @@ script = ExtResource("audio_settings")
 
 [node name="AudioSettingsMainSmokeCheck" type="Node" parent="."]
 script = ExtResource("audio_main_check")
+
+[node name="OpeningRegionMusicAudioController" type="Node" parent="."]
+script = ExtResource("music_controller")
+
+[node name="MusicAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("music_check")
 
 [node name="OptionalOverlayVisibilityController" type="Node" parent="."]
 script = ExtResource("398_optional_overlay_visibility")

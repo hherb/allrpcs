@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "clips": [
+    {
+      "id": "M01",
+      "native_bytes": 4800000,
+      "native_sha256": "3e9ef88de61ff3a944a71f0083aa9afa66621e6b974bb8cb2c607505a94f4b2e",
+      "exact_PCM24_low_byte_discard_parity": true
+    },
+    {
+      "id": "M02",
+      "native_bytes": 4800000,
+      "native_sha256": "2a87b5914d96ea4948d258d520621837db7cd2ecea94fc911892ab1ec0ca3e16",
+      "exact_PCM24_low_byte_discard_parity": true
+    }
+  ],
+  "conversion": "signed PCM24 arithmetic right-shift 8 to PCM16; source WAV unchanged"
+}

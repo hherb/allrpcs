@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "lossless_FLAC_decode_equals_Master_PCM": true,
+  "pcm_sha256": "3dd7b5136bf6baf26a43f8dcb3bc2d5f4634076ed9f4e11b6fbcd65bb46c064e",
+  "pcm_bytes": 156099200,
+  "duration_seconds": 813.0166666666667
+}

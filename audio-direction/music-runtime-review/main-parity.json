@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "modes": [
+    "normal",
+    "muted",
+    "missing",
+    "captions-off"
+  ],
+  "full_saves_identical": true,
+  "transcripts_identical": true,
+  "save_sha256": "b8ad79231abe83563550191f0e213bdb75d937e1e09a72f73d97c405f25dcd8d",
+  "transcript": [
+    "Music fixture reply 1",
+    "Music fixture reply 2",
+    "Music fixture reply 3"
+  ],
+  "starts": {
+    "normal": 11,
+    "muted": 0,
+    "missing": 0,
+    "captions-off": 11
+  }
+}

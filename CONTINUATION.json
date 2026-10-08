@@ -416,6 +416,20 @@
           "sha256": "951a3467aa64897ae8be78ccfec8ffcae2f016b648f1d1f012ab78a03b09e96a"
         }
       ]
+    },
+    {
+      "id": "phase9-restrained-music-runtime-integration",
+      "reason": "Owner approved the exact M01/M02 proposal on 2026-10-08. Single optional player, two unchanged accepted WAVs, finite region/treatment schedule, quiet/dwell/travel/expiry/cooldown, foreground interruption/no resume, reading controls and current credits are implemented. Verified by 5138 unit tests, 293 retained Godot launches, four-mode exact full-save/transcript parity, 20 actual Master cases including five-minute silent gaps, native/archive parity and 33-stream/14-notice packaging. Whole named slice is complete; numerical deviations, quality-wrapper environment and executable/device limits remain explicit. Standing task publication authority applies. Wider material/positional/voice/rest gameplay remains unfinished.",
+      "evidence": [
+        {
+          "path": "audio-direction/music-runtime-authority.json",
+          "sha256": "5e1300378e902f8739e46230e28ca82e57a66fb16853e62c4e8d8ef72f85d7f2"
+        },
+        {
+          "path": "audio-direction/music-runtime-verification.json",
+          "sha256": "244a24f1dcdd824ca4e5aaa94bbf577a0851752958b044a2122162e4054f792e"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -523,20 +537,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-restrained-music-runtime-integration",
-    "title": "Await authority for the exact M01/M02 restrained music runtime",
-    "status": "in_progress",
-    "workstream": "audio-restrained-music-runtime-implementation",
-    "roadmap_item": "- [ ] Add restrained music that supports slow investigation without manufacturing urgency.",
-    "missing_deliverable": "The concrete music proposal is complete; the exact new music runtime grant and its implementation/verification are absent.",
-    "instructions": "Present the completed music-runtime-scope.md/json proposal and request its one genuinely new runtime authority. Await explicit owner approval; record it in music-runtime-authority.json before product changes. Then implement the exact one-player/two-unchanged-WAV schedule and finite checks, review/document and use standing task commit/push authority. Preserve all closed decisions and unrelated editor state.",
-    "completion_condition": "Recorded exact music runtime approval followed by implemented optional M01/M02 schedule, exact resources/credits, accessibility and finite product/output verification; otherwise retain this pending authority boundary without additional planning/audition successors.",
+    "id": "phase9-interior-audio-runtime-scope",
+    "title": "Prepare a concrete interior audio implementation proposal",
+    "status": "ready",
+    "workstream": "audio-interior-runtime-scope",
+    "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+    "missing_deliverable": "The accepted B01 shelter bed supplies qualitative shelter only. A bounded interior acoustic/material model and exact owner-reviewable implementation scope for existing structures do not exist.",
+    "instructions": "Prepare a concrete new interior acoustic/material proposal with named structures, proposed owners/model, exact changes/resources and finite verification. Explain any physical/layout authority it needs before implementation. Carry accepted shelter audio/art and all completed runtime slices forward unchanged; do not repeat their audits, proofs or acceptance.",
+    "completion_condition": "One concrete hash-bound interior runtime proposal names the missing model, exact files/resources, finite checks and one applicable new scope decision. No interior runtime installation is inferred from earlier audio approvals.",
     "outputs": [
-      "audio-direction/music-runtime-authority.json",
-      "audio-direction/music-runtime-verification.json",
-      "audio-direction/music-runtime-review/README.md"
+      "audio-direction/interior-runtime-scope.md",
+      "audio-direction/interior-runtime-scope.json"
     ],
-    "boundary": "New runtime grant is pending. Only the music proposal defines the permitted next implementation. No runtime or PCM installation yet; no waveform edits, new rest/perception/world/save/physical scope, accepted-scope reopening or release. Standing publication authority already covers completed tasks."
+    "boundary": "Planning only for a genuinely new interior audio model. No accepted-scope reopening, new PCM, physical/layout/runtime/save/perception changes or voice/release. Water/tool actions still require actual authorized gameplay owners. Preserve the local editor exception."
   },
   "deferred_slices": []
 }

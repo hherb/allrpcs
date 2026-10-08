@@ -1,0 +1,6 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Optional music owner unavailable; presentation stays silent.
+PASS: music Main: ordinary region/motion and treatment/recorder owners, reading/credits/history/focus, 12/20-second gates, no replay, load/bus failure and full state capture.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

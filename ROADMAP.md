@@ -419,17 +419,20 @@ packaging. This named slice is complete. The B02 composite rain spatializes with
 there is no device-listening, ordinary-play loudness or executable-release claim. Wider
 positional emitters and off-screen cues remain unfinished; the broader item stays unchecked.
 
-The [restrained music proposal](audio-direction/music-runtime-scope.md) and
-[hash-bound inventory](audio-direction/music-runtime-scope.json) complete read-only
-planning for the accepted M01/M02 passages. They specify one optional Music player,
-regional-transition/live-treatment admission, quiet intervals, interruption/no-resume,
-byte-identical resources, current source credits and finite checks. The new runtime
-grant is pending; music implementation and its roadmap checkbox remain unfinished.
+The owner-approved [restrained music implementation](audio-direction/music-runtime-review/README.md)
+adds one optional M01/M02 Music player, regional-transition/live-treatment admission,
+quiet/dwell/travel requirements, foreground interruption, no resume and three-minute
+silence after stop. Accepted WAVs and existing settings/hearing/gameplay stay unchanged.
+The named music item is complete: 5,138 unit tests, 293 retained Godot launches,
+four-mode full-save/transcript parity, 20 measured output cases including a five-minute
+mix, native/archive parity and 33-stream/14-notice packaging. Numerical deviations and
+quality-wrapper/export/device limits remain explicit. Broader material and positional
+items, new interior/water/tool owners, voice and overall audio identity remain unfinished.
 
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.
-- [ ] Add restrained music that supports slow investigation without manufacturing urgency.
+- [x] Add restrained music that supports slow investigation without manufacturing urgency.
 - [x] Add volume buses and independent controls for music, ambience, effects, dialogue, and
   future speech.
 

@@ -1,0 +1,13 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+OpenGL API 4.1 Metal - 91.7 - Compatibility - Using Device: Apple - Apple M3 Max
+
+Movie Maker mode enabled, recording movie in 1280×720 @ 60 FPS...
+Optional music resource/bus unavailable; start discarded.
+PASS: 20 actual music Master-output cases, including five-minute gaps/mix.
+--------------------------------------------------------------------------------
+Done recording movie at path: /private/tmp/allrpcs-music-master.avi
+48610 frames at 60 FPS (movie length: 00:13:30:10), recorded in 00:10:10 (132% of real-time speed).
+CPU render time: 7.40 seconds (average: 0.15 ms/frame)
+GPU render time: 0.00 seconds (average: 0.00 ms/frame)
+Encoding time: 215.64 seconds (average: 4.44 ms/frame)
+--------------------------------------------------------------------------------

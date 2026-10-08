@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://MusicAudioRuntimeProof.cs" id="proof"]
+[ext_resource type="Script" path="res://OpeningRegionMusicAudioController.cs" id="music"]
+[ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="storage"]
+[ext_resource type="Script" path="res://AudioSettingsController.cs" id="settings"]
+[ext_resource type="PackedScene" path="res://MaterialSoundCaptionPanel.tscn" id="captions"]
+[ext_resource type="Script" path="res://OpeningRegionMaterialAudioController.cs" id="material"]
+[ext_resource type="Script" path="res://OpeningRegionPositionalAudioController.cs" id="positional"]
+[ext_resource type="Script" path="res://OpeningRegionFootstepAudioController.cs" id="footsteps"]
+
+[node name="MusicAudioRuntimeProof" type="Node2D"]
+script = ExtResource("proof")
+
+[node name="OpeningRegionMusicAudioController" type="Node" parent="."]
+script = ExtResource("music")
+Automatic = false
+
+[node name="AudioSettingsStorageController" type="Node" parent="."]
+script = ExtResource("storage")
+Disposable = true
+
+[node name="AudioSettingsController" type="Node" parent="."]
+script = ExtResource("settings")
+
+[node name="MaterialSoundCaptionPanel" parent="." instance=ExtResource("captions")]
+
+[node name="OpeningRegionMaterialAudioController" type="Node" parent="."]
+script = ExtResource("material")
+Automatic = false
+
+[node name="OpeningRegionPositionalAudioController" type="Node" parent="."]
+script = ExtResource("positional")
+Automatic = false
+
+[node name="OpeningRegionFootstepAudioController" type="Node" parent="."]
+script = ExtResource("footsteps")
+Automatic = false

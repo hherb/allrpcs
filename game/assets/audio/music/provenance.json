@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "authority": "audio-direction/music-runtime-authority.json",
+  "copy_contract": "whole accepted WAV bytes; no extraction/generation/source edit",
+  "clips": [
+    {
+      "id": "M01",
+      "accepted": {
+        "path": "audio-direction/material-audition/clips/M01.wav",
+        "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6"
+      },
+      "proposed_runtime_path": "game/assets/audio/music/M01.wav",
+      "channels": 2,
+      "sample_width_bytes": 3,
+      "rate_hz": 48000,
+      "frames": 1200000,
+      "seconds": 25,
+      "PCM_bytes": 7200000,
+      "PCM_sha256": "88d254528058db54ad2787645d982aedde91018ae6263ce497facda335f52e51",
+      "copy_contract": "whole WAV byte-identical; no PCM extraction or source edit",
+      "accepted_source_edits": [
+        {
+          "source_id": "exploration",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/exploration/sunset_plains.wav",
+          "sha256": "f3750f8eda8bf42662b12f5726404675689b50f05ccaa968c5cb2e33d9172a62",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 15824639,
+          "lossy_original": false,
+          "trim_begin_sample": 1440000,
+          "trim_end_sample": 2640000,
+          "edge_fade_seconds": 2,
+          "applied_gain_db": -6.445426090307684
+        }
+      ],
+      "source": {
+        "id": "exploration",
+        "title": "Sunset Plains",
+        "author": "Yoiyami",
+        "catalogue_url": "https://opengameart.org/content/sunset-plains",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "original": {
+          "path": "audio-direction/material-audition/originals/exploration/sunset_plains.wav",
+          "sha256": "f3750f8eda8bf42662b12f5726404675689b50f05ccaa968c5cb2e33d9172a62"
+        },
+        "catalogue": {
+          "path": "audio-direction/material-audition/rights/exploration-catalogue.html",
+          "sha256": "f535771d163858547c01e4706e353621e67d64ebeb69b1a4a53016654d8665f0"
+        }
+      },
+      "import_contract": {
+        "compress/mode": 0,
+        "force/8_bit": false,
+        "force/mono": false,
+        "force/max_rate": false,
+        "edit/trim": false,
+        "edit/normalize": false,
+        "edit/loop_mode": 0
+      },
+      "native_decode": "verify retained engine PCM16 conversion convention; no 24-bit output claim"
+    },
+    {
+      "id": "M02",
+      "accepted": {
+        "path": "audio-direction/material-audition/clips/M02.wav",
+        "sha256": "c706dd03b3e730227ce7ec383a237f4c8f785b1f44ecaa314f04993ff5776511"
+      },
+      "proposed_runtime_path": "game/assets/audio/music/M02.wav",
+      "channels": 2,
+      "sample_width_bytes": 3,
+      "rate_hz": 48000,
+      "frames": 1200000,
+      "seconds": 25,
+      "PCM_bytes": 7200000,
+      "PCM_sha256": "38e9015caa8ef9d2e1610990504e800d50bcd1a06c3eec101fb35902663f7aab",
+      "copy_contract": "whole WAV byte-identical; no PCM extraction or source edit",
+      "accepted_source_edits": [
+        {
+          "source_id": "rest-flute",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rest-flute/486487__gonzooka__shakuhachi-flute-play.wav",
+          "sha256": "423332af0c54ce004fc9023e03665901576aca535012e909b7fd6d819168fbb1",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 13155600,
+          "lossy_original": false,
+          "trim_begin_sample": 1440000,
+          "trim_end_sample": 2640000,
+          "edge_fade_seconds": 2,
+          "applied_gain_db": 11.03416237240136,
+          "original_channels": 1,
+          "original_rate_hz": 16000,
+          "mono_mapping": "Identical centred left/right; no artificial stereo"
+        }
+      ],
+      "source": {
+        "id": "rest-flute",
+        "title": "Shakuhachi flute play",
+        "author": "gonzooka",
+        "catalogue_url": "https://freesound.org/people/gonzooka/sounds/486487/",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "original": {
+          "path": "audio-direction/material-audition/originals/rest-flute/486487__gonzooka__shakuhachi-flute-play.wav",
+          "sha256": "423332af0c54ce004fc9023e03665901576aca535012e909b7fd6d819168fbb1"
+        },
+        "catalogue": {
+          "path": "audio-direction/material-audition/rights/rest-flute-catalogue.html",
+          "sha256": "7e5dd89dc61f53cf4b933adc4a17cb17ec79d1e020e84a3db0e20d6472f7167d"
+        }
+      },
+      "import_contract": {
+        "compress/mode": 0,
+        "force/8_bit": false,
+        "force/mono": false,
+        "force/max_rate": false,
+        "edit/trim": false,
+        "edit/normalize": false,
+        "edit/loop_mode": 0
+      },
+      "native_decode": "verify retained engine PCM16 conversion convention; no 24-bit output claim"
+    }
+  ],
+  "licence_notice": {
+    "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+    "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+  }
+}

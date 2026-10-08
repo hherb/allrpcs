@@ -23,6 +23,9 @@ public partial class AudioSettingsPanel : CanvasLayer
     /// <summary>Raised when the panel closes so its entry can be restored.</summary>
     public event Action<bool>? Closed;
 
+    /// <summary>Reading includes child views that temporarily hide their Audio parent.</summary>
+    internal bool IsReading => Visible || creditsPanel.Visible || historyPanel.Visible;
+
     /// <inheritdoc />
     public override void _Ready()
     {
@@ -112,6 +115,12 @@ public partial class AudioSettingsPanel : CanvasLayer
         panel.AddChild(content);
         content.AddChild(new Label { Text = "Audio", ThemeTypeVariation = "HeaderLarge" });
         content.AddChild(new Label { Text = "Changes apply now. Save to keep them after restart." });
+        content.AddChild(new Label
+        {
+            Name = "MusicExplanation",
+            Text = "Music plays occasionally in quiet moments. Mute Music for a music-free game.",
+            AutowrapMode = TextServer.AutowrapMode.WordSmart
+        });
         GridContainer grid = new() { Columns = 4 };
         grid.AddThemeConstantOverride("h_separation", 14);
         grid.AddThemeConstantOverride("v_separation", 10);
