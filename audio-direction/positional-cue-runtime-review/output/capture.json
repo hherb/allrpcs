@@ -1,0 +1,15 @@
+{
+  "source": "Godot Movie Maker AVI audio, native PCM16 stereo 48000Hz",
+  "wave_format_channels_bytes_rate_frames": [
+    2,
+    2,
+    48000,
+    8352800
+  ],
+  "pcm_sha256": "29731669154b3d9e5e1dea901e4c196d75c9b36e8e60719818c4fc77a6957ce0",
+  "wave_sha256": "5f0cd394b2d2ce06c34269d150ed74398333d03a833a1948f67b6883e60607bd",
+  "lossless_archive": "audio-direction/positional-cue-runtime-review/output/master.flac",
+  "lossless_archive_sha256": "73bb3d86936cff32f629918a20f049be4d1d79ee22cc364139ab9b2c0b64f099",
+  "decoded_archive_equals_native_capture": true,
+  "limits": "Movie Maker uses PCM16; no claim of 32-bit capture, device audition or executable export."
+}

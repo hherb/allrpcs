@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://MaterialAudioRuntimeProof.cs" id="proof"]
 [ext_resource type="Script" path="res://AudioSettingsStorageController.cs" id="storage"]
 [ext_resource type="Script" path="res://AudioSettingsController.cs" id="settings"]
 [ext_resource type="PackedScene" path="res://MaterialSoundCaptionPanel.tscn" id="captions"]
 [ext_resource type="Script" path="res://OpeningRegionMaterialAudioController.cs" id="material"]
+
+[ext_resource type="Script" path="res://OpeningRegionPositionalAudioController.cs" id="positional"]
 
 [node name="MaterialAudioRuntimeProof" type="Node"]
 script = ExtResource("proof")
@@ -20,4 +22,8 @@ script = ExtResource("settings")
 
 [node name="OpeningRegionMaterialAudioController" type="Node" parent="."]
 script = ExtResource("material")
+Automatic = false
+
+[node name="OpeningRegionPositionalAudioController" type="Node" parent="."]
+script = ExtResource("positional")
 Automatic = false

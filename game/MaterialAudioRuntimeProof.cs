@@ -126,6 +126,8 @@ public partial class MaterialAudioRuntimeProof : Node
     private void Start(Step step)
     {
         material.StopPlayback();
+        GetNode<OpeningRegionPositionalAudioController>("OpeningRegionPositionalAudioController")
+            .DiagnosticWater(new(1800, 500), new(1800, 500), 0);
         settings.Ducking.Clear();
         if (extraLease != 0) { settings.Ducking.End(extraLease); extraLease = 0; }
         settings.RestoreDefaults();

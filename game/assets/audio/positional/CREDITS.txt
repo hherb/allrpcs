@@ -1,0 +1,5 @@
+Interface Sounds by Kenney
+Source: https://kenney.nl/assets/interface-sounds
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: retained audition edits; exact unchanged stereo PCM frames [192000,216000) from accepted A06-Dialogue.wav (4.0-4.5 seconds); no additional sample transformations.
+Runtime use: optional recorded-reply indication; not voice or conversation completion.

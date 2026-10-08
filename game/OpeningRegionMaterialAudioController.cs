@@ -16,6 +16,7 @@ public partial class OpeningRegionMaterialAudioController : Node
     private readonly HashSet<string> reported = [];
     private AudioSettingsController settings = null!;
     private MaterialSoundCaptionPanel captions = null!;
+    private OpeningRegionPositionalAudioController positional = null!;
     private OpeningRegionProjectionSource? projection;
     private OpeningRegionEnvironmentalStateSource? environment;
     private Seeker? seeker;
@@ -35,7 +36,14 @@ public partial class OpeningRegionMaterialAudioController : Node
     {
         settings = GetNode<AudioSettingsController>("../AudioSettingsController");
         captions = GetNode<MaterialSoundCaptionPanel>("../MaterialSoundCaptionPanel");
-        foreach (string id in BedIds.Concat(CueIds))
+        positional = GetNodeOrNull<OpeningRegionPositionalAudioController>("../OpeningRegionPositionalAudioController")!;
+        if (positional is null && !Automatic)
+        {
+            positional = new() { Name = "OpeningRegionPositionalAudioController", Automatic = false };
+            GetParent().CallDeferred(Node.MethodName.AddChild, positional);
+        }
+        if (positional is null) { throw new InvalidOperationException("Missing ordinary positional owner."); }
+        foreach (string id in BedIds.Where(id => id != "B02").Concat(CueIds))
         {
             AudioStreamPlayer player = new() { Name = id, Bus = id.StartsWith('B') ? "Ambience" : "Effects" };
             AddChild(player);
@@ -82,8 +90,9 @@ public partial class OpeningRegionMaterialAudioController : Node
         ramp.Advance(delta);
         for (int index = 0; index < BedIds.Length; index++)
         {
-            AudioStreamPlayer player = players[BedIds[index]];
             double gain = ramp.Gain(index);
+            if (index == 1) { positional.PresentWaterway(gain, current?.ClipId == "B02"); continue; }
+            AudioStreamPlayer player = players[BedIds[index]];
             player.VolumeLinear = (float)gain;
             if (gain > 0 && !player.Playing && player.Stream is not null) { player.Play(); }
         }
@@ -97,7 +106,7 @@ public partial class OpeningRegionMaterialAudioController : Node
         if (current == presentation) { return; }
         current = presentation;
         ramp.Retarget(presentation);
-        captions.SetRegion(presentation?.Caption ?? string.Empty);
+        if (presentation?.ClipId != "B02") { captions.SetRegion(presentation?.Caption ?? string.Empty); }
         if (presentation is null && Automatic) { Report("selection", "Material region unavailable; ambience fades to silence."); }
     }
 
@@ -131,6 +140,7 @@ public partial class OpeningRegionMaterialAudioController : Node
         captions.Clear();
         current = null;
         ramp.Retarget(null);
+        positional.ResetPresentation();
     }
 
     /// <summary>Stops all diagnostic playback and restores a silent regional target.</summary>
@@ -139,6 +149,7 @@ public partial class OpeningRegionMaterialAudioController : Node
         ResetPresentation();
         foreach (AudioStreamPlayer player in players.Values) { player.Stop(); }
         ramp.Advance(OpeningRegionMaterialAudioProjection.RampSeconds);
+        positional.StopPlayback();
     }
 
     /// <inheritdoc />

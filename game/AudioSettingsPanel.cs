@@ -18,6 +18,7 @@ public partial class AudioSettingsPanel : CanvasLayer
     private Control? returnFocus;
     private bool refreshing;
     private MaterialAudioCreditsPanel creditsPanel = null!;
+    private PositionalSoundCueHistoryPanel historyPanel = null!;
 
     /// <summary>Raised when the panel closes so its entry can be restored.</summary>
     public event Action<bool>? Closed;
@@ -44,6 +45,7 @@ public partial class AudioSettingsPanel : CanvasLayer
     public void Close(bool restoreFocus = true)
     {
         if (creditsPanel.Visible) { creditsPanel.Close(false); }
+        if (historyPanel.Visible) { historyPanel.Close(false); }
         GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
         Visible = false;
         Closed?.Invoke(restoreFocus);
@@ -57,6 +59,11 @@ public partial class AudioSettingsPanel : CanvasLayer
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
     {
+        if (historyPanel.Visible && (@event.IsActionPressed("ui_cancel") || @event.IsActionPressed("optional_overlays_toggle")))
+        {
+            if (@event.IsActionPressed("optional_overlays_toggle")) { Close(false); } else { historyPanel.Close(); }
+            GetViewport().SetInputAsHandled(); return;
+        }
         if (creditsPanel.Visible && @event.IsActionPressed("ui_cancel"))
         {
             creditsPanel.Close();
@@ -89,8 +96,8 @@ public partial class AudioSettingsPanel : CanvasLayer
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.Center);
         panel.OffsetLeft = -330;
         panel.OffsetRight = 330;
-        panel.OffsetTop = -290;
-        panel.OffsetBottom = 290;
+        panel.OffsetTop = -320;
+        panel.OffsetBottom = 320;
         StyleBoxFlat background = new()
         {
             BgColor = new Color(0.055f, 0.067f, 0.082f),
@@ -101,7 +108,7 @@ public partial class AudioSettingsPanel : CanvasLayer
         };
         panel.AddThemeStyleboxOverride("panel", background);
         VBoxContainer content = new();
-        content.AddThemeConstantOverride("separation", 12);
+        content.AddThemeConstantOverride("separation", 10);
         panel.AddChild(content);
         content.AddChild(new Label { Text = "Audio", ThemeTypeVariation = "HeaderLarge" });
         content.AddChild(new Label { Text = "Changes apply now. Save to keep them after restart." });
@@ -163,6 +170,13 @@ public partial class AudioSettingsPanel : CanvasLayer
         AddChild(creditsPanel);
         creditsPanel.Closed += restore => { if (restore) { Visible = true; } };
         credits.Pressed += () => { Visible = false; creditsPanel.Open(credits); };
+        HBoxContainer historyRow = new(); content.AddChild(historyRow);
+        Button historyEntry = Button(historyRow, "RecentSoundCues", "Recent sound cues");
+        historyPanel = GD.Load<PackedScene>("res://PositionalSoundCueHistoryPanel.tscn")
+            .Instantiate<PositionalSoundCueHistoryPanel>();
+        AddChild(historyPanel);
+        historyPanel.Closed += restore => { if (restore) { Visible = true; } };
+        historyEntry.Pressed += () => { Visible = false; historyPanel.Open(historyEntry); };
         for (int index = 0; index < focusOrder.Count; index++)
         {
             Control control = focusOrder[index];

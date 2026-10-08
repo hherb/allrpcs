@@ -1,0 +1,16 @@
+[aist#0:1/pcm_s16le @ 0x78d500c480] Guessed Channel Layout: stereo
+Input #0, avi, from '/tmp/allrpcs-positional-output/master.avi':
+  Duration: 00:02:54.02, start: 0.000000, bitrate: 10862 kb/s
+  Stream #0:0: Video: mjpeg (Baseline) (MJPG / 0x47504A4D), yuvj420p(pc, bt470bg/unknown/unknown), 1280x720 [SAR 1:1 DAR 16:9], 9304 kb/s, 60 fps, 60 tbr, 60 tbn
+  Stream #0:1: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Stream mapping:
+  Stream #0:1 -> #0:0 (pcm_s16le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, wav, to '/tmp/allrpcs-positional-output/master16.wav':
+  Metadata:
+    ISFT            : Lavf63.1.101
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+    Metadata:
+      encoder         : Lavc63.1.101 pcm_s16le
+[out#0/wav @ 0x78d4c4c300] video:0KiB audio:32628KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.000233%
+size=   32628KiB time=00:02:54.01 bitrate=1536.0kbits/s speed=3.41e+03x elapsed=0:00:00.05

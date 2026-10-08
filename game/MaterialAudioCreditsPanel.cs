@@ -35,6 +35,7 @@ public partial class MaterialAudioCreditsPanel : CanvasLayer
         content.AddChild(new Label { Text = "Audio source credits", ThemeTypeVariation = "HeaderLarge" });
         string text = Godot.FileAccess.GetFileAsString("res://assets/audio/material/CREDITS.txt");
         text += "\n\n" + Godot.FileAccess.GetFileAsString("res://assets/audio/footsteps/CREDITS.txt");
+        text += "\n\n" + Godot.FileAccess.GetFileAsString("res://assets/audio/positional/CREDITS.txt");
         RichTextLabel credits = new()
         {
             Name = "Credits",

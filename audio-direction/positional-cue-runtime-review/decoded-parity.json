@@ -1,0 +1,7 @@
+{
+  "native_format": "PCM16 stereo 48000Hz",
+  "frames": 24000,
+  "exact_native_integer_projection": true,
+  "native_pcm_sha256": "a65ff62c9bdc8879fbb671a1189288698ade4846d1cd623245a50f23e9f45874",
+  "limit": "Godot native PCM16 import retains the established 24-to-16-bit reduction; shipping WAV is exact PCM24"
+}

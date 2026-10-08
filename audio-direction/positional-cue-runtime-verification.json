@@ -1,0 +1,511 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-positional-audio-cue-runtime-integration",
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "status": "approved_scope_implemented_and_verified",
+  "authority": {
+    "path": "audio-direction/positional-cue-runtime-authority.json",
+    "sha256": "3732acdec8f21f235e92a617a632ec84fecba63eaef2398fad9e572ded05d598"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/positional-cue-runtime-scope.md",
+      "sha256": "4b1bf4aae574f3552aa5f59348942c932fbbfb2ca56e0e169943af3547c9d725"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-scope.json",
+      "sha256": "9f5e0755ce209a455d5d5d4ef98cb4f90e53679458d2e94d5b7dfa0cb1cbd288"
+    }
+  ],
+  "implemented": {
+    "single_spatial_B02_owner": true,
+    "retained_regional_selection_and_ramp": true,
+    "seeker_world_listener": true,
+    "waterway_range_pixels": 768,
+    "ordinary_whisper_range_pixels": [
+      192,
+      48
+    ],
+    "exact_pcm24_derivatives": 1,
+    "recorded_reply_sources": [
+      "Healer",
+      "Sage"
+    ],
+    "commit_before_presentation": true,
+    "captured_audience_required": true,
+    "maximum_reply_players": 1,
+    "maximum_reply_starts_per_second": 1,
+    "foreground_leases": 0,
+    "caption_seconds": 3,
+    "caption_lines": 4,
+    "screen_bearings": 8,
+    "history_capacity": 16,
+    "packaged_credits_provenance": true
+  },
+  "validation": {
+    "restore": "pass",
+    "solution_game_builds": "pass; zero warnings/errors",
+    "solution_game_format": "pass",
+    "workflows": "pass",
+    "direction_a_import_proof": "pass; retained art bindings unchanged",
+    "scenario_validator": "pass; five evidence definitions",
+    "unit_tests": {
+      "domain": 2839,
+      "application": 998,
+      "infrastructure": 1272,
+      "architecture": 8,
+      "total": 5117,
+      "new_spatial_history_cases": 22
+    },
+    "retained_godot_launches": 293,
+    "main_modes": [
+      "normal",
+      "muted",
+      "missing",
+      "captions-off"
+    ],
+    "exact_transcripts_equal": true,
+    "exact_full_save_roots_equal": true,
+    "save_root_sha256": "34c57b9494f9518077aa392f7620a166e432a9f20300993852f99ab905ad896a",
+    "main_checks": [
+      "eleven anchors and transformed nearest-water extent",
+      "explicit top-level listener, missing listener/bus suppression",
+      "actual camera viewport at 1280x720 and 1600x900, zoom 0.8/1/2, 190px off-screen response",
+      "inclusive ordinary/whisper admission and exact transcript append",
+      "foreign/stale/chunk/source/range/audience notification negatives with positive control",
+      "one-time recorder and exception-isolated subscriber",
+      "bounded rate/history, return focus, four caption lines and credits",
+      "departure, cancellation, teleport/re-entry, successful/failed full save restore",
+      "world time/perception/object references retained and four-mode complete saves identical"
+    ],
+    "retained_material_main": "pass; ordinary action and lease behavior preserved",
+    "footstep_stopped_proof": "pass; frozen scene unchanged",
+    "output_cases": 44,
+    "native_import": "PCM16 stereo 48000Hz, 24000 frames; exact PCM24 >> 8 projection",
+    "resource_export": "24 contacts, six prior streams, one new stream, eleven notices; 73 exported entries retained",
+    "boundary_rejection_probes": 4,
+    "accepted_audition_bindings": 82
+  },
+  "output": {
+    "format": "native Movie Maker PCM16 stereo 48000Hz",
+    "lossless_archive_pcm_parity": true,
+    "actual_integrated_lufs": -29.71,
+    "actual_true_peak_dbtp": -13.63,
+    "actual_lra_lu": 9.2,
+    "render_source_reuse": "Playback inputs in render-inputs.json stayed unchanged; later edits add Main-only checks, views and analysis precision."
+  },
+  "publication": {
+    "authorization": {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    "branch": "main",
+    "remote": "origin",
+    "required_step": "Scoped commit/push after final closure/verification checks; compare remote main to final HEAD."
+  },
+  "preserved_editor_binding": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "limits": [
+    "B02 is an unchanged water/rain composite; rain shares its position and native positional centre scaling is uncompensated.",
+    "Native import reduces exact PCM24 to PCM16; captured Movie Maker output is PCM16, archived losslessly.",
+    "Controlled diagnostics and synthetic complete Main responses establish finite boundaries, not device listening or ordinary-play loudness compliance.",
+    "Resource packaging passes; full macOS executable export unavailable due to missing mono template and inherited solution lookup mismatch.",
+    "Historical quality/predecessor allowlists remain frozen; equivalent product commands and successor checks passed, unchanged art evidence reused.",
+    "Wider positional emitters, other material actions/interiors/NPC steps, music, voice and release remain unfinished."
+  ],
+  "reviewed_inputs": [
+    {
+      "path": "audio-direction/positional-cue-runtime-authority.json",
+      "sha256": "3732acdec8f21f235e92a617a632ec84fecba63eaef2398fad9e572ded05d598"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-scope.json",
+      "sha256": "9f5e0755ce209a455d5d5d4ef98cb4f90e53679458d2e94d5b7dfa0cb1cbd288"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-scope.md",
+      "sha256": "4b1bf4aae574f3552aa5f59348942c932fbbfb2ca56e0e169943af3547c9d725"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "3f62598af3de5626590cc928576600f2fbfa7229c8e0aa058479503c8b70ae0d"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "fde8dbd4b37de338ec12e3e8dfd214b591f5acc92ace91cbd06fda3a22f0c2b6"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "da4cc1f7810fd4e6105a779e2d946258d02ee359d957009b74faacac73a05db7"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeProof.cs",
+      "sha256": "d5e4a726b01c90c7419615f918aa0683ea4ff1ecfe4fecc32c1117c5a336f3e6"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeProof.tscn",
+      "sha256": "e245234de3100fe056bd7d690689e816f8479e94283a91750ea13dcd058502e4"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeSmokeCheck.cs",
+      "sha256": "11eb98cd86e7e1433a95e2487834b57e3351495fd2d6a78266c693665275a9d5"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "634150ca8d388d47a982542fd82c012dced21235da77e8806c32800b11471d48"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "0b51ced33e60bd32018acb67953c6cb7676fea59b7b32da1cde8dafc4a2f3bf5"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "2ef88e4bfeb5c37c453b40d6592addfa3fc6808b756192e355eb045b70e90770"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs.uid",
+      "sha256": "73b81b5a626d339ae9d3ea47ce466ca946ce64cb8f37d87db4f503f018941e8e"
+    },
+    {
+      "path": "game/PositionalAudioRuntimeProof.cs",
+      "sha256": "d8a46c12fdffef940a46e9ee322c718dcdbfab21b456b23ad6cb3b4eaceff126"
+    },
+    {
+      "path": "game/PositionalAudioRuntimeProof.cs.uid",
+      "sha256": "2bc9ffb3acf52f5596ac80c41d65cfdb5bb92072a55c5989c8e5dc9f127c0d9b"
+    },
+    {
+      "path": "game/PositionalAudioRuntimeProof.tscn",
+      "sha256": "a4013eefe7bef705bb8ccd16ee2f59347caf5f97719fcce643d846e69e3061de"
+    },
+    {
+      "path": "game/PositionalAudioRuntimeSmokeCheck.cs",
+      "sha256": "bfde7c956bf1c492736c84e3599201dac01cf58f6b37371832d4dc8f5542d4b4"
+    },
+    {
+      "path": "game/PositionalAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "fac9f1004a51c03ac7e4a12c5df09608658c95886a126715b2c5c9bf125dc2d0"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs",
+      "sha256": "3d3f7411eab57036c22c9fbc6fd6f582c675fdf7a87d951c255c20d8e2d4562b"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.cs.uid",
+      "sha256": "56bbe0bd7a4d562ad8e549b04b24bc7274c06563835a6bce1796fff537d01ebc"
+    },
+    {
+      "path": "game/PositionalSoundCueHistoryPanel.tscn",
+      "sha256": "79476a226f33f5b40d993e2e39b39b291294377eef4d70b65e7a364c95833a1a"
+    },
+    {
+      "path": "game/TemporaryCharacterTurnResponseSpeechRecorder.cs",
+      "sha256": "f150b324160e210f5a75d7e85b5839ba51738099ab8acbf6adfe5a3afcb6e7ac"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav",
+      "sha256": "f366428acb43ff9f947c194523f056d5bbe8dbf77648d2dbec05c480f7bffab4"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav.import",
+      "sha256": "0e525d1a4520d11875a0c2aa51a384091e28387978375c1bd083acc6eb8e7d4b"
+    },
+    {
+      "path": "game/assets/audio/positional/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/positional/CREDITS.txt",
+      "sha256": "96d3b2e772bb725b686313ee4eff687f0e05fd5124074fdd66b3700794e9b8b9"
+    },
+    {
+      "path": "game/assets/audio/positional/provenance.json",
+      "sha256": "cf70804e9926d447801d5a5b44e518cf55d96a8bad8337e6a265f12672501c6c"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "7f20d46cdbe8ef625911e1be5b592a67de84cfc83ffba92daea97d364cec7cf9"
+    },
+    {
+      "path": "scripts/check-positional-audio-output.py",
+      "sha256": "0c7641b8746a9ae32fb9f752a676a7bc8333d6077583d2a0071b08f79a99b1c0"
+    },
+    {
+      "path": "scripts/prepare-positional-cue.py",
+      "sha256": "1d75c942b9e6156037af0edd5a8d631e5b436774561347bc9866e848ca769c51"
+    },
+    {
+      "path": "scripts/validate-positional-audio-runtime.py",
+      "sha256": "2cf188eb1686be30f9776b244950708d2461ca1eb491d152c3e93bd36d033de9"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionPositionalAudioProjection.cs",
+      "sha256": "30de6de2f598e5314d876e9ca5f47bd224f1b5eca9d0a60da324ee073bc7ab2b"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/OpeningRegionPositionalAudioProjectionTests.cs",
+      "sha256": "14bb2912a95da41ddd634ceaede7d23084ca1b84ed3dcc1288d416c01b50a693"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/positional-cue-runtime-review/README.md",
+      "sha256": "bbb604a91e3a6dd5015e109469087e7aae46635ee797d619476bcb150858f44b"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/audio-resource-subset.zip",
+      "sha256": "ff59f5fb6fc8f55d34f4a7ca19cafc911cc304e959285a0c4c583d291ff86148"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/Application-tests.log",
+      "sha256": "299f1443df132f94f1af679d3559c27a0b25582f2cbb88fb8e8a50fc0f2a2ce8"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/Architecture-tests.log",
+      "sha256": "3a69e5169d728c402b691636e7f7ba12e446883c15dd3e7dec1e053d3a627e7b"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/Domain-tests.log",
+      "sha256": "ae21a16685131f0016398f55c4b77024f20bb7214ea4289ff32cbaac6e42fbc2"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/Infrastructure-tests.log",
+      "sha256": "41f4c4282cc6e274e5fd624bf2146938285d7e45a15bd05b239e513bc122a3d7"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/art-proof.log",
+      "sha256": "026aacf93d159b7fa98da7f8b44b8c87a89c935d9afe396abf812d915ec80bb9"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/audio-archive.log",
+      "sha256": "2ab976f7083d082774289f855056b6786e0f72cd010df39e8193b55626227ebf"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/audio-extract.log",
+      "sha256": "0d45004e47b1634869cc74c1393efb236c92ddc989e6814c9cfd3449f88e2673"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/boundary.log",
+      "sha256": "ddfb138e78090fbdc7fa77b0f57faaf458994e9005e9bdee4f44ce394d02ba1e"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/build-game.log",
+      "sha256": "6c97d89bc4c527410edcd003292aeac433fd23cf0480a9917e9cd51e8f9658aa"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/build.log",
+      "sha256": "32fa7018b3be9128780b861b0f590544e4d3b60452151158ec596169b34a7f37"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/continuation.log",
+      "sha256": "a2e0e9384d1c8813d9733a61dda2b3f9ff5df7fc783e0c0dd4985cacb259c485"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/create-uids.gd",
+      "sha256": "f1ef233a1d8305da468a4704311810719d2f2841eee8c1ba052775553de1fb55"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/decoded.log",
+      "sha256": "317ce205d3e5ed372c19cd75896997d768adc0e9ad3ea1435719e4f11a689562"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/export-inventory.log",
+      "sha256": "4ab0a187235eb0109dbc9d77f942b496f08c10ed28eec6e5928c6a38cdd565b4"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/export.log",
+      "sha256": "a07bf5d7d1f950ff931896dd4cea53ddc6ecf24907e8b010d33d0d8428f6088a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/footstep-proof-stopped.log",
+      "sha256": "efc3923cf9b30336a54f87bf3012d7c4fd174a2599261e7ae80382fee162b615"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/format-applied.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/format-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/format-game-applied.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/format-game-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/format.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/godot-smoke.log",
+      "sha256": "75b6f1af3e92e5ccf5c5e77697b83b554524d10c2cba8eb46b34f5fe2419273d"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/import.log",
+      "sha256": "1b05f03214914fc9357ab1001877d26287eabdf2cd8907ad01dfb5c60f383025"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/inspect-stream.gd",
+      "sha256": "584bb99168e93f990de3eb96bc1f4b4b25c9d7325f246f2dee67afce4a82d20a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/main-captions-off.log",
+      "sha256": "1173a44d5af311fa72a6aa8fd8faf807a5498d236f1887b181e6fd0bc867b559"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/main-missing.log",
+      "sha256": "1173a44d5af311fa72a6aa8fd8faf807a5498d236f1887b181e6fd0bc867b559"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/main-muted.log",
+      "sha256": "fa923b8a4b980c809c1984f38cbfa8e92887a830c528588c544d4751d334d1ae"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/main-normal.log",
+      "sha256": "1173a44d5af311fa72a6aa8fd8faf807a5498d236f1887b181e6fd0bc867b559"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/main-views.log",
+      "sha256": "4cd0195fe2685be8d6545da34a6b55c31572809aeac6ebe540d59408cbccfeb5"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/output-analysis.log",
+      "sha256": "5ed1e1da0f6b47df69d1f9c67b3d816efc20070f6d3928681524eb905c350bdc"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/output-render.log",
+      "sha256": "6a0d9127065c625834131838950771372f1cfd8276b45e60021bd495ac0468d8"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/restore.log",
+      "sha256": "40d104602671164ab3958225da3e1c8cabd55f0251d6df6bc911d9d5a24f44ce"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/retained-material-main.log",
+      "sha256": "86d5da675d3d837691c20275d40696478f83033641e7817a1aae7fc98cf44a9e"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/scenario.log",
+      "sha256": "afda0324417f68af389e4dc7571b1aba60fa531a7db58c0993e8e28def2d1475"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/uids.log",
+      "sha256": "efc3923cf9b30336a54f87bf3012d7c4fd174a2599261e7ae80382fee162b615"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/verify-export.py",
+      "sha256": "8f4b3029234777d2c73ec3da1c40c75543b9891be954041fb95ca30bbcaa88ed"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/checks/workflows.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/decoded-A06-D01.pcm",
+      "sha256": "a65ff62c9bdc8879fbb671a1189288698ade4846d1cd623245a50f23e9f45874"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/decoded-parity.json",
+      "sha256": "0f4645366903d2fb1217ac235527543dd513bd18cd9543612c693382e9ef4bdf"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/export-inventory.json",
+      "sha256": "0c18de769e33354715173190726650a442061d45b534b28c97cb11570af72cd7"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-captions-off.json",
+      "sha256": "2be9c8beb350021fc0e730b6fe5d744c9a8637fb6187466711e6e650ce596ec1"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-captions-off.json.save.json",
+      "sha256": "34c57b9494f9518077aa392f7620a166e432a9f20300993852f99ab905ad896a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-missing.json",
+      "sha256": "698cc26d36d551355c4dca0c252f03af847f055629289f1565ddce67673e61e8"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-missing.json.save.json",
+      "sha256": "34c57b9494f9518077aa392f7620a166e432a9f20300993852f99ab905ad896a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-muted.json",
+      "sha256": "a7b9f0e967f5aae6120ce0102a461eb67a2658c70d3205c9e2b9e8d2597290d5"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-muted.json.save.json",
+      "sha256": "34c57b9494f9518077aa392f7620a166e432a9f20300993852f99ab905ad896a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-normal.json",
+      "sha256": "17205e0cc9352522bc9e13ce394fd74a3e176c22d2e8e9093d89036e00712099"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-normal.json.save.json",
+      "sha256": "34c57b9494f9518077aa392f7620a166e432a9f20300993852f99ab905ad896a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/main-parity.json",
+      "sha256": "c002eb2c84ef175365f4877317bf72d4418b05da39b973f7047a276a0ddeccbe"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/output/capture.json",
+      "sha256": "8060d341c2295f27c2846a7cf4dad40cb428f4dee5d599a5271bbc343efc60ec"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/output/master.flac",
+      "sha256": "73bb3d86936cff32f629918a20f049be4d1d79ee22cc364139ab9b2c0b64f099"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/output/measurements.json",
+      "sha256": "48271034306294e4e015948809eff4db8905e9a28a2a0784bfb103c7dcfc110f"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/output/render-inputs.json",
+      "sha256": "8cf058e7911e4e3b1a21a32a6ac32378d74687c32a6443e4b85629c05fe8110d"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/output/timeline.json",
+      "sha256": "f5dfb3b0e0834e69754753838f77429afde1a8323d9feee86da6db2d5e362221"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/captions-1280.png",
+      "sha256": "8175cffaabce83ad30977e57408c7c57643ed30c4bc9bf7e1768288e5c2271e8"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/captions-1600.png",
+      "sha256": "739f242bb31bfff651c0235d07067484beb29c19538bbb973eb8bc1a370d8a6a"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/credits-1280.png",
+      "sha256": "7d909427ccd2c29c697aad7cd6d9dca09641c6e622b300373bb66049a61ea057"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/credits-1600.png",
+      "sha256": "ddcaa1b8ef9f41bbbb69ae2e3e8797f28102d95edd3002463446b1f7a7fd8197"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/history-1280.png",
+      "sha256": "0328323cadb936a96bf1644c96003e61604c10ea0da3bf658c77ceea644c260c"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/history-1600.png",
+      "sha256": "8dce79f094387e7cd250b24874f6963edae7344452c01281dd54beff2c758185"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/offscreen-1280.png",
+      "sha256": "38758d81f3b6886898785b1220cde1e04e19aa425ee8007b68861062ae2822ee"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-review/views/offscreen-1600.png",
+      "sha256": "58d22ccb66562a62e2b63577645c460ccbf21665bc455dd92d196242ca9140fd"
+    }
+  ]
+}

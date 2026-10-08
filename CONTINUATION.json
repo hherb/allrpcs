@@ -388,6 +388,20 @@
           "sha256": "9f5e0755ce209a455d5d5d4ef98cb4f90e53679458d2e94d5b7dfa0cb1cbd288"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-audio-cue-runtime-integration",
+      "reason": "Owner approved the exact proposal on 2026-10-08. Single spatial B02, captured-audience recorded Healer/Sage reply indication, one exact PCM slice, captions/history/credits and finite successor/product evidence are complete: 5117 unit tests, 293 retained Godot launches, four-mode exact transcript/full-save parity, 44 measured output cases, native parity and 31-stream/11-notice packaging. Wider positional audio remains unfinished; standing task publication authority applies.",
+      "evidence": [
+        {
+          "path": "audio-direction/positional-cue-runtime-authority.json",
+          "sha256": "3732acdec8f21f235e92a617a632ec84fecba63eaef2398fad9e572ded05d598"
+        },
+        {
+          "path": "audio-direction/positional-cue-runtime-verification.json",
+          "sha256": "f0c4a334b7236ca5af65c6dedcc8f3a0e5eeb774468ca8e2e2222856e6ae7fd4"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -495,20 +509,19 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-audio-cue-runtime-integration",
-    "title": "Implement the proposed positional waterway bed and heard response cue after owner approval",
+    "id": "phase9-restrained-music-runtime-scope",
+    "title": "Prepare the bounded restrained music runtime proposal",
     "status": "ready",
-    "workstream": "audio-positional-cue-runtime-implementation",
-    "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "The proposed single-owner spatial B02 and captured-audience Healer/Sage response cue, one exact PCM slice, safe captions/history, rights packaging and finite runtime verification are not implemented; the new runtime/extraction grant is pending.",
-    "instructions": "Present audio-direction/positional-cue-runtime-scope.md and its hash-bound inventory for the single new runtime/PCM decision. Do not change runtime until that grant arrives. Record the actual owner response in positional-cue-runtime-authority.json, then complete the exact proposed implementation, meaningful checks, review and documentation in the same session. Carry accepted audio/art/gait, other six-sound behavior and footsteps unchanged; use the recorded standing commit/push authority for completed tasks.",
-    "completion_condition": "An actual owner grant, one spatial B02 owner, admitted ordinary-response cue with exact PCM slice, accessible captions/history/credits and passing finite successor/product/output evidence exist; wider positional audio is not declared complete.",
+    "workstream": "audio-restrained-music-runtime-planning",
+    "roadmap_item": "- [ ] Add restrained music that supports slow investigation without manufacturing urgency.",
+    "missing_deliverable": "A concrete runtime proposal for the accepted M01/M02 optional music is absent: exact trigger/quiet-interval ownership, interruption/resumption rules, accessible controls, resource/rights inventory and finite checks are unspecified.",
+    "instructions": "Read the accepted audio policy and retained M01/M02 bindings, then inspect actual current runtime owners and prepare one bounded read-only implementation proposal. Preserve all closed audio/art scopes and accepted material unchanged. Complete planning checks and authorized task commit/push; request only the genuinely new music runtime authority after presenting the concrete proposal.",
+    "completion_condition": "One exact finite music runtime proposal and hash-bound inventory identify missing implementation, actual owners, admission/quiet timing, interruption policy, installed resources/rights, accessibility and verification; no music runtime or new PCM generation is inferred.",
     "outputs": [
-      "audio-direction/positional-cue-runtime-authority.json",
-      "audio-direction/positional-cue-runtime-verification.json",
-      "audio-direction/positional-cue-runtime-review/README.md"
+      "audio-direction/music-runtime-scope.md",
+      "audio-direction/music-runtime-scope.json"
     ],
-    "boundary": "Pending new runtime and exact PCM-extraction authority. Only the proposed B02 handoff, ordinary recorded-response producer, listener, cue/caption/history/credits and named verification files are eligible after approval. No hearing/perception/save/world/geometry/art/gait/footstep/mixer changes, other producers, music, voice or release. Preserve and exclude the local editor rewrite; standing scoped publication authority remains valid."
+    "boundary": "Read-only planning for the named remaining restrained-music roadmap item. No new music runtime, source edits, downloads, audition, voice, perception/world/save/physical changes or reopening of accepted artwork/audio/footsteps/positional implementation. Standing task publication authority applies to completed planning."
   },
   "deferred_slices": []
 }

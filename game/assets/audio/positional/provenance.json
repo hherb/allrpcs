@@ -1,0 +1,27 @@
+{
+  "proposed_path": "game/assets/audio/positional/A06-D01.wav",
+  "accepted_parent": {
+    "path": "audio-direction/material-audition/clips/A06-Dialogue.wav",
+    "sha256": "6653c99b089e8061cdda6081af01ac8cbaae28765bca1947986a168bbcb62c20"
+  },
+  "format": {
+    "channels": 2,
+    "sample_width_bytes": 3,
+    "rate_hz": 48000,
+    "parent_frame_count": 384000
+  },
+  "begin_frame": 192000,
+  "end_frame_exclusive": 216000,
+  "frame_count": 24000,
+  "pcm_byte_count": 144000,
+  "expected_pcm_sha256": "587f7ba3c73f6f92eee0b2a07d24cd324484118571a202703f4281cc9f8c9de6",
+  "header_sha256": "f366428acb43ff9f947c194523f056d5bbe8dbf77648d2dbec05c480f7bffab4",
+  "resource_created": true,
+  "parent_window_seconds": [
+    4,
+    4.5
+  ],
+  "excluded_end_click_seconds": 6,
+  "transforms_allowed": [],
+  "meaning": "nonverbal recorded-reply indication; no conversation-end or voice claim"
+}

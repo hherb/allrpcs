@@ -10,6 +10,8 @@ namespace Allrpcs.Game;
 /// <summary>Records each fresh complete response delivery as one scene occurrence.</summary>
 public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
 {
+    /// <summary>Presentation notification after exact occurrence and transcript commit.</summary>
+    internal event Action<RecordedReplyPresentation>? ReplyRecorded;
     private const float DialogueHearingRangePixels = 192.0f;
     private const float WhisperHearingRangePixels = 48.0f;
 
@@ -89,6 +91,16 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
         }
 
         lastRecordedDelivery = delivery;
+        DialogueEvent occurred = eventController.LastOccurredEvent!;
+        Node2D source = ReferenceEquals(speaker, participants[0]) ? healer : sageHearingPosition;
+        RecordedReplyPresentation notice = new(occurred, delivery, speaker.Identity.Id,
+            seekerId, source, source.GlobalPosition,
+            delivery.Mode == DialogueDeliveryMode.Whispering ? WhisperHearingRangePixels : DialogueHearingRangePixels);
+        foreach (Delegate listener in ReplyRecorded?.GetInvocationList() ?? [])
+        {
+            try { ((Action<RecordedReplyPresentation>)listener)(notice); }
+            catch (Exception exception) { GD.PrintErr($"Reply presentation failed: {exception.Message}"); }
+        }
     }
 
     private Vector2 GetParticipantPosition(
@@ -111,3 +123,7 @@ public partial class TemporaryCharacterTurnResponseSpeechRecorder : Node
 
     private static NumericsVector2 ToNumerics(Vector2 value) => new(value.X, value.Y);
 }
+
+/// <summary>Exact transient committed reply with its retained scene source and hearing range.</summary>
+internal sealed record RecordedReplyPresentation(DialogueEvent Event, DialogueDelivery Delivery,
+    CharacterId SpeakerId, CharacterId SeekerId, Node2D Speaker, Vector2 WorldPosition, float Range);

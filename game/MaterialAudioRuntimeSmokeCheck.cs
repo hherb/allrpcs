@@ -33,11 +33,11 @@ public partial class MaterialAudioRuntimeSmokeCheck : Node
                 seeker.GlobalPosition = projection.ToGlobal(new Vector2(anchor.Position.X, anchor.Position.Y));
                 await Frame(); await Frame();
                 Require(audio.Current is not null, "Missing live regional selection.");
-                Require(captions.GetNode<Label>("Panel/Lines/Region").Text == audio.Current!.Caption,
+                Require(audio.Current!.ClipId == "B02" || captions.GetNode<Label>("Panel/Lines/Region").Text == audio.Current!.Caption,
                     "Region caption did not follow live presentation.");
             }
-            Require(audio.GetChildCount() == 6 && audio.GetChildren().All(child => child is AudioStreamPlayer),
-                "Material audio exceeded its six players.");
+            Require(audio.GetChildCount() == 5 && audio.GetChildren().All(child => child is AudioStreamPlayer),
+                "Material audio exceeded its five retained non-positional players.");
             Require(audio.GetChildren().Cast<AudioStreamPlayer>().All(player => player.Stream is not null),
                 "An accepted sound failed engine import.");
             Require(audio.GetChildren().Cast<AudioStreamPlayer>().All(player =>

@@ -1,0 +1,17 @@
+[aist#0:0/pcm_s16le @ 0x757500c180] Guessed Channel Layout: stereo
+Input #0, wav, from '/tmp/allrpcs-positional-output/master16.wav':
+  Metadata:
+    encoder         : Lavf63.1.101
+  Duration: 00:02:54.02, bitrate: 1536 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, stereo, s16, 1536 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> flac (native))
+Press [q] to stop, [?] for help
+Output #0, flac, to 'audio-direction/positional-cue-runtime-review/output/master.flac':
+  Metadata:
+    encoder         : Lavf63.1.101
+  Stream #0:0: Audio: flac, 48000 Hz, stereo, s16, 128 kb/s
+    Metadata:
+      encoder         : Lavc63.1.101 flac
+[out#0/flac @ 0x757480c180] video:0KiB audio:8253KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: 0.098050%
+size=    8261KiB time=00:02:54.01 bitrate= 388.9kbits/s speed= 972x elapsed=0:00:00.17

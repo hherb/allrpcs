@@ -1,0 +1,213 @@
+{
+  "status": "playback inputs unchanged since the retained Movie Maker render; subsequent changes are Main-only smoke assertions and output analysis",
+  "bindings": [
+    {
+      "path": "game/PositionalAudioRuntimeProof.cs",
+      "sha256": "d8a46c12fdffef940a46e9ee322c718dcdbfab21b456b23ad6cb3b4eaceff126"
+    },
+    {
+      "path": "game/PositionalAudioRuntimeProof.tscn",
+      "sha256": "a4013eefe7bef705bb8ccd16ee2f59347caf5f97719fcce643d846e69e3061de"
+    },
+    {
+      "path": "game/OpeningRegionPositionalAudioController.cs",
+      "sha256": "2ef88e4bfeb5c37c453b40d6592addfa3fc6808b756192e355eb045b70e90770"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "0b51ced33e60bd32018acb67953c6cb7676fea59b7b32da1cde8dafc4a2f3bf5"
+    },
+    {
+      "path": "game/OpeningRegionFootstepAudioController.cs",
+      "sha256": "d917538a3c6c5ffc8a3d6b837313b1f58fc88a2a030891a5fd8e378a2d37d6ea"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav",
+      "sha256": "f366428acb43ff9f947c194523f056d5bbe8dbf77648d2dbec05c480f7bffab4"
+    },
+    {
+      "path": "game/assets/audio/positional/A06-D01.wav.import",
+      "sha256": "0e525d1a4520d11875a0c2aa51a384091e28387978375c1bd083acc6eb8e7d4b"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-01.wav",
+      "sha256": "b137639fe2b33dba7eebfa893a07886869957502e54b48d43c61c6a79112afd3"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-02.wav",
+      "sha256": "155a8f44c431e90101bab636440ab6d1cf85284d76952177ddde27cc45cacf0f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-03.wav",
+      "sha256": "29c9fc766a0faecc72750b2aeb72ec0d986e52a75c23d0880d8d170fb5df29f6"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-04.wav",
+      "sha256": "63a62c5c7ff81df6047b11c89f18990e5d7285bde84078cfed795d14b42baf88"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-05.wav",
+      "sha256": "56293168bd3160256d18a430d1e857235a3dfafd3353f04109ed6077217b29e7"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W01-06.wav",
+      "sha256": "1f2ca7b4ff62f4bed328b49b88ccf29f0783bc57b2c162569ea9955868d4cc90"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-01.wav",
+      "sha256": "7db6d0d307f7eb1379ae488b98852f7d7e4c0f81e271576a4381216e79988bae"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-02.wav",
+      "sha256": "48711b2c4ee48e2999a195665d0ea097a60d55615efe434b8fee2563d0c0a403"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-03.wav",
+      "sha256": "8a0360f8dab904f57ee60881d5e2aba7ee22b132f4837f531617fc3df986e441"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-04.wav",
+      "sha256": "0a407143d9ed6d91c12c0b8eea38748f69e4228ddd78072e94794a7a49475bbf"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-05.wav",
+      "sha256": "867fd34b37b72c0c671a21c5090b33eac6b56a8d7660c041974476982662865c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W02-06.wav",
+      "sha256": "1e1f4bc6f19deca097bfe2bd692367c4e26910ab8188cad701fa117c11ffc756"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-01.wav",
+      "sha256": "f1cfde6ce41ba2955a4b09c97fd03634dcdb1d6fb43d8d1b88e9c1d7ded0da23"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-02.wav",
+      "sha256": "7cdf471f65be76a58f734902459ee552c6973c4edf8dfb7afa91bb488b11151c"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-03.wav",
+      "sha256": "036d03066c4100d30d00c1091a73ece2af9a66c957f23974905713333b6ee1a1"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-04.wav",
+      "sha256": "9bbc2e1abb014ff7382ebb2aa7b64ad916b6e54e3e41a6c41641c3c859add307"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-05.wav",
+      "sha256": "223c7a28fe6764e06ab3ef53f41c106a7f7cbae8fc07dd5f40fd89f794ad429e"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W03-06.wav",
+      "sha256": "7a784082fbfc665b754f516ffe12b2fffe040a8532c8d078abed671f019d5e18"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-01.wav",
+      "sha256": "f2b49961345f3568bd0e6c548218770e18a191e36b7db87a41bf56d38dd8135d"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-02.wav",
+      "sha256": "ebcb5e10fa74e3d8beb1af62201689fb3aafbe00e39230651e214495156430d8"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-03.wav",
+      "sha256": "26f7f24caa1dbb430c296ad074311e26f91727353fb5924aad32cd68bf9feaaa"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-04.wav",
+      "sha256": "c08479dcf3cb8d52495ce5d75fc8139bae27b425c8b7b97ef129532273c4cf6f"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-05.wav",
+      "sha256": "8b9ea6059c9761bb1c29c04485dc8a025a416de89430d83d4c1fe8a62eb16404"
+    },
+    {
+      "path": "game/assets/audio/footsteps/W04-06.wav",
+      "sha256": "0cd4805f069ef0ccc31e269c3141da18c824a93d6e7c7fec7458864a955f6560"
+    },
+    {
+      "path": "game/AudioBusesControlsProof.cs",
+      "sha256": "8cec0f1866d259bee1d056c398f666b557363dd3c2a9c8168fddae802af0fd57"
+    },
+    {
+      "path": "game/AudioDiagnosticSignal.cs",
+      "sha256": "280ebe3d930f8059a77a5f682833b8d5b31e1af9ed1f290e87267aedb6ba8c9c"
+    },
+    {
+      "path": "game/AudioSettingsMainSmokeCheck.cs",
+      "sha256": "f0e47be7c188025fdb41ff13f001cf0506df19d389a1fd8ca87cbffc7a08f4b5"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "3f62598af3de5626590cc928576600f2fbfa7229c8e0aa058479503c8b70ae0d"
+    },
+    {
+      "path": "game/AudioSettingsStorageController.cs",
+      "sha256": "e4250c020dbf986e0f440a1d017d658059eefbc24cd6aae4947f174d6b8441b8"
+    },
+    {
+      "path": "src/Application/Audio/AudioDuckingEnvelope.cs",
+      "sha256": "d16f6d77f5baa71f119cd19d9b5a60da033ac58317936123f947625b4c2491f4"
+    },
+    {
+      "path": "src/Application/Audio/AudioPreferences.cs",
+      "sha256": "09aebb88de6385955feeeffb80af18f195a01666deb6bc544bbfce7b28c95166"
+    },
+    {
+      "path": "src/Application/Audio/FootstepContactCadence.cs",
+      "sha256": "1ed70cfea163857db49fd7d6d0e7f49ece8ec845c933eb35ac4442eb87f19d56"
+    },
+    {
+      "path": "src/Application/Audio/IAudioPreferencesStore.cs",
+      "sha256": "ccfe8f73f547a452446fb61f49499e28471f832264d6f9ea3e1c42495e489f64"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionFootstepMaterialProjection.cs",
+      "sha256": "94ab08a67e1ecec15935ea20e0f927c831799f837eaffa289e9a0ddc575b605d"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "sha256": "23cba8f777935202c6583143533e94d2c22d6063941342a171042598b75529c4"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionPositionalAudioProjection.cs",
+      "sha256": "30de6de2f598e5314d876e9ca5f47bd224f1b5eca9d0a60da324ee073bc7ab2b"
+    },
+    {
+      "path": "src/Infrastructure/Audio/AudioPreferencesJson.cs",
+      "sha256": "886cf41faa86944fc9e17bf8428e43a5ec96968f2535fe686503d7337a3ed28d"
+    },
+    {
+      "path": "src/Infrastructure/Audio/FileAudioPreferencesStore.cs",
+      "sha256": "d93a66c46d7013cbebc370db8ea5a629b1f50b38cd82ce7a512187f0bbe0d56a"
+    }
+  ]
+}

@@ -9,6 +9,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     private Label regionLabel = null!;
     private Label actionLabel = null!;
     private Label footstepLabel = null!;
+    private Label conversationLabel = null!;
+    private string conversation = string.Empty;
     private string region = string.Empty;
     private string action = string.Empty;
     private double remaining;
@@ -22,7 +24,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         PanelContainer panel = new() { Name = "Panel", MouseFilter = Control.MouseFilterEnum.Ignore };
         AddChild(panel);
         panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -108; panel.OffsetBottom = -16;
+        panel.OffsetLeft = 16; panel.OffsetRight = 420; panel.OffsetTop = -136; panel.OffsetBottom = -16;
         StyleBoxFlat style = new()
         {
             BgColor = new Color(0.035f, 0.045f, 0.055f, 0.92f),
@@ -39,6 +41,8 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         lines.AddChild(regionLabel); lines.AddChild(actionLabel);
         footstepLabel = new() { Name = "Footstep", MouseFilter = Control.MouseFilterEnum.Ignore };
         lines.AddChild(footstepLabel);
+        conversationLabel = new() { Name = "Conversation", MouseFilter = Control.MouseFilterEnum.Ignore };
+        lines.AddChild(conversationLabel);
         settings.Changed += Refresh;
         Refresh();
     }
@@ -54,6 +58,9 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
     internal void SetFootstep(string text) { footstep = text; footstepRemaining = 0.75; Refresh(); }
     /// <summary>Clears footstep ownership without removing regional or committed-action captions.</summary>
     internal void ClearFootstep() { footstep = string.Empty; footstepRemaining = 0; Refresh(); }
+
+    /// <summary>Sets only the independently owned heard reply line.</summary>
+    internal void SetConversation(string text) { conversation = text; Refresh(); }
 
     /// <inheritdoc />
     public override void _Process(double delta)
@@ -77,6 +84,7 @@ public partial class MaterialSoundCaptionPanel : CanvasLayer
         regionLabel.Text = enabled ? region : string.Empty;
         actionLabel.Text = enabled ? action : string.Empty;
         footstepLabel.Text = enabled ? footstep : string.Empty;
-        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0);
+        conversationLabel.Text = enabled ? conversation : string.Empty;
+        Visible = enabled && (region.Length > 0 || action.Length > 0 || footstep.Length > 0 || conversation.Length > 0);
     }
 }

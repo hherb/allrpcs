@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "cases": 44,
+  "metrics": {
+    "water-normal": {
+      "rms_dbfs": -32.674244024253525,
+      "peak_dbfs": -14.85963063812875,
+      "first_signal_after_command_seconds": 0.5260833333333333,
+      "left_rms": 0.02289157337341817,
+      "right_rms": 0.023588729423530262
+    },
+    "water-half": {
+      "rms_dbfs": -38.69270907391489,
+      "peak_dbfs": -20.880230551408374,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.011448315006834136,
+      "right_rms": 0.011797540743660705,
+      "rms_ratio_to_normal": 0.50012290773241
+    },
+    "water-zero": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-mute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-master-zero": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-master-mute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-mono": {
+      "rms_dbfs": -33.252547540306274,
+      "peak_dbfs": -16.258664750431347,
+      "first_signal_after_command_seconds": 0.005333333333333333,
+      "left_rms": 0.021745661480202703,
+      "right_rms": 0.021745661480202703
+    },
+    "water-reduced": {
+      "rms_dbfs": -40.43289844185486,
+      "peak_dbfs": -22.999239001376367,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.009386297525464994,
+      "right_rms": 0.009639662013635664
+    },
+    "water-missing": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-other-bus-zero": {
+      "rms_dbfs": -32.6712820530525,
+      "peak_dbfs": -14.85963063812875,
+      "first_signal_after_command_seconds": 0.5234166666666666,
+      "left_rms": 0.02289881547290303,
+      "right_rms": 0.023597323527810733,
+      "rms_ratio_to_normal": 1.0003410676870297
+    },
+    "water-cancel": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-mute-unmute": {
+      "rms_dbfs": -33.372728702356255,
+      "peak_dbfs": -14.85963063812875,
+      "first_signal_after_command_seconds": 1.007375,
+      "left_rms": 0.02115204361455093,
+      "right_rms": 0.02173766351180045
+    },
+    "water-half-distance": {
+      "rms_dbfs": -38.695670424380076,
+      "peak_dbfs": -20.880230551408374,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.011444694925239073,
+      "right_rms": 0.01179324513239627,
+      "rms_ratio_to_normal": 0.49995242585611055
+    },
+    "water-boundary": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-outside": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "water-left": {
+      "rms_dbfs": -38.688853717533874,
+      "peak_dbfs": -21.69782330873921,
+      "first_signal_after_command_seconds": 0.52875,
+      "left_rms": 0.01246848851768397,
+      "right_rms": 0.010724863155261789
+    },
+    "water-right": {
+      "rms_dbfs": -38.63757285414093,
+      "peak_dbfs": -20.130328178193704,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.010414468333754883,
+      "right_rms": 0.012854475250409442
+    },
+    "water-above": {
+      "rms_dbfs": -38.69270907391489,
+      "peak_dbfs": -20.880230551408374,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.011448315006834136,
+      "right_rms": 0.011797540743660705
+    },
+    "water-zoom2": {
+      "rms_dbfs": -38.68361434106992,
+      "peak_dbfs": -20.880230551408374,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.011456069618751586,
+      "right_rms": 0.01181401195971054,
+      "rms_ratio_to_normal": 0.5006468455841123
+    },
+    "reply-normal": {
+      "rms_dbfs": -63.85170375704632,
+      "peak_dbfs": -30.026992268801948,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.0006418223142503861,
+      "right_rms": 0.0006418223142503861
+    },
+    "reply-half": {
+      "rms_dbfs": -69.87317082134605,
+      "peak_dbfs": -36.05600466665013,
+      "first_signal_after_command_seconds": 0.5261041666666667,
+      "left_rms": 0.0003208791207353203,
+      "right_rms": 0.0003208791207353203,
+      "rms_ratio_to_normal": 0.4999500852663401
+    },
+    "reply-zero": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-mute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-master-zero": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-master-mute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-mono": {
+      "rms_dbfs": -63.85170375704632,
+      "peak_dbfs": -30.026992268801948,
+      "first_signal_after_command_seconds": 0.5234375,
+      "left_rms": 0.0006418223142503861,
+      "right_rms": 0.0006418223142503861
+    },
+    "reply-reduced": {
+      "rms_dbfs": -64.98884846839152,
+      "peak_dbfs": -31.166434745658094,
+      "first_signal_after_command_seconds": 0.5207708333333333,
+      "left_rms": 0.0005630637606106539,
+      "right_rms": 0.0005630637606106539
+    },
+    "reply-missing": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-other-bus-zero": {
+      "rms_dbfs": -63.85170375704632,
+      "peak_dbfs": -30.026992268801948,
+      "first_signal_after_command_seconds": 0.5261041666666667,
+      "left_rms": 0.0006418223142503861,
+      "right_rms": 0.0006418223142503861,
+      "rms_ratio_to_normal": 1.0
+    },
+    "reply-cancel": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-mute-unmute": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-half-distance": {
+      "rms_dbfs": -69.87317082134605,
+      "peak_dbfs": -36.05600466665013,
+      "first_signal_after_command_seconds": 0.5287708333333333,
+      "left_rms": 0.0003208791207353203,
+      "right_rms": 0.0003208791207353203,
+      "rms_ratio_to_normal": 0.4999500852663401
+    },
+    "reply-boundary": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-outside": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "reply-left": {
+      "rms_dbfs": -69.87052447729168,
+      "peak_dbfs": -35.85632024851811,
+      "first_signal_after_command_seconds": 0.5207708333333333,
+      "left_rms": 0.0003281225600637565,
+      "right_rms": 0.00031366849407964614
+    },
+    "reply-right": {
+      "rms_dbfs": -69.87052447729168,
+      "peak_dbfs": -35.85632024851811,
+      "first_signal_after_command_seconds": 0.5287708333333333,
+      "left_rms": 0.00031366849407964614,
+      "right_rms": 0.0003281225600637565
+    },
+    "reply-above": {
+      "rms_dbfs": -69.87317082134605,
+      "peak_dbfs": -36.05600466665013,
+      "first_signal_after_command_seconds": 0.5261041666666667,
+      "left_rms": 0.0003208791207353203,
+      "right_rms": 0.0003208791207353203
+    },
+    "reply-zoom2": {
+      "rms_dbfs": -69.87317082134605,
+      "peak_dbfs": -36.05600466665013,
+      "first_signal_after_command_seconds": 0.5234375,
+      "left_rms": 0.0003208791207353203,
+      "right_rms": 0.0003208791207353203,
+      "rms_ratio_to_normal": 0.4999500852663401
+    },
+    "whisper-boundary": {
+      "rms_dbfs": -240.0,
+      "peak_dbfs": -240.0,
+      "first_signal_after_command_seconds": null,
+      "left_rms": 0.0,
+      "right_rms": 0.0
+    },
+    "whisper-half": {
+      "rms_dbfs": -69.87238336291446,
+      "peak_dbfs": -36.0056515422252,
+      "first_signal_after_command_seconds": 0.5287708333333333,
+      "left_rms": 0.000319111035841311,
+      "right_rms": 0.0003226953809452275
+    },
+    "water-loop": {
+      "rms_dbfs": -32.127604397125694,
+      "peak_dbfs": -14.85963063812875,
+      "first_signal_after_command_seconds": 0.5260833333333333,
+      "left_rms": 0.024541953187970433,
+      "right_rms": 0.02496135128971262
+    },
+    "mixed-material": {
+      "rms_dbfs": -33.97887796891804,
+      "peak_dbfs": -17.003008709196415,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.019791835037109507,
+      "right_rms": 0.020208400463641103
+    },
+    "water-crossfade": {
+      "rms_dbfs": -30.835409736941042,
+      "peak_dbfs": -13.775842861676972,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.02849134729872088,
+      "right_rms": 0.02895276188827306
+    },
+    "water-retarget": {
+      "rms_dbfs": -32.703472329227374,
+      "peak_dbfs": -14.201700549865453,
+      "first_signal_after_command_seconds": 0.0,
+      "left_rms": 0.02305332909649915,
+      "right_rms": 0.02327550652193849
+    }
+  },
+  "capture_pcm_bits": 16,
+  "capture_frames": 8352800,
+  "wave_sha256": "5f0cd394b2d2ce06c34269d150ed74398333d03a833a1948f67b6883e60607bd",
+  "timeline_sha256": "f5dfb3b0e0834e69754753838f77429afde1a8323d9feee86da6db2d5e362221",
+  "final_master_measurements": {
+    "input_i": "-29.71",
+    "input_tp": "-13.63",
+    "input_lra": "9.20",
+    "input_thresh": "-40.05",
+    "output_i": "-22.04",
+    "output_tp": "-5.67",
+    "output_lra": "10.00",
+    "output_thresh": "-32.38",
+    "normalization_type": "dynamic",
+    "target_offset": "-0.96"
+  },
+  "limits": [
+    "Controlled engine diagnostics, not ordinary-play loudness compliance or device listening.",
+    "Composite B02 and its native positional centre scaling are retained without compensation.",
+    "Camera changes stereo panning; captured audience and world-distance eligibility remain separate."
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-positional-audio-cue-runtime-integration",
+  "owner_statement": "approved",
+  "context": "Direct response to the concrete positional audio proposal approval request in this conversation",
+  "status": "runtime_and_exact_pcm_extraction_authorized",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/positional-cue-runtime-scope.md",
+      "sha256": "4b1bf4aae574f3552aa5f59348942c932fbbfb2ca56e0e169943af3547c9d725"
+    },
+    {
+      "path": "audio-direction/positional-cue-runtime-scope.json",
+      "sha256": "9f5e0755ce209a455d5d5d4ef98cb4f90e53679458d2e94d5b7dfa0cb1cbd288"
+    }
+  ],
+  "covers": [
+    "B02 single-owner positional handoff with existing regional weights and new distance attenuation",
+    "explicit Seeker AudioListener2D",
+    "internal committed Healer/Sage recorded-response notification and captured-audience gate",
+    "one exact A06 Dialogue PCM extraction",
+    "one positional Dialogue click, safe captions and bounded accessible recent-cue view",
+    "packaged credits/notices and finite successor/product/output checks"
+  ],
+  "resource_count": 1,
+  "publication_authority": {
+    "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+    "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+  },
+  "release": false
+}

@@ -407,12 +407,17 @@ other interiors, Healer/NPC steps, water/tool actions, positional cues, music an
 remain unfinished. No anatomical animation synchronization, device listening or runnable
 release is claimed. The broader material-sound roadmap item remains unchecked.
 
-The [positional/off-screen runtime proposal](audio-direction/positional-cue-runtime-scope.md)
-is prepared: one spatial B02 waterway bed and a short cue after an admitted Healer/Sage
-reply is recorded, preserving existing hearing ranges, with an exact PCM range,
-directional captions, accessible recent cues and finite checks. Its planning slice is
-closed; new runtime/extraction authority is pending. No positional runtime behavior is
-claimed, and the broader positional/off-screen item remains unchecked.
+The approved [positional/off-screen proposal](audio-direction/positional-cue-runtime-scope.md)
+is implemented: one spatial B02 waterway owner and one optional click after a captured-audience
+Healer/Sage reply is recorded, preserving 192/48-pixel hearing. One exact A06 PCM range,
+four independent caption lines, eight screen bearings, bounded accessible recent cues and
+packaged credits are installed. [Verification](audio-direction/positional-cue-runtime-verification.json)
+and [review](audio-direction/positional-cue-runtime-review/README.md) retain 5,117 unit tests,
+293 retained Godot launches, four Main modes with identical transcripts/full save roots,
+44 measured Master-output cases, native PCM parity and actual 31-stream/11-notice resource
+packaging. This named slice is complete. The B02 composite rain spatializes with water;
+there is no device-listening, ordinary-play loudness or executable-release claim. Wider
+positional emitters and off-screen cues remain unfinished; the broader item stays unchecked.
 
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.

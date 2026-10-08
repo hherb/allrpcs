@@ -1,0 +1,81 @@
+{
+  "mode": "missing",
+  "checks": [
+    {
+      "viewport": "(1280, 720)",
+      "zoom": 0.8,
+      "caption": "Conversation nearby",
+      "admitted": true
+    },
+    {
+      "viewport": "(1280, 720)",
+      "zoom": 1,
+      "caption": "Conversation nearby",
+      "admitted": true
+    },
+    {
+      "viewport": "(1280, 720)",
+      "zoom": 2,
+      "caption": "Conversation below",
+      "admitted": true
+    },
+    {
+      "viewport": "(1600, 900)",
+      "zoom": 0.8,
+      "caption": "Conversation nearby",
+      "admitted": true
+    },
+    {
+      "viewport": "(1600, 900)",
+      "zoom": 1,
+      "caption": "Conversation nearby",
+      "admitted": true
+    },
+    {
+      "viewport": "(1600, 900)",
+      "zoom": 2,
+      "caption": "Conversation below",
+      "admitted": true
+    }
+  ],
+  "transcript": [
+    "Recorded reply 1",
+    "Recorded reply 2",
+    "Recorded reply 3",
+    "Recorded reply 4",
+    "Recorded reply 5",
+    "Recorded reply 6",
+    "Recorded reply 7",
+    "Recorded reply 8",
+    "Recorded reply 9",
+    "Recorded reply 10",
+    "Recorded reply 11",
+    "Recorded reply 12",
+    "Recorded reply 13",
+    "Recorded reply 14",
+    "Recorded reply 15",
+    "Recorded reply 16",
+    "Recorded reply 17",
+    "Recorded reply 18",
+    "Recorded reply 19",
+    "Recorded reply 20",
+    "Recorded reply 21",
+    "Recorded reply 22",
+    "Recorded reply 23",
+    "Recorded reply 24",
+    "Recorded reply 25",
+    "Recorded reply 26",
+    "Recorded reply 27",
+    "Recorded reply 28",
+    "Recorded reply 29",
+    "Recorded reply 30",
+    "Recorded reply 31",
+    "Recorded reply 32",
+    "Recorded reply 33",
+    "Recorded reply 34",
+    "Recorded reply 35",
+    "Recorded reply 36"
+  ],
+  "unrelatedRootsIdentical": true,
+  "recentCueLimit": 16
+}

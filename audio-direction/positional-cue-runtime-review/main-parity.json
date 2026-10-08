@@ -1,0 +1,11 @@
+{
+  "modes": [
+    "normal",
+    "muted",
+    "missing",
+    "captions-off"
+  ],
+  "exact_transcripts_equal": true,
+  "exact_full_save_roots_equal": true,
+  "save_sha256": "34c57b9494f9518077aa392f7620a166e432a9f20300993852f99ab905ad896a"
+}
