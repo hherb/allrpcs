@@ -327,7 +327,9 @@ binds the selected candidate and isolated proof. All sixteen accepted front/back
 poses and every predecessor remain unchanged. Use this as the reference for future
 walking animation work. Historical pending fields are superseded; the whole gait
 correction and the approved audio-policy slice are closed. The audio bus/control
-implementation is now verified; material sounds and their audition remain unfinished.
+implementation is verified, and the complete material audition is accepted. The approved
+six-sound runtime subset is implemented; footsteps and the other remaining audio scopes
+stay unfinished.
 
 Artwork workflow (owner instruction, 2026-10-03, reaffirmed 2026-10-04 for every remaining
 9.2 art slice): produce the entire selected category's
@@ -369,7 +371,8 @@ sparse optional music, perception-bound cues/captions, independent category cont
 explicitly provisional mix targets. [Terminal acceptance](audio-direction/owner-acceptance.json)
 binds the exact reviewed policy files and supersedes their historical proposal fields.
 The [structured policy](audio-direction/dynamic-range-policy.json) remains a design record;
-the external material audition is now owner-accepted; ordinary runtime audio remains uninstalled. The
+the external material audition is owner-accepted, and six unchanged excerpts now play in
+ordinary Main. The
 [bus/control implementation](audio-direction/buses-controls.md) is complete under the
 [approved runtime scope](audio-direction/buses-controls-authority.json): five sibling buses
 plus Master, persistent independent gains/mutes, accessible settings, functional range/mono
@@ -385,8 +388,18 @@ and requested only a quiet flute revision for M02 rest/healing. Those fifteen re
 frozen. The owner then accepted revised M02 and the complete series, selecting Default
 range. [Terminal acceptance](audio-direction/material-audition/owner-acceptance.json)
 closes the whole audition slice; no further listening gate remains. Seventeen source containers,
-including the rejected rest source, are retained. Material sounds, positional emitters, runtime
-music and voice remain unfinished; no ordinary runtime audio is installed.
+including the rejected rest source, are retained. The [approved material runtime scope](audio-direction/material-runtime-scope.md)
+maps all sixteen accepted candidates to actual owners and missing prerequisites.
+Under [owner authority](audio-direction/material-runtime-authority.json), B01–B04 regional
+beds and A04 grinding/A05 treatment feedback are implemented with bounded crossfades,
+independent captions, source credits and success/load/lease isolation.
+[Runtime verification](audio-direction/material-runtime-verification.json) records 5,072
+unit tests, the retained Godot suite, ordinary action parity and 36 measured output cases.
+The six shipping WAVs remain byte-identical to the accepted audition. Full macOS
+application export is unavailable on this host; scoped audio/resource packaging passes.
+Terrain footsteps, water/tool actions, positional cues, music and voice stay unfinished.
+The next finite boundary is a concrete terrain-footstep runtime proposal, with material
+coverage and actual-contact prerequisites recorded before seeking implementation authority.
 
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.

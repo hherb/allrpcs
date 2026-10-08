@@ -1,0 +1,35 @@
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region first-patient administration input smoke passed: inert startup, T mapping, authored patient-approach range and provenance, visible proximity and administration feedback, one full dose, atomic stabilization, world-event and experiment recording, rejection paths, and isolation were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Opening-region remedy-preparation input smoke passed: inert startup, P mapping, exact station range and provenance, one-step authored progression, full-batch installation, visible proximity and progress feedback, rejection paths, and unrelated-state isolation were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+First-patient recovery restoration smoke passed: before preparation, full batch, post-stabilization, post-testimony, and post-consultation saves resumed exactly once; incompatible recovery progress stayed inert.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+First-patient preparation controller smoke passed: exact scene ingredients, atomic input consumption, exact ordered progression and completion, exact prepared-batch installation, and rejected operations preserved all retained state.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+First-patient administration smoke passed: exact authored preparation, batch, event, dose, stabilized infection, and both experiment records installed atomically; rejected replacement and repeated calls preserved both controllers and unrelated state.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Save restoration controller smoke passed: complete versioned-root preflight, exact atomic discovery, world-event, character-memory, and rebound first-patient state installation plus fresh safe journal, exact selection, populated map, and route lifecycle with fresh canonical definitions, repeated restoration, fail-closed future version, missing target, missing event, duplicate journal, hidden-note map, and null handling, and unchanged authoritative definitions, movement, input, and other presentation state were correct.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)
+Godot Engine v4.6.3.stable.mono.official.7d41c59c4 - https://godotengine.org
+
+Audio Main smoke passed: six buses, hidden entry/panel, base/expanded fit, focus return, Tab/Escape, unchanged text/world time.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2663)

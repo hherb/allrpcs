@@ -1,0 +1,681 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "slice_id": "phase9-material-audio-runtime-integration",
+  "status": "implementation_complete_verified",
+  "owner_authority": {
+    "path": "audio-direction/material-runtime-authority.json",
+    "sha256": "085dc5176bc713c37307cac22a76b2b47343eb3869c38aadc8692da269dc030f"
+  },
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/material-runtime-scope.md",
+      "sha256": "f8f309f34e8ddee75c3085060b98ce0e3c91ca154adbad96a6cf32bedc44be42"
+    },
+    {
+      "path": "audio-direction/material-runtime-scope.json",
+      "sha256": "6eb5f9cb06efd1851f85076d1594d265d393e8b1ac59e5b06d137a64630fec28"
+    }
+  ],
+  "baseline_commit": "123b076c5bccff5b17aaa732c7713d4052192044",
+  "completion": "The exact authorized six-sound scope is implemented and verified. No further approval of unchanged sound selection, accepted artwork or this implementation scope is pending.",
+  "runtime": {
+    "selected_ids": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "A04",
+      "A05"
+    ],
+    "installed_source_bindings": [
+      {
+        "path": "game/assets/audio/material/B01.wav",
+        "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+      },
+      {
+        "path": "game/assets/audio/material/B02.wav",
+        "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+      },
+      {
+        "path": "game/assets/audio/material/B03.wav",
+        "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+      },
+      {
+        "path": "game/assets/audio/material/B04.wav",
+        "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+      },
+      {
+        "path": "game/assets/audio/material/A04.wav",
+        "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+      },
+      {
+        "path": "game/assets/audio/material/A05.wav",
+        "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+      }
+    ],
+    "accepted_sources_unchanged": true,
+    "players": "Four Ambience beds and two Effects one-shots; one route per player, no added bus or world ownership.",
+    "selection": "Closest of eleven exact authored anchors in common projection space; ordinal location-ID ties; live snapshot lookup and return visits. Presentation only.",
+    "transition": "0.75-second bounded linear amplitude retarget from current weights; sum at most one. Existing revealed woodland maps B03 at -3 dB.",
+    "playback": "Entire accepted 30-second regional loops and eight-second action passages; no source sample edits or slicing. Bed phase survives gain/mute.",
+    "engine_import": "Stereo PCM16, 48000 Hz. Known precision conversion from accepted PCM24 retained. compress/mode=0, no trim/normalize/rate/mono/8-bit conversion.",
+    "actions": "Exact committed Grinding and first-patient administration only; isolated per-listener notifications. No input/status/history-derived action playback.",
+    "load_and_lease": "Successful restore clears transient action/caption playback without replay; failed root produces no reset. Audible A05 acquires existing ConsequentialCue lease; finish/mute/reset/missing/cancel/teardown releases it, and unmute does not reacquire.",
+    "captions": "Two noninteractive current region/action lines, preference independent of gains/mutes, safe text only.",
+    "credits": "Existing Audio entry, scrollable eight-source notices, HTTPS source/licence links, return focus, three packaged licence notices."
+  },
+  "verification": {
+    "boundary": "Approved proposal/acceptance/source hashes, exact additive Main scene and notice-only export filters, protected predecessor inputs and recorded editor rewrite pass. Three rejection probes reject replacement audio, duplicate material composition and changed physical placement.",
+    "unit_tests": {
+      "total_passed": 5072,
+      "failed": 0,
+      "skipped": 0,
+      "new_application_tests": 18,
+      "projects": {
+        "Domain": 2839,
+        "Application": 953,
+        "Infrastructure": 1272,
+        "Architecture": 8
+      }
+    },
+    "product_commands": "Retained scripts/quality-audio.sh commands from workflow validation onward: Direction A, restore, format, build, four test projects, ScenarioValidator, full Godot smoke script and Audio Main. Frozen predecessor validator intentionally replaced only by the scoped successor; never edited.",
+    "product_log_paths": [
+      "audio-direction/material-runtime-review/logs/product.log",
+      "audio-direction/material-runtime-review/logs/product-resume.log"
+    ],
+    "retained_smokes": {
+      "passing_godot_launches": 294,
+      "initial_launches": 40,
+      "resumed_launches": 255,
+      "corrected_failed_launches": 1,
+      "note": "Initial channel check caught new nodes after WholeChannel. Corrected new nodes before it; retain preceding passes and resume exact smoke script from its channel command through end. Inherited editor shutdown error and cleanup warnings distinguished from passing assertions."
+    },
+    "final_affected_smokes": {
+      "passing": 7,
+      "flags": [
+        "ALLRPCS_OPENING_REGION_FIRST_PATIENT_ADMINISTRATION_INPUT_CHECK",
+        "ALLRPCS_OPENING_REGION_REMEDY_PREPARATION_INPUT_CHECK",
+        "ALLRPCS_OPENING_REGION_FIRST_PATIENT_RECOVERY_RESTORATION_CHECK",
+        "ALLRPCS_FIRST_PATIENT_PREPARATION_CHECK",
+        "ALLRPCS_FIRST_PATIENT_ADMINISTRATION_CHECK",
+        "ALLRPCS_SAVE_SNAPSHOT_RESTORATION_CONTROLLER_CHECK",
+        "ALLRPCS_AUDIO_MAIN_CHECK"
+      ],
+      "note": "Rerun after final missing-playback lease cleanup. Unchanged unit inputs and unrelated smoke results retained."
+    },
+    "final_build": "Pass, zero warnings/errors; final whole-solution format verify-no-changes exits zero.",
+    "material_main": {
+      "passing_modes": [
+        "normal",
+        "muted",
+        "missing",
+        "captions-off"
+      ],
+      "checks": "All eleven anchors, six loaded stereo PCM16 players, base/expanded settings/caption/credits fit and focus, independent caption/mute, ordinary remote/repeat/other-step/batch negative paths, all three failing notification subscribers, failed/successful restore, missing and teardown lease cleanup.",
+      "complete_committed_root_sha256": "47cbee052cfc2c2d7894592615cbde774e11e2dd72db4170f7a4c85114e1cdd4",
+      "root_parity": "All four serialized committed save roots identical: perception/memory, discovery, journal/map/routes, disease, batches, administration, event log and time. Readable result summaries also identical. Persistence fixture arrangements occur only in enabled smoke."
+    },
+    "rendered_output": {
+      "passing_cases": 36,
+      "duration_seconds": 458.01666666666665,
+      "sample_rate_hz": 48000,
+      "wave_sha256": "b043752a73f0286d57e996b413a5e0df1b0cd7b416d44c97c95fa7fb06a7badd",
+      "timeline_sha256": "f995f96ac325d4e01f2f7b60fb53acb349c880030a2af0116162c036aba75a89",
+      "lossless_gzip": {
+        "path": "audio-direction/material-runtime-review/output/master.wav.gz",
+        "sha256": "a69bfb57281b2eb1d9a2601dc9c4789eda22cdc3670e79f6ff59e4b8753fa189"
+      },
+      "checks": [
+        "B01-zero",
+        "B01-mute",
+        "B01-master-zero",
+        "B01-master-mute",
+        "B01-normal",
+        "B01-half",
+        "B01-mono",
+        "B01-reduced",
+        "A04-zero",
+        "A04-mute",
+        "A04-master-zero",
+        "A04-master-mute",
+        "A04-normal",
+        "A04-half",
+        "A04-mono",
+        "A04-reduced",
+        "A05-zero",
+        "A05-mute",
+        "A05-master-zero",
+        "A05-master-mute",
+        "A05-normal",
+        "A05-half",
+        "A05-mono",
+        "A05-reduced",
+        "B01-loop",
+        "B02-loop",
+        "B03-loop",
+        "B04-loop",
+        "treatment-reset",
+        "treatment-missing",
+        "crossfade",
+        "retarget",
+        "revealed",
+        "treatment-muted-release",
+        "treatment-release",
+        "bed-muted-phase"
+      ],
+      "final_master_measured_input": {
+        "input_i": "-25.54",
+        "input_tp": "-6.86",
+        "input_lra": "14.60"
+      },
+      "bed_mute_phase_correlation": 0.9999999403953552,
+      "note": "Actual final Master output. Analyzer loudnorm input measurements are meters only; no output normalization is applied to captured source. Diagnostic sequence contains mute/probe silence and is not ordinary-play target compliance or a listening judgment."
+    },
+    "visual_review": {
+      "inspected_views": [
+        "settings-1280.png",
+        "settings-1600.png",
+        "credits-1280.png",
+        "credits-1600.png",
+        "treatment-1280.png"
+      ],
+      "result": "Actual Main settings/credits fit both 1280x720 and 1600x900; readable scrolling credits, source links and return focus; noninteractive bottom-left regional/action captions. Existing accepted world views preserved."
+    },
+    "packaging": {
+      "verified_resource_count": 17,
+      "status": "Six remaps, six exact imported streams and five notices independently verified in actual resource-only ZIP. Editor parameters stripped normally; UID/cache remaps and stream bytes match. Full runnable macOS application export unavailable."
+    }
+  },
+  "limitations": [
+    "Full macOS application export cannot run: missing 4.6.3 mono macOS template; existing C# exporter looks for game/Allrpcs.Game.sln. Resource-only archive reported those errors, so only its scoped resource inventory is claimed. No template install, export repair, signing or release.",
+    "Technical output/view evidence only; no newly invented owner selection, device/human listening, production-play loudness qualification or policy target-compliance claim. Accepted sample timing/edits remain unchanged.",
+    "Sandbox Godot log/settings access failed before execution; identical authorized host retries supplied the evidence. Inherited ObjectDB cleanup warnings and editor shutdown settings error retained honestly.",
+    "Terrain footsteps/material classification, other water/tool/UI actions, positional/off-screen cues, music, voice and whole-region audio identity remain unfinished."
+  ],
+  "preserved_local_editor_rewrite": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "git_publication": {
+    "authorized": false,
+    "performed": false
+  },
+  "reviewed_inputs": [
+    {
+      "path": "audio-direction/material-runtime-authority.json",
+      "sha256": "085dc5176bc713c37307cac22a76b2b47343eb3869c38aadc8692da269dc030f"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "fd97238e342d1c185423d93e88fdcebc5beddd46315758421c6faf50e48a4023"
+    },
+    {
+      "path": "game/Main.tscn",
+      "sha256": "3d71d2333a9f6372798458ea11c56ea46682ddc5ef471f1a0725d10abda7b1ce"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "57b94aa4fe944e741cd210c59040d408b1a96906afe5e6380aa4ace775c24c1a"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs.uid",
+      "sha256": "c25b5b478a51d7024fe1fca86fa839da6761dbc108fa833fd719614a26e763a3"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.tscn",
+      "sha256": "6b4c12f8b92d61769940e2c90c4c1a11ddb077cfff75bb1d924cfc6fbe4d33cc"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeProof.cs",
+      "sha256": "9a0215b8c73298a94d8f68037861d5ae6408236cd2d0cd80f838de26a024eee4"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeProof.cs.uid",
+      "sha256": "9ffe41ffdbba7d1f06eb6d4af576f7d2285c62b2e512d14bc8d4c69fe121f4b8"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeProof.tscn",
+      "sha256": "ab1cb5bb6108849a388d471989b27ec4afb61ec3847f81c56e838408a77f7ddb"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeSmokeCheck.cs",
+      "sha256": "2dfd982c7408b29e81cc5d4bde79b6f6c82c8ca7b6a39a6aaddafb38e495d193"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "0325f2130cdbd0e12e308e6ef1e62e9bcbe0bdb1d92dbd6600dd4ad7b12428ef"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "0b95af82b2646aca7965f46576911fd38db1bc35b6e5981b212bc7165c5e98f4"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs.uid",
+      "sha256": "409e9cc11544e1dc36b8031595f14309c9c620d0453fdd946bedb6210af2610c"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.tscn",
+      "sha256": "27614dbacab4b4ca72c66ad52d3ac8675fd695130da94fcbcc147fb803e36bee"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "81b90e1d463f659eafdbc385eca9ba986b802fdfdefdb715a4cb8692b3844939"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "9209cb602ccece0b754ff886df46bdb90c0613787197b55c4012ceef6b831eb0"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs.uid",
+      "sha256": "fc9f53cca0061afa155dbb1a286a362aefa41b288ad78996f3e08e63320c4170"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "dd410c7711abd7ba4fc9f64f53f20eb6750d216b12d689f3fdaad26ea07f379b"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+    },
+    {
+      "path": "game/assets/audio/material/A04.wav.import",
+      "sha256": "5c921aedd77728c4e55cdc5e1a2fcbee7b0b89dddf8e9a2d81e0473f2b4b7e2c"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+    },
+    {
+      "path": "game/assets/audio/material/A05.wav.import",
+      "sha256": "898209286eaacdbc9141055c7dc53015dcd078099273099fb7100cbeaaa0c77a"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "path": "game/assets/audio/material/B01.wav.import",
+      "sha256": "e8734f661265e2b63d68a49e70dedcb7984bf41dd65fc8f8fa874a49ed228500"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "path": "game/assets/audio/material/B02.wav.import",
+      "sha256": "9e8b8969f5d3823a34b34067764483cae6bfbf62f8bec4c7b3f16e3a701c03ef"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "path": "game/assets/audio/material/B03.wav.import",
+      "sha256": "52f06e2b4c05dc43e9461b6134fa7e7a0b0ce056ac6e12e750e8c9f4f724576f"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    },
+    {
+      "path": "game/assets/audio/material/B04.wav.import",
+      "sha256": "36c998c366bceb554ee2f7788d7b6b61f66502aebb8da8c36136fa10c81de4ad"
+    },
+    {
+      "path": "game/assets/audio/material/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "game/assets/audio/material/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "game/assets/audio/material/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "game/assets/audio/material/CREDITS.txt",
+      "sha256": "8a61f0628c8ea2e62c5dc0f173720642ae8fa16a3573eab3394d1596188382fd"
+    },
+    {
+      "path": "game/assets/audio/material/provenance.json",
+      "sha256": "437c46d2e52b636f99c3f1aee4225583f63b67470f64c9d68c626986af9c302e"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "81a97a4d20ba516356e6a493b54cc532c80936d92e0e6095f6d769ec9e26661b"
+    },
+    {
+      "path": "scripts/check-material-audio-output.py",
+      "sha256": "61c22fbcae6969d9657f06156e6acbd40843e3e214481fd48cdfef0475a68ba6"
+    },
+    {
+      "path": "scripts/validate-material-audio-runtime.py",
+      "sha256": "45151bc7dd31ab40f8d3dfb1ad84073607c6c2a6edfad043141ff5348bc389c9"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "sha256": "23cba8f777935202c6583143533e94d2c22d6063941342a171042598b75529c4"
+    },
+    {
+      "path": "tests/Application.Tests/Audio/OpeningRegionMaterialAudioProjectionTests.cs",
+      "sha256": "dc2457ec9bb108b1bd70d3123b5f9b6f62e518707348f127b0f0f41396708fbe"
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/material-runtime-review/.DS_Store",
+      "sha256": "f35b1656aca00ed2c539dc3c2dcba8ad9c1e3df093df7186a6c537d6dd812187"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/README.md",
+      "sha256": "c125e86fac2db289fb1881bb0a064a47fdf5f6280b5872ee5b018c2ac2d3b970"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/captions-off.txt",
+      "sha256": "e81670d32a910bb91a8d46f70699d60d25b1d04f60c83340e56df07be6fa62d8"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/captions-off.txt.json",
+      "sha256": "47cbee052cfc2c2d7894592615cbde774e11e2dd72db4170f7a4c85114e1cdd4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/missing.txt",
+      "sha256": "e81670d32a910bb91a8d46f70699d60d25b1d04f60c83340e56df07be6fa62d8"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/missing.txt.json",
+      "sha256": "47cbee052cfc2c2d7894592615cbde774e11e2dd72db4170f7a4c85114e1cdd4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/muted.txt",
+      "sha256": "e81670d32a910bb91a8d46f70699d60d25b1d04f60c83340e56df07be6fa62d8"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/muted.txt.json",
+      "sha256": "47cbee052cfc2c2d7894592615cbde774e11e2dd72db4170f7a4c85114e1cdd4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/normal.txt",
+      "sha256": "e81670d32a910bb91a8d46f70699d60d25b1d04f60c83340e56df07be6fa62d8"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/actions/normal.txt.json",
+      "sha256": "47cbee052cfc2c2d7894592615cbde774e11e2dd72db4170f7a4c85114e1cdd4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/export-inventory.json",
+      "sha256": "a4d9278149a51f453a2d5591ea80e88f8b086b67da50df6240cfaa2d1ed4f868"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/AudioSettingsPanel.cs",
+      "sha256": "fd97238e342d1c185423d93e88fdcebc5beddd46315758421c6faf50e48a4023"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/Main.tscn",
+      "sha256": "3d71d2333a9f6372798458ea11c56ea46682ddc5ef471f1a0725d10abda7b1ce"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioCreditsPanel.cs",
+      "sha256": "57b94aa4fe944e741cd210c59040d408b1a96906afe5e6380aa4ace775c24c1a"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioCreditsPanel.cs.uid",
+      "sha256": "c25b5b478a51d7024fe1fca86fa839da6761dbc108fa833fd719614a26e763a3"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioCreditsPanel.tscn",
+      "sha256": "6b4c12f8b92d61769940e2c90c4c1a11ddb077cfff75bb1d924cfc6fbe4d33cc"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioRuntimeProof.cs",
+      "sha256": "9a0215b8c73298a94d8f68037861d5ae6408236cd2d0cd80f838de26a024eee4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioRuntimeProof.cs.uid",
+      "sha256": "9ffe41ffdbba7d1f06eb6d4af576f7d2285c62b2e512d14bc8d4c69fe121f4b8"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioRuntimeProof.tscn",
+      "sha256": "ab1cb5bb6108849a388d471989b27ec4afb61ec3847f81c56e838408a77f7ddb"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioRuntimeSmokeCheck.cs",
+      "sha256": "2dfd982c7408b29e81cc5d4bde79b6f6c82c8ca7b6a39a6aaddafb38e495d193"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialAudioRuntimeSmokeCheck.cs.uid",
+      "sha256": "0325f2130cdbd0e12e308e6ef1e62e9bcbe0bdb1d92dbd6600dd4ad7b12428ef"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialSoundCaptionPanel.cs",
+      "sha256": "0b95af82b2646aca7965f46576911fd38db1bc35b6e5981b212bc7165c5e98f4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialSoundCaptionPanel.cs.uid",
+      "sha256": "409e9cc11544e1dc36b8031595f14309c9c620d0453fdd946bedb6210af2610c"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/MaterialSoundCaptionPanel.tscn",
+      "sha256": "27614dbacab4b4ca72c66ad52d3ac8675fd695130da94fcbcc147fb803e36bee"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "81b90e1d463f659eafdbc385eca9ba986b802fdfdefdb715a4cb8692b3844939"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "9209cb602ccece0b754ff886df46bdb90c0613787197b55c4012ceef6b831eb0"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/OpeningRegionMaterialAudioController.cs.uid",
+      "sha256": "fc9f53cca0061afa155dbb1a286a362aefa41b288ad78996f3e08e63320c4170"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "dd410c7711abd7ba4fc9f64f53f20eb6750d216b12d689f3fdaad26ea07f379b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/A04.wav.import",
+      "sha256": "5c921aedd77728c4e55cdc5e1a2fcbee7b0b89dddf8e9a2d81e0473f2b4b7e2c"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/A05.wav.import",
+      "sha256": "898209286eaacdbc9141055c7dc53015dcd078099273099fb7100cbeaaa0c77a"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/B01.wav.import",
+      "sha256": "e8734f661265e2b63d68a49e70dedcb7984bf41dd65fc8f8fa874a49ed228500"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/B02.wav.import",
+      "sha256": "9e8b8969f5d3823a34b34067764483cae6bfbf62f8bec4c7b3f16e3a701c03ef"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/B03.wav.import",
+      "sha256": "52f06e2b4c05dc43e9461b6134fa7e7a0b0ce056ac6e12e750e8c9f4f724576f"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/B04.wav.import",
+      "sha256": "36c998c366bceb554ee2f7788d7b6b61f66502aebb8da8c36136fa10c81de4ad"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/CREDITS.txt",
+      "sha256": "8a61f0628c8ea2e62c5dc0f173720642ae8fa16a3573eab3394d1596188382fd"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/assets/audio/material/provenance.json",
+      "sha256": "437c46d2e52b636f99c3f1aee4225583f63b67470f64c9d68c626986af9c302e"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/game/export_presets.cfg",
+      "sha256": "81a97a4d20ba516356e6a493b54cc532c80936d92e0e6095f6d769ec9e26661b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/scripts/check-material-audio-output.py",
+      "sha256": "61c22fbcae6969d9657f06156e6acbd40843e3e214481fd48cdfef0475a68ba6"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/scripts/validate-material-audio-runtime.py",
+      "sha256": "45151bc7dd31ab40f8d3dfb1ad84073607c6c2a6edfad043141ff5348bc389c9"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "sha256": "23cba8f777935202c6583143533e94d2c22d6063941342a171042598b75529c4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/inputs/tests/Application.Tests/Audio/OpeningRegionMaterialAudioProjectionTests.cs",
+      "sha256": "dc2457ec9bb108b1bd70d3123b5f9b6f62e518707348f127b0f0f41396708fbe"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/action-captions-off.log",
+      "sha256": "8bc427b13c8b9ebec26c2aa1099bd892b38feb65b21463e6c2ebc9c6e381238b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/action-missing.log",
+      "sha256": "8bc427b13c8b9ebec26c2aa1099bd892b38feb65b21463e6c2ebc9c6e381238b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/action-muted.log",
+      "sha256": "8bc427b13c8b9ebec26c2aa1099bd892b38feb65b21463e6c2ebc9c6e381238b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/action-normal.log",
+      "sha256": "8bc427b13c8b9ebec26c2aa1099bd892b38feb65b21463e6c2ebc9c6e381238b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/build-final.log",
+      "sha256": "a6177f8ed82ea186d0b7403fab2b134dcddac1bb86b7c69a828014280c7ab658"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/channel.log",
+      "sha256": "4d7ddff97fbae25400fa1f7d1255ec4d358f00af6448162e98512c5257a9983c"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/export.log",
+      "sha256": "ab2c9442483aa8fc5ad38f07eede733ddaffed8da4d4530895e03b0284d8c75b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/final-main.log",
+      "sha256": "b4926c7963c93592e6a0dbfbea482124dd2452d104d4351f3ce5efbfc67d3334"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/final-main.sh",
+      "sha256": "a26be871ce39aa1e79a256c4137efe58e13221d4d682318c4ac7d23c4e9fe869"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/format-before-cleanup.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/format-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/format-scope.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/import.log",
+      "sha256": "91d63727a0379d97f98d2b352ddf641f732a17e00a2945c872eb4c75d0b4d8a0"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/pack-zip.log.gz",
+      "sha256": "6356c6f9cebe41fe6ab35a957e24b4f43ba11a5af2f74466665b1d5dd0609eee"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/pack.log.gz",
+      "sha256": "c30da1c87ab155ada02a604a715fc3c7da18c06ab634794cfc36d8ec1755fcc1"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/product-check.sh",
+      "sha256": "bb731f20be5cd7433a4c1e58624cc9f5275eddf11d08ffe9fed281250c319ddc"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/product-resume.log",
+      "sha256": "27587c5b66c0e5b4fef269686ef662db91ea7136218a2244cb62a0b39349b939"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/product-resume.sh",
+      "sha256": "79ea3cfbb875f33f72df7a7610a6746037791a152bef11a782f9fa5e25ff8a83"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/product.log",
+      "sha256": "02f84f5df62f4b7146be8134fd2e1d24981e9692f5ce8d2b82f97436eb02483d"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/tests.log",
+      "sha256": "fb1b19b32fbd79dd2defad133b50d66552604e00b69dd9598fd17753f94bbf2f"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/logs/view.log",
+      "sha256": "08d1c743fea8794c9582a835dec11df78d4dce49179ef66be9022c886ca349bf"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/output/analysis.log",
+      "sha256": "96fd0a99c63a4d29056b0b03ed8861bdbd0fa89aec0b0a079b8300a5b5002e58"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/output/captured-inputs.json",
+      "sha256": "0c77399eef4b44f5abf3b74506bd19dbf312d334217dd765133e9f6b99944a5e"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/output/master.wav.gz",
+      "sha256": "a69bfb57281b2eb1d9a2601dc9c4789eda22cdc3670e79f6ff59e4b8753fa189"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/output/measurements.json",
+      "sha256": "0cf6185ace2d0a3f36438d0a7e6ad820c725234922f9e9691e6da52cc291602b"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/output/render.log",
+      "sha256": "3d00bbc425c5863544fce7c8ad4f2aa2a98dbde9c149faf34b8bc88178cdb7fa"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/output/timeline.json",
+      "sha256": "f995f96ac325d4e01f2f7b60fb53acb349c880030a2af0116162c036aba75a89"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/views/credits-1280.png",
+      "sha256": "d4ab738c1fe3ae4a61cba8b96c0085cf5cf4de28a300b3237f068bc6fa73d07d"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/views/credits-1600.png",
+      "sha256": "6a8681bb2f25895099e269678146dc54a876aaea982b9037d66c106736c15330"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/views/settings-1280.png",
+      "sha256": "3567ee18cda0c3fd9bd5ef27fcb1fb73290ea246e2667ad7d4a3bb68c31a79a4"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/views/settings-1600.png",
+      "sha256": "de21b021c5f0ad5edf9ed525e4cd56fef39dfeb309ad859bc8794219f69ffb60"
+    },
+    {
+      "path": "audio-direction/material-runtime-review/views/treatment-1280.png",
+      "sha256": "23624339f1d2c7a8df6af6b94ff655cf157ed8072c78d3431de61c249422c35d"
+    }
+  ]
+}

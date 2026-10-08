@@ -1,0 +1,254 @@
+[
+  {
+    "name": "B01-loop",
+    "clip": "B01",
+    "start": 0,
+    "duration": 34,
+    "variant": "normal"
+  },
+  {
+    "name": "B02-loop",
+    "clip": "B02",
+    "start": 34,
+    "duration": 34,
+    "variant": "normal"
+  },
+  {
+    "name": "B03-loop",
+    "clip": "B03",
+    "start": 68,
+    "duration": 34,
+    "variant": "normal"
+  },
+  {
+    "name": "B04-loop",
+    "clip": "B04",
+    "start": 102,
+    "duration": 34,
+    "variant": "normal"
+  },
+  {
+    "name": "B01-normal",
+    "clip": "B01",
+    "start": 136,
+    "duration": 10,
+    "variant": "normal"
+  },
+  {
+    "name": "B01-half",
+    "clip": "B01",
+    "start": 146,
+    "duration": 10,
+    "variant": "half"
+  },
+  {
+    "name": "B01-zero",
+    "clip": "B01",
+    "start": 156,
+    "duration": 10,
+    "variant": "zero"
+  },
+  {
+    "name": "B01-mute",
+    "clip": "B01",
+    "start": 166,
+    "duration": 10,
+    "variant": "mute"
+  },
+  {
+    "name": "B01-master-zero",
+    "clip": "B01",
+    "start": 176,
+    "duration": 10,
+    "variant": "master-zero"
+  },
+  {
+    "name": "B01-master-mute",
+    "clip": "B01",
+    "start": 186,
+    "duration": 10,
+    "variant": "master-mute"
+  },
+  {
+    "name": "B01-mono",
+    "clip": "B01",
+    "start": 196,
+    "duration": 10,
+    "variant": "mono"
+  },
+  {
+    "name": "B01-reduced",
+    "clip": "B01",
+    "start": 206,
+    "duration": 10,
+    "variant": "reduced"
+  },
+  {
+    "name": "A04-normal",
+    "clip": "A04",
+    "start": 216,
+    "duration": 10,
+    "variant": "normal"
+  },
+  {
+    "name": "A04-half",
+    "clip": "A04",
+    "start": 226,
+    "duration": 10,
+    "variant": "half"
+  },
+  {
+    "name": "A04-zero",
+    "clip": "A04",
+    "start": 236,
+    "duration": 10,
+    "variant": "zero"
+  },
+  {
+    "name": "A04-mute",
+    "clip": "A04",
+    "start": 246,
+    "duration": 10,
+    "variant": "mute"
+  },
+  {
+    "name": "A04-master-zero",
+    "clip": "A04",
+    "start": 256,
+    "duration": 10,
+    "variant": "master-zero"
+  },
+  {
+    "name": "A04-master-mute",
+    "clip": "A04",
+    "start": 266,
+    "duration": 10,
+    "variant": "master-mute"
+  },
+  {
+    "name": "A04-mono",
+    "clip": "A04",
+    "start": 276,
+    "duration": 10,
+    "variant": "mono"
+  },
+  {
+    "name": "A04-reduced",
+    "clip": "A04",
+    "start": 286,
+    "duration": 10,
+    "variant": "reduced"
+  },
+  {
+    "name": "A05-normal",
+    "clip": "A05",
+    "start": 296,
+    "duration": 10,
+    "variant": "normal"
+  },
+  {
+    "name": "A05-half",
+    "clip": "A05",
+    "start": 306,
+    "duration": 10,
+    "variant": "half"
+  },
+  {
+    "name": "A05-zero",
+    "clip": "A05",
+    "start": 316,
+    "duration": 10,
+    "variant": "zero"
+  },
+  {
+    "name": "A05-mute",
+    "clip": "A05",
+    "start": 326,
+    "duration": 10,
+    "variant": "mute"
+  },
+  {
+    "name": "A05-master-zero",
+    "clip": "A05",
+    "start": 336,
+    "duration": 10,
+    "variant": "master-zero"
+  },
+  {
+    "name": "A05-master-mute",
+    "clip": "A05",
+    "start": 346,
+    "duration": 10,
+    "variant": "master-mute"
+  },
+  {
+    "name": "A05-mono",
+    "clip": "A05",
+    "start": 356,
+    "duration": 10,
+    "variant": "mono"
+  },
+  {
+    "name": "A05-reduced",
+    "clip": "A05",
+    "start": 366,
+    "duration": 10,
+    "variant": "reduced"
+  },
+  {
+    "name": "revealed",
+    "clip": "B03",
+    "start": 376,
+    "duration": 10,
+    "variant": "revealed"
+  },
+  {
+    "name": "crossfade",
+    "clip": "B01",
+    "start": 386,
+    "duration": 10,
+    "variant": "crossfade"
+  },
+  {
+    "name": "retarget",
+    "clip": "B01",
+    "start": 396,
+    "duration": 10,
+    "variant": "retarget"
+  },
+  {
+    "name": "treatment-release",
+    "clip": "A05",
+    "start": 406,
+    "duration": 12,
+    "variant": "release"
+  },
+  {
+    "name": "treatment-reset",
+    "clip": "A05",
+    "start": 418,
+    "duration": 10,
+    "variant": "reset"
+  },
+  {
+    "name": "treatment-muted-release",
+    "clip": "A05",
+    "start": 428,
+    "duration": 10,
+    "variant": "mute-release"
+  },
+  {
+    "name": "treatment-missing",
+    "clip": "A05",
+    "start": 438,
+    "duration": 10,
+    "variant": "missing"
+  },
+  {
+    "name": "bed-muted-phase",
+    "clip": "B01",
+    "start": 448,
+    "duration": 10,
+    "variant": "phase"
+  }
+]

@@ -1,0 +1,879 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-material-audio-runtime-scope",
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "status": "planning_complete_pending_implementation_authority",
+  "baseline_commit": "123b076c5bccff5b17aaa732c7713d4052192044",
+  "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
+  "proposal": {
+    "path": "audio-direction/material-runtime-scope.md",
+    "sha256": "f8f309f34e8ddee75c3085060b98ce0e3c91ca154adbad96a6cf32bedc44be42"
+  },
+  "proposed_implementation_id": "phase9-material-audio-runtime-integration",
+  "selected_ids": [
+    "A04",
+    "A05",
+    "B01",
+    "B02",
+    "B03",
+    "B04"
+  ],
+  "deferred_ids": [
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "A01",
+    "A02",
+    "A03",
+    "A06",
+    "M01",
+    "M02"
+  ],
+  "authority": {
+    "status": "pending_owner_scope_approval",
+    "owner_statement": null,
+    "record_path": "audio-direction/material-runtime-authority.json",
+    "request": "Implement B01-B04, A04 and A05 unchanged with the exact selection/variation, successful-action/reset notifications, captions, attribution packaging and checks in the proposal.",
+    "gate_source": "CONTINUATION.json active runtime-scope instructions and material-audition/owner-acceptance.json runtime_installation_authority",
+    "proposal_preparation_authorized": true,
+    "runtime_implementation_authorized": false,
+    "new_git_publication_authorized": false
+  },
+  "assets": [
+    {
+      "id": "B01",
+      "title": "Sheltered village rain",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/B01.wav",
+        "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5",
+        "seconds": 30.0,
+        "source_ids": [
+          "rain"
+        ]
+      },
+      "decision": "proposed_installation",
+      "bus": [
+        "Ambience"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "runtime_target": "game/assets/audio/material/B01.wav",
+      "copy_contract": "Byte-identical WAV; accepted gain, filtering, timing and sample sequence retained.",
+      "emitter_gain": 1,
+      "owner": {
+        "source": "game/OpeningRegionEnvironmentalStateSource.cs",
+        "member": "CurrentRegions",
+        "authoring": "src/Domain/EnvironmentalStates/RepresentativeOpeningRegionEnvironmentalSource.cs",
+        "region_key": "village-shelter",
+        "sound_key": "muted-village-rain",
+        "location_ids": [
+          "sickhouse",
+          "healer-garden",
+          "village-square"
+        ]
+      },
+      "trigger": "Exact closest-anchor presentation selection and current snapshot replacement; repeat visits supported.",
+      "playback": "Whole 30-second accepted waveform loop; one normalized regional weight, 0.75-second ramp."
+    },
+    {
+      "id": "B02",
+      "title": "Running water and rain",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/B02.wav",
+        "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54",
+        "seconds": 30.0,
+        "source_ids": [
+          "stream",
+          "rain"
+        ]
+      },
+      "decision": "proposed_installation",
+      "bus": [
+        "Ambience"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "runtime_target": "game/assets/audio/material/B02.wav",
+      "copy_contract": "Byte-identical WAV; accepted gain, filtering, timing and sample sequence retained.",
+      "emitter_gain": 1,
+      "owner": {
+        "source": "game/OpeningRegionEnvironmentalStateSource.cs",
+        "member": "CurrentRegions",
+        "authoring": "src/Domain/EnvironmentalStates/RepresentativeOpeningRegionEnvironmentalSource.cs",
+        "region_key": "waterway",
+        "sound_key": "running-water-and-rain",
+        "location_ids": [
+          "village-edge",
+          "stream",
+          "abandoned-laundry"
+        ]
+      },
+      "trigger": "Exact closest-anchor presentation selection and current snapshot replacement; repeat visits supported.",
+      "playback": "Whole 30-second accepted waveform loop; one normalized regional weight, 0.75-second ramp."
+    },
+    {
+      "id": "B03",
+      "title": "Rain under leaves",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/B03.wav",
+        "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625",
+        "seconds": 30.0,
+        "source_ids": [
+          "leaf-rain"
+        ]
+      },
+      "decision": "proposed_installation",
+      "bus": [
+        "Ambience"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "runtime_target": "game/assets/audio/material/B03.wav",
+      "copy_contract": "Byte-identical WAV; accepted gain, filtering, timing and sample sequence retained.",
+      "emitter_gain": 1,
+      "owner": {
+        "source": "game/OpeningRegionEnvironmentalStateSource.cs",
+        "member": "CurrentRegions",
+        "authoring": "src/Domain/EnvironmentalStates/RepresentativeOpeningRegionEnvironmentalSource.cs",
+        "region_key": "woodland-edge",
+        "sound_key": "rain-under-trees",
+        "location_ids": [
+          "woodland-clearing",
+          "old-shrine",
+          "closed-deeper-forest-path"
+        ]
+      },
+      "trigger": "Exact closest-anchor presentation selection and current snapshot replacement; repeat visits supported.",
+      "playback": "Whole 30-second accepted waveform loop; one normalized regional weight, 0.75-second ramp.",
+      "existing_variation": {
+        "sound_key": "inscription-revealed-sound",
+        "emitter_gain_db": -3,
+        "ramp_seconds": 0.75,
+        "owner": "game/OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator.cs",
+        "audio_can_install_variation": false
+      }
+    },
+    {
+      "id": "B04",
+      "title": "Exposed wind/rain with inert creak",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/B04.wav",
+        "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286",
+        "seconds": 30.0,
+        "source_ids": [
+          "wind",
+          "rain",
+          "creak"
+        ]
+      },
+      "decision": "proposed_installation",
+      "bus": [
+        "Ambience"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "runtime_target": "game/assets/audio/material/B04.wav",
+      "copy_contract": "Byte-identical WAV; accepted gain, filtering, timing and sample sequence retained.",
+      "emitter_gain": 1,
+      "owner": {
+        "source": "game/OpeningRegionEnvironmentalStateSource.cs",
+        "member": "CurrentRegions",
+        "authoring": "src/Domain/EnvironmentalStates/RepresentativeOpeningRegionEnvironmentalSource.cs",
+        "region_key": "southern-road",
+        "sound_key": "road-wind-and-wagon",
+        "location_ids": [
+          "southern-road",
+          "abandoned-wagon"
+        ]
+      },
+      "trigger": "Exact closest-anchor presentation selection and current snapshot replacement; repeat visits supported.",
+      "playback": "Whole 30-second accepted waveform loop; one normalized regional weight, 0.75-second ramp."
+    },
+    {
+      "id": "W01",
+      "title": "Packed earth",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/W01.wav",
+        "sha256": "486e82776249266688115e6c09ddebfbbd623cef1247caaf09cb0a9249c2011e",
+        "seconds": 10.0,
+        "source_ids": [
+          "earth"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No runtime footstep material map or actual-ground-contact/cadence contract.",
+      "possible_future_call_sites": [
+        "game/Seeker.cs:_PhysicsProcess after MoveAndSlide",
+        "game/Healer.cs:_PhysicsProcess including stop paths"
+      ]
+    },
+    {
+      "id": "W02",
+      "title": "Gravel",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/W02.wav",
+        "sha256": "15f92f90f3b8bcede9098595179c13e52608a429e44a22af47ab92838f0bd05f",
+        "seconds": 10.0,
+        "source_ids": [
+          "gravel"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No gravel footing assignment; artwork is not material ownership.",
+      "possible_future_call_sites": [
+        "game/Seeker.cs:_PhysicsProcess after MoveAndSlide",
+        "game/Healer.cs:_PhysicsProcess including stop paths"
+      ]
+    },
+    {
+      "id": "W03",
+      "title": "Leaf litter",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/W03.wav",
+        "sha256": "20ce4a4af8acf2d7948be9b1d802fb2e24087ef3845e027705fe07021c51c13f",
+        "seconds": 10.0,
+        "source_ids": [
+          "leaves"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No leaf-litter footing assignment; canopy rain is not ground cover.",
+      "possible_future_call_sites": [
+        "game/Seeker.cs:_PhysicsProcess after MoveAndSlide",
+        "game/Healer.cs:_PhysicsProcess including stop paths"
+      ]
+    },
+    {
+      "id": "W04",
+      "title": "Timber",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/W04.wav",
+        "sha256": "1d0de0386b62dfa26a65094ce8eabb330e849f816ac2cddc138723a38633c697",
+        "seconds": 10.0,
+        "source_ids": [
+          "timber"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No hollow-timber footing assignment; bridge/wagon geometry is not a timber classifier.",
+      "possible_future_call_sites": [
+        "game/Seeker.cs:_PhysicsProcess after MoveAndSlide",
+        "game/Healer.cs:_PhysicsProcess including stop paths"
+      ]
+    },
+    {
+      "id": "A01",
+      "title": "Water contact",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/A01.wav",
+        "sha256": "a23db3992116b598b5dc652c95b18c51f5409691c747637ddacc5d0320f97a90",
+        "seconds": 8.0,
+        "source_ids": [
+          "water-contact"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No authorized water-contact/wading/laundry operation.",
+      "possible_future_call_sites": [
+        "game/OpeningRegionStreamLaundrySceneSource.cs (geometry only)"
+      ]
+    },
+    {
+      "id": "A02",
+      "title": "Container and cloth",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/A02.wav",
+        "sha256": "bebfae9f419359960530073a8cc2764d4b9d28b8b3844eb41a9db9addcc4278d",
+        "seconds": 8.0,
+        "source_ids": [
+          "wood-tool",
+          "cloth"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No exact container or cloth-handling operation.",
+      "possible_future_call_sites": [
+        "game/InteractionFocusController.cs (inspection/focus is insufficient)"
+      ]
+    },
+    {
+      "id": "A03",
+      "title": "Hand tool",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/A03.wav",
+        "sha256": "bae5aa7343bb41ce6b4bf35548dc551e28a43d18c1bdbeb994d5e64baefbfa26",
+        "seconds": 8.0,
+        "source_ids": [
+          "wood-tool"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "Field-lens search eligibility does not own wood/tool-work sounds.",
+      "possible_future_call_sites": [
+        "game/TemporaryFocusedSearchContextSource.cs (field-lens prerequisite only)"
+      ]
+    },
+    {
+      "id": "A04",
+      "title": "Mortar and preparation",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/A04.wav",
+        "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d",
+        "seconds": 8.0,
+        "source_ids": [
+          "mortar"
+        ]
+      },
+      "decision": "proposed_installation",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "runtime_target": "game/assets/audio/material/A04.wav",
+      "copy_contract": "Byte-identical WAV; accepted gain, filtering, timing and sample sequence retained.",
+      "emitter_gain": 1,
+      "owner": {
+        "source": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+        "member": "TryProgress",
+        "recipe_authoring": "src/Domain/Diseases/RepresentativeFirstPatientScenarioSource.cs",
+        "recipe_id": "cooling-moonwort-remedy",
+        "step": "Grinding",
+        "commit": "FirstPatientPreparationController.TryAdvance returns true for exact requested Grinding step."
+      },
+      "trigger": "Transient presentation notification only after successful live Grinding advance.",
+      "playback": "Whole accepted eight-second excerpt once; not an eight-second gameplay action; no lease."
+    },
+    {
+      "id": "A05",
+      "title": "Restrained treatment result",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/A05.wav",
+        "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5",
+        "seconds": 8.0,
+        "source_ids": [
+          "cloth",
+          "wood-tool"
+        ]
+      },
+      "decision": "proposed_installation",
+      "bus": [
+        "Effects"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "runtime_target": "game/assets/audio/material/A05.wav",
+      "copy_contract": "Byte-identical WAV; accepted gain, filtering, timing and sample sequence retained.",
+      "emitter_gain": 1,
+      "owner": {
+        "source": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+        "member": "TryAdminister",
+        "commit": "Existing FirstPatientAdministrationController.TryAdminister returns true."
+      },
+      "trigger": "Transient presentation notification only after successful live first-patient administration.",
+      "playback": "Whole accepted eight-second excerpt once; audible consequential-cue lease with exact cleanup."
+    },
+    {
+      "id": "A06",
+      "title": "UI and conversation feedback",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/A06.wav",
+        "sha256": "458a2103db847da7eaf8d69839b5ff785ebd04a125d1a2de653ccc8a78ce9cb9",
+        "seconds": 8.0,
+        "source_ids": [
+          "interface"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Effects",
+        "Dialogue"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "UI and delivered conversation need separate successful-event owners and single component routing.",
+      "possible_future_call_sites": [
+        "game/AudioSettingsPanel.cs (UI only)",
+        "game/DialogueInputController.cs (input is insufficient)",
+        "game/CharacterTurnTranscriptController.cs (delivery boundary requires own scope)"
+      ],
+      "retained_components": [
+        {
+          "bus": "Effects",
+          "path": "audio-direction/material-audition/clips/A06-Effects.wav",
+          "sha256": "d0d6cfe3a09d8baf72be713e0f0446b92175adf1f0da49aa7d4e11096230739b"
+        },
+        {
+          "bus": "Dialogue",
+          "path": "audio-direction/material-audition/clips/A06-Dialogue.wav",
+          "sha256": "6653c99b089e8061cdda6081af01ac8cbaae28765bca1947986a168bbcb62c20"
+        }
+      ]
+    },
+    {
+      "id": "M01",
+      "title": "Sparse exploration texture",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/M01.wav",
+        "sha256": "8e012ba16247ec94dac2088bbcffb1ed6ccda62062666492afdf34a764cd9eb6",
+        "seconds": 25.0,
+        "source_ids": [
+          "exploration"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Music"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No production music scheduler; separate restrained-music roadmap item.",
+      "possible_future_call_sites": []
+    },
+    {
+      "id": "M02",
+      "title": "Rest and healing \u2014 quiet shakuhachi",
+      "accepted": true,
+      "acceptance_authority": "audio-direction/material-audition/owner-acceptance.json",
+      "audition": {
+        "path": "audio-direction/material-audition/clips/M02.wav",
+        "sha256": "c706dd03b3e730227ce7ec383a237f4c8f785b1f44ecaa314f04993ff5776511",
+        "seconds": 25.0,
+        "source_ids": [
+          "rest-flute"
+        ]
+      },
+      "decision": "deferred",
+      "bus": [
+        "Music"
+      ],
+      "accepted_bytes_change_authorized": false,
+      "missing_prerequisite": "No authored rest/music trigger; no disease-pause authority.",
+      "possible_future_call_sites": []
+    }
+  ],
+  "inspected_inputs": [
+    {
+      "path": "game/Main.tscn",
+      "sha256": "4658a89de6d943008a43b145bb82916091fe0829af518c8a72637b8f9dfd1c57"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "d3a3b31dd2a345b4e064d2a9c7748e02e320fd803176afbda0a4b8dee2f66ca0"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "76d79b96d13b6f581be88f8e4f906c6b39063e46b24839b429399a9b350d2aaf"
+    },
+    {
+      "path": "game/SeekerWalkAnimationPresenter.cs",
+      "sha256": "f0114fd5c1e23e2881cc4554a78fb5549a9625fa9cf7a6d05c357243499bb62f"
+    },
+    {
+      "path": "game/OpeningRegionEnvironmentalStateSource.cs",
+      "sha256": "84990a270dae9c5a0f67cd1f03350508780a48ab46d719d22f2f18c65ed3bcfd"
+    },
+    {
+      "path": "src/Domain/EnvironmentalStates/RepresentativeOpeningRegionEnvironmentalSource.cs",
+      "sha256": "9fb08f3d3dd239a479e75eb839e161a6f3e6dab1b0fbdf40a9165149fa611d80"
+    },
+    {
+      "path": "src/Domain/EnvironmentalStates/OpeningRegionEnvironmentalRegionSet.cs",
+      "sha256": "cfada3ef0bf477def363e39cde4c6841504ba2022660419921bb50d70a52a365"
+    },
+    {
+      "path": "src/Domain/EnvironmentalStates/OpeningRegionEnvironmentalRegionLookup.cs",
+      "sha256": "98ab0ac9cebc7fff392fe11dbe51b3b1d918a9eafb7b83f74f628b43991efe86"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionMapVisitVerificationCoordinator.cs",
+      "sha256": "e36f2e2a4c91920fa4d62a93275a118238fb6a5963a22b93016af334f94f04c4"
+    },
+    {
+      "path": "game/OpeningRegionLayeredInscriptionEnvironmentalVariationCoordinator.cs",
+      "sha256": "6c09dca632c6e4239bd86f769dd00bdc0b92108bf2697d3f8572d78d0bccb842"
+    },
+    {
+      "path": "src/Application/EnvironmentalStates/OpeningRegionLayeredInscriptionEnvironmentalVariationTransition.cs",
+      "sha256": "0ea6278a475f50b37be3772f0c3acf88d58c1a2dfa718d115f559eec4a7caa9d"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "81a6ae18560eec83404d425910a8a8b14dd96dfd9ea812e636ce3afdd73e500e"
+    },
+    {
+      "path": "game/FirstPatientPreparationController.cs",
+      "sha256": "c14ffe86d742e214308f3c4b8fa888490c334dedc97d58353ccde81fdbc21988"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationSceneSource.cs",
+      "sha256": "69c2b8cfed9c72cdacf68ca89b1b0b6613d515e6e6c46a78c798606fd5aa3b5f"
+    },
+    {
+      "path": "src/Domain/Diseases/RepresentativeFirstPatientScenarioSource.cs",
+      "sha256": "19fdea430b431ec0bcb769c9fc9807d30fce058c49823e6abfbb0de4c3ca2287"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "32e4b746d9d61d2fa3633a217208b4cc4bbfe8d9ee68ac70f81fc7cc90656a52"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "f34c56862372c955e99f6e0da3e4546ae62880c5a95e5ac2ac8be1dbed9e6283"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "e11975b6e60b5d3ecc923a4aa163f097c61213dc080ba67563221db05da029c3"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "src/Application/Audio/AudioPreferences.cs",
+      "sha256": "09aebb88de6385955feeeffb80af18f195a01666deb6bc544bbfce7b28c95166"
+    },
+    {
+      "path": "src/Application/Audio/AudioDuckingEnvelope.cs",
+      "sha256": "d16f6d77f5baa71f119cd19d9b5a60da033ac58317936123f947625b4c2491f4"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundrySceneSource.cs",
+      "sha256": "9a6da31a05708b29fd529e855b574b7b976fcc2676e48afff15fd08c74057a3d"
+    },
+    {
+      "path": "game/TemporaryFocusedSearchContextSource.cs",
+      "sha256": "e7b817319eba38a40f584c617f617db143c9066cabc1f0895c58d53ac0d978d4"
+    },
+    {
+      "path": "game/InteractionFocusController.cs",
+      "sha256": "6d552fd6b74a09d80414ef3733bbc85be0d834cdde83447be120ff19ce00380d"
+    },
+    {
+      "path": "game/DialogueInputController.cs",
+      "sha256": "12c2f5699cef34fce8c51f876fe8af594a9e3bc1136848f1c668982c46c5847d"
+    },
+    {
+      "path": "game/CharacterTurnTranscriptController.cs",
+      "sha256": "5101d0cf8b962d9d19caf4f5b1b1f6655c2003696861f2c5aacdd1a3e7ea58b9"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "928d4e04e03697b1e0f4f664b2f5721ba4a6c2270fcb6f2f19198c00bcb4ae6d"
+    },
+    {
+      "path": "scripts/export-development.sh",
+      "sha256": "0e1fbf4718489a06562e1de716ed052b12bcfccdfe21bf61eace8bae022eb274"
+    },
+    {
+      "path": "scripts/quality-audio.sh",
+      "sha256": "63f1e87c4452735e05f923580ef836ae9602a088c8825159a05f810ca3cab3d8"
+    },
+    {
+      "path": "scripts/validate-audio-publication.py",
+      "sha256": "04fb87176b153d355921e6532c8fbb01457862e6045bb553de0249fad02fda26"
+    },
+    {
+      "path": "scripts/validate-audio-runtime.py",
+      "sha256": "eefc0111287b7b4574930ca9e1dda5a4cfea75dde94993b1f44d74fae10533c6"
+    },
+    {
+      "path": "audio-direction/material-audition/candidates.json",
+      "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+    },
+    {
+      "path": "audio-direction/material-audition/provenance.json",
+      "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+    },
+    {
+      "path": "audio-direction/material-audition/CREDITS.txt",
+      "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/licenses.json",
+      "sha256": "25a5e66b40c633b953324560aae6b0f7090514309bb1b4a6c8d048fc12b1b9c5"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    }
+  ],
+  "regional_selection": {
+    "source": "game/OpeningRegionProjectionSource.cs:Projection",
+    "listener": "Main/Seeker",
+    "rule": "Closest authored anchor in common coordinates, squared distance, ordinal location ID tie; exact region lookup in CurrentRegions.",
+    "not_authoritative_world_location": true,
+    "mutates_world": false,
+    "uses_map_visit_history": false,
+    "crossfade_seconds": 0.75,
+    "weights": "Nonnegative linear amplitude, sum <= 1, retarget from current weights.",
+    "players_maximum": 4,
+    "positional": false,
+    "unknown_inputs": "Silence with diagnostic; never substitute or block gameplay."
+  },
+  "actions": {
+    "players_maximum": 2,
+    "routing": "Effects -> Master once each",
+    "samples_edited": false,
+    "no_queue": true,
+    "on_successful_restore": "Stop cue players; clear captions; end own leases; no historical replay; recompute regional presentation.",
+    "reset_owner": "game/SaveSnapshotRestorationController.cs:TryRestore after complete successful install",
+    "rejected_events": [
+      "Failed or stale request",
+      "Remote/out-of-range action",
+      "Input without successful commit",
+      "Other preparation steps",
+      "Repeated unsuccessful administration",
+      "State restored from save",
+      "Startup history"
+    ],
+    "failure_contract": "Audio/caption failure cannot throw through, undo, delay or deny committed gameplay.",
+    "foreground": "Only audible A05 acquires ConsequentialCue; exact lease ends on finish/failure/reset/mute/teardown. A04 takes no lease."
+  },
+  "captions": {
+    "preference": "AudioSettingsController.Preferences.Captions",
+    "default": true,
+    "independent_of_output_gain_or_mute": true,
+    "panel": "game/MaterialSoundCaptionPanel.tscn",
+    "noninteractive": true,
+    "maximum_lines": 2,
+    "bed_text": {
+      "B01": "Sheltered rain",
+      "B02": "Running water and rain",
+      "B03": "Rain in leaves",
+      "B04": "Wind, rain and timber creak",
+      "inscription-revealed-sound": "Rain in leaves, quieter"
+    },
+    "action_text": {
+      "A04": "Grinding",
+      "A05": "Treatment handling"
+    },
+    "action_seconds": 8,
+    "existing_action_and_dialogue_text_always_retained": true,
+    "hidden_facts_or_directions": false
+  },
+  "mix": {
+    "unchanged_layout": {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    "unchanged_controller": {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    "default_range": "Existing Default; retain persisted user choice rather than resetting it.",
+    "gain": "Accepted clip gain times bounded emitter weight times existing user category/Master gains; no amplification.",
+    "effects_global_ducking": false,
+    "mono_and_reduced_range": "Use existing Master effects only.",
+    "new_runtime_loudness_or_device_compliance_claim": false
+  },
+  "rights_packaging": {
+    "basis": "Retained accepted provenance and source/licence records; no new legal audit.",
+    "attribution_ids": {
+      "B02": "Stream Sounds by kurt, CC-BY-3.0",
+      "B03": "Rain On Dry Leaves Sound by Alexander, CC-BY-4.0"
+    },
+    "all_selected_source_authors_credited": true,
+    "retain_bashar_supplied_credit": true,
+    "existing_edit_notices_retained": true,
+    "shipping_originals_or_unused_clips": false,
+    "new_downloads_or_fees": false,
+    "export_notice_filters": [
+      "assets/audio/material/*.txt",
+      "assets/audio/material/*.json",
+      "assets/audio/material/*.html"
+    ],
+    "export_presets": [
+      "Linux Development",
+      "macOS Development",
+      "Windows Development"
+    ],
+    "visible_credits": "Audio panel button opens readable scrolling attribution view.",
+    "development_exports": "Disposable unsigned packaging evidence only; no distribution."
+  },
+  "implementation_files": {
+    "bounded_changes": [
+      {
+        "path": "game/Main.tscn",
+        "boundary": "additive_material_composition"
+      },
+      {
+        "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+        "boundary": "successful_grinding_notification_only"
+      },
+      {
+        "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+        "boundary": "successful_administration_notification_only"
+      },
+      {
+        "path": "game/SaveSnapshotRestorationController.cs",
+        "boundary": "successful_restore_presentation_reset_only"
+      },
+      {
+        "path": "game/AudioSettingsPanel.cs",
+        "boundary": "caption_help_and_source_credits_entry_only"
+      },
+      {
+        "path": "game/export_presets.cfg",
+        "boundary": "three_notice_include_filters_only"
+      }
+    ],
+    "new_files": [
+      "src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "tests/Application.Tests/Audio/OpeningRegionMaterialAudioProjectionTests.cs",
+      "game/OpeningRegionMaterialAudioController.cs",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/MaterialSoundCaptionPanel.tscn",
+      "game/MaterialAudioCreditsPanel.cs",
+      "game/MaterialAudioCreditsPanel.tscn",
+      "game/MaterialAudioRuntimeSmokeCheck.cs",
+      "game/MaterialAudioRuntimeProof.cs",
+      "game/MaterialAudioRuntimeProof.tscn",
+      "scripts/validate-material-audio-runtime.py",
+      "scripts/check-material-audio-output.py",
+      "audio-direction/material-runtime-authority.json",
+      "audio-direction/material-runtime-verification.json",
+      "game/OpeningRegionMaterialAudioController.cs.uid",
+      "game/MaterialSoundCaptionPanel.cs.uid",
+      "game/MaterialAudioCreditsPanel.cs.uid",
+      "game/MaterialAudioRuntimeSmokeCheck.cs.uid",
+      "game/MaterialAudioRuntimeProof.cs.uid",
+      "game/assets/audio/material/B01.wav",
+      "game/assets/audio/material/B02.wav",
+      "game/assets/audio/material/B03.wav",
+      "game/assets/audio/material/B04.wav",
+      "game/assets/audio/material/A04.wav",
+      "game/assets/audio/material/A05.wav",
+      "game/assets/audio/material/B01.wav.import",
+      "game/assets/audio/material/B02.wav.import",
+      "game/assets/audio/material/B03.wav.import",
+      "game/assets/audio/material/B04.wav.import",
+      "game/assets/audio/material/A04.wav.import",
+      "game/assets/audio/material/A05.wav.import",
+      "game/assets/audio/material/CREDITS.txt",
+      "game/assets/audio/material/provenance.json",
+      "game/assets/audio/material/CC-BY-3.0-deed.html",
+      "game/assets/audio/material/CC-BY-4.0-deed.html",
+      "game/assets/audio/material/CC0-1.0-deed.html"
+    ],
+    "evidence_directory": "audio-direction/material-runtime-review/",
+    "documentation_maintenance": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md"
+    ]
+  },
+  "excluded": [
+    "Accepted audio edits",
+    "New physical footstep materials",
+    "Movement/gait changes",
+    "Positional emitters and off-screen perception",
+    "NPC sound",
+    "Water/wood/tool action authoring",
+    "UI/conversation sound",
+    "Music scheduler/rest semantics",
+    "Speech/voice/provider/microphone",
+    "New save schema",
+    "World/time/disease/perception changes",
+    "Artwork/layout changes",
+    "Release/signing/distribution",
+    "New Git publication"
+  ],
+  "preserved_local_editor_rewrite": {
+    "path": "game/project.godot",
+    "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+  },
+  "verification_required": [
+    "Accepted installed waveform hashes, import precision, additive Main and retained physical/art/mixer/input inventory, three successor rejection probes.",
+    "All eleven anchor choices, midpoint ties, return visits, malformed/exact-identity inputs, rapid normalized retargeting and existing revealed-state attenuation.",
+    "Ordinary successful grinding/administration; other-step, failed/stale/remote/repeated/save-history negative probes; identical world results/time/perception under mute and missing playback.",
+    "Final Master renders: all beds and seams, ramps/retargets/variation, one-shots, Effects/Ambience isolation/gain/zero/mute, Master silence, mono, Default/Reduced range and A05 lease cleanup.",
+    "Actual Main caption/action/credits views, accessibility/focus/toggle under mute; exported six assets and source/licence notices.",
+    "Successor boundary validator then retained quality-audio product commands: restore/format/build, four unit-test projects, ScenarioValidator, retained Godot smoke suite plus material checks."
+  ],
+  "completion_condition": "Six byte-identical accepted clips integrated with exact live owners, captions, credits, existing controls, successor/product/output checks and recorded changed-runtime evidence; whole material, positional and music items remain incomplete.",
+  "planning_checks": {
+    "terminal_acceptance_bindings_verified": 82,
+    "candidate_waveform_bindings_verified": 16,
+    "selected_count": 6,
+    "product_inputs_changed": false,
+    "runtime_installed": false,
+    "fresh_product_or_listening_tests": "Not run; unchanged product evidence reused."
+  }
+}

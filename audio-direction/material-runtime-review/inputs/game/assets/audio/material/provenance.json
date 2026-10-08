@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "acceptance_date": "2026-10-07",
+  "runtime_authority_date": "2026-10-08",
+  "copy_contract": "byte-identical accepted excerpts",
+  "clips": [
+    {
+      "id": "B01",
+      "path": "B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5",
+      "seconds": 30.0,
+      "source_ids": [
+        "rain"
+      ],
+      "source_edits": [
+        {
+          "source_id": "rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+          "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 35185664,
+          "lossy_original": false,
+          "trim_begin_sample": 2880000,
+          "trim_end_sample": 4356000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 5500,
+          "applied_gain_db": -3.223585606346152
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "path": "B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54",
+      "seconds": 30.0,
+      "source_ids": [
+        "stream",
+        "rain"
+      ],
+      "source_edits": [
+        {
+          "source_id": "stream",
+          "member_name": "stream-waterfall/stream1.ogg",
+          "path": "audio-direction/material-audition/members/stream/stream-waterfall/stream1.ogg",
+          "sha256": "c0b5256f20db94654493e4c32fdb3c25cffa6a8d41f6871969d0922147d28e65",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1531008,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 1476000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": null,
+          "applied_gain_db": 8.532876538695582
+        },
+        {
+          "source_id": "rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+          "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 35185664,
+          "lossy_original": false,
+          "trim_begin_sample": 4800000,
+          "trim_end_sample": 6276000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 7500,
+          "applied_gain_db": -6.140357323652066
+        }
+      ]
+    },
+    {
+      "id": "B03",
+      "path": "B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625",
+      "seconds": 30.0,
+      "source_ids": [
+        "leaf-rain"
+      ],
+      "source_edits": [
+        {
+          "source_id": "leaf-rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/leaf-rain/Rain-on-dry-leaves-sound.mp3",
+          "sha256": "75efab82d45c882128959ef00b647143fb3eb141698d682be9da08280dbb847e",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 2936582,
+          "lossy_original": true,
+          "trim_begin_sample": 240000,
+          "trim_end_sample": 1716000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 8000,
+          "applied_gain_db": 2.7071879989323815
+        }
+      ]
+    },
+    {
+      "id": "B04",
+      "path": "B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286",
+      "seconds": 30.0,
+      "source_ids": [
+        "wind",
+        "rain",
+        "creak"
+      ],
+      "source_edits": [
+        {
+          "source_id": "wind",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/wind/wind background noise 2.wav",
+          "sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 2136462,
+          "lossy_original": false,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 1476000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 5000,
+          "applied_gain_db": -10.000762439884245
+        },
+        {
+          "source_id": "rain",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+          "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 35185664,
+          "lossy_original": false,
+          "trim_begin_sample": 7680000,
+          "trim_end_sample": 9156000,
+          "loop_begin_sample": 0,
+          "loop_end_sample": 1440000,
+          "circular_crossfade_samples": 36000,
+          "lowpass_hz": 7500,
+          "applied_gain_db": -7.715592701461692
+        },
+        {
+          "source_id": "creak",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/creak/506662__rudmer_rotteveel__wood-creak-single-v7.wav",
+          "sha256": "f210f39518e6d33d349d2a27c1213656339f7ff487c1f9af33fd2be0d42e1d89",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 76569,
+          "lossy_original": false,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 76560,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -14.119220233543238
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "path": "A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d",
+      "seconds": 8.0,
+      "source_ids": [
+        "mortar"
+      ],
+      "source_edits": [
+        {
+          "source_id": "mortar",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/mortar/749884__fwughox_official__mortar-and-pestle.wav",
+          "sha256": "80cb1bf7a858492e828f2678a3ce433aebafeccb9cb0946577e466394e9dcc79",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1394843,
+          "lossy_original": false,
+          "trim_begin_sample": 144000,
+          "trim_end_sample": 384000,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -19.0
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "path": "A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5",
+      "seconds": 8.0,
+      "source_ids": [
+        "cloth",
+        "wood-tool"
+      ],
+      "source_edits": [
+        {
+          "source_id": "cloth",
+          "member_name": null,
+          "path": "audio-direction/material-audition/originals/cloth/481075__khenshom__foley-cotton-clothes-rustling-fabric-movement-sound.wav",
+          "sha256": "89d259b33b510ab0d430e9457aea9c532e0c1180de81b140f36aa61a6023abeb",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 1845739,
+          "lossy_original": false,
+          "trim_begin_sample": 720000,
+          "trim_end_sample": 777600,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": 24.105342599575287
+        },
+        {
+          "source_id": "wood-tool",
+          "member_name": "wood_hit_05.ogg",
+          "path": "audio-direction/material-audition/members/wood-tool/wood_hit_05.ogg",
+          "sha256": "a6e1a4cfb65c4fc46248b3db84666275d466c2434c283028c7f0ce70035e75de",
+          "decoded_rate_hz": 48000,
+          "decoded_frames": 14787,
+          "lossy_original": true,
+          "trim_begin_sample": 0,
+          "trim_end_sample": 14787,
+          "edge_fade_seconds": 0.025,
+          "applied_gain_db": -23.51411672181497
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "cloth": {
+      "title": "Foley - Cotton clothes rustling - Fabric movement sound.wav",
+      "author": "khenshom",
+      "catalogue_url": "https://freesound.org/people/khenshom/sounds/481075/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/cloth/481075__khenshom__foley-cotton-clothes-rustling-fabric-movement-sound.wav",
+      "original_filename": "481075__khenshom__foley-cotton-clothes-rustling-fabric-movement-sound.wav",
+      "sha256": "89d259b33b510ab0d430e9457aea9c532e0c1180de81b140f36aa61a6023abeb"
+    },
+    "creak": {
+      "title": "Wood Creak Single V7",
+      "author": "Rudmer_Rotteveel",
+      "catalogue_url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/506662/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/creak/506662__rudmer_rotteveel__wood-creak-single-v7.wav",
+      "original_filename": "506662__rudmer_rotteveel__wood-creak-single-v7.wav",
+      "sha256": "f210f39518e6d33d349d2a27c1213656339f7ff487c1f9af33fd2be0d42e1d89"
+    },
+    "leaf-rain": {
+      "title": "Rain On Dry Leaves Sound",
+      "author": "Alexander",
+      "catalogue_url": "https://orangefreesounds.com/rain-on-dry-leaves-sound/",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/leaf-rain/Rain-on-dry-leaves-sound.mp3",
+      "original_filename": "Rain-on-dry-leaves-sound.mp3",
+      "sha256": "75efab82d45c882128959ef00b647143fb3eb141698d682be9da08280dbb847e"
+    },
+    "mortar": {
+      "title": "Mortar and pestle",
+      "author": "Fwughox_Official",
+      "catalogue_url": "https://freesound.org/people/Fwughox_Official/sounds/749884/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/mortar/749884__fwughox_official__mortar-and-pestle.wav",
+      "original_filename": "749884__fwughox_official__mortar-and-pestle.wav",
+      "sha256": "80cb1bf7a858492e828f2678a3ce433aebafeccb9cb0946577e466394e9dcc79"
+    },
+    "rain": {
+      "title": "AMB Rain Loop 2",
+      "author": "Kresiek The Furry",
+      "catalogue_url": "https://opengameart.org/content/amb-rain-loop-2",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/rain/amb_rain2.flac",
+      "original_filename": "amb_rain2.flac",
+      "sha256": "c33d833842c88e9559882b35f6f149c3a96bbf236eb34491e36ea4cae8879985"
+    },
+    "stream": {
+      "title": "Stream Sounds",
+      "author": "kurt",
+      "catalogue_url": "https://opengameart.org/content/stream-sounds",
+      "license": "CC-BY-3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/stream/stream-waterfall.zip",
+      "original_filename": "stream-waterfall.zip",
+      "sha256": "71d64573330b49de83e648ca86331d38f5b7147f75873708495e2fffb01f9ac3"
+    },
+    "wind": {
+      "title": "Mild Wind Background Noise",
+      "author": "Bashar3A",
+      "catalogue_url": "https://opengameart.org/content/mild-wind-background-noise",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/wind/wind background noise 2.wav",
+      "original_filename": "wind background noise 2.wav",
+      "sha256": "9f1fd5c8b37949e6889a7f6acbd822f66e0ab4e918d72bda58d8d8c2c7e85a80"
+    },
+    "wood-tool": {
+      "title": "100 CC0 metal and wood SFX",
+      "author": "rubberduck",
+      "catalogue_url": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "acquired_on": "2026-10-07",
+      "path": "audio-direction/material-audition/originals/wood-tool/100-CC0-wood-metal-SFX.zip",
+      "original_filename": "100-CC0-wood-metal-SFX.zip",
+      "sha256": "be6eba63b03409ac0c77787a956b1503a7c186403d04aef9725c52644a4b7878"
+    }
+  },
+  "licences": [
+    {
+      "license": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "path": "CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "license": "CC-BY-3.0",
+      "url": "https://creativecommons.org/licenses/by/3.0/",
+      "path": "CC-BY-3.0-deed.html",
+      "sha256": "befae005d7dc8701eed58fe2080fda2889c3749272d6c8aba8e8310114112095"
+    },
+    {
+      "license": "CC-BY-4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "path": "CC-BY-4.0-deed.html",
+      "sha256": "8dda1ccec4be91fc80821d4e4fd5c568072b9a3a74b2fdc07c249a27e920ef01"
+    }
+  ]
+}

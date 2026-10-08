@@ -1,0 +1,5 @@
+stabilized
+0
+1
+greybox-ready,healer-administered-first-patient-remedy
+healer-administered-first-patient-remedy

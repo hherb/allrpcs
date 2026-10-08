@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "timezone": "Australia/Sydney",
   "authority_order": [
     "Current direct owner instruction",
@@ -318,6 +318,34 @@
           "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
         }
       ]
+    },
+    {
+      "id": "phase9-material-audio-runtime-scope",
+      "reason": "Concrete runtime planning is complete on 2026-10-08: sixteen accepted candidates mapped to actual owners/prerequisites, six-sound first implementation boundary, exact assets/files, selection/variation, action/reset notifications, captions, rights packaging, volume behavior and finite checks. All accepted bytes and runtime inputs remain unchanged. Implementation authority is the single pending next decision; no repeat audition or unchanged-area audit.",
+      "evidence": [
+        {
+          "path": "audio-direction/material-runtime-scope.md",
+          "sha256": "f8f309f34e8ddee75c3085060b98ce0e3c91ca154adbad96a6cf32bedc44be42"
+        },
+        {
+          "path": "audio-direction/material-runtime-scope.json",
+          "sha256": "6eb5f9cb06efd1851f85076d1594d265d393e8b1ac59e5b06d137a64630fec28"
+        }
+      ]
+    },
+    {
+      "id": "phase9-material-audio-runtime-integration",
+      "reason": "Owner approved the exact six-sound scope on 2026-10-08. B01–B04 ambience and A04/A05 committed-action feedback are implemented unchanged with captions, attribution/export notices and success/reset/lease isolation. Verified by 5,072 unit tests, the retained smoke suite, identical committed save roots in four audio modes and 36 rendered Master-output cases. Whole named implementation is complete; export/device limits remain explicit. Footsteps, other actions, positional cues and music stay unfinished. No repeat acceptance or Git publication is inferred.",
+      "evidence": [
+        {
+          "path": "audio-direction/material-runtime-authority.json",
+          "sha256": "085dc5176bc713c37307cac22a76b2b47343eb3869c38aadc8692da269dc030f"
+        },
+        {
+          "path": "audio-direction/material-runtime-verification.json",
+          "sha256": "7b90f02114805c6b03cc85942ba5fb729d7f6d17b98d058a25ce3ee3aa73fc77"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -425,22 +453,21 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-material-audio-runtime-scope",
-    "title": "Prepare a concrete bounded runtime integration scope for accepted material sounds",
+    "id": "phase9-footstep-runtime-scope",
+    "title": "Prepare a concrete terrain-footstep runtime proposal",
     "status": "ready",
-    "workstream": "audio-material-runtime-integration",
+    "workstream": "audio-footstep-runtime-planning",
     "roadmap_item": "- [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.",
-    "missing_deliverable": "A concrete runtime integration proposal mapping accepted clips to existing authored material/event owners and exact files, with finite checks and a named implementation authority. The accepted audition alone supplies no emitters or gameplay call sites.",
-    "instructions": "Prepare the new runtime proposal from actual existing code and accepted material without changing any accepted excerpt or reopening audition review. Name the smallest complete implementation boundary, source/caption/perception ownership, event triggers, rights packaging, volume behavior and required verification. Finish the concrete proposal before requesting any missing runtime scope authority; no implementation before that authority.",
-    "completion_condition": "One reviewable proposal and structured scope inventory define exact assets/call sites, behavior, exclusions, checks and the single next implementation decision. This is new runtime planning, not a repeat audit or listening gate.",
+    "missing_deliverable": "Terrain-footstep material coverage and an actual displacement/contact/cadence contract are undefined; accepted W01–W04 audition passages cannot be installed as movement loops.",
+    "instructions": "Prepare one finite read-only proposal for W01–W04: exact runtime owners, material coverage/precedence/unmapped behavior, actual displacement and grounded cadence, stop/blocked/teleport/load cancellation, any separately bounded sample extraction, implementation files and finite checks. Carry accepted source bytes and the reference gait unchanged; do not reopen closed art/audio/terrain studies.",
+    "completion_condition": "A concrete Markdown proposal and hash-bound structured inventory identify missing footstep prerequisites, exact implementation/extraction authority and finite validation without changing runtime, material geography, accepted sound samples, gait or frozen evidence.",
     "outputs": [
-      "audio-direction/material-runtime-scope.md",
-      "audio-direction/material-runtime-scope.json"
+      "audio-direction/footstep-runtime-scope.md",
+      "audio-direction/footstep-runtime-scope.json"
     ],
-    "boundary": "Read-only runtime mapping and concrete proposal only. No accepted audio edits, runtime installation, new world/material/time/perception semantics, voice, purchase or new Git publication. Preserve unrelated project editor rewrite.",
+    "boundary": "Read-only scope preparation and continuation documentation only. No material classifier/contact scheduler, movement/gait/art/layout/physical changes, accepted waveform edits, runtime installation, release or Git publication. New runtime/world-material or sample-extraction authority must cover the prepared result before implementation.",
     "authority_gate": {
-      "status": "new_runtime_implementation_scope_not_yet_defined",
-      "implementation_authority": "Prepare concrete scope first; listening acceptance closes audition only."
+      "status": "proposal_preparation_only; new implementation authority not yet requested"
     }
   },
   "deferred_slices": []

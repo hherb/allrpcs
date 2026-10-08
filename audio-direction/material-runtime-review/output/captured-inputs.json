@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "method": "Disposable 320x180 video transport only; all listed clips, imported samples, scripts, mixer and compiled assemblies exactly match game at final capture. No gain/sample/mixer alteration.",
+  "bindings": [
+    {
+      "game_path": "game/.godot/imported/A04.wav-69caa5d711e0b757f24886e055606add.sample",
+      "sha256": "fa4b83019c8f349dd53c5fe7125509461d076469800e981e2ff57b1ed4739c65"
+    },
+    {
+      "game_path": "game/.godot/imported/A05.wav-33c27afd2a1a00bbe46bfc014cb9bac8.sample",
+      "sha256": "6caae5188f0fd06c25ebaa2c87221054aaf5a18128ae05d737559b5ce83ba0dc"
+    },
+    {
+      "game_path": "game/.godot/imported/B01.wav-b041454b72bd214eda63556efe8a05aa.sample",
+      "sha256": "6e1754492fd02857f083bf170d0e11834da1ea7f2ba5602abcb9258a9e05089d"
+    },
+    {
+      "game_path": "game/.godot/imported/B02.wav-74c35fa0dcc91448c2b7be0654e9dafa.sample",
+      "sha256": "18283032ebbcab6dbb8aa7f65f12b2b1cd282066f55be6c30f42e341a6ec667e"
+    },
+    {
+      "game_path": "game/.godot/imported/B03.wav-03b7fb8338e9bd12e3e9948bdf4d70d3.sample",
+      "sha256": "a672def9b1dd3816cd06999fc00069f12dad172524be96566e6bc13521f424fb"
+    },
+    {
+      "game_path": "game/.godot/imported/B04.wav-bacf6bfa4aa035851de20b674042c66f.sample",
+      "sha256": "e5bf6b2c95712a037bcf2208d27b7072672128183f3ce92f865cdd4556cdd0b9"
+    },
+    {
+      "game_path": "game/.godot/mono/temp/bin/Debug/Allrpcs.Application.dll",
+      "sha256": "b7c028117abde2553def2ac6bfb84443954b47dc8a2dcfb59200414971bfa882"
+    },
+    {
+      "game_path": "game/.godot/mono/temp/bin/Debug/Allrpcs.Domain.dll",
+      "sha256": "a3875027d418e662f64624bc969030a8f6c985a3cc804afdf819573497559867"
+    },
+    {
+      "game_path": "game/.godot/mono/temp/bin/Debug/Allrpcs.Game.dll",
+      "sha256": "839682e5056863afabe2a96575432838e48d379ba0268aa44044017a9d535747"
+    },
+    {
+      "game_path": "game/.godot/mono/temp/bin/Debug/Allrpcs.Infrastructure.dll",
+      "sha256": "eaade37983ef34a8920ebd1f7493365f28d459b17fe163be2717fa054fa1139f"
+    },
+    {
+      "game_path": "game/.godot/mono/temp/bin/Debug/GodotSharp.dll",
+      "sha256": "2142e62894176d7340f50581f8b2fe84e36ae64e1a85f1b2bd7737a7e8a5c8ba"
+    },
+    {
+      "game_path": "game/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll",
+      "sha256": "77c61b007a70309cada2180c90ecc93c5ca559760be3c7e381b2e1f2f34cd4e9"
+    },
+    {
+      "game_path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "game_path": "game/AudioSettingsStorageController.cs",
+      "sha256": "e4250c020dbf986e0f440a1d017d658059eefbc24cd6aae4947f174d6b8441b8"
+    },
+    {
+      "game_path": "game/MaterialAudioRuntimeProof.cs",
+      "sha256": "9a0215b8c73298a94d8f68037861d5ae6408236cd2d0cd80f838de26a024eee4"
+    },
+    {
+      "game_path": "game/MaterialAudioRuntimeProof.tscn",
+      "sha256": "ab1cb5bb6108849a388d471989b27ec4afb61ec3847f81c56e838408a77f7ddb"
+    },
+    {
+      "game_path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "0b95af82b2646aca7965f46576911fd38db1bc35b6e5981b212bc7165c5e98f4"
+    },
+    {
+      "game_path": "game/MaterialSoundCaptionPanel.tscn",
+      "sha256": "27614dbacab4b4ca72c66ad52d3ac8675fd695130da94fcbcc147fb803e36bee"
+    },
+    {
+      "game_path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "9209cb602ccece0b754ff886df46bdb90c0613787197b55c4012ceef6b831eb0"
+    },
+    {
+      "game_path": "game/assets/audio/material/A04.wav",
+      "sha256": "f99261f75b12718d324e5380e54323945fed50d70aa7ae9b8f0dcf8d3a2b7c4d"
+    },
+    {
+      "game_path": "game/assets/audio/material/A05.wav",
+      "sha256": "7009f8c842c6d0aad848782ea671a3b4c9a027680cca4c08c8e55ebde62c11a5"
+    },
+    {
+      "game_path": "game/assets/audio/material/B01.wav",
+      "sha256": "d3ebe9a32935b106204e1851c54c38581b9cae83e6d53618e97b61460ed5eee5"
+    },
+    {
+      "game_path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    {
+      "game_path": "game/assets/audio/material/B03.wav",
+      "sha256": "4ad31a61745ac416ce45be3f7bff9edc765c7ccbc05ed355385a2f51a97c1625"
+    },
+    {
+      "game_path": "game/assets/audio/material/B04.wav",
+      "sha256": "214e8b16ead7987e38690f2a3aa3b85f09e77b89b27e06f31b60323162be5286"
+    }
+  ]
+}

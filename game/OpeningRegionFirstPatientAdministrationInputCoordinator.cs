@@ -12,6 +12,9 @@ namespace Allrpcs.Game;
 /// <summary>Administers the exact prepared first-patient remedy from one mapped input.</summary>
 public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : Node
 {
+    /// <summary>Presentation-only notification after the exact live administration commits.</summary>
+    public event Action<OpeningRegionFirstPatientSceneBinding>? TreatmentCompleted;
+
     internal const string BatchRequiredStatusText =
         "Treatment: prepare the remedy batch first.";
     internal const string MoveCloserStatusText = "Treatment: move closer to the patient.";
@@ -128,7 +131,7 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
         IngredientQuantity dosage = new(
             requestedBatch.RemainingQuantity.Amount,
             requestedBatch.RemainingQuantity.Unit);
-        return administration.TryAdminister(
+        bool administered = administration.TryAdminister(
             experimentId,
             requestedContext,
             healer.Character.Identity.Id,
@@ -138,6 +141,15 @@ public partial class OpeningRegionFirstPatientAdministrationInputCoordinator : N
             observedConditions,
             Procedure,
             ObservedOutcome);
+        if (administered)
+        {
+            foreach (Delegate listener in TreatmentCompleted?.GetInvocationList() ?? [])
+            {
+                try { ((Action<OpeningRegionFirstPatientSceneBinding>)listener)(currentBinding); }
+                catch (Exception exception) { GD.PrintErr($"Treatment presentation failed: {exception.Message}"); }
+            }
+        }
+        return administered;
     }
 
     private static NumericsVector2 ToNumerics(Vector2 position) =>

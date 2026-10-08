@@ -1,4 +1,4 @@
-[gd_scene load_steps=395 format=3]
+[gd_scene load_steps=398 format=3]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_main"]
 [ext_resource type="Script" path="res://Seeker.cs" id="2_seeker"]
@@ -598,6 +598,10 @@
 [ext_resource type="PackedScene" path="res://AudioSettingsPanel.tscn" id="audio_panel"]
 
 [ext_resource type="Script" path="res://AudioSettingsMainSmokeCheck.cs" id="audio_main_check"]
+
+[ext_resource type="Script" path="res://OpeningRegionMaterialAudioController.cs" id="material_audio"]
+[ext_resource type="PackedScene" path="res://MaterialSoundCaptionPanel.tscn" id="material_captions"]
+[ext_resource type="Script" path="res://MaterialAudioRuntimeSmokeCheck.cs" id="material_check"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_horizontal"]
 size = Vector2(3232, 32)
@@ -4199,6 +4203,15 @@ centered = false
 
 [node name="RuntimeWoodlandClearingDressingSmokeCheck" type="Node" parent="."]
 script = ExtResource("474_woodland_dressing_check")
+
+
+[node name="MaterialSoundCaptionPanel" parent="." instance=ExtResource("material_captions")]
+
+[node name="OpeningRegionMaterialAudioController" type="Node" parent="."]
+script = ExtResource("material_audio")
+
+[node name="MaterialAudioRuntimeSmokeCheck" type="Node" parent="."]
+script = ExtResource("material_check")
 
 [node name="WholeChannelPresentation" type="Node2D" parent="."]
 script = ExtResource("441_channel_owner")

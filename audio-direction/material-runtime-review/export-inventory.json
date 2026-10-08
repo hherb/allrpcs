@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "resource_only_export_verified",
+  "preset": "macOS Development",
+  "archive_sha256": "b17d98aa7457e75c3f5988097d2efd6a62f22b2f2346ccc1c12f3c7822a06a37",
+  "verified_resource_names": [
+    "assets/audio/material/A05.wav.import",
+    ".godot/imported/A05.wav-33c27afd2a1a00bbe46bfc014cb9bac8.sample",
+    "assets/audio/material/B03.wav.import",
+    ".godot/imported/B03.wav-03b7fb8338e9bd12e3e9948bdf4d70d3.sample",
+    "assets/audio/material/B01.wav.import",
+    ".godot/imported/B01.wav-b041454b72bd214eda63556efe8a05aa.sample",
+    "assets/audio/material/B04.wav.import",
+    ".godot/imported/B04.wav-bacf6bfa4aa035851de20b674042c66f.sample",
+    "assets/audio/material/A04.wav.import",
+    ".godot/imported/A04.wav-69caa5d711e0b757f24886e055606add.sample",
+    "assets/audio/material/B02.wav.import",
+    ".godot/imported/B02.wav-74c35fa0dcc91448c2b7be0654e9dafa.sample",
+    "assets/audio/material/CREDITS.txt",
+    "assets/audio/material/provenance.json",
+    "assets/audio/material/CC-BY-3.0-deed.html",
+    "assets/audio/material/CC-BY-4.0-deed.html",
+    "assets/audio/material/CC0-1.0-deed.html"
+  ],
+  "verified_count": 17,
+  "raw_wavs_remapped_to_imported_resources": true,
+  "exported_import_settings": "Godot strips editor parameters; resource UID/cache paths match and all six imported stream bytes match exactly.",
+  "unsigned_application_export": "Unavailable: missing macOS mono export template and existing game/Allrpcs.Game.sln lookup mismatch. Neither is repaired in this bounded material scope.",
+  "warning": "Resource-only export produced the archive while reporting existing C# solution-name/configuration errors. All 17 required audio/notice resources were independently verified; no runnable application export is claimed."
+}

@@ -1,3 +1,4 @@
+using Allrpcs.Application.Audio;
 using Allrpcs.Application.Navigation;
 using Allrpcs.Domain.Diseases;
 using Allrpcs.Domain.Ingredients;
@@ -10,6 +11,9 @@ namespace Allrpcs.Game;
 /// <summary>Advances the exact ordinary healer-garden preparation one input at a time.</summary>
 public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
 {
+    /// <summary>Presentation-only notification after an exact committed grinding step.</summary>
+    public event Action<IngredientPreparationRecipe, IngredientPreparationStep, Vector2>? GrindingCompleted;
+
     internal const string ReadyStatusText = "Preparation: go to the station and press P.";
     internal const string MoveCloserStatusText = "Preparation: move closer to the station.";
     internal const string StartedStatusText = "Preparation: started. Press P for step 1.";
@@ -125,9 +129,22 @@ public partial class OpeningRegionRemedyPreparationInputCoordinator : Node
         if (preparation.Outcome is null)
         {
             int nextStepIndex = activity.Progress.NextStepIndex;
-            return nextStepIndex < requestedRecipe.Plan.Steps.Count
-                ? preparation.TryAdvance(requestedRecipe.Plan.Steps[nextStepIndex])
-                : preparation.TryComplete();
+            if (nextStepIndex >= requestedRecipe.Plan.Steps.Count) { return preparation.TryComplete(); }
+            IngredientPreparationStep step = requestedRecipe.Plan.Steps[nextStepIndex];
+            bool advanced = preparation.TryAdvance(step);
+            if (advanced && OpeningRegionMaterialAudioProjection.IsGrinding(requestedRecipe, step))
+            {
+                foreach (Delegate listener in GrindingCompleted?.GetInvocationList() ?? [])
+                {
+                    try
+                    {
+                        ((Action<IngredientPreparationRecipe, IngredientPreparationStep, Vector2>)listener)(
+                            requestedRecipe, step, new Vector2(currentBinding.StationPosition.X, currentBinding.StationPosition.Y));
+                    }
+                    catch (Exception exception) { GD.PrintErr($"Grinding presentation failed: {exception.Message}"); }
+                }
+            }
+            return advanced;
         }
 
         IngredientPreparationOutcome outcome = preparation.Outcome;

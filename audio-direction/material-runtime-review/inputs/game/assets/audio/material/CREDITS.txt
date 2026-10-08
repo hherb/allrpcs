@@ -1,0 +1,51 @@
+Allrpcs material runtime audio — source credits and edit notices
+2026-10-08. Six owner-accepted excerpts; exact source edits retained.
+
+AMB Rain Loop 2 by Kresiek The Furry
+Source: https://opengameart.org/content/amb-rain-loop-2
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: B01, B02, B04
+
+Stream Sounds by kurt
+Source: https://opengameart.org/content/stream-sounds
+License: CC-BY-3.0 - https://creativecommons.org/licenses/by/3.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: B02
+
+Rain On Dry Leaves Sound by Alexander
+Source: https://orangefreesounds.com/rain-on-dry-leaves-sound/
+License: CC-BY-4.0 - https://creativecommons.org/licenses/by/4.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: B03
+
+Mild Wind Background Noise by Bashar3A
+Source: https://opengameart.org/content/mild-wind-background-noise
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: B04
+Supplied credit: Bashar from Skirmish.io.
+
+100 CC0 metal and wood SFX by rubberduck
+Source: https://opengameart.org/content/100-cc0-metal-and-wood-sfx
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: A05
+
+Wood Creak Single V7 by Rudmer_Rotteveel
+Source: https://freesound.org/people/Rudmer_Rotteveel/sounds/506662/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: B04
+
+Foley - Cotton clothes rustling - Fabric movement sound.wav by khenshom
+Source: https://freesound.org/people/khenshom/sounds/481075/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: A05
+
+Mortar and pestle by Fwughox_Official
+Source: https://freesound.org/people/Fwughox_Official/sounds/749884/
+License: CC0-1.0 - https://creativecommons.org/publicdomain/zero/1.0/
+Changes: source-derived trims, resampling, channel conversion, filtering where recorded, fades, loop crossfades, gains and layering; exact windows and parameters in packaged provenance.json. Original authors do not endorse this audition.
+Runtime clips: A04

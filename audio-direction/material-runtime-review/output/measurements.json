@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "wave_sha256": "b043752a73f0286d57e996b413a5e0df1b0cd7b416d44c97c95fa7fb06a7badd",
+  "timeline_sha256": "f995f96ac325d4e01f2f7b60fb53acb349c880030a2af0116162c036aba75a89",
+  "rate_hz": 48000,
+  "seconds": 458.01666666666665,
+  "cases": 36,
+  "passed_output_checks": [
+    "B01-zero",
+    "B01-mute",
+    "B01-master-zero",
+    "B01-master-mute",
+    "B01-normal",
+    "B01-half",
+    "B01-mono",
+    "B01-reduced",
+    "A04-zero",
+    "A04-mute",
+    "A04-master-zero",
+    "A04-master-mute",
+    "A04-normal",
+    "A04-half",
+    "A04-mono",
+    "A04-reduced",
+    "A05-zero",
+    "A05-mute",
+    "A05-master-zero",
+    "A05-master-mute",
+    "A05-normal",
+    "A05-half",
+    "A05-mono",
+    "A05-reduced",
+    "B01-loop",
+    "B02-loop",
+    "B03-loop",
+    "B04-loop",
+    "treatment-reset",
+    "treatment-missing",
+    "crossfade",
+    "retarget",
+    "revealed",
+    "treatment-muted-release",
+    "treatment-release",
+    "bed-muted-phase"
+  ],
+  "metrics": {
+    "B01-loop": {
+      "rms": 0.03215825277899577,
+      "peak": 0.20471763610839844,
+      "seam_max_sample_delta": 0.044495582580566406,
+      "seam_min_10ms_rms": 0.021660841655005383
+    },
+    "B02-loop": {
+      "rms": 0.05026202783796157,
+      "peak": 0.36143016815185547,
+      "seam_max_sample_delta": 0.09683418273925781,
+      "seam_min_10ms_rms": 0.03219903345881396
+    },
+    "B03-loop": {
+      "rms": 0.026356312428411018,
+      "peak": 0.4466981887817383,
+      "seam_max_sample_delta": 0.14172744750976562,
+      "seam_min_10ms_rms": 0.01867237339628699
+    },
+    "B04-loop": {
+      "rms": 0.02755756751158678,
+      "peak": 0.19492149353027344,
+      "seam_max_sample_delta": 0.027252197265625,
+      "seam_min_10ms_rms": 0.014388982033172883
+    },
+    "B01-normal": {
+      "rms": 0.03215825277899577,
+      "peak": 0.20471763610839844
+    },
+    "B01-half": {
+      "rms": 0.01608322045313612,
+      "peak": 0.10235881805419922
+    },
+    "B01-zero": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "B01-mute": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "B01-master-zero": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "B01-master-mute": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "B01-mono": {
+      "rms": 0.030161525271596865,
+      "peak": 0.16914844512939453
+    },
+    "B01-reduced": {
+      "rms": 0.008556771694648394,
+      "peak": 0.047580718994140625
+    },
+    "A04-normal": {
+      "rms": 0.0013938110810046494,
+      "peak": 0.11221599578857422
+    },
+    "A04-half": {
+      "rms": 0.0006969011008333234,
+      "peak": 0.056107521057128906
+    },
+    "A04-zero": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A04-mute": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A04-master-zero": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A04-master-mute": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A04-mono": {
+      "rms": 0.0011552164676948127,
+      "peak": 0.10620403289794922
+    },
+    "A04-reduced": {
+      "rms": 0.0009709807555147269,
+      "peak": 0.10547542572021484
+    },
+    "A05-normal": {
+      "rms": 0.0034362362550285127,
+      "peak": 0.07315254211425781
+    },
+    "A05-half": {
+      "rms": 0.001718113536253442,
+      "peak": 0.036576271057128906
+    },
+    "A05-zero": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A05-mute": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A05-master-zero": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A05-master-mute": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "A05-mono": {
+      "rms": 0.0034362310674698644,
+      "peak": 0.07315254211425781
+    },
+    "A05-reduced": {
+      "rms": 0.003111240545262414,
+      "peak": 0.05352497100830078
+    },
+    "revealed": {
+      "rms": 0.01865872957232302,
+      "peak": 0.3162384033203125,
+      "ratio_to_normal": 0.7079415841272878
+    },
+    "crossfade": {
+      "rms": 0.04377890447675691,
+      "peak": 0.36143016815185547
+    },
+    "retarget": {
+      "rms": 0.030084038536048446,
+      "peak": 0.20471763610839844
+    },
+    "treatment-release": {
+      "rms": 0.0034362310674698644,
+      "peak": 0.07315254211425781
+    },
+    "treatment-reset": {
+      "rms": 0.0034362310674698644,
+      "peak": 0.07315254211425781
+    },
+    "treatment-muted-release": {
+      "rms": 0.0034362310674698644,
+      "peak": 0.07315254211425781
+    },
+    "treatment-missing": {
+      "rms": 0.0,
+      "peak": 0.0
+    },
+    "bed-muted-phase": {
+      "rms": 0.029856973145489893,
+      "peak": 0.20471763610839844,
+      "retained_phase_correlation": 0.9999999403953552
+    }
+  },
+  "final_master_loudness": {
+    "input_i": "-25.54",
+    "input_tp": "-6.86",
+    "input_lra": "14.60",
+    "input_thresh": "-36.17",
+    "output_i": "-23.66",
+    "output_tp": "-5.89",
+    "output_lra": "14.30",
+    "output_thresh": "-34.13",
+    "normalization_type": "dynamic",
+    "target_offset": "0.66"
+  },
+  "limits": [
+    "Technical final-output evidence only; no new owner sound selection or device-listening claim.",
+    "Loop seam deltas are reported measurements, not human listening judgments.",
+    "Retained policy targets are provisional; this diagnostic sequence is not ordinary-play LUFS compliance."
+  ]
+}

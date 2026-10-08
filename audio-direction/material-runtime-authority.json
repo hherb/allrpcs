@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-material-audio-runtime-integration",
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "owner_statement": "approved",
+  "context": "Direct reply to the question: Approve implementing this six-sound scope?",
+  "status": "runtime_scope_authorized",
+  "proposal_bindings": [
+    {
+      "path": "audio-direction/material-runtime-scope.md",
+      "sha256": "f8f309f34e8ddee75c3085060b98ce0e3c91ca154adbad96a6cf32bedc44be42"
+    },
+    {
+      "path": "audio-direction/material-runtime-scope.json",
+      "sha256": "6eb5f9cb06efd1851f85076d1594d265d393e8b1ac59e5b06d137a64630fec28"
+    }
+  ],
+  "selected_ids": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "A04",
+    "A05"
+  ],
+  "accepted_audio_edits_authorized": false,
+  "new_git_publication_authorized": false
+}

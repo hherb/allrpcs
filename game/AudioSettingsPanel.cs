@@ -17,6 +17,7 @@ public partial class AudioSettingsPanel : CanvasLayer
     private Label status = null!;
     private Control? returnFocus;
     private bool refreshing;
+    private MaterialAudioCreditsPanel creditsPanel = null!;
 
     /// <summary>Raised when the panel closes so its entry can be restored.</summary>
     public event Action<bool>? Closed;
@@ -42,6 +43,7 @@ public partial class AudioSettingsPanel : CanvasLayer
     /// <summary>Closes and optionally restores focus without changing world time.</summary>
     public void Close(bool restoreFocus = true)
     {
+        if (creditsPanel.Visible) { creditsPanel.Close(false); }
         GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
         Visible = false;
         Closed?.Invoke(restoreFocus);
@@ -55,6 +57,18 @@ public partial class AudioSettingsPanel : CanvasLayer
     /// <inheritdoc />
     public override void _Input(InputEvent @event)
     {
+        if (creditsPanel.Visible && @event.IsActionPressed("ui_cancel"))
+        {
+            creditsPanel.Close();
+            GetViewport().SetInputAsHandled();
+            return;
+        }
+        if (creditsPanel.Visible && @event.IsActionPressed("optional_overlays_toggle"))
+        {
+            Close(false);
+            GetViewport().SetInputAsHandled();
+            return;
+        }
         if (Visible && (@event.IsActionPressed("ui_cancel") || @event.IsActionPressed("optional_overlays_toggle")))
         {
             Close(!@event.IsActionPressed("optional_overlays_toggle"));
@@ -131,7 +145,7 @@ public partial class AudioSettingsPanel : CanvasLayer
         focusOrder.Add(preset);
         preset.ItemSelected += _ => ChangeMix();
         mono = Toggle(content, "Mono", "Mono output");
-        captions = Toggle(content, "Captions", "Sound captions (future cues) · dialogue text always stays on");
+        captions = Toggle(content, "Captions", "Sound captions · dialogue and action text always stays on");
         status = new Label { Name = "Status", AutowrapMode = TextServer.AutowrapMode.WordSmart };
         content.AddChild(status);
         HBoxContainer buttons = new();
@@ -143,6 +157,12 @@ public partial class AudioSettingsPanel : CanvasLayer
         defaults.Pressed += controller.RestoreDefaults;
         Button close = Button(buttons, "Close", "Close");
         close.Pressed += () => Close();
+        Button credits = Button(buttons, "SourceCredits", "Audio source credits");
+        creditsPanel = GD.Load<PackedScene>("res://MaterialAudioCreditsPanel.tscn")
+            .Instantiate<MaterialAudioCreditsPanel>();
+        AddChild(creditsPanel);
+        creditsPanel.Closed += restore => { if (restore) { Visible = true; } };
+        credits.Pressed += () => { Visible = false; creditsPanel.Open(credits); };
         for (int index = 0; index < focusOrder.Count; index++)
         {
             Control control = focusOrder[index];

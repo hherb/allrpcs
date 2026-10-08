@@ -12,6 +12,9 @@ namespace Allrpcs.Game;
 /// <summary>Coordinates atomic in-memory restoration of one eligible versioned save root.</summary>
 public partial class SaveSnapshotRestorationController : Node
 {
+    /// <summary>Resets transient presentation only after a complete successful restore.</summary>
+    public event Action? PresentationReset;
+
     private FocusedSearchActivityController discoveryController = null!;
     private FirstPatientStateController firstPatientController = null!;
     private FirstPatientPreparationController firstPatientPreparation = null!;
@@ -214,6 +217,11 @@ public partial class SaveSnapshotRestorationController : Node
                 "A preflighted save root could not be installed into its controllers.");
         }
 
+        foreach (Delegate listener in PresentationReset?.GetInvocationList() ?? [])
+        {
+            try { ((Action)listener)(); }
+            catch (Exception exception) { GD.PrintErr($"Restoration presentation failed: {exception.Message}"); }
+        }
         return true;
     }
 }
