@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "scope_id": "phase9-restrained-music-runtime-integration",
+  "tested_commit": "c472c0a31548e076bfee0252e4e4970714c8c019",
+  "purpose": "Final checks of retained caption/history and foreground lease behavior against the new music scene; no new scope, selection or acceptance.",
+  "commands": [
+    "ALLRPCS_MATERIAL_MAIN_CHECK=1 godot --headless --path game",
+    "ALLRPCS_POSITIONAL_MAIN_CHECK=1 ALLRPCS_POSITIONAL_MODE=normal godot --headless --path game"
+  ],
+  "status": "both_passed",
+  "evidence_bindings": [
+    {
+      "path": "audio-direction/music-runtime-review/checks/retained-material-main.log",
+      "sha256": "eb87619b230a4d1c8508b0af8bb83216167ade97c97a659c2a219eb98f98179b"
+    },
+    {
+      "path": "audio-direction/music-runtime-review/checks/retained-positional-main.log",
+      "sha256": "1173a44d5af311fa72a6aa8fd8faf807a5498d236f1887b181e6fd0bc867b559"
+    }
+  ],
+  "unchanged_frozen_evidence": true
+}
