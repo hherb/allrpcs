@@ -21,6 +21,13 @@ complete: [review](audio-direction/footstep-runtime-review/README.md),
 [authority](audio-direction/footstep-runtime-authority.json). Other interiors/actions,
 Healer/NPC steps, positional cues, music, voice and full audio identity remain unfinished.
 
+The [positional/off-screen proposal](audio-direction/positional-cue-runtime-scope.md) is
+prepared and its planning slice is closed. It names one spatial B02 waterway owner and
+one cue after a heard Healer/Sage reply is recorded, with the existing 192/48-pixel
+hearing gates, one exact PCM extraction, safe captions/history, credits and finite
+checks. The new runtime/extraction grant is the single pending decision. No runtime
+or accepted material changed during planning; no additional sound selection is pending.
+
 The owner authorized footstep commit/push and gave the standing instruction on 2026-10-08:
 “ALWAYS commit and push when you finish a task.” Carry this publication authority forward
 for completed tasks without repeating the question. See the recorded
@@ -33,32 +40,36 @@ and `.DS_Store`, from task commits.
 <!-- active-slice:start -->
 ## Next bounded slice
 
-**phase9-positional-audio-cue-scope — Prepare a concrete positional ambience and off-screen cue proposal** (ready).
+**phase9-positional-audio-cue-runtime-integration — Implement the proposed positional waterway bed and heard response cue after owner approval** (ready).
 
 Roadmap item: - [ ] Add positional ambience and meaningful off-screen sound cues.
 
-Missing deliverable: A source-by-source proposal connecting actual runtime sound owners and
-perception eligibility to positional attenuation, off-screen meaning, captions, cancellation and
-finite checks is missing.
+Missing deliverable: The proposed single-owner spatial B02 and captured-audience Healer/Sage
+response cue, one exact PCM slice, safe captions/history, rights packaging and finite runtime
+verification are not implemented; the new runtime/extraction grant is pending.
 
-Read current source/perception and sound owners to prepare one finite proposal. Name actual
-emitters, prerequisites, audibility and caption rules, exact allowed files and validation. Carry
-accepted artwork/audio and completed footsteps unchanged. Prepare the new runtime authority request
-only after the proposal is concrete; do not implement this new scope under the footstep grant.
+Present audio-direction/positional-cue-runtime-scope.md and its hash-bound inventory for the single
+new runtime/PCM decision. Do not change runtime until that grant arrives. Record the actual owner
+response in positional-cue-runtime-authority.json, then complete the exact proposed implementation,
+meaningful checks, review and documentation in the same session. Carry accepted audio/art/gait,
+other six-sound behavior and footsteps unchanged; use the recorded standing commit/push authority
+for completed tasks.
 
-Done when: A concrete source/perception/positional-cue scope and hash-bound inventory exist, with a
-finite implementation boundary and exactly the new authority needed identified; no runtime or
-accepted material changes.
+Done when: An actual owner grant, one spatial B02 owner, admitted ordinary-response cue with exact
+PCM slice, accessible captions/history/credits and passing finite successor/product/output evidence
+exist; wider positional audio is not declared complete.
 
 Expected outputs:
 
-- `audio-direction/positional-cue-runtime-scope.md`
-- `audio-direction/positional-cue-runtime-scope.json`
+- `audio-direction/positional-cue-runtime-authority.json`
+- `audio-direction/positional-cue-runtime-verification.json`
+- `audio-direction/positional-cue-runtime-review/README.md`
 
-Boundary: Read-only source/perception/runtime planning and documentation only. No changes to
-physical layout, accepted art/gait/audio, completed footstep or six-sound behavior, perception/save
-contracts, music, release or Git publication. Preserve every closure and the recorded editor
-rewrite.
+Boundary: Pending new runtime and exact PCM-extraction authority. Only the proposed B02 handoff,
+ordinary recorded-response producer, listener, cue/caption/history/credits and named verification
+files are eligible after approval. No hearing/perception/save/world/geometry/art/gait/footstep/mixer
+changes, other producers, music, voice or release. Preserve and exclude the local editor rewrite;
+standing scoped publication authority remains valid.
 <!-- active-slice:end -->
 
 ## Verification and local exceptions
@@ -69,12 +80,13 @@ cases and native PCM parity. Captions/credits were checked at both viewports. Re
 packaging verifies 24 contacts, six existing streams and eight notices. Device listening,
 anatomical synchronization and ordinary-play loudness compliance are not claimed.
 
-Use `python3 scripts/validate-footstep-audio-runtime.py --reviewed` for the successor
-boundary and `python3 scripts/check-continuation.py --self-test` for closure/queue checks.
-Frozen predecessor validators retain their earlier snapshots. Reuse passing product
-evidence for documentation-only changes; product changes use `./scripts/quality.sh` and
-the applicable successor checks. Detailed commands, measurements and views are linked
-from the review package.
+Use `python3 scripts/check-continuation.py --self-test` for closure/queue checks and
+verify the proposal input/PCM bindings and protected product manifest for this planning
+checkpoint. The footstep successor check passed before the new planning files; its
+frozen file allowlist predates this successor. Preserve it and use the proposed new
+validator after runtime approval. Reuse passing product evidence for documentation-only
+changes; product changes use `./scripts/quality.sh` and the applicable successor checks.
+Detailed commands, measurements and views remain in linked review packages.
 
 Full macOS executable export remains unavailable: missing Godot mono template and
 existing `game/Allrpcs.Game.sln` export lookup mismatch. Graphical Godot requires host

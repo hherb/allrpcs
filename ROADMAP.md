@@ -407,6 +407,13 @@ other interiors, Healer/NPC steps, water/tool actions, positional cues, music an
 remain unfinished. No anatomical animation synchronization, device listening or runnable
 release is claimed. The broader material-sound roadmap item remains unchecked.
 
+The [positional/off-screen runtime proposal](audio-direction/positional-cue-runtime-scope.md)
+is prepared: one spatial B02 waterway bed and a short cue after an admitted Healer/Sage
+reply is recorded, preserving existing hearing ranges, with an exact PCM range,
+directional captions, accessible recent cues and finite checks. Its planning slice is
+closed; new runtime/extraction authority is pending. No positional runtime behavior is
+claimed, and the broader positional/off-screen item remains unchecked.
+
 - [x] Establish the audio direction and dynamic range policy.
 - [ ] Add footsteps by terrain, water, wind, foliage, interiors, tools, and remedy preparation.
 - [ ] Add positional ambience and meaningful off-screen sound cues.

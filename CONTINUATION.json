@@ -374,6 +374,20 @@
           "sha256": "1d1dc71a01c0146494d87f50274ca113b694ec272a92b1c3410ce2d932a5a403"
         }
       ]
+    },
+    {
+      "id": "phase9-positional-audio-cue-scope",
+      "reason": "Finite read-only positional/off-screen planning completed on 2026-10-08: actual water polygon/B02 owner, exact committed ordinary Healer/Sage recorder and admitted audience, unchanged 192/48 hearing, explicit listener/distance/pan, one proposed PCM range, captions/history/cancellation/credits and exact finite implementation files/checks. All accepted bindings and runtime product inputs remain unchanged. The new runtime/PCM grant is the single pending decision; wider audio roadmap remains unfinished. Standing publication instruction covers the proposal only.",
+      "evidence": [
+        {
+          "path": "audio-direction/positional-cue-runtime-scope.md",
+          "sha256": "4b1bf4aae574f3552aa5f59348942c932fbbfb2ca56e0e169943af3547c9d725"
+        },
+        {
+          "path": "audio-direction/positional-cue-runtime-scope.json",
+          "sha256": "9f5e0755ce209a455d5d5d4ef98cb4f90e53679458d2e94d5b7dfa0cb1cbd288"
+        }
+      ]
     }
   ],
   "closed_workstreams": [
@@ -481,19 +495,20 @@
     }
   ],
   "active_slice": {
-    "id": "phase9-positional-audio-cue-scope",
-    "title": "Prepare a concrete positional ambience and off-screen cue proposal",
+    "id": "phase9-positional-audio-cue-runtime-integration",
+    "title": "Implement the proposed positional waterway bed and heard response cue after owner approval",
     "status": "ready",
-    "workstream": "audio-positional-cue-runtime-planning",
+    "workstream": "audio-positional-cue-runtime-implementation",
     "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
-    "missing_deliverable": "A source-by-source proposal connecting actual runtime sound owners and perception eligibility to positional attenuation, off-screen meaning, captions, cancellation and finite checks is missing.",
-    "instructions": "Read current source/perception and sound owners to prepare one finite proposal. Name actual emitters, prerequisites, audibility and caption rules, exact allowed files and validation. Carry accepted artwork/audio and completed footsteps unchanged. Prepare the new runtime authority request only after the proposal is concrete; do not implement this new scope under the footstep grant.",
-    "completion_condition": "A concrete source/perception/positional-cue scope and hash-bound inventory exist, with a finite implementation boundary and exactly the new authority needed identified; no runtime or accepted material changes.",
+    "missing_deliverable": "The proposed single-owner spatial B02 and captured-audience Healer/Sage response cue, one exact PCM slice, safe captions/history, rights packaging and finite runtime verification are not implemented; the new runtime/extraction grant is pending.",
+    "instructions": "Present audio-direction/positional-cue-runtime-scope.md and its hash-bound inventory for the single new runtime/PCM decision. Do not change runtime until that grant arrives. Record the actual owner response in positional-cue-runtime-authority.json, then complete the exact proposed implementation, meaningful checks, review and documentation in the same session. Carry accepted audio/art/gait, other six-sound behavior and footsteps unchanged; use the recorded standing commit/push authority for completed tasks.",
+    "completion_condition": "An actual owner grant, one spatial B02 owner, admitted ordinary-response cue with exact PCM slice, accessible captions/history/credits and passing finite successor/product/output evidence exist; wider positional audio is not declared complete.",
     "outputs": [
-      "audio-direction/positional-cue-runtime-scope.md",
-      "audio-direction/positional-cue-runtime-scope.json"
+      "audio-direction/positional-cue-runtime-authority.json",
+      "audio-direction/positional-cue-runtime-verification.json",
+      "audio-direction/positional-cue-runtime-review/README.md"
     ],
-    "boundary": "Read-only source/perception/runtime planning and documentation only. No changes to physical layout, accepted art/gait/audio, completed footstep or six-sound behavior, perception/save contracts, music, release or Git publication. Preserve every closure and the recorded editor rewrite."
+    "boundary": "Pending new runtime and exact PCM-extraction authority. Only the proposed B02 handoff, ordinary recorded-response producer, listener, cue/caption/history/credits and named verification files are eligible after approval. No hearing/perception/save/world/geometry/art/gait/footstep/mixer changes, other producers, music, voice or release. Preserve and exclude the local editor rewrite; standing scoped publication authority remains valid."
   },
   "deferred_slices": []
 }

@@ -1,0 +1,609 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "timezone": "Australia/Sydney",
+  "scope_id": "phase9-positional-audio-cue-scope",
+  "status": "planning_complete_implementation_awaits_owner_authority",
+  "inspected_commit": "f5ae96894ba33cecddd8b7d8c4166a02c088aba5",
+  "roadmap_item": "- [ ] Add positional ambience and meaningful off-screen sound cues.",
+  "authority": {
+    "preparation": "Read HANDOVER.md and follow the instructions; ledger positional planning slice",
+    "runtime_implementation": false,
+    "pcm_extraction": false,
+    "asset_changes": false,
+    "publication": "Standing commit/push instruction in footstep-runtime-review/publication/authority.json"
+  },
+  "next_decision": {
+    "scope_id": "phase9-positional-audio-cue-runtime-integration",
+    "status": "pending_owner_grant",
+    "covers": [
+      "B02 single-owner positional handoff with existing regional weights and new distance attenuation",
+      "explicit Seeker AudioListener2D",
+      "internal committed Healer/Sage recorded-response notification and captured-audience gate",
+      "one exact A06 Dialogue PCM extraction",
+      "one positional Dialogue click, safe captions and bounded accessible recent-cue view",
+      "packaged credits/notices and finite successor/product/output checks"
+    ],
+    "record_response_in": "audio-direction/positional-cue-runtime-authority.json",
+    "required_by": "AGENTS.md Approval and progress; new runtime/physical scopes need applicable authority; terminal audition retains separate runtime grant"
+  },
+  "first_boundary": {
+    "waterway_positional_bed_count": 1,
+    "new_reply_player_count": 1,
+    "new_derivative_count": 1,
+    "total_looping_bed_maximum": 4,
+    "ordinary_response_speakers": [
+      "Healer",
+      "SageHearingPosition"
+    ],
+    "wider_roadmap_complete": false
+  },
+  "waterway": {
+    "clip": {
+      "path": "game/assets/audio/material/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    "accepted_clip": {
+      "path": "audio-direction/material-audition/clips/B02.wav",
+      "sha256": "78241875f7e5ca01f7cd80fd92e34546c7859bb3b738bfc4d3fceaf544450d54"
+    },
+    "source_owner": "OpeningRegionStreamLaundryGeometry.StreamWater",
+    "polygon_projection_space": [
+      [
+        1600,
+        452
+      ],
+      [
+        2000,
+        452
+      ],
+      [
+        2000,
+        548
+      ],
+      [
+        1600,
+        548
+      ]
+    ],
+    "source_point": "nearest inclusive polygon point; projection-local selection then source ToGlobal",
+    "eligibility": "existing B02 regional weight > 0 and distance < 768; captions only when waterway selected",
+    "player": "AudioStreamPlayer2D",
+    "bus": "Ambience",
+    "max_distance_world_pixels": 768,
+    "attenuation_exponent": 1,
+    "distance_gain": "max(0,1-d/768), applied once by positional player",
+    "base_gain": "existing B02 MaterialAudioRamp weight only",
+    "panning_strength": 0.6,
+    "pitch_scale": 1,
+    "max_polyphony": 1,
+    "area_mask": 0,
+    "listener": "one explicit current listener at Seeker global position; zero rotation and unit scale",
+    "retained": [
+      "exact nearest-anchor selection and 0.75s ramp",
+      "whole unchanged WAV and loop phase through mute/unmute",
+      "B01/B03/B04 and woodland revealed gain",
+      "A04/A05 full passages/Effects/lease",
+      "24 footstep resources/cadence/captions"
+    ],
+    "new_behavior_needing_authority": [
+      "whole B02 composite spatialized at nearest water point",
+      "distance reduction on top of existing regional ramp; no compensation",
+      "non-positional B02 owner removed; never dual-routed"
+    ],
+    "known_approximation": "B02 rain shares the water source position; no isolated water stem or rain layer"
+  },
+  "reply": {
+    "notification_owner": "TemporaryCharacterTurnResponseSpeechRecorder._Process",
+    "notify_after": [
+      "successful DialogueEventController.TryOccur",
+      "successful exact transcript append",
+      "assignment of lastRecordedDelivery"
+    ],
+    "payload": [
+      "exact DialogueEvent and delivery",
+      "retained registered speaker/Seeker IDs",
+      "speaker node and emission world position",
+      "captured existing ordinary/whisper hearing range"
+    ],
+    "exception_isolated": true,
+    "no_last_event_polling": true,
+    "audience_rule": "Seeker ID in exact occurred-event audience; registered healer/sage source; current distance can only remove admission",
+    "ordinary_range_world_pixels": 192,
+    "whisper_range_world_pixels": 48,
+    "inclusive_world_hearing_boundary": true,
+    "zero_output_at_distance_boundary": true,
+    "player": "AudioStreamPlayer2D",
+    "bus": "Dialogue",
+    "max_distance": "captured existing 192 or 48",
+    "attenuation_exponent": 1,
+    "panning_strength": 0.6,
+    "pitch_scale": 1,
+    "base_gain": 1,
+    "max_polyphony": 1,
+    "area_mask": 0,
+    "foreground_lease": false,
+    "minimum_seconds_between_click_starts": 1,
+    "queue_length": 0,
+    "cue_seconds": 0.5,
+    "notification_seen_once": "existing retained delivery guard remains; no audio reset of recorder",
+    "muted_missing_or_rate_limited": "eligible caption/history still delivered once per fresh recorded event",
+    "offscreen_rule": "actual viewport canvas transform and inclusive visible rectangle after audience admission; camera changes presentation only",
+    "camera_example": {
+      "viewport": [
+        1280,
+        720
+      ],
+      "zoom": 2,
+      "vertical_half_view_world_pixels": 180,
+      "speaker_vertical_distance_world_pixels": 190,
+      "ordinary_heard_offscreen_possible": true,
+      "default_zoom_usually_onscreen": true,
+      "ordinary_runtime_case_and_controlled_camera_case_both_required": true
+    }
+  },
+  "extraction": {
+    "proposed_path": "game/assets/audio/positional/A06-D01.wav",
+    "accepted_parent": {
+      "path": "audio-direction/material-audition/clips/A06-Dialogue.wav",
+      "sha256": "6653c99b089e8061cdda6081af01ac8cbaae28765bca1947986a168bbcb62c20"
+    },
+    "format": {
+      "channels": 2,
+      "sample_width_bytes": 3,
+      "rate_hz": 48000,
+      "parent_frame_count": 384000
+    },
+    "begin_frame": 192000,
+    "end_frame_exclusive": 216000,
+    "frame_count": 24000,
+    "pcm_byte_count": 144000,
+    "expected_pcm_sha256": "587f7ba3c73f6f92eee0b2a07d24cd324484118571a202703f4281cc9f8c9de6",
+    "header_sha256": null,
+    "resource_created": false,
+    "parent_window_seconds": [
+      4,
+      4.5
+    ],
+    "excluded_end_click_seconds": 6,
+    "transforms_allowed": [],
+    "meaning": "nonverbal recorded-reply indication; no conversation-end or voice claim"
+  },
+  "captions": {
+    "settings_gate": "AudioPreferences.Captions",
+    "independent_of": [
+      "Master/category gains and mutes",
+      "mono",
+      "missing audio resource",
+      "click rate limit"
+    ],
+    "waterway_text": "Running water and rain",
+    "response_onscreen_text": "Conversation nearby",
+    "response_offscreen_prefix": "Conversation ",
+    "directions": [
+      "above",
+      "above/right",
+      "right",
+      "below/right",
+      "below",
+      "below/left",
+      "left",
+      "above/left"
+    ],
+    "sector_degrees": 45,
+    "sector_tie_rule": "clockwise",
+    "bearing_reference": "viewport centre to transformed source point",
+    "response_seconds": 3,
+    "caption_lines_maximum": 4,
+    "identity_location_utterance_clue_names": false,
+    "full_text_owner": "TemporaryCharacterTurnResponseLabel remains unchanged"
+  },
+  "history": {
+    "capacity": 16,
+    "order": "oldest first; newest 16 retained",
+    "contents": "emission-time safe generic response wording and sequence order only",
+    "available_when_muted_or_captions_off": true,
+    "accessible_entry": "Recent sound cues from Audio panel; scroll/back/focus restore",
+    "persisted": false,
+    "world_clock_mutation": false,
+    "record_each_fresh_eligible_event": true,
+    "ambience_or_footstep_records": false,
+    "expiry_or_departure_retains_history": true,
+    "successful_restore_and_teardown_clear": true
+  },
+  "cancellation": {
+    "sources": [
+      "distance beyond captured range",
+      "invalid binding or position",
+      "turn cancellation",
+      "successful presentation reset",
+      "scene teardown",
+      "Seeker displacement discontinuity over 96 world pixels per physics sample"
+    ],
+    "does_not_cancel": [
+      "ordinary completed recorded turn",
+      "mute",
+      "caption preference alone"
+    ],
+    "replay_on_return_unmute_restored_history": false,
+    "failed_restore_resets": false,
+    "owned_listener_only_cleanup": true
+  },
+  "rights": {
+    "basis": "retained accepted Kenney Interface Sounds CC0 record; no new acquisition/audit",
+    "source_url": "https://kenney.nl/assets/interface-sounds",
+    "licence_notice": {
+      "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    "B02_notices": "retain existing material contributors/notices byte-identically",
+    "new_notices": [
+      "CREDITS.txt",
+      "provenance.json",
+      "CC0-1.0-deed.html"
+    ],
+    "visible_credits": "append positional directory credits to existing Audio source credits",
+    "export_change": "add only assets/audio/positional TXT/JSON/HTML include filters"
+  },
+  "excluded_producers": {
+    "B01_B03_B04": "unchanged regional owners; no hidden inscription beacon or moving-wagon event",
+    "W01_W02_W03_W04": "closed Seeker-only terrain implementation; no NPC steps",
+    "A01": "no committed water-contact operation",
+    "A02_A03": "no committed container/cloth or tool operation",
+    "A04_A05": "retain exact existing committed local actions/lease",
+    "A06_Effects_combined": "no UI or combined dual-routing",
+    "M01_M02": "no music scheduler/rest trigger",
+    "patient_sage_testimony_misquotation_sabotage_world_events": "distinct event/commit/exposure owners excluded"
+  },
+  "implementation_files": {
+    "bounded_changes": [
+      "game/Main.tscn",
+      "game/OpeningRegionMaterialAudioController.cs",
+      "game/TemporaryCharacterTurnResponseSpeechRecorder.cs",
+      "game/MaterialSoundCaptionPanel.cs",
+      "game/AudioSettingsPanel.cs",
+      "game/MaterialAudioCreditsPanel.cs",
+      "game/export_presets.cfg",
+      "game/MaterialAudioRuntimeProof.cs",
+      "game/MaterialAudioRuntimeProof.tscn",
+      "game/MaterialAudioRuntimeSmokeCheck.cs"
+    ],
+    "new_files": [
+      "game/OpeningRegionPositionalAudioController.cs",
+      "game/OpeningRegionPositionalAudioController.cs.uid",
+      "src/Application/Audio/OpeningRegionPositionalAudioProjection.cs",
+      "tests/Application.Tests/Audio/OpeningRegionPositionalAudioProjectionTests.cs",
+      "game/PositionalSoundCueHistoryPanel.cs",
+      "game/PositionalSoundCueHistoryPanel.cs.uid",
+      "game/PositionalSoundCueHistoryPanel.tscn",
+      "game/assets/audio/positional/A06-D01.wav",
+      "game/assets/audio/positional/A06-D01.wav.import",
+      "game/assets/audio/positional/CREDITS.txt",
+      "game/assets/audio/positional/provenance.json",
+      "game/assets/audio/positional/CC0-1.0-deed.html",
+      "game/PositionalAudioRuntimeSmokeCheck.cs",
+      "game/PositionalAudioRuntimeSmokeCheck.cs.uid",
+      "game/PositionalAudioRuntimeProof.cs",
+      "game/PositionalAudioRuntimeProof.cs.uid",
+      "game/PositionalAudioRuntimeProof.tscn",
+      "scripts/prepare-positional-cue.py",
+      "scripts/validate-positional-audio-runtime.py",
+      "scripts/check-positional-audio-output.py",
+      "audio-direction/positional-cue-runtime-authority.json",
+      "audio-direction/positional-cue-runtime-verification.json"
+    ],
+    "review_prefix": "audio-direction/positional-cue-runtime-review/",
+    "documentation_maintenance": [
+      "CONTINUATION.json",
+      "HANDOVER.md",
+      "ROADMAP.md"
+    ],
+    "frozen_validators_changed": false
+  },
+  "unchanged_inspected_inputs": [
+    {
+      "path": "game/Main.tscn",
+      "sha256": "f8eab62fdafdb054ce97aa880145732e874b74026bd8d2aff0bb92800189dc17"
+    },
+    {
+      "path": "game/Main.cs",
+      "sha256": "64ac467312a2a18aa29ba45ff803a0cec38a3957ca1c40bf72e44807933471de"
+    },
+    {
+      "path": "game/Allrpcs.Game.csproj",
+      "sha256": "8e59a2cd356af1d6f5d36b16a0009d8ae8734a22a5c8a7ddece1b9f4e065e37e"
+    },
+    {
+      "path": "game/OpeningRegionMaterialAudioController.cs",
+      "sha256": "9209cb602ccece0b754ff886df46bdb90c0613787197b55c4012ceef6b831eb0"
+    },
+    {
+      "path": "src/Application/Audio/OpeningRegionMaterialAudioProjection.cs",
+      "sha256": "23cba8f777935202c6583143533e94d2c22d6063941342a171042598b75529c4"
+    },
+    {
+      "path": "game/OpeningRegionEnvironmentalStateSource.cs",
+      "sha256": "84990a270dae9c5a0f67cd1f03350508780a48ab46d719d22f2f18c65ed3bcfd"
+    },
+    {
+      "path": "src/Domain/EnvironmentalStates/RepresentativeOpeningRegionEnvironmentalSource.cs",
+      "sha256": "9fb08f3d3dd239a479e75eb839e161a6f3e6dab1b0fbdf40a9165149fa611d80"
+    },
+    {
+      "path": "game/OpeningRegionProjectionSource.cs",
+      "sha256": "6c6fa3adc4ba888e81b04c1ddc1ebaf1a6c503b0aabf54fb6985f31257104730"
+    },
+    {
+      "path": "game/OpeningRegionLayoutGeometry.cs",
+      "sha256": "92524c8084675dd76de3105a2e4ed92f7b80b097c8d344593089428ebf277e57"
+    },
+    {
+      "path": "game/OpeningRegionStreamLaundryGeometry.cs",
+      "sha256": "70be286b5690d8c238d805d7acf4ba4288972d5e1806b386ee2d27914ff20b72"
+    },
+    {
+      "path": "game/OpeningRegionSouthernRoadWagonSceneSource.cs",
+      "sha256": "a0d8e4952163f54a76d01232511526ad6688975dd0186545404de1ffa7b71bb8"
+    },
+    {
+      "path": "game/OpeningRegionRemedyPreparationInputCoordinator.cs",
+      "sha256": "dd410c7711abd7ba4fc9f64f53f20eb6750d216b12d689f3fdaad26ea07f379b"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientAdministrationInputCoordinator.cs",
+      "sha256": "81b90e1d463f659eafdbc385eca9ba986b802fdfdefdb715a4cb8692b3844939"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientSceneSource.cs",
+      "sha256": "4a012d22a3b554974729909dc3d6ebd7b8a694c75d6215b2ae5c5b2e466fc4f1"
+    },
+    {
+      "path": "game/TemporaryCharacterTurnResponseSpeechRecorder.cs",
+      "sha256": "bc3003bfe0d3c57fd7638da4ec3858352e146b9fa7987d7d418c52a38402e267"
+    },
+    {
+      "path": "game/TemporaryCharacterTurnCompletionController.cs",
+      "sha256": "b81ff4463ae6eeace9d2a228182e19d78adeadfd8659c9f4116323e2cefe3f6e"
+    },
+    {
+      "path": "game/TemporaryCharacterTurnResponseLabel.cs",
+      "sha256": "7fd7dc95691ce0f94ac37e72fb4484c653562578acd6198d2c641923276b4a92"
+    },
+    {
+      "path": "game/TemporaryOrdinaryCharacterParticipantSource.cs",
+      "sha256": "af4993bb2f0ff6cb4a8d4fddec3f8620cf55e6323503b6f5db0791582c54a64d"
+    },
+    {
+      "path": "game/TemporarySeekerCharacterSource.cs",
+      "sha256": "75ae4d461630b88a47b76dc531fca7d03921c37bd595c1951e0694299c2d29c6"
+    },
+    {
+      "path": "game/DialogueEventController.cs",
+      "sha256": "2546d140dcb976ca9699f008bcc901379665b9eaeb3d0fdecc422abd2dd24851"
+    },
+    {
+      "path": "game/CharacterTurnTranscriptController.cs",
+      "sha256": "5101d0cf8b962d9d19caf4f5b1b1f6655c2003696861f2c5aacdd1a3e7ea58b9"
+    },
+    {
+      "path": "src/Application/Dialogue/DialogueHearingSelector.cs",
+      "sha256": "ef350f814910b9e8ec783874dd7145f331c50cd5415bd9f3b89468274e03ce2b"
+    },
+    {
+      "path": "src/Application/Dialogue/DialogueDeliveryHearingSelector.cs",
+      "sha256": "3c5c81ab38b5a8796ecc1244e67ad8cfdef85b3f16197732279ac06cfd25965e"
+    },
+    {
+      "path": "src/Domain/Dialogue/DialogueEvent.cs",
+      "sha256": "5ad2b3bb8086fb5b4d22b6e3550a62bc2ddb9c08b4b7e1c49ef7dfcda163273e"
+    },
+    {
+      "path": "src/Domain/Dialogue/DialogueAudienceSnapshot.cs",
+      "sha256": "77d88270be90eab8b3a82052e89955fbe5dd0de4302ccfa08823ceeaad21c1c8"
+    },
+    {
+      "path": "game/TemporarySeekerPerceptionSource.cs",
+      "sha256": "fbbad7db0a07f1d9f256f66e72a5162dfd6ad61128b4d7f380605f9d2d7bc26a"
+    },
+    {
+      "path": "src/Domain/Perception/CharacterPerceptionSnapshot.cs",
+      "sha256": "c54ed916e6e33662843e52d636108dd0336be76f15e93174b9f4651528543a5d"
+    },
+    {
+      "path": "src/Domain/Perception/CharacterPerceptionLookup.cs",
+      "sha256": "bcbf514afd61ce6d98a756b224fa73c33a5a6b7fbed737bad10bfb4573fa351b"
+    },
+    {
+      "path": "game/OpeningRegionFirstPatientStabilizationTestimonyCoordinator.cs",
+      "sha256": "c070a213a039cf73913e1d8215f76e62154d18a8822b3cb87a3b88d386c8fb9a"
+    },
+    {
+      "path": "game/OpeningRegionSageConsultationInputCoordinator.cs",
+      "sha256": "513c8b1f227fd59c7643b894b33d3f02f125bacfe2abe7660bcd5886897b3f90"
+    },
+    {
+      "path": "game/CharacterDialogueMisquotationOccurrenceCoordinator.cs",
+      "sha256": "54a9a4640b7a5e92a278d8c2dba96222157fa9c8b865753b3f6371378af6d9f2"
+    },
+    {
+      "path": "game/FollowCamera.cs",
+      "sha256": "e7b6e776216410bbc8e9086397e02e98267e20e3d9270acb732372070118d01e"
+    },
+    {
+      "path": "game/MaterialSoundCaptionPanel.cs",
+      "sha256": "b40d802907aaf468558bc30dd831ed31104931f756c5fe40e81dc29bd98305dc"
+    },
+    {
+      "path": "game/MaterialAudioCreditsPanel.cs",
+      "sha256": "f693a2c1f4e88a148f82e9f09150fe52957dd5ee2915bf95832d1ad42eea5535"
+    },
+    {
+      "path": "game/AudioSettingsPanel.cs",
+      "sha256": "fd97238e342d1c185423d93e88fdcebc5beddd46315758421c6faf50e48a4023"
+    },
+    {
+      "path": "game/SaveSnapshotRestorationController.cs",
+      "sha256": "d36b9b2d8ae006d200ed06b903476953a956985f2c33a8f9aac80617e609e06a"
+    },
+    {
+      "path": "game/OpeningRegionFootstepAudioController.cs",
+      "sha256": "d917538a3c6c5ffc8a3d6b837313b1f58fc88a2a030891a5fd8e378a2d37d6ea"
+    },
+    {
+      "path": "game/Seeker.cs",
+      "sha256": "dfce3c355c8381aa37c2a0b27daf6a3297dff199ec6ed41ad36350f839d0db65"
+    },
+    {
+      "path": "game/Healer.cs",
+      "sha256": "76d79b96d13b6f581be88f8e4f906c6b39063e46b24839b429399a9b350d2aaf"
+    },
+    {
+      "path": "game/AudioBusLayout.tres",
+      "sha256": "14dae097d95901de1052527dab4d76a0a3719ab3015c0640f6d3ab87cc102f65"
+    },
+    {
+      "path": "game/AudioSettingsController.cs",
+      "sha256": "00420a9e81c801275345c6f58b96a3c173f44316d2bbbfb328576837d662ab3b"
+    },
+    {
+      "path": "game/export_presets.cfg",
+      "sha256": "37a38ec35647436af48fa2a020914ccfc36b5972927580a66290b0f2dc5f41b0"
+    },
+    {
+      "path": "audio-direction/dynamic-range-policy.json",
+      "sha256": "3f80bb841cc470ba6b4f1166c56ccbbca23fa63081ce22a5dd00c6f39fc2891d"
+    },
+    {
+      "path": "audio-direction/owner-acceptance.json",
+      "sha256": "a3f819bf4bcc61a3489329f6dbb38cf7dccc5dcec2bf6fee04c63756e5d5c2de"
+    },
+    {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    {
+      "path": "audio-direction/material-audition/candidates.json",
+      "sha256": "ee24ae119e5d89c63f895861cc45cde703bf32eb71d2685c2760b0fc0be4adab"
+    },
+    {
+      "path": "audio-direction/material-audition/prepare-excerpts.py",
+      "sha256": "b1c0aabd49fac2e5cff7d8f3d25e79f5628b8efd3e3f299b0a46b53fe100bae6"
+    },
+    {
+      "path": "audio-direction/material-audition/provenance.json",
+      "sha256": "bb7df8b4ea5098e55d29f530916f17df5ffd09b7c5c2611148517069a494353c"
+    },
+    {
+      "path": "audio-direction/material-audition/CREDITS.txt",
+      "sha256": "26287419e626089f156f9c510a5e95d4eb1987c2a08a22de312e9513a0e9825f"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/licenses.json",
+      "sha256": "25a5e66b40c633b953324560aae6b0f7090514309bb1b4a6c8d048fc12b1b9c5"
+    },
+    {
+      "path": "audio-direction/material-audition/rights/CC0-1.0-deed.html",
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12"
+    },
+    {
+      "path": "audio-direction/material-runtime-verification.json",
+      "sha256": "7b90f02114805c6b03cc85942ba5fb729d7f6d17b98d058a25ce3ee3aa73fc77"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-verification.json",
+      "sha256": "1d1dc71a01c0146494d87f50274ca113b694ec272a92b1c3410ce2d932a5a403"
+    },
+    {
+      "path": "audio-direction/footstep-runtime-review/publication/authority.json",
+      "sha256": "83c456283a1a2aeeffd2096282c577d6adb643c8fb24a6afa44058be2407679d"
+    },
+    {
+      "path": "art-direction/reference-gait-model.json",
+      "sha256": "e7b5e543b772e7a47b233902c87e94b6b5036b9e7ef494fa1ddf86f4c32b75ad"
+    },
+    {
+      "path": "art-direction/reference-gait-model.md",
+      "sha256": "1070a345771f47cd851c5edbed48dcd694e6034601b3b8dd1bcdd09249a62961"
+    },
+    {
+      "path": "game/MaterialAudioRuntimeSmokeCheck.cs",
+      "sha256": "2dfd982c7408b29e81cc5d4bde79b6f6c82c8ca7b6a39a6aaddafb38e495d193"
+    }
+  ],
+  "protected_product_snapshot": {
+    "roots": [
+      "game",
+      "src",
+      "tests",
+      "scripts"
+    ],
+    "tracked_file_count": 4752,
+    "manifest_encoding": "sorted path rows; JSON sort_keys=true,separators=(comma,colon); UTF-8; no newline",
+    "manifest_sha256": "12c5416ec681e65fcbe2213202bee7f8854bda5c06dc38ee8dcef07f82fceee4",
+    "local_editor_exception": {
+      "path": "game/project.godot",
+      "sha256": "36bfb7c7a54399cc8d27c02b73c7990766d7db44e7452655cb6a496866653fca"
+    },
+    "committed_editor_sha256": "0ce582324fb3bde4781052556f934f5c9bf7d3dc8ff58ad6b070ccf3db459c77"
+  },
+  "retained_acceptance": {
+    "record": {
+      "path": "audio-direction/material-audition/owner-acceptance.json",
+      "sha256": "2c65addb45a7a4ada8ea84695014c4f3541e4794199148b6111dd9e6537eeab1"
+    },
+    "binding_count": 82,
+    "all_bindings_verified": true
+  },
+  "technical_references": [
+    {
+      "url": "https://docs.godotengine.org/en/stable/classes/class_audiolistener2d.html",
+      "use": "explicit listener overrides screen-centre position"
+    },
+    {
+      "url": "https://docs.godotengine.org/en/stable/classes/class_audiostreamplayer2d.html",
+      "use": "positional playback properties and next-physics-frame start"
+    },
+    {
+      "url": "https://github.com/godotengine/godot/blob/4.6/scene/2d/audio_stream_player_2d.cpp",
+      "use": "world distance attenuation and viewport-scaled stereo panning"
+    }
+  ],
+  "installed_engine": "4.6.3.stable.mono.official.7d41c59c4",
+  "verification_required": [
+    "Exact accepted B02/A06 binding and single extracted PCM range/header/import; packaged licences and duplicate-route/mutation rejection probes",
+    "Water nearest-polygon point/transform/distance, eleven anchors, ties/retargets/seams, retained other beds/actions/footsteps",
+    "Ordinary recorder commit, exact transcript/delivery, captured listener/roster/range, self/foreign/stale/chunk/failure/cancel/repeat negatives; enabled/muted/missing/captions-off full state parity",
+    "Actual viewport/camera smoothing/limits/zoom0.8,1,2 and both viewports; eight caption bearings and controlled190px offscreen case; transform/reset/teleport/rate/history/listener/bus negatives",
+    "Actual Master stereo/mono distance/bearing/loop/action-footstep mix, category/Master gain/zero/mute, presets, latency/levels/true peaks and existing A05 lease isolation",
+    "Ordinary Main four-line caption and history/credit focus views; one new derivative/notices plus six prior streams/24 contacts package; meaningful pure tests, format/build/four unit projects/ScenarioValidator/retained Godot suite/new probes"
+  ],
+  "planning_checks": {
+    "accepted_bindings_verified": 82,
+    "PCM_ranges_inspected": 1,
+    "derivatives_created": 0,
+    "runtime_product_changes": false,
+    "product_tests_run": false,
+    "baseline_footstep_successor_check": "python3 scripts/validate-footstep-audio-runtime.py --reviewed: PASS before new proposal files; frozen predecessor unchanged",
+    "completion_checks": "inventory/hash/range/protected product parity; continuation --self-test; git diff --check",
+    "retained_evidence_reused": "footstep verified 5095 unit tests / 293 Godot launches / 67 Master-output cases; no claim of new positional runtime verification",
+    "inspected_input_bindings_verified": 57,
+    "protected_product_manifest_verified": true,
+    "protected_tracked_product_files_verified": 4752,
+    "continuation_regression_probes_passed": 11,
+    "whitespace_check_passed": true,
+    "scope_review": "Confirmed composite-source limitation, 192/48 reply hearing and actual 48/64 action gates; retained smoke needs only split B02 ownership/caption assertions, all other cases preserved."
+  },
+  "completion_condition": "New granted positional B02 owner and captured-audience ordinary reply marker, exact derivative, captions/history/credits, finite successor/product/output checks; wider positional roadmap unfinished",
+  "excluded": [
+    "Physical source/route/collision/navigation/material geometry",
+    "Seeker/Healer movement and accepted gait/art",
+    "Closed footstep files/24 resources/cadence/captions",
+    "B01/B03/B04 and A04/A05 behavior/leases",
+    "Accepted waveforms, source edits, licensing evidence and frozen validators",
+    "Domain perception/hearing/save/time/disease and provider/scheduling/journal contracts",
+    "Other response/event/UI/sabotage producers",
+    "Music/speech/microphones",
+    "Purchases/downloads/release/signing",
+    "Local project.godot editor rewrite"
+  ]
+}
